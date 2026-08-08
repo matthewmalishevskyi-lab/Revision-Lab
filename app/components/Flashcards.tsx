@@ -20,7 +20,34 @@ export function Flashcards({ cards }: { cards: Card[] }) {
   const [position, setPosition] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
-  const card = cards[order[position]];
+  // ───────────────────────────────────────────────────────────────────────────
+  // A REAL CRASH BUG THIS PREVENTS
+  //
+  // Moving between topic pages does NOT necessarily create a fresh component.
+  // React reuses a component when it appears in the same place in the tree with
+  // the same type — which is exactly what happens navigating from one topic to
+  // another, because both pages render <Flashcards> in the same position.
+  //
+  // So the STATE SURVIVES. Go from Binary & data (23 cards) sitting on card 21,
+  // click through to Boolean logic (10 cards), and `position` is still 20.
+  // `cards[order[20]]` is undefined, and reading `.term` on undefined throws —
+  // a white screen, on a page that works perfectly if you load it directly.
+  //
+  // The fix is React's documented pattern for adjusting state when a prop
+  // changes: compare against the previous value during render and reset. It
+  // runs before anything is painted, so nothing flickers.
+  // ───────────────────────────────────────────────────────────────────────────
+  const [previousCards, setPreviousCards] = useState(cards);
+  if (cards !== previousCards) {
+    setPreviousCards(cards);
+    setOrder(cards.map((_, i) => i));
+    setPosition(0);
+    setFlipped(false);
+  }
+
+  // Belt and braces: even if position somehow strays, never index past the end.
+  const safePosition = Math.min(position, cards.length - 1);
+  const card = cards[order[safePosition] ?? 0] ?? cards[0];
 
   function go(delta: number) {
     setFlipped(false);
@@ -48,7 +75,7 @@ export function Flashcards({ cards }: { cards: Card[] }) {
     <div>
       <div className="flex items-center justify-between gap-4">
         <p className="text-sm font-medium opacity-60">
-          Card {position + 1} of {cards.length}
+          Card {safePosition + 1} of {cards.length}
         </p>
         <button
           type="button"

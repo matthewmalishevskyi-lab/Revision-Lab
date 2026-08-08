@@ -91,6 +91,28 @@ export function Practice({
 }) {
   const [states, setStates] = useState<Record<number, QuestionState>>({});
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // WHY THIS RESET EXISTS
+  //
+  // React reuses a component when it appears in the same place in the tree with
+  // the same type. Navigating from one topic page to another does exactly that,
+  // so this component is NOT recreated — and the state survives.
+  //
+  // Without the reset below, a student who answered eight questions on Binary &
+  // data and then clicked through to Algorithms would find those answers and
+  // ticks still sitting against the new, completely different questions. They
+  // are stored by position, and position 3 exists on both pages.
+  //
+  // This is React's documented pattern for adjusting state when a prop changes:
+  // compare with the previous value during render and reset. It happens before
+  // anything is painted, so there is no flicker.
+  // ───────────────────────────────────────────────────────────────────────────
+  const [previousQuestions, setPreviousQuestions] = useState(questions);
+  if (questions !== previousQuestions) {
+    setPreviousQuestions(questions);
+    setStates({});
+  }
+
   const stateFor = (index: number) => states[index] ?? EMPTY;
 
   function update(index: number, changes: Partial<QuestionState>) {
@@ -258,8 +280,9 @@ export function Practice({
       </ol>
 
       <p className="mt-4 text-sm opacity-50">
-        Write your answer before checking. Deciding you knew it after seeing the
-        answer is the most common way to waste revision time.
+        {markable > 0
+          ? "Write your answer before checking. Deciding you knew it after seeing the answer is the most common way to waste revision time."
+          : "Write your answer out in full before revealing the model answer, then mark yourself honestly against it."}
       </p>
     </div>
   );
