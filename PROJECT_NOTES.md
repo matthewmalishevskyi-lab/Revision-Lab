@@ -179,6 +179,16 @@ Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage ren
 - Vercel project: `revision-lab`, team `matthewmalishevskyi-lab`, **Hobby (free, non-commercial)** plan
 - **Every `git push` to `main` now redeploys the live site automatically.**
 
+### 📋 TOMORROW'S PLAN (agreed with Matthew, end of 2026-08-08)
+
+Three things, in his order of priority:
+
+1. **Personal targets and achievement tracking** — users manage their own progress: what they've revised, what they've scored, what's left. **BLOCKED ON THE DATABASE.** Progress must be saved per user, which needs `DATABASE_URL` set up first (see Step 5 of `DEPLOYING.md`). Worth Matthew signing up to Neon or Supabase before we start, so the connection string is ready. The practice questions already produce a score — that's the natural first thing to record.
+2. **In-page navigation** — a jump menu on topic pages so you can go straight to Key facts / Worked examples / Common mistakes / Practice / Flashcards without scrolling. Topic pages are long now (six sections, sometimes 2,000+ words). Anchor links plus a sticky mini-nav.
+3. **Expand** — more topics within the existing subjects, and more subjects entirely. The architecture already supports this: add to `SUBJECTS` in `lib/subjects.ts` and write a content file. A fourth subject is one new file plus one line in the content registry.
+
+Sensible order: database first (unblocks 1), then 2 while that settles, then 3.
+
 ### ⚠️ START HERE NEXT SESSION — three things, in order
 
 1. **Set the environment variable.** Vercel → Settings → Environment Variables → add `NEXT_PUBLIC_SITE_URL` = `https://revision-lab-sigma.vercel.app` (no trailing slash), then redeploy. Until this is done the sitemap and link previews point at a guessed address. The code fallback has been corrected to the real URL as a stopgap, but the env var is the proper fix.
