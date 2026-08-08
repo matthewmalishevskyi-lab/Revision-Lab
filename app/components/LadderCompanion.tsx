@@ -176,12 +176,16 @@ export function LadderCompanion({
       // `absolute` rather than `fixed`, so the ladder is as tall as the whole
       // page and scrolls with it. `fixed` would pin it to the screen, which is
       // what it did before.
-      className="pointer-events-none absolute left-4 top-0 z-10 hidden h-full w-24 xl:block"
+      // `inset-y-0` pins it to both the top AND bottom of the wrapper, which is
+      // a more reliable way to say "as tall as the page" than a percentage
+      // height — percentages need the parent to have a definite height, and
+      // this one is however tall the content happens to be.
+      className="pointer-events-none absolute inset-y-0 left-4 z-10 hidden w-24 xl:block"
     >
       <div ref={railsRef} className="absolute inset-0">
         {/* The two rails */}
         <div
-          className="absolute left-4 w-[5px] rounded-full opacity-25"
+          className="absolute left-4 w-[6px] rounded-full opacity-40"
           style={{
             backgroundColor: colour,
             top: LADDER_INSET,
@@ -189,7 +193,7 @@ export function LadderCompanion({
           }}
         />
         <div
-          className="absolute right-4 w-[5px] rounded-full opacity-25"
+          className="absolute right-4 w-[6px] rounded-full opacity-40"
           style={{
             backgroundColor: colour,
             top: LADDER_INSET,
@@ -202,7 +206,7 @@ export function LadderCompanion({
             page is. The spacing comes from the same constant the climbing maths
             uses, so the mascot always lands exactly on a rung. */}
         <div
-          className="absolute left-4 right-4 opacity-25"
+          className="absolute left-4 right-4 opacity-40"
           style={{
             top: LADDER_INSET,
             bottom: LADDER_INSET,
