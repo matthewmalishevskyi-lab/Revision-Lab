@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Flashcards } from "../../../components/Flashcards";
 import { Icon } from "../../../components/Icon";
+import { LadderCompanion } from "../../../components/LadderCompanion";
 import { SiteHeader } from "../../../components/SiteHeader";
 import {
   StructuredData,
@@ -96,6 +97,11 @@ export default async function TopicPage({ params }: Props) {
           subject: subject.name,
         })}
       />
+
+      {/* The subject's mascot, climbing a ladder to follow your mouse.
+          Decorative only, so it's hidden from screen readers and never
+          intercepts a click. */}
+      <LadderCompanion mascot={subject.mascot} colour={style.text} />
 
       <SiteHeader greeting={false} />
 

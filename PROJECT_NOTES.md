@@ -176,6 +176,14 @@ Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage ren
 - **Progress tracking** — the reason accounts exist. The dashboard has an empty state waiting for it.
 - **Get the content checked by teachers** before students rely on it, especially Maths (tier differences) and English (set texts vary).
 
+### Ladder companion (Matthew's idea, built 2026-08-08)
+
+`app/components/LadderCompanion.tsx` — a ladder down the left of every topic page with the subject's mascot climbing it to follow the mouse. Leans into the direction of travel and sways side to side while moving, so it reads as climbing rather than gliding. Ladder colour matches the topic's year colour.
+
+Hidden below the `xl` breakpoint (no room beside the content, and no mouse on a touchscreen). `aria-hidden` and `pointer-events-none` — decorative only, never intercepts a click.
+
+**Worth understanding, and the reason the file is commented heavily:** it deliberately does NOT use React state for the mouse position. A mouse fires 100+ events a second; calling `setState` on each one would re-render the component a hundred times a second to move one image. Instead the position lives in a plain variable and the mascot is moved by writing `element.style.transform` inside `requestAnimationFrame`, which runs once per screen refresh. React renders this component once and never again. The `useEffect` cleanup removes the listener and cancels the animation frame — without it, every page visit would leak another loop.
+
 ### Loose end from this session
 
 Matthew accidentally signed into a third-party service called **DeployWise** with his GitHub account while looking for Vercel. Worth revoking at github.com/settings/applications since it isn't needed.
