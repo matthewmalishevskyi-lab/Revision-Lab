@@ -116,7 +116,25 @@ From Jennifer's Computer Science mockup, generalised to all three subjects.
 
 ## Revision content (started 2026-08-08)
 
-**ALL 38 TOPICS ACROSS ALL THREE SUBJECTS ARE COMPLETE.** No topic shows "coming soon" any more.
+**ALL 38 TOPICS ARE COMPLETE IN THE FULL FORMAT.** Every topic has six sections: summary, key facts, worked examples, common mistakes, practice questions and flashcards, plus exam technique.
+
+| | Worked examples | Auto-marked Qs | Self-marked Qs | Mistakes | Flashcards |
+|---|---|---|---|---|---|
+| Computer Science (13) | 55 | 208 | 26 | 78 | 201 |
+| Maths (13) | 52 | 209 | 25 | 78 | 158 |
+| English (12) | 48 | 192 | 24 | 72 | 138 |
+| **Total** | **155** | **609** | **75** | **228** | **497** |
+
+~76,000 words of content. 957 automated checks pass.
+
+**Higher tier labelling** — `higherOnly` can be set on a key-fact block, a worked example or a practice question. It renders an amber badge, and any topic containing one shows an explanatory notice at the top. 26 items flagged, all in Maths (circle theorems, sine/cosine rules, quadratic formula, quadratic sequences, histograms, vector proofs, inverse proportion). Only Maths is tiered — a check enforces that no other subject uses the flag.
+
+**Two real bugs found and fixed during this work:**
+
+1. **Marking bug.** `normalise()` in `Practice.tsx` stripped every hyphen so "run-length" matched "run length" — but it also stripped MINUS SIGNS, so a student answering `3` to a question whose answer was `-3` was marked correct. Now hyphens are only removed between two letters. Regression tests added.
+2. **State-persistence bugs.** React reuses a component in the same tree position, so navigating between topic pages did NOT recreate `Flashcards` or `Practice`. Flashcards CRASHED (card 21 of a 23-card topic → 10-card topic → undefined → white screen), and Practice showed old answers against new questions. Both fixed with React's "adjust state when props change" pattern.
+
+
 
 | Subject | Topics | Words | Facts | Flashcards | Exam tips |
 |---|---|---|---|---|---|
