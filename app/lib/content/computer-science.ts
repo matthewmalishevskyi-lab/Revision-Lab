@@ -272,48 +272,112 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
     practice: [
       {
         question: "Convert the binary number 01001011 to denary.",
+        accept: ["75"],
         answer:
           "75. The place values with a 1 beneath them are 64, 8, 2 and 1, and 64 + 8 + 2 + 1 = 75.",
       },
       {
+        question: "Convert the binary number 10101010 to denary.",
+        accept: ["170"],
+        answer: "170. That is 128 + 32 + 8 + 2 = 170.",
+      },
+      {
         question: "Convert 92 to an 8-bit binary number.",
+        accept: ["01011100"],
         answer:
-          "01011100. 64 fits (28 left), 32 does not... careful: 64 fits leaving 28; 32 does not fit; 16 fits leaving 12; 8 fits leaving 4; 4 fits leaving 0. That gives 0-1-0-1-1-1-0-0 reading from 128 downwards.",
+          "01011100. 64 fits leaving 28; 32 does not; 16 fits leaving 12; 8 fits leaving 4; 4 fits leaving 0. Note the leading zero — an 8-bit answer must have 8 digits.",
+      },
+      {
+        question: "Convert 200 to an 8-bit binary number.",
+        accept: ["11001000"],
+        answer:
+          "11001000. 128 fits leaving 72; 64 fits leaving 8; 32 and 16 do not; 8 fits leaving 0.",
+      },
+      {
+        question: "Convert the binary number 11011110 to hexadecimal.",
+        accept: ["de", "0xde"],
+        answer:
+          "DE. Split into nibbles from the right: 1101 = 13 = D, and 1110 = 14 = E.",
+      },
+      {
+        question: "Convert the hexadecimal number 3F to denary.",
+        accept: ["63"],
+        answer: "63. In denary that is 3 x 16 + 15 = 48 + 15 = 63.",
+      },
+      {
+        question: "How many bits are there in a nibble?",
+        accept: ["4", "four"],
+        answer: "4 bits. A nibble is half a byte, and exactly what one hexadecimal digit represents.",
+      },
+      {
+        question: "How many bits are there in a byte?",
+        accept: ["8", "eight"],
+        answer:
+          "8 bits. That is enough to store one ASCII character, or a number from 0 to 255.",
+      },
+      {
+        question: "How many different values can be represented using 8 bits?",
+        accept: ["256"],
+        answer:
+          "256. That is 2^8. The range is 0 to 255, which is 256 different values — a classic off-by-one trap.",
+      },
+      {
+        question: "How many different colours can be represented with a colour depth of 4 bits?",
+        accept: ["16"],
+        answer: "16 colours, because 2^4 = 16.",
       },
       {
         question:
-          "Perform a left shift of 2 places on 00010110. Give the result in binary and explain what it does to the value.",
+          "Perform a left shift of 2 places on 00010110. Give the resulting 8-bit binary number.",
+        accept: ["01011000"],
         answer:
-          "01011000. A left shift of 2 places multiplies the number by 2² = 4. The original was 22 in denary, and the result is 88, which is 22 × 4.",
+          "01011000. A left shift of 2 places multiplies by 2^2 = 4. The original is 22, and the result is 88.",
       },
       {
-        question: "Convert the hexadecimal number 3F to binary and to denary.",
+        question:
+          "Add the 8-bit numbers 00110101 and 00010011. Give the answer in binary.",
+        accept: ["01001000"],
         answer:
-          "Binary 00111111, denary 63. Convert each hex digit to 4 bits: 3 = 0011 and F = 15 = 1111. In denary, 3 × 16 + 15 = 63.",
+          "01001000. In denary that is 53 + 19 = 72, and 01001000 is 64 + 8 = 72. No overflow, since the result still fits in 8 bits.",
+      },
+      {
+        question: "What is the denary ASCII code for the character 'A'?",
+        accept: ["65"],
+        answer:
+          "65. Lower-case 'a' is 97, and the digit character '0' is 48. Because codes run in order, 'B' is 66.",
+      },
+      {
+        question:
+          "An image is 1024 pixels wide by 768 high with a colour depth of 8 bits. Give its file size in kilobytes.",
+        accept: ["786.432", "786.432kb", "786.4", "786.4kb"],
+        answer:
+          "786.432 KB. 1024 x 768 = 786,432 pixels; x 8 = 6,291,456 bits; divide by 8 for bytes = 786,432; divide by 1000 for KB = 786.432 KB.",
+      },
+      {
+        question:
+          "A sound clip lasts 10 seconds, sampled at 44,100 Hz with a bit depth of 16. Give its file size in megabytes.",
+        accept: ["0.882", "0.882mb", ".882"],
+        answer:
+          "0.882 MB. 44,100 x 16 = 705,600 bits per second; x 10 = 7,056,000 bits; divide by 8 = 882,000 bytes; divide by 1000 twice = 0.882 MB.",
+      },
+      {
+        question:
+          "Name the lossless compression technique that replaces runs of repeated values with the value and a count.",
+        accept: ["run length encoding", "rle", "runlengthencoding", "run-length encoding"],
+        answer:
+          "Run length encoding (RLE). It works well on data with long runs, such as an image with large blocks of one colour, and can actually make noisy data larger.",
       },
       {
         question:
           "Explain why hexadecimal is used to represent binary values, when computers do not use hexadecimal themselves.",
         answer:
-          "Because hex is for humans, not machines. One hex digit replaces four binary digits, so values are around a quarter of the length, which makes them much faster to read and far less error-prone to write down or copy. The computer still stores everything in binary.",
+          "Hex is for humans, not machines. One hex digit replaces four binary digits, so a value is roughly a quarter of the length — much faster to read and far less error-prone to write down or copy. The computer still stores everything in binary. (No accept list: there are too many correct wordings for a computer to mark this fairly, so mark it yourself.)",
       },
       {
         question:
-          "A programmer needs to compress a file containing program source code. Should they use lossy or lossless compression? Justify your answer.",
+          "A programmer needs to compress a file of program source code. Should they use lossy or lossless compression? Justify your answer.",
         answer:
-          "Lossless. Source code must be restored exactly — lossy compression permanently discards data, and a single changed character would stop the program compiling or change what it does. Lossy is only acceptable where a small, unnoticeable quality reduction is fine, such as a photograph or a music file.",
-      },
-      {
-        question:
-          "An image has a resolution of 1024 × 768 and a colour depth of 8 bits. Calculate the file size in kilobytes.",
-        answer:
-          "786.432 KB. 1024 × 768 = 786,432 pixels; × 8 = 6,291,456 bits; ÷ 8 = 786,432 bytes; ÷ 1000 = 786.432 KB.",
-      },
-      {
-        question:
-          "State what happens when two 8-bit numbers are added and the result requires 9 bits.",
-        answer:
-          "An overflow error occurs. The result needs more bits than the register can hold, so the extra bit is lost and the value stored is incorrect.",
+          "Lossless. Source code must be restored exactly — lossy compression permanently discards data, and one changed character would stop the program compiling or silently change what it does. Lossy is only acceptable where a small, unnoticeable quality reduction is fine, such as a photograph or a music file. (Mark this one yourself.)",
       },
     ],
 

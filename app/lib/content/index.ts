@@ -43,11 +43,22 @@ export type TopicContent = {
     answer: string;
   }[];
 
-  // Self-testing. The answer stays hidden until the student asks for it,
-  // because reading an answer you were given teaches far less than trying
-  // first and finding out you were wrong.
+  // Self-testing. You type an answer and the site marks it.
+  //
+  // `accept` lists every form of the right answer that should count — "75",
+  // "1.44MB", "1.44 mb". Answers are compared with spaces, commas and trailing
+  // full stops removed, so typing is forgiving without being wrong.
+  //
+  // If `accept` is MISSING, the question can't be auto-marked and the site
+  // switches to self-marking instead: it shows the model answer and asks the
+  // student to judge honestly. That's deliberate. A computer comparing strings
+  // cannot mark "explain why hexadecimal is used" — there are thousands of
+  // correct wordings. Pretending otherwise would mark good answers wrong and
+  // teach students to guess magic words. Knowing what NOT to automate is part
+  // of the job.
   practice?: {
     question: string;
+    accept?: string[];
     answer: string;
   }[];
 
