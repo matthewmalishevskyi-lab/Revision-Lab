@@ -81,7 +81,13 @@ export default async function TopicPage({ params }: Props) {
   const content = getTopicContent(subject.slug, topic.slug);
 
   return (
-    <main className="mx-auto w-full max-w-4xl px-6 py-8">
+    // This wrapper exists purely so the ladder can be `absolute` against the
+    // FULL height of the page. `relative` on a parent is what an absolutely
+    // positioned child measures itself against — without it the ladder would
+    // measure against the whole document and sit in the wrong place.
+    // It also sits OUTSIDE the max-width content column, so the ladder can live
+    // in the margin rather than on top of the text.
+    <div className="relative">
       {/* Invisible to visitors — this tells search engines what kind of page
           this is, so it can appear as a learning resource rather than just
           another web page. */}
@@ -98,201 +104,203 @@ export default async function TopicPage({ params }: Props) {
         })}
       />
 
-      {/* The subject's mascot, climbing a ladder to follow your mouse.
-          Decorative only, so it's hidden from screen readers and never
-          intercepts a click. */}
+      {/* The subject's mascot, climbing a ladder that runs the whole length of
+          the page. Decorative only, so it's hidden from screen readers and can
+          never intercept a click. */}
       <LadderCompanion mascot={subject.mascot} colour={style.text} />
 
-      <SiteHeader greeting={false} />
+      <main className="mx-auto w-full max-w-4xl px-6 py-8">
+        <SiteHeader greeting={false} />
 
-      {/* Breadcrumbs: where you are, and a way back up. Cheap to add, and
-          people rely on them more than you'd think. */}
-      <nav className="mt-8 flex flex-wrap items-center gap-2 text-sm opacity-60">
-        <Link href="/" className="hover:underline">
-          Home
-        </Link>
-        <span aria-hidden="true">›</span>
-        <Link href={`/subjects/${subject.slug}`} className="hover:underline">
-          {subject.name}
-        </Link>
-        <span aria-hidden="true">›</span>
-        <span>{year}</span>
-      </nav>
+        {/* Breadcrumbs: where you are, and a way back up. Cheap to add, and
+            people rely on them more than you'd think. */}
+        <nav className="mt-8 flex flex-wrap items-center gap-2 text-sm opacity-60">
+          <Link href="/" className="hover:underline">
+            Home
+          </Link>
+          <span aria-hidden="true">›</span>
+          <Link href={`/subjects/${subject.slug}`} className="hover:underline">
+            {subject.name}
+          </Link>
+          <span aria-hidden="true">›</span>
+          <span>{year}</span>
+        </nav>
 
-      <section className="mt-6 overflow-hidden rounded-3xl border border-white/60 bg-white/70 shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
-        <div
-          className="flex items-center gap-5 px-8 py-8"
-          style={{ backgroundImage: style.gradient }}
-        >
-          <span
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/70"
-            style={{ color: style.text }}
+        <section className="mt-6 overflow-hidden rounded-3xl border border-white/60 bg-white/70 shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+          <div
+            className="flex items-center gap-5 px-8 py-8"
+            style={{ backgroundImage: style.gradient }}
           >
-            <Icon name={topic.icon} className="h-9 w-9" />
-          </span>
-          <div>
-            <p
-              className="text-sm font-semibold uppercase tracking-wider opacity-70"
+            <span
+              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/70"
               style={{ color: style.text }}
             >
-              {subject.name} · {year}
-            </p>
-            <h1
-              className="text-4xl font-bold tracking-tight"
-              style={{ color: style.text }}
-            >
-              {topic.title}
-            </h1>
-          </div>
-        </div>
-
-        <div className="px-8 py-10">
-          {content ? (
-            <p className="max-w-prose text-lg leading-relaxed opacity-80">
-              {content.summary}
-            </p>
-          ) : (
-            <>
-              <h2 className="text-2xl font-semibold">Content coming soon</h2>
-              <p className="mt-3 max-w-prose opacity-70">
-                This topic has a home and a working link — the revision material
-                itself hasn&apos;t been written yet. The plan is facts,
-                flashcards and exam technique for each topic.
+              <Icon name={topic.icon} className="h-9 w-9" />
+            </span>
+            <div>
+              <p
+                className="text-sm font-semibold uppercase tracking-wider opacity-70"
+                style={{ color: style.text }}
+              >
+                {subject.name} · {year}
               </p>
-              <p className="mt-3 max-w-prose opacity-70">
-                Nothing here is a dead end on purpose: the structure exists
-                first, so content can be dropped straight in without touching
-                any code.
-              </p>
-            </>
-          )}
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href={`/subjects/${subject.slug}`}
-              className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-            >
-              ← Back to {subject.name}
-            </Link>
-            <Link
-              href="/"
-              className="rounded-xl border border-black/10 px-5 py-3 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
-            >
-              All subjects
-            </Link>
+              <h1
+                className="text-4xl font-bold tracking-tight"
+                style={{ color: style.text }}
+              >
+                {topic.title}
+              </h1>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* ---------- The revision content ---------- */}
-      {content && (
-        <>
-          {/* Key facts — deliberately stripped to the bare statements. This is
-              the part you'd photograph the night before. */}
-          <section className="mt-8">
-            <h2 className="text-2xl font-bold tracking-tight">Key facts</h2>
-            <div className="mt-4 space-y-4">
-              {content.keyFacts.map((block) => (
-                <div
-                  key={block.heading}
-                  className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
-                >
-                  <h3 className="text-lg font-semibold">{block.heading}</h3>
-                  <ul className="mt-3 space-y-2">
-                    {block.points.map((point) => (
-                      <li key={point} className="flex gap-3 leading-relaxed">
-                        <span
-                          aria-hidden="true"
-                          className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                          style={{ backgroundColor: style.text }}
-                        />
-                        <span className="opacity-80">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+          <div className="px-8 py-10">
+            {content ? (
+              <p className="max-w-prose text-lg leading-relaxed opacity-80">
+                {content.summary}
+              </p>
+            ) : (
+              <>
+                <h2 className="text-2xl font-semibold">Content coming soon</h2>
+                <p className="mt-3 max-w-prose opacity-70">
+                  This topic has a home and a working link — the revision material
+                  itself hasn&apos;t been written yet. The plan is facts,
+                  flashcards and exam technique for each topic.
+                </p>
+                <p className="mt-3 max-w-prose opacity-70">
+                  Nothing here is a dead end on purpose: the structure exists
+                  first, so content can be dropped straight in without touching
+                  any code.
+                </p>
+              </>
+            )}
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href={`/subjects/${subject.slug}`}
+                className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+              >
+                ← Back to {subject.name}
+              </Link>
+              <Link
+                href="/"
+                className="rounded-xl border border-black/10 px-5 py-3 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+              >
+                All subjects
+              </Link>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Flashcards */}
-          <section className="mt-10">
-            <h2 className="text-2xl font-bold tracking-tight">Definitions</h2>
-            <p className="mt-1 opacity-60">
-              Test yourself — say the answer out loud before you flip.
-            </p>
-            <div className="mt-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
-              <Flashcards cards={content.flashcards} />
-            </div>
-          </section>
-
-          {/* Exam technique */}
-          <section className="mt-10">
-            <h2 className="text-2xl font-bold tracking-tight">
-              Exam technique
-            </h2>
-            <p className="mt-1 opacity-60">
-              How to avoid losing marks you have already earned.
-            </p>
-            <ol className="mt-4 space-y-3">
-              {content.examTips.map((tip, index) => (
-                <li
-                  key={tip.tip}
-                  className="flex gap-4 rounded-2xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
-                    style={{
-                      backgroundColor: style.text,
-                      color: "white",
-                    }}
+        {/* ---------- The revision content ---------- */}
+        {content && (
+          <>
+            {/* Key facts — deliberately stripped to the bare statements. This is
+                the part you'd photograph the night before. */}
+            <section className="mt-8">
+              <h2 className="text-2xl font-bold tracking-tight">Key facts</h2>
+              <div className="mt-4 space-y-4">
+                {content.keyFacts.map((block) => (
+                  <div
+                    key={block.heading}
+                    className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
                   >
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{tip.tip}</h3>
-                    <p className="mt-1 leading-relaxed opacity-75">
-                      {tip.detail}
-                    </p>
+                    <h3 className="text-lg font-semibold">{block.heading}</h3>
+                    <ul className="mt-3 space-y-2">
+                      {block.points.map((point) => (
+                        <li key={point} className="flex gap-3 leading-relaxed">
+                          <span
+                            aria-hidden="true"
+                            className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                            style={{ backgroundColor: style.text }}
+                          />
+                          <span className="opacity-80">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Flashcards */}
+            <section className="mt-10">
+              <h2 className="text-2xl font-bold tracking-tight">Definitions</h2>
+              <p className="mt-1 opacity-60">
+                Test yourself — say the answer out loud before you flip.
+              </p>
+              <div className="mt-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+                <Flashcards cards={content.flashcards} />
+              </div>
+            </section>
+
+            {/* Exam technique */}
+            <section className="mt-10">
+              <h2 className="text-2xl font-bold tracking-tight">
+                Exam technique
+              </h2>
+              <p className="mt-1 opacity-60">
+                How to avoid losing marks you have already earned.
+              </p>
+              <ol className="mt-4 space-y-3">
+                {content.examTips.map((tip, index) => (
+                  <li
+                    key={tip.tip}
+                    className="flex gap-4 rounded-2xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
+                      style={{
+                        backgroundColor: style.text,
+                        color: "white",
+                      }}
+                    >
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-semibold">{tip.tip}</h3>
+                      <p className="mt-1 leading-relaxed opacity-75">
+                        {tip.detail}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </>
+        )}
+
+        {/* The rest of this year's topics, so you can carry on without going
+            back and forth. */}
+        <section className="mt-8">
+          <h2 className="text-sm font-semibold uppercase tracking-wider opacity-50">
+            More in {year}
+          </h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {subject.years[yearIndex].topics
+              .filter((t) => t.slug !== topic.slug)
+              .map((t) => (
+                <li key={t.slug}>
+                  <Link
+                    href={`/subjects/${subject.slug}/${t.slug}`}
+                    className="group flex items-center gap-4 rounded-2xl border border-black/5 bg-white px-4 py-3.5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/10"
+                  >
+                    <span className="shrink-0" style={{ color: style.text }}>
+                      <Icon name={t.icon} className="h-5 w-5" />
+                    </span>
+                    <span className="flex-1 font-medium">{t.title}</span>
+                    <span
+                      aria-hidden="true"
+                      className="opacity-40 transition group-hover:translate-x-0.5 group-hover:opacity-80"
+                    >
+                      ›
+                    </span>
+                  </Link>
                 </li>
               ))}
-            </ol>
-          </section>
-        </>
-      )}
-
-      {/* The rest of this year's topics, so you can carry on without going
-          back and forth. */}
-      <section className="mt-8">
-        <h2 className="text-sm font-semibold uppercase tracking-wider opacity-50">
-          More in {year}
-        </h2>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-          {subject.years[yearIndex].topics
-            .filter((t) => t.slug !== topic.slug)
-            .map((t) => (
-              <li key={t.slug}>
-                <Link
-                  href={`/subjects/${subject.slug}/${t.slug}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-black/5 bg-white px-4 py-3.5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/10"
-                >
-                  <span className="shrink-0" style={{ color: style.text }}>
-                    <Icon name={t.icon} className="h-5 w-5" />
-                  </span>
-                  <span className="flex-1 font-medium">{t.title}</span>
-                  <span
-                    aria-hidden="true"
-                    className="opacity-40 transition group-hover:translate-x-0.5 group-hover:opacity-80"
-                  >
-                    ›
-                  </span>
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </section>
-    </main>
+          </ul>
+        </section>
+      </main>
+    </div>
   );
 }

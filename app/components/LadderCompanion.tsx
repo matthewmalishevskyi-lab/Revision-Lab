@@ -1,36 +1,49 @@
 "use client";
 
-// A ladder down the side of the page, with the subject's mascot climbing it to
-// follow your mouse.
+// A ladder running the FULL HEIGHT OF THE PAGE, with the subject's mascot
+// climbing it rung by rung to follow you.
+//
+// It tracks both your mouse AND your scrolling, because those are the same
+// thing once you think in page coordinates rather than screen coordinates:
+//
+//     position on the page = mouse position on screen + how far you've scrolled
+//
+// So we remember where the mouse last was on screen, and recompute the page
+// position whenever EITHER the mouse moves or the page scrolls. Scroll down
+// without touching the mouse and the mascot still climbs, because the same
+// point on screen is now further down the page.
 //
 // ─────────────────────────────────────────────────────────────────────────────
-// THE PERFORMANCE LESSON IN THIS FILE
+// WHY IT MOVES ONE RUNG AT A TIME
 //
-// The obvious way to write this is to store the mouse position in state:
+// Gliding smoothly to the mouse looks like floating, not climbing. Real
+// climbing is discrete: you reach the next rung, then the next. So the mascot
+// snaps to rung positions and takes a fixed time per rung, which also caps how
+// fast it can possibly travel — that's what makes it feel deliberate rather
+// than frantic. Each step leans the opposite way to the last, as though
+// reaching with alternate hands, and lifts slightly in the middle of the step.
 //
-//     const [y, setY] = useState(0);
-//     onMouseMove = (e) => setY(e.clientY);
-//
-// It works, and it is a genuinely bad idea. A mouse fires movement events
-// extremely often — easily 100+ times a second. Every setState re-runs the
-// component and makes React reconcile the tree, so you'd be doing a hundred
-// renders a second to move one picture. On a cheap laptop the page would
-// stutter, and it would flatten a phone battery.
-//
-// Instead:
-//   - the mouse position is kept in a plain variable, not state, so nothing
-//     re-renders when it changes;
-//   - the mascot is moved by writing to `element.style.transform` directly;
-//   - the writing happens inside requestAnimationFrame, which runs once per
-//     screen refresh (about 60 times a second) no matter how many events fired.
-//
-// So React renders this component ONCE and never again. The rule worth
-// remembering: state is for things the user should see change; a value you're
-// animating 60 times a second is not that.
+// PERFORMANCE NOTE: the mouse position is deliberately NOT React state. A mouse
+// fires 100+ events a second; calling setState on each would re-render this
+// component 100 times a second to move one picture. Instead the values live in
+// plain variables and the mascot is moved by writing `style.transform` inside
+// requestAnimationFrame, which runs once per screen refresh. React renders this
+// component once and never again.
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useEffect, useRef } from "react";
 import { MASCOTS } from "./Mascots";
+
+// Distance between rungs, in pixels. The mascot can only ever stop on one of
+// these, and the same number draws the rungs in CSS below — one source of
+// truth, so the mascot can never end up standing between two rungs.
+const RUNG_SPACING = 46;
+
+// How long a single rung takes. Bigger = slower, more deliberate.
+const MS_PER_RUNG = 340;
+
+// Gap between the top of the ladder and the top of the page.
+const LADDER_INSET = 48;
 
 export function LadderCompanion({
   mascot,
@@ -40,73 +53,119 @@ export function LadderCompanion({
   colour: string;
 }) {
   const Mascot = MASCOTS[mascot];
+  const railsRef = useRef<HTMLDivElement>(null);
   const climberRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const rails = railsRef.current;
     const climber = climberRef.current;
-    if (!climber) return;
+    if (!rails || !climber) return;
 
-    // Some people get motion sickness from movement on screen, and their
-    // operating system already knows that. Park the mascot and do nothing else.
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    const restingPoint = () => window.innerHeight / 2;
+    const yForRung = (rung: number) => LADDER_INSET + rung * RUNG_SPACING;
 
     if (reduceMotion) {
-      climber.style.transform = `translate(-50%, ${restingPoint()}px)`;
+      climber.style.transform = `translate(-50%, ${yForRung(1)}px)`;
       return;
     }
 
-    let target = restingPoint(); // where the mouse is
-    let current = target; // where the mascot actually is
-    let frame = 0;
+    // The highest rung that still leaves the mascot fully on the ladder.
+    const lastRung = () =>
+      Math.max(
+        0,
+        Math.floor(
+          (rails.offsetHeight - LADDER_INSET * 2 - 90) / RUNG_SPACING,
+        ),
+      );
+
+    let lastPointerY = window.innerHeight / 2; // where the mouse is ON SCREEN
+    let targetRung = 1;
+    let currentRung = 1;
+
+    // Step animation state.
+    let stepStartedAt = 0;
+    let stepping = false;
+    let stepFrom = currentRung;
+    let stepTo = currentRung;
+    let handedness = 1; // flips each step, so it alternates hands
+
+    const recalculateTarget = () => {
+      // Screen position + scroll = position on the page. This one line is what
+      // makes the mascot respond to scrolling and to the mouse.
+      const pageY = lastPointerY + window.scrollY;
+
+      const raw = (pageY - LADDER_INSET) / RUNG_SPACING;
+      targetRung = Math.min(Math.max(Math.round(raw), 0), lastRung());
+    };
+
+    const handlePointer = (event: MouseEvent) => {
+      lastPointerY = event.clientY;
+      recalculateTarget();
+    };
 
     // `passive: true` promises we won't call preventDefault, which lets the
-    // browser skip a check and keeps scrolling smooth.
-    const handleMove = (event: MouseEvent) => {
-      target = event.clientY;
-    };
-    window.addEventListener("mousemove", handleMove, { passive: true });
+    // browser scroll without waiting to find out.
+    window.addEventListener("mousemove", handlePointer, { passive: true });
+    window.addEventListener("scroll", recalculateTarget, { passive: true });
+    window.addEventListener("resize", recalculateTarget);
+    recalculateTarget();
+    currentRung = targetRung;
 
-    const tick = () => {
-      const previous = current;
+    const tick = (now: number) => {
+      if (!stepping && currentRung !== targetRung) {
+        // Begin a new step — exactly ONE rung towards the target, never more.
+        stepping = true;
+        stepStartedAt = now;
+        stepFrom = currentRung;
+        stepTo = currentRung + (targetRung > currentRung ? 1 : -1);
+        handedness *= -1;
+      }
 
-      // EASING. Rather than jumping straight to the mouse, move a fraction of
-      // the remaining distance each frame. That produces a smooth chase that
-      // slows as it arrives — and it's one line. A smaller number is lazier.
-      current += (target - current) * 0.07;
+      let y = yForRung(currentRung);
+      let lean = 0;
+      let sway = 0;
 
-      const speed = current - previous;
+      if (stepping) {
+        const progress = Math.min(1, (now - stepStartedAt) / MS_PER_RUNG);
 
-      // Keep the mascot on the ladder rather than sliding off either end.
-      const top = 56;
-      const bottom = window.innerHeight - 130;
-      const y = Math.min(Math.max(current, top), bottom);
+        // Ease in and out, so each step starts and finishes gently instead of
+        // moving at a constant machine-like speed.
+        const eased =
+          progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
-      // Lean into the direction of travel, capped so it never looks silly.
-      const lean = Math.max(-7, Math.min(7, speed * 0.9));
+        y = yForRung(stepFrom) + (yForRung(stepTo) - yForRung(stepFrom)) * eased;
 
-      // Sway side to side as it moves, tied to POSITION rather than time, so
-      // the sway stops the instant it stops climbing. This is the bit that
-      // makes it read as climbing rather than gliding.
-      const effort = Math.min(1, Math.abs(speed) / 2.5);
-      const sway = Math.sin(current / 13) * effort * 4;
+        // A single arc that rises and falls over the step: 0 → 1 → 0.
+        const arc = Math.sin(progress * Math.PI);
+        lean = arc * 7 * handedness;
+        sway = arc * 5 * handedness;
+
+        if (progress >= 1) {
+          stepping = false;
+          currentRung = stepTo;
+          y = yForRung(currentRung);
+        }
+      }
 
       climber.style.transform = `translate(calc(-50% + ${sway}px), ${y}px) rotate(${lean}deg)`;
-
       frame = requestAnimationFrame(tick);
     };
 
-    frame = requestAnimationFrame(tick);
+    let frame = requestAnimationFrame(tick);
 
-    // CLEANUP — the most commonly forgotten part of useEffect. Without this,
-    // every visit to a topic page would leave another listener and another
-    // animation loop running forever. That's a memory leak, and it's exactly
-    // how pages get slower the longer you use them.
+    // CLEANUP — the most commonly forgotten part of useEffect. Without it,
+    // every visit to a topic page would leave another set of listeners and
+    // another animation loop running forever. That's a memory leak, and it's
+    // exactly how pages get slower the longer you use them.
     return () => {
-      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mousemove", handlePointer);
+      window.removeEventListener("scroll", recalculateTarget);
+      window.removeEventListener("resize", recalculateTarget);
       cancelAnimationFrame(frame);
     };
   }, []);
@@ -114,37 +173,51 @@ export function LadderCompanion({
   return (
     <div
       aria-hidden="true"
-      // pointer-events-none so it can never intercept a click meant for the
-      // page. Hidden below xl because there's no room beside the content, and
-      // no mouse to follow on a touchscreen anyway.
-      className="pointer-events-none fixed left-4 top-0 z-10 hidden h-screen w-24 xl:block"
+      // `absolute` rather than `fixed`, so the ladder is as tall as the whole
+      // page and scrolls with it. `fixed` would pin it to the screen, which is
+      // what it did before.
+      className="pointer-events-none absolute left-4 top-0 z-10 hidden h-full w-24 xl:block"
     >
-      {/* The two rails */}
-      <div
-        className="absolute inset-y-10 left-4 w-[5px] rounded-full opacity-25"
-        style={{ backgroundColor: colour }}
-      />
-      <div
-        className="absolute inset-y-10 right-4 w-[5px] rounded-full opacity-25"
-        style={{ backgroundColor: colour }}
-      />
+      <div ref={railsRef} className="absolute inset-0">
+        {/* The two rails */}
+        <div
+          className="absolute left-4 w-[5px] rounded-full opacity-25"
+          style={{
+            backgroundColor: colour,
+            top: LADDER_INSET,
+            bottom: LADDER_INSET,
+          }}
+        />
+        <div
+          className="absolute right-4 w-[5px] rounded-full opacity-25"
+          style={{
+            backgroundColor: colour,
+            top: LADDER_INSET,
+            bottom: LADDER_INSET,
+          }}
+        />
 
-      {/* The rungs. A repeating gradient rather than dozens of divs: one CSS
-          rule draws a rung every 44 pixels, however tall the screen is. */}
-      <div
-        className="absolute inset-y-10 left-4 right-4 opacity-25"
-        style={{
-          backgroundImage: `repeating-linear-gradient(to bottom, ${colour} 0 5px, transparent 5px 44px)`,
-        }}
-      />
+        {/* The rungs. A repeating gradient rather than hundreds of divs: one
+            CSS rule draws a rung every RUNG_SPACING pixels, however long the
+            page is. The spacing comes from the same constant the climbing maths
+            uses, so the mascot always lands exactly on a rung. */}
+        <div
+          className="absolute left-4 right-4 opacity-25"
+          style={{
+            top: LADDER_INSET,
+            bottom: LADDER_INSET,
+            backgroundImage: `repeating-linear-gradient(to bottom, ${colour} 0 5px, transparent 5px ${RUNG_SPACING}px)`,
+          }}
+        />
 
-      {/* The climber */}
-      <div
-        ref={climberRef}
-        className="absolute left-1/2 top-0 w-[74px] will-change-transform"
-        style={{ transform: "translate(-50%, 50vh)" }}
-      >
-        <Mascot className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]" />
+        {/* The climber */}
+        <div
+          ref={climberRef}
+          className="absolute left-1/2 top-0 w-[74px] will-change-transform"
+          style={{ transform: "translate(-50%, 48px)" }}
+        >
+          <Mascot className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]" />
+        </div>
       </div>
     </div>
   );
