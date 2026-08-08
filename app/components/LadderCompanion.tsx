@@ -45,6 +45,7 @@ const MS_PER_RUNG = 340;
 // Gap between the top of the ladder and the top of the page.
 const LADDER_INSET = 48;
 
+
 export function LadderCompanion({
   mascot,
   colour,
