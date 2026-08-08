@@ -1,26 +1,32 @@
-// The cast — smooth vector art, drawn to be as cute as possible.
+// The cast — smooth vector art. Appealing, but not babyish.
 //
 // ─────────────────────────────────────────────────────────────────────────────
-// WHY THESE LOOK CUTER THAN THE LAST VERSION
+// THE CUTENESS DIAL
 //
-// "Cute" isn't a vague feeling — character designers use a specific set of
-// rules, and they all come from the same place: babies. Our brains are wired to
-// find infant proportions endearing, so exaggerating them makes almost anything
-// adorable. The technical name is neoteny. Every rule below is a version of it:
+// Cuteness in character design isn't on or off, it's a slider, and it's mostly
+// driven by how close the proportions are to a baby's (the technical term is
+// neoteny). Turn it all the way up and you get a toy for a three-year-old.
+// Turn it off and you get a corporate logo. The interesting range is between.
 //
-//   1. HUGE HEAD. A baby's head is about a quarter of its height; an adult's is
-//      an eighth. These are roughly HALF. This is the single biggest lever —
-//      more than colour, more than expression.
-//   2. BIG EYES, SET LOW AND WIDE. Babies' eyes sit below the midline of the
-//      head and are large relative to the face. Eyes placed high read as adult.
-//   3. STUBBY LIMBS. Short, thick and rounded, tucked close to the body.
-//   4. NO SHARP CORNERS ANYWHERE. Every silhouette is circles and rounded
-//      rectangles. A single sharp angle reads as threatening.
-//   5. SIMPLE FACES. Two eyes and a small mouth. Detail reads as maturity.
-//   6. BLUSH. Two soft patches on the cheeks. Costs one shape, does a lot.
+//   HEAD SIZE — the strongest signal by far.
+//     ~55%+ of total height  →  reads as a toddler's toy
+//     ~40%                   →  reads as a designed mascot   ← we are here
+//     ~15%                   →  reads as a realistic figure
 //
-// These are OUR characters, not copies of anyone else's. The rules above are
-// design principles, which nobody owns — the specific drawings are ours.
+//   EYES — big and perfectly round reads young; slightly smaller and a touch
+//     oval reads characterful. One highlight rather than two.
+//
+//   BLUSH — the single most childish signal in the whole toolkit. Removed.
+//
+//   SHADING — flat colour reads as a children's sticker. A single darker tone
+//     giving each form a bit of roundness reads as deliberately designed. This
+//     is the main thing that separates "cartoon" from "illustration".
+//
+// If these still aren't right, the fix is to name the dial: "bigger head",
+// "smaller eyes", "less shading". Every one of those is a number in this file.
+//
+// These are OUR characters. The principles above are design theory, which
+// nobody owns; the specific drawings are ours.
 // ─────────────────────────────────────────────────────────────────────────────
 
 type MascotProps = React.SVGProps<SVGSVGElement>;
@@ -37,61 +43,71 @@ export const MASCOTS = {
 export function Pixel(props: MascotProps) {
   return (
     <svg
-      viewBox="0 0 120 132"
+      viewBox="0 0 120 140"
       role="img"
-      aria-label="Pixel, the Computer Science mascot: a small round robot with a screen for a face"
+      aria-label="Pixel, the Computer Science mascot: a small robot with a screen for a face"
       {...props}
     >
-      {/* Aerials — short and topped with soft balls, never spikes */}
+      {/* A single aerial, off to one side. Symmetrical pairs read as cartoon
+          antennae; one asymmetric detail reads as design. */}
       <path
-        d="M45 22 L38 10 M75 22 L82 10"
+        d="M72 18 Q84 10 86 2"
         stroke="#1e3a8a"
-        strokeWidth={5}
+        strokeWidth={4}
         strokeLinecap="round"
         fill="none"
       />
-      <circle cx="37" cy="8" r="6" fill="#fbbf24" />
-      <circle cx="83" cy="8" r="6" fill="#fbbf24" />
+      <circle cx="87" cy="2" r="4.5" fill="#fbbf24" />
 
-      {/* Feet first, so the body overlaps them */}
-      <ellipse cx="49" cy="123" rx="13" ry="8" fill="#1e3a8a" />
-      <ellipse cx="71" cy="123" rx="13" ry="8" fill="#1e3a8a" />
-      <rect x="45" y="104" width="11" height="14" rx="5.5" fill="#94a3b8" />
-      <rect x="64" y="104" width="11" height="14" rx="5.5" fill="#94a3b8" />
+      {/* Feet and legs, drawn first so the body sits over them */}
+      <rect x="45" y="112" width="11" height="16" rx="5.5" fill="#8b98ac" />
+      <rect x="64" y="112" width="11" height="16" rx="5.5" fill="#8b98ac" />
+      <ellipse cx="49" cy="130" rx="13" ry="7" fill="#1e3a8a" />
+      <ellipse cx="71" cy="130" rx="13" ry="7" fill="#1e3a8a" />
 
-      {/* Stubby arms — little rounded paddles, not limbs */}
-      <ellipse cx="24" cy="94" rx="11" ry="8.5" fill="#e8edf7" />
-      <ellipse cx="96" cy="94" rx="11" ry="8.5" fill="#e8edf7" />
+      {/* Arms — slimmer and slightly angled, rather than round paddles */}
+      <rect x="17" y="82" width="12" height="30" rx="6" fill="#dbe2ee" />
+      <rect x="91" y="82" width="12" height="30" rx="6" fill="#dbe2ee" />
+      <rect x="17" y="98" width="12" height="14" rx="6" fill="#b9c4d4" />
+      <rect x="91" y="98" width="12" height="14" rx="6" fill="#b9c4d4" />
 
-      {/* Small body. Deliberately dwarfed by the head. */}
-      <rect x="38" y="84" width="44" height="24" rx="12" fill="#cbd5e1" />
-      <circle cx="60" cy="96" r="5.5" fill="#7dd3fc" />
+      {/* Body — taller than before, so the head no longer dominates */}
+      <rect x="34" y="76" width="52" height="40" rx="16" fill="#dbe2ee" />
+      {/* Shading: one darker form along the bottom gives the body roundness. */}
+      <path
+        d="M34 100 Q60 112 86 100 L86 100 Q86 116 70 116 L50 116 Q34 116 34 100 Z"
+        fill="#000000"
+        opacity={0.07}
+      />
+      <rect x="48" y="86" width="24" height="16" rx="8" fill="#b9c4d4" />
+      <circle cx="60" cy="94" r="4" fill="#38bdf8" />
 
-      {/* The head: enormous, and rounded almost to a pebble */}
-      <rect x="11" y="14" width="98" height="74" rx="32" fill="#eef2fb" />
+      {/* Head — about 40% of total height. Large, but no longer half the body. */}
+      <rect x="18" y="18" width="84" height="58" rx="22" fill="#eef2fb" />
+      {/* Head shading */}
+      <path
+        d="M18 58 Q60 70 102 58 L102 54 Q102 76 80 76 L40 76 Q18 76 18 54 Z"
+        fill="#000000"
+        opacity={0.06}
+      />
 
       {/* Screen */}
-      <rect x="23" y="24" width="74" height="54" rx="24" fill="#12306b" />
+      <rect x="27" y="26" width="66" height="42" rx="16" fill="#14306a" />
+      {/* A soft sheen across the glass, which reads as a real surface */}
+      <path d="M27 44 L93 26 L93 34 L27 52 Z" fill="#ffffff" opacity={0.06} />
 
-      {/* Eyes — big, low on the face, and wide apart */}
-      <ellipse cx="47" cy="52" rx="10" ry="12" fill="#7dd3fc" />
-      <ellipse cx="73" cy="52" rx="10" ry="12" fill="#7dd3fc" />
-      {/* Highlights. Two per eye — a big one and a small one — is the
-          shorthand every cartoon uses to make eyes look wet and alive. */}
-      <circle cx="43.5" cy="47" r="3.6" fill="#ffffff" />
-      <circle cx="69.5" cy="47" r="3.6" fill="#ffffff" />
-      <circle cx="50" cy="57" r="1.8" fill="#ffffff" opacity={0.7} />
-      <circle cx="76" cy="57" r="1.8" fill="#ffffff" opacity={0.7} />
+      {/* Eyes — slightly oval and a touch smaller than before. One highlight
+          each rather than two: two reads sparkly and young. */}
+      <ellipse cx="48" cy="46" rx="7.5" ry="9" fill="#38bdf8" />
+      <ellipse cx="72" cy="46" rx="7.5" ry="9" fill="#38bdf8" />
+      <circle cx="45.5" cy="42" r="2.6" fill="#ffffff" />
+      <circle cx="69.5" cy="42" r="2.6" fill="#ffffff" />
 
-      {/* Blush */}
-      <ellipse cx="32" cy="63" rx="7" ry="4" fill="#f472b6" opacity={0.45} />
-      <ellipse cx="88" cy="63" rx="7" ry="4" fill="#f472b6" opacity={0.45} />
-
-      {/* A very small smile. Small mouths read as young. */}
+      {/* A restrained, slightly asymmetric smile */}
       <path
-        d="M54 66 Q60 71 66 66"
-        stroke="#7dd3fc"
-        strokeWidth={3.5}
+        d="M54 58 Q60 62 67 57"
+        stroke="#38bdf8"
+        strokeWidth={3}
         strokeLinecap="round"
         fill="none"
       />
@@ -103,57 +119,62 @@ export function Pixel(props: MascotProps) {
 export function Hoot(props: MascotProps) {
   return (
     <svg
-      viewBox="0 0 120 132"
+      viewBox="0 0 120 140"
       role="img"
-      aria-label="Hoot, the Maths mascot: a round owl wearing big glasses"
+      aria-label="Hoot, the Maths mascot: an owl wearing round glasses"
       {...props}
     >
-      {/* Ear tufts — rounded lumps rather than points */}
-      <path d="M28 34 Q24 14 44 24 Z" fill="#5b2408" />
-      <path d="M92 34 Q96 14 76 24 Z" fill="#5b2408" />
+      {/* Ear tufts — sharper and more angled, which reads as a real owl rather
+          than a soft toy. Still no actual points. */}
+      <path d="M30 34 Q23 12 46 26 Z" fill="#5b2408" />
+      <path d="M90 34 Q97 12 74 26 Z" fill="#5b2408" />
 
       {/* Talons */}
       <path
-        d="M46 116 v9 M54 116 v9 M50 116 v11 M66 116 v9 M74 116 v9 M70 116 v11"
-        stroke="#f59e0b"
-        strokeWidth={5}
+        d="M47 122 v10 M55 122 v10 M51 122 v12 M65 122 v10 M73 122 v10 M69 122 v12"
+        stroke="#e08c0c"
+        strokeWidth={4.5}
         strokeLinecap="round"
       />
 
-      {/* One big round body — head and body are the same shape, which is what
-          makes round animals read as babyish. */}
-      <ellipse cx="60" cy="68" rx="47" ry="50" fill="#8a4413" />
+      {/* Body — an egg rather than a ball. Taller than it is wide, which is
+          what stops it reading as a plush toy. */}
+      <ellipse cx="60" cy="72" rx="42" ry="52" fill="#8a4413" />
+      {/* Shading down one side gives the body form. */}
+      <path
+        d="M60 20 A42 52 0 0 1 60 124 A30 52 0 0 0 60 20 Z"
+        fill="#000000"
+        opacity={0.1}
+      />
 
-      {/* Tiny wings tucked in close */}
-      <ellipse cx="17" cy="76" rx="11" ry="23" fill="#5b2408" />
-      <ellipse cx="103" cy="76" rx="11" ry="23" fill="#5b2408" />
+      {/* Folded wings, tucked tight */}
+      <ellipse cx="21" cy="80" rx="10" ry="26" fill="#5b2408" />
+      <ellipse cx="99" cy="80" rx="10" ry="26" fill="#5b2408" />
 
-      {/* Pale belly */}
-      <ellipse cx="60" cy="82" rx="33" ry="34" fill="#fde9c9" />
+      {/* Pale chest, narrower than before */}
+      <ellipse cx="60" cy="86" rx="27" ry="32" fill="#f7ddb6" />
 
-      {/* Glasses */}
-      <g stroke="#ffe08a" strokeWidth={5} fill="none">
-        <circle cx="40" cy="58" r="21" />
-        <circle cx="80" cy="58" r="21" />
-        <path d="M58 58 H62" strokeLinecap="round" />
+      {/* A brow line above the glasses — a couple of pixels of shape that make
+          the difference between "thoughtful" and "startled". */}
+      <path d="M26 48 Q60 34 94 48 Q60 42 26 48 Z" fill="#5b2408" />
+
+      {/* Glasses — thinner frames read more grown-up */}
+      <g stroke="#f0c869" strokeWidth={4} fill="none">
+        <circle cx="42" cy="60" r="17" />
+        <circle cx="78" cy="60" r="17" />
+        <path d="M59 60 H61" strokeLinecap="round" />
       </g>
 
-      {/* Big eyes, set low */}
-      <circle cx="40" cy="58" r="16" fill="#fffdf7" />
-      <circle cx="80" cy="58" r="16" fill="#fffdf7" />
-      <circle cx="42" cy="61" r="8.5" fill="#3b1a06" />
-      <circle cx="78" cy="61" r="8.5" fill="#3b1a06" />
-      <circle cx="38.5" cy="56" r="3.6" fill="#ffffff" />
-      <circle cx="74.5" cy="56" r="3.6" fill="#ffffff" />
-      <circle cx="45" cy="65" r="1.8" fill="#ffffff" opacity={0.7} />
-      <circle cx="81" cy="65" r="1.8" fill="#ffffff" opacity={0.7} />
+      {/* Eyes */}
+      <circle cx="42" cy="60" r="12.5" fill="#fffdf7" />
+      <circle cx="78" cy="60" r="12.5" fill="#fffdf7" />
+      <circle cx="43.5" cy="62" r="6.5" fill="#3b1a06" />
+      <circle cx="76.5" cy="62" r="6.5" fill="#3b1a06" />
+      <circle cx="40.5" cy="58" r="2.6" fill="#ffffff" />
+      <circle cx="73.5" cy="58" r="2.6" fill="#ffffff" />
 
-      {/* Blush */}
-      <ellipse cx="24" cy="76" rx="8" ry="5" fill="#f472b6" opacity={0.4} />
-      <ellipse cx="96" cy="76" rx="8" ry="5" fill="#f472b6" opacity={0.4} />
-
-      {/* A small soft beak */}
-      <path d="M60 76 Q68 84 60 92 Q52 84 60 76 Z" fill="#f59e0b" />
+      {/* A neater, more angular beak */}
+      <path d="M60 74 L67 84 L60 90 L53 84 Z" fill="#e08c0c" />
     </svg>
   );
 }
@@ -163,81 +184,93 @@ export function Hoot(props: MascotProps) {
 export function Quill(props: MascotProps) {
   return (
     <svg
-      viewBox="0 0 120 132"
+      viewBox="0 0 120 140"
       role="img"
       aria-label="Quill, the English mascot: a small Elizabethan scholar in a ruff collar"
       {...props}
     >
-      {/* Shoes and legs */}
-      <ellipse cx="49" cy="124" rx="12" ry="7" fill="#1c0c33" />
-      <ellipse cx="71" cy="124" rx="12" ry="7" fill="#1c0c33" />
-      <rect x="45" y="110" width="10" height="11" rx="5" fill="#ede0fb" />
-      <rect x="65" y="110" width="10" height="11" rx="5" fill="#ede0fb" />
+      {/* Shoes and stockings */}
+      <rect x="45" y="114" width="10" height="13" rx="5" fill="#e4d5f5" />
+      <rect x="65" y="114" width="10" height="13" rx="5" fill="#e4d5f5" />
+      <ellipse cx="48" cy="130" rx="12" ry="6.5" fill="#1c0c33" />
+      <ellipse cx="72" cy="130" rx="12" ry="6.5" fill="#1c0c33" />
 
-      {/* Puffed breeches — round, which is both period-accurate and cute */}
-      <ellipse cx="60" cy="106" rx="26" ry="14" fill="#4c2a7a" />
+      {/* Puffed breeches */}
+      <ellipse cx="60" cy="108" rx="25" ry="14" fill="#4c2a7a" />
+      <path
+        d="M35 108 Q60 120 85 108 Q85 122 60 122 Q35 122 35 108 Z"
+        fill="#000000"
+        opacity={0.12}
+      />
 
-      {/* Small doublet */}
-      <rect x="38" y="86" width="44" height="22" rx="11" fill="#3b1d63" />
-      <circle cx="60" cy="94" r="2.6" fill="#ffe08a" />
-      <circle cx="60" cy="102" r="2.6" fill="#ffe08a" />
+      {/* Doublet — longer, so the body carries more of the figure */}
+      <path d="M38 74 Q60 68 82 74 L84 106 Q60 114 36 106 Z" fill="#3b1d63" />
+      <path
+        d="M60 70 L60 112 Q78 110 84 106 L82 74 Q72 70 60 70 Z"
+        fill="#000000"
+        opacity={0.12}
+      />
+      <circle cx="60" cy="82" r="2.4" fill="#f0c869" />
+      <circle cx="60" cy="92" r="2.4" fill="#f0c869" />
+      <circle cx="60" cy="102" r="2.4" fill="#f0c869" />
 
-      {/* Stubby sleeves */}
-      <ellipse cx="27" cy="92" rx="10" ry="8" fill="#2a1049" />
-      <ellipse cx="93" cy="92" rx="10" ry="8" fill="#2a1049" />
+      {/* Sleeves */}
+      <ellipse cx="27" cy="86" rx="10" ry="16" fill="#2a1049" />
+      <ellipse cx="93" cy="86" rx="10" ry="16" fill="#2a1049" />
 
       {/* Ruff collar — a ring of overlapping circles, which is genuinely how
           the real garment was built: starched fabric folded into a cartwheel. */}
       <g fill="#ffffff">
-        {[26, 34, 42, 50, 58, 66, 74, 82, 90].map((cx, i) => (
-          <circle key={cx} cx={cx} cy={i % 2 === 0 ? 82 : 85} r="10" />
+        {[30, 37, 44, 51, 58, 65, 72, 79, 86].map((cx, i) => (
+          <circle key={cx} cx={cx} cy={i % 2 === 0 ? 70 : 73} r="8.5" />
         ))}
       </g>
-      <ellipse cx="58" cy="84" rx="30" ry="7" fill="#efe9f8" />
+      <ellipse cx="58" cy="72" rx="26" ry="6" fill="#e6dff2" />
 
-      {/* Little rounded beard */}
-      <path d="M40 56 Q42 82 60 84 Q78 82 80 56 Z" fill="#8a6240" />
+      {/* Neat pointed beard */}
+      <path d="M46 44 Q48 68 60 72 Q72 68 74 44 Z" fill="#8a6240" />
 
-      {/* Big round head */}
-      <circle cx="60" cy="50" r="35" fill="#f2cdae" />
-
-      {/* Hair, just at the sides */}
-      <path d="M25 50 Q24 26 42 20 L42 44 Q34 46 30 58 Z" fill="#6b4423" />
-      <path d="M95 50 Q96 26 78 20 L78 44 Q86 46 90 58 Z" fill="#6b4423" />
-
-      {/* Moustache over the beard join */}
+      {/* Head — about 40% of the figure */}
+      <circle cx="60" cy="42" r="28" fill="#f2cdae" />
       <path
-        d="M50 64 Q60 70 70 64"
+        d="M60 14 A28 28 0 0 1 60 70 A20 28 0 0 0 60 14 Z"
+        fill="#000000"
+        opacity={0.07}
+      />
+
+      {/* Hair at the sides */}
+      <path d="M32 44 Q31 24 46 18 L46 38 Q38 40 35 50 Z" fill="#6b4423" />
+      <path d="M88 44 Q89 24 74 18 L74 38 Q82 40 85 50 Z" fill="#6b4423" />
+
+      {/* Moustache */}
+      <path
+        d="M52 54 Q60 59 68 54"
         stroke="#8a6240"
-        strokeWidth={5}
+        strokeWidth={4}
         strokeLinecap="round"
         fill="none"
       />
 
-      {/* Glasses */}
-      <g stroke="#ffe08a" strokeWidth={3.5} fill="none">
-        <circle cx="47" cy="50" r="12" />
-        <circle cx="73" cy="50" r="12" />
-        <path d="M59 50 H61" strokeLinecap="round" />
+      {/* Small round spectacles */}
+      <g stroke="#f0c869" strokeWidth={3} fill="none">
+        <circle cx="50" cy="42" r="9.5" />
+        <circle cx="70" cy="42" r="9.5" />
+        <path d="M59.5 42 H60.5" strokeLinecap="round" />
       </g>
 
-      {/* Big eyes, set low */}
-      <circle cx="47" cy="50" r="8" fill="#ffffff" />
-      <circle cx="73" cy="50" r="8" fill="#ffffff" />
-      <circle cx="48" cy="52" r="4.6" fill="#241040" />
-      <circle cx="74" cy="52" r="4.6" fill="#241040" />
-      <circle cx="45.5" cy="48" r="2" fill="#ffffff" />
-      <circle cx="71.5" cy="48" r="2" fill="#ffffff" />
+      {/* Eyes */}
+      <circle cx="50" cy="42" r="6" fill="#ffffff" />
+      <circle cx="70" cy="42" r="6" fill="#ffffff" />
+      <circle cx="50.8" cy="43.5" r="3.4" fill="#241040" />
+      <circle cx="70.8" cy="43.5" r="3.4" fill="#241040" />
+      <circle cx="48.6" cy="40.5" r="1.5" fill="#ffffff" />
+      <circle cx="68.6" cy="40.5" r="1.5" fill="#ffffff" />
 
-      {/* Blush */}
-      <ellipse cx="31" cy="58" rx="7" ry="4.5" fill="#f472b6" opacity={0.45} />
-      <ellipse cx="89" cy="58" rx="7" ry="4.5" fill="#f472b6" opacity={0.45} />
-
-      {/* Hat: small crown, gold band, wide soft brim, and a feather */}
-      <rect x="42" y="2" width="36" height="18" rx="8" fill="#241040" />
-      <rect x="42" y="13" width="36" height="5" fill="#ffe08a" />
-      <ellipse cx="60" cy="20" rx="32" ry="7" fill="#241040" />
-      <path d="M76 12 Q92 2 95 13 Q88 19 76 15 Z" fill="#c084fc" />
+      {/* Hat: crown, gold band, wide brim, feather */}
+      <path d="M45 4 Q60 0 75 4 L77 18 L43 18 Z" fill="#241040" />
+      <rect x="43" y="12" width="34" height="4.5" fill="#f0c869" />
+      <ellipse cx="60" cy="18" rx="30" ry="6" fill="#241040" />
+      <path d="M74 10 Q90 0 93 11 Q86 17 74 13 Z" fill="#a78bfa" />
     </svg>
   );
 }
