@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f2f4fa;
+  --foreground: #16182b;
 }
 
 @theme inline {
@@ -14,13 +14,92 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0d1a;
+    --foreground: #e9eaf2;
   }
 }
 
 body {
-  background: var(--background);
+  /* Instead of a flat white page, three very faint pools of colour sit behind
+     everything — blue top-left, orange top-right, violet along the bottom.
+     They're the same colours as the three subject cards, at roughly a tenth of
+     the strength, so the page feels related to the cards rather than being a
+     blank sheet they're stuck onto.
+
+     `background-attachment: fixed` keeps the wash still while the content
+     scrolls over it, which reads as depth. */
+  background-color: var(--background);
+  background-image:
+    radial-gradient(55rem 40rem at 8% -12%, rgba(37, 99, 235, 0.16), transparent 60%),
+    radial-gradient(45rem 35rem at 96% -6%, rgba(249, 115, 22, 0.14), transparent 60%),
+    radial-gradient(50rem 40rem at 50% 112%, rgba(124, 58, 237, 0.16), transparent 60%);
+  background-attachment: fixed;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* --- The walk cycle -------------------------------------------------------
+   The character paces from one bottom corner of its card to the other, turns
+   round, and walks back. Two separate animations do this, on two nested
+   elements, because both would otherwise be fighting over `transform`:
+
+   1. `walk` moves the outer element along and handles the turn.
+   2. `bob`  bounces the inner element up and down as it goes.
+
+   The turn is the fun bit: between 45% and 50% the sprite scales from
+   scaleX(1) to scaleX(-1), so it squashes flat and reopens facing the other
+   way — which the eye happily reads as "he spun round". */
+@keyframes walk {
+  0% {
+    left: 0.75rem;
+    transform: scaleX(1);
+  }
+  45% {
+    left: calc(100% - 7.75rem);
+    transform: scaleX(1);
+  }
+  50% {
+    left: calc(100% - 7.75rem);
+    transform: scaleX(-1);
+  }
+  95% {
+    left: 0.75rem;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 0.75rem;
+    transform: scaleX(1);
+  }
+}
+
+.animate-walk {
+  animation: walk 12s linear infinite;
+}
+
+/* `steps(2, end)` is what makes this feel retro. A normal animation glides
+   smoothly between positions; `steps()` snaps between a fixed number of
+   frames, exactly like a two-frame sprite animation on an old console. */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-bob {
+  animation: bob 0.6s steps(2, end) infinite;
+}
+
+/* Some people get motion sickness from movement on screen, and their operating
+   system already knows that about them. Honouring this setting is a small
+   thing that separates a professional site from a hobby one. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-walk,
+  .animate-bob {
+    animation: none;
+    left: 0.75rem;
+  }
 }

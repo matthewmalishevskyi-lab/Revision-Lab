@@ -1,69 +1,112 @@
-import Image from "next/image";
+// The homepage of Revision Hub.
+// `app/page.tsx` IS the route for "/" in the App Router.
 
-export default function Home() {
+import Link from "next/link";
+import { MASCOTS } from "./components/Mascots";
+import { SiteHeader } from "./components/SiteHeader";
+import { getCurrentUser } from "./lib/actions";
+import { SUBJECTS } from "./lib/subjects";
+
+// Different walking speeds so the three characters never march in step — three
+// things moving in perfect sync looks mechanical, slightly off pace looks alive.
+const WALK_DURATIONS = ["13s", "17s", "10s"];
+
+// `async` because it waits on the session cookie to see who's logged in.
+// Server Components can do that directly — no loading spinner, no fetching from
+// the browser. The page arrives already knowing who you are.
+export default async function Home() {
+  const user = await getCurrentUser();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="mx-auto w-full max-w-6xl px-6 py-10">
+      <SiteHeader />
+
+      {/* ---------- Welcome box ---------- */}
+      <section className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/60 bg-white/55 px-8 py-10 text-center shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+        <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
+          {user ? `Welcome back, ${user.name}` : "Welcome to Revision Hub"}
+        </h1>
+        <p className="mt-5 text-lg opacity-70 sm:text-2xl">
+          {/* Once you're logged in the heading is "Welcome back, <name>", which
+              no longer says the site's name anywhere — so the tagline picks it
+              up. Logged out, the heading already reads "Welcome to Revision
+              Hub", and repeating it here would be clumsy. */}
+          {user
+            ? "Revision Hub: Everything you would need for GCSE revision"
+            : "Everything you would need for GCSE revision"}
+        </p>
+      </section>
+
+      {/* ---------- Subject cards ---------- */}
+      <section className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-3">
+        {SUBJECTS.map((subject, index) => {
+          const Mascot = MASCOTS[subject.mascot];
+
+          return (
+            // The whole card is now a Link, so clicking anywhere on it opens
+            // the subject. Note it's an <a> under the hood, which means
+            // keyboard users can tab to it and the browser can prefetch it —
+            // things a clickable <div> with an onClick would silently lose.
+            <Link
+              key={subject.slug}
+              href={`/subjects/${subject.slug}`}
+              // `group` lets the child layers below react when THIS card is
+              // hovered. `relative` + `overflow-hidden` keep the glow layers
+              // and the walking character clipped inside the rounded corners.
+              className={`group relative block min-h-[24rem] overflow-hidden rounded-2xl p-7 text-white transition duration-300 ease-out hover:-translate-y-1 ${subject.shadow}`}
+              // The gradient goes in `style` rather than a class because it's a
+              // per-subject value. Tailwind scans source files as plain text to
+              // decide which CSS to generate, so it can only find classes that
+              // literally appear — a class built up in code produces nothing.
+              style={{ backgroundImage: subject.gradient }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              {/* Layer 1 — the "reflection". A white-to-transparent fade across
+                  the top, like light catching a glossy surface. */}
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-2/3"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(255,255,255,0.38), rgba(255,255,255,0.06) 55%, rgba(255,255,255,0))",
+                }}
+              />
+
+              {/* Layer 2 — a soft blurred ball of light in the corner, brighter
+                  on hover so the card feels alive when you point at it. */}
+              <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-white/25 opacity-70 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
+
+              {/* Layer 3 — a second glow low down, so the bottom of the card
+                  isn't just flat dark. */}
+              <div className="pointer-events-none absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+
+              {/* Layer 4 — a hairline highlight around the very edge, the way
+                  glass and glossy plastic catch light on their rim. */}
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/30" />
+
+              {/* --- The character, pacing along the bottom of the card ---
+                  Outer div: walks left to right and turns around.
+                  Inner div: bobs up and down while that happens.
+                  They're separate because both animations want to control
+                  `transform`, and only one of them can win. */}
+              <div
+                className="animate-walk pointer-events-none absolute bottom-4 w-28"
+                style={{ animationDuration: WALK_DURATIONS[index] }}
+              >
+                <div className="animate-bob">
+                  <Mascot className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]" />
+                </div>
+              </div>
+
+              {/* The text needs `relative` so it sits ON TOP of those layers. */}
+              <h2 className="relative text-3xl font-semibold tracking-tight drop-shadow-sm">
+                {subject.name}
+              </h2>
+              <p className="relative mt-2 opacity-0 transition duration-300 group-hover:opacity-80">
+                Choose a topic →
+              </p>
+            </Link>
+          );
+        })}
+      </section>
+    </main>
   );
 }
