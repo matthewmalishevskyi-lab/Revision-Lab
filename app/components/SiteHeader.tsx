@@ -26,6 +26,14 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
       </Link>
 
       <div className="flex items-center gap-3">
+        {/* Always present, on every page, whether you're logged in or not.
+            The logo also links home, but a labelled button is findable —
+            people don't reliably know that a logo is clickable. */}
+        <Link href="/" className={chipClasses}>
+          <HomeIcon />
+          <span className="hidden sm:inline">Home</span>
+        </Link>
+
         {user ? (
           <>
             {greeting && (
@@ -35,7 +43,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
             )}
 
             <Link href="/dashboard" className={chipClasses}>
-              <HomeIcon />
+              <GridIcon />
               <span className="hidden sm:inline">Dashboard</span>
             </Link>
 
@@ -72,6 +80,21 @@ function HomeIcon() {
         strokeWidth="1.7"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+// A grid, for the dashboard — the house icon now belongs to Home, and two
+// buttons sharing one icon would be worse than either having none.
+function GridIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round">
+        <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+        <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+        <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+        <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
+      </g>
     </svg>
   );
 }
