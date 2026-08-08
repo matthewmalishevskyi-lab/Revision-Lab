@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
 import { getCurrentUser } from "../lib/actions";
+import { ACCOUNTS_ENABLED } from "../lib/site";
 import { SUBJECTS } from "../lib/subjects";
 
 export const metadata: Metadata = {
@@ -15,6 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default async function DashboardPage() {
+  // Nothing to show if accounts are off — send them to the content instead.
+  if (!ACCOUNTS_ENABLED) redirect("/");
+
   const user = await getCurrentUser();
 
   // A PROTECTED PAGE. The check happens on the server, before a single byte of

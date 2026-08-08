@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AccountsOff } from "../components/AccountsOff";
 import { AuthShell } from "../components/AuthShell";
+import { ACCOUNTS_ENABLED } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Forgot password",
@@ -18,6 +20,8 @@ export const metadata: Metadata = {
 // guess). That's a project of its own, so rather than ship a button that
 // quietly does nothing, this page says so plainly.
 export default function ForgotPasswordPage() {
+  if (!ACCOUNTS_ENABLED) return <AccountsOff />;
+
   return (
     <AuthShell
       heading="Not built yet."

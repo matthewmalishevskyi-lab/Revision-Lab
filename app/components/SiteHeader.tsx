@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { getCurrentUser, logout } from "../lib/actions";
+import { ACCOUNTS_ENABLED } from "../lib/site";
 
 // The header that appears on every page.
 //
@@ -12,7 +13,8 @@ const chipClasses =
   "flex items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-lg font-medium shadow-sm backdrop-blur transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20";
 
 export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
-  const user = await getCurrentUser();
+  // Don't even ask who's logged in if accounts are switched off.
+  const user = ACCOUNTS_ENABLED ? await getCurrentUser() : null;
 
   return (
     <header className="flex items-center justify-between gap-4">
@@ -48,9 +50,13 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
             </form>
           </>
         ) : (
-          <Link href="/login" className={chipClasses}>
-            Login/Register
-          </Link>
+          // When accounts are off there's no Login button at all, rather than
+          // one that leads somewhere apologetic.
+          ACCOUNTS_ENABLED && (
+            <Link href="/login" className={chipClasses}>
+              Login/Register
+            </Link>
+          )
         )}
       </div>
     </header>
