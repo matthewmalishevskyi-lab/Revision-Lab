@@ -2079,7 +2079,9 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       { question: "Which type of subprogram returns a value to the code that called it?",
         accept: ["function", "a function"], answer: "A function. A procedure carries out a task without returning a value." },
       { question: "Which type of subprogram carries out a task but does NOT return a value?",
-        accept: ["procedure", "a procedure"], answer: "A procedure." },
+        accept: ["procedure", "a procedure"],
+        answer:
+          "A procedure. It does the job and stops \u2014 there is no value to hand back to the caller." },
       { question: "What is the name for a variable that only exists inside the subprogram where it is declared?",
         accept: ["local", "local variable", "a local variable"],
         answer: "A local variable. Preferred over global, because it cannot be changed accidentally elsewhere." },
@@ -2329,7 +2331,9 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       { question: "What is the name for entering database commands into an input box so the database executes them?",
         accept: ["sql injection", "sqlinjection", "sql"], answer: "SQL injection, which can expose or destroy data." },
       { question: "Which security measure monitors incoming and outgoing traffic and blocks anything against the rules?",
-        accept: ["firewall", "a firewall"], answer: "A firewall." },
+        accept: ["firewall", "a firewall"],
+        answer:
+          "A firewall. It sits between the network and the outside world, applying rules to every packet." },
       { question: "What is the name for deliberately attacking your own system to find weaknesses first?",
         accept: ["penetration testing", "pen testing", "penetration test"],
         answer: "Penetration testing — finding vulnerabilities before criminals do." },
