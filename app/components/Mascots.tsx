@@ -49,15 +49,21 @@ export function Pixel(props: MascotProps) {
       {...props}
     >
       {/* A single aerial, off to one side. Symmetrical pairs read as cartoon
-          antennae; one asymmetric detail reads as design. */}
+          antennae; one asymmetric detail reads as design.
+          The ball sits at cy=7 with r=5, so it spans y=2 to y=12 — comfortably
+          inside the viewBox. It was previously at cy=2, which put its top half
+          at negative coordinates, i.e. outside the canvas, so the browser
+          simply cut it off. Anything drawn outside the viewBox is invisible. */}
       <path
-        d="M72 18 Q84 10 86 2"
+        d="M72 18 Q84 13 86 9"
         stroke="#1e3a8a"
         strokeWidth={4}
         strokeLinecap="round"
         fill="none"
       />
-      <circle cx="87" cy="2" r="4.5" fill="#fbbf24" />
+      <circle cx="87" cy="7" r="5" fill="#fbbf24" />
+      {/* A small highlight, so the ball reads as a sphere rather than a dot */}
+      <circle cx="85.4" cy="5.4" r="1.6" fill="#ffffff" opacity={0.65} />
 
       {/* Feet and legs, drawn first so the body sits over them */}
       <rect x="45" y="112" width="11" height="16" rx="5.5" fill="#8b98ac" />
@@ -189,88 +195,102 @@ export function Quill(props: MascotProps) {
       aria-label="Quill, the English mascot: a small Elizabethan scholar in a ruff collar"
       {...props}
     >
+      {/* Light comes from the upper left throughout. Every shadow below is on
+          the right-hand side of its form, consistently — inconsistent lighting
+          is what makes flat illustration look amateur. */}
+
       {/* Shoes and stockings */}
-      <rect x="45" y="114" width="10" height="13" rx="5" fill="#e4d5f5" />
-      <rect x="65" y="114" width="10" height="13" rx="5" fill="#e4d5f5" />
-      <ellipse cx="48" cy="130" rx="12" ry="6.5" fill="#1c0c33" />
-      <ellipse cx="72" cy="130" rx="12" ry="6.5" fill="#1c0c33" />
+      <rect x="45" y="114" width="10" height="13" rx="4" fill="#ddcbf2" />
+      <rect x="65" y="114" width="10" height="13" rx="4" fill="#ddcbf2" />
+      <rect x="70" y="114" width="5" height="13" rx="2" fill="#000000" opacity={0.1} />
+      <path d="M36 130 Q36 124 48 124 Q60 124 60 130 Q60 134 48 134 Q36 134 36 130 Z" fill="#1c0c33" />
+      <path d="M60 130 Q60 124 72 124 Q84 124 84 130 Q84 134 72 134 Q60 134 60 130 Z" fill="#1c0c33" />
+      <path d="M52 125 Q60 126 60 130 Q60 133 54 133 Z" fill="#ffffff" opacity={0.12} />
 
       {/* Puffed breeches */}
-      <ellipse cx="60" cy="108" rx="25" ry="14" fill="#4c2a7a" />
-      <path
-        d="M35 108 Q60 120 85 108 Q85 122 60 122 Q35 122 35 108 Z"
-        fill="#000000"
-        opacity={0.12}
-      />
+      <path d="M36 100 Q60 94 84 100 Q86 116 72 118 L48 118 Q34 116 36 100 Z" fill="#4c2a7a" />
+      <path d="M60 96 Q78 98 84 100 Q86 116 72 118 L60 118 Z" fill="#000000" opacity={0.16} />
+      <path d="M42 102 Q48 100 52 101 Q46 106 44 112 Z" fill="#ffffff" opacity={0.1} />
 
-      {/* Doublet — longer, so the body carries more of the figure */}
-      <path d="M38 74 Q60 68 82 74 L84 106 Q60 114 36 106 Z" fill="#3b1d63" />
-      <path
-        d="M60 70 L60 112 Q78 110 84 106 L82 74 Q72 70 60 70 Z"
-        fill="#000000"
-        opacity={0.12}
-      />
-      <circle cx="60" cy="82" r="2.4" fill="#f0c869" />
-      <circle cx="60" cy="92" r="2.4" fill="#f0c869" />
-      <circle cx="60" cy="102" r="2.4" fill="#f0c869" />
+      {/* Doublet — tapered rather than a soft rounded blob, which is most of
+          what stops it reading as a plush toy. */}
+      <path d="M40 72 Q60 66 80 72 L84 104 Q60 110 36 104 Z" fill="#3b1d63" />
+      <path d="M60 68 Q72 68 80 72 L84 104 Q72 108 60 109 Z" fill="#000000" opacity={0.18} />
+      {/* A centre seam and buttons give the garment structure */}
+      <path d="M60 70 L60 108" stroke="#000000" strokeWidth={1.2} opacity={0.25} />
+      <circle cx="60" cy="80" r="2.2" fill="#f0c869" />
+      <circle cx="60" cy="90" r="2.2" fill="#f0c869" />
+      <circle cx="60" cy="100" r="2.2" fill="#f0c869" />
 
       {/* Sleeves */}
-      <ellipse cx="27" cy="86" rx="10" ry="16" fill="#2a1049" />
-      <ellipse cx="93" cy="86" rx="10" ry="16" fill="#2a1049" />
+      <path d="M27 76 Q36 72 39 78 L37 98 Q28 102 24 96 Z" fill="#2a1049" />
+      <path d="M93 76 Q84 72 81 78 L83 98 Q92 102 96 96 Z" fill="#2a1049" />
+      <path d="M93 76 Q88 74 85 76 L86 98 Q92 102 96 96 Z" fill="#000000" opacity={0.2} />
 
-      {/* Ruff collar — a ring of overlapping circles, which is genuinely how
-          the real garment was built: starched fabric folded into a cartwheel. */}
+      {/* Ruff collar — overlapping circles, which is genuinely how the real
+          garment was built: starched fabric folded into a cartwheel. */}
       <g fill="#ffffff">
-        {[30, 37, 44, 51, 58, 65, 72, 79, 86].map((cx, i) => (
-          <circle key={cx} cx={cx} cy={i % 2 === 0 ? 70 : 73} r="8.5" />
+        {[32, 39, 46, 53, 60, 67, 74, 81, 88].map((cx, i) => (
+          <circle key={cx} cx={cx} cy={i % 2 === 0 ? 68 : 71} r="8" />
         ))}
       </g>
-      <ellipse cx="58" cy="72" rx="26" ry="6" fill="#e6dff2" />
+      {/* Shading on the right-hand folds, and a shadow cast down onto the
+          doublet — that cast shadow is what makes the collar sit ON him rather
+          than float in front of him. */}
+      <path d="M62 60 Q80 60 92 70 Q84 79 62 79 Z" fill="#000000" opacity={0.09} />
+      <ellipse cx="60" cy="76" rx="24" ry="5" fill="#000000" opacity={0.14} />
 
-      {/* Neat pointed beard */}
-      <path d="M46 44 Q48 68 60 72 Q72 68 74 44 Z" fill="#8a6240" />
+      {/* Neck */}
+      <rect x="53" y="58" width="14" height="12" rx="5" fill="#e0b48f" />
 
-      {/* Head — about 40% of the figure */}
-      <circle cx="60" cy="42" r="28" fill="#f2cdae" />
-      <path
-        d="M60 14 A28 28 0 0 1 60 70 A20 28 0 0 0 60 14 Z"
-        fill="#000000"
-        opacity={0.07}
-      />
+      {/* A pointed beard rather than a rounded bib */}
+      <path d="M45 44 Q47 62 60 74 Q73 62 75 44 Z" fill="#8a6240" />
+      <path d="M60 48 Q70 52 75 44 Q73 62 60 74 Z" fill="#000000" opacity={0.16} />
 
-      {/* Hair at the sides */}
-      <path d="M32 44 Q31 24 46 18 L46 38 Q38 40 35 50 Z" fill="#6b4423" />
-      <path d="M88 44 Q89 24 74 18 L74 38 Q82 40 85 50 Z" fill="#6b4423" />
+      {/* Head — an oval, not a circle. Real heads are taller than they are
+          wide; a perfect circle is the most toy-like shape there is. */}
+      <ellipse cx="60" cy="40" rx="25" ry="28" fill="#f2cdae" />
+      <path d="M60 12 A25 28 0 0 1 60 68 A15 28 0 0 0 60 12 Z" fill="#000000" opacity={0.11} />
+      {/* Cheekbone and jaw, barely there, but they give the face structure */}
+      <path d="M38 44 Q42 54 52 60 Q42 58 37 50 Z" fill="#000000" opacity={0.05} />
 
-      {/* Moustache */}
-      <path
-        d="M52 54 Q60 59 68 54"
-        stroke="#8a6240"
-        strokeWidth={4}
-        strokeLinecap="round"
-        fill="none"
-      />
+      {/* Hair at the temples */}
+      <path d="M35 42 Q33 22 48 17 L48 34 Q40 37 38 48 Z" fill="#6b4423" />
+      <path d="M85 42 Q87 22 72 17 L72 34 Q80 37 82 48 Z" fill="#6b4423" />
+      <path d="M85 42 Q87 22 72 17 L72 26 Q81 30 82 48 Z" fill="#000000" opacity={0.15} />
 
-      {/* Small round spectacles */}
-      <g stroke="#f0c869" strokeWidth={3} fill="none">
-        <circle cx="50" cy="42" r="9.5" />
-        <circle cx="70" cy="42" r="9.5" />
-        <path d="M59.5 42 H60.5" strokeLinecap="round" />
-      </g>
+      {/* Brows — two short strokes, and the single biggest change from "plush"
+          to "person". A face without brows has no expression at all. */}
+      <path d="M45 32 Q50 29 55 31" stroke="#6b4423" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+      <path d="M65 31 Q70 29 75 32" stroke="#6b4423" strokeWidth={2.6} strokeLinecap="round" fill="none" />
 
-      {/* Eyes */}
-      <circle cx="50" cy="42" r="6" fill="#ffffff" />
-      <circle cx="70" cy="42" r="6" fill="#ffffff" />
-      <circle cx="50.8" cy="43.5" r="3.4" fill="#241040" />
-      <circle cx="70.8" cy="43.5" r="3.4" fill="#241040" />
-      <circle cx="48.6" cy="40.5" r="1.5" fill="#ffffff" />
-      <circle cx="68.6" cy="40.5" r="1.5" fill="#ffffff" />
+      {/* Eyes — no spectacles now. Smaller, with an upper lid line, which is
+          what separates a drawn eye from a sewn-on button. */}
+      <ellipse cx="50" cy="40" rx="5.2" ry="5.6" fill="#ffffff" />
+      <ellipse cx="70" cy="40" rx="5.2" ry="5.6" fill="#ffffff" />
+      <circle cx="50.8" cy="41" r="3.1" fill="#241040" />
+      <circle cx="70.8" cy="41" r="3.1" fill="#241040" />
+      <circle cx="49.2" cy="39" r="1.3" fill="#ffffff" />
+      <circle cx="69.2" cy="39" r="1.3" fill="#ffffff" />
+      <path d="M45 37.5 Q50 34.5 55 37.5" stroke="#8a6240" strokeWidth={1.8} strokeLinecap="round" fill="none" />
+      <path d="M65 37.5 Q70 34.5 75 37.5" stroke="#8a6240" strokeWidth={1.8} strokeLinecap="round" fill="none" />
 
-      {/* Hat: crown, gold band, wide brim, feather */}
-      <path d="M45 4 Q60 0 75 4 L77 18 L43 18 Z" fill="#241040" />
-      <rect x="43" y="12" width="34" height="4.5" fill="#f0c869" />
-      <ellipse cx="60" cy="18" rx="30" ry="6" fill="#241040" />
-      <path d="M74 10 Q90 0 93 11 Q86 17 74 13 Z" fill="#a78bfa" />
+      {/* Nose */}
+      <path d="M59 44 Q57 50 61 51" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+      {/* Moustache, sitting over the beard join */}
+      <path d="M50 55 Q60 60 70 55 Q60 57 50 55 Z" fill="#8a6240" />
+
+      {/* Hat: a tapered crown, gold band, wide brim, and a feather. The
+          underside of the brim is shaded, so it reads as having thickness. */}
+      <path d="M46 2 Q60 -1 74 2 L77 16 L43 16 Z" fill="#241040" />
+      <path d="M60 0 Q68 0 74 2 L77 16 L60 16 Z" fill="#ffffff" opacity={0.07} />
+      <rect x="43" y="11" width="34" height="4.5" fill="#f0c869" />
+      <rect x="60" y="11" width="17" height="4.5" fill="#000000" opacity={0.18} />
+      <ellipse cx="60" cy="17" rx="30" ry="6" fill="#241040" />
+      <path d="M30 17 Q30 22 60 22 Q90 22 90 17 Q90 21 60 21 Q30 21 30 17 Z" fill="#000000" opacity={0.3} />
+      <path d="M74 9 Q90 -1 93 10 Q86 16 74 12 Z" fill="#a78bfa" />
+      <path d="M84 3 Q91 4 93 10 Q88 14 82 13 Z" fill="#000000" opacity={0.15} />
     </svg>
   );
 }
