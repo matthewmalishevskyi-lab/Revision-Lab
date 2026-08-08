@@ -535,6 +535,219 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Name the problem, state what causes it, and give a specific measure that addresses that cause. 'RSI, caused by repeated keyboard use, reduced by taking regular breaks and using a wrist rest' is a complete answer.",
       },
     ],
+
+    workedExamples: [
+      {
+        question:
+          "A website claims 'scientists have proven this supplement doubles memory'. Work out whether this is a source you should trust.",
+        steps: [
+          "Who wrote it? Look for a named author with relevant qualifications. 'Scientists' with no names is a warning sign.",
+          "Are they selling something? If the same page sells the supplement, they benefit from you believing it.",
+          "Is there evidence? A real claim cites a study you can go and read. 'Studies show' with no link is not evidence.",
+          "When was it written? Health and technology claims date quickly.",
+          "Can you find the same claim on an independent site with no financial interest?",
+        ],
+        answer:
+          "Not trustworthy. Anonymous authorship, a commercial motive and no citable evidence are three separate reasons to reject it, and any one of them would be enough to check elsewhere first.",
+      },
+      {
+        question:
+          "Your email says: 'URGENT: your account will be closed in 24 hours. Click here to verify your password.' Identify the warning signs.",
+        steps: [
+          "Urgency and a deadline — designed to make you act before you think. This is the single most common phishing signal.",
+          "It asks for a password. Real organisations never ask you to send or confirm a password by email.",
+          "'Click here' hides the real destination. Hover over the link and read the actual address.",
+          "Check the sender's address properly, not just the display name — support@paypa1.com is not PayPal.",
+          "If in doubt, go to the site by typing the address yourself rather than clicking anything in the message.",
+        ],
+        answer:
+          "It is phishing. Urgency, a request for credentials, and a disguised link are three independent signals, and any one alone justifies not clicking.",
+      },
+      {
+        question:
+          "Explain which is stronger: 'P@ssw0rd!' or 'correct horse battery staple', and why.",
+        steps: [
+          "Count the characters: 'P@ssw0rd!' is 9; 'correct horse battery staple' is 28.",
+          "The number of possible combinations grows with LENGTH far faster than with variety of symbols.",
+          "'P@ssw0rd!' is also based on a dictionary word with predictable substitutions — a to @, o to 0 — which cracking software tries first.",
+          "The long phrase contains no such pattern and is far easier for a human to remember.",
+        ],
+        answer:
+          "The passphrase is far stronger. Length matters more than symbol substitution, and predictable substitutions are the first thing an attacker tries.",
+      },
+      {
+        question:
+          "Classify each as an active or passive digital footprint: posting a photo, a site storing a cookie, writing a review, your phone logging your location.",
+        steps: [
+          "Ask one question of each: did the user deliberately choose to share this?",
+          "Posting a photo — yes, a deliberate act. Active.",
+          "A cookie stored by a site — no deliberate act by the user. Passive.",
+          "Writing a review — deliberate. Active.",
+          "A phone logging location in the background — no deliberate act. Passive.",
+        ],
+        answer:
+          "Active: posting a photo, writing a review. Passive: the cookie, the location log.",
+      },
+    ],
+
+    practice: [
+      {
+        question: "What does RSI stand for?",
+        accept: ["repetitive strain injury"],
+        answer:
+          "Repetitive strain injury — damage to muscles and tendons from repeated movements, common with long periods of keyboard and mouse use.",
+      },
+      {
+        question:
+          "What is the name for security that requires two different types of proof of identity?",
+        accept: ["two factor authentication", "2fa", "two-factor authentication", "twofactorauthentication"],
+        answer:
+          "Two-factor authentication (2FA). Typically something you know (a password) plus something you have (a code on your phone), so a stolen password alone is not enough.",
+      },
+      {
+        question:
+          "What is the term for a fraudulent message pretending to be from a trusted organisation, designed to steal your details?",
+        accept: ["phishing"],
+        answer:
+          "Phishing. The classic warning sign is manufactured urgency — a deadline designed to make you act before thinking.",
+      },
+      {
+        question:
+          "Is a cookie stored by a website an active or a passive digital footprint?",
+        accept: ["passive"],
+        answer:
+          "Passive. The user took no deliberate action to share it — that is exactly what separates passive from active footprints.",
+      },
+      {
+        question: "Is posting a photo on social media an active or a passive footprint?",
+        accept: ["active"],
+        answer: "Active, because the user deliberately chose to share it.",
+      },
+      {
+        question:
+          "Name the type of software that manages memory, files, hardware and processes, and provides the user interface.",
+        accept: ["operating system", "os", "the operating system"],
+        answer:
+          "The operating system. It is system software, as opposed to application software which does a job for the user.",
+      },
+      {
+        question:
+          "Is a web browser system software or application software?",
+        accept: ["application software", "application", "applications software"],
+        answer:
+          "Application software — it performs a task for the user. System software runs the computer itself.",
+      },
+      {
+        question: "What does the S in HTTPS indicate about the connection?",
+        accept: ["secure", "it is secure", "encrypted", "it is encrypted"],
+        answer:
+          "Secure — the data sent between browser and server is encrypted, so it cannot be read if intercepted. It does NOT mean the site or its owners are trustworthy.",
+      },
+      {
+        question:
+          "True or false: a padlock icon in the address bar means the website is safe to trust.",
+        accept: ["false"],
+        answer:
+          "False. The padlock means the connection is encrypted, not that the people running the site are honest. Criminals use HTTPS too.",
+      },
+      {
+        question:
+          "What is the general term for the trail of data a person leaves behind through their online activity?",
+        accept: ["digital footprint", "footprint"],
+        answer:
+          "A digital footprint, made up of an active part (things you chose to share) and a passive part (things collected about you).",
+      },
+      {
+        question:
+          "Which matters more for password strength: total length, or replacing letters with symbols?",
+        accept: ["length", "total length", "the length"],
+        answer:
+          "Length. Possible combinations grow far faster with length than with symbol variety, and substitutions like a to @ are the first thing cracking software tries.",
+      },
+      {
+        question:
+          "Name the practice of keeping a second copy of data somewhere separate, so it can be recovered if the original is lost.",
+        accept: ["backup", "backing up", "a backup"],
+        answer:
+          "A backup. A copy in the same folder on the same drive is not a backup — separation is the whole point.",
+      },
+      {
+        question:
+          "State one advantage of cloud storage over storing files only on your own device.",
+        accept: [
+          "access from anywhere", "accessible anywhere", "automatic backup",
+          "easy sharing", "accessible from any device", "access anywhere",
+        ],
+        answer:
+          "Any of: accessible from anywhere with a connection, backed up automatically, and easy to share. The drawbacks are needing a connection, ongoing cost, and trusting a third party with your data.",
+      },
+      {
+        question:
+          "What part of a filename tells the computer which program should open it?",
+        accept: ["file extension", "the extension", "extension", "filename extension"],
+        answer:
+          "The file extension — the letters after the dot, such as .docx or .png.",
+      },
+      {
+        question:
+          "Name the term for the accepted standards of polite behaviour when communicating online.",
+        accept: ["netiquette"],
+        answer:
+          "Netiquette. Tone is easily misread in text, and ALL CAPS reads as shouting.",
+      },
+      {
+        question:
+          "A search engine ranks a page first. What does that tell you about whether the page is true?",
+        accept: ["nothing", "nothing at all", "it tells you nothing", "no"],
+        answer:
+          "Nothing. Search engines rank by relevance and popularity, not accuracy. A page can rank first and be completely wrong.",
+      },
+      {
+        question:
+          "Explain why deleting a post does not reliably remove it from the internet.",
+        answer:
+          "Because anything published can be copied, screenshotted, shared, cached by search engines, or archived by third parties before deletion. Deleting removes YOUR copy, not everyone else's. (Mark this one yourself.)",
+      },
+      {
+        question:
+          "A friend uses the same password for their school account, their email and a gaming forum. Explain the risk and what they should do.",
+        answer:
+          "If any one of those sites suffers a data breach, attackers will try the same email and password combination on other services — this is called credential stuffing, and it is automated. One leaked site therefore exposes all three accounts. They should use a different password for each, ideally with a password manager, and enable two-factor authentication where offered. (Mark this one yourself.)",
+      },
+    ],
+
+    misconceptions: [
+      {
+        wrong: "\"The padlock icon means the website is safe.\"",
+        right:
+          "It means the connection is encrypted, so nobody can read the data in transit. It says nothing about who runs the site or what they will do with your details. Criminals routinely use HTTPS on fake sites for exactly this reason.",
+      },
+      {
+        wrong: "\"A strong password needs symbols and numbers more than length.\"",
+        right:
+          "Length is worth far more. A long ordinary phrase beats a short scrambled word, and predictable substitutions (a to @, o to 0) are the first patterns cracking software tries.",
+      },
+      {
+        wrong: "\"Private or incognito browsing makes me anonymous online.\"",
+        right:
+          "It only stops your own browser saving history and cookies on that device. Your school, your internet provider and the websites you visit can all still see the activity.",
+      },
+      {
+        wrong: "\"If I delete it, it's gone.\"",
+        right:
+          "Deleting removes your copy. It cannot remove screenshots, reshares, search engine caches or archives made before deletion. Assume anything posted is permanent.",
+      },
+      {
+        wrong: "\"Antivirus software means I can click anything safely.\"",
+        right:
+          "Anti-malware catches known threats, but it cannot stop you voluntarily typing your password into a convincing fake site. Most successful attacks target the person, not the software.",
+      },
+      {
+        wrong: "\"If a site is at the top of Google, it must be reliable.\"",
+        right:
+          "Ranking reflects relevance and popularity, not accuracy. Judge a source by its author, its evidence, its date and whether it has something to sell.",
+      },
+    ],
   },
 
   "computer-science/programming-foundations": {
@@ -671,6 +884,223 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Say 'a range check to make sure the age is between 0 and 120', not 'check the age is sensible'. Naming the check is the mark.",
       },
     ],
+
+    workedExamples: [
+      {
+        question:
+          "Trace this algorithm and give the final value of total.\n\n  total = 0\n  FOR i = 1 TO 5\n    total = total + i\n  NEXT i",
+        steps: [
+          "Before the loop: total = 0.",
+          "i = 1 → total = 0 + 1 = 1",
+          "i = 2 → total = 1 + 2 = 3",
+          "i = 3 → total = 3 + 3 = 6",
+          "i = 4 → total = 6 + 4 = 10",
+          "i = 5 → total = 10 + 5 = 15. The loop ends because i has reached 5.",
+        ],
+        answer: "15",
+      },
+      {
+        question: "Work out 17 MOD 5 and 17 DIV 5, and explain the difference.",
+        steps: [
+          "Divide 17 by 5: it goes in 3 times, because 3 x 5 = 15.",
+          "That leaves 17 − 15 = 2 left over.",
+          "DIV gives the whole-number part of the division: 3.",
+          "MOD gives the remainder: 2.",
+        ],
+        answer:
+          "17 DIV 5 = 3 and 17 MOD 5 = 2. DIV is how many whole times it fits; MOD is what is left over.",
+      },
+      {
+        question:
+          "This program should print 'Adult' for anyone 18 or over. Find and fix the error.\n\n  age = input('Age? ')\n  IF age > 18 THEN\n    print('Adult')",
+        steps: [
+          "First problem: input returns a STRING, so age holds the text '20', not the number 20. Comparing text to a number is either an error or gives nonsense.",
+          "Fix: age = int(input('Age? ')) to cast it to an integer.",
+          "Second problem: > 18 excludes someone who is exactly 18, but the specification says 18 or over.",
+          "Fix: use >= 18.",
+        ],
+        answer:
+          "age = int(input('Age? ')) and IF age >= 18 THEN. Two separate bugs: a missing cast, and a boundary error.",
+      },
+      {
+        question:
+          "Write a validation check that only accepts a percentage mark between 0 and 100 inclusive, and name the type of check.",
+        steps: [
+          "The value must be at least 0 AND at most 100 — both conditions must hold, so combine them with AND.",
+          "'Inclusive' means 0 and 100 themselves are allowed, so use >= and <=, not > and <.",
+          "In pseudocode: IF mark >= 0 AND mark <= 100 THEN accept ELSE reject.",
+          "This restricts a value to a permitted span, so it is a range check.",
+        ],
+        answer:
+          "IF mark >= 0 AND mark <= 100 THEN accept — a range check.",
+      },
+      {
+        question:
+          "Complete a trace table for this algorithm.\n\n  x = 10\n  WHILE x > 6\n    x = x - 2\n  ENDWHILE",
+        steps: [
+          "Start: x = 10. Is 10 > 6? Yes → x becomes 8.",
+          "Is 8 > 6? Yes → x becomes 6.",
+          "Is 6 > 6? No — 6 is not greater than 6, so the loop stops.",
+          "The condition is checked BEFORE each pass, which is why the loop exits without running again.",
+        ],
+        answer: "x ends as 6, after two passes of the loop.",
+      },
+    ],
+
+    practice: [
+      {
+        question: "What is 17 MOD 5?",
+        accept: ["2"],
+        answer: "2. MOD gives the remainder after division: 17 = 3 x 5 + 2.",
+      },
+      {
+        question: "What is 17 DIV 5?",
+        accept: ["3"],
+        answer: "3. DIV gives the whole-number part of the division, discarding the remainder.",
+      },
+      {
+        question: "What is 23 MOD 4?",
+        accept: ["3"],
+        answer: "3, because 23 = 5 x 4 + 3.",
+      },
+      {
+        question:
+          "Name the data type used to store a value that can only be True or False.",
+        accept: ["boolean", "bool"],
+        answer:
+          "Boolean. It is the only data type with just two possible values, which is why it underpins every IF statement.",
+      },
+      {
+        question: "Name the data type for a whole number with no decimal point.",
+        accept: ["integer", "int"],
+        answer:
+          "Integer. Use a real (float) instead if the value could have a decimal part.",
+      },
+      {
+        question:
+          "Which data type would you use to store the value 3.75?",
+        accept: ["real", "float", "a real", "a float"],
+        answer: "Real (also called float) — a number with a decimal point.",
+      },
+      {
+        question:
+          "Name the programming construct that repeats a set of instructions.",
+        accept: ["iteration", "a loop", "loop"],
+        answer: "Iteration (a loop). The other two constructs are sequence and selection.",
+      },
+      {
+        question:
+          "Name the construct that chooses between different paths depending on a condition.",
+        accept: ["selection"],
+        answer: "Selection, using IF / ELSE.",
+      },
+      {
+        question:
+          "Which type of loop should you use when you know exactly how many repetitions are needed?",
+        accept: [
+          "count controlled", "a count controlled loop", "count-controlled",
+          "for loop", "a for loop", "for",
+        ],
+        answer:
+          "A count-controlled loop (a FOR loop). Use a condition-controlled loop (WHILE) when the number of repetitions depends on something happening.",
+      },
+      {
+        question:
+          "What is the final value of total?\n\n  total = 0\n  FOR i = 1 TO 4\n    total = total + i\n  NEXT i",
+        accept: ["10"],
+        answer: "10, because 1 + 2 + 3 + 4 = 10.",
+      },
+      {
+        question:
+          "What is the final value of x?\n\n  x = 20\n  WHILE x > 12\n    x = x - 3\n  ENDWHILE",
+        accept: ["11"],
+        answer:
+          "11. The values go 20, 17, 14, 11 — and once x is 11 the condition 11 > 12 is false, so the loop stops.",
+      },
+      {
+        question:
+          "What type of error is a missing closing bracket, which stops the program running at all?",
+        accept: ["syntax error", "syntax", "a syntax error"],
+        answer:
+          "A syntax error — it breaks the rules of the language, so the program will not run.",
+      },
+      {
+        question:
+          "What type of error is using + where you meant *, so the program runs but gives the wrong answer?",
+        accept: ["logic error", "logic", "a logic error"],
+        answer:
+          "A logic error. The program runs perfectly; it just does the wrong thing, which makes these much harder to find.",
+      },
+      {
+        question:
+          "What is the name of the table used to track the value of each variable line by line when checking an algorithm by hand?",
+        accept: ["trace table", "a trace table"],
+        answer:
+          "A trace table — the fastest way to find a logic error without a computer.",
+      },
+      {
+        question:
+          "Name the type of validation check that confirms a value falls between two limits.",
+        accept: ["range check", "a range check", "range"],
+        answer:
+          "A range check. Others include type, presence, length and format checks.",
+      },
+      {
+        question:
+          "What is the difference between = and == in most programming languages? Give the purpose of each.",
+        accept: [
+          "= assigns and == compares", "assignment and comparison",
+          "= assignment == comparison", "one assigns one compares",
+        ],
+        answer:
+          "= assigns a value to a variable; == compares two values and gives True or False. Writing = where you meant == is the most common beginner error there is.",
+      },
+      {
+        question:
+          "Explain why a program must usually cast the result of input() before doing arithmetic with it.",
+        answer:
+          "Because input() returns a string, not a number. '5' + '3' would join the text to give '53', or raise an error when mixed with numbers. Casting with int() or float() converts the text into a number so arithmetic behaves as intended. (Mark this one yourself.)",
+      },
+      {
+        question:
+          "Explain the difference between validation and verification, with an example of each.",
+        answer:
+          "Validation checks data is SENSIBLE — for example a range check confirming an age is between 0 and 120. Verification checks data was entered CORRECTLY — for example typing a password twice and comparing. Validation cannot tell whether data is true: a valid date of birth can still be the wrong one. (Mark this one yourself.)",
+      },
+    ],
+
+    misconceptions: [
+      {
+        wrong: "\"= and == do the same thing.\"",
+        right:
+          "= assigns; == compares. IF score = 10 is a syntax error in most languages, or silently sets score to 10 in others — which is worse, because the program runs and quietly does the wrong thing.",
+      },
+      {
+        wrong: "\"input() gives me a number if the user types a number.\"",
+        right:
+          "input() always returns a string. '5' + '3' gives '53', not 8. Cast with int() or float() before doing arithmetic.",
+      },
+      {
+        wrong: "\"A logic error is less serious than a syntax error.\"",
+        right:
+          "The opposite, usually. A syntax error stops the program immediately and tells you where. A logic error runs perfectly and produces a wrong answer that nobody notices — which is how real systems ship bugs.",
+      },
+      {
+        wrong: "\"WHILE x > 6 will stop when x equals 6, so it runs while x is 6.\"",
+        right:
+          "It stops as soon as x is 6, because 6 > 6 is false. Confusing > with >= is the single most common source of off-by-one errors.",
+      },
+      {
+        wrong: "\"Validation proves the data is correct.\"",
+        right:
+          "Validation only proves the data is plausible. A range check confirms an age is between 0 and 120; it cannot tell that the person typed 34 when they are actually 43.",
+      },
+      {
+        wrong: "\"Comments should explain what each line does.\"",
+        right:
+          "Comments should explain WHY. '# add 1 to i' restates the code and is worthless. '# skip the header row' tells a reader something the code cannot.",
+      },
+    ],
   },
 
   "computer-science/networks-basics": {
@@ -789,6 +1219,212 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         tip: "Wireless security answers need the reason",
         detail:
           "Say wireless is less secure because the signal travels through the air beyond the building, so an attacker does not need physical access to intercept it.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "A small business has 40 computers on one site and needs central backups, shared files and one place to manage staff accounts. Recommend a network type and justify it.",
+        steps: [
+          "Note the numbers given: 40 machines is well beyond a handful.",
+          "Note the requirements: central backups, shared files, central account management — all point the same way.",
+          "Peer-to-peer would mean backing up and securing 40 machines individually, and performance drops as peers are added.",
+          "Client-server puts files, backups and accounts in one place, managed once.",
+          "Acknowledge the cost: a server is expensive, needs expertise, and is a single point of failure — which is why they should also plan for backups of the server itself.",
+        ],
+        answer:
+          "Client-server. With 40 machines and a requirement for central backups and account management, managing each machine separately would be impractical, and client-server centralises exactly those tasks.",
+      },
+      {
+        question:
+          "Data is sent from a laptop to a server on the other side of the world. Explain which addresses are used at each stage.",
+        steps: [
+          "Within the laptop's own local network, the switch forwards the data using MAC addresses — the permanent hardware address of each network card.",
+          "To leave the local network, the data reaches the router.",
+          "The router directs the data between networks using IP addresses, which identify devices on a network and can change.",
+          "This repeats across each network on the route until the destination network is reached.",
+          "On the final local network, MAC addressing again delivers the data to the correct device.",
+        ],
+        answer:
+          "MAC addresses within each local network (used by switches), IP addresses to route between networks (used by routers).",
+      },
+      {
+        question:
+          "A school's network uses a star topology. One cable to a classroom computer is damaged. Explain the effect, then explain what would happen if the central switch failed instead.",
+        steps: [
+          "In a star topology, every device has its own dedicated connection to a central switch.",
+          "A damaged cable therefore affects only the single device at the end of it.",
+          "Every other device still has its own working link to the switch, so the rest of the network is unaffected.",
+          "The central switch, however, carries every connection.",
+          "If it fails, no device can reach any other — the whole network goes down. That is the trade-off of a star.",
+        ],
+        answer:
+          "One damaged cable affects only that one device. A failed central switch takes the entire network down, because every connection passes through it.",
+      },
+      {
+        question:
+          "Explain why IPv6 was introduced, using the numbers.",
+        steps: [
+          "IPv4 addresses are 32 bits long.",
+          "The number of possible addresses is therefore 2^32, which is about 4.3 billion.",
+          "There are more than 4.3 billion internet-connected devices in the world, and most people own several.",
+          "IPv6 uses 128 bits, giving 2^128 addresses — a number vastly larger than any plausible need.",
+        ],
+        answer:
+          "Because 32-bit IPv4 provides only about 4.3 billion addresses and the world ran out. IPv6's 128 bits removes that limit.",
+      },
+    ],
+
+    practice: [
+      {
+        question:
+          "Which device connects devices on a LAN and sends data only to the intended recipient?",
+        accept: ["switch", "a switch"],
+        answer:
+          "A switch. It uses MAC addresses to forward data only to the correct device.",
+      },
+      {
+        question:
+          "Which device connects different networks together and directs data between them?",
+        accept: ["router", "a router"],
+        answer: "A router, using IP addresses.",
+      },
+      {
+        question: "Which type of address does a switch use?",
+        accept: ["mac", "mac address", "mac addresses"],
+        answer:
+          "MAC addresses — the permanent hardware address of a network interface card, used within a local network.",
+      },
+      {
+        question: "Which type of address does a router use?",
+        accept: ["ip", "ip address", "ip addresses"],
+        answer: "IP addresses, which identify devices across networks and can change.",
+      },
+      {
+        question: "How many bits are in an IPv4 address?",
+        accept: ["32", "32 bits"],
+        answer:
+          "32 bits, written as four numbers from 0 to 255. That gives about 4.3 billion addresses, which ran out.",
+      },
+      {
+        question: "How many bits are in an IPv6 address?",
+        accept: ["128", "128 bits"],
+        answer: "128 bits, written in hexadecimal.",
+      },
+      {
+        question: "How many bits are in a MAC address?",
+        accept: ["48", "48 bits"],
+        answer: "48 bits, written in hexadecimal and assigned by the manufacturer.",
+      },
+      {
+        question: "What does LAN stand for?",
+        accept: ["local area network"],
+        answer:
+          "Local Area Network — a small geographical area where the organisation usually owns the hardware and the connections.",
+      },
+      {
+        question: "What does WAN stand for?",
+        accept: ["wide area network"],
+        answer:
+          "Wide Area Network — a large geographical area, typically over connections leased from a telecommunications company.",
+      },
+      {
+        question:
+          "Which network type has all devices as equals sharing files directly, with no central server?",
+        accept: ["peer to peer", "peer-to-peer", "p2p", "peertopeer"],
+        answer:
+          "Peer-to-peer. Cheap and simple for a handful of machines, but backups and security must be handled on every device.",
+      },
+      {
+        question:
+          "In which topology does every device connect to a central switch?",
+        accept: ["star", "star topology", "a star topology"],
+        answer:
+          "Star. One failed cable affects only that device; a failed central switch takes down everything.",
+      },
+      {
+        question:
+          "In which topology do devices connect to many others so data has multiple possible routes?",
+        accept: ["mesh", "mesh topology", "a mesh topology"],
+        answer:
+          "Mesh. Very resilient, but expensive because of the amount of cabling.",
+      },
+      {
+        question:
+          "What is the term for the amount of data that can be transmitted over a connection in a given time?",
+        accept: ["bandwidth"],
+        answer:
+          "Bandwidth. It measures capacity, not speed of response \u2014 that is latency.",
+      },
+      {
+        question:
+          "What is the term for the delay between data being sent and beginning to arrive?",
+        accept: ["latency"],
+        answer:
+          "Latency. High bandwidth with high latency still feels slow — which is why satellite connections are poor for video calls.",
+      },
+      {
+        question:
+          "Which hardware component gives a device its unique MAC address?",
+        accept: [
+          "network interface card", "nic", "the nic", "network card",
+          "the network interface card",
+        ],
+        answer:
+          "The Network Interface Card (NIC), assigned by the manufacturer.",
+      },
+      {
+        question:
+          "Name the transmission medium that carries data as pulses of light and gives high speed over long distances.",
+        accept: ["fibre optic", "fibre optic cable", "fiber optic", "fibre", "optical fibre"],
+        answer:
+          "Fibre optic cable. Faster and better over distance than copper, but more expensive.",
+      },
+      {
+        question:
+          "Explain why a wireless network is generally less secure than a wired one.",
+        answer:
+          "Because the signal travels through the air and passes beyond the walls of the building, so an attacker within range can attempt to intercept it without ever gaining physical access. A wired network requires physically plugging into it, which is far harder to do unnoticed. (Mark this one yourself.)",
+      },
+      {
+        question:
+          "A company is choosing between client-server and peer-to-peer for 60 computers needing central backups. Recommend one and justify your choice with reference to the scenario.",
+        answer:
+          "Client-server. With 60 machines, peer-to-peer would require backing up and securing every device individually, and performance degrades as peers are added. Client-server centralises files, backups, security and account management in one place. The trade-offs to acknowledge are the cost of the server, the expertise needed to run it, and that it is a single point of failure. (Mark this one yourself.)",
+      },
+    ],
+
+    misconceptions: [
+      {
+        wrong: "\"The internet and the World Wide Web are the same thing.\"",
+        right:
+          "The internet is the global network of connected networks — the infrastructure. The Web is one service that runs on it, made of websites accessed over HTTP. Email and video streaming also use the internet without being the Web.",
+      },
+      {
+        wrong: "\"More bandwidth always means a faster-feeling connection.\"",
+        right:
+          "Bandwidth is how much data per second; latency is the delay before it starts. A satellite link can have huge bandwidth and terrible latency, which makes video calls painful no matter how fast the download speed looks.",
+      },
+      {
+        wrong: "\"A MAC address changes when you connect to a different network.\"",
+        right:
+          "A MAC address is assigned by the manufacturer and is fixed to the network card. It is the IP address that changes depending on which network you join.",
+      },
+      {
+        wrong: "\"A wireless access point and a router are the same device.\"",
+        right:
+          "They are different jobs that are often combined in one box at home. A WAP lets devices connect wirelessly; a router directs data between networks. The home 'router' usually contains a router, a switch and a WAP.",
+      },
+      {
+        wrong: "\"A star topology is more reliable than mesh because everything is simple.\"",
+        right:
+          "Star has a single point of failure — the central switch. Mesh provides multiple routes for data, which makes it more resilient, at the cost of far more cabling.",
+      },
+      {
+        wrong: "\"A switch sends data to every device and each one ignores what isn't for it.\"",
+        right:
+          "That describes an older hub. A switch reads the MAC address and sends the data only to the intended recipient, which is both faster and more secure.",
       },
     ],
   },
