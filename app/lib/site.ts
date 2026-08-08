@@ -9,7 +9,7 @@
 // Vercel to your actual domain once you have one — until then the fallback is
 // used, and the only consequence is that shared links preview oddly.
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revision-lab.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revision-lab-sigma.vercel.app";
 
 export const SITE_NAME = "Revision Lab";
 

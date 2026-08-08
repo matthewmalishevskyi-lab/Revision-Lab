@@ -151,6 +151,35 @@ Content lives in `app/lib/content/`: `index.ts` is the registry and the type; on
 
 **⚠️ Accuracy:** content should be checked by someone who teaches the subject before students rely on it — especially if the site ever earns money. Wrong content stops being embarrassing and starts being harmful.
 
+## 🚀 THE SITE IS LIVE (2026-08-08)
+
+**https://revision-lab-sigma.vercel.app**
+
+Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage renders correctly with all three mascots and subject cards.
+
+- GitHub repo: `https://github.com/matthewmalishevskyi-lab/Revision-Lab` (branch `main`)
+- Vercel project: `revision-lab`, team `matthewmalishevskyi-lab`, **Hobby (free, non-commercial)** plan
+- **Every `git push` to `main` now redeploys the live site automatically.**
+
+### ⚠️ START HERE NEXT SESSION — three things, in order
+
+1. **Set the environment variable.** Vercel → Settings → Environment Variables → add `NEXT_PUBLIC_SITE_URL` = `https://revision-lab-sigma.vercel.app` (no trailing slash), then redeploy. Until this is done the sitemap and link previews point at a guessed address. The code fallback has been corrected to the real URL as a stopgap, but the env var is the proper fix.
+
+2. **There is one unpushed commit** fixing that fallback URL. Run `git push` to send it.
+
+3. **Check the live site works**: click into a subject, open a topic, flip a flashcard. Confirm the Login button is ABSENT — that's the `ACCOUNTS_ENABLED` safety switch doing its job, not a bug.
+
+### Then, in rough priority order
+
+- **Google Search Console** — verify the site, submit `https://revision-lab-sigma.vercel.app/sitemap.xml`. Deploying does not put you in Google; you must ask, then wait days-to-weeks.
+- **Database (Neon or Supabase)** — required before login can be turned back on. Only `app/lib/users.ts` needs rewriting; add `DATABASE_URL` and `SESSION_SECRET` to Vercel and accounts re-enable themselves automatically.
+- **Progress tracking** — the reason accounts exist. The dashboard has an empty state waiting for it.
+- **Get the content checked by teachers** before students rely on it, especially Maths (tier differences) and English (set texts vary).
+
+### Loose end from this session
+
+Matthew accidentally signed into a third-party service called **DeployWise** with his GitHub account while looking for Vercel. Worth revoking at github.com/settings/applications since it isn't needed.
+
 ## Going public (started 2026-08-08)
 
 **See `DEPLOYING.md`** for the full step-by-step. Summary of decisions and blockers:
