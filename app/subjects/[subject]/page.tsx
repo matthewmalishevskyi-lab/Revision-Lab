@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const subject = getSubject(slug);
   if (!subject) return { title: "Not found" };
 
-  // Just the subject name — the layout's title template adds "· Revision Hub"
+  // Just the subject name — the layout's title template adds "· Revision Lab"
   // automatically, so repeating it here would double it up.
   const topicCount = subject.years.reduce(
     (n, group) => n + group.topics.length,

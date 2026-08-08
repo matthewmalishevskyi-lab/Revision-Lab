@@ -19,12 +19,12 @@ const geistMono = Geist_Mono({
 // other page has to repeat the domain.
 //
 // The title `template` means any page setting a title of "Maths" automatically
-// becomes "Maths · Revision Hub" in the browser tab and in search results,
+// becomes "Maths · Revision Lab" in the browser tab and in search results,
 // without every page repeating the site name.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Revision Hub · Free GCSE revision notes and flashcards",
+    default: "Revision Lab · Free GCSE revision notes and flashcards",
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -49,14 +49,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: "Revision Hub · Free GCSE revision notes and flashcards",
+    title: "Revision Lab · Free GCSE revision notes and flashcards",
     description: SITE_DESCRIPTION,
     locale: "en_GB",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Revision Hub · Free GCSE revision",
+    title: "Revision Lab · Free GCSE revision",
     description: SITE_DESCRIPTION,
   },
   // Explicitly invites search engines to index the site.

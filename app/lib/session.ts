@@ -24,7 +24,11 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { cookies } from "next/headers";
 
-const COOKIE_NAME = "revision_hub_session";
+// Renaming this logs everyone out, because browsers will keep sending the old
+// cookie name and the server will no longer look for it. Harmless right now
+// (the only account is yours, on your laptop) — but worth knowing before ever
+// changing it once real people are signed in.
+const COOKIE_NAME = "revision_lab_session";
 const DATA_DIR = path.join(process.cwd(), "data");
 const SECRET_FILE = path.join(DATA_DIR, "session-secret.txt");
 

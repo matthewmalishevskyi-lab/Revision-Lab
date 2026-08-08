@@ -21,7 +21,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
       <Link href="/" className="flex items-center gap-3">
         <Logo className="h-9 w-9" />
         <span className="text-2xl font-semibold tracking-tight">
-          Revision Hub
+          Revision Lab
         </span>
       </Link>
 

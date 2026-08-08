@@ -69,7 +69,7 @@ export function LoginForm() {
       <hr className="mt-8 border-black/10 dark:border-white/10" />
 
       <p className="mt-6 text-center text-sm">
-        New to Revision Hub?{" "}
+        New to Revision Lab?{" "}
         <Link
           href="/register"
           className="font-semibold text-blue-600 hover:underline dark:text-blue-400"

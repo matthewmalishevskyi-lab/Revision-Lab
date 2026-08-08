@@ -1,4 +1,6 @@
-# Project Notes — GCSE Revision Website
+# Project Notes — Revision Lab (GCSE revision website)
+
+> **Renamed 2026-08-08:** the site was called *Revision Hub* until deployment day; Matthew settled on **Revision Lab** as the official name. All 19 mentions were changed, plus the session cookie name and the fallback site URL. The local folder and this repo's older commit messages still say "revision-site" — that's cosmetic and harmless. Older notes below may still refer to Revision Hub.
 
 This file is our shared memory. Read it at the start of every session before doing anything else. Update it whenever we make a decision, finish something, or learn a gotcha — don't let this go stale.
 
@@ -25,7 +27,7 @@ Rule for both AIs: explain the *why*, not just the *what*. Matthew should be abl
 
 - **2026-08-07**: Environment set up (Node, Git, Next.js app with TS/ESLint/Tailwind/App Router). Dev server runs. Edited `app/page.tsx` and confirmed hot reload works.
 - **2026-08-08**: Claude joined the project, connected to the repo, added this notes file.
-- **2026-08-08**: Matthew sketched the homepage layout (header w/ Login/Register, centred welcome box, three subject cards). Claude built it in `app/page.tsx`. Deliberately **no colour scheme yet** — greyscale only, styling comes later. Page title in `layout.tsx` changed to "Revision Hub". Typecheck passes.
+- **2026-08-08**: Matthew sketched the homepage layout (header w/ Login/Register, centred welcome box, three subject cards). Claude built it in `app/page.tsx`. Deliberately **no colour scheme yet** — greyscale only, styling comes later. Page title in `layout.tsx` changed to "Revision Lab". Typecheck passes.
 
 ## Design decisions
 
@@ -160,7 +162,7 @@ Content lives in `app/lib/content/`: `index.ts` is the registry and the type; on
 **SEO work done (all verified, 14 checks):**
 
 - `app/lib/site.ts` — single source for site URL/name/description, reads `NEXT_PUBLIC_SITE_URL` so the same code works locally and live.
-- Title template in the layout: pages set just their own title, "· Revision Hub" is appended automatically.
+- Title template in the layout: pages set just their own title, "· Revision Lab" is appended automatically.
 - Descriptions and canonical URLs on subject and topic pages; topic descriptions use the real content summary, truncated at a word boundary to ~155 chars (Google's display limit).
 - `app/sitemap.ts` — generated from the same SUBJECTS data as the pages, so it can never fall out of date. 42 URLs.
 - `app/robots.ts` — allows crawling, points at the sitemap, disallows private pages.
@@ -186,7 +188,7 @@ Content lives in `app/lib/content/`: `index.ts` is the registry and the type; on
 ## Open decisions (not yet made)
 
 - ~~Which GCSE subjects to launch with?~~ → Computer Science, Maths, English (from Matthew's homepage sketch)
-- Site name decided: **Revision Hub**
+- Site name decided: **Revision Lab**
 - Login/Register button exists in the UI but does nothing yet — real accounts are a big job (needs a backend), park it for now
 - Where subject/topic content lives — hardcoded in code, JSON/Markdown files, or a database? (leaning towards simple data files to start, database later if needed)
 - Styling approach: plain Tailwind utility classes vs. a component library?

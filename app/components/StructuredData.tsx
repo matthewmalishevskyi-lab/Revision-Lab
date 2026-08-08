@@ -2,7 +2,7 @@
 //
 // A search engine reading your topic page sees words and has to guess what
 // they are. Structured data tells it outright: this is a learning resource,
-// for GCSE students, about this subject, published by Revision Hub.
+// for GCSE students, about this subject, published by Revision Lab.
 //
 // The format is JSON-LD, agreed by Google, Bing and others at schema.org. It's
 // invisible to visitors — it sits in a script tag that browsers don't render —

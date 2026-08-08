@@ -1,4 +1,4 @@
-// The homepage of Revision Hub.
+// The homepage of Revision Lab.
 // `app/page.tsx` IS the route for "/" in the App Router.
 
 import Link from "next/link";
@@ -28,15 +28,15 @@ export default async function Home() {
       {/* ---------- Welcome box ---------- */}
       <section className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/60 bg-white/55 px-8 py-10 text-center shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
         <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
-          {user ? `Welcome back, ${user.name}` : "Welcome to Revision Hub"}
+          {user ? `Welcome back, ${user.name}` : "Welcome to Revision Lab"}
         </h1>
         <p className="mt-5 text-lg opacity-70 sm:text-2xl">
           {/* Once you're logged in the heading is "Welcome back, <name>", which
               no longer says the site's name anywhere — so the tagline picks it
               up. Logged out, the heading already reads "Welcome to Revision
-              Hub", and repeating it here would be clumsy. */}
+              Lab", and repeating it here would be clumsy. */}
           {user
-            ? "Revision Hub: Everything you would need for GCSE revision"
+            ? "Revision Lab: Everything you would need for GCSE revision"
             : "Everything you would need for GCSE revision"}
         </p>
       </section>

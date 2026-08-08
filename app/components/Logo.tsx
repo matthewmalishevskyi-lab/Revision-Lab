@@ -1,10 +1,10 @@
-// The Revision Hub mark: an open book. Small, so it works at any size.
+// The Revision Lab mark: an open book. Small, so it works at any size.
 export function Logo({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 48 48"
       role="img"
-      aria-label="Revision Hub"
+      aria-label="Revision Lab"
       className={className}
     >
       <path

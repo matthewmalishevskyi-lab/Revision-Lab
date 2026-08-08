@@ -9,9 +9,9 @@
 // Vercel to your actual domain once you have one — until then the fallback is
 // used, and the only consequence is that shared links preview oddly.
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revision-hub.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revision-lab.vercel.app";
 
-export const SITE_NAME = "Revision Hub";
+export const SITE_NAME = "Revision Lab";
 
 export const SITE_DESCRIPTION =
   "Free GCSE revision for Computer Science, Maths and English. Key facts, flashcards and exam technique for every topic across Years 9, 10 and 11.";

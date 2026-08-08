@@ -1,4 +1,4 @@
-# Putting Revision Hub online
+# Putting Revision Lab online
 
 Written for doing this the first time. Follow it in order — each step depends on the one before.
 
@@ -19,12 +19,12 @@ Written for doing this the first time. Follow it in order — each step depends 
 GitHub stores your code online. Vercel reads from it, and it's your backup.
 
 1. Create a free account at [github.com](https://github.com) (minimum age 13).
-2. Make a new repository called `revision-site`. **Leave it empty** — no README, no .gitignore. Adding files here causes a conflict later.
+2. Make a new repository called `revision-lab`. **Leave it empty** — no README, no .gitignore. Adding files here causes a conflict later.
 3. Decide public or private. Public means anyone can read your code (fine, and normal). Private is also fine and works with Vercel.
 4. In your project folder, run:
 
 ```bash
-git remote add origin https://github.com/YOUR-USERNAME/revision-site.git
+git remote add origin https://github.com/YOUR-USERNAME/revision-lab.git
 git branch -M main
 git push -u origin main
 ```
@@ -39,11 +39,11 @@ Replace `YOUR-USERNAME`. You'll be asked to sign in.
 
 1. Your parent creates an account at [vercel.com](https://vercel.com) and signs in with GitHub.
 2. Click **Add New → Project**.
-3. Choose your `revision-site` repository.
+3. Choose your `revision-lab` repository.
 4. Vercel detects Next.js automatically. Change nothing.
 5. Click **Deploy**.
 
-Two or three minutes later the site is live at something like `revision-site.vercel.app`.
+Two or three minutes later the site is live at something like `revision-lab.vercel.app`.
 
 **Every future push to GitHub redeploys automatically.** That's the part that feels like magic: `git push` and the live site updates itself.
 
@@ -52,7 +52,7 @@ Two or three minutes later the site is live at something like `revision-site.ver
 ## Step 3 — Tell the site its own address
 
 1. In Vercel: **Settings → Environment Variables**.
-2. Add `NEXT_PUBLIC_SITE_URL` set to your real address, e.g. `https://revision-site.vercel.app` — no trailing slash.
+2. Add `NEXT_PUBLIC_SITE_URL` set to your real address, e.g. `https://revision-lab.vercel.app` — no trailing slash.
 3. Redeploy.
 
 This matters because search engines and link previews need full addresses, not relative ones. Without it your sitemap points at the wrong domain.
