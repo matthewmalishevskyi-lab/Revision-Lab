@@ -194,6 +194,161 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "It is circular and examiners see it constantly. Say that electronic components have two reliable states — on and off, current or no current — so binary maps directly onto the hardware.",
       },
     ],
+
+    workedExamples: [
+      {
+        question: "Convert the binary number 10110110 to denary.",
+        steps: [
+          "Write the place values above the bits, doubling from right to left: 128 64 32 16 8 4 2 1.",
+          "Line the bits up underneath:  1  0  1  1  0  1  1  0",
+          "Take only the place values with a 1 beneath them: 128, 32, 16, 4 and 2.",
+          "Add them: 128 + 32 = 160, + 16 = 176, + 4 = 180, + 2 = 182.",
+        ],
+        answer: "182",
+      },
+      {
+        question: "Convert 173 to an 8-bit binary number.",
+        steps: [
+          "Start at the largest place value and ask 'does it fit into what's left?'",
+          "128 fits into 173 → write 1. Remaining: 173 − 128 = 45.",
+          "64 does not fit into 45 → write 0.",
+          "32 fits into 45 → write 1. Remaining: 45 − 32 = 13.",
+          "16 does not fit into 13 → write 0.",
+          "8 fits into 13 → write 1. Remaining: 13 − 8 = 5.",
+          "4 fits into 5 → write 1. Remaining: 5 − 4 = 1.",
+          "2 does not fit into 1 → write 0. 1 fits into 1 → write 1. Remaining: 0.",
+          "Reading the digits in order gives 10101101. Check: it has 8 bits, as asked.",
+        ],
+        answer: "10101101",
+      },
+      {
+        question: "Add the 8-bit numbers 01101101 and 01011010. State whether overflow occurs.",
+        steps: [
+          "Work right to left, exactly like column addition, carrying where needed.",
+          "Column by column from the right: 1+0=1; 0+1=1; 1+0=1; 1+1=0 carry 1; 0+1+1(carry)=0 carry 1; 1+0+1(carry)=0 carry 1; 1+1+1(carry)=1 carry 1; 0+0+1(carry)=1.",
+          "Result: 11000111.",
+          "Count the bits in the answer: 8. The register holds 8. Nothing has been pushed off the end.",
+          "Sanity check in denary: 109 + 90 = 199, and 11000111 is 128+64+4+2+1 = 199. ✓",
+        ],
+        answer: "11000111, and no overflow occurs because the result still fits in 8 bits.",
+      },
+      {
+        question: "Convert the binary number 11011110 to hexadecimal.",
+        steps: [
+          "Split into nibbles of 4 bits, starting FROM THE RIGHT: 1101 and 1110.",
+          "Convert the left nibble: 1101 = 8 + 4 + 1 = 13, and 13 in hex is D.",
+          "Convert the right nibble: 1110 = 8 + 4 + 2 = 14, and 14 in hex is E.",
+          "Write them in the same order as the nibbles.",
+        ],
+        answer: "DE",
+      },
+      {
+        question:
+          "An image is 800 pixels wide, 600 pixels high, with a colour depth of 24 bits. Calculate the file size in megabytes.",
+        steps: [
+          "Use the formula: file size in bits = width × height × colour depth.",
+          "800 × 600 = 480,000 pixels.",
+          "480,000 × 24 = 11,520,000 bits.",
+          "Convert to bytes by dividing by 8: 11,520,000 ÷ 8 = 1,440,000 bytes.",
+          "Convert to kilobytes: 1,440,000 ÷ 1000 = 1,440 KB.",
+          "Convert to megabytes: 1,440 ÷ 1000 = 1.44 MB.",
+        ],
+        answer: "1.44 MB",
+      },
+      {
+        question:
+          "A 30-second sound clip is recorded at a sample rate of 44,100 Hz with a bit depth of 16. Calculate the file size in megabytes.",
+        steps: [
+          "Use the formula: file size in bits = sample rate × bit depth × duration in seconds.",
+          "44,100 × 16 = 705,600 bits per second.",
+          "705,600 × 30 = 21,168,000 bits.",
+          "Divide by 8 for bytes: 2,646,000 bytes.",
+          "Divide by 1000 for KB: 2,646 KB. Divide by 1000 again for MB: 2.646 MB.",
+        ],
+        answer: "2.646 MB (about 2.6 MB)",
+      },
+    ],
+
+    practice: [
+      {
+        question: "Convert the binary number 01001011 to denary.",
+        answer:
+          "75. The place values with a 1 beneath them are 64, 8, 2 and 1, and 64 + 8 + 2 + 1 = 75.",
+      },
+      {
+        question: "Convert 92 to an 8-bit binary number.",
+        answer:
+          "01011100. 64 fits (28 left), 32 does not... careful: 64 fits leaving 28; 32 does not fit; 16 fits leaving 12; 8 fits leaving 4; 4 fits leaving 0. That gives 0-1-0-1-1-1-0-0 reading from 128 downwards.",
+      },
+      {
+        question:
+          "Perform a left shift of 2 places on 00010110. Give the result in binary and explain what it does to the value.",
+        answer:
+          "01011000. A left shift of 2 places multiplies the number by 2² = 4. The original was 22 in denary, and the result is 88, which is 22 × 4.",
+      },
+      {
+        question: "Convert the hexadecimal number 3F to binary and to denary.",
+        answer:
+          "Binary 00111111, denary 63. Convert each hex digit to 4 bits: 3 = 0011 and F = 15 = 1111. In denary, 3 × 16 + 15 = 63.",
+      },
+      {
+        question:
+          "Explain why hexadecimal is used to represent binary values, when computers do not use hexadecimal themselves.",
+        answer:
+          "Because hex is for humans, not machines. One hex digit replaces four binary digits, so values are around a quarter of the length, which makes them much faster to read and far less error-prone to write down or copy. The computer still stores everything in binary.",
+      },
+      {
+        question:
+          "A programmer needs to compress a file containing program source code. Should they use lossy or lossless compression? Justify your answer.",
+        answer:
+          "Lossless. Source code must be restored exactly — lossy compression permanently discards data, and a single changed character would stop the program compiling or change what it does. Lossy is only acceptable where a small, unnoticeable quality reduction is fine, such as a photograph or a music file.",
+      },
+      {
+        question:
+          "An image has a resolution of 1024 × 768 and a colour depth of 8 bits. Calculate the file size in kilobytes.",
+        answer:
+          "786.432 KB. 1024 × 768 = 786,432 pixels; × 8 = 6,291,456 bits; ÷ 8 = 786,432 bytes; ÷ 1000 = 786.432 KB.",
+      },
+      {
+        question:
+          "State what happens when two 8-bit numbers are added and the result requires 9 bits.",
+        answer:
+          "An overflow error occurs. The result needs more bits than the register can hold, so the extra bit is lost and the value stored is incorrect.",
+      },
+    ],
+
+    misconceptions: [
+      {
+        wrong: "\"A negative binary shift or a right shift always divides exactly.\"",
+        right:
+          "A right shift divides by 2 for each place, but any bits pushed off the right-hand end are lost forever. 00000101 (5) shifted right one place gives 00000010 (2), not 2.5. The result is rounded down and the lost bit cannot be recovered.",
+      },
+      {
+        wrong: "\"Compression makes a file smaller, so it always helps.\"",
+        right:
+          "Run length encoding can make a file BIGGER. It stores runs as a value plus a count, so data with few repeats — a photograph of a busy scene, for instance — ends up with more pairs than original values. Compression suits the data it was designed for.",
+      },
+      {
+        wrong: "\"Unicode is just a bigger version of ASCII, so it's always better.\"",
+        right:
+          "Unicode covers vastly more characters, but every character takes more storage. For a file of plain English text, ASCII is smaller and entirely sufficient. 'Better' depends on whether you need the extra characters.",
+      },
+      {
+        wrong: "\"1 kilobyte is 1024 bytes.\"",
+        right:
+          "It depends who you ask, which is why exam questions specify. AQA and OCR currently use 1000 bytes = 1 KB in their specifications. 1024 bytes is properly called a kibibyte (KiB). Use whichever your board uses, and don't mix them within one calculation.",
+      },
+      {
+        wrong: "\"Metadata is part of the image, so it doesn't affect file size.\"",
+        right:
+          "Metadata is stored in the same file and does add to its real size. Exam calculations normally ignore it unless the question gives you a figure — but the real file on disk is always slightly larger than the calculated pixel data.",
+      },
+      {
+        wrong: "\"Higher colour depth means more pixels.\"",
+        right:
+          "Colour depth and resolution are different things. Resolution is how MANY pixels there are; colour depth is how many bits describe EACH pixel. Doubling the colour depth doubles the file size without adding a single pixel.",
+      },
+    ],
   },
 
   // ─────────────────────────── YEAR 9 ───────────────────────────

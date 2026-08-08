@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Flashcards } from "../../../components/Flashcards";
 import { Icon } from "../../../components/Icon";
+import { Practice } from "../../../components/Practice";
 import { LadderCompanion } from "../../../components/LadderCompanion";
 import { SiteHeader } from "../../../components/SiteHeader";
 import {
@@ -221,6 +222,106 @@ export default async function TopicPage({ params }: Props) {
                 ))}
               </div>
             </section>
+
+            {/* Worked examples — the method actually being applied.
+                `content.workedExamples &&` means the whole section vanishes on
+                topics that don't have any yet, rather than showing an empty
+                box. That's what makes the optional fields safe. */}
+            {content.workedExamples && (
+              <section className="mt-10">
+                <h2 className="text-2xl font-bold tracking-tight">
+                  Worked examples
+                </h2>
+                <p className="mt-1 opacity-60">
+                  Follow the working, then cover it up and try the same question
+                  yourself.
+                </p>
+                <div className="mt-4 space-y-4">
+                  {content.workedExamples.map((example) => (
+                    <div
+                      key={example.question}
+                      className="overflow-hidden rounded-2xl border border-white/60 bg-white/70 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+                    >
+                      <p
+                        className="px-6 py-4 font-medium"
+                        style={{ backgroundColor: `${style.text}12` }}
+                      >
+                        {example.question}
+                      </p>
+                      <ol className="space-y-2.5 px-6 py-5">
+                        {example.steps.map((step, stepIndex) => (
+                          <li key={step} className="flex gap-3 leading-relaxed">
+                            <span
+                              aria-hidden="true"
+                              className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                              style={{ backgroundColor: style.text }}
+                            >
+                              {stepIndex + 1}
+                            </span>
+                            <span className="opacity-80">{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                      <p
+                        className="border-t border-black/5 px-6 py-4 font-semibold dark:border-white/10"
+                        style={{ color: style.text }}
+                      >
+                        Answer: {example.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Common mistakes */}
+            {content.misconceptions && (
+              <section className="mt-10">
+                <h2 className="text-2xl font-bold tracking-tight">
+                  Common mistakes
+                </h2>
+                <p className="mt-1 opacity-60">
+                  The wrong ideas that cost the most marks.
+                </p>
+                <div className="mt-4 space-y-3">
+                  {content.misconceptions.map((item) => (
+                    <div
+                      key={item.wrong}
+                      className="rounded-2xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+                    >
+                      <p className="flex gap-3 font-medium text-red-700 dark:text-red-400">
+                        <span aria-hidden="true">&times;</span>
+                        <span>{item.wrong}</span>
+                      </p>
+                      <p className="mt-2 flex gap-3 leading-relaxed">
+                        <span
+                          aria-hidden="true"
+                          className="font-bold text-green-700 dark:text-green-400"
+                        >
+                          &#10003;
+                        </span>
+                        <span className="opacity-80">{item.right}</span>
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Practice questions */}
+            {content.practice && (
+              <section className="mt-10">
+                <h2 className="text-2xl font-bold tracking-tight">
+                  Practice questions
+                </h2>
+                <p className="mt-1 opacity-60">
+                  Answer before you reveal. Testing yourself beats rereading.
+                </p>
+                <div className="mt-4">
+                  <Practice questions={content.practice} colour={style.text} />
+                </div>
+              </section>
+            )}
 
             {/* Flashcards */}
             <section className="mt-10">
