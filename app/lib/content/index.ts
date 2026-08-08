@@ -19,9 +19,24 @@ import { COMPUTER_SCIENCE } from "./computer-science";
 import { ENGLISH } from "./english";
 import { MATHS } from "./maths";
 
+// ─── Higher tier ────────────────────────────────────────────────────────────
+//
+// GCSE Maths is split into two tiers. Foundation is graded 1–5; Higher is
+// graded 4–9 and covers extra material. Some topics — the cosine rule,
+// completing the square, histograms with unequal class widths, circle theorems,
+// vector proofs — appear ONLY on the Higher paper.
+//
+// Marking them matters in both directions. A Foundation student who spends a
+// week on circle theorems has wasted a week on something they will never be
+// asked. A Higher student who skips them loses marks they could have had.
+//
+// Anything flagged `higherOnly` renders with a visible badge. Which tier you
+// are on is decided by your school, and the exact split varies slightly between
+// exam boards — so treat the flag as a strong hint to check, not gospel.
+
 export type TopicContent = {
   summary: string;
-  keyFacts: { heading: string; points: string[] }[];
+  keyFacts: { heading: string; points: string[]; higherOnly?: boolean }[];
   flashcards: { term: string; definition: string }[];
   examTips: { tip: string; detail: string }[];
 
@@ -41,6 +56,7 @@ export type TopicContent = {
     question: string;
     steps: string[];
     answer: string;
+    higherOnly?: boolean;
   }[];
 
   // Self-testing. You type an answer and the site marks it.
@@ -60,6 +76,7 @@ export type TopicContent = {
     question: string;
     accept?: string[];
     answer: string;
+    higherOnly?: boolean;
   }[];
 
   // "Students often think X, but actually Y." Targets the specific wrong ideas

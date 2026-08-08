@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Flashcards } from "../../../components/Flashcards";
+import { HigherBadge, HigherNotice } from "../../../components/HigherBadge";
 import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";
 import { LadderCompanion } from "../../../components/LadderCompanion";
@@ -81,6 +82,15 @@ export default async function TopicPage({ params }: Props) {
   // without the site ever being broken in between.
   const content = getTopicContent(subject.slug, topic.slug);
 
+  // Does anything on this page carry the Higher tier flag? Worked out once here
+  // rather than checked in three places further down.
+  const hasHigherContent = Boolean(
+    content &&
+      (content.keyFacts.some((b) => b.higherOnly) ||
+        content.workedExamples?.some((e) => e.higherOnly) ||
+        content.practice?.some((q) => q.higherOnly)),
+  );
+
   return (
     // This wrapper exists purely so the ladder can be `absolute` against the
     // FULL height of the page. `relative` on a parent is what an absolutely
@@ -156,9 +166,14 @@ export default async function TopicPage({ params }: Props) {
 
           <div className="px-8 py-10">
             {content ? (
-              <p className="max-w-prose text-lg leading-relaxed opacity-80">
-                {content.summary}
-              </p>
+              <>
+                <p className="max-w-prose text-lg leading-relaxed opacity-80">
+                  {content.summary}
+                </p>
+                {/* Shown once, before the first badge, so the reader meets the
+                    explanation before they meet the label. */}
+                {hasHigherContent && <HigherNotice />}
+              </>
             ) : (
               <>
                 <h2 className="text-2xl font-semibold">Content coming soon</h2>
@@ -205,7 +220,10 @@ export default async function TopicPage({ params }: Props) {
                     key={block.heading}
                     className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
                   >
-                    <h3 className="text-lg font-semibold">{block.heading}</h3>
+                    <h3 className="flex flex-wrap items-center gap-3 text-lg font-semibold">
+                    {block.heading}
+                    {block.higherOnly && <HigherBadge />}
+                  </h3>
                     <ul className="mt-3 space-y-2">
                       {block.points.map((point) => (
                         <li key={point} className="flex gap-3 leading-relaxed">
@@ -242,12 +260,19 @@ export default async function TopicPage({ params }: Props) {
                       key={example.question}
                       className="overflow-hidden rounded-2xl border border-white/60 bg-white/70 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
                     >
-                      <p
-                        className="px-6 py-4 font-medium"
+                      <div
+                        className="px-6 py-4"
                         style={{ backgroundColor: `${style.text}12` }}
                       >
-                        {example.question}
-                      </p>
+                        {example.higherOnly && (
+                          <p className="mb-2">
+                            <HigherBadge />
+                          </p>
+                        )}
+                        <p className="whitespace-pre-line font-medium">
+                          {example.question}
+                        </p>
+                      </div>
                       <ol className="space-y-2.5 px-6 py-5">
                         {example.steps.map((step, stepIndex) => (
                           <li key={step} className="flex gap-3 leading-relaxed">

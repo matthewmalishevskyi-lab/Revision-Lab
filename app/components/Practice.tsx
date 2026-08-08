@@ -25,8 +25,14 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from "react";
+import { HigherBadge } from "./HigherBadge";
 
-type Question = { question: string; accept?: string[]; answer: string };
+type Question = {
+  question: string;
+  accept?: string[];
+  answer: string;
+  higherOnly?: boolean;
+};
 
 // Makes typed answers forgiving without making them wrong.
 //
@@ -126,7 +132,14 @@ export function Practice({
                 </span>
 
                 <div className="min-w-0 flex-1">
-                  <p className="font-medium leading-relaxed">{item.question}</p>
+                  {item.higherOnly && (
+                    <p className="mb-2">
+                      <HigherBadge />
+                    </p>
+                  )}
+                  <p className="whitespace-pre-line font-medium leading-relaxed">
+                    {item.question}
+                  </p>
 
                   {autoMarked ? (
                     <>
