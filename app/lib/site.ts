@@ -1,0 +1,17 @@
+// Site-wide settings that need to be identical everywhere.
+//
+// The URL matters more than it looks. Search engines and social media need
+// ABSOLUTE addresses (https://...) rather than relative ones like /subjects,
+// because they're reading your page from somewhere else entirely.
+//
+// It reads from an environment variable so the same code works on your laptop
+// and on the real site without editing anything. Set NEXT_PUBLIC_SITE_URL in
+// Vercel to your actual domain once you have one — until then the fallback is
+// used, and the only consequence is that shared links preview oddly.
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revision-hub.vercel.app";
+
+export const SITE_NAME = "Revision Hub";
+
+export const SITE_DESCRIPTION =
+  "Free GCSE revision for Computer Science, Maths and English. Key facts, flashcards and exam technique for every topic across Years 9, 10 and 11.";

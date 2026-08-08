@@ -3,7 +3,11 @@ import Link from "next/link";
 import { AuthShell } from "../components/AuthShell";
 
 export const metadata: Metadata = {
-  title: "Forgot password · Revision Hub",
+  title: "Forgot password",
+  // Deliberately kept OUT of search results. A login form is no use to someone
+  // arriving from Google, and a dashboard is private. Search engines should
+  // send people to the revision content instead.
+  robots: { index: false, follow: false },
 };
 
 // A placeholder, on purpose.

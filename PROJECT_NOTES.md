@@ -149,6 +149,29 @@ Content lives in `app/lib/content/`: `index.ts` is the registry and the type; on
 
 **⚠️ Accuracy:** content should be checked by someone who teaches the subject before students rely on it — especially if the site ever earns money. Wrong content stops being embarrassing and starts being harmful.
 
+## Going public (started 2026-08-08)
+
+**See `DEPLOYING.md`** for the full step-by-step. Summary of decisions and blockers:
+
+- **Vercel free (Hobby) plan, non-commercial.** Matthew's choice for now. Note: Hobby is explicitly non-commercial — the moment the site earns money it needs Pro (~$20/mo).
+- **Age:** Vercel requires account holders to be 16+. Matthew is 15, so a parent/guardian owns the account. Parent is on board.
+- **Everything is committed to git** (was previously only the create-next-app commit). `data/` correctly excluded — verified no email, password hash or session key was committed.
+
+**SEO work done (all verified, 14 checks):**
+
+- `app/lib/site.ts` — single source for site URL/name/description, reads `NEXT_PUBLIC_SITE_URL` so the same code works locally and live.
+- Title template in the layout: pages set just their own title, "· Revision Hub" is appended automatically.
+- Descriptions and canonical URLs on subject and topic pages; topic descriptions use the real content summary, truncated at a word boundary to ~155 chars (Google's display limit).
+- `app/sitemap.ts` — generated from the same SUBJECTS data as the pages, so it can never fall out of date. 42 URLs.
+- `app/robots.ts` — allows crawling, points at the sitemap, disallows private pages.
+- Login/register/dashboard/forgot-password marked `noindex`.
+- Open Graph tags — matters more than search here, since students share links in group chats.
+- `app/components/StructuredData.tsx` — JSON-LD marking topics as GCSE `LearningResource`. Uses `dangerouslySetInnerHTML`, which is safe here ONLY because every value comes from our own content files, never user input.
+
+**Still blocking a full launch with accounts:** the JSON file store. Login must stay off, or `app/lib/users.ts` must be migrated to Postgres (Neon or Supabase). Everything else was built so only that one file needs rewriting.
+
+**Reality check on Google:** deploying doesn't put you in search results. Search Console verification + sitemap submission, then days-to-weeks to appear and months to rank for competitive terms. Early users will arrive from shared links, not search.
+
 ## Roadmap (rough order)
 
 1. Decide overall architecture (routing structure for subjects/topics)

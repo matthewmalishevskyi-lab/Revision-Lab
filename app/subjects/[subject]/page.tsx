@@ -5,6 +5,7 @@ import { Icon } from "../../components/Icon";
 import { MASCOTS } from "../../components/Mascots";
 import { SiteHeader } from "../../components/SiteHeader";
 import { BookArt, ExamArt } from "../../components/YearArt";
+import { SITE_NAME } from "../../lib/site";
 import { getSubject, SUBJECTS, YEAR_STYLES } from "../../lib/subjects";
 
 // The folder is called [subject] — square brackets mean "this bit of the URL is
@@ -26,7 +27,29 @@ type Props = { params: Promise<{ subject: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { subject: slug } = await params;
   const subject = getSubject(slug);
-  return { title: subject ? `${subject.name} · Revision Hub` : "Not found" };
+  if (!subject) return { title: "Not found" };
+
+  // Just the subject name — the layout's title template adds "· Revision Hub"
+  // automatically, so repeating it here would double it up.
+  const topicCount = subject.years.reduce(
+    (n, group) => n + group.topics.length,
+    0,
+  );
+  const description = `Free GCSE ${subject.name} revision covering ${topicCount} topics across Years 9, 10 and 11. Key facts, flashcards and exam technique for each one.`;
+
+  return {
+    title: `GCSE ${subject.name} revision`,
+    description,
+    // A canonical URL tells search engines which address is the real one, so
+    // the same page reached by different links doesn't get treated as
+    // duplicate content and pushed down the rankings.
+    alternates: { canonical: `/subjects/${subject.slug}` },
+    openGraph: {
+      title: `GCSE ${subject.name} revision · ${SITE_NAME}`,
+      description,
+      url: `/subjects/${subject.slug}`,
+    },
+  };
 }
 
 export default async function SubjectPage({ params }: Props) {

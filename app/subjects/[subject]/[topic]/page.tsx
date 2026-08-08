@@ -4,7 +4,12 @@ import { notFound } from "next/navigation";
 import { Flashcards } from "../../../components/Flashcards";
 import { Icon } from "../../../components/Icon";
 import { SiteHeader } from "../../../components/SiteHeader";
+import {
+  StructuredData,
+  learningResourceSchema,
+} from "../../../components/StructuredData";
 import { getTopicContent } from "../../../lib/content";
+import { SITE_NAME, SITE_URL } from "../../../lib/site";
 import { getTopic, SUBJECTS, YEAR_STYLES } from "../../../lib/subjects";
 
 // Two variables in the URL now: /subjects/[subject]/[topic].
@@ -27,11 +32,36 @@ export function generateStaticParams() {
 type Props = { params: Promise<{ subject: string; topic: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { subject, topic } = await params;
-  const found = getTopic(subject, topic);
+  const { subject: subjectSlug, topic: topicSlug } = await params;
+  const found = getTopic(subjectSlug, topicSlug);
+  if (!found) return { title: "Not found" };
+
+  const content = getTopicContent(subjectSlug, topicSlug);
+
+  // Use the real topic summary as the search description where we have one.
+  // Google shows roughly 155 characters, so anything longer gets cut off —
+  // hence trimming to a sensible length at a word boundary.
+  const description = content
+    ? truncate(content.summary, 155)
+    : `GCSE ${found.subject.name} revision: ${found.topic.title}. Key facts, flashcards and exam technique.`;
+
   return {
-    title: found ? `${found.topic.title} · Revision Hub` : "Not found",
+    title: `${found.topic.title} · GCSE ${found.subject.name}`,
+    description,
+    alternates: { canonical: `/subjects/${subjectSlug}/${topicSlug}` },
+    openGraph: {
+      title: `${found.topic.title} · GCSE ${found.subject.name}`,
+      description,
+      url: `/subjects/${subjectSlug}/${topicSlug}`,
+    },
   };
+}
+
+// Cuts text to a maximum length without slicing a word in half.
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return cut.slice(0, cut.lastIndexOf(" ")) + "…";
 }
 
 export default async function TopicPage({ params }: Props) {
@@ -51,6 +81,22 @@ export default async function TopicPage({ params }: Props) {
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-8">
+      {/* Invisible to visitors — this tells search engines what kind of page
+          this is, so it can appear as a learning resource rather than just
+          another web page. */}
+      <StructuredData
+        data={learningResourceSchema({
+          siteUrl: SITE_URL,
+          siteName: SITE_NAME,
+          name: `${topic.title} — GCSE ${subject.name}`,
+          description: content
+            ? content.summary
+            : `GCSE ${subject.name} revision: ${topic.title}.`,
+          path: `/subjects/${subject.slug}/${topic.slug}`,
+          subject: subject.name,
+        })}
+      />
+
       <SiteHeader greeting={false} />
 
       {/* Breadcrumbs: where you are, and a way back up. Cheap to add, and

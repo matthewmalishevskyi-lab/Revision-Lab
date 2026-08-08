@@ -5,7 +5,11 @@ import { getCurrentUser } from "../lib/actions";
 import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = {
-  title: "Log in · Revision Hub",
+  title: "Log in",
+  // Deliberately kept OUT of search results. A login form is no use to someone
+  // arriving from Google, and a dashboard is private. Search engines should
+  // send people to the revision content instead.
+  robots: { index: false, follow: false },
 };
 
 // A folder called `login` containing `page.tsx` IS the /login route. No router

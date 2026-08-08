@@ -4,7 +4,9 @@
 import Link from "next/link";
 import { MASCOTS } from "./components/Mascots";
 import { SiteHeader } from "./components/SiteHeader";
+import { StructuredData, websiteSchema } from "./components/StructuredData";
 import { getCurrentUser } from "./lib/actions";
+import { SITE_NAME, SITE_URL } from "./lib/site";
 import { SUBJECTS } from "./lib/subjects";
 
 // Different walking speeds so the three characters never march in step — three
@@ -19,6 +21,8 @@ export default async function Home() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-10">
+      <StructuredData data={websiteSchema(SITE_URL, SITE_NAME)} />
+
       <SiteHeader />
 
       {/* ---------- Welcome box ---------- */}

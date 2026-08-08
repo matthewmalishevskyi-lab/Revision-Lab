@@ -7,7 +7,11 @@ import { getCurrentUser } from "../lib/actions";
 import { SUBJECTS } from "../lib/subjects";
 
 export const metadata: Metadata = {
-  title: "Dashboard · Revision Hub",
+  title: "Dashboard",
+  // Deliberately kept OUT of search results. A login form is no use to someone
+  // arriving from Google, and a dashboard is private. Search engines should
+  // send people to the revision content instead.
+  robots: { index: false, follow: false },
 };
 
 export default async function DashboardPage() {
