@@ -36,19 +36,39 @@ type Question = {
 
 // Makes typed answers forgiving without making them wrong.
 //
-// Removed: capitals, spaces, commas, hyphens and a trailing full stop. So
-// "1.44 MB", "1.44mb" and "1.44 mb." all match, and "run-length encoding"
-// matches "run length encoding" — because none of those differences is what
-// the question is testing.
+// ─────────────────────────────────────────────────────────────────────────────
+// A REAL BUG THIS FUNCTION USED TO HAVE
 //
-// NOT removed: leading zeros. "1011100" stays different from "01011100",
-// because a missing leading zero on an 8-bit answer genuinely IS wrong and
-// examiners mark it as such. Being forgiving about typing is good; being
-// forgiving about the actual answer would teach the wrong thing.
+// The first version stripped every hyphen, so that "run-length encoding" would
+// match "run length encoding". Sensible-looking, and quietly catastrophic: it
+// also stripped the MINUS SIGN. "-3" became "3", so a student answering 3 to a
+// question whose answer was -3 was marked CORRECT.
+//
+// An automated check caught it. The lesson is worth more than the fix: a rule
+// that looks harmless in the case you were thinking about ("hyphens are just
+// punctuation") can be badly wrong in a case you weren't ("minus is not
+// punctuation, it's part of the number"). Test the edges, not the middle.
+//
+// The fix is to remove a hyphen only when it sits BETWEEN TWO LETTERS, which is
+// where word hyphens live. A hyphen next to a digit is a minus sign and stays.
+// ─────────────────────────────────────────────────────────────────────────────
+//
+// Removed: capitals, spaces, commas, word hyphens and a trailing full stop. So
+// "1.44 MB", "1.44mb" and "1.44 mb." all match, and "run-length encoding"
+// matches "run length encoding".
+//
+// NOT removed: minus signs, and leading zeros. "1011100" stays different from
+// "01011100", because a missing leading zero on an 8-bit answer genuinely IS
+// wrong and examiners mark it as such. Forgiving about typing, strict about the
+// answer.
 function normalise(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[\s,\-–—]/g, "")
+    // Unify the various dash characters people and word processors produce.
+    .replace(/[–—−]/g, "-")
+    // Drop hyphens only where a letter sits on each side.
+    .replace(/(?<=[a-z])-(?=[a-z])/g, "")
+    .replace(/[\s,]/g, "")
     .replace(/[.!?]+$/, "");
 }
 
