@@ -593,25 +593,39 @@ export function Sterling(props: MascotProps) {
           Every shadow below is on the right of its own form. */}
 
       {/* ── Shoes ── */}
-      <path d="M40 126 Q40 120 50 120 Q60 120 60 126 Q60 131 50 131 Q40 131 40 126 Z" fill="#152826" />
-      <path d="M60 126 Q60 120 70 120 Q80 120 80 126 Q80 131 70 131 Q60 131 60 126 Z" fill="#152826" />
-      <path d="M62 121 Q72 121 76 124 Q78 130 70 131 Q64 131 62 128 Z" fill="#000000" opacity={0.25} />
+      {/* ── Shoes ──
+             The first version was two mirrored ovals meeting in the middle, so
+             the toes pointed inwards and touched: he stood pigeon-toed. Feet
+             turn slightly OUT and stand apart, so each shoe now has its toe
+             further from the centre line than its heel, with a gap between
+             them. Only visible once rendered, which is what the preview script
+             is for. */}
+      <path d="M34 127 Q34 121 44 119.5 Q54 119.5 54.5 126 Q54.5 131.5 44 132.5 Q34 132.5 34 127 Z" fill="#101014" />
+      <path d="M86 127 Q86 121 76 119.5 Q66 119.5 65.5 126 Q65.5 131.5 76 132.5 Q86 132.5 86 127 Z" fill="#101014" />
+      {/* Shading on the right shoe, and a paler sole strip on both, so the
+          shoes separate from black trousers instead of merging into them. */}
+      <path d="M76 119.5 Q86 121 86 127 Q86 132.5 76 132.5 Q80 126 76 119.5 Z" fill="#000000" opacity={0.3} />
+      <path d="M34.4 129 Q40 133 50 132 Q54 131 54.4 128.6 Q50 134 42 134 Q35 133.6 34.4 129 Z" fill="#8b8b96" opacity={0.55} />
+      <path d="M85.6 129 Q80 133 70 132 Q66 131 65.6 128.6 Q70 134 78 134 Q85 133.6 85.6 129 Z" fill="#8b8b96" opacity={0.4} />
+      {/* A toe-cap seam — one line, and it turns a blob into a shoe. */}
+      <path d="M39.5 121.5 Q37.5 126 39.5 130.5" stroke="#3a3a44" strokeWidth={1.3} fill="none" strokeLinecap="round" />
+      <path d="M80.5 121.5 Q82.5 126 80.5 130.5" stroke="#3a3a44" strokeWidth={1.3} fill="none" strokeLinecap="round" />
 
       {/* ── Trouser legs ──
              Lengthened after looking at the first render: with a short body he
              read as squat and chibi rather than as a smartly dressed person.
              The head never changed size — the fix for "too big a head" is
              almost always a longer body, because it is the RATIO that reads. */}
-      <path d="M43 102 L41 122 Q46 124 52 122 L53 102 Z" fill="#134e4a" />
-      <path d="M67 102 L69 122 Q74 124 79 122 L77 102 Z" fill="#134e4a" />
+      <path d="M43 102 L41 122 Q46 124 52 122 L53 102 Z" fill="#1e1e26" />
+      <path d="M67 102 L69 122 Q74 124 79 122 L77 102 Z" fill="#1e1e26" />
       <path d="M71 102 L73 122 Q76 123 79 122 L77 102 Z" fill="#000000" opacity={0.2} />
       {/* A crease down each leg — one line, and it says "pressed trousers" */}
-      <path d="M47 104 L45 120" stroke="#000000" strokeWidth={1} opacity={0.18} strokeLinecap="round" />
-      <path d="M73 104 L75 120" stroke="#000000" strokeWidth={1} opacity={0.14} strokeLinecap="round" />
+      <path d="M47 104 L45 120" stroke="#ffffff" strokeWidth={1} opacity={0.13} strokeLinecap="round" />
+      <path d="M73 104 L75 120" stroke="#ffffff" strokeWidth={1} opacity={0.07} strokeLinecap="round" />
 
       {/* ── Jacket body. Tapered to the waist rather than a rounded blob —
              this is most of what stops a suit reading as pyjamas. ── */}
-      <path d="M34 72 Q60 64.5 86 72 L89 106 Q60 113.5 31 106 Z" fill="#115e59" />
+      <path d="M34 72 Q60 64.5 86 72 L89 106 Q60 113.5 31 106 Z" fill="#1e1e26" />
       <path d="M60 66.5 Q77 66.5 86 72 L89 106 Q75 110.5 60 112.5 Z" fill="#000000" opacity={0.18} />
 
       {/* ── Shirt showing in the V of the jacket ── */}
@@ -621,8 +635,8 @@ export function Sterling(props: MascotProps) {
       {/* ── Lapels. Two long triangles meeting at the top of the chest. The
              notch where they meet the collar is the detail that makes it a
              suit jacket rather than a cardigan. ── */}
-      <path d="M38 71 Q45 67 51 67.5 L60 91 L40 85 Z" fill="#1a8079" />
-      <path d="M82 71 Q75 67 69 67.5 L60 91 L80 85 Z" fill="#1a8079" />
+      <path d="M38 71 Q45 67 51 67.5 L60 91 L40 85 Z" fill="#34343f" />
+      <path d="M82 71 Q75 67 69 67.5 L60 91 L80 85 Z" fill="#34343f" />
       <path d="M82 71 Q78 68 73 67.2 L64 87 L80 85 Z" fill="#000000" opacity={0.16} />
 
       {/* ── Shirt collar, sitting above the lapels ── */}
@@ -636,11 +650,11 @@ export function Sterling(props: MascotProps) {
       <path d="M60 74 L64 74 L62 96 L60 99 Z" fill="#000000" opacity={0.15} />
 
       {/* ── Breast pocket: one line, which is all it takes to say "tailored" ── */}
-      <path d="M73 80 L81 78" stroke="#000000" strokeWidth={1.4} opacity={0.22} strokeLinecap="round" />
+      <path d="M73 80 L81 78" stroke="#ffffff" strokeWidth={1.4} opacity={0.16} strokeLinecap="round" />
 
       {/* ── Sleeves ── */}
-      <path d="M33 74 Q27 78 26 88 L28 95 Q34 96 36 90 L38 76 Z" fill="#0f4f4a" />
-      <path d="M87 74 Q93 78 94 88 L92 95 Q86 96 84 90 L82 76 Z" fill="#0f4f4a" />
+      <path d="M33 74 Q27 78 26 88 L28 95 Q34 96 36 90 L38 76 Z" fill="#181820" />
+      <path d="M87 74 Q93 78 94 88 L92 95 Q86 96 84 90 L82 76 Z" fill="#181820" />
       <path d="M87 74 Q93 78 94 88 L92 95 Q89 95.5 88 93 L86 76 Z" fill="#000000" opacity={0.2} />
       {/* Cuffs — a sliver of white shirt at each wrist */}
       <path d="M27 92 Q32 93.5 36 91.5 L36 94.5 Q31 96.5 27 95 Z" fill="#ffffff" opacity={0.92} />
@@ -686,9 +700,21 @@ export function Sterling(props: MascotProps) {
 
       {/* ── Hair. Neat, with a side parting: the tidiest available cue for
              "smartly dressed", and it costs two paths. ── */}
-      <path d="M35.5 32 Q33 8.5 60 6.5 Q87 8.5 84.5 32 Q80 16.5 60 15.5 Q40 16.5 35.5 32 Z" fill="#4a3524" />
-      <path d="M60 6.5 Q87 8.5 84.5 32 Q80 16.5 60 15.5 Z" fill="#000000" opacity={0.16} />
-      <path d="M47 17 Q56 12 67 14 Q57 15 50 21 Z" fill="#ffffff" opacity={0.12} />
+      <path d="M37 29 Q34.5 11 60 7 Q85.5 11 83 29 Q82 20 77 17.4 Q68 21.8 58 23.2 Q48 24.2 42.5 21.4 Q38.4 23.6 37 29 Z" fill="#3d2b1d" />
+      <path d="M60 7 Q85.5 11 83 29 Q82 20 77 17.4 Q68 21.8 60 22.8 Z" fill="#000000" opacity={0.17} />
+      {/* The SWEEP. A single diagonal highlight running from the low left
+          temple up and across to the right is what makes the fringe read as
+          combed in one direction. Without it the shape is just a dome, which is
+          exactly how the previous attempt came out — smooth and about seventy
+          years out of date. */}
+      <path d="M44 22 Q52 12.4 66 9.6 Q76 8.8 80.4 13.4 Q70 11.2 59 16 Q49.5 19.6 46 23.6 Z" fill="#ffffff" opacity={0.15} />
+      {/* Tapered sides — the hair stops ABOVE the ears rather than covering
+          them, which is most of what makes a short crop look current. */}
+      <path d="M37.4 29 Q37.8 24 42.5 21.4 Q39.4 25 38.8 29.4 Z" fill="#000000" opacity={0.2} />
+      <path d="M82.6 29 Q82.4 23.6 79 20.4 Q81 24.4 81.2 29.4 Z" fill="#000000" opacity={0.14} />
+      {/* Two strands of separation on top. Texture is drawn, not implied. */}
+      <path d="M50 13.6 Q54.4 17 53 21" stroke="#2b1e14" strokeWidth={1.5} opacity={0.5} fill="none" strokeLinecap="round" />
+      <path d="M65 10.8 Q68.6 14.4 67.6 19" stroke="#2b1e14" strokeWidth={1.5} opacity={0.42} fill="none" strokeLinecap="round" />
 
       {/* ── Brows. Level, not arched: an arch reads as surprise, and the
              expression wanted here is calm. ── */}
