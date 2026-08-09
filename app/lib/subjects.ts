@@ -50,13 +50,25 @@ export type Subject = {
   // YEAR_STYLES, which only has three entries — so the fourth subject silently
   // came out blue. Colours that mean "which subject" belong to the subject.
   accent: string;
-  mascot: "pixel" | "hoot" | "quill" | "knight" | "atlas";
+  mascot: "pixel" | "hoot" | "quill" | "knight" | "atlas" | "sterling";
   years: YearGroup[];
 };
 
 // The three year columns are always the same colours — blue, orange, violet —
 // on every subject page, matching the design. So the colours mean "Year 9 /
 // 10 / 11", not "which subject you're in".
+//
+// ⚠️ LOOK THEM UP WITH yearStyle(), NOT BY ARRAY POSITION.
+//
+// These used to be read as YEAR_STYLES[index], where index was the position in
+// a subject's `years` array. That works only while every subject starts at Year
+// 9. Business does not — it is a GCSE option that schools begin in Year 10 —
+// so its first year group sits at index 0 and would have been painted in the
+// Year 9 blue, with the words "Year 10" written on it.
+//
+// The lesson is worth keeping: position in a list is not the same thing as
+// identity, and code that quietly assumes they match breaks the first time
+// something legitimately starts partway through.
 export const YEAR_STYLES = [
   {
     gradient: "linear-gradient(150deg, #93c5fd 0%, #60a5fa 55%, #3b82f6 100%)",
@@ -86,6 +98,14 @@ export const YEAR_STYLES = [
 // anything that doesn't match. Eventually the site may need to ask which exam
 // board a student is on.
 // ─────────────────────────────────────────────────────────────────────────────
+
+// Which colour belongs to a given year, by NAME. Falls back to the first style
+// for anything unrecognised, so an unusual year label renders plainly rather
+// than crashing the page.
+export function yearStyle(year: string) {
+  const index = ["Year 9", "Year 10", "Year 11"].indexOf(year);
+  return YEAR_STYLES[index] ?? YEAR_STYLES[0];
+}
 
 export const SUBJECTS: Subject[] = [
   {
@@ -361,6 +381,54 @@ export const SUBJECTS: Subject[] = [
           { slug: "maps-graphs-and-statistics", title: "Maps, graphs & statistics", icon: "chart" },
           { slug: "issue-evaluation", title: "Issue evaluation", icon: "scales" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+
+  // ─── BUSINESS ─────────────────────────────────────────────────────────────
+  //
+  // ⚠️ NOTE THE MISSING YEAR 9. Business is a GCSE OPTION rather than a core
+  // subject: you choose it at the end of Year 9 and start it in Year 10. Almost
+  // nobody teaches GCSE Business content in Year 9, so inventing a Year 9 for
+  // it would have meant either padding it with material no student is set, or
+  // showing an empty column. Both are worse than simply not having one.
+  //
+  // Boards divide this subject up more than most. Edexcel runs two themes
+  // (Theme 1 "investigating small business" in Year 10, Theme 2 "building a
+  // business" in Year 11); AQA runs six units across two papers; OCR splits it
+  // differently again. The Year 10 list below is the common core that every
+  // board covers early — starting a business, the market, and the money.
+  {
+    slug: "business",
+    name: "Business",
+    blurb: "Choose a topic to start revising",
+    // Teal. Every other hue on the site is taken — blue, orange, violet, red,
+    // green — and teal is the one remaining colour far enough from all of them
+    // to be told apart at the size of a progress ring, while still reading as
+    // businesslike rather than playful.
+    gradient: "linear-gradient(150deg, #5eead4 0%, #0d9488 45%, #0b3b38 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(13,148,136,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(13,148,136,0.9)]",
+    accent: "#0f766e",
+    mascot: "sterling",
+    years: [
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "enterprise-and-entrepreneurship", title: "Enterprise & entrepreneurship", icon: "torch" },
+          { slug: "business-aims-and-objectives", title: "Business aims & objectives", icon: "compass" },
+          { slug: "spotting-a-business-opportunity", title: "Spotting an opportunity", icon: "map" },
+          { slug: "market-research", title: "Market research", icon: "chart" },
+          { slug: "market-segmentation", title: "Segmentation & market mapping", icon: "grid" },
+          { slug: "business-ownership", title: "Business ownership", icon: "shield" },
+          { slug: "business-location", title: "Business location", icon: "city" },
+          { slug: "the-marketing-mix", title: "The marketing mix", icon: "layers" },
+          { slug: "revenue-costs-and-profit", title: "Revenue, costs & profit", icon: "percent" },
+          { slug: "break-even-analysis", title: "Break-even analysis", icon: "axis" },
+          { slug: "cash-flow", title: "Cash flow & forecasting", icon: "droplet" },
+          { slug: "sources-of-finance", title: "Sources of finance", icon: "suitcase" },
+          { slug: "stakeholders", title: "Stakeholders", icon: "network" },
         ],
       },
     ],

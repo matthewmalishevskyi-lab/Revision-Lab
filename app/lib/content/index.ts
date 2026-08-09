@@ -15,6 +15,7 @@
 // to this one and spread it into the record below — that's the only change
 // needed here.
 
+import { BUSINESS } from "./business";
 import { COMPUTER_SCIENCE } from "./computer-science";
 import { ENGLISH } from "./english";
 import { HISTORY } from "./history";
@@ -97,6 +98,7 @@ export const TOPIC_CONTENT: Record<string, TopicContent> = {
   ...ENGLISH,
   ...HISTORY,
   ...GEOGRAPHY,
+  ...BUSINESS,
 };
 
 export function getTopicContent(

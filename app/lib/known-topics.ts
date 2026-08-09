@@ -117,6 +117,25 @@ export const KNOWN_TOPIC_KEYS: readonly string[] = [
   "maths/statistics-and-charts",
   "maths/straight-line-graphs",
   "maths/vectors-and-transformations",
+
+  // ─── Business (added 2026-08-09) ──────────────────────────────────────────
+  // Year 10 only. Business is a GCSE option begun in Year 10, so there is no
+  // Year 9; Year 11 is planned and not yet written. Registering the slugs now
+  // means that if one is ever renamed, the check fails loudly instead of
+  // quietly orphaning everybody's progress on it.
+  "business/enterprise-and-entrepreneurship",
+  "business/business-aims-and-objectives",
+  "business/spotting-a-business-opportunity",
+  "business/market-research",
+  "business/market-segmentation",
+  "business/business-ownership",
+  "business/business-location",
+  "business/the-marketing-mix",
+  "business/revenue-costs-and-profit",
+  "business/break-even-analysis",
+  "business/cash-flow",
+  "business/sources-of-finance",
+  "business/stakeholders",
 ];
 
 // Topics deliberately withdrawn. Empty, and it should stay that way unless

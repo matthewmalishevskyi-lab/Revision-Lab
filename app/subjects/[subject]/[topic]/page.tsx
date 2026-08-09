@@ -17,7 +17,7 @@ import {
 import { getTopicContent } from "../../../lib/content";
 import { ACCOUNTS_ENABLED, SITE_NAME, SITE_URL } from "../../../lib/site";
 import { getViewer } from "../../../lib/viewer";
-import { getTopic, SUBJECTS, YEAR_STYLES } from "../../../lib/subjects";
+import { getTopic, SUBJECTS, yearStyle } from "../../../lib/subjects";
 
 // Two variables in the URL now: /subjects/[subject]/[topic].
 // One file, and every topic across every subject has a real page.
@@ -78,8 +78,7 @@ export default async function TopicPage({ params }: Props) {
   if (!found) notFound();
 
   const { subject, year, topic } = found;
-  const yearIndex = subject.years.findIndex((g) => g.year === year);
-  const style = YEAR_STYLES[yearIndex] ?? YEAR_STYLES[0];
+  const style = yearStyle(year);
 
   // Topics that have been written show their content; the rest still show the
   // coming-soon panel. That means content can be added one topic at a time
@@ -466,7 +465,7 @@ export default async function TopicPage({ params }: Props) {
             More in {year}
           </h2>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-            {subject.years[yearIndex].topics
+            {(subject.years.find((g) => g.year === year)?.topics ?? [])
               .filter((t) => t.slug !== topic.slug)
               .map((t) => (
                 <li key={t.slug}>

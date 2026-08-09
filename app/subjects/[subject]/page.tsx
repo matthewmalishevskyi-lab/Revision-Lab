@@ -6,7 +6,7 @@ import { MASCOTS } from "../../components/Mascots";
 import { SiteHeader } from "../../components/SiteHeader";
 import { BookArt, ExamArt } from "../../components/YearArt";
 import { SITE_NAME } from "../../lib/site";
-import { getSubject, SUBJECTS, YEAR_STYLES } from "../../lib/subjects";
+import { getSubject, SUBJECTS, yearStyle } from "../../lib/subjects";
 
 // The folder is called [subject] — square brackets mean "this bit of the URL is
 // a variable". So this ONE file serves /subjects/computer-science,
@@ -77,7 +77,16 @@ export default async function SubjectPage({ params }: Props) {
       {/* ---------- Three year columns ---------- */}
       <section className="mt-10 grid grid-cols-1 gap-7 lg:grid-cols-3">
         {subject.years.map((group, index) => {
-          const style = YEAR_STYLES[index];
+          // COLOUR is by year NAME — Business starts at Year 10, and reading
+          // position 0 would paint it in the Year 9 blue.
+          const style = yearStyle(group.year);
+
+          // ARTWORK, just below, stays by POSITION, and the difference is the
+          // point. "Year 10 is orange" is a fact about the year, so it follows
+          // the name. "The first column gets the subject's mascot" is a fact
+          // about the layout, so it follows the position — which is why
+          // Business still shows Sterling on its only column instead of
+          // rendering a page with no character on it at all.
 
           return (
             <article
@@ -97,8 +106,8 @@ export default async function SubjectPage({ params }: Props) {
                 </h2>
 
                 <div className="flex h-40 items-end justify-center">
-                  {/* Year 9 gets the subject's own mascot; the other two get
-                      artwork that works for any subject. */}
+                  {/* The FIRST column gets the subject's own mascot; the rest
+                      get artwork that works for any subject. */}
                   {index === 0 ? (
                     <Mascot className="h-40 drop-shadow-[0_8px_14px_rgba(0,0,0,0.25)]" />
                   ) : index === 1 ? (

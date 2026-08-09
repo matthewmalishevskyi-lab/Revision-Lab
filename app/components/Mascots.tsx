@@ -39,6 +39,7 @@ export const MASCOTS = {
   quill: Quill,
   knight: Knight,
   atlas: Atlas,
+  sterling: Sterling,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -534,6 +535,185 @@ export function Atlas(props: MascotProps) {
 
       {/* A restrained, slightly asymmetric smile */}
       <path d="M52 71 Q60 77 69 70" stroke="#14304f" strokeWidth={2.8} strokeLinecap="round" fill="none" />
+    </svg>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STERLING — Business.
+//
+// Named for the pound sterling: a real-sounding name that says "business"
+// without being a pun, which is the same trick as Quill and Atlas.
+//
+// ── Where he sits on the cuteness dial ──────────────────────────────────────
+//
+// Matthew's brief was exact and worth restating, because it is the hardest
+// setting to hit: "cute, but obviously not Teletubby cute. Simple features, but
+// not baby-like and not too adulty."
+//
+// That rules out both easy answers. The babyish version is a huge round head,
+// enormous round eyes, no brows, no nose, blush. The adult version is realistic
+// proportions and a detailed face. Sterling is built to land between:
+//
+//   HEAD      an oval at ~40% of total height — the same as the rest of the
+//             cast. A circle would be the single most toy-like choice
+//             available; real heads are taller than they are wide.
+//   EYES      r ≈ 5, very slightly oval, one highlight each. Big enough to be
+//             friendly, small enough not to read as a plush toy.
+//   BROWS     present, and level rather than arched. Brows are what give a face
+//             an expression at all; a face without them reads as a doll.
+//   NOSE      one short stroke. Leaving it off is a strong babyish signal.
+//   MOUTH     a small closed smile, deliberately not a wide grin. Restraint is
+//             what makes it read as "professional" rather than "excited".
+//   NO BLUSH  the most childish signal in the toolkit, as the note at the top
+//             of this file says. Left out here as everywhere else.
+//
+// ── No glasses, and that is a decision rather than an oversight ─────────────
+//
+// The original three all wore glasses as the visual thread tying the cast
+// together. That thread has since been cut twice at Matthew's request — Gaunt's
+// visor is closed, and Atlas lost his — so it is now the minority. Adding them
+// back to Sterling alone would make the newest character look like it belonged
+// to the old set instead of the current one. They are three lines to add if he
+// disagrees.
+//
+// The family resemblance is carried instead by the things that actually do the
+// work: chunky proportions, thick rounded forms, flat fills with exactly one
+// darker tone, light from the upper left, and no sharp corners anywhere.
+// ─────────────────────────────────────────────────────────────────────────────
+export function Sterling(props: MascotProps) {
+  return (
+    <svg
+      viewBox="0 0 120 140"
+      role="img"
+      aria-label="Sterling, the Business mascot: a smiling person in a teal suit holding a briefcase"
+      {...props}
+    >
+      {/* Light comes from the upper left, as with every other character here.
+          Every shadow below is on the right of its own form. */}
+
+      {/* ── Shoes ── */}
+      <path d="M40 126 Q40 120 50 120 Q60 120 60 126 Q60 131 50 131 Q40 131 40 126 Z" fill="#152826" />
+      <path d="M60 126 Q60 120 70 120 Q80 120 80 126 Q80 131 70 131 Q60 131 60 126 Z" fill="#152826" />
+      <path d="M62 121 Q72 121 76 124 Q78 130 70 131 Q64 131 62 128 Z" fill="#000000" opacity={0.25} />
+
+      {/* ── Trouser legs ──
+             Lengthened after looking at the first render: with a short body he
+             read as squat and chibi rather than as a smartly dressed person.
+             The head never changed size — the fix for "too big a head" is
+             almost always a longer body, because it is the RATIO that reads. */}
+      <path d="M43 102 L41 122 Q46 124 52 122 L53 102 Z" fill="#134e4a" />
+      <path d="M67 102 L69 122 Q74 124 79 122 L77 102 Z" fill="#134e4a" />
+      <path d="M71 102 L73 122 Q76 123 79 122 L77 102 Z" fill="#000000" opacity={0.2} />
+      {/* A crease down each leg — one line, and it says "pressed trousers" */}
+      <path d="M47 104 L45 120" stroke="#000000" strokeWidth={1} opacity={0.18} strokeLinecap="round" />
+      <path d="M73 104 L75 120" stroke="#000000" strokeWidth={1} opacity={0.14} strokeLinecap="round" />
+
+      {/* ── Jacket body. Tapered to the waist rather than a rounded blob —
+             this is most of what stops a suit reading as pyjamas. ── */}
+      <path d="M34 72 Q60 64.5 86 72 L89 106 Q60 113.5 31 106 Z" fill="#115e59" />
+      <path d="M60 66.5 Q77 66.5 86 72 L89 106 Q75 110.5 60 112.5 Z" fill="#000000" opacity={0.18} />
+
+      {/* ── Shirt showing in the V of the jacket ── */}
+      <path d="M51 67 Q60 63.5 69 67 L66 97 L54 97 Z" fill="#ffffff" />
+      <path d="M60 65 Q65 65.5 69 67 L66 97 L60 97 Z" fill="#000000" opacity={0.07} />
+
+      {/* ── Lapels. Two long triangles meeting at the top of the chest. The
+             notch where they meet the collar is the detail that makes it a
+             suit jacket rather than a cardigan. ── */}
+      <path d="M38 71 Q45 67 51 67.5 L60 91 L40 85 Z" fill="#1a8079" />
+      <path d="M82 71 Q75 67 69 67.5 L60 91 L80 85 Z" fill="#1a8079" />
+      <path d="M82 71 Q78 68 73 67.2 L64 87 L80 85 Z" fill="#000000" opacity={0.16} />
+
+      {/* ── Shirt collar, sitting above the lapels ── */}
+      <path d="M52 64 L60 74 L54 75 L49 67 Z" fill="#ffffff" />
+      <path d="M68 64 L60 74 L66 75 L71 67 Z" fill="#eef2f6" />
+
+      {/* ── The tie. Knot, then a blade narrowing to a point. ── */}
+      <path d="M56 66 L64 66 L65 73 L55 73 Z" fill="#2dd4bf" />
+      <path d="M60 66 L64 66 L65 73 L60 73 Z" fill="#000000" opacity={0.15} />
+      <path d="M56 74 L64 74 L62 96 L60 99 L58 96 Z" fill="#2dd4bf" />
+      <path d="M60 74 L64 74 L62 96 L60 99 Z" fill="#000000" opacity={0.15} />
+
+      {/* ── Breast pocket: one line, which is all it takes to say "tailored" ── */}
+      <path d="M73 80 L81 78" stroke="#000000" strokeWidth={1.4} opacity={0.22} strokeLinecap="round" />
+
+      {/* ── Sleeves ── */}
+      <path d="M33 74 Q27 78 26 88 L28 95 Q34 96 36 90 L38 76 Z" fill="#0f4f4a" />
+      <path d="M87 74 Q93 78 94 88 L92 95 Q86 96 84 90 L82 76 Z" fill="#0f4f4a" />
+      <path d="M87 74 Q93 78 94 88 L92 95 Q89 95.5 88 93 L86 76 Z" fill="#000000" opacity={0.2} />
+      {/* Cuffs — a sliver of white shirt at each wrist */}
+      <path d="M27 92 Q32 93.5 36 91.5 L36 94.5 Q31 96.5 27 95 Z" fill="#ffffff" opacity={0.92} />
+      <path d="M84 91.5 Q88 93.5 93 92 L93 95 Q88 96.5 84 94.5 Z" fill="#ffffff" opacity={0.75} />
+
+      {/* ── The briefcase ──
+             Drawn AFTER the jacket, so it sits in front of him rather than
+             being clipped by the hem — which is where a carried case actually
+             is. The handle's apex is deliberately placed where the hand goes,
+             because in the first version the hand hovered beside the case
+             holding nothing at all. Only visible once rendered. */}
+      <path d="M22 101 Q31 88 40 101" stroke="#6b4226" strokeWidth={2.8} fill="none" strokeLinecap="round" />
+      <rect x="13" y="100" width="30" height="23" rx="4" fill="#a0673f" />
+      <rect x="28" y="100" width="15" height="23" rx="4" fill="#000000" opacity={0.18} />
+      <rect x="13" y="107" width="30" height="2.4" fill="#000000" opacity={0.22} />
+      <rect x="25" y="105" width="6" height="6" rx="1.6" fill="#f0c869" />
+      <path d="M15 102 Q19 101 23 102 L21 106 Q17 106 15 105 Z" fill="#ffffff" opacity={0.12} />
+
+      {/* ── Hands. The left one closes over the handle. ── */}
+      <circle cx="31" cy="94" r="5.2" fill="#f2cdae" />
+      <path d="M31 88.8 A5.2 5.2 0 0 1 31 99.2 A3 5.2 0 0 0 31 88.8 Z" fill="#000000" opacity={0.1} />
+      {/* The thumb, curled over the front of the handle. Without it the hand is
+          a ball resting against the handle rather than closed around it. */}
+      <path d="M28.5 93 Q31.5 91.5 33.5 93.5" stroke="#d9a87f" strokeWidth={2.2} strokeLinecap="round" fill="none" />
+      <circle cx="89" cy="96" r="5.4" fill="#f2cdae" />
+      <path d="M89 91 A5.4 5.4 0 0 1 89 101 A3 5.4 0 0 0 89 91 Z" fill="#000000" opacity={0.12} />
+
+      {/* ── Neck, and the shadow the jaw casts onto it. That cast shadow is
+             what stops the head looking like a balloon on a stick. ── */}
+      <rect x="53" y="52" width="14" height="16" rx="5" fill="#e0b48f" />
+      <path d="M53 54 Q60 60 67 54 L67 58 Q60 63 53 58 Z" fill="#000000" opacity={0.16} />
+
+      {/* ── Head. An oval, taller than it is wide: a perfect circle is the most
+             toy-like shape available. ── */}
+      <ellipse cx="60" cy="34" rx="24.5" ry="27" fill="#f2cdae" />
+      <path d="M60 7 A24.5 27 0 0 1 60 61 A14 27 0 0 0 60 7 Z" fill="#000000" opacity={0.11} />
+      {/* A jawline hint — barely visible, but it gives the face structure */}
+      <path d="M40 39 Q44 49 52 54 Q44 52 39 44 Z" fill="#000000" opacity={0.05} />
+
+      {/* ── Ears ── */}
+      <ellipse cx="35.5" cy="36" rx="3.8" ry="5.2" fill="#f2cdae" />
+      <ellipse cx="84.5" cy="36" rx="3.8" ry="5.2" fill="#e8bd99" />
+
+      {/* ── Hair. Neat, with a side parting: the tidiest available cue for
+             "smartly dressed", and it costs two paths. ── */}
+      <path d="M35.5 32 Q33 8.5 60 6.5 Q87 8.5 84.5 32 Q80 16.5 60 15.5 Q40 16.5 35.5 32 Z" fill="#4a3524" />
+      <path d="M60 6.5 Q87 8.5 84.5 32 Q80 16.5 60 15.5 Z" fill="#000000" opacity={0.16} />
+      <path d="M47 17 Q56 12 67 14 Q57 15 50 21 Z" fill="#ffffff" opacity={0.12} />
+
+      {/* ── Brows. Level, not arched: an arch reads as surprise, and the
+             expression wanted here is calm. ── */}
+      <path d="M46.5 27 Q51 24.6 55.5 26.4" stroke="#3a2818" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+      <path d="M64.5 26.4 Q69 24.6 73.5 27" stroke="#3a2818" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+
+      {/* ── Eyes ── */}
+      <ellipse cx="51" cy="35" rx="5" ry="5.4" fill="#ffffff" />
+      <ellipse cx="69" cy="35" rx="5" ry="5.4" fill="#ffffff" />
+      <circle cx="51.7" cy="36" r="3" fill="#1c2b2a" />
+      <circle cx="69.7" cy="36" r="3" fill="#1c2b2a" />
+      <circle cx="50.2" cy="34" r="1.25" fill="#ffffff" />
+      <circle cx="68.2" cy="34" r="1.25" fill="#ffffff" />
+      {/* Upper lid lines — the difference between a drawn eye and a sewn-on
+          button, and they cost one stroke each. */}
+      <path d="M46 32.2 Q51 29.4 56 32.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+      <path d="M64 32.2 Q69 29.4 74 32.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+
+      {/* ── Nose: one short stroke. Leaving it off is a strongly babyish
+             signal, which is the thing this design is steering away from. ── */}
+      <path d="M59 39 Q57 44.5 61 45.5" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+      {/* ── Mouth: a small closed smile. Deliberately not a grin — restraint is
+             what makes him read as composed rather than over-excited. ── */}
+      <path d="M53.5 50 Q60 55 66.5 50" stroke="#a5765a" strokeWidth={2.6} strokeLinecap="round" fill="none" />
     </svg>
   );
 }

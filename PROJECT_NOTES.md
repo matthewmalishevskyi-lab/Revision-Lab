@@ -64,6 +64,44 @@ House style keeping the three a family: chunky proportions, big heads, flat fill
 **Animation:** they pace from one bottom corner of their card to the other and turn round. Two nested elements — the outer one does `walk` (moves + flips via `scaleX(-1)`), the inner does `bob` (bounce). They must be separate because both animations want to control `transform`. The bob uses `steps(2, end)` for a deliberately snappy two-frame retro feel. Each character has a different duration so they don't march in sync. All motion is disabled under `prefers-reduced-motion`.
 - **Tailwind gotcha (important):** Tailwind reads source files as plain text to decide what CSS to generate. Dynamically built class names like `` shadow-[${colour}] `` produce nothing. Any per-item classes must be written as complete literal strings (see the `subjects` array in `app/page.tsx`).
 
+## Business — the sixth subject (added 2026-08-09)
+
+**Sterling**, teal, Year 10 only. 13 topics, 209 flashcards.
+
+**No Year 9, on purpose.** Business is a GCSE option chosen at the end of Year 9
+and begun in Year 10. Inventing a Year 9 would have meant padding with material
+no student is set. Year 11 is planned and NOT yet written.
+
+**Teal because every other hue was taken** — blue, orange, violet, red, green.
+Teal is the only remaining colour far enough from all five to be told apart at
+the size of a progress ring.
+
+**A real bug this exposed:** year colours were chosen by ARRAY POSITION
+(`YEAR_STYLES[index]`), which works only while every subject starts at Year 9.
+Business starts at Year 10, so its first year group sat at index 0 and would
+have rendered in the Year 9 blue with "Year 10" written on it. Now looked up by
+name via `yearStyle()`. Note the deliberate split: colour follows the year NAME,
+artwork still follows POSITION, because "the first column gets the mascot" is a
+fact about layout rather than about the year.
+
+**Matthew's brief for the mascot:** a person in a suit with a briefcase, "cute
+but obviously not Teletubby cute, simple features but not baby-like and not too
+adulty". No glasses — that thread has now been cut on three of six characters.
+
+**`scripts/preview-mascot.py` was written to do this properly.** It renders a
+mascot from Mascots.tsx to a PNG so it can actually be LOOKED at. The first
+render found a hand hovering beside a briefcase holding nothing, and lapels with
+so little contrast the suit read as a dressing gown — neither visible in the
+code. ⚠️ It composites layers itself because ImageMagick IGNORES the `opacity`
+attribute, which made every 10% shadow render solid black and sent me chasing
+problems that did not exist.
+
+**Arithmetic was verified independently** — all 38 calculations recomputed in a
+throwaway script rather than trusted. That was a one-off check, not a regression
+test: editing a number in the content later would not be caught by anything.
+
+---
+
 ## Accounts: privacy, password change, deletion (built 2026-08-09)
 
 `/privacy`, `/account`, `app/lib/account-actions.ts`, `ACCOUNT_SETUP.sql`.
