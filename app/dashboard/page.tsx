@@ -56,7 +56,7 @@ export default async function DashboardPage() {
       </section>
 
       {/* ---------- Subjects ---------- */}
-      <section className="mt-8 grid gap-6 sm:grid-cols-3">
+      <section className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
         {SUBJECTS.map((subject) => {
           const Mascot = MASCOTS[subject.mascot];
           const topicCount = subject.years.reduce(

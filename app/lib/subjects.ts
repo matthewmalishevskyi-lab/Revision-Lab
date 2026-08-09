@@ -18,7 +18,10 @@ export type IconName =
   // list and forgetting to draw it is a compile error, not a blank space on
   // the live site.
   | "disk" | "cog" | "layers" | "bug" | "toolbox" | "power" | "cube"
-  | "axis" | "compass" | "gauge" | "mic" | "clock";
+  | "axis" | "compass" | "gauge" | "mic" | "clock"
+  // History
+  | "poppy" | "candle" | "factory" | "torch" | "crown" | "flask" | "ship"
+  | "castle" | "scroll";
 
 export type Topic = {
   // The slug is the bit that appears in the URL, so it must be lowercase with
@@ -39,7 +42,12 @@ export type Subject = {
   blurb: string;
   gradient: string;
   shadow: string;
-  mascot: "pixel" | "hoot" | "quill";
+  // A single solid colour for this subject, used where a gradient won't do:
+  // progress rings, chart bars, status pills. It was previously borrowed from
+  // YEAR_STYLES, which only has three entries — so the fourth subject silently
+  // came out blue. Colours that mean "which subject" belong to the subject.
+  accent: string;
+  mascot: "pixel" | "hoot" | "quill" | "knight";
   years: YearGroup[];
 };
 
@@ -86,6 +94,7 @@ export const SUBJECTS: Subject[] = [
     // A shadow tinted with the card's own colour, rather than grey.
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(37,99,235,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(37,99,235,0.9)]",
+    accent: "#1d4ed8",
     mascot: "pixel",
     years: [
       {
@@ -130,6 +139,7 @@ export const SUBJECTS: Subject[] = [
     gradient: "linear-gradient(150deg, #fbbf24 0%, #f97316 45%, #b3350b 100%)",
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(249,115,22,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(249,115,22,0.9)]",
+    accent: "#b3350b",
     mascot: "hoot",
     years: [
       {
@@ -175,6 +185,7 @@ export const SUBJECTS: Subject[] = [
     gradient: "linear-gradient(150deg, #c084fc 0%, #7c3aed 45%, #43146e 100%)",
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(124,58,237,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(124,58,237,0.9)]",
+    accent: "#6d28d9",
     mascot: "quill",
     years: [
       {
@@ -205,6 +216,69 @@ export const SUBJECTS: Subject[] = [
           { slug: "context-and-themes", title: "Context & themes", icon: "clock" },
           { slug: "poetry-anthology", title: "Poetry anthology", icon: "quote" },
           { slug: "unseen-poetry", title: "Unseen poetry", icon: "feather" },
+          { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "history",
+    name: "History",
+    blurb: "Choose a topic to start revising",
+    // A deep, warm red. Deliberately NOT the same family as Maths's orange —
+    // two adjacent warm cards would blur together on the homepage, and the
+    // colour is doing real work here: it is how you tell the cards apart
+    // before you have read a word of them.
+    gradient: "linear-gradient(150deg, #fca5a5 0%, #dc2626 45%, #7f1d1d 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(220,38,38,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(220,38,38,0.9)]",
+    accent: "#b91c1c",
+    mascot: "knight",
+    // ─────────────────────────────────────────────────────────────────────────
+    // ⚠️ HISTORY VARIES MORE THAN ANY OTHER SUBJECT ON THIS SITE.
+    //
+    // The other three have a syllabus everyone broadly shares. History is built
+    // from OPTIONS that each school picks: one school does Germany 1890–1945,
+    // another does Russia; one does Elizabethan England, another Norman England
+    // or the American West. Two students both "doing GCSE History" can have
+    // almost no overlap.
+    //
+    // So this list is a common-denominator selection of the most widely taught
+    // options across AQA, Edexcel and OCR, plus the Year 9 topics most schools
+    // cover before GCSE starts. Matthew should swap anything his school does
+    // not teach — each topic is one line in this file.
+    //
+    // No content has been written for these yet, on purpose. Every page works
+    // and shows an honest "content coming soon" panel until it is.
+    // ─────────────────────────────────────────────────────────────────────────
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "the-first-world-war", title: "The First World War", icon: "poppy" },
+          { slug: "the-russian-revolution", title: "The Russian Revolution", icon: "factory" },
+          { slug: "the-rise-of-the-nazis", title: "The rise of the Nazis", icon: "torch" },
+          { slug: "the-second-world-war", title: "The Second World War", icon: "shield" },
+          { slug: "the-holocaust", title: "The Holocaust", icon: "candle" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "germany-1890-1945", title: "Germany 1890–1945", icon: "news" },
+          { slug: "conflict-and-tension-1918-1939", title: "Conflict & tension 1918–39", icon: "scales" },
+          { slug: "elizabethan-england", title: "Elizabethan England", icon: "crown" },
+          { slug: "medicine-through-time", title: "Medicine through time", icon: "flask" },
+          { slug: "the-british-empire", title: "The British Empire", icon: "ship" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "superpower-relations-and-the-cold-war", title: "Superpowers & the Cold War", icon: "globe" },
+          { slug: "norman-england-1066-1100", title: "Norman England", icon: "castle" },
+          { slug: "america-1920-1973", title: "America 1920–1973", icon: "chart" },
+          { slug: "source-skills-and-interpretations", title: "Sources & interpretations", icon: "scroll" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
         ],
       },

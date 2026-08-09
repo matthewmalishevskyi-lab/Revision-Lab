@@ -7,7 +7,7 @@
 // components reach it.
 
 import { randomUUID } from "node:crypto";
-import { SUBJECTS } from "./subjects";
+import { SUBJECTS, type Subject } from "./subjects";
 import { TOPIC_CONTENT } from "./content";
 
 const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/+$/, "");
@@ -127,8 +127,14 @@ async function readActivity(userId: string): Promise<ActivityRow[]> {
 export type SubjectProgress = {
   slug: string;
   name: string;
-  mascot: "pixel" | "hoot" | "quill";
+  // Taken FROM the Subject type rather than written out again. The list of
+  // mascots existed in two places, and adding the knight would have meant
+  // remembering to update both — the sort of duplication that works fine until
+  // exactly the moment it doesn't.
+  mascot: Subject["mascot"];
   gradient: string;
+  /** The subject's own solid colour, for rings, bars and pills. */
+  accent: string;
   /** Topics with at least one recorded event, out of all topics in the subject. */
   topicsCovered: number;
   topicsTotal: number;
@@ -241,6 +247,7 @@ export async function getProgress(userId: string): Promise<Progress> {
       name: subject.name,
       mascot: subject.mascot,
       gradient: subject.gradient,
+      accent: subject.accent,
       topicsCovered: covered,
       topicsTotal: allTopics.length,
       percent: allTopics.length > 0 ? Math.round((covered / allTopics.length) * 100) : 0,

@@ -8,7 +8,6 @@ import { WeeklyChart } from "../components/WeeklyChart";
 import { getViewer } from "../lib/viewer";
 import { formatDuration, getProgress, PROGRESS_ENABLED } from "../lib/progress";
 import { ACCOUNTS_ENABLED } from "../lib/site";
-import { YEAR_STYLES } from "../lib/subjects";
 
 // Built from Jennifer's mockup: a heading, a "next up" suggestion, three
 // subject cards with rings, and a personal statistics panel.
@@ -36,9 +35,6 @@ export default async function ProgressPage() {
 
   const progress = await getProgress(user.id);
 
-  // The same three colours the year columns use, so the chart key matches what
-  // the rest of the site has trained you to expect.
-  const colourFor = (index: number) => YEAR_STYLES[index]?.text ?? "#0b2f6b";
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-8">
@@ -103,10 +99,10 @@ export default async function ProgressPage() {
       )}
 
       {/* ---------- The three subject cards ---------- */}
-      <section className="mt-8 grid gap-6 lg:grid-cols-3">
-        {progress.subjects.map((subject, index) => {
+      <section className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {progress.subjects.map((subject) => {
           const Mascot = MASCOTS[subject.mascot];
-          const colour = colourFor(index);
+          const colour = subject.accent;
 
           return (
             <article
@@ -183,10 +179,10 @@ export default async function ProgressPage() {
           <div className="rounded-2xl border border-black/5 p-5 dark:border-white/10">
             <WeeklyChart
               week={progress.week}
-              series={progress.subjects.map((s, i) => ({
+              series={progress.subjects.map((s) => ({
                 slug: s.slug,
                 name: s.name,
-                colour: colourFor(i),
+                colour: s.accent,
               }))}
             />
           </div>

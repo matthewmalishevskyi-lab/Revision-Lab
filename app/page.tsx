@@ -42,7 +42,7 @@ export default async function Home() {
       </section>
 
       {/* ---------- Subject cards ---------- */}
-      <section className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-3">
+      <section className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-4">
         {SUBJECTS.map((subject, index) => {
           const Mascot = MASCOTS[subject.mascot];
 

@@ -145,6 +145,24 @@ The content checker is worth reading (`scripts/check-content.mjs`) — it exists
 
 It also holds **regression tests for the marking rule**, each one a bug that actually happened.
 
+## History added as a fourth subject (2026-08-09) — structure only
+
+15 topics across Years 9–11, **no content written yet on purpose**. Every page works and shows the honest "content coming soon" panel. Site is now **68 topics**, 53 of them written.
+
+**Gaunt**, the knight, is the mascot — original artwork in the house style, like the other three. The reference picture Matthew and Jennifer found was a starting point for the idea, not something to trace. His visor is UP because the family thread is glasses, and a closed helmet is a grille with no face behind it.
+
+Colour: a deep warm red (`#dc2626` family, accent `#b91c1c`). Deliberately not in the same family as Maths's orange — two adjacent warm cards blur together on the homepage, and colour is how you tell the cards apart before reading a word.
+
+**⚠️ History varies far more than any other subject here.** The others share a broad syllabus; History is built from OPTIONS each school picks. Two students both "doing GCSE History" can have almost no overlap. This list is the most widely taught options across AQA/Edexcel/OCR plus the usual Year 9 topics. Swap anything his school doesn't do — one line each.
+
+**The ladder needed no work at all.** `LadderCompanion` takes `subject.mascot` and looks it up in `MASCOTS`, so adding `knight: Knight` to that one object put him on the ladder on every History topic page automatically. Matthew expected this to be a separate job; it was the payoff for the data-driven design.
+
+**Two things this exposed, both now fixed:**
+
+- **Subject colours were borrowed from `YEAR_STYLES`**, which has exactly three entries — so the fourth subject silently came out blue on the progress page. Subjects now carry their own `accent`. Colours that mean "which subject" belong to the subject.
+- **Three grids were hardcoded to `grid-cols-3`.** Now `sm:grid-cols-2 xl:grid-cols-4`.
+- The mascot union was also written out twice (in `Subject` and in `SubjectProgress`); the second now says `Subject["mascot"]`.
+
 ## Bug hunt on the tracking (2026-08-09, same day it was built)
 
 Four real bugs, all found by reasoning then **reproduced before being fixed**.

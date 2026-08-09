@@ -248,6 +248,77 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M12 7v5.3l3.5 2.2" />
     </>
   ),
+
+  // ─── History ─────────────────────────────────────────────────────────────
+  // Same grid, same stroke, no fills — the rules that make a set look like a
+  // set rather than a pile of clip art.
+
+  // A remembrance poppy.
+  poppy: (
+    <>
+      <circle cx="12" cy="9" r="5" />
+      <circle cx="12" cy="9" r="1.4" fill="currentColor" stroke="none" />
+      <path d="M12 14v7M12 18c-2.5 0-3.5-1.5-4-3" />
+    </>
+  ),
+  // A candle — remembrance and memorial.
+  candle: (
+    <>
+      <path d="M12 3.5c1.8 1.6 2.5 2.8 2.5 4a2.5 2.5 0 01-5 0c0-1.2.7-2.4 2.5-4z" />
+      <rect x="7.5" y="11.5" width="9" height="9" rx="1.5" />
+      <path d="M12 9.5v2" />
+    </>
+  ),
+  // A factory — industry, workers, revolution.
+  factory: (
+    <>
+      <path d="M3.5 20.5V11l5 3V11l5 3V6.5l1.5-3h2l1.5 3v14z" />
+      <path d="M3.5 20.5h17M7 17v1.5M11 17v1.5M15.5 17v1.5" />
+    </>
+  ),
+  // A torch — rallies, uprisings, revolutions.
+  torch: (
+    <>
+      <path d="M12 2.5c2.5 2.4 3.5 4 3.5 5.8a3.5 3.5 0 01-7 0c0-1.8 1-3.4 3.5-5.8z" />
+      <path d="M9.5 12.5h5l-1 8h-3z" />
+    </>
+  ),
+  // A crown — monarchy.
+  crown: (
+    <>
+      <path d="M4 17.5L3 7l5 4 4-6.5L16 11l5-4-1 10.5z" />
+      <path d="M4 20.5h16" />
+    </>
+  ),
+  // A flask — medicine and science through time.
+  flask: (
+    <>
+      <path d="M10 3.5v6L4.5 18a2 2 0 001.7 3h11.6a2 2 0 001.7-3L14 9.5v-6" />
+      <path d="M8.5 3.5h7M7 14.5h10" />
+    </>
+  ),
+  // A ship — empire, trade, migration.
+  ship: (
+    <>
+      <path d="M3.5 15.5l1.8 4.2a1.5 1.5 0 001.4.8h10.6a1.5 1.5 0 001.4-.8l1.8-4.2z" />
+      <path d="M6 15.5V10h12v5.5M12 10V4M8.5 7h7" />
+    </>
+  ),
+  // A castle — Norman England, conquest.
+  castle: (
+    <>
+      <path d="M3.5 20.5V7l3 1.5V5.5h3V8l2.5-1.5L14.5 8V5.5h3v3L20.5 7v13.5z" />
+      <path d="M10 20.5v-5a2 2 0 014 0v5" />
+    </>
+  ),
+  // A scroll — sources and interpretations.
+  scroll: (
+    <>
+      <path d="M6.5 3.5h11a2 2 0 012 2v13a2 2 0 01-2 2h-11" />
+      <path d="M6.5 3.5a2 2 0 00-2 2v1h4M6.5 20.5a2 2 0 002-2v-1h-4" />
+      <path d="M10 8.5h6M10 12h6M10 15.5h4" />
+    </>
+  ),
 };
 
 export function Icon({

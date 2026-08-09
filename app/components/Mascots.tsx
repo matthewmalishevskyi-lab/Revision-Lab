@@ -37,6 +37,7 @@ export const MASCOTS = {
   pixel: Pixel,
   hoot: Hoot,
   quill: Quill,
+  knight: Knight,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -291,6 +292,107 @@ export function Quill(props: MascotProps) {
       <path d="M30 17 Q30 22 60 22 Q90 22 90 17 Q90 21 60 21 Q30 21 30 17 Z" fill="#000000" opacity={0.3} />
       <path d="M74 9 Q90 -1 93 10 Q86 16 74 12 Z" fill="#a78bfa" />
       <path d="M84 3 Q91 4 93 10 Q88 14 82 13 Z" fill="#000000" opacity={0.15} />
+    </svg>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GAUNT — History.
+//
+// Drawn from scratch in the house style, like the other three. The reference
+// picture was a starting point for the IDEA (a small friendly knight), not
+// something to trace: shipping someone else's artwork on a public site is a
+// real problem, and the whole cast being ours means never having to wonder.
+//
+// The family rules, applied to armour:
+//   - head about 40% of total height
+//   - flat fills with ONE darker tone for roundness, lit from the upper left
+//   - thick, rounded forms, no sharp corners
+//   - glasses — the thread running through all four
+//
+// The glasses are why the visor is UP. A closed helmet is a grille with no
+// face behind it, which is both less friendly and breaks the one thing every
+// mascot here has in common. Raising it gives him eyes to be read by, and the
+// raised visor doubles as the brow that the other three get from their hats
+// and feathers.
+// ─────────────────────────────────────────────────────────────────────────────
+export function Knight(props: MascotProps) {
+  return (
+    <svg
+      viewBox="0 0 120 140"
+      role="img"
+      aria-label="Gaunt, the History mascot: a small knight in armour wearing round glasses, holding a shield"
+      {...props}
+    >
+      {/* Plume. Kept inside the canvas — the lesson from Pixel's antenna,
+          which was drawn at a negative y and silently clipped in half. */}
+      <path d="M60 8 Q52 2 46 6 Q50 14 58 18 Z" fill="#dc2626" />
+      <path d="M60 8 Q68 2 74 6 Q70 14 62 18 Z" fill="#f87171" />
+      <rect x="56" y="14" width="8" height="7" rx="3" fill="#b91c1c" />
+
+      {/* Helmet dome */}
+      <path d="M28 60 Q28 20 60 20 Q92 20 92 60 L92 66 Q60 72 28 66 Z" fill="#cbd5e1" />
+      {/* One darker tone on the right, so the dome reads as round rather than
+          as a flat grey shape. */}
+      <path d="M60 20 Q92 20 92 60 L92 66 Q76 69 60 70 Z" fill="#94a3b8" opacity={0.55} />
+      {/* Highlight, upper left, matching the light source the others use. */}
+      <path d="M38 44 Q38 27 54 25 Q42 32 42 46 Z" fill="#ffffff" opacity={0.5} />
+
+      {/* Raised visor, sitting proud of the dome with its own shadow beneath */}
+      <path d="M26 40 Q60 30 94 40 L94 47 Q60 39 26 47 Z" fill="#e2e8f0" />
+      <path d="M60 34 Q94 39 94 47 L60 42 Z" fill="#94a3b8" opacity={0.4} />
+      <path d="M26 47 Q60 39 94 47 Q60 43 26 51 Z" fill="#000000" opacity={0.12} />
+
+      {/* Face opening */}
+      <path d="M36 50 Q60 45 84 50 L84 66 Q60 72 36 66 Z" fill="#3f4756" />
+
+      {/* Glasses — round lenses and a bridge, the thread through all four
+          characters. Drawn on top of the dark face opening so they catch the
+          light the way real lenses do. */}
+      <circle cx="49" cy="58" r="7.5" fill="#f8fafc" opacity={0.95} />
+      <circle cx="71" cy="58" r="7.5" fill="#f8fafc" opacity={0.95} />
+      <circle cx="49" cy="58" r="7.5" fill="none" stroke="#f0c869" strokeWidth={2.2} />
+      <circle cx="71" cy="58" r="7.5" fill="none" stroke="#f0c869" strokeWidth={2.2} />
+      <path d="M56.5 58 h7" stroke="#f0c869" strokeWidth={2.2} />
+
+      {/* Eyes behind the lenses, slightly oval and with one highlight each —
+          the setting that reads as characterful rather than as a toy. */}
+      <ellipse cx="49" cy="58.5" rx="3.1" ry="3.6" fill="#1f2530" />
+      <ellipse cx="71" cy="58.5" rx="3.1" ry="3.6" fill="#1f2530" />
+      <circle cx="50.4" cy="57" r="1.15" fill="#ffffff" />
+      <circle cx="72.4" cy="57" r="1.15" fill="#ffffff" />
+
+      {/* A small smile, just visible below the lenses */}
+      <path d="M54 68 Q60 71.5 66 68" stroke="#cbd5e1" strokeWidth={1.8} strokeLinecap="round" fill="none" />
+
+      {/* Gorget, then the breastplate */}
+      <path d="M34 68 Q60 74 86 68 L86 74 Q60 80 34 74 Z" fill="#94a3b8" />
+      <path d="M36 76 Q60 82 84 76 L84 112 Q60 118 36 112 Z" fill="#cbd5e1" />
+      <path d="M60 79 Q84 77 84 76 L84 112 Q72 115 60 116 Z" fill="#94a3b8" opacity={0.5} />
+
+      {/* Belted tabard, in the subject's red */}
+      <rect x="34" y="100" width="52" height="8" rx="4" fill="#b91c1c" />
+      <rect x="60" y="100" width="26" height="8" rx="4" fill="#000000" opacity={0.15} />
+
+      {/* Pauldrons */}
+      <ellipse cx="33" cy="83" rx="10" ry="8" fill="#e2e8f0" />
+      <ellipse cx="87" cy="83" rx="10" ry="8" fill="#e2e8f0" />
+      <path d="M87 75 Q97 79 97 83 Q97 89 88 91 Z" fill="#94a3b8" opacity={0.55} />
+
+      {/* Legs and feet */}
+      <rect x="45" y="112" width="11" height="14" rx="5" fill="#94a3b8" />
+      <rect x="64" y="112" width="11" height="14" rx="5" fill="#94a3b8" />
+      <ellipse cx="49" cy="128" rx="10" ry="6" fill="#64748b" />
+      <ellipse cx="71" cy="128" rx="10" ry="6" fill="#64748b" />
+
+      {/* Shield, held to his left. A plain cross rather than any real coat of
+          arms — heraldry belongs to actual families, and inventing one avoids
+          accidentally borrowing somebody's. */}
+      <path d="M76 82 L108 82 L108 104 Q108 118 92 124 Q76 118 76 104 Z" fill="#f1f5f9" />
+      <path d="M92 82 L108 82 L108 104 Q108 118 92 124 Z" fill="#000000" opacity={0.07} />
+      <rect x="87" y="86" width="10" height="32" fill="#dc2626" />
+      <rect x="79" y="94" width="26" height="10" fill="#dc2626" />
+      <path d="M76 82 L108 82 L108 104 Q108 118 92 124 Q76 118 76 104 Z" fill="none" stroke="#94a3b8" strokeWidth={2.5} strokeLinejoin="round" />
     </svg>
   );
 }
