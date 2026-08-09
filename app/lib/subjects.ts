@@ -340,10 +340,6 @@ export const SUBJECTS: Subject[] = [
           { slug: "rivers-and-flooding", title: "Rivers & flooding", icon: "droplet" },
           { slug: "coasts", title: "Coasts", icon: "wave" },
           { slug: "ecosystems-and-biomes", title: "Ecosystems & biomes", icon: "leaf" },
-          { slug: "population-and-urbanisation", title: "Population & urbanisation", icon: "city" },
-          { slug: "development-and-inequality", title: "Development & inequality", icon: "scales" },
-          { slug: "climate-change", title: "Climate change", icon: "thermometer" },
-          { slug: "resources-and-sustainability", title: "Resources & sustainability", icon: "recycle" },
         ],
       },
       {
@@ -360,6 +356,7 @@ export const SUBJECTS: Subject[] = [
       {
         year: "Year 11",
         topics: [
+          { slug: "climate-change", title: "Climate change", icon: "thermometer" },
           { slug: "fieldwork-and-enquiry", title: "Fieldwork & enquiry", icon: "compass" },
           { slug: "maps-graphs-and-statistics", title: "Maps, graphs & statistics", icon: "chart" },
           { slug: "issue-evaluation", title: "Issue evaluation", icon: "scales" },

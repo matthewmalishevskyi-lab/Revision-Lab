@@ -1184,4 +1184,230 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
   },
 
+  "geography/rivers-and-flooding": {
+    summary:
+      "A river is a system that moves water and sediment from high ground to the sea, and in doing so carves and builds the landscape it runs through. This covers the processes, the landforms they create, and why floods happen — including the uncomfortable fact that many of the worst floods are made worse by things people built.",
+    keyFacts: [
+      {
+        heading: "The drainage basin",
+        points: [
+          "A drainage basin is the area of land drained by a river and its tributaries. Its edge is the watershed — the high ground separating one basin from the next.",
+          "Source: where the river begins. Mouth: where it enters the sea or a lake. Confluence: where two rivers join. Tributary: a smaller river joining a larger one.",
+          "Inputs, flows and outputs: precipitation in; interception, infiltration, surface runoff and throughflow within; evaporation and river discharge out.",
+          "Discharge is the volume of water passing a point per second, measured in cumecs (cubic metres per second).",
+          "A hydrograph plots discharge against time after a storm. Lag time is the gap between peak rainfall and peak discharge.",
+        ],
+      },
+      {
+        heading: "Erosion, transport and deposition",
+        points: [
+          "Four erosion processes: hydraulic action (water forcing into cracks), abrasion (load scraping the bed), attrition (rocks colliding and rounding), and solution (chemical dissolving).",
+          "Four transport processes: traction (rolling), saltation (bouncing), suspension (carried in the flow), and solution (dissolved).",
+          "Vertical erosion dominates the upper course, cutting downwards; lateral erosion dominates the lower course, cutting sideways.",
+          "Deposition happens when the river loses energy: on the inside of bends, at the mouth, and when it floods onto the floodplain.",
+          "Load becomes smaller and rounder downstream because of attrition — a classic fieldwork hypothesis.",
+        ],
+      },
+      {
+        heading: "Landforms along the course",
+        points: [
+          "Upper course: V-shaped valleys, interlocking spurs, waterfalls and gorges. A waterfall forms where hard rock lies over soft; the soft rock erodes, a plunge pool forms, the overhang collapses, and the waterfall retreats upstream leaving a gorge.",
+          "Middle course: meanders and river cliffs. Fastest flow on the outside of a bend erodes a river cliff; slowest flow on the inside deposits a slip-off slope.",
+          "An oxbow lake forms when a meander neck narrows until the river cuts through in a flood, and deposition seals off the old loop.",
+          "Lower course: floodplains, levees and deltas. Levees are natural embankments built from the coarsest sediment dropped first when a river overtops its banks.",
+          "A delta forms where a river meets still water, loses energy and deposits faster than the sea can remove it.",
+        ],
+      },
+      {
+        heading: "Flooding, and why people make it worse",
+        points: [
+          "Physical causes: prolonged or intense rainfall, snowmelt, steep slopes, impermeable rock, and saturated ground.",
+          "Human causes: deforestation removes interception; urbanisation replaces soil with tarmac and drains, so water reaches the river faster; and building on floodplains puts people in the way.",
+          "Urbanisation shortens lag time and raises peak discharge — the hydrograph becomes flashy.",
+          "Hard engineering: dams, embankments, channel straightening, flood walls. Effective and expensive, and often moves the problem downstream.",
+          "Soft engineering: floodplain zoning, afforestation, river restoration, warning systems. Cheaper, more sustainable, and requires accepting that some land will flood.",
+          "The modern shift is towards working with the river rather than against it, because concrete solutions have repeatedly failed further down the catchment.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Drainage basin", definition: "The area of land drained by a river and its tributaries." },
+      { term: "Watershed", definition: "The high ground forming the boundary between two drainage basins." },
+      { term: "Discharge", definition: "The volume of water passing a point per second, measured in cumecs." },
+      { term: "Lag time", definition: "The gap between peak rainfall and peak river discharge on a hydrograph." },
+      { term: "Hydraulic action", definition: "Erosion caused by the force of water forcing air into cracks in the bank and bed." },
+      { term: "Abrasion", definition: "Erosion caused by the river's load scraping against the bed and banks." },
+      { term: "Attrition", definition: "Rocks in the load colliding and wearing each other smaller and rounder." },
+      { term: "Saltation", definition: "Transport in which small stones bounce along the river bed." },
+      { term: "Meander", definition: "A bend in a river, eroding on the outside and depositing on the inside." },
+      { term: "Oxbow lake", definition: "A curved lake left behind when a river cuts through a meander neck and the old loop is sealed off." },
+      { term: "Floodplain", definition: "The flat land beside a river that floods, built up by repeated deposition." },
+      { term: "Levee", definition: "A natural embankment of coarse sediment built up along a riverbank during floods." },
+      { term: "Delta", definition: "A landform of deposited sediment where a river enters still water and loses energy." },
+      { term: "Hard engineering", definition: "Built defences such as dams and flood walls — effective, expensive, and often shifting problems downstream." },
+      { term: "Soft engineering", definition: "Working with natural processes: zoning, afforestation, restoration and warning systems." },
+    ],
+    examTips: [
+      {
+        tip: "Name the process, not just the effect",
+        detail:
+          "'Hydraulic action widened the crack' scores; 'the water wore it away' does not. There are four named erosion processes and examiners want them by name.",
+      },
+      {
+        tip: "Describe landform formation as a sequence",
+        detail:
+          "Waterfalls and oxbow lakes are marked in stages. Number them and give each one its process — most marks are awarded per correct step in order.",
+      },
+      {
+        tip: "Link urbanisation to the hydrograph",
+        detail:
+          "Tarmac and drains mean water reaches the river faster, so lag time shortens and peak discharge rises. That chain is the answer to most flood-cause questions.",
+      },
+      {
+        tip: "Give hard engineering its downside",
+        detail:
+          "It usually protects one place by sending water somewhere else faster. Saying so is what turns a description into an evaluation.",
+      },
+      {
+        tip: "Use upper, middle and lower course as a structure",
+        detail:
+          "Vertical erosion and V-shaped valleys, then meanders, then floodplains and deltas. It organises almost any river question instantly.",
+      },
+      {
+        tip: "Remember attrition rounds the load",
+        detail:
+          "It is why stones get smaller and smoother downstream, and it is the reasoning behind one of the most common fieldwork hypotheses.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain the formation of a waterfall and gorge.",
+        steps: [
+          "Start with the geology: a band of hard, resistant rock lies over softer rock.",
+          "The river erodes the soft rock downstream faster, by hydraulic action and abrasion, creating a step.",
+          "Water falling over the step erodes a deep plunge pool at the base, undercutting the hard rock above.",
+          "The overhanging hard rock is left unsupported and eventually collapses.",
+          "The collapsed rock swirls in the plunge pool and deepens it further by abrasion.",
+          "Repeating this cycle makes the waterfall retreat upstream, leaving a steep-sided gorge in the valley behind it.",
+        ],
+        answer:
+          "Hard rock over soft rock; the soft rock erodes faster creating a step; a plunge pool forms and undercuts the hard rock; the overhang collapses; the process repeats and the waterfall retreats upstream, leaving a gorge.",
+      },
+      {
+        question:
+          "Explain how an oxbow lake forms.",
+        steps: [
+          "A meander develops, with fastest flow on the outside of the bend eroding a river cliff.",
+          "Slowest flow on the inside deposits sediment as a slip-off slope.",
+          "Continued erosion on both outer bends narrows the neck of land between them.",
+          "During a flood, the river has enough energy to cut straight across the neck, taking the shorter route.",
+          "The new straighter channel carries most of the flow, so the old loop receives little water.",
+          "Deposition seals the ends of the loop, leaving a curved lake separated from the river.",
+        ],
+        answer:
+          "Erosion on the outside of two bends narrows the neck between them until a flood lets the river cut straight across. The old loop, now bypassed, is sealed off by deposition and left as a curved lake.",
+      },
+      {
+        question:
+          "Explain why building a housing estate upstream can increase flood risk downstream.",
+        steps: [
+          "Soil and vegetation intercept rain and let it infiltrate slowly, so water reaches the river over hours or days.",
+          "Tarmac and roofs are impermeable, so almost none of the rain soaks in.",
+          "Drains and gutters are designed to remove water quickly, which is exactly the problem — they deliver it to the river fast.",
+          "Lag time therefore shortens and peak discharge rises: the hydrograph becomes flashy.",
+          "Downstream, that larger volume arrives in a shorter time, so the channel is more likely to be overtopped.",
+          "Removing vegetation for the estate reduces interception further, compounding the effect.",
+        ],
+        answer:
+          "Because impermeable surfaces and drains deliver rainfall to the river far faster than soil and vegetation would. Lag time shortens and peak discharge rises, so a larger volume arrives downstream in a shorter time and is more likely to overtop the channel.",
+      },
+      {
+        question:
+          "Compare hard and soft engineering approaches to flooding.",
+        steps: [
+          "Hard engineering builds structures: dams, flood walls, embankments, straightened channels.",
+          "Strengths: it works reliably for the place protected, can allow development on valuable land, and provides visible reassurance.",
+          "Weaknesses: very expensive, needs maintenance, damages habitats, and often speeds water downstream to somewhere without defences.",
+          "Soft engineering works with processes: floodplain zoning, planting trees, restoring meanders, and flood warning systems.",
+          "Strengths: cheaper, sustainable, better for wildlife, and it addresses the cause rather than the symptom.",
+          "Weaknesses: it requires accepting that some land will flood, needs land that may already be built on, and works slowly.",
+          "Judgement: hard engineering protects a specific place now; soft engineering reduces risk across the whole catchment over time. Most modern schemes combine both.",
+        ],
+        answer:
+          "Hard engineering reliably protects a specific place but is expensive, damages habitats and often pushes the problem downstream. Soft engineering is cheaper and more sustainable and treats the cause, but requires accepting that some land will flood. Most modern schemes use both.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the area of land drained by a river and its tributaries called?",
+        accept: ["drainage basin", "a drainage basin", "catchment"],
+        answer: "A drainage basin, bounded by the watershed." },
+      { question: "What is the high ground between two drainage basins called?",
+        accept: ["watershed", "the watershed"],
+        answer: "The watershed." },
+      { question: "What is the volume of water passing a point per second called?",
+        accept: ["discharge"],
+        answer: "Discharge, measured in cumecs — cubic metres per second." },
+      { question: "What unit is river discharge measured in?",
+        accept: ["cumecs", "cumec", "m3/s"],
+        answer: "Cumecs, meaning cubic metres per second." },
+      { question: "What is the gap between peak rainfall and peak discharge called?",
+        accept: ["lag time", "lag"],
+        answer: "Lag time. Urbanisation shortens it, which is why cities flood quickly." },
+      { question: "Which erosion process involves water forcing air into cracks?",
+        accept: ["hydraulic action", "hydraulic"],
+        answer: "Hydraulic action." },
+      { question: "Which erosion process involves the load scraping the bed?",
+        accept: ["abrasion", "corrasion"],
+        answer: "Abrasion — the river's load acting like sandpaper on the channel." },
+      { question: "Which process makes stones smaller and rounder downstream?",
+        accept: ["attrition"],
+        answer: "Attrition — rocks colliding with each other and wearing down." },
+      { question: "Which transport process involves stones bouncing along the bed?",
+        accept: ["saltation"],
+        answer: "Saltation. Traction is rolling; suspension is carried in the flow." },
+      { question: "Which valley shape is typical of a river's upper course?",
+        accept: ["v shaped", "v-shaped", "v shaped valley", "vshaped"],
+        answer: "A V-shaped valley, cut by vertical erosion." },
+      { question: "What is a curved lake cut off from a meander called?",
+        accept: ["oxbow lake", "oxbow", "an oxbow lake"],
+        answer: "An oxbow lake, formed when a flood cuts through the meander neck." },
+      { question: "What is the natural embankment of coarse sediment beside a river called?",
+        accept: ["levee", "levees", "a levee"],
+        answer: "A levee, built up by the coarsest sediment dropped first during floods." },
+      { question: "What landform forms where a river deposits sediment entering still water?",
+        accept: ["delta", "a delta"],
+        answer: "A delta, where deposition outpaces the sea's ability to remove sediment." },
+      { question: "Does urbanisation lengthen or shorten lag time?",
+        accept: ["shorten", "shortens", "shorter"],
+        answer: "Shortens it. Impermeable surfaces and drains deliver water to the river far faster." },
+      { question: "Name one example of hard engineering.",
+        accept: ["dam", "dams", "flood wall", "embankment", "channel straightening", "levee", "flood barrier"],
+        answer: "Dams, flood walls, embankments or channel straightening." },
+      { question: "Name one example of soft engineering.",
+        accept: ["afforestation", "planting trees", "floodplain zoning", "zoning", "river restoration", "warning systems", "flood warnings"],
+        answer: "Afforestation, floodplain zoning, river restoration or flood warning systems." },
+      { question: "Explain why building on floodplains is a problem, given that floodplains are attractive places to build.",
+        answer: "Floodplains are flat, close to water and often near existing towns, which makes them cheap and convenient to build on — that is exactly why so much has been built there. The problem is that a floodplain is not land that might flood; it is land the river has built by flooding, repeatedly, over thousands of years. Building on it puts people and property directly in the river's path, and covering it with tarmac and roofs removes the very storage capacity that used to absorb high flows, raising peak discharge downstream. It also creates political pressure for expensive hard defences that would not otherwise be needed, which then push the problem further down the catchment. (Mark this one yourself.)" },
+      { question: "Explain why modern flood management increasingly works with rivers rather than against them.",
+        answer: "Because decades of hard engineering showed that concrete solves a local problem by creating a wider one. Straightening a channel moves water downstream faster, so the next town gets a bigger peak arriving sooner. Embankments protect the land behind them but remove the floodplain storage that used to absorb high flows. Defences also need permanent maintenance and eventually fail, often catastrophically and against a flood larger than the one they were designed for. Soft approaches — restoring meanders, planting trees, zoning land, and warning people — slow water down across the whole catchment rather than rushing it through one section, and they cost far less. The trade is accepting that some land will flood, which is a political argument as much as a geographical one. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Rivers only erode.\"",
+        right: "They erode, transport AND deposit, and which one dominates depends on energy. Deposition builds floodplains, levees and deltas." },
+      { wrong: "\"Flooding is a purely natural event.\"",
+        right: "Heavy rain is natural; the scale of the damage often is not. Deforestation, urbanisation and building on floodplains all increase both the peak and the cost." },
+      { wrong: "\"Hard engineering solves flooding.\"",
+        right: "It protects a particular place, often by moving water downstream faster to somewhere less protected. It also fails eventually, against a flood bigger than its design." },
+      { wrong: "\"Rivers get faster as they go downhill and slower lower down.\"",
+        right: "Counter-intuitively, rivers usually flow FASTER in the lower course. The channel is smoother and deeper, so there is far less friction than among the boulders upstream." },
+      { wrong: "\"A delta forms at every river mouth.\"",
+        right: "Only where deposition outpaces removal. Strong tides or currents carry sediment away, which is why many large rivers have estuaries instead." },
+      { wrong: "\"Oxbow lakes form slowly and gently.\"",
+        right: "The cut-through usually happens during a single flood, when the river has enough energy to take the shorter route across the neck." },
+    ],
+  },
+
 };

@@ -121,4 +121,24 @@ export const KNOWN_TOPIC_KEYS: readonly string[] = [
 
 // Topics deliberately withdrawn. Empty, and it should stay that way unless
 // somebody has migrated the activity rows first.
-export const RETIRED_TOPIC_KEYS: readonly string[] = [];
+export const RETIRED_TOPIC_KEYS: readonly string[] = [
+  // Withdrawn 2026-08-09, the day after they were registered. Geography Year 9
+  // had ten topics — more than any other year on the site — and three of them
+  // duplicated GCSE topics in Year 10:
+  //
+  //   population-and-urbanisation  →  covered by urban-issues-and-challenges
+  //   development-and-inequality   →  covered by the-changing-economic-world
+  //   resources-and-sustainability →  covered by resource-management
+  //
+  // SAFE TO RETIRE: no content was ever written for them and no activity rows
+  // exist, because Geography was added the same day. Had anyone practised them,
+  // the rows would have needed migrating in Supabase FIRST — which is exactly
+  // what this list is here to force somebody to think about.
+  //
+  // climate-change was not retired. It moved from Year 9 to Year 11, and moving
+  // a topic between years does not change its slug, so nothing points anywhere
+  // new and no migration is needed.
+  "geography/population-and-urbanisation",
+  "geography/development-and-inequality",
+  "geography/resources-and-sustainability",
+];
