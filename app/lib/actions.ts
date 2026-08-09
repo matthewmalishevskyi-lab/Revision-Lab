@@ -16,6 +16,14 @@
 import { redirect } from "next/navigation";
 import { createSession, destroySession, getSessionUserId } from "./session";
 import {
+  checkLoginAllowed,
+  checkRegistrationAllowed,
+  clearLoginFailures,
+  recordFailedLogin,
+  recordRegistration,
+  throttleMessage,
+} from "./throttle";
+import {
   createUser,
   findUserByEmail,
   findUserById,
@@ -75,8 +83,16 @@ export async function register(
 
   if (Object.keys(fieldErrors).length > 0) return { fieldErrors };
 
+  // Stops one machine creating accounts in bulk. Checked after validation, so
+  // typos in the form don't count against the limit.
+  const verdict = await checkRegistrationAllowed();
+  if (!verdict.allowed) {
+    return { formError: throttleMessage(verdict.retryAfterSeconds) };
+  }
+
   try {
     const user = await createUser({ name, email, password });
+    await recordRegistration();
     await createSession(user.id, true);
   } catch (error) {
     if (error instanceof Error && error.message === "EMAIL_TAKEN") {
@@ -121,6 +137,15 @@ export async function login(
     return { formError: "Please enter your email and password." };
   }
 
+  // ── RATE LIMIT: before anything expensive, and before any lookup ──────────
+  // This sits at the very top on purpose. Checked after the database lookup, a
+  // blocked attacker would still be making us do a query per guess — the point
+  // of a limit is to stop doing work for them, not just to refuse at the end.
+  const verdict = await checkLoginAllowed(email);
+  if (!verdict.allowed) {
+    return { formError: throttleMessage(verdict.retryAfterSeconds) };
+  }
+
   // Looking a user up now means a network call to the database, and networks
   // fail. Without this, a momentary blip would throw straight out of the Server
   // Action and show a 500 page to someone whose only mistake was logging in at
@@ -151,11 +176,20 @@ export async function login(
     // and trivially distinguishable by a stopwatch. Doing the same work here
     // closes that. See the note in users.ts.
     await spendPasswordCheckTime(password);
+    await recordFailedLogin(email);
     return genericFailure;
   }
 
   const ok = await verifyPassword(password, user.passwordHash);
-  if (!ok) return genericFailure;
+  if (!ok) {
+    await recordFailedLogin(email);
+    return genericFailure;
+  }
+
+  // Right password: wipe the slate for this account, so someone who forgot
+  // their password, tried five times, then remembered it isn't left carrying a
+  // count that could bite them tomorrow.
+  await clearLoginFailures(email);
 
   // The session cookie is written here. If SESSION_SECRET is missing in
   // production this throws a deliberately loud error, so catch it and say

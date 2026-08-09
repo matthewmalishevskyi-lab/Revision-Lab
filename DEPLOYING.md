@@ -209,6 +209,40 @@ Notice none of the names start with `NEXT_PUBLIC_`. Anything with that prefix is
 
 ---
 
+## Step 6 — Turn on login rate limiting
+
+Without this, anyone can guess passwords as fast as the network allows. With it,
+they get about 113 guesses a day instead of over a million.
+
+1. Supabase → **SQL Editor** → **New query**.
+2. Paste the whole of **`THROTTLE_SETUP.sql`** from the repo and hit **Run**.
+3. That's it — no new environment variables, no new keys. It uses the Supabase
+   settings you already added in step 5d.
+
+**To check it works** (do this on the live site, not localhost):
+
+1. Try to log in with your own email and a deliberately wrong password, six
+   times in a row.
+2. The sixth attempt should say *"Too many sign-in attempts. Please wait 1
+   minute and try again."*
+3. Supabase → **Table Editor → login_throttle** — there's a row for your email
+   with `failures: 6` and a `locked_until` a minute in the future.
+4. Wait a minute, log in with the CORRECT password. It works, and that row
+   disappears, because a successful login clears the count.
+
+To unlock yourself immediately instead of waiting, run in the SQL Editor:
+
+```sql
+delete from public.login_throttle where key = 'email:you@example.com';
+```
+
+If you skip this step nothing breaks — the site notices there's no table, logs
+the error and lets people log in as before. That is deliberate (a database blip
+should not lock everyone out), but it does mean a missing table fails quietly.
+Check the table exists rather than assuming.
+
+---
+
 ## Before real students sign up
 
 Once other people's data is involved, you have responsibilities. Worth talking through with a parent:
@@ -217,7 +251,8 @@ Once other people's data is involved, you have responsibilities. Worth talking t
 - **A way to delete an account.** Not optional under UK data protection law.
 - **Passwords are already handled properly** — hashed with scrypt and salted, never stored as text. That part is genuinely done right.
 - **Consider "Sign in with Google" instead.** Then you never store passwords at all, which removes most of the risk. More setup, much less responsibility.
-- **Get the content checked.** Over 100,000 words of revision material written by an AI, aimed at students sitting real exams. A teacher should look over it before anyone revises from it seriously.
+- **Guessing passwords is now rate limited** (step 6) — but only if you ran the SQL.
+- **Get the content checked.** Over 190,000 words of revision material written by an AI, aimed at students sitting real exams. A teacher should look over it before anyone revises from it seriously.
 
 ---
 

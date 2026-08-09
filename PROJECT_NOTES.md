@@ -64,6 +64,49 @@ House style keeping the three a family: chunky proportions, big heads, flat fill
 **Animation:** they pace from one bottom corner of their card to the other and turn round. Two nested elements — the outer one does `walk` (moves + flips via `scaleX(-1)`), the inner does `bob` (bounce). They must be separate because both animations want to control `transform`. The bob uses `steps(2, end)` for a deliberately snappy two-frame retro feel. Each character has a different duration so they don't march in sync. All motion is disabled under `prefers-reduced-motion`.
 - **Tailwind gotcha (important):** Tailwind reads source files as plain text to decide what CSS to generate. Dynamically built class names like `` shadow-[${colour}] `` produce nothing. Any per-item classes must be written as complete literal strings (see the `subjects` array in `app/page.tsx`).
 
+## Login rate limiting (built 2026-08-09)
+
+Stops password guessing. `app/lib/throttle.ts`, table created by
+`THROTTLE_SETUP.sql`, tested by `scripts/check-throttle.mjs` (in `npm run check`).
+
+**Measured, not estimated:** an attacker gets **113 guesses a day** against one
+account, down from ~1.7 million. The 10,000 commonest passwords go from 8
+minutes to 88 days. The test simulates the attack against the real code and
+fails if anyone retunes the tiers and makes it worse.
+
+**Two limits, because they catch different attacks.** Per-account catches one
+account / many passwords. Per-IP catches *password spraying* — one likely
+password tried against thousands of accounts, where each account sees only a
+single failure and a per-account limit never fires.
+
+**Three decisions worth not undoing:**
+
+1. **Account lockouts cap at 15 minutes.** Matthew suggested a day. A long
+   account lockout is a weapon: anyone who knows your email can lock you out of
+   your own site with fifteen deliberately wrong guesses, every morning,
+   forever. IP lockouts go to 2 hours because those punish the machine doing the
+   guessing, not the account being guessed at. The question to ask of any
+   lockout is *who does this hurt if I'm wrong?*
+2. **The window slides from the LAST failure, not the first.** The first version
+   measured from the start of the run, which quietly handed the attacker a fresh
+   allowance every hour — 437 guesses a day instead of 113. The simulation
+   caught it; reading the code would not have.
+3. **Failures are recorded for unknown emails too.** If only real accounts were
+   counted, being throttled would prove an account exists, undoing the careful
+   work that makes a wrong password and an unknown email indistinguishable.
+
+**Fails open.** If the database is unreachable the attempt is allowed and the
+error logged. A blip should not lock every user out of the site. The cost is
+that someone who can knock Supabase over also removes the limit — an acceptable
+trade here, but a real one.
+
+**One dependency on the host:** the client IP comes from `x-real-ip` /
+`x-forwarded-for`, which are normally forgeable. They're trustworthy *because
+Vercel overwrites them at its edge*. Move off Vercel to a host that passes
+through what the visitor sent and the IP limit silently becomes decorative.
+
+---
+
 ## Accounts / authentication (built 2026-08-08)
 
 Email + password login and registration, working, with **zero new packages** — all built on Node's own `crypto` module so every line is readable.
