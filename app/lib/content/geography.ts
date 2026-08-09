@@ -1410,4 +1410,459 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
   },
 
+  "geography/coasts": {
+    summary:
+      "The coast is where land, sea and air meet, and it is the fastest-changing landscape in Britain — some cliffs retreat several metres a year. This covers the waves and processes that shape it, the landforms they build and destroy, and the increasingly difficult question of which stretches of coast are worth defending.",
+    keyFacts: [
+      {
+        heading: "Waves",
+        points: [
+          "Waves are formed by wind blowing over water. Their size depends on wind speed, how long it blows, and fetch — the distance of open water it crosses.",
+          "Constructive waves: low, long, gentle, around 6–8 per minute. The swash is stronger than the backwash, so they build beaches up.",
+          "Destructive waves: tall, steep, frequent, around 10–14 per minute. The backwash is stronger than the swash, so they drag material away.",
+          "Swash is water rushing up the beach; backwash is water draining back down it.",
+          "The same beach can be built in summer by constructive waves and stripped in winter by destructive ones.",
+        ],
+      },
+      {
+        heading: "Processes",
+        points: [
+          "Erosion: hydraulic power (waves forcing air into cracks), abrasion (material thrown at the cliff), attrition (rocks colliding and rounding), and solution (chemical dissolving of rock such as limestone).",
+          "Weathering breaks rock down in place: freeze-thaw, salt crystallisation, and chemical reaction with rainwater.",
+          "Mass movement moves material downslope: rockfall, slumping (common in clay after heavy rain), and landslides.",
+          "Longshore drift moves material ALONG the coast: waves push it up the beach at the angle of the prevailing wind, and gravity pulls the backwash straight down, producing a zigzag.",
+          "Deposition happens where waves lose energy — in sheltered bays, behind spits, and in estuaries.",
+        ],
+      },
+      {
+        heading: "Landforms",
+        points: [
+          "Erosional: headlands and bays form where hard and soft rock alternate along a coast, the soft rock eroding faster into bays.",
+          "The cave–arch–stack–stump sequence: waves erode a crack into a cave, the cave breaks through the headland to form an arch, the arch roof collapses leaving a stack, and the stack is undercut to a stump.",
+          "Wave-cut platforms form as waves undercut a cliff at the base, the overhang collapses, and the cliff retreats — leaving a flat rocky shelf exposed at low tide.",
+          "Depositional: beaches, spits, bars and sand dunes.",
+          "A spit forms where the coast changes direction and longshore drift carries material out into open water; the end often curves as wind and waves change direction, and a salt marsh develops in the sheltered water behind.",
+          "A bar forms where a spit grows right across a bay, cutting off a lagoon behind it.",
+        ],
+      },
+      {
+        heading: "Managing the coast",
+        points: [
+          "Hard engineering: sea walls, groynes, rock armour (rip-rap) and gabions. Effective and expensive, and often causes problems further along the coast.",
+          "Groynes trap sediment moving by longshore drift, widening one beach — and starving the next one down the coast, where erosion then accelerates.",
+          "Soft engineering: beach nourishment (adding sand), dune regeneration, and managed retreat.",
+          "Managed retreat means deliberately allowing the sea to flood low-value land, creating salt marsh that absorbs wave energy and protects the land behind.",
+          "Coastal management is increasingly a decision about which places to defend, because defending everything is unaffordable — a genuinely uncomfortable political question, not just a technical one.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Fetch", definition: "The distance of open water a wind blows across — one of the main controls on wave size." },
+      { term: "Swash", definition: "Water rushing up the beach after a wave breaks." },
+      { term: "Backwash", definition: "Water draining back down the beach under gravity." },
+      { term: "Constructive wave", definition: "A low, gentle wave whose swash is stronger than its backwash, so it builds beaches up." },
+      { term: "Destructive wave", definition: "A tall, steep, frequent wave whose backwash is stronger, so it drags material away." },
+      { term: "Hydraulic power", definition: "Erosion caused by waves forcing air into cracks in a cliff under great pressure." },
+      { term: "Longshore drift", definition: "The zigzag movement of material along a coast, driven by angled swash and vertical backwash." },
+      { term: "Slumping", definition: "Mass movement in which saturated material rotates and slides down a cliff face, common in clay." },
+      { term: "Headland", definition: "A resistant section of coast projecting into the sea, left behind as softer rock erodes into bays." },
+      { term: "Wave-cut platform", definition: "A flat rocky shelf left behind as a cliff retreats, exposed at low tide." },
+      { term: "Stack", definition: "An isolated pillar of rock left when the roof of an arch collapses." },
+      { term: "Spit", definition: "A ridge of deposited material extending out from the coast where the coastline changes direction." },
+      { term: "Bar", definition: "A spit that has grown across a bay, cutting off a lagoon behind it." },
+      { term: "Groyne", definition: "A wooden or rock barrier built across a beach to trap sediment moving by longshore drift." },
+      { term: "Managed retreat", definition: "Deliberately allowing the sea to flood low-value land, creating salt marsh that absorbs wave energy." },
+      { term: "Beach nourishment", definition: "Adding sand or shingle to a beach to replace what erosion has removed." },
+    ],
+    examTips: [
+      {
+        tip: "Get constructive and destructive the right way round",
+        detail:
+          "Constructive BUILDS the beach — stronger swash. Destructive DESTROYS it — stronger backwash. The names help, and mixing them up wrecks a whole answer.",
+      },
+      {
+        tip: "Describe longshore drift as a zigzag",
+        detail:
+          "Swash arrives at the angle of the prevailing wind; backwash returns straight down under gravity. That asymmetry is the whole mechanism, and it needs saying.",
+      },
+      {
+        tip: "Learn the stack sequence as four named stages",
+        detail:
+          "Crack, cave, arch, stack, stump. Marks are awarded per correct stage in the right order, so numbering them is worth doing.",
+      },
+      {
+        tip: "Always give the knock-on effect of groynes",
+        detail:
+          "They widen one beach by starving the next. Naming that displacement is what turns a description of management into an evaluation of it.",
+      },
+      {
+        tip: "Explain why headlands and bays form together",
+        detail:
+          "They need alternating hard and soft rock. Soft rock erodes into bays; hard rock is left projecting as headlands, which then take the brunt of wave energy.",
+      },
+      {
+        tip: "Treat managed retreat as a political choice",
+        detail:
+          "It means deciding some places will not be defended. Recognising that it is about money and priorities, not just geography, is what higher-band answers do.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain the formation of a stack.",
+        steps: [
+          "Start with a headland of resistant rock, exposed to strong wave attack from several directions.",
+          "Waves exploit a weakness — a crack or joint — by hydraulic power and abrasion, widening it into a cave.",
+          "Erosion continues, and the cave is cut right through the headland to form an arch.",
+          "The arch roof is undercut and weakened by weathering from above and erosion from below.",
+          "Eventually the roof collapses, leaving an isolated pillar of rock separated from the headland: a stack.",
+          "The stack is then undercut at its base until it too collapses, leaving a stump visible at low tide.",
+        ],
+        answer:
+          "Waves widen a crack in a headland into a cave, the cave is eroded through to form an arch, the arch roof collapses leaving a stack, and the stack is undercut until only a stump remains.",
+      },
+      {
+        question:
+          "Explain how longshore drift moves material along a coast.",
+        steps: [
+          "The prevailing wind drives waves towards the shore at an angle rather than straight on.",
+          "The swash therefore carries sand and shingle up the beach at that same angle.",
+          "Gravity pulls the backwash straight back down the steepest line, at right angles to the shore.",
+          "Each wave therefore moves material a short distance along the beach as well as up and down it.",
+          "Repeated thousands of times, this produces a net movement of sediment along the coast in a zigzag path.",
+          "It is why beaches build up on one side of a groyne and are starved on the other.",
+        ],
+        answer:
+          "Waves driven by the prevailing wind arrive at an angle, so swash carries material up the beach diagonally while gravity returns the backwash straight down. Each wave shifts material a little further along, producing a zigzag net movement.",
+      },
+      {
+        question:
+          "Evaluate the use of groynes to protect a beach.",
+        steps: [
+          "How they work: barriers built across the beach trap material being moved by longshore drift.",
+          "Benefit: the beach widens, which absorbs wave energy and protects the cliff or promenade behind it.",
+          "Benefit: they are relatively cheap compared with a sea wall, and a wider beach also helps tourism.",
+          "Problem: the sediment they trap is sediment that used to continue down the coast.",
+          "So the next stretch is starved, its beach narrows, and erosion there speeds up — sometimes dramatically.",
+          "That community may then need its own defences, shifting the problem again. This is called terminal groyne syndrome.",
+          "Judgement: effective locally, but a solution that exports its cost to the neighbours, which is why coastal management is now planned at the scale of whole sediment cells rather than individual towns.",
+        ],
+        answer:
+          "They widen the protected beach cheaply and effectively, absorbing wave energy and helping tourism. But they trap sediment that would have continued along the coast, starving the next stretch and accelerating erosion there — so the benefit is real and the cost is simply moved next door.",
+      },
+      {
+        question:
+          "Why do headlands and bays form along some coasts and not others?",
+        steps: [
+          "They require alternating bands of hard and soft rock meeting the coast at an angle, called a discordant coastline.",
+          "The softer rock — clay, for example — erodes faster, and the sea cuts back into it to form a bay.",
+          "The harder rock — chalk or limestone — resists and is left projecting into the sea as a headland.",
+          "Wave energy is then refracted around the headlands, concentrating erosion on them and reducing it in the bays.",
+          "So the pattern is self-reinforcing at first and then self-limiting: headlands take the punishment while bays quietly fill with deposited sand.",
+          "A concordant coastline, where the rock bands run parallel to the sea, produces a much straighter coast without this pattern.",
+        ],
+        answer:
+          "Because they need a discordant coastline, with alternating hard and soft rock meeting the sea at an angle. Soft rock erodes into bays and hard rock is left as headlands, which then concentrate wave energy on themselves while sand accumulates in the sheltered bays.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the distance of open water a wind blows across called?",
+        accept: ["fetch", "the fetch"],
+        answer: "Fetch. The longer the fetch, the more energy waves can build before they arrive." },
+      { question: "Which wave type builds beaches up?",
+        accept: ["constructive", "constructive waves"],
+        answer: "Constructive waves — low and gentle, with swash stronger than backwash." },
+      { question: "Which wave type drags material away?",
+        accept: ["destructive", "destructive waves"],
+        answer: "Destructive waves — tall and frequent, with backwash stronger than swash." },
+      { question: "What is water rushing up the beach called?",
+        accept: ["swash", "the swash"],
+        answer: "Swash. The water draining back down is the backwash." },
+      { question: "Which erosion process involves waves forcing air into cracks?",
+        accept: ["hydraulic power", "hydraulic action", "hydraulic"],
+        answer: "Hydraulic power. The trapped air is compressed and the pressure widens the crack." },
+      { question: "What is the zigzag movement of material along a coast called?",
+        accept: ["longshore drift", "long shore drift", "littoral drift"],
+        answer: "Longshore drift, driven by angled swash and vertical backwash." },
+      { question: "What is the sequence from cave to stump? Give the four landforms in order.",
+        accept: ["cave arch stack stump", "cave, arch, stack, stump"],
+        answer: "Cave, arch, stack, stump — each stage the result of continued erosion and collapse." },
+      { question: "What is the flat rocky shelf left as a cliff retreats called?",
+        accept: ["wave cut platform", "wave-cut platform", "wavecut platform"],
+        answer: "A wave-cut platform, exposed at low tide." },
+      { question: "What is a ridge of deposited material extending from the coast called?",
+        accept: ["spit", "a spit"],
+        answer: "A spit, formed where the coastline changes direction and drift carries material onwards." },
+      { question: "What forms when a spit grows right across a bay?",
+        accept: ["bar", "a bar"],
+        answer: "A bar, cutting off a lagoon behind it." },
+      { question: "What is a resistant section of coast projecting into the sea called?",
+        accept: ["headland", "a headland"],
+        answer: "A headland, left behind as softer rock beside it erodes into bays." },
+      { question: "What are wooden or rock barriers built across a beach called?",
+        accept: ["groynes", "groyne", "a groyne"],
+        answer: "Groynes. They trap drifting sediment — and starve the beach further along." },
+      { question: "What is deliberately allowing the sea to flood low-value land called?",
+        accept: ["managed retreat", "managed realignment"],
+        answer: "Managed retreat, which creates salt marsh that absorbs wave energy." },
+      { question: "What is adding sand to a beach called?",
+        accept: ["beach nourishment", "nourishment", "beach replenishment"],
+        answer: "Beach nourishment, which replaces what erosion has removed." },
+      { question: "Which mass movement process is common in saturated clay cliffs?",
+        accept: ["slumping", "slump", "rotational slumping"],
+        answer: "Slumping, where saturated material rotates and slides down the cliff face." },
+      { question: "What type of coastline has alternating hard and soft rock meeting the sea at an angle?",
+        accept: ["discordant", "discordant coastline"],
+        answer: "A discordant coastline, which produces headlands and bays." },
+      { question: "Explain why defending every stretch of coast is not realistic.",
+        answer: "Because the cost is enormous and the benefit is not evenly distributed. A sea wall costs millions of pounds per kilometre and needs permanent maintenance, so spending it to protect a handful of houses or a stretch of farmland cannot be justified against the same money spent on a town of thousands. Defences also interfere with each other: groynes and walls trap or reflect sediment, starving neighbouring stretches and accelerating erosion there, so protecting everywhere would mean fighting the sea and the neighbours at once. Rising sea levels make the sums worse every decade. That is why management is now planned across whole sediment cells, and why some places are honestly told they will not be defended — a political decision as much as a geographical one. (Mark this one yourself.)" },
+      { question: "Explain why the same beach can grow in summer and shrink in winter.",
+        answer: "Because the wave type changes with the weather. Summer brings calmer conditions and lower-energy constructive waves: they are long and gentle, break infrequently, and their swash is stronger than their backwash, so each wave carries more material up the beach than it drags back. Sediment therefore accumulates and the beach builds up and steepens. Winter storms produce destructive waves — tall, steep and frequent — where the backwash dominates, so material is dragged seawards faster than it is delivered and the beach is stripped and flattened. The sediment is not usually lost; much of it sits offshore in a bar and returns the following summer. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Destructive waves are bigger versions of constructive ones.\"",
+        right: "The difference is the balance between swash and backwash, not just size. Constructive waves build beaches; destructive waves strip them." },
+      { wrong: "\"Longshore drift moves material out to sea.\"",
+        right: "It moves material ALONG the coast, in a zigzag. Angled swash carries it up the beach; gravity brings the backwash straight down." },
+      { wrong: "\"Groynes solve coastal erosion.\"",
+        right: "They widen one beach by trapping sediment that would have travelled on, so the next stretch is starved and erodes faster. The problem is displaced, not removed." },
+      { wrong: "\"Cliffs erode only from wave attack.\"",
+        right: "Weathering breaks the rock down in place and mass movement — rockfall, slumping — carries it away. Waves then remove the debris and expose fresh rock." },
+      { wrong: "\"Managed retreat means giving up.\"",
+        right: "It is an active strategy: allowing low-value land to flood creates salt marsh that absorbs wave energy and protects more valuable land behind it, for a fraction of the cost." },
+      { wrong: "\"Headlands are safer places to build because they are hard rock.\"",
+        right: "Wave energy is refracted onto headlands, so they take the most concentrated attack. It is the bays that are sheltered and accumulate sand." },
+    ],
+  },
+
+  "geography/ecosystems-and-biomes": {
+    summary:
+      "An ecosystem is a community of living things and the physical environment they depend on, joined together by flows of energy and nutrients. Biomes are the huge versions — rainforest, desert, tundra — and where each one sits on the planet is almost entirely explained by climate. The idea to carry through the whole topic is interdependence: change one part and everything else moves.",
+    keyFacts: [
+      {
+        heading: "How an ecosystem works",
+        points: [
+          "Biotic components are the living parts: plants, animals, insects, bacteria. Abiotic components are the non-living: climate, soil, water, light.",
+          "Producers make their own food by photosynthesis. Consumers eat other organisms. Decomposers break down dead material and return nutrients to the soil.",
+          "A food chain is one line of feeding relationships; a food web joins many chains together, which is a far more realistic picture.",
+          "Energy is lost at each level — roughly 90% at every step — which is why food chains are short and top predators are rare.",
+          "Nutrient cycling moves nutrients between biomass (living things), litter (dead material) and soil. Where the cycle is fast, the soil itself can be poor.",
+          "Interdependence means the parts rely on each other, so removing one species can cascade through the whole system.",
+        ],
+      },
+      {
+        heading: "Where biomes are, and why",
+        points: [
+          "Tropical rainforest: around the equator, hot and wet all year, with the highest biodiversity on earth.",
+          "Hot desert: around 30° north and south, where air that rose at the equator descends, warms and dries. Very low and unreliable rainfall.",
+          "Savanna or tropical grassland: between the two, with a distinct wet and dry season.",
+          "Temperate deciduous forest: mid-latitudes with four seasons; trees drop their leaves to survive winter.",
+          "Taiga or boreal forest: high latitudes, cold, with coniferous trees adapted to snow and a short growing season.",
+          "Tundra: near the poles, freezing, with permafrost, low-growing plants and a growing season of weeks.",
+          "The pattern is driven by global atmospheric circulation, which is why biomes form bands roughly parallel to latitude.",
+        ],
+      },
+      {
+        heading: "Rainforest and desert adaptations",
+        points: [
+          "Rainforest is layered: emergents, canopy, under-canopy, shrub layer, forest floor. Each layer has different light, so different species.",
+          "Rainforest plants: drip tips shed heavy rain, buttress roots support tall trunks in thin soil, lianas climb to reach light, and epiphytes grow on other plants rather than in soil.",
+          "Rainforest soil is surprisingly poor. Nutrients are held in the biomass and cycled fast; once trees go, heavy rain quickly leaches what is left.",
+          "Desert plants: cacti store water in thick stems, have spines instead of leaves to cut water loss, waxy coatings, and either very deep roots or wide shallow ones to catch rare rain.",
+          "Desert animals: nocturnal to avoid heat, large ears to lose heat, and highly efficient kidneys producing very concentrated urine.",
+        ],
+      },
+      {
+        heading: "Threats and management",
+        points: [
+          "Deforestation causes: logging, cattle ranching, soya and palm oil, mining, road building, and settlement.",
+          "Consequences: loss of biodiversity, soil erosion once roots no longer bind it, disrupted water cycles, and carbon released rather than stored.",
+          "Desertification is the spread of desert conditions into semi-arid land, caused by overgrazing, over-cultivation, fuelwood collection and climate change.",
+          "Sustainable management: selective logging, replanting, ecotourism, debt-for-nature swaps, international agreements, and giving local people an economic reason to keep the forest standing.",
+          "The hardest part is that the people cutting the forest usually have strong short-term reasons to do so, and conservation only works if it addresses that rather than ignoring it.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Ecosystem", definition: "A community of living things together with the physical environment they interact with." },
+      { term: "Biome", definition: "A very large ecosystem covering a broad region, such as rainforest, desert or tundra." },
+      { term: "Biotic", definition: "The living parts of an ecosystem — plants, animals, insects and bacteria." },
+      { term: "Abiotic", definition: "The non-living parts of an ecosystem — climate, soil, water and light." },
+      { term: "Producer", definition: "An organism that makes its own food by photosynthesis, forming the base of a food chain." },
+      { term: "Decomposer", definition: "An organism that breaks down dead material and returns nutrients to the soil." },
+      { term: "Food web", definition: "The interconnected feeding relationships in an ecosystem — more realistic than a single chain." },
+      { term: "Interdependence", definition: "The reliance of parts of an ecosystem on one another, so a change in one causes changes elsewhere." },
+      { term: "Nutrient cycle", definition: "The movement of nutrients between biomass, litter and soil." },
+      { term: "Biodiversity", definition: "The variety of living species in an area. Tropical rainforest has the highest on earth." },
+      { term: "Drip tip", definition: "A pointed leaf tip that sheds heavy rainfall quickly, preventing rot and fungal growth." },
+      { term: "Buttress root", definition: "A wide root growing above ground to support a tall tree in thin rainforest soil." },
+      { term: "Epiphyte", definition: "A plant growing on another plant to reach light, taking moisture from the air rather than soil." },
+      { term: "Permafrost", definition: "Permanently frozen ground beneath the surface, characteristic of tundra." },
+      { term: "Deforestation", definition: "The clearing of forest for timber, farming, mining or settlement." },
+      { term: "Desertification", definition: "The spread of desert conditions into semi-arid land, caused by human pressure and climate change." },
+    ],
+    examTips: [
+      {
+        tip: "Explain adaptations by naming the problem first",
+        detail:
+          "'Spines instead of leaves REDUCE THE SURFACE AREA losing water' scores. 'Cacti have spines' does not. Always say what the adaptation solves.",
+      },
+      {
+        tip: "Use interdependence in every answer about change",
+        detail:
+          "Remove trees and you change soil, water, climate and every species that depended on them. Following the chain is what the higher bands reward.",
+      },
+      {
+        tip: "Say why rainforest soil is poor",
+        detail:
+          "It is counter-intuitive and examiners love it. Nutrients are held in the living biomass and cycled fast, so once the trees go, rain leaches the little that remains.",
+      },
+      {
+        tip: "Link biome location to atmospheric circulation",
+        detail:
+          "Deserts sit around 30° because air that rose at the equator descends there, warming and drying. That mechanism is worth learning properly.",
+      },
+      {
+        tip: "Give deforestation more than one cause",
+        detail:
+          "Logging, cattle, soya, palm oil, mining, roads and settlement. Naming several, with the economic pressure behind them, beats blaming 'people'.",
+      },
+      {
+        tip: "Treat sustainable management honestly",
+        detail:
+          "It only works if local people gain more from a standing forest than from clearing it. Answers that ignore that read as naive; answers that address it read as geography.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why tropical rainforest soil is poor, despite the vegetation being so lush.",
+        steps: [
+          "Almost all the nutrients in the system are stored in the living biomass, not in the soil.",
+          "Constant heat and moisture mean dead material decomposes extremely fast — leaves rot within weeks rather than years.",
+          "Those released nutrients are taken up almost immediately by the dense network of shallow roots, so they never accumulate.",
+          "Heavy daily rainfall leaches soluble nutrients downwards, out of reach of roots, in a process that would strip any exposed soil.",
+          "The canopy normally protects the soil from that rain, and the roots capture nutrients before they are lost.",
+          "So when the forest is cleared, both protections vanish at once: the soil is exposed to leaching and there is no biomass left to hold nutrients. Cleared land is often exhausted within two or three years.",
+        ],
+        answer:
+          "Because the nutrients are in the trees, not the ground. Rapid decomposition and immediate uptake by shallow roots mean nothing accumulates in the soil, and heavy rain leaches what little there is. Remove the canopy and the roots and the soil is exhausted within a few years.",
+      },
+      {
+        question:
+          "Explain three ways a cactus is adapted to desert conditions.",
+        steps: [
+          "Problem one: water is scarce and unpredictable. Adaptation: a thick fleshy stem stores water taken up rapidly after rare rainfall.",
+          "Problem two: leaves lose water through transpiration. Adaptation: leaves are reduced to spines, cutting surface area to almost nothing.",
+          "Problem three: intense sun and heat drive evaporation. Adaptation: a thick waxy cuticle on the stem seals moisture in.",
+          "A fourth if needed: roots are either very deep, reaching groundwater, or wide and shallow to catch brief surface rain over a large area.",
+          "The spines also deter animals from taking the stored water, which is a second benefit of the same feature.",
+          "In each case, name the problem before the adaptation — that pairing is what earns the marks.",
+        ],
+        answer:
+          "A thick fleshy stem stores water from rare rainfall; leaves are reduced to spines, cutting the surface area that loses water by transpiration and deterring thirsty animals; and a waxy cuticle seals moisture in against intense heat. Roots are either very deep or very wide to capture whatever water arrives.",
+      },
+      {
+        question:
+          "Explain the consequences of deforestation for a rainforest ecosystem.",
+        steps: [
+          "Biodiversity: species lose habitat, and because rainforest species are often highly specialised, many cannot relocate.",
+          "Soil: roots no longer bind it, so heavy rain erodes it rapidly and leaches remaining nutrients.",
+          "Water cycle: trees return enormous quantities of water to the air by transpiration, so removing them reduces local rainfall.",
+          "Climate: carbon stored in the biomass is released when trees are burned or rot, adding to the greenhouse effect.",
+          "People: indigenous communities lose land, food and medicine, and often their way of living entirely.",
+          "Feedback: drier local conditions make the remaining forest more vulnerable to fire, which clears more of it — the damage accelerates itself.",
+        ],
+        answer:
+          "Habitat and biodiversity are lost, soil erodes once roots no longer bind it, local rainfall falls because transpiration stops, stored carbon is released to the atmosphere, and indigenous communities lose their land. Drier conditions then make the remaining forest more fire-prone, so the damage compounds.",
+      },
+      {
+        question:
+          "Why does sustainable forest management have to involve local people?",
+        steps: [
+          "The people clearing forest usually have pressing economic reasons: land for food, income from timber, or work in mining and ranching.",
+          "A rule that removes their income without replacing it will be broken, because the alternative is poverty.",
+          "Enforcement over vast, remote areas is expensive and frequently impossible.",
+          "Schemes that work give local people a stake: ecotourism income, selective logging with replanting, payment for protecting forest, and secure land rights.",
+          "Secure land rights matter particularly, because people invest in land they will still hold in twenty years.",
+          "So the design question is not 'how do we stop them' but 'how does a standing forest become worth more to them than a cleared one'.",
+        ],
+        answer:
+          "Because the people clearing forest are usually doing it out of economic necessity, and rules that remove their livelihood without replacing it get broken — especially across areas too vast to police. Schemes work when a standing forest is worth more to local people than a cleared one, through ecotourism, sustainable harvesting, payments and secure land rights.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the term for the living parts of an ecosystem?",
+        accept: ["biotic"],
+        answer: "Biotic — plants, animals, insects and bacteria. The non-living parts are abiotic." },
+      { question: "What is the term for the non-living parts of an ecosystem?",
+        accept: ["abiotic"],
+        answer: "Abiotic — climate, soil, water and light." },
+      { question: "What is an organism that makes its own food by photosynthesis called?",
+        accept: ["producer", "a producer", "producers"],
+        answer: "A producer, forming the base of every food chain." },
+      { question: "What is an organism that breaks down dead material called?",
+        accept: ["decomposer", "a decomposer", "decomposers"],
+        answer: "A decomposer, returning nutrients to the soil." },
+      { question: "Roughly what percentage of energy is lost at each level of a food chain?",
+        accept: ["90", "90%", "about 90"],
+        answer: "About 90%, which is why food chains are short and top predators are rare." },
+      { question: "Which biome has the highest biodiversity on earth?",
+        accept: ["tropical rainforest", "rainforest", "the rainforest"],
+        answer: "Tropical rainforest, found around the equator where it is hot and wet all year." },
+      { question: "At roughly what latitude are most hot deserts found, in degrees?",
+        accept: ["30", "30 degrees", "30°"],
+        answer: "Around 30° north and south, where air that rose at the equator descends, warms and dries." },
+      { question: "What is the permanently frozen ground in tundra called?",
+        accept: ["permafrost"],
+        answer: "Permafrost, which stops water draining and limits root growth." },
+      { question: "What is a pointed leaf tip that sheds heavy rain called?",
+        accept: ["drip tip", "drip tips", "a drip tip"],
+        answer: "A drip tip, which prevents rot and fungal growth in constant rainfall." },
+      { question: "What are the wide above-ground roots supporting tall rainforest trees called?",
+        accept: ["buttress roots", "buttress", "buttress root"],
+        answer: "Buttress roots, needed because rainforest soil is thin and offers little anchorage." },
+      { question: "What is a plant that grows on another plant to reach light called?",
+        accept: ["epiphyte", "an epiphyte", "epiphytes"],
+        answer: "An epiphyte, taking moisture from the air rather than from soil." },
+      { question: "Why do cacti have spines instead of leaves? Give the reason in one word.",
+        accept: ["water", "transpiration", "evaporation", "water loss"],
+        answer: "To reduce water loss — spines have almost no surface area for transpiration, and they deter animals too." },
+      { question: "What is the spread of desert conditions into semi-arid land called?",
+        accept: ["desertification"],
+        answer: "Desertification, caused by overgrazing, over-cultivation, fuelwood collection and climate change." },
+      { question: "Where are most rainforest nutrients stored: the soil or the biomass?",
+        accept: ["biomass", "the biomass", "trees", "vegetation"],
+        answer: "The biomass. That is why cleared rainforest soil is exhausted within a few years." },
+      { question: "What is the term for the reliance of ecosystem parts on one another?",
+        accept: ["interdependence"],
+        answer: "Interdependence — change one part and the effects cascade through the whole system." },
+      { question: "Name one cause of rainforest deforestation.",
+        accept: ["logging", "cattle ranching", "ranching", "soya", "palm oil", "mining", "roads", "settlement", "farming", "agriculture"],
+        answer: "Logging, cattle ranching, soya, palm oil, mining, road building or settlement." },
+      { question: "Explain why global biomes form bands roughly parallel to latitude.",
+        answer: "Because climate is the main control on which plants can survive, and climate is organised by the global circulation of the atmosphere. Intense sun at the equator heats air, which rises, cools and drops its moisture — producing the constant heat and rain that rainforest needs. That air travels polewards high in the atmosphere and descends around 30° north and south, warming and drying as it sinks, which is why the world's great deserts sit in two bands at almost exactly the same latitudes on every continent. Further poleward, temperature becomes the limiting factor rather than water, producing temperate forest, then taiga, then tundra. Relief and ocean currents distort the pattern locally, but the bands are the underlying structure. (Mark this one yourself.)" },
+      { question: "Explain why removing one species can affect an entire ecosystem.",
+        answer: "Because ecosystems are webs of dependency rather than lists of separate organisms. A predator removed means its prey multiplies, which then over-grazes the plants that other species depend on, so the effect spreads sideways rather than staying local. A pollinator removed means the plants it served cannot reproduce, and everything eating those plants declines with them. Decomposers matter just as much: without them, nutrients stay locked in dead material and never return to the soil. Some species are keystone species whose loss reshapes the whole system, and the effects often appear years later and some distance from the original change — which is exactly why conservation is difficult and why interdependence is the central idea in the topic. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Rainforest soil must be rich because the plants are huge.\"",
+        right: "The nutrients are in the biomass, not the soil. Fast decomposition and immediate uptake mean nothing accumulates, and cleared land is exhausted within a few years." },
+      { wrong: "\"Deserts are always hot.\"",
+        right: "A desert is defined by low rainfall, not temperature. The Gobi is freezing in winter, and Antarctica is technically the largest desert on earth." },
+      { wrong: "\"Deforestation is caused by people not caring.\"",
+        right: "It is driven by strong economic pressures — land for food, timber income, mining and ranching. Solutions that ignore those pressures do not work." },
+      { wrong: "\"Cacti store water in their roots.\"",
+        right: "They store it in thick fleshy stems. The roots are adapted to COLLECT water, either very deep or very wide and shallow." },
+      { wrong: "\"A food chain shows how an ecosystem works.\"",
+        right: "A single chain is a simplification. Real ecosystems are food WEBS, where most species eat several things and are eaten by several others." },
+      { wrong: "\"Biomes are defined by the animals living in them.\"",
+        right: "They are defined by climate and the vegetation it supports. The animals are a consequence of the plants and conditions, not the definition." },
+    ],
+  },
+
 };
