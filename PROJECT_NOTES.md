@@ -145,6 +145,25 @@ The content checker is worth reading (`scripts/check-content.mjs`) — it exists
 
 It also holds **regression tests for the marking rule**, each one a bug that actually happened.
 
+## Accounts on the live site — Supabase (2026-08-09)
+
+**Matthew's call: Supabase, no new packages.** Supabase exposes every table as an HTTP API, so `fetch` is the entire client — the same reasoning as building the password hashing on Node's own `crypto`.
+
+`app/lib/users.ts` now has **two backends behind one set of functions**, chosen automatically by whether `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set:
+
+- **Laptop** → the JSON file in `/data`, unchanged, so you can still open it and see what got saved.
+- **Live site** → a Supabase table over REST.
+
+Nothing else in the app changed. The login page, register page, session code and dashboard are untouched — which is the payoff for isolating storage in one file on day one.
+
+**The `unique` constraint on `email` is the important line of SQL.** The old file store checked "does this email exist?" and then inserted, and two people registering at the same instant could both pass the check. The database refuses the second insert whatever the timing and returns error 23505, which the code turns back into `EMAIL_TAKEN`. Only the database can make that promise.
+
+**Setup is `DEPLOYING.md` Step 5** — the SQL, which two settings to copy, and how to test it. Three environment variables: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SESSION_SECRET`. None start with `NEXT_PUBLIC_`, deliberately: that prefix ships a value to the browser, and the service role key can read and write every row.
+
+**Tested against a fake Supabase server** (a small Node server mimicking PostgREST, including the unique constraint): 16 checks pass — lowercasing, hashing, case-insensitive lookup, snake_case↔camelCase translation, duplicate rejection, and the login timing staying level. The local file path was re-run through the same suite: 7 more pass. Scripts were throwaway; recreate from this description if needed.
+
+**Login is now robust to the database being unreachable** — a network blip returns "We couldn't reach the accounts service" instead of a 500. `redirect()` stays outside the try/catch, because it works by throwing a signal Next has to catch.
+
 ## Second, deeper bug hunt (2026-08-09, auth and infrastructure)
 
 1. **User enumeration by timing — measured, not guessed.** `login()` returned instantly when no account matched the email, but ran scrypt (~30ms) when one did. The error wording was identical either way, which was supposed to stop the page revealing who has an account; the clock revealed it instead. Measured on this machine: **29.4ms for an existing email vs 0.4ms for an unregistered one — a 72x difference**, easily readable over the network. Anyone could feed in a list of addresses and learn which ones are registered without guessing a single password. Fixed with `spendPasswordCheckTime()` in `users.ts`, which hashes against a decoy so both paths cost the same. **Re-measured after the fix: 27.7ms vs 27.2ms, a ratio of 1.02.**

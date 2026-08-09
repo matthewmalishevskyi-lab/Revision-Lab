@@ -74,22 +74,74 @@ Already done for you: page titles and descriptions, a sitemap covering every pag
 
 ---
 
-## Step 5 — Add a real database (do this before turning login back on)
+## Step 5 — Turn the Login button back on
 
-1. Sign up at [neon.com](https://neon.com) or [supabase.com](https://supabase.com). Both have free tiers that are ample for this.
-2. Create a project and copy the **connection string** (it starts `postgresql://`).
-3. In Vercel: **Settings → Environment Variables**, add `DATABASE_URL` with that value.
-4. Also add `SESSION_SECRET` — a long random string. Generate one with:
+**The code is already written.** The Login button, the login page and the register page have been there since the beginning; they hide themselves on the live site until there is somewhere real to store accounts. This step gives them that. No code changes, no `npm install` — just three settings.
+
+### 5a — Make a free Supabase project
+
+1. Sign up at [supabase.com](https://supabase.com). The free tier is far more than this needs.
+2. Create a new project. Choose a region in Europe (London or Frankfurt) — it's closer, so it's faster.
+3. It takes a couple of minutes to start up.
+
+### 5b — Make the table
+
+In Supabase, open **SQL Editor** and run exactly this:
+
+```sql
+create table users (
+  id            uuid primary key,
+  name          text        not null,
+  email         text        not null unique,
+  password_hash text        not null,
+  created_at    timestamptz not null default now()
+);
+
+-- Row Level Security ON, with no policies added.
+-- That combination blocks the public key completely, while the service role
+-- key the server uses bypasses RLS by design. Net effect: the browser can
+-- never read this table, and the server always can.
+alter table users enable row level security;
+```
+
+The `unique` on `email` is doing real work: it is what stops two people registering the same address at the same instant. Only the database can promise that.
+
+### 5c — Copy two settings
+
+In Supabase: **Project Settings → API**.
+
+- **Project URL** — looks like `https://abcdefgh.supabase.co`
+- **`service_role` key** — the *secret* one, not `anon`. It is long and starts `eyJ...`
+
+⚠️ **The `service_role` key can read and write every row in your database.** Never put it in the code, never paste it into a chat, never commit it. It goes in Vercel and nowhere else. If you ever think it has leaked, Supabase can regenerate it.
+
+### 5d — Add three settings to Vercel
+
+**Settings → Environment Variables**, add all three:
+
+| Name | Value |
+|---|---|
+| `SUPABASE_URL` | your Project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | your `service_role` key |
+| `SESSION_SECRET` | a long random string — generate one below |
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-5. Then ask Claude to migrate the storage layer. Only `app/lib/users.ts` needs rewriting — everything else was deliberately built to not care where the data lives.
+Then **redeploy** (Deployments → ⋯ → Redeploy). Environment variables are only read at build time, so a redeploy is what makes them take effect.
 
-**You need BOTH variables, not just the database one.** Accounts stay switched off until `DATABASE_URL` *and* `SESSION_SECRET` are both present. That's deliberate: with a database but no signing key, the site would try to generate one and save it to disk, the hosting filesystem is read-only, and the write fails — so someone typing the *correct* password would have got an error page. Setting only one of the two now leaves accounts off, which is the safe outcome.
+**All three are required.** With storage but no signing key, the site would try to generate one and save it to disk, the hosting filesystem is read-only, the write fails — and someone typing the *correct* password would get an error page. Setting only some of them leaves accounts off, which is the safe outcome, not a bug.
 
-**Never put these values in the code.** They go in Vercel's environment variables. Anything committed to GitHub is visible to anyone who can see the repository, and secrets leaked this way get found by automated scanners within minutes.
+Notice none of the names start with `NEXT_PUBLIC_`. Anything with that prefix is baked into the JavaScript sent to the browser, where anyone can read it. These stay on the server.
+
+### 5e — Check it worked
+
+1. The **Login/Register** button is back in the header.
+2. Register an account on the live site.
+3. In Supabase: **Table Editor → users**. Your row is there — and the password is a long unreadable string, because it is a scrypt hash. Not even you can read it. That is correct.
+4. Log out, log back in.
+5. Wait a few minutes and log in again. This is the real test: with the old file storage the account would have vanished by now.
 
 ---
 

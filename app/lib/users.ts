@@ -48,18 +48,79 @@ export type User = {
   createdAt: string;
 };
 
-// ─── Storage ────────────────────────────────────────────────────────────────
-// A JSON file. This is genuinely fine while the site runs on your laptop, and
-// it means you can open `data/users.json` and SEE what got saved, which is a
-// much better way to learn than a database you can't inspect.
+// ─── Storage: two backends, one set of functions ────────────────────────────
 //
-// It will NOT survive being deployed, for two real reasons:
+// TWO PLACES accounts can live, chosen automatically:
+//
+//   - On your laptop: a JSON file in /data. You can open it and SEE what got
+//     saved, which is a far better way to learn than a database you cannot
+//     look inside.
+//
+//   - On the live site: a Supabase table, reached over its REST API.
+//
+// The file is genuinely fine locally and genuinely broken once deployed, for
+// two separate reasons:
 //   - Hosts like Vercel give each request a fresh, read-only filesystem, so
-//     writes vanish.
-//   - Two people registering at the same moment would overwrite each other,
-//     because reading and writing a whole file isn't atomic.
-// Swapping this file for a database is the upgrade. Nothing else has to change,
-// which is exactly why the storage code is isolated in here.
+//     writes vanish. Someone registers, sees "welcome", and is gone by lunch.
+//   - Two people registering at the same instant would overwrite each other,
+//     because reading a whole file and writing it back is not atomic.
+//
+// The database fixes both, and the second one properly: `email` has a UNIQUE
+// constraint, so the database itself refuses the duplicate. Two simultaneous
+// registrations cannot both succeed no matter how the requests interleave —
+// which is not something application code can promise on its own.
+//
+// NO NEW PACKAGES. Supabase exposes every table as an HTTP API, so `fetch` is
+// the whole client. Same choice as the password hashing: every line here is
+// readable rather than hidden inside a dependency.
+//
+// EVERY FUNCTION BELOW KEEPS ITS SIGNATURE. This is the payoff for isolating
+// storage in one file on day one — the login page, the register page, the
+// session code and the dashboard are all untouched by this change.
+
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+// Note what is NOT in these names: NEXT_PUBLIC_. Any environment variable
+// starting with that prefix is baked into the JavaScript sent to the browser,
+// where anyone can read it. The service role key can read and write every row
+// in the database, so putting it there would hand the whole table to the
+// internet. It stays server-side, which is why only Server Actions touch it.
+export const USING_DATABASE = Boolean(SUPABASE_URL && SUPABASE_KEY);
+
+// The shape Postgres uses. Databases conventionally name columns with
+// underscores, JavaScript uses capitals — so there is a translation step, kept
+// in one place rather than sprinkled through the code.
+type UserRow = {
+  id: string;
+  name: string;
+  email: string;
+  password_hash: string;
+  created_at: string;
+};
+
+const fromRow = (row: UserRow): User => ({
+  id: row.id,
+  name: row.name,
+  email: row.email,
+  passwordHash: row.password_hash,
+  createdAt: row.created_at,
+});
+
+async function supabase(path: string, init: RequestInit = {}): Promise<Response> {
+  return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    ...init,
+    headers: {
+      apikey: SUPABASE_KEY as string,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json",
+      ...init.headers,
+    },
+    // Accounts must never be served from a cache. Reading a stale copy of the
+    // users table would mean logging in against yesterday's password.
+    cache: "no-store",
+  });
+}
 
 async function readUsers(): Promise<User[]> {
   try {
@@ -149,12 +210,34 @@ export async function spendPasswordCheckTime(password: string): Promise<void> {
 // ─── Queries ────────────────────────────────────────────────────────────────
 
 export async function findUserByEmail(email: string): Promise<User | null> {
-  const users = await readUsers();
   const target = normaliseEmail(email);
+
+  if (USING_DATABASE) {
+    // `eq.` is how this API spells "equals". encodeURIComponent matters: an
+    // email is user input going into a URL, and a stray & or # would otherwise
+    // change what the query means.
+    const res = await supabase(
+      `users?email=eq.${encodeURIComponent(target)}&select=*&limit=1`,
+    );
+    if (!res.ok) throw new Error(`Supabase lookup failed: ${res.status}`);
+    const rows = (await res.json()) as UserRow[];
+    return rows[0] ? fromRow(rows[0]) : null;
+  }
+
+  const users = await readUsers();
   return users.find((u) => u.email === target) ?? null;
 }
 
 export async function findUserById(id: string): Promise<User | null> {
+  if (USING_DATABASE) {
+    const res = await supabase(
+      `users?id=eq.${encodeURIComponent(id)}&select=*&limit=1`,
+    );
+    if (!res.ok) throw new Error(`Supabase lookup failed: ${res.status}`);
+    const rows = (await res.json()) as UserRow[];
+    return rows[0] ? fromRow(rows[0]) : null;
+  }
+
   const users = await readUsers();
   return users.find((u) => u.id === id) ?? null;
 }
@@ -164,12 +247,7 @@ export async function createUser(input: {
   email: string;
   password: string;
 }): Promise<User> {
-  const users = await readUsers();
   const email = normaliseEmail(input.email);
-
-  if (users.some((u) => u.email === email)) {
-    throw new Error("EMAIL_TAKEN");
-  }
 
   const user: User = {
     id: randomUUID(),
@@ -179,6 +257,46 @@ export async function createUser(input: {
     createdAt: new Date().toISOString(),
   };
 
+  if (USING_DATABASE) {
+    const res = await supabase("users", {
+      method: "POST",
+      // Ask for the inserted row back, so we return what was actually stored
+      // rather than what we hoped would be.
+      headers: { Prefer: "return=representation" },
+      body: JSON.stringify({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        password_hash: user.passwordHash,
+        created_at: user.createdAt,
+      }),
+    });
+
+    if (res.ok) {
+      const rows = (await res.json()) as UserRow[];
+      return rows[0] ? fromRow(rows[0]) : user;
+    }
+
+    // ── Letting the DATABASE decide whether the email is taken ──────────────
+    // The tempting version is "look it up first, and insert if nothing came
+    // back". That has a gap: two people registering the same email in the same
+    // moment can both look, both find nothing, and both insert. The window is
+    // milliseconds wide, which is exactly the kind of bug that never appears
+    // in testing and appears immediately once a site is popular.
+    //
+    // So the UNIQUE constraint on the email column decides instead. Postgres
+    // refuses the second insert whatever the timing, and returns error 23505.
+    // The database is the only place that can make that promise.
+    const body = await res.text();
+    if (res.status === 409 || body.includes("23505")) {
+      throw new Error("EMAIL_TAKEN");
+    }
+    throw new Error(`Supabase insert failed: ${res.status} ${body}`);
+  }
+
+  // Local file: no unique constraint exists, so the check has to happen here.
+  const users = await readUsers();
+  if (users.some((u) => u.email === email)) throw new Error("EMAIL_TAKEN");
   users.push(user);
   await writeUsers(users);
   return user;

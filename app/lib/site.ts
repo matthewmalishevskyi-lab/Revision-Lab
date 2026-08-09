@@ -27,19 +27,25 @@ export const SITE_DESCRIPTION =
 // software that openly says "not ready yet". So rather than trusting ourselves
 // to remember, the code checks:
 //
-//   - running locally?             accounts on  (the file works fine)
-//   - deployed WITH a DATABASE_URL? accounts on  (real storage exists)
-//   - deployed WITHOUT one?         accounts OFF (would lose data)
+//   - running locally?          accounts on  (the file works fine)
+//   - deployed, fully set up?   accounts on  (real storage exists)
+//   - deployed, half set up?    accounts OFF (would lose data, or error)
 //
-// Set DATABASE_URL and SESSION_SECRET in Vercel and accounts turn themselves
-// back on. Nothing here needs editing.
+// Set the three variables in Vercel and the Login button comes back on its own.
+// Nothing in the code needs editing:
 //
-// SESSION_SECRET is in the condition for a reason found during a bug hunt. The
-// session code falls back to generating a key and saving it in /data, and a
-// deployed filesystem is read-only, so that write throws. Login does not catch
-// it, meaning a visitor with the CORRECT password would have hit a 500 page —
-// triggered by adding a database and forgetting the other variable, which is
-// exactly the kind of half-finished setup this switch exists to catch.
+//   SUPABASE_URL                 your project's API URL
+//   SUPABASE_SERVICE_ROLE_KEY    the secret key that can read and write rows
+//   SESSION_SECRET               a long random string for signing cookies
+//
+// ALL THREE are required, and the third one is here because of a bug found
+// during a hunt rather than because it looked tidy. The session code falls back
+// to generating a signing key and saving it to /data; a deployed filesystem is
+// read-only, so that write throws EACCES. Login does not catch it, so a visitor
+// typing the CORRECT password would have hit a 500 page. Half-finished setups
+// are exactly what this switch exists to catch.
 export const ACCOUNTS_ENABLED =
   process.env.NODE_ENV !== "production" ||
-  (Boolean(process.env.DATABASE_URL) && Boolean(process.env.SESSION_SECRET));
+  (Boolean(process.env.SUPABASE_URL) &&
+    Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY) &&
+    Boolean(process.env.SESSION_SECRET));

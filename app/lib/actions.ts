@@ -104,7 +104,20 @@ export async function login(
     return { formError: "Please enter your email and password." };
   }
 
-  const user = await findUserByEmail(email);
+  // Looking a user up now means a network call to the database, and networks
+  // fail. Without this, a momentary blip would throw straight out of the Server
+  // Action and show a 500 page to someone whose only mistake was logging in at
+  // the wrong second. `redirect()` stays OUTSIDE the try — it works by throwing
+  // a signal Next catches, so a catch block here would swallow it.
+  let user: Awaited<ReturnType<typeof findUserByEmail>>;
+  try {
+    user = await findUserByEmail(email);
+  } catch {
+    return {
+      formError:
+        "We couldn't reach the accounts service. Please try again in a moment.",
+    };
+  }
 
   // NOTE THE WORDING. Whether the email is unknown or the password is wrong,
   // the message is identical: "Email or password is incorrect."
@@ -126,7 +139,14 @@ export async function login(
   const ok = await verifyPassword(password, user.passwordHash);
   if (!ok) return genericFailure;
 
-  await createSession(user.id, rememberMe);
+  // The session cookie is written here. If SESSION_SECRET is missing in
+  // production this throws a deliberately loud error, so catch it and say
+  // something a visitor can act on rather than showing them a stack trace.
+  try {
+    await createSession(user.id, rememberMe);
+  } catch {
+    return { formError: "We couldn't start your session. Please try again." };
+  }
 
   redirect("/");
 }
