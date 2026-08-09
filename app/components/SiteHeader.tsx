@@ -55,6 +55,14 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
               <span className="hidden sm:inline">Dashboard</span>
             </Link>
 
+            {/* Account settings need to be reachable in one click from
+                anywhere. Somebody who wants their data deleted should not have
+                to hunt for the page that does it. */}
+            <Link href="/account" className={chipClasses}>
+              <CogIcon />
+              <span className="hidden sm:inline">Account</span>
+            </Link>
+
             {/* Logging out CHANGES something on the server, so it's a form, not
                 a link. Links are for going places; anything that alters state
                 should be a real submission. */}
@@ -133,6 +141,27 @@ function ExitIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+// A cog, for account settings. Drawn in the same weight as the others: 1.7
+// stroke, rounded caps, on a 24 grid — that consistency is what stops a row of
+// icons from looking like it was assembled from three different websites.
+function CogIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="3.2" />
+      <path d="M12 2.6v2.2M12 19.2v2.2M21.4 12h-2.2M4.8 12H2.6M18.6 5.4l-1.6 1.6M7 17l-1.6 1.6M18.6 18.6L17 17M7 7L5.4 5.4" />
     </svg>
   );
 }

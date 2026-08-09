@@ -201,6 +201,14 @@ export async function login(
     return { formError: "We couldn't start your session. Please try again." };
   }
 
+  // Someone whose account is counting down to erasure almost certainly logged
+  // back in FOR that reason. Sending them to the homepage would make them hunt
+  // for the Undo button while the clock runs; send them straight to it.
+  //
+  // This is the entire justification for choosing a 30 day grace period over an
+  // instant delete. A grace period nobody can find is not a grace period.
+  if (user.deletedAt) redirect("/account");
+
   redirect("/");
 }
 
@@ -223,5 +231,6 @@ export async function getCurrentUser() {
     name: user.name,
     email: user.email,
     createdAt: user.createdAt,
+    deletedAt: user.deletedAt,
   };
 }

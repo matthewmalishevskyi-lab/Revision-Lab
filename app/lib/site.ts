@@ -13,6 +13,18 @@ export const SITE_URL =
 
 export const SITE_NAME = "Revision Lab";
 
+// The address on the privacy page, so people can ask for their data or its
+// deletion. UK data protection law requires a route to a real human; this is
+// it.
+//
+// It is a single constant rather than an address typed into each page, because
+// the day this changes it must change EVERYWHERE — a privacy page listing an
+// address nobody reads is worse than no address at all.
+//
+// Note it will be scraped and will attract spam: any address on a public page
+// does. Swapping it for a dedicated one later is a one-line change here.
+export const CONTACT_EMAIL = "matthewmalishevskyi@gmail.com";
+
 export const SITE_DESCRIPTION =
   "Free GCSE revision for Computer Science, Maths and English. Key facts, flashcards and exam technique for every topic across Years 9, 10 and 11.";
 

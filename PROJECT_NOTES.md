@@ -64,6 +64,38 @@ House style keeping the three a family: chunky proportions, big heads, flat fill
 **Animation:** they pace from one bottom corner of their card to the other and turn round. Two nested elements — the outer one does `walk` (moves + flips via `scaleX(-1)`), the inner does `bob` (bounce). They must be separate because both animations want to control `transform`. The bob uses `steps(2, end)` for a deliberately snappy two-frame retro feel. Each character has a different duration so they don't march in sync. All motion is disabled under `prefers-reduced-motion`.
 - **Tailwind gotcha (important):** Tailwind reads source files as plain text to decide what CSS to generate. Dynamically built class names like `` shadow-[${colour}] `` produce nothing. Any per-item classes must be written as complete literal strings (see the `subjects` array in `app/page.tsx`).
 
+## Accounts: privacy, password change, deletion (built 2026-08-09)
+
+`/privacy`, `/account`, `app/lib/account-actions.ts`, `ACCOUNT_SETUP.sql`.
+Checked by `scripts/check-security.mjs`.
+
+**Matthew's decisions:** contact address is his personal Gmail (will get
+scraped; swapping it is a one-line change in `site.ts`). Deletion has a **30 day
+grace period** rather than being instant.
+
+**The rule every account action follows:** identity comes from the signed
+session cookie, NEVER from the form. `changePassword(email, ...)` with the email
+in a hidden field would work perfectly in testing and let anyone change anyone's
+password, because the form belongs to the visitor. There's a check that fails if
+an account action ever reads an email out of `formData`.
+
+**A soft delete is only a delete if something finishes the job.** The pg_cron
+job in `ACCOUNT_SETUP.sql` is not housekeeping — without it the row sits there
+forever and the privacy page is untrue. Activity rows are deleted BEFORE the
+user row, or they're orphaned with nothing left to identify them by.
+
+**The drift bug that check-security.mjs guards:** the 30 days is written in five
+places (the constant, three pages, and the SQL). Change one and the others
+silently keep promising something different. Verified by changing the constant
+to 14 and watching five checks fail.
+
+**Known limitation, stated on the page rather than hidden:** changing your
+password does not sign you out on other devices. Sessions are signed cookies,
+not rows, so there's no list to revoke. Fixing it needs a version number on the
+user, checked every request.
+
+---
+
 ## Login rate limiting (built 2026-08-09)
 
 Stops password guessing. `app/lib/throttle.ts`, table created by

@@ -55,6 +55,18 @@ export function RegisterForm() {
         <FormError message={state?.formError} />
 
         <SubmitButton pending={pending}>Create account</SubmitButton>
+
+        {/* The one place a privacy link is genuinely useful is the moment
+            before someone hands over their details — not buried in a footer
+            they'll never scroll to. */}
+        <p className="mt-4 text-center text-xs opacity-55">
+          We store your name, email and what you revise — nothing else, and no
+          tracking.{" "}
+          <Link href="/privacy" className="underline underline-offset-2">
+            How your data is handled
+          </Link>
+          .
+        </p>
       </form>
 
       <hr className="mt-8 border-black/10 dark:border-white/10" />

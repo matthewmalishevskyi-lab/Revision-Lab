@@ -1,4 +1,4 @@
-// Rate-limit checker — run it with `npm run check`.
+// Security + account checker — run it with `npm run check`.
 //
 // WHY THIS FILE EXISTS
 //
@@ -244,11 +244,106 @@ try {
     "the client IP prefers x-real-ip, which the platform sets",
   );
 
+  // ── 7. The account and privacy pages ─────────────────────────────────────
+  //
+  // THE BUG THIS EXISTS TO CATCH: the grace period is written down in five
+  // places — the constant, the privacy page, the account page, the
+  // confirmation box, and the SQL that does the erasing. Change the constant to
+  // 14 and four of them keep saying 30, and the site is now making a promise
+  // about people's data that the database does not keep. Nothing about that
+  // would fail to compile, and nobody would notice until it mattered.
+  console.log("Checking the account and privacy pages...");
+
+  const usersSrc = readFileSync("app/lib/users.ts", "utf8");
+  const graceMatch = usersSrc.match(/DELETION_GRACE_DAYS = (\d+)/);
+  expect(graceMatch !== null, "DELETION_GRACE_DAYS is defined");
+
+  const graceDays = Number(graceMatch?.[1]);
+  const mustSayGrace = [
+    "app/privacy/page.tsx",
+    "app/account/page.tsx",
+    "app/account/AccountForms.tsx",
+    "app/page.tsx",
+  ];
+
+  for (const file of mustSayGrace) {
+    const text = readFileSync(file, "utf8");
+    // Any "<number> days" claim in the page must be the real number.
+    const claims = [...text.matchAll(/(\d+)\s*\n?\s*days/g)].map((m) => Number(m[1]));
+    expect(
+      claims.length > 0,
+      `${file} tells the reader how long deletion takes`,
+    );
+    expect(
+      claims.every((n) => n === graceDays),
+      `${file} says "${graceDays} days" everywhere (found ${[...new Set(claims)].join(", ")})`,
+    );
+  }
+
+  const sql = readFileSync("ACCOUNT_SETUP.sql", "utf8");
+  const intervals = [...sql.matchAll(/interval '(\d+) days'\s*;?\s*$/gm)].map((m) => Number(m[1]));
+  const purgeIntervals = [...sql.matchAll(/deleted_at < now\(\) - interval '(\d+) days'/g)]
+    .map((m) => Number(m[1]));
+  expect(purgeIntervals.length >= 2, "the SQL purges both users and their activity");
+  expect(
+    purgeIntervals.every((n) => n === graceDays),
+    `the scheduled purge waits exactly ${graceDays} days, like the pages promise ` +
+      `(found ${[...new Set(purgeIntervals)].join(", ")})`,
+  );
+  void intervals;
+
+  // A soft delete with no purge is not a delete. If this job is missing, the
+  // privacy page is simply untrue.
+  expect(
+    sql.includes("cron.schedule"),
+    "something is scheduled to actually erase the rows — a soft delete with no purge is a lie",
+  );
+  expect(
+    sql.indexOf("delete from public.activity") < sql.indexOf("delete from public.users"),
+    "activity is deleted BEFORE the user row, or the rows are orphaned with nothing to identify them for deletion",
+  );
+
+  // The privacy page has to give a real route to a human.
+  const site = readFileSync("app/lib/site.ts", "utf8");
+  const contact = site.match(/CONTACT_EMAIL = "([^"]+)"/)?.[1];
+  expect(Boolean(contact), "a contact address is defined");
+  const privacy = readFileSync("app/privacy/page.tsx", "utf8");
+  expect(
+    privacy.includes("CONTACT_EMAIL"),
+    "the privacy page shows the contact address from the constant, not a typed copy",
+  );
+  expect(privacy.includes("ico.org.uk"), "the privacy page names the regulator");
+
+  // Findable, or it may as well not exist.
+  const footer = readFileSync("app/components/SiteFooter.tsx", "utf8");
+  expect(footer.includes('href="/privacy"'), "the footer links to the privacy page");
+  const layout = readFileSync("app/layout.tsx", "utf8");
+  expect(layout.includes("<SiteFooter"), "the footer is in the root layout, so it is on every page");
+  expect(
+    readFileSync("app/register/RegisterForm.tsx", "utf8").includes("/privacy"),
+    "the sign-up form links to the privacy page, where it is actually relevant",
+  );
+
+  // Identity must come from the session, never from the form.
+  const accountActions = readFileSync("app/lib/account-actions.ts", "utf8");
+  expect(
+    !/formData\.get\(\s*["']email["']\s*\)/.test(accountActions),
+    "account actions never read an email from the form — identity comes from the signed session cookie only",
+  );
+  expect(
+    (accountActions.match(/getSessionUserId\(\)/g) ?? []).length >= 3,
+    "every account action reads the user from the session",
+  );
+  expect(
+    accountActions.includes("verifyPassword"),
+    "deleting an account and changing a password both re-check the password",
+  );
+
   console.log("");
   if (failures === 0) {
-    console.log(`All ${checks} rate-limit checks passed.`);
+    console.log(`All ${checks} security and account checks passed.`);
   } else {
-    console.error(`${failures} of ${checks} rate-limit checks FAILED.`);
+    console.error(`${failures} of ${checks} security and account checks FAILED.`);
     process.exitCode = 1;
   }
 } finally {

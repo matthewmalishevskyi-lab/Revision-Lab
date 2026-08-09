@@ -46,6 +46,11 @@ export type User = {
   email: string;
   passwordHash: string;
   createdAt: string;
+
+  // Set when someone asks to delete their account. The row is NOT removed yet
+  // — see the long note above scheduleDeletion() for why there is a wait, and
+  // why that wait has to be honest.
+  deletedAt: string | null;
 };
 
 // ─── Storage: two backends, one set of functions ────────────────────────────
@@ -100,10 +105,12 @@ type UserRow = {
   email: string;
   password_hash: string;
   created_at: string;
+  deleted_at: string | null;
 };
 
 const fromRow = (row: UserRow): User => ({
   id: row.id,
+  deletedAt: row.deleted_at ?? null,
   name: row.name,
   email: row.email,
   passwordHash: row.password_hash,
@@ -191,7 +198,13 @@ async function supabase(path: string, init: RequestInit = {}): Promise<Response>
 async function readUsers(): Promise<User[]> {
   try {
     const raw = await readFile(USERS_FILE, "utf8");
-    return JSON.parse(raw) as User[];
+    // Accounts saved before deletion existed have no deletedAt field at all.
+    // Defaulting it here means the rest of the code can rely on the property
+    // being present, rather than every caller remembering that old rows differ.
+    return (JSON.parse(raw) as User[]).map((u) => ({
+      ...u,
+      deletedAt: u.deletedAt ?? null,
+    }));
   } catch {
     // File doesn't exist yet — that just means nobody has registered.
     return [];
@@ -321,6 +334,7 @@ export async function createUser(input: {
     email,
     passwordHash: await hashPassword(input.password),
     createdAt: new Date().toISOString(),
+    deletedAt: null,
   };
 
   if (USING_DATABASE) {
@@ -366,4 +380,100 @@ export async function createUser(input: {
   users.push(user);
   await writeUsers(users);
   return user;
+}
+
+
+// ─── Changing a password ────────────────────────────────────────────────────
+//
+// Note what this does NOT take: a user's email. It takes an id, which the
+// caller can only have got from a signed session cookie. If this accepted an
+// email address, then anyone who could call it could change anyone's password,
+// and the only thing standing between a stranger and every account on the site
+// would be that nobody thought to try.
+export async function updatePassword(
+  userId: string,
+  newPassword: string,
+): Promise<void> {
+  const passwordHash = await hashPassword(newPassword);
+
+  if (USING_DATABASE) {
+    const res = await supabase(`users?id=eq.${encodeURIComponent(userId)}`, {
+      method: "PATCH",
+      body: JSON.stringify({ password_hash: passwordHash }),
+    });
+    if (!res.ok) {
+      throw new Error(describeFailure("password update", res.status, await res.text()));
+    }
+    return;
+  }
+
+  const users = await readUsers();
+  const user = users.find((u) => u.id === userId);
+  if (!user) throw new Error("NO_SUCH_USER");
+  user.passwordHash = passwordHash;
+  await writeUsers(users);
+}
+
+// ─── Deleting an account ────────────────────────────────────────────────────
+//
+// ─────────────────────────────────────────────────────────────────────────────
+// WHY THE ROW IS NOT DELETED IMMEDIATELY, AND WHY THAT NEEDS SAYING OUT LOUD
+//
+// Matthew chose a 30 day grace period over an instant wipe, so that someone who
+// clicks the button by accident can get months of revision back. That is a kind
+// decision and it is defensible. It also comes with an obligation.
+//
+// "Delete my account" that quietly means "hide it for a month" is the sort of
+// thing that gets companies fined, because the user asked you to stop holding
+// their data and you carried on holding it. What makes it legitimate is
+// TELLING THEM: the confirmation screen and the privacy page both say plainly
+// that the data is erased after 30 days and can be restored before then.
+//
+// The wait is a feature offered to the user, not a convenience taken by us. If
+// they want it gone now, the privacy page gives them an email address, and
+// "delete this row" is a one-line SQL query.
+//
+// THE PART THAT IS EASY TO GET WRONG: a soft delete is only a delete if
+// something actually comes back and finishes the job. If the purge never runs,
+// the row sits there forever and the privacy policy is simply untrue. That is
+// why the scheduled job in ACCOUNT_SETUP.sql is not optional housekeeping —
+// it is the half of this feature that makes the other half honest.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const DELETION_GRACE_DAYS = 30;
+
+export function purgeDateFor(deletedAt: string): Date {
+  return new Date(
+    new Date(deletedAt).getTime() + DELETION_GRACE_DAYS * 24 * 60 * 60 * 1000,
+  );
+}
+
+async function setDeletedAt(userId: string, value: string | null): Promise<void> {
+  if (USING_DATABASE) {
+    const res = await supabase(`users?id=eq.${encodeURIComponent(userId)}`, {
+      method: "PATCH",
+      body: JSON.stringify({ deleted_at: value }),
+    });
+    if (!res.ok) {
+      throw new Error(describeFailure("deletion flag", res.status, await res.text()));
+    }
+    return;
+  }
+
+  const users = await readUsers();
+  const user = users.find((u) => u.id === userId);
+  if (!user) throw new Error("NO_SUCH_USER");
+  user.deletedAt = value;
+  await writeUsers(users);
+}
+
+export async function scheduleDeletion(userId: string): Promise<void> {
+  await setDeletedAt(userId, new Date().toISOString());
+}
+
+// Called when someone logs back in during the grace period and changes their
+// mind. This is the entire reason the grace period exists, so it must be easy
+// to reach — one button, no re-typing your password, no confirmation.
+export async function cancelDeletion(userId: string): Promise<void> {
+  await setDeletedAt(userId, null);
 }

@@ -243,12 +243,46 @@ Check the table exists rather than assuming.
 
 ---
 
+## Step 7 — Account deletion and the privacy page
+
+The privacy page and account page work as soon as the code is deployed. The
+**deletion** half needs one piece of database setup, and without it the site
+makes a promise it does not keep.
+
+1. Supabase → **SQL Editor** → **New query**.
+2. Paste the whole of **`ACCOUNT_SETUP.sql`** and hit **Run**.
+3. Check the scheduled job exists:
+
+   ```sql
+   select jobname, schedule, active from cron.job;
+   ```
+
+   You should see `revision-lab-nightly-cleanup`.
+
+**Why step 3 is not optional.** Deleting an account marks it and erases it 30
+days later. If that nightly job isn't running, nothing ever erases it — the row
+sits in your database forever while the privacy page tells people it was
+deleted. That is the sort of thing that turns a small project into a real
+problem. Check the job is there.
+
+To see who is currently counting down:
+
+```sql
+select email, deleted_at, deleted_at + interval '30 days' as erased_on
+from public.users where deleted_at is not null;
+```
+
+If someone emails asking to be deleted immediately, they're entitled to that —
+the queries at the bottom of `ACCOUNT_SETUP.sql` do it by hand.
+
+---
+
 ## Before real students sign up
 
 Once other people's data is involved, you have responsibilities. Worth talking through with a parent:
 
-- **A privacy policy** — what you collect, why, how long you keep it, how someone deletes their account.
-- **A way to delete an account.** Not optional under UK data protection law.
+- ~~**A privacy policy**~~ — built, at `/privacy`. Keep it TRUE: if the site ever starts doing something new (analytics, emails, comments), that page changes in the same commit.
+- ~~**A way to delete an account**~~ — built, on the account page. Needs step 7 to actually erase anything.
 - **Passwords are already handled properly** — hashed with scrypt and salted, never stored as text. That part is genuinely done right.
 - **Consider "Sign in with Google" instead.** Then you never store passwords at all, which removes most of the risk. More setup, much less responsibility.
 - **Guessing passwords is now rate limited** (step 6) — but only if you ran the SQL.

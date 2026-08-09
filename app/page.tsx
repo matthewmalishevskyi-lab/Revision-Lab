@@ -16,14 +16,30 @@ const WALK_DURATIONS = ["13s", "17s", "10s"];
 // `async` because it waits on the session cookie to see who's logged in.
 // Server Components can do that directly — no loading spinner, no fetching from
 // the browser. The page arrives already knowing who you are.
-export default async function Home() {
+export default async function Home(props: PageProps<"/">) {
   const user = await getViewer();
+
+  // Deleting an account logs you out, so the confirmation cannot live on the
+  // account page — there is no session left to show it with. It arrives as a
+  // query string instead, which survives the redirect and the sign-out.
+  const { deleted } = await props.searchParams;
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-10">
       <StructuredData data={websiteSchema(SITE_URL, SITE_NAME)} />
 
       <SiteHeader />
+
+      {deleted && (
+        <p
+          role="status"
+          className="mx-auto mt-8 max-w-3xl rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4 text-center text-sm"
+        >
+          Your account has been scheduled for deletion and you&apos;ve been
+          signed out. Everything will be permanently erased in 30 days — log
+          back in before then if you change your mind.
+        </p>
+      )}
 
       {/* ---------- Welcome box ---------- */}
       <section className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/60 bg-white/55 px-8 py-10 text-center shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
