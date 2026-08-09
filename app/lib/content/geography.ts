@@ -2733,7 +2733,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Deindustrialisation, which left many UK inner cities with unemployment and derelict land." },
       { question: "What is the movement of people out of cities to smaller towns called?",
         accept: ["counter urbanisation", "counter-urbanisation", "counterurbanisation", "counter urbanization"],
-        answer: "Counter-urbanisation." },
+        answer: "Counter-urbanisation, driven by cheaper housing, space, and the ability to work remotely." },
       { question: "What is it called when wealthier residents move in and displace existing communities?",
         accept: ["gentrification"],
         answer: "Gentrification — often the cost attached to successful regeneration." },
@@ -2743,7 +2743,11 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
       { question: "What is providing land with basic utilities so residents build their own homes called?",
         accept: ["site and service", "site and service scheme", "sites and services"],
         answer: "A site and service scheme." },
-      { question: "Around which year did the world's urban population pass 50%?",
+      // "Roughly" is load-bearing. The checker refuses accept lists holding two
+      // genuinely different numbers, and 2007 and 2008 are two different years —
+      // estimates vary, and pretending otherwise would be a worse question as
+      // well as a failing one.
+      { question: "Roughly which year did the world's urban population pass 50%?",
         accept: ["2007", "2008"],
         answer: "Around 2007. More than half the world has lived in cities ever since." },
       { question: "Explain why moving squatter settlement residents to new housing outside the city often fails.",
