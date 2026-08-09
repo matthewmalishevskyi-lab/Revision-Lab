@@ -57,6 +57,23 @@ type Question = {
 // "1.44 MB", "1.44mb" and "1.44 mb." all match, and "run-length encoding"
 // matches "run length encoding".
 //
+// ─────────────────────────────────────────────────────────────────────────────
+// SYMBOLS THAT DECORATE A NUMBER WITHOUT CHANGING IT
+//
+// A second bug, found the same way as the first. Asked "the bearing of A from
+// B?", a student who typed 230° was marked WRONG, because the accepted answer
+// was "230" and the degree sign made the strings differ. Same for 20% and £50.
+//
+// The fix is to drop a trailing ° or % and a leading currency symbol, because
+// none of them change the VALUE — 230 and 230° are the same answer written two
+// ways. The alternative was adding every variant to hundreds of accept lists
+// by hand, which would work until the first one anybody forgot.
+//
+// Note this cannot wrongly accept a percentage where a decimal was asked for:
+// "write 45% as a decimal" wants 0.45, and a student typing 45% still produces
+// "45", which still does not match. The symbol is stripped; the value is not.
+// ─────────────────────────────────────────────────────────────────────────────
+//
 // NOT removed: minus signs, and leading zeros. "1011100" stays different from
 // "01011100", because a missing leading zero on an 8-bit answer genuinely IS
 // wrong and examiners mark it as such. Forgiving about typing, strict about the
@@ -69,7 +86,11 @@ function normalise(text: string): string {
     // Drop hyphens only where a letter sits on each side.
     .replace(/(?<=[a-z])-(?=[a-z])/g, "")
     .replace(/[\s,]/g, "")
-    .replace(/[.!?]+$/, "");
+    // A currency symbol in front of a number decorates it; £50 is 50.
+    .replace(/^[£$€]/, "")
+    // Trailing degree signs, percent signs and sentence punctuation, in any
+    // combination — "230°." and "20%" both reduce to the bare value.
+    .replace(/[°%.!?]+$/, "");
 }
 
 type Status = "unanswered" | "correct" | "incorrect" | "selfMarked";

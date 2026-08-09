@@ -137,7 +137,27 @@ From Jennifer's Computer Science mockup, generalised to all three subjects.
 
 **Higher tier labelling** — `higherOnly` can be set on a key-fact block, a worked example or a practice question. It renders an amber badge, and any topic containing one shows an explanatory notice at the top. 26 items flagged, all in Maths (circle theorems, sine/cosine rules, quadratic formula, quadratic sequences, histograms, vector proofs, inverse proportion). Only Maths is tiered — a check enforces that no other subject uses the flag.
 
-**Two real bugs found and fixed during this work:**
+## Verification: `npm run check`
+
+One command runs everything: `tsc --noEmit`, then `eslint --max-warnings=0`, then `scripts/check-content.mjs`. **Run it before every push.** Currently ~14,900 checks.
+
+The content checker is worth reading (`scripts/check-content.mjs`) — it exists because TypeScript can only check the SHAPE of the content. It cannot notice that a topic has too few flashcards, that two practice questions are identical (React uses the question as a key, so one would vanish), or that an accept list marks a wrong answer right. Node cannot run TypeScript directly, so the script compiles the data files to a temporary folder first, inspects them, then deletes the copy.
+
+It also holds **regression tests for the marking rule**, each one a bug that actually happened.
+
+## Bugs found and fixed (bug hunt, 2026-08-09)
+
+1. **Degree signs, percent signs and currency broke marking.** Asked "the bearing of A from B?", a student typing `230°` was marked WRONG, because the accepted answer was `230`. Same for `20%` and `£50`. Fixed centrally in `normalise()` — a trailing `°`/`%` and a leading `£$€` are stripped, because they decorate a number without changing it. Doing it in the marking rule rather than by adding variants to hundreds of accept lists means it cannot be forgotten next time. It deliberately cannot turn a percentage into a decimal: "write 45% as a decimal" wants 0.45, and `45%` still reduces to `45`, which still does not match.
+
+2. **A compound interest question accepted the SIMPLE interest answer.** `£1000 at 3% for 2 years` accepted `1060` alongside `1060.90` — on a question whose entire point is that compound is not simple. Removed, and a permanent check now flags any accept list holding two genuinely different numbers. Rounded variants (`786.432` and `786.4`) are correctly allowed; the test is whether one value is the other properly rounded to its own number of decimal places, which is exactly what separates the legitimate pair from `1060` vs `1060.90` (which rounds to 1061).
+
+3. **The jump menu could scroll the page on load.** `pill.scrollIntoView({ block: "nearest" })` scrolls whatever ancestors it needs to, *including the window* — and on first render the menu is still below the fold, so the browser scrolled the page down to reach it. Replaced with a direct write to the strip's own `scrollLeft`, which cannot move anything else.
+
+4. **The ladder companion was thrashing layout.** Its scroll handler called `rails.offsetHeight`, which forces the browser to recompute layout on the spot — a hundred-plus times a second while scrolling. Moved into the animation frame, which is the rule the rest of that component already followed.
+
+**Checked and found fine:** Next.js 16 disables smooth scrolling during route transitions itself (`disableSmoothScrollDuringRouteTransition` in `layout-router.js`), so `scroll-behavior: smooth` does not make navigation crawl. All 53 routes resolve, junk URLs return nothing rather than throwing, no React key collisions, no orphan content keys, no Higher-tier flags outside Maths.
+
+**Two earlier bugs, from 2026-08-08:**
 
 1. **Marking bug.** `normalise()` in `Practice.tsx` stripped every hyphen so "run-length" matched "run length" — but it also stripped MINUS SIGNS, so a student answering `3` to a question whose answer was `-3` was marked correct. Now hyphens are only removed between two letters. Regression tests added.
 2. **State-persistence bugs.** React reuses a component in the same tree position, so navigating between topic pages did NOT recreate `Flashcards` or `Practice`. Flashcards CRASHED (card 21 of a 23-card topic → 10-card topic → undefined → white screen), and Practice showed old answers against new questions. Both fixed with React's "adjust state when props change" pattern.

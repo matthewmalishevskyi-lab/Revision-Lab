@@ -865,7 +865,11 @@ export const MATHS: Record<string, TopicContent> = {
       { question: "A value rises from 40 to 50. What is the percentage increase?", accept: ["25", "25%"],
         answer: "25%. Change ÷ ORIGINAL x 100 = 10 ÷ 40 x 100." },
       { question: "£1000 is invested at 3% compound interest for 2 years. What is it worth, in pounds?",
-        accept: ["1060.90", "1060.9", "£1060.90", "1060"],
+        // "1060" was in this list and had to come out: it is the SIMPLE
+        // interest answer, on a question whose whole point is that compound
+        // interest is not simple interest. It was marking the wrong answer
+        // right, which is worse than marking a right answer wrong.
+        accept: ["1060.90", "1060.9", "£1060.90"],
         answer: "£1060.90. Use 1000 x 1.03^2 — the power is what makes it compound rather than simple." },
       { question: "Write 0.35 as a fraction in its simplest form.", accept: ["7/20"],
         answer: "7/20. Start with 35/100 and divide both parts by 5." },

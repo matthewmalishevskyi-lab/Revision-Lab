@@ -93,6 +93,22 @@ export function LadderCompanion({
     let stepTo = currentRung;
     let handedness = 1; // flips each step, so it alternates hands
 
+    // ─────────────────────────────────────────────────────────────────────────
+    // WHY THE TARGET IS WORKED OUT IN THE ANIMATION FRAME, NOT IN THE LISTENER
+    //
+    // The first version recalculated the target inside the scroll and mousemove
+    // handlers. That looked harmless — it is only a division — except that it
+    // called lastRung(), which reads `rails.offsetHeight`.
+    //
+    // Reading offsetHeight forces the browser to stop and recompute layout,
+    // there and then, to give an accurate answer. Doing that a hundred-plus
+    // times a second while someone scrolls is called layout thrashing, and it
+    // is one of the classic ways to make a page feel sticky on a slower laptop.
+    //
+    // So the listeners now do the least work possible: remember the number.
+    // Everything that needs the layout happens once per frame in tick(), which
+    // is the rule this whole component is built on.
+    // ─────────────────────────────────────────────────────────────────────────
     const recalculateTarget = () => {
       // Screen position + scroll = position on the page. This one line is what
       // makes the mascot respond to scrolling and to the mouse.
@@ -104,18 +120,18 @@ export function LadderCompanion({
 
     const handlePointer = (event: MouseEvent) => {
       lastPointerY = event.clientY;
-      recalculateTarget();
     };
 
     // `passive: true` promises we won't call preventDefault, which lets the
     // browser scroll without waiting to find out.
     window.addEventListener("mousemove", handlePointer, { passive: true });
-    window.addEventListener("scroll", recalculateTarget, { passive: true });
-    window.addEventListener("resize", recalculateTarget);
     recalculateTarget();
     currentRung = targetRung;
 
     const tick = (now: number) => {
+      // Once per screen refresh, not once per event.
+      recalculateTarget();
+
       if (!stepping && currentRung !== targetRung) {
         // Begin a new step — exactly ONE rung towards the target, never more.
         stepping = true;
@@ -165,8 +181,6 @@ export function LadderCompanion({
     // exactly how pages get slower the longer you use them.
     return () => {
       window.removeEventListener("mousemove", handlePointer);
-      window.removeEventListener("scroll", recalculateTarget);
-      window.removeEventListener("resize", recalculateTarget);
       cancelAnimationFrame(frame);
     };
   }, []);

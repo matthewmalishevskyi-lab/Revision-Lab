@@ -80,9 +80,12 @@ export function TopicNav({
       // so it can be impossible to scroll its heading up past the line — you
       // run out of page first, and the menu would never highlight it. If we're
       // within a few pixels of the bottom, the last section wins.
+      // documentElement rather than body: body is a flex column here, and its
+      // scrollHeight does not always account for margins the way the scrolling
+      // element's does. documentElement IS the thing that scrolls.
       const atBottom =
         window.innerHeight + window.scrollY >=
-        document.body.scrollHeight - 4;
+        document.documentElement.scrollHeight - 4;
       if (atBottom && sections.length > 0) {
         current = sections[sections.length - 1].id;
       }
@@ -115,15 +118,43 @@ export function TopicNav({
   // Keep the highlighted pill visible when the strip is scrolled sideways on a
   // phone. Without this the active pill drifts off the edge and the menu looks
   // like it has stopped working.
+  //
+  // ───────────────────────────────────────────────────────────────────────────
+  // WHY THIS SETS scrollLeft BY HAND INSTEAD OF CALLING scrollIntoView
+  //
+  // The obvious version was `pill.scrollIntoView({ block: "nearest" })`, and it
+  // had a bug that would have been baffling to report: opening a topic page
+  // sometimes scrolled you down the page on its own.
+  //
+  // The reason is that scrollIntoView scrolls whatever ancestors it needs to,
+  // including the WINDOW. On first render this effect runs while the menu is
+  // still below the fold, so the browser helpfully scrolled the page to bring
+  // it into view — helpful in general, wrong here.
+  //
+  // Writing scrollLeft on the strip cannot do that: it moves one element's own
+  // horizontal scroll and nothing else. Narrower tool, no side effects.
+  // ───────────────────────────────────────────────────────────────────────────
   useEffect(() => {
     const strip = stripRef.current;
     if (!strip) return;
     const pill = strip.querySelector<HTMLElement>(`[data-nav-id="${active}"]`);
     if (!pill) return;
 
-    // Only nudge horizontally, and only inside the strip — `block: "nearest"`
-    // is what stops this from yanking the whole page around.
-    pill.scrollIntoView({ block: "nearest", inline: "nearest" });
+    // Nothing to do if the strip isn't actually scrollable (the desktop case).
+    if (strip.scrollWidth <= strip.clientWidth) return;
+
+    // Where the pill sits relative to the strip's own left edge.
+    const left = pill.offsetLeft - strip.offsetLeft;
+    const right = left + pill.offsetWidth;
+
+    // Scroll only if the pill has drifted out of view, and only far enough to
+    // bring it back — with a small margin so it doesn't sit flush to the edge.
+    const margin = 16;
+    if (left < strip.scrollLeft + margin) {
+      strip.scrollLeft = left - margin;
+    } else if (right > strip.scrollLeft + strip.clientWidth - margin) {
+      strip.scrollLeft = right - strip.clientWidth + margin;
+    }
   }, [active]);
 
   if (sections.length < 2) return null;
