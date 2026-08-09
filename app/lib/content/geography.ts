@@ -1865,4 +1865,453 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
   },
 
+  "geography/natural-hazards": {
+    summary:
+      "The GCSE hazards unit, which goes beyond the Year 9 introduction to tectonics by adding atmospheric hazards, named case studies and the management question that runs through all of them. The organising idea is risk: a hazard only becomes a disaster where it meets people, and how badly depends on how well those people were prepared and how much money stood behind that preparation.",
+    keyFacts: [
+      {
+        heading: "Hazard risk",
+        points: [
+          "A natural hazard is a natural event that threatens people or property. A disaster is what happens when it actually causes serious damage or loss of life.",
+          "Hazard risk is the likelihood of being affected, and it depends on far more than the size of the event.",
+          "Factors increasing risk: population density, urbanisation on unstable ground, poverty, poor building quality, and lack of warning systems.",
+          "Climate change is increasing the frequency and intensity of some atmospheric hazards, though attributing any single event remains difficult.",
+          "The same magnitude event produces wildly different outcomes in different countries, which is the central point of the whole unit.",
+        ],
+      },
+      {
+        heading: "Tropical storms",
+        points: [
+          "Called hurricanes in the Atlantic, cyclones in the Indian Ocean and typhoons in the Pacific — the same phenomenon under three names.",
+          "They form between 5° and 30° of the equator over ocean water above about 27°C, where warm moist air rises rapidly.",
+          "Rising air creates low pressure; the Coriolis effect spins the system, and condensation releases latent heat that powers it further.",
+          "Structure: a calm eye at the centre, surrounded by the eyewall where winds and rain are most intense, then spiralling rain bands.",
+          "They weaken over land or cooler water, because the warm ocean that fuels them is gone.",
+          "Effects: wind damage, storm surge (often the biggest killer), flooding, and landslides. Management is prediction, planning, protection and evacuation.",
+        ],
+      },
+      {
+        heading: "Extreme weather in the UK",
+        points: [
+          "UK extremes include storms, prolonged rainfall and flooding, heatwaves, drought, snow and ice.",
+          "The Somerset Levels floods of 2013–14 are the most widely taught example: months of rainfall on saturated ground, made worse by rivers that had not been dredged.",
+          "Effects there included around 600 houses flooded, 14,000 hectares of farmland under water for weeks, and villages cut off.",
+          "Management afterwards: dredging of the rivers Tone and Parrett, raised roads, and flood defences for vulnerable villages.",
+          "Evidence suggests UK extreme weather is becoming more frequent, though separating a trend from natural variability requires decades of data.",
+        ],
+      },
+      {
+        heading: "Managing hazards",
+        points: [
+          "Prediction: monitoring to forecast when and where. Excellent for tropical storms, good for volcanoes, poor for earthquakes.",
+          "Planning: land-use zoning, emergency plans, education and drills.",
+          "Protection: earthquake-resistant buildings, sea defences, storm shelters, and reinforced infrastructure.",
+          "The four Ps are worth memorising as an answer structure: Prediction, Planning, Protection, Preparation.",
+          "Cost is the constant limit. Everything above works, and every item costs money that poorer countries do not have — which is why development shapes outcomes more than magnitude does.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Natural hazard", definition: "A natural event that threatens people or property." },
+      { term: "Natural disaster", definition: "A hazard that has actually caused serious damage or loss of life." },
+      { term: "Hazard risk", definition: "The likelihood of being affected by a hazard, shaped by population, poverty and preparation as well as the event." },
+      { term: "Tropical storm", definition: "An intense low-pressure system forming over ocean water above about 27°C, called a hurricane, cyclone or typhoon depending on location." },
+      { term: "Eye", definition: "The calm centre of a tropical storm, where air is descending." },
+      { term: "Eyewall", definition: "The ring around the eye where winds and rainfall are most intense." },
+      { term: "Storm surge", definition: "A rise in sea level driven ashore by a storm's winds and low pressure — often the biggest killer." },
+      { term: "Coriolis effect", definition: "The deflection caused by the earth's rotation, which makes tropical storms spin." },
+      { term: "Latent heat", definition: "Energy released when water vapour condenses, which powers a tropical storm as it develops." },
+      { term: "Prediction", definition: "Forecasting when and where a hazard will strike — reliable for storms, poor for earthquakes." },
+      { term: "Planning", definition: "Reducing risk in advance through zoning, emergency plans, education and drills." },
+      { term: "Protection", definition: "Physical measures such as earthquake-resistant buildings, sea defences and storm shelters." },
+      { term: "Somerset Levels floods", definition: "The 2013–14 UK flooding that submerged around 14,000 hectares of farmland for weeks." },
+    ],
+    examTips: [
+      {
+        tip: "Use the four Ps as a structure",
+        detail:
+          "Prediction, Planning, Protection, Preparation. Almost any 'how can this hazard be managed' question is answered by working through them with examples.",
+      },
+      {
+        tip: "Separate hazard from disaster",
+        detail:
+          "An earthquake in an empty desert is a hazard event and not a disaster. The distinction is the whole reason development matters more than magnitude.",
+      },
+      {
+        tip: "Explain tropical storm formation as a chain",
+        detail:
+          "Warm ocean above 27°C, air rises, low pressure forms, Coriolis spins it, condensation releases latent heat which powers it further. Each link earns a mark.",
+      },
+      {
+        tip: "Name the storm surge as the biggest killer",
+        detail:
+          "People picture wind, but it is usually the surge that causes most deaths in a tropical storm. Saying so shows real understanding.",
+      },
+      {
+        tip: "Use precise Somerset Levels figures",
+        detail:
+          "Around 600 houses flooded and 14,000 hectares under water for weeks. Concrete numbers turn a case study into evidence.",
+      },
+      {
+        tip: "Say why prediction works for storms and not earthquakes",
+        detail:
+          "Storms are visible on satellites for days; earthquake stress builds invisibly and releases in seconds. It explains why management strategies differ so much.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain how a tropical storm forms.",
+        steps: [
+          "It needs ocean water above about 27°C to a depth of around 60 m, which supplies the energy.",
+          "Warm moist air rises rapidly from the sea surface, leaving low pressure beneath it.",
+          "More air rushes in to replace it, and the Coriolis effect — the deflection caused by the earth's rotation — makes the whole system spin.",
+          "As the rising air cools, water vapour condenses into towering cloud, releasing latent heat.",
+          "That released heat warms the surrounding air, making it rise faster still, which draws in more warm moist air. The storm feeds itself.",
+          "Air descending in the centre creates the calm eye, surrounded by the eyewall where conditions are most violent.",
+          "The storm dies when it moves over land or cooler water, because its energy source is cut off.",
+        ],
+        answer:
+          "Warm ocean above 27°C makes moist air rise, creating low pressure; the Coriolis effect spins the inrushing air; condensation releases latent heat that drives the rising air harder, so the storm feeds itself. Descending air forms the calm eye, and the storm dies once it leaves the warm water.",
+      },
+      {
+        question:
+          "Explain why storm surge often causes more deaths than wind.",
+        steps: [
+          "Low pressure at the storm's centre allows the sea surface to bulge upwards.",
+          "Powerful onshore winds then drive that raised water towards the coast.",
+          "If it coincides with high tide, the effect is compounded and can raise sea level several metres.",
+          "Low-lying coastal areas, where many people live, flood rapidly and with little warning of the depth.",
+          "Water is far heavier than wind: moving water destroys buildings and sweeps people away, and floodwater afterwards contaminates supplies and spreads disease.",
+          "Wind damages property extensively but is more survivable indoors, whereas there is nowhere to shelter from several metres of water.",
+        ],
+        answer:
+          "Because low pressure raises the sea surface and the wind drives it ashore, flooding low-lying coasts rapidly — sometimes by several metres if it meets a high tide. Moving water destroys buildings and drowns people in a way that wind, survivable indoors, generally does not.",
+      },
+      {
+        question:
+          "Explain why the Somerset Levels flooded so badly in 2013–14.",
+        steps: [
+          "Physical: it was one of the wettest winters on record, with rain falling on ground already saturated so almost nothing infiltrated.",
+          "Physical: the Levels are low-lying, flat and close to sea level, so water drains extremely slowly.",
+          "Physical: high tides prevented rivers discharging into the sea, backing water up the channels.",
+          "Human: the rivers Tone and Parrett had not been dredged for around twenty years, reducing their capacity substantially.",
+          "Human: land drainage and building over the years had reduced natural storage.",
+          "Result: around 600 houses flooded, 14,000 hectares of farmland underwater for weeks, and villages such as Muchelney cut off entirely.",
+        ],
+        answer:
+          "Record rainfall on saturated, flat, low-lying land that drains slowly, with high tides preventing rivers discharging — worsened by two decades without dredging, which had cut channel capacity. Around 600 homes flooded and 14,000 hectares stayed underwater for weeks.",
+      },
+      {
+        question:
+          "'The best way to reduce hazard risk is better prediction.' How far do you agree?",
+        steps: [
+          "For: prediction works extremely well for tropical storms, where satellite tracking gives days of warning and evacuation saves thousands of lives.",
+          "For: volcano monitoring detects swelling, tremors and gas changes weeks ahead.",
+          "Against: earthquakes cannot be predicted usefully at all, and they are among the deadliest hazards.",
+          "Against: a warning is worthless without the means to act on it — transport, shelters, and somewhere to go.",
+          "Against: protection often saves more lives. Building codes work every day and require no forecast at all.",
+          "Judgement: prediction is decisive for some hazards and irrelevant for others, so the best strategy depends on which hazard — and preparation and protection matter everywhere.",
+        ],
+        answer:
+          "It depends entirely on the hazard. Prediction transforms outcomes for tropical storms and volcanoes, and does almost nothing for earthquakes. A warning is also useless without the transport and shelters to act on it, whereas building codes protect continuously without any forecast — so protection is the more universal answer.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the difference in one word between a hazard and a disaster? Give the word describing what a disaster has caused.",
+        accept: ["damage", "loss", "death", "harm", "loss of life"],
+        answer: "Damage or loss of life. A hazard threatens; a disaster has actually caused serious harm." },
+      { question: "What are tropical storms called in the Atlantic?",
+        accept: ["hurricanes", "hurricane"],
+        answer: "Hurricanes. Cyclones in the Indian Ocean, typhoons in the Pacific — the same phenomenon." },
+      { question: "What minimum sea temperature do tropical storms need, in °C?",
+        accept: ["27", "27c", "27°c"],
+        answer: "About 27°C, to a depth of roughly 60 m, which is what supplies their energy." },
+      { question: "What is the calm centre of a tropical storm called?",
+        accept: ["eye", "the eye"],
+        answer: "The eye, where air is descending. The eyewall around it is the most violent part." },
+      { question: "What is the most violent part of a tropical storm called?",
+        accept: ["eyewall", "the eyewall", "eye wall"],
+        answer: "The eyewall, the ring of towering cloud immediately around the eye." },
+      { question: "Which effect makes tropical storms spin?",
+        accept: ["coriolis", "coriolis effect", "the coriolis effect"],
+        answer: "The Coriolis effect, caused by the earth's rotation." },
+      { question: "What is the rise in sea level driven ashore by a storm called?",
+        accept: ["storm surge", "surge", "a storm surge"],
+        answer: "A storm surge — usually the biggest killer in a tropical storm." },
+      { question: "What kills more people in a tropical storm: wind or water?",
+        accept: ["water", "storm surge", "flooding"],
+        answer: "Water. The storm surge and flooding cause most deaths; wind mainly destroys property." },
+      { question: "What energy release powers a tropical storm as vapour condenses?",
+        accept: ["latent heat", "latent"],
+        answer: "Latent heat, released as water vapour condenses into cloud." },
+      { question: "Why do tropical storms weaken over land? Give the reason in a few words.",
+        accept: ["no warm water", "lose energy source", "no ocean", "cut off from warm water", "no warm ocean"],
+        answer: "They lose the warm ocean water that fuels them, so the energy supply is cut off." },
+      { question: "In which years did the Somerset Levels flood badly? Give it as e.g. 2000-2001.",
+        accept: ["2013-2014", "2013-14", "2013 - 2014"],
+        answer: "2013–14, after one of the wettest winters on record." },
+      { question: "Roughly how many hectares of Somerset farmland were underwater?",
+        accept: ["14000", "14,000"],
+        answer: "Around 14,000 hectares, submerged for weeks." },
+      { question: "Which management measure was taken on the Tone and Parrett after 2014?",
+        accept: ["dredging", "dredged", "dredge"],
+        answer: "Dredging, to restore channel capacity lost over roughly twenty years." },
+      { question: "Name one of the four Ps of hazard management.",
+        accept: ["prediction", "planning", "protection", "preparation"],
+        answer: "Prediction, Planning, Protection and Preparation." },
+      { question: "Which hazard can be predicted best: earthquakes or tropical storms?",
+        accept: ["tropical storms", "storms", "tropical storm"],
+        answer: "Tropical storms, trackable by satellite for days. Earthquakes give almost no warning." },
+      { question: "Between roughly which latitudes do tropical storms form? Give the two numbers as e.g. 10-20.",
+        accept: ["5-30", "5 - 30"],
+        answer: "Between about 5° and 30° of the equator — they need warmth, but also enough Coriolis effect to spin." },
+      { question: "Explain why the same magnitude hazard produces very different death tolls in different countries.",
+        answer: "Because almost everything that keeps people alive costs money. Wealthier countries have enforced building codes so structures survive, trained emergency services that reach people within the critical first hours, monitoring and warning systems, hospitals that stay standing, and the funds to rebuild without waiting for aid. Poorer countries often have rapid unplanned urbanisation on unstable ground, buildings put up without codes or inspection, and no realistic evacuation capacity. Population density and the precise location matter too — a storm hitting a crowded delta is not comparable to the same storm hitting an empty coast. The event sets the hazard; development largely decides whether it becomes a disaster. (Mark this one yourself.)" },
+      { question: "Explain why a warning system alone does not make people safe.",
+        answer: "Because a warning only helps if people can act on it. They have to receive it, which requires communications reaching remote and poor areas rather than only cities. They have to understand and believe it, which needs education and a record of accurate previous warnings — false alarms rapidly destroy compliance. They need somewhere to go, meaning shelters within reach, and a way to get there, meaning roads and transport that work under pressure. And they need to be willing to leave, which is hard for people who fear losing livestock, possessions or a business they cannot insure. Bangladesh reduced cyclone deaths dramatically not by improving forecasts alone but by building thousands of shelters and training volunteers to move people to them. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"A natural hazard and a natural disaster are the same thing.\"",
+        right: "A hazard threatens people; a disaster is when it actually causes serious harm. An earthquake in an empty desert is a hazard event and not a disaster." },
+      { wrong: "\"Hurricanes, cyclones and typhoons are different storms.\"",
+        right: "They are the same phenomenon with three regional names — Atlantic, Indian Ocean and Pacific respectively." },
+      { wrong: "\"Wind is what kills people in tropical storms.\"",
+        right: "The storm surge and flooding usually cause most deaths. Wind is survivable indoors; several metres of moving water is not." },
+      { wrong: "\"Better prediction is always the priority.\"",
+        right: "It transforms outcomes for storms and volcanoes and does almost nothing for earthquakes. Protection through building codes works continuously with no forecast at all." },
+      { wrong: "\"The Somerset Levels flooded purely because of the weather.\"",
+        right: "Record rainfall was the trigger, but around twenty years without dredging had reduced channel capacity, and drainage and building had cut natural storage." },
+      { wrong: "\"Tropical storms can form anywhere warm.\"",
+        right: "They need sea above about 27°C AND enough Coriolis effect to spin, which is why they do not form within about 5° of the equator." },
+    ],
+  },
+
+  "geography/the-living-world": {
+    summary:
+      "The GCSE ecosystems unit, going deeper than the Year 9 overview into two specific environments — tropical rainforest and one hot or cold environment — with named case studies and the sustainability argument attached to each. The recurring question is whether an environment can be used without being destroyed, and who gets to decide.",
+    keyFacts: [
+      {
+        heading: "Rainforest structure and adaptation",
+        points: [
+          "The layers, from top down: emergents breaking through, a dense continuous canopy, the darker under-canopy, a sparse shrub layer, and the forest floor receiving under 2% of the light.",
+          "Because light falls so sharply between layers, each supports different species — one reason biodiversity is so high.",
+          "Plant adaptations: drip tips shed heavy rain, buttress roots anchor tall trees in thin soil, lianas climb existing trunks to reach light, and epiphytes live on branches without soil at all.",
+          "Animal adaptations: camouflage, nocturnal habits, strong limbs and prehensile tails for climbing, and highly specialised diets that reduce competition.",
+          "The nutrient cycle is fast and almost entirely above ground, which is why the soil is poor and clearance is so damaging.",
+        ],
+      },
+      {
+        heading: "Deforestation and its consequences",
+        points: [
+          "Causes: commercial logging, cattle ranching, soya and palm oil plantations, mineral extraction, road building, hydroelectric dams, and settlement.",
+          "Amazon deforestation is the standard case study, driven heavily by cattle ranching and soya for export.",
+          "Environmental consequences: biodiversity loss, soil erosion once roots no longer bind it, reduced rainfall as transpiration stops, and carbon released to the atmosphere.",
+          "Economic consequences cut both ways: logging, farming and mining generate real income, jobs and export earnings, which is precisely why clearance continues.",
+          "Social consequences: indigenous peoples lose land, food, medicine and often their way of life entirely, with little or no compensation.",
+        ],
+      },
+      {
+        heading: "Cold environments",
+        points: [
+          "Polar and tundra environments have very low temperatures, short growing seasons, low precipitation and, in tundra, permafrost.",
+          "Plants adapt by growing low to avoid wind, having shallow roots above the permafrost, and completing their life cycle in a few weeks.",
+          "Animals adapt with thick fur or blubber, small extremities to reduce heat loss, hibernation, migration and seasonal colour change.",
+          "Opportunities: mineral and oil extraction, fishing, and tourism. Alaska's oil and Svalbard's tourism are common examples.",
+          "Challenges: extreme cold, inaccessibility, building on permafrost that melts under heated buildings, and short working seasons.",
+          "These are fragile environments: growth is so slow that damage takes decades to recover, and vehicle tracks can remain visible for years.",
+        ],
+      },
+      {
+        heading: "Sustainable management",
+        points: [
+          "Selective logging removes mature trees individually rather than clear-felling, so the forest structure survives.",
+          "Replanting and agroforestry keep tree cover while producing income.",
+          "Ecotourism gives standing forest a direct financial value, provided the income actually reaches local people.",
+          "International agreements, debt-for-nature swaps and protected areas work only where they are enforceable.",
+          "Conservation succeeds when a standing forest is worth more to the people living there than a cleared one. Rules alone, across vast remote areas, are close to unenforceable.",
+          "For cold environments, sustainability means strict controls, small footprints, technology such as elevated pipelines that let animals pass, and accepting that some areas should not be developed at all.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Emergent layer", definition: "The tallest rainforest trees, breaking through the canopy into full sunlight." },
+      { term: "Canopy", definition: "The dense continuous layer of rainforest treetops, absorbing most of the light." },
+      { term: "Liana", definition: "A woody climbing plant that uses tree trunks to reach light rather than growing its own tall stem." },
+      { term: "Prehensile tail", definition: "A tail able to grip branches — an adaptation to living in the canopy." },
+      { term: "Selective logging", definition: "Removing mature trees individually rather than clear-felling, so the forest structure survives." },
+      { term: "Agroforestry", definition: "Growing crops among trees, keeping tree cover while producing food and income." },
+      { term: "Ecotourism", definition: "Tourism designed to benefit conservation and local people rather than damage the environment." },
+      { term: "Debt-for-nature swap", definition: "An agreement cancelling part of a country's debt in return for protecting an area of forest." },
+      { term: "Tundra", definition: "A cold treeless environment with permafrost, low precipitation and a growing season of weeks." },
+      { term: "Permafrost", definition: "Permanently frozen ground, which melts under heated buildings and destabilises them." },
+      { term: "Blubber", definition: "A thick layer of fat insulating polar animals against extreme cold." },
+      { term: "Fragile environment", definition: "One where growth is so slow that damage takes decades or longer to recover." },
+      { term: "Clear-felling", definition: "Removing every tree from an area, which destroys the ecosystem and exposes the soil." },
+    ],
+    examTips: [
+      {
+        tip: "Use your own named case study",
+        detail:
+          "The Amazon and Alaska are common, but use whichever your school taught — with real place names and figures. Generic answers about 'a rainforest' cannot reach the top bands.",
+      },
+      {
+        tip: "Give deforestation its economic side",
+        detail:
+          "Logging, ranching and mining create income, jobs and exports. Acknowledging that before criticising it is what separates analysis from moralising.",
+      },
+      {
+        tip: "Pair every adaptation with its problem",
+        detail:
+          "'Buttress roots support tall trees BECAUSE the soil is too thin to anchor them' scores; naming the feature alone does not.",
+      },
+      {
+        tip: "Explain why cold environments are fragile",
+        detail:
+          "Growth is extremely slow, so damage persists for decades. Tyre tracks across tundra can still be visible years later — a concrete detail worth quoting.",
+      },
+      {
+        tip: "Test whether sustainable management would actually work",
+        detail:
+          "Ask who enforces it and who gains. Schemes fail where local people lose income and nobody is policing thousands of square kilometres.",
+      },
+      {
+        tip: "Remember rainforest soil is poor",
+        detail:
+          "Nutrients sit in the biomass and cycle fast. It explains why clearance exhausts land within a few years and why ranchers keep moving on.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why rainforest biodiversity is so high.",
+        steps: [
+          "Climate: hot and wet all year with no seasonal die-back, so growth is continuous and food is available constantly.",
+          "Stability: the equatorial climate has been broadly stable for millions of years, giving species enormous time to evolve and diversify.",
+          "Layering: emergents, canopy, under-canopy, shrub and floor each have different light, humidity and temperature, creating many distinct habitats stacked on top of each other.",
+          "Specialisation: because conditions are reliable, species can specialise very narrowly — a particular insect on a particular plant — without risking starvation.",
+          "That specialisation reduces competition, allowing many species to coexist in a small area.",
+          "The vulnerability follows from the same fact: highly specialised species cannot relocate or switch food source when their habitat is cleared.",
+        ],
+        answer:
+          "Constant warmth and rainfall allow year-round growth, a stable climate over millions of years has allowed extensive evolution, and the layered structure creates many distinct habitats in one place. Reliable conditions permit extreme specialisation, which lets many species coexist — and makes each one fragile if the forest goes.",
+      },
+      {
+        question:
+          "Evaluate ecotourism as a way of protecting rainforest.",
+        steps: [
+          "How it works: visitors pay to see intact forest, so the forest generates income while standing.",
+          "Strength: it gives conservation a direct economic value that can compete with logging or ranching.",
+          "Strength: it creates local jobs as guides, in transport and in accommodation, so protection benefits the people living there.",
+          "Weakness: income often leaks to foreign tour operators rather than reaching local communities.",
+          "Weakness: visitors themselves cause damage — flights, roads, waste, and disturbance to wildlife.",
+          "Weakness: it can only support a limited number of people, so it rarely replaces the income from large-scale ranching.",
+          "Judgement: valuable as part of a package, particularly where it funds protected areas and employs local people, but too small on its own to outcompete commercial clearance.",
+        ],
+        answer:
+          "It genuinely gives standing forest an economic value and creates local jobs, which is the condition conservation needs to succeed. But income often leaks abroad, tourism causes its own damage, and it supports too few people to outcompete ranching or logging at scale — so it works as part of a package rather than as the answer.",
+      },
+      {
+        question:
+          "Explain why building on permafrost is difficult.",
+        steps: [
+          "Permafrost is permanently frozen ground, and frozen ground is solid enough to build on.",
+          "A heated building conducts warmth downwards into the ground beneath it.",
+          "That warmth thaws the permafrost, which turns solid ground into waterlogged mud.",
+          "The building then sinks, tilts or cracks as its foundations lose support.",
+          "The solution is to raise buildings on piles driven into deeper permafrost, leaving an air gap so warmth escapes sideways rather than downwards.",
+          "Pipelines face the same problem, which is why the Trans-Alaska pipeline is elevated for much of its length — a design that also lets caribou pass beneath.",
+        ],
+        answer:
+          "Because a heated building thaws the frozen ground beneath it, turning solid support into waterlogged mud so the structure sinks or tilts. The fix is to raise buildings and pipelines on piles with an air gap, letting heat escape sideways — which is why the Trans-Alaska pipeline runs above ground.",
+      },
+      {
+        question:
+          "Why do rules alone rarely stop deforestation?",
+        steps: [
+          "The areas involved are enormous and remote, so monitoring and enforcement are extremely expensive.",
+          "The people clearing forest usually have strong economic reasons — land for food, income from timber, or work in ranching and mining.",
+          "A rule that removes income without replacing it does not change the underlying pressure, it just makes obeying costly.",
+          "Corruption and weak land registration mean illegal clearance is often difficult to prosecute even when detected.",
+          "International demand continues regardless: if beef and soya are bought, someone will produce them.",
+          "So effective schemes change the economics — payment for protecting forest, secure land rights, and markets for sustainably produced goods — rather than relying on prohibition.",
+        ],
+        answer:
+          "Because prohibition does not change the reasons people clear forest, and the areas are far too vast and remote to police. Schemes that work alter the economics instead — payments for protection, secure land rights and markets for sustainable products — so that keeping the forest is the better option locally.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the tallest rainforest layer called?",
+        accept: ["emergent", "emergents", "emergent layer"],
+        answer: "The emergent layer, breaking through the canopy into full sunlight." },
+      { question: "Which layer absorbs most of the light in a rainforest?",
+        accept: ["canopy", "the canopy"],
+        answer: "The canopy — the forest floor receives under 2% of the light reaching the top." },
+      { question: "Roughly what percentage of light reaches the rainforest floor?",
+        accept: ["2", "2%", "less than 2"],
+        answer: "Under 2%, which is why the forest floor is surprisingly sparse." },
+      { question: "What is a woody climbing plant that uses trunks to reach light called?",
+        accept: ["liana", "lianas", "a liana"],
+        answer: "A liana. Climbing costs far less energy than growing a tall trunk of its own." },
+      { question: "What is a tail able to grip branches called?",
+        accept: ["prehensile", "prehensile tail", "a prehensile tail"],
+        answer: "A prehensile tail — an adaptation to living in the canopy." },
+      { question: "What is removing mature trees individually rather than clear-felling called?",
+        accept: ["selective logging", "selective felling"],
+        answer: "Selective logging, which leaves the forest structure largely intact." },
+      { question: "What is growing crops among trees called?",
+        accept: ["agroforestry"],
+        answer: "Agroforestry, keeping tree cover while producing food and income." },
+      { question: "What is tourism designed to benefit conservation and local people called?",
+        accept: ["ecotourism", "eco tourism", "eco-tourism"],
+        answer: "Ecotourism, which gives standing forest a direct financial value." },
+      { question: "What is an agreement cancelling debt in return for protecting forest called?",
+        accept: ["debt for nature swap", "debt-for-nature swap", "debt for nature"],
+        answer: "A debt-for-nature swap." },
+      { question: "What is permanently frozen ground called?",
+        accept: ["permafrost"],
+        answer: "Permafrost. Heated buildings thaw it, turning solid ground into mud." },
+      { question: "How are buildings kept stable on permafrost? Give the method in a few words.",
+        accept: ["raised on piles", "piles", "stilts", "elevated", "raised"],
+        answer: "Raised on piles with an air gap, so heat escapes sideways instead of thawing the ground." },
+      { question: "Which pipeline is elevated to protect permafrost and let caribou pass?",
+        accept: ["trans alaska", "trans-alaska", "trans alaska pipeline", "alaska pipeline"],
+        answer: "The Trans-Alaska pipeline, raised for much of its length." },
+      { question: "Which two commodities drive much Amazon deforestation? Give both.",
+        accept: ["cattle and soya", "beef and soya", "cattle and soy", "soya and cattle"],
+        answer: "Cattle ranching and soya, both largely for export." },
+      { question: "Where are most rainforest nutrients held: soil or biomass?",
+        accept: ["biomass", "the biomass", "trees", "vegetation"],
+        answer: "The biomass. Rapid cycling means nothing accumulates in the soil." },
+      { question: "Why are cold environments described as fragile? Give the reason in a few words.",
+        accept: ["slow growth", "slow to recover", "growth is slow", "recovery is slow"],
+        answer: "Growth is extremely slow, so damage takes decades to recover — tyre tracks can remain visible for years." },
+      { question: "Name one animal adaptation to extreme cold.",
+        accept: ["blubber", "thick fur", "fur", "small ears", "hibernation", "migration", "small extremities", "camouflage"],
+        answer: "Thick fur or blubber, small extremities to reduce heat loss, hibernation, migration or seasonal camouflage." },
+      { question: "Explain why sustainable management of rainforest is so difficult in practice.",
+        answer: "Because the pressures driving clearance are economic and immediate, while the benefits of protection are diffuse and long-term. A rancher clearing land makes money this year; the carbon and biodiversity benefits of leaving it standing accrue to everyone, everywhere, over decades. The areas are also vast and remote, so enforcing rules costs more than most governments will spend, and weak land registration makes prosecution difficult even when illegal clearance is detected. International demand continues regardless of local rules — if beef and soya are bought, they will be produced somewhere. Schemes succeed only when they change the local economics, through payments for protection, secure land rights and markets for sustainably produced goods. (Mark this one yourself.)" },
+      { question: "Explain why highly specialised species are more vulnerable to habitat loss.",
+        answer: "Because specialisation is only an advantage while conditions stay the same. A species that eats one plant, nests in one tree species or breeds in one narrow band of the canopy faces almost no competition, which is why rainforest supports so many of them — but it also has no alternative when that specific thing disappears. A generalist can shift diet or habitat and survive elsewhere; a specialist cannot, and often cannot travel far enough to find a surviving patch. That is why clearing even a fraction of a rainforest can extinguish species outright, and why fragmenting forest into isolated blocks is nearly as damaging as removing it, since populations too small to be viable are stranded in each fragment. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The rainforest floor is thick with vegetation.\"",
+        right: "Under 2% of light reaches it, so the floor is comparatively open. The dense growth people picture is what happens at the edges and after clearance." },
+      { wrong: "\"Deforestation happens because people do not value the forest.\"",
+        right: "It happens because clearing it pays now. Effective conservation changes those economics rather than assuming ignorance." },
+      { wrong: "\"Cold environments are empty and so damage does not matter.\"",
+        right: "They are fragile precisely because growth is so slow. Tyre tracks can remain visible for years, and ecosystems take decades to recover." },
+      { wrong: "\"Ecotourism has no environmental cost.\"",
+        right: "It involves flights, roads, waste and disturbance, and income frequently leaks to foreign operators. It is useful as part of a package, not a clean solution." },
+      { wrong: "\"You can build on permafrost as long as the ground is frozen.\"",
+        right: "A heated building thaws the ground beneath it and then sinks. Structures must be raised on piles with an air gap." },
+      { wrong: "\"Selective logging is just slower deforestation.\"",
+        right: "Removing mature trees individually leaves the canopy, root systems and soil largely intact, so the forest continues to function — unlike clear-felling." },
+    ],
+  },
+
 };
