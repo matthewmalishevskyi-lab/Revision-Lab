@@ -185,7 +185,9 @@ If a topic genuinely has to go: move its key to `RETIRED_TOPIC_KEYS`, and migrat
 
 ## ⚠️ THE BIGGEST OUTSTANDING RISK — content accuracy (2026-08-09)
 
-**Nobody has verified roughly two fifths of this site.** There are ~190,000 words across five subjects, all written with AI assistance, and no subject teacher has checked any of it. Matthew studies Computer Science and can sanity-check Maths and English. He told me plainly that he does not do History or Geography, so nobody involved is in a position to catch an error in 36 of the 89 topics.
+**No subject teacher has checked any of this site.** There are ~191,000 words across five subjects, all written with AI assistance. Matthew studies Computer Science, Maths, English AND History, so he can sanity-check four of the five subjects. He does **not** take Geography — so nobody involved can catch an error in those 17 topics, and the other 72 have had a student's eye on them but not a teacher's.
+
+**Correction, 2026-08-09:** I previously recorded that he did not study History. He does. Getting a fact about the person you work with wrong, in the file you read at the start of every session, is exactly the kind of error that compounds — hence the correction rather than a silent edit.
 
 That is not a reason to take it down — the content is carefully written, cites real figures, and names disagreements where they exist. It IS a reason to say so where readers see it.
 
@@ -196,7 +198,7 @@ That is not a reason to take it down — the content is carefully written, cites
 
 **Still outstanding, and it matters more than any feature:**
 
-- **Get a teacher to read some of it**, especially History and Geography. One teacher spending an hour is worth more than any amount of further writing.
+- **Get a teacher to read some of it**, Geography above all, since nobody here studies it. Matthew plans to do this when school restarts. One teacher spending an hour is worth more than any amount of further writing.
 - **Time-sensitive figures have no maintenance mechanism.** Populations, CO₂, development statistics and casualty estimates all drift. There is currently nothing that flags them for review.
 - The privacy policy and delete-account page are still missing, and still gate sharing the site widely.
 

@@ -8,9 +8,10 @@
 // to prepare for exams that decide what they do next.
 //
 // Every word of it was written with AI assistance, and no subject teacher has
-// checked any of it. Matthew has read the Computer Science and can sanity-check
-// Maths and English; he does not study History or Geography at all, so nobody
-// involved is in a position to verify roughly two fifths of the site.
+// checked any of it. Matthew studies Computer Science, Maths, English and
+// History, so four of the five subjects have had a student's eye on them. He
+// does not take Geography, so nobody involved can verify those 17 topics at
+// all.
 //
 // That is not a reason to take it down — it is carefully written, it cites real
 // figures, and it flags where historians and scientists disagree. It IS a
