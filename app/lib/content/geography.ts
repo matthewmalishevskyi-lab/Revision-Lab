@@ -3264,7 +3264,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "The ENHANCED greenhouse effect is the problem — extra greenhouse gases trapping more heat than before.",
           "Carbon dioxide comes mainly from burning fossil fuels for energy, transport and industry, and from deforestation removing the trees that absorbed it.",
           "Methane is a far more powerful greenhouse gas per molecule, from livestock, rice paddies, landfill and leaking gas infrastructure.",
-          "Atmospheric CO₂ has risen from around 280 parts per million before industrialisation to over 420 today.",
+          "Atmospheric CO₂ has risen from around 280 parts per million before industrialisation to over 430 today — the Mauna Loa record passed 432 ppm in May 2026. ⚠️ This figure rises every year, so check the current value rather than quoting this one in an exam.",
           "The Intergovernmental Panel on Climate Change concludes that human influence has unequivocally warmed the atmosphere, ocean and land.",
         ],
       },
@@ -3299,7 +3299,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
       { term: "Enhanced greenhouse effect", definition: "Additional warming caused by human-added greenhouse gases trapping more heat than before." },
       { term: "Carbon dioxide", definition: "The main human-emitted greenhouse gas, from burning fossil fuels and from deforestation." },
       { term: "Methane", definition: "A greenhouse gas far more powerful per molecule than CO₂, from livestock, rice, landfill and gas leaks." },
-      { term: "Parts per million", definition: "The unit for atmospheric gas concentration. CO₂ has gone from around 280 ppm before industrialisation to over 420." },
+      { term: "Parts per million", definition: "The unit for atmospheric gas concentration. CO₂ has gone from around 280 ppm before industrialisation to over 430 — and it rises every year." },
       { term: "Thermal expansion", definition: "The expansion of seawater as it warms — a major contributor to sea level rise, alongside melting ice." },
       { term: "Coral bleaching", definition: "Corals expelling the algae they depend on when water is too warm, turning them white and often killing them." },
       { term: "IPCC", definition: "The Intergovernmental Panel on Climate Change, which assesses the scientific evidence for governments." },
@@ -3327,7 +3327,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
       {
         tip: "Use the CO₂ figures",
         detail:
-          "Around 280 ppm before industrialisation to over 420 today. Two numbers that carry an argument better than any adjective.",
+          "Around 280 ppm before industrialisation to over 430 today. Two numbers that carry an argument better than any adjective — but check the current figure, because it climbs by roughly 2 ppm a year.",
       },
       {
         tip: "Say why sea level rises for two reasons",
@@ -3369,7 +3369,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Volcanic eruptions cool the planet temporarily, so they cannot explain warming.",
           "The pattern of warming also fits greenhouse gases specifically: the lower atmosphere is warming while the upper atmosphere cools, which is what trapped heat produces and increased solar output would not.",
           "Nights are warming faster than days, again consistent with heat being retained rather than more arriving.",
-          "And the timing matches: the rise tracks emissions closely, and CO₂ has gone from around 280 to over 420 ppm.",
+          "And the timing matches: the rise tracks emissions closely, and CO₂ has gone from around 280 to over 430 ppm.",
         ],
         answer:
           "Orbital cycles are far too slow and currently point towards cooling, measured solar output has been flat or falling, and volcanic eruptions cool rather than warm. The pattern also fits trapped heat specifically — the lower atmosphere warming while the upper cools, and nights warming faster than days.",
@@ -3425,7 +3425,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "The enhanced greenhouse effect — the problem, as distinct from the natural greenhouse effect." },
       { question: "What was atmospheric CO₂ before industrialisation, in parts per million?",
         accept: ["280", "280ppm", "280 ppm"],
-        answer: "Around 280 ppm. It is now over 420." },
+        answer: "Around 280 ppm. It is now over 430, and climbing by roughly 2 ppm a year." },
       { question: "Which greenhouse gas comes largely from livestock, rice paddies and landfill?",
         accept: ["methane", "ch4"],
         answer: "Methane, far more powerful per molecule than carbon dioxide." },

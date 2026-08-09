@@ -6,6 +6,7 @@ import { HigherBadge, HigherNotice } from "../../../components/HigherBadge";
 import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";
 import { LadderCompanion } from "../../../components/LadderCompanion";
+import { ContentNotice } from "../../../components/ContentNotice";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { StudyTimer } from "../../../components/StudyTimer";
 import { TopicNav, type NavSection } from "../../../components/TopicNav";
@@ -452,6 +453,11 @@ export default async function TopicPage({ params }: Props) {
             </section>
           </>
         )}
+
+        {/* An honest note about what this material is and is not. Deliberately
+            at the foot: someone here to revise should reach the revision
+            first, and someone deciding whether to trust it will scroll. */}
+        {content && <ContentNotice />}
 
         {/* The rest of this year's topics, so you can carry on without going
             back and forth. */}

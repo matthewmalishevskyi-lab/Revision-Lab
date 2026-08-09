@@ -183,6 +183,23 @@ If a topic genuinely has to go: move its key to `RETIRED_TOPIC_KEYS`, and migrat
 - The Year 9 "rise of the Nazis" and Year 10 "Germany 1890–1945" topics share **zero** identical questions and one flashcard term — they complement rather than duplicate, as intended.
 - All 19 have the full six-section format.
 
+## ⚠️ THE BIGGEST OUTSTANDING RISK — content accuracy (2026-08-09)
+
+**Nobody has verified roughly two fifths of this site.** There are ~190,000 words across five subjects, all written with AI assistance, and no subject teacher has checked any of it. Matthew studies Computer Science and can sanity-check Maths and English. He told me plainly that he does not do History or Geography, so nobody involved is in a position to catch an error in 36 of the 89 topics.
+
+That is not a reason to take it down — the content is carefully written, cites real figures, and names disagreements where they exist. It IS a reason to say so where readers see it.
+
+**Done about it:**
+
+- `app/components/ContentNotice.tsx` now appears at the foot of every topic page with content. It says the material was AI-written and not teacher-checked, that boards differ, that some figures date, and that a teacher should be the final word. Deliberately at the FOOT — someone here to revise reaches the revision first; someone deciding whether to trust it will scroll. Deliberately calm in tone: a frightening warning would put people off material that is genuinely useful, and no warning would be dishonest.
+- **A stale figure was found and fixed.** Climate change said CO₂ was "over 420 ppm". Checked against NOAA and Scripps: the Mauna Loa record passed **432 ppm in May 2026**, with the 2026 annual average forecast around 429. Corrected to "over 430", with an explicit warning that it rises ~2 ppm a year and should be looked up rather than quoted from here.
+
+**Still outstanding, and it matters more than any feature:**
+
+- **Get a teacher to read some of it**, especially History and Geography. One teacher spending an hour is worth more than any amount of further writing.
+- **Time-sensitive figures have no maintenance mechanism.** Populations, CO₂, development statistics and casualty estimates all drift. There is currently nothing that flags them for review.
+- The privacy policy and delete-account page are still missing, and still gate sharing the site widely.
+
 ## Geography complete — a fifth subject (2026-08-09)
 
 **Every topic on the site is written: 89 of 89, ~190,000 words, 25,175 checks passing.**
