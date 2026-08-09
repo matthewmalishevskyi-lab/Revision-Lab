@@ -436,47 +436,76 @@ export function Knight(props: MascotProps) {
 // THE PLANET IS THE BODY. Not a head on a body, not a globe held by someone —
 // the character IS the earth, with the face on it.
 //
-// That breaks the house rule the other four follow, which is head at about 40%
-// of total height. Matthew asked for it and he is right that it works better
-// here: a globe reads as a globe, and giving it a separate torso made it look
-// like someone in a costume rather than a planet.
+// That breaks the rule the other four follow, which is head at about 40% of
+// total height. Matthew asked for it and he was right: a globe on a torso
+// looked like somebody in a costume, where a globe AS the character reads as a
+// planet immediately.
 //
-// So the family resemblance has to be carried by everything else, and it is:
+// So the family resemblance is carried by everything else:
 //   - the same chunky rounded forms with no sharp corners
 //   - one darker tone per shape for roundness, lit from the upper left
 //   - the same eye treatment — slightly oval, one highlight each, which is
 //     what reads as characterful rather than as a toy
-//   - the gold (#f0c869) that frames Hoot's and Quill's spectacles and trims
-//     Gaunt's shield, here as the equator
+//   - one deliberate asymmetry, as Pixel has a single aerial and Quill a
+//     raised hand: here, one arm hangs and the other is raised
 //
-// No glasses. Three of the five wear them and two do not, which is fine — a
-// house style is a set of relationships, not a uniform. The equator in gold
-// does the job the spectacles were doing, and it is the one line that makes a
-// blue circle unmistakably a planet.
+// No glasses, and no gold. Three of the five wear spectacles and two do not,
+// which is fine — a house style is a set of relationships, not a uniform.
+//
+// ── Two fixes worth recording, because both are general lessons ────────────
+//
+// LIMBS. The first version used plain shapes: rounded rectangles for legs and
+// ellipses for feet. Matthew said the feet looked like two circles, and they
+// did — an ellipse has no front and no back, so it reads as a ball rather than
+// a boot. Feet are now drawn as PATHS with a heel and a toe pointing outwards,
+// which is the detail that makes a shape read as footwear.
+//
+// The arms were closed blob paths, which taper unpredictably. They are now
+// stroked lines with round caps and a separate hand: a stroke has an even
+// thickness along its whole length, so the limb keeps its weight, and the round
+// cap does the work of a wrist. Far less code and a much more natural result.
 //
 // The continents are deliberately simplified and unlabelled. A recognisable
-// world map at icon size would be mud, and it would also imply a position on
-// where borders are. Suggested landmasses read as "globe" and commit to
-// nothing.
+// world map at icon size would be mud, and would also imply a position on where
+// borders are. Suggested landmasses read as "globe" and commit to nothing.
 // ─────────────────────────────────────────────────────────────────────────────
 export function Atlas(props: MascotProps) {
   return (
     <svg
       viewBox="0 0 120 140"
       role="img"
-      aria-label="Atlas, the Geography mascot: a smiling planet Earth with arms, legs and boots"
+      aria-label="Atlas, the Geography mascot: a smiling planet Earth with arms, legs and boots, one arm raised"
       {...props}
     >
-      {/* Arms, drawn first so the planet sits over where they join */}
-      <path d="M20 74 Q10 84 14 96 Q20 100 26 94 Q22 84 28 76 Z" fill="#38bdf8" />
-      <path d="M100 74 Q110 84 106 96 Q100 100 94 94 Q98 84 92 76 Z" fill="#38bdf8" />
-      <path d="M100 74 Q110 84 106 96 Q102 98 99 96 Q104 84 96 78 Z" fill="#0284c7" opacity={0.4} />
+      {/* Arms — stroked lines with round caps rather than closed shapes, so the
+          thickness stays even and the ends read as wrists. One hangs, one is
+          raised: the asymmetry is what stops a symmetrical character looking
+          like a logo. */}
+      <path d="M27 78 Q16 86 15 96" stroke="#38bdf8" strokeWidth={11} strokeLinecap="round" fill="none" />
+      <circle cx="15" cy="97" r="7" fill="#38bdf8" />
+      <path d="M93 74 Q104 68 108 58" stroke="#38bdf8" strokeWidth={11} strokeLinecap="round" fill="none" />
+      <circle cx="109" cy="56" r="7" fill="#38bdf8" />
+      {/* Shading on the raised arm, which is on the shaded side of the sphere */}
+      <path d="M99 71 Q105 66 108 58" stroke="#0284c7" strokeWidth={5} strokeLinecap="round" fill="none" opacity={0.45} />
+      <path d="M112 50 A7 7 0 0 1 112 62 Q107 56 112 50 Z" fill="#0284c7" opacity={0.35} />
 
-      {/* Legs and boots */}
-      <rect x="46" y="106" width="10" height="16" rx="5" fill="#38bdf8" />
-      <rect x="64" y="106" width="10" height="16" rx="5" fill="#38bdf8" />
-      <ellipse cx="47" cy="126" rx="13" ry="7" fill="#14304f" />
-      <ellipse cx="73" cy="126" rx="13" ry="7" fill="#14304f" />
+      {/* Legs — slightly apart and angled outwards, which reads as standing
+          rather than as two posts. */}
+      <path d="M50 100 L47 116" stroke="#38bdf8" strokeWidth={10} strokeLinecap="round" fill="none" />
+      <path d="M70 100 L73 116" stroke="#38bdf8" strokeWidth={10} strokeLinecap="round" fill="none" />
+
+      {/* Boots — drawn as paths with a heel and a toe pointing outwards. An
+          ellipse has no front and no back, which is exactly why the previous
+          version read as two circles rather than as feet. */}
+      {/* Absolute coordinates, not relative ones. Both draw the same boot, but
+          a relative path contains negative NUMBERS even when every point is on
+          canvas — and the checker that catches clipped shapes reads numbers. A
+          checker that cries wolf gets ignored, so the paths are written the way
+          that keeps it honest. */}
+      <path d="M52 112 Q56 112 56 117 L56 120 Q56 124 52 124 L36 124 Q31 124 31 120 Q31 116 36 115 Q42 114 45 112 Z" fill="#14304f" />
+      <path d="M68 112 Q64 112 64 117 L64 120 Q64 124 68 124 L84 124 Q89 124 89 120 Q89 116 84 115 Q78 114 75 112 Z" fill="#14304f" />
+      {/* A lighter sole line, so the boot has a top and a bottom */}
+      <path d="M36 122 h16 M68 122 h16" stroke="#ffffff" strokeWidth={1.6} strokeLinecap="round" opacity={0.25} />
 
       {/* THE PLANET — the whole character */}
       <circle cx="60" cy="62" r="45" fill="#38bdf8" />
@@ -492,10 +521,6 @@ export function Atlas(props: MascotProps) {
           rather than floating on top of it. */}
       <path d="M70 66 Q88 64 90 78 Q84 94 74 96 Q76 82 70 66 Z" fill="#000000" opacity={0.09} />
       <path d="M82 34 Q92 38 94 46 Q88 52 80 51 Q84 42 82 34 Z" fill="#000000" opacity={0.09} />
-
-      {/* The equator, in the family gold. One line, and it is what makes a blue
-          circle unmistakably a planet. */}
-      <path d="M17 64 Q60 76 103 64" stroke="#f0c869" strokeWidth={2.4} fill="none" strokeLinecap="round" opacity={0.85} />
 
       {/* Highlight, upper left, matching the light source the others use */}
       <path d="M30 38 Q40 24 58 21 Q40 28 34 44 Z" fill="#ffffff" opacity={0.35} />

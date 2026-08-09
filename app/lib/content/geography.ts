@@ -693,4 +693,495 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
   },
 
+  "geography/fieldwork-and-enquiry": {
+    summary:
+      "Every GCSE Geography student does two pieces of fieldwork — one physical, one human — and is then examined on them in writing. The exam does not ask what you found; it asks whether you understood WHY you did it that way. That makes fieldwork one of the most predictable parts of the course, because the enquiry process is always the same six stages whatever you actually measured.",
+    keyFacts: [
+      {
+        heading: "The enquiry process",
+        points: [
+          "1. Question or hypothesis — a clear, testable statement, such as 'river velocity increases downstream'.",
+          "2. Data collection — planning what to measure, where, when and how.",
+          "3. Data presentation — turning results into maps, graphs and diagrams.",
+          "4. Data analysis — describing patterns, quoting figures, spotting anomalies.",
+          "5. Conclusion — answering the original question directly, with evidence.",
+          "6. Evaluation — how reliable the data was, what went wrong, and what you would change.",
+          "Every fieldwork question in the exam sits somewhere in that sequence, so knowing the order is half the battle.",
+        ],
+      },
+      {
+        heading: "Primary and secondary data",
+        points: [
+          "Primary data is collected by you in the field: measurements, counts, questionnaires, photographs, field sketches.",
+          "Secondary data comes from someone else: census data, Environment Agency river records, historical maps, Met Office statistics.",
+          "Quantitative data is numerical — width in metres, pedestrian counts, decibel readings. It is easy to graph and compare.",
+          "Qualitative data is descriptive — opinions, sketches, photographs, environmental quality judgements. It captures things numbers miss.",
+          "Good enquiries use both. Numbers show the pattern; descriptions explain what it feels like on the ground.",
+        ],
+      },
+      {
+        heading: "Sampling, and why it matters",
+        points: [
+          "You cannot measure everything, so you sample — and how you choose the sample shapes everything that follows.",
+          "Random sampling: every point has an equal chance of selection, usually via random numbers. Unbiased, but may miss areas by chance.",
+          "Systematic sampling: at regular intervals — every 50 m along a river, every fifth shop. Even coverage, but can miss a pattern that repeats at the same interval.",
+          "Stratified sampling: the sample is divided in proportion to something known, such as sampling more sites in the areas with more housing. Fairer for uneven populations, but needs data in advance.",
+          "Sample size matters: too few sites and one odd reading distorts everything.",
+          "Sampling is where most fieldwork evaluation marks live, because every method has a weakness you can name.",
+        ],
+      },
+      {
+        heading: "Presenting and analysing",
+        points: [
+          "Choose the presentation method that suits the data: line graphs for continuous change, bar charts for comparison, pie charts for proportion, scatter graphs for relationships between two variables.",
+          "Located methods put data on a map: proportional symbols, choropleth shading, flow lines, and pie charts placed at their sites.",
+          "Cross-sections and field sketches work well for river and coastal profiles.",
+          "Analysis means describing the trend, quoting figures, and identifying anomalies — then explaining them using geographical knowledge.",
+          "An anomaly is not a mistake to hide. Explaining why one site broke the pattern is often the most impressive part of an answer.",
+        ],
+      },
+      {
+        heading: "Evaluation — the part most students rush",
+        points: [
+          "Reliability: would the same method give the same result if repeated? More sites and repeat readings improve it.",
+          "Accuracy: did the equipment measure what you intended? A flow meter held at the wrong depth measures the wrong thing.",
+          "Bias: questionnaires done at 10am on a Tuesday reach a very particular set of people.",
+          "Limitations of conditions: weather, tide, time of day and season all affect results, and were probably outside your control.",
+          "Improvements must be realistic and specific: 'measure at three depths per site' beats 'collect more data'.",
+          "Honest evaluation scores better than pretending the data was perfect. Examiners reward recognising a weakness far more than claiming there was none.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Hypothesis", definition: "A clear, testable statement that fieldwork sets out to support or reject." },
+      { term: "Primary data", definition: "Data you collect yourself in the field, such as measurements, counts or questionnaires." },
+      { term: "Secondary data", definition: "Data collected by someone else, such as census figures or Environment Agency records." },
+      { term: "Quantitative data", definition: "Numerical data that can be counted or measured and easily graphed." },
+      { term: "Qualitative data", definition: "Descriptive data such as opinions, sketches and photographs, capturing what numbers miss." },
+      { term: "Random sampling", definition: "Selecting sites so every point has an equal chance — unbiased, but can leave gaps by chance." },
+      { term: "Systematic sampling", definition: "Selecting sites at regular intervals, giving even coverage but risking a repeating pattern being missed." },
+      { term: "Stratified sampling", definition: "Dividing the sample in proportion to a known characteristic, so each group is fairly represented." },
+      { term: "Anomaly", definition: "A result that does not fit the pattern. Explaining one is often worth more than ignoring it." },
+      { term: "Reliability", definition: "Whether repeating the method would give the same result." },
+      { term: "Accuracy", definition: "Whether the equipment and technique measured what you actually intended to measure." },
+      { term: "Bias", definition: "A systematic distortion in data caused by how, when or where it was collected." },
+      { term: "Choropleth map", definition: "A map using shading density to show how a value varies between areas." },
+      { term: "Proportional symbols", definition: "Map symbols drawn in sizes proportional to the value they represent." },
+      { term: "Scatter graph", definition: "A graph plotting two variables against each other to reveal a relationship." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the six stages in order",
+        detail:
+          "Question, collection, presentation, analysis, conclusion, evaluation. Every fieldwork question sits somewhere in that sequence, and naming the stage focuses the answer instantly.",
+      },
+      {
+        tip: "Justify methods, don't just describe them",
+        detail:
+          "'We used systematic sampling every 50 m BECAUSE it gave even coverage along the whole reach' is the level. Description alone is the lower band.",
+      },
+      {
+        tip: "Name a weakness for every method you used",
+        detail:
+          "There is no perfect sampling technique. Saying which weakness yours had, and what it did to your results, is where evaluation marks live.",
+      },
+      {
+        tip: "Use YOUR actual data",
+        detail:
+          "Quote real figures and real place names from your own fieldwork. Generic answers about 'a river' cannot reach the top bands.",
+      },
+      {
+        tip: "Explain anomalies rather than hiding them",
+        detail:
+          "One site that broke the pattern, with a geographical explanation for why, is more impressive than pretending every result was neat.",
+      },
+      {
+        tip: "Make improvements specific",
+        detail:
+          "'Repeat velocity readings three times per site and take a mean' beats 'collect more data'. Vague improvements earn nothing.",
+      },
+      {
+        tip: "Match the graph to the data",
+        detail:
+          "Continuous change gets a line graph; comparison gets bars; proportions get a pie; relationships get a scatter. Choosing wrongly costs marks even when the data is right.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Justify the use of systematic sampling for measuring river width downstream.",
+        steps: [
+          "State the method precisely: sites every 500 m along the river's course from source towards mouth, for example.",
+          "Reason one — even coverage: it guarantees the whole length is represented, rather than clustering in the easy-to-reach parts.",
+          "Reason two — it suits the hypothesis: the question is about change WITH DISTANCE, so equal spacing makes the comparison meaningful.",
+          "Reason three — it is repeatable: someone else could follow the same rule and get comparable sites, which supports reliability.",
+          "Then the weakness, because justification includes limitations: if some feature recurs at a similar interval — a weir, a bridge — the sample could systematically catch or miss it.",
+          "And practicality: access, safety and time all constrain where measurement is possible at all.",
+        ],
+        answer:
+          "Because the hypothesis is about change with distance, so equally spaced sites make the comparison meaningful and cover the whole reach rather than clustering where access is easy. It is also repeatable. The weakness is that any feature recurring at a similar spacing could be systematically over- or under-sampled.",
+      },
+      {
+        question:
+          "Your pedestrian count in a town centre was taken at 11am on a Wednesday. Evaluate that decision.",
+        steps: [
+          "Strength: mid-morning midweek avoids both the rush hour and the weekend peak, so it captures a fairly typical trading day.",
+          "Strength: it is safe, and it is a time a school group can realistically be there.",
+          "Weakness — time bias: it misses the commuter peak, the lunchtime surge and evening activity, so it under-represents total footfall.",
+          "Weakness — day bias: Wednesday is not Saturday, and retail geography differs enormously between them.",
+          "Weakness — one-off: a single count cannot separate a normal day from an unusual one, and weather alone can change footfall substantially.",
+          "Improvement, made specific: count at three times of day on both a weekday and a Saturday, and take a mean.",
+        ],
+        answer:
+          "It captures a fairly typical trading period and is practical and safe, but it is a single snapshot: it misses commuter, lunchtime and evening peaks, ignores weekend patterns, and cannot separate a normal day from an unusual one. Counting at three times of day on both a weekday and a Saturday, and averaging, would fix most of that.",
+      },
+      {
+        question:
+          "One site in your river study had a velocity far lower than the trend. How should you handle it?",
+        steps: [
+          "Do not delete it. An anomaly is data, and hiding it weakens the whole enquiry.",
+          "Identify it clearly on the graph and in the analysis, and say by how much it departs from the trend.",
+          "Look for a geographical explanation: a wider, shallower channel at that point, an obstruction, dense vegetation, or an artificial structure slowing the flow.",
+          "Consider a methodological explanation too: was the flow meter held at a different depth, or in an eddy near the bank?",
+          "State which explanation you think most likely and why.",
+          "Then use it in the evaluation: if it is methodological, that is a genuine limitation to name.",
+        ],
+        answer:
+          "Keep it, identify it explicitly, and explain it. Look first for a geographical cause — a wider shallower channel, vegetation or an obstruction — and then for a methodological one, such as the meter being held at the wrong depth. Explaining an anomaly is worth far more than quietly removing it.",
+      },
+      {
+        question:
+          "Why does the choice of sampling method matter so much to the conclusion?",
+        steps: [
+          "Because the sample is all the evidence the conclusion rests on — nothing outside it was measured.",
+          "A biased sample produces a confident conclusion about the wrong thing. Measuring only accessible riverbanks means measuring the gentlest sites.",
+          "Random sampling removes deliberate bias but can leave large gaps purely by chance, especially with few sites.",
+          "Systematic sampling guarantees coverage but can lock onto a repeating feature.",
+          "Stratified sampling is fairest where the population is uneven, but requires knowing the proportions in advance.",
+          "So the method has to be chosen for the question being asked, and its weakness stated honestly in the evaluation.",
+        ],
+        answer:
+          "Because the sample is the entire evidence base — anything not sampled is invisible to the conclusion. Each method has a characteristic weakness: random can leave gaps, systematic can lock onto a repeating feature, stratified needs prior data. Naming which weakness applies to yours is what the evaluation is for.",
+      },
+    ],
+
+    practice: [
+      { question: "How many stages are there in the enquiry process as taught here?",
+        accept: ["6", "six"],
+        answer: "Six: question, data collection, presentation, analysis, conclusion, evaluation." },
+      { question: "What is a clear, testable statement that fieldwork sets out to test called?",
+        accept: ["hypothesis", "a hypothesis"],
+        answer: "A hypothesis, such as 'river velocity increases downstream'." },
+      { question: "What is data you collect yourself in the field called?",
+        accept: ["primary", "primary data"],
+        answer: "Primary data — measurements, counts, questionnaires, sketches and photographs." },
+      { question: "What is data collected by someone else called?",
+        accept: ["secondary", "secondary data"],
+        answer: "Secondary data, such as census figures or Environment Agency river records." },
+      { question: "What is numerical data called?",
+        accept: ["quantitative", "quantitative data"],
+        answer: "Quantitative data — easy to graph and compare." },
+      { question: "What is descriptive data such as opinions and sketches called?",
+        accept: ["qualitative", "qualitative data"],
+        answer: "Qualitative data. It captures things numbers cannot." },
+      { question: "Which sampling method uses regular intervals?",
+        accept: ["systematic", "systematic sampling"],
+        answer: "Systematic sampling — even coverage, but it can lock onto a repeating feature." },
+      { question: "Which sampling method gives every point an equal chance of selection?",
+        accept: ["random", "random sampling"],
+        answer: "Random sampling — unbiased, but it can leave gaps purely by chance." },
+      { question: "Which sampling method divides the sample in proportion to a known characteristic?",
+        accept: ["stratified", "stratified sampling"],
+        answer: "Stratified sampling, which is fairest when the population is uneven." },
+      { question: "What is a result that does not fit the pattern called?",
+        accept: ["anomaly", "an anomaly", "outlier"],
+        answer: "An anomaly. Explaining one is worth far more than removing it." },
+      { question: "Which graph type best shows a relationship between two variables?",
+        accept: ["scatter", "scatter graph", "scattergraph", "scatter plot"],
+        answer: "A scatter graph, which reveals whether two things vary together." },
+      { question: "Which map type uses shading density to show variation between areas?",
+        accept: ["choropleth", "choropleth map"],
+        answer: "A choropleth map, where darker shading means a higher value." },
+      { question: "What is it called when repeating the method would give the same result?",
+        accept: ["reliability", "reliable"],
+        answer: "Reliability. Accuracy is a separate question — whether you measured the right thing." },
+      { question: "Which stage of the enquiry process comes last?",
+        accept: ["evaluation", "the evaluation"],
+        answer: "Evaluation — reliability, limitations and realistic improvements." },
+      { question: "Should you delete an anomalous result? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. Identify it, explain it, and use it in your evaluation." },
+      { question: "Which graph type is best for showing continuous change over distance?",
+        accept: ["line graph", "line", "a line graph"],
+        answer: "A line graph. Bars are for comparison, pies for proportion." },
+      { question: "Explain why honest evaluation scores better than claiming your data was perfect.",
+        answer: "Because no fieldwork is perfect, and examiners know it. Every sampling method has a characteristic weakness, every measurement has a margin of error, and conditions like weather, tide and time of day are largely outside a student's control. Claiming otherwise signals that you have not understood the method well enough to see its limits, which is precisely what the evaluation is testing. Recognising that your pedestrian count missed the evening peak, or that measuring only accessible riverbanks biased the sample towards gentler sites, shows you understand what your data can and cannot support — and that is a more advanced skill than collecting it in the first place. (Mark this one yourself.)" },
+      { question: "Explain why the sampling method chosen shapes the conclusion as much as the measurements do.",
+        answer: "Because the sample is the whole evidence base: anything you did not measure is completely invisible to your conclusion, however confidently it is stated. If you only measured where the riverbank was safe to reach, you measured the gentlest sites and your conclusion describes those, not the river. Random sampling avoids deliberate bias but can leave whole stretches unmeasured by chance, especially with few sites. Systematic sampling guarantees coverage but can accidentally align with a repeating feature like bridges or weirs. Stratified sampling is fairest for uneven populations but needs data you may not have in advance. The method has to be chosen to fit the question, and its weakness stated. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The exam asks what you found in your fieldwork.\"",
+        right: "It mostly asks WHY you did it that way — how methods were chosen, what their limitations were, and how you would improve them." },
+      { wrong: "\"Anomalies should be removed so the graph looks better.\"",
+        right: "An anomaly is data. Identifying and explaining one is often the most impressive part of an analysis." },
+      { wrong: "\"Random sampling is always the best method.\"",
+        right: "It removes deliberate bias but can leave large gaps by chance. Systematic suits change along a transect; stratified suits uneven populations." },
+      { wrong: "\"'Collect more data' is a good improvement.\"",
+        right: "Too vague to earn marks. 'Take three velocity readings per site and average them' is specific enough to be worth something." },
+      { wrong: "\"Reliability and accuracy mean the same thing.\"",
+        right: "Reliability is whether repeating gives the same answer; accuracy is whether you measured the right thing. Data can be reliably wrong." },
+      { wrong: "\"Qualitative data is less valuable than numbers.\"",
+        right: "It captures what numbers miss — how a place feels, why people behave as they do. The strongest enquiries use both together." },
+    ],
+  },
+
+  "geography/maps-graphs-and-statistics": {
+    summary:
+      "Roughly a tenth of the marks in GCSE Geography come from skills questions, and they are the most reliably winnable marks on the paper — because unlike a case study, nothing here depends on remembering the right example. Choosing the right graph, reading a scale correctly and calculating a mean or a median are rules, and rules can simply be learned.",
+    keyFacts: [
+      {
+        heading: "Choosing the right graph",
+        points: [
+          "Line graph: continuous change, especially over time or distance. Climate graphs use a line for temperature.",
+          "Bar chart: comparing separate categories. Climate graphs use bars for rainfall.",
+          "Histogram: like a bar chart but for continuous data grouped into classes, with no gaps between the bars.",
+          "Pie chart: proportions of a single whole. Useless for comparing two different totals.",
+          "Scatter graph: the relationship between two variables, with a line of best fit if a trend exists.",
+          "Choosing wrongly loses marks even when the data is right, so read what the data actually is before deciding.",
+        ],
+      },
+      {
+        heading: "Maps that carry data",
+        points: [
+          "Choropleth: areas shaded by value, darker for higher. Easy to read, but it hides variation within each area.",
+          "Isoline: lines joining equal values, like contours for height or isobars for pressure.",
+          "Proportional symbols: circles or bars sized by value, placed at their location.",
+          "Flow line: arrows whose width shows the volume of movement — traffic, migration, trade.",
+          "Dot map: one dot per fixed quantity, showing distribution and density.",
+          "Desire line: straight lines from origin to destination, showing where people travelled from.",
+        ],
+      },
+      {
+        heading: "Averages, spread and what they hide",
+        points: [
+          "Mean: add all values and divide by how many. Uses every value, but a single extreme figure drags it badly.",
+          "Median: the middle value when ordered. Unaffected by extremes, which makes it better for skewed data like income.",
+          "Mode: the most common value. The only average that works for categories.",
+          "Range: highest minus lowest — a crude measure of spread that depends entirely on two values.",
+          "Interquartile range: the spread of the middle 50%, found as upper quartile minus lower quartile. Far more robust than the range.",
+          "Quoting a mean without any measure of spread hides how varied the data was, and that is exactly what an examiner is checking for.",
+        ],
+      },
+      {
+        heading: "Percentages, density and change",
+        points: [
+          "Percentage: part ÷ whole × 100.",
+          "Percentage change: (new − old) ÷ old × 100. Note it is divided by the ORIGINAL value, not the new one.",
+          "Population density: total population ÷ area, usually in people per square kilometre.",
+          "Ratios express one quantity relative to another, such as a dependency ratio.",
+          "Always keep units consistent before calculating, and state the unit in the answer.",
+          "A percentage change of 200% means it tripled, not doubled — the commonest slip in this whole topic.",
+        ],
+      },
+      {
+        heading: "Describing data properly",
+        points: [
+          "Describe the overall trend first: rising, falling, fluctuating, steady.",
+          "Quote figures with units, including the start and end values and the size of the change.",
+          "Identify anomalies — points that break the trend — and say by how much.",
+          "Use directional and locational language on maps: 'highest in the south-east, falling towards the north-west'.",
+          "Do not explain when asked to describe. 'Describe' means say what it shows; 'explain' means say why. Doing the wrong one wastes time and earns nothing.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Line graph", definition: "A graph showing continuous change, usually over time or distance." },
+      { term: "Histogram", definition: "A chart for continuous data grouped into classes, drawn with no gaps between the bars." },
+      { term: "Scatter graph", definition: "A graph plotting two variables against each other to show whether they are related." },
+      { term: "Line of best fit", definition: "A straight line drawn through a scatter graph to summarise the trend." },
+      { term: "Choropleth map", definition: "A map shading areas by value, darker for higher — easy to read, but it hides variation inside each area." },
+      { term: "Isoline", definition: "A line joining points of equal value, such as a contour or an isobar." },
+      { term: "Proportional symbols", definition: "Symbols drawn in sizes proportional to the values they represent, placed at their locations." },
+      { term: "Flow line", definition: "An arrow whose width shows the volume of movement between two places." },
+      { term: "Dot map", definition: "A map using one dot per fixed quantity to show distribution and density." },
+      { term: "Mean", definition: "The total divided by the number of values. Uses every value, but is distorted by extremes." },
+      { term: "Median", definition: "The middle value when the data is put in order. Unaffected by extreme values." },
+      { term: "Mode", definition: "The most frequently occurring value — the only average that works for categories." },
+      { term: "Range", definition: "Highest value minus lowest value. A crude measure of spread resting on just two figures." },
+      { term: "Interquartile range", definition: "Upper quartile minus lower quartile — the spread of the middle 50% of the data." },
+      { term: "Percentage change", definition: "(new − old) ÷ old × 100. Always divided by the ORIGINAL value." },
+      { term: "Population density", definition: "Total population divided by area, usually people per square kilometre." },
+    ],
+    examTips: [
+      {
+        tip: "Read whether it says describe or explain",
+        detail:
+          "Describe means say what the data shows. Explain means say why. Writing the wrong one is the most common way to lose skills marks with a perfectly good answer.",
+      },
+      {
+        tip: "Quote figures with units, every time",
+        detail:
+          "'Rainfall fell from 120 mm in January to 45 mm in July' is worth far more than 'rainfall decreased'. The numbers are what turns a statement into evidence.",
+      },
+      {
+        tip: "Divide by the ORIGINAL for percentage change",
+        detail:
+          "(new − old) ÷ old × 100. Dividing by the new value is the classic error, and it gives an answer that looks plausible.",
+      },
+      {
+        tip: "Use the median for skewed data",
+        detail:
+          "Income, house prices and settlement sizes all have long tails. One billionaire drags a mean; the median ignores them. Saying WHY you chose it earns the mark.",
+      },
+      {
+        tip: "Always give the spread alongside the average",
+        detail:
+          "Two places can share a mean temperature and have completely different climates. Quoting range or interquartile range shows you know that.",
+      },
+      {
+        tip: "Name the anomaly",
+        detail:
+          "Point out the value that breaks the trend and say by how much. It shows you read the data rather than skimming its shape.",
+      },
+      {
+        tip: "Match the graph type to the data type",
+        detail:
+          "Proportions of one whole get a pie; separate categories get bars; continuous change gets a line; relationships get a scatter.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "A town's population rose from 24,000 to 30,000. Calculate the percentage change.",
+        steps: [
+          "Percentage change = (new − old) ÷ old × 100.",
+          "Find the change: 30,000 − 24,000 = 6,000.",
+          "Divide by the ORIGINAL value, not the new one: 6,000 ÷ 24,000.",
+          "6,000 ÷ 24,000 = 0.25.",
+          "Multiply by 100: 25%.",
+          "Check it makes sense: a quarter of 24,000 is 6,000. ✓",
+        ],
+        answer: "A 25% increase.",
+      },
+      {
+        question:
+          "Nine settlements have populations of 300, 420, 450, 480, 510, 560, 610, 700 and 24,000. Which average best describes them, and why?",
+        steps: [
+          "Calculate the mean: the total is 28,030, divided by 9 gives about 3,114.",
+          "But eight of the nine settlements are under 800. A 'typical' value of 3,114 describes none of them.",
+          "The single value of 24,000 has dragged the mean upwards — that is what an extreme value does.",
+          "Find the median: with nine values in order, the middle one is the fifth, which is 510.",
+          "510 sits comfortably among the others and genuinely represents a typical settlement here.",
+          "So the median is the better choice, and the reason — skewed data with one extreme value — is what earns the mark.",
+        ],
+        answer:
+          "The median, at 510. The mean of about 3,114 is dragged up by the single settlement of 24,000 and describes none of the nine. The median is unaffected by extremes, which is exactly why it suits skewed data.",
+      },
+      {
+        question:
+          "Describe the pattern shown by a choropleth map where population density is darkest in the south-east and palest in the north-west, ranging from 5 to 4,800 people per km².",
+        steps: [
+          "Start with the overall pattern and its direction: density decreases from south-east to north-west.",
+          "Quote the extremes with units: from around 4,800 people per km² in the south-east to about 5 in the north-west.",
+          "Comment on the scale of the difference — nearly a thousand-fold.",
+          "Look for anomalies: an isolated dark patch in a generally pale region, which would be a city.",
+          "Use proper locational language rather than 'here' and 'there'.",
+          "And stop. The question said describe, so do not start explaining why cities are where they are.",
+        ],
+        answer:
+          "Population density decreases from south-east to north-west, from around 4,800 people per km² at its highest to about 5 at its lowest — close to a thousand-fold difference. Any isolated dark area in the sparse north-west would be an anomaly, most likely a city.",
+      },
+      {
+        question:
+          "Why is a choropleth map sometimes misleading?",
+        steps: [
+          "It shades a whole area a single colour, which implies the value is uniform across it.",
+          "In reality a large region may contain a dense city and vast empty countryside averaged together.",
+          "The class boundaries chosen change the picture: wide classes hide variation, narrow ones exaggerate it.",
+          "Large areas draw the eye more than small ones, so a big sparsely populated region can look more significant than a small dense one.",
+          "It also cannot show anything below the scale of the mapped units.",
+          "It remains useful for showing broad regional patterns — but the pattern it shows depends partly on how the map was drawn.",
+        ],
+        answer:
+          "Because shading a whole area one colour implies a uniformity that rarely exists — a region containing a dense city and empty countryside is averaged into one shade. The chosen class boundaries also change the impression, and large areas dominate visually regardless of their population.",
+      },
+    ],
+
+    practice: [
+      { question: "Which graph type is best for continuous change over time?",
+        accept: ["line graph", "line", "a line graph"],
+        answer: "A line graph. Bars are for comparing separate categories." },
+      { question: "Which chart shows continuous grouped data with no gaps between bars?",
+        accept: ["histogram", "a histogram"],
+        answer: "A histogram. The absence of gaps is what distinguishes it from a bar chart." },
+      { question: "Which graph shows the relationship between two variables?",
+        accept: ["scatter", "scatter graph", "scatter plot"],
+        answer: "A scatter graph, often with a line of best fit." },
+      { question: "Which map type shades areas by value?",
+        accept: ["choropleth", "choropleth map"],
+        answer: "A choropleth map — easy to read, but it hides variation within each area." },
+      { question: "What is a line joining points of equal value called?",
+        accept: ["isoline", "an isoline", "isolines"],
+        answer: "An isoline — contours and isobars are both examples." },
+      { question: "Which map type uses arrows whose width shows volume of movement?",
+        accept: ["flow line", "flow lines", "flow line map"],
+        answer: "A flow line map, used for traffic, migration and trade." },
+      { question: "Which average is the middle value when data is ordered?",
+        accept: ["median", "the median"],
+        answer: "The median. It is unaffected by extreme values." },
+      { question: "Which average is the most common value?",
+        accept: ["mode", "the mode"],
+        answer: "The mode — the only average that works for categories." },
+      { question: "Which average is distorted most by one extreme value?",
+        accept: ["mean", "the mean"],
+        answer: "The mean, because it uses every value including the extreme one." },
+      { question: "What is the spread of the middle 50% of data called?",
+        accept: ["interquartile range", "iqr", "inter quartile range"],
+        answer: "The interquartile range — far more robust than the plain range." },
+      { question: "A value rises from 40 to 50. What is the percentage change?",
+        accept: ["25", "25%"],
+        answer: "25%. The change is 10, divided by the ORIGINAL 40, times 100." },
+      // Reworded, because the checker was right to reject the first version.
+      // It asked for "the percentage change" on a fall and accepted both -25
+      // and 25 — two genuinely different numbers, which is the exact pattern
+      // that once let a wrong answer be marked correct. Asking for the SIZE of
+      // the decrease has one right answer and is a clearer question anyway.
+      { question: "A value falls from 80 to 60. By what percentage has it decreased?",
+        accept: ["25", "25%"],
+        answer: "25%. The change of 20, divided by the ORIGINAL 80, times 100." },
+      { question: "In percentage change, do you divide by the original or the new value?",
+        accept: ["original", "the original", "old", "the old value"],
+        answer: "The original. Dividing by the new value is the classic error." },
+      { question: "How is population density calculated?",
+        accept: ["population divided by area", "population/area", "population ÷ area"],
+        answer: "Total population divided by area, usually giving people per square kilometre." },
+      { question: "A percentage increase of 200% means the value has done what?",
+        accept: ["tripled", "trebled", "x3", "times 3"],
+        answer: "Tripled. An increase OF 200% means the original plus twice itself — the commonest slip in this topic." },
+      { question: "Does 'describe' mean say what the data shows, or say why?",
+        accept: ["what", "what it shows", "say what it shows"],
+        answer: "What it shows. 'Explain' means say why, and doing the wrong one earns nothing." },
+      { question: "Explain why quoting a mean without a measure of spread can be misleading.",
+        answer: "Because two datasets with an identical mean can be completely different. Two places might both average 12°C across the year: one could sit between 10°C and 14°C all year while the other swings from −10°C to 34°C, and the mean alone would make them look the same. The mean is also dragged by extremes, so a single very high or very low value can produce a figure that describes none of the actual data — as happens with incomes and settlement sizes. Quoting the range, or better the interquartile range, tells the reader how varied the underlying data was, which is what makes an average interpretable rather than merely arithmetic. (Mark this one yourself.)" },
+      { question: "Explain why skills questions are the most reliably winnable marks in Geography.",
+        answer: "Because they do not depend on memory. A case study question can go wrong if you have revised a different example from the one that suits the question, and an explanation question can go wrong if you have half-remembered a process. Skills questions test rules that are always the same: percentage change is always divided by the original value, the median is always the middle of the ordered data, a choropleth always shades areas by value. Nothing changes between papers, so the same practice works every year. They also account for roughly a tenth of the total marks, which makes them a disproportionately good return on revision time compared with learning another case study. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Percentage change is divided by the new value.\"",
+        right: "It is divided by the ORIGINAL value: (new − old) ÷ old × 100. Using the new value gives a plausible-looking wrong answer." },
+      { wrong: "\"The mean is the best average.\"",
+        right: "It is the best when data is fairly even. For skewed data like incomes or settlement sizes, one extreme value drags it and the median describes reality better." },
+      { wrong: "\"A choropleth map shows exactly where people live.\"",
+        right: "It shades whole areas one colour, averaging dense cities with empty countryside. The class boundaries chosen also change the impression it gives." },
+      { wrong: "\"An increase of 200% means it doubled.\"",
+        right: "It tripled. An increase OF 200% adds twice the original on top of it — going TO 200% would be doubling." },
+      { wrong: "\"Describe and explain mean roughly the same thing.\"",
+        right: "Describe means say what the data shows; explain means say why. Answering the wrong one wastes time and earns no marks at all." },
+      { wrong: "\"A pie chart can compare two different places.\"",
+        right: "It shows proportions of a single whole. Comparing two pies with different totals is misleading unless the totals are stated." },
+    ],
+  },
+
 };
