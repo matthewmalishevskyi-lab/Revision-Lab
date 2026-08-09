@@ -108,12 +108,16 @@ The `unique` on `email` is doing real work: it is what stops two people register
 
 ### 5c — Copy two settings
 
-In Supabase: **Project Settings → API**.
+In Supabase: **Settings → API Keys**.
 
-- **Project URL** — looks like `https://abcdefgh.supabase.co`
-- **`service_role` key** — the *secret* one, not `anon`. It is long and starts `eyJ...`
+- **Project URL** — looks like `https://abcdefgh.supabase.co`. It's in **Settings → API**, or in the **Connect** dialog at the top of the dashboard.
+- **A secret key** — open the **API Keys** tab, click **Create new API Keys** if you don't have one, and copy the value under **Secret keys**. It starts `sb_secret_...`
 
-⚠️ **The `service_role` key can read and write every row in your database.** Never put it in the code, never paste it into a chat, never commit it. It goes in Vercel and nowhere else. If you ever think it has leaked, Supabase can regenerate it.
+If your project only shows older keys, use the **Legacy API Keys** tab and copy `service_role` (a long value starting `eyJ...`). **Either kind works** — the code detects which one you gave it and sends the right headers, because Supabase requires them to be sent differently. Prefer the new `sb_secret_` one: the legacy keys are being deprecated at the end of 2026.
+
+Do **not** use the `anon` or **publishable** key. Those are the public ones, and they cannot write to this table.
+
+⚠️ **A secret key can read and write every row in your database.** Never put it in the code, never paste it into a chat (Supabase's own docs say not to send it over chat apps), never commit it. It goes in Vercel and nowhere else. If you think it has leaked, create a new one and delete the old.
 
 ### 5d — Add three settings to Vercel
 

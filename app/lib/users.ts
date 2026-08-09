@@ -107,12 +107,37 @@ const fromRow = (row: UserRow): User => ({
   createdAt: row.created_at,
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// TWO GENERATIONS OF SUPABASE KEY, AND WHY THE HEADERS DIFFER
+//
+// Supabase is part-way through replacing its API keys, and the two kinds must
+// be sent differently:
+//
+//   OLD: `service_role`, a JWT starting "eyJ". Sent as BOTH an `apikey` header
+//        and an `Authorization: Bearer` header, which is what every tutorial
+//        written before the change tells you to do. Deprecated end of 2026.
+//
+//   NEW: a secret key starting "sb_secret_". Their docs are explicit that it
+//        "cannot be sent in the Authorization: Bearer header" — it is not a
+//        JWT, so it gets rejected when the server tries to read it as one.
+//        It goes in the `apikey` header alone.
+//
+// Sending Bearer regardless — which is what the first version of this did —
+// works with a legacy key and fails with a new one. Since a new project made
+// today gets the new kind, that would have broken on the very first login.
+//
+// So: detect which kind we were given, and send the right headers. Both work.
+// ─────────────────────────────────────────────────────────────────────────────
+const KEY_IS_LEGACY_JWT = (SUPABASE_KEY ?? "").startsWith("eyJ");
+
 async function supabase(path: string, init: RequestInit = {}): Promise<Response> {
   return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     ...init,
     headers: {
       apikey: SUPABASE_KEY as string,
-      Authorization: `Bearer ${SUPABASE_KEY}`,
+      ...(KEY_IS_LEGACY_JWT
+        ? { Authorization: `Bearer ${SUPABASE_KEY}` }
+        : {}),
       "Content-Type": "application/json",
       ...init.headers,
     },
