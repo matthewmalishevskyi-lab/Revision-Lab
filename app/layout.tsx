@@ -64,6 +64,23 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+
+  // ── Proving to Google that this site is yours ─────────────────────────────
+  //
+  // Google Search Console will not show you a site's search data until you
+  // prove you control it — otherwise anyone could snoop on anyone's traffic.
+  // One accepted proof is a meta tag containing a code only Google gave you.
+  //
+  // The code arrives as an environment variable rather than being typed into
+  // this file, so verifying costs no code change and no deploy of new code.
+  // It is not a secret — it ends up visible in the page source, which is the
+  // entire point — but keeping it out here means the same code works for a
+  // future domain without editing.
+  //
+  // With the variable unset, `undefined` means Next simply omits the tag.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

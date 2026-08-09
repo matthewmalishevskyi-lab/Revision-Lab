@@ -61,12 +61,55 @@ This matters because search engines and link previews need full addresses, not r
 
 ## Step 4 — Get onto Google
 
-Deploying does **not** put you in Google. You have to ask, and then wait.
+**Your site is already public.** Anyone with the link can use it right now. This step is only about being *findable by search*, which is a separate thing — and deploying does not do it. You have to ask, and then wait.
 
-1. Go to [Google Search Console](https://search.google.com/search-console).
-2. Add your site as a property and verify ownership (the DNS or HTML file method — Search Console walks you through it).
-3. Submit your sitemap: `https://your-site.vercel.app/sitemap.xml`.
-4. Use **URL Inspection → Request Indexing** on your homepage.
+### 4a — Add the property
+
+1. Go to [Google Search Console](https://search.google.com/search-console) and sign in.
+2. You're offered two kinds of property. Choose **URL prefix**, on the right — not "Domain". Domain verification needs you to change DNS records, and you can't do that on a `.vercel.app` address because Vercel owns that domain, not you.
+3. Enter your full address including `https://`, with no trailing slash:
+   `https://revision-lab-sigma.vercel.app`
+
+### 4b — Verify with the HTML tag method
+
+Search Console offers several proofs. Pick **HTML tag**.
+
+It shows you something like:
+
+```html
+<meta name="google-site-verification" content="AbCdEf123456..." />
+```
+
+**You only need the part inside `content="..."`.** Copy that code — not the whole tag.
+
+Then, in Vercel: **Settings → Environment Variables**, add:
+
+| Name | Value |
+|---|---|
+| `GOOGLE_SITE_VERIFICATION` | the code from inside `content="..."` |
+
+Redeploy (**Deployments → ⋯ → Redeploy**), wait for it to go green, then click **Verify** in Search Console.
+
+*Why an environment variable rather than pasting it into the code:* it means verifying takes no code change, and the same code will work unchanged if you ever move to a real domain. The code isn't secret — it ends up visible in the page source, which is precisely how Google checks it.
+
+### 4c — Submit the sitemap
+
+Once verified, in Search Console: **Sitemaps** in the left menu → enter `sitemap.xml` → **Submit**.
+
+That hands Google all **57** pages at once: the homepage, 3 subject pages and 53 topic pages. Login, register and dashboard are deliberately excluded — a login form is no use to someone arriving from a search.
+
+### 4d — Ask for the homepage to be looked at
+
+**URL Inspection** at the top → paste your homepage address → **Request Indexing**. This nudges Google to come and look sooner rather than waiting to find you.
+
+### Then wait, and expect less than you'd like
+
+- **Days to weeks** before anything appears at all. That's normal and there is no way to hurry it.
+- **Ranking for "GCSE revision" is not going to happen.** That term is fought over by BBC Bitesize, Save My Exams and Seneca, who have millions of visitors and years of history. A brand-new site does not outrank them, and no amount of technical work changes that.
+- **What you can realistically win** are very specific searches — a phrase from one of your topics, or your site's own name.
+- **Most of your first users will arrive from a link you sent them.** That's why the Open Graph tags are set up: when you paste the link into a group chat it shows a proper title, description and preview instead of a bare URL.
+
+Track it in Search Console's **Performance** page. It stays empty for a while; that isn't a fault.
 
 **Then wait.** New sites typically take days to weeks to appear, and ranking for competitive terms like "GCSE revision" takes months and a lot of visitors. Realistically the first people who use this will arrive because you sent them the link — which is exactly why Open Graph tags are set up, so the link looks good when pasted into a group chat.
 
