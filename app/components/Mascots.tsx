@@ -433,88 +433,82 @@ export function Knight(props: MascotProps) {
 // ─────────────────────────────────────────────────────────────────────────────
 // ATLAS — Geography.
 //
-// The reference Matthew was given was a globe with arms and legs, and he was
-// right that it did not fit. The problem was proportion: it was a ball with
-// limbs, where every other character here is built as head-plus-body with the
-// head at about 40% of the total height. That single ratio is most of what
-// makes the five look related.
+// THE PLANET IS THE BODY. Not a head on a body, not a globe held by someone —
+// the character IS the earth, with the face on it.
 //
-// So the globe is the HEAD, not the whole character, and there is a proper
-// body under it. Everything else follows the house rules: flat fills with one
-// darker tone, light from the upper left, thick rounded forms, no sharp
-// corners — and the round gold spectacles that Pixel, Hoot and Quill wear, in
-// the same #f0c869 that became Gaunt's trim.
+// That breaks the house rule the other four follow, which is head at about 40%
+// of total height. Matthew asked for it and he is right that it works better
+// here: a globe reads as a globe, and giving it a separate torso made it look
+// like someone in a costume rather than a planet.
 //
-// The continents are deliberately simplified and unlabelled. Drawing a
-// recognisable world map at 24 pixels is impossible, and attempting it would
-// produce a muddy shape that also implies a political claim about borders.
-// Suggested landmasses read as "a globe" instantly and commit to nothing.
+// So the family resemblance has to be carried by everything else, and it is:
+//   - the same chunky rounded forms with no sharp corners
+//   - one darker tone per shape for roundness, lit from the upper left
+//   - the same eye treatment — slightly oval, one highlight each, which is
+//     what reads as characterful rather than as a toy
+//   - the gold (#f0c869) that frames Hoot's and Quill's spectacles and trims
+//     Gaunt's shield, here as the equator
+//
+// No glasses. Three of the five wear them and two do not, which is fine — a
+// house style is a set of relationships, not a uniform. The equator in gold
+// does the job the spectacles were doing, and it is the one line that makes a
+// blue circle unmistakably a planet.
+//
+// The continents are deliberately simplified and unlabelled. A recognisable
+// world map at icon size would be mud, and it would also imply a position on
+// where borders are. Suggested landmasses read as "globe" and commit to
+// nothing.
 // ─────────────────────────────────────────────────────────────────────────────
 export function Atlas(props: MascotProps) {
   return (
     <svg
       viewBox="0 0 120 140"
       role="img"
-      aria-label="Atlas, the Geography mascot: a globe-headed character in round glasses, wearing a backpack and boots"
+      aria-label="Atlas, the Geography mascot: a smiling planet Earth with arms, legs and boots"
       {...props}
     >
-      {/* Backpack strap and pack, drawn first so the body sits over them */}
-      <rect x="18" y="82" width="16" height="30" rx="8" fill="#0f766e" />
-      <rect x="18" y="94" width="16" height="6" rx="3" fill="#000000" opacity={0.18} />
+      {/* Arms, drawn first so the planet sits over where they join */}
+      <path d="M20 74 Q10 84 14 96 Q20 100 26 94 Q22 84 28 76 Z" fill="#38bdf8" />
+      <path d="M100 74 Q110 84 106 96 Q100 100 94 94 Q98 84 92 76 Z" fill="#38bdf8" />
+      <path d="M100 74 Q110 84 106 96 Q102 98 99 96 Q104 84 96 78 Z" fill="#0284c7" opacity={0.4} />
 
       {/* Legs and boots */}
-      <rect x="45" y="108" width="11" height="16" rx="5.5" fill="#3f6212" />
-      <rect x="64" y="108" width="11" height="16" rx="5.5" fill="#3f6212" />
-      <ellipse cx="49" cy="127" rx="12" ry="7" fill="#1a2e05" />
-      <ellipse cx="71" cy="127" rx="12" ry="7" fill="#1a2e05" />
+      <rect x="46" y="106" width="10" height="16" rx="5" fill="#38bdf8" />
+      <rect x="64" y="106" width="10" height="16" rx="5" fill="#38bdf8" />
+      <ellipse cx="47" cy="126" rx="13" ry="7" fill="#14304f" />
+      <ellipse cx="73" cy="126" rx="13" ry="7" fill="#14304f" />
 
-      {/* Body — a walking jacket, green for the subject */}
-      <path d="M36 78 Q60 72 84 78 L84 106 Q60 114 36 106 Z" fill="#16a34a" />
-      <path d="M60 75 Q84 74 84 78 L84 106 Q72 111 60 112 Z" fill="#000000" opacity={0.13} />
-      {/* Zip and collar */}
-      <rect x="58" y="76" width="4" height="34" rx="2" fill="#f0c869" />
-      <path d="M38 78 Q60 72 82 78 L82 83 Q60 77 38 83 Z" fill="#15803d" />
+      {/* THE PLANET — the whole character */}
+      <circle cx="60" cy="62" r="45" fill="#38bdf8" />
+      {/* One darker tone down the right, so it reads as a sphere. */}
+      <path d="M60 17 A45 45 0 0 1 60 107 A31 45 0 0 0 60 17 Z" fill="#0284c7" opacity={0.4} />
 
-      {/* Arms */}
-      <rect x="22" y="80" width="12" height="26" rx="6" fill="#16a34a" />
-      <rect x="86" y="80" width="12" height="26" rx="6" fill="#16a34a" />
-      <rect x="86" y="80" width="12" height="26" rx="6" fill="#000000" opacity={0.12} />
+      {/* Simplified landmasses — a suggestion of continents, not a map. */}
+      <path d="M26 44 Q38 34 50 42 Q48 56 38 60 Q26 56 26 44 Z" fill="#4ade80" />
+      <path d="M36 70 Q48 68 50 80 Q46 96 38 98 Q30 86 36 70 Z" fill="#4ade80" />
+      <path d="M70 34 Q88 32 94 46 Q86 54 74 50 Q68 44 70 34 Z" fill="#4ade80" />
+      <path d="M72 66 Q88 64 90 78 Q84 94 74 96 Q66 82 72 66 Z" fill="#4ade80" />
+      {/* Shading over the right-hand landmasses, so they belong to the sphere
+          rather than floating on top of it. */}
+      <path d="M70 66 Q88 64 90 78 Q84 94 74 96 Q76 82 70 66 Z" fill="#000000" opacity={0.09} />
+      <path d="M82 34 Q92 38 94 46 Q88 52 80 51 Q84 42 82 34 Z" fill="#000000" opacity={0.09} />
 
-      {/* ── The globe head ── */}
-      <circle cx="60" cy="44" r="34" fill="#38bdf8" />
-      {/* One darker tone on the right so it reads as a sphere rather than a
-          disc. This is the same move used on every other character. */}
-      <path d="M60 10 A34 34 0 0 1 60 78 A24 34 0 0 0 60 10 Z" fill="#0284c7" opacity={0.45} />
+      {/* The equator, in the family gold. One line, and it is what makes a blue
+          circle unmistakably a planet. */}
+      <path d="M17 64 Q60 76 103 64" stroke="#f0c869" strokeWidth={2.4} fill="none" strokeLinecap="round" opacity={0.85} />
 
-      {/* Simplified landmasses. Not a map — a suggestion of one. */}
-      <path d="M34 30 Q44 24 52 30 Q50 40 42 42 Q34 40 34 30 Z" fill="#4ade80" />
-      <path d="M40 50 Q48 48 50 56 Q48 68 42 70 Q36 62 40 50 Z" fill="#4ade80" />
-      <path d="M66 26 Q80 24 86 34 Q80 40 70 38 Q64 34 66 26 Z" fill="#4ade80" />
-      <path d="M68 46 Q80 44 82 54 Q78 66 70 68 Q64 58 68 46 Z" fill="#4ade80" />
-      <path d="M66 46 Q78 44 82 54 Q78 66 70 68 Q70 56 66 46 Z" fill="#000000" opacity={0.08} />
-      {/* A faint equator, which reads as "globe" more strongly than any
-          landmass does. */}
-      <path d="M27 46 Q60 54 93 46" stroke="#ffffff" strokeWidth={1.6} opacity={0.35} fill="none" />
       {/* Highlight, upper left, matching the light source the others use */}
-      <path d="M38 24 Q46 16 58 15 Q44 20 40 30 Z" fill="#ffffff" opacity={0.4} />
+      <path d="M30 38 Q40 24 58 21 Q40 28 34 44 Z" fill="#ffffff" opacity={0.35} />
 
-      {/* Glasses — the family thread. Drawn over the globe, so the character
-          reads as a face first and a planet second. */}
-      <circle cx="48" cy="46" r="11" fill="#e0f2fe" opacity={0.92} />
-      <circle cx="72" cy="46" r="11" fill="#e0f2fe" opacity={0.92} />
-      <circle cx="48" cy="46" r="11" fill="none" stroke="#f0c869" strokeWidth={3} />
-      <circle cx="72" cy="46" r="11" fill="none" stroke="#f0c869" strokeWidth={3} />
-      <path d="M59 46 h2" stroke="#f0c869" strokeWidth={3} strokeLinecap="round" />
-
-      {/* Eyes — slightly oval with one highlight each, the setting that reads
-          as characterful rather than as a toy. */}
-      <ellipse cx="48" cy="47" rx="4.4" ry="5.2" fill="#0c2436" />
-      <ellipse cx="72" cy="47" rx="4.4" ry="5.2" fill="#0c2436" />
-      <circle cx="49.8" cy="45" r="1.7" fill="#ffffff" />
-      <circle cx="73.8" cy="45" r="1.7" fill="#ffffff" />
+      {/* Face, directly on the planet. Slightly oval eyes with one highlight
+          each — the same setting as every other character. */}
+      <ellipse cx="49" cy="56" rx="4.6" ry="5.6" fill="#14304f" />
+      <ellipse cx="71" cy="56" rx="4.6" ry="5.6" fill="#14304f" />
+      <circle cx="50.8" cy="54" r="1.8" fill="#ffffff" />
+      <circle cx="72.8" cy="54" r="1.8" fill="#ffffff" />
 
       {/* A restrained, slightly asymmetric smile */}
-      <path d="M53 62 Q60 67 68 61" stroke="#0c2436" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+      <path d="M52 71 Q60 77 69 70" stroke="#14304f" strokeWidth={2.8} strokeLinecap="round" fill="none" />
     </svg>
   );
 }

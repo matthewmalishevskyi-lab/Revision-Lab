@@ -459,4 +459,238 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
   },
 
+  "geography/tectonic-hazards": {
+    summary:
+      "Earthquakes and volcanoes are not scattered randomly — almost all of them sit along the boundaries between the plates that make up the earth's surface. Once you know what a boundary is doing, you can predict what kind of hazard it produces. The other half of this topic is more uncomfortable: the same earthquake kills tens of people in one country and tens of thousands in another, and the reason is wealth.",
+    keyFacts: [
+      {
+        heading: "Plate tectonics",
+        points: [
+          "The earth's crust is broken into tectonic plates that move a few centimetres a year, driven by convection currents in the mantle and by slab pull at subduction zones.",
+          "Continental crust is thicker, older and less dense. Oceanic crust is thinner, younger and denser — which is why it subducts beneath continental crust rather than the other way round.",
+          "Destructive (convergent) margins: plates move together. Oceanic subducts under continental, producing violent earthquakes and explosive volcanoes — the Andes, for example.",
+          "Constructive (divergent) margins: plates move apart, magma rises to fill the gap, producing gentle volcanoes and mild earthquakes — Iceland, on the Mid-Atlantic Ridge.",
+          "Conservative (transform) margins: plates slide past each other. No volcanoes, because no crust is created or destroyed, but severe earthquakes — the San Andreas Fault.",
+          "Collision margins: two continental plates meet and crumple upwards, forming fold mountains such as the Himalayas. Earthquakes, no volcanoes.",
+        ],
+      },
+      {
+        heading: "Earthquakes",
+        points: [
+          "Pressure builds where plates lock together, then releases suddenly as the rock fractures.",
+          "The focus is the point underground where it happens; the epicentre is the point on the surface directly above it.",
+          "A shallow focus produces far more surface damage than a deep one of the same magnitude.",
+          "The Richter and moment magnitude scales are logarithmic: each whole number is about 32 times more energy released.",
+          "Secondary hazards often kill more than the shaking: tsunamis, landslides, fires from broken gas mains, and disease from broken water supplies.",
+          "Liquefaction happens where saturated loose ground behaves like a liquid during shaking, and buildings sink or tilt.",
+        ],
+      },
+      {
+        heading: "Volcanoes",
+        points: [
+          "Composite (strato) volcanoes form at destructive margins: steep, made of alternating ash and lava, with thick sticky lava and violent eruptions.",
+          "Shield volcanoes form at constructive margins and hot spots: broad and gently sloping, with runny lava and gentle eruptions.",
+          "Hot spots such as Hawaii sit in the middle of a plate, over a plume of rising magma, which is why they break the boundary rule.",
+          "Hazards include lava flows, ash falls, pyroclastic flows (fast-moving clouds of gas and rock, the most lethal), lahars (mudflows) and gas.",
+          "Why people live there anyway: volcanic soils are extremely fertile, geothermal energy is cheap, minerals are mined, tourism brings income, and often it is simply home.",
+        ],
+      },
+      {
+        heading: "Why the same earthquake kills different numbers",
+        points: [
+          "Primary effects happen immediately: buildings collapse, people are killed and injured, roads and pipes break.",
+          "Secondary effects follow: fire, disease, homelessness, unemployment, and economic loss.",
+          "Responses are immediate (search and rescue, water, shelter, medical aid) or long-term (rebuilding, retrofitting, planning laws, insurance).",
+          "Wealth is the biggest single factor. Richer countries have enforced building codes, emergency services, monitoring, and money to rebuild.",
+          "Comparison worth learning: Haiti 2010, magnitude 7.0, around 220,000 deaths in one of the poorest countries in the hemisphere; Chile 2010, magnitude 8.8 — around 500 times more energy — around 500 deaths, in a country with strict building codes.",
+          "Management works: prediction is still poor for earthquakes, but preparation, planning and protection demonstrably save lives.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Tectonic plate", definition: "A large slab of the earth's crust that moves a few centimetres a year over the mantle." },
+      { term: "Convection current", definition: "The circulation of heat in the mantle, one of the forces driving plate movement." },
+      { term: "Destructive margin", definition: "A boundary where plates move together and oceanic crust subducts, causing violent earthquakes and explosive volcanoes." },
+      { term: "Constructive margin", definition: "A boundary where plates move apart and magma rises, causing gentle volcanoes and mild earthquakes." },
+      { term: "Conservative margin", definition: "A boundary where plates slide past each other, causing severe earthquakes but no volcanoes." },
+      { term: "Collision margin", definition: "A boundary where two continental plates meet and crumple upwards, forming fold mountains." },
+      { term: "Subduction", definition: "The sinking of denser oceanic crust beneath lighter continental crust at a destructive margin." },
+      { term: "Focus", definition: "The point underground where an earthquake originates." },
+      { term: "Epicentre", definition: "The point on the surface directly above the focus, where shaking is usually strongest." },
+      { term: "Composite volcano", definition: "A steep volcano of alternating ash and lava, with thick lava and violent eruptions, formed at destructive margins." },
+      { term: "Shield volcano", definition: "A broad, gently sloping volcano with runny lava and gentle eruptions, formed at constructive margins and hot spots." },
+      { term: "Pyroclastic flow", definition: "A fast-moving cloud of superheated gas and rock — the most lethal volcanic hazard." },
+      { term: "Lahar", definition: "A volcanic mudflow of ash and water, which can travel far beyond the volcano itself." },
+      { term: "Liquefaction", definition: "Saturated loose ground behaving like a liquid during shaking, causing buildings to sink or tilt." },
+      { term: "Primary effect", definition: "Damage caused directly and immediately by the hazard, such as buildings collapsing." },
+      { term: "Secondary effect", definition: "Damage that follows on, such as fire, disease, homelessness or economic loss." },
+    ],
+    examTips: [
+      {
+        tip: "Name the margin type before explaining the hazard",
+        detail:
+          "Destructive, constructive, conservative or collision. The hazard follows from the boundary, so naming it first makes the explanation almost automatic.",
+      },
+      {
+        tip: "Remember no volcanoes at conservative margins",
+        detail:
+          "Crust is neither created nor destroyed there, so there is no magma route to the surface. Severe earthquakes, no eruptions — a favourite exam distinction.",
+      },
+      {
+        tip: "Use Haiti and Chile together",
+        detail:
+          "2010, both. Chile's quake released around 500 times more energy and killed roughly 500 people; Haiti's killed around 220,000. That single comparison answers most 'why does wealth matter' questions.",
+      },
+      {
+        tip: "Separate primary from secondary effects",
+        detail:
+          "Examiners often ask for one or the other specifically. Collapse and immediate deaths are primary; fire, disease and unemployment are secondary.",
+      },
+      {
+        tip: "Split responses into immediate and long-term",
+        detail:
+          "Search and rescue and emergency aid in the first days; rebuilding, retrofitting and planning laws over years. The two need different examples.",
+      },
+      {
+        tip: "Explain WHY people live in hazardous places",
+        detail:
+          "Fertile soil, geothermal energy, minerals, tourism — and that it is home, with family and work there. 'They have no choice' is too simple and loses marks.",
+      },
+      {
+        tip: "Say the magnitude scale is logarithmic",
+        detail:
+          "Each whole number is about 32 times the energy, so 8.0 is not twice 4.0. It shows you understand the measurement rather than just quoting it.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why volcanoes form at destructive margins.",
+        steps: [
+          "At a destructive margin, oceanic and continental plates move together.",
+          "Oceanic crust is denser, so it subducts — sinks beneath the continental plate.",
+          "As it descends it heats up and melts, and the water it carries lowers the melting point of the surrounding mantle.",
+          "The molten rock is less dense than the material around it, so it rises through cracks in the crust.",
+          "Where it reaches the surface it erupts, building a composite volcano.",
+          "The lava is thick and sticky because it is rich in silica, which is why eruptions here are explosive rather than gentle.",
+        ],
+        answer:
+          "Denser oceanic crust subducts beneath continental crust, melts as it descends, and the resulting magma rises through the crust to erupt. The silica-rich, sticky lava produces the steep composite volcanoes and violent eruptions typical of these margins.",
+      },
+      {
+        question:
+          "The 2010 Haiti earthquake (magnitude 7.0) killed around 220,000 people. The 2010 Chile earthquake (magnitude 8.8) killed around 500. Explain the difference.",
+        steps: [
+          "Note first that Chile's quake was far larger — the scale is logarithmic, so 8.8 released roughly 500 times the energy of 7.0.",
+          "Buildings: Chile had strict, enforced earthquake building codes; much of Haiti's construction was unreinforced concrete with no code enforcement.",
+          "Preparation: Chile had drills, monitoring and an emergency plan. Haiti had almost none.",
+          "Emergency services: Chile could deploy its own trained rescue teams within hours; Haiti's government buildings, including the presidential palace, had themselves collapsed.",
+          "Wealth: Chile could fund its own recovery. Haiti was the poorest country in the western hemisphere and depended on international aid that arrived slowly.",
+          "Population density and location: Haiti's epicentre was close to Port-au-Prince, a densely built capital.",
+          "Judgement: magnitude explains almost none of it. Wealth, and what wealth buys in codes, services and preparation, explains almost all of it.",
+        ],
+        answer:
+          "Because the death toll depends far more on development than on magnitude. Chile's much larger quake killed fewer people because it had enforced building codes, trained emergency services, preparation and the money to respond. Haiti had almost none of those, and its epicentre was beside a densely built capital.",
+      },
+      {
+        question:
+          "Explain why people continue to live close to active volcanoes.",
+        steps: [
+          "Soil: volcanic ash weathers into extremely fertile soil, so farming yields are high — a strong reason in agricultural economies.",
+          "Energy: geothermal power is cheap and reliable, and Iceland generates most of its electricity and heating this way.",
+          "Minerals: sulphur, copper and other valuable deposits form in volcanic areas.",
+          "Tourism: visitors bring income and jobs, in places where alternatives may be limited.",
+          "Risk perception: eruptions may be decades or centuries apart, so the danger feels remote compared with the daily benefits.",
+          "And simply: it is home. Family, land, work and community are there, and moving is expensive and often impossible.",
+        ],
+        answer:
+          "Fertile volcanic soils, cheap geothermal energy, valuable minerals and tourist income — set against a risk that may not materialise for decades. And for most people it is simply where they live, with family, work and land there, and no realistic means of leaving.",
+      },
+      {
+        question:
+          "Why are earthquakes so much harder to predict than volcanic eruptions?",
+        steps: [
+          "Volcanoes give warning signs: swelling of the ground, increased small tremors, changes in gas emissions, and rising temperatures.",
+          "Those signs can be monitored continuously with tiltmeters, seismometers and gas sensors, often over weeks.",
+          "Earthquakes give almost no reliable precursors. Stress builds invisibly, deep underground, and releases in seconds.",
+          "Historical records can identify which faults are likely and roughly how often, but not when.",
+          "So management differs: for volcanoes, prediction and evacuation genuinely work. For earthquakes, the effort goes into preparation and protection instead.",
+          "That is why building codes, drills and retrofitting matter so much — they are the only defence available.",
+        ],
+        answer:
+          "Because volcanoes announce themselves — ground swelling, tremors and gas changes can be monitored for weeks — while earthquake stress builds invisibly and releases in seconds. Faults can be identified but not timed, which is why earthquake management relies on building codes and preparation rather than evacuation.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the boundary called where plates move together?",
+        accept: ["destructive", "destructive margin", "convergent"],
+        answer: "A destructive (convergent) margin, producing violent earthquakes and explosive volcanoes." },
+      { question: "What is the boundary called where plates move apart?",
+        accept: ["constructive", "constructive margin", "divergent"],
+        answer: "A constructive (divergent) margin, producing gentle volcanoes and mild earthquakes." },
+      { question: "What is the boundary called where plates slide past each other?",
+        accept: ["conservative", "conservative margin", "transform"],
+        answer: "A conservative (transform) margin — severe earthquakes, but no volcanoes." },
+      { question: "Are there volcanoes at conservative margins? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. No crust is created or destroyed there, so there is no route for magma to reach the surface." },
+      { question: "What is the sinking of oceanic crust beneath continental crust called?",
+        accept: ["subduction"],
+        answer: "Subduction. It happens because oceanic crust is denser." },
+      { question: "Which is denser, oceanic or continental crust?",
+        accept: ["oceanic"],
+        answer: "Oceanic — which is why it subducts rather than the other way round." },
+      { question: "What is the point underground where an earthquake starts called?",
+        accept: ["focus", "the focus", "hypocentre"],
+        answer: "The focus. The point on the surface directly above it is the epicentre." },
+      { question: "What is the point on the surface above the focus called?",
+        accept: ["epicentre", "epicenter", "the epicentre"],
+        answer: "The epicentre, where shaking is usually strongest." },
+      { question: "Roughly how many times more energy does each whole number on the magnitude scale represent?",
+        accept: ["32", "about 32"],
+        answer: "About 32 times. The scale is logarithmic, so 8.0 is vastly more than twice 4.0." },
+      { question: "Which volcano type is steep, with thick lava and violent eruptions?",
+        accept: ["composite", "composite volcano", "stratovolcano", "strato"],
+        answer: "A composite (strato) volcano, formed at destructive margins." },
+      { question: "Which volcano type is broad and gently sloping with runny lava?",
+        accept: ["shield", "shield volcano"],
+        answer: "A shield volcano, formed at constructive margins and hot spots." },
+      { question: "What is the most lethal volcanic hazard, a fast-moving cloud of gas and rock?",
+        accept: ["pyroclastic flow", "pyroclastic flows", "pyroclastic"],
+        answer: "A pyroclastic flow, which can travel at hundreds of kilometres per hour." },
+      { question: "What is a volcanic mudflow called?",
+        accept: ["lahar", "a lahar", "lahars"],
+        answer: "A lahar, which can travel far beyond the volcano itself." },
+      { question: "What is it called when saturated ground behaves like a liquid during shaking?",
+        accept: ["liquefaction"],
+        answer: "Liquefaction. Buildings sink or tilt even when their structure is intact." },
+      { question: "Which fault is the classic example of a conservative margin?",
+        accept: ["san andreas", "the san andreas", "san andreas fault"],
+        answer: "The San Andreas Fault in California." },
+      { question: "Which mountain range formed at a collision margin between two continental plates?",
+        accept: ["himalayas", "the himalayas", "himalaya"],
+        answer: "The Himalayas, where the Indian and Eurasian plates are still crumpling upwards." },
+      { question: "Explain why wealth matters more than magnitude in determining how many people die.",
+        answer: "Because almost everything that keeps people alive in an earthquake costs money. Enforced building codes mean structures flex instead of collapsing, and collapsing buildings are what kill most people. Trained, equipped emergency services reach the trapped within the first hours, when survival rates are highest. Monitoring, drills and public education mean people know what to do. Hospitals stay standing and functioning. And afterwards, a wealthy country can fund its own reconstruction rather than waiting for aid. The 2010 comparison makes it unarguable: Chile's earthquake released roughly 500 times the energy of Haiti's and killed around 500 people against roughly 220,000. (Mark this one yourself.)" },
+      { question: "Explain why hot spots such as Hawaii appear to break the rule that volcanoes occur at plate boundaries.",
+        answer: "Because they are fed from below rather than from a boundary. A hot spot is a plume of unusually hot material rising from deep in the mantle, and it stays roughly fixed while the plate slides over the top of it. Magma burns through the middle of the plate and builds a volcano on the surface, nowhere near an edge. Over millions of years the plate carries that volcano away from the plume, the volcano becomes extinct, and a new one forms behind it — which is why Hawaii is a chain of islands that gets progressively older towards the north-west. The rule about boundaries still holds for the great majority of volcanoes; hot spots are the explained exception. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Volcanoes occur at all plate boundaries.\"",
+        right: "Not at conservative or collision margins. No crust is created or destroyed there, so magma has no route to the surface — severe earthquakes, no eruptions." },
+      { wrong: "\"A magnitude 8 earthquake is twice as strong as a magnitude 4.\"",
+        right: "The scale is logarithmic. Each whole number is about 32 times the energy, so magnitude 8 releases roughly a million times more than magnitude 4." },
+      { wrong: "\"The bigger the earthquake, the more people die.\"",
+        right: "Development matters far more. Chile 2010 was around 500 times more powerful than Haiti 2010 and killed roughly 500 people against 220,000." },
+      { wrong: "\"People near volcanoes are too poor to move.\"",
+        right: "Poverty is one factor, but volcanic soils are highly fertile, geothermal energy is cheap, and tourism and mining bring income. For most people it is also simply home." },
+      { wrong: "\"Earthquakes can be predicted like the weather.\"",
+        right: "Faults can be identified and their rough frequency estimated, but not the timing. Volcanoes give weeks of warning signs; earthquakes give almost none." },
+      { wrong: "\"The shaking is what kills people.\"",
+        right: "Collapsing buildings kill people — which is why building codes save so many lives — along with secondary hazards like tsunamis, fire and disease." },
+    ],
+  },
+
 };
