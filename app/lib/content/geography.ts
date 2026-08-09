@@ -2270,7 +2270,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Ecotourism, which gives standing forest a direct financial value." },
       { question: "What is an agreement cancelling debt in return for protecting forest called?",
         accept: ["debt for nature swap", "debt-for-nature swap", "debt for nature"],
-        answer: "A debt-for-nature swap." },
+        answer: "A debt-for-nature swap — the country writes off debt it cannot easily repay in exchange for protection it might not otherwise fund." },
       { question: "What is permanently frozen ground called?",
         accept: ["permafrost"],
         answer: "Permafrost. Heated buildings thaw it, turning solid ground into mud." },
