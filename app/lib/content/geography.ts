@@ -1,4 +1,4 @@
-// GEOGRAPHY — Year 9 written; Years 10 and 11 planned and registered.
+// GEOGRAPHY — all 17 topics written, across Years 9, 10 and 11.
 //
 // ⚠️ Geography splits into PHYSICAL (how the earth works) and HUMAN (how people
 // live on it), and boards divide them differently. AQA, Edexcel and OCR all
@@ -3229,6 +3229,720 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         right: "Low-carbon and renewable are different things. Uranium is finite, and the waste stays dangerous for thousands of years." },
       { wrong: "\"The answer to resource shortage is always to produce more.\"",
         right: "Reducing demand is usually cheaper and faster — insulation, leak repair and waste reduction deliver more per pound than new supply almost everywhere." },
+    ],
+  },
+
+  "geography/climate-change": {
+    summary:
+      "The synoptic topic that pulls the whole subject together: it draws on weather, ecosystems, hazards, resources and development at once. Two things need separating carefully — the natural climate changes that have always happened, and the rapid warming since industrialisation that the evidence attributes to human activity. Answers that muddle the two lose marks, and understanding, at the same time.",
+    keyFacts: [
+      {
+        heading: "Evidence that climate changes",
+        points: [
+          "Ice cores drilled from Antarctica and Greenland trap air bubbles, giving a direct record of past atmospheric composition and temperature going back around 800,000 years.",
+          "Tree rings: width reflects growing conditions each year, giving an annual record over thousands of years.",
+          "Pollen preserved in peat bogs shows which plants grew, and therefore what the climate was like.",
+          "Historical records: harvest dates, paintings, diaries and shipping logs give detail for recent centuries.",
+          "Instrumental records: reliable global temperature measurements go back to about 1850, and satellites since the 1970s.",
+          "Together these show the climate has always varied — glacials, interglacials, the Medieval Warm Period, the Little Ice Age — and that the recent rate of warming is unusual.",
+        ],
+      },
+      {
+        heading: "Natural causes",
+        points: [
+          "Orbital changes, known as Milankovitch cycles: variations in the shape of Earth's orbit, its axial tilt and its wobble, altering how much solar energy arrives and where.",
+          "These operate over tens of thousands of years and explain the glacial–interglacial cycle.",
+          "Solar output varies slightly on an eleven-year sunspot cycle and over longer periods.",
+          "Volcanic eruptions inject ash and sulphur dioxide into the upper atmosphere, reflecting sunlight and cooling the planet for a year or two.",
+          "These causes explain past changes well. They do not explain the warming since about 1950, and measurements of solar output have been flat or slightly falling while temperatures rose.",
+        ],
+      },
+      {
+        heading: "The human contribution",
+        points: [
+          "The greenhouse effect is natural and essential: gases in the atmosphere trap outgoing heat, keeping Earth around 33°C warmer than it would otherwise be.",
+          "The ENHANCED greenhouse effect is the problem — extra greenhouse gases trapping more heat than before.",
+          "Carbon dioxide comes mainly from burning fossil fuels for energy, transport and industry, and from deforestation removing the trees that absorbed it.",
+          "Methane is a far more powerful greenhouse gas per molecule, from livestock, rice paddies, landfill and leaking gas infrastructure.",
+          "Atmospheric CO₂ has risen from around 280 parts per million before industrialisation to over 420 today.",
+          "The Intergovernmental Panel on Climate Change concludes that human influence has unequivocally warmed the atmosphere, ocean and land.",
+        ],
+      },
+      {
+        heading: "Effects",
+        points: [
+          "Environmental: sea level rise from thermal expansion and melting ice, retreating glaciers, coral bleaching, shifting species ranges, and more frequent extreme heat.",
+          "Sea level rise threatens low-lying countries such as Bangladesh and the Maldives, and coastal cities everywhere.",
+          "Water: changing rainfall patterns bring drought to some regions and heavier rainfall and flooding to others.",
+          "Food: some high-latitude areas may gain growing season while many tropical regions lose yields — so the effects are unevenly distributed.",
+          "Human: displacement, health impacts from heat and disease range expansion, and economic costs falling hardest on countries least able to bear them.",
+          "The fundamental injustice worth stating: the countries that emitted least are generally those most exposed and least able to adapt.",
+        ],
+      },
+      {
+        heading: "Mitigation and adaptation",
+        points: [
+          "Mitigation means reducing the cause — cutting emissions.",
+          "Mitigation strategies: renewable energy, energy efficiency, carbon capture and storage, afforestation, changing agriculture and diet, and international agreements such as the Paris Agreement.",
+          "Adaptation means living with the effects that are already unavoidable.",
+          "Adaptation strategies: flood defences, drought-resistant crops, water management, changing building design, and in extreme cases planned relocation.",
+          "Both are needed. Some warming is already locked in by emissions already released, so adaptation is unavoidable — but without mitigation the amount to adapt to keeps growing.",
+          "Mitigation is a global collective problem, which is why it is politically hard: the benefit is shared while the cost is national.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Ice core", definition: "A cylinder of ice drilled from a glacier or ice sheet, whose trapped air bubbles record past atmospheric composition." },
+      { term: "Milankovitch cycles", definition: "Long-term variations in Earth's orbit, tilt and wobble that alter how much solar energy arrives." },
+      { term: "Glacial period", definition: "A colder phase with expanded ice sheets, part of the natural glacial–interglacial cycle." },
+      { term: "Greenhouse effect", definition: "The natural trapping of outgoing heat by atmospheric gases, which keeps Earth around 33°C warmer than it would otherwise be." },
+      { term: "Enhanced greenhouse effect", definition: "Additional warming caused by human-added greenhouse gases trapping more heat than before." },
+      { term: "Carbon dioxide", definition: "The main human-emitted greenhouse gas, from burning fossil fuels and from deforestation." },
+      { term: "Methane", definition: "A greenhouse gas far more powerful per molecule than CO₂, from livestock, rice, landfill and gas leaks." },
+      { term: "Parts per million", definition: "The unit for atmospheric gas concentration. CO₂ has gone from around 280 ppm before industrialisation to over 420." },
+      { term: "Thermal expansion", definition: "The expansion of seawater as it warms — a major contributor to sea level rise, alongside melting ice." },
+      { term: "Coral bleaching", definition: "Corals expelling the algae they depend on when water is too warm, turning them white and often killing them." },
+      { term: "IPCC", definition: "The Intergovernmental Panel on Climate Change, which assesses the scientific evidence for governments." },
+      { term: "Mitigation", definition: "Reducing the cause of climate change by cutting greenhouse gas emissions." },
+      { term: "Adaptation", definition: "Adjusting to the effects of climate change that are already unavoidable." },
+      { term: "Carbon capture and storage", definition: "Trapping carbon dioxide from power stations or industry and storing it underground." },
+      { term: "Paris Agreement", definition: "The international agreement in which countries set national targets to limit global temperature rise." },
+    ],
+    examTips: [
+      {
+        tip: "Separate natural change from recent warming",
+        detail:
+          "The climate has always changed, and the rate since about 1950 is not explained by natural causes. Saying both, clearly, is what a strong answer does.",
+      },
+      {
+        tip: "Distinguish the greenhouse effect from the enhanced one",
+        detail:
+          "The greenhouse effect is natural and essential — without it Earth would be uninhabitable. The problem is the ENHANCED version. Mixing them up is a common and costly error.",
+      },
+      {
+        tip: "Keep mitigation and adaptation apart",
+        detail:
+          "Mitigation reduces the cause; adaptation copes with the effect. Flood defences are adaptation, not mitigation, and questions frequently ask for one specifically.",
+      },
+      {
+        tip: "Use the CO₂ figures",
+        detail:
+          "Around 280 ppm before industrialisation to over 420 today. Two numbers that carry an argument better than any adjective.",
+      },
+      {
+        tip: "Say why sea level rises for two reasons",
+        detail:
+          "Thermal expansion of warming water, AND melting land ice. Most students give only the second, and the first is often the larger contributor so far.",
+      },
+      {
+        tip: "Name the injustice explicitly",
+        detail:
+          "The countries that emitted least are usually most exposed and least able to adapt. It is a geographical point, not just a moral one, and it explains why negotiations are so difficult.",
+      },
+      {
+        tip: "Explain why mitigation is politically hard",
+        detail:
+          "The costs are national and immediate; the benefits are global and delayed. That structure, not ignorance, is why agreement is so difficult to reach.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain how ice cores provide evidence of past climate.",
+        steps: [
+          "Snow falling on an ice sheet compresses into ice, trapping tiny bubbles of the air that was present at the time.",
+          "Layers build up annually, so depth corresponds to age — the deepest ice is the oldest.",
+          "Analysing the trapped air gives the actual concentration of carbon dioxide and methane in the atmosphere then, not an estimate.",
+          "The ratio of oxygen isotopes in the ice itself indicates the temperature when the snow fell.",
+          "Cores from Antarctica reach back around 800,000 years, covering many glacial and interglacial cycles.",
+          "That gives a long baseline against which recent changes can be compared — which is what makes the current rate of change measurable rather than merely asserted.",
+        ],
+        answer:
+          "Snow compresses into layered ice, trapping air bubbles that preserve the actual atmosphere of the time, while oxygen isotope ratios in the ice indicate temperature. Antarctic cores reach back around 800,000 years, giving the long baseline that makes the recent rate of change measurable.",
+      },
+      {
+        question:
+          "Explain why natural causes cannot account for the warming since about 1950.",
+        steps: [
+          "Milankovitch cycles operate over tens of thousands of years, far too slowly to explain a change over decades — and their current trend is towards gradual cooling.",
+          "Solar output has been measured directly by satellites since the 1970s and has been flat or slightly declining while temperatures rose.",
+          "Volcanic eruptions cool the planet temporarily, so they cannot explain warming.",
+          "The pattern of warming also fits greenhouse gases specifically: the lower atmosphere is warming while the upper atmosphere cools, which is what trapped heat produces and increased solar output would not.",
+          "Nights are warming faster than days, again consistent with heat being retained rather than more arriving.",
+          "And the timing matches: the rise tracks emissions closely, and CO₂ has gone from around 280 to over 420 ppm.",
+        ],
+        answer:
+          "Orbital cycles are far too slow and currently point towards cooling, measured solar output has been flat or falling, and volcanic eruptions cool rather than warm. The pattern also fits trapped heat specifically — the lower atmosphere warming while the upper cools, and nights warming faster than days.",
+      },
+      {
+        question:
+          "Explain the difference between mitigation and adaptation, with examples.",
+        steps: [
+          "Mitigation addresses the CAUSE: reducing the greenhouse gases entering the atmosphere.",
+          "Mitigation examples: switching to renewable energy, insulating buildings, carbon capture and storage, planting forests, reducing meat consumption.",
+          "Adaptation addresses the EFFECTS that are coming regardless: living with the change.",
+          "Adaptation examples: building flood defences, breeding drought-resistant crops, changing planting dates, redesigning buildings for heat, managed relocation.",
+          "Both are necessary. Emissions already released commit the world to further warming, so adaptation cannot be avoided.",
+          "But adaptation alone is a losing strategy, because without mitigation the amount that must be adapted to keeps increasing — and the capacity to adapt has limits.",
+        ],
+        answer:
+          "Mitigation reduces the cause — renewables, efficiency, afforestation, carbon capture. Adaptation copes with effects already unavoidable — flood defences, drought-resistant crops, redesigned buildings. Both are needed: past emissions make some warming certain, but adaptation without mitigation faces an ever-growing problem.",
+      },
+      {
+        question:
+          "Explain why the effects of climate change are unequally distributed.",
+        steps: [
+          "Physical exposure varies: low-lying countries such as Bangladesh and the Maldives face sea level rise directly, while inland highland countries do not.",
+          "Regions already hot and dry are pushed past thresholds sooner than temperate ones, and some high-latitude areas may even gain growing season.",
+          "Economic capacity to adapt varies enormously: flood defences, irrigation and air conditioning all cost money.",
+          "Dependence on climate-sensitive livelihoods matters — subsistence farming and fishing are far more exposed than office work.",
+          "Historical responsibility runs the other way: the countries that industrialised earliest emitted most of the accumulated carbon.",
+          "So the countries least responsible are frequently the most exposed and the least able to protect themselves, which is the core of the international dispute over who should pay.",
+        ],
+        answer:
+          "Because exposure, sensitivity and the ability to adapt all vary. Low-lying and already-hot countries face the worst physical effects, subsistence livelihoods are the most climate-sensitive, and adaptation costs money that poorer countries lack — while the countries that emitted most of the accumulated carbon are generally the best protected.",
+      },
+    ],
+
+    practice: [
+      { question: "What is drilled from ice sheets to study past atmospheres?",
+        accept: ["ice core", "ice cores", "an ice core"],
+        answer: "Ice cores, whose trapped air bubbles preserve the actual atmosphere of the time." },
+      { question: "Roughly how many years back do Antarctic ice cores reach?",
+        accept: ["800000", "800,000", "800 thousand"],
+        answer: "Around 800,000 years, covering many glacial and interglacial cycles." },
+      { question: "What are the long-term variations in Earth's orbit and tilt called?",
+        accept: ["milankovitch cycles", "milankovitch"],
+        answer: "Milankovitch cycles, which explain the glacial–interglacial pattern over tens of thousands of years." },
+      { question: "Do volcanic eruptions warm or cool the planet in the short term?",
+        accept: ["cool", "cools", "cooling"],
+        answer: "Cool. Ash and sulphur dioxide reflect sunlight for a year or two." },
+      { question: "Roughly how much warmer does the natural greenhouse effect keep Earth, in °C?",
+        accept: ["33", "33c", "33°c"],
+        answer: "About 33°C. Without it the planet would be uninhabitable — the natural effect is essential." },
+      { question: "What is the additional warming from human-added gases called?",
+        accept: ["enhanced greenhouse effect", "enhanced greenhouse", "the enhanced greenhouse effect"],
+        answer: "The enhanced greenhouse effect — the problem, as distinct from the natural greenhouse effect." },
+      { question: "What was atmospheric CO₂ before industrialisation, in parts per million?",
+        accept: ["280", "280ppm", "280 ppm"],
+        answer: "Around 280 ppm. It is now over 420." },
+      { question: "Which greenhouse gas comes largely from livestock, rice paddies and landfill?",
+        accept: ["methane", "ch4"],
+        answer: "Methane, far more powerful per molecule than carbon dioxide." },
+      { question: "What are the two causes of sea level rise? Give both.",
+        accept: ["thermal expansion and melting ice", "melting ice and thermal expansion", "thermal expansion melting ice"],
+        answer: "Thermal expansion of warming seawater, and melting land ice. Most students forget the first." },
+      { question: "What is it called when corals expel their algae because water is too warm?",
+        accept: ["bleaching", "coral bleaching"],
+        answer: "Coral bleaching, which turns them white and often kills them." },
+      { question: "What does IPCC stand for?",
+        accept: ["intergovernmental panel on climate change"],
+        answer: "The Intergovernmental Panel on Climate Change, which assesses the evidence for governments." },
+      { question: "Is building a flood defence mitigation or adaptation?",
+        accept: ["adaptation"],
+        answer: "Adaptation — it copes with an effect rather than reducing the cause." },
+      { question: "Is switching to renewable energy mitigation or adaptation?",
+        accept: ["mitigation"],
+        answer: "Mitigation — it reduces the emissions causing the problem." },
+      { question: "Which international agreement sets national targets to limit temperature rise?",
+        accept: ["paris agreement", "the paris agreement", "paris"],
+        answer: "The Paris Agreement, in which each country sets its own national target rather than being assigned one." },
+      { question: "What is trapping CO₂ from industry and storing it underground called?",
+        accept: ["carbon capture", "carbon capture and storage", "ccs"],
+        answer: "Carbon capture and storage." },
+      { question: "Has measured solar output risen or been roughly flat since the 1970s?",
+        accept: ["flat", "roughly flat", "fallen", "declining", "falling"],
+        answer: "Roughly flat or slightly falling, while temperatures rose — which is why solar variation cannot explain recent warming." },
+      { question: "Explain why saying 'the climate has always changed' is not an argument against human-caused warming.",
+        answer: "Because it is true and irrelevant to the question being asked. Ice cores show the climate has varied enormously over hundreds of thousands of years, driven by orbital cycles, solar variation and volcanic activity — and geologists established that long before the current debate. The claim about recent warming is specifically about its RATE and its CAUSE: the change since about 1950 is far faster than the natural cycles that operate over tens of thousands of years, and those cycles currently point towards gradual cooling. Solar output has been measured directly since the 1970s and has not risen. The fingerprint also fits trapped heat rather than extra incoming heat, with the lower atmosphere warming while the upper atmosphere cools. Natural change happening in the past does not mean this change has a natural cause. (Mark this one yourself.)" },
+      { question: "Explain why international agreement on cutting emissions is so difficult to reach.",
+        answer: "Because the structure of the problem sets costs and benefits apart. The cost of cutting emissions is national, immediate and concrete — higher energy prices, closed industries, lost jobs — while the benefit is global, delayed by decades and shared with every country that did nothing. That gives every government an incentive to want cuts made elsewhere. Responsibility is also contested: rich countries emitted most of the accumulated carbon while industrialising, and now ask poorer countries to develop differently, which those countries reasonably experience as being asked to pay for someone else's history. Add that the worst-affected countries have the least negotiating power, and that agreements have no real enforcement mechanism, and the difficulty is structural rather than a failure of understanding. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The greenhouse effect is a bad thing.\"",
+        right: "The natural greenhouse effect keeps Earth around 33°C warmer and makes life possible. The problem is the ENHANCED effect from added gases." },
+      { wrong: "\"The climate has always changed, so humans cannot be the cause now.\"",
+        right: "Past natural change is well established and explains past variation. It does not explain warming that is far faster than orbital cycles while solar output has been flat." },
+      { wrong: "\"Sea level rises only because ice melts.\"",
+        right: "Water expands as it warms, and thermal expansion has so far been a major contributor — often larger than melting land ice." },
+      { wrong: "\"Flood defences are a way of tackling climate change.\"",
+        right: "They are adaptation, not mitigation. They cope with the effects and do nothing about the emissions causing them." },
+      { wrong: "\"A cold winter disproves global warming.\"",
+        right: "That confuses weather with climate. Climate is the thirty-year average; a single cold spell is a fluctuation within it." },
+      { wrong: "\"Climate change will affect everyone equally.\"",
+        right: "Exposure, sensitivity and the ability to adapt all vary enormously — and the countries least responsible are generally the most exposed and least protected." },
+    ],
+  },
+
+  "geography/issue-evaluation": {
+    summary:
+      "The pre-release paper, where you are given a resource booklet weeks in advance and then asked to weigh options and recommend one. It is unlike anything else in the course: there is no single right answer, and the marks go to the quality of the reasoning rather than to the choice. Which makes it the most predictable paper on the syllabus once you know what it is actually testing.",
+    keyFacts: [
+      {
+        heading: "What the paper is",
+        points: [
+          "A booklet of resources — maps, graphs, photographs, extracts, data tables — is released before the exam, usually a few weeks ahead.",
+          "It sets out a real geographical issue and normally offers two or three possible responses to it.",
+          "The final question asks you to choose one and justify it, and it usually carries the largest single mark allocation on the paper.",
+          "There is no correct option. Examiners mark the argument, the use of evidence and the recognition of drawbacks.",
+          "Earlier questions on the paper test skills — reading graphs, describing patterns, calculating — using the same booklet.",
+        ],
+      },
+      {
+        heading: "Preparing before the exam",
+        points: [
+          "Read the booklet properly and more than once. It is the only exam where you can prepare the actual material in advance.",
+          "Annotate it: identify the issue, the stakeholders, and what each option would cost and achieve.",
+          "For each option, write down two advantages, two disadvantages, and who gains and who loses.",
+          "Connect it to topics you have studied — a coastal issue draws on coastal processes, a housing issue on urban change.",
+          "Decide provisionally which option you would choose and why, so you are not deciding for the first time under time pressure.",
+          "You cannot take annotations into the exam, but a clean copy is provided — and the thinking stays with you.",
+        ],
+      },
+      {
+        heading: "Weighing options",
+        points: [
+          "Criteria worth using: economic cost, environmental impact, social effects, sustainability over time, and practicality.",
+          "Identify the stakeholders: residents, businesses, local government, conservation groups, visitors. They usually want different things.",
+          "Short-term against long-term is often the decisive distinction — the cheapest option now is frequently the most expensive over thirty years.",
+          "Ask who bears the cost and who receives the benefit. They are rarely the same people, and saying so is a strong analytical move.",
+          "Sustainability means meeting present needs without preventing future generations meeting theirs — apply it as a test, not as a slogan.",
+        ],
+      },
+      {
+        heading: "Writing the answer",
+        points: [
+          "State your choice in the first sentence. An examiner should never have to hunt for it.",
+          "Give reasons in order of importance, each supported by specific evidence from the booklet — quote figures and refer to particular resources.",
+          "Acknowledge the disadvantages of your own choice honestly. Pretending it has none makes the whole answer weaker.",
+          "Explain why you rejected the alternatives, with reasons rather than dismissal.",
+          "Use your wider geographical knowledge as well as the booklet — the examiners are looking for both.",
+          "Conclude by restating the choice and the single strongest reason for it.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Pre-release material", definition: "The resource booklet issued before the exam, containing the maps, data and extracts the paper is based on." },
+      { term: "Stakeholder", definition: "A person or group affected by a decision, who usually has their own interests and priorities." },
+      { term: "Criteria", definition: "The standards used to compare options — cost, environmental impact, social effect, sustainability, practicality." },
+      { term: "Sustainability", definition: "Meeting present needs without preventing future generations from meeting theirs." },
+      { term: "Trade-off", definition: "Accepting a loss in one area to gain in another — the situation almost every real geographical decision involves." },
+      { term: "Justification", definition: "The reasoned case for a choice, supported by evidence rather than assertion." },
+      { term: "Counter-argument", definition: "The strongest case against your position, which a good answer addresses rather than ignores." },
+      { term: "Short-term impact", definition: "Effects felt immediately or within a few years of a decision." },
+      { term: "Long-term impact", definition: "Effects appearing over decades, which frequently reverse the ranking of the options." },
+      { term: "Conflict of interest", definition: "A situation where what benefits one stakeholder harms another." },
+      { term: "Evidence", definition: "Specific data, figures or extracts from the booklet used to support a claim." },
+    ],
+    examTips: [
+      {
+        tip: "There is no right answer, so stop looking for one",
+        detail:
+          "Marks go to the reasoning, not the option. A well-argued case for the option you like least would score higher than a weak case for the 'obvious' one.",
+      },
+      {
+        tip: "State your decision in the first sentence",
+        detail:
+          "The examiner should know your answer before they finish the opening line. Building slowly to a conclusion wastes marks and time.",
+      },
+      {
+        tip: "Quote the booklet specifically",
+        detail:
+          "Refer to Figure 3, name the place, use the actual figures. Vague reference to 'the resources' is the difference between the middle and top bands.",
+      },
+      {
+        tip: "Admit the drawbacks of your own choice",
+        detail:
+          "Every option has costs. Acknowledging yours and explaining why you accept them is what a real evaluation looks like — and examiners reward it explicitly.",
+      },
+      {
+        tip: "Say why you rejected the others",
+        detail:
+          "Not just why yours is good, but why the alternatives are worse — with reasons. Half the evaluation marks live in that comparison.",
+      },
+      {
+        tip: "Use the weeks you are given",
+        detail:
+          "This is the only exam where the material arrives in advance. Arriving without having decided your position is throwing away the paper's one built-in advantage.",
+      },
+      {
+        tip: "Bring in knowledge from outside the booklet",
+        detail:
+          "Link the issue to processes you have studied. The mark scheme asks for wider geographical understanding as well as resource use.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "How should you prepare in the weeks between receiving the booklet and the exam?",
+        steps: [
+          "Read it through once without annotating, simply to understand what the issue is.",
+          "Read it again, marking what each resource actually tells you — a figure, a viewpoint, a location, a trend.",
+          "Identify the stakeholders and write down what each one wants and why.",
+          "For every option offered, list two advantages, two disadvantages, and who gains and loses.",
+          "Connect the issue to topics you have studied, so you can bring in wider knowledge.",
+          "Decide provisionally which option you would recommend and write two sentences justifying it.",
+          "Then practise arguing the OTHER option — that is what reveals the weaknesses in your own case.",
+        ],
+        answer:
+          "Read it twice, annotate what each resource actually shows, list the stakeholders and what they want, and set out two advantages and two disadvantages per option. Decide your position in advance, then practise arguing the opposite — it is the fastest way to find the holes in your own case.",
+      },
+      {
+        question:
+          "A booklet offers three options for a flooding town: hard defences, managed retreat, or upstream restoration. How would you structure a recommendation?",
+        steps: [
+          "Open with the decision: 'Upstream restoration should be chosen, because...' — one sentence, no preamble.",
+          "Reason one, with evidence: it addresses the cause rather than the symptom, slowing water across the whole catchment. Quote any figures the booklet gives on flow or storage.",
+          "Reason two: cost. Compare the figures in the booklet for each option, including maintenance over decades rather than build cost alone.",
+          "Reason three: environmental and social benefits — habitat, and no community displaced.",
+          "Then the honest drawback: it works slowly and does not protect the town this winter, so interim measures are needed.",
+          "Then rejections: hard defences protect the town but push water downstream and cost more over time; managed retreat displaces residents, which the booklet's stakeholder views show is strongly opposed.",
+          "Conclude by restating the choice and its strongest single reason.",
+        ],
+        answer:
+          "Decision first, then three evidenced reasons in order of strength, then an honest statement of the drawback and how it would be managed, then reasons for rejecting each alternative — and a one-line conclusion. Structure is what the marks are actually for.",
+      },
+      {
+        question:
+          "Why does acknowledging the weaknesses of your own choice raise your mark?",
+        steps: [
+          "Every real geographical decision is a trade-off; none of the options is free of cost.",
+          "An answer claiming its choice has no drawbacks tells the examiner you have not understood the issue.",
+          "Recognising the cost and explaining why you accept it anyway is what evaluation means.",
+          "It also strengthens the argument rhetorically: dealing with the objection yourself removes it from the reader's mind.",
+          "Mark schemes explicitly reward balanced judgement rather than one-sided advocacy.",
+          "The strongest form is: 'This option costs more initially, but over thirty years the maintenance savings outweigh that, as Figure 4 shows.'",
+        ],
+        answer:
+          "Because every option involves a trade-off, and claiming yours has no cost shows you have not understood the issue. Naming the drawback and explaining why you accept it is exactly what evaluation means, and mark schemes reward balanced judgement rather than advocacy.",
+      },
+      {
+        question:
+          "How do you use the booklet properly rather than just mentioning it?",
+        steps: [
+          "Refer to specific resources by number: 'Figure 3 shows discharge doubling within four hours of peak rainfall.'",
+          "Quote actual data — figures, percentages, dates — rather than describing the shape of a graph.",
+          "Use different types of resource together: a map for location, a graph for trend, an extract for stakeholder opinion.",
+          "Interrogate the resources as well as using them: who produced this extract, and what interest do they have?",
+          "Link resources to each other: 'The population data in Figure 2 explains why the objection in Figure 5 is so strongly worded.'",
+          "Then add wider knowledge to explain the process behind what the resource shows.",
+        ],
+        answer:
+          "Name the specific figures, quote real data, combine different resource types, and question who produced each one and why. Then link the resources to each other and to processes you have studied — that combination of specific evidence and wider understanding is what the top band describes.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the resource booklet issued before the exam called?",
+        accept: ["pre release", "pre-release", "prerelease", "pre release material"],
+        answer: "Pre-release material — the one exam where you get the source material in advance." },
+      { question: "Is there a single correct option in an issue evaluation? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. The marks go to the quality of the reasoning, not to which option you pick." },
+      { question: "What is a person or group affected by a decision called?",
+        accept: ["stakeholder", "a stakeholder", "stakeholders"],
+        answer: "A stakeholder. Different stakeholders usually want incompatible things." },
+      { question: "Where in your answer should your decision appear?",
+        accept: ["first sentence", "the first sentence", "beginning", "the start", "start"],
+        answer: "The first sentence. An examiner should never have to hunt for your choice." },
+      { question: "Should you mention the disadvantages of the option you chose? Answer yes or no.",
+        accept: ["yes"],
+        answer: "Yes. Every option involves a trade-off, and acknowledging yours is what evaluation means." },
+      { question: "What is it called when a gain in one area requires a loss in another?",
+        accept: ["trade off", "trade-off", "tradeoff", "a trade-off"],
+        answer: "A trade-off — the situation almost every real geographical decision involves." },
+      { question: "What is meeting present needs without harming future generations' ability to meet theirs called?",
+        accept: ["sustainability", "sustainable", "sustainable development"],
+        answer: "Sustainability. Use it as a test to apply, not a word to sprinkle." },
+      { question: "Name one criterion for comparing options.",
+        accept: ["cost", "environmental impact", "social", "sustainability", "practicality", "economic", "environment"],
+        answer: "Economic cost, environmental impact, social effects, sustainability or practicality." },
+      { question: "What is the strongest case against your position called?",
+        accept: ["counter argument", "counter-argument", "counterargument"],
+        answer: "The counter-argument, which a good answer addresses rather than avoids." },
+      { question: "Should you explain why you rejected the other options? Answer yes or no.",
+        accept: ["yes"],
+        answer: "Yes — with reasons. Half the evaluation marks live in that comparison." },
+      { question: "How should you refer to a resource in the booklet? Give the level of detail expected.",
+        accept: ["by number", "specifically", "figure number", "by figure number", "name it"],
+        answer: "Specifically, by figure number, quoting the actual data — not as 'the resources'." },
+      { question: "Which distinction often reverses the ranking of options?",
+        accept: ["short term and long term", "short and long term", "short-term long-term", "long term"],
+        answer: "Short-term against long-term. The cheapest option now is often the most expensive over thirty years." },
+      { question: "Besides the booklet, what else should your answer use?",
+        accept: ["wider knowledge", "own knowledge", "geographical knowledge", "case studies", "wider geographical knowledge"],
+        answer: "Your own wider geographical knowledge — the mark scheme asks for both." },
+      { question: "Which question on the paper usually carries the most marks?",
+        accept: ["the last", "the final", "last question", "final question", "the recommendation"],
+        answer: "The final recommendation question, which is why the timing on earlier questions matters." },
+      { question: "What is it called when what benefits one stakeholder harms another?",
+        accept: ["conflict", "conflict of interest", "a conflict"],
+        answer: "A conflict of interest — the reason these issues need a decision at all." },
+      { question: "Should you decide your preferred option before the exam? Answer yes or no.",
+        accept: ["yes"],
+        answer: "Yes. Deciding under time pressure for the first time wastes the paper's one built-in advantage." },
+      { question: "Explain why the marks go to the reasoning rather than to which option you choose.",
+        answer: "Because the paper is testing geographical thinking, not whether you can guess an examiner's preference. Real geographical decisions — where to build, what to defend, how to manage a resource — genuinely have no single right answer; they involve trade-offs between cost, environment, communities and time, and reasonable people weighing the same evidence reach different conclusions. What can be assessed is whether you identified the stakeholders, used the evidence specifically, weighed short-term against long-term, recognised what your choice would cost as well as achieve, and explained why the alternatives were worse. A carefully argued case for the option most people would reject scores higher than a thin case for the popular one, which tells you exactly what is being marked. (Mark this one yourself.)" },
+      { question: "Explain why practising the argument for the option you would NOT choose is useful preparation.",
+        answer: "Because it is the fastest way to find the weaknesses in your own case. Arguing a position you disagree with forces you to take its strongest points seriously rather than the weak version that is easy to dismiss, and those strong points are exactly the counter-arguments the examiner expects you to address. It also stops you writing one-sided advocacy, which mark schemes penalise, and it prepares you for the possibility that the exam question is framed differently from what you anticipated — you will have material for either side. Finally, it is genuinely good geography: understanding why intelligent people support the option you reject is the difference between evaluating an issue and simply having an opinion about it. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"There is a right option the examiner wants.\"",
+        right: "There is not. A well-argued case for any option outscores a weak case for the popular one — the reasoning is what is being marked." },
+      { wrong: "\"You should only give reasons FOR your choice.\"",
+        right: "You need the drawbacks of your choice and the reasons for rejecting the alternatives. That comparison is where much of the credit is." },
+      { wrong: "\"Mentioning the resources is enough.\"",
+        right: "Refer to specific figures by number and quote actual data. Vague reference to 'the resources' sits in the middle bands at best." },
+      { wrong: "\"The pre-release booklet is just background reading.\"",
+        right: "It is the whole paper. Arriving without having analysed it and decided a provisional position throws away weeks of preparation time." },
+      { wrong: "\"You should only use the booklet in your answer.\"",
+        right: "The mark scheme asks for wider geographical knowledge too — linking the issue to processes and case studies you have studied." },
+      { wrong: "\"A balanced answer means not choosing.\"",
+        right: "Balance means considering all options fairly and THEN deciding. An answer that never commits cannot reach the top band." },
+    ],
+  },
+
+  "geography/revision-and-exam-practice": {
+    summary:
+      "Geography is examined across three papers with very different demands: physical processes, human issues, and a skills and decision-making paper. Revising it well means treating those differently rather than reading the whole folder from the start. This covers what each paper wants, how to revise case studies so they can actually be recalled, and the command words that decide what kind of answer earns marks.",
+    keyFacts: [
+      {
+        heading: "What the papers ask for",
+        points: [
+          "Physical geography: hazards, landscapes, ecosystems. Marks come from explaining PROCESSES accurately and in sequence.",
+          "Human geography: urban change, economic development, resources. Marks come from case studies with real places and figures.",
+          "The skills and issue evaluation paper: map and graph work, statistics, and a decision to justify from pre-release material.",
+          "Every paper carries skills questions — grid references, graph reading, calculations — which are the same rules regardless of topic.",
+          "Roughly a tenth of the total marks are skills, and they need no memory at all, which makes them the best return on revision time.",
+        ],
+      },
+      {
+        heading: "Revising case studies so they stick",
+        points: [
+          "A case study needs a PLACE, FIGURES, CAUSES, EFFECTS and RESPONSES. Missing any of those makes it unusable in an exam.",
+          "One side of A4 per case study is plenty; more will not be recalled under pressure.",
+          "Learn three or four precise figures per case study. 'Around 2 m of erosion a year at Holderness' does work that 'a lot of erosion' cannot.",
+          "Split effects into primary and secondary, and responses into immediate and long-term. Questions ask for one or the other specifically.",
+          "Test yourself from a blank page rather than rereading. If you cannot produce the figures without looking, you do not yet know them.",
+          "Practise applying one case study to differently worded questions, since the same example has to serve several possible tasks.",
+        ],
+      },
+      {
+        heading: "Command words",
+        points: [
+          "Describe — say what you can see, using data and direction. No explanation needed, and none credited.",
+          "Explain — give reasons. Every point needs a 'because'.",
+          "Suggest — explain when the answer is not certain, using an unfamiliar resource.",
+          "Compare — write about both things in the same sentences, using comparative language such as 'whereas'.",
+          "Assess or Evaluate — weigh strengths and weaknesses, then reach a judgement.",
+          "To what extent — argue both sides and decide, with the decision compulsory rather than optional.",
+          "Answering the wrong command word is the single most common way to lose marks with material you actually knew.",
+        ],
+      },
+      {
+        heading: "Writing and timing",
+        points: [
+          "About a minute a mark, including reading and planning. Write the finish times on the paper before you start.",
+          "Point, Evidence, Explain for shorter answers: make the claim, support it with data or an example, then say why it follows.",
+          "For 9-mark essays: plan for two minutes, argue three developed points, include a counter-argument, and conclude with a judgement.",
+          "Use geographical terminology precisely — attrition, discharge, urbanisation, mitigation. Vague wording caps an otherwise good answer.",
+          "Never leave a blank. A rushed paragraph scores something; an empty space scores nothing with certainty.",
+          "Leave five minutes at the end to check you answered the question actually asked rather than the one you revised for.",
+        ],
+      },
+      {
+        heading: "What loses the most marks",
+        points: [
+          "Describing when the question said explain, or explaining when it said describe.",
+          "Vagueness: 'lots of people' and 'a big area' where a figure exists.",
+            "Case studies without place names or numbers, which cannot reach the top bands.",
+          "Running out of time on the last question, which is usually worth the most.",
+          "Writing everything you know about a topic instead of selecting what answers the question.",
+          "Refusing to reach a judgement on an 'assess' or 'to what extent' question, which caps the mark regardless of quality.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Case study", definition: "A real named example with figures, causes, effects and responses, used as evidence in an answer." },
+      { term: "Command word", definition: "The word telling you what kind of answer is required — describe, explain, assess, evaluate." },
+      { term: "Describe", definition: "Say what something shows, using data and direction. No explanation is credited." },
+      { term: "Explain", definition: "Give reasons why something happens. Every point needs a 'because'." },
+      { term: "Suggest", definition: "Explain where the answer is not certain, usually from an unfamiliar resource." },
+      { term: "Assess", definition: "Weigh strengths and weaknesses and reach a judgement." },
+      { term: "PEE", definition: "Point, Evidence, Explain — the structure for a developed paragraph." },
+      { term: "Primary effect", definition: "An immediate, direct consequence of an event." },
+      { term: "Secondary effect", definition: "A consequence that follows on afterwards, such as disease, unemployment or economic loss." },
+      { term: "Retrieval practice", definition: "Testing yourself from memory rather than rereading — the most effective revision method there is." },
+      { term: "Terminology", definition: "The precise vocabulary of the subject, such as attrition, discharge and mitigation, which examiners expect to be used accurately." },
+    ],
+    examTips: [
+      {
+        tip: "Underline the command word first",
+        detail:
+          "Two seconds, and it prevents the most common way of losing marks with material you knew perfectly well. Underline the place and the number of marks too.",
+      },
+      {
+        tip: "One side of A4 per case study",
+        detail:
+          "Place, figures, causes, effects, responses. Longer notes will not be recalled under exam pressure, and shorter ones cannot reach the top bands.",
+      },
+      {
+        tip: "Learn three or four figures per case study",
+        detail:
+          "Specific numbers are what turn a claim into evidence. Two well-chosen figures beat two paragraphs of general description.",
+      },
+      {
+        tip: "Prioritise skills questions when time is short",
+        detail:
+          "They are roughly a tenth of the marks, need no memory, and the rules never change between papers. The best return on revision time in the subject.",
+      },
+      {
+        tip: "Always reach a judgement on 'assess' questions",
+        detail:
+          "Balance means weighing both sides and then deciding. An answer that never commits is capped, however good the material in it is.",
+      },
+      {
+        tip: "Test yourself from a blank page",
+        detail:
+          "Rereading builds familiarity, which feels like knowledge and is not. If you cannot produce a case study's figures without looking, you do not know them yet.",
+      },
+      {
+        tip: "Write your finish times on the paper",
+        detail:
+          "Before you start, work out when each question must be done. Losing the last 9-mark question to poor timing is a common and entirely avoidable disaster.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "How should you revise a case study so it is usable in an exam?",
+        steps: [
+          "Fit it on one side of A4 — anything longer will not survive exam pressure.",
+          "Head it with the PLACE and the date, because an unnamed example cannot reach the top bands.",
+          "List three or four precise figures: deaths, costs, rates, percentages.",
+          "Separate causes from effects, and split effects into primary and secondary.",
+          "Split responses into immediate and long-term, since questions ask for one or the other.",
+          "Then close the sheet and reproduce it from blank paper. Repeat after three days and again after two weeks.",
+          "Finally, practise applying it to three differently worded questions, so it is flexible rather than memorised as one paragraph.",
+        ],
+        answer:
+          "One side of A4 with the place, three or four precise figures, causes, primary and secondary effects, and immediate and long-term responses — then reproduced from blank paper, revisited after three days and two weeks, and applied to several differently worded questions.",
+      },
+      {
+        question:
+          "What is the difference between a describe, an explain and an assess answer about coastal erosion?",
+        steps: [
+          "Describe: 'The cliff has retreated 2 m a year, forming a wave-cut platform exposed at low tide.' Facts and observation only.",
+          "Explain: 'The cliff retreats rapidly BECAUSE it is soft boulder clay, which slumps when saturated, and the beach is too narrow to absorb wave energy.' Reasons throughout.",
+          "Assess: weigh the options — hard defences protect the village but starve the coast southwards; managed retreat is cheaper but displaces residents — and then decide, with a reason.",
+          "The material overlaps completely; what changes is what you do with it.",
+          "Writing an explanation for a describe question earns nothing extra and costs time needed elsewhere.",
+          "So the command word sets the shape before you write a single word.",
+        ],
+        answer:
+          "Describe states what is there; explain gives the reasons why; assess weighs options against each other and reaches a judgement. The content is largely the same — the command word decides what you do with it, and answering the wrong one earns nothing.",
+      },
+      {
+        question:
+          "You have 9 marks and about 11 minutes for 'Assess the effectiveness of hard engineering on the coast.' How do you use it?",
+        steps: [
+          "Two minutes planning: two strengths, two weaknesses, a named example, and the judgement you will reach.",
+          "Open with your line of argument in one sentence, not with a restatement of the question.",
+          "Strength one with evidence: sea walls reliably protect settlements and infrastructure, naming a place.",
+          "Strength two: they allow valuable land to remain in use, which is why they are built in towns.",
+          "Weakness one: cost — millions per kilometre, plus permanent maintenance.",
+          "Weakness two: groynes and walls trap or reflect sediment, starving the coast further along and accelerating erosion there.",
+          "Conclude: effective where the value protected justifies the cost, and only defensible when planned across a whole sediment cell rather than town by town.",
+        ],
+        answer:
+          "Plan for two minutes, then argue it: a one-sentence position, two evidenced strengths, two evidenced weaknesses, and a conclusion that decides — effective where the value justifies the cost, but only when planned across the whole sediment cell.",
+      },
+      {
+        question:
+          "Why do skills questions offer the best return on revision time?",
+        steps: [
+          "They are worth roughly a tenth of the total marks across the papers.",
+          "They depend on rules rather than memory: percentage change is always divided by the original, eastings always come first.",
+          "Those rules never change between papers or years, so practice transfers completely.",
+          "They cannot be undermined by having revised a different case study from the one the question suits.",
+          "They are quick to practise — a few past questions rather than a folder of notes.",
+          "And they are the marks most often thrown away carelessly, by reversing a grid reference or forgetting a unit.",
+        ],
+        answer:
+          "Because they are around a tenth of the marks, rest on rules that never change rather than on memory, transfer completely between papers, and are quick to practise — and they are the marks most often lost to carelessness rather than ignorance.",
+      },
+    ],
+
+    practice: [
+      { question: "Roughly how long should you spend per mark?",
+        accept: ["1 minute", "a minute", "one minute", "1"],
+        answer: "About a minute a mark, including reading and planning time." },
+      { question: "How much space should a case study fit into?",
+        accept: ["one side of a4", "1 side", "one side", "a4", "one page"],
+        answer: "One side of A4. Longer notes will not be recalled under exam pressure." },
+      { question: "What does PEE stand for in paragraph structure?",
+        accept: ["point evidence explain", "point, evidence, explain"],
+        answer: "Point, Evidence, Explain — claim, support, and why it follows." },
+      { question: "Which command word means give reasons?",
+        accept: ["explain"],
+        answer: "Explain. Every point needs a 'because'." },
+      { question: "Which command word means say what something shows, with no reasons?",
+        accept: ["describe"],
+        answer: "Describe. Adding explanation earns nothing and costs time you needed elsewhere." },
+      { question: "Which command words require a judgement at the end?",
+        accept: ["assess", "evaluate", "to what extent", "assess and evaluate"],
+        answer: "Assess, evaluate and 'to what extent' — the judgement is compulsory." },
+      { question: "What is an immediate direct consequence of an event called?",
+        accept: ["primary effect", "primary", "a primary effect"],
+        answer: "A primary effect. Secondary effects follow on afterwards." },
+      { question: "Roughly how many precise figures should you learn per case study?",
+        accept: ["3", "4", "three", "four", "3-4"],
+        answer: "Three or four. Specific numbers turn a claim into evidence." },
+      { question: "Roughly what fraction of Geography marks are skills questions?",
+        accept: ["a tenth", "tenth", "10%", "1/10"],
+        answer: "About a tenth — and they need no memory at all, which makes them the best return on revision time." },
+      { question: "What is testing yourself from memory called?",
+        accept: ["retrieval practice", "retrieval", "self testing", "testing yourself"],
+        answer: "Retrieval practice — far more effective than rereading, which only builds familiarity." },
+      { question: "What should you underline first when you read a question?",
+        accept: ["command word", "the command word"],
+        answer: "The command word. Two seconds that prevent the most common way of losing marks." },
+      { question: "If you run out of time, should you leave a blank or write in note form?",
+        accept: ["note form", "notes", "write notes", "in notes"],
+        answer: "Notes. A rushed paragraph scores something; a blank scores nothing with certainty." },
+      { question: "What five things does a usable case study need? Give the first one.",
+        accept: ["place", "a place", "place name", "location"],
+        answer: "A place — then figures, causes, effects and responses. An unnamed example cannot reach the top bands." },
+      { question: "Which comparative word is most useful in a compare answer?",
+        accept: ["whereas", "however", "in contrast"],
+        answer: "Whereas — it forces both things into the same sentence, which is what comparing means." },
+      { question: "Should a 'to what extent' answer reach a decision? Answer yes or no.",
+        accept: ["yes"],
+        answer: "Yes. Balance means weighing both sides and then deciding; refusing to commit caps the mark." },
+      { question: "Name one thing that loses marks in a case study answer.",
+        accept: ["no place name", "vagueness", "no figures", "no numbers", "being vague", "no data"],
+        answer: "No place name, no figures, or vague language where a number exists." },
+      { question: "Explain why rereading your notes is a poor way to revise Geography.",
+        answer: "Because it builds recognition rather than recall, and the exam only tests recall. A page you have read four times feels familiar, and that familiarity is easily mistaken for knowing it — which is why people close their folder feeling confident and then cannot produce a single figure under pressure. Geography makes this worse than most subjects, because so much of the credit depends on specific evidence: place names, death tolls, erosion rates, percentages. You cannot half-remember 2 m a year. Reproducing a case study from a blank page is uncomfortable precisely because it exposes what you cannot yet produce, and that gap is exactly the material you needed to work on. (Mark this one yourself.)" },
+      { question: "Explain why writing everything you know about a topic is not the same as answering the question.",
+        answer: "Because Geography marks selection and application, not recall alone. A question about the effects of urbanisation on flood risk does not want everything you know about urbanisation — it wants the parts that bear on infiltration, lag time and peak discharge, arranged into an argument. Including the rest costs time you need for the questions worth more marks, and it buries the relevant points among irrelevant ones so the examiner has to search for them. It also signals that you have not understood what the question is asking, which is precisely what the higher bands are testing. The discipline is to decide what the question needs before you write, and then to leave out everything else however well you know it. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Rereading my notes counts as revision.\"",
+        right: "It builds familiarity, which feels like knowledge and is not. Reproducing a case study from a blank page is what makes it available in an exam." },
+      { wrong: "\"Longer case study notes are better.\"",
+        right: "One side of A4 with place, figures, causes, effects and responses. Anything longer will not be recalled under pressure." },
+      { wrong: "\"Describe and explain are basically the same.\"",
+        right: "Describe says what; explain says why. Writing the wrong one earns nothing at all, however good the material." },
+      { wrong: "\"A balanced answer avoids taking a side.\"",
+        right: "Balance means weighing both sides and then deciding. 'Assess' and 'to what extent' questions cap answers that never commit." },
+      { wrong: "\"Skills questions are the easy marks you can pick up without practice.\"",
+        right: "They are the marks most often lost to carelessness — reversed grid references, missing units, dividing by the wrong number. They reward practice precisely because they are rule-based." },
+      { wrong: "\"Writing more gets more marks.\"",
+        right: "Marks come from relevance and structure. Everything you know about a topic buries the points that answer the question, and costs time you needed elsewhere." },
     ],
   },
 

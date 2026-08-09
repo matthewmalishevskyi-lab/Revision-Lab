@@ -183,6 +183,27 @@ If a topic genuinely has to go: move its key to `RETIRED_TOPIC_KEYS`, and migrat
 - The Year 9 "rise of the Nazis" and Year 10 "Germany 1890–1945" topics share **zero** identical questions and one flashcard term — they complement rather than duplicate, as intended.
 - All 19 have the full six-section format.
 
+## Geography complete — a fifth subject (2026-08-09)
+
+**Every topic on the site is written: 89 of 89, ~190,000 words, 25,175 checks passing.**
+
+| Subject | Topics | Worked ex. | Auto-marked | Self-marked | Mistakes | Flashcards |
+|---|---|---|---|---|---|---|
+| Computer Science | 18 | 75 | 288 | 36 | 108 | 277 |
+| Maths | 19 | 76 | 305 | 37 | 114 | 234 |
+| English | 16 | 64 | 256 | 32 | 96 | 191 |
+| History | 19 | 77 | 320 | 39 | 114 | 269 |
+| Geography | 17 | 68 | 272 | 34 | 102 | 245 |
+| **Total** | **89** | **360** | **1441** | **178** | **534** | **1216** |
+
+**Atlas** is the mascot — the planet IS the body, not a head on a torso. That breaks the house rule the other four follow (head at ~40% of height) and Matthew was right to insist: a globe on a body looked like someone in a costume. No glasses either, so the family link is carried by proportion, shading, the eye treatment and one deliberate asymmetry (one arm raised). Two fixes worth remembering: feet drawn as ellipses read as balls, because an ellipse has no front or back — they are now paths with a heel and toe; and arms are stroked lines with round caps rather than closed blobs, so thickness stays even and the cap does the work of a wrist.
+
+**Year balance was corrected on Matthew's instruction.** Year 9 originally had ten topics, more than any other year on the site. Now 6 / 6 / 5. Three topics that duplicated GCSE ones were RETIRED rather than deleted, and climate change moved from Year 9 to Year 11 — moving between years needs no migration because the slug does not change.
+
+**The slug guard did its job.** Deleting those three would have failed the build; they had to go into `RETIRED_TOPIC_KEYS` with a note confirming no progress rows pointed at them.
+
+**The numeric accept-list rule caught something in almost every batch** — 2007/2008 for urbanisation passing 50%, ±25% for a percentage decrease, 3/4 figures per case study. Each was reworded rather than the rule relaxed. Thin practice answers were caught repeatedly too. Those two checks have now paid for themselves many times over.
+
 ## History complete — all 19 topics (2026-08-09)
 
 **Every topic on the site is now written: 72 of 72, ~152,000 words, 20,066 checks passing.**
