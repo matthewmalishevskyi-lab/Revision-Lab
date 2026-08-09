@@ -37,6 +37,10 @@ import { MASCOTS } from "./Mascots";
 // Distance between rungs, in pixels. The mascot can only ever stop on one of
 // these, and the same number draws the rungs in CSS below — one source of
 // truth, so the mascot can never end up standing between two rungs.
+//
+// Deliberately unchanged when the ladder was widened: rung SPACING is vertical
+// and the change was horizontal, so touching this would have altered the
+// climbing rhythm for no reason.
 const RUNG_SPACING = 46;
 
 // How long a single rung takes. Bigger = slower, more deliberate.
@@ -195,12 +199,18 @@ export function LadderCompanion({
       // a more reliable way to say "as tall as the page" than a percentage
       // height — percentages need the parent to have a definite height, and
       // this one is however tall the content happens to be.
-      className="pointer-events-none absolute inset-y-0 left-4 z-10 hidden w-24 xl:block"
+      // Width bumped from w-24 (96px) to w-32 (128px) — about a third wider.
+      // Worth checking rather than eyeballing: at the xl breakpoint (1280px)
+      // the content column is max-w-4xl (896px) and centred, so it starts at
+      // (1280 - 896) / 2 = 192px. The ladder now spans 16px to 144px, leaving
+      // 48px of clearance. Any wider and it would start crowding the text on
+      // the narrowest screen that shows it at all.
+      className="pointer-events-none absolute inset-y-0 left-4 z-10 hidden w-32 xl:block"
     >
       <div ref={railsRef} className="absolute inset-0">
         {/* The two rails */}
         <div
-          className="absolute left-4 w-[6px] rounded-full opacity-40"
+          className="absolute left-4 w-[7px] rounded-full opacity-40"
           style={{
             backgroundColor: colour,
             top: LADDER_INSET,
@@ -208,7 +218,7 @@ export function LadderCompanion({
           }}
         />
         <div
-          className="absolute right-4 w-[6px] rounded-full opacity-40"
+          className="absolute right-4 w-[7px] rounded-full opacity-40"
           style={{
             backgroundColor: colour,
             top: LADDER_INSET,
@@ -232,7 +242,10 @@ export function LadderCompanion({
         {/* The climber */}
         <div
           ref={climberRef}
-          className="absolute left-1/2 top-0 w-[74px] will-change-transform"
+          // The climber grows with the ladder. Widening the rails without
+          // scaling the mascot would leave it looking small and marooned
+          // between them — the two sizes are related, so they move together.
+          className="absolute left-1/2 top-0 w-[84px] will-change-transform"
           style={{ transform: "translate(-50%, 48px)" }}
         >
           <Mascot className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]" />
