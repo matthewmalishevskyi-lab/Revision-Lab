@@ -2314,4 +2314,458 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
   },
 
+  "geography/uk-physical-landscapes": {
+    summary:
+      "The UK packs an unusual variety of landscape into a small island: mountains in the north and west, lowlands in the south and east, and a coastline of roughly 12,500 km. This unit takes the river and coastal processes from Year 9 and applies them to real named UK places, with the management decisions that come with them.",
+    keyFacts: [
+      {
+        heading: "The overall pattern",
+        points: [
+          "Upland Britain lies broadly north and west of a line from the Tees to the Exe: older, harder rock, higher relief, wetter, more sparsely populated.",
+          "Lowland Britain lies south and east: younger, softer rock, gentler relief, drier, and far more densely populated and farmed.",
+          "Major uplands include the Scottish Highlands, the Pennines, the Lake District, Snowdonia and Dartmoor.",
+          "Major lowlands include the Fens, the Vale of York, the London Basin and the Somerset Levels.",
+          "Ice sheets shaped much of the north during the last glacial period, carving U-shaped valleys, corries and ribbon lakes.",
+        ],
+      },
+      {
+        heading: "River landscapes in the UK",
+        points: [
+          "The long profile of a river steepens near the source and flattens towards the mouth; the cross profile changes from a narrow V to a wide, flat floodplain.",
+          "Upper course landforms: interlocking spurs, V-shaped valleys, waterfalls and gorges. High Force on the River Tees is the standard example.",
+          "Middle and lower course: meanders, oxbow lakes, floodplains and levees, with estuaries at the mouth.",
+          "Counter-intuitively, velocity usually INCREASES downstream, because the channel becomes smoother and deeper so friction falls.",
+          "UK flood management combines hard engineering in cities with soft approaches upstream, since defending every settlement individually has repeatedly failed.",
+        ],
+      },
+      {
+        heading: "Coastal landscapes in the UK",
+        points: [
+          "The Dorset coast is the most widely taught example, with Durdle Door as an arch, Old Harry Rocks as stacks, and Lulworth Cove showing hard rock breached to erode softer rock behind.",
+          "Holderness in Yorkshire is Europe's fastest-eroding coastline, retreating around 2 m a year through soft boulder clay.",
+          "Spurn Head is the spit built from Holderness sediment carried south by longshore drift.",
+          "Discordant coastlines, with rock bands meeting the sea at an angle, produce headlands and bays. Concordant coastlines, with bands parallel to the sea, produce straighter coasts.",
+          "Sediment cells are stretches of coast where sediment circulates largely independently, which is why management is now planned across whole cells rather than town by town.",
+        ],
+      },
+      {
+        heading: "Glacial landscapes",
+        points: [
+          "Glaciers erode by plucking — meltwater freezing onto rock and pulling it away — and abrasion, where embedded debris scours the bedrock.",
+          "Corries are armchair-shaped hollows on mountainsides where a glacier began; two back to back form an arête, and three or more form a pyramidal peak.",
+          "U-shaped valleys, or glacial troughs, are former river valleys widened and deepened by ice, leaving truncated spurs where the ice cut through them.",
+          "Ribbon lakes form in over-deepened sections of a trough. Windermere and Wast Water are examples.",
+          "Moraine is unsorted material dumped by ice: lateral at the sides, medial where two glaciers merge, and terminal at the furthest advance.",
+          "Glaciated uplands support farming, forestry, quarrying, water storage and tourism — and those uses regularly conflict with each other.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Upland Britain", definition: "The higher, wetter, older-rock north and west of the country, broadly beyond a Tees–Exe line." },
+      { term: "Long profile", definition: "A river's gradient from source to mouth, steep at the top and flattening downstream." },
+      { term: "Cross profile", definition: "The shape of a river valley from side to side, narrowing to a V upstream and widening to a floodplain downstream." },
+      { term: "Interlocking spurs", definition: "Ridges of resistant land that a young river winds around in its upper course." },
+      { term: "Holderness", definition: "The Yorkshire coast eroding at roughly 2 m a year — the fastest in Europe — through soft boulder clay." },
+      { term: "Spurn Head", definition: "The spit at the mouth of the Humber, built from sediment eroded from Holderness and carried south." },
+      { term: "Concordant coastline", definition: "A coast where rock bands run parallel to the sea, producing a straighter shoreline." },
+      { term: "Sediment cell", definition: "A stretch of coast within which sediment circulates largely independently, now the unit for planning management." },
+      { term: "Plucking", definition: "Glacial erosion where meltwater freezes onto rock and pulls it away as the ice moves." },
+      { term: "Corrie", definition: "An armchair-shaped hollow high on a mountainside where a glacier first formed." },
+      { term: "Arête", definition: "A narrow knife-edged ridge between two corries." },
+      { term: "Pyramidal peak", definition: "A sharp summit formed where three or more corries erode back into the same mountain." },
+      { term: "U-shaped valley", definition: "A glacial trough — a former river valley widened and deepened by ice." },
+      { term: "Ribbon lake", definition: "A long narrow lake occupying an over-deepened section of a glacial trough." },
+      { term: "Moraine", definition: "Unsorted rock and sediment deposited directly by a glacier." },
+    ],
+    examTips: [
+      {
+        tip: "Use real UK place names",
+        detail:
+          "High Force, Holderness, Spurn Head, Durdle Door, Windermere. Named examples are what separate a top-band answer from a general description of processes.",
+      },
+      {
+        tip: "Say velocity increases downstream",
+        detail:
+          "It feels wrong and it is right: the channel is smoother and deeper so friction falls. Explaining it shows genuine understanding rather than intuition.",
+      },
+      {
+        tip: "Quote the Holderness erosion rate",
+        detail:
+          "Around 2 m a year, through soft boulder clay — the fastest in Europe. A single figure that carries an entire argument about management.",
+      },
+      {
+        tip: "Link corries, arêtes and peaks together",
+        detail:
+          "One corrie, two back to back give an arête, three or more give a pyramidal peak. Describing them as one sequence is faster and scores better.",
+      },
+      {
+        tip: "Explain sediment cells when discussing management",
+        detail:
+          "Defences in one town affect the next, which is why planning now covers whole cells. It is the reason coastal management is politically difficult.",
+      },
+      {
+        tip: "Contrast upland and lowland Britain",
+        detail:
+          "Older harder rock, higher, wetter, emptier in the north and west; younger softer rock, gentler, drier and crowded in the south and east.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why a river's velocity increases downstream, even though the gradient is gentler.",
+        steps: [
+          "Intuition says a steep upper course must be faster, and observation of turbulent mountain streams reinforces that.",
+          "But velocity depends on friction as well as gradient.",
+          "In the upper course the channel is shallow, narrow and full of large angular boulders, so a large proportion of the water is in contact with rough surfaces.",
+          "That contact creates enormous friction, which slows the flow despite the steep gradient.",
+          "Downstream the channel is deeper, wider and smoother, so proportionally far less water touches the bed and banks.",
+          "With friction reduced, the water flows faster even on a gentle gradient — and the increased discharge from tributaries adds to it.",
+        ],
+        answer:
+          "Because friction matters more than gradient. Upstream, shallow water flowing over large angular boulders loses most of its energy to friction; downstream, a deeper smoother channel means far less of the water is in contact with the bed, so it flows faster despite the gentler slope.",
+      },
+      {
+        question:
+          "Explain why Holderness erodes so quickly.",
+        steps: [
+          "Geology: the cliffs are boulder clay, deposited by ice and very weakly consolidated — it is soft enough to dig with a spade.",
+          "When wet it slumps readily, so mass movement removes material as fast as wave erosion exposes it.",
+          "Fetch: the coast faces north-east across the North Sea, so waves arrive with substantial energy behind them.",
+          "Beaches are narrow, partly because the eroded clay washes away as suspended sediment rather than forming protective shingle.",
+          "Longshore drift carries what sediment there is southwards to build Spurn Head, so the cliffs are never protected.",
+          "Result: retreat of roughly 2 m a year, and around 30 villages lost since Roman times.",
+        ],
+        answer:
+          "Soft boulder clay that slumps when wet, a long north-easterly fetch across the North Sea, and narrow beaches — because the eroded clay washes away as suspended sediment instead of forming a protective beach, and what remains drifts south to Spurn Head. The result is around 2 m of retreat a year.",
+      },
+      {
+        question:
+          "Describe how a corrie forms.",
+        steps: [
+          "Snow accumulates in a hollow on a north-facing mountainside, where it is shaded and melts least.",
+          "Layers compress into ice, and the ice begins to move downhill under its own weight.",
+          "It rotates as it moves, and plucking pulls rock away from the back wall, steepening it.",
+          "Abrasion by rock embedded in the ice deepens the base of the hollow.",
+          "Freeze-thaw weathering above the ice shatters the back wall further and feeds debris into the system.",
+          "When the ice melts, an armchair-shaped hollow is left, often with a rock lip at the front that traps a small lake called a tarn.",
+        ],
+        answer:
+          "Snow accumulates in a shaded hollow and compresses into ice, which rotates as it moves. Plucking steepens the back wall while abrasion deepens the base, and freeze-thaw shatters the rock above. When the ice melts, an armchair hollow remains, often holding a tarn behind a rock lip.",
+      },
+      {
+        question:
+          "Why is coastal management now planned across whole sediment cells rather than town by town?",
+        steps: [
+          "Sediment moves along a coast by longshore drift, so any stretch depends on what arrives from the stretch before it.",
+          "Groynes or sea walls in one town trap or reflect that sediment, starving the next stretch and accelerating erosion there.",
+          "Town-by-town decisions therefore export costs to neighbours who had no say in them.",
+          "A sediment cell is a length of coast within which sediment largely circulates on its own, usually bounded by prominent headlands.",
+          "Planning at that scale lets the whole system be considered, including which stretches will be defended and which will not.",
+          "It also makes the trade-offs explicit and political rather than accidental, which is uncomfortable but honest.",
+        ],
+        answer:
+          "Because defences in one place change what reaches the next. Groynes and walls trap sediment that would have travelled on, so protecting one town accelerates erosion along the coast. Planning by sediment cell lets the whole system be managed, and makes the choice of what to defend explicit rather than accidental.",
+      },
+    ],
+
+    practice: [
+      { question: "Which line roughly separates upland from lowland Britain? Give the two rivers.",
+        accept: ["tees exe", "tees-exe", "tees and exe"],
+        answer: "The Tees–Exe line, with older harder uplands to the north and west." },
+      { question: "Which waterfall on the River Tees is the standard UK example?",
+        accept: ["high force", "highforce"],
+        answer: "High Force, where hard whinstone lies over softer rock." },
+      { question: "Does river velocity increase or decrease downstream?",
+        accept: ["increase", "increases", "faster"],
+        answer: "It increases. The channel becomes smoother and deeper, so friction falls despite the gentler gradient." },
+      { question: "Which UK coastline is the fastest-eroding in Europe?",
+        accept: ["holderness", "the holderness coast"],
+        answer: "Holderness in Yorkshire, retreating around 2 m a year through soft boulder clay." },
+      { question: "Roughly how many metres a year does Holderness retreat?",
+        accept: ["2", "2m", "2 m"],
+        answer: "About 2 m a year — around 30 villages have been lost since Roman times." },
+      { question: "Which spit is built from sediment eroded off Holderness?",
+        accept: ["spurn head", "spurn point", "spurn"],
+        answer: "Spurn Head, at the mouth of the Humber." },
+      { question: "Which Dorset arch is the most widely taught UK example?",
+        accept: ["durdle door", "durdledoor"],
+        answer: "Durdle Door on the Dorset coast." },
+      { question: "What is a coast with rock bands parallel to the sea called?",
+        accept: ["concordant", "concordant coastline"],
+        answer: "A concordant coastline, which produces a straighter shore than a discordant one." },
+      { question: "What is a stretch of coast where sediment circulates independently called?",
+        accept: ["sediment cell", "a sediment cell"],
+        answer: "A sediment cell — now the unit at which coastal management is planned." },
+      { question: "Which glacial erosion process involves meltwater freezing onto rock and pulling it away?",
+        accept: ["plucking"],
+        answer: "Plucking. Abrasion is the other main process, scouring with embedded debris." },
+      { question: "What is an armchair-shaped hollow where a glacier formed called?",
+        accept: ["corrie", "cirque", "a corrie", "cwm"],
+        answer: "A corrie, often holding a small lake called a tarn behind a rock lip." },
+      { question: "What is the knife-edged ridge between two corries called?",
+        accept: ["arete", "arête", "an arete"],
+        answer: "An arête. Three or more corries eroding back give a pyramidal peak." },
+      { question: "What shape of valley does a glacier carve?",
+        accept: ["u shaped", "u-shaped", "ushaped", "u shaped valley"],
+        answer: "A U-shaped valley, or glacial trough — a former river valley widened and deepened by ice." },
+      { question: "What is a long narrow lake in a glacial trough called?",
+        accept: ["ribbon lake", "a ribbon lake", "ribbon"],
+        answer: "A ribbon lake. Windermere and Wast Water are examples." },
+      { question: "What is unsorted material deposited directly by a glacier called?",
+        accept: ["moraine", "till", "boulder clay"],
+        answer: "Moraine — lateral at the sides, medial where glaciers merge, terminal at the furthest advance." },
+      { question: "What is the small lake in a corrie called?",
+        accept: ["tarn", "a tarn"],
+        answer: "A tarn, held back by the rock lip at the corrie's front." },
+      { question: "Explain why upland and lowland Britain are so different despite being one small island.",
+        answer: "Because the rocks are of very different ages and hardness, and ice treated them differently. The north and west are built largely of older, harder igneous and metamorphic rock that has resisted erosion for hundreds of millions of years, leaving high ground. The south and east are younger sedimentary rocks — chalk, clay, sandstone — which weather and erode far more readily into gentle hills and broad vales. Relief then drives climate: uplands force moist Atlantic air to rise, so the west is much wetter, while the east sits in a rain shadow. And ice sheets during the last glacial period scoured the north, carving U-shaped valleys and corries, while the south largely escaped. Human geography follows the physical: population, farming and cities concentrate in the drier, flatter, more fertile south-east. (Mark this one yourself.)" },
+      { question: "Explain why some communities on the Holderness coast are not defended.",
+        answer: "Because defending them cannot be justified against the cost. Sea walls run to millions of pounds per kilometre and need permanent maintenance, and along a coast retreating 2 m a year they would need to hold indefinitely against soft clay that slumps whenever it is wet. Where a stretch contains a handful of houses and farmland, the value protected is far less than the cost of protecting it — and defending one section starves the next of sediment, accelerating erosion there and creating a new problem. So shoreline management plans designate some stretches for 'no active intervention', with limited compensation for those affected. It is defensible arithmetic and a genuinely painful outcome for people whose homes are on the list, which is why it is as much a political question as a geographical one. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Rivers flow fastest in their upper course.\"",
+        right: "They usually flow FASTEST downstream. Shallow water over large boulders loses enormous energy to friction, which outweighs the steeper gradient." },
+      { wrong: "\"Holderness erodes fast because the waves are unusually powerful.\"",
+        right: "The waves are ordinary North Sea waves. It is the soft boulder clay, which slumps when wet and washes away without forming a protective beach." },
+      { wrong: "\"U-shaped valleys were cut by glaciers from scratch.\"",
+        right: "Most were river valleys first, which ice then widened and deepened — which is why truncated spurs are left where the glacier cut straight through." },
+      { wrong: "\"Every stretch of UK coast is defended.\"",
+        right: "Shoreline management plans designate some stretches for no active intervention, because the cost of defence exceeds the value of what is protected." },
+      { wrong: "\"Moraine is sorted material like river deposits.\"",
+        right: "It is dumped directly by ice with no sorting at all, so boulders and clay sit jumbled together. Sorting is what distinguishes water-deposited material." },
+      { wrong: "\"Corries form on any side of a mountain equally.\"",
+        right: "In Britain they are overwhelmingly north- and east-facing, because those slopes are shaded and snow survives longest there." },
+    ],
+  },
+
+  "geography/urban-issues-and-challenges": {
+    summary:
+      "More than half the world now lives in cities, and almost all future growth will happen in the poorer parts of the world. This unit covers why cities grow, what happens when they grow faster than anyone can build for, and how urban problems differ between a rapidly growing city in a poorer country and a long-established one like London.",
+    keyFacts: [
+      {
+        heading: "Urbanisation and why it happens",
+        points: [
+          "Urbanisation is the increasing proportion of a population living in towns and cities. It passed 50% globally around 2007.",
+          "Push factors drive people from rural areas: poverty, lack of work, poor services, drought, mechanised farming, and conflict.",
+          "Pull factors draw them to cities: jobs, higher wages, education, healthcare, and the perception of opportunity — which is often more optimistic than the reality.",
+          "Natural increase adds to migration: cities have young populations, so birth rates exceed death rates.",
+          "A megacity has over 10 million people. Most are now in Asia and Africa, and the number keeps rising.",
+        ],
+      },
+      {
+        heading: "Challenges in rapidly growing cities",
+        points: [
+          "Squatter settlements — favelas, slums, informal settlements — grow where housing cannot be built fast enough or cheaply enough.",
+          "They typically lack secure land tenure, clean water, sanitation, electricity and formal waste collection.",
+          "The informal economy employs a large share of workers: unregistered, untaxed, unprotected, and often the only work available.",
+          "Health problems follow from crowding and poor sanitation: cholera, typhoid and respiratory illness.",
+          "Traffic congestion, air pollution and inadequate transport slow the whole city.",
+          "Rio de Janeiro's favelas are the most widely taught example, with Rocinha the largest.",
+        ],
+      },
+      {
+        heading: "Improving conditions",
+        points: [
+          "Site and service schemes provide land with basic utilities so residents build their own homes incrementally.",
+          "Self-help schemes supply materials and training, using residents' own labour to keep costs down.",
+          "Upgrading in place — paving paths, installing water and sewerage, adding electricity and transport links — is usually far better than demolition and relocation.",
+          "Granting legal land tenure matters enormously: people invest in property they know they will keep.",
+          "Rio's Favela Bairro project improved infrastructure in place rather than clearing settlements, which is the approach now generally preferred.",
+          "Clearance and rehousing far from the city usually fails, because it separates people from the work that brought them there.",
+        ],
+      },
+      {
+        heading: "UK cities and urban regeneration",
+        points: [
+          "UK urban issues differ: deindustrialisation, inner-city decline, inequality between neighbourhoods, and the housing shortage.",
+          "Suburbanisation, counter-urbanisation and then re-urbanisation have moved people out of and back into city centres over the past century.",
+          "Regeneration schemes redevelop derelict land — London's Docklands and the Olympic Park at Stratford being the standard examples.",
+          "Benefits: jobs, housing, transport, and land brought back into use.",
+          "Costs: rising prices push existing residents out, new jobs often need skills locals do not have, and the character of an area changes. That process is gentrification.",
+          "Sustainable urban living: green space, public transport, water and energy conservation, recycling, and community involvement in decisions.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Urbanisation", definition: "The increasing proportion of a population living in towns and cities." },
+      { term: "Megacity", definition: "A city with a population of over 10 million." },
+      { term: "Push factor", definition: "Something driving people away from an area, such as poverty, drought or conflict." },
+      { term: "Pull factor", definition: "Something attracting people to an area, such as jobs, education or healthcare." },
+      { term: "Natural increase", definition: "Population growth from births exceeding deaths, which adds to city growth alongside migration." },
+      { term: "Squatter settlement", definition: "An unplanned area of self-built housing on land the residents do not own." },
+      { term: "Informal economy", definition: "Work that is unregistered and untaxed, with no contract or legal protection." },
+      { term: "Land tenure", definition: "Legal ownership or right to occupy land — the thing that makes people willing to invest in their homes." },
+      { term: "Site and service scheme", definition: "Providing land with basic utilities so residents can build their own homes over time." },
+      { term: "Favela Bairro", definition: "Rio's programme of upgrading favelas in place rather than clearing them." },
+      { term: "Deindustrialisation", definition: "The decline of manufacturing, which left many UK inner cities with unemployment and derelict land." },
+      { term: "Counter-urbanisation", definition: "The movement of people out of cities into smaller towns and rural areas." },
+      { term: "Regeneration", definition: "Redeveloping derelict urban land to bring investment, housing and jobs." },
+      { term: "Gentrification", definition: "Wealthier residents moving into a poorer area, raising prices and displacing existing communities." },
+      { term: "Sustainable urban living", definition: "Running a city so it meets present needs without preventing future generations meeting theirs." },
+    ],
+    examTips: [
+      {
+        tip: "Give push and pull factors separately",
+        detail:
+          "Push drives people out; pull draws them in. Listing both, with examples of each, is the structure most migration questions want.",
+      },
+      {
+        tip: "Say why upgrading beats clearance",
+        detail:
+          "Demolition moves people away from the work that brought them to the city. Upgrading in place keeps communities and jobs together — the reason Favela Bairro is taught.",
+      },
+      {
+        tip: "Name land tenure as a cause of improvement",
+        detail:
+          "People invest in homes they legally own. It is a small policy change with disproportionate effects, and most students never mention it.",
+      },
+      {
+        tip: "Give regeneration its downside",
+        detail:
+          "Gentrification means the people who lived through the decline often cannot afford the recovery. Naming that is what turns description into evaluation.",
+      },
+      {
+        tip: "Do not describe squatter settlements only as miserable",
+        detail:
+          "They contain businesses, schools, churches and strong communities. Answers that treat residents as passive victims miss what actually makes upgrading work.",
+      },
+      {
+        tip: "Use one named city from each context",
+        detail:
+          "One rapidly growing city and one UK city, with real place names and figures. Generic answers about 'an LIC city' cannot reach the top bands.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why cities in poorer countries are growing so fast.",
+        steps: [
+          "Rural push: mechanised farming reduces the need for labour, land is subdivided until plots are too small to live on, and drought or conflict force people out.",
+          "Urban pull: cities concentrate jobs, higher wages, schools, hospitals and electricity.",
+          "Perception matters as much as reality: people move for the opportunity they believe exists, and often find informal work instead.",
+          "Migration is selective — mostly young adults — so the city's population is young.",
+          "A young population means high birth rates and low death rates, so natural increase compounds the migration.",
+          "The two together mean growth far outpaces the rate at which housing, water and sanitation can be built.",
+        ],
+        answer:
+          "Rural push factors and urban pull factors drive migration, and because migrants are mostly young adults the city then grows again through natural increase. Growth from both sources outstrips the rate anyone can build housing and services, which is why informal settlements appear.",
+      },
+      {
+        question:
+          "Explain why upgrading a squatter settlement usually works better than clearing it.",
+        steps: [
+          "Clearance destroys housing that residents built themselves, at no cost to the state.",
+          "Rehousing is almost always on cheap land far from the city, which separates people from the work that brought them there.",
+          "Transport costs then consume the income that made living in the city viable, so many drift back and a new settlement forms.",
+          "Clearance also destroys established communities, businesses, schools and support networks that took years to build.",
+          "Upgrading keeps all of that and adds what is missing: paved paths, water, sanitation, electricity, transport links.",
+          "Granting land tenure alongside it makes residents willing to invest their own money in improving their homes further.",
+          "So upgrading is cheaper, faster and more durable, which is why Rio moved to the Favela Bairro approach.",
+        ],
+        answer:
+          "Because clearance destroys housing people built themselves and moves them away from their work, so they return and rebuild elsewhere. Upgrading keeps communities, businesses and jobs intact while adding water, sanitation and transport — and granting land tenure means residents invest their own money too.",
+      },
+      {
+        question:
+          "Evaluate urban regeneration in a UK city.",
+        steps: [
+          "Take a named example, such as London's Docklands or the Stratford Olympic Park.",
+          "Benefits: derelict land brought back into use, tens of thousands of jobs, new housing, and major transport investment.",
+          "Benefits: improved environment, and a reversal of decades of decline after deindustrialisation.",
+          "Costs: house prices and rents rise sharply, so many existing residents can no longer afford to stay.",
+          "Costs: the new jobs are often in finance and technology, requiring skills local people did not have, so employment benefits leak to incomers.",
+          "Costs: the character of the area changes, and long-standing communities disperse — gentrification.",
+          "Judgement: the physical regeneration is real and substantial, but whether it benefits the existing community depends entirely on whether affordable housing and training were built in from the start.",
+        ],
+        answer:
+          "Regeneration reliably brings investment, jobs, housing and transport to derelict land, and reverses decades of post-industrial decline. Whether it helps the people already there is a different question: without affordable housing and training built in deliberately, rising prices and skill mismatches mean the benefits go to newcomers.",
+      },
+      {
+        question:
+          "Why does granting legal land tenure improve a squatter settlement so much?",
+        steps: [
+          "Without tenure, residents can be evicted at any time and lose everything they have built.",
+          "Nobody invests substantially in a house that might be demolished next year, so improvements stay minimal and temporary.",
+          "With tenure, that calculation reverses: money spent on a roof, a floor or a second storey is money kept.",
+          "Tenure also gives an address, which unlocks bank accounts, credit, and formal employment.",
+          "Property that can be legally sold or inherited becomes an asset, which is often a family's largest.",
+          "And utilities companies will connect legally registered properties, so water and electricity follow tenure rather than preceding it.",
+        ],
+        answer:
+          "Because it changes the incentive completely. People will not invest in a home that might be demolished, but will invest heavily in one they own — and tenure also brings an address, access to credit, and the legal status that lets utilities connect the property at all.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the increasing proportion of people living in cities called?",
+        accept: ["urbanisation", "urbanization"],
+        answer: "Urbanisation. It passed 50% of the world's population around 2007." },
+      { question: "How many million people does a megacity have, at minimum?",
+        accept: ["10", "10 million", "ten"],
+        answer: "Over 10 million. Most megacities are now in Asia and Africa." },
+      { question: "What is a factor driving people away from an area called?",
+        accept: ["push factor", "push", "a push factor"],
+        answer: "A push factor — poverty, drought, conflict or lack of work." },
+      { question: "What is a factor attracting people to an area called?",
+        accept: ["pull factor", "pull", "a pull factor"],
+        answer: "A pull factor — jobs, wages, education or healthcare." },
+      { question: "What is population growth from births exceeding deaths called?",
+        accept: ["natural increase"],
+        answer: "Natural increase. Cities grow this way as well as through migration, because migrants are young." },
+      { question: "What is an unplanned area of self-built housing on land residents do not own called?",
+        accept: ["squatter settlement", "informal settlement", "slum", "favela"],
+        answer: "A squatter or informal settlement — favelas in Brazil, and many other names elsewhere." },
+      { question: "What is work that is unregistered and untaxed called?",
+        accept: ["informal economy", "the informal economy", "informal sector"],
+        answer: "The informal economy — no contract, no protection, and often the only work available." },
+      { question: "What is legal ownership or right to occupy land called?",
+        accept: ["land tenure", "tenure"],
+        answer: "Land tenure. It is what makes residents willing to invest in their own homes." },
+      { question: "Which Rio project upgraded favelas in place rather than clearing them?",
+        accept: ["favela bairro", "favela-bairro"],
+        answer: "Favela Bairro, now the model generally preferred over demolition." },
+      { question: "Which is Rio's largest favela?",
+        accept: ["rocinha"],
+        answer: "Rocinha, the most widely taught example of a squatter settlement." },
+      { question: "What is the decline of manufacturing called?",
+        accept: ["deindustrialisation", "deindustrialization"],
+        answer: "Deindustrialisation, which left many UK inner cities with unemployment and derelict land." },
+      { question: "What is the movement of people out of cities to smaller towns called?",
+        accept: ["counter urbanisation", "counter-urbanisation", "counterurbanisation", "counter urbanization"],
+        answer: "Counter-urbanisation." },
+      { question: "What is it called when wealthier residents move in and displace existing communities?",
+        accept: ["gentrification"],
+        answer: "Gentrification — often the cost attached to successful regeneration." },
+      { question: "Which London area is the standard UK regeneration example?",
+        accept: ["docklands", "the docklands", "london docklands", "stratford"],
+        answer: "The London Docklands, and more recently the Olympic Park at Stratford." },
+      { question: "What is providing land with basic utilities so residents build their own homes called?",
+        accept: ["site and service", "site and service scheme", "sites and services"],
+        answer: "A site and service scheme." },
+      { question: "Around which year did the world's urban population pass 50%?",
+        accept: ["2007", "2008"],
+        answer: "Around 2007. More than half the world has lived in cities ever since." },
+      { question: "Explain why moving squatter settlement residents to new housing outside the city often fails.",
+        answer: "Because it solves the housing problem and creates a bigger one. People came to the city for work, and cheap land for rehousing is by definition far from where that work is. Commuting then costs money and hours that the low wages of informal employment cannot support, so the move destroys the very thing that made city life viable. It also breaks up communities, childcare arrangements, informal credit networks and small businesses that took years to establish. Faced with that, many families sell or abandon the new housing and return, and a new settlement forms somewhere else — which is why upgrading in place, keeping people near their work, has become the preferred approach. (Mark this one yourself.)" },
+      { question: "Explain why squatter settlements should not be described only in terms of what they lack.",
+        answer: "Because it misrepresents them and leads to bad policy. They do lack sanitation, secure tenure and formal services, and those are real and serious problems. But they are also functioning places with shops, workshops, schools, churches, transport networks and strong social ties, largely built by residents with their own labour and money. Rocinha has banks and bus routes. Treating residents as helpless victims produces the clearance-and-rehousing schemes that repeatedly fail, because they discard everything people have built. Recognising the capability that is already there is exactly what makes upgrading and self-help schemes work — they add what is missing rather than replacing what exists. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Cities grow only because people move to them.\"",
+        right: "Migration is half the story. Migrants are mostly young adults, so cities then grow rapidly through natural increase as well." },
+      { wrong: "\"Squatter settlements are just areas of misery.\"",
+        right: "They lack services and tenure, and they also contain businesses, schools and strong communities. Policies that ignore that fail." },
+      { wrong: "\"Clearing slums and rehousing people solves the problem.\"",
+        right: "New housing is usually too far from work, so people return and settle elsewhere. Upgrading in place has a far better record." },
+      { wrong: "\"Regeneration benefits everyone in the area.\"",
+        right: "Rising prices push existing residents out and new jobs often need skills they do not have. Without deliberate affordable housing and training, the benefits go elsewhere." },
+      { wrong: "\"Urbanisation is happening everywhere at the same rate.\"",
+        right: "Richer countries urbanised long ago and some are now counter-urbanising. Almost all current growth is in Asia and Africa." },
+      { wrong: "\"The informal economy is a small fringe.\"",
+        right: "In many rapidly growing cities it employs a large share of all workers, and for most of them it is the only work available." },
+    ],
+  },
+
 };
