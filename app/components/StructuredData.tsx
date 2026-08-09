@@ -16,11 +16,30 @@
 
 type JsonLd = Record<string, unknown>;
 
+// Escaping `<` is the one piece of care this needs, and it is worth
+// understanding because the reasoning is not obvious.
+//
+// A browser reading <script> looks for the literal characters "</script>" to
+// know where the tag ends. It does that BEFORE any JSON is parsed. So if a
+// topic summary ever contained the text "</script>", the browser would end the
+// tag early and treat everything after it as page HTML — which is how a
+// harmless-looking piece of content becomes a way to inject a real script.
+//
+// Checked today: no topic contains "</script>", "<script" or "<!--", so this is
+// hardening rather than a live hole. But the site is a COMPUTER SCIENCE revision
+// site. A topic about HTML is an entirely plausible thing to add next, and it
+// would contain exactly those characters. Escaping the "<" costs one line and
+// removes the possibility permanently. JSON treats < as identical to "<",
+// so search engines read exactly the same data.
+function toSafeJsonLd(data: JsonLd): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
 export function StructuredData({ data }: { data: JsonLd }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: toSafeJsonLd(data) }}
     />
   );
 }

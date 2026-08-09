@@ -31,7 +31,15 @@ export const SITE_DESCRIPTION =
 //   - deployed WITH a DATABASE_URL? accounts on  (real storage exists)
 //   - deployed WITHOUT one?         accounts OFF (would lose data)
 //
-// Set DATABASE_URL in Vercel and accounts turn themselves back on. Nothing here
-// needs editing.
+// Set DATABASE_URL and SESSION_SECRET in Vercel and accounts turn themselves
+// back on. Nothing here needs editing.
+//
+// SESSION_SECRET is in the condition for a reason found during a bug hunt. The
+// session code falls back to generating a key and saving it in /data, and a
+// deployed filesystem is read-only, so that write throws. Login does not catch
+// it, meaning a visitor with the CORRECT password would have hit a 500 page —
+// triggered by adding a database and forgetting the other variable, which is
+// exactly the kind of half-finished setup this switch exists to catch.
 export const ACCOUNTS_ENABLED =
-  process.env.NODE_ENV !== "production" || Boolean(process.env.DATABASE_URL);
+  process.env.NODE_ENV !== "production" ||
+  (Boolean(process.env.DATABASE_URL) && Boolean(process.env.SESSION_SECRET));

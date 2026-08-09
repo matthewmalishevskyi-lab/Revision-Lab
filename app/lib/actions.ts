@@ -15,7 +15,13 @@
 
 import { redirect } from "next/navigation";
 import { createSession, destroySession, getSessionUserId } from "./session";
-import { createUser, findUserByEmail, findUserById, verifyPassword } from "./users";
+import {
+  createUser,
+  findUserByEmail,
+  findUserById,
+  spendPasswordCheckTime,
+  verifyPassword,
+} from "./users";
 
 // What a form sends back to the page when something goes wrong. `fieldErrors`
 // puts a message under the specific input; `formError` is for the whole form.
@@ -41,11 +47,31 @@ export async function register(
 
   const fieldErrors: NonNullable<AuthState>["fieldErrors"] = {};
 
+  // ── Upper limits as well as lower ones ──────────────────────────────────
+  // There were only minimums here, so nothing stopped a megabyte-long name
+  // being written straight into storage. Worth being precise about what the
+  // risk actually was, because the obvious guess is wrong: hashing a huge
+  // password is NOT slow. Measured, scrypt takes the same ~33ms for a 12
+  // character password and a one-million character one, because the input is
+  // condensed before the expensive part begins.
+  //
+  // The real problem is simply storing whatever arrives. These limits are
+  // generous enough that no real person will meet them, which is what a limit
+  // should be. (The longest recorded surname is a little over 30 characters.)
   if (name.length < 2) fieldErrors.name = "Please enter your name.";
+  else if (name.length > 100) fieldErrors.name = "That name is too long.";
+
   if (!looksLikeEmail(email))
     fieldErrors.email = "That doesn't look like an email address.";
+  else if (email.length > 254)
+    // 254 is the maximum length of an email address that the internet's own
+    // standards allow, so anything longer cannot be deliverable anyway.
+    fieldErrors.email = "That email address is too long.";
+
   if (password.length < 8)
     fieldErrors.password = "Passwords need to be at least 8 characters.";
+  else if (password.length > 200)
+    fieldErrors.password = "That password is too long.";
 
   if (Object.keys(fieldErrors).length > 0) return { fieldErrors };
 
@@ -88,7 +114,14 @@ export async function login(
   // someone about to guess passwords. Vague on purpose.
   const genericFailure = { formError: "Email or password is incorrect." };
 
-  if (!user) return genericFailure;
+  if (!user) {
+    // Identical wording was not enough: this branch used to return instantly
+    // while the branch below spent ~29ms in scrypt, so the two were 72x apart
+    // and trivially distinguishable by a stopwatch. Doing the same work here
+    // closes that. See the note in users.ts.
+    await spendPasswordCheckTime(password);
+    return genericFailure;
+  }
 
   const ok = await verifyPassword(password, user.passwordHash);
   if (!ok) return genericFailure;

@@ -87,6 +87,8 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 5. Then ask Claude to migrate the storage layer. Only `app/lib/users.ts` needs rewriting — everything else was deliberately built to not care where the data lives.
 
+**You need BOTH variables, not just the database one.** Accounts stay switched off until `DATABASE_URL` *and* `SESSION_SECRET` are both present. That's deliberate: with a database but no signing key, the site would try to generate one and save it to disk, the hosting filesystem is read-only, and the write fails — so someone typing the *correct* password would have got an error page. Setting only one of the two now leaves accounts off, which is the safe outcome.
+
 **Never put these values in the code.** They go in Vercel's environment variables. Anything committed to GitHub is visible to anyone who can see the repository, and secrets leaked this way get found by automated scanners within minutes.
 
 ---

@@ -45,8 +45,35 @@ async function getSecret(): Promise<string> {
   const fromEnv = process.env.SESSION_SECRET;
   if (fromEnv) return fromEnv;
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // A LANDMINE THAT WAS WAITING FOR THE DAY WE ADD A DATABASE.
+  //
+  // The fallback below writes a generated key into /data. On a host like Vercel
+  // the filesystem is read-only, and that write throws EACCES (tested). Login
+  // does not wrap createSession in a try/catch, so a visitor typing the CORRECT
+  // password would have got a 500 error page.
+  //
+  // It could not happen before, because accounts switch themselves off in
+  // production without a DATABASE_URL. It would have happened the moment one
+  // was added and SESSION_SECRET was forgotten — which is the very next thing
+  // planned. So: fail here, loudly and legibly, instead of somewhere confusing.
+  //
+  // ACCOUNTS_ENABLED now also requires SESSION_SECRET in production, so this
+  // should be unreachable. It stays as a second line of defence, because the
+  // failure it replaces was so much harder to diagnose than a clear message.
+  // ───────────────────────────────────────────────────────────────────────────
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "SESSION_SECRET is not set. Generate one with " +
+        `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" ` +
+        "and add it to your hosting environment variables.",
+    );
+  }
+
   try {
-    return await readFile(SECRET_FILE, "utf8");
+    // `.trim()` matters: opening this file in an editor that helpfully adds a
+    // trailing newline would silently change the key and log everyone out.
+    return (await readFile(SECRET_FILE, "utf8")).trim();
   } catch {
     const generated = randomBytes(32).toString("hex");
     await mkdir(DATA_DIR, { recursive: true });

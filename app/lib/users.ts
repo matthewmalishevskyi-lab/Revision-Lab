@@ -114,6 +114,38 @@ export async function verifyPassword(
   return timingSafeEqual(expected, derived);
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// THE SAME IDEA AGAIN, ONE LEVEL UP — and a real bug that was measured, not
+// guessed.
+//
+// The login code used to return immediately when no account matched the email,
+// and only run scrypt when one did. The error message was identical either way,
+// which is what stops the page TELLING you an account exists.
+//
+// But scrypt is deliberately slow. Timing the two cases gave:
+//
+//     existing email + wrong password : 29.4 ms
+//     email that isn't registered     :  0.4 ms
+//
+// — a 72x difference. Anyone could feed in a list of email addresses, time the
+// replies, and learn exactly which ones have accounts here, without ever
+// guessing a password. That is the leak the careful wording was supposed to
+// close, reopened by the clock.
+//
+// The fix is to do the same work either way. When no account is found, hash the
+// submitted password against a throwaway hash and discard the result, so both
+// paths cost the same. The wasted milliseconds are the point.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// A salt and a "hash" of nothing in particular, generated once at startup.
+// Nobody's password can match it, and nobody needs it to.
+const DECOY_HASH = `${randomBytes(16).toString("hex")}:${randomBytes(64).toString("hex")}`;
+
+export async function spendPasswordCheckTime(password: string): Promise<void> {
+  // Deliberately ignoring the answer. We are buying time, not information.
+  await verifyPassword(password, DECOY_HASH);
+}
+
 // ─── Queries ────────────────────────────────────────────────────────────────
 
 export async function findUserByEmail(email: string): Promise<User | null> {

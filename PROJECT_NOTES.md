@@ -145,7 +145,24 @@ The content checker is worth reading (`scripts/check-content.mjs`) — it exists
 
 It also holds **regression tests for the marking rule**, each one a bug that actually happened.
 
-## Bugs found and fixed (bug hunt, 2026-08-09)
+## Second, deeper bug hunt (2026-08-09, auth and infrastructure)
+
+1. **User enumeration by timing — measured, not guessed.** `login()` returned instantly when no account matched the email, but ran scrypt (~30ms) when one did. The error wording was identical either way, which was supposed to stop the page revealing who has an account; the clock revealed it instead. Measured on this machine: **29.4ms for an existing email vs 0.4ms for an unregistered one — a 72x difference**, easily readable over the network. Anyone could feed in a list of addresses and learn which ones are registered without guessing a single password. Fixed with `spendPasswordCheckTime()` in `users.ts`, which hashes against a decoy so both paths cost the same. **Re-measured after the fix: 27.7ms vs 27.2ms, a ratio of 1.02.**
+
+2. **A 500 error waiting for the day we add a database.** `getSecret()` falls back to generating a signing key and writing it to `/data`. Deployed filesystems are read-only, and that write throws `EACCES` (tested directly). `login()` does not wrap `createSession()` in a try/catch, so a visitor typing the **correct** password would have got an error page. It cannot happen today because accounts switch off in production without a `DATABASE_URL` — it would have happened the moment one was added and `SESSION_SECRET` was forgotten, which is the very next job. `ACCOUNTS_ENABLED` now requires both variables, and `getSecret()` throws a legible message in production instead.
+
+3. **JSON-LD could have been broken out of.** `StructuredData` inserted `JSON.stringify(data)` raw into a `<script>` tag. A browser looks for the literal `</script>` before any JSON is parsed, so content containing that text would end the tag early. **Checked: no topic contains `</script>`, `<script` or `<!--` today, so this was not a live hole** — but this is a Computer Science revision site and a topic about HTML is an obvious thing to add. `<` is now escaped as `<`, which browsers and search engines read identically.
+
+4. **No upper length limits on the registration form.** Only minimums were checked, so a megabyte-long name would have been written straight to storage. The obvious worry turned out to be wrong and worth recording: **hashing a huge password is not slow — measured, scrypt takes ~33ms for both a 12-character and a 1,000,000-character password**, because the input is condensed before the expensive part. The real issue was unbounded storage. Limits added: name 100, email 254 (the internet standard maximum), password 200.
+
+**Checked and found clean:** `data/` has never been committed and nothing sensitive is tracked by git; every shape in all three mascots sits inside its canvas; all 849 auto-marked questions were replayed through the *shipped* `normalise()` — none fail to match themselves, none accept a blank answer, none accept junk.
+
+**Known and deliberately NOT changed — decide together:**
+
+- **No rate limiting on login.** Nothing stops thousands of password guesses. Fixing it properly needs shared storage, so it belongs with the database work rather than before it.
+- **Accounts will make all 53 topic pages dynamic.** `SiteHeader` calls `getCurrentUser()`, which reads `cookies()`, and Next 16's own docs say: *"Using it in a layout or page will opt a route into dynamic rendering."* Today `ACCOUNTS_ENABLED` is false in production so `cookies()` is never reached and the pages stay static. Once accounts are on, every topic page renders per request instead of being served as a prebuilt file. **This was not measured — `next build` cannot run in Claude's sandbox (no network for the SWC binary), so it rests on the documentation.** The fix has a real cost (the account buttons would have to leave topic pages, or the header would need splitting), so it is Matthew's call, not an automatic change.
+
+## Bugs found and fixed (first bug hunt, 2026-08-09)
 
 1. **Degree signs, percent signs and currency broke marking.** Asked "the bearing of A from B?", a student typing `230°` was marked WRONG, because the accepted answer was `230`. Same for `20%` and `£50`. Fixed centrally in `normalise()` — a trailing `°`/`%` and a leading `£$€` are stripped, because they decorate a number without changing it. Doing it in the marking rule rather than by adding variants to hundreds of accept lists means it cannot be forgotten next time. It deliberately cannot turn a percentage into a decimal: "write 45% as a decimal" wants 0.45, and `45%` still reduces to `45`, which still does not match.
 
