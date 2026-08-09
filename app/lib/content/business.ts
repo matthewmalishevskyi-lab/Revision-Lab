@@ -3005,4 +3005,2861 @@ export const BUSINESS: Record<string, TopicContent> = {
       },
     ],
   },
+
+  // ─── YEAR 11 ────────────────────────────────────────────────────────────
+  // Broadly "building a business": everything that changes once a firm is past
+  // survival and starts to grow.
+
+  "business/business-growth": {
+    summary:
+      "Growth is what most businesses say they want, and it is also what kills a surprising number of them. This topic covers the two routes — growing yourself or buying someone else — the cost advantages that come with size, the problems that arrive with it, and why a business that grows too fast can run out of cash at the exact moment it looks most successful.",
+    keyFacts: [
+      {
+        heading: "Two routes to growth",
+        points: [
+          "ORGANIC (internal) growth: expanding using the business's own resources — more outlets, more products, new markets, more staff.",
+          "Organic growth is slower, cheaper and easier to control, and it is funded largely from retained profit.",
+          "EXTERNAL (inorganic) growth: joining with another business, through a merger or a takeover.",
+          "A MERGER is two businesses agreeing to combine into one. A TAKEOVER is one buying control of another, and need not be friendly.",
+          "External growth is fast but expensive, and combining two different workforces and cultures often goes badly.",
+        ],
+      },
+      {
+        heading: "Economies and diseconomies of scale",
+        points: [
+          "ECONOMIES OF SCALE: as output rises, the cost of producing each unit falls.",
+          "PURCHASING economies — buying materials in bulk at a discount, which is the most common example.",
+          "TECHNICAL economies — expensive machinery becomes worth buying once output is high enough to use it fully.",
+          "Other sources: cheaper borrowing for large firms, specialist managers, and marketing spread over more units.",
+          "DISECONOMIES of scale: beyond a point, unit costs rise again through poor communication, slow decisions and staff feeling like a number.",
+        ],
+      },
+      {
+        heading: "Types of integration",
+        points: [
+          "HORIZONTAL integration: joining with a business at the same stage of the same industry, such as two supermarkets.",
+          "VERTICAL integration: joining with a business at a different stage of the same supply chain.",
+          "FORWARD vertical means moving towards the customer, such as a farm buying a shop.",
+          "BACKWARD vertical means moving towards the supplier, such as a coffee chain buying a plantation.",
+          "DIVERSIFICATION: moving into an unrelated market, which spreads risk but takes the business away from what it knows.",
+        ],
+      },
+      {
+        heading: "The problems growth brings",
+        points: [
+          "OVERTRADING: growing faster than the cash available to fund it, which is a leading cause of failure in successful businesses.",
+          "Loss of control as the owner can no longer make every decision personally.",
+          "Communication gets slower and more distorted as more layers are added.",
+          "Company culture and customer service often suffer as the personal touch disappears.",
+          "Bigger businesses attract more regulation, more scrutiny and more media attention.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Organic growth", definition: "Growth from within, using the business's own resources to expand — also called internal growth." },
+      { term: "External growth", definition: "Growth by joining with another business through a merger or takeover — also called inorganic growth." },
+      { term: "Merger", definition: "Two businesses agreeing to combine to form a single new business." },
+      { term: "Takeover", definition: "One business buying enough shares in another to gain control of it." },
+      { term: "Economies of scale", definition: "The fall in average cost per unit that comes from producing on a larger scale." },
+      { term: "Purchasing economies", definition: "Lower cost per unit from buying materials in bulk at a discount." },
+      { term: "Technical economies", definition: "Lower unit costs from using specialist machinery that only pays off at high output." },
+      { term: "Diseconomies of scale", definition: "The rise in average cost per unit when a business becomes too large to manage efficiently." },
+      { term: "Horizontal integration", definition: "Joining with a business at the same stage of the same industry." },
+      { term: "Vertical integration", definition: "Joining with a business at a different stage of the same supply chain." },
+      { term: "Forward vertical integration", definition: "Joining with a business closer to the customer, such as a manufacturer buying a retailer." },
+      { term: "Backward vertical integration", definition: "Joining with a business closer to the supplier, such as a retailer buying a factory." },
+      { term: "Diversification", definition: "Moving into a different market or product area to spread risk." },
+      { term: "Overtrading", definition: "Expanding faster than the available cash allows, causing a cash flow crisis despite rising sales." },
+      { term: "Average cost per unit", definition: "Total costs divided by the number of units produced." },
+      { term: "Multinational", definition: "A business that operates in more than one country." },
+    ],
+    examTips: [
+      {
+        tip: "Organic versus external is the first split",
+        detail:
+          "Organic is slow, cheap and controllable; external is fast, expensive and risky. Naming which route the business in the case study is taking frames the whole answer.",
+      },
+      {
+        tip: "Say WHICH economy of scale you mean",
+        detail:
+          "'Economies of scale' on its own is vague. 'Purchasing economies, because ordering ten times the flour earns a bulk discount' is specific and scores.",
+      },
+      {
+        tip: "Direction matters in vertical integration",
+        detail:
+          "Forward is towards the customer, backward is towards the supplier. Get the direction the wrong way round and the mark is lost even though you knew the term.",
+      },
+      {
+        tip: "Link growth back to cash flow",
+        detail:
+          "Overtrading is the connection examiners most want to see: growth costs money now and pays later, so a growing business often needs finance precisely when it looks healthiest.",
+      },
+      {
+        tip: "Remember diseconomies exist",
+        detail:
+          "Answers that treat bigger as automatically better cap themselves. Communication, motivation and decision speed all get worse with size.",
+      },
+      {
+        tip: "Growth is a choice, not an obligation",
+        detail:
+          "Plenty of owners deliberately stay small to keep control and quality. If the case study says so, use it — that is a legitimate and well-credited judgement.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A bakery makes 2,000 loaves a month at a total cost of £5,000. After expanding it makes 6,000 loaves at a total cost of £12,000. Show whether it has achieved economies of scale.",
+        steps: [
+          "Average cost per unit = total costs ÷ number of units.",
+          "Before: £5,000 ÷ 2,000 = £2.50 per loaf.",
+          "After: £12,000 ÷ 6,000 = £2.00 per loaf.",
+          "The average cost per unit has FALLEN by 50p, so yes — this is an economy of scale.",
+        ],
+        answer: "Average cost fell from £2.50 to £2.00 per loaf, so economies of scale have been achieved",
+      },
+    ],
+    practice: [
+      {
+        question: "Growth using a business's own resources, without buying another firm, is called ______ growth.",
+        accept: ["organic", "internal", "organic growth", "internal growth"],
+        answer:
+          "Organic growth, also called internal growth. It is slower but cheaper and far easier to control, and it is usually funded out of retained profit.",
+      },
+      {
+        question: "Two businesses agreeing to combine into one new business is called a ______.",
+        accept: ["merger", "a merger"],
+        answer:
+          "A merger. The distinction from a takeover is agreement: in a merger both sides want it, whereas a takeover can be resisted by the business being bought.",
+      },
+      {
+        question: "One business buying control of another is called a ______.",
+        accept: ["takeover", "a takeover", "acquisition"],
+        answer:
+          "A takeover. It happens by buying more than half the shares, which is why public limited companies are more exposed to it than private ones.",
+      },
+      {
+        question: "The fall in average cost per unit as output rises is called economies of ______.",
+        accept: ["scale", "economies of scale"],
+        answer:
+          "Economies of scale. Always name which type — purchasing, technical, financial or marketing — because the specific mechanism is what earns the analysis mark.",
+      },
+      {
+        question: "Buying materials in bulk to get a discount is which type of economy of scale?",
+        accept: ["purchasing", "purchasing economies", "bulk buying", "bulk"],
+        answer:
+          "Purchasing economies. It is the most common example and the one small businesses most obviously lack, which is why they struggle to compete on price.",
+      },
+      {
+        question: "A supermarket buying another supermarket is which type of integration?",
+        accept: ["horizontal", "horizontal integration"],
+        answer:
+          "Horizontal integration — joining with a business at the same stage of the same industry. It increases market share quickly and removes a competitor at the same time.",
+      },
+      {
+        question: "A coffee chain buying the farm that grows its beans is which type of integration?",
+        accept: ["backward vertical", "backward", "backward vertical integration", "vertical"],
+        answer:
+          "Backward vertical integration — moving towards the supplier. It secures supply and cuts out the supplier's profit margin, but ties up capital in an unfamiliar business.",
+      },
+      {
+        question: "A manufacturer buying a chain of shops to sell its own products is which type of integration?",
+        accept: ["forward vertical", "forward", "forward vertical integration"],
+        answer:
+          "Forward vertical integration — moving towards the customer. It captures the retailer's margin and gives direct control over how the product is presented and priced.",
+      },
+      {
+        question: "When a business grows so fast that it runs out of cash, this is called ______.",
+        accept: ["overtrading", "over trading"],
+        answer:
+          "Overtrading. It is the reason a business can fail at the moment it looks most successful — stock, staff and premises are all paid for before the extra sales bring cash in.",
+      },
+      {
+        question: "The rise in unit costs when a business becomes too big to manage well is called ______ of scale.",
+        accept: ["diseconomies", "diseconomies of scale"],
+        answer:
+          "Diseconomies of scale. The causes are human rather than technical: slower communication, slower decisions, and staff who feel anonymous and lose motivation.",
+      },
+      {
+        question: "Moving into a completely different market to spread risk is called ______.",
+        accept: ["diversification", "diversifying"],
+        answer:
+          "Diversification. It protects against a downturn in one market, but takes the business into an area where it has no expertise and no reputation.",
+      },
+      {
+        question: "Total costs are £12,000 for 4,000 units. Calculate the average cost per unit in pounds. Give the number only.",
+        accept: ["3"],
+        answer:
+          "£3. Average cost per unit = total costs ÷ units = 12,000 ÷ 4,000. Comparing this figure before and after expansion is how you prove economies of scale exist.",
+      },
+      {
+        question: "Total costs are £18,000 for 9,000 units. Calculate the average cost per unit in pounds. Give the number only.",
+        accept: ["2"],
+        answer:
+          "£2. 18,000 ÷ 9,000 = £2. If this business previously produced fewer units at a higher average cost, it has achieved economies of scale.",
+      },
+      {
+        question: "A business that operates in more than one country is called a ______.",
+        accept: ["multinational", "a multinational", "mnc", "transnational"],
+        answer:
+          "A multinational. Operating across borders brings access to bigger markets and cheaper production, along with exchange rate risk and far more complex regulation.",
+      },
+      {
+        question: "Explain why a business might grow organically rather than by takeover. Write two or three sentences.",
+        answer:
+          "Organic growth can be funded from retained profit, so the business avoids taking on large debt or selling shares and losing control. It is also far easier to manage: the existing culture, systems and staff expand gradually rather than two different organisations having to be merged. The trade-off is speed — a competitor growing by acquisition can take market share much faster. Mark this one yourself: credit yourself for cost, control and culture on one side, and for acknowledging the slower pace.",
+      },
+      {
+        question: "A successful chain of three restaurants plans to open eight more within a year. Evaluate the risks.",
+        answer:
+          "The biggest risk is overtrading: eight sites means paying deposits, fit-out costs, stock and wages long before any of them earn, so cash flow could collapse even while sales rise. Quality and culture are the second risk — the owner cannot personally supervise eleven kitchens, so the consistency that made the original three successful may not survive. There is also demand risk: the three existing sites may have taken the best locations, and eight more could cannibalise each other. Growing more slowly, funding each site from the profits of the last, would reduce all three risks at the cost of letting competitors move first. Overall, expanding this fast is high risk unless external finance is secured in advance AND a management structure is put in place. Mark this one yourself: the top band needs overtrading named, plus a realistic alternative and a conditional judgement.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Bigger businesses always have lower costs per unit.",
+        right:
+          "Only up to a point. Past it, diseconomies of scale set in — communication slows, decisions take longer and motivation falls, pushing unit costs back up.",
+      },
+      {
+        wrong: "A merger and a takeover are the same thing.",
+        right:
+          "A merger is agreed by both sides. A takeover is one business buying control of another and can be resisted by the target's board.",
+      },
+      {
+        wrong: "Growing sales means the business is financially safe.",
+        right:
+          "Growth consumes cash before it produces it. Overtrading kills profitable, fast-growing businesses precisely when they look most successful.",
+      },
+      {
+        wrong: "Vertical integration means joining with a competitor.",
+        right:
+          "That is horizontal. Vertical means a different stage of the SAME supply chain — a supplier or a retailer, not a rival.",
+      },
+      {
+        wrong: "Every business wants to grow.",
+        right:
+          "Many owners deliberately stay small to protect quality, control and their own working hours. If the case study says so, that is the answer.",
+      },
+    ],
+  },
+
+  "business/globalisation-and-trade": {
+    summary:
+      "Globalisation is the reason a phone designed in California, made from parts across Asia, is sold in a shop in Sheffield. This topic covers why trade between countries has grown so fast, what it means for UK businesses — bigger markets, but also competitors from everywhere — and how exchange rates, tariffs and trade blocs change the sums.",
+    keyFacts: [
+      {
+        heading: "What globalisation is and why it grew",
+        points: [
+          "Globalisation is the increasing connection of economies through trade, investment and technology.",
+          "Cheaper and faster transport, especially container shipping, cut the cost of moving goods enormously.",
+          "The internet made it possible to sell, coordinate and manage across borders instantly.",
+          "Trade barriers have fallen through trade agreements and organisations such as the World Trade Organization.",
+          "Businesses can now produce wherever it is cheapest and sell wherever demand is highest.",
+        ],
+      },
+      {
+        heading: "Opportunities and threats for UK businesses",
+        points: [
+          "IMPORTS are goods and services bought in from abroad; EXPORTS are those sold abroad.",
+          "Opportunity: access to a market of billions rather than 68 million.",
+          "Opportunity: cheaper raw materials and components, and the option of producing overseas.",
+          "Threat: competition from businesses in countries with much lower wage costs.",
+          "Threat: greater exposure to events elsewhere — a factory closure or shipping disruption abroad stops production here.",
+        ],
+      },
+      {
+        heading: "Barriers to trade",
+        points: [
+          "A TARIFF is a tax on imported goods, making them more expensive and protecting domestic producers.",
+          "A QUOTA is a physical limit on how much of a product may be imported.",
+          "Other barriers include product standards, paperwork, customs checks and licensing requirements.",
+          "A TRADE BLOC is a group of countries that have agreed to reduce or remove barriers between them.",
+          "Barriers protect domestic jobs but raise prices for consumers and invite retaliation from other countries.",
+        ],
+      },
+      {
+        heading: "Exchange rates",
+        points: [
+          "An exchange rate is the price of one currency in terms of another.",
+          "A STRONG pound buys more foreign currency, making IMPORTS cheaper and EXPORTS dearer abroad.",
+          "A WEAK pound makes EXPORTS cheaper abroad and IMPORTS more expensive.",
+          "The memory aid is SPICED: Strong Pound, Imports Cheap, Exports Dear.",
+          "Exchange rates move constantly, so a business trading abroad faces uncertainty in both its costs and its revenue.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Globalisation", definition: "The growing connection of economies worldwide through trade, investment and technology." },
+      { term: "Import", definition: "A good or service bought from a business in another country." },
+      { term: "Export", definition: "A good or service sold to a customer in another country." },
+      { term: "Tariff", definition: "A tax placed on imported goods, making them more expensive." },
+      { term: "Quota", definition: "A physical limit on the quantity of a product that may be imported." },
+      { term: "Trade barrier", definition: "Anything that makes trading between countries harder or more expensive." },
+      { term: "Trade bloc", definition: "A group of countries that has agreed to reduce trade barriers between its members." },
+      { term: "Exchange rate", definition: "The price of one currency expressed in terms of another." },
+      { term: "Strong pound", definition: "A pound that buys more foreign currency, making imports cheaper and exports dearer abroad." },
+      { term: "Weak pound", definition: "A pound that buys less foreign currency, making exports cheaper abroad and imports dearer." },
+      { term: "SPICED", definition: "Strong Pound, Imports Cheap, Exports Dear — a memory aid for exchange rate effects." },
+      { term: "Multinational company", definition: "A business with operations in more than one country." },
+      { term: "Outsourcing", definition: "Paying another business, often abroad, to carry out work previously done in-house." },
+      { term: "Offshoring", definition: "Moving part of a business's own operations to another country." },
+      { term: "Supply chain", definition: "The whole sequence of businesses involved in producing and delivering a product." },
+      { term: "Free trade", definition: "Trade between countries without tariffs, quotas or other barriers." },
+    ],
+    examTips: [
+      {
+        tip: "Learn SPICED and write it down in the exam",
+        detail:
+          "Strong Pound, Imports Cheap, Exports Dear. Exchange rate questions are worth reliable marks and the direction is the only hard part.",
+      },
+      {
+        tip: "Say who WINS and who LOSES from a rate change",
+        detail:
+          "A weak pound helps exporters and hurts importers. A business that does both is affected in both directions — say so if the case study allows.",
+      },
+      {
+        tip: "Tariffs and quotas are different",
+        detail:
+          "A tariff is a TAX making imports dearer; a quota is a LIMIT on quantity. Using the words interchangeably costs marks.",
+      },
+      {
+        tip: "Balance opportunity against threat",
+        detail:
+          "Globalisation gives a UK firm a bigger market AND more competitors. Answers that give only one side cannot reach the higher bands.",
+      },
+      {
+        tip: "Apply it to the size of the business",
+        detail:
+          "A small firm can now export through a website, which was impossible thirty years ago; it also now competes with Chinese sellers on the same platform.",
+      },
+      {
+        tip: "Remember exchange rates cut both ways for one business",
+        detail:
+          "An exporter that buys imported components gains on sales and loses on costs when the pound falls. That nuance is a top-band point.",
+      },
+    ],
+    practice: [
+      {
+        question: "A good bought from a business in another country is called an ______.",
+        accept: ["import", "an import", "imports"],
+        answer:
+          "An import. The easy way to keep them straight: imports come IN to the country, exports go out. Confusing the two wrecks exchange rate answers.",
+      },
+      {
+        question: "A tax placed on imported goods is called a ______.",
+        accept: ["tariff", "a tariff", "tariffs"],
+        answer:
+          "A tariff. It protects domestic producers by making foreign goods dearer, but raises prices for consumers and often provokes retaliation from other countries.",
+      },
+      {
+        question: "A physical limit on the quantity of a product that can be imported is called a ______.",
+        accept: ["quota", "a quota", "quotas"],
+        answer:
+          "A quota. Unlike a tariff it does not raise money for the government — it simply caps how much may come in, whatever the price.",
+      },
+      {
+        question: "What does the S in SPICED stand for?",
+        accept: ["strong", "strong pound"],
+        answer:
+          "Strong. SPICED means Strong Pound, Imports Cheap, Exports Dear — worth writing in the margin as soon as an exchange rate question appears.",
+      },
+      {
+        question: "If the pound gets stronger, do imports become cheaper or more expensive?",
+        accept: ["cheaper", "cheap", "less expensive"],
+        answer:
+          "Cheaper. A stronger pound buys more foreign currency, so the same foreign goods cost fewer pounds — the I and C of SPICED.",
+      },
+      {
+        question: "If the pound gets weaker, do UK exports become cheaper or more expensive for foreign buyers?",
+        accept: ["cheaper", "cheap", "less expensive"],
+        answer:
+          "Cheaper. Foreign buyers need less of their own currency to buy the same pound-priced goods, which usually increases demand for UK exports.",
+      },
+      {
+        question: "A group of countries that has agreed to reduce trade barriers between them is called a trade ______.",
+        accept: ["bloc", "block", "trade bloc"],
+        answer:
+          "A trade bloc. Members trade freely with each other while keeping barriers against outsiders, which is why membership matters so much to exporters.",
+      },
+      {
+        question: "Paying another business, often abroad, to do work you used to do yourself is called ______.",
+        accept: ["outsourcing", "outsource"],
+        answer:
+          "Outsourcing. It cuts costs and lets a business focus on what it does best, but hands over control of quality and creates dependence on another firm.",
+      },
+      {
+        question: "Moving part of your own operations to another country is called ______.",
+        accept: ["offshoring", "offshore"],
+        answer:
+          "Offshoring. The difference from outsourcing is ownership: with offshoring the work is still yours, just done somewhere else.",
+      },
+      {
+        question: "Trade between countries without tariffs or quotas is called ______ trade.",
+        accept: ["free", "free trade"],
+        answer:
+          "Free trade. It lowers prices and widens choice for consumers, while exposing domestic producers to competitors who may have far lower costs.",
+      },
+      {
+        question: "Name one reason globalisation has increased.",
+        accept: ["cheaper transport", "internet", "technology", "containerisation", "shipping", "trade agreements", "fewer barriers", "communication", "lower barriers"],
+        answer:
+          "Cheaper transport (especially container shipping), the internet, and trade agreements removing barriers. All three reduced the cost of doing business across borders.",
+      },
+      {
+        question: "The whole sequence of businesses involved in producing and delivering a product is called the supply ______.",
+        accept: ["chain", "supply chain"],
+        answer:
+          "The supply chain. Globalisation made them longer and cheaper — and more fragile, since a disruption anywhere along it stops production everywhere after it.",
+      },
+      {
+        question: "True or false: a weak pound is good news for a UK business that imports all its materials.",
+        accept: ["false", "f"],
+        answer:
+          "False. A weak pound makes imports MORE expensive, so its costs rise. It would be good news for the same business's export sales — which is why both sides must be considered.",
+      },
+      {
+        question: "Give one threat globalisation poses to a UK business.",
+        accept: ["competition", "cheaper foreign competitors", "low wage competition", "supply chain disruption", "exchange rates", "competitors", "foreign competition"],
+        answer:
+          "Competition from countries with far lower wage costs, and greater exposure to disruption elsewhere in a long international supply chain.",
+      },
+      {
+        question: "Explain how a fall in the value of the pound affects a UK business that exports furniture but imports its wood. Write two or three sentences.",
+        answer:
+          "Its exports become cheaper for foreign buyers, so demand and sales revenue are likely to rise. But the imported wood becomes more expensive in pounds, so its costs rise at the same time. The overall effect depends on which is larger — if the extra sales outweigh the higher material costs, profit rises; if not, it falls. Mark this one yourself: full marks need BOTH effects and the point that they pull in opposite directions.",
+      },
+      {
+        question: "A UK clothing manufacturer is considering moving production abroad. Evaluate the decision.",
+        answer:
+          "Moving abroad could cut wage costs dramatically, which matters in an industry where labour is a large share of cost and competitors have already done it — staying may simply not be viable on price. Against that: quality control is far harder at a distance, lead times lengthen, the supply chain becomes vulnerable to shipping disruption and exchange rate movements, and there is reputational risk if working conditions are poor. Some customers will pay a premium for UK-made goods, so the business could instead compete on quality, speed and provenance rather than price. Overall the right answer depends on the market segment: for a mass-market brand competing on price, offshoring may be necessary; for a premium brand, it would destroy the very thing customers are paying for. Mark this one yourself: the top band needs the recommendation to depend on which market the firm is in.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A strong pound is always good for the UK economy.",
+        right:
+          "It makes imports cheaper but UK exports dearer abroad, which hurts exporters and the jobs that depend on them. 'Strong' describes the rate, not the benefit.",
+      },
+      {
+        wrong: "Tariffs and quotas mean the same thing.",
+        right:
+          "A tariff is a tax that makes imports more expensive; a quota is a limit on how many may enter at all. Only the tariff raises government revenue.",
+      },
+      {
+        wrong: "Globalisation only helps big multinational companies.",
+        right:
+          "A one-person business can now sell worldwide through a website or marketplace. It also now competes with sellers worldwide, so the effect runs both ways.",
+      },
+      {
+        wrong: "Outsourcing and offshoring are the same.",
+        right:
+          "Outsourcing means another business does the work; offshoring means you do it yourself in another country. You can do either, both, or neither.",
+      },
+      {
+        wrong: "Exchange rate changes affect either costs or revenue, not both.",
+        right:
+          "A business that exports and imports is hit in both directions at once, and the net effect depends on which side is larger. That is exactly the nuance top answers show.",
+      },
+    ],
+  },
+
+  "business/ethics-and-the-environment": {
+    summary:
+      "Businesses face decisions where the profitable choice and the right choice point in different directions — cheaper suppliers with worse conditions, packaging that sells well but does not decompose. This topic is about those trade-offs, and about the increasingly important fact that customers now notice, which means ethics and profit align more often than they used to.",
+    keyFacts: [
+      {
+        heading: "Business ethics",
+        points: [
+          "Ethics means doing what is morally right, which is not always the same as what is legal or profitable.",
+          "Common ethical issues: pay and conditions in the supply chain, child labour, animal testing, honest advertising, tax avoidance.",
+          "Acting ethically usually raises costs in the short term — fair wages and audited suppliers cost more.",
+          "It can raise revenue too: customers pay more for fair trade goods, and staff prefer working for businesses they respect.",
+          "Reputation damage from an ethical scandal can cost far more than the saving that caused it.",
+        ],
+      },
+      {
+        heading: "Environmental impacts",
+        points: [
+          "Businesses affect the environment through pollution, carbon emissions, waste, packaging and resource use.",
+          "SUSTAINABILITY means meeting present needs without preventing future generations from meeting theirs.",
+          "Reducing impact: recycling, less packaging, renewable energy, efficient transport, repairable products.",
+          "Many environmental measures cut costs as well — using less energy and less material is cheaper.",
+          "Others cost more: recycled materials and renewable energy can be more expensive than the alternatives.",
+        ],
+      },
+      {
+        heading: "Pressure to change",
+        points: [
+          "Customers increasingly choose businesses on ethical and environmental grounds, especially younger customers.",
+          "Pressure groups and journalists expose poor practice, and social media spreads it in hours.",
+          "Employees, particularly skilled ones, prefer employers whose values they share.",
+          "Governments legislate: emissions limits, waste rules, minimum wage, plastic charges.",
+          "Investors increasingly assess environmental and social performance alongside financial returns.",
+        ],
+      },
+      {
+        heading: "The trade-offs",
+        points: [
+          "GREENWASHING is claiming to be environmentally responsible without genuinely being so, and it is a serious reputational risk when discovered.",
+          "Short-term costs versus long-term reputation is the central tension in this topic.",
+          "Small businesses often cannot afford ethical premiums that large ones absorb easily.",
+          "Ethical choices can also be a competitive advantage and a strong USP.",
+          "Doing the minimum the law requires is legal; whether it is enough is a separate question.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Business ethics", definition: "Moral principles applied to business decisions — doing what is right, not only what is legal or profitable." },
+      { term: "Ethical business", definition: "One that considers the moral impact of its decisions on people, animals and the environment." },
+      { term: "Sustainability", definition: "Meeting present needs without damaging the ability of future generations to meet theirs." },
+      { term: "Corporate social responsibility", definition: "A business taking responsibility for its impact on society and the environment beyond legal requirements." },
+      { term: "Fair trade", definition: "A scheme guaranteeing producers in developing countries a fair minimum price for their goods." },
+      { term: "Supply chain ethics", definition: "Responsibility for the conditions under which suppliers produce goods, not only the business's own site." },
+      { term: "Carbon footprint", definition: "The total greenhouse gas emissions caused by a business's activities." },
+      { term: "Greenwashing", definition: "Making misleading claims about environmental responsibility to appear greener than the business really is." },
+      { term: "Recycling", definition: "Processing used materials so they can be made into new products." },
+      { term: "Renewable energy", definition: "Energy from sources that do not run out, such as wind, solar and hydroelectric power." },
+      { term: "Pollution", definition: "The release of harmful substances into the air, water or land." },
+      { term: "Pressure group", definition: "An organised group campaigning to change business or government behaviour." },
+      { term: "Tax avoidance", definition: "Using legal methods to reduce a tax bill — legal, but often seen as unethical." },
+      { term: "Tax evasion", definition: "Illegally failing to pay tax that is owed." },
+      { term: "Ethical consumer", definition: "A customer whose buying decisions are influenced by a business's moral and environmental record." },
+      { term: "Reputation", definition: "How a business is regarded by customers and the public, which directly affects sales." },
+    ],
+    examTips: [
+      {
+        tip: "Know the difference between legal and ethical",
+        detail:
+          "Tax avoidance is legal and widely regarded as unethical; tax evasion is illegal. Questions here often turn on exactly that gap.",
+      },
+      {
+        tip: "Don't assume ethics always costs money",
+        detail:
+          "Less packaging, less energy and less waste are all cheaper. The strongest answers separate the measures that save money from the ones that cost it.",
+      },
+      {
+        tip: "Use reputation as the link to profit",
+        detail:
+          "Ethical behaviour protects sales; a scandal destroys them. Framing ethics as commercially rational, not just morally nice, reads as more sophisticated.",
+      },
+      {
+        tip: "Consider whether the business can afford it",
+        detail:
+          "A small firm on thin margins may genuinely be unable to pay an ethical premium. Recognising that constraint is worth marks in evaluation.",
+      },
+      {
+        tip: "Name greenwashing when the case study hints at it",
+        detail:
+          "Vague claims like 'eco-friendly' with nothing behind them are a real risk. Spotting it is a strong evaluative point.",
+      },
+      {
+        tip: "Different stakeholders want different things",
+        detail:
+          "Shareholders may resist the cost; customers and staff may demand the change. Linking this topic to stakeholder conflict lifts the answer.",
+      },
+    ],
+    practice: [
+      {
+        question: "Meeting present needs without damaging future generations' ability to meet theirs is called ______.",
+        accept: ["sustainability", "sustainable development", "sustainable"],
+        answer:
+          "Sustainability. It applies to more than the environment — a business that burns out its staff or squeezes suppliers to breaking point is also unsustainable.",
+      },
+      {
+        question: "Making misleading claims about being environmentally friendly is called ______.",
+        accept: ["greenwashing", "green washing"],
+        answer:
+          "Greenwashing. It is dangerous precisely because it works until it is exposed, at which point the business loses the customers its claims attracted.",
+      },
+      {
+        question: "Using legal methods to reduce a tax bill is called tax ______.",
+        accept: ["avoidance", "tax avoidance"],
+        answer:
+          "Tax avoidance. It is legal, which is exactly what makes it an ethical question rather than a legal one — and public anger about it is real.",
+      },
+      {
+        question: "Illegally failing to pay tax that is owed is called tax ______.",
+        accept: ["evasion", "tax evasion"],
+        answer:
+          "Tax evasion. This one is a crime, not an ethical grey area. Mixing up avoidance and evasion is a common and costly error.",
+      },
+      {
+        question: "The total greenhouse gas emissions caused by a business is called its carbon ______.",
+        accept: ["footprint", "carbon footprint"],
+        answer:
+          "Carbon footprint. Reducing it often reduces costs too, since less energy and less transport mean lower bills as well as lower emissions.",
+      },
+      {
+        question: "A scheme guaranteeing producers in developing countries a fair minimum price is called ______ trade.",
+        accept: ["fair", "fair trade", "fairtrade"],
+        answer:
+          "Fair trade. It raises costs for the business but allows a higher selling price, and gives a clear ethical USP that competitors cannot simply copy overnight.",
+      },
+      {
+        question: "Energy from sources that do not run out, such as wind and solar, is called ______ energy.",
+        accept: ["renewable", "renewable energy"],
+        answer:
+          "Renewable energy. It can cost more up front than fossil fuels but protects a business from energy price spikes, so the case is partly financial.",
+      },
+      {
+        question: "A customer whose purchases are influenced by a business's moral record is called an ______ consumer.",
+        accept: ["ethical", "ethical consumer"],
+        answer:
+          "An ethical consumer. There are more of them every year, which is the main reason ethical behaviour has become commercially rational and not just morally admirable.",
+      },
+      {
+        question: "True or false: everything that is legal is also ethical.",
+        accept: ["false", "f"],
+        answer:
+          "False, and this is the heart of the topic. Tax avoidance and paying the legal minimum wage in a country with no safety rules are both legal and widely judged unethical.",
+      },
+      {
+        question: "Name one environmental measure that also SAVES a business money.",
+        accept: ["less packaging", "less energy", "recycling", "reduce waste", "energy efficiency", "less transport", "reusing", "insulation", "less material"],
+        answer:
+          "Using less packaging, less energy or less material, and cutting waste. These reduce bills at the same time as emissions, which makes them the easiest measures to justify.",
+      },
+      {
+        question: "Responsibility for the conditions under which your suppliers produce goods is called supply chain ______.",
+        accept: ["ethics", "supply chain ethics", "responsibility"],
+        answer:
+          "Supply chain ethics. It matters because customers hold the brand responsible for conditions in factories it does not own — 'we did not know' is not accepted as a defence.",
+      },
+      {
+        question: "What is the name for a business taking responsibility for its impact beyond what the law requires?",
+        accept: ["corporate social responsibility", "csr", "social responsibility"],
+        answer:
+          "Corporate social responsibility (CSR). The phrase 'beyond what the law requires' is the important part — complying with the law is the floor, not the achievement.",
+      },
+      {
+        question: "Give one group that pressures businesses to behave more ethically.",
+        accept: ["customers", "pressure groups", "employees", "government", "media", "investors", "consumers", "journalists", "shareholders"],
+        answer:
+          "Customers, employees, pressure groups, the media, investors and government. Their power differs, but social media has made even small groups able to cause real damage.",
+      },
+      {
+        question: "True or false: acting ethically always reduces a business's profits.",
+        accept: ["false", "f"],
+        answer:
+          "False. Some measures cut costs directly, and ethical reputation can raise prices, retain staff and win customers. It can reduce short-term profit while raising long-term profit.",
+      },
+      {
+        question: "Explain why a business might choose a more expensive but more ethical supplier. Write two or three sentences.",
+        answer:
+          "The higher cost buys protection against reputational disaster: if a cheap supplier is found to use child labour, the damage to sales and brand can dwarf the money saved. Many customers will also pay more for a product they know was made fairly, so the extra cost can be passed on. And staff and investors increasingly prefer businesses whose practices they can defend publicly. Mark this one yourself: credit yourself for reputation risk and for the possibility of charging a premium.",
+      },
+      {
+        question: "A clothing retailer could halve its costs by switching to a supplier with poor working conditions. Evaluate whether it should.",
+        answer:
+          "The financial case is obvious — halving supply costs would transform margins and could be the difference between competing on price and losing to rivals who have already done it. But the risks are severe: if conditions are exposed by journalists or a pressure group, sales can collapse in days, and the brand damage lasts years. Customers hold retailers responsible for factories they do not own. There is also the straightforward moral point that profiting from unsafe or exploitative work is wrong regardless of whether anyone finds out. A middle path exists: negotiate with the supplier to improve conditions, audit them, and accept a smaller saving. Overall the retailer should not switch on those terms — the saving is real but the downside risk is existential and the ethical objection stands on its own. Mark this one yourself: full marks need the commercial risk AND the moral argument, plus a realistic alternative.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "If something is legal, it is ethical.",
+        right:
+          "Tax avoidance is legal and widely condemned. The law sets a minimum standard; ethics asks whether that minimum is good enough.",
+      },
+      {
+        wrong: "Being ethical always costs a business money.",
+        right:
+          "Cutting waste, packaging and energy saves money immediately. Others cost more but protect sales and reputation, which is a return rather than a cost.",
+      },
+      {
+        wrong: "A business is only responsible for its own factories.",
+        right:
+          "Customers hold brands responsible for their whole supply chain. 'Our supplier did it' has never worked as a public defence.",
+      },
+      {
+        wrong: "Saying you're eco-friendly is enough.",
+        right:
+          "That is greenwashing if nothing backs it up, and being caught costs more than never claiming it. Claims need evidence.",
+      },
+    ],
+  },
+
+  "business/the-economic-climate": {
+    summary:
+      "No business exists in isolation from the wider economy. Interest rates change what borrowing costs, inflation changes what everything costs, unemployment changes who can afford your product, and taxation changes what is left at the end. This topic is about forces no business controls but every business has to plan around.",
+    keyFacts: [
+      {
+        heading: "Interest rates",
+        points: [
+          "The interest rate is the cost of borrowing money, or the reward for saving it.",
+          "The Bank of England sets the base rate, which influences what banks charge everyone else.",
+          "HIGHER rates mean loans and mortgages cost more, so businesses invest less and consumers spend less.",
+          "Businesses with large loans or overdrafts are hit hardest, because their costs rise immediately.",
+          "LOWER rates encourage borrowing, investment and spending, which usually increases demand.",
+        ],
+      },
+      {
+        heading: "Inflation",
+        points: [
+          "Inflation is a sustained rise in the general level of prices, measured by the Consumer Prices Index.",
+          "It raises a business's costs: materials, energy, and wage demands from staff.",
+          "Businesses must decide whether to absorb higher costs, cutting margins, or pass them on, risking lost sales.",
+          "It reduces the real value of money, so customers can afford less with the same income.",
+          "Very low or negative inflation brings its own problems, as customers delay purchases expecting lower prices.",
+        ],
+      },
+      {
+        heading: "Unemployment and incomes",
+        points: [
+          "Unemployment means people who want work cannot find it.",
+          "High unemployment reduces total spending, so demand falls, especially for luxuries.",
+          "It makes recruitment easier and cheaper, because more people apply for each job.",
+          "Rising incomes increase demand, particularly for non-essential goods and services.",
+          "Demand for necessities changes far less with income than demand for luxuries.",
+        ],
+      },
+      {
+        heading: "Taxation and the business cycle",
+        points: [
+          "Income tax reduces what consumers have to spend; VAT raises the price of goods.",
+          "Corporation tax is charged on company profits, reducing what is left to reinvest or distribute.",
+          "The BUSINESS CYCLE runs: growth (boom), slowdown, recession, recovery.",
+          "In a boom, demand and confidence rise; in a recession they fall and businesses focus on survival.",
+          "Some businesses are counter-cyclical — discount retailers and repair services can do BETTER in a downturn.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Interest rate", definition: "The cost of borrowing money, or the reward for saving it, expressed as a percentage." },
+      { term: "Base rate", definition: "The interest rate set by the Bank of England, which influences all other rates." },
+      { term: "Inflation", definition: "A sustained rise in the general level of prices over time." },
+      { term: "Consumer Prices Index (CPI)", definition: "The main measure of inflation in the UK, tracking the price of a typical basket of goods." },
+      { term: "Deflation", definition: "A sustained fall in the general level of prices." },
+      { term: "Unemployment", definition: "People who are willing and able to work but cannot find a job." },
+      { term: "Recession", definition: "A period of falling output and reduced economic activity, usually with rising unemployment." },
+      { term: "Boom", definition: "A period of strong economic growth, high confidence and rising demand." },
+      { term: "Business cycle", definition: "The repeating pattern of growth, slowdown, recession and recovery in an economy." },
+      { term: "Disposable income", definition: "The money a household has left to spend after tax has been deducted." },
+      { term: "Corporation tax", definition: "A tax charged on the profits of a company." },
+      { term: "VAT", definition: "Value Added Tax — a tax added to the price of most goods and services." },
+      { term: "Income tax", definition: "A tax on the money people earn, which reduces their disposable income." },
+      { term: "Consumer confidence", definition: "How optimistic people feel about their finances, which strongly affects spending." },
+      { term: "Luxury good", definition: "A product whose demand rises sharply when incomes rise and falls sharply when they fall." },
+      { term: "Necessity", definition: "A product people buy regardless of income changes, such as basic food." },
+    ],
+    examTips: [
+      {
+        tip: "Trace the chain, don't just name the change",
+        detail:
+          "'Interest rates rise, so mortgage payments rise, so households have less to spend, so demand for our non-essential product falls.' Each link is a mark.",
+      },
+      {
+        tip: "Ask whether the product is a luxury or a necessity",
+        detail:
+          "A recession devastates a jeweller and barely touches a bread supplier. This single distinction decides most answers in this topic.",
+      },
+      {
+        tip: "Remember some businesses GAIN in a downturn",
+        detail:
+          "Discount retailers, repair shops and budget brands often grow in a recession. Noting that is a strong evaluative point.",
+      },
+      {
+        tip: "Interest rates hit borrowers hardest",
+        detail:
+          "A business with a large loan or overdraft feels a rate rise immediately in its costs. One with no debt feels it only through customer demand.",
+      },
+      {
+        tip: "Inflation is a cost problem AND a demand problem",
+        detail:
+          "It raises what the business pays and reduces what customers can afford. Answers covering both sides score higher.",
+      },
+      {
+        tip: "Don't quote a current rate from memory",
+        detail:
+          "Rates and inflation figures change constantly. Describe the direction and effect rather than risking an out-of-date number.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the name for a sustained rise in the general level of prices?",
+        accept: ["inflation"],
+        answer:
+          "Inflation. It hurts a business twice: costs rise, and customers can afford less with the same income, so demand may fall at the same time.",
+      },
+      {
+        question: "Which organisation sets the UK base interest rate?",
+        accept: ["bank of england", "the bank of england", "boe"],
+        answer:
+          "The Bank of England. Its base rate influences what every bank charges, so a change ripples through mortgages, loans and business overdrafts.",
+      },
+      {
+        question: "What is the main UK measure of inflation called?",
+        accept: ["cpi", "consumer prices index", "consumer price index"],
+        answer:
+          "The Consumer Prices Index (CPI). It tracks the price of a typical basket of goods and services over time, which is how a single inflation figure is produced.",
+      },
+      {
+        question: "A period of falling output and reduced economic activity is called a ______.",
+        accept: ["recession", "a recession"],
+        answer:
+          "A recession. Demand falls, unemployment rises, and most businesses shift their aim from growth back to survival.",
+      },
+      {
+        question: "The money a household has left after tax is called ______ income.",
+        accept: ["disposable", "disposable income"],
+        answer:
+          "Disposable income. It is the figure that actually drives spending, which is why an income tax rise reduces demand even though it is not a tax on businesses.",
+      },
+      {
+        question: "What tax is charged on company profits?",
+        accept: ["corporation tax", "corporationtax"],
+        answer:
+          "Corporation tax. A rise reduces what is left for reinvestment or dividends, so it affects a business's ability to grow as well as its owners' returns.",
+      },
+      {
+        question: "What tax is added to the price of most goods and services in the UK?",
+        accept: ["vat", "value added tax"],
+        answer:
+          "VAT — Value Added Tax. Because it is added to prices, a VAT rise makes goods dearer for customers and can reduce demand even though the business keeps none of it.",
+      },
+      {
+        question: "If interest rates rise, is business investment likely to increase or decrease?",
+        accept: ["decrease", "decreases", "fall", "falls", "reduce", "go down", "lower", "decline"],
+        answer:
+          "Decrease. Borrowing costs more, so fewer expansion projects are worth doing, and existing loan repayments take money that might have funded them.",
+      },
+      {
+        question: "A product whose demand rises sharply when incomes rise is called a ______ good.",
+        accept: ["luxury", "luxury good"],
+        answer:
+          "A luxury good. Businesses selling luxuries are hit hardest in a recession, which is why this distinction decides most answers in this topic.",
+      },
+      {
+        question: "A sustained FALL in the general level of prices is called ______.",
+        accept: ["deflation"],
+        answer:
+          "Deflation. It sounds welcome but causes customers to delay purchases in the expectation of lower prices still, which reduces demand and can deepen a downturn.",
+      },
+      {
+        question: "The repeating pattern of boom, slowdown, recession and recovery is called the business ______.",
+        accept: ["cycle", "business cycle", "economic cycle"],
+        answer:
+          "The business cycle. Knowing which stage the economy is in tells you whether customers are confident and spending or cautious and saving.",
+      },
+      {
+        question: "How optimistic people feel about their finances is called consumer ______.",
+        accept: ["confidence", "consumer confidence"],
+        answer:
+          "Consumer confidence. It matters because spending depends on how secure people FEEL, not only on what they earn — worried people save even when their income is unchanged.",
+      },
+      {
+        question: "Name one type of business that may do BETTER during a recession.",
+        accept: ["discount", "discount retailer", "budget", "repair", "pound shop", "charity shop", "value brands", "second hand", "supermarket"],
+        answer:
+          "Discount retailers, budget brands, repair services and second-hand shops. Customers trade down rather than stopping spending, so these businesses gain their custom.",
+      },
+      {
+        question: "True or false: high unemployment makes it harder for a business to recruit staff.",
+        accept: ["false", "f"],
+        answer:
+          "False. High unemployment means more people applying for each vacancy, so recruitment is easier and wages may be lower. The problem it causes is falling demand, not staffing.",
+      },
+      {
+        question: "Explain how a rise in interest rates could reduce sales for a furniture shop. Write two or three sentences.",
+        answer:
+          "Higher rates raise mortgage and loan repayments, so households have less disposable income left each month. Furniture is a postponable purchase — an old sofa can last another year — so it is exactly the kind of spending people cut first. The shop may also find its own borrowing costs have risen at the same time, squeezing it from both directions. Mark this one yourself: credit yourself for the chain from rates to disposable income to postponable spending.",
+      },
+      {
+        question: "A business selling premium kitchens expects a recession. Evaluate how it should respond.",
+        answer:
+          "Premium kitchens are a luxury and highly postponable, so demand is likely to fall sharply — planning for it is sensible rather than pessimistic. It could introduce a cheaper range to capture customers trading down, though that risks damaging the premium brand it has built. It could cut costs and reduce stock to protect cash flow, which is the safest immediate step, but cutting marketing may lose ground to competitors who keep spending. It could also target segments less affected by the downturn, such as landlords or wealthier customers whose incomes are more secure. Overall, protecting cash flow first and targeting more resilient customers is the strongest combination; launching a budget range should be a last resort because the brand is the asset. Mark this one yourself: the top band needs the luxury/necessity point, at least two responses weighed, and a judgement.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Inflation just means things cost more for customers.",
+        right:
+          "It raises the business's own costs too — materials, energy and wages. Businesses face it from both sides at once.",
+      },
+      {
+        wrong: "A recession is bad for every business.",
+        right:
+          "Discount retailers, repair services and budget brands often grow, because customers trade down rather than stopping spending entirely.",
+      },
+      {
+        wrong: "Interest rate rises only affect businesses with loans.",
+        right:
+          "They also reduce customer spending, because mortgages and credit cost more. A debt-free business still sees demand fall.",
+      },
+      {
+        wrong: "High unemployment is bad for a business in every way.",
+        right:
+          "Demand falls, but recruitment becomes easier and cheaper. Balanced answers note both.",
+      },
+      {
+        wrong: "Deflation is good because things get cheaper.",
+        right:
+          "It encourages customers to delay purchases waiting for lower prices, which reduces demand and can make a downturn worse.",
+      },
+    ],
+  },
+
+  "business/business-and-the-law": {
+    summary:
+      "The law sets the floor a business has to stand on: how it must treat customers, how it must treat staff, and what it may claim about its products. Breaking these rules brings fines, compensation claims and public damage — and the rules are not optional, which is what separates this topic from the ethics one next to it.",
+    keyFacts: [
+      {
+        heading: "Consumer law",
+        points: [
+          "The Consumer Rights Act 2015 is the main law protecting customers buying goods and services.",
+          "Goods must be of SATISFACTORY QUALITY, FIT FOR PURPOSE, and AS DESCRIBED.",
+          "Customers have a short-term right to reject faulty goods and get a refund, usually within 30 days.",
+          "Services must be carried out with reasonable care and skill, in a reasonable time, for a reasonable price.",
+          "Descriptions and advertising must not be misleading, and the Advertising Standards Authority polices this.",
+        ],
+      },
+      {
+        heading: "Employment law",
+        points: [
+          "The National Minimum Wage and National Living Wage set legal minimum hourly pay, which varies by age and changes each April.",
+          "The Equality Act 2010 makes discrimination unlawful on grounds including age, sex, race, disability, religion and sexual orientation.",
+          "Employees are entitled to a written contract, paid holiday and rest breaks.",
+          "Rules cover unfair dismissal, redundancy pay, and notice periods.",
+          "Health and safety law requires employers to protect staff from avoidable risk through training, equipment and safe systems.",
+        ],
+      },
+      {
+        heading: "Why the law matters commercially",
+        points: [
+          "Fines and compensation can be large enough to threaten a small business's survival.",
+          "Legal action is slow, expensive and distracting even when the business wins.",
+          "Publicity from a case damages reputation with customers and future employees.",
+          "Compliance costs money: training, equipment, record-keeping and sometimes higher wages.",
+          "But it also produces benefits — safer workplaces have fewer accidents, and fair treatment reduces staff turnover.",
+        ],
+      },
+      {
+        heading: "Data and other regulation",
+        points: [
+          "Data protection law controls how personal information is collected, stored and used, with significant fines for breaches.",
+          "Businesses must tell people what data they hold and delete it on request.",
+          "Environmental regulation covers waste, emissions, packaging and disposal.",
+          "Licensing rules apply to particular trades, such as selling alcohol or handling food.",
+          "The law sets a MINIMUM standard; ethics asks whether that minimum is enough.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Consumer Rights Act 2015", definition: "The main UK law protecting customers, requiring goods to be of satisfactory quality, fit for purpose and as described." },
+      { term: "Satisfactory quality", definition: "Goods must meet the standard a reasonable person would expect, given the price and description." },
+      { term: "Fit for purpose", definition: "Goods must do the job they are sold to do." },
+      { term: "As described", definition: "Goods must match the description, sample or model shown to the customer." },
+      { term: "Equality Act 2010", definition: "The law making discrimination unlawful on grounds such as age, sex, race, disability and religion." },
+      { term: "Discrimination", definition: "Treating someone less favourably because of a protected characteristic." },
+      { term: "National Minimum Wage", definition: "The legal minimum hourly rate an employer must pay, varying by age." },
+      { term: "National Living Wage", definition: "The higher legal minimum hourly rate for workers above a set age." },
+      { term: "Unfair dismissal", definition: "Ending someone's employment without a fair reason or a fair procedure." },
+      { term: "Redundancy", definition: "Dismissal because the job itself is no longer needed, which carries a right to redundancy pay." },
+      { term: "Health and safety law", definition: "Rules requiring employers to protect employees from avoidable risks at work." },
+      { term: "Data protection", definition: "The legal rules governing how personal information may be collected, stored and used." },
+      { term: "Advertising Standards Authority", definition: "The body that regulates advertising in the UK and can order misleading adverts to be withdrawn." },
+      { term: "Contract of employment", definition: "The legal agreement setting out an employee's pay, hours, duties and rights." },
+      { term: "Tribunal", definition: "A legal body that hears employment disputes such as unfair dismissal or discrimination claims." },
+      { term: "Compliance", definition: "Meeting the requirements of the law and relevant regulations." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the three consumer rights as a trio",
+        detail:
+          "Satisfactory quality, fit for purpose, as described. They come up constantly and are quick, reliable marks when quoted exactly.",
+      },
+      {
+        tip: "Name the law where you can",
+        detail:
+          "'The Consumer Rights Act 2015' or 'the Equality Act 2010' shows precision. Being unsure of a date is fine — naming the wrong Act is not.",
+      },
+      {
+        tip: "Give the cost of compliance AND the benefit",
+        detail:
+          "Safety training costs money and reduces accidents, sick pay and insurance premiums. Both sides are needed for the higher bands.",
+      },
+      {
+        tip: "Link legal risk to a small business's survival",
+        detail:
+          "A fine or tribunal award that a supermarket absorbs could close a firm with three employees. Scale matters in evaluation.",
+      },
+      {
+        tip: "Keep law and ethics separate",
+        detail:
+          "Law is the minimum you must do; ethics is what you should do. Questions often sit exactly on that boundary, so be clear which one you are answering.",
+      },
+      {
+        tip: "Don't quote current wage rates from memory",
+        detail:
+          "The National Living Wage changes every April. Describe how it works rather than risking a figure that is a year out of date.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which Act is the main UK law protecting customers who buy goods and services?",
+        accept: ["consumer rights act", "consumer rights act 2015", "the consumer rights act"],
+        answer:
+          "The Consumer Rights Act 2015. Its three core requirements — satisfactory quality, fit for purpose, as described — are worth memorising word for word.",
+      },
+      {
+        question: "Goods must do the job they are sold to do. This requirement is called fit for ______.",
+        accept: ["purpose", "fit for purpose"],
+        answer:
+          "Fit for purpose. A waterproof coat that leaks fails this test even if it is well made and exactly as pictured, because it does not do its job.",
+      },
+      {
+        question: "Goods must match what the customer was told. This requirement is called 'as ______'.",
+        accept: ["described", "as described"],
+        answer:
+          "As described. It covers the advert, the label, the sample and anything a salesperson said, which is why misleading descriptions are a legal problem and not just a moral one.",
+      },
+      {
+        question: "Which Act makes discrimination unlawful on grounds such as age, race and disability?",
+        accept: ["equality act", "equality act 2010", "the equality act"],
+        answer:
+          "The Equality Act 2010. It applies to recruitment, pay, promotion and dismissal, so it shapes every stage of how a business treats its staff.",
+      },
+      {
+        question: "The legal minimum hourly rate an employer must pay is called the National Minimum ______.",
+        accept: ["wage", "national minimum wage", "minimum wage"],
+        answer:
+          "The National Minimum Wage, with a higher National Living Wage for older workers. Both change each April, so never quote a rate from memory in an exam.",
+      },
+      {
+        question: "Ending someone's employment without a fair reason or procedure is called unfair ______.",
+        accept: ["dismissal", "unfair dismissal"],
+        answer:
+          "Unfair dismissal. Note that the PROCEDURE matters as much as the reason — a fair reason handled badly can still lose a tribunal case.",
+      },
+      {
+        question: "Dismissal because the job itself is no longer needed is called ______.",
+        accept: ["redundancy", "being made redundant", "redundant"],
+        answer:
+          "Redundancy. It is lawful when genuine, and carries a right to redundancy pay based on age and length of service.",
+      },
+      {
+        question: "Which body regulates advertising in the UK?",
+        accept: ["advertising standards authority", "asa"],
+        answer:
+          "The Advertising Standards Authority (ASA). It can order misleading adverts to be withdrawn, and the publicity around that is often worse than the ruling itself.",
+      },
+      {
+        question: "A legal body that hears employment disputes is called a ______.",
+        accept: ["tribunal", "employment tribunal", "a tribunal"],
+        answer:
+          "An employment tribunal. Even a case the business wins costs management time, legal fees and reputation, which is why prevention is far cheaper than defence.",
+      },
+      {
+        question: "What is the legal agreement setting out an employee's pay, hours and duties called?",
+        accept: ["contract of employment", "employment contract", "contract"],
+        answer:
+          "A contract of employment. Employees are legally entitled to written particulars of it, and disputes usually start with what it does or does not say.",
+      },
+      {
+        question: "Meeting the requirements of the law and relevant regulations is called ______.",
+        accept: ["compliance", "complying", "legal compliance"],
+        answer:
+          "Compliance. It costs money in training, equipment and record-keeping, which is a real burden on small firms — but non-compliance costs far more when it goes wrong.",
+      },
+      {
+        question: "Which area of law controls how a business stores customers' personal information?",
+        accept: ["data protection", "gdpr", "data protection law", "uk gdpr"],
+        answer:
+          "Data protection law. Fines for serious breaches are large enough to matter to any business, and customers now expect to be told what is held about them.",
+      },
+      {
+        question: "True or false: the law tells a business the maximum standard it should aim for.",
+        accept: ["false", "f"],
+        answer:
+          "False. The law sets the MINIMUM. Doing only what is legally required is lawful, but whether it is good enough is an ethical question, not a legal one.",
+      },
+      {
+        question: "Give one cost to a business of following health and safety law.",
+        accept: ["training", "equipment", "time", "cost of equipment", "protective equipment", "record keeping", "money", "inspections"],
+        answer:
+          "Training, protective equipment, safer machinery, inspections and record-keeping all cost money and time — though they also reduce accidents, sick pay and insurance premiums.",
+      },
+      {
+        question: "Explain why following employment law can benefit a business as well as costing it money. Write two or three sentences.",
+        answer:
+          "Fair pay, safe conditions and proper procedures reduce staff turnover, so the business spends less on constant recruitment and training. Fewer accidents mean less sick pay, lower insurance and no lost production. It also avoids tribunal claims, which cost management time and damage reputation with customers and future applicants even when the business wins. Mark this one yourself: credit yourself for retention, accident costs and reputation.",
+      },
+      {
+        question: "A small café owner says health and safety rules are too expensive for a business her size. Evaluate that view.",
+        answer:
+          "There is something in it: compliance costs are largely fixed, so training, equipment and record-keeping take a much larger share of a small firm's revenue than a chain's, and the paperwork falls on an owner already doing five jobs. But the argument fails on the risks. A single serious accident or food poisoning case could bring a fine, a compensation claim and closure — losses a small business is least able to absorb, precisely because it has no reserves. Insurance premiums and staff turnover also fall when conditions are good. Overall the cost is a genuine burden but the alternative is worse for her than for a large firm, so the view is understandable but mistaken. Mark this one yourself: the top band needs the point that small firms are MORE exposed to the downside, not less.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Consumer rights only apply if the shop offers a guarantee.",
+        right:
+          "The Consumer Rights Act applies automatically to every sale. A guarantee is extra, offered voluntarily on top of rights the customer already has.",
+      },
+      {
+        wrong: "Employment law only applies to big companies.",
+        right:
+          "Minimum wage, discrimination and health and safety law apply from the first employee. Size changes the resources available, not the obligations.",
+      },
+      {
+        wrong: "If a dismissal has a good reason, it cannot be unfair.",
+        right:
+          "The procedure matters too. A fair reason handled without warnings, evidence or a hearing can still be ruled unfair dismissal.",
+      },
+      {
+        wrong: "Obeying the law means a business is behaving ethically.",
+        right:
+          "The law is a minimum standard. Plenty of legal practices — aggressive tax avoidance, paying exactly the minimum wage — are widely judged unethical.",
+      },
+    ],
+  },
+
+  "business/production-processes": {
+    summary:
+      "How something gets made decides what it costs, how quickly it arrives and how much it can be customised. This topic covers the three main production methods, the idea of productivity, and lean production — the deliberate hunt for anything in a process that costs money without adding value.",
+    keyFacts: [
+      {
+        heading: "The three production methods",
+        points: [
+          "JOB production: one item made at a time, to order — a wedding cake, a bespoke suit, a house extension.",
+          "Job production allows full customisation and high prices, but is slow with a high cost per unit.",
+          "BATCH production: identical items made in groups, with the equipment reset between batches — bread, clothing sizes, paint colours.",
+          "FLOW production: items made continuously on a production line, identical and in huge numbers — cars, drinks, packaged food.",
+          "Flow gives the lowest unit cost through economies of scale, but needs enormous investment and offers no flexibility.",
+        ],
+      },
+      {
+        heading: "Productivity and efficiency",
+        points: [
+          "PRODUCTIVITY = output ÷ number of workers (or hours worked). It measures how much each worker produces.",
+          "Higher productivity lowers the labour cost per unit, which is why businesses invest so heavily in it.",
+          "Productivity can be raised through training, better equipment, improved layout and better motivation.",
+          "EFFICIENCY means producing with the least waste of time, materials and money.",
+          "Productivity is not the same as working harder — usually it means working with better tools or a better process.",
+        ],
+      },
+      {
+        heading: "Lean production",
+        points: [
+          "Lean production means cutting out anything that uses resources without adding value for the customer.",
+          "The main wastes: overproduction, waiting, unnecessary transport, excess stock, defects and unnecessary movement.",
+          "JUST IN TIME (JIT) stock control: materials arrive exactly when needed, so almost nothing is stored.",
+          "KAIZEN, or continuous improvement: many small improvements suggested by the workers who do the job.",
+          "Lean reduces cost and waste, but leaves no slack — a single late delivery can stop the whole line.",
+        ],
+      },
+      {
+        heading: "Choosing a method",
+        points: [
+          "The right method depends on the size of the order, the price customers will pay and how standard the product is.",
+          "Customisation and craftsmanship point towards job production; volume points towards flow.",
+          "Technology has blurred the boundaries: machines can now switch between variants far more cheaply than before.",
+          "Automation raises output and consistency, reduces labour costs, and requires large upfront investment.",
+          "It also reduces jobs, which is a genuine stakeholder issue rather than a footnote.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Job production", definition: "Producing one item at a time, usually made to a customer's specific order." },
+      { term: "Batch production", definition: "Producing identical items in groups, with equipment reset between batches." },
+      { term: "Flow production", definition: "Producing items continuously on a production line, in large identical quantities." },
+      { term: "Productivity", definition: "Output per worker or per hour — a measure of how much is produced from the resources used." },
+      { term: "Efficiency", definition: "Producing with the minimum waste of time, materials and money." },
+      { term: "Lean production", definition: "An approach that removes anything using resources without adding value for the customer." },
+      { term: "Just in time (JIT)", definition: "A stock system where materials arrive exactly when needed, so almost no stock is held." },
+      { term: "Kaizen", definition: "Continuous improvement through many small changes, often suggested by the workers themselves." },
+      { term: "Waste", definition: "Anything in a process that uses resources without adding value for the customer." },
+      { term: "Automation", definition: "Using machinery and computers to carry out tasks previously done by people." },
+      { term: "Capacity", definition: "The maximum output a business can produce with its current resources." },
+      { term: "Capacity utilisation", definition: "The proportion of maximum possible output that is actually being produced, as a percentage." },
+      { term: "Unit cost", definition: "The average cost of producing one unit: total costs divided by output." },
+      { term: "Economies of scale", definition: "The fall in average cost per unit that comes from producing on a larger scale." },
+      { term: "Mass production", definition: "Producing very large quantities of a standardised product, usually by flow production." },
+      { term: "Bespoke", definition: "Made specifically for one customer to their own requirements." },
+    ],
+    examTips: [
+      {
+        tip: "Match the method to the product",
+        detail:
+          "Wedding cakes are job; bread is batch; cola is flow. Justify the choice using what the case study actually sells rather than describing all three.",
+      },
+      {
+        tip: "Learn the productivity formula and use it",
+        detail:
+          "Output ÷ number of workers. Calculation marks here are straightforward, and the figure supports the argument you are making.",
+      },
+      {
+        tip: "Give the drawback of lean production",
+        detail:
+          "No spare stock means no cushion. One late delivery or one machine failure stops everything — that fragility is the standard evaluation point.",
+      },
+      {
+        tip: "Automation is a stakeholder question too",
+        detail:
+          "Higher output and lower costs please owners; job losses affect employees and the local community. Mentioning both lifts the answer.",
+      },
+      {
+        tip: "Don't confuse productivity with production",
+        detail:
+          "Production is how much is made. Productivity is how much is made per worker. A business can raise production while productivity falls.",
+      },
+      {
+        tip: "Consider the cost of switching method",
+        detail:
+          "Moving to flow production needs enormous investment and only pays off at high volume. Whether the business can afford it is often the real question.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A factory with 12 workers produces 3,600 units a week. Calculate productivity per worker, then find the new figure if training raises output to 4,800 with the same staff.",
+        steps: [
+          "Productivity = output ÷ number of workers.",
+          "Before: 3,600 ÷ 12 = 300 units per worker per week.",
+          "After: 4,800 ÷ 12 = 400 units per worker per week.",
+          "Productivity has risen by 100 units per worker, which is an increase of (100 ÷ 300) × 100 = 33.3%.",
+        ],
+        answer: "300 units per worker, rising to 400 — an increase of about 33.3%",
+      },
+    ],
+    practice: [
+      {
+        question: "Making one item at a time to a customer's specific order is called ______ production.",
+        accept: ["job", "job production"],
+        answer:
+          "Job production. It allows complete customisation and high prices, but the cost per unit is high because nothing is repeated and little can be automated.",
+      },
+      {
+        question: "Making identical items in groups, resetting the equipment between them, is called ______ production.",
+        accept: ["batch", "batch production"],
+        answer:
+          "Batch production. It is the compromise between job and flow: some variety is possible, and unit costs are lower than job production, but resetting between batches wastes time.",
+      },
+      {
+        question: "Making items continuously on a production line is called ______ production.",
+        accept: ["flow", "flow production", "mass production", "mass"],
+        answer:
+          "Flow production. It gives the lowest unit cost through economies of scale, at the price of huge upfront investment and almost no flexibility.",
+      },
+      {
+        question: "A factory with 10 workers makes 2,500 units. Calculate productivity per worker. Give the number only.",
+        accept: ["250"],
+        answer:
+          "250 units per worker. Productivity = output ÷ workers = 2,500 ÷ 10. It is the standard measure of how much each employee produces.",
+      },
+      {
+        question: "A team of 8 produces 3,200 units. Calculate output per worker. Give the number only.",
+        accept: ["400"],
+        answer:
+          "400 units per worker. 3,200 ÷ 8 = 400. Rising productivity means lower labour cost per unit, which is why businesses invest so heavily in it.",
+      },
+      {
+        question: "A stock system where materials arrive exactly when needed is called just in ______.",
+        accept: ["time", "just in time", "jit"],
+        answer:
+          "Just in time (JIT). It frees up the cash and space that stock would occupy, but leaves no cushion if a delivery is late.",
+      },
+      {
+        question: "Continuous improvement through many small changes is called ______.",
+        accept: ["kaizen", "continuous improvement"],
+        answer:
+          "Kaizen. Its strength is that the suggestions come from the people doing the job, who see problems managers never notice — and it motivates them too.",
+      },
+      {
+        question: "Removing anything that uses resources without adding customer value is called ______ production.",
+        accept: ["lean", "lean production"],
+        answer:
+          "Lean production. The test applied to every step is simple: would the customer pay for this? If not, it is waste.",
+      },
+      {
+        question: "Using machinery to do work previously done by people is called ______.",
+        accept: ["automation", "automating", "mechanisation"],
+        answer:
+          "Automation. It raises output and consistency and cuts labour costs, but needs large investment and reduces jobs — a real stakeholder conflict.",
+      },
+      {
+        question: "The maximum output a business can produce with its current resources is called its ______.",
+        accept: ["capacity", "maximum capacity"],
+        answer:
+          "Capacity. Producing well below it wastes fixed costs; producing at 100% leaves no room for a rush order or a breakdown.",
+      },
+      {
+        question: "Which production method would suit a bespoke wedding dress?",
+        accept: ["job", "job production"],
+        answer:
+          "Job production. The product is unique to one customer, who is paying for exactly that — using batch or flow would destroy the very thing being sold.",
+      },
+      {
+        question: "Which production method would suit canned soft drinks?",
+        accept: ["flow", "flow production", "mass production", "mass"],
+        answer:
+          "Flow production. The product is completely standardised and sold in enormous quantities, which is exactly the situation where a production line pays for itself.",
+      },
+      {
+        question: "Give one drawback of just-in-time stock control.",
+        accept: ["late delivery", "no buffer", "production stops", "supplier problems", "no spare stock", "risky", "disruption", "delays"],
+        answer:
+          "There is no buffer stock, so one late delivery or supplier failure stops production entirely. JIT trades safety for efficiency, which is fine until something goes wrong.",
+      },
+      {
+        question: "True or false: raising production always means raising productivity.",
+        accept: ["false", "f"],
+        answer:
+          "False. Hiring twice as many workers doubles production while leaving productivity unchanged — and if they get in each other's way, productivity actually falls.",
+      },
+      {
+        question: "Explain why flow production gives a lower cost per unit than job production. Write two or three sentences.",
+        answer:
+          "Flow production makes enormous quantities of an identical item, so expensive machinery and fixed costs are spread over far more units, and materials can be bought in bulk at a discount. Workers repeat one specialised task and become very fast at it, and there is no time lost resetting equipment between different products. Job production has none of these advantages because every item is different. Mark this one yourself: credit yourself for spreading fixed costs, bulk buying and specialisation.",
+      },
+      {
+        question: "A furniture maker producing bespoke pieces is considering switching to batch production. Evaluate the decision.",
+        answer:
+          "Batch production would cut unit costs by repeating designs, buying materials in larger quantities and reducing the time spent setting up for each individual piece, allowing lower prices and higher volume. But bespoke work is almost certainly what customers are paying a premium for — standardised furniture puts the business into direct competition with large manufacturers whose costs it cannot match. It would also need investment in equipment and possibly more space. A middle route is to offer a small range of standard designs in batches alongside the bespoke work, capturing volume without abandoning the premium end. Overall, switching entirely would be a mistake because it trades the business's only real competitive advantage for a market it cannot win. Mark this one yourself: the top band recognises that low cost is not this firm's competitive advantage.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Productivity means working harder.",
+        right:
+          "It usually means working with better tools, training or processes. Output per worker rises because the work is done smarter, not faster.",
+      },
+      {
+        wrong: "Flow production is always the cheapest option.",
+        right:
+          "Only at high volume. The machinery costs an enormous amount, so at low output the fixed costs per unit are far higher than job production's.",
+      },
+      {
+        wrong: "Lean production is just about cutting costs.",
+        right:
+          "It is about removing anything the customer would not pay for — waiting, defects, excess stock, unnecessary movement. Some of that costs money and some costs time.",
+      },
+      {
+        wrong: "JIT has no downsides because it saves money.",
+        right:
+          "It removes the cushion entirely. One late lorry stops the line, which is why businesses using JIT need extremely reliable suppliers.",
+      },
+      {
+        wrong: "Automation only affects the business's costs.",
+        right:
+          "It affects employees whose jobs go and the community around them. That stakeholder impact is part of the answer, not an aside.",
+      },
+    ],
+  },
+
+  "business/stock-and-suppliers": {
+    summary:
+      "Stock is money sitting on a shelf. Hold too much and cash is trapped in goods nobody has bought yet; hold too little and you turn customers away. This topic is about finding that balance, and about the suppliers who make it possible — because a business is only as reliable as the people who deliver to it.",
+    keyFacts: [
+      {
+        heading: "Why stock control matters",
+        points: [
+          "Stock includes raw materials, work in progress and finished goods.",
+          "Too MUCH stock ties up cash, costs money to store, and risks damage, theft or going out of date.",
+          "Too LITTLE stock means lost sales, disappointed customers and idle production.",
+          "Perishable and fashionable goods lose value fastest, so they need the tightest control.",
+          "Good stock control is really cash flow management wearing a different hat.",
+        ],
+      },
+      {
+        heading: "The stock control chart",
+        points: [
+          "MAXIMUM STOCK LEVEL: the most the business is willing or able to hold.",
+          "RE-ORDER LEVEL: the level at which a new order is placed, set so stock arrives before running out.",
+          "LEAD TIME: the gap between placing an order and receiving it — longer lead times need higher re-order levels.",
+          "BUFFER (minimum) STOCK: a safety cushion held in case of late deliveries or unexpected demand.",
+          "The saw-tooth shape of the chart comes from stock falling as it is used and jumping when a delivery arrives.",
+        ],
+      },
+      {
+        heading: "Just in time versus just in case",
+        points: [
+          "JUST IN TIME: stock arrives as it is needed, so almost none is held.",
+          "JIT frees cash and space and reduces waste, but depends completely on reliable suppliers.",
+          "JUST IN CASE: buffer stock is held deliberately, so a late delivery does not stop the business.",
+          "Just in case costs more in storage and tied-up cash, and buys reliability in exchange.",
+          "Which is right depends on how predictable demand is and how dependable the suppliers are.",
+        ],
+      },
+      {
+        heading: "Choosing and managing suppliers",
+        points: [
+          "Key factors: price, quality, reliability, speed, flexibility and the credit terms offered.",
+          "The cheapest supplier is not the best if deliveries are late or quality varies.",
+          "Trade credit from a supplier is effectively an interest-free short-term loan.",
+          "Relying on a single supplier is risky; using several costs more but spreads that risk.",
+          "Procurement means the whole process of finding, agreeing with and buying from suppliers.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Stock", definition: "Goods and materials held by a business: raw materials, work in progress and finished goods." },
+      { term: "Stock control", definition: "Managing the level of stock so that there is enough to trade without tying up too much cash." },
+      { term: "Buffer stock", definition: "A minimum level of stock held as a cushion against late deliveries or unexpected demand." },
+      { term: "Re-order level", definition: "The stock level at which a new order is placed." },
+      { term: "Lead time", definition: "The time between placing an order with a supplier and receiving it." },
+      { term: "Maximum stock level", definition: "The largest amount of stock a business is willing or able to hold." },
+      { term: "Just in time (JIT)", definition: "Holding almost no stock, with materials arriving exactly when they are needed." },
+      { term: "Just in case", definition: "Deliberately holding buffer stock so that problems with supply do not stop production." },
+      { term: "Supplier", definition: "A business that provides goods or materials to another business." },
+      { term: "Procurement", definition: "The process of finding, agreeing terms with and buying from suppliers." },
+      { term: "Supply chain", definition: "The whole sequence of businesses involved in producing and delivering a product." },
+      { term: "Logistics", definition: "The management of storing and moving goods from supplier to customer." },
+      { term: "Trade credit", definition: "An agreement to pay a supplier later, typically within 30 to 90 days." },
+      { term: "Wastage", definition: "Stock lost through damage, theft, spoilage or going out of date." },
+      { term: "Stock rotation", definition: "Using the oldest stock first so that goods do not pass their date while newer stock is sold." },
+      { term: "Bulk buying", definition: "Buying large quantities at once to obtain a lower price per unit." },
+    ],
+    examTips: [
+      {
+        tip: "Frame stock as CASH",
+        detail:
+          "Every pound of stock is a pound not in the bank. Making that link turns a description of stock control into an argument about cash flow.",
+      },
+      {
+        tip: "Label a stock control chart fully",
+        detail:
+          "Maximum level, re-order level, buffer stock and lead time. The labels carry marks; drawing the saw-tooth alone does not.",
+      },
+      {
+        tip: "Lead time drives the re-order level",
+        detail:
+          "A longer lead time means ordering earlier, so the re-order level must be higher. Examiners test this relationship directly.",
+      },
+      {
+        tip: "Cheapest supplier is not always best",
+        detail:
+          "Reliability, quality and credit terms all matter. A late delivery that stops production costs far more than the discount saved.",
+      },
+      {
+        tip: "Match the stock system to the product",
+        detail:
+          "JIT suits predictable demand and reliable suppliers. Fresh food, unpredictable demand or an unreliable supply chain point towards buffer stock.",
+      },
+      {
+        tip: "Mention the risk of a single supplier",
+        detail:
+          "It gets better prices and a closer relationship, but leaves the business with no alternative if that supplier fails. A good evaluation point.",
+      },
+    ],
+    practice: [
+      {
+        question: "The minimum level of stock held as a cushion against problems is called ______ stock.",
+        accept: ["buffer", "buffer stock", "minimum stock", "safety stock"],
+        answer:
+          "Buffer stock. It costs money to hold, and that cost buys insurance against a late delivery or a sudden rush of orders.",
+      },
+      {
+        question: "The time between placing an order and receiving it is called the ______ time.",
+        accept: ["lead", "lead time"],
+        answer:
+          "Lead time. The longer it is, the higher the re-order level must be, because stock has to last until the delivery arrives.",
+      },
+      {
+        question: "The stock level at which a new order is placed is called the ______ level.",
+        accept: ["re-order", "reorder", "re order", "re-order level"],
+        answer:
+          "The re-order level. It must be set high enough that remaining stock covers demand throughout the supplier's lead time.",
+      },
+      {
+        question: "Holding almost no stock, with deliveries arriving as needed, is called just in ______.",
+        accept: ["time", "just in time", "jit"],
+        answer:
+          "Just in time. It frees cash and storage space but removes the safety net completely, so it demands very reliable suppliers.",
+      },
+      {
+        question: "Deliberately holding extra stock so problems don't stop production is called just in ______.",
+        accept: ["case", "just in case"],
+        answer:
+          "Just in case. It is the opposite philosophy to JIT: pay to hold stock, and buy certainty with the money.",
+      },
+      {
+        question: "Using the oldest stock first so nothing goes out of date is called stock ______.",
+        accept: ["rotation", "stock rotation"],
+        answer:
+          "Stock rotation. It matters most for food and anything with a date on it, where poor rotation turns stock straight into waste.",
+      },
+      {
+        question: "Stock lost through damage, theft or going out of date is called ______.",
+        accept: ["wastage", "waste", "shrinkage"],
+        answer:
+          "Wastage. It is a direct loss — the business paid for those goods and will never sell them, so it comes straight off profit.",
+      },
+      {
+        question: "The process of finding and buying from suppliers is called ______.",
+        accept: ["procurement", "purchasing"],
+        answer:
+          "Procurement. Done well it affects cost, quality and reliability at once, which is why large businesses employ specialists to do nothing else.",
+      },
+      {
+        question: "Buying large quantities to get a lower price per unit is called ______ buying.",
+        accept: ["bulk", "bulk buying"],
+        answer:
+          "Bulk buying. It lowers unit cost but ties up cash in stock, so the discount has to be weighed against the cash flow cost.",
+      },
+      {
+        question: "The management of storing and moving goods is called ______.",
+        accept: ["logistics", "distribution"],
+        answer:
+          "Logistics. It has become far more important as supply chains have stretched around the world, because distance adds both cost and risk.",
+      },
+      {
+        question: "If a supplier's lead time increases, should the re-order level rise or fall?",
+        accept: ["rise", "rises", "increase", "increases", "go up", "higher", "it rises"],
+        answer:
+          "Rise. The business must order earlier — at a higher stock level — so that what remains lasts until the slower delivery arrives.",
+      },
+      {
+        question: "Give one cost of holding too much stock.",
+        accept: ["storage", "cash tied up", "damage", "theft", "out of date", "obsolete", "space", "insurance", "spoilage", "ties up cash"],
+        answer:
+          "Cash tied up in unsold goods, storage and insurance costs, and the risk of damage, theft, spoilage or going out of date.",
+      },
+      {
+        question: "Give one cost of holding too little stock.",
+        accept: ["lost sales", "customers go elsewhere", "cant meet demand", "production stops", "stockouts", "disappointed customers", "lost customers", "delays"],
+        answer:
+          "Lost sales when demand cannot be met, and customers who go to a competitor and may not come back. Production can also stop entirely if materials run out.",
+      },
+      {
+        question: "True or false: the cheapest supplier is always the best choice.",
+        accept: ["false", "f"],
+        answer:
+          "False. Reliability, quality, speed and credit terms all matter. A supplier who is 5% cheaper but frequently late can cost far more than the saving through lost production and sales.",
+      },
+      {
+        question: "Explain why holding a lot of stock can cause cash flow problems. Write two or three sentences.",
+        answer:
+          "Stock has already been paid for but has not yet been sold, so the money is sitting on a shelf rather than in the bank where it could pay wages and suppliers. The more stock held, the more cash is trapped, and storage and insurance add further costs on top. If the stock then goes out of date or out of fashion, that cash is lost entirely. Mark this one yourself: credit yourself for the point that stock is cash that has already been spent.",
+      },
+      {
+        question: "A bakery is considering moving to just-in-time deliveries of flour. Evaluate the decision.",
+        answer:
+          "JIT would free up cash and storage space and reduce the risk of flour going stale or attracting pests, which matters for a food business with limited premises. But bread must be baked every morning, so a single late delivery means nothing to sell that day — lost revenue and customers who go elsewhere and may not return. Flour is also cheap to store relative to its value and does not spoil quickly, so the cash freed up is modest compared with the risk. A partial approach — reducing stock but keeping two or three days of buffer — captures most of the benefit with far less exposure. Overall full JIT is a poor fit here because the downside of a stockout is severe and the saving is small. Mark this one yourself: the top band weighs the SIZE of the saving against the SIZE of the risk, rather than listing both.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "More stock means a better-prepared business.",
+        right:
+          "Stock is cash that has already been spent. Too much of it starves the business of the money it needs to pay wages and suppliers.",
+      },
+      {
+        wrong: "JIT is always better because it saves money.",
+        right:
+          "It removes the safety cushion. For a business with unreliable suppliers or unpredictable demand, buffer stock is worth what it costs.",
+      },
+      {
+        wrong: "Buffer stock is stock that has been forgotten about.",
+        right:
+          "It is deliberately held to cover late deliveries and demand spikes. It is a planned cost, not an accident.",
+      },
+      {
+        wrong: "You should always choose the supplier with the lowest price.",
+        right:
+          "Reliability, quality and credit terms matter too. A cheap supplier who delivers late can stop production entirely, which costs far more than the discount.",
+      },
+    ],
+  },
+
+  "business/quality": {
+    summary:
+      "Quality is not the same as expensive. It means the product does what the customer was led to expect, consistently. This topic covers how businesses check quality, the difference between catching mistakes and preventing them, and why the cheapest possible product is often the most expensive once returns, complaints and lost reputation are counted.",
+    keyFacts: [
+      {
+        heading: "What quality means",
+        points: [
+          "Quality means meeting customer expectations consistently — a budget product can be high quality if it does what it promises.",
+          "It applies to services as much as goods: speed, accuracy and courtesy are quality measures too.",
+          "Consistency matters as much as standard: customers expect the same experience every visit.",
+          "Poor quality costs money directly through refunds, replacements, repairs and wasted materials.",
+          "It costs far more indirectly through lost customers and damaged reputation.",
+        ],
+      },
+      {
+        heading: "Quality control and quality assurance",
+        points: [
+          "QUALITY CONTROL: inspecting products at the END of production and rejecting the faulty ones.",
+          "Quality control catches defects but does not prevent them, so the wasted materials and time are already spent.",
+          "QUALITY ASSURANCE: building quality into every stage, with each worker responsible for their own output.",
+          "Quality assurance prevents defects rather than finding them, which is cheaper — but needs training and trust.",
+          "TOTAL QUALITY MANAGEMENT (TQM) makes quality the responsibility of everyone in the organisation.",
+        ],
+      },
+      {
+        heading: "The benefits of high quality",
+        points: [
+          "Fewer returns, repairs and complaints, so lower costs.",
+          "A reputation that lets the business charge a higher price.",
+          "Repeat custom and recommendations, which are far cheaper than winning new customers.",
+          "Less waste, because fewer items are scrapped.",
+          "A stronger brand and a genuine competitive advantage that rivals cannot copy quickly.",
+        ],
+      },
+      {
+        heading: "The costs and trade-offs",
+        points: [
+          "Better materials, training, inspection and systems all cost money.",
+          "Higher quality can mean slower production and lower output.",
+          "Quality standards such as ISO certification cost money and time to obtain.",
+          "There is a level of quality appropriate to the market: a budget brand does not need luxury materials.",
+          "Over-engineering — building in quality customers will not pay for — is itself a form of waste.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Quality", definition: "Meeting customer expectations consistently, whatever the price level of the product." },
+      { term: "Quality control", definition: "Inspecting finished products and removing those that fail to meet the standard." },
+      { term: "Quality assurance", definition: "Building quality checks into every stage of production so faults are prevented rather than found." },
+      { term: "Total quality management (TQM)", definition: "An approach making quality the responsibility of every employee in the organisation." },
+      { term: "Quality standard", definition: "An agreed level of quality a product or process must meet, often certified by an outside body." },
+      { term: "Defect", definition: "A fault in a product that means it does not meet the required standard." },
+      { term: "Reject rate", definition: "The proportion of output that fails quality checks and cannot be sold." },
+      { term: "Returns", definition: "Products sent back by customers because they are faulty or unsatisfactory." },
+      { term: "Reputation", definition: "How a business is regarded by customers, which affects whether they buy and recommend." },
+      { term: "Repeat custom", definition: "Customers who buy again, which costs far less to obtain than new customers." },
+      { term: "Over-engineering", definition: "Building in quality beyond what customers want or will pay for — a form of waste." },
+      { term: "Continuous improvement", definition: "Making many small ongoing improvements to quality and process, also called kaizen." },
+      { term: "Customer expectation", definition: "What a customer believes they will receive, set by price, description and reputation." },
+      { term: "Warranty", definition: "A promise by the business to repair or replace a product within a set period." },
+      { term: "Recall", definition: "Asking customers to return a product because a fault has been discovered after sale." },
+      { term: "Brand image", definition: "The overall impression customers hold of a brand, strongly influenced by quality." },
+    ],
+    examTips: [
+      {
+        tip: "Quality means meeting expectations, not being expensive",
+        detail:
+          "A £3 pen that writes reliably is high quality. Defining quality as 'expensive' or 'luxurious' is the commonest error in this topic.",
+      },
+      {
+        tip: "Control catches, assurance prevents",
+        detail:
+          "Quality control inspects at the end; quality assurance builds it in throughout. That one sentence answers most questions here.",
+      },
+      {
+        tip: "Cost the poor quality, not just the good",
+        detail:
+          "Refunds, replacements, wasted materials and lost customers all have a price. Quantifying that makes the investment case far stronger.",
+      },
+      {
+        tip: "Match quality to the target market",
+        detail:
+          "A budget brand does not need premium materials. Over-engineering is waste, and saying so shows real understanding.",
+      },
+      {
+        tip: "Apply it to services too",
+        detail:
+          "For a café or a salon, quality means speed, consistency and how customers are treated. Answers that only discuss manufacturing miss half the marks.",
+      },
+      {
+        tip: "Use reputation as the long-term argument",
+        detail:
+          "The direct costs of poor quality are recoverable; a damaged reputation is not, and it takes far longer to rebuild than to lose.",
+      },
+    ],
+    practice: [
+      {
+        question: "Inspecting finished products and removing faulty ones is called quality ______.",
+        accept: ["control", "quality control"],
+        answer:
+          "Quality control. It catches defects before they reach customers, but the materials and time that went into the faulty item are already wasted.",
+      },
+      {
+        question: "Building quality checks into every stage of production is called quality ______.",
+        accept: ["assurance", "quality assurance"],
+        answer:
+          "Quality assurance. It prevents faults rather than finding them, which is cheaper overall — but it requires training and trusting staff to check their own work.",
+      },
+      {
+        question: "An approach making quality the responsibility of every employee is called total quality ______.",
+        accept: ["management", "total quality management", "tqm"],
+        answer:
+          "Total quality management (TQM). Its logic is that the person doing the job spots problems first, so quality should not be somebody else's department.",
+      },
+      {
+        question: "A fault in a product that means it fails the required standard is called a ______.",
+        accept: ["defect", "a defect", "fault"],
+        answer:
+          "A defect. Every defect represents materials and labour already spent on something that cannot be sold, which is why prevention beats detection.",
+      },
+      {
+        question: "The proportion of output that fails quality checks is called the ______ rate.",
+        accept: ["reject", "reject rate", "rejection"],
+        answer:
+          "The reject rate. Tracking it over time shows whether quality is improving, and a rising rate is an early warning of a process problem.",
+      },
+      {
+        question: "Building in quality beyond what customers will pay for is called ______.",
+        accept: ["over-engineering", "overengineering", "over engineering"],
+        answer:
+          "Over-engineering. It is a form of waste under lean thinking: the customer would not pay for it, so the extra cost buys nothing.",
+      },
+      {
+        question: "Asking customers to return a product because a fault was found after sale is called a ______.",
+        accept: ["recall", "a recall", "product recall"],
+        answer:
+          "A recall. It is expensive and highly public, which is why the reputational damage usually exceeds the direct cost of replacing the goods.",
+      },
+      {
+        question: "A promise to repair or replace a product within a set period is called a ______.",
+        accept: ["warranty", "a warranty", "guarantee"],
+        answer:
+          "A warranty. Offering a long one signals confidence in quality, which is why it works as a marketing tool as well as a legal commitment.",
+      },
+      {
+        question: "True or false: a cheap product cannot be high quality.",
+        accept: ["false", "f"],
+        answer:
+          "False. Quality means meeting expectations consistently. A £3 pen that always writes is high quality; a £300 pen that leaks is not.",
+      },
+      {
+        question: "Customers who buy again are called ______ custom.",
+        accept: ["repeat", "repeat custom", "returning"],
+        answer:
+          "Repeat custom. It is far cheaper than winning new customers, which is the clearest financial argument for investing in quality.",
+      },
+      {
+        question: "Give one direct cost to a business of poor quality.",
+        accept: ["refunds", "replacements", "repairs", "waste", "returns", "wasted materials", "compensation", "recalls", "scrap"],
+        answer:
+          "Refunds, replacements, repairs, wasted materials and recalls. These are measurable — the harder cost to quantify is the customers who quietly never return.",
+      },
+      {
+        question: "Which approach PREVENTS faults rather than finding them at the end?",
+        accept: ["quality assurance", "assurance", "tqm", "total quality management"],
+        answer:
+          "Quality assurance (and TQM). Prevention is cheaper because nothing is wasted producing an item that will be rejected later.",
+      },
+      {
+        question: "Making many small ongoing improvements is called continuous ______.",
+        accept: ["improvement", "continuous improvement", "kaizen"],
+        answer:
+          "Continuous improvement, or kaizen. It works because the people doing the job every day see problems that never reach a manager's desk.",
+      },
+      {
+        question: "For a café, name one thing that counts as quality other than the food itself.",
+        accept: ["service", "speed", "cleanliness", "consistency", "atmosphere", "staff", "customer service", "friendliness", "waiting time"],
+        answer:
+          "Speed of service, cleanliness, consistency and how staff treat customers. Quality in a service business is mostly about the experience, not the product.",
+      },
+      {
+        question: "Explain why investing in quality assurance may be cheaper than quality control. Write two or three sentences.",
+        answer:
+          "Quality control finds faults at the end, by which point the materials, machine time and labour have already been spent on something that must be scrapped or reworked. Quality assurance builds checks into each stage, so a problem is caught when only part of the value has been added — or prevented altogether. The saving comes from not producing waste in the first place, though it does require training staff and trusting them to check their own work. Mark this one yourself: credit yourself for the point that faults found at the end have already consumed the full cost.",
+      },
+      {
+        question: "A budget clothing brand is considering using much better fabric. Evaluate the decision.",
+        answer:
+          "Better fabric would reduce returns and complaints, improve reputation and might allow a modest price rise. But the business competes on price, and its customers chose it precisely because it is cheap — most will not pay more, and raising prices risks losing them to rivals. Better fabric than the market expects is over-engineering: paying for quality the customer will not fund. A more targeted approach would be to fix the specific faults that generate returns, such as seams splitting, without upgrading everything. Overall, a wholesale upgrade is probably wrong for this brand, but eliminating the defects that cause complaints is worth doing because those cost money directly. Mark this one yourself: the top band needs quality matched to the TARGET MARKET, plus a more targeted alternative.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Quality means expensive or luxurious.",
+        right:
+          "It means meeting customer expectations consistently. A budget product that reliably does its job is high quality; an expensive one that fails is not.",
+      },
+      {
+        wrong: "Quality control and quality assurance are the same thing.",
+        right:
+          "Control inspects at the end and rejects failures. Assurance builds checks into every stage so failures do not happen. One detects, the other prevents.",
+      },
+      {
+        wrong: "Higher quality is always worth the extra cost.",
+        right:
+          "Only if customers will pay for it. Building in quality the target market does not want is over-engineering, which lean thinking treats as waste.",
+      },
+      {
+        wrong: "Quality only matters in manufacturing.",
+        right:
+          "For a service business it is speed, consistency, accuracy and how customers are treated — often more visible to the customer than a product's build.",
+      },
+    ],
+  },
+
+  "business/customer-service": {
+    summary:
+      "Winning a new customer costs several times more than keeping an existing one, which is the entire commercial case for customer service. This topic covers what good service actually consists of, how businesses handle it when things go wrong, and why the response to a complaint often matters more to a customer than the problem that caused it.",
+    keyFacts: [
+      {
+        heading: "What good customer service involves",
+        points: [
+          "Product knowledge: staff who can actually answer the question being asked.",
+          "Speed and availability: short waits, easy contact, quick replies.",
+          "Politeness and attitude, which customers remember longer than almost anything else.",
+          "After-sales service: delivery, installation, warranties, spare parts and support.",
+          "Consistency — the same standard every visit, from every member of staff.",
+        ],
+      },
+      {
+        heading: "Why it matters commercially",
+        points: [
+          "Keeping a customer is far cheaper than acquiring a new one, so service protects profit directly.",
+          "Satisfied customers recommend the business, which is advertising that costs nothing.",
+          "Good service allows a higher price, because customers pay for the experience as well as the product.",
+          "Dissatisfied customers tell far more people than satisfied ones, and now do it publicly online.",
+          "It is a genuine competitive advantage for small businesses, who cannot win on price but can on attention.",
+        ],
+      },
+      {
+        heading: "Handling complaints",
+        points: [
+          "A complaint is information: it identifies a problem the business could otherwise miss.",
+          "Most customers who complain and are dealt with well remain customers — often more loyally than before.",
+          "Good practice: listen, apologise, resolve quickly, and follow up.",
+          "Staff need the authority to fix small problems without escalating everything to a manager.",
+          "Reviews and social media mean complaints are now public, so the response is visible to future customers too.",
+        ],
+      },
+      {
+        heading: "Costs and trade-offs",
+        points: [
+          "Good service costs money: more staff, better training, longer opening hours, free returns.",
+          "Self-service and chatbots cut costs but frustrate customers with unusual problems.",
+          "Businesses must decide the level of service their market expects and will pay for.",
+          "A budget airline and a luxury hotel are both right to offer different levels of service.",
+          "Under-investing is a false economy when the lost customers are counted.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Customer service", definition: "The support and experience a business provides before, during and after a sale." },
+      { term: "After-sales service", definition: "Support provided once a purchase is complete, such as delivery, installation, warranties and repairs." },
+      { term: "Customer satisfaction", definition: "How well the product and service meet what the customer expected." },
+      { term: "Customer loyalty", definition: "A customer's willingness to keep buying from the same business rather than switching." },
+      { term: "Customer retention", definition: "Keeping existing customers so that they buy again." },
+      { term: "Word of mouth", definition: "Customers recommending a business to others — free and highly trusted advertising." },
+      { term: "Complaint", definition: "A customer telling a business that something has gone wrong, which is useful information as well as a problem." },
+      { term: "Refund", definition: "Returning a customer's money when a product or service was unsatisfactory." },
+      { term: "Loyalty scheme", definition: "A programme rewarding repeat purchases, which also collects data on what customers buy." },
+      { term: "Product knowledge", definition: "How well staff understand what they are selling, so they can advise customers accurately." },
+      { term: "Online review", definition: "A public rating or comment about a business, visible to potential customers." },
+      { term: "Self-service", definition: "Letting customers serve themselves to cut staffing costs, such as checkouts or online help." },
+      { term: "Personalisation", definition: "Tailoring the service or offers to an individual customer's history and preferences." },
+      { term: "Service level", definition: "The standard of service a business chooses to offer, matched to what its market expects." },
+      { term: "Customer experience", definition: "The whole impression a customer forms from every interaction with a business." },
+      { term: "Feedback", definition: "Information from customers about their experience, used to improve the business." },
+    ],
+    examTips: [
+      {
+        tip: "Use the cost of losing a customer",
+        detail:
+          "Acquiring a new customer costs several times more than keeping one. That single fact turns customer service from a nicety into a financial argument.",
+      },
+      {
+        tip: "Treat complaints as information",
+        detail:
+          "The strongest answers point out that a complaint is free market research, and that a well-handled complaint often produces a more loyal customer.",
+      },
+      {
+        tip: "Match the service level to the market",
+        detail:
+          "A budget airline is right not to offer the service of a luxury hotel. Recommending premium service for a discount business shows you have missed the strategy.",
+      },
+      {
+        tip: "Mention online reviews specifically",
+        detail:
+          "Complaints are now public and permanent. That changes the arithmetic completely and is a strong, current evaluation point.",
+      },
+      {
+        tip: "Link service to a small firm's advantage",
+        detail:
+          "A small business cannot beat a chain on price, but it can know its customers by name. Service is one of the few areas where being small helps.",
+      },
+      {
+        tip: "Cost the improvement as well as praising it",
+        detail:
+          "More staff, longer hours and free returns all cost money. Balanced answers weigh the retained custom against the extra cost.",
+      },
+    ],
+    practice: [
+      {
+        question: "Support provided after a purchase, such as repairs and warranties, is called ______ service.",
+        accept: ["after-sales", "aftersales", "after sales", "after-sales service"],
+        answer:
+          "After-sales service. It matters most for expensive or technical products, where the customer's risk continues long after the sale is made.",
+      },
+      {
+        question: "Keeping existing customers so they buy again is called customer ______.",
+        accept: ["retention", "customer retention", "loyalty"],
+        answer:
+          "Customer retention. It is the cheapest source of sales a business has, because there is no advertising cost attached to a customer who already trusts you.",
+      },
+      {
+        question: "Customers recommending a business to others is called word of ______.",
+        accept: ["mouth", "word of mouth"],
+        answer:
+          "Word of mouth. It costs nothing and is trusted far more than advertising, because it comes from someone with no reason to exaggerate.",
+      },
+      {
+        question: "A programme rewarding repeat purchases is called a ______ scheme.",
+        accept: ["loyalty", "loyalty scheme", "rewards"],
+        answer:
+          "A loyalty scheme. It encourages repeat custom and collects detailed data on what individual customers actually buy — useful market research as a by-product.",
+      },
+      {
+        question: "How well staff understand what they are selling is called product ______.",
+        accept: ["knowledge", "product knowledge"],
+        answer:
+          "Product knowledge. It is what turns a shop assistant into a reason to buy in person rather than online, so it directly affects sales.",
+      },
+      {
+        question: "True or false: a customer who complains is usually lost for good.",
+        accept: ["false", "f"],
+        answer:
+          "False. Most customers who complain and are dealt with well stay — often more loyally than before, because they have seen the business put something right.",
+      },
+      {
+        question: "Letting customers serve themselves to reduce staffing costs is called ______.",
+        accept: ["self-service", "selfservice", "self service"],
+        answer:
+          "Self-service. It cuts costs and suits simple transactions, but frustrates customers with unusual problems who need an actual person.",
+      },
+      {
+        question: "Tailoring offers to an individual customer's history is called ______.",
+        accept: ["personalisation", "personalization", "personalising"],
+        answer:
+          "Personalisation. Data makes it possible at scale, though customers dislike it if it feels intrusive — so there is a line to judge.",
+      },
+      {
+        question: "Information from customers about their experience is called ______.",
+        accept: ["feedback", "customer feedback"],
+        answer:
+          "Feedback. It is free market research, and businesses that treat complaints as feedback rather than nuisances improve faster than those that do not.",
+      },
+      {
+        question: "Which is generally cheaper: keeping an existing customer, or winning a new one?",
+        accept: ["keeping an existing customer", "keeping", "existing", "retention", "keeping existing", "existing customer"],
+        answer:
+          "Keeping an existing customer — typically several times cheaper, because no advertising is needed and trust already exists. This is the core financial case for good service.",
+      },
+      {
+        question: "A public rating or comment about a business visible to others is called an online ______.",
+        accept: ["review", "online review", "reviews"],
+        answer:
+          "An online review. It has changed customer service permanently: complaints are now public, permanent, and read by people deciding whether to buy.",
+      },
+      {
+        question: "Give one cost to a business of improving customer service.",
+        accept: ["training", "more staff", "longer hours", "wages", "free returns", "staff costs", "cost", "time", "equipment"],
+        answer:
+          "Training, hiring more staff, longer opening hours and free returns all cost money. The question is always whether the retained custom is worth more than the spend.",
+      },
+      {
+        question: "The whole impression a customer forms from every interaction is called the customer ______.",
+        accept: ["experience", "customer experience"],
+        answer:
+          "The customer experience. It includes the website, the queue, the packaging and the refund process — not just the moment of sale.",
+      },
+      {
+        question: "True or false: a budget airline should offer the same level of service as a luxury hotel.",
+        accept: ["false", "f"],
+        answer:
+          "False. Service level should match what the market expects and will pay for. Budget customers chose low prices, and paying for premium service would raise the fares they came for.",
+      },
+      {
+        question: "Explain why a small independent shop might compete on customer service rather than price. Write two or three sentences.",
+        answer:
+          "A small shop cannot match a supermarket's buying power, so competing on price means losing slowly. Service is something it can genuinely do better — knowing customers by name, giving real advice, remembering preferences — and a chain with standardised procedures cannot easily copy it. That builds loyalty and word-of-mouth recommendations, which are far cheaper than advertising. Mark this one yourself: credit yourself for why price competition fails AND for why service is defensible against a larger rival.",
+      },
+      {
+        question: "A restaurant receives a damaging online review. Evaluate how it should respond.",
+        answer:
+          "Responding publicly, politely and quickly is usually best: future customers read the response as well as the complaint, and a calm, specific reply that offers to put things right often does more good than the review did harm. Arguing publicly is the clearest mistake, since it makes the business look worse than the original complaint did. The restaurant should also treat the review as information — if the same issue appears repeatedly it is a real problem, not an unreasonable customer. Ignoring it is defensible only for an obviously malicious review, and even then a brief factual reply is usually safer. Overall it should reply publicly, resolve privately, and check whether the complaint reflects a pattern. Mark this one yourself: the top band needs the point that the RESPONSE is public and judged by future customers.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Good customer service means always saying yes.",
+        right:
+          "It means handling the interaction honestly, quickly and respectfully. Refusing an unreasonable request politely and clearly is still good service.",
+      },
+      {
+        wrong: "Complaints are purely a problem.",
+        right:
+          "A complaint is free information about something that is going wrong, and a customer giving you the chance to fix it rather than silently leaving.",
+      },
+      {
+        wrong: "Every business should offer the highest possible service level.",
+        right:
+          "Service should match what the market expects and will pay for. Premium service on a budget product raises prices customers came to avoid.",
+      },
+      {
+        wrong: "Customer service only matters at the moment of sale.",
+        right:
+          "After-sales service — delivery, returns, warranties, support — often shapes whether someone buys again far more than the sale itself did.",
+      },
+    ],
+  },
+
+  "business/organisational-structures": {
+    summary:
+      "Once a business is bigger than a few people, somebody has to decide who reports to whom and who is allowed to decide what. This topic covers the shapes organisations take, the vocabulary that describes them, and the real trade-off underneath: control at the top versus speed and motivation further down.",
+    keyFacts: [
+      {
+        heading: "The vocabulary",
+        points: [
+          "An ORGANISATIONAL CHART shows who reports to whom, drawn as a hierarchy.",
+          "The CHAIN OF COMMAND is the line of authority from the top of the business to the bottom.",
+          "The SPAN OF CONTROL is the number of people a manager directly supervises.",
+          "A LEVEL OF HIERARCHY is one layer of the chart — one rank of the organisation.",
+          "DELEGATION is passing authority for a task down to somebody else, while remaining responsible for the outcome.",
+        ],
+      },
+      {
+        heading: "Tall and flat structures",
+        points: [
+          "A TALL structure has many levels and narrow spans of control.",
+          "Tall: close supervision, clear promotion routes — but slow communication and higher management costs.",
+          "A FLAT structure has few levels and wide spans of control.",
+          "Flat: faster decisions, cheaper, staff feel more trusted — but managers are stretched and promotion routes are limited.",
+          "DELAYERING means removing a level of management, usually to cut costs and speed things up.",
+        ],
+      },
+      {
+        heading: "Centralised and decentralised",
+        points: [
+          "CENTRALISED: decisions are made at the top by senior managers.",
+          "Centralised gives consistency and tight control, but slower responses and less motivated junior staff.",
+          "DECENTRALISED: decision-making is pushed down to local managers or teams.",
+          "Decentralised responds faster to local conditions and motivates staff, but risks inconsistency.",
+          "Most real businesses do both — pricing centralised, staffing decisions local, for instance.",
+        ],
+      },
+      {
+        heading: "How structures are organised",
+        points: [
+          "By FUNCTION: departments for marketing, finance, operations and human resources.",
+          "By PRODUCT: a division for each product range, each with its own functions.",
+          "By REGION: a division for each geographical area, suited to businesses operating in several countries.",
+          "The right structure depends on size, on how varied the products are, and on how spread out the business is.",
+          "Structures need to change as a business grows — what works for ten people fails at two hundred.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Organisational structure", definition: "The way a business arranges its people, showing who reports to whom and who decides what." },
+      { term: "Organisational chart", definition: "A diagram showing the structure of a business and the reporting lines within it." },
+      { term: "Chain of command", definition: "The line of authority running from the top of an organisation down to the bottom." },
+      { term: "Span of control", definition: "The number of employees a manager is directly responsible for." },
+      { term: "Level of hierarchy", definition: "One layer of an organisational structure — a single rank within the business." },
+      { term: "Tall structure", definition: "A structure with many levels of hierarchy and narrow spans of control." },
+      { term: "Flat structure", definition: "A structure with few levels of hierarchy and wide spans of control." },
+      { term: "Delayering", definition: "Removing a level of management from the hierarchy, usually to cut costs and speed decisions." },
+      { term: "Delegation", definition: "Passing authority for a task to a subordinate, while keeping overall responsibility for it." },
+      { term: "Authority", definition: "The right to make decisions and give instructions." },
+      { term: "Responsibility", definition: "Being accountable for the outcome of a task, whether or not you carried it out yourself." },
+      { term: "Centralised structure", definition: "One where most decisions are made by senior managers at the top." },
+      { term: "Decentralised structure", definition: "One where decision-making is passed down to local managers or teams." },
+      { term: "Line manager", definition: "The person an employee reports to directly." },
+      { term: "Subordinate", definition: "An employee who reports to a particular manager." },
+      { term: "Functional structure", definition: "An organisation divided into departments by activity, such as marketing, finance and operations." },
+    ],
+    examTips: [
+      {
+        tip: "Span of control and levels of hierarchy move opposite ways",
+        detail:
+          "Wide spans mean fewer levels (flat); narrow spans mean more levels (tall). Getting this relationship the right way round is most of the topic.",
+      },
+      {
+        tip: "Read an organisational chart carefully before answering",
+        detail:
+          "Count the levels and count how many people report to the named manager. Both are quick marks that are lost by rushing.",
+      },
+      {
+        tip: "Delegation is authority passed down, responsibility kept",
+        detail:
+          "The manager remains accountable. That distinction is examined directly and is easy to state precisely.",
+      },
+      {
+        tip: "Give both sides of delayering",
+        detail:
+          "It cuts costs and speeds decisions, but overloads remaining managers, removes promotion routes and damages morale through job losses.",
+      },
+      {
+        tip: "Centralisation is a spectrum, not a switch",
+        detail:
+          "Most businesses centralise some decisions and decentralise others. Saying which decisions should sit where is a top-band answer.",
+      },
+      {
+        tip: "Link structure to the business's situation",
+        detail:
+          "A chain with identical branches suits centralisation; a business serving very different local markets does not. Use the case study.",
+      },
+    ],
+    practice: [
+      {
+        question: "The number of employees a manager directly supervises is called the span of ______.",
+        accept: ["control", "span of control"],
+        answer:
+          "The span of control. A wide span means fewer managers and lower costs, but less supervision available for each person.",
+      },
+      {
+        question: "The line of authority from the top of a business to the bottom is called the chain of ______.",
+        accept: ["command", "chain of command"],
+        answer:
+          "The chain of command. A long chain means instructions and information pass through many hands, which makes them slower and more likely to be distorted.",
+      },
+      {
+        question: "A structure with many levels and narrow spans of control is called a ______ structure.",
+        accept: ["tall", "tall structure", "hierarchical"],
+        answer:
+          "A tall structure. It gives close supervision and clear promotion routes, at the cost of slower communication and more managers to pay.",
+      },
+      {
+        question: "A structure with few levels and wide spans of control is called a ______ structure.",
+        accept: ["flat", "flat structure"],
+        answer:
+          "A flat structure. Decisions are faster and management costs lower, but each manager supervises more people and there are fewer promotions to offer.",
+      },
+      {
+        question: "Removing a level of management from the hierarchy is called ______.",
+        accept: ["delayering", "de-layering", "delayer"],
+        answer:
+          "Delayering. It cuts costs and shortens the chain of command, but overloads the managers who remain and removes rungs from the promotion ladder.",
+      },
+      {
+        question: "Passing authority for a task to a subordinate is called ______.",
+        accept: ["delegation", "delegating", "delegate"],
+        answer:
+          "Delegation. Note that authority is passed down but RESPONSIBILITY stays with the manager — that distinction is examined directly.",
+      },
+      {
+        question: "When most decisions are made by senior managers at the top, the structure is ______.",
+        accept: ["centralised", "centralized", "central"],
+        answer:
+          "Centralised. It gives consistency across the business and tight control, but responds slowly and can leave junior staff feeling powerless.",
+      },
+      {
+        question: "When decision-making is passed down to local managers, the structure is ______.",
+        accept: ["decentralised", "decentralized", "decentral"],
+        answer:
+          "Decentralised. Local managers respond faster to what is actually happening in front of them, at the cost of consistency across the business.",
+      },
+      {
+        question: "One layer of an organisational chart is called a level of ______.",
+        accept: ["hierarchy", "level of hierarchy", "management"],
+        answer:
+          "A level of hierarchy. Counting these levels is how you tell whether a structure is tall or flat, and it is a common one-mark question.",
+      },
+      {
+        question: "The person an employee reports to directly is called their ______ manager.",
+        accept: ["line", "line manager"],
+        answer:
+          "Their line manager. Clear reporting lines matter because an employee with two bosses giving conflicting instructions cannot satisfy both.",
+      },
+      {
+        question: "The right to make decisions and give instructions is called ______.",
+        accept: ["authority"],
+        answer:
+          "Authority. It can be delegated downwards, unlike responsibility, which stays with the manager who delegated it.",
+      },
+      {
+        question: "If a business widens its spans of control, will it have more or fewer levels of hierarchy?",
+        accept: ["fewer", "less", "fewer levels", "reduce", "decrease"],
+        answer:
+          "Fewer. Each manager supervises more people, so fewer managers are needed and the structure becomes flatter — the two measures always move in opposite directions.",
+      },
+      {
+        question: "An organisation divided into marketing, finance and operations departments has which type of structure?",
+        accept: ["functional", "functional structure", "by function", "function"],
+        answer:
+          "A functional structure. It groups specialists together, which builds expertise, but can make departments focus on their own goals rather than the business's.",
+      },
+      {
+        question: "Give one drawback of a tall organisational structure.",
+        accept: ["slow communication", "slow decisions", "expensive", "more managers", "cost", "distorted messages", "slow", "bureaucracy"],
+        answer:
+          "Communication is slow and gets distorted passing through many levels, decisions take longer, and paying several layers of management is expensive.",
+      },
+      {
+        question: "Explain why delegation can motivate employees. Write two or three sentences.",
+        answer:
+          "Being given authority over a task shows the employee is trusted, which meets the need for esteem and recognition rather than just pay. It also makes the work more varied and interesting than simply following instructions, and develops skills that make promotion possible. The manager benefits too, freeing time for work only they can do — though they remain responsible if it goes wrong. Mark this one yourself: credit yourself for trust, skill development and the manager keeping responsibility.",
+      },
+      {
+        question: "A growing chain of 20 coffee shops is deciding whether to centralise or decentralise decisions. Evaluate the options.",
+        answer:
+          "Centralising suits decisions where consistency is the point: menu, pricing, branding and supplier contracts should be identical everywhere, or the brand stops meaning anything and bulk-buying power is lost. Decentralising suits decisions that depend on local knowledge — staffing rotas, opening hours, which local events to sponsor — where a head office cannot possibly know better than the manager on site. Full centralisation would make branches slow and demotivate managers into order-takers; full decentralisation would produce twenty different coffee shops sharing a logo. Overall the sensible answer is a mixture, centralising anything customers compare between branches and decentralising anything that varies by location. Mark this one yourself: the top band says WHICH decisions go where rather than choosing one wholesale.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A flat structure means the business has no managers.",
+        right:
+          "It means few LEVELS of management, with each manager supervising more people. There is still a hierarchy, just a shorter one.",
+      },
+      {
+        wrong: "Delegation means handing over responsibility.",
+        right:
+          "Authority is delegated; responsibility stays with the manager. If a delegated task goes wrong, the manager is still accountable.",
+      },
+      {
+        wrong: "Decentralisation is always better because staff are motivated.",
+        right:
+          "It costs consistency, and for a chain whose selling point is that every branch is the same, that consistency may matter more than local motivation.",
+      },
+      {
+        wrong: "Delayering just saves money.",
+        right:
+          "It also overloads remaining managers, removes promotion opportunities and damages morale through redundancies — which can cost more than the salaries saved.",
+      },
+    ],
+  },
+
+  "business/recruitment-and-selection": {
+    summary:
+      "Hiring the wrong person is expensive — the recruitment cost, the training, the work not done, and then doing it all again. This topic covers how businesses decide what they need, attract applicants, and choose between them, plus the legal rules that apply throughout.",
+    keyFacts: [
+      {
+        heading: "The recruitment process",
+        points: [
+          "Identify the vacancy and decide whether the role is genuinely needed in its current form.",
+          "Write a JOB DESCRIPTION: the duties, responsibilities and reporting lines of the post.",
+          "Write a PERSON SPECIFICATION: the skills, qualifications and qualities the person needs.",
+          "Advertise the vacancy in a place the right applicants will actually see.",
+          "Shortlist, interview, select, and offer — then keep records in case a decision is challenged.",
+        ],
+      },
+      {
+        heading: "Internal and external recruitment",
+        points: [
+          "INTERNAL: appointing someone already employed by the business.",
+          "Internal is cheaper and faster, the person is known, and it motivates staff by showing promotion is possible — but it brings no new ideas and leaves another vacancy.",
+          "EXTERNAL: appointing someone from outside.",
+          "External brings fresh skills and a wider pool, but costs more, takes longer and carries more risk.",
+          "Methods include online job boards, the business's own website, social media, agencies, schools and colleges.",
+        ],
+      },
+      {
+        heading: "Selection methods",
+        points: [
+          "CV and application form, used to shortlist against the person specification.",
+          "INTERVIEWS, which are the most common method and the least reliable on their own.",
+          "Skills tests and practical tasks, which show what someone can actually do rather than what they say.",
+          "Group tasks and presentations, used to observe teamwork and communication.",
+          "References from previous employers, checked before a final offer.",
+        ],
+      },
+      {
+        heading: "Contracts and the law",
+        points: [
+          "FULL-TIME, PART-TIME, PERMANENT, TEMPORARY, ZERO-HOURS and FREELANCE describe different working arrangements.",
+          "Zero-hours contracts give a business flexibility and give workers no guaranteed income — a genuine ethical debate.",
+          "The Equality Act 2010 makes it unlawful to discriminate at any stage of recruitment.",
+          "Adverts, questions and selection criteria must relate to the job, not to personal characteristics.",
+          "Poor records make a discrimination claim much harder to defend, even where the decision was fair.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Recruitment", definition: "The process of attracting people to apply for a job vacancy." },
+      { term: "Selection", definition: "The process of choosing the most suitable applicant from those who applied." },
+      { term: "Job description", definition: "A document setting out the duties, responsibilities and reporting lines of a post." },
+      { term: "Person specification", definition: "A document setting out the skills, qualifications and qualities a candidate needs." },
+      { term: "Internal recruitment", definition: "Filling a vacancy with someone who already works for the business." },
+      { term: "External recruitment", definition: "Filling a vacancy with someone from outside the business." },
+      { term: "Shortlisting", definition: "Reducing all applicants to a smaller group to be interviewed." },
+      { term: "CV", definition: "A curriculum vitae — a summary of a person's education, experience and skills." },
+      { term: "Reference", definition: "A statement from a previous employer about an applicant's work and conduct." },
+      { term: "Full-time contract", definition: "An agreement to work a standard full working week, typically around 35 to 40 hours." },
+      { term: "Part-time contract", definition: "An agreement to work fewer hours than a full-time employee." },
+      { term: "Temporary contract", definition: "A contract lasting for a fixed period or until a particular task is complete." },
+      { term: "Zero-hours contract", definition: "A contract with no guaranteed minimum hours, where work is offered as needed." },
+      { term: "Freelance", definition: "Self-employed and hired for specific pieces of work rather than employed by the business." },
+      { term: "Discrimination", definition: "Treating someone less favourably because of a protected characteristic such as age, race or sex." },
+      { term: "Equality Act 2010", definition: "The law making discrimination unlawful, including at every stage of recruitment." },
+    ],
+    examTips: [
+      {
+        tip: "Job description and person specification are different documents",
+        detail:
+          "The job description describes the JOB; the person specification describes the PERSON. Swapping them is one of the most common errors here.",
+      },
+      {
+        tip: "Give both sides of internal versus external",
+        detail:
+          "Internal is cheap, fast and motivating but brings no new ideas and leaves a gap. External brings fresh skills but costs more and is riskier.",
+      },
+      {
+        tip: "Say WHY a selection method suits the job",
+        detail:
+          "A practical test for a chef, a presentation for a sales role. Matching method to job is what earns application marks.",
+      },
+      {
+        tip: "Use the cost of getting it wrong",
+        detail:
+          "Recruitment fees, training, lost productivity and doing it all again. Quantifying that justifies spending more on selection.",
+      },
+      {
+        tip: "Mention the Equality Act where relevant",
+        detail:
+          "Discrimination is unlawful at every stage — advert, shortlist, interview and offer. Naming the law shows precision.",
+      },
+      {
+        tip: "Zero-hours contracts are an ethics question too",
+        detail:
+          "Flexibility for the business, insecurity for the worker. Good answers give both and reach a judgement rather than just defining the term.",
+      },
+    ],
+    practice: [
+      {
+        question: "The document setting out the duties and responsibilities of a post is called the job ______.",
+        accept: ["description", "job description"],
+        answer:
+          "The job description. It describes the JOB — remember the person specification describes the PERSON needed to do it.",
+      },
+      {
+        question: "The document setting out the skills and qualities a candidate needs is called the person ______.",
+        accept: ["specification", "person specification", "spec"],
+        answer:
+          "The person specification. It is what shortlisting is judged against, which is also what makes selection defensible if a decision is ever challenged.",
+      },
+      {
+        question: "Filling a vacancy with someone who already works for the business is called ______ recruitment.",
+        accept: ["internal", "internal recruitment"],
+        answer:
+          "Internal recruitment. It is cheaper and faster, and the candidate is a known quantity — but it brings no new ideas and creates another vacancy underneath.",
+      },
+      {
+        question: "Filling a vacancy with someone from outside the business is called ______ recruitment.",
+        accept: ["external", "external recruitment"],
+        answer:
+          "External recruitment. It widens the pool and brings fresh skills and perspectives, at higher cost and with more uncertainty about the person.",
+      },
+      {
+        question: "Reducing all applicants to a smaller group for interview is called ______.",
+        accept: ["shortlisting", "shortlist", "short listing"],
+        answer:
+          "Shortlisting. It should be done against the person specification, both because it is fairer and because it is far easier to defend if challenged.",
+      },
+      {
+        question: "A statement from a previous employer about an applicant is called a ______.",
+        accept: ["reference", "a reference", "references"],
+        answer:
+          "A reference. It is usually checked before a final offer, and it verifies claims that an interview alone cannot test.",
+      },
+      {
+        question: "A contract with no guaranteed minimum hours is called a ______ contract.",
+        accept: ["zero-hours", "zero hours", "zerohours"],
+        answer:
+          "A zero-hours contract. It gives the business flexibility to match staffing to demand and gives the worker no guaranteed income — a genuine ethical debate.",
+      },
+      {
+        question: "Someone self-employed and hired for specific pieces of work is called a ______.",
+        accept: ["freelancer", "freelance", "contractor"],
+        answer:
+          "A freelancer. The business pays only for the work done and avoids employment obligations, but has less control and no long-term commitment.",
+      },
+      {
+        question: "Which Act makes it unlawful to discriminate during recruitment?",
+        accept: ["equality act", "equality act 2010", "the equality act"],
+        answer:
+          "The Equality Act 2010. It applies to the advert, the shortlist, the interview questions and the offer — every stage, not just the final decision.",
+      },
+      {
+        question: "A summary of a person's education, experience and skills is called a ______.",
+        accept: ["cv", "curriculum vitae", "c.v"],
+        answer:
+          "A CV (curriculum vitae). It is the main shortlisting tool, which is why it should be checked against the person specification rather than skimmed.",
+      },
+      {
+        question: "Which selection method best shows what a chef can actually do?",
+        accept: ["practical test", "skills test", "practical task", "test", "cooking test", "trial", "practical"],
+        answer:
+          "A practical test or trial shift. Interviews test how well someone talks about cooking; a practical task tests whether they can cook.",
+      },
+      {
+        question: "Give one drawback of internal recruitment.",
+        accept: ["no new ideas", "creates another vacancy", "limited pool", "no fresh ideas", "smaller pool", "resentment", "no new skills"],
+        answer:
+          "It brings no new ideas or outside experience, the pool of candidates is small, and promoting someone simply moves the vacancy elsewhere in the business.",
+      },
+      {
+        question: "Give one cost of recruiting the wrong person.",
+        accept: ["training costs", "recruitment costs", "lost productivity", "cost of rehiring", "wasted time", "poor work", "wasted money", "low morale"],
+        answer:
+          "The advertising and interview costs, the training given, the work done badly or not at all, and then the whole cost again to replace them.",
+      },
+      {
+        question: "True or false: an interview on its own is a reliable way to predict job performance.",
+        accept: ["false", "f"],
+        answer:
+          "False. Interviews favour confident talkers and are affected by first impressions. Combining them with practical tests and references is far more reliable.",
+      },
+      {
+        question: "Explain why a business might recruit internally rather than externally. Write two or three sentences.",
+        answer:
+          "The candidate is already known — their reliability and how they work with others has been observed rather than claimed — so the risk of a bad appointment is much lower. It is also cheaper and faster, with no advertising or agency fees and less induction needed since they already understand the business. And visible promotion motivates other staff, because it shows that working hard leads somewhere. Mark this one yourself: credit yourself for reduced risk, lower cost and the motivational effect on everyone else.",
+      },
+      {
+        question: "A small café needs staff for an unpredictable summer season and is considering zero-hours contracts. Evaluate this.",
+        answer:
+          "The business case is real: demand depends on weather and tourists, and paying guaranteed hours during a wet fortnight could be unaffordable for a small café with thin margins. Zero-hours contracts let staffing follow demand exactly. But workers cannot plan or budget around an income that might be nothing, which makes it hard to attract and keep good staff — turnover rises, and constant retraining costs money and damages service. There is also a reputational risk in a small town where staff talk. Alternatives include a small guaranteed core of hours with flexible extra shifts, or hiring students who genuinely want irregular work. Overall a guaranteed minimum with flexible additional hours is likely to be better, since it keeps most of the flexibility while giving staff enough security to stay. Mark this one yourself: the top band needs the effect on RETENTION and a workable middle option.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A job description and a person specification are the same document.",
+        right:
+          "The job description describes the job — duties and responsibilities. The person specification describes the person — skills and qualities needed.",
+      },
+      {
+        wrong: "External recruitment is always better because you get the best candidate.",
+        right:
+          "It costs more, takes longer and is riskier, because you know far less about someone than about a colleague you have watched for two years.",
+      },
+      {
+        wrong: "An interview is enough to choose the right person.",
+        right:
+          "Interviews reward confidence rather than competence. Practical tests, references and tasks predict performance far better.",
+      },
+      {
+        wrong: "Zero-hours contracts are illegal.",
+        right:
+          "They are lawful in the UK. Whether they are FAIR is an ethical question, and the answer usually depends on whether the worker wants flexibility too.",
+      },
+    ],
+  },
+
+  "business/training-and-motivation": {
+    summary:
+      "Two questions sit behind this topic: can your staff do the job, and do they want to? Training answers the first, motivation the second, and a business needs both — a well-trained employee who has stopped caring is as much of a problem as a keen one who does not know what they are doing.",
+    keyFacts: [
+      {
+        heading: "Types of training",
+        points: [
+          "INDUCTION training introduces a new employee to the business, the people and the procedures.",
+          "ON-THE-JOB training happens while doing the work — shadowing, mentoring, learning by doing.",
+          "On-the-job is cheap and directly relevant, but bad habits can be passed on and output suffers while learning.",
+          "OFF-THE-JOB training happens away from the workplace — a course, a college, an outside trainer.",
+          "Off-the-job brings wider expertise and no distractions, but costs more and the employee is not working.",
+        ],
+      },
+      {
+        heading: "Why train at all",
+        points: [
+          "Better skills mean higher productivity and better quality.",
+          "Fewer accidents and mistakes, which reduces cost and legal risk.",
+          "Staff feel valued and are more likely to stay, cutting recruitment costs.",
+          "It allows internal promotion, which is cheaper and more motivating than external recruitment.",
+          "The classic objection — 'what if we train them and they leave?' — is answered by 'what if we don't and they stay?'",
+        ],
+      },
+      {
+        heading: "Financial motivation",
+        points: [
+          "SALARY is a fixed annual amount; WAGES are usually paid per hour or per week.",
+          "PIECE RATE pays per item produced, which raises output but can damage quality.",
+          "COMMISSION pays a percentage of sales, common in selling roles.",
+          "BONUS is an extra payment for hitting a target; PROFIT SHARING gives staff a share of company profit.",
+          "FRINGE BENEFITS are non-cash extras: staff discounts, a company car, health insurance, a pension.",
+        ],
+      },
+      {
+        heading: "Non-financial motivation",
+        points: [
+          "JOB ROTATION: moving between tasks to reduce boredom.",
+          "JOB ENLARGEMENT: adding more tasks at the same level of responsibility.",
+          "JOB ENRICHMENT: adding more challenging tasks with greater responsibility.",
+          "Praise, recognition, autonomy, teamwork and clear promotion routes all motivate without direct cost.",
+          "Maslow argued needs run from basic (pay, safety) up to esteem and self-fulfilment — pay stops motivating once the lower needs are met.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Training", definition: "Teaching employees the skills and knowledge they need to do their job well." },
+      { term: "Induction training", definition: "Training given to a new employee to introduce them to the business and its procedures." },
+      { term: "On-the-job training", definition: "Learning while actually doing the work, often by shadowing an experienced colleague." },
+      { term: "Off-the-job training", definition: "Training away from the workplace, such as a course or qualification." },
+      { term: "Motivation", definition: "The desire and willingness of an employee to work well and put in effort." },
+      { term: "Salary", definition: "A fixed annual amount of pay, usually paid in monthly instalments." },
+      { term: "Wages", definition: "Pay calculated by the hour or week, usually for work with variable hours." },
+      { term: "Piece rate", definition: "Payment based on the number of items produced." },
+      { term: "Commission", definition: "Payment based on a percentage of the sales an employee makes." },
+      { term: "Bonus", definition: "An extra payment made for achieving a target or for good performance." },
+      { term: "Profit sharing", definition: "Giving employees a share of the business's profit." },
+      { term: "Fringe benefits", definition: "Non-cash rewards such as staff discounts, a pension, health insurance or a company car." },
+      { term: "Job rotation", definition: "Moving employees between different tasks to reduce boredom and build skills." },
+      { term: "Job enlargement", definition: "Giving an employee more tasks at the same level of responsibility." },
+      { term: "Job enrichment", definition: "Giving an employee more challenging work with greater responsibility." },
+      { term: "Maslow's hierarchy of needs", definition: "A theory that human needs run from basic physical needs up to esteem and self-fulfilment." },
+      { term: "Staff turnover", definition: "The rate at which employees leave a business and have to be replaced." },
+      { term: "Retention", definition: "Keeping employees so that they do not leave for another employer." },
+    ],
+    examTips: [
+      {
+        tip: "Enlargement and enrichment are different",
+        detail:
+          "Enlargement is MORE tasks at the same level; enrichment is HARDER tasks with more responsibility. Examiners test this distinction directly.",
+      },
+      {
+        tip: "Link motivation to a measurable outcome",
+        detail:
+          "Higher productivity, lower staff turnover, better quality, fewer mistakes. Naming the outcome turns a description into analysis.",
+      },
+      {
+        tip: "Remember pay is not always the answer",
+        detail:
+          "Once basic needs are met, recognition, responsibility and progression often matter more — and they are cheaper. That point earns marks in evaluation.",
+      },
+      {
+        tip: "Give the drawback of piece rate",
+        detail:
+          "It raises output and can wreck quality, since workers are paid for quantity. The standard fix is combining it with quality checks.",
+      },
+      {
+        tip: "Cost training against turnover",
+        detail:
+          "Training costs money and the person might leave — but untrained staff are less productive and leave more often anyway. Weigh both.",
+      },
+      {
+        tip: "Match the method to the job and the person",
+        detail:
+          "A bored production worker may want rotation; an ambitious graduate wants enrichment. Recommending the same thing for everyone misses the point.",
+      },
+    ],
+    practice: [
+      {
+        question: "Training given to a new employee when they first join is called ______ training.",
+        accept: ["induction", "induction training"],
+        answer:
+          "Induction training. It covers procedures, safety and who's who, and doing it properly reduces early mistakes and the chance of a new starter leaving quickly.",
+      },
+      {
+        question: "Learning while actually doing the work is called ______ training.",
+        accept: ["on-the-job", "on the job", "onthejob", "on-the-job training"],
+        answer:
+          "On-the-job training. It is cheap and directly relevant, but the trainer's bad habits get passed on and output is lower while learning happens.",
+      },
+      {
+        question: "Training away from the workplace, such as a college course, is called ______ training.",
+        accept: ["off-the-job", "off the job", "offthejob", "off-the-job training"],
+        answer:
+          "Off-the-job training. It brings expertise the business does not have internally, but costs more and the employee is not producing anything while away.",
+      },
+      {
+        question: "Payment based on the number of items produced is called ______ rate.",
+        accept: ["piece", "piece rate", "piecework"],
+        answer:
+          "Piece rate. It raises output sharply and can damage quality just as sharply, since workers are being paid for quantity rather than care.",
+      },
+      {
+        question: "Payment as a percentage of the sales an employee makes is called ______.",
+        accept: ["commission"],
+        answer:
+          "Commission. It links reward directly to results, which motivates strongly — but can encourage pressure selling that damages customer relationships.",
+      },
+      {
+        question: "Giving employees a share of the company's profit is called profit ______.",
+        accept: ["sharing", "profit sharing", "share"],
+        answer:
+          "Profit sharing. It gives staff a stake in overall success rather than just their own output, which encourages cooperation between departments.",
+      },
+      {
+        question: "Non-cash rewards such as staff discounts and a pension are called ______ benefits.",
+        accept: ["fringe", "fringe benefits", "perks"],
+        answer:
+          "Fringe benefits. They can be cheaper for the business than the equivalent pay rise while being worth more to the employee, which is why they are so common.",
+      },
+      {
+        question: "Moving employees between different tasks to reduce boredom is called job ______.",
+        accept: ["rotation", "job rotation"],
+        answer:
+          "Job rotation. It also builds a more flexible workforce, since more people can cover more roles when somebody is absent.",
+      },
+      {
+        question: "Giving an employee more tasks at the same level of responsibility is called job ______.",
+        accept: ["enlargement", "job enlargement"],
+        answer:
+          "Job enlargement. Note it is MORE work at the SAME level — if it does not add responsibility, it can be experienced as simply being given more to do.",
+      },
+      {
+        question: "Giving an employee more challenging work with greater responsibility is called job ______.",
+        accept: ["enrichment", "job enrichment"],
+        answer:
+          "Job enrichment. This is the one that adds responsibility, which is why it motivates more strongly than enlargement — and why the two must not be confused.",
+      },
+      {
+        question: "Whose theory describes needs running from basic physical needs up to self-fulfilment?",
+        accept: ["maslow", "maslow's", "abraham maslow", "maslows"],
+        answer:
+          "Maslow. His hierarchy explains why a pay rise stops motivating once someone is comfortable — the unmet needs by then are esteem and fulfilment, not money.",
+      },
+      {
+        question: "The rate at which employees leave and must be replaced is called staff ______.",
+        accept: ["turnover", "staff turnover", "labour turnover"],
+        answer:
+          "Staff turnover. High turnover is expensive — constant recruitment and retraining — and is usually the clearest measurable sign of poor motivation.",
+      },
+      {
+        question: "A fixed annual amount of pay is called a ______.",
+        accept: ["salary", "a salary"],
+        answer:
+          "A salary, usually paid monthly. Wages, by contrast, are calculated by the hour or week and vary with the hours actually worked.",
+      },
+      {
+        question: "Give one non-financial way to motivate staff.",
+        accept: ["praise", "recognition", "responsibility", "job rotation", "job enrichment", "promotion", "teamwork", "training", "autonomy", "job enlargement", "thanks"],
+        answer:
+          "Praise and recognition, more responsibility, job rotation or enrichment, teamwork, training and clear promotion routes. Most cost little or nothing.",
+      },
+      {
+        question: "Explain why a business might train staff even though trained staff can leave. Write two or three sentences.",
+        answer:
+          "Trained staff are more productive, make fewer mistakes and produce better quality, so the business gets a return long before anyone leaves. Training also makes people MORE likely to stay, not less, because being invested in signals that they are valued and opens routes to promotion. The alternative — untrained staff who are unproductive and feel stuck — usually produces higher turnover anyway. Mark this one yourself: credit yourself for the productivity return and for the point that training improves retention rather than harming it.",
+      },
+      {
+        question: "A factory has high staff turnover and repetitive work. Evaluate how it could improve motivation.",
+        answer:
+          "Pay is the obvious lever and the least reliable one: a rise motivates briefly, is expensive permanently, and does nothing about work that is boring. Since the problem is repetitive tasks, job rotation would directly address the cause by giving variety and building a more flexible workforce, at the cost of some retraining and a short-term dip in output. Job enrichment — letting teams manage their own quality checks and rotas — would add responsibility and is cheap, though not everyone wants it. Recognition schemes and clear promotion routes cost little and address the esteem needs Maslow describes. Overall, rotation combined with enrichment tackles the actual cause, whereas a pay rise treats the symptom; but the business should ask its own staff first, since assuming what motivates people is how expensive schemes fail. Mark this one yourself: the top band identifies that the CAUSE is the repetitive work and matches the solution to it.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Money is the only thing that really motivates people.",
+        right:
+          "Pay matters most when basic needs are unmet. Beyond that, recognition, responsibility and progression usually motivate more — and cost far less.",
+      },
+      {
+        wrong: "Job enlargement and job enrichment are the same.",
+        right:
+          "Enlargement adds MORE tasks at the same level. Enrichment adds HARDER tasks with more responsibility. Only enrichment increases authority.",
+      },
+      {
+        wrong: "Training is a cost with no return if staff leave.",
+        right:
+          "Trained staff are more productive immediately, and being trained makes people more likely to stay. Untrained, unvalued staff leave more often.",
+      },
+      {
+        wrong: "Piece rate is the best way to raise output.",
+        right:
+          "It raises quantity and often destroys quality, because workers are paid for how many, not how well. It needs quality checks alongside it.",
+      },
+      {
+        wrong: "A motivated workforce just means happier staff.",
+        right:
+          "It shows up in measurable things: higher productivity, lower turnover, fewer errors and better customer service. That is why it is a business topic.",
+      },
+    ],
+  },
+
+  "business/technology-in-business": {
+    summary:
+      "Technology has changed what a business can sell, who it can sell to, and how many people it needs to do it. This topic covers e-commerce, digital communication, payment systems and the data businesses now collect — along with the costs, the security risks and the jobs that change or disappear.",
+    keyFacts: [
+      {
+        heading: "E-commerce and m-commerce",
+        points: [
+          "E-COMMERCE is buying and selling online; M-COMMERCE is doing it through mobile devices.",
+          "It removes the need for a physical shop, cutting rent and business rates dramatically.",
+          "It widens the market from a local area to the whole country or the world.",
+          "It allows selling 24 hours a day without staffing costs for those hours.",
+          "But competition is now global, delivery and returns cost money, and customers cannot handle the product before buying.",
+        ],
+      },
+      {
+        heading: "Digital communication and payment",
+        points: [
+          "Social media allows cheap, precisely targeted promotion and two-way contact with customers.",
+          "Email, video calls and messaging make remote and international working practical.",
+          "Contactless and mobile payments speed up transactions and reduce queues.",
+          "Online booking and ordering systems cut staff time and reduce mistakes.",
+          "Every one of these leaves a data trail that the business can analyse.",
+        ],
+      },
+      {
+        heading: "Data and automation",
+        points: [
+          "Businesses collect data on what customers buy, when, and what they looked at first.",
+          "That data supports stock decisions, pricing, targeted advertising and personalised recommendations.",
+          "Automated systems handle stock control, accounting, payroll and increasingly customer enquiries.",
+          "Automation raises consistency and cuts labour costs, but requires investment and reduces jobs.",
+          "Data protection law governs what may be collected and stored, with serious fines for breaches.",
+        ],
+      },
+      {
+        heading: "Costs and risks",
+        points: [
+          "Setting up systems costs money, and so does maintaining, updating and securing them.",
+          "Staff need training, and some will resist the change.",
+          "Cybercrime is a genuine threat: fraud, ransomware and data theft affect businesses of every size.",
+          "A system failure can stop trading completely, which is a risk that did not exist for a cash-only shop.",
+          "Technology dates quickly, so what was an advantage becomes the minimum customers expect.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "E-commerce", definition: "Buying and selling goods or services over the internet." },
+      { term: "M-commerce", definition: "Buying and selling through mobile devices such as phones and tablets." },
+      { term: "Digital communication", definition: "Contacting customers and colleagues electronically, through email, social media or messaging." },
+      { term: "Social media marketing", definition: "Promoting a business through social platforms, usually targeted at specific groups." },
+      { term: "Contactless payment", definition: "Paying by tapping a card or phone, without entering a PIN for small amounts." },
+      { term: "Automation", definition: "Using machines or software to carry out tasks previously done by people." },
+      { term: "Data analytics", definition: "Examining collected data to find patterns that inform business decisions." },
+      { term: "Personalisation", definition: "Tailoring products, offers or recommendations to an individual customer's behaviour." },
+      { term: "Cybercrime", definition: "Criminal activity carried out using computers, such as fraud, hacking or ransomware." },
+      { term: "Data protection", definition: "The legal rules controlling how personal information is collected, stored and used." },
+      { term: "Cloud computing", definition: "Storing data and running software on remote servers accessed over the internet." },
+      { term: "Website", definition: "A business's own online presence, used to inform, sell and build a brand." },
+      { term: "Search engine optimisation (SEO)", definition: "Improving a website so it appears higher in search results." },
+      { term: "Digital divide", definition: "The gap between those with good access to technology and those without." },
+      { term: "Remote working", definition: "Working away from the employer's premises, made possible by digital communication." },
+      { term: "Stock control system", definition: "Software that tracks stock levels automatically and reorders when levels fall." },
+    ],
+    examTips: [
+      {
+        tip: "Give the cost as well as the benefit",
+        detail:
+          "Technology saves money and costs money — setup, training, maintenance, security. Answers listing only benefits cannot reach the top band.",
+      },
+      {
+        tip: "E-commerce widens the market AND the competition",
+        detail:
+          "A small shop can now sell nationally, and now competes with everyone who can do the same. Both halves matter.",
+      },
+      {
+        tip: "Name the specific technology",
+        detail:
+          "'Uses technology' scores nothing. 'An online booking system that reduces no-shows and frees a member of staff' scores properly.",
+      },
+      {
+        tip: "Remember the stakeholder effect of automation",
+        detail:
+          "Lower costs for owners, lost jobs for employees. Recognising the conflict is worth more than describing the efficiency gain.",
+      },
+      {
+        tip: "Technology becomes the minimum expected",
+        detail:
+          "Card payments were once an advantage and are now assumed. That framing — advantage becoming expectation — is a strong evaluation point.",
+      },
+      {
+        tip: "Link data collection to the law",
+        detail:
+          "Collecting customer data brings data protection obligations and real fines. Mentioning that shows you see the risk as well as the opportunity.",
+      },
+    ],
+    practice: [
+      {
+        question: "Buying and selling over the internet is called ______.",
+        accept: ["e-commerce", "ecommerce", "e commerce", "online selling"],
+        answer:
+          "E-commerce. It removes the need for a shop and widens the market enormously, while exposing the business to competitors anywhere in the world.",
+      },
+      {
+        question: "Buying and selling through phones and tablets is called ______.",
+        accept: ["m-commerce", "mcommerce", "m commerce", "mobile commerce"],
+        answer:
+          "M-commerce. Most online shopping now happens on phones, which is why a site that works badly on a small screen loses sales directly.",
+      },
+      {
+        question: "Improving a website so it appears higher in search results is called search engine ______.",
+        accept: ["optimisation", "optimization", "seo", "search engine optimisation"],
+        answer:
+          "Search engine optimisation (SEO). It matters because most customers never look past the first page of results, so ranking is effectively visibility.",
+      },
+      {
+        question: "Using machines or software to do tasks previously done by people is called ______.",
+        accept: ["automation", "automating"],
+        answer:
+          "Automation. It raises consistency and cuts labour costs, but needs investment and reduces jobs — a genuine stakeholder conflict, not just an efficiency gain.",
+      },
+      {
+        question: "Storing data and running software on remote servers over the internet is called ______ computing.",
+        accept: ["cloud", "cloud computing"],
+        answer:
+          "Cloud computing. It avoids buying and maintaining servers and lets staff work anywhere, but makes the business dependent on its internet connection.",
+      },
+      {
+        question: "Criminal activity carried out using computers is called ______.",
+        accept: ["cybercrime", "cyber crime", "cyber-crime"],
+        answer:
+          "Cybercrime. Small businesses are targeted precisely because their security is usually weaker, so 'we're too small to be a target' is a dangerous assumption.",
+      },
+      {
+        question: "Examining collected data to find useful patterns is called data ______.",
+        accept: ["analytics", "data analytics", "analysis"],
+        answer:
+          "Data analytics. It turns records of what customers did into decisions about stock, pricing and advertising — market research that arrives automatically.",
+      },
+      {
+        question: "Working away from the employer's premises is called ______ working.",
+        accept: ["remote", "remote working", "home", "flexible"],
+        answer:
+          "Remote working. It widens the pool of possible employees and cuts office costs, but makes supervision, communication and team culture harder.",
+      },
+      {
+        question: "Tailoring recommendations to an individual customer's behaviour is called ______.",
+        accept: ["personalisation", "personalization", "personalising"],
+        answer:
+          "Personalisation. It increases sales by showing customers things they are likely to want, but feels intrusive if pushed too far — a judgement, not a formula.",
+      },
+      {
+        question: "The gap between those with good access to technology and those without is called the digital ______.",
+        accept: ["divide", "digital divide"],
+        answer:
+          "The digital divide. It matters commercially: a business that moves entirely online loses customers who cannot or will not use it.",
+      },
+      {
+        question: "Software that tracks stock levels and reorders automatically is called a stock ______ system.",
+        accept: ["control", "stock control", "control system", "management"],
+        answer:
+          "A stock control system. It reduces both stockouts and overstocking at once, which is difficult to achieve by hand in a business of any size.",
+      },
+      {
+        question: "Give one cost to a business of introducing new technology.",
+        accept: ["setup cost", "training", "maintenance", "equipment", "cost", "software", "staff resistance", "updates", "security"],
+        answer:
+          "The initial purchase, staff training, ongoing maintenance and updates, and security. There is also disruption while people learn the new system.",
+      },
+      {
+        question: "True or false: e-commerce reduces the amount of competition a small business faces.",
+        accept: ["false", "f"],
+        answer:
+          "False. It widens your market and widens everyone else's at the same time, so a local shop now competes with sellers nationwide rather than the shop down the road.",
+      },
+      {
+        question: "Which area of law applies when a business stores customer data?",
+        accept: ["data protection", "gdpr", "data protection law", "uk gdpr"],
+        answer:
+          "Data protection law. It governs what may be collected, how long it is kept and what customers can demand, with fines large enough to matter to any business.",
+      },
+      {
+        question: "Explain why a small shop might open an online store as well as its physical one. Write two or three sentences.",
+        answer:
+          "It widens the market from people who can walk past the shop to anyone in the country, and it can sell overnight and at weekends without paying for staff to be there. The costs are far lower than opening a second shop — no rent, no rates, no extra staff. The trade-offs are delivery and returns costs, the need to be found among many online competitors, and the work of keeping the site and its stock accurate. Mark this one yourself: credit yourself for the wider market, the low cost compared with a second branch, and at least one drawback.",
+      },
+      {
+        question: "A traditional bookshop is considering replacing two staff with self-service checkouts. Evaluate the decision.",
+        answer:
+          "The financial case is straightforward: two salaries saved every year against a one-off cost, plus faster queues at busy times. But a bookshop's advantage over buying online is precisely the human part — staff who recommend books, know regulars and make browsing pleasant. Removing them attacks the reason customers come in rather than ordering from a website that is always cheaper. There is also the stakeholder cost of two redundancies in a small business, and the risk that older customers dislike self-service. A better option might be one self-service point for quick purchases while keeping staff for advice, capturing some saving without losing the differentiator. Overall, replacing both would be a mistake because it makes the shop more like the competitor it cannot beat on price. Mark this one yourself: the top band recognises that the staff ARE the competitive advantage here.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Technology always reduces a business's costs.",
+        right:
+          "It shifts them. Setup, training, maintenance, security and updates all cost money, and a failed implementation can cost far more than it saved.",
+      },
+      {
+        wrong: "Selling online means you no longer need premises.",
+        right:
+          "You still need somewhere to hold stock, pack orders and handle returns. The cost moves from a shop to a storeroom rather than disappearing.",
+      },
+      {
+        wrong: "Automation is good for everyone because it makes things efficient.",
+        right:
+          "It benefits owners through lower costs and harms employees whose jobs go. Recognising that stakeholder conflict is part of the answer.",
+      },
+      {
+        wrong: "Small businesses aren't targeted by cybercrime.",
+        right:
+          "They are targeted precisely because their security is usually weaker, and they are least able to absorb the cost of an attack.",
+      },
+      {
+        wrong: "Having a website is a competitive advantage.",
+        right:
+          "It was twenty years ago; now it is the minimum customers expect. Technology reliably turns from an advantage into an expectation.",
+      },
+    ],
+  },
 };

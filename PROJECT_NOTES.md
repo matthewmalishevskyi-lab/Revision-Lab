@@ -66,11 +66,14 @@ House style keeping the three a family: chunky proportions, big heads, flat fill
 
 ## Business — the sixth subject (added 2026-08-09)
 
-**Sterling**, teal, Year 10 only. 13 topics, 209 flashcards.
+**Sterling**, teal. **26 topics across Years 10 and 11, 419 flashcards** — the most
+flashcard-heavy subject on the site, at Matthew's request, because Business
+loses more marks to imprecise definitions than to anything else.
 
 **No Year 9, on purpose.** Business is a GCSE option chosen at the end of Year 9
 and begun in Year 10. Inventing a Year 9 would have meant padding with material
-no student is set. Year 11 is planned and NOT yet written.
+no student is set. Year 10 is broadly Edexcel's Theme 1 (starting a business);
+Year 11 is Theme 2 (building a business).
 
 **Teal because every other hue was taken** — blue, orange, violet, red, green.
 Teal is the only remaining colour far enough from all five to be told apart at
@@ -87,6 +90,14 @@ fact about layout rather than about the year.
 **Matthew's brief for the mascot:** a person in a suit with a briefcase, "cute
 but obviously not Teletubby cute, simple features but not baby-like and not too
 adulty". No glasses — that thread has now been cut on three of six characters.
+
+**Revised after he saw it:** suit black (not teal — the tie stays teal, and is
+now the only thing carrying the subject colour, which makes it work harder).
+Feet turned OUT with a gap between them; the first version was two mirrored
+ovals meeting at the centre line, so he stood pigeon-toed. Hair changed from a
+rounded cap with a side parting to a textured crop with a swept fringe.
+⚠️ The black is #1e1e26, not #000000 — a flat black swallows every shadow and
+turns the figure into a silhouette.
 
 **`scripts/preview-mascot.py` was written to do this properly.** It renders a
 mascot from Mascots.tsx to a PNG so it can actually be LOOKED at. The first

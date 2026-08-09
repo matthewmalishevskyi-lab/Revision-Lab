@@ -136,6 +136,21 @@ export const KNOWN_TOPIC_KEYS: readonly string[] = [
   "business/cash-flow",
   "business/sources-of-finance",
   "business/stakeholders",
+
+  // Year 11, added the same day.
+  "business/business-growth",
+  "business/globalisation-and-trade",
+  "business/ethics-and-the-environment",
+  "business/the-economic-climate",
+  "business/business-and-the-law",
+  "business/production-processes",
+  "business/stock-and-suppliers",
+  "business/quality",
+  "business/customer-service",
+  "business/organisational-structures",
+  "business/recruitment-and-selection",
+  "business/training-and-motivation",
+  "business/technology-in-business",
 ];
 
 // Topics deliberately withdrawn. Empty, and it should stay that way unless

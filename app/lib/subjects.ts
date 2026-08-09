@@ -431,6 +431,29 @@ export const SUBJECTS: Subject[] = [
           { slug: "stakeholders", title: "Stakeholders", icon: "network" },
         ],
       },
+      {
+        // ─── Year 11 ──────────────────────────────────────────────────────
+        // Broadly Edexcel's Theme 2, "building a business": what changes once a
+        // firm is past survival. AQA covers the same ground across its
+        // operations, human resources and influences units, in a different
+        // order.
+        year: "Year 11",
+        topics: [
+          { slug: "business-growth", title: "Business growth", icon: "vector" },
+          { slug: "globalisation-and-trade", title: "Globalisation & trade", icon: "ship" },
+          { slug: "ethics-and-the-environment", title: "Ethics & the environment", icon: "leaf" },
+          { slug: "the-economic-climate", title: "The economic climate", icon: "gauge" },
+          { slug: "business-and-the-law", title: "Business & the law", icon: "gavel" },
+          { slug: "production-processes", title: "Production processes", icon: "factory" },
+          { slug: "stock-and-suppliers", title: "Stock & suppliers", icon: "cube" },
+          { slug: "quality", title: "Quality", icon: "crown" },
+          { slug: "customer-service", title: "Customer service", icon: "quote" },
+          { slug: "organisational-structures", title: "Organisational structures", icon: "flow" },
+          { slug: "recruitment-and-selection", title: "Recruitment & selection", icon: "mic" },
+          { slug: "training-and-motivation", title: "Training & motivation", icon: "book" },
+          { slug: "technology-in-business", title: "Technology in business", icon: "chip" },
+        ],
+      },
     ],
   },
 ];
