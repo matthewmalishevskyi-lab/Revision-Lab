@@ -3,7 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
-import { getCurrentUser } from "../lib/actions";
+import { getViewer } from "../lib/viewer";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { SUBJECTS } from "../lib/subjects";
 
@@ -19,7 +19,7 @@ export default async function DashboardPage() {
   // Nothing to show if accounts are off — send them to the content instead.
   if (!ACCOUNTS_ENABLED) redirect("/");
 
-  const user = await getCurrentUser();
+  const user = await getViewer();
 
   // A PROTECTED PAGE. The check happens on the server, before a single byte of
   // this page is sent. That's the important bit: hiding a page in the browser

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { AccountsOff } from "../components/AccountsOff";
 import { AuthShell } from "../components/AuthShell";
-import { getCurrentUser } from "../lib/actions";
+import { getViewer } from "../lib/viewer";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { RegisterForm } from "./RegisterForm";
 
@@ -18,7 +18,7 @@ export default async function RegisterPage() {
   // Accounts off (deployed with no database)? Say so plainly.
   if (!ACCOUNTS_ENABLED) return <AccountsOff />;
 
-  const user = await getCurrentUser();
+  const user = await getViewer();
   if (user) redirect("/");
 
   return (

@@ -14,7 +14,8 @@ import {
   learningResourceSchema,
 } from "../../../components/StructuredData";
 import { getTopicContent } from "../../../lib/content";
-import { SITE_NAME, SITE_URL } from "../../../lib/site";
+import { ACCOUNTS_ENABLED, SITE_NAME, SITE_URL } from "../../../lib/site";
+import { getViewer } from "../../../lib/viewer";
 import { getTopic, SUBJECTS, YEAR_STYLES } from "../../../lib/subjects";
 
 // Two variables in the URL now: /subjects/[subject]/[topic].
@@ -84,6 +85,10 @@ export default async function TopicPage({ params }: Props) {
   // without the site ever being broken in between.
   const content = getTopicContent(subject.slug, topic.slug);
 
+  // Who is reading this. The header asks the same question, and `getViewer`
+  // makes sure that costs one lookup per request rather than two.
+  const viewer = ACCOUNTS_ENABLED ? await getViewer() : null;
+
   // Does anything on this page carry the Higher tier flag? Worked out once here
   // rather than checked in three places further down.
   const hasHigherContent = Boolean(
@@ -143,9 +148,19 @@ export default async function TopicPage({ params }: Props) {
           never intercept a click. */}
       <LadderCompanion mascot={subject.mascot} colour={style.text} />
 
-      {/* Draws nothing. It counts how long this page is genuinely being looked
-          at, and only records for people who are logged in. */}
-      {content && <StudyTimer subject={subject.slug} topic={topic.slug} />}
+      {/* Draws nothing — it counts how long this page is genuinely being looked
+          at.
+
+          Only rendered for someone who is LOGGED IN, and that condition matters
+          more than it looks. The Server Action already refuses to record for a
+          logged-out visitor, so this was safe but wasteful: every anonymous
+          reader was firing a request at the server every 30 seconds for it to
+          be thrown away. On a page anyone can find from Google, that is a lot
+          of work to do for nothing. Checking here means the request is never
+          made in the first place. */}
+      {content && viewer && (
+        <StudyTimer subject={subject.slug} topic={topic.slug} />
+      )}
 
       <main className="mx-auto w-full max-w-4xl px-6 py-8">
         <SiteHeader greeting={false} />

@@ -126,11 +126,29 @@ export function Flashcards({
           // Count a card as "reviewed" the first time its definition is
           // revealed. Flipping back and forth on the same card must not count
           // again — otherwise the number measures fidgeting, not revision.
-          if (nowFlipped && !reviewed.has(safePosition)) {
+          // ─────────────────────────────────────────────────────────────────
+          // NOTE WHAT IS BEING REMEMBERED: the CARD, not the position.
+          //
+          // This originally stored the position — slot 3, slot 4 — and that
+          // was wrong in a way only Shuffle reveals. Shuffling rearranges
+          // `order`, so slot 3 afterwards holds a completely different card.
+          // The result was both errors at once:
+          //
+          //   - a brand new card landing in an already-used slot was NOT
+          //     counted, because that slot was "done"
+          //   - a card you had already reviewed, landing in a fresh slot, was
+          //     counted a SECOND time
+          //
+          // `order[safePosition]` is the card's own index, which never changes
+          // whatever order they are shown in. Identity should belong to the
+          // thing, not to where the thing currently happens to be sitting.
+          // ─────────────────────────────────────────────────────────────────
+          const cardIndex = order[safePosition];
+          if (nowFlipped && !reviewed.has(cardIndex)) {
             // A NEW Set rather than .add() on the existing one. React compares
             // state by identity, so mutating the old Set would leave React
             // seeing the same object and skipping the update.
-            setReviewed((previous) => new Set(previous).add(safePosition));
+            setReviewed((previous) => new Set(previous).add(cardIndex));
             void recordFlashcard(subject, topic).catch(() => {});
           }
         }}

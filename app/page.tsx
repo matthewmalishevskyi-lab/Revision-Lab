@@ -5,7 +5,7 @@ import Link from "next/link";
 import { MASCOTS } from "./components/Mascots";
 import { SiteHeader } from "./components/SiteHeader";
 import { StructuredData, websiteSchema } from "./components/StructuredData";
-import { getCurrentUser } from "./lib/actions";
+import { getViewer } from "./lib/viewer";
 import { SITE_NAME, SITE_URL } from "./lib/site";
 import { SUBJECTS } from "./lib/subjects";
 
@@ -17,7 +17,7 @@ const WALK_DURATIONS = ["13s", "17s", "10s"];
 // Server Components can do that directly — no loading spinner, no fetching from
 // the browser. The page arrives already knowing who you are.
 export default async function Home() {
-  const user = await getCurrentUser();
+  const user = await getViewer();
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-10">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { getCurrentUser, logout } from "../lib/actions";
+import { logout } from "../lib/actions";
+import { getViewer } from "../lib/viewer";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 
 // The header that appears on every page.
@@ -14,7 +15,7 @@ const chipClasses =
 
 export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
   // Don't even ask who's logged in if accounts are switched off.
-  const user = ACCOUNTS_ENABLED ? await getCurrentUser() : null;
+  const user = ACCOUNTS_ENABLED ? await getViewer() : null;
 
   return (
     <header className="flex items-center justify-between gap-4">

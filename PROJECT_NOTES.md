@@ -145,6 +145,20 @@ The content checker is worth reading (`scripts/check-content.mjs`) — it exists
 
 It also holds **regression tests for the marking rule**, each one a bug that actually happened.
 
+## Bug hunt on the tracking (2026-08-09, same day it was built)
+
+Four real bugs, all found by reasoning then **reproduced before being fixed**.
+
+1. **Practice recorded an answer on EVERY press of Check.** Press it twice because nothing seemed to happen, or hold Enter — key repeat fires ~10×/second — and one answered question became twenty events. Reproduced: 20 presses → 20 recorded events, so the page would have said "Questions answered: 20" and computed accuracy from twenty copies of one answer. Now only the **first attempt per question per visit** is recorded, which is the better statistic anyway: first-attempt accuracy is what "do I know this?" means, and counting retries would let anyone reach 100% by guessing until the tick appeared.
+
+2. **Flashcard de-duplication keyed on the SLOT, not the card.** Shuffle rearranges `order`, so slot 3 afterwards holds a different card. Reproduced both failures at once: a brand-new card landing in a used slot was *not* counted, and an already-reviewed card landing in a fresh slot was counted *twice*. Now keyed on `order[safePosition]` — the card's own index. Identity belongs to the thing, not to where it currently sits.
+
+3. **Late-night revision landed on the wrong day.** Times are stored in UTC (correct), but "what day was it" is a question about where the *person* is, and Vercel runs in UTC while the UK is an hour ahead all summer. Verified: 00:30 Monday UK → UTC calendar day Sunday. An hour a day, at exactly the time a teenager is most likely to be revising. Day keys now come from `toLocaleDateString("en-CA", { timeZone: "Europe/London" })`. Proven correct with the server pretending to be in UTC, New York and Tokyo. Stepping back through the week uses **noon**, not midnight, so the two clock-change days can't duplicate or skip a date.
+
+4. **Every page did two identical database lookups.** The page asked who was logged in; `SiteHeader` inside it asked again. Both reasonable, together wasteful. Fixed with `getViewer` in `app/lib/viewer.ts` — React's `cache()`, which remembers the answer for one request and discards it when the request ends, so one person's login can never leak into another's page. Rule: in Server Components, don't pass data down to avoid re-fetching — fetch where needed and deduplicate.
+
+**Also:** the study timer no longer runs for logged-out visitors. The Server Action already refused to record for them, so it was safe but wasteful — every anonymous reader fired a request every 30 seconds for it to be thrown away. And the progress page now says plainly when no database is configured (running locally), rather than showing zeros that look like a fault.
+
 ## Progress tracking (built 2026-08-09, from Jennifer's mockup)
 
 **Setup: run `PROGRESS_SETUP.sql` in Supabase → SQL Editor.** One table, `activity`. Safe to re-run.

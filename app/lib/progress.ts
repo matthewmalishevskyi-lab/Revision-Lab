@@ -170,13 +170,57 @@ export type Progress = {
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// WHICH DAY DID THAT HAPPEN ON? — less obvious than it sounds
+//
+// Times are stored in UTC, which is right: it is the one clock everyone agrees
+// on. But "what day was it" is a question about where the PERSON is, and the
+// server is in UTC while Matthew is in the UK, which is an hour ahead all
+// summer.
+//
+// So revising at half past midnight on Monday was, to a UTC server, still
+// Sunday — and it landed on the wrong bar of the chart. Verified:
+//
+//   00:30 Monday 10 August, UK  →  UTC calendar day 2026-08-09
+//                               →  UK  calendar day 2026-08-10
+//
+// An hour a day, always at the exact time a teenager is most likely to be
+// revising. The fix is to ask for the calendar date in a named timezone rather
+// than doing arithmetic on the server's own clock.
+//
+// "en-CA" is a small trick: Canadian English formats dates as YYYY-MM-DD, which
+// sorts correctly as text and needs no parsing back.
+//
+// This does mean someone revising abroad sees UK days. For a site about UK
+// exams that is the right call, and it is at least consistently wrong rather
+// than depending on where the server happens to be running.
+// ─────────────────────────────────────────────────────────────────────────────
+const TIMEZONE = "Europe/London";
+
+function dayKey(date: Date): string {
+  return date.toLocaleDateString("en-CA", { timeZone: TIMEZONE });
+}
+
 export async function getProgress(userId: string): Promise<Progress> {
   const rows = await readActivity(userId);
 
-  // "This week" means the last seven days including today, not "since Monday".
-  // A Monday-based week resets someone's numbers to zero every Monday morning,
-  // which is discouraging for no good reason.
-  const weekStart = startOfDay(new Date(Date.now() - 6 * DAY_MS));
+  // The seven day keys the chart covers, ending today.
+  //
+  // Stepping back from NOON rather than midnight is deliberate: on the two days
+  // a year the clocks change, a day is 23 or 25 hours long, and stepping by
+  // exactly 24 hours from midnight can land on the same date twice or skip one
+  // entirely. Nothing lands near noon, so noon is always safe.
+  const todayKey = dayKey(new Date());
+  const noonToday = new Date(`${todayKey}T12:00:00Z`);
+  const weekKeys: string[] = [];
+  for (let back = 6; back >= 0; back--) {
+    weekKeys.push(dayKey(new Date(noonToday.getTime() - back * DAY_MS)));
+  }
+
+  // "This week" means these seven days — not "since Monday". A Monday-based
+  // week resets everyone's numbers to zero on Monday morning, which is
+  // discouraging for no good reason.
+  const inThisWeek = new Set(weekKeys);
 
   const subjects: SubjectProgress[] = SUBJECTS.map((subject) => {
     const mine = rows.filter((r) => r.subject === subject.slug);
@@ -205,7 +249,9 @@ export async function getProgress(userId: string): Promise<Progress> {
       accuracy,
       flashcardsReviewed: mine.filter((r) => r.kind === "flashcard").length,
       secondsThisWeek: mine
-        .filter((r) => r.kind === "time" && new Date(r.created_at) >= weekStart)
+        .filter(
+          (r) => r.kind === "time" && inThisWeek.has(dayKey(new Date(r.created_at))),
+        )
         .reduce((sum, r) => sum + (r.seconds ?? 0), 0),
       label: labelFor(covered, accuracy),
       nextTopic:
@@ -222,13 +268,8 @@ export async function getProgress(userId: string): Promise<Progress> {
   // nothing recorded still appears — as a gap, which is information. Grouping
   // events would silently drop empty days and squash the week.
   const week: DayTotals[] = [];
-  for (let back = 6; back >= 0; back--) {
-    const date = startOfDay(new Date(Date.now() - back * DAY_MS));
-    const next = new Date(date.getTime() + DAY_MS);
-    const onThisDay = rows.filter((r) => {
-      const at = new Date(r.created_at);
-      return at >= date && at < next;
-    });
+  for (const key of weekKeys) {
+    const onThisDay = rows.filter((r) => dayKey(new Date(r.created_at)) === key);
 
     const seconds: Record<string, number> = {};
     const questions: Record<string, number> = {};
@@ -241,8 +282,12 @@ export async function getProgress(userId: string): Promise<Progress> {
     }
 
     week.push({
-      day: date.toLocaleDateString("en-GB", { weekday: "short" }),
-      date: date.toISOString().slice(0, 10),
+      // Noon again, for the same clock-change reason as above.
+      day: new Date(`${key}T12:00:00Z`).toLocaleDateString("en-GB", {
+        weekday: "short",
+        timeZone: TIMEZONE,
+      }),
+      date: key,
       seconds,
       questions,
     });
@@ -265,12 +310,6 @@ export async function getProgress(userId: string): Promise<Progress> {
 }
 
 // ─── Small helpers ──────────────────────────────────────────────────────────
-
-function startOfDay(date: Date): Date {
-  const copy = new Date(date);
-  copy.setHours(0, 0, 0, 0);
-  return copy;
-}
 
 // The pill under each mascot. Coverage says how much you have SEEN; accuracy
 // says how well it went. "Confident" deliberately needs both — knowing a little

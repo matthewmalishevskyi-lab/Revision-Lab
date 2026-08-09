@@ -137,10 +137,15 @@ export function Practice({
   // compare with the previous value during render and reset. It happens before
   // anything is painted, so there is no flicker.
   // ───────────────────────────────────────────────────────────────────────────
+  // Which questions have already had an attempt recorded on this visit.
+  const [recorded, setRecorded] = useState<Set<number>>(new Set());
+
   const [previousQuestions, setPreviousQuestions] = useState(questions);
   if (questions !== previousQuestions) {
     setPreviousQuestions(questions);
     setStates({});
+    // A different topic's questions: start recording again.
+    setRecorded(new Set());
   }
 
   const stateFor = (index: number) => states[index] ?? EMPTY;
@@ -162,21 +167,38 @@ export function Practice({
     update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect });
 
     // ─────────────────────────────────────────────────────────────────────────
-    // Record the attempt — and notice what is NOT awaited.
+    // ONLY THE FIRST ATTEMPT AT EACH QUESTION IS RECORDED, and this was a bug
+    // before it was a decision.
     //
-    // The tick or cross has already appeared, because `update` above ran first.
-    // Waiting for the database round trip before showing the result would add a
-    // visible delay to every single answer, for no benefit the student can see.
+    // The first version recorded on every press of Check. Press it twice
+    // because nothing seemed to happen, or hold Enter for two seconds — key
+    // repeat fires it about ten times a second — and ONE answered question
+    // became twenty recorded events. Tested: 20 presses produced 20 events,
+    // so the page would have reported "Questions answered: 20" and computed
+    // accuracy from twenty copies of the same answer.
     //
-    // The failure case is deliberately silent for them: if recording fails, a
-    // statistic is slightly wrong. That is a much smaller problem than an error
-    // message interrupting revision, and `progress.ts` logs the real reason on
-    // the server where we can find it.
+    // Recording only the first attempt fixes the inflation, and is the better
+    // statistic anyway. First-attempt accuracy is what "do I know this?"
+    // actually means. If retries counted, anyone could reach 100% by guessing
+    // until the tick appeared, which would make the number meaningless — and
+    // the whole point of these figures is that they can be trusted.
     //
-    // Every attempt is recorded, right or wrong. Only counting correct answers
-    // would make accuracy meaningless — and quietly reward guessing.
+    // Later attempts still work normally on screen. They just aren't measured.
     // ─────────────────────────────────────────────────────────────────────────
-    void recordAnswer(subject, topic, isCorrect).catch(() => {});
+    if (!recorded.has(index)) {
+      setRecorded((previous) => new Set(previous).add(index));
+
+      // Not awaited. The tick or cross has already appeared, because `update`
+      // ran first. Waiting for a database round trip before showing the result
+      // would add a visible delay to every answer for no benefit anyone can
+      // see. A failure is silent for the student and logged on the server —
+      // losing a statistic is a much smaller problem than an error message
+      // interrupting revision.
+      //
+      // Wrong answers are recorded as well as right ones. Only counting
+      // correct answers would make accuracy meaningless.
+      void recordAnswer(subject, topic, isCorrect).catch(() => {});
+    }
   }
 
   const markable = questions.filter((q) => q.accept).length;

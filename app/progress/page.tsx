@@ -5,8 +5,8 @@ import { MASCOTS } from "../components/Mascots";
 import { ProgressRing } from "../components/ProgressRing";
 import { SiteHeader } from "../components/SiteHeader";
 import { WeeklyChart } from "../components/WeeklyChart";
-import { getCurrentUser } from "../lib/actions";
-import { formatDuration, getProgress } from "../lib/progress";
+import { getViewer } from "../lib/viewer";
+import { formatDuration, getProgress, PROGRESS_ENABLED } from "../lib/progress";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { YEAR_STYLES } from "../lib/subjects";
 
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default async function ProgressPage() {
   if (!ACCOUNTS_ENABLED) redirect("/");
 
-  const user = await getCurrentUser();
+  const user = await getViewer();
   // Checked on the SERVER, before a byte of this page is sent. Hiding a page in
   // the browser is not security; anyone can undo that with dev tools.
   if (!user) redirect("/login");
@@ -89,6 +89,18 @@ export default async function ProgressPage() {
           </Link>
         )}
       </section>
+
+      {/* An honest explanation rather than a permanently empty page.
+          Running locally without the Supabase settings, nothing can be
+          recorded — so say so, instead of showing zeros that look like a fault
+          or, worse, like you have done no work. */}
+      {!PROGRESS_ENABLED && (
+        <p className="mt-6 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-5 py-4 text-sm">
+          <strong>Nothing is being recorded here.</strong> This copy of the site
+          has no database configured, so these figures will stay at zero. Your
+          real progress is on the live site.
+        </p>
+      )}
 
       {/* ---------- The three subject cards ---------- */}
       <section className="mt-8 grid gap-6 lg:grid-cols-3">
