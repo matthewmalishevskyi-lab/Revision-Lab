@@ -8,10 +8,19 @@
 // the topic page stays on the server.
 
 import { useState } from "react";
+import { recordFlashcard } from "../lib/progress-actions";
 
 type Card = { term: string; definition: string };
 
-export function Flashcards({ cards }: { cards: Card[] }) {
+export function Flashcards({
+  cards,
+  subject,
+  topic,
+}: {
+  cards: Card[];
+  subject: string;
+  topic: string;
+}) {
   // `order` holds the card indexes. Shuffling rearranges THIS rather than the
   // cards themselves, so the original data is never modified. Mutating props is
   // one of the classic React bugs — the change is invisible to React, so the
@@ -37,12 +46,32 @@ export function Flashcards({ cards }: { cards: Card[] }) {
   // changes: compare against the previous value during render and reset. It
   // runs before anything is painted, so nothing flickers.
   // ───────────────────────────────────────────────────────────────────────────
+  // Which positions have already been counted as reviewed on this visit, so
+  // flipping the same card back and forth only counts once.
+  //
+  // ───────────────────────────────────────────────────────────────────────────
+  // THIS WAS A useRef, AND THE LINTER WAS RIGHT TO REJECT IT
+  //
+  // A ref looked ideal: the value is never drawn, so changing it should not
+  // need a re-render. But the reset below happens DURING RENDER, and React
+  // forbids writing to a ref there — during render a component must be a pure
+  // function of its props and state, and a ref write is a side effect. React
+  // may render more than once, or throw a render away entirely, so side effects
+  // during render happen an unpredictable number of times.
+  //
+  // State is the correct tool, and it costs nothing here: flipping a card
+  // already calls setFlipped, so the re-render was happening anyway.
+  // ───────────────────────────────────────────────────────────────────────────
+  const [reviewed, setReviewed] = useState<Set<number>>(new Set());
+
   const [previousCards, setPreviousCards] = useState(cards);
   if (cards !== previousCards) {
     setPreviousCards(cards);
     setOrder(cards.map((_, i) => i));
     setPosition(0);
     setFlipped(false);
+    // A different topic's deck: start counting again.
+    setReviewed(new Set());
   }
 
   // Belt and braces: even if position somehow strays, never index past the end.
@@ -91,7 +120,20 @@ export function Flashcards({ cards }: { cards: Card[] }) {
           and screen reader support for free. */}
       <button
         type="button"
-        onClick={() => setFlipped((f) => !f)}
+        onClick={() => {
+          const nowFlipped = !flipped;
+          setFlipped(nowFlipped);
+          // Count a card as "reviewed" the first time its definition is
+          // revealed. Flipping back and forth on the same card must not count
+          // again — otherwise the number measures fidgeting, not revision.
+          if (nowFlipped && !reviewed.has(safePosition)) {
+            // A NEW Set rather than .add() on the existing one. React compares
+            // state by identity, so mutating the old Set would leave React
+            // seeing the same object and skipping the update.
+            setReviewed((previous) => new Set(previous).add(safePosition));
+            void recordFlashcard(subject, topic).catch(() => {});
+          }
+        }}
         aria-live="polite"
         className="mt-3 w-full text-left"
         style={{ perspective: "1200px" }}

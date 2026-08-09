@@ -108,14 +108,15 @@ export default async function DashboardPage() {
         <div className="rounded-2xl border border-white/60 bg-white/60 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
           <h2 className="text-xl font-semibold">Your progress</h2>
           <p className="mt-3 opacity-70">
-            Nothing to show yet. Progress tracking needs somewhere to record
-            what you&apos;ve revised, which is the next thing worth building —
-            and it&apos;s the reason accounts exist at all.
+            Every question you answer, flashcard you flip and minute you spend
+            on a topic page is now recorded against your account.
           </p>
-          <p className="mt-3 text-sm opacity-50">
-            Shown as an empty state rather than fake numbers, because invented
-            progress would be worse than none.
-          </p>
+          <Link
+            href="/progress"
+            className="mt-4 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+          >
+            See your progress →
+          </Link>
         </div>
       </section>
     </main>

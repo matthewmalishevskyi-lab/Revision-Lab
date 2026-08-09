@@ -26,6 +26,7 @@
 
 import { useState } from "react";
 import { HigherBadge } from "./HigherBadge";
+import { recordAnswer } from "../lib/progress-actions";
 
 type Question = {
   question: string;
@@ -106,9 +107,17 @@ const EMPTY: QuestionState = { input: "", status: "unanswered", revealed: false 
 export function Practice({
   questions,
   colour,
+  subject,
+  topic,
 }: {
   questions: Question[];
   colour: string;
+  // Which topic these questions belong to, so an answer can be recorded
+  // against it. Passed in rather than worked out here, because a component
+  // that has to guess where it is being used is a component that will
+  // eventually guess wrong.
+  subject: string;
+  topic: string;
 }) {
   const [states, setStates] = useState<Record<number, QuestionState>>({});
 
@@ -151,6 +160,23 @@ export function Practice({
       (valid) => normalise(valid) === normalise(typed),
     );
     update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect });
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Record the attempt — and notice what is NOT awaited.
+    //
+    // The tick or cross has already appeared, because `update` above ran first.
+    // Waiting for the database round trip before showing the result would add a
+    // visible delay to every single answer, for no benefit the student can see.
+    //
+    // The failure case is deliberately silent for them: if recording fails, a
+    // statistic is slightly wrong. That is a much smaller problem than an error
+    // message interrupting revision, and `progress.ts` logs the real reason on
+    // the server where we can find it.
+    //
+    // Every attempt is recorded, right or wrong. Only counting correct answers
+    // would make accuracy meaningless — and quietly reward guessing.
+    // ─────────────────────────────────────────────────────────────────────────
+    void recordAnswer(subject, topic, isCorrect).catch(() => {});
   }
 
   const markable = questions.filter((q) => q.accept).length;

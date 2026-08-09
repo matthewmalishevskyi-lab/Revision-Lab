@@ -42,6 +42,13 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
               </span>
             )}
 
+            {/* Progress before Dashboard: it's the thing people actually come
+                back for, and the reason accounts exist at all. */}
+            <Link href="/progress" className={chipClasses}>
+              <ChartIcon />
+              <span className="hidden sm:inline">Progress</span>
+            </Link>
+
             <Link href="/dashboard" className={chipClasses}>
               <GridIcon />
               <span className="hidden sm:inline">Dashboard</span>
@@ -95,6 +102,22 @@ function GridIcon() {
         <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
         <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
       </g>
+    </svg>
+  );
+}
+
+// Rising bars, for progress. Deliberately different from the dashboard grid —
+// two buttons sharing an icon is worse than either having none.
+function ChartIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M4 20V4M4 20h16M8 20v-5M13 20v-9M18 20v-13"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

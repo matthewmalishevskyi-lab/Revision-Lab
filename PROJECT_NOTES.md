@@ -145,6 +145,35 @@ The content checker is worth reading (`scripts/check-content.mjs`) — it exists
 
 It also holds **regression tests for the marking rule**, each one a bug that actually happened.
 
+## Progress tracking (built 2026-08-09, from Jennifer's mockup)
+
+**Setup: run `PROGRESS_SETUP.sql` in Supabase → SQL Editor.** One table, `activity`. Safe to re-run.
+
+**Design decisions Matthew made:**
+
+- The ring on each subject card = **topics covered**, not accuracy. It only goes up, so a bad session can't undo visible progress. Accuracy drives the Learning / Confident pill instead.
+- **Both time and question counts are tracked**, and the weekly chart toggles between them.
+- `Confident` deliberately needs *both* ≥3 topics covered and ≥80% accuracy.
+
+**One event log, not five tables.** `activity` stores one row per thing that happened (`practice` / `flashcard` / `time`) and every figure is derived from it. A new statistic later needs no migration, because the raw history is already there. The cost is adding up on every read — right at this size, wrong at a million users, at which point the aggregation moves into a SQL view. `MAX_EVENTS_READ = 5000` in `progress.ts` marks where that line is.
+
+**Honest measurement was the hard part, not the charts:**
+
+- *Study time* only counts while the tab is visible AND something has happened in the last 5 minutes. A tab left open over lunch adds nothing. It heartbeats every 30s rather than reporting at the end, because "the end" never reliably runs — closing a tab guarantees nothing.
+- *Accuracy* counts every checked answer, right or wrong. Only counting correct ones would quietly reward guessing.
+- *Flashcards* count once per card per visit, so flipping back and forth measures nothing.
+- Server Actions **never trust their arguments**: the user id comes from the session cookie, topics are checked against real content, and seconds are clamped to 120. A Server Action is reachable by anything that can make an HTTP request, not only by our buttons.
+
+**Empty states are real.** The mockup shows 447 questions because a design needs numbers in it; a real dashboard starts at zero. Encouragement is tied to the actual figure — no "Great work!" under 41%.
+
+**Charts are hand-drawn, no library.** `ProgressRing` uses `strokeDasharray` on a full circle: dash = circumference × percent, gap = the rest. `WeeklyChart` is scaled divs, with `Math.max(1, …)` as the divisor so an empty week doesn't divide by zero and render NaN.
+
+**A React rule the linter caught:** the flashcard "already reviewed" set started as a `useRef`, written during render. That is forbidden — during render a component must be a pure function of props and state, and React may render more than once or throw a render away. Moved to state, which costs nothing because flipping already re-renders.
+
+**Tested:** 26 checks against known events — coverage ignoring deleted topics, accuracy, "this week" excluding a 30-day-old session, empty days appearing in the chart as zero rather than vanishing, and the whole empty-history first-day case.
+
+**Still to build:** the per-subject statistics pages (Matthew asked for these; the main page came first).
+
 ## ✅ LOGIN IS LIVE (2026-08-09)
 
 Matthew registered and logged back in on the deployed site. Accounts are stored in Supabase. Project `Revision-Lab`, ID `jtthyslcvkldrozftbkg`, region eu-west-2 (London), free tier.

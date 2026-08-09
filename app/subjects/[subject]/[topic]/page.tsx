@@ -7,6 +7,7 @@ import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";
 import { LadderCompanion } from "../../../components/LadderCompanion";
 import { SiteHeader } from "../../../components/SiteHeader";
+import { StudyTimer } from "../../../components/StudyTimer";
 import { TopicNav, type NavSection } from "../../../components/TopicNav";
 import {
   StructuredData,
@@ -141,6 +142,10 @@ export default async function TopicPage({ params }: Props) {
           the page. Decorative only, so it's hidden from screen readers and can
           never intercept a click. */}
       <LadderCompanion mascot={subject.mascot} colour={style.text} />
+
+      {/* Draws nothing. It counts how long this page is genuinely being looked
+          at, and only records for people who are logged in. */}
+      {content && <StudyTimer subject={subject.slug} topic={topic.slug} />}
 
       <main className="mx-auto w-full max-w-4xl px-6 py-8">
         <SiteHeader greeting={false} />
@@ -371,7 +376,12 @@ export default async function TopicPage({ params }: Props) {
                   Answer before you reveal. Testing yourself beats rereading.
                 </p>
                 <div className="mt-4">
-                  <Practice questions={content.practice} colour={style.text} />
+                  <Practice
+                    questions={content.practice}
+                    colour={style.text}
+                    subject={subject.slug}
+                    topic={topic.slug}
+                  />
                 </div>
               </section>
             )}
@@ -383,7 +393,11 @@ export default async function TopicPage({ params }: Props) {
                 Test yourself — say the answer out loud before you flip.
               </p>
               <div className="mt-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
-                <Flashcards cards={content.flashcards} />
+                <Flashcards
+                  cards={content.flashcards}
+                  subject={subject.slug}
+                  topic={topic.slug}
+                />
               </div>
             </section>
 
