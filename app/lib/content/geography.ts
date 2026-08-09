@@ -2772,4 +2772,464 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
   },
 
+  "geography/the-changing-economic-world": {
+    summary:
+      "Why some countries are rich and others are not, how that gap is measured, and whether it is closing. This unit covers development indicators, the causes of inequality, the strategies used to reduce it, and how the UK's own economy has been reshaped by the loss of industry — a topic where the numbers are unusually easy to misread.",
+    keyFacts: [
+      {
+        heading: "Measuring development",
+        points: [
+          "GNI per head is the total income of a country divided by its population, adjusted for what money actually buys locally.",
+          "Single economic measures hide a great deal: a country can have a high average income and extreme inequality, or oil wealth alongside poor health and education.",
+          "Social indicators are often more revealing: literacy rate, life expectancy, infant mortality, doctors per thousand people, access to clean water.",
+          "The Human Development Index combines income, life expectancy and years of schooling into one figure between 0 and 1.",
+          "Infant mortality is a particularly good single indicator, because it reflects health care, nutrition, sanitation and maternal education all at once.",
+        ],
+      },
+      {
+        heading: "The demographic transition model",
+        points: [
+          "Stage 1: high birth and death rates, so population is stable and low. No country is now in this stage.",
+          "Stage 2: death rates fall as sanitation, food supply and medicine improve, while birth rates stay high — so population grows rapidly.",
+          "Stage 3: birth rates fall as women's education improves, contraception becomes available, child mortality drops and children stop being needed as workers.",
+          "Stage 4: both rates are low, and population is high and stable.",
+          "Stage 5, proposed later: birth rates fall below death rates and population declines, as in Japan and parts of Europe.",
+          "The model describes what happened in Europe; it is a useful framework, not a law, and countries do not have to follow it.",
+        ],
+      },
+      {
+        heading: "Why development is uneven",
+        points: [
+          "Physical: landlocked countries trade at higher cost; extreme climates limit farming; natural hazards destroy investment repeatedly; and tropical disease burdens are heavy.",
+          "Historical: colonialism extracted resources, drew borders across peoples, and left economies built to export raw materials rather than to serve themselves.",
+          "Economic: dependence on one or two commodities means a price crash is a national crisis, and debt repayments consume money that could fund schools.",
+          "Trade rules and tariffs favour processed goods, so exporting raw cocoa earns far less than exporting chocolate.",
+          "Consequences of the gap: disparities in wealth and health, and international migration towards opportunity.",
+        ],
+      },
+      {
+        heading: "Reducing the gap, and the UK's own change",
+        points: [
+          "Strategies include investment, industrial development, tourism, aid, intermediate technology, fair trade, microfinance and debt relief.",
+          "Intermediate technology means equipment suited to local skills, materials and repair — a hand pump that a village can fix beats a machine that cannot be maintained.",
+          "Aid is contested: emergency aid saves lives, while tied aid and large prestige projects have a poor record. Small-scale, locally led schemes generally work better.",
+          "Transnational corporations bring investment and jobs, and also repatriate profits, pay low wages and can leave when costs rise.",
+          "The UK: deindustrialisation since the 1970s replaced manufacturing with services, creating a north–south divide and leaving post-industrial regions needing regeneration.",
+          "The UK economy is now dominated by the tertiary and quaternary sectors — services, research and information — with manufacturing a small share of employment.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "GNI per head", definition: "A country's total income divided by its population, adjusted for local purchasing power." },
+      { term: "Human Development Index", definition: "A combined measure of income, life expectancy and schooling, scored between 0 and 1." },
+      { term: "Infant mortality rate", definition: "Deaths under one year per thousand live births — a revealing indicator because it reflects health, nutrition and sanitation together." },
+      { term: "Demographic transition model", definition: "A model describing how birth and death rates change as a country develops." },
+      { term: "Birth rate", definition: "Live births per thousand people per year." },
+      { term: "Death rate", definition: "Deaths per thousand people per year." },
+      { term: "Primary sector", definition: "Extracting raw materials — farming, fishing, mining and forestry." },
+      { term: "Tertiary sector", definition: "Providing services, such as retail, health, education and finance." },
+      { term: "Quaternary sector", definition: "Knowledge work — research, information technology and consultancy." },
+      { term: "Transnational corporation", definition: "A company operating in several countries, bringing investment and jobs while repatriating profits." },
+      { term: "Intermediate technology", definition: "Equipment suited to local skills, materials and repair, rather than the most advanced available." },
+      { term: "Fair trade", definition: "A scheme guaranteeing producers a minimum price and a premium for community investment." },
+      { term: "Microfinance", definition: "Very small loans to people without access to normal banking, often to start a business." },
+      { term: "Debt relief", definition: "Cancelling or reducing a country's debt so money can be spent on services instead of repayments." },
+      { term: "Deindustrialisation", definition: "The decline of manufacturing employment, which reshaped the UK economy from the 1970s." },
+    ],
+    examTips: [
+      {
+        tip: "Never rely on GNI alone",
+        detail:
+          "Averages hide inequality, and oil wealth can sit beside poor health and schooling. Saying WHY a single economic measure is inadequate is worth more than quoting it.",
+      },
+      {
+        tip: "Use infant mortality as your killer indicator",
+        detail:
+          "It reflects healthcare, nutrition, sanitation and maternal education simultaneously, which is why it correlates so strongly with development overall.",
+      },
+      {
+        tip: "Treat the DTM as a model, not a rule",
+        detail:
+          "It describes what happened in Europe. Saying that countries need not follow the same path shows you understand what a model is.",
+      },
+      {
+        tip: "Give development gaps several causes",
+        detail:
+          "Physical, historical, economic and political together. A single-cause answer — 'they have a bad climate' — is a weak one.",
+      },
+      {
+        tip: "Evaluate aid rather than praising it",
+        detail:
+          "Emergency aid saves lives; tied aid and prestige projects have a poor record; small locally led schemes work best. That range is the answer.",
+      },
+      {
+        tip: "Give TNCs both sides",
+        detail:
+          "Investment, jobs and skills on one hand; low wages, repatriated profits and the ability to leave on the other. Both belong in the same paragraph.",
+      },
+      {
+        tip: "Explain the raw-materials trap concretely",
+        detail:
+          "Exporting cocoa earns a fraction of exporting chocolate. Tariffs on processed goods are why the value is captured elsewhere — a specific, quotable mechanism.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why GNI per head alone is a poor measure of development.",
+        steps: [
+          "It is an average, so it says nothing about distribution — a country with extreme inequality can post a healthy figure while most people are poor.",
+          "It ignores what the money is spent on: a country can be wealthy and still have poor schools, hospitals and sanitation.",
+          "Some very high-income countries derive that income from a single resource such as oil, with weak health and education alongside it.",
+          "It misses unpaid and subsistence work entirely, which in poorer countries can be a large share of what people actually do.",
+          "It also says nothing about rights, safety, environment or life expectancy.",
+          "That is why HDI combines income with life expectancy and schooling, and why social indicators like infant mortality are often more revealing than any income figure.",
+        ],
+        answer:
+          "Because it is an average that hides distribution, ignores what income is spent on, misses subsistence and unpaid work, and says nothing about health, education or rights. HDI and social indicators such as infant mortality capture what income alone cannot.",
+      },
+      {
+        question:
+          "Explain why birth rates fall as a country develops.",
+        steps: [
+          "Child mortality falls first, so families no longer need many children to be confident some survive.",
+          "Children become a cost rather than an economic asset once they attend school instead of working.",
+          "Women's education and employment expand, which delays marriage and childbearing and gives women more say in family size.",
+          "Contraception becomes available and socially acceptable.",
+          "Pensions and state support reduce the need for children as security in old age.",
+          "Urbanisation reinforces all of it: housing is smaller and more expensive, and large families are harder to support in a city.",
+        ],
+        answer:
+          "Because falling child mortality removes the need for large families, schooling turns children from earners into costs, women's education and employment delay childbearing, contraception becomes available, and pensions replace children as old-age security. Urban living reinforces every one of those.",
+      },
+      {
+        question:
+          "Evaluate the role of transnational corporations in a poorer country.",
+        steps: [
+          "Benefits: investment that the country could not otherwise raise, and jobs paying more than local alternatives.",
+          "Benefits: skills, training and technology transfer, plus infrastructure such as roads and power built to serve the operation.",
+          "Benefits: export earnings, tax revenue, and demand for local suppliers.",
+          "Costs: wages are usually low by the company's home standards, and conditions may be poor.",
+          "Costs: most profits are repatriated rather than reinvested, and tax is often minimised through complex arrangements.",
+          "Costs: the operation can relocate when costs rise, leaving unemployment behind, and environmental standards may be weaker than at home.",
+          "Judgement: TNCs bring real benefits that would not otherwise arrive, but the terms are set by the party with more power — which is why the outcome depends heavily on how strong the host government's regulation is.",
+        ],
+        answer:
+          "They bring investment, jobs, skills and infrastructure that would not otherwise arrive, and they pay low wages, repatriate profits, minimise tax and can leave when costs rise. The balance depends almost entirely on how effectively the host government can regulate them.",
+      },
+      {
+        question:
+          "Why does exporting raw materials keep a country poor?",
+        steps: [
+          "Raw commodities sell for a small fraction of the price of the finished goods made from them — cocoa against chocolate is the standard example.",
+          "The processing, branding and retailing that add most of the value happen in richer countries.",
+          "Tariffs frequently rise with the level of processing, so exporting the finished good is actively penalised.",
+          "Commodity prices are volatile, so national income swings unpredictably and long-term planning becomes almost impossible.",
+          "Dependence on one or two commodities means a price crash becomes a national emergency.",
+          "The way out is to move up the value chain by processing at home, which requires capital, skills and market access that are themselves hard to obtain.",
+        ],
+        answer:
+          "Because almost all the value is added after export — in processing, branding and retail — and tariffs often rise with the level of processing, penalising countries that try to capture it. Commodity prices also swing violently, so income is unpredictable and dependence on one crop makes a price crash a national crisis.",
+      },
+    ],
+
+    practice: [
+      { question: "What does GNI stand for?",
+        accept: ["gross national income"],
+        answer: "Gross National Income — a country's total income, usually quoted per head." },
+      { question: "What does HDI stand for?",
+        accept: ["human development index"],
+        answer: "Human Development Index, combining income, life expectancy and schooling into a figure between 0 and 1." },
+      { question: "Which three things does HDI combine? Give them in any order.",
+        accept: ["income life expectancy education", "income, life expectancy, education", "income health education", "income life expectancy schooling"],
+        answer: "Income, life expectancy and years of schooling." },
+      { question: "Which indicator measures deaths under one year per thousand live births?",
+        accept: ["infant mortality", "infant mortality rate", "imr"],
+        answer: "Infant mortality rate — revealing because it reflects health, nutrition and sanitation together." },
+      { question: "How many stages does the original demographic transition model have?",
+        accept: ["4", "four"],
+        answer: "Four, with a fifth proposed later for countries where population is declining." },
+      { question: "In which DTM stage does population grow fastest?",
+        accept: ["2", "stage 2", "two"],
+        answer: "Stage 2, where death rates have fallen but birth rates are still high." },
+      { question: "Which sector extracts raw materials?",
+        accept: ["primary", "primary sector"],
+        answer: "The primary sector — farming, fishing, mining and forestry." },
+      { question: "Which sector provides services?",
+        accept: ["tertiary", "tertiary sector"],
+        answer: "The tertiary sector — retail, health, education and finance." },
+      { question: "Which sector covers research and information work?",
+        accept: ["quaternary", "quaternary sector"],
+        answer: "The quaternary sector — research, IT and consultancy." },
+      { question: "What does TNC stand for?",
+        accept: ["transnational corporation", "trans national corporation"],
+        answer: "Transnational corporation — a company operating across several countries." },
+      { question: "What is technology suited to local skills and repair called?",
+        accept: ["intermediate technology", "appropriate technology"],
+        answer: "Intermediate technology — a hand pump a village can fix beats a machine it cannot maintain." },
+      { question: "What scheme guarantees producers a minimum price and a community premium?",
+        accept: ["fair trade", "fairtrade"],
+        answer: "Fair trade, which protects producers against commodity price crashes." },
+      { question: "What is the term for very small loans to people without access to banking?",
+        accept: ["microfinance", "micro finance", "microloans", "microcredit"],
+        answer: "Microfinance, often used to start a small business." },
+      { question: "What is cancelling a country's debt so money can go to services called?",
+        accept: ["debt relief", "debt cancellation", "debt forgiveness"],
+        answer: "Debt relief. Repayments can otherwise consume more than a country spends on health." },
+      { question: "What is the decline of manufacturing employment called?",
+        accept: ["deindustrialisation", "deindustrialization"],
+        answer: "Deindustrialisation, which reshaped the UK economy from the 1970s onwards." },
+      { question: "Which UK divide is associated with deindustrialisation?",
+        accept: ["north south", "north-south", "north south divide", "the north-south divide"],
+        answer: "The north–south divide, as manufacturing regions declined while services grew in the south-east." },
+      { question: "Explain why aid does not automatically reduce the development gap.",
+        answer: "Because the effect depends entirely on the kind of aid and the terms attached. Emergency aid after a disaster saves lives and is rarely controversial. Tied aid, which requires the money to be spent on the donor's own companies, sends much of the value straight home again. Large prestige projects — dams, airports, hospitals with no staff — can create maintenance costs a country cannot meet, and have a long record of failure. Aid can also entrench corrupt governments, undermine local producers who cannot compete with free goods, and create dependence rather than capacity. What generally works is small, locally led schemes using intermediate technology, where the recipients decide what is needed and can maintain it afterwards. (Mark this one yourself.)" },
+      { question: "Explain why the demographic transition model should be treated as a model rather than a prediction.",
+        answer: "Because it was built by describing what happened in industrialising Europe, and there is no law requiring anywhere else to repeat it. Several countries have moved through stages far faster than Europe did, because medicine, sanitation and contraception arrived as existing technologies rather than having to be invented. Others have not followed the sequence at all: birth rates have stayed high where women's education has not improved, and some have seen death rates rise again through disease or conflict, which the model does not accommodate. It also says nothing about migration, which is a major component of population change in practice. Its value is as a framework for comparing countries and asking why one differs — not as a forecast. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"A high GNI means a country is developed.\"",
+        right: "It is an average that hides inequality, and some very high-income countries have poor health and education. HDI and social indicators show far more." },
+      { wrong: "\"Poor countries are poor because of their climate.\"",
+        right: "Physical factors matter, but so do colonial history, dependence on raw commodities, debt and trade rules. Single-cause answers are weak ones." },
+      { wrong: "\"All countries follow the demographic transition model.\"",
+        right: "It describes European industrialisation. Some countries move far faster, others stall, and it ignores migration entirely." },
+      { wrong: "\"Aid is always helpful.\"",
+        right: "Emergency aid saves lives, but tied aid returns value to the donor and prestige projects often fail. Small locally led schemes have the better record." },
+      { wrong: "\"TNCs simply exploit poorer countries.\"",
+        right: "They bring investment, jobs and skills that would not otherwise arrive, alongside low wages and repatriated profits. The outcome depends on how well the host government regulates them." },
+      { wrong: "\"Britain stopped making things entirely.\"",
+        right: "UK manufacturing output is substantial; it is manufacturing EMPLOYMENT that collapsed, because automation means far fewer people produce far more." },
+    ],
+  },
+
+  "geography/resource-management": {
+    summary:
+      "Food, water and energy are the three resources everything else depends on, and demand for all three is rising faster than supply in most of the world. This unit covers why resources are distributed so unevenly, what the UK's own situation looks like, and the strategies for increasing supply and reducing demand — including the awkward fact that the easiest gains usually come from using less rather than producing more.",
+    keyFacts: [
+      {
+        heading: "Why resources matter",
+        points: [
+          "Food, water and energy are essential to health, development and economic activity, and shortages in any one affect the others.",
+          "Water is needed to grow food and to generate energy; energy is needed to move water and to farm; and food production is one of the largest users of both.",
+          "Global demand is rising because of population growth, rising incomes and changing diets — more meat, in particular, requires far more water and land.",
+          "Supply is uneven: some countries have abundant water, fertile land or fossil fuels, and others have almost none.",
+          "A resource surplus means more than is needed; a deficit means less. Trade moves resources between them, which creates dependence as well as supply.",
+        ],
+      },
+      {
+        heading: "Food",
+        points: [
+          "Food security means having reliable access to enough safe, nutritious food. Insecurity means that access is unreliable.",
+          "Causes of insecurity: climate and drought, poverty, conflict, poor infrastructure, water stress, pests and disease, and rising demand for biofuels.",
+          "Consequences: famine, undernutrition, soil erosion from over-farming, and rising prices that hit the poorest hardest.",
+          "Increasing supply: irrigation, aeroponics and hydroponics, the new green revolution, biotechnology and appropriate technology.",
+          "Sustainable approaches: organic farming, permaculture, urban farming initiatives, reducing waste, and eating more seasonally and locally.",
+          "Roughly a third of food produced globally is wasted, which makes waste reduction one of the largest available gains.",
+        ],
+      },
+      {
+        heading: "Water",
+        points: [
+          "Water security means reliable access to enough safe water. Water stress is where demand exceeds available supply.",
+          "Causes of insecurity: climate, geology, over-abstraction, pollution, limited infrastructure and poverty.",
+          "Consequences: waterborne disease, food shortages, industrial output limits, and conflict between users or countries sharing a river.",
+          "Increasing supply: dams and reservoirs, water transfer schemes, desalination, and recycling.",
+          "Conserving supply: fixing leaks, metering, efficient irrigation such as drip systems, greywater recycling, and rainwater harvesting.",
+          "In the UK, rainfall is highest in the north and west while demand is highest in the south-east — which is why transfer schemes exist and why the south-east is water stressed despite Britain's reputation for rain.",
+        ],
+      },
+      {
+        heading: "Energy",
+        points: [
+          "Energy security means reliable, affordable access to energy. Insecurity means dependence on imports or unreliable supply.",
+          "Non-renewables — coal, oil, gas — are finite and produce carbon dioxide. Renewables — wind, solar, hydro, tidal, geothermal, biomass — are replenished but often intermittent.",
+          "Nuclear is low-carbon but not renewable, and carries waste and decommissioning costs that last for generations.",
+          "The UK's mix has changed dramatically: coal has almost disappeared, gas and renewables have grown, and North Sea oil and gas output has declined since its peak.",
+          "Increasing supply: new sources, imports and interconnectors. Reducing demand: insulation, efficiency standards, and behaviour change.",
+          "Every source involves a trade-off. Wind is clean and intermittent and visible; nuclear is reliable and expensive with long-lived waste; gas is flexible and emits carbon.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Resource surplus", definition: "Having more of a resource than is needed, allowing export." },
+      { term: "Resource deficit", definition: "Having less of a resource than is needed, requiring imports or reduced use." },
+      { term: "Food security", definition: "Reliable access to enough safe and nutritious food." },
+      { term: "Water stress", definition: "A situation where demand for water exceeds the amount reliably available." },
+      { term: "Energy security", definition: "Reliable and affordable access to enough energy, without excessive dependence on imports." },
+      { term: "Over-abstraction", definition: "Taking more water from rivers or aquifers than is naturally replaced." },
+      { term: "Desalination", definition: "Removing salt from seawater to make it drinkable — effective and very energy-intensive." },
+      { term: "Water transfer scheme", definition: "Moving water by pipeline or canal from an area of surplus to an area of deficit." },
+      { term: "Greywater", definition: "Used water from sinks, showers and washing machines, which can be reused for flushing or irrigation." },
+      { term: "Drip irrigation", definition: "Delivering water directly to plant roots through pipes, wasting far less than spraying." },
+      { term: "Permaculture", definition: "Designing farming systems that imitate natural ecosystems, so they need fewer external inputs." },
+      { term: "Hydroponics", definition: "Growing plants in nutrient solution without soil, using far less water than field farming." },
+      { term: "Renewable energy", definition: "Energy from a source that replenishes naturally, such as wind, solar, hydro or tidal." },
+      { term: "Interconnector", definition: "A cable linking national electricity grids so power can be imported and exported." },
+      { term: "Carbon footprint", definition: "The total greenhouse gas emissions caused by an activity, person or product." },
+    ],
+    examTips: [
+      {
+        tip: "Link the three resources together",
+        detail:
+          "Water grows food, energy moves water, and farming uses both. Showing those connections is what lifts an answer above three separate lists.",
+      },
+      {
+        tip: "Quote the food waste figure",
+        detail:
+          "Around a third of food produced globally is wasted. It is the single most striking statistic in the unit, and it reframes 'we need to produce more'.",
+      },
+      {
+        tip: "Explain the UK water paradox",
+        detail:
+          "Rain falls in the north and west; demand is in the south-east. That mismatch is why a famously rainy country has water-stressed regions.",
+      },
+      {
+        tip: "Give every energy source a trade-off",
+        detail:
+          "There is no clean, cheap, reliable, popular option. Naming the cost alongside the benefit is what evaluation questions are asking for.",
+      },
+      {
+        tip: "Distinguish increasing supply from reducing demand",
+        detail:
+          "Most answers only cover supply. Efficiency, insulation, leak repair and waste reduction are usually cheaper and faster, and mentioning them shows range.",
+      },
+      {
+        tip: "Say why desalination is not the obvious answer",
+        detail:
+          "It works and it is extremely energy-hungry and expensive, which is why it is used mainly by wealthy, water-poor countries rather than everywhere.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why the south-east of England is water stressed despite the UK being a rainy country.",
+        steps: [
+          "Rainfall is unevenly distributed: prevailing south-westerlies drop most of their moisture over western uplands.",
+          "The south-east lies in a rain shadow and receives substantially less — comparable to some Mediterranean regions.",
+          "Demand is distributed in the opposite direction: London and the south-east hold the densest population and the most industry.",
+          "So the area with least water has the most demand, which is the definition of stress.",
+          "Population growth and new housing in the region increase demand further.",
+          "Responses include transfer schemes moving water from wetter areas, reservoirs, metering, and reducing the substantial losses through leaking Victorian pipes.",
+        ],
+        answer:
+          "Because supply and demand are geographically opposite. Rain falls mostly on the western uplands while the south-east sits in a rain shadow, yet it holds the densest population and most industry. The mismatch — not the national total — is what creates stress.",
+      },
+      {
+        question:
+          "Evaluate desalination as a solution to water shortage.",
+        steps: [
+          "How it works: salt is removed from seawater, usually by reverse osmosis, producing fresh water.",
+          "Strength: the supply is effectively unlimited for any coastal country, and independent of rainfall or drought.",
+          "Strength: it can be built where the demand is, avoiding long transfer schemes.",
+          "Weakness: it is extremely energy-intensive, so unless the energy is renewable it adds carbon emissions to solve a shortage that climate change is worsening.",
+          "Weakness: the concentrated brine left behind harms marine ecosystems where it is discharged.",
+          "Weakness: the cost puts it out of reach of exactly the countries suffering worst water stress.",
+          "Judgement: a genuine solution for wealthy, coastal, water-poor countries such as those in the Gulf, and not a general answer — conservation and leak reduction deliver more water per pound spent almost everywhere else.",
+        ],
+        answer:
+          "It provides unlimited drought-proof supply for coastal countries, and it is energy-hungry, expensive and produces damaging brine. That makes it viable for wealthy water-poor states and largely unavailable to the countries with the worst stress, where conservation delivers far more per pound.",
+      },
+      {
+        question:
+          "Explain why reducing food waste could matter more than increasing production.",
+        steps: [
+          "Around a third of all food produced globally is never eaten.",
+          "That waste already carries its full environmental cost: the water, land, fuel and fertiliser used to grow it were spent regardless.",
+          "So recovering waste adds food supply without any additional land, water or emissions — unlike expanding production.",
+          "Waste occurs at different points: in poorer countries mostly at harvest and in storage and transport, through lack of refrigeration and roads.",
+          "In richer countries it occurs mostly at retail and in the home, through over-buying, date labelling and cosmetic standards.",
+          "The two need different solutions — infrastructure in one case, behaviour and regulation in the other — but both are cheaper than bringing new land into production.",
+        ],
+        answer:
+          "Because a third of food produced is wasted, and that waste has already consumed its water, land and emissions. Recovering it adds supply at no extra environmental cost, unlike expanding production — though the fix differs: storage and transport in poorer countries, behaviour and retail standards in richer ones.",
+      },
+      {
+        question:
+          "Why does every energy source involve a trade-off?",
+        steps: [
+          "Fossil fuels are cheap, reliable and easy to store, and they emit carbon dioxide and are finite.",
+          "Wind and solar are clean and increasingly cheap, and they are intermittent, so they need storage or backup.",
+          "Hydroelectric is reliable and low-carbon, and dams flood valleys, displace people and disrupt river ecosystems.",
+          "Nuclear is low-carbon and reliable, and it is expensive to build, leaves waste dangerous for millennia, and is politically unpopular.",
+          "Biomass is renewable and emits carbon when burned, and competes with food for land.",
+          "So the question is never which source is best but which combination of costs a country is willing to accept — which is why energy policy is always contested.",
+        ],
+        answer:
+          "Because no source is simultaneously clean, cheap, reliable, storable and popular. Fossil fuels are reliable and emit carbon; renewables are clean and intermittent; nuclear is low-carbon and expensive with long-lived waste. Energy policy is a choice between costs, not a search for a perfect option.",
+      },
+    ],
+
+    practice: [
+      { question: "What is having more of a resource than you need called?",
+        accept: ["surplus", "a surplus", "resource surplus"],
+        answer: "A surplus, which allows export. The opposite is a deficit." },
+      { question: "What is reliable access to enough safe and nutritious food called?",
+        accept: ["food security"],
+        answer: "Food security. Insecurity means that access is unreliable." },
+      { question: "What is it called when demand for water exceeds the amount available?",
+        accept: ["water stress", "water scarcity"],
+        answer: "Water stress. Parts of south-east England experience it despite the UK's rainfall." },
+      { question: "Roughly what fraction of food produced globally is wasted?",
+        accept: ["a third", "third", "1/3", "one third"],
+        answer: "About a third — which makes waste reduction one of the biggest gains available." },
+      { question: "What is taking more water than is naturally replaced called?",
+        accept: ["over abstraction", "over-abstraction", "overabstraction"],
+        answer: "Over-abstraction, which depletes rivers and aquifers." },
+      { question: "What is removing salt from seawater called?",
+        accept: ["desalination"],
+        answer: "Desalination — effective, and very energy-intensive and expensive." },
+      { question: "What is moving water from a surplus area to a deficit area called?",
+        accept: ["water transfer", "water transfer scheme", "transfer scheme"],
+        answer: "A water transfer scheme, by pipeline or canal." },
+      { question: "What is used water from sinks and showers called?",
+        accept: ["greywater", "grey water"],
+        answer: "Greywater, which can be reused for flushing or irrigation." },
+      { question: "Which irrigation method delivers water straight to plant roots?",
+        accept: ["drip", "drip irrigation"],
+        answer: "Drip irrigation, which wastes far less than spraying." },
+      { question: "What is growing plants in nutrient solution without soil called?",
+        accept: ["hydroponics", "hydroponic"],
+        answer: "Hydroponics, which uses far less water than field farming." },
+      { question: "Which UK region has the highest rainfall: the north-west or the south-east?",
+        accept: ["north west", "north-west", "northwest"],
+        answer: "The north-west. Demand is highest in the south-east, which is why transfer schemes exist." },
+      { question: "Name one renewable energy source.",
+        accept: ["wind", "solar", "hydro", "hydroelectric", "tidal", "geothermal", "biomass", "wave"],
+        answer: "Wind, solar, hydro, tidal, geothermal, wave or biomass." },
+      { question: "Is nuclear power renewable? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. It is low-carbon but uses finite uranium, and leaves waste dangerous for millennia." },
+      { question: "What is a cable linking national electricity grids called?",
+        accept: ["interconnector", "an interconnector"],
+        answer: "An interconnector, allowing power to be imported and exported." },
+      { question: "Which UK fuel has almost disappeared from electricity generation?",
+        accept: ["coal"],
+        answer: "Coal, replaced largely by gas and renewables." },
+      { question: "What is designing farming to imitate natural ecosystems called?",
+        accept: ["permaculture"],
+        answer: "Permaculture, which needs fewer external inputs than conventional farming." },
+      { question: "Explain why food, water and energy security cannot be treated as three separate problems.",
+        answer: "Because each one is an input to the others. Agriculture is by far the largest user of fresh water, so a water shortage becomes a food shortage within a season. Moving, treating and pumping water takes energy, and in dry countries desalination takes enormous amounts of it — so an energy shortage becomes a water shortage. Energy production itself uses water for cooling and for hydroelectricity, and biofuel crops take land and water that could grow food. The connections run in every direction, which means a solution to one can worsen another: biofuels reduce fossil fuel dependence and raise food prices; desalination secures water and increases emissions. Geographers call this the water–energy–food nexus, and it is why single-issue answers score badly. (Mark this one yourself.)" },
+      { question: "Explain why reducing demand is often a better strategy than increasing supply.",
+        answer: "Because it is usually cheaper, faster and has no environmental cost of its own. Insulating homes reduces energy demand permanently for a fraction of what a new power station costs, and needs no planning battle. Fixing leaking Victorian water mains recovers water that has already been collected, treated and paid for — in some networks a fifth of it never reaches a tap. Cutting food waste adds supply without another hectare of land or drop of irrigation. Increasing supply, by contrast, means new dams, power stations or farmland, each with construction costs, environmental damage and years of delay. The catch is political rather than technical: new infrastructure is visible and popular to announce, while efficiency is invisible and requires persuading millions of people to change what they do. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Britain has plenty of water because it rains a lot.\"",
+        right: "Rain falls mostly in the north and west; demand is highest in the dry south-east. Parts of it are more water stressed than some Mediterranean regions." },
+      { wrong: "\"Desalination solves water shortage.\"",
+        right: "It works but is extremely energy-hungry and expensive, so it is used mainly by wealthy coastal states — not by the countries with the worst stress." },
+      { wrong: "\"Food shortages happen because there is not enough food.\"",
+        right: "Enough food is produced globally. Shortages come from poverty, conflict, poor storage and transport, and around a third of production being wasted." },
+      { wrong: "\"Renewable means environmentally harmless.\"",
+        right: "Hydroelectric dams flood valleys and displace people, biomass competes with food for land, and wind and solar require mining for materials." },
+      { wrong: "\"Nuclear power is renewable because it is low-carbon.\"",
+        right: "Low-carbon and renewable are different things. Uranium is finite, and the waste stays dangerous for thousands of years." },
+      { wrong: "\"The answer to resource shortage is always to produce more.\"",
+        right: "Reducing demand is usually cheaper and faster — insulation, leak repair and waste reduction deliver more per pound than new supply almost everywhere." },
+    ],
+  },
+
 };
