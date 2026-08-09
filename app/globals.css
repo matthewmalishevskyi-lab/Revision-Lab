@@ -19,6 +19,32 @@
   }
 }
 
+/* --- Jumping to a section -------------------------------------------------
+   Two properties that make the topic-page jump menu feel right.
+
+   `scroll-behavior: smooth` animates the jump instead of teleporting. That
+   isn't decoration: seeing the page travel tells you WHERE the section was,
+   so you build a mental map of the page. An instant jump leaves people
+   disoriented, wondering whether anything happened at all.
+
+   `scroll-margin-top` is the fix for a problem you only notice once you build
+   this. Jumping to #practice puts that heading at the very top of the window
+   — directly underneath the sticky menu bar, which is now covering it. The
+   property tells the browser to stop 5rem short, leaving the heading visible
+   below the bar. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Some people get motion sick from movement on screen, and set a system-wide
+   preference asking software to keep still. Honouring it costs three lines and
+   is the difference between a site being usable for them or not. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   /* Instead of a flat white page, three very faint pools of colour sit behind
      everything — blue top-left, orange top-right, violet along the bottom.

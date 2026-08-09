@@ -7,6 +7,7 @@ import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";
 import { LadderCompanion } from "../../../components/LadderCompanion";
 import { SiteHeader } from "../../../components/SiteHeader";
+import { TopicNav, type NavSection } from "../../../components/TopicNav";
 import {
   StructuredData,
   learningResourceSchema,
@@ -90,6 +91,27 @@ export default async function TopicPage({ params }: Props) {
         content.workedExamples?.some((e) => e.higherOnly) ||
         content.practice?.some((q) => q.higherOnly)),
   );
+
+  // The jump menu, built from what this page actually contains.
+  //
+  // Derived rather than hard-coded, so a topic without worked examples never
+  // gets a link to a section that isn't there. Same principle as the sections
+  // themselves being conditional — one source of truth, no way for the menu and
+  // the page to disagree.
+  const sections: NavSection[] = content
+    ? [
+        { id: "key-facts", label: "Key facts" },
+        ...(content.workedExamples
+          ? [{ id: "worked-examples", label: "Worked examples" }]
+          : []),
+        ...(content.misconceptions
+          ? [{ id: "common-mistakes", label: "Common mistakes" }]
+          : []),
+        ...(content.practice ? [{ id: "practice", label: "Practice" }] : []),
+        { id: "definitions", label: "Definitions" },
+        { id: "exam-technique", label: "Exam technique" },
+      ]
+    : [];
 
   return (
     // This wrapper exists purely so the ladder can be `absolute` against the
@@ -207,12 +229,18 @@ export default async function TopicPage({ params }: Props) {
           </div>
         </section>
 
+        {/* Jump straight to a section. Sticks to the top of the window once you
+            scroll past it, so it's reachable from anywhere on the page. */}
+        <TopicNav sections={sections} colour={style.text} />
+
         {/* ---------- The revision content ---------- */}
         {content && (
           <>
             {/* Key facts — deliberately stripped to the bare statements. This is
                 the part you'd photograph the night before. */}
-            <section className="mt-8">
+            {/* `scroll-mt-20` leaves 5rem of space above the heading when the
+                page jumps here, so the sticky menu doesn't sit on top of it. */}
+            <section id="key-facts" className="mt-8 scroll-mt-20">
               <h2 className="text-2xl font-bold tracking-tight">Key facts</h2>
               <div className="mt-4 space-y-4">
                 {content.keyFacts.map((block) => (
@@ -246,7 +274,7 @@ export default async function TopicPage({ params }: Props) {
                 topics that don't have any yet, rather than showing an empty
                 box. That's what makes the optional fields safe. */}
             {content.workedExamples && (
-              <section className="mt-10">
+              <section id="worked-examples" className="mt-10 scroll-mt-20">
                 <h2 className="text-2xl font-bold tracking-tight">
                   Worked examples
                 </h2>
@@ -301,7 +329,7 @@ export default async function TopicPage({ params }: Props) {
 
             {/* Common mistakes */}
             {content.misconceptions && (
-              <section className="mt-10">
+              <section id="common-mistakes" className="mt-10 scroll-mt-20">
                 <h2 className="text-2xl font-bold tracking-tight">
                   Common mistakes
                 </h2>
@@ -335,7 +363,7 @@ export default async function TopicPage({ params }: Props) {
 
             {/* Practice questions */}
             {content.practice && (
-              <section className="mt-10">
+              <section id="practice" className="mt-10 scroll-mt-20">
                 <h2 className="text-2xl font-bold tracking-tight">
                   Practice questions
                 </h2>
@@ -349,7 +377,7 @@ export default async function TopicPage({ params }: Props) {
             )}
 
             {/* Flashcards */}
-            <section className="mt-10">
+            <section id="definitions" className="mt-10 scroll-mt-20">
               <h2 className="text-2xl font-bold tracking-tight">Definitions</h2>
               <p className="mt-1 opacity-60">
                 Test yourself — say the answer out loud before you flip.
@@ -360,7 +388,7 @@ export default async function TopicPage({ params }: Props) {
             </section>
 
             {/* Exam technique */}
-            <section className="mt-10">
+            <section id="exam-technique" className="mt-10 scroll-mt-20">
               <h2 className="text-2xl font-bold tracking-tight">
                 Exam technique
               </h2>
