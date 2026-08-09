@@ -153,6 +153,101 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M6.5 8.5h6v5h-6zM15.5 8.5h2M15.5 12h2M6.5 16h11" />
     </>
   ),
+
+  // ─── Added for the wider topic list ──────────────────────────────────────
+  // Same 24x24 grid, same stroke width, no fills. Sticking to those three
+  // rules is the entire reason a set of hand-drawn icons looks deliberate.
+
+  // A stack of storage platters — memory & storage.
+  disk: (
+    <>
+      <ellipse cx="12" cy="6" rx="7.5" ry="2.5" />
+      <path d="M4.5 6v5c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5V6" />
+      <rect x="4.5" y="15" width="15" height="5" rx="1.5" />
+      <path d="M7.5 17.5h.01M10.5 17.5h.01" />
+    </>
+  ),
+  // A cog — system software quietly running underneath everything.
+  cog: (
+    <>
+      <circle cx="12" cy="12" r="3.2" />
+      <path d="M12 2.8v2.6M12 18.6v2.6M21.2 12h-2.6M5.4 12H2.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8M18.5 18.5l-1.8-1.8M7.3 7.3L5.5 5.5" />
+    </>
+  ),
+  // Stacked sheets — protocol layers sitting on top of one another.
+  layers: (
+    <>
+      <path d="M12 3.5l8.5 4-8.5 4-8.5-4z" />
+      <path d="M3.5 12l8.5 4 8.5-4M3.5 16.5l8.5 4 8.5-4" />
+    </>
+  ),
+  // A bug — defensive design and testing.
+  bug: (
+    <>
+      <rect x="7.5" y="8" width="9" height="11" rx="4.5" />
+      <path d="M9.5 8V6.8a2.5 2.5 0 015 0V8" />
+      <path d="M7.5 11.5H4M7.5 15.5H4.5M16.5 11.5H20M16.5 15.5H19.5M12 8v11" />
+    </>
+  ),
+  // A toolbox — the languages, translators and IDEs you build with.
+  toolbox: (
+    <>
+      <rect x="3" y="8.5" width="18" height="11" rx="2" />
+      <path d="M8.5 8.5V6.5a1.5 1.5 0 011.5-1.5h4a1.5 1.5 0 011.5 1.5v2M3 13h18M10.5 11.5v3M13.5 11.5v3" />
+    </>
+  ),
+  // An x with a raised index — powers and standard form.
+  power: (
+    <>
+      <path d="M3.5 18.5L13 9M3.5 9l9.5 9.5" />
+      <rect x="15.5" y="4.5" width="5.5" height="5.5" rx="1.2" />
+    </>
+  ),
+  // An isometric cube — volume and surface area.
+  cube: (
+    <>
+      <path d="M12 3l8 4.2v9.6L12 21l-8-4.2V7.2z" />
+      <path d="M4 7.2l8 4.3 8-4.3M12 11.5V21" />
+    </>
+  ),
+  // Axes with a straight line through them — y = mx + c.
+  axis: (
+    <>
+      <path d="M4.5 3.5v16h16" />
+      <path d="M7 17L19 6" />
+      <circle cx="19" cy="6" r="1.4" fill="currentColor" stroke="none" />
+    </>
+  ),
+  // A pair of compasses — constructions and loci.
+  compass: (
+    <>
+      <circle cx="12" cy="4.5" r="1.6" />
+      <path d="M11 6L5.5 19.5M13 6l5.5 13.5" />
+      <path d="M8.5 13.5h7" />
+    </>
+  ),
+  // A dial — compound measures and rates of change.
+  gauge: (
+    <>
+      <path d="M3.5 17.5a8.5 8.5 0 1117 0" />
+      <path d="M12 17.5l4.5-5" />
+      <circle cx="12" cy="17.5" r="1.3" fill="currentColor" stroke="none" />
+    </>
+  ),
+  // A microphone — spoken language.
+  mic: (
+    <>
+      <rect x="9" y="2.8" width="6" height="11" rx="3" />
+      <path d="M5.5 11.5a6.5 6.5 0 0013 0M12 18v3M9 21h6" />
+    </>
+  ),
+  // A clock — historical context and when a text was written.
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7v5.3l3.5 2.2" />
+    </>
+  ),
 };
 
 export function Icon({

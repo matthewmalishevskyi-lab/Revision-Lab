@@ -12,7 +12,13 @@ export type IconName =
   | "globe" | "binary" | "code" | "network" | "chip" | "flow" | "terminal"
   | "shield" | "database" | "logic" | "grid" | "scales" | "pencil" | "hash"
   | "triangle" | "percent" | "chart" | "dice" | "circle" | "vector" | "book"
-  | "feather" | "quote" | "mask" | "news";
+  | "feather" | "quote" | "mask" | "news"
+  // Added when the topic list was widened to cover the rest of the GCSE
+  // specifications. TypeScript is doing real work here: adding a name to this
+  // list and forgetting to draw it is a compile error, not a blank space on
+  // the live site.
+  | "disk" | "cog" | "layers" | "bug" | "toolbox" | "power" | "cube"
+  | "axis" | "compass" | "gauge" | "mic" | "clock";
 
 export type Topic = {
   // The slug is the bit that appears in the URL, so it must be lowercase with
@@ -95,8 +101,11 @@ export const SUBJECTS: Subject[] = [
         year: "Year 10",
         topics: [
           { slug: "systems-architecture", title: "Systems architecture", icon: "chip" },
+          { slug: "memory-and-storage", title: "Memory & storage", icon: "disk" },
+          { slug: "system-software", title: "System software", icon: "cog" },
           { slug: "algorithms", title: "Algorithms", icon: "flow" },
           { slug: "programming", title: "Programming", icon: "terminal" },
+          { slug: "network-protocols-and-layers", title: "Protocols & layers", icon: "layers" },
           { slug: "cyber-security", title: "Cyber security", icon: "shield" },
           { slug: "databases", title: "Databases", icon: "database" },
         ],
@@ -106,6 +115,8 @@ export const SUBJECTS: Subject[] = [
         topics: [
           { slug: "boolean-logic", title: "Boolean logic", icon: "logic" },
           { slug: "data-representation", title: "Data representation", icon: "grid" },
+          { slug: "defensive-design-and-testing", title: "Defensive design & testing", icon: "bug" },
+          { slug: "languages-and-ides", title: "Languages & IDEs", icon: "toolbox" },
           { slug: "ethical-and-legal-issues", title: "Ethical & legal issues", icon: "scales" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
         ],
@@ -128,6 +139,8 @@ export const SUBJECTS: Subject[] = [
           { slug: "algebra-basics", title: "Algebra basics", icon: "code" },
           { slug: "angles-and-2d-shapes", title: "Angles & 2D shapes", icon: "triangle" },
           { slug: "fractions-decimals-percentages", title: "Fractions, decimals & %", icon: "percent" },
+          { slug: "indices-and-standard-form", title: "Indices & standard form", icon: "power" },
+          { slug: "perimeter-area-and-volume", title: "Perimeter, area & volume", icon: "cube" },
         ],
       },
       {
@@ -135,7 +148,10 @@ export const SUBJECTS: Subject[] = [
         topics: [
           { slug: "ratio-and-proportion", title: "Ratio & proportion", icon: "scales" },
           { slug: "equations-and-inequalities", title: "Equations & inequalities", icon: "grid" },
+          { slug: "straight-line-graphs", title: "Straight-line graphs", icon: "axis" },
           { slug: "pythagoras-and-trigonometry", title: "Pythagoras & trigonometry", icon: "triangle" },
+          { slug: "similarity-and-congruence", title: "Similarity & congruence", icon: "triangle" },
+          { slug: "constructions-loci-and-bearings", title: "Constructions, loci & bearings", icon: "compass" },
           { slug: "probability", title: "Probability", icon: "dice" },
           { slug: "statistics-and-charts", title: "Statistics & charts", icon: "chart" },
         ],
@@ -144,6 +160,7 @@ export const SUBJECTS: Subject[] = [
         year: "Year 11",
         topics: [
           { slug: "quadratics-and-sequences", title: "Quadratics & sequences", icon: "vector" },
+          { slug: "compound-measures-and-rates", title: "Compound measures & rates", icon: "gauge" },
           { slug: "circle-theorems", title: "Circle theorems", icon: "circle" },
           { slug: "vectors-and-transformations", title: "Vectors & transformations", icon: "flow" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
@@ -167,6 +184,7 @@ export const SUBJECTS: Subject[] = [
           { slug: "creative-writing", title: "Creative writing", icon: "feather" },
           { slug: "poetry-basics", title: "Poetry basics", icon: "quote" },
           { slug: "introducing-shakespeare", title: "Introducing Shakespeare", icon: "mask" },
+          { slug: "grammar-punctuation-and-spelling", title: "Grammar, punctuation & spelling", icon: "pencil" },
         ],
       },
       {
@@ -174,6 +192,8 @@ export const SUBJECTS: Subject[] = [
         topics: [
           { slug: "fiction-reading-and-writing", title: "Fiction reading & writing", icon: "feather" },
           { slug: "non-fiction-and-viewpoints", title: "Non-fiction & viewpoints", icon: "news" },
+          { slug: "comparing-texts", title: "Comparing texts", icon: "scales" },
+          { slug: "spoken-language", title: "Spoken language", icon: "mic" },
           { slug: "a-modern-text", title: "A modern text", icon: "book" },
           { slug: "a-shakespeare-play", title: "A Shakespeare play", icon: "mask" },
         ],
@@ -182,6 +202,7 @@ export const SUBJECTS: Subject[] = [
         year: "Year 11",
         topics: [
           { slug: "the-19th-century-novel", title: "The 19th-century novel", icon: "book" },
+          { slug: "context-and-themes", title: "Context & themes", icon: "clock" },
           { slug: "poetry-anthology", title: "Poetry anthology", icon: "quote" },
           { slug: "unseen-poetry", title: "Unseen poetry", icon: "feather" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },

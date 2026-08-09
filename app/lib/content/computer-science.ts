@@ -1,4 +1,4 @@
-// COMPUTER SCIENCE — all 13 topics.
+// COMPUTER SCIENCE — all 18 topics.
 //
 // HOW TO ADD OR EDIT: each entry is keyed "computer-science/topic-slug", and the
 // slug must match the one in `lib/subjects.ts` exactly, because that key is what
@@ -3468,6 +3468,1182 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         right: "Comfortable revision is mostly wasted revision. The marks are in the topics you find hardest, which are exactly the ones you will avoid unless you plan against it." },
       { wrong: "\"Erasing wrong working keeps the paper tidy and looks better.\"",
         right: "Crossed-out working is still marked if nothing has replaced it; erased working cannot earn anything. Neatness is worth nothing, method marks are worth a lot." },
+    ],
+  },
+
+  "computer-science/memory-and-storage": {
+    summary:
+      "A computer needs somewhere to hold what it is working on right now, and somewhere to keep things when the power goes off. Those are two different jobs done by two different kinds of hardware, and almost every mark lost on this topic comes from blurring them together. This topic covers RAM, ROM, virtual memory, the three families of secondary storage, and how to work out whether something will actually fit.",
+    keyFacts: [
+      {
+        heading: "Primary storage",
+        points: [
+          "Primary storage is memory the CPU can access directly: registers, cache, RAM and ROM.",
+          "RAM (Random Access Memory) holds the programs and data currently in use. It is volatile — its contents are lost the moment power is removed.",
+          "ROM (Read Only Memory) is non-volatile and holds the boot program that starts the computer and loads the operating system into RAM.",
+          "RAM can be read from and written to; ROM is read only in normal use.",
+          "More RAM means more programs and data can be held at once, so the computer relies less on slow virtual memory.",
+        ],
+      },
+      {
+        heading: "Virtual memory",
+        points: [
+          "Virtual memory is a section of secondary storage used as though it were extra RAM, when RAM is full.",
+          "Data not currently being used is moved out of RAM to the hard disk to make room for what is needed.",
+          "It is far slower than real RAM, because secondary storage is slower to access — so heavy use of virtual memory makes a computer feel sluggish.",
+          "Constantly swapping data back and forth is called disk thrashing, and it can leave a machine nearly unusable.",
+          "The proper fix is more RAM. Virtual memory is a stopgap, not a substitute.",
+        ],
+      },
+      {
+        heading: "Why secondary storage is needed",
+        points: [
+          "Secondary storage is non-volatile, so files survive being switched off. RAM does not.",
+          "The CPU cannot access secondary storage directly — data has to be copied into RAM first.",
+          "It is much larger and much cheaper per gigabyte than RAM.",
+          "It holds the operating system, applications and user files when they are not in use.",
+          "Every general-purpose computer needs both: secondary storage to keep things, RAM to work on them.",
+        ],
+      },
+      {
+        heading: "The three types of secondary storage",
+        points: [
+          "Magnetic (hard disk drives): spinning platters magnetised in patterns. High capacity, cheap per gigabyte, but slow, noisy and easily damaged because they have moving parts.",
+          "Solid state (SSDs, USB sticks, memory cards): flash memory with no moving parts. Fast, silent, durable and low power, but more expensive per gigabyte and with a limited number of write cycles.",
+          "Optical (CDs, DVDs, Blu-ray): pits and lands burned into a disc and read with a laser. Very cheap, portable and good for distribution, but low capacity, slow and easily scratched.",
+          "Compare storage on capacity, speed, portability, durability, reliability and cost per gigabyte — the six characteristics examiners expect.",
+          "The right choice depends on the situation: an SSD for a laptop that gets carried around, magnetic for a cheap archive, optical for handing something to a lot of people.",
+        ],
+      },
+      {
+        heading: "Units and capacity",
+        points: [
+          "1 bit is a single 0 or 1. 1 nibble is 4 bits. 1 byte is 8 bits.",
+          "Then, each step up: kilobyte, megabyte, gigabyte, terabyte, petabyte.",
+          "Most GCSE specifications use 1 kB = 1000 bytes, but some use 1024. Check yours, and state which you are using in the answer.",
+          "To find whether files fit: work out the size of one item, multiply by how many, then convert into the same unit as the storage.",
+          "Manufacturers quote capacity in decimal units while operating systems often display binary ones, which is why a '1 TB' drive shows as about 931 GB.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Primary storage", definition: "Memory the CPU can access directly, including registers, cache, RAM and ROM." },
+      { term: "RAM", definition: "Random Access Memory — volatile primary storage holding the programs and data currently in use." },
+      { term: "ROM", definition: "Read Only Memory — non-volatile primary storage holding the boot program that starts the computer." },
+      { term: "Volatile", definition: "Loses its contents when power is removed. RAM is volatile; ROM and secondary storage are not." },
+      { term: "Virtual memory", definition: "A section of secondary storage used as extra RAM when RAM is full, at a large cost in speed." },
+      { term: "Disk thrashing", definition: "Constant swapping of data between RAM and virtual memory, which makes a computer extremely slow." },
+      { term: "Secondary storage", definition: "Non-volatile storage that holds files, programs and the operating system when they are not in use." },
+      { term: "Magnetic storage", definition: "Storage using magnetised patterns on spinning platters, as in a hard disk drive." },
+      { term: "Solid state storage", definition: "Flash-based storage with no moving parts, as in an SSD, USB stick or memory card." },
+      { term: "Optical storage", definition: "Storage read by laser from pits and lands burned into a disc, as in a CD, DVD or Blu-ray." },
+      { term: "Byte", definition: "8 bits — enough to hold one character of text in ASCII." },
+      { term: "Nibble", definition: "4 bits, or half a byte." },
+      { term: "Capacity", definition: "How much data a storage device can hold, measured in bytes and their multiples." },
+      { term: "Durability", definition: "How well a storage device survives being knocked, dropped or carried around." },
+      { term: "Write cycle limit", definition: "The finite number of times a solid state cell can be written to before it wears out." },
+    ],
+    examTips: [
+      {
+        tip: "Never call secondary storage 'memory' in an answer",
+        detail:
+          "Examiners read 'memory' as RAM and ROM. If you mean the hard disk, say secondary storage or name the device. This single habit protects marks all through the paper.",
+      },
+      {
+        tip: "Say volatile AND what that means",
+        detail:
+          "'RAM is volatile' is one mark at best. 'RAM is volatile, so its contents are lost when the power is turned off' is the full answer, and takes four extra words.",
+      },
+      {
+        tip: "Justify a storage choice against the scenario",
+        detail:
+          "These questions always describe someone specific. A field researcher needs durability; a video archive needs cheap capacity. Quote the detail from the question in your answer.",
+      },
+      {
+        tip: "Give the drawback as well as the benefit",
+        detail:
+          "'SSDs are faster' answers half the question. Add that they cost more per gigabyte. Comparison questions almost always want both sides.",
+      },
+      {
+        tip: "Show every step of a capacity calculation",
+        detail:
+          "Size of one file, times the number of files, then the conversion. Method marks survive an arithmetic slip; a bare wrong number earns nothing.",
+      },
+      {
+        tip: "State which unit convention you are using",
+        detail:
+          "Write '(using 1 kB = 1000 bytes)' before you calculate. It shows you know the two conventions exist, and protects you if your board uses the other one.",
+      },
+      {
+        tip: "Explain virtual memory as a trade, not a free upgrade",
+        detail:
+          "Say what it buys (the program can keep running) and what it costs (secondary storage is far slower than RAM). The trade-off is where the marks are.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain the difference between RAM and ROM, and why a computer needs both.",
+        steps: [
+          "Both are primary storage, meaning the CPU can access them directly.",
+          "RAM is volatile: contents are lost when power is removed. ROM is non-volatile: contents survive.",
+          "RAM can be read from and written to. ROM is read only in normal use.",
+          "ROM holds the boot program, which is needed the instant the machine turns on — before anything has been loaded from the hard disk.",
+          "RAM holds whatever is being used right now, which changes constantly, so it must be writable.",
+        ],
+        answer:
+          "ROM is non-volatile and read only, holding the boot program so the computer can start. RAM is volatile and writable, holding the programs and data in use. Both are needed: something must survive power-off to start the machine, and something must be freely writable to work in.",
+      },
+      {
+        question:
+          "A photographer takes 2,400 photos, each 4.5 MB. Will they fit on a 16 GB memory card? Use 1 GB = 1000 MB.",
+        steps: [
+          "Total size = number of photos × size of each = 2400 × 4.5 MB.",
+          "2400 × 4.5 = 10,800 MB.",
+          "Convert to gigabytes: 10,800 ÷ 1000 = 10.8 GB.",
+          "Compare with the card: 10.8 GB is less than 16 GB.",
+          "Note the spare capacity: 16 − 10.8 = 5.2 GB left over.",
+        ],
+        answer:
+          "Yes. The photos total 10.8 GB, which fits on the 16 GB card with 5.2 GB to spare.",
+      },
+      {
+        question:
+          "A geologist records data on a laptop carried across rough ground in cold weather. Recommend a type of secondary storage and justify it.",
+        steps: [
+          "Pick out the constraints in the question: the device is carried, over rough ground, in harsh conditions.",
+          "Magnetic drives have spinning platters and a moving read/write head, so a knock while running can destroy the drive and the data.",
+          "Optical discs are portable but scratch easily, hold little, and would mean carrying a stack of them.",
+          "Solid state has no moving parts, so it survives being jolted; it also uses less power, which matters away from mains electricity.",
+          "Acknowledge the cost: SSDs cost more per gigabyte, but reliability matters more than price when the data cannot be re-collected.",
+        ],
+        answer:
+          "Solid state (an SSD). It has no moving parts so it survives being knocked about, and uses less power — worth the higher cost per gigabyte when the fieldwork data could not easily be gathered again.",
+      },
+      {
+        question:
+          "A computer with 4 GB of RAM slows to a crawl when several large programs are open. Explain what is happening and how to fix it.",
+        steps: [
+          "RAM has filled up, so there is nowhere to put the data the next program needs.",
+          "The operating system moves data that is not currently being used out of RAM and onto secondary storage — virtual memory.",
+          "Secondary storage is far slower to access than RAM, so every one of those transfers costs time.",
+          "With several large programs, data is swapped in and out constantly. This is disk thrashing.",
+          "The real fix is more RAM, so less has to be swapped. A faster SSD reduces the pain but does not remove the cause.",
+        ],
+        answer:
+          "RAM is full, so the machine is using virtual memory on the much slower secondary storage, and constant swapping (disk thrashing) is consuming the time. Installing more RAM is the proper fix; a faster SSD only softens the symptom.",
+      },
+    ],
+
+    practice: [
+      { question: "How many bits are in a byte?", accept: ["8", "eight", "8 bits"],
+        answer: "8 bits. Half a byte, 4 bits, is a nibble." },
+      { question: "What does RAM stand for?", accept: ["random access memory"],
+        answer: "Random Access Memory — volatile primary storage holding what is currently in use." },
+      { question: "What does ROM stand for?", accept: ["read only memory", "read-only memory"],
+        answer: "Read Only Memory — non-volatile primary storage holding the boot program." },
+      { question: "Which of RAM and ROM is volatile?", accept: ["ram", "the ram"],
+        answer: "RAM. Volatile means the contents are lost when the power is switched off." },
+      { question: "Which type of memory holds the program that starts the computer?", accept: ["rom", "read only memory", "read-only memory"],
+        answer: "ROM. It has to be non-volatile, because it is needed before anything can be loaded from storage." },
+      { question: "What name is given to using secondary storage as though it were extra RAM?",
+        accept: ["virtual memory"],
+        answer: "Virtual memory. Far slower than real RAM, because secondary storage is slower to access." },
+      { question: "What is the term for constant swapping between RAM and virtual memory that makes a computer very slow?",
+        accept: ["disk thrashing", "thrashing"],
+        answer: "Disk thrashing. The cure is more RAM, so less needs swapping." },
+      { question: "Name the three main types of secondary storage.",
+        accept: ["magnetic optical solid state", "magnetic, optical, solid state", "magnetic solid state optical", "optical magnetic solid state"],
+        answer: "Magnetic, optical and solid state." },
+      { question: "Which type of secondary storage has no moving parts?",
+        accept: ["solid state", "solid-state", "ssd", "flash"],
+        answer: "Solid state, such as an SSD, USB stick or memory card." },
+      { question: "Which type of storage is a Blu-ray disc?", accept: ["optical"],
+        answer: "Optical — read by laser from pits and lands burned into the disc." },
+      { question: "Which type of storage is a hard disk drive with spinning platters?",
+        accept: ["magnetic"],
+        answer: "Magnetic. Cheap per gigabyte and high capacity, but slow and easily damaged." },
+      { question: "How many megabytes are in 3 gigabytes? Use 1 GB = 1000 MB.",
+        accept: ["3000", "3000 mb", "3,000"],
+        answer: "3000 MB. Each step up multiplies by 1000 under this convention." },
+      { question: "A file is 250 MB. How many such files fit on a 4 GB drive? Use 1 GB = 1000 MB.",
+        accept: ["16", "sixteen", "16 files"],
+        answer: "4 GB = 4000 MB, and 4000 ÷ 250 = 16 files." },
+      { question: "800 songs are each 5 MB. What is the total size in MB?",
+        accept: ["4000", "4000 mb", "4,000"],
+        answer: "800 × 5 = 4000 MB, which is 4 GB using 1 GB = 1000 MB." },
+      { question: "Can the CPU access secondary storage directly? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. Data must be copied into RAM first, which is why RAM exists at all." },
+      { question: "How many bits are in a nibble?", accept: ["4", "four", "4 bits"],
+        answer: "4 bits — half a byte. Two nibbles make a byte, and one nibble is exactly one hexadecimal digit." },
+      { question: "Explain why a computer with more RAM usually feels faster, even with the same CPU.",
+        answer: "More RAM means more programs and data can be held in fast, directly accessible memory at once. With less RAM, the operating system has to move data out to virtual memory on secondary storage, which is far slower to access. Every swap costs time the CPU spends waiting rather than working, so reducing the number of swaps raises real performance without changing the processor at all. (Mark this one yourself.)" },
+      { question: "A school must store 5 TB of lesson recordings that are rarely watched but must be kept for years. Recommend a storage type and justify it.",
+        answer: "Magnetic hard disk drives. The data is large, rarely accessed and must be cheap to keep, and magnetic storage has by far the lowest cost per gigabyte at that capacity. Speed barely matters because the recordings are seldom watched, so the slow access time of magnetic storage costs nothing here — and the drives sit in a server rather than being carried, so the fragility of the moving parts is not a real risk. SSDs would work but cost several times as much for no benefit that this situation needs. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"A hard drive is the computer's memory.\"",
+        right: "Memory means RAM and ROM — primary storage the CPU accesses directly. A hard drive is secondary storage. Examiners treat the words as different things, so using them loosely costs marks." },
+      { wrong: "\"Virtual memory is extra RAM you can add for free.\"",
+        right: "It is space on secondary storage being used as a substitute for RAM, and secondary storage is far slower. It stops programs crashing when RAM runs out, at a large cost in speed." },
+      { wrong: "\"ROM stores your files permanently.\"",
+        right: "ROM holds the small boot program that starts the machine. Your files live on secondary storage. ROM is typically measured in megabytes, not terabytes." },
+      { wrong: "\"SSDs are simply better than hard drives.\"",
+        right: "Faster, quieter and more durable, but more expensive per gigabyte and with a limited number of write cycles. For a cheap multi-terabyte archive, magnetic still wins." },
+      { wrong: "\"1 kB is always 1024 bytes.\"",
+        right: "Both conventions are in use: 1000 (decimal, used by most GCSE specifications and by manufacturers) and 1024 (binary, used by many operating systems). Check your board and say which you are using." },
+      { wrong: "\"Deleting files frees up RAM.\"",
+        right: "Deleting files frees secondary storage. RAM is freed by closing programs. They are separate resources, and confusing them is a common way to lose an easy mark." },
+    ],
+  },
+
+  "computer-science/system-software": {
+    summary:
+      "Between the hardware and the programs you actually use sits a layer of software whose whole job is to make the machine usable: the operating system, and the utility programs that keep it healthy. You never sit down to 'use' an operating system, which is exactly why it is easy to forget it is there — and why exam questions on it are so often answered vaguely.",
+    keyFacts: [
+      {
+        heading: "What an operating system does",
+        points: [
+          "The operating system (OS) manages the hardware and provides an interface between the user and the computer.",
+          "Memory management: deciding what is loaded into RAM, where, and what gets moved out when RAM fills up.",
+          "Processor management: scheduling which process gets CPU time, and for how long, so several programs appear to run at once.",
+          "Peripheral and device management: communicating with printers, keyboards, screens and storage using device drivers.",
+          "User management: separate accounts, passwords and file permissions, so users cannot read or damage each other's work.",
+          "File management: organising files into folders, and handling naming, moving, copying and deleting.",
+        ],
+      },
+      {
+        heading: "The user interface",
+        points: [
+          "A GUI (Graphical User Interface) uses windows, icons, menus and a pointer. Easy to learn, but uses more processing power and memory.",
+          "A CLI (Command Line Interface) accepts typed commands. Harder to learn, but faster for an expert, uses fewer resources, and can be automated with scripts.",
+          "Menu-driven interfaces offer a series of options and are common on cash machines and ticket machines, where mistakes must be impossible.",
+          "Voice and gesture interfaces are used where hands or eyes are busy, such as in a car.",
+          "The right interface depends on the user and the situation, not on which is 'better'.",
+        ],
+      },
+      {
+        heading: "Drivers and multitasking",
+        points: [
+          "A device driver is software that lets the operating system communicate with a particular piece of hardware.",
+          "Each device needs its own driver because different hardware understands different signals.",
+          "Multitasking means several programs appear to run at once. On a single core, the OS switches rapidly between them.",
+          "The switching is so fast that a person cannot notice the gaps, which is why it feels simultaneous.",
+          "With multiple cores, genuinely simultaneous execution becomes possible as well.",
+        ],
+      },
+      {
+        heading: "Utility software",
+        points: [
+          "Utility software performs housekeeping tasks that maintain the computer, rather than doing work for the user directly.",
+          "Encryption software scrambles data so that it is meaningless without the key — essential if a device is lost or stolen.",
+          "Defragmentation gathers the scattered pieces of files back together on a magnetic hard disk, reducing head movement and speeding up access.",
+          "Compression reduces file size so files take less storage and transfer faster.",
+          "Backup software makes copies of files so they can be recovered after loss, damage or a ransomware attack.",
+          "Anti-malware scans for, quarantines and removes malicious software.",
+        ],
+      },
+      {
+        heading: "Defragmentation, carefully",
+        points: [
+          "Files become fragmented when they are saved into gaps left by deleted files, so one file ends up split across the disk.",
+          "A magnetic drive must physically move its read/write head to each fragment, and that movement takes time.",
+          "Defragmentation rearranges the fragments so each file is contiguous, and gathers the free space together.",
+          "It does NOT free up any space — the same data occupies the same number of bytes afterwards.",
+          "SSDs should not be defragmented: they have no moving head so there is nothing to gain, and the extra writes use up limited write cycles.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "System software", definition: "Software that runs and maintains the computer itself: the operating system and utility programs." },
+      { term: "Operating system", definition: "System software that manages hardware and provides an interface between the user and the computer." },
+      { term: "Memory management", definition: "The operating system's job of deciding what is held in RAM, where, and what is moved out when RAM is full." },
+      { term: "Processor management", definition: "The operating system's job of scheduling which process gets CPU time and for how long." },
+      { term: "Device driver", definition: "Software allowing the operating system to communicate with a particular piece of hardware." },
+      { term: "GUI", definition: "Graphical User Interface — windows, icons, menus and a pointer. Easy to learn, heavier on resources." },
+      { term: "CLI", definition: "Command Line Interface — typed commands. Harder to learn, but fast for experts and easy to automate." },
+      { term: "Multitasking", definition: "Several programs appearing to run at once, achieved by the OS switching rapidly between them." },
+      { term: "User management", definition: "Handling separate accounts, passwords and file permissions so users cannot access each other's files." },
+      { term: "Utility software", definition: "Programs that maintain the computer, such as encryption, compression, backup and anti-malware." },
+      { term: "Defragmentation", definition: "Rearranging the fragments of files on a magnetic disk so each file is stored contiguously." },
+      { term: "Fragmentation", definition: "The splitting of a file across separate parts of a disk, caused by saving into gaps left by deleted files." },
+      { term: "Encryption software", definition: "Utility software that scrambles data so it is unreadable without the correct key." },
+      { term: "Backup", definition: "A copy of data kept so it can be restored after loss, damage or attack." },
+      { term: "Anti-malware", definition: "Utility software that scans for, quarantines and removes malicious software." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the OS jobs as a list you can recite",
+        detail:
+          "Memory, processor, peripherals, users, files. 'Name three functions of an operating system' is a three-mark gift if the list is memorised, and a fumble if it is not.",
+      },
+      {
+        tip: "Say defragmentation does not free space",
+        detail:
+          "The most common wrong answer on this topic. It reorganises data so it can be read faster; the number of bytes used is unchanged.",
+      },
+      {
+        tip: "Never recommend defragmenting an SSD",
+        detail:
+          "No moving head, so there is no speed to gain, and the extra writes consume limited write cycles. Saying so shows you understand why defragmentation works at all.",
+      },
+      {
+        tip: "Compare interfaces against the user, not in the abstract",
+        detail:
+          "A CLI is better for a server administrator writing scripts; a GUI is better for a beginner. Name the user in your answer and the mark follows.",
+      },
+      {
+        tip: "Explain multitasking as switching, not simultaneity",
+        detail:
+          "On a single core, only one process runs at any instant. Say the OS switches between them so quickly that it appears simultaneous.",
+      },
+      {
+        tip: "Give a purpose for every utility you name",
+        detail:
+          "'Encryption' is not an answer. 'Encryption, so that a stolen laptop's files cannot be read' is. Utilities are always examined by what problem they solve.",
+      },
+      {
+        tip: "Keep system software and application software apart",
+        detail:
+          "Application software does a job for the user (a browser, a game). System software runs the machine. A question asking you to classify examples is testing exactly this line.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Describe three functions of an operating system.",
+        steps: [
+          "Choose three from the list and name each precisely.",
+          "Memory management: the OS decides which programs and data are held in RAM and moves data out when RAM is full.",
+          "Processor management: the OS schedules processes, giving each CPU time in turn so several appear to run at once.",
+          "User management: the OS handles accounts, passwords and file permissions so users cannot see or damage each other's files.",
+          "For each one, add what it achieves — the second half of each sentence is where the mark is.",
+        ],
+        answer:
+          "Memory management (deciding what is in RAM and what is moved out), processor management (scheduling which process gets CPU time so several programs appear to run at once) and user management (accounts and permissions so users cannot access each other's files).",
+      },
+      {
+        question:
+          "A server administrator prefers a command line interface; a primary school pupil uses a graphical one. Explain why each choice makes sense.",
+        steps: [
+          "A CLI requires the user to know commands, which is a real barrier to a beginner.",
+          "But for an expert it is faster: one typed line can do what would take many clicks.",
+          "CLI commands can be saved as scripts and run automatically — vital when managing many servers.",
+          "A CLI uses far fewer resources, which matters on a server where every megabyte is doing paid work.",
+          "A GUI is discoverable: options are visible on screen, so a pupil can find things without knowing their names in advance.",
+        ],
+        answer:
+          "The administrator gains speed, automation through scripts, and lower resource use — worth the learning curve for daily expert use. The pupil gains discoverability, since a GUI shows the options rather than requiring them to be known in advance.",
+      },
+      {
+        question:
+          "Explain what defragmentation does and why it speeds up a magnetic hard disk.",
+        steps: [
+          "Deleted files leave gaps, and new files get written into whatever gaps are available.",
+          "A single file can therefore end up split into fragments scattered across the disk.",
+          "A magnetic drive reads with a physical head that must move to each fragment in turn.",
+          "That movement is mechanical and slow compared with everything else the computer does.",
+          "Defragmentation rearranges the data so each file is contiguous, so the head moves less and reads faster. No space is freed.",
+        ],
+        answer:
+          "It gathers the scattered fragments of each file back together so files are stored contiguously. The read/write head then has to move much less to read a file, which is faster. It does not free any storage space.",
+      },
+      {
+        question:
+          "A hospital laptop holding patient records is stolen. Name two utility programs that would have limited the damage, and explain each.",
+        steps: [
+          "Identify the two harms: the data being read by the thief, and the data being lost to the hospital.",
+          "Encryption addresses the first: the files are scrambled and meaningless without the key.",
+          "Without the key, the thief has an expensive laptop but no readable records.",
+          "Backup addresses the second: a copy held elsewhere means the hospital still has the records.",
+          "Together they cover confidentiality and availability — two different problems needing two different tools.",
+        ],
+        answer:
+          "Encryption software, so the records are unreadable without the key and the theft does not become a data breach. Backup software, so the hospital still holds the records even though the laptop is gone.",
+      },
+    ],
+
+    practice: [
+      { question: "What are the two categories of system software?",
+        accept: ["operating system and utility software", "operating systems and utilities", "operating system and utilities", "os and utility software"],
+        answer: "The operating system, and utility software." },
+      { question: "Which part of the operating system decides what is held in RAM?",
+        accept: ["memory management", "memory manager"],
+        answer: "Memory management — it also moves data out to virtual memory when RAM fills up." },
+      { question: "What does GUI stand for?", accept: ["graphical user interface"],
+        answer: "Graphical User Interface — windows, icons, menus and a pointer." },
+      { question: "What does CLI stand for?", accept: ["command line interface", "command-line interface"],
+        answer: "Command Line Interface — the user types commands." },
+      { question: "What is the name for software that lets the OS communicate with a piece of hardware?",
+        accept: ["device driver", "driver", "a driver", "a device driver"],
+        answer: "A device driver. Each type of hardware needs its own." },
+      { question: "On a single-core CPU, does multitasking mean programs truly run at the same instant? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. The OS switches between them so rapidly that it only appears simultaneous." },
+      { question: "Which utility scrambles data so it cannot be read without a key?",
+        accept: ["encryption", "encryption software"],
+        answer: "Encryption software — the defence against a stolen device becoming a data breach." },
+      { question: "Which utility gathers the scattered parts of files back together on a hard disk?",
+        accept: ["defragmentation", "defragmentation software", "defrag", "defragmenter"],
+        answer: "Defragmentation. It speeds up reading; it does not free any space." },
+      { question: "Does defragmentation free up storage space? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. The same data occupies the same number of bytes — it is just rearranged so the head moves less." },
+      { question: "Should you defragment an SSD? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. There is no read/write head to save movement on, and the extra writes waste limited write cycles." },
+      { question: "Which utility makes copies of files so they can be recovered after loss?",
+        accept: ["backup", "backup software", "backup utility"],
+        answer: "Backup software. It protects availability, where encryption protects confidentiality." },
+      { question: "Which utility reduces the size of files so they use less storage?",
+        accept: ["compression", "compression software"],
+        answer: "Compression software — smaller files also transfer faster." },
+      { question: "Which OS function handles separate accounts and file permissions?",
+        accept: ["user management", "user manager"],
+        answer: "User management, which stops users reading or damaging each other's files." },
+      { question: "Is a web browser system software or application software?",
+        accept: ["application software", "application"],
+        answer: "Application software — it does a job for the user rather than running the machine." },
+      { question: "Which interface type is typically used on a cash machine?",
+        accept: ["menu driven", "menu-driven", "menu driven interface", "menu"],
+        answer: "A menu-driven interface, which limits the user to safe, valid options." },
+      { question: "Which OS function schedules which process gets CPU time?",
+        accept: ["processor management", "process management", "scheduling"],
+        answer: "Processor management. It is what makes several programs appear to run at once." },
+      { question: "Explain why files become fragmented in the first place.",
+        answer: "When a file is deleted it leaves a gap on the disk, and the operating system will use whatever gaps are available when saving new files. If a new file is larger than any single gap, it gets split across several of them. Over time, as files are repeatedly created, changed and deleted, the gaps grow more numerous and smaller, and files end up in more and more pieces scattered across the disk. Nothing has gone wrong — this is the normal consequence of reusing space efficiently. (Mark this one yourself.)" },
+      { question: "A company is choosing between a GUI and a CLI for staff who manage 200 servers. Recommend one and justify it.",
+        answer: "A command line interface. The decisive reason is automation: CLI commands can be written into scripts and run across all 200 servers at once, whereas a GUI would mean repeating the same clicks 200 times, which is slow and invites human error. A CLI also uses far fewer system resources, which matters when every megabyte on a server should be doing paid work, and it works well over a slow remote connection where a graphical desktop would be painful. The learning curve is a genuine cost, but staff who manage servers every day will pay it back within days. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Defragmentation frees up disk space.\"",
+        right: "It rearranges data so files are contiguous and read faster. The number of bytes stored is exactly the same afterwards." },
+      { wrong: "\"The operating system is the thing you can see on screen.\"",
+        right: "That is the user interface, which is one part of it. Memory management, scheduling, drivers, permissions and file handling are all invisible and all essential." },
+      { wrong: "\"Multitasking means several programs run at exactly the same time.\"",
+        right: "On a single core the OS switches between them very rapidly. Only a multi-core CPU can run processes genuinely simultaneously." },
+      { wrong: "\"A CLI is outdated and a GUI is the modern replacement.\"",
+        right: "Command lines are used every day for servers, automation and development, precisely because they are faster for experts, scriptable and cheap on resources." },
+      { wrong: "\"Utility software is optional extra software you download.\"",
+        right: "Utilities are system software that maintains the computer, and most come built into the operating system already." },
+      { wrong: "\"Anti-malware and a firewall are the same thing.\"",
+        right: "Anti-malware scans files on the machine for malicious software. A firewall inspects network traffic entering or leaving. They defend different points." },
+    ],
+  },
+
+  "computer-science/network-protocols-and-layers": {
+    summary:
+      "Two computers made by different companies, running different operating systems, on opposite sides of the world, exchange data without difficulty. That only works because everyone agreed a set of rules in advance. This topic is about those rules — the protocols — and about layering, which is the idea that turns an impossibly large problem into four manageable ones.",
+    keyFacts: [
+      {
+        heading: "What a protocol is",
+        points: [
+          "A protocol is a set of rules governing how devices communicate: the format of the data, the order of messages, and what to do about errors.",
+          "Without agreed protocols, two devices could both be working perfectly and still understand nothing of what the other sent.",
+          "Protocols are why equipment from different manufacturers works together at all.",
+          "Most communication uses several protocols at once, each handling a different part of the job.",
+          "TCP/IP is not one protocol but a whole family, named after its two most important members.",
+        ],
+      },
+      {
+        heading: "The protocols you must know",
+        points: [
+          "TCP (Transmission Control Protocol): splits data into packets, checks they all arrive, requests any that are missing, and reassembles them in the right order.",
+          "IP (Internet Protocol): addresses and routes packets, deciding which path each one takes across the network.",
+          "HTTP (HyperText Transfer Protocol): requesting and delivering web pages.",
+          "HTTPS: HTTP with encryption added, so an eavesdropper sees scrambled data. Used for anything private — logins, banking, messages.",
+          "FTP (File Transfer Protocol): transferring files between computers.",
+          "SMTP (Simple Mail Transfer Protocol): SENDING email. IMAP and POP3: RETRIEVING email from a server.",
+        ],
+      },
+      {
+        heading: "IMAP against POP3",
+        points: [
+          "POP3 downloads mail to one device and typically deletes it from the server.",
+          "IMAP leaves mail on the server and synchronises it, so every device sees the same mailbox.",
+          "IMAP is what makes reading a message on your phone mark it as read on your laptop.",
+          "POP3 suits a single device with limited connectivity; IMAP suits the phone-plus-laptop-plus-tablet life almost everyone actually has.",
+          "Both retrieve mail. Neither sends it — that is SMTP's job.",
+        ],
+      },
+      {
+        heading: "Layers",
+        points: [
+          "Layering divides network communication into levels, each with one clearly defined job, each using the layer below.",
+          "The four-layer TCP/IP model: Application (HTTP, FTP, SMTP), Transport (TCP, UDP), Internet or Network (IP, routers), Link or Data Link (drivers, hardware, MAC addresses).",
+          "Each layer is self-contained, so one can be changed or improved without rewriting the others.",
+          "Layering makes the problem manageable: designers can work on one layer while treating the rest as a black box.",
+          "It also means protocols can be swapped — moving a site from HTTP to HTTPS changes nothing about how packets are routed.",
+        ],
+      },
+      {
+        heading: "Packet switching",
+        points: [
+          "Data is broken into packets, each carrying a header with the source and destination IP addresses, a packet number and a checksum.",
+          "Each packet can take a different route, chosen by routers according to how busy the network is.",
+          "Packets can therefore arrive out of order, and are reassembled at the destination using their packet numbers.",
+          "If a packet is missing or corrupted, TCP requests it again.",
+          "Packet switching uses the network efficiently and copes with a failed link — traffic simply routes around it.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Protocol", definition: "A set of rules governing how devices communicate, covering data format, message order and error handling." },
+      { term: "TCP", definition: "Transmission Control Protocol — splits data into packets, checks they arrive, and reassembles them in order." },
+      { term: "IP", definition: "Internet Protocol — addresses packets and routes them across networks." },
+      { term: "HTTP", definition: "HyperText Transfer Protocol — used for requesting and delivering web pages." },
+      { term: "HTTPS", definition: "HTTP with encryption, so intercepted data is unreadable. Used wherever data is private." },
+      { term: "FTP", definition: "File Transfer Protocol — used for transferring files between computers." },
+      { term: "SMTP", definition: "Simple Mail Transfer Protocol — used for SENDING email." },
+      { term: "IMAP", definition: "A protocol for retrieving email that leaves messages on the server and syncs them across devices." },
+      { term: "POP3", definition: "A protocol for retrieving email that downloads messages to one device and usually deletes them from the server." },
+      { term: "Layer", definition: "One level of a network model with a single defined job, using the layer below and serving the layer above." },
+      { term: "Packet", definition: "A small unit of data with a header holding source and destination addresses, a packet number and a checksum." },
+      { term: "Packet switching", definition: "Sending data as packets that may travel by different routes and are reassembled at the destination." },
+      { term: "Router", definition: "A device that forwards packets between networks, choosing a route towards the destination IP address." },
+      { term: "Checksum", definition: "A value carried in a packet header used to detect whether the data was corrupted in transit." },
+      { term: "TCP/IP model", definition: "A four-layer model: Application, Transport, Internet and Link." },
+    ],
+    examTips: [
+      {
+        tip: "Define a protocol as rules, every time",
+        detail:
+          "'A set of rules for communication between devices' is the phrase examiners are looking for. Do not describe what one particular protocol does and hope it counts as a definition.",
+      },
+      {
+        tip: "Split the email protocols into send and receive",
+        detail:
+          "SMTP sends. IMAP and POP3 retrieve. Learning them as two groups makes the question 'which protocol sends email' automatic.",
+      },
+      {
+        tip: "Say what HTTPS adds, not just that it is secure",
+        detail:
+          "It encrypts the data in transit, so an intercepted message is meaningless without the key. 'Secure' on its own is a restatement of the S.",
+      },
+      {
+        tip: "Learn one benefit of layering you can explain properly",
+        detail:
+          "'Each layer can be developed or replaced independently, because it only has to keep the same interface with the layers around it.' That sentence answers most layering questions.",
+      },
+      {
+        tip: "Mention packet numbers when reassembly comes up",
+        detail:
+          "Packets can arrive out of order because they take different routes. The packet number in the header is how the destination puts them back together.",
+      },
+      {
+        tip: "Keep TCP and IP jobs distinct",
+        detail:
+          "TCP splits, checks and reassembles. IP addresses and routes. A question asking what each contributes wants exactly that division.",
+      },
+      {
+        tip: "Give routing flexibility as the advantage of packet switching",
+        detail:
+          "If one route is congested or broken, packets travel another way. That resilience is the whole reason the internet is built this way.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain what happens to a 2 MB file when it is sent across the internet using TCP/IP.",
+        steps: [
+          "TCP splits the file into numbered packets, small enough to travel efficiently.",
+          "Each packet gets a header holding source and destination IP addresses, its packet number, and a checksum.",
+          "IP routes each packet; routers choose a path towards the destination, so different packets may take different routes.",
+          "Packets arrive at the destination in whatever order they happen to get there.",
+          "TCP checks the checksums, requests any packet that is missing or corrupted, and reassembles them into the original file using the packet numbers.",
+        ],
+        answer:
+          "TCP splits it into numbered packets and IP routes them, possibly by different paths. At the far end TCP checks for missing or corrupt packets, requests any again, and reassembles the file in packet-number order.",
+      },
+      {
+        question:
+          "Name the protocol used in each case: sending an email, reading that email on both a phone and a laptop, loading a bank's login page, uploading files to a web server.",
+        steps: [
+          "Sending an email — the protocol for sending is SMTP.",
+          "Reading it on two devices — the mailbox must stay on the server and synchronise, which is IMAP, not POP3.",
+          "A bank login page — private data, so it must be encrypted in transit: HTTPS.",
+          "Uploading files to a server — file transfer, so FTP.",
+          "Check each against the key word in the question: send, sync across devices, private, files.",
+        ],
+        answer:
+          "SMTP for sending, IMAP for reading on multiple devices, HTTPS for the bank login page, and FTP for uploading files.",
+      },
+      {
+        question:
+          "Explain two benefits of dividing network communication into layers.",
+        steps: [
+          "Each layer has one clearly defined job and communicates only with the layers directly above and below.",
+          "Benefit one — independence: a layer can be changed or improved without rewriting the others, as long as it keeps the same interface.",
+          "For example, moving a website from HTTP to HTTPS changes the application layer only; routing is untouched.",
+          "Benefit two — manageability: the whole problem is too large to design at once, so splitting it lets different people work on different layers.",
+          "A third benefit worth knowing: it makes faults easier to find, because a problem can be traced to one layer.",
+        ],
+        answer:
+          "Layers can be changed independently, since each only has to preserve its interface with its neighbours — so HTTP can become HTTPS without touching routing. And the problem becomes manageable: specialists can work on one layer while treating the others as black boxes.",
+      },
+      {
+        question:
+          "A user complains that reading an email on their phone leaves it still unread on their laptop. Which protocol is in use, which should be, and why?",
+        steps: [
+          "The mailbox is not synchronising between devices, so each device holds its own separate copy.",
+          "That is the behaviour of POP3, which downloads mail to one device and typically removes it from the server.",
+          "IMAP instead keeps the messages on the server and synchronises state across every device.",
+          "With IMAP, marking a message read on the phone updates the server, and the laptop sees the change.",
+          "So the account should be reconfigured to use IMAP.",
+        ],
+        answer:
+          "POP3 is in use; it should be IMAP. POP3 downloads mail to a single device, whereas IMAP keeps messages on the server and synchronises read status across all devices.",
+      },
+    ],
+
+    practice: [
+      { question: "What is a protocol?",
+        accept: ["a set of rules", "set of rules", "rules for communication", "a set of rules for communication"],
+        answer: "A set of rules governing how devices communicate — format, order of messages and error handling." },
+      { question: "Which protocol splits data into packets and reassembles them in order?",
+        accept: ["tcp", "transmission control protocol"],
+        answer: "TCP. It also requests any packet that is missing or corrupted." },
+      { question: "Which protocol addresses and routes packets across networks?",
+        accept: ["ip", "internet protocol"],
+        answer: "IP — the Internet Protocol." },
+      { question: "Which protocol is used to SEND email?",
+        accept: ["smtp", "simple mail transfer protocol"],
+        answer: "SMTP. IMAP and POP3 retrieve mail; only SMTP sends it." },
+      { question: "Which email protocol keeps messages on the server and syncs across devices?",
+        accept: ["imap"],
+        answer: "IMAP. POP3 downloads to one device and usually deletes the server copy." },
+      { question: "Which protocol is used for transferring files between computers?",
+        accept: ["ftp", "file transfer protocol"],
+        answer: "FTP — the File Transfer Protocol, used for uploading and downloading files between computers." },
+      { question: "Which protocol should a bank login page use?",
+        accept: ["https"],
+        answer: "HTTPS — HTTP plus encryption, so intercepted data is unreadable." },
+      { question: "What does HTTP stand for?",
+        accept: ["hypertext transfer protocol", "hyper text transfer protocol"],
+        answer: "HyperText Transfer Protocol, used to request and deliver web pages." },
+      { question: "How many layers are in the TCP/IP model?",
+        accept: ["4", "four"],
+        answer: "Four: Application, Transport, Internet (Network) and Link (Data Link)." },
+      { question: "Which layer of the TCP/IP model does HTTP belong to?",
+        accept: ["application", "application layer", "the application layer"],
+        answer: "The application layer, along with FTP and SMTP." },
+      { question: "Which layer does TCP belong to?",
+        accept: ["transport", "transport layer", "the transport layer"],
+        answer: "The transport layer, which handles splitting data into packets and reassembling it." },
+      { question: "What is carried in a packet header that allows packets to be reassembled in order?",
+        accept: ["packet number", "the packet number", "sequence number", "packet numbers"],
+        answer: "The packet number. Packets may take different routes and arrive out of order." },
+      { question: "What is the value in a packet header used to check for corruption called?",
+        accept: ["checksum", "a checksum", "the checksum"],
+        answer: "A checksum. If it does not match, TCP requests the packet again." },
+      { question: "Which device forwards packets between networks, choosing a route?",
+        accept: ["router", "a router", "the router"],
+        answer: "A router, which reads the destination IP address in the header." },
+      { question: "Can two packets from the same file take different routes? Answer yes or no.",
+        accept: ["yes"],
+        answer: "Yes. That is what packet switching means, and why reassembly by packet number is needed." },
+      { question: "Name the two protocols used to RETRIEVE email.",
+        accept: ["imap and pop3", "pop3 and imap", "imap pop3", "pop3 imap"],
+        answer: "IMAP and POP3. Both retrieve mail; neither sends it, which is SMTP's job alone." },
+      { question: "Explain why layering makes networks easier to develop and maintain.",
+        answer: "Each layer has one job and communicates only with the layers immediately above and below it through a fixed interface. That means a layer can be redesigned, optimised or replaced entirely without any of the others being rewritten, as long as the interface stays the same — which is how the web moved from HTTP to HTTPS without changing how packets are routed. It also splits an enormous problem into four smaller ones, so specialists can work on one layer while treating the rest as black boxes, and a fault can be traced to a single layer instead of the whole system. (Mark this one yourself.)" },
+      { question: "Explain why packet switching makes a network more resilient than sending each file as one continuous stream.",
+        answer: "Because no single route has to work for the whole transfer. Each packet is routed independently, so if a link becomes congested or fails entirely, routers simply send subsequent packets another way and the transfer continues. If any packet is lost or corrupted, only that small packet needs resending rather than the whole file. It also uses the network more efficiently, since many conversations can share the same links at once instead of one transfer occupying a route from start to finish. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"TCP/IP is a single protocol.\"",
+        right: "It is a family of protocols named after its two best-known members. TCP handles splitting and reassembly, IP handles addressing and routing — different jobs at different layers." },
+      { wrong: "\"HTTPS is a different protocol from HTTP.\"",
+        right: "It is HTTP with encryption added underneath. The web requests are the same; what changes is that an eavesdropper sees scrambled data." },
+      { wrong: "\"POP3 and IMAP send email.\"",
+        right: "Both retrieve it. Sending is SMTP, always. This is one of the most frequently dropped marks on the topic." },
+      { wrong: "\"Packets always travel by the same route and arrive in order.\"",
+        right: "Routers choose paths dynamically, so packets can take different routes and arrive out of order. Packet numbers exist precisely because of this." },
+      { wrong: "\"Layering slows the network down by adding steps.\"",
+        right: "The layers describe how the job is divided, not extra work invented for its own sake. The benefit in design, maintenance and fault-finding far outweighs the small overhead of headers." },
+      { wrong: "\"A MAC address and an IP address are the same kind of thing.\"",
+        right: "A MAC address is fixed to a piece of hardware and used within a local network. An IP address is assigned to a device on a network and used for routing between networks." },
+    ],
+  },
+
+  "computer-science/defensive-design-and-testing": {
+    summary:
+      "A program that works when you use it correctly is not finished. Real users mistype, leave boxes empty, enter a date of birth in the future, and occasionally set out to break things deliberately. Defensive design is about assuming all of that in advance; testing is about proving you actually handled it. This is also the part of the course that most directly improves the programming you do yourself.",
+    keyFacts: [
+      {
+        heading: "Defensive design",
+        points: [
+          "Defensive design means anticipating how a program could be misused — by accident or on purpose — and writing it so that misuse does no harm.",
+          "Input validation checks that data is sensible before the program uses it.",
+          "Input sanitisation removes or neutralises dangerous characters, protecting against attacks such as SQL injection.",
+          "Authentication confirms the user is who they claim to be, usually with a username and password, sometimes with two-factor authentication.",
+          "Planning for contingencies means deciding in advance what the program does when something goes wrong, rather than letting it crash.",
+        ],
+      },
+      {
+        heading: "Types of validation check",
+        points: [
+          "Range check: the value falls between given limits, such as an age between 0 and 120.",
+          "Type check: the data is the right type, such as a number where a number is required.",
+          "Length check: the data has an acceptable number of characters, such as a password of at least 8.",
+          "Presence check: something has actually been entered, rather than the box left blank.",
+          "Format check: the data matches a required pattern, such as a postcode or an email address containing an @.",
+          "Look-up or lookup check: the value is one of a list of allowed options, such as a valid subject code.",
+        ],
+      },
+      {
+        heading: "Validation is not verification",
+        points: [
+          "Validation checks whether data is REASONABLE. Verification checks whether it was entered CORRECTLY.",
+          "A date of birth of 01/01/1990 for a 15-year-old passes every validation check and is still wrong.",
+          "Verification methods include double entry (typing a password twice) and proofreading against the original.",
+          "A program can only ever validate; only a human or a second source can verify.",
+          "Exam questions often deliberately describe an error that validation could never have caught.",
+        ],
+      },
+      {
+        heading: "Maintainability",
+        points: [
+          "Maintainable code is code another programmer — or you in six months — can understand and change safely.",
+          "Comments explain WHY something is done, not what the line obviously says.",
+          "Meaningful identifier names: totalScore rather than ts or x.",
+          "Indentation shows the structure of loops and selection at a glance.",
+          "Subprograms (procedures and functions) break a large program into named pieces, avoid repeated code, and can be tested separately.",
+          "Constants for fixed values mean changing VAT once rather than hunting through the whole program.",
+        ],
+      },
+      {
+        heading: "Testing",
+        points: [
+          "Iterative testing happens throughout development: test a piece, fix it, carry on. Final (or terminal) testing happens at the end, on the complete program.",
+          "A syntax error breaks the rules of the language, so the program will not run at all — a missing bracket or misspelt keyword.",
+          "A logic error runs perfectly but produces the wrong result — using + where you meant −.",
+          "Test data comes in three kinds: normal (typical, should be accepted), boundary (right at the limits, should be accepted), and invalid or erroneous (should be rejected).",
+          "A test plan states, for each test: the data, the reason for it, the expected result and the actual result.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Defensive design", definition: "Designing a program to anticipate and cope with misuse, whether accidental or deliberate." },
+      { term: "Input validation", definition: "Checking that entered data is reasonable before the program uses it." },
+      { term: "Input sanitisation", definition: "Removing or neutralising dangerous characters from input to prevent attacks such as SQL injection." },
+      { term: "Authentication", definition: "Confirming that a user is who they claim to be, usually through a username and password." },
+      { term: "Range check", definition: "A validation check that a value lies between given limits." },
+      { term: "Presence check", definition: "A validation check that data has actually been entered rather than left blank." },
+      { term: "Format check", definition: "A validation check that data matches a required pattern, such as an email address containing an @." },
+      { term: "Verification", definition: "Checking that data was entered correctly, for example by double entry or proofreading." },
+      { term: "Maintainability", definition: "How easily another programmer can understand and safely change a program." },
+      { term: "Subprogram", definition: "A named block of code — a procedure or function — that can be called from elsewhere and tested on its own." },
+      { term: "Syntax error", definition: "An error breaking the rules of the language, which stops the program running at all." },
+      { term: "Logic error", definition: "An error where the program runs but produces the wrong result." },
+      { term: "Normal test data", definition: "Typical data the program should accept and handle correctly." },
+      { term: "Boundary test data", definition: "Data right at the limits of what is acceptable, which should be accepted." },
+      { term: "Erroneous test data", definition: "Data of the wrong type or outside the allowed range, which the program should reject." },
+      { term: "Iterative testing", definition: "Testing repeatedly throughout development, fixing problems as they appear." },
+    ],
+    examTips: [
+      {
+        tip: "Never confuse validation with verification",
+        detail:
+          "Validation asks 'is this sensible?'; verification asks 'is this what was meant?'. Examiners set questions specifically to separate students who know the difference.",
+      },
+      {
+        tip: "Name the type of check, do not just say 'validation'",
+        detail:
+          "'A range check, so the age must be between 0 and 120' earns the mark. 'Validate the age' does not, because it never says how.",
+      },
+      {
+        tip: "Give boundary data as the value itself, not near it",
+        detail:
+          "If the range is 1 to 10, the boundary data is 1 and 10 — the last values that should be accepted. Some boards also want 0 and 11 as the first values rejected.",
+      },
+      {
+        tip: "Match syntax errors to 'will not run' and logic errors to 'wrong answer'",
+        detail:
+          "That one association answers most error-identification questions, and stops you calling a wrong output a syntax error.",
+      },
+      {
+        tip: "Explain maintainability in terms of the next programmer",
+        detail:
+          "Meaningful names, comments, indentation and subprograms all exist so somebody else can change the code without breaking it. Say that, and the reason is clear.",
+      },
+      {
+        tip: "Write test plans with an expected result",
+        detail:
+          "A test without a stated expected result cannot fail, so it proves nothing. Data, reason, expected, actual — four columns, every time.",
+      },
+      {
+        tip: "Say what happens after invalid input is rejected",
+        detail:
+          "Full marks usually need the recovery too: display a helpful message and ask again, rather than crashing or silently continuing with bad data.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "A form asks for a student's age, which must be between 11 and 18. Give suitable normal, boundary and erroneous test data, with the expected result for each.",
+        steps: [
+          "Normal data is typical and well inside the range — 15. Expected: accepted.",
+          "Boundary data sits exactly at the limits — 11 and 18. Expected: both accepted, because the limits are included.",
+          "Some boards also want the first values outside: 10 and 19. Expected: both rejected.",
+          "Erroneous data is the wrong type or clearly outside — 'fifteen', or −4, or a blank box. Expected: rejected with a message.",
+          "State the expected result for every case, or the test cannot be judged to have passed.",
+        ],
+        answer:
+          "Normal: 15 (accepted). Boundary: 11 and 18 (accepted); 10 and 19 (rejected). Erroneous: 'fifteen', −4 or a blank entry (all rejected with a helpful message asking again).",
+      },
+      {
+        question:
+          "Identify the type of error in each: a missing closing bracket; a program that calculates an average by dividing by the wrong number; a misspelt keyword 'pirnt'.",
+        steps: [
+          "A missing closing bracket breaks the rules of the language, so the program will not run — syntax error.",
+          "An average divided by the wrong number runs perfectly and produces a number, just the wrong one — logic error.",
+          "'pirnt' is not a keyword the language recognises, so again the rules are broken — syntax error.",
+          "The test to apply: does the program run at all? If no, syntax. If yes but the answer is wrong, logic.",
+          "Logic errors are harder to find precisely because nothing announces them.",
+        ],
+        answer:
+          "Missing bracket — syntax error. Wrong divisor in an average — logic error. 'pirnt' — syntax error.",
+      },
+      {
+        question:
+          "A school system stores a pupil's date of birth. Explain why validation cannot guarantee the date is correct.",
+        steps: [
+          "Validation can check the date is a real date, in a sensible format, and within a plausible range of years.",
+          "All of those checks test whether the data is REASONABLE.",
+          "But a typing slip that produces another reasonable date — 03/07/2009 instead of 07/03/2009 — passes every one of them.",
+          "The program has no independent source to compare against, so it cannot tell which of two plausible dates was meant.",
+          "Only verification can catch this: checking against the original document, or having the entry made twice and compared.",
+        ],
+        answer:
+          "Because validation only tests whether data is plausible, and a mistyped date can be perfectly plausible. Catching it needs verification — proofreading against the original record or double entry — since only an outside source knows which date was intended.",
+      },
+      {
+        question:
+          "Suggest three ways to make this line more maintainable: `if a>17 and b<3: x=x+1`",
+        steps: [
+          "Meaningful identifiers: a becomes age, b becomes latePayments, x becomes eligibleCount.",
+          "A named constant for the magic numbers: MINIMUM_AGE = 18 and MAX_LATE_PAYMENTS = 3, so the rule can be changed in one place.",
+          "A comment stating WHY: applicants must be adults with fewer than three late payments to qualify.",
+          "Consistent indentation so the block belonging to the if statement is obvious at a glance.",
+          "If this test is used in several places, move it into a function called isEligible() — one definition, testable on its own.",
+        ],
+        answer:
+          "Use meaningful names (age, latePayments, eligibleCount); replace the magic numbers 17 and 3 with named constants so the rule changes in one place; add a comment explaining why the rule exists. Indenting consistently and extracting the test into an isEligible() function would improve it further.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the term for checking that entered data is reasonable before it is used?",
+        accept: ["validation", "input validation"],
+        answer: "Input validation. It checks plausibility, not correctness." },
+      { question: "What is the term for checking that data was entered correctly, e.g. by typing it twice?",
+        accept: ["verification"],
+        answer: "Verification. Double entry and proofreading are the two standard methods." },
+      { question: "Which validation check makes sure a value is between two limits?",
+        accept: ["range check", "range"],
+        answer: "A range check, such as an age between 11 and 18." },
+      { question: "Which validation check makes sure a box has not been left blank?",
+        accept: ["presence check", "presence"],
+        answer: "A presence check — it confirms something was actually entered rather than the field left blank." },
+      { question: "Which validation check makes sure an email address contains an @?",
+        accept: ["format check", "format"],
+        answer: "A format check — the data must match a required pattern." },
+      { question: "Which validation check makes sure a password is at least 8 characters?",
+        accept: ["length check", "length"],
+        answer: "A length check — it confirms the data has an acceptable number of characters." },
+      { question: "A missing bracket stops a program running. What type of error is this?",
+        accept: ["syntax", "syntax error", "a syntax error"],
+        answer: "A syntax error — the rules of the language have been broken." },
+      { question: "A program runs but gives the wrong average. What type of error is this?",
+        accept: ["logic", "logic error", "a logic error"],
+        answer: "A logic error. Harder to find, because nothing announces it." },
+      { question: "Name the three types of test data.",
+        accept: ["normal boundary erroneous", "normal, boundary, erroneous", "normal boundary invalid", "normal, boundary, invalid"],
+        answer: "Normal, boundary and erroneous (invalid)." },
+      { question: "A field accepts 1 to 20. Give the two boundary values that should be ACCEPTED.",
+        accept: ["1 and 20", "1, 20", "1 20", "20 and 1"],
+        answer: "1 and 20 — the last values inside the range." },
+      { question: "What is the name for testing carried out repeatedly during development?",
+        accept: ["iterative testing", "iterative"],
+        answer: "Iterative testing. Final or terminal testing happens at the end." },
+      { question: "What is the term for removing dangerous characters from user input?",
+        accept: ["sanitisation", "input sanitisation", "sanitization", "input sanitization"],
+        answer: "Input sanitisation — the defence against attacks such as SQL injection." },
+      { question: "What is the term for confirming a user is who they claim to be?",
+        accept: ["authentication"],
+        answer: "Authentication, usually by username and password." },
+      { question: "Name one feature of maintainable code beginning with the letter C.",
+        accept: ["comments", "constants", "comment"],
+        answer: "Comments (or constants). Both make code easier for the next programmer to change safely." },
+      { question: "Should test data of 'abc' entered into an age field be accepted or rejected?",
+        accept: ["rejected", "reject"],
+        answer: "Rejected — it is erroneous data, failing a type check." },
+      { question: "What should a test plan state for each test besides the data used?",
+        accept: ["expected result", "the expected result", "expected outcome"],
+        answer: "The expected result — plus the reason for the test and the actual result. A test with no expected result cannot fail." },
+      { question: "Explain why a program should never simply crash when a user enters invalid data.",
+        answer: "A crash loses whatever the user had already entered, gives them no idea what went wrong, and leaves the program in an unknown state — which can mean half-written files or a partly updated database. It also tells an attacker something useful, since crash messages often reveal internal details of how the program works. Defensive design instead anticipates bad input, rejects it with a clear message explaining what was expected, and asks again, so the program stays in a known good state and the user can actually fix their mistake. (Mark this one yourself.)" },
+      { question: "Explain why subprograms make a large program easier to test as well as easier to read.",
+        answer: "A subprogram has a defined input and a defined output, so it can be tested on its own with normal, boundary and erroneous data without running the whole program. That makes any fault easy to locate: if the subprogram passes its own tests, the problem is elsewhere. It also removes duplicated code, so a rule that appears in one place instead of five only needs testing and fixing once — and when the rule changes, there is no risk of updating four copies and missing the fifth. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Validation makes sure the data is correct.\"",
+        right: "It makes sure the data is REASONABLE. A plausible but mistyped date passes every validation check. Only verification can catch that." },
+      { wrong: "\"A program that gives the wrong answer has a syntax error.\"",
+        right: "If it runs at all, the syntax is fine. Producing the wrong result is a logic error — which is why logic errors are the harder kind to find." },
+      { wrong: "\"Boundary data means values just outside the allowed range.\"",
+        right: "Boundary data is the values AT the limits, which should be accepted. Testing just outside is worth doing too, but the boundary itself is the limit value." },
+      { wrong: "\"Comments should explain what each line does.\"",
+        right: "A comment saying 'add one to the counter' above counter = counter + 1 is noise. Comments should explain WHY — the reasoning that the code cannot show." },
+      { wrong: "\"Testing proves a program has no bugs.\"",
+        right: "Testing can only show that the cases you tried worked. It is evidence, not proof — which is why choosing test data thoughtfully matters so much." },
+      { wrong: "\"Defensive design is only needed for programs on the internet.\"",
+        right: "Most bad input is accidental: a slip of the finger, a blank box, a decimal point in the wrong place. Any program with a user needs it." },
+    ],
+  },
+
+  "computer-science/languages-and-ides": {
+    summary:
+      "A CPU only ever executes binary. Everything readable — Python, Java, the code you write in lessons — has to be turned into that binary by another program before anything happens. This topic covers the ladder from machine code up to high-level languages, the three kinds of translator that move between them, and the tools an IDE provides to make writing code bearable.",
+    keyFacts: [
+      {
+        heading: "Levels of language",
+        points: [
+          "Machine code is binary instructions the CPU executes directly. It is the only thing a processor actually understands.",
+          "Assembly language is a low-level language using short mnemonics such as LDA, ADD and STA in place of binary patterns.",
+          "One assembly instruction usually corresponds to exactly one machine code instruction — a one-to-one relationship.",
+          "High-level languages such as Python, Java and C# use words close to English and are far quicker to write and easier to read.",
+          "One high-level statement usually becomes many machine code instructions — a one-to-many relationship.",
+          "Low-level code is specific to one processor family; high-level code is portable across different machines.",
+        ],
+      },
+      {
+        heading: "Why anyone still uses low-level languages",
+        points: [
+          "It allows direct control of hardware, which matters for device drivers and embedded systems.",
+          "It can be more efficient in memory and speed, because nothing is added by a translator making general assumptions.",
+          "The trade-off is severe: it is slow to write, hard to read, easy to get wrong, and tied to one processor.",
+          "High-level languages are used for almost everything else precisely because programmer time costs more than processor time.",
+          "The question 'why choose a low-level language here?' always has a hardware or efficiency answer in the scenario.",
+        ],
+      },
+      {
+        heading: "Translators",
+        points: [
+          "An assembler translates assembly language into machine code, one instruction at a time.",
+          "A compiler translates the whole high-level program into machine code in one go, before it is run, producing an executable file.",
+          "An interpreter translates and executes a high-level program one line at a time, every time it runs.",
+          "All three exist because the CPU can only execute machine code, and humans cannot reasonably write it.",
+          "Java and Python both blur the line by compiling to an intermediate form first — worth knowing, but not what a GCSE answer needs.",
+        ],
+      },
+      {
+        heading: "Compiler against interpreter",
+        points: [
+          "A compiled program runs faster, because translation already happened and is not repeated.",
+          "The compiled executable can be distributed without the source code, protecting the original.",
+          "A compiler reports all errors together at the end of compilation, which can be a long list to face at once.",
+          "An interpreter stops at the first error and reports it with its line, which is much friendlier while developing.",
+          "Interpreted code is more portable — the same source runs anywhere with a suitable interpreter — but the user must have that interpreter installed.",
+          "Interpreted programs run more slowly, because translation happens again every time and on every pass through a loop.",
+        ],
+      },
+      {
+        heading: "Integrated Development Environments",
+        points: [
+          "An IDE is a single program bringing together the tools needed to write, test and debug software.",
+          "Editor: writing and changing code, with syntax highlighting, auto-indentation and auto-complete.",
+          "Error diagnostics: highlighting mistakes and reporting what and where they are.",
+          "Run-time environment: running the program without leaving the IDE.",
+          "Translator: a built-in compiler or interpreter, so code can be run immediately.",
+          "Debugger: breakpoints that pause execution at a chosen line, stepping through one line at a time, and watching variables change.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Machine code", definition: "Binary instructions that the CPU executes directly — the only language a processor truly understands." },
+      { term: "Assembly language", definition: "A low-level language using mnemonics such as LDA and ADD, with roughly one instruction per machine code instruction." },
+      { term: "High-level language", definition: "A language such as Python or Java, close to English, portable and quick to write." },
+      { term: "Low-level language", definition: "Machine code or assembly language — close to the hardware and specific to one processor family." },
+      { term: "Assembler", definition: "A translator that converts assembly language into machine code." },
+      { term: "Compiler", definition: "A translator that converts an entire high-level program into machine code before it is run." },
+      { term: "Interpreter", definition: "A translator that converts and executes a high-level program one line at a time, each time it runs." },
+      { term: "Translator", definition: "Any program that converts code from one language into another, such as an assembler, compiler or interpreter." },
+      { term: "Executable", definition: "The machine code file produced by a compiler, which can be run without the source code or the compiler." },
+      { term: "IDE", definition: "Integrated Development Environment — one program combining editor, translator, run-time environment and debugger." },
+      { term: "Syntax highlighting", definition: "Colouring parts of code by their role, making structure and typing mistakes easier to see." },
+      { term: "Breakpoint", definition: "A marker that pauses a running program at a chosen line so variables can be inspected." },
+      { term: "Stepping", definition: "Running a program one line at a time to watch exactly what it does." },
+      { term: "Error diagnostics", definition: "IDE features that detect mistakes and report what is wrong and where." },
+      { term: "Portability", definition: "How easily a program can run on different types of computer. High-level source code is portable; machine code is not." },
+    ],
+    examTips: [
+      {
+        tip: "Answer 'compiler or interpreter' with the situation",
+        detail:
+          "Developing and debugging favours an interpreter; distributing finished software favours a compiler. Say which stage the scenario is at and the justification writes itself.",
+      },
+      {
+        tip: "Use 'translates the whole program' and 'one line at a time'",
+        detail:
+          "Those two phrases are the core distinction, and mark schemes look for them almost word for word.",
+      },
+      {
+        tip: "Give protecting source code as a compiler advantage",
+        detail:
+          "A commercial company ships the executable and keeps the source. It is an easy extra mark that most students forget.",
+      },
+      {
+        tip: "Never say assembly language is machine code",
+        detail:
+          "Assembly uses mnemonics and still needs an assembler to become machine code. They are two different levels, even though they map almost one to one.",
+      },
+      {
+        tip: "Name specific IDE tools, not 'it helps you code'",
+        detail:
+          "Breakpoints, stepping, syntax highlighting, error diagnostics, a built-in run-time environment. Naming a tool and saying what it does earns two marks where vagueness earns none.",
+      },
+      {
+        tip: "Explain portability from the translator's point of view",
+        detail:
+          "The same Python source runs anywhere with a Python interpreter, because the translation happens on that machine. A compiled executable is built for one type of processor and operating system.",
+      },
+      {
+        tip: "Justify low-level languages with hardware or efficiency",
+        detail:
+          "Device drivers, embedded systems, and squeezing the last drop of performance from limited hardware. Those are the only reasons worth writing.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain two differences between a compiler and an interpreter.",
+        steps: [
+          "Difference one — when translation happens. A compiler translates the entire program before it runs; an interpreter translates and executes one line at a time as the program runs.",
+          "Consequence: compiled code runs faster because translation is not repeated, especially inside loops.",
+          "Difference two — how errors are reported. A compiler reports all errors together once compilation finishes.",
+          "An interpreter stops at the first error and names the line, which is why it is friendlier during development.",
+          "A third difference worth having ready: a compiler produces an executable that can be distributed without the source.",
+        ],
+        answer:
+          "A compiler translates the whole program in advance and produces an executable, so it runs faster and the source can be kept private; an interpreter translates line by line as it runs, so it is slower but stops at the first error and reports it immediately, which is better for debugging.",
+      },
+      {
+        question:
+          "A company writes software for a washing machine's embedded controller. Explain why they might use assembly language.",
+        steps: [
+          "An embedded controller has very limited memory and processing power, so efficiency genuinely matters.",
+          "Assembly maps almost one-to-one onto machine code, so there is no translator adding general-purpose overhead.",
+          "It gives direct control over the specific hardware — timers, motors, sensors — which a high-level language may not expose.",
+          "The program is small and does one fixed job, so the difficulty of writing assembly is manageable.",
+          "It will only ever run on that one controller, so the loss of portability costs nothing.",
+        ],
+        answer:
+          "Because it gives direct control of the hardware and produces efficient code that fits limited memory. The usual drawbacks matter less here: the program is small and fixed, and it only ever runs on that one processor, so losing portability costs nothing.",
+      },
+      {
+        question:
+          "Name four tools provided by an IDE and state what each is for.",
+        steps: [
+          "Editor — writing and changing code, usually with syntax highlighting and auto-indentation to make structure visible.",
+          "Error diagnostics — detecting mistakes and reporting what is wrong and on which line.",
+          "Run-time environment — running the program from inside the IDE without switching to another tool.",
+          "Debugger — breakpoints to pause at a chosen line, stepping through line by line, and watching variable values change.",
+          "A translator is a fifth: a built-in compiler or interpreter so code can be run immediately after being typed.",
+        ],
+        answer:
+          "An editor with syntax highlighting for writing code; error diagnostics to report mistakes and their locations; a run-time environment to run the program in place; and a debugger providing breakpoints, stepping and variable watching.",
+      },
+      {
+        question:
+          "A student's program produces the wrong total, but no error message appears. Describe how an IDE's debugger helps find the fault.",
+        steps: [
+          "No error message means the syntax is fine — this is a logic error, so the program must be watched while it works.",
+          "Set a breakpoint just before the total is calculated, so execution pauses at exactly the interesting moment.",
+          "Inspect the variables at that point: are the input values what you expected?",
+          "Step through the loop one line at a time, watching the running total change after each pass.",
+          "The step where the total stops matching what you calculated by hand is the line containing the fault.",
+        ],
+        answer:
+          "Set a breakpoint before the calculation, then step through line by line watching the variables. The first point where a value differs from what it should be identifies the faulty line — which is the only practical way to find a logic error, since nothing announces one.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the only language a CPU can execute directly?",
+        accept: ["machine code", "binary", "machine code binary"],
+        answer: "Machine code — binary instructions." },
+      { question: "Which translator converts assembly language into machine code?",
+        accept: ["assembler", "an assembler"],
+        answer: "An assembler. Roughly one assembly instruction becomes one machine code instruction." },
+      { question: "Which translator converts a whole high-level program before it runs?",
+        accept: ["compiler", "a compiler"],
+        answer: "A compiler, producing an executable file." },
+      { question: "Which translator converts and runs a program one line at a time?",
+        accept: ["interpreter", "an interpreter"],
+        answer: "An interpreter — slower to run, but it reports the first error immediately." },
+      { question: "Is Python a high-level or low-level language?",
+        accept: ["high level", "high-level", "high"],
+        answer: "High-level — close to English, portable and quick to write." },
+      { question: "Is assembly language high-level or low-level?",
+        accept: ["low level", "low-level", "low"],
+        answer: "Low-level. It uses mnemonics but stays tied to one processor family." },
+      { question: "What does IDE stand for?",
+        accept: ["integrated development environment"],
+        answer: "Integrated Development Environment." },
+      { question: "Which IDE feature pauses a program at a chosen line so you can inspect variables?",
+        accept: ["breakpoint", "breakpoints", "a breakpoint"],
+        answer: "A breakpoint. Combined with stepping, it is how logic errors are tracked down." },
+      { question: "Which IDE feature colours keywords and strings differently to make code readable?",
+        accept: ["syntax highlighting", "highlighting"],
+        answer: "Syntax highlighting. Colouring keywords, strings and comments differently makes structure and typing slips visible at a glance." },
+      { question: "Which type of translator reports ALL errors at the end of translation?",
+        accept: ["compiler", "a compiler"],
+        answer: "A compiler. An interpreter stops at the first error instead." },
+      { question: "Which translator lets a developer distribute software without the source code?",
+        accept: ["compiler", "a compiler"],
+        answer: "A compiler — the executable it produces can be shipped on its own." },
+      { question: "Does one high-level statement usually become one machine code instruction, or many?",
+        accept: ["many", "more than one", "several"],
+        answer: "Many. Assembly is the one-to-one case, not high-level code." },
+      { question: "Which runs faster: compiled code or interpreted code?",
+        accept: ["compiled", "compiled code"],
+        answer: "Compiled, because translation happened once in advance rather than repeating every run." },
+      { question: "Which type of language is portable between different processor types?",
+        accept: ["high level", "high-level", "high"],
+        answer: "High-level. Machine code is built for one processor family." },
+      { question: "Name the IDE feature that lets you run a program one line at a time.",
+        accept: ["stepping", "step through", "single stepping", "stepping through"],
+        answer: "Stepping — usually used together with breakpoints and variable watching." },
+      { question: "Give one reason a programmer might choose assembly language.",
+        accept: ["direct hardware control", "hardware control", "efficiency", "speed", "control of hardware", "more efficient"],
+        answer: "Direct control of hardware, or greater efficiency in memory and speed — the reasons that matter for drivers and embedded systems." },
+      { question: "Explain why an interpreter is often preferred while a program is being written, even though it runs more slowly.",
+        answer: "Because development is dominated by finding mistakes, not by execution speed. An interpreter stops at the first error and names the line, so the programmer can fix one problem at a time rather than being handed a long list at the end of compilation. Code can also be run the instant it is typed, with no compilation step between writing and testing, which makes the write-test-fix cycle much shorter. Once the program is finished and correct, the calculation flips: it can be compiled for speed and shipped as an executable. (Mark this one yourself.)" },
+      { question: "Explain why high-level languages are used for almost all modern software despite being less efficient than assembly.",
+        answer: "Because the scarce resource is programmer time, not processor time. High-level code is far quicker to write, much easier to read and therefore to maintain, and portable across different machines rather than tied to one processor family — so a team can build something large, share the work, and keep changing it for years. Modern compilers also optimise well enough that the efficiency gap rarely matters, and hardware is cheap compared with salaries. Assembly still wins where hardware is genuinely constrained, such as embedded controllers and drivers, which is exactly where it is still used. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Assembly language is machine code.\"",
+        right: "Assembly uses human-readable mnemonics like LDA and still needs an assembler to become machine code. They are neighbouring levels, not the same thing." },
+      { wrong: "\"An interpreter is just a slow compiler.\"",
+        right: "They work differently. A compiler translates everything in advance and produces a file; an interpreter translates and executes line by line, every time, and produces no executable." },
+      { wrong: "\"Compiled programs run anywhere.\"",
+        right: "An executable is built for one processor type and operating system. It is the high-level SOURCE code that is portable, not the compiled result." },
+      { wrong: "\"An IDE is just a text editor with colours.\"",
+        right: "The editor is one part. The translator, run-time environment and debugger — breakpoints, stepping, variable watching — are what make it integrated." },
+      { wrong: "\"High-level languages are always the better choice.\"",
+        right: "For device drivers and embedded systems, direct hardware control and tight efficiency can matter more than convenience. The right answer depends on the scenario." },
+      { wrong: "\"Python is compiled because you press Run.\"",
+        right: "Pressing Run in an IDE hides which translator is used. The distinction is whether the whole program is translated in advance into a distributable executable, or translated line by line as it runs." },
     ],
   },
 };

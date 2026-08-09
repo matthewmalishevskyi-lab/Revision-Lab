@@ -102,7 +102,7 @@ From Jennifer's Computer Science mockup, generalised to all three subjects.
 
 - `app/lib/subjects.ts` — **the single source of truth.** Three subjects, each with Year 9/10/11 topic lists, colours, and mascot. Add a topic here and its page, URL and links all appear automatically. Nothing else needs editing.
 - `app/subjects/[subject]/page.tsx` — one file serving all three subject pages. Square brackets = a variable part of the URL.
-- `app/subjects/[subject]/[topic]/page.tsx` — one file serving all 38 topic pages, each with an honest "content coming soon" note, breadcrumbs and links to sibling topics.
+- `app/subjects/[subject]/[topic]/page.tsx` — one file serving all 53 topic pages, each with an honest "content coming soon" note, breadcrumbs and links to sibling topics.
 - `app/dashboard/page.tsx` — login required (checked on the server, so a logged-out visitor never receives the page). Shows account details and subjects; progress is shown as an honest empty state rather than invented numbers.
 - `app/components/SiteHeader.tsx` — shared header on every page. Works out who's logged in itself.
 - `app/components/Icon.tsx` — 25 topic icons, all on the same 24x24 grid with the same stroke width, drawn in `currentColor` so they take the colour of whatever they sit next to.
@@ -116,16 +116,24 @@ From Jennifer's Computer Science mockup, generalised to all three subjects.
 
 ## Revision content (started 2026-08-08)
 
-**ALL 38 TOPICS ARE COMPLETE IN THE FULL FORMAT.** Every topic has six sections: summary, key facts, worked examples, common mistakes, practice questions and flashcards, plus exam technique.
+**ALL 53 TOPICS ARE COMPLETE IN THE FULL FORMAT.** Every topic has six sections: summary, key facts, worked examples, common mistakes, practice questions and flashcards, plus exam technique.
 
 | | Worked examples | Auto-marked Qs | Self-marked Qs | Mistakes | Flashcards |
 |---|---|---|---|---|---|
-| Computer Science (13) | 55 | 208 | 26 | 78 | 201 |
-| Maths (13) | 52 | 209 | 25 | 78 | 158 |
-| English (12) | 48 | 192 | 24 | 72 | 138 |
-| **Total** | **155** | **609** | **75** | **228** | **497** |
+| Computer Science (18) | 75 | 288 | 36 | 108 | 277 |
+| Maths (19) | 76 | 305 | 37 | 114 | 234 |
+| English (16) | 64 | 256 | 32 | 96 | 191 |
+| **Total** | **215** | **849** | **105** | **318** | **702** |
 
-~76,000 words of content. 957 automated checks pass.
+~108,000 words of content. 6,769 automated checks pass.
+
+**15 topics added 2026-08-09** to fill genuine gaps against the specifications, after an audit against AQA / OCR / Edexcel content:
+
+- **Computer Science (+5):** Memory & storage, System software, Protocols & layers, Defensive design & testing, Languages & IDEs. (OCR J277 sections 1.2, 1.5, 1.4, 2.3 and 2.5 had no home before this.)
+- **Maths (+6):** Indices & standard form, Perimeter/area/volume, Straight-line graphs, Similarity & congruence, Constructions/loci/bearings, Compound measures & rates. Mensuration and y = mx + c were the two biggest holes — both are heavily examined and neither existed.
+- **English (+4):** Grammar/punctuation/spelling, Comparing texts, Spoken language, Context & themes.
+
+12 new icons drawn for them, in the same 24×24 stroke style.
 
 **Higher tier labelling** — `higherOnly` can be set on a key-fact block, a worked example or a practice question. It renders an amber badge, and any topic containing one shows an explanatory notice at the top. 26 items flagged, all in Maths (circle theorems, sine/cosine rules, quadratic formula, quadratic sequences, histograms, vector proofs, inverse proportion). Only Maths is tiered — a check enforces that no other subject uses the flag.
 
@@ -135,6 +143,8 @@ From Jennifer's Computer Science mockup, generalised to all three subjects.
 2. **State-persistence bugs.** React reuses a component in the same tree position, so navigating between topic pages did NOT recreate `Flashcards` or `Practice`. Flashcards CRASHED (card 21 of a 23-card topic → 10-card topic → undefined → white screen), and Practice showed old answers against new questions. Both fixed with React's "adjust state when props change" pattern.
 
 
+
+Earlier snapshot, kept for the record (before the six-section rewrite and before the 15 new topics):
 
 | Subject | Topics | Words | Facts | Flashcards | Exam tips |
 |---|---|---|---|---|---|
@@ -149,7 +159,7 @@ Content lives in `app/lib/content/`: `index.ts` is the registry and the type; on
 
 - **Maths** — Foundation and Higher tiers differ. Cosine rule, completing the square, histograms and vector proofs are Higher-only on most boards. Formula sheets have changed in recent years; check which formulae your board provides versus expects memorised.
 - **English** — set texts vary more than in any other subject. The content teaches SKILLS and terminology that transfer to any text, naming common set texts (Macbeth, An Inspector Calls, A Christmas Carol, Jekyll and Hyde) only as examples. Matthew must check which texts his school actually studies. Assessment Objective numbering also varies slightly by board.
-- **Computer Science** — boards differ on register names, whether 1 KB is 1000 or 1024 bytes, and which sorting algorithms are examinable. Every topic has the same four parts on purpose — summary, key facts, flashcards, exam technique — so the page is written once and works for all 38. Adding a topic is writing content, never writing code. Key format: `"subject-slug/topic-slug"`. Split into one file per subject once this grows past a handful.
+- **Computer Science** — boards differ on register names, whether 1 KB is 1000 or 1024 bytes, and which sorting algorithms are examinable. Every topic has the same four parts on purpose — summary, key facts, flashcards, exam technique — so the page is written once and works for all 53. Adding a topic is writing content, never writing code. Key format: `"subject-slug/topic-slug"`. Split into one file per subject once this grows past a handful.
 
 `app/components/Flashcards.tsx` — flip on click, previous/next, Fisher–Yates shuffle. It's a `<button>` rather than a clickable `<div>`, so keyboard and screen-reader support come free.
 
@@ -179,15 +189,22 @@ Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage ren
 - Vercel project: `revision-lab`, team `matthewmalishevskyi-lab`, **Hobby (free, non-commercial)** plan
 - **Every `git push` to `main` now redeploys the live site automatically.**
 
-### 📋 TOMORROW'S PLAN (agreed with Matthew, end of 2026-08-08)
+### 📋 THE PLAN (agreed 2026-08-08) — two of three now done
 
-Three things, in his order of priority:
+1. **Personal targets and achievement tracking** — ⏳ STILL OUTSTANDING. Users manage their own progress: what they've revised, what they've scored, what's left. **BLOCKED ON THE DATABASE.** Progress must be saved per user, which needs `DATABASE_URL` set up first (see Step 5 of `DEPLOYING.md`). Worth Matthew signing up to Neon or Supabase before we start, so the connection string is ready. The practice questions already produce a score — that's the natural first thing to record.
+2. **In-page navigation** — ✅ DONE 2026-08-09. See "Jump menu" below.
+3. **Expand** — ✅ FIRST PASS DONE 2026-08-09: 15 new topics across the three existing subjects, taking the site from 38 to 53. Still open: a fourth subject entirely (one new content file plus one line in the registry).
 
-1. **Personal targets and achievement tracking** — users manage their own progress: what they've revised, what they've scored, what's left. **BLOCKED ON THE DATABASE.** Progress must be saved per user, which needs `DATABASE_URL` set up first (see Step 5 of `DEPLOYING.md`). Worth Matthew signing up to Neon or Supabase before we start, so the connection string is ready. The practice questions already produce a score — that's the natural first thing to record.
-2. **In-page navigation** — a jump menu on topic pages so you can go straight to Key facts / Worked examples / Common mistakes / Practice / Flashcards without scrolling. Topic pages are long now (six sections, sometimes 2,000+ words). Anchor links plus a sticky mini-nav.
-3. **Expand** — more topics within the existing subjects, and more subjects entirely. The architecture already supports this: add to `SUBJECTS` in `lib/subjects.ts` and write a content file. A fourth subject is one new file plus one line in the content registry.
+### Jump menu on topic pages (built 2026-08-09)
 
-Sensible order: database first (unblocks 1), then 2 while that settles, then 3.
+`app/components/TopicNav.tsx` — a sticky row of pills under the title card, linking to each section of the page and highlighting whichever one is currently being read.
+
+**Worth understanding:**
+
+- **The jump itself uses no JavaScript.** Each section carries an `id`, and `<a href="#practice">` is a browser feature from 1993. It works with JS off, and the URL becomes a shareable link to that section.
+- **Two CSS properties finish the job**, both in `globals.css`: `scroll-behavior: smooth` (so you SEE the page travel and learn where things are, rather than teleporting), and `scroll-margin-top` on each section (without it, jumping puts the heading at y=0 — directly underneath the sticky bar that's covering it). Reduced-motion preference disables the smooth scroll.
+- **Which section is active** is measured once per screen refresh inside `requestAnimationFrame`, not on every scroll event — same reasoning as the ladder companion. It also only calls `setState` when the answer has actually changed, otherwise it would re-render 60 times a second to draw an identical bar.
+- The section list is **derived from the content**, so a topic with no worked examples never gets a link to a section that doesn't exist.
 
 ### ⚠️ START HERE NEXT SESSION — three things, in order
 

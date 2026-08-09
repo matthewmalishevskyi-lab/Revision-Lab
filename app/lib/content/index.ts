@@ -7,7 +7,7 @@
 //   flashcards  - definitions, for self-testing
 //   examTips    - how to not lose marks you've already earned
 //
-// Keeping the SHAPE identical across all 38 topics is what makes this scale.
+// Keeping the SHAPE identical across all 53 topics is what makes this scale.
 // The page is written once and works for everything; adding a topic is writing
 // content, never writing code.
 //

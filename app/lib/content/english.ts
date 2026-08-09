@@ -1,4 +1,4 @@
-// ENGLISH — all 12 topics.
+// ENGLISH — all 16 topics.
 //
 // ⚠️ SET TEXTS VARY MORE HERE THAN IN ANY OTHER SUBJECT. One school studies
 // Macbeth, another Romeo and Juliet; one does An Inspector Calls, another Blood
@@ -2771,6 +2771,956 @@ export const ENGLISH: Record<string, TopicContent> = {
         right: "AO4 is separately assessed on several papers. Two minutes proofreading is a better return than one more rushed paragraph." },
       { wrong: "\"Quoting more of the text proves you know it.\"",
         right: "Analysis, not quotation, is what AO2 rewards. If most of a paragraph is quoted material, most of the marks are going unclaimed." },
+    ],
+  },
+
+  "english/grammar-punctuation-and-spelling": {
+    summary:
+      "Technical accuracy is examined directly, and it is worth a substantial share of the marks on the writing papers — often around a fifth of the whole paper. That makes it the highest-value thing on the course that can be improved purely by learning rules, without reading a single extra book. This topic covers word classes, sentence structures, the punctuation examiners actually look for, and the spellings that catch out the most people.",
+    keyFacts: [
+      {
+        heading: "Word classes",
+        points: [
+          "Noun: a person, place, thing or idea. Proper nouns (London, Tuesday) take capital letters; abstract nouns name things you cannot touch (freedom, grief).",
+          "Verb: an action or a state of being. Every complete sentence needs one.",
+          "Adjective: describes a noun. Adverb: describes a verb, an adjective or another adverb, and often ends in -ly.",
+          "Pronoun: stands in for a noun (he, they, it, which).",
+          "Preposition: shows position or relationship (under, before, despite). Conjunction: joins clauses (because, although, and).",
+          "Determiner: comes before a noun to specify it (the, a, this, several).",
+        ],
+      },
+      {
+        heading: "Sentence types",
+        points: [
+          "A clause contains a verb. A main clause makes sense on its own; a subordinate clause does not.",
+          "Simple sentence: one main clause. 'The rain stopped.' Useful for impact.",
+          "Compound sentence: two main clauses joined by a coordinating conjunction — and, but, or, so.",
+          "Complex sentence: a main clause plus at least one subordinate clause. 'Although the rain stopped, the sky stayed grey.'",
+          "Minor sentence: no verb, used deliberately for effect. 'Nothing. Silence.' Powerful sparingly, weak in bulk.",
+          "Varying sentence length is one of the most reliable ways to lift a piece of writing, and examiners notice it immediately.",
+        ],
+      },
+      {
+        heading: "Punctuation that earns marks",
+        points: [
+          "A full stop ends a sentence. A comma cannot: joining two complete sentences with a comma is a comma splice, and it is the most common error in GCSE writing.",
+          "Fix a comma splice with a full stop, a semicolon, or a conjunction.",
+          "A semicolon joins two closely related complete sentences. A colon introduces an explanation, an example or a list.",
+          "Brackets, paired dashes and paired commas all mark off extra information. Whichever you open with, close with the same.",
+          "Apostrophes do two jobs: contraction (don't, it's = it is) and possession (the dog's bowl; the dogs' bowls for plurals).",
+          "Speech: new speaker, new line; punctuation goes inside the speech marks. 'Stop,' she said.",
+        ],
+      },
+      {
+        heading: "Spellings that catch people out",
+        points: [
+          "their (belonging to them) / there (place) / they're (they are).",
+          "your (belonging to you) / you're (you are). its (belonging to it) / it's (it is) — its has NO apostrophe when it means belonging.",
+          "affect is usually the verb, effect usually the noun: the weather affects my mood; it has an effect on my mood.",
+          "practice is the noun, practise the verb (UK spelling): I go to football practice; I practise every day.",
+          "definitely, separate, necessary, embarrass, occurred, rhythm, beginning, argument, conscience, atmosphere.",
+          "Learn the ones YOU get wrong. A personal list of ten misspellings, revisited weekly, is worth more than any general list.",
+        ],
+      },
+      {
+        heading: "Paragraphs, tense and register",
+        points: [
+          "Start a new paragraph for a change of time, place, topic or speaker — the four reasons, easily memorised.",
+          "One-line paragraphs used sparingly create emphasis. Used constantly they just look like a list.",
+          "Keep the tense consistent. Drifting between past and present mid-paragraph is a technical accuracy error, and it is easy to miss when writing quickly.",
+          "Register means how formal the writing is. A letter to a headteacher and a blog for teenagers need different registers, and marks go for matching it to the audience.",
+          "Standard English means the grammar and vocabulary expected in formal writing — not an accent, and not 'better' English, just what is expected in this context.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Noun", definition: "A word naming a person, place, thing or idea." },
+      { term: "Abstract noun", definition: "A noun naming something that cannot be touched, such as freedom or grief." },
+      { term: "Verb", definition: "A word expressing an action or state of being. Every complete sentence needs one." },
+      { term: "Adverb", definition: "A word describing a verb, adjective or other adverb — often, though not always, ending in -ly." },
+      { term: "Conjunction", definition: "A word joining clauses together, such as because, although or but." },
+      { term: "Preposition", definition: "A word showing position or relationship, such as under, before or despite." },
+      { term: "Clause", definition: "A group of words containing a verb." },
+      { term: "Main clause", definition: "A clause that makes complete sense on its own." },
+      { term: "Subordinate clause", definition: "A clause that adds information but cannot stand alone as a sentence." },
+      { term: "Simple sentence", definition: "A sentence made of one main clause." },
+      { term: "Compound sentence", definition: "Two main clauses joined by a coordinating conjunction such as and, but or so." },
+      { term: "Complex sentence", definition: "A main clause with at least one subordinate clause." },
+      { term: "Comma splice", definition: "The error of joining two complete sentences with only a comma." },
+      { term: "Semicolon", definition: "A punctuation mark joining two closely related complete sentences." },
+      { term: "Colon", definition: "A punctuation mark introducing an explanation, an example or a list." },
+      { term: "Register", definition: "The level of formality of a piece of writing, matched to its audience and purpose." },
+      { term: "Standard English", definition: "The grammar and vocabulary expected in formal writing and speech." },
+    ],
+    examTips: [
+      {
+        tip: "Leave five minutes to proofread, every time",
+        detail:
+          "Technical accuracy is separately assessed and worth a large share of the writing marks. Five minutes of checking reliably beats two more rushed sentences.",
+      },
+      {
+        tip: "Hunt specifically for comma splices",
+        detail:
+          "Read each comma and ask whether both halves could stand alone as sentences. If they could, it needs a full stop, semicolon or conjunction.",
+      },
+      {
+        tip: "Vary your sentence lengths deliberately",
+        detail:
+          "A short sentence after two long ones lands hard. Examiners reward conscious variety, and it is something you can plan for rather than hope for.",
+      },
+      {
+        tip: "Use a semicolon at least once, correctly",
+        detail:
+          "One well-placed semicolon signals control of punctuation. One misused semicolon signals the opposite, so use it where two complete sentences sit closely related.",
+      },
+      {
+        tip: "Check every it's for the word 'is'",
+        detail:
+          "If 'it is' fits, the apostrophe is right. If it means belonging to it, there is no apostrophe. This one check removes the most common apostrophe error in English.",
+      },
+      {
+        tip: "Keep a personal spelling list",
+        detail:
+          "Ten words you actually get wrong, written out weekly, beats memorising a hundred you already know. Take them from your own marked work.",
+      },
+      {
+        tip: "Match the register to the audience named in the task",
+        detail:
+          "The question always says who is reading. A letter to a governor and an article for teenagers require different levels of formality, and marks are given for getting it right.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "Identify and correct the error: 'The rain fell heavily, the match was cancelled.'",
+        steps: [
+          "Test each half separately. 'The rain fell heavily.' is a complete sentence.",
+          "'The match was cancelled.' is also a complete sentence.",
+          "Two complete sentences joined by only a comma is a comma splice.",
+          "There are three ways to fix it: a full stop, a semicolon, or a conjunction.",
+          "Choose by meaning — the two are causally linked, so 'so' or a semicolon reads best.",
+        ],
+        answer:
+          "A comma splice. Correct it as: 'The rain fell heavily, so the match was cancelled.' — or with a semicolon, or as two separate sentences.",
+      },
+      {
+        question:
+          "Rewrite as a complex sentence: 'The house was empty. Nobody had lived there for years.'",
+        steps: [
+          "A complex sentence needs a main clause and at least one subordinate clause.",
+          "Decide which idea is the main point — here, that the house was empty.",
+          "Turn the other into a subordinate clause using a subordinating conjunction such as because, although or since.",
+          "'Because nobody had lived there for years' cannot stand alone, so it is subordinate. ✓",
+          "The subordinate clause can go first for variety, with a comma after it.",
+        ],
+        answer:
+          "'The house was empty because nobody had lived there for years.' Or, opening with the subordinate clause: 'Because nobody had lived there for years, the house was empty.'",
+      },
+      {
+        question:
+          "Correct the apostrophes: 'The dogs bowl was empty, its been like that for days, and the childrens toys were everywhere.'",
+        steps: [
+          "'The dogs bowl' — the bowl belongs to one dog, so it is possessive: dog's bowl.",
+          "'its been' means 'it has been', which is a contraction, so it needs an apostrophe: it's been.",
+          "'childrens' — children is already plural, so the possessive apostrophe goes before the s: children's.",
+          "Check the comma splice too: 'The dog's bowl was empty' and 'it's been like that for days' are both complete sentences.",
+          "Replace that comma with a semicolon or a full stop.",
+        ],
+        answer:
+          "'The dog's bowl was empty; it's been like that for days, and the children's toys were everywhere.'",
+      },
+      {
+        question:
+          "Explain how sentence structure creates effect in: 'She checked the lock, the window, the door behind her. Nothing. She breathed out.'",
+        steps: [
+          "The first sentence is long, built from a list that accumulates as she checks each thing.",
+          "That accumulation slows the reader down and mirrors the methodical, anxious checking.",
+          "'Nothing.' is a minor sentence — no verb, one word. The abruptness stops the rhythm dead.",
+          "That sudden halt creates a beat of silence on the page, imitating the pause before relief.",
+          "The final short simple sentence releases the tension, matching the exhale it describes.",
+        ],
+        answer:
+          "The long accumulating list mirrors her methodical anxiety; the one-word minor sentence 'Nothing.' halts the rhythm abruptly, creating a beat of tension; and the short simple sentence that follows releases it, the sentence structure imitating the held breath and the exhale.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the error called when two complete sentences are joined by only a comma?",
+        accept: ["comma splice", "a comma splice"],
+        answer: "A comma splice — the most common technical error in GCSE writing." },
+      { question: "What word class describes a verb, and often ends in -ly?",
+        accept: ["adverb", "an adverb"],
+        answer: "An adverb — it describes a verb, an adjective or another adverb. Not all of them end in -ly: very, often and well are adverbs too." },
+      { question: "What word class names a person, place, thing or idea?",
+        accept: ["noun", "a noun"],
+        answer: "A noun. Proper nouns take capital letters, and abstract nouns name things you cannot touch, such as freedom." },
+      { question: "What is a clause that cannot stand alone as a sentence called?",
+        accept: ["subordinate clause", "a subordinate clause", "subordinate", "dependent clause"],
+        answer: "A subordinate clause. It adds information but cannot stand alone, which is what makes a sentence complex." },
+      { question: "What type of sentence has one main clause and no subordinate clause?",
+        accept: ["simple", "simple sentence", "a simple sentence"],
+        answer: "A simple sentence — one main clause. Used deliberately among longer ones, it lands hard." },
+      { question: "What type of sentence joins two main clauses with 'and', 'but' or 'so'?",
+        accept: ["compound", "compound sentence", "a compound sentence"],
+        answer: "A compound sentence — two main clauses of equal weight, joined by a coordinating conjunction." },
+      { question: "What type of sentence contains a main clause and at least one subordinate clause?",
+        accept: ["complex", "complex sentence", "a complex sentence"],
+        answer: "A complex sentence. The subordinate clause can go before or after the main clause, which is useful for varying your openings." },
+      { question: "Which punctuation mark joins two closely related complete sentences?",
+        accept: ["semicolon", "semi colon", "semi-colon", "a semicolon"],
+        answer: "A semicolon. Both halves must be able to stand alone as sentences, which is exactly what makes it the cure for a comma splice." },
+      { question: "Which punctuation mark introduces a list or an explanation?",
+        accept: ["colon", "a colon"],
+        answer: "A colon. What follows explains or expands on what came before it." },
+      { question: "Complete correctly: 'The team celebrated ___ victory.' (their / there / they're)",
+        accept: ["their"],
+        answer: "their — belonging to them." },
+      { question: "Complete correctly: '___ going to be late.' (Your / You're)",
+        accept: ["you're", "youre"],
+        answer: "You're — short for 'you are'." },
+      { question: "Complete correctly: 'The cat licked ___ paw.' (its / it's)",
+        accept: ["its"],
+        answer: "its — belonging to it, with no apostrophe. it's always means 'it is' or 'it has'." },
+      { question: "Which is the verb: practice or practise? (UK spelling)",
+        accept: ["practise"],
+        answer: "practise is the verb; practice is the noun. Same pattern as advise/advice." },
+      { question: "Which is usually the verb: affect or effect?",
+        accept: ["affect"],
+        answer: "affect is usually the verb, effect usually the noun." },
+      { question: "Where does the apostrophe go in the possessive plural 'the dogs bowls' (bowls of several dogs)? Write the two words.",
+        accept: ["dogs' bowls", "the dogs' bowls"],
+        answer: "dogs' bowls — for a plural already ending in s, the apostrophe goes after it." },
+      { question: "Name one of the four reasons to start a new paragraph.",
+        accept: ["time", "place", "topic", "speaker", "new speaker", "change of time", "change of place", "change of topic"],
+        answer: "A change of time, place, topic or speaker." },
+      { question: "Explain why varying sentence length improves a piece of descriptive writing.",
+        answer: "Because length controls pace, and pace controls how the reader feels. A long sentence with several clauses slows the reading down, which suits description, accumulation or a wandering thought; a short one lands abruptly and creates emphasis or shock. When every sentence is the same length the writing becomes monotonous and the reader stops noticing where the important moments are, because nothing stands out from anything else. Placing a very short sentence immediately after two long ones is the simplest way to make a moment hit hard, and it is something you can plan deliberately rather than hope happens. (Mark this one yourself.)" },
+      { question: "Explain why technical accuracy is worth revising even though it feels less interesting than analysis.",
+        answer: "Because it is assessed separately and carries a large share of the writing marks — often around a fifth of the paper — and unlike analysis it can be improved by learning a finite set of rules rather than by reading more widely. Comma splices, apostrophes and homophone confusions account for most of the marks lost, and each has a check that takes seconds to apply. It also affects the rest of the paper indirectly: an examiner reading accurate, controlled writing finds the argument easier to follow, whereas errors interrupt the reading and make even a good point harder to credit. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"A comma can join two sentences if they're about the same thing.\"",
+        right: "It cannot, ever. That is a comma splice. Use a full stop, a semicolon, or add a conjunction — the choice depends on how closely the ideas are linked." },
+      { wrong: "\"it's means belonging to it.\"",
+        right: "it's always means 'it is' or 'it has'. The possessive is its, with no apostrophe — one of the few possessives in English that takes none." },
+      { wrong: "\"Long sentences are more sophisticated.\"",
+        right: "Control is what is rewarded, not length. A deliberate short sentence among longer ones shows more skill than a page of clauses joined by 'and'." },
+      { wrong: "\"Adverbs always end in -ly.\"",
+        right: "Many do, but plenty do not: very, often, well, soon, never. The test is what the word describes, not how it ends." },
+      { wrong: "\"Spelling doesn't really matter as long as the meaning is clear.\"",
+        right: "It is directly assessed and worth a substantial share of the writing marks. It is also the part of the paper most improvable by revision alone." },
+      { wrong: "\"Standard English means posh English.\"",
+        right: "It is the grammar and vocabulary expected in formal contexts. It is about appropriateness for a situation, not about class or accent, and non-standard forms are not incorrect in their own contexts." },
+    ],
+  },
+
+  "english/comparing-texts": {
+    summary:
+      "Comparison questions appear on almost every English paper: two non-fiction texts on the language paper, two poems on the literature paper. They are also the questions students most often answer badly — not because the texts are hard, but because they write about one text, then the other, and never actually compare. This topic is about the structure and the habits that turn two separate analyses into one comparative argument.",
+    keyFacts: [
+      {
+        heading: "What comparison actually means",
+        points: [
+          "A comparison discusses both texts TOGETHER, not one after the other.",
+          "The examiner is looking for a point that could not be made about either text alone.",
+          "Similarities and differences both count, and the best answers find similarities of purpose with differences of method — or the reverse.",
+          "'Both writers are angry, but they express it very differently' is a comparative point. 'Text A is angry. Text B is calm.' is two statements sitting next to each other.",
+          "Every paragraph should mention both texts. If a paragraph names only one, it is analysis, not comparison.",
+        ],
+      },
+      {
+        heading: "What to compare",
+        points: [
+          "Viewpoint: what does each writer actually think, and how strongly?",
+          "Purpose: to inform, persuade, entertain, argue, advise? Two texts on the same subject often have entirely different purposes.",
+          "Tone: angry, nostalgic, ironic, detached, urgent, affectionate.",
+          "Methods: the techniques used — imagery, structure, sentence forms, direct address, statistics, anecdote.",
+          "Audience: who each was written for, and how the writing changes to suit them.",
+          "Context: when each was written, and how that shapes what could be said and how.",
+        ],
+      },
+      {
+        heading: "Structuring a comparative answer",
+        points: [
+          "The integrated method is the stronger one: each paragraph makes one comparative point, using evidence from both texts.",
+          "A workable paragraph shape: comparative point → quotation from Text A → analysis → connective → quotation from Text B → analysis → what the difference reveals.",
+          "The block method — everything about Text A, then everything about Text B — rarely reaches the higher bands, because comparison only appears at the very end if at all.",
+          "Aim for three or four strong comparative paragraphs rather than six thin ones.",
+          "Finish each paragraph with the significance: not just that the writers differ, but what that difference achieves.",
+        ],
+      },
+      {
+        heading: "Comparative connectives",
+        points: [
+          "For similarity: similarly, likewise, in the same way, both writers, equally.",
+          "For difference: whereas, in contrast, however, on the other hand, conversely, while.",
+          "For degree: to a greater extent, more explicitly, far more subtly, less directly.",
+          "Use them mid-sentence to link the two texts inside one thought, rather than starting a new paragraph with 'However'.",
+          "'Whereas' is the single most useful word in a comparison, because it forces both halves of the sentence to be about different texts.",
+        ],
+      },
+      {
+        heading: "Choosing evidence",
+        points: [
+          "Pick quotations that PAIR — two moments doing a similar job, or the same job in opposite ways.",
+          "Short embedded quotations work better than long ones, because they leave room for analysis.",
+          "Annotate both texts before writing, marking two or three points where they clearly speak to each other.",
+          "Plan for five minutes. A comparison written without a plan almost always drifts into block structure.",
+          "Track the same idea across both texts rather than listing every technique you can spot in each.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Comparison", definition: "Writing about two texts together, making points that could not be made about either alone." },
+      { term: "Integrated comparison", definition: "A structure where each paragraph makes one comparative point using evidence from both texts." },
+      { term: "Block structure", definition: "Writing all about one text and then all about the other — the weaker approach, which rarely reaches the higher bands." },
+      { term: "Comparative connective", definition: "A linking word or phrase such as whereas, similarly or in contrast that joins points about two texts." },
+      { term: "Viewpoint", definition: "What the writer thinks about the subject, and how strongly." },
+      { term: "Purpose", definition: "What a text is trying to do: inform, persuade, entertain, argue or advise." },
+      { term: "Tone", definition: "The attitude conveyed by the writing — angry, nostalgic, ironic, detached." },
+      { term: "Method", definition: "A technique a writer uses to achieve their effect, such as imagery, structure or direct address." },
+      { term: "Audience", definition: "The readers a text is aimed at, which shapes its vocabulary, tone and assumptions." },
+      { term: "Embedded quotation", definition: "A short quotation woven into your own sentence rather than set apart." },
+      { term: "Paired evidence", definition: "Two quotations, one from each text, chosen because they do comparable work." },
+    ],
+    examTips: [
+      {
+        tip: "Mention both texts in every paragraph",
+        detail:
+          "The quickest self-check there is. Glance back: if a paragraph names only one text, it is not yet comparative and will be capped in the lower bands.",
+      },
+      {
+        tip: "Use 'whereas' deliberately",
+        detail:
+          "It forces one text into each half of the sentence, which is exactly the structure a comparative point needs. Aim for it several times in an answer.",
+      },
+      {
+        tip: "Compare methods, not just content",
+        detail:
+          "Both texts being about pollution is a starting point, not a point. How each writer makes you feel about it is where the marks live.",
+      },
+      {
+        tip: "Plan the pairings before you write",
+        detail:
+          "Five minutes marking two or three moments where the texts speak to each other prevents the drift into block structure that ruins most comparisons.",
+      },
+      {
+        tip: "Look for similar purpose with different method",
+        detail:
+          "It is the most productive kind of comparative point: both writers want you angry, but one uses statistics and the other uses a single child's story.",
+      },
+      {
+        tip: "Say what the difference achieves",
+        detail:
+          "Identifying a difference is one mark; explaining what it does to the reader is where the higher bands begin. End each paragraph with the effect.",
+      },
+      {
+        tip: "Do not force a comparison that isn't there",
+        detail:
+          "If the texts genuinely differ, say so clearly and explore why. Pretending to find a similarity produces vague writing that convinces nobody.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "Turn these two statements into one comparative point: 'Text A uses statistics about flooding.' 'Text B describes one family losing their home.'",
+        steps: [
+          "Ask what both writers are trying to achieve — here, to make the reader take flooding seriously.",
+          "That shared purpose is the frame for the comparison.",
+          "Now identify how the methods differ: one appeals to reason with data, one to emotion with a single story.",
+          "Join them with a comparative connective so both texts sit in one sentence.",
+          "Finish with the effect — what each method does to the reader.",
+        ],
+        answer:
+          "Both writers want the reader to take flooding seriously, but they reach for opposite kinds of proof: Text A piles up statistics to make the scale feel undeniable, whereas Text B narrows to one family, trusting that a single loss the reader can picture will move them further than a number they cannot.",
+      },
+      {
+        question:
+          "Write the opening of a comparative paragraph about tone, using one quotation from each text: Text A — 'This is, frankly, a disgrace.' Text B — 'One might reasonably ask whether more could have been done.'",
+        steps: [
+          "Start with a comparative point about tone rather than a description of one text.",
+          "Quote briefly from Text A and analyse the word doing the work — 'frankly' and 'disgrace'.",
+          "Use a connective to move to Text B without starting a new paragraph.",
+          "Quote briefly and analyse — 'one might reasonably ask' is impersonal and hedged.",
+          "Close with what the difference achieves: force against restraint, and who each is aimed at.",
+        ],
+        answer:
+          "Both writers are critical, but they let that criticism show to very different degrees. Text A is openly furious: 'frankly' pushes politeness aside, and 'a disgrace' passes judgement outright with no room for disagreement. Text B, whereas, keeps its anger under the surface — 'one might reasonably ask' is impersonal and carefully hedged, so the criticism arrives as a question rather than a verdict. The restraint makes Text B sound measured and therefore harder to dismiss, while Text A's bluntness is designed to make the reader share its indignation immediately.",
+      },
+      {
+        question:
+          "Explain why this paragraph would not reach the higher bands: 'Text A uses a rhetorical question to make the reader think. It also uses a list of three. Text B uses emotive language.'",
+        steps: [
+          "Check the structure: Text A is discussed alone, then Text B is discussed alone. There is no comparative point.",
+          "Check for connectives: there are none linking the two texts.",
+          "Check the analysis: the techniques are named but their effect is asserted, not explained. 'Make the reader think' is a phrase that fits any rhetorical question anywhere.",
+          "Check the evidence: there are no quotations at all, so nothing is anchored in the texts.",
+          "The fix is to choose one shared idea and examine how each writer handles it, with quotations.",
+        ],
+        answer:
+          "It spots techniques but never compares them, offers no quotations, and explains no effects — it is a list of features rather than an argument. Rewritten comparatively it would take one shared idea and ask how each writer approaches it, with a short quotation from each and an explanation of what the difference achieves.",
+      },
+      {
+        question:
+          "Two poems both describe a parent. One is written in strict rhyming quatrains; the other in free verse. Suggest a comparative point about form.",
+        steps: [
+          "Note that form is a method, so a difference in form is worth comparing in its own right.",
+          "Ask what the regular form suggests: order, control, tradition, perhaps distance or restraint.",
+          "Ask what free verse suggests: spontaneity, a speaking voice, emotion escaping any pattern.",
+          "Link the form to the relationship each poem describes.",
+          "Be careful to argue it from the poem rather than assuming form always means the same thing.",
+        ],
+        answer:
+          "Both poems are about a parent, but their forms pull in opposite directions: the strict quatrains hold the feeling inside a controlled, inherited pattern, which suits a relationship governed by duty and restraint, whereas the free verse lets the voice run past any expected shape, so the emotion arrives unmanaged. The contrast in form becomes a contrast in how freely each speaker is able to feel.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the weaker structure called, where you write all about one text then all about the other?",
+        accept: ["block", "block structure", "the block structure"],
+        answer: "Block structure. Integrated comparison is the stronger approach." },
+      { question: "What is the stronger structure called, where each paragraph compares both texts?",
+        accept: ["integrated", "integrated comparison", "integrated structure"],
+        answer: "Integrated comparison — each paragraph makes one comparative point using evidence from both texts." },
+      { question: "Name a comparative connective that signals DIFFERENCE.",
+        accept: ["whereas", "however", "in contrast", "conversely", "on the other hand", "while", "but"],
+        answer: "Whereas, in contrast, however, conversely or on the other hand." },
+      { question: "Name a comparative connective that signals SIMILARITY.",
+        accept: ["similarly", "likewise", "both", "equally", "in the same way"],
+        answer: "Similarly, likewise, equally, or 'both writers'." },
+      { question: "How many texts should be mentioned in each paragraph of a comparison?",
+        accept: ["2", "two", "both"],
+        answer: "Both. A paragraph naming only one text is analysis, not comparison." },
+      { question: "Which single word is described as the most useful in a comparison, because it forces a text into each half of the sentence?",
+        accept: ["whereas"],
+        answer: "Whereas. It is so useful because it forces one text into each half of the sentence, which is the shape a comparative point needs." },
+      { question: "What is the term for what a text is trying to do — inform, persuade, entertain or argue?",
+        accept: ["purpose", "the purpose"],
+        answer: "Purpose. Two texts on the same subject often have completely different purposes, which is where the comparison starts." },
+      { question: "What is the term for the attitude conveyed by the writing, such as angry or nostalgic?",
+        accept: ["tone", "the tone"],
+        answer: "Tone — the attitude the writing conveys, such as angry, nostalgic, ironic or detached." },
+      { question: "What is the term for the readers a text is aimed at?",
+        accept: ["audience", "the audience"],
+        answer: "Audience. Who a text was written for shapes its vocabulary, its tone and what it assumes the reader already knows." },
+      { question: "What is a short quotation woven into your own sentence called?",
+        accept: ["embedded quotation", "embedded", "an embedded quotation"],
+        answer: "An embedded quotation — it leaves more room for analysis than a long one." },
+      { question: "Is it better to write three strong comparative paragraphs or six thin ones?",
+        accept: ["3", "three", "three strong", "three strong paragraphs"],
+        answer: "Three strong ones. Depth of comparison beats coverage." },
+      { question: "Should a comparison discuss similarities, differences, or both?",
+        accept: ["both"],
+        answer: "Both. The best answers often find a shared purpose achieved by different methods." },
+      { question: "What should a comparative paragraph end with: another quotation, or the effect of the difference?",
+        accept: ["the effect", "effect", "the effect of the difference"],
+        answer: "The effect. Identifying a difference is the start; explaining what it achieves is where the higher bands begin." },
+      { question: "What is the term for two quotations chosen because they do comparable work in each text?",
+        accept: ["paired evidence", "paired quotations", "pairing", "paired"],
+        answer: "Paired evidence — two quotations, one from each text, chosen because they do comparable work." },
+      { question: "About how long should you spend planning a comparison before writing?",
+        accept: ["5 minutes", "five minutes", "5"],
+        answer: "About five minutes. Planning is what prevents the drift into block structure." },
+      { question: "Give one aspect of a text you can compare other than its content.",
+        accept: ["tone", "purpose", "audience", "structure", "methods", "viewpoint", "form", "context", "language"],
+        answer: "Tone, purpose, audience, structure, form, methods, viewpoint or context." },
+      { question: "Explain why writing about one text and then the other rarely reaches the higher bands.",
+        answer: "Because the assessment rewards comparison, and a block-structured answer only compares in its final sentences, if at all. Everything before that is two separate analyses that happen to share a page, so the examiner has nothing to credit against the comparative criteria for most of the answer. It also weakens the analysis itself: setting two texts side by side reveals things neither shows alone, because each writer's choices only look like choices once you can see that another writer facing the same subject did something different. Integrating the comparison forces those insights out. (Mark this one yourself.)" },
+      { question: "Explain why a comparison of methods is worth more than a comparison of subject matter.",
+        answer: "Because subject matter is usually given by the exam rather than chosen by the writer — the two texts are set together precisely because they share a topic, so noticing that shared topic demonstrates nothing. Methods are where the writers actually made decisions: what to include, how to order it, which words to use, whether to reach for a statistic or a story. Comparing those choices lets you explain why two texts on the same subject leave the reader feeling completely different things, which is the question the mark scheme is really asking. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Comparing means finding things that are the same.\"",
+        right: "Differences count just as much, and the strongest points often combine both — a shared purpose pursued by opposite methods." },
+      { wrong: "\"You should write about Text A first, then Text B.\"",
+        right: "That is block structure, and it postpones the comparison until the end. Each paragraph should make one comparative point using both texts." },
+      { wrong: "\"Saying 'both texts are about pollution' is a comparison.\"",
+        right: "That is the topic, and the exam chose it. The comparison lies in how each writer treats it and what effect that has." },
+      { wrong: "\"Naming lots of techniques shows more knowledge.\"",
+        right: "A list of features with no effects explained sits in the lower bands. Fewer techniques, properly explored across both texts, scores far higher." },
+      { wrong: "\"Long quotations show you have understood the text.\"",
+        right: "They use up the space analysis needs. Short embedded quotations, closely examined, are worth far more than a copied paragraph." },
+      { wrong: "\"If the texts have nothing in common, the question is unfair.\"",
+        right: "Then the comparison is about the difference. Saying clearly how and why they diverge, and what each achieves, is a perfectly strong answer." },
+    ],
+  },
+
+  "english/spoken-language": {
+    summary:
+      "Every GCSE English Language student gives a spoken presentation. It is reported separately from your grade — as Pass, Merit or Distinction — which is why it gets neglected, and also why it is one of the easiest things on the course to do well at with a little preparation. This topic covers preparing and delivering that presentation, handling questions, and the features that make spoken language a genuinely different thing from writing.",
+    keyFacts: [
+      {
+        heading: "The spoken language endorsement",
+        points: [
+          "It is assessed as Pass, Merit or Distinction, and appears separately on your certificate rather than inside the English Language grade.",
+          "You are assessed on presenting information clearly, listening and responding to questions, and using Standard English.",
+          "The presentation is normally a few minutes long, on a topic you choose or are given, delivered to an audience.",
+          "It is a required part of the course, so it must be completed even though it does not change the number on your certificate.",
+          "Employers and sixth forms do see it, and 'Distinction' costs no more effort than 'Pass' if you prepare.",
+        ],
+      },
+      {
+        heading: "Preparing a presentation",
+        points: [
+          "Choose a topic you actually have something to say about — enthusiasm carries a talk further than research does.",
+          "Structure it clearly: an opening that tells the audience where you are going, three main sections, and a conclusion that lands.",
+          "Write cue cards with prompts, never a full script. Reading aloud sounds flat and makes eye contact impossible.",
+          "Signpost as you go: 'The second reason is...', 'That brings me to...'. Listeners cannot re-read, so they need the map.",
+          "Time it out loud, more than once. Most people speak faster under pressure and finish early.",
+          "Anticipate three questions you might be asked and think about the answers in advance.",
+        ],
+      },
+      {
+        heading: "Delivering it",
+        points: [
+          "Speak more slowly than feels natural. Nerves speed everyone up, and clarity is being assessed.",
+          "Make eye contact across the room rather than fixing on one person or on your notes.",
+          "Use pauses deliberately — before an important point, and after it. Silence sounds confident, not empty.",
+          "Vary your tone and volume. A monotone loses an audience faster than any mistake of content.",
+          "Stand still and keep your hands purposeful. Rocking and fidgeting distract from what you are saying.",
+          "If you lose your place, pause, look at your card, and carry on. The audience notices far less than you think.",
+        ],
+      },
+      {
+        heading: "Using Standard English, and answering questions",
+        points: [
+          "Standard English is assessed here: full sentences, agreement between subject and verb, and vocabulary suited to a formal setting.",
+          "It does not mean losing your accent. Accent is how you sound; Standard English is grammar and vocabulary.",
+          "Listen to the whole question before starting to answer, and it is fine to pause and think first.",
+          "If you do not know, say so honestly and offer what you do know — that is judged far better than bluffing.",
+          "Refer back to your presentation when answering: it shows you are connecting the question to your material.",
+          "Answering questions well is a separate assessed skill, not an afterthought.",
+        ],
+      },
+      {
+        heading: "Features of spoken language",
+        points: [
+          "Spontaneous speech is planned as it is spoken, which is why it contains features writing does not.",
+          "Non-fluency features: fillers ('um', 'er'), false starts, repetitions, and self-corrections.",
+          "Elision: sounds dropped in casual speech — 'gonna', 'dunno', 'innit'.",
+          "Fillers are not errors. They buy thinking time and signal that the speaker has not finished, which is exactly what a listener needs.",
+          "Prepared speech, such as a scripted presentation, sits between spontaneous speech and writing, borrowing the structure of one and the delivery of the other.",
+          "Turn-taking, interruption and adjacency pairs (a question expecting an answer) organise conversation without anyone agreeing them in advance.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Spoken language endorsement", definition: "The separately reported part of GCSE English Language, graded Pass, Merit or Distinction." },
+      { term: "Standard English", definition: "The grammar and vocabulary expected in formal settings — unrelated to accent." },
+      { term: "Accent", definition: "How a speaker pronounces words, reflecting where they are from. Not a matter of correctness." },
+      { term: "Dialect", definition: "The vocabulary and grammar of a particular region or group." },
+      { term: "Non-fluency features", definition: "Fillers, false starts, repetitions and self-corrections that occur in spontaneous speech." },
+      { term: "Filler", definition: "A sound or word such as 'um' or 'you know' that buys thinking time and holds the speaker's turn." },
+      { term: "Elision", definition: "Sounds dropped in casual speech, as in 'gonna' for 'going to'." },
+      { term: "Spontaneous speech", definition: "Speech planned as it is produced, which is why it contains non-fluency features." },
+      { term: "Prepared speech", definition: "Speech planned in advance, such as a presentation — more structured than conversation." },
+      { term: "Signposting", definition: "Telling the audience where you are going in a talk, since they cannot re-read." },
+      { term: "Adjacency pair", definition: "A two-part exchange where the first part expects a particular second, such as a question and its answer." },
+      { term: "Turn-taking", definition: "The unspoken system by which speakers take turns in conversation." },
+      { term: "Cue card", definition: "A card holding prompts rather than a full script, used to keep a talk natural." },
+    ],
+    examTips: [
+      {
+        tip: "Use prompts, never a script",
+        detail:
+          "A read-aloud presentation sounds flat and prevents eye contact, both of which are assessed. Cue cards with five or six phrases each are enough.",
+      },
+      {
+        tip: "Slow down deliberately",
+        detail:
+          "Everyone speeds up under nerves. Practise at a pace that feels slightly too slow — on the day it will come out about right.",
+      },
+      {
+        tip: "Prepare three likely questions",
+        detail:
+          "Responding to questions is separately assessed. Thinking of the obvious three in advance turns the least predictable part into the easiest.",
+      },
+      {
+        tip: "Signpost between sections",
+        detail:
+          "'That brings me to my second point.' A listener has no way to scan back, so these small signals do a lot of work.",
+      },
+      {
+        tip: "Say honestly when you don't know",
+        detail:
+          "Bluffing is transparent and marks you down. 'I'm not sure, but what I do know is...' is treated as a strength, not a weakness.",
+      },
+      {
+        tip: "Pause instead of filling",
+        detail:
+          "Silence sounds considered; 'um' sounds unprepared. When you need a moment, take it without making a noise.",
+      },
+      {
+        tip: "Treat fillers as features, not mistakes, when analysing speech",
+        detail:
+          "In a transcript question, explain what a filler DOES — buying time, holding the turn, softening a disagreement — rather than calling it an error.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Plan a five-minute presentation on 'Social media should be banned for under-16s'.",
+        steps: [
+          "Opening: a striking fact or a short personal moment, then state your position in one sentence so the audience knows where you stand.",
+          "Signpost the structure: 'I'll look at three things — the evidence on wellbeing, the practical problems with a ban, and what I think we should do instead.'",
+          "Section one: the strongest evidence for the case, with one specific example rather than several vague ones.",
+          "Section two: the honest counter-argument. Acknowledging the other side makes you sound credible, not weak.",
+          "Conclusion: return to your opening image and state your position again, slightly sharpened. Then prepare for the obvious questions — enforcement, and where you drew the age line.",
+        ],
+        answer:
+          "Hook → position stated → signposted structure → evidence → honest counter-argument → conclusion returning to the opening. Prepare answers on enforcement and on why 16 rather than another age.",
+      },
+      {
+        question:
+          "Identify the spoken language features in: 'So I was — um — I was gonna say, like, it's not really, you know, it's not that simple.'",
+        steps: [
+          "'So I was —' followed by a restart is a false start: the speaker abandons the structure and begins again.",
+          "'um' is a filler, buying a moment of thinking time while holding the turn.",
+          "'gonna' is elision — 'going to' with sounds dropped, typical of informal speech.",
+          "'like' and 'you know' are discourse markers, softening the statement and checking the listener is with them.",
+          "'it's not really... it's not that simple' is a repetition and self-correction, the speaker refining what they meant as they say it.",
+        ],
+        answer:
+          "A false start ('So I was —'), a filler ('um'), elision ('gonna'), discourse markers ('like', 'you know') and a self-correcting repetition. None are errors: they are the normal machinery of speech planned in real time.",
+      },
+      {
+        question:
+          "A student says 'I done my research on it.' Explain the difference between accent and Standard English here.",
+        steps: [
+          "'I done' is a non-standard grammatical form; Standard English would be 'I did'.",
+          "That is a matter of grammar, which is what the endorsement assesses.",
+          "Accent is separate: it is how the words are pronounced, and it varies across the country without any version being incorrect.",
+          "A speaker with any accent can use Standard English, and frequently does.",
+          "So the advice is about grammar in a formal setting, not about changing how someone sounds.",
+        ],
+        answer:
+          "'I done' is a non-standard grammatical form, so Standard English would be 'I did' — and grammar is what is assessed. Accent, meaning pronunciation, is a separate thing entirely and is neither assessed nor in need of changing.",
+      },
+      {
+        question:
+          "You are asked a question you cannot answer at the end of your presentation. What should you do?",
+        steps: [
+          "Listen to the whole question rather than starting to answer partway through.",
+          "Pause. A moment's thought reads as consideration, not confusion.",
+          "Be honest that you do not know that specific thing — bluffing is obvious and is marked down.",
+          "Offer what you do know that is related, so the answer still has substance.",
+          "Where you can, connect it back to a point you made, showing you are still thinking about your material.",
+        ],
+        answer:
+          "Listen fully, pause, then say honestly that you do not know — and immediately offer the related thing you do know, linking it back to your presentation. Honesty with substance is credited; bluffing is not.",
+      },
+    ],
+
+    practice: [
+      { question: "What three grades can the spoken language endorsement be awarded?",
+        accept: ["pass merit distinction", "pass, merit, distinction", "pass merit and distinction"],
+        answer: "Pass, Merit and Distinction." },
+      { question: "Does the spoken language endorsement count towards your English Language grade? Answer yes or no.",
+        accept: ["no"],
+        answer: "No — it is reported separately on the certificate." },
+      { question: "What is the term for sounds like 'um' and 'er' in speech?",
+        accept: ["fillers", "filler", "a filler"],
+        answer: "Fillers. They buy thinking time and hold the speaker's turn." },
+      { question: "What is the term for dropping sounds, as in 'gonna' for 'going to'?",
+        accept: ["elision"],
+        answer: "Elision — sounds dropped in casual speech, as in 'gonna' or 'dunno'. It is a feature of speech, not an error." },
+      { question: "What is the general term for fillers, false starts and repetitions in speech?",
+        accept: ["non fluency features", "non-fluency features", "non fluency", "nonfluency features"],
+        answer: "Non-fluency features — normal in spontaneous speech, not errors." },
+      { question: "What is the term for how a speaker pronounces words, reflecting where they are from?",
+        accept: ["accent", "an accent"],
+        answer: "Accent — distinct from dialect, which is vocabulary and grammar." },
+      { question: "What is the term for the vocabulary and grammar of a particular region?",
+        accept: ["dialect", "a dialect"],
+        answer: "Dialect — the vocabulary and grammar of a region or group, which is separate from accent, meaning pronunciation." },
+      { question: "Is Standard English about accent or about grammar and vocabulary?",
+        accept: ["grammar and vocabulary", "grammar", "vocabulary and grammar"],
+        answer: "Grammar and vocabulary. Any accent can be used with Standard English." },
+      { question: "Should you use a full script or cue cards for a presentation?",
+        accept: ["cue cards", "cue card", "cards", "prompts"],
+        answer: "Cue cards with prompts. Reading aloud sounds flat and prevents eye contact." },
+      { question: "What is the term for telling your audience where your talk is going next?",
+        accept: ["signposting", "signpost"],
+        answer: "Signposting. Listeners cannot re-read, so they need the map." },
+      { question: "What is the term for a two-part exchange such as a question and its answer?",
+        accept: ["adjacency pair", "an adjacency pair", "adjacency pairs"],
+        answer: "An adjacency pair — the first part sets up an expectation that the second part fills, as a question expects an answer." },
+      { question: "What is the term for the system by which speakers take turns in conversation?",
+        accept: ["turn taking", "turn-taking", "turntaking"],
+        answer: "Turn-taking. Nobody agrees the rules in advance, yet speakers manage it constantly through pauses, tone and eye contact." },
+      { question: "Under nerves, do most people speak faster or slower than usual?",
+        accept: ["faster"],
+        answer: "Faster — which is why you should practise deliberately slowly." },
+      { question: "Besides presenting, name one other thing assessed in the endorsement.",
+        accept: ["responding to questions", "answering questions", "listening", "standard english", "listening and responding", "questions"],
+        answer: "Responding to questions, and using Standard English." },
+      { question: "Is speech planned as it is spoken called spontaneous or prepared speech?",
+        accept: ["spontaneous", "spontaneous speech"],
+        answer: "Spontaneous speech — which is why it contains non-fluency features." },
+      { question: "If you don't know the answer to a question, should you bluff or say so honestly?",
+        accept: ["say so honestly", "honestly", "be honest", "say so"],
+        answer: "Say so honestly, then offer what you do know. Bluffing is transparent and marked down." },
+      { question: "Explain why fillers such as 'um' should not be treated as errors when analysing a transcript.",
+        answer: "Because they are doing a job that writing never has to do. A speaker is planning and delivering at the same time, and a filler buys a moment to think while signalling that the turn is not finished — without it, the pause would invite someone else to start talking. Fillers can also soften a disagreement or mark hesitation about something delicate, which carries real meaning. Calling them mistakes measures speech against the standards of writing, which had time to be redrafted, and misses what the speaker was actually managing in the moment. (Mark this one yourself.)" },
+      { question: "Explain why using Standard English is not the same as losing your accent.",
+        answer: "Because they describe different things. Standard English is a matter of grammar and vocabulary — 'I did' rather than 'I done', 'we were' rather than 'we was' — and it is the form expected in formal writing and speech across the whole country. Accent is pronunciation: how the vowels and consonants sound, which varies by region and carries no correctness at all. Someone can speak flawless Standard English in a broad Yorkshire, Glaswegian or Cornish accent, and millions do every day. Asking a student to use Standard English in an assessment is asking about grammar in a formal setting, not asking them to sound like someone else. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The spoken language part doesn't matter because it isn't in my grade.\"",
+        right: "It appears separately on your certificate, sixth forms and employers see it, and a Distinction takes barely more preparation than a Pass." },
+      { wrong: "\"Standard English means speaking without an accent.\"",
+        right: "Standard English is grammar and vocabulary. Accent is pronunciation, varies across the country, and is not a matter of correctness at all." },
+      { wrong: "\"Writing the whole speech out makes it safer.\"",
+        right: "A read script sounds flat, removes eye contact and makes recovery from a lost place harder, not easier. Prompts keep the delivery alive." },
+      { wrong: "\"Fillers and false starts are just bad speaking.\"",
+        right: "They are normal features of real-time speech planning. In a transcript question, explain what they DO rather than treating them as mistakes." },
+      { wrong: "\"You should keep talking to avoid awkward silences.\"",
+        right: "Pauses read as confidence and give your audience time to absorb a point. Filling every gap with 'um' does the opposite." },
+      { wrong: "\"The question section is just a formality at the end.\"",
+        right: "Listening and responding is separately assessed. Preparing three likely questions turns the least predictable part of the task into the most controllable." },
+    ],
+  },
+
+  "english/context-and-themes": {
+    summary:
+      "Context is the assessment objective students most often lose marks on, because it is the one most often bolted on. A paragraph of history dropped into an essay earns very little; the same information used to explain why a writer made a particular choice earns a great deal. This topic is about using context as part of an argument, and about tracking themes across a whole text so you can write about it as a designed thing rather than a story.",
+    keyFacts: [
+      {
+        heading: "What context means",
+        points: [
+          "Context is anything outside the text that shapes how it was written or how it is read.",
+          "Historical and social context: the beliefs, laws, class structure and events of the time.",
+          "Biographical context: the writer's own life, where it genuinely bears on the work.",
+          "Literary context: the genre, movement or tradition the text belongs to, and what its readers would have expected.",
+          "Reception context: how the text was understood then, and how it is understood now — these often differ sharply.",
+          "Check your board's assessment objectives: context is usually AO3 in English Literature and carries a defined share of the marks.",
+        ],
+      },
+      {
+        heading: "Using context well",
+        points: [
+          "The test: does this sentence explain something about the TEXT? If it only explains something about history, it is not doing AO3 work.",
+          "Weak: 'Victorian society had lots of poverty.' Strong: 'Dickens makes the reader see the children under the Ghost's robe because his audience largely believed poverty was a moral failing rather than a social one.'",
+          "Integrate context into the analysis rather than giving it a paragraph of its own.",
+          "One sentence of context, used precisely, beats a paragraph of general background.",
+          "Context can explain what a word MEANT then, which is often the sharpest possible use of it.",
+          "Never open an essay with a paragraph of history. Start with the text and the argument.",
+        ],
+      },
+      {
+        heading: "Contexts worth knowing (examples)",
+        points: [
+          "Jacobean drama: a monarch believed to rule by divine right, so killing a king was a crime against God and the natural order — and James I had a personal interest in witchcraft.",
+          "Victorian fiction: rapid industrialisation, extreme inequality, and a widespread belief that poverty was deserved. Serialisation shaped the plotting of many novels.",
+          "Gothic writing: ruins, doubles, the supernatural and the fear of what science might unleash.",
+          "1945 and after: the Second World War, the new welfare state, and drama that questioned who was responsible for whom.",
+          "War poetry: the gap between how a war was described at home and what soldiers actually experienced.",
+          "Your own set texts will differ from this list. The method transfers; the details must come from your own texts.",
+        ],
+      },
+      {
+        heading: "Themes",
+        points: [
+          "A theme is an idea the whole text explores — power, guilt, class, gender, ambition, isolation, responsibility.",
+          "A theme is not the same as a topic. 'Death' is a topic; 'the text presents death as the one thing status cannot buy' is a theme.",
+          "Track each theme through the text: where it appears, how it develops, and where it is resolved or deliberately left unresolved.",
+          "The strongest essays argue that the writer uses a theme to say something, rather than listing places the theme appears.",
+          "Watch how a theme changes: what a character believes at the start and at the end is usually the point.",
+          "Keep a page per major theme, with three or four short quotations from across the whole text.",
+        ],
+      },
+      {
+        heading: "Building the argument",
+        points: [
+          "Open with a thesis: one sentence saying what you will argue, not a summary of the plot.",
+          "Each paragraph should develop that argument, not restart it.",
+          "Refer to the writer as a maker of choices: 'Shakespeare presents...', 'Priestley chooses to...'. Characters do not decide anything — writers do.",
+          "Use the whole text, not just the extract, when the question allows it. Examiners look for range.",
+          "Quotations should be short and embedded, so most of the sentence is your analysis.",
+          "End with what the text is FOR: what its writer wanted the audience to think or feel differently about.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Context", definition: "Anything outside a text that shapes how it was written or how it is read." },
+      { term: "AO3", definition: "The assessment objective covering the relationship between a text and the context in which it was written and received." },
+      { term: "Social context", definition: "The class structure, beliefs and everyday conditions of the society a text was written in." },
+      { term: "Literary context", definition: "The genre, movement or tradition a text belongs to, and the expectations that come with it." },
+      { term: "Reception", definition: "How readers or audiences understood a text — which can differ greatly between then and now." },
+      { term: "Theme", definition: "An idea a whole text explores, such as power, guilt, class or responsibility." },
+      { term: "Thesis", definition: "The single-sentence argument an essay sets out to prove." },
+      { term: "Divine right of kings", definition: "The belief that a monarch's authority came from God, making regicide a crime against the natural order." },
+      { term: "Gothic", definition: "A literary tradition using ruins, doubles, the supernatural and the fear of knowledge overreaching." },
+      { term: "Serialisation", definition: "Publishing a novel in instalments, which shaped plotting towards regular cliffhangers." },
+      { term: "Authorial intent", definition: "What the writer appears to want the audience to think or feel — the 'so what' of an essay." },
+      { term: "Bolted-on context", definition: "Historical information dropped into an essay without being connected to the text. It earns very little." },
+    ],
+    examTips: [
+      {
+        tip: "Never open with a history paragraph",
+        detail:
+          "Start with your thesis about the text. Context belongs inside the analysis, at the moment it explains a choice, not stacked up at the front.",
+      },
+      {
+        tip: "Apply the 'does this explain the text?' test",
+        detail:
+          "Read each context sentence back. If it tells the examiner about history but nothing about the writing, rewrite it so it explains why the writer did something.",
+      },
+      {
+        tip: "Name the writer as the one making choices",
+        detail:
+          "'Priestley presents Birling as...' rather than 'Birling is...'. It is a small change of wording that shifts an entire essay from retelling to analysis.",
+      },
+      {
+        tip: "Use one precise contextual fact rather than three vague ones",
+        detail:
+          "A single specific detail, tied tightly to a moment in the text, does more than a general paragraph about the period.",
+      },
+      {
+        tip: "Track themes across the whole text",
+        detail:
+          "Examiners look for range. Three short quotations from beginning, middle and end show you know the text as a designed whole, not just the extract.",
+      },
+      {
+        tip: "Write a thesis you could disagree with",
+        detail:
+          "'This essay will explore the theme of power' is not an argument. 'Macbeth suggests ambition is destructive because it isolates' is one — and can be defended.",
+      },
+      {
+        tip: "Finish with the 'so what'",
+        detail:
+          "What did the writer want the audience to think or feel differently about? That final move is what separates the top band from a competent essay.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "Improve this bolted-on context: 'An Inspector Calls was written in 1945 but set in 1912. There was a war and the welfare state was created.'",
+        steps: [
+          "Identify the problem: the facts are correct but do nothing to explain the play.",
+          "Ask what the gap between the two dates lets Priestley do that a 1945 setting would not.",
+          "The audience knows what happened between 1912 and 1945; the characters do not. That is dramatic irony built out of history.",
+          "Connect it to a specific choice: Birling's confident predictions about war and the Titanic.",
+          "Rewrite so the context explains the effect of the writing on the audience.",
+        ],
+        answer:
+          "Priestley sets the play in 1912 but writes it in 1945, so his audience has lived through everything Birling confidently denies. When Birling calls war 'fiddlesticks', the gap between his certainty and the audience's memory of two wars destroys his authority before the Inspector has even arrived — the historical distance is a dramatic weapon, not a setting.",
+      },
+      {
+        question:
+          "Explain how context sharpens the meaning of 'unsex me here' in Macbeth.",
+        steps: [
+          "Establish what the line asks for: Lady Macbeth wants her femininity removed.",
+          "Bring in the context precisely: a Jacobean audience held firm expectations that women were gentle, obedient and maternal.",
+          "So the request is not a metaphor for confidence — it is a request to become unnatural.",
+          "Link it to the play's wider pattern: the natural order disturbed by the murder, echoed in the storms and the horses eating each other.",
+          "Close with the effect: the audience hears a woman placing herself outside nature, which prepares them to see her destruction as inevitable.",
+        ],
+        answer:
+          "To a Jacobean audience, who expected women to be gentle and maternal, 'unsex me here' is not ambition expressed strongly but a woman asking to be made unnatural. It places her alongside the witches, outside the natural order the play is about disturbing — which is why her later collapse reads to that audience as consequence rather than misfortune.",
+      },
+      {
+        question:
+          "Turn this topic into a theme statement: 'The theme of social class in A Christmas Carol.'",
+        steps: [
+          "A topic names a subject; a theme says what the text argues about that subject.",
+          "Ask what the text actually claims about class, not merely that class appears in it.",
+          "Consider the evidence: the Cratchits' warmth against Scrooge's cold wealth, and Ignorance and Want shown as children.",
+          "Turn it into a claim someone could disagree with.",
+          "Add the 'so what': what did Dickens want his readers to do differently?",
+        ],
+        answer:
+          "'Dickens presents poverty as something inflicted by the comfortable rather than deserved by the poor, using Scrooge's transformation to argue that responsibility for it is personal as well as political.' That is a claim an essay can defend, where 'the theme of social class' is only a subject heading.",
+      },
+      {
+        question:
+          "Plan how to track the theme of guilt across a text you have studied.",
+        steps: [
+          "Take one page and write the theme at the top.",
+          "Find where the theme first appears, and note what the text seems to say about it at that stage.",
+          "Find a moment in the middle where it develops, complicates or is denied by a character.",
+          "Find where it stands at the end — resolved, or deliberately left open.",
+          "Add three or four short quotations, one from each stage, and a sentence on what the writer achieves by placing them where they are.",
+        ],
+        answer:
+          "One page per theme, with beginning, middle and end quotations and a sentence each on how the idea develops. The value is not the quotations themselves but the shape they reveal: an essay that can describe how a theme moves is writing about a designed text, not retelling a story.",
+      },
+    ],
+
+    practice: [
+      { question: "Which assessment objective usually covers context in English Literature?",
+        accept: ["ao3", "a03"],
+        answer: "AO3 — the relationship between a text and the context in which it was written and received." },
+      { question: "What is the term for context dropped into an essay without being linked to the text?",
+        accept: ["bolted on", "bolted-on", "bolted on context", "bolt on"],
+        answer: "Bolted-on context. It earns very little because it explains history rather than writing." },
+      { question: "Is 'death' a theme or a topic?",
+        accept: ["topic", "a topic"],
+        answer: "A topic. A theme states what the text argues about that subject." },
+      { question: "What is the single-sentence argument an essay sets out to prove called?",
+        accept: ["thesis", "a thesis", "thesis statement"],
+        answer: "A thesis. It should be a claim someone could disagree with, not a statement of what you intend to explore." },
+      { question: "Complete the better phrasing: 'Shakespeare ___ Macbeth as...' (presents / is)",
+        accept: ["presents"],
+        answer: "presents — naming the writer as the one making choices shifts an essay from retelling to analysis." },
+      { question: "What was the belief that a monarch's authority came directly from God called?",
+        accept: ["divine right", "the divine right of kings", "divine right of kings"],
+        answer: "The divine right of kings — which made regicide a crime against the natural order." },
+      { question: "What is the term for publishing a novel in instalments?",
+        accept: ["serialisation", "serialization", "serialised", "serial"],
+        answer: "Serialisation, which shaped plotting towards regular cliffhangers." },
+      { question: "Which literary tradition uses ruins, doubles and the supernatural?",
+        accept: ["gothic", "the gothic"],
+        answer: "The Gothic — a tradition built on ruins, doubles, the supernatural, and the fear of knowledge overreaching itself." },
+      { question: "Should an essay open with a paragraph of historical background? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. Open with a thesis about the text; context belongs inside the analysis." },
+      { question: "What is the term for how audiences understood a text at the time it appeared?",
+        accept: ["reception", "reception context"],
+        answer: "Reception — and it often differs sharply from how the text is read now." },
+      { question: "Which is better in an essay: one precise contextual fact, or three general ones?",
+        accept: ["one", "one precise", "1", "one precise fact"],
+        answer: "One precise fact, tied tightly to a moment in the text." },
+      { question: "Should quotations in a literature essay be long or short and embedded?",
+        accept: ["short", "short and embedded", "embedded"],
+        answer: "Short and embedded, so most of the sentence is your own analysis." },
+      { question: "Name one type of context other than historical.",
+        accept: ["literary", "biographical", "social", "reception", "genre", "literary context", "biographical context"],
+        answer: "Literary, biographical, social or reception context." },
+      { question: "What is the test for whether a context sentence is doing its job?",
+        accept: ["does it explain the text", "explains the text", "does it explain something about the text"],
+        answer: "Does it explain something about the TEXT? If it only explains history, it is not doing AO3 work." },
+      { question: "How many parts of the text should a themed quotation bank cover: only the extract, or the whole text?",
+        accept: ["the whole text", "whole text", "all of it", "the whole"],
+        answer: "The whole text — examiners look for range across beginning, middle and end." },
+      { question: "What should a top-band essay end with, beyond summarising?",
+        accept: ["so what", "the so what", "authorial intent", "what the writer wanted", "the effect on the audience"],
+        answer: "The 'so what' — what the writer wanted the audience to think or feel differently about." },
+      { question: "Explain why writing 'Macbeth decides to kill Duncan' is weaker than 'Shakespeare has Macbeth kill Duncan'.",
+        answer: "Because the first treats the character as a real person making a free decision, which turns the essay into retelling a story. The second acknowledges that Macbeth exists only because a writer constructed him, and that every action in the play was chosen for an effect on an audience. That framing opens the questions worth marks: why place the murder offstage, why put the dagger speech before it, why give the porter a comic scene immediately after. Nothing in a text happens by itself, and writing as though it does closes off the analysis before it starts. (Mark this one yourself.)" },
+      { question: "Explain why a theme should be tracked across a whole text rather than found in a single moment.",
+        answer: "Because a theme is not a thing that appears but an idea that develops, and its meaning lies in how it changes. What a text says about guilt at the start is often the opposite of what it says by the end, and the distance between the two is the writer's actual argument. Finding one quotation shows you can spot the theme; showing where it begins, how it complicates in the middle and where it is resolved or deliberately left open shows you understand the text as something designed. It also demonstrates the range examiners look for, since the alternative is an essay that never leaves the extract in front of you. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Context means writing a paragraph about history at the start.\"",
+        right: "That is bolted-on context and scores very little. Context earns marks when it explains why a writer made a particular choice, woven into the analysis." },
+      { wrong: "\"A theme is just what the text is about.\"",
+        right: "That is the topic. A theme is what the text ARGUES about that topic — a claim someone could disagree with." },
+      { wrong: "\"The more historical facts, the better the AO3 mark.\"",
+        right: "Precision beats quantity. One fact that explains a specific word or scene outperforms a paragraph of general background every time." },
+      { wrong: "\"Characters make their own decisions.\"",
+        right: "Writers make them. Phrasing every point as a choice by the author is the simplest way to move an essay from narration into analysis." },
+      { wrong: "\"Only the extract in front of me matters.\"",
+        right: "Where the question allows it, examiners look for knowledge of the whole text. Quotations from across the text demonstrate range that an extract-only answer cannot." },
+      { wrong: "\"Biographical facts about the writer always count as context.\"",
+        right: "Only where they genuinely bear on the writing. A fact about the author's childhood that explains nothing in the text is as bolted-on as a fact about the period." },
     ],
   },
 };

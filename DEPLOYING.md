@@ -70,7 +70,7 @@ Deploying does **not** put you in Google. You have to ask, and then wait.
 
 **Then wait.** New sites typically take days to weeks to appear, and ranking for competitive terms like "GCSE revision" takes months and a lot of visitors. Realistically the first people who use this will arrive because you sent them the link — which is exactly why Open Graph tags are set up, so the link looks good when pasted into a group chat.
 
-Already done for you: page titles and descriptions, a sitemap covering all 41 pages, robots.txt, Open Graph previews, and structured data marking the topics as GCSE learning resources.
+Already done for you: page titles and descriptions, a sitemap covering every page, robots.txt, Open Graph previews, and structured data marking the topics as GCSE learning resources.
 
 ---
 
@@ -99,7 +99,7 @@ Once other people's data is involved, you have responsibilities. Worth talking t
 - **A way to delete an account.** Not optional under UK data protection law.
 - **Passwords are already handled properly** — hashed with scrypt and salted, never stored as text. That part is genuinely done right.
 - **Consider "Sign in with Google" instead.** Then you never store passwords at all, which removes most of the risk. More setup, much less responsibility.
-- **Get the content checked.** 34,000 words of revision material written by an AI, aimed at students sitting real exams. A teacher should look over it before anyone revises from it seriously.
+- **Get the content checked.** Over 100,000 words of revision material written by an AI, aimed at students sitting real exams. A teacher should look over it before anyone revises from it seriously.
 
 ---
 

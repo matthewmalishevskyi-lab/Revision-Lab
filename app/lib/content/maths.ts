@@ -1,4 +1,4 @@
-// MATHS — all 13 topics.
+// MATHS — all 19 topics.
 //
 // ⚠️ ACCURACY: written for GCSE Maths generally (AQA, Edexcel, OCR). Foundation
 // and Higher tiers differ — a few things here (cosine rule, quadratic formula,
@@ -2866,6 +2866,1387 @@ export const MATHS: Record<string, TopicContent> = {
         right: "There is no penalty for being wrong. A relevant formula, a labelled diagram or a first correct step can all pick up marks on a question you cannot complete." },
       { wrong: "\"Reading through worked solutions counts as doing past papers.\"",
         right: "It creates familiarity, not ability. Attempt the question first, under time pressure, and only then look — otherwise you are testing your reading, not your maths." },
+    ],
+  },
+
+  "maths/indices-and-standard-form": {
+    summary:
+      "Indices are shorthand for repeated multiplication, and once you know the laws they follow, enormous and tiny numbers become easy to handle. Standard form is the same idea put to work: it is how scientists write the mass of an electron and the distance to a star without covering the page in zeros. This topic is heavily examined and, unusually, almost entirely rule-based — which means it is one of the most reliably learnable topics on the syllabus.",
+    keyFacts: [
+      {
+        heading: "The laws of indices",
+        points: [
+          "Multiplying: a^m × a^n = a^(m+n). Add the powers. 2^3 × 2^4 = 2^7.",
+          "Dividing: a^m ÷ a^n = a^(m−n). Subtract the powers. 5^8 ÷ 5^3 = 5^5.",
+          "Power of a power: (a^m)^n = a^(mn). Multiply the powers. (3^2)^4 = 3^8.",
+          "Anything to the power 0 is 1: a^0 = 1 for any a except 0. This follows from a^n ÷ a^n = a^0 = 1.",
+          "The laws only work when the BASES are the same. 2^3 × 3^4 cannot be simplified this way.",
+        ],
+      },
+      {
+        heading: "Negative and fractional indices",
+        points: [
+          "A negative index means a reciprocal: a^(−n) = 1 ÷ a^n. So 2^(−3) = 1/8.",
+          "A negative index never makes the answer negative — it makes it a fraction.",
+          "A unit fraction index means a root: a^(1/2) = √a, and a^(1/3) is the cube root of a.",
+          "A general fraction combines both: a^(m/n) = (the nth root of a), all raised to the power m. Take the root first — the numbers stay smaller.",
+          "So 8^(2/3) = (cube root of 8)^2 = 2^2 = 4.",
+        ],
+        higherOnly: true,
+      },
+      {
+        heading: "Standard form",
+        points: [
+          "A number in standard form is written A × 10^n, where 1 ≤ A < 10 and n is an integer.",
+          "A must be at least 1 and less than 10. 12 × 10^4 is not in standard form; 1.2 × 10^5 is.",
+          "A positive power means a large number: 3.2 × 10^5 = 320,000.",
+          "A negative power means a small number: 3.2 × 10^(−4) = 0.00032.",
+          "To convert to standard form, move the decimal point until one non-zero digit sits in front of it, and count how many places you moved.",
+        ],
+      },
+      {
+        heading: "Calculating with standard form",
+        points: [
+          "To multiply: multiply the front numbers, add the powers.",
+          "To divide: divide the front numbers, subtract the powers.",
+          "Then fix the answer so the front number is between 1 and 10 again, adjusting the power to match.",
+          "To add or subtract, the powers must match first — convert one number so both have the same power of 10, or write both out in full.",
+          "On a calculator use the ×10^x or EXP button, never type '× 10 ^'. Typing it out produces the wrong answer when the display is reused.",
+        ],
+      },
+      {
+        heading: "Surds",
+        points: [
+          "A surd is a root that cannot be written exactly as a fraction, such as √2. Leaving it as a surd keeps the answer exact.",
+          "√a × √b = √(ab), and √a ÷ √b = √(a/b).",
+          "To simplify, look for a factor that is a perfect square: √50 = √25 × √2 = 5√2.",
+          "Like surds can be added and subtracted: 5√2 + 3√2 = 8√2. Unlike surds cannot: √2 + √3 stays as it is.",
+          "Rationalising the denominator means removing the surd from the bottom by multiplying top and bottom by the same surd.",
+        ],
+        higherOnly: true,
+      },
+    ],
+    flashcards: [
+      { term: "Index (plural indices)", definition: "The small raised number showing how many times a base is multiplied by itself." },
+      { term: "Base", definition: "The number being raised to a power. In 3^5, the base is 3." },
+      { term: "Multiplication law", definition: "a^m × a^n = a^(m+n) — when the bases match, add the powers." },
+      { term: "Division law", definition: "a^m ÷ a^n = a^(m−n) — when the bases match, subtract the powers." },
+      { term: "Power of a power", definition: "(a^m)^n = a^(mn) — multiply the powers." },
+      { term: "Zero index", definition: "a^0 = 1 for any non-zero a." },
+      { term: "Negative index", definition: "a^(−n) = 1/a^n — a reciprocal, not a negative answer." },
+      { term: "Fractional index", definition: "a^(1/n) is the nth root of a; a^(m/n) is the nth root of a, raised to the power m." },
+      { term: "Standard form", definition: "A × 10^n where 1 ≤ A < 10 and n is an integer." },
+      { term: "Surd", definition: "A root that cannot be written exactly as a fraction, such as √2 or √3." },
+      { term: "Rationalising the denominator", definition: "Removing a surd from the bottom of a fraction by multiplying top and bottom by that surd." },
+      { term: "Perfect square", definition: "A number that is the square of an integer: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100." },
+      { term: "Reciprocal", definition: "1 divided by the number. The reciprocal of 4 is 1/4, which is also 4^(−1)." },
+    ],
+    examTips: [
+      {
+        tip: "Check the bases match before using any index law",
+        detail:
+          "The laws add and subtract powers only when the base is identical. 2^5 × 4^3 needs 4 rewriting as 2^2 first, giving 2^5 × 2^6 = 2^11.",
+      },
+      {
+        tip: "A negative power gives a fraction, not a negative number",
+        detail:
+          "3^(−2) = 1/9, not −9. This is the single most common error in the whole topic, and it is worth saying to yourself every time.",
+      },
+      {
+        tip: "For a^(m/n), take the root first",
+        detail:
+          "For 27^(2/3), cube root 27 to get 3, then square to get 9. Doing it the other way means squaring 27 to 729 first, which is far more work for the same answer.",
+      },
+      {
+        tip: "Always finish by checking A is between 1 and 10",
+        detail:
+          "Calculations often produce something like 34 × 10^6. That is not standard form. Rewrite it as 3.4 × 10^7 — the mark is for the form as well as the value.",
+      },
+      {
+        tip: "Use the calculator's ×10^x button",
+        detail:
+          "Typing '3 × 10 ^ 5' works once, but goes wrong as soon as you reuse the answer or square it. The dedicated button keeps the number as one value.",
+      },
+      {
+        tip: "Give exact surd answers when the question says 'exact'",
+        detail:
+          "'Give your answer in exact form' or 'in surd form' means do not round. 5√2, not 7.07. Rounding there loses the mark completely.",
+      },
+      {
+        tip: "Count decimal places carefully for negative powers",
+        detail:
+          "0.00047 → the decimal point moves 4 places right to reach 4.7, so it is 4.7 × 10^(−4). Writing the digits out and counting beats guessing.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Simplify 3^7 × 3^4 ÷ 3^9, giving your answer as a power of 3.",
+        steps: [
+          "The bases all match, so the index laws apply.",
+          "Multiplying adds the powers: 3^7 × 3^4 = 3^(7+4) = 3^11.",
+          "Dividing subtracts the powers: 3^11 ÷ 3^9 = 3^(11−9).",
+          "11 − 9 = 2.",
+          "So the answer is 3^2, which equals 9 if a number is wanted.",
+        ],
+        answer: "3^2 (= 9)",
+      },
+      {
+        question: "Work out (2.4 × 10^7) × (5 × 10^(−3)), giving your answer in standard form.",
+        steps: [
+          "Multiply the front numbers: 2.4 × 5 = 12.",
+          "Add the powers: 10^7 × 10^(−3) = 10^(7 + (−3)) = 10^4.",
+          "So far: 12 × 10^4.",
+          "Check the form: 12 is not between 1 and 10, so this is not yet standard form.",
+          "Rewrite 12 as 1.2 × 10, so 12 × 10^4 = 1.2 × 10^5.",
+        ],
+        answer: "1.2 × 10^5",
+      },
+      {
+        question: "Evaluate 16^(3/4) without a calculator.",
+        steps: [
+          "The denominator of the fraction is the root; the numerator is the power.",
+          "So 16^(3/4) = (the fourth root of 16), cubed.",
+          "The fourth root of 16 is 2, because 2 × 2 × 2 × 2 = 16.",
+          "Now cube it: 2^3 = 8.",
+          "Taking the root first kept the numbers small — the alternative was cubing 16 to 4096 first.",
+        ],
+        answer: "8",
+        higherOnly: true,
+      },
+      {
+        question: "Simplify √50 + √18, giving your answer in surd form.",
+        steps: [
+          "Look for perfect-square factors in each surd.",
+          "50 = 25 × 2, so √50 = √25 × √2 = 5√2.",
+          "18 = 9 × 2, so √18 = √9 × √2 = 3√2.",
+          "Both are now multiples of √2, so they are like terms and can be added.",
+          "5√2 + 3√2 = 8√2.",
+        ],
+        answer: "8√2",
+        higherOnly: true,
+      },
+    ],
+
+    practice: [
+      { question: "Simplify 2^5 × 2^3, giving your answer in the form 2^n.",
+        accept: ["2^8"],
+        answer: "2^8. Multiplying with the same base means adding the powers: 5 + 3 = 8." },
+      { question: "Simplify 7^9 ÷ 7^4, giving your answer in the form 7^n.",
+        accept: ["7^5"],
+        answer: "7^5. Dividing subtracts the powers: 9 − 4 = 5." },
+      { question: "Simplify (5^3)^2, giving your answer in the form 5^n.",
+        accept: ["5^6"],
+        answer: "5^6. A power of a power multiplies the indices: 3 × 2 = 6." },
+      { question: "What is 9^0?", accept: ["1", "one"],
+        answer: "1. Anything (except 0) to the power zero is 1." },
+      { question: "Work out 2^(−3) as a fraction.", accept: ["1/8", "0.125"],
+        answer: "1/8. A negative index means the reciprocal — it never makes the answer negative." },
+      { question: "Work out 5^(−2) as a fraction.", accept: ["1/25", "0.04"],
+        answer: "1/25. A negative index means the reciprocal, so the answer is a fraction — never −25." },
+      { question: "Write 47,000 in standard form.",
+        accept: ["4.7x10^4", "4.7×10^4", "4.7*10^4", "4.7e4", "4.7 x 10^4"],
+        answer: "4.7 × 10^4. The decimal point moves 4 places left." },
+      { question: "Write 0.00062 in standard form.",
+        accept: ["6.2x10^-4", "6.2×10^-4", "6.2*10^-4", "6.2e-4"],
+        answer: "6.2 × 10^(−4). Small numbers take a negative power." },
+      { question: "Write 3.5 × 10^3 as an ordinary number.",
+        accept: ["3500", "3,500"],
+        answer: "3500 — move the decimal point 3 places right." },
+      { question: "Write 8.1 × 10^(−2) as an ordinary number.",
+        accept: ["0.081"],
+        answer: "0.081 — move the decimal point 2 places left." },
+      { question: "Is 15 × 10^6 in standard form? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. The front number must be at least 1 and less than 10, so it should be 1.5 × 10^7." },
+      { question: "Work out (2 × 10^5) × (3 × 10^4), giving your answer in standard form.",
+        accept: ["6x10^9", "6×10^9", "6*10^9", "6e9"],
+        answer: "6 × 10^9. Multiply the fronts (2 × 3 = 6) and add the powers (5 + 4 = 9)." },
+      { question: "Work out (8 × 10^9) ÷ (2 × 10^3), giving your answer in standard form.",
+        accept: ["4x10^6", "4×10^6", "4*10^6", "4e6"],
+        answer: "4 × 10^6. Divide the fronts and subtract the powers." },
+      { question: "Simplify √32 in the form a√2.",
+        accept: ["4√2", "4root2", "4sqrt2", "4 √2"],
+        answer: "4√2, since 32 = 16 × 2 and √16 = 4.", higherOnly: true },
+      { question: "Simplify √3 × √12.",
+        accept: ["6"],
+        answer: "6. Combine under one root first: √3 × √12 = √36, and √36 = 6 exactly, so no surd remains.", higherOnly: true },
+      { question: "Evaluate 27^(1/3).", accept: ["3", "three"],
+        answer: "3 — a unit fraction index means a root, and the cube root of 27 is 3.", higherOnly: true },
+      { question: "Explain why anything raised to the power zero equals 1.",
+        answer: "Because of the division law. Dividing a power by itself gives 1 — for example 5^4 ÷ 5^4 = 1, since any number divided by itself is 1. But the division law says to subtract the powers, so 5^4 ÷ 5^4 = 5^(4−4) = 5^0. Both routes describe the same calculation, so 5^0 must equal 1. Nothing is special about 5, so the same argument works for any non-zero base. (Mark this one yourself.)" },
+      { question: "Explain why standard form is used in science rather than writing numbers out in full.",
+        answer: "Because the numbers involved are far outside everyday size and writing them out invites mistakes. The mass of an electron is roughly 0.000000000000000000000000000000911 kg — counting those zeros correctly, by eye, every time, is not realistic, whereas 9.11 × 10^(−31) can be read at a glance. Standard form also makes sizes instantly comparable, since the power tells you the order of magnitude, and it makes multiplying and dividing far easier because the powers simply add or subtract. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"2^(−3) is −8.\"",
+        right: "It is 1/8. A negative index means a reciprocal, not a negative answer. The sign of the index and the sign of the answer are unrelated." },
+      { wrong: "\"2^3 × 3^4 = 6^7.\"",
+        right: "The index laws only apply when the BASES are the same. With different bases you must work each out separately: 8 × 81 = 648." },
+      { wrong: "\"12 × 10^5 is in standard form.\"",
+        right: "The front number must satisfy 1 ≤ A < 10. This is 1.2 × 10^6. Marks are given for the form, not only the value." },
+      { wrong: "\"(a^m)^n means a^(m+n).\"",
+        right: "It means a^(mn) — multiply. Adding is for multiplying two powers together; multiplying is for raising a power to a power." },
+      { wrong: "\"√2 + √3 = √5.\"",
+        right: "Roots do not add like that. √2 + √3 ≈ 3.15 while √5 ≈ 2.24. Only LIKE surds combine: 5√2 + 3√2 = 8√2." },
+      { wrong: "\"You can add standard form numbers by adding the fronts and the powers.\"",
+        right: "Only multiplication and division work on the powers. To add, make the powers equal first, or write both numbers out in full." },
+    ],
+  },
+
+  "maths/perimeter-area-and-volume": {
+    summary:
+      "Perimeter is the distance round the edge, area is the space inside, and volume is the space filled. They are measured in different units for a reason, and half the marks lost on this topic come from mixing them up. The formulas themselves are short; what is examined is whether you can break an awkward shape into ones you recognise, and whether you work in consistent units.",
+    keyFacts: [
+      {
+        heading: "Perimeter and area of straight-sided shapes",
+        points: [
+          "Perimeter is the total distance around the outside. Add every side — including the ones you have to work out yourself.",
+          "Rectangle: area = length × width.",
+          "Triangle: area = ½ × base × perpendicular height. The height must be at right angles to the base, not the sloping side.",
+          "Parallelogram: area = base × perpendicular height.",
+          "Trapezium: area = ½ × (a + b) × h, where a and b are the two parallel sides and h is the distance between them.",
+          "Compound shapes: split them into rectangles and triangles, find each area, then add — or find a large rectangle and subtract the missing piece.",
+        ],
+      },
+      {
+        heading: "Circles",
+        points: [
+          "The radius is the distance from the centre to the edge; the diameter is all the way across, so d = 2r.",
+          "Circumference = π × diameter = 2 × π × radius.",
+          "Area = π × radius². Square the radius first, then multiply by π.",
+          "Confusing the two formulas is the most common circle error: circumference uses the diameter, area uses the radius squared.",
+          "Give answers as a multiple of π when asked to be exact, and only round when the question asks for decimal places or significant figures.",
+        ],
+      },
+      {
+        heading: "Arcs and sectors",
+        points: [
+          "A sector is a slice of a circle bounded by two radii and an arc; the angle at the centre decides how big a fraction it is.",
+          "Arc length = (θ ÷ 360) × π × d — the fraction of the full circumference.",
+          "Sector area = (θ ÷ 360) × π × r² — the same fraction of the full area.",
+          "The perimeter of a sector includes the two straight radii as well as the curved arc. Forgetting them is a standard trap.",
+          "A semicircle is just θ = 180, a quarter circle θ = 90 — the same formula, not a separate rule to learn.",
+        ],
+        higherOnly: true,
+      },
+      {
+        heading: "Volume",
+        points: [
+          "A prism has the same cross-section all the way along. Volume = area of cross-section × length.",
+          "Cuboid: volume = length × width × height.",
+          "Cylinder: volume = π × r² × h — a prism whose cross-section is a circle.",
+          "Pyramid or cone: volume = ⅓ × base area × perpendicular height. A cone is ⅓ × π × r² × h.",
+          "Sphere: volume = 4/3 × π × r³.",
+          "Check which of these your board gives you in the exam and which you must memorise — this has changed in recent years.",
+        ],
+      },
+      {
+        heading: "Surface area and units",
+        points: [
+          "Surface area is the total area of all the faces. The reliable method is to list every face, find each area, then add.",
+          "Cylinder: total surface area = 2πr² (the two circular ends) + 2πrh (the curved surface, which unrolls into a rectangle).",
+          "Sphere: surface area = 4πr².",
+          "Units: length in cm, area in cm², volume in cm³. The little number tells you how many dimensions were multiplied together.",
+          "Convert to the same unit BEFORE calculating. 1 cm² = 100 mm², and 1 m³ = 1,000,000 cm³ — these conversions catch people out because the factor is squared or cubed.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Perimeter", definition: "The total distance around the outside of a 2D shape, measured in units of length." },
+      { term: "Area", definition: "The amount of space inside a 2D shape, measured in square units such as cm²." },
+      { term: "Volume", definition: "The amount of space inside a 3D shape, measured in cubic units such as cm³." },
+      { term: "Area of a triangle", definition: "½ × base × perpendicular height." },
+      { term: "Area of a trapezium", definition: "½ × (a + b) × h, where a and b are the parallel sides." },
+      { term: "Circumference", definition: "The perimeter of a circle: π × diameter, or 2 × π × radius." },
+      { term: "Area of a circle", definition: "π × radius². Square the radius before multiplying by π." },
+      { term: "Sector", definition: "A slice of a circle bounded by two radii and an arc." },
+      { term: "Arc", definition: "Part of the circumference of a circle." },
+      { term: "Prism", definition: "A 3D shape with the same cross-section throughout its length." },
+      { term: "Volume of a prism", definition: "Area of cross-section × length." },
+      { term: "Volume of a cylinder", definition: "π × radius² × height." },
+      { term: "Volume of a cone", definition: "⅓ × π × radius² × perpendicular height." },
+      { term: "Volume of a sphere", definition: "4/3 × π × radius³ — check whether your board provides this formula or expects it memorised." },
+      { term: "Surface area", definition: "The total area of all the faces of a 3D shape." },
+      { term: "Perpendicular height", definition: "The height measured at right angles to the base — not the slant length." },
+    ],
+    examTips: [
+      {
+        tip: "Write the units, with the right power",
+        detail:
+          "cm for perimeter, cm² for area, cm³ for volume. Marks are routinely available for units alone, and they are the cheapest marks in the whole paper.",
+      },
+      {
+        tip: "Use the perpendicular height, never the slant",
+        detail:
+          "Diagrams deliberately give both. For a triangle or parallelogram the height must be at right angles to the base — the sloping side is there to catch you out.",
+      },
+      {
+        tip: "Convert units before you calculate, not after",
+        detail:
+          "A shape given partly in metres and partly in centimetres is a deliberate trap. Convert everything first, and say which unit you have chosen.",
+      },
+      {
+        tip: "Show the split on a compound shape",
+        detail:
+          "Draw the dividing line on the diagram and label each piece. Method marks are awarded for a correct split even if the arithmetic later goes wrong.",
+      },
+      {
+        tip: "Include the radii in a sector's perimeter",
+        detail:
+          "The perimeter of a sector is arc + r + r. Giving only the arc length is the single most common mistake on sector questions.",
+      },
+      {
+        tip: "Leave answers in terms of π when told to",
+        detail:
+          "'Give your answer in terms of π' means write 25π, not 78.5. Rounding there loses the mark outright.",
+      },
+      {
+        tip: "Work backwards when the area is given",
+        detail:
+          "If the area is known and a length is missing, substitute into the formula and solve. These reverse questions are common and worth practising deliberately.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "An L-shaped room is made from a 6 m by 4 m rectangle with a 2 m by 2 m square cut out of one corner. Find its area and perimeter.",
+        steps: [
+          "Area: start with the whole rectangle, 6 × 4 = 24 m².",
+          "Subtract the removed square: 2 × 2 = 4 m². So the area is 24 − 4 = 20 m².",
+          "Perimeter: the cut-out changes the shape of the edge but you must add every side as it now runs.",
+          "The sides are 6, 4, 4 (the 6 minus the 2 removed), 2, 2 and 2 going round the L.",
+          "6 + 4 + 4 + 2 + 2 + 2 = 20 m. Notice the perimeter is unchanged from the original rectangle here, which is worth checking rather than assuming.",
+        ],
+        answer: "Area = 20 m², perimeter = 20 m.",
+      },
+      {
+        question:
+          "A circle has radius 7 cm. Find its circumference and area, to 1 decimal place.",
+        steps: [
+          "Circumference = 2 × π × r = 2 × π × 7.",
+          "2 × 7 = 14, so circumference = 14π = 43.98... = 44.0 cm.",
+          "Area = π × r² — square the radius FIRST.",
+          "7² = 49, so area = 49π = 153.93... = 153.9 cm².",
+          "Check the units: cm for circumference, cm² for area. Different quantities, different units.",
+        ],
+        answer: "Circumference = 44.0 cm (14π), area = 153.9 cm² (49π).",
+      },
+      {
+        question:
+          "A cylinder has radius 5 cm and height 12 cm. Find its volume and total surface area, in terms of π.",
+        steps: [
+          "Volume = π × r² × h = π × 5² × 12.",
+          "5² = 25, and 25 × 12 = 300, so the volume is 300π cm³.",
+          "Surface area has two parts: the two circular ends, and the curved surface.",
+          "Two ends: 2 × π × r² = 2 × π × 25 = 50π cm².",
+          "Curved surface: 2 × π × r × h = 2 × π × 5 × 12 = 120π cm². Total = 50π + 120π = 170π cm².",
+        ],
+        answer: "Volume = 300π cm³, total surface area = 170π cm².",
+      },
+      {
+        question:
+          "A triangle has area 36 cm² and base 9 cm. Find its perpendicular height.",
+        steps: [
+          "Start from the formula: area = ½ × base × height.",
+          "Substitute what you know: 36 = ½ × 9 × h.",
+          "½ × 9 = 4.5, so 36 = 4.5h.",
+          "Divide both sides by 4.5: h = 36 ÷ 4.5 = 8.",
+          "The answer is a length, so the unit is cm, not cm².",
+        ],
+        answer: "8 cm",
+      },
+    ],
+
+    practice: [
+      { question: "Find the area of a rectangle 8 cm by 5 cm. Give the number only, in cm².",
+        accept: ["40"],
+        answer: "40 cm². Area of a rectangle = length × width." },
+      { question: "Find the perimeter of a rectangle 8 cm by 5 cm. Give the number only, in cm.",
+        accept: ["26"],
+        answer: "26 cm. 8 + 5 + 8 + 5, or 2 × (8 + 5)." },
+      { question: "Find the area of a triangle with base 10 cm and perpendicular height 6 cm, in cm².",
+        accept: ["30"],
+        answer: "30 cm². ½ × base × perpendicular height = ½ × 10 × 6. The height must be at right angles to the base." },
+      { question: "Find the area of a parallelogram with base 12 cm and perpendicular height 7 cm, in cm².",
+        accept: ["84"],
+        answer: "84 cm². Base × perpendicular height — no halving." },
+      { question: "Find the area of a trapezium with parallel sides 6 cm and 10 cm, and height 4 cm, in cm².",
+        accept: ["32"],
+        answer: "32 cm². ½ × (6 + 10) × 4 = ½ × 16 × 4." },
+      { question: "A circle has radius 3 cm. Give its area in terms of π (for example, write 9π as 9pi).",
+        accept: ["9pi", "9π"],
+        answer: "9π cm². Area = πr², and 3² = 9." },
+      { question: "A circle has diameter 10 cm. Give its circumference in terms of π (write 10π as 10pi).",
+        accept: ["10pi", "10π"],
+        answer: "10π cm. Circumference = π × diameter." },
+      { question: "A circle has radius 6 cm. What is its diameter, in cm?",
+        accept: ["12"],
+        answer: "12 cm. The diameter is twice the radius." },
+      { question: "Find the volume of a cuboid 4 cm by 3 cm by 5 cm, in cm³.",
+        accept: ["60"],
+        answer: "60 cm³. Length × width × height." },
+      { question: "A prism has cross-sectional area 15 cm² and length 8 cm. Find its volume in cm³.",
+        accept: ["120"],
+        answer: "120 cm³. Volume of a prism = area of cross-section × length." },
+      { question: "A cylinder has radius 2 cm and height 9 cm. Give its volume in terms of π (write 36π as 36pi).",
+        accept: ["36pi", "36π"],
+        answer: "36π cm³. πr²h = π × 4 × 9." },
+      { question: "What are the units of volume if all lengths are in centimetres? Write cm3 for cm³.",
+        accept: ["cm3", "cm³", "cubic cm", "cubic centimetres", "cubic centimeters"],
+        answer: "cm³ — three dimensions multiplied together." },
+      { question: "How many cm² are in 1 m²?",
+        accept: ["10000", "10,000"],
+        answer: "10,000. The conversion factor 100 gets squared, which is why this catches people out." },
+      { question: "A square has area 49 cm². What is its side length, in cm?",
+        accept: ["7"],
+        answer: "7 cm. Work backwards: the side is the square root of the area." },
+      { question: "A rectangle has area 48 cm² and width 6 cm. Find its length, in cm.",
+        accept: ["8"],
+        answer: "8 cm. Work backwards from area = length × width, so length = 48 ÷ 6. The answer is a length, so the unit is cm not cm²." },
+      { question: "A semicircle has radius 4 cm. Give the length of its curved edge in terms of π (write 4π as 4pi).",
+        accept: ["4pi", "4π"],
+        answer: "4π cm — half of the full circumference 8π. Note the full PERIMETER would also include the 8 cm diameter." },
+      { question: "Explain why the perimeter of a sector is not simply the arc length.",
+        answer: "Because the sector is bounded by three edges, not one. Two of them are the straight radii that cut the slice out of the circle, and the third is the curved arc. The perimeter means the whole distance round the outside, so it is arc + r + r. Only the arc is curved, which is probably why it is the part people remember — but leaving out the two straight edges would be like giving the perimeter of a rectangle as the length of one side. (Mark this one yourself.)" },
+      { question: "Explain why doubling the radius of a circle multiplies its area by four, not by two.",
+        answer: "Because the radius appears squared in the area formula. Area = πr², so replacing r with 2r gives π(2r)² = π × 4r² = 4πr² — four times the original. The circumference, by contrast, uses r to the power one, so doubling the radius simply doubles it. This is the general pattern: lengths scale by the scale factor, areas by its square, and volumes by its cube. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Area of a circle is 2πr.\"",
+        right: "That is the circumference. Area is πr². A quick sanity check: area must come out in square units, and only r² can do that." },
+      { wrong: "\"Use the sloping side as the height of a triangle.\"",
+        right: "The height must be perpendicular to the base. Diagrams give the slant deliberately, because using it is such a common error." },
+      { wrong: "\"1 m² = 100 cm².\"",
+        right: "1 m² = 10,000 cm², because both dimensions convert: 100 × 100. Similarly 1 m³ = 1,000,000 cm³." },
+      { wrong: "\"Perimeter and area both grow at the same rate when a shape is enlarged.\"",
+        right: "Lengths scale by the scale factor, areas by its square, volumes by its cube. Doubling every length multiplies area by 4 and volume by 8." },
+      { wrong: "\"The volume of a cone is πr²h.\"",
+        right: "That is the cylinder. A cone is exactly one third of the cylinder that would contain it: ⅓πr²h. The same ⅓ applies to any pyramid." },
+      { wrong: "\"Surface area and volume are basically the same measurement.\"",
+        right: "Surface area is the total area of the faces, measured in cm²; volume is the space inside, measured in cm³. A question can give one and ask for the other." },
+    ],
+  },
+
+  "maths/straight-line-graphs": {
+    summary:
+      "Every straight line on a graph can be written as y = mx + c, and once you can read m and c you can go between an equation and a picture in either direction. This is one of the highest-value topics on the paper: it appears in its own right, inside simultaneous equations, in real-life graphs, and again at A level, where it never really goes away.",
+    keyFacts: [
+      {
+        heading: "Coordinates and midpoints",
+        points: [
+          "A coordinate pair is written (x, y) — across first, then up. 'Along the corridor and up the stairs'.",
+          "The x-axis is horizontal, the y-axis is vertical, and they meet at the origin (0, 0).",
+          "The midpoint of two points is found by averaging: add the x values and halve, then add the y values and halve.",
+          "Negative coordinates work the same way; a point can sit in any of the four quadrants.",
+          "Plot points carefully — a misread axis scale ruins everything that follows, and it is the easiest error to avoid.",
+        ],
+      },
+      {
+        heading: "y = mx + c",
+        points: [
+          "In y = mx + c, m is the gradient (the steepness) and c is the y-intercept (where the line crosses the y-axis).",
+          "Gradient = change in y ÷ change in x — 'rise over run'.",
+          "A positive gradient rises left to right; a negative gradient falls left to right.",
+          "A larger gradient means a steeper line. A gradient of 0 gives a horizontal line.",
+          "The equation must be rearranged into this form before m and c can be read off: from 2y = 6x + 8, first divide by 2 to get y = 3x + 4.",
+        ],
+      },
+      {
+        heading: "Special lines",
+        points: [
+          "y = a is a horizontal line crossing the y-axis at a. Its gradient is 0.",
+          "x = a is a vertical line crossing the x-axis at a. Its gradient is undefined, because the run is zero and dividing by zero is not possible.",
+          "y = x is the diagonal through the origin with gradient 1.",
+          "Confusing y = 3 with x = 3 is extremely common: remember that y = 3 means 'every point where y is 3', which is a horizontal row.",
+          "Lines through the origin have c = 0, so they are simply y = mx.",
+        ],
+      },
+      {
+        heading: "Parallel and perpendicular",
+        points: [
+          "Parallel lines have the SAME gradient. y = 3x + 1 and y = 3x − 7 never meet.",
+          "Perpendicular lines have gradients that multiply to −1. The perpendicular gradient is the negative reciprocal: flip the fraction and change the sign.",
+          "So a line of gradient 2 is perpendicular to one of gradient −½; gradient −3/4 is perpendicular to 4/3.",
+          "To find the equation of a line, you need a gradient and one point. Substitute both into y = mx + c and solve for c.",
+          "Two lines cross where their equations are equal — which is exactly what solving simultaneous equations does algebraically.",
+        ],
+        higherOnly: true,
+      },
+      {
+        heading: "Finding the equation from a graph or two points",
+        points: [
+          "From a graph: read c where the line crosses the y-axis, then pick two clear points to find the gradient.",
+          "From two points: gradient = (y₂ − y₁) ÷ (x₂ − x₁). Keep the points in the same order top and bottom or the sign comes out wrong.",
+          "Then substitute one of the points and the gradient into y = mx + c and solve for c.",
+          "Always finish by checking the OTHER point satisfies your equation — a free and reliable check.",
+          "To plot a line, a table of three values of x is enough: two to draw it and one to confirm they are in line.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Gradient", definition: "The steepness of a line: change in y divided by change in x." },
+      { term: "y-intercept", definition: "The y value where a line crosses the y-axis — the c in y = mx + c." },
+      { term: "y = mx + c", definition: "The general equation of a straight line, where m is the gradient and c the y-intercept." },
+      { term: "Origin", definition: "The point (0, 0), where the x and y axes cross." },
+      { term: "Midpoint", definition: "The point halfway between two others, found by averaging the x values and the y values." },
+      { term: "Parallel lines", definition: "Lines with equal gradients, which never meet." },
+      { term: "Perpendicular lines", definition: "Lines meeting at 90°, whose gradients multiply to give −1." },
+      { term: "Negative reciprocal", definition: "Flip the fraction and change the sign: the negative reciprocal of 2 is −½." },
+      { term: "Horizontal line", definition: "A line of the form y = a, with gradient 0." },
+      { term: "Vertical line", definition: "A line of the form x = a, whose gradient is undefined." },
+      { term: "Quadrant", definition: "One of the four regions the axes divide the plane into." },
+      { term: "Point of intersection", definition: "Where two lines cross — the solution of their equations taken simultaneously." },
+      { term: "Linear", definition: "Producing a straight line; an equation where x appears only to the power one." },
+    ],
+    examTips: [
+      {
+        tip: "Rearrange into y = mx + c before reading anything off",
+        detail:
+          "3y − 6x = 12 tells you nothing at a glance. Divide through to get y = 2x + 4, and now the gradient and intercept are simply there to be read.",
+      },
+      {
+        tip: "Watch the sign of the gradient",
+        detail:
+          "A line falling left to right has a NEGATIVE gradient. If your answer's sign disagrees with the picture, you have subtracted in inconsistent orders.",
+      },
+      {
+        tip: "Use two points far apart when reading a gradient",
+        detail:
+          "Points close together magnify any small misreading. Pick two that sit exactly on grid intersections and are well separated.",
+      },
+      {
+        tip: "Check your equation against the second point",
+        detail:
+          "Once you have y = mx + c, substitute the other given point. If it works, you are almost certainly right — a genuinely free check.",
+      },
+      {
+        tip: "Keep y = 3 and x = 3 straight",
+        detail:
+          "y = 3 is horizontal; x = 3 is vertical. Say the equation aloud as 'y is always 3' and the direction follows.",
+      },
+      {
+        tip: "For perpendicular, flip AND change sign",
+        detail:
+          "Doing only one of the two is the standard error. Gradient 2 goes to −½; gradient −⅔ goes to 3/2. Always check the product is −1.",
+      },
+      {
+        tip: "Label your axes and use the scale given",
+        detail:
+          "Marks go for correct plotting. A drawn line with no labels, or drawn against a scale you invented, cannot earn them.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "State the gradient and y-intercept of the line 2y − 8x = 6.",
+        steps: [
+          "The equation is not in the form y = mx + c yet, so rearrange it first.",
+          "Add 8x to both sides: 2y = 8x + 6.",
+          "Divide every term by 2: y = 4x + 3.",
+          "Now compare with y = mx + c: m = 4 and c = 3.",
+          "So the line rises steeply — 4 up for every 1 across — and crosses the y-axis at (0, 3).",
+        ],
+        answer: "Gradient 4, y-intercept 3.",
+      },
+      {
+        question: "Find the equation of the line passing through (1, 4) and (3, 10).",
+        steps: [
+          "Gradient = (change in y) ÷ (change in x) = (10 − 4) ÷ (3 − 1).",
+          "= 6 ÷ 2 = 3. So m = 3.",
+          "Substitute one point into y = mx + c. Using (1, 4): 4 = 3 × 1 + c.",
+          "4 = 3 + c, so c = 1.",
+          "Equation: y = 3x + 1. Check with the other point: 3 × 3 + 1 = 10. ✓",
+        ],
+        answer: "y = 3x + 1",
+      },
+      {
+        question: "Find the equation of the line perpendicular to y = 2x + 3 that passes through (4, 1).",
+        steps: [
+          "The gradient of the given line is 2.",
+          "Perpendicular gradient is the negative reciprocal: flip 2 to ½, then change the sign, giving −½.",
+          "Check: 2 × −½ = −1. ✓",
+          "Substitute the point (4, 1) into y = mx + c: 1 = −½ × 4 + c.",
+          "1 = −2 + c, so c = 3. The equation is y = −½x + 3.",
+        ],
+        answer: "y = −½x + 3",
+        higherOnly: true,
+      },
+      {
+        question: "Find the midpoint of (−2, 5) and (6, 1), and the gradient of the line joining them.",
+        steps: [
+          "Midpoint x: (−2 + 6) ÷ 2 = 4 ÷ 2 = 2.",
+          "Midpoint y: (5 + 1) ÷ 2 = 6 ÷ 2 = 3. So the midpoint is (2, 3).",
+          "Gradient = (change in y) ÷ (change in x) = (1 − 5) ÷ (6 − (−2)).",
+          "= −4 ÷ 8 = −½.",
+          "The negative gradient makes sense: as x increases from −2 to 6, y falls from 5 to 1.",
+        ],
+        answer: "Midpoint (2, 3), gradient −½.",
+      },
+    ],
+
+    practice: [
+      { question: "In y = mx + c, which letter is the gradient?",
+        accept: ["m"],
+        answer: "m. The letter c is the y-intercept." },
+      { question: "State the gradient of y = 5x − 2.",
+        accept: ["5"],
+        answer: "5 — the number in front of x once the equation is in y = mx + c form." },
+      { question: "State the y-intercept of y = 5x − 2.",
+        accept: ["-2", "−2"],
+        answer: "−2. The line crosses the y-axis at (0, −2)." },
+      { question: "State the gradient of the line 2y = 6x + 10.",
+        accept: ["3"],
+        answer: "3. Divide through by 2 first to get y = 3x + 5." },
+      { question: "A line goes through (0, 4) and (2, 10). What is its gradient?",
+        accept: ["3"],
+        answer: "3. Change in y is 6, change in x is 2, and 6 ÷ 2 = 3." },
+      { question: "A line goes through (1, 7) and (4, 1). What is its gradient?",
+        accept: ["-2", "−2"],
+        answer: "−2. (1 − 7) ÷ (4 − 1) = −6 ÷ 3. The line falls, so the gradient is negative." },
+      { question: "What is the gradient of any line parallel to y = 4x + 9?",
+        accept: ["4"],
+        answer: "4. Parallel lines have equal gradients." },
+      { question: "What is the gradient of a horizontal line?",
+        accept: ["0", "zero"],
+        answer: "0. There is no change in y, so rise ÷ run = 0." },
+      { question: "Is y = 6 a horizontal or a vertical line?",
+        accept: ["horizontal"],
+        answer: "Horizontal — every point on it has y = 6." },
+      { question: "Is x = −3 a horizontal or a vertical line?",
+        accept: ["vertical"],
+        answer: "Vertical — every point on it has x = −3." },
+      { question: "Find the midpoint of (2, 3) and (8, 11). Write it as (a,b) with no spaces.",
+        accept: ["(5,7)", "5,7"],
+        answer: "(5, 7) — average the x values and average the y values." },
+      { question: "Find the midpoint of (−4, 2) and (2, 10). Write it as (a,b) with no spaces.",
+        accept: ["(-1,6)", "-1,6", "(−1,6)"],
+        answer: "(−1, 6). (−4 + 2) ÷ 2 = −1, and (2 + 10) ÷ 2 = 6." },
+      { question: "Does the point (3, 11) lie on the line y = 3x + 2? Answer yes or no.",
+        accept: ["yes"],
+        answer: "Yes. 3 × 3 + 2 = 11, so the point satisfies the equation." },
+      { question: "What is the y value when x = 0 on the line y = 7x − 5?",
+        accept: ["-5", "−5"],
+        answer: "−5 — which is exactly what the y-intercept means." },
+      { question: "What gradient is perpendicular to a line of gradient 2?",
+        accept: ["-1/2", "−1/2", "-0.5", "−0.5"],
+        answer: "−½ — the negative reciprocal. Check: 2 × −½ = −1.", higherOnly: true },
+      { question: "What gradient is perpendicular to a line of gradient −1/3?",
+        accept: ["3"],
+        answer: "3. Flip −1/3 to −3, then change the sign to 3. Check: −1/3 × 3 = −1.", higherOnly: true },
+      { question: "Explain why a vertical line has no gradient, rather than a gradient of zero.",
+        answer: "Gradient is the change in y divided by the change in x. On a vertical line every point has the same x value, so the change in x is zero, and dividing by zero has no meaning — the gradient is undefined rather than equal to anything. A gradient of zero is the opposite situation: a horizontal line, where y never changes as x does, so the top of the fraction is zero and the answer is genuinely 0. Saying a vertical line has gradient 0 confuses the two, and would suggest it is flat. (Mark this one yourself.)" },
+      { question: "Explain how the equation y = mx + c connects to the shape of the line it describes.",
+        answer: "The two letters control two independent things. c fixes where the line sits: it is the y value when x = 0, so it is the point where the line crosses the y-axis, and changing it slides the whole line up or down without altering its steepness. m fixes the slope: it says how much y changes for every increase of 1 in x, so a large m gives a steep line, a small one a shallow line, and a negative m makes the line fall rather than rise. Between them they describe every straight line except the vertical ones, which cannot be written this way because their gradient is undefined. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"In 2y = 6x + 4 the gradient is 6.\"",
+        right: "Not until the equation is in the form y = mx + c. Divide by 2 first: y = 3x + 2, so the gradient is 3." },
+      { wrong: "\"y = 4 is a vertical line.\"",
+        right: "It is horizontal — every point on it has a y value of 4. x = 4 is the vertical one." },
+      { wrong: "\"Perpendicular means just change the sign of the gradient.\"",
+        right: "You must flip the fraction as well. Gradient 2 becomes −½, not −2. Check by multiplying: the product should be exactly −1." },
+      { wrong: "\"Gradient is change in x over change in y.\"",
+        right: "It is change in y over change in x — rise over run. Getting it upside down gives the reciprocal, which usually still looks plausible, and that is what makes it dangerous." },
+      { wrong: "\"A steeper line always has a bigger gradient.\"",
+        right: "It has a bigger gradient in SIZE. A line of gradient −5 is steeper than one of gradient 2, even though −5 is the smaller number." },
+      { wrong: "\"Coordinates are written (y, x).\"",
+        right: "Always (x, y) — across, then up. Reversing them puts the point in a completely different place, and every later step inherits the error." },
+    ],
+  },
+
+  "maths/similarity-and-congruence": {
+    summary:
+      "Two shapes are congruent if they are identical — same shape, same size — and similar if one is an enlargement of the other. That distinction sounds simple, and the arithmetic usually is; what is examined is whether you can identify matching sides and angles correctly, and whether you know that areas and volumes do not scale at the same rate as lengths.",
+    keyFacts: [
+      {
+        heading: "Congruence",
+        points: [
+          "Congruent shapes are exactly the same shape AND the same size. All matching sides and all matching angles are equal.",
+          "A shape stays congruent after a rotation, reflection or translation — moving or turning it changes nothing about its size.",
+          "An enlargement does NOT produce a congruent shape, unless the scale factor is 1.",
+          "Congruent shapes may look different on the page simply because one has been turned over or rotated.",
+          "The symbol ≅ means 'is congruent to'.",
+        ],
+      },
+      {
+        heading: "The four congruence conditions for triangles",
+        points: [
+          "SSS — all three sides equal.",
+          "SAS — two sides and the angle BETWEEN them equal. The angle must be the included one.",
+          "ASA — two angles and a corresponding side equal (also written AAS).",
+          "RHS — right angle, hypotenuse and one other side equal. This applies only to right-angled triangles.",
+          "SSA is NOT a condition: two sides and a non-included angle can produce two genuinely different triangles.",
+          "AAA is not congruence either — equal angles make triangles SIMILAR, since the shape is fixed but the size is not.",
+        ],
+      },
+      {
+        heading: "Similarity",
+        points: [
+          "Similar shapes have the same shape but different sizes: all matching angles are equal, and all matching sides are in the same ratio.",
+          "That ratio is the scale factor. Scale factor = length on the new shape ÷ matching length on the original.",
+          "A scale factor greater than 1 enlarges; between 0 and 1 it shrinks.",
+          "For triangles, equal angles are enough to prove similarity — you do not need to check the sides as well.",
+          "Match up corresponding sides carefully, usually by matching the angles first. Pairing the wrong sides is the main source of error.",
+        ],
+      },
+      {
+        heading: "Area and volume scale factors",
+        points: [
+          "If lengths scale by k, then areas scale by k² and volumes scale by k³.",
+          "So doubling every length multiplies area by 4 and volume by 8.",
+          "This follows from the units: an area is two lengths multiplied, a volume three.",
+          "Working backwards: if the area scale factor is 9, the length scale factor is √9 = 3.",
+          "If the volume scale factor is 64, the length scale factor is the cube root of 64, which is 4.",
+        ],
+        higherOnly: true,
+      },
+      {
+        heading: "Working with the scale factor",
+        points: [
+          "To find a missing length, find the scale factor from a pair of sides you know, then apply it to the side you want.",
+          "Going from the small shape to the large one, multiply; going the other way, divide.",
+          "A quick sanity check: an answer on the larger shape must be bigger than the matching side on the smaller one.",
+          "Similar triangles often appear one inside the other, sharing an angle. Redrawing them separately makes the matching sides obvious.",
+          "Keep the ratio consistent: always new ÷ old, or always old ÷ new — never mix them within one question.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Congruent", definition: "Exactly the same shape and size; all matching sides and angles are equal." },
+      { term: "Similar", definition: "The same shape but a different size; matching angles are equal and matching sides are in the same ratio." },
+      { term: "Scale factor", definition: "The ratio between matching lengths on two similar shapes." },
+      { term: "SSS", definition: "A congruence condition: all three sides of one triangle equal all three of the other." },
+      { term: "SAS", definition: "A congruence condition: two sides and the angle between them are equal." },
+      { term: "ASA", definition: "A congruence condition: two angles and a corresponding side are equal." },
+      { term: "RHS", definition: "A congruence condition for right-angled triangles: right angle, hypotenuse and one other side equal." },
+      { term: "Corresponding sides", definition: "Sides in matching positions on two similar or congruent shapes." },
+      { term: "Enlargement", definition: "A transformation that changes size by a scale factor, producing a similar shape." },
+      { term: "Area scale factor", definition: "The square of the length scale factor: if lengths scale by k, areas scale by k²." },
+      { term: "Volume scale factor", definition: "The cube of the length scale factor: if lengths scale by k, volumes scale by k³." },
+      { term: "Hypotenuse", definition: "The longest side of a right-angled triangle, opposite the right angle." },
+    ],
+    examTips: [
+      {
+        tip: "Name the congruence condition explicitly",
+        detail:
+          "A proof that never writes SSS, SAS, ASA or RHS rarely gets full marks. State which condition you are using, and say which sides and angles satisfy it.",
+      },
+      {
+        tip: "In SAS, check the angle is between the two sides",
+        detail:
+          "Two sides and an angle somewhere else is not a condition at all, and can describe two different triangles. Examiners set this trap regularly.",
+      },
+      {
+        tip: "Redraw similar triangles separately",
+        detail:
+          "When one triangle sits inside another, the matching sides are hard to see. Sketching them apart, both the same way up, makes the pairs obvious.",
+      },
+      {
+        tip: "Find the scale factor from a pair you know",
+        detail:
+          "Divide a length on one shape by the matching length on the other, before touching the unknown. Then multiply or divide once, cleanly.",
+      },
+      {
+        tip: "Square for areas, cube for volumes",
+        detail:
+          "This is the single most examined idea in the topic. Lengths ×3 means areas ×9 and volumes ×27 — never ×3 throughout.",
+      },
+      {
+        tip: "Check the direction of the scale factor",
+        detail:
+          "If your answer for a side on the larger shape came out smaller than the matching one, you divided when you should have multiplied. The sanity check takes two seconds.",
+      },
+      {
+        tip: "Remember that equal angles prove similarity, not congruence",
+        detail:
+          "AAA fixes the shape but says nothing about the size. Two triangles with identical angles can be any two sizes at all.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "Triangle ABC has AB = 5 cm, BC = 7 cm and angle B = 40°. Triangle PQR has PQ = 5 cm, QR = 7 cm and angle Q = 40°. Are they congruent? Justify your answer.",
+        steps: [
+          "List what matches: AB = PQ = 5 cm, and BC = QR = 7 cm. That is two pairs of equal sides.",
+          "The equal angles are B and Q, both 40°.",
+          "Check whether that angle lies BETWEEN the two known sides in each triangle.",
+          "In ABC, angle B is between AB and BC. In PQR, angle Q is between PQ and QR. It does.",
+          "So two sides and the included angle are equal, which is the SAS condition.",
+        ],
+        answer:
+          "Yes, congruent by SAS: AB = PQ, BC = QR, and the included angles B and Q are both 40°.",
+      },
+      {
+        question:
+          "Two similar triangles have matching sides of 6 cm and 15 cm. The smaller triangle has another side of 8 cm. Find the matching side on the larger triangle.",
+        steps: [
+          "Find the scale factor from the pair you know: 15 ÷ 6 = 2.5.",
+          "Check the direction: we are going from the smaller to the larger, so we multiply.",
+          "Apply it to the side we want: 8 × 2.5.",
+          "8 × 2.5 = 20.",
+          "Sanity check: 20 cm is larger than 8 cm, as it must be on the bigger triangle. ✓",
+        ],
+        answer: "20 cm",
+      },
+      {
+        question:
+          "Two similar rectangles have lengths 4 cm and 12 cm. The smaller has area 20 cm². Find the area of the larger.",
+        steps: [
+          "Length scale factor = 12 ÷ 4 = 3.",
+          "Areas do not scale by 3 — they scale by the square of the length scale factor.",
+          "Area scale factor = 3² = 9.",
+          "Larger area = 20 × 9 = 180 cm².",
+          "Check it is sensible: the shape is three times as long in both directions, so nine times the area is exactly right.",
+        ],
+        answer: "180 cm²",
+        higherOnly: true,
+      },
+      {
+        question:
+          "Two similar cylinders have volumes 40 cm³ and 1080 cm³. The smaller has height 5 cm. Find the height of the larger.",
+        steps: [
+          "Volume scale factor = 1080 ÷ 40 = 27.",
+          "Volumes scale by k³, so k³ = 27.",
+          "Take the cube root: k = 3. That is the LENGTH scale factor.",
+          "Larger height = 5 × 3 = 15 cm.",
+          "Check: a cylinder three times as tall and three times as wide holds 27 times as much, which matches the volumes given. ✓",
+        ],
+        answer: "15 cm",
+        higherOnly: true,
+      },
+    ],
+
+    practice: [
+      { question: "Two shapes are the same shape and the same size. What word describes them?",
+        accept: ["congruent"],
+        answer: "Congruent. Same shape and same size." },
+      { question: "Two shapes are the same shape but different sizes. What word describes them?",
+        accept: ["similar"],
+        answer: "Similar — matching angles equal, matching sides in the same ratio." },
+      { question: "Which congruence condition uses three equal sides? Give the letters.",
+        accept: ["sss"],
+        answer: "SSS — all three pairs of sides equal, which fixes both the shape and the size." },
+      { question: "Which congruence condition applies only to right-angled triangles? Give the letters.",
+        accept: ["rhs"],
+        answer: "RHS — right angle, hypotenuse and one other side." },
+      { question: "In SAS, must the angle be between the two sides? Answer yes or no.",
+        accept: ["yes"],
+        answer: "Yes. Two sides and a non-included angle can give two different triangles, so it proves nothing." },
+      { question: "Does AAA prove two triangles are congruent? Answer yes or no.",
+        accept: ["no"],
+        answer: "No — equal angles prove SIMILARITY. The size is not fixed." },
+      { question: "Two similar shapes have matching sides 3 cm and 12 cm. What is the length scale factor?",
+        accept: ["4"],
+        answer: "4. Divide a length on the new shape by the matching length on the original: 12 ÷ 3." },
+      { question: "A shape is enlarged by scale factor 5. By what factor does its AREA increase?",
+        accept: ["25"],
+        answer: "25 — the square of the length scale factor.", higherOnly: true },
+      { question: "A shape is enlarged by scale factor 2. By what factor does its VOLUME increase?",
+        accept: ["8"],
+        answer: "8 — the cube of the length scale factor.", higherOnly: true },
+      { question: "The area scale factor between two similar shapes is 49. What is the length scale factor?",
+        accept: ["7"],
+        answer: "7 — the square root of 49.", higherOnly: true },
+      { question: "The volume scale factor between two similar solids is 125. What is the length scale factor?",
+        accept: ["5"],
+        answer: "5 — the cube root of 125, because volumes scale by the cube of the length scale factor.", higherOnly: true },
+      { question: "Two similar triangles have matching sides 4 cm and 10 cm. A second side on the smaller is 6 cm. Find the matching side on the larger, in cm.",
+        accept: ["15"],
+        answer: "15 cm. Scale factor 10 ÷ 4 = 2.5, and 6 × 2.5 = 15." },
+      { question: "Two similar shapes have matching sides 20 cm and 8 cm. A side on the larger is 35 cm. Find the matching side on the smaller, in cm.",
+        accept: ["14"],
+        answer: "14 cm. Scale factor from large to small is 8 ÷ 20 = 0.4, and 35 × 0.4 = 14." },
+      { question: "Does rotating a shape change whether it is congruent to the original? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. Rotation, reflection and translation all preserve congruence — only the position changes." },
+      { question: "Two similar rectangles have lengths 5 cm and 20 cm. The smaller has area 15 cm². Find the area of the larger, in cm².",
+        accept: ["240"],
+        answer: "240 cm². Length scale factor 4, so area scale factor 16, and 15 × 16 = 240.", higherOnly: true },
+      { question: "What does the symbol ≅ mean?",
+        accept: ["congruent to", "is congruent to", "congruent"],
+        answer: "'Is congruent to' — the two shapes are identical in both shape and size." },
+      { question: "Explain why two triangles with the same three angles need not be the same size.",
+        answer: "Because angles fix only the shape, not the scale. Knowing all three angles tells you how the sides are inclined to one another, but nothing about how long they are — you could draw a triangle with those angles on a postage stamp or across a field, and both would be perfectly valid. That is exactly what similarity means: same shape, any size. To pin down the size as well, at least one side length has to be known, which is why every congruence condition includes at least one side. (Mark this one yourself.)" },
+      { question: "Explain why area scales by the square of the scale factor but volume scales by the cube.",
+        answer: "Because of how many dimensions are involved. An area is produced by multiplying two lengths together, so if every length is multiplied by k, the area is multiplied by k × k = k². A volume comes from three lengths multiplied, so it is multiplied by k × k × k = k³. Picturing it helps: doubling the sides of a cube gives a shape you could fill with eight of the originals, and each face is now four of the original faces. It is also why the units carry those little numbers — cm² and cm³ are recording exactly the same fact. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Similar shapes are shapes that look a bit alike.\"",
+        right: "Similarity is precise: every matching angle equal and every matching side in the same ratio. Two rectangles are not automatically similar." },
+      { wrong: "\"If lengths double, area doubles.\"",
+        right: "Area is multiplied by 2² = 4 and volume by 2³ = 8. This one idea accounts for a large share of the marks lost on the topic." },
+      { wrong: "\"SSA proves congruence, just like SAS.\"",
+        right: "It does not. With two sides and an angle that is not between them, two genuinely different triangles can be drawn. The angle must be the included one." },
+      { wrong: "\"A reflected triangle isn't congruent because it's the wrong way round.\"",
+        right: "Reflection preserves all lengths and angles, so the shapes are congruent. Only size and shape matter, not orientation." },
+      { wrong: "\"You can pair up sides in the order they're listed.\"",
+        right: "Corresponding sides must be identified from matching angles or positions, not from the order of the letters. Wrong pairing gives a wrong scale factor and everything after it fails." },
+      { wrong: "\"Congruent and similar are different words for the same thing.\"",
+        right: "Congruent means identical in size as well as shape. Congruent shapes are a special case of similar ones, with scale factor 1." },
+    ],
+  },
+
+  "maths/constructions-loci-and-bearings": {
+    summary:
+      "This is the most practical topic on the paper and the one most often lost through carelessness rather than misunderstanding. Constructions must be done with compasses, with the arcs left visible. Loci are just the set of all points obeying a rule. Bearings are always three figures, always clockwise from north. Get those three habits right and the marks follow.",
+    keyFacts: [
+      {
+        heading: "The rules of construction",
+        points: [
+          "Use a pair of compasses and a straight edge. Measuring with a ruler and joining the dots earns no marks, even if the picture is correct.",
+          "NEVER rub out your arcs. They are the evidence that you constructed rather than estimated, and most of the marks are for them.",
+          "Keep the compass set to the same radius throughout a construction unless the method says otherwise.",
+          "Work in pencil, sharp, and draw lightly enough that a slip does not ruin the diagram.",
+          "Accuracy is usually allowed within about 2 mm and 2 degrees — but only if the method is visibly right.",
+        ],
+      },
+      {
+        heading: "The four constructions to know",
+        points: [
+          "Perpendicular bisector of a line AB: compass more than half of AB, arc from A above and below, same radius arc from B, join the two crossing points.",
+          "Angle bisector: arc from the vertex cutting both arms, then equal arcs from those two points, and join the crossing point to the vertex.",
+          "Perpendicular from a point to a line: arc from the point cutting the line twice, then perpendicular-bisect the segment between those two crossings.",
+          "An equilateral triangle (and so a 60° angle): compass set to the side length, arcs from each end, join to where they cross.",
+          "45° comes from bisecting a 90°; 30° from bisecting a 60°. Constructing angles is usually a matter of building then bisecting.",
+        ],
+      },
+      {
+        heading: "Loci",
+        points: [
+          "A locus is the set of all points that obey a given rule. The plural is loci.",
+          "A fixed distance from a POINT gives a circle.",
+          "Equidistant from TWO POINTS gives the perpendicular bisector of the line joining them.",
+          "Equidistant from TWO LINES gives the bisector of the angle between them.",
+          "A fixed distance from a LINE SEGMENT gives a 'racetrack': two parallel lines joined by semicircular ends.",
+          "Shade the region asked for and say what your shading means; 'nearer to A than B' means one side of the perpendicular bisector.",
+        ],
+      },
+      {
+        heading: "Bearings",
+        points: [
+          "A bearing is measured from NORTH, CLOCKWISE, and always written with three figures. 70° is written 070°.",
+          "Every bearing question starts by drawing a north line at the point you are measuring FROM.",
+          "'The bearing of B from A' means stand at A, face north, and turn clockwise until you face B.",
+          "A back bearing reverses the direction: add 180 if the bearing is under 180, subtract 180 if it is 180 or more.",
+          "Bearings are always between 000° and 360°. If your answer falls outside that, you have added when you should have subtracted.",
+        ],
+      },
+      {
+        heading: "Scale drawings",
+        points: [
+          "A scale such as 1 : 50,000 means 1 cm on the map represents 50,000 cm in reality — that is 500 m, or 0.5 km.",
+          "To go from map to real life, multiply. From real life to map, divide.",
+          "Convert units carefully: cm to m is ÷100, cm to km is ÷100,000.",
+          "For a scale drawing question, state the scale you are using and measure accurately with a ruler and protractor.",
+          "Combining a scale drawing with a bearing is a standard question: draw to scale, measure the bearing with a protractor from a north line.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Locus", definition: "The set of all points that satisfy a given rule. The plural is loci." },
+      { term: "Perpendicular bisector", definition: "The line cutting another line in half at right angles; the locus of points equidistant from two points." },
+      { term: "Angle bisector", definition: "The line cutting an angle exactly in half; the locus of points equidistant from two lines." },
+      { term: "Equidistant", definition: "The same distance from two or more things." },
+      { term: "Bearing", definition: "A direction measured clockwise from north, written with three figures." },
+      { term: "Back bearing", definition: "The bearing of the return journey: add 180° if under 180°, subtract 180° if 180° or more." },
+      { term: "Scale", definition: "The ratio between a length on a drawing and the matching real length." },
+      { term: "Arc (in construction)", definition: "Part of a circle drawn with compasses; the visible evidence that a construction was done properly." },
+      { term: "Equilateral triangle", definition: "A triangle with three equal sides and three 60° angles — the basis of constructing 60°." },
+      { term: "Perpendicular", definition: "At right angles, 90°." },
+      { term: "Region", definition: "An area of the diagram satisfying a condition, usually shown by shading." },
+    ],
+    examTips: [
+      {
+        tip: "Leave every construction arc showing",
+        detail:
+          "The arcs are the method, and the method is where the marks are. A perfect line with no arcs typically scores zero on a construction question.",
+      },
+      {
+        tip: "Write bearings with three figures",
+        detail:
+          "070°, not 70°. It is a convention examiners enforce, and it costs nothing to get right.",
+      },
+      {
+        tip: "Draw the north line before doing anything else",
+        detail:
+          "Bearings are measured from the point you are standing at. Drawing north at the wrong point is the most common bearings error by a wide margin.",
+      },
+      {
+        tip: "For back bearings, check the answer is between 000 and 360",
+        detail:
+          "Under 180 means add 180; 180 or over means subtract 180. If you get 430°, you added when you should have subtracted.",
+      },
+      {
+        tip: "Say what your shaded region means",
+        detail:
+          "'Shaded region shows points within 3 cm of A and nearer to B than C.' The sentence proves you know what you drew, and can rescue an unclear diagram.",
+      },
+      {
+        tip: "Check the units in a scale question",
+        detail:
+          "Scales are given as cm to cm. Convert to metres or kilometres only at the end, and state the conversion you used.",
+      },
+      {
+        tip: "Use a sharp pencil and keep the compass tight",
+        detail:
+          "A loose compass drifts between arcs and the crossing points end up in the wrong place. Practical, and it genuinely costs marks in the exam.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "The bearing of B from A is 070°. Find the bearing of A from B.",
+        steps: [
+          "This asks for the back bearing — the same journey travelled the other way.",
+          "The rule: if the bearing is less than 180°, add 180°.",
+          "070 is less than 180, so add: 070 + 180 = 250.",
+          "Check it is a valid bearing, between 000° and 360°. It is.",
+          "Write it with three figures: 250°.",
+        ],
+        answer: "250°",
+      },
+      {
+        question: "The bearing of Q from P is 295°. Find the bearing of P from Q.",
+        steps: [
+          "Again a back bearing, but this time the starting bearing is 180° or more.",
+          "The rule: if the bearing is 180° or more, subtract 180°.",
+          "295 − 180 = 115.",
+          "Check the range: 115° lies between 000° and 360°. ✓",
+          "Note what would have happened by adding: 475°, which is not a bearing at all — a useful check.",
+        ],
+        answer: "115°",
+      },
+      {
+        question:
+          "Describe how to construct the locus of points equidistant from two points A and B.",
+        steps: [
+          "The locus of points equidistant from two points is the perpendicular bisector of the line joining them.",
+          "Open the compasses to more than half the distance AB — this guarantees the arcs will cross.",
+          "With the point at A, draw arcs above and below the line.",
+          "Keeping the same radius, put the point at B and draw arcs that cross the first two.",
+          "Join the two crossing points with a straight line, leaving all arcs visible. That line is the locus.",
+        ],
+        answer:
+          "The perpendicular bisector of AB, constructed with equal arcs of radius greater than half AB drawn from A and from B, joined through the two crossing points.",
+      },
+      {
+        question:
+          "A map has a scale of 1 : 25,000. Two towns are 8 cm apart on the map. How far apart are they in kilometres?",
+        steps: [
+          "The scale means 1 cm on the map is 25,000 cm in reality.",
+          "Real distance = 8 × 25,000 = 200,000 cm.",
+          "Convert centimetres to metres by dividing by 100: 200,000 ÷ 100 = 2,000 m.",
+          "Convert metres to kilometres by dividing by 1000: 2,000 ÷ 1000 = 2 km.",
+          "Sanity check: 1 : 25,000 means 4 cm to the kilometre, and 8 cm is twice that. ✓",
+        ],
+        answer: "2 km",
+      },
+    ],
+
+    practice: [
+      { question: "In which direction is a bearing measured from north — clockwise or anticlockwise?",
+        accept: ["clockwise"],
+        answer: "Clockwise, always, starting from the north line drawn at the point you are measuring from." },
+      { question: "How many figures should a bearing always be written with?",
+        accept: ["3", "three"],
+        answer: "Three. 70° is written 070°." },
+      { question: "Write a bearing of 45 degrees correctly, using three figures and no degree symbol.",
+        accept: ["045"],
+        answer: "045° — bearings always take three figures, so the leading zero is required." },
+      { question: "The bearing of B from A is 050°. What is the bearing of A from B? Give three figures.",
+        accept: ["230"],
+        answer: "230°. Under 180, so add 180." },
+      { question: "The bearing of B from A is 120°. What is the bearing of A from B? Give three figures.",
+        accept: ["300"],
+        answer: "300°. The bearing is under 180, so add 180 to reverse the direction of travel." },
+      { question: "The bearing of B from A is 200°. What is the bearing of A from B? Give three figures.",
+        accept: ["020"],
+        answer: "020°. 200 is at least 180, so subtract 180 — and remember the leading zero." },
+      { question: "What is the bearing of due east? Give three figures.",
+        accept: ["090"],
+        answer: "090° — a quarter turn clockwise from north." },
+      { question: "What is the bearing of due south? Give three figures.",
+        accept: ["180"],
+        answer: "180° — half a turn clockwise from north." },
+      { question: "What is the bearing of due west? Give three figures.",
+        accept: ["270"],
+        answer: "270° — three quarters of a turn clockwise from north." },
+      { question: "What shape is the locus of points a fixed distance from a single point?",
+        accept: ["circle", "a circle"],
+        answer: "A circle, with that point as the centre." },
+      { question: "What is the locus of points equidistant from two points?",
+        accept: ["perpendicular bisector", "the perpendicular bisector"],
+        answer: "The perpendicular bisector of the line joining them." },
+      { question: "What is the locus of points equidistant from two lines?",
+        accept: ["angle bisector", "the angle bisector", "bisector of the angle"],
+        answer: "The bisector of the angle between them." },
+      { question: "Which instrument must be used for a construction — a ruler alone, or a pair of compasses?",
+        accept: ["compasses", "a pair of compasses", "pair of compasses", "compass"],
+        answer: "A pair of compasses. Measuring with a ruler earns no method marks." },
+      { question: "Should you rub out your construction arcs when you have finished? Answer yes or no.",
+        accept: ["no"],
+        answer: "No — the arcs are the evidence of the method, and most of the marks are for them." },
+      { question: "On a 1 : 50,000 map, 3 cm represents how many centimetres in real life?",
+        accept: ["150000", "150,000"],
+        answer: "150,000 cm — which is 1.5 km." },
+      { question: "On a 1 : 25,000 map, how many kilometres does 4 cm represent?",
+        accept: ["1", "1km", "1 km"],
+        answer: "1 km. 4 × 25,000 = 100,000 cm = 1 km." },
+      { question: "Explain why a locus of points a fixed distance from a straight line segment is not simply two parallel lines.",
+        answer: "Because the rule applies to the ends of the segment as well as to its middle. Alongside the segment, the points at that distance do form two parallel lines, one on each side. But at each end there is no more line to run alongside, and the points at that distance from the end point form a semicircle wrapping round it. The complete locus is therefore a racetrack shape: two parallel lines closed off by a semicircular end at each end of the segment. (Mark this one yourself.)" },
+      { question: "Explain why the construction for a perpendicular bisector requires the compass to be set to more than half the length of the line.",
+        answer: "Because the arcs drawn from each end have to overlap. Each arc is the set of points at that fixed distance from one end, and two such arcs only cross if their radii together exceed the distance between the two centres. If the radius were exactly half the line, the arcs would just touch at the midpoint and give no crossing points to join; anything less and they would not meet at all. Setting it comfortably over half guarantees two clear crossing points, one above the line and one below, and the line through them is the perpendicular bisector. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"A bearing can be written as 70°.\"",
+        right: "Bearings always take three figures: 070°. It is a convention examiners apply strictly, and it is free to get right." },
+      { wrong: "\"Back bearings are found by adding 180 every time.\"",
+        right: "Add 180 only if the bearing is under 180. If it is 180 or more, subtract, or you get an impossible answer over 360°." },
+      { wrong: "\"Constructions can be done accurately with a ruler and protractor.\"",
+        right: "The marks are for the compass method, not the finished picture. A measured drawing that looks perfect can still score nothing." },
+      { wrong: "\"Rubbing out the arcs makes the diagram clearer.\"",
+        right: "It removes the evidence of your method, and the method is what is being marked. Leave every arc." },
+      { wrong: "\"The locus of points a fixed distance from a line is two parallel lines.\"",
+        right: "Only alongside the segment. The ends are closed off by semicircles, giving a racetrack shape." },
+      { wrong: "\"Bearings are measured from wherever is convenient.\"",
+        right: "From north at the point you are measuring FROM, turning clockwise. Drawing the north line at the wrong point is the most common error in the topic." },
+    ],
+  },
+
+  "maths/compound-measures-and-rates": {
+    summary:
+      "A compound measure is built from two others: speed is distance per unit of time, density is mass per unit of volume, pressure is force per unit of area. The maths is only rearranging a formula, but almost every mark lost here goes on units — minutes treated as decimals, or an answer left in the wrong unit entirely. Reading rates off graphs belongs here too, because a gradient is a rate.",
+    keyFacts: [
+      {
+        heading: "The three compound measures",
+        points: [
+          "Speed = distance ÷ time. Common units: m/s, km/h, mph.",
+          "Density = mass ÷ volume. Common units: g/cm³, kg/m³.",
+          "Pressure = force ÷ area. Common units: N/m² (also called pascals), N/cm².",
+          "Each can be rearranged: distance = speed × time, mass = density × volume, force = pressure × area.",
+          "The unit tells you the formula. 'Per' means divided by, so m/s literally means metres divided by seconds.",
+        ],
+      },
+      {
+        heading: "Getting the units right",
+        points: [
+          "Time must be in the same unit as the speed. For km/h, 2 hours 30 minutes is 2.5 hours — never 2.30.",
+          "45 minutes is 0.75 hours, 20 minutes is 1/3 of an hour, 10 minutes is 1/6 of an hour.",
+          "To convert m/s to km/h, multiply by 3.6. To go the other way, divide by 3.6.",
+          "That factor comes from 3600 seconds in an hour and 1000 metres in a kilometre: 3600 ÷ 1000 = 3.6.",
+          "For density, 1 g/cm³ = 1000 kg/m³ — the conversion is not 1000 by accident, it is 1000 ÷ 1,000,000 inverted.",
+          "Always write the unit on the answer. It is frequently worth a mark on its own.",
+        ],
+      },
+      {
+        heading: "Average speed",
+        points: [
+          "Average speed = TOTAL distance ÷ TOTAL time. It is not the average of the individual speeds.",
+          "A journey at 40 mph out and 60 mph back does not average 50 mph, because more time is spent at the slower speed.",
+          "For a multi-stage journey: find each distance, find each time, add them separately, then divide.",
+          "Stopped time counts towards the total time unless the question says otherwise.",
+          "Questions almost always mix units deliberately, so convert everything before adding.",
+        ],
+      },
+      {
+        heading: "Distance-time graphs",
+        points: [
+          "Time goes on the horizontal axis, distance on the vertical.",
+          "The GRADIENT of a distance-time graph is the speed. Steeper means faster.",
+          "A horizontal line means the object is stationary — time passes but distance does not change.",
+          "A straight sloping line means constant speed; a curve means the speed is changing.",
+          "A line returning to the horizontal axis means travelling back to the starting point.",
+        ],
+      },
+      {
+        heading: "Velocity-time graphs and rates of change",
+        points: [
+          "On a velocity-time graph, the GRADIENT is the acceleration and the AREA UNDER the graph is the distance travelled.",
+          "A horizontal line here means constant speed, not stationary — the two graph types look similar and mean different things.",
+          "Find the area by splitting it into triangles and trapeziums.",
+          "For a curved graph, the rate of change at an instant is the gradient of the tangent drawn at that point.",
+          "The area under a curve can be estimated by dividing it into strips and treating each as a trapezium.",
+        ],
+        higherOnly: true,
+      },
+    ],
+    flashcards: [
+      { term: "Compound measure", definition: "A measure built from two others, such as speed, density or pressure." },
+      { term: "Speed", definition: "Distance ÷ time — how much distance is covered per unit of time." },
+      { term: "Density", definition: "Mass ÷ volume — how much mass is packed into each unit of volume." },
+      { term: "Pressure", definition: "Force ÷ area — how much force acts on each unit of area." },
+      { term: "Average speed", definition: "Total distance ÷ total time — not the average of the separate speeds." },
+      { term: "Acceleration", definition: "The rate of change of velocity, found from the gradient of a velocity-time graph." },
+      { term: "Distance-time graph", definition: "A graph whose gradient gives speed and whose horizontal sections mean stationary." },
+      { term: "Velocity-time graph", definition: "A graph whose gradient gives acceleration and whose area gives distance travelled." },
+      { term: "Tangent", definition: "A straight line touching a curve at one point, whose gradient gives the rate of change there." },
+      { term: "Rate", definition: "How much one quantity changes for each unit of another — always a division." },
+      { term: "m/s to km/h", definition: "Multiply by 3.6, because there are 3600 seconds in an hour and 1000 metres in a kilometre." },
+    ],
+    examTips: [
+      {
+        tip: "Convert time to a decimal before dividing",
+        detail:
+          "2 hours 30 minutes is 2.5 hours. Typing 2.30 gives a wrong answer that still looks reasonable, which makes it especially dangerous.",
+      },
+      {
+        tip: "Read the unit and write the formula from it",
+        detail:
+          "g/cm³ means grams divided by cubic centimetres, so density = mass ÷ volume. The unit is a formula reminder printed on the question.",
+      },
+      {
+        tip: "Average speed uses totals, never an average of speeds",
+        detail:
+          "Add all the distances, add all the times, then divide once. Averaging the two speeds is the single most common error on this topic.",
+      },
+      {
+        tip: "Show the rearrangement",
+        detail:
+          "Write speed = distance ÷ time, then the rearranged version you actually used. Method marks survive an arithmetic slip; a bare wrong number earns nothing.",
+      },
+      {
+        tip: "Keep the two graph types apart",
+        detail:
+          "Horizontal on a distance-time graph means stopped. Horizontal on a velocity-time graph means steady speed. Check the vertical axis label before saying anything.",
+      },
+      {
+        tip: "Split the area under a graph into simple shapes",
+        detail:
+          "Triangles and trapeziums, worked out separately and added. Label each piece on the diagram so the examiner can follow your working.",
+      },
+      {
+        tip: "State the unit of your answer",
+        detail:
+          "km/h, g/cm³, N/m². A number alone is an incomplete answer to a compound measure question, and marks are routinely allocated to the unit.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "A car travels 180 km in 2 hours 30 minutes. Find its average speed in km/h.",
+        steps: [
+          "Speed = distance ÷ time, so the time must be in hours to match km/h.",
+          "30 minutes is half an hour, so the time is 2.5 hours — not 2.30.",
+          "Speed = 180 ÷ 2.5.",
+          "180 ÷ 2.5 = 72.",
+          "State the unit: 72 km/h.",
+        ],
+        answer: "72 km/h",
+      },
+      {
+        question:
+          "A block of metal has volume 40 cm³ and density 7.8 g/cm³. Find its mass.",
+        steps: [
+          "Density = mass ÷ volume, so rearranging gives mass = density × volume.",
+          "The unit g/cm³ confirms it: grams per cubic centimetre, so multiplying by cubic centimetres leaves grams.",
+          "Mass = 7.8 × 40.",
+          "7.8 × 40 = 312.",
+          "The unit is grams, since the density was given in grams per cm³.",
+        ],
+        answer: "312 g",
+      },
+      {
+        question: "Convert 25 m/s into km/h.",
+        steps: [
+          "In one second the object travels 25 m, so in one hour it travels 25 × 3600 m.",
+          "25 × 3600 = 90,000 m.",
+          "Convert metres to kilometres: 90,000 ÷ 1000 = 90 km.",
+          "So the speed is 90 km/h.",
+          "The shortcut is the same calculation: 25 × 3.6 = 90, because 3600 ÷ 1000 = 3.6.",
+        ],
+        answer: "90 km/h",
+      },
+      {
+        question:
+          "A cyclist accelerates from rest to 8 m/s over 4 seconds, then holds 8 m/s for 10 seconds. Find the total distance travelled.",
+        steps: [
+          "Sketch the velocity-time graph: a straight line from (0, 0) to (4, 8), then horizontal to (14, 8).",
+          "Distance is the AREA under a velocity-time graph.",
+          "First stage is a triangle: ½ × base × height = ½ × 4 × 8 = 16 m.",
+          "Second stage is a rectangle: 10 × 8 = 80 m.",
+          "Total distance = 16 + 80 = 96 m.",
+        ],
+        answer: "96 m",
+        higherOnly: true,
+      },
+    ],
+
+    practice: [
+      { question: "Write the formula for speed as an expression using distance and time, e.g. a/b.",
+        accept: ["distance/time", "d/t"],
+        answer: "Speed = distance ÷ time. The unit tells you so: m/s means metres divided by seconds." },
+      { question: "A car travels 150 km in 3 hours. Find its average speed in km/h. Give the number only.",
+        accept: ["50"],
+        answer: "50 km/h. Speed = distance ÷ time = 150 ÷ 3. Always write the unit — it is often worth a mark on its own." },
+      { question: "A runner covers 400 m in 50 seconds. Find their speed in m/s. Give the number only.",
+        accept: ["8"],
+        answer: "8 m/s. Speed = distance ÷ time = 400 ÷ 50, and the units of the answer come from the units given." },
+      { question: "A train travels at 90 km/h for 2 hours. How far does it travel, in km?",
+        accept: ["180"],
+        answer: "180 km. Distance = speed × time." },
+      { question: "How many hours is 2 hours 45 minutes, as a decimal?",
+        accept: ["2.75"],
+        answer: "2.75 hours. 45 minutes is 0.75 of an hour, not 0.45." },
+      { question: "How many hours is 20 minutes, as a fraction? Write it as a/b.",
+        accept: ["1/3"],
+        answer: "1/3 of an hour, since 20 ÷ 60 = 1/3." },
+      { question: "Convert 10 m/s to km/h. Give the number only.",
+        accept: ["36"],
+        answer: "36 km/h. Multiply by 3.6, which comes from 3600 seconds in an hour divided by 1000 metres in a kilometre." },
+      { question: "Convert 72 km/h to m/s. Give the number only.",
+        accept: ["20"],
+        answer: "20 m/s. Divide by 3.6 to go from km/h to m/s — the number must get smaller, which is a useful check." },
+      { question: "An object has mass 90 g and volume 30 cm³. Find its density in g/cm³. Give the number only.",
+        accept: ["3"],
+        answer: "3 g/cm³. Density = mass ÷ volume." },
+      { question: "A substance has density 2.5 g/cm³ and volume 20 cm³. Find its mass in grams.",
+        accept: ["50"],
+        answer: "50 g. Mass = density × volume." },
+      { question: "An object has mass 240 g and density 8 g/cm³. Find its volume in cm³.",
+        accept: ["30"],
+        answer: "30 cm³. Volume = mass ÷ density." },
+      { question: "A force of 200 N acts on an area of 4 m². Find the pressure in N/m².",
+        accept: ["50"],
+        answer: "50 N/m². Pressure = force ÷ area." },
+      { question: "On a distance-time graph, what does a horizontal line mean?",
+        accept: ["stationary", "stopped", "not moving", "at rest"],
+        answer: "The object is stationary — time passes but distance does not change." },
+      { question: "On a distance-time graph, what quantity does the gradient represent?",
+        accept: ["speed", "the speed", "velocity"],
+        answer: "Speed. Steeper means faster." },
+      { question: "On a velocity-time graph, what quantity does the AREA under the graph represent?",
+        accept: ["distance", "distance travelled", "the distance"],
+        answer: "The distance travelled. Split the area into triangles and rectangles, work out each, and add them.", higherOnly: true },
+      { question: "On a velocity-time graph, what quantity does the gradient represent?",
+        accept: ["acceleration", "the acceleration"],
+        answer: "Acceleration — the rate at which velocity changes.", higherOnly: true },
+      { question: "A journey is 30 miles at 60 mph, then 30 miles at 30 mph. Explain why the average speed is not 45 mph.",
+        answer: "Because average speed is total distance divided by total time, and the two stages take different amounts of time. The first 30 miles at 60 mph takes half an hour; the second 30 miles at 30 mph takes a whole hour. So the journey is 60 miles in 1.5 hours, giving an average of 40 mph, not 45. Averaging the two speeds would only be right if equal TIME were spent at each, whereas here equal distance was covered — and more time is always spent at the slower speed, which is why the true average is dragged below the halfway point. (Mark this one yourself.)" },
+      { question: "Explain why the unit of a compound measure tells you the formula.",
+        answer: "Because the unit is the formula, written in units instead of words. 'Per' means divided by, so metres per second means metres divided by seconds, which is distance divided by time — the definition of speed. Grams per cubic centimetre means mass divided by volume, which is density, and newtons per square metre means force divided by area, which is pressure. This is a genuinely useful check in the exam: if you can read the unit in the question, you can reconstruct the formula even if you have forgotten it, and you can also tell whether your answer has come out in the right unit. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"2 hours 30 minutes is 2.30 hours.\"",
+        right: "It is 2.5 hours. Minutes are sixtieths, not hundredths. This single mistake accounts for a large share of the marks lost on speed questions." },
+      { wrong: "\"Average speed is the average of the speeds.\"",
+        right: "It is total distance ÷ total time. Averaging the speeds only works if equal TIME is spent at each, which almost never happens in these questions." },
+      { wrong: "\"A horizontal line means the object is stopped, on any graph.\"",
+        right: "On a distance-time graph, yes. On a velocity-time graph it means constant speed. Always check the vertical axis first." },
+      { wrong: "\"Density is the same as mass — heavy things are dense.\"",
+        right: "Density is mass per unit volume. A large light object such as a duvet has a lot of mass in total and a very low density." },
+      { wrong: "\"To convert m/s to km/h you divide by 3.6.\"",
+        right: "Multiply. A speed in km/h is a bigger number than the same speed in m/s, because an hour is much longer than a second." },
+      { wrong: "\"The area under a distance-time graph gives the distance.\"",
+        right: "The distance is read straight off the vertical axis. It is the area under a VELOCITY-time graph that gives distance." },
     ],
   },
 };
