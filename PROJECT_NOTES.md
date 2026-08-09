@@ -163,6 +163,28 @@ Colour: a deep warm red (`#dc2626` family, accent `#b91c1c`). Deliberately not i
 - **Three grids were hardcoded to `grid-cols-3`.** Now `sm:grid-cols-2 xl:grid-cols-4`.
 - The mascot union was also written out twice (in `Subject` and in `SubjectProgress`); the second now says `Subject["mascot"]`.
 
+## History complete — all 19 topics (2026-08-09)
+
+**Every topic on the site is now written: 72 of 72, ~152,000 words, 20,066 checks passing.**
+
+| Subject | Topics | Worked ex. | Auto-marked | Self-marked | Mistakes | Flashcards |
+|---|---|---|---|---|---|---|
+| Computer Science | 18 | 75 | 288 | 36 | 108 | 277 |
+| Maths | 19 | 76 | 305 | 37 | 114 | 234 |
+| English | 16 | 64 | 256 | 32 | 96 | 191 |
+| History | 19 | 77 | 320 | 39 | 114 | 269 |
+| **Total** | **72** | **292** | **1169** | **144** | **432** | **971** |
+
+**Year placement was corrected on Matthew's instruction.** The British Empire moved from Year 10 to Year 9 where it is actually taught. Four widely taught topics were missing entirely and were added: the Industrial Revolution and the transatlantic slave trade (both KS3), crime and punishment (the commonest alternative to Medicine as a thematic study), and migration to Britain (a GCSE unit in its own right).
+
+**Medicine through time got 33 practice questions** rather than the usual 18, at Matthew's request — it covers a thousand years and genuinely needs it. Five key-fact blocks and five worked examples too.
+
+**How the difficult material is handled:** the slave trade, the Holocaust and the world wars are written plainly and without dramatic language. That is both respectful and what earns marks — examiners reward precision, not adjectives. "Enslaved people" throughout, never "slaves". Contested figures are flagged as contested rather than stated with false confidence.
+
+**Where historians disagree, the disagreement is named.** "Lions led by donkeys" is presented as a 1960s interpretation to be weighed, not a fact. The Empire topic sets out both cases and says why the argument is live. That is what interpretation questions actually test.
+
+**The checker caught one real error** during this work: an accept list on a revision question allowed both "2" and "3" minutes. Reworded to "Roughly how many minutes...", which is both honest and exempt from the rule — a question with a genuinely approximate answer should say so.
+
 ## Bug hunt on the tracking (2026-08-09, same day it was built)
 
 Four real bugs, all found by reasoning then **reproduced before being fixed**.

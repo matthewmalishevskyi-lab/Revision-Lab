@@ -1,4 +1,4 @@
-// HISTORY — all 19 topics.
+// HISTORY — all 19 topics, all written.
 //
 // ⚠️ HISTORY VARIES MORE THAN ANY OTHER SUBJECT ON THIS SITE. The others share
 // a broad syllabus; History is assembled from OPTIONS each school chooses. Two
@@ -3051,6 +3051,1407 @@ export const HISTORY: Record<string, TopicContent> = {
         right: "Opinion polls still favoured it. Parliament abolished it against public opinion, after the Evans, Bentley and Ellis cases." },
       { wrong: "\"Peel's police were welcomed as an obvious improvement.\"",
         right: "They were widely distrusted as a threat to liberty and mocked as spies. Acceptance took decades, and the unarmed uniform was designed to win it." },
+    ],
+  },
+
+  "history/superpower-relations-and-the-cold-war": {
+    summary:
+      "For forty-five years the United States and the Soviet Union confronted each other without ever fighting directly, because both knew a war between them could end civilisation. This period study covers how allies became enemies, how the confrontation was managed through crises in Berlin, Cuba and Afghanistan, and why it ended so suddenly and so peacefully in 1991.",
+    keyFacts: [
+      {
+        heading: "How allies became enemies, 1941–49",
+        points: [
+          "The wartime alliance was one of necessity: a capitalist democracy and a communist dictatorship united only against Hitler.",
+          "Yalta (February 1945) agreed the United Nations, the division of Germany, and free elections in eastern Europe — a promise Stalin did not keep.",
+          "Potsdam (July 1945) was colder: Roosevelt was dead, Churchill was replaced mid-conference, and the USA had tested an atomic bomb.",
+          "The Truman Doctrine (1947) promised support for countries resisting communism; the Marshall Plan offered $13 billion of American aid to rebuild Europe.",
+          "Stalin saw Marshall Aid as dollar imperialism and forbade eastern bloc countries from accepting it, which hardened the division.",
+          "The Berlin Blockade (1948–49): Stalin cut off West Berlin, the Allies supplied it by air for eleven months, and NATO was founded in 1949. The Warsaw Pact followed in 1955.",
+        ],
+      },
+      {
+        heading: "The arms race and the crises",
+        points: [
+          "The USSR tested an atomic bomb in 1949, ending the American monopoly; hydrogen bombs followed on both sides in the early 1950s.",
+          "MAD — Mutually Assured Destruction — meant neither side could attack without being destroyed, which is why the war stayed cold.",
+          "Hungary 1956: a rising against Soviet control was crushed by tanks, with around 20,000 killed. The West did not intervene, which taught eastern Europe a hard lesson.",
+          "The Berlin Wall (1961) stopped the flow of people leaving East Germany — around 2.5 million had already gone.",
+          "The Cuban Missile Crisis (October 1962) brought the world closest to nuclear war. Kennedy imposed a blockade; Khrushchev withdrew the missiles in exchange for a promise not to invade Cuba and the quiet removal of American missiles from Turkey.",
+          "Prague Spring 1968: reform in Czechoslovakia was crushed, and the Brezhnev Doctrine asserted the USSR's right to intervene in any socialist state.",
+        ],
+      },
+      {
+        heading: "Détente and the second Cold War",
+        points: [
+          "The Cuban crisis frightened both sides into the hotline, the Test Ban Treaty (1963) and the Non-Proliferation Treaty (1968).",
+          "Détente in the 1970s brought SALT 1 (1972), the Helsinki Accords (1975) and the Apollo–Soyuz handshake in space.",
+          "The Soviet invasion of Afghanistan (1979) ended it: the USA boycotted the Moscow Olympics, armed the mujahideen, and SALT 2 was never ratified.",
+          "Reagan called the USSR an 'evil empire' and launched a huge arms build-up including the Strategic Defense Initiative, which the Soviet economy could not match.",
+          "Afghanistan became the USSR's Vietnam: nine years, around 15,000 Soviet dead, and withdrawal in 1989.",
+        ],
+      },
+      {
+        heading: "Why it ended",
+        points: [
+          "Gorbachev came to power in 1985 with glasnost (openness) and perestroika (restructuring), intended to save communism rather than end it.",
+          "He abandoned the Brezhnev Doctrine, telling eastern European states the USSR would not intervene to keep their governments in power.",
+          "1989: Poland, Hungary, Czechoslovakia, Bulgaria and Romania all broke away, and the Berlin Wall opened on 9 November — largely because of a confused press conference.",
+          "Germany reunified in 1990; the Warsaw Pact dissolved in 1991.",
+          "After a failed hardline coup in August 1991, the Soviet Union itself dissolved on 25 December 1991.",
+          "Historians argue over the balance: Soviet economic failure, Reagan's pressure, Gorbachev's choices, and popular movements such as Solidarity in Poland all contributed.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Cold War", definition: "The confrontation between the USA and USSR from 1945 to 1991, conducted without direct war between them." },
+      { term: "Yalta Conference", definition: "The February 1945 meeting agreeing the United Nations, Germany's division and free elections in eastern Europe." },
+      { term: "Potsdam Conference", definition: "The July 1945 meeting, colder than Yalta, with new leaders and an American atomic bomb already tested." },
+      { term: "Truman Doctrine", definition: "The 1947 American promise to support countries resisting communism — the policy of containment." },
+      { term: "Marshall Plan", definition: "The $13 billion American aid programme to rebuild Europe, rejected by Stalin for the eastern bloc." },
+      { term: "Berlin Blockade", definition: "Stalin's 1948–49 closure of land routes to West Berlin, defeated by an eleven-month Allied airlift." },
+      { term: "NATO", definition: "The Western military alliance founded in 1949, answered by the Warsaw Pact in 1955." },
+      { term: "MAD", definition: "Mutually Assured Destruction — the certainty that any nuclear attack would destroy the attacker too." },
+      { term: "Berlin Wall", definition: "The barrier built in 1961 to stop East Germans leaving, opened on 9 November 1989." },
+      { term: "Cuban Missile Crisis", definition: "The October 1962 confrontation over Soviet missiles in Cuba — the closest the world came to nuclear war." },
+      { term: "Brezhnev Doctrine", definition: "The Soviet claim of a right to intervene in any socialist state, asserted after the Prague Spring." },
+      { term: "Détente", definition: "The 1970s easing of tension, producing SALT 1 and the Helsinki Accords." },
+      { term: "Glasnost", definition: "Gorbachev's policy of openness, allowing criticism and debate within the USSR." },
+      { term: "Perestroika", definition: "Gorbachev's policy of restructuring the Soviet economy and political system." },
+      { term: "Solidarity", definition: "The Polish trade union movement that became a mass opposition and won power in 1989." },
+    ],
+    examTips: [
+      {
+        tip: "Explain why it stayed cold",
+        detail:
+          "Mutually Assured Destruction. Neither superpower could attack without being destroyed, so the conflict was fought through proxies, propaganda and money instead.",
+      },
+      {
+        tip: "Give the full Cuban settlement",
+        detail:
+          "Khrushchev withdrew the missiles; the USA promised not to invade Cuba AND quietly removed missiles from Turkey. Leaving out the secret half makes it look like a simple American victory.",
+      },
+      {
+        tip: "Use Berlin as a thread through the whole period",
+        detail:
+          "Blockade 1948, Wall 1961, opening 1989. Three moments in one city let you show change across the entire course.",
+      },
+      {
+        tip: "Explain the Wall's opening honestly",
+        detail:
+          "It happened partly through a confused press conference and crowds who acted on it. That is a better answer than implying anyone decided to open it that night.",
+      },
+      {
+        tip: "Give the end more than one cause",
+        detail:
+          "Soviet economic stagnation, the cost of Afghanistan, Reagan's arms build-up, Gorbachev's reforms, and popular movements like Solidarity. Reagan alone is not an answer.",
+      },
+      {
+        tip: "Be precise about Gorbachev's aims",
+        detail:
+          "He wanted to SAVE communism, not end it. That his reforms destroyed the system he was trying to rescue is the most interesting thing about him.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why the wartime alliance broke down after 1945.",
+        steps: [
+          "It had only ever been a marriage of convenience against Hitler — the ideologies were opposed from the start.",
+          "Yalta promised free elections in eastern Europe; Stalin installed communist governments instead, which the West saw as betrayal.",
+          "Stalin's view was defensive: Russia had been invaded through eastern Europe twice in thirty years and he wanted a buffer.",
+          "Potsdam was colder — Roosevelt dead, Churchill replaced, and the atomic bomb tested and used without Soviet involvement.",
+          "The Truman Doctrine and Marshall Plan looked to Moscow like the USA buying influence across Europe.",
+          "The Berlin Blockade then turned suspicion into open confrontation, and NATO formalised it in 1949.",
+        ],
+        answer:
+          "Because the only thing holding it together was Hitler. Once he was gone, opposed ideologies, broken promises over eastern Europe, and mutual suspicion — each side reading the other's defensive moves as aggression — produced open confrontation within four years.",
+      },
+      {
+        question:
+          "Why was the Cuban Missile Crisis a turning point?",
+        steps: [
+          "It was the closest the world came to nuclear war: Soviet missiles in Cuba could reach most of the USA in minutes.",
+          "Both leaders discovered how little control they had — a U-2 was shot down, and a Soviet submarine came close to launching a nuclear torpedo.",
+          "The resolution was a genuine compromise, though the American concession over Turkey was kept secret to preserve Kennedy's position.",
+          "Afterwards both sides moved to reduce risk: the hotline in 1963, the Test Ban Treaty the same year, and the Non-Proliferation Treaty in 1968.",
+          "It also had costs: Khrushchev was removed in 1964, partly for backing down, and the USSR began a build-up to reach parity.",
+          "Judgement: it changed how the Cold War was managed rather than ending it.",
+        ],
+        answer:
+          "Because both sides looked over the edge and stepped back. It produced the hotline, the Test Ban Treaty and eventually détente — but also cost Khrushchev his job and prompted a Soviet arms build-up. It changed the management of the Cold War, not its existence.",
+      },
+      {
+        question:
+          "'Reagan won the Cold War.' How far do you agree?",
+        steps: [
+          "For: his arms build-up and the Strategic Defense Initiative imposed costs the Soviet economy could not meet, and his rhetoric put ideological pressure on Moscow.",
+          "Against: the Soviet economy was already stagnating badly in the 1970s, before Reagan took office.",
+          "Against: Afghanistan drained Soviet money, manpower and morale for nine years.",
+          "Against: Gorbachev's decision to abandon the Brezhnev Doctrine is what actually allowed 1989 to happen, and that was his choice.",
+          "Against: popular movements — Solidarity above all — supplied the pressure from below.",
+          "Judgement: Reagan raised the cost of continuing, but the system was failing already and Gorbachev chose not to hold it together by force.",
+        ],
+        answer:
+          "He increased the pressure, but the Soviet economy was failing before he arrived, Afghanistan was draining it, and it was Gorbachev's refusal to send tanks in 1989 that let eastern Europe go. Reagan is one cause among several, and probably not the decisive one.",
+      },
+      {
+        question:
+          "Explain why the Berlin Wall opened on 9 November 1989.",
+        steps: [
+          "Context: Hungary had opened its border to Austria in the summer, so East Germans were already escaping westward via a third country.",
+          "Mass demonstrations in Leipzig and elsewhere had grown week by week, and the government knew Moscow would not send troops.",
+          "The government decided to relax travel rules to reduce pressure — a concession, not an opening.",
+          "At a press conference, Günter Schabowski was handed the new rules without a briefing and, asked when they took effect, said 'immediately, without delay'.",
+          "Crowds went to the crossings that evening. Guards had no orders, could not reach anyone senior, and eventually opened the gates.",
+          "The general lesson: a decision by officials, a communication failure, and ordinary people acting on it — history is often less deliberate than it looks afterwards.",
+        ],
+        answer:
+          "Not because anyone decided to open it. A confused press conference suggested new travel rules applied immediately, crowds went to the checkpoints, and guards with no orders let them through. The pressure had been building for months; the timing was an accident.",
+      },
+    ],
+
+    practice: [
+      { question: "In which year did the Cold War end with the dissolution of the USSR?",
+        accept: ["1991"],
+        answer: "1991. The Soviet Union formally dissolved on 25 December." },
+      { question: "Which 1945 conference agreed the United Nations and free elections in eastern Europe?",
+        accept: ["yalta", "the yalta conference"],
+        answer: "Yalta, in February 1945 — a promise Stalin did not keep." },
+      { question: "Which conference followed in July 1945?",
+        accept: ["potsdam", "the potsdam conference"],
+        answer: "Potsdam, colder than Yalta and held after the first atomic test." },
+      { question: "What was the 1947 American promise to support countries resisting communism called?",
+        accept: ["truman doctrine", "the truman doctrine"],
+        answer: "The Truman Doctrine — the policy of containment." },
+      { question: "What was the American aid programme to rebuild Europe called?",
+        accept: ["marshall plan", "the marshall plan", "marshall aid"],
+        answer: "The Marshall Plan, worth around $13 billion and rejected by Stalin for the eastern bloc." },
+      { question: "In which year was NATO founded?",
+        accept: ["1949"],
+        answer: "1949, following the Berlin Blockade. The Warsaw Pact answered it in 1955." },
+      { question: "How long did the Berlin Airlift last, in months?",
+        accept: ["11", "eleven"],
+        answer: "Eleven months, supplying West Berlin entirely by air until Stalin lifted the blockade." },
+      { question: "What does MAD stand for?",
+        accept: ["mutually assured destruction"],
+        answer: "Mutually Assured Destruction — the reason the war stayed cold." },
+      { question: "In which year was the Berlin Wall built?",
+        accept: ["1961"],
+        answer: "1961, to stop the flow of East Germans westward — around 2.5 million had already left." },
+      { question: "In which year was the Cuban Missile Crisis?",
+        accept: ["1962"],
+        answer: "1962, in October — the closest the world has come to nuclear war." },
+      { question: "From which country did the USA secretly agree to remove missiles after the Cuban crisis?",
+        accept: ["turkey"],
+        answer: "Turkey. The secrecy let Kennedy appear to have won outright." },
+      { question: "Which 1968 reform movement was crushed by Soviet tanks?",
+        accept: ["prague spring", "the prague spring"],
+        answer: "The Prague Spring in Czechoslovakia, followed by the Brezhnev Doctrine." },
+      { question: "Which country did the USSR invade in 1979, ending détente?",
+        accept: ["afghanistan"],
+        answer: "Afghanistan. Nine years and around 15,000 Soviet dead followed." },
+      { question: "Who became Soviet leader in 1985?",
+        accept: ["gorbachev", "mikhail gorbachev"],
+        answer: "Mikhail Gorbachev, whose reforms were intended to save communism, not end it." },
+      { question: "What was Gorbachev's policy of openness called?",
+        accept: ["glasnost"],
+        answer: "Glasnost, which allowed criticism and debate for the first time in decades." },
+      { question: "On what date did the Berlin Wall open? Give it as day/month/year.",
+        accept: ["09/11/1989", "9 november 1989", "9/11/1989"],
+        answer: "9 November 1989, largely because of a confused press conference." },
+      { question: "Explain why the Cold War never became a direct war between the superpowers.",
+        answer: "Because of Mutually Assured Destruction. Once both sides had enough nuclear weapons to destroy the other even after being attacked first, victory became impossible by definition — any attack guaranteed the attacker's own destruction. That did not make the world safe, but it did change where the conflict happened: it was fought instead through proxy wars in Korea, Vietnam and Afghanistan, through the arms and space races, through propaganda, espionage and economic competition. The Cuban Missile Crisis showed both leaders how easily control could be lost, and the arrangements that followed — the hotline, the Test Ban Treaty — were attempts to make sure the logic of MAD was never tested by accident. (Mark this one yourself.)" },
+      { question: "Explain why the Soviet empire in eastern Europe collapsed so quickly in 1989.",
+        answer: "Because the single thing holding it together was removed. Every previous rising — East Germany 1953, Hungary 1956, Czechoslovakia 1968 — had been crushed by Soviet tanks, and everybody in the region knew it. When Gorbachev abandoned the Brezhnev Doctrine and made clear the USSR would not intervene, the local communist governments had no answer, because none had genuine popular support and none could suppress opposition alone. Once Poland's Solidarity won power and Hungary opened its border without Soviet retaliation, the demonstration effect was immediate: within months, five countries changed government. The speed reflected how much the whole structure had rested on force rather than consent. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The Cold War was a war that was never declared.\"",
+        right: "It was a confrontation, not a war between the two powers. But real wars were fought within it — Korea, Vietnam, Afghanistan — with millions of deaths." },
+      { wrong: "\"Kennedy won the Cuban Missile Crisis outright.\"",
+        right: "He also promised not to invade Cuba and secretly agreed to remove American missiles from Turkey. The secrecy is why it looked like a clean victory." },
+      { wrong: "\"Reagan won the Cold War.\"",
+        right: "He added pressure, but Soviet stagnation predated him, Afghanistan drained the USSR for nine years, and Gorbachev's choice not to use force is what allowed 1989." },
+      { wrong: "\"The Berlin Wall was opened by a government decision on 9 November.\"",
+        right: "The government intended to relax travel rules. A misread announcement, crowds at the checkpoints and guards without orders did the rest." },
+      { wrong: "\"Gorbachev intended to end communism.\"",
+        right: "Glasnost and perestroika were meant to save it by making it work. That the reforms destroyed the system is the central irony of his career." },
+      { wrong: "\"Stalin's control of eastern Europe was purely aggressive.\"",
+        right: "It was aggressive in effect, but Stalin's stated reasoning was defensive — Russia had been invaded through those countries twice in thirty years. Explaining both readings is better history." },
+    ],
+  },
+
+  "history/norman-england-1066-1100": {
+    summary:
+      "In one year England changed hands, and within a generation almost the entire English ruling class had been replaced by Normans. This depth study covers the succession crisis of 1066, the conquest itself, how a few thousand invaders held down a country of around two million people, and how completely the Normans reshaped land, law, the Church and the landscape.",
+    keyFacts: [
+      {
+        heading: "1066 and the succession crisis",
+        points: [
+          "Edward the Confessor died childless in January 1066, leaving no clear heir and at least three serious claimants.",
+          "Harold Godwinson: the most powerful English earl, crowned immediately, and claimed Edward had named him on his deathbed.",
+          "William of Normandy: claimed Edward had promised him the throne in 1051, and that Harold had sworn an oath to support him in 1064.",
+          "Harald Hardrada of Norway: claimed through an earlier agreement between Scandinavian and English kings.",
+          "Stamford Bridge (25 September): Harold defeated Hardrada in Yorkshire, then marched around 250 miles south in about two weeks.",
+          "Hastings (14 October): Harold's shield wall held for hours until it broke, possibly through feigned Norman retreats. Harold was killed and the English leadership destroyed with him.",
+        ],
+      },
+      {
+        heading: "Securing the conquest",
+        points: [
+          "Castles: motte-and-bailey castles were thrown up quickly across the country — a garrison, a lookout and a permanent statement of who was in charge.",
+          "Rebellions came repeatedly: Edwin and Morcar, Hereward the Wake in the Fens, and risings in the north.",
+          "The Harrying of the North (1069–70) destroyed villages, crops, livestock and people across Yorkshire and beyond. Chroniclers described land left waste for years; Domesday shows enormous drops in value.",
+          "Land was redistributed almost completely: by 1086 fewer than 5% of landholders were English.",
+          "The feudal system tied land to service — the king granted land to tenants-in-chief in return for knights, and they granted it downwards in turn.",
+        ],
+      },
+      {
+        heading: "Ruling England",
+        points: [
+          "The Domesday Book (1086) recorded who held what land, its value, and how it had changed since 1066 — an extraordinary survey for its time, and a tax and ownership record.",
+          "The Church was Normanised: Lanfranc became Archbishop of Canterbury in 1070, English bishops were replaced, and cathedrals were rebuilt on a vast scale.",
+          "Law changed: the murdrum fine punished a whole community if a Norman was killed and the killer not produced. Forest Laws reserved huge areas for royal hunting.",
+          "The language of government became Latin and Norman French, while English survived among ordinary people — which is why English today has doubled vocabulary from both.",
+          "Government was more centralised than most of Europe, partly because the Normans inherited an unusually well-organised Anglo-Saxon state.",
+        ],
+      },
+      {
+        heading: "How much really changed",
+        points: [
+          "Changed almost entirely: the landowning class, the bishops, the language of power, castle-building, and cathedral architecture.",
+          "Continued: the shire and hundred system, the sheriff, the coinage, most peasant farming, and the English language itself among the majority.",
+          "The Normans took over an existing administrative machine rather than building one — which is a large part of how so few of them held so much.",
+          "William died in 1087; his sons fought over the inheritance, and the succession remained contested into the next century.",
+          "Historians argue about the depth of change: total at the top, far less at the bottom, which is the shape of the answer most questions want.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Edward the Confessor", definition: "The English king who died childless in January 1066, leaving a disputed succession." },
+      { term: "Harold Godwinson", definition: "The most powerful English earl, crowned king in January 1066 and killed at Hastings in October." },
+      { term: "Harald Hardrada", definition: "The Norwegian king who invaded northern England and was defeated at Stamford Bridge." },
+      { term: "Stamford Bridge", definition: "Harold's victory over the Norwegians on 25 September 1066, three weeks before Hastings." },
+      { term: "Battle of Hastings", definition: "William's victory on 14 October 1066, in which Harold was killed and the English leadership destroyed." },
+      { term: "Shield wall", definition: "The Anglo-Saxon defensive formation of overlapping shields, which held for hours at Hastings before breaking." },
+      { term: "Motte-and-bailey", definition: "A castle with a wooden tower on a raised mound beside an enclosed yard — quick to build and hard to take." },
+      { term: "Harrying of the North", definition: "William's devastation of northern England in 1069–70, destroying crops, livestock and villages." },
+      { term: "Domesday Book", definition: "The 1086 survey recording landholding and value across England, for tax and to settle disputes." },
+      { term: "Feudal system", definition: "The arrangement tying land to service: the king granted land to lords in return for knights and loyalty." },
+      { term: "Tenant-in-chief", definition: "A lord holding land directly from the king in return for military service." },
+      { term: "Murdrum fine", definition: "A penalty on an entire community if a Norman was killed and the killer not produced." },
+      { term: "Lanfranc", definition: "The Norman Archbishop of Canterbury from 1070, who reorganised the English Church." },
+      { term: "Forest Law", definition: "Norman law reserving vast areas for royal hunting, criminalising activities that had been ordinary." },
+    ],
+    examTips: [
+      {
+        tip: "Give Hastings several causes",
+        detail:
+          "Norman cavalry and archers against an infantry shield wall, Harold's exhausted army after a 250-mile march, the feigned retreats, and luck. Not one factor.",
+      },
+      {
+        tip: "Use Stamford Bridge to explain Hastings",
+        detail:
+          "Harold fought a major battle in Yorkshire and marched south in about two weeks. His army was depleted and exhausted before Hastings began.",
+      },
+      {
+        tip: "Separate change at the top from change at the bottom",
+        detail:
+          "The landowning class was almost entirely replaced; peasant farming and local government carried on. Most 'how much changed' questions want exactly that distinction.",
+      },
+      {
+        tip: "Explain castles as control, not just defence",
+        detail:
+          "They housed a garrison, dominated a town, and were visible for miles. A castle was a permanent argument about who was in charge.",
+      },
+      {
+        tip: "Use Domesday as evidence, not just an event",
+        detail:
+          "Its before-and-after values are how historians measure the Harrying of the North. Sources that were made for one purpose often answer a different question.",
+      },
+      {
+        tip: "Handle the Bayeux Tapestry carefully",
+        detail:
+          "It was made for Norman patrons within about twenty years. It is superb evidence of what the Normans wanted remembered — and needs treating as such.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why William won the Battle of Hastings.",
+        steps: [
+          "Harold's army was exhausted: it had fought at Stamford Bridge on 25 September and marched around 250 miles south in about two weeks.",
+          "Many of Harold's best troops were lost or left behind, and the fyrd had already been kept in the field for months.",
+          "William had combined arms — archers, infantry and cavalry — against an army that fought on foot behind a shield wall.",
+          "The shield wall held for hours, so it was not simply outmatched. What broke it was English troops leaving the ridge to pursue apparently retreating Normans.",
+          "Whether those retreats were feigned or genuine and then exploited is debated, and saying so is worth a mark.",
+          "Harold's death ended it: with the king and his brothers killed, there was no one left to organise resistance.",
+        ],
+        answer:
+          "Because Harold arrived exhausted and depleted after Stamford Bridge and a 250-mile march, and because William had cavalry and archers against a shield wall. The wall held for hours until English troops broke ranks chasing retreating Normans — and Harold's death removed any possibility of continuing.",
+      },
+      {
+        question:
+          "Explain how a few thousand Normans controlled a country of around two million people.",
+        steps: [
+          "Decapitation: Harold and his brothers died at Hastings, so English resistance had no obvious leader.",
+          "Castles: motte-and-bailey castles went up rapidly, each with a garrison dominating its area.",
+          "Terror: the Harrying of the North destroyed the region's capacity to rebel and demonstrated the cost of trying.",
+          "Land: redistribution to Norman followers meant by 1086 fewer than 5% of landholders were English.",
+          "The feudal system tied every landholder to military obligation, so the king could raise forces quickly.",
+          "Inheritance: the Anglo-Saxon state was already well organised, with shires, sheriffs and a working tax system, so the Normans took over a machine rather than building one.",
+        ],
+        answer:
+          "Through decapitating the English leadership at Hastings, covering the country in castles, terrorising the north, replacing almost every landowner, and binding the new class to military service — all built on an Anglo-Saxon administrative system that already worked and simply changed hands.",
+      },
+      {
+        question:
+          "'The Norman Conquest changed England completely.' How far do you agree?",
+        steps: [
+          "For: by 1086 under 5% of landholders were English, the bishops were Norman, the language of government changed, and castles and cathedrals transformed the landscape.",
+          "For: new laws such as murdrum and Forest Law changed how ordinary people could live.",
+          "Against: shires, hundreds, sheriffs and the coinage all continued, because they worked.",
+          "Against: most peasants carried on farming the same land in the same way, under a different lord.",
+          "Against: the English language survived and eventually absorbed Norman French rather than being replaced.",
+          "Judgement: near-total change at the top, considerable continuity below — and the continuity is part of why the change at the top succeeded.",
+        ],
+        answer:
+          "At the top, almost completely: landowners, bishops, the language of government and the landscape itself. Below that, far less — shires, sheriffs, coinage and daily farming carried on. The Normans changed who ruled far more than they changed how England worked.",
+      },
+      {
+        question:
+          "How useful is the Bayeux Tapestry as evidence about 1066?",
+        steps: [
+          "Strengths: it is close in time, made within about twenty years, and enormously detailed on weapons, ships, clothing and tactics.",
+          "It is one of very few visual sources for the period at all.",
+          "Limitations: it was made for Norman patrons, probably Bishop Odo, William's half-brother.",
+          "So it presents the Norman case — Harold's oath is shown prominently, framing him as an oath-breaker rather than a rightful king.",
+          "Famous ambiguities remain, including whether the figure with an arrow in the eye is Harold at all.",
+          "Conclusion: excellent evidence about material culture and about the Norman version of events; weaker on what actually happened at contested moments.",
+        ],
+        answer:
+          "Very useful on material detail — ships, arms, clothing — and on how the Normans wished the conquest remembered, since it was made for Norman patrons. Much weaker as neutral testimony about disputed events like Harold's oath or his death.",
+      },
+    ],
+
+    practice: [
+      { question: "In which month of 1066 did Edward the Confessor die?",
+        accept: ["january"],
+        answer: "January 1066, childless, leaving at least three serious claimants." },
+      { question: "Who was crowned king of England in January 1066?",
+        accept: ["harold godwinson", "harold", "harold ii"],
+        answer: "Harold Godwinson, the most powerful English earl." },
+      { question: "Which Norwegian king invaded northern England in 1066?",
+        accept: ["harald hardrada", "hardrada", "harald hardraada"],
+        answer: "Harald Hardrada, defeated at Stamford Bridge on 25 September." },
+      { question: "At which battle did Harold defeat the Norwegians?",
+        accept: ["stamford bridge", "battle of stamford bridge"],
+        answer: "Stamford Bridge, three weeks before Hastings and around 250 miles from it." },
+      { question: "On what date was the Battle of Hastings? Give it as day/month/year.",
+        accept: ["14/10/1066", "14 october 1066", "14/10/66"],
+        answer: "14 October 1066. Harold was killed and the English leadership destroyed." },
+      { question: "What was the Anglo-Saxon defensive formation at Hastings called?",
+        accept: ["shield wall", "the shield wall"],
+        answer: "The shield wall, which held for hours before breaking." },
+      { question: "What type of castle did the Normans build quickly across England?",
+        accept: ["motte and bailey", "motte-and-bailey", "motte and bailey castle"],
+        answer: "Motte-and-bailey — a wooden tower on a mound beside an enclosed yard." },
+      { question: "What was William's devastation of northern England in 1069–70 called?",
+        accept: ["harrying of the north", "the harrying of the north", "harrying"],
+        answer: "The Harrying of the North. Domesday shows enormous falls in land value years later." },
+      { question: "In which year was the Domesday Book compiled?",
+        accept: ["1086"],
+        answer: "1086, recording landholding and value across England." },
+      { question: "Roughly what percentage of landholders were still English by 1086?",
+        accept: ["5", "5%", "less than 5"],
+        answer: "Under 5%. The landowning class had been almost entirely replaced." },
+      { question: "What is the term for a lord holding land directly from the king?",
+        accept: ["tenant in chief", "tenant-in-chief"],
+        answer: "A tenant-in-chief, who owed knights and loyalty in return." },
+      { question: "What fine punished a community if a Norman was killed?",
+        accept: ["murdrum", "murdrum fine", "the murdrum fine"],
+        answer: "The murdrum fine, payable by the whole community if the killer was not produced." },
+      { question: "Who became Archbishop of Canterbury in 1070?",
+        accept: ["lanfranc"],
+        answer: "Lanfranc, who reorganised the English Church along Norman lines." },
+      { question: "Which rebel resisted in the Fens?",
+        accept: ["hereward", "hereward the wake"],
+        answer: "Hereward the Wake, whose resistance in the Fens became legendary." },
+      { question: "In which year did William the Conqueror die?",
+        accept: ["1087"],
+        answer: "1087. His sons then fought over the inheritance." },
+      { question: "Which tapestry is the main visual source for the conquest?",
+        accept: ["bayeux", "bayeux tapestry", "the bayeux tapestry"],
+        answer: "The Bayeux Tapestry — made for Norman patrons, so it presents the Norman case." },
+      { question: "Explain why castles were so effective at securing the conquest.",
+        answer: "Because they solved several problems at once with very little manpower. A motte-and-bailey could be thrown up in weeks using forced local labour, so control did not have to wait for stone. It gave a small garrison somewhere defensible to retreat to, which meant a handful of Normans could hold a district against far larger numbers. It dominated the town or river crossing it was built beside, controlling movement and trade. And it was visible for miles — a permanent, unmissable statement that the land now had a new owner. Castles turned military victory into daily administration, which is the harder half of any conquest. (Mark this one yourself.)" },
+      { question: "Explain why the Normans kept so much of the Anglo-Saxon system of government.",
+        answer: "Because it worked, and replacing it would have been enormously difficult with so few men. Anglo-Saxon England was unusually well organised for its time: it had shires with sheriffs, hundreds beneath them, a functioning tax system in the geld, and a reliable coinage. William needed money and control quickly, and inheriting a working machine gave him both immediately. Keeping the structure also reduced disruption for the ordinary people whose cooperation any ruler depends on, while the Normans changed the thing that actually mattered to them — who held the land and who answered to whom. It is a useful general point: conquerors usually replace the people at the top and keep the plumbing. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Harold was killed by an arrow in the eye.\"",
+        right: "It comes from the Bayeux Tapestry, where the figure is ambiguous and may not be Harold. Chroniclers give different accounts, and historians treat it as unproven." },
+      { wrong: "\"The Normans introduced the feudal system to a disorganised England.\"",
+        right: "Anglo-Saxon England already had shires, sheriffs, taxation and coinage — an unusually effective state. The Normans reorganised landholding on top of a system that worked." },
+      { wrong: "\"William won because his army was better.\"",
+        right: "The shield wall held for hours. Harold's exhaustion after Stamford Bridge and a 250-mile march, the breaking of the wall during the retreats, and Harold's death all mattered." },
+      { wrong: "\"England was completely Normanised.\"",
+        right: "The ruling class was replaced almost entirely, but shires, sheriffs, coinage and peasant farming continued — and English survived to absorb Norman French rather than being replaced by it." },
+      { wrong: "\"The Domesday Book was written to be helpful to historians.\"",
+        right: "It was a tax and ownership record, made to settle who owed what. That it is so useful now is a side effect of a very practical purpose." },
+      { wrong: "\"Resistance ended in 1066.\"",
+        right: "Rebellions continued for years — Edwin and Morcar, Hereward in the Fens, and risings in the north severe enough to provoke the Harrying." },
+    ],
+  },
+
+  "history/america-1920-1973": {
+    summary:
+      "Half a century in which the United States boomed, collapsed, rebuilt, and then fought itself over who the promise of America was actually for. This period study covers the Roaring Twenties, the Wall Street Crash and the New Deal, the post-war boom, the civil rights movement, and the protest movements that followed it.",
+    keyFacts: [
+      {
+        heading: "The Roaring Twenties",
+        points: [
+          "Mass production made goods affordable: Ford's assembly line cut the Model T's price so far that by 1929 there was roughly one car for every five Americans.",
+          "Consumer credit, advertising and mail order let people buy before they could afford to.",
+          "Jazz, cinema, radio and the 'flapper' image changed the culture, though the flapper was a minority urban phenomenon rather than a national one.",
+          "Prohibition (1920–33) banned alcohol and created bootlegging, speakeasies and organised crime figures such as Al Capone.",
+          "Not everyone boomed: farmers suffered from overproduction and falling prices throughout the decade, and Black Americans faced segregation in the South and discrimination in the North.",
+          "The Ku Klux Klan revived to perhaps 4–5 million members in the mid-1920s, and immigration was sharply restricted by quota laws in 1921 and 1924.",
+        ],
+      },
+      {
+        heading: "Crash and Depression",
+        points: [
+          "Shares were bought 'on the margin' — with borrowed money — on the assumption prices would keep rising.",
+          "The Wall Street Crash of October 1929 destroyed those values and the loans behind them.",
+          "By 1933 around 13 million Americans were unemployed, roughly a quarter of the workforce, and thousands of banks had failed.",
+          "Hoover believed in limited government and voluntary action, and the shanty towns of the homeless were named 'Hoovervilles' after him.",
+          "Roosevelt won in 1932 promising a 'New Deal', and closed every bank for four days before reopening only the sound ones — which restored confidence immediately.",
+          "The New Deal's alphabet agencies: CCC for young men's conservation work, TVA for the Tennessee Valley, AAA for farm prices, WPA for public works, and the Social Security Act of 1935.",
+        ],
+      },
+      {
+        heading: "Post-war boom and civil rights",
+        points: [
+          "The war ended the Depression, and post-war America boomed: suburbs, televisions, the GI Bill and near-full employment.",
+          "Segregation persisted in the South under Jim Crow laws, upheld by the 'separate but equal' doctrine from 1896.",
+          "Brown v Board of Education (1954) ruled segregated schools unconstitutional; the Little Rock Nine needed federal troops to enter school in 1957.",
+          "The Montgomery Bus Boycott (1955–56), following Rosa Parks's arrest, lasted 381 days and made Martin Luther King a national figure.",
+          "The March on Washington (1963) drew around 250,000 people and produced King's 'I Have a Dream' speech.",
+          "The Civil Rights Act (1964) outlawed segregation and discrimination; the Voting Rights Act (1965) removed the devices used to stop Black Americans registering to vote.",
+        ],
+      },
+      {
+        heading: "Division and protest",
+        points: [
+          "Malcolm X and the Nation of Islam rejected integration and non-violence, arguing for Black self-reliance and self-defence.",
+          "Black Power from 1966, and the Black Panthers, combined armed self-defence with free breakfast programmes and community clinics.",
+          "Riots in Watts (1965) and Detroit (1967) showed that legal equality had not changed poverty, policing or housing in northern cities.",
+          "King was assassinated in 1968, Malcolm X in 1965, and Kennedy in 1963 — a decade defined partly by political killings.",
+          "The women's movement grew with Friedan's The Feminine Mystique (1963), the founding of NOW in 1966, and the Equal Pay Act of 1963.",
+          "Opposition to the Vietnam War and the student movement reshaped American politics, and the war ended with American withdrawal in 1973.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Mass production", definition: "Making goods in large quantities on an assembly line, which cut prices dramatically — Ford's Model T being the classic case." },
+      { term: "Buying on the margin", definition: "Purchasing shares with borrowed money, which magnified both profits and the losses of 1929." },
+      { term: "Prohibition", definition: "The 1920–33 ban on alcohol, which created bootlegging, speakeasies and organised crime." },
+      { term: "Wall Street Crash", definition: "The October 1929 collapse of share prices that triggered the Great Depression." },
+      { term: "Hooverville", definition: "A shanty town of the homeless during the Depression, named sarcastically after President Hoover." },
+      { term: "New Deal", definition: "Roosevelt's programme of relief, recovery and reform from 1933, run through the 'alphabet agencies'." },
+      { term: "CCC", definition: "The Civilian Conservation Corps, which employed young men on conservation projects." },
+      { term: "TVA", definition: "The Tennessee Valley Authority, which built dams and brought electricity to one of the poorest regions." },
+      { term: "Social Security Act", definition: "The 1935 law creating American pensions and unemployment insurance." },
+      { term: "Jim Crow laws", definition: "Southern laws enforcing racial segregation, upheld by the 'separate but equal' ruling of 1896." },
+      { term: "Brown v Board of Education", definition: "The 1954 Supreme Court ruling that segregated schools were unconstitutional." },
+      { term: "Montgomery Bus Boycott", definition: "The 381-day boycott from 1955 that followed Rosa Parks's arrest and made King a national figure." },
+      { term: "Civil Rights Act 1964", definition: "The law outlawing segregation and discrimination in employment and public facilities." },
+      { term: "Voting Rights Act 1965", definition: "The law banning the literacy tests and other devices used to stop Black Americans voting." },
+      { term: "Black Power", definition: "The movement from 1966 emphasising Black pride, self-reliance and self-defence rather than integration." },
+      { term: "The Feminine Mystique", definition: "Betty Friedan's 1963 book that helped launch the modern American women's movement." },
+    ],
+    examTips: [
+      {
+        tip: "Say who the boom left out",
+        detail:
+          "Farmers, Black Americans and many industrial workers did not share the 1920s prosperity. 'The Roaring Twenties for whom?' is a strong opening move.",
+      },
+      {
+        tip: "Explain the Crash through credit",
+        detail:
+          "Buying on the margin meant a fall in prices destroyed borrowed money too, which took banks down with it. That mechanism explains why a share crash became a depression.",
+      },
+      {
+        tip: "Assess the New Deal honestly",
+        detail:
+          "It restored confidence and provided relief, and unemployment was still around 15% in 1938. The war ended the Depression. Both halves belong in the answer.",
+      },
+      {
+        tip: "Cover more than King in civil rights",
+        detail:
+          "Rosa Parks, the NAACP's legal strategy, the students of SNCC, Malcolm X and the Panthers. Reducing the movement to one man misses how it actually worked.",
+      },
+      {
+        tip: "Distinguish legal from real change",
+        detail:
+          "The 1964 and 1965 Acts changed the law. Watts in 1965 and Detroit in 1967 showed poverty, policing and housing had not changed with it.",
+      },
+      {
+        tip: "Use exact figures",
+        detail:
+          "13 million unemployed by 1933, a 381-day boycott, 250,000 at the March on Washington. Specifics carry the argument.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why the American economy boomed in the 1920s.",
+        steps: [
+          "Mass production: assembly lines cut costs so far that ordinary families could buy cars and appliances.",
+          "Consumer credit and hire purchase let people buy before they had the money, which multiplied demand.",
+          "Advertising created wants, and mail order and chain stores made buying easy across a huge country.",
+          "Government policy helped: low taxes, tariffs protecting American industry, and a hands-off attitude to business.",
+          "New industries — cars, electricals, chemicals — pulled others with them, from steel and rubber to road-building.",
+          "But note the weakness: much of it rested on credit and on confidence, both of which could vanish quickly. Which they did.",
+        ],
+        answer:
+          "Mass production cutting prices, credit letting people buy in advance, advertising creating demand, and a government that taxed lightly and left business alone. The same credit that drove the boom is what made the collapse so severe.",
+      },
+      {
+        question:
+          "'The New Deal was a failure.' How far do you agree?",
+        steps: [
+          "Against the claim: the banking crisis was stopped within days, and the bank holiday restored confidence immediately.",
+          "Against: millions were given work through the CCC and WPA, and the TVA transformed one of the poorest regions.",
+          "Against: the Social Security Act created pensions and unemployment insurance that still exist.",
+          "For the claim: unemployment was still around 15% in 1938, and a recession that year showed recovery was incomplete.",
+          "For: critics on the right called it socialism and the Supreme Court struck parts down; critics on the left said it did not go nearly far enough.",
+          "For: it was the Second World War, not the New Deal, that finally ended mass unemployment.",
+          "Judgement: it failed to end the Depression and succeeded at almost everything else — relief, confidence, and permanent reform.",
+        ],
+        answer:
+          "It did not end the Depression — the war did that, and unemployment was still around 15% in 1938. But it stopped the banking collapse, gave millions relief and work, and created a welfare system that outlasted it. Judging it only against the Depression sets a test it was not able to pass.",
+      },
+      {
+        question:
+          "Explain why the Montgomery Bus Boycott succeeded.",
+        steps: [
+          "Rosa Parks was a deliberate and careful choice: a respected NAACP secretary, not a random passenger.",
+          "The boycott was sustained for 381 days, which required organisation — car pools, church networks and fundraising.",
+          "Economics: Black passengers were the majority of bus users, so the company's finances suffered badly.",
+          "Leadership: the young Martin Luther King gave it a national voice and a moral argument grounded in non-violence.",
+          "Media: images of dignified protest against violent opposition played extremely badly for segregation on national television.",
+          "Law: the decisive blow came from the Supreme Court ruling bus segregation unconstitutional in November 1956.",
+          "So it combined community organisation, economic pressure, publicity and the courts — a template used repeatedly afterwards.",
+        ],
+        answer:
+          "Because it combined economic pressure, sustained community organisation, powerful publicity and a legal challenge that ended in the Supreme Court. Parks's arrest was chosen as a test case, and the 381-day boycott gave the courts time to act.",
+      },
+      {
+        question:
+          "Why did the civil rights movement divide after 1965?",
+        steps: [
+          "The legal battles had largely been won: segregation and voting discrimination were now illegal.",
+          "But conditions in northern cities — poverty, housing, policing, unemployment — had not changed at all, and no law addressed them.",
+          "Watts in 1965, days after the Voting Rights Act, made the gap impossible to ignore.",
+          "Younger activists questioned whether non-violence worked when protesters were still being beaten and killed.",
+          "Malcolm X and then Black Power offered a different answer: self-reliance, pride and self-defence rather than integration.",
+          "King himself moved towards economic questions and opposition to Vietnam, which cost him support including in the White House.",
+          "Judgement: the movement divided because it had succeeded at the thing law could fix and now faced the things law could not.",
+        ],
+        answer:
+          "Because it had won the legal argument and discovered that legal equality left poverty, housing and policing untouched. Watts erupted days after the Voting Rights Act, and younger activists turned towards Black Power when non-violence appeared to have reached its limits.",
+      },
+    ],
+
+    practice: [
+      { question: "Which car made mass production famous in the 1920s?",
+        accept: ["model t", "the model t", "ford model t"],
+        answer: "The Ford Model T, whose price fell so far it became affordable to ordinary families." },
+      { question: "What is the term for buying shares with borrowed money?",
+        accept: ["buying on the margin", "on the margin", "margin buying", "buying on margin"],
+        answer: "Buying on the margin. It magnified the gains and then destroyed people in 1929." },
+      { question: "In which years was Prohibition in force? Give it as e.g. 1900-1905.",
+        accept: ["1920-1933", "1920-33", "1920 - 1933"],
+        answer: "1920 to 1933. It created bootlegging, speakeasies and organised crime." },
+      { question: "Which Chicago gangster became the symbol of Prohibition-era crime?",
+        accept: ["al capone", "capone"],
+        answer: "Al Capone, eventually imprisoned for tax evasion rather than for violence." },
+      { question: "In which month and year was the Wall Street Crash? Give month and year.",
+        accept: ["october 1929", "oct 1929"],
+        answer: "October 1929, which triggered the Great Depression." },
+      { question: "Roughly how many Americans were unemployed by 1933, in millions?",
+        accept: ["13", "13 million", "about 13"],
+        answer: "Around 13 million — roughly a quarter of the workforce." },
+      { question: "What were the shanty towns of the homeless called?",
+        accept: ["hoovervilles", "hooverville"],
+        answer: "Hoovervilles, named sarcastically after President Hoover." },
+      { question: "Who became president in 1933 promising a New Deal?",
+        accept: ["roosevelt", "franklin roosevelt", "fdr", "franklin d roosevelt"],
+        answer: "Franklin D. Roosevelt, who began by closing every bank for four days." },
+      { question: "Which agency employed young men on conservation work? Give the initials.",
+        accept: ["ccc"],
+        answer: "The CCC — Civilian Conservation Corps." },
+      { question: "Which agency transformed one of the poorest regions with dams and electricity? Give the initials.",
+        accept: ["tva"],
+        answer: "The TVA — Tennessee Valley Authority." },
+      { question: "In which year was the Social Security Act?",
+        accept: ["1935"],
+        answer: "1935, creating American pensions and unemployment insurance." },
+      { question: "What were the southern segregation laws called?",
+        accept: ["jim crow", "jim crow laws"],
+        answer: "Jim Crow laws, upheld by the 'separate but equal' doctrine from 1896." },
+      { question: "In which year did the Supreme Court rule segregated schools unconstitutional?",
+        accept: ["1954"],
+        answer: "1954, in Brown v Board of Education." },
+      { question: "How many days did the Montgomery Bus Boycott last?",
+        accept: ["381"],
+        answer: "381 days, ending when the Supreme Court ruled bus segregation unconstitutional." },
+      { question: "Whose arrest began the Montgomery Bus Boycott?",
+        accept: ["rosa parks", "parks"],
+        answer: "Rosa Parks, an NAACP secretary — a deliberately chosen test case rather than a chance event." },
+      { question: "In which year was the Civil Rights Act that outlawed segregation?",
+        accept: ["1964"],
+        answer: "1964, followed by the Voting Rights Act in 1965." },
+      { question: "Roughly how many people attended the March on Washington?",
+        accept: ["250000", "250,000"],
+        answer: "Around 250,000, where King delivered the 'I Have a Dream' speech." },
+      { question: "Which book by Betty Friedan helped launch the women's movement?",
+        accept: ["the feminine mystique", "feminine mystique"],
+        answer: "The Feminine Mystique, published in 1963." },
+      { question: "Explain why the Wall Street Crash turned into a decade-long depression.",
+        answer: "Because the crash destroyed borrowed money, not just paper wealth. Shares had been bought on the margin, so when prices collapsed the loans behind them could not be repaid, and thousands of banks failed — taking ordinary people's savings with them. Consumers who had bought cars and appliances on credit stopped spending, so factories cut production and laid workers off, which reduced spending further in a spiral. Farmers were already in trouble from overproduction. Hoover's belief in limited government meant no large federal response for three years, and tariffs intended to protect American industry provoked retaliation that strangled trade. It was the combination of a credit collapse and a slow official response that turned a crash into the Great Depression. (Mark this one yourself.)" },
+      { question: "Explain why legal equality was not the same as real equality in 1960s America.",
+        answer: "Because the laws of 1964 and 1965 addressed segregation and voting, which were southern legal structures, and most Black Americans in northern cities faced something different: poverty, poor housing, unemployment and hostile policing, none of which any statute banned. Discrimination in housing and hiring continued through practices that were informal but effective. The clearest evidence is the timing — Watts erupted in August 1965, days after the Voting Rights Act was signed, and Detroit followed in 1967. King himself turned towards economic questions in his final years for exactly this reason. Removing legal barriers was necessary and was never going to be sufficient. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Everyone prospered in the Roaring Twenties.\"",
+        right: "Farmers suffered throughout from overproduction and falling prices, and Black Americans faced segregation in the South and discrimination in the North. The boom was real and partial." },
+      { wrong: "\"The New Deal ended the Depression.\"",
+        right: "It provided relief and reform, but unemployment was still around 15% in 1938. Rearmament and the Second World War ended mass unemployment." },
+      { wrong: "\"Prohibition stopped Americans drinking.\"",
+        right: "It reduced consumption somewhat and created a vast illegal industry, organised crime and widespread corruption. It was repealed in 1933 as a failure." },
+      { wrong: "\"Rosa Parks was simply a tired woman who refused to move.\"",
+        right: "She was a trained NAACP secretary and the case was chosen deliberately as a legal challenge. The 'tired seamstress' version was a story told about her, not by her." },
+      { wrong: "\"Martin Luther King led the whole civil rights movement.\"",
+        right: "The NAACP's lawyers, SNCC's students, local church networks and countless organisers did the work. King was its most powerful voice, not its only strategy." },
+      { wrong: "\"The 1964 and 1965 Acts solved racial inequality.\"",
+        right: "They ended legal segregation and voting discrimination. Watts erupted days after the Voting Rights Act, because poverty, housing and policing were untouched." },
+    ],
+  },
+
+  "history/migration-to-britain": {
+    summary:
+      "Britain has been made and remade by people arriving for two thousand years — Romans, Saxons, Vikings, Normans, Huguenots, Jews, Caribbeans, South Asians and many more. This thematic study asks why people came, how they were received, and what changed as a result. The single most useful idea in it is that migration is not a modern phenomenon; only the arguments about it feel new.",
+    keyFacts: [
+      {
+        heading: "Medieval and early modern",
+        points: [
+          "The Romans, Anglo-Saxons, Vikings and Normans all arrived as conquerors and settlers, and English itself is the record of it.",
+          "Jewish communities came after 1066, were confined to money-lending because Christians were forbidden to charge interest, faced massacres including York in 1190, and were expelled entirely in 1290.",
+          "Flemish weavers were invited by Edward III in the 1330s to improve English cloth-making — migration recruited for economic advantage.",
+          "Huguenots, French Protestants, arrived in large numbers after 1685 fleeing persecution; perhaps 50,000 came, bringing silk-weaving and banking skills.",
+          "Jews were readmitted under Cromwell in 1656, and small Black and South Asian communities existed in British ports from the sixteenth century onwards.",
+        ],
+      },
+      {
+        heading: "The nineteenth century",
+        points: [
+          "Irish migration was the largest movement, driven by poverty and then by the Famine of 1845–52. By 1861 around 600,000 Irish-born people lived in Britain.",
+          "Irish migrants built canals, railways and docks, and faced intense hostility mixed with anti-Catholic prejudice.",
+          "Eastern European Jews arrived from the 1880s fleeing pogroms in the Russian Empire, settling especially in London's East End.",
+          "The Aliens Act 1905 was Britain's first modern immigration control, aimed largely at Jewish arrivals.",
+          "Lascars — South Asian sailors — worked British merchant ships in large numbers and settled in port cities.",
+        ],
+      },
+      {
+        heading: "After 1945",
+        points: [
+          "Post-war Britain had severe labour shortages and actively recruited workers, including for the new NHS and for London Transport.",
+          "The British Nationality Act 1948 gave Commonwealth citizens the right to live and work in Britain.",
+          "The Empire Windrush arrived in June 1948 carrying around 500 passengers from the Caribbean — a symbolic beginning rather than the first arrival.",
+          "Migration from India, Pakistan, Bangladesh and later East Africa followed, including around 27,000 Ugandan Asians expelled by Idi Amin in 1972.",
+          "Discrimination was widespread and legal at first — in housing, work and pubs — and the 'colour bar' operated openly.",
+          "Race Relations Acts in 1965, 1968 and 1976 progressively outlawed discrimination and created the Commission for Racial Equality.",
+        ],
+      },
+      {
+        heading: "Reception, resistance and change",
+        points: [
+          "Hostility recurred across every period, and its arguments repeated: jobs, housing, disease, crime and culture.",
+          "The Notting Hill riots (1958) saw white crowds attack Caribbean residents; the Bristol Bus Boycott (1963) forced the company to end its refusal to employ Black drivers.",
+          "Enoch Powell's 1968 speech hardened political debate; the Anti-Nazi League and Rock Against Racism organised against the far right in the late 1970s.",
+          "Contributions run through everything: the NHS depended on migrant staff from the start, and food, music, language, business and sport were all reshaped.",
+          "Legislation tightened repeatedly — 1962, 1968, 1971 — while anti-discrimination law expanded, and the two trends ran alongside each other.",
+          "The Windrush scandal of 2018 showed people who had arrived legally decades earlier being wrongly detained and deported, because records had been destroyed.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Migration", definition: "The movement of people to live in a new place, whether pushed by danger or pulled by opportunity." },
+      { term: "Push and pull factors", definition: "Reasons people leave — war, famine, persecution — and reasons they choose a destination, such as work or family." },
+      { term: "Expulsion of the Jews 1290", definition: "Edward I's order removing the entire Jewish population of England, which lasted until 1656." },
+      { term: "Huguenots", definition: "French Protestants who fled persecution after 1685, bringing silk-weaving and financial skills." },
+      { term: "Irish Famine", definition: "The catastrophe of 1845–52 that drove enormous Irish migration to Britain and America." },
+      { term: "Pogrom", definition: "An organised massacre of a minority, especially of Jews in the Russian Empire from the 1880s." },
+      { term: "Aliens Act 1905", definition: "Britain's first modern immigration control, aimed largely at Jewish arrivals from eastern Europe." },
+      { term: "Lascars", definition: "South Asian sailors who worked on British merchant ships and settled in port cities." },
+      { term: "British Nationality Act 1948", definition: "The law giving Commonwealth citizens the right to live and work in Britain." },
+      { term: "Empire Windrush", definition: "The ship arriving in June 1948 with around 500 Caribbean passengers — a symbolic beginning of post-war migration." },
+      { term: "Colour bar", definition: "The open refusal of jobs, housing or service on grounds of race, legal in Britain until the 1960s." },
+      { term: "Bristol Bus Boycott", definition: "The 1963 campaign that forced the bus company to end its refusal to employ Black or Asian drivers." },
+      { term: "Race Relations Acts", definition: "The laws of 1965, 1968 and 1976 that progressively outlawed racial discrimination." },
+      { term: "Ugandan Asians", definition: "Around 27,000 people expelled by Idi Amin in 1972 who settled in Britain." },
+      { term: "Windrush scandal", definition: "The 2018 revelation that people who arrived legally decades earlier were wrongly detained and deported." },
+    ],
+    examTips: [
+      {
+        tip: "Show migration is not modern",
+        detail:
+          "Romans, Saxons, Vikings, Normans, Flemings, Huguenots, Jews and Irish all arrived long before 1948. Establishing the long view reframes every question on this paper.",
+      },
+      {
+        tip: "Use push and pull for every group",
+        detail:
+          "Huguenots pushed by persecution, pulled by Protestant England. Caribbean migrants pushed by unemployment, pulled by recruitment and citizenship. It works every time.",
+      },
+      {
+        tip: "Note that hostility repeats its arguments",
+        detail:
+          "Jobs, housing, disease, crime and culture were used against the Irish in 1850 and Caribbeans in 1958. Showing the pattern is a strong analytical point.",
+      },
+      {
+        tip: "Be precise about Windrush",
+        detail:
+          "It carried around 500 people and was not the first arrival — Black communities existed in British ports for centuries. Its importance is symbolic, and saying so is more accurate.",
+      },
+      {
+        tip: "Track both legal trends together",
+        detail:
+          "Immigration control tightened in 1962, 1968 and 1971 while anti-discrimination law expanded in 1965, 1968 and 1976. The two running side by side is the story.",
+      },
+      {
+        tip: "Give contributions concretely",
+        detail:
+          "Huguenot silk-weaving, Irish canals and railways, Caribbean and South Asian staff in the NHS. Named examples beat a general claim about enrichment.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why so many people migrated to Britain after 1945.",
+        steps: [
+          "Pull: Britain had severe labour shortages after the war and actively recruited abroad, including for the NHS and London Transport.",
+          "Legal: the British Nationality Act 1948 gave Commonwealth citizens the right to come, so no permission was needed.",
+          "Push: unemployment and limited opportunity in the Caribbean, and later political upheaval such as the expulsion of Ugandan Asians in 1972.",
+          "Connection: empire had already created links of language, education and shared institutions, so Britain was a familiar destination.",
+          "Chain migration: once communities established themselves, family and friends followed to somewhere with support already in place.",
+          "So it was a combination of deliberate recruitment, legal right and pre-existing imperial connection — not an accident.",
+        ],
+        answer:
+          "Because Britain needed workers and actively recruited them, the 1948 Act gave Commonwealth citizens the right to come, and empire had already built the language and institutional links that made Britain a familiar destination. Push factors abroad then supplied the rest.",
+      },
+      {
+        question:
+          "Explain why hostility to migrants recurs across different periods.",
+        steps: [
+          "Competition, real or perceived, over jobs and housing — especially where both were already scarce.",
+          "Migrants are visible and easily blamed when conditions are hard, which is why hostility often peaks in downturns.",
+          "Religious and racial prejudice: anti-Catholicism against the Irish, antisemitism against Jewish arrivals, racism against Caribbean and South Asian migrants.",
+          "Politicians and newspapers have repeatedly amplified it, from the campaigns behind the Aliens Act to Powell's 1968 speech.",
+          "The arguments barely change: jobs, housing, disease, crime, culture. The same list appears in 1850, 1905 and 1958.",
+          "The analytical point: the consistency of the arguments across such different groups suggests they are about the receiving society rather than about the migrants.",
+        ],
+        answer:
+          "Because the same arguments — jobs, housing, disease, crime, culture — are reused against every group regardless of who they are. That consistency, applied to Irish Catholics, eastern European Jews and Caribbean migrants alike, suggests hostility tells you more about British anxieties at the time than about the people arriving.",
+      },
+      {
+        question:
+          "How significant was the Empire Windrush?",
+        steps: [
+          "Practically: it carried around 500 people, a very small number compared with later arrivals.",
+          "It was also not the first — Black and South Asian communities had existed in British ports for centuries.",
+          "But symbolically it marked the beginning of large-scale post-war Caribbean migration and was heavily filmed and photographed.",
+          "It became the name for a generation and, eventually, for a scandal in 2018 — which shows how a symbol can outlive its facts.",
+          "Historians therefore treat it as a marker rather than a turning point in itself.",
+          "The wider skill: distinguishing what an event did from what it came to represent.",
+        ],
+        answer:
+          "Symbolically enormous, practically modest. Around 500 people arrived on a ship that was neither the first nor the largest — but it was filmed, remembered, and eventually gave its name to a whole generation and to the 2018 scandal. It marks a change rather than causing one.",
+      },
+      {
+        question:
+          "Explain how migration changed Britain, using specific examples.",
+        steps: [
+          "Economy: Huguenot silk-weaving built Spitalfields; Irish labour built canals, railways and docks; Ugandan Asian families revived struggling high streets.",
+          "Public services: the NHS recruited nurses and doctors from the Caribbean and South Asia from its first years and could not have operated without them.",
+          "Culture: food, music and language — from Notting Hill Carnival to the vocabulary of everyday English.",
+          "Politics and law: the Race Relations Acts exist because of campaigns by migrant communities and their allies.",
+          "Population and cities: the character of Bradford, Leicester, Birmingham and much of London was reshaped.",
+          "Note also what did not change quickly: discrimination persisted long after it became illegal.",
+        ],
+        answer:
+          "Concretely, and everywhere. Huguenot weaving, Irish railways, Caribbean and South Asian staff in the NHS from its founding, Ugandan Asian businesses reviving high streets, and the food, music and language of modern Britain. The Race Relations Acts themselves exist because migrant communities campaigned for them.",
+      },
+    ],
+
+    practice: [
+      { question: "In which year were Jews expelled from England?",
+        accept: ["1290"],
+        answer: "1290, by Edward I. They were not readmitted until 1656 under Cromwell." },
+      { question: "In which year were Jews readmitted to England?",
+        accept: ["1656"],
+        answer: "1656, under Oliver Cromwell." },
+      { question: "Which French Protestants fled to Britain after 1685?",
+        accept: ["huguenots", "the huguenots"],
+        answer: "The Huguenots — perhaps 50,000 came, bringing silk-weaving and banking skills." },
+      { question: "Which famine drove mass Irish migration from 1845?",
+        accept: ["irish famine", "the famine", "the great famine", "potato famine"],
+        answer: "The Irish Famine of 1845–52. By 1861 around 600,000 Irish-born people lived in Britain." },
+      { question: "What is the term for an organised massacre of a minority, especially Jews in Russia?",
+        accept: ["pogrom", "pogroms", "a pogrom"],
+        answer: "A pogrom. These drove eastern European Jewish migration from the 1880s." },
+      { question: "Which 1905 Act was Britain's first modern immigration control?",
+        accept: ["aliens act", "the aliens act", "aliens act 1905"],
+        answer: "The Aliens Act 1905, aimed largely at Jewish arrivals from eastern Europe." },
+      { question: "What were South Asian sailors on British ships called?",
+        accept: ["lascars", "lascar"],
+        answer: "Lascars, who settled in British port cities in significant numbers." },
+      { question: "Which 1948 Act gave Commonwealth citizens the right to live in Britain?",
+        accept: ["british nationality act", "the british nationality act", "nationality act"],
+        answer: "The British Nationality Act 1948." },
+      { question: "Which ship arrived in June 1948 from the Caribbean?",
+        accept: ["empire windrush", "the empire windrush", "windrush"],
+        answer: "The Empire Windrush, carrying around 500 passengers." },
+      { question: "Roughly how many passengers did the Windrush carry?",
+        accept: ["500", "about 500"],
+        answer: "Around 500 — small in number, and enormous in symbolism." },
+      { question: "What was the open refusal of jobs or housing on racial grounds called?",
+        accept: ["colour bar", "the colour bar", "color bar"],
+        answer: "The colour bar, which operated openly and legally until the 1960s." },
+      { question: "Which 1963 boycott forced a bus company to employ Black and Asian drivers?",
+        accept: ["bristol bus boycott", "the bristol bus boycott", "bristol"],
+        answer: "The Bristol Bus Boycott, which succeeded after several months." },
+      { question: "In which year was the first Race Relations Act?",
+        accept: ["1965"],
+        answer: "1965, followed by stronger Acts in 1968 and 1976." },
+      { question: "Which riots in 1958 saw white crowds attack Caribbean residents in London?",
+        accept: ["notting hill", "notting hill riots", "the notting hill riots"],
+        answer: "The Notting Hill riots. The Carnival grew partly as a response to them." },
+      { question: "Which dictator expelled Uganda's Asian population in 1972?",
+        accept: ["idi amin", "amin"],
+        answer: "Idi Amin. Around 27,000 of those expelled settled in Britain." },
+      { question: "In which year did the Windrush scandal come to public attention?",
+        accept: ["2018"],
+        answer: "2018, when people who had arrived legally decades earlier were wrongly detained and deported." },
+      { question: "Explain why the same arguments against migration recur in every period.",
+        answer: "Because they are arguments about the receiving society rather than about the people arriving. Jobs, housing, disease, crime and culture were used against Irish Catholics in the 1850s, against eastern European Jews before the Aliens Act of 1905, and against Caribbean migrants in the 1950s — three groups with almost nothing in common except being new and visible. Hostility tends to rise when housing is short, work is scarce or national confidence is low, which suggests the underlying anxiety is economic and cultural insecurity looking for a target. Noticing that the arguments stay identical while the targets change completely is one of the most useful things this topic teaches. (Mark this one yourself.)" },
+      { question: "Explain why immigration control tightened at the same time as anti-discrimination law expanded.",
+        answer: "Because they answered two different political pressures at once. Public and press hostility, sharpened by figures like Enoch Powell, pushed governments to restrict who could come — hence the Acts of 1962, 1968 and 1971 progressively removing the rights the 1948 Act had granted. At the same time, campaigns like the Bristol Bus Boycott, and the plain evidence of the colour bar operating openly, made discrimination against people already in Britain politically indefensible — hence the Race Relations Acts of 1965, 1968 and 1976. The logic offered at the time was explicit: limit numbers in order to make integration possible. Whether that was a genuine principle or a way of satisfying opposing groups simultaneously is exactly the kind of question these papers reward you for raising. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Migration to Britain began with the Windrush in 1948.\"",
+        right: "Romans, Saxons, Vikings, Normans, Flemings, Huguenots, Jews and Irish all came earlier, and Black communities existed in British ports for centuries." },
+      { wrong: "\"The Windrush brought the first Black people to Britain.\"",
+        right: "There were Black communities in London, Liverpool, Cardiff and Bristol long before 1948. Windrush is a symbol, not a starting point." },
+      { wrong: "\"Post-war migrants came uninvited.\"",
+        right: "Britain actively recruited abroad because of severe labour shortages, including for the NHS and London Transport, and the 1948 Act gave Commonwealth citizens the right to come." },
+      { wrong: "\"Hostility to migrants is a recent development.\"",
+        right: "There were massacres of Jews in 1190, expulsion in 1290, anti-Irish riots in the nineteenth century and the Aliens Act in 1905. Only the vocabulary is new." },
+      { wrong: "\"Discrimination ended with the Race Relations Acts.\"",
+        right: "The 1965 Act was weak and had to be strengthened in 1968 and 1976, and the Windrush scandal of 2018 showed the consequences continuing into the present." },
+      { wrong: "\"Migrants have always been a small part of British history.\"",
+        right: "The English language, the monarchy, the NHS and most British cities were shaped by successive waves of arrivals. It is a central thread, not a footnote." },
+    ],
+  },
+
+  "history/source-skills-and-interpretations": {
+    summary:
+      "The skills paper. History exams do not only ask what happened — they hand you evidence and ask what it is worth, and they hand you two historians disagreeing and ask you to judge. These skills are worth a large share of the marks, they transfer across every topic you study, and unlike content they cannot be crammed the night before. They can, however, be practised.",
+    keyFacts: [
+      {
+        heading: "Primary and secondary, and why the labels mislead",
+        points: [
+          "A primary source was produced at the time by someone involved or present. A secondary source was produced later, usually by a historian.",
+          "Primary does NOT mean reliable. An eyewitness may lie, misremember, or see only a fraction of what happened.",
+          "Secondary does not mean untrustworthy either — a historian with access to archives may understand an event far better than anyone who lived through it.",
+          "The same object can be either, depending on the question: a 1960s textbook is a secondary source about the war and a primary source about how the war was taught in the 1960s.",
+          "So the useful question is never 'is this primary?' but 'what is this good evidence FOR?'",
+        ],
+      },
+      {
+        heading: "Interrogating a source: NOP",
+        points: [
+          "Nature: what kind of thing is it — a diary, a speech, a photograph, a government report, a cartoon? Each type has its own habits.",
+          "Origin: who made it, when, and where? A letter written the same day differs from a memoir written thirty years later.",
+          "Purpose: why was it made, and for whom? To persuade, to record, to sell newspapers, to justify a decision afterwards?",
+          "Every source is biased in the sense of having a viewpoint. Saying 'this source is biased' on its own earns nothing — the marks are for saying HOW the viewpoint shapes it and what it therefore does and does not tell you.",
+          "Content matters too: what does it actually say, what does it leave out, and what does the omission suggest?",
+        ],
+      },
+      {
+        heading: "Turning limitations into usefulness",
+        points: [
+          "The strongest move in source work: a source's weakness for one question is its strength for another.",
+          "Nazi propaganda is poor evidence about German public opinion and excellent evidence about what the regime wanted believed.",
+          "A hostile account of a strike is weak on what strikers actually did and strong on how employers saw them.",
+          "Say what the source is useful FOR rather than dismissing it. 'This tells us little about X but a great deal about Y' is a high-mark sentence.",
+          "Use your own knowledge to test the content: does it match what you know from elsewhere, and if not, why might it differ?",
+        ],
+      },
+      {
+        heading: "Interpretations, and why historians disagree",
+        points: [
+          "An interpretation is a historian's argument about the past, not a fact about it.",
+          "Historians disagree for identifiable reasons: different evidence available, different questions asked, different weighting of the same evidence, and the concerns of their own time.",
+          "New evidence changes things — Soviet archives opened after 1991 reshaped Cold War history substantially.",
+          "The purpose matters too: a book written to challenge a popular view will emphasise different things from a general survey.",
+          "In an interpretations question, explain WHY the two differ, support each with evidence, and then reach a judgement rather than sitting on the fence.",
+        ],
+      },
+      {
+        heading: "Answering the common question types",
+        points: [
+          "'How useful is Source A...' — NOP, then content, then a judgement about what it is useful for. Never simply 'it is biased so it is not useful'.",
+          "'Why do these two interpretations differ?' — different evidence, emphasis, purpose or period of writing. Quote from both.",
+          "'How far do you agree with Interpretation B?' — evidence for, evidence against, your own knowledge, then a decision.",
+          "'Describe two features of...' — two separate points, each developed with a supporting detail. No introduction needed.",
+          "'Explain why...' — several causes with evidence, and ideally a judgement about which mattered most.",
+          "Watch the marks and the clock: a 4-mark question does not want three paragraphs, and spending them there costs you a 16-mark answer.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Primary source", definition: "Evidence produced at the time by someone present or involved — a letter, photograph, object or record." },
+      { term: "Secondary source", definition: "An account produced later, usually by a historian working from primary evidence." },
+      { term: "Interpretation", definition: "A historian's argument about the past, which can be disagreed with — not a statement of fact." },
+      { term: "Provenance", definition: "Where a source came from: who made it, when, where and why." },
+      { term: "NOP", definition: "Nature, Origin, Purpose — the three questions to ask of any source before judging it." },
+      { term: "Utility", definition: "How useful a source is for a particular question. Always tied to the question, never absolute." },
+      { term: "Bias", definition: "A viewpoint that shapes what a source says. Universal, and only worth mentioning if you explain its effect." },
+      { term: "Corroboration", definition: "Checking whether other evidence agrees, which strengthens or weakens a source's claims." },
+      { term: "Hindsight", definition: "Knowing how things turned out — which the people involved did not, and which can distort our judgement of them." },
+      { term: "Contemporary", definition: "Belonging to the time in question. A contemporary account was written then, not afterwards." },
+      { term: "Omission", definition: "What a source leaves out — often as revealing as what it includes." },
+      { term: "Censorship", definition: "Official control over what may be published, which limits what any source from that state can say." },
+    ],
+    examTips: [
+      {
+        tip: "Never write 'this source is biased' and stop",
+        detail:
+          "Every source has a viewpoint. The marks come from explaining how that viewpoint shapes the content and what it therefore is and isn't good evidence for.",
+      },
+      {
+        tip: "Always tie usefulness to the question asked",
+        detail:
+          "No source is useful in the abstract. 'Useful for showing what the government wanted people to believe, less useful for what they actually thought' is the shape to aim for.",
+      },
+      {
+        tip: "Use your own knowledge to test the source",
+        detail:
+          "Say whether it matches what you know from elsewhere. Source questions are testing your knowledge too, and answers that never leave the source stay in the lower bands.",
+      },
+      {
+        tip: "Explain WHY interpretations differ",
+        detail:
+          "Different evidence, different emphasis, different purpose, different period of writing. Naming the reason is worth far more than describing the difference.",
+      },
+      {
+        tip: "Reach a judgement",
+        detail:
+          "'There are arguments on both sides' is not a conclusion. Decide, and say what tipped it. Examiners reward a supported decision over balanced indecision.",
+      },
+      {
+        tip: "Match the length to the marks",
+        detail:
+          "Roughly a minute a mark, including planning. Overwriting a 4-mark question is one of the most common ways to lose marks on a paper you knew well.",
+      },
+      {
+        tip: "Quote briefly from the source",
+        detail:
+          "A few words anchored to your point beats copying a sentence. Copying eats time and shows nothing except that you can copy.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question:
+          "How useful is a 1936 German newspaper photograph of cheering Olympic crowds for studying support for the Nazis?",
+        steps: [
+          "Nature: a published photograph — an image chosen and cropped, not a neutral record.",
+          "Origin: Germany, 1936, so it passed through Goebbels' propaganda ministry.",
+          "Purpose: the Berlin Olympics were staged to impress foreign visitors; antisemitic signs were temporarily removed for the occasion.",
+          "Content: it does show real people apparently enthusiastic, which is genuine information.",
+          "Limitation: under censorship, no photograph showing anything else could have been published — so it cannot tell us how widespread support was.",
+          "Turn it round: it is strong evidence of what the regime wanted seen, and of how carefully it managed its international image.",
+        ],
+        answer:
+          "Limited for measuring actual support, because censorship made any other image impossible — the photograph could not have shown dissent even if dissent was everywhere. It is very useful for a different question: what the regime wanted the world to see, and how deliberately it staged it.",
+      },
+      {
+        question:
+          "Two historians disagree about whether Haig was a competent commander. Explain why they might differ.",
+        steps: [
+          "Different evidence: one may rely on the memoirs of soldiers and the diaries of politicians; another on operational records and casualty statistics.",
+          "Different emphasis: one weights the first day of the Somme, another the Hundred Days offensive of 1918 that won the war.",
+          "Different questions: 'was he humane?' and 'was he effective?' are not the same question and can have different answers.",
+          "Different times of writing: the 1960s produced 'lions led by donkeys' in an anti-establishment mood; later historians reacted against it.",
+          "Different purposes: a book written to overturn a popular view will emphasise the evidence that popular view ignores.",
+          "The judgement: name which reason best explains this particular pair, using their own words.",
+        ],
+        answer:
+          "Because they use different evidence, weight different moments of the war, ask subtly different questions, and write in different periods with different assumptions. Naming which of those explains this specific pair — with a short quotation from each — is what the question is really asking.",
+      },
+      {
+        question:
+          "Why is 'this source is biased so it is unreliable' a weak answer?",
+        steps: [
+          "Every source has a viewpoint, so the observation applies to all of them and distinguishes nothing.",
+          "Bias is not the same as being wrong — a partisan account can still be accurate about facts.",
+          "It also throws away information: a biased source is reliable evidence of the view it holds.",
+          "The stronger move is to explain HOW the viewpoint shapes the content: what it emphasises, what it omits, what language it chooses.",
+          "Then say what it is good evidence for, given that shaping.",
+          "Finally, test it against your own knowledge and any other sources provided.",
+        ],
+        answer:
+          "Because it is true of every source ever written, so it distinguishes nothing and answers no question. Bias is a reason to ask what a source is good evidence FOR, not a reason to dismiss it — and a partisan source is excellent evidence about the view it holds.",
+      },
+      {
+        question:
+          "How should you plan a 16-mark 'how far do you agree' answer in the time available?",
+        steps: [
+          "Spend two or three minutes planning: jot three points for, two against, and the judgement you intend to reach.",
+          "Decide the judgement BEFORE writing. An essay whose conclusion is a surprise to its author reads like one.",
+          "Open with your argument in a sentence, not with an introduction that restates the question.",
+          "One paragraph per point: claim, evidence, explanation of how the evidence supports the claim.",
+          "Include the counter-argument properly rather than as a token sentence — dealing with the strongest opposing point is what pushes an answer up.",
+          "Conclude by deciding and saying what tipped it. Roughly a minute a mark overall.",
+        ],
+        answer:
+          "Plan for two or three minutes, fix your judgement first, then argue it: a sentence of argument, three developed points, a genuine counter-argument, and a conclusion that decides and explains why. About a minute a mark, planning included.",
+      },
+    ],
+
+    practice: [
+      { question: "What is a source produced at the time by someone involved called?",
+        accept: ["primary", "primary source", "a primary source"],
+        answer: "A primary source. Note that primary does not mean reliable." },
+      { question: "What is an account written later by a historian called?",
+        accept: ["secondary", "secondary source", "a secondary source"],
+        answer: "A secondary source, usually built from primary evidence." },
+      { question: "What does the N in NOP stand for?",
+        accept: ["nature"],
+        answer: "Nature — what kind of source is it? A diary, speech, photograph and report each behave differently." },
+      { question: "What does the O in NOP stand for?",
+        accept: ["origin"],
+        answer: "Origin — who made it, when and where." },
+      { question: "What does the P in NOP stand for?",
+        accept: ["purpose"],
+        answer: "Purpose — why it was made, and for whom." },
+      { question: "What is the term for where a source came from and who made it?",
+        accept: ["provenance"],
+        answer: "Provenance. It is usually the most revealing thing about a source." },
+      { question: "What is a historian's argument about the past called?",
+        accept: ["interpretation", "an interpretation"],
+        answer: "An interpretation — something you can disagree with, unlike a fact." },
+      { question: "What is the term for checking whether other evidence agrees?",
+        accept: ["corroboration", "corroborating"],
+        answer: "Corroboration. Agreement across independent sources strengthens a claim considerably." },
+      { question: "Is usefulness a fixed property of a source? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. Usefulness always depends on the question being asked." },
+      { question: "What is the term for what a source leaves out?",
+        accept: ["omission", "omissions", "an omission"],
+        answer: "Omission — often as revealing as what a source includes." },
+      { question: "What is the term for judging the past knowing how it turned out?",
+        accept: ["hindsight"],
+        answer: "Hindsight. It distorts judgement of people who did not know what came next." },
+      { question: "Roughly how long should you spend per mark in a History exam?",
+        accept: ["1 minute", "a minute", "one minute", "1"],
+        answer: "About a minute a mark, including planning time." },
+      { question: "Is a 1960s school textbook a primary or secondary source for studying 1960s teaching?",
+        accept: ["primary", "primary source"],
+        answer: "Primary — it was produced at the time, by someone doing the teaching. The label depends on the question." },
+      { question: "Should you copy long quotations from a source into your answer? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. A few words anchored to your point is enough; copying eats time and demonstrates nothing." },
+      { question: "What should a 'how far do you agree' answer end with?",
+        accept: ["a judgement", "judgement", "a judgment", "judgment", "a conclusion"],
+        answer: "A judgement — a decision, with a reason for it. 'Both sides have a point' is not a conclusion." },
+      { question: "Name one reason two historians might reach different conclusions.",
+        accept: ["different evidence", "different emphasis", "different purpose", "different questions", "when they wrote", "new evidence", "different time"],
+        answer: "Different evidence available, different emphasis, different purposes, or writing in different periods." },
+      { question: "Explain why a heavily censored source can still be extremely useful.",
+        answer: "Because censorship tells you something reliable even when the content does not. A newspaper published in Nazi Germany cannot tell you what Germans actually thought, since nothing critical could appear — but it is first-rate evidence of what the regime wanted believed, which topics it considered dangerous, and how it wanted to be seen abroad. The limitation defines the question the source can answer rather than removing all value from it. This is the single most useful habit in source work: instead of asking whether a source is reliable, ask what it is reliable evidence FOR, and answer that question instead. (Mark this one yourself.)" },
+      { question: "Explain why 'primary sources are more reliable than secondary sources' is wrong.",
+        answer: "Because being present is not the same as being right. An eyewitness sees a fraction of an event, may misremember it within days, and often has strong reasons to present it a particular way — a general writing a report on a battle he lost has obvious motives. A historian writing decades later has access to many accounts, to documents nobody at the time could see, and to the outcome, which lets them weigh conflicting evidence against each other. Soviet archives opened after 1991 gave later historians information no contemporary observer could possibly have had. Both types have characteristic strengths and weaknesses, and the useful question is always what a particular source is good evidence for. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Primary sources are more reliable than secondary ones.\"",
+        right: "Being present is not being right. Eyewitnesses see fragments and have motives; historians see many accounts and later evidence. Neither type is automatically better." },
+      { wrong: "\"Saying a source is biased is a good point.\"",
+        right: "Every source has a viewpoint, so it distinguishes nothing. The mark is for explaining how that viewpoint shapes the content and what it is therefore good evidence for." },
+      { wrong: "\"A biased source is useless.\"",
+        right: "A biased source is excellent evidence of the view it holds. Propaganda is poor evidence about opinion and superb evidence about intentions." },
+      { wrong: "\"An interpretation is either right or wrong.\"",
+        right: "Interpretations are arguments, judged by how well they explain the evidence. Two can both be well-supported while disagreeing." },
+      { wrong: "\"Historians disagree because some of them are careless.\"",
+        right: "They usually disagree because they have different evidence, ask different questions, weight the same evidence differently, or write in different periods." },
+      { wrong: "\"You should stay balanced and avoid picking a side.\"",
+        right: "Balance means considering both sides, then deciding. An answer that never reaches a judgement is capped well below one that does." },
+    ],
+  },
+
+  "history/revision-and-exam-practice": {
+    summary:
+      "History is the subject where knowing the content is genuinely not enough. You have to select it, shape it into an argument, and do that against the clock in a room where nobody will remind you what the question is asking. This topic covers how to revise a content-heavy subject efficiently, what each command word actually wants, and how to run the exam itself.",
+    keyFacts: [
+      {
+        heading: "Revising a content-heavy subject",
+        points: [
+          "Rereading notes feels productive and is close to useless. Testing yourself is what builds recall — which is why every topic on this site has practice questions.",
+          "Spaced practice beats cramming: the same three hours spread over three weeks produces far better recall than three hours the night before.",
+          "Interleave topics rather than blocking. Mixing Weimar with the Cold War is harder and works better than an hour on each in turn.",
+          "Build timelines per topic. History marks depend on chronology, and a topic you cannot put in order is a topic you do not know.",
+          "Learn a small number of precise facts per topic — dates, figures, names. Ten specifics beat fifty vague impressions.",
+          "For each topic, be able to name three causes, three consequences, and one historical debate. That structure fits almost any question you will be asked.",
+        ],
+      },
+      {
+        heading: "Command words: what each one wants",
+        points: [
+          "Describe — say what happened. No analysis needed, and no marks for it either.",
+          "Explain why — give causes, developed with evidence. Several, ideally ranked.",
+          "How useful / How convincing — source or interpretation analysis with a judgement tied to the specific question.",
+          "How far do you agree — argue both sides, then decide. The decision is compulsory.",
+          "Write an account / narrative — a structured sequence showing how one thing led to another, not a list of events.",
+          "The command word tells you the shape of the answer. Writing an excellent explanation for a describe question earns describe-level marks.",
+        ],
+      },
+      {
+        heading: "Structuring answers",
+        points: [
+          "For explanation paragraphs: point, evidence, explanation of HOW the evidence supports the point, then link back to the question.",
+          "Use precise evidence — 'unemployment reached around 6 million by 1932' rather than 'unemployment was very high'.",
+          "For essays: a one-sentence argument at the start, developed paragraphs, a genuine counter-argument, and a conclusion that decides.",
+          "Deal with the strongest opposing point, not the weakest. Knocking down a straw man impresses nobody.",
+          "Signpost with connectives that show reasoning — 'this mattered because', 'however', 'the more significant factor was'.",
+          "Never begin by restating the question. It costs a minute and earns nothing.",
+        ],
+      },
+      {
+        heading: "Running the exam",
+        points: [
+          "Roughly a minute a mark, including reading and planning. Write the finish time for each question on the paper before you start.",
+          "Overwriting a low-mark question is the most common way to lose marks on a paper you actually knew.",
+          "Plan the long answers for two or three minutes. Unplanned essays drift and repeat.",
+          "Answer every part. A blank scores zero with certainty; a rushed paragraph rarely does.",
+          "If you run short, write your conclusion in note form rather than leaving it out — a judgement in bullet points still shows the judgement.",
+          "Leave five minutes to check that you answered the question that was actually asked, which is not always the one you revised for.",
+        ],
+      },
+      {
+        heading: "The mistakes that cost most",
+        points: [
+          "Telling the story instead of answering the question. Narrative is the default and it is almost always the lower band.",
+          "Ignoring the command word and writing what you prepared instead.",
+          "Vagueness: 'many people' and 'a lot of soldiers' where a figure exists.",
+          "Describing an interpretation instead of explaining why it differs from another.",
+          "Refusing to reach a judgement, which caps 'how far' answers regardless of quality.",
+          "Running out of time on the final question, which is usually the one worth most.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Retrieval practice", definition: "Testing yourself from memory rather than rereading — the most effective revision method there is." },
+      { term: "Spaced practice", definition: "Spreading revision over weeks rather than concentrating it, which produces far better long-term recall." },
+      { term: "Interleaving", definition: "Mixing topics within a revision session. It feels harder and works better than studying one at a time." },
+      { term: "Command word", definition: "The word telling you what kind of answer is required — describe, explain, how far do you agree." },
+      { term: "Chronology", definition: "The order in which things happened. Getting it wrong undermines any causal argument you make." },
+      { term: "Causation", definition: "Explaining why something happened, usually with several causes and a judgement about which mattered most." },
+      { term: "Significance", definition: "How important something was — measured by how many people it affected, for how long, and how deeply." },
+      { term: "Counter-argument", definition: "The strongest case against your position, which a good essay addresses rather than avoids." },
+      { term: "Judgement", definition: "A supported decision. Required by 'how far' questions and worth marks that balance alone cannot earn." },
+      { term: "Narrative drift", definition: "Sliding into telling the story instead of answering the question — the commonest way to lose marks in History." },
+      { term: "Signposting", definition: "Connectives that make your reasoning visible: 'this mattered because', 'however', 'the more significant factor'." },
+    ],
+    examTips: [
+      {
+        tip: "Underline the command word and the dates",
+        detail:
+          "Two seconds, and it prevents the two most expensive mistakes: answering the wrong kind of question, and writing about the wrong period.",
+      },
+      {
+        tip: "Write your finish times on the paper",
+        detail:
+          "Before you start, work out when each question must be finished. Timing is the difference between a good paper and a good paper with the last answer missing.",
+      },
+      {
+        tip: "Learn ten precise facts per topic",
+        detail:
+          "Dates, figures, names. '57,000 casualties on the first day of the Somme' does work in an answer that 'very many casualties' cannot.",
+      },
+      {
+        tip: "Prepare three causes and three consequences per topic",
+        detail:
+          "That structure answers most questions you will meet, and turns revision into something you can actually test yourself on.",
+      },
+      {
+        tip: "Practise under timed conditions",
+        detail:
+          "Knowing the content and producing it in eighteen minutes are separate skills. The second only improves by doing it with a clock running.",
+      },
+      {
+        tip: "Mark your own work against the mark scheme",
+        detail:
+          "Exam boards publish them free. Reading what earns each band teaches you more in an hour than rereading notes for five.",
+      },
+      {
+        tip: "Never leave a blank",
+        detail:
+          "A rushed paragraph scores something; an empty space scores nothing, with certainty. If time is gone, write a note-form conclusion.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "How should you revise a topic like Weimar Germany from scratch?",
+        steps: [
+          "Build a timeline first: 1919 Versailles, 1923 hyperinflation and Munich Putsch, 1924–29 recovery, 1929 Crash, 1933 Hitler appointed. Order before detail.",
+          "For each phase, write three causes and three consequences — that is the shape most questions want.",
+          "Pick ten precise facts: 2.6% in 1928, 37.3% in July 1932, 6 million unemployed, 30 January 1933.",
+          "Test yourself from blank paper. If you cannot produce the timeline without looking, you do not know it yet.",
+          "Then attempt past questions under time, and mark them against the published mark scheme.",
+          "Return to it three days later and again a fortnight later. That spacing is what moves it into long-term memory.",
+        ],
+        answer:
+          "Timeline first, then three causes and three consequences per phase, then ten precise facts, then blank-paper testing, then timed questions marked against the real mark scheme — revisited after three days and again after a fortnight.",
+      },
+      {
+        question:
+          "What is the difference between a describe answer and an explain answer?",
+        steps: [
+          "Describe asks what happened: two features, each with a supporting detail, no analysis and no introduction.",
+          "Explain asks why it happened: causes, each developed with evidence, and ideally ranked.",
+          "Example — describe the Munich Agreement: Britain and France accepted German annexation of the Sudetenland in September 1938 in exchange for Hitler's promise of no further demands.",
+          "Example — explain why it was signed: fear of another war, military unreadiness, economic constraints after the Depression, and a belief that Versailles had been unjust.",
+          "The trap: writing the explain answer for the describe question wastes time you needed elsewhere and earns nothing extra.",
+          "Always let the command word set the shape before you write a word.",
+        ],
+        answer:
+          "Describe wants what happened, with supporting detail and no analysis. Explain wants why, with developed causes and evidence. Writing the wrong one is wasted effort — the mark scheme cannot reward analysis on a describe question however good it is.",
+      },
+      {
+        question:
+          "You have 16 marks and 20 minutes for 'How far do you agree that the Depression caused Hitler's rise?' How do you use them?",
+        steps: [
+          "Two minutes planning: three points for, two against, and the judgement you will reach.",
+          "Open with the argument: the Depression was the decisive short-term cause, but only because longer-term weaknesses already existed.",
+          "For: Nazi votes rose from 2.6% in 1928 to 37.3% in 1932 as unemployment hit 6 million — the correlation is very strong.",
+          "For: the recovery had rested on American loans, so the Crash removed Weimar's basis of stability at a stroke.",
+          "Against: Versailles and the stab in the back myth had undermined Weimar from 1919, and Article 48 rule had hollowed out democracy before 1933.",
+          "Against: Hitler was appointed by a backroom deal, not elected — so conservative miscalculation mattered independently of the Depression.",
+          "Conclude by deciding: the Depression was necessary but not sufficient, and say what tipped you.",
+        ],
+        answer:
+          "Two minutes planning, then argue it: the Depression as decisive short-term cause with the vote and unemployment figures, the long-term weaknesses as necessary context, the von Papen deal as an independent factor, and a conclusion that the Depression was necessary but not sufficient.",
+      },
+      {
+        question:
+          "Why is telling the story the most common way to lose marks in History?",
+        steps: [
+          "Narrative is the natural way to talk about the past, so it is what everyone does under pressure.",
+          "It also feels like knowledge, because you are producing a great deal of accurate content.",
+          "But mark schemes reward selection and argument, so an accurate story with no argument sits in the lower bands.",
+          "The fix is structural: every paragraph should start with a point that answers the question, not with a date.",
+          "Then use the narrative as evidence FOR that point rather than as the point itself.",
+          "A quick test while writing: if a paragraph could be moved into an answer to a different question unchanged, it is narrative rather than argument.",
+        ],
+        answer:
+          "Because narrative is the natural mode and feels like knowledge, while mark schemes reward selection and argument. Start each paragraph with a point rather than a date, and test whether it would fit unchanged into a different question — if it would, it is narrative.",
+      },
+    ],
+
+    practice: [
+      { question: "What is the most effective revision method: rereading or testing yourself?",
+        accept: ["testing yourself", "testing", "self testing", "retrieval practice", "self-testing"],
+        answer: "Testing yourself — retrieval practice. Rereading feels productive and builds mostly false confidence." },
+      { question: "What is the term for spreading revision over weeks rather than cramming?",
+        accept: ["spaced practice", "spacing", "spaced repetition"],
+        answer: "Spaced practice. The same hours spread out produce far better recall." },
+      { question: "What is the term for mixing topics within a revision session?",
+        accept: ["interleaving", "interleave"],
+        answer: "Interleaving. It feels harder, which is part of why it works better." },
+      { question: "Roughly how long should you spend per mark?",
+        accept: ["1 minute", "a minute", "one minute", "1"],
+        answer: "About a minute a mark, including reading and planning time." },
+      { question: "Which command word means 'say what happened' with no analysis needed?",
+        accept: ["describe"],
+        answer: "Describe. Adding analysis there earns nothing and costs time you needed elsewhere." },
+      { question: "Which command word requires a judgement at the end?",
+        accept: ["how far do you agree", "how far", "how far do you agree?"],
+        answer: "'How far do you agree' — the decision is compulsory, not optional." },
+      { question: "What should each paragraph of an explanation answer begin with: a date or a point?",
+        accept: ["a point", "point"],
+        answer: "A point that answers the question. Starting with a date is how narrative drift begins." },
+      { question: "What is the term for sliding into telling the story instead of arguing?",
+        accept: ["narrative drift", "narrative", "storytelling"],
+        answer: "Narrative drift — the most common way to lose marks in History." },
+      { question: "Should you address the strongest or the weakest counter-argument?",
+        accept: ["strongest", "the strongest"],
+        answer: "The strongest. Defeating a weak objection impresses nobody and shows nothing." },
+      // "Roughly" is doing real work here, not softening the wording. The
+      // checker refuses accept lists containing two genuinely different
+      // numbers, because that is how a wrong answer once got marked right —
+      // and it only relaxes that for questions whose wording admits several
+      // answers. Which this one honestly does: two minutes or three are both
+      // sensible, and pretending there is a single correct figure would be a
+      // worse question as well as a failing one.
+      { question: "Roughly how many minutes should you spend planning a 16-mark essay?",
+        accept: ["2", "3", "2-3", "two", "three", "2 to 3"],
+        answer: "Two or three. Unplanned essays drift, repeat themselves and rarely reach a judgement." },
+      { question: "If you run out of time, should you leave a blank or write notes?",
+        accept: ["write notes", "notes", "write in notes", "note form"],
+        answer: "Write notes. A note-form conclusion still shows the judgement; a blank scores zero with certainty." },
+      { question: "How many precise facts should you aim to learn per topic?",
+        accept: ["10", "ten", "about 10"],
+        answer: "Around ten — dates, figures and names. Specifics do work that vague impressions cannot." },
+      { question: "Where can you find the criteria examiners use to award each band?",
+        accept: ["mark scheme", "the mark scheme", "mark schemes"],
+        answer: "The mark scheme, published free by every exam board." },
+      { question: "What should you underline first when you read a question?",
+        accept: ["command word", "the command word", "command word and dates"],
+        answer: "The command word — and the dates. Two seconds that prevent the two most expensive mistakes." },
+      { question: "Should an essay begin by restating the question? Answer yes or no.",
+        accept: ["no"],
+        answer: "No. It costs a minute and earns nothing. Open with your argument instead." },
+      { question: "Name one thing worth preparing for every topic besides the facts.",
+        accept: ["timeline", "causes", "consequences", "a debate", "historical debate", "three causes", "interpretations"],
+        answer: "A timeline, three causes, three consequences, and one historical debate — that structure fits almost any question." },
+      { question: "Explain why rereading notes is such an ineffective way to revise History.",
+        answer: "Because it produces the feeling of knowing without the ability to retrieve. Reading a page you have read before is easy and familiar, and your brain reads that fluency as understanding — which is why people close their notes feeling confident and then find the exam paper blank. Retrieval is a different skill from recognition, and the exam only tests retrieval. Testing yourself from blank paper is uncomfortable precisely because it exposes what you cannot yet produce, which is the information you actually needed. In History it matters even more than in other subjects, because you have to produce dates, figures and names from memory to support an argument, and vague recollection cannot do that job. (Mark this one yourself.)" },
+      { question: "Explain why the command word matters as much as the content.",
+        answer: "Because mark schemes are written around it, and they cannot reward what they are not looking for. A describe question awards marks for features with supporting detail — write a brilliant analysis of causes and the examiner has nothing to give you for it, because that is not what the criteria describe. A 'how far do you agree' question caps answers that never reach a judgement, however well informed they are. Students who lose marks on this rarely lack knowledge; they answer the question they revised for rather than the one printed. Underlining the command word before writing takes two seconds and is one of the highest-value habits available in the whole exam. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Rereading my notes is revision.\"",
+        right: "It builds familiarity, which feels like knowledge and is not. Retrieving from blank paper is what makes information available under exam conditions." },
+      { wrong: "\"Writing more gets more marks.\"",
+        right: "Marks come from relevance and argument. Overwriting a 4-mark question is one of the commonest ways to lose marks on a paper you knew well." },
+      { wrong: "\"Balanced means not choosing a side.\"",
+        right: "Balance means considering both sides and then deciding. 'How far' questions cap answers that never reach a judgement." },
+      { wrong: "\"Knowing the content is enough.\"",
+        right: "History marks selection, argument and judgement. An accurate narrative with no argument sits in the lower bands however much detail it contains." },
+      { wrong: "\"Past papers are for the last week before the exam.\"",
+        right: "They are the most efficient revision there is, and marking your own against the mark scheme teaches you what each band actually requires." },
+      { wrong: "\"If I run out of time I should leave the last question.\"",
+        right: "The last question is usually worth the most. A note-form conclusion scores something; a blank guarantees zero." },
     ],
   },
 
