@@ -145,6 +145,21 @@ The content checker is worth reading (`scripts/check-content.mjs`) — it exists
 
 It also holds **regression tests for the marking rule**, each one a bug that actually happened.
 
+## ✅ LOGIN IS LIVE (2026-08-09)
+
+Matthew registered and logged back in on the deployed site. Accounts are stored in Supabase. Project `Revision-Lab`, ID `jtthyslcvkldrozftbkg`, region eu-west-2 (London), free tier.
+
+**The one thing that went wrong, worth remembering:** creating the table was not enough. Registration failed with `PGRST205 "Could not find the table 'public.users' in the schema cache"`. **Since April 2026, new tables in the `public` schema are no longer automatically exposed to Supabase's API** — they need an explicit `grant`. Every tutorial written before then omits it. Fixed with `grant usage on schema public to service_role;` plus `grant all privileges on table public.users to service_role;` and `notify pgrst, 'reload schema';`. The corrected block is in `DEPLOYING.md` step 5b and is safe to re-run.
+
+**How it was diagnosed, because the method generalises:** the first symptom was "Something went wrong. Please try again." and nothing else — the real error was caught and discarded. Adding `console.error` in the catch block, plus a `describeFailure()` helper reporting status, URL, key KIND and Supabase's own message, turned it into a one-line answer. Logging privately while apologising publicly is the pattern; the helper is tested to never print the key itself.
+
+### Still outstanding now that real accounts exist
+
+- **Privacy policy and account deletion.** Legally required in the UK once other people's data is stored. Nothing should be shared widely until these exist.
+- **No rate limiting on login.** Nothing stops unlimited password guesses.
+- **Password reset is a placeholder page.** It needs an email service.
+- **Progress tracking** — the actual reason accounts exist. The dashboard has an empty state waiting for it.
+
 ## Accounts on the live site — Supabase (2026-08-09)
 
 **Matthew's call: Supabase, no new packages.** Supabase exposes every table as an HTTP API, so `fetch` is the entire client — the same reasoning as building the password hashing on Node's own `crypto`.

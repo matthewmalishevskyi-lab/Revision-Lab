@@ -89,7 +89,7 @@ Already done for you: page titles and descriptions, a sitemap covering every pag
 In Supabase, open **SQL Editor** and run exactly this:
 
 ```sql
-create table users (
+create table if not exists public.users (
   id            uuid primary key,
   name          text        not null,
   email         text        not null unique,
@@ -98,13 +98,30 @@ create table users (
 );
 
 -- Row Level Security ON, with no policies added.
--- That combination blocks the public key completely, while the service role
--- key the server uses bypasses RLS by design. Net effect: the browser can
--- never read this table, and the server always can.
-alter table users enable row level security;
+-- That combination blocks the public key completely, while the secret key the
+-- server uses bypasses RLS by design. Net effect: the browser can never read
+-- this table, and the server always can.
+alter table public.users enable row level security;
+
+-- ⚠️ DO NOT SKIP THESE TWO LINES.
+-- Since April 2026, new tables in the `public` schema are NOT automatically
+-- exposed to Supabase's API. Without them the table exists, shows up in the
+-- Table Editor, and the API still answers:
+--   PGRST205 "Could not find the table 'public.users' in the schema cache"
+-- Every tutorial written before April says just to create the table.
+grant usage on schema public to service_role;
+grant all privileges on table public.users to service_role;
+
+-- The API caches the list of tables rather than asking the database on every
+-- request. This tells it to re-read now instead of in a few minutes.
+notify pgrst, 'reload schema';
 ```
 
-The `unique` on `email` is doing real work: it is what stops two people registering the same address at the same instant. Only the database can promise that.
+Only `service_role` is granted anything — that is the role the secret key acts as, and the only thing that touches this table. `anon` and `authenticated`, the public roles, get nothing, so even if Row Level Security were switched off by accident the browser still could not read it. Two locks rather than one.
+
+The `unique` on `email` is doing real work too: it is what stops two people registering the same address at the same instant. Only the database can promise that.
+
+**This block is safe to re-run.** `if not exists` and repeated grants change nothing the second time, so if something is broken, running it again is a reasonable first move.
 
 ### 5c — Copy two settings
 
