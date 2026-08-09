@@ -311,6 +311,37 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M10 20.5v-5a2 2 0 014 0v5" />
     </>
   ),
+  // A ballot box — democracy, and its collapse.
+  vote: (
+    <>
+      <rect x="3.5" y="10.5" width="17" height="10" rx="2" />
+      <path d="M8 10.5V4.5h8v6M12 7v6M9.5 10.5h5" />
+    </>
+  ),
+  // A gavel — crime and punishment.
+  gavel: (
+    <>
+      <path d="M13.5 3.5l5.5 5.5-3 3-5.5-5.5z" />
+      <path d="M11.5 8.5L4 16v2.5L6 20.5h2L15.5 13" />
+      <path d="M14.5 17.5h6" />
+    </>
+  ),
+  // An atom — the nuclear age and the Cold War.
+  atom: (
+    <>
+      <circle cx="12" cy="12" r="2.2" />
+      <ellipse cx="12" cy="12" rx="9.5" ry="4" />
+      <ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(120 12 12)" />
+    </>
+  ),
+  // A suitcase — migration.
+  suitcase: (
+    <>
+      <rect x="2.5" y="7.5" width="19" height="13" rx="2.5" />
+      <path d="M8.5 7.5v-2a2 2 0 012-2h3a2 2 0 012 2v2M2.5 12h19" />
+    </>
+  ),
   // A scroll — sources and interpretations.
   scroll: (
     <>

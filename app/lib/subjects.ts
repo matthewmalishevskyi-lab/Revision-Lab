@@ -21,7 +21,7 @@ export type IconName =
   | "axis" | "compass" | "gauge" | "mic" | "clock"
   // History
   | "poppy" | "candle" | "factory" | "torch" | "crown" | "flask" | "ship"
-  | "castle" | "scroll";
+  | "castle" | "scroll" | "vote" | "gavel" | "atom" | "suitcase";
 
 export type Topic = {
   // The slug is the bit that appears in the URL, so it must be lowercase with
@@ -251,13 +251,34 @@ export const SUBJECTS: Subject[] = [
     // No content has been written for these yet, on purpose. Every page works
     // and shows an honest "content coming soon" panel until it is.
     // ─────────────────────────────────────────────────────────────────────────
+    // ── Why the topics sit where they do ──────────────────────────────────
+    // Year 9 is KS3: the narrative sweep most schools teach before GCSE
+    // begins — industry, empire, the world wars. It is where you learn the
+    // story.
+    //
+    // Years 10 and 11 are the GCSE units themselves: depth studies, thematic
+    // studies and period studies, each with its own exam skills.
+    //
+    // The British Empire moved from Year 10 to Year 9, where it is actually
+    // taught. The Industrial Revolution, the transatlantic slave trade, crime
+    // and punishment, and migration were missing entirely and are all widely
+    // taught — the first two at KS3, the last two as GCSE options.
+    //
+    // "The rise of the Nazis" (Year 9) and "Germany 1890–1945" (Year 10) look
+    // like a duplicate and are not. The first is the KS3 story of how a
+    // democracy fell; the second is the GCSE depth study that starts with the
+    // Kaiser and ends in 1945. Both are written to lean on each other rather
+    // than repeat.
     years: [
       {
         year: "Year 9",
         topics: [
+          { slug: "the-industrial-revolution", title: "The Industrial Revolution", icon: "factory" },
+          { slug: "the-transatlantic-slave-trade", title: "Slavery & abolition", icon: "ship" },
+          { slug: "the-british-empire", title: "The British Empire", icon: "globe" },
           { slug: "the-first-world-war", title: "The First World War", icon: "poppy" },
-          { slug: "the-russian-revolution", title: "The Russian Revolution", icon: "factory" },
-          { slug: "the-rise-of-the-nazis", title: "The rise of the Nazis", icon: "torch" },
+          { slug: "the-russian-revolution", title: "The Russian Revolution", icon: "torch" },
+          { slug: "the-rise-of-the-nazis", title: "The rise of the Nazis", icon: "news" },
           { slug: "the-second-world-war", title: "The Second World War", icon: "shield" },
           { slug: "the-holocaust", title: "The Holocaust", icon: "candle" },
         ],
@@ -265,19 +286,20 @@ export const SUBJECTS: Subject[] = [
       {
         year: "Year 10",
         topics: [
-          { slug: "germany-1890-1945", title: "Germany 1890–1945", icon: "news" },
+          { slug: "germany-1890-1945", title: "Germany 1890–1945", icon: "vote" },
           { slug: "conflict-and-tension-1918-1939", title: "Conflict & tension 1918–39", icon: "scales" },
           { slug: "elizabethan-england", title: "Elizabethan England", icon: "crown" },
           { slug: "medicine-through-time", title: "Medicine through time", icon: "flask" },
-          { slug: "the-british-empire", title: "The British Empire", icon: "ship" },
+          { slug: "crime-and-punishment", title: "Crime & punishment", icon: "gavel" },
         ],
       },
       {
         year: "Year 11",
         topics: [
-          { slug: "superpower-relations-and-the-cold-war", title: "Superpowers & the Cold War", icon: "globe" },
+          { slug: "superpower-relations-and-the-cold-war", title: "Superpowers & the Cold War", icon: "atom" },
           { slug: "norman-england-1066-1100", title: "Norman England", icon: "castle" },
           { slug: "america-1920-1973", title: "America 1920–1973", icon: "chart" },
+          { slug: "migration-to-britain", title: "Migration to Britain", icon: "suitcase" },
           { slug: "source-skills-and-interpretations", title: "Sources & interpretations", icon: "scroll" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
         ],
