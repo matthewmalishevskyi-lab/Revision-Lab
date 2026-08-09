@@ -1837,4 +1837,1221 @@ export const HISTORY: Record<string, TopicContent> = {
     ],
   },
 
+  "history/germany-1890-1945": {
+    summary:
+      "The GCSE depth study: Germany from an emperor with real power, through Europe's most modern democracy, to a dictatorship that destroyed itself and much of the continent with it. Where the Year 9 topic tells the story of how the Nazis rose, this covers the full period an exam will ask about — Kaiser, Weimar, Nazi rule, and life under it — and the source and interpretation skills the paper tests.",
+    keyFacts: [
+      {
+        heading: "Kaiser Wilhelm's Germany, 1890–1918",
+        points: [
+          "Germany was unified only in 1871 and industrialised at extraordinary speed, overtaking Britain in steel production by 1900.",
+          "The Kaiser held real power: he appointed the Chancellor and controlled foreign and military policy. The Reichstag was elected but limited.",
+          "Weltpolitik — 'world policy' — meant colonies and a battle fleet, which set Germany against Britain directly.",
+          "The SPD, a socialist party, became the largest in the Reichstag by 1912, showing the gap between the country's politics and its constitution.",
+          "By 1918 the Allied blockade had produced severe hunger. Naval mutiny at Kiel triggered revolution, and the Kaiser abdicated on 9 November 1918.",
+        ],
+      },
+      {
+        heading: "Weimar: crisis, recovery, collapse",
+        points: [
+          "1919–23, crisis: Versailles, the Spartacist uprising, the Kapp Putsch, French occupation of the Ruhr, and hyperinflation.",
+          "1924–29, the 'golden years' under Stresemann: the Rentenmark stabilised the currency, the Dawes and Young Plans restructured reparations, and Locarno and League membership restored Germany's standing.",
+          "Culture flourished — Bauhaus architecture, the cinema of Metropolis, cabaret in Berlin — and was hated by conservatives as decadence.",
+          "The recovery rested on American loans, which was its fatal weakness.",
+          "1929–33, collapse: the Wall Street Crash, unemployment near 6 million, government by Article 48 decree, and the rise of the extremes.",
+        ],
+      },
+      {
+        heading: "Control and consent under the Nazis",
+        points: [
+          "Terror: the SS under Himmler, the Gestapo secret police, and concentration camps from Dachau in 1933.",
+          "The Gestapo was smaller than people assumed — much of its information came from ordinary Germans denouncing neighbours, often over private grudges.",
+          "Propaganda under Goebbels: cheap radios, rallies at Nuremberg, censored press and film, and the 1936 Olympics as a showcase.",
+          "The legal system was Nazified: judges swore loyalty to Hitler, and the People's Court handed down thousands of death sentences.",
+          "Consent mattered too: unemployment fell from 6 million to near zero, which for many families outweighed everything else.",
+        ],
+      },
+      {
+        heading: "Life under Nazi rule",
+        points: [
+          "Women: encouraged out of work and into motherhood, with the Mother's Cross for large families — but the policy reversed as war demanded labour.",
+          "Young people: Hitler Youth and the League of German Maidens, a rewritten curriculum, and PE and racial science expanded.",
+          "Workers: unions abolished and replaced by the German Labour Front; Strength Through Joy offered holidays and the promise of a Volkswagen most never received.",
+          "Jews: escalating persecution from boycotts and the Nuremberg Laws to Kristallnacht and, from 1941, deportation and murder.",
+          "Opposition existed and was dangerous: the White Rose students, the Edelweiss Pirates, the Swing Youth, church figures like Niemöller, and the July 1944 bomb plot.",
+          "The war ended it: total war from 1943, bombing, and defeat in 1945 with Germany occupied and divided.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Kaiser", definition: "The German emperor. Wilhelm II held real power over the Chancellor, the army and foreign policy until 1918." },
+      { term: "Weltpolitik", definition: "Wilhelm II's 'world policy' of colonies and naval expansion, which brought Germany into rivalry with Britain." },
+      { term: "Spartacist uprising", definition: "The failed communist rising in Berlin in January 1919, crushed with the help of the Freikorps." },
+      { term: "Kapp Putsch", definition: "The 1920 attempt by right-wing Freikorps to seize Berlin, defeated by a general strike." },
+      { term: "Stresemann", definition: "The politician behind Weimar's recovery — currency stabilisation, the Dawes Plan, Locarno and League membership." },
+      { term: "Dawes Plan", definition: "The 1924 agreement rescheduling reparations and bringing American loans into Germany." },
+      { term: "Article 48", definition: "The clause allowing rule by presidential decree, used routinely from 1930 — before Hitler took office." },
+      { term: "Gestapo", definition: "The Nazi secret police, which relied heavily on denunciations from ordinary members of the public." },
+      { term: "Goebbels", definition: "Nazi Minister of Propaganda, responsible for radio, film, press and the mass rallies." },
+      { term: "Strength Through Joy", definition: "The Nazi leisure organisation offering workers holidays and cheap entertainment in place of trade unions." },
+      { term: "Hitler Youth", definition: "The compulsory Nazi youth organisation for boys, with the League of German Maidens for girls." },
+      { term: "White Rose", definition: "The Munich student group that distributed anti-Nazi leaflets; its leaders were executed in 1943." },
+      { term: "Edelweiss Pirates", definition: "Working-class young people who rejected the Hitler Youth and, later, helped Allied airmen and distributed leaflets." },
+      { term: "Total war", definition: "The 1943 mobilisation of the whole German economy and population for war, announced by Goebbels after Stalingrad." },
+    ],
+    examTips: [
+      {
+        tip: "Know the three Weimar phases and their dates",
+        detail:
+          "1919–23 crisis, 1924–29 recovery, 1929–33 collapse. Almost every Weimar question is easier once you place it in the right phase.",
+      },
+      {
+        tip: "Explain Nazi control as terror AND consent",
+        detail:
+          "The Gestapo mattered, but so did full employment and the sense of national recovery. Answers with only fear in them miss why so many people went along with it.",
+      },
+      {
+        tip: "Use the Gestapo's real size",
+        detail:
+          "It was far smaller than Germans believed, and depended on denunciations by ordinary people. That fact is more interesting and more accurate than an image of agents everywhere.",
+      },
+      {
+        tip: "Show the recovery was fragile",
+        detail:
+          "Stresemann's Germany ran on American loans. Saying that explains why the Wall Street Crash was so devastating there specifically.",
+      },
+      {
+        tip: "Test the source's origin, not just its content",
+        detail:
+          "Anything published in Germany after 1933 passed through censorship. Provenance is the first thing to comment on — who made it, when, and for whom.",
+      },
+      {
+        tip: "Name opposition groups precisely",
+        detail:
+          "White Rose, Edelweiss Pirates, Swing Youth, the Confessing Church, the July 1944 plot. Specific groups beat a general claim that 'some Germans resisted'.",
+      },
+      {
+        tip: "Watch the dates on women's policy",
+        detail:
+          "Women were pushed out of work in the 1930s and pulled back in during the war. A policy that reverses is a gift for a 'how far did life change' question.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why the Weimar Republic recovered between 1924 and 1929.",
+        steps: [
+          "Currency: the Rentenmark in late 1923 ended hyperinflation by replacing a worthless currency with a credible one.",
+          "Reparations: the Dawes Plan of 1924 rescheduled payments to a manageable level and opened the way for American loans.",
+          "Investment: those loans funded industry, housing and public works, and unemployment fell.",
+          "Diplomacy: Locarno in 1925 and League membership in 1926 brought Germany back into respectable international life.",
+          "Politics: with prosperity, extremist parties collapsed — the Nazis to 2.6% in 1928.",
+          "But note the weakness: it was borrowed prosperity, and could be withdrawn at short notice. Which is exactly what happened in 1929.",
+        ],
+        answer:
+          "Currency stabilisation, the Dawes Plan, American loans, and Stresemann's diplomacy restoring Germany's standing. But the recovery was built on foreign borrowing, so it lasted only as long as the loans did.",
+      },
+      {
+        question:
+          "How did the Nazis keep control of Germany between 1933 and 1939?",
+        steps: [
+          "Terror: the SS, the Gestapo, concentration camps and a Nazified legal system that removed any protection from the courts.",
+          "But the Gestapo was small, and worked mainly through denunciations — which means ordinary Germans participated in the surveillance.",
+          "Propaganda: Goebbels used cheap radios, rallies, censored film and press to make Nazism the only voice most people heard.",
+          "Organisation: the Hitler Youth, the German Labour Front and Strength Through Joy structured people's time and loyalty.",
+          "Consent: unemployment fell from around 6 million to near zero. For many families that was decisive.",
+          "Judgement: control rested on fear and genuine approval together, and separating them is the hardest part of the topic.",
+        ],
+        answer:
+          "Through terror, propaganda, mass organisations and real popularity together. The Gestapo depended on ordinary Germans informing on each other, and the collapse of unemployment bought consent that fear alone could not have produced.",
+      },
+      {
+        question:
+          "'Life improved for most Germans under the Nazis before 1939.' How far do you agree?",
+        steps: [
+          "For: unemployment fell dramatically, Strength Through Joy offered holidays previously unimaginable, and national pride recovered.",
+          "But test the employment figures: they excluded Jews and women pushed out of work, and were boosted by conscription and rearmament.",
+          "Against: wages rose more slowly than hours; unions were abolished so workers had no power to bargain.",
+          "Against, decisively: for Jews, Roma, disabled people, socialists and religious dissenters, life became progressively unbearable and then lethal.",
+          "Judgement: many Germans genuinely experienced improvement, which is precisely how the regime kept support — but the improvement was partly statistical and was paid for by the people excluded from it.",
+        ],
+        answer:
+          "For many ordinary Germans life did improve, and saying otherwise misunderstands why the regime was popular. But the figures were flattered by removing people from the count, workers lost all bargaining power, and for the persecuted it was catastrophic. Improvement for some was built on exclusion of others.",
+      },
+      {
+        question:
+          "A German newspaper photograph from 1936 shows cheering crowds at the Olympics. How useful is it as evidence about support for the Nazis?",
+        steps: [
+          "Content: it shows enthusiasm at a major public event, which is genuine information.",
+          "Provenance: it was published in Germany in 1936, so it passed through Goebbels' censorship. Nothing showing dissent could have appeared.",
+          "Purpose: the 1936 Olympics were deliberately staged to impress foreign visitors — antisemitic signs were temporarily removed.",
+          "So it is weak evidence for how much support existed, because no photograph could have shown anything else.",
+          "But it is strong evidence for something else: what the regime wanted seen, and how carefully it managed its image.",
+          "The general skill: a censored source is unreliable about reality and highly reliable about intentions.",
+        ],
+        answer:
+          "Weak evidence about actual support, since censorship made any other image impossible — but strong evidence about what the regime wanted the world to see. Turning a source's limitation into a different question it can answer is exactly what utility questions reward.",
+      },
+    ],
+
+    practice: [
+      { question: "In which year was Germany unified?",
+        accept: ["1871"],
+        answer: "1871. Germany was a very young country in 1914 — younger than many of its own citizens." },
+      { question: "What was Wilhelm II's policy of colonies and naval expansion called?",
+        accept: ["weltpolitik"],
+        answer: "Weltpolitik — 'world policy' — which set Germany directly against Britain." },
+      { question: "In which year did the Kaiser abdicate?",
+        accept: ["1918"],
+        answer: "1918, on 9 November, after naval mutiny at Kiel triggered revolution." },
+      { question: "Which failed communist rising took place in Berlin in January 1919?",
+        accept: ["spartacist", "spartacist uprising", "the spartacist uprising"],
+        answer: "The Spartacist uprising, crushed with the help of the Freikorps." },
+      { question: "Which 1920 right-wing attempt to seize Berlin was defeated by a general strike?",
+        accept: ["kapp putsch", "the kapp putsch"],
+        answer: "The Kapp Putsch. Workers defeated it by refusing to work, not by force of arms." },
+      { question: "Who was the politician behind Weimar's recovery after 1923?",
+        accept: ["stresemann", "gustav stresemann"],
+        answer: "Gustav Stresemann, responsible for the currency, the Dawes Plan and Locarno." },
+      { question: "Which 1924 plan rescheduled reparations and brought American loans?",
+        accept: ["dawes plan", "the dawes plan", "dawes"],
+        answer: "The Dawes Plan. Weimar's recovery ran on those loans — which is why 1929 hit so hard." },
+      { question: "Which years are called Weimar's 'golden years'? Give them as e.g. 1900-1905.",
+        accept: ["1924-1929", "1924-29", "1924 - 1929"],
+        answer: "1924 to 1929 — recovery between the crisis years and the collapse." },
+      { question: "Who was the Nazi Minister of Propaganda?",
+        accept: ["goebbels", "joseph goebbels"],
+        answer: "Joseph Goebbels, who controlled radio, film, press and the mass rallies." },
+      { question: "Who led the SS?",
+        accept: ["himmler", "heinrich himmler"],
+        answer: "Heinrich Himmler, who also controlled the Gestapo and the camp system." },
+      { question: "In which year did the first concentration camp, Dachau, open?",
+        accept: ["1933"],
+        answer: "1933 — within months of Hitler becoming Chancellor." },
+      { question: "What was the Nazi leisure organisation for workers called?",
+        accept: ["strength through joy", "kraft durch freude", "kdf"],
+        answer: "Strength Through Joy, which offered holidays in place of the trade unions it replaced." },
+      { question: "Which student group distributed anti-Nazi leaflets in Munich?",
+        accept: ["white rose", "the white rose"],
+        answer: "The White Rose. Its leaders were executed in 1943." },
+      { question: "Which working-class youth group rejected the Hitler Youth?",
+        accept: ["edelweiss pirates", "the edelweiss pirates"],
+        answer: "The Edelweiss Pirates, who later helped Allied airmen and distributed leaflets." },
+      { question: "In which year was the July bomb plot against Hitler?",
+        accept: ["1944"],
+        answer: "1944. Its failure was followed by thousands of arrests and executions." },
+      { question: "Which city hosted the 1936 Olympics used as a Nazi showcase?",
+        accept: ["berlin"],
+        answer: "Berlin. Antisemitic signs were temporarily removed for the foreign visitors." },
+      { question: "Explain why the Gestapo's reputation was more powerful than its actual size.",
+        answer: "Because its effectiveness depended on what Germans believed rather than on how many agents it had. The Gestapo was surprisingly small — in some large cities only a few dozen officers covered hundreds of thousands of people — and it could not possibly have watched everyone. What it had instead was a reputation for being everywhere, which meant people policed themselves and each other. Much of its information came from ordinary Germans denouncing neighbours, colleagues and even family, and historians have shown a striking proportion of those denunciations were motivated by private grudges rather than politics. The surveillance state ran on its citizens. (Mark this one yourself.)" },
+      { question: "Explain why sources produced in Germany after 1933 need particularly careful handling.",
+        answer: "Because everything published passed through Goebbels' propaganda ministry, so no source could contradict the regime and survive. A newspaper, photograph or film from Nazi Germany tells you what the government wanted seen, not necessarily what was happening. That does not make such sources useless — it changes the question they answer. They are excellent evidence about Nazi aims, methods and self-image, and about what the regime thought would be persuasive. For evidence about reality you need material the regime did not control: private diaries, foreign reporting, the records of exiled organisations, and post-war testimony, each of which carries its own problems. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The Gestapo had agents watching everyone.\"",
+        right: "It was small and relied on denunciations from the public — often over private grudges. The fear was the mechanism, not the manpower." },
+      { wrong: "\"Weimar was doomed from the start.\"",
+        right: "It recovered strongly between 1924 and 1929, with Nazi support collapsing to 2.6%. The Depression, not Versailles, is what killed it." },
+      { wrong: "\"Nazi employment figures show the economy genuinely boomed.\"",
+        right: "They excluded Jews and many women removed from the workforce, and were inflated by conscription and rearmament. Real, but flattered." },
+      { wrong: "\"Nobody in Germany opposed the Nazis.\"",
+        right: "The White Rose, Edelweiss Pirates, Swing Youth, Confessing Church and the July 1944 plotters all resisted. Most paid with their lives, which is why opposition stayed small." },
+      { wrong: "\"Nazi policy on women stayed the same throughout.\"",
+        right: "Women were pushed out of work in the 1930s and pulled back in as the war demanded labour. The reversal is a strong point to make in change-over-time questions." },
+      { wrong: "\"The Kaiser was a figurehead like a modern monarch.\"",
+        right: "Wilhelm II appointed the Chancellor and controlled foreign and military policy. That is why Germany's constitution mattered so much in 1914." },
+    ],
+  },
+
+  "history/conflict-and-tension-1918-1939": {
+    summary:
+      "The twenty years between the wars: a peace settlement that satisfied almost nobody, a League of Nations built to prevent war that could not, and a decade of aggression that ended in 1939. The question this period asks is the one worth carrying into any exam answer — was another war inevitable, or was it the result of choices people made?",
+    keyFacts: [
+      {
+        heading: "The peace settlement, 1919",
+        points: [
+          "The Big Three had different aims: Clemenceau wanted Germany crippled, Lloyd George wanted a peace that would not breed revenge, Wilson wanted his Fourteen Points and self-determination.",
+          "Versailles imposed: Article 231 war guilt, reparations of £6.6 billion, army capped at 100,000 with no air force or submarines, the Rhineland demilitarised, and 13% of German territory lost.",
+          "Germans called it a Diktat — a dictated peace — because they were not allowed to negotiate.",
+          "The other treaties broke up Austria-Hungary and the Ottoman Empire, creating new states across central Europe.",
+          "The settlement was harsh enough to enrage Germany but not harsh enough to prevent her recovering — often argued as its central flaw.",
+        ],
+      },
+      {
+        heading: "The League of Nations",
+        points: [
+          "Founded in 1920 to settle disputes peacefully, disarm, and improve living and working conditions.",
+          "The USA never joined, despite it being Wilson's idea, because the Senate refused to ratify. Germany joined in 1926, the USSR in 1934.",
+          "It had no army, and its main weapons were moral condemnation and economic sanctions.",
+          "Successes were real but small: Aaland Islands (1921), Upper Silesia (1921), Greece and Bulgaria (1925), and humanitarian work on refugees and disease.",
+          "Failures were large: Manchuria (1931) and Abyssinia (1935) showed it could not stop a determined great power.",
+        ],
+      },
+      {
+        heading: "The League's collapse",
+        points: [
+          "Manchuria 1931: Japan invaded, the Lytton Report took a year, and when it condemned Japan, Japan simply left the League.",
+          "Abyssinia 1935: Italy invaded, sanctions excluded oil and the Suez Canal stayed open to Italian ships.",
+          "The Hoare–Laval Pact, a secret Anglo-French plan to give Mussolini much of Abyssinia, leaked and destroyed the League's credibility outright.",
+          "The Depression made states pursue self-interest and made sanctions unattractive to countries needing trade.",
+          "By 1936 the lesson had been learned in Berlin, Rome and Tokyo: aggression carried no real cost.",
+        ],
+      },
+      {
+        heading: "The road to war, 1933–39",
+        points: [
+          "1933 Germany left the League; 1935 rearmament announced openly; 1936 the Rhineland remilitarised — a bluff that would have collapsed if France had acted.",
+          "1936–39 the Spanish Civil War let Germany and Italy test weapons and tactics; the bombing of Guernica showed what awaited cities.",
+          "March 1938 Anschluss with Austria; September 1938 Munich and the Sudetenland; March 1939 the rest of Czechoslovakia.",
+          "August 1939 the Nazi–Soviet Pact removed the two-front problem and sealed Poland's fate.",
+          "1 September 1939 Germany invaded Poland; Britain and France declared war on 3 September.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Treaty of Versailles", definition: "The 1919 settlement with Germany, imposing war guilt, reparations, disarmament and territorial loss." },
+      { term: "Article 231", definition: "The 'war guilt' clause requiring Germany to accept responsibility for causing the war." },
+      { term: "Diktat", definition: "The German term for Versailles — a dictated peace, imposed without negotiation." },
+      { term: "The Big Three", definition: "Clemenceau of France, Lloyd George of Britain and Wilson of the USA, whose differing aims shaped the settlement." },
+      { term: "Fourteen Points", definition: "Wilson's programme for peace, including self-determination and a League of Nations." },
+      { term: "League of Nations", definition: "The organisation founded in 1920 to prevent war, weakened from the outset by American absence and having no army." },
+      { term: "Sanctions", definition: "Economic penalties — the League's main weapon, and ineffective when key goods were excluded." },
+      { term: "Manchuria crisis", definition: "Japan's 1931 invasion, which the League condemned only after a year; Japan then left." },
+      { term: "Abyssinia crisis", definition: "Italy's 1935 invasion, after which weak sanctions and the Hoare–Laval Pact destroyed the League's credibility." },
+      { term: "Hoare–Laval Pact", definition: "The secret Anglo-French plan to hand Mussolini much of Abyssinia, which leaked and caused outrage." },
+      { term: "Rhineland", definition: "The demilitarised German territory remilitarised in 1936 in a gamble France chose not to challenge." },
+      { term: "Anschluss", definition: "The 1938 union of Germany and Austria, forbidden by Versailles." },
+      { term: "Munich Agreement", definition: "The 1938 deal giving Germany the Sudetenland in exchange for a promise of no further demands." },
+      { term: "Nazi–Soviet Pact", definition: "The August 1939 agreement between Hitler and Stalin that secretly divided Poland." },
+    ],
+    examTips: [
+      {
+        tip: "Give each of the Big Three their own aim",
+        detail:
+          "Clemenceau wanted security through weakness, Lloyd George feared a peace that bred revenge, Wilson wanted principles. The treaty was a compromise none of them fully wanted.",
+      },
+      {
+        tip: "Explain the League's weaknesses structurally",
+        detail:
+          "No army, no USA, decisions requiring unanimity, and sanctions that hurt the sanctioning country too. Structure explains the failures better than blaming individuals.",
+      },
+      {
+        tip: "Use Manchuria and Abyssinia as a pair",
+        detail:
+          "Manchuria showed the League was slow; Abyssinia showed its leading members would break their own rules. Together they explain 1936 onwards.",
+      },
+      {
+        tip: "The Rhineland was a bluff",
+        detail:
+          "German forces had orders to withdraw if the French resisted. Saying so turns 1936 from an event into a turning point that need not have happened.",
+      },
+      {
+        tip: "Give the League its successes too",
+        detail:
+          "Aaland Islands, Upper Silesia, refugee and health work. A balanced answer explains why it worked on small disputes and failed on great powers.",
+      },
+      {
+        tip: "Don't treat 1939 as inevitable",
+        detail:
+          "At several points — the Rhineland especially — different choices were available. Explaining why they were not taken is the analysis.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why Germans resented the Treaty of Versailles.",
+        steps: [
+          "Article 231 required Germany to accept guilt for causing the war, which most Germans simply did not believe.",
+          "Reparations of £6.6 billion appeared to condemn generations to paying for it.",
+          "Military limits — 100,000 men, no air force, no submarines — felt like national humiliation for a proud power.",
+          "Territory: 13% of German land and all colonies gone, with Germans placed under foreign rule in the new states.",
+          "Self-determination was applied to everyone except Germans, most obviously in banning the Anschluss.",
+          "Process: they were not allowed to negotiate, hence Diktat. Combined with the stab in the back myth, the grievance transferred to the new republic that had signed it.",
+        ],
+        answer:
+          "War guilt they rejected, reparations they thought ruinous, military limits they found humiliating, territory lost, and self-determination applied to everyone but them — all imposed without negotiation. Crucially the anger attached to the Weimar Republic that signed it, which is why Versailles mattered so much in German domestic politics.",
+      },
+      {
+        question:
+          "Why did the League of Nations fail in the 1930s?",
+        steps: [
+          "Structural: no army, so it could not enforce anything without members acting.",
+          "Membership: the USA never joined, and Germany and Japan left. The most powerful states were outside it.",
+          "Decision-making: unanimity meant any member could block action, and the process took months.",
+          "Sanctions: they hurt the countries applying them, so during the Depression nobody wanted to.",
+          "Manchuria and Abyssinia showed both problems at once — slowness, then Britain and France breaking their own principles in the Hoare–Laval Pact.",
+          "Consequence: after 1936 no aggressor had reason to believe the League would stop them.",
+        ],
+        answer:
+          "Because it had no force of its own, lacked the most powerful states, needed unanimity to act, and depended on sanctions its members would not apply during a depression. Manchuria and Abyssinia demonstrated all of it, and the Hoare–Laval leak proved its leading members did not believe in it either.",
+      },
+      {
+        question:
+          "'The remilitarisation of the Rhineland in 1936 was the last chance to stop Hitler.' How far do you agree?",
+        steps: [
+          "For: German forces were weak and under orders to withdraw if France resisted. France alone could have reversed it.",
+          "For: success convinced Hitler that the Allies would not act, and convinced German generals he was right.",
+          "Against: France was politically divided and would not act without Britain, which saw Germans marching into German territory.",
+          "Against: later chances existed, at Munich in 1938 and over Czechoslovakia in 1939.",
+          "Judgement: the last cheap chance rather than the last chance — after 1936, stopping Hitler meant war rather than a diplomatic reversal.",
+        ],
+        answer:
+          "It was the last chance to stop him cheaply. German troops had orders to withdraw if challenged, and success confirmed his judgement of the Allies. Later opportunities existed, but each would have required the war that 1936 might have prevented.",
+      },
+      {
+        question:
+          "Why did Britain and France not act more firmly in the 1930s?",
+        steps: [
+          "Memory of 1914–18 made public opinion overwhelmingly hostile to another war.",
+          "The Depression left both countries with severe financial constraints and rearmament competing against welfare.",
+          "Military unreadiness: British rearmament only accelerated from 1936.",
+          "A widespread belief that Versailles had been unjust made German demands look partly reasonable.",
+          "The USA was isolationist and the USSR was distrusted, so neither offered a reliable partner.",
+          "France would not act without Britain, and Britain repeatedly preferred negotiation.",
+        ],
+        answer:
+          "War memory, empty treasuries after the Depression, military unreadiness, a genuine belief that Versailles had been unfair, and no reliable allies. France would not move without Britain, and Britain preferred to negotiate — so nobody acted.",
+      },
+    ],
+
+    practice: [
+      { question: "In which year was the Treaty of Versailles signed?",
+        accept: ["1919"],
+        answer: "1919, at the Paris Peace Conference." },
+      { question: "Which article of the treaty was the 'war guilt' clause?",
+        accept: ["231", "article 231"],
+        answer: "Article 231, which most Germans rejected outright." },
+      { question: "What did Germans call the treaty, meaning a dictated peace?",
+        accept: ["diktat", "a diktat"],
+        answer: "A Diktat — they were not permitted to negotiate its terms." },
+      { question: "How large was the German army allowed to be under Versailles?",
+        accept: ["100000", "100,000"],
+        answer: "100,000 men, with no air force, no submarines and no tanks." },
+      { question: "Who was the French leader among the Big Three?",
+        accept: ["clemenceau", "georges clemenceau"],
+        answer: "Clemenceau, who wanted Germany permanently weakened." },
+      { question: "Whose Fourteen Points shaped the idea of the League?",
+        accept: ["wilson", "woodrow wilson", "president wilson"],
+        answer: "Woodrow Wilson — though the USA then never joined the League he proposed." },
+      { question: "In which year was the League of Nations founded?",
+        accept: ["1920"],
+        answer: "1920, without the United States." },
+      { question: "Which major power never joined the League?",
+        accept: ["usa", "united states", "america", "the usa"],
+        answer: "The USA. The Senate refused to ratify the treaty, despite the League being Wilson's idea." },
+      { question: "Which country invaded Manchuria in 1931?",
+        accept: ["japan"],
+        answer: "Japan. When the League finally condemned it, Japan left the League." },
+      { question: "Which country invaded Abyssinia in 1935?",
+        accept: ["italy"],
+        answer: "Italy, under Mussolini. Sanctions excluded oil and the Suez Canal stayed open." },
+      { question: "Which secret pact would have given Mussolini much of Abyssinia?",
+        accept: ["hoare laval", "hoare-laval", "hoare laval pact"],
+        answer: "The Hoare–Laval Pact. Its leak destroyed the League's credibility." },
+      { question: "In which year was the Rhineland remilitarised?",
+        accept: ["1936"],
+        answer: "1936. German troops had orders to withdraw if France resisted — and France did not." },
+      { question: "In which year was the Anschluss with Austria?",
+        accept: ["1938"],
+        answer: "1938, in March. Versailles had specifically forbidden it." },
+      { question: "Which region did Germany gain at Munich in 1938?",
+        accept: ["sudetenland", "the sudetenland"],
+        answer: "The Sudetenland, the German-speaking border area of Czechoslovakia." },
+      { question: "Which Spanish town's bombing in 1937 showed what air power could do to civilians?",
+        accept: ["guernica"],
+        answer: "Guernica, bombed by German aircraft during the Spanish Civil War." },
+      { question: "On what date did Germany invade Poland? Give it as day/month/year.",
+        accept: ["01/09/1939", "1 september 1939", "1/9/1939"],
+        answer: "1 September 1939. Britain and France declared war two days later." },
+      { question: "Explain why the League of Nations could settle small disputes but not large ones.",
+        answer: "Because its only real powers were persuasion and economic pressure, and both work on countries that care about international opinion or need trade. Small states in disputes like the Aaland Islands or Upper Silesia had every reason to accept arbitration rather than fight a war they could not afford. A great power was a different matter: Japan and Italy could simply absorb condemnation, and sanctions against them would have damaged the countries applying them at the worst possible moment economically. With no army, no United States, and a rule requiring unanimity, the League could only ever do what its most powerful members already wanted to do. (Mark this one yourself.)" },
+      { question: "'The Treaty of Versailles made the Second World War inevitable.' How far do you agree?",
+        answer: "It contributed powerfully but did not make war inevitable. Versailles created lasting grievance and gave Hitler ready-made arguments, and the German public's sense of injustice was real. But Nazi support fell to 2.6% in 1928 while every clause of the treaty was still in force, which shows grievance alone did not produce catastrophe. What turned it into one was the Depression, the collapse of the League's authority over Manchuria and Abyssinia, and a series of Allied decisions not to act — most cheaply over the Rhineland in 1936. Versailles supplied the fuel; the choices of the 1930s supplied the spark, and choices can be made differently. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The League of Nations achieved nothing.\"",
+        right: "It settled the Aaland Islands and Upper Silesia and did substantial refugee and public health work. It failed against great powers, which is a different claim." },
+      { wrong: "\"The USA led the League of Nations.\"",
+        right: "The League was Wilson's idea and the USA never joined — the Senate refused to ratify. Its absence was one of the League's central weaknesses." },
+      { wrong: "\"Versailles was the harshest treaty imaginable.\"",
+        right: "It was harsh, but the treaty Germany imposed on Russia at Brest-Litovsk in 1918 was harsher. It was harsh enough to enrage Germany and not harsh enough to disable her." },
+      { wrong: "\"Nothing could have stopped Hitler.\"",
+        right: "In 1936 German forces entering the Rhineland had orders to withdraw if France resisted. The choices not taken are part of the explanation." },
+      { wrong: "\"Sanctions failed because they are useless.\"",
+        right: "They failed over Abyssinia because oil was excluded and the Suez Canal stayed open — deliberate choices by Britain and France, not a flaw in the idea." },
+      { wrong: "\"Everyone in Britain wanted to appease Hitler.\"",
+        right: "Churchill and others argued against it throughout, and the Hoare–Laval leak caused public outrage. It was contested policy, not consensus." },
+    ],
+  },
+
+  "history/elizabethan-england": {
+    summary:
+      "Elizabeth I inherited a country divided by religion, threatened from abroad and broke, and she was a woman in a role everyone assumed only a man could hold. Over 45 years she survived plots, war with Spain and a papal order to depose her. This depth study covers her settlement, her enemies, the Armada, and the society of theatres, poverty and exploration underneath it all.",
+    keyFacts: [
+      {
+        heading: "The problems of 1558",
+        points: [
+          "Religion: England had swung Protestant under Edward VI, then violently Catholic under Mary I. Nobody knew which way Elizabeth would go.",
+          "Gender: many believed a woman could not rule. John Knox had published a pamphlet against female rulers the same year she took the throne.",
+          "Money: the Crown was around £300,000 in debt after wars and the debasement of the coinage.",
+          "Foreign threats: France and Scotland were allied against England, and Spain was the strongest power in Europe.",
+          "Legitimacy: Catholics regarded her parents' marriage as invalid, which made her illegitimate and Mary, Queen of Scots the rightful queen.",
+        ],
+      },
+      {
+        heading: "The religious settlement, 1559",
+        points: [
+          "The Act of Supremacy made Elizabeth Supreme GOVERNOR of the Church — a deliberate softening, since 'Head' was what Catholics objected to most.",
+          "The Act of Uniformity required attendance at church and set a single Book of Common Prayer, with wording vague enough that Catholics and Protestants could both accept it.",
+          "Fines for not attending — recusancy — were initially small, at a shilling a week.",
+          "The aim was outward conformity rather than belief. Elizabeth reportedly did not wish to 'make windows into men's souls'.",
+          "It satisfied most people and pleased neither extreme: Puritans wanted more reform, committed Catholics wanted Rome.",
+        ],
+      },
+      {
+        heading: "Plots, Mary and Spain",
+        points: [
+          "1569 the Northern Rebellion; 1571 the Ridolfi plot; 1583 Throckmorton; 1586 Babington. Most aimed to put Mary, Queen of Scots on the throne.",
+          "1570 the Pope excommunicated Elizabeth and released Catholics from allegiance, which made every English Catholic a potential traitor in the government's eyes.",
+          "Walsingham's spy network intercepted the Babington letters; Mary was executed in 1587 after nineteen years of captivity.",
+          "Relations with Spain worsened over English support for the Dutch revolt, Drake's raids on Spanish treasure, and religion.",
+          "The Armada sailed in 1588: around 130 ships, defeated by English gunnery, fireships at Calais and then storms. Around 20,000 Spaniards died, most from disease and shipwreck rather than battle.",
+        ],
+      },
+      {
+        heading: "Society, poverty and exploration",
+        points: [
+          "The 'Golden Age' saw theatres open — the Globe in 1599 — with Shakespeare and Marlowe writing for audiences of every class.",
+          "The wealthy built great houses and displayed status through fashion, which sumptuary laws tried to regulate.",
+          "Poverty rose sharply: population growth, inflation, enclosure, bad harvests and the closure of the monasteries which had provided relief.",
+          "Attitudes distinguished the 'deserving' from the 'idle' poor, with harsh punishments for vagrancy.",
+          "The 1601 Poor Law made each parish responsible for its poor, funded by a local rate — the framework for English poor relief for over 200 years.",
+          "Exploration: Drake circumnavigated the globe 1577–80; Raleigh's Virginia colony failed; and English involvement in the slave trade began under Hawkins.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Religious Settlement 1559", definition: "Elizabeth's compromise establishing a Protestant church with enough ambiguity for most Catholics to conform outwardly." },
+      { term: "Supreme Governor", definition: "Elizabeth's title as head of the Church — chosen over 'Supreme Head' to be less offensive to Catholics." },
+      { term: "Act of Uniformity", definition: "The 1559 law requiring church attendance and a single Book of Common Prayer." },
+      { term: "Recusant", definition: "Someone who refused to attend Church of England services, usually a Catholic, and was fined for it." },
+      { term: "Puritans", definition: "Protestants who thought the settlement had not gone far enough and wanted the church purified of Catholic practice." },
+      { term: "Excommunication 1570", definition: "The papal bull declaring Elizabeth deposed and releasing Catholics from obedience, which made loyalty and faith incompatible." },
+      { term: "Mary, Queen of Scots", definition: "Elizabeth's Catholic cousin and heir, imprisoned for nineteen years and executed in 1587 after the Babington plot." },
+      { term: "Babington plot", definition: "The 1586 conspiracy uncovered by Walsingham, whose intercepted letters implicated Mary directly." },
+      { term: "Walsingham", definition: "Elizabeth's spymaster, whose network of informants and code-breakers uncovered the major plots." },
+      { term: "Spanish Armada", definition: "The 1588 invasion fleet of around 130 ships, defeated by English tactics, fireships and weather." },
+      { term: "Fireships", definition: "Vessels set alight and sent among the anchored Armada at Calais, breaking its defensive formation." },
+      { term: "Vagrancy", definition: "Being homeless and without work — treated as a crime in Elizabethan England and punished harshly." },
+      { term: "Poor Law 1601", definition: "The law making each parish responsible for its poor through a local rate, lasting over 200 years." },
+      { term: "Sumptuary laws", definition: "Laws restricting what clothing people of each social rank could wear, to keep status visible." },
+    ],
+    examTips: [
+      {
+        tip: "Explain the settlement as deliberate ambiguity",
+        detail:
+          "'Supreme Governor' rather than 'Head', and prayer book wording both sides could live with. It was designed to secure outward conformity, not to convert anyone.",
+      },
+      {
+        tip: "Use 1570 as the turning point for Catholics",
+        detail:
+          "Before excommunication, an English Catholic could be loyal and Catholic. Afterwards the Pope had made those incompatible — which is why persecution hardened.",
+      },
+      {
+        tip: "Give the Armada several causes of defeat",
+        detail:
+          "English gunnery and faster ships, the fireships at Calais, the plan's dependence on meeting Parma's army, and the weather. The 'Protestant wind' alone is not an answer.",
+      },
+      {
+        tip: "Test the 'Golden Age'",
+        detail:
+          "Theatres and great houses coexisted with rising poverty, harvest failure and harsh vagrancy laws. Whose golden age is a question worth asking in the answer.",
+      },
+      {
+        tip: "Explain why Elizabeth hesitated over Mary",
+        detail:
+          "Executing an anointed queen set a precedent that threatened all monarchs, including herself. Nineteen years of delay was calculation, not weakness.",
+      },
+      {
+        tip: "Link poverty to specific causes",
+        detail:
+          "Population growth, inflation, enclosure, bad harvests in the 1590s, and the loss of monastic relief. Four named causes beat a general statement every time.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why Elizabeth's religious settlement was designed as a compromise.",
+        steps: [
+          "The problem: England had lurched between Protestant and Catholic in a decade, with executions under Mary I still fresh.",
+          "A strongly Protestant settlement risked Catholic rebellion and foreign invasion; a Catholic one risked Protestant revolt and her own position.",
+          "So the wording was softened: Supreme Governor rather than Head, which removed the title Catholics most objected to.",
+          "The prayer book used phrasing on communion that both sides could read their own way.",
+          "Enforcement was light at first — a shilling a week for not attending — because the aim was outward conformity, not belief.",
+          "Judgement: it worked for over a decade, and only hardened after the Pope excommunicated her in 1570, which forced Catholics to choose.",
+        ],
+        answer:
+          "Because Elizabeth needed stability more than doctrinal purity, after a decade of violent religious swings. The settlement demanded outward conformity and left belief alone — which held until the excommunication of 1570 made loyalty and Catholicism incompatible.",
+      },
+      {
+        question:
+          "Explain why the Spanish Armada was defeated.",
+        steps: [
+          "English ships were smaller, faster and more manoeuvrable, and their guns could be reloaded more quickly for sustained fire.",
+          "Spanish tactics assumed boarding, which English captains simply refused to allow by keeping their distance.",
+          "The plan required the Armada to collect Parma's army from the Netherlands, but there was no deep-water port and no way to coordinate the timing.",
+          "The fireships at Calais broke the crescent formation, and once scattered it could not reform.",
+          "The battle of Gravelines then damaged the fleet badly, and the wind forced it north around Scotland and Ireland where storms wrecked many ships.",
+          "Judgement: English tactics created the opportunity; the flawed plan made it fatal; the weather completed it.",
+        ],
+        answer:
+          "English gunnery and manoeuvrability, a plan that depended on an impossible rendezvous with Parma, the fireships at Calais that destroyed the formation, and finally the storms on the route home. The weather finished a fleet that was already beaten.",
+      },
+      {
+        question:
+          "'The Elizabethan age was a Golden Age.' How far do you agree?",
+        steps: [
+          "For: theatre flourished with Shakespeare and Marlowe, great houses were built, exploration expanded English horizons, and the Armada victory produced enormous national confidence.",
+          "For: religious violence was far less severe than under Mary I or in France.",
+          "Against: poverty rose sharply, with population growth, inflation and enclosure, and the harvests of the 1590s brought real hunger.",
+          "Against: vagrancy was punished by whipping and branding, and Catholic priests were executed as traitors.",
+          "Against: prosperity was concentrated — the great houses were built by the same landowners whose enclosures displaced the poor.",
+          "Judgement: a golden age in culture and national confidence, for those with means, and a hard and worsening one for the poor.",
+        ],
+        answer:
+          "Golden in culture, exploration and national confidence, and for the landowning class. For the growing numbers in poverty, facing enclosure, inflation and the harvests of the 1590s, it was not. The question worth answering is whose golden age it was.",
+      },
+      {
+        question:
+          "Why did Elizabeth wait nineteen years before executing Mary, Queen of Scots?",
+        steps: [
+          "Mary was an anointed queen, and executing one set a precedent that could be used against Elizabeth herself.",
+          "It risked war with Catholic France and Spain, both of which had reason to intervene.",
+          "Mary was also Elizabeth's cousin and named heir, so the succession was involved.",
+          "Alive but imprisoned, Mary was a known and containable danger; dead she became a martyr.",
+          "What changed was the Babington plot of 1586, where Walsingham's intercepted letters proved Mary's direct approval of a plan to assassinate Elizabeth.",
+          "Even then Elizabeth delayed signing, and afterwards blamed her secretary — which tells you how dangerous she judged the act to be.",
+        ],
+        answer:
+          "Because killing an anointed queen threatened the principle of monarchy itself and risked foreign war, and because a contained Mary was safer than a martyred one. Only the Babington letters, proving her direct involvement in a murder plot, made it unavoidable.",
+      },
+    ],
+
+    practice: [
+      { question: "In which year did Elizabeth I become queen?",
+        accept: ["1558"],
+        answer: "1558, inheriting religious division, debt and foreign threats." },
+      { question: "In which year was the religious settlement?",
+        accept: ["1559"],
+        answer: "1559, comprising the Acts of Supremacy and Uniformity." },
+      { question: "What title did Elizabeth take as head of the Church?",
+        accept: ["supreme governor"],
+        answer: "Supreme Governor — deliberately softer than 'Supreme Head', which Catholics found intolerable." },
+      { question: "What is the term for someone who refused to attend church?",
+        accept: ["recusant", "a recusant", "recusants"],
+        answer: "A recusant, fined initially a shilling a week." },
+      { question: "Which Protestants wanted the church purified further?",
+        accept: ["puritans", "the puritans"],
+        answer: "The Puritans, who thought the settlement had not gone nearly far enough." },
+      { question: "In which year was Elizabeth excommunicated by the Pope?",
+        accept: ["1570"],
+        answer: "1570. It released Catholics from allegiance and made loyalty and faith incompatible." },
+      { question: "Who was Elizabeth's spymaster?",
+        accept: ["walsingham", "francis walsingham", "sir francis walsingham"],
+        answer: "Sir Francis Walsingham, whose network uncovered the major plots." },
+      { question: "Which 1586 plot led to Mary, Queen of Scots' execution?",
+        accept: ["babington", "babington plot", "the babington plot"],
+        answer: "The Babington plot, in which intercepted letters implicated Mary directly." },
+      { question: "In which year was Mary, Queen of Scots executed?",
+        accept: ["1587"],
+        answer: "1587, after nineteen years of imprisonment in England." },
+      { question: "In which year did the Spanish Armada sail?",
+        accept: ["1588"],
+        answer: "1588. Around 130 ships set out and roughly half never returned." },
+      { question: "What tactic was used against the anchored Armada at Calais?",
+        accept: ["fireships", "fire ships", "fireship"],
+        answer: "Fireships — vessels set alight and sent among the fleet, breaking its formation." },
+      { question: "In which year was the Poor Law that made parishes responsible for their poor?",
+        accept: ["1601"],
+        answer: "1601. It set the framework for English poor relief for over 200 years." },
+      { question: "Which theatre opened in 1599?",
+        accept: ["globe", "the globe", "globe theatre"],
+        answer: "The Globe, where much of Shakespeare's work was performed." },
+      { question: "Who circumnavigated the globe between 1577 and 1580?",
+        accept: ["drake", "francis drake", "sir francis drake"],
+        answer: "Sir Francis Drake, returning with an enormous haul of Spanish treasure." },
+      { question: "What were laws restricting what each rank could wear called?",
+        accept: ["sumptuary laws", "sumptuary"],
+        answer: "Sumptuary laws, intended to keep social status visible at a glance." },
+      { question: "Roughly how many ships were in the Armada?",
+        accept: ["130", "about 130"],
+        answer: "Around 130. Roughly half were lost, mostly to storms rather than to English guns." },
+      { question: "Explain why the excommunication of 1570 changed the position of English Catholics.",
+        answer: "Because it forced a choice that had previously been avoidable. Before 1570 an English Catholic could attend church outwardly, pay a small fine if they refused, and remain a loyal subject — which is exactly what Elizabeth's settlement was designed to allow. The papal bull declared her deposed and released Catholics from obedience, which meant that remaining loyal to Rome now implied disloyalty to the Queen. The government could no longer treat Catholicism as a private matter, and after the plots of the 1570s and 1580s it did not: fines rose sharply, and harbouring a priest became treason. The Pope, intending to help English Catholics, made their position far more dangerous. (Mark this one yourself.)" },
+      { question: "Explain why poverty increased so much in Elizabethan England.",
+        answer: "Several pressures arrived together. The population grew by perhaps a third across the reign, so more people competed for the same work and food. Prices rose faster than wages, partly because of the debased coinage inherited from earlier reigns and partly because of that population pressure. Landowners enclosed common land for sheep, which needed far fewer workers than arable farming and removed the grazing poorer families relied on. The dissolution of the monasteries a generation earlier had destroyed the main source of charitable relief, and nothing had replaced it. Then the harvests of the 1590s failed repeatedly. The 1601 Poor Law was the eventual admission that the problem was too big for charity. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The weather alone defeated the Armada.\"",
+        right: "English gunnery, the fireships at Calais and a plan that depended on an impossible rendezvous with Parma had already broken it. The storms finished a beaten fleet." },
+      { wrong: "\"Elizabeth persecuted Catholics from the start.\"",
+        right: "The 1559 settlement was deliberately mild and aimed at outward conformity. Persecution hardened after the 1570 excommunication and the plots that followed." },
+      { wrong: "\"Everyone loved Elizabeth throughout her reign.\"",
+        right: "There were rebellions, repeated assassination plots, and real hardship in the 1590s. The image of Gloriana was carefully constructed propaganda." },
+      { wrong: "\"The Golden Age was golden for everyone.\"",
+        right: "Theatres and great houses existed alongside rising poverty, enclosure and failed harvests. Vagrancy was punished by whipping and branding." },
+      { wrong: "\"Elizabeth killed Mary as soon as she could.\"",
+        right: "She waited nineteen years, because executing an anointed queen threatened monarchy itself. Only the Babington letters forced her hand." },
+      { wrong: "\"England was a Protestant country by 1559.\"",
+        right: "Much of the country, especially the north, remained Catholic in belief for decades. The settlement produced outward conformity long before it produced conversion." },
+    ],
+  },
+
+  "history/medicine-through-time": {
+    summary:
+      "A thousand years of medicine, from monks treating patients with prayer and bloodletting to gene therapy and the NHS. The thematic study does not want a list of discoveries — it wants you to explain WHY change happened when it did, and why it sometimes did not happen for centuries. That means thinking in factors: individuals, war, government, science and technology, chance, and above all attitudes.",
+    keyFacts: [
+      {
+        heading: "Medieval medicine, c.1250–1500",
+        points: [
+          "Ideas came from Hippocrates and Galen, over a thousand years old and largely unquestioned: the Four Humours — blood, phlegm, black bile and yellow bile — which had to be kept in balance.",
+          "Treatment followed the theory: bloodletting and purging to remove excess humours, and 'opposites' such as cooling food for a fever.",
+          "The Church preserved learning but discouraged challenging Galen, whose ideas fitted Christian teaching about a purposeful body.",
+          "Supernatural explanations sat alongside: disease as punishment for sin, or caused by the alignment of planets.",
+          "Miasma theory blamed bad air, which was wrong but produced some useful public health responses.",
+          "The Black Death (1348–50) killed perhaps a third of Europe. Explanations included God's punishment, miasma and planetary alignment; responses included flagellation and killing cats — the actual carriers' predators.",
+        ],
+      },
+      {
+        heading: "The Renaissance, c.1500–1700",
+        points: [
+          "Vesalius (1543) dissected human bodies and showed Galen had made errors — Galen had dissected animals. Vesalius corrected the anatomy but did not improve treatment.",
+          "Paré (1500s), an army surgeon, replaced cauterising gunshot wounds with a soothing ointment after running out of oil, and used ligatures to tie arteries. Chance plus observation.",
+          "Harvey (1628) proved blood circulates, pumped by the heart — destroying Galen's account of blood being made in the liver and consumed.",
+          "The printing press spread these ideas fast and accurately, which mattered as much as the discoveries.",
+          "But treatment barely changed: knowing blood circulated did not help anyone until transfusion and blood groups, centuries later.",
+          "The Great Plague (1665) produced quarantine and the killing of dogs and cats — better organised than 1348, but based on the same wrong theory.",
+        ],
+      },
+      {
+        heading: "The Industrial period, c.1700–1900",
+        points: [
+          "Jenner (1796) noticed milkmaids who had cowpox did not get smallpox, tested it and developed vaccination. He could not explain WHY it worked, which is why it was resisted.",
+          "Vaccination was made compulsory for smallpox in 1853 and enforced from 1871 — a major intervention by a government that mostly believed in laissez-faire.",
+          "Anaesthetics: ether (1846) and chloroform (1847). Chloroform's acceptance was helped enormously by Queen Victoria using it in 1853.",
+          "Antiseptics: Lister used carbolic acid from 1865, cutting surgical deaths sharply once germ theory explained why it worked.",
+          "Pasteur (1861) proved germ theory: microbes cause decay and disease, not the other way round. Koch then identified specific bacteria for specific diseases.",
+          "Public health: John Snow removed the Broad Street pump handle in 1854 and showed cholera was water-borne, though he could not say what the agent was.",
+          "The 1875 Public Health Act finally forced local councils to provide clean water, sewers and inspectors, after the 1867 Reform Act gave working men the vote.",
+        ],
+      },
+      {
+        heading: "Modern medicine, c.1900–present",
+        points: [
+          "Magic bullets: Salvarsan 606 (1909) for syphilis and Prontosil (1932) — chemicals targeting specific bacteria.",
+          "Penicillin: Fleming noticed mould killing bacteria by chance in 1928 but could not mass-produce it. Florey and Chain developed it in 1940, and the US government funded production for D-Day.",
+          "The NHS (1948) made healthcare free at the point of use, following the Beveridge Report's attack on the 'five giants' including Disease.",
+          "DNA's structure (1953) by Watson, Crick, Franklin and Wilkins opened genetics; the Human Genome Project was completed in 2003.",
+          "Technology transformed diagnosis: X-rays, then scans, then keyhole surgery and transplants.",
+          "New problems: antibiotic resistance, lifestyle diseases, an ageing population, and the cost of a health service that can now do far more than it can afford.",
+        ],
+      },
+      {
+        heading: "Thinking in factors",
+        points: [
+          "Individuals: Vesalius, Harvey, Jenner, Pasteur, Fleming. But no individual works without the conditions to be heard.",
+          "War: Paré's surgery, penicillin's mass production, plastic surgery and blood transfusion all advanced through war.",
+          "Government: from doing almost nothing under laissez-faire, to compulsory vaccination, the 1875 Act and finally the NHS.",
+          "Science and technology: the microscope, the printing press, chemical industry, X-rays and computing.",
+          "Chance: Paré running out of oil, Fleming's contaminated dish, Jenner's milkmaids.",
+          "Attitudes: the single biggest brake. Galen went unchallenged for 1,400 years not because nobody could see the errors but because nobody was looking for them.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Four Humours", definition: "The theory that health depended on balancing blood, phlegm, black bile and yellow bile — dominant for over 1,500 years." },
+      { term: "Galen", definition: "The Roman doctor whose ideas dominated European medicine until the Renaissance, partly because they fitted Christian teaching." },
+      { term: "Miasma", definition: "The theory that disease was caused by bad air. Wrong, but it prompted some useful cleaning and drainage." },
+      { term: "Bloodletting", definition: "Draining blood to rebalance the humours — the standard treatment for centuries, and usually harmful." },
+      { term: "Black Death", definition: "The plague of 1348–50 that killed perhaps a third of Europe's population." },
+      { term: "Vesalius", definition: "The anatomist whose 1543 dissections proved Galen wrong about human anatomy." },
+      { term: "Paré", definition: "The army surgeon who replaced cauterisation with ointment and used ligatures to tie arteries." },
+      { term: "Harvey", definition: "The physician who proved in 1628 that blood circulates, pumped by the heart." },
+      { term: "Jenner", definition: "The doctor who developed smallpox vaccination in 1796 after observing that milkmaids with cowpox were immune." },
+      { term: "Vaccination", definition: "Giving a mild or related infection to produce immunity — Jenner's discovery, though he could not explain why it worked." },
+      { term: "Anaesthetic", definition: "A substance preventing pain during surgery. Ether from 1846, chloroform from 1847." },
+      { term: "Antiseptic", definition: "A substance killing germs during surgery — Lister's carbolic acid from 1865." },
+      { term: "Germ Theory", definition: "Pasteur's 1861 proof that microbes cause disease and decay, rather than being produced by it." },
+      { term: "Koch", definition: "The scientist who identified the specific bacteria causing specific diseases, turning germ theory into practical medicine." },
+      { term: "John Snow", definition: "The doctor who traced the 1854 cholera outbreak to the Broad Street pump, showing it was water-borne." },
+      { term: "Public Health Act 1875", definition: "The law compelling councils to provide clean water, sewers and inspection — the end of pure laissez-faire in health." },
+      { term: "Magic bullet", definition: "A chemical that kills a specific microbe without harming the patient, such as Salvarsan 606." },
+      { term: "Penicillin", definition: "The first antibiotic, noticed by Fleming in 1928 and developed for mass production by Florey and Chain from 1940." },
+      { term: "Beveridge Report", definition: "The 1942 report identifying five giants including Disease, which led to the NHS." },
+      { term: "NHS", definition: "The National Health Service, founded in 1948, providing healthcare free at the point of use." },
+      { term: "Antibiotic resistance", definition: "Bacteria evolving to survive antibiotics — one of the central medical problems of the present century." },
+    ],
+    examTips: [
+      {
+        tip: "Answer with factors, not a list of discoveries",
+        detail:
+          "Individuals, war, government, science and technology, chance, attitudes. Almost every question on this paper is really asking which factor mattered most, and when.",
+      },
+      {
+        tip: "Separate understanding from treatment",
+        detail:
+          "Vesalius and Harvey were right and changed nothing for patients for centuries. Explaining that gap is one of the most valuable moves in the whole topic.",
+      },
+      {
+        tip: "Track continuity as hard as change",
+        detail:
+          "The Four Humours lasted 1,500 years. Bloodletting outlived Harvey by 200. Examiners want the periods when nothing changed explained too.",
+      },
+      {
+        tip: "Compare the two plagues",
+        detail:
+          "1348 and 1665 had almost identical explanations, but 1665 saw better organisation — quarantine, orders, records. Better response, same wrong theory.",
+      },
+      {
+        tip: "Give chance its due, then qualify it",
+        detail:
+          "Fleming's contaminated dish was luck; recognising what it meant was training. Chance favours the prepared, and saying so is a strong line.",
+      },
+      {
+        tip: "Explain why Jenner faced resistance",
+        detail:
+          "He proved vaccination worked but could not explain WHY. Without germ theory it looked like superstition, and the Royal Society rejected his paper.",
+      },
+      {
+        tip: "Connect political change to public health",
+        detail:
+          "The 1867 Reform Act gave working men the vote; the 1875 Public Health Act followed. Governments act when the people affected can vote.",
+      },
+      {
+        tip: "Use the same-name test on your dates",
+        detail:
+          "1543 Vesalius, 1628 Harvey, 1796 Jenner, 1861 Pasteur, 1928 Fleming, 1948 NHS. Six dates carry most of the narrative — learn those before anything else.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why the ideas of Galen went unchallenged for so long.",
+        steps: [
+          "The Church approved of him: Galen described a body designed with purpose, which fitted the idea of a Creator.",
+          "Dissection of humans was rare, so his errors were hard to detect even by those who suspected them.",
+          "Medieval education taught by learning authorities rather than testing them — knowledge came from texts, not experiments.",
+          "There was no printing press before the 1450s, so ideas spread slowly and by hand-copying, which favoured the established text.",
+          "There was no better alternative on offer, and the humours explained observable things like fever and swelling reasonably well.",
+          "The key point: this is an ATTITUDES answer. The obstacle was not lack of ability but a culture that valued authority over enquiry.",
+        ],
+        answer:
+          "Because attitudes made challenge almost unthinkable: the Church approved his ideas, education taught authority rather than enquiry, human dissection was rare, and no better theory existed. The obstacle was cultural, not intellectual.",
+      },
+      {
+        question:
+          "Explain why penicillin was not mass-produced until the 1940s, despite Fleming's discovery in 1928.",
+        steps: [
+          "Fleming noticed the mould killing bacteria and published, but could not produce it in useful quantities.",
+          "He was a bacteriologist, not a chemist, and lacked the funding or the team for industrial-scale work.",
+          "In the 1930s there was little interest — the magic bullets seemed sufficient and nobody would pay for the research.",
+          "Florey and Chain took it up at Oxford in 1938–40 and proved it worked in humans.",
+          "War changed everything: wounded soldiers dying of infection made penicillin a strategic priority.",
+          "The US government funded industrial production, and enough existed for D-Day in 1944.",
+          "So it is a war-and-government answer as much as an individual one — the science was known for twelve years and needed a reason to be paid for.",
+        ],
+        answer:
+          "Because discovery is not development. Fleming lacked the resources and there was no funding in the 1930s. Florey and Chain solved the science, but it was war — and American government money — that turned it into a drug, twelve years after the mould was first noticed.",
+      },
+      {
+        question:
+          "'Individuals were the most important factor in medical progress.' How far do you agree?",
+        steps: [
+          "For: Vesalius, Harvey, Jenner, Pasteur, Snow and Fleming each changed what was known, and their names organise the whole story.",
+          "Against: every one of them depended on conditions. Vesalius needed the printing press and permission to dissect.",
+          "Against: Jenner was right and was resisted, because without germ theory nobody could explain his result.",
+          "Against: Fleming's discovery sat unused for twelve years until war and government money moved it.",
+          "Against: Snow was proved right only when the 1875 Act made action compulsory — knowledge alone changed nothing.",
+          "Judgement: individuals provide the breakthroughs, but whether a breakthrough becomes medicine depends on attitudes, technology and money. The best answer says both and explains the relationship.",
+        ],
+        answer:
+          "Individuals supply the breakthroughs, but almost none of them changed practice on their own. Jenner was resisted for lack of a theory, Fleming waited twelve years for war funding, Snow needed an Act of Parliament. Individuals matter most when conditions allow them to be heard.",
+      },
+      {
+        question:
+          "Compare the responses to the Black Death (1348) and the Great Plague (1665).",
+        steps: [
+          "Explanations were almost identical: God's punishment, miasma, and planetary alignment. Germ theory was still two centuries away.",
+          "Treatments were similar and equally useless: bleeding, herbs, and prayer.",
+          "But organisation improved: in 1665 there were quarantine orders, houses marked and sealed for 40 days, plague pits, and bills of mortality recording deaths.",
+          "Local government was stronger and could act, and records let officials track the spread.",
+          "Both responses included killing cats and dogs, which removed predators of the rats carrying infected fleas — making things worse.",
+          "The lesson: better administration without better understanding produces a more organised failure.",
+        ],
+        answer:
+          "The explanations barely changed in 300 years — sin, bad air and planets — and neither did the treatments. What improved was organisation: quarantine, sealed houses, plague pits and mortality records. Better administration, the same wrong theory, and in both cases killing the cats that ate the rats.",
+      },
+      {
+        question:
+          "Explain why the government's attitude to public health changed between 1848 and 1875.",
+        steps: [
+          "The 1848 Public Health Act was permissive: councils COULD act, and most chose not to, because laissez-faire held that government should not interfere.",
+          "Ratepayers objected to the cost, and were the people who voted.",
+          "Then evidence accumulated: Snow's Broad Street pump in 1854, Pasteur's germ theory in 1861, and the Great Stink of 1858 which drove Parliament itself out of its chamber.",
+          "Bazalgette's London sewers, built after the Great Stink, showed public works could succeed on a huge scale.",
+          "The decisive change was political: the 1867 Reform Act gave the vote to many working men, who lived in exactly the conditions being debated.",
+          "The 1875 Act was therefore compulsory rather than permissive, and it worked.",
+        ],
+        answer:
+          "Evidence made the case and the vote made it urgent. Snow, Pasteur and the Great Stink undermined laissez-faire, but the decisive change was the 1867 Reform Act enfranchising working men — after which a permissive Act became a compulsory one.",
+      },
+    ],
+
+    practice: [
+      { question: "How many humours were there in the theory that dominated medieval medicine?",
+        accept: ["4", "four"],
+        answer: "Four: blood, phlegm, black bile and yellow bile. Health meant keeping them balanced." },
+      { question: "Which Roman doctor's ideas dominated European medicine until the Renaissance?",
+        accept: ["galen"],
+        answer: "Galen. His ideas lasted partly because they fitted Christian teaching about a purposeful body." },
+      { question: "What was the theory that disease was caused by bad air called?",
+        accept: ["miasma", "miasma theory", "the miasma theory"],
+        answer: "Miasma theory. Wrong, but it did encourage some useful cleaning and drainage." },
+      { question: "In which years did the Black Death strike England? Give it as e.g. 1300-1302.",
+        accept: ["1348-1350", "1348-50", "1348 - 1350"],
+        answer: "1348 to 1350, killing perhaps a third of Europe's population." },
+      { question: "Who published anatomical work in 1543 proving Galen wrong?",
+        accept: ["vesalius", "andreas vesalius"],
+        answer: "Vesalius. Galen had dissected animals, so his human anatomy contained real errors." },
+      { question: "Which army surgeon used ligatures instead of cauterisation?",
+        accept: ["pare", "paré", "ambroise pare", "ambroise paré"],
+        answer: "Ambroise Paré, who discovered the better method after running out of hot oil." },
+      { question: "Who proved in 1628 that blood circulates?",
+        accept: ["harvey", "william harvey"],
+        answer: "William Harvey, disproving Galen's idea that blood was made in the liver and consumed." },
+      { question: "In which year did Harvey publish his work on circulation?",
+        accept: ["1628"],
+        answer: "1628. It was correct, and changed treatment almost not at all for two centuries." },
+      { question: "Who developed smallpox vaccination in 1796?",
+        accept: ["jenner", "edward jenner"],
+        answer: "Edward Jenner, after noticing that milkmaids who had had cowpox did not catch smallpox." },
+      { question: "Which disease did Jenner's vaccination prevent?",
+        accept: ["smallpox"],
+        answer: "Smallpox, which was declared eradicated worldwide in 1980." },
+      { question: "In which year was smallpox vaccination made compulsory in Britain?",
+        accept: ["1853"],
+        answer: "1853, though it was not effectively enforced until 1871." },
+      { question: "Which anaesthetic was first used in 1847 and popularised by Queen Victoria?",
+        accept: ["chloroform"],
+        answer: "Chloroform. Victoria using it for childbirth in 1853 did more for its acceptance than any argument." },
+      { question: "Which anaesthetic came first, in 1846?",
+        accept: ["ether"],
+        answer: "Ether, followed by chloroform the next year." },
+      { question: "Who used carbolic acid as an antiseptic from 1865?",
+        accept: ["lister", "joseph lister"],
+        answer: "Joseph Lister, whose antiseptic surgery cut death rates sharply once germ theory explained why." },
+      { question: "Who proved germ theory in 1861?",
+        accept: ["pasteur", "louis pasteur"],
+        answer: "Louis Pasteur, showing microbes cause decay and disease rather than being produced by it." },
+      { question: "Who identified the specific bacteria causing specific diseases?",
+        accept: ["koch", "robert koch"],
+        answer: "Robert Koch, turning germ theory into something doctors could act on." },
+      { question: "Who removed the Broad Street pump handle in 1854?",
+        accept: ["john snow", "snow"],
+        answer: "John Snow, demonstrating that cholera was water-borne — though he could not identify the agent." },
+      { question: "Which pump did Snow trace the 1854 cholera outbreak to?",
+        accept: ["broad street", "broad street pump", "the broad street pump"],
+        answer: "The Broad Street pump in Soho." },
+      { question: "In which year was the compulsory Public Health Act?",
+        accept: ["1875"],
+        answer: "1875, replacing the permissive 1848 Act that most councils had ignored." },
+      { question: "Which 1858 event drove Parliament from its own chamber and forced action on London's sewers?",
+        accept: ["great stink", "the great stink"],
+        answer: "The Great Stink. Self-interest achieved what decades of evidence had not." },
+      { question: "Who designed London's sewer system?",
+        accept: ["bazalgette", "joseph bazalgette"],
+        answer: "Joseph Bazalgette, whose sewers are still in use today." },
+      { question: "Which Reform Act gave many working men the vote, shortly before the 1875 Act?",
+        accept: ["1867", "the 1867 reform act"],
+        answer: "The 1867 Reform Act. Governments act when the people affected can vote." },
+      { question: "Who noticed penicillin mould killing bacteria in 1928?",
+        accept: ["fleming", "alexander fleming"],
+        answer: "Alexander Fleming, who published but could not produce it in useful quantities." },
+      { question: "Which two scientists developed penicillin for mass production?",
+        accept: ["florey and chain", "florey chain", "chain and florey"],
+        answer: "Howard Florey and Ernst Chain, at Oxford from 1938." },
+      { question: "In which year was the NHS founded?",
+        accept: ["1948"],
+        answer: "1948, making healthcare free at the point of use." },
+      { question: "Which 1942 report identified the 'five giants' including Disease?",
+        accept: ["beveridge", "beveridge report", "the beveridge report"],
+        answer: "The Beveridge Report, which led directly to the NHS." },
+      { question: "In which year was the structure of DNA discovered?",
+        accept: ["1953"],
+        answer: "1953, by Watson, Crick, Franklin and Wilkins." },
+      { question: "In which year was the Human Genome Project completed?",
+        accept: ["2003"],
+        answer: "2003, mapping the entire human genetic code." },
+      { question: "What is the term for a chemical that kills a specific microbe without harming the patient?",
+        accept: ["magic bullet", "a magic bullet", "magic bullets"],
+        answer: "A magic bullet, such as Salvarsan 606 for syphilis in 1909." },
+      { question: "What is the modern problem of bacteria surviving antibiotics called?",
+        accept: ["antibiotic resistance", "resistance", "antimicrobial resistance"],
+        answer: "Antibiotic resistance — arguably the most serious medical problem of this century." },
+      { question: "Explain why understanding the body did not automatically improve treatment.",
+        answer: "Because knowing how something works and being able to fix it are different problems. Vesalius corrected Galen's anatomy in 1543 and Harvey proved circulation in 1628, but neither gave doctors anything new to do — bloodletting continued for two centuries after Harvey showed the humours made no sense, because there was nothing better to replace it with. Treatment needs more than knowledge: it needs technology, such as microscopes and anaesthetics; it needs an explanation people will accept, which is why Jenner was resisted; and it usually needs money and organisation, which is why penicillin waited twelve years for a war. Understanding is necessary and nowhere near sufficient. (Mark this one yourself.)" },
+      { question: "Explain why war has repeatedly accelerated medical progress.",
+        answer: "Because it creates enormous numbers of similar injuries, urgent pressure to solve them, and governments willing to pay. Paré improved gunshot treatment because he was operating on battlefields; the First World War drove blood transfusion, X-rays near the front and the beginnings of plastic surgery; the Second World War is what turned penicillin from a laboratory curiosity into a mass-produced drug, funded by the US government for D-Day. War also suspends the normal caution about trying new methods, and it moves surgeons and researchers around so techniques spread quickly. The uncomfortable point worth making is that this progress is a by-product of enormous suffering, not a justification for it. (Mark this one yourself.)" },
+      { question: "'Attitudes were the biggest obstacle to medical progress.' How far do you agree?",
+        answer: "There is a strong case. Galen went unchallenged for roughly 1,400 years, not because his errors were undetectable but because education taught authority rather than enquiry and the Church approved his conclusions. Jenner proved vaccination worked in 1796 and was rejected by the Royal Society because he could not explain it. Public health was blocked for decades by the belief that government should not interfere in private business. But attitudes are not the only obstacle: technology genuinely was missing — nobody could see bacteria before microscopes improved — and money was often the real constraint, as penicillin shows. The strongest answer is that attitudes decided whether new evidence was accepted, while technology decided whether it could be produced at all. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"Medieval doctors were simply stupid.\"",
+        right: "They reasoned carefully from the best theory available. The Four Humours explained fever, swelling and recovery reasonably well — the problem was a culture that valued authority over testing it." },
+      { wrong: "\"Fleming invented penicillin.\"",
+        right: "He noticed the effect in 1928 and published. Florey and Chain developed it, and American government funding made mass production possible twelve years later." },
+      { wrong: "\"Germ theory immediately changed medicine.\"",
+        right: "Pasteur proved it in 1861, but it took Koch's identification of specific bacteria, and years more, before treatments followed. Acceptance was gradual and contested." },
+      { wrong: "\"The Great Plague of 1665 was handled much better than the Black Death.\"",
+        right: "The organisation was better — quarantine, records, plague pits — but the explanations and treatments were essentially identical. Both killed cats and dogs, which made matters worse." },
+      { wrong: "\"Jenner understood how vaccination worked.\"",
+        right: "He proved that it worked and had no idea why. Germ theory was 65 years away, which is exactly why his work met such resistance." },
+      { wrong: "\"Progress in medicine has been steady.\"",
+        right: "It has been wildly uneven — 1,400 years of near-stasis, then enormous change in a century. Explaining the flat periods is as important as explaining the breakthroughs." },
+    ],
+  },
+
+  "history/crime-and-punishment": {
+    summary:
+      "What counts as a crime, and what we do to people who commit one, has changed enormously over a thousand years — and both tell you more about the society doing the judging than about the criminals. This thematic study runs from trial by ordeal to modern policing and prisons, and asks the same question throughout: what changed, what stayed the same, and why.",
+    keyFacts: [
+      {
+        heading: "Medieval, c.1000–1500",
+        points: [
+          "Anglo-Saxon justice was community-based: the hue and cry, tithings of ten men responsible for each other, and trial by local jury who knew the accused.",
+          "Trial by ordeal — hot iron, cold water, or consecrated bread — appealed to God to reveal guilt. It was abolished by the Church in 1215.",
+          "The Normans added the Forest Laws, criminalising hunting and even gathering wood on royal land — a new crime created purely by a change of ruler.",
+          "Punishments were public and often physical: stocks, whipping, mutilation and hanging. Deterrence was the aim, and being seen was the point.",
+          "The Church offered sanctuary and benefit of clergy, which let anyone who could read a verse escape the harsher courts — an early and very unequal loophole.",
+        ],
+      },
+      {
+        heading: "Early modern, c.1500–1700",
+        points: [
+          "New crimes reflected new anxieties: vagrancy was criminalised as poverty rose, and heresy and treason became lethal offences as religion changed with each monarch.",
+          "Witchcraft prosecutions peaked in the 1640s during the Civil War; Matthew Hopkins, the self-appointed Witchfinder General, was responsible for perhaps 300 accusations.",
+          "The witch craze fed on war, religious upheaval, economic hardship and the collapse of normal authority — a good example of crime as a mirror of its society.",
+          "The Bloody Code grew from the 1680s: by 1810 there were around 220 offences carrying the death penalty, many for minor theft.",
+          "In practice juries often refused to convict when the punishment seemed monstrous, so the Code was less lethal than it looked — a gap between law and enforcement worth noting.",
+        ],
+      },
+      {
+        heading: "Industrial, c.1700–1900",
+        points: [
+          "Transportation to Australia from 1787 removed around 160,000 convicts and offered a punishment between whipping and death.",
+          "The Bloody Code was dismantled in the 1820s and 30s, largely by Robert Peel, as reformers argued that certainty of punishment deterred better than severity.",
+          "Peel founded the Metropolitan Police in 1829: uniformed, unarmed, and deliberately not soldiers, because a standing armed force was politically unacceptable.",
+          "Public executions ended in 1868 — moved behind prison walls partly because the crowds had become the scandal.",
+          "Prison reform: John Howard and Elizabeth Fry argued for cleanliness, separation and useful work; the separate system at Pentonville (1842) isolated prisoners in silence, which drove some to madness.",
+          "The aim of punishment began to shift from retribution and deterrence towards reform — unevenly, and never completely.",
+        ],
+      },
+      {
+        heading: "Modern, c.1900–present",
+        points: [
+          "New crimes came with new technology and new rules: motoring offences, computer crime, drug laws and terrorism legislation.",
+          "Old crimes were decriminalised: homosexuality partly in 1967, suicide in 1961 — showing that removing a crime is as historically significant as creating one.",
+          "The death penalty was suspended in 1965 and abolished for murder in 1969, following the cases of Timothy Evans, Derek Bentley and Ruth Ellis.",
+          "Policing changed with technology: cars and radios, then forensics, DNA from the 1980s, and CCTV — with a recurring argument about whether it moved police away from the communities they serve.",
+          "Prisons shifted towards rehabilitation in principle, alongside community sentences, probation and youth justice — while prison numbers rose sharply.",
+          "Conscientious objectors in both wars are a useful case study: treated harshly in 1916, far more tolerantly by 1939 — the same act, a different society.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Hue and cry", definition: "The Anglo-Saxon duty of everyone in a village to chase a criminal when the alarm was raised." },
+      { term: "Tithing", definition: "A group of ten men collectively responsible for each other's behaviour in Anglo-Saxon England." },
+      { term: "Trial by ordeal", definition: "A trial appealing to God through pain or danger to reveal guilt, abolished by the Church in 1215." },
+      { term: "Forest Laws", definition: "Norman laws criminalising hunting and gathering wood on royal land — new crimes created by new rulers." },
+      { term: "Benefit of clergy", definition: "The right of those who could read a set verse to be tried in the more lenient Church courts." },
+      { term: "Sanctuary", definition: "Protection from arrest given by a church, allowing the accused to leave the country instead of facing trial." },
+      { term: "Vagrancy", definition: "Being homeless and unemployed — made a crime in the sixteenth century as poverty rose." },
+      { term: "Bloody Code", definition: "The system under which around 220 offences carried the death penalty by 1810, many of them minor thefts." },
+      { term: "Matthew Hopkins", definition: "The self-appointed Witchfinder General responsible for perhaps 300 witchcraft accusations in the 1640s." },
+      { term: "Transportation", definition: "Sending convicts to Australia from 1787 — around 160,000 in total — as an alternative to execution." },
+      { term: "Robert Peel", definition: "The Home Secretary who dismantled the Bloody Code and founded the Metropolitan Police in 1829." },
+      { term: "Metropolitan Police", definition: "Britain's first professional police force, founded in 1829: uniformed, unarmed and deliberately unlike soldiers." },
+      { term: "Separate system", definition: "The prison regime isolating inmates in silence to encourage reflection, used at Pentonville from 1842." },
+      { term: "Elizabeth Fry", definition: "The reformer who campaigned for humane treatment of women prisoners, especially at Newgate." },
+      { term: "Derek Bentley", definition: "The young man hanged in 1953 in a case that helped turn opinion against the death penalty." },
+      { term: "Rehabilitation", definition: "Punishment aimed at changing the offender so they do not reoffend, rather than only punishing them." },
+    ],
+    examTips: [
+      {
+        tip: "Ask what crimes reveal about the society",
+        detail:
+          "Forest Laws, vagrancy, witchcraft, homosexuality. Each was created or removed because society changed, not because behaviour did. That insight is the whole point of the paper.",
+      },
+      {
+        tip: "Track the aims of punishment",
+        detail:
+          "Retribution, deterrence, and later reform and rehabilitation. Saying which aim dominates in a period is a fast way into any question.",
+      },
+      {
+        tip: "Note the gap between law and practice",
+        detail:
+          "The Bloody Code looked ferocious, but juries frequently refused to convict and judges reduced sentences. What the law says and what happens are different questions.",
+      },
+      {
+        tip: "Explain why Peel's police were unarmed",
+        detail:
+          "Britain feared a standing armed force being used against political protest, so the police were deliberately made to look like citizens in uniform, not soldiers.",
+      },
+      {
+        tip: "Use decriminalisation as evidence",
+        detail:
+          "Suicide in 1961 and homosexuality in 1967 stopped being crimes without anyone's behaviour changing. That makes the argument about society better than any example of a new crime.",
+      },
+      {
+        tip: "Use conscientious objectors as a comparison",
+        detail:
+          "Harshly treated in 1916, far more tolerated by 1939. Same act, different society — an ideal short case study for change-over-time questions.",
+      },
+    ],
+
+    workedExamples: [
+      {
+        question: "Explain why the Bloody Code was abolished in the 1820s and 30s.",
+        steps: [
+          "It was not working: around 220 capital offences existed by 1810, and crime had not fallen.",
+          "Juries increasingly refused to convict when the punishment was death for a small theft, so many offenders escaped punishment entirely.",
+          "Reformers, influenced by Enlightenment thinking, argued that certainty mattered more than severity — a punishment that was actually applied deterred better than one that was not.",
+          "Alternatives now existed: transportation and, increasingly, prisons.",
+          "The founding of the Metropolitan Police in 1829 raised the chance of being caught, which is what deterrence actually requires.",
+          "Peel drove the reform through, cutting the capital offences dramatically.",
+          "Judgement: it fell because it had failed on its own terms, not only because attitudes softened.",
+        ],
+        answer:
+          "Because it had failed at its own purpose. Juries would not convict, so severity produced impunity rather than deterrence. Reformers argued for certainty instead, alternatives existed in transportation and prison, and Peel's new police made catching offenders far more likely.",
+      },
+      {
+        question:
+          "Why did witchcraft prosecutions peak in the 1640s?",
+        steps: [
+          "Civil war had broken down normal authority: courts, church and local government were all disrupted.",
+          "Religious upheaval encouraged intense fear of the devil and of hidden enemies.",
+          "Economic hardship and poor harvests created tension between neighbours, and accusations often followed a refusal of charity.",
+          "Matthew Hopkins, self-appointed Witchfinder General, was paid per case — a direct financial incentive to find witches.",
+          "The accused were overwhelmingly poor, old and female, and had almost no means of defending themselves.",
+          "The point to draw: this is crime as a mirror. The behaviour did not change; the society's fears did.",
+        ],
+        answer:
+          "Because war destroyed normal authority, religious fear was intense, hardship set neighbours against one another, and Hopkins was paid per conviction. Nobody started doing anything new — society started seeing witchcraft where it had previously seen misfortune.",
+      },
+      {
+        question:
+          "Explain why the death penalty was abolished in Britain.",
+        steps: [
+          "Specific cases eroded confidence: Timothy Evans hanged in 1950 for murders later attributed to Christie; Derek Bentley hanged in 1953 despite not firing the shot; Ruth Ellis in 1955, the last woman executed.",
+          "The Evans case in particular proved an innocent person had been executed, and no appeal can undo that.",
+          "Attitudes shifted towards rehabilitation and away from retribution.",
+          "Evidence questioned whether it deterred at all, since murder rates did not track its use.",
+          "Politically it was abolished against public opinion — polls still favoured it — which makes it a good example of Parliament leading rather than following.",
+          "Suspended in 1965, abolished for murder in 1969.",
+        ],
+        answer:
+          "Because specific miscarriages — Evans, Bentley, Ellis — showed the system could kill the wrong person, alongside doubts about deterrence and a shift towards rehabilitation. Notably it was abolished while most of the public still supported it.",
+      },
+      {
+        question:
+          "Compare the treatment of conscientious objectors in 1916 and 1939.",
+        steps: [
+          "1916: conscription was new, tribunals were often hostile, and objectors were widely called cowards.",
+          "Around 6,000 were imprisoned; some were sent to France where they could technically be shot for refusing orders.",
+          "1939: the system was better designed, tribunals were more sympathetic, and a wider range of alternative service existed.",
+          "The change came partly from the memory of the last war, and partly from the fact that the objectors of 1916 had been prosecuted and publicly discussed.",
+          "The same act was treated very differently in twenty-three years.",
+          "The general lesson: whether something is treated as a crime depends on what a society will tolerate at that moment.",
+        ],
+        answer:
+          "Objectors in 1916 faced hostile tribunals, imprisonment and public contempt; by 1939 tribunals were fairer and alternative service was normal. Identical conduct, very different response — which is the clearest possible evidence that crime is defined by society rather than by the act.",
+      },
+    ],
+
+    practice: [
+      { question: "What was the Anglo-Saxon duty to chase a criminal when the alarm was raised?",
+        accept: ["hue and cry", "the hue and cry"],
+        answer: "The hue and cry — everyone in the village was expected to join the pursuit." },
+      { question: "How many men were in a tithing?",
+        accept: ["10", "ten"],
+        answer: "Ten, collectively responsible for one another's behaviour." },
+      { question: "In which year did the Church abolish trial by ordeal?",
+        accept: ["1215"],
+        answer: "1215. Without clergy to bless the ordeal it could no longer claim to reveal God's judgement." },
+      { question: "Which Norman laws criminalised hunting on royal land?",
+        accept: ["forest laws", "the forest laws"],
+        answer: "The Forest Laws — new crimes created purely by a change of ruler." },
+      { question: "What allowed those who could read a verse to be tried in Church courts?",
+        accept: ["benefit of clergy"],
+        answer: "Benefit of clergy — an early and very unequal loophole, since literacy was rare." },
+      { question: "What was the system with around 220 capital offences called?",
+        accept: ["bloody code", "the bloody code"],
+        answer: "The Bloody Code, at its peak around 1810." },
+      { question: "Who was the self-appointed Witchfinder General of the 1640s?",
+        accept: ["matthew hopkins", "hopkins"],
+        answer: "Matthew Hopkins, responsible for perhaps 300 accusations and paid per case." },
+      { question: "In which year did transportation to Australia begin?",
+        accept: ["1787"],
+        answer: "1787. Around 160,000 convicts were transported in total." },
+      { question: "Who founded the Metropolitan Police?",
+        accept: ["peel", "robert peel", "sir robert peel"],
+        answer: "Sir Robert Peel, who also dismantled the Bloody Code." },
+      { question: "In which year was the Metropolitan Police founded?",
+        accept: ["1829"],
+        answer: "1829 — uniformed, unarmed, and deliberately not soldiers." },
+      { question: "In which year did public executions end in Britain?",
+        accept: ["1868"],
+        answer: "1868. They moved behind prison walls, partly because the crowds had become the scandal." },
+      { question: "Which prison opened in 1842 using the separate system?",
+        accept: ["pentonville"],
+        answer: "Pentonville. Isolation and silence were meant to encourage reflection; some prisoners went mad." },
+      { question: "Which reformer campaigned for women prisoners at Newgate?",
+        accept: ["elizabeth fry", "fry"],
+        answer: "Elizabeth Fry, who argued for humane treatment and useful work." },
+      { question: "In which year was the death penalty abolished for murder in Britain?",
+        accept: ["1969"],
+        answer: "1969, after being suspended in 1965." },
+      { question: "In which year was suicide decriminalised?",
+        accept: ["1961"],
+        answer: "1961 — a crime removed without anyone's behaviour changing." },
+      { question: "Which young man was hanged in 1953 in a case that shifted opinion on capital punishment?",
+        accept: ["derek bentley", "bentley"],
+        answer: "Derek Bentley, who was hanged although he had not fired the shot." },
+      { question: "Explain why what counts as a crime changes over time.",
+        answer: "Because crime is defined by law, and law is written by a society reflecting its own priorities and fears. The Normans invented forest crimes to protect royal hunting; the Tudors criminalised vagrancy because rising poverty frightened them; the 1640s produced witchcraft prosecutions when war and hardship made people look for hidden enemies. The reverse is even more revealing: suicide stopped being a crime in 1961 and homosexuality was partly decriminalised in 1967, without anybody's behaviour altering at all. What changed in each case was what the society considered dangerous, sinful or simply nobody else's business. Studying crime is therefore a way of studying the values of the people making the rules. (Mark this one yourself.)" },
+      { question: "Explain why Peel's police were founded as an unarmed, uniformed civilian force.",
+        answer: "Because Britain was deeply suspicious of anything resembling a standing army being used against its own people, particularly after Peterloo in 1819 when cavalry had charged a peaceful crowd. A force that looked like soldiers would have been resisted as a tool of political repression. So the Metropolitan Police were designed to look like citizens in uniform: top hats rather than helmets at first, blue rather than army red, armed with nothing but a truncheon, and instructed to prevent crime by presence rather than to suppress disorder by force. The design was a political calculation as much as a practical one, and it set the pattern for British policing ever since. (Mark this one yourself.)" },
+    ],
+
+    misconceptions: [
+      { wrong: "\"The Bloody Code meant huge numbers were executed.\"",
+        right: "Juries frequently refused to convict and judges often reduced charges, precisely because the punishment seemed monstrous. The law was far harsher than the practice." },
+      { wrong: "\"Trial by ordeal was abolished because people stopped believing in it.\"",
+        right: "The Church withdrew clergy from ordeals in 1215. Without a priest to bless it, the ordeal could no longer claim to reveal God's judgement." },
+      { wrong: "\"Punishment has become steadily kinder over time.\"",
+        right: "It has changed direction repeatedly. The Bloody Code of the eighteenth century was far harsher than medieval justice, and prison numbers have risen sharply in recent decades." },
+      { wrong: "\"Witch trials were medieval.\"",
+        right: "They peaked in the 1640s, during the Civil War — early modern, not medieval, and driven by war, hardship and religious upheaval." },
+      { wrong: "\"The death penalty was abolished because the public demanded it.\"",
+        right: "Opinion polls still favoured it. Parliament abolished it against public opinion, after the Evans, Bentley and Ellis cases." },
+      { wrong: "\"Peel's police were welcomed as an obvious improvement.\"",
+        right: "They were widely distrusted as a threat to liberty and mocked as spies. Acceptance took decades, and the unarmed uniform was designed to win it." },
+    ],
+  },
+
 };
