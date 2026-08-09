@@ -78,7 +78,10 @@ export type User = {
 // storage in one file on day one — the login page, the register page, the
 // session code and the dashboard are all untouched by this change.
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
+// Trailing slashes are stripped because the URL is pasted by hand and the code
+// builds paths with `${SUPABASE_URL}/rest/v1/...`. A copied value ending in "/"
+// would produce "//rest/v1", which is the kind of typo that costs an hour.
+const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/+$/, "");
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 // Note what is NOT in these names: NEXT_PUBLIC_. Any environment variable
