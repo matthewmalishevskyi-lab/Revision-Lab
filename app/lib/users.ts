@@ -133,6 +133,44 @@ const fromRow = (row: UserRow): User => ({
 // ─────────────────────────────────────────────────────────────────────────────
 const KEY_IS_LEGACY_JWT = (SUPABASE_KEY ?? "").startsWith("eyJ");
 
+// Turns a failed request into something worth reading in a log.
+//
+// The rule being followed: say everything useful, reveal nothing secret. The
+// status code, Supabase's own message and WHICH KIND of key was used are all
+// safe and all diagnostic. The key itself never appears — Supabase's own
+// guidance is to log at most the first few characters of a key, so this logs
+// none of them, only its shape.
+function describeFailure(what: string, status: number, body: string): string {
+  const keyKind = !SUPABASE_KEY
+    ? "no key set"
+    : KEY_IS_LEGACY_JWT
+      ? "legacy service_role JWT"
+      : SUPABASE_KEY.startsWith("sb_secret_")
+        ? "new sb_secret key"
+        : SUPABASE_KEY.startsWith("sb_publishable_")
+          ? "PUBLISHABLE key — this is the wrong one, it cannot write"
+          : "unrecognised key format";
+
+  const hint =
+    status === 401 || status === 403
+      ? "The key was rejected. Check it is the SECRET key, and that it belongs to this same project."
+      : status === 404
+        ? "Not found — the `users` table probably does not exist yet. Run the SQL from DEPLOYING.md step 5b."
+        : status === 400
+          ? "Bad request — usually a column name that does not match the table."
+          : "";
+
+  return [
+    `Supabase ${what} failed: HTTP ${status}`,
+    `url: ${SUPABASE_URL}`,
+    `key: ${keyKind}`,
+    `response: ${body.slice(0, 300)}`,
+    hint,
+  ]
+    .filter(Boolean)
+    .join("\n  ");
+}
+
 async function supabase(path: string, init: RequestInit = {}): Promise<Response> {
   return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     ...init,
@@ -247,7 +285,7 @@ export async function findUserByEmail(email: string): Promise<User | null> {
     const res = await supabase(
       `users?email=eq.${encodeURIComponent(target)}&select=*&limit=1`,
     );
-    if (!res.ok) throw new Error(`Supabase lookup failed: ${res.status}`);
+    if (!res.ok) throw new Error(describeFailure("lookup", res.status, await res.text()));
     const rows = (await res.json()) as UserRow[];
     return rows[0] ? fromRow(rows[0]) : null;
   }
@@ -261,7 +299,7 @@ export async function findUserById(id: string): Promise<User | null> {
     const res = await supabase(
       `users?id=eq.${encodeURIComponent(id)}&select=*&limit=1`,
     );
-    if (!res.ok) throw new Error(`Supabase lookup failed: ${res.status}`);
+    if (!res.ok) throw new Error(describeFailure("lookup", res.status, await res.text()));
     const rows = (await res.json()) as UserRow[];
     return rows[0] ? fromRow(rows[0]) : null;
   }
@@ -319,7 +357,7 @@ export async function createUser(input: {
     if (res.status === 409 || body.includes("23505")) {
       throw new Error("EMAIL_TAKEN");
     }
-    throw new Error(`Supabase insert failed: ${res.status} ${body}`);
+    throw new Error(describeFailure("insert", res.status, body));
   }
 
   // Local file: no unique constraint exists, so the check has to happen here.

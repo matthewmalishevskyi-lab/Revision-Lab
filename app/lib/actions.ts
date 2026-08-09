@@ -82,6 +82,23 @@ export async function register(
     if (error instanceof Error && error.message === "EMAIL_TAKEN") {
       return { fieldErrors: { email: "An account with that email already exists." } };
     }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // LOG THE REAL REASON, SHOW THE VAGUE ONE.
+    //
+    // "Something went wrong. Please try again." is the right thing to show a
+    // visitor: the true error can mention table names, key problems and
+    // internal detail that is nobody else's business, and is a gift to an
+    // attacker probing for weaknesses.
+    //
+    // But it was ALSO all we had, which made a real failure impossible to
+    // diagnose — the thing that went wrong simply vanished. console.error on a
+    // server does not go to anyone's browser; it goes to the host's logs, where
+    // only you can read it. Vercel → your project → Logs.
+    //
+    // Log privately, apologise publicly. That is the pattern.
+    // ─────────────────────────────────────────────────────────────────────────
+    console.error("[register] failed:", error);
     return { formError: "Something went wrong. Please try again." };
   }
 
@@ -112,7 +129,8 @@ export async function login(
   let user: Awaited<ReturnType<typeof findUserByEmail>>;
   try {
     user = await findUserByEmail(email);
-  } catch {
+  } catch (error) {
+    console.error("[login] lookup failed:", error);
     return {
       formError:
         "We couldn't reach the accounts service. Please try again in a moment.",
@@ -144,7 +162,8 @@ export async function login(
   // something a visitor can act on rather than showing them a stack trace.
   try {
     await createSession(user.id, rememberMe);
-  } catch {
+  } catch (error) {
+    console.error("[login] session creation failed:", error);
     return { formError: "We couldn't start your session. Please try again." };
   }
 
