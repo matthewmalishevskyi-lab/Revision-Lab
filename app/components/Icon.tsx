@@ -342,6 +342,72 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M8.5 7.5v-2a2 2 0 012-2h3a2 2 0 012 2v2M2.5 12h19" />
     </>
   ),
+
+  // ─── Geography ───────────────────────────────────────────────────────────
+  // A folded map.
+  map: (
+    <>
+      <path d="M9 4.5L3.5 6.5v13L9 17.5l6 3 5.5-2V5.5l-5.5 2z" />
+      <path d="M9 4.5v13M15 7.5v13" />
+    </>
+  ),
+  // A cloud with rain — weather and climate.
+  cloud: (
+    <>
+      <path d="M7 15.5a3.8 3.8 0 01.4-7.6 5 5 0 019.4-1 3.8 3.8 0 01.7 7.5z" />
+      <path d="M8.5 18v2M12 18.5v2.5M15.5 18v2" />
+    </>
+  ),
+  // A volcano — tectonic hazards.
+  volcano: (
+    <>
+      <path d="M3.5 20.5l5.5-9h6l5.5 9z" />
+      <path d="M9 11.5V8h6v3.5M12 8V3.5M9.5 5l-2-1.5M14.5 5l2-1.5" />
+    </>
+  ),
+  // A droplet — rivers and flooding.
+  droplet: (
+    <>
+      <path d="M12 3.5c4 4.6 6 7.6 6 10.2a6 6 0 01-12 0c0-2.6 2-5.6 6-10.2z" />
+      <path d="M9 14a3 3 0 003 3" />
+    </>
+  ),
+  // A wave — coasts.
+  wave: (
+    <>
+      <path d="M2.5 15.5c2.4 0 2.4-2.5 4.8-2.5s2.4 2.5 4.8 2.5 2.4-2.5 4.8-2.5 2.4 2.5 4.6 2.5" />
+      <path d="M2.5 20c2.4 0 2.4-2.5 4.8-2.5S9.7 20 12.1 20s2.4-2.5 4.8-2.5S19.3 20 21.5 20" />
+      <path d="M16 10.5a4.5 4.5 0 10-8-2.8" />
+    </>
+  ),
+  // A leaf — ecosystems and biomes.
+  leaf: (
+    <>
+      <path d="M20.5 3.5C11 3.5 5 7.5 5 14a5.5 5.5 0 0011 .5c4-1 4.5-6 4.5-11z" />
+      <path d="M16 8L4 20" />
+    </>
+  ),
+  // A city skyline — population and urbanisation.
+  city: (
+    <>
+      <path d="M3.5 20.5V10h6v10.5M9.5 20.5V4.5h5v16M14.5 20.5V13h6v7.5" />
+      <path d="M2.5 20.5h19M11.5 8h1M11.5 12h1M11.5 16h1" />
+    </>
+  ),
+  // A thermometer — climate change.
+  thermometer: (
+    <>
+      <path d="M14.5 14.2V5a2.5 2.5 0 00-5 0v9.2a4.5 4.5 0 105 0z" />
+      <path d="M12 8.5v7.5" />
+    </>
+  ),
+  // A recycling loop — resources and sustainability.
+  recycle: (
+    <>
+      <path d="M8 6.5L10.5 3l2.5 3.5M16.5 10L19 13.5l-4 .5M7 16l-3.5 1 1.5-4" />
+      <path d="M10.5 3.5l4 7M19 13l-4 7M4.5 13l4-7" />
+    </>
+  ),
   // A scroll — sources and interpretations.
   scroll: (
     <>

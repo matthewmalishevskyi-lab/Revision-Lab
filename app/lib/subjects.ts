@@ -21,7 +21,10 @@ export type IconName =
   | "axis" | "compass" | "gauge" | "mic" | "clock"
   // History
   | "poppy" | "candle" | "factory" | "torch" | "crown" | "flask" | "ship"
-  | "castle" | "scroll" | "vote" | "gavel" | "atom" | "suitcase";
+  | "castle" | "scroll" | "vote" | "gavel" | "atom" | "suitcase"
+  // Geography
+  | "map" | "cloud" | "volcano" | "droplet" | "wave" | "leaf" | "city"
+  | "thermometer" | "recycle";
 
 export type Topic = {
   // The slug is the bit that appears in the URL, so it must be lowercase with
@@ -47,7 +50,7 @@ export type Subject = {
   // YEAR_STYLES, which only has three entries — so the fourth subject silently
   // came out blue. Colours that mean "which subject" belong to the subject.
   accent: string;
-  mascot: "pixel" | "hoot" | "quill" | "knight";
+  mascot: "pixel" | "hoot" | "quill" | "knight" | "atlas";
   years: YearGroup[];
 };
 
@@ -301,6 +304,65 @@ export const SUBJECTS: Subject[] = [
           { slug: "america-1920-1973", title: "America 1920–1973", icon: "chart" },
           { slug: "migration-to-britain", title: "Migration to Britain", icon: "suitcase" },
           { slug: "source-skills-and-interpretations", title: "Sources & interpretations", icon: "scroll" },
+          { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "geography",
+    name: "Geography",
+    blurb: "Choose a topic to start revising",
+    // Green, and distinct from every other card: blue, orange, violet, red,
+    // green. Five subjects is about the limit before colours start to blur —
+    // a sixth would need real thought rather than another shade.
+    gradient: "linear-gradient(150deg, #6ee7b7 0%, #16a34a 45%, #14532d 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(22,163,74,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(22,163,74,0.9)]",
+    accent: "#15803d",
+    mascot: "atlas",
+    // ── Year 9 is written. Years 10 and 11 are PLANNED but not yet written ──
+    // Their pages exist and work, showing the honest "content coming soon"
+    // panel. Registering them now rather than later means the slugs are fixed
+    // and recorded in known-topics.ts, so nothing can quietly change under
+    // anyone's progress once the content arrives.
+    //
+    // The Year 10 and 11 lists follow the shape most boards use: physical
+    // geography (hazards, ecosystems, UK landscapes), human geography (urban,
+    // economic, resources), then the skills and fieldwork every board examines.
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "map-skills", title: "Map skills", icon: "map" },
+          { slug: "weather-and-climate", title: "Weather & climate", icon: "cloud" },
+          { slug: "tectonic-hazards", title: "Tectonic hazards", icon: "volcano" },
+          { slug: "rivers-and-flooding", title: "Rivers & flooding", icon: "droplet" },
+          { slug: "coasts", title: "Coasts", icon: "wave" },
+          { slug: "ecosystems-and-biomes", title: "Ecosystems & biomes", icon: "leaf" },
+          { slug: "population-and-urbanisation", title: "Population & urbanisation", icon: "city" },
+          { slug: "development-and-inequality", title: "Development & inequality", icon: "scales" },
+          { slug: "climate-change", title: "Climate change", icon: "thermometer" },
+          { slug: "resources-and-sustainability", title: "Resources & sustainability", icon: "recycle" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "natural-hazards", title: "Natural hazards", icon: "volcano" },
+          { slug: "the-living-world", title: "The living world", icon: "leaf" },
+          { slug: "uk-physical-landscapes", title: "UK physical landscapes", icon: "layers" },
+          { slug: "urban-issues-and-challenges", title: "Urban issues & challenges", icon: "city" },
+          { slug: "the-changing-economic-world", title: "The changing economic world", icon: "factory" },
+          { slug: "resource-management", title: "Resource management", icon: "recycle" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "fieldwork-and-enquiry", title: "Fieldwork & enquiry", icon: "compass" },
+          { slug: "maps-graphs-and-statistics", title: "Maps, graphs & statistics", icon: "chart" },
+          { slug: "issue-evaluation", title: "Issue evaluation", icon: "scales" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
         ],
       },

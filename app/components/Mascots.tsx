@@ -38,6 +38,7 @@ export const MASCOTS = {
   hoot: Hoot,
   quill: Quill,
   knight: Knight,
+  atlas: Atlas,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -425,6 +426,95 @@ export function Knight(props: MascotProps) {
       {/* Gold rim — the family colour again, and it lifts the shield off the
           armour behind it. */}
       <path d="M74 80 L110 80 L110 104 Q110 119 92 126 Q74 119 74 104 Z" fill="none" stroke="#f0c869" strokeWidth={2.5} strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ATLAS — Geography.
+//
+// The reference Matthew was given was a globe with arms and legs, and he was
+// right that it did not fit. The problem was proportion: it was a ball with
+// limbs, where every other character here is built as head-plus-body with the
+// head at about 40% of the total height. That single ratio is most of what
+// makes the five look related.
+//
+// So the globe is the HEAD, not the whole character, and there is a proper
+// body under it. Everything else follows the house rules: flat fills with one
+// darker tone, light from the upper left, thick rounded forms, no sharp
+// corners — and the round gold spectacles that Pixel, Hoot and Quill wear, in
+// the same #f0c869 that became Gaunt's trim.
+//
+// The continents are deliberately simplified and unlabelled. Drawing a
+// recognisable world map at 24 pixels is impossible, and attempting it would
+// produce a muddy shape that also implies a political claim about borders.
+// Suggested landmasses read as "a globe" instantly and commit to nothing.
+// ─────────────────────────────────────────────────────────────────────────────
+export function Atlas(props: MascotProps) {
+  return (
+    <svg
+      viewBox="0 0 120 140"
+      role="img"
+      aria-label="Atlas, the Geography mascot: a globe-headed character in round glasses, wearing a backpack and boots"
+      {...props}
+    >
+      {/* Backpack strap and pack, drawn first so the body sits over them */}
+      <rect x="18" y="82" width="16" height="30" rx="8" fill="#0f766e" />
+      <rect x="18" y="94" width="16" height="6" rx="3" fill="#000000" opacity={0.18} />
+
+      {/* Legs and boots */}
+      <rect x="45" y="108" width="11" height="16" rx="5.5" fill="#3f6212" />
+      <rect x="64" y="108" width="11" height="16" rx="5.5" fill="#3f6212" />
+      <ellipse cx="49" cy="127" rx="12" ry="7" fill="#1a2e05" />
+      <ellipse cx="71" cy="127" rx="12" ry="7" fill="#1a2e05" />
+
+      {/* Body — a walking jacket, green for the subject */}
+      <path d="M36 78 Q60 72 84 78 L84 106 Q60 114 36 106 Z" fill="#16a34a" />
+      <path d="M60 75 Q84 74 84 78 L84 106 Q72 111 60 112 Z" fill="#000000" opacity={0.13} />
+      {/* Zip and collar */}
+      <rect x="58" y="76" width="4" height="34" rx="2" fill="#f0c869" />
+      <path d="M38 78 Q60 72 82 78 L82 83 Q60 77 38 83 Z" fill="#15803d" />
+
+      {/* Arms */}
+      <rect x="22" y="80" width="12" height="26" rx="6" fill="#16a34a" />
+      <rect x="86" y="80" width="12" height="26" rx="6" fill="#16a34a" />
+      <rect x="86" y="80" width="12" height="26" rx="6" fill="#000000" opacity={0.12} />
+
+      {/* ── The globe head ── */}
+      <circle cx="60" cy="44" r="34" fill="#38bdf8" />
+      {/* One darker tone on the right so it reads as a sphere rather than a
+          disc. This is the same move used on every other character. */}
+      <path d="M60 10 A34 34 0 0 1 60 78 A24 34 0 0 0 60 10 Z" fill="#0284c7" opacity={0.45} />
+
+      {/* Simplified landmasses. Not a map — a suggestion of one. */}
+      <path d="M34 30 Q44 24 52 30 Q50 40 42 42 Q34 40 34 30 Z" fill="#4ade80" />
+      <path d="M40 50 Q48 48 50 56 Q48 68 42 70 Q36 62 40 50 Z" fill="#4ade80" />
+      <path d="M66 26 Q80 24 86 34 Q80 40 70 38 Q64 34 66 26 Z" fill="#4ade80" />
+      <path d="M68 46 Q80 44 82 54 Q78 66 70 68 Q64 58 68 46 Z" fill="#4ade80" />
+      <path d="M66 46 Q78 44 82 54 Q78 66 70 68 Q70 56 66 46 Z" fill="#000000" opacity={0.08} />
+      {/* A faint equator, which reads as "globe" more strongly than any
+          landmass does. */}
+      <path d="M27 46 Q60 54 93 46" stroke="#ffffff" strokeWidth={1.6} opacity={0.35} fill="none" />
+      {/* Highlight, upper left, matching the light source the others use */}
+      <path d="M38 24 Q46 16 58 15 Q44 20 40 30 Z" fill="#ffffff" opacity={0.4} />
+
+      {/* Glasses — the family thread. Drawn over the globe, so the character
+          reads as a face first and a planet second. */}
+      <circle cx="48" cy="46" r="11" fill="#e0f2fe" opacity={0.92} />
+      <circle cx="72" cy="46" r="11" fill="#e0f2fe" opacity={0.92} />
+      <circle cx="48" cy="46" r="11" fill="none" stroke="#f0c869" strokeWidth={3} />
+      <circle cx="72" cy="46" r="11" fill="none" stroke="#f0c869" strokeWidth={3} />
+      <path d="M59 46 h2" stroke="#f0c869" strokeWidth={3} strokeLinecap="round" />
+
+      {/* Eyes — slightly oval with one highlight each, the setting that reads
+          as characterful rather than as a toy. */}
+      <ellipse cx="48" cy="47" rx="4.4" ry="5.2" fill="#0c2436" />
+      <ellipse cx="72" cy="47" rx="4.4" ry="5.2" fill="#0c2436" />
+      <circle cx="49.8" cy="45" r="1.7" fill="#ffffff" />
+      <circle cx="73.8" cy="45" r="1.7" fill="#ffffff" />
+
+      {/* A restrained, slightly asymmetric smile */}
+      <path d="M53 62 Q60 67 68 61" stroke="#0c2436" strokeWidth={2.6} strokeLinecap="round" fill="none" />
     </svg>
   );
 }

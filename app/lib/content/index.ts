@@ -18,6 +18,7 @@
 import { COMPUTER_SCIENCE } from "./computer-science";
 import { ENGLISH } from "./english";
 import { HISTORY } from "./history";
+import { GEOGRAPHY } from "./geography";
 import { MATHS } from "./maths";
 
 // ─── Higher tier ────────────────────────────────────────────────────────────
@@ -95,6 +96,7 @@ export const TOPIC_CONTENT: Record<string, TopicContent> = {
   ...MATHS,
   ...ENGLISH,
   ...HISTORY,
+  ...GEOGRAPHY,
 };
 
 export function getTopicContent(
