@@ -120,7 +120,24 @@ export default async function ProgressPage() {
               </div>
 
               <div className="mt-5 flex items-center gap-5">
-                <ProgressRing percent={subject.percent} colour={colour} />
+                {/* The ring shows the COUNT, not the percentage — and that is
+                    a fix for something that genuinely looked like data loss.
+
+                    The percentage is topics covered ÷ topics in the subject.
+                    Adding topics grows the denominator, so the same work
+                    displayed as 4/13 = 31% one week and 4/18 = 22% the next.
+                    Nothing had been lost; the number had simply been measured
+                    against a bigger total, and there is no way for a student to
+                    tell those two things apart from a falling percentage.
+
+                    "4 of 18" can only ever go up, and it is more informative
+                    anyway. The ring still FILLS by percentage, so the shape
+                    remains comparable between subjects. */}
+                <ProgressRing
+                  percent={subject.percent}
+                  colour={colour}
+                  label={`${subject.topicsCovered}/${subject.topicsTotal}`}
+                />
 
                 <dl className="min-w-0 flex-1 space-y-2 text-sm">
                   <div>
@@ -154,7 +171,7 @@ export default async function ProgressPage() {
                   {subject.label}
                 </span>
                 <span className="text-sm opacity-50">
-                  {subject.topicsCovered} of {subject.topicsTotal} topics
+                  {subject.percent}% of this subject
                 </span>
               </div>
 
@@ -244,8 +261,11 @@ export default async function ProgressPage() {
         <h2 className="font-semibold">How these are worked out</h2>
         <ul className="mt-3 space-y-2 opacity-70">
           <li>
-            <strong>The ring</strong> is topics covered — how many topics you
-            have practised at least once. It only ever goes up.
+            <strong>The ring</strong> is topics covered — how many topics
+            you&apos;ve practised at least once. The count only ever goes up.
+            The percentage beneath it can move down when new topics are added
+            to a subject, because it is measured against a bigger total. That
+            isn&apos;t lost progress: nothing you have done is ever removed.
           </li>
           <li>
             <strong>Accuracy</strong> counts every answer you check, right or

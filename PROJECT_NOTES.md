@@ -163,6 +163,26 @@ Colour: a deep warm red (`#dc2626` family, accent `#b91c1c`). Deliberately not i
 - **Three grids were hardcoded to `grid-cols-3`.** Now `sm:grid-cols-2 xl:grid-cols-4`.
 - The mascot union was also written out twice (in `Subject` and in `SubjectProgress`); the second now says `Subject["mascot"]`.
 
+## Protecting progress across updates (2026-08-09)
+
+Matthew reported that progress looked like it had partially disappeared. **Investigated: nothing was lost from the database.** Two separate things made it look that way.
+
+**1. The ring percentage fell when topics were added.** It was topics covered ÷ topics in the subject, so growing the subject grew the denominator. Identical work displayed as 4/13 = 31% one week and 4/18 = 22% the next. Checked against git: the site went 38 → 53 → 68 → 72 topics, so this happened to every subject. **Fixed** — the ring now shows the COUNT (`4/18`), which can only go up, while still filling by percentage so subjects stay comparable. The percentage moved to a caption, with an explanation on the page.
+
+**2. "This week" is a rolling seven days**, so a session from eight days ago drops out by design. Total questions and flashcards never fall.
+
+**The real danger, now guarded against: `app/lib/known-topics.ts`.** Progress rows point at topics by SLUG and nothing else, so renaming or deleting one silently orphans every record attached to it — the rows survive, nothing ever counts them again, and to a student that is indistinguishable from deletion. That file lists every key that has ever existed, and `npm run check` fails if one disappears or if a new one is unregistered. **Verified by deliberately deleting a topic: the check failed with the right message.** Checked the whole git history too — no slug has ever been renamed or removed.
+
+If a topic genuinely has to go: move its key to `RETIRED_TOPIC_KEYS`, and migrate the activity rows in Supabase first. Never just delete the line.
+
+## History bug check (2026-08-09)
+
+- All 320 auto-marked History questions replayed through the shipped `normalise()`: none fail to match themselves, none accept blanks or junk.
+- No implausible years in any accept list; no answer text contradicting the year its question accepts.
+- Respectful-language check across all 19 topics: "slaves" is never used as a noun for people (the one match was the exam tip telling students not to use it).
+- The Year 9 "rise of the Nazis" and Year 10 "Germany 1890–1945" topics share **zero** identical questions and one flashcard term — they complement rather than duplicate, as intended.
+- All 19 have the full six-section format.
+
 ## History complete — all 19 topics (2026-08-09)
 
 **Every topic on the site is now written: 72 of 72, ~152,000 words, 20,066 checks passing.**

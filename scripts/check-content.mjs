@@ -301,6 +301,44 @@ try {
     }
   }
 
+  // ── NO TOPIC SLUG MAY EVER SILENTLY DISAPPEAR ─────────────────────────────
+  //
+  // Progress rows in the database point at topics by slug and nothing else, so
+  // renaming or deleting one orphans every record attached to it. The rows
+  // survive; nothing ever counts them again. To a student that is
+  // indistinguishable from their work being deleted.
+  //
+  // `known-topics.ts` lists every key that has ever existed. This check fails
+  // if one vanishes, which turns a silent data loss into a build error.
+  {
+    const knownSrc = readFileSync("app/lib/known-topics.ts", "utf8");
+    const knownBlock = knownSrc.slice(
+      knownSrc.indexOf("KNOWN_TOPIC_KEYS"),
+      knownSrc.indexOf("RETIRED_TOPIC_KEYS"),
+    );
+    const retiredBlock = knownSrc.slice(knownSrc.indexOf("RETIRED_TOPIC_KEYS"));
+    const known = [...knownBlock.matchAll(/"([a-z0-9-]+\/[a-z0-9-]+)"/g)].map((m) => m[1]);
+    const retired = new Set(
+      [...retiredBlock.matchAll(/"([a-z0-9-]+\/[a-z0-9-]+)"/g)].map((m) => m[1]),
+    );
+    const live = new Set(routes.map(([s, t]) => `${s}/${t}`));
+
+    for (const key of known) {
+      expect(live.has(key) || retired.has(key),
+        `TOPIC DISAPPEARED: "${key}" is in known-topics.ts but no longer exists. ` +
+        `Every progress record pointing at it has just been orphaned. Restore the slug, ` +
+        `or move it to RETIRED_TOPIC_KEYS after migrating the activity rows in Supabase.`);
+    }
+
+    // New topics are fine — they just have to be recorded, so the next person
+    // to touch this cannot remove them by accident either.
+    for (const key of live) {
+      expect(known.includes(key),
+        `NEW TOPIC NOT REGISTERED: "${key}" exists but is missing from known-topics.ts. ` +
+        `Add it, so that deleting it later becomes an error rather than a surprise.`);
+    }
+  }
+
   // ── Copy that hardcodes a number the data would contradict ─────────────────
   for (const file of [
     "app/page.tsx",
