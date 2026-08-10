@@ -1392,4 +1392,1625 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
     ],
   },
+
+  // ─── YEAR 10 ──────────────────────────────────────────────────────────────
+
+  "biology/communicable-disease": {
+    summary:
+      "Communicable diseases are the ones you can catch. This topic covers the four types of pathogen, how each spreads, how the body defends itself, and how vaccines and antibiotics work — including why antibiotics do nothing at all against a virus, which is the single most important public-health idea in GCSE Biology.",
+    keyFacts: [
+      {
+        heading: "The four types of pathogen",
+        points: [
+          "BACTERIA are living cells that reproduce rapidly and make TOXINS which damage tissue.",
+          "VIRUSES are not cells. They reproduce INSIDE body cells and burst them open, which is what causes the damage.",
+          "PROTISTS are single-celled eukaryotes, often carried by a vector such as a mosquito.",
+          "FUNGI can grow on or in tissue, producing spores that spread to other hosts.",
+          "A PATHOGEN is any microorganism that causes disease; the diseases they cause are COMMUNICABLE, meaning they spread.",
+        ],
+      },
+      {
+        heading: "Named diseases you must know",
+        points: [
+          "SALMONELLA — bacterium, from undercooked or contaminated food. Fever, cramps, vomiting, diarrhoea. UK poultry are vaccinated against it.",
+          "GONORRHOEA — bacterium, sexually transmitted. Thick yellow discharge and pain when urinating. Treated with antibiotics; condoms prevent it.",
+          "MEASLES — virus, spread by droplets from coughs and sneezes. Fever and a red rash; can be fatal. Prevented by vaccination.",
+          "HIV — virus, spread by sexual contact or shared needles. Attacks immune cells; without antiretroviral drugs it develops into AIDS.",
+          "TOBACCO MOSAIC VIRUS — virus in plants, giving a mosaic pattern of discolouration that reduces photosynthesis.",
+          "MALARIA — protist, spread by mosquitoes acting as VECTORS. Recurrent fever; prevented by nets and by killing mosquitoes.",
+          "ROSE BLACK SPOT — fungus in plants, black spots on leaves which then drop, reducing photosynthesis.",
+        ],
+      },
+      {
+        heading: "How the body defends itself",
+        points: [
+          "NON-SPECIFIC defences come first: skin as a barrier, nose hairs and mucus, trachea and bronchi lined with cilia and mucus, and stomach acid.",
+          "WHITE BLOOD CELLS provide the specific response, in three ways.",
+          "PHAGOCYTOSIS — the white blood cell engulfs and digests the pathogen.",
+          "ANTIBODY production — proteins that lock onto a specific antigen and clump pathogens together for destruction.",
+          "ANTITOXIN production — proteins that neutralise the toxins bacteria release.",
+        ],
+      },
+      {
+        heading: "Vaccination and drugs",
+        points: [
+          "A vaccine contains a small quantity of dead or inactive pathogen.",
+          "It stimulates white blood cells to produce antibodies, and leaves MEMORY CELLS behind.",
+          "If the real pathogen arrives later, antibodies are produced far faster and in greater quantity, so you do not become ill.",
+          "HERD IMMUNITY: if enough people are vaccinated, the pathogen cannot spread easily, protecting those who cannot be vaccinated.",
+          "ANTIBIOTICS kill bacteria inside the body. They have NO effect on viruses, because viruses reproduce inside your own cells.",
+          "PAINKILLERS treat the symptoms only — they do not kill the pathogen.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Pathogen", definition: "A microorganism that causes an infectious disease." },
+      { term: "Communicable disease", definition: "A disease that can be spread from one organism to another." },
+      { term: "Bacterium", definition: "A single-celled pathogen that reproduces rapidly and damages tissue by producing toxins." },
+      { term: "Virus", definition: "A pathogen that is not a cell and reproduces inside host cells, bursting them open." },
+      { term: "Protist", definition: "A single-celled eukaryotic pathogen, often spread by a vector — malaria is the example." },
+      { term: "Vector", definition: "An organism that carries a pathogen from one host to another, such as a mosquito." },
+      { term: "Toxin", definition: "A poison produced by bacteria that damages body tissue and causes symptoms." },
+      { term: "Antigen", definition: "A protein on the surface of a pathogen that the immune system recognises as foreign." },
+      { term: "Antibody", definition: "A protein made by white blood cells that binds to a specific antigen." },
+      { term: "Antitoxin", definition: "A protein made by white blood cells that neutralises the toxins bacteria produce." },
+      { term: "Phagocytosis", definition: "When a white blood cell engulfs and digests a pathogen." },
+      { term: "Vaccination", definition: "Introducing a small quantity of dead or inactive pathogen to stimulate an immune response." },
+      { term: "Memory cell", definition: "A white blood cell left after infection or vaccination that allows a faster response next time." },
+      { term: "Herd immunity", definition: "When enough of a population is immune that a pathogen cannot spread easily." },
+      { term: "Antibiotic", definition: "A medicine that kills bacteria inside the body. It has no effect on viruses." },
+      { term: "Painkiller", definition: "A drug that relieves symptoms without killing the pathogen." },
+      { term: "Antibiotic resistance", definition: "When bacteria evolve so that an antibiotic no longer kills them." },
+    ],
+    examTips: [
+      {
+        tip: "Antibiotics do NOT work on viruses — know the reason",
+        detail:
+          "Viruses reproduce inside your own cells, so a drug that killed them would have to damage your cells too. This exact question appears constantly.",
+      },
+      {
+        tip: "Learn each named disease as a set of four",
+        detail:
+          "Pathogen type, how it spreads, symptoms, how it is treated or prevented. Questions ask for any one of the four, and a gap in your table is a lost mark.",
+      },
+      {
+        tip: "Say which defence is non-specific",
+        detail:
+          "Skin, mucus, cilia and stomach acid work against everything. Antibodies are specific to one antigen. Examiners test that you know which is which.",
+      },
+      {
+        tip: "Explain vaccination through MEMORY CELLS",
+        detail:
+          "The vaccine works because memory cells remain, so the second response is faster and larger. Without that sentence the explanation is incomplete.",
+      },
+      {
+        tip: "A mosquito is a vector, not the pathogen",
+        detail:
+          "Malaria is caused by a PROTIST. The mosquito only carries it. Writing 'malaria is caused by mosquitoes' loses the mark.",
+      },
+      {
+        tip: "Painkillers treat symptoms, not causes",
+        detail:
+          "They make you feel better while your immune system does the actual work. Questions often offer this as a tempting wrong answer.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the general name for a microorganism that causes disease?",
+        accept: ["pathogen", "a pathogen", "pathogens"],
+        answer:
+          "A pathogen. It covers all four types — bacteria, viruses, protists and fungi — and the diseases they cause are called communicable.",
+      },
+      {
+        question: "Which type of pathogen causes measles?",
+        accept: ["virus", "a virus", "viral"],
+        answer:
+          "A virus, spread by droplets from coughs and sneezes. It can be fatal, which is why the vaccine is offered to all young children.",
+      },
+      {
+        question: "Which type of pathogen causes malaria?",
+        accept: ["protist", "a protist", "protists", "protoctist"],
+        answer:
+          "A protist. The mosquito is only the VECTOR that carries it — saying mosquitoes cause malaria is a classic lost mark.",
+      },
+      {
+        question: "Which type of pathogen causes salmonella food poisoning?",
+        accept: ["bacterium", "bacteria", "a bacterium", "bacterial"],
+        answer:
+          "A bacterium. It produces toxins that cause fever, cramps, vomiting and diarrhoea. UK poultry are vaccinated to reduce cases.",
+      },
+      {
+        question: "Which type of pathogen causes rose black spot?",
+        accept: ["fungus", "a fungus", "fungi", "fungal"],
+        answer:
+          "A fungus. The black spots destroy leaf tissue, so the plant photosynthesises less and grows poorly.",
+      },
+      {
+        question: "What is the name for an organism that carries a pathogen between hosts?",
+        accept: ["vector", "a vector", "vectors"],
+        answer:
+          "A vector. The mosquito is the standard example, which is why anti-malaria programmes target the insect rather than the protist.",
+      },
+      {
+        question: "What is the process of a white blood cell engulfing a pathogen called?",
+        accept: ["phagocytosis", "phagocytose"],
+        answer:
+          "Phagocytosis. It is one of three white blood cell defences, alongside producing antibodies and producing antitoxins.",
+      },
+      {
+        question: "What is the protein on a pathogen's surface that the immune system recognises called?",
+        accept: ["antigen", "an antigen", "antigens"],
+        answer:
+          "An antigen. Antibodies are specific because each one is shaped to bind to one particular antigen.",
+      },
+      {
+        question: "What do white blood cells produce to neutralise bacterial toxins?",
+        accept: ["antitoxins", "antitoxin", "an antitoxin"],
+        answer:
+          "Antitoxins. Note these neutralise the POISON, whereas antibodies bind to the pathogen itself — a distinction worth keeping straight.",
+      },
+      {
+        question: "Do antibiotics kill viruses? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. Viruses reproduce inside your own body cells, so a drug that destroyed them would damage your cells too. This is why antibiotics are useless for a cold.",
+      },
+      {
+        question: "What cells remain after vaccination, allowing a faster response later?",
+        accept: ["memory cells", "memory cell", "white blood cells"],
+        answer:
+          "Memory cells. They are why the second response is faster and larger, so the pathogen is destroyed before you feel ill.",
+      },
+      {
+        question: "What is it called when enough people are vaccinated that a disease cannot spread easily?",
+        accept: ["herd immunity", "herd immunisation"],
+        answer:
+          "Herd immunity. It protects people who cannot be vaccinated themselves — babies, and those with weakened immune systems.",
+      },
+      {
+        question: "Name one non-specific defence the human body has against pathogens.",
+        accept: ["skin", "mucus", "cilia", "stomach acid", "nose hairs", "tears", "acid", "hairs"],
+        answer:
+          "Skin as a barrier, mucus and cilia in the airways, nose hairs, or stomach acid. Non-specific means they work against every pathogen, not one particular kind.",
+      },
+      {
+        question: "True or false: painkillers kill the pathogen causing an illness.",
+        accept: ["false", "f"],
+        answer:
+          "False. Painkillers relieve symptoms only. Your immune system still has to destroy the pathogen — the drug just makes waiting more bearable.",
+      },
+      {
+        question: "Explain how vaccination protects someone from a disease. Write three or four sentences.",
+        answer:
+          "The vaccine contains a small quantity of dead or inactive pathogen, which carries the same antigens as the live one. White blood cells recognise those antigens as foreign and produce antibodies against them, and memory cells are left behind afterwards. If the real pathogen infects the person later, those memory cells recognise it immediately and produce antibodies far faster and in much greater quantity. The pathogen is destroyed before it can multiply enough to cause symptoms. Mark this one yourself: the memory cells and the faster, larger second response are where the marks are.",
+      },
+      {
+        question: "Explain why antibiotics have no effect on viral infections such as a cold.",
+        answer:
+          "Antibiotics work by damaging structures that bacteria have and human cells do not, such as the bacterial cell wall. Viruses are not cells at all and reproduce INSIDE the body's own cells, so there is no separate structure to attack — any drug that destroyed the virus would have to damage the host cell surrounding it. Taking antibiotics for a cold therefore does nothing except expose bacteria in the body to the drug unnecessarily, which encourages resistance. Mark this one yourself: credit yourself for viruses being inside host cells, and extra credit for mentioning resistance.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Antibiotics cure colds and flu.",
+        right:
+          "Both are viral. Antibiotics kill bacteria only, and taking them unnecessarily speeds up the evolution of antibiotic-resistant bacteria.",
+      },
+      {
+        wrong: "Mosquitoes cause malaria.",
+        right:
+          "Malaria is caused by a protist. The mosquito is the vector that carries it from one person to another.",
+      },
+      {
+        wrong: "A vaccine gives you a mild version of the disease.",
+        right:
+          "It contains dead or inactivated pathogen, which cannot cause the disease. It triggers the immune response without the infection.",
+      },
+      {
+        wrong: "Viruses are alive and are cells.",
+        right:
+          "Viruses are not cells and cannot reproduce on their own. They must take over a host cell, which is exactly why they are so hard to treat.",
+      },
+      {
+        wrong: "Antibodies kill pathogens directly.",
+        right:
+          "Antibodies bind to antigens and clump pathogens together, marking them so that white blood cells can destroy them.",
+      },
+    ],
+  },
+
+  "biology/non-communicable-disease": {
+    summary:
+      "Non-communicable diseases cannot be caught — they build up over years from genes, lifestyle and environment. This topic covers risk factors, what they cost individuals and the health service, and cancer. It is also the topic where you are expected to reason about CORRELATION and CAUSE, which is a skill examiners test far more than the facts themselves.",
+    keyFacts: [
+      {
+        heading: "Risk factors",
+        points: [
+          "A RISK FACTOR is anything that increases the chance of developing a disease. It does not guarantee it.",
+          "SMOKING is linked to lung disease, lung cancer and cardiovascular disease.",
+          "OBESITY is a major risk factor for Type 2 diabetes.",
+          "ALCOHOL damages the liver and affects brain function.",
+          "Carcinogens, including ionising radiation, increase cancer risk.",
+          "Smoking or drinking during pregnancy affects the development of the unborn baby.",
+        ],
+      },
+      {
+        heading: "Correlation and cause",
+        points: [
+          "A CORRELATION means two things change together. It does NOT by itself prove one causes the other.",
+          "A causal mechanism has to be found — an explanation of HOW one produces the other.",
+          "Smoking and lung cancer is a causal link because the chemicals in smoke are known carcinogens.",
+          "Other factors may explain a correlation, or both may be caused by something else entirely.",
+          "Sample size, the length of the study and how it was controlled all affect how much a study can prove.",
+        ],
+      },
+      {
+        heading: "The cost of disease",
+        points: [
+          "HUMAN cost: shorter lives, disability, pain, and the effect on families and carers.",
+          "FINANCIAL cost: treatment, hospital beds, research, and the working days lost to illness.",
+          "Non-communicable diseases are a very large share of NHS spending.",
+          "Prevention is generally far cheaper than treatment, which is why public health campaigns exist.",
+          "Poorer communities tend to suffer more from these diseases, which is itself a policy problem.",
+        ],
+      },
+      {
+        heading: "Cancer",
+        points: [
+          "Cancer results from changes in cells that lead to UNCONTROLLED growth and division.",
+          "BENIGN tumours grow in one place inside a membrane and do not invade other tissues.",
+          "MALIGNANT tumours invade neighbouring tissue and spread in the blood to form SECONDARY tumours.",
+          "Malignant tumour cells are cancers; benign ones usually are not dangerous unless they press on something.",
+          "Risk factors include smoking, obesity, UV exposure, ionising radiation, some viruses, and inherited genes.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Non-communicable disease", definition: "A disease that cannot be transmitted from one person to another." },
+      { term: "Risk factor", definition: "Anything that increases the chance of developing a disease, without guaranteeing it." },
+      { term: "Correlation", definition: "A relationship where two variables change together, which does not by itself prove cause." },
+      { term: "Causal mechanism", definition: "An explanation of how one factor actually produces an effect — what turns correlation into cause." },
+      { term: "Carcinogen", definition: "A substance or form of radiation that increases the risk of cancer." },
+      { term: "Tumour", definition: "A mass of cells produced by uncontrolled cell division." },
+      { term: "Benign tumour", definition: "A tumour contained in one place within a membrane, which does not invade other tissues." },
+      { term: "Malignant tumour", definition: "A tumour that invades neighbouring tissue and spreads in the blood — this is cancer." },
+      { term: "Secondary tumour", definition: "A new tumour formed when malignant cells spread to another part of the body." },
+      { term: "Type 2 diabetes", definition: "A condition where the body stops responding properly to insulin; obesity is a major risk factor." },
+      { term: "Cardiovascular disease", definition: "Disease of the heart or blood vessels." },
+      { term: "Ionising radiation", definition: "Radiation with enough energy to damage DNA, increasing cancer risk." },
+      { term: "Liver disease", definition: "Damage to the liver, strongly associated with long-term alcohol consumption." },
+      { term: "Lifestyle factor", definition: "An aspect of how a person lives — diet, exercise, smoking, alcohol — that affects disease risk." },
+    ],
+    examTips: [
+      {
+        tip: "Never write that a correlation proves a cause",
+        detail:
+          "It is the single most examined idea in this topic. Say 'this shows a correlation, but a causal mechanism would be needed to prove cause'.",
+      },
+      {
+        tip: "Risk factor means increased CHANCE",
+        detail:
+          "Smoking does not guarantee lung cancer, and non-smokers can get it. Answers that speak in absolutes lose marks.",
+      },
+      {
+        tip: "Benign versus malignant is about SPREADING",
+        detail:
+          "Benign stays put inside a membrane; malignant invades and travels in the blood to form secondary tumours. That is the whole distinction.",
+      },
+      {
+        tip: "Give human AND financial costs",
+        detail:
+          "Questions on the impact of disease want both. The human cost includes families and carers, not just the patient.",
+      },
+      {
+        tip: "Comment on the study, not just the data",
+        detail:
+          "Sample size, duration, and whether other variables were controlled. Evaluating the evidence is what the higher marks are for.",
+      },
+      {
+        tip: "Use the data given",
+        detail:
+          "Quote figures from the table or graph in the question. An answer that could have been written without looking at the data rarely scores well.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the term for anything that increases the chance of developing a disease?",
+        accept: ["risk factor", "a risk factor", "risk factors"],
+        answer:
+          "A risk factor. Note it increases the CHANCE — it does not guarantee the disease, and people without the risk factor can still develop it.",
+      },
+      {
+        question: "What word describes two variables changing together without proving one causes the other?",
+        accept: ["correlation", "a correlation", "correlated"],
+        answer:
+          "Correlation. Turning it into a causal claim needs a mechanism — an explanation of HOW one produces the other.",
+      },
+      {
+        question: "What type of tumour stays in one place and does not invade other tissues?",
+        accept: ["benign", "benign tumour", "a benign tumour"],
+        answer:
+          "Benign. It is contained within a membrane, and is usually only dangerous if it presses on something important such as the brain.",
+      },
+      {
+        question: "What type of tumour invades other tissues and spreads in the blood?",
+        accept: ["malignant", "malignant tumour", "a malignant tumour", "cancerous"],
+        answer:
+          "Malignant — this is what is meant by cancer. Cells that break away and settle elsewhere form secondary tumours.",
+      },
+      {
+        question: "What is a new tumour formed when cancer cells spread elsewhere called?",
+        accept: ["secondary tumour", "secondary", "secondary tumours", "metastasis"],
+        answer:
+          "A secondary tumour. Spread is what makes malignant tumours so dangerous and so much harder to treat.",
+      },
+      {
+        question: "What is the name for a substance that increases the risk of cancer?",
+        accept: ["carcinogen", "a carcinogen", "carcinogens"],
+        answer:
+          "A carcinogen. Ionising radiation counts too — anything that damages DNA can increase the chance of uncontrolled cell division.",
+      },
+      {
+        question: "Obesity is a major risk factor for which type of diabetes?",
+        accept: ["type 2", "type two", "2", "type 2 diabetes"],
+        answer:
+          "Type 2 diabetes, where the body stops responding properly to insulin. Type 1 is not linked to lifestyle in the same way.",
+      },
+      {
+        question: "Name one disease strongly linked to smoking.",
+        accept: ["lung cancer", "lung disease", "cardiovascular disease", "heart disease", "emphysema", "copd", "cancer", "bronchitis"],
+        answer:
+          "Lung cancer, lung diseases such as emphysema, or cardiovascular disease. Smoking during pregnancy also affects the unborn baby.",
+      },
+      {
+        question: "Which organ is most damaged by long-term heavy alcohol consumption?",
+        accept: ["liver", "the liver"],
+        answer:
+          "The liver, because it processes alcohol. Long-term drinking also affects brain function and, during pregnancy, the developing baby.",
+      },
+      {
+        question: "Can a non-communicable disease be passed from person to person? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No — that is exactly what non-communicable means. They develop over time from genetic, lifestyle and environmental factors instead.",
+      },
+      {
+        question: "Give one financial cost of non-communicable disease to a country.",
+        accept: ["nhs costs", "treatment costs", "hospital", "research", "lost working days", "healthcare", "cost of treatment", "benefits", "lost productivity"],
+        answer:
+          "The cost of treatment and hospital care, research funding, and the working days lost to illness. Prevention is usually far cheaper than treatment.",
+      },
+      {
+        question: "Give one human cost of non-communicable disease.",
+        accept: ["shorter life", "disability", "pain", "family", "carers", "quality of life", "suffering", "early death", "stress"],
+        answer:
+          "A shorter life, disability, pain, and the effect on families and carers. Questions on impact want the human cost as well as the financial one.",
+      },
+      {
+        question: "True or false: a strong correlation in a study proves one thing causes the other.",
+        accept: ["false", "f"],
+        answer:
+          "False. A causal MECHANISM is needed — an explanation of how one produces the other. Both could also be caused by some third factor.",
+      },
+      {
+        question: "Name one thing to consider when judging how reliable a study's conclusion is.",
+        accept: ["sample size", "duration", "control variables", "who funded it", "repeats", "how long", "number of people", "bias", "controls"],
+        answer:
+          "Sample size, how long the study ran, whether other variables were controlled, and who funded it. Evaluating the study is where the higher marks are.",
+      },
+      {
+        question: "Explain why smoking and lung cancer is accepted as a causal link, not just a correlation. Write two or three sentences.",
+        answer:
+          "The correlation is very strong and has been found repeatedly in large studies over decades, in many different countries. Crucially, a mechanism is known: tobacco smoke contains chemicals that are proven carcinogens, and they damage the DNA of lung cells, leading to uncontrolled division. Because there is an explanation of HOW smoking produces cancer, and not merely that the two occur together, the link is accepted as causal. Mark this one yourself: the mechanism is the mark — a strong correlation alone is not enough.",
+      },
+      {
+        question: "A study finds people who drink more coffee have more heart problems. Evaluate what this shows.",
+        answer:
+          "It shows a correlation, not a cause. Heavy coffee drinkers may differ in other ways — they may be more likely to smoke, sleep less, or work in high-stress jobs — and any of those could be the real cause, so the two variables might both be caused by a third factor. Without a known biological mechanism explaining how coffee damages the heart, no causal claim can be made. To go further you would want a large sample, a long study, and careful control of other lifestyle variables. Mark this one yourself: the top marks are for naming a plausible third factor AND asking for a mechanism.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "If two things are correlated, one causes the other.",
+        right:
+          "A correlation is only a pattern. Cause requires a mechanism explaining HOW, and a third factor may be producing both.",
+      },
+      {
+        wrong: "A risk factor means you will definitely get the disease.",
+        right:
+          "It raises the probability. Plenty of smokers never develop lung cancer, and some non-smokers do.",
+      },
+      {
+        wrong: "All tumours are cancer.",
+        right:
+          "Benign tumours stay in one place and are usually not dangerous. Only malignant tumours, which invade and spread, are cancer.",
+      },
+      {
+        wrong: "Non-communicable diseases are entirely the individual's fault.",
+        right:
+          "Genetics, income, environment and access to healthy food all matter. That is why these diseases are far more common in poorer communities.",
+      },
+    ],
+  },
+
+  "biology/photosynthesis": {
+    summary:
+      "Photosynthesis is where almost all the energy in every food chain on Earth enters the living world. This topic covers the reaction itself, the four limiting factors that control its rate, and how greenhouse growers exploit them. It is also the first topic in the course with substantial Higher-tier-only content, which is flagged so Foundation students can skip it.",
+    keyFacts: [
+      {
+        heading: "The reaction",
+        points: [
+          "Word equation: carbon dioxide + water → glucose + oxygen, using light energy.",
+          "Symbol equation: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂.",
+          "It is ENDOTHERMIC — energy is transferred FROM the environment, from light, into the plant.",
+          "It happens in the chloroplasts, where chlorophyll absorbs the light.",
+          "Photosynthesis is the reverse of respiration in terms of the substances involved.",
+        ],
+      },
+      {
+        heading: "What the glucose is used for",
+        points: [
+          "Respiration, to release energy for the plant's own processes.",
+          "Converted into STARCH for storage, because starch is insoluble and so does not affect osmosis.",
+          "Converted into CELLULOSE to build cell walls.",
+          "Used with nitrate ions from the soil to make AMINO ACIDS, and then proteins.",
+          "Converted into lipids (oils and fats) for storage in seeds.",
+        ],
+      },
+      {
+        heading: "Limiting factors",
+        points: [
+          "A LIMITING FACTOR is the one in shortest supply, which is holding the rate back at that moment.",
+          "The four are: light intensity, carbon dioxide concentration, temperature, and the amount of chlorophyll.",
+          "On a graph, the rate rises as a factor increases and then LEVELS OFF when something else becomes limiting.",
+          "Temperature behaves differently: too high and enzymes denature, so the rate FALLS rather than levelling off.",
+          "Chlorophyll can be reduced by disease, such as tobacco mosaic virus, or by lack of magnesium in the soil.",
+        ],
+      },
+      {
+        heading: "Using this in greenhouses",
+        points: [
+          "Growers add artificial light to extend the day and raise light intensity.",
+          "Paraffin heaters raise the temperature AND release carbon dioxide — two limiting factors at once.",
+          "The aim is to make no single factor limiting, so plants grow as fast as possible.",
+          "Everything costs money, so growers balance the increased yield against fuel and equipment costs.",
+          "There is no point raising one factor if another is still limiting — that is spending money for no gain.",
+        ],
+      },
+      {
+        heading: "Higher tier: the inverse square law",
+        higherOnly: true,
+        points: [
+          "Light intensity is inversely proportional to the SQUARE of the distance from the source.",
+          "That means light intensity ∝ 1 ÷ d², where d is the distance.",
+          "Doubling the distance therefore gives a QUARTER of the intensity, not half.",
+          "Tripling the distance gives a ninth of the intensity.",
+          "In the required practical with pondweed, this is used to convert distance into a measure of light intensity.",
+        ],
+      },
+      {
+        heading: "Higher tier: interacting limiting factors",
+        higherOnly: true,
+        points: [
+          "At any moment only ONE factor is limiting — the one in shortest supply relative to what the plant could use.",
+          "Increasing a factor that is NOT limiting produces no increase in rate at all.",
+          "On a graph with several curves, the point where each levels off shows where a different factor took over.",
+          "A curve that levels off at a higher rate means the other factors were more plentiful in that experiment.",
+          "Explaining which factor is limiting at a named point on a graph is a standard Higher question.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Photosynthesis", definition: "The reaction in which plants use light energy to convert carbon dioxide and water into glucose and oxygen." },
+      { term: "Endothermic", definition: "A reaction that transfers energy from the surroundings — photosynthesis takes in light energy." },
+      { term: "Chlorophyll", definition: "The green pigment in chloroplasts that absorbs light energy for photosynthesis." },
+      { term: "Chloroplast", definition: "The part of a plant cell where photosynthesis takes place." },
+      { term: "Limiting factor", definition: "The factor in shortest supply, which is holding back the rate of a process." },
+      { term: "Light intensity", definition: "How much light energy falls on a given area — one of the four limiting factors." },
+      { term: "Starch", definition: "The insoluble storage form of glucose in plants, which does not affect osmosis." },
+      { term: "Cellulose", definition: "The carbohydrate made from glucose that builds plant cell walls." },
+      { term: "Nitrate ions", definition: "Minerals absorbed from the soil and combined with glucose to make amino acids." },
+      { term: "Amino acid", definition: "The building block of proteins, made in plants from glucose and nitrate ions." },
+      { term: "Inverse square law", definition: "Light intensity is proportional to 1 ÷ distance². Higher tier only." },
+      { term: "Required practical", definition: "An investigation you must be able to describe and evaluate in the exam." },
+      { term: "Pondweed", definition: "The plant used in the photosynthesis practical, where oxygen bubbles are counted." },
+      { term: "Magnesium", definition: "A mineral needed to make chlorophyll; a shortage causes yellow leaves." },
+      { term: "Rate of photosynthesis", definition: "How quickly the reaction proceeds, often measured by oxygen produced per minute." },
+    ],
+    examTips: [
+      {
+        tip: "Learn both equations, and check the balancing",
+        detail:
+          "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. The sixes are the marks — an unbalanced equation usually scores nothing.",
+      },
+      {
+        tip: "Photosynthesis is ENDOTHERMIC",
+        detail:
+          "Energy goes IN, from light. Students who learned that respiration is exothermic often guess the wrong way round here.",
+      },
+      {
+        tip: "Say WHICH factor is limiting and why",
+        detail:
+          "'The graph levels off' is a description. 'It levels off because carbon dioxide has become the limiting factor' is an explanation, and that is the mark.",
+      },
+      {
+        tip: "Temperature falls off, the others level off",
+        detail:
+          "Too hot and enzymes denature, so the rate drops. Light and carbon dioxide simply plateau. Getting this shape wrong on a graph loses marks.",
+      },
+      {
+        tip: "Starch is stored because it is INSOLUBLE",
+        detail:
+          "Soluble glucose would lower the water potential and draw water into the cell by osmosis. The reason is worth a mark on its own.",
+      },
+      {
+        tip: "Higher tier: double the distance, quarter the light",
+        detail:
+          "Inverse SQUARE, not inverse. If you are on Foundation you are not asked this — skip it and spend the time on limiting factors instead.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Pondweed produces 45 bubbles of oxygen in 3 minutes. Calculate the rate in bubbles per minute.",
+        steps: [
+          "Rate = amount ÷ time.",
+          "= 45 bubbles ÷ 3 minutes.",
+          "= 15 bubbles per minute.",
+          "Always give the unit: a bare '15' is an incomplete answer.",
+        ],
+        answer: "15 bubbles per minute",
+      },
+      {
+        question:
+          "A lamp is moved from 10 cm to 20 cm from some pondweed. Using the inverse square law, what happens to the light intensity?",
+        steps: [
+          "Light intensity is proportional to 1 ÷ d².",
+          "At 10 cm: 1 ÷ 10² = 1 ÷ 100.",
+          "At 20 cm: 1 ÷ 20² = 1 ÷ 400.",
+          "1/400 ÷ 1/100 = 100/400 = 0.25, so the intensity falls to a QUARTER — not a half.",
+        ],
+        answer: "It falls to one quarter of its previous value",
+        higherOnly: true,
+      },
+    ],
+    practice: [
+      {
+        question: "Complete the word equation: carbon dioxide + water → glucose + ______.",
+        accept: ["oxygen", "o2"],
+        answer:
+          "Oxygen. The full equation is carbon dioxide + water → glucose + oxygen, using light energy absorbed by chlorophyll.",
+      },
+      {
+        question: "How many molecules of carbon dioxide are in the balanced symbol equation for photosynthesis? Give the number only.",
+        accept: ["6", "six"],
+        answer:
+          "6. The equation is 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Getting the sixes right is where the marks are.",
+      },
+      {
+        question: "Is photosynthesis endothermic or exothermic?",
+        accept: ["endothermic"],
+        answer:
+          "Endothermic — energy is transferred IN from the surroundings, as light. Respiration is the exothermic one, releasing energy.",
+      },
+      {
+        question: "In which part of a plant cell does photosynthesis take place?",
+        accept: ["chloroplast", "chloroplasts", "the chloroplasts"],
+        answer:
+          "The chloroplasts, which contain the green pigment chlorophyll that absorbs the light energy.",
+      },
+      {
+        question: "Which insoluble carbohydrate do plants store glucose as?",
+        accept: ["starch"],
+        answer:
+          "Starch. Being insoluble matters: soluble glucose would draw water into the cell by osmosis and disrupt the water balance.",
+      },
+      {
+        question: "Glucose is combined with which ions from the soil to make amino acids?",
+        accept: ["nitrate", "nitrate ions", "nitrates"],
+        answer:
+          "Nitrate ions. This is why nitrate is a key ingredient of fertiliser — without it a plant cannot make proteins and grows poorly.",
+      },
+      {
+        question: "What is the name for the factor in shortest supply that holds back the rate of photosynthesis?",
+        accept: ["limiting factor", "a limiting factor", "the limiting factor"],
+        answer:
+          "The limiting factor. At any moment only one is limiting, so increasing any of the others produces no change in rate at all.",
+      },
+      {
+        question: "Name one limiting factor of photosynthesis other than light intensity.",
+        accept: ["carbon dioxide", "co2", "temperature", "chlorophyll", "amount of chlorophyll", "carbon dioxide concentration"],
+        answer:
+          "Carbon dioxide concentration, temperature, or the amount of chlorophyll. All four are examinable and worth learning as a set.",
+      },
+      {
+        question: "Pondweed makes 60 bubbles in 4 minutes. Calculate the rate in bubbles per minute. Give the number only.",
+        accept: ["15"],
+        answer:
+          "15 bubbles per minute. Rate = 60 ÷ 4. In a written answer include the unit — 'bubbles per minute' — because it carries a mark.",
+      },
+      {
+        question: "Pondweed makes 84 bubbles in 6 minutes. Calculate the rate in bubbles per minute. Give the number only.",
+        accept: ["14"],
+        answer:
+          "14 bubbles per minute. 84 ÷ 6 = 14. Rate questions in Biology are nearly always amount ÷ time, so look for those two numbers first.",
+      },
+      {
+        question: "Which mineral is needed to make chlorophyll, so that a shortage turns leaves yellow?",
+        accept: ["magnesium", "magnesium ions"],
+        answer:
+          "Magnesium. Without it a plant cannot make chlorophyll, so it absorbs less light and photosynthesises more slowly.",
+      },
+      {
+        question: "Why does a paraffin heater help a greenhouse grower in two ways?",
+        accept: ["heat and carbon dioxide", "temperature and co2", "warmth and carbon dioxide", "heat and co2", "carbon dioxide and heat", "co2 and temperature"],
+        answer:
+          "It raises the temperature AND releases carbon dioxide, so it removes two limiting factors at once. That is why it is the standard exam example.",
+      },
+      {
+        question: "Higher tier: if a lamp is moved from 5 cm to 10 cm away, light intensity falls to what fraction of its original value?",
+        accept: ["a quarter", "quarter", "1/4", "0.25", "one quarter"],
+        answer:
+          "A quarter. Intensity is proportional to 1 ÷ d², so doubling the distance divides the intensity by 2² = 4. Foundation students are not asked this.",
+        higherOnly: true,
+      },
+      {
+        question: "True or false: increasing light intensity always increases the rate of photosynthesis.",
+        accept: ["false", "f"],
+        answer:
+          "False. Once something else — usually carbon dioxide or temperature — becomes the limiting factor, more light makes no difference and the graph levels off.",
+      },
+      {
+        question: "Explain why a graph of photosynthesis against light intensity levels off. Write two or three sentences.",
+        answer:
+          "At low light intensity, light is the limiting factor, so giving the plant more light increases the rate in proportion. Eventually the plant has more light than it can use, and something else — usually carbon dioxide concentration or temperature — becomes the factor in shortest supply. From that point more light produces no further increase, so the line flattens. Mark this one yourself: naming which factor takes over is the difference between describing and explaining.",
+      },
+      {
+        question: "Explain why the rate of photosynthesis falls if the temperature gets too high, rather than levelling off.",
+        answer:
+          "Photosynthesis is controlled by enzymes. As temperature rises the rate increases, because particles collide more often and with more energy. Above the optimum, however, the enzymes begin to denature — the active site changes shape so the substrate no longer fits — and this is permanent. So instead of plateauing like the other limiting factors, the rate drops sharply as more enzyme molecules are destroyed. Mark this one yourself: the mark is for denaturing and the active site, not just 'it gets too hot'.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Plants respire at night and photosynthesise during the day.",
+        right:
+          "Plants respire ALL the time, day and night. During the day photosynthesis usually outpaces it, which hides the respiration.",
+      },
+      {
+        wrong: "Photosynthesis is exothermic because plants make energy.",
+        right:
+          "It is endothermic: light energy is taken IN. Nothing makes energy — photosynthesis transfers it into chemical stores in glucose.",
+      },
+      {
+        wrong: "Doubling the distance of a lamp halves the light intensity.",
+        right:
+          "It quarters it. Intensity follows an inverse SQUARE law, so the effect of moving a lamp is much larger than students expect.",
+      },
+      {
+        wrong: "Increasing any factor will speed up photosynthesis.",
+        right:
+          "Only the one that is currently limiting. Raising the others changes nothing, which is why greenhouse growers must work out which is short.",
+      },
+      {
+        wrong: "Plants store glucose as glucose.",
+        right:
+          "They convert it to starch, which is insoluble. Storing soluble glucose would draw water in by osmosis and damage the cell.",
+      },
+    ],
+  },
+
+  "biology/respiration": {
+    summary:
+      "Respiration is the reaction that releases the energy in glucose, and it happens in every living cell of every organism, every second of its life. This topic covers aerobic and anaerobic respiration, what happens to your body during hard exercise, and why the two forms produce such different amounts of energy.",
+    keyFacts: [
+      {
+        heading: "Aerobic respiration",
+        points: [
+          "Word equation: glucose + oxygen → carbon dioxide + water.",
+          "Symbol equation: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O.",
+          "It is EXOTHERMIC — energy is transferred TO the surroundings from the chemical store in glucose.",
+          "It happens continuously in the MITOCHONDRIA of every living cell.",
+          "It releases far more energy per glucose molecule than anaerobic respiration does.",
+        ],
+      },
+      {
+        heading: "What the energy is used for",
+        points: [
+          "Building larger molecules from smaller ones, such as proteins from amino acids.",
+          "Muscle contraction, which is why exercise raises the rate of respiration.",
+          "Keeping a steady body temperature in mammals and birds.",
+          "In plants, building sugars into starch and cellulose, and making amino acids from nitrates.",
+          "METABOLISM is the sum of all the reactions in a cell or organism.",
+        ],
+      },
+      {
+        heading: "Anaerobic respiration",
+        points: [
+          "In MUSCLE: glucose → lactic acid. No oxygen is needed.",
+          "In PLANTS AND YEAST: glucose → ethanol + carbon dioxide. This is called FERMENTATION.",
+          "Fermentation is used to make bread rise and to brew alcohol.",
+          "Anaerobic respiration releases much LESS energy per glucose, because the glucose is only partly broken down.",
+          "It is useful when oxygen cannot be supplied fast enough — during a sprint, for example.",
+        ],
+      },
+      {
+        heading: "Exercise and oxygen debt",
+        points: [
+          "During exercise the heart rate, breathing rate and breath depth all increase, to supply more oxygen and glucose and remove carbon dioxide.",
+          "If exercise is hard enough, muscles respire anaerobically and lactic acid builds up, causing muscle fatigue.",
+          "OXYGEN DEBT is the extra oxygen the body needs afterwards to break down the accumulated lactic acid.",
+          "That is why you keep breathing heavily after stopping.",
+          "Blood carries lactic acid to the LIVER, where it is converted back into glucose.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Respiration", definition: "The exothermic reaction that releases energy from glucose, occurring continuously in all living cells." },
+      { term: "Aerobic respiration", definition: "Respiration using oxygen: glucose + oxygen → carbon dioxide + water." },
+      { term: "Anaerobic respiration", definition: "Respiration without oxygen, releasing much less energy per glucose molecule." },
+      { term: "Exothermic", definition: "A reaction that transfers energy to the surroundings — respiration is exothermic." },
+      { term: "Mitochondria", definition: "The parts of a cell where aerobic respiration takes place." },
+      { term: "Lactic acid", definition: "The product of anaerobic respiration in muscle cells, which causes fatigue as it builds up." },
+      { term: "Fermentation", definition: "Anaerobic respiration in yeast and plants, producing ethanol and carbon dioxide." },
+      { term: "Ethanol", definition: "The alcohol produced by fermentation in yeast." },
+      { term: "Oxygen debt", definition: "The extra oxygen needed after exercise to break down the lactic acid that built up." },
+      { term: "Muscle fatigue", definition: "When muscles become tired and stop contracting efficiently, caused by lactic acid build-up." },
+      { term: "Metabolism", definition: "The sum of all the chemical reactions taking place in a cell or organism." },
+      { term: "Glycogen", definition: "The storage carbohydrate in animals, converted back to glucose when needed." },
+      { term: "Breathing rate", definition: "The number of breaths taken per minute, which rises during exercise." },
+      { term: "Heart rate", definition: "The number of heartbeats per minute, which rises during exercise to deliver more oxygen." },
+    ],
+    examTips: [
+      {
+        tip: "Respiration is not breathing",
+        detail:
+          "Breathing moves air in and out of the lungs. Respiration is a chemical reaction in every cell. Using them interchangeably loses marks constantly.",
+      },
+      {
+        tip: "Respiration RELEASES energy — it does not make it",
+        detail:
+          "Energy cannot be created. Say 'releases energy from glucose'. Examiners mark 'makes energy' as wrong every time.",
+      },
+      {
+        tip: "Learn both anaerobic equations, and which organism does which",
+        detail:
+          "Muscle gives lactic acid; yeast and plants give ethanol and carbon dioxide. Swapping them is the commonest error here.",
+      },
+      {
+        tip: "Explain oxygen debt through the LIVER",
+        detail:
+          "Lactic acid is carried in the blood to the liver, where it is converted back to glucose. That detail lifts an answer into the top band.",
+      },
+      {
+        tip: "Anaerobic gives LESS energy — say why",
+        detail:
+          "Because the glucose is only partly broken down. The reason is a mark on its own, not just the fact.",
+      },
+      {
+        tip: "Link every exercise response to a purpose",
+        detail:
+          "Heart rate rises to deliver more oxygen and glucose to muscles and remove carbon dioxide faster. The purpose is the mark.",
+      },
+    ],
+    practice: [
+      {
+        question: "Complete: glucose + oxygen → carbon dioxide + ______.",
+        accept: ["water", "h2o"],
+        answer:
+          "Water. The full aerobic equation is glucose + oxygen → carbon dioxide + water, and it is the exact reverse of photosynthesis in its substances.",
+      },
+      {
+        question: "Is respiration endothermic or exothermic?",
+        accept: ["exothermic"],
+        answer:
+          "Exothermic — it transfers energy TO the surroundings from the chemical store in glucose. Photosynthesis is the endothermic one.",
+      },
+      {
+        question: "In which part of the cell does aerobic respiration take place?",
+        accept: ["mitochondria", "mitochondrion", "the mitochondria"],
+        answer:
+          "The mitochondria. Cells needing a lot of energy — muscle, sperm — contain far more of them, a link examiners like to test.",
+      },
+      {
+        question: "What is the product of anaerobic respiration in muscle cells?",
+        accept: ["lactic acid", "lactate"],
+        answer:
+          "Lactic acid. It builds up during hard exercise and causes muscle fatigue, and it must be broken down afterwards using oxygen.",
+      },
+      {
+        question: "What are the two products of anaerobic respiration in yeast?",
+        accept: ["ethanol and carbon dioxide", "carbon dioxide and ethanol", "ethanol and co2", "alcohol and carbon dioxide"],
+        answer:
+          "Ethanol and carbon dioxide. Both are needed for the mark. This process is called fermentation and is used in brewing and baking.",
+      },
+      {
+        question: "What is anaerobic respiration in yeast called?",
+        accept: ["fermentation"],
+        answer:
+          "Fermentation. The carbon dioxide makes bread rise; the ethanol is what makes beer and wine alcoholic.",
+      },
+      {
+        question: "Which releases more energy per glucose molecule: aerobic or anaerobic respiration?",
+        accept: ["aerobic", "aerobic respiration"],
+        answer:
+          "Aerobic. Anaerobic respiration breaks glucose down only partly, so much of the energy is left locked in the lactic acid or ethanol.",
+      },
+      {
+        question: "What is the extra oxygen needed after exercise called?",
+        accept: ["oxygen debt", "the oxygen debt", "epoc"],
+        answer:
+          "Oxygen debt. It is why you keep breathing hard after you stop — the body is still working to break down accumulated lactic acid.",
+      },
+      {
+        question: "Which organ converts lactic acid back into glucose?",
+        accept: ["liver", "the liver"],
+        answer:
+          "The liver. Blood carries the lactic acid there from the muscles, which is a detail that lifts an oxygen debt answer into the top band.",
+      },
+      {
+        question: "What is the sum of all the chemical reactions in a cell or organism called?",
+        accept: ["metabolism"],
+        answer:
+          "Metabolism. It covers both building larger molecules and breaking them down, and all of it is powered by respiration.",
+      },
+      {
+        question: "What causes muscle fatigue during hard exercise?",
+        accept: ["lactic acid", "lactic acid build up", "build up of lactic acid", "lactate"],
+        answer:
+          "The build-up of lactic acid from anaerobic respiration. The muscles stop contracting efficiently until the acid is removed.",
+      },
+      {
+        question: "Name one thing that increases during exercise to supply muscles with more oxygen.",
+        accept: ["heart rate", "breathing rate", "breath depth", "pulse", "breathing", "blood flow", "breathing volume"],
+        answer:
+          "Heart rate, breathing rate and the depth of each breath all rise. Always say WHY: to deliver more oxygen and glucose and remove carbon dioxide faster.",
+      },
+      {
+        question: "Do plants respire? Answer yes or no.",
+        accept: ["yes", "y"],
+        answer:
+          "Yes — continuously, day and night. Every living cell respires. During daylight photosynthesis usually produces more oxygen than respiration uses, which disguises it.",
+      },
+      {
+        question: "True or false: respiration and breathing are the same process.",
+        accept: ["false", "f"],
+        answer:
+          "False. Breathing moves air into and out of the lungs; respiration is a chemical reaction happening inside every cell. Confusing them is a very common error.",
+      },
+      {
+        question: "Explain why your breathing rate stays high for a while after you stop exercising. Write two or three sentences.",
+        answer:
+          "During hard exercise the muscles respire anaerobically because oxygen cannot be delivered fast enough, and lactic acid builds up. Once you stop, that lactic acid still has to be broken down, and doing so requires oxygen — this is the oxygen debt. Breathing therefore stays fast and deep until enough extra oxygen has been taken in, and the blood carries the lactic acid to the liver where it is converted back into glucose. Mark this one yourself: the oxygen debt and the liver are both worth credit.",
+      },
+      {
+        question: "Compare aerobic and anaerobic respiration.",
+        answer:
+          "Aerobic respiration uses oxygen and breaks glucose down completely into carbon dioxide and water, releasing a large amount of energy. Anaerobic respiration happens without oxygen and breaks glucose down only partly, so it releases far less energy per molecule — in muscle it produces lactic acid, and in yeast and plants ethanol and carbon dioxide. Aerobic respiration happens in the mitochondria and runs continuously; anaerobic is a short-term measure used when oxygen cannot be supplied quickly enough, such as during a sprint. Mark this one yourself: full marks need the products, the energy difference AND the reason for that difference.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Respiration is breathing.",
+        right:
+          "Breathing is moving air in and out of the lungs. Respiration is a chemical reaction in every cell that releases energy from glucose.",
+      },
+      {
+        wrong: "Respiration makes energy.",
+        right:
+          "Energy cannot be made. Respiration RELEASES energy already stored chemically in glucose. Examiners mark 'makes energy' wrong.",
+      },
+      {
+        wrong: "Only animals respire; plants photosynthesise instead.",
+        right:
+          "Plants respire constantly, day and night. Photosynthesis is an additional process, not a replacement for respiration.",
+      },
+      {
+        wrong: "Anaerobic respiration produces lactic acid in all organisms.",
+        right:
+          "In muscle, yes. In yeast and plants it produces ethanol and carbon dioxide — fermentation. Which organism matters.",
+      },
+      {
+        wrong: "Lactic acid causes muscle soreness days later.",
+        right:
+          "Lactic acid is cleared within about an hour. Soreness a day or two afterwards comes from microscopic muscle damage, not from lactic acid.",
+      },
+    ],
+  },
+
+  "biology/the-nervous-system": {
+    summary:
+      "The nervous system is how you detect a change and react to it in a fraction of a second. This topic covers the route a signal takes from receptor to effector, the reflex arc that bypasses conscious thought, and how the synapse works. Getting the ORDER of the pathway right is most of the marks in this topic.",
+    keyFacts: [
+      {
+        heading: "The pathway",
+        points: [
+          "stimulus → receptor → sensory neurone → CNS → motor neurone → effector → response.",
+          "A STIMULUS is a change in the environment; a RECEPTOR detects it.",
+          "The CENTRAL NERVOUS SYSTEM (CNS) is the brain and spinal cord, where information is processed.",
+          "An EFFECTOR is a muscle that contracts or a gland that secretes a hormone.",
+          "Receptors are often in sense organs: light in the eyes, sound in the ears, chemicals in the nose and tongue.",
+        ],
+      },
+      {
+        heading: "The reflex arc",
+        points: [
+          "A reflex is automatic and rapid, and does NOT involve the conscious part of the brain.",
+          "This is what makes it fast, and why reflexes protect the body from harm.",
+          "The arc adds a RELAY NEURONE inside the CNS, between the sensory and motor neurones.",
+          "Full route: stimulus → receptor → sensory neurone → relay neurone → motor neurone → effector → response.",
+          "Examples: pulling your hand from something hot, blinking, the pupil narrowing in bright light.",
+        ],
+      },
+      {
+        heading: "Neurones and synapses",
+        points: [
+          "A neurone carries an electrical impulse along its AXON.",
+          "A SYNAPSE is the tiny gap between two neurones.",
+          "The electrical impulse cannot cross the gap, so a CHEMICAL called a neurotransmitter is released instead.",
+          "The chemical diffuses across the gap and triggers a new electrical impulse in the next neurone.",
+          "Because diffusion takes time, synapses SLOW the signal slightly — which is why more synapses means a slower response.",
+        ],
+      },
+      {
+        heading: "Reaction time practicals",
+        points: [
+          "The ruler drop test: catch a falling ruler and convert the distance into a time.",
+          "Control variables: the same hand, the same starting position, no warning, the same person dropping it.",
+          "Repeat and take a mean, discarding anomalies and saying that you did.",
+          "Caffeine is the usual independent variable, and it typically shortens reaction time.",
+          "Reaction time also varies with age, tiredness and practice, which must be controlled or acknowledged.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Stimulus", definition: "A change in the environment that an organism detects and responds to." },
+      { term: "Receptor", definition: "A cell that detects a stimulus, often found in a sense organ." },
+      { term: "Central nervous system", definition: "The brain and spinal cord, where information is processed and decisions made." },
+      { term: "Sensory neurone", definition: "A neurone carrying impulses from a receptor to the central nervous system." },
+      { term: "Relay neurone", definition: "A neurone inside the CNS that connects a sensory neurone to a motor neurone." },
+      { term: "Motor neurone", definition: "A neurone carrying impulses from the CNS to an effector." },
+      { term: "Effector", definition: "A muscle that contracts or a gland that secretes, producing the response." },
+      { term: "Reflex", definition: "An automatic, rapid response that does not involve the conscious part of the brain." },
+      { term: "Reflex arc", definition: "The pathway of a reflex: receptor, sensory neurone, relay neurone, motor neurone, effector." },
+      { term: "Synapse", definition: "The gap between two neurones, crossed by a chemical rather than an electrical impulse." },
+      { term: "Neurotransmitter", definition: "The chemical released at a synapse that diffuses across and triggers a new impulse." },
+      { term: "Axon", definition: "The long fibre of a neurone along which the electrical impulse travels." },
+      { term: "Reaction time", definition: "The time between a stimulus and the response to it." },
+      { term: "Homeostasis", definition: "Maintaining a constant internal environment despite changes outside." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the pathway in ORDER and write it in order",
+        detail:
+          "Stimulus, receptor, sensory, CNS, motor, effector, response. Most marks in this topic are for the sequence, so write it as a chain with arrows.",
+      },
+      {
+        tip: "The reflex arc adds a RELAY neurone",
+        detail:
+          "That is the only difference from the ordinary pathway, and it is the mark. It sits inside the CNS between sensory and motor.",
+      },
+      {
+        tip: "A synapse is crossed by a CHEMICAL",
+        detail:
+          "The impulse is electrical along the neurone and chemical across the gap. Saying electricity jumps the gap loses the mark.",
+      },
+      {
+        tip: "Say WHY a reflex is fast",
+        detail:
+          "Because it bypasses the conscious brain, so the signal travels a shorter route with fewer synapses. The reason carries the mark.",
+      },
+      {
+        tip: "An effector is a muscle OR a gland",
+        detail:
+          "Students almost always say muscle and forget glands. Both count, and questions sometimes require the gland.",
+      },
+      {
+        tip: "Name specific control variables in the ruler test",
+        detail:
+          "Same hand, same starting height, no warning, same dropper. 'Keep everything else the same' scores nothing.",
+      },
+    ],
+    practice: [
+      {
+        question: "What does CNS stand for?",
+        accept: ["central nervous system", "the central nervous system"],
+        answer:
+          "Central nervous system — the brain and spinal cord. It processes information and decides on the response.",
+      },
+      {
+        question: "Which two organs make up the central nervous system?",
+        accept: ["brain and spinal cord", "spinal cord and brain", "brain and spine"],
+        answer:
+          "The brain and the spinal cord. Everything else — the sensory and motor neurones — is the peripheral nervous system.",
+      },
+      {
+        question: "What is a change in the environment that an organism detects called?",
+        accept: ["stimulus", "a stimulus"],
+        answer:
+          "A stimulus. The pathway always begins here: stimulus → receptor → sensory neurone → CNS → motor neurone → effector → response.",
+      },
+      {
+        question: "What is the general name for a muscle or gland that produces a response?",
+        accept: ["effector", "an effector", "effectors"],
+        answer:
+          "An effector. Remember it is a muscle OR a gland — students almost always forget glands, and some questions require them.",
+      },
+      {
+        question: "Which neurone carries impulses from a receptor to the CNS?",
+        accept: ["sensory", "sensory neurone", "sensory neuron"],
+        answer:
+          "The sensory neurone. The motor neurone carries impulses the other way, from the CNS out to an effector.",
+      },
+      {
+        question: "Which extra neurone is found in a reflex arc, inside the CNS?",
+        accept: ["relay", "relay neurone", "relay neuron", "connector neurone"],
+        answer:
+          "The relay neurone. It links the sensory neurone directly to the motor neurone, bypassing the conscious brain — which is what makes the reflex fast.",
+      },
+      {
+        question: "What is the gap between two neurones called?",
+        accept: ["synapse", "a synapse", "synapses"],
+        answer:
+          "A synapse. The electrical impulse cannot cross it, so a chemical neurotransmitter diffuses across and starts a new impulse.",
+      },
+      {
+        question: "What crosses the gap at a synapse: an electrical impulse or a chemical?",
+        accept: ["chemical", "a chemical", "neurotransmitter", "chemicals"],
+        answer:
+          "A chemical — a neurotransmitter. It diffuses across the gap and triggers a new electrical impulse in the next neurone.",
+      },
+      {
+        question: "Does a reflex involve the conscious part of the brain? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No, and that is exactly why it is so fast. Bypassing conscious thought shortens the route, which matters when the stimulus is something harmful.",
+      },
+      {
+        question: "Name one example of a reflex action.",
+        accept: ["blinking", "pulling hand away", "pupil", "knee jerk", "sneezing", "coughing", "pulling away from heat", "dropping something hot"],
+        answer:
+          "Blinking, pulling your hand from something hot, the pupil narrowing in bright light, or the knee-jerk. All protect the body without conscious thought.",
+      },
+      {
+        question: "What is the long fibre of a neurone along which impulses travel called?",
+        accept: ["axon", "the axon"],
+        answer:
+          "The axon. It is often insulated with a fatty sheath, which speeds the impulse along it.",
+      },
+      {
+        question: "Which sense organ contains receptors that detect light?",
+        accept: ["eye", "the eye", "eyes", "retina"],
+        answer:
+          "The eye — specifically light receptors in the retina. Ears detect sound, and the nose and tongue detect chemicals.",
+      },
+      {
+        question: "In the ruler drop test, what is usually the independent variable?",
+        accept: ["caffeine", "caffeine intake", "drinking caffeine", "coffee", "whether caffeine was drunk"],
+        answer:
+          "Whether the person has consumed caffeine. The dependent variable is the distance the ruler falls, which is converted into reaction time.",
+      },
+      {
+        question: "True or false: more synapses in a pathway make the response faster.",
+        accept: ["false", "f"],
+        answer:
+          "False. Diffusion across each synapse takes time, so more synapses mean a SLOWER response. That is precisely why reflex arcs use as few as possible.",
+      },
+      {
+        question: "Explain why a reflex action is faster than a conscious response. Write two or three sentences.",
+        answer:
+          "In a reflex the impulse passes straight from the sensory neurone to a relay neurone in the spinal cord and then to the motor neurone, without travelling to the conscious part of the brain. That makes the route much shorter and involves fewer synapses, and since diffusion across each synapse takes time, fewer synapses means less delay. The result is a response fast enough to protect the body from damage before you have even noticed. Mark this one yourself: the marks are for bypassing the conscious brain AND for fewer synapses.",
+      },
+      {
+        question: "Describe how an impulse passes from one neurone to the next.",
+        answer:
+          "The electrical impulse travels along the axon of the first neurone until it reaches the synapse, the gap between the two cells. It cannot cross the gap as electricity, so it causes the release of a chemical neurotransmitter into the gap. That chemical diffuses across and binds to the membrane of the next neurone, which triggers a new electrical impulse to travel along it. Mark this one yourself: electrical along, chemical across, then electrical again — all three stages are needed.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The electrical impulse jumps across the synapse.",
+        right:
+          "It does not. A chemical neurotransmitter diffuses across the gap and starts a NEW electrical impulse in the next neurone.",
+      },
+      {
+        wrong: "Reflexes are controlled by the brain deciding very quickly.",
+        right:
+          "Reflexes bypass the conscious brain entirely, which is exactly why they are fast enough to protect you.",
+      },
+      {
+        wrong: "An effector is always a muscle.",
+        right:
+          "It can be a muscle OR a gland. Glands respond by secreting hormones, and some exam questions specifically require that.",
+      },
+      {
+        wrong: "The CNS includes all the nerves in the body.",
+        right:
+          "The CNS is the brain and spinal cord only. The sensory and motor neurones leading to and from it are the peripheral nervous system.",
+      },
+    ],
+  },
+
+  "biology/hormones-and-homeostasis": {
+    summary:
+      "Homeostasis is how your body holds its internal conditions steady while the outside world does whatever it likes. This topic covers the hormones that do it, how they differ from nerves, and how blood glucose is controlled — plus the negative feedback loops that are Higher tier only, and are flagged as such.",
+    keyFacts: [
+      {
+        heading: "Homeostasis and the two control systems",
+        points: [
+          "HOMEOSTASIS is maintaining a constant internal environment despite external change.",
+          "The three conditions controlled are blood glucose concentration, body temperature and water levels.",
+          "All control systems have RECEPTORS, a COORDINATION CENTRE, and EFFECTORS.",
+          "The NERVOUS system uses electrical impulses: fast, short-lived, and precisely targeted.",
+          "The ENDOCRINE system uses hormones in the blood: slower, longer-lasting, and more general in their effect.",
+        ],
+      },
+      {
+        heading: "The endocrine glands",
+        points: [
+          "The PITUITARY is the 'master gland' — it releases hormones that control other glands.",
+          "The PANCREAS releases insulin and glucagon, controlling blood glucose.",
+          "The THYROID releases thyroxine, which controls the metabolic rate.",
+          "The ADRENAL glands release adrenaline, preparing the body for 'fight or flight'.",
+          "The OVARIES release oestrogen; the TESTES release testosterone.",
+        ],
+      },
+      {
+        heading: "Controlling blood glucose",
+        points: [
+          "Blood glucose is monitored by the pancreas.",
+          "If glucose is TOO HIGH, the pancreas releases INSULIN. Liver and muscle cells take glucose in and store it as GLYCOGEN.",
+          "If glucose is TOO LOW, the pancreas releases GLUCAGON, which makes the liver convert glycogen back into glucose.",
+          "TYPE 1 diabetes: the pancreas produces little or no insulin. Treated with insulin injections.",
+          "TYPE 2 diabetes: body cells stop responding properly to insulin. Obesity is a risk factor; treated with diet, exercise and sometimes medication.",
+          "Watch the spelling: glycoGEN is the store, glucaGON is the hormone.",
+        ],
+      },
+      {
+        heading: "Higher tier: negative feedback",
+        higherOnly: true,
+        points: [
+          "NEGATIVE FEEDBACK means a change triggers a response that reverses the change, returning the level to normal.",
+          "THYROXINE from the thyroid controls the basal metabolic rate and is needed for growth.",
+          "When thyroxine is low, the pituitary releases TSH, which stimulates the thyroid to make more.",
+          "When thyroxine rises above normal, TSH release is inhibited, so less thyroxine is made — the loop closes itself.",
+          "ADRENALINE is NOT controlled by negative feedback: it is released in response to fear or stress, raising heart rate and delivering more oxygen and glucose to muscles.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Homeostasis", definition: "Maintaining a constant internal environment despite changes in external conditions." },
+      { term: "Hormone", definition: "A chemical messenger released by a gland and carried in the blood to a target organ." },
+      { term: "Endocrine system", definition: "The system of glands that release hormones into the blood." },
+      { term: "Pituitary gland", definition: "The master gland, which releases hormones controlling other glands." },
+      { term: "Pancreas", definition: "The gland that monitors blood glucose and releases insulin and glucagon." },
+      { term: "Insulin", definition: "The hormone that lowers blood glucose by making cells take it in and store it as glycogen." },
+      { term: "Glucagon", definition: "The hormone that raises blood glucose by making the liver convert glycogen back into glucose." },
+      { term: "Glycogen", definition: "The storage carbohydrate in the liver and muscles, made from excess glucose." },
+      { term: "Type 1 diabetes", definition: "A condition where the pancreas produces little or no insulin, treated with injections." },
+      { term: "Type 2 diabetes", definition: "A condition where body cells stop responding properly to insulin; obesity is a risk factor." },
+      { term: "Thyroxine", definition: "The hormone from the thyroid that controls the basal metabolic rate." },
+      { term: "Adrenaline", definition: "The hormone from the adrenal glands released in fear or stress, preparing the body for action." },
+      { term: "Negative feedback", definition: "A control mechanism where a change triggers a response that reverses it. Higher tier only." },
+      { term: "Target organ", definition: "The organ a particular hormone acts on." },
+      { term: "Effector", definition: "A muscle or gland that carries out the response in a control system." },
+      { term: "Basal metabolic rate", definition: "The rate at which chemical reactions occur in the body at rest." },
+    ],
+    examTips: [
+      {
+        tip: "GlycoGEN is stored; glucaGON is the hormone",
+        detail:
+          "The two words differ by two letters and the marker will not give you the benefit of the doubt. Write them out carefully.",
+      },
+      {
+        tip: "Insulin LOWERS blood glucose",
+        detail:
+          "High glucose → insulin → cells take glucose in → glucose falls. Getting the direction backwards is the commonest error in this topic.",
+      },
+      {
+        tip: "Know the nerves versus hormones comparison",
+        detail:
+          "Nerves: electrical, fast, short-lived, precise. Hormones: chemical, slower, longer-lasting, general. It is a standard question.",
+      },
+      {
+        tip: "Type 1 and Type 2 have different causes",
+        detail:
+          "Type 1 is the pancreas not making insulin; Type 2 is cells not responding to it. Only Type 1 always requires injections.",
+      },
+      {
+        tip: "Higher tier: describe the WHOLE feedback loop",
+        detail:
+          "Level falls → hormone released → level rises → hormone release inhibited. Both halves are needed. Foundation students can skip this.",
+      },
+      {
+        tip: "Adrenaline is not negative feedback",
+        detail:
+          "It is released in response to a threat, not to correct a level. Questions offer it as a trap in feedback questions.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the maintenance of a constant internal environment called?",
+        accept: ["homeostasis"],
+        answer:
+          "Homeostasis. The three conditions you must know are blood glucose concentration, body temperature and water levels.",
+      },
+      {
+        question: "What is the name for a chemical messenger carried in the blood?",
+        accept: ["hormone", "a hormone", "hormones"],
+        answer:
+          "A hormone. It is released by a gland and travels in the blood to its target organ — slower than a nerve impulse but longer lasting.",
+      },
+      {
+        question: "Which gland is known as the master gland?",
+        accept: ["pituitary", "the pituitary", "pituitary gland"],
+        answer:
+          "The pituitary. It releases hormones that control other glands, which is exactly what makes it the master of the endocrine system.",
+      },
+      {
+        question: "Which organ monitors and controls blood glucose concentration?",
+        accept: ["pancreas", "the pancreas"],
+        answer:
+          "The pancreas. It releases insulin when glucose is too high and glucagon when it is too low.",
+      },
+      {
+        question: "Which hormone LOWERS blood glucose concentration?",
+        accept: ["insulin"],
+        answer:
+          "Insulin. It causes liver and muscle cells to take glucose in and store it as glycogen, which brings the blood concentration down.",
+      },
+      {
+        question: "Which hormone RAISES blood glucose concentration?",
+        accept: ["glucagon"],
+        answer:
+          "Glucagon. It makes the liver convert stored glycogen back into glucose. Note the spelling — glucaGON is the hormone, glycoGEN the store.",
+      },
+      {
+        question: "What is excess glucose stored as in the liver and muscles?",
+        accept: ["glycogen"],
+        answer:
+          "Glycogen. It is insoluble, so storing glucose in this form does not affect the water balance of the cells.",
+      },
+      {
+        question: "In which type of diabetes does the pancreas produce little or no insulin?",
+        accept: ["type 1", "type one", "1", "type 1 diabetes"],
+        answer:
+          "Type 1. It is treated with insulin injections, because the hormone the body needs simply is not being made.",
+      },
+      {
+        question: "In which type of diabetes do body cells stop responding properly to insulin?",
+        accept: ["type 2", "type two", "2", "type 2 diabetes"],
+        answer:
+          "Type 2. Obesity is a major risk factor, and it is usually treated first with a controlled diet and more exercise.",
+      },
+      {
+        question: "Which hormone is released by the adrenal glands in response to fear or stress?",
+        accept: ["adrenaline", "adrenalin", "epinephrine"],
+        answer:
+          "Adrenaline. It raises heart rate and delivers more oxygen and glucose to the muscles and brain — the 'fight or flight' response.",
+      },
+      {
+        question: "Which hormone from the thyroid controls the basal metabolic rate?",
+        accept: ["thyroxine", "thyroxin"],
+        answer:
+          "Thyroxine. Its level is held steady by negative feedback involving TSH from the pituitary, which is Higher tier content.",
+      },
+      {
+        question: "Which is faster: a nervous response or a hormonal one?",
+        accept: ["nervous", "nervous response", "nerves", "nerve", "the nervous response"],
+        answer:
+          "The nervous response. Electrical impulses are very fast but short-lived and precisely targeted; hormones are slower, longer-lasting and more general.",
+      },
+      {
+        question: "Higher tier: what is the mechanism called where a change triggers a response that reverses it?",
+        accept: ["negative feedback", "negative feedback loop"],
+        answer:
+          "Negative feedback. Thyroxine is the standard example: low thyroxine → pituitary releases TSH → thyroid makes more → TSH release is then inhibited.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: which hormone from the pituitary stimulates the thyroid to release thyroxine?",
+        accept: ["tsh", "thyroid stimulating hormone", "thyroid-stimulating hormone"],
+        answer:
+          "TSH — thyroid stimulating hormone. When thyroxine rises above normal, TSH release is inhibited, which closes the feedback loop.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain how the body responds when blood glucose concentration rises after a meal. Write three or four sentences.",
+        answer:
+          "The pancreas detects that blood glucose has risen above normal and releases the hormone insulin into the blood. Insulin travels to the liver and muscle cells and causes them to take glucose out of the blood. Those cells then convert the glucose into glycogen, which is insoluble and can be stored. As a result the blood glucose concentration falls back towards normal. Mark this one yourself: pancreas, insulin, cells take glucose in, stored as glycogen — all four steps are needed.",
+      },
+      {
+        question: "Compare the nervous system and the endocrine system as ways of controlling the body.",
+        answer:
+          "The nervous system sends electrical impulses along neurones, so responses are very fast, act on a precise target, and last only a short time — useful for reacting to immediate danger. The endocrine system releases hormones into the blood, so they travel more slowly, reach many organs rather than one precise spot, and their effects last far longer — better suited to processes such as growth or the menstrual cycle. Both use the same basic structure of receptor, coordination centre and effector. Mark this one yourself: speed, duration and how targeted each is are the three comparisons worth making.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Insulin raises blood glucose.",
+        right:
+          "Insulin LOWERS it, by making cells take glucose in and store it as glycogen. Glucagon is the one that raises it.",
+      },
+      {
+        wrong: "Glycogen and glucagon are the same word.",
+        right:
+          "GlycoGEN is the stored carbohydrate; glucaGON is the hormone that releases it. Spelling matters here — markers do not guess.",
+      },
+      {
+        wrong: "Type 1 and Type 2 diabetes are the same illness at different stages.",
+        right:
+          "Type 1 is a failure to PRODUCE insulin; Type 2 is a failure to RESPOND to it. They have different causes and different treatments.",
+      },
+      {
+        wrong: "Adrenaline works by negative feedback.",
+        right:
+          "It is released in response to fear or stress, not to correct a level that has drifted. Thyroxine is the negative feedback example.",
+      },
+      {
+        wrong: "Hormones act faster than nerves because blood moves quickly.",
+        right:
+          "Nerve impulses are far faster. Hormones are slower but their effects last much longer, which suits different jobs.",
+      },
+    ],
+  },
+
+  "biology/the-circulatory-system": {
+    summary:
+      "The circulatory system moves oxygen, glucose and everything else to where it is needed, in a body far too large for diffusion alone. This topic covers the heart, the three types of blood vessel, what blood is made of, and why humans have a double circulatory system — plus the blood flow calculation, which is Higher tier only.",
+    keyFacts: [
+      {
+        heading: "The heart and double circulation",
+        points: [
+          "Humans have a DOUBLE circulatory system: blood passes through the heart TWICE for each full circuit.",
+          "One loop goes to the lungs to pick up oxygen; the other goes to the rest of the body to deliver it.",
+          "This keeps the pressure high on the way to the body, so oxygen is delivered faster.",
+          "The right side pumps deoxygenated blood to the lungs; the left side pumps oxygenated blood to the body.",
+          "The LEFT VENTRICLE has the thickest muscle wall, because it must push blood all the way round the body.",
+          "The natural resting rate is set by a group of cells in the right atrium called the PACEMAKER.",
+        ],
+      },
+      {
+        heading: "The blood vessels",
+        points: [
+          "ARTERIES carry blood AWAY from the heart. Thick muscular and elastic walls, small lumen, high pressure.",
+          "VEINS carry blood back TO the heart. Thinner walls, large lumen, low pressure, and VALVES to stop backflow.",
+          "CAPILLARIES are one cell thick, so substances can diffuse in and out over a very short distance.",
+          "Capillaries form vast networks, giving an enormous total surface area for exchange.",
+          "Memory aid: Arteries carry blood Away.",
+        ],
+      },
+      {
+        heading: "What blood is made of",
+        points: [
+          "PLASMA is the liquid that carries everything else: cells, carbon dioxide, glucose, urea and hormones.",
+          "RED BLOOD CELLS carry oxygen. They contain haemoglobin, have no nucleus, and are biconcave discs.",
+          "No nucleus means more room for haemoglobin; the biconcave shape gives a larger surface area.",
+          "WHITE BLOOD CELLS defend against pathogens by phagocytosis and by producing antibodies and antitoxins.",
+          "PLATELETS are cell fragments that help the blood to clot at a wound.",
+        ],
+      },
+      {
+        heading: "Heart problems and treatments",
+        points: [
+          "CORONARY HEART DISEASE: the coronary arteries narrow with fatty deposits, so the heart muscle gets less oxygen.",
+          "STENTS hold a narrowed artery open. Quick to fit, but do not treat the underlying cause.",
+          "STATINS reduce blood cholesterol, slowing the build-up. They must be taken long term and can have side effects.",
+          "Faulty valves can be replaced with biological or mechanical replacements.",
+          "An artificial pacemaker corrects an irregular heartbeat.",
+        ],
+      },
+      {
+        heading: "Higher tier: rate of blood flow",
+        higherOnly: true,
+        points: [
+          "rate of blood flow = volume of blood ÷ time.",
+          "The units follow from what you divided: cm³ per minute, or dm³ per minute.",
+          "Convert the time first if the question mixes seconds and minutes.",
+          "This calculation is Higher tier only — Foundation students are not asked it.",
+          "Check the answer is sensible: a resting adult heart pumps roughly 5 dm³ every minute.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Double circulatory system", definition: "A system where blood passes through the heart twice for each complete circuit of the body." },
+      { term: "Artery", definition: "A vessel carrying blood away from the heart, with thick elastic walls and a small lumen." },
+      { term: "Vein", definition: "A vessel carrying blood back to the heart, with thin walls, a large lumen and valves." },
+      { term: "Capillary", definition: "A vessel one cell thick, where substances diffuse between blood and tissue." },
+      { term: "Lumen", definition: "The hollow space inside a blood vessel through which blood flows." },
+      { term: "Plasma", definition: "The liquid part of blood, which carries cells, glucose, carbon dioxide, urea and hormones." },
+      { term: "Red blood cell", definition: "A biconcave cell with no nucleus, packed with haemoglobin to carry oxygen." },
+      { term: "Haemoglobin", definition: "The protein in red blood cells that binds oxygen, forming oxyhaemoglobin." },
+      { term: "White blood cell", definition: "A cell that defends the body against pathogens by phagocytosis and by making antibodies." },
+      { term: "Platelet", definition: "A cell fragment that helps blood clot at a wound." },
+      { term: "Left ventricle", definition: "The chamber with the thickest wall, which pumps oxygenated blood around the whole body." },
+      { term: "Pacemaker", definition: "A group of cells in the right atrium that sets the natural resting heart rate." },
+      { term: "Coronary heart disease", definition: "Narrowing of the coronary arteries by fatty deposits, reducing oxygen supply to the heart muscle." },
+      { term: "Stent", definition: "A mesh tube inserted to hold a narrowed artery open." },
+      { term: "Statin", definition: "A drug that lowers blood cholesterol, slowing the build-up of fatty deposits." },
+      { term: "Valve", definition: "A flap that prevents blood flowing backwards, found in veins and in the heart." },
+    ],
+    examTips: [
+      {
+        tip: "Arteries carry blood Away — both start with A",
+        detail:
+          "The simplest memory aid in the subject, and it stops the commonest error. Note that arteries are defined by DIRECTION, not by whether the blood is oxygenated.",
+      },
+      {
+        tip: "The pulmonary artery carries DEOXYGENATED blood",
+        detail:
+          "It is still an artery because it leaves the heart. This is the classic trap, and it catches students who define arteries by their oxygen content.",
+      },
+      {
+        tip: "Explain the left ventricle's thick wall",
+        detail:
+          "It pumps blood all the way round the body, against much greater resistance, so it needs more muscle. The right side only reaches the lungs.",
+      },
+      {
+        tip: "Link every red blood cell adaptation to oxygen",
+        detail:
+          "No nucleus means more room for haemoglobin; biconcave means a larger surface area for diffusion. The reason is the mark.",
+      },
+      {
+        tip: "Give a drawback with every treatment",
+        detail:
+          "Stents do not treat the cause; statins must be taken for life and have side effects. Balanced answers reach the top band.",
+      },
+      {
+        tip: "Higher tier: show the working for blood flow",
+        detail:
+          "Volume ÷ time, with the units stated. Convert seconds to minutes first if needed. Foundation students can skip this entirely.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A heart pumps 4,500 cm³ of blood in 60 seconds. Calculate the rate of blood flow in cm³ per minute.",
+        steps: [
+          "rate of blood flow = volume ÷ time.",
+          "60 seconds is exactly 1 minute, so no conversion is needed.",
+          "= 4,500 cm³ ÷ 1 minute.",
+          "= 4,500 cm³ per minute — close to the roughly 5,000 cm³ a resting adult heart manages, so the answer is sensible.",
+        ],
+        answer: "4,500 cm³ per minute",
+        higherOnly: true,
+      },
+      {
+        question:
+          "During exercise, 9,000 cm³ of blood passes through the heart in 90 seconds. Calculate the rate of blood flow in cm³ per minute.",
+        steps: [
+          "Convert the time to minutes first: 90 ÷ 60 = 1.5 minutes.",
+          "rate = volume ÷ time = 9,000 ÷ 1.5.",
+          "= 6,000 cm³ per minute.",
+          "Higher than at rest, as expected during exercise — always sanity-check against the context.",
+        ],
+        answer: "6,000 cm³ per minute",
+        higherOnly: true,
+      },
+    ],
+    practice: [
+      {
+        question: "Do arteries carry blood towards or away from the heart?",
+        accept: ["away", "away from the heart", "away from heart"],
+        answer:
+          "Away. Arteries carry blood Away — both start with A. Note this is about DIRECTION, not about whether the blood carries oxygen.",
+      },
+      {
+        question: "Which type of blood vessel contains valves to prevent backflow?",
+        accept: ["veins", "vein", "a vein"],
+        answer:
+          "Veins. The blood in them is at low pressure, so valves are needed to stop it draining backwards, particularly in the legs.",
+      },
+      {
+        question: "Which type of blood vessel is one cell thick?",
+        accept: ["capillary", "capillaries", "a capillary"],
+        answer:
+          "Capillaries. Being one cell thick gives a very short diffusion distance, which is what makes exchange with the tissues efficient.",
+      },
+      {
+        question: "Which chamber of the heart has the thickest muscular wall?",
+        accept: ["left ventricle", "the left ventricle"],
+        answer:
+          "The left ventricle. It must generate enough pressure to push blood all the way around the body, whereas the right side only reaches the lungs.",
+      },
+      {
+        question: "What is the liquid part of blood called?",
+        accept: ["plasma", "blood plasma"],
+        answer:
+          "Plasma. It carries the blood cells plus glucose, carbon dioxide, urea, hormones and everything else being transported.",
+      },
+      {
+        question: "What protein in red blood cells binds to oxygen?",
+        accept: ["haemoglobin", "hemoglobin"],
+        answer:
+          "Haemoglobin. It combines with oxygen to form oxyhaemoglobin in the lungs, and releases it again in the respiring tissues.",
+      },
+      {
+        question: "What do red blood cells lack, leaving more room for haemoglobin?",
+        accept: ["a nucleus", "nucleus", "the nucleus"],
+        answer:
+          "A nucleus. Every adaptation of a red blood cell traces back to carrying more oxygen — that is the reason the mark is given for.",
+      },
+      {
+        question: "Which blood component helps the blood to clot?",
+        accept: ["platelets", "platelet"],
+        answer:
+          "Platelets — cell fragments rather than whole cells. Clotting seals a wound and stops pathogens getting in.",
+      },
+      {
+        question: "How many times does blood pass through the heart in one full circuit of a human body?",
+        accept: ["2", "twice", "two"],
+        answer:
+          "Twice — that is what 'double circulatory system' means. It keeps the pressure high on the journey to the body, so oxygen is delivered faster.",
+      },
+      {
+        question: "Does the pulmonary artery carry oxygenated or deoxygenated blood?",
+        accept: ["deoxygenated", "deoxygenated blood"],
+        answer:
+          "Deoxygenated — it is carrying blood to the lungs to collect oxygen. It is still an artery because it leaves the heart, which is the classic trap.",
+      },
+      {
+        question: "What is the mesh tube used to hold a narrowed artery open called?",
+        accept: ["stent", "a stent", "stents"],
+        answer:
+          "A stent. It restores blood flow quickly, but it does not treat the underlying cause, so the artery can narrow again.",
+      },
+      {
+        question: "What drug is used to lower blood cholesterol?",
+        accept: ["statin", "statins", "a statin"],
+        answer:
+          "Statins. They slow the build-up of fatty deposits, but must be taken long term and can cause side effects such as muscle pain.",
+      },
+      {
+        question: "What is the group of cells in the right atrium that sets the resting heart rate called?",
+        accept: ["pacemaker", "the pacemaker", "natural pacemaker", "sinoatrial node"],
+        answer:
+          "The pacemaker. If it becomes faulty, an artificial electrical pacemaker can be fitted to correct an irregular heartbeat.",
+      },
+      {
+        question: "Higher tier: a heart pumps 3,000 cm³ of blood in 60 seconds. Calculate the rate in cm³ per minute. Give the number only.",
+        accept: ["3000", "3,000"],
+        answer:
+          "3,000 cm³ per minute. Rate = volume ÷ time, and 60 seconds is 1 minute so no conversion is needed. Foundation students are not asked this.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why humans need a double circulatory system. Write two or three sentences.",
+        answer:
+          "Blood loses a great deal of pressure passing through the tiny capillaries of the lungs. If it then travelled straight on to the body it would move slowly, and oxygen would be delivered too slowly for an active mammal. Returning it to the heart first lets the left ventricle raise the pressure again before sending it round the body, so oxygen and glucose reach respiring tissues quickly. Mark this one yourself: the marks are for pressure being lost in the lungs and restored by the heart.",
+      },
+      {
+        question: "Explain how a red blood cell is adapted to its function.",
+        answer:
+          "It contains haemoglobin, which binds oxygen in the lungs and releases it in the tissues. It has no nucleus, which leaves more room inside for haemoglobin so it can carry more oxygen. Its biconcave disc shape gives a large surface area relative to its volume, so oxygen diffuses in and out quickly, and the flexible shape lets it squeeze through narrow capillaries. Mark this one yourself: each adaptation only scores when you also say what it achieves.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Arteries always carry oxygenated blood.",
+        right:
+          "The pulmonary artery carries deoxygenated blood to the lungs. Arteries are defined by carrying blood AWAY from the heart, not by its oxygen content.",
+      },
+      {
+        wrong: "The heart pumps blood; the lungs oxygenate it; that is one circuit.",
+        right:
+          "Blood passes through the heart TWICE per circuit — once for the lungs and once for the body. That is what makes it a double system.",
+      },
+      {
+        wrong: "Red blood cells are just cells full of oxygen.",
+        right:
+          "They carry oxygen bound to haemoglobin, and they are not typical cells at all — they have no nucleus, which is what makes room for it.",
+      },
+      {
+        wrong: "A stent cures coronary heart disease.",
+        right:
+          "It holds one narrowed section open. The underlying build-up of fatty deposits continues unless lifestyle changes or statins address it.",
+      },
+      {
+        wrong: "Veins have thick walls because blood must get back to the heart.",
+        right:
+          "Vein walls are THINNER, because the pressure is low. Valves and surrounding muscles keep the blood moving instead.",
+      },
+    ],
+  },
 };
