@@ -1422,4 +1422,516 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
     ],
   },
+
+  // ─── YEAR 10 ──────────────────────────────────────────────────────────────
+
+  "chemistry/quantitative-chemistry": {
+    summary:
+      "This is the most mathematical topic in GCSE Chemistry, and the one where Foundation and Higher genuinely part company. Relative formula mass, conservation of mass and percentage composition are for everyone. Moles, limiting reactants and concentration in mol/dm³ are Higher tier only, and are flagged so Foundation students can skip them entirely.",
+    keyFacts: [
+      {
+        heading: "Relative formula mass",
+        points: [
+          "RELATIVE ATOMIC MASS (Ar) is the mass of an atom relative to carbon-12, read from the periodic table.",
+          "RELATIVE FORMULA MASS (Mr) is the sum of the Ar values of all the atoms in a formula.",
+          "For H₂O: (2 × 1) + 16 = 18.",
+          "For CaCO₃: 40 + 12 + (3 × 16) = 100.",
+          "Brackets multiply everything inside, so Ca(OH)₂ is 40 + 2 × (16 + 1) = 74.",
+          "Mr has NO units — it is a ratio.",
+        ],
+      },
+      {
+        heading: "Conservation of mass and percentage composition",
+        points: [
+          "The total mass of the products always equals the total mass of the reactants.",
+          "An apparent change in mass means a gas has escaped or been taken in from the air.",
+          "Percentage by mass of an element = (Ar × number of atoms ÷ Mr) × 100.",
+          "For calcium in CaCO₃: (40 ÷ 100) × 100 = 40%.",
+          "UNCERTAINTY is usually taken as half the smallest division on the measuring instrument.",
+        ],
+      },
+      {
+        heading: "Higher tier: moles",
+        higherOnly: true,
+        points: [
+          "One MOLE of a substance has a mass in grams equal to its relative formula mass.",
+          "moles = mass (g) ÷ Mr. Rearranged: mass = moles × Mr.",
+          "AVOGADRO'S CONSTANT is 6.02 × 10²³ — the number of particles in one mole.",
+          "The big numbers in a balanced equation give the RATIO of moles that react.",
+          "So: find moles of the known substance, use the ratio to get moles of the unknown, then convert back to mass.",
+          "This whole section is Higher tier only. Foundation students are not asked to use moles.",
+        ],
+      },
+      {
+        heading: "Higher tier: limiting reactants and concentration",
+        higherOnly: true,
+        points: [
+          "The LIMITING REACTANT is the one used up first — it determines how much product can form.",
+          "The other reactant is in EXCESS, and some of it is left over at the end.",
+          "To find it: convert both masses to moles, then compare against the equation's ratio.",
+          "CONCENTRATION in mol/dm³ = moles ÷ volume in dm³.",
+          "Concentration in g/dm³ = mass in grams ÷ volume in dm³ — this form IS asked of both tiers.",
+          "1,000 cm³ = 1 dm³, so divide a volume in cm³ by 1,000 before using it.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Relative atomic mass (Ar)", definition: "The mass of an atom relative to carbon-12, read from the periodic table." },
+      { term: "Relative formula mass (Mr)", definition: "The sum of the relative atomic masses of all atoms in a formula. It has no units." },
+      { term: "Conservation of mass", definition: "The total mass of products equals the total mass of reactants." },
+      { term: "Percentage by mass", definition: "(Ar × number of atoms ÷ Mr) × 100 — the proportion of a compound's mass from one element." },
+      { term: "Mole", definition: "The amount of a substance whose mass in grams equals its relative formula mass. Higher tier." },
+      { term: "Avogadro's constant", definition: "6.02 × 10²³, the number of particles in one mole. Higher tier." },
+      { term: "Limiting reactant", definition: "The reactant used up first, which determines how much product forms. Higher tier." },
+      { term: "Excess reactant", definition: "The reactant not fully used up, some of which remains at the end. Higher tier." },
+      { term: "Concentration (g/dm³)", definition: "Mass of solute in grams divided by volume of solution in cubic decimetres." },
+      { term: "Concentration (mol/dm³)", definition: "Moles of solute divided by volume in cubic decimetres. Higher tier." },
+      { term: "Cubic decimetre (dm³)", definition: "A volume equal to 1,000 cm³, or one litre." },
+      { term: "Uncertainty", definition: "The range within which a measurement lies, usually half the smallest scale division." },
+      { term: "Solute", definition: "The substance dissolved in a solvent to make a solution." },
+      { term: "Yield", definition: "The amount of product actually obtained from a reaction." },
+    ],
+    examTips: [
+      {
+        tip: "If you are on Foundation, skip everything about moles",
+        detail:
+          "Mr, conservation of mass, percentage composition and concentration in g/dm³ are yours. Moles, limiting reactants and mol/dm³ are Higher only.",
+      },
+      {
+        tip: "Mr has no units — never write grams",
+        detail:
+          "It is a ratio. Moles have no unit symbol either; mass is in grams and concentration in g/dm³ or mol/dm³.",
+      },
+      {
+        tip: "Convert cm³ to dm³ FIRST",
+        detail:
+          "Divide by 1,000. Doing this before anything else prevents the commonest error in every concentration question.",
+      },
+      {
+        tip: "Higher tier: moles → ratio → moles → mass",
+        detail:
+          "Four steps in that order, every time. Write them down as headings before substituting any numbers.",
+      },
+      {
+        tip: "Show every line of working",
+        detail:
+          "These questions carry method marks. A wrong final answer with correct working usually keeps most of the marks; a bare wrong number keeps none.",
+      },
+      {
+        tip: "Check the answer is sensible",
+        detail:
+          "A product cannot have more mass than the reactants that made it, and a percentage cannot exceed 100. Both catch arithmetic slips instantly.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Calculate the relative formula mass of calcium carbonate, CaCO₃. (Ca = 40, C = 12, O = 16)",
+        steps: [
+          "Identify each element and how many atoms of it there are: one Ca, one C, three O.",
+          "Multiply each Ar by its number of atoms: Ca = 40 × 1 = 40; C = 12 × 1 = 12; O = 16 × 3 = 48.",
+          "Add them together: 40 + 12 + 48.",
+          "= 100. Mr has no units, so the answer is simply 100.",
+        ],
+        answer: "100",
+      },
+      {
+        question:
+          "Calculate the percentage by mass of calcium in calcium carbonate, CaCO₃.",
+        steps: [
+          "Percentage by mass = (Ar × number of atoms ÷ Mr) × 100.",
+          "Mr of CaCO₃ = 100 (from the previous example).",
+          "There is one calcium atom with Ar = 40, so the mass from calcium is 40.",
+          "(40 ÷ 100) × 100 = 40%. Sanity check: it is under 100%, as it must be.",
+        ],
+        answer: "40%",
+      },
+      {
+        question:
+          "Higher tier: calculate the number of moles in 48 g of magnesium oxide, MgO. (Mg = 24, O = 16)",
+        steps: [
+          "First find Mr: 24 + 16 = 40.",
+          "moles = mass ÷ Mr.",
+          "= 48 ÷ 40.",
+          "= 1.2 moles.",
+        ],
+        answer: "1.2 moles",
+        higherOnly: true,
+      },
+      {
+        question:
+          "Higher tier: 24 g of carbon burns completely. What mass of CO₂ forms? C + O₂ → CO₂. (C = 12, O = 16)",
+        steps: [
+          "Moles of carbon = mass ÷ Ar = 24 ÷ 12 = 2 moles.",
+          "The equation ratio is 1 C : 1 CO₂, so 2 moles of carbon give 2 moles of CO₂.",
+          "Mr of CO₂ = 12 + (2 × 16) = 44.",
+          "mass = moles × Mr = 2 × 44 = 88 g. Check: 24 g carbon plus 64 g oxygen makes 88 g, so mass is conserved.",
+        ],
+        answer: "88 g",
+        higherOnly: true,
+      },
+      {
+        question:
+          "20 g of sodium chloride is dissolved to make 500 cm³ of solution. Calculate the concentration in g/dm³.",
+        steps: [
+          "Convert the volume to dm³ first: 500 ÷ 1,000 = 0.5 dm³.",
+          "concentration = mass ÷ volume.",
+          "= 20 ÷ 0.5.",
+          "= 40 g/dm³. Note the answer is larger than the mass, because the volume was less than 1 dm³.",
+        ],
+        answer: "40 g/dm³",
+      },
+    ],
+    practice: [
+      {
+        question: "Calculate the relative formula mass of H₂O. (H = 1, O = 16) Give the number only.",
+        accept: ["18"],
+        answer:
+          "18. (2 × 1) + 16 = 18. Remember the subscript applies only to the symbol before it, so there are two hydrogens and one oxygen.",
+      },
+      {
+        question: "Calculate the relative formula mass of CO₂. (C = 12, O = 16) Give the number only.",
+        accept: ["44"],
+        answer:
+          "44. 12 + (2 × 16) = 12 + 32 = 44. Mr has no units, so do not write grams.",
+      },
+      {
+        question: "Calculate the relative formula mass of H₂SO₄. (H = 1, S = 32, O = 16) Give the number only.",
+        accept: ["98"],
+        answer:
+          "98. (2 × 1) + 32 + (4 × 16) = 2 + 32 + 64 = 98. Work through the formula left to right and nothing gets missed.",
+      },
+      {
+        question: "Calculate the relative formula mass of Ca(OH)₂. (Ca = 40, O = 16, H = 1) Give the number only.",
+        accept: ["74"],
+        answer:
+          "74. The bracket contains O + H = 17, doubled to 34, plus calcium's 40 gives 74. Brackets multiply everything inside them.",
+      },
+      {
+        question: "Calculate the relative formula mass of NaOH. (Na = 23, O = 16, H = 1) Give the number only.",
+        accept: ["40"],
+        answer:
+          "40. 23 + 16 + 1 = 40. This one is worth remembering — sodium hydroxide appears constantly in titration and neutralisation questions.",
+      },
+      {
+        question: "Calculate the percentage by mass of oxygen in H₂O. (H = 1, O = 16) Give the number to one decimal place.",
+        accept: ["88.9", "88.9%"],
+        answer:
+          "88.9%. (16 ÷ 18) × 100 = 88.888…, which rounds to 88.9%. Water is mostly oxygen by mass, despite having twice as many hydrogen atoms.",
+      },
+      {
+        question: "Calculate the percentage by mass of carbon in CO₂. (C = 12, O = 16) Give the number to one decimal place.",
+        accept: ["27.3", "27.3%"],
+        answer:
+          "27.3%. (12 ÷ 44) × 100 = 27.27…, rounding to 27.3%. Always check the answer is below 100%.",
+      },
+      {
+        question: "What has no units: relative formula mass, or mass in grams?",
+        accept: ["relative formula mass", "mr", "relative formula mass mr", "formula mass"],
+        answer:
+          "Relative formula mass. It is a ratio comparing masses, so writing grams after it is wrong and loses the mark.",
+      },
+      {
+        question: "How many cm³ are in 1 dm³? Give the number only.",
+        accept: ["1000", "1,000"],
+        answer:
+          "1,000. Converting cm³ to dm³ by dividing by 1,000 should be the FIRST line of working in any concentration question.",
+      },
+      {
+        question: "10 g of solute is dissolved in 2 dm³ of solution. Calculate the concentration in g/dm³. Give the number only.",
+        accept: ["5"],
+        answer:
+          "5 g/dm³. Concentration = mass ÷ volume = 10 ÷ 2. Note it is smaller than the mass here, because the volume was greater than 1 dm³.",
+      },
+      {
+        question: "30 g of solute is dissolved to make 250 cm³ of solution. Calculate the concentration in g/dm³. Give the number only.",
+        accept: ["120"],
+        answer:
+          "120 g/dm³. Convert first: 250 ÷ 1,000 = 0.25 dm³. Then 30 ÷ 0.25 = 120. Skipping the conversion is the classic error here.",
+      },
+      {
+        question: "Higher tier: how many moles are in 36 g of water? Mr(H₂O) = 18. Give the number only.",
+        accept: ["2"],
+        answer:
+          "2 moles. moles = mass ÷ Mr = 36 ÷ 18 = 2. Foundation students are not asked this.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: what mass is 0.5 moles of CaCO₃? Mr = 100. Give the number only, in grams.",
+        accept: ["50"],
+        answer:
+          "50 g. mass = moles × Mr = 0.5 × 100 = 50. This is the rearranged form, and you need both directions.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: what is the value of Avogadro's constant? Give it as a number times ten to a power.",
+        accept: ["6.02 x 10^23", "6.02x10^23", "6.02e23", "6.02 × 10²³", "6.02x1023", "6.02 x 10 23"],
+        answer:
+          "6.02 × 10²³ — the number of particles in one mole. It appears on the data sheet, but knowing what it means is examinable.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: what is the name for the reactant that is used up first?",
+        accept: ["limiting reactant", "limiting", "the limiting reactant", "limiting reagent"],
+        answer:
+          "The limiting reactant. It determines how much product can form; the other reactant is in excess and some is left over.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why the mass of a metal appears to increase when it is burned in air. Write two or three sentences.",
+        answer:
+          "The metal reacts with oxygen from the air to form a metal oxide, so oxygen atoms that were not on the balance beforehand are now chemically bonded into the solid product. The mass of the solid therefore rises by exactly the mass of oxygen that has combined with it. No mass has been created — if the air were weighed too, the total before and after would be identical, so mass is still conserved. Mark this one yourself: identifying that the extra mass came from oxygen in the air is the mark.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Relative formula mass is measured in grams.",
+        right:
+          "It has no units at all — it is a ratio. Only actual mass is in grams.",
+      },
+      {
+        wrong: "You can use a volume in cm³ directly in a concentration calculation.",
+        right:
+          "Concentration uses dm³. Divide the cm³ figure by 1,000 first, or the answer will be a thousand times out.",
+      },
+      {
+        wrong: "In Ca(OH)₂ there is one oxygen and one hydrogen.",
+        right:
+          "The subscript outside the bracket doubles everything inside, giving two oxygens and two hydrogens.",
+      },
+      {
+        wrong: "Foundation students need to learn moles.",
+        right:
+          "Moles, limiting reactants and mol/dm³ are Higher tier only. Foundation students should spend that time on Mr, percentage composition and g/dm³ instead.",
+      },
+      {
+        wrong: "If mass changes during a reaction, mass has not been conserved.",
+        right:
+          "It always is. An apparent loss means a gas escaped; an apparent gain means a gas from the air was taken in.",
+      },
+    ],
+  },
+
+  "chemistry/acids-and-alkalis": {
+    summary:
+      "Three reaction patterns cover almost everything in this topic, and knowing them cold turns hard-looking questions into recall. This topic covers the pH scale, what acids and alkalis actually are in terms of ions, the three neutralisation reactions, and how to make a pure salt — one of the required practicals.",
+    keyFacts: [
+      {
+        heading: "The pH scale and indicators",
+        points: [
+          "The pH scale runs from 0 to 14. Below 7 is acidic, 7 is neutral, above 7 is alkaline.",
+          "ACIDS produce H⁺ ions in aqueous solution.",
+          "ALKALIS are soluble bases, and produce OH⁻ ions in aqueous solution.",
+          "Neutralisation is H⁺ + OH⁻ → H₂O.",
+          "UNIVERSAL INDICATOR gives a colour for each pH; a pH probe gives a precise numerical value.",
+          "Litmus is red in acid and blue in alkali; phenolphthalein is colourless in acid and pink in alkali; methyl orange is red in acid and yellow in alkali.",
+        ],
+      },
+      {
+        heading: "Strong and weak acids",
+        points: [
+          "A STRONG acid is fully ionised in water — every molecule releases its H⁺. Hydrochloric, nitric and sulfuric acids are strong.",
+          "A WEAK acid is only partially ionised. Ethanoic, citric and carbonic acids are weak.",
+          "CONCENTRATED means a lot of acid dissolved in a given volume — this is NOT the same as strong.",
+          "So a concentrated weak acid and a dilute strong acid are both perfectly possible.",
+          "As pH decreases by 1, the hydrogen ion concentration increases by a factor of 10.",
+        ],
+      },
+      {
+        heading: "The three reactions",
+        points: [
+          "acid + metal → salt + hydrogen.",
+          "acid + base (or alkali) → salt + water.",
+          "acid + metal carbonate → salt + water + carbon dioxide.",
+          "The salt's name comes from the acid: hydrochloric → chloride, sulfuric → sulfate, nitric → nitrate.",
+          "The first part of the salt's name comes from the metal: magnesium + hydrochloric acid gives magnesium chloride.",
+          "Test for hydrogen: a lighted splint gives a squeaky pop. Test for carbon dioxide: limewater turns milky.",
+        ],
+      },
+      {
+        heading: "Making a soluble salt",
+        points: [
+          "Add EXCESS insoluble base to warm acid, so that all the acid is used up.",
+          "Excess is used because it guarantees no acid is left, which would contaminate the salt.",
+          "FILTER to remove the leftover solid base — this is why an insoluble base is convenient.",
+          "Heat the filtrate gently to the point of crystallisation, then leave it to crystallise slowly.",
+          "Pat the crystals dry between filter papers.",
+          "For an alkali, which is soluble, a titration is needed instead, because excess cannot be filtered out.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Acid", definition: "A substance that produces H⁺ ions in aqueous solution, with a pH below 7." },
+      { term: "Base", definition: "A substance that neutralises an acid, usually a metal oxide, hydroxide or carbonate." },
+      { term: "Alkali", definition: "A soluble base, producing OH⁻ ions in solution, with a pH above 7." },
+      { term: "Neutralisation", definition: "The reaction of an acid with a base: H⁺ + OH⁻ → H₂O." },
+      { term: "pH scale", definition: "A scale from 0 to 14 measuring how acidic or alkaline a solution is." },
+      { term: "Universal indicator", definition: "An indicator giving a different colour at each pH value." },
+      { term: "Strong acid", definition: "An acid that is fully ionised in water, such as hydrochloric acid." },
+      { term: "Weak acid", definition: "An acid that is only partially ionised in water, such as ethanoic acid." },
+      { term: "Concentrated", definition: "Having a large amount of solute in a given volume — not the same as strong." },
+      { term: "Salt", definition: "The compound formed when the hydrogen in an acid is replaced by a metal." },
+      { term: "Titration", definition: "A technique for finding exactly what volume of one solution reacts with another." },
+      { term: "Filtrate", definition: "The liquid that passes through the filter paper — here, the salt solution." },
+      { term: "Limewater test", definition: "The test for carbon dioxide: limewater turns milky or cloudy." },
+      { term: "Squeaky pop test", definition: "The test for hydrogen: a lighted splint makes a squeaky pop." },
+      { term: "Crystallisation", definition: "Evaporating the solvent so the dissolved salt forms crystals." },
+    ],
+    examTips: [
+      {
+        tip: "Strong is not the same as concentrated",
+        detail:
+          "Strong is about how fully the acid ionises; concentrated is about how much is dissolved. Questions deliberately offer the wrong one.",
+      },
+      {
+        tip: "Learn the three reaction patterns by heart",
+        detail:
+          "Metal → salt + hydrogen. Base → salt + water. Carbonate → salt + water + carbon dioxide. Almost every question is one of these three.",
+      },
+      {
+        tip: "Name the salt from the acid",
+        detail:
+          "Hydrochloric gives chlorides, sulfuric gives sulfates, nitric gives nitrates. Then put the metal's name in front.",
+      },
+      {
+        tip: "Say WHY excess base is used",
+        detail:
+          "To make sure all the acid reacts, so none is left to contaminate the salt. The unreacted solid is then filtered off. The reason is the mark.",
+      },
+      {
+        tip: "Know both gas tests exactly",
+        detail:
+          "Squeaky pop with a lighted splint means hydrogen. Limewater turning milky means carbon dioxide. State the observation, not just the gas.",
+      },
+      {
+        tip: "Neutralisation is H⁺ + OH⁻ → H₂O",
+        detail:
+          "That ionic equation is worth memorising — it is the same for every acid and alkali, and it is frequently asked for directly.",
+      },
+    ],
+    practice: [
+      {
+        question: "What ion do all acids produce in aqueous solution?",
+        accept: ["h+", "h⁺", "hydrogen ion", "hydrogen ions", "h plus"],
+        answer:
+          "H⁺, the hydrogen ion. Alkalis produce OH⁻, and neutralisation is simply those two combining to form water.",
+      },
+      {
+        question: "What ion do all alkalis produce in aqueous solution?",
+        accept: ["oh-", "oh⁻", "hydroxide", "hydroxide ion", "hydroxide ions"],
+        answer:
+          "OH⁻, the hydroxide ion. The ionic equation for neutralisation, H⁺ + OH⁻ → H₂O, is worth memorising exactly.",
+      },
+      {
+        question: "What pH value is neutral? Give the number only.",
+        accept: ["7"],
+        answer:
+          "7. Below 7 is acidic and above 7 is alkaline. The scale runs from 0 to 14.",
+      },
+      {
+        question: "Complete the pattern: acid + metal → salt + ______.",
+        accept: ["hydrogen", "h2", "hydrogen gas"],
+        answer:
+          "Hydrogen. Test for it with a lighted splint — a squeaky pop confirms hydrogen is present.",
+      },
+      {
+        question: "Complete the pattern: acid + base → salt + ______.",
+        accept: ["water", "h2o"],
+        answer:
+          "Water. This is neutralisation, and at the ionic level it is just H⁺ + OH⁻ → H₂O.",
+      },
+      {
+        question: "Complete the pattern: acid + metal carbonate → salt + water + ______.",
+        accept: ["carbon dioxide", "co2", "co₂"],
+        answer:
+          "Carbon dioxide. The fizzing is the giveaway, and limewater turning milky confirms it.",
+      },
+      {
+        question: "What type of salt does hydrochloric acid produce?",
+        accept: ["chloride", "chlorides", "a chloride"],
+        answer:
+          "A chloride. Sulfuric acid gives sulfates and nitric acid gives nitrates — the salt's second name always comes from the acid.",
+      },
+      {
+        question: "What type of salt does sulfuric acid produce?",
+        accept: ["sulfate", "sulphate", "sulfates", "sulphates"],
+        answer:
+          "A sulfate. So magnesium plus sulfuric acid gives magnesium sulfate, along with hydrogen gas.",
+      },
+      {
+        question: "What salt forms when magnesium reacts with hydrochloric acid?",
+        accept: ["magnesium chloride", "magnesiumchloride"],
+        answer:
+          "Magnesium chloride, plus hydrogen gas. The metal gives the first name and the acid gives the second.",
+      },
+      {
+        question: "What is an acid that is fully ionised in water called?",
+        accept: ["strong", "a strong acid", "strong acid"],
+        answer:
+          "A strong acid — hydrochloric, nitric and sulfuric are the three to know. Weak acids such as ethanoic are only partially ionised.",
+      },
+      {
+        question: "Is 'concentrated' the same as 'strong'? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. Strong describes how fully the acid ionises; concentrated describes how much is dissolved in a given volume. A dilute strong acid is perfectly possible.",
+      },
+      {
+        question: "What is the test for hydrogen gas?",
+        accept: ["squeaky pop", "lighted splint", "squeaky pop with a lighted splint", "burning splint", "pop"],
+        answer:
+          "A lighted splint produces a squeaky pop. Describe the observation as well as naming the test — both can carry marks.",
+      },
+      {
+        question: "What happens to limewater when carbon dioxide is bubbled through it?",
+        accept: ["turns milky", "turns cloudy", "milky", "cloudy", "goes milky", "goes cloudy"],
+        answer:
+          "It turns milky or cloudy. This is the standard test for carbon dioxide, and it appears in the carbonate reaction constantly.",
+      },
+      {
+        question: "Why is EXCESS base added when making a soluble salt?",
+        accept: ["to use up all the acid", "all the acid reacts", "ensure all acid reacts", "no acid left", "react all the acid", "so all acid is used"],
+        answer:
+          "To make certain every bit of acid reacts, so none is left to contaminate the salt. The leftover solid base is then filtered off.",
+      },
+      {
+        question: "If pH falls from 4 to 3, by what factor does the hydrogen ion concentration increase? Give the number only.",
+        accept: ["10", "ten"],
+        answer:
+          "10. Each whole pH unit represents a tenfold change in hydrogen ion concentration, which is why the scale is so compressed.",
+      },
+      {
+        question: "Describe how you would make pure, dry copper sulfate crystals from copper oxide and sulfuric acid.",
+        answer:
+          "Warm the dilute sulfuric acid gently, then add copper oxide a little at a time, stirring, until no more dissolves — this excess guarantees all the acid has reacted, so none is left to contaminate the product. Filter the mixture to remove the unreacted copper oxide, keeping the blue filtrate. Heat the filtrate gently until the solution is saturated, showing crystals beginning to form at the edge, then stop heating and leave it to crystallise slowly. Finally pat the crystals dry between filter papers. Mark this one yourself: excess and the REASON for it, filtering, crystallising and drying are the four stages worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Strong acid and concentrated acid mean the same thing.",
+        right:
+          "Strong is about full ionisation; concentrated is about how much is dissolved. A concentrated weak acid and a dilute strong acid both exist.",
+      },
+      {
+        wrong: "All bases are alkalis.",
+        right:
+          "An alkali is a SOLUBLE base. Copper oxide is a base but not an alkali, because it does not dissolve.",
+      },
+      {
+        wrong: "A pH of 6 is twice as acidic as a pH of 7.",
+        right:
+          "Each pH unit is a factor of TEN in hydrogen ion concentration, so pH 6 has ten times as many H⁺ ions as pH 7.",
+      },
+      {
+        wrong: "Neutralisation always gives a pH of exactly 7.",
+        right:
+          "Only for a strong acid with a strong alkali. A weak acid with a strong alkali gives a salt solution above pH 7.",
+      },
+      {
+        wrong: "Any excess reactant can be filtered off.",
+        right:
+          "Only an INSOLUBLE one. That is why an insoluble base is used for this method, and why a soluble alkali needs a titration instead.",
+      },
+    ],
+  },
 };
