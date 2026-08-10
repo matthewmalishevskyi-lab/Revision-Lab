@@ -2509,4 +2509,728 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "physics/waves": {
+    summary:
+      "Waves transfer energy without transferring matter, and that single sentence explains why a cork bobs but does not travel when a ripple passes. This topic covers transverse and longitudinal waves, the wave equation, and reflection and refraction — with the calculations you need to be able to do in both directions.",
+    keyFacts: [
+      {
+        heading: "What a wave is",
+        points: [
+          "A wave transfers ENERGY from place to place WITHOUT transferring matter.",
+          "The particles oscillate about a fixed point; they do not travel with the wave.",
+          "TRANSVERSE waves oscillate at RIGHT ANGLES to the direction of energy transfer — water waves, all electromagnetic waves, waves on a rope.",
+          "LONGITUDINAL waves oscillate PARALLEL to the direction of energy transfer — sound, and waves on a stretched spring.",
+          "Longitudinal waves have COMPRESSIONS, where particles bunch together, and RAREFACTIONS, where they spread out.",
+          "Sound cannot travel through a vacuum, because there are no particles to oscillate.",
+        ],
+      },
+      {
+        heading: "Describing a wave",
+        points: [
+          "AMPLITUDE is the maximum displacement from the rest position — NOT the full height from top to bottom.",
+          "WAVELENGTH is the distance from one point on a wave to the same point on the next, measured in metres.",
+          "FREQUENCY is the number of complete waves passing a point per second, measured in hertz.",
+          "PERIOD is the time for one complete wave to pass: T = 1 ÷ f.",
+          "So a higher frequency means a shorter period, and vice versa.",
+          "For sound, amplitude determines loudness and frequency determines pitch.",
+        ],
+      },
+      {
+        heading: "The wave equation",
+        points: [
+          "WAVE SPEED = frequency × wavelength: v = f × λ.",
+          "Speed in m/s, frequency in Hz, wavelength in m.",
+          "Rearranged: f = v ÷ λ, and λ = v ÷ f. You need all three forms.",
+          "In a given material the wave speed is fixed, so a higher frequency must mean a shorter wavelength.",
+          "Sound travels at about 330 m/s in air, faster in liquids and faster still in solids.",
+          "All electromagnetic waves travel at 3 × 10⁸ m/s in a vacuum.",
+        ],
+      },
+      {
+        heading: "Reflection and refraction",
+        points: [
+          "REFLECTION: the angle of incidence equals the angle of reflection, both measured from the NORMAL.",
+          "The NORMAL is an imaginary line at right angles to the surface at the point where the ray hits.",
+          "SPECULAR reflection from a smooth surface gives a clear image; DIFFUSE reflection from a rough surface scatters the light.",
+          "REFRACTION is the change of direction when a wave crosses into a different material and changes speed.",
+          "Entering a denser material the wave SLOWS and bends TOWARDS the normal; leaving it, it speeds up and bends AWAY.",
+          "The frequency does not change during refraction — the wavelength changes instead.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Wave", definition: "A disturbance that transfers energy without transferring matter." },
+      { term: "Transverse wave", definition: "A wave whose oscillations are at right angles to the direction of energy transfer." },
+      { term: "Longitudinal wave", definition: "A wave whose oscillations are parallel to the direction of energy transfer, such as sound." },
+      { term: "Compression", definition: "A region of a longitudinal wave where the particles are bunched together." },
+      { term: "Rarefaction", definition: "A region of a longitudinal wave where the particles are spread apart." },
+      { term: "Amplitude", definition: "The maximum displacement of a point from its rest position." },
+      { term: "Wavelength", definition: "The distance from one point on a wave to the same point on the next wave." },
+      { term: "Frequency", definition: "The number of complete waves passing a point each second, measured in hertz." },
+      { term: "Period", definition: "The time for one complete wave to pass a point: T = 1 ÷ f." },
+      { term: "Wave equation", definition: "Wave speed equals frequency times wavelength: v = fλ." },
+      { term: "Reflection", definition: "A wave bouncing off a surface, where the angle of incidence equals the angle of reflection." },
+      { term: "Normal", definition: "An imaginary line at right angles to a surface, from which angles are measured." },
+      { term: "Refraction", definition: "A change of direction when a wave enters a different material and changes speed." },
+      { term: "Specular reflection", definition: "Reflection from a smooth surface, producing a clear image." },
+      { term: "Diffuse reflection", definition: "Reflection from a rough surface, scattering light in many directions." },
+      { term: "Hertz", definition: "The unit of frequency. One hertz is one complete wave per second." },
+    ],
+    examTips: [
+      {
+        tip: "Waves transfer ENERGY, not matter",
+        detail:
+          "A cork on a ripple bobs up and down but does not move along. Saying that a wave carries matter loses the mark immediately.",
+      },
+      {
+        tip: "Amplitude is measured from the REST position",
+        detail:
+          "Not from trough to crest — that is twice the amplitude. This is the single most common error in wave diagrams.",
+      },
+      {
+        tip: "Always measure angles from the NORMAL",
+        detail:
+          "Not from the surface. An angle measured from the surface will be 90° minus the correct one, and the mark is lost.",
+      },
+      {
+        tip: "In refraction, frequency stays the SAME",
+        detail:
+          "The speed and wavelength both change, but the frequency is set by the source. Saying frequency changes is a standard trap.",
+      },
+      {
+        tip: "Know v = fλ in all three arrangements",
+        detail:
+          "v = fλ, f = v ÷ λ, λ = v ÷ f. Write down which two quantities you have before choosing.",
+      },
+      {
+        tip: "Sound cannot travel through a vacuum",
+        detail:
+          "It is longitudinal and needs particles to oscillate. Electromagnetic waves can, because they need no medium at all.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A wave has a frequency of 20 Hz and a wavelength of 1.5 m. Calculate its speed.",
+        steps: [
+          "Write the equation: v = f × λ.",
+          "Substitute: v = 20 × 1.5.",
+          "= 30.",
+          "Speed is in metres per second, so 30 m/s.",
+        ],
+        answer: "30 m/s",
+      },
+      {
+        question:
+          "A sound wave travels at 330 m/s with a wavelength of 3 m. Calculate its frequency.",
+        steps: [
+          "Rearrange the wave equation: f = v ÷ λ.",
+          "Substitute: f = 330 ÷ 3.",
+          "= 110.",
+          "Frequency is in hertz, so 110 Hz.",
+        ],
+        answer: "110 Hz",
+      },
+    ],
+    practice: [
+      {
+        question: "A wave has frequency 50 Hz and wavelength 4 m. Calculate the speed in m/s. Give the number only.",
+        accept: ["200"],
+        answer:
+          "200 m/s. v = fλ = 50 × 4. Frequency multiplied by wavelength always gives the speed.",
+      },
+      {
+        question: "A wave has frequency 8 Hz and wavelength 2.5 m. Calculate the speed in m/s. Give the number only.",
+        accept: ["20"],
+        answer:
+          "20 m/s. v = 8 × 2.5 = 20. Decimals in the wavelength are common, so take care with the multiplication.",
+      },
+      {
+        question: "A wave travels at 340 m/s with a wavelength of 2 m. Calculate the frequency in Hz. Give the number only.",
+        accept: ["170"],
+        answer:
+          "170 Hz. f = v ÷ λ = 340 ÷ 2. This is the wave equation rearranged, which you need as readily as the original.",
+      },
+      {
+        question: "A wave travels at 300 m/s with a frequency of 60 Hz. Calculate the wavelength in metres. Give the number only.",
+        accept: ["5"],
+        answer:
+          "5 m. λ = v ÷ f = 300 ÷ 60 = 5. Three quantities, three arrangements — know all of them.",
+      },
+      {
+        question: "A wave has a frequency of 50 Hz. Calculate its period in seconds. Give the number only.",
+        accept: ["0.02"],
+        answer:
+          "0.02 s. T = 1 ÷ f = 1 ÷ 50 = 0.02. A high frequency always gives a short period.",
+      },
+      {
+        question: "A wave has a frequency of 4 Hz. Calculate its period in seconds. Give the number only.",
+        accept: ["0.25"],
+        answer:
+          "0.25 s. T = 1 ÷ 4 = 0.25. Four complete waves per second means each one takes a quarter of a second.",
+      },
+      {
+        question: "A wave has a period of 0.1 s. Calculate its frequency in Hz. Give the number only.",
+        accept: ["10"],
+        answer:
+          "10 Hz. Frequency and period are reciprocals: f = 1 ÷ T = 1 ÷ 0.1 = 10.",
+      },
+      {
+        question: "What type of wave is sound?",
+        accept: ["longitudinal", "a longitudinal wave", "longitudinal wave"],
+        answer:
+          "Longitudinal — the particles oscillate parallel to the direction of energy transfer, producing compressions and rarefactions.",
+      },
+      {
+        question: "What type of wave is light?",
+        accept: ["transverse", "a transverse wave", "transverse wave"],
+        answer:
+          "Transverse. All electromagnetic waves are transverse, and unlike sound they can travel through a vacuum.",
+      },
+      {
+        question: "What is the maximum displacement of a wave from its rest position called?",
+        accept: ["amplitude", "the amplitude"],
+        answer:
+          "Amplitude. It is measured from the REST position, NOT from trough to crest — that distance is twice the amplitude.",
+      },
+      {
+        question: "From which line are angles of incidence and reflection measured?",
+        accept: ["normal", "the normal"],
+        answer:
+          "The normal — an imaginary line at right angles to the surface. Measuring from the surface itself gives 90° minus the correct angle.",
+      },
+      {
+        question: "During refraction, does the frequency of a wave change?",
+        accept: ["no", "n", "it stays the same", "stays the same"],
+        answer:
+          "No. The frequency is set by the source and does not change. The speed and wavelength both change instead.",
+      },
+      {
+        question: "Can sound travel through a vacuum? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. Sound is longitudinal and needs particles to oscillate. Electromagnetic waves can, because they need no medium.",
+      },
+      {
+        question: "In sound, what does amplitude determine?",
+        accept: ["loudness", "volume", "how loud"],
+        answer:
+          "Loudness. Frequency determines pitch — a higher frequency sounds higher, and a larger amplitude sounds louder.",
+      },
+      {
+        question: "Explain why a cork floating on water bobs up and down but does not travel with a wave. Write two or three sentences.",
+        answer:
+          "A wave transfers energy from place to place, but it does not transfer matter. As the wave passes, each water particle oscillates about its own fixed rest position and returns to it, rather than moving along with the wave. The cork simply follows the water immediately around it, so it rises and falls as each crest and trough goes by while staying in roughly the same place. Mark this one yourself: the distinction between transferring ENERGY and transferring MATTER is the whole mark.",
+      },
+      {
+        question: "Explain what happens to a light ray as it passes from air into glass.",
+        answer:
+          "Light travels more slowly in glass than in air, so as the ray crosses the boundary it changes speed. If it meets the surface at an angle, the change in speed makes it change direction, bending TOWARDS the normal as it enters the denser material. The frequency stays the same, because it is set by the source, so the wavelength must decrease to match the slower speed. On leaving the glass the ray speeds up again and bends away from the normal. Mark this one yourself: slowing down, bending towards the normal, and frequency staying constant are the three points.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Waves carry matter from place to place.",
+        right:
+          "They transfer ENERGY only. The particles oscillate about fixed positions and return to where they started.",
+      },
+      {
+        wrong: "Amplitude is the distance from trough to crest.",
+        right:
+          "It is measured from the REST position to the crest, so trough-to-crest is twice the amplitude.",
+      },
+      {
+        wrong: "Refraction changes the frequency of a wave.",
+        right:
+          "Frequency is set by the source and never changes. Speed and wavelength change together instead.",
+      },
+      {
+        wrong: "Angles in reflection are measured from the mirror surface.",
+        right:
+          "They are measured from the NORMAL, the line at right angles to the surface.",
+      },
+      {
+        wrong: "Sound travels faster in air than in solids.",
+        right:
+          "It travels fastest in solids, where particles are closest together, and cannot travel at all in a vacuum.",
+      },
+    ],
+  },
+
+  "physics/the-electromagnetic-spectrum": {
+    summary:
+      "The electromagnetic spectrum is one family of transverse waves stretching from radio to gamma, all travelling at the same speed in a vacuum and differing only in frequency and wavelength. This topic covers the order, the uses, the dangers, and the calculations that connect frequency to wavelength.",
+    keyFacts: [
+      {
+        heading: "The spectrum",
+        points: [
+          "In order of INCREASING frequency and DECREASING wavelength: radio, microwave, infrared, visible light, ultraviolet, X-ray, gamma.",
+          "A mnemonic: Raging Martians Invaded Venus Using X-ray Guns.",
+          "All are TRANSVERSE and all travel at 3 × 10⁸ m/s in a vacuum.",
+          "They are all part of a continuous spectrum; the names are labels for regions, not separate things.",
+          "Visible light is a very narrow band, running from red (longest wavelength) to violet (shortest).",
+          "Our eyes detect only that narrow band, which is why the rest was discovered so much later.",
+        ],
+      },
+      {
+        heading: "Uses",
+        points: [
+          "RADIO: television and radio broadcasting.",
+          "MICROWAVE: satellite communications and cooking food.",
+          "INFRARED: electric heaters, cooking, thermal imaging cameras, remote controls, optical fibres.",
+          "VISIBLE LIGHT: seeing, photography, optical fibre communication.",
+          "ULTRAVIOLET: energy-efficient lamps, sun tanning, detecting forged banknotes.",
+          "X-RAY and GAMMA: medical imaging, treating cancer, and sterilising equipment.",
+        ],
+      },
+      {
+        heading: "Dangers",
+        points: [
+          "The higher the frequency, the more energy each wave carries, and generally the more dangerous it is.",
+          "MICROWAVES can heat internal body tissue.",
+          "INFRARED can cause skin burns.",
+          "ULTRAVIOLET damages surface cells, causing skin ageing, sunburn and increasing the risk of skin cancer, and can damage eyes.",
+          "X-RAYS and GAMMA rays are IONISING, so they can cause mutations in DNA and lead to cancer.",
+          "RADIATION DOSE, measured in sieverts, is a measure of the risk of harm from exposure.",
+        ],
+      },
+      {
+        heading: "Generation, absorption and communication",
+        points: [
+          "Radio waves can be produced by oscillations in an electrical circuit.",
+          "Absorbing radio waves in a receiving aerial creates an alternating current with the same frequency.",
+          "Gamma rays originate from changes in the NUCLEUS of an atom.",
+          "Changes in the energy levels of ELECTRONS produce visible light, ultraviolet and X-rays.",
+          "Different substances absorb, transmit, refract or reflect electromagnetic waves depending on wavelength.",
+          "How a wave behaves at a boundary depends on both the wavelength and the material.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Electromagnetic spectrum", definition: "The continuous family of transverse waves from radio to gamma, all travelling at the same speed in a vacuum." },
+      { term: "Radio waves", definition: "The longest wavelength EM waves, used for television and radio broadcasting." },
+      { term: "Microwaves", definition: "EM waves used for satellite communication and cooking food." },
+      { term: "Infrared", definition: "EM waves used for heaters, cooking, thermal imaging and remote controls." },
+      { term: "Visible light", definition: "The narrow band of EM waves detectable by the human eye, from red to violet." },
+      { term: "Ultraviolet", definition: "EM waves that cause tanning and sunburn, and increase the risk of skin cancer." },
+      { term: "X-rays", definition: "Ionising EM waves used for medical imaging, which can damage DNA." },
+      { term: "Gamma rays", definition: "The highest-frequency EM waves, originating in the nucleus, used to treat cancer and sterilise equipment." },
+      { term: "Ionising radiation", definition: "Radiation with enough energy to remove electrons from atoms, potentially damaging DNA." },
+      { term: "Radiation dose", definition: "A measure of the risk of harm from exposure to radiation, measured in sieverts." },
+      { term: "Speed of light", definition: "3 × 10⁸ m/s — the speed of all electromagnetic waves in a vacuum." },
+      { term: "Transverse wave", definition: "A wave whose oscillations are at right angles to the direction of energy transfer." },
+      { term: "Optical fibre", definition: "A thin glass fibre carrying information as pulses of visible light or infrared." },
+      { term: "Thermal imaging", definition: "Using infrared radiation to produce an image based on temperature." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the order with a mnemonic",
+        detail:
+          "Raging Martians Invaded Venus Using X-ray Guns. Frequency increases and wavelength decreases as you go along it.",
+      },
+      {
+        tip: "All EM waves travel at the SAME speed in a vacuum",
+        detail:
+          "3 × 10⁸ m/s. Only the frequency and wavelength differ, and they change together because their product is fixed.",
+      },
+      {
+        tip: "Higher frequency means more energy and more danger",
+        detail:
+          "That is why gamma is the most hazardous and radio the least. The pattern makes the dangers easy to reason out rather than memorise.",
+      },
+      {
+        tip: "Gamma comes from the NUCLEUS; X-rays from electrons",
+        detail:
+          "They overlap in frequency, so the origin is what distinguishes them. Examiners test exactly this.",
+      },
+      {
+        tip: "Use standard form carefully in calculations",
+        detail:
+          "3 × 10⁸ is 300,000,000. Enter it into a calculator with the EXP or ×10ˣ button rather than typing all the zeros.",
+      },
+      {
+        tip: "Match the use to a property",
+        detail:
+          "Microwaves penetrate food and are absorbed by water; infrared is absorbed by the surface. Saying WHY it is used earns the mark.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A radio wave has a wavelength of 1,500 m. Calculate its frequency. (Speed of light = 3 × 10⁸ m/s)",
+        steps: [
+          "Rearrange the wave equation: f = v ÷ λ.",
+          "Substitute: f = 300,000,000 ÷ 1,500.",
+          "= 200,000.",
+          "Frequency is in hertz, so 200,000 Hz, which is 200 kHz.",
+        ],
+        answer: "200,000 Hz (200 kHz)",
+      },
+    ],
+    practice: [
+      {
+        question: "Which electromagnetic wave has the LONGEST wavelength?",
+        accept: ["radio", "radio waves", "radiowaves"],
+        answer:
+          "Radio waves. Gamma rays have the shortest wavelength and the highest frequency — the two run in opposite directions.",
+      },
+      {
+        question: "Which electromagnetic wave has the HIGHEST frequency?",
+        accept: ["gamma", "gamma rays", "gamma ray"],
+        answer:
+          "Gamma rays. Highest frequency means shortest wavelength and the most energy per wave, which is why they are the most hazardous.",
+      },
+      {
+        question: "What is the speed of all electromagnetic waves in a vacuum, in m/s? Give it in standard form or as a full number.",
+        accept: ["3x10^8", "3 x 10^8", "300000000", "300,000,000", "3e8", "3 × 10⁸"],
+        answer:
+          "3 × 10⁸ m/s, or 300,000,000 m/s. Every EM wave travels at this speed in a vacuum, whatever its frequency.",
+      },
+      {
+        question: "An EM wave has a wavelength of 3,000 m. Calculate its frequency in Hz. (c = 3 × 10⁸ m/s) Give the number only.",
+        accept: ["100000", "100,000"],
+        answer:
+          "100,000 Hz. f = c ÷ λ = 300,000,000 ÷ 3,000. Use the ×10ˣ button rather than typing all the zeros.",
+      },
+      {
+        question: "An EM wave has a frequency of 1 × 10⁸ Hz. Calculate its wavelength in metres. (c = 3 × 10⁸ m/s) Give the number only.",
+        accept: ["3"],
+        answer:
+          "3 m. λ = c ÷ f = 3 × 10⁸ ÷ 1 × 10⁸ = 3. Working in standard form keeps this kind of division simple.",
+      },
+      {
+        question: "An EM wave has a frequency of 6 × 10⁸ Hz. Calculate its wavelength in metres. (c = 3 × 10⁸ m/s) Give the number only.",
+        accept: ["0.5"],
+        answer:
+          "0.5 m. λ = 3 × 10⁸ ÷ 6 × 10⁸ = 0.5. A higher frequency always gives a shorter wavelength, so the small answer makes sense.",
+      },
+      {
+        question: "An EM wave has a wavelength of 0.06 m. Calculate its frequency in Hz. (c = 3 × 10⁸ m/s) Give the number only.",
+        accept: ["5000000000", "5,000,000,000", "5e9", "5x10^9"],
+        answer:
+          "5 × 10⁹ Hz. f = 3 × 10⁸ ÷ 0.06 = 5,000,000,000. Standard form is far easier to handle here than the full number.",
+      },
+      {
+        question: "Which EM wave is used in television and radio broadcasting?",
+        accept: ["radio", "radio waves"],
+        answer:
+          "Radio waves. Their long wavelength lets them travel long distances and diffract around obstacles.",
+      },
+      {
+        question: "Which EM wave is used in thermal imaging cameras and remote controls?",
+        accept: ["infrared", "infra red", "infra-red", "ir"],
+        answer:
+          "Infrared. It is emitted by all warm objects, which is precisely what makes thermal imaging possible.",
+      },
+      {
+        question: "Which EM wave is used to detect forged banknotes?",
+        accept: ["ultraviolet", "uv", "ultra violet"],
+        answer:
+          "Ultraviolet. It also causes tanning and sunburn, and increases the risk of skin cancer with prolonged exposure.",
+      },
+      {
+        question: "Which type of EM wave originates from changes in the nucleus of an atom?",
+        accept: ["gamma", "gamma rays", "gamma ray"],
+        answer:
+          "Gamma rays. X-rays overlap them in frequency but come from changes involving ELECTRONS, which is how the two are distinguished.",
+      },
+      {
+        question: "Which two EM waves are ionising?",
+        accept: ["x-rays and gamma", "gamma and x-rays", "xray and gamma", "x rays and gamma rays", "gamma and xray"],
+        answer:
+          "X-rays and gamma rays. Being ionising means they can damage DNA and cause mutations, which is why exposure is carefully limited.",
+      },
+      {
+        question: "What is the unit of radiation dose?",
+        accept: ["sievert", "sieverts", "sv"],
+        answer:
+          "The sievert (Sv). It measures the risk of harm from exposure, rather than simply the quantity of radiation.",
+      },
+      {
+        question: "Which EM wave can cause skin burns because it is absorbed by the surface of the skin?",
+        accept: ["infrared", "infra red", "infra-red", "ir"],
+        answer:
+          "Infrared. Microwaves, by contrast, penetrate further and can heat internal tissue.",
+      },
+      {
+        question: "Explain why ultraviolet radiation is more dangerous than visible light. Write two or three sentences.",
+        answer:
+          "Ultraviolet has a higher frequency than visible light, and higher frequency means each wave carries more energy. That extra energy is enough to damage the cells at the surface of the skin, causing sunburn and premature ageing, and it can damage the DNA inside those cells. Damaged DNA can lead to mutations and increase the risk of skin cancer, whereas visible light does not carry enough energy per wave to do this. Mark this one yourself: linking higher frequency to more energy to cell damage is the chain the marks follow.",
+      },
+      {
+        question: "Explain why all electromagnetic waves travel at the same speed in a vacuum but have different wavelengths.",
+        answer:
+          "In a vacuum every electromagnetic wave travels at 3 × 10⁸ m/s, because that speed is a property of the vacuum itself rather than of the individual wave. The wave equation v = fλ therefore fixes the product of frequency and wavelength at that constant value. So if a wave has a high frequency it must have a correspondingly short wavelength, and if it has a low frequency it must have a long one — which is exactly the pattern seen across the spectrum from radio to gamma. Mark this one yourself: using v = fλ to explain the inverse relationship is what earns the marks.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Different EM waves travel at different speeds in a vacuum.",
+        right:
+          "They all travel at 3 × 10⁸ m/s. Only frequency and wavelength differ, and they vary inversely because their product is fixed.",
+      },
+      {
+        wrong: "X-rays and gamma rays are different because gamma has a higher frequency.",
+        right:
+          "They overlap in frequency. The difference is their ORIGIN: gamma from the nucleus, X-rays from electron energy changes.",
+      },
+      {
+        wrong: "Microwaves cook food by making it radioactive.",
+        right:
+          "They are absorbed by water molecules, which heats the food. Microwaves are not ionising and leave nothing behind.",
+      },
+      {
+        wrong: "Visible light is a large part of the spectrum.",
+        right:
+          "It is an extremely narrow band. The spectrum is continuous, and our eyes detect only a tiny slice of it.",
+      },
+      {
+        wrong: "All EM radiation is dangerous.",
+        right:
+          "Radio waves carry very little energy per wave and are essentially harmless. Danger rises with frequency.",
+      },
+    ],
+  },
+
+  "physics/density-and-pressure": {
+    summary:
+      "Pressure explains why a drawing pin goes into a wall and your thumb does not, why your ears hurt at the bottom of a pool, and why aeroplanes need pressurised cabins. This topic covers pressure in solids, liquids and gases, along with the density and upthrust calculations that go with them.",
+    keyFacts: [
+      {
+        heading: "Pressure in solids",
+        points: [
+          "PRESSURE = force ÷ area: p = F ÷ A.",
+          "Pressure is measured in pascals (Pa); one pascal is one newton per square metre.",
+          "A SMALLER area with the same force gives a LARGER pressure — which is why a sharp knife cuts.",
+          "A larger area spreads the same force out, which is why snowshoes and tractor tyres work.",
+          "Area must be in m² for the answer to be in pascals. Convert cm² by dividing by 10,000.",
+        ],
+      },
+      {
+        heading: "Density",
+        points: [
+          "DENSITY = mass ÷ volume: ρ = m ÷ V.",
+          "Units are kg/m³ or g/cm³, and the two differ by a factor of 1,000.",
+          "An object floats if its density is LESS than that of the fluid it is placed in.",
+          "Solids are usually densest and gases least dense, because of how closely the particles are packed.",
+          "Density can be found by measuring mass on a balance and volume by displacement.",
+        ],
+      },
+      {
+        heading: "Pressure in liquids",
+        points: [
+          "Pressure in a liquid increases with DEPTH, because there is more liquid above pressing down.",
+          "It also increases with the DENSITY of the liquid.",
+          "The equation is p = h × ρ × g, where h is depth, ρ is density and g is gravitational field strength.",
+          "Pressure acts in ALL directions at a point in a liquid, not just downwards.",
+          "UPTHRUST is the upward force on a submerged object, caused by pressure being greater at its bottom than at its top.",
+          "An object floats when upthrust equals weight; it sinks when weight is greater.",
+        ],
+      },
+      {
+        heading: "Atmospheric pressure",
+        points: [
+          "Atmospheric pressure is caused by air molecules colliding with a surface.",
+          "It DECREASES with height, because there is less atmosphere above pressing down.",
+          "The atmosphere also becomes less dense at altitude, so there are fewer collisions.",
+          "At sea level atmospheric pressure is about 100,000 Pa.",
+          "This is why aircraft cabins are pressurised and why cooking takes longer at high altitude.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Pressure", definition: "Force per unit area: p = F ÷ A, measured in pascals." },
+      { term: "Pascal", definition: "The unit of pressure. One pascal is one newton per square metre." },
+      { term: "Density", definition: "Mass per unit volume: ρ = m ÷ V, measured in kg/m³ or g/cm³." },
+      { term: "Upthrust", definition: "The upward force on a submerged object, caused by greater pressure at its base than its top." },
+      { term: "Floating", definition: "What happens when upthrust equals weight, which occurs if the object is less dense than the fluid." },
+      { term: "Atmospheric pressure", definition: "Pressure caused by air molecules colliding with a surface, about 100,000 Pa at sea level." },
+      { term: "Pressure in a liquid", definition: "p = hρg — it increases with depth and with the density of the liquid." },
+      { term: "Fluid", definition: "A liquid or a gas — anything that can flow." },
+      { term: "Displacement method", definition: "Finding the volume of an irregular object from the liquid it pushes out." },
+      { term: "Submerged", definition: "Completely below the surface of a fluid." },
+      { term: "Compressible", definition: "Able to be squashed into a smaller volume — gases are, liquids are barely." },
+      { term: "Gravitational field strength", definition: "The force per kilogram of mass, about 9.8 N/kg at the Earth's surface." },
+    ],
+    examTips: [
+      {
+        tip: "Convert area to m² before calculating pressure",
+        detail:
+          "Divide cm² by 10,000, not by 100. Getting this conversion wrong is the biggest single source of error in the topic.",
+      },
+      {
+        tip: "Smaller area means BIGGER pressure",
+        detail:
+          "The same force concentrated into less area. That is why a sharp knife cuts and a blunt one does not.",
+      },
+      {
+        tip: "Pressure in a liquid acts in ALL directions",
+        detail:
+          "Not just downwards. That is why a submarine is squeezed from every side and why upthrust exists at all.",
+      },
+      {
+        tip: "Explain upthrust through the pressure DIFFERENCE",
+        detail:
+          "Pressure is greater at the bottom of an object than the top, because it is deeper. That difference produces a net upward force.",
+      },
+      {
+        tip: "Floating is about DENSITY, not weight",
+        detail:
+          "A steel ship floats and a steel nail sinks. It is the average density of the object compared with the fluid that decides.",
+      },
+      {
+        tip: "Give the reason atmospheric pressure falls with height",
+        detail:
+          "Less atmosphere above pressing down, and the air is less dense so there are fewer collisions. Both halves score.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A force of 200 N acts on an area of 0.5 m². Calculate the pressure.",
+        steps: [
+          "Write the equation: p = F ÷ A.",
+          "Substitute: p = 200 ÷ 0.5.",
+          "= 400.",
+          "Pressure is in pascals, so 400 Pa.",
+        ],
+        answer: "400 Pa",
+      },
+      {
+        question:
+          "Calculate the pressure 10 m below the surface of water. (density = 1,000 kg/m³, g = 9.8 N/kg)",
+        steps: [
+          "Write the equation: p = h × ρ × g.",
+          "Substitute: p = 10 × 1,000 × 9.8.",
+          "10 × 1,000 = 10,000.",
+          "10,000 × 9.8 = 98,000 Pa. That is roughly the same as atmospheric pressure, which is why 10 m of water is a useful benchmark.",
+        ],
+        answer: "98,000 Pa",
+      },
+    ],
+    practice: [
+      {
+        question: "A force of 600 N acts over 2 m². Calculate the pressure in pascals. Give the number only.",
+        accept: ["300"],
+        answer:
+          "300 Pa. p = F ÷ A = 600 ÷ 2. One pascal is one newton per square metre, so the units follow directly.",
+      },
+      {
+        question: "A force of 50 N acts over 0.25 m². Calculate the pressure in pascals. Give the number only.",
+        accept: ["200"],
+        answer:
+          "200 Pa. p = 50 ÷ 0.25 = 200. Dividing by a number less than 1 makes the answer larger, which is worth expecting.",
+      },
+      {
+        question: "A pressure of 500 Pa acts on an area of 0.2 m². Calculate the force in newtons. Give the number only.",
+        accept: ["100"],
+        answer:
+          "100 N. Rearranging: F = p × A = 500 × 0.2. You need the equation in all three arrangements.",
+      },
+      {
+        question: "Calculate the pressure 5 m below water. (ρ = 1,000 kg/m³, g = 10 N/kg) Give the number only, in pascals.",
+        accept: ["50000", "50,000"],
+        answer:
+          "50,000 Pa. p = hρg = 5 × 1,000 × 10. Note this question gives g = 10, so use 10.",
+      },
+      {
+        question: "Calculate the pressure 20 m below water. (ρ = 1,000 kg/m³, g = 10 N/kg) Give the number only, in pascals.",
+        accept: ["200000", "200,000"],
+        answer:
+          "200,000 Pa. p = 20 × 1,000 × 10. Four times the depth gives four times the pressure — it is directly proportional.",
+      },
+      {
+        question: "An object has a mass of 600 g and volume 200 cm³. Calculate the density in g/cm³. Give the number only.",
+        accept: ["3"],
+        answer:
+          "3 g/cm³. ρ = m ÷ V = 600 ÷ 200. Denser than water, so this object would sink.",
+      },
+      {
+        question: "An object has a mass of 2 kg and volume 0.004 m³. Calculate the density in kg/m³. Give the number only.",
+        accept: ["500"],
+        answer:
+          "500 kg/m³. 2 ÷ 0.004 = 500. Less dense than water at 1,000 kg/m³, so it would float.",
+      },
+      {
+        question: "How many cm² are in 1 m²? Give the number only.",
+        accept: ["10000", "10,000"],
+        answer:
+          "10,000. Dividing by 100 instead of 10,000 is the single biggest source of error in pressure calculations.",
+      },
+      {
+        question: "What is the unit of pressure?",
+        accept: ["pascal", "pascals", "pa"],
+        answer:
+          "The pascal (Pa). One pascal is one newton per square metre, which is a very small pressure — atmospheric pressure is about 100,000 Pa.",
+      },
+      {
+        question: "Approximately what is atmospheric pressure at sea level, in pascals? Give the number only.",
+        accept: ["100000", "100,000", "101000", "101325"],
+        answer:
+          "About 100,000 Pa. It falls with height, because there is less atmosphere above and the air is less dense.",
+      },
+      {
+        question: "What is the upward force on a submerged object called?",
+        accept: ["upthrust", "the upthrust", "buoyancy", "buoyant force"],
+        answer:
+          "Upthrust. It arises because pressure is greater at the bottom of the object than at the top, since the bottom is deeper.",
+      },
+      {
+        question: "An object floats when upthrust equals what?",
+        accept: ["weight", "its weight", "the weight"],
+        answer:
+          "Its weight. If weight exceeds upthrust the object sinks, and floating requires the object to be less dense than the fluid.",
+      },
+      {
+        question: "Does pressure in a liquid increase or decrease with depth?",
+        accept: ["increase", "increases", "goes up", "rises", "higher"],
+        answer:
+          "Increases, because there is more liquid above pressing down. It also increases with the density of the liquid.",
+      },
+      {
+        question: "Does atmospheric pressure increase or decrease with height?",
+        accept: ["decrease", "decreases", "goes down", "falls", "lower"],
+        answer:
+          "Decreases. There is less atmosphere above pressing down, and the air is less dense so fewer molecules collide with a surface.",
+      },
+      {
+        question: "Explain why a sharp knife cuts more easily than a blunt one. Write two or three sentences.",
+        answer:
+          "Pressure is force divided by area, so for a given force the pressure depends entirely on how much area that force is spread over. A sharp knife has a very thin blade edge, giving an extremely small contact area, so the same downward force produces a very large pressure. That high pressure is enough to push the blade through the material, whereas a blunt knife spreads the same force over a larger area and produces too little pressure to cut. Mark this one yourself: the mark is for p = F ÷ A and for identifying the small area as the reason.",
+      },
+      {
+        question: "Explain why a steel ship floats even though steel is much denser than water.",
+        answer:
+          "What determines floating is the AVERAGE density of the whole object, not the density of the material it is made from. A ship's hull encloses a very large volume of air, so although the steel itself is dense, the ship as a whole — steel plus the air inside it — has an average density lower than that of water. Because it is less dense than the water, the upthrust acting on it equals its weight before it becomes fully submerged, so it floats. A solid lump of the same steel has no enclosed air, so its density stays above water's and it sinks. Mark this one yourself: average density including the enclosed air is the whole answer.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A bigger force always means a bigger pressure.",
+        right:
+          "Pressure depends on force AND area. A large force over a large area can give less pressure than a small force on a pin point.",
+      },
+      {
+        wrong: "There are 100 cm² in 1 m².",
+        right:
+          "There are 10,000, because both dimensions are scaled by 100. This conversion error is the most common in the topic.",
+      },
+      {
+        wrong: "Pressure in a liquid acts only downwards.",
+        right:
+          "It acts equally in ALL directions at a given depth, which is why upthrust exists and why submarines are squeezed from every side.",
+      },
+      {
+        wrong: "Heavy objects sink and light objects float.",
+        right:
+          "It is DENSITY that matters, not weight. A steel ship weighing thousands of tonnes floats; a small steel nail sinks.",
+      },
+      {
+        wrong: "Atmospheric pressure pushes only downwards.",
+        right:
+          "Air molecules collide from every direction, so atmospheric pressure acts on all surfaces equally, including upwards.",
+      },
+    ],
+  },
 };
