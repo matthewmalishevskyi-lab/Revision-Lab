@@ -3,15 +3,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // WHY THIS EXISTS
 //
-// This site now holds around 190,000 words of revision material across five
+// This site now holds around 234,000 words of revision material across six
 // subjects, and it is public. Students may find it through a search and use it
 // to prepare for exams that decide what they do next.
 //
 // Every word of it was written with AI assistance, and no subject teacher has
 // checked any of it. Matthew studies Computer Science, Maths, English and
-// History, so four of the five subjects have had a student's eye on them. He
-// does not take Geography, so nobody involved can verify those 17 topics at
-// all.
+// History, so four of the six subjects have had a student's eye on them. He
+// does not take Geography or Business, so nobody involved can verify those 43
+// topics at all.
 //
 // That is not a reason to take it down — it is carefully written, it cites real
 // figures, and it flags where historians and scientists disagree. It IS a

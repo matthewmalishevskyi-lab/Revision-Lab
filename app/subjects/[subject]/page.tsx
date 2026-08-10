@@ -52,6 +52,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// How many columns for a given number of year groups. Written out in full
+// because Tailwind cannot see class names that are assembled at runtime.
+const COLUMNS: Record<number, string> = {
+  1: "lg:grid-cols-1 lg:max-w-md lg:mx-auto",
+  2: "lg:grid-cols-2",
+  3: "lg:grid-cols-3",
+  4: "lg:grid-cols-2 xl:grid-cols-4",
+};
+
 export default async function SubjectPage({ params }: Props) {
   const { subject: slug } = await params;
   const subject = getSubject(slug);
@@ -74,8 +83,22 @@ export default async function SubjectPage({ params }: Props) {
         <p className="mt-3 text-xl opacity-60">{subject.blurb}</p>
       </section>
 
-      {/* ---------- Three year columns ---------- */}
-      <section className="mt-10 grid grid-cols-1 gap-7 lg:grid-cols-3">
+      {/* ---------- The year columns ----------
+           The grid adapts to how many years the subject actually has. It was
+           hard-coded to three, which was fine while every subject had Year 9,
+           10 and 11 — Business has only two, so the row was laid out for three
+           and the missing one left an empty third of the page, as though a
+           column had been deleted.
+
+           ⚠️ THE TAILWIND TRAP, and the reason this is a lookup rather than a
+           template string. Tailwind scans the SOURCE FILES AS PLAIN TEXT to
+           decide which CSS to generate. A class built at runtime like
+           `lg:grid-cols-${n}` never appears in the file, so the CSS for it is
+           never generated and the class silently does nothing. Every possible
+           class has to exist somewhere as a complete literal string — which is
+           exactly what this object is. This is written up in PROJECT_NOTES and
+           it catches people out constantly. */}
+      <section className={`mt-10 grid grid-cols-1 gap-7 ${COLUMNS[subject.years.length] ?? "lg:grid-cols-3"}`}>
         {subject.years.map((group, index) => {
           // COLOUR is by year NAME — Business starts at Year 10, and reading
           // position 0 would paint it in the Year 9 blue.
@@ -106,14 +129,19 @@ export default async function SubjectPage({ params }: Props) {
                 </h2>
 
                 <div className="flex h-40 items-end justify-center">
-                  {/* The FIRST column gets the subject's own mascot; the rest
-                      get artwork that works for any subject. */}
+                  {/* The FIRST column gets the subject's own mascot, because
+                      that is a fact about the LAYOUT. The rest is chosen by
+                      year NAME: Year 11 is the exam year wherever it appears,
+                      so it gets the exam artwork.
+
+                      Picking this by position broke on Business, whose Year 11
+                      sits at index 1 and was therefore handed the book. */}
                   {index === 0 ? (
                     <Mascot className="h-40 drop-shadow-[0_8px_14px_rgba(0,0,0,0.25)]" />
-                  ) : index === 1 ? (
-                    <BookArt className="h-32 drop-shadow-[0_8px_14px_rgba(0,0,0,0.2)]" />
-                  ) : (
+                  ) : group.year === "Year 11" ? (
                     <ExamArt className="h-36 drop-shadow-[0_8px_14px_rgba(0,0,0,0.2)]" />
+                  ) : (
+                    <BookArt className="h-32 drop-shadow-[0_8px_14px_rgba(0,0,0,0.2)]" />
                   )}
                 </div>
               </div>

@@ -99,7 +99,7 @@ export default async function ProgressPage() {
       )}
 
       {/* ---------- The three subject cards ---------- */}
-      <section className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <section className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {progress.subjects.map((subject) => {
           const Mascot = MASCOTS[subject.mascot];
           const colour = subject.accent;

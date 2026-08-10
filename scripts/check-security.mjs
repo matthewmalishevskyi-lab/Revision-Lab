@@ -244,6 +244,59 @@ try {
     "the client IP prefers x-real-ip, which the platform sets",
   );
 
+  // ── 6b. THE LIMITER END TO END ───────────────────────────────────────────
+  //
+  // Everything above tests the tier TABLE. That is not the same as testing the
+  // limiter: the table could be perfect while recordFailedLogin writes to a
+  // different key than checkLoginAllowed reads, and every one of those checks
+  // would still pass. So this drives the real exported functions in sequence
+  // and asserts on what a user would actually experience.
+  console.log("Driving the limiter end to end...");
+
+  const { checkLoginAllowed, recordFailedLogin, clearLoginFailures } = throttle;
+  const victim = "victim@example.com";
+
+  // Five wrong passwords must cost an honest person nothing at all.
+  for (let i = 0; i < 5; i++) await recordFailedLogin(victim);
+  expect(
+    (await checkLoginAllowed(victim)).allowed === true,
+    "five failures in a row leave the account still usable",
+  );
+
+  // The sixth trips the first tier.
+  await recordFailedLogin(victim);
+  const blocked = await checkLoginAllowed(victim);
+  expect(blocked.allowed === false, "the sixth failure locks the account");
+  expect(
+    blocked.allowed === false && blocked.retryAfterSeconds <= 60,
+    `the first lockout is a minute or less (got ${blocked.allowed === false ? blocked.retryAfterSeconds : "n/a"}s)`,
+  );
+
+  // Case must not matter — otherwise an attacker types VICTIM@example.com and
+  // gets a fresh allowance, which would make the whole per-account limit
+  // decorative. Worth an explicit test because it is invisible in review.
+  const shouted = await checkLoginAllowed("  VICTIM@Example.COM  ");
+  expect(
+    shouted.allowed === false,
+    "the limit follows the account regardless of capitals or stray spaces",
+  );
+
+  // Getting the password right clears the slate.
+  await clearLoginFailures(victim);
+  expect(
+    (await checkLoginAllowed(victim)).allowed === true,
+    "a successful login clears that account's failures",
+  );
+
+  // An unknown address is counted exactly like a real one. If it were not,
+  // being throttled would prove an account exists.
+  const ghost = "nobody-has-this-address@example.com";
+  for (let i = 0; i < 6; i++) await recordFailedLogin(ghost);
+  expect(
+    (await checkLoginAllowed(ghost)).allowed === false,
+    "an email with NO account is throttled identically — otherwise the lockout leaks which accounts exist",
+  );
+
   // ── 7. The account and privacy pages ─────────────────────────────────────
   //
   // THE BUG THIS EXISTS TO CATCH: the grace period is written down in five
@@ -337,6 +390,75 @@ try {
   expect(
     accountActions.includes("verifyPassword"),
     "deleting an account and changing a password both re-check the password",
+  );
+
+  // ── 8. Traps in the newest code ──────────────────────────────────────────
+  //
+  // Two mistakes that compile perfectly and fail at runtime.
+  console.log("Checking for framework traps...");
+
+  // redirect() works by THROWING a signal that Next catches. Put one inside a
+  // try/catch and the catch swallows it, so the redirect silently never
+  // happens and the user sits on a page that should have navigated away. This
+  // has bitten this project before, which is why it is now a check.
+  for (const file of ["app/lib/actions.ts", "app/lib/account-actions.ts"]) {
+    const text = readFileSync(file, "utf8");
+    let depth = 0;
+    let inTry = false;
+    let offence = null;
+    for (const line of text.split("\n")) {
+      if (/^\s*try\s*\{/.test(line)) { inTry = true; depth = 0; }
+      if (inTry) {
+        depth += (line.match(/\{/g) ?? []).length - (line.match(/\}/g) ?? []).length;
+        if (/\bredirect\(/.test(line) && !line.trim().startsWith("//")) offence = line.trim();
+        if (depth <= 0 && !/^\s*try\s*\{/.test(line)) inTry = false;
+      }
+    }
+    expect(!offence, `${file}: redirect() sits inside a try block — the catch will swallow it (${offence})`);
+  }
+
+  // Tailwind reads source files as plain text, so a class assembled at runtime
+  // generates no CSS and silently does nothing. Every column count a subject
+  // could have must exist as a complete literal string.
+  const subjectPage = readFileSync("app/subjects/[subject]/page.tsx", "utf8");
+  const subjectsSrc = readFileSync("app/lib/subjects.ts", "utf8");
+  const yearCounts = [...subjectsSrc.matchAll(/year: "Year \d+"/g)];
+  expect(yearCounts.length > 0, "subjects declare year groups");
+  // Strip comments before testing. The first version of this check fired on
+  // the comment EXPLAINING the trap, which is the classic way a useful check
+  // gets weakened or deleted — so it ignores comments instead of being relaxed.
+  const withoutComments = subjectPage
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^\s*\/\/.*$/gm, "");
+  expect(
+    !/lg:grid-cols-\$\{/.test(withoutComments),
+    "no Tailwind class is built by string interpolation — Tailwind cannot see those",
+  );
+  for (const n of [1, 2, 3]) {
+    expect(
+      subjectPage.includes(`${n}: "lg:grid-cols-`),
+      `the column lookup covers a subject with ${n} year group(s) as a literal class`,
+    );
+  }
+
+  // Year 11 artwork must be chosen by NAME. Picking it by position handed
+  // Business's Year 11 the book instead of the exam art.
+  expect(
+    subjectPage.includes('group.year === "Year 11"'),
+    "exam artwork is chosen by year name, not by position in the array",
+  );
+
+  // The description Google prints under the link named three subjects out of
+  // six for months. It is generated now, so it cannot drift — this check exists
+  // to stop someone helpfully "simplifying" it back into a typed-out string.
+  const siteSrc = readFileSync("app/lib/site.ts", "utf8");
+  expect(
+    siteSrc.includes("buildDescription()"),
+    "SITE_DESCRIPTION is derived from SUBJECTS, not typed out — a typed one goes stale the next time a subject is added",
+  );
+  expect(
+    !/SITE_DESCRIPTION\s*=\s*"/.test(siteSrc),
+    "SITE_DESCRIPTION is not a hard-coded string",
   );
 
   console.log("");

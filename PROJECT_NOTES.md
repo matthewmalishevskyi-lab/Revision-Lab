@@ -1,5 +1,33 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## ⏭️ NEXT SESSION — what Matthew asked for (2026-08-09, end of day)
+
+1. **Five or six more subjects.** He wants to expand the range considerably.
+   Each one needs: a mascot in the house style, a colour distinct from the six
+   already used, year groups, and full content. **Colour is now the binding
+   constraint** — blue, orange, violet, red, green and teal are taken, and the
+   remaining well-separated hues are roughly: deep gold/amber, magenta/pink,
+   slate/navy, brown and lime. Pick them all at once and check them together
+   rather than one at a time, or the last few will be indistinguishable.
+2. **Make the site more usable.** His words. Worth asking what specifically
+   frustrated him before building anything.
+3. **Improve the design.**
+
+Still outstanding from earlier and NOT yet done:
+
+- **Per-subject statistics pages** — asked for when progress tracking was first
+  built; only the site-wide page exists.
+- **Two SQL files to run in Supabase:** `THROTTLE_SETUP.sql` and
+  `ACCOUNT_SETUP.sql`. The second matters most — without its scheduled job,
+  "delete my account" never actually deletes anything and the privacy page is
+  untrue.
+- **Password reset** is still a placeholder page; needs an email service.
+- **A teacher needs to read the content**, Geography and Business above all,
+  since nobody involved studies either.
+
+---
+
+
 > **Renamed 2026-08-08:** the site was called *Revision Hub* until deployment day; Matthew settled on **Revision Lab** as the official name. All 19 mentions were changed, plus the session cookie name and the fallback site URL. The local folder and this repo's older commit messages still say "revision-site" — that's cosmetic and harmless. Older notes below may still refer to Revision Hub.
 
 This file is our shared memory. Read it at the start of every session before doing anything else. Update it whenever we make a decision, finish something, or learn a gotcha — don't let this go stale.
@@ -63,6 +91,37 @@ House style keeping the three a family: chunky proportions, big heads, flat fill
 
 **Animation:** they pace from one bottom corner of their card to the other and turn round. Two nested elements — the outer one does `walk` (moves + flips via `scaleX(-1)`), the inner does `bob` (bounce). They must be separate because both animations want to control `transform`. The bob uses `steps(2, end)` for a deliberately snappy two-frame retro feel. Each character has a different duration so they don't march in sync. All motion is disabled under `prefers-reduced-motion`.
 - **Tailwind gotcha (important):** Tailwind reads source files as plain text to decide what CSS to generate. Dynamically built class names like `` shadow-[${colour}] `` produce nothing. Any per-item classes must be written as complete literal strings (see the `subjects` array in `app/page.tsx`).
+
+## Bug hunt — 2026-08-09 (after rate limiting, accounts and Business)
+
+Two real user-facing bugs, both invisible to the compiler:
+
+1. **The subject-card grids were `xl:grid-cols-4`.** Right for four subjects;
+   with six it laid out 4 + 2 and left two empty cells on the second row — the
+   exact ragged gap Matthew complained about on the Business page, sitting on
+   the homepage, dashboard and progress page the whole time. Now
+   `lg:grid-cols-3`: two even rows of three.
+2. **`SITE_DESCRIPTION` still said "Computer Science, Maths and English".** That
+   is the sentence Google prints under the link, so the site was actively
+   telling searchers it did not cover History, Geography or Business. Now
+   DERIVED from `SUBJECTS`, like the sitemap, so it cannot go stale again.
+
+Checked and found **correct**, rather than assumed: the sitemap and
+`generateStaticParams` both derive from `SUBJECTS`, so all 26 Business pages are
+indexed and pre-rendered with no change; `WeeklyChart` takes its series as a
+prop and never assumed three subjects.
+
+**New permanent checks** (`scripts/check-security.mjs`, now 57):
+- The limiter driven END TO END, not just its tier table — including that the
+  limit follows an account through capitals and stray spaces, and that an email
+  with no account is throttled identically so lockouts cannot reveal who has one.
+- `redirect()` never inside a `try` block, where the catch would swallow it.
+- No Tailwind class built by string interpolation. ⚠️ The first version of this
+  check fired on the comment EXPLAINING the trap; it now strips comments rather
+  than being relaxed, because weakening a check to silence it is how checks die.
+- `SITE_DESCRIPTION` stays derived.
+
+---
 
 ## Business — the sixth subject (added 2026-08-09)
 

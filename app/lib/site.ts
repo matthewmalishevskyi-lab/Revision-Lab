@@ -1,3 +1,5 @@
+import { SUBJECTS } from "./subjects";
+
 // Site-wide settings that need to be identical everywhere.
 //
 // The URL matters more than it looks. Search engines and social media need
@@ -25,8 +27,22 @@ export const SITE_NAME = "Revision Lab";
 // does. Swapping it for a dedicated one later is a one-line change here.
 export const CONTACT_EMAIL = "matthewmalishevskyi@gmail.com";
 
-export const SITE_DESCRIPTION =
-  "Free GCSE revision for Computer Science, Maths and English. Key facts, flashcards and exam technique for every topic across Years 9, 10 and 11.";
+export const SITE_DESCRIPTION = buildDescription();
+
+// ⚠️ DERIVED, NOT TYPED OUT. This sentence is what Google prints underneath the
+// link in its results, and for months it read "Computer Science, Maths and
+// English" while the site also covered History, Geography and Business — three
+// whole subjects the description was quietly telling people were not there.
+//
+// Nothing about that fails to compile, and nobody rereads a constant they wrote
+// once. So it is generated from the same SUBJECTS list the pages are built
+// from, exactly as the sitemap is: add a seventh subject and this fixes itself.
+function buildDescription(): string {
+  const names = SUBJECTS.map((s) => s.name);
+  const list =
+    names.slice(0, -1).join(", ") + " and " + names[names.length - 1];
+  return `Free GCSE revision for ${list}. Key facts, flashcards and exam technique for every topic across Years 9, 10 and 11.`;
+}
 
 // ─── The accounts safety switch ─────────────────────────────────────────────
 //

@@ -1,6 +1,10 @@
 "use client";
 
-// The weekly bar chart: seven days, three subjects, side by side.
+// The weekly bar chart: seven days, one bar per subject, side by side.
+//
+// The number of subjects is NOT baked in — `series` is a prop and everything
+// below maps over it, which is why adding History, Geography and Business
+// needed no change here at all.
 //
 // Hand-drawn with divs rather than an installed chart library. A grouped bar
 // chart is genuinely simple — the whole job is "scale each value against the
