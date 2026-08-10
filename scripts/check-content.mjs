@@ -27,7 +27,7 @@
 // loads and inspects them. The compiled copy is thrown away afterwards.
 
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync, readFileSync } from "node:fs";
+import { mkdtempSync, rmSync, readFileSync, readdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createRequire } from "node:module";
@@ -247,12 +247,27 @@ try {
           t.mis += c.misconceptions.length;
         }
 
-        // ── Higher tier is a Maths-only concept on this site ────────────────
+        // ── Which subjects are actually TIERED ──────────────────────────────
+        //
+        // Maths and the three sciences are entered at Foundation (grades 1-5)
+        // or Higher (4-9), and the Higher papers examine extra material a
+        // Foundation student is never asked about. Flagging that matters in
+        // both directions: a Foundation student who spends a week on Higher-only
+        // content has wasted the week, and a Higher student who skips it loses
+        // marks they could have had.
+        //
+        // English, History, Geography, Business and Computer Science are NOT
+        // tiered — everyone sits the same paper — so a Higher badge there would
+        // be meaningless and is treated as an error rather than ignored.
+        const TIERED = new Set(["maths", "biology", "chemistry", "physics"]);
         const higherUsed =
           c.keyFacts.some((b) => b.higherOnly) ||
           (c.workedExamples ?? []).some((e) => e.higherOnly) ||
           (c.practice ?? []).some((p) => p.higherOnly);
-        expect(!higherUsed || subject.slug === "maths", at("uses the Higher tier flag outside Maths"));
+        expect(
+          !higherUsed || TIERED.has(subject.slug),
+          at(`uses the Higher tier flag, but ${subject.slug} is not a tiered subject`),
+        );
 
         t.words += JSON.stringify(c).split(/\s+/).length;
       }
@@ -298,6 +313,32 @@ try {
         `${key}: an auto-marked question tells the student to mark it themselves — "${p.question.slice(0, 60)}"`);
       expect(p.accept || saysMarkItYourself,
         `${key}: a self-marked question never tells the student to mark it — "${p.question.slice(0, 60)}"`);
+    }
+  }
+
+  // ── A STATIC ROUTE MUST NOT SHADOW A SUBJECT ──────────────────────────────
+  //
+  // app/subjects/science/page.tsx is a literal folder, and Next prefers a
+  // literal segment over the [subject] dynamic one. So if a subject were ever
+  // given the slug "science", its page would become permanently unreachable —
+  // silently, with no error anywhere. Same for any future static route added
+  // under /subjects.
+  {
+    const staticRoutes = readdirSync("app/subjects", { withFileTypes: true })
+      .filter((e) => e.isDirectory() && !e.name.startsWith("["))
+      .map((e) => e.name);
+    for (const route of staticRoutes) {
+      expect(
+        !SUBJECTS.some((s) => s.slug === route),
+        `the static route /subjects/${route} would shadow the subject with slug "${route}", making it unreachable`,
+      );
+    }
+    // And the other way round: every group needs its page to exist.
+    for (const group of new Set(SUBJECTS.map((s) => s.group).filter(Boolean))) {
+      expect(
+        staticRoutes.includes(group),
+        `subjects are grouped under "${group}" but app/subjects/${group}/page.tsx does not exist`,
+      );
     }
   }
 

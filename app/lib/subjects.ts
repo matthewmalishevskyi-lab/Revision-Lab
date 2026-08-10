@@ -50,9 +50,69 @@ export type Subject = {
   // YEAR_STYLES, which only has three entries — so the fourth subject silently
   // came out blue. Colours that mean "which subject" belong to the subject.
   accent: string;
-  mascot: "pixel" | "hoot" | "quill" | "knight" | "atlas" | "sterling";
+  mascot: "pixel" | "hoot" | "quill" | "knight" | "atlas" | "sterling" | "iris";
+
+  // Which GROUP this subject belongs to, if any.
+  //
+  // Science is three separate GCSEs — Biology, Chemistry and Physics — with
+  // separate content, separate exams and separate progress. Putting all three
+  // on the homepage alongside six other subjects would make nine cards and bury
+  // everything else, so they sit behind one "Science" card instead.
+  //
+  // Note what this does NOT do: it does not make them sub-subjects. They are
+  // ordinary subjects with ordinary slugs and URLs, so progress tracking, the
+  // sitemap, pre-rendering and every topic page work on them unchanged. The
+  // group is purely a navigation layer on top.
+  group?: "science";
+
   years: YearGroup[];
 };
+
+// A group is one card on the homepage that leads to a page listing its members.
+export type SubjectGroup = {
+  slug: string;
+  name: string;
+  blurb: string;
+  gradient: string;
+  shadow: string;
+  accent: string;
+  mascot: Subject["mascot"];
+};
+
+// ⚠️ COLOURS WERE CHOSEN BY LOOKING AT THEM, NOT BY REASONING ABOUT THEM.
+//
+// Nine subjects now share one progress chart, where colour is the ONLY thing
+// telling them apart — there is no label on a ring. Swatches were rendered side
+// by side and compared before these were fixed, which changed two of the four
+// picks:
+//
+//   Physics was going to be indigo. Next to Computer Science's blue it was
+//   indistinguishable, so it became SLATE — which also suits physics better
+//   (steel, instruments) than another blue would have.
+//
+//   Chemistry was going to be gold. Next to Maths' rust orange it was
+//   indistinguishable, so it became MAGENTA, which is clearly separable from
+//   English's violet because one is pink-purple and the other blue-purple.
+//
+// Biology is a yellow-green rather than the obvious green, because Geography
+// already owns emerald and the two must not be confused.
+//
+// The GROUP card is allowed to sit closer to an existing colour than a subject
+// may, because it always appears as a large card with its own name and mascot
+// on it. Colour is decoration there; on a progress ring it is the only
+// identifier.
+export const SUBJECT_GROUPS: SubjectGroup[] = [
+  {
+    slug: "science",
+    name: "Science",
+    blurb: "Biology, Chemistry and Physics",
+    gradient: "linear-gradient(150deg, #818cf8 0%, #4338ca 45%, #1e1b4b 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(67,56,202,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(67,56,202,0.9)]",
+    accent: "#4338ca",
+    mascot: "iris",
+  },
+];
 
 // The three year columns are always the same colours — blue, orange, violet —
 // on every subject page, matching the design. So the colours mean "Year 9 /
@@ -456,10 +516,179 @@ export const SUBJECTS: Subject[] = [
       },
     ],
   },
+
+  // ─── BIOLOGY ──────────────────────────────────────────────────────────────
+  {
+    slug: "biology",
+    name: "Biology",
+    blurb: "Choose a topic to start revising",
+    group: "science",
+    gradient: "linear-gradient(150deg, #bef264 0%, #65a30d 45%, #2f4708 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(101,163,13,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(101,163,13,0.9)]",
+    accent: "#4d7c0f",
+    mascot: "iris",
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "cell-structure", title: "Cell structure", icon: "circle" },
+          { slug: "cell-transport", title: "Cell transport", icon: "droplet" },
+          { slug: "cell-division", title: "Cell division", icon: "grid" },
+          { slug: "enzymes-and-digestion", title: "Enzymes & digestion", icon: "flask" },
+          { slug: "plant-organisation", title: "Plant organisation", icon: "leaf" },
+          { slug: "the-microscope-and-practicals", title: "Microscopes & practicals", icon: "toolbox" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "communicable-disease", title: "Communicable disease", icon: "bug" },
+          { slug: "non-communicable-disease", title: "Non-communicable disease", icon: "thermometer" },
+          { slug: "photosynthesis", title: "Photosynthesis", icon: "leaf" },
+          { slug: "respiration", title: "Respiration", icon: "power" },
+          { slug: "the-nervous-system", title: "The nervous system", icon: "network" },
+          { slug: "hormones-and-homeostasis", title: "Hormones & homeostasis", icon: "gauge" },
+          { slug: "the-circulatory-system", title: "The circulatory system", icon: "flow" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "dna-and-reproduction", title: "DNA & reproduction", icon: "vector" },
+          { slug: "genetics-and-inheritance", title: "Genetics & inheritance", icon: "logic" },
+          { slug: "variation-and-evolution", title: "Variation & evolution", icon: "triangle" },
+          { slug: "classification-and-selection", title: "Classification & selection", icon: "layers" },
+          { slug: "ecosystems-and-food-chains", title: "Ecosystems & food chains", icon: "globe" },
+          { slug: "biodiversity-and-human-impact", title: "Biodiversity & human impact", icon: "recycle" },
+          { slug: "biology-exam-practice", title: "Exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+
+  // ─── CHEMISTRY ────────────────────────────────────────────────────────────
+  {
+    slug: "chemistry",
+    name: "Chemistry",
+    blurb: "Choose a topic to start revising",
+    group: "science",
+    gradient: "linear-gradient(150deg, #f0abfc 0%, #a21caf 45%, #4a0d52 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(162,28,175,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(162,28,175,0.9)]",
+    accent: "#86198f",
+    mascot: "iris",
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "atomic-structure", title: "Atomic structure", icon: "atom" },
+          { slug: "the-periodic-table", title: "The periodic table", icon: "grid" },
+          { slug: "ionic-and-covalent-bonding", title: "Ionic & covalent bonding", icon: "network" },
+          { slug: "states-and-structures", title: "States & structures", icon: "cube" },
+          { slug: "separating-mixtures", title: "Separating mixtures", icon: "flask" },
+          { slug: "formulae-and-equations", title: "Formulae & equations", icon: "hash" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "quantitative-chemistry", title: "Quantitative chemistry", icon: "scales" },
+          { slug: "acids-and-alkalis", title: "Acids & alkalis", icon: "droplet" },
+          { slug: "reactivity-of-metals", title: "Reactivity of metals", icon: "power" },
+          { slug: "electrolysis", title: "Electrolysis", icon: "chip" },
+          { slug: "energy-changes", title: "Energy changes", icon: "thermometer" },
+          { slug: "rates-of-reaction", title: "Rates of reaction", icon: "clock" },
+          { slug: "reversible-reactions", title: "Reversible reactions & equilibrium", icon: "recycle" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "organic-chemistry", title: "Organic chemistry", icon: "vector" },
+          { slug: "polymers", title: "Polymers", icon: "layers" },
+          { slug: "chemical-analysis", title: "Chemical analysis", icon: "chart" },
+          { slug: "the-atmosphere", title: "The atmosphere", icon: "cloud" },
+          { slug: "using-the-earths-resources", title: "Using the Earth's resources", icon: "factory" },
+          { slug: "chemistry-exam-practice", title: "Exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+
+  // ─── PHYSICS ──────────────────────────────────────────────────────────────
+  {
+    slug: "physics",
+    name: "Physics",
+    blurb: "Choose a topic to start revising",
+    group: "science",
+    gradient: "linear-gradient(150deg, #cbd5e1 0%, #475569 45%, #10151f 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(71,85,105,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(71,85,105,0.9)]",
+    accent: "#334155",
+    mascot: "iris",
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "energy-stores-and-transfers", title: "Energy stores & transfers", icon: "power" },
+          { slug: "energy-resources", title: "Energy resources", icon: "recycle" },
+          { slug: "the-particle-model", title: "The particle model", icon: "cube" },
+          { slug: "forces-basics", title: "Forces", icon: "vector" },
+          { slug: "electricity-basics", title: "Electricity basics", icon: "chip" },
+          { slug: "atomic-structure-and-radiation", title: "Atomic structure & radiation", icon: "atom" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "electrical-circuits", title: "Electrical circuits", icon: "network" },
+          { slug: "mains-electricity", title: "Mains electricity", icon: "torch" },
+          { slug: "motion-and-graphs", title: "Motion & graphs", icon: "axis" },
+          { slug: "newtons-laws", title: "Newton's laws", icon: "triangle" },
+          { slug: "waves", title: "Waves", icon: "wave" },
+          { slug: "the-electromagnetic-spectrum", title: "The electromagnetic spectrum", icon: "layers" },
+          { slug: "density-and-pressure", title: "Density & pressure", icon: "gauge" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "magnetism-and-electromagnetism", title: "Magnetism & electromagnetism", icon: "compass" },
+          { slug: "momentum-and-work", title: "Momentum, work & power", icon: "flow" },
+          { slug: "radioactivity-and-half-life", title: "Radioactivity & half-life", icon: "clock" },
+          { slug: "space-physics", title: "Space physics", icon: "globe" },
+          { slug: "required-practicals", title: "Required practicals", icon: "toolbox" },
+          { slug: "physics-exam-practice", title: "Exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
 ];
 
 // ─── Lookups ────────────────────────────────────────────────────────────────
 // Small helpers so pages never have to poke around inside the data themselves.
+
+export function getGroup(slug: string): SubjectGroup | undefined {
+  return SUBJECT_GROUPS.find((g) => g.slug === slug);
+}
+
+// The subjects inside a group, in the order they are declared.
+export function subjectsInGroup(groupSlug: string): Subject[] {
+  return SUBJECTS.filter((s) => s.group === groupSlug);
+}
+
+// What the homepage shows: every group as ONE card, plus every subject that
+// does not belong to a group. Derived rather than hand-listed, so adding a
+// subject to a group removes it from the homepage automatically.
+export function homepageCards(): (Subject | SubjectGroup)[] {
+  const ungrouped = SUBJECTS.filter((s) => !s.group);
+  return [...ungrouped, ...SUBJECT_GROUPS];
+}
+
+export function isGroup(card: Subject | SubjectGroup): card is SubjectGroup {
+  return !("years" in card);
+}
 
 export function getSubject(slug: string): Subject | undefined {
   return SUBJECTS.find((s) => s.slug === slug);

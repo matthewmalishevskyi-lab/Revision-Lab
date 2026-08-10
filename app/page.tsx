@@ -7,7 +7,7 @@ import { SiteHeader } from "./components/SiteHeader";
 import { StructuredData, websiteSchema } from "./components/StructuredData";
 import { getViewer } from "./lib/viewer";
 import { SITE_NAME, SITE_URL } from "./lib/site";
-import { SUBJECTS } from "./lib/subjects";
+import { homepageCards, isGroup, subjectsInGroup } from "./lib/subjects";
 
 // Different walking speeds so the three characters never march in step — three
 // things moving in perfect sync looks mechanical, slightly off pace looks alive.
@@ -59,8 +59,19 @@ export default async function Home(props: PageProps<"/">) {
 
       {/* ---------- Subject cards ---------- */}
       <section className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-        {SUBJECTS.map((subject, index) => {
-          const Mascot = MASCOTS[subject.mascot];
+        {homepageCards().map((card, index) => {
+          const Mascot = MASCOTS[card.mascot];
+
+          // A GROUP card links to its own chooser page and says how many
+          // subjects are inside; a subject card links straight to its topics.
+          //
+          // Science is three separate GCSEs with separate exams and separate
+          // progress, so listing all three here would make nine cards and bury
+          // everything else. One card, then choose.
+          const group = isGroup(card);
+          const caption = group
+            ? `${subjectsInGroup(card.slug).length} subjects →`
+            : "Choose a topic →";
 
           return (
             // The whole card is now a Link, so clicking anywhere on it opens
@@ -68,17 +79,17 @@ export default async function Home(props: PageProps<"/">) {
             // keyboard users can tab to it and the browser can prefetch it —
             // things a clickable <div> with an onClick would silently lose.
             <Link
-              key={subject.slug}
-              href={`/subjects/${subject.slug}`}
+              key={card.slug}
+              href={`/subjects/${card.slug}`}
               // `group` lets the child layers below react when THIS card is
               // hovered. `relative` + `overflow-hidden` keep the glow layers
               // and the walking character clipped inside the rounded corners.
-              className={`group relative block min-h-[24rem] overflow-hidden rounded-2xl p-7 text-white transition duration-300 ease-out hover:-translate-y-1 ${subject.shadow}`}
+              className={`group relative block min-h-[24rem] overflow-hidden rounded-2xl p-7 text-white transition duration-300 ease-out hover:-translate-y-1 ${card.shadow}`}
               // The gradient goes in `style` rather than a class because it's a
               // per-subject value. Tailwind scans source files as plain text to
               // decide which CSS to generate, so it can only find classes that
               // literally appear — a class built up in code produces nothing.
-              style={{ backgroundImage: subject.gradient }}
+              style={{ backgroundImage: card.gradient }}
             >
               {/* Layer 1 — the "reflection". A white-to-transparent fade across
                   the top, like light catching a glossy surface. */}
@@ -118,10 +129,15 @@ export default async function Home(props: PageProps<"/">) {
 
               {/* The text needs `relative` so it sits ON TOP of those layers. */}
               <h2 className="relative text-3xl font-semibold tracking-tight drop-shadow-sm">
-                {subject.name}
+                {card.name}
               </h2>
+              {/* A group says what is inside it even before you hover, because
+                  "Science" alone does not tell you it contains three GCSEs. */}
+              {group && (
+                <p className="relative mt-1 text-sm opacity-75">{card.blurb}</p>
+              )}
               <p className="relative mt-2 opacity-0 transition duration-300 group-hover:opacity-80">
-                Choose a topic →
+                {caption}
               </p>
             </Link>
           );

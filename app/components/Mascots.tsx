@@ -40,6 +40,7 @@ export const MASCOTS = {
   knight: Knight,
   atlas: Atlas,
   sterling: Sterling,
+  iris: Iris,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -740,6 +741,175 @@ export function Sterling(props: MascotProps) {
       {/* ── Mouth: a small closed smile. Deliberately not a grin — restraint is
              what makes him read as composed rather than over-excited. ── */}
       <path d="M53.5 50 Q60 55 66.5 50" stroke="#a5765a" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+    </svg>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// IRIS — Science.
+//
+// One character for the whole Science group, which is why she is a generalist:
+// a lab coat, goggles and test tubes read as "scientist" without committing to
+// biology, chemistry or physics. If each science later wants its own mascot,
+// she stays as the group's face on the homepage.
+//
+// ── Two deliberate choices about how she reads ──────────────────────────────
+//
+// HAIR TIED BACK. Loose hair in a laboratory is a safety failure, and every
+// real scientist ties it up. It is a small thing that separates "person dressed
+// as a scientist" from "scientist", which is what Matthew asked for.
+//
+// GOGGLES PUSHED UP ON HER FOREHEAD, not over her eyes. Worn properly they
+// would hide the eyes, and eyes are where nearly all of a character's
+// expression lives — the cast would gain a mascot and lose a face. Pushed up is
+// what people actually do between tasks, so it reads as authentic AND keeps the
+// expression. It also quietly restores the eyewear thread that Pixel, Hoot and
+// Quill share.
+//
+// She is drawn in the same house style as the rest: chunky proportions, big
+// head at about 40% of height, flat fills with exactly one darker tone, light
+// from the upper left, no sharp corners.
+// ─────────────────────────────────────────────────────────────────────────────
+export function Iris(props: MascotProps) {
+  return (
+    <svg
+      viewBox="0 0 120 140"
+      role="img"
+      aria-label="Iris, the Science mascot: a smiling scientist in a lab coat holding test tubes"
+      {...props}
+    >
+      {/* ── Shoes. Turned outwards with a gap, which is the fix learned from
+             Sterling, whose first version stood pigeon-toed. ── */}
+      <path d="M35 126 Q35 120 44.5 118.5 Q54 118.5 54.5 125 Q54.5 130.5 44.5 131.5 Q35 131.5 35 126 Z" fill="#1f2937" />
+      <path d="M85 126 Q85 120 75.5 118.5 Q66 118.5 65.5 125 Q65.5 130.5 75.5 131.5 Q85 131.5 85 126 Z" fill="#1f2937" />
+      <path d="M75.5 118.5 Q85 120 85 126 Q85 131.5 75.5 131.5 Q79 125 75.5 118.5 Z" fill="#000000" opacity={0.28} />
+      <path d="M35.4 128 Q41 132 50 131 Q54 130 54.4 127.6 Q50 133 42.5 133 Q36 132.6 35.4 128 Z" fill="#9ca3af" opacity={0.5} />
+
+      {/* ── Trousers ── */}
+      <path d="M44 100 L42 120 Q47 122 53 120 L54 100 Z" fill="#334155" />
+      <path d="M66 100 L67 120 Q73 122 78 120 L76 100 Z" fill="#334155" />
+      <path d="M70 100 L71 120 Q75 121 78 120 L76 100 Z" fill="#000000" opacity={0.2} />
+
+      {/* ── The lab coat ──
+             Longer than a jacket and slightly flared at the hem, because that
+             is what makes it a COAT rather than a white shirt. Off-white
+             (#f1f5f9) rather than pure white: a pure white garment has nowhere
+             left to go for a highlight, so it flattens out completely. */}
+      <path d="M33 72 Q60 64 87 72 L92 112 Q60 119 28 112 Z" fill="#f1f5f9" />
+      <path d="M60 66 Q77 66 87 72 L92 112 Q77 116.5 60 118 Z" fill="#000000" opacity={0.1} />
+
+      {/* The top she wears underneath, in the Science colour, showing in the
+          open front of the coat. */}
+      <path d="M50 68 Q60 64.5 70 68 L67 100 L53 100 Z" fill="#a21caf" />
+      <path d="M60 66 Q66 66 70 68 L67 100 L60 100 Z" fill="#000000" opacity={0.18} />
+
+      {/* Coat lapels and the open front edge. The grey is what stops the coat
+          disappearing into the white background of a card. */}
+      <path d="M37 71 Q45 66.5 51 67.5 L60 92 L39 86 Z" fill="#e2e8f0" />
+      <path d="M83 71 Q75 66.5 69 67.5 L60 92 L81 86 Z" fill="#e2e8f0" />
+      <path d="M83 71 Q77 67.5 71 67.4 L64 88 L81 86 Z" fill="#000000" opacity={0.09} />
+      <path d="M51 67.5 L53 112" stroke="#cbd5e1" strokeWidth={1.4} fill="none" />
+      <path d="M69 67.5 L67 112" stroke="#cbd5e1" strokeWidth={1.4} fill="none" />
+
+      {/* A coat pocket, and a pen in it — two shapes, and they do more for
+          "scientist" than any amount of extra shading would. */}
+      <path d="M72 92 L84 90 L85.5 100 L73.5 102 Z" fill="#e2e8f0" />
+      <path d="M76 89 L77.5 95" stroke="#0ea5e9" strokeWidth={2.2} strokeLinecap="round" />
+
+      {/* ── Arms. The right one is raised so the test tube is held up where it
+             can actually be seen; the left hangs down with a second tube. ── */}
+      <path d="M33 73 Q26 77 25 86 L28 90 Q33 90 34.5 84 L37 75 Z" fill="#f1f5f9" />
+      <path d="M87 73 Q95 77 96.5 87 L95 96 Q89 97 87 91 L83 75 Z" fill="#f1f5f9" />
+      <path d="M87 73 Q95 77 96.5 87 L95 96 Q92 96.5 91 94 L86 75 Z" fill="#000000" opacity={0.1} />
+      {/* Cuffs */}
+      <path d="M25.5 86.5 Q30 88.5 34.5 86.5 L34 89.5 Q29.5 91.5 25.5 89.5 Z" fill="#cbd5e1" />
+      <path d="M87.5 92 Q91 94 96 92.5 L96 95.5 Q91 97 87.5 95 Z" fill="#cbd5e1" />
+
+      {/* ── Test tube one: raised in her right hand ──
+             Drawn behind the hand so the fingers close over it. Glass is a pale
+             fill at low opacity plus one white highlight stripe — trying to
+             draw real transparency at this size just makes mud. */}
+      <rect x="24.5" y="54" width="11" height="32" rx="5.5" fill="#eff6ff" />
+      <path d="M24.5 70 L35.5 70 L35.5 80.5 Q35.5 86 30 86 Q24.5 86 24.5 80.5 Z" fill="#22d3ee" />
+      <circle cx="28.5" cy="75" r="1.7" fill="#ffffff" opacity={0.8} />
+      <circle cx="32" cy="79" r="1.2" fill="#ffffff" opacity={0.65} />
+      <path d="M27 57 L27 82" stroke="#ffffff" strokeWidth={1.8} opacity={0.7} strokeLinecap="round" />
+      <rect x="24.5" y="54" width="11" height="32" rx="5.5" fill="none" stroke="#64748b" strokeWidth={1.5} />
+      <rect x="23.5" y="52.5" width="13" height="3.6" rx="1.8" fill="#94a3b8" />
+
+      {/* ── Test tube two: lower, in her left hand ── */}
+      <rect x="90" y="92" width="10" height="28" rx="5" fill="#eff6ff" />
+      <path d="M90 106 L100 106 L100 115 Q100 120 95 120 Q90 120 90 115 Z" fill="#f59e0b" />
+      <circle cx="93.5" cy="110" r="1.4" fill="#ffffff" opacity={0.75} />
+      <path d="M92.5 95 L92.5 116" stroke="#ffffff" strokeWidth={1.7} opacity={0.6} strokeLinecap="round" />
+      <rect x="90" y="92" width="10" height="28" rx="5" fill="none" stroke="#64748b" strokeWidth={1.5} />
+      <rect x="89" y="90.5" width="12" height="3.4" rx="1.7" fill="#94a3b8" />
+
+      {/* ── Hands, closing over each tube ── */}
+      <circle cx="30" cy="88" r="5.2" fill="#f2cdae" />
+      <path d="M27.4 87 Q30.4 85.5 32.4 87.5" stroke="#d9a87f" strokeWidth={2.2} strokeLinecap="round" fill="none" />
+      <circle cx="93" cy="99" r="5.2" fill="#f2cdae" />
+      <path d="M93 93.8 A5.2 5.2 0 0 1 93 104.2 A3 5.2 0 0 0 93 93.8 Z" fill="#000000" opacity={0.12} />
+      <path d="M90.4 98 Q93.4 96.5 95.4 98.5" stroke="#d9a87f" strokeWidth={2.2} strokeLinecap="round" fill="none" />
+
+      {/* ── Neck, with the shadow the jaw casts onto it ── */}
+      <rect x="53" y="52" width="14" height="16" rx="5" fill="#e0b48f" />
+      <path d="M53 54 Q60 60 67 54 L67 58 Q60 63 53 58 Z" fill="#000000" opacity={0.16} />
+
+      {/* ── The bun, drawn BEFORE the head so it sits behind it ── */}
+      <circle cx="86" cy="17" r="10.5" fill="#5b3a29" />
+      <path d="M86 6.5 A10.5 10.5 0 0 1 86 27.5 A5.5 10.5 0 0 0 86 6.5 Z" fill="#000000" opacity={0.18} />
+      <path d="M80 11.5 Q86 8.5 91.5 12 Q85 11.5 82 16 Z" fill="#ffffff" opacity={0.13} />
+      {/* A band where the bun is gathered — without it the bun is just a
+          circle of hair floating next to her head. */}
+      <path d="M77 12 Q79.5 17 77.5 23" stroke="#42291b" strokeWidth={2.6} fill="none" strokeLinecap="round" />
+
+      {/* ── Head ── */}
+      <ellipse cx="60" cy="34" rx="24.5" ry="27" fill="#f2cdae" />
+      <path d="M60 7 A24.5 27 0 0 1 60 61 A14 27 0 0 0 60 7 Z" fill="#000000" opacity={0.11} />
+      <path d="M40 39 Q44 49 52 54 Q44 52 39 44 Z" fill="#000000" opacity={0.05} />
+
+      {/* ── Ears ── */}
+      <ellipse cx="35.5" cy="36" rx="3.8" ry="5.2" fill="#f2cdae" />
+      <ellipse cx="84.5" cy="36" rx="3.8" ry="5.2" fill="#e8bd99" />
+
+      {/* ── Hair: swept back into the bun, with a soft fringe ── */}
+      <path d="M35.5 33 Q33 8 60 6 Q87 8 84.5 33 Q83 21 78 17.5 Q68 23 57 21 Q46 19 41 24 Q37 26.5 35.5 33 Z" fill="#5b3a29" />
+      <path d="M60 6 Q87 8 84.5 33 Q83 21 78 17.5 Q69 22.6 60 21.4 Z" fill="#000000" opacity={0.15} />
+      {/* The sweep towards the bun — a single diagonal highlight is what makes
+          hair look combed in one direction rather than moulded on. */}
+      <path d="M43 23 Q52 12 68 10 Q78 9.6 82 14 Q71 11.6 59 15.6 Q48 19 45 25 Z" fill="#ffffff" opacity={0.14} />
+      {/* A few strands escaping towards the bun, so the join is not a hard edge */}
+      <path d="M78 17.5 Q83 14.5 87 15" stroke="#5b3a29" strokeWidth={3.2} fill="none" strokeLinecap="round" />
+
+      {/* ── Safety goggles, pushed up onto her forehead ──
+             The strap running round the back of the head is the detail that
+             makes them goggles rather than sunglasses. */}
+      <path d="M36 22 Q34 17 38 15 L82 15 Q86 17 84 22 Z" fill="#38bdf8" opacity={0.55} />
+      <path d="M36 22 Q34 17 38 15 L82 15 Q86 17 84 22 Z" fill="none" stroke="#0e7490" strokeWidth={2} strokeLinejoin="round" />
+      <path d="M40 17.5 Q48 15.6 58 16.4" stroke="#ffffff" strokeWidth={2} opacity={0.65} strokeLinecap="round" fill="none" />
+      <path d="M36 19 Q30 20 28 24" stroke="#0e7490" strokeWidth={2.4} fill="none" strokeLinecap="round" />
+      <path d="M84 19 Q90 20 92 24" stroke="#0e7490" strokeWidth={2.4} fill="none" strokeLinecap="round" />
+
+      {/* ── Brows ── */}
+      <path d="M46.5 28 Q51 25.6 55.5 27.4" stroke="#42291b" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+      <path d="M64.5 27.4 Q69 25.6 73.5 28" stroke="#42291b" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+
+      {/* ── Eyes ── */}
+      <ellipse cx="51" cy="36" rx="5" ry="5.4" fill="#ffffff" />
+      <ellipse cx="69" cy="36" rx="5" ry="5.4" fill="#ffffff" />
+      <circle cx="51.7" cy="37" r="3" fill="#2b1d14" />
+      <circle cx="69.7" cy="37" r="3" fill="#2b1d14" />
+      <circle cx="50.2" cy="35" r="1.25" fill="#ffffff" />
+      <circle cx="68.2" cy="35" r="1.25" fill="#ffffff" />
+      <path d="M46 33.2 Q51 30.4 56 33.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+      <path d="M64 33.2 Q69 30.4 74 33.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+
+      {/* ── Nose ── */}
+      <path d="M59 40 Q57 45.5 61 46.5" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+      {/* ── Mouth: a small, composed smile ── */}
+      <path d="M53.5 51 Q60 56 66.5 51" stroke="#a5765a" strokeWidth={2.6} strokeLinecap="round" fill="none" />
     </svg>
   );
 }

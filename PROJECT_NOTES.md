@@ -1,8 +1,51 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Science — three subjects behind one card (2026-08-10)
+
+**Iris**, the Science mascot: lab coat, goggles pushed up on her forehead, two
+test tubes. Hair tied back, because loose hair in a lab is a safety failure and
+that detail is what separates "dressed as a scientist" from "scientist".
+⚠️ Goggles are on her FOREHEAD, not over her eyes — worn properly they hide the
+eyes, and eyes carry nearly all of a character's expression.
+⚠️ Pale glass on a white coat was invisible in the first render; the tubes only
+read once they were OUTLINED. Transparency has to be implied by a highlight.
+
+**The structure.** Biology, Chemistry and Physics are ORDINARY subjects with
+ordinary slugs — progress tracking, the sitemap, pre-rendering and topic pages
+all work on them unchanged. `group: "science"` only removes them from the
+homepage; `app/subjects/science/page.tsx` is the chooser between them.
+
+⚠️ A literal folder beats a `[subject]` dynamic segment in Next's routing, so a
+subject with the slug "science" would become permanently unreachable. There is
+now a check for that collision, and for the reverse — a group with no page.
+
+**Colours were chosen by LOOKING at rendered swatches, not by reasoning.** It
+changed two of four picks: Physics was going to be indigo and was
+indistinguishable from Computer Science's blue, so it is SLATE; Chemistry was
+going to be gold and was indistinguishable from Maths' rust, so it is MAGENTA.
+Biology is a yellow-green because Geography already owns emerald. Nine subjects
+now share one progress chart, where colour is the ONLY identifier on a ring.
+
+**Foundation vs Higher is now supported beyond Maths.** `higherOnly` is allowed
+on maths, biology, chemistry and physics — the four tiered subjects — and is
+still an ERROR anywhere else, because English and History are not tiered and a
+Higher badge there would be meaningless. Content still to be written.
+
+**A mistake worth keeping:** the science slugs were first added to
+`known-topics.ts` by regex over a fixed-size window of subjects.ts, which ran
+past the end of Chemistry and handed it two of Physics's slugs. The
+disappearance guard caught it on the first run. They are now generated from the
+COMPILED data, where one subject's topics cannot leak into the next.
+
+---
+
 ## ⏭️ NEXT SESSION — what Matthew asked for (2026-08-09, end of day)
 
-1. **Five or six more subjects.** He wants to expand the range considerably.
+0. **CONTENT for Biology, Chemistry and Physics** — the layout is built and all
+   58 topics are listed, but none of them have content yet. Remember Foundation
+   vs Higher: mark Higher-only material with `higherOnly` so Foundation students
+   can skip it.
+1. **More subjects beyond the sciences.** He wants to expand further.
    Each one needs: a mascot in the house style, a colour distinct from the six
    already used, year groups, and full content. **Colour is now the binding
    constraint** — blue, orange, violet, red, green and teal are taken, and the

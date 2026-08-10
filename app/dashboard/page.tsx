@@ -5,7 +5,7 @@ import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
 import { getViewer } from "../lib/viewer";
 import { ACCOUNTS_ENABLED } from "../lib/site";
-import { SUBJECTS } from "../lib/subjects";
+import { homepageCards, isGroup, subjectsInGroup, SUBJECTS } from "../lib/subjects";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -57,24 +57,31 @@ export default async function DashboardPage() {
 
       {/* ---------- Subjects ---------- */}
       <section className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {SUBJECTS.map((subject) => {
-          const Mascot = MASCOTS[subject.mascot];
-          const topicCount = subject.years.reduce(
-            (n, group) => n + group.topics.length,
+        {homepageCards().map((card) => {
+          const Mascot = MASCOTS[card.mascot];
+
+          // The dashboard follows the homepage: Science is one card, not three.
+          // Nine cards here would bury everything else, and someone who wants a
+          // specific science is one click away.
+          const members = isGroup(card) ? subjectsInGroup(card.slug) : [card];
+          const topicCount = members.reduce(
+            (total, subject) =>
+              total +
+              subject.years.reduce((n, group) => n + group.topics.length, 0),
             0,
           );
 
           return (
             <Link
-              key={subject.slug}
-              href={`/subjects/${subject.slug}`}
-              className={`group relative overflow-hidden rounded-2xl p-6 text-white transition duration-300 hover:-translate-y-1 ${subject.shadow}`}
-              style={{ backgroundImage: subject.gradient }}
+              key={card.slug}
+              href={`/subjects/${card.slug}`}
+              className={`group relative overflow-hidden rounded-2xl p-6 text-white transition duration-300 hover:-translate-y-1 ${card.shadow}`}
+              style={{ backgroundImage: card.gradient }}
             >
               <div className="pointer-events-none absolute -right-12 -top-16 h-40 w-40 rounded-full bg-white/25 opacity-70 blur-3xl transition group-hover:opacity-100" />
               <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/30" />
 
-              <h2 className="relative text-2xl font-semibold">{subject.name}</h2>
+              <h2 className="relative text-2xl font-semibold">{card.name}</h2>
               <p className="relative mt-1 text-sm opacity-80">
                 {topicCount} topics
               </p>
