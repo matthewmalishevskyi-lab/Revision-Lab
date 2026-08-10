@@ -690,10 +690,9 @@ export function Sterling(props: MascotProps) {
 
       {/* ── Head. An oval, taller than it is wide: a perfect circle is the most
              toy-like shape available. ── */}
-      <ellipse cx="60" cy="34" rx="24.5" ry="27" fill="#f2cdae" />
-      <path d="M60 7 A24.5 27 0 0 1 60 61 A14 27 0 0 0 60 7 Z" fill="#000000" opacity={0.11} />
+      <path d="M35.5 31 C35.5 15 46 7 60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C43 56.5 35.5 45 35.5 31 Z" fill="#f2cdae" />
+      <path d="M60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C69 55 71 44 71 31 C71 17 66 10 60 7 Z" fill="#000000" opacity={0.11} />
       {/* A jawline hint — barely visible, but it gives the face structure */}
-      <path d="M40 39 Q44 49 52 54 Q44 52 39 44 Z" fill="#000000" opacity={0.05} />
 
       {/* ── Ears ── */}
       <ellipse cx="35.5" cy="36" rx="3.8" ry="5.2" fill="#f2cdae" />
@@ -795,8 +794,8 @@ export function Iris(props: MascotProps) {
              is what makes it a COAT rather than a white shirt. Off-white
              (#f1f5f9) rather than pure white: a pure white garment has nowhere
              left to go for a highlight, so it flattens out completely. */}
-      <path d="M33 72 Q60 64 87 72 L92 112 Q60 119 28 112 Z" fill="#f1f5f9" />
-      <path d="M60 66 Q77 66 87 72 L92 112 Q77 116.5 60 118 Z" fill="#000000" opacity={0.1} />
+      <path d="M37 72 Q60 65 83 72 L89 112 Q60 119 31 112 Z" fill="#f1f5f9" />
+      <path d="M60 66.5 Q75 66.5 83 72 L89 112 Q76 116.5 60 118 Z" fill="#000000" opacity={0.1} />
 
       {/* The top she wears underneath, in the Science colour, showing in the
           open front of the coat. */}
@@ -805,52 +804,52 @@ export function Iris(props: MascotProps) {
 
       {/* Coat lapels and the open front edge. The grey is what stops the coat
           disappearing into the white background of a card. */}
-      <path d="M37 71 Q45 66.5 51 67.5 L60 92 L39 86 Z" fill="#e2e8f0" />
-      <path d="M83 71 Q75 66.5 69 67.5 L60 92 L81 86 Z" fill="#e2e8f0" />
-      <path d="M83 71 Q77 67.5 71 67.4 L64 88 L81 86 Z" fill="#000000" opacity={0.09} />
+      <path d="M40 71 Q46.5 66.5 51.5 67.5 L60 92 L42 86 Z" fill="#e2e8f0" />
+      <path d="M80 71 Q73.5 66.5 68.5 67.5 L60 92 L78 86 Z" fill="#e2e8f0" />
+      <path d="M80 71 Q75 67.5 70 67.4 L64 88 L78 86 Z" fill="#000000" opacity={0.09} />
       <path d="M51 67.5 L53 112" stroke="#cbd5e1" strokeWidth={1.4} fill="none" />
       <path d="M69 67.5 L67 112" stroke="#cbd5e1" strokeWidth={1.4} fill="none" />
 
       {/* A coat pocket, and a pen in it — two shapes, and they do more for
           "scientist" than any amount of extra shading would. */}
-      <path d="M72 92 L84 90 L85.5 100 L73.5 102 Z" fill="#e2e8f0" />
-      <path d="M76 89 L77.5 95" stroke="#0ea5e9" strokeWidth={2.2} strokeLinecap="round" />
+      <path d="M70 92 L81 90 L82.5 100 L71.5 102 Z" fill="#e2e8f0" />
+      <path d="M74 89 L75.5 95" stroke="#0ea5e9" strokeWidth={2.2} strokeLinecap="round" />
 
       {/* ── Arms. The right one is raised so the test tube is held up where it
              can actually be seen; the left hangs down with a second tube. ── */}
-      <path d="M33 73 Q26 77 25 86 L28 90 Q33 90 34.5 84 L37 75 Z" fill="#f1f5f9" />
-      <path d="M87 73 Q95 77 96.5 87 L95 96 Q89 97 87 91 L83 75 Z" fill="#f1f5f9" />
-      <path d="M87 73 Q95 77 96.5 87 L95 96 Q92 96.5 91 94 L86 75 Z" fill="#000000" opacity={0.1} />
+      <path d="M37 73 Q29 77 27.5 86 L30 90 Q35 90 36.5 84 L40 75 Z" fill="#f1f5f9" />
+      <path d="M83 73 Q92 77 93.5 87 L92 96 Q86 97 84 91 L80 75 Z" fill="#f1f5f9" />
+      <path d="M83 73 Q92 77 93.5 87 L92 96 Q89 96.5 88 94 L83 75 Z" fill="#000000" opacity={0.1} />
       {/* Cuffs */}
-      <path d="M25.5 86.5 Q30 88.5 34.5 86.5 L34 89.5 Q29.5 91.5 25.5 89.5 Z" fill="#cbd5e1" />
-      <path d="M87.5 92 Q91 94 96 92.5 L96 95.5 Q91 97 87.5 95 Z" fill="#cbd5e1" />
+      <path d="M28 86.5 Q32 88.5 36.5 86.5 L36 89.5 Q31.5 91.5 28 89.5 Z" fill="#cbd5e1" />
+      <path d="M84.5 92 Q88 94 93 92.5 L93 95.5 Q88 97 84.5 95 Z" fill="#cbd5e1" />
 
       {/* ── Test tube one: raised in her right hand ──
              Drawn behind the hand so the fingers close over it. Glass is a pale
              fill at low opacity plus one white highlight stripe — trying to
              draw real transparency at this size just makes mud. */}
-      <rect x="24.5" y="54" width="11" height="32" rx="5.5" fill="#eff6ff" />
-      <path d="M24.5 70 L35.5 70 L35.5 80.5 Q35.5 86 30 86 Q24.5 86 24.5 80.5 Z" fill="#22d3ee" />
-      <circle cx="28.5" cy="75" r="1.7" fill="#ffffff" opacity={0.8} />
-      <circle cx="32" cy="79" r="1.2" fill="#ffffff" opacity={0.65} />
-      <path d="M27 57 L27 82" stroke="#ffffff" strokeWidth={1.8} opacity={0.7} strokeLinecap="round" />
-      <rect x="24.5" y="54" width="11" height="32" rx="5.5" fill="none" stroke="#64748b" strokeWidth={1.5} />
-      <rect x="23.5" y="52.5" width="13" height="3.6" rx="1.8" fill="#94a3b8" />
+      <rect x="26.5" y="54" width="11" height="32" rx="5.5" fill="#eff6ff" />
+      <path d="M26.5 70 L37.5 70 L37.5 80.5 Q37.5 86 32 86 Q26.5 86 26.5 80.5 Z" fill="#22d3ee" />
+      <circle cx="30.5" cy="75" r="1.7" fill="#ffffff" opacity={0.8} />
+      <circle cx="34" cy="79" r="1.2" fill="#ffffff" opacity={0.65} />
+      <path d="M29 57 L29 82" stroke="#ffffff" strokeWidth={1.8} opacity={0.7} strokeLinecap="round" />
+      <rect x="26.5" y="54" width="11" height="32" rx="5.5" fill="none" stroke="#64748b" strokeWidth={1.5} />
+      <rect x="25.5" y="52.5" width="13" height="3.6" rx="1.8" fill="#94a3b8" />
 
       {/* ── Test tube two: lower, in her left hand ── */}
-      <rect x="90" y="92" width="10" height="28" rx="5" fill="#eff6ff" />
-      <path d="M90 106 L100 106 L100 115 Q100 120 95 120 Q90 120 90 115 Z" fill="#f59e0b" />
-      <circle cx="93.5" cy="110" r="1.4" fill="#ffffff" opacity={0.75} />
-      <path d="M92.5 95 L92.5 116" stroke="#ffffff" strokeWidth={1.7} opacity={0.6} strokeLinecap="round" />
-      <rect x="90" y="92" width="10" height="28" rx="5" fill="none" stroke="#64748b" strokeWidth={1.5} />
-      <rect x="89" y="90.5" width="12" height="3.4" rx="1.7" fill="#94a3b8" />
+      <rect x="87" y="92" width="10" height="28" rx="5" fill="#eff6ff" />
+      <path d="M87 106 L97 106 L97 115 Q97 120 92 120 Q87 120 87 115 Z" fill="#f59e0b" />
+      <circle cx="90.5" cy="110" r="1.4" fill="#ffffff" opacity={0.75} />
+      <path d="M89.5 95 L89.5 116" stroke="#ffffff" strokeWidth={1.7} opacity={0.6} strokeLinecap="round" />
+      <rect x="87" y="92" width="10" height="28" rx="5" fill="none" stroke="#64748b" strokeWidth={1.5} />
+      <rect x="86" y="90.5" width="12" height="3.4" rx="1.7" fill="#94a3b8" />
 
       {/* ── Hands, closing over each tube ── */}
-      <circle cx="30" cy="88" r="5.2" fill="#f2cdae" />
-      <path d="M27.4 87 Q30.4 85.5 32.4 87.5" stroke="#d9a87f" strokeWidth={2.2} strokeLinecap="round" fill="none" />
-      <circle cx="93" cy="99" r="5.2" fill="#f2cdae" />
-      <path d="M93 93.8 A5.2 5.2 0 0 1 93 104.2 A3 5.2 0 0 0 93 93.8 Z" fill="#000000" opacity={0.12} />
-      <path d="M90.4 98 Q93.4 96.5 95.4 98.5" stroke="#d9a87f" strokeWidth={2.2} strokeLinecap="round" fill="none" />
+      <circle cx="32" cy="88" r="5.2" fill="#f2cdae" />
+      <path d="M29.4 87 Q32.4 85.5 34.4 87.5" stroke="#d9a87f" strokeWidth={2.2} strokeLinecap="round" fill="none" />
+      <circle cx="90" cy="99" r="5.2" fill="#f2cdae" />
+      <path d="M90 93.8 A5.2 5.2 0 0 1 90 104.2 A3 5.2 0 0 0 90 93.8 Z" fill="#000000" opacity={0.12} />
+      <path d="M87.4 98 Q90.4 96.5 92.4 98.5" stroke="#d9a87f" strokeWidth={2.2} strokeLinecap="round" fill="none" />
 
       {/* ── Neck, with the shadow the jaw casts onto it ── */}
       <rect x="53" y="52" width="14" height="16" rx="5" fill="#e0b48f" />
@@ -865,8 +864,8 @@ export function Iris(props: MascotProps) {
       <path d="M77 12 Q79.5 17 77.5 23" stroke="#42291b" strokeWidth={2.6} fill="none" strokeLinecap="round" />
 
       {/* ── Head ── */}
-      <ellipse cx="60" cy="34" rx="24.5" ry="27" fill="#f2cdae" />
-      <path d="M60 7 A24.5 27 0 0 1 60 61 A14 27 0 0 0 60 7 Z" fill="#000000" opacity={0.11} />
+      <path d="M35.5 31 C35.5 15 46 7 60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C43 56.5 35.5 45 35.5 31 Z" fill="#f2cdae" />
+      <path d="M60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C69 55 71 44 71 31 C71 17 66 10 60 7 Z" fill="#000000" opacity={0.11} />
       <path d="M40 39 Q44 49 52 54 Q44 52 39 44 Z" fill="#000000" opacity={0.05} />
 
       {/* ── Ears ── */}
@@ -885,15 +884,29 @@ export function Iris(props: MascotProps) {
       {/* ── Safety goggles, pushed up onto her forehead ──
              The strap running round the back of the head is the detail that
              makes them goggles rather than sunglasses. */}
-      <path d="M36 22 Q34 17 38 15 L82 15 Q86 17 84 22 Z" fill="#38bdf8" opacity={0.55} />
-      <path d="M36 22 Q34 17 38 15 L82 15 Q86 17 84 22 Z" fill="none" stroke="#0e7490" strokeWidth={2} strokeLinejoin="round" />
-      <path d="M40 17.5 Q48 15.6 58 16.4" stroke="#ffffff" strokeWidth={2} opacity={0.65} strokeLinecap="round" fill="none" />
-      <path d="M36 19 Q30 20 28 24" stroke="#0e7490" strokeWidth={2.4} fill="none" strokeLinecap="round" />
-      <path d="M84 19 Q90 20 92 24" stroke="#0e7490" strokeWidth={2.4} fill="none" strokeLinecap="round" />
+      {/* Strap, drawn first so it passes behind the lens */}
+      <path d="M38 17 Q28 18 26 25" stroke="#334155" strokeWidth={3.4} fill="none" strokeLinecap="round" />
+      <path d="M82 17 Q92 18 94 25" stroke="#334155" strokeWidth={3.4} fill="none" strokeLinecap="round" />
+      {/* The soft edge that seals against the face — a slightly larger shape
+          behind the lens, which is what gives the goggles DEPTH instead of
+          looking like a sticker. */}
+      <path d="M37 10.5 Q35 22 40.5 25.5 L54 25.5 Q60 22.5 66 25.5 L79.5 25.5 Q85 22 83 10.5 Z" fill="#475569" />
+      {/* Lens */}
+      <path d="M39.5 12.5 Q38 21 42.5 23.5 L54.5 23.5 Q60 20.8 65.5 23.5 L77.5 23.5 Q82 21 80.5 12.5 Z" fill="#7dd3fc" />
+      <path d="M60 12.5 L80.5 12.5 Q82 21 77.5 23.5 L65.5 23.5 Q62 21 60 21 Z" fill="#000000" opacity={0.14} />
+      {/* Two highlight streaks across the glass, at the same angle */}
+      <path d="M44 21.5 L49.5 13.5" stroke="#ffffff" strokeWidth={2.6} opacity={0.75} strokeLinecap="round" />
+      <path d="M52 21.5 L55.5 16" stroke="#ffffff" strokeWidth={1.7} opacity={0.55} strokeLinecap="round" />
+      {/* The frame, drawn last so it sits over the lens as a real rim does */}
+      <path d="M37 10.5 Q35 22 40.5 25.5 L54 25.5 Q60 22.5 66 25.5 L79.5 25.5 Q85 22 83 10.5 Z" fill="none" stroke="#1e293b" strokeWidth={2.3} strokeLinejoin="round" />
+      {/* A vent on each side of the frame — the giveaway detail that says
+          "laboratory goggles" rather than "swimming goggles". */}
+      <path d="M40.5 14.5 L40.5 18" stroke="#1e293b" strokeWidth={1.5} strokeLinecap="round" />
+      <path d="M79.5 14.5 L79.5 18" stroke="#1e293b" strokeWidth={1.5} strokeLinecap="round" />
 
       {/* ── Brows ── */}
-      <path d="M46.5 28 Q51 25.6 55.5 27.4" stroke="#42291b" strokeWidth={2.6} strokeLinecap="round" fill="none" />
-      <path d="M64.5 27.4 Q69 25.6 73.5 28" stroke="#42291b" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+      <path d="M46.5 28.4 Q51.5 24.8 56 27.2" stroke="#42291b" strokeWidth={2.1} strokeLinecap="round" fill="none" />
+      <path d="M64 27.2 Q68.5 24.8 73.5 28.4" stroke="#42291b" strokeWidth={2.1} strokeLinecap="round" fill="none" />
 
       {/* ── Eyes ── */}
       <ellipse cx="51" cy="36" rx="5" ry="5.4" fill="#ffffff" />
@@ -904,12 +917,14 @@ export function Iris(props: MascotProps) {
       <circle cx="68.2" cy="35" r="1.25" fill="#ffffff" />
       <path d="M46 33.2 Q51 30.4 56 33.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
       <path d="M64 33.2 Q69 30.4 74 33.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+      <path d="M45.8 33.4 L43.4 31.4" stroke="#5c4029" strokeWidth={1.8} strokeLinecap="round" fill="none" />
+      <path d="M74.2 33.4 L76.6 31.4" stroke="#5c4029" strokeWidth={1.8} strokeLinecap="round" fill="none" />
 
       {/* ── Nose ── */}
       <path d="M59 40 Q57 45.5 61 46.5" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
 
       {/* ── Mouth: a small, composed smile ── */}
-      <path d="M53.5 51 Q60 56 66.5 51" stroke="#a5765a" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+      <path d="M54 51 Q60 56.4 66 51" stroke="#b06a56" strokeWidth={3} strokeLinecap="round" fill="none" />
     </svg>
   );
 }
