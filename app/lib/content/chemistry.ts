@@ -1934,4 +1934,1151 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "chemistry/reactivity-of-metals": {
+    summary:
+      "The reactivity series explains why gold is found as gold and iron is found as ore, why some metals are extracted by carbon and others need electricity, and what rusting actually is. Once you can read the series, most of the questions in this topic answer themselves.",
+    keyFacts: [
+      {
+        heading: "The reactivity series",
+        points: [
+          "Most to least reactive: potassium, sodium, calcium, magnesium, aluminium, CARBON, zinc, iron, HYDROGEN, copper, silver, gold.",
+          "Carbon and hydrogen are non-metals but are included as reference points.",
+          "Reactivity is about how readily a metal LOSES electrons to form a positive ion.",
+          "The more reactive the metal, the more vigorously it reacts and the more stable its compounds.",
+          "Metals above hydrogen react with acids; those below it — copper, silver, gold — do not.",
+        ],
+      },
+      {
+        heading: "Reactions with water and acid",
+        points: [
+          "Potassium, sodium and calcium react with cold WATER: metal + water → metal hydroxide + hydrogen.",
+          "Magnesium, zinc and iron react with dilute ACID: metal + acid → salt + hydrogen.",
+          "Copper, silver and gold react with neither, which is why copper is used for pipes and gold for jewellery.",
+          "The more reactive the metal, the faster the fizzing and the more vigorous the reaction.",
+          "A more reactive metal DISPLACES a less reactive one from its compound.",
+        ],
+      },
+      {
+        heading: "Extraction of metals",
+        points: [
+          "An ORE is a rock containing enough of a metal compound to make extraction worthwhile.",
+          "Metals LESS reactive than carbon can be extracted by REDUCTION with carbon — iron, zinc, copper.",
+          "Metals MORE reactive than carbon must be extracted by ELECTROLYSIS — aluminium, for example.",
+          "Electrolysis is used only when necessary because it needs enormous amounts of electricity and is therefore expensive.",
+          "Gold is unreactive enough to be found as the pure metal, needing no extraction at all.",
+          "Reduction here means loss of oxygen: the carbon takes the oxygen from the metal oxide.",
+        ],
+      },
+      {
+        heading: "Oxidation, reduction and rusting",
+        points: [
+          "OXIDATION is loss of electrons or gain of oxygen; REDUCTION is gain of electrons or loss of oxygen.",
+          "OIL RIG: Oxidation Is Loss, Reduction Is Gain — of electrons.",
+          "In a displacement reaction one metal is oxidised while the other is reduced — a REDOX reaction.",
+          "RUSTING needs BOTH water AND oxygen. Remove either and iron does not rust.",
+          "Prevention: barrier methods such as paint, oil or plastic; or sacrificial protection with a more reactive metal.",
+          "GALVANISING coats iron with zinc, which is more reactive and so corrodes instead — sacrificial protection.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Reactivity series", definition: "Metals listed in order of how readily they lose electrons to form positive ions." },
+      { term: "Ore", definition: "A rock containing enough of a metal compound to make extraction economically worthwhile." },
+      { term: "Reduction", definition: "Loss of oxygen, or gain of electrons." },
+      { term: "Oxidation", definition: "Gain of oxygen, or loss of electrons." },
+      { term: "Redox reaction", definition: "A reaction where oxidation and reduction both happen at the same time." },
+      { term: "Displacement reaction", definition: "A reaction where a more reactive metal takes the place of a less reactive one in a compound." },
+      { term: "Electrolysis", definition: "Using electricity to break down a compound, needed for metals more reactive than carbon." },
+      { term: "Rusting", definition: "The corrosion of iron, which requires both water and oxygen." },
+      { term: "Corrosion", definition: "The destruction of a metal by reaction with substances in its environment." },
+      { term: "Sacrificial protection", definition: "Attaching a more reactive metal so it corrodes instead of the iron." },
+      { term: "Galvanising", definition: "Coating iron with zinc, which both forms a barrier and gives sacrificial protection." },
+      { term: "Barrier method", definition: "Preventing rust by keeping water and oxygen away, using paint, oil, grease or plastic." },
+      { term: "Native metal", definition: "A metal unreactive enough to be found uncombined in the earth, such as gold." },
+      { term: "Metal oxide", definition: "The compound formed when a metal combines with oxygen." },
+    ],
+    examTips: [
+      {
+        tip: "Learn where CARBON sits in the series",
+        detail:
+          "It is the dividing line for extraction. Above carbon means electrolysis; below carbon means reduction with carbon. That one fact answers most extraction questions.",
+      },
+      {
+        tip: "Learn where HYDROGEN sits too",
+        detail:
+          "Metals above hydrogen react with acids; those below do not. It explains why copper pipes carry water safely.",
+      },
+      {
+        tip: "Rusting needs BOTH water and oxygen",
+        detail:
+          "Saying just 'water' or just 'air' loses the mark. Experiments that remove one or the other are a standard question.",
+      },
+      {
+        tip: "Explain sacrificial protection through reactivity",
+        detail:
+          "Zinc is MORE reactive than iron, so it loses electrons in preference and corrodes instead. The comparison is the mark.",
+      },
+      {
+        tip: "In displacement, say which is oxidised and which reduced",
+        detail:
+          "The more reactive metal loses electrons and is oxidised; the metal ion gains them and is reduced. It is a redox reaction.",
+      },
+      {
+        tip: "Say WHY electrolysis is avoided when possible",
+        detail:
+          "It requires enormous amounts of electrical energy, so it is expensive. Cost is the reason carbon reduction is preferred wherever it works.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which non-metal is included in the reactivity series as the dividing line for extraction?",
+        accept: ["carbon", "c"],
+        answer:
+          "Carbon. Metals below it can be extracted by reduction with carbon; metals above it must be extracted by electrolysis.",
+      },
+      {
+        question: "Which method extracts a metal MORE reactive than carbon?",
+        accept: ["electrolysis"],
+        answer:
+          "Electrolysis. It is used only when necessary because it consumes enormous amounts of electricity and is therefore expensive.",
+      },
+      {
+        question: "Which method extracts a metal LESS reactive than carbon?",
+        accept: ["reduction with carbon", "reduction", "carbon reduction", "reduced with carbon", "smelting"],
+        answer:
+          "Reduction with carbon. The carbon takes the oxygen from the metal oxide, which is reduction in the 'loss of oxygen' sense.",
+      },
+      {
+        question: "What is a rock containing enough metal compound to be worth extracting called?",
+        accept: ["ore", "an ore", "ores"],
+        answer:
+          "An ore. Whether a rock counts as an ore depends on economics as well as chemistry — it must be worth the cost of extraction.",
+      },
+      {
+        question: "Which two substances are BOTH needed for iron to rust?",
+        accept: ["water and oxygen", "oxygen and water", "air and water", "water and air"],
+        answer:
+          "Water and oxygen. Remove either one and rusting stops, which is exactly what barrier methods achieve.",
+      },
+      {
+        question: "What is coating iron with zinc called?",
+        accept: ["galvanising", "galvanizing", "galvanisation"],
+        answer:
+          "Galvanising. It works twice over: the zinc is a physical barrier, and being more reactive it also corrodes sacrificially if scratched.",
+      },
+      {
+        question: "Why does zinc protect iron even if the coating is scratched?",
+        accept: ["zinc is more reactive", "more reactive", "zinc corrodes instead", "sacrificial protection", "zinc reacts instead", "zinc loses electrons"],
+        answer:
+          "Zinc is more reactive than iron, so it loses electrons in preference and corrodes instead. That is sacrificial protection.",
+      },
+      {
+        question: "Which metal is found in the earth as the uncombined element?",
+        accept: ["gold", "au"],
+        answer:
+          "Gold. It is so unreactive that it does not form compounds readily, which is why it needs no extraction and why it does not tarnish.",
+      },
+      {
+        question: "Do metals below hydrogen in the reactivity series react with dilute acid? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. Copper, silver and gold sit below hydrogen and do not react with dilute acids — which is why copper is safe for water pipes.",
+      },
+      {
+        question: "In a displacement reaction, is the more reactive metal oxidised or reduced?",
+        accept: ["oxidised", "oxidized", "oxidation"],
+        answer:
+          "Oxidised — it loses electrons to form a positive ion. The less reactive metal's ion gains those electrons and is reduced.",
+      },
+      {
+        question: "What is the general name for a reaction where oxidation and reduction happen together?",
+        accept: ["redox", "a redox reaction", "redox reaction"],
+        answer:
+          "A redox reaction. Every displacement and every electrolysis is one, because electrons lost by one species must be gained by another.",
+      },
+      {
+        question: "What are the two products when a group 1 metal reacts with water?",
+        accept: ["metal hydroxide and hydrogen", "hydroxide and hydrogen", "hydrogen and metal hydroxide", "hydrogen and hydroxide"],
+        answer:
+          "A metal hydroxide and hydrogen gas. Only the most reactive metals — potassium, sodium, calcium — react with cold water like this.",
+      },
+      {
+        question: "Name one barrier method of preventing rust.",
+        accept: ["paint", "oil", "grease", "plastic", "coating", "painting", "greasing", "plastic coating"],
+        answer:
+          "Paint, oil, grease or a plastic coating. All work by keeping water and oxygen away from the iron surface.",
+      },
+      {
+        question: "Does reduction mean gaining or losing electrons?",
+        accept: ["gaining", "gain", "gaining electrons", "gain of electrons", "gains"],
+        answer:
+          "Gaining — remember OIL RIG: Reduction Is Gain. In the oxygen sense, reduction is the LOSS of oxygen, which is worth keeping straight.",
+      },
+      {
+        question: "Explain why aluminium is extracted by electrolysis rather than with carbon. Write two or three sentences.",
+        answer:
+          "Aluminium is more reactive than carbon, so carbon cannot take the oxygen away from aluminium oxide — the aluminium holds its oxygen more strongly than carbon would. Electrolysis is used instead, because passing an electric current can force the reduction to happen by supplying electrons directly to the aluminium ions. This is far more expensive than carbon reduction because of the enormous quantity of electricity required, which is why it is used only where nothing cheaper will work. Mark this one yourself: the position relative to carbon AND the cost of electricity are both worth credit.",
+      },
+      {
+        question: "Describe an experiment to show that iron needs both water and oxygen to rust.",
+        answer:
+          "Set up three test tubes, each with an iron nail. In the first, leave the nail in ordinary water with air above it — this is the control and the nail should rust. In the second, use water that has been boiled to remove dissolved oxygen and cover it with a layer of oil to stop air redissolving, so the nail has water but no oxygen. In the third, place the nail in dry air with a drying agent such as calcium chloride and a bung, so it has oxygen but no water. After several days only the first nail should have rusted, showing that both are needed. Mark this one yourself: three tubes, each removing one variable, plus the expected result, is full marks.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Rusting is caused by air alone.",
+        right:
+          "It needs water AND oxygen together. Iron in dry air does not rust, and neither does iron in boiled, oxygen-free water.",
+      },
+      {
+        wrong: "All metals rust.",
+        right:
+          "Rusting is specific to iron and steel. Other metals corrode, but that is a different word and a different process.",
+      },
+      {
+        wrong: "Electrolysis is used because it works better.",
+        right:
+          "It is used because carbon reduction will not work for metals above carbon. It is far more expensive, so it is a last resort.",
+      },
+      {
+        wrong: "Reduction means making something smaller.",
+        right:
+          "It means losing oxygen, or gaining electrons. The everyday meaning of the word is misleading here.",
+      },
+      {
+        wrong: "Zinc protects iron only by covering it.",
+        right:
+          "It also protects sacrificially. Even where the coating is scratched, the more reactive zinc corrodes in preference to the iron.",
+      },
+    ],
+  },
+
+  "chemistry/electrolysis": {
+    summary:
+      "Electrolysis uses electricity to pull compounds apart, and it is the only way to extract the most reactive metals. This topic covers what happens at each electrode, the rules for predicting the products in solution, and half equations — which are Higher tier only and flagged as such.",
+    keyFacts: [
+      {
+        heading: "The basics",
+        points: [
+          "ELECTROLYSIS is the breaking down of an ionic compound using electricity.",
+          "The ELECTROLYTE is the molten or dissolved ionic compound, in which ions are free to move.",
+          "The CATHODE is the NEGATIVE electrode. Positive ions (cations, including all metals) move to it.",
+          "The ANODE is the POSITIVE electrode. Negative ions (anions, including all non-metals) move to it.",
+          "Opposites attract — that single idea decides where every ion goes.",
+          "A solid ionic compound cannot be electrolysed, because its ions cannot move.",
+        ],
+      },
+      {
+        heading: "Molten compounds",
+        points: [
+          "For a molten ionic compound the products are simply the two elements it is made of.",
+          "The metal forms at the cathode; the non-metal forms at the anode.",
+          "Molten lead bromide gives lead at the cathode and bromine at the anode.",
+          "Aluminium is extracted from molten aluminium oxide mixed with CRYOLITE.",
+          "Cryolite lowers the melting point, which saves a great deal of energy and money.",
+          "The carbon anodes burn away over time, because the oxygen produced reacts with them — so they must be replaced regularly.",
+        ],
+      },
+      {
+        heading: "Solutions: the rules",
+        points: [
+          "In solution, water also provides H⁺ and OH⁻ ions, so there is competition.",
+          "At the CATHODE: hydrogen forms UNLESS the metal is LESS reactive than hydrogen, in which case the metal forms.",
+          "So copper solutions give copper; sodium solutions give hydrogen.",
+          "At the ANODE: oxygen forms, UNLESS a halide (chloride, bromide, iodide) is present, in which case the halogen forms.",
+          "Sodium chloride solution therefore gives hydrogen at the cathode and chlorine at the anode.",
+          "Copper sulfate solution gives copper at the cathode and oxygen at the anode.",
+        ],
+      },
+      {
+        heading: "Higher tier: half equations",
+        higherOnly: true,
+        points: [
+          "A half equation shows what happens at ONE electrode, with electrons written in.",
+          "At the cathode, positive ions GAIN electrons — reduction. For example: Cu²⁺ + 2e⁻ → Cu.",
+          "At the anode, negative ions LOSE electrons — oxidation. For example: 2Cl⁻ → Cl₂ + 2e⁻.",
+          "The number of electrons must match the charge on the ion.",
+          "Both atoms AND charges must balance on each side.",
+          "Half equations are Higher tier only; Foundation students need the products but not the equations.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Electrolysis", definition: "Breaking down an ionic compound using electricity." },
+      { term: "Electrolyte", definition: "The molten or dissolved ionic compound in which ions are free to move." },
+      { term: "Cathode", definition: "The negative electrode, which attracts positive ions such as metals and hydrogen." },
+      { term: "Anode", definition: "The positive electrode, which attracts negative ions such as halides and oxygen." },
+      { term: "Cation", definition: "A positively charged ion, which moves to the cathode." },
+      { term: "Anion", definition: "A negatively charged ion, which moves to the anode." },
+      { term: "Half equation", definition: "An equation showing the electron transfer at one electrode. Higher tier." },
+      { term: "Cryolite", definition: "A compound mixed with aluminium oxide to lower its melting point and save energy." },
+      { term: "Inert electrode", definition: "An electrode such as graphite or platinum that does not react during electrolysis." },
+      { term: "Reduction", definition: "Gain of electrons — what happens at the cathode." },
+      { term: "Oxidation", definition: "Loss of electrons — what happens at the anode." },
+      { term: "Halide", definition: "A compound containing chloride, bromide or iodide ions." },
+      { term: "Molten", definition: "Melted, so that the ions can move and carry charge." },
+      { term: "Aqueous", definition: "Dissolved in water, written (aq)." },
+    ],
+    examTips: [
+      {
+        tip: "CATHODE is negative and attracts POSITIVE ions",
+        detail:
+          "It feels backwards but opposites attract. Metals and hydrogen always go to the cathode; non-metals go to the anode.",
+      },
+      {
+        tip: "Learn the two solution rules exactly",
+        detail:
+          "Cathode: hydrogen unless the metal is less reactive than hydrogen. Anode: oxygen unless a halide is present. Those two lines answer nearly every solution question.",
+      },
+      {
+        tip: "Say WHY cryolite is used",
+        detail:
+          "It lowers the melting point of aluminium oxide, so less energy is needed and the process is cheaper. The reason is the mark.",
+      },
+      {
+        tip: "Explain why the anodes need replacing",
+        detail:
+          "Oxygen produced at the anode reacts with the hot carbon, burning it away as carbon dioxide. This is a favourite six-mark question.",
+      },
+      {
+        tip: "Higher tier: balance charges as well as atoms",
+        detail:
+          "Cu²⁺ + 2e⁻ → Cu works because +2 and −2 cancel to zero. Count the charges on both sides before moving on.",
+      },
+      {
+        tip: "Remember a solid cannot be electrolysed",
+        detail:
+          "The ions are fixed in the lattice and cannot move. Melting or dissolving is what frees them to carry charge.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the negative electrode called?",
+        accept: ["cathode", "the cathode"],
+        answer:
+          "The cathode. It attracts POSITIVE ions — metals and hydrogen — because opposite charges attract.",
+      },
+      {
+        question: "What is the positive electrode called?",
+        accept: ["anode", "the anode"],
+        answer:
+          "The anode. Negative ions such as chloride and hydroxide move to it, and non-metals form there.",
+      },
+      {
+        question: "Which electrode do metal ions move to?",
+        accept: ["cathode", "the cathode", "negative", "negative electrode"],
+        answer:
+          "The cathode, the negative electrode. Metal ions are positive, so they are attracted to the negative electrode.",
+      },
+      {
+        question: "Why can a solid ionic compound not be electrolysed?",
+        accept: ["ions cannot move", "ions are fixed", "ions cant move", "no free ions", "ions not free to move"],
+        answer:
+          "Its ions are held in fixed positions in the lattice and cannot move. Melting or dissolving frees them to carry charge.",
+      },
+      {
+        question: "What forms at the cathode when molten lead bromide is electrolysed?",
+        accept: ["lead", "pb"],
+        answer:
+          "Lead. For a molten compound the products are simply its two elements — the metal at the cathode, the non-metal at the anode.",
+      },
+      {
+        question: "What forms at the anode when molten lead bromide is electrolysed?",
+        accept: ["bromine", "br2", "br₂"],
+        answer:
+          "Bromine. Negative bromide ions move to the positive anode, lose electrons and form bromine molecules.",
+      },
+      {
+        question: "What is mixed with aluminium oxide to lower its melting point?",
+        accept: ["cryolite"],
+        answer:
+          "Cryolite. Melting aluminium oxide alone would require far more energy, so cryolite makes the process considerably cheaper.",
+      },
+      {
+        question: "Why do the carbon anodes need replacing regularly in aluminium extraction?",
+        accept: ["they burn away", "oxygen reacts with carbon", "react with oxygen", "burn away", "form carbon dioxide", "oxidised", "they react with oxygen"],
+        answer:
+          "Oxygen produced at the anode reacts with the hot carbon, burning it away as carbon dioxide. The electrodes therefore wear down and must be replaced.",
+      },
+      {
+        question: "What forms at the cathode when sodium chloride SOLUTION is electrolysed?",
+        accept: ["hydrogen", "h2", "h₂"],
+        answer:
+          "Hydrogen. Sodium is more reactive than hydrogen, so hydrogen forms instead of the metal — this is the key rule for solutions.",
+      },
+      {
+        question: "What forms at the anode when sodium chloride solution is electrolysed?",
+        accept: ["chlorine", "cl2", "cl₂"],
+        answer:
+          "Chlorine. A halide is present, so the halogen forms rather than oxygen. Without a halide you would get oxygen instead.",
+      },
+      {
+        question: "What forms at the cathode when copper sulfate solution is electrolysed?",
+        accept: ["copper", "cu"],
+        answer:
+          "Copper. It is LESS reactive than hydrogen, so the metal forms rather than hydrogen — the exception to the usual rule.",
+      },
+      {
+        question: "What forms at the anode when copper sulfate solution is electrolysed?",
+        accept: ["oxygen", "o2", "o₂"],
+        answer:
+          "Oxygen. Sulfate is not a halide, so the default applies and oxygen is produced from the hydroxide ions in the water.",
+      },
+      {
+        question: "Is the reaction at the cathode oxidation or reduction?",
+        accept: ["reduction", "reduced"],
+        answer:
+          "Reduction — positive ions GAIN electrons there. At the anode, negative ions lose electrons, which is oxidation.",
+      },
+      {
+        question: "Higher tier: complete the half equation for copper at the cathode: Cu²⁺ + __e⁻ → Cu. Give the number only.",
+        accept: ["2", "two"],
+        answer:
+          "2. The copper ion has a 2+ charge, so it must gain two electrons to become a neutral atom. Charges must balance as well as atoms.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: complete the half equation for chlorine at the anode: 2Cl⁻ → Cl₂ + __e⁻. Give the number only.",
+        accept: ["2", "two"],
+        answer:
+          "2. Two chloride ions each lose one electron, giving two electrons in total and forming one Cl₂ molecule.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why aluminium oxide must be molten or dissolved before it can be electrolysed. Write two or three sentences.",
+        answer:
+          "In the solid, the aluminium and oxide ions are locked in fixed positions in the ionic lattice and cannot move. Electrolysis works by ions travelling to the electrodes, so if they cannot move, no current flows and no reaction happens. Melting the compound — or dissolving it — frees the ions so they can carry charge to the electrodes. Mark this one yourself: the mark is for ions being FREE TO MOVE, not just for 'it needs to be liquid'.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The cathode is positive because it attracts positive ions.",
+        right:
+          "The cathode is NEGATIVE, which is exactly why it attracts positive ions. Opposites attract.",
+      },
+      {
+        wrong: "Electrolysing sodium chloride solution gives sodium metal.",
+        right:
+          "It gives hydrogen, because sodium is more reactive than hydrogen. Only a metal LESS reactive than hydrogen is produced from solution.",
+      },
+      {
+        wrong: "Electrolysis works on any compound.",
+        right:
+          "Only ionic compounds, and only when molten or dissolved so the ions can move. Covalent substances have no ions to move.",
+      },
+      {
+        wrong: "Cryolite is a catalyst.",
+        right:
+          "It lowers the melting point of aluminium oxide, saving energy. It does not speed up a reaction, which is what a catalyst does.",
+      },
+      {
+        wrong: "The anode is consumed because electricity destroys it.",
+        right:
+          "Oxygen produced at the anode reacts with the hot carbon to form carbon dioxide. It is a chemical reaction, not an electrical effect.",
+      },
+    ],
+  },
+
+  "chemistry/energy-changes": {
+    summary:
+      "Every reaction either releases energy or takes it in, and which one it does comes down to a single comparison: the energy needed to break bonds against the energy released when new bonds form. This topic covers exothermic and endothermic reactions, reaction profiles, and bond energy calculations.",
+    keyFacts: [
+      {
+        heading: "Exothermic and endothermic",
+        points: [
+          "EXOTHERMIC reactions transfer energy TO the surroundings, so the temperature RISES.",
+          "Examples: combustion, oxidation, neutralisation, and hand warmers.",
+          "ENDOTHERMIC reactions take energy IN from the surroundings, so the temperature FALLS.",
+          "Examples: thermal decomposition, the reaction of citric acid with sodium hydrogencarbonate, and sports injury packs.",
+          "Energy is conserved overall — it is transferred between chemical stores and the surroundings, never created.",
+        ],
+      },
+      {
+        heading: "Reaction profiles",
+        points: [
+          "A reaction profile plots energy against the progress of the reaction.",
+          "EXOTHERMIC: the products are LOWER in energy than the reactants, so the overall change is negative.",
+          "ENDOTHERMIC: the products are HIGHER in energy than the reactants, so the overall change is positive.",
+          "The ACTIVATION ENERGY is the minimum energy needed for a reaction to happen — the height of the hump.",
+          "A CATALYST provides an alternative route with a LOWER activation energy, so the hump is smaller.",
+          "A catalyst does NOT change the overall energy change, and is not used up.",
+        ],
+      },
+      {
+        heading: "Bond energies",
+        points: [
+          "BREAKING bonds is always ENDOTHERMIC — energy must be supplied.",
+          "MAKING bonds is always EXOTHERMIC — energy is released.",
+          "overall energy change = energy to break bonds − energy released making bonds.",
+          "A NEGATIVE answer means exothermic; a POSITIVE answer means endothermic.",
+          "If making bonds releases MORE than breaking them costs, the reaction is exothermic.",
+          "Bond energies are given in kJ per mole, and the answer carries the same unit.",
+        ],
+      },
+      {
+        heading: "Cells and fuel cells",
+        points: [
+          "A simple CELL uses two different metals in an electrolyte; the bigger the reactivity difference, the greater the voltage.",
+          "Non-rechargeable cells stop when a reactant is used up; rechargeable ones can have the reaction reversed by an external current.",
+          "A FUEL CELL is supplied continuously with fuel and oxygen, and produces a voltage for as long as it is fed.",
+          "The hydrogen fuel cell reaction is: hydrogen + oxygen → water. The only product is water.",
+          "Advantages over rechargeable batteries: no need to recharge, no pollutants at the point of use, and lighter for the energy delivered.",
+          "Disadvantages: hydrogen is hard to store and transport safely, and producing it often uses fossil fuels.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Exothermic", definition: "A reaction that transfers energy to the surroundings, so the temperature rises." },
+      { term: "Endothermic", definition: "A reaction that takes energy in from the surroundings, so the temperature falls." },
+      { term: "Reaction profile", definition: "A diagram plotting energy against the progress of a reaction." },
+      { term: "Activation energy", definition: "The minimum energy particles need for a reaction to occur." },
+      { term: "Catalyst", definition: "A substance that speeds up a reaction by providing a route with lower activation energy, without being used up." },
+      { term: "Bond breaking", definition: "An endothermic process — energy must be supplied to break a bond." },
+      { term: "Bond making", definition: "An exothermic process — energy is released when a bond forms." },
+      { term: "Bond energy", definition: "The energy needed to break one mole of a particular bond, in kJ/mol." },
+      { term: "Combustion", definition: "Burning in oxygen — a strongly exothermic reaction." },
+      { term: "Thermal decomposition", definition: "Breaking a compound down by heating — an endothermic reaction." },
+      { term: "Cell", definition: "A device using two different metals in an electrolyte to produce a voltage." },
+      { term: "Fuel cell", definition: "A cell supplied continuously with fuel and oxygen, producing a voltage while it is fed." },
+      { term: "Hydrogen fuel cell", definition: "A fuel cell where hydrogen and oxygen react to produce water and electrical energy." },
+      { term: "Rechargeable cell", definition: "A cell whose reaction can be reversed by applying an external electric current." },
+    ],
+    examTips: [
+      {
+        tip: "Breaking is endothermic, making is exothermic — always",
+        detail:
+          "There are no exceptions. Getting these two the wrong way round reverses every bond energy answer you write.",
+      },
+      {
+        tip: "Negative means exothermic",
+        detail:
+          "A negative overall energy change means energy was released. State which it is in words as well as giving the number.",
+      },
+      {
+        tip: "A catalyst does NOT change the energy change",
+        detail:
+          "It lowers the activation energy only. On a profile the hump gets smaller but the start and end levels stay exactly where they were.",
+      },
+      {
+        tip: "Label reaction profiles fully",
+        detail:
+          "Reactants, products, activation energy and the overall energy change. Unlabelled axes and arrows lose marks even on a correct shape.",
+      },
+      {
+        tip: "Temperature FALLS in an endothermic reaction",
+        detail:
+          "Energy is taken from the surroundings, so a thermometer in the mixture reads lower. Students often expect the opposite.",
+      },
+      {
+        tip: "Give a drawback of hydrogen fuel cells",
+        detail:
+          "Hydrogen is difficult to store and transport, and making it usually requires energy from fossil fuels. Balanced answers score higher.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Calculate the energy change for H₂ + Cl₂ → 2HCl. Bond energies: H−H = 436, Cl−Cl = 242, H−Cl = 431 kJ/mol.",
+        steps: [
+          "Energy to BREAK bonds: one H−H and one Cl−Cl = 436 + 242 = 678 kJ/mol.",
+          "Energy released MAKING bonds: two H−Cl bonds = 2 × 431 = 862 kJ/mol.",
+          "Overall change = energy in − energy out = 678 − 862.",
+          "= −184 kJ/mol. The answer is negative, so the reaction is EXOTHERMIC.",
+        ],
+        answer: "−184 kJ/mol, exothermic",
+      },
+    ],
+    practice: [
+      {
+        question: "What word describes a reaction that transfers energy to the surroundings?",
+        accept: ["exothermic"],
+        answer:
+          "Exothermic — the temperature of the surroundings rises. Combustion, oxidation and neutralisation are the standard examples.",
+      },
+      {
+        question: "What word describes a reaction that takes energy in from the surroundings?",
+        accept: ["endothermic"],
+        answer:
+          "Endothermic — the temperature FALLS, because energy is taken from the surroundings. Thermal decomposition is the classic example.",
+      },
+      {
+        question: "Is breaking a bond exothermic or endothermic?",
+        accept: ["endothermic"],
+        answer:
+          "Endothermic — energy must be supplied to pull a bond apart. Making bonds is exothermic, releasing energy. There are no exceptions.",
+      },
+      {
+        question: "Is making a bond exothermic or endothermic?",
+        accept: ["exothermic"],
+        answer:
+          "Exothermic — energy is released when a bond forms. This pair of facts underlies every bond energy calculation.",
+      },
+      {
+        question: "What is the minimum energy needed for a reaction to occur called?",
+        accept: ["activation energy", "the activation energy"],
+        answer:
+          "The activation energy. On a reaction profile it is the height of the hump between reactants and products.",
+      },
+      {
+        question: "Does a catalyst change the overall energy change of a reaction? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. It lowers the activation energy only, providing an alternative route. The reactants and products keep exactly the same energy levels.",
+      },
+      {
+        question: "In an exothermic reaction, are the products higher or lower in energy than the reactants?",
+        accept: ["lower", "lower in energy", "lower energy"],
+        answer:
+          "Lower. The difference has been released to the surroundings, which is why the overall energy change is negative.",
+      },
+      {
+        question: "In an endothermic reaction, are the products higher or lower in energy than the reactants?",
+        accept: ["higher", "higher in energy", "higher energy"],
+        answer:
+          "Higher. Energy has been taken in from the surroundings and stored in the products, so the overall change is positive.",
+      },
+      {
+        question: "A reaction has an energy change of −250 kJ/mol. Is it exothermic or endothermic?",
+        accept: ["exothermic"],
+        answer:
+          "Exothermic. A negative value means energy was released to the surroundings. Always state which it is in words as well as the number.",
+      },
+      {
+        question: "Bonds broken need 500 kJ/mol and bonds made release 620 kJ/mol. Calculate the overall energy change. Give the number only, with its sign.",
+        accept: ["-120"],
+        answer:
+          "−120 kJ/mol. Energy change = broken − made = 500 − 620 = −120. Negative, so exothermic.",
+      },
+      {
+        question: "Bonds broken need 700 kJ/mol and bonds made release 640 kJ/mol. Calculate the overall energy change. Give the number only, with its sign.",
+        accept: ["60", "+60"],
+        answer:
+          "+60 kJ/mol. 700 − 640 = +60. Positive, so this reaction is endothermic and the surroundings would cool.",
+      },
+      {
+        question: "What is the only product of a hydrogen fuel cell?",
+        accept: ["water", "h2o", "h₂o"],
+        answer:
+          "Water. Hydrogen and oxygen react to give water and electrical energy, which is why fuel cells produce no pollutants at the point of use.",
+      },
+      {
+        question: "Give one disadvantage of hydrogen fuel cells.",
+        accept: ["storing hydrogen", "storage", "transport", "hard to store", "expensive", "fossil fuels to make hydrogen", "hydrogen is flammable", "producing hydrogen"],
+        answer:
+          "Hydrogen is difficult and potentially dangerous to store and transport, and producing it usually consumes energy from fossil fuels.",
+      },
+      {
+        question: "Give one example of an endothermic reaction.",
+        accept: ["thermal decomposition", "sports injury pack", "citric acid and sodium hydrogencarbonate", "decomposition", "cold pack", "photosynthesis"],
+        answer:
+          "Thermal decomposition, or citric acid reacting with sodium hydrogencarbonate — the reaction used in sports injury cold packs.",
+      },
+      {
+        question: "Explain why a reaction is exothermic in terms of bond breaking and bond making. Write two or three sentences.",
+        answer:
+          "Breaking the bonds in the reactants requires energy to be supplied, which is endothermic, while forming the bonds in the products releases energy, which is exothermic. In an exothermic reaction the energy released when the new bonds form is GREATER than the energy needed to break the old ones. The surplus is transferred to the surroundings, which is why the temperature rises and the overall energy change is negative. Mark this one yourself: the comparison between the two quantities is the mark, not just the definitions.",
+      },
+      {
+        question: "Explain how a catalyst speeds up a reaction, and why it does not change the energy change.",
+        answer:
+          "A catalyst provides an alternative reaction pathway with a lower activation energy, so a greater proportion of the colliding particles have enough energy to react and the reaction proceeds faster. It is not used up in the process, so a small amount works indefinitely. The energy of the reactants and the energy of the products are unchanged — only the height of the hump between them is reduced — so the overall energy change is exactly the same as it would be without the catalyst. Mark this one yourself: the alternative pathway AND the unchanged start and end levels are both needed.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Endothermic reactions feel hot because energy goes in.",
+        right:
+          "They feel COLD. Energy is taken FROM the surroundings, so the temperature of the mixture and its container falls.",
+      },
+      {
+        wrong: "Breaking bonds releases energy.",
+        right:
+          "Breaking always requires energy; making always releases it. Reversing this ruins every bond energy calculation.",
+      },
+      {
+        wrong: "A catalyst lowers the energy of the products.",
+        right:
+          "It lowers only the ACTIVATION ENERGY. Reactants and products keep exactly the same energy, so the overall change is unaffected.",
+      },
+      {
+        wrong: "A positive energy change means energy was released.",
+        right:
+          "Positive means energy was taken IN — endothermic. Negative means released — exothermic.",
+      },
+      {
+        wrong: "Hydrogen fuel cells are completely pollution-free.",
+        right:
+          "They produce only water at the point of use, but making and compressing the hydrogen usually consumes energy from fossil fuels.",
+      },
+    ],
+  },
+
+  "chemistry/rates-of-reaction": {
+    summary:
+      "This topic explains why some reactions take a second and others take a century, and it all reduces to collision theory: particles must collide, often enough and hard enough. Everything else — temperature, concentration, surface area, catalysts — is a way of changing how often or how hard those collisions happen.",
+    keyFacts: [
+      {
+        heading: "Collision theory",
+        points: [
+          "For a reaction to happen, particles must COLLIDE with at least the ACTIVATION ENERGY.",
+          "Rate depends on the FREQUENCY of collisions and the PROPORTION that are successful.",
+          "TEMPERATURE: particles move faster, so they collide more often AND more have enough energy. Both effects.",
+          "CONCENTRATION or PRESSURE: particles are closer together, so collisions are more frequent.",
+          "SURFACE AREA: a powder has far more exposed surface, so more collisions can happen per second.",
+          "CATALYST: provides a route with lower activation energy, so a greater proportion of collisions succeed.",
+        ],
+      },
+      {
+        heading: "Measuring rate",
+        points: [
+          "mean rate = quantity used or produced ÷ time taken.",
+          "Common measures: volume of gas produced, mass lost, or how long a cross takes to disappear.",
+          "Units follow what was measured: cm³/s, g/s, or 1/time for the cross method.",
+          "Gas can be collected in a gas syringe or by measuring the mass lost from an open flask.",
+          "The rate is FASTEST at the start, when concentration is highest, and slows as reactants are used up.",
+          "The reaction has finished when the line on the graph becomes horizontal.",
+        ],
+      },
+      {
+        heading: "Reading rate graphs",
+        points: [
+          "A STEEPER line means a FASTER reaction.",
+          "Two experiments with the same amount of reactant reach the same final level, however fast they get there.",
+          "So a catalyst or higher temperature changes the STEEPNESS, not the final amount.",
+          "Using more reactant changes the final level as well as the steepness.",
+          "A horizontal section means the reaction has stopped — a reactant has been used up.",
+        ],
+      },
+      {
+        heading: "Higher tier: rate from a tangent",
+        higherOnly: true,
+        points: [
+          "The rate at a particular moment is the GRADIENT of the curve at that point.",
+          "Draw a TANGENT — a straight line just touching the curve at that point.",
+          "Make the tangent long, so that reading its coordinates is more accurate.",
+          "gradient = change in y ÷ change in x, using two points far apart on the tangent.",
+          "Give the answer with the units of the axes, such as cm³/s.",
+          "Drawing tangents to find rate is Higher tier only.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Rate of reaction", definition: "How quickly reactants are used up or products are formed." },
+      { term: "Collision theory", definition: "The idea that particles must collide with at least the activation energy to react." },
+      { term: "Activation energy", definition: "The minimum energy colliding particles need for a reaction to occur." },
+      { term: "Catalyst", definition: "A substance that speeds up a reaction without being used up, by lowering the activation energy." },
+      { term: "Surface area", definition: "The exposed area of a solid; a powder has far more than a lump of the same mass." },
+      { term: "Concentration", definition: "How much solute is dissolved in a given volume; higher concentration means more frequent collisions." },
+      { term: "Gas syringe", definition: "Apparatus used to measure the volume of gas produced during a reaction." },
+      { term: "Mean rate", definition: "The quantity used or produced divided by the total time taken." },
+      { term: "Tangent", definition: "A straight line touching a curve at one point, used to find the rate at that moment. Higher tier." },
+      { term: "Gradient", definition: "The steepness of a line: change in y divided by change in x." },
+      { term: "Enzyme", definition: "A biological catalyst." },
+      { term: "Turbidity method", definition: "Timing how long a cross takes to disappear as a precipitate forms." },
+    ],
+    examTips: [
+      {
+        tip: "Give BOTH effects of temperature",
+        detail:
+          "Particles collide more frequently AND a greater proportion have the activation energy. Answers giving only one effect cap themselves.",
+      },
+      {
+        tip: "Say 'more frequent collisions', not 'more collisions'",
+        detail:
+          "Frequency is the point — collisions per second. Mark schemes are precise about this wording.",
+      },
+      {
+        tip: "A catalyst changes the steepness, not the final amount",
+        detail:
+          "The same quantity of reactant gives the same quantity of product. Only the time taken changes, so the lines meet at the same height.",
+      },
+      {
+        tip: "Always give units for a rate",
+        detail:
+          "cm³/s, g/s, or whatever the axes use. A bare number is an incomplete answer even when the arithmetic is right.",
+      },
+      {
+        tip: "Explain surface area through EXPOSED particles",
+        detail:
+          "Powdering a solid exposes far more particles to collide with, so more collisions happen per second. Same mass, more surface.",
+      },
+      {
+        tip: "Higher tier: draw the tangent long",
+        detail:
+          "A short tangent makes reading coordinates imprecise. Foundation students are not asked to draw tangents at all.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "48 cm³ of gas is produced in 24 seconds. Calculate the mean rate of reaction.",
+        steps: [
+          "mean rate = quantity produced ÷ time taken.",
+          "= 48 cm³ ÷ 24 s.",
+          "= 2.",
+          "The units come from what was measured and timed: cm³/s. So the answer is 2 cm³/s.",
+        ],
+        answer: "2 cm³/s",
+      },
+      {
+        question:
+          "A flask loses 1.2 g of mass over 60 seconds as carbon dioxide escapes. Calculate the mean rate.",
+        steps: [
+          "mean rate = mass lost ÷ time taken.",
+          "= 1.2 g ÷ 60 s.",
+          "= 0.02.",
+          "Units g/s, so the rate is 0.02 g/s. A small number is expected here — always sanity-check the size.",
+        ],
+        answer: "0.02 g/s",
+      },
+    ],
+    practice: [
+      {
+        question: "According to collision theory, what two things must happen for a reaction to occur?",
+        accept: ["collide with enough energy", "collision and activation energy", "collide with activation energy", "particles collide with enough energy", "collide and enough energy"],
+        answer:
+          "Particles must collide, AND collide with at least the activation energy. A collision without enough energy achieves nothing.",
+      },
+      {
+        question: "Give the TWO effects of increasing temperature on rate.",
+        accept: ["more frequent collisions and more energy", "collide more often and with more energy", "more collisions and more energy", "frequency and energy"],
+        answer:
+          "Particles collide more frequently, AND a greater proportion of collisions have the activation energy. Both effects are needed for full marks.",
+      },
+      {
+        question: "Why does powdering a solid increase the rate of reaction?",
+        accept: ["more surface area", "increased surface area", "larger surface area", "more exposed particles", "bigger surface area", "surface area"],
+        answer:
+          "It exposes far more surface area, so more particles are available to collide per second — the same mass, but far more of it exposed.",
+      },
+      {
+        question: "How does a catalyst speed up a reaction?",
+        accept: ["lowers activation energy", "lower activation energy", "alternative pathway", "provides alternative route with lower activation energy", "reduces activation energy"],
+        answer:
+          "It provides an alternative pathway with a lower activation energy, so a greater proportion of collisions are successful. It is not used up.",
+      },
+      {
+        question: "36 cm³ of gas is produced in 18 seconds. Calculate the mean rate in cm³/s. Give the number only.",
+        accept: ["2"],
+        answer:
+          "2 cm³/s. Rate = 36 ÷ 18 = 2. In a written answer include the units, because they carry a mark.",
+      },
+      {
+        question: "60 cm³ of gas is produced in 40 seconds. Calculate the mean rate in cm³/s. Give the number only.",
+        accept: ["1.5"],
+        answer:
+          "1.5 cm³/s. 60 ÷ 40 = 1.5. Mean rate is always quantity divided by total time.",
+      },
+      {
+        question: "A flask loses 2.4 g in 120 seconds. Calculate the mean rate in g/s. Give the number only.",
+        accept: ["0.02"],
+        answer:
+          "0.02 g/s. 2.4 ÷ 120 = 0.02. A small decimal is expected — mass loss is usually slow compared with gas volume.",
+      },
+      {
+        question: "At which point is a reaction fastest: the start, the middle, or the end?",
+        accept: ["the start", "start", "beginning", "at the start"],
+        answer:
+          "The start, when the concentration of reactants is highest so collisions are most frequent. The rate falls as reactants are used up.",
+      },
+      {
+        question: "What does a horizontal section on a rate graph mean?",
+        accept: ["reaction finished", "reaction has stopped", "finished", "stopped", "no more product", "reactant used up", "complete"],
+        answer:
+          "The reaction has finished — no more product is being made because a reactant has been completely used up.",
+      },
+      {
+        question: "Does a steeper line on a rate graph mean a faster or slower reaction?",
+        accept: ["faster", "faster reaction", "quicker"],
+        answer:
+          "Faster. More product is formed in the same time, so the line rises more steeply.",
+      },
+      {
+        question: "Two experiments use the same amount of reactant but one is catalysed. Do they reach the same final volume of gas? Answer yes or no.",
+        accept: ["yes", "y"],
+        answer:
+          "Yes. A catalyst changes how FAST, not how much. The same quantity of reactant always gives the same quantity of product.",
+      },
+      {
+        question: "What piece of apparatus measures the volume of gas produced?",
+        accept: ["gas syringe", "a gas syringe", "syringe", "measuring cylinder"],
+        answer:
+          "A gas syringe. The alternative is measuring the mass lost from an open flask as the gas escapes.",
+      },
+      {
+        question: "What is a biological catalyst called?",
+        accept: ["enzyme", "an enzyme", "enzymes"],
+        answer:
+          "An enzyme. It works the same way as any catalyst — lowering the activation energy — but it is a protein and is far more specific.",
+      },
+      {
+        question: "Higher tier: what do you draw on a curve to find the rate at a particular moment?",
+        accept: ["tangent", "a tangent", "tangent line"],
+        answer:
+          "A tangent — a straight line just touching the curve at that point. Its gradient is the rate at that instant. Foundation students are not asked this.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why increasing the concentration of a solution increases the rate of reaction. Write two or three sentences.",
+        answer:
+          "A more concentrated solution contains more reactant particles in the same volume, so the particles are closer together. That means collisions between reacting particles happen more frequently. Since the rate depends on how often successful collisions occur, more frequent collisions produce a faster reaction — though the proportion of collisions with enough energy is unchanged. Mark this one yourself: the mark is for more FREQUENT collisions, and the best answers note that the energy of collisions is unaffected.",
+      },
+      {
+        question: "Describe how you would investigate the effect of temperature on the rate of reaction between sodium thiosulfate and hydrochloric acid.",
+        answer:
+          "Measure a fixed volume of sodium thiosulfate into a conical flask standing on a printed cross, and warm it to the chosen temperature in a water bath. Add a fixed volume of hydrochloric acid and immediately start a stopwatch, then stop timing when the cross can no longer be seen through the cloudy precipitate. Repeat at several temperatures, keeping the volumes, concentrations and the person judging the disappearance the same, since judging it is subjective. Plot 1 ÷ time against temperature: a shorter time means a faster rate, so the graph should rise with temperature. Mark this one yourself: named control variables, the timing method, and repeating at several temperatures are the key marks.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A catalyst produces more product.",
+        right:
+          "It changes only the speed. The same amount of reactant gives the same amount of product, so the graph reaches the same final height.",
+      },
+      {
+        wrong: "Higher temperature works only by making particles move faster.",
+        right:
+          "That is half of it. It also means a greater PROPORTION of collisions have the activation energy, which is usually the larger effect.",
+      },
+      {
+        wrong: "Powdering a solid gives you more of it.",
+        right:
+          "The mass is identical. What changes is the surface area exposed for collisions.",
+      },
+      {
+        wrong: "A reaction proceeds at a steady rate until it stops.",
+        right:
+          "It is fastest at the start and slows continuously as reactants are used up, which is why rate graphs are curves rather than straight lines.",
+      },
+      {
+        wrong: "Catalysts are used up slowly during the reaction.",
+        right:
+          "They are not used up at all. A small quantity can catalyse a reaction indefinitely, which is why they are so valuable industrially.",
+      },
+    ],
+  },
+
+  "chemistry/reversible-reactions": {
+    summary:
+      "Some reactions go both ways at once, and eventually settle into a balance where neither side wins. This topic covers reversible reactions, dynamic equilibrium, and how changing the conditions shifts that balance — the last of which is Higher tier only and flagged accordingly.",
+    keyFacts: [
+      {
+        heading: "Reversible reactions",
+        points: [
+          "In a REVERSIBLE reaction the products can react to re-form the reactants.",
+          "It is written with the ⇌ symbol instead of a single arrow.",
+          "If the forward reaction is EXOTHERMIC, the reverse is ENDOTHERMIC by exactly the same amount.",
+          "The classic example: hydrated copper sulfate ⇌ anhydrous copper sulfate + water.",
+          "Blue hydrated crystals turn white when heated; adding water turns them blue again and releases heat.",
+        ],
+      },
+      {
+        heading: "Dynamic equilibrium",
+        points: [
+          "Equilibrium is reached only in a CLOSED SYSTEM, where nothing can enter or leave.",
+          "At equilibrium the forward and reverse reactions happen at the SAME RATE.",
+          "So the concentrations of reactants and products stay CONSTANT — but they are not equal.",
+          "It is called DYNAMIC because both reactions are still happening; it is not that everything has stopped.",
+          "The position of equilibrium describes whether there is more product or more reactant present.",
+        ],
+      },
+      {
+        heading: "Higher tier: changing the conditions",
+        higherOnly: true,
+        points: [
+          "If a change is made, the equilibrium shifts to OPPOSE that change — Le Chatelier's principle.",
+          "CONCENTRATION: adding more reactant shifts the position towards the products.",
+          "TEMPERATURE: increasing it shifts the equilibrium in the ENDOTHERMIC direction, to absorb the extra energy.",
+          "So for an exothermic forward reaction, raising the temperature gives LESS product.",
+          "PRESSURE (for gases): increasing it shifts the equilibrium towards the side with FEWER molecules of gas.",
+          "A catalyst does NOT change the position of equilibrium — it only makes it be reached faster.",
+          "This whole section is Higher tier only.",
+        ],
+      },
+      {
+        heading: "Industrial compromise",
+        points: [
+          "The Haber process makes ammonia: nitrogen + hydrogen ⇌ ammonia, and the forward reaction is exothermic.",
+          "Low temperature would give more ammonia at equilibrium, but the reaction would be far too slow.",
+          "So around 450°C is used — a COMPROMISE between yield and rate.",
+          "High pressure favours ammonia because there are fewer gas molecules on the product side, but very high pressure is expensive and dangerous.",
+          "An iron catalyst speeds the reaction without affecting the yield, so it is used because it costs nothing in product.",
+          "Unreacted gases are recycled, so nothing is wasted even though each pass gives an incomplete conversion.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Reversible reaction", definition: "A reaction in which the products can react to re-form the reactants, written with ⇌." },
+      { term: "Equilibrium", definition: "The state where forward and reverse reactions occur at the same rate in a closed system." },
+      { term: "Dynamic equilibrium", definition: "Equilibrium where both reactions continue, but concentrations remain constant." },
+      { term: "Closed system", definition: "A system where no substances can enter or leave, required for equilibrium." },
+      { term: "Position of equilibrium", definition: "Whether the mixture at equilibrium contains more products or more reactants." },
+      { term: "Le Chatelier's principle", definition: "If a change is made, the equilibrium shifts to oppose it. Higher tier." },
+      { term: "Haber process", definition: "The industrial reaction of nitrogen and hydrogen to make ammonia." },
+      { term: "Compromise conditions", definition: "Conditions chosen to balance yield against rate and cost, rather than maximising either." },
+      { term: "Yield", definition: "The amount of product obtained from a reaction." },
+      { term: "Anhydrous", definition: "Containing no water — anhydrous copper sulfate is white." },
+      { term: "Hydrated", definition: "Containing water of crystallisation — hydrated copper sulfate is blue." },
+      { term: "Catalyst", definition: "A substance that speeds up a reaction without being used up, and without changing the equilibrium position." },
+    ],
+    examTips: [
+      {
+        tip: "Equilibrium means EQUAL RATES, not equal amounts",
+        detail:
+          "The concentrations are constant but usually very different. This is the most misunderstood idea in the topic.",
+      },
+      {
+        tip: "Say 'dynamic' and explain it",
+        detail:
+          "Both reactions are still happening, at the same rate. Answers implying everything has stopped lose the mark.",
+      },
+      {
+        tip: "Equilibrium needs a CLOSED system",
+        detail:
+          "If a gas can escape, equilibrium is never reached because the reverse reaction has nothing to work with.",
+      },
+      {
+        tip: "Higher tier: shift OPPOSES the change",
+        detail:
+          "Raise the temperature and it shifts endothermically to absorb it. Add reactant and it shifts to use it up. One principle, every question.",
+      },
+      {
+        tip: "Explain the Haber temperature as a COMPROMISE",
+        detail:
+          "A lower temperature gives more ammonia but far too slowly. 450°C sacrifices yield for a workable rate. The word compromise is the mark.",
+      },
+      {
+        tip: "A catalyst never changes the yield",
+        detail:
+          "It reaches the same equilibrium faster. If a question asks why iron is used in the Haber process, that is the answer.",
+      },
+    ],
+    practice: [
+      {
+        question: "What symbol shows that a reaction is reversible?",
+        accept: ["⇌", "double arrow", "two arrows", "reversible arrow", "half arrows"],
+        answer:
+          "The ⇌ symbol — two half arrows pointing opposite ways. A single arrow means the reaction goes only one way.",
+      },
+      {
+        question: "At equilibrium, what is true about the rates of the forward and reverse reactions?",
+        accept: ["they are equal", "equal", "the same", "same rate", "equal rates"],
+        answer:
+          "They are equal. That is what keeps the concentrations constant — not that the reactions have stopped.",
+      },
+      {
+        question: "Why is equilibrium described as DYNAMIC?",
+        accept: ["both reactions still happen", "reactions continue", "still reacting", "both still occurring", "reactions are still going", "not stopped"],
+        answer:
+          "Because both the forward and reverse reactions are still taking place, just at the same rate. Nothing has stopped.",
+      },
+      {
+        question: "What type of system is needed for equilibrium to be reached?",
+        accept: ["closed", "closed system", "a closed system"],
+        answer:
+          "A closed system — nothing can enter or leave. If a gas escapes, the reverse reaction has nothing to work with and equilibrium is never reached.",
+      },
+      {
+        question: "At equilibrium, are the concentrations of reactants and products necessarily equal? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. They are CONSTANT, not equal — usually one side is heavily favoured. This is the most misunderstood point in the topic.",
+      },
+      {
+        question: "If the forward reaction is exothermic, what is the reverse reaction?",
+        accept: ["endothermic"],
+        answer:
+          "Endothermic, by exactly the same amount of energy. That symmetry is what makes temperature such a powerful lever on equilibrium.",
+      },
+      {
+        question: "What colour is anhydrous copper sulfate?",
+        accept: ["white"],
+        answer:
+          "White. Adding water turns it blue and releases heat, which is why it is used as a test for the presence of water.",
+      },
+      {
+        question: "What colour is hydrated copper sulfate?",
+        accept: ["blue"],
+        answer:
+          "Blue. Heating drives off the water of crystallisation, turning it white — and the reaction is reversible.",
+      },
+      {
+        question: "Which two gases react in the Haber process?",
+        accept: ["nitrogen and hydrogen", "hydrogen and nitrogen", "n2 and h2"],
+        answer:
+          "Nitrogen and hydrogen, forming ammonia. The nitrogen comes from the air and the hydrogen usually from natural gas.",
+      },
+      {
+        question: "What is made in the Haber process?",
+        accept: ["ammonia", "nh3", "nh₃"],
+        answer:
+          "Ammonia, NH₃. It is used mainly to make fertilisers, which is why the process matters so much for food production.",
+      },
+      {
+        question: "Higher tier: increasing the temperature shifts equilibrium in which direction?",
+        accept: ["endothermic", "the endothermic direction", "endothermic direction"],
+        answer:
+          "The endothermic direction, to absorb the extra energy. That is Le Chatelier's principle — the system opposes the change made to it.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: increasing pressure shifts a gas equilibrium towards which side?",
+        accept: ["fewer molecules", "the side with fewer molecules", "fewer moles", "fewer gas molecules", "side with fewer molecules"],
+        answer:
+          "The side with FEWER gas molecules, because that reduces the pressure and so opposes the change.",
+        higherOnly: true,
+      },
+      {
+        question: "Does a catalyst change the position of equilibrium? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. It speeds up both the forward and reverse reactions equally, so equilibrium is reached faster but the yield is identical.",
+      },
+      {
+        question: "Approximately what temperature is used in the Haber process, in °C? Give the number only.",
+        accept: ["450"],
+        answer:
+          "About 450°C. A lower temperature would give more ammonia at equilibrium but far too slowly to be useful — it is a compromise.",
+      },
+      {
+        question: "Explain what is meant by dynamic equilibrium. Write two or three sentences.",
+        answer:
+          "In a closed system, a reversible reaction reaches a point where the forward and reverse reactions are proceeding at exactly the same rate. Because reactant is being converted to product at the same speed as product is converted back, the concentrations of everything stay constant. It is called dynamic because both reactions are still happening continuously — nothing has stopped, and the concentrations being constant does not mean they are equal. Mark this one yourself: equal rates, constant concentrations, and reactions still occurring are the three points.",
+      },
+      {
+        question: "Explain why a temperature of around 450°C is used in the Haber process, even though it reduces the yield.",
+        answer:
+          "The forward reaction that makes ammonia is exothermic, so a lower temperature would shift the equilibrium towards the products and give a higher yield. However, at a low temperature the reaction is extremely slow, so although the eventual yield would be better it would take far too long to be commercially useful. A temperature around 450°C is therefore a compromise: it sacrifices some yield in exchange for a much faster rate, and the unreacted gases are recycled so little is ultimately wasted. An iron catalyst is used as well, since it speeds the reaction without reducing the yield at all. Mark this one yourself: the word compromise, plus both sides of the trade-off, are what the marks are for.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "At equilibrium the reaction has stopped.",
+        right:
+          "Both reactions continue at the same rate. That is exactly why it is called DYNAMIC equilibrium.",
+      },
+      {
+        wrong: "At equilibrium there are equal amounts of reactants and products.",
+        right:
+          "The amounts are CONSTANT, not equal. One side is usually strongly favoured.",
+      },
+      {
+        wrong: "A catalyst increases the yield of a reversible reaction.",
+        right:
+          "It only makes equilibrium arrive sooner. The position of equilibrium, and therefore the yield, is unchanged.",
+      },
+      {
+        wrong: "Higher temperature always gives more product.",
+        right:
+          "It gives more product only if the forward reaction is endothermic. For an exothermic reaction such as the Haber process, higher temperature reduces the yield.",
+      },
+      {
+        wrong: "The Haber process conditions are chosen to maximise yield.",
+        right:
+          "They are a compromise between yield, rate and cost. The conditions giving the highest yield would be far too slow to be useful.",
+      },
+    ],
+  },
 };
