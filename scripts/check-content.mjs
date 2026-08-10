@@ -263,6 +263,25 @@ try {
           t.mis += c.misconceptions.length;
         }
 
+        // ── PHYSICS NEEDS PRACTICE AT CALCULATING ──────────────────────────
+        //
+        // Matthew asked for at least five calculation questions per Physics
+        // topic, on the grounds that Physics is the most mathematical subject
+        // and calculation is the thing that actually needs practising rather
+        // than reading. He is right, and this makes it enforceable rather than
+        // a claim — including for the topics not yet written.
+        //
+        // "Calculation" is defined as an auto-marked question whose ACCEPT LIST
+        // is numeric. That is deliberately strict: a question merely mentioning
+        // a number does not count, only one where the student must produce a
+        // number. Self-marked questions are excluded for the same reason.
+        if (subject.slug === "physics") {
+          const numeric = (c.practice ?? []).filter(
+            (p) => p.accept && p.accept.some((a) => /^-?[\d.,]+%?$/.test(String(a).trim())),
+          ).length;
+          expect(numeric >= 5, at(`only ${numeric} calculation questions — Physics topics need at least 5`));
+        }
+
         // ── Which subjects are actually TIERED ──────────────────────────────
         //
         // Maths and the three sciences are entered at Foundation (grades 1-5)
