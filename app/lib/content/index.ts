@@ -17,6 +17,7 @@
 
 import { BIOLOGY } from "./biology";
 import { BUSINESS } from "./business";
+import { CHEMISTRY } from "./chemistry";
 import { COMPUTER_SCIENCE } from "./computer-science";
 import { ENGLISH } from "./english";
 import { HISTORY } from "./history";
@@ -101,6 +102,7 @@ export const TOPIC_CONTENT: Record<string, TopicContent> = {
   ...GEOGRAPHY,
   ...BUSINESS,
   ...BIOLOGY,
+  ...CHEMISTRY,
 };
 
 export function getTopicContent(
