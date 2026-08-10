@@ -228,7 +228,12 @@ try {
             //
             // The test for adding a word here: does it signal to the STUDENT
             // that a range is acceptable? If not, it does not belong.
-            const invitesSeveral = /\bgive one\b|\bname one\b|\bone piece of\b|\broughly\b|\bapproximately\b|\babout\b|\beither\b|\bfor example\b/i.test(p.question);
+            //
+            // Note "approximate" has no trailing \b, so it covers both
+            // "approximate" and "approximately". That is completing one word,
+            // not adding a second concept — the rule fired on "the approximate
+            // speed of sound", where 330 and 340 are both correct.
+            const invitesSeveral = /\bgive one\b|\bname one\b|\bone piece of\b|\broughly\b|\bapproximate|\babout\b|\beither\b|\bfor example\b/i.test(p.question);
             if (!invitesSeveral) {
               const nums = p.accept
                 .map(normalise)

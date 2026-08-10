@@ -1535,4 +1535,978 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
     ],
   },
+
+  // ─── YEAR 10 ──────────────────────────────────────────────────────────────
+
+  "physics/electrical-circuits": {
+    summary:
+      "This topic takes the electricity equations from Year 9 and applies them to real circuits. The whole subject reduces to two rules — in series the current is shared nowhere and the potential difference is shared out; in parallel it is the other way round — plus knowing what happens to total resistance when you add components.",
+    keyFacts: [
+      {
+        heading: "Series circuits",
+        points: [
+          "There is only ONE path, so the CURRENT is the same at every point.",
+          "The POTENTIAL DIFFERENCE is shared between the components and adds up to the supply.",
+          "Total resistance is the SUM of the individual resistances: R = R₁ + R₂.",
+          "Adding a component in series therefore INCREASES total resistance and DECREASES the current.",
+          "If one component breaks, the circuit is broken and everything stops.",
+        ],
+      },
+      {
+        heading: "Parallel circuits",
+        points: [
+          "Each branch has the FULL supply potential difference across it.",
+          "The CURRENT is shared between branches, and the branch currents add up to the total.",
+          "Total resistance is LESS than the smallest individual resistance.",
+          "Adding a resistor in parallel DECREASES total resistance, because charge gains another route.",
+          "If one branch breaks, the others keep working — which is why house lighting is wired in parallel.",
+          "Two identical resistors in parallel give a total of half the value of one of them.",
+        ],
+      },
+      {
+        heading: "Component behaviour",
+        points: [
+          "A FIXED RESISTOR at constant temperature is ohmic: the I-V graph is a straight line through the origin.",
+          "A FILAMENT LAMP's resistance rises as it heats, so the graph curves and flattens.",
+          "A DIODE conducts in one direction only, so the graph is flat then rises sharply.",
+          "A THERMISTOR's resistance falls as temperature rises — used in thermostats and fire alarms.",
+          "An LDR's resistance falls as light intensity rises — used in automatic street lights.",
+        ],
+      },
+      {
+        heading: "Investigating circuits",
+        points: [
+          "To find resistance: measure current with an ammeter in series and p.d. with a voltmeter in parallel, then use R = V ÷ I.",
+          "A VARIABLE RESISTOR changes the current so several pairs of readings can be taken.",
+          "Take repeats and plot a graph rather than relying on a single pair of readings.",
+          "Keep the temperature constant, or the resistance of the wire itself will change and spoil the result.",
+          "Switch off between readings so the component does not heat up during the experiment.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Series circuit", definition: "A circuit with a single path, where the current is the same at every point." },
+      { term: "Parallel circuit", definition: "A circuit with branches, where each branch has the full supply potential difference." },
+      { term: "Total resistance in series", definition: "The sum of the individual resistances: R = R1 + R2." },
+      { term: "Total resistance in parallel", definition: "Always less than the smallest individual resistance, because charge gains another route." },
+      { term: "Fixed resistor", definition: "An ohmic component whose resistance stays constant at a fixed temperature." },
+      { term: "Filament lamp", definition: "A component whose resistance increases as it heats up, giving a curved I-V graph." },
+      { term: "Diode", definition: "A component that conducts in one direction only." },
+      { term: "Thermistor", definition: "A resistor whose resistance falls as temperature rises." },
+      { term: "LDR", definition: "A light-dependent resistor, whose resistance falls as light intensity rises." },
+      { term: "Variable resistor", definition: "A resistor whose value can be changed, used to vary the current in an investigation." },
+      { term: "I-V graph", definition: "A graph of current against potential difference, whose shape identifies the component." },
+      { term: "Ohmic conductor", definition: "A component giving a straight line through the origin on an I-V graph." },
+      { term: "Ammeter", definition: "An instrument measuring current, connected in series." },
+      { term: "Voltmeter", definition: "An instrument measuring potential difference, connected in parallel across a component." },
+    ],
+    examTips: [
+      {
+        tip: "Series: same current. Parallel: same p.d.",
+        detail:
+          "Write both down before starting any circuit question. Nearly every mark in this topic depends on getting them the right way round.",
+      },
+      {
+        tip: "Parallel LOWERS total resistance",
+        detail:
+          "It is counter-intuitive, and almost everyone guesses the opposite. Two identical resistors in parallel give half the resistance of one.",
+      },
+      {
+        tip: "Identify components from the graph SHAPE",
+        detail:
+          "Straight line through origin means ohmic; an S-shaped curve means a filament lamp; flat then sharply rising means a diode.",
+      },
+      {
+        tip: "Say WHY house lighting is parallel",
+        detail:
+          "Each lamp gets the full mains p.d., and one failing does not stop the others. Both reasons are worth marks.",
+      },
+      {
+        tip: "Control the temperature in resistance experiments",
+        detail:
+          "A wire heats up as current flows and its resistance changes, so switch off between readings. This is a standard evaluation point.",
+      },
+      {
+        tip: "Check your answer against the circuit",
+        detail:
+          "In parallel, total resistance must be less than the smallest branch. If your answer is bigger, you have used the series rule by mistake.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Two resistors of 4 Ω and 6 Ω are connected in series to a 20 V supply. Calculate the total resistance and the current.",
+        steps: [
+          "In series, resistances add: R = 4 + 6 = 10 Ω.",
+          "Rearrange Ohm's law to find current: I = V ÷ R.",
+          "I = 20 ÷ 10.",
+          "= 2 A. Because it is a series circuit, this same 2 A flows through both resistors.",
+        ],
+        answer: "10 Ω and 2 A",
+      },
+    ],
+    practice: [
+      {
+        question: "Two resistors of 5 Ω and 7 Ω are in series. Calculate the total resistance in ohms. Give the number only.",
+        accept: ["12"],
+        answer:
+          "12 Ω. In series resistances simply add: 5 + 7 = 12. In parallel the total would be less than 5 Ω.",
+      },
+      {
+        question: "Three 4 Ω resistors are in series. Calculate the total resistance in ohms. Give the number only.",
+        accept: ["12"],
+        answer:
+          "12 Ω. 4 + 4 + 4 = 12. Every extra component in series adds resistance and therefore reduces the current.",
+      },
+      {
+        question: "Two identical 8 Ω resistors are in parallel. Calculate the total resistance in ohms. Give the number only.",
+        accept: ["4"],
+        answer:
+          "4 Ω. Two identical resistors in parallel give half the value of one. Note it is LESS than either resistor, as it always must be.",
+      },
+      {
+        question: "A 12 V supply is across a total resistance of 3 Ω. Calculate the current in amps. Give the number only.",
+        accept: ["4"],
+        answer:
+          "4 A. I = V ÷ R = 12 ÷ 3 = 4. Ohm's law is needed in all three rearrangements throughout this topic.",
+      },
+      {
+        question: "In a parallel circuit, branch currents are 2 A and 3 A. Calculate the total current in amps. Give the number only.",
+        accept: ["5"],
+        answer:
+          "5 A. In parallel the branch currents add to give the total: 2 + 3 = 5. In series the current would be the same everywhere instead.",
+      },
+      {
+        question: "In a series circuit with a 9 V supply, one component has 4 V across it. Calculate the p.d. across the other. Give the number only.",
+        accept: ["5"],
+        answer:
+          "5 V. In series the potential differences share out and add to the supply: 9 − 4 = 5.",
+      },
+      {
+        question: "A 6 Ω resistor carries 2 A. Calculate the potential difference across it in volts. Give the number only.",
+        accept: ["12"],
+        answer:
+          "12 V. V = IR = 2 × 6 = 12. This is Ohm's law in its original form.",
+      },
+      {
+        question: "In a SERIES circuit, what is the same at every point?",
+        accept: ["current", "the current"],
+        answer:
+          "The current. There is only one path, so every charge passing one point must pass every other point too.",
+      },
+      {
+        question: "In a PARALLEL circuit, what is the same across every branch?",
+        accept: ["potential difference", "voltage", "pd", "p.d.", "the potential difference"],
+        answer:
+          "The potential difference, equal to the supply. The current is shared between the branches instead.",
+      },
+      {
+        question: "Does adding a resistor in parallel increase or decrease the total resistance?",
+        accept: ["decrease", "decreases", "reduces", "lower", "goes down"],
+        answer:
+          "It decreases it. The extra branch gives charge another route, so more total current flows for the same supply.",
+      },
+      {
+        question: "Which component gives a straight line through the origin on an I-V graph?",
+        accept: ["fixed resistor", "resistor", "ohmic conductor", "a resistor", "ohmic"],
+        answer:
+          "A fixed resistor at constant temperature — an ohmic conductor. A filament lamp curves, and a diode is flat then rises sharply.",
+      },
+      {
+        question: "Which component conducts in one direction only?",
+        accept: ["diode", "a diode", "the diode"],
+        answer:
+          "A diode. Its I-V graph is flat in the reverse direction and rises steeply in the forward direction.",
+      },
+      {
+        question: "Which component's resistance falls as temperature rises?",
+        accept: ["thermistor", "a thermistor", "the thermistor"],
+        answer:
+          "A thermistor. It is used in thermostats and fire alarms, where a temperature change needs to alter a circuit.",
+      },
+      {
+        question: "Why is house lighting wired in parallel?",
+        accept: ["each gets full voltage", "one failing doesnt stop others", "full pd across each", "independent", "so one can fail", "each lamp gets full mains voltage"],
+        answer:
+          "Each lamp receives the full mains potential difference, and one lamp failing does not break the circuit for the others.",
+      },
+      {
+        question: "Explain why the current decreases when another resistor is added in series. Write two or three sentences.",
+        answer:
+          "In a series circuit the total resistance is the sum of the individual resistances, so adding another component increases the total. The supply potential difference is unchanged, and Ohm's law rearranges to I = V ÷ R, so a larger resistance with the same potential difference must produce a smaller current. Physically, the charge now has more opposition to overcome along its single path. Mark this one yourself: the marks are for resistances adding AND for applying I = V ÷ R.",
+      },
+      {
+        question: "Explain how you would measure the resistance of a component in the lab.",
+        answer:
+          "Connect the component in series with a battery, an ammeter and a variable resistor, and connect a voltmeter in parallel across the component. Use the variable resistor to change the current, and record several pairs of current and potential difference readings rather than relying on one. Calculate resistance from R = V ÷ I for each pair, or plot V against I and use the gradient. Switch the circuit off between readings so the component does not heat up, since a temperature change would alter the resistance and spoil the result. Mark this one yourself: the circuit layout, several readings, and controlling temperature are the three things worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Adding components always increases total resistance.",
+        right:
+          "Only in series. In parallel it DECREASES, because each new branch gives charge an additional route.",
+      },
+      {
+        wrong: "Current gets used up as it passes through components.",
+        right:
+          "In series the current is identical everywhere. Energy is transferred, but charge is not consumed.",
+      },
+      {
+        wrong: "Total resistance in parallel is the average of the branches.",
+        right:
+          "It is always LESS than the smallest branch. Two identical resistors in parallel give half of one.",
+      },
+      {
+        wrong: "A filament lamp is ohmic.",
+        right:
+          "Its resistance rises as it heats, so the graph curves. Only a component at constant temperature is ohmic.",
+      },
+    ],
+  },
+
+  "physics/mains-electricity": {
+    summary:
+      "Mains electricity is where physics meets everyday safety. This topic covers direct and alternating current, the three wires in a plug, how fuses and earthing protect you, and the power and energy calculations that explain why some appliances cost so much more to run than others.",
+    keyFacts: [
+      {
+        heading: "AC, DC and the mains supply",
+        points: [
+          "DIRECT CURRENT (dc) flows one way only — from a cell or battery.",
+          "ALTERNATING CURRENT (ac) repeatedly changes direction — this is what mains supplies.",
+          "UK mains is about 230 V at a frequency of 50 Hz, meaning it changes direction 50 times per second.",
+          "The frequency is the number of complete cycles per second.",
+          "Mains is ac because it is far easier to change the potential difference with transformers, which the National Grid depends on.",
+        ],
+      },
+      {
+        heading: "The three wires",
+        points: [
+          "LIVE wire, brown, carries the alternating potential difference from the supply at about 230 V.",
+          "NEUTRAL wire, blue, completes the circuit and is at close to 0 V.",
+          "EARTH wire, green and yellow, is a safety wire at 0 V that carries current only if there is a fault.",
+          "The live wire is dangerous even when a switch is off, because it is still at 230 V relative to earth.",
+          "Touching the live wire creates a large potential difference across your body, so a current flows through you to earth.",
+        ],
+      },
+      {
+        heading: "Fuses, earthing and circuit breakers",
+        points: [
+          "A FUSE is a thin wire that melts and breaks the circuit if the current exceeds its rating.",
+          "The fuse must be in the LIVE wire, so that the appliance is fully disconnected from the supply.",
+          "Choose the next fuse rating ABOVE the normal operating current of the appliance.",
+          "EARTHING gives a fault current a low-resistance path to earth, which makes the current large enough to blow the fuse.",
+          "DOUBLE INSULATION means the case cannot become live, so no earth wire is needed.",
+          "A CIRCUIT BREAKER does the same job as a fuse but switches off faster and can be reset rather than replaced.",
+        ],
+      },
+      {
+        heading: "Power and energy",
+        points: [
+          "POWER = potential difference × current: P = V × I.",
+          "POWER = current squared × resistance: P = I² × R.",
+          "ENERGY TRANSFERRED = power × time: E = P × t, in joules when time is in seconds.",
+          "Domestic energy is billed in KILOWATT-HOURS: energy in kWh = power in kW × time in hours.",
+          "The higher an appliance's power, the faster it transfers energy and the more it costs to run.",
+          "Cost = energy in kWh × cost per kWh.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Direct current", definition: "Current that flows in one direction only, supplied by a cell or battery." },
+      { term: "Alternating current", definition: "Current that repeatedly changes direction, as supplied by the mains." },
+      { term: "Mains supply", definition: "UK domestic electricity, about 230 V at a frequency of 50 Hz." },
+      { term: "Live wire", definition: "The brown wire carrying the alternating potential difference at about 230 V." },
+      { term: "Neutral wire", definition: "The blue wire completing the circuit, at close to 0 V." },
+      { term: "Earth wire", definition: "The green and yellow safety wire at 0 V, which carries current only if there is a fault." },
+      { term: "Fuse", definition: "A thin wire that melts if the current exceeds its rating, breaking the circuit." },
+      { term: "Circuit breaker", definition: "A switch that trips when the current is too high; faster than a fuse and resettable." },
+      { term: "Earthing", definition: "Connecting a metal case to earth so a fault current blows the fuse instead of shocking the user." },
+      { term: "Double insulation", definition: "A plastic case that cannot become live, so no earth wire is needed." },
+      { term: "Kilowatt-hour", definition: "The unit used to bill domestic energy: the energy used by a 1 kW appliance in 1 hour." },
+      { term: "Frequency", definition: "The number of complete cycles per second, measured in hertz." },
+      { term: "National Grid", definition: "The system of cables and transformers distributing electricity across the country." },
+      { term: "Step-up transformer", definition: "A transformer that increases potential difference and decreases current for transmission." },
+    ],
+    examTips: [
+      {
+        tip: "The fuse goes in the LIVE wire",
+        detail:
+          "Putting it in the neutral would break the circuit but leave the appliance connected to 230 V. The reason is the mark, not the fact.",
+      },
+      {
+        tip: "Choose the next fuse rating ABOVE the operating current",
+        detail:
+          "A 3 A appliance needs a 5 A fuse, not a 3 A one, or it would blow every time the appliance switched on.",
+      },
+      {
+        tip: "Explain earthing through the FUSE",
+        detail:
+          "The earth wire gives a low-resistance path, so a large current flows and blows the fuse — that is what makes it safe, not the earth wire itself.",
+      },
+      {
+        tip: "Watch the units in energy calculations",
+        detail:
+          "Joules need power in watts and time in SECONDS. Kilowatt-hours need power in kW and time in HOURS. Mixing them is the classic error.",
+      },
+      {
+        tip: "The live wire is dangerous even when switched off",
+        detail:
+          "It remains at 230 V relative to earth, so touching it still creates a large potential difference across your body.",
+      },
+      {
+        tip: "Say why mains is ac",
+        detail:
+          "Because transformers only work with ac, and the National Grid needs them to step the potential difference up and down.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A kettle operates at 230 V and draws a current of 10 A. Calculate its power.",
+        steps: [
+          "Write the equation: P = V × I.",
+          "Substitute: P = 230 × 10.",
+          "= 2,300.",
+          "Power is in watts, so 2,300 W, or 2.3 kW.",
+        ],
+        answer: "2,300 W (2.3 kW)",
+      },
+      {
+        question:
+          "A 2 kW heater runs for 3 hours. Calculate the energy used in kilowatt-hours and the cost at 30p per kWh.",
+        steps: [
+          "Energy in kWh = power in kW × time in hours.",
+          "= 2 × 3 = 6 kWh.",
+          "Cost = energy × price per unit = 6 × 30p.",
+          "= 180p, which is £1.80.",
+        ],
+        answer: "6 kWh, costing £1.80",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the potential difference of the UK mains supply, in volts? Give the number only.",
+        accept: ["230"],
+        answer:
+          "About 230 V, at a frequency of 50 Hz. Both numbers are worth memorising because they appear in most mains questions.",
+      },
+      {
+        question: "What is the frequency of the UK mains supply, in hertz? Give the number only.",
+        accept: ["50"],
+        answer:
+          "50 Hz — the current changes direction 50 times per second. That is what makes it alternating rather than direct current.",
+      },
+      {
+        question: "An appliance uses 230 V and 5 A. Calculate its power in watts. Give the number only.",
+        accept: ["1150", "1,150"],
+        answer:
+          "1,150 W. P = V × I = 230 × 5. Multiplying by the mains voltage is the most common calculation in this topic.",
+      },
+      {
+        question: "An appliance uses 230 V and 2 A. Calculate its power in watts. Give the number only.",
+        accept: ["460"],
+        answer:
+          "460 W. P = 230 × 2 = 460. Compare this with a kettle at over 2,000 W — the difference explains the running cost.",
+      },
+      {
+        question: "A 3 kW appliance runs for 4 hours. Calculate the energy used in kWh. Give the number only.",
+        accept: ["12"],
+        answer:
+          "12 kWh. Energy in kWh = power in kW × time in hours = 3 × 4. Note this needs kW and hours, NOT watts and seconds.",
+      },
+      {
+        question: "A 0.5 kW lamp runs for 6 hours. Calculate the energy used in kWh. Give the number only.",
+        accept: ["3"],
+        answer:
+          "3 kWh. 0.5 × 6 = 3. Converting watts to kilowatts first — dividing by 1,000 — is essential for this equation.",
+      },
+      {
+        question: "8 kWh of energy costs 25p per kWh. Calculate the total cost in pence. Give the number only.",
+        accept: ["200"],
+        answer:
+          "200p, or £2.00. Cost = energy × price per unit = 8 × 25. Check whether the question wants pence or pounds.",
+      },
+      {
+        question: "A 100 W lamp runs for 60 seconds. Calculate the energy transferred in joules. Give the number only.",
+        accept: ["6000", "6,000"],
+        answer:
+          "6,000 J. E = P × t = 100 × 60. For joules you need watts and SECONDS, which is a different pairing from the kWh equation.",
+      },
+      {
+        question: "What colour is the live wire in a UK plug?",
+        accept: ["brown"],
+        answer:
+          "Brown. Neutral is blue, and earth is green and yellow striped. All three colours are examinable.",
+      },
+      {
+        question: "What colour is the earth wire in a UK plug?",
+        accept: ["green and yellow", "green/yellow", "green and yellow stripes", "yellow and green", "green yellow"],
+        answer:
+          "Green and yellow striped. It is a safety wire at 0 V and carries current only when there is a fault.",
+      },
+      {
+        question: "Which wire must the fuse be connected in?",
+        accept: ["live", "the live wire", "live wire"],
+        answer:
+          "The live wire. Placing it in the neutral would break the circuit but leave the appliance still connected to 230 V, which would be dangerous.",
+      },
+      {
+        question: "An appliance normally draws 4 A. Should you fit a 3 A or a 5 A fuse?",
+        accept: ["5", "5a", "5 a", "5 amp", "the 5a"],
+        answer:
+          "The 5 A fuse — the next rating above the normal operating current. A 3 A fuse would blow every time the appliance was switched on.",
+      },
+      {
+        question: "What is the term for a plastic case that cannot become live, so no earth wire is needed?",
+        accept: ["double insulation", "double insulated", "double-insulated"],
+        answer:
+          "Double insulation. Because the outer case is an insulator, there is no metal that could become live in a fault.",
+      },
+      {
+        question: "Which is faster to act and can be reset: a fuse or a circuit breaker?",
+        accept: ["circuit breaker", "a circuit breaker", "breaker"],
+        answer:
+          "A circuit breaker. It trips faster than a fuse melts and can simply be switched back on rather than replaced.",
+      },
+      {
+        question: "Explain how an earth wire and a fuse work together to keep an appliance safe. Write three sentences.",
+        answer:
+          "If a fault makes the live wire touch the metal case, the earth wire provides a very low-resistance path from the case to earth. Because the resistance is so low, a very large current flows through the live wire and the earth wire. That surge is far above the fuse's rating, so the fuse wire melts almost immediately and disconnects the live wire, leaving the case safe to touch. Mark this one yourself: the low resistance, the large current AND the fuse blowing are all needed — the earth wire alone does not make it safe.",
+      },
+      {
+        question: "Explain why touching the live wire is dangerous even when the appliance is switched off.",
+        answer:
+          "The live wire remains at about 230 V relative to earth whether the appliance's switch is open or closed, because the switch only interrupts the circuit inside the appliance. A person standing on the ground is at 0 V, so touching the live wire creates a potential difference of around 230 V across their body. That drives a current through them to earth, and even a small current through the heart can be fatal. Mark this one yourself: the potential difference between the wire and earth, and the current through the body, are the key points.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The earth wire carries current all the time.",
+        right:
+          "It carries current only when there is a fault. In normal operation no current flows through it at all.",
+      },
+      {
+        wrong: "A fuse protects the user directly.",
+        right:
+          "It protects the appliance and the wiring from overheating, and works with the earth wire to disconnect a faulty appliance. It is the combination that keeps you safe.",
+      },
+      {
+        wrong: "You should fit the fuse that exactly matches the operating current.",
+        right:
+          "Choose the next rating ABOVE it. An exact match would blow during the normal surge when the appliance switches on.",
+      },
+      {
+        wrong: "Kilowatt-hours are a unit of power.",
+        right:
+          "They are a unit of ENERGY — power multiplied by time. The kilowatt is the unit of power.",
+      },
+      {
+        wrong: "Switching an appliance off makes the live wire safe.",
+        right:
+          "The live wire stays at 230 V relative to earth. Only unplugging or isolating the supply removes the danger.",
+      },
+    ],
+  },
+
+  "physics/motion-and-graphs": {
+    summary:
+      "Motion is described by four quantities — distance, displacement, speed, velocity — and two graphs that carry most of the marks. This topic covers the difference between scalar and vector versions of the same idea, the equations for speed and acceleration, and how to read gradients and areas off graphs, which is where the real exam technique lies.",
+    keyFacts: [
+      {
+        heading: "Distance, displacement, speed and velocity",
+        points: [
+          "DISTANCE is a scalar — how far you travelled, with no direction.",
+          "DISPLACEMENT is a vector — how far you ended up from the start, and in what direction.",
+          "SPEED is a scalar; VELOCITY is speed in a stated direction, so it is a vector.",
+          "Walking a full lap of a track leaves your displacement at zero, though the distance was a full lap.",
+          "Typical values worth knowing: walking about 1.5 m/s, running about 3 m/s, cycling about 6 m/s.",
+          "The speed of sound in air is about 330 m/s.",
+        ],
+      },
+      {
+        heading: "The equations",
+        points: [
+          "SPEED = distance ÷ time: v = s ÷ t.",
+          "ACCELERATION = change in velocity ÷ time: a = (v − u) ÷ t, where u is the starting velocity.",
+          "Acceleration is measured in m/s², and a NEGATIVE acceleration means slowing down.",
+          "The uniform acceleration equation: v² − u² = 2 × a × s.",
+          "Objects falling near the Earth accelerate at about 9.8 m/s² until air resistance balances weight.",
+          "At TERMINAL VELOCITY the resultant force is zero, so the object falls at a constant speed.",
+        ],
+      },
+      {
+        heading: "Distance-time graphs",
+        points: [
+          "The GRADIENT of a distance-time graph gives the SPEED.",
+          "A horizontal line means the object is stationary.",
+          "A straight sloping line means constant speed; a steeper line means faster.",
+          "A CURVE means the speed is changing — the object is accelerating or decelerating.",
+          "For a curved graph, draw a TANGENT and find its gradient to get the speed at that instant.",
+        ],
+      },
+      {
+        heading: "Velocity-time graphs",
+        points: [
+          "The GRADIENT of a velocity-time graph gives the ACCELERATION.",
+          "The AREA UNDER a velocity-time graph gives the DISTANCE travelled.",
+          "A horizontal line means constant velocity, so zero acceleration.",
+          "A line sloping down means deceleration; a line crossing the axis means the direction reversed.",
+          "Split an awkward area into triangles and rectangles, work out each, then add them.",
+          "Area of a triangle is ½ × base × height — the most useful formula in the whole topic.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Distance", definition: "A scalar measuring how far an object has travelled, with no direction." },
+      { term: "Displacement", definition: "A vector measuring how far an object is from its start, and in what direction." },
+      { term: "Speed", definition: "A scalar measuring how fast an object moves: v = s ÷ t." },
+      { term: "Velocity", definition: "Speed in a stated direction, making it a vector quantity." },
+      { term: "Acceleration", definition: "The rate of change of velocity: a = (v − u) ÷ t, measured in m/s²." },
+      { term: "Deceleration", definition: "Negative acceleration — the object is slowing down." },
+      { term: "Terminal velocity", definition: "The constant speed reached when drag balances weight, so the resultant force is zero." },
+      { term: "Distance-time graph", definition: "A graph whose gradient gives the speed." },
+      { term: "Velocity-time graph", definition: "A graph whose gradient gives acceleration and whose area gives distance travelled." },
+      { term: "Gradient", definition: "The steepness of a line: change in y divided by change in x." },
+      { term: "Tangent", definition: "A straight line touching a curve at a point, used to find an instantaneous gradient." },
+      { term: "Uniform acceleration", definition: "Acceleration that stays constant, allowing v² − u² = 2as to be used." },
+      { term: "Scalar", definition: "A quantity with magnitude only." },
+      { term: "Vector", definition: "A quantity with magnitude and direction." },
+    ],
+    examTips: [
+      {
+        tip: "Distance-time gradient = speed. Velocity-time gradient = acceleration",
+        detail:
+          "Two different graphs, two different meanings for the same gradient. Confusing them wrecks the whole question.",
+      },
+      {
+        tip: "AREA under a velocity-time graph gives DISTANCE",
+        detail:
+          "This is the one students forget. Split the shape into triangles and rectangles and add them up.",
+      },
+      {
+        tip: "In a = (v − u) ÷ t, u is the STARTING velocity",
+        detail:
+          "Subtract the start from the end, not the other way round, or you will get the sign wrong on a deceleration.",
+      },
+      {
+        tip: "Explain terminal velocity through forces",
+        detail:
+          "As speed rises, drag rises, until drag equals weight and the resultant force is zero. Zero resultant means constant velocity.",
+      },
+      {
+        tip: "A curved distance-time graph means changing speed",
+        detail:
+          "Draw a tangent and find its gradient for the speed at that moment. A long tangent gives a more accurate reading.",
+      },
+      {
+        tip: "Check units before calculating",
+        detail:
+          "Time in seconds, distance in metres. A time given in minutes must be converted, or the answer is out by a factor of 60.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A car travels 240 m in 60 s. Calculate its average speed.",
+        steps: [
+          "Write the equation: speed = distance ÷ time.",
+          "Substitute: v = 240 ÷ 60.",
+          "= 4.",
+          "Speed is in metres per second, so 4 m/s.",
+        ],
+        answer: "4 m/s",
+      },
+      {
+        question:
+          "A car accelerates from 5 m/s to 20 m/s in 3 seconds. Calculate its acceleration.",
+        steps: [
+          "Write the equation: a = (v − u) ÷ t.",
+          "Substitute: a = (20 − 5) ÷ 3.",
+          "= 15 ÷ 3.",
+          "= 5 m/s². The units are metres per second squared, because it is a change of speed per second.",
+        ],
+        answer: "5 m/s²",
+      },
+      {
+        question:
+          "On a velocity-time graph, an object accelerates uniformly from rest to 20 m/s over 10 seconds. Find the distance travelled.",
+        steps: [
+          "Distance is the AREA under a velocity-time graph.",
+          "From rest to 20 m/s in a straight line makes a triangle.",
+          "Area = ½ × base × height = ½ × 10 × 20.",
+          "= 100 m.",
+        ],
+        answer: "100 m",
+      },
+    ],
+    practice: [
+      {
+        question: "A runner covers 100 m in 20 s. Calculate the average speed in m/s. Give the number only.",
+        accept: ["5"],
+        answer:
+          "5 m/s. Speed = distance ÷ time = 100 ÷ 20. Always check the time is in seconds before dividing.",
+      },
+      {
+        question: "A cyclist travels 900 m in 150 s. Calculate the average speed in m/s. Give the number only.",
+        accept: ["6"],
+        answer:
+          "6 m/s. 900 ÷ 150 = 6, which is about right for a cyclist — a useful sanity check on your answer.",
+      },
+      {
+        question: "A car speeds up from 10 m/s to 30 m/s in 4 s. Calculate the acceleration in m/s². Give the number only.",
+        accept: ["5"],
+        answer:
+          "5 m/s². a = (v − u) ÷ t = (30 − 10) ÷ 4 = 20 ÷ 4. Subtract the starting velocity from the final one.",
+      },
+      {
+        question: "A car slows from 20 m/s to 8 m/s in 3 s. Calculate the acceleration in m/s². Give the number only, with a sign if negative.",
+        accept: ["-4"],
+        answer:
+          "−4 m/s². (8 − 20) ÷ 3 = −12 ÷ 3 = −4. The minus sign shows deceleration and is worth a mark.",
+      },
+      {
+        question: "An object accelerates uniformly from rest to 12 m/s in 6 s. Using the area of a triangle, find the distance in metres. Give the number only.",
+        accept: ["36"],
+        answer:
+          "36 m. Area = ½ × base × height = ½ × 6 × 12 = 36. Distance is always the AREA under a velocity-time graph.",
+      },
+      {
+        question: "An object moves at a constant 15 m/s for 8 s. Find the distance in metres from the area under the graph. Give the number only.",
+        accept: ["120"],
+        answer:
+          "120 m. Constant velocity gives a rectangle, so area = 15 × 8 = 120. No halving is needed for a rectangle.",
+      },
+      {
+        question: "An object starts from rest and accelerates at 2 m/s² over 25 m. Use v² − u² = 2as to find the final velocity in m/s. Give the number only.",
+        accept: ["10"],
+        answer:
+          "10 m/s. v² = 0 + 2 × 2 × 25 = 100, so v = √100 = 10. Remember to take the square root at the end.",
+      },
+      {
+        question: "What does the gradient of a DISTANCE-time graph represent?",
+        accept: ["speed", "the speed", "velocity"],
+        answer:
+          "Speed. On a VELOCITY-time graph the gradient means acceleration instead — two different graphs, two different meanings.",
+      },
+      {
+        question: "What does the gradient of a VELOCITY-time graph represent?",
+        accept: ["acceleration", "the acceleration"],
+        answer:
+          "Acceleration. The AREA under the same graph gives the distance travelled, which is the part students most often forget.",
+      },
+      {
+        question: "What does the area under a velocity-time graph represent?",
+        accept: ["distance", "distance travelled", "displacement", "the distance"],
+        answer:
+          "The distance travelled. Split awkward shapes into triangles and rectangles, calculate each, and add them together.",
+      },
+      {
+        question: "Is displacement a scalar or a vector?",
+        accept: ["vector", "a vector"],
+        answer:
+          "A vector — it has direction as well as size. Distance is the scalar version, which is why a full lap gives a large distance but zero displacement.",
+      },
+      {
+        question: "What is the approximate acceleration of an object falling freely near Earth, in m/s²? Give the number only.",
+        accept: ["9.8", "10"],
+        answer:
+          "About 9.8 m/s², though many questions use 10 to simplify the arithmetic. Use whichever value the question gives you.",
+      },
+      {
+        question: "What is the constant speed reached when drag balances weight called?",
+        accept: ["terminal velocity", "terminal speed"],
+        answer:
+          "Terminal velocity. The resultant force is zero at that point, so by Newton's first law the velocity stops changing.",
+      },
+      {
+        question: "What is the approximate speed of sound in air, in m/s? Give the number only.",
+        accept: ["330", "340"],
+        answer:
+          "About 330 m/s. It is worth knowing alongside the typical walking, running and cycling speeds, which are also examinable.",
+      },
+      {
+        question: "Explain what happens to a skydiver's motion from jumping to reaching terminal velocity. Write three or four sentences.",
+        answer:
+          "At the moment of jumping, the only significant force is weight, so there is a large resultant force downwards and the skydiver accelerates at about 9.8 m/s². As speed increases, air resistance increases, so the resultant force gets smaller and the acceleration decreases — the skydiver is still speeding up, but less rapidly. Eventually air resistance grows until it exactly balances weight, making the resultant force zero. By Newton's first law the velocity then stops changing, and the skydiver falls at a constant terminal velocity. Mark this one yourself: the decreasing acceleration stage is the one most answers miss.",
+      },
+      {
+        question: "Explain how you would find the speed of an object at a particular moment from a curved distance-time graph.",
+        answer:
+          "A curve means the speed is changing, so the overall gradient would only give an average rather than the speed at that instant. Draw a tangent — a straight line just touching the curve at the point of interest — making it as long as the graph allows so that reading it is more accurate. Then find the gradient of that tangent by taking two points far apart on it and dividing the change in distance by the change in time. That gradient is the speed at that moment. Mark this one yourself: drawing a long tangent and taking two widely spaced points are both worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Distance and displacement are the same thing.",
+        right:
+          "Distance is how far you went; displacement is how far you ended up from the start, with direction. A full lap gives a large distance and zero displacement.",
+      },
+      {
+        wrong: "The area under a distance-time graph means something.",
+        right:
+          "It has no physical meaning. It is the area under a VELOCITY-time graph that gives distance.",
+      },
+      {
+        wrong: "At terminal velocity there are no forces on the object.",
+        right:
+          "Weight and drag are both still acting — they are simply equal and opposite, so the RESULTANT is zero.",
+      },
+      {
+        wrong: "A negative acceleration means moving backwards.",
+        right:
+          "It usually means slowing down. Direction reversal shows as the line crossing the axis on a velocity-time graph.",
+      },
+      {
+        wrong: "A steeper velocity-time graph means a faster object.",
+        right:
+          "It means a greater ACCELERATION. Speed is read off the vertical axis, not from the steepness.",
+      },
+    ],
+  },
+
+  "physics/newtons-laws": {
+    summary:
+      "Newton's three laws explain every everyday motion you have ever seen. This topic covers all three, the equation F = ma, momentum, and stopping distances — which is the application examiners return to most often because it links forces, energy and road safety in one question.",
+    keyFacts: [
+      {
+        heading: "The three laws",
+        points: [
+          "FIRST LAW: an object stays still, or moves at constant velocity, unless a RESULTANT force acts on it.",
+          "So if velocity is constant, the resultant force must be zero — and vice versa.",
+          "SECOND LAW: resultant force = mass × acceleration, F = m × a.",
+          "Acceleration is proportional to the resultant force and inversely proportional to the mass.",
+          "THIRD LAW: when two objects interact, the forces on each are EQUAL and OPPOSITE.",
+          "Those two forces act on DIFFERENT objects, which is why they do not cancel out.",
+        ],
+      },
+      {
+        heading: "Inertia and mass",
+        points: [
+          "INERTIA is the tendency of an object to stay in its current state of motion.",
+          "INERTIAL MASS is a measure of how difficult it is to change an object's velocity: m = F ÷ a.",
+          "A larger mass needs a larger force to produce the same acceleration.",
+          "Weight and mass are different: weight is a force in newtons, mass is in kilograms.",
+          "On the Moon your mass is unchanged, but your weight is about a sixth.",
+        ],
+      },
+      {
+        heading: "Momentum",
+        points: [
+          "MOMENTUM = mass × velocity: p = m × v, measured in kg m/s.",
+          "Momentum is a VECTOR, so direction matters and opposite directions have opposite signs.",
+          "CONSERVATION OF MOMENTUM: in a closed system, total momentum before = total momentum after.",
+          "This applies to collisions and explosions alike.",
+          "In a collision, a longer contact time means a smaller force for the same change in momentum.",
+          "That is exactly how crumple zones, airbags, seatbelts and crash mats reduce injury.",
+        ],
+      },
+      {
+        heading: "Stopping distances",
+        points: [
+          "STOPPING DISTANCE = THINKING DISTANCE + BRAKING DISTANCE.",
+          "Thinking distance is how far you travel during your reaction time, before the brakes are applied.",
+          "Thinking distance increases with speed, tiredness, alcohol, drugs and distractions.",
+          "Braking distance is how far the car travels while braking.",
+          "Braking distance increases with speed, and with wet or icy roads, worn tyres or worn brakes.",
+          "Braking distance rises much faster than speed does, because kinetic energy depends on v².",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Newton's first law", definition: "An object remains still or moves at constant velocity unless a resultant force acts on it." },
+      { term: "Newton's second law", definition: "Resultant force equals mass times acceleration: F = ma." },
+      { term: "Newton's third law", definition: "When two objects interact, the forces on each are equal and opposite." },
+      { term: "Resultant force", definition: "The single force with the same effect as all the forces acting on an object." },
+      { term: "Inertia", definition: "The tendency of an object to continue in its current state of rest or motion." },
+      { term: "Inertial mass", definition: "A measure of how hard it is to change an object's velocity: m = F ÷ a." },
+      { term: "Momentum", definition: "Mass multiplied by velocity: p = mv, measured in kg m/s. It is a vector." },
+      { term: "Conservation of momentum", definition: "In a closed system, the total momentum before an event equals the total after." },
+      { term: "Stopping distance", definition: "Thinking distance plus braking distance." },
+      { term: "Thinking distance", definition: "The distance travelled during the driver's reaction time, before braking begins." },
+      { term: "Braking distance", definition: "The distance travelled while the brakes are being applied." },
+      { term: "Reaction time", definition: "The time between seeing a hazard and acting, typically 0.2 to 0.9 seconds." },
+      { term: "Crumple zone", definition: "A part of a car designed to deform, increasing collision time and reducing the force." },
+      { term: "Terminal velocity", definition: "The constant velocity reached when drag balances weight." },
+    ],
+    examTips: [
+      {
+        tip: "Newton's third law forces act on DIFFERENT objects",
+        detail:
+          "That is why they do not cancel. If both acted on the same object nothing could ever accelerate — a favourite exam trap.",
+      },
+      {
+        tip: "Always use the RESULTANT force in F = ma",
+        detail:
+          "Not one individual force. Work out the resultant first by combining everything acting, then substitute.",
+      },
+      {
+        tip: "Braking distance depends on v², thinking distance on v",
+        detail:
+          "Doubling speed doubles thinking distance but QUADRUPLES braking distance, because kinetic energy depends on speed squared.",
+      },
+      {
+        tip: "Explain safety features through TIME and FORCE",
+        detail:
+          "A longer collision time means a smaller rate of change of momentum, so a smaller force. That chain earns the marks.",
+      },
+      {
+        tip: "Momentum is a vector — watch the signs",
+        detail:
+          "Objects moving in opposite directions have momenta of opposite sign. Ignoring that makes conservation calculations come out wrong.",
+      },
+      {
+        tip: "Separate the two factors in stopping distance questions",
+        detail:
+          "Alcohol and tiredness affect THINKING distance; wet roads and worn tyres affect BRAKING distance. Speed affects both.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A car of mass 1,500 kg accelerates at 2 m/s². Calculate the resultant force.",
+        steps: [
+          "Write the equation: F = m × a.",
+          "Substitute: F = 1,500 × 2.",
+          "= 3,000.",
+          "Force is measured in newtons, so 3,000 N.",
+        ],
+        answer: "3,000 N",
+      },
+      {
+        question:
+          "Calculate the momentum of a 60 kg runner moving at 5 m/s.",
+        steps: [
+          "Write the equation: p = m × v.",
+          "Substitute: p = 60 × 5.",
+          "= 300.",
+          "The units are kg m/s, so the momentum is 300 kg m/s.",
+        ],
+        answer: "300 kg m/s",
+      },
+    ],
+    practice: [
+      {
+        question: "A 2,000 kg car accelerates at 3 m/s². Calculate the resultant force in newtons. Give the number only.",
+        accept: ["6000", "6,000"],
+        answer:
+          "6,000 N. F = ma = 2,000 × 3. Always use the RESULTANT force, not one individual force acting on the object.",
+      },
+      {
+        question: "A 60 kg object experiences a resultant force of 180 N. Calculate its acceleration in m/s². Give the number only.",
+        accept: ["3"],
+        answer:
+          "3 m/s². Rearranging: a = F ÷ m = 180 ÷ 60. You need F = ma in all three arrangements.",
+      },
+      {
+        question: "A resultant force of 400 N acts on an 80 kg object. Calculate its acceleration in m/s². Give the number only.",
+        accept: ["5"],
+        answer:
+          "5 m/s². a = F ÷ m = 400 ÷ 80 = 5. A larger mass would give a smaller acceleration for the same force.",
+      },
+      {
+        question: "Calculate the momentum of a 1,200 kg car travelling at 15 m/s. Give the number only, in kg m/s.",
+        accept: ["18000", "18,000"],
+        answer:
+          "18,000 kg m/s. p = mv = 1,200 × 15. Momentum is a vector, so direction matters in collision questions.",
+      },
+      {
+        question: "Calculate the momentum of a 0.5 kg ball moving at 8 m/s. Give the number only, in kg m/s.",
+        accept: ["4"],
+        answer:
+          "4 kg m/s. p = mv = 0.5 × 8 = 4. Small masses can still have appreciable momentum if they move fast.",
+      },
+      {
+        question: "A trolley of mass 4 kg has a momentum of 12 kg m/s. Calculate its velocity in m/s. Give the number only.",
+        accept: ["3"],
+        answer:
+          "3 m/s. Rearranging: v = p ÷ m = 12 ÷ 4 = 3. Momentum questions often require the equation rearranged.",
+      },
+      {
+        question: "A car has a thinking distance of 12 m and a braking distance of 24 m. Calculate the stopping distance in metres. Give the number only.",
+        accept: ["36"],
+        answer:
+          "36 m. Stopping distance = thinking + braking = 12 + 24. Both parts must be included.",
+      },
+      {
+        question: "Which of Newton's laws states that resultant force equals mass times acceleration?",
+        accept: ["second", "2nd", "the second", "second law", "newtons second law", "2"],
+        answer:
+          "The second law, F = ma. The first is about constant velocity with zero resultant force; the third is about equal and opposite pairs.",
+      },
+      {
+        question: "According to Newton's third law, what is true of the forces when two objects interact?",
+        accept: ["equal and opposite", "equal but opposite", "same size opposite direction", "equal in size opposite in direction"],
+        answer:
+          "They are equal in size and opposite in direction. Crucially they act on DIFFERENT objects, which is why they do not cancel out.",
+      },
+      {
+        question: "What is the tendency of an object to stay in its current state of motion called?",
+        accept: ["inertia"],
+        answer:
+          "Inertia. Inertial mass measures how hard it is to change velocity, calculated as m = F ÷ a.",
+      },
+      {
+        question: "Which part of stopping distance is affected by tiredness and alcohol?",
+        accept: ["thinking", "thinking distance", "the thinking distance", "reaction"],
+        answer:
+          "Thinking distance, because both lengthen reaction time. Wet roads and worn tyres affect BRAKING distance instead.",
+      },
+      {
+        question: "Which part of stopping distance is affected by icy roads?",
+        accept: ["braking", "braking distance", "the braking distance"],
+        answer:
+          "Braking distance — there is less friction, so the car takes further to stop. Thinking distance is unaffected by road conditions.",
+      },
+      {
+        question: "If speed doubles, roughly what happens to braking distance?",
+        accept: ["quadruples", "four times", "x4", "quadruple", "multiplied by 4", "4 times"],
+        answer:
+          "It quadruples, because braking distance depends on kinetic energy, which depends on v². Thinking distance only doubles.",
+      },
+      {
+        question: "Name one car safety feature that works by increasing collision time.",
+        accept: ["crumple zone", "airbag", "seatbelt", "crumple zones", "airbags", "seatbelts", "crash mat"],
+        answer:
+          "Crumple zones, airbags and seatbelts. All increase the time over which momentum changes, which reduces the force on the occupants.",
+      },
+      {
+        question: "Explain how a crumple zone reduces the force on the occupants of a car in a crash. Write three sentences.",
+        answer:
+          "In a collision the car's momentum must change to zero, and the force involved depends on how quickly that change happens. A crumple zone is designed to deform on impact, which extends the time over which the car comes to rest rather than stopping it abruptly. Because the same change of momentum now happens over a longer time, the rate of change of momentum is smaller, and therefore so is the force on the occupants. Mark this one yourself: the marks are for the SAME momentum change over a LONGER time giving a smaller force.",
+      },
+      {
+        question: "Explain why two forces described by Newton's third law do not cancel each other out.",
+        answer:
+          "The two forces in a third-law pair are equal in size and opposite in direction, but they act on two DIFFERENT objects. Forces only cancel when they act on the same object, because it is the resultant force on a single object that determines its acceleration. When you push a wall, the wall pushes back on you with an equal force, but one acts on the wall and one on you, so each object experiences its own separate resultant. If they did act on the same object, nothing in the universe could ever accelerate. Mark this one yourself: the mark is entirely for the forces acting on different objects.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A moving object must have a force pushing it along.",
+        right:
+          "Newton's first law says constant velocity needs ZERO resultant force. Force is needed to CHANGE motion, not to maintain it.",
+      },
+      {
+        wrong: "Newton's third law forces cancel out.",
+        right:
+          "They act on different objects, so they never cancel. Only forces on the SAME object combine into a resultant.",
+      },
+      {
+        wrong: "Braking distance doubles when speed doubles.",
+        right:
+          "It quadruples, because it depends on kinetic energy and therefore on v². Only thinking distance is proportional to speed.",
+      },
+      {
+        wrong: "Airbags work by being soft.",
+        right:
+          "They work by extending the TIME over which momentum changes. A longer time means a smaller rate of change and a smaller force.",
+      },
+      {
+        wrong: "Heavier objects fall faster.",
+        right:
+          "Ignoring air resistance, all objects accelerate at the same rate. Greater weight is exactly offset by greater mass in F = ma.",
+      },
+    ],
+  },
 };
