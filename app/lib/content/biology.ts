@@ -3013,4 +3013,1613 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
     ],
   },
+
+  // ─── YEAR 11 ──────────────────────────────────────────────────────────────
+
+  "biology/dna-and-reproduction": {
+    summary:
+      "DNA is the instruction set for building an organism, and reproduction is how it gets passed on. This topic covers the structure of DNA, the difference between mitosis and meiosis, and why sexual reproduction produces variation while asexual reproduction does not — which turns out to matter enormously for evolution.",
+    keyFacts: [
+      {
+        heading: "DNA and genes",
+        points: [
+          "DNA is a polymer made of two strands coiled into a DOUBLE HELIX.",
+          "A GENE is a small section of DNA that codes for a particular sequence of amino acids, making a specific protein.",
+          "A CHROMOSOME is a long molecule of DNA carrying many genes.",
+          "The GENOME is the entire genetic material of an organism.",
+          "DNA is made of four bases: A, T, C and G. A always pairs with T, and C always pairs with G.",
+          "The order of bases determines the order of amino acids, and so which protein is made.",
+        ],
+      },
+      {
+        heading: "Why the genome matters",
+        points: [
+          "Understanding the human genome helps identify genes linked to particular diseases.",
+          "It allows doctors to understand and treat inherited disorders more effectively.",
+          "It lets scientists trace human migration patterns across history.",
+          "Concerns include privacy of genetic data and the possibility of discrimination by insurers or employers.",
+          "The full human genome was first sequenced in 2003, and sequencing has become vastly cheaper since.",
+        ],
+      },
+      {
+        heading: "Sexual and asexual reproduction",
+        points: [
+          "SEXUAL reproduction involves two parents and the fusion of GAMETES — sperm and egg, or pollen and ovule.",
+          "It produces genetic VARIATION, because offspring get a mixture of genes from both parents.",
+          "ASEXUAL reproduction involves one parent and only mitosis. The offspring are CLONES — genetically identical.",
+          "Asexual reproduction is faster and needs no mate, which suits stable, favourable conditions.",
+          "Sexual reproduction is slower but the variation it creates is what natural selection acts on.",
+          "Some organisms do BOTH: malarial parasites, fungi and many plants such as strawberries.",
+        ],
+      },
+      {
+        heading: "Meiosis",
+        points: [
+          "Meiosis happens in the reproductive organs and produces GAMETES.",
+          "It produces FOUR cells, each with HALF the number of chromosomes — 23 in humans.",
+          "Those cells are genetically DIFFERENT from each other and from the parent.",
+          "At fertilisation two gametes fuse, restoring the full 46 chromosomes.",
+          "The fertilised egg then divides by MITOSIS to form an embryo, and the cells later differentiate.",
+          "Compare: mitosis gives 2 identical cells with a full set; meiosis gives 4 different cells with half a set.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "DNA", definition: "The polymer that carries genetic information, made of two strands in a double helix." },
+      { term: "Double helix", definition: "The twisted-ladder shape of the two DNA strands." },
+      { term: "Gene", definition: "A section of DNA that codes for a sequence of amino acids, making a specific protein." },
+      { term: "Chromosome", definition: "A long molecule of DNA carrying many genes." },
+      { term: "Genome", definition: "The entire genetic material of an organism." },
+      { term: "Base", definition: "One of the four units of DNA — A, T, C or G — whose order carries the code." },
+      { term: "Complementary base pairing", definition: "A always pairs with T, and C always pairs with G." },
+      { term: "Gamete", definition: "A sex cell — sperm or egg in animals, pollen or ovule in plants — with half the chromosomes." },
+      { term: "Fertilisation", definition: "The fusion of two gametes, restoring the full number of chromosomes." },
+      { term: "Meiosis", definition: "Cell division producing four genetically different gametes with half the chromosome number." },
+      { term: "Mitosis", definition: "Cell division producing two genetically identical cells with the full chromosome number." },
+      { term: "Sexual reproduction", definition: "Reproduction involving two parents and the fusion of gametes, producing variation." },
+      { term: "Asexual reproduction", definition: "Reproduction involving one parent and only mitosis, producing genetically identical clones." },
+      { term: "Clone", definition: "An organism genetically identical to its parent." },
+      { term: "Variation", definition: "Differences between individuals of the same species." },
+      { term: "Embryo", definition: "The ball of cells formed when a fertilised egg divides repeatedly by mitosis." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the base pairs: A-T and C-G",
+        detail:
+          "Two letters, two pairs, and a guaranteed mark. Do not write A with C — the pairing is fixed and examiners test it directly.",
+      },
+      {
+        tip: "Meiosis: FOUR cells, HALF the chromosomes, all DIFFERENT",
+        detail:
+          "Mitosis: two cells, full set, identical. Learn them as a contrasting pair rather than separately, because that is how they are examined.",
+      },
+      {
+        tip: "Say WHY sexual reproduction matters",
+        detail:
+          "It produces variation, and variation is what natural selection acts on. Without that sentence the answer is only half complete.",
+      },
+      {
+        tip: "Gene, chromosome and genome are different scales",
+        detail:
+          "Gene is a section; chromosome is one long molecule holding many genes; genome is the lot. Questions test that you can order them.",
+      },
+      {
+        tip: "Give a benefit AND a concern about genome research",
+        detail:
+          "Better treatment of inherited disease against privacy and discrimination. Ethics questions want both sides and a conclusion.",
+      },
+      {
+        tip: "The embryo forms by MITOSIS, not meiosis",
+        detail:
+          "Meiosis made the gametes. Once they fuse, all further growth is mitosis. Mixing these up is very common.",
+      },
+    ],
+    practice: [
+      {
+        question: "What shape are the two strands of DNA coiled into?",
+        accept: ["double helix", "a double helix", "helix"],
+        answer:
+          "A double helix — a twisted ladder. The two strands are held together by pairs of bases forming the rungs.",
+      },
+      {
+        question: "Which base always pairs with A in DNA?",
+        accept: ["t", "thymine"],
+        answer:
+          "T (thymine). The other pair is C with G. These two pairings are fixed and are a reliable mark in every paper.",
+      },
+      {
+        question: "Which base always pairs with C in DNA?",
+        accept: ["g", "guanine"],
+        answer:
+          "G (guanine). A pairs with T, C pairs with G — that complementary pairing is what lets DNA copy itself exactly.",
+      },
+      {
+        question: "What is the entire genetic material of an organism called?",
+        accept: ["genome", "the genome"],
+        answer:
+          "The genome. A gene is a section of DNA, a chromosome carries many genes, and the genome is all of it together.",
+      },
+      {
+        question: "What is a section of DNA that codes for a specific protein called?",
+        accept: ["gene", "a gene", "genes"],
+        answer:
+          "A gene. It codes for a sequence of amino acids, and the order of those amino acids determines which protein is made.",
+      },
+      {
+        question: "What is the name for a sex cell such as a sperm or an egg?",
+        accept: ["gamete", "a gamete", "gametes"],
+        answer:
+          "A gamete. Gametes carry half the normal number of chromosomes, so that fertilisation restores the full set.",
+      },
+      {
+        question: "How many cells does meiosis produce from one parent cell? Give the number only.",
+        accept: ["4", "four"],
+        answer:
+          "Four, each genetically different and each with half the chromosome number. Mitosis, by contrast, produces two identical cells.",
+      },
+      {
+        question: "How many chromosomes does a human gamete contain? Give the number only.",
+        accept: ["23", "twenty three", "twenty-three"],
+        answer:
+          "23 — half of 46. When two gametes fuse at fertilisation the full 46 is restored, which is why the number stays constant across generations.",
+      },
+      {
+        question: "Which type of cell division produces gametes?",
+        accept: ["meiosis"],
+        answer:
+          "Meiosis. It happens only in the reproductive organs, and it is the source of the variation that makes siblings different.",
+      },
+      {
+        question: "Which type of cell division does a fertilised egg use to grow into an embryo?",
+        accept: ["mitosis"],
+        answer:
+          "Mitosis. Meiosis made the gametes; once they have fused, all further growth is by mitosis, producing identical cells that then differentiate.",
+      },
+      {
+        question: "Does asexual reproduction produce offspring that are identical or varied?",
+        accept: ["identical", "genetically identical", "the same", "clones"],
+        answer:
+          "Genetically identical — clones. Only one parent is involved and only mitosis is used, so there is no mixing of genes.",
+      },
+      {
+        question: "Give one advantage of asexual reproduction.",
+        accept: ["faster", "no mate needed", "only one parent", "quick", "no partner", "time and energy", "many offspring"],
+        answer:
+          "It is faster, needs no mate, and produces many offspring quickly — which suits stable conditions where the parent is already well adapted.",
+      },
+      {
+        question: "Give one advantage of sexual reproduction.",
+        accept: ["variation", "genetic variation", "natural selection", "adapt", "survive change", "evolution", "disease resistance"],
+        answer:
+          "It produces genetic variation, which is what natural selection acts on. That variation lets a population adapt when conditions change.",
+      },
+      {
+        question: "In which year was the human genome first sequenced? Give the number only.",
+        accept: ["2003"],
+        answer:
+          "2003. Sequencing has become dramatically cheaper and faster since, which is what has made personalised medicine plausible.",
+      },
+      {
+        question: "Explain why sexual reproduction produces variation but asexual reproduction does not. Write three sentences.",
+        answer:
+          "Sexual reproduction uses meiosis to make gametes, and each gamete receives a different mixture of the parent's chromosomes, so no two are the same. Fertilisation then combines a gamete from each of two different parents at random, so the offspring carries a new combination of genes from both. Asexual reproduction uses only mitosis and one parent, which produces genetically identical cells, so there is no mixing and no variation. Mark this one yourself: credit yourself for meiosis making different gametes AND for two parents combining at random.",
+      },
+      {
+        question: "Discuss the benefits and concerns of understanding the human genome.",
+        answer:
+          "The benefits are substantial: genes linked to particular diseases can be identified, inherited disorders understood and treated more effectively, and treatment tailored to an individual's genetics. It also lets scientists trace human migration across history. The concerns are mainly about privacy and its consequences — genetic data could reveal a predisposition to illness, and insurers or employers might discriminate on that basis. There are also worries about who owns and stores the data. Mark this one yourself: full marks need both sides and a judgement, not a list of benefits followed by one token concern.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A gene and a chromosome are the same thing.",
+        right:
+          "A chromosome is one long DNA molecule carrying MANY genes. A gene is a small section of it.",
+      },
+      {
+        wrong: "Meiosis produces two cells like mitosis.",
+        right:
+          "Meiosis produces FOUR cells, each with half the chromosomes and each genetically different.",
+      },
+      {
+        wrong: "The embryo grows by meiosis.",
+        right:
+          "Meiosis only makes gametes. After fertilisation everything grows by mitosis.",
+      },
+      {
+        wrong: "Asexual reproduction is primitive and always worse.",
+        right:
+          "It is faster, needs no mate and works very well in stable conditions. Its weakness is only exposed when the environment changes.",
+      },
+      {
+        wrong: "DNA bases can pair in any combination.",
+        right:
+          "A pairs only with T, and C only with G. That fixed pairing is what allows DNA to be copied accurately.",
+      },
+    ],
+  },
+
+  "biology/genetics-and-inheritance": {
+    summary:
+      "Genetics is where Biology becomes maths for a while. This topic covers the vocabulary — allele, dominant, recessive, genotype, phenotype — the Punnett square for predicting offspring, sex determination, and two inherited disorders. Getting the vocabulary exactly right is most of the battle, because the calculations themselves are straightforward once the words are clear.",
+    keyFacts: [
+      {
+        heading: "The vocabulary",
+        points: [
+          "An ALLELE is a different version of the same gene.",
+          "A DOMINANT allele is expressed even if only one copy is present. Written as a CAPITAL letter.",
+          "A RECESSIVE allele is only expressed if BOTH copies are recessive. Written as a lower-case letter.",
+          "HOMOZYGOUS means both alleles are the same (BB or bb). HETEROZYGOUS means they differ (Bb).",
+          "GENOTYPE is the combination of alleles; PHENOTYPE is the characteristic you can actually observe.",
+          "A CARRIER is heterozygous for a recessive disorder — they do not have it, but can pass it on.",
+        ],
+      },
+      {
+        heading: "Punnett squares",
+        points: [
+          "Put one parent's alleles along the top and the other's down the side.",
+          "Fill each box by combining the allele from its row and its column.",
+          "Count the boxes to get the ratio of genotypes, then work out the phenotypes.",
+          "Two heterozygous parents (Bb × Bb) give 3:1 dominant to recessive — the classic result.",
+          "A heterozygous crossed with a homozygous recessive (Bb × bb) gives 1:1.",
+          "The result is a PROBABILITY, not a guarantee. Four children of Bb × Bb parents can all have the disorder.",
+        ],
+      },
+      {
+        heading: "Sex determination",
+        points: [
+          "Humans have 23 pairs of chromosomes; the 23rd pair determines biological sex.",
+          "Females are XX; males are XY.",
+          "An egg always carries an X. A sperm carries either an X or a Y.",
+          "So the sperm determines the sex of the offspring, and the ratio is 50:50.",
+          "A Punnett square of XX × XY gives two XX and two XY — a 50% chance of each.",
+        ],
+      },
+      {
+        heading: "Inherited disorders and screening",
+        points: [
+          "POLYDACTYLY — extra fingers or toes. Caused by a DOMINANT allele, so one parent having it is enough.",
+          "CYSTIC FIBROSIS — a disorder of cell membranes affecting the lungs and digestion. Caused by a RECESSIVE allele.",
+          "Because cystic fibrosis is recessive, two carriers who do not have it can still have an affected child.",
+          "Embryos can be screened during IVF, and unborn babies tested during pregnancy.",
+          "Arguments against screening: it may lead to termination, tests carry a small risk, and it raises fears of choosing other characteristics.",
+          "Arguments for: it reduces suffering, helps parents prepare, and can save treatment costs.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Allele", definition: "A different version of the same gene." },
+      { term: "Dominant allele", definition: "An allele expressed even when only one copy is present, written as a capital letter." },
+      { term: "Recessive allele", definition: "An allele expressed only when both copies are present, written as a lower-case letter." },
+      { term: "Homozygous", definition: "Having two identical alleles for a gene, such as BB or bb." },
+      { term: "Heterozygous", definition: "Having two different alleles for a gene, such as Bb." },
+      { term: "Genotype", definition: "The combination of alleles an organism has for a gene." },
+      { term: "Phenotype", definition: "The observable characteristic that results from the genotype." },
+      { term: "Carrier", definition: "A heterozygous individual who does not have a recessive disorder but can pass it on." },
+      { term: "Punnett square", definition: "A grid used to predict the possible genotypes of offspring from two parents." },
+      { term: "Polydactyly", definition: "An inherited disorder causing extra fingers or toes, caused by a dominant allele." },
+      { term: "Cystic fibrosis", definition: "An inherited disorder of cell membranes affecting lungs and digestion, caused by a recessive allele." },
+      { term: "Sex chromosomes", definition: "The 23rd pair of chromosomes: XX in females and XY in males." },
+      { term: "Embryo screening", definition: "Testing an embryo for genetic disorders before it is implanted during IVF." },
+      { term: "Gene", definition: "A section of DNA coding for a protein, and the unit that is inherited." },
+      { term: "Probability", definition: "The chance of an outcome — what a Punnett square predicts, rather than a certainty." },
+    ],
+    examTips: [
+      {
+        tip: "Capital for dominant, lower case for the SAME letter",
+        detail:
+          "Use B and b, never B and c. Different letters mean different genes, and examiners will mark it wrong.",
+      },
+      {
+        tip: "Genotype is the letters, phenotype is what you see",
+        detail:
+          "Bb is a genotype. 'Brown eyes' is a phenotype. Questions ask for one specifically, and giving the other scores nothing.",
+      },
+      {
+        tip: "Always draw the Punnett square, even if you can do it in your head",
+        detail:
+          "The grid itself carries marks, and it stops arithmetic slips. Label which parent is which.",
+      },
+      {
+        tip: "Answers are probabilities, not predictions",
+        detail:
+          "'A 25% chance' or '1 in 4', not 'one of the four children will have it'. That distinction is frequently the difference in an exam.",
+      },
+      {
+        tip: "Remember which disorder is which",
+        detail:
+          "Polydactyly is DOMINANT; cystic fibrosis is RECESSIVE. Getting them the wrong way round wrecks the whole Punnett square.",
+      },
+      {
+        tip: "Give both sides on screening",
+        detail:
+          "Reducing suffering and preparing parents, against the risk to the pregnancy and fears about selecting other traits. Then reach a judgement.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Both parents are carriers of cystic fibrosis (Ff). Use a Punnett square to find the probability of a child having the disorder.",
+        steps: [
+          "Cystic fibrosis is recessive, so an affected child must be ff.",
+          "Put F and f along the top for one parent, and F and f down the side for the other.",
+          "The four boxes give: FF, Ff, Ff, ff.",
+          "Only one of the four is ff, so the probability is 1 in 4, or 25%.",
+        ],
+        answer: "25%, or a 1 in 4 chance",
+      },
+      {
+        question:
+          "One parent has polydactyly and is heterozygous (Dd); the other does not have it (dd). Find the probability of a child having polydactyly.",
+        steps: [
+          "Polydactyly is dominant, so having even one D means having the condition.",
+          "Punnett square with D and d across the top, d and d down the side.",
+          "The four boxes give: Dd, dd, Dd, dd.",
+          "Two of the four contain a D, so the probability is 2 in 4 — 1 in 2, or 50%.",
+        ],
+        answer: "50%, or a 1 in 2 chance",
+      },
+    ],
+    practice: [
+      {
+        question: "What is a different version of the same gene called?",
+        accept: ["allele", "an allele", "alleles"],
+        answer:
+          "An allele. You inherit one of each pair from each parent, and which combination you get determines the characteristic.",
+      },
+      {
+        question: "What word describes an allele expressed even when only one copy is present?",
+        accept: ["dominant", "a dominant allele"],
+        answer:
+          "Dominant, written as a capital letter. A recessive allele is only expressed when both copies are recessive.",
+      },
+      {
+        question: "What word describes having two identical alleles for a gene?",
+        accept: ["homozygous"],
+        answer:
+          "Homozygous, such as BB or bb. Two different alleles — Bb — is heterozygous.",
+      },
+      {
+        question: "What word describes having two different alleles for a gene?",
+        accept: ["heterozygous"],
+        answer:
+          "Heterozygous, such as Bb. For a recessive disorder, a heterozygous person is a carrier — unaffected but able to pass it on.",
+      },
+      {
+        question: "Is 'brown eyes' a genotype or a phenotype?",
+        accept: ["phenotype", "a phenotype"],
+        answer:
+          "A phenotype — the characteristic you can observe. The genotype would be the alleles, such as Bb.",
+      },
+      {
+        question: "What are the sex chromosomes of a human female?",
+        accept: ["xx", "x and x"],
+        answer:
+          "XX. Males are XY, so an egg always carries an X and it is the sperm that determines the sex of the child.",
+      },
+      {
+        question: "Which parent's gamete determines the sex of a child?",
+        accept: ["father", "the father", "male", "sperm", "the sperm", "the male"],
+        answer:
+          "The father's, because the sperm may carry either an X or a Y while every egg carries an X. The ratio is 50:50.",
+      },
+      {
+        question: "Is polydactyly caused by a dominant or a recessive allele?",
+        accept: ["dominant", "a dominant allele"],
+        answer:
+          "Dominant. That is why one affected parent is enough to pass it on, unlike cystic fibrosis.",
+      },
+      {
+        question: "Is cystic fibrosis caused by a dominant or a recessive allele?",
+        accept: ["recessive", "a recessive allele"],
+        answer:
+          "Recessive. Both alleles must be recessive for the disorder to appear, which is why two unaffected carriers can have an affected child.",
+      },
+      {
+        question: "Two carriers of cystic fibrosis (Ff) have a child. What is the percentage chance it has the disorder? Give the number only.",
+        accept: ["25", "25%"],
+        answer:
+          "25%. The Punnett square gives FF, Ff, Ff, ff — only the ff child is affected, so 1 in 4.",
+      },
+      {
+        question: "Two carriers (Ff) have a child. What is the percentage chance it is a carrier but unaffected? Give the number only.",
+        accept: ["50", "50%"],
+        answer:
+          "50%. Two of the four boxes are Ff. Read the question carefully — 'carrier' and 'affected' are different outcomes.",
+      },
+      {
+        question: "A heterozygous parent (Dd) and a homozygous recessive parent (dd) have a child. What percentage chance is there that it inherits D? Give the number only.",
+        accept: ["50", "50%"],
+        answer:
+          "50%. The square gives Dd, dd, Dd, dd — two of four carry a D, so a 1 in 2 chance.",
+      },
+      {
+        question: "What is the name for a heterozygous person who can pass on a recessive disorder without having it?",
+        accept: ["carrier", "a carrier"],
+        answer:
+          "A carrier. It explains how a disorder can appear in a child when neither parent shows any sign of it.",
+      },
+      {
+        question: "True or false: if a Punnett square shows a 25% chance, exactly one in every four children will be affected.",
+        accept: ["false", "f"],
+        answer:
+          "False. It is a probability for each child independently. Four children of two carriers could all be affected, or none — chance does not even itself out.",
+      },
+      {
+        question: "Explain how two parents without cystic fibrosis can have a child who has it. Write two or three sentences.",
+        answer:
+          "Cystic fibrosis is caused by a recessive allele, so a person only has the disorder if both of their alleles are recessive. Both parents can be heterozygous carriers — each has one recessive and one dominant allele, so neither shows the disorder. If each parent passes on their recessive allele, the child is homozygous recessive and has cystic fibrosis, which happens with a probability of 1 in 4. Mark this one yourself: credit yourself for 'carrier', for both parents passing the recessive allele, and for the 1 in 4.",
+      },
+      {
+        question: "Discuss the arguments for and against screening embryos for genetic disorders.",
+        answer:
+          "In favour: it can prevent a child being born with a painful, life-shortening condition, allows parents to prepare or make an informed choice, and reduces the long-term cost of treatment to health services. Against: it may lead to the termination of embryos, which some people believe is wrong; the tests themselves carry a small risk to the pregnancy; and there is a concern that the same technology could be used to select non-medical characteristics such as appearance or intelligence. Mark this one yourself: full marks need genuine arguments on both sides and a reasoned conclusion.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Genotype and phenotype mean the same thing.",
+        right:
+          "Genotype is the alleles you carry (Bb); phenotype is the characteristic that results (brown eyes). Questions ask for one specifically.",
+      },
+      {
+        wrong: "A 1 in 4 chance means one of every four children will be affected.",
+        right:
+          "It is a probability applying independently to each child. All four could be affected, or none at all.",
+      },
+      {
+        wrong: "Dominant means the allele is more common in the population.",
+        right:
+          "It means it is expressed when present. Polydactyly is dominant and rare; many recessive alleles are extremely common.",
+      },
+      {
+        wrong: "The mother determines the sex of the baby.",
+        right:
+          "Every egg carries an X. The sperm carries X or Y, so the father's gamete determines it.",
+      },
+      {
+        wrong: "Carriers have a mild form of the disorder.",
+        right:
+          "A carrier is heterozygous and is completely unaffected. They simply have one copy of the recessive allele to pass on.",
+      },
+    ],
+  },
+
+  "biology/variation-and-evolution": {
+    summary:
+      "Evolution is the single idea that ties the whole of Biology together. This topic covers where variation comes from, how natural selection turns it into adaptation over enormous stretches of time, the evidence that convinced biologists, and speciation — how one species becomes two. Speciation is Higher tier only and is flagged.",
+    keyFacts: [
+      {
+        heading: "Variation",
+        points: [
+          "Differences between individuals of the same species arise from GENES, the ENVIRONMENT, or both together.",
+          "Genetic variation comes from meiosis, the random fusion of gametes at fertilisation, and MUTATION.",
+          "A MUTATION is a random change in DNA. Most have no effect at all on the phenotype.",
+          "A few mutations change the protein enough to alter the phenotype.",
+          "Very rarely, a mutation gives an advantage — and that is the raw material natural selection works on.",
+        ],
+      },
+      {
+        heading: "Natural selection",
+        points: [
+          "Individuals within a species show variation.",
+          "Those with characteristics best suited to the environment are more likely to SURVIVE.",
+          "Survivors are more likely to BREED and pass on the alleles for those characteristics.",
+          "Over many generations the beneficial alleles become more common in the population.",
+          "Given enough time this changes the species — which is evolution.",
+          "Darwin published 'On the Origin of Species' in 1859; the theory was accepted only slowly.",
+        ],
+      },
+      {
+        heading: "Evidence and objections",
+        points: [
+          "FOSSILS show how organisms have changed over millions of years.",
+          "The fossil record is incomplete, because soft-bodied organisms rarely fossilise and many fossils have been destroyed.",
+          "ANTIBIOTIC RESISTANCE in bacteria is evolution observable within a human lifetime.",
+          "Darwin's theory was resisted because it conflicted with religious belief, there was little evidence at first, and genes were not yet understood.",
+          "LAMARCK proposed that characteristics acquired during life are inherited — a giraffe stretching its neck. This was shown to be wrong.",
+          "Mendel's work on inheritance, done in the 1860s, was not recognised until after his death, which delayed acceptance further.",
+        ],
+      },
+      {
+        heading: "Antibiotic resistance",
+        points: [
+          "A random mutation makes one bacterium resistant to an antibiotic.",
+          "When the antibiotic is used, non-resistant bacteria die but the resistant one survives.",
+          "With the competition removed it reproduces rapidly, and the whole population becomes resistant.",
+          "Slowing it down: do not prescribe antibiotics for viral infections or minor conditions, and always FINISH the course.",
+          "Finishing the course matters because stopping early leaves the partly-resistant bacteria alive to multiply.",
+          "MRSA is the standard example, and developing new antibiotics is slow and expensive.",
+        ],
+      },
+      {
+        heading: "Higher tier: speciation",
+        higherOnly: true,
+        points: [
+          "A SPECIES is a group whose members can breed together to produce FERTILE offspring.",
+          "Speciation begins when two populations of one species become ISOLATED, so they can no longer interbreed.",
+          "The two populations experience different conditions, so natural selection favours different characteristics in each.",
+          "Over many generations they become so genetically different that, even if reunited, they can no longer produce fertile offspring.",
+          "At that point they are two separate species.",
+          "Foundation students are not examined on speciation and can skip this section.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Variation", definition: "Differences between individuals of the same species, caused by genes, environment or both." },
+      { term: "Mutation", definition: "A random change in DNA. Most have no effect on the phenotype." },
+      { term: "Natural selection", definition: "The process by which individuals best suited to their environment survive, breed and pass on their alleles." },
+      { term: "Evolution", definition: "The change in the inherited characteristics of a population over time through natural selection." },
+      { term: "Adaptation", definition: "A characteristic that makes an organism better suited to its environment." },
+      { term: "Fossil", definition: "The preserved remains or traces of an organism from millions of years ago." },
+      { term: "Fossil record", definition: "The collected evidence from fossils, which is incomplete because soft tissue rarely fossilises." },
+      { term: "Antibiotic resistance", definition: "When bacteria evolve so that an antibiotic no longer kills them." },
+      { term: "MRSA", definition: "A strain of bacteria resistant to many antibiotics, and the standard example of resistance." },
+      { term: "Lamarck", definition: "A scientist who wrongly proposed that characteristics acquired during an organism's life are inherited." },
+      { term: "Darwin", definition: "The scientist who proposed evolution by natural selection, publishing On the Origin of Species in 1859." },
+      { term: "Species", definition: "A group of organisms that can breed together to produce fertile offspring." },
+      { term: "Speciation", definition: "The formation of a new species when isolated populations become too different to interbreed. Higher tier only." },
+      { term: "Isolation", definition: "When two populations are separated so they can no longer interbreed — the first step in speciation." },
+      { term: "Extinction", definition: "When no individuals of a species remain anywhere." },
+    ],
+    examTips: [
+      {
+        tip: "Write natural selection as four steps, in order",
+        detail:
+          "Variation exists → the best suited survive → they breed and pass on alleles → the alleles become more common. Each step carries a mark.",
+      },
+      {
+        tip: "Individuals do NOT adapt — populations evolve",
+        detail:
+          "A bacterium does not become resistant because it met an antibiotic. It was already resistant by chance mutation, and it survived. This is the most examined misunderstanding in the topic.",
+      },
+      {
+        tip: "Say 'more likely to survive', not 'will survive'",
+        detail:
+          "Natural selection works on probabilities. Absolute language loses marks in the higher bands.",
+      },
+      {
+        tip: "Explain the fossil record's gaps",
+        detail:
+          "Soft-bodied organisms rarely fossilise, many fossils have been destroyed by geological activity, and many remain undiscovered. Any one of the three scores.",
+      },
+      {
+        tip: "Know WHY Darwin was resisted",
+        detail:
+          "It conflicted with religious belief, the evidence was thin at first, and the mechanism of inheritance was unknown. Three separate reasons, three possible marks.",
+      },
+      {
+        tip: "Higher tier: speciation needs ISOLATION first",
+        detail:
+          "Isolation, then different selection pressures, then genetic difference, then inability to produce fertile offspring. Foundation students can skip this entirely.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is a random change in DNA called?",
+        accept: ["mutation", "a mutation", "mutations"],
+        answer:
+          "A mutation. Most have no effect on the phenotype at all; very rarely one gives an advantage, and that is what natural selection can act on.",
+      },
+      {
+        question: "Who published 'On the Origin of Species'?",
+        accept: ["darwin", "charles darwin"],
+        answer:
+          "Charles Darwin, in 1859. His theory was accepted only slowly, partly because the mechanism of inheritance was not yet understood.",
+      },
+      {
+        question: "In which year was 'On the Origin of Species' published? Give the number only.",
+        accept: ["1859"],
+        answer:
+          "1859. Mendel's work on inheritance came a few years later but went unrecognised until after his death, which delayed acceptance of Darwin's theory.",
+      },
+      {
+        question: "Which scientist wrongly proposed that characteristics acquired during life are inherited?",
+        accept: ["lamarck", "jean-baptiste lamarck"],
+        answer:
+          "Lamarck. His giraffe stretching its neck and passing on a longer neck is the standard example of why the idea fails.",
+      },
+      {
+        question: "What is a group of organisms that can breed to produce fertile offspring called?",
+        accept: ["species", "a species"],
+        answer:
+          "A species. The word FERTILE matters: a horse and a donkey can breed, but the mule is infertile, so they remain separate species.",
+      },
+      {
+        question: "Higher tier: what is the formation of a new species called?",
+        accept: ["speciation"],
+        answer:
+          "Speciation. It begins with isolation, then different selection pressures act on each population until they can no longer interbreed. Foundation students are not asked this.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: what must happen to two populations FIRST for speciation to begin?",
+        accept: ["isolation", "isolated", "separated", "become isolated", "geographical isolation"],
+        answer:
+          "They must become isolated, so they can no longer interbreed. Only then can natural selection push them in different directions.",
+        higherOnly: true,
+      },
+      {
+        question: "What is the main evidence from the distant past for evolution?",
+        accept: ["fossils", "fossil record", "the fossil record", "fossil"],
+        answer:
+          "Fossils. The record is incomplete, though — soft-bodied organisms rarely fossilise, and many fossils have been destroyed or not yet found.",
+      },
+      {
+        question: "Give one reason the fossil record is incomplete.",
+        accept: ["soft bodies", "soft tissue", "destroyed", "not found", "undiscovered", "geological activity", "soft bodied organisms", "decay"],
+        answer:
+          "Soft-bodied organisms rarely fossilise, many fossils have been destroyed by geological activity, and many are still undiscovered.",
+      },
+      {
+        question: "What example of evolution can be observed within a human lifetime?",
+        accept: ["antibiotic resistance", "resistance", "bacteria", "mrsa", "antibiotic resistant bacteria"],
+        answer:
+          "Antibiotic resistance in bacteria. They reproduce so fast that natural selection produces visible change in months rather than millennia.",
+      },
+      {
+        question: "Give one way to slow the development of antibiotic resistance.",
+        accept: ["finish the course", "dont prescribe for viruses", "fewer prescriptions", "complete the course", "only when necessary", "not for viral infections", "reduce use"],
+        answer:
+          "Finish the whole course, and do not prescribe antibiotics for viral or minor infections. Stopping early leaves the hardiest bacteria alive to multiply.",
+      },
+      {
+        question: "What is a strain of bacteria resistant to many antibiotics, often used as the standard example, called?",
+        accept: ["mrsa"],
+        answer:
+          "MRSA. Developing new antibiotics is slow and expensive, which is why slowing resistance matters so much.",
+      },
+      {
+        question: "True or false: bacteria become resistant because the antibiotic makes them change.",
+        accept: ["false", "f"],
+        answer:
+          "False, and this is the most examined misunderstanding in the topic. A random mutation makes one bacterium resistant BEFORE the antibiotic arrives; the antibiotic then kills the rest.",
+      },
+      {
+        question: "What is it called when no individuals of a species remain anywhere?",
+        accept: ["extinction", "extinct"],
+        answer:
+          "Extinction. Causes include a changing environment, a new predator or disease, a catastrophic event, or competition from another species.",
+      },
+      {
+        question: "Explain how bacteria become resistant to an antibiotic. Write three or four sentences.",
+        answer:
+          "A random mutation in one bacterium's DNA happens to make it resistant to the antibiotic — this occurs by chance, before the antibiotic is used. When the antibiotic is then given, the non-resistant bacteria are killed but the resistant one survives. With its competitors gone it reproduces rapidly, and since bacteria divide very quickly the whole population soon carries the resistant allele. The important point is that the antibiotic does not CAUSE the resistance; it selects for a mutation that was already there. Mark this one yourself: the last sentence is the one that separates a good answer from a top one.",
+      },
+      {
+        question: "Explain why Darwin's theory of evolution was only slowly accepted.",
+        answer:
+          "It challenged the widely held religious belief that God created all life, so many people rejected it on principle. There was also very little evidence when he published: the fossil record was patchy and no transitional forms were known. Most importantly, nobody yet understood how characteristics were inherited — Mendel's work on genetics was done in the 1860s but not recognised until decades later — so Darwin could not explain the mechanism by which variation was passed on. Mark this one yourself: three distinct reasons is full marks; religion alone is not enough.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Organisms adapt during their lifetime and pass the change on.",
+        right:
+          "That is Lamarck's idea, and it is wrong. Variation exists by chance BEFORE selection acts; individuals do not change to suit the environment.",
+      },
+      {
+        wrong: "Antibiotics make bacteria become resistant.",
+        right:
+          "The mutation happens randomly first. The antibiotic then kills everything except the bacterium that already had it, which is selection, not cause.",
+      },
+      {
+        wrong: "Evolution has a goal and organisms are becoming more advanced.",
+        right:
+          "Natural selection favours whatever works in the current environment. Change the environment and yesterday's advantage becomes today's handicap.",
+      },
+      {
+        wrong: "The strongest always survive.",
+        right:
+          "It is the best SUITED to the environment, which can mean smallest, best camouflaged or most resistant to disease. 'Strongest' is a misreading.",
+      },
+      {
+        wrong: "Two organisms that can breed are the same species.",
+        right:
+          "The offspring must be FERTILE. A horse and donkey produce a mule, which cannot reproduce, so they remain separate species.",
+      },
+    ],
+  },
+
+  "biology/classification-and-selection": {
+    summary:
+      "Classification is how biologists organise millions of species into a system that reflects how they are actually related. This topic covers the traditional system and how DNA changed it, evolutionary trees, and selective breeding and genetic engineering — where humans do deliberately what natural selection does slowly.",
+    keyFacts: [
+      {
+        heading: "Traditional classification",
+        points: [
+          "LINNAEUS classified organisms by their structure and characteristics.",
+          "His groups run: kingdom, phylum, class, order, family, genus, species.",
+          "The BINOMIAL name uses the genus and species, in italics, with the genus capitalised — Homo sapiens.",
+          "Binomial naming means every scientist worldwide uses the same name for the same organism.",
+          "This system was built on visible features, which is why improved microscopes and biochemistry later forced changes.",
+        ],
+      },
+      {
+        heading: "The three-domain system",
+        points: [
+          "CARL WOESE proposed three domains using RNA sequencing rather than appearance.",
+          "ARCHAEA — primitive bacteria, often living in extreme environments.",
+          "BACTERIA — true bacteria.",
+          "EUKARYOTA — everything with a nucleus: protists, fungi, plants and animals.",
+          "The change happened because new evidence — chemical analysis and DNA — revealed relationships appearance had hidden.",
+          "This is a good example of a scientific model changing when better evidence arrives.",
+        ],
+      },
+      {
+        heading: "Evolutionary trees",
+        points: [
+          "An evolutionary tree shows how closely species are related and when they shared a common ancestor.",
+          "Living organisms are placed using DNA evidence; extinct ones using fossils.",
+          "A branch point is a COMMON ANCESTOR.",
+          "The closer together two species branch, the more recently they diverged and the more closely related they are.",
+          "Reading a tree correctly is a common exam question — count back to the shared branch point, not across the page.",
+        ],
+      },
+      {
+        heading: "Selective breeding and genetic engineering",
+        points: [
+          "SELECTIVE BREEDING: choose parents with the desired characteristic, breed them, then repeat over many generations.",
+          "Used for disease resistance in crops, high milk yield in cattle, gentle temperament in dogs, large flowers.",
+          "Risk: it reduces the gene pool, so a population becomes vulnerable to disease and to inherited defects.",
+          "GENETIC ENGINEERING: a gene is cut from one organism and inserted into another using enzymes and a vector.",
+          "Examples: bacteria producing human insulin, crops resistant to insects or herbicide, crops with added vitamins.",
+          "Concerns: effects on wild flowers and insects, unknown long-term health effects, and whether it is right to alter genomes at all.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Classification", definition: "Organising living things into groups based on how closely they are related." },
+      { term: "Linnaeus", definition: "The scientist who classified organisms by structure into kingdom, phylum, class, order, family, genus and species." },
+      { term: "Binomial name", definition: "The two-part scientific name of an organism, using its genus and species." },
+      { term: "Genus", definition: "The classification group just above species, and the first part of a binomial name." },
+      { term: "Three-domain system", definition: "Woese's classification into Archaea, Bacteria and Eukaryota, based on RNA sequencing." },
+      { term: "Archaea", definition: "Primitive single-celled organisms, often found in extreme environments." },
+      { term: "Eukaryota", definition: "The domain containing all organisms whose cells have a nucleus." },
+      { term: "Evolutionary tree", definition: "A diagram showing how closely species are related and when they shared common ancestors." },
+      { term: "Common ancestor", definition: "A species from which two or more later species both descended." },
+      { term: "Selective breeding", definition: "Choosing parents with a desired characteristic and breeding them over many generations." },
+      { term: "Gene pool", definition: "The total variety of alleles in a population — reduced by selective breeding." },
+      { term: "Inbreeding", definition: "Breeding closely related individuals, which increases the risk of inherited disease." },
+      { term: "Genetic engineering", definition: "Transferring a gene from one organism into another to give it a desired characteristic." },
+      { term: "Vector", definition: "Something used to carry a gene into a cell, such as a plasmid or a virus." },
+      { term: "GM crop", definition: "A genetically modified crop, altered for higher yield, pest resistance or added nutrients." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the order of Linnaeus's groups",
+        detail:
+          "Kingdom, phylum, class, order, family, genus, species. Make up a mnemonic — the order is worth a mark and is easy to muddle.",
+      },
+      {
+        tip: "Write binomial names correctly",
+        detail:
+          "Genus capitalised, species lower case, both italicised: Homo sapiens. The convention itself can be examined.",
+      },
+      {
+        tip: "Say WHY classification changed",
+        detail:
+          "New evidence — microscopes, chemical analysis and DNA — revealed relationships that appearance had hidden. It is a model changing with evidence.",
+      },
+      {
+        tip: "Read evolutionary trees by branch point",
+        detail:
+          "The more recently two species share a branch, the more closely related they are. Being physically near on the page means nothing.",
+      },
+      {
+        tip: "Always give the gene pool risk for selective breeding",
+        detail:
+          "Reduced variation means vulnerability to a single disease and more inherited defects. It is the standard drawback and an easy mark.",
+      },
+      {
+        tip: "Give both sides on genetic engineering",
+        detail:
+          "Higher yields and medical benefits against ecological and health uncertainty. Then reach a judgement — the conclusion is where the top marks are.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which scientist devised the classification system of kingdom, phylum, class, order, family, genus, species?",
+        accept: ["linnaeus", "carl linnaeus", "carolus linnaeus"],
+        answer:
+          "Linnaeus. He classified organisms by their visible structure, which is exactly why the system had to change once DNA evidence arrived.",
+      },
+      {
+        question: "Which two classification groups make up an organism's binomial name?",
+        accept: ["genus and species", "species and genus", "genus, species"],
+        answer:
+          "Genus and species — as in Homo sapiens. The genus is capitalised, the species is not, and both are italicised.",
+      },
+      {
+        question: "Which scientist proposed the three-domain system?",
+        accept: ["woese", "carl woese"],
+        answer:
+          "Carl Woese. He used RNA sequencing rather than appearance, which revealed relationships that structure alone had completely hidden.",
+      },
+      {
+        question: "Name one of the three domains.",
+        accept: ["archaea", "bacteria", "eukaryota", "eukaryote", "eukarya"],
+        answer:
+          "Archaea, Bacteria or Eukaryota. Eukaryota contains everything with a nucleus — protists, fungi, plants and animals.",
+      },
+      {
+        question: "Which domain contains all organisms whose cells have a nucleus?",
+        accept: ["eukaryota", "eukarya", "eukaryotes", "eukaryote"],
+        answer:
+          "Eukaryota. That single domain covers protists, fungi, plants and animals — everything from a mushroom to a whale.",
+      },
+      {
+        question: "What is shown at a branch point on an evolutionary tree?",
+        accept: ["common ancestor", "a common ancestor", "shared ancestor", "ancestor"],
+        answer:
+          "A common ancestor. The more recently two species share a branch point, the more closely related they are.",
+      },
+      {
+        question: "What is the process of choosing parents with desired characteristics and breeding them called?",
+        accept: ["selective breeding", "artificial selection"],
+        answer:
+          "Selective breeding, sometimes called artificial selection. Humans do deliberately over decades what natural selection does slowly over millennia.",
+      },
+      {
+        question: "What is the main risk of selective breeding?",
+        accept: ["reduced gene pool", "inbreeding", "less variation", "gene pool", "disease", "inherited disease", "reduced variation"],
+        answer:
+          "It reduces the gene pool. With less variation the population is vulnerable to a single disease wiping it out, and inherited defects become more common.",
+      },
+      {
+        question: "What is the total variety of alleles in a population called?",
+        accept: ["gene pool", "the gene pool"],
+        answer:
+          "The gene pool. Selective breeding shrinks it, which is why pedigree dog breeds suffer so many inherited health problems.",
+      },
+      {
+        question: "What is the process of transferring a gene from one organism into another called?",
+        accept: ["genetic engineering", "genetic modification", "gm", "genetic engineering"],
+        answer:
+          "Genetic engineering. Enzymes cut out the gene and a vector, such as a plasmid or a virus, carries it into the target cell.",
+      },
+      {
+        question: "What is used to carry a gene into a cell during genetic engineering?",
+        accept: ["vector", "a vector", "plasmid", "virus", "plasmids"],
+        answer:
+          "A vector — usually a plasmid or a virus. It is the delivery mechanism that gets the gene inside the target cell.",
+      },
+      {
+        question: "Name one useful product made by genetically engineered bacteria.",
+        accept: ["insulin", "human insulin", "hormones", "medicine", "drugs"],
+        answer:
+          "Human insulin. Before genetic engineering it had to be extracted from animals, which was expensive and produced a slightly different molecule.",
+      },
+      {
+        question: "Give one concern about genetically modified crops.",
+        accept: ["effects on insects", "wild flowers", "health", "unknown effects", "biodiversity", "ecology", "long term effects", "environment", "ethics"],
+        answer:
+          "Effects on wild flowers and insect populations, unknown long-term health effects, and the ethical question of whether altering genomes is right.",
+      },
+      {
+        question: "Why does every scientist worldwide use the same binomial name for an organism?",
+        accept: ["avoid confusion", "same name", "universal", "common names differ", "clarity", "international", "no confusion"],
+        answer:
+          "Because common names differ between languages and even between regions. A single agreed scientific name removes all ambiguity.",
+      },
+      {
+        question: "Explain why the classification of living things changed to the three-domain system. Write two or three sentences.",
+        answer:
+          "Linnaeus classified organisms by their visible structure, which was the only evidence available at the time. Improved microscopes, chemical analysis and especially RNA and DNA sequencing later revealed relationships that appearance had concealed — some organisms that looked similar turned out to be only distantly related. Woese therefore proposed three domains based on genetic evidence, which is a clear example of a scientific model being revised when better evidence arrives. Mark this one yourself: the point about models changing with evidence is worth credit in itself.",
+      },
+      {
+        question: "Discuss the benefits and risks of genetically modifying crops.",
+        answer:
+          "The benefits are real: crops can be made resistant to insects or herbicide, which raises yield and reduces pesticide use, and vitamins can be added to staple crops to address deficiency in poorer countries. Against that, the effect on wild plants and insect populations is not fully understood, and there is concern that reduced insect numbers could damage food chains. Some people also worry about unknown long-term effects on human health, and others object in principle to altering an organism's genome. On balance the technology offers clear benefits where hunger and malnutrition are severe, but it warrants careful regulation and long-term monitoring rather than blanket approval or blanket rejection. Mark this one yourself: full marks need both sides plus a reasoned judgement.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Species that look similar must be closely related.",
+        right:
+          "Appearance can mislead — a dolphin looks like a fish. DNA evidence is what actually establishes relatedness, which is why classification changed.",
+      },
+      {
+        wrong: "Species next to each other on an evolutionary tree are the most closely related.",
+        right:
+          "What matters is where they share a BRANCH POINT, not how near they are drawn on the page.",
+      },
+      {
+        wrong: "Selective breeding and genetic engineering are the same thing.",
+        right:
+          "Selective breeding chooses which existing organisms breed, over many generations. Genetic engineering moves a specific gene directly.",
+      },
+      {
+        wrong: "Selective breeding has no downsides because it is natural.",
+        right:
+          "It shrinks the gene pool, which is why many pedigree breeds suffer inherited disease and why monoculture crops are vulnerable to a single pathogen.",
+      },
+    ],
+  },
+
+  "biology/ecosystems-and-food-chains": {
+    summary:
+      "An ecosystem is every living thing in an area plus everything non-living they depend on. This topic covers how organisms compete and depend on each other, how energy and biomass move along a food chain, how materials are recycled, and the sampling techniques you are expected to be able to describe and criticise.",
+    keyFacts: [
+      {
+        heading: "Communities and interdependence",
+        points: [
+          "A HABITAT is where an organism lives; a POPULATION is all the organisms of one species there.",
+          "A COMMUNITY is all the populations of all species in an area; an ECOSYSTEM is the community plus the non-living surroundings.",
+          "INTERDEPENDENCE means species rely on each other for food, shelter, pollination and seed dispersal.",
+          "Remove one species and others are affected — a STABLE community is one where all species and conditions are in balance.",
+          "Plants compete for light, space, water and mineral ions. Animals compete for food, territory and mates.",
+        ],
+      },
+      {
+        heading: "Abiotic and biotic factors",
+        points: [
+          "ABIOTIC means non-living: light intensity, temperature, moisture, soil pH, wind, and carbon dioxide or oxygen levels.",
+          "BIOTIC means living: availability of food, new predators, new pathogens, and competition from other species.",
+          "A change in either can dramatically change the size of a population.",
+          "ADAPTATIONS let organisms survive their conditions: structural (body shape), behavioural (migration), and functional (metabolism).",
+          "EXTREMOPHILES live in conditions such as high temperature, pressure or salt concentration — many are bacteria.",
+        ],
+      },
+      {
+        heading: "Food chains and biomass",
+        points: [
+          "PRODUCERS are usually green plants or algae, which make glucose by photosynthesis.",
+          "PRIMARY consumers eat producers; SECONDARY consumers eat primary consumers, and so on.",
+          "An APEX PREDATOR is at the top of a food chain with no natural predators.",
+          "Only about 10% of the biomass at each level is passed on to the next.",
+          "Biomass is lost because not all of an organism is eaten or digestible, and because energy is used in respiration and lost in waste and as heat.",
+          "That loss is why food chains rarely have more than four or five links.",
+        ],
+      },
+      {
+        heading: "Cycling materials and decay",
+        points: [
+          "Materials are constantly recycled between the living world and the environment.",
+          "The CARBON CYCLE: photosynthesis removes CO₂; respiration, decay and combustion return it.",
+          "The WATER CYCLE: evaporation, condensation, precipitation, and transpiration from plants.",
+          "DECOMPOSERS — bacteria and fungi — break down dead material and release mineral ions back into the soil.",
+          "Decay is faster when it is warm, moist and there is plenty of oxygen, because those conditions suit the decomposers.",
+          "Compost heaps and biogas generators are practical applications of controlling decay conditions.",
+        ],
+      },
+      {
+        heading: "Sampling",
+        points: [
+          "A QUADRAT is a square frame used to count organisms in a set area.",
+          "Place quadrats RANDOMLY to avoid bias — using random number coordinates rather than choosing where to put them.",
+          "Mean per quadrat × total area ÷ quadrat area estimates the population size.",
+          "A TRANSECT is a line along which quadrats are placed at intervals, used to study how distribution CHANGES across a gradient.",
+          "More quadrats give a more reliable estimate, at the cost of more time.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Habitat", definition: "The place where an organism lives." },
+      { term: "Population", definition: "All the organisms of one species living in a habitat." },
+      { term: "Community", definition: "All the populations of all the different species living in an area." },
+      { term: "Ecosystem", definition: "A community of organisms together with the non-living parts of their environment." },
+      { term: "Interdependence", definition: "The way species in a community rely on each other for food, shelter, pollination and seed dispersal." },
+      { term: "Abiotic factor", definition: "A non-living factor affecting a community, such as light, temperature or soil pH." },
+      { term: "Biotic factor", definition: "A living factor affecting a community, such as predators, food availability or disease." },
+      { term: "Producer", definition: "An organism that makes its own food by photosynthesis, at the start of a food chain." },
+      { term: "Primary consumer", definition: "An animal that eats producers." },
+      { term: "Apex predator", definition: "A carnivore at the top of a food chain with no natural predators." },
+      { term: "Biomass", definition: "The mass of living material in an organism or trophic level." },
+      { term: "Decomposer", definition: "A bacterium or fungus that breaks down dead material, releasing minerals back into the soil." },
+      { term: "Quadrat", definition: "A square frame used to sample the number of organisms in a set area." },
+      { term: "Transect", definition: "A line along which samples are taken, used to study how distribution changes across an area." },
+      { term: "Extremophile", definition: "An organism adapted to live in extreme conditions of temperature, pressure or salt concentration." },
+      { term: "Stable community", definition: "One where all species and environmental factors are in balance, so population sizes stay roughly constant." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the hierarchy: habitat, population, community, ecosystem",
+        detail:
+          "Each contains the one before. Questions ask you to define or distinguish them, and mixing them up is an easy mark to lose.",
+      },
+      {
+        tip: "Abiotic is non-living, biotic is living",
+        detail:
+          "The prefix 'a-' means without. Sorting factors into the two columns is a standard question worth several quick marks.",
+      },
+      {
+        tip: "Explain biomass loss with more than one reason",
+        detail:
+          "Not all of it is eaten, not all is digestible, and energy is used in respiration and lost as heat and in waste. Two reasons is usually the minimum.",
+      },
+      {
+        tip: "Say RANDOM when describing quadrat placement",
+        detail:
+          "Random placement avoids bias. Use a transect only when you are studying how distribution CHANGES across a gradient — the two are not interchangeable.",
+      },
+      {
+        tip: "Give the conditions decay needs",
+        detail:
+          "Warm, moist and oxygen-rich, because decomposers respire. Linking it back to the decomposers' own needs is what earns the explanation mark.",
+      },
+      {
+        tip: "Use the data given in population questions",
+        detail:
+          "Mean per quadrat × total area ÷ quadrat area. Show every step, and check the answer is a sensible size for the field described.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Ten 1 m² quadrats are placed randomly in a 500 m² field. The total number of daisies counted is 65. Estimate the daisy population.",
+        steps: [
+          "Find the mean per quadrat: 65 ÷ 10 = 6.5 daisies per m².",
+          "The quadrat area is 1 m², so the mean per m² is 6.5.",
+          "Multiply by the total area: 6.5 × 500.",
+          "= 3,250 daisies. Estimates like this assume the quadrats were representative, which is why random placement matters.",
+        ],
+        answer: "About 3,250 daisies",
+      },
+      {
+        question:
+          "A trophic level contains 8,000 kJ of energy. Roughly how much is passed to the next level, assuming 10% transfer?",
+        steps: [
+          "10% transfer means the next level receives one tenth.",
+          "8,000 × 10 ÷ 100.",
+          "= 800 kJ.",
+          "The other 7,200 kJ is lost — uneaten, indigestible, or used in respiration and lost as heat and waste.",
+        ],
+        answer: "800 kJ",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the place where an organism lives called?",
+        accept: ["habitat", "a habitat", "its habitat"],
+        answer:
+          "A habitat. A population is all the organisms of one species in it, a community is all the species, and an ecosystem adds the non-living surroundings.",
+      },
+      {
+        question: "What is all the populations of all species in an area called?",
+        accept: ["community", "a community"],
+        answer:
+          "A community. Add the non-living factors — light, temperature, soil — and you have an ecosystem.",
+      },
+      {
+        question: "Is temperature an abiotic or a biotic factor?",
+        accept: ["abiotic", "an abiotic factor"],
+        answer:
+          "Abiotic — non-living. The prefix 'a-' means without, so abiotic factors are the physical conditions rather than the organisms.",
+      },
+      {
+        question: "Is the arrival of a new predator an abiotic or a biotic factor?",
+        accept: ["biotic", "a biotic factor"],
+        answer:
+          "Biotic — it is a living factor. Others include food availability, new pathogens and competition from other species.",
+      },
+      {
+        question: "What is the name for an organism at the start of a food chain that makes its own food?",
+        accept: ["producer", "a producer", "producers"],
+        answer:
+          "A producer — usually a green plant or algae, using photosynthesis. Everything else in the chain ultimately depends on them.",
+      },
+      {
+        question: "What is a carnivore at the top of a food chain with no predators called?",
+        accept: ["apex predator", "an apex predator", "apex"],
+        answer:
+          "An apex predator. Because so much biomass is lost at each level, there is rarely enough energy to support a level above them.",
+      },
+      {
+        question: "Roughly what percentage of biomass is transferred to the next trophic level? Give the number only.",
+        accept: ["10", "10%"],
+        answer:
+          "About 10%. The other 90% is lost because not all is eaten or digestible, and because energy is used in respiration and lost as heat and waste.",
+      },
+      {
+        question: "A trophic level has 5,000 kJ. How many kJ pass to the next level at 10% transfer? Give the number only.",
+        accept: ["500"],
+        answer:
+          "500 kJ. 5,000 × 10 ÷ 100 = 500. That steep loss is exactly why food chains rarely have more than four or five links.",
+      },
+      {
+        question: "What is the name for bacteria and fungi that break down dead material?",
+        accept: ["decomposers", "decomposer", "detritivores"],
+        answer:
+          "Decomposers. They release mineral ions back into the soil, which is what allows plants to keep growing — without them nutrients would lock up in dead matter.",
+      },
+      {
+        question: "Name one condition that speeds up decay.",
+        accept: ["warm", "warmth", "moisture", "oxygen", "moist", "water", "temperature", "air", "high temperature"],
+        answer:
+          "Warmth, moisture and plenty of oxygen. All three help because decomposers respire, and their enzymes work faster when warm.",
+      },
+      {
+        question: "What square frame is used to sample organisms in a set area?",
+        accept: ["quadrat", "a quadrat", "quadrats"],
+        answer:
+          "A quadrat. It must be placed RANDOMLY — using random coordinates — because choosing where to put it introduces bias.",
+      },
+      {
+        question: "What is a line along which samples are taken to study how distribution changes called?",
+        accept: ["transect", "a transect", "line transect"],
+        answer:
+          "A transect. Use it when studying a gradient — from the sea to inland, or from shade into sunlight — rather than for estimating a total population.",
+      },
+      {
+        question: "Twenty 1 m² quadrats in a 400 m² field give 100 plants in total. Estimate the population. Give the number only.",
+        accept: ["2000", "2,000"],
+        answer:
+          "2,000 plants. Mean per m² = 100 ÷ 20 = 5; 5 × 400 = 2,000. Show both steps — the method carries marks even if the arithmetic slips.",
+      },
+      {
+        question: "Why must quadrats be placed randomly?",
+        accept: ["avoid bias", "bias", "to be representative", "unbiased", "representative", "reliable", "prevent bias", "fair"],
+        answer:
+          "To avoid bias. If you choose where to put them you will unconsciously pick interesting patches, and the estimate will not represent the whole area.",
+      },
+      {
+        question: "Explain why only about 10% of biomass passes to the next trophic level. Write three sentences.",
+        answer:
+          "Not all of an organism is eaten — bones, roots and other parts are left — and some of what is eaten cannot be digested and passes out as waste. Of the energy that is absorbed, a large proportion is used in respiration to power movement, growth and, in mammals and birds, maintaining body temperature, and that energy is eventually lost as heat to the surroundings. Only what is left is stored as new biomass and available to the next level. Mark this one yourself: three distinct reasons — uneaten, indigestible, and respiration — is full marks.",
+      },
+      {
+        question: "Describe how you would estimate the number of dandelions in a field using quadrats.",
+        answer:
+          "Divide the field into a grid and use random number pairs as coordinates to decide where each quadrat goes, so that placement is unbiased. Place a quadrat of known area — say 1 m² — at each position and count the dandelions inside it, using a consistent rule for plants on the boundary. Repeat at least ten times, then calculate the mean number per quadrat. Multiply the mean per square metre by the total area of the field to estimate the population. Mark this one yourself: random placement, a stated quadrat size, enough repeats and the final multiplication are the four things being looked for.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Arrows in a food chain show what eats what.",
+        right:
+          "Arrows show the direction ENERGY flows — from the eaten to the eater. Grass → rabbit → fox, not the other way round.",
+      },
+      {
+        wrong: "A community and an ecosystem are the same thing.",
+        right:
+          "A community is the living organisms only. An ecosystem is the community PLUS the non-living surroundings.",
+      },
+      {
+        wrong: "Energy is recycled in an ecosystem like carbon is.",
+        right:
+          "Materials are recycled; energy is not. It enters as light and is progressively lost as heat, which is why every food chain needs a constant energy input.",
+      },
+      {
+        wrong: "Decomposers eat dead things the way animals do.",
+        right:
+          "They secrete enzymes onto the material and absorb the digested products. That is why warmth, moisture and oxygen speed decay — they suit the enzymes and respiration.",
+      },
+      {
+        wrong: "Placing quadrats where the plants are gives a better estimate.",
+        right:
+          "That is bias, and it produces a confidently wrong answer. Random placement is what makes the sample representative.",
+      },
+    ],
+  },
+
+  "biology/biodiversity-and-human-impact": {
+    summary:
+      "Human activity is changing ecosystems faster than at almost any point in history. This topic covers what biodiversity is and why it matters, the pressures of population growth, pollution, land use and climate change, and what is being done about it. It is a topic where examiners want balanced argument rather than outrage.",
+    keyFacts: [
+      {
+        heading: "Biodiversity",
+        points: [
+          "BIODIVERSITY is the variety of all the different species of organisms on Earth, or within an ecosystem.",
+          "High biodiversity makes an ecosystem STABLE, because species are less dependent on any single other species.",
+          "It reduces the impact of one species being lost, and protects against disease spreading through a population.",
+          "Human activity is reducing biodiversity, and only recently have serious efforts been made to slow this.",
+          "Loss of biodiversity is generally irreversible: an extinct species does not come back.",
+        ],
+      },
+      {
+        heading: "Population and waste",
+        points: [
+          "The human population has grown rapidly, and the standard of living has risen alongside it.",
+          "More people using more resources means more waste, unless it is managed.",
+          "WATER pollution: sewage, fertiliser and toxic chemicals.",
+          "AIR pollution: smoke, and acidic gases such as sulfur dioxide which cause acid rain.",
+          "LAND pollution: landfill and toxic chemicals from farming and industry.",
+          "Pollution kills plants and animals directly and can reduce biodiversity across a whole area.",
+        ],
+      },
+      {
+        heading: "Land use and deforestation",
+        points: [
+          "Humans use land for building, quarrying, farming and dumping waste, all of which reduce habitat.",
+          "PEAT BOGS are destroyed for compost and to create farmland. Peat contains enormous quantities of stored carbon.",
+          "Decay or burning of peat releases that carbon dioxide, adding to the greenhouse effect.",
+          "DEFORESTATION happens to clear land for cattle and rice fields, and to grow crops for biofuels.",
+          "Consequences: less carbon dioxide absorbed, more released by burning, loss of habitat, and reduced biodiversity.",
+        ],
+      },
+      {
+        heading: "Climate change and conservation",
+        points: [
+          "Levels of carbon dioxide and methane in the atmosphere are increasing, contributing to global warming.",
+          "Consequences include rising sea levels, changes in the distribution and migration patterns of species, and reduced biodiversity.",
+          "Some effects are disputed in scale, but the direction is supported by very strong evidence.",
+          "Conservation measures: breeding programmes for endangered species, protection and regeneration of rare habitats, and hedgerow and field margin schemes on farms.",
+          "Also: reducing deforestation and carbon emissions, and recycling rather than landfilling.",
+          "The main conflicts are cost, and the competing need for food, housing and jobs.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Biodiversity", definition: "The variety of different species of organisms on Earth or within an ecosystem." },
+      { term: "Stable ecosystem", definition: "One with high biodiversity, where species are less dependent on any single other species." },
+      { term: "Deforestation", definition: "The large-scale clearing of forests, usually for farming or biofuel crops." },
+      { term: "Peat bog", definition: "Waterlogged land where partly decayed plant material stores large amounts of carbon." },
+      { term: "Global warming", definition: "The rise in average global temperature caused by increasing greenhouse gases." },
+      { term: "Greenhouse gas", definition: "A gas such as carbon dioxide or methane that traps heat in the atmosphere." },
+      { term: "Acid rain", definition: "Rain made acidic by gases such as sulfur dioxide, which damages trees and aquatic life." },
+      { term: "Conservation", definition: "Protecting and managing species and habitats to maintain biodiversity." },
+      { term: "Breeding programme", definition: "A scheme to breed endangered species in captivity to increase their numbers." },
+      { term: "Field margin", definition: "A strip of uncultivated land at the edge of a field, left to support wildlife." },
+      { term: "Hedgerow", definition: "A line of shrubs bordering a field, providing habitat and connecting fragmented areas." },
+      { term: "Landfill", definition: "Waste disposal by burial, which uses land and can pollute soil and groundwater." },
+      { term: "Endangered species", definition: "A species at serious risk of extinction." },
+      { term: "Sustainability", definition: "Meeting present needs without preventing future generations from meeting theirs." },
+    ],
+    examTips: [
+      {
+        tip: "Say WHY high biodiversity matters",
+        detail:
+          "It makes an ecosystem stable, because species are less dependent on any one other species. 'It is good' is not an answer.",
+      },
+      {
+        tip: "Give the peat bog carbon link explicitly",
+        detail:
+          "Peat stores carbon; destroying or burning it releases carbon dioxide. That chain is the mark, not the fact that peat bogs are being destroyed.",
+      },
+      {
+        tip: "List consequences of deforestation in full",
+        detail:
+          "Less CO₂ absorbed, more CO₂ released by burning, habitat destroyed, biodiversity reduced. Four separate points, four possible marks.",
+      },
+      {
+        tip: "Acknowledge the conflicts in conservation",
+        detail:
+          "Protecting habitat costs money and competes with the need for food, housing and jobs. Answers that ignore the trade-off cap themselves.",
+      },
+      {
+        tip: "Be measured about climate change",
+        detail:
+          "The evidence for the direction is very strong; the precise scale of some consequences is genuinely debated. Examiners reward that precision.",
+      },
+      {
+        tip: "Use data from the question",
+        detail:
+          "This topic is nearly always examined with a graph or table. Quote the figures — an answer that ignores the data rarely reaches the top band.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the variety of different species in an ecosystem called?",
+        accept: ["biodiversity"],
+        answer:
+          "Biodiversity. High biodiversity makes an ecosystem more stable, because no species depends too heavily on any single other one.",
+      },
+      {
+        question: "Why does high biodiversity make an ecosystem more stable?",
+        accept: ["less dependent", "species less dependent", "not reliant on one species", "less reliance", "more food sources", "alternatives", "resilient"],
+        answer:
+          "Because species are less dependent on any single other species. If one is lost, others can fill the gap, so the whole system does not collapse.",
+      },
+      {
+        question: "What is the large-scale clearing of forests called?",
+        accept: ["deforestation"],
+        answer:
+          "Deforestation. It reduces the carbon dioxide absorbed by photosynthesis, releases more when trees are burned, and destroys habitat.",
+      },
+      {
+        question: "What do peat bogs store large amounts of?",
+        accept: ["carbon", "co2", "carbon dioxide"],
+        answer:
+          "Carbon, locked in partly decayed plant material. Destroying or burning peat releases it as carbon dioxide, adding to the greenhouse effect.",
+      },
+      {
+        question: "Name one greenhouse gas.",
+        accept: ["carbon dioxide", "co2", "methane", "water vapour", "ch4"],
+        answer:
+          "Carbon dioxide or methane. Both trap heat in the atmosphere, and levels of both have risen substantially through human activity.",
+      },
+      {
+        question: "Which gas released by burning fossil fuels causes acid rain?",
+        accept: ["sulfur dioxide", "sulphur dioxide", "so2", "nitrogen oxides"],
+        answer:
+          "Sulfur dioxide (nitrogen oxides also contribute). Acid rain damages trees and makes lakes too acidic for fish and other aquatic life.",
+      },
+      {
+        question: "Name one cause of water pollution.",
+        accept: ["sewage", "fertiliser", "fertilizer", "toxic chemicals", "chemicals", "pesticides", "waste"],
+        answer:
+          "Sewage, fertiliser run-off or toxic chemicals from industry. Fertiliser is particularly damaging because it triggers algal growth that starves water of oxygen.",
+      },
+      {
+        question: "Name one conservation measure used to protect biodiversity.",
+        accept: ["breeding programmes", "breeding programme", "protecting habitats", "field margins", "hedgerows", "recycling", "reducing deforestation", "nature reserves", "captive breeding"],
+        answer:
+          "Breeding programmes for endangered species, protecting and regenerating rare habitats, or field margin and hedgerow schemes on farms.",
+      },
+      {
+        question: "What is a strip of uncultivated land at the edge of a field, left for wildlife, called?",
+        accept: ["field margin", "field margins", "margin"],
+        answer:
+          "A field margin. Along with hedgerows, it provides habitat and connects fragmented areas so wildlife can move between them.",
+      },
+      {
+        question: "Give one consequence of global warming for living organisms.",
+        accept: ["rising sea levels", "sea level", "migration", "distribution changes", "loss of habitat", "reduced biodiversity", "extinction", "changed migration patterns", "flooding"],
+        answer:
+          "Rising sea levels flooding habitats, changes to species distribution and migration patterns, and reduced biodiversity as species that cannot adapt die out.",
+      },
+      {
+        question: "Give one reason conservation schemes are difficult to put into practice.",
+        accept: ["cost", "money", "need for food", "housing", "jobs", "land needed", "expensive", "competing needs", "farming"],
+        answer:
+          "They cost money, and they compete with the need for farmland, housing and jobs. Acknowledging that trade-off is what lifts an answer into the top band.",
+      },
+      {
+        question: "What is a species at serious risk of extinction called?",
+        accept: ["endangered", "endangered species", "an endangered species"],
+        answer:
+          "Endangered. Captive breeding programmes aim to increase numbers enough for a species to be reintroduced to the wild.",
+      },
+      {
+        question: "True or false: an extinct species can usually be restored later.",
+        accept: ["false", "f"],
+        answer:
+          "False. Extinction is effectively permanent, which is exactly why conservation focuses on preventing it rather than reversing it.",
+      },
+      {
+        question: "Why does a growing human population increase pollution?",
+        accept: ["more waste", "more resources", "more people", "more demand", "more rubbish", "more consumption", "resources"],
+        answer:
+          "More people using more resources produce more waste, and rising standards of living increase resource use per person on top of that.",
+      },
+      {
+        question: "Explain how deforestation contributes to increased carbon dioxide in the atmosphere. Write two or three sentences.",
+        answer:
+          "Trees remove carbon dioxide from the atmosphere by photosynthesis and lock the carbon into their biomass, so cutting them down removes that ongoing absorption. When the felled trees are burned, or when they decay, the carbon stored in them is released back into the atmosphere as carbon dioxide. The effect therefore works in both directions at once — less removed and more released. Mark this one yourself: both halves are needed for full marks, not just 'trees absorb CO₂'.",
+      },
+      {
+        question: "Discuss the difficulties of protecting biodiversity when land is also needed for farming and housing.",
+        answer:
+          "Protecting habitat means not using that land for anything else, which conflicts directly with a growing population's need for food and homes, and with the jobs those industries provide. Conservation also costs money — breeding programmes, habitat regeneration and monitoring all need long-term funding that competes with health and education budgets. Against that, biodiversity loss is largely irreversible, and stable ecosystems provide services people depend on such as pollination, clean water and soil fertility. Compromises such as field margins, hedgerows and building on already-developed land let some biodiversity be protected without giving up all productive use. Mark this one yourself: full marks need the conflict taken seriously on both sides, plus at least one realistic compromise.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Biodiversity just means having lots of animals.",
+        right:
+          "It is the variety of all species — plants, fungi, bacteria and animals. Variety matters more than sheer numbers.",
+      },
+      {
+        wrong: "Peat bogs matter because they are pretty.",
+        right:
+          "They store enormous quantities of carbon. Destroying them releases carbon dioxide, so it is a climate issue as much as a habitat one.",
+      },
+      {
+        wrong: "Global warming will affect all species equally.",
+        right:
+          "Some species will move, some will adapt, and some will die out. Changing distribution and migration patterns are as important as temperature itself.",
+      },
+      {
+        wrong: "Conservation is simply a matter of caring enough.",
+        right:
+          "It costs money and competes with real needs for food, housing and jobs. Exam answers that ignore that trade-off cannot reach the top band.",
+      },
+    ],
+  },
+
+  "biology/biology-exam-practice": {
+    summary:
+      "This topic is about technique rather than content: what the command words actually require, how to read a six-mark question, how to handle the required practicals, and the specific habits that cost marks in Biology papers. Everything here is worth revising in the last fortnight, when learning new content has stopped paying off.",
+    keyFacts: [
+      {
+        heading: "Command words",
+        points: [
+          "STATE or GIVE — a short factual answer with no explanation needed.",
+          "DESCRIBE — say what happens or what the data shows, without saying why.",
+          "EXPLAIN — say WHY. If your answer contains no 'because', it probably is not an explanation.",
+          "COMPARE — give both sides in the same sentence, using words like 'whereas' or 'but'.",
+          "EVALUATE — give advantages and disadvantages and then reach a supported conclusion.",
+          "CALCULATE — show working. Method marks are available even when the final number is wrong.",
+        ],
+      },
+      {
+        heading: "Six-mark questions",
+        points: [
+          "They are marked in bands for the quality of the whole answer, not by counting separate points.",
+          "Plan for thirty seconds: jot three or four points before starting to write.",
+          "Use scientific vocabulary precisely — denatured, active site, concentration gradient, trophic level.",
+          "Link ideas with 'because', 'therefore' and 'which means that' rather than listing facts.",
+          "If the question names a context, use it — a generic answer cannot reach the top band.",
+        ],
+      },
+      {
+        heading: "Required practicals",
+        points: [
+          "You can be asked about ANY of the required practicals in any paper.",
+          "Learn each as: the variables, the method in order, the results expected, and the main sources of error.",
+          "Microscopy, osmosis in potato, food tests, enzymes and pH, photosynthesis with pondweed, reaction time, and sampling with quadrats are the core ones.",
+          "Know the food tests: Benedict's for sugars (blue → brick red), iodine for starch (orange → blue-black), Biuret for protein (blue → purple), ethanol emulsion for lipids (cloudy white).",
+          "Be ready to identify an anomaly, suggest an improvement, and say what you would control.",
+        ],
+      },
+      {
+        heading: "Habits that cost marks",
+        points: [
+          "Missing units, especially on rates and magnification. Magnification has NO unit; rates need one.",
+          "Saying 'the enzyme died' rather than 'denatured', or 'respiration makes energy' rather than 'releases'.",
+          "Describing a graph when the question said explain.",
+          "Answering about the wrong organism — read whether it is plant or animal, muscle or yeast.",
+          "Leaving a six-mark question half finished because time ran out. Watch the clock: roughly one mark a minute.",
+          "Not reading the data provided, and answering from memory instead.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Describe", definition: "Say what happens or what the data shows, without giving reasons." },
+      { term: "Explain", definition: "Say why something happens. A good explanation usually contains the word 'because'." },
+      { term: "Evaluate", definition: "Give advantages and disadvantages, then reach a supported conclusion." },
+      { term: "Compare", definition: "Give both sides together, using linking words such as 'whereas'." },
+      { term: "Calculate", definition: "Work out a numerical answer, showing every step so method marks can be awarded." },
+      { term: "Benedict's test", definition: "Test for sugars: blue solution turns brick red when heated with a reducing sugar." },
+      { term: "Iodine test", definition: "Test for starch: orange iodine solution turns blue-black." },
+      { term: "Biuret test", definition: "Test for protein: blue solution turns purple." },
+      { term: "Emulsion test", definition: "Test for lipids: ethanol and water produce a cloudy white emulsion." },
+      { term: "Anomalous result", definition: "A result that does not fit the pattern, which should be identified and excluded from the mean." },
+      { term: "Control variable", definition: "A variable kept constant so that the investigation is a fair test." },
+      { term: "Required practical", definition: "An investigation named in the specification, which can be examined in any paper." },
+      { term: "Method mark", definition: "A mark for correct working, available even when the final answer is wrong." },
+      { term: "Band marking", definition: "Marking a long answer by overall quality rather than by counting separate points." },
+    ],
+    examTips: [
+      {
+        tip: "Underline the command word before you write anything",
+        detail:
+          "Describe and explain are different questions, and answering the wrong one is the most common way to lose marks on a paper you actually knew.",
+      },
+      {
+        tip: "One mark, roughly one minute",
+        detail:
+          "If you have spent four minutes on a two-mark question, move on and come back. Unfinished six-markers cost far more than an imperfect short answer.",
+      },
+      {
+        tip: "Always attempt a calculation",
+        detail:
+          "Write the formula and substitute the numbers even if you cannot finish. Method marks are real marks, and a blank space scores nothing.",
+      },
+      {
+        tip: "Use the context you are given",
+        detail:
+          "If the question is about a named plant, a named enzyme or a specific graph, refer to it. Generic answers cannot reach the top band.",
+      },
+      {
+        tip: "Learn the four food tests as colour changes",
+        detail:
+          "Blue to brick red, orange to blue-black, blue to purple, cloudy white. Both the starting and finishing colour can be asked for.",
+      },
+      {
+        tip: "Never leave a multiple choice blank",
+        detail:
+          "There is no penalty for a wrong answer, so an educated guess is strictly better than nothing. This is worth real marks over a whole paper.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which command word asks you to say WHY something happens?",
+        accept: ["explain"],
+        answer:
+          "Explain. If your answer contains no 'because' or equivalent, it is probably a description rather than an explanation.",
+      },
+      {
+        question: "Which command word asks for advantages, disadvantages and a conclusion?",
+        accept: ["evaluate"],
+        answer:
+          "Evaluate. The conclusion is essential — an answer that lists both sides and stops has thrown away the final marks.",
+      },
+      {
+        question: "Which command word asks you to say what the data shows, without reasons?",
+        accept: ["describe"],
+        answer:
+          "Describe. Adding reasons wastes time you need elsewhere, but answering 'describe' when it said 'explain' loses marks outright.",
+      },
+      {
+        question: "What colour does Benedict's solution turn when a reducing sugar is present?",
+        accept: ["brick red", "red", "brick-red", "orange red"],
+        answer:
+          "Brick red, from blue, when heated. Both the starting and finishing colours can be asked for, so learn the change rather than one colour.",
+      },
+      {
+        question: "What colour does iodine solution turn in the presence of starch?",
+        accept: ["blue-black", "blue black", "black", "blueblack"],
+        answer:
+          "Blue-black, from orange-brown. It is the quickest of the four food tests and the one most often used in photosynthesis practicals.",
+      },
+      {
+        question: "What colour change shows protein in the Biuret test?",
+        accept: ["purple", "blue to purple", "violet", "lilac"],
+        answer:
+          "Blue to purple. Remember the four tests as colour CHANGES rather than single colours, because questions ask for either end.",
+      },
+      {
+        question: "What result shows lipids are present in the emulsion test?",
+        accept: ["cloudy white", "milky", "white emulsion", "cloudy", "white"],
+        answer:
+          "A cloudy white emulsion, after mixing with ethanol and then water. It is the only one of the four tests that does not rely on a colour change.",
+      },
+      {
+        question: "What is a mark awarded for correct working, even with a wrong final answer, called?",
+        accept: ["method mark", "a method mark", "method marks", "working mark"],
+        answer:
+          "A method mark. It is why you should always write the formula and substitute the numbers, even if you cannot finish the arithmetic.",
+      },
+      {
+        question: "Roughly how many minutes should you spend per mark?",
+        accept: ["1", "one", "1 minute", "one minute"],
+        answer:
+          "About one minute per mark. If a two-mark question has taken four minutes, leave it and come back — unfinished six-markers cost far more.",
+      },
+      {
+        question: "Should you leave a multiple choice question blank if unsure? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. There is no penalty for a wrong answer, so a guess is strictly better than nothing. Over a whole paper this is worth real marks.",
+      },
+      {
+        question: "What should you do with an anomalous result when calculating a mean?",
+        accept: ["exclude it", "ignore it", "leave it out", "exclude", "discard it", "not include it", "remove it"],
+        answer:
+          "Exclude it from the mean — and SAY that you have excluded it. The statement carries a mark of its own.",
+      },
+      {
+        question: "How is a six-mark question marked?",
+        accept: ["in bands", "bands", "band marking", "levels", "by quality", "level of response"],
+        answer:
+          "In bands, by the overall quality of the answer, rather than by counting separate points. That is why linking ideas matters more than listing facts.",
+      },
+      {
+        question: "Does magnification have a unit? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No — it is a ratio, so write ×400. Rates, by contrast, always need a unit, such as bubbles per minute.",
+      },
+      {
+        question: "What should you do in the first thirty seconds of a six-mark question?",
+        accept: ["plan", "plan it", "jot points", "make notes", "write points", "planning", "note down points"],
+        answer:
+          "Plan — jot down three or four points before writing. It costs half a minute and stops you rambling or missing an obvious point.",
+      },
+      {
+        question: "Explain why writing 'the enzyme died' loses marks. Write two or three sentences.",
+        answer:
+          "An enzyme is a protein molecule, not a living organism, so it cannot die. What actually happens at high temperature is that the bonds holding its shape break and the ACTIVE SITE changes shape permanently, so the substrate no longer fits. Examiners are looking for the word denatured and for the active site explanation, and neither is present in 'it died'. Mark this one yourself: credit yourself if you said enzymes are molecules AND explained denaturing through the active site.",
+      },
+      {
+        question: "Describe how you would approach a six-mark question on osmosis in potato tissue.",
+        answer:
+          "First underline the command word and note the context — whether it is asking me to describe a method, explain results, or evaluate an investigation. Then spend about thirty seconds planning three or four points: for osmosis these would be the direction of water movement, the reason based on concentration, the effect on mass, and how percentage change is calculated. I would write in linked sentences using precise vocabulary — partially permeable membrane, dilute and concentrated solution, turgid and flaccid — rather than a list, and refer to any data given in the question. Finally I would check I had answered what was actually asked. Mark this one yourself: planning, precise vocabulary, linked reasoning and using the data are the four things worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Describe and explain mean roughly the same thing.",
+        right:
+          "Describe says WHAT; explain says WHY. Answering the wrong one is the commonest way to lose marks on content you actually knew.",
+      },
+      {
+        wrong: "There is no point starting a calculation you cannot finish.",
+        right:
+          "Method marks are awarded for the formula and correct substitution. A blank space scores zero; a half-finished attempt often scores most of the marks.",
+      },
+      {
+        wrong: "Six-mark questions are marked by counting six separate points.",
+        right:
+          "They are marked in bands on overall quality. Linked, well-argued reasoning beats a list of six disconnected facts.",
+      },
+      {
+        wrong: "Writing more always scores more.",
+        right:
+          "Only if it answers the question. A focused paragraph using the context given beats a page of general knowledge every time.",
+      },
+    ],
+  },
 };
