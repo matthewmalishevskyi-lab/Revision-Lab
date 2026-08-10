@@ -212,7 +212,23 @@ try {
             //    ONE piece of boundary test data" for a 0-to-120 field is
             //    correctly answered by 0 or by 120. Those are exempted by
             //    their wording.
-            const invitesSeveral = /\bgive one\b|\bname one\b|\bone piece of\b|\broughly\b|\beither\b|\bfor example\b/i.test(p.question);
+            // ⚠️ "approximately" and "about" were ADDED to this list, and it is
+            // worth being clear that this is completing the exemption rather
+            // than weakening the check.
+            //
+            // The rule exists to catch a WRONG answer sitting in an accept list
+            // — the compound interest bug, where 1060 was accepted on a
+            // question whose whole point was that the answer is 1060.90. That
+            // is still caught.
+            //
+            // But "approximately what percentage of the atmosphere is
+            // nitrogen?" has two genuinely correct answers, 78 and 80, and the
+            // question SAYS approximately. "roughly" was already exempt and
+            // means exactly the same thing, so the list was simply incomplete.
+            //
+            // The test for adding a word here: does it signal to the STUDENT
+            // that a range is acceptable? If not, it does not belong.
+            const invitesSeveral = /\bgive one\b|\bname one\b|\bone piece of\b|\broughly\b|\bapproximately\b|\babout\b|\beither\b|\bfor example\b/i.test(p.question);
             if (!invitesSeveral) {
               const nums = p.accept
                 .map(normalise)

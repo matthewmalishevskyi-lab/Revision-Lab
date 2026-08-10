@@ -1,5 +1,28 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Science content (2026-08-10)
+
+**Biology COMPLETE** — 20 topics, all three years, 305 flashcards.
+**Chemistry COMPLETE** — 19 topics, all three years, 269 flashcards.
+**Physics: NOT STARTED** — 19 topics listed, no content.
+
+**The tier principle, applied throughout.** The two mistakes are not
+symmetrical: failing to flag Higher-only content wastes a Foundation student a
+little revision; wrongly flagging it tells them to SKIP something that will be
+on their paper. So both files deliberately UNDER-flag. Biology carries 11 flags,
+Chemistry 16, and Year 9 of both carries almost none — which is the honest
+position, not a gap.
+
+**A checker rule was completed, not weakened.** "Approximately what percentage
+of the atmosphere is nitrogen?" has two correct answers, 78 and 80, and the
+accept-list rule flagged it. `roughly` was already exempt and means the same
+thing, so `approximately` and `about` were added. ⚠️ The test for adding a word
+to that list: does it signal to the STUDENT that a range is acceptable? Verified
+afterwards by reintroducing a genuinely wrong accept list (Mr of H₂O accepting
+17) and confirming it still fails.
+
+---
+
 ## Science — three subjects behind one card (2026-08-10)
 
 **Iris**, the Science mascot: lab coat, goggles pushed up on her forehead, two

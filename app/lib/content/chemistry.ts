@@ -3081,4 +3081,1322 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
     ],
   },
+
+  // ─── YEAR 11 ──────────────────────────────────────────────────────────────
+
+  "chemistry/organic-chemistry": {
+    summary:
+      "Organic chemistry is the chemistry of carbon compounds, and almost all of it starts with crude oil. This topic covers hydrocarbons, fractional distillation, cracking, combustion and the homologous series — and it rewards learning the patterns rather than memorising individual compounds, because the patterns are what the questions test.",
+    keyFacts: [
+      {
+        heading: "Crude oil and alkanes",
+        points: [
+          "Crude oil is a mixture of HYDROCARBONS — compounds containing hydrogen and carbon ONLY.",
+          "It formed over millions of years from the remains of ancient plankton, so it is a FINITE resource.",
+          "ALKANES are saturated hydrocarbons: every carbon-carbon bond is a single bond.",
+          "The general formula is CₙH₂ₙ₊₂. The first four are methane CH₄, ethane C₂H₆, propane C₃H₈, butane C₄H₁₀.",
+          "A HOMOLOGOUS SERIES is a family of compounds with the same general formula and similar chemical properties.",
+        ],
+      },
+      {
+        heading: "Fractional distillation and properties",
+        points: [
+          "Crude oil is separated into FRACTIONS by fractional distillation, using differences in boiling point.",
+          "The column is hottest at the bottom and coolest at the top; short molecules rise highest.",
+          "As molecules get LONGER: boiling point INCREASES, viscosity INCREASES, and flammability DECREASES.",
+          "Shorter molecules are more useful — they burn more easily and are in higher demand.",
+          "Fractions include petrol, diesel, kerosene, heavy fuel oil and bitumen.",
+        ],
+      },
+      {
+        heading: "Combustion",
+        points: [
+          "COMPLETE combustion: hydrocarbon + oxygen → carbon dioxide + water. It releases a lot of energy.",
+          "Both the carbon and the hydrogen are OXIDISED.",
+          "INCOMPLETE combustion, with insufficient oxygen, also produces carbon monoxide and soot (carbon particles).",
+          "CARBON MONOXIDE is toxic, colourless and odourless — it binds to haemoglobin so blood carries less oxygen.",
+          "Soot causes respiratory problems and blackens buildings.",
+          "Burning fuels containing sulfur produces sulfur dioxide, which causes acid rain.",
+        ],
+      },
+      {
+        heading: "Cracking and alkenes",
+        points: [
+          "CRACKING breaks long-chain hydrocarbons into shorter, more useful ones.",
+          "It is done by CATALYTIC cracking, using a hot catalyst, or STEAM cracking, using very high temperatures.",
+          "Cracking produces shorter alkanes AND alkenes.",
+          "ALKENES are unsaturated: they contain a carbon-carbon DOUBLE bond. General formula CₙH₂ₙ.",
+          "Alkenes are more reactive than alkanes and are used to make polymers.",
+          "TEST for an alkene: it decolourises BROMINE WATER, turning it from orange to colourless. An alkane does not.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Hydrocarbon", definition: "A compound containing hydrogen and carbon only." },
+      { term: "Crude oil", definition: "A finite mixture of hydrocarbons formed from ancient plankton over millions of years." },
+      { term: "Alkane", definition: "A saturated hydrocarbon with only single carbon-carbon bonds. General formula CnH2n+2." },
+      { term: "Alkene", definition: "An unsaturated hydrocarbon containing a carbon-carbon double bond. General formula CnH2n." },
+      { term: "Saturated", definition: "Containing only single carbon-carbon bonds." },
+      { term: "Unsaturated", definition: "Containing at least one carbon-carbon double bond." },
+      { term: "Homologous series", definition: "A family of compounds with the same general formula and similar chemical properties." },
+      { term: "Fraction", definition: "A group of hydrocarbons with similar boiling points, separated from crude oil." },
+      { term: "Cracking", definition: "Breaking long-chain hydrocarbons into shorter, more useful molecules." },
+      { term: "Catalytic cracking", definition: "Cracking using a hot catalyst." },
+      { term: "Steam cracking", definition: "Cracking by mixing with steam at very high temperature." },
+      { term: "Complete combustion", definition: "Burning in plenty of oxygen, giving carbon dioxide and water." },
+      { term: "Incomplete combustion", definition: "Burning in insufficient oxygen, also giving carbon monoxide and soot." },
+      { term: "Carbon monoxide", definition: "A toxic, colourless, odourless gas that binds to haemoglobin, reducing oxygen transport." },
+      { term: "Bromine water test", definition: "Orange bromine water is decolourised by an alkene but not by an alkane." },
+      { term: "Viscosity", definition: "How thick and resistant to flow a liquid is; it increases with chain length." },
+    ],
+    examTips: [
+      {
+        tip: "Hydrocarbon means hydrogen and carbon ONLY",
+        detail:
+          "If a compound contains oxygen or anything else, it is not a hydrocarbon. Questions include distractors deliberately.",
+      },
+      {
+        tip: "Learn the two general formulae",
+        detail:
+          "Alkanes CₙH₂ₙ₊₂, alkenes CₙH₂ₙ. They let you work out any member of either series without memorising them all.",
+      },
+      {
+        tip: "Learn the property trends as a set of three",
+        detail:
+          "Longer chains: higher boiling point, higher viscosity, lower flammability. Questions usually ask for two of the three.",
+      },
+      {
+        tip: "The bromine water test has a specific colour change",
+        detail:
+          "Orange to colourless with an alkene; stays orange with an alkane. Say both the starting and finishing colour.",
+      },
+      {
+        tip: "Explain WHY cracking is done",
+        detail:
+          "Supply of long fractions exceeds demand, while short fractions are in short supply. Cracking converts the surplus into what people want.",
+      },
+      {
+        tip: "Say why carbon monoxide is dangerous",
+        detail:
+          "It is toxic AND colourless and odourless, so it cannot be detected without an alarm. It binds to haemoglobin, reducing oxygen transport.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is a compound containing only hydrogen and carbon called?",
+        accept: ["hydrocarbon", "a hydrocarbon", "hydrocarbons"],
+        answer:
+          "A hydrocarbon. The word ONLY matters — a compound containing oxygen as well is not a hydrocarbon, however similar it looks.",
+      },
+      {
+        question: "What is the general formula for an alkane?",
+        accept: ["cnh2n+2", "cnh2n2", "c n h 2n+2", "cnh(2n+2)"],
+        answer:
+          "CₙH₂ₙ₊₂. So for 3 carbons you get C₃H₈, propane. Learning the formula beats memorising individual compounds.",
+      },
+      {
+        question: "What is the general formula for an alkene?",
+        accept: ["cnh2n", "c n h 2n"],
+        answer:
+          "CₙH₂ₙ. The double bond means two fewer hydrogens than the equivalent alkane, which is exactly what makes it unsaturated.",
+      },
+      {
+        question: "What is the first alkane, with one carbon atom?",
+        accept: ["methane", "ch4", "ch₄"],
+        answer:
+          "Methane, CH₄. Then ethane C₂H₆, propane C₃H₈ and butane C₄H₁₀ — the first four are worth memorising in order.",
+      },
+      {
+        question: "What type of bond makes a hydrocarbon unsaturated?",
+        accept: ["double bond", "carbon carbon double bond", "c=c", "double", "c=c double bond"],
+        answer:
+          "A carbon-carbon double bond. Alkenes have one, which is why they are more reactive than alkanes and are used to make polymers.",
+      },
+      {
+        question: "What is the test for an alkene?",
+        accept: ["bromine water", "bromine water test", "decolourises bromine water", "bromine"],
+        answer:
+          "Bromine water. An alkene turns it from orange to colourless; an alkane leaves it orange. Give both colours in the answer.",
+      },
+      {
+        question: "What colour does bromine water turn when it reacts with an alkene?",
+        accept: ["colourless", "colorless", "clear", "decolourised"],
+        answer:
+          "Colourless, from orange. Note that 'clear' is not the same word as 'colourless' — orange bromine water is already clear.",
+      },
+      {
+        question: "What process breaks long hydrocarbons into shorter ones?",
+        accept: ["cracking"],
+        answer:
+          "Cracking. It is done because supply of long molecules exceeds demand, while short ones are in short supply and are far more useful.",
+      },
+      {
+        question: "Name one method of cracking.",
+        accept: ["catalytic", "catalytic cracking", "steam", "steam cracking", "thermal"],
+        answer:
+          "Catalytic cracking, using a hot catalyst, or steam cracking, using very high temperatures. Both break the long chains apart.",
+      },
+      {
+        question: "What two products does COMPLETE combustion of a hydrocarbon give?",
+        accept: ["carbon dioxide and water", "water and carbon dioxide", "co2 and water", "co2 and h2o"],
+        answer:
+          "Carbon dioxide and water. Both the carbon and the hydrogen in the fuel are oxidised, which is why it releases so much energy.",
+      },
+      {
+        question: "Which toxic gas is produced by INCOMPLETE combustion?",
+        accept: ["carbon monoxide", "co"],
+        answer:
+          "Carbon monoxide. It is especially dangerous because it is colourless and odourless, so it cannot be detected without an alarm.",
+      },
+      {
+        question: "Why is carbon monoxide so dangerous to humans?",
+        accept: ["binds to haemoglobin", "haemoglobin", "reduces oxygen", "stops blood carrying oxygen", "binds to hemoglobin", "less oxygen carried"],
+        answer:
+          "It binds to haemoglobin in place of oxygen, so the blood carries far less oxygen to the tissues. It is also colourless and odourless.",
+      },
+      {
+        question: "As hydrocarbon chains get LONGER, does boiling point increase or decrease?",
+        accept: ["increase", "increases", "goes up", "higher", "rises"],
+        answer:
+          "It increases. Viscosity also increases, while flammability decreases — three trends that always move together.",
+      },
+      {
+        question: "As hydrocarbon chains get longer, does flammability increase or decrease?",
+        accept: ["decrease", "decreases", "goes down", "lower", "falls"],
+        answer:
+          "It decreases. Shorter molecules ignite far more easily, which is one reason they are in higher demand than the long fractions.",
+      },
+      {
+        question: "Explain why crude oil is separated by fractional distillation. Write two or three sentences.",
+        answer:
+          "Crude oil is a mixture of many hydrocarbons of different chain lengths, which are not useful together but are very useful separately. Because chain length determines boiling point, the different hydrocarbons can be separated by heating the oil and letting each condense at a different height in a fractionating column. The column is hottest at the bottom and coolest at the top, so short molecules with low boiling points rise highest before condensing, while long ones condense near the bottom. Mark this one yourself: the link between chain length, boiling point and position in the column is the mark.",
+      },
+      {
+        question: "Explain why cracking is carried out in the oil industry.",
+        answer:
+          "Fractional distillation produces far more of the long-chain fractions than anyone wants, while demand for short-chain fractions such as petrol greatly exceeds what the oil naturally contains. Cracking breaks the surplus long molecules into shorter ones, matching supply to demand and making the whole barrel more valuable. It also produces alkenes, which are unsaturated and reactive, and which are the starting materials for making polymers. Mark this one yourself: supply and demand plus the production of alkenes are the two things worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Any compound containing carbon is a hydrocarbon.",
+        right:
+          "A hydrocarbon contains hydrogen and carbon ONLY. Ethanol contains oxygen too, so it is not one.",
+      },
+      {
+        wrong: "Cracking is a way of separating crude oil.",
+        right:
+          "Fractional distillation separates it. Cracking then BREAKS molecules apart chemically, which is a different process entirely.",
+      },
+      {
+        wrong: "Bromine water turns clear with an alkene.",
+        right:
+          "It turns COLOURLESS. Orange bromine water is already clear — clear and colourless are different words in chemistry.",
+      },
+      {
+        wrong: "Incomplete combustion just means less energy is released.",
+        right:
+          "It also produces carbon monoxide and soot. The toxic products are usually what the question is about.",
+      },
+      {
+        wrong: "Alkenes and alkanes react in the same way.",
+        right:
+          "Alkenes are unsaturated and far more reactive because of the double bond, which is why they decolourise bromine water and alkanes do not.",
+      },
+    ],
+  },
+
+  "chemistry/polymers": {
+    summary:
+      "Polymers are everywhere, and they are made by joining thousands of small molecules into one enormous chain. This topic covers addition polymerisation from alkenes, condensation polymerisation, the natural polymers in living things, and why plastics that never break down are both so useful and such a problem.",
+    keyFacts: [
+      {
+        heading: "Addition polymerisation",
+        points: [
+          "Many small MONOMERS join to make one very large POLYMER molecule.",
+          "The monomers must be ALKENES — they need a carbon-carbon double bond.",
+          "The double bond OPENS UP and forms bonds to neighbouring monomers.",
+          "The polymer is the ONLY product — nothing else is made.",
+          "Ethene → poly(ethene); propene → poly(propene).",
+          "The repeating unit has the same atoms as the monomer, drawn with single bonds and extended bonds either side.",
+        ],
+      },
+      {
+        heading: "Condensation polymerisation",
+        points: [
+          "Condensation polymerisation involves monomers with TWO functional groups, one at each end.",
+          "Each time a bond forms, a small molecule — usually WATER — is lost.",
+          "So there are TWO products: the polymer and the small molecule.",
+          "That is the key difference from addition polymerisation, which produces only the polymer.",
+          "Polyesters are made this way, from a dicarboxylic acid and a diol.",
+        ],
+      },
+      {
+        heading: "Natural polymers",
+        points: [
+          "DNA is a polymer of nucleotides, arranged as two strands in a double helix.",
+          "PROTEINS are polymers of amino acids.",
+          "STARCH and CELLULOSE are polymers of glucose — the same monomer joined differently.",
+          "These are all natural condensation polymers, made in living organisms.",
+          "That the same monomer can build both digestible starch and indigestible cellulose is a good illustration of structure determining properties.",
+        ],
+      },
+      {
+        heading: "Properties and problems",
+        points: [
+          "Polymers are solid at room temperature because the molecules are very large, so intermolecular forces are strong.",
+          "THERMOSOFTENING polymers melt when heated, because the chains are separate and only weakly attracted.",
+          "THERMOSETTING polymers do not melt, because CROSS-LINKS chemically bond the chains together.",
+          "Most plastics are not biodegradable, so they persist in landfill and in the oceans for centuries.",
+          "Options: recycling, which saves energy and raw material but requires sorting; or incineration, which recovers energy but releases carbon dioxide.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Polymer", definition: "A very large molecule made by joining many small monomers together." },
+      { term: "Monomer", definition: "The small molecule that joins with others to form a polymer." },
+      { term: "Addition polymerisation", definition: "Joining alkene monomers by opening their double bonds; the polymer is the only product." },
+      { term: "Condensation polymerisation", definition: "Joining monomers with two functional groups, losing a small molecule such as water each time." },
+      { term: "Repeating unit", definition: "The section of a polymer that repeats along the chain." },
+      { term: "Poly(ethene)", definition: "The addition polymer made from ethene monomers." },
+      { term: "Polyester", definition: "A condensation polymer made from a dicarboxylic acid and a diol." },
+      { term: "Thermosoftening polymer", definition: "A polymer with separate chains that melts when heated and can be reshaped." },
+      { term: "Thermosetting polymer", definition: "A polymer with cross-links between chains, which does not melt when heated." },
+      { term: "Cross-link", definition: "A chemical bond joining polymer chains, preventing them from moving apart." },
+      { term: "Biodegradable", definition: "Able to be broken down by microorganisms." },
+      { term: "DNA", definition: "A natural polymer of nucleotides, forming two strands in a double helix." },
+      { term: "Protein", definition: "A natural polymer of amino acids." },
+      { term: "Cellulose", definition: "A natural polymer of glucose that forms plant cell walls." },
+      { term: "Nucleotide", definition: "The monomer unit from which DNA is built." },
+    ],
+    examTips: [
+      {
+        tip: "Addition polymerisation makes ONE product",
+        detail:
+          "Only the polymer. Condensation makes TWO — the polymer and a small molecule, usually water. That is the whole distinction.",
+      },
+      {
+        tip: "The monomer must be an ALKENE for addition",
+        detail:
+          "It needs the double bond to open up. An alkane cannot polymerise by addition because there is nothing to open.",
+      },
+      {
+        tip: "Draw the repeating unit with extended bonds",
+        detail:
+          "Lines extending out of the brackets on both sides, and single bonds inside where the double bond used to be. The 'n' goes outside the bracket.",
+      },
+      {
+        tip: "Explain thermosetting through CROSS-LINKS",
+        detail:
+          "Chemical bonds between chains stop them separating, so heating does not melt it. Thermosoftening chains are only weakly attracted.",
+      },
+      {
+        tip: "Give both sides on plastic disposal",
+        detail:
+          "Recycling saves raw material and energy but needs sorting and is not always economic; incineration recovers energy but releases carbon dioxide.",
+      },
+      {
+        tip: "Non-biodegradable is a property, not just a problem",
+        detail:
+          "It is exactly why plastics are so useful — they do not rot. The problem is what happens when we no longer want them.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the small molecule that joins with others to make a polymer called?",
+        accept: ["monomer", "a monomer", "monomers"],
+        answer:
+          "A monomer. Thousands of them join to make one polymer molecule, which is why polymers are so large.",
+      },
+      {
+        question: "What type of hydrocarbon is needed as a monomer for addition polymerisation?",
+        accept: ["alkene", "alkenes", "an alkene", "unsaturated"],
+        answer:
+          "An alkene. It must have a carbon-carbon double bond that can open up to form bonds with its neighbours.",
+      },
+      {
+        question: "How many products does addition polymerisation make? Give the number only.",
+        accept: ["1", "one"],
+        answer:
+          "One — just the polymer. Condensation polymerisation makes two, because a small molecule is lost each time a bond forms.",
+      },
+      {
+        question: "What small molecule is usually lost during condensation polymerisation?",
+        accept: ["water", "h2o", "h₂o"],
+        answer:
+          "Water. Losing a small molecule at every join is exactly what distinguishes condensation from addition polymerisation.",
+      },
+      {
+        question: "What polymer is made from ethene?",
+        accept: ["poly(ethene)", "polyethene", "poly ethene", "polythene", "polyethylene"],
+        answer:
+          "Poly(ethene). The naming rule is simple: put 'poly' in front of the monomer's name, with brackets around it.",
+      },
+      {
+        question: "What type of polymer melts when heated?",
+        accept: ["thermosoftening", "thermosoftening polymer", "thermoplastic"],
+        answer:
+          "A thermosoftening polymer. Its chains are separate and only weakly attracted, so heating lets them slide apart and it can be reshaped.",
+      },
+      {
+        question: "What type of polymer does NOT melt when heated?",
+        accept: ["thermosetting", "thermosetting polymer", "thermoset"],
+        answer:
+          "A thermosetting polymer. Cross-links chemically bond the chains together, so they cannot separate however hot it gets.",
+      },
+      {
+        question: "What are the chemical bonds joining polymer chains together called?",
+        accept: ["cross links", "cross-links", "crosslinks", "cross link"],
+        answer:
+          "Cross-links. They are what make a thermosetting polymer rigid and heat-resistant, and also what make it impossible to remould.",
+      },
+      {
+        question: "What is the monomer of a protein?",
+        accept: ["amino acid", "amino acids", "aminoacid"],
+        answer:
+          "Amino acids. Proteins are natural condensation polymers, made in living cells by joining amino acids and losing water.",
+      },
+      {
+        question: "What is the monomer of DNA?",
+        accept: ["nucleotide", "nucleotides", "a nucleotide"],
+        answer:
+          "Nucleotides. DNA is a natural polymer, arranged as two strands wound into a double helix.",
+      },
+      {
+        question: "Which natural polymer is made of glucose and forms plant cell walls?",
+        accept: ["cellulose"],
+        answer:
+          "Cellulose. Starch is also made of glucose but joined differently, which is why humans can digest one and not the other.",
+      },
+      {
+        question: "Why are polymers solid at room temperature?",
+        accept: ["strong intermolecular forces", "large molecules", "big molecules", "strong forces between molecules", "molecules are very large"],
+        answer:
+          "Their molecules are extremely large, so the intermolecular forces between them are strong and need a lot of energy to overcome.",
+      },
+      {
+        question: "What word describes a material that microorganisms can break down?",
+        accept: ["biodegradable"],
+        answer:
+          "Biodegradable. Most plastics are not, which is exactly why they persist in landfill and in the oceans for centuries.",
+      },
+      {
+        question: "Give one advantage of recycling plastics.",
+        accept: ["saves raw materials", "saves energy", "less landfill", "saves crude oil", "less waste", "conserves resources", "reduces pollution"],
+        answer:
+          "It saves raw materials and crude oil, uses less energy than making new plastic, and reduces the amount going to landfill.",
+      },
+      {
+        question: "Explain the difference between addition and condensation polymerisation. Write three sentences.",
+        answer:
+          "In addition polymerisation the monomers are alkenes, and their carbon-carbon double bonds open up so the monomers join directly to one another — the polymer is the only product. In condensation polymerisation each monomer has two functional groups, and every time two monomers join a small molecule, usually water, is lost. So condensation produces two products, the polymer and the small molecule, whereas addition produces only one. Mark this one yourself: the number of products, and the need for a double bond in addition, are the two key differences.",
+      },
+      {
+        question: "Discuss the problems caused by plastics not being biodegradable, and what can be done.",
+        answer:
+          "Because microorganisms cannot break them down, plastics remain in landfill for centuries and accumulate in rivers and oceans, where they harm wildlife that eats or becomes entangled in them. Landfill also uses land and the plastic occupies it indefinitely. Recycling reduces the problem by saving crude oil and energy, though different polymers must be sorted first, which is labour-intensive and not always economic. Incineration recovers useful energy and reduces volume, but releases carbon dioxide and can release toxic gases if not carefully controlled. Overall a combination of reducing use, recycling where practical, and developing genuinely biodegradable alternatives is more realistic than any single solution. Mark this one yourself: full marks need the problem, at least two responses with their drawbacks, and a judgement.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Addition and condensation polymerisation both lose a water molecule.",
+        right:
+          "Only condensation does. Addition polymerisation produces the polymer and nothing else at all.",
+      },
+      {
+        wrong: "Any monomer can undergo addition polymerisation.",
+        right:
+          "It must contain a carbon-carbon double bond — so it must be an alkene. Without a double bond there is nothing to open up.",
+      },
+      {
+        wrong: "Thermosetting polymers melt if you heat them enough.",
+        right:
+          "The cross-links are chemical bonds between chains. Heating strongly enough will char or decompose them, but they will not melt and reset.",
+      },
+      {
+        wrong: "Polymers are man-made materials.",
+        right:
+          "DNA, proteins, starch and cellulose are all natural polymers. Plastics are simply the synthetic ones.",
+      },
+      {
+        wrong: "Recycling plastic is always the best option.",
+        right:
+          "It requires sorting by polymer type, which is costly, and repeated recycling degrades quality. It is usually best, but not automatically.",
+      },
+    ],
+  },
+
+  "chemistry/chemical-analysis": {
+    summary:
+      "Chemical analysis is about identifying what something actually is. This topic covers purity and formulations, the tests for common gases and ions, flame tests, and the instrumental methods that have largely replaced the wet chemistry — along with why the old tests are still worth knowing.",
+    keyFacts: [
+      {
+        heading: "Purity and formulations",
+        points: [
+          "A PURE substance in chemistry is a single element or compound.",
+          "Pure substances melt and boil at a SHARP, specific temperature; mixtures melt over a RANGE.",
+          "Comparing a measured melting point with the known value tests both identity and purity.",
+          "A FORMULATION is a mixture designed as a useful product, with each component in a measured quantity.",
+          "Examples: fuels, cleaning agents, paints, medicines, alloys and fertilisers.",
+        ],
+      },
+      {
+        heading: "Tests for gases",
+        points: [
+          "HYDROGEN: a lighted splint gives a squeaky pop.",
+          "OXYGEN: a glowing splint RELIGHTS.",
+          "CARBON DIOXIDE: limewater turns milky or cloudy.",
+          "CHLORINE: damp litmus paper is BLEACHED white.",
+          "State the observation as well as naming the gas — the observation usually carries the mark.",
+        ],
+      },
+      {
+        heading: "Flame tests and metal hydroxides",
+        points: [
+          "FLAME TESTS identify metal ions by colour: lithium crimson, sodium yellow, potassium lilac, calcium orange-red, copper green.",
+          "If a sample contains a mixture of ions, one colour can mask another — a real limitation.",
+          "Adding sodium hydroxide solution forms metal hydroxide PRECIPITATES with distinctive colours.",
+          "Calcium, magnesium and aluminium all give WHITE precipitates; aluminium's redissolves in excess sodium hydroxide.",
+          "Copper(II) gives a blue precipitate, iron(II) green, and iron(III) brown.",
+        ],
+      },
+      {
+        heading: "Tests for anions, and instrumental methods",
+        points: [
+          "CARBONATES: add dilute acid — it fizzes, and the gas turns limewater milky.",
+          "HALIDES: add nitric acid then silver nitrate. Chloride gives white, bromide cream, iodide yellow.",
+          "SULFATES: add hydrochloric acid then barium chloride — a white precipitate forms.",
+          "INSTRUMENTAL methods such as flame emission spectroscopy are faster, more accurate and more sensitive.",
+          "They can work on tiny samples and identify several elements at once.",
+          "Their disadvantages: expensive equipment, specialist training needed, and results must be compared against known data.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Pure substance", definition: "A single element or compound, which melts and boils at a sharp specific temperature." },
+      { term: "Formulation", definition: "A mixture designed as a useful product, with each component present in a measured quantity." },
+      { term: "Flame test", definition: "Identifying a metal ion by the colour it produces in a flame." },
+      { term: "Precipitate", definition: "An insoluble solid formed when two solutions are mixed." },
+      { term: "Limewater test", definition: "The test for carbon dioxide: limewater turns milky." },
+      { term: "Glowing splint test", definition: "The test for oxygen: a glowing splint relights." },
+      { term: "Squeaky pop test", definition: "The test for hydrogen: a lighted splint gives a squeaky pop." },
+      { term: "Silver nitrate test", definition: "The test for halides: white for chloride, cream for bromide, yellow for iodide." },
+      { term: "Barium chloride test", definition: "The test for sulfate ions: a white precipitate forms." },
+      { term: "Instrumental method", definition: "An analytical technique using a machine, which is faster, more accurate and more sensitive." },
+      { term: "Flame emission spectroscopy", definition: "An instrumental method identifying metal ions from the light they emit." },
+      { term: "Sensitivity", definition: "The ability of a method to detect very small quantities." },
+      { term: "Sodium hydroxide test", definition: "Adding NaOH solution to form coloured metal hydroxide precipitates." },
+      { term: "Halide", definition: "A compound containing chloride, bromide or iodide ions." },
+    ],
+    examTips: [
+      {
+        tip: "Give the observation, not just the gas name",
+        detail:
+          "'Limewater turns milky' scores; 'it is carbon dioxide' alone often does not. State what you would SEE.",
+      },
+      {
+        tip: "Lighted splint for hydrogen, GLOWING splint for oxygen",
+        detail:
+          "The two are constantly swapped. Squeaky pop needs a flame; relighting needs a splint that has just gone out.",
+      },
+      {
+        tip: "Learn the three halide colours in order",
+        detail:
+          "Chloride white, bromide cream, iodide yellow — the colours deepen as you go down group 7. That ordering makes them easier to recall.",
+      },
+      {
+        tip: "Say what acid is added BEFORE the test reagent",
+        detail:
+          "Nitric acid before silver nitrate; hydrochloric acid before barium chloride. The acid removes carbonates that would give a false positive.",
+      },
+      {
+        tip: "Give both advantages AND disadvantages of instrumental methods",
+        detail:
+          "Faster, more accurate, more sensitive, works on tiny samples — against expensive equipment and the need for trained operators.",
+      },
+      {
+        tip: "Know the limitation of flame tests",
+        detail:
+          "In a mixture, one strong colour can mask another. That is a standard reason for preferring an instrumental method.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the test for hydrogen gas?",
+        accept: ["squeaky pop", "lighted splint", "burning splint", "lit splint", "pop"],
+        answer:
+          "A lighted splint gives a squeaky pop. Do not confuse this with the GLOWING splint used for oxygen.",
+      },
+      {
+        question: "What is the test for oxygen gas?",
+        accept: ["glowing splint", "glowing splint relights", "relights a glowing splint", "relight glowing splint"],
+        answer:
+          "A glowing splint relights. The splint must be glowing rather than burning — that distinction is the whole test.",
+      },
+      {
+        question: "What is the test for carbon dioxide?",
+        accept: ["limewater", "limewater turns milky", "limewater turns cloudy", "lime water"],
+        answer:
+          "Bubble it through limewater, which turns milky or cloudy. State the colour change, because that is what carries the mark.",
+      },
+      {
+        question: "What is the test for chlorine gas?",
+        accept: ["damp litmus", "bleaches litmus", "damp litmus paper", "litmus bleached", "bleaches damp litmus paper"],
+        answer:
+          "Damp litmus paper is bleached white. Chlorine is a strong bleaching agent, which is why it is used to treat water.",
+      },
+      {
+        question: "What flame colour does a sodium ion produce?",
+        accept: ["yellow"],
+        answer:
+          "Yellow. Lithium is crimson, potassium lilac, calcium orange-red and copper green — five colours worth memorising.",
+      },
+      {
+        question: "What flame colour does a potassium ion produce?",
+        accept: ["lilac", "purple", "light purple"],
+        answer:
+          "Lilac. It is easily masked by sodium's strong yellow if both are present, which is a real limitation of flame tests.",
+      },
+      {
+        question: "What flame colour does a copper ion produce?",
+        accept: ["green", "blue-green", "blue green"],
+        answer:
+          "Green. Copper compounds are also often blue in solution, which is another useful identification clue.",
+      },
+      {
+        question: "What colour precipitate does copper(II) form with sodium hydroxide?",
+        accept: ["blue"],
+        answer:
+          "Blue. Iron(II) gives green and iron(III) gives brown, while calcium, magnesium and aluminium all give white.",
+      },
+      {
+        question: "What colour precipitate does iron(III) form with sodium hydroxide?",
+        accept: ["brown", "orange brown", "orange-brown"],
+        answer:
+          "Brown. Iron(II) gives green — the difference in colour is how the two oxidation states are told apart.",
+      },
+      {
+        question: "What reagent tests for halide ions?",
+        accept: ["silver nitrate", "silver nitrate solution", "agno3"],
+        answer:
+          "Silver nitrate, after adding dilute nitric acid first. Chloride gives white, bromide cream and iodide yellow.",
+      },
+      {
+        question: "What colour precipitate does a chloride ion give with silver nitrate?",
+        accept: ["white"],
+        answer:
+          "White. Bromide gives cream and iodide gives yellow — the colours deepen going down group 7.",
+      },
+      {
+        question: "What reagent tests for sulfate ions?",
+        accept: ["barium chloride", "barium chloride solution", "bacl2"],
+        answer:
+          "Barium chloride, after adding dilute hydrochloric acid. A white precipitate of barium sulfate confirms a sulfate is present.",
+      },
+      {
+        question: "Give one advantage of instrumental methods over chemical tests.",
+        accept: ["faster", "more accurate", "more sensitive", "small samples", "quicker", "accurate", "sensitive", "tiny samples", "several at once"],
+        answer:
+          "They are faster, more accurate and far more sensitive, and can work on very small samples — sometimes identifying several elements at once.",
+      },
+      {
+        question: "Give one disadvantage of instrumental methods.",
+        accept: ["expensive", "cost", "training", "specialist training", "equipment cost", "need trained operators", "needs known data"],
+        answer:
+          "The equipment is expensive, operators need specialist training, and the results must be compared against reference data to mean anything.",
+      },
+      {
+        question: "Explain why a mixture melts over a range of temperatures but a pure substance does not. Write two or three sentences.",
+        answer:
+          "In a pure substance every particle is identical, so the forces between them are all the same strength and they all require the same energy to overcome — the whole sample therefore melts at one specific temperature. A mixture contains different substances with different intermolecular forces, so some parts melt at lower temperatures than others. The result is a range rather than a sharp point, which is exactly why melting point is used to test purity. Mark this one yourself: identical particles and identical forces is the key idea.",
+      },
+      {
+        question: "Describe how you would show that an unknown white solid contains chloride ions.",
+        answer:
+          "Dissolve a small sample of the solid in distilled water to make a solution. Add a few drops of dilute nitric acid first — this removes carbonate ions, which would otherwise form a precipitate and give a false positive. Then add silver nitrate solution. A white precipitate confirms chloride is present; a cream precipitate would indicate bromide and a yellow one iodide, so the exact colour matters. Mark this one yourself: adding the nitric acid FIRST, and the reason for it, is what separates a full-mark answer from a partial one.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A lighted splint tests for oxygen.",
+        right:
+          "A GLOWING splint relights in oxygen. A LIGHTED splint gives a squeaky pop with hydrogen. The two are constantly swapped.",
+      },
+      {
+        wrong: "Flame tests can identify any mixture of metal ions.",
+        right:
+          "One strong colour can mask another — sodium's yellow easily hides potassium's lilac. That is a real limitation of the method.",
+      },
+      {
+        wrong: "You can add silver nitrate straight to the sample.",
+        right:
+          "Dilute nitric acid must be added first, to remove carbonates that would otherwise precipitate and give a false positive.",
+      },
+      {
+        wrong: "Instrumental methods have made chemical tests useless.",
+        right:
+          "Chemical tests are cheap, quick and need no specialist equipment. Instrumental methods are better but not always available or necessary.",
+      },
+      {
+        wrong: "A formulation is the same as an impure substance.",
+        right:
+          "A formulation is deliberately designed, with each component in a carefully measured quantity. Being a mixture is the point, not a flaw.",
+      },
+    ],
+  },
+
+  "chemistry/the-atmosphere": {
+    summary:
+      "The air you are breathing has a history, and it has been changed twice — once by early life, and once by us. This topic covers how the atmosphere evolved, the greenhouse effect, climate change and the pollutants from burning fuels. It is also a topic where examiners want measured argument about evidence rather than slogans.",
+    keyFacts: [
+      {
+        heading: "Today's atmosphere",
+        points: [
+          "About 80% nitrogen and 20% oxygen — more precisely 78% and 21%.",
+          "The remaining 1% includes argon, carbon dioxide and water vapour.",
+          "This composition has been roughly stable for about 200 million years.",
+          "Carbon dioxide is a very small fraction of the atmosphere but has a large effect because it absorbs infrared radiation.",
+        ],
+      },
+      {
+        heading: "How the atmosphere evolved",
+        points: [
+          "Theories about the early atmosphere are uncertain, because the evidence is limited and from very long ago.",
+          "The early atmosphere is thought to have been mainly CARBON DIOXIDE, from intense volcanic activity, with little or no oxygen.",
+          "Volcanoes also released nitrogen, water vapour and small amounts of methane and ammonia.",
+          "As the Earth cooled, water vapour CONDENSED to form the oceans.",
+          "Carbon dioxide DISSOLVED in the oceans and was locked into carbonate rocks and sediments.",
+          "ALGAE and later plants produced oxygen by photosynthesis, and oxygen levels rose over about two billion years.",
+        ],
+      },
+      {
+        heading: "The greenhouse effect and climate change",
+        points: [
+          "Greenhouse gases — carbon dioxide, methane and water vapour — absorb outgoing INFRARED radiation and re-radiate some back to Earth.",
+          "That keeps the planet warm enough for life; the problem is the recent INCREASE in those gases.",
+          "Human causes: burning fossil fuels, deforestation, farming livestock and rice, and waste in landfill.",
+          "Consequences: rising global temperature, melting ice and rising sea levels, more extreme weather, and changes in the distribution of species.",
+          "CARBON FOOTPRINT is the total greenhouse gases emitted over the full life cycle of a product, service or event.",
+          "Reducing it: renewable energy, greater efficiency, carbon capture, and simply using less.",
+        ],
+      },
+      {
+        heading: "Pollutants from fuels",
+        points: [
+          "CARBON DIOXIDE from complete combustion contributes to climate change.",
+          "CARBON MONOXIDE from incomplete combustion is toxic, colourless and odourless.",
+          "SOOT — solid carbon particles — causes respiratory problems and global dimming.",
+          "SULFUR DIOXIDE, from sulfur impurities in fuel, causes acid rain.",
+          "NITROGEN OXIDES form when the high temperature of an engine makes nitrogen and oxygen from the air react. They cause acid rain and respiratory problems.",
+          "Acid rain damages trees, buildings and statues, and makes lakes too acidic for aquatic life.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Greenhouse effect", definition: "Gases in the atmosphere absorbing outgoing infrared radiation and re-radiating some back to Earth." },
+      { term: "Greenhouse gas", definition: "A gas such as carbon dioxide, methane or water vapour that absorbs infrared radiation." },
+      { term: "Carbon footprint", definition: "The total greenhouse gases emitted over the full life cycle of a product, service or event." },
+      { term: "Climate change", definition: "Long-term changes to global weather patterns, driven by rising greenhouse gas levels." },
+      { term: "Photosynthesis", definition: "The reaction by which algae and plants produced the oxygen in the atmosphere." },
+      { term: "Acid rain", definition: "Rain made acidic by sulfur dioxide and nitrogen oxides dissolving in it." },
+      { term: "Sulfur dioxide", definition: "A pollutant from sulfur impurities in fuel, which causes acid rain." },
+      { term: "Nitrogen oxides", definition: "Pollutants formed when nitrogen and oxygen react in the high temperature of an engine." },
+      { term: "Soot", definition: "Solid carbon particles from incomplete combustion, causing respiratory problems and global dimming." },
+      { term: "Global dimming", definition: "The reduction of sunlight reaching the surface, caused by particulates in the air." },
+      { term: "Carbon capture", definition: "Trapping carbon dioxide before it enters the atmosphere and storing it underground." },
+      { term: "Carbonate rocks", definition: "Rocks such as limestone, formed when dissolved carbon dioxide was locked into sediment." },
+      { term: "Incomplete combustion", definition: "Burning in insufficient oxygen, producing carbon monoxide and soot as well." },
+      { term: "Particulates", definition: "Tiny solid particles suspended in the air, such as soot." },
+    ],
+    examTips: [
+      {
+        tip: "Learn the modern composition as 80/20",
+        detail:
+          "Roughly 80% nitrogen and 20% oxygen; more precisely 78% and 21%. Either is usually accepted, but know which is which.",
+      },
+      {
+        tip: "Say WHY early atmosphere theories are uncertain",
+        detail:
+          "The evidence is limited and from billions of years ago. Examiners reward acknowledging the uncertainty rather than stating it as fact.",
+      },
+      {
+        tip: "Two things removed the early carbon dioxide",
+        detail:
+          "It dissolved in the oceans and became locked in carbonate rocks, and photosynthesis by algae and plants used it up. Give both.",
+      },
+      {
+        tip: "Greenhouse gases absorb INFRARED specifically",
+        detail:
+          "Not 'heat' vaguely. They let visible light in and absorb the infrared radiated back out, which is what traps the energy.",
+      },
+      {
+        tip: "Know which pollutant causes which problem",
+        detail:
+          "Sulfur dioxide and nitrogen oxides → acid rain. Carbon monoxide → toxic. Soot → respiratory problems and global dimming. Carbon dioxide → climate change.",
+      },
+      {
+        tip: "Be measured about climate evidence",
+        detail:
+          "The basic science is very strongly supported; some detailed predictions are genuinely uncertain. Precision on that reads as more scientific than certainty either way.",
+      },
+    ],
+    practice: [
+      {
+        question: "Approximately what percentage of today's atmosphere is nitrogen? Give the number only.",
+        accept: ["80", "78"],
+        answer:
+          "About 80% — more precisely 78%. Oxygen makes up about 20%, and the remaining 1% is argon, carbon dioxide and water vapour.",
+      },
+      {
+        question: "Approximately what percentage of today's atmosphere is oxygen? Give the number only.",
+        accept: ["20", "21"],
+        answer:
+          "About 20% — more precisely 21%. This is the gas that early photosynthesis by algae slowly added over roughly two billion years.",
+      },
+      {
+        question: "Which gas is thought to have made up most of the EARLY atmosphere?",
+        accept: ["carbon dioxide", "co2", "co₂"],
+        answer:
+          "Carbon dioxide, released by intense volcanic activity. There was little or no oxygen at first.",
+      },
+      {
+        question: "What released the gases of the early atmosphere?",
+        accept: ["volcanoes", "volcanic activity", "volcanic", "volcanoes erupting"],
+        answer:
+          "Volcanoes. They released carbon dioxide, nitrogen and water vapour, plus small amounts of methane and ammonia.",
+      },
+      {
+        question: "Which organisms first produced oxygen in the atmosphere?",
+        accept: ["algae", "plants", "algae and plants", "photosynthetic organisms", "bacteria"],
+        answer:
+          "Algae, and later plants, by photosynthesis. Oxygen levels rose gradually over roughly two billion years.",
+      },
+      {
+        question: "What happened to water vapour as the early Earth cooled?",
+        accept: ["condensed", "it condensed", "condensation", "formed oceans", "condensed to form oceans"],
+        answer:
+          "It condensed to form the oceans. Carbon dioxide then dissolved in that water, which is one of the two ways it was removed from the air.",
+      },
+      {
+        question: "Name one greenhouse gas other than carbon dioxide.",
+        accept: ["methane", "water vapour", "water vapor", "ch4", "nitrous oxide"],
+        answer:
+          "Methane or water vapour. All three absorb outgoing infrared radiation and re-radiate some of it back towards the surface.",
+      },
+      {
+        question: "What type of radiation do greenhouse gases absorb?",
+        accept: ["infrared", "infra red", "infra-red", "ir"],
+        answer:
+          "Infrared. They let visible light through to warm the surface, then absorb the infrared radiated back out — which is what traps the energy.",
+      },
+      {
+        question: "Which pollutant gas is toxic, colourless and odourless?",
+        accept: ["carbon monoxide", "co"],
+        answer:
+          "Carbon monoxide, from incomplete combustion. Being undetectable by the senses is exactly what makes it so dangerous.",
+      },
+      {
+        question: "Which pollutant, from sulfur impurities in fuel, causes acid rain?",
+        accept: ["sulfur dioxide", "sulphur dioxide", "so2", "so₂"],
+        answer:
+          "Sulfur dioxide. Nitrogen oxides also contribute, and together they damage trees, buildings and aquatic life.",
+      },
+      {
+        question: "How are nitrogen oxides formed in a car engine?",
+        accept: ["high temperature", "nitrogen and oxygen react", "heat of the engine", "high temperatures make nitrogen and oxygen react", "nitrogen reacts with oxygen"],
+        answer:
+          "The very high temperature inside the engine makes nitrogen and oxygen from the air react together. The fuel itself contains no nitrogen.",
+      },
+      {
+        question: "What is the effect of soot particles reducing sunlight reaching the surface called?",
+        accept: ["global dimming", "dimming"],
+        answer:
+          "Global dimming. Soot also causes respiratory problems and blackens buildings, so it does damage at ground level too.",
+      },
+      {
+        question: "What is the total greenhouse gas emission over a product's whole life cycle called?",
+        accept: ["carbon footprint", "the carbon footprint"],
+        answer:
+          "Its carbon footprint. It covers everything — extracting materials, manufacturing, transport, use and disposal — not just the emissions from using it.",
+      },
+      {
+        question: "Name one way of reducing carbon dioxide emissions.",
+        accept: ["renewable energy", "carbon capture", "efficiency", "less fossil fuels", "use less", "renewables", "electric vehicles", "reduce use"],
+        answer:
+          "Renewable energy, greater efficiency, carbon capture and storage, or simply using less. Each has costs and practical limits worth mentioning.",
+      },
+      {
+        question: "Explain how carbon dioxide was removed from the early atmosphere. Write two or three sentences.",
+        answer:
+          "As the Earth cooled, water vapour condensed to form the oceans, and carbon dioxide dissolved into that water. Some of the dissolved carbon dioxide reacted and was locked into carbonate rocks and sediments on the sea floor. Separately, algae and later plants used carbon dioxide in photosynthesis, converting it into their own biomass and releasing oxygen. Mark this one yourself: both routes — dissolving into the oceans and photosynthesis — are needed for full marks.",
+      },
+      {
+        question: "Explain how the greenhouse effect keeps the Earth warm, and why increasing greenhouse gases is a problem.",
+        answer:
+          "Short-wavelength radiation from the Sun passes through the atmosphere and warms the Earth's surface, which then radiates energy back out as longer-wavelength infrared. Greenhouse gases absorb some of that infrared and re-radiate part of it back towards the surface, keeping the planet considerably warmer than it would otherwise be — without this, the Earth would be too cold for life. The problem is not the effect itself but the recent increase in greenhouse gases from burning fossil fuels and other human activity, which traps more energy and raises the average global temperature, with consequences including melting ice, rising sea levels and more extreme weather. Mark this one yourself: describing the mechanism AND distinguishing the natural effect from the enhanced one is what earns the top marks.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The greenhouse effect is itself a bad thing.",
+        right:
+          "It keeps the Earth warm enough for life. The problem is the recent INCREASE in greenhouse gases, which traps more energy than before.",
+      },
+      {
+        wrong: "Greenhouse gases trap heat like a blanket.",
+        right:
+          "They absorb outgoing INFRARED radiation and re-radiate some of it back. Being precise about the mechanism is what earns the mark.",
+      },
+      {
+        wrong: "The nitrogen oxides in exhaust come from the fuel.",
+        right:
+          "They form from nitrogen and oxygen in the AIR, reacting at the high temperature inside the engine. The fuel contains no nitrogen.",
+      },
+      {
+        wrong: "We know exactly what the early atmosphere was like.",
+        right:
+          "Theories are uncertain because the evidence is limited and billions of years old. Acknowledging that uncertainty earns marks.",
+      },
+      {
+        wrong: "A carbon footprint only counts emissions while a product is used.",
+        right:
+          "It covers the WHOLE life cycle — extraction, manufacture, transport, use and disposal.",
+      },
+    ],
+  },
+
+  "chemistry/using-the-earths-resources": {
+    summary:
+      "This topic is about making chemistry sustainable: getting drinkable water, treating sewage, extracting metals from low-grade ores without wrecking the landscape, and judging the true environmental cost of a product from cradle to grave. It is where chemistry meets economics and ethics.",
+    keyFacts: [
+      {
+        heading: "Finite and renewable resources",
+        points: [
+          "FINITE resources will run out: crude oil, metal ores, natural gas.",
+          "RENEWABLE resources can be replaced as fast as they are used: timber from managed forests, for example.",
+          "SUSTAINABLE DEVELOPMENT meets present needs without compromising future generations.",
+          "Chemistry contributes by improving processes, replacing scarce materials and enabling recycling.",
+          "The three Rs — reduce, reuse, recycle — in that order of preference.",
+        ],
+      },
+      {
+        heading: "Potable water",
+        points: [
+          "POTABLE water is safe to drink. It is NOT pure water — it contains dissolved salts and treatment chemicals.",
+          "In the UK: choose an appropriate source, filter to remove solids, then STERILISE to kill microbes.",
+          "Sterilising agents: chlorine, ozone or ultraviolet light.",
+          "Where fresh water is scarce, sea water is DESALINATED by distillation or reverse osmosis.",
+          "Desalination requires large amounts of energy, which makes it expensive.",
+        ],
+      },
+      {
+        heading: "Waste water treatment",
+        points: [
+          "Sewage and agricultural waste must have organic matter and harmful microbes removed.",
+          "SCREENING removes large solids and grit.",
+          "SEDIMENTATION separates the mixture into sludge, which sinks, and effluent, which floats above it.",
+          "The sludge is digested ANAEROBICALLY by bacteria, producing biogas and fertiliser.",
+          "The effluent is treated AEROBICALLY by bacteria supplied with air.",
+          "Treating sewage requires more processing than treating fresh water, because it starts far dirtier.",
+        ],
+      },
+      {
+        heading: "Alternative extraction and life cycle assessment",
+        points: [
+          "PHYTOMINING uses plants to absorb metal compounds from low-grade ore; the plants are burned and the ash processed.",
+          "BIOLEACHING uses bacteria to produce solutions containing metal compounds.",
+          "Both avoid the enormous energy and landscape damage of traditional mining, but they are slow.",
+          "The metal can then be obtained by displacement with scrap iron, or by electrolysis.",
+          "A LIFE CYCLE ASSESSMENT judges the environmental impact at every stage: raw materials, manufacture, use and disposal.",
+          "LCAs involve judgement as well as data — some impacts are hard to quantify, so they can be biased or used selectively for marketing.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Finite resource", definition: "A resource that will eventually run out, such as crude oil or metal ore." },
+      { term: "Renewable resource", definition: "A resource that can be replaced as fast as it is used." },
+      { term: "Sustainable development", definition: "Meeting present needs without compromising the ability of future generations to meet theirs." },
+      { term: "Potable water", definition: "Water that is safe to drink. It is not chemically pure." },
+      { term: "Sterilisation", definition: "Killing microbes in water, using chlorine, ozone or ultraviolet light." },
+      { term: "Desalination", definition: "Removing salt from sea water, by distillation or reverse osmosis." },
+      { term: "Reverse osmosis", definition: "Forcing water through a membrane under pressure to remove dissolved salts." },
+      { term: "Sedimentation", definition: "Letting solids settle out, separating sewage into sludge and effluent." },
+      { term: "Sludge", definition: "The solid material that settles during sewage treatment, digested anaerobically." },
+      { term: "Effluent", definition: "The liquid remaining above the sludge, treated aerobically by bacteria." },
+      { term: "Anaerobic digestion", definition: "Bacteria breaking down sludge without oxygen, producing biogas and fertiliser." },
+      { term: "Phytomining", definition: "Using plants to absorb metal compounds from low-grade ore, then burning them for the ash." },
+      { term: "Bioleaching", definition: "Using bacteria to produce solutions containing metal compounds from low-grade ore." },
+      { term: "Life cycle assessment", definition: "An assessment of a product's environmental impact at every stage from raw materials to disposal." },
+      { term: "Low-grade ore", definition: "Ore containing too little metal for traditional extraction to be worthwhile." },
+    ],
+    examTips: [
+      {
+        tip: "Potable is NOT the same as pure",
+        detail:
+          "Potable means safe to drink; it still contains dissolved substances. Chemically pure water would contain nothing but H₂O.",
+      },
+      {
+        tip: "Learn the three water treatment steps in order",
+        detail:
+          "Choose the source, filter, sterilise. Then name a sterilising agent — chlorine, ozone or UV — because that detail carries a mark.",
+      },
+      {
+        tip: "Sludge is anaerobic, effluent is aerobic",
+        detail:
+          "One without oxygen, one with air pumped in. Swapping them is the commonest error in the sewage question.",
+      },
+      {
+        tip: "Say why phytomining and bioleaching are used",
+        detail:
+          "They extract metals from ore too low-grade for traditional mining, with far less energy and landscape damage — but they are slow.",
+      },
+      {
+        tip: "Criticise life cycle assessments as well as describing them",
+        detail:
+          "Some impacts are hard to quantify, so judgement is involved and results can be biased or used selectively in advertising.",
+      },
+      {
+        tip: "Reduce, reuse, recycle — in that ORDER",
+        detail:
+          "Using less is always better than reusing, which is better than recycling. Questions sometimes ask which is preferable and why.",
+      },
+    ],
+    practice: [
+      {
+        question: "What word describes water that is safe to drink?",
+        accept: ["potable"],
+        answer:
+          "Potable. Note it is NOT chemically pure — it contains dissolved salts and treatment chemicals, which is perfectly safe and normal.",
+      },
+      {
+        question: "Name one substance or method used to sterilise drinking water.",
+        accept: ["chlorine", "ozone", "ultraviolet", "uv", "ultraviolet light", "uv light"],
+        answer:
+          "Chlorine, ozone or ultraviolet light. Sterilising kills microbes, and it comes AFTER filtering out the solids.",
+      },
+      {
+        question: "What is the process of removing salt from sea water called?",
+        accept: ["desalination", "desalinisation"],
+        answer:
+          "Desalination, by distillation or reverse osmosis. Both need large amounts of energy, which is why it is used only where fresh water is scarce.",
+      },
+      {
+        question: "What method forces water through a membrane to remove dissolved salts?",
+        accept: ["reverse osmosis", "osmosis"],
+        answer:
+          "Reverse osmosis. Pressure pushes water through a membrane that the dissolved salts cannot pass through.",
+      },
+      {
+        question: "In sewage treatment, what is the solid that settles out called?",
+        accept: ["sludge", "the sludge"],
+        answer:
+          "Sludge. It is digested anaerobically — without oxygen — producing biogas and fertiliser as useful by-products.",
+      },
+      {
+        question: "In sewage treatment, what is the liquid above the sludge called?",
+        accept: ["effluent", "the effluent"],
+        answer:
+          "Effluent. It is treated aerobically, with air pumped in so bacteria can break down the remaining organic matter.",
+      },
+      {
+        question: "Is sludge digested aerobically or anaerobically?",
+        accept: ["anaerobically", "anaerobic", "without oxygen"],
+        answer:
+          "Anaerobically — without oxygen. The effluent, by contrast, is treated aerobically. Swapping these is the commonest error here.",
+      },
+      {
+        question: "What is the process of using plants to absorb metal compounds from low-grade ore called?",
+        accept: ["phytomining"],
+        answer:
+          "Phytomining. The plants are harvested and burned, and the metal compounds are then extracted from the ash.",
+      },
+      {
+        question: "What is the process of using bacteria to extract metals from low-grade ore called?",
+        accept: ["bioleaching"],
+        answer:
+          "Bioleaching. The bacteria produce solutions containing metal compounds, from which the metal can be obtained by displacement or electrolysis.",
+      },
+      {
+        question: "Give one advantage of phytomining over traditional mining.",
+        accept: ["less energy", "less damage", "low grade ore", "less landscape damage", "cheaper", "less pollution", "uses low grade ore"],
+        answer:
+          "It uses far less energy, causes much less damage to the landscape, and can extract metal from ore too low-grade to mine conventionally.",
+      },
+      {
+        question: "Give one disadvantage of phytomining and bioleaching.",
+        accept: ["slow", "takes a long time", "slower", "time", "low yield", "takes years"],
+        answer:
+          "Both are slow compared with traditional mining. That is the main practical reason they have not replaced it entirely.",
+      },
+      {
+        question: "What is an assessment of a product's environmental impact from raw materials to disposal called?",
+        accept: ["life cycle assessment", "lca", "a life cycle assessment", "life cycle analysis"],
+        answer:
+          "A life cycle assessment (LCA). It covers extraction, manufacture, use and disposal — the whole journey, not just one stage.",
+      },
+      {
+        question: "Give one limitation of life cycle assessments.",
+        accept: ["hard to quantify", "subjective", "biased", "judgement", "used selectively", "not all impacts measurable", "can be misused"],
+        answer:
+          "Some impacts, such as damage to a landscape, are hard to quantify, so judgement is involved. That makes LCAs open to bias or selective use in advertising.",
+      },
+      {
+        question: "In the three Rs, which is preferable: reducing or recycling?",
+        accept: ["reducing", "reduce", "reducing use"],
+        answer:
+          "Reducing. Using less avoids the material, energy and emissions entirely, whereas recycling still requires collection, sorting and processing.",
+      },
+      {
+        question: "Explain why potable water is not the same as pure water. Write two or three sentences.",
+        answer:
+          "In chemistry, pure water contains only H₂O molecules and nothing else. Potable water is water that is safe to drink, and it still contains dissolved substances — mineral salts from the ground and small amounts of treatment chemicals such as chlorine. Those substances are harmless at the levels present, and some are actually beneficial, so potable water meets a safety standard rather than a chemical purity standard. Mark this one yourself: the distinction between safe and chemically pure is the mark.",
+      },
+      {
+        question: "Describe how potable water is produced in the UK, and explain why treating sewage requires more stages.",
+        answer:
+          "First an appropriate source is chosen, usually a reservoir, river or aquifer with relatively low levels of contamination. The water is then passed through filter beds to remove solid particles, and finally sterilised using chlorine, ozone or ultraviolet light to kill microorganisms. Sewage treatment needs more stages because the starting material is far more contaminated: it must first be screened to remove large solids and grit, then left to settle so that sludge and effluent separate, then the sludge digested anaerobically and the effluent treated aerobically with bacteria before it can be released. Mark this one yourself: the three UK stages plus a clear reason why sewage needs more is full marks.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Potable water is pure water.",
+        right:
+          "It is SAFE water. It still contains dissolved minerals and treatment chemicals — pure water would contain nothing but H₂O.",
+      },
+      {
+        wrong: "Sterilising and filtering are the same thing.",
+        right:
+          "Filtering removes solid particles; sterilising kills microbes. Both are needed, and in that order.",
+      },
+      {
+        wrong: "Phytomining and bioleaching have replaced traditional mining.",
+        right:
+          "They are slow, so they are used mainly for low-grade ores where conventional mining would not be worthwhile.",
+      },
+      {
+        wrong: "A life cycle assessment gives an objective number.",
+        right:
+          "Some impacts cannot be measured precisely, so judgement is involved — which is exactly why LCAs can be biased or used selectively.",
+      },
+      {
+        wrong: "Recycling is the best of the three Rs.",
+        right:
+          "Reducing comes first, then reusing, then recycling. Recycling still consumes energy for collection, sorting and processing.",
+      },
+    ],
+  },
+
+  "chemistry/chemistry-exam-practice": {
+    summary:
+      "This topic is about technique rather than content: the command words, how to lay out a calculation so method marks are guaranteed, the required practicals, and the specific habits that cost marks in Chemistry papers. It is worth revising in the final fortnight, when learning new content has stopped paying off.",
+    keyFacts: [
+      {
+        heading: "Command words",
+        points: [
+          "STATE or GIVE — a short factual answer, no explanation needed.",
+          "DESCRIBE — say what happens or what the data shows.",
+          "EXPLAIN — say WHY. If there is no 'because', it is probably not an explanation.",
+          "CALCULATE — show every step; method marks are available even for a wrong final answer.",
+          "EVALUATE — advantages, disadvantages, then a supported conclusion.",
+          "SUGGEST — apply what you know to an unfamiliar situation; there may be more than one acceptable answer.",
+        ],
+      },
+      {
+        heading: "Laying out a calculation",
+        points: [
+          "Write the FORMULA first, before substituting anything.",
+          "Convert units BEFORE calculating — cm³ to dm³, for instance.",
+          "Substitute the numbers, then work out the answer.",
+          "State the answer with its UNIT, and check it is sensible.",
+          "Round only at the END, to the number of significant figures asked for.",
+          "Never leave a calculation blank — the formula alone often earns a mark.",
+        ],
+      },
+      {
+        heading: "The required practicals",
+        points: [
+          "Any required practical can appear in either paper.",
+          "Learn each as: the variables, the method in order, the expected results, and the main sources of error.",
+          "Making a soluble salt, titration, electrolysis, temperature change, rates of reaction, chromatography and water purification are the core ones.",
+          "Be ready to identify an anomaly, suggest an improvement and name specific control variables.",
+          "Know the safety precautions: eye protection, care with acids, and ventilation for chlorine.",
+        ],
+      },
+      {
+        heading: "Habits that cost marks",
+        points: [
+          "Missing units, or writing units on relative formula mass, which has none.",
+          "Forgetting to convert cm³ to dm³ before a concentration calculation.",
+          "Balancing an equation by changing a formula rather than adding a large number in front.",
+          "Saying an enzyme or a catalyst is 'used up' when it is not.",
+          "Confusing strong with concentrated, or pure with potable.",
+          "Describing a graph when the question said explain, and running out of time on the six-markers.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Describe", definition: "Say what happens or what the data shows, without giving reasons." },
+      { term: "Explain", definition: "Say why something happens. A good explanation usually contains 'because'." },
+      { term: "Suggest", definition: "Apply your knowledge to an unfamiliar situation, where more than one answer may be acceptable." },
+      { term: "Evaluate", definition: "Give advantages and disadvantages, then reach a supported conclusion." },
+      { term: "Method mark", definition: "A mark for correct working, available even when the final answer is wrong." },
+      { term: "Significant figures", definition: "The number of meaningful digits in an answer; round only at the end." },
+      { term: "Anomalous result", definition: "A result that does not fit the pattern, which should be identified and excluded from the mean." },
+      { term: "Control variable", definition: "A variable kept the same so the investigation is a fair test." },
+      { term: "Required practical", definition: "An investigation named in the specification, examinable in either paper." },
+      { term: "Titration", definition: "A required practical to find the volume of one solution that exactly reacts with another." },
+      { term: "Independent variable", definition: "The variable deliberately changed in an investigation." },
+      { term: "Dependent variable", definition: "The variable measured as a result of the change." },
+    ],
+    examTips: [
+      {
+        tip: "Underline the command word before writing",
+        detail:
+          "Describe and explain are different questions, and answering the wrong one loses marks on content you actually knew.",
+      },
+      {
+        tip: "Write the formula before the numbers, every time",
+        detail:
+          "It guarantees the method mark even if the arithmetic goes wrong, and it stops you substituting into the wrong equation.",
+      },
+      {
+        tip: "Convert units on the first line",
+        detail:
+          "cm³ to dm³, grams to kilograms. Doing it before anything else prevents the single most common calculation error in Chemistry.",
+      },
+      {
+        tip: "Round only at the end",
+        detail:
+          "Rounding partway through introduces errors that compound. Carry full precision and round once, to the figures asked for.",
+      },
+      {
+        tip: "One mark, roughly one minute",
+        detail:
+          "If a three-mark question has taken six minutes, move on and come back. Unfinished six-markers cost far more.",
+      },
+      {
+        tip: "Never leave a calculation blank",
+        detail:
+          "Write the formula and substitute what you can. A blank scores zero; a partial attempt frequently scores most of the marks.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which command word asks you to say WHY something happens?",
+        accept: ["explain"],
+        answer:
+          "Explain. If your answer contains no 'because' or equivalent, it is probably a description rather than an explanation.",
+      },
+      {
+        question: "Which command word asks you to apply knowledge to an unfamiliar situation?",
+        accept: ["suggest"],
+        answer:
+          "Suggest. There may be more than one acceptable answer, so a sensible, well-reasoned response scores even if it is not the one in the mark scheme.",
+      },
+      {
+        question: "What should be the FIRST line of working in a calculation?",
+        accept: ["the formula", "formula", "write the formula", "the equation"],
+        answer:
+          "The formula. Writing it before substituting anything guarantees the method mark and stops you using the wrong equation.",
+      },
+      {
+        question: "What unit conversion is needed before calculating concentration in g/dm³?",
+        accept: ["cm3 to dm3", "cm³ to dm³", "divide by 1000", "cm3 to dm3 divide by 1000", "convert cm3 to dm3"],
+        answer:
+          "Convert cm³ to dm³ by dividing by 1,000. This is the single most common calculation error in the whole subject.",
+      },
+      {
+        question: "At what point in a calculation should you round?",
+        accept: ["at the end", "the end", "only at the end", "last", "final answer"],
+        answer:
+          "Only at the end. Rounding partway through introduces errors that compound through the rest of the working.",
+      },
+      {
+        question: "What is a mark for correct working with a wrong final answer called?",
+        accept: ["method mark", "a method mark", "method marks", "working mark"],
+        answer:
+          "A method mark. It is exactly why you should never leave a calculation blank — a partial attempt usually scores most of the marks.",
+      },
+      {
+        question: "Does relative formula mass have units? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. It is a ratio, so writing grams after it is wrong. Mass has units; relative formula mass does not.",
+      },
+      {
+        question: "Roughly how many minutes should you spend per mark?",
+        accept: ["1", "one", "1 minute", "one minute"],
+        answer:
+          "About one minute per mark. If a three-mark question has taken six minutes, move on and come back if there is time.",
+      },
+      {
+        question: "What should you do with an anomalous result before calculating a mean?",
+        accept: ["exclude it", "ignore it", "leave it out", "exclude", "discard it", "remove it", "not include it"],
+        answer:
+          "Exclude it — and SAY that you have excluded it. The statement itself carries a mark.",
+      },
+      {
+        question: "Which required practical finds the volume of one solution that exactly reacts with another?",
+        accept: ["titration", "titrations", "a titration"],
+        answer:
+          "Titration. Learn the apparatus, the indicator, and why concordant results are repeated until they agree closely.",
+      },
+      {
+        question: "What is the variable you deliberately change called?",
+        accept: ["independent", "independent variable", "the independent variable"],
+        answer:
+          "The independent variable. The one you measure is the dependent variable, and everything else must be controlled.",
+      },
+      {
+        question: "Should you leave a multiple choice question blank if unsure? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. There is no penalty for a wrong answer, so an educated guess is strictly better than nothing.",
+      },
+      {
+        question: "When balancing an equation, what may you change?",
+        accept: ["the big numbers", "numbers in front", "big numbers", "coefficients", "the numbers in front", "large numbers"],
+        answer:
+          "Only the large numbers in front of each formula. Changing a subscript changes what the substance IS, which makes the equation describe a different reaction.",
+      },
+      {
+        question: "Name one safety precaution for a practical involving acids.",
+        accept: ["eye protection", "goggles", "safety glasses", "wear goggles", "gloves", "eye protection and care"],
+        answer:
+          "Eye protection is the standard answer. Handling dilute acid carefully and working in a ventilated space where gases are produced also count.",
+      },
+      {
+        question: "Explain why you should write the formula before substituting numbers in a calculation. Write two or three sentences.",
+        answer:
+          "Method marks are awarded for showing the correct approach, so a written formula secures those marks even if the arithmetic afterwards goes wrong. It also forces you to identify which equation the question actually needs before you start manipulating numbers, which prevents using the wrong one entirely. And it makes checking your own work far easier, because each step is visible rather than done in your head. Mark this one yourself: method marks and choosing the right equation are the two key reasons.",
+      },
+      {
+        question: "Describe how you would answer a six-mark question on the required practical for rates of reaction.",
+        answer:
+          "First identify the command word and the specific reaction the question names, then spend about thirty seconds planning three or four points. I would state the independent variable, such as concentration, and the dependent variable, such as volume of gas or time for a cross to disappear. Then I would give the method in order, naming specific control variables — the same volumes, the same temperature, the same apparatus — because 'keeping everything else the same' scores nothing. I would say how the results would be recorded and repeated, mention excluding anomalies from the mean, and finish by saying what result would be expected and why, using collision theory. Mark this one yourself: named control variables, a method in order, repeats, and an explanation using collision theory are the four things worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Describe and explain mean roughly the same thing.",
+        right:
+          "Describe says WHAT; explain says WHY. Answering the wrong one is the commonest way to lose marks on content you knew perfectly well.",
+      },
+      {
+        wrong: "There is no point starting a calculation you cannot finish.",
+        right:
+          "Method marks are awarded for the formula and correct substitution. A blank scores nothing; a partial attempt often scores most of the marks.",
+      },
+      {
+        wrong: "Rounding early makes the working simpler.",
+        right:
+          "It introduces errors that compound through the rest of the calculation. Carry full precision and round once, at the end.",
+      },
+      {
+        wrong: "Writing more always scores more.",
+        right:
+          "Only if it answers the question. A focused answer using the specific context beats a page of general chemistry every time.",
+      },
+    ],
+  },
 };
