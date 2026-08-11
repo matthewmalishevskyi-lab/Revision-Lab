@@ -1364,4 +1364,909 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "citizenship/parliament-and-government": {
+    summary:
+      "Year 9 covered what Parliament is. This topic covers how power is actually exercised and restrained: the difference between government and Parliament, what the Prime Minister and Cabinet do, how ministers are held responsible, and the checks — select committees, the courts, the Opposition — that stop a majority doing whatever it likes.",
+    keyFacts: [
+      {
+        heading: "The three branches of power",
+        points: [
+          "The LEGISLATURE makes law: in the UK that is Parliament.",
+          "The EXECUTIVE carries out law and runs the country: the Prime Minister, Cabinet, ministers and civil service.",
+          "The JUDICIARY interprets and applies the law: the judges and courts.",
+          "SEPARATION OF POWERS is the idea that these should be kept apart so no one body holds all power.",
+          "The UK separates them only partly — ministers sit in Parliament, which is a FUSION of executive and legislature.",
+          "The Constitutional Reform Act 2005 strengthened judicial independence by creating a Supreme Court separate from the House of Lords.",
+        ],
+      },
+      {
+        heading: "The Prime Minister and Cabinet",
+        points: [
+          "The PRIME MINISTER is head of government, normally the leader of the party with a Commons majority.",
+          "PM powers include appointing and dismissing ministers, setting the agenda, and representing the UK abroad.",
+          "The CABINET is the committee of the most senior ministers, usually around twenty, meeting weekly.",
+          "COLLECTIVE RESPONSIBILITY means ministers must publicly support Cabinet decisions or resign.",
+          "INDIVIDUAL MINISTERIAL RESPONSIBILITY means a minister answers for their department and their own conduct.",
+          "The CIVIL SERVICE implements policy and is meant to be permanent, neutral and anonymous — it does not change with the government.",
+        ],
+      },
+      {
+        heading: "How Parliament holds government to account",
+        points: [
+          "PRIME MINISTER'S QUESTIONS is a weekly session where the PM answers questions from MPs.",
+          "SELECT COMMITTEES are cross-party groups of MPs that investigate a department's work and publish reports.",
+          "MPs can table WRITTEN QUESTIONS, which departments must answer on the record.",
+          "A VOTE OF NO CONFIDENCE, if passed, can bring down a government.",
+          "The SHADOW CABINET is the Opposition's team, each member scrutinising a specific department.",
+          "The National Audit Office and the Public Accounts Committee examine whether public money was well spent.",
+        ],
+      },
+      {
+        heading: "Party discipline and limits on power",
+        points: [
+          "WHIPS are MPs responsible for making sure their party's members vote as the party wants.",
+          "A three-line whip is the strongest instruction; defying it repeatedly can lose an MP the party whip.",
+          "BACKBENCHERS are MPs without a government or shadow post, and are freer to rebel.",
+          "JUDICIAL REVIEW lets courts rule that a government action was unlawful, though not that a policy was unwise.",
+          "A COALITION forms when no party has a majority and two or more govern together.",
+          "A MINORITY GOVERNMENT governs without a majority, relying on other parties for support vote by vote.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Legislature", definition: "The branch of the state that makes law — in the UK, Parliament." },
+      { term: "Executive", definition: "The branch that runs the country and carries out law — the PM, Cabinet, ministers and civil service." },
+      { term: "Judiciary", definition: "The branch that interprets and applies the law — the judges and courts." },
+      { term: "Separation of powers", definition: "The principle that legislature, executive and judiciary should be kept apart so no one body holds all power." },
+      { term: "Prime Minister", definition: "The head of government, normally the leader of the party with a Commons majority." },
+      { term: "Cabinet", definition: "The committee of the most senior ministers, which takes the government's main decisions." },
+      { term: "Collective responsibility", definition: "The rule that ministers must publicly support Cabinet decisions or resign." },
+      { term: "Individual ministerial responsibility", definition: "The rule that a minister answers to Parliament for their department and their own conduct." },
+      { term: "Civil service", definition: "The permanent, politically neutral staff who implement government policy." },
+      { term: "Select committee", definition: "A cross-party group of MPs that investigates a government department and publishes reports." },
+      { term: "Prime Minister's Questions", definition: "A weekly Commons session in which the PM answers questions from MPs." },
+      { term: "Shadow cabinet", definition: "The Opposition's team of spokespeople, each scrutinising a specific department." },
+      { term: "Whip", definition: "An MP responsible for ensuring their party's members vote the way the party wants." },
+      { term: "Backbencher", definition: "An MP who holds no government or shadow ministerial post." },
+      { term: "Vote of no confidence", definition: "A Commons vote which, if passed, can bring down the government." },
+      { term: "Judicial review", definition: "A court process examining whether a government action was lawful." },
+      { term: "Coalition government", definition: "A government formed by two or more parties when no single party has a majority." },
+      { term: "Minority government", definition: "A government without a Commons majority, relying on other parties vote by vote." },
+    ],
+    examTips: [
+      {
+        tip: "Government and Parliament are not the same thing",
+        detail:
+          "Parliament is the whole legislature including the Opposition. The government is the executive drawn from it. Mixing them is the single most common error.",
+      },
+      {
+        tip: "Learn the two responsibility rules as a pair",
+        detail:
+          "Collective covers Cabinet decisions; individual covers a minister's own department and conduct. Questions often ask you to tell them apart.",
+      },
+      {
+        tip: "Name select committees as a scrutiny method",
+        detail:
+          "They are cross-party, publish reports and can summon witnesses. That is more precise than 'MPs ask questions'.",
+      },
+      {
+        tip: "Judicial review is about lawfulness, not wisdom",
+        detail:
+          "A court can rule that a decision was unlawful. It cannot rule that a policy was a bad idea. Say so explicitly.",
+      },
+      {
+        tip: "The UK's separation of powers is partial",
+        detail:
+          "Ministers sit in the legislature. Describing the UK as having a full separation of powers loses marks.",
+      },
+      {
+        tip: "The civil service is neutral and permanent",
+        detail:
+          "It stays when the government changes. That is what distinguishes it from ministers, who are political appointments.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which branch of the state makes the law?",
+        accept: ["legislature", "the legislature", "parliament"],
+        answer:
+          "The legislature — in the UK, Parliament. The executive carries law out and the judiciary interprets it.",
+      },
+      {
+        question: "Which branch of the state runs the country and carries out the law?",
+        accept: ["executive", "the executive", "government"],
+        answer:
+          "The executive: the Prime Minister, Cabinet, ministers and civil service. It is drawn from Parliament but is not the same as it.",
+      },
+      {
+        question: "Which branch of the state interprets and applies the law?",
+        accept: ["judiciary", "the judiciary", "judges", "courts"],
+        answer:
+          "The judiciary — the judges and courts. Its independence from the other two branches is what makes it a check on power.",
+      },
+      {
+        question: "What principle says that legislature, executive and judiciary should be kept apart?",
+        accept: ["separation of powers", "the separation of powers"],
+        answer:
+          "The separation of powers. The UK applies it only partly, because ministers also sit in Parliament.",
+      },
+      {
+        question: "What is the committee of the most senior ministers called?",
+        accept: ["cabinet", "the cabinet"],
+        answer:
+          "The Cabinet — usually around twenty senior ministers meeting weekly to take the government's main decisions.",
+      },
+      {
+        question: "What rule requires ministers to publicly support Cabinet decisions or resign?",
+        accept: ["collective responsibility", "collective cabinet responsibility", "collective ministerial responsibility"],
+        answer:
+          "Collective responsibility. It is what allows the government to speak with one voice, and it is why disagreement usually means resignation.",
+      },
+      {
+        question: "What rule makes a minister answerable to Parliament for their own department?",
+        accept: ["individual ministerial responsibility", "individual responsibility", "ministerial responsibility"],
+        answer:
+          "Individual ministerial responsibility. Collective responsibility covers Cabinet decisions; this one covers a minister's own department and conduct.",
+      },
+      {
+        question: "What are the permanent, politically neutral staff who implement government policy called?",
+        accept: ["civil service", "the civil service", "civil servants"],
+        answer:
+          "The civil service. It is permanent, neutral and anonymous, which is why it stays in place when the government changes.",
+      },
+      {
+        question: "What is a cross-party group of MPs that investigates a government department called?",
+        accept: ["select committee", "a select committee", "select committees"],
+        answer:
+          "A select committee. It can summon witnesses and publishes reports the government must respond to.",
+      },
+      {
+        question: "What is the Opposition's team of spokespeople called?",
+        accept: ["shadow cabinet", "the shadow cabinet"],
+        answer:
+          "The shadow cabinet. Each member scrutinises a specific department, mirroring the real Cabinet.",
+      },
+      {
+        question: "What is an MP responsible for making their party's members vote a certain way called?",
+        accept: ["whip", "a whip", "whips", "party whip"],
+        answer:
+          "A whip. A three-line whip is the strongest instruction, and repeatedly defying it can cost an MP the party whip altogether.",
+      },
+      {
+        question: "What is an MP who holds no government or shadow ministerial post called?",
+        accept: ["backbencher", "a backbencher", "backbench mp", "backbench"],
+        answer:
+          "A backbencher. Because they hold no post, they are freer to rebel against their party than frontbenchers.",
+      },
+      {
+        question: "What court process examines whether a government action was lawful?",
+        accept: ["judicial review", "a judicial review"],
+        answer:
+          "Judicial review. It asks whether an action was lawful, not whether the policy behind it was wise — an important limit.",
+      },
+      {
+        question: "What is a government formed by two or more parties together called?",
+        accept: ["coalition", "a coalition", "coalition government"],
+        answer:
+          "A coalition, formed when no single party has a majority. A minority government instead governs alone without one.",
+      },
+      {
+        question: "Explain the difference between 'the government' and 'Parliament'. Write three or four sentences.",
+        answer:
+          "Parliament is the legislature: the House of Commons, the House of Lords and the monarch, including every MP whether they support the government or not. The government is the executive — the Prime Minister, Cabinet and ministers — drawn from whichever party can command a Commons majority. So the government is a part of Parliament rather than a separate institution, which is why the UK is described as having a fusion rather than a full separation of powers. One consequence is that Parliament's job of holding the government to account is made harder by the fact that most of the governing party's MPs also want their own side to succeed. Mark this one yourself: the marks come from identifying Parliament as the wider legislature and the government as the executive drawn from within it.",
+      },
+      {
+        question: "Discuss how effectively Parliament holds the government to account.",
+        answer:
+          "Arguments that it is effective: select committees are cross-party, can summon witnesses and produce reports that force a government response; Prime Minister's Questions and written questions put ministers on the record; individual ministerial responsibility means serious failures can end a career; and the Lords can force the Commons to think again about badly drafted legislation. Arguments that it is weak: a government with a large majority controls the Commons timetable and can usually win any vote it chooses; whips discipline MPs who might otherwise rebel; PMQs is often more theatre than scrutiny; select committee reports carry no power to compel action; and ministers can resist resigning even after significant departmental failures. A balanced judgement is that scrutiny works best when it is slow and detailed — committees and the Lords — and worst when it is fast and public, and that its strength depends heavily on the size of the government's majority rather than on the rules themselves. Mark this one yourself: full marks need mechanisms named on both sides and a conclusion that follows from them.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The government and Parliament are the same thing.",
+        right:
+          "Parliament is the whole legislature, including the Opposition. The government is the executive drawn from within it.",
+      },
+      {
+        wrong: "The UK has a full separation of powers.",
+        right:
+          "Only a partial one. Ministers sit in Parliament, so the executive and legislature overlap — a fusion of powers.",
+      },
+      {
+        wrong: "Civil servants change when a new government is elected.",
+        right:
+          "The civil service is permanent and politically neutral. Ministers change; the officials implementing policy do not.",
+      },
+      {
+        wrong: "Judicial review lets judges overturn policies they disagree with.",
+        right:
+          "It examines whether an action was lawful. Courts cannot strike down a policy simply for being unwise.",
+      },
+      {
+        wrong: "The Prime Minister is directly elected by the country.",
+        right:
+          "Voters elect MPs. The PM is the person able to command a Commons majority, usually the leader of the largest party.",
+      },
+    ],
+  },
+
+  "citizenship/the-media-and-democracy": {
+    summary:
+      "A democracy depends on people knowing what is being done in their name, which makes the media part of the political system rather than a commentator on it. This topic covers press freedom and its limits, bias and how to spot it, how broadcasting and the press are regulated, and what social media has changed — for better and worse.",
+    keyFacts: [
+      {
+        heading: "Why a free press matters",
+        points: [
+          "A FREE PRESS can report on those in power without needing government permission.",
+          "The media is sometimes called the FOURTH ESTATE because of this watchdog role alongside the three branches of the state.",
+          "It informs voters, exposes wrongdoing, gives a platform to different views and holds power to account.",
+          "INVESTIGATIVE JOURNALISM has uncovered scandals that would otherwise have stayed hidden.",
+          "A WHISTLEBLOWER is an insider who reveals wrongdoing, and has some legal protection in the UK.",
+          "CENSORSHIP is the suppression of information, and is a defining feature of undemocratic states.",
+        ],
+      },
+      {
+        heading: "The limits on press freedom",
+        points: [
+          "DEFAMATION is publishing an untrue statement that damages someone's reputation; in writing this is LIBEL.",
+          "CONTEMPT OF COURT rules restrict reporting that could prejudice a fair trial.",
+          "PRIVACY law protects private life, and the courts balance it against the PUBLIC INTEREST.",
+          "Public interest means something the public genuinely needs to know, not merely something they find interesting.",
+          "The Official Secrets Act restricts publication of some national security material.",
+          "Incitement to hatred and harassment are criminal, so freedom of expression is not unlimited.",
+        ],
+      },
+      {
+        heading: "Bias and how to spot it",
+        points: [
+          "BIAS is presenting information in a way that favours one side.",
+          "It shows in story selection, headline wording, which voices are quoted, photographs chosen and what is left out.",
+          "Newspapers in the UK are allowed to be openly partisan; broadcasters are not.",
+          "IMPARTIALITY rules require UK broadcasters to give due weight to different views, especially at elections.",
+          "MISINFORMATION is false information spread without intent to deceive; DISINFORMATION is spread deliberately.",
+          "An ECHO CHAMBER is an information environment where you mostly encounter views you already hold.",
+        ],
+      },
+      {
+        heading: "Regulation and social media",
+        points: [
+          "OFCOM regulates broadcasting and enforces impartiality and accuracy rules on television and radio.",
+          "IPSO regulates most of the newspaper industry, though some publishers use IMPRESS or neither.",
+          "Newspaper regulation is largely self-regulation, which critics say lacks teeth.",
+          "Social media lets anyone publish, which widens participation but removes editorial checks.",
+          "ALGORITHMS rank what you see by predicted engagement, which can amplify emotive or extreme content.",
+          "Ways to check a claim: find the original source, look for corroboration elsewhere, check the date, and ask who benefits from you believing it.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Free press", definition: "Media able to report on those in power without needing government permission." },
+      { term: "Fourth estate", definition: "A name for the media, reflecting its watchdog role alongside the branches of the state." },
+      { term: "Censorship", definition: "The suppression or control of information, characteristic of undemocratic states." },
+      { term: "Whistleblower", definition: "An insider who reveals wrongdoing within an organisation, with some legal protection in the UK." },
+      { term: "Defamation", definition: "Publishing an untrue statement that damages someone's reputation." },
+      { term: "Libel", definition: "Defamation in a permanent form, such as in writing or broadcast." },
+      { term: "Contempt of court", definition: "Reporting that risks prejudicing a fair trial, which is restricted by law." },
+      { term: "Public interest", definition: "Something the public genuinely needs to know, as distinct from something merely interesting." },
+      { term: "Bias (media)", definition: "Presenting information in a way that favours one side of an argument." },
+      { term: "Impartiality", definition: "The requirement on UK broadcasters to give due weight to differing views." },
+      { term: "Misinformation", definition: "False information spread without the intention to deceive." },
+      { term: "Disinformation", definition: "False information spread deliberately in order to mislead." },
+      { term: "Echo chamber", definition: "An information environment in which you mostly encounter views you already hold." },
+      { term: "Ofcom", definition: "The regulator for broadcasting, which enforces impartiality and accuracy on TV and radio." },
+      { term: "IPSO", definition: "The main self-regulatory body for the UK newspaper industry." },
+      { term: "Algorithm (media)", definition: "The ranking system deciding what content a user is shown, usually based on predicted engagement." },
+      { term: "Investigative journalism", definition: "In-depth reporting that uncovers information powerful people wanted hidden." },
+    ],
+    examTips: [
+      {
+        tip: "Newspapers may be partisan; broadcasters may not",
+        detail:
+          "That contrast is the single most useful fact in this topic and unlocks several question types.",
+      },
+      {
+        tip: "Public interest is not 'interesting to the public'",
+        detail:
+          "Examiners specifically test this. Exposing corruption is public interest; a celebrity's private life usually is not.",
+      },
+      {
+        tip: "Misinformation and disinformation differ by intent",
+        detail:
+          "Disinformation is deliberate. Getting that distinction right is a straightforward mark.",
+      },
+      {
+        tip: "Name the regulators",
+        detail:
+          "Ofcom for broadcasting, IPSO for most newspapers. Naming them beats 'there are rules'.",
+      },
+      {
+        tip: "Describe bias through specific techniques",
+        detail:
+          "Story selection, headline wording, sources quoted, images used, omission. Listing techniques scores better than saying an outlet is biased.",
+      },
+      {
+        tip: "Give social media both ways",
+        detail:
+          "Wider participation and faster accountability, against unchecked falsehood and algorithmic amplification. Never one-sided.",
+      },
+    ],
+    practice: [
+      {
+        question: "What name is given to the media because of its watchdog role alongside the branches of the state?",
+        accept: ["fourth estate", "the fourth estate"],
+        answer:
+          "The fourth estate. The label captures the idea that scrutiny by the press is part of how power is checked.",
+      },
+      {
+        question: "What is the suppression or control of information by an authority called?",
+        accept: ["censorship"],
+        answer:
+          "Censorship. Its systematic use is one of the clearest markers separating undemocratic states from democratic ones.",
+      },
+      {
+        question: "What is publishing an untrue statement that damages someone's reputation called?",
+        accept: ["defamation", "libel", "slander"],
+        answer:
+          "Defamation. In a permanent form such as writing or broadcast it is libel; spoken, it is slander.",
+      },
+      {
+        question: "What is an insider who reveals wrongdoing in their organisation called?",
+        accept: ["whistleblower", "a whistleblower", "whistle-blower"],
+        answer:
+          "A whistleblower. UK law gives some protection against dismissal for disclosures made in the public interest.",
+      },
+      {
+        question: "In UK media law, does 'public interest' mean anything the public finds interesting? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. It means something the public genuinely needs to know — exposing corruption qualifies, idle curiosity about a private life usually does not.",
+      },
+      {
+        question: "Are UK newspapers legally required to be politically impartial? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. Newspapers may openly support a party. Broadcasters, by contrast, are bound by impartiality rules.",
+      },
+      {
+        question: "What requirement obliges UK broadcasters to give due weight to differing views?",
+        accept: ["impartiality", "due impartiality", "impartiality rules"],
+        answer:
+          "Impartiality. It applies especially strictly during election campaigns, when airtime is closely regulated.",
+      },
+      {
+        question: "What is false information spread WITHOUT the intention to deceive called?",
+        accept: ["misinformation"],
+        answer:
+          "Misinformation. Disinformation is the deliberate version — the difference is intent, not accuracy.",
+      },
+      {
+        question: "What is false information spread DELIBERATELY to mislead called?",
+        accept: ["disinformation"],
+        answer:
+          "Disinformation. Because it is intentional, it is often coordinated and designed to look like ordinary content.",
+      },
+      {
+        question: "Which body regulates broadcasting in the UK?",
+        accept: ["ofcom"],
+        answer:
+          "Ofcom. It enforces accuracy and impartiality on television and radio, and can fine broadcasters that breach the code.",
+      },
+      {
+        question: "Which body is the main self-regulator for the UK newspaper industry?",
+        accept: ["ipso", "independent press standards organisation"],
+        answer:
+          "IPSO. Some publishers use IMPRESS instead and a few belong to neither, which is part of why critics call press regulation weak.",
+      },
+      {
+        question: "What is an information environment where you mostly see views you already hold called?",
+        accept: ["echo chamber", "an echo chamber", "filter bubble"],
+        answer:
+          "An echo chamber, sometimes called a filter bubble. Recommendation algorithms can deepen it by optimising for engagement.",
+      },
+      {
+        question: "Name one technique that can reveal bias in a news report.",
+        accept: ["headline", "word choice", "omission", "sources", "images", "story selection", "loaded language", "quotes", "placement", "photographs", "emotive language", "leaving out"],
+        answer:
+          "Story selection, headline wording, loaded language, which sources are quoted, the photographs chosen, and what is left out entirely.",
+      },
+      {
+        question: "Name one way to check whether an online claim is reliable.",
+        accept: ["check the source", "find the original", "corroborate", "check other sources", "check the date", "fact check", "who benefits", "cross-reference", "look for evidence", "reverse image search"],
+        answer:
+          "Find the original source, look for corroboration elsewhere, check the date, use a fact-checking site, and ask who benefits from you believing it.",
+      },
+      {
+        question: "Explain why a free press is important in a democracy. Write three or four sentences.",
+        answer:
+          "Voters can only make an informed choice if they know what those in power are actually doing, and the media is the main way that information reaches them. Investigative journalism exposes wrongdoing that would otherwise stay hidden, so the possibility of being reported on acts as a restraint on those in office even before anything is published. A free press also gives a platform to views that governments might prefer not to hear, including those of people with little other access to public attention. Where the press is controlled, citizens are left judging a government using only the information that government has chosen to release. Mark this one yourself: informing voters, exposing wrongdoing and restraining power are three distinct points, and naming all three scores best.",
+      },
+      {
+        question: "Discuss whether social media has been good or bad for democracy.",
+        answer:
+          "Positive: it removes the gatekeepers, so anyone can publish and issues ignored by mainstream outlets can reach millions; it makes organising campaigns and protests far faster and cheaper; it lets citizens question politicians directly; and it has allowed evidence of abuses to reach the world from places where the press is controlled. Negative: there is no editorial check, so falsehoods spread as easily as facts and often faster because they are more surprising; algorithms optimise for engagement, which tends to reward outrage over accuracy; echo chambers reduce exposure to opposing views and harden divisions; and both anonymity and automated accounts make coordinated manipulation cheap. Attempts to regulate raise their own problem, since giving governments or companies power to remove content risks the censorship a free society is trying to avoid. A defensible conclusion is that social media has widened participation and weakened the shared factual basis that participation depends on, so the honest answer is that it has done both, and which matters more is still genuinely contested. Mark this one yourself: both sides, at least two developed points each, and a conclusion that acknowledges the trade-off.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "UK newspapers must be politically neutral.",
+        right:
+          "They may openly back a party. It is broadcasters who are bound by impartiality rules under Ofcom.",
+      },
+      {
+        wrong: "'Public interest' means anything the public is interested in.",
+        right:
+          "It means something they genuinely need to know. Curiosity about a private life is not usually enough to override privacy.",
+      },
+      {
+        wrong: "Misinformation and disinformation are the same.",
+        right:
+          "Both are false, but disinformation is spread deliberately to mislead. The difference is intent.",
+      },
+      {
+        wrong: "Freedom of the press means journalists can publish anything.",
+        right:
+          "Defamation, contempt of court, privacy, official secrets and incitement laws all set limits.",
+      },
+      {
+        wrong: "If lots of people are sharing something, it must be true.",
+        right:
+          "Sharing measures engagement, not accuracy. Surprising and emotive claims spread faster precisely because they are surprising.",
+      },
+    ],
+  },
+
+  "citizenship/the-uk-and-the-world": {
+    summary:
+      "No country decides everything for itself. This topic covers the international organisations the UK belongs to, how international law and human rights agreements work when there is no world government to enforce them, what globalisation has changed, and the arguments about intervention, aid and sovereignty.",
+    keyFacts: [
+      {
+        heading: "International organisations",
+        points: [
+          "The UNITED NATIONS was founded in 1945 to maintain peace and security, and almost every country belongs.",
+          "The UN SECURITY COUNCIL has five permanent members — the UK, US, Russia, China and France — each with a VETO.",
+          "NATO is a military alliance in which an attack on one member is treated as an attack on all.",
+          "The COMMONWEALTH is a voluntary association of countries, most with historic links to the UK.",
+          "The WORLD TRADE ORGANIZATION sets rules for trade between countries and settles trade disputes.",
+          "The UK left the EUROPEAN UNION in 2020, which changed its trade, migration and legal arrangements with Europe.",
+        ],
+      },
+      {
+        heading: "Human rights beyond the UK",
+        points: [
+          "The UNIVERSAL DECLARATION OF HUMAN RIGHTS was adopted by the UN in 1948 and is a declaration, not a binding treaty.",
+          "The EUROPEAN CONVENTION ON HUMAN RIGHTS is binding on its members and is enforced by the European Court of Human Rights in Strasbourg.",
+          "The Council of Europe, which oversees the Convention, is a separate body from the European Union.",
+          "The HUMAN RIGHTS ACT 1998 brought Convention rights into UK law so cases can be heard in UK courts.",
+          "The GENEVA CONVENTIONS set rules for the conduct of war, including the treatment of prisoners and civilians.",
+          "The INTERNATIONAL CRIMINAL COURT can try individuals for genocide, war crimes and crimes against humanity.",
+        ],
+      },
+      {
+        heading: "Globalisation",
+        points: [
+          "GLOBALISATION is the increasing interconnection of countries through trade, travel, communication and culture.",
+          "Benefits include cheaper goods, wider choice, shared technology and jobs created by investment.",
+          "Costs include jobs lost to lower-wage countries, exploitation in weakly regulated supply chains and environmental damage from transport.",
+          "MULTINATIONAL CORPORATIONS operate in many countries and can be wealthier than the states hosting them.",
+          "INTERDEPENDENCE means events far away — a pandemic, a war, a shipping blockage — affect prices and supplies here.",
+          "Climate change is the clearest case where no country can solve a problem alone.",
+        ],
+      },
+      {
+        heading: "Aid, intervention and sovereignty",
+        points: [
+          "HUMANITARIAN AID is emergency help after a disaster or conflict; development aid aims at long-term change.",
+          "NGOs are non-governmental organisations such as charities that deliver aid and campaign independently of states.",
+          "SANCTIONS are economic penalties used to pressure a state without military force.",
+          "PEACEKEEPING deploys forces, often under a UN mandate, to keep parties apart after a conflict.",
+          "SOVEREIGNTY is a state's right to govern itself, which intervention necessarily limits.",
+          "Arguments for intervention centre on preventing atrocities; arguments against centre on sovereignty, unintended consequences and inconsistency about where the world intervenes.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "United Nations", definition: "An international organisation founded in 1945 to maintain peace and security, with almost universal membership." },
+      { term: "Security Council veto", definition: "The power of each of the five permanent members to block a UN Security Council resolution." },
+      { term: "NATO", definition: "A military alliance in which an attack on one member is treated as an attack on all." },
+      { term: "Commonwealth", definition: "A voluntary association of countries, most with historic links to the UK." },
+      { term: "World Trade Organization", definition: "The body that sets rules for international trade and settles trade disputes." },
+      { term: "Universal Declaration of Human Rights", definition: "The 1948 UN statement of rights — influential worldwide, but a declaration rather than a binding treaty." },
+      { term: "European Convention on Human Rights", definition: "A binding regional treaty on rights, enforced by the European Court of Human Rights." },
+      { term: "Human Rights Act 1998", definition: "The Act bringing Convention rights into UK law so they can be enforced in UK courts." },
+      { term: "Geneva Conventions", definition: "Treaties setting rules for the conduct of war, including treatment of prisoners and civilians." },
+      { term: "International Criminal Court", definition: "A court that tries individuals for genocide, war crimes and crimes against humanity." },
+      { term: "Globalisation", definition: "The increasing interconnection of countries through trade, travel, communication and culture." },
+      { term: "Multinational corporation", definition: "A company operating in many countries, sometimes wealthier than the states hosting it." },
+      { term: "Interdependence", definition: "The condition in which events in one country directly affect others." },
+      { term: "Humanitarian aid", definition: "Emergency assistance provided after a disaster or conflict." },
+      { term: "NGO", definition: "A non-governmental organisation, such as a charity, working independently of states." },
+      { term: "Sanctions", definition: "Economic penalties used to pressure a state without using military force." },
+      { term: "Peacekeeping", definition: "Deploying forces, often under a UN mandate, to keep parties apart after a conflict." },
+      { term: "Sovereignty", definition: "A state's right to govern itself without outside interference." },
+    ],
+    examTips: [
+      {
+        tip: "The Council of Europe is not the European Union",
+        detail:
+          "The ECHR belongs to the Council of Europe. Leaving the EU did not remove the UK from the Convention. Examiners test this deliberately.",
+      },
+      {
+        tip: "Declaration versus treaty",
+        detail:
+          "The Universal Declaration is not legally binding; the European Convention is. That distinction earns marks on its own.",
+      },
+      {
+        tip: "Learn the Security Council veto",
+        detail:
+          "Five permanent members, each able to block a resolution. It explains why the UN often cannot act, which is a common evaluation question.",
+      },
+      {
+        tip: "Globalisation questions want costs and benefits",
+        detail:
+          "Cheaper goods and shared technology against job losses, exploitation and environmental cost. One-sided answers cap low.",
+      },
+      {
+        tip: "Distinguish humanitarian from development aid",
+        detail:
+          "Emergency relief versus long-term change. Naming both shows you understand aid is not a single thing.",
+      },
+      {
+        tip: "Sovereignty is the counter-argument to intervention",
+        detail:
+          "Any answer on intervention should weigh preventing atrocities against a state's right to govern itself.",
+      },
+    ],
+    practice: [
+      {
+        question: "In which year was the United Nations founded? Give the year only.",
+        accept: ["1945"],
+        answer:
+          "1945, immediately after the Second World War, with the aim of preventing another conflict on that scale.",
+      },
+      {
+        question: "How many permanent members does the UN Security Council have? Give the number only.",
+        accept: ["5", "five"],
+        answer:
+          "5 — the UK, US, Russia, China and France. Each holds a veto, which is why the Council is often deadlocked.",
+      },
+      {
+        question: "What power lets a permanent Security Council member block a resolution?",
+        accept: ["veto", "the veto", "veto power"],
+        answer:
+          "The veto. A single permanent member can stop a resolution regardless of how many others support it.",
+      },
+      {
+        question: "Which organisation treats an attack on one member as an attack on all?",
+        accept: ["nato", "north atlantic treaty organisation", "north atlantic treaty organization"],
+        answer:
+          "NATO. That collective defence commitment is the core of the alliance and is what makes membership meaningful.",
+      },
+      {
+        question: "Which organisation sets the rules for international trade and settles trade disputes?",
+        accept: ["wto", "world trade organisation", "world trade organization"],
+        answer:
+          "The World Trade Organization. It provides a rules-based process so trade disputes are argued rather than fought over.",
+      },
+      {
+        question: "In which year was the Universal Declaration of Human Rights adopted? Give the year only.",
+        accept: ["1948"],
+        answer:
+          "1948. It is enormously influential but is a declaration rather than a binding treaty, so it is not directly enforceable.",
+      },
+      {
+        question: "Which UK Act brought European Convention rights into UK law?",
+        accept: ["human rights act", "human rights act 1998", "the human rights act"],
+        answer:
+          "The Human Rights Act 1998. It means Convention cases can be argued in UK courts rather than only in Strasbourg.",
+      },
+      {
+        question: "Is the European Convention on Human Rights part of the European Union? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. It belongs to the Council of Europe, a separate body, which is why leaving the EU did not remove the UK from the Convention.",
+      },
+      {
+        question: "Which treaties set rules for the conduct of war, including treatment of prisoners?",
+        accept: ["geneva conventions", "the geneva conventions", "geneva convention"],
+        answer:
+          "The Geneva Conventions. They apply to how a war is fought rather than to whether fighting it was justified.",
+      },
+      {
+        question: "Which court tries individuals for genocide and war crimes?",
+        accept: ["international criminal court", "icc", "the international criminal court"],
+        answer:
+          "The International Criminal Court. It tries individuals, not states, which is what distinguishes it from other international courts.",
+      },
+      {
+        question: "What is the increasing interconnection of countries through trade, travel and communication called?",
+        accept: ["globalisation", "globalization"],
+        answer:
+          "Globalisation. Its effects cut both ways, which is why exam answers must weigh benefits against costs.",
+      },
+      {
+        question: "What is a company operating in many countries called?",
+        accept: ["multinational", "multinational corporation", "mnc", "transnational corporation", "multinational company"],
+        answer:
+          "A multinational corporation. Some have revenues larger than the economies of the countries they operate in.",
+      },
+      {
+        question: "What are economic penalties used to pressure a state without military force called?",
+        accept: ["sanctions", "economic sanctions"],
+        answer:
+          "Sanctions. They avoid war but often hurt ordinary citizens more than the leaders they are aimed at.",
+      },
+      {
+        question: "What is a state's right to govern itself without outside interference called?",
+        accept: ["sovereignty", "national sovereignty", "state sovereignty"],
+        answer:
+          "Sovereignty. It is the central objection to intervention, and the reason international action is usually slow and contested.",
+      },
+      {
+        question: "Explain the difference between humanitarian aid and development aid. Write two or three sentences.",
+        answer:
+          "Humanitarian aid is emergency assistance delivered during or immediately after a crisis such as an earthquake, famine or war, and its purpose is to keep people alive in the short term with food, shelter, water and medical care. Development aid is long-term, aiming at lasting change through schools, clinics, infrastructure, training and support for local institutions. Both are needed, but they answer different questions: humanitarian aid asks how people survive this month, development aid asks how the country is different in ten years. Mark this one yourself: short-term emergency relief versus long-term change, with an example of each, is what scores.",
+      },
+      {
+        question: "Discuss whether countries should intervene militarily in other countries to prevent human rights abuses.",
+        answer:
+          "For intervention: some abuses, including genocide and ethnic cleansing, are so severe that standing by makes other states complicit; the international community has accepted a responsibility to protect civilians when their own government will not; and inaction can allow a conflict to spread across a region. Against: sovereignty is the foundation of international order, and intervention without consent undermines it for everyone; interventions frequently produce consequences nobody intended, including long instability and civilian deaths caused by the intervention itself; powerful states intervene selectively, which makes the principle look like a cover for national interest; and the Security Council veto means action often depends on which side the permanent members are on rather than on the severity of the abuse. A reasonable conclusion is that the strength of the case depends heavily on whether there is a clear legal mandate, a realistic plan for what follows, and consistency in how the principle is applied — and that all three are frequently missing. Mark this one yourself: both sides developed, and a conclusion that gives conditions rather than a flat yes or no.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The European Convention on Human Rights is an EU institution.",
+        right:
+          "It belongs to the Council of Europe, which is separate from the EU. Leaving the EU did not leave the Convention.",
+      },
+      {
+        wrong: "The Universal Declaration of Human Rights is legally binding on all countries.",
+        right:
+          "It is a declaration, not a treaty. Its influence is enormous but its legal force comes from later binding agreements.",
+      },
+      {
+        wrong: "The UN can force any country to do what it decides.",
+        right:
+          "It has no army of its own and its Security Council can be blocked by a single permanent member's veto.",
+      },
+      {
+        wrong: "Globalisation only benefits rich countries.",
+        right:
+          "It has lifted large numbers out of poverty in developing economies while also costing jobs in richer ones. The effects are uneven, not one-directional.",
+      },
+      {
+        wrong: "All aid is emergency relief.",
+        right:
+          "Development aid is long-term work on schools, infrastructure and institutions, and makes up a large share of the total.",
+      },
+    ],
+  },
+
+  "citizenship/money-and-the-citizen": {
+    summary:
+      "Public services have to be paid for, and so do you. This topic covers where government money comes from and where it goes, how the welfare state works, your rights as a consumer and an employee, and the practical financial skills — payslips, budgeting, credit — that everyone needs and few are taught.",
+    keyFacts: [
+      {
+        heading: "Where government money comes from",
+        points: [
+          "TAXATION is money collected by the state to pay for public services.",
+          "A DIRECT TAX is paid straight to the government on income or wealth: income tax, National Insurance, corporation tax.",
+          "An INDIRECT TAX is paid on spending and collected by a business: VAT, fuel duty, alcohol and tobacco duties.",
+          "INCOME TAX is charged in bands, so higher earnings are taxed at higher rates — this is PROGRESSIVE taxation.",
+          "NATIONAL INSURANCE contributions fund the state pension and some benefits.",
+          "COUNCIL TAX is paid to your local council for local services, based on the value band of the property.",
+        ],
+      },
+      {
+        heading: "Where it goes",
+        points: [
+          "PUBLIC SPENDING covers health, education, pensions and welfare, defence, transport, policing and debt interest.",
+          "Health, pensions and welfare together make up the largest share by a wide margin.",
+          "The BUDGET is the annual statement in which the Chancellor sets out tax and spending plans.",
+          "A DEFICIT means spending more than is raised in a year; the NATIONAL DEBT is the total owed over time.",
+          "Interest on the national debt is itself a significant item of annual spending.",
+          "Arguments about tax are usually arguments about this trade-off: lower taxes leave people more of their own money, higher taxes fund more public provision.",
+        ],
+      },
+      {
+        heading: "The welfare state",
+        points: [
+          "The WELFARE STATE is the system providing support to those who need it, largely established after 1945.",
+          "The NHS provides healthcare free at the point of use, funded through general taxation.",
+          "Benefits include support for people who are unemployed, on low incomes, disabled or caring for others.",
+          "UNIVERSAL CREDIT combined several working-age benefits into a single monthly payment.",
+          "The STATE PENSION is paid from state pension age and depends on your National Insurance record.",
+          "Debates concern how generous support should be, how to avoid discouraging work, and how an ageing population will be paid for.",
+        ],
+      },
+      {
+        heading: "You, your money and your rights",
+        points: [
+          "A PAYSLIP shows gross pay, deductions for tax and National Insurance, and net (take-home) pay.",
+          "The NATIONAL MINIMUM WAGE sets a legal floor on pay, with different rates by age.",
+          "The Consumer Rights Act 2015 requires goods to be of satisfactory quality, fit for purpose and as described.",
+          "Faulty goods returned within 30 days entitle you to a full refund.",
+          "INTEREST is the cost of borrowing or the reward for saving, and APR lets you compare borrowing costs.",
+          "BUDGETING means planning income against outgoings; debt becomes dangerous when borrowing is used to cover ordinary living costs.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Taxation", definition: "Money collected by the state from individuals and businesses to fund public services." },
+      { term: "Direct tax", definition: "A tax paid straight to the government on income or wealth, such as income tax." },
+      { term: "Indirect tax", definition: "A tax paid on spending and collected by a business, such as VAT." },
+      { term: "Income tax", definition: "A direct tax on earnings, charged in bands so higher earnings are taxed at higher rates." },
+      { term: "National Insurance", definition: "Contributions from workers and employers that fund the state pension and some benefits." },
+      { term: "VAT", definition: "Value Added Tax, an indirect tax added to the price of most goods and services." },
+      { term: "Council tax", definition: "A tax paid to your local council for local services, based on the property's value band." },
+      { term: "Progressive tax", definition: "A tax that takes a larger proportion of income from those who earn more." },
+      { term: "Public spending", definition: "Government expenditure on services such as health, education, welfare and defence." },
+      { term: "Budget (government)", definition: "The annual statement in which the Chancellor sets out tax and spending plans." },
+      { term: "Deficit", definition: "The amount by which government spending exceeds what it raises in a year." },
+      { term: "National debt", definition: "The total amount the government owes, built up over many years of borrowing." },
+      { term: "Welfare state", definition: "The system of state support for those who need it, largely established after 1945." },
+      { term: "Universal Credit", definition: "A single monthly payment that replaced several separate working-age benefits." },
+      { term: "State pension", definition: "A payment from state pension age, based on your National Insurance record." },
+      { term: "Gross pay", definition: "Pay before any deductions such as tax and National Insurance." },
+      { term: "Net pay", definition: "Take-home pay after tax, National Insurance and other deductions." },
+      { term: "National Minimum Wage", definition: "The legal minimum hourly rate an employer may pay, varying by age." },
+      { term: "APR", definition: "Annual Percentage Rate — the yearly cost of borrowing, used to compare credit deals." },
+      { term: "Consumer Rights Act 2015", definition: "The law requiring goods to be of satisfactory quality, fit for purpose and as described." },
+    ],
+    examTips: [
+      {
+        tip: "Direct and indirect tax is the core distinction",
+        detail:
+          "Direct comes off income or wealth; indirect is added to spending. Give an example of each and the mark is secure.",
+      },
+      {
+        tip: "Do not quote exact tax rates or thresholds",
+        detail:
+          "They change every Budget. Describe the structure — bands, progressive rates — rather than risking an out-of-date number.",
+      },
+      {
+        tip: "Know the three consumer standards",
+        detail:
+          "Satisfactory quality, fit for purpose, as described. Those exact phrases come from the Consumer Rights Act 2015.",
+      },
+      {
+        tip: "Deficit and debt are different",
+        detail:
+          "The deficit is one year's shortfall; the debt is the accumulated total. Swapping them is a very common error.",
+      },
+      {
+        tip: "Gross before, net after",
+        detail:
+          "Payslip questions turn on this. Gross pay is before deductions, net is what actually reaches your account.",
+      },
+      {
+        tip: "Tax debates are trade-offs, not right answers",
+        detail:
+          "Higher taxes fund more provision; lower taxes leave people more of their income. Present both and judge, rather than asserting.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is a tax paid straight to the government on income or wealth called?",
+        accept: ["direct tax", "direct", "a direct tax"],
+        answer:
+          "A direct tax — income tax, National Insurance and corporation tax are examples. Indirect taxes are paid on spending instead.",
+      },
+      {
+        question: "What is a tax added to spending and collected by a business called?",
+        accept: ["indirect tax", "indirect", "an indirect tax"],
+        answer:
+          "An indirect tax. VAT and fuel duty are the clearest examples, since you pay them through the price of what you buy.",
+      },
+      {
+        question: "Which tax is added to the price of most goods and services in the UK?",
+        accept: ["vat", "value added tax"],
+        answer:
+          "VAT — Value Added Tax. It is indirect, because the business collects it from you and passes it to the government.",
+      },
+      {
+        question: "Which contributions fund the state pension and some benefits?",
+        accept: ["national insurance", "ni", "national insurance contributions"],
+        answer:
+          "National Insurance. Your record of contributions determines what state pension you eventually receive.",
+      },
+      {
+        question: "Which tax is paid to your local council based on the property's value band?",
+        accept: ["council tax"],
+        answer:
+          "Council tax. It funds local services such as refuse collection, libraries, social care and local roads.",
+      },
+      {
+        question: "What word describes a tax that takes a larger proportion of income from higher earners?",
+        accept: ["progressive", "progressive tax", "progressive taxation"],
+        answer:
+          "Progressive. Income tax is progressive because it is charged in bands with higher rates on higher earnings.",
+      },
+      {
+        question: "Which area of public spending is the single largest, alongside pensions and welfare?",
+        accept: ["health", "healthcare", "nhs", "health and social care"],
+        answer:
+          "Health. Health, pensions and welfare together dominate public spending, which is why they dominate the political argument about it.",
+      },
+      {
+        question: "What is the amount by which government spending exceeds income in a single year called?",
+        accept: ["deficit", "the deficit", "budget deficit"],
+        answer:
+          "The deficit. The national debt is the accumulated total of past borrowing, which is a different thing entirely.",
+      },
+      {
+        question: "What is the total amount the government owes, built up over many years, called?",
+        accept: ["national debt", "the national debt", "public debt"],
+        answer:
+          "The national debt. Interest on it is itself a significant annual item of public spending.",
+      },
+      {
+        question: "What is the annual statement of tax and spending plans called?",
+        accept: ["budget", "the budget", "the annual budget"],
+        answer:
+          "The Budget, delivered by the Chancellor of the Exchequer. It is where tax rates and thresholds are usually changed.",
+      },
+      {
+        question: "What single monthly payment replaced several separate working-age benefits?",
+        accept: ["universal credit"],
+        answer:
+          "Universal Credit. Combining benefits was intended to simplify the system and make work always pay more than not working.",
+      },
+      {
+        question: "What is pay BEFORE any deductions called?",
+        accept: ["gross pay", "gross", "gross income", "gross salary"],
+        answer:
+          "Gross pay. Net pay is what remains after income tax, National Insurance and other deductions — the amount that actually arrives.",
+      },
+      {
+        question: "Under the Consumer Rights Act, name one standard goods must meet.",
+        accept: ["satisfactory quality", "fit for purpose", "as described", "quality", "described"],
+        answer:
+          "Satisfactory quality, fit for purpose, and as described. Those three phrases come straight from the Consumer Rights Act 2015.",
+      },
+      {
+        question: "What does APR stand for?",
+        accept: ["annual percentage rate"],
+        answer:
+          "Annual Percentage Rate — the yearly cost of borrowing including fees, which lets you compare credit deals fairly.",
+      },
+      {
+        question: "Explain why the government collects taxes, and give two examples of what they fund. Write three or four sentences.",
+        answer:
+          "Taxes fund services that either could not be provided by individuals buying them separately or that society has decided everyone should have regardless of ability to pay. The NHS is the clearest example: it is free at the point of use and funded from general taxation, so treatment does not depend on what you can afford at the moment you fall ill. State education is another, since a country with universal schooling benefits everyone, including people without children. Taxes also fund things nobody could buy individually at all, such as defence and policing, and they redistribute through pensions and benefits to people who cannot earn. Mark this one yourself: a clear reason plus two named, explained examples is what earns full marks.",
+      },
+      {
+        question: "Discuss whether taxes should be raised to increase spending on public services.",
+        answer:
+          "For raising them: demand on health and social care is rising as the population ages, and services under strain deliver worse outcomes for everyone; public services are used most by those least able to buy private alternatives, so underfunding them widens inequality; and some spending, such as on early education or preventative healthcare, reduces costs later. Against: tax takes money from people who earned it and may spend it better themselves; higher taxes on work and business can reduce the incentive to work, hire or invest, so revenue may not rise as much as expected; and extra money does not automatically produce better services if the underlying problems are organisational. There is also the question of which taxes — raising VAT hits lower earners hardest as a share of income, while raising income tax rates affects higher earners more. A defensible conclusion is that the honest disagreement is less about whether services matter and more about how much of national income should pass through the state, and that reasonable people weigh that differently. Mark this one yourself: both sides, some mention of which taxes, and a judgement rather than a preference stated as fact.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The NHS is free.",
+        right:
+          "It is free at the point of use, but funded through taxation. Everyone who pays tax is paying for it.",
+      },
+      {
+        wrong: "The deficit and the national debt are the same thing.",
+        right:
+          "The deficit is one year's shortfall between spending and income. The debt is the accumulated total of past borrowing.",
+      },
+      {
+        wrong: "Only workers pay tax.",
+        right:
+          "Indirect taxes such as VAT and fuel duty are paid by anyone who buys things, whatever their income or age.",
+      },
+      {
+        wrong: "Your salary is what arrives in your bank account.",
+        right:
+          "That is net pay. Gross pay is the figure before income tax, National Insurance and pension deductions are taken off.",
+      },
+      {
+        wrong: "If you change your mind about something you bought in a shop, you are legally entitled to a refund.",
+        right:
+          "The legal right to a refund covers goods that are faulty, unfit for purpose or not as described. Change-of-mind returns are a shop's own policy, not a legal right.",
+      },
+    ],
+  },
 };
