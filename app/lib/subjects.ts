@@ -664,6 +664,56 @@ export const SUBJECTS: Subject[] = [
       },
     ],
   },
+
+  // ─── CITIZENSHIP ──────────────────────────────────────────────────────────
+  //
+  // ⚠️ PLACEHOLDER MASCOT. Citizenship is using Quill until it has a character
+  // of its own. That is a deliberate, flagged shortcut rather than an
+  // oversight — the content was the priority — but it does mean two subjects
+  // currently share a face, which is exactly the sort of thing that quietly
+  // stays wrong for months if nobody writes it down.
+  //
+  // ⚠️ PINK, as Matthew asked. Worth noting honestly: pink (hue ~333) sits
+  // about 40° from Chemistry's magenta and about 27° from History's red, which
+  // is closer than the separations chosen for the sciences. It is acceptable
+  // because Chemistry lives inside the Science group, so the two only ever meet
+  // on the progress chart. If they turn out to be confusable there, push this
+  // one further towards rose or Chemistry further towards purple.
+  {
+    slug: "citizenship",
+    name: "Citizenship",
+    blurb: "Choose a topic to start revising",
+    gradient: "linear-gradient(150deg, #f9a8d4 0%, #db2777 45%, #6b0f38 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(219,39,119,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(219,39,119,0.9)]",
+    accent: "#be185d",
+    mascot: "quill",
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "identity-and-diversity", title: "Identity & diversity", icon: "globe" },
+          { slug: "rights-and-responsibilities", title: "Rights & responsibilities", icon: "scales" },
+          { slug: "the-law-and-legal-system", title: "The law & legal system", icon: "gavel" },
+          { slug: "democracy-in-the-uk", title: "Democracy in the UK", icon: "crown" },
+          { slug: "elections-and-voting", title: "Elections & voting", icon: "vote" },
+          { slug: "active-citizenship", title: "Active citizenship", icon: "network" },
+        ],
+      },
+      {
+        // Year 10 is planned and NOT yet written.
+        year: "Year 10",
+        topics: [
+          { slug: "parliament-and-government", title: "Parliament & government", icon: "castle" },
+          { slug: "the-media-and-democracy", title: "The media & democracy", icon: "news" },
+          { slug: "the-uk-and-the-world", title: "The UK & the world", icon: "ship" },
+          { slug: "money-and-the-citizen", title: "Money & the citizen", icon: "suitcase" },
+          { slug: "crime-and-justice", title: "Crime & justice", icon: "shield" },
+          { slug: "citizenship-exam-practice", title: "Exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
 ];
 
 // ─── Lookups ────────────────────────────────────────────────────────────────

@@ -223,6 +223,20 @@ export const KNOWN_TOPIC_KEYS: readonly string[] = [
   "physics/required-practicals",
   "physics/physics-exam-practice",
 
+  // ─── Citizenship (added 2026-08-10) ───────────────────────────────────────
+  "citizenship/identity-and-diversity",
+  "citizenship/rights-and-responsibilities",
+  "citizenship/the-law-and-legal-system",
+  "citizenship/democracy-in-the-uk",
+  "citizenship/elections-and-voting",
+  "citizenship/active-citizenship",
+  "citizenship/parliament-and-government",
+  "citizenship/the-media-and-democracy",
+  "citizenship/the-uk-and-the-world",
+  "citizenship/money-and-the-citizen",
+  "citizenship/crime-and-justice",
+  "citizenship/citizenship-exam-practice",
+
 ];
 
 // Topics deliberately withdrawn. Empty, and it should stay that way unless
