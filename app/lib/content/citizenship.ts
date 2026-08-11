@@ -2269,4 +2269,450 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "citizenship/crime-and-justice": {
+    summary:
+      "Year 9 covered how the legal system is built. This topic covers what it does: why people commit crime, what powers the police have and what limits them, the range of sentences available, and the long argument about whether prison works. It also covers youth justice and the rights of victims.",
+    keyFacts: [
+      {
+        heading: "Crime and its causes",
+        points: [
+          "Explanations for crime include poverty and inequality, poor education, unemployment, addiction, family breakdown and peer pressure.",
+          "No single cause explains crime, and most people facing these pressures never offend — correlation is not cause.",
+          "A HATE CRIME is an offence motivated by hostility to race, religion, disability, sexual orientation or transgender identity, and attracts a higher sentence.",
+          "ANTI-SOCIAL BEHAVIOUR covers persistent nuisance that harms a community without necessarily being a serious crime.",
+          "Some crimes, such as fraud and cybercrime, are now far more common than traditional acquisitive crime.",
+          "The CRIME SURVEY FOR ENGLAND AND WALES asks the public about their experience, capturing crimes never reported to police.",
+        ],
+      },
+      {
+        heading: "Policing and its limits",
+        points: [
+          "The police investigate crime, keep order, protect the public and gather evidence for prosecution.",
+          "STOP AND SEARCH requires reasonable grounds for suspicion, and the officer must give their name, station and the grounds.",
+          "PACE — the Police and Criminal Evidence Act 1984 — sets the rules for arrest, detention, questioning and evidence.",
+          "Evidence obtained in breach of the rules can be excluded, which is what makes the safeguards real.",
+          "POLICING BY CONSENT is the principle that police authority depends on public approval, not force.",
+          "Complaints about police conduct can be investigated independently, and disproportionate use of stop and search remains contested.",
+        ],
+      },
+      {
+        heading: "Sentencing",
+        points: [
+          "A CUSTODIAL SENTENCE means imprisonment; a SUSPENDED sentence is imprisonment not served unless the offender reoffends.",
+          "A COMMUNITY SENTENCE requires unpaid work, a curfew, treatment or supervision instead of prison.",
+          "Fines, discharges and compensation orders deal with less serious offending.",
+          "Judges follow SENTENCING GUIDELINES, considering seriousness, harm caused, previous convictions and any guilty plea.",
+          "PROBATION supervises offenders in the community; PAROLE is early release under conditions.",
+          "RECIDIVISM — reoffending — is the main measure used to judge whether a sentence worked.",
+        ],
+      },
+      {
+        heading: "Youth justice, victims and alternatives",
+        points: [
+          "YOUTH OFFENDING TEAMS work with young offenders, combining police, social services, health and education.",
+          "Youth sentences focus more heavily on preventing reoffending than adult sentences do.",
+          "RESTORATIVE JUSTICE brings an offender and victim together so the offender confronts the harm caused.",
+          "Victims have a right to information about their case, to support services, and to make a VICTIM PERSONAL STATEMENT.",
+          "A MISCARRIAGE OF JUSTICE is the conviction of an innocent person, and can be corrected on appeal.",
+          "JURY SERVICE is a legal duty for eligible adults, and is one of the few times ordinary citizens exercise state power directly.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Hate crime", definition: "An offence motivated by hostility towards a protected characteristic, attracting a higher sentence." },
+      { term: "Anti-social behaviour", definition: "Persistent nuisance that harms a community without necessarily being a serious crime." },
+      { term: "Crime Survey for England and Wales", definition: "A survey asking the public about their experience of crime, capturing offences never reported." },
+      { term: "Stop and search", definition: "A police power to search a person, requiring reasonable grounds for suspicion." },
+      { term: "PACE 1984", definition: "The Police and Criminal Evidence Act, setting the rules for arrest, detention, questioning and evidence." },
+      { term: "Policing by consent", definition: "The principle that police authority rests on public approval rather than force." },
+      { term: "Custodial sentence", definition: "A sentence of imprisonment." },
+      { term: "Suspended sentence", definition: "A prison sentence that is not served unless the offender breaks its conditions or reoffends." },
+      { term: "Community sentence", definition: "A sentence served in the community through unpaid work, curfew, treatment or supervision." },
+      { term: "Sentencing guidelines", definition: "The framework judges follow, weighing seriousness, harm, previous convictions and any guilty plea." },
+      { term: "Probation", definition: "Supervision of an offender serving a sentence in the community." },
+      { term: "Parole", definition: "Early release from prison under conditions, which can be revoked." },
+      { term: "Recidivism", definition: "Reoffending after a sentence — the main measure of whether a sentence worked." },
+      { term: "Youth offending team", definition: "A multi-agency team working with young offenders to prevent reoffending." },
+      { term: "Restorative justice", definition: "A process bringing offender and victim together so the offender confronts the harm caused." },
+      { term: "Victim personal statement", definition: "A statement allowing a victim to describe the impact of the crime before sentencing." },
+      { term: "Miscarriage of justice", definition: "The conviction of a person who did not commit the offence." },
+      { term: "Jury service", definition: "The legal duty of eligible adults to serve on a jury when summoned." },
+    ],
+    examTips: [
+      {
+        tip: "Never give one cause of crime",
+        detail:
+          "Examiners want several factors and the recognition that most people facing them do not offend. Single-cause answers cap low.",
+      },
+      {
+        tip: "Stop and search needs reasonable grounds",
+        detail:
+          "That phrase is the mark. Officers must also give their name, station and the grounds for the search.",
+      },
+      {
+        tip: "Learn three types of sentence",
+        detail:
+          "Custodial, suspended and community, plus fines. Being able to name and distinguish them is worth several marks.",
+      },
+      {
+        tip: "Use recidivism in prison answers",
+        detail:
+          "Reoffending rates are the strongest evidence in the prison debate, and using the term correctly signals real understanding.",
+      },
+      {
+        tip: "Restorative justice is not a soft option",
+        detail:
+          "Facing the person you harmed is difficult. Present it as an alternative approach with evidence behind it, not as leniency.",
+      },
+      {
+        tip: "Youth justice has different aims",
+        detail:
+          "Youth offending teams and youth sentences prioritise preventing reoffending. Say why that differs from the adult system.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is an offence motivated by hostility to race, religion or sexual orientation called?",
+        accept: ["hate crime", "a hate crime"],
+        answer:
+          "A hate crime. The motivation is treated as an aggravating factor, so the sentence is higher than for the same act without it.",
+      },
+      {
+        question: "What is persistent nuisance that harms a community, without necessarily being a serious crime, called?",
+        accept: ["anti-social behaviour", "antisocial behaviour", "asb", "anti social behaviour"],
+        answer:
+          "Anti-social behaviour. It is dealt with partly outside the criminal courts, through injunctions and community remedies.",
+      },
+      {
+        question: "What must a police officer have before carrying out a stop and search?",
+        accept: ["reasonable grounds", "reasonable suspicion", "reasonable grounds for suspicion", "grounds"],
+        answer:
+          "Reasonable grounds for suspicion. The officer must also give their name, station and the grounds for the search.",
+      },
+      {
+        question: "Which 1984 Act sets the rules for police arrest, detention and questioning?",
+        accept: ["pace", "police and criminal evidence act", "police and criminal evidence act 1984"],
+        answer:
+          "The Police and Criminal Evidence Act 1984, usually called PACE. Evidence gathered in breach of it can be excluded at trial.",
+      },
+      {
+        question: "What principle holds that police authority depends on public approval rather than force?",
+        accept: ["policing by consent", "consent"],
+        answer:
+          "Policing by consent. It is why public trust is treated as an operational necessity rather than a nice extra.",
+      },
+      {
+        question: "What is a sentence of imprisonment called?",
+        accept: ["custodial", "custodial sentence", "a custodial sentence", "custody"],
+        answer:
+          "A custodial sentence. A suspended sentence is one that is not actually served unless the offender reoffends or breaches conditions.",
+      },
+      {
+        question: "What is a sentence served through unpaid work, curfew or supervision rather than prison called?",
+        accept: ["community sentence", "community order", "a community sentence"],
+        answer:
+          "A community sentence. It keeps the offender in work, housing and family life, which are the things that most reduce reoffending.",
+      },
+      {
+        question: "What is a prison sentence that is not served unless the offender reoffends called?",
+        accept: ["suspended", "suspended sentence", "a suspended sentence"],
+        answer:
+          "A suspended sentence. It works as a conditional threat: comply and it is never served, breach it and it is.",
+      },
+      {
+        question: "What is reoffending after a sentence called?",
+        accept: ["recidivism", "reoffending", "re-offending"],
+        answer:
+          "Recidivism. It is the main measure used to judge whether a sentence achieved anything beyond punishment.",
+      },
+      {
+        question: "What is early release from prison under conditions called?",
+        accept: ["parole", "on parole"],
+        answer:
+          "Parole. It can be revoked if the conditions are broken, which distinguishes it from simply finishing a sentence.",
+      },
+      {
+        question: "What is the process bringing an offender and victim together to confront the harm caused?",
+        accept: ["restorative justice", "restorative"],
+        answer:
+          "Restorative justice. Evidence suggests it improves victim satisfaction and can reduce reoffending, though it is not suitable for every case.",
+      },
+      {
+        question: "What is a multi-agency team working with young offenders called?",
+        accept: ["youth offending team", "yot", "youth offending service"],
+        answer:
+          "A youth offending team, combining police, social services, health and education — reflecting that youth offending has multiple causes.",
+      },
+      {
+        question: "What is the conviction of an innocent person called?",
+        accept: ["miscarriage of justice", "a miscarriage of justice", "wrongful conviction"],
+        answer:
+          "A miscarriage of justice. The possibility of one is the strongest argument for strict rules on evidence and for a right of appeal.",
+      },
+      {
+        question: "What survey asks the public about their experience of crime, including offences never reported?",
+        accept: ["crime survey", "crime survey for england and wales", "csew", "the crime survey"],
+        answer:
+          "The Crime Survey for England and Wales. It matters because police-recorded figures miss crimes nobody reported.",
+      },
+      {
+        question: "Explain why police recorded crime figures might not show the true level of crime. Write three or four sentences.",
+        answer:
+          "Many crimes are never reported: victims may feel embarrassed, may not think the police will act, may fear the offender, or may not realise an offence has occurred. Some categories are especially under-reported, including domestic abuse, sexual offences and fraud. Recording practices also change over time, so a rise in recorded crime can reflect better recording or greater willingness to come forward rather than more offending. This is why the Crime Survey for England and Wales is used alongside police figures — it asks the public directly and so captures the crimes that never reached a police station. Mark this one yourself: reasons for under-reporting, the effect of changing recording practice, and the role of the survey are the three things being credited.",
+      },
+      {
+        question: "Discuss whether prison is an effective response to crime.",
+        answer:
+          "For prison: it protects the public by removing dangerous offenders; it delivers a punishment proportionate to serious harm, which victims and society expect; and the prospect of it may deter some offending. Against: reoffending rates after short sentences are high, suggesting prison often fails at the thing it is meant to prevent; imprisonment breaks employment, housing and family ties, which are the very factors that most reduce reoffending; prison is expensive per place compared with community alternatives; and the effect falls on families and children who committed no offence. Alternatives such as community sentences, treatment programmes and restorative justice show better reoffending outcomes for lower-level offending, but they are less visible and can look lenient. A reasonable conclusion is that prison is necessary for serious and dangerous offending, where public protection outweighs everything else, but is a poor tool for low-level repeat offending where the underlying causes are addiction, poverty or mental ill health. Mark this one yourself: both sides with evidence, alternatives named, and a conclusion that distinguishes between types of offending rather than judging prison as a whole.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Poverty causes crime.",
+        right:
+          "Poverty is strongly associated with offending, but the overwhelming majority of people in poverty never offend. Association is not cause.",
+      },
+      {
+        wrong: "Police can stop and search anyone they like.",
+        right:
+          "They need reasonable grounds for suspicion, and must give their name, station and the grounds for the search.",
+      },
+      {
+        wrong: "A suspended sentence means no punishment.",
+        right:
+          "It is a real prison sentence held in reserve. Reoffending or breaching conditions activates it.",
+      },
+      {
+        wrong: "Restorative justice is an easy option for offenders.",
+        right:
+          "Meeting the person you harmed and hearing the effect is difficult, and evidence suggests it can reduce reoffending.",
+      },
+      {
+        wrong: "Rising recorded crime always means more crime is happening.",
+        right:
+          "It can reflect better recording or more people reporting. That is why survey data is used alongside police figures.",
+      },
+    ],
+  },
+
+  "citizenship/citizenship-exam-practice": {
+    summary:
+      "Citizenship is not marked on how strongly you feel. It is marked on whether you use the right terms, apply them to a situation, and argue both sides before reaching a judgement. This topic covers command words, how marks are actually awarded, how to handle sources, and mixed practice pulling every earlier topic together.",
+    keyFacts: [
+      {
+        heading: "Command words",
+        points: [
+          "STATE, GIVE or NAME wants a short fact with no explanation — do not waste time expanding it.",
+          "DESCRIBE wants what something is or how it works, with detail but no argument.",
+          "EXPLAIN wants reasons: use 'because', 'which means', 'so that' to link cause to effect.",
+          "ANALYSE wants you to break something down and show how the parts connect.",
+          "EVALUATE, DISCUSS, JUSTIFY or 'to what extent' all want BOTH SIDES plus a supported conclusion.",
+          "The command word tells you the structure of the answer before you have read the topic.",
+        ],
+      },
+      {
+        heading: "How marks are awarded",
+        points: [
+          "Roughly one mark per developed point on short questions — so a 4-mark question needs four things, not one long paragraph.",
+          "Long-answer questions are marked by LEVELS, not by counting points.",
+          "To reach the top level you almost always need: correct terminology, both sides, evidence or examples, and a conclusion that follows from your argument.",
+          "A conclusion must actually decide something and give a reason. 'There are arguments on both sides' scores nothing.",
+          "Naming specifics — an Act, an organisation, a process — lifts an answer above vague generalisation.",
+          "Answers that argue only one side cannot reach the top band, however well written.",
+        ],
+      },
+      {
+        heading: "Working with sources",
+        points: [
+          "Source questions require you to USE the source — quote or refer to it directly, not just mention that it exists.",
+          "Check who produced the source, when, and why: a campaign group and a government department have different purposes.",
+          "Distinguish FACT from OPINION within a source; both can appear in the same sentence.",
+          "Look for what the source leaves out as well as what it says.",
+          "If asked to compare two sources, identify a point of agreement and a point of difference.",
+          "Combine the source with your own knowledge — most mark schemes require both.",
+        ],
+      },
+      {
+        heading: "Common ways students lose marks",
+        points: [
+          "Writing an opinion piece instead of a balanced argument.",
+          "Confusing Parliament with government, or the Council of Europe with the European Union.",
+          "Naming a right without naming where it comes from.",
+          "Ignoring the number of marks and writing three sentences for one mark, or one for six.",
+          "Quoting figures that change — tax rates, party leaders, exact debt totals — and getting them wrong.",
+          "Running out of time on the long questions because the short ones were over-answered.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Command word", definition: "The instruction word in a question that tells you what kind of answer is required." },
+      { term: "Evaluate", definition: "A command word requiring both sides of an argument and a supported conclusion." },
+      { term: "Analyse", definition: "A command word requiring you to break something down and show how its parts connect." },
+      { term: "Justify", definition: "A command word requiring you to give reasons in support of a view, having considered alternatives." },
+      { term: "Levels marking", definition: "Marking that places a whole answer in a band by quality, rather than counting separate points." },
+      { term: "Supported conclusion", definition: "A judgement that decides something and gives a reason drawn from the argument above it." },
+      { term: "Fact", definition: "A statement that can be checked against evidence." },
+      { term: "Opinion", definition: "A statement expressing a belief or judgement that cannot be verified in the same way." },
+      { term: "Source provenance", definition: "Who produced a source, when, and for what purpose — all of which affect how far it can be trusted." },
+      { term: "Own knowledge", definition: "Material you bring to a source question from the course, which most mark schemes require alongside the source." },
+      { term: "Balanced argument", definition: "An answer presenting the strongest version of both sides before reaching a judgement." },
+      { term: "Terminology", definition: "The correct subject vocabulary, which distinguishes a top-band answer from a vague one." },
+    ],
+    examTips: [
+      {
+        tip: "Read the command word first, twice",
+        detail:
+          "It fixes the structure. 'Explain' and 'evaluate' on the same topic need completely different answers.",
+      },
+      {
+        tip: "Match length to marks",
+        detail:
+          "Roughly a point per mark on short questions. Writing a paragraph for one mark costs you time on the six-markers.",
+      },
+      {
+        tip: "Steelman the side you disagree with",
+        detail:
+          "Present the opposing argument at its strongest, then answer it. A weak version of the other side reads as bias and loses marks.",
+      },
+      {
+        tip: "Name things",
+        detail:
+          "The Human Rights Act 1998, the Consumer Rights Act 2015, Ofcom, a select committee. Specifics lift the level.",
+      },
+      {
+        tip: "Conclusions must decide",
+        detail:
+          "Say which argument is stronger and why. Restating that both sides exist is the most common way to lose the final marks.",
+      },
+      {
+        tip: "Plan long answers in thirty seconds",
+        detail:
+          "Three bullets — for, against, conclusion — before you start. It costs almost nothing and stops you drifting.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which command word requires both sides of an argument and a conclusion?",
+        accept: ["evaluate", "discuss", "justify", "to what extent", "assess"],
+        answer:
+          "Evaluate, discuss, assess, justify and 'to what extent' all require both sides plus a supported conclusion. One-sided answers cannot reach the top band.",
+      },
+      {
+        question: "Which command word asks for reasons, using links such as 'because' and 'which means'?",
+        accept: ["explain", "explain why"],
+        answer:
+          "Explain. It wants causal links, not just description — every point should answer 'and why does that matter?'",
+      },
+      {
+        question: "Roughly how many developed points should a 4-mark question have? Give the number only.",
+        accept: ["4", "four"],
+        answer:
+          "4 — roughly one per mark on short questions. Writing one long point for four marks throws away three of them.",
+      },
+      {
+        question: "What is marking that places a whole answer in a band by quality, rather than counting points, called?",
+        accept: ["levels marking", "levels", "level marking", "levels of response"],
+        answer:
+          "Levels marking. It is why structure and balance matter on long answers more than the sheer number of facts.",
+      },
+      {
+        question: "What must a conclusion do, beyond stating that both sides exist?",
+        accept: ["decide", "give a judgement", "judgement", "reach a decision", "say which is stronger", "give a reason", "justify"],
+        answer:
+          "It must decide which argument is stronger and say why, drawing on what you argued above rather than introducing something new.",
+      },
+      {
+        question: "In a source question, must you also use your own knowledge? Answer yes or no.",
+        accept: ["yes", "y"],
+        answer:
+          "Yes. Most mark schemes require both the source and your own knowledge, so an answer using only one caps below the top band.",
+      },
+      {
+        question: "What term covers who produced a source, when, and for what purpose?",
+        accept: ["provenance", "source provenance", "origin"],
+        answer:
+          "Provenance. A campaign group and a government department may report the same event with very different emphases.",
+      },
+      {
+        question: "What is a statement that can be checked against evidence called?",
+        accept: ["fact", "a fact"],
+        answer:
+          "A fact, as opposed to an opinion. Sources often mix both in a single sentence, which is exactly what source questions test.",
+      },
+      {
+        question: "Which body should you name as the broadcasting regulator in a media answer?",
+        accept: ["ofcom"],
+        answer:
+          "Ofcom. Naming the specific regulator instead of writing 'there are rules' is the difference between a vague answer and a credited one.",
+      },
+      {
+        question: "Which Act should you name when writing about rights being enforceable in UK courts?",
+        accept: ["human rights act", "human rights act 1998", "the human rights act"],
+        answer:
+          "The Human Rights Act 1998. Naming the source of a right, not just the right itself, is what lifts the answer.",
+      },
+      {
+        question: "Which Act should you name when writing about faulty goods?",
+        accept: ["consumer rights act", "consumer rights act 2015", "the consumer rights act"],
+        answer:
+          "The Consumer Rights Act 2015 — goods must be of satisfactory quality, fit for purpose and as described.",
+      },
+      {
+        question: "Is it a good idea to quote exact current tax rates in an exam answer? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. Rates change at every Budget. Describe the structure — bands, progressive rates, direct and indirect — which stays true.",
+      },
+      {
+        question: "What should you do before starting a long-answer question?",
+        accept: ["plan", "plan it", "make a plan", "bullet points", "outline", "read the command word"],
+        answer:
+          "Plan it in about thirty seconds: for, against, conclusion. It costs almost no time and stops the answer drifting into one side.",
+      },
+      {
+        question: "Name one common confusion that loses marks in Citizenship exams.",
+        accept: ["parliament and government", "council of europe and eu", "echr and eu", "fact and opinion", "deficit and debt", "criminal and civil", "misinformation and disinformation", "gross and net", "collective and individual responsibility"],
+        answer:
+          "Parliament with government, the Council of Europe with the EU, deficit with debt, criminal with civil, and gross with net pay are the classic five.",
+      },
+      {
+        question: "A question says: 'Explain two ways Parliament holds the government to account. (4 marks)'. Write an answer.",
+        answer:
+          "One way is through select committees. These are cross-party groups of MPs that investigate the work of a particular department, can summon ministers and officials to give evidence, and publish reports which the government must formally respond to — which means failures are put on the public record rather than dealt with privately. A second way is through Prime Minister's Questions and written questions, where the Prime Minister and ministers must answer MPs directly, so a minister who cannot defend a decision has to do so in public and on the record. Mark this one yourself: two named mechanisms, each with a developed explanation of HOW it creates accountability, gives you the four marks — naming them without explaining only gets you two.",
+      },
+      {
+        question: "A question says: 'Evaluate the view that young people should be given the vote at 16. (12 marks)'. Write a full answer.",
+        answer:
+          "In favour: 16-year-olds can work and pay income tax and National Insurance, and the principle of no taxation without representation suggests those who contribute should have a say. They are directly affected by decisions on education, training and youth services, yet have no vote on them. Scotland and Wales already allow 16- and 17-year-olds to vote in devolved and local elections, so the practical objections have been tested rather than merely assumed. Voting earlier, while still in full-time education, may also build the habit at a point when schools can support it — and turnout is lowest among the youngest voters who currently start at 18. Against: many other legal thresholds — including some restrictions on work, and the age of majority — sit at 18, and moving the vote alone creates inconsistency. Critics argue that political judgement benefits from experience of paying rent, holding a job or using public services independently, which most 16-year-olds have not yet had. There is also a concern about influence from parents or teachers on students still in compulsory education. Conclusion: the strongest argument for is the tax and representation point combined with the evidence from Scotland and Wales, where extending the franchise did not produce the problems predicted. The strongest argument against is consistency across legal ages, which is a real objection but is an argument for aligning the thresholds rather than for keeping the vote at 18. On balance the case for votes at 16 is stronger, though it would be more coherent as part of a wider review of where the line between childhood and adulthood is drawn. Mark this one yourself: check that you gave at least three developed points on each side, used correct terminology, drew on real evidence such as Scotland and Wales, and finished with a conclusion that decided and gave a reason.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A longer answer always scores more marks.",
+        right:
+          "Long answers are marked by levels, not length. A short balanced answer with a conclusion beats a long one-sided one.",
+      },
+      {
+        wrong: "'Evaluate' means say what you think.",
+        right:
+          "It means present both sides fairly, then reach a judgement supported by the argument you have just made.",
+      },
+      {
+        wrong: "In a source question you only need to use the source.",
+        right:
+          "Most mark schemes require the source AND your own knowledge. Using only one caps the mark.",
+      },
+      {
+        wrong: "A conclusion should summarise both sides.",
+        right:
+          "It should decide which side is stronger and say why. Restating both sides without judging scores nothing extra.",
+      },
+      {
+        wrong: "Strong feelings about an issue will impress the examiner.",
+        right:
+          "Marks come from terminology, application, balance and judgement. Conviction without the other side reads as an unfinished argument.",
+      },
+    ],
+  },
 };
