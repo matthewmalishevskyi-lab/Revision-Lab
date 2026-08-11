@@ -3233,4 +3233,1403 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
     ],
   },
+
+  // ─── YEAR 11 ──────────────────────────────────────────────────────────────
+
+  "physics/magnetism-and-electromagnetism": {
+    summary:
+      "Electricity and magnetism turn out to be two sides of one thing: a current makes a magnetic field, and a changing magnetic field makes a current. This topic covers permanent and induced magnetism, the motor effect, and transformers — which is where the National Grid finally makes sense.",
+    keyFacts: [
+      {
+        heading: "Magnets and fields",
+        points: [
+          "Like poles REPEL; unlike poles ATTRACT. Both are non-contact forces.",
+          "A PERMANENT magnet produces its own magnetic field all the time.",
+          "An INDUCED magnet becomes magnetic only when placed in a magnetic field, and loses most of it when removed.",
+          "Induced magnetism always causes ATTRACTION, never repulsion — which is how you tell a permanent magnet from a piece of iron.",
+          "Field lines run from NORTH to SOUTH outside the magnet, and the closer together they are, the stronger the field.",
+          "A compass points along the field, which is evidence that the Earth has a magnetic field generated in its core.",
+        ],
+      },
+      {
+        heading: "Electromagnetism",
+        points: [
+          "A current in a wire produces a circular magnetic field around it.",
+          "Reversing the current reverses the direction of the field.",
+          "A SOLENOID — a coil of wire — produces a strong, uniform field inside it.",
+          "Adding an iron core makes an ELECTROMAGNET, which is far stronger and can be switched off.",
+          "Field strength increases with more current, more turns on the coil, and an iron core.",
+          "Electromagnets are used in scrapyard cranes, relays, doorbells and loudspeakers.",
+        ],
+      },
+      {
+        heading: "The motor effect",
+        points: [
+          "When a current-carrying conductor sits in a magnetic field, the two fields interact and a FORCE is produced.",
+          "The force is greatest at 90° to the field, and ZERO when the wire is parallel to it.",
+          "FLEMING'S LEFT HAND RULE: thumb = force, First finger = Field, seCond finger = Current.",
+          "FORCE = magnetic flux density × current × length: F = B × I × l.",
+          "Magnetic flux density B is measured in tesla (T).",
+          "Reversing either the current OR the field reverses the force; reversing both leaves it unchanged.",
+        ],
+      },
+      {
+        heading: "Transformers and the Grid",
+        points: [
+          "A transformer has a primary coil and a secondary coil wound on an iron core.",
+          "An alternating current in the primary makes a CHANGING magnetic field, which induces an alternating p.d. in the secondary.",
+          "Transformers work only with ac, because a changing field is required.",
+          "The transformer equation: Vp ÷ Vs = np ÷ ns.",
+          "A STEP-UP transformer has more turns on the secondary and increases the potential difference.",
+          "For a 100% efficient transformer, power in = power out, so Vp × Ip = Vs × Is.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Permanent magnet", definition: "A magnet that produces its own magnetic field all the time." },
+      { term: "Induced magnet", definition: "A material that becomes magnetic in a magnetic field and loses most of it when removed." },
+      { term: "Magnetic field line", definition: "A line showing the direction a north pole would move, running north to south outside a magnet." },
+      { term: "Solenoid", definition: "A coil of wire that produces a strong uniform magnetic field inside it." },
+      { term: "Electromagnet", definition: "A solenoid with an iron core, producing a strong field that can be switched off." },
+      { term: "Motor effect", definition: "The force produced when a current-carrying conductor is placed in a magnetic field." },
+      { term: "Fleming's left hand rule", definition: "Thumb equals force, first finger equals field, second finger equals current." },
+      { term: "Magnetic flux density", definition: "A measure of magnetic field strength, symbol B, measured in tesla." },
+      { term: "Tesla", definition: "The unit of magnetic flux density, used in the equation F = BIl." },
+      { term: "Transformer", definition: "A device with two coils on an iron core that changes the potential difference of an ac supply." },
+      { term: "Step-up transformer", definition: "A transformer with more turns on the secondary, increasing the potential difference." },
+      { term: "Step-down transformer", definition: "A transformer with fewer turns on the secondary, decreasing the potential difference." },
+      { term: "Transformer equation", definition: "Vp divided by Vs equals np divided by ns, relating potential differences to turns." },
+      { term: "Generator effect", definition: "Inducing a potential difference by moving a conductor in a magnetic field." },
+      { term: "Relay", definition: "A switch operated by an electromagnet, letting a small current control a large one." },
+    ],
+    examTips: [
+      {
+        tip: "Induced magnetism always causes ATTRACTION",
+        detail:
+          "If two objects repel, both must be permanent magnets. That single fact answers a standard identification question.",
+      },
+      {
+        tip: "Learn Fleming's left hand rule properly",
+        detail:
+          "Thumb thrust, First finger Field, seCond finger Current. Use the LEFT hand for the motor effect, fingers at right angles.",
+      },
+      {
+        tip: "Transformers need ac — say why",
+        detail:
+          "A CHANGING magnetic field is needed to induce a potential difference. Direct current gives a steady field and induces nothing.",
+      },
+      {
+        tip: "Step-up increases p.d. and DECREASES current",
+        detail:
+          "Power is conserved, so raising the potential difference must lower the current. That is precisely why the Grid uses them.",
+      },
+      {
+        tip: "Force is zero when the wire is parallel to the field",
+        detail:
+          "Maximum at 90°, zero at 0°. Questions show a wire aligned with the field to test whether you noticed the geometry.",
+      },
+      {
+        tip: "Give three ways to strengthen an electromagnet",
+        detail:
+          "More current, more turns, and an iron core. All three score, and they are easy to remember as a set.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A wire of length 0.3 m carries 2 A at right angles to a field of flux density 0.5 T. Calculate the force.",
+        steps: [
+          "Write the equation: F = B × I × l.",
+          "Substitute: F = 0.5 × 2 × 0.3.",
+          "0.5 × 2 = 1.",
+          "1 × 0.3 = 0.3 N.",
+        ],
+        answer: "0.3 N",
+      },
+      {
+        question:
+          "A transformer has 1,000 primary turns and 100 secondary turns. The primary p.d. is 230 V. Calculate the secondary p.d.",
+        steps: [
+          "Write the equation: Vp ÷ Vs = np ÷ ns.",
+          "Rearrange: Vs = Vp × ns ÷ np.",
+          "Substitute: Vs = 230 × 100 ÷ 1,000.",
+          "= 23 V. Fewer secondary turns, so this is a step-DOWN transformer.",
+        ],
+        answer: "23 V",
+      },
+    ],
+    practice: [
+      {
+        question: "A 0.4 m wire carries 3 A at 90° to a 0.2 T field. Calculate the force in newtons. Give the number only.",
+        accept: ["0.24"],
+        answer:
+          "0.24 N. F = BIl = 0.2 × 3 × 0.4. Check each quantity is in the right unit before multiplying.",
+      },
+      {
+        question: "A 0.5 m wire carries 4 A at 90° to a 0.6 T field. Calculate the force in newtons. Give the number only.",
+        accept: ["1.2"],
+        answer:
+          "1.2 N. F = 0.6 × 4 × 0.5 = 1.2. Flux density is in tesla and length must be in metres.",
+      },
+      {
+        question: "A transformer has 500 primary turns and 100 secondary turns, with 240 V on the primary. Calculate the secondary p.d. in volts. Give the number only.",
+        accept: ["48"],
+        answer:
+          "48 V. Vs = Vp × ns ÷ np = 240 × 100 ÷ 500. Fewer secondary turns means a step-down transformer.",
+      },
+      {
+        question: "A transformer has 200 primary turns and 800 secondary turns, with 12 V on the primary. Calculate the secondary p.d. in volts. Give the number only.",
+        accept: ["48"],
+        answer:
+          "48 V. Vs = 12 × 800 ÷ 200 = 48. More secondary turns, so this one steps the potential difference up.",
+      },
+      {
+        question: "A 100% efficient transformer has 240 V and 2 A on the primary, and 48 V on the secondary. Calculate the secondary current in amps. Give the number only.",
+        accept: ["10"],
+        answer:
+          "10 A. Power is conserved: 240 × 2 = 48 × Is, so Is = 480 ÷ 48 = 10 A.",
+      },
+      {
+        question: "A 0.2 m wire carries 5 A in a 0.1 T field at 90°. Calculate the force in newtons. Give the number only.",
+        accept: ["0.1"],
+        answer:
+          "0.1 N. F = 0.1 × 5 × 0.2 = 0.1. Small forces are normal, because school-lab flux densities are low.",
+      },
+      {
+        question: "Do like magnetic poles attract or repel?",
+        accept: ["repel", "they repel", "repulsion"],
+        answer:
+          "Repel. Unlike poles attract, and both are non-contact forces acting without the magnets touching.",
+      },
+      {
+        question: "Does induced magnetism cause attraction or repulsion?",
+        accept: ["attraction", "attract", "attracts"],
+        answer:
+          "Attraction, always. So if two objects REPEL, both must be permanent magnets — a standard identification question.",
+      },
+      {
+        question: "What is a coil of wire producing a strong uniform field inside it called?",
+        accept: ["solenoid", "a solenoid"],
+        answer:
+          "A solenoid. Adding an iron core turns it into an electromagnet, which is stronger and can be switched off.",
+      },
+      {
+        question: "In Fleming's left hand rule, what does the first finger represent?",
+        accept: ["field", "magnetic field", "the field"],
+        answer:
+          "The field. Thumb is force, second finger is current — thumb, First finger Field, seCond finger Current.",
+      },
+      {
+        question: "Name one way to make an electromagnet stronger.",
+        accept: ["more current", "more turns", "iron core", "increase current", "more coils", "add an iron core", "higher current"],
+        answer:
+          "More current, more turns on the coil, or an iron core. All three are examinable and all three score.",
+      },
+      {
+        question: "Why do transformers work only with alternating current?",
+        accept: ["changing field", "needs a changing magnetic field", "changing magnetic field", "dc gives steady field", "field must change"],
+        answer:
+          "A CHANGING magnetic field is needed to induce a p.d. in the secondary coil. Direct current gives a steady field and induces nothing.",
+      },
+      {
+        question: "Does a step-up transformer increase or decrease the current?",
+        accept: ["decrease", "decreases", "reduces", "lowers", "goes down"],
+        answer:
+          "Decreases it. Power is conserved, so raising the potential difference must lower the current — which is why the Grid uses them.",
+      },
+      {
+        question: "At what angle between wire and field is the motor effect force greatest? Give the number only, in degrees.",
+        accept: ["90"],
+        answer:
+          "90°. The force is zero when the wire is parallel to the field, which exam diagrams use to test whether you spotted it.",
+      },
+      {
+        question: "Explain how a transformer changes the potential difference of an ac supply. Write three or four sentences.",
+        answer:
+          "An alternating current in the primary coil produces a magnetic field that constantly changes direction and strength. The iron core carries that changing field into the secondary coil. Because the field through the secondary is changing, it induces an alternating potential difference across it. The size of that induced p.d. depends on the ratio of turns: more turns on the secondary gives a larger p.d., fewer gives a smaller one. Mark this one yourself: the changing field, the iron core and the turns ratio are all needed.",
+      },
+      {
+        question: "Explain why the National Grid uses step-up transformers before transmission and step-down transformers afterwards.",
+        answer:
+          "Power lost heating the cables is P = I²R, so it depends on the SQUARE of the current — halving the current cuts losses to a quarter. A step-up transformer raises the potential difference, and since power is conserved this reduces the current dramatically, so far less energy is wasted over hundreds of kilometres. That very high potential difference would be lethal in a home, so step-down transformers reduce it to a safe 230 V before it arrives. Mark this one yourself: the I² relationship AND the safety reason for stepping down are both required.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Any two objects that attract must both be magnets.",
+        right:
+          "Induced magnetism means a magnet attracts unmagnetised iron. Only REPULSION proves both are permanent magnets.",
+      },
+      {
+        wrong: "Transformers work with any current.",
+        right:
+          "Only alternating current, because a CHANGING magnetic field is required. Direct current induces nothing.",
+      },
+      {
+        wrong: "A step-up transformer increases the power.",
+        right:
+          "Power is conserved. Raising the p.d. lowers the current by the same factor — the gain is lower transmission losses, not more energy.",
+      },
+      {
+        wrong: "Fleming's right hand rule is used for the motor effect.",
+        right:
+          "The LEFT hand is for the motor effect. The right hand rule applies to the generator effect, which is the reverse process.",
+      },
+      {
+        wrong: "The motor effect force is the same at any angle.",
+        right:
+          "It is maximum at 90° to the field and zero when the wire is parallel to it.",
+      },
+    ],
+  },
+
+  "physics/momentum-and-work": {
+    summary:
+      "This topic brings together the mechanics equations describing energy transfer and collisions: work done, power, momentum, and the conservation law governing every crash and explosion. It is heavy on calculation and the equations rearrange constantly, so practice matters more than reading.",
+    keyFacts: [
+      {
+        heading: "Work and power",
+        points: [
+          "WORK DONE = force × distance moved along the line of the force: W = F × s.",
+          "Work is in joules; one joule is one newton-metre.",
+          "Doing work on an object transfers energy to it — they are the same quantity.",
+          "POWER = work done ÷ time: P = W ÷ t, measured in watts.",
+          "POWER = force × velocity: P = F × v, useful for a vehicle at constant speed.",
+          "One watt is one joule transferred per second.",
+        ],
+      },
+      {
+        heading: "Momentum",
+        points: [
+          "MOMENTUM = mass × velocity: p = m × v, measured in kg m/s.",
+          "Momentum is a VECTOR, so opposite directions carry opposite signs.",
+          "CONSERVATION OF MOMENTUM: in a closed system, total momentum before = total momentum after.",
+          "This holds for collisions and explosions alike.",
+          "In an explosion the total momentum before is zero, so the fragments must have equal and opposite momenta.",
+          "FORCE = change in momentum ÷ time. This is Newton's second law in its momentum form.",
+        ],
+      },
+      {
+        heading: "Impact forces and safety",
+        points: [
+          "The same change in momentum spread over a LONGER time produces a SMALLER force.",
+          "Crumple zones, airbags, seatbelts, crash mats, helmets and packaging all work this way.",
+          "They do not reduce the momentum change — the object must still stop — only the RATE at which it happens.",
+          "That is why 'increases the stopping time' is the key phrase in every safety answer.",
+          "Falling onto concrete hurts more than falling onto a mat for exactly this reason.",
+        ],
+      },
+      {
+        heading: "Energy in mechanics",
+        points: [
+          "Work done against friction transfers energy to thermal stores, which is why brakes get hot.",
+          "Work done lifting an object transfers energy to its gravitational potential store: Ep = mgh.",
+          "In a falling object, gravitational potential energy transfers to kinetic energy.",
+          "Ignoring air resistance, the energy transferred equals the kinetic energy gained.",
+          "A braking car transfers kinetic energy to thermal energy in the brakes, tyres and road.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Work done", definition: "Energy transferred when a force moves an object: W = F × s, measured in joules." },
+      { term: "Power", definition: "The rate of doing work or transferring energy: P = W ÷ t, measured in watts." },
+      { term: "Momentum", definition: "Mass multiplied by velocity: p = mv, measured in kg m/s. It is a vector." },
+      { term: "Conservation of momentum", definition: "In a closed system, total momentum before an event equals total momentum after." },
+      { term: "Closed system", definition: "A system with no external forces acting, so that momentum is conserved." },
+      { term: "Change in momentum", definition: "Final momentum minus initial momentum, equal to force multiplied by time." },
+      { term: "Impact force", definition: "The force during a collision, reduced by increasing the time over which momentum changes." },
+      { term: "Crumple zone", definition: "A part of a vehicle designed to deform, increasing collision time and reducing force." },
+      { term: "Joule", definition: "The unit of work and energy. One joule is one newton-metre." },
+      { term: "Watt", definition: "The unit of power. One watt is one joule transferred per second." },
+      { term: "Explosion", definition: "An event where objects push apart; total momentum before is zero, so momenta afterwards cancel." },
+      { term: "Vector", definition: "A quantity with magnitude and direction — momentum, velocity and force are all vectors." },
+    ],
+    examTips: [
+      {
+        tip: "Momentum is a VECTOR — use signs",
+        detail:
+          "Take one direction as positive and the other negative. Ignoring signs makes every collision calculation come out wrong.",
+      },
+      {
+        tip: "In an explosion, total momentum starts at ZERO",
+        detail:
+          "So the fragments must have equal and opposite momenta afterwards. That single fact solves most explosion questions.",
+      },
+      {
+        tip: "Safety features increase TIME, not reduce momentum change",
+        detail:
+          "The object still has to stop, so the momentum change is fixed. Only the time over which it happens can be altered.",
+      },
+      {
+        tip: "Use P = Fv for a vehicle at constant speed",
+        detail:
+          "At constant speed the driving force equals the resistive force, so power output is simply force times velocity.",
+      },
+      {
+        tip: "Work done and energy transferred are the same quantity",
+        detail:
+          "Both in joules. If a question asks for energy transferred by a force, calculate the work done.",
+      },
+      {
+        tip: "Check the distance is along the line of the force",
+        detail:
+          "Carrying a bag horizontally does no work against gravity, because the movement is at right angles to the weight.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A force of 50 N moves a box 4 m. Calculate the work done, then the power if it took 10 s.",
+        steps: [
+          "Work done: W = F × s = 50 × 4 = 200 J.",
+          "Power: P = W ÷ t.",
+          "= 200 ÷ 10.",
+          "= 20 W — twenty joules transferred every second.",
+        ],
+        answer: "200 J and 20 W",
+      },
+      {
+        question:
+          "A 0.5 kg ball moving at 8 m/s is stopped in 0.2 s. Calculate the average force on it.",
+        steps: [
+          "Change in momentum = final − initial = 0 − (0.5 × 8) = −4 kg m/s.",
+          "Use F = change in momentum ÷ time.",
+          "F = −4 ÷ 0.2.",
+          "= −20 N. The size is 20 N, and the minus sign shows it acts against the motion.",
+        ],
+        answer: "20 N, acting against the motion",
+      },
+    ],
+    practice: [
+      {
+        question: "A force of 30 N moves an object 6 m. Calculate the work done in joules. Give the number only.",
+        accept: ["180"],
+        answer:
+          "180 J. W = F × s = 30 × 6. Work done and energy transferred are the same quantity, both in joules.",
+      },
+      {
+        question: "A force of 25 N moves an object 8 m. Calculate the work done in joules. Give the number only.",
+        accept: ["200"],
+        answer:
+          "200 J. W = 25 × 8 = 200. The distance must be measured along the line of the force.",
+      },
+      {
+        question: "600 J of work is done in 30 s. Calculate the power in watts. Give the number only.",
+        accept: ["20"],
+        answer:
+          "20 W. P = W ÷ t = 600 ÷ 30. One watt is one joule per second, so the units follow directly.",
+      },
+      {
+        question: "A car exerts a driving force of 800 N at a constant 20 m/s. Calculate the power output in watts. Give the number only.",
+        accept: ["16000", "16,000"],
+        answer:
+          "16,000 W, or 16 kW. P = F × v = 800 × 20. At constant speed the driving force equals the resistive force.",
+      },
+      {
+        question: "Calculate the momentum of a 1,500 kg car at 12 m/s. Give the number only, in kg m/s.",
+        accept: ["18000", "18,000"],
+        answer:
+          "18,000 kg m/s. p = mv = 1,500 × 12. Momentum is a vector, so direction matters in collision questions.",
+      },
+      {
+        question: "A 2 kg object at 6 m/s is stopped in 0.5 s. Calculate the average force in newtons. Give the number only.",
+        accept: ["24"],
+        answer:
+          "24 N. Change in momentum = 2 × 6 = 12 kg m/s; F = 12 ÷ 0.5 = 24 N. Doubling the stopping time would halve the force.",
+      },
+      {
+        question: "A 0.2 kg ball at 10 m/s is stopped in 0.04 s. Calculate the average force in newtons. Give the number only.",
+        accept: ["50"],
+        answer:
+          "50 N. Change in momentum = 0.2 × 10 = 2 kg m/s; F = 2 ÷ 0.04 = 50 N. Short stopping times give large forces.",
+      },
+      {
+        question: "In an explosion, what is the total momentum before it happens? Give the number only.",
+        accept: ["0", "zero"],
+        answer:
+          "0. The objects are stationary, and momentum is conserved — so the fragments must fly apart with equal and opposite momenta.",
+      },
+      {
+        question: "What is the unit of momentum?",
+        accept: ["kg m/s", "kgm/s", "kg ms-1", "kilogram metres per second", "kg m s-1"],
+        answer:
+          "kg m/s — kilogram metres per second. Unlike the joule or watt it has no special name.",
+      },
+      {
+        question: "Do safety features reduce the momentum change, or increase the time over which it happens?",
+        accept: ["time", "the time", "increase the time", "they increase the time", "increase time"],
+        answer:
+          "They INCREASE the time. The momentum change is fixed because the object still has to stop; a slower rate means a smaller force.",
+      },
+      {
+        question: "A 1,000 kg car at 15 m/s stops in 0.5 s. Calculate the average force in newtons. Give the number only.",
+        accept: ["30000", "30,000"],
+        answer:
+          "30,000 N. Change in momentum = 1,000 × 15 = 15,000 kg m/s; F = 15,000 ÷ 0.5 = 30,000 N. Crumple zones exist to reduce exactly this.",
+      },
+      {
+        question: "What equation links power, force and velocity?",
+        accept: ["p = fv", "p=fv", "power = force x velocity", "power = force times velocity"],
+        answer:
+          "P = F × v. It is the most direct way to find the power output of a vehicle moving at constant speed.",
+      },
+      {
+        question: "Does carrying a bag horizontally at constant height do work against gravity? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. The movement is at right angles to the weight, and work requires movement ALONG the line of the force.",
+      },
+      {
+        question: "Where does the kinetic energy go when a car brakes?",
+        accept: ["thermal", "heat", "thermal energy store", "brakes heat up", "thermal store", "heat in the brakes"],
+        answer:
+          "Into the thermal energy stores of the brakes, tyres and surroundings. That is why brakes get hot and can fade on a long descent.",
+      },
+      {
+        question: "Explain why a longer stopping time reduces the force in a collision. Write two or three sentences.",
+        answer:
+          "Force equals the change in momentum divided by the time taken for that change. In a collision the object must come to rest, so the change in momentum is fixed by its mass and speed and cannot be altered. Increasing the time over which it stops therefore reduces the rate of change of momentum, and so reduces the force. Mark this one yourself: the fixed momentum change and the division by a larger time are both needed.",
+      },
+      {
+        question: "Explain how momentum is conserved when a stationary object explodes into two pieces.",
+        answer:
+          "Before the explosion the object is at rest, so its total momentum is zero. Momentum is conserved in a closed system, so the total afterwards must also be zero. Because momentum is a vector, the only way two moving fragments can total zero is if their momenta are equal in size and opposite in direction — which means a lighter fragment must travel faster than a heavier one to match. Mark this one yourself: starting from zero and the vector nature of momentum are the two key ideas.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Momentum and kinetic energy are the same thing.",
+        right:
+          "Momentum is mv and is a vector; kinetic energy is ½mv² and is a scalar. They behave completely differently in collisions.",
+      },
+      {
+        wrong: "Airbags work by reducing the momentum change.",
+        right:
+          "The occupant still has to stop, so the momentum change is fixed. The airbag increases the TIME, which reduces the force.",
+      },
+      {
+        wrong: "Holding a heavy weight still does work.",
+        right:
+          "Work needs movement along the line of the force. Holding something stationary transfers no energy to it, however tiring it feels.",
+      },
+      {
+        wrong: "Power and energy are the same.",
+        right:
+          "Energy is in joules; power is the RATE of energy transfer, in watts. One watt is one joule per second.",
+      },
+      {
+        wrong: "In an explosion momentum is created.",
+        right:
+          "Total momentum stays at zero. The fragments have equal and opposite momenta, which add to nothing.",
+      },
+    ],
+  },
+
+  "physics/radioactivity-and-half-life": {
+    summary:
+      "This topic goes deeper into radioactive decay: the equations, half-life calculations, the difference between contamination and irradiation, and the uses and hazards of radiation in medicine and industry. Half-life is the calculation that carries the marks, so it repays practice.",
+    keyFacts: [
+      {
+        heading: "Decay and its equations",
+        points: [
+          "ALPHA decay: mass number falls by 4, atomic number falls by 2.",
+          "BETA decay: mass number unchanged, atomic number rises by 1, as a neutron becomes a proton plus an electron.",
+          "GAMMA emission changes NEITHER number — it only removes surplus energy from the nucleus.",
+          "Both sides of a nuclear equation must balance for mass number and atomic number.",
+          "ACTIVITY is the rate of decay, measured in becquerels (Bq); one becquerel is one decay per second.",
+          "COUNT RATE is what a Geiger-Muller tube actually detects, which is always less than the true activity.",
+        ],
+      },
+      {
+        heading: "Half-life",
+        points: [
+          "HALF-LIFE is the time for the number of undecayed nuclei, or the activity, to HALVE.",
+          "After 1 half-life ½ remains; after 2, ¼; after 3, ⅛; after n half-lives, (½)ⁿ.",
+          "To find the number of half-lives, halve repeatedly and count the steps.",
+          "Decay is RANDOM — no one can say which nucleus decays next — but with huge numbers the average is highly predictable.",
+          "Subtract any background count BEFORE doing half-life calculations.",
+          "Half-lives range from fractions of a second to billions of years.",
+        ],
+      },
+      {
+        heading: "Contamination and irradiation",
+        points: [
+          "IRRADIATION is exposure to radiation from an external source; it stops the moment you move away.",
+          "CONTAMINATION is radioactive material getting onto or into an object or person, and it continues until removed.",
+          "Irradiating an object does NOT make it radioactive.",
+          "Contamination is generally the greater long-term hazard, especially with alpha emitters inside the body.",
+          "Protection: shielding with lead or concrete, keeping your distance, and limiting exposure time.",
+          "Findings must be published and peer reviewed, so that conclusions about hazards can be checked independently.",
+        ],
+      },
+      {
+        heading: "Uses of radiation",
+        points: [
+          "MEDICAL TRACERS use gamma emitters with short half-lives, so they leave the body quickly.",
+          "Gamma is used because it penetrates the body and can be detected outside it.",
+          "RADIOTHERAPY uses high doses of gamma to kill cancer cells, carefully targeted to spare healthy tissue.",
+          "Industrial thickness gauges use beta, because it is partly absorbed by the material being measured.",
+          "Smoke alarms use alpha, because its very short range means it is safe outside the device.",
+          "Choosing the type and half-life to suit the job is the standard exam question here.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Activity", definition: "The rate at which nuclei decay, measured in becquerels — one decay per second." },
+      { term: "Becquerel", definition: "The unit of activity: one nuclear decay per second." },
+      { term: "Count rate", definition: "The number of decays detected per second by a Geiger-Muller tube." },
+      { term: "Half-life", definition: "The time for the number of undecayed nuclei, or the activity, to halve." },
+      { term: "Alpha decay", definition: "Emission of a helium nucleus: mass number falls by 4, atomic number by 2." },
+      { term: "Beta decay", definition: "Emission of an electron from the nucleus: mass number unchanged, atomic number rises by 1." },
+      { term: "Gamma emission", definition: "Release of energy from the nucleus with no change to mass or atomic number." },
+      { term: "Irradiation", definition: "Exposure to radiation from an external source; it stops when the source is removed." },
+      { term: "Contamination", definition: "Radioactive material on or inside an object, which keeps emitting until removed." },
+      { term: "Background radiation", definition: "Low-level radiation always present from rocks, cosmic rays and other natural sources." },
+      { term: "Medical tracer", definition: "A gamma emitter with a short half-life, injected so its path can be followed from outside the body." },
+      { term: "Radiotherapy", definition: "Using targeted high-dose gamma radiation to destroy cancer cells." },
+      { term: "Peer review", definition: "Independent scientists checking published findings before they are accepted." },
+      { term: "Geiger-Muller tube", definition: "The instrument used to detect and count radioactive decays." },
+      { term: "Random decay", definition: "The fact that it is impossible to predict which nucleus decays, or when." },
+    ],
+    examTips: [
+      {
+        tip: "Count half-lives by halving and counting the steps",
+        detail:
+          "800 → 400 → 200 → 100 is three arrows, so three half-lives. Counting arrows is far more reliable than trying to do it in one go.",
+      },
+      {
+        tip: "Subtract background BEFORE calculating",
+        detail:
+          "If a background count is given, take it off every reading first. Forgetting is a standard trap and ruins the whole answer.",
+      },
+      {
+        tip: "Match the radiation type to the job",
+        detail:
+          "Gamma for tracers because it penetrates; beta for thickness gauges because it is partly absorbed; alpha for smoke alarms because its range is tiny.",
+      },
+      {
+        tip: "Irradiation does NOT make things radioactive",
+        detail:
+          "Only contamination does. This distinction is examined directly almost every year.",
+      },
+      {
+        tip: "Explain why tracers have SHORT half-lives",
+        detail:
+          "So the activity falls quickly once the scan is done and the patient is not exposed for longer than necessary.",
+      },
+      {
+        tip: "Balance both numbers in a nuclear equation",
+        detail:
+          "Mass number on top, atomic number below, and both sides must total the same. Check both before moving on.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A source has an activity of 6,400 Bq and a half-life of 3 days. Calculate its activity after 12 days.",
+        steps: [
+          "Number of half-lives = 12 ÷ 3 = 4.",
+          "Halve four times: 6,400 → 3,200 (one) → 1,600 (two).",
+          "→ 800 (three) → 400 (four).",
+          "So the activity is 400 Bq.",
+        ],
+        answer: "400 Bq",
+      },
+    ],
+    practice: [
+      {
+        question: "A count rate falls from 960 to 120. How many half-lives have passed? Give the number only.",
+        accept: ["3", "three"],
+        answer:
+          "3. 960 → 480 → 240 → 120 is three halvings. Counting the arrows is safer than trying to spot the ratio.",
+      },
+      {
+        question: "A source of activity 8,000 Bq has a half-life of 2 hours. What is its activity after 6 hours, in Bq? Give the number only.",
+        accept: ["1000", "1,000"],
+        answer:
+          "1,000 Bq. 6 ÷ 2 = 3 half-lives; 8,000 → 4,000 → 2,000 → 1,000.",
+      },
+      {
+        question: "A source of activity 2,400 Bq has a half-life of 5 years. What is its activity after 10 years, in Bq? Give the number only.",
+        accept: ["600"],
+        answer:
+          "600 Bq. 10 ÷ 5 = 2 half-lives; 2,400 → 1,200 → 600. Work out the number of half-lives first, every time.",
+      },
+      {
+        question: "After 5 half-lives, what fraction of the original nuclei remain? Give it as 1 over a number.",
+        accept: ["1/32", "0.03125", "one thirty-second"],
+        answer:
+          "One thirty-second. Each half-life halves what is left: ½, ¼, ⅛, 1/16, 1/32. The general rule is (½)ⁿ.",
+      },
+      {
+        question: "A detector reads 500 counts per minute with a background of 20. What is the corrected count rate? Give the number only.",
+        accept: ["480"],
+        answer:
+          "480 counts per minute. Always subtract the background BEFORE doing any half-life work — forgetting is a standard trap.",
+      },
+      {
+        question: "A source falls from 1,280 Bq to 160 Bq. How many half-lives have passed? Give the number only.",
+        accept: ["3", "three"],
+        answer:
+          "3. 1,280 → 640 → 320 → 160. Three halvings, whatever the actual duration of each one.",
+      },
+      {
+        question: "In alpha decay, by how much does the atomic number fall? Give the number only.",
+        accept: ["2", "two"],
+        answer:
+          "2, because the alpha particle carries away two protons. The mass number falls by 4 at the same time.",
+      },
+      {
+        question: "In beta decay, by how much does the atomic number change? Give the number only.",
+        accept: ["1", "+1"],
+        answer:
+          "It rises by 1. A neutron becomes a proton and an electron; the electron is emitted and the mass number stays the same.",
+      },
+      {
+        question: "What is the unit of activity?",
+        accept: ["becquerel", "becquerels", "bq"],
+        answer:
+          "The becquerel (Bq). One becquerel is one nuclear decay per second.",
+      },
+      {
+        question: "Which type of radiation is used in medical tracers?",
+        accept: ["gamma", "gamma rays", "gamma radiation"],
+        answer:
+          "Gamma, because it penetrates the body and can be detected outside it. Alpha would be absorbed within a few centimetres of tissue.",
+      },
+      {
+        question: "Why should a medical tracer have a SHORT half-life?",
+        accept: ["activity falls quickly", "leaves the body quickly", "less exposure", "reduce exposure", "so it decays quickly", "short exposure"],
+        answer:
+          "So its activity falls quickly once the scan is over, minimising the patient's exposure. Too short and it would decay before the scan finished.",
+      },
+      {
+        question: "Which type of radiation is used in a smoke alarm?",
+        accept: ["alpha", "alpha particles", "alpha radiation"],
+        answer:
+          "Alpha. Its range in air is only a few centimetres, so it ionises the air inside the detector but cannot escape the device.",
+      },
+      {
+        question: "Does irradiating an object make it radioactive? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. Only CONTAMINATION — radioactive material actually on or in the object — makes something a source itself.",
+      },
+      {
+        question: "Name one way of protecting yourself from a radioactive source.",
+        accept: ["shielding", "lead", "distance", "keep away", "limit time", "concrete", "reduce exposure time", "move away"],
+        answer:
+          "Shielding with lead or concrete, keeping your distance, and limiting the time of exposure. All three are examinable.",
+      },
+      {
+        question: "Explain the difference between contamination and irradiation, and say which is usually more dangerous. Write three sentences.",
+        answer:
+          "Irradiation means being exposed to radiation from a source outside you, and it stops the moment you move away or the source is shielded. Contamination means radioactive material has got onto or inside your body, so it continues to irradiate you from within until it is removed or decays. Contamination is generally the greater long-term hazard, particularly with alpha emitters, because alpha is the most strongly ionising and there is no skin or air to absorb it once it is inside. Mark this one yourself: the definitions plus the reason alpha is worse internally are the three marks.",
+      },
+      {
+        question: "Explain why radioactive decay is described as random, yet half-life is predictable.",
+        answer:
+          "Decay is random because nothing determines when any individual nucleus will decay — there is no trigger, and a nucleus's past makes no difference to its chance of decaying in the next second. However, a real sample contains an enormous number of nuclei, often more than 10²⁰, and when averaged over that many independent random events the behaviour becomes highly predictable. Half-life describes that average behaviour of the whole sample, not the fate of any one nucleus, which is why both statements are true at once. Mark this one yourself: full marks need the randomness, the huge numbers, AND the reconciliation of the two.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Half-life is the time until a source becomes safe.",
+        right:
+          "It is the time for the activity to HALVE. After one half-life half the activity remains, which may still be dangerous.",
+      },
+      {
+        wrong: "Irradiation makes an object radioactive.",
+        right:
+          "It does not. Only contamination — radioactive material on or in the object — turns it into a source.",
+      },
+      {
+        wrong: "Gamma is always the most dangerous.",
+        right:
+          "It depends where the source is. Gamma is worse from outside; alpha is far worse inside the body because it is most ionising.",
+      },
+      {
+        wrong: "You can predict when a particular nucleus will decay.",
+        right:
+          "Decay is entirely random. Half-life describes the average behaviour of enormous numbers, never an individual nucleus.",
+      },
+    ],
+  },
+
+  "physics/space-physics": {
+    summary:
+      "Space physics covers the life cycle of stars, the structure of the solar system, orbits, and the evidence for the Big Bang. It is the one topic where the calculations are fewer and the explanations longer, so the marks tend to sit in describing sequences accurately and in reading red-shift evidence.",
+    keyFacts: [
+      {
+        heading: "The solar system and orbits",
+        points: [
+          "Our solar system: the Sun, eight planets, dwarf planets, moons, asteroids and comets.",
+          "The Sun formed from a cloud of dust and gas — a NEBULA — pulled together by gravity.",
+          "A planet orbits a star; a moon orbits a planet; both are held in orbit by gravitational attraction.",
+          "For a stable circular orbit, the speed must be constant but the DIRECTION constantly changes.",
+          "Because the direction changes, the velocity changes, so an orbiting object is always accelerating even at constant speed.",
+          "A smaller orbital radius requires a faster speed; move faster in a given orbit and the object rises to a larger one.",
+        ],
+      },
+      {
+        heading: "The life cycle of stars",
+        points: [
+          "A star forms from a nebula pulled together by gravity, becoming a PROTOSTAR as it heats up.",
+          "When it is hot enough, hydrogen nuclei FUSE into helium, releasing energy — the MAIN SEQUENCE stage.",
+          "It is stable because the outward pressure from fusion balances the inward pull of gravity.",
+          "A star like the Sun then becomes a RED GIANT, then a WHITE DWARF, and finally a black dwarf.",
+          "A star much more massive becomes a RED SUPERGIANT, explodes as a SUPERNOVA, and leaves a NEUTRON STAR or a BLACK HOLE.",
+          "Fusion in stars produced all the elements heavier than helium, and a supernova scattered them — so we are made of star material.",
+        ],
+      },
+      {
+        heading: "Red shift and the Big Bang",
+        points: [
+          "Light from distant galaxies is shifted towards the RED end of the spectrum — a longer wavelength.",
+          "RED SHIFT means the galaxies are moving AWAY from us.",
+          "The further away a galaxy is, the greater its red shift, so the faster it is receding.",
+          "That is evidence the universe is EXPANDING, and therefore that it began from a single point.",
+          "The BIG BANG THEORY says the universe began about 13.8 billion years ago from a very small, very dense, very hot region.",
+          "Cosmic microwave background radiation, discovered later, is further evidence and can only be explained by the Big Bang.",
+        ],
+      },
+      {
+        heading: "Dark matter and uncertainty",
+        points: [
+          "Observations of how galaxies rotate suggest there is far more mass present than we can see.",
+          "The unseen mass is called DARK MATTER, and dark energy is proposed to explain the accelerating expansion.",
+          "Neither is understood, which is a good example of an area of active, unfinished science.",
+          "Scientific models change when better evidence arrives, exactly as the atomic model did.",
+          "Being clear about what is well evidenced and what is uncertain is itself examinable.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Nebula", definition: "A cloud of dust and gas from which stars form under gravitational attraction." },
+      { term: "Protostar", definition: "The early stage of a forming star, heating up as gravity pulls matter together." },
+      { term: "Main sequence", definition: "The long stable stage where fusion of hydrogen into helium balances gravity." },
+      { term: "Nuclear fusion", definition: "Joining light nuclei to form heavier ones, releasing energy — the source of a star's power." },
+      { term: "Red giant", definition: "The stage a Sun-sized star enters after the main sequence, expanding and cooling." },
+      { term: "White dwarf", definition: "The dense remnant left when a Sun-sized star sheds its outer layers." },
+      { term: "Supernova", definition: "The explosion of a massive star at the end of its life, scattering heavy elements." },
+      { term: "Neutron star", definition: "An extremely dense remnant left after a supernova." },
+      { term: "Black hole", definition: "The remnant of the most massive stars, whose gravity is so strong not even light escapes." },
+      { term: "Red shift", definition: "The increase in observed wavelength of light from a receding object." },
+      { term: "Big Bang theory", definition: "The theory that the universe began about 13.8 billion years ago from a small, dense, hot region." },
+      { term: "Cosmic microwave background", definition: "Radiation filling the universe, explained only by the Big Bang theory." },
+      { term: "Dark matter", definition: "Unseen mass inferred from the way galaxies rotate, whose nature is unknown." },
+      { term: "Orbit", definition: "The path of an object around a larger one, maintained by gravitational attraction." },
+      { term: "Satellite", definition: "An object orbiting a planet, either natural like a moon or artificial." },
+    ],
+    examTips: [
+      {
+        tip: "Learn BOTH star life cycles as sequences",
+        detail:
+          "Sun-sized: nebula, protostar, main sequence, red giant, white dwarf, black dwarf. Massive: red supergiant, supernova, neutron star or black hole.",
+      },
+      {
+        tip: "Say WHY a main sequence star is stable",
+        detail:
+          "The outward pressure from fusion balances the inward pull of gravity. That balance is the mark, not the label.",
+      },
+      {
+        tip: "Red shift means moving AWAY",
+        detail:
+          "Longer wavelength, shifted towards red. Greater red shift means faster recession and greater distance.",
+      },
+      {
+        tip: "An orbiting object accelerates even at constant speed",
+        detail:
+          "Its direction is constantly changing, so its velocity is changing. Velocity is a vector and direction counts.",
+      },
+      {
+        tip: "Distinguish evidence from theory",
+        detail:
+          "Red shift and the cosmic microwave background are EVIDENCE; the Big Bang is the theory that explains them. Examiners reward the distinction.",
+      },
+      {
+        tip: "Be honest about dark matter",
+        detail:
+          "It is inferred from observations and not understood. Saying so is more scientific than pretending certainty, and it scores.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the cloud of dust and gas that stars form from called?",
+        accept: ["nebula", "a nebula"],
+        answer:
+          "A nebula. Gravity pulls the material together, and as it contracts it heats up to become a protostar.",
+      },
+      {
+        question: "What process in a star's core releases its energy?",
+        accept: ["nuclear fusion", "fusion"],
+        answer:
+          "Nuclear fusion — hydrogen nuclei joining to form helium. Fission, which splits nuclei, is what happens in a nuclear power station instead.",
+      },
+      {
+        question: "What is the long stable stage of a star's life called?",
+        accept: ["main sequence", "the main sequence"],
+        answer:
+          "The main sequence. It is stable because the outward pressure from fusion exactly balances the inward pull of gravity.",
+      },
+      {
+        question: "What does a star the size of our Sun become after the main sequence?",
+        accept: ["red giant", "a red giant"],
+        answer:
+          "A red giant. It then sheds its outer layers to leave a white dwarf, which eventually cools into a black dwarf.",
+      },
+      {
+        question: "What is the explosion of a massive star at the end of its life called?",
+        accept: ["supernova", "a supernova"],
+        answer:
+          "A supernova. It scatters the heavy elements made inside the star, which is where the atoms in your body came from.",
+      },
+      {
+        question: "What can be left after a supernova, besides a neutron star?",
+        accept: ["black hole", "a black hole"],
+        answer:
+          "A black hole, if the original star was massive enough. Its gravity is so strong that not even light can escape.",
+      },
+      {
+        question: "Does red shift mean a galaxy is moving towards us or away from us?",
+        accept: ["away", "away from us", "moving away"],
+        answer:
+          "Away. The observed wavelength is longer than it should be, which happens when the source is receding.",
+      },
+      {
+        question: "Roughly how old is the universe, in billions of years? Give the number only.",
+        accept: ["13.8", "14", "13.7"],
+        answer:
+          "About 13.8 billion years. That figure comes from measuring the rate of expansion and working backwards.",
+      },
+      {
+        question: "What radiation filling the universe is evidence for the Big Bang?",
+        accept: ["cosmic microwave background", "cmb", "cosmic microwave background radiation", "microwave background"],
+        answer:
+          "Cosmic microwave background radiation. No other theory explains it, which is why its discovery was so decisive.",
+      },
+      {
+        question: "How many planets are in our solar system? Give the number only.",
+        accept: ["8", "eight"],
+        answer:
+          "8. There are also dwarf planets, moons, asteroids and comets, all held by the Sun's gravitational attraction.",
+      },
+      {
+        question: "Light from a galaxy has a wavelength 10% longer than expected. Is it moving towards or away from us?",
+        accept: ["away", "away from us", "moving away"],
+        answer:
+          "Away. A longer observed wavelength is red shift, and the size of the shift indicates how fast it is receding.",
+      },
+      {
+        question: "A galaxy is twice as far away as another. Is its red shift greater or smaller?",
+        accept: ["greater", "bigger", "larger", "more"],
+        answer:
+          "Greater. The further away a galaxy is, the faster it is receding and the larger its red shift — which is the evidence for expansion.",
+      },
+      {
+        question: "Is an object in a circular orbit at constant speed accelerating? Answer yes or no.",
+        accept: ["yes", "y"],
+        answer:
+          "Yes. Its direction is constantly changing, so its velocity is changing — and a changing velocity is an acceleration.",
+      },
+      {
+        question: "What is the unseen mass inferred from how galaxies rotate called?",
+        accept: ["dark matter"],
+        answer:
+          "Dark matter. Its nature is genuinely unknown, which makes it a good example of unfinished science.",
+      },
+      {
+        question: "Light takes 8 minutes to reach Earth from the Sun. Convert that to seconds. Give the number only.",
+        accept: ["480"],
+        answer:
+          "480 s. 8 × 60 = 480. Physics calculations need seconds, so converting minutes is nearly always the first step.",
+      },
+      {
+        question: "Light travels at 3 × 10⁸ m/s for 480 s. Calculate the distance to the Sun in metres. Give the answer in standard form, coefficient only.",
+        accept: ["1.44"],
+        answer:
+          "1.44 × 10¹¹ m. distance = speed × time = 3 × 10⁸ × 480. Standard form keeps astronomical distances manageable.",
+      },
+      {
+        question: "A spectral line is emitted at 500 nm and observed at 600 nm. Calculate the percentage increase in wavelength. Give the number only.",
+        accept: ["20", "20%"],
+        answer:
+          "20%. (600 − 500) ÷ 500 × 100 = 20%. A longer observed wavelength is red shift, so this galaxy is receding.",
+      },
+      {
+        question: "A spectral line is emitted at 400 nm and observed at 440 nm. Calculate the percentage increase in wavelength. Give the number only.",
+        accept: ["10", "10%"],
+        answer:
+          "10%. (440 − 400) ÷ 400 × 100 = 10%. A smaller shift than the previous galaxy, so this one is closer and receding more slowly.",
+      },
+      {
+        question: "Explain why a main sequence star remains stable for billions of years. Write two or three sentences.",
+        answer:
+          "Gravity constantly pulls the star's material inwards, tending to make it collapse. At the same time, nuclear fusion in the core releases enormous amounts of energy, producing an outward pressure. During the main sequence these two effects are exactly balanced, so the star neither collapses nor expands, and it stays that way until the hydrogen in its core begins to run out. Mark this one yourself: the balance between gravity and fusion pressure is the whole mark.",
+      },
+      {
+        question: "Explain how red shift provides evidence that the universe is expanding.",
+        answer:
+          "Light from distant galaxies arrives with a longer wavelength than it was emitted with, shifted towards the red end of the spectrum, which indicates the source is moving away from us. Crucially, the further away a galaxy is, the greater its red shift, so the more distant galaxies are receding faster. That pattern is exactly what you would expect if space itself were expanding everywhere at once, rather than galaxies simply flying away from one particular point. Tracing that expansion backwards implies the universe began from a very small, dense region, which is the Big Bang. Mark this one yourself: the relationship between distance and red shift is the key evidence, not red shift alone.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Stars are powered by burning.",
+        right:
+          "They are powered by nuclear FUSION, joining hydrogen nuclei into helium. Burning is a chemical reaction and releases far too little energy.",
+      },
+      {
+        wrong: "An object in orbit at constant speed is not accelerating.",
+        right:
+          "Its direction changes constantly, so its velocity changes. Velocity is a vector, and a change of direction is an acceleration.",
+      },
+      {
+        wrong: "The Big Bang was an explosion into empty space.",
+        right:
+          "Space itself expanded. There was no outside to explode into, which is why galaxies recede from every observer equally.",
+      },
+      {
+        wrong: "All stars end as black holes.",
+        right:
+          "Only the most massive. A Sun-sized star becomes a red giant and then a white dwarf, with no supernova at all.",
+      },
+      {
+        wrong: "Red shift means galaxies are moving away from the centre of the universe.",
+        right:
+          "There is no centre. Every observer sees the same recession, because space is expanding everywhere.",
+      },
+    ],
+  },
+
+  "physics/required-practicals": {
+    summary:
+      "Roughly 15% of the marks across the Physics papers come from practical work, and any required practical can appear in either paper. This topic covers the core investigations as a set — the variables, the method, the expected result and the main sources of error — plus the working scientifically vocabulary examiners expect used precisely.",
+    keyFacts: [
+      {
+        heading: "The vocabulary",
+        points: [
+          "The INDEPENDENT variable is what you change; the DEPENDENT variable is what you measure.",
+          "CONTROL variables are everything kept the same, which is what makes it a fair test.",
+          "ACCURATE means close to the true value; PRECISE means the repeats agree with each other.",
+          "REPEATABLE means the same person gets the same result; REPRODUCIBLE means someone else does, with different equipment.",
+          "An ANOMALOUS result does not fit the pattern: identify it, exclude it from the mean, and SAY you excluded it.",
+          "RESOLUTION is the smallest change an instrument can detect.",
+        ],
+      },
+      {
+        heading: "The mechanics practicals",
+        points: [
+          "SPECIFIC HEAT CAPACITY: heat a known mass with an immersion heater, measure energy and temperature rise, use E = mcΔθ.",
+          "Insulate the block to reduce energy lost to the surroundings — the main source of error.",
+          "HOOKE'S LAW: hang masses from a spring and measure extension, plotting force against extension.",
+          "The gradient gives the spring constant; the line curves past the limit of proportionality.",
+          "ACCELERATION: use light gates or a ticker tape to find how a trolley's acceleration depends on force or mass.",
+          "Compensate for friction by tilting the ramp slightly before starting.",
+        ],
+      },
+      {
+        heading: "The electricity and waves practicals",
+        points: [
+          "RESISTANCE: ammeter in series, voltmeter in parallel, vary the current and calculate R = V ÷ I.",
+          "Switch off between readings so the component does not heat up and change its resistance.",
+          "I-V CHARACTERISTICS: repeat for a resistor, a filament lamp and a diode and compare the graph shapes.",
+          "WAVES: measure frequency and wavelength in a ripple tank or on a string, and calculate speed with v = fλ.",
+          "Measure across several wavelengths and divide, to reduce the percentage uncertainty.",
+          "INFRARED: use a Leslie cube to compare emission from matt black, shiny black, matt white and shiny surfaces.",
+        ],
+      },
+      {
+        heading: "Reducing error",
+        points: [
+          "RANDOM errors vary unpredictably and are reduced by repeating and taking a mean.",
+          "SYSTEMATIC errors shift every reading the same way and are NOT reduced by repeating.",
+          "A ZERO ERROR is a systematic error where the instrument does not read zero when it should.",
+          "Measure large quantities where possible — ten oscillations rather than one — and divide.",
+          "State the resolution of your instrument and give answers to a sensible number of significant figures.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Independent variable", definition: "The variable deliberately changed in an investigation." },
+      { term: "Dependent variable", definition: "The variable measured as a result of the change." },
+      { term: "Control variable", definition: "A variable kept constant so that the test is fair." },
+      { term: "Accurate", definition: "Close to the true value." },
+      { term: "Precise", definition: "Repeat measurements close to one another, whether or not they are correct." },
+      { term: "Repeatable", definition: "The same person gets the same result when repeating the experiment." },
+      { term: "Reproducible", definition: "Someone else gets the same result using different equipment or methods." },
+      { term: "Anomalous result", definition: "A result that does not fit the pattern and is excluded from the mean." },
+      { term: "Random error", definition: "An unpredictable variation, reduced by repeating and averaging." },
+      { term: "Systematic error", definition: "An error shifting every reading the same way, which repeating does not fix." },
+      { term: "Zero error", definition: "A systematic error where an instrument does not read zero when it should." },
+      { term: "Resolution", definition: "The smallest change an instrument can detect." },
+      { term: "Light gate", definition: "Apparatus that times an object precisely as it passes, used in motion experiments." },
+      { term: "Leslie cube", definition: "A cube with different surfaces, used to compare infrared emission." },
+      { term: "Limit of proportionality", definition: "The point beyond which extension is no longer proportional to force." },
+    ],
+    examTips: [
+      {
+        tip: "Name control variables SPECIFICALLY",
+        detail:
+          "'Same length of wire, same temperature, same voltage' scores. 'Keep everything else the same' scores nothing at all.",
+      },
+      {
+        tip: "Repeating fixes random errors, not systematic ones",
+        detail:
+          "A zero error shifts every reading equally, so averaging cannot help. Only checking or recalibrating the instrument will.",
+      },
+      {
+        tip: "Measure many and divide",
+        detail:
+          "Time ten oscillations and divide by ten. It reduces the percentage uncertainty enormously for no extra effort.",
+      },
+      {
+        tip: "Say you EXCLUDED the anomaly",
+        detail:
+          "Identify it, leave it out of the mean, and state that you have done so. The statement carries a mark on its own.",
+      },
+      {
+        tip: "Give a specific improvement, not a vague one",
+        detail:
+          "'Use a light gate instead of a stopwatch to remove reaction time' scores; 'be more careful' does not.",
+      },
+      {
+        tip: "Know the main error for each practical",
+        detail:
+          "Heat lost to surroundings in specific heat capacity; the component heating up in resistance; reaction time in manual timing.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the variable you deliberately change called?",
+        accept: ["independent", "independent variable", "the independent variable"],
+        answer:
+          "The independent variable. The one you measure is the dependent variable, and everything else must be controlled.",
+      },
+      {
+        question: "What type of error is NOT reduced by repeating measurements?",
+        accept: ["systematic", "systematic error", "a systematic error", "zero error"],
+        answer:
+          "A systematic error. It shifts every reading in the same direction, so averaging cannot remove it — only recalibration can.",
+      },
+      {
+        question: "Results tightly clustered but far from the true value are described as ______ but not accurate.",
+        accept: ["precise"],
+        answer:
+          "Precise. Precision is about agreement between repeats; accuracy is about closeness to the truth. A zero error gives exactly this.",
+      },
+      {
+        question: "A stopwatch times 10 oscillations as 8.4 s. Calculate the time for one oscillation in seconds. Give the number only.",
+        accept: ["0.84"],
+        answer:
+          "0.84 s. Timing many and dividing reduces the percentage uncertainty from your reaction time considerably.",
+      },
+      {
+        question: "A spring extends 0.08 m under a force of 4 N. Calculate the spring constant in N/m. Give the number only.",
+        accept: ["50"],
+        answer:
+          "50 N/m. k = F ÷ e = 4 ÷ 0.08. On a force-extension graph this is the gradient of the straight-line section.",
+      },
+      {
+        question: "A component has 6 V across it and carries 0.5 A. Calculate its resistance in ohms. Give the number only.",
+        accept: ["12"],
+        answer:
+          "12 Ω. R = V ÷ I = 6 ÷ 0.5. This is the calculation at the heart of the resistance required practical.",
+      },
+      {
+        question: "Readings are 4.2, 4.4, 4.3 and 7.9. Which value is anomalous? Give the number only.",
+        accept: ["7.9"],
+        answer:
+          "7.9 — it does not fit the pattern. Exclude it from the mean and SAY that you excluded it, because the statement scores.",
+      },
+      {
+        question: "Excluding the anomaly, calculate the mean of 4.2, 4.4 and 4.3. Give the number only.",
+        accept: ["4.3"],
+        answer:
+          "4.3. (4.2 + 4.4 + 4.3) ÷ 3 = 12.9 ÷ 3 = 4.3. Never include an anomalous value in a mean.",
+      },
+      {
+        question: "A wave has 5 wavelengths measured as 2.0 m in total. Calculate one wavelength in metres. Give the number only.",
+        accept: ["0.4"],
+        answer:
+          "0.4 m. Measuring several and dividing is far more accurate than measuring one, because the percentage uncertainty is smaller.",
+      },
+      {
+        question: "What piece of apparatus removes reaction time error from timing a moving object?",
+        accept: ["light gate", "light gates", "a light gate"],
+        answer:
+          "A light gate. It triggers electronically, so the human reaction time involved in starting and stopping a stopwatch is removed entirely.",
+      },
+      {
+        question: "What is the main source of error in the specific heat capacity practical?",
+        accept: ["heat lost", "energy lost to surroundings", "heat loss", "energy lost", "heat lost to surroundings", "thermal energy lost"],
+        answer:
+          "Energy lost to the surroundings. Insulating the block reduces it, which is why insulation appears in every mark scheme for this practical.",
+      },
+      {
+        question: "What is an error where an instrument does not read zero when it should called?",
+        accept: ["zero error", "a zero error"],
+        answer:
+          "A zero error. It is systematic, so repeating does not help — you must either recalibrate or subtract it from every reading.",
+      },
+      {
+        question: "Why should you switch off between readings in a resistance experiment?",
+        accept: ["prevent heating", "stop it heating up", "avoid temperature change", "component heats up", "resistance changes with temperature", "stop heating"],
+        answer:
+          "To stop the component heating up. A rise in temperature changes its resistance, which would make the results invalid.",
+      },
+      {
+        question: "What is the smallest change an instrument can detect called?",
+        accept: ["resolution", "the resolution"],
+        answer:
+          "Resolution. Stating it shows you understand the limits of your equipment, and it justifies how many significant figures you quote.",
+      },
+      {
+        question: "Explain the difference between a random and a systematic error, and how you would deal with each. Write three or four sentences.",
+        answer:
+          "A random error varies unpredictably from reading to reading, so some values are too high and some too low. Repeating the measurement several times and taking a mean reduces its effect, because the variations tend to cancel out. A systematic error shifts every reading in the same direction by a similar amount — a zero error on a balance, for example — so averaging does nothing at all to remove it. Systematic errors must instead be found and corrected, either by recalibrating the instrument or by subtracting the known offset from every reading. Mark this one yourself: the different treatments are the point, not just the definitions.",
+      },
+      {
+        question: "Describe how you would investigate how the extension of a spring depends on the force applied.",
+        answer:
+          "Clamp the spring vertically and measure its original length with a ruler held alongside, reading at eye level to avoid parallax error. Add masses one at a time, recording the total force from the weight and measuring the new length each time, then calculate extension by subtracting the original length. Keep the same spring and the same ruler throughout, and take the readings going up and coming back down to check the spring has not been permanently stretched. Plot force against extension: the straight section shows Hooke's law holds, its gradient gives the spring constant, and the point where it curves is the limit of proportionality. Mark this one yourself: extension as an INCREASE, named control variables, and interpreting the graph are the three areas worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Repeating measurements removes all errors.",
+        right:
+          "It reduces RANDOM errors only. A systematic error such as a zero error shifts every reading equally, and averaging cannot help.",
+      },
+      {
+        wrong: "Accurate and precise mean the same thing.",
+        right:
+          "Accurate is close to the true value; precise is repeats close together. A badly calibrated instrument gives precise, inaccurate results.",
+      },
+      {
+        wrong: "Anomalies should be quietly deleted.",
+        right:
+          "Identify them, exclude them from the mean, and STATE that you did. Silently removing data is not how science works.",
+      },
+      {
+        wrong: "'Be more careful' is a valid improvement.",
+        right:
+          "Improvements must be specific and technical — use a light gate, insulate the block, measure ten oscillations and divide.",
+      },
+    ],
+  },
+
+  "physics/physics-exam-practice": {
+    summary:
+      "This topic is about technique rather than content: laying out calculations so method marks are guaranteed, handling the equation sheet, using standard form and significant figures, and the specific habits that cost marks in Physics papers. It is worth revising in the final fortnight, when learning new content has stopped paying off.",
+    keyFacts: [
+      {
+        heading: "Laying out a calculation",
+        points: [
+          "Write the EQUATION first, before substituting anything at all.",
+          "Convert units next — grams to kilograms, cm to m, minutes to seconds.",
+          "Substitute the numbers, then work out the answer.",
+          "State the answer with its UNIT, and check the size is sensible.",
+          "Round only at the END, to the number of significant figures asked for.",
+          "Never leave a calculation blank: the equation alone often earns a mark.",
+        ],
+      },
+      {
+        heading: "Command words",
+        points: [
+          "STATE or GIVE — a short factual answer, no explanation needed.",
+          "DESCRIBE — say what happens or what the data shows.",
+          "EXPLAIN — say WHY. If there is no 'because', it is probably not an explanation.",
+          "CALCULATE — show every step, because method marks are available.",
+          "SHOW THAT — work towards the given answer and state it; you must show the working since the answer is provided.",
+          "SKETCH — draw the correct shape with labelled axes; it need not be to scale.",
+        ],
+      },
+      {
+        heading: "Numbers and units",
+        points: [
+          "Standard form: 3 × 10⁸ means 300,000,000. Use the ×10ˣ button, not typed zeros.",
+          "Prefixes: kilo is ×1,000, mega is ×1,000,000, milli is ÷1,000, micro is ÷1,000,000.",
+          "Give the same number of significant figures as the data you were given, unless told otherwise.",
+          "Some quantities have no unit: efficiency, ratios, and refractive index.",
+          "A negative answer often has meaning — deceleration, or an exothermic energy change — so keep the sign.",
+        ],
+      },
+      {
+        heading: "Habits that cost marks",
+        points: [
+          "Missing units, or writing a unit on a quantity that has none.",
+          "Forgetting to square the speed in Ek = ½mv², or the current in P = I²R.",
+          "Not converting cm² to m², where the factor is 10,000 rather than 100.",
+          "Using the memorised value of g rather than the one printed in the question.",
+          "Describing a graph when the question said explain.",
+          "Running out of time on the six-markers because too long was spent earlier.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Method mark", definition: "A mark for correct working, available even when the final answer is wrong." },
+      { term: "Significant figures", definition: "The meaningful digits in an answer; round only at the end of a calculation." },
+      { term: "Standard form", definition: "Writing large or small numbers as a value times a power of ten, such as 3 × 10⁸." },
+      { term: "Show that", definition: "A command word requiring you to work towards a given answer, showing all the steps." },
+      { term: "Explain", definition: "A command word requiring reasons, not just a description of what happens." },
+      { term: "Describe", definition: "A command word asking what happens or what the data shows, without reasons." },
+      { term: "Sketch", definition: "A command word asking for the correct shape of a graph with labelled axes, not an accurate plot." },
+      { term: "Kilo", definition: "A prefix meaning one thousand times." },
+      { term: "Milli", definition: "A prefix meaning one thousandth." },
+      { term: "Mega", definition: "A prefix meaning one million times." },
+      { term: "Equation sheet", definition: "The list of equations provided in the exam; some equations must still be recalled from memory." },
+      { term: "Resolution", definition: "The smallest change an instrument can detect, which limits sensible significant figures." },
+    ],
+    examTips: [
+      {
+        tip: "Write the equation before the numbers, every single time",
+        detail:
+          "It secures the method mark even if the arithmetic fails, and it stops you substituting into the wrong equation.",
+      },
+      {
+        tip: "Convert units on the first line",
+        detail:
+          "Grams to kilograms, cm to m, minutes to seconds. Doing it before anything else prevents most calculation errors in Physics.",
+      },
+      {
+        tip: "For 'show that', you MUST show working",
+        detail:
+          "The answer is already printed, so the marks are entirely for the steps. Writing the answer alone scores nothing.",
+      },
+      {
+        tip: "Round once, at the end",
+        detail:
+          "Rounding partway through compounds errors. Carry full precision and round only the final answer.",
+      },
+      {
+        tip: "One mark, roughly one minute",
+        detail:
+          "If a three-mark question has taken six minutes, move on and return if there is time. Unfinished six-markers cost far more.",
+      },
+      {
+        tip: "Check the size of your answer",
+        detail:
+          "A car of mass 1,500 kg does not have a weight of 15 N. An implausible number usually means a unit conversion went wrong.",
+      },
+    ],
+    practice: [
+      {
+        question: "What should be the FIRST line of working in any calculation?",
+        accept: ["the equation", "equation", "write the equation", "the formula", "formula"],
+        answer:
+          "The equation. Writing it before substituting guarantees the method mark and stops you using the wrong one.",
+      },
+      {
+        question: "Convert 2,500 g into kilograms. Give the number only.",
+        accept: ["2.5"],
+        answer:
+          "2.5 kg. Divide by 1,000. Physics equations expect kilograms, and using grams makes the answer a thousand times too large.",
+      },
+      {
+        question: "Convert 3 minutes into seconds. Give the number only.",
+        accept: ["180"],
+        answer:
+          "180 s. Multiply by 60. Power and energy calculations need seconds, not minutes.",
+      },
+      {
+        question: "How many cm² are in 1 m²? Give the number only.",
+        accept: ["10000", "10,000"],
+        answer:
+          "10,000, because both dimensions scale by 100. Dividing by 100 instead is the commonest error in pressure questions.",
+      },
+      {
+        question: "Write 4,500,000 in standard form as a number times ten to a power. Give the coefficient only.",
+        accept: ["4.5"],
+        answer:
+          "4.5 — the full form is 4.5 × 10⁶. Standard form keeps very large and very small numbers manageable on a calculator.",
+      },
+      {
+        question: "Convert 250 mm into metres. Give the number only.",
+        accept: ["0.25"],
+        answer:
+          "0.25 m. Milli means one thousandth, so divide by 1,000.",
+      },
+      {
+        question: "Convert 3 kW into watts. Give the number only.",
+        accept: ["3000", "3,000"],
+        answer:
+          "3,000 W. Kilo means one thousand times. Energy in joules needs watts, whereas kilowatt-hours need kilowatts.",
+      },
+      {
+        question: "What is a mark for correct working with a wrong final answer called?",
+        accept: ["method mark", "a method mark", "method marks", "working mark"],
+        answer:
+          "A method mark. It is exactly why you should never leave a calculation blank — a partial attempt usually scores most of the marks.",
+      },
+      {
+        question: "Which command word requires you to work towards an answer that is already given?",
+        accept: ["show that", "show", "show that..."],
+        answer:
+          "'Show that'. Because the answer is printed, every mark is for the working, so writing the answer alone scores nothing.",
+      },
+      {
+        question: "Does efficiency have a unit? Answer yes or no.",
+        accept: ["no", "n"],
+        answer:
+          "No. It is a ratio of two energies, so the units cancel. Write it as a decimal or a percentage.",
+      },
+      {
+        question: "At what point in a calculation should you round?",
+        accept: ["at the end", "the end", "only at the end", "last", "final answer"],
+        answer:
+          "Only at the end. Rounding partway through introduces errors that compound through the remaining steps.",
+      },
+      {
+        question: "Roughly how many minutes should you spend per mark?",
+        accept: ["1", "one", "1 minute", "one minute"],
+        answer:
+          "About one minute per mark. If you have spent six minutes on a three-mark question, move on and come back later.",
+      },
+      {
+        question: "Which command word asks you to say WHY something happens?",
+        accept: ["explain"],
+        answer:
+          "Explain. Answering with a description instead is the commonest way to lose marks on content you actually knew.",
+      },
+      {
+        question: "If a question prints g = 10 N/kg but you memorised 9.8, which should you use? Give the number only.",
+        accept: ["10"],
+        answer:
+          "10. Always use the value printed in the question, whatever you have memorised — the mark scheme is built around it.",
+      },
+      {
+        question: "Explain why you should write the equation before substituting numbers. Write two or three sentences.",
+        answer:
+          "Method marks are awarded for showing the correct approach, so a written equation secures those marks even if the arithmetic afterwards goes wrong. Writing it also forces you to identify which equation the question actually needs before you start manipulating numbers, which prevents using the wrong one entirely. And it makes checking your own work far easier, because each step is visible rather than done in your head. Mark this one yourself: method marks and choosing the right equation are the two key reasons.",
+      },
+      {
+        question: "Describe how you would approach a six-mark question asking you to explain how a transformer works.",
+        answer:
+          "First underline the command word — 'explain' means reasons are required, not just a description — and note any context the question supplies. Spend about thirty seconds planning three or four points in sequence: alternating current in the primary, a changing magnetic field, the iron core carrying that field, and a p.d. induced in the secondary depending on the turns ratio. Write in linked sentences using precise vocabulary such as 'alternating', 'changing magnetic field' and 'induced potential difference', joining each step with 'because' or 'which means that'. Finally check I have answered the question asked rather than everything I know about transformers. Mark this one yourself: planning, correct sequence, precise vocabulary and linked reasoning are the four things worth credit.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "There is no point starting a calculation you cannot finish.",
+        right:
+          "Method marks are given for the equation and correct substitution. A blank scores zero; a partial attempt often scores most of the marks.",
+      },
+      {
+        wrong: "For 'show that' questions you can just write the given answer.",
+        right:
+          "The answer is printed precisely because the marks are for the working. No working means no marks.",
+      },
+      {
+        wrong: "Rounding early makes the calculation simpler.",
+        right:
+          "It compounds errors through the remaining steps. Carry full precision and round once, at the end.",
+      },
+      {
+        wrong: "Every quantity has a unit.",
+        right:
+          "Efficiency, ratios and refractive index have none. Writing a unit on them is marked wrong.",
+      },
+    ],
+  },
 };
