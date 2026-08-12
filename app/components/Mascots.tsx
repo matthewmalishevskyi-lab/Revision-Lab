@@ -944,12 +944,13 @@ export function Iris(props: MascotProps) {
 //    note at the top of this file. Cap and head together read as the same
 //    visual mass the other characters have.
 //
-// 2. THE PINK IS ON THE TROUSER STRIPES AND THE TIE. Citizenship's colour is
-//    pink, and every mascot carries a touch of its subject's colour somewhere
-//    (Sterling's tie is teal). A pink UNIFORM would have been a costume rather
-//    than a uniform, so the colour goes where real uniforms already carry a
-//    contrast stripe. That keeps him recognisably a police officer AND
-//    recognisably Citizenship's.
+// 2. THE ACCENT IS DARK PURPLE, NOT THE SUBJECT'S PINK. Every other mascot
+//    carries a touch of its own subject's colour, and this one deliberately
+//    does not. Pink against navy read as fancy dress rather than uniform —
+//    the two colours are close in value and far apart in temperature, so the
+//    stripes fought the shirt instead of sitting on it. Dark purple is a
+//    neighbour of navy on the wheel, so it reads as a deliberate uniform
+//    detail. Citizenship's CARD stays pink; only the character changed.
 //
 // The badge is a five-point star, so the coordinates below are not arbitrary:
 // they are cos/sin of -90 + k*72 degrees at the outer radius, alternating with
@@ -982,8 +983,8 @@ export function Bobby(props: MascotProps) {
       <path d="M71 104 L73 124 Q76 125 79 124 L77 104 Z" fill="#000000" opacity={0.2} />
       {/* The pink side stripes — see note 2 above. On the OUTER edge of each
           leg, which is where a real uniform stripe runs. */}
-      <path d="M43.2 105 L41.4 123.2 L44 123.9 L45.6 105 Z" fill="#ec4899" />
-      <path d="M76.8 105 L78.6 123.2 L76 123.9 L74.4 105 Z" fill="#ec4899" />
+      <path d="M43.2 105 L41.4 123.2 L44 123.9 L45.6 105 Z" fill="#6d28d9" />
+      <path d="M76.8 105 L78.6 123.2 L76 123.9 L74.4 105 Z" fill="#6d28d9" />
       <path d="M76.8 105 L78.6 123.2 L77.3 123.6 L75.6 105 Z" fill="#000000" opacity={0.22} />
 
       {/* ── Shirt body. Tapered to the waist, so it reads as a fitted uniform
@@ -1008,9 +1009,9 @@ export function Bobby(props: MascotProps) {
       <path d="M69 67 L60 77 L66.5 78 L72 69.5 Z" fill="#284467" />
 
       {/* ── The tie. Pink, per note 2. Knot, then a blade to a point. ── */}
-      <path d="M56 69 L64 69 L65 76 L55 76 Z" fill="#ec4899" />
+      <path d="M56 69 L64 69 L65 76 L55 76 Z" fill="#6d28d9" />
       <path d="M60 69 L64 69 L65 76 L60 76 Z" fill="#000000" opacity={0.16} />
-      <path d="M56 77 L64 77 L62 95 L60 98 L58 95 Z" fill="#ec4899" />
+      <path d="M56 77 L64 77 L62 95 L60 98 L58 95 Z" fill="#6d28d9" />
       <path d="M60 77 L64 77 L62 95 L60 98 Z" fill="#000000" opacity={0.16} />
 
       {/* ── THE BADGE. A five-point star on the left chest, which is the single
@@ -1071,25 +1072,25 @@ export function Bobby(props: MascotProps) {
              front of the one above it. The peak is the widest thing on the
              character, which is what makes the silhouette read as "police" from
              across a page at thumbnail size. */}
-      <path d="M40 24.5 C35 20 33.5 16 33.5 13.6 C33.5 10.4 44 8.8 60 8.8 C76 8.8 86.5 10.4 86.5 13.6 C86.5 16 85 20 80 24.5 Z" fill="#2b4a72" />
-      <path d="M60 8.8 C76 8.8 86.5 10.4 86.5 13.6 C86.5 16 85 20 80 24.5 L69 24.5 Q73 15 60 12.4 Z" fill="#000000" opacity={0.16} />
+      <path d="M41 24 C37.5 20 36.5 16.5 36.5 14.2 C36.5 11.2 46 10 60 10 C74 10 83.5 11.2 83.5 14.2 C83.5 16.5 82.5 20 79 24 Z" fill="#2b4a72" />
+      <path d="M60 10 C74 10 83.5 11.2 83.5 14.2 C83.5 16.5 82.5 20 79 24 L69 24 Q72 15.5 60 13 Z" fill="#000000" opacity={0.16} />
       {/* The highlight that stops the crown reading as a flat semicircle */}
-      <path d="M38 19 Q40 12 54 10.4 Q45 13.6 42.6 21.6 Z" fill="#ffffff" opacity={0.15} />
+      <path d="M39.5 19 Q41 12.6 54 11.4 Q46 14.4 43.6 21 Z" fill="#ffffff" opacity={0.15} />
       {/* Band */}
-      <path d="M37 24 Q60 27.6 83 24 L83 30 Q60 33.6 37 30 Z" fill="#22384f" />
+      <path d="M38 23.6 Q60 27 82 23.6 L82 29.6 Q60 33 38 29.6 Z" fill="#22384f" />
       {/* Peak */}
-      <path d="M29.5 28.8 Q60 33.4 90.5 28.8 Q88.5 38.2 60 39.8 Q31.5 38.2 29.5 28.8 Z" fill="#0a1119" />
-      <path d="M32.5 30.4 Q46 34.4 61 35 Q45 35.8 33.6 32.8 Z" fill="#ffffff" opacity={0.2} />
+      <path d="M32.5 28.8 Q60 33.6 87.5 28.8 Q86.5 37.4 60 39.3 Q33.5 37.4 32.5 28.8 Z" fill="#0a1119" />
+      <path d="M35 30.6 Q47 34.6 60 35.1 Q46 35.9 36 32.8 Z" fill="#ffffff" opacity={0.2} />
       {/* A seam where the peak meets the band, so they read as two parts. */}
-      <path d="M33 29.4 Q60 34 87 29.4" stroke="#000000" strokeWidth={1.1} opacity={0.4} fill="none" strokeLinecap="round" />
+      <path d="M35 29.4 Q60 34.2 85 29.4" stroke="#000000" strokeWidth={1.1} opacity={0.42} fill="none" strokeLinecap="round" />
 
       {/* ── Cap badge — the same five-point star as the chest, smaller ── */}
       <path
-        d="M60 15 L61.53 18.9 L65.71 19.15 L62.47 21.8 L63.53 25.85 L60 23.6 L56.47 25.85 L57.53 21.8 L54.29 19.15 L58.47 18.9 Z"
+        d="M60 13 L61.41 16.56 L65.23 16.8 L62.28 19.24 L63.23 22.95 L60 20.9 L56.77 22.95 L57.72 19.24 L54.77 16.8 L58.59 16.56 Z"
         fill="#f2c14e"
       />
       <path
-        d="M60 15 L61.53 18.9 L65.71 19.15 L62.47 21.8 L63.53 25.85 L60 23.6 Z"
+        d="M60 13 L61.41 16.56 L65.23 16.8 L62.28 19.24 L63.23 22.95 L60 20.9 Z"
         fill="#000000"
         opacity={0.18}
       />
