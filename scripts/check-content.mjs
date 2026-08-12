@@ -287,6 +287,21 @@ try {
           expect(numeric >= 5, at(`only ${numeric} calculation questions — Physics topics need at least 5`));
         }
 
+        // ── Chemistry's quantitative topics need calculations too ───────────
+        //
+        // Physics got the five-calculations rule first, and a later audit showed
+        // Chemistry sitting at almost zero — despite moles, concentration, yield
+        // and bond energies being where most Chemistry marks are actually lost.
+        // Only the topics that are genuinely quantitative are listed: forcing
+        // calculations onto "the atmosphere" would produce padding, and a rule
+        // that makes the content worse is a bad rule.
+        if (QUANTITATIVE_CHEMISTRY.has(topic.slug)) {
+          const numeric = (c.practice ?? []).filter(
+            (p) => p.accept && p.accept.some((a) => /^-?[\d.,]+%?$/.test(String(a).trim())),
+          ).length;
+          expect(numeric >= 5, at(`only ${numeric} calculation questions — this Chemistry topic needs at least 5`));
+        }
+
         // ── Which subjects are actually TIERED ──────────────────────────────
         //
         // Maths and the three sciences are entered at Foundation (grades 1-5)
@@ -299,7 +314,16 @@ try {
         // English, History, Geography, Business and Computer Science are NOT
         // tiered — everyone sits the same paper — so a Higher badge there would
         // be meaningless and is treated as an error rather than ignored.
-        const TIERED = new Set(["maths", "biology", "chemistry", "physics"]);
+        const QUANTITATIVE_CHEMISTRY = new Set([
+    "quantitative-chemistry",
+    "formulae-and-equations",
+    "energy-changes",
+    "rates-of-reaction",
+    "acids-and-alkalis",
+    "electrolysis",
+  ]);
+
+  const TIERED = new Set(["maths", "biology", "chemistry", "physics"]);
         const higherUsed =
           c.keyFacts.some((b) => b.higherOnly) ||
           (c.workedExamples ?? []).some((e) => e.higherOnly) ||

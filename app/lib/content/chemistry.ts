@@ -1241,6 +1241,10 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       { term: "Precipitate", definition: "An insoluble solid formed when two solutions react." },
       { term: "Neutralisation", definition: "The reaction of an acid with a base, producing a salt and water." },
       { term: "Thermal decomposition", definition: "A reaction where one substance is broken down into others by heating." },
+      {
+        term: "State symbols",
+        definition: "(s) solid, (l) liquid, (g) gas and (aq) aqueous — dissolved in water.",
+      },
     ],
     examTips: [
       {
@@ -1393,6 +1397,41 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "Magnesium reacts with oxygen from the air to form magnesium oxide, so oxygen atoms that were not on the balance before are now part of the solid product. The mass of the solid therefore increases, but no mass has been created — the increase is exactly equal to the mass of oxygen taken from the air. If you could weigh the air as well as the solid, the total before and after would be identical. Mark this one yourself: the mark is for identifying that the extra mass came from oxygen in the air.",
       },
+      {
+        question: "Balance: __ H2 + O2 -> 2H2O. What number goes in front of H2? Give the number only.",
+        accept: [
+          "2",
+        ],
+        answer: "2. With 2H2O on the right there are 4 hydrogens and 2 oxygens, so you need 2H2 on the left. Never change a small subscript number to balance an equation — that changes the substance itself.",
+      },
+      {
+        question: "Calculate the relative formula mass of H2SO4. (Ar: H = 1, S = 32, O = 16). Give the number only.",
+        accept: [
+          "98",
+        ],
+        answer: "Mr = (2 x 1) + 32 + (4 x 16) = 2 + 32 + 64 = 98.",
+      },
+      {
+        question: "Calculate the relative formula mass of Ca(OH)2. (Ar: Ca = 40, O = 16, H = 1). Give the number only.",
+        accept: [
+          "74",
+        ],
+        answer: "Mr = 40 + 2 x (16 + 1) = 40 + 34 = 74. The bracket subscript multiplies EVERYTHING inside it, which is exactly where marks are lost.",
+      },
+      {
+        question: "Balance: Fe + __ Cl2 -> 2FeCl3. What number goes in front of Cl2? Give the number only.",
+        accept: [
+          "3",
+        ],
+        answer: "3. The right-hand side has 6 chlorines in total, and each Cl2 supplies two, so you need 3Cl2. The iron then balances as 2Fe.",
+      },
+      {
+        question: "Calculate the relative formula mass of MgCO3. (Ar: Mg = 24, C = 12, O = 16). Give the number only.",
+        accept: [
+          "84",
+        ],
+        answer: "Mr = 24 + 12 + (3 x 16) = 24 + 12 + 48 = 84.",
+      },
     ],
     misconceptions: [
       {
@@ -1490,6 +1529,14 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       { term: "Uncertainty", definition: "The range within which a measurement lies, usually half the smallest scale division." },
       { term: "Solute", definition: "The substance dissolved in a solvent to make a solution." },
       { term: "Yield", definition: "The amount of product actually obtained from a reaction." },
+      {
+        term: "Percentage yield",
+        definition: "Actual mass of product divided by theoretical mass, multiplied by 100.",
+      },
+      {
+        term: "Atom economy",
+        definition: "The Mr of the desired product divided by the total Mr of all products, multiplied by 100.",
+      },
     ],
     examTips: [
       {
@@ -1682,6 +1729,41 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "The metal reacts with oxygen from the air to form a metal oxide, so oxygen atoms that were not on the balance beforehand are now chemically bonded into the solid product. The mass of the solid therefore rises by exactly the mass of oxygen that has combined with it. No mass has been created — if the air were weighed too, the total before and after would be identical, so mass is still conserved. Mark this one yourself: identifying that the extra mass came from oxygen in the air is the mark.",
       },
+      {
+        question: "Calculate the relative formula mass of CO2. (Ar: C = 12, O = 16). Give the number only.",
+        accept: [
+          "44",
+        ],
+        answer: "Mr = 12 + (2 x 16) = 44. Count every atom in the formula: the small 2 applies to the oxygen only, so there are two oxygens and one carbon.",
+      },
+      {
+        question: "How many moles are there in 88 g of CO2? (Mr = 44). Give the number only.",
+        accept: [
+          "2",
+        ],
+        answer: "moles = mass / Mr = 88 / 44 = 2 mol. This is the single most useful equation in the whole topic, so learn the triangle: mass on top, moles and Mr underneath.",
+      },
+      {
+        question: "What is the mass of 0.5 mol of NaCl? (Mr = 58.5). Give the number of grams only.",
+        accept: [
+          "29.25",
+        ],
+        answer: "mass = moles x Mr = 0.5 x 58.5 = 29.25 g. Rearranging is easier if you write the equation out first rather than trying to do it in your head.",
+      },
+      {
+        question: "0.5 mol of a solute is dissolved to make 250 cm3 of solution. What is the concentration in mol/dm3? Give the number only.",
+        accept: [
+          "2",
+        ],
+        answer: "Convert the volume first: 250 cm3 = 0.25 dm3. Then concentration = moles / volume = 0.5 / 0.25 = 2 mol/dm3. Forgetting to divide cm3 by 1000 is the most common error in this calculation.",
+      },
+      {
+        question: "A reaction has a theoretical yield of 16 g but produces 12 g. What is the percentage yield? Give the number only.",
+        accept: [
+          "75",
+        ],
+        answer: "percentage yield = (actual / theoretical) x 100 = (12 / 16) x 100 = 75%. Yield is never 100% in practice because of losses in transfer, incomplete reactions and side reactions.",
+      },
     ],
     misconceptions: [
       {
@@ -1776,6 +1858,10 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       { term: "Limewater test", definition: "The test for carbon dioxide: limewater turns milky or cloudy." },
       { term: "Squeaky pop test", definition: "The test for hydrogen: a lighted splint makes a squeaky pop." },
       { term: "Crystallisation", definition: "Evaporating the solvent so the dissolved salt forms crystals." },
+      {
+        term: "Concentration (mol/dm3)",
+        definition: "The number of moles of solute dissolved in each cubic decimetre of solution.",
+      },
     ],
     examTips: [
       {
@@ -1904,6 +1990,41 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Describe how you would make pure, dry copper sulfate crystals from copper oxide and sulfuric acid.",
         answer:
           "Warm the dilute sulfuric acid gently, then add copper oxide a little at a time, stirring, until no more dissolves — this excess guarantees all the acid has reacted, so none is left to contaminate the product. Filter the mixture to remove the unreacted copper oxide, keeping the blue filtrate. Heat the filtrate gently until the solution is saturated, showing crystals beginning to form at the edge, then stop heating and leave it to crystallise slowly. Finally pat the crystals dry between filter papers. Mark this one yourself: excess and the REASON for it, filtering, crystallising and drying are the four stages worth credit.",
+      },
+      {
+        question: "How many moles of NaOH are in 25.0 cm3 of 0.100 mol/dm3 solution? Give the number only.",
+        accept: [
+          "0.0025",
+        ],
+        answer: "moles = concentration x volume in dm3 = 0.100 x 0.0250 = 0.0025 mol. Dividing the cm3 by 1000 first is the step people forget under time pressure.",
+      },
+      {
+        question: "0.0025 mol of HCl is contained in 20.0 cm3 of solution. What is its concentration in mol/dm3? Give the number only.",
+        accept: [
+          "0.125",
+        ],
+        answer: "concentration = moles / volume = 0.0025 / 0.0200 = 0.125 mol/dm3. This is the second half of every titration calculation.",
+      },
+      {
+        question: "What is the concentration in g/dm3 of a 0.5 mol/dm3 solution of NaOH? (Mr = 40). Give the number only.",
+        accept: [
+          "20",
+        ],
+        answer: "Multiply by the Mr: 0.5 x 40 = 20 g/dm3. Converting between mol/dm3 and g/dm3 is one multiplication in one direction and one division in the other.",
+      },
+      {
+        question: "How many moles are in 50 cm3 of a 2.0 mol/dm3 solution? Give the number only.",
+        accept: [
+          "0.1",
+        ],
+        answer: "50 cm3 = 0.050 dm3, so moles = 2.0 x 0.050 = 0.1 mol.",
+      },
+      {
+        question: "What is the pH of a neutral solution at room temperature? Give the number only.",
+        accept: [
+          "7",
+        ],
+        answer: "7. Below 7 is acidic, above 7 is alkaline, and the scale is logarithmic — each step of 1 is a tenfold change in hydrogen ion concentration.",
       },
     ],
     misconceptions: [
@@ -2351,6 +2472,41 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "In the solid, the aluminium and oxide ions are locked in fixed positions in the ionic lattice and cannot move. Electrolysis works by ions travelling to the electrodes, so if they cannot move, no current flows and no reaction happens. Melting the compound — or dissolving it — frees the ions so they can carry charge to the electrodes. Mark this one yourself: the mark is for ions being FREE TO MOVE, not just for 'it needs to be liquid'.",
       },
+      {
+        question: "How many electrons are gained by each ion in the half equation Cu2+ + __ e- -> Cu? Give the number only.",
+        accept: [
+          "2",
+        ],
+        answer: "2. The charge must balance: 2+ plus two negative electrons gives a neutral copper atom. Positive ions gain electrons at the cathode, which is reduction.",
+      },
+      {
+        question: "Aluminium ions have a 3+ charge. How many moles of electrons are needed to produce 3 mol of aluminium? Give the number only.",
+        accept: [
+          "9",
+        ],
+        answer: "Each Al3+ needs 3 electrons, so 3 mol of aluminium needs 3 x 3 = 9 mol of electrons. That electron demand is exactly why aluminium extraction uses so much electricity.",
+      },
+      {
+        question: "0.5 mol of copper is deposited at a cathode. What mass is this in grams? (Ar Cu = 63.5). Give the number only.",
+        accept: [
+          "31.75",
+        ],
+        answer: "mass = moles x Ar = 0.5 x 63.5 = 31.75 g.",
+      },
+      {
+        question: "What volume, in dm3, does 0.25 mol of chlorine gas occupy at room temperature and pressure? (1 mol = 24 dm3). Give the number only.",
+        accept: [
+          "6",
+        ],
+        answer: "volume = moles x 24 = 0.25 x 24 = 6 dm3. The 24 dm3 figure applies to any gas at RTP, which is why the identity of the gas does not appear in the calculation.",
+      },
+      {
+        question: "In the half equation 2Cl- -> Cl2 + __ e-, how many electrons are released? Give the number only.",
+        accept: [
+          "2",
+        ],
+        answer: "2 — one from each chloride ion. Losing electrons is oxidation, and it happens at the anode, which is where the negative ions go.",
+      },
     ],
     misconceptions: [
       {
@@ -2585,6 +2741,41 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "A catalyst provides an alternative reaction pathway with a lower activation energy, so a greater proportion of the colliding particles have enough energy to react and the reaction proceeds faster. It is not used up in the process, so a small amount works indefinitely. The energy of the reactants and the energy of the products are unchanged — only the height of the hump between them is reduced — so the overall energy change is exactly the same as it would be without the catalyst. Mark this one yourself: the alternative pathway AND the unchanged start and end levels are both needed.",
       },
+      {
+        question: "Breaking bonds requires 678 kJ and making bonds releases 862 kJ. What is the overall energy change in kJ/mol? Give the number, including the sign.",
+        accept: [
+          "-184",
+        ],
+        answer: "Energy change = energy in - energy out = 678 - 862 = -184 kJ/mol. The negative sign means exothermic, so the sign is not decoration — it is the answer to what kind of reaction this is.",
+      },
+      {
+        question: "A reaction has an energy change of -92 kJ/mol. Is it exothermic or endothermic?",
+        accept: [
+          "exothermic",
+        ],
+        answer: "Exothermic. A negative value means more energy was released making bonds than was absorbed breaking them, so energy left the system and the surroundings warm up.",
+      },
+      {
+        question: "Breaking bonds absorbs 2000 kJ and forming bonds releases 2300 kJ. What is the energy change in kJ/mol? Give the number, including the sign.",
+        accept: [
+          "-300",
+        ],
+        answer: "2000 - 2300 = -300 kJ/mol, so exothermic. Always do 'in minus out' in that order and the sign takes care of itself.",
+      },
+      {
+        question: "50 g of water rises by 20 degrees C. Using q = mcT with c = 4.2, how much energy was transferred in joules? Give the number only.",
+        accept: [
+          "4200",
+        ],
+        answer: "q = 50 x 4.2 x 20 = 4200 J. Note that m is the mass of the WATER being heated, not the mass of the reacting chemical.",
+      },
+      {
+        question: "Breaking bonds absorbs 1500 kJ and forming bonds releases 1200 kJ. What is the SIZE of the energy change in kJ/mol? Give the number only.",
+        accept: [
+          "300",
+        ],
+        answer: "1500 - 1200 = +300 kJ/mol, so this one is endothermic — more energy went into breaking bonds than came back out when new bonds formed.",
+      },
     ],
     misconceptions: [
       {
@@ -2677,6 +2868,10 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       { term: "Gradient", definition: "The steepness of a line: change in y divided by change in x." },
       { term: "Enzyme", definition: "A biological catalyst." },
       { term: "Turbidity method", definition: "Timing how long a cross takes to disappear as a precipitate forms." },
+      {
+        term: "Mean rate of reaction",
+        definition: "The quantity of reactant used or product formed divided by the time taken.",
+      },
     ],
     examTips: [
       {
@@ -2829,6 +3024,41 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Describe how you would investigate the effect of temperature on the rate of reaction between sodium thiosulfate and hydrochloric acid.",
         answer:
           "Measure a fixed volume of sodium thiosulfate into a conical flask standing on a printed cross, and warm it to the chosen temperature in a water bath. Add a fixed volume of hydrochloric acid and immediately start a stopwatch, then stop timing when the cross can no longer be seen through the cloudy precipitate. Repeat at several temperatures, keeping the volumes, concentrations and the person judging the disappearance the same, since judging it is subjective. Plot 1 ÷ time against temperature: a shorter time means a faster rate, so the graph should rise with temperature. Mark this one yourself: named control variables, the timing method, and repeating at several temperatures are the key marks.",
+      },
+      {
+        question: "24 cm3 of gas is produced in 60 s. What is the mean rate in cm3/s? Give the number only.",
+        accept: [
+          "0.4",
+        ],
+        answer: "rate = quantity / time = 24 / 60 = 0.4 cm3/s. Mean rate uses the total change over the total time, which is why it is lower than the rate at the start.",
+      },
+      {
+        question: "A flask loses 45 g of mass in 90 s. What is the mean rate of reaction in g/s? Give the number only.",
+        accept: [
+          "0.5",
+        ],
+        answer: "45 / 90 = 0.5 g/s. Mass is lost because a gas is escaping, so mass loss is a perfectly good way of measuring how fast the reaction is going.",
+      },
+      {
+        question: "A reaction produces 0.6 g of product in 30 s. What is the mean rate in g/s? Give the number only.",
+        accept: [
+          "0.02",
+        ],
+        answer: "0.6 / 30 = 0.02 g/s. Small numbers are correct here — do not be tempted to round to zero.",
+      },
+      {
+        question: "Gas is produced at 1.5 cm3/s. How long, in seconds, does it take to collect 30 cm3? Give the number only.",
+        accept: [
+          "20",
+        ],
+        answer: "time = quantity / rate = 30 / 1.5 = 20 s. This is the same equation rearranged, which is why writing it out beats memorising three versions.",
+      },
+      {
+        question: "If the rate doubles for every 10 degree C rise, by what factor does it increase from 20 to 40 degrees C? Give the number only.",
+        accept: [
+          "4",
+        ],
+        answer: "Two rises of 10 degrees, so the rate doubles twice: 2 x 2 = 4 times faster. Raising temperature increases both the frequency of collisions and the proportion that have the activation energy.",
       },
     ],
     misconceptions: [
