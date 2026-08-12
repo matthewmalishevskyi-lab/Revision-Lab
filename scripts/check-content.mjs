@@ -35,6 +35,19 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const out = mkdtempSync(join(tmpdir(), "revision-check-"));
 
+// Chemistry topics where calculations genuinely belong. Declared up here at
+// module scope rather than inside the loop: the first version sat below its own
+// use site and died with a temporal-dead-zone ReferenceError, which is exactly
+// the kind of thing that only shows up when you actually run the script.
+const QUANTITATIVE_CHEMISTRY = new Set([
+  "quantitative-chemistry",
+  "formulae-and-equations",
+  "energy-changes",
+  "rates-of-reaction",
+  "acids-and-alkalis",
+  "electrolysis",
+]);
+
 try {
   execFileSync(
     process.platform === "win32" ? "npx.cmd" : "npx",
@@ -314,16 +327,7 @@ try {
         // English, History, Geography, Business and Computer Science are NOT
         // tiered — everyone sits the same paper — so a Higher badge there would
         // be meaningless and is treated as an error rather than ignored.
-        const QUANTITATIVE_CHEMISTRY = new Set([
-    "quantitative-chemistry",
-    "formulae-and-equations",
-    "energy-changes",
-    "rates-of-reaction",
-    "acids-and-alkalis",
-    "electrolysis",
-  ]);
-
-  const TIERED = new Set(["maths", "biology", "chemistry", "physics"]);
+        const TIERED = new Set(["maths", "biology", "chemistry", "physics"]);
         const higherUsed =
           c.keyFacts.some((b) => b.higherOnly) ||
           (c.workedExamples ?? []).some((e) => e.higherOnly) ||
