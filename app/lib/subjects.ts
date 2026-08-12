@@ -50,7 +50,15 @@ export type Subject = {
   // YEAR_STYLES, which only has three entries — so the fourth subject silently
   // came out blue. Colours that mean "which subject" belong to the subject.
   accent: string;
-  mascot: "pixel" | "hoot" | "quill" | "knight" | "atlas" | "sterling" | "iris";
+  mascot:
+    | "pixel"
+    | "hoot"
+    | "quill"
+    | "knight"
+    | "atlas"
+    | "sterling"
+    | "iris"
+    | "bobby";
 
   // Which GROUP this subject belongs to, if any.
   //
@@ -667,11 +675,8 @@ export const SUBJECTS: Subject[] = [
 
   // ─── CITIZENSHIP ──────────────────────────────────────────────────────────
   //
-  // ⚠️ PLACEHOLDER MASCOT. Citizenship is using Quill until it has a character
-  // of its own. That is a deliberate, flagged shortcut rather than an
-  // oversight — the content was the priority — but it does mean two subjects
-  // currently share a face, which is exactly the sort of thing that quietly
-  // stays wrong for months if nobody writes it down.
+  // Mascot: Bobby, a police officer — law, rights and justice are most of what
+  // this subject is about, and a uniform communicates that at thumbnail size.
   //
   // ⚠️ PINK, as Matthew asked. Worth noting honestly: pink (hue ~333) sits
   // about 40° from Chemistry's magenta and about 27° from History's red, which
@@ -687,7 +692,7 @@ export const SUBJECTS: Subject[] = [
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(219,39,119,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(219,39,119,0.9)]",
     accent: "#be185d",
-    mascot: "quill",
+    mascot: "bobby",
     years: [
       {
         year: "Year 9",

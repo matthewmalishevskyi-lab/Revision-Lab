@@ -41,6 +41,7 @@ export const MASCOTS = {
   atlas: Atlas,
   sterling: Sterling,
   iris: Iris,
+  bobby: Bobby,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -925,6 +926,197 @@ export function Iris(props: MascotProps) {
 
       {/* ── Mouth: a small, composed smile ── */}
       <path d="M54 51 Q60 56.4 66 51" stroke="#b06a56" strokeWidth={3} strokeLinecap="round" fill="none" />
+    </svg>
+  );
+}
+
+// ============================ BOBBY — Citizenship ===========================
+// A police officer, because Citizenship is mostly about law, rights, justice
+// and how power is held to account, and a uniform says all of that instantly.
+//
+// TWO DESIGN DECISIONS WORTH RECORDING
+//
+// 1. THE HEAD SITS 6 UNITS LOWER than every other character's. That is not a
+//    mistake — the cap needs somewhere to go. Every mascot here uses the same
+//    120x140 canvas, so adding anything ON TOP of a head means moving the head
+//    down or losing the hat off the top edge. The body below is unchanged, so
+//    the head-to-body RATIO still lands in the "designed mascot" range from the
+//    note at the top of this file. Cap and head together read as the same
+//    visual mass the other characters have.
+//
+// 2. THE PINK IS ON THE TROUSER STRIPES AND THE TIE. Citizenship's colour is
+//    pink, and every mascot carries a touch of its subject's colour somewhere
+//    (Sterling's tie is teal). A pink UNIFORM would have been a costume rather
+//    than a uniform, so the colour goes where real uniforms already carry a
+//    contrast stripe. That keeps him recognisably a police officer AND
+//    recognisably Citizenship's.
+//
+// The badge is a five-point star, so the coordinates below are not arbitrary:
+// they are cos/sin of -90 + k*72 degrees at the outer radius, alternating with
+// the same at 36 degrees offset and a smaller radius. Typed out rather than
+// computed, because these are static drawings and a loop would cost a client
+// component for no gain.
+export function Bobby(props: MascotProps) {
+  return (
+    <svg
+      viewBox="0 0 120 140"
+      role="img"
+      aria-label="Bobby, the Citizenship mascot: a smiling police officer in a navy uniform with a gold star badge"
+      {...props}
+    >
+      {/* Light from the upper left, as with every other character. */}
+
+      {/* ── Shoes. Toes turned slightly OUT and standing apart — the mistake
+             corrected on Sterling, applied from the start here. ── */}
+      <path d="M34 129 Q34 123 44 121.5 Q54 121.5 54.5 128 Q54.5 133.5 44 134.5 Q34 134.5 34 129 Z" fill="#101014" />
+      <path d="M86 129 Q86 123 76 121.5 Q66 121.5 65.5 128 Q65.5 133.5 76 134.5 Q86 134.5 86 129 Z" fill="#101014" />
+      <path d="M76 121.5 Q86 123 86 129 Q86 134.5 76 134.5 Q80 128 76 121.5 Z" fill="#000000" opacity={0.3} />
+      <path d="M34.4 131 Q40 135 50 134 Q54 133 54.4 130.6 Q50 136 42 136 Q35 135.6 34.4 131 Z" fill="#8b8b96" opacity={0.5} />
+      <path d="M85.6 131 Q80 135 70 134 Q66 133 65.6 130.6 Q70 136 78 136 Q85 135.6 85.6 131 Z" fill="#8b8b96" opacity={0.36} />
+      <path d="M39.5 123.5 Q37.5 128 39.5 132.5" stroke="#3a3a44" strokeWidth={1.3} fill="none" strokeLinecap="round" />
+      <path d="M80.5 123.5 Q82.5 128 80.5 132.5" stroke="#3a3a44" strokeWidth={1.3} fill="none" strokeLinecap="round" />
+
+      {/* ── Trouser legs ── */}
+      <path d="M43 104 L41 124 Q46 126 52 124 L53 104 Z" fill="#1b2b42" />
+      <path d="M67 104 L69 124 Q74 126 79 124 L77 104 Z" fill="#1b2b42" />
+      <path d="M71 104 L73 124 Q76 125 79 124 L77 104 Z" fill="#000000" opacity={0.2} />
+      {/* The pink side stripes — see note 2 above. On the OUTER edge of each
+          leg, which is where a real uniform stripe runs. */}
+      <path d="M43.2 105 L41.4 123.2 L44 123.9 L45.6 105 Z" fill="#ec4899" />
+      <path d="M76.8 105 L78.6 123.2 L76 123.9 L74.4 105 Z" fill="#ec4899" />
+      <path d="M76.8 105 L78.6 123.2 L77.3 123.6 L75.6 105 Z" fill="#000000" opacity={0.22} />
+
+      {/* ── Shirt body. Tapered to the waist, so it reads as a fitted uniform
+             shirt rather than a smock. ── */}
+      <path d="M34 72 Q60 65 86 72 L88 101 Q60 106 32 101 Z" fill="#2b4a72" />
+      <path d="M60 66.5 Q77 66.5 86 72 L88 101 Q75 104 60 105.4 Z" fill="#000000" opacity={0.18} />
+
+      {/* ── Chest pocket flaps. Two lines each, and the shirt stops being a
+             plain block of colour. ── */}
+      <path d="M68 84 L80 82.5 L79.6 87 L67.8 88.2 Z" fill="#1e3453" />
+      <path d="M68.6 88.4 L79.4 87.2" stroke="#16283f" strokeWidth={1} strokeLinecap="round" fill="none" />
+
+      {/* ── Epaulettes — the small strap across each shoulder. Almost nobody
+             could name them, and everybody recognises the shape. ── */}
+      <path d="M33.5 73.5 Q39 71 44.5 70 L45 74 Q39.5 75 34.5 77.5 Z" fill="#1e3453" />
+      <path d="M86.5 73.5 Q81 71 75.5 70 L75 74 Q80.5 75 85.5 77.5 Z" fill="#16283f" />
+      <circle cx="43" cy="72.4" r="1.5" fill="#f2c14e" />
+      <circle cx="77" cy="72.4" r="1.5" fill="#d8a232" />
+
+      {/* ── Collar, sitting over the neck ── */}
+      <path d="M51 67 L60 77 L53.5 78 L48 69.5 Z" fill="#35578a" />
+      <path d="M69 67 L60 77 L66.5 78 L72 69.5 Z" fill="#284467" />
+
+      {/* ── The tie. Pink, per note 2. Knot, then a blade to a point. ── */}
+      <path d="M56 69 L64 69 L65 76 L55 76 Z" fill="#ec4899" />
+      <path d="M60 69 L64 69 L65 76 L60 76 Z" fill="#000000" opacity={0.16} />
+      <path d="M56 77 L64 77 L62 95 L60 98 L58 95 Z" fill="#ec4899" />
+      <path d="M60 77 L64 77 L62 95 L60 98 Z" fill="#000000" opacity={0.16} />
+
+      {/* ── THE BADGE. A five-point star on the left chest, which is the single
+             element doing the most work in this whole drawing: remove it and he
+             is a man in a blue shirt. ── */}
+      <path
+        d="M45 76 L46.76 80.57 L51.66 80.84 L47.85 83.93 L49.11 88.66 L45 86 L40.89 88.66 L42.15 83.93 L38.34 80.84 L43.24 80.57 Z"
+        fill="#f2c14e"
+      />
+      {/* Right half darker, so the star has a raised, metal look instead of
+          reading as a flat sticker. */}
+      <path
+        d="M45 76 L46.76 80.57 L51.66 80.84 L47.85 83.93 L49.11 88.66 L45 86 Z"
+        fill="#000000"
+        opacity={0.16}
+      />
+      <circle cx="45" cy="82.4" r="1.7" fill="#8c5a12" opacity={0.55} />
+
+      {/* ── Belt, with a gold buckle ── */}
+      <path d="M32.5 99.5 Q60 104.4 87.5 99.5 L88 105 Q60 110 32 105 Z" fill="#15161c" />
+      <rect x="55" y="102.6" width="10" height="6.2" rx="1.4" fill="#f2c14e" />
+      <rect x="60" y="102.6" width="5" height="6.2" rx="1.4" fill="#000000" opacity={0.2} />
+
+      {/* ── Sleeves ── */}
+      <path d="M33 74 Q27 78 26 88 L28 95 Q34 96 36 90 L38 76 Z" fill="#264364" />
+      <path d="M87 74 Q93 78 94 88 L92 95 Q86 96 84 90 L82 76 Z" fill="#264364" />
+      <path d="M87 74 Q93 78 94 88 L92 95 Q89 95.5 88 93 L86 76 Z" fill="#000000" opacity={0.22} />
+      {/* Cuff bands */}
+      <path d="M27 91 Q32 92.6 36 90.6 L36 93.6 Q31 95.6 27 94 Z" fill="#16283f" />
+      <path d="M84 90.6 Q88 92.6 93 91 L93 94 Q88 95.6 84 93.6 Z" fill="#16283f" />
+
+      {/* ── Hands ── */}
+      <circle cx="31" cy="97" r="5.3" fill="#e6b489" />
+      <path d="M31 91.7 A5.3 5.3 0 0 1 31 102.3 A3 5.3 0 0 0 31 91.7 Z" fill="#000000" opacity={0.1} />
+      <circle cx="89" cy="97" r="5.3" fill="#e6b489" />
+      <path d="M89 91.7 A5.3 5.3 0 0 1 89 102.3 A3 5.3 0 0 0 89 91.7 Z" fill="#000000" opacity={0.13} />
+
+      {/* ── Neck, and the shadow the jaw casts onto it ── */}
+      <rect x="53" y="57" width="14" height="17" rx="5" fill="#d4a077" />
+      <path d="M53 59 Q60 65 67 59 L67 63 Q60 68 53 63 Z" fill="#000000" opacity={0.17} />
+
+      {/* ── Head. Sits 6 units lower than the rest of the cast — see note 1. ── */}
+      <path d="M36 37 C36 21 46.5 13 60 13 C73.5 13 84 21 84 37 C84 50 76.5 61 60 65.5 C43.5 61 36 50 36 37 Z" fill="#e6b489" />
+      <path d="M60 13 C73.5 13 84 21 84 37 C84 50 76.5 61 60 65.5 C68.5 60 70.5 49 70.5 37 C70.5 23.5 65.5 16 60 13 Z" fill="#000000" opacity={0.11} />
+
+      {/* ── Ears ── */}
+      <ellipse cx="36" cy="42" rx="3.8" ry="5.2" fill="#e6b489" />
+      <ellipse cx="84" cy="42" rx="3.8" ry="5.2" fill="#d19b70" />
+
+      {/* ── Hair showing below the cap. Only at the sides and only a sliver,
+             because the cap covers the rest — which is exactly why a hat is a
+             cheap way to make a character distinct. ── */}
+      <path d="M36.4 31 Q40 32.6 42.4 33.6 L41.4 42 Q37.4 39.4 36.2 33.6 Z" fill="#2b1e16" />
+      <path d="M83.6 31 Q80 32.6 77.6 33.6 L78.6 42 Q82.6 39.4 83.8 33.6 Z" fill="#211710" />
+
+      {/* ── THE CAP ──
+             Crown, then band, then peak, drawn in that order so each sits in
+             front of the one above it. The peak is the widest thing on the
+             character, which is what makes the silhouette read as "police" from
+             across a page at thumbnail size. */}
+      <path d="M40 24.5 C35 20 33.5 16 33.5 13.6 C33.5 10.4 44 8.8 60 8.8 C76 8.8 86.5 10.4 86.5 13.6 C86.5 16 85 20 80 24.5 Z" fill="#2b4a72" />
+      <path d="M60 8.8 C76 8.8 86.5 10.4 86.5 13.6 C86.5 16 85 20 80 24.5 L69 24.5 Q73 15 60 12.4 Z" fill="#000000" opacity={0.16} />
+      {/* The highlight that stops the crown reading as a flat semicircle */}
+      <path d="M38 19 Q40 12 54 10.4 Q45 13.6 42.6 21.6 Z" fill="#ffffff" opacity={0.15} />
+      {/* Band */}
+      <path d="M37 24 Q60 27.6 83 24 L83 30 Q60 33.6 37 30 Z" fill="#22384f" />
+      {/* Peak */}
+      <path d="M29.5 28.8 Q60 33.4 90.5 28.8 Q88.5 38.2 60 39.8 Q31.5 38.2 29.5 28.8 Z" fill="#0a1119" />
+      <path d="M32.5 30.4 Q46 34.4 61 35 Q45 35.8 33.6 32.8 Z" fill="#ffffff" opacity={0.2} />
+      {/* A seam where the peak meets the band, so they read as two parts. */}
+      <path d="M33 29.4 Q60 34 87 29.4" stroke="#000000" strokeWidth={1.1} opacity={0.4} fill="none" strokeLinecap="round" />
+
+      {/* ── Cap badge — the same five-point star as the chest, smaller ── */}
+      <path
+        d="M60 15 L61.53 18.9 L65.71 19.15 L62.47 21.8 L63.53 25.85 L60 23.6 L56.47 25.85 L57.53 21.8 L54.29 19.15 L58.47 18.9 Z"
+        fill="#f2c14e"
+      />
+      <path
+        d="M60 15 L61.53 18.9 L65.71 19.15 L62.47 21.8 L63.53 25.85 L60 23.6 Z"
+        fill="#000000"
+        opacity={0.18}
+      />
+
+      {/* ── The shadow the peak casts across the forehead. Drawn BEFORE the
+             eyes so the eyes sit on top of it. Without this the cap looks
+             pasted on rather than worn. ── */}
+      <path d="M37.5 36.5 Q60 40.5 82.5 36.5 Q81 41 60 43 Q39 41 37.5 36.5 Z" fill="#000000" opacity={0.12} />
+
+      {/* ── Eyes. No brows: under a peaked cap they would be hidden, and
+             leaving them out is what makes the cap sit low and look worn. ── */}
+      <ellipse cx="51" cy="45" rx="5" ry="5.4" fill="#ffffff" />
+      <ellipse cx="69" cy="45" rx="5" ry="5.4" fill="#ffffff" />
+      <circle cx="51.7" cy="46" r="3" fill="#243a33" />
+      <circle cx="69.7" cy="46" r="3" fill="#243a33" />
+      <circle cx="50.2" cy="44" r="1.25" fill="#ffffff" />
+      <circle cx="68.2" cy="44" r="1.25" fill="#ffffff" />
+      <path d="M46 42.2 Q51 39.4 56 42.2" stroke="#a2764f" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+      <path d="M64 42.2 Q69 39.4 74 42.2" stroke="#a2764f" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+
+      {/* ── Nose ── */}
+      <path d="M59.2 49.5 Q57.6 53.2 60.6 54" stroke="#bd8a5f" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+      {/* ── Mouth: a small closed smile. Approachable, not grinning — the point
+             of a police mascot on a Citizenship page is "you can ask me
+             things", not "cheer up". ── */}
+      <path d="M53.5 59.5 Q60 64.5 66.5 59.5" stroke="#96634a" strokeWidth={2.6} strokeLinecap="round" fill="none" />
     </svg>
   );
 }
