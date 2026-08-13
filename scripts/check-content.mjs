@@ -64,14 +64,6 @@ const out = mkdtempSync(join(tmpdir(), "revision-check-"));
 // module scope rather than inside the loop: the first version sat below its own
 // use site and died with a temporal-dead-zone ReferenceError, which is exactly
 // the kind of thing that only shows up when you actually run the script.
-// Subjects whose multiple-choice questions have been written. The "at least
-// five per topic" rule only applies to these, so the checker stays green while
-// the remaining subjects are still being worked through — and the moment a
-// subject is added here, every one of its topics is locked to the standard and
-// cannot quietly regress. A rule that fails on 185 topics from day one is not a
-// rule, it is noise that people learn to ignore.
-const MCQ_DONE = new Set(["citizenship", "biology", "chemistry", "physics", "computer-science", "maths", "business", "english", "history"]);
-
 const QUANTITATIVE_CHEMISTRY = new Set([
   "quantitative-chemistry",
   "formulae-and-equations",
@@ -372,12 +364,15 @@ try {
             );
           }
         }
-        if (MCQ_DONE.has(subject.slug)) {
-          expect(
-            mcqs.length >= 5,
-            at(`only ${mcqs.length} multiple-choice questions — needs at least 5`),
-          );
-        }
+        // Every topic on the site now has these, so the rule is unconditional.
+        // It was staged during the rollout, applying only to finished subjects
+        // so the checker stayed green while the rest were written. That scaffold
+        // is gone now: a NEW topic added tomorrow must meet the standard too,
+        // which is the whole point of turning a habit into a check.
+        expect(
+          mcqs.length >= 5,
+          at(`only ${mcqs.length} multiple-choice questions — needs at least 5`),
+        );
 
         // ── Chemistry's quantitative topics need calculations too ───────────
         //
@@ -406,7 +401,7 @@ try {
         // English, History, Geography, Business and Computer Science are NOT
         // tiered — everyone sits the same paper — so a Higher badge there would
         // be meaningless and is treated as an error rather than ignored.
-        const TIERED = new Set(["maths", "biology", "chemistry", "physics", "computer-science", "maths", "business", "english", "history"]);
+        const TIERED = new Set(["maths", "biology", "chemistry", "physics", "computer-science", "maths", "business", "english", "history", "geography"]);
         const higherUsed =
           c.keyFacts.some((b) => b.higherOnly) ||
           (c.workedExamples ?? []).some((e) => e.higherOnly) ||

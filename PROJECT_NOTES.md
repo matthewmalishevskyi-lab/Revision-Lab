@@ -754,14 +754,8 @@ brackets, not by matching text, and refuses to insert anything already
 present. Write the JSON to disk BEFORE validating — otherwise one duplicate
 question costs the whole batch.
 
-**Progress is tracked by `MCQ_DONE` in scripts/check-content.mjs.** The
-"at least 5" rule applies only to subjects listed there, so the checker stays
-green while the rest are written, and each subject is locked against
-regression the moment it is added.
-
-- Done and locked in MCQ_DONE: citizenship (12), biology (20), chemistry (19),
-  physics (19), computer-science (18), maths (19) = 107 topics, 535 questions
-- Not started: business (26), english (16), history (19), geography (17)
+**COMPLETE.** All 185 topics across all ten subjects have at least five, and
+the checker rule is now unconditional — any new topic must meet it too.
 
 When rewording a question to dodge a duplicate, CHECK THE CHOICES STILL FIT.
 Three times now a reworded stem has been left with the old options underneath —

@@ -214,6 +214,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because a ruler measures the straight-line distance between two points, and a river almost never travels in a straight line. Every meander adds length that the ruler simply skips, so the figure you get is always too small — sometimes dramatically so on a heavily meandering lowland river. The method that works is to follow the actual course with a piece of string or the edge of a strip of paper, marking each bend as you turn, then straighten it against a ruler and convert using the map's scale. The general point matters beyond rivers: measure the path something actually takes, not the gap between its ends. (Mark this one yourself.)" },
       { question: "Explain how contour patterns let you picture a landscape you have never seen.",
         answer: "Because the spacing and shape of the lines encode the three-dimensional surface. Spacing gives you steepness: lines crammed together mean the ground rises sharply over a short distance, while widely spaced lines mean a gentle gradient. The numbers give you absolute height, so you know whether you are looking at a hill or a mountain. And the shapes give you landforms: concentric closed rings are a summit, a V pointing uphill is a valley with water in the bottom, and a V pointing downhill is a spur pushing out from higher ground. Read together, a flat sheet of paper tells you what the land would feel like to walk across. (Mark this one yourself.)" },
+      {
+        question: "On an Ordnance Survey map, a six-figure grid reference locates a point to within:",
+        choices: [
+          "100 metres",
+          "1 metre",
+          "1 kilometre",
+          "10 kilometres",
+        ],
+        accept: [
+          "100 metres",
+        ],
+        answer: "A four-figure reference gives a 1 km square; adding the third and sixth digits narrows it to 100 m.",
+      },
+      {
+        question: "When giving a grid reference, which do you read first?",
+        choices: [
+          "Eastings, then northings",
+          "Northings, then eastings",
+          "Whichever is larger",
+          "The contour value",
+        ],
+        accept: [
+          "Eastings, then northings",
+        ],
+        answer: "Along the corridor and up the stairs is the standard reminder. Reversing them is the most common error in map questions.",
+      },
+      {
+        question: "Contour lines placed close together indicate:",
+        choices: [
+          "A steep slope",
+          "A flat area",
+          "A river",
+          "A road",
+        ],
+        accept: [
+          "A steep slope",
+        ],
+        answer: "Widely spaced contours mean gentle ground. The numbers tell you the height and which way the land falls.",
+      },
+      {
+        question: "A bearing of 090 degrees points:",
+        choices: [
+          "East",
+          "North",
+          "South",
+          "West",
+        ],
+        accept: [
+          "East",
+        ],
+        answer: "Bearings run clockwise from north in three figures: 000 north, 090 east, 180 south, 270 west.",
+      },
+      {
+        question: "To measure the distance of a winding road on a map you should:",
+        choices: [
+          "Use string or the edge of paper, then compare with the scale bar",
+          "Measure a straight line",
+          "Count the grid squares crossed",
+          "Estimate by eye",
+        ],
+        accept: [
+          "Use string or the edge of paper, then compare with the scale bar",
+        ],
+        answer: "A straight-line measurement underestimates any curved route, sometimes badly.",
+      },
     ],
 
     misconceptions: [
@@ -1048,6 +1113,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because no fieldwork is perfect, and examiners know it. Every sampling method has a characteristic weakness, every measurement has a margin of error, and conditions like weather, tide and time of day are largely outside a student's control. Claiming otherwise signals that you have not understood the method well enough to see its limits, which is precisely what the evaluation is testing. Recognising that your pedestrian count missed the evening peak, or that measuring only accessible riverbanks biased the sample towards gentler sites, shows you understand what your data can and cannot support — and that is a more advanced skill than collecting it in the first place. (Mark this one yourself.)" },
       { question: "Explain why the sampling method chosen shapes the conclusion as much as the measurements do.",
         answer: "Because the sample is the whole evidence base: anything you did not measure is completely invisible to your conclusion, however confidently it is stated. If you only measured where the riverbank was safe to reach, you measured the gentlest sites and your conclusion describes those, not the river. Random sampling avoids deliberate bias but can leave whole stretches unmeasured by chance, especially with few sites. Systematic sampling guarantees coverage but can accidentally align with a repeating feature like bridges or weirs. Stratified sampling is fairest for uneven populations but needs data you may not have in advance. The method has to be chosen to fit the question, and its weakness stated. (Mark this one yourself.)" },
+      {
+        question: "What makes a good fieldwork ENQUIRY QUESTION?",
+        choices: [
+          "It is specific, measurable and can be answered with data you can collect",
+          "It is very broad",
+          "It has an obvious answer already",
+          "It needs no data",
+        ],
+        accept: [
+          "It is specific, measurable and can be answered with data you can collect",
+        ],
+        answer: "A question that cannot be answered with the time and equipment available is the most common planning failure.",
+      },
+      {
+        question: "Which is PRIMARY data in fieldwork?",
+        choices: [
+          "Measurements you took yourself at the site",
+          "Census figures",
+          "A published map",
+          "A textbook diagram",
+        ],
+        accept: [
+          "Measurements you took yourself at the site",
+        ],
+        answer: "Secondary data provides context and comparison, and a strong enquiry uses both together.",
+      },
+      {
+        question: "Why is a systematic sampling method used?",
+        choices: [
+          "It gives an even, unbiased spread across the study area",
+          "It is quicker than any other",
+          "It targets the most interesting places",
+          "It needs no planning",
+        ],
+        accept: [
+          "It gives an even, unbiased spread across the study area",
+        ],
+        answer: "Random sampling avoids bias too; stratified sampling ensures each sub-group is represented proportionally.",
+      },
+      {
+        question: "When evaluating fieldwork, you should discuss:",
+        choices: [
+          "Limitations of the data and how they affect your conclusion",
+          "Only what went well",
+          "The weather on the day only",
+          "How much you enjoyed it",
+        ],
+        accept: [
+          "Limitations of the data and how they affect your conclusion",
+        ],
+        answer: "Honest evaluation of accuracy, sample size and reliability scores far higher than claiming everything worked.",
+      },
+      {
+        question: "A risk assessment before fieldwork is carried out in order to:",
+        choices: [
+          "Identify hazards and plan how to reduce them",
+          "Predict the results",
+          "Decide the enquiry question",
+          "Choose the graphs",
+        ],
+        accept: [
+          "Identify hazards and plan how to reduce them",
+        ],
+        answer: "Rivers, coasts and busy urban streets each carry different risks, so the assessment must match the site.",
+      },
     ],
 
     misconceptions: [
@@ -1296,6 +1426,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because two datasets with an identical mean can be completely different. Two places might both average 12°C across the year: one could sit between 10°C and 14°C all year while the other swings from −10°C to 34°C, and the mean alone would make them look the same. The mean is also dragged by extremes, so a single very high or very low value can produce a figure that describes none of the actual data — as happens with incomes and settlement sizes. Quoting the range, or better the interquartile range, tells the reader how varied the underlying data was, which is what makes an average interpretable rather than merely arithmetic. (Mark this one yourself.)" },
       { question: "Explain why skills questions are the most reliably winnable marks in Geography.",
         answer: "Because they do not depend on memory. A case study question can go wrong if you have revised a different example from the one that suits the question, and an explanation question can go wrong if you have half-remembered a process. Skills questions test rules that are always the same: percentage change is always divided by the original value, the median is always the middle of the ordered data, a choropleth always shades areas by value. Nothing changes between papers, so the same practice works every year. They also account for roughly a tenth of the total marks, which makes them a disproportionately good return on revision time compared with learning another case study. (Mark this one yourself.)" },
+      {
+        question: "Which graph is best for showing change over time?",
+        choices: [
+          "A line graph",
+          "A pie chart",
+          "A scatter graph",
+          "A choropleth map",
+        ],
+        accept: [
+          "A line graph",
+        ],
+        answer: "Pie charts show proportions of a whole and scatter graphs show relationships between two variables.",
+      },
+      {
+        question: "A CHOROPLETH map uses:",
+        choices: [
+          "Shading or colour to show values across areas",
+          "Dots for individual events",
+          "Lines joining equal values",
+          "Arrows showing movement",
+        ],
+        accept: [
+          "Shading or colour to show values across areas",
+        ],
+        answer: "It shows patterns clearly but hides variation within each area, which is its main weakness.",
+      },
+      {
+        question: "What does a scatter graph with points rising to the right show?",
+        choices: [
+          "A positive correlation",
+          "A negative correlation",
+          "No relationship",
+          "A time series",
+        ],
+        accept: [
+          "A positive correlation",
+        ],
+        answer: "Correlation does not prove causation, and saying so is often worth a mark in the written follow-up.",
+      },
+      {
+        question: "The INTERQUARTILE RANGE measures:",
+        choices: [
+          "The spread of the middle 50% of the data",
+          "The total spread",
+          "The average value",
+          "The most common value",
+        ],
+        accept: [
+          "The spread of the middle 50% of the data",
+        ],
+        answer: "It is less distorted by extreme values than the full range, which is why it is preferred for skewed data.",
+      },
+      {
+        question: "Which average is best for data containing one extreme outlier?",
+        choices: [
+          "The median",
+          "The mean",
+          "The mode",
+          "The range",
+        ],
+        accept: [
+          "The median",
+        ],
+        answer: "The mean is dragged towards the outlier. The median sits in the middle regardless of how extreme the ends are.",
+      },
     ],
 
     misconceptions: [
@@ -4466,6 +4661,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because the paper is testing geographical thinking, not whether you can guess an examiner's preference. Real geographical decisions — where to build, what to defend, how to manage a resource — genuinely have no single right answer; they involve trade-offs between cost, environment, communities and time, and reasonable people weighing the same evidence reach different conclusions. What can be assessed is whether you identified the stakeholders, used the evidence specifically, weighed short-term against long-term, recognised what your choice would cost as well as achieve, and explained why the alternatives were worse. A carefully argued case for the option most people would reject scores higher than a thin case for the popular one, which tells you exactly what is being marked. (Mark this one yourself.)" },
       { question: "Explain why practising the argument for the option you would NOT choose is useful preparation.",
         answer: "Because it is the fastest way to find the weaknesses in your own case. Arguing a position you disagree with forces you to take its strongest points seriously rather than the weak version that is easy to dismiss, and those strong points are exactly the counter-arguments the examiner expects you to address. It also stops you writing one-sided advocacy, which mark schemes penalise, and it prepares you for the possibility that the exam question is framed differently from what you anticipated — you will have material for either side. Finally, it is genuinely good geography: understanding why intelligent people support the option you reject is the difference between evaluating an issue and simply having an opinion about it. (Mark this one yourself.)" },
+      {
+        question: "In an issue evaluation question, the resource booklet is used to:",
+        choices: [
+          "Provide evidence you must refer to in your answer",
+          "Replace your own knowledge",
+          "Give the correct answer directly",
+          "List the mark scheme",
+        ],
+        accept: [
+          "Provide evidence you must refer to in your answer",
+        ],
+        answer: "The strongest answers combine the resources with your own case study knowledge, rather than using either alone.",
+      },
+      {
+        question: "When asked to choose between options, a top answer will:",
+        choices: [
+          "Justify the choice AND explain why the others are weaker",
+          "State a choice with no reasons",
+          "Describe all options equally",
+          "Avoid making a choice",
+        ],
+        accept: [
+          "Justify the choice AND explain why the others are weaker",
+        ],
+        answer: "Rejecting the alternatives explicitly is what turns a description into a decision.",
+      },
+      {
+        question: "Which factor should be considered when evaluating a development scheme?",
+        choices: [
+          "Social, economic and environmental impacts together",
+          "Cost only",
+          "Environmental impact only",
+          "The opinions of one group only",
+        ],
+        accept: [
+          "Social, economic and environmental impacts together",
+        ],
+        answer: "Sustainability questions expect all three strands, and often a comment on who benefits and who loses.",
+      },
+      {
+        question: "Considering different stakeholders in an issue evaluation shows:",
+        choices: [
+          "That a scheme affects groups in different ways",
+          "That everyone agrees",
+          "That only cost matters",
+          "That the issue is simple",
+        ],
+        accept: [
+          "That a scheme affects groups in different ways",
+        ],
+        answer: "Residents, businesses, councils and environmental groups rarely want the same outcome, and naming that conflict earns credit.",
+      },
+      {
+        question: "A conclusion to an issue evaluation should:",
+        choices: [
+          "Reach a clear decision supported by evidence",
+          "Summarise the resources",
+          "List all the options again",
+          "Avoid taking a side",
+        ],
+        accept: [
+          "Reach a clear decision supported by evidence",
+        ],
+        answer: "Sitting on the fence is the most common way to lose the final marks on the highest-value question in the paper.",
+      },
     ],
 
     misconceptions: [
@@ -4708,6 +4968,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because it builds recognition rather than recall, and the exam only tests recall. A page you have read four times feels familiar, and that familiarity is easily mistaken for knowing it — which is why people close their folder feeling confident and then cannot produce a single figure under pressure. Geography makes this worse than most subjects, because so much of the credit depends on specific evidence: place names, death tolls, erosion rates, percentages. You cannot half-remember 2 m a year. Reproducing a case study from a blank page is uncomfortable precisely because it exposes what you cannot yet produce, and that gap is exactly the material you needed to work on. (Mark this one yourself.)" },
       { question: "Explain why writing everything you know about a topic is not the same as answering the question.",
         answer: "Because Geography marks selection and application, not recall alone. A question about the effects of urbanisation on flood risk does not want everything you know about urbanisation — it wants the parts that bear on infiltration, lag time and peak discharge, arranged into an argument. Including the rest costs time you need for the questions worth more marks, and it buries the relevant points among irrelevant ones so the examiner has to search for them. It also signals that you have not understood what the question is asking, which is precisely what the higher bands are testing. The discipline is to decide what the question needs before you write, and then to leave out everything else however well you know it. (Mark this one yourself.)" },
+      {
+        question: "Why are named CASE STUDIES important in geography exams?",
+        choices: [
+          "Specific places, figures and examples prove your point",
+          "They make answers longer",
+          "Examiners count how many you mention",
+          "They replace the need for explanation",
+        ],
+        accept: [
+          "Specific places, figures and examples prove your point",
+        ],
+        answer: "A general statement plus a named example scores far higher than the statement alone.",
+      },
+      {
+        question: "A question asking you to 'assess' requires:",
+        choices: [
+          "Weighing up factors and reaching a judgement",
+          "A description of the topic",
+          "A labelled diagram only",
+          "A list of facts",
+        ],
+        accept: [
+          "Weighing up factors and reaching a judgement",
+        ],
+        answer: "Describe and explain need no judgement. Assess, evaluate and 'to what extent' all do.",
+      },
+      {
+        question: "How should you use the mark allocation in a geography exam?",
+        choices: [
+          "To decide how long to spend and how much detail to give",
+          "To choose which topic to revise",
+          "To decide the order of questions",
+          "To estimate your final grade",
+        ],
+        accept: [
+          "To decide how long to spend and how much detail to give",
+        ],
+        answer: "A 9-mark question with three minutes spent on it is the most expensive mistake available in the paper.",
+      },
+      {
+        question: "When answering a question about a graph or map resource, you should:",
+        choices: [
+          "Quote specific figures or features from it",
+          "Describe it in general terms",
+          "Ignore it and use your own knowledge",
+          "Copy it into your answer",
+        ],
+        accept: [
+          "Quote specific figures or features from it",
+        ],
+        answer: "Naming the actual value or place proves you used the resource, which is exactly what the question is testing.",
+      },
+      {
+        question: "Which is the most effective way to revise case studies?",
+        choices: [
+          "Learn a small number of specific facts and figures for each",
+          "Read the notes repeatedly",
+          "Memorise the whole case study word for word",
+          "Learn only the place names",
+        ],
+        accept: [
+          "Learn a small number of specific facts and figures for each",
+        ],
+        answer: "Three or four precise details you can deploy under pressure beat pages you half-remember.",
+      },
     ],
 
     misconceptions: [
