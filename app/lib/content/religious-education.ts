@@ -813,4 +813,259 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "religious-education/introducing-judaism": {
+    summary:
+      "Judaism is the oldest of the three Abrahamic religions and has been part of British life for centuries. This topic covers Jewish beliefs about God and the covenant, the Torah and the synagogue, the main festivals and the Sabbath, and the difference between Orthodox and Reform Judaism.",
+    keyFacts: [
+      {
+        heading: "God and the covenant",
+        points: [
+          "Judaism is MONOTHEISTIC: Jews believe in one God, creator and sustainer of the universe.",
+          "Many Jews avoid writing or saying God's name directly, out of respect.",
+          "A COVENANT is an agreement between God and people, and is central to Jewish identity.",
+          "Jews believe God made a covenant with Abraham, promising descendants and a land.",
+          "The covenant at Sinai, through Moses, included the giving of the Ten Commandments.",
+          "Jews describe themselves as the chosen people, understood as chosen for responsibility rather than privilege.",
+        ],
+      },
+      {
+        heading: "The Torah and Jewish law",
+        points: [
+          "The TORAH is the first five books of the Hebrew Bible and the most important Jewish text.",
+          "The TENAKH is the whole Hebrew Bible: Torah, Nevi'im (prophets) and Ketuvim (writings).",
+          "The TALMUD records rabbinic discussion and interpretation of the law.",
+          "There are traditionally 613 MITZVOT — commandments — covering worship, ethics and daily life.",
+          "KOSHER food laws set out what may be eaten and how it must be prepared.",
+          "Jews differ over how far ancient law binds modern life, which is the main division between movements.",
+        ],
+      },
+      {
+        heading: "Worship, Shabbat and the synagogue",
+        points: [
+          "The SYNAGOGUE is the place of communal worship, study and community life.",
+          "A RABBI is a teacher and interpreter of Jewish law rather than a priest.",
+          "SHABBAT runs from sunset on Friday to nightfall on Saturday and is a day of rest.",
+          "Shabbat is welcomed with candles, blessings over wine and bread, and a family meal.",
+          "BAR MITZVAH for boys at 13 and BAT MITZVAH for girls mark taking on adult religious responsibility.",
+          "The Torah scroll is handwritten, treated with great care, and read publicly through the year.",
+        ],
+      },
+      {
+        heading: "Festivals, and movements within Judaism",
+        points: [
+          "PESACH, or Passover, remembers the escape from slavery in Egypt.",
+          "ROSH HASHANAH is the Jewish New Year, and YOM KIPPUR the Day of Atonement, a fast day.",
+          "ORTHODOX Jews hold the Torah is the direct word of God and its laws remain fully binding.",
+          "REFORM Jews hold the Torah is divinely inspired but shaped by its time, so practice may be adapted.",
+          "Reform communities generally have mixed seating and ordain women as rabbis; Orthodox communities generally do not.",
+          "The Holocaust is remembered across all movements, and raised profound questions about God and suffering.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Covenant", definition: "An agreement between God and people, central to Jewish identity." },
+      { term: "Torah", definition: "The first five books of the Hebrew Bible, the most important Jewish text." },
+      { term: "Tenakh", definition: "The whole Hebrew Bible: Torah, Nevi'im and Ketuvim." },
+      { term: "Talmud", definition: "The record of rabbinic discussion and interpretation of Jewish law." },
+      { term: "Mitzvot", definition: "The commandments, traditionally numbering 613, covering worship, ethics and daily life." },
+      { term: "Synagogue", definition: "The Jewish place of communal worship, study and community life." },
+      { term: "Rabbi", definition: "A teacher and interpreter of Jewish law, rather than a priest." },
+      { term: "Shabbat", definition: "The day of rest from sunset on Friday to nightfall on Saturday." },
+      { term: "Kosher", definition: "Food that is permitted and prepared according to Jewish dietary law." },
+      { term: "Bar Mitzvah", definition: "The ceremony marking a boy taking on adult religious responsibility at 13." },
+      { term: "Bat Mitzvah", definition: "The ceremony marking a girl taking on adult religious responsibility." },
+      { term: "Pesach", definition: "Passover, remembering the escape from slavery in Egypt." },
+      { term: "Yom Kippur", definition: "The Day of Atonement, a fast day for repentance and forgiveness." },
+      { term: "Rosh Hashanah", definition: "The Jewish New Year." },
+      { term: "Orthodox Judaism", definition: "The movement holding the Torah is the direct word of God and fully binding." },
+      { term: "Reform Judaism", definition: "The movement holding the Torah is divinely inspired but shaped by its time." },
+    ],
+    examTips: [
+      {
+        tip: "A rabbi is a teacher, not a priest",
+        detail:
+          "Rabbis interpret and teach the law. Calling them priests suggests a role Judaism does not have and loses credibility.",
+      },
+      {
+        tip: "'Chosen people' means responsibility",
+        detail:
+          "Jews generally understand it as being chosen to keep the covenant and set an example, not as being superior. Say so explicitly.",
+      },
+      {
+        tip: "Orthodox and Reform differ on authority",
+        detail:
+          "Direct word of God versus divinely inspired but of its time. That single distinction explains most differences in practice.",
+      },
+      {
+        tip: "Torah and Tenakh are not the same",
+        detail:
+          "Torah is the first five books; Tenakh is the whole Hebrew Bible. Using them interchangeably is a frequent slip.",
+      },
+      {
+        tip: "Shabbat is about rest, not restriction",
+        detail:
+          "Jews commonly describe it as a gift and a joy. Presenting it only as a list of prohibited activities misses what it means to them.",
+      },
+      {
+        tip: "Be precise and respectful about the Holocaust",
+        detail:
+          "It is examined in relation to belief and suffering. Handle it with care and accuracy rather than as a rhetorical example.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the agreement between God and the Jewish people called?",
+        accept: ["covenant", "the covenant"],
+        answer:
+          "The covenant. Jews trace it to Abraham and to Moses at Sinai, and it underpins Jewish identity and obligation.",
+      },
+      {
+        question: "What are the first five books of the Hebrew Bible called?",
+        accept: ["torah", "the torah"],
+        answer:
+          "The Torah, the most important Jewish text. The whole Hebrew Bible is the Tenakh.",
+      },
+      {
+        question: "What is the Jewish day of rest called?",
+        accept: ["shabbat", "sabbath", "the sabbath"],
+        answer:
+          "Shabbat, from sunset on Friday to nightfall on Saturday. It is welcomed with candles, wine and bread.",
+      },
+      {
+        question: "What is the Jewish place of communal worship called?",
+        accept: ["synagogue", "a synagogue", "shul"],
+        answer:
+          "The synagogue, which serves as a place of worship, study and community life rather than worship alone.",
+      },
+      {
+        question: "How many mitzvot are there traditionally? Give the number only.",
+        accept: ["613"],
+        answer:
+          "613 commandments, covering worship, ethics and daily life. Movements differ over how far they bind modern practice.",
+      },
+      {
+        question: "What is food permitted under Jewish dietary law called?",
+        accept: ["kosher"],
+        answer:
+          "Kosher. The laws cover which animals may be eaten, how they are slaughtered, and keeping meat and dairy separate.",
+      },
+      {
+        question: "Which festival remembers the escape from slavery in Egypt?",
+        accept: ["pesach", "passover"],
+        answer:
+          "Pesach, or Passover, marked by the seder meal in which the story is retold using symbolic foods.",
+      },
+      {
+        question: "What is the Day of Atonement called?",
+        accept: ["yom kippur"],
+        answer:
+          "Yom Kippur, the most solemn day of the Jewish year, marked by fasting, prayer and seeking forgiveness.",
+      },
+      {
+        question: "At what age does a Jewish boy traditionally have his Bar Mitzvah? Give the number only.",
+        accept: ["13", "thirteen"],
+        answer:
+          "13. He takes on adult religious responsibility, and in many communities reads from the Torah for the first time.",
+      },
+      {
+        question: "What is the record of rabbinic discussion of Jewish law called?",
+        accept: ["talmud", "the talmud"],
+        answer:
+          "The Talmud. It preserves debate rather than only conclusions, which is itself characteristic of Jewish study.",
+      },
+      {
+        question: "What is the role of a rabbi?",
+        choices: [
+          "A teacher and interpreter of Jewish law",
+          "A priest who offers sacrifices",
+          "The leader of all Jews worldwide",
+          "A person who writes the Torah scrolls"
+        ],
+        accept: ["A teacher and interpreter of Jewish law"],
+        answer:
+          "Judaism has no single worldwide leader and no priesthood offering sacrifices today. Rabbi means teacher.",
+      },
+      {
+        question: "How do most Jews understand the idea of being the 'chosen people'?",
+        choices: [
+          "Chosen for responsibility to keep the covenant",
+          "Chosen as superior to other people",
+          "Chosen to rule other nations",
+          "Chosen to be free from all laws",
+        ],
+        accept: ["Chosen for responsibility to keep the covenant"],
+        answer:
+          "The emphasis is on obligation rather than privilege — a distinction examiners specifically look for.",
+      },
+      {
+        question: "What is the main difference between Orthodox and Reform Judaism?",
+        choices: [
+          "Whether the Torah is the direct word of God or divinely inspired but of its time",
+          "Whether God exists",
+          "Whether Shabbat exists",
+          "Whether the Holocaust is remembered",
+        ],
+        accept: ["Whether the Torah is the direct word of God or divinely inspired but of its time"],
+        answer:
+          "That difference over authority explains most of the differences in practice, including seating and the ordination of women.",
+      },
+      {
+        question: "Which of these is the WHOLE Hebrew Bible?",
+        choices: ["The Tenakh", "The Torah", "The Talmud", "The Mitzvot"],
+        accept: ["The Tenakh"],
+        answer:
+          "Tenakh is an acronym of Torah, Nevi'im and Ketuvim. The Torah is only its first section.",
+      },
+      {
+        question: "Which best describes Shabbat as Jews generally experience it?",
+        choices: [
+          "A gift of rest and family time set apart from ordinary work",
+          "A day of punishment",
+          "A day of compulsory fasting",
+          "A day with no religious meaning",
+        ],
+        accept: ["A gift of rest and family time set apart from ordinary work"],
+        answer:
+          "Describing it only as a list of banned activities misses how Jews themselves usually talk about it.",
+      },
+      {
+        question: "Explain the importance of the covenant in Judaism. Write three or four sentences.",
+        answer:
+          "A covenant is an agreement between God and people, and Jews trace theirs to Abraham, who was promised descendants and a land, and to Moses at Sinai, where the commandments were given. It matters because it makes Jewish identity a matter of relationship and obligation rather than only belief: being Jewish carries duties, expressed in the mitzvot. It also shapes the idea of the chosen people, which most Jews understand as being chosen to keep the covenant and set an example rather than as being superior to others. Because the covenant is understood as continuing, Jews see themselves as still bound by it today, which is why observance of law and festival remains central. Mark this one yourself: both covenants named, and the link from covenant to obligation and identity made explicit.",
+      },
+      {
+        question: "'Keeping the mitzvot is the most important part of being Jewish.' Evaluate this statement.",
+        answer:
+          "For: Judaism has historically emphasised practice over doctrine, and the 613 mitzvot cover worship, food, ethics and daily conduct, so observance shapes almost every part of life; Orthodox Jews hold the Torah to be the direct word of God, which makes the commandments binding rather than optional; and keeping them is how the covenant is maintained in practice rather than only affirmed. Against: Reform Jews hold the Torah is divinely inspired but shaped by its historical setting, so they adapt observance while regarding themselves as fully Jewish; many Jews describe belonging to the Jewish people, family and history as the heart of their identity, including those who keep few laws; and the prophets themselves criticised ritual practised without justice and compassion, which suggests observance alone was never the point. A defensible judgement is that the answer depends on which movement is being described — and that the disagreement between Orthodox and Reform Judaism is precisely a disagreement about this question, which makes any single answer partial. Mark this one yourself: both movements represented accurately, and a conclusion that recognises the question is itself contested within Judaism.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A rabbi is the Jewish equivalent of a priest.",
+        right:
+          "A rabbi is a teacher and interpreter of the law. Judaism today has no sacrificial priesthood and no single worldwide leader.",
+      },
+      {
+        wrong: "'Chosen people' means Jews believe they are better than others.",
+        right:
+          "It is generally understood as being chosen for responsibility — to keep the covenant and live by it — rather than for privilege.",
+      },
+      {
+        wrong: "The Torah and the Tenakh are the same thing.",
+        right:
+          "The Torah is the first five books. The Tenakh is the whole Hebrew Bible, including the prophets and the writings.",
+      },
+      {
+        wrong: "All Jews keep every one of the 613 mitzvot.",
+        right:
+          "Observance varies enormously. Orthodox and Reform Jews differ on how far ancient law binds modern life.",
+      },
+      {
+        wrong: "Shabbat is mainly a list of things Jews are not allowed to do.",
+        right:
+          "Jews usually describe it as a gift — rest, family, food and study set apart from work.",
+      },
+    ],
+  },
 };
