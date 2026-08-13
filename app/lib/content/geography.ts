@@ -2107,6 +2107,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because climate is the main control on which plants can survive, and climate is organised by the global circulation of the atmosphere. Intense sun at the equator heats air, which rises, cools and drops its moisture — producing the constant heat and rain that rainforest needs. That air travels polewards high in the atmosphere and descends around 30° north and south, warming and drying as it sinks, which is why the world's great deserts sit in two bands at almost exactly the same latitudes on every continent. Further poleward, temperature becomes the limiting factor rather than water, producing temperate forest, then taiga, then tundra. Relief and ocean currents distort the pattern locally, but the bands are the underlying structure. (Mark this one yourself.)" },
       { question: "Explain why removing one species can affect an entire ecosystem.",
         answer: "Because ecosystems are webs of dependency rather than lists of separate organisms. A predator removed means its prey multiplies, which then over-grazes the plants that other species depend on, so the effect spreads sideways rather than staying local. A pollinator removed means the plants it served cannot reproduce, and everything eating those plants declines with them. Decomposers matter just as much: without them, nutrients stay locked in dead material and never return to the soil. Some species are keystone species whose loss reshapes the whole system, and the effects often appear years later and some distance from the original change — which is exactly why conservation is difficult and why interdependence is the central idea in the topic. (Mark this one yourself.)" },
+      {
+        question: "What is a BIOME?",
+        choices: [
+          "A large-scale ecosystem defined by its climate and vegetation",
+          "A single habitat",
+          "A type of soil",
+          "A group of animals",
+        ],
+        accept: [
+          "A large-scale ecosystem defined by its climate and vegetation",
+        ],
+        answer: "Tropical rainforest, desert, tundra and temperate forest are examples, and their distribution follows global climate belts.",
+      },
+      {
+        question: "What is the role of a PRODUCER in a food chain?",
+        choices: [
+          "Converting sunlight into energy through photosynthesis",
+          "Eating other animals",
+          "Breaking down dead material",
+          "Storing water",
+        ],
+        accept: [
+          "Converting sunlight into energy through photosynthesis",
+        ],
+        answer: "Producers are the entry point for energy. Consumers and decomposers all ultimately depend on them.",
+      },
+      {
+        question: "What do DECOMPOSERS do in an ecosystem?",
+        choices: [
+          "Break down dead matter and release nutrients back to the soil",
+          "Produce their own food",
+          "Hunt large prey",
+          "Control the climate",
+        ],
+        accept: [
+          "Break down dead matter and release nutrients back to the soil",
+        ],
+        answer: "Without them nutrients would stay locked in dead material and the cycle would stop.",
+      },
+      {
+        question: "Which factor most determines the distribution of global biomes?",
+        choices: [
+          "Climate, especially temperature and rainfall",
+          "Human population",
+          "Time zones",
+          "Political borders",
+        ],
+        accept: [
+          "Climate, especially temperature and rainfall",
+        ],
+        answer: "Latitude drives climate, which is why biomes form broad bands running around the globe.",
+      },
+      {
+        question: "Removing one species from a food web is likely to:",
+        choices: [
+          "Affect many others through knock-on effects",
+          "Have no effect at all",
+          "Only affect that species",
+          "Improve the ecosystem",
+        ],
+        accept: [
+          "Affect many others through knock-on effects",
+        ],
+        answer: "Food webs are interdependent, which is why conservation focuses on whole ecosystems rather than single species.",
+      },
     ],
 
     misconceptions: [
@@ -2621,6 +2686,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because the pressures driving clearance are economic and immediate, while the benefits of protection are diffuse and long-term. A rancher clearing land makes money this year; the carbon and biodiversity benefits of leaving it standing accrue to everyone, everywhere, over decades. The areas are also vast and remote, so enforcing rules costs more than most governments will spend, and weak land registration makes prosecution difficult even when illegal clearance is detected. International demand continues regardless of local rules — if beef and soya are bought, they will be produced somewhere. Schemes succeed only when they change the local economics, through payments for protection, secure land rights and markets for sustainably produced goods. (Mark this one yourself.)" },
       { question: "Explain why highly specialised species are more vulnerable to habitat loss.",
         answer: "Because specialisation is only an advantage while conditions stay the same. A species that eats one plant, nests in one tree species or breeds in one narrow band of the canopy faces almost no competition, which is why rainforest supports so many of them — but it also has no alternative when that specific thing disappears. A generalist can shift diet or habitat and survive elsewhere; a specialist cannot, and often cannot travel far enough to find a surviving patch. That is why clearing even a fraction of a rainforest can extinguish species outright, and why fragmenting forest into isolated blocks is nearly as damaging as removing it, since populations too small to be viable are stranded in each fragment. (Mark this one yourself.)" },
+      {
+        question: "What are the two main components of an ecosystem?",
+        choices: [
+          "Biotic (living) and abiotic (non-living)",
+          "Plants and rocks only",
+          "Producers and rivers",
+          "Climate and soil only",
+        ],
+        accept: [
+          "Biotic (living) and abiotic (non-living)",
+        ],
+        answer: "Biotic includes plants and animals; abiotic covers climate, soil and water. Changing one affects the other.",
+      },
+      {
+        question: "Why is nutrient cycling so rapid in a tropical rainforest?",
+        choices: [
+          "Hot wet conditions make decomposition very fast",
+          "There are few plants",
+          "The soil is very deep and rich",
+          "There is little rainfall",
+        ],
+        accept: [
+          "Hot wet conditions make decomposition very fast",
+        ],
+        answer: "Most nutrients are stored in the vegetation, not the soil, which is why cleared rainforest land becomes infertile so quickly.",
+      },
+      {
+        question: "What is a major cause of deforestation in the Amazon?",
+        choices: [
+          "Cattle ranching and commercial farming",
+          "Too much rainfall",
+          "Volcanic eruptions",
+          "Falling global demand for beef",
+        ],
+        accept: [
+          "Cattle ranching and commercial farming",
+        ],
+        answer: "Logging, mining, road building and settlement all contribute. Selective logging and ecotourism are among the sustainable responses.",
+      },
+      {
+        question: "How are plants adapted to hot desert conditions?",
+        choices: [
+          "Deep or wide roots and reduced leaf surface area",
+          "Very large flat leaves",
+          "Shallow roots only",
+          "Growing tall to catch rain",
+        ],
+        accept: [
+          "Deep or wide roots and reduced leaf surface area",
+        ],
+        answer: "Waxy coatings and water storage in stems reduce loss. Every adaptation addresses either finding water or keeping it.",
+      },
+      {
+        question: "Why is the cold environment of the tundra fragile?",
+        choices: [
+          "Slow growth means damage takes decades to recover",
+          "There are no living things",
+          "It rains constantly",
+          "Soil is extremely deep",
+        ],
+        accept: [
+          "Slow growth means damage takes decades to recover",
+        ],
+        answer: "Short growing seasons and simple food chains mean the loss of one species can affect the whole ecosystem.",
+      },
     ],
 
     misconceptions: [
@@ -2846,6 +2976,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because the rocks are of very different ages and hardness, and ice treated them differently. The north and west are built largely of older, harder igneous and metamorphic rock that has resisted erosion for hundreds of millions of years, leaving high ground. The south and east are younger sedimentary rocks — chalk, clay, sandstone — which weather and erode far more readily into gentle hills and broad vales. Relief then drives climate: uplands force moist Atlantic air to rise, so the west is much wetter, while the east sits in a rain shadow. And ice sheets during the last glacial period scoured the north, carving U-shaped valleys and corries, while the south largely escaped. Human geography follows the physical: population, farming and cities concentrate in the drier, flatter, more fertile south-east. (Mark this one yourself.)" },
       { question: "Explain why some communities on the Holderness coast are not defended.",
         answer: "Because defending them cannot be justified against the cost. Sea walls run to millions of pounds per kilometre and need permanent maintenance, and along a coast retreating 2 m a year they would need to hold indefinitely against soft clay that slumps whenever it is wet. Where a stretch contains a handful of houses and farmland, the value protected is far less than the cost of protecting it — and defending one section starves the next of sediment, accelerating erosion there and creating a new problem. So shoreline management plans designate some stretches for 'no active intervention', with limited compensation for those affected. It is defensible arithmetic and a genuinely painful outcome for people whose homes are on the list, which is why it is as much a political question as a geographical one. (Mark this one yourself.)" },
+      {
+        question: "Where are most upland areas in the UK found?",
+        choices: [
+          "The north and west",
+          "The south and east",
+          "Only in the centre",
+          "Along the south coast",
+        ],
+        accept: [
+          "The north and west",
+        ],
+        answer: "Older, harder rocks in the north and west resist erosion. Younger, softer rocks in the south and east form lowlands.",
+      },
+      {
+        question: "Which rock type is most resistant to erosion?",
+        choices: [
+          "Granite",
+          "Chalk",
+          "Clay",
+          "Sand",
+        ],
+        accept: [
+          "Granite",
+        ],
+        answer: "Resistant rock forms headlands and uplands; softer rock is eroded into bays and valleys.",
+      },
+      {
+        question: "Glaciation in the UK produced which landform?",
+        choices: [
+          "U-shaped valleys",
+          "V-shaped valleys",
+          "Spits",
+          "Deltas",
+        ],
+        accept: [
+          "U-shaped valleys",
+        ],
+        answer: "Rivers cut V-shaped valleys; glaciers widen and deepen them into U shapes, leaving corries and arêtes on the peaks.",
+      },
+      {
+        question: "Why do river landscapes change from source to mouth?",
+        choices: [
+          "Erosion dominates upstream and deposition downstream",
+          "Nothing changes along a river",
+          "Deposition dominates upstream",
+          "Rivers flow uphill near the mouth",
+        ],
+        accept: [
+          "Erosion dominates upstream and deposition downstream",
+        ],
+        answer: "The channel widens and deepens, the gradient falls, and the load becomes smaller and rounder.",
+      },
+      {
+        question: "How does geology influence UK coastal landforms?",
+        choices: [
+          "Alternating hard and soft rock creates headlands and bays",
+          "All coasts erode at the same rate",
+          "Rock type has no effect",
+          "Only wave height matters",
+        ],
+        accept: [
+          "Alternating hard and soft rock creates headlands and bays",
+        ],
+        answer: "Discordant coastlines, where rock bands meet the sea at right angles, show this most clearly.",
+      },
     ],
 
     misconceptions: [
@@ -3376,6 +3571,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because the effect depends entirely on the kind of aid and the terms attached. Emergency aid after a disaster saves lives and is rarely controversial. Tied aid, which requires the money to be spent on the donor's own companies, sends much of the value straight home again. Large prestige projects — dams, airports, hospitals with no staff — can create maintenance costs a country cannot meet, and have a long record of failure. Aid can also entrench corrupt governments, undermine local producers who cannot compete with free goods, and create dependence rather than capacity. What generally works is small, locally led schemes using intermediate technology, where the recipients decide what is needed and can maintain it afterwards. (Mark this one yourself.)" },
       { question: "Explain why the demographic transition model should be treated as a model rather than a prediction.",
         answer: "Because it was built by describing what happened in industrialising Europe, and there is no law requiring anywhere else to repeat it. Several countries have moved through stages far faster than Europe did, because medicine, sanitation and contraception arrived as existing technologies rather than having to be invented. Others have not followed the sequence at all: birth rates have stayed high where women's education has not improved, and some have seen death rates rise again through disease or conflict, which the model does not accommodate. It also says nothing about migration, which is a major component of population change in practice. Its value is as a framework for comparing countries and asking why one differs — not as a forecast. (Mark this one yourself.)" },
+      {
+        question: "What does GNI per head measure?",
+        choices: [
+          "Average income per person in a country",
+          "The total population",
+          "The number of factories",
+          "Life expectancy",
+        ],
+        accept: [
+          "Average income per person in a country",
+        ],
+        answer: "It hides inequality within a country, which is why the Human Development Index combines income with health and education.",
+      },
+      {
+        question: "What is the DEMOGRAPHIC TRANSITION MODEL used to show?",
+        choices: [
+          "How birth and death rates change as a country develops",
+          "How cities grow",
+          "How rivers change downstream",
+          "How trade routes form",
+        ],
+        accept: [
+          "How birth and death rates change as a country develops",
+        ],
+        answer: "It is based on European experience, so it does not fit every country's path — a fair criticism to raise.",
+      },
+      {
+        question: "Which is a way of reducing the development gap?",
+        choices: [
+          "Fair trade and microfinance loans",
+          "Increasing tariffs on poorer countries",
+          "Reducing all aid",
+          "Restricting technology transfer",
+        ],
+        accept: [
+          "Fair trade and microfinance loans",
+        ],
+        answer: "Debt relief, aid, industrial development and tourism also feature. Each has drawbacks worth knowing for evaluation questions.",
+      },
+      {
+        question: "What is a transnational corporation (TNC)?",
+        choices: [
+          "A company operating in more than one country",
+          "A charity",
+          "A government agency",
+          "A local business",
+        ],
+        accept: [
+          "A company operating in more than one country",
+        ],
+        answer: "TNCs bring jobs and investment, but profits often leave the host country and working conditions can be poor.",
+      },
+      {
+        question: "Which sector of employment grows as a country develops?",
+        choices: [
+          "Tertiary and quaternary",
+          "Primary",
+          "Only primary and secondary",
+          "None of the sectors change",
+        ],
+        accept: [
+          "Tertiary and quaternary",
+        ],
+        answer: "Employment shifts from farming and extraction to manufacturing, then services and research.",
+      },
     ],
 
     misconceptions: [
@@ -3604,6 +3864,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because each one is an input to the others. Agriculture is by far the largest user of fresh water, so a water shortage becomes a food shortage within a season. Moving, treating and pumping water takes energy, and in dry countries desalination takes enormous amounts of it — so an energy shortage becomes a water shortage. Energy production itself uses water for cooling and for hydroelectricity, and biofuel crops take land and water that could grow food. The connections run in every direction, which means a solution to one can worsen another: biofuels reduce fossil fuel dependence and raise food prices; desalination secures water and increases emissions. Geographers call this the water–energy–food nexus, and it is why single-issue answers score badly. (Mark this one yourself.)" },
       { question: "Explain why reducing demand is often a better strategy than increasing supply.",
         answer: "Because it is usually cheaper, faster and has no environmental cost of its own. Insulating homes reduces energy demand permanently for a fraction of what a new power station costs, and needs no planning battle. Fixing leaking Victorian water mains recovers water that has already been collected, treated and paid for — in some networks a fifth of it never reaches a tap. Cutting food waste adds supply without another hectare of land or drop of irrigation. Increasing supply, by contrast, means new dams, power stations or farmland, each with construction costs, environmental damage and years of delay. The catch is political rather than technical: new infrastructure is visible and popular to announce, while efficiency is invisible and requires persuading millions of people to change what they do. (Mark this one yourself.)" },
+      {
+        question: "What is FOOD SECURITY?",
+        choices: [
+          "Reliable access to enough safe and nutritious food",
+          "Growing only local crops",
+          "Storing food for emergencies only",
+          "Exporting surplus food",
+        ],
+        accept: [
+          "Reliable access to enough safe and nutritious food",
+        ],
+        answer: "Insecurity causes famine, undernutrition, rising prices and social unrest, and is worsened by climate change and conflict.",
+      },
+      {
+        question: "What are FOOD MILES?",
+        choices: [
+          "The distance food travels from producer to consumer",
+          "The size of a farm",
+          "The number of crops grown",
+          "The cost of food per kilogram",
+        ],
+        accept: [
+          "The distance food travels from producer to consumer",
+        ],
+        answer: "High food miles mean high carbon emissions, though locally grown food produced in heated greenhouses can be worse overall.",
+      },
+      {
+        question: "Which is a sustainable way of increasing water supply?",
+        choices: [
+          "Recycling grey water and reducing leakage",
+          "Building ever more dams",
+          "Extracting groundwater faster",
+          "Diverting all rivers",
+        ],
+        accept: [
+          "Recycling grey water and reducing leakage",
+        ],
+        answer: "Rainwater harvesting and efficient irrigation also help. Large dams provide supply but displace people and disrupt ecosystems.",
+      },
+      {
+        question: "What is meant by an energy MIX?",
+        choices: [
+          "The combination of energy sources a country uses",
+          "The total energy used",
+          "The price of electricity",
+          "A type of power station",
+        ],
+        accept: [
+          "The combination of energy sources a country uses",
+        ],
+        answer: "Countries are shifting their mix towards renewables, but fossil fuels still dominate globally.",
+      },
+      {
+        question: "Why does demand for resources continue to rise globally?",
+        choices: [
+          "Population growth and rising standards of living",
+          "Falling population",
+          "Reduced industrial activity",
+          "Declining technology use",
+        ],
+        accept: [
+          "Population growth and rising standards of living",
+        ],
+        answer: "As incomes rise people consume more energy, water and meat, which multiplies demand faster than population alone.",
+      },
     ],
 
     misconceptions: [
@@ -3847,6 +4172,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because it is true and irrelevant to the question being asked. Ice cores show the climate has varied enormously over hundreds of thousands of years, driven by orbital cycles, solar variation and volcanic activity — and geologists established that long before the current debate. The claim about recent warming is specifically about its RATE and its CAUSE: the change since about 1950 is far faster than the natural cycles that operate over tens of thousands of years, and those cycles currently point towards gradual cooling. Solar output has been measured directly since the 1970s and has not risen. The fingerprint also fits trapped heat rather than extra incoming heat, with the lower atmosphere warming while the upper atmosphere cools. Natural change happening in the past does not mean this change has a natural cause. (Mark this one yourself.)" },
       { question: "Explain why international agreement on cutting emissions is so difficult to reach.",
         answer: "Because the structure of the problem sets costs and benefits apart. The cost of cutting emissions is national, immediate and concrete — higher energy prices, closed industries, lost jobs — while the benefit is global, delayed by decades and shared with every country that did nothing. That gives every government an incentive to want cuts made elsewhere. Responsibility is also contested: rich countries emitted most of the accumulated carbon while industrialising, and now ask poorer countries to develop differently, which those countries reasonably experience as being asked to pay for someone else's history. Add that the worst-affected countries have the least negotiating power, and that agreements have no real enforcement mechanism, and the difficulty is structural rather than a failure of understanding. (Mark this one yourself.)" },
+      {
+        question: "Which gas is the main human contributor to the enhanced greenhouse effect?",
+        choices: [
+          "Carbon dioxide",
+          "Oxygen",
+          "Nitrogen",
+          "Argon",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "Methane is more powerful per molecule but less abundant. The natural greenhouse effect is essential — it is the ENHANCED effect that is the problem.",
+      },
+      {
+        question: "Which is evidence for climate change?",
+        choices: [
+          "Retreating glaciers and rising sea levels",
+          "Daily weather forecasts",
+          "Seasonal temperature changes",
+          "Changing tides",
+        ],
+        accept: [
+          "Retreating glaciers and rising sea levels",
+        ],
+        answer: "Ice cores, tree rings and temperature records provide long-term evidence beyond what any single year shows.",
+      },
+      {
+        question: "Which is a MITIGATION strategy for climate change?",
+        choices: [
+          "Switching to renewable energy",
+          "Building higher flood defences",
+          "Developing drought-resistant crops",
+          "Moving settlements inland",
+        ],
+        accept: [
+          "Switching to renewable energy",
+        ],
+        answer: "Mitigation reduces the cause; the others are adaptation, adjusting to effects that are already unavoidable.",
+      },
+      {
+        question: "Which is an ADAPTATION strategy?",
+        choices: [
+          "Building sea walls to cope with rising sea levels",
+          "Carbon capture and storage",
+          "Planting forests to absorb carbon",
+          "Switching to electric vehicles",
+        ],
+        accept: [
+          "Building sea walls to cope with rising sea levels",
+        ],
+        answer: "Both approaches are needed: some warming is already locked in, so adaptation cannot be avoided by mitigation alone.",
+      },
+      {
+        question: "Why are lower-income countries often most affected by climate change?",
+        choices: [
+          "They have fewer resources to adapt and rely more on farming",
+          "They produce the most emissions",
+          "They have colder climates",
+          "They have smaller populations",
+        ],
+        accept: [
+          "They have fewer resources to adapt and rely more on farming",
+        ],
+        answer: "The countries that contributed least to the problem often face the greatest consequences, which is central to the fairness argument.",
+      },
     ],
 
     misconceptions: [
