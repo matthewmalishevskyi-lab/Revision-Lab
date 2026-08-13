@@ -273,6 +273,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "For every 100 J of electrical energy supplied, 20 J is usefully transferred to the light radiation store and leaves the bulb as light. The other 80 J is transferred to the thermal store of the bulb and then to the surroundings by heating, which is why the bulb becomes hot. That 80 J has not been destroyed — energy is always conserved — but it has been dissipated into the surroundings where it is spread out and can no longer be used for anything. Mark this one yourself: conservation of energy and the word DISSIPATED are both worth credit.",
       },
+      {
+        question: "A stretched spring stores energy in which store?",
+        choices: [
+          "Elastic potential",
+          "Gravitational potential",
+          "Thermal",
+          "Nuclear",
+        ],
+        accept: [
+          "Elastic potential",
+        ],
+        answer: "Stretching or compressing anything springy fills the elastic potential store. Lifting something fills the gravitational store.",
+      },
+      {
+        question: "What does the principle of conservation of energy state?",
+        choices: [
+          "Energy cannot be created or destroyed, only transferred",
+          "Energy is always lost as heat",
+          "Energy can be created by machines",
+          "Energy always increases",
+        ],
+        accept: [
+          "Energy cannot be created or destroyed, only transferred",
+        ],
+        answer: "Energy is never 'used up' — it is transferred, often to less useful stores such as thermal energy in the surroundings.",
+      },
+      {
+        question: "Which is the best way to reduce heat loss through the walls of a house?",
+        choices: [
+          "Cavity wall insulation",
+          "Painting the walls a dark colour",
+          "Opening the windows",
+          "Using thinner curtains",
+        ],
+        accept: [
+          "Cavity wall insulation",
+        ],
+        answer: "Insulation reduces conduction by trapping air, which is a poor conductor. Thicker walls and lower thermal conductivity both help.",
+      },
+      {
+        question: "Efficiency is calculated as:",
+        choices: [
+          "Useful output energy divided by total input energy",
+          "Total input divided by useful output",
+          "Useful output multiplied by input",
+          "Wasted energy divided by input",
+        ],
+        accept: [
+          "Useful output energy divided by total input energy",
+        ],
+        answer: "Multiply by 100 for a percentage. Efficiency can never exceed 100%, so an answer above that means the formula was inverted.",
+      },
+      {
+        question: "Energy dissipated to the surroundings is usually described as:",
+        choices: [
+          "Wasted, because it becomes less useful",
+          "Destroyed",
+          "Created",
+          "Stored permanently",
+        ],
+        accept: [
+          "Wasted, because it becomes less useful",
+        ],
+        answer: "It still exists but is spread out and hard to recover. Saying energy is 'lost' or 'destroyed' loses marks.",
+      },
     ],
     misconceptions: [
       {
@@ -1012,6 +1077,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why a longer spanner makes it easier to undo a tight bolt.",
         answer:
           "The turning effect of a force is its moment, calculated as force multiplied by the perpendicular distance from the pivot. A longer spanner increases that distance, so the same force applied at the end produces a larger moment. Since it is the moment that turns the bolt, a bigger moment means the bolt can be loosened with less effort — or a stubborn bolt can be shifted at all. Mark this one yourself: naming the moment equation and linking distance to turning effect is what earns the marks.",
+      },
+      {
+        question: "Which of these is a VECTOR quantity?",
+        choices: [
+          "Force",
+          "Mass",
+          "Speed",
+          "Energy",
+        ],
+        accept: [
+          "Force",
+        ],
+        answer: "Vectors have magnitude and direction — force, velocity, acceleration, momentum. Mass, speed and energy are scalars.",
+      },
+      {
+        question: "What is the difference between mass and weight?",
+        choices: [
+          "Mass is the amount of matter; weight is the force of gravity on it",
+          "They are the same thing",
+          "Weight is measured in kilograms",
+          "Mass changes with gravity",
+        ],
+        accept: [
+          "Mass is the amount of matter; weight is the force of gravity on it",
+        ],
+        answer: "Mass is in kilograms and never changes. Weight is in newtons and depends on gravitational field strength.",
+      },
+      {
+        question: "An object with balanced forces acting on it will:",
+        choices: [
+          "Stay still or keep moving at constant velocity",
+          "Always stay still",
+          "Always accelerate",
+          "Always slow down",
+        ],
+        accept: [
+          "Stay still or keep moving at constant velocity",
+        ],
+        answer: "Balanced forces mean zero resultant force, so no acceleration. Constant velocity is just as valid an answer as being stationary.",
+      },
+      {
+        question: "What is a contact force?",
+        choices: [
+          "Friction",
+          "Gravity",
+          "Magnetism",
+          "Electrostatic attraction",
+        ],
+        accept: [
+          "Friction",
+        ],
+        answer: "Contact forces need touching — friction, air resistance, tension, normal contact. Gravity, magnetism and electrostatic forces act at a distance.",
+      },
+      {
+        question: "Hooke's law applies only while:",
+        choices: [
+          "The limit of proportionality has not been exceeded",
+          "The spring is horizontal",
+          "The force is small enough to measure",
+          "The spring is made of metal",
+        ],
+        accept: [
+          "The limit of proportionality has not been exceeded",
+        ],
+        answer: "Beyond that point extension is no longer proportional to force, and the graph curves away from the straight line.",
       },
     ],
     misconceptions: [
@@ -2235,6 +2365,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "A curve means the speed is changing, so the overall gradient would only give an average rather than the speed at that instant. Draw a tangent — a straight line just touching the curve at the point of interest — making it as long as the graph allows so that reading it is more accurate. Then find the gradient of that tangent by taking two points far apart on it and dividing the change in distance by the change in time. That gradient is the speed at that moment. Mark this one yourself: drawing a long tangent and taking two widely spaced points are both worth credit.",
       },
+      {
+        question: "On a distance-time graph, the gradient represents:",
+        choices: [
+          "Speed",
+          "Acceleration",
+          "Distance",
+          "Time",
+        ],
+        accept: [
+          "Speed",
+        ],
+        answer: "A steeper line means faster. A horizontal line means stationary, and a curve means the speed is changing.",
+      },
+      {
+        question: "On a velocity-time graph, the AREA under the line represents:",
+        choices: [
+          "Distance travelled",
+          "Acceleration",
+          "Speed",
+          "Force",
+        ],
+        accept: [
+          "Distance travelled",
+        ],
+        answer: "Gradient gives acceleration and area gives distance. Mixing up which is which is the most common error on these graphs.",
+      },
+      {
+        question: "What is the difference between speed and velocity?",
+        choices: [
+          "Velocity has a direction, speed does not",
+          "Speed has a direction, velocity does not",
+          "They are measured in different units",
+          "Velocity is always larger",
+        ],
+        accept: [
+          "Velocity has a direction, speed does not",
+        ],
+        answer: "That is why velocity is a vector. An object going round a circle at constant speed has constantly changing velocity.",
+      },
+      {
+        question: "An object in free fall reaches terminal velocity when:",
+        choices: [
+          "Air resistance equals weight",
+          "Air resistance is zero",
+          "Weight becomes zero",
+          "It stops accelerating because gravity switches off",
+        ],
+        accept: [
+          "Air resistance equals weight",
+        ],
+        answer: "The forces balance, so the resultant force and acceleration are zero and it falls at a steady speed.",
+      },
+      {
+        question: "A horizontal line on a velocity-time graph means the object is:",
+        choices: [
+          "Moving at constant velocity",
+          "Stationary",
+          "Accelerating steadily",
+          "Decelerating",
+        ],
+        accept: [
+          "Moving at constant velocity",
+        ],
+        answer: "Zero gradient means zero acceleration. A horizontal line at zero velocity would mean stationary.",
+      },
     ],
     misconceptions: [
       {
@@ -2479,6 +2674,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why two forces described by Newton's third law do not cancel each other out.",
         answer:
           "The two forces in a third-law pair are equal in size and opposite in direction, but they act on two DIFFERENT objects. Forces only cancel when they act on the same object, because it is the resultant force on a single object that determines its acceleration. When you push a wall, the wall pushes back on you with an equal force, but one acts on the wall and one on you, so each object experiences its own separate resultant. If they did act on the same object, nothing in the universe could ever accelerate. Mark this one yourself: the mark is entirely for the forces acting on different objects.",
+      },
+      {
+        question: "Newton's second law is usually written as:",
+        choices: [
+          "F = ma",
+          "F = mv",
+          "E = mc squared",
+          "P = IV",
+        ],
+        accept: [
+          "F = ma",
+        ],
+        answer: "Resultant force equals mass times acceleration. Doubling the force doubles the acceleration for the same mass.",
+      },
+      {
+        question: "Newton's third law states that:",
+        choices: [
+          "Every action has an equal and opposite reaction",
+          "Objects stay at rest unless acted on",
+          "Force equals mass times acceleration",
+          "Energy is conserved",
+        ],
+        accept: [
+          "Every action has an equal and opposite reaction",
+        ],
+        answer: "The pair acts on DIFFERENT objects, which is why they do not cancel out. That detail is what examiners look for.",
+      },
+      {
+        question: "What does INERTIA describe?",
+        choices: [
+          "The tendency of an object to resist a change in motion",
+          "The speed of an object",
+          "The force needed to stop an object",
+          "The energy stored in a moving object",
+        ],
+        accept: [
+          "The tendency of an object to resist a change in motion",
+        ],
+        answer: "Inertial mass is defined as force divided by acceleration — a measure of how hard it is to change how something is moving.",
+      },
+      {
+        question: "Thinking distance increases with:",
+        choices: [
+          "Tiredness, alcohol and distraction",
+          "Worn tyres",
+          "Wet roads",
+          "Faulty brakes",
+        ],
+        accept: [
+          "Tiredness, alcohol and distraction",
+        ],
+        answer: "Thinking distance depends on reaction time and speed. Worn tyres and wet roads affect BRAKING distance instead.",
+      },
+      {
+        question: "A car accelerates when the driving force is:",
+        choices: [
+          "Greater than the resistive forces",
+          "Equal to the resistive forces",
+          "Less than the resistive forces",
+          "Zero",
+        ],
+        accept: [
+          "Greater than the resistive forces",
+        ],
+        answer: "A resultant force in the direction of travel produces acceleration. When they balance, the car travels at constant speed.",
       },
     ],
     misconceptions: [
@@ -3204,6 +3464,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "What determines floating is the AVERAGE density of the whole object, not the density of the material it is made from. A ship's hull encloses a very large volume of air, so although the steel itself is dense, the ship as a whole — steel plus the air inside it — has an average density lower than that of water. Because it is less dense than the water, the upthrust acting on it equals its weight before it becomes fully submerged, so it floats. A solid lump of the same steel has no enclosed air, so its density stays above water's and it sinks. Mark this one yourself: average density including the enclosed air is the whole answer.",
       },
+      {
+        question: "Density is calculated as:",
+        choices: [
+          "Mass divided by volume",
+          "Volume divided by mass",
+          "Mass times volume",
+          "Force divided by area",
+        ],
+        accept: [
+          "Mass divided by volume",
+        ],
+        answer: "Measured in kg per cubic metre or g per cubic centimetre. It explains why a small dense object can outweigh a large light one.",
+      },
+      {
+        question: "Pressure in a fluid increases with depth because:",
+        choices: [
+          "There is a greater weight of fluid above",
+          "The fluid gets colder",
+          "The fluid becomes less dense",
+          "Gravity increases with depth",
+        ],
+        accept: [
+          "There is a greater weight of fluid above",
+        ],
+        answer: "More fluid above means more weight pressing down, which is why dams are built thicker at the base.",
+      },
+      {
+        question: "Pressure is calculated as:",
+        choices: [
+          "Force divided by area",
+          "Force times area",
+          "Area divided by force",
+          "Mass times gravity",
+        ],
+        accept: [
+          "Force divided by area",
+        ],
+        answer: "Measured in pascals. The same force over a smaller area gives greater pressure, which is why a drawing pin has a sharp point.",
+      },
+      {
+        question: "An object floats when:",
+        choices: [
+          "The upthrust equals its weight",
+          "Its weight is zero",
+          "It has no volume",
+          "The upthrust is less than its weight",
+        ],
+        accept: [
+          "The upthrust equals its weight",
+        ],
+        answer: "Upthrust comes from the pressure difference between the bottom and top of the object. If weight exceeds upthrust it sinks.",
+      },
+      {
+        question: "Atmospheric pressure decreases with altitude because:",
+        choices: [
+          "There is less air above you",
+          "The air gets warmer",
+          "Gravity is weaker higher up",
+          "The air becomes denser",
+        ],
+        accept: [
+          "There is less air above you",
+        ],
+        answer: "The atmosphere also becomes less dense with height, so both the weight above and the density fall.",
+      },
     ],
     misconceptions: [
       {
@@ -3694,6 +4019,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain how momentum is conserved when a stationary object explodes into two pieces.",
         answer:
           "Before the explosion the object is at rest, so its total momentum is zero. Momentum is conserved in a closed system, so the total afterwards must also be zero. Because momentum is a vector, the only way two moving fragments can total zero is if their momenta are equal in size and opposite in direction — which means a lighter fragment must travel faster than a heavier one to match. Mark this one yourself: starting from zero and the vector nature of momentum are the two key ideas.",
+      },
+      {
+        question: "Momentum is calculated as:",
+        choices: [
+          "Mass times velocity",
+          "Mass times acceleration",
+          "Force times distance",
+          "Mass divided by velocity",
+        ],
+        accept: [
+          "Mass times velocity",
+        ],
+        answer: "Momentum is a vector measured in kg m/s, so direction matters in collision questions.",
+      },
+      {
+        question: "In a closed system, momentum is:",
+        choices: [
+          "Conserved",
+          "Always increased",
+          "Always reduced to zero",
+          "Converted into force",
+        ],
+        accept: [
+          "Conserved",
+        ],
+        answer: "Total momentum before a collision equals total momentum after. Remember to treat opposite directions as opposite signs.",
+      },
+      {
+        question: "Work done is calculated as:",
+        choices: [
+          "Force times distance moved in the direction of the force",
+          "Force divided by distance",
+          "Mass times velocity",
+          "Power times force",
+        ],
+        accept: [
+          "Force times distance moved in the direction of the force",
+        ],
+        answer: "One joule is one newton-metre. If nothing moves, no work is done however hard you push.",
+      },
+      {
+        question: "Power is best described as:",
+        choices: [
+          "The rate of energy transfer",
+          "The total energy transferred",
+          "The force applied",
+          "The distance moved per second",
+        ],
+        accept: [
+          "The rate of energy transfer",
+        ],
+        answer: "One watt is one joule per second. A more powerful device transfers the same energy in less time.",
+      },
+      {
+        question: "Why do crumple zones reduce the force in a crash?",
+        choices: [
+          "They increase the time taken for the momentum to change",
+          "They increase the momentum",
+          "They reduce the mass of the car",
+          "They remove the need for seatbelts",
+        ],
+        accept: [
+          "They increase the time taken for the momentum to change",
+        ],
+        answer: "Force equals change in momentum divided by time, so a longer time means a smaller force. Airbags and seatbelts work the same way.",
       },
     ],
     misconceptions: [
