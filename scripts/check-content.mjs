@@ -70,7 +70,7 @@ const out = mkdtempSync(join(tmpdir(), "revision-check-"));
 // subject is added here, every one of its topics is locked to the standard and
 // cannot quietly regress. A rule that fails on 185 topics from day one is not a
 // rule, it is noise that people learn to ignore.
-const MCQ_DONE = new Set(["citizenship", "biology", "chemistry", "physics", "computer-science", "maths", "business"]);
+const MCQ_DONE = new Set(["citizenship", "biology", "chemistry", "physics", "computer-science", "maths", "business", "english"]);
 
 const QUANTITATIVE_CHEMISTRY = new Set([
   "quantitative-chemistry",
@@ -406,7 +406,7 @@ try {
         // English, History, Geography, Business and Computer Science are NOT
         // tiered — everyone sits the same paper — so a Higher badge there would
         // be meaningless and is treated as an error rather than ignored.
-        const TIERED = new Set(["maths", "biology", "chemistry", "physics", "computer-science", "maths", "business"]);
+        const TIERED = new Set(["maths", "biology", "chemistry", "physics", "computer-science", "maths", "business", "english"]);
         const higherUsed =
           c.keyFacts.some((b) => b.higherOnly) ||
           (c.workedExamples ?? []).some((e) => e.higherOnly) ||

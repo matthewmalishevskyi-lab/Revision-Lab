@@ -1410,6 +1410,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the two assess different skills. Language analysis examines individual choices at word and phrase level; structure examines how the whole text is shaped — what the writer shows first, where the focus moves, what it ends on. An examiner marking a structure question has no criteria to reward a comment about a metaphor, so even excellent language analysis earns nothing there. (Mark this one yourself.)" },
       { question: "Explain why running out of time on the writing task is the most costly mistake on this paper.",
         answer: "Because the writing task carries roughly half the total marks, and those marks are spread across content, organisation and technical accuracy — all of which collapse if the piece is rushed or unfinished. Ten extra minutes spent perfecting a four-mark reading answer can never recover what an unplanned, unproofread piece of writing loses. Time should be protected in proportion to marks, not to how interesting a question is. (Mark this one yourself.)" },
+      {
+        question: "In a fiction reading question about structure, you might discuss:",
+        choices: [
+          "Where the writer shifts focus and why",
+          "How many adjectives are used",
+          "The spelling of unusual words",
+          "The length of the extract",
+        ],
+        accept: [
+          "Where the writer shifts focus and why",
+        ],
+        answer: "Structure covers openings, shifts in perspective, pace and endings — not just paragraph count.",
+      },
+      {
+        question: "Evaluating a statement about a text means:",
+        choices: [
+          "Judging how far you agree, using evidence",
+          "Agreeing with it automatically",
+          "Summarising the text",
+          "Listing techniques",
+        ],
+        accept: [
+          "Judging how far you agree, using evidence",
+        ],
+        answer: "Evaluation questions carry the most marks and are most often answered as description instead of judgement.",
+      },
+      {
+        question: "Which detail would best build tension in a piece of narrative writing?",
+        choices: [
+          "A small unsettling detail noticed too late",
+          "A full description of the room",
+          "A list of the character's belongings",
+          "An explanation of the ending",
+        ],
+        accept: [
+          "A small unsettling detail noticed too late",
+        ],
+        answer: "Withholding information creates tension. Explaining everything as it happens releases it.",
+      },
+      {
+        question: "Reading a fiction extract closely means paying attention to:",
+        choices: [
+          "Individual word choices and their connotations",
+          "Only the events described",
+          "The author's biography",
+          "The number of characters",
+        ],
+        accept: [
+          "Individual word choices and their connotations",
+        ],
+        answer: "Why 'crept' rather than 'walked'? The specific choice is where the analysis lives.",
+      },
+      {
+        question: "In the reading paper, the number of marks tells you:",
+        choices: [
+          "How much to write and how deeply to analyse",
+          "Which question to answer first",
+          "How long the extract is",
+          "How many quotations to memorise",
+        ],
+        accept: [
+          "How much to write and how deeply to analyse",
+        ],
+        answer: "Spending twenty minutes on a four-mark question is one of the commonest ways to lose marks elsewhere.",
+      },
     ],
 
     misconceptions: [
@@ -3406,6 +3471,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the examiner has read the text, so recounting it demonstrates nothing that is being assessed. The marks sit in AO2 — analysing how the writer creates meaning through language, form and structure — and in AO1's requirement for a sustained argument. A student who knows the text thoroughly but narrates it spends the whole essay proving something never in doubt, while never doing the thing being marked. (Mark this one yourself.)" },
       { question: "Describe how to use an examiners' report to improve, in three steps.",
         answer: "First, read what the report says candidates did badly on the specific question type you struggle with — it is usually blunt and specific. Second, find the same weakness in your own past answers, since these faults are near-universal rather than personal. Third, rewrite one previous paragraph deliberately fixing that fault, and check the next timed answer for it specifically. That turns a general warning into a targeted change, which is what actually moves a grade. (Mark this one yourself.)" },
+      {
+        question: "The best way to revise a literature text is to:",
+        choices: [
+          "Learn flexible quotations and practise linking them to themes",
+          "Reread the whole book repeatedly",
+          "Memorise the plot in order",
+          "Watch the film version only",
+        ],
+        accept: [
+          "Learn flexible quotations and practise linking them to themes",
+        ],
+        answer: "A short quotation that supports three different themes is worth more than ten that each work once.",
+      },
+      {
+        question: "Planning an essay for five minutes is worthwhile because it:",
+        choices: [
+          "Produces a clearer argument and prevents drifting",
+          "Uses up nervous energy",
+          "Guarantees more quotations",
+          "Replaces the need for a conclusion",
+        ],
+        accept: [
+          "Produces a clearer argument and prevents drifting",
+        ],
+        answer: "Unplanned essays commonly repeat themselves and run out of time before the strongest point is made.",
+      },
+      {
+        question: "If you run short of time in an English exam, the best approach is to:",
+        choices: [
+          "Write a brief plan or bullet points for the remaining answer",
+          "Leave it blank",
+          "Rewrite an earlier answer",
+          "Write a long introduction",
+        ],
+        accept: [
+          "Write a brief plan or bullet points for the remaining answer",
+        ],
+        answer: "Examiners can credit clear points in note form. A blank answer can score nothing at all.",
+      },
+      {
+        question: "Which is the most efficient way to revise SPaG?",
+        choices: [
+          "Practise the specific errors you personally make most",
+          "Reread grammar rules",
+          "Write longer sentences",
+          "Avoid punctuation",
+        ],
+        accept: [
+          "Practise the specific errors you personally make most",
+        ],
+        answer: "Marked work tells you which errors are yours. Revising rules you already follow is time spent on nothing.",
+      },
+      {
+        question: "Timing questions by their marks matters because:",
+        choices: [
+          "Every question needs its fair share of the time available",
+          "Examiners time you strictly",
+          "Longer answers always score more",
+          "It looks organised",
+        ],
+        accept: [
+          "Every question needs its fair share of the time available",
+        ],
+        answer: "An unfinished high-mark question costs far more than a slightly shorter answer on one you enjoyed.",
+      },
     ],
 
     misconceptions: [
@@ -3946,6 +4076,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the assessment rewards comparison, and a block-structured answer only compares in its final sentences, if at all. Everything before that is two separate analyses that happen to share a page, so the examiner has nothing to credit against the comparative criteria for most of the answer. It also weakens the analysis itself: setting two texts side by side reveals things neither shows alone, because each writer's choices only look like choices once you can see that another writer facing the same subject did something different. Integrating the comparison forces those insights out. (Mark this one yourself.)" },
       { question: "Explain why a comparison of methods is worth more than a comparison of subject matter.",
         answer: "Because subject matter is usually given by the exam rather than chosen by the writer — the two texts are set together precisely because they share a topic, so noticing that shared topic demonstrates nothing. Methods are where the writers actually made decisions: what to include, how to order it, which words to use, whether to reach for a statistic or a story. Comparing those choices lets you explain why two texts on the same subject leave the reader feeling completely different things, which is the question the mark scheme is really asking. (Mark this one yourself.)" },
+      {
+        question: "A comparison essay is strongest when it:",
+        choices: [
+          "Moves between texts within each paragraph",
+          "Covers one text then the other",
+          "Focuses on the longer text",
+          "Avoids quotations",
+        ],
+        accept: [
+          "Moves between texts within each paragraph",
+        ],
+        answer: "Integrated comparison demonstrates the relationship between the texts, which is what the mark scheme rewards.",
+      },
+      {
+        question: "When comparing texts, you should compare:",
+        choices: [
+          "Both the ideas and the methods used to express them",
+          "Only the subject matter",
+          "Only the techniques",
+          "Only the writers' backgrounds",
+        ],
+        accept: [
+          "Both the ideas and the methods used to express them",
+        ],
+        answer: "Ideas alone reads as summary; methods alone reads as technique-spotting. The marks are in linking them.",
+      },
+      {
+        question: "Which is a useful phrase for signalling a difference?",
+        choices: [
+          "In contrast",
+          "Furthermore",
+          "In addition",
+          "Similarly",
+        ],
+        accept: [
+          "In contrast",
+        ],
+        answer: "Whereas and unlike do the same job. Similarly and likewise signal agreement, so choose deliberately.",
+      },
+      {
+        question: "If two texts express similar ideas differently, you should:",
+        choices: [
+          "Explain how the different methods change the effect",
+          "Say they are the same",
+          "Pick the better one",
+          "Ignore the difference",
+        ],
+        accept: [
+          "Explain how the different methods change the effect",
+        ],
+        answer: "Two writers can reach the same conclusion by opposite routes, and that contrast is often the most interesting point available.",
+      },
+      {
+        question: "A conclusion to a comparison essay should:",
+        choices: [
+          "Reach an overall judgement about the texts' treatment of the idea",
+          "Introduce a new text",
+          "Repeat the introduction",
+          "List the techniques used",
+        ],
+        accept: [
+          "Reach an overall judgement about the texts' treatment of the idea",
+        ],
+        answer: "A conclusion that decides something reads as an argument. One that summarises reads as a checklist.",
+      },
     ],
 
     misconceptions: [
@@ -4183,6 +4378,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because they are doing a job that writing never has to do. A speaker is planning and delivering at the same time, and a filler buys a moment to think while signalling that the turn is not finished — without it, the pause would invite someone else to start talking. Fillers can also soften a disagreement or mark hesitation about something delicate, which carries real meaning. Calling them mistakes measures speech against the standards of writing, which had time to be redrafted, and misses what the speaker was actually managing in the moment. (Mark this one yourself.)" },
       { question: "Explain why using Standard English is not the same as losing your accent.",
         answer: "Because they describe different things. Standard English is a matter of grammar and vocabulary — 'I did' rather than 'I done', 'we were' rather than 'we was' — and it is the form expected in formal writing and speech across the whole country. Accent is pronunciation: how the vowels and consonants sound, which varies by region and carries no correctness at all. Someone can speak flawless Standard English in a broad Yorkshire, Glaswegian or Cornish accent, and millions do every day. Asking a student to use Standard English in an assessment is asking about grammar in a formal setting, not asking them to sound like someone else. (Mark this one yourself.)" },
+      {
+        question: "The spoken language endorsement is assessed on:",
+        choices: [
+          "Presenting, responding to questions and using standard English",
+          "Written accuracy only",
+          "Memorising a script exactly",
+          "Length of the talk alone",
+        ],
+        accept: [
+          "Presenting, responding to questions and using standard English",
+        ],
+        answer: "It is reported separately from the GCSE grade but still appears on your certificate.",
+      },
+      {
+        question: "Which is most important when planning a spoken presentation?",
+        choices: [
+          "Structuring it clearly with a strong opening and close",
+          "Writing every word to read aloud",
+          "Using the longest words possible",
+          "Speaking as fast as possible",
+        ],
+        accept: [
+          "Structuring it clearly with a strong opening and close",
+        ],
+        answer: "Cue cards keep you flexible. Reading a full script aloud almost always sounds flat and loses the audience.",
+      },
+      {
+        question: "Standard English in a presentation means:",
+        choices: [
+          "Using widely accepted grammar and vocabulary",
+          "Avoiding any regional accent",
+          "Using only formal literary words",
+          "Never using contractions",
+        ],
+        accept: [
+          "Using widely accepted grammar and vocabulary",
+        ],
+        answer: "Accent is not the same as dialect or grammar. You are assessed on grammatical standard English, not on how you sound.",
+      },
+      {
+        question: "When responding to questions after a talk, you should:",
+        choices: [
+          "Listen carefully and develop your answer with reasons",
+          "Give one-word answers",
+          "Repeat your presentation",
+          "Change the subject",
+        ],
+        accept: [
+          "Listen carefully and develop your answer with reasons",
+        ],
+        answer: "The question-and-answer section is assessed too, and short answers waste the easiest marks available.",
+      },
+      {
+        question: "Which non-verbal technique most improves a presentation?",
+        choices: [
+          "Eye contact with the audience",
+          "Reading from the floor",
+          "Standing completely still",
+          "Speaking without pauses",
+        ],
+        accept: [
+          "Eye contact with the audience",
+        ],
+        answer: "Pace, pausing and gesture matter too. A deliberate pause before a key point is one of the most effective tools available.",
+      },
     ],
 
     misconceptions: [
