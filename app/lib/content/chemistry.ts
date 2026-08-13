@@ -4062,6 +4062,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "The forward reaction that makes ammonia is exothermic, so a lower temperature would shift the equilibrium towards the products and give a higher yield. However, at a low temperature the reaction is extremely slow, so although the eventual yield would be better it would take far too long to be commercially useful. A temperature around 450°C is therefore a compromise: it sacrifices some yield in exchange for a much faster rate, and the unreacted gases are recycled so little is ultimately wasted. An iron catalyst is used as well, since it speeds the reaction without reducing the yield at all. Mark this one yourself: the word compromise, plus both sides of the trade-off, are what the marks are for.",
       },
+      {
+        question: "What does the symbol with two half arrows in an equation mean?",
+        choices: [
+          "The reaction is reversible",
+          "The reaction is very fast",
+          "A catalyst is needed",
+          "The reaction is exothermic",
+        ],
+        accept: [
+          "The reaction is reversible",
+        ],
+        answer: "Reversible means products can reform reactants. In a closed system this leads to a dynamic equilibrium.",
+      },
+      {
+        question: "At dynamic equilibrium:",
+        choices: [
+          "Both reactions continue at equal rates",
+          "Both reactions have stopped",
+          "Only the forward reaction happens",
+          "The amounts of reactants and products are equal",
+        ],
+        accept: [
+          "Both reactions continue at equal rates",
+        ],
+        answer: "Dynamic means still happening. Equilibrium means the rates match, so concentrations stay constant — not that they are equal to each other.",
+      },
+      {
+        question: "If the forward reaction is exothermic, RAISING the temperature will:",
+        choices: [
+          "Shift the equilibrium towards the reactants",
+          "Shift it towards the products",
+          "Have no effect",
+          "Stop the reaction",
+        ],
+        accept: [
+          "Shift the equilibrium towards the reactants",
+        ],
+        answer: "The system opposes the change by favouring the endothermic direction, which here is the reverse reaction.",
+      },
+      {
+        question: "Increasing the pressure shifts a gaseous equilibrium towards:",
+        choices: [
+          "The side with fewer gas molecules",
+          "The side with more gas molecules",
+          "Neither side",
+          "The side with heavier molecules",
+        ],
+        accept: [
+          "The side with fewer gas molecules",
+        ],
+        answer: "Favouring fewer molecules reduces the pressure, opposing the change. If both sides have equal molecules, pressure has no effect.",
+      },
+      {
+        question: "Adding a catalyst to a reversible reaction:",
+        choices: [
+          "Speeds up both directions equally, so equilibrium is reached sooner",
+          "Shifts the equilibrium towards the products",
+          "Increases the yield",
+          "Only speeds up the forward reaction",
+        ],
+        accept: [
+          "Speeds up both directions equally, so equilibrium is reached sooner",
+        ],
+        answer: "A catalyst changes the time taken, never the position of equilibrium. That distinction is tested regularly.",
+      },
     ],
     misconceptions: [
       {
@@ -4286,6 +4351,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "Fractional distillation produces far more of the long-chain fractions than anyone wants, while demand for short-chain fractions such as petrol greatly exceeds what the oil naturally contains. Cracking breaks the surplus long molecules into shorter ones, matching supply to demand and making the whole barrel more valuable. It also produces alkenes, which are unsaturated and reactive, and which are the starting materials for making polymers. Mark this one yourself: supply and demand plus the production of alkenes are the two things worth credit.",
       },
+      {
+        question: "Which general formula describes the saturated hydrocarbons?",
+        choices: [
+          "CnH2n+2",
+          "CnH2n",
+          "CnHn",
+          "CnH2n-2",
+        ],
+        accept: [
+          "CnH2n+2",
+        ],
+        answer: "Alkanes are saturated: CnH2n+2. Alkenes have a double bond and follow CnH2n.",
+      },
+      {
+        question: "Which test distinguishes an alkene from an alkane?",
+        choices: [
+          "Bromine water goes from orange to colourless",
+          "Limewater turns cloudy",
+          "A lit splint pops",
+          "Litmus turns red",
+        ],
+        accept: [
+          "Bromine water goes from orange to colourless",
+        ],
+        answer: "The double bond in an alkene reacts with bromine, decolourising it. An alkane leaves bromine water orange.",
+      },
+      {
+        question: "What is CRACKING?",
+        choices: [
+          "Breaking long hydrocarbons into shorter, more useful ones",
+          "Joining small molecules into a polymer",
+          "Burning hydrocarbons in air",
+          "Separating crude oil by boiling point",
+        ],
+        accept: [
+          "Breaking long hydrocarbons into shorter, more useful ones",
+        ],
+        answer: "Supply of long chains exceeds demand, while short chains like petrol are in high demand. Cracking also produces alkenes for making polymers.",
+      },
+      {
+        question: "Crude oil is separated by fractional distillation because its parts have different:",
+        choices: [
+          "Boiling points",
+          "Colours",
+          "Densities only",
+          "Melting points only",
+        ],
+        accept: [
+          "Boiling points",
+        ],
+        answer: "Shorter chains have weaker intermolecular forces, so they boil at lower temperatures and rise higher up the column.",
+      },
+      {
+        question: "Which functional group makes a molecule an alcohol?",
+        choices: [
+          "-OH",
+          "-COOH",
+          "C=C",
+          "-NH2",
+        ],
+        accept: [
+          "-OH",
+        ],
+        answer: "Alcohols end in -ol and contain -OH. Carboxylic acids contain -COOH and end in -oic acid.",
+      },
     ],
     misconceptions: [
       {
@@ -4506,6 +4636,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "Because microorganisms cannot break them down, plastics remain in landfill for centuries and accumulate in rivers and oceans, where they harm wildlife that eats or becomes entangled in them. Landfill also uses land and the plastic occupies it indefinitely. Recycling reduces the problem by saving crude oil and energy, though different polymers must be sorted first, which is labour-intensive and not always economic. Incineration recovers useful energy and reduces volume, but releases carbon dioxide and can release toxic gases if not carefully controlled. Overall a combination of reducing use, recycling where practical, and developing genuinely biodegradable alternatives is more realistic than any single solution. Mark this one yourself: full marks need the problem, at least two responses with their drawbacks, and a judgement.",
       },
+      {
+        question: "What is a polymer?",
+        choices: [
+          "A long molecule made by joining many small monomers",
+          "A single small molecule",
+          "A mixture of two metals",
+          "A type of ionic compound",
+        ],
+        accept: [
+          "A long molecule made by joining many small monomers",
+        ],
+        answer: "Poly means many, mono means one. Poly(ethene) is thousands of ethene molecules joined into a chain.",
+      },
+      {
+        question: "In ADDITION polymerisation, what else is produced besides the polymer?",
+        choices: [
+          "Nothing",
+          "Water",
+          "Carbon dioxide",
+          "Hydrogen",
+        ],
+        accept: [
+          "Nothing",
+        ],
+        answer: "Addition polymerisation has 100% atom economy — the only product is the polymer. Condensation polymerisation also releases a small molecule, usually water.",
+      },
+      {
+        question: "Which type of monomer is needed for addition polymerisation?",
+        choices: [
+          "One containing a C=C double bond",
+          "One containing only single bonds",
+          "One containing a metal",
+          "One containing an -OH group only",
+        ],
+        accept: [
+          "One containing a C=C double bond",
+        ],
+        answer: "The double bond opens up to form links with the next monomer, which is why alkenes are the feedstock.",
+      },
+      {
+        question: "Why are many polymers a problem for the environment?",
+        choices: [
+          "They are not biodegradable, so they persist for a very long time",
+          "They dissolve in rainwater",
+          "They react with air to form acid",
+          "They are radioactive",
+        ],
+        accept: [
+          "They are not biodegradable, so they persist for a very long time",
+        ],
+        answer: "Microorganisms cannot break most of them down, so they accumulate in landfill and the oceans. Biodegradable and recyclable alternatives are being developed.",
+      },
+      {
+        question: "Which polymer property makes thermosetting plastics different from thermosoftening ones?",
+        choices: [
+          "Cross-links between chains mean they do not melt when heated",
+          "They have shorter chains",
+          "They contain no carbon",
+          "They dissolve in water",
+        ],
+        accept: [
+          "Cross-links between chains mean they do not melt when heated",
+        ],
+        answer: "Thermosoftening polymers have separate tangled chains held by weak forces, so they melt and can be remoulded.",
+      },
     ],
     misconceptions: [
       {
@@ -4724,6 +4919,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Describe how you would show that an unknown white solid contains chloride ions.",
         answer:
           "Dissolve a small sample of the solid in distilled water to make a solution. Add a few drops of dilute nitric acid first — this removes carbonate ions, which would otherwise form a precipitate and give a false positive. Then add silver nitrate solution. A white precipitate confirms chloride is present; a cream precipitate would indicate bromide and a yellow one iodide, so the exact colour matters. Mark this one yourself: adding the nitric acid FIRST, and the reason for it, is what separates a full-mark answer from a partial one.",
+      },
+      {
+        question: "Which gas relights a glowing splint?",
+        choices: [
+          "Oxygen",
+          "Hydrogen",
+          "Carbon dioxide",
+          "Chlorine",
+        ],
+        accept: [
+          "Oxygen",
+        ],
+        answer: "Oxygen relights a glowing splint. Hydrogen gives a squeaky pop with a lit splint, and carbon dioxide turns limewater cloudy.",
+      },
+      {
+        question: "Which test identifies carbon dioxide?",
+        choices: [
+          "Limewater turns cloudy",
+          "A squeaky pop",
+          "Damp litmus is bleached",
+          "A lilac flame",
+        ],
+        accept: [
+          "Limewater turns cloudy",
+        ],
+        answer: "Carbon dioxide reacts with limewater to form insoluble calcium carbonate, which is the cloudiness you see.",
+      },
+      {
+        question: "A lilac flame test indicates which metal ion?",
+        choices: [
+          "Potassium",
+          "Sodium",
+          "Copper",
+          "Calcium",
+        ],
+        accept: [
+          "Potassium",
+        ],
+        answer: "Lilac is potassium, yellow is sodium, green is copper, orange-red is calcium. Sodium's strong yellow can mask other colours.",
+      },
+      {
+        question: "What is a PURE substance in chemistry?",
+        choices: [
+          "A single element or compound",
+          "Anything natural",
+          "Anything safe to drink",
+          "A mixture with no colour",
+        ],
+        accept: [
+          "A single element or compound",
+        ],
+        answer: "The everyday meaning differs: pure orange juice is a mixture. A pure substance melts and boils at a fixed temperature.",
+      },
+      {
+        question: "An advantage of instrumental methods over chemical tests is that they are:",
+        choices: [
+          "More accurate, more sensitive and faster",
+          "Cheaper to buy",
+          "Easier to do by hand",
+          "Never in need of calibration",
+        ],
+        accept: [
+          "More accurate, more sensitive and faster",
+        ],
+        answer: "They detect tiny amounts and give reliable results quickly, which is why they are used in forensics and medicine despite the cost.",
       },
     ],
     misconceptions: [
@@ -4944,6 +5204,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain how the greenhouse effect keeps the Earth warm, and why increasing greenhouse gases is a problem.",
         answer:
           "Short-wavelength radiation from the Sun passes through the atmosphere and warms the Earth's surface, which then radiates energy back out as longer-wavelength infrared. Greenhouse gases absorb some of that infrared and re-radiate part of it back towards the surface, keeping the planet considerably warmer than it would otherwise be — without this, the Earth would be too cold for life. The problem is not the effect itself but the recent increase in greenhouse gases from burning fossil fuels and other human activity, which traps more energy and raises the average global temperature, with consequences including melting ice, rising sea levels and more extreme weather. Mark this one yourself: describing the mechanism AND distinguishing the natural effect from the enhanced one is what earns the top marks.",
+      },
+      {
+        question: "Which gas makes up about four fifths of today's atmosphere?",
+        choices: [
+          "Nitrogen",
+          "Oxygen",
+          "Carbon dioxide",
+          "Argon",
+        ],
+        accept: [
+          "Nitrogen",
+        ],
+        answer: "Roughly 80% nitrogen and 20% oxygen, with small amounts of argon, carbon dioxide and water vapour.",
+      },
+      {
+        question: "Where did most of the oxygen in the early atmosphere come from?",
+        choices: [
+          "Photosynthesis by algae and plants",
+          "Volcanic eruptions",
+          "Meteorite impacts",
+          "The oceans evaporating",
+        ],
+        accept: [
+          "Photosynthesis by algae and plants",
+        ],
+        answer: "Algae appeared around 2.7 billion years ago and gradually released oxygen, while removing carbon dioxide.",
+      },
+      {
+        question: "Which of these is a greenhouse gas?",
+        choices: [
+          "Methane",
+          "Nitrogen",
+          "Argon",
+          "Helium",
+        ],
+        accept: [
+          "Methane",
+        ],
+        answer: "Carbon dioxide, methane and water vapour are greenhouse gases. Nitrogen and the noble gases are not.",
+      },
+      {
+        question: "Incomplete combustion is dangerous mainly because it produces:",
+        choices: [
+          "Carbon monoxide, a toxic gas that is colourless and odourless",
+          "Carbon dioxide",
+          "Water vapour",
+          "Nitrogen",
+        ],
+        accept: [
+          "Carbon monoxide, a toxic gas that is colourless and odourless",
+        ],
+        answer: "It binds to haemoglobin in place of oxygen and gives no warning, which is why detectors are needed near boilers.",
+      },
+      {
+        question: "Sulfur dioxide from burning fossil fuels causes:",
+        choices: [
+          "Acid rain",
+          "Global dimming only",
+          "The ozone hole",
+          "Increased oxygen levels",
+        ],
+        accept: [
+          "Acid rain",
+        ],
+        answer: "Sulfur dioxide and oxides of nitrogen dissolve in rainwater to form acids that damage buildings, trees and lakes.",
       },
     ],
     misconceptions: [
@@ -5166,6 +5491,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "First an appropriate source is chosen, usually a reservoir, river or aquifer with relatively low levels of contamination. The water is then passed through filter beds to remove solid particles, and finally sterilised using chlorine, ozone or ultraviolet light to kill microorganisms. Sewage treatment needs more stages because the starting material is far more contaminated: it must first be screened to remove large solids and grit, then left to settle so that sludge and effluent separate, then the sludge digested anaerobically and the effluent treated aerobically with bacteria before it can be released. Mark this one yourself: the three UK stages plus a clear reason why sewage needs more is full marks.",
       },
+      {
+        question: "What does a life cycle assessment consider?",
+        choices: [
+          "The environmental impact from raw material to disposal",
+          "Only the cost of manufacturing",
+          "Only how long a product lasts",
+          "Only the energy used in transport",
+        ],
+        accept: [
+          "The environmental impact from raw material to disposal",
+        ],
+        answer: "It covers extraction, manufacture, use and disposal. Some stages involve judgement rather than measurement, so results can be biased.",
+      },
+      {
+        question: "Which is an advantage of recycling metals?",
+        choices: [
+          "It saves energy and conserves limited ore reserves",
+          "It makes the metal stronger",
+          "It removes the need for sorting",
+          "It produces no waste at all",
+        ],
+        accept: [
+          "It saves energy and conserves limited ore reserves",
+        ],
+        answer: "Recycling aluminium uses a small fraction of the energy of extracting it by electrolysis, which is where most of the saving comes from.",
+      },
+      {
+        question: "What is PHYTOMINING?",
+        choices: [
+          "Using plants to absorb metal compounds from low-grade ore",
+          "Mining with heavy machinery",
+          "Extracting metal using bacteria",
+          "Melting ore in a blast furnace",
+        ],
+        accept: [
+          "Using plants to absorb metal compounds from low-grade ore",
+        ],
+        answer: "The plants are burned and the ash processed. Bioleaching is the bacterial method, and both allow low-grade ores to be used.",
+      },
+      {
+        question: "Potable water is water that is:",
+        choices: [
+          "Safe to drink",
+          "Chemically pure",
+          "Free of all dissolved substances",
+          "Only from rivers",
+        ],
+        accept: [
+          "Safe to drink",
+        ],
+        answer: "Potable water still contains dissolved substances, so it is not pure in the chemical sense — just safe.",
+      },
+      {
+        question: "Which method produces potable water from seawater?",
+        choices: [
+          "Desalination by distillation or reverse osmosis",
+          "Filtration through sand",
+          "Adding chlorine only",
+          "Sedimentation",
+        ],
+        accept: [
+          "Desalination by distillation or reverse osmosis",
+        ],
+        answer: "Dissolved salt cannot be filtered out. Desalination works but uses a great deal of energy, which is why it is a last resort.",
+      },
     ],
     misconceptions: [
       {
@@ -5384,6 +5774,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Describe how you would answer a six-mark question on the required practical for rates of reaction.",
         answer:
           "First identify the command word and the specific reaction the question names, then spend about thirty seconds planning three or four points. I would state the independent variable, such as concentration, and the dependent variable, such as volume of gas or time for a cross to disappear. Then I would give the method in order, naming specific control variables — the same volumes, the same temperature, the same apparatus — because 'keeping everything else the same' scores nothing. I would say how the results would be recorded and repeated, mention excluding anomalies from the mean, and finish by saying what result would be expected and why, using collision theory. Mark this one yourself: named control variables, a method in order, repeats, and an explanation using collision theory are the four things worth credit.",
+      },
+      {
+        question: "A question asks you to 'explain' rather than 'state'. You must:",
+        choices: [
+          "Give reasons, not just facts",
+          "List as many facts as possible",
+          "Draw a diagram",
+          "Give both sides of an argument",
+        ],
+        accept: [
+          "Give reasons, not just facts",
+        ],
+        answer: "Explain wants 'because' and 'which means'. State wants the fact alone, so adding reasons there just costs time.",
+      },
+      {
+        question: "In a calculation, why should you show your working?",
+        choices: [
+          "Method marks can be earned even if the final answer is wrong",
+          "It makes the answer look longer",
+          "Examiners require neat handwriting",
+          "Working replaces the need for units",
+        ],
+        accept: [
+          "Method marks can be earned even if the final answer is wrong",
+        ],
+        answer: "A slip in the last step still scores most of the marks if the method is visible. An answer alone scores nothing if it is wrong.",
+      },
+      {
+        question: "Which is the most common reason for losing marks in chemistry calculations?",
+        choices: [
+          "Forgetting to convert units, such as cm3 to dm3",
+          "Writing too neatly",
+          "Using a calculator",
+          "Giving too many working steps",
+        ],
+        accept: [
+          "Forgetting to convert units, such as cm3 to dm3",
+        ],
+        answer: "Dividing by 1000 is the step people skip under pressure, and it makes the answer wrong by a factor of a thousand.",
+      },
+      {
+        question: "When describing a required practical, marks are given for:",
+        choices: [
+          "Naming apparatus and stating the control variables",
+          "Describing how you felt about it",
+          "Listing every chemical in the lab",
+          "Predicting the result only",
+        ],
+        accept: [
+          "Naming apparatus and stating the control variables",
+        ],
+        answer: "Be specific — 'measuring cylinder' beats 'container'. Saying what you kept the same shows you understand a fair test.",
+      },
+      {
+        question: "If a question is worth 6 marks and asks you to compare two things, you should:",
+        choices: [
+          "Cover both things and make explicit comparisons",
+          "Write about the one you know best",
+          "List six unrelated facts",
+          "Draw a labelled diagram only",
+        ],
+        accept: [
+          "Cover both things and make explicit comparisons",
+        ],
+        answer: "Use words like 'whereas' and 'in contrast'. Writing two separate descriptions without linking them rarely reaches the top band.",
       },
     ],
     misconceptions: [
