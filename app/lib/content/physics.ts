@@ -588,6 +588,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "The key requirement is reliability, which immediately weakens the case for solar and wind, since neither can be guaranteed to supply power when it is needed and both would require expensive storage or a backup generator. If the island has a significant tidal range, tidal power would be strong: it is highly predictable, though it has high start-up costs and damages estuary habitats. Geothermal would be excellent if the island is volcanic, being reliable with low impact, but is impossible otherwise. A diesel generator is reliable and cheap to install but expensive to fuel on a remote island and produces carbon dioxide. Overall the best answer depends on the island's geography — tidal or geothermal if the location allows, otherwise a combination of wind or solar with battery storage and a small backup generator. Mark this one yourself: full marks need reliability prioritised, at least two options weighed, and a conclusion that depends on the location.",
       },
+      {
+        question: "Which of these is a RENEWABLE energy resource?",
+        choices: [
+          "Wind",
+          "Coal",
+          "Natural gas",
+          "Nuclear fuel",
+        ],
+        accept: [
+          "Wind",
+        ],
+        answer: "Renewables are replenished as fast as they are used — wind, solar, hydroelectric, tidal, wave, geothermal and biofuel.",
+      },
+      {
+        question: "A disadvantage of wind and solar power is that they are:",
+        choices: [
+          "Unreliable, because output depends on the weather",
+          "Very expensive to run once built",
+          "Major producers of carbon dioxide",
+          "Impossible to build in the UK",
+        ],
+        accept: [
+          "Unreliable, because output depends on the weather",
+        ],
+        answer: "Running costs are low and they emit no carbon dioxide in use, but supply cannot be adjusted to match demand.",
+      },
+      {
+        question: "Which non-renewable resource produces no carbon dioxide during electricity generation?",
+        choices: [
+          "Nuclear",
+          "Coal",
+          "Oil",
+          "Natural gas",
+        ],
+        accept: [
+          "Nuclear",
+        ],
+        answer: "Nuclear is non-renewable but does not release carbon dioxide. Its drawbacks are radioactive waste and decommissioning cost.",
+      },
+      {
+        question: "The National Grid uses high voltages for transmission because:",
+        choices: [
+          "A lower current means less energy wasted as heat in the cables",
+          "High voltage is safer",
+          "It makes the current larger",
+          "Cables work better when hot",
+        ],
+        accept: [
+          "A lower current means less energy wasted as heat in the cables",
+        ],
+        answer: "Power lost is proportional to current squared, so reducing current matters far more than anything else.",
+      },
+      {
+        question: "Which type of transformer increases potential difference?",
+        choices: [
+          "A step-up transformer",
+          "A step-down transformer",
+          "A National Grid regulator",
+          "A generator",
+        ],
+        accept: [
+          "A step-up transformer",
+        ],
+        answer: "Step-up transformers raise voltage for transmission; step-down transformers lower it again before it reaches homes.",
+      },
     ],
     misconceptions: [
       {
@@ -1765,6 +1830,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain what half-life means and why radioactive decay is described as random.",
         answer:
           "Half-life is the time taken for the number of undecayed nuclei in a sample, or its measured count rate, to fall to half its starting value. Decay is random because it is impossible to predict which particular nucleus will decay next, or when any individual one will do so — nothing triggers it and nothing about a nucleus's history changes its chance. The two ideas are compatible because a sample contains such an enormous number of nuclei that, although each individual event is unpredictable, the average behaviour of the whole sample is highly predictable. Mark this one yourself: full marks need the definition, the randomness, AND the explanation of why both can be true at once.",
+      },
+      {
+        question: "Which type of radiation is the most ionising but least penetrating?",
+        choices: [
+          "Alpha",
+          "Beta",
+          "Gamma",
+          "X-ray",
+        ],
+        accept: [
+          "Alpha",
+        ],
+        answer: "Alpha is stopped by paper or skin but does great damage if inhaled or swallowed. Gamma is the opposite: weakly ionising, highly penetrating.",
+      },
+      {
+        question: "What is an alpha particle?",
+        choices: [
+          "Two protons and two neutrons",
+          "A fast-moving electron",
+          "A high-energy electromagnetic wave",
+          "A single neutron",
+        ],
+        accept: [
+          "Two protons and two neutrons",
+        ],
+        answer: "It is a helium nucleus. Beta is a fast electron from the nucleus, and gamma is electromagnetic radiation.",
+      },
+      {
+        question: "What is emitted when a neutron changes into a proton?",
+        choices: [
+          "A beta particle",
+          "An alpha particle",
+          "A gamma ray only",
+          "Nothing",
+        ],
+        accept: [
+          "A beta particle",
+        ],
+        answer: "Beta decay raises the atomic number by 1 while the mass number stays the same.",
+      },
+      {
+        question: "Which material is best for stopping gamma radiation?",
+        choices: [
+          "Thick lead or concrete",
+          "A sheet of paper",
+          "A few centimetres of air",
+          "Thin aluminium",
+        ],
+        accept: [
+          "Thick lead or concrete",
+        ],
+        answer: "Paper stops alpha, a few millimetres of aluminium stops beta, and gamma needs thick dense material and is only ever reduced, not fully blocked.",
+      },
+      {
+        question: "Radioactive decay is described as a random process because:",
+        choices: [
+          "You cannot predict which nucleus will decay or when",
+          "The radiation travels in random directions",
+          "The half-life changes randomly",
+          "Detectors are unreliable",
+        ],
+        accept: [
+          "You cannot predict which nucleus will decay or when",
+        ],
+        answer: "Only the average behaviour of a large number of nuclei is predictable, which is what half-life describes.",
       },
     ],
     misconceptions: [
@@ -4168,6 +4298,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "Power lost heating the cables is P = I²R, so it depends on the SQUARE of the current — halving the current cuts losses to a quarter. A step-up transformer raises the potential difference, and since power is conserved this reduces the current dramatically, so far less energy is wasted over hundreds of kilometres. That very high potential difference would be lethal in a home, so step-down transformers reduce it to a safe 230 V before it arrives. Mark this one yourself: the I² relationship AND the safety reason for stepping down are both required.",
       },
+      {
+        question: "Which of these is a magnetic material?",
+        choices: [
+          "Iron",
+          "Copper",
+          "Aluminium",
+          "Gold",
+        ],
+        accept: [
+          "Iron",
+        ],
+        answer: "Iron, cobalt, nickel and steel are magnetic. Copper and aluminium conduct electricity well but are not magnetic.",
+      },
+      {
+        question: "What is an INDUCED magnet?",
+        choices: [
+          "A material that becomes magnetic only while in a magnetic field",
+          "A magnet made by heating",
+          "A permanently magnetic bar",
+          "A magnet with only one pole",
+        ],
+        accept: [
+          "A material that becomes magnetic only while in a magnetic field",
+        ],
+        answer: "Induced magnetism is temporary and always causes attraction, which is why a magnet picks up an unmagnetised paperclip.",
+      },
+      {
+        question: "How can the strength of an electromagnet be increased?",
+        choices: [
+          "Add more turns of wire or increase the current",
+          "Use a plastic core",
+          "Reduce the current",
+          "Use thinner insulation",
+        ],
+        accept: [
+          "Add more turns of wire or increase the current",
+        ],
+        answer: "An iron core also strengthens it greatly. Electromagnets can be switched off, which permanent magnets cannot.",
+      },
+      {
+        question: "The motor effect happens when:",
+        choices: [
+          "A current-carrying wire is placed in a magnetic field",
+          "Two magnets are placed together",
+          "A wire is heated",
+          "A magnet is dropped",
+        ],
+        accept: [
+          "A current-carrying wire is placed in a magnetic field",
+        ],
+        answer: "The wire's own field interacts with the external field, producing a force. Fleming's left-hand rule gives the direction.",
+      },
+      {
+        question: "Magnetic field lines always point:",
+        choices: [
+          "From north to south outside the magnet",
+          "From south to north outside the magnet",
+          "Towards the nearest object",
+          "In random directions",
+        ],
+        accept: [
+          "From north to south outside the magnet",
+        ],
+        answer: "Closer lines mean a stronger field, which is why they bunch together at the poles.",
+      },
     ],
     misconceptions: [
       {
@@ -4711,6 +4906,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "Decay is random because nothing determines when any individual nucleus will decay — there is no trigger, and a nucleus's past makes no difference to its chance of decaying in the next second. However, a real sample contains an enormous number of nuclei, often more than 10²⁰, and when averaged over that many independent random events the behaviour becomes highly predictable. Half-life describes that average behaviour of the whole sample, not the fate of any one nucleus, which is why both statements are true at once. Mark this one yourself: full marks need the randomness, the huge numbers, AND the reconciliation of the two.",
       },
+      {
+        question: "What does HALF-LIFE mean?",
+        choices: [
+          "The time for half the unstable nuclei in a sample to decay",
+          "The time for a sample to disappear",
+          "Half the total life of an atom",
+          "The time for radiation to halve in speed",
+        ],
+        accept: [
+          "The time for half the unstable nuclei in a sample to decay",
+        ],
+        answer: "It can also be defined as the time for the count rate to halve. Half-lives range from fractions of a second to billions of years.",
+      },
+      {
+        question: "After 3 half-lives, what fraction of the original nuclei remain?",
+        choices: [
+          "One eighth",
+          "One third",
+          "One sixth",
+          "Three quarters",
+        ],
+        accept: [
+          "One eighth",
+        ],
+        answer: "Halving three times gives 1/2, 1/4, 1/8. Dividing by 3 instead of halving repeatedly is the standard mistake.",
+      },
+      {
+        question: "What is the difference between contamination and irradiation?",
+        choices: [
+          "Contamination is radioactive material on or in you; irradiation is exposure to radiation",
+          "They mean the same thing",
+          "Irradiation makes you radioactive",
+          "Contamination only happens with gamma rays",
+        ],
+        accept: [
+          "Contamination is radioactive material on or in you; irradiation is exposure to radiation",
+        ],
+        answer: "Irradiation stops when you move away. Contamination keeps exposing you until the material is removed.",
+      },
+      {
+        question: "Which source contributes most to typical background radiation in the UK?",
+        choices: [
+          "Radon gas from rocks",
+          "Nuclear power stations",
+          "Medical X-rays",
+          "Nuclear weapons testing",
+        ],
+        accept: [
+          "Radon gas from rocks",
+        ],
+        answer: "Most background radiation is natural — radon, rocks, food and cosmic rays. Human sources are a small fraction of the total.",
+      },
+      {
+        question: "Why is a source with a SHORT half-life used as a medical tracer?",
+        choices: [
+          "It stops being radioactive quickly, limiting the patient's exposure",
+          "It is cheaper to produce",
+          "It gives a clearer image than any other source",
+          "It cannot leave the body",
+        ],
+        accept: [
+          "It stops being radioactive quickly, limiting the patient's exposure",
+        ],
+        answer: "It also needs to be a gamma emitter so the radiation escapes the body to be detected, and is weakly ionising inside.",
+      },
     ],
     misconceptions: [
       {
@@ -4952,6 +5212,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "Light from distant galaxies arrives with a longer wavelength than it was emitted with, shifted towards the red end of the spectrum, which indicates the source is moving away from us. Crucially, the further away a galaxy is, the greater its red shift, so the more distant galaxies are receding faster. That pattern is exactly what you would expect if space itself were expanding everywhere at once, rather than galaxies simply flying away from one particular point. Tracing that expansion backwards implies the universe began from a very small, dense region, which is the Big Bang. Mark this one yourself: the relationship between distance and red shift is the key evidence, not red shift alone.",
       },
+      {
+        question: "What force keeps a planet in orbit around the Sun?",
+        choices: [
+          "Gravity",
+          "Friction",
+          "Magnetism",
+          "Air resistance",
+        ],
+        accept: [
+          "Gravity",
+        ],
+        answer: "Gravity acts towards the centre, constantly changing the direction of motion. The speed can stay constant while velocity changes.",
+      },
+      {
+        question: "What is RED SHIFT evidence for?",
+        choices: [
+          "The universe is expanding",
+          "The Sun is cooling",
+          "Light travels at different speeds",
+          "Galaxies are shrinking",
+        ],
+        accept: [
+          "The universe is expanding",
+        ],
+        answer: "Light from distant galaxies is shifted towards longer wavelengths, and more distant galaxies show greater red shift.",
+      },
+      {
+        question: "What happens to a star like the Sun after its main sequence stage?",
+        choices: [
+          "It becomes a red giant, then a white dwarf",
+          "It becomes a black hole immediately",
+          "It explodes as a supernova",
+          "It stays unchanged forever",
+        ],
+        accept: [
+          "It becomes a red giant, then a white dwarf",
+        ],
+        answer: "Only much more massive stars form a red supergiant, explode as a supernova and leave a neutron star or black hole.",
+      },
+      {
+        question: "Where are elements heavier than iron formed?",
+        choices: [
+          "In a supernova explosion",
+          "In the core of every star",
+          "In planetary atmospheres",
+          "In interstellar dust clouds",
+        ],
+        accept: [
+          "In a supernova explosion",
+        ],
+        answer: "Fusion in stars builds elements up to iron. The heaviest elements need the extreme energy of a supernova.",
+      },
+      {
+        question: "For a satellite in a stable circular orbit, moving to a higher orbit means it must travel:",
+        choices: [
+          "More slowly",
+          "More quickly",
+          "At the same speed",
+          "In the opposite direction",
+        ],
+        accept: [
+          "More slowly",
+        ],
+        answer: "A higher orbit has weaker gravity, so a lower speed is needed to stay in orbit — which is counter-intuitive but examined.",
+      },
     ],
     misconceptions: [
       {
@@ -5174,6 +5499,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "Clamp the spring vertically and measure its original length with a ruler held alongside, reading at eye level to avoid parallax error. Add masses one at a time, recording the total force from the weight and measuring the new length each time, then calculate extension by subtracting the original length. Keep the same spring and the same ruler throughout, and take the readings going up and coming back down to check the spring has not been permanently stretched. Plot force against extension: the straight section shows Hooke's law holds, its gradient gives the spring constant, and the point where it curves is the limit of proportionality. Mark this one yourself: extension as an INCREASE, named control variables, and interpreting the graph are the three areas worth credit.",
       },
+      {
+        question: "When measuring the density of an irregular solid, its volume is best found by:",
+        choices: [
+          "Displacement of water in a measuring cylinder",
+          "Multiplying length by width",
+          "Weighing it in air",
+          "Estimating from a drawing",
+        ],
+        accept: [
+          "Displacement of water in a measuring cylinder",
+        ],
+        answer: "The water pushed aside equals the object's volume. A regular shape can be measured with a ruler instead.",
+      },
+      {
+        question: "In the specific heat capacity practical, insulation is used to:",
+        choices: [
+          "Reduce energy lost to the surroundings",
+          "Speed up the heater",
+          "Make the block heavier",
+          "Keep the thermometer still",
+        ],
+        accept: [
+          "Reduce energy lost to the surroundings",
+        ],
+        answer: "Without insulation the measured specific heat capacity comes out too high, because some energy never reached the block.",
+      },
+      {
+        question: "Why should measurements be repeated in a required practical?",
+        choices: [
+          "To identify anomalies and reduce the effect of random error",
+          "To use up the lesson time",
+          "To make the numbers larger",
+          "To avoid needing a control",
+        ],
+        accept: [
+          "To identify anomalies and reduce the effect of random error",
+        ],
+        answer: "Repeats do not fix a systematic error, such as an instrument that was not zeroed — that needs the method changing.",
+      },
+      {
+        question: "In the resistance practical, why should the current be switched on only briefly?",
+        choices: [
+          "Heating changes the resistance of the wire",
+          "The battery would explode",
+          "The ammeter would break",
+          "It saves electricity costs",
+        ],
+        accept: [
+          "Heating changes the resistance of the wire",
+        ],
+        answer: "A hot wire has a higher resistance, so leaving the current on gives readings that drift and a curved graph.",
+      },
+      {
+        question: "Zero error on a measuring instrument is an example of:",
+        choices: [
+          "A systematic error",
+          "A random error",
+          "An anomaly",
+          "A rounding error",
+        ],
+        accept: [
+          "A systematic error",
+        ],
+        answer: "It shifts every reading by the same amount, so repeating does not help — the instrument must be zeroed or the offset subtracted.",
+      },
     ],
     misconceptions: [
       {
@@ -5387,6 +5777,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Describe how you would approach a six-mark question asking you to explain how a transformer works.",
         answer:
           "First underline the command word — 'explain' means reasons are required, not just a description — and note any context the question supplies. Spend about thirty seconds planning three or four points in sequence: alternating current in the primary, a changing magnetic field, the iron core carrying that field, and a p.d. induced in the secondary depending on the turns ratio. Write in linked sentences using precise vocabulary such as 'alternating', 'changing magnetic field' and 'induced potential difference', joining each step with 'because' or 'which means that'. Finally check I have answered the question asked rather than everything I know about transformers. Mark this one yourself: planning, correct sequence, precise vocabulary and linked reasoning are the four things worth credit.",
+      },
+      {
+        question: "In a calculation question, marks are usually lost for:",
+        choices: [
+          "Missing or wrong units",
+          "Writing too much working",
+          "Using a calculator",
+          "Circling the answer",
+        ],
+        accept: [
+          "Missing or wrong units",
+        ],
+        answer: "Units carry marks of their own. Newtons, joules, watts and pascals are not interchangeable.",
+      },
+      {
+        question: "If a question says 'state the equation', you should:",
+        choices: [
+          "Write the formula without rearranging or substituting",
+          "Show a full calculation",
+          "Explain what each symbol means at length",
+          "Draw the apparatus",
+        ],
+        accept: [
+          "Write the formula without rearranging or substituting",
+        ],
+        answer: "State means give it, nothing more. Doing extra work costs time you need for the longer questions.",
+      },
+      {
+        question: "A 6-mark question asking you to 'explain' a physics process expects:",
+        choices: [
+          "Linked reasoning, with each step causing the next",
+          "Six separate facts",
+          "A labelled diagram only",
+          "Your personal opinion",
+        ],
+        accept: [
+          "Linked reasoning, with each step causing the next",
+        ],
+        answer: "Chains of because-therefore score highest. Disconnected facts, however correct, sit in the lower band.",
+      },
+      {
+        question: "When a value is given in kilojoules but the equation needs joules, you should:",
+        choices: [
+          "Multiply by 1000 before substituting",
+          "Divide by 1000",
+          "Use the value unchanged",
+          "Round to the nearest joule",
+        ],
+        accept: [
+          "Multiply by 1000 before substituting",
+        ],
+        answer: "Unit conversion before substitution prevents answers that are wrong by factors of a thousand — a very common lost mark.",
+      },
+      {
+        question: "Giving an answer to an appropriate number of significant figures means:",
+        choices: [
+          "Matching the least precise value in the question",
+          "Always giving two decimal places",
+          "Giving as many digits as the calculator shows",
+          "Always rounding to whole numbers",
+        ],
+        accept: [
+          "Matching the least precise value in the question",
+        ],
+        answer: "Copying every digit from the calculator implies precision the data does not support, and can cost a mark.",
       },
     ],
     misconceptions: [
