@@ -441,6 +441,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because water heats up and cools down far more slowly than land. In summer the sea stays relatively cool while inland areas heat quickly, so onshore breezes moderate coastal temperatures downwards. In winter the sea holds heat gained over the summer and releases it slowly, so it stays warmer than the land and keeps coastal air above the temperatures found inland. The technical term is thermal capacity: the sea acts as an enormous store that smooths out extremes in both directions. It is why Cornwall rarely sees deep frost while similar latitudes in central Europe regularly do. (Mark this one yourself.)" },
       { question: "Explain why confusing weather with climate causes problems in discussions of climate change.",
         answer: "Because the two operate on completely different timescales, and evidence about one says almost nothing about the other. A single cold winter is weather — a fluctuation within the normal variability of the atmosphere — and it tells you nothing about the thirty-year averages that define climate. People frequently use one unusually cold spell to dismiss long-term warming, which is a category error: climate is the pattern the fluctuations happen within. The reverse mistake is just as common, treating one hot summer as proof on its own. The honest position is that climate change shows up in the statistics of decades and in the changing frequency of extremes, not in what happened last Tuesday. (Mark this one yourself.)" },
+      {
+        question: "What is the difference between weather and climate?",
+        choices: [
+          "Weather is short-term; climate is the average over many years",
+          "They mean the same thing",
+          "Climate changes daily",
+          "Weather is measured only in summer",
+        ],
+        accept: [
+          "Weather is short-term; climate is the average over many years",
+        ],
+        answer: "A cold week says nothing about climate, which is measured over thirty years or more.",
+      },
+      {
+        question: "What causes a tropical storm to form?",
+        choices: [
+          "Warm ocean water above about 27 degrees C",
+          "Cold polar air",
+          "High mountains",
+          "Dry desert air",
+        ],
+        accept: [
+          "Warm ocean water above about 27 degrees C",
+        ],
+        answer: "They also need low wind shear and the Coriolis effect, which is why they do not form on the equator itself.",
+      },
+      {
+        question: "What is relief rainfall?",
+        choices: [
+          "Rain caused by air being forced to rise over high ground",
+          "Rain from convection currents",
+          "Rain where two air masses meet",
+          "Rain caused by ocean currents",
+        ],
+        accept: [
+          "Rain caused by air being forced to rise over high ground",
+        ],
+        answer: "The air cools, condenses and drops rain on the windward side, leaving a rain shadow beyond the summit.",
+      },
+      {
+        question: "What is the UK's climate described as?",
+        choices: [
+          "Temperate maritime, with mild wet winters and cool summers",
+          "Arid",
+          "Tropical",
+          "Polar",
+        ],
+        accept: [
+          "Temperate maritime, with mild wet winters and cool summers",
+        ],
+        answer: "The North Atlantic Drift keeps the UK far milder than other places at the same latitude.",
+      },
+      {
+        question: "Which factor most affects how much energy an area receives from the Sun?",
+        choices: [
+          "Latitude",
+          "Longitude",
+          "Time zone",
+          "Population",
+        ],
+        accept: [
+          "Latitude",
+        ],
+        answer: "Near the equator sunlight arrives more directly and through less atmosphere, so more energy reaches each square metre.",
+      },
     ],
 
     misconceptions: [
@@ -675,6 +740,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because almost everything that keeps people alive in an earthquake costs money. Enforced building codes mean structures flex instead of collapsing, and collapsing buildings are what kill most people. Trained, equipped emergency services reach the trapped within the first hours, when survival rates are highest. Monitoring, drills and public education mean people know what to do. Hospitals stay standing and functioning. And afterwards, a wealthy country can fund its own reconstruction rather than waiting for aid. The 2010 comparison makes it unarguable: Chile's earthquake released roughly 500 times the energy of Haiti's and killed around 500 people against roughly 220,000. (Mark this one yourself.)" },
       { question: "Explain why hot spots such as Hawaii appear to break the rule that volcanoes occur at plate boundaries.",
         answer: "Because they are fed from below rather than from a boundary. A hot spot is a plume of unusually hot material rising from deep in the mantle, and it stays roughly fixed while the plate slides over the top of it. Magma burns through the middle of the plate and builds a volcano on the surface, nowhere near an edge. Over millions of years the plate carries that volcano away from the plume, the volcano becomes extinct, and a new one forms behind it — which is why Hawaii is a chain of islands that gets progressively older towards the north-west. The rule about boundaries still holds for the great majority of volcanoes; hot spots are the explained exception. (Mark this one yourself.)" },
+      {
+        question: "At which plate boundary do plates move APART?",
+        choices: [
+          "Constructive",
+          "Destructive",
+          "Conservative",
+          "Collision",
+        ],
+        accept: [
+          "Constructive",
+        ],
+        answer: "Magma rises to fill the gap, forming new crust and shield volcanoes. Destructive boundaries are where plates move together.",
+      },
+      {
+        question: "What happens at a DESTRUCTIVE plate boundary?",
+        choices: [
+          "Denser oceanic plate subducts beneath continental plate",
+          "Plates slide past each other",
+          "New crust is created",
+          "Plates stop moving",
+        ],
+        accept: [
+          "Denser oceanic plate subducts beneath continental plate",
+        ],
+        answer: "The melting plate feeds explosive composite volcanoes, and the friction causes powerful earthquakes.",
+      },
+      {
+        question: "What is the focus of an earthquake?",
+        choices: [
+          "The point underground where the earthquake starts",
+          "The point on the surface above it",
+          "The strongest shockwave",
+          "The area of most damage",
+        ],
+        accept: [
+          "The point underground where the earthquake starts",
+        ],
+        answer: "The epicentre is the point on the surface directly above the focus, and is usually where damage is greatest.",
+      },
+      {
+        question: "Why do people continue to live in tectonically active areas?",
+        choices: [
+          "Fertile soils, geothermal energy, tourism and family ties",
+          "They are unaware of the risk",
+          "Governments force them to",
+          "Land is always free",
+        ],
+        accept: [
+          "Fertile soils, geothermal energy, tourism and family ties",
+        ],
+        answer: "Many also simply cannot afford to move. Risk is weighed against real benefits and constraints.",
+      },
+      {
+        question: "Why do earthquakes of similar magnitude cause more deaths in poorer countries?",
+        choices: [
+          "Weaker buildings, poorer planning and slower emergency response",
+          "The earthquakes are stronger",
+          "There are more people everywhere",
+          "The plates move differently",
+        ],
+        accept: [
+          "Weaker buildings, poorer planning and slower emergency response",
+        ],
+        answer: "This contrast between primary hazard and human vulnerability is the central idea of the whole topic.",
+      },
     ],
 
     misconceptions: [
@@ -1392,6 +1522,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Floodplains are flat, close to water and often near existing towns, which makes them cheap and convenient to build on — that is exactly why so much has been built there. The problem is that a floodplain is not land that might flood; it is land the river has built by flooding, repeatedly, over thousands of years. Building on it puts people and property directly in the river's path, and covering it with tarmac and roofs removes the very storage capacity that used to absorb high flows, raising peak discharge downstream. It also creates political pressure for expensive hard defences that would not otherwise be needed, which then push the problem further down the catchment. (Mark this one yourself.)" },
       { question: "Explain why modern flood management increasingly works with rivers rather than against them.",
         answer: "Because decades of hard engineering showed that concrete solves a local problem by creating a wider one. Straightening a channel moves water downstream faster, so the next town gets a bigger peak arriving sooner. Embankments protect the land behind them but remove the floodplain storage that used to absorb high flows. Defences also need permanent maintenance and eventually fail, often catastrophically and against a flood larger than the one they were designed for. Soft approaches — restoring meanders, planting trees, zoning land, and warning people — slow water down across the whole catchment rather than rushing it through one section, and they cost far less. The trade is accepting that some land will flood, which is a political argument as much as a geographical one. (Mark this one yourself.)" },
+      {
+        question: "Which process wears away a river's bed and banks using its load?",
+        choices: [
+          "Abrasion",
+          "Hydraulic action",
+          "Solution",
+          "Attrition",
+        ],
+        accept: [
+          "Abrasion",
+        ],
+        answer: "Attrition is the load wearing itself smaller. Hydraulic action is the force of water alone.",
+      },
+      {
+        question: "Where does a meander erode most?",
+        choices: [
+          "On the outside of the bend, where flow is fastest",
+          "On the inside of the bend",
+          "Evenly all around",
+          "Only at the source",
+        ],
+        accept: [
+          "On the outside of the bend, where flow is fastest",
+        ],
+        answer: "Deposition builds a slip-off slope on the slower inside, which is how meanders migrate across a floodplain.",
+      },
+      {
+        question: "What is a waterfall formed by?",
+        choices: [
+          "A band of hard rock over softer rock that erodes faster",
+          "Two rivers joining",
+          "Deposition of sediment",
+          "Human dam building",
+        ],
+        accept: [
+          "A band of hard rock over softer rock that erodes faster",
+        ],
+        answer: "Undercutting creates an overhang, which collapses and makes the waterfall retreat upstream, leaving a gorge.",
+      },
+      {
+        question: "Which factor increases flood risk?",
+        choices: [
+          "Urbanisation creating impermeable surfaces",
+          "Extensive woodland",
+          "Permeable rock",
+          "Gentle relief",
+        ],
+        accept: [
+          "Urbanisation creating impermeable surfaces",
+        ],
+        answer: "Concrete and drains speed water to the river, shortening lag time and raising peak discharge.",
+      },
+      {
+        question: "What is a SOFT engineering flood strategy?",
+        choices: [
+          "Floodplain zoning",
+          "Building a dam",
+          "Constructing embankments",
+          "Straightening the channel",
+        ],
+        accept: [
+          "Floodplain zoning",
+        ],
+        answer: "Soft engineering works with natural processes and costs less. Hard engineering builds structures and can shift the problem downstream.",
+      },
     ],
 
     misconceptions: [
@@ -1619,6 +1814,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because the cost is enormous and the benefit is not evenly distributed. A sea wall costs millions of pounds per kilometre and needs permanent maintenance, so spending it to protect a handful of houses or a stretch of farmland cannot be justified against the same money spent on a town of thousands. Defences also interfere with each other: groynes and walls trap or reflect sediment, starving neighbouring stretches and accelerating erosion there, so protecting everywhere would mean fighting the sea and the neighbours at once. Rising sea levels make the sums worse every decade. That is why management is now planned across whole sediment cells, and why some places are honestly told they will not be defended — a political decision as much as a geographical one. (Mark this one yourself.)" },
       { question: "Explain why the same beach can grow in summer and shrink in winter.",
         answer: "Because the wave type changes with the weather. Summer brings calmer conditions and lower-energy constructive waves: they are long and gentle, break infrequently, and their swash is stronger than their backwash, so each wave carries more material up the beach than it drags back. Sediment therefore accumulates and the beach builds up and steepens. Winter storms produce destructive waves — tall, steep and frequent — where the backwash dominates, so material is dragged seawards faster than it is delivered and the beach is stripped and flattened. The sediment is not usually lost; much of it sits offshore in a bar and returns the following summer. (Mark this one yourself.)" },
+      {
+        question: "What are CONSTRUCTIVE waves characterised by?",
+        choices: [
+          "A strong swash that builds up the beach",
+          "A strong backwash that erodes",
+          "Very high frequency",
+          "Occurring only in storms",
+        ],
+        accept: [
+          "A strong swash that builds up the beach",
+        ],
+        answer: "Destructive waves are the opposite — frequent, steep, with a powerful backwash that drags material away.",
+      },
+      {
+        question: "What is longshore drift?",
+        choices: [
+          "The movement of sediment along a coast in a zigzag",
+          "Waves moving directly onshore",
+          "Rock falling from a cliff",
+          "Water flowing out to sea",
+        ],
+        accept: [
+          "The movement of sediment along a coast in a zigzag",
+        ],
+        answer: "Swash arrives at the angle of the prevailing wind; backwash returns straight down the slope, moving material along the coast.",
+      },
+      {
+        question: "Which sequence shows how a stack forms?",
+        choices: [
+          "Crack, cave, arch, stack, stump",
+          "Stack, arch, cave, crack",
+          "Cave, stump, arch, stack",
+          "Arch, crack, cave, stack",
+        ],
+        accept: [
+          "Crack, cave, arch, stack, stump",
+        ],
+        answer: "Erosion exploits a weakness in a headland, and each stage is the collapse or enlargement of the one before.",
+      },
+      {
+        question: "What is a spit?",
+        choices: [
+          "A ridge of deposited sand extending out from the coast",
+          "A hole in a cliff",
+          "A submerged rock platform",
+          "A sea defence",
+        ],
+        accept: [
+          "A ridge of deposited sand extending out from the coast",
+        ],
+        answer: "It forms where the coastline changes direction. A sheltered salt marsh often develops behind it.",
+      },
+      {
+        question: "Which is an example of hard engineering at the coast?",
+        choices: [
+          "A sea wall",
+          "Beach nourishment",
+          "Managed retreat",
+          "Dune regeneration",
+        ],
+        accept: [
+          "A sea wall",
+        ],
+        answer: "Hard engineering is effective but expensive and can look intrusive. Soft engineering is cheaper and more sustainable but needs maintenance.",
+      },
     ],
 
     misconceptions: [
@@ -2071,6 +2331,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because almost everything that keeps people alive costs money. Wealthier countries have enforced building codes so structures survive, trained emergency services that reach people within the critical first hours, monitoring and warning systems, hospitals that stay standing, and the funds to rebuild without waiting for aid. Poorer countries often have rapid unplanned urbanisation on unstable ground, buildings put up without codes or inspection, and no realistic evacuation capacity. Population density and the precise location matter too — a storm hitting a crowded delta is not comparable to the same storm hitting an empty coast. The event sets the hazard; development largely decides whether it becomes a disaster. (Mark this one yourself.)" },
       { question: "Explain why a warning system alone does not make people safe.",
         answer: "Because a warning only helps if people can act on it. They have to receive it, which requires communications reaching remote and poor areas rather than only cities. They have to understand and believe it, which needs education and a record of accurate previous warnings — false alarms rapidly destroy compliance. They need somewhere to go, meaning shelters within reach, and a way to get there, meaning roads and transport that work under pressure. And they need to be willing to leave, which is hard for people who fear losing livestock, possessions or a business they cannot insure. Bangladesh reduced cyclone deaths dramatically not by improving forecasts alone but by building thousands of shelters and training volunteers to move people to them. (Mark this one yourself.)" },
+      {
+        question: "What is a natural HAZARD?",
+        choices: [
+          "A natural event that threatens people or property",
+          "Any natural event",
+          "A man-made disaster",
+          "A weather forecast",
+        ],
+        accept: [
+          "A natural event that threatens people or property",
+        ],
+        answer: "An earthquake in an empty desert is an event, not a hazard. People are what make it hazardous.",
+      },
+      {
+        question: "What does hazard RISK depend on?",
+        choices: [
+          "The probability of being affected by a hazard",
+          "Only the size of the event",
+          "Only the country's wealth",
+          "The time of year alone",
+        ],
+        accept: [
+          "The probability of being affected by a hazard",
+        ],
+        answer: "Population density, level of development, capacity to cope and frequency of the hazard all affect risk.",
+      },
+      {
+        question: "Which is a PRIMARY effect of a hazard?",
+        choices: [
+          "Buildings collapsing during the shaking",
+          "Disease spreading weeks later",
+          "Businesses closing for months",
+          "Tourism declining",
+        ],
+        accept: [
+          "Buildings collapsing during the shaking",
+        ],
+        answer: "Primary effects happen immediately as a direct result. Secondary effects follow on afterwards.",
+      },
+      {
+        question: "What is the difference between mitigation and adaptation?",
+        choices: [
+          "Mitigation reduces the cause; adaptation adjusts to live with the effects",
+          "They mean the same thing",
+          "Mitigation happens after the event",
+          "Adaptation prevents hazards entirely",
+        ],
+        accept: [
+          "Mitigation reduces the cause; adaptation adjusts to live with the effects",
+        ],
+        answer: "This distinction matters most in the climate change topic, where both strategies are needed together.",
+      },
+      {
+        question: "Which management strategy reduces earthquake deaths most effectively?",
+        choices: [
+          "Building design that resists shaking",
+          "Predicting the exact date",
+          "Moving everyone permanently",
+          "Planting more trees",
+        ],
+        accept: [
+          "Building design that resists shaking",
+        ],
+        answer: "Prediction remains unreliable for earthquakes, so preparation, planning and construction standards do the real work.",
+      },
     ],
 
     misconceptions: [
@@ -2754,6 +3079,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         answer: "Because it solves the housing problem and creates a bigger one. People came to the city for work, and cheap land for rehousing is by definition far from where that work is. Commuting then costs money and hours that the low wages of informal employment cannot support, so the move destroys the very thing that made city life viable. It also breaks up communities, childcare arrangements, informal credit networks and small businesses that took years to establish. Faced with that, many families sell or abandon the new housing and return, and a new settlement forms somewhere else — which is why upgrading in place, keeping people near their work, has become the preferred approach. (Mark this one yourself.)" },
       { question: "Explain why squatter settlements should not be described only in terms of what they lack.",
         answer: "Because it misrepresents them and leads to bad policy. They do lack sanitation, secure tenure and formal services, and those are real and serious problems. But they are also functioning places with shops, workshops, schools, churches, transport networks and strong social ties, largely built by residents with their own labour and money. Rocinha has banks and bus routes. Treating residents as helpless victims produces the clearance-and-rehousing schemes that repeatedly fail, because they discard everything people have built. Recognising the capability that is already there is exactly what makes upgrading and self-help schemes work — they add what is missing rather than replacing what exists. (Mark this one yourself.)" },
+      {
+        question: "What is URBANISATION?",
+        choices: [
+          "An increasing proportion of people living in towns and cities",
+          "The growth of farming",
+          "People moving to the countryside",
+          "The building of new roads",
+        ],
+        accept: [
+          "An increasing proportion of people living in towns and cities",
+        ],
+        answer: "It is fastest in lower-income countries, driven by rural-urban migration and high natural increase.",
+      },
+      {
+        question: "What is a MEGACITY?",
+        choices: [
+          "A city with over 10 million people",
+          "Any capital city",
+          "A city with more than one airport",
+          "The largest city in a continent",
+        ],
+        accept: [
+          "A city with over 10 million people",
+        ],
+        answer: "Most are now in Asia and Africa, reflecting where urban growth is fastest.",
+      },
+      {
+        question: "Which is a challenge created by rapid urban growth in poorer cities?",
+        choices: [
+          "Squatter settlements lacking clean water and sanitation",
+          "Falling population",
+          "Too much green space",
+          "A shortage of workers",
+        ],
+        accept: [
+          "Squatter settlements lacking clean water and sanitation",
+        ],
+        answer: "Traffic congestion, waste disposal and unemployment usually accompany it. Site-and-service schemes are one response.",
+      },
+      {
+        question: "What is urban regeneration?",
+        choices: [
+          "Improving run-down areas through investment and redevelopment",
+          "Building on countryside",
+          "Moving people out of cities",
+          "Reducing city populations",
+        ],
+        accept: [
+          "Improving run-down areas through investment and redevelopment",
+        ],
+        answer: "It can raise property prices and displace existing residents, which is why regeneration is often contested locally.",
+      },
+      {
+        question: "What makes an urban area more SUSTAINABLE?",
+        choices: [
+          "Efficient public transport, green space and renewable energy",
+          "More private cars",
+          "Larger landfill sites",
+          "Removing all housing",
+        ],
+        accept: [
+          "Efficient public transport, green space and renewable energy",
+        ],
+        answer: "Water and energy conservation and local recycling also count. Sustainability means meeting present needs without harming the future.",
+      },
     ],
 
     misconceptions: [
