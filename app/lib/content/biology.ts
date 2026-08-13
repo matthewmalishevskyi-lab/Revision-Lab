@@ -220,6 +220,72 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "A eukaryotic cell has a nucleus enclosing its DNA; a prokaryotic cell has none, and its DNA sits free in the cytoplasm as a single loop. Prokaryotes may also carry plasmids, which eukaryotes do not. Prokaryotic cells are far smaller, typically 1-5 µm against 10-100 µm. Prokaryotes also lack mitochondria and chloroplasts. Both do have cytoplasm, a cell membrane and ribosomes. Mark this one yourself: three clear differences is full marks, and mentioning a similarity as well shows real understanding.",
       },
+      {
+        question: "Which structure is found in a plant cell but NOT an animal cell?",
+        choices: [
+          "Cell wall",
+          "Cell membrane",
+          "Mitochondria",
+          "Nucleus",
+          "Ribosomes",
+        ],
+        accept: [
+          "Cell wall",
+        ],
+        answer: "Plant cells have a cellulose cell wall, a permanent vacuole and usually chloroplasts. Membrane, mitochondria, nucleus and ribosomes are in both.",
+      },
+      {
+        question: "Which of these is a PROKARYOTIC cell?",
+        choices: [
+          "A bacterial cell",
+          "A human liver cell",
+          "A plant root cell",
+          "A yeast cell",
+        ],
+        accept: [
+          "A bacterial cell",
+        ],
+        answer: "Prokaryotes have no nucleus and no membrane-bound organelles; their DNA is a single loop plus plasmids. Yeast is a fungus and so eukaryotic.",
+      },
+      {
+        question: "Where does aerobic respiration mainly take place in a cell?",
+        choices: [
+          "The mitochondria",
+          "The ribosomes",
+          "The nucleus",
+          "The cell membrane",
+        ],
+        accept: [
+          "The mitochondria",
+        ],
+        answer: "Mitochondria release energy by aerobic respiration, so cells that need a lot of energy — muscle, sperm — contain large numbers of them.",
+      },
+      {
+        question: "What is the function of the ribosomes?",
+        choices: [
+          "Protein synthesis",
+          "Photosynthesis",
+          "Controlling what enters the cell",
+          "Storing genetic material",
+        ],
+        accept: [
+          "Protein synthesis",
+        ],
+        answer: "Ribosomes build proteins from amino acids. The nucleus stores the genetic material that codes for those proteins.",
+      },
+      {
+        question: "A root hair cell is adapted for absorbing water because it has:",
+        choices: [
+          "A long extension giving a large surface area",
+          "Many chloroplasts",
+          "A tail for movement",
+          "A thick waxy cuticle",
+        ],
+        accept: [
+          "A long extension giving a large surface area",
+        ],
+        answer: "Root hair cells have no chloroplasts — they are underground and get no light. The long projection increases surface area for absorption.",
+      },
     ],
     misconceptions: [
       {
@@ -463,6 +529,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Explain why the small intestine is well adapted for absorbing digested food.",
         answer:
           "It is very long and its wall is folded into villi, each covered in microvilli, giving an enormous surface area for absorption. The villi walls are only one cell thick, so the distance for diffusion is very short. Each villus has a rich blood supply that carries absorbed molecules away immediately, keeping the concentration inside low and so maintaining a steep concentration gradient. Mark this one yourself: large area, thin, good blood supply — you need at least two of the three, each linked to WHY it helps.",
+      },
+      {
+        question: "Which process moves substances from a HIGH to a LOW concentration without using energy?",
+        choices: [
+          "Diffusion",
+          "Active transport",
+          "Mitosis",
+          "Translocation",
+        ],
+        accept: [
+          "Diffusion",
+        ],
+        answer: "Diffusion is passive and moves down the concentration gradient. Active transport goes against the gradient and needs energy from respiration.",
+      },
+      {
+        question: "Osmosis is the movement of:",
+        choices: [
+          "Water through a partially permeable membrane",
+          "Any solute through a membrane",
+          "Oxygen into the bloodstream only",
+          "Glucose against a concentration gradient",
+        ],
+        accept: [
+          "Water through a partially permeable membrane",
+        ],
+        answer: "Osmosis is specifically water, moving from a dilute solution to a more concentrated one through a partially permeable membrane.",
+      },
+      {
+        question: "Which process requires energy from respiration?",
+        choices: [
+          "Active transport",
+          "Diffusion",
+          "Osmosis",
+          "Evaporation",
+        ],
+        accept: [
+          "Active transport",
+        ],
+        answer: "Active transport moves substances against the concentration gradient, which is why it needs energy and why cells doing it have many mitochondria.",
+      },
+      {
+        question: "A plant cell placed in pure water will:",
+        choices: [
+          "Become turgid",
+          "Become flaccid",
+          "Burst immediately",
+          "Lose all its water",
+        ],
+        accept: [
+          "Become turgid",
+        ],
+        answer: "Water enters by osmosis and the cell becomes turgid. The cell wall stops it bursting, which is what happens to an animal cell in the same situation.",
+      },
+      {
+        question: "Which change would INCREASE the rate of diffusion?",
+        choices: [
+          "A steeper concentration gradient",
+          "A thicker exchange surface",
+          "A smaller surface area",
+          "A lower temperature",
+        ],
+        accept: [
+          "A steeper concentration gradient",
+        ],
+        answer: "Rate rises with a steeper gradient, larger surface area, shorter diffusion distance and higher temperature.",
       },
     ],
     misconceptions: [
@@ -897,6 +1028,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Explain how bile helps lipase digest fat, even though bile is not an enzyme.",
         answer:
           "Bile is alkaline, so it neutralises the hydrochloric acid arriving from the stomach and raises the pH to around 8, which is lipase's optimum. It also emulsifies fat, breaking large droplets into many small ones, which greatly increases the total surface area exposed to the enzyme. More surface area means more collisions between lipase and fat, so digestion is much faster — but the bile itself breaks nothing down. Mark this one yourself: both the pH point and the surface area point are needed for full marks.",
+      },
+      {
+        question: "What happens to an enzyme at a temperature well above its optimum?",
+        choices: [
+          "Its active site changes shape and it denatures",
+          "It works faster indefinitely",
+          "It turns into a different enzyme",
+          "It is used up in the reaction",
+        ],
+        accept: [
+          "Its active site changes shape and it denatures",
+        ],
+        answer: "Denaturing is a permanent change of shape, so the substrate no longer fits. Saying the enzyme is 'killed' loses the mark — enzymes are not alive.",
+      },
+      {
+        question: "Which enzyme breaks down starch?",
+        choices: [
+          "Amylase",
+          "Protease",
+          "Lipase",
+          "Catalase",
+        ],
+        accept: [
+          "Amylase",
+        ],
+        answer: "Amylase breaks starch into maltose and then glucose. Protease works on proteins and lipase on lipids.",
+      },
+      {
+        question: "What are proteins broken down into?",
+        choices: [
+          "Amino acids",
+          "Glucose",
+          "Fatty acids and glycerol",
+          "Glycogen",
+        ],
+        accept: [
+          "Amino acids",
+        ],
+        answer: "Proteases produce amino acids. Carbohydrates give simple sugars, and lipids give fatty acids and glycerol.",
+      },
+      {
+        question: "What is the function of bile?",
+        choices: [
+          "To emulsify fats and neutralise stomach acid",
+          "To digest protein",
+          "To absorb glucose",
+          "To produce insulin",
+        ],
+        accept: [
+          "To emulsify fats and neutralise stomach acid",
+        ],
+        answer: "Bile is not an enzyme. It emulsifies fat into droplets, increasing surface area for lipase, and raises the pH for enzymes in the small intestine.",
+      },
+      {
+        question: "Which food test uses Benedict's solution?",
+        choices: [
+          "Testing for sugars",
+          "Testing for starch",
+          "Testing for protein",
+          "Testing for lipids",
+        ],
+        accept: [
+          "Testing for sugars",
+        ],
+        answer: "Benedict's turns from blue to brick red with reducing sugars. Iodine tests starch, Biuret tests protein, and ethanol tests lipids.",
       },
     ],
     misconceptions: [
@@ -1589,6 +1785,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "Antibiotics work by damaging structures that bacteria have and human cells do not, such as the bacterial cell wall. Viruses are not cells at all and reproduce INSIDE the body's own cells, so there is no separate structure to attack — any drug that destroyed the virus would have to damage the host cell surrounding it. Taking antibiotics for a cold therefore does nothing except expose bacteria in the body to the drug unnecessarily, which encourages resistance. Mark this one yourself: credit yourself for viruses being inside host cells, and extra credit for mentioning resistance.",
       },
+      {
+        question: "Which of these diseases is caused by a VIRUS?",
+        choices: [
+          "Measles",
+          "Salmonella food poisoning",
+          "Rose black spot",
+          "Malaria",
+        ],
+        accept: [
+          "Measles",
+        ],
+        answer: "Measles is viral. Salmonella is bacterial, rose black spot is fungal, and malaria is caused by a protist spread by mosquitoes.",
+      },
+      {
+        question: "Why do antibiotics NOT work against viruses?",
+        choices: [
+          "Viruses reproduce inside the body's own cells",
+          "Viruses are too small to be affected",
+          "Viruses are not alive so cannot be harmed",
+          "Antibiotics only work on the skin",
+        ],
+        accept: [
+          "Viruses reproduce inside the body's own cells",
+        ],
+        answer: "Antibiotics target bacterial structures and processes. Damaging a virus inside a host cell would mean damaging the cell itself.",
+      },
+      {
+        question: "Which of these is a NON-SPECIFIC human defence?",
+        choices: [
+          "The skin acting as a barrier",
+          "Antibody production",
+          "Memory lymphocytes",
+          "Vaccination",
+        ],
+        accept: [
+          "The skin acting as a barrier",
+        ],
+        answer: "Skin, mucus, cilia and stomach acid are non-specific. Antibodies and memory cells are the specific immune response.",
+      },
+      {
+        question: "How does a vaccine produce immunity?",
+        choices: [
+          "It introduces a harmless form of the pathogen so memory cells are made",
+          "It kills pathogens already inside the body",
+          "It provides antibiotics in advance",
+          "It changes the person's DNA",
+        ],
+        accept: [
+          "It introduces a harmless form of the pathogen so memory cells are made",
+        ],
+        answer: "The white blood cells produce antibodies and memory cells remain, so a real infection is destroyed before symptoms develop.",
+      },
+      {
+        question: "Which measure would best reduce the spread of a disease carried by contaminated water?",
+        choices: [
+          "Improving sanitation and treating water supplies",
+          "Wearing gloves outdoors",
+          "Vaccinating farm animals",
+          "Reducing the use of antibiotics",
+        ],
+        accept: [
+          "Improving sanitation and treating water supplies",
+        ],
+        answer: "Match the control to the transmission route — waterborne spread is stopped by sanitation, airborne by masks and distancing, and vector-borne by controlling the vector.",
+      },
     ],
     misconceptions: [
       {
@@ -2070,6 +2331,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "Photosynthesis is controlled by enzymes. As temperature rises the rate increases, because particles collide more often and with more energy. Above the optimum, however, the enzymes begin to denature — the active site changes shape so the substrate no longer fits — and this is permanent. So instead of plateauing like the other limiting factors, the rate drops sharply as more enzyme molecules are destroyed. Mark this one yourself: the mark is for denaturing and the active site, not just 'it gets too hot'.",
       },
+      {
+        question: "Which of these are the RAW MATERIALS for photosynthesis?",
+        choices: [
+          "Carbon dioxide and water",
+          "Glucose and oxygen",
+          "Oxygen and water",
+          "Glucose and carbon dioxide",
+        ],
+        accept: [
+          "Carbon dioxide and water",
+        ],
+        answer: "Carbon dioxide and water go in; glucose and oxygen come out. Reversing these is one of the most common errors in the whole subject.",
+      },
+      {
+        question: "Photosynthesis is described as an ENDOTHERMIC reaction because:",
+        choices: [
+          "It takes in energy from light",
+          "It releases heat to the surroundings",
+          "It happens only at night",
+          "It does not involve energy at all",
+        ],
+        accept: [
+          "It takes in energy from light",
+        ],
+        answer: "Energy is absorbed from light and stored in glucose. Respiration is the exothermic opposite, releasing that stored energy.",
+      },
+      {
+        question: "Which of these is a limiting factor for photosynthesis?",
+        choices: [
+          "Light intensity",
+          "Oxygen concentration",
+          "Nitrogen concentration",
+          "Soil colour",
+        ],
+        accept: [
+          "Light intensity",
+        ],
+        answer: "The three main limiting factors are light intensity, carbon dioxide concentration and temperature. Chlorophyll amount also matters.",
+      },
+      {
+        question: "Where in a plant cell does photosynthesis take place?",
+        choices: [
+          "Chloroplasts",
+          "Mitochondria",
+          "The nucleus",
+          "The vacuole",
+        ],
+        accept: [
+          "Chloroplasts",
+        ],
+        answer: "Chloroplasts contain chlorophyll, which absorbs light. Root cells have none, which is why roots cannot photosynthesise.",
+      },
+      {
+        question: "Doubling the distance of a lamp from a plant changes the light intensity by a factor of:",
+        choices: [
+          "One quarter",
+          "One half",
+          "Two",
+          "Four",
+        ],
+        accept: [
+          "One quarter",
+        ],
+        answer: "Light intensity follows an inverse square law: intensity is proportional to 1 divided by distance squared, so double the distance means a quarter the intensity.",
+      },
     ],
     misconceptions: [
       {
@@ -2287,6 +2613,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Compare aerobic and anaerobic respiration.",
         answer:
           "Aerobic respiration uses oxygen and breaks glucose down completely into carbon dioxide and water, releasing a large amount of energy. Anaerobic respiration happens without oxygen and breaks glucose down only partly, so it releases far less energy per molecule — in muscle it produces lactic acid, and in yeast and plants ethanol and carbon dioxide. Aerobic respiration happens in the mitochondria and runs continuously; anaerobic is a short-term measure used when oxygen cannot be supplied quickly enough, such as during a sprint. Mark this one yourself: full marks need the products, the energy difference AND the reason for that difference.",
+      },
+      {
+        question: "What is the word equation for AEROBIC respiration?",
+        choices: [
+          "Glucose + oxygen -> carbon dioxide + water",
+          "Carbon dioxide + water -> glucose + oxygen",
+          "Glucose -> lactic acid",
+          "Glucose -> ethanol + carbon dioxide",
+        ],
+        accept: [
+          "Glucose + oxygen -> carbon dioxide + water",
+        ],
+        answer: "Aerobic respiration uses oxygen and releases far more energy per glucose molecule than anaerobic respiration.",
+      },
+      {
+        question: "What does anaerobic respiration produce in HUMAN muscle cells?",
+        choices: [
+          "Lactic acid",
+          "Ethanol and carbon dioxide",
+          "Water and oxygen",
+          "Glucose",
+        ],
+        accept: [
+          "Lactic acid",
+        ],
+        answer: "Human muscle produces lactic acid. Yeast and plants produce ethanol and carbon dioxide, which is fermentation.",
+      },
+      {
+        question: "Which statement about respiration is correct?",
+        choices: [
+          "It happens in every living cell, all the time",
+          "It only happens in animals",
+          "It only happens during exercise",
+          "It only happens at night in plants",
+        ],
+        accept: [
+          "It happens in every living cell, all the time",
+        ],
+        answer: "Plants respire constantly too. In daylight photosynthesis simply outpaces it, which is why they appear to release oxygen.",
+      },
+      {
+        question: "What is meant by oxygen debt?",
+        choices: [
+          "The extra oxygen needed after exercise to break down lactic acid",
+          "Oxygen lost through the skin",
+          "Oxygen used up during photosynthesis",
+          "The oxygen a person breathes in at rest",
+        ],
+        accept: [
+          "The extra oxygen needed after exercise to break down lactic acid",
+        ],
+        answer: "It explains why you keep breathing hard after stopping — the lactic acid built up during anaerobic respiration still has to be oxidised.",
+      },
+      {
+        question: "Compared with aerobic respiration, anaerobic respiration releases:",
+        choices: [
+          "Much less energy per glucose molecule",
+          "Slightly more energy",
+          "Exactly the same energy",
+          "No energy at all",
+        ],
+        accept: [
+          "Much less energy per glucose molecule",
+        ],
+        answer: "Anaerobic respiration is faster to start but incomplete, so it releases far less energy and cannot be sustained.",
       },
     ],
     misconceptions: [
@@ -2983,6 +3374,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Explain how a red blood cell is adapted to its function.",
         answer:
           "It contains haemoglobin, which binds oxygen in the lungs and releases it in the tissues. It has no nucleus, which leaves more room inside for haemoglobin so it can carry more oxygen. Its biconcave disc shape gives a large surface area relative to its volume, so oxygen diffuses in and out quickly, and the flexible shape lets it squeeze through narrow capillaries. Mark this one yourself: each adaptation only scores when you also say what it achieves.",
+      },
+      {
+        question: "Which blood vessel carries blood AWAY from the heart?",
+        choices: [
+          "An artery",
+          "A vein",
+          "A capillary",
+          "The vena cava",
+        ],
+        accept: [
+          "An artery",
+        ],
+        answer: "Arteries carry blood away from the heart at high pressure and have thick muscular walls. Veins return blood and have valves.",
+      },
+      {
+        question: "Which chamber of the heart pumps blood to the body?",
+        choices: [
+          "The left ventricle",
+          "The right ventricle",
+          "The left atrium",
+          "The right atrium",
+        ],
+        accept: [
+          "The left ventricle",
+        ],
+        answer: "The left ventricle has the thickest muscular wall because it pumps to the whole body. The right ventricle only pumps to the lungs.",
+      },
+      {
+        question: "Which component of blood transports oxygen?",
+        choices: [
+          "Red blood cells",
+          "White blood cells",
+          "Platelets",
+          "Plasma",
+        ],
+        accept: [
+          "Red blood cells",
+        ],
+        answer: "Red blood cells contain haemoglobin and have no nucleus, leaving more room for it. Platelets clot and white cells fight infection.",
+      },
+      {
+        question: "Why do capillaries have walls one cell thick?",
+        choices: [
+          "To give a short diffusion distance for exchange",
+          "To withstand high pressure",
+          "To stop blood flowing backwards",
+          "To store oxygen",
+        ],
+        accept: [
+          "To give a short diffusion distance for exchange",
+        ],
+        answer: "A one-cell wall means substances diffuse quickly between blood and tissues, which is the whole purpose of a capillary.",
+      },
+      {
+        question: "What is the role of valves in veins?",
+        choices: [
+          "To stop blood flowing backwards",
+          "To speed the blood up",
+          "To filter waste from the blood",
+          "To add oxygen to the blood",
+        ],
+        accept: [
+          "To stop blood flowing backwards",
+        ],
+        answer: "Blood in veins is at low pressure, so valves are needed to keep it moving in one direction back to the heart.",
       },
     ],
     misconceptions: [
