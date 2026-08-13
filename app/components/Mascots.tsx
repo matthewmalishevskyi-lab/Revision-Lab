@@ -1172,6 +1172,18 @@ export function Lumen(props: MascotProps) {
       <path d="M34.5 50.5 L32.8 104" stroke="#8a5a3c" strokeWidth={3.4} strokeLinecap="round" />
       <path d="M85.5 50.5 L87.2 104" stroke="#7a4d32" strokeWidth={3.4} strokeLinecap="round" />
 
+      {/* ── Arms and hands ──
+             Added so Lumen belongs to the same family as the rest of the cast.
+             Every other mascot has visible hands, and without them a lantern
+             reads as a prop somebody left on a table rather than as a character
+             standing next to Pixel and Hoot. The arms are short and curved
+             outward so the silhouette still reads as a lantern first. ── */}
+      <path d="M34 76 Q25 79.5 23.5 88" stroke="#a0673f" strokeWidth={6} fill="none" strokeLinecap="round" />
+      <path d="M86 76 Q95 79.5 96.5 88" stroke="#8a5a3c" strokeWidth={6} fill="none" strokeLinecap="round" />
+      <circle cx="23" cy="91" r="5.2" fill="#c98a63" />
+      <circle cx="97" cy="91" r="5.2" fill="#b87d55" />
+      <path d="M97 85.8 A5.2 5.2 0 0 1 97 96.2 A3 5.2 0 0 0 97 85.8 Z" fill="#000000" opacity={0.13} />
+
       {/* ── The flame. Warm core, brighter centre. ── */}
       <path d="M60 79 Q67.5 87 67.5 92.5 Q67.5 99 60 99 Q52.5 99 52.5 92.5 Q52.5 87 60 79 Z" fill="#f59e0b" />
       <path d="M60 79 Q67.5 87 67.5 92.5 Q67.5 99 60 99 Q64 93.5 63.4 89 Q62.8 84 60 79 Z" fill="#d97706" opacity={0.5} />
