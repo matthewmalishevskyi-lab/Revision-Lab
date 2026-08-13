@@ -298,4 +298,264 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "religious-education/introducing-christianity": {
+    summary:
+      "Christianity is the world's largest religion and the largest in the UK. This topic covers what Christians believe about God, Jesus and salvation, the main denominations and why they differ, the Bible and the Church, and how Christians put belief into practice. Beliefs are described as what Christians hold, not as claims this site makes.",
+    keyFacts: [
+      {
+        heading: "God and the Trinity",
+        points: [
+          "Christianity is MONOTHEISTIC: Christians believe there is one God.",
+          "Christians describe God as omnipotent (all-powerful), omniscient (all-knowing), omnibenevolent (all-loving) and eternal.",
+          "The TRINITY is the belief that the one God is three persons: Father, Son and Holy Spirit.",
+          "Christians hold this is one God in three persons, not three gods — a distinction they consider essential.",
+          "The Nicene Creed, agreed in the fourth century, is the statement of belief most widely accepted across denominations.",
+          "Christians believe God is both transcendent (beyond the world) and immanent (present within it).",
+        ],
+      },
+      {
+        heading: "Jesus, and beliefs about salvation",
+        points: [
+          "Christians believe Jesus is the Son of God and the Messiah promised in Jewish scripture.",
+          "The INCARNATION is the belief that God became human in Jesus — fully God and fully human.",
+          "The CRUCIFIXION is Jesus's execution by the Romans; Christians believe he died willingly.",
+          "The RESURRECTION is the belief that Jesus rose from the dead on the third day, and is central to Christian faith.",
+          "ATONEMENT is the belief that Jesus's death repaired the relationship between God and humanity that sin had broken.",
+          "SALVATION is being saved from sin and its consequences; Christians differ over the balance between faith, grace and good works.",
+        ],
+      },
+      {
+        heading: "The Bible and the Church",
+        points: [
+          "The BIBLE is the Christian holy book, in two parts: the Old Testament and the New Testament.",
+          "The GOSPELS — Matthew, Mark, Luke and John — record the life and teaching of Jesus.",
+          "Christians differ over how to read the Bible: some take it literally, others as inspired but written by humans in their own time.",
+          "The CHURCH means both the building and the worldwide community of Christians.",
+          "Roman Catholicism is the largest denomination worldwide, led by the Pope.",
+          "Orthodox, Anglican, Baptist, Methodist, Pentecostal and Quaker traditions all differ in worship, authority and practice.",
+        ],
+      },
+      {
+        heading: "Living as a Christian",
+        points: [
+          "WORSHIP may be liturgical, following a set order, or non-liturgical and informal.",
+          "Prayer includes set prayers such as the Lord's Prayer and personal, spontaneous prayer.",
+          "SACRAMENTS are outward signs of inward grace; baptism and Holy Communion are the two most widely shared.",
+          "Christmas celebrates the birth of Jesus; Easter, the more important festival theologically, celebrates the resurrection.",
+          "The two greatest commandments taught by Jesus are to love God and to love your neighbour as yourself.",
+          "Christian teaching on loving one's neighbour has motivated large-scale charity, hospital founding and social campaigning.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Trinity", definition: "The Christian belief that the one God is three persons: Father, Son and Holy Spirit." },
+      { term: "Incarnation", definition: "The belief that God became human in the person of Jesus." },
+      { term: "Resurrection", definition: "The belief that Jesus rose from the dead on the third day after his crucifixion." },
+      { term: "Crucifixion", definition: "The execution of Jesus by the Romans by being nailed to a cross." },
+      { term: "Atonement", definition: "The belief that Jesus's death repaired the relationship between God and humanity." },
+      { term: "Salvation", definition: "Being saved from sin and its consequences, according to Christian belief." },
+      { term: "Grace", definition: "God's undeserved love and help, freely given, in Christian teaching." },
+      { term: "Omnipotent", definition: "All-powerful — one of the qualities Christians attribute to God." },
+      { term: "Omnibenevolent", definition: "All-loving — one of the qualities Christians attribute to God." },
+      { term: "Gospel", definition: "One of the four New Testament accounts of the life and teaching of Jesus." },
+      { term: "Sacrament", definition: "An outward sign of inward grace, such as baptism or Holy Communion." },
+      { term: "Baptism", definition: "A sacrament using water to mark entry into the Christian community." },
+      { term: "Holy Communion", definition: "The sacrament sharing bread and wine, recalling Jesus's last supper." },
+      { term: "Denomination", definition: "A distinct group within Christianity, such as Catholic, Anglican or Baptist." },
+      { term: "Creed", definition: "A formal statement of Christian belief, such as the Nicene Creed." },
+      { term: "Evangelism", definition: "Sharing the Christian message with others in the hope they will believe." },
+    ],
+    examTips: [
+      {
+        tip: "Say 'Christians believe', every time",
+        detail:
+          "The Trinity, the resurrection and the incarnation are beliefs held by Christians, and must be written that way rather than as statements of fact.",
+      },
+      {
+        tip: "The Trinity is one God, not three",
+        detail:
+          "Writing that Christians believe in three gods is a serious error. One God in three persons is the phrase to learn.",
+      },
+      {
+        tip: "Name denominations rather than generalising",
+        detail:
+          "Catholics, Quakers and Baptists differ on baptism, authority and worship. Naming which group you mean lifts an answer immediately.",
+      },
+      {
+        tip: "Easter matters more than Christmas theologically",
+        detail:
+          "Christians regard the resurrection as the foundation of the faith. Assuming Christmas is the most important festival is a common slip.",
+      },
+      {
+        tip: "Learn the two greatest commandments",
+        detail:
+          "Love God, and love your neighbour as yourself. They can be used in almost any ethics question about Christian teaching.",
+      },
+      {
+        tip: "Different Christians read the Bible differently",
+        detail:
+          "Literal, liberal and everything in between. Recognising that range is worth marks in questions about authority and science.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the Christian belief that one God is three persons called?",
+        accept: ["trinity", "the trinity", "holy trinity"],
+        answer:
+          "The Trinity — Father, Son and Holy Spirit. Christians hold this is one God in three persons, not three separate gods.",
+      },
+      {
+        question: "What is the belief that God became human in Jesus called?",
+        accept: ["incarnation", "the incarnation"],
+        answer:
+          "The Incarnation. Christians believe Jesus was fully God and fully human, which is why he is called the Son of God.",
+      },
+      {
+        question: "What do Christians believe happened three days after the crucifixion?",
+        accept: ["resurrection", "the resurrection", "jesus rose from the dead", "he rose from the dead"],
+        answer:
+          "The Resurrection — Christians believe Jesus rose from the dead. It is celebrated at Easter and treated as the foundation of the faith.",
+      },
+      {
+        question: "How many Gospels are there in the New Testament? Give the number only.",
+        accept: ["4", "four"],
+        answer:
+          "4 — Matthew, Mark, Luke and John. They record the life and teaching of Jesus.",
+      },
+      {
+        question: "What word means all-powerful, used by Christians to describe God?",
+        accept: ["omnipotent", "omnipotence"],
+        answer:
+          "Omnipotent. Omniscient means all-knowing and omnibenevolent means all-loving; all three appear in the problem of evil.",
+      },
+      {
+        question: "What is the sacrament using water to mark entry into the Christian community?",
+        accept: ["baptism", "christening"],
+        answer:
+          "Baptism. Denominations differ: many baptise infants, while Baptists and others baptise only those old enough to choose.",
+      },
+      {
+        question: "Which festival do Christians regard as most important theologically?",
+        accept: ["easter"],
+        answer:
+          "Easter, because it celebrates the resurrection. Christmas is more widely observed culturally but is not the theological centre.",
+      },
+      {
+        question: "Which Christian denomination is led by the Pope?",
+        accept: ["roman catholic", "catholic", "catholicism", "roman catholicism"],
+        answer:
+          "Roman Catholicism, the largest denomination worldwide. Orthodox, Anglican and Protestant churches do not accept papal authority.",
+      },
+      {
+        question: "What is the term for a distinct group within Christianity, such as Anglican or Baptist?",
+        accept: ["denomination", "a denomination"],
+        answer:
+          "A denomination. Using the specific name rather than 'Christians' is one of the easiest ways to raise an answer's level.",
+      },
+      {
+        question: "Name one of the two greatest commandments taught by Jesus.",
+        accept: ["love god", "love your neighbour", "love your neighbor", "love thy neighbour", "love god with all your heart", "love others"],
+        answer:
+          "Love God with all your heart, and love your neighbour as yourself. Both are used constantly in Christian ethics.",
+      },
+      {
+        question: "Which statement best describes the Christian belief in the Trinity?",
+        choices: [
+          "One God in three persons: Father, Son and Holy Spirit",
+          "Three separate gods who work together",
+          "God changes into a different form each day",
+          "God is one person with three names",
+        ],
+        accept: ["One God in three persons: Father, Son and Holy Spirit"],
+        answer:
+          "Christians insist on one God in three persons. Both 'three gods' and 'one person with three names' are positions the Church rejected.",
+      },
+      {
+        question: "Which belief do Christians hold about Jesus's death?",
+        choices: [
+          "It brought atonement, repairing the relationship between God and humanity",
+          "It was an accident with no religious meaning",
+          "It proved he was not the Messiah",
+          "It ended Christianity"
+        ],
+        accept: ["It brought atonement, repairing the relationship between God and humanity"],
+        answer:
+          "Atonement is the key term. Christians believe Jesus died willingly, and that the resurrection followed.",
+      },
+      {
+        question: "Which is TRUE about how Christians read the Bible?",
+        choices: [
+          "Christians differ, from literal readings to seeing it as inspired but human-written",
+          "All Christians read it completely literally",
+          "No Christians treat it as authoritative",
+          "Only priests are permitted to read it",
+        ],
+        accept: ["Christians differ, from literal readings to seeing it as inspired but human-written"],
+        answer:
+          "That range explains why Christians reach different conclusions on science, creation and ethics from the same text.",
+      },
+      {
+        question: "Which pair of sacraments is shared most widely across Christian denominations?",
+        choices: [
+          "Baptism and Holy Communion",
+          "Marriage and confession",
+          "Pilgrimage and fasting",
+          "Ordination and anointing",
+        ],
+        accept: ["Baptism and Holy Communion"],
+        answer:
+          "Catholics recognise seven sacraments; many Protestant churches recognise these two, and Quakers observe none outwardly.",
+      },
+      {
+        question: "Which statement would be written correctly in an RE exam?",
+        choices: [
+          "Christians believe Jesus rose from the dead.",
+          "Jesus rose from the dead.",
+          "Jesus obviously did not rise from the dead.",
+          "The resurrection is a proven historical fact.",
+        ],
+        accept: ["Christians believe Jesus rose from the dead."],
+        answer:
+          "Attribution is the skill being tested. The other three all take a position the exam does not ask you to take.",
+      },
+      {
+        question: "Explain what Christians mean by the Incarnation, and why it matters to them. Write three or four sentences.",
+        answer:
+          "The Incarnation is the Christian belief that God became human in the person of Jesus, who is held to be fully God and fully human at the same time. It matters because it means Christians believe God did not stay distant but entered human life directly, experiencing hunger, friendship, grief and pain. That belief underpins the idea that God understands human suffering from the inside rather than only observing it. It is also the basis for the belief that Jesus's death could bring atonement, since Christians hold that only someone both fully divine and fully human could bridge the gap between God and humanity. Mark this one yourself: a clear definition, the 'fully God and fully human' phrase, and at least one reason it matters to believers.",
+      },
+      {
+        question: "'The most important Christian belief is the resurrection.' Evaluate this statement.",
+        answer:
+          "For: Christians regard the resurrection as the event that confirms Jesus was the Son of God rather than simply a teacher who was executed; Paul writes that if Christ has not been raised then Christian faith is empty, which is about as direct as scripture gets; and it grounds the hope of life after death that shapes Christian attitudes to death and grief. Against: the Incarnation could be argued as more fundamental, since without God becoming human there is no resurrection to have; some Christians place greater weight on Jesus's teaching and example, particularly Quakers and those in the liberal tradition, and would say how you live matters more than which events you affirm; and belief in the Trinity is arguably prior to both, since it defines who Christians think Jesus is. A defensible judgement is that the resurrection is the belief most Christians would identify as the foundation, and the credal statements support that — but 'most important' depends on whether you mean logically prior, most distinctive, or most influential on daily life, and the answer differs for each. Mark this one yourself: both sides with named traditions or sources, and a conclusion that does more than pick a side.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Christians believe in three gods.",
+        right:
+          "Christians believe in ONE God in three persons — Father, Son and Holy Spirit. The distinction is central to the doctrine.",
+      },
+      {
+        wrong: "Christmas is the most important Christian festival.",
+        right:
+          "It is the most widely observed culturally, but Christians generally regard Easter as more important, because it celebrates the resurrection.",
+      },
+      {
+        wrong: "All Christians read the Bible literally.",
+        right:
+          "Christians range from literal readings to treating scripture as divinely inspired but written by people in their own historical setting.",
+      },
+      {
+        wrong: "All Christian churches are basically the same.",
+        right:
+          "Denominations differ substantially on authority, sacraments, worship and ethics. Catholics, Baptists and Quakers are not interchangeable.",
+      },
+      {
+        wrong: "Christians believe Jesus was only a good human teacher.",
+        right:
+          "That is a view held by some non-Christians. Christian belief is that Jesus is the Son of God, fully divine and fully human.",
+      },
+    ],
+  },
 };
