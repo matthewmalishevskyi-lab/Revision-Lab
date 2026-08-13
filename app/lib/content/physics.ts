@@ -832,6 +832,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "Gas particles move randomly at high speed in all directions. When a particle strikes a wall it changes direction, which means its momentum changes, and by Newton's laws that requires a force from the wall — and an equal force on the wall from the particle. With enormous numbers of particles colliding constantly, these individual forces add up to a steady average force spread over the wall's area, which is what we measure as pressure. Mark this one yourself: collisions and force per unit area are the two ideas being tested.",
       },
+      {
+        question: "What happens to a substance's temperature during a change of state?",
+        choices: [
+          "It stays constant while the energy breaks bonds",
+          "It rises steadily",
+          "It falls steadily",
+          "It rises then falls",
+        ],
+        accept: [
+          "It stays constant while the energy breaks bonds",
+        ],
+        answer: "The energy goes into the internal store, overcoming forces between particles rather than making them move faster.",
+      },
+      {
+        question: "Specific heat capacity is the energy needed to:",
+        choices: [
+          "Raise the temperature of 1 kg of a substance by 1 degree C",
+          "Melt 1 kg of a substance",
+          "Boil 1 kg of a substance",
+          "Move 1 kg of a substance one metre",
+        ],
+        accept: [
+          "Raise the temperature of 1 kg of a substance by 1 degree C",
+        ],
+        answer: "Specific LATENT heat is the energy for a change of state at constant temperature — the two are easily confused.",
+      },
+      {
+        question: "Why does gas pressure increase when a sealed container is heated?",
+        choices: [
+          "Particles move faster and collide with the walls more often and harder",
+          "The particles get bigger",
+          "The container shrinks",
+          "More particles are created",
+        ],
+        accept: [
+          "Particles move faster and collide with the walls more often and harder",
+        ],
+        answer: "Both the frequency and the force of collisions rise. Saying only 'they move faster' is an incomplete answer.",
+      },
+      {
+        question: "Changes of state are described as physical changes because:",
+        choices: [
+          "The substance keeps the same particles and can be changed back",
+          "New substances are formed",
+          "Mass is lost",
+          "The particles are destroyed",
+        ],
+        accept: [
+          "The substance keeps the same particles and can be changed back",
+        ],
+        answer: "Melting ice gives water, which can be refrozen. A chemical change makes a new substance and is much harder to reverse.",
+      },
+      {
+        question: "Density is highest in which state, for most substances?",
+        choices: [
+          "Solid",
+          "Liquid",
+          "Gas",
+          "All three are equal",
+        ],
+        accept: [
+          "Solid",
+        ],
+        answer: "Particles are most closely packed in a solid. Water is the famous exception, because ice is less dense than liquid water.",
+      },
     ],
     misconceptions: [
       {
@@ -1390,6 +1455,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "The power wasted heating the transmission cables is given by P = I²R, so it depends on the SQUARE of the current — halving the current cuts the losses to a quarter. Since power delivered is P = VI, transmitting the same power at a much higher potential difference means a much smaller current. Step-up transformers therefore raise the potential difference for transmission, and step-down transformers reduce it again to a safe level before it reaches homes. Mark this one yourself: the I² relationship is the key idea, and mentioning both transformers earns the final mark.",
       },
+      {
+        question: "Current is best described as:",
+        choices: [
+          "The rate of flow of charge",
+          "The energy of each electron",
+          "The push from the battery",
+          "The resistance of the wire",
+        ],
+        accept: [
+          "The rate of flow of charge",
+        ],
+        answer: "Measured in amperes, where one amp is one coulomb per second. Potential difference is the push, not the flow.",
+      },
+      {
+        question: "Potential difference is measured using a:",
+        choices: [
+          "Voltmeter connected in parallel",
+          "Ammeter connected in series",
+          "Voltmeter connected in series",
+          "Ammeter connected in parallel",
+        ],
+        accept: [
+          "Voltmeter connected in parallel",
+        ],
+        answer: "Voltmeters go across a component; ammeters go in line with it. Wiring them the wrong way round is a standard exam trap.",
+      },
+      {
+        question: "Ohm's law is written as:",
+        choices: [
+          "V = IR",
+          "V = I/R",
+          "I = VR",
+          "R = VI",
+        ],
+        accept: [
+          "V = IR",
+        ],
+        answer: "Potential difference equals current times resistance. A component obeying it has a straight-line current-voltage graph.",
+      },
+      {
+        question: "As a filament lamp gets hotter, its resistance:",
+        choices: [
+          "Increases",
+          "Decreases",
+          "Stays constant",
+          "Falls to zero",
+        ],
+        accept: [
+          "Increases",
+        ],
+        answer: "Ions vibrate more, so electrons collide more often. That is why a filament lamp's graph is an S-shaped curve, not a straight line.",
+      },
+      {
+        question: "A diode is a component that:",
+        choices: [
+          "Only allows current to flow in one direction",
+          "Stores charge",
+          "Always has constant resistance",
+          "Converts light into current",
+        ],
+        accept: [
+          "Only allows current to flow in one direction",
+        ],
+        answer: "Its resistance is very high in the reverse direction, which is why diodes are used to control the direction of current.",
+      },
     ],
     misconceptions: [
       {
@@ -1870,6 +2000,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "Connect the component in series with a battery, an ammeter and a variable resistor, and connect a voltmeter in parallel across the component. Use the variable resistor to change the current, and record several pairs of current and potential difference readings rather than relying on one. Calculate resistance from R = V ÷ I for each pair, or plot V against I and use the gradient. Switch the circuit off between readings so the component does not heat up, since a temperature change would alter the resistance and spoil the result. Mark this one yourself: the circuit layout, several readings, and controlling temperature are the three things worth credit.",
       },
+      {
+        question: "In a SERIES circuit, the current:",
+        choices: [
+          "Is the same at every point",
+          "Splits between components",
+          "Is largest nearest the battery",
+          "Increases along the circuit",
+        ],
+        accept: [
+          "Is the same at every point",
+        ],
+        answer: "Charge is not used up. In parallel, current splits between branches and recombines.",
+      },
+      {
+        question: "In a PARALLEL circuit, the potential difference across each branch is:",
+        choices: [
+          "The same as the supply",
+          "Shared between the branches",
+          "Zero",
+          "Always doubled",
+        ],
+        accept: [
+          "The same as the supply",
+        ],
+        answer: "Each branch gets the full supply p.d., which is why removing one branch does not affect the others.",
+      },
+      {
+        question: "Adding another resistor in PARALLEL makes the total resistance:",
+        choices: [
+          "Smaller",
+          "Larger",
+          "Unchanged",
+          "Zero",
+        ],
+        accept: [
+          "Smaller",
+        ],
+        answer: "More paths for the current means less overall opposition. This surprises people, so it is worth remembering deliberately.",
+      },
+      {
+        question: "How does the resistance of a thermistor change as temperature rises?",
+        choices: [
+          "It decreases",
+          "It increases",
+          "It stays the same",
+          "It becomes infinite",
+        ],
+        accept: [
+          "It decreases",
+        ],
+        answer: "Thermistors are used in thermostats. An LDR behaves similarly with light — resistance falls as brightness rises.",
+      },
+      {
+        question: "What happens to the other lamps when one lamp fails in a series circuit?",
+        choices: [
+          "They all go out",
+          "They stay on unchanged",
+          "They get brighter",
+          "Only the next one goes out",
+        ],
+        accept: [
+          "They all go out",
+        ],
+        answer: "A break anywhere in a series circuit stops the current everywhere. In parallel, the other branches keep working.",
+      },
     ],
     misconceptions: [
       {
@@ -2108,6 +2303,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why touching the live wire is dangerous even when the appliance is switched off.",
         answer:
           "The live wire remains at about 230 V relative to earth whether the appliance's switch is open or closed, because the switch only interrupts the circuit inside the appliance. A person standing on the ground is at 0 V, so touching the live wire creates a potential difference of around 230 V across their body. That drives a current through them to earth, and even a small current through the heart can be fatal. Mark this one yourself: the potential difference between the wire and earth, and the current through the body, are the key points.",
+      },
+      {
+        question: "What is the frequency of UK mains electricity?",
+        choices: [
+          "50 Hz",
+          "60 Hz",
+          "230 Hz",
+          "100 Hz",
+        ],
+        accept: [
+          "50 Hz",
+        ],
+        answer: "UK mains is about 230 V at 50 Hz, alternating current. Cells and batteries supply direct current instead.",
+      },
+      {
+        question: "What is the purpose of the earth wire?",
+        choices: [
+          "To carry current safely away if a fault makes the casing live",
+          "To complete the normal circuit",
+          "To reduce the voltage",
+          "To store charge",
+        ],
+        accept: [
+          "To carry current safely away if a fault makes the casing live",
+        ],
+        answer: "It carries no current normally. In a fault it gives a low-resistance path, causing a large current that blows the fuse.",
+      },
+      {
+        question: "Which colour insulation identifies the LIVE wire in a UK three-pin plug?",
+        choices: [
+          "Brown",
+          "Blue",
+          "Green and yellow",
+          "Black",
+        ],
+        accept: [
+          "Brown",
+        ],
+        answer: "Brown live, blue neutral, green-and-yellow earth. The live wire alternates between positive and negative relative to neutral.",
+      },
+      {
+        question: "A fuse protects an appliance by:",
+        choices: [
+          "Melting and breaking the circuit if the current is too high",
+          "Reducing the voltage",
+          "Storing excess charge",
+          "Earthing the appliance",
+        ],
+        accept: [
+          "Melting and breaking the circuit if the current is too high",
+        ],
+        answer: "The fuse rating should be just above the normal operating current. A circuit breaker does the same job but can be reset.",
+      },
+      {
+        question: "Why do double-insulated appliances need no earth wire?",
+        choices: [
+          "Their casing is made of an insulator so it cannot become live",
+          "They use less current",
+          "They run on direct current",
+          "They have two fuses",
+        ],
+        accept: [
+          "Their casing is made of an insulator so it cannot become live",
+        ],
+        answer: "With a plastic casing there is no conducting surface to touch, so an earth connection would serve no purpose.",
       },
     ],
     misconceptions: [
@@ -2988,6 +3248,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer:
           "Light travels more slowly in glass than in air, so as the ray crosses the boundary it changes speed. If it meets the surface at an angle, the change in speed makes it change direction, bending TOWARDS the normal as it enters the denser material. The frequency stays the same, because it is set by the source, so the wavelength must decrease to match the slower speed. On leaving the glass the ray speeds up again and bends away from the normal. Mark this one yourself: slowing down, bending towards the normal, and frequency staying constant are the three points.",
       },
+      {
+        question: "In a TRANSVERSE wave, the vibrations are:",
+        choices: [
+          "At right angles to the direction of travel",
+          "In the same direction as travel",
+          "In a circle",
+          "Not present at all",
+        ],
+        accept: [
+          "At right angles to the direction of travel",
+        ],
+        answer: "Light and water waves are transverse. Sound is longitudinal, with vibrations along the direction of travel.",
+      },
+      {
+        question: "The wave equation is:",
+        choices: [
+          "wave speed = frequency x wavelength",
+          "wave speed = frequency / wavelength",
+          "frequency = wavelength x amplitude",
+          "wavelength = speed x amplitude",
+        ],
+        accept: [
+          "wave speed = frequency x wavelength",
+        ],
+        answer: "In a given medium the speed is fixed, so a higher frequency means a shorter wavelength.",
+      },
+      {
+        question: "What does the amplitude of a wave measure?",
+        choices: [
+          "The maximum displacement from the rest position",
+          "The distance between two peaks",
+          "The number of waves per second",
+          "The speed of the wave",
+        ],
+        accept: [
+          "The maximum displacement from the rest position",
+        ],
+        answer: "Amplitude relates to the energy carried — a louder sound or brighter light has a larger amplitude.",
+      },
+      {
+        question: "Frequency is measured in:",
+        choices: [
+          "Hertz",
+          "Metres",
+          "Seconds",
+          "Newtons",
+        ],
+        accept: [
+          "Hertz",
+        ],
+        answer: "One hertz is one wave per second. Period, the time for one wave, is 1 divided by frequency.",
+      },
+      {
+        question: "When a wave passes from one medium into another and changes direction, this is:",
+        choices: [
+          "Refraction",
+          "Reflection",
+          "Diffraction",
+          "Absorption",
+        ],
+        accept: [
+          "Refraction",
+        ],
+        answer: "Refraction happens because the wave changes speed. Reflection is bouncing back and diffraction is spreading through a gap.",
+      },
     ],
     misconceptions: [
       {
@@ -3222,6 +3547,71 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why all electromagnetic waves travel at the same speed in a vacuum but have different wavelengths.",
         answer:
           "In a vacuum every electromagnetic wave travels at 3 × 10⁸ m/s, because that speed is a property of the vacuum itself rather than of the individual wave. The wave equation v = fλ therefore fixes the product of frequency and wavelength at that constant value. So if a wave has a high frequency it must have a correspondingly short wavelength, and if it has a low frequency it must have a long one — which is exactly the pattern seen across the spectrum from radio to gamma. Mark this one yourself: using v = fλ to explain the inverse relationship is what earns the marks.",
+      },
+      {
+        question: "Which part of the electromagnetic spectrum has the LONGEST wavelength?",
+        choices: [
+          "Radio waves",
+          "Gamma rays",
+          "X-rays",
+          "Ultraviolet",
+        ],
+        accept: [
+          "Radio waves",
+        ],
+        answer: "The order is radio, microwave, infrared, visible, ultraviolet, X-ray, gamma — longest to shortest wavelength.",
+      },
+      {
+        question: "All electromagnetic waves travel at the same speed in:",
+        choices: [
+          "A vacuum",
+          "Water",
+          "Glass",
+          "Air only",
+        ],
+        accept: [
+          "A vacuum",
+        ],
+        answer: "They all travel at 3 x 10^8 m/s in a vacuum. In other materials they slow down by different amounts, which causes refraction.",
+      },
+      {
+        question: "Which type of electromagnetic radiation is used for cooking in a microwave oven?",
+        choices: [
+          "Microwaves",
+          "Infrared",
+          "Ultraviolet",
+          "Gamma rays",
+        ],
+        accept: [
+          "Microwaves",
+        ],
+        answer: "Microwaves are absorbed by water molecules in food. A grill uses infrared, which heats the surface instead.",
+      },
+      {
+        question: "Which types of electromagnetic radiation are ionising?",
+        choices: [
+          "Ultraviolet, X-rays and gamma rays",
+          "Radio and microwaves",
+          "Infrared and visible light",
+          "Only gamma rays",
+        ],
+        accept: [
+          "Ultraviolet, X-rays and gamma rays",
+        ],
+        answer: "These carry enough energy to remove electrons from atoms, which can damage DNA and cause cancer.",
+      },
+      {
+        question: "Electromagnetic waves are all:",
+        choices: [
+          "Transverse",
+          "Longitudinal",
+          "Able to travel only through air",
+          "Visible to the human eye",
+        ],
+        accept: [
+          "Transverse",
+        ],
+        answer: "The whole spectrum is transverse and can travel through a vacuum, which is why sunlight reaches us through space.",
       },
     ],
     misconceptions: [
