@@ -779,6 +779,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer:
           "If any one of those sites suffers a data breach, attackers will try the same email and password combination on other services — this is called credential stuffing, and it is automated. One leaked site therefore exposes all three accounts. They should use a different password for each, ideally with a password manager, and enable two-factor authentication where offered. (Mark this one yourself.)",
       },
+      {
+        question: "Which of these is the strongest password?",
+        choices: [
+          "A long passphrase of several unrelated words",
+          "Your pet's name",
+          "Your date of birth",
+          "The word password with a 1 added",
+        ],
+        accept: [
+          "A long passphrase of several unrelated words",
+        ],
+        answer: "Length matters more than symbols. Personal details are easy to research, and common substitutions are the first thing attackers try.",
+      },
+      {
+        question: "Two-factor authentication improves security because:",
+        choices: [
+          "A stolen password alone is not enough to get in",
+          "It makes passwords longer",
+          "It encrypts the whole hard drive",
+          "It blocks all phishing emails",
+        ],
+        accept: [
+          "A stolen password alone is not enough to get in",
+        ],
+        answer: "The second factor is something you have, such as a phone, so a leaked password on its own is useless.",
+      },
+      {
+        question: "How should you judge whether an online source is reliable?",
+        choices: [
+          "Check who wrote it, when, and whether other sources agree",
+          "Trust it if it appears first in search results",
+          "Trust it if the site looks professional",
+          "Trust it if it has many shares",
+        ],
+        accept: [
+          "Check who wrote it, when, and whether other sources agree",
+        ],
+        answer: "Search ranking measures relevance and popularity, not accuracy. A polished design proves nothing about the content.",
+      },
+      {
+        question: "What is a digital footprint?",
+        choices: [
+          "The record of your activity left online",
+          "The storage a file takes up",
+          "The size of a website",
+          "The power a device uses",
+        ],
+        accept: [
+          "The record of your activity left online",
+        ],
+        answer: "It includes things you post and things recorded about you, and much of it is difficult or impossible to remove.",
+      },
+      {
+        question: "Backing up data protects mainly against:",
+        choices: [
+          "Loss from hardware failure, theft or ransomware",
+          "Slow internet speeds",
+          "Weak passwords",
+          "Software being out of date",
+        ],
+        accept: [
+          "Loss from hardware failure, theft or ransomware",
+        ],
+        answer: "A backup stored in the same place as the original is vulnerable to the same fire or theft, so keep one copy elsewhere.",
+      },
     ],
 
     misconceptions: [
@@ -3025,6 +3090,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because leading zeros matter and a numeric type would discard them, turning 01234 into 1234. Phone numbers may also contain spaces, plus signs or brackets, and no arithmetic is ever performed on them — so nothing is gained by storing them as numbers and something important is lost. (Mark this one yourself.)" },
       { question: "Explain why a relational database is preferable to a flat file for a school storing students, classes and teachers.",
         answer: "A flat file would repeat every student's details on each row for every class they take, so a change of address would need updating in many places. Miss one and the database contradicts itself. A relational design stores each student once in a Students table, each class once in a Classes table, and links them with foreign keys — so information is stored once, updated once, and cannot disagree with itself. (Mark this one yourself.)" },
+      {
+        question: "What is a PRIMARY KEY?",
+        choices: [
+          "A field that uniquely identifies each record",
+          "The first field in a table",
+          "A password protecting the database",
+          "A field that links to a website",
+        ],
+        accept: [
+          "A field that uniquely identifies each record",
+        ],
+        answer: "It must be unique and never empty. A foreign key is a primary key from another table, used to link the two.",
+      },
+      {
+        question: "In a relational database, what does a table represent?",
+        choices: [
+          "One type of entity, such as students",
+          "One single record",
+          "The whole database",
+          "A query result only",
+        ],
+        accept: [
+          "One type of entity, such as students",
+        ],
+        answer: "Splitting data across linked tables avoids storing the same information twice, which is what causes inconsistency.",
+      },
+      {
+        question: "Which SQL keyword retrieves data?",
+        choices: [
+          "SELECT",
+          "INSERT",
+          "DELETE",
+          "UPDATE",
+        ],
+        accept: [
+          "SELECT",
+        ],
+        answer: "SELECT reads, INSERT adds, UPDATE changes and DELETE removes. WHERE filters which records are affected.",
+      },
+      {
+        question: "An advantage of a relational database over a single flat file is:",
+        choices: [
+          "Data is stored once, reducing redundancy and inconsistency",
+          "It uses no storage space",
+          "It needs no software",
+          "Records cannot be deleted",
+        ],
+        accept: [
+          "Data is stored once, reducing redundancy and inconsistency",
+        ],
+        answer: "If an address is stored in three places, updating two of them leaves the data contradicting itself.",
+      },
+      {
+        question: "What does the SQL WHERE clause do?",
+        choices: [
+          "Filters which records are returned or affected",
+          "Sorts the results",
+          "Creates a new table",
+          "Joins two databases",
+        ],
+        accept: [
+          "Filters which records are returned or affected",
+        ],
+        answer: "ORDER BY sorts. Leaving WHERE off a DELETE statement removes every record in the table, which is unrecoverable.",
+      },
     ],
 
     misconceptions: [
@@ -3231,6 +3361,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "In everyday speech, 'tea or coffee' usually means one but not both. Boolean OR outputs 1 when either input is 1 AND when both are 1 — it is inclusive. The exclusive version, true for one but not both, is a separate gate called XOR. (Mark this one yourself.)" },
       { question: "Explain how a truth table can still earn marks even if your final output column is wrong.",
         answer: "Because the intermediate columns are your working. If the columns for (A AND B) and (NOT C) are correct but the final OR column has an error, an examiner can see the method was right and award method marks. A table with no intermediate columns and a wrong answer shows nothing and earns nothing. (Mark this one yourself.)" },
+      {
+        question: "An AND gate outputs 1 when:",
+        choices: [
+          "Both inputs are 1",
+          "At least one input is 1",
+          "Both inputs are 0",
+          "The input is 0",
+        ],
+        accept: [
+          "Both inputs are 1",
+        ],
+        answer: "AND needs everything true. OR needs at least one, and NOT simply inverts a single input.",
+      },
+      {
+        question: "An OR gate outputs 0 only when:",
+        choices: [
+          "Both inputs are 0",
+          "Both inputs are 1",
+          "One input is 1",
+          "The inputs differ",
+        ],
+        accept: [
+          "Both inputs are 0",
+        ],
+        answer: "OR gives 1 in the other three cases. Reading the truth table row by row is more reliable than memorising a phrase.",
+      },
+      {
+        question: "A NOT gate with an input of 1 outputs:",
+        choices: [
+          "0",
+          "1",
+          "Both",
+          "Neither",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "NOT inverts its single input, so 1 becomes 0 and 0 becomes 1. It is the only gate here with one input.",
+      },
+      {
+        question: "A logic circuit has 4 inputs. How many rows will its truth table need?",
+        choices: [
+          "16",
+          "8",
+          "4",
+          "32",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "2 to the power of the number of inputs: 2 to the 4th is 16. Three inputs give 8 rows and two give 4.",
+      },
+      {
+        question: "In the expression A AND (B OR C), what is evaluated first?",
+        choices: [
+          "B OR C, because it is in brackets",
+          "A AND B",
+          "Nothing, it is read left to right",
+          "The NOT operation",
+        ],
+        accept: [
+          "B OR C, because it is in brackets",
+        ],
+        answer: "Brackets come first, exactly as in arithmetic. Ignoring them changes the result of the whole expression.",
+      },
     ],
 
     misconceptions: [
@@ -3742,6 +3937,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because the mark is for identifying WHICH law and why it applies. 'This breaches the Computer Misuse Act 1990 because it is unauthorised access to computer material' names the Act, the year and the specific offence. A vague statement shows no knowledge of the legislation, which is the thing being assessed. (Mark this one yourself.)" },
       { question: "Discuss whether facial recognition should be used in schools. Give both sides and reach a conclusion.",
         answer: "In favour: faster registration and cantine payments, improved site security, and a reliable record of who is on site. Against: it collects biometric data about children, which is especially sensitive under data protection law; it requires consent and secure storage; systems are known to be less accurate for some groups, risking unfair treatment; and it normalises surveillance for young people. A supported conclusion might be that the convenience gains are modest while the privacy risks fall on children who cannot meaningfully consent, so it is hard to justify without a strong specific need. (Mark this one yourself.)" },
+      {
+        question: "Which law covers unauthorised access to computer systems?",
+        choices: [
+          "The Computer Misuse Act",
+          "The Data Protection Act",
+          "Copyright law",
+          "The Freedom of Information Act",
+        ],
+        accept: [
+          "The Computer Misuse Act",
+        ],
+        answer: "It covers unauthorised access, access with intent to commit an offence, and unauthorised modification of data.",
+      },
+      {
+        question: "Which law governs how organisations handle personal data?",
+        choices: [
+          "The Data Protection Act",
+          "The Computer Misuse Act",
+          "Patent law",
+          "The Communications Act",
+        ],
+        accept: [
+          "The Data Protection Act",
+        ],
+        answer: "It requires data to be accurate, kept securely, used only for stated purposes and not held longer than necessary.",
+      },
+      {
+        question: "Open source software is defined by the fact that:",
+        choices: [
+          "Its source code is available for others to view and modify",
+          "It is always free of charge",
+          "It has no licence at all",
+          "It cannot be sold",
+        ],
+        accept: [
+          "Its source code is available for others to view and modify",
+        ],
+        answer: "Free of charge and open source are different things. Proprietary software keeps its source code hidden.",
+      },
+      {
+        question: "What is meant by the digital divide?",
+        choices: [
+          "Unequal access to technology and the internet between groups",
+          "The gap between hardware and software",
+          "The difference between analogue and digital signals",
+          "Splitting a network into segments",
+        ],
+        accept: [
+          "Unequal access to technology and the internet between groups",
+        ],
+        answer: "As more services move online, people without reliable access are excluded from things others take for granted.",
+      },
+      {
+        question: "Which is an ENVIRONMENTAL issue associated with computing?",
+        choices: [
+          "Electronic waste containing toxic materials",
+          "Software piracy",
+          "Unauthorised access to data",
+          "Poor password practice",
+        ],
+        accept: [
+          "Electronic waste containing toxic materials",
+        ],
+        answer: "Devices are replaced quickly and often exported for disposal. Energy use by data centres is the other major concern.",
+      },
     ],
 
     misconceptions: [
@@ -3973,6 +4233,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because the command word defines what is being assessed. 'Explain' asks for a mechanism and a reason, so a one-word answer demonstrates none of it — however factually correct that word is. The examiner cannot award marks for reasoning that was never written down. (Mark this one yourself.)" },
       { question: "Describe how you would use a past paper most effectively, in three steps.",
         answer: "First, do it under timed conditions without notes, so it tests recall rather than reading. Second, mark it yourself against the official mark scheme, noting exactly where marks were awarded and what phrases were expected. Third, categorise your errors — knowledge gaps, misread command words, arithmetic slips — and revise the category rather than the individual question, since the same error type will recur on different content. (Mark this one yourself.)" },
+      {
+        question: "A question worth 6 marks asking you to 'discuss' expects:",
+        choices: [
+          "Points on both sides and a conclusion",
+          "A single definition",
+          "Six unrelated facts",
+          "A working program",
+        ],
+        accept: [
+          "Points on both sides and a conclusion",
+        ],
+        answer: "Discuss and evaluate need balance and a judgement. Describe and explain do not.",
+      },
+      {
+        question: "When writing an algorithm in an exam, you should:",
+        choices: [
+          "Use clear pseudocode with consistent indentation",
+          "Write it in English prose only",
+          "Use a real language's exact syntax or lose all marks",
+          "Draw the hardware",
+        ],
+        accept: [
+          "Use clear pseudocode with consistent indentation",
+        ],
+        answer: "Most specifications accept pseudocode or any consistent high-level language. Indentation shows the structure and earns marks.",
+      },
+      {
+        question: "If asked to 'give two advantages AND two disadvantages', the safest approach is:",
+        choices: [
+          "Label each one clearly so all four are visible to the examiner",
+          "Write one long paragraph",
+          "Give four advantages",
+          "Give the two you know best",
+        ],
+        accept: [
+          "Label each one clearly so all four are visible to the examiner",
+        ],
+        answer: "Examiners mark what they can find. Burying a point mid-paragraph risks it being missed entirely.",
+      },
+      {
+        question: "Which is the best way to revise a topic like sorting algorithms?",
+        choices: [
+          "Trace them step by step on small example lists",
+          "Read the notes repeatedly",
+          "Memorise the definitions only",
+          "Watch a video without pausing",
+        ],
+        accept: [
+          "Trace them step by step on small example lists",
+        ],
+        answer: "Tracing forces you to apply the method, which is exactly what the exam asks. Re-reading feels productive but tests nothing.",
+      },
+      {
+        question: "In a question about converting binary to denary, you should show:",
+        choices: [
+          "The place values used in the working",
+          "Only the final answer",
+          "The hexadecimal equivalent",
+          "A flowchart",
+        ],
+        accept: [
+          "The place values used in the working",
+        ],
+        answer: "Working earns method marks, so an arithmetic slip at the end still scores. An unsupported wrong answer scores nothing.",
+      },
     ],
 
     misconceptions: [
@@ -5409,6 +5734,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because development is dominated by finding mistakes, not by execution speed. An interpreter stops at the first error and names the line, so the programmer can fix one problem at a time rather than being handed a long list at the end of compilation. Code can also be run the instant it is typed, with no compilation step between writing and testing, which makes the write-test-fix cycle much shorter. Once the program is finished and correct, the calculation flips: it can be compiled for speed and shipped as an executable. (Mark this one yourself.)" },
       { question: "Explain why high-level languages are used for almost all modern software despite being less efficient than assembly.",
         answer: "Because the scarce resource is programmer time, not processor time. High-level code is far quicker to write, much easier to read and therefore to maintain, and portable across different machines rather than tied to one processor family — so a team can build something large, share the work, and keep changing it for years. Modern compilers also optimise well enough that the efficiency gap rarely matters, and hardware is cheap compared with salaries. Assembly still wins where hardware is genuinely constrained, such as embedded controllers and drivers, which is exactly where it is still used. (Mark this one yourself.)" },
+      {
+        question: "What is the difference between a compiler and an interpreter?",
+        choices: [
+          "A compiler translates the whole program at once; an interpreter goes line by line",
+          "An interpreter is always faster",
+          "A compiler only works on high-level code",
+          "They are two names for the same tool",
+        ],
+        accept: [
+          "A compiler translates the whole program at once; an interpreter goes line by line",
+        ],
+        answer: "Compiled code runs faster and needs no translator to be present. An interpreter stops at the first error, which helps while learning.",
+      },
+      {
+        question: "Why is high-level code easier to work with than machine code?",
+        choices: [
+          "It is closer to human language and portable between machines",
+          "It runs faster",
+          "It uses less memory",
+          "It needs no translation",
+        ],
+        accept: [
+          "It is closer to human language and portable between machines",
+        ],
+        answer: "Low-level code can be more efficient and controls hardware directly, but is tied to one processor type and is far harder to read.",
+      },
+      {
+        question: "Which IDE feature highlights keywords in different colours?",
+        choices: [
+          "Syntax highlighting",
+          "A breakpoint",
+          "The run-time environment",
+          "Auto-documentation",
+        ],
+        accept: [
+          "Syntax highlighting",
+        ],
+        answer: "It makes structure visible and spelling mistakes in keywords obvious at a glance.",
+      },
+      {
+        question: "What is a breakpoint used for?",
+        choices: [
+          "Pausing a program so variables can be inspected",
+          "Stopping the program permanently",
+          "Marking the end of a subroutine",
+          "Splitting a file in two",
+        ],
+        accept: [
+          "Pausing a program so variables can be inspected",
+        ],
+        answer: "Stepping through line by line while watching values is the fastest way to find a logic error.",
+      },
+      {
+        question: "Machine code is written in:",
+        choices: [
+          "Binary",
+          "Python",
+          "Hexadecimal only",
+          "English keywords",
+        ],
+        accept: [
+          "Binary",
+        ],
+        answer: "It is the only form the processor executes directly. Assembly language is a readable one-to-one representation of it.",
+      },
     ],
 
     misconceptions: [
