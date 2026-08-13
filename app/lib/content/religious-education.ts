@@ -1068,4 +1068,264 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "religious-education/dharmic-religions": {
+    summary:
+      "Hinduism, Sikhism and Buddhism began in India and share some vocabulary — karma, dharma, rebirth — while differing sharply in what they teach. This topic introduces each in turn and is careful not to treat them as versions of one another, which is the most common mistake made about them.",
+    keyFacts: [
+      {
+        heading: "Hinduism",
+        points: [
+          "Hinduism is the world's oldest major religion still practised, with no single founder.",
+          "BRAHMAN is the one ultimate reality; the many deities are understood by most Hindus as aspects of Brahman.",
+          "ATMAN is the eternal self or soul, believed to be reborn many times.",
+          "SAMSARA is the cycle of birth, death and rebirth; MOKSHA is release from it.",
+          "KARMA is the principle that actions have consequences that shape future lives.",
+          "DHARMA means duty or right living, and varies with a person's stage and situation in life.",
+        ],
+      },
+      {
+        heading: "Sikhism",
+        points: [
+          "Sikhism was founded by Guru Nanak in the Punjab in the fifteenth century.",
+          "Sikhs believe in one God, and reject the caste system and any distinction of worth between people.",
+          "There were ten human Gurus; authority then passed to the GURU GRANTH SAHIB, the scripture, treated as the living Guru.",
+          "The GURDWARA is the place of worship, and the LANGAR is its free kitchen, open to everyone regardless of religion.",
+          "SEWA is selfless service to others, one of the most emphasised Sikh duties.",
+          "The KHALSA is the community of committed Sikhs, whose members wear the Five Ks.",
+        ],
+      },
+      {
+        heading: "Buddhism",
+        points: [
+          "Buddhism began with Siddhartha Gautama, the Buddha, in the fifth century BCE.",
+          "Buddhism does not centre on a creator God, which is why it challenges definitions of religion based on belief in God.",
+          "The FOUR NOBLE TRUTHS state that there is suffering, it has a cause, it can end, and there is a path to ending it.",
+          "The EIGHTFOLD PATH sets out that way of living, covering understanding, conduct and mental discipline.",
+          "NIRVANA is the state of release from suffering and from the cycle of rebirth.",
+          "The three main features of existence are impermanence, suffering and the absence of a fixed self.",
+        ],
+      },
+      {
+        heading: "What they share, and where they differ",
+        points: [
+          "All three use the words karma, dharma and rebirth — but do not mean identical things by them.",
+          "Hinduism teaches an eternal atman; Buddhism explicitly denies a fixed, permanent self.",
+          "Sikhism is firmly monotheistic; Hinduism is understood by most Hindus as one reality with many forms; Buddhism does not centre on a creator God at all.",
+          "All three value non-violence, though they express it differently.",
+          "All three are practised in the UK, with long-established communities and places of worship.",
+          "Treating them as three versions of the same religion is the error examiners most often penalise here.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Brahman", definition: "In Hinduism, the one ultimate reality of which the deities are understood as aspects." },
+      { term: "Atman", definition: "In Hinduism, the eternal self or soul that is reborn many times." },
+      { term: "Samsara", definition: "The cycle of birth, death and rebirth taught in Hinduism, Buddhism and Sikhism." },
+      { term: "Moksha", definition: "In Hinduism, release from the cycle of rebirth." },
+      { term: "Karma", definition: "The principle that actions have consequences which shape future experience or lives." },
+      { term: "Dharma", definition: "Duty or right living, understood differently in each of the Dharmic religions." },
+      { term: "Guru Nanak", definition: "The founder of Sikhism, the first of the ten human Gurus." },
+      { term: "Guru Granth Sahib", definition: "The Sikh scripture, treated as the living Guru after the ten human Gurus." },
+      { term: "Gurdwara", definition: "The Sikh place of worship, which houses the Guru Granth Sahib." },
+      { term: "Langar", definition: "The free kitchen at a gurdwara, serving anyone regardless of religion or background." },
+      { term: "Sewa", definition: "Selfless service to others, a central Sikh duty." },
+      { term: "Khalsa", definition: "The community of committed Sikhs, whose members wear the Five Ks." },
+      { term: "The Buddha", definition: "Siddhartha Gautama, whose teaching Buddhism follows; a teacher rather than a god." },
+      { term: "Four Noble Truths", definition: "The Buddhist teaching that suffering exists, has a cause, can end, and has a path to its ending." },
+      { term: "Eightfold Path", definition: "The Buddhist way of living covering understanding, conduct and mental discipline." },
+      { term: "Nirvana", definition: "In Buddhism, release from suffering and from the cycle of rebirth." },
+    ],
+    examTips: [
+      {
+        tip: "Do not merge the three religions",
+        detail:
+          "They share vocabulary, not doctrine. Answers that treat Hinduism, Sikhism and Buddhism as variations of one religion are penalised.",
+      },
+      {
+        tip: "Atman versus no fixed self",
+        detail:
+          "Hinduism teaches an eternal atman; Buddhism denies a permanent self. That contrast is the sharpest difference between them.",
+      },
+      {
+        tip: "Sikhism is monotheistic",
+        detail:
+          "One God, and an explicit rejection of caste and of distinctions of worth between people. Say both — the equality point is examined.",
+      },
+      {
+        tip: "Buddhism challenges definitions of religion",
+        detail:
+          "No creator God at its centre, yet universally treated as a religion. It is the standard example in the 'what is religion' topic.",
+      },
+      {
+        tip: "The Buddha is a teacher, not a god",
+        detail:
+          "Buddhists respect and honour him. Writing that they worship him as God is a serious error.",
+      },
+      {
+        tip: "Use langar and sewa as concrete examples",
+        detail:
+          "In questions on charity, equality or service, the free kitchen open to all is one of the most vivid examples available.",
+      },
+    ],
+    practice: [
+      {
+        question: "In Hinduism, what is the one ultimate reality called?",
+        accept: ["brahman"],
+        answer:
+          "Brahman. Most Hindus understand the many deities as aspects or expressions of this single ultimate reality.",
+      },
+      {
+        question: "What is the cycle of birth, death and rebirth called?",
+        accept: ["samsara"],
+        answer:
+          "Samsara. Escaping it is called moksha in Hinduism and is closely related to nirvana in Buddhism.",
+      },
+      {
+        question: "In Hinduism, what is release from the cycle of rebirth called?",
+        accept: ["moksha"],
+        answer:
+          "Moksha. It is the ultimate goal, reached by the eternal atman rather than by a body or personality.",
+      },
+      {
+        question: "Who founded Sikhism?",
+        accept: ["guru nanak", "nanak"],
+        answer:
+          "Guru Nanak, in the Punjab in the fifteenth century. He was the first of ten human Gurus.",
+      },
+      {
+        question: "What is the Sikh scripture called?",
+        accept: ["guru granth sahib", "the guru granth sahib"],
+        answer:
+          "The Guru Granth Sahib, treated as the living Guru after the tenth human Guru, and housed in the gurdwara.",
+      },
+      {
+        question: "What is the free kitchen at a gurdwara called?",
+        accept: ["langar", "the langar"],
+        answer:
+          "The langar. Anyone may eat there regardless of religion or background, which expresses the Sikh rejection of caste and inequality.",
+      },
+      {
+        question: "What is the Sikh duty of selfless service called?",
+        accept: ["sewa", "seva"],
+        answer:
+          "Sewa. It covers service in the gurdwara, in the community and to anyone in need.",
+      },
+      {
+        question: "How many Noble Truths are there in Buddhism? Give the number only.",
+        accept: ["4", "four"],
+        answer:
+          "4 — that suffering exists, that it has a cause, that it can end, and that there is a path to ending it.",
+      },
+      {
+        question: "What is the Buddhist state of release from suffering and rebirth called?",
+        accept: ["nirvana", "nibbana"],
+        answer:
+          "Nirvana. It is reached by following the Eightfold Path, which covers understanding, conduct and mental discipline.",
+      },
+      {
+        question: "What is the principle that actions have consequences shaping future experience?",
+        accept: ["karma", "kamma"],
+        answer:
+          "Karma. All three Dharmic religions use the word, though they do not mean exactly the same thing by it.",
+      },
+      {
+        question: "Which statement about the Buddha is correct?",
+        choices: [
+          "He is honoured as a teacher, not worshipped as a god",
+          "He is worshipped as the creator God",
+          "He is one of many Hindu gods",
+          "He founded Sikhism",
+        ],
+        accept: ["He is honoured as a teacher, not worshipped as a god"],
+        answer:
+          "Buddhism does not centre on a creator God, which is exactly why it is used to challenge definitions of religion based on belief in God.",
+      },
+      {
+        question: "What is the sharpest difference between Hindu and Buddhist teaching about the self?",
+        choices: [
+          "Hinduism teaches an eternal atman; Buddhism denies a fixed permanent self",
+          "Both teach an eternal soul",
+          "Neither believes in rebirth",
+          "Buddhism teaches an eternal atman; Hinduism denies it",
+        ],
+        accept: ["Hinduism teaches an eternal atman; Buddhism denies a fixed permanent self"],
+        answer:
+          "They share the vocabulary of rebirth but disagree about what, if anything, is reborn — a genuine doctrinal difference.",
+      },
+      {
+        question: "Which best describes Sikh belief about God?",
+        choices: [
+          "One God, with all people equal in worth",
+          "Many gods arranged in a hierarchy",
+          "No God at all",
+          "God is the same as the caste system",
+        ],
+        accept: ["One God, with all people equal in worth"],
+        answer:
+          "Sikhism is firmly monotheistic and explicitly rejects caste. The langar was established partly to demonstrate that equality.",
+      },
+      {
+        question: "Which is the most common error made about these three religions?",
+        choices: [
+          "Treating them as versions of the same religion because they share vocabulary",
+          "Assuming they are all practised in the UK",
+          "Assuming they all began in India",
+          "Assuming they all value non-violence",
+        ],
+        accept: ["Treating them as versions of the same religion because they share vocabulary"],
+        answer:
+          "The other three statements are broadly accurate. Shared words such as karma and dharma do not mean shared doctrine.",
+      },
+      {
+        question: "What does the Eightfold Path set out?",
+        choices: [
+          "A way of living covering understanding, conduct and mental discipline",
+          "Eight gods to be worshipped",
+          "Eight pilgrimage sites",
+          "Eight castes in society",
+        ],
+        accept: ["A way of living covering understanding, conduct and mental discipline"],
+        answer:
+          "It follows from the fourth Noble Truth, which states that there is a path leading to the ending of suffering.",
+      },
+      {
+        question: "Explain why Buddhism is often used as an example in discussions of how to define religion. Write two or three sentences.",
+        answer:
+          "Substantive definitions of religion focus on belief in God or the supernatural, but Buddhism does not centre on a creator God, and Theravada Buddhism in particular does not require belief in one at all. Since almost everyone nevertheless regards Buddhism as a religion, it shows that a definition built on belief in God excludes something it clearly ought to include. That is one of the main reasons scholars prefer a family resemblance approach, treating religions as sharing overlapping features rather than one essential belief. Mark this one yourself: the point about substantive definitions failing, and the link to why scholars use family resemblance instead.",
+      },
+      {
+        question: "'Hinduism, Sikhism and Buddhism are really the same religion.' Evaluate this statement.",
+        answer:
+          "For: all three began in India, all three use the vocabulary of karma, dharma, samsara and rebirth, all three teach that actions have consequences beyond this life, and all three place a high value on non-violence and on release from the cycle of rebirth as a goal. Against: shared words do not mean shared meanings. Hinduism teaches an eternal atman that is reborn; Buddhism explicitly denies any fixed permanent self, which is a direct contradiction rather than a variation. Sikhism is firmly monotheistic and rejects caste, while Buddhism does not centre on a creator God and Hinduism understands one ultimate reality expressed through many deities. Their founders, scriptures, practices and places of worship are entirely distinct, and members of all three would themselves reject the claim. A clear judgement is that the statement is false: the resemblance is real but superficial, and it comes from shared geography and language rather than shared belief. Grouping them as 'Dharmic religions' is useful for study, but a grouping is not an identity. Mark this one yourself: genuine similarities acknowledged, at least two specific doctrinal contradictions, and a firm conclusion.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Hinduism, Sikhism and Buddhism are basically the same religion.",
+        right:
+          "They share vocabulary and a region of origin, but differ fundamentally — most sharply over whether there is a permanent self.",
+      },
+      {
+        wrong: "Buddhists worship the Buddha as a god.",
+        right:
+          "The Buddha is honoured as a teacher who found a way to end suffering. Buddhism does not centre on a creator God.",
+      },
+      {
+        wrong: "Hindus worship many separate gods.",
+        right:
+          "Most Hindus understand the deities as aspects or expressions of one ultimate reality, Brahman.",
+      },
+      {
+        wrong: "Sikhism is a mixture of Hinduism and Islam.",
+        right:
+          "Sikhs regard it as a distinct revelation through Guru Nanak, with its own scripture, practice and teaching, not a blend of others.",
+      },
+      {
+        wrong: "Karma means fate, or that people deserve their misfortune.",
+        right:
+          "Karma is about actions having consequences. Using it to justify treating people badly is a distortion these traditions reject.",
+      },
+    ],
+  },
 };
