@@ -772,7 +772,7 @@ Distractors must be real misconceptions, not filler. A wrong option nobody
 would pick turns a five-option question into a two-option one. "None of the
 above" is banned by the checker: it tests exam tactics, not the subject.
 
-## Religious Education (in progress)
+## Religious Education COMPLETE (2026-08-13)
 
 Registered in salmon with Lumen, a lantern mascot — deliberately not a person,
 because any human character would have to be dressed and every choice of dress
@@ -788,14 +788,24 @@ comment of app/lib/content/religious-education.ts:
   2. Give non-religious views their strongest form; they carry marks.
   3. Diversity WITHIN a religion matters as much as difference between them.
 
-Done (5): what-is-religion, introducing-christianity, introducing-islam,
-introducing-judaism, dharmic-religions.
-Remaining (13): big-questions-and-ethics, then all six Year 10 topics and all
-six Year 11 topics. Slugs are already registered in subjects.ts and
-known-topics.ts, so each one just needs its content object appending to
-app/lib/content/religious-education.ts.
+All 18 topics done, all three years: what-is-religion, introducing-christianity,
+introducing-islam, introducing-judaism, dharmic-religions, big-questions-and-ethics
+(Year 9); christian-beliefs, christian-practices, muslim-beliefs, muslim-practices,
+relationships-and-families, religion-and-life (Year 10); the-existence-of-god,
+peace-and-conflict, crime-and-punishment, human-rights-and-social-justice,
+sources-of-authority, re-exam-practice (Year 11). 260 flashcards, 90 misconceptions,
+269 auto/self-marked practice questions across the subject.
+
+`node scripts/check-content.mjs` passes clean (75,022 checks) after two rounds:
+the first pass had 7 topics short of the 5-multiple-choice-question minimum and
+`re-exam-practice` one question short of the 16-question minimum — all fixed by
+adding one targeted question to each, not by padding.
 
 ⚠️ known-topics.ts contains TWO arrays — KNOWN_TOPIC_KEYS and
 RETIRED_TOPIC_KEYS. Appending "to the end of the file" puts new slugs in the
 RETIRED list, which registers them as deleted. New topics go at the end of the
-FIRST array. This cost a real bug; the checker caught it.
+FIRST array. This cost a real bug; the checker caught it. (Not an issue this
+round — all 18 RE slugs were already registered from the original build-out.)
+
+**Not yet done:** Physics content (0 of 19 topics) is now the only subject with
+zero content, per the Science section above.
