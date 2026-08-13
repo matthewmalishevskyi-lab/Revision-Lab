@@ -737,3 +737,36 @@ Matthew accidentally signed into a third-party service called **DeployWise** wit
 - Login/Register button exists in the UI but does nothing yet — real accounts are a big job (needs a backend), park it for now
 - Where subject/topic content lives — hardcoded in code, JSON/Markdown files, or a database? (leaning towards simple data files to start, database later if needed)
 - Styling approach: plain Tailwind utility classes vs. a component library?
+
+## Multiple-choice rollout (in progress)
+
+Every topic needs at least 5 multiple-choice questions, 4-6 choices each.
+
+**How it works:** add `choices: [...]` to a practice question and it renders as
+buttons instead of a text box. The correct answer is whichever choice also
+appears in `accept` — there is deliberately no separate `correctIndex`, so
+multiple choice reuses the existing marking code rather than adding a second
+way of being right.
+
+**To add more:** write them into a JSON file keyed by topic and run
+`node scripts/expand-topic.mjs additions.json`. It inserts by counting
+brackets, not by matching text, and refuses to insert anything already
+present. Write the JSON to disk BEFORE validating — otherwise one duplicate
+question costs the whole batch.
+
+**Progress is tracked by `MCQ_DONE` in scripts/check-content.mjs.** The
+"at least 5" rule applies only to subjects listed there, so the checker stays
+green while the rest are written, and each subject is locked against
+regression the moment it is added.
+
+- Done: citizenship (12 topics), biology (20)
+- Chemistry: 6 of 19 done — remaining are acids-and-alkalis, chemical-analysis,
+  chemistry-exam-practice, electrolysis, energy-changes, formulae-and-equations,
+  organic-chemistry, polymers, quantitative-chemistry, rates-of-reaction,
+  reversible-reactions, the-atmosphere, using-the-earths-resources
+- Not started: physics, business, computer-science, maths, english, history,
+  geography
+
+Distractors must be real misconceptions, not filler. A wrong option nobody
+would pick turns a five-option question into a two-option one. "None of the
+above" is banned by the checker: it tests exam tactics, not the subject.
