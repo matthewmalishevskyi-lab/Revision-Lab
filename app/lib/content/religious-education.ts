@@ -877,7 +877,7 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       { term: "Bat Mitzvah", definition: "The ceremony marking a girl taking on adult religious responsibility." },
       { term: "Pesach", definition: "Passover, remembering the escape from slavery in Egypt." },
       { term: "Yom Kippur", definition: "The Day of Atonement, a fast day for repentance and forgiveness." },
-      { term: "Rosh Hashanah", definition: "The Jewish New Year." },
+      { term: "Rosh Hashanah", definition: "The Jewish New Year, beginning ten days of repentance that end at Yom Kippur." },
       { term: "Orthodox Judaism", definition: "The movement holding the Torah is the direct word of God and fully binding." },
       { term: "Reform Judaism", definition: "The movement holding the Torah is divinely inspired but shaped by its time." },
     ],
