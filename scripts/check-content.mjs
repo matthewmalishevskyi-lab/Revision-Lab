@@ -70,7 +70,7 @@ const out = mkdtempSync(join(tmpdir(), "revision-check-"));
 // subject is added here, every one of its topics is locked to the standard and
 // cannot quietly regress. A rule that fails on 185 topics from day one is not a
 // rule, it is noise that people learn to ignore.
-const MCQ_DONE = new Set(["citizenship", "biology"]);
+const MCQ_DONE = new Set(["citizenship", "biology", "chemistry"]);
 
 const QUANTITATIVE_CHEMISTRY = new Set([
   "quantitative-chemistry",
