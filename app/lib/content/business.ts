@@ -5096,6 +5096,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "Batch production would cut unit costs by repeating designs, buying materials in larger quantities and reducing the time spent setting up for each individual piece, allowing lower prices and higher volume. But bespoke work is almost certainly what customers are paying a premium for — standardised furniture puts the business into direct competition with large manufacturers whose costs it cannot match. It would also need investment in equipment and possibly more space. A middle route is to offer a small range of standard designs in batches alongside the bespoke work, capturing volume without abandoning the premium end. Overall, switching entirely would be a mistake because it trades the business's only real competitive advantage for a market it cannot win. Mark this one yourself: the top band recognises that low cost is not this firm's competitive advantage.",
       },
+      {
+        question: "JOB production means making:",
+        choices: [
+          "One unique item at a time to order",
+          "Identical items in large batches",
+          "Thousands of identical items continuously",
+          "Only digital products",
+        ],
+        accept: [
+          "One unique item at a time to order",
+        ],
+        answer: "It allows customisation and premium prices, but is slow and labour costs per unit are high.",
+      },
+      {
+        question: "FLOW production is best suited to:",
+        choices: [
+          "Large quantities of identical standardised products",
+          "Bespoke wedding cakes",
+          "Small batches of seasonal items",
+          "One-off engineering projects",
+        ],
+        accept: [
+          "Large quantities of identical standardised products",
+        ],
+        answer: "It achieves very low unit costs through economies of scale, but setup costs are huge and it is inflexible.",
+      },
+      {
+        question: "What does JUST IN TIME stock control aim to do?",
+        choices: [
+          "Hold minimal stock, with deliveries arriving as needed",
+          "Hold large buffer stocks",
+          "Buy stock once a year",
+          "Store stock at the supplier's expense permanently",
+        ],
+        accept: [
+          "Hold minimal stock, with deliveries arriving as needed",
+        ],
+        answer: "It cuts storage costs and waste, but a single late delivery can stop production entirely.",
+      },
+      {
+        question: "Productivity is best defined as:",
+        choices: [
+          "Output per worker or per hour",
+          "Total output only",
+          "Total revenue per year",
+          "The number of employees",
+        ],
+        accept: [
+          "Output per worker or per hour",
+        ],
+        answer: "Higher productivity lowers unit costs, which is why training and better equipment can pay for themselves.",
+      },
+      {
+        question: "Which would most likely INCREASE efficiency?",
+        choices: [
+          "Investing in automated machinery",
+          "Increasing waste levels",
+          "Reducing staff training",
+          "Holding more unsold stock",
+        ],
+        accept: [
+          "Investing in automated machinery",
+        ],
+        answer: "Automation raises output and consistency, but costs a lot upfront and may reduce the workforce.",
+      },
     ],
     misconceptions: [
       {
@@ -5531,6 +5596,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "Better fabric would reduce returns and complaints, improve reputation and might allow a modest price rise. But the business competes on price, and its customers chose it precisely because it is cheap — most will not pay more, and raising prices risks losing them to rivals. Better fabric than the market expects is over-engineering: paying for quality the customer will not fund. A more targeted approach would be to fix the specific faults that generate returns, such as seams splitting, without upgrading everything. Overall, a wholesale upgrade is probably wrong for this brand, but eliminating the defects that cause complaints is worth doing because those cost money directly. Mark this one yourself: the top band needs quality matched to the TARGET MARKET, plus a more targeted alternative.",
       },
+      {
+        question: "Quality CONTROL involves:",
+        choices: [
+          "Checking finished products for faults at the end",
+          "Every worker checking their own work throughout",
+          "Never checking products",
+          "Asking customers to test products",
+        ],
+        accept: [
+          "Checking finished products for faults at the end",
+        ],
+        answer: "Quality assurance builds checks in throughout, which catches faults earlier and wastes less material.",
+      },
+      {
+        question: "Total Quality Management means:",
+        choices: [
+          "Every employee takes responsibility for quality",
+          "Only managers check quality",
+          "Quality is checked once a year",
+          "Faulty goods are sold at a discount",
+        ],
+        accept: [
+          "Every employee takes responsibility for quality",
+        ],
+        answer: "It aims for zero defects, but needs a culture change and heavy training investment to work.",
+      },
+      {
+        question: "Poor quality is costly mainly because of:",
+        choices: [
+          "Wasted materials, reworking and damaged reputation",
+          "Higher staff wages",
+          "Lower advertising costs",
+          "Increased stock levels",
+        ],
+        accept: [
+          "Wasted materials, reworking and damaged reputation",
+        ],
+        answer: "Reputational damage lasts longest — a product recall can affect sales for years after the fault is fixed.",
+      },
+      {
+        question: "A quality STANDARD such as a recognised certification helps a business by:",
+        choices: [
+          "Reassuring customers that consistent processes are followed",
+          "Guaranteeing higher profits",
+          "Removing the need for inspection",
+          "Reducing all costs immediately",
+        ],
+        accept: [
+          "Reassuring customers that consistent processes are followed",
+        ],
+        answer: "Some large buyers will only deal with certified suppliers, so it can be a condition of winning contracts.",
+      },
+      {
+        question: "Continuous improvement means:",
+        choices: [
+          "Making many small ongoing improvements over time",
+          "One large change every few years",
+          "Improving only when a fault occurs",
+          "Copying competitors exactly",
+        ],
+        accept: [
+          "Making many small ongoing improvements over time",
+        ],
+        answer: "Small changes are cheaper and less disruptive than occasional major overhauls, and involve staff directly.",
+      },
     ],
     misconceptions: [
       {
@@ -5745,6 +5875,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A restaurant receives a damaging online review. Evaluate how it should respond.",
         answer:
           "Responding publicly, politely and quickly is usually best: future customers read the response as well as the complaint, and a calm, specific reply that offers to put things right often does more good than the review did harm. Arguing publicly is the clearest mistake, since it makes the business look worse than the original complaint did. The restaurant should also treat the review as information — if the same issue appears repeatedly it is a real problem, not an unreasonable customer. Ignoring it is defensible only for an obviously malicious review, and even then a brief factual reply is usually safer. Overall it should reply publicly, resolve privately, and check whether the complaint reflects a pattern. Mark this one yourself: the top band needs the point that the RESPONSE is public and judged by future customers.",
+      },
+      {
+        question: "Good customer service is important mainly because:",
+        choices: [
+          "It encourages repeat purchases and word-of-mouth recommendation",
+          "It reduces the cost of raw materials",
+          "It removes the need for marketing",
+          "It lowers wages",
+        ],
+        accept: [
+          "It encourages repeat purchases and word-of-mouth recommendation",
+        ],
+        answer: "Keeping an existing customer costs far less than winning a new one, which is why retention matters financially.",
+      },
+      {
+        question: "Post-sales service includes:",
+        choices: [
+          "Warranties, returns and technical support",
+          "Advertising before launch",
+          "Choosing suppliers",
+          "Setting the original price",
+        ],
+        accept: [
+          "Warranties, returns and technical support",
+        ],
+        answer: "It reassures buyers at the point of purchase, and is often what turns a one-off buyer into a repeat one.",
+      },
+      {
+        question: "Product knowledge helps staff because it allows them to:",
+        choices: [
+          "Answer questions accurately and recommend suitable products",
+          "Work longer hours",
+          "Set their own wages",
+          "Avoid dealing with customers",
+        ],
+        accept: [
+          "Answer questions accurately and recommend suitable products",
+        ],
+        answer: "It builds trust and reduces returns caused by customers buying the wrong thing.",
+      },
+      {
+        question: "A business responding well to a complaint is likely to:",
+        choices: [
+          "Retain the customer and limit reputational damage",
+          "Lose more customers",
+          "Increase its costs permanently",
+          "Have to close",
+        ],
+        accept: [
+          "Retain the customer and limit reputational damage",
+        ],
+        answer: "Complaints handled well often produce more loyal customers than those who never had a problem.",
+      },
+      {
+        question: "Which is a risk of POOR customer service in the age of social media?",
+        choices: [
+          "Negative reviews spread quickly to a wide audience",
+          "Suppliers refuse to deliver",
+          "Tax rates increase",
+          "Staff must be paid more",
+        ],
+        accept: [
+          "Negative reviews spread quickly to a wide audience",
+        ],
+        answer: "One bad experience can now reach thousands of potential customers within hours, which raises the stakes considerably.",
       },
     ],
     misconceptions: [
@@ -5961,6 +6156,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "Centralising suits decisions where consistency is the point: menu, pricing, branding and supplier contracts should be identical everywhere, or the brand stops meaning anything and bulk-buying power is lost. Decentralising suits decisions that depend on local knowledge — staffing rotas, opening hours, which local events to sponsor — where a head office cannot possibly know better than the manager on site. Full centralisation would make branches slow and demotivate managers into order-takers; full decentralisation would produce twenty different coffee shops sharing a logo. Overall the sensible answer is a mixture, centralising anything customers compare between branches and decentralising anything that varies by location. Mark this one yourself: the top band says WHICH decisions go where rather than choosing one wholesale.",
       },
+      {
+        question: "A TALL organisational structure has:",
+        choices: [
+          "Many layers and a narrow span of control",
+          "Few layers and a wide span of control",
+          "No managers at all",
+          "Only part-time staff",
+        ],
+        accept: [
+          "Many layers and a narrow span of control",
+        ],
+        answer: "Tall structures give close supervision and clear promotion routes, but communication is slower through more layers.",
+      },
+      {
+        question: "The SPAN OF CONTROL is:",
+        choices: [
+          "The number of people a manager is directly responsible for",
+          "The number of layers in the hierarchy",
+          "The area a business trades in",
+          "The range of products sold",
+        ],
+        accept: [
+          "The number of people a manager is directly responsible for",
+        ],
+        answer: "A wide span means less supervision per person but fewer managers, so lower costs.",
+      },
+      {
+        question: "DELEGATION means:",
+        choices: [
+          "Passing authority for a task down to a subordinate",
+          "Removing a manager's job",
+          "Hiring an external consultant",
+          "Splitting the business in two",
+        ],
+        accept: [
+          "Passing authority for a task down to a subordinate",
+        ],
+        answer: "It frees managers and develops staff, but the manager keeps ultimate responsibility if it goes wrong.",
+      },
+      {
+        question: "A flat structure typically leads to:",
+        choices: [
+          "Faster communication and more employee autonomy",
+          "Slower decision making",
+          "More layers of management",
+          "Narrower spans of control",
+        ],
+        accept: [
+          "Faster communication and more employee autonomy",
+        ],
+        answer: "The trade-off is heavier workloads for managers and fewer promotion steps for staff.",
+      },
+      {
+        question: "Centralised decision making means decisions are taken:",
+        choices: [
+          "By senior management at the top",
+          "By each local branch",
+          "By employees voting",
+          "By customers",
+        ],
+        accept: [
+          "By senior management at the top",
+        ],
+        answer: "Centralisation gives consistency and control; decentralisation gives local responsiveness and quicker decisions.",
+      },
     ],
     misconceptions: [
       {
@@ -6175,6 +6435,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A small café needs staff for an unpredictable summer season and is considering zero-hours contracts. Evaluate this.",
         answer:
           "The business case is real: demand depends on weather and tourists, and paying guaranteed hours during a wet fortnight could be unaffordable for a small café with thin margins. Zero-hours contracts let staffing follow demand exactly. But workers cannot plan or budget around an income that might be nothing, which makes it hard to attract and keep good staff — turnover rises, and constant retraining costs money and damages service. There is also a reputational risk in a small town where staff talk. Alternatives include a small guaranteed core of hours with flexible extra shifts, or hiring students who genuinely want irregular work. Overall a guaranteed minimum with flexible additional hours is likely to be better, since it keeps most of the flexibility while giving staff enough security to stay. Mark this one yourself: the top band needs the effect on RETENTION and a workable middle option.",
+      },
+      {
+        question: "What is INTERNAL recruitment?",
+        choices: [
+          "Filling a vacancy with someone already employed by the business",
+          "Advertising in a national newspaper",
+          "Using a recruitment agency",
+          "Hiring a school leaver",
+        ],
+        accept: [
+          "Filling a vacancy with someone already employed by the business",
+        ],
+        answer: "It is cheaper and quicker and the person is known, but brings no new ideas and leaves another vacancy behind.",
+      },
+      {
+        question: "A JOB DESCRIPTION sets out:",
+        choices: [
+          "The duties and responsibilities of the role",
+          "The qualities the applicant needs",
+          "The salary negotiation range",
+          "The company's annual accounts",
+        ],
+        accept: [
+          "The duties and responsibilities of the role",
+        ],
+        answer: "A person specification describes the PERSON — skills, qualifications and qualities. The two are easily confused.",
+      },
+      {
+        question: "Which document lists the skills and qualities a candidate should have?",
+        choices: [
+          "The person specification",
+          "The job description",
+          "The contract of employment",
+          "The application form",
+        ],
+        accept: [
+          "The person specification",
+        ],
+        answer: "It usually splits requirements into essential and desirable, which is how a long list of applicants gets shortlisted.",
+      },
+      {
+        question: "An advantage of EXTERNAL recruitment is:",
+        choices: [
+          "It brings in fresh ideas and a wider pool of talent",
+          "It is always cheaper",
+          "No induction training is needed",
+          "The candidate is already known",
+        ],
+        accept: [
+          "It brings in fresh ideas and a wider pool of talent",
+        ],
+        answer: "The costs are higher advertising spend, longer selection and more induction training.",
+      },
+      {
+        question: "A part-time contract differs from a full-time one mainly in:",
+        choices: [
+          "The number of hours worked each week",
+          "The legal rights of the employee",
+          "Whether tax is paid",
+          "Whether a contract exists",
+        ],
+        accept: [
+          "The number of hours worked each week",
+        ],
+        answer: "Part-time staff have the same core employment rights. Flexibility helps businesses cope with variable demand.",
       },
     ],
     misconceptions: [
@@ -6392,6 +6717,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A factory has high staff turnover and repetitive work. Evaluate how it could improve motivation.",
         answer:
           "Pay is the obvious lever and the least reliable one: a rise motivates briefly, is expensive permanently, and does nothing about work that is boring. Since the problem is repetitive tasks, job rotation would directly address the cause by giving variety and building a more flexible workforce, at the cost of some retraining and a short-term dip in output. Job enrichment — letting teams manage their own quality checks and rotas — would add responsibility and is cheap, though not everyone wants it. Recognition schemes and clear promotion routes cost little and address the esteem needs Maslow describes. Overall, rotation combined with enrichment tackles the actual cause, whereas a pay rise treats the symptom; but the business should ask its own staff first, since assuming what motivates people is how expensive schemes fail. Mark this one yourself: the top band identifies that the CAUSE is the repetitive work and matches the solution to it.",
+      },
+      {
+        question: "What is INDUCTION training?",
+        choices: [
+          "Training given to new employees when they join",
+          "Training to gain a professional qualification",
+          "Training given only to managers",
+          "Retraining after a promotion",
+        ],
+        accept: [
+          "Training given to new employees when they join",
+        ],
+        answer: "It covers the workplace, procedures and health and safety, and helps new staff become productive faster.",
+      },
+      {
+        question: "On-the-job training means learning:",
+        choices: [
+          "While doing the actual job in the workplace",
+          "At a college away from work",
+          "Only through online courses",
+          "Before being offered the job",
+        ],
+        accept: [
+          "While doing the actual job in the workplace",
+        ],
+        answer: "It is cheaper and immediately relevant, but the trainer's output falls and bad habits can be passed on.",
+      },
+      {
+        question: "Which is a FINANCIAL method of motivation?",
+        choices: [
+          "A bonus for meeting targets",
+          "Job rotation",
+          "Praise from a manager",
+          "More responsibility",
+        ],
+        accept: [
+          "A bonus for meeting targets",
+        ],
+        answer: "Pay, bonuses, commission and fringe benefits are financial. Job enrichment, autonomy and praise are non-financial.",
+      },
+      {
+        question: "Job ROTATION motivates staff by:",
+        choices: [
+          "Adding variety through moving between tasks",
+          "Increasing pay for each task",
+          "Reducing the hours worked",
+          "Removing supervision entirely",
+        ],
+        accept: [
+          "Adding variety through moving between tasks",
+        ],
+        answer: "Job enlargement adds more tasks at the same level; job enrichment adds more responsibility and challenge.",
+      },
+      {
+        question: "A well-motivated workforce is likely to have:",
+        choices: [
+          "Lower staff turnover and higher productivity",
+          "Higher absence rates",
+          "Greater recruitment costs",
+          "Lower quality output",
+        ],
+        accept: [
+          "Lower staff turnover and higher productivity",
+        ],
+        answer: "Retention matters financially — replacing an employee costs far more than keeping one.",
       },
     ],
     misconceptions: [
