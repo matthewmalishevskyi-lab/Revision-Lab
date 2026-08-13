@@ -798,6 +798,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the exterior angles of every polygon total 360 degrees regardless of how many sides it has, so for a regular polygon each one is simply 360 divided by the number of sides — a single division. The interior route needs (n − 2) x 180 and then a further division, which is two steps and two chances to slip. (Mark this one yourself.)" },
       { question: "Explain why a reason must be given for each angle you calculate, even when the arithmetic is obvious.",
         answer: "Because most angle questions award one mark for the value and a separate mark for the justification. The examiner is assessing whether you know WHICH geometric rule applies, not just whether you can subtract. 'Angles on a straight line add to 180 degrees' earns the second mark; the number alone does not. (Mark this one yourself.)" },
+      {
+        question: "What do the interior angles of a triangle add up to?",
+        choices: [
+          "180",
+          "360",
+          "90",
+          "270",
+        ],
+        accept: [
+          "180",
+        ],
+        answer: "180 degrees in a triangle, 360 in a quadrilateral. Both are worth knowing without thinking.",
+      },
+      {
+        question: "What is the sum of the interior angles of a pentagon?",
+        choices: [
+          "540",
+          "360",
+          "720",
+          "450",
+        ],
+        accept: [
+          "540",
+        ],
+        answer: "Use (n - 2) x 180, so (5 - 2) x 180 = 540. The exterior angles of any polygon always add to 360.",
+      },
+      {
+        question: "Angles on a straight line add up to:",
+        choices: [
+          "180",
+          "360",
+          "90",
+          "120",
+        ],
+        accept: [
+          "180",
+        ],
+        answer: "Angles around a point add to 360, and vertically opposite angles are equal.",
+      },
+      {
+        question: "Alternate angles in parallel lines are:",
+        choices: [
+          "Equal",
+          "Supplementary",
+          "Always 90 degrees",
+          "Always different",
+        ],
+        accept: [
+          "Equal",
+        ],
+        answer: "Alternate and corresponding angles are equal; co-interior angles add to 180. Naming the rule earns the mark.",
+      },
+      {
+        question: "What is the exterior angle of a regular hexagon?",
+        choices: [
+          "60",
+          "120",
+          "72",
+          "45",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "360 divided by 6 is 60. The interior angle is then 180 - 60 = 120.",
+      },
     ],
 
     misconceptions: [
@@ -1851,6 +1916,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the hypotenuse is always the longest side, so any 'shorter side' that comes out longer than the hypotenuse is impossible. That single check catches the most common error in the topic — adding when you should have subtracted — in about two seconds, and it works even when you cannot spot the mistake in the working itself. (Mark this one yourself.)" },
       { question: "Explain why checking your calculator is in degrees matters more than almost any other exam habit in this topic.",
         answer: "Because a calculator in radian mode produces answers that are wrong but entirely plausible — a sensible-looking number, no error message, no warning. Every trigonometric answer on the paper is then wrong, and nothing in your working reveals it. It costs two seconds to check at the start and can otherwise cost an entire question. (Mark this one yourself.)" },
+      {
+        question: "Pythagoras' theorem states that:",
+        choices: [
+          "a squared plus b squared equals c squared",
+          "a plus b equals c",
+          "a squared minus b squared equals c squared",
+          "a times b equals c squared",
+        ],
+        accept: [
+          "a squared plus b squared equals c squared",
+        ],
+        answer: "c must be the hypotenuse, the longest side opposite the right angle. It only works in right-angled triangles.",
+      },
+      {
+        question: "To find a missing SHORTER side using Pythagoras, you should:",
+        choices: [
+          "Subtract the squares",
+          "Add the squares",
+          "Multiply the squares",
+          "Take the square root first",
+        ],
+        accept: [
+          "Subtract the squares",
+        ],
+        answer: "Adding always gives the hypotenuse. If your answer for a shorter side is longer than the hypotenuse, you added by mistake.",
+      },
+      {
+        question: "Which ratio is opposite divided by adjacent?",
+        choices: [
+          "Tangent",
+          "Sine",
+          "Cosine",
+          "Hypotenuse",
+        ],
+        accept: [
+          "Tangent",
+        ],
+        answer: "SOHCAHTOA: sine is opposite over hypotenuse, cosine is adjacent over hypotenuse, tangent is opposite over adjacent.",
+      },
+      {
+        question: "What is the exact value of sin 30 degrees?",
+        choices: [
+          "0.5",
+          "1",
+          "0.866",
+          "0",
+        ],
+        accept: [
+          "0.5",
+        ],
+        answer: "Exact trig values for 0, 30, 45, 60 and 90 are examinable on non-calculator papers and are worth memorising.",
+      },
+      {
+        question: "Trigonometry using SOHCAHTOA can only be applied to:",
+        choices: [
+          "Right-angled triangles",
+          "Any triangle",
+          "Only equilateral triangles",
+          "Only isosceles triangles",
+        ],
+        accept: [
+          "Right-angled triangles",
+        ],
+        answer: "For other triangles you need the sine rule or cosine rule, which are Higher tier.",
+      },
     ],
 
     misconceptions: [
@@ -2067,6 +2197,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because removing an item reduces both the count of that colour AND the total number of items left. Taking a green from 4 green out of 10 leaves 3 green out of 9, so the second probability is 3/9 — not 3/10. Changing only the numerator is the single most common error in the topic, and it makes the answer wrong every time. (Mark this one yourself.)" },
       { question: "Explain why 'at least one' questions are usually solved with 1 minus something.",
         answer: "Because 'at least one' covers many separate cases — exactly one, exactly two, exactly three and so on — which must all be found and added. Its opposite, 'none at all', is a single case that is usually a simple multiplication. Working out the one easy case and subtracting from 1 is both faster and far less prone to missing a possibility. (Mark this one yourself.)" },
+      {
+        question: "Probabilities of all possible outcomes must add up to:",
+        choices: [
+          "1",
+          "0",
+          "100",
+          "10",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "Or 100% if written as percentages. A probability can never be less than 0 or more than 1.",
+      },
+      {
+        question: "The probability of an event NOT happening is:",
+        choices: [
+          "1 minus the probability it happens",
+          "The same as it happening",
+          "Always 0.5",
+          "The probability multiplied by 2",
+        ],
+        accept: [
+          "1 minus the probability it happens",
+        ],
+        answer: "This is often much quicker than adding up all the other outcomes, especially with 'at least one' questions.",
+      },
+      {
+        question: "For two INDEPENDENT events, the probability of both happening is found by:",
+        choices: [
+          "Multiplying the probabilities",
+          "Adding the probabilities",
+          "Subtracting them",
+          "Dividing them",
+        ],
+        accept: [
+          "Multiplying the probabilities",
+        ],
+        answer: "Multiply along the branches of a tree diagram, and add between different branches.",
+      },
+      {
+        question: "Relative frequency is calculated as:",
+        choices: [
+          "Number of times an outcome occurred divided by total trials",
+          "Total trials divided by outcomes",
+          "The theoretical probability",
+          "The number of outcomes",
+        ],
+        accept: [
+          "Number of times an outcome occurred divided by total trials",
+        ],
+        answer: "It estimates probability from experiment, and gets closer to the theoretical value as the number of trials rises.",
+      },
+      {
+        question: "In a problem WITHOUT replacement, the second probability changes because:",
+        choices: [
+          "Both the favourable count and the total are reduced",
+          "Only the total changes",
+          "Nothing changes",
+          "The probabilities are added instead",
+        ],
+        accept: [
+          "Both the favourable count and the total are reduced",
+        ],
+        answer: "Forgetting to reduce the numerator as well as the denominator is the standard error in these questions.",
+      },
     ],
 
     misconceptions: [
@@ -2293,6 +2488,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the original individual values are not recorded — only how many fell into each class. Using the midpoint assumes the values are evenly spread within each class, which is rarely exactly true. The result is therefore a reasonable approximation rather than the true mean, and calling it an estimate is worth a mark in itself. (Mark this one yourself.)" },
       { question: "Two classes take the same test. Explain what you should compare, and why one measure alone is not enough.",
         answer: "Compare an average AND a measure of spread — typically the median with the interquartile range. The average alone says where the results sit but nothing about consistency: two classes can share a median while one has results tightly clustered and the other has some very high and very low marks. Comparing both, in context, is what earns full marks: 'Class A had a higher median so generally scored better, and a smaller IQR so their results were more consistent.' (Mark this one yourself.)" },
+      {
+        question: "Which average is most affected by an extreme value?",
+        choices: [
+          "The mean",
+          "The median",
+          "The mode",
+          "The range",
+        ],
+        accept: [
+          "The mean",
+        ],
+        answer: "One very large value pulls the mean up. The median is more resistant, which is why it is used for house prices and incomes.",
+      },
+      {
+        question: "The median is found by:",
+        choices: [
+          "Putting values in order and taking the middle one",
+          "Adding and dividing by how many",
+          "Taking the most common value",
+          "Subtracting smallest from largest",
+        ],
+        accept: [
+          "Putting values in order and taking the middle one",
+        ],
+        answer: "Forgetting to order the data first is the classic mistake. With an even number of values, take the mean of the middle two.",
+      },
+      {
+        question: "What does the range measure?",
+        choices: [
+          "The spread of the data",
+          "The typical value",
+          "The most common value",
+          "The total of the data",
+        ],
+        accept: [
+          "The spread of the data",
+        ],
+        answer: "Largest minus smallest. It is easy to calculate but distorted by a single outlier.",
+      },
+      {
+        question: "A scatter graph showing points rising left to right indicates:",
+        choices: [
+          "Positive correlation",
+          "Negative correlation",
+          "No correlation",
+          "Causation",
+        ],
+        accept: [
+          "Positive correlation",
+        ],
+        answer: "Correlation does not prove causation — a point examiners test in the written questions.",
+      },
+      {
+        question: "Which chart is best for showing how a total is split into categories?",
+        choices: [
+          "A pie chart",
+          "A scatter graph",
+          "A line graph",
+          "A cumulative frequency curve",
+        ],
+        accept: [
+          "A pie chart",
+        ],
+        answer: "Pie charts show proportions of a whole. They are poor for comparing two separate data sets of different sizes.",
+      },
     ],
 
     misconceptions: [
@@ -3707,6 +3967,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the sector is bounded by three edges, not one. Two of them are the straight radii that cut the slice out of the circle, and the third is the curved arc. The perimeter means the whole distance round the outside, so it is arc + r + r. Only the arc is curved, which is probably why it is the part people remember — but leaving out the two straight edges would be like giving the perimeter of a rectangle as the length of one side. (Mark this one yourself.)" },
       { question: "Explain why doubling the radius of a circle multiplies its area by four, not by two.",
         answer: "Because the radius appears squared in the area formula. Area = πr², so replacing r with 2r gives π(2r)² = π × 4r² = 4πr² — four times the original. The circumference, by contrast, uses r to the power one, so doubling the radius simply doubles it. This is the general pattern: lengths scale by the scale factor, areas by its square, and volumes by its cube. (Mark this one yourself.)" },
+      {
+        question: "What is the area of a triangle with base 8 and height 5?",
+        choices: [
+          "20",
+          "40",
+          "13",
+          "26",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "Half of base times height: 0.5 x 8 x 5 = 20. Forgetting to halve is the commonest error here.",
+      },
+      {
+        question: "The area of a circle is found using:",
+        choices: [
+          "pi x radius squared",
+          "pi x diameter",
+          "2 x pi x radius",
+          "pi x radius",
+        ],
+        accept: [
+          "pi x radius squared",
+        ],
+        answer: "Circumference is 2 pi r or pi d. Using the diameter instead of the radius in the area formula gives four times too much.",
+      },
+      {
+        question: "What is the volume of a cuboid 2 by 3 by 4?",
+        choices: [
+          "24",
+          "9",
+          "12",
+          "26",
+        ],
+        accept: [
+          "24",
+        ],
+        answer: "Length times width times height. Volume is measured in cubic units.",
+      },
+      {
+        question: "The volume of a prism is found by:",
+        choices: [
+          "Cross-sectional area times length",
+          "Adding all the face areas",
+          "Base times height divided by 2",
+          "Perimeter times height",
+        ],
+        accept: [
+          "Cross-sectional area times length",
+        ],
+        answer: "This works for any prism, including cylinders where the cross-section is a circle.",
+      },
+      {
+        question: "If all lengths of a shape are doubled, its AREA is multiplied by:",
+        choices: [
+          "4",
+          "2",
+          "8",
+          "16",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "Area scales with the square of the length factor, and volume with the cube — so volume would be multiplied by 8.",
+      },
     ],
 
     misconceptions: [
@@ -3935,6 +4260,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Gradient is the change in y divided by the change in x. On a vertical line every point has the same x value, so the change in x is zero, and dividing by zero has no meaning — the gradient is undefined rather than equal to anything. A gradient of zero is the opposite situation: a horizontal line, where y never changes as x does, so the top of the fraction is zero and the answer is genuinely 0. Saying a vertical line has gradient 0 confuses the two, and would suggest it is flat. (Mark this one yourself.)" },
       { question: "Explain how the equation y = mx + c connects to the shape of the line it describes.",
         answer: "The two letters control two independent things. c fixes where the line sits: it is the y value when x = 0, so it is the point where the line crosses the y-axis, and changing it slides the whole line up or down without altering its steepness. m fixes the slope: it says how much y changes for every increase of 1 in x, so a large m gives a steep line, a small one a shallow line, and a negative m makes the line fall rather than rise. Between them they describe every straight line except the vertical ones, which cannot be written this way because their gradient is undefined. (Mark this one yourself.)" },
+      {
+        question: "In y = mx + c, what does m represent?",
+        choices: [
+          "The gradient",
+          "The y-intercept",
+          "The x-intercept",
+          "The origin",
+        ],
+        accept: [
+          "The gradient",
+        ],
+        answer: "c is where the line crosses the y-axis. A larger m means a steeper line.",
+      },
+      {
+        question: "A line with a NEGATIVE gradient:",
+        choices: [
+          "Slopes downwards from left to right",
+          "Slopes upwards from left to right",
+          "Is horizontal",
+          "Is vertical",
+        ],
+        accept: [
+          "Slopes downwards from left to right",
+        ],
+        answer: "Gradient is the change in y divided by the change in x, so going down as x increases gives a negative value.",
+      },
+      {
+        question: "Two parallel lines have:",
+        choices: [
+          "The same gradient",
+          "The same y-intercept",
+          "Gradients that multiply to -1",
+          "No gradient",
+        ],
+        accept: [
+          "The same gradient",
+        ],
+        answer: "Perpendicular lines have gradients whose product is -1, which means one is the negative reciprocal of the other.",
+      },
+      {
+        question: "What is the gradient of the line through (1, 2) and (3, 8)?",
+        choices: [
+          "3",
+          "6",
+          "2",
+          "4",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "Change in y over change in x: (8 - 2) divided by (3 - 1) = 6/2 = 3. Keep the points in the same order top and bottom.",
+      },
+      {
+        question: "The equation y = 4 describes:",
+        choices: [
+          "A horizontal line through 4 on the y-axis",
+          "A vertical line",
+          "A line through the origin",
+          "A curve",
+        ],
+        accept: [
+          "A horizontal line through 4 on the y-axis",
+        ],
+        answer: "x = 4 is the vertical one. Swapping these is a very common slip.",
+      },
     ],
 
     misconceptions: [
