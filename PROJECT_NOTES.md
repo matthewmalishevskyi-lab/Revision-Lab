@@ -771,3 +771,27 @@ on, which looks identical to passing because the work was done.
 Distractors must be real misconceptions, not filler. A wrong option nobody
 would pick turns a five-option question into a two-option one. "None of the
 above" is banned by the checker: it tests exam tactics, not the subject.
+
+## Religious Education (in progress)
+
+Registered in salmon with Lumen, a lantern mascot — deliberately not a person,
+because any human character would have to be dressed and every choice of dress
+reads as a claim about whose subject RE is.
+
+Written as AQA Religious Studies A, Christianity and Islam as the two studied
+religions. Year 9 surveys six religions so it does not depend on that choice;
+Year 10 is the part that would need swapping for a different pairing.
+
+Three rules the content checker CANNOT enforce, so they live in the header
+comment of app/lib/content/religious-education.ts:
+  1. Attribute every belief — "Christians believe X", never "X is true".
+  2. Give non-religious views their strongest form; they carry marks.
+  3. Diversity WITHIN a religion matters as much as difference between them.
+
+Done: what-is-religion. Remaining: 17 topics (5 more in Year 9, then Years 10
+and 11).
+
+⚠️ known-topics.ts contains TWO arrays — KNOWN_TOPIC_KEYS and
+RETIRED_TOPIC_KEYS. Appending "to the end of the file" puts new slugs in the
+RETIRED list, which registers them as deleted. New topics go at the end of the
+FIRST array. This cost a real bug; the checker caught it.
