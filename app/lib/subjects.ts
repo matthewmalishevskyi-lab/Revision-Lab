@@ -58,7 +58,8 @@ export type Subject = {
     | "atlas"
     | "sterling"
     | "iris"
-    | "bobby";
+    | "bobby"
+    | "lumen";
 
   // Which GROUP this subject belongs to, if any.
   //
@@ -715,6 +716,67 @@ export const SUBJECTS: Subject[] = [
           { slug: "money-and-the-citizen", title: "Money & the citizen", icon: "suitcase" },
           { slug: "crime-and-justice", title: "Crime & justice", icon: "shield" },
           { slug: "citizenship-exam-practice", title: "Exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+
+  // ─── RELIGIOUS EDUCATION ──────────────────────────────────────────────────
+  //
+  // Mascot: Lumen, a lantern. Deliberately NOT a person. Any human character
+  // would have to be dressed, and every choice of dress — a hijab, a kippah, a
+  // turban, a crucifix, or none of them — reads as the site taking a side about
+  // whose religion this subject belongs to. A lantern belongs to nobody, and
+  // light as a metaphor for understanding appears in most traditions without
+  // being owned by any of them. Matthew raised this himself before I did.
+  //
+  // ⚠️ SALMON, as asked. Honestly: it sits about 8 degrees of hue from History's
+  // red, which is the tightest separation on the site. It survives because RE is
+  // kept noticeably LIGHTER and warmer than History's deep red, so the two read
+  // apart at card size. If they ever look confusable on the progress chart, this
+  // is the one to move — towards coral or amber, not towards pink, which
+  // Citizenship already holds.
+  {
+    slug: "religious-education",
+    name: "Religious Education",
+    blurb: "Choose a topic to start revising",
+    gradient: "linear-gradient(150deg, #fecdd3 0%, #f4796a 45%, #8c2f22 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(244,121,106,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(244,121,106,0.9)]",
+    accent: "#c94f3d",
+    mascot: "lumen",
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "what-is-religion", title: "What is religion?", icon: "globe" },
+          { slug: "introducing-christianity", title: "Introducing Christianity", icon: "book" },
+          { slug: "introducing-islam", title: "Introducing Islam", icon: "book" },
+          { slug: "introducing-judaism", title: "Introducing Judaism", icon: "book" },
+          { slug: "dharmic-religions", title: "Hinduism, Sikhism & Buddhism", icon: "layers" },
+          { slug: "big-questions-and-ethics", title: "Big questions & ethics", icon: "scales" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "christian-beliefs", title: "Christian beliefs", icon: "book" },
+          { slug: "christian-practices", title: "Christian practices", icon: "feather" },
+          { slug: "muslim-beliefs", title: "Muslim beliefs", icon: "book" },
+          { slug: "muslim-practices", title: "Muslim practices", icon: "feather" },
+          { slug: "relationships-and-families", title: "Relationships & families", icon: "globe" },
+          { slug: "religion-and-life", title: "Religion & life", icon: "scales" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "the-existence-of-god", title: "The existence of God", icon: "quote" },
+          { slug: "peace-and-conflict", title: "Peace & conflict", icon: "shield" },
+          { slug: "crime-and-punishment", title: "Crime & punishment", icon: "scales" },
+          { slug: "human-rights-and-social-justice", title: "Human rights & justice", icon: "globe" },
+          { slug: "sources-of-authority", title: "Sources of authority", icon: "book" },
+          { slug: "re-exam-practice", title: "Exam practice", icon: "news" },
         ],
       },
     ],

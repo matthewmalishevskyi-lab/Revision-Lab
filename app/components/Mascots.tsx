@@ -42,6 +42,7 @@ export const MASCOTS = {
   sterling: Sterling,
   iris: Iris,
   bobby: Bobby,
+  lumen: Lumen,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -1118,6 +1119,84 @@ export function Bobby(props: MascotProps) {
              of a police mascot on a Citizenship page is "you can ask me
              things", not "cheer up". ── */}
       <path d="M53.5 59.5 Q60 64.5 66.5 59.5" stroke="#96634a" strokeWidth={2.6} strokeLinecap="round" fill="none" />
+    </svg>
+  );
+}
+
+// ============================ LUMEN — Religious Education ===================
+// A lantern, not a person.
+//
+// WHY. Every other mascot here is a character with a face and clothes. For RE
+// that is a trap: any human has to be dressed, and a hijab, a kippah, a turban,
+// a crucifix — or the pointed absence of all of them — each reads as a claim
+// about whose subject this is. There is no neutral costume. So the character is
+// an object instead. Light as a metaphor for understanding turns up across
+// traditions without being owned by any of them, and a lantern is warm rather
+// than solemn, which suits a revision site.
+//
+// The face sits ON the glass rather than being drawn behind it, so the flame
+// reads as the character's warmth rather than as something trapped inside.
+export function Lumen(props: MascotProps) {
+  return (
+    <svg
+      viewBox="0 0 120 140"
+      role="img"
+      aria-label="Lumen, the Religious Education mascot: a friendly glowing lantern"
+      {...props}
+    >
+      {/* Light from the upper left, as with every other character. */}
+
+      {/* ── The glow. Drawn FIRST so everything else sits on top of it, and
+             kept very soft — a hard-edged glow reads as a bubble. ── */}
+      <circle cx="60" cy="84" r="40" fill="#f4796a" opacity={0.16} />
+      <circle cx="60" cy="90" r="26" fill="#fbbf24" opacity={0.16} />
+
+      {/* ── Carry handle ── */}
+      <path d="M44 26 Q60 4 76 26" stroke="#8a5a3c" strokeWidth={4} fill="none" strokeLinecap="round" />
+      <path d="M60 5.6 Q73 8 75 25" stroke="#000000" strokeWidth={4} opacity={0.16} fill="none" strokeLinecap="round" />
+      <circle cx="60" cy="30" r="3.6" fill="#a0673f" />
+
+      {/* ── Top cap. A shallow roof, wider than the body, so the lantern reads
+             as sheltered rather than as a jar. ── */}
+      <path d="M30 44 Q60 30 90 44 L86 50 Q60 39 34 50 Z" fill="#a0673f" />
+      <path d="M60 34.6 Q78 37.5 90 44 L86 50 Q74 43.6 60 41 Z" fill="#000000" opacity={0.18} />
+      <path d="M36 44.6 Q48 38.4 60 37" stroke="#ffffff" strokeWidth={2} opacity={0.22} fill="none" strokeLinecap="round" />
+
+      {/* ── The glass body ── */}
+      <path d="M34 50 Q60 43 86 50 L88 104 Q60 112 32 104 Z" fill="#fde8d7" />
+      <path d="M60 46.5 Q76 46.5 86 50 L88 104 Q75 108.4 60 110.4 Z" fill="#c98a63" opacity={0.16} />
+      {/* A single diagonal sheen. Two would read as spectacles. */}
+      <path d="M40 56 Q46 52 52 51.6 L44 100 Q39.5 99 37.5 97.6 Z" fill="#ffffff" opacity={0.4} />
+
+      {/* ── Frame uprights, front corners only ── */}
+      <path d="M34.5 50.5 L32.8 104" stroke="#8a5a3c" strokeWidth={3.4} strokeLinecap="round" />
+      <path d="M85.5 50.5 L87.2 104" stroke="#7a4d32" strokeWidth={3.4} strokeLinecap="round" />
+
+      {/* ── The flame. Warm core, brighter centre. ── */}
+      <path d="M60 79 Q67.5 87 67.5 92.5 Q67.5 99 60 99 Q52.5 99 52.5 92.5 Q52.5 87 60 79 Z" fill="#f59e0b" />
+      <path d="M60 79 Q67.5 87 67.5 92.5 Q67.5 99 60 99 Q64 93.5 63.4 89 Q62.8 84 60 79 Z" fill="#d97706" opacity={0.5} />
+      <path d="M60 85 Q64 90 64 93.4 Q64 96.8 60 96.8 Q56 96.8 56 93.4 Q56 90 60 85 Z" fill="#fde047" />
+
+      {/* ── Base ── */}
+      <path d="M30 103 Q60 111 90 103 L88 114 Q60 121.4 32 114 Z" fill="#a0673f" />
+      <path d="M60 108.6 Q76 107 90 103 L88 114 Q75 118.4 60 120 Z" fill="#000000" opacity={0.2} />
+      {/* Feet, so it stands rather than floats */}
+      <path d="M36 118 Q42 121.4 42 124.6 Q42 127.4 36 127.4 Q30.6 127.4 30.6 124.6 Q30.6 120.6 36 118 Z" fill="#7a4d32" />
+      <path d="M84 118 Q78 121.4 78 124.6 Q78 127.4 84 127.4 Q89.4 127.4 89.4 124.6 Q89.4 120.6 84 118 Z" fill="#6b4229" />
+
+      {/* ── The face, ON the glass. Placed high on the body so the flame reads
+             as being below and behind it rather than coming out of its mouth. ── */}
+      <ellipse cx="50" cy="61" rx="3.5" ry="4" fill="#3f2412" />
+      <ellipse cx="70" cy="61" rx="3.5" ry="4" fill="#3f2412" />
+      <circle cx="48.9" cy="59.6" r="1.15" fill="#ffffff" />
+      <circle cx="68.9" cy="59.6" r="1.15" fill="#ffffff" />
+      {/* Brows: level and slightly raised, which reads as curious rather than
+          either worried (angled in) or startled (arched high). */}
+      <path d="M46 53.6 Q50 51.6 54 53.6" stroke="#3f2412" strokeWidth={1.9} strokeLinecap="round" fill="none" />
+      <path d="M66 53.6 Q70 51.6 74 53.6" stroke="#3f2412" strokeWidth={1.9} strokeLinecap="round" fill="none" />
+      {/* A small closed smile — calm, not grinning. This is a subject where
+          people bring real convictions, and an over-excited mascot would jar. */}
+      <path d="M54.5 69 Q60 73 65.5 69" stroke="#3f2412" strokeWidth={2.4} strokeLinecap="round" fill="none" />
     </svg>
   );
 }
