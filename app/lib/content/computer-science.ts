@@ -1132,6 +1132,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer:
           "Validation checks data is SENSIBLE — for example a range check confirming an age is between 0 and 120. Verification checks data was entered CORRECTLY — for example typing a password twice and comparing. Validation cannot tell whether data is true: a valid date of birth can still be the wrong one. (Mark this one yourself.)",
       },
+      {
+        question: "Which of these is an example of ITERATION?",
+        choices: [
+          "A for loop repeating ten times",
+          "An if statement checking a value",
+          "Assigning a value to a variable",
+          "Declaring a constant",
+        ],
+        accept: [
+          "A for loop repeating ten times",
+        ],
+        answer: "Iteration is repetition. Selection is choosing with if or case, and sequence is running lines in order.",
+      },
+      {
+        question: "What is a variable?",
+        choices: [
+          "A named store whose value can change while the program runs",
+          "A value that never changes",
+          "A type of loop",
+          "A built-in function",
+        ],
+        accept: [
+          "A named store whose value can change while the program runs",
+        ],
+        answer: "A constant is the opposite — its value is fixed once set, which prevents accidental changes.",
+      },
+      {
+        question: "Which data type would best store a person's age in whole years?",
+        choices: [
+          "Integer",
+          "Real",
+          "String",
+          "Boolean",
+        ],
+        accept: [
+          "Integer",
+        ],
+        answer: "Integers are whole numbers. Real allows decimals, string holds text, and boolean holds only true or false.",
+      },
+      {
+        question: "What does the MOD operator return?",
+        choices: [
+          "The remainder after division",
+          "The whole number part of a division",
+          "The larger of two numbers",
+          "The result of multiplication",
+        ],
+        accept: [
+          "The remainder after division",
+        ],
+        answer: "DIV gives the whole number part. MOD is useful for checking whether a number divides exactly, such as testing for even numbers.",
+      },
+      {
+        question: "What is a WHILE loop best used for?",
+        choices: [
+          "Repeating an unknown number of times until a condition changes",
+          "Repeating an exact number of times",
+          "Choosing between two options",
+          "Storing a list of values",
+        ],
+        accept: [
+          "Repeating an unknown number of times until a condition changes",
+        ],
+        answer: "A for loop suits a known count. A while loop that never changes its condition becomes an infinite loop.",
+      },
     ],
 
     misconceptions: [
@@ -2068,6 +2133,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because it works by discarding half the list at each step, and that decision depends on knowing that everything to one side of the middle item is smaller and everything to the other side is larger. In an unsorted list that guarantee does not hold, so the target could be in the half just discarded. (Mark this one yourself.)" },
       { question: "A program must sort 10 items that are already nearly in order. Recommend an algorithm and justify it.",
         answer: "Bubble sort or insertion sort. With only 10 items the efficiency advantage of merge sort is negligible, and both are simpler to implement and use less memory. Insertion sort in particular is very efficient on nearly-sorted data, since most items are already in place. Merge sort's advantages only appear on large lists. (Mark this one yourself.)" },
+      {
+        question: "A binary search requires the data to be:",
+        choices: [
+          "Sorted",
+          "Numeric only",
+          "Stored in a database",
+          "Smaller than 100 items",
+        ],
+        accept: [
+          "Sorted",
+        ],
+        answer: "Binary search halves the search space each step, which only works on ordered data. Linear search works on unsorted data but is slower.",
+      },
+      {
+        question: "Which sorting algorithm repeatedly finds the smallest remaining item?",
+        choices: [
+          "Selection sort",
+          "Bubble sort",
+          "Merge sort",
+          "Binary sort",
+        ],
+        accept: [
+          "Selection sort",
+        ],
+        answer: "Bubble sort swaps neighbouring pairs, merge sort divides and recombines. Merge sort is much faster on large lists.",
+      },
+      {
+        question: "What is abstraction in computational thinking?",
+        choices: [
+          "Removing unnecessary detail to focus on what matters",
+          "Breaking a problem into smaller parts",
+          "Finding patterns between problems",
+          "Writing code in pseudocode",
+        ],
+        accept: [
+          "Removing unnecessary detail to focus on what matters",
+        ],
+        answer: "Decomposition is the breaking-down step. A map is a good example of abstraction: it omits nearly everything and stays useful.",
+      },
+      {
+        question: "Why is merge sort usually faster than bubble sort on a large list?",
+        choices: [
+          "It divides the problem, so fewer comparisons are needed overall",
+          "It uses less memory",
+          "It does not need the data in a list",
+          "It only works on sorted data",
+        ],
+        accept: [
+          "It divides the problem, so fewer comparisons are needed overall",
+        ],
+        answer: "Merge sort uses more memory, which is its trade-off. Bubble sort is simple but compares every pair repeatedly.",
+      },
+      {
+        question: "Pseudocode is used because it:",
+        choices: [
+          "Describes an algorithm clearly without the rules of a specific language",
+          "Runs faster than real code",
+          "Is required by all compilers",
+          "Automatically finds errors",
+        ],
+        accept: [
+          "Describes an algorithm clearly without the rules of a specific language",
+        ],
+        answer: "It lets you focus on the logic. A flowchart does the same job visually.",
+      },
     ],
 
     misconceptions: [
@@ -2313,6 +2443,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "A local variable exists only inside its subprogram, so no other part of the program can change it by accident. That makes bugs far easier to locate: if a local value is wrong, the cause must be within that one subprogram. A global can be modified from anywhere, so tracking down what changed it may mean reading the entire program. (Mark this one yourself.)" },
       { question: "Explain why boundary data is the most valuable category of test data.",
         answer: "Because boundary values are where the most common coding errors live — confusing > with >=, or looping 1 to 10 instead of 0 to 9. Normal data usually works even in buggy code, and erroneous data tests a different thing entirely. Testing 0 and 100 on a 0-to-100 field finds off-by-one errors that testing 50 never would. (Mark this one yourself.)" },
+      {
+        question: "What is a function that returns a value usually called?",
+        choices: [
+          "A function",
+          "A procedure",
+          "A variable",
+          "A constant",
+        ],
+        accept: [
+          "A function",
+        ],
+        answer: "In most GCSE specifications a procedure carries out a task without returning a value, while a function returns one.",
+      },
+      {
+        question: "Why are subroutines useful?",
+        choices: [
+          "Code can be reused and the program is easier to read and test",
+          "They make programs run faster",
+          "They remove the need for variables",
+          "They prevent all errors",
+        ],
+        accept: [
+          "Code can be reused and the program is easier to read and test",
+        ],
+        answer: "Breaking a program into named parts means each can be tested separately and fixed without disturbing the rest.",
+      },
+      {
+        question: "What is a local variable?",
+        choices: [
+          "One that exists only inside the subroutine where it is declared",
+          "One available anywhere in the program",
+          "One that cannot be changed",
+          "One stored on the hard disk",
+        ],
+        accept: [
+          "One that exists only inside the subroutine where it is declared",
+        ],
+        answer: "Local variables avoid accidental interference between parts of a program, which is why they are preferred to global ones.",
+      },
+      {
+        question: "What does a two-dimensional array represent well?",
+        choices: [
+          "A table or grid of values",
+          "A single number",
+          "A yes or no answer",
+          "A file path",
+        ],
+        accept: [
+          "A table or grid of values",
+        ],
+        answer: "You index it with a row and a column, which suits seating plans, game boards and spreadsheets.",
+      },
+      {
+        question: "String concatenation means:",
+        choices: [
+          "Joining two strings together",
+          "Splitting a string in half",
+          "Converting a string to a number",
+          "Finding the length of a string",
+        ],
+        accept: [
+          "Joining two strings together",
+        ],
+        answer: "Note that adding the strings 2 and 3 gives 23, not 5 — which is why casting between types matters.",
+      },
     ],
 
     misconceptions: [
@@ -2541,6 +2736,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because most successful attacks target the person rather than the technology. Phishing, blagging and shouldering all bypass technical defences entirely — a firewall cannot stop an employee who has been persuaded to type their password into a convincing fake site. Training addresses the route that technical measures cannot cover. (Mark this one yourself.)" },
       { question: "An online shop stores customer card details. Recommend three measures to protect them and justify each.",
         answer: "Encryption, so intercepted or stolen data is unreadable without the key. User access levels, so only staff who genuinely need card data can reach it and a compromised account limits the damage. Penetration testing, to find vulnerabilities such as SQL injection before attackers do. A firewall and up-to-date anti-malware would also be reasonable, alongside staff training against phishing. (Mark this one yourself.)" },
+      {
+        question: "What is PHISHING?",
+        choices: [
+          "Tricking someone into revealing details by pretending to be trustworthy",
+          "Guessing passwords automatically",
+          "Flooding a server with requests",
+          "Encrypting files and demanding payment",
+        ],
+        accept: [
+          "Tricking someone into revealing details by pretending to be trustworthy",
+        ],
+        answer: "Phishing targets the person, not the machine, which is why staff training matters more than technical defences here.",
+      },
+      {
+        question: "A brute-force attack works by:",
+        choices: [
+          "Trying many possible passwords until one works",
+          "Sending fake emails",
+          "Reading data from discarded documents",
+          "Watching someone type",
+        ],
+        accept: [
+          "Trying many possible passwords until one works",
+        ],
+        answer: "Strong passwords and rate limiting are the defences. Locking an account after repeated failures makes the attack impractical.",
+      },
+      {
+        question: "What is the aim of a denial-of-service attack?",
+        choices: [
+          "To overwhelm a system so genuine users cannot access it",
+          "To steal passwords",
+          "To encrypt the victim's files",
+          "To copy a database",
+        ],
+        accept: [
+          "To overwhelm a system so genuine users cannot access it",
+        ],
+        answer: "It does not steal data — it makes a service unavailable, which can still cost a business heavily.",
+      },
+      {
+        question: "SQL injection is possible when a program:",
+        choices: [
+          "Does not validate user input before using it in a query",
+          "Uses too much memory",
+          "Runs on an old operating system",
+          "Has no antivirus installed",
+        ],
+        accept: [
+          "Does not validate user input before using it in a query",
+        ],
+        answer: "Input validation and parameterised queries are the fix. It is a programming fault rather than a network one.",
+      },
+      {
+        question: "Which is an example of social engineering rather than a technical attack?",
+        choices: [
+          "Shouldering, or watching someone enter a PIN",
+          "Installing a keylogger",
+          "Running a port scan",
+          "Exploiting unpatched software",
+        ],
+        accept: [
+          "Shouldering, or watching someone enter a PIN",
+        ],
+        answer: "Social engineering exploits people. Blagging, phishing, shouldering and pharming all rely on human behaviour.",
+      },
     ],
 
     misconceptions: [
@@ -4241,6 +4501,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "When a file is deleted it leaves a gap on the disk, and the operating system will use whatever gaps are available when saving new files. If a new file is larger than any single gap, it gets split across several of them. Over time, as files are repeatedly created, changed and deleted, the gaps grow more numerous and smaller, and files end up in more and more pieces scattered across the disk. Nothing has gone wrong — this is the normal consequence of reusing space efficiently. (Mark this one yourself.)" },
       { question: "A company is choosing between a GUI and a CLI for staff who manage 200 servers. Recommend one and justify it.",
         answer: "A command line interface. The decisive reason is automation: CLI commands can be written into scripts and run across all 200 servers at once, whereas a GUI would mean repeating the same clicks 200 times, which is slow and invites human error. A CLI also uses far fewer system resources, which matters when every megabyte on a server should be doing paid work, and it works well over a slow remote connection where a graphical desktop would be painful. The learning curve is a genuine cost, but staff who manage servers every day will pay it back within days. (Mark this one yourself.)" },
+      {
+        question: "Which of these is a function of an operating system?",
+        choices: [
+          "Memory management",
+          "Editing photographs",
+          "Compiling source code",
+          "Browsing the web",
+        ],
+        accept: [
+          "Memory management",
+        ],
+        answer: "The OS handles memory, processes, files, peripherals and users. The others are application software.",
+      },
+      {
+        question: "What does a device driver do?",
+        choices: [
+          "Lets the operating system communicate with a piece of hardware",
+          "Speeds up the processor",
+          "Removes viruses",
+          "Compresses files",
+        ],
+        accept: [
+          "Lets the operating system communicate with a piece of hardware",
+        ],
+        answer: "Each device needs a driver because hardware from different manufacturers works differently.",
+      },
+      {
+        question: "Defragmentation is useful on which type of storage?",
+        choices: [
+          "A magnetic hard disk",
+          "A solid state drive",
+          "RAM",
+          "Cache",
+        ],
+        accept: [
+          "A magnetic hard disk",
+        ],
+        answer: "It gathers scattered file fragments so the read head moves less. On an SSD it gives no benefit and wastes write cycles.",
+      },
+      {
+        question: "What is a utility program?",
+        choices: [
+          "Software that maintains or optimises the computer",
+          "The main operating system kernel",
+          "A programming language",
+          "A type of hardware",
+        ],
+        accept: [
+          "Software that maintains or optimises the computer",
+        ],
+        answer: "Backup tools, antivirus, compression and disk defragmenters are all utilities.",
+      },
+      {
+        question: "What is the purpose of a user interface?",
+        choices: [
+          "To allow a person to interact with the computer",
+          "To manage memory allocation",
+          "To connect to the internet",
+          "To store files permanently",
+        ],
+        accept: [
+          "To allow a person to interact with the computer",
+        ],
+        answer: "It can be graphical, command line, menu-driven or voice. A command line is harder to learn but faster and more powerful for experts.",
+      },
     ],
 
     misconceptions: [
@@ -4781,6 +5106,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "A crash loses whatever the user had already entered, gives them no idea what went wrong, and leaves the program in an unknown state — which can mean half-written files or a partly updated database. It also tells an attacker something useful, since crash messages often reveal internal details of how the program works. Defensive design instead anticipates bad input, rejects it with a clear message explaining what was expected, and asks again, so the program stays in a known good state and the user can actually fix their mistake. (Mark this one yourself.)" },
       { question: "Explain why subprograms make a large program easier to test as well as easier to read.",
         answer: "A subprogram has a defined input and a defined output, so it can be tested on its own with normal, boundary and erroneous data without running the whole program. That makes any fault easy to locate: if the subprogram passes its own tests, the problem is elsewhere. It also removes duplicated code, so a rule that appears in one place instead of five only needs testing and fixing once — and when the rule changes, there is no risk of updating four copies and missing the fifth. (Mark this one yourself.)" },
+      {
+        question: "What is the purpose of input validation?",
+        choices: [
+          "To check data is sensible before it is used",
+          "To make the program run faster",
+          "To encrypt user data",
+          "To reduce file size",
+        ],
+        accept: [
+          "To check data is sensible before it is used",
+        ],
+        answer: "Range, type, length, presence and format checks are the common ones. Validation checks plausibility, not truth.",
+      },
+      {
+        question: "Iterative testing means:",
+        choices: [
+          "Testing repeatedly throughout development",
+          "Testing only once at the end",
+          "Testing done by the customer",
+          "Testing without any test data",
+        ],
+        accept: [
+          "Testing repeatedly throughout development",
+        ],
+        answer: "Final testing happens once the program is complete. Catching faults early is far cheaper than fixing them later.",
+      },
+      {
+        question: "Which test data is BOUNDARY data for a value that must be 1 to 10?",
+        choices: [
+          "1 and 10",
+          "5",
+          "0 and 11",
+          "Any letter",
+        ],
+        accept: [
+          "1 and 10",
+        ],
+        answer: "Boundary data sits exactly on the limits. 0 and 11 are erroneous, 5 is normal, and a letter is invalid by type.",
+      },
+      {
+        question: "A syntax error is one that:",
+        choices: [
+          "Breaks the rules of the language so the code will not run",
+          "Produces the wrong answer",
+          "Only occurs on slow computers",
+          "Happens when memory runs out",
+        ],
+        accept: [
+          "Breaks the rules of the language so the code will not run",
+        ],
+        answer: "A logic error runs perfectly but gives the wrong result, which makes it much harder to find.",
+      },
+      {
+        question: "Which practice makes a program easier to maintain?",
+        choices: [
+          "Meaningful variable names and comments",
+          "Using single-letter names everywhere",
+          "Writing all code in one long subroutine",
+          "Avoiding indentation",
+        ],
+        accept: [
+          "Meaningful variable names and comments",
+        ],
+        answer: "Maintainability matters because most of a program's life is spent being changed by someone who did not write it.",
+      },
     ],
 
     misconceptions: [
