@@ -217,6 +217,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "2^2 x 3 x 5. Build it with a factor tree: 60 = 6 x 10 = (2 x 3) x (2 x 5)." },
       { question: "Explain why estimation questions require you to show the rounded values.",
         answer: "Because the marks are for the METHOD — rounding each value to 1 significant figure and then calculating. The examiner cannot tell from a final number alone whether you estimated correctly or simply worked out the exact answer and rounded it, so an unsupported answer scores nothing even when it is close. (Mark this one yourself.)" },
+      {
+        question: "What is 3,847 rounded to 2 significant figures?",
+        choices: [
+          "3800",
+          "3900",
+          "3850",
+          "4000",
+        ],
+        accept: [
+          "3800",
+        ],
+        answer: "The first two significant figures are 3 and 8. The next digit is 4, which rounds down, so 3800.",
+      },
+      {
+        question: "Which of these is an irrational number?",
+        choices: [
+          "The square root of 2",
+          "0.25",
+          "Three quarters",
+          "-7",
+        ],
+        accept: [
+          "The square root of 2",
+        ],
+        answer: "Irrational numbers cannot be written as a fraction and their decimals never repeat. Pi is the other common example.",
+      },
+      {
+        question: "What is the highest common factor of 24 and 36?",
+        choices: [
+          "12",
+          "6",
+          "72",
+          "4",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12 is the largest number dividing into both. The lowest common multiple of 24 and 36 is 72, which is the other side of the same idea.",
+      },
+      {
+        question: "Which is the correct product of prime factors for 60?",
+        choices: [
+          "2 x 2 x 3 x 5",
+          "2 x 3 x 10",
+          "4 x 15",
+          "6 x 10",
+        ],
+        accept: [
+          "2 x 2 x 3 x 5",
+        ],
+        answer: "Every factor must itself be prime. A factor tree is the reliable method, splitting until only primes remain.",
+      },
+      {
+        question: "Estimating 19.6 x 4.2 by rounding to 1 significant figure gives:",
+        choices: [
+          "80",
+          "84",
+          "82",
+          "100",
+        ],
+        accept: [
+          "80",
+        ],
+        answer: "20 x 4 = 80. Estimation questions want the rounded working shown, not the exact answer.",
+      },
     ],
 
     misconceptions: [
@@ -439,6 +504,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "An expression is a collection of terms with no equals sign, such as 3x + 2 — it can be simplified but not solved. An equation contains an equals sign and can be solved for an unknown, such as 3x + 2 = 11. A formula is a rule connecting two or more variables, such as A = pi r^2, and can be rearranged to make a different variable the subject. (Mark this one yourself.)" },
       { question: "Explain why checking a factorised answer by expanding it is worth the time.",
         answer: "Because expanding is quick and mechanical, and it verifies the whole answer at once. If expanding does not reproduce the original expression exactly, something is wrong and you can fix it before losing the marks. It catches the two commonest errors — taking out a factor that is not the highest, and getting a sign wrong — in about ten seconds. (Mark this one yourself.)" },
+      {
+        question: "Simplify 3a + 4b - a + 2b.",
+        choices: [
+          "2a + 6b",
+          "3a + 6b",
+          "2a + 2b",
+          "7ab",
+        ],
+        accept: [
+          "2a + 6b",
+        ],
+        answer: "Collect like terms separately: 3a - a = 2a and 4b + 2b = 6b. Terms in a and b cannot be combined.",
+      },
+      {
+        question: "Expand 3(x + 4).",
+        choices: [
+          "3x + 12",
+          "3x + 4",
+          "x + 12",
+          "3x + 7",
+        ],
+        accept: [
+          "3x + 12",
+        ],
+        answer: "Multiply everything inside the bracket by 3. Forgetting to multiply the second term is the most common slip.",
+      },
+      {
+        question: "Factorise 6x + 9.",
+        choices: [
+          "3(2x + 3)",
+          "6(x + 9)",
+          "3(2x + 9)",
+          "2(3x + 4)",
+        ],
+        accept: [
+          "3(2x + 3)",
+        ],
+        answer: "Take out the highest common factor, which is 3. Expanding your answer is a quick way to check it.",
+      },
+      {
+        question: "What does 5x squared mean when x = 3?",
+        choices: [
+          "45",
+          "225",
+          "30",
+          "15",
+        ],
+        accept: [
+          "45",
+        ],
+        answer: "Square first, then multiply: 3 squared is 9, and 5 x 9 = 45. Squaring the 5 as well gives 225, which is wrong.",
+      },
+      {
+        question: "Simplify a to the 5 divided by a squared.",
+        choices: [
+          "a cubed",
+          "a to the 7",
+          "a to the 10",
+          "a",
+        ],
+        accept: [
+          "a cubed",
+        ],
+        answer: "Dividing powers of the same base means subtracting the indices: 5 - 2 = 3.",
+      },
     ],
 
     misconceptions: [
@@ -882,6 +1012,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the percentage was applied to the ORIGINAL amount, not the new one. If £50 rises by 20%, the increase is 20% of 50, which is £10. Taking 20% off the new £60 removes 20% of 60, which is £12 — a different quantity. Dividing by the multiplier exactly undoes the multiplication that created the new value. (Mark this one yourself.)" },
       { question: "Explain the difference between simple and compound interest, and which gives more over several years.",
         answer: "Simple interest is calculated only on the original amount, so the same sum is added each period. Compound interest is calculated on the original amount plus all interest already added, so each period earns slightly more than the last. Over more than one period compound always gives more, and the gap widens the longer the money is invested. (Mark this one yourself.)" },
+      {
+        question: "What is 15% of 240?",
+        choices: [
+          "36",
+          "24",
+          "30",
+          "45",
+        ],
+        accept: [
+          "36",
+        ],
+        answer: "10% is 24 and 5% is 12, so 15% is 36. Building from 10% is quicker than a calculator for many exam questions.",
+      },
+      {
+        question: "A price rises by 20%. Which multiplier finds the new price?",
+        choices: [
+          "1.2",
+          "0.2",
+          "0.8",
+          "20",
+        ],
+        accept: [
+          "1.2",
+        ],
+        answer: "An increase of 20% means 120% of the original, so multiply by 1.2. A 20% decrease would be 0.8.",
+      },
+      {
+        question: "To find the ORIGINAL price after a 20% increase, you should:",
+        choices: [
+          "Divide the new price by 1.2",
+          "Multiply the new price by 0.8",
+          "Subtract 20% from the new price",
+          "Multiply by 1.2 again",
+        ],
+        accept: [
+          "Divide the new price by 1.2",
+        ],
+        answer: "This is reverse percentages. Subtracting 20% from the new price gives the wrong answer, and is the standard trap.",
+      },
+      {
+        question: "What is 3/8 as a decimal?",
+        choices: [
+          "0.375",
+          "0.38",
+          "0.83",
+          "0.35",
+        ],
+        accept: [
+          "0.375",
+        ],
+        answer: "3 divided by 8 is 0.375. Learning the eighths as decimals saves time in non-calculator papers.",
+      },
+      {
+        question: "Which fraction is equivalent to 0.4?",
+        choices: [
+          "2/5",
+          "4/100",
+          "1/4",
+          "4/5",
+        ],
+        accept: [
+          "2/5",
+        ],
+        answer: "0.4 is 4/10, which simplifies to 2/5. Always simplify unless the question says otherwise.",
+      },
     ],
 
     misconceptions: [
@@ -1095,6 +1290,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the two produce opposite answers from the same numbers. Direct means both quantities move the same way, so you multiply; inverse means they move in opposite directions, so you divide. Asking 'should the second quantity get bigger or smaller?' takes a second and prevents an answer that is not just slightly wrong but wrong in the opposite direction. (Mark this one yourself.)" },
       { question: "A shop sells a 500 g pack for £2.20 and a 750 g pack for £3.15. Show which is better value and explain your method.",
         answer: "Compare price per unit. The 500 g pack: 220p ÷ 500 = 0.44p per gram. The 750 g pack: 315p ÷ 750 = 0.42p per gram. The 750 g pack is better value because each gram costs less. The key is being consistent — compare price per gram for both, or grams per penny for both, but never mix the two. (Mark this one yourself.)" },
+      {
+        question: "Share 60 in the ratio 2:3. What is the larger share?",
+        choices: [
+          "36",
+          "30",
+          "24",
+          "40",
+        ],
+        accept: [
+          "36",
+        ],
+        answer: "There are 5 parts, so one part is 12. The larger share is 3 parts: 3 x 12 = 36.",
+      },
+      {
+        question: "If 5 pens cost 3.50, what do 8 pens cost?",
+        choices: [
+          "5.60",
+          "5.20",
+          "6.00",
+          "4.80",
+        ],
+        accept: [
+          "5.60",
+        ],
+        answer: "One pen costs 0.70, so 8 cost 5.60. Finding the unit value first is the safest method.",
+      },
+      {
+        question: "In a ratio 4:5, what fraction of the total is the first part?",
+        choices: [
+          "4/9",
+          "4/5",
+          "1/4",
+          "5/9",
+        ],
+        accept: [
+          "4/9",
+        ],
+        answer: "The total is 9 parts, so the first part is 4 of them. Writing 4/5 is the classic mistake.",
+      },
+      {
+        question: "Two quantities are in DIRECT proportion when:",
+        choices: [
+          "Doubling one doubles the other",
+          "Doubling one halves the other",
+          "Their sum stays constant",
+          "Their difference stays constant",
+        ],
+        accept: [
+          "Doubling one doubles the other",
+        ],
+        answer: "Direct proportion graphs are straight lines through the origin. Inverse proportion is when one doubles as the other halves.",
+      },
+      {
+        question: "A map has scale 1:50000. How many metres does 3 cm represent?",
+        choices: [
+          "1500",
+          "500",
+          "150",
+          "15000",
+        ],
+        accept: [
+          "1500",
+        ],
+        answer: "3 cm on the map is 150000 cm in reality, which is 1500 m or 1.5 km. Converting units at the end is where marks are lost.",
+      },
     ],
 
     misconceptions: [
@@ -1309,6 +1569,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because multiplying or dividing by a negative flips the order of the number line. Consider 2 < 4, which is true. Divide both sides by −1 and you get −2 and −4; but −2 is GREATER than −4, so the statement only stays true if the sign reverses to −2 > −4. The safest habit is to rearrange so you never divide by a negative in the first place. (Mark this one yourself.)" },
       { question: "Explain why you should check simultaneous equation answers in BOTH original equations.",
         answer: "Because an arithmetic slip during elimination often produces values that still satisfy one equation while failing the other. Checking only one gives false confidence. Substituting into both catches the error in about twenty seconds, while you can still fix it and keep the marks. (Mark this one yourself.)" },
+      {
+        question: "Solve 3x + 5 = 20.",
+        choices: [
+          "5",
+          "15",
+          "25",
+          "3",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "Subtract 5 to get 3x = 15, then divide by 3. Always undo operations in reverse order.",
+      },
+      {
+        question: "Solve 2(x - 3) = 10.",
+        choices: [
+          "8",
+          "5",
+          "2",
+          "13",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "Expand to 2x - 6 = 10, so 2x = 16 and x = 8. Alternatively divide both sides by 2 first.",
+      },
+      {
+        question: "When you multiply or divide an inequality by a NEGATIVE number, you must:",
+        choices: [
+          "Reverse the inequality sign",
+          "Leave the sign unchanged",
+          "Change it to an equals sign",
+          "Square both sides",
+        ],
+        accept: [
+          "Reverse the inequality sign",
+        ],
+        answer: "So -2x > 6 becomes x < -3. Forgetting to flip the sign is the single most common inequality error.",
+      },
+      {
+        question: "On a number line, an inequality with a HOLLOW circle means:",
+        choices: [
+          "The value itself is not included",
+          "The value is included",
+          "The inequality has no solution",
+          "The value is negative",
+        ],
+        accept: [
+          "The value itself is not included",
+        ],
+        answer: "Hollow for < and >, filled for the 'or equal to' versions.",
+      },
+      {
+        question: "Solve the simultaneous equations x + y = 10 and x - y = 4. What is x?",
+        choices: [
+          "7",
+          "6",
+          "3",
+          "5",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "Adding the equations eliminates y: 2x = 14, so x = 7 and y = 3. Always check in BOTH original equations.",
+      },
     ],
 
     misconceptions: [
@@ -3081,6 +3406,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because of the division law. Dividing a power by itself gives 1 — for example 5^4 ÷ 5^4 = 1, since any number divided by itself is 1. But the division law says to subtract the powers, so 5^4 ÷ 5^4 = 5^(4−4) = 5^0. Both routes describe the same calculation, so 5^0 must equal 1. Nothing is special about 5, so the same argument works for any non-zero base. (Mark this one yourself.)" },
       { question: "Explain why standard form is used in science rather than writing numbers out in full.",
         answer: "Because the numbers involved are far outside everyday size and writing them out invites mistakes. The mass of an electron is roughly 0.000000000000000000000000000000911 kg — counting those zeros correctly, by eye, every time, is not realistic, whereas 9.11 × 10^(−31) can be read at a glance. Standard form also makes sizes instantly comparable, since the power tells you the order of magnitude, and it makes multiplying and dividing far easier because the powers simply add or subtract. (Mark this one yourself.)" },
+      {
+        question: "What is 2 to the power 0?",
+        choices: [
+          "1",
+          "0",
+          "2",
+          "Undefined",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "Anything to the power zero is 1. It follows from dividing a power by itself.",
+      },
+      {
+        question: "Write 4500 in standard form.",
+        choices: [
+          "4.5 x 10^3",
+          "45 x 10^2",
+          "4.5 x 10^4",
+          "0.45 x 10^4",
+        ],
+        accept: [
+          "4.5 x 10^3",
+        ],
+        answer: "The first number must be at least 1 and less than 10. 45 x 10^2 is the same value but not standard form.",
+      },
+      {
+        question: "What does a NEGATIVE index mean?",
+        choices: [
+          "The reciprocal, so x^-2 is 1 over x squared",
+          "A negative answer",
+          "Multiply by minus one",
+          "The square root",
+        ],
+        accept: [
+          "The reciprocal, so x^-2 is 1 over x squared",
+        ],
+        answer: "A negative index never makes the answer negative — it flips it into a fraction.",
+      },
+      {
+        question: "Simplify (x cubed) to the power 4.",
+        choices: [
+          "x to the 12",
+          "x to the 7",
+          "x to the 81",
+          "x to the 34",
+        ],
+        accept: [
+          "x to the 12",
+        ],
+        answer: "A power raised to a power means multiplying the indices: 3 x 4 = 12.",
+      },
+      {
+        question: "What does a fractional index of one half mean?",
+        choices: [
+          "The square root",
+          "Half the number",
+          "The reciprocal",
+          "The number squared",
+        ],
+        accept: [
+          "The square root",
+        ],
+        answer: "x to the power one third is the cube root. Combining them, x to the two thirds is the cube root squared.",
+      },
     ],
 
     misconceptions: [
