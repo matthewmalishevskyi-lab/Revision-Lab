@@ -759,13 +759,14 @@ question costs the whole batch.
 green while the rest are written, and each subject is locked against
 regression the moment it is added.
 
-- Done: citizenship (12 topics), biology (20)
-- Chemistry: 6 of 19 done — remaining are acids-and-alkalis, chemical-analysis,
-  chemistry-exam-practice, electrolysis, energy-changes, formulae-and-equations,
-  organic-chemistry, polymers, quantitative-chemistry, rates-of-reaction,
-  reversible-reactions, the-atmosphere, using-the-earths-resources
-- Not started: physics, business, computer-science, maths, english, history,
-  geography
+- Done: citizenship (12), biology (20), chemistry (19) — all locked in MCQ_DONE
+- Not started: physics (19), business (26), computer-science (18), maths (19),
+  english (16), history (19), geography (17)
+
+Adding a subject to MCQ_DONE is the LAST step, and it must be its own command.
+Chaining it after `expand-topic.mjs` with `&&` means a failed insert silently
+skips the lock — the checker then passes because the rule was never switched
+on, which looks identical to passing because the work was done.
 
 Distractors must be real misconceptions, not filler. A wrong option nobody
 would pick turns a five-option question into a two-option one. "None of the
