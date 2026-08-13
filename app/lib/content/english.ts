@@ -231,6 +231,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the assessment rewards close analysis of a writer's specific choices. Commenting on a sentence usually produces a general observation about meaning, which any reader could make. Zooming in on one word lets you discuss its connotations and compare it with the alternatives the writer rejected — which demonstrates that you understand the choice was deliberate, and that is what earns the higher band. (Mark this one yourself.)" },
       { question: "Explain the difference between a retrieval question and an inference question, with an example of each.",
         answer: "A retrieval question asks for something stated: 'How old is the narrator?' — you find the line that says it. An inference question asks you to draw a conclusion from evidence: 'What does the extract suggest about the narrator's mood?' — nothing states the mood, so you cite a detail such as her hands trembling and explain what it implies. Answering an inference question with a literal quotation scores nothing, because the reasoning is the thing being tested. (Mark this one yourself.)" },
+      {
+        question: "What does INFERENCE mean when reading a text?",
+        choices: [
+          "Working out what is suggested rather than stated",
+          "Copying a quotation exactly",
+          "Summarising the whole text",
+          "Counting the techniques used",
+        ],
+        accept: [
+          "Working out what is suggested rather than stated",
+        ],
+        answer: "Inference questions want you to read between the lines and support the reading with evidence.",
+      },
+      {
+        question: "Which is the best way to support a point about a text?",
+        choices: [
+          "A short, precise quotation analysed closely",
+          "A long quotation with no comment",
+          "A general statement with no evidence",
+          "A summary of the plot",
+        ],
+        accept: [
+          "A short, precise quotation analysed closely",
+        ],
+        answer: "Embedding a few words into your own sentence and unpicking the word choice scores far higher than quoting a paragraph.",
+      },
+      {
+        question: "What does TONE refer to?",
+        choices: [
+          "The writer's attitude conveyed through language",
+          "The speed of the plot",
+          "The number of characters",
+          "The length of the sentences",
+        ],
+        accept: [
+          "The writer's attitude conveyed through language",
+        ],
+        answer: "Mood is what the reader feels; tone is the writer's attitude. The two are related but not the same.",
+      },
+      {
+        question: "Analysing a writer's METHODS means writing about:",
+        choices: [
+          "The choices they made and the effect on the reader",
+          "What happens in the story",
+          "Your personal opinion of the characters",
+          "The historical background only",
+        ],
+        accept: [
+          "The choices they made and the effect on the reader",
+        ],
+        answer: "Retelling the plot is the single biggest waste of time in an English exam. Always link method to effect.",
+      },
+      {
+        question: "Which phrase best begins an analytical sentence?",
+        choices: [
+          "The writer suggests that...",
+          "The story is about...",
+          "I think this is good because...",
+          "In the beginning...",
+        ],
+        accept: [
+          "The writer suggests that...",
+        ],
+        answer: "It signals analysis rather than retelling, and pushes you straight into the writer's intention.",
+      },
     ],
 
     misconceptions: [
@@ -460,6 +525,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because it retrospectively removes every stake from the piece — nothing that happened mattered, so the reader's investment is wasted. It also signals that the writer could not find a real resolution. Examiners have seen it thousands of times, and it turns a competent piece into a predictable one at the exact moment the reader's impression is being formed. (Mark this one yourself.)" },
       { question: "Explain why describing one moment in detail usually scores higher than telling a whole story.",
         answer: "Because a whole story compressed into forty minutes forces you into summary — 'then this happened, then that happened' — which leaves no room for the descriptive detail, imagery and sentence craft being assessed. One moment described richly lets you show precise vocabulary, varied sentence structures and sustained imagery, which is what the mark scheme rewards. (Mark this one yourself.)" },
+      {
+        question: "Which opening is most likely to engage a reader?",
+        choices: [
+          "A vivid image or moment of tension",
+          "A list of the characters' names",
+          "A summary of what will happen",
+          "A description of the weather forecast",
+        ],
+        accept: [
+          "A vivid image or moment of tension",
+        ],
+        answer: "Starting in the middle of the action gives the reader a reason to continue. Explaining everything first delays that.",
+      },
+      {
+        question: "Which technique creates atmosphere most effectively in descriptive writing?",
+        choices: [
+          "Sensory detail beyond just sight",
+          "Long lists of adjectives",
+          "Frequent exclamation marks",
+          "Naming every object present",
+        ],
+        accept: [
+          "Sensory detail beyond just sight",
+        ],
+        answer: "Sound, smell and touch are the senses most students forget, and using them makes a description feel inhabited.",
+      },
+      {
+        question: "Varying sentence length is useful because it:",
+        choices: [
+          "Controls pace and creates emphasis",
+          "Makes the writing longer",
+          "Fills the page more quickly",
+          "Avoids the need for punctuation",
+        ],
+        accept: [
+          "Controls pace and creates emphasis",
+        ],
+        answer: "A short sentence after several long ones lands hard. That contrast is the effect, not the shortness itself.",
+      },
+      {
+        question: "In a 40-mark creative writing task, planning is worth doing because it:",
+        choices: [
+          "Gives the piece a clear structure and ending",
+          "Guarantees more techniques",
+          "Uses up spare time",
+          "Replaces the need to check spelling",
+        ],
+        accept: [
+          "Gives the piece a clear structure and ending",
+        ],
+        answer: "Unplanned pieces commonly run out of time and stop mid-scene, losing structure marks that were easy to keep.",
+      },
+      {
+        question: "Which is usually the strongest way to end a descriptive piece?",
+        choices: [
+          "Echoing an image from the opening",
+          "Waking up and it was a dream",
+          "Explaining the moral",
+          "Introducing a new character",
+        ],
+        accept: [
+          "Echoing an image from the opening",
+        ],
+        answer: "A circular structure feels deliberate. The dream ending is heavily overused and undermines everything before it.",
+      },
     ],
 
     misconceptions: [
@@ -691,6 +821,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because starting from technique produces a list — 'there is alliteration, there is enjambment' — with the meaning bolted on afterwards, which reads as mechanical and stays in the middle bands. Starting from what the poem conveys means every technique you then discuss is evidence for a point you are already making, so the analysis has direction and each observation earns its place. (Mark this one yourself.)" },
       { question: "Explain why a tension between a poem's form and its subject is worth writing about.",
         answer: "Because form is a choice, and a mismatch is almost always deliberate. A tightly controlled rhyme scheme describing grief, or free verse describing something rigid, sets up a contradiction the reader feels without necessarily noticing. Naming that tension and suggesting what it implies — restraint imposed on chaos, for instance — shows you are reading the poem as a made object rather than only as a message. (Mark this one yourself.)" },
+      {
+        question: "Which technique compares two things using 'like' or 'as'?",
+        choices: [
+          "Simile",
+          "Metaphor",
+          "Personification",
+          "Alliteration",
+        ],
+        accept: [
+          "Simile",
+        ],
+        answer: "A metaphor says something IS the other thing. Naming the technique earns little on its own — the marks come from analysing its effect.",
+      },
+      {
+        question: "Giving human qualities to something non-human is:",
+        choices: [
+          "Personification",
+          "Simile",
+          "Onomatopoeia",
+          "Sibilance",
+        ],
+        accept: [
+          "Personification",
+        ],
+        answer: "It often makes a setting feel threatening or alive, which is why it appears so often in descriptions of nature and weather.",
+      },
+      {
+        question: "What is ENJAMBMENT?",
+        choices: [
+          "A sentence running over the end of a line without pause",
+          "A pause in the middle of a line",
+          "A repeated opening word",
+          "A rhyme at the end of a line",
+        ],
+        accept: [
+          "A sentence running over the end of a line without pause",
+        ],
+        answer: "A caesura is the mid-line pause. Enjambment can create momentum or a sense of thought spilling over.",
+      },
+      {
+        question: "A poem of fourteen lines is most likely a:",
+        choices: [
+          "Sonnet",
+          "Ballad",
+          "Haiku",
+          "Ode",
+        ],
+        accept: [
+          "Sonnet",
+        ],
+        answer: "Sonnets traditionally deal with love or intense feeling, and the turn in argument often comes near the end.",
+      },
+      {
+        question: "Which word describes the rhythm and beat of a poem?",
+        choices: [
+          "Metre",
+          "Stanza",
+          "Rhyme scheme",
+          "Imagery",
+        ],
+        accept: [
+          "Metre",
+        ],
+        answer: "Iambic pentameter is the most common English metre. A break in the rhythm often marks a moment of disruption.",
+      },
     ],
 
     misconceptions: [
@@ -1377,6 +1572,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because comparison itself is the assessed skill, not analysis of two texts. Writing about A for two pages and then B for two pages produces two separate essays, and the examiner has nothing to reward for comparison because none was made explicit. Placing both texts in the same paragraph, joined with connectives like 'whereas', is what demonstrates the skill being marked. (Mark this one yourself.)" },
       { question: "Explain why you should not judge a nineteenth-century writer purely by modern values.",
         answer: "Because the assessment rewards understanding of how context shapes meaning. Attitudes that seem objectionable now may have been unremarkable or even progressive then, and explaining how a contemporary audience would have received the text demonstrates that understanding. Simply condemning the writer by today's standards shows a modern opinion rather than any insight into the text or its time. (Mark this one yourself.)" },
+      {
+        question: "Which is a common purpose of non-fiction writing?",
+        choices: [
+          "To persuade the reader to a point of view",
+          "To invent a fictional world",
+          "To follow a rhyme scheme",
+          "To avoid having an audience",
+        ],
+        accept: [
+          "To persuade the reader to a point of view",
+        ],
+        answer: "Inform, explain, describe, argue and advise are the others. Identifying purpose shapes everything you say about method.",
+      },
+      {
+        question: "Which technique is most associated with persuasive writing?",
+        choices: [
+          "Rhetorical questions and direct address",
+          "Random capitalisation",
+          "Long unbroken paragraphs",
+          "Avoiding all facts",
+        ],
+        accept: [
+          "Rhetorical questions and direct address",
+        ],
+        answer: "Triples, emotive language, anecdote and statistics are the others. The mark comes from explaining WHY it works on the reader.",
+      },
+      {
+        question: "When comparing two non-fiction texts you should focus on:",
+        choices: [
+          "Both the ideas expressed and how they are conveyed",
+          "Only which one you enjoyed more",
+          "The number of paragraphs in each",
+          "The publication dates only",
+        ],
+        accept: [
+          "Both the ideas expressed and how they are conveyed",
+        ],
+        answer: "Comparative connectives such as 'whereas' and 'similarly' make the comparison visible to the examiner.",
+      },
+      {
+        question: "An anecdote is used in persuasive writing to:",
+        choices: [
+          "Make an argument feel personal and relatable",
+          "Provide statistical proof",
+          "Confuse the reader",
+          "Fill space",
+        ],
+        accept: [
+          "Make an argument feel personal and relatable",
+        ],
+        answer: "It is emotionally powerful but is only one example, which is a fair criticism to make when evaluating a text.",
+      },
+      {
+        question: "When writing to argue, your viewpoint should be:",
+        choices: [
+          "Clear and consistent throughout",
+          "Changed halfway through",
+          "Hidden from the reader",
+          "The same as the opposing side",
+        ],
+        accept: [
+          "Clear and consistent throughout",
+        ],
+        answer: "Acknowledging a counter-argument and dismissing it strengthens your case; drifting between positions weakens it.",
+      },
     ],
 
     misconceptions: [
@@ -2998,6 +3258,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because length controls pace, and pace controls how the reader feels. A long sentence with several clauses slows the reading down, which suits description, accumulation or a wandering thought; a short one lands abruptly and creates emphasis or shock. When every sentence is the same length the writing becomes monotonous and the reader stops noticing where the important moments are, because nothing stands out from anything else. Placing a very short sentence immediately after two long ones is the simplest way to make a moment hit hard, and it is something you can plan deliberately rather than hope happens. (Mark this one yourself.)" },
       { question: "Explain why technical accuracy is worth revising even though it feels less interesting than analysis.",
         answer: "Because it is assessed separately and carries a large share of the writing marks — often around a fifth of the paper — and unlike analysis it can be improved by learning a finite set of rules rather than by reading more widely. Comma splices, apostrophes and homophone confusions account for most of the marks lost, and each has a check that takes seconds to apply. It also affects the rest of the paper indirectly: an examiner reading accurate, controlled writing finds the argument easier to follow, whereas errors interrupt the reading and make even a good point harder to credit. (Mark this one yourself.)" },
+      {
+        question: "Which sentence uses the apostrophe correctly?",
+        choices: [
+          "The dog's lead was missing.",
+          "The dogs' lead was missing, for one dog.",
+          "The dogs lead was missing.",
+          "The dog's leads' were missing.",
+        ],
+        accept: [
+          "The dog's lead was missing.",
+        ],
+        answer: "Apostrophe before the s for one owner, after for more than one. Never use one to make a plural.",
+      },
+      {
+        question: "What is the purpose of a semicolon?",
+        choices: [
+          "To join two closely related complete sentences",
+          "To introduce a list",
+          "To show possession",
+          "To mark a question",
+        ],
+        accept: [
+          "To join two closely related complete sentences",
+        ],
+        answer: "A colon introduces a list or explanation. Both halves either side of a semicolon must work as sentences alone.",
+      },
+      {
+        question: "Which is a correct use of 'their', 'there' and 'they're'?",
+        choices: [
+          "They're going to leave their bags over there.",
+          "Their going to leave there bags over they're.",
+          "There going to leave they're bags over their.",
+          "They're going to leave there bags over their.",
+        ],
+        accept: [
+          "They're going to leave their bags over there.",
+        ],
+        answer: "They're is they are, their shows possession, there is a place. Getting these wrong is heavily penalised in the SPaG marks.",
+      },
+      {
+        question: "A comma splice happens when:",
+        choices: [
+          "Two complete sentences are joined with only a comma",
+          "A list has too many commas",
+          "A comma is used before 'and'",
+          "A sentence has no comma at all",
+        ],
+        accept: [
+          "Two complete sentences are joined with only a comma",
+        ],
+        answer: "Use a full stop, a semicolon, or add a conjunction. It is one of the most common errors in exam writing.",
+      },
+      {
+        question: "Which sentence is written in the PASSIVE voice?",
+        choices: [
+          "The window was broken by the boy.",
+          "The boy broke the window.",
+          "The boy is breaking the window.",
+          "Break the window.",
+        ],
+        accept: [
+          "The window was broken by the boy.",
+        ],
+        answer: "Passive puts the action before the doer, which can hide responsibility — a useful point in non-fiction analysis.",
+      },
     ],
 
     misconceptions: [
@@ -3706,6 +4031,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the first treats the character as a real person making a free decision, which turns the essay into retelling a story. The second acknowledges that Macbeth exists only because a writer constructed him, and that every action in the play was chosen for an effect on an audience. That framing opens the questions worth marks: why place the murder offstage, why put the dagger speech before it, why give the porter a comic scene immediately after. Nothing in a text happens by itself, and writing as though it does closes off the analysis before it starts. (Mark this one yourself.)" },
       { question: "Explain why a theme should be tracked across a whole text rather than found in a single moment.",
         answer: "Because a theme is not a thing that appears but an idea that develops, and its meaning lies in how it changes. What a text says about guilt at the start is often the opposite of what it says by the end, and the distance between the two is the writer's actual argument. Finding one quotation shows you can spot the theme; showing where it begins, how it complicates in the middle and where it is resolved or deliberately left open shows you understand the text as something designed. It also demonstrates the range examiners look for, since the alternative is an essay that never leaves the extract in front of you. (Mark this one yourself.)" },
+      {
+        question: "Why does CONTEXT matter when studying a text?",
+        choices: [
+          "It helps explain the ideas the writer was responding to",
+          "It replaces the need to read the text",
+          "It provides quotations to use",
+          "It shows how long the text is",
+        ],
+        accept: [
+          "It helps explain the ideas the writer was responding to",
+        ],
+        answer: "Context should be woven into analysis, not bolted on as a separate paragraph of history.",
+      },
+      {
+        question: "Which is the best use of context in an essay?",
+        choices: [
+          "Linking a writer's choice to the ideas of their time",
+          "Listing dates at the start",
+          "Describing the writer's whole life",
+          "Explaining the exam board's syllabus",
+        ],
+        accept: [
+          "Linking a writer's choice to the ideas of their time",
+        ],
+        answer: "One well-placed sentence connecting a moment in the text to its period beats a paragraph of biography.",
+      },
+      {
+        question: "A THEME is best described as:",
+        choices: [
+          "An idea explored throughout a text",
+          "A single event in the plot",
+          "A character's name",
+          "The setting of a scene",
+        ],
+        accept: [
+          "An idea explored throughout a text",
+        ],
+        answer: "Power, love, guilt, class and identity are common ones. Trace how a theme DEVELOPS rather than just spotting it.",
+      },
+      {
+        question: "Writing about a writer's intentions means considering:",
+        choices: [
+          "What they wanted readers to think or feel",
+          "How long the book took to write",
+          "How many copies it sold",
+          "Which edition you read",
+        ],
+        accept: [
+          "What they wanted readers to think or feel",
+        ],
+        answer: "Phrases like 'the writer challenges the reader to' show you are treating the text as a crafted argument.",
+      },
+      {
+        question: "Which approach shows the strongest understanding of a text as a whole?",
+        choices: [
+          "Tracing how an idea changes from beginning to end",
+          "Analysing one quotation in isolation",
+          "Summarising every chapter",
+          "Listing the characters",
+        ],
+        accept: [
+          "Tracing how an idea changes from beginning to end",
+        ],
+        answer: "Whole-text questions reward a sense of development. Picking one moment cannot demonstrate that.",
+      },
     ],
 
     misconceptions: [
