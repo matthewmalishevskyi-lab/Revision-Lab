@@ -529,6 +529,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "Probably not, because these objectives conflict. Opening three branches means paying rent, deposits, fit-out costs, stock and wages before any of them earns anything, so short-term profit will fall even if the expansion is a success. The owner could pursue growth more slowly, open one branch and fund it from retained profit, or accept lower profit this year in exchange for higher profit later. Overall, the sensible judgement is that growth and short-term profit maximisation cannot both be achieved at once, and the owner must decide which matters more. Mark this one yourself: the judgement at the end is where the top-band marks are.",
       },
+      {
+        question: "Which of these is a FINANCIAL objective?",
+        choices: [
+          "Increasing profit",
+          "Improving customer satisfaction",
+          "Reducing environmental impact",
+          "Improving staff wellbeing",
+        ],
+        accept: [
+          "Increasing profit",
+        ],
+        answer: "Profit, revenue, market share and cost reduction are financial. The others are non-financial objectives.",
+      },
+      {
+        question: "Why do many new businesses prioritise SURVIVAL as an objective?",
+        choices: [
+          "Cash is tight and the failure rate is high in the early years",
+          "Profit is illegal at first",
+          "Customers prefer small businesses",
+          "Banks require it by law",
+        ],
+        accept: [
+          "Cash is tight and the failure rate is high in the early years",
+        ],
+        answer: "Once established, objectives typically shift towards profit, growth and market share.",
+      },
+      {
+        question: "A SMART objective must be:",
+        choices: [
+          "Specific, measurable, achievable, relevant and time-bound",
+          "Simple, modern, ambitious, realistic and tough",
+          "Strategic, managed, accurate, ranked and tested",
+          "Short, meaningful, actionable, rated and timed",
+        ],
+        accept: [
+          "Specific, measurable, achievable, relevant and time-bound",
+        ],
+        answer: "Vague aims cannot be judged. 'Increase sales by 10% within a year' can be; 'do better' cannot.",
+      },
+      {
+        question: "Market share measures:",
+        choices: [
+          "A business's sales as a proportion of total market sales",
+          "The number of shareholders",
+          "The value of a company's shares",
+          "How many shops a business owns",
+        ],
+        accept: [
+          "A business's sales as a proportion of total market sales",
+        ],
+        answer: "Growing market share can matter more than short-term profit, because scale brings cost advantages later.",
+      },
+      {
+        question: "Business aims and objectives typically change when:",
+        choices: [
+          "The business grows or market conditions shift",
+          "The logo is redesigned",
+          "A new employee joins",
+          "The website is updated",
+        ],
+        accept: [
+          "The business grows or market conditions shift",
+        ],
+        answer: "A recession may push a growing business back towards survival, which is why objectives are reviewed rather than fixed.",
+      },
     ],
     misconceptions: [
       {
@@ -2416,6 +2481,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "Raising prices increases revenue per customer immediately and costs nothing to implement, so if customers keep buying, profit rises quickly. But demand for café food is fairly price-sensitive and there are usually competitors nearby, so a 20% rise may push enough customers away that total revenue actually falls. Alternatives include reducing waste, negotiating with suppliers to cut variable costs, or increasing sales volume through promotion — each with its own drawbacks. Overall, a smaller rise on items where customers are least price-sensitive, combined with cost control, is likely to be safer than a blanket 20%. Mark this one yourself: full marks need the effect on DEMAND considered, plus at least one alternative and a judgement.",
       },
+      {
+        question: "Revenue is calculated as:",
+        choices: [
+          "Price x quantity sold",
+          "Price minus cost",
+          "Profit plus tax",
+          "Total costs divided by output",
+        ],
+        accept: [
+          "Price x quantity sold",
+        ],
+        answer: "Revenue is money coming in, before any costs are taken off. Profit is what remains afterwards.",
+      },
+      {
+        question: "Which of these is a FIXED cost?",
+        choices: [
+          "Rent on premises",
+          "Raw materials",
+          "Packaging",
+          "Piece-rate wages",
+        ],
+        accept: [
+          "Rent on premises",
+        ],
+        answer: "Fixed costs do not change with output. Raw materials and packaging rise as more is produced, so they are variable.",
+      },
+      {
+        question: "Profit is calculated as:",
+        choices: [
+          "Total revenue minus total costs",
+          "Revenue minus fixed costs only",
+          "Revenue plus costs",
+          "Price minus variable cost",
+        ],
+        accept: [
+          "Total revenue minus total costs",
+        ],
+        answer: "Price minus variable cost per unit gives CONTRIBUTION, which is a different figure used in break-even work.",
+      },
+      {
+        question: "If revenue is 50,000 and total costs are 42,000, the profit is:",
+        choices: [
+          "8,000",
+          "92,000",
+          "42,000",
+          "12,000",
+        ],
+        accept: [
+          "8,000",
+        ],
+        answer: "50,000 - 42,000 = 8,000. If costs exceed revenue the answer is a loss, written as a negative.",
+      },
+      {
+        question: "Gross profit differs from net profit because gross profit:",
+        choices: [
+          "Only takes off the cost of sales",
+          "Takes off all costs including expenses",
+          "Includes tax already",
+          "Is always smaller",
+        ],
+        accept: [
+          "Only takes off the cost of sales",
+        ],
+        answer: "Net profit then deducts other expenses such as rent, wages and interest, so it is always the lower figure.",
+      },
     ],
     misconceptions: [
       {
@@ -2681,6 +2811,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "It is genuinely useful because it converts a vague worry into a testable number: the owner can compare 900 a month — about 30 a day — against realistic footfall and decide whether the rent is affordable before signing a lease. It also shows immediately how much the break-even point moves if the rent or the price changes. But it rests on assumptions that are rarely exactly true: that every item sells at the same price with no discounts, that variable costs per unit stay constant however much is bought, and that the sales forecast itself is reliable. It also ignores cash flow timing entirely. Overall it is a valuable planning tool and a poor prediction — best used to test whether a plan is plausible rather than to promise what will happen. Mark this one yourself: the top band needs the ASSUMPTIONS criticised, not just the benefits listed.",
       },
+      {
+        question: "The break-even point is where:",
+        choices: [
+          "Total revenue equals total costs",
+          "Profit is highest",
+          "Variable costs equal fixed costs",
+          "Revenue is zero",
+        ],
+        accept: [
+          "Total revenue equals total costs",
+        ],
+        answer: "At break-even the business makes neither profit nor loss. Above it there is profit; below it, a loss.",
+      },
+      {
+        question: "Contribution per unit is calculated as:",
+        choices: [
+          "Selling price minus variable cost per unit",
+          "Selling price minus fixed costs",
+          "Fixed costs divided by output",
+          "Revenue minus total costs",
+        ],
+        accept: [
+          "Selling price minus variable cost per unit",
+        ],
+        answer: "Each unit sold contributes this much towards covering the fixed costs, and towards profit once they are covered.",
+      },
+      {
+        question: "Break-even output is found by:",
+        choices: [
+          "Fixed costs divided by contribution per unit",
+          "Fixed costs divided by selling price",
+          "Total costs divided by output",
+          "Revenue divided by variable costs",
+        ],
+        accept: [
+          "Fixed costs divided by contribution per unit",
+        ],
+        answer: "Using selling price instead of contribution is the classic error and gives a break-even figure that is far too low.",
+      },
+      {
+        question: "The MARGIN OF SAFETY is:",
+        choices: [
+          "The gap between actual sales and break-even output",
+          "The profit made on each unit",
+          "The amount of cash held in reserve",
+          "Fixed costs minus variable costs",
+        ],
+        accept: [
+          "The gap between actual sales and break-even output",
+        ],
+        answer: "It shows how far sales could fall before the business starts making a loss, which is why lenders look at it.",
+      },
+      {
+        question: "If fixed costs rise, the break-even output will:",
+        choices: [
+          "Increase",
+          "Decrease",
+          "Stay the same",
+          "Fall to zero",
+        ],
+        accept: [
+          "Increase",
+        ],
+        answer: "More units must be sold to cover the higher fixed costs. Raising the selling price would lower break-even instead.",
+      },
     ],
     misconceptions: [
       {
@@ -2925,6 +3120,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "An overdraft is quick, flexible and only charges interest on what is used, so it covers a known one-month gap cleanly without damaging any relationships — but the interest rate is high and the bank can withdraw the facility. Delaying suppliers costs nothing directly and keeps cash in the business, but it risks the supplier refusing further credit, demanding payment upfront in future, or stopping deliveries altogether, which could be far more damaging than the interest. Since the shortfall is temporary and identified in advance, the overdraft is probably the better choice: it is a known, priced cost rather than an unpredictable relationship risk. If the shortfall were permanent, neither would solve the underlying problem. Mark this one yourself: full marks need both options weighed AND a conclusion that depends on the shortfall being temporary.",
       },
+      {
+        question: "Cash flow is best described as:",
+        choices: [
+          "The money moving into and out of a business over time",
+          "The profit made in a year",
+          "The value of the business's assets",
+          "The total of all sales",
+        ],
+        accept: [
+          "The money moving into and out of a business over time",
+        ],
+        answer: "A profitable business can still fail if cash arrives later than the bills, which is why the two are tracked separately.",
+      },
+      {
+        question: "Net cash flow is calculated as:",
+        choices: [
+          "Cash inflows minus cash outflows",
+          "Revenue minus costs",
+          "Opening balance plus closing balance",
+          "Profit minus tax",
+        ],
+        accept: [
+          "Cash inflows minus cash outflows",
+        ],
+        answer: "Adding net cash flow to the opening balance gives the closing balance for that period.",
+      },
+      {
+        question: "Which would IMPROVE a cash flow problem?",
+        choices: [
+          "Negotiating longer credit terms with suppliers",
+          "Paying suppliers earlier",
+          "Buying more stock than needed",
+          "Offering customers longer to pay",
+        ],
+        accept: [
+          "Negotiating longer credit terms with suppliers",
+        ],
+        answer: "Delaying outflows and speeding up inflows both help. Giving customers longer to pay makes it worse.",
+      },
+      {
+        question: "A cash flow FORECAST is useful because it:",
+        choices: [
+          "Predicts shortfalls so action can be taken in advance",
+          "Guarantees the business will be profitable",
+          "Records what happened last year",
+          "Replaces the need for a bank account",
+        ],
+        accept: [
+          "Predicts shortfalls so action can be taken in advance",
+        ],
+        answer: "It is only an estimate, so it depends on the assumptions behind it — but seeing a problem in month four beats discovering it in month four.",
+      },
+      {
+        question: "Why might a profitable business run out of cash?",
+        choices: [
+          "Customers pay later than the business must pay its own bills",
+          "Profit is always fake",
+          "It has too few costs",
+          "It sells too cheaply to make revenue",
+        ],
+        accept: [
+          "Customers pay later than the business must pay its own bills",
+        ],
+        answer: "Buying stock or equipment upfront has the same effect. Timing, not profitability, is what causes the crisis.",
+      },
     ],
     misconceptions: [
       {
@@ -3144,6 +3404,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A start-up needs £15,000 for equipment. The owner has £4,000 in savings. Evaluate the best way to raise the rest.",
         answer:
           "A bank loan would suit the purpose, since equipment lasts several years and a loan spreads the cost over a similar period — but a start-up with no trading record may be refused, or asked for personal collateral, which puts the owner's own property at risk. Leasing the equipment avoids needing the £11,000 at all and spreads payments monthly, though it costs more overall and the business owns nothing at the end. Crowdfunding could raise the money without debt and test demand at the same time, but takes time and is far from guaranteed. Overall, leasing is probably the most realistic route for an unproven business because it needs no lender's approval and preserves the £4,000 of savings as a cash cushion — which, given how many start-ups fail from running out of cash, matters more than the extra long-run cost. Mark this one yourself: the top band needs the difficulty of borrowing as a START-UP recognised, and a justified recommendation.",
+      },
+      {
+        question: "Which is an INTERNAL source of finance?",
+        choices: [
+          "Retained profit",
+          "A bank loan",
+          "A share issue",
+          "A government grant",
+        ],
+        accept: [
+          "Retained profit",
+        ],
+        answer: "Internal sources come from within the business — retained profit, selling assets, owner's capital. The rest are external.",
+      },
+      {
+        question: "An advantage of a bank loan over an overdraft is that:",
+        choices: [
+          "Repayments are spread over a known period",
+          "Interest is never charged",
+          "It can be repaid whenever you like",
+          "No security is ever needed",
+        ],
+        accept: [
+          "Repayments are spread over a known period",
+        ],
+        answer: "Overdrafts suit short-term gaps but usually carry higher interest and can be withdrawn by the bank at short notice.",
+      },
+      {
+        question: "A drawback of raising finance by issuing SHARES is:",
+        choices: [
+          "Ownership and control are diluted",
+          "Interest must be repaid monthly",
+          "It can only raise very small amounts",
+          "The money must be repaid within a year",
+        ],
+        accept: [
+          "Ownership and control are diluted",
+        ],
+        answer: "Shares need no repayment and pay dividends only when there is profit, but the original owners give up a share of the business.",
+      },
+      {
+        question: "Trade credit means:",
+        choices: [
+          "Buying goods now and paying the supplier later",
+          "Lending money to customers",
+          "Selling shares to suppliers",
+          "Borrowing from another business permanently",
+        ],
+        accept: [
+          "Buying goods now and paying the supplier later",
+        ],
+        answer: "It is effectively an interest-free short-term loan, but late payment can damage the supplier relationship.",
+      },
+      {
+        question: "Crowdfunding raises money by:",
+        choices: [
+          "Collecting small amounts from many people, usually online",
+          "Borrowing from one large investor",
+          "Selling company assets",
+          "Taking a government loan",
+        ],
+        accept: [
+          "Collecting small amounts from many people, usually online",
+        ],
+        answer: "It also tests demand before launch, but a failed campaign is public and the idea is exposed to competitors.",
       },
     ],
     misconceptions: [
@@ -3365,6 +3690,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A supermarket plans to open a large store on the edge of a village. Evaluate the impact on its stakeholders.",
         answer:
           "Shareholders should gain from higher sales and profit if the location works. Customers in the village gain lower prices, more choice and convenience, saving journeys to a larger town. Employees gain new jobs, though possibly low-paid and part-time ones. The losers are clearer: existing local shops may close, which harms their owners and staff and could leave the village with less choice if the supermarket later withdraws; residents face more traffic, noise and light. Suppliers may gain volume but face pressure on prices and payment terms. Overall the balance depends on scale and location — a modest store with good access may benefit most groups, while a large one could hollow out the village centre. The most powerful stakeholders here are customers, since if enough of them shop there the other objections rarely stop it. Mark this one yourself: the top band needs winners AND losers, plus a judgement that depends on something specific like size or location.",
+      },
+      {
+        question: "A STAKEHOLDER is:",
+        choices: [
+          "Anyone affected by or with an interest in the business",
+          "Only someone who owns shares",
+          "Only an employee",
+          "Only a customer",
+        ],
+        accept: [
+          "Anyone affected by or with an interest in the business",
+        ],
+        answer: "Owners, employees, customers, suppliers, the local community and government are all stakeholders. Shareholders are just one group.",
+      },
+      {
+        question: "Which stakeholder is most interested in job security and pay?",
+        choices: [
+          "Employees",
+          "Suppliers",
+          "The local community",
+          "Shareholders",
+        ],
+        accept: [
+          "Employees",
+        ],
+        answer: "Shareholders focus on profit and dividends, suppliers on being paid on time, and the community on jobs and environmental impact.",
+      },
+      {
+        question: "A conflict between shareholders and employees might arise over:",
+        choices: [
+          "Cutting wages to increase profit",
+          "Improving product quality",
+          "Opening a new website",
+          "Changing the logo",
+        ],
+        accept: [
+          "Cutting wages to increase profit",
+        ],
+        answer: "Stakeholder interests often pull in opposite directions, and businesses must judge whose interests to prioritise.",
+      },
+      {
+        question: "Why do businesses consider the local community as a stakeholder?",
+        choices: [
+          "Their reaction affects reputation, planning permission and staff recruitment",
+          "They own the business",
+          "They set the prices",
+          "They pay the wages",
+        ],
+        accept: [
+          "Their reaction affects reputation, planning permission and staff recruitment",
+        ],
+        answer: "Noise, traffic and environmental impact can turn a community against a business in ways that cost real money.",
+      },
+      {
+        question: "Suppliers are most concerned with:",
+        choices: [
+          "Being paid on time and receiving regular orders",
+          "The colour of the packaging",
+          "The number of shareholders",
+          "Staff training programmes",
+        ],
+        accept: [
+          "Being paid on time and receiving regular orders",
+        ],
+        answer: "A business that pays late may find suppliers demand cash upfront or refuse to trade with it at all.",
       },
     ],
     misconceptions: [
