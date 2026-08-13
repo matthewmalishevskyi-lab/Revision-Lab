@@ -1378,6 +1378,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "When water is short the guard cells lose water and become flaccid, which closes the stoma. This greatly reduces transpiration, so the plant conserves the water it still has and avoids wilting. The cost is that carbon dioxide can no longer diffuse in, so photosynthesis slows or stops and the plant makes less glucose — it is trading growth for survival. Mark this one yourself: the second half, the cost to photosynthesis, is where the top marks are.",
       },
+      {
+        question: "Which tissue transports water and mineral ions up a plant?",
+        choices: [
+          "Xylem",
+          "Phloem",
+          "Epidermis",
+          "Meristem",
+        ],
+        accept: [
+          "Xylem",
+        ],
+        answer: "Xylem carries water upwards in dead, hollow, lignified vessels. Phloem carries dissolved sugars in both directions in living cells.",
+      },
+      {
+        question: "What is the movement of dissolved sugars through a plant called?",
+        choices: [
+          "Translocation",
+          "Transpiration",
+          "Transamination",
+          "Transduction",
+        ],
+        accept: [
+          "Translocation",
+        ],
+        answer: "Translocation happens in the phloem and can go up or down. Transpiration is the loss of water vapour from the leaves.",
+      },
+      {
+        question: "Which structure controls water loss from a leaf?",
+        choices: [
+          "The stomata, opened and closed by guard cells",
+          "The xylem vessels",
+          "The palisade cells",
+          "The root hair cells",
+        ],
+        accept: [
+          "The stomata, opened and closed by guard cells",
+        ],
+        answer: "Guard cells close the stomata when water is short. That reduces water loss but also stops carbon dioxide entering, so photosynthesis slows.",
+      },
+      {
+        question: "Which conditions would give the FASTEST rate of transpiration?",
+        choices: [
+          "Hot, dry and windy",
+          "Cold, humid and still",
+          "Hot, humid and still",
+          "Cold, dry and still",
+        ],
+        accept: [
+          "Hot, dry and windy",
+        ],
+        answer: "Heat speeds evaporation, dry air keeps the gradient steep, and wind removes the humid layer at the leaf surface.",
+      },
+      {
+        question: "Where are most chloroplasts found in a leaf?",
+        choices: [
+          "The palisade mesophyll",
+          "The lower epidermis",
+          "The xylem",
+          "The waxy cuticle",
+        ],
+        accept: [
+          "The palisade mesophyll",
+        ],
+        answer: "Palisade cells sit near the top surface, packed with chloroplasts, so they catch the most light.",
+      },
     ],
     misconceptions: [
       {
@@ -1623,6 +1688,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Describe how you would make an investigation into osmosis in potato a fair test.",
         answer:
           "The independent variable is the concentration of sugar solution and the dependent variable is the change in mass. Everything else must be controlled: the same volume of solution, the same length of time, the same temperature, and potato pieces of the same size, mass and variety, cut with the same borer. Each piece should be blotted dry in the same way before weighing, since surface water would add mass. Repeat each concentration at least three times and calculate a mean, excluding any anomalies and saying that you have done so. Mark this one yourself: naming SPECIFIC control variables is the difference between a low and a high mark.",
+      },
+      {
+        question: "Which formula gives magnification?",
+        choices: [
+          "Image size divided by real size",
+          "Real size divided by image size",
+          "Image size multiplied by real size",
+          "Real size multiplied by eyepiece lens",
+        ],
+        accept: [
+          "Image size divided by real size",
+        ],
+        answer: "Magnification = image / actual. Rearranging it is the usual exam step, so learn the triangle rather than one version.",
+      },
+      {
+        question: "What is the main advantage of an electron microscope over a light microscope?",
+        choices: [
+          "Much higher resolution, revealing sub-cellular structures",
+          "It can be used on living specimens",
+          "It is cheaper and portable",
+          "It shows natural colour",
+        ],
+        accept: [
+          "Much higher resolution, revealing sub-cellular structures",
+        ],
+        answer: "Higher resolving power revealed organelles such as ribosomes and mitochondria in detail. Specimens must be dead, which is the trade-off.",
+      },
+      {
+        question: "What is RESOLUTION in microscopy?",
+        choices: [
+          "The ability to distinguish two close points as separate",
+          "How much larger the image appears",
+          "The brightness of the image",
+          "The thickness of the specimen",
+        ],
+        accept: [
+          "The ability to distinguish two close points as separate",
+        ],
+        answer: "Magnification makes things bigger; resolution makes them clearer. Magnifying beyond the resolution limit just gives a bigger blur.",
+      },
+      {
+        question: "What is the purpose of adding a stain when preparing a microscope slide?",
+        choices: [
+          "To make structures visible that would otherwise be transparent",
+          "To kill the specimen instantly",
+          "To magnify the specimen further",
+          "To stop the coverslip slipping",
+        ],
+        accept: [
+          "To make structures visible that would otherwise be transparent",
+        ],
+        answer: "Many cell structures are colourless. Iodine stains starch and nuclei, and methylene blue is used for animal cells.",
+      },
+      {
+        question: "When lowering a coverslip, why should it be done slowly at an angle?",
+        choices: [
+          "To avoid trapping air bubbles",
+          "To magnify the sample",
+          "To keep the slide sterile",
+          "To stop the stain evaporating",
+        ],
+        accept: [
+          "To avoid trapping air bubbles",
+        ],
+        answer: "Air bubbles look like dark-edged circles and are easily mistaken for cells, which is exactly the error the technique prevents.",
       },
     ],
     misconceptions: [
@@ -2133,6 +2263,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "A study finds people who drink more coffee have more heart problems. Evaluate what this shows.",
         answer:
           "It shows a correlation, not a cause. Heavy coffee drinkers may differ in other ways — they may be more likely to smoke, sleep less, or work in high-stress jobs — and any of those could be the real cause, so the two variables might both be caused by a third factor. Without a known biological mechanism explaining how coffee damages the heart, no causal claim can be made. To go further you would want a large sample, a long study, and careful control of other lifestyle variables. Mark this one yourself: the top marks are for naming a plausible third factor AND asking for a mechanism.",
+      },
+      {
+        question: "Which of these is a NON-communicable disease?",
+        choices: [
+          "Type 2 diabetes",
+          "Measles",
+          "Malaria",
+          "Tuberculosis",
+        ],
+        accept: [
+          "Type 2 diabetes",
+        ],
+        answer: "Non-communicable diseases cannot be passed between people. Measles, malaria and tuberculosis are all caused by pathogens.",
+      },
+      {
+        question: "Which is a RISK FACTOR for cardiovascular disease?",
+        choices: [
+          "A diet high in saturated fat",
+          "Drinking water",
+          "Regular exercise",
+          "A diet high in fibre",
+        ],
+        accept: [
+          "A diet high in saturated fat",
+        ],
+        answer: "Smoking, high saturated fat, obesity and inactivity all raise the risk. Exercise and fibre lower it.",
+      },
+      {
+        question: "What does a stent do?",
+        choices: [
+          "Holds a narrowed coronary artery open",
+          "Replaces a faulty heart valve",
+          "Lowers blood cholesterol",
+          "Removes fat from the blood",
+        ],
+        accept: [
+          "Holds a narrowed coronary artery open",
+        ],
+        answer: "Stents are a mechanical fix that works quickly. Statins are the drug option, lowering cholesterol over time.",
+      },
+      {
+        question: "A benign tumour differs from a malignant one because it:",
+        choices: [
+          "Stays in one place and does not spread",
+          "Spreads through the bloodstream",
+          "Always requires chemotherapy",
+          "Grows faster than a malignant tumour",
+        ],
+        accept: [
+          "Stays in one place and does not spread",
+        ],
+        answer: "Malignant tumours invade other tissues and form secondary tumours. That spread is what makes them cancerous.",
+      },
+      {
+        question: "A correlation between two factors shows that:",
+        choices: [
+          "They are linked, but one does not necessarily cause the other",
+          "One definitely causes the other",
+          "They are completely unrelated",
+          "Both are caused by disease",
+        ],
+        accept: [
+          "They are linked, but one does not necessarily cause the other",
+        ],
+        answer: "Correlation is not causation. Establishing cause needs a mechanism and controlled evidence, which is exactly what examiners probe.",
       },
     ],
     misconceptions: [
@@ -5074,6 +5269,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "Divide the field into a grid and use random number pairs as coordinates to decide where each quadrat goes, so that placement is unbiased. Place a quadrat of known area — say 1 m² — at each position and count the dandelions inside it, using a consistent rule for plants on the boundary. Repeat at least ten times, then calculate the mean number per quadrat. Multiply the mean per square metre by the total area of the field to estimate the population. Mark this one yourself: random placement, a stated quadrat size, enough repeats and the final multiplication are the four things being looked for.",
       },
+      {
+        question: "What is the source of energy for almost all food chains?",
+        choices: [
+          "The Sun",
+          "The soil",
+          "Water",
+          "Decomposers",
+        ],
+        accept: [
+          "The Sun",
+        ],
+        answer: "Producers capture light energy by photosynthesis. Everything above them in the chain depends on that energy transfer.",
+      },
+      {
+        question: "Roughly how much energy is transferred to the next trophic level?",
+        choices: [
+          "About 10%",
+          "About 50%",
+          "About 90%",
+          "About 100%",
+        ],
+        accept: [
+          "About 10%",
+        ],
+        answer: "Around 10% passes on; the rest is lost in respiration, movement, heat and undigested waste. That is why food chains are short.",
+      },
+      {
+        question: "Which organisms return nutrients to the soil?",
+        choices: [
+          "Decomposers",
+          "Producers",
+          "Primary consumers",
+          "Apex predators",
+        ],
+        accept: [
+          "Decomposers",
+        ],
+        answer: "Bacteria and fungi break down dead material and waste, releasing mineral ions that plants reabsorb — the basis of nutrient cycling.",
+      },
+      {
+        question: "Two species competing for the same limited resource is an example of:",
+        choices: [
+          "Interspecific competition",
+          "Intraspecific competition",
+          "Predation",
+          "Mutualism",
+        ],
+        accept: [
+          "Interspecific competition",
+        ],
+        answer: "Interspecific is BETWEEN species; intraspecific is WITHIN one species. Both limit population size.",
+      },
+      {
+        question: "Which is an ABIOTIC factor in an ecosystem?",
+        choices: [
+          "Light intensity",
+          "Number of predators",
+          "Availability of food",
+          "Presence of disease",
+        ],
+        accept: [
+          "Light intensity",
+        ],
+        answer: "Abiotic factors are non-living — light, temperature, moisture, pH, wind. Predators, food and disease are biotic.",
+      },
     ],
     misconceptions: [
       {
@@ -5294,6 +5554,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "Protecting habitat means not using that land for anything else, which conflicts directly with a growing population's need for food and homes, and with the jobs those industries provide. Conservation also costs money — breeding programmes, habitat regeneration and monitoring all need long-term funding that competes with health and education budgets. Against that, biodiversity loss is largely irreversible, and stable ecosystems provide services people depend on such as pollination, clean water and soil fertility. Compromises such as field margins, hedgerows and building on already-developed land let some biodiversity be protected without giving up all productive use. Mark this one yourself: full marks need the conflict taken seriously on both sides, plus at least one realistic compromise.",
       },
+      {
+        question: "What does BIODIVERSITY measure?",
+        choices: [
+          "The variety of different species in an ecosystem",
+          "The total number of animals only",
+          "The size of the largest species",
+          "The area an ecosystem covers",
+        ],
+        accept: [
+          "The variety of different species in an ecosystem",
+        ],
+        answer: "High biodiversity makes an ecosystem more stable, because species are less dependent on any single other species.",
+      },
+      {
+        question: "Which gas is released by deforestation and contributes to global warming?",
+        choices: [
+          "Carbon dioxide",
+          "Oxygen",
+          "Nitrogen",
+          "Helium",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "Burning and decay release carbon dioxide, and removing the trees also removes the photosynthesis that was absorbing it.",
+      },
+      {
+        question: "Which of these is a cause of eutrophication?",
+        choices: [
+          "Fertiliser running off farmland into rivers",
+          "Burning fossil fuels",
+          "Overfishing",
+          "Building on greenfield sites",
+        ],
+        accept: [
+          "Fertiliser running off farmland into rivers",
+        ],
+        answer: "Nutrients cause algal blooms, which block light. Plants die, bacteria decompose them and use up the oxygen, so fish suffocate.",
+      },
+      {
+        question: "Peat bogs are important to conserve because they:",
+        choices: [
+          "Store large amounts of carbon",
+          "Provide most of the world's timber",
+          "Are the main source of drinking water",
+          "Produce most of the oxygen in the air",
+        ],
+        accept: [
+          "Store large amounts of carbon",
+        ],
+        answer: "Destroying peat releases stored carbon dioxide and destroys habitats. Peat forms extremely slowly, so the loss is effectively permanent.",
+      },
+      {
+        question: "Which is a way of maintaining biodiversity?",
+        choices: [
+          "Establishing breeding programmes for endangered species",
+          "Increasing the use of fertilisers",
+          "Clearing land for single-crop farming",
+          "Draining wetlands for building",
+        ],
+        accept: [
+          "Establishing breeding programmes for endangered species",
+        ],
+        answer: "Breeding programmes, protected habitats, reduced deforestation and field margins all help. The other options reduce biodiversity.",
+      },
     ],
     misconceptions: [
       {
@@ -5508,6 +5833,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Describe how you would approach a six-mark question on osmosis in potato tissue.",
         answer:
           "First underline the command word and note the context — whether it is asking me to describe a method, explain results, or evaluate an investigation. Then spend about thirty seconds planning three or four points: for osmosis these would be the direction of water movement, the reason based on concentration, the effect on mass, and how percentage change is calculated. I would write in linked sentences using precise vocabulary — partially permeable membrane, dilute and concentrated solution, turgid and flaccid — rather than a list, and refer to any data given in the question. Finally I would check I had answered what was actually asked. Mark this one yourself: planning, precise vocabulary, linked reasoning and using the data are the four things worth credit.",
+      },
+      {
+        question: "A question says 'Describe'. What does it want?",
+        choices: [
+          "What happens or what something is like, without reasons",
+          "Reasons why something happens",
+          "A judgement between two views",
+          "Only a calculation",
+        ],
+        accept: [
+          "What happens or what something is like, without reasons",
+        ],
+        answer: "Describe wants observation; explain wants reasons. Giving reasons for a describe question wastes time you need elsewhere.",
+      },
+      {
+        question: "In an experiment, the INDEPENDENT variable is:",
+        choices: [
+          "The one you deliberately change",
+          "The one you measure",
+          "The one you keep the same",
+          "Any variable you cannot control",
+        ],
+        accept: [
+          "The one you deliberately change",
+        ],
+        answer: "Independent is changed, dependent is measured, control variables are kept the same so the test is fair.",
+      },
+      {
+        question: "Why is a control used in a biological investigation?",
+        choices: [
+          "To show the result is caused by the variable being tested",
+          "To make the experiment faster",
+          "To increase the number of results",
+          "To reduce the cost of equipment",
+        ],
+        accept: [
+          "To show the result is caused by the variable being tested",
+        ],
+        answer: "Without a control you cannot rule out that something else produced the effect. It is the comparison that makes the conclusion valid.",
+      },
+      {
+        question: "Repeating an experiment and taking a mean mainly improves:",
+        choices: [
+          "Reliability, by reducing the effect of random error",
+          "Accuracy of the measuring instrument",
+          "The independent variable",
+          "The speed of the experiment",
+        ],
+        accept: [
+          "Reliability, by reducing the effect of random error",
+        ],
+        answer: "Repeats reduce random error. A systematic error, such as a badly zeroed balance, is not fixed by repeating.",
+      },
+      {
+        question: "Which of these is an anomalous result?",
+        choices: [
+          "A value that lies far outside the pattern of the others",
+          "The largest value recorded",
+          "Any value that is not a whole number",
+          "The result closest to the mean",
+        ],
+        accept: [
+          "A value that lies far outside the pattern of the others",
+        ],
+        answer: "Anomalies should be identified and normally excluded from a mean, but you should say you have done so and suggest why it happened.",
       },
     ],
     misconceptions: [
