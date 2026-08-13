@@ -813,6 +813,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "In favour: they can become almost any cell type, so they offer treatments for conditions currently untreatable — paralysis, diabetes, blood disorders — and could relieve enormous suffering. Many of the embryos used are spares from fertility treatment that would otherwise be destroyed. Against: obtaining the cells destroys the embryo, and some people believe an embryo has the same right to life as a person, so the research is unacceptable whatever the benefit. There are also practical risks such as transferring viral infections. Mark this one yourself: full marks need both sides genuinely argued, not one side plus a token sentence.",
       },
+      {
+        question: "How many cells does MITOSIS produce from one parent cell?",
+        choices: [
+          "Two, genetically identical",
+          "Four, genetically different",
+          "Two, genetically different",
+          "Four, genetically identical",
+        ],
+        accept: [
+          "Two, genetically identical",
+        ],
+        answer: "Mitosis makes two identical diploid cells for growth and repair. Meiosis makes four genetically different gametes.",
+      },
+      {
+        question: "How many chromosomes are in a normal human body cell?",
+        choices: [
+          "46",
+          "23",
+          "92",
+          "22",
+        ],
+        accept: [
+          "46",
+        ],
+        answer: "46 chromosomes, in 23 pairs. Gametes have 23 single chromosomes, so fertilisation restores the full number.",
+      },
+      {
+        question: "What is a stem cell?",
+        choices: [
+          "An undifferentiated cell that can become other cell types",
+          "A cell that has already specialised",
+          "A cell with no nucleus",
+          "A cell found only in plants",
+        ],
+        accept: [
+          "An undifferentiated cell that can become other cell types",
+        ],
+        answer: "Embryonic stem cells can become almost any cell type; adult stem cells are more limited. In plants, meristem cells keep this ability for life.",
+      },
+      {
+        question: "Which process produces gametes?",
+        choices: [
+          "Meiosis",
+          "Mitosis",
+          "Diffusion",
+          "Differentiation",
+        ],
+        accept: [
+          "Meiosis",
+        ],
+        answer: "Meiosis halves the chromosome number and produces four genetically varied cells, which is a source of variation.",
+      },
+      {
+        question: "Therapeutic cloning is useful because the cells produced:",
+        choices: [
+          "Are not rejected by the patient's immune system",
+          "Divide more quickly than normal",
+          "Contain no DNA",
+          "Cannot become cancerous",
+        ],
+        accept: [
+          "Are not rejected by the patient's immune system",
+        ],
+        answer: "The stem cells are genetically identical to the patient, so rejection is avoided. Ethical objections centre on the use of embryos.",
+      },
     ],
     misconceptions: [
       {
@@ -2897,6 +2962,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "The electrical impulse travels along the axon of the first neurone until it reaches the synapse, the gap between the two cells. It cannot cross the gap as electricity, so it causes the release of a chemical neurotransmitter into the gap. That chemical diffuses across and binds to the membrane of the next neurone, which triggers a new electrical impulse to travel along it. Mark this one yourself: electrical along, chemical across, then electrical again — all three stages are needed.",
       },
+      {
+        question: "What is the correct order of a reflex arc?",
+        choices: [
+          "Stimulus, receptor, sensory neurone, relay neurone, motor neurone, effector",
+          "Stimulus, motor neurone, relay neurone, sensory neurone, receptor, effector",
+          "Receptor, stimulus, effector, motor neurone, relay neurone, sensory neurone",
+          "Stimulus, receptor, motor neurone, sensory neurone, effector, relay neurone",
+        ],
+        accept: [
+          "Stimulus, receptor, sensory neurone, relay neurone, motor neurone, effector",
+        ],
+        answer: "Sensory in, relay across, motor out. Reflexes bypass the conscious brain, which is what makes them fast and automatic.",
+      },
+      {
+        question: "Which structure allows an impulse to pass from one neurone to the next?",
+        choices: [
+          "A synapse",
+          "A dendrite",
+          "An axon",
+          "A receptor",
+        ],
+        accept: [
+          "A synapse",
+        ],
+        answer: "At a synapse the electrical impulse triggers chemical neurotransmitters to diffuse across, which then start a new impulse. That diffusion slows transmission slightly.",
+      },
+      {
+        question: "Which of these makes up the central nervous system?",
+        choices: [
+          "The brain and spinal cord",
+          "The brain and all nerves",
+          "The spinal cord and muscles",
+          "All nerves outside the brain",
+        ],
+        accept: [
+          "The brain and spinal cord",
+        ],
+        answer: "The CNS is brain and spinal cord only. Everything else is the peripheral nervous system.",
+      },
+      {
+        question: "Why are reflex actions important?",
+        choices: [
+          "They protect the body by producing a fast, automatic response",
+          "They allow careful decisions to be made",
+          "They store memories",
+          "They control long-term growth",
+        ],
+        accept: [
+          "They protect the body by producing a fast, automatic response",
+        ],
+        answer: "Bypassing conscious thought saves time, which matters when the stimulus is something like a hot surface.",
+      },
+      {
+        question: "Which part of the brain controls balance and coordination?",
+        choices: [
+          "The cerebellum",
+          "The cerebral cortex",
+          "The medulla",
+          "The hypothalamus",
+        ],
+        accept: [
+          "The cerebellum",
+        ],
+        answer: "Cerebellum for balance and coordination, cerebral cortex for consciousness and memory, medulla for unconscious activities such as heart rate.",
+      },
     ],
     misconceptions: [
       {
@@ -3115,6 +3245,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Compare the nervous system and the endocrine system as ways of controlling the body.",
         answer:
           "The nervous system sends electrical impulses along neurones, so responses are very fast, act on a precise target, and last only a short time — useful for reacting to immediate danger. The endocrine system releases hormones into the blood, so they travel more slowly, reach many organs rather than one precise spot, and their effects last far longer — better suited to processes such as growth or the menstrual cycle. Both use the same basic structure of receptor, coordination centre and effector. Mark this one yourself: speed, duration and how targeted each is are the three comparisons worth making.",
+      },
+      {
+        question: "Which hormone lowers blood glucose concentration?",
+        choices: [
+          "Insulin",
+          "Glucagon",
+          "Adrenaline",
+          "Thyroxine",
+        ],
+        accept: [
+          "Insulin",
+        ],
+        answer: "Insulin causes glucose to be taken up and stored as glycogen. Glucagon does the reverse, so the two work as a negative feedback pair.",
+      },
+      {
+        question: "What is homeostasis?",
+        choices: [
+          "Maintaining a constant internal environment",
+          "Growing at a constant rate",
+          "Producing identical offspring",
+          "Responding to light",
+        ],
+        accept: [
+          "Maintaining a constant internal environment",
+        ],
+        answer: "Homeostasis keeps conditions such as temperature, blood glucose and water levels within narrow limits so enzymes and cells work properly.",
+      },
+      {
+        question: "Which gland is often called the master gland?",
+        choices: [
+          "The pituitary",
+          "The pancreas",
+          "The thyroid",
+          "The adrenal gland",
+        ],
+        accept: [
+          "The pituitary",
+        ],
+        answer: "The pituitary secretes hormones that control other glands, which is why it is called the master gland.",
+      },
+      {
+        question: "Compared with nervous responses, hormonal responses are:",
+        choices: [
+          "Slower but longer lasting",
+          "Faster and longer lasting",
+          "Slower and shorter lasting",
+          "Faster but shorter lasting",
+        ],
+        accept: [
+          "Slower but longer lasting",
+        ],
+        answer: "Hormones travel in the blood, so they act more slowly but their effects persist. Nerve impulses are fast and short-lived.",
+      },
+      {
+        question: "In Type 1 diabetes, the problem is that:",
+        choices: [
+          "The pancreas does not produce enough insulin",
+          "The body produces too much insulin",
+          "The liver cannot store glycogen at all",
+          "The kidneys remove too much water",
+        ],
+        accept: [
+          "The pancreas does not produce enough insulin",
+        ],
+        answer: "Type 1 is usually treated with insulin injections. Type 2 is where cells stop responding properly to insulin, and is often managed by diet and exercise.",
       },
     ],
     misconceptions: [
@@ -3665,6 +3860,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "The benefits are substantial: genes linked to particular diseases can be identified, inherited disorders understood and treated more effectively, and treatment tailored to an individual's genetics. It also lets scientists trace human migration across history. The concerns are mainly about privacy and its consequences — genetic data could reveal a predisposition to illness, and insurers or employers might discriminate on that basis. There are also worries about who owns and stores the data. Mark this one yourself: full marks need both sides and a judgement, not a list of benefits followed by one token concern.",
       },
+      {
+        question: "What shape is a DNA molecule?",
+        choices: [
+          "A double helix",
+          "A single straight strand",
+          "A branched chain",
+          "A flat sheet",
+        ],
+        accept: [
+          "A double helix",
+        ],
+        answer: "DNA is a polymer of two strands coiled into a double helix, held together by complementary base pairs.",
+      },
+      {
+        question: "In DNA, which base pairs with adenine?",
+        choices: [
+          "Thymine",
+          "Guanine",
+          "Cytosine",
+          "Uracil",
+        ],
+        accept: [
+          "Thymine",
+        ],
+        answer: "A pairs with T and C pairs with G. Uracil replaces thymine in RNA, not DNA.",
+      },
+      {
+        question: "How many bases code for one amino acid?",
+        choices: [
+          "3",
+          "1",
+          "2",
+          "4",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "A triplet of three bases codes for one amino acid. The order of triplets determines the order of amino acids and so the protein's shape.",
+      },
+      {
+        question: "Which is an advantage of SEXUAL reproduction?",
+        choices: [
+          "It produces variation, which helps a species survive change",
+          "It is faster than asexual reproduction",
+          "It needs only one parent",
+          "It produces genetically identical offspring",
+        ],
+        accept: [
+          "It produces variation, which helps a species survive change",
+        ],
+        answer: "Variation means some individuals may survive a new disease or changed conditions. Asexual reproduction is faster and needs one parent, but gives no variation.",
+      },
+      {
+        question: "Where in a eukaryotic cell is DNA found?",
+        choices: [
+          "In the nucleus",
+          "Free in the cytoplasm",
+          "In the cell membrane",
+          "In the ribosomes",
+        ],
+        accept: [
+          "In the nucleus",
+        ],
+        answer: "Eukaryotes keep DNA in a nucleus as chromosomes. Prokaryotes have a single DNA loop free in the cytoplasm plus plasmids.",
+      },
     ],
     misconceptions: [
       {
@@ -3911,6 +4171,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "In favour: it can prevent a child being born with a painful, life-shortening condition, allows parents to prepare or make an informed choice, and reduces the long-term cost of treatment to health services. Against: it may lead to the termination of embryos, which some people believe is wrong; the tests themselves carry a small risk to the pregnancy; and there is a concern that the same technology could be used to select non-medical characteristics such as appearance or intelligence. Mark this one yourself: full marks need genuine arguments on both sides and a reasoned conclusion.",
       },
+      {
+        question: "What does HOMOZYGOUS mean?",
+        choices: [
+          "Having two identical alleles for a gene",
+          "Having two different alleles for a gene",
+          "Having only one allele for a gene",
+          "Having no alleles for a gene",
+        ],
+        accept: [
+          "Having two identical alleles for a gene",
+        ],
+        answer: "Homozygous means both alleles are the same, such as BB or bb. Heterozygous means two different alleles, such as Bb.",
+      },
+      {
+        question: "A cross between two heterozygous parents (Bb x Bb) gives what ratio of phenotypes?",
+        choices: [
+          "3 dominant to 1 recessive",
+          "1 dominant to 1 recessive",
+          "All dominant",
+          "2 dominant to 2 recessive",
+        ],
+        accept: [
+          "3 dominant to 1 recessive",
+        ],
+        answer: "The Punnett square gives BB, Bb, Bb, bb — three showing the dominant phenotype to one recessive. Note the GENOTYPE ratio is 1:2:1.",
+      },
+      {
+        question: "Which pair of sex chromosomes does a human male have?",
+        choices: [
+          "XY",
+          "XX",
+          "YY",
+          "XO",
+        ],
+        accept: [
+          "XY",
+        ],
+        answer: "Males are XY and females XX. Since the father supplies either X or Y, it is the father's gamete that determines the sex.",
+      },
+      {
+        question: "A recessive disorder appears in a child whose parents are both unaffected. This means the parents are:",
+        choices: [
+          "Both carriers",
+          "Both homozygous dominant",
+          "Both homozygous recessive",
+          "Unrelated to the condition",
+        ],
+        accept: [
+          "Both carriers",
+        ],
+        answer: "Each parent must be heterozygous, carrying one recessive allele without showing the condition. Cystic fibrosis is inherited this way.",
+      },
+      {
+        question: "Which term describes the physical characteristics an organism actually shows?",
+        choices: [
+          "Phenotype",
+          "Genotype",
+          "Allele",
+          "Gamete",
+        ],
+        accept: [
+          "Phenotype",
+        ],
+        answer: "Genotype is the combination of alleles; phenotype is what you observe. The same phenotype can come from more than one genotype.",
+      },
     ],
     misconceptions: [
       {
@@ -4147,6 +4472,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer:
           "It challenged the widely held religious belief that God created all life, so many people rejected it on principle. There was also very little evidence when he published: the fossil record was patchy and no transitional forms were known. Most importantly, nobody yet understood how characteristics were inherited — Mendel's work on genetics was done in the 1860s but not recognised until decades later — so Darwin could not explain the mechanism by which variation was passed on. Mark this one yourself: three distinct reasons is full marks; religion alone is not enough.",
       },
+      {
+        question: "Who proposed the theory of evolution by natural selection?",
+        choices: [
+          "Charles Darwin",
+          "Gregor Mendel",
+          "Alfred Wallace alone",
+          "Jean-Baptiste Lamarck",
+        ],
+        accept: [
+          "Charles Darwin",
+        ],
+        answer: "Darwin published On the Origin of Species in 1859. Wallace reached similar conclusions independently and the two presented jointly, but the theory is credited to Darwin.",
+      },
+      {
+        question: "Which statement describes natural selection correctly?",
+        choices: [
+          "Individuals best suited to the environment are more likely to survive and reproduce",
+          "Individuals change their bodies to suit the environment and pass this on",
+          "All individuals in a population change together",
+          "Organisms choose which characteristics to pass on",
+        ],
+        accept: [
+          "Individuals best suited to the environment are more likely to survive and reproduce",
+        ],
+        answer: "Variation already exists; the environment selects. Individuals do not adapt themselves during their lifetime and pass that on — that is the Lamarckian error.",
+      },
+      {
+        question: "What causes the variation that natural selection acts on?",
+        choices: [
+          "Mutations and sexual reproduction",
+          "Only the environment",
+          "Only diet",
+          "Deliberate change by the organism",
+        ],
+        accept: [
+          "Mutations and sexual reproduction",
+        ],
+        answer: "Mutations create new alleles and sexual reproduction shuffles existing ones. Environmental factors cause variation that is not inherited.",
+      },
+      {
+        question: "How do bacteria become resistant to antibiotics?",
+        choices: [
+          "A random mutation makes some resistant, and these survive and reproduce",
+          "The bacteria decide to resist the antibiotic",
+          "Antibiotics create the resistance gene",
+          "All bacteria become resistant at the same time",
+        ],
+        accept: [
+          "A random mutation makes some resistant, and these survive and reproduce",
+        ],
+        answer: "The mutation comes first and is random; the antibiotic then selects for it. This is natural selection happening fast enough to observe.",
+      },
+      {
+        question: "What is SELECTIVE breeding?",
+        choices: [
+          "Humans choosing which organisms reproduce to develop desired characteristics",
+          "Organisms choosing their own mates",
+          "Transferring genes between species",
+          "Producing genetically identical clones",
+        ],
+        accept: [
+          "Humans choosing which organisms reproduce to develop desired characteristics",
+        ],
+        answer: "Selective breeding is artificial selection over generations. Transferring genes between species is genetic engineering, which is different.",
+      },
     ],
     misconceptions: [
       {
@@ -4367,6 +4757,71 @@ export const BIOLOGY: Record<string, TopicContent> = {
         question: "Discuss the benefits and risks of genetically modifying crops.",
         answer:
           "The benefits are real: crops can be made resistant to insects or herbicide, which raises yield and reduces pesticide use, and vitamins can be added to staple crops to address deficiency in poorer countries. Against that, the effect on wild plants and insect populations is not fully understood, and there is concern that reduced insect numbers could damage food chains. Some people also worry about unknown long-term effects on human health, and others object in principle to altering an organism's genome. On balance the technology offers clear benefits where hunger and malnutrition are severe, but it warrants careful regulation and long-term monitoring rather than blanket approval or blanket rejection. Mark this one yourself: full marks need both sides plus a reasoned judgement.",
+      },
+      {
+        question: "Which is the correct order, from largest group to smallest?",
+        choices: [
+          "Kingdom, phylum, class, order, family, genus, species",
+          "Species, genus, family, order, class, phylum, kingdom",
+          "Kingdom, class, phylum, family, order, genus, species",
+          "Phylum, kingdom, order, class, family, species, genus",
+        ],
+        accept: [
+          "Kingdom, phylum, class, order, family, genus, species",
+        ],
+        answer: "Linnaeus's system runs kingdom down to species. The binomial name uses the last two: genus then species.",
+      },
+      {
+        question: "In the binomial name Homo sapiens, what does 'Homo' represent?",
+        choices: [
+          "The genus",
+          "The species",
+          "The family",
+          "The kingdom",
+        ],
+        accept: [
+          "The genus",
+        ],
+        answer: "Genus first with a capital letter, species second in lower case. The whole name is italicised or underlined.",
+      },
+      {
+        question: "What are the three domains in Woese's system?",
+        choices: [
+          "Archaea, Bacteria and Eukaryota",
+          "Animals, Plants and Fungi",
+          "Prokaryotes, Eukaryotes and Viruses",
+          "Vertebrates, Invertebrates and Plants",
+        ],
+        accept: [
+          "Archaea, Bacteria and Eukaryota",
+        ],
+        answer: "Woese used RNA sequencing to show archaea and bacteria are fundamentally different, which the older five-kingdom system had grouped together.",
+      },
+      {
+        question: "An evolutionary tree is built using:",
+        choices: [
+          "Fossil evidence and DNA analysis",
+          "Only the size of the organisms",
+          "Only where organisms live today",
+          "The order in which species were discovered",
+        ],
+        accept: [
+          "Fossil evidence and DNA analysis",
+        ],
+        answer: "DNA evidence has confirmed some traditional groupings and overturned others, which is why classification has changed over time.",
+      },
+      {
+        question: "Which of these is a risk of selective breeding?",
+        choices: [
+          "Reduced genetic variation, leaving a population vulnerable to disease",
+          "Organisms becoming unable to reproduce at all",
+          "Immediate extinction of the species",
+          "The offspring being unrelated to the parents",
+        ],
+        accept: [
+          "Reduced genetic variation, leaving a population vulnerable to disease",
+        ],
+        answer: "Inbreeding concentrates alleles, including harmful ones, and narrows the gene pool so one disease can affect the whole population.",
       },
     ],
     misconceptions: [
