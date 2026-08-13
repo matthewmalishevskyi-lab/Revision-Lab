@@ -927,6 +927,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because defensive technology had outrun offensive technology completely. A single machine gun could stop hundreds of men crossing open ground; barbed wire held attackers exactly where the guns could reach them; artillery could destroy an advance before it started. Once the front reached the sea in late 1914 there was no flank left to turn, so the only options were to attack into that fire or to dig in. Nothing existed yet that could restore movement — tanks were unreliable until 1918, and there was no radio light enough to coordinate troops once they had left their own lines. The trenches followed from the technology. (Mark this one yourself.)" },
       { question: "Explain why the First World War is described as a world war and not a European one.",
         answer: "Because the fighting and the manpower were global. Over a million Indian troops served, alongside soldiers from across Africa, the Caribbean, Canada, Australia and New Zealand — Gallipoli is remembered in Australia and New Zealand as a founding national experience. Fighting took place in the Middle East, East Africa and the Pacific as well as in France and Belgium, because the combatants held empires spanning the globe. The naval war ranged across the Atlantic and beyond, and the economic effects reached everywhere the belligerents traded. Calling it European describes where most of the trenches were, not where the war was. (Mark this one yourself.)" },
+      {
+        question: "What event triggered the outbreak of the First World War in 1914?",
+        choices: [
+          "The assassination of Archduke Franz Ferdinand",
+          "The invasion of Poland",
+          "The sinking of the Lusitania",
+          "The Treaty of Versailles",
+        ],
+        accept: [
+          "The assassination of Archduke Franz Ferdinand",
+        ],
+        answer: "It was the trigger rather than the cause — alliances, militarism, imperialism and nationalism made the escalation possible.",
+      },
+      {
+        question: "What is meant by the phrase 'stalemate on the Western Front'?",
+        choices: [
+          "Neither side could gain significant ground for years",
+          "The war ended in a draw",
+          "Fighting stopped completely",
+          "Both sides agreed a truce",
+        ],
+        accept: [
+          "Neither side could gain significant ground for years",
+        ],
+        answer: "Machine guns and artillery favoured defence, so trench lines barely moved despite enormous casualties.",
+      },
+      {
+        question: "Why was the Battle of the Somme in 1916 controversial?",
+        choices: [
+          "Enormous casualties for very little ground gained",
+          "No fighting took place",
+          "It ended the war immediately",
+          "Britain lost all its territory",
+        ],
+        accept: [
+          "Enormous casualties for very little ground gained",
+        ],
+        answer: "Around 60,000 British casualties fell on the first day. Historians still argue over whether it wore down the German army usefully.",
+      },
+      {
+        question: "What role did new technology play in the war?",
+        choices: [
+          "Weapons such as machine guns and gas raised casualties enormously",
+          "It ended trench warfare quickly",
+          "It was not used at all",
+          "It made the war shorter",
+        ],
+        accept: [
+          "Weapons such as machine guns and gas raised casualties enormously",
+        ],
+        answer: "Tanks and aircraft appeared but were unreliable early on. Defensive technology outpaced offensive tactics for most of the war.",
+      },
+      {
+        question: "What was one effect of the war on women in Britain?",
+        choices: [
+          "Many took jobs previously done by men",
+          "They were banned from working",
+          "Nothing changed for them",
+          "They lost the right to vote",
+        ],
+        accept: [
+          "Many took jobs previously done by men",
+        ],
+        answer: "Munitions work and transport roles shifted attitudes, and some women gained the vote in 1918 — though the link is debated.",
+      },
     ],
 
     misconceptions: [
@@ -1366,6 +1431,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because almost every step had a lawful form. Hitler was constitutionally appointed by the President. The Reichstag Fire Decree used emergency powers written into the constitution itself. The Enabling Act was passed by a vote of the elected Reichstag, reaching the two-thirds majority the constitution required. Nothing obviously unconstitutional had to happen, which is exactly what made it so effective: officials, judges and ordinary citizens could tell themselves that proper procedure was being followed. What the legal form concealed was that opposition deputies had been arrested, the SA surrounded the chamber, and civil liberties had already been suspended. Legality and legitimacy are not the same thing. (Mark this one yourself.)" },
       { question: "Explain why Hitler coming to power was not inevitable.",
         answer: "Because it depended on a series of choices that could each have gone differently. In 1928 the Nazis had 2.6% of the vote and were irrelevant; without the Wall Street Crash they would probably have stayed there. Even in 1932 they never won a majority, and their vote actually FELL in the November election. Hindenburg had refused to appoint Hitler before and could have refused again. Von Papen's scheme to use him was a calculation, not a necessity. And the other parties chose not to combine against him — the communists were instructed to treat the socialists as the main enemy. Explaining those choices is history; drawing a straight line from Versailles to 1933 is hindsight. (Mark this one yourself.)" },
+      {
+        question: "What was the Munich Putsch of 1923?",
+        choices: [
+          "A failed Nazi attempt to seize power in Bavaria",
+          "A successful Nazi coup",
+          "A treaty with Italy",
+          "An election victory",
+        ],
+        accept: [
+          "A failed Nazi attempt to seize power in Bavaria",
+        ],
+        answer: "Hitler's imprisonment gave him a platform and time to write Mein Kampf, and convinced him to seek power legally instead.",
+      },
+      {
+        question: "How did Hitler become Chancellor in January 1933?",
+        choices: [
+          "He was appointed, in a deal made by conservative politicians",
+          "He won an outright majority",
+          "He seized power by force",
+          "He inherited the position",
+        ],
+        accept: [
+          "He was appointed, in a deal made by conservative politicians",
+        ],
+        answer: "Von Papen believed Hitler could be controlled. The Nazis were the largest party but had never won a majority.",
+      },
+      {
+        question: "What did the Enabling Act of 1933 allow?",
+        choices: [
+          "Hitler to make laws without the Reichstag",
+          "The Reichstag to remove Hitler",
+          "Free elections to continue",
+          "The army to govern",
+        ],
+        accept: [
+          "Hitler to make laws without the Reichstag",
+        ],
+        answer: "Passed after the Reichstag Fire and the arrest of Communist deputies, it turned a chancellorship into a dictatorship.",
+      },
+      {
+        question: "What was the Night of the Long Knives in 1934?",
+        choices: [
+          "The purge of the SA leadership, including Rohm",
+          "An attack on Jewish businesses",
+          "A failed assassination of Hitler",
+          "A military parade",
+        ],
+        accept: [
+          "The purge of the SA leadership, including Rohm",
+        ],
+        answer: "It removed a rival power base and reassured the army, whose support Hitler needed after Hindenburg's death.",
+      },
+      {
+        question: "How did Nazi propaganda under Goebbels work?",
+        choices: [
+          "It controlled press, radio, film and rallies to shape opinion",
+          "It relied only on newspapers",
+          "It permitted opposing views",
+          "It was aimed only at soldiers",
+        ],
+        accept: [
+          "It controlled press, radio, film and rallies to shape opinion",
+        ],
+        answer: "Cheap radios put Nazi messaging in ordinary homes, and censorship removed competing accounts.",
+      },
     ],
 
     misconceptions: [
@@ -2047,6 +2177,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because its effectiveness depended on what Germans believed rather than on how many agents it had. The Gestapo was surprisingly small — in some large cities only a few dozen officers covered hundreds of thousands of people — and it could not possibly have watched everyone. What it had instead was a reputation for being everywhere, which meant people policed themselves and each other. Much of its information came from ordinary Germans denouncing neighbours, colleagues and even family, and historians have shown a striking proportion of those denunciations were motivated by private grudges rather than politics. The surveillance state ran on its citizens. (Mark this one yourself.)" },
       { question: "Explain why sources produced in Germany after 1933 need particularly careful handling.",
         answer: "Because everything published passed through Goebbels' propaganda ministry, so no source could contradict the regime and survive. A newspaper, photograph or film from Nazi Germany tells you what the government wanted seen, not necessarily what was happening. That does not make such sources useless — it changes the question they answer. They are excellent evidence about Nazi aims, methods and self-image, and about what the regime thought would be persuasive. For evidence about reality you need material the regime did not control: private diaries, foreign reporting, the records of exiled organisations, and post-war testimony, each of which carries its own problems. (Mark this one yourself.)" },
+      {
+        question: "What was the Treaty of Versailles signed in 1919 blamed for in Germany?",
+        choices: [
+          "Humiliating Germany through reparations and the war guilt clause",
+          "Ending the monarchy",
+          "Starting the First World War",
+          "Creating the Nazi Party",
+        ],
+        accept: [
+          "Humiliating Germany through reparations and the war guilt clause",
+        ],
+        answer: "Territory losses, army limits and Article 231 fuelled resentment that extremist parties exploited throughout the 1920s.",
+      },
+      {
+        question: "What happened during the hyperinflation of 1923?",
+        choices: [
+          "Money became almost worthless and savings were wiped out",
+          "Prices fell sharply",
+          "Germany paid off all reparations",
+          "Unemployment disappeared",
+        ],
+        accept: [
+          "Money became almost worthless and savings were wiped out",
+        ],
+        answer: "Those with savings and fixed incomes suffered most, and many never trusted the Weimar Republic again.",
+      },
+      {
+        question: "Why was the Weimar Constitution's proportional representation criticised?",
+        choices: [
+          "It produced unstable coalitions and gave small extremist parties seats",
+          "It excluded women from voting",
+          "It gave the President no powers",
+          "It banned political parties",
+        ],
+        accept: [
+          "It produced unstable coalitions and gave small extremist parties seats",
+        ],
+        answer: "Article 48, allowing rule by decree in an emergency, was the other weakness later exploited.",
+      },
+      {
+        question: "What effect did the Wall Street Crash of 1929 have on Germany?",
+        choices: [
+          "American loans were withdrawn, causing mass unemployment",
+          "Germany became wealthier",
+          "Reparations were cancelled",
+          "The Nazi vote collapsed",
+        ],
+        accept: [
+          "American loans were withdrawn, causing mass unemployment",
+        ],
+        answer: "The Nazi vote rose sharply as unemployment climbed, which is the clearest link between economic crisis and political extremism.",
+      },
+      {
+        question: "What was the Stresemann era known for?",
+        choices: [
+          "A period of relative recovery and stability in the mid-1920s",
+          "Total economic collapse",
+          "Nazi rule",
+          "War with France",
+        ],
+        accept: [
+          "A period of relative recovery and stability in the mid-1920s",
+        ],
+        answer: "The Rentenmark, the Dawes Plan and entry to the League brought recovery — but it rested on American loans.",
+      },
     ],
 
     misconceptions: [
@@ -2493,6 +2688,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because it forced a choice that had previously been avoidable. Before 1570 an English Catholic could attend church outwardly, pay a small fine if they refused, and remain a loyal subject — which is exactly what Elizabeth's settlement was designed to allow. The papal bull declared her deposed and released Catholics from obedience, which meant that remaining loyal to Rome now implied disloyalty to the Queen. The government could no longer treat Catholicism as a private matter, and after the plots of the 1570s and 1580s it did not: fines rose sharply, and harbouring a priest became treason. The Pope, intending to help English Catholics, made their position far more dangerous. (Mark this one yourself.)" },
       { question: "Explain why poverty increased so much in Elizabethan England.",
         answer: "Several pressures arrived together. The population grew by perhaps a third across the reign, so more people competed for the same work and food. Prices rose faster than wages, partly because of the debased coinage inherited from earlier reigns and partly because of that population pressure. Landowners enclosed common land for sheep, which needed far fewer workers than arable farming and removed the grazing poorer families relied on. The dissolution of the monasteries a generation earlier had destroyed the main source of charitable relief, and nothing had replaced it. Then the harvests of the 1590s failed repeatedly. The 1601 Poor Law was the eventual admission that the problem was too big for charity. (Mark this one yourself.)" },
+      {
+        question: "What was the Religious Settlement of 1559 intended to do?",
+        choices: [
+          "Create a compromise between Catholic and Protestant practice",
+          "Ban all religion",
+          "Restore full Catholicism",
+          "Make England Puritan",
+        ],
+        accept: [
+          "Create a compromise between Catholic and Protestant practice",
+        ],
+        answer: "Elizabeth aimed for a middle way that most could accept, though it satisfied neither Catholics nor Puritans fully.",
+      },
+      {
+        question: "Why was the Spanish Armada of 1588 defeated?",
+        choices: [
+          "English tactics, fireships and bad weather",
+          "Spain had far fewer ships",
+          "The Spanish never left port",
+          "England had superior numbers",
+        ],
+        accept: [
+          "English tactics, fireships and bad weather",
+        ],
+        answer: "Smaller, faster English ships and the storms that scattered the fleet on its way home both mattered.",
+      },
+      {
+        question: "Why was Mary, Queen of Scots a threat to Elizabeth?",
+        choices: [
+          "She had a claim to the English throne and was a focus for Catholic plots",
+          "She led a foreign army",
+          "She controlled English trade",
+          "She was Elizabeth's older sister",
+        ],
+        accept: [
+          "She had a claim to the English throne and was a focus for Catholic plots",
+        ],
+        answer: "The Babington Plot provided the evidence that led to her execution in 1587, which in turn helped provoke the Armada.",
+      },
+      {
+        question: "What was a major cause of poverty in Elizabethan England?",
+        choices: [
+          "Rising population and enclosure of land",
+          "Too many jobs in towns",
+          "Falling food prices",
+          "The end of foreign trade",
+        ],
+        accept: [
+          "Rising population and enclosure of land",
+        ],
+        answer: "Inflation, bad harvests and the closure of the monasteries all contributed. The Poor Laws distinguished deserving from idle poor.",
+      },
+      {
+        question: "Why did Elizabeth never marry?",
+        choices: [
+          "Marriage risked foreign influence or domestic faction",
+          "No suitors were ever available",
+          "It was illegal for a queen to marry",
+          "She was too young",
+        ],
+        accept: [
+          "Marriage risked foreign influence or domestic faction",
+        ],
+        answer: "Remaining unmarried preserved her independence, but left the succession unresolved for her whole reign.",
+      },
     ],
 
     misconceptions: [
@@ -3487,6 +3747,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because they solved several problems at once with very little manpower. A motte-and-bailey could be thrown up in weeks using forced local labour, so control did not have to wait for stone. It gave a small garrison somewhere defensible to retreat to, which meant a handful of Normans could hold a district against far larger numbers. It dominated the town or river crossing it was built beside, controlling movement and trade. And it was visible for miles — a permanent, unmissable statement that the land now had a new owner. Castles turned military victory into daily administration, which is the harder half of any conquest. (Mark this one yourself.)" },
       { question: "Explain why the Normans kept so much of the Anglo-Saxon system of government.",
         answer: "Because it worked, and replacing it would have been enormously difficult with so few men. Anglo-Saxon England was unusually well organised for its time: it had shires with sheriffs, hundreds beneath them, a functioning tax system in the geld, and a reliable coinage. William needed money and control quickly, and inheriting a working machine gave him both immediately. Keeping the structure also reduced disruption for the ordinary people whose cooperation any ruler depends on, while the Normans changed the thing that actually mattered to them — who held the land and who answered to whom. It is a useful general point: conquerors usually replace the people at the top and keep the plumbing. (Mark this one yourself.)" },
+      {
+        question: "In which year was the Battle of Hastings?",
+        choices: [
+          "1066",
+          "1067",
+          "1065",
+          "1070",
+        ],
+        accept: [
+          "1066",
+        ],
+        answer: "Harold Godwinson was defeated by William of Normandy, and William was crowned on Christmas Day the same year.",
+      },
+      {
+        question: "What was the Domesday Book?",
+        choices: [
+          "A survey of land and property across England",
+          "A book of Norman laws",
+          "A record of church services",
+          "A list of battles fought",
+        ],
+        accept: [
+          "A survey of land and property across England",
+        ],
+        answer: "Compiled from 1085, it let William tax accurately and see who held what — a formidable act of administration for the time.",
+      },
+      {
+        question: "What was the FEUDAL SYSTEM?",
+        choices: [
+          "A hierarchy where land was granted in return for service",
+          "A system of trading with Europe",
+          "The Norman legal code",
+          "A method of building castles",
+        ],
+        accept: [
+          "A hierarchy where land was granted in return for service",
+        ],
+        answer: "The king granted land to barons, who granted it to knights, down to peasants — each owing service upwards.",
+      },
+      {
+        question: "Why did the Normans build motte-and-bailey castles quickly after 1066?",
+        choices: [
+          "To control and intimidate a hostile population",
+          "To provide homes for peasants",
+          "To store the Domesday Book",
+          "To serve as churches",
+        ],
+        accept: [
+          "To control and intimidate a hostile population",
+        ],
+        answer: "They could be thrown up in weeks from earth and timber, then rebuilt in stone once an area was secure.",
+      },
+      {
+        question: "What was the Harrying of the North?",
+        choices: [
+          "William's brutal suppression of northern rebellion",
+          "A tax collected in the north",
+          "A treaty with Scotland",
+          "A church reform programme",
+        ],
+        accept: [
+          "William's brutal suppression of northern rebellion",
+        ],
+        answer: "Villages, crops and livestock were destroyed in 1069 to 1070, causing famine. It ended resistance but at enormous human cost.",
+      },
     ],
 
     misconceptions: [
@@ -4189,6 +4514,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because censorship tells you something reliable even when the content does not. A newspaper published in Nazi Germany cannot tell you what Germans actually thought, since nothing critical could appear — but it is first-rate evidence of what the regime wanted believed, which topics it considered dangerous, and how it wanted to be seen abroad. The limitation defines the question the source can answer rather than removing all value from it. This is the single most useful habit in source work: instead of asking whether a source is reliable, ask what it is reliable evidence FOR, and answer that question instead. (Mark this one yourself.)" },
       { question: "Explain why 'primary sources are more reliable than secondary sources' is wrong.",
         answer: "Because being present is not the same as being right. An eyewitness sees a fraction of an event, may misremember it within days, and often has strong reasons to present it a particular way — a general writing a report on a battle he lost has obvious motives. A historian writing decades later has access to many accounts, to documents nobody at the time could see, and to the outcome, which lets them weigh conflicting evidence against each other. Soviet archives opened after 1991 gave later historians information no contemporary observer could possibly have had. Both types have characteristic strengths and weaknesses, and the useful question is always what a particular source is good evidence for. (Mark this one yourself.)" },
+      {
+        question: "What does PROVENANCE mean when studying a source?",
+        choices: [
+          "Who produced it, when, and for what purpose",
+          "How long the source is",
+          "Whether it is written or visual",
+          "Whether it agrees with your view",
+        ],
+        accept: [
+          "Who produced it, when, and for what purpose",
+        ],
+        answer: "Nature, origin and purpose together decide how useful a source is, and for what particular question.",
+      },
+      {
+        question: "A biased source is:",
+        choices: [
+          "Still useful, because it reveals what someone believed",
+          "Worthless and should be ignored",
+          "Always factually wrong",
+          "Never used by historians",
+        ],
+        accept: [
+          "Still useful, because it reveals what someone believed",
+        ],
+        answer: "Saying a source is 'biased so unreliable' scores poorly. Bias is evidence about attitudes, which is often the point.",
+      },
+      {
+        question: "When two interpretations of an event differ, it is usually because:",
+        choices: [
+          "Historians used different evidence or asked different questions",
+          "One historian is lying",
+          "The event did not happen",
+          "Interpretations are random",
+        ],
+        accept: [
+          "Historians used different evidence or asked different questions",
+        ],
+        answer: "New evidence, different focus and the historian's own time all shape interpretation. That is normal, not a failure.",
+      },
+      {
+        question: "To judge how USEFUL a source is, you must consider:",
+        choices: [
+          "Usefulness for a specific enquiry",
+          "Whether you like the source",
+          "How long ago it was written only",
+          "Whether it is famous",
+        ],
+        accept: [
+          "Usefulness for a specific enquiry",
+        ],
+        answer: "No source is useful in the abstract. A propaganda poster is useless for facts and excellent for studying attitudes.",
+      },
+      {
+        question: "Contextual knowledge is used in source questions to:",
+        choices: [
+          "Test whether the source fits what you know of the period",
+          "Fill space in the answer",
+          "Replace the source entirely",
+          "Show off dates",
+        ],
+        accept: [
+          "Test whether the source fits what you know of the period",
+        ],
+        answer: "Bringing in what you know lets you evaluate the source rather than just describe it, which is where the higher marks sit.",
+      },
     ],
 
     misconceptions: [
