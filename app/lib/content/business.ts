@@ -1944,6 +1944,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "The high street costs £1,300 more each month, so it must generate at least that much extra profit to be worthwhile — at, say, £1.50 profit per item, roughly 870 extra items a month, or about 29 a day. For a bakery relying on impulse purchases and lunchtime trade that is plausible, since footfall may be many times higher. The side street is lower risk: a much lower break-even point means the business survives a bad month more easily, but it will need to spend on advertising and social media to make people seek it out. Overall, if the owner has limited cash reserves the cheaper unit is safer; if she has enough to survive the first quiet months, the high street is likely to produce more profit. Mark this one yourself: full marks need the extra rent converted into extra sales needed, and a judgement that depends on the owner's cash position.",
       },
+      {
+        question: "Which factor matters most for a business needing passing trade?",
+        choices: [
+          "Proximity to the market and footfall",
+          "Being close to raw materials",
+          "Cheap rural land",
+          "Distance from competitors",
+        ],
+        accept: [
+          "Proximity to the market and footfall",
+        ],
+        answer: "A cafe or newsagent depends on people walking past. A quarry, by contrast, must be near its raw material.",
+      },
+      {
+        question: "Locating near raw materials is most important for a business that:",
+        choices: [
+          "Uses bulky, heavy materials that are costly to transport",
+          "Sells digital products",
+          "Provides consulting services",
+          "Has an online-only shop",
+        ],
+        accept: [
+          "Uses bulky, heavy materials that are costly to transport",
+        ],
+        answer: "If the finished product is lighter than the inputs, it is cheaper to process near the source.",
+      },
+      {
+        question: "A drawback of choosing a low-rent location is often:",
+        choices: [
+          "Fewer customers pass by",
+          "Higher staff costs",
+          "Better transport links",
+          "More competition",
+        ],
+        accept: [
+          "Fewer customers pass by",
+        ],
+        answer: "Cheap sites are usually cheap for a reason. The saving must be weighed against lost sales.",
+      },
+      {
+        question: "For a purely online business, location matters mainly for:",
+        choices: [
+          "Storage, delivery access and reliable internet",
+          "Shop window displays",
+          "Passing trade",
+          "Nearby parking for customers",
+        ],
+        accept: [
+          "Storage, delivery access and reliable internet",
+        ],
+        answer: "This is why online retailers site warehouses near motorway junctions rather than in expensive high streets.",
+      },
+      {
+        question: "Government grants can influence location by:",
+        choices: [
+          "Making certain areas cheaper to set up in",
+          "Forcing businesses to relocate",
+          "Setting the price of products",
+          "Guaranteeing customers",
+        ],
+        accept: [
+          "Making certain areas cheaper to set up in",
+        ],
+        answer: "Grants aim to bring jobs to areas of high unemployment, but a business should not choose a poor location for a grant alone.",
+      },
     ],
     misconceptions: [
       {
@@ -3993,6 +4058,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "The biggest risk is overtrading: eight sites means paying deposits, fit-out costs, stock and wages long before any of them earn, so cash flow could collapse even while sales rise. Quality and culture are the second risk — the owner cannot personally supervise eleven kitchens, so the consistency that made the original three successful may not survive. There is also demand risk: the three existing sites may have taken the best locations, and eight more could cannibalise each other. Growing more slowly, funding each site from the profits of the last, would reduce all three risks at the cost of letting competitors move first. Overall, expanding this fast is high risk unless external finance is secured in advance AND a management structure is put in place. Mark this one yourself: the top band needs overtrading named, plus a realistic alternative and a conditional judgement.",
       },
+      {
+        question: "ORGANIC growth means expanding by:",
+        choices: [
+          "Increasing sales and opening new outlets internally",
+          "Merging with another business",
+          "Taking over a rival",
+          "Selling shares to a competitor",
+        ],
+        accept: [
+          "Increasing sales and opening new outlets internally",
+        ],
+        answer: "Organic growth is slower but easier to control. External growth through takeover is faster but riskier.",
+      },
+      {
+        question: "A MERGER differs from a takeover because:",
+        choices: [
+          "Two businesses agree to combine into one",
+          "One business buys another against its wishes",
+          "It always involves a foreign company",
+          "No money changes hands ever",
+        ],
+        accept: [
+          "Two businesses agree to combine into one",
+        ],
+        answer: "Takeovers can be hostile. Both routes often struggle with clashing cultures and systems afterwards.",
+      },
+      {
+        question: "Economies of scale mean that as output rises:",
+        choices: [
+          "Average cost per unit falls",
+          "Total costs fall",
+          "Revenue automatically rises",
+          "Quality always improves",
+        ],
+        accept: [
+          "Average cost per unit falls",
+        ],
+        answer: "Bulk buying, specialised staff and spreading fixed costs all help. Growing too far can cause DIS-economies of scale.",
+      },
+      {
+        question: "Which is a risk of growing too quickly?",
+        choices: [
+          "Cash flow problems and loss of control",
+          "Lower staff turnover",
+          "Reduced competition",
+          "Falling fixed costs",
+        ],
+        accept: [
+          "Cash flow problems and loss of control",
+        ],
+        answer: "Overtrading — expanding faster than the cash to support it — has closed many otherwise successful businesses.",
+      },
+      {
+        question: "Diversification means growing by:",
+        choices: [
+          "Moving into new products or new markets",
+          "Selling more of the same product",
+          "Cutting the product range",
+          "Reducing prices",
+        ],
+        accept: [
+          "Moving into new products or new markets",
+        ],
+        answer: "It spreads risk across different markets, but the business may lack expertise in the new area.",
+      },
     ],
     misconceptions: [
       {
@@ -4212,6 +4342,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A UK clothing manufacturer is considering moving production abroad. Evaluate the decision.",
         answer:
           "Moving abroad could cut wage costs dramatically, which matters in an industry where labour is a large share of cost and competitors have already done it — staying may simply not be viable on price. Against that: quality control is far harder at a distance, lead times lengthen, the supply chain becomes vulnerable to shipping disruption and exchange rate movements, and there is reputational risk if working conditions are poor. Some customers will pay a premium for UK-made goods, so the business could instead compete on quality, speed and provenance rather than price. Overall the right answer depends on the market segment: for a mass-market brand competing on price, offshoring may be necessary; for a premium brand, it would destroy the very thing customers are paying for. Mark this one yourself: the top band needs the recommendation to depend on which market the firm is in.",
+      },
+      {
+        question: "Which term describes a tax placed on imported goods?",
+        choices: [
+          "A tariff",
+          "A quota",
+          "A subsidy",
+          "An embargo",
+        ],
+        accept: [
+          "A tariff",
+        ],
+        answer: "A quota limits the QUANTITY of imports instead. Both are trade barriers that make imports less competitive.",
+      },
+      {
+        question: "Which is a benefit of globalisation for a UK business?",
+        choices: [
+          "Access to much larger overseas markets",
+          "Guaranteed higher profits",
+          "No competition from abroad",
+          "Lower taxes automatically",
+        ],
+        accept: [
+          "Access to much larger overseas markets",
+        ],
+        answer: "It also brings cheaper supplies and labour, but exposes the business to far more competition at home.",
+      },
+      {
+        question: "A weak pound makes UK exports:",
+        choices: [
+          "Cheaper for foreign buyers",
+          "More expensive for foreign buyers",
+          "Unchanged in price",
+          "Impossible to sell",
+        ],
+        accept: [
+          "Cheaper for foreign buyers",
+        ],
+        answer: "Imports become more expensive at the same time, which raises costs for businesses buying materials from abroad.",
+      },
+      {
+        question: "A MULTINATIONAL is a business that:",
+        choices: [
+          "Operates in more than one country",
+          "Sells to customers abroad only online",
+          "Employs foreign workers in one country",
+          "Is owned by a foreign government",
+        ],
+        accept: [
+          "Operates in more than one country",
+        ],
+        answer: "Multinationals bring investment and jobs, but can also be criticised over tax, working conditions and local competition.",
+      },
+      {
+        question: "Which factor has most enabled globalisation in recent decades?",
+        choices: [
+          "Improvements in transport and digital communication",
+          "Higher tariffs worldwide",
+          "Fewer trading blocs",
+          "Reduced internet access",
+        ],
+        accept: [
+          "Improvements in transport and digital communication",
+        ],
+        answer: "Containerisation and the internet made it practical to coordinate production and sales across continents.",
       },
     ],
     misconceptions: [
@@ -4433,6 +4628,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "The financial case is obvious — halving supply costs would transform margins and could be the difference between competing on price and losing to rivals who have already done it. But the risks are severe: if conditions are exposed by journalists or a pressure group, sales can collapse in days, and the brand damage lasts years. Customers hold retailers responsible for factories they do not own. There is also the straightforward moral point that profiting from unsafe or exploitative work is wrong regardless of whether anyone finds out. A middle path exists: negotiate with the supplier to improve conditions, audit them, and accept a smaller saving. Overall the retailer should not switch on those terms — the saving is real but the downside risk is existential and the ethical objection stands on its own. Mark this one yourself: full marks need the commercial risk AND the moral argument, plus a realistic alternative.",
       },
+      {
+        question: "Business ethics are concerned with:",
+        choices: [
+          "Doing what is morally right, beyond the legal minimum",
+          "Obeying the law only",
+          "Maximising profit at any cost",
+          "Following competitors' behaviour",
+        ],
+        accept: [
+          "Doing what is morally right, beyond the legal minimum",
+        ],
+        answer: "Ethical choices often raise costs in the short term but can build reputation and customer loyalty over time.",
+      },
+      {
+        question: "Which is an example of an ethical business decision?",
+        choices: [
+          "Paying suppliers in developing countries a fair price",
+          "Using the cheapest supplier regardless of conditions",
+          "Advertising misleading claims",
+          "Avoiding all taxes legally",
+        ],
+        accept: [
+          "Paying suppliers in developing countries a fair price",
+        ],
+        answer: "It raises costs, so the business is betting that customers value it enough to pay more or buy more often.",
+      },
+      {
+        question: "Sustainability in business means:",
+        choices: [
+          "Meeting present needs without harming future generations",
+          "Making a profit every single year",
+          "Keeping the same products forever",
+          "Growing as fast as possible",
+        ],
+        accept: [
+          "Meeting present needs without harming future generations",
+        ],
+        answer: "It covers resource use, emissions and waste, and increasingly affects which customers and investors a business attracts.",
+      },
+      {
+        question: "A criticism of businesses claiming to be 'green' is that they may be:",
+        choices: [
+          "Greenwashing, overstating environmental credentials",
+          "Paying too much tax",
+          "Employing too many staff",
+          "Selling too cheaply",
+        ],
+        accept: [
+          "Greenwashing, overstating environmental credentials",
+        ],
+        answer: "It risks serious reputational damage if exposed, and regulators increasingly challenge unsupported claims.",
+      },
+      {
+        question: "Reducing packaging typically:",
+        choices: [
+          "Cuts costs and environmental impact at the same time",
+          "Always increases costs",
+          "Reduces product quality",
+          "Requires more transport",
+        ],
+        accept: [
+          "Cuts costs and environmental impact at the same time",
+        ],
+        answer: "This is why environmental measures are not always a trade-off — some cut waste and cost together.",
+      },
     ],
     misconceptions: [
       {
@@ -4647,6 +4907,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A business selling premium kitchens expects a recession. Evaluate how it should respond.",
         answer:
           "Premium kitchens are a luxury and highly postponable, so demand is likely to fall sharply — planning for it is sensible rather than pessimistic. It could introduce a cheaper range to capture customers trading down, though that risks damaging the premium brand it has built. It could cut costs and reduce stock to protect cash flow, which is the safest immediate step, but cutting marketing may lose ground to competitors who keep spending. It could also target segments less affected by the downturn, such as landlords or wealthier customers whose incomes are more secure. Overall, protecting cash flow first and targeting more resilient customers is the strongest combination; launching a budget range should be a last resort because the brand is the asset. Mark this one yourself: the top band needs the luxury/necessity point, at least two responses weighed, and a judgement.",
+      },
+      {
+        question: "What happens to consumer spending during a RECESSION?",
+        choices: [
+          "It usually falls as incomes and confidence drop",
+          "It always rises sharply",
+          "It stays exactly the same",
+          "It becomes illegal",
+        ],
+        accept: [
+          "It usually falls as incomes and confidence drop",
+        ],
+        answer: "Businesses selling luxuries suffer most. Some, such as discount retailers, can actually grow in a downturn.",
+      },
+      {
+        question: "If interest rates RISE, businesses are likely to:",
+        choices: [
+          "Borrow less and delay investment",
+          "Borrow much more",
+          "See customer spending increase",
+          "Pay less on existing variable loans",
+        ],
+        accept: [
+          "Borrow less and delay investment",
+        ],
+        answer: "Consumers with mortgages also have less to spend, so demand falls at the same time as borrowing costs rise.",
+      },
+      {
+        question: "INFLATION means:",
+        choices: [
+          "The general rise in prices over time",
+          "A rise in unemployment",
+          "A fall in the value of exports",
+          "An increase in production",
+        ],
+        accept: [
+          "The general rise in prices over time",
+        ],
+        answer: "It raises the cost of raw materials and wage demands, and squeezes customers' real spending power.",
+      },
+      {
+        question: "Rising unemployment usually means:",
+        choices: [
+          "Lower consumer demand but a larger pool of available workers",
+          "Higher consumer spending",
+          "Fewer applicants for jobs",
+          "Higher wages across the economy",
+        ],
+        accept: [
+          "Lower consumer demand but a larger pool of available workers",
+        ],
+        answer: "So the same change can hurt sales while making recruitment easier and cheaper.",
+      },
+      {
+        question: "How might a business respond to a downturn in the economy?",
+        choices: [
+          "Cut costs and focus on value-for-money products",
+          "Raise all prices sharply",
+          "Increase spending on luxury lines",
+          "Stop all marketing permanently",
+        ],
+        accept: [
+          "Cut costs and focus on value-for-money products",
+        ],
+        answer: "Cutting too deeply can damage quality and reputation, making recovery harder once demand returns.",
       },
     ],
     misconceptions: [
@@ -7002,6 +7327,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A traditional bookshop is considering replacing two staff with self-service checkouts. Evaluate the decision.",
         answer:
           "The financial case is straightforward: two salaries saved every year against a one-off cost, plus faster queues at busy times. But a bookshop's advantage over buying online is precisely the human part — staff who recommend books, know regulars and make browsing pleasant. Removing them attacks the reason customers come in rather than ordering from a website that is always cheaper. There is also the stakeholder cost of two redundancies in a small business, and the risk that older customers dislike self-service. A better option might be one self-service point for quick purchases while keeping staff for advice, capturing some saving without losing the differentiator. Overall, replacing both would be a mistake because it makes the shop more like the competitor it cannot beat on price. Mark this one yourself: the top band recognises that the staff ARE the competitive advantage here.",
+      },
+      {
+        question: "E-commerce means:",
+        choices: [
+          "Selling goods and services online",
+          "Using email inside a business",
+          "Automating a factory",
+          "Storing files digitally",
+        ],
+        accept: [
+          "Selling goods and services online",
+        ],
+        answer: "It gives access to a national or global market with lower overheads than physical shops, but competition is fierce.",
+      },
+      {
+        question: "Which is a drawback of introducing new technology?",
+        choices: [
+          "High upfront cost and the need to retrain staff",
+          "Products become lower quality",
+          "Customers cannot be reached",
+          "Productivity always falls",
+        ],
+        accept: [
+          "High upfront cost and the need to retrain staff",
+        ],
+        answer: "There is also the risk of it becoming obsolete quickly, and of resistance from staff who fear for their jobs.",
+      },
+      {
+        question: "Digital communication such as video calls mainly helps a business by:",
+        choices: [
+          "Reducing travel costs and speeding up decisions",
+          "Removing the need for employees",
+          "Guaranteeing higher sales",
+          "Eliminating competition",
+        ],
+        accept: [
+          "Reducing travel costs and speeding up decisions",
+        ],
+        answer: "It also makes remote and flexible working practical, which widens the pool of people a business can recruit from.",
+      },
+      {
+        question: "Payment technology such as contactless benefits retailers by:",
+        choices: [
+          "Speeding up transactions and shortening queues",
+          "Removing the need for stock",
+          "Eliminating all fraud",
+          "Reducing staff wages directly",
+        ],
+        accept: [
+          "Speeding up transactions and shortening queues",
+        ],
+        answer: "Faster service means more customers served per hour, though card processing carries a fee per transaction.",
+      },
+      {
+        question: "Using data about customer purchases allows a business to:",
+        choices: [
+          "Target marketing and manage stock more accurately",
+          "Ignore market research entirely",
+          "Avoid data protection law",
+          "Set any price it likes",
+        ],
+        accept: [
+          "Target marketing and manage stock more accurately",
+        ],
+        answer: "It must still comply with data protection law, and customers increasingly care how their data is used.",
       },
     ],
     misconceptions: [
