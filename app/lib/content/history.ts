@@ -237,6 +237,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Three forces held it back. Laissez-faire was the dominant belief of the age: government interference in business was seen as wrong in principle, not merely inconvenient. Factory owners were wealthy and politically powerful, and many sat in the Parliament being asked to regulate them. And there was a genuine fear that regulating British factories would let foreign competitors undercut them, costing the jobs the workers depended on. Reform came when campaigners like Shaftesbury, and investigators whose reports were impossible to ignore, made the human cost more politically dangerous than the economic argument. (Mark this one yourself.)" },
       { question: "'The Industrial Revolution improved life in Britain.' How far do you agree?",
         answer: "It depends entirely on when and for whom. In the long run it produced enormous wealth, railways, cheap cloth, and eventually the public health reforms and rising wages that made life better than anything before it. In the short run, for the first two or three generations of factory workers, it produced overcrowding, filth, cholera, dangerous work and life expectancies in the twenties. A strong answer separates the immediate from the eventual, and is clear that the people who paid the cost were largely not the people who received the benefit. (Mark this one yourself.)" },
+      {
+        question: "What was a major cause of the Industrial Revolution in Britain?",
+        choices: [
+          "Access to coal, iron, capital and new technology",
+          "A fall in population",
+          "The end of overseas trade",
+          "A ban on new inventions",
+        ],
+        accept: [
+          "Access to coal, iron, capital and new technology",
+        ],
+        answer: "Empire markets, canals and later railways all contributed, and historians debate which factor mattered most.",
+      },
+      {
+        question: "What was URBANISATION?",
+        choices: [
+          "The rapid growth of towns and cities",
+          "The improvement of farming",
+          "The building of canals",
+          "The decline of industry",
+        ],
+        accept: [
+          "The rapid growth of towns and cities",
+        ],
+        answer: "Housing and sanitation could not keep pace, which is why cholera and typhus spread so readily in industrial cities.",
+      },
+      {
+        question: "Why were early factory conditions criticised?",
+        choices: [
+          "Long hours, dangerous machinery and child labour",
+          "Wages were too high",
+          "Factories were too small",
+          "There was too little work",
+        ],
+        accept: [
+          "Long hours, dangerous machinery and child labour",
+        ],
+        answer: "A series of Factory Acts gradually limited hours and ages, though enforcement was weak at first.",
+      },
+      {
+        question: "What effect did the railways have?",
+        choices: [
+          "They moved goods and people faster, transforming trade and travel",
+          "They reduced industrial output",
+          "They replaced all canals immediately",
+          "They were used only for passengers",
+        ],
+        accept: [
+          "They moved goods and people faster, transforming trade and travel",
+        ],
+        answer: "They also created a national market, standardised time across the country, and generated enormous demand for coal and iron.",
+      },
+      {
+        question: "What was the Public Health Act of 1875 intended to address?",
+        choices: [
+          "Poor sanitation and disease in industrial towns",
+          "Factory wages",
+          "Rail safety",
+          "Child education",
+        ],
+        accept: [
+          "Poor sanitation and disease in industrial towns",
+        ],
+        answer: "It made local authorities responsible for water, sewerage and waste, marking a shift away from leaving public health to individuals.",
+      },
     ],
 
     misconceptions: [
@@ -473,6 +538,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because it leaves out the people most involved. Enslaved people resisted continuously — refusing food, revolting on around one voyage in ten, escaping to maroon communities, and rising in enormous numbers in Jamaica in 1831. Haiti went further and destroyed slavery by force, creating an independent republic and proving the system could be overthrown from below. That resistance made slavery expensive, dangerous and politically frightening to maintain, which is part of why Parliament acted. Telling the story only through Wilberforce turns the enslaved into people things were done for, rather than people who acted. (Mark this one yourself.)" },
       { question: "Explain how the profits of slavery shaped Britain itself.",
         answer: "They were not confined to the ports. Liverpool, Bristol and Glasgow were built on the trade directly, but the money spread far wider: into banks and insurance houses, into country estates, into the canals and factories of the early Industrial Revolution, and into institutions including universities and churches. Sugar, tobacco and cotton reshaped what ordinary British people ate, wore and could afford. And the 1833 compensation payment tied it to the public finances so tightly that the loan was only fully repaid in 2015 — meaning taxpayers alive today were still paying it off. (Mark this one yourself.)" },
+      {
+        question: "What was the Middle Passage?",
+        choices: [
+          "The sea crossing carrying enslaved Africans to the Americas",
+          "The route from Britain to Africa",
+          "The journey of goods back to Europe",
+          "A trade route through Asia",
+        ],
+        accept: [
+          "The sea crossing carrying enslaved Africans to the Americas",
+        ],
+        answer: "Conditions were lethally overcrowded, and a large proportion of those transported died before arrival.",
+      },
+      {
+        question: "What was the triangular trade?",
+        choices: [
+          "Goods to Africa, enslaved people to the Americas, produce to Europe",
+          "A three-way alliance",
+          "A treaty between three empires",
+          "A shipping route within Europe",
+        ],
+        accept: [
+          "Goods to Africa, enslaved people to the Americas, produce to Europe",
+        ],
+        answer: "Sugar, tobacco and cotton returned to Europe, making ports such as Bristol and Liverpool extremely wealthy.",
+      },
+      {
+        question: "Who was Olaudah Equiano?",
+        choices: [
+          "A formerly enslaved man whose writing supported abolition",
+          "A ship's captain",
+          "A British Prime Minister",
+          "A plantation owner",
+        ],
+        accept: [
+          "A formerly enslaved man whose writing supported abolition",
+        ],
+        answer: "His published account gave abolitionists first-hand testimony, which was far harder to dismiss than argument alone.",
+      },
+      {
+        question: "What did the 1807 Act achieve?",
+        choices: [
+          "It abolished the slave TRADE in the British Empire",
+          "It freed all enslaved people immediately",
+          "It ended slavery worldwide",
+          "It banned sugar imports",
+        ],
+        accept: [
+          "It abolished the slave TRADE in the British Empire",
+        ],
+        answer: "Slavery itself continued until the 1833 Act, and even then apprenticeship delayed full freedom. The two dates are often confused.",
+      },
+      {
+        question: "What role did enslaved people themselves play in abolition?",
+        choices: [
+          "Resistance and rebellion increased the cost of maintaining slavery",
+          "They played no part",
+          "They opposed abolition",
+          "They only petitioned Parliament",
+        ],
+        accept: [
+          "Resistance and rebellion increased the cost of maintaining slavery",
+        ],
+        answer: "Revolts in the Caribbean, and the Haitian Revolution above all, made slavery look expensive and dangerous to sustain.",
+      },
     ],
 
     misconceptions: [
@@ -704,6 +834,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because it makes Britain the actor and the colonised the recipients, when in most cases independence was fought for over decades. Congress had campaigned in India since the 1880s and mounted mass civil disobedience; Kenya's independence came after an armed uprising that Britain suppressed with detention camps and torture. Where Britain moved quickly it was usually because it could no longer afford or enforce the alternative — bankrupt after 1945, dependent on American loans, and facing organised opposition. 'Granted' describes the paperwork, not the process. (Mark this one yourself.)" },
       { question: "Explain why historians disagree so sharply about the British Empire.",
         answer: "Partly because it is genuinely enormous — four centuries, every continent, hundreds of societies — so almost any general claim can be evidenced somewhere and contradicted elsewhere. Partly because the same fact supports opposite readings: railways in India were real infrastructure and were also built for extraction, financed by Indian taxpayers with guaranteed profits for British investors. And partly because it is not really a dead subject: it bears on modern borders, migration, wealth and national identity, so historians are arguing about the present as well as the past. Ferguson and Tharoor reach opposite verdicts largely by weighting the same evidence differently. (Mark this one yourself.)" },
+      {
+        question: "What is meant by the term EMPIRE?",
+        choices: [
+          "A group of territories ruled by one dominant state",
+          "A trading company",
+          "A type of parliament",
+          "An alliance of equals",
+        ],
+        accept: [
+          "A group of territories ruled by one dominant state",
+        ],
+        answer: "At its height the British Empire covered roughly a quarter of the world's land and population.",
+      },
+      {
+        question: "What was a major economic motive for empire?",
+        choices: [
+          "Access to raw materials and markets for British goods",
+          "Reducing British exports",
+          "Sharing wealth equally",
+          "Ending international trade",
+        ],
+        accept: [
+          "Access to raw materials and markets for British goods",
+        ],
+        answer: "Strategic, religious and prestige motives operated alongside economics, and historians disagree about their relative weight.",
+      },
+      {
+        question: "What was the East India Company?",
+        choices: [
+          "A trading company that came to govern large parts of India",
+          "A government department",
+          "A shipping charity",
+          "An Indian political party",
+        ],
+        accept: [
+          "A trading company that came to govern large parts of India",
+        ],
+        answer: "After the 1857 rebellion, the British Crown took over direct rule, which lasted until independence in 1947.",
+      },
+      {
+        question: "What does DECOLONISATION refer to?",
+        choices: [
+          "Colonies gaining independence from imperial rule",
+          "The expansion of empire",
+          "The building of new colonies",
+          "A trade agreement",
+        ],
+        accept: [
+          "Colonies gaining independence from imperial rule",
+        ],
+        answer: "It accelerated after 1945 as Britain's resources shrank and independence movements grew stronger.",
+      },
+      {
+        question: "Why is the legacy of the British Empire debated today?",
+        choices: [
+          "Its effects included both development and exploitation and violence",
+          "Nobody has studied it",
+          "The records were destroyed",
+          "It ended too recently to assess",
+        ],
+        accept: [
+          "Its effects included both development and exploitation and violence",
+        ],
+        answer: "Railways, law and language sit alongside famine, partition and conflict. A strong answer weighs both rather than choosing one.",
+      },
     ],
 
     misconceptions: [
@@ -3913,6 +4108,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because of Mutually Assured Destruction. Once both sides had enough nuclear weapons to destroy the other even after being attacked first, victory became impossible by definition — any attack guaranteed the attacker's own destruction. That did not make the world safe, but it did change where the conflict happened: it was fought instead through proxy wars in Korea, Vietnam and Afghanistan, through the arms and space races, through propaganda, espionage and economic competition. The Cuban Missile Crisis showed both leaders how easily control could be lost, and the arrangements that followed — the hotline, the Test Ban Treaty — were attempts to make sure the logic of MAD was never tested by accident. (Mark this one yourself.)" },
       { question: "Explain why the Soviet empire in eastern Europe collapsed so quickly in 1989.",
         answer: "Because the single thing holding it together was removed. Every previous rising — East Germany 1953, Hungary 1956, Czechoslovakia 1968 — had been crushed by Soviet tanks, and everybody in the region knew it. When Gorbachev abandoned the Brezhnev Doctrine and made clear the USSR would not intervene, the local communist governments had no answer, because none had genuine popular support and none could suppress opposition alone. Once Poland's Solidarity won power and Hungary opened its border without Soviet retaliation, the demonstration effect was immediate: within months, five countries changed government. The speed reflected how much the whole structure had rested on force rather than consent. (Mark this one yourself.)" },
+      {
+        question: "What was the Iron Curtain?",
+        choices: [
+          "The division between communist eastern and capitalist western Europe",
+          "A physical wall across Europe",
+          "A trade agreement",
+          "A NATO defence plan",
+        ],
+        accept: [
+          "The division between communist eastern and capitalist western Europe",
+        ],
+        answer: "Churchill popularised the phrase in 1946. The Berlin Wall from 1961 became its most visible symbol.",
+      },
+      {
+        question: "What was the Marshall Plan?",
+        choices: [
+          "American economic aid to rebuild western Europe",
+          "A military invasion plan",
+          "A Soviet trade policy",
+          "A nuclear weapons treaty",
+        ],
+        accept: [
+          "American economic aid to rebuild western Europe",
+        ],
+        answer: "The USA saw it as recovery and containment; the USSR saw it as buying influence, and forbade its satellites from accepting it.",
+      },
+      {
+        question: "What triggered the Cuban Missile Crisis of 1962?",
+        choices: [
+          "Soviet nuclear missiles being placed in Cuba",
+          "An American invasion of Cuba",
+          "A revolution in Berlin",
+          "The launch of Sputnik",
+        ],
+        accept: [
+          "Soviet nuclear missiles being placed in Cuba",
+        ],
+        answer: "It was resolved by a naval blockade and a secret deal to remove US missiles from Turkey — the closest the Cold War came to nuclear war.",
+      },
+      {
+        question: "What does DETENTE mean?",
+        choices: [
+          "An easing of tension between the superpowers",
+          "A declaration of war",
+          "An arms race",
+          "A trade embargo",
+        ],
+        accept: [
+          "An easing of tension between the superpowers",
+        ],
+        answer: "SALT talks and the Helsinki Agreements belong to this period. It did not end rivalry, only reduced the temperature.",
+      },
+      {
+        question: "Why was the Berlin Wall built in 1961?",
+        choices: [
+          "To stop East Germans fleeing to the West",
+          "To defend against a Western invasion",
+          "To divide Germany from France",
+          "To mark a trade boundary",
+        ],
+        accept: [
+          "To stop East Germans fleeing to the West",
+        ],
+        answer: "Millions had already left, draining skilled workers. The wall solved that problem at enormous cost to East Germany's reputation.",
+      },
     ],
 
     misconceptions: [
@@ -4440,6 +4700,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because the crash destroyed borrowed money, not just paper wealth. Shares had been bought on the margin, so when prices collapsed the loans behind them could not be repaid, and thousands of banks failed — taking ordinary people's savings with them. Consumers who had bought cars and appliances on credit stopped spending, so factories cut production and laid workers off, which reduced spending further in a spiral. Farmers were already in trouble from overproduction. Hoover's belief in limited government meant no large federal response for three years, and tariffs intended to protect American industry provoked retaliation that strangled trade. It was the combination of a credit collapse and a slow official response that turned a crash into the Great Depression. (Mark this one yourself.)" },
       { question: "Explain why legal equality was not the same as real equality in 1960s America.",
         answer: "Because the laws of 1964 and 1965 addressed segregation and voting, which were southern legal structures, and most Black Americans in northern cities faced something different: poverty, poor housing, unemployment and hostile policing, none of which any statute banned. Discrimination in housing and hiring continued through practices that were informal but effective. The clearest evidence is the timing — Watts erupted in August 1965, days after the Voting Rights Act was signed, and Detroit followed in 1967. King himself turned towards economic questions in his final years for exactly this reason. Removing legal barriers was necessary and was never going to be sufficient. (Mark this one yourself.)" },
+      {
+        question: "What was PROHIBITION in the USA?",
+        choices: [
+          "A ban on the manufacture and sale of alcohol",
+          "A ban on immigration",
+          "A restriction on stock trading",
+          "A limit on farming",
+        ],
+        accept: [
+          "A ban on the manufacture and sale of alcohol",
+        ],
+        answer: "It created speakeasies, bootlegging and organised crime, and was repealed in 1933 as unenforceable.",
+      },
+      {
+        question: "What caused the Wall Street Crash of 1929?",
+        choices: [
+          "Overproduction, speculation and buying shares on credit",
+          "A foreign invasion",
+          "A government ban on trading",
+          "A natural disaster",
+        ],
+        accept: [
+          "Overproduction, speculation and buying shares on credit",
+        ],
+        answer: "When confidence broke, margin buying turned a fall into a collapse and took the banking system with it.",
+      },
+      {
+        question: "What was the New Deal?",
+        choices: [
+          "Roosevelt's programme of relief, recovery and reform",
+          "A trade treaty with Europe",
+          "A civil rights law",
+          "A military alliance",
+        ],
+        accept: [
+          "Roosevelt's programme of relief, recovery and reform",
+        ],
+        answer: "Critics said it went too far towards state control; others said it did not go far enough. Rearmament ultimately ended the Depression.",
+      },
+      {
+        question: "What did the Supreme Court decide in Brown v Board of Education in 1954?",
+        choices: [
+          "Segregated schools were unconstitutional",
+          "Segregation should continue",
+          "Voting rights were unlimited",
+          "Buses could not be segregated",
+        ],
+        accept: [
+          "Segregated schools were unconstitutional",
+        ],
+        answer: "Enforcement was slow and fiercely resisted, as events at Little Rock in 1957 showed.",
+      },
+      {
+        question: "What was the Montgomery Bus Boycott?",
+        choices: [
+          "A year-long protest against segregated buses",
+          "A single day of marches",
+          "A strike by bus drivers",
+          "A court case about schools",
+        ],
+        accept: [
+          "A year-long protest against segregated buses",
+        ],
+        answer: "Triggered by Rosa Parks's arrest, it demonstrated economic pressure as a tactic and brought Martin Luther King to prominence.",
+      },
     ],
 
     misconceptions: [
@@ -4666,6 +4991,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because they are arguments about the receiving society rather than about the people arriving. Jobs, housing, disease, crime and culture were used against Irish Catholics in the 1850s, against eastern European Jews before the Aliens Act of 1905, and against Caribbean migrants in the 1950s — three groups with almost nothing in common except being new and visible. Hostility tends to rise when housing is short, work is scarce or national confidence is low, which suggests the underlying anxiety is economic and cultural insecurity looking for a target. Noticing that the arguments stay identical while the targets change completely is one of the most useful things this topic teaches. (Mark this one yourself.)" },
       { question: "Explain why immigration control tightened at the same time as anti-discrimination law expanded.",
         answer: "Because they answered two different political pressures at once. Public and press hostility, sharpened by figures like Enoch Powell, pushed governments to restrict who could come — hence the Acts of 1962, 1968 and 1971 progressively removing the rights the 1948 Act had granted. At the same time, campaigns like the Bristol Bus Boycott, and the plain evidence of the colour bar operating openly, made discrimination against people already in Britain politically indefensible — hence the Race Relations Acts of 1965, 1968 and 1976. The logic offered at the time was explicit: limit numbers in order to make integration possible. Whether that was a genuine principle or a way of satisfying opposing groups simultaneously is exactly the kind of question these papers reward you for raising. (Mark this one yourself.)" },
+      {
+        question: "What are PUSH factors in migration?",
+        choices: [
+          "Reasons that drive people away from their home country",
+          "Attractions of a new country",
+          "Government immigration rules",
+          "Transport improvements",
+        ],
+        accept: [
+          "Reasons that drive people away from their home country",
+        ],
+        answer: "War, persecution, famine and poverty push; jobs, safety and family pull. Most migration involves both.",
+      },
+      {
+        question: "Who were the Windrush generation?",
+        choices: [
+          "Caribbean migrants invited to Britain after 1948",
+          "Wartime evacuees",
+          "Irish labourers of the 1840s",
+          "Huguenot refugees",
+        ],
+        accept: [
+          "Caribbean migrants invited to Britain after 1948",
+        ],
+        answer: "They were recruited to fill post-war labour shortages, and met both opportunity and significant racism on arrival.",
+      },
+      {
+        question: "Why did many Irish people migrate to Britain in the 1840s?",
+        choices: [
+          "Famine and extreme poverty",
+          "Religious persecution by the Vikings",
+          "An invitation from the government",
+          "The end of the empire",
+        ],
+        accept: [
+          "Famine and extreme poverty",
+        ],
+        answer: "They provided labour for canals, railways and construction, and faced considerable hostility and poor conditions.",
+      },
+      {
+        question: "What impact has migration had on British culture?",
+        choices: [
+          "It has shaped language, food, music and industry over centuries",
+          "It has had no lasting effect",
+          "It only affected London",
+          "It ended in the 20th century",
+        ],
+        accept: [
+          "It has shaped language, food, music and industry over centuries",
+        ],
+        answer: "Britain has been shaped by migration since before the Romans, which is why the topic is studied across the whole period.",
+      },
+      {
+        question: "Why did the government pass immigration Acts in the 1960s and 1970s?",
+        choices: [
+          "To restrict entry, partly in response to public and political pressure",
+          "To encourage more migration",
+          "To join the Commonwealth",
+          "To fund new industries",
+        ],
+        accept: [
+          "To restrict entry, partly in response to public and political pressure",
+        ],
+        answer: "The shift from active recruitment to restriction within twenty years is a key change to be able to explain.",
+      },
     ],
 
     misconceptions: [
@@ -5217,6 +5607,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because it produces the feeling of knowing without the ability to retrieve. Reading a page you have read before is easy and familiar, and your brain reads that fluency as understanding — which is why people close their notes feeling confident and then find the exam paper blank. Retrieval is a different skill from recognition, and the exam only tests retrieval. Testing yourself from blank paper is uncomfortable precisely because it exposes what you cannot yet produce, which is the information you actually needed. In History it matters even more than in other subjects, because you have to produce dates, figures and names from memory to support an argument, and vague recollection cannot do that job. (Mark this one yourself.)" },
       { question: "Explain why the command word matters as much as the content.",
         answer: "Because mark schemes are written around it, and they cannot reward what they are not looking for. A describe question awards marks for features with supporting detail — write a brilliant analysis of causes and the examiner has nothing to give you for it, because that is not what the criteria describe. A 'how far do you agree' question caps answers that never reach a judgement, however well informed they are. Students who lose marks on this rarely lack knowledge; they answer the question they revised for rather than the one printed. Underlining the command word before writing takes two seconds and is one of the highest-value habits available in the whole exam. (Mark this one yourself.)" },
+      {
+        question: "A question asking 'how far do you agree' requires:",
+        choices: [
+          "A balanced argument and a clear judgement",
+          "One side of the argument only",
+          "A list of dates",
+          "A description of events",
+        ],
+        accept: [
+          "A balanced argument and a clear judgement",
+        ],
+        answer: "The judgement must be supported by the argument, not simply announced at the end.",
+      },
+      {
+        question: "In a source utility question, the strongest answers:",
+        choices: [
+          "Use provenance and contextual knowledge together",
+          "Say the source is biased and stop",
+          "Describe what the source shows",
+          "Compare the source to a textbook",
+        ],
+        accept: [
+          "Use provenance and contextual knowledge together",
+        ],
+        answer: "Nature, origin and purpose, tested against what you know of the period, is the formula that reaches the top band.",
+      },
+      {
+        question: "Why is precise factual detail important in history essays?",
+        choices: [
+          "Named events, people and dates support and prove your argument",
+          "Examiners count the facts",
+          "It fills the page",
+          "It replaces the need for an argument",
+        ],
+        accept: [
+          "Named events, people and dates support and prove your argument",
+        ],
+        answer: "A general claim with a specific example beats a general claim alone every time.",
+      },
+      {
+        question: "When explaining causes, a strong answer will:",
+        choices: [
+          "Show how causes link and which mattered most",
+          "List causes separately",
+          "Give only one cause",
+          "Describe the consequences",
+        ],
+        accept: [
+          "Show how causes link and which mattered most",
+        ],
+        answer: "Prioritising causes and explaining the connections between them is what separates the top band from the middle.",
+      },
+      {
+        question: "How should you allocate time in a history exam?",
+        choices: [
+          "In proportion to the marks each question carries",
+          "Equally to every question",
+          "Most time on the first question",
+          "Most time on the topics you enjoy",
+        ],
+        accept: [
+          "In proportion to the marks each question carries",
+        ],
+        answer: "Over-writing an 8-mark answer at the expense of a 16-mark one is the most expensive mistake available.",
+      },
     ],
 
     misconceptions: [
