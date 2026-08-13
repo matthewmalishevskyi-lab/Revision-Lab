@@ -558,4 +558,259 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       },
     ],
   },
+
+  "religious-education/introducing-islam": {
+    summary:
+      "Islam is the world's second largest religion and the second largest in the UK. This topic covers what Muslims believe about God and the prophets, the Qur'an, the Five Pillars, and the difference between Sunni and Shi'a Islam. Beliefs are described as what Muslims hold, not as claims this site makes.",
+    keyFacts: [
+      {
+        heading: "Belief in God",
+        points: [
+          "Islam is strictly MONOTHEISTIC. Muslims believe in one God, called Allah — the Arabic word for God.",
+          "TAWHID is the belief in the oneness of God, and is the most fundamental Islamic belief.",
+          "SHIRK, associating anything or anyone with God, is regarded as the most serious sin.",
+          "Muslims believe God has no image, so God is never depicted in Islamic art.",
+          "God is described through the 99 Names, including the Merciful, the Compassionate and the Just.",
+          "Muslims believe God is transcendent and beyond full human understanding, yet closer to a person than their jugular vein.",
+        ],
+      },
+      {
+        heading: "Prophets and holy books",
+        points: [
+          "Muslims believe God sent prophets throughout history, including Adam, Ibrahim, Musa and Isa — Abraham, Moses and Jesus.",
+          "Muhammad is believed to be the final prophet, the Seal of the Prophets.",
+          "Muslims respect Jesus as a prophet but do not accept that he was the Son of God or that he was crucified.",
+          "The QUR'AN is believed to be the direct word of God, revealed to Muhammad over about 23 years.",
+          "It is treated with great care, and many Muslims learn to recite it in Arabic.",
+          "The SUNNAH and HADITH record what Muhammad said and did, and guide Muslims where the Qur'an is not specific.",
+        ],
+      },
+      {
+        heading: "The Five Pillars",
+        points: [
+          "SHAHADAH is the declaration of faith: there is no god but God, and Muhammad is his messenger.",
+          "SALAH is prayer, performed five times a day facing Makkah, preceded by ritual washing.",
+          "ZAKAH is giving a fixed share of surplus wealth to those in need, usually 2.5%.",
+          "SAWM is fasting during the month of Ramadan from dawn until sunset.",
+          "HAJJ is the pilgrimage to Makkah, expected once in a lifetime of those able to make it.",
+          "Shi'a Muslims observe the Ten Obligatory Acts, which include these duties alongside others.",
+        ],
+      },
+      {
+        heading: "Sunni, Shi'a, and daily life",
+        points: [
+          "Around 85 to 90% of Muslims are SUNNI; most of the rest are SHI'A.",
+          "The split began as a disagreement over who should lead the community after Muhammad's death.",
+          "Sunnis hold that the leader should be chosen by the community; Shi'a hold that leadership belonged to Muhammad's family, beginning with Ali.",
+          "Both share belief in one God, the Qur'an and the prophethood of Muhammad.",
+          "The MOSQUE is the place of communal worship; Friday midday prayer is especially important.",
+          "The two main festivals are Id-ul-Fitr, marking the end of Ramadan, and Id-ul-Adha, during Hajj.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Tawhid", definition: "The Islamic belief in the absolute oneness of God." },
+      { term: "Allah", definition: "The Arabic word for God, used by Muslims and also by Arabic-speaking Christians." },
+      { term: "Shirk", definition: "Associating anything or anyone with God — regarded in Islam as the gravest sin." },
+      { term: "Qur'an", definition: "The Islamic holy book, believed by Muslims to be the direct word of God." },
+      { term: "Sunnah", definition: "The example set by the Prophet Muhammad's words and actions." },
+      { term: "Hadith", definition: "Recorded sayings and actions of Muhammad, used as guidance alongside the Qur'an." },
+      { term: "Shahadah", definition: "The Muslim declaration of faith, and the first Pillar of Islam." },
+      { term: "Salah", definition: "Prayer five times a day facing Makkah, the second Pillar." },
+      { term: "Zakah", definition: "Giving a fixed share of surplus wealth to those in need, the third Pillar." },
+      { term: "Sawm", definition: "Fasting from dawn to sunset during Ramadan, the fourth Pillar." },
+      { term: "Hajj", definition: "The pilgrimage to Makkah, expected once in a lifetime of those able to go." },
+      { term: "Ummah", definition: "The worldwide community of Muslims." },
+      { term: "Mosque", definition: "The Muslim place of communal worship." },
+      { term: "Id-ul-Fitr", definition: "The festival marking the end of Ramadan." },
+      { term: "Imam", definition: "A leader of prayer in Sunni Islam; in Shi'a Islam, a divinely appointed leader." },
+      { term: "Sunni and Shi'a", definition: "The two main branches of Islam, divided originally over leadership after Muhammad." },
+    ],
+    examTips: [
+      {
+        tip: "Allah simply means God in Arabic",
+        detail:
+          "Writing about 'Allah and God' as if they were two different beings is a common and costly error. Arabic-speaking Christians use the word too.",
+      },
+      {
+        tip: "Learn all Five Pillars in order",
+        detail:
+          "Shahadah, Salah, Zakah, Sawm, Hajj. Being able to name and briefly explain each is worth marks across many questions.",
+      },
+      {
+        tip: "Distinguish Sunni and Shi'a accurately",
+        detail:
+          "The origin is a disagreement about leadership, not about the nature of God. Both share tawhid, the Qur'an and Muhammad's prophethood.",
+      },
+      {
+        tip: "Muhammad is a prophet, not divine",
+        detail:
+          "Muslims do not worship Muhammad. Saying they do is a serious error and shows the topic has not been understood.",
+      },
+      {
+        tip: "Use Qur'an and Sunnah as sources of authority",
+        detail:
+          "In ethics questions, showing you know Muslims turn to the Qur'an first and the Sunnah and Hadith after lifts the answer.",
+      },
+      {
+        tip: "Not every Muslim can fulfil every Pillar",
+        detail:
+          "Hajj applies to those physically and financially able; the sick, pregnant and travelling are excused fasting. Noting exemptions shows real knowledge.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the Islamic belief in the oneness of God called?",
+        accept: ["tawhid", "tawheed"],
+        answer:
+          "Tawhid. It is the most fundamental Islamic belief, and its opposite, shirk, is regarded as the gravest sin.",
+      },
+      {
+        question: "How many Pillars of Islam are there? Give the number only.",
+        accept: ["5", "five"],
+        answer:
+          "5 — Shahadah, Salah, Zakah, Sawm and Hajj. Shi'a Muslims follow the Ten Obligatory Acts, which include these duties.",
+      },
+      {
+        question: "What is the Muslim declaration of faith called?",
+        accept: ["shahadah", "the shahadah"],
+        answer:
+          "The Shahadah: there is no god but God, and Muhammad is his messenger. Sincerely saying it is how a person becomes Muslim.",
+      },
+      {
+        question: "How many times a day do Muslims perform salah? Give the number only.",
+        accept: ["5", "five"],
+        answer:
+          "5, facing Makkah, preceded by ritual washing called wudu. Friday midday prayer at the mosque has particular importance.",
+      },
+      {
+        question: "During which month do Muslims fast from dawn to sunset?",
+        accept: ["ramadan"],
+        answer:
+          "Ramadan. The fast is called sawm, and the sick, pregnant, elderly, young and travelling are excused.",
+      },
+      {
+        question: "What is the pilgrimage to Makkah called?",
+        accept: ["hajj", "the hajj"],
+        answer:
+          "Hajj, expected once in a lifetime of Muslims who are physically and financially able to make it.",
+      },
+      {
+        question: "What is the Islamic holy book called?",
+        accept: ["quran", "qur'an", "koran", "the quran"],
+        answer:
+          "The Qur'an, believed by Muslims to be the direct word of God revealed to Muhammad over roughly 23 years.",
+      },
+      {
+        question: "What is the worldwide community of Muslims called?",
+        accept: ["ummah", "the ummah"],
+        answer:
+          "The Ummah. The idea of belonging to one global community shapes Muslim attitudes to charity and to conflict affecting Muslims elsewhere.",
+      },
+      {
+        question: "What is the sin of associating anything or anyone with God called?",
+        accept: ["shirk"],
+        answer:
+          "Shirk. It is why God is never depicted in Islamic art, and why calligraphy and pattern are used instead.",
+      },
+      {
+        question: "Which festival marks the end of Ramadan?",
+        accept: ["id-ul-fitr", "eid-ul-fitr", "eid ul fitr", "id ul fitr", "eid al-fitr"],
+        answer:
+          "Id-ul-Fitr. Id-ul-Adha, during Hajj, remembers Ibrahim's willingness to sacrifice his son.",
+      },
+      {
+        question: "What does the word 'Allah' mean?",
+        choices: [
+          "The Arabic word for God",
+          "The name of a prophet",
+          "A different god from the God of Christians and Jews",
+          "The Islamic holy book",
+        ],
+        accept: ["The Arabic word for God"],
+        answer:
+          "It is simply the Arabic for God, and Arabic-speaking Christians use it too. Treating it as a separate deity is a common error.",
+      },
+      {
+        question: "What do Muslims believe about Muhammad?",
+        choices: [
+          "He is the final prophet, and human rather than divine",
+          "He is the Son of God",
+          "He is one of several gods",
+          "He wrote the Qur'an himself",
+        ],
+        accept: ["He is the final prophet, and human rather than divine"],
+        answer:
+          "Muslims do not worship Muhammad. They believe the Qur'an is God's word, revealed through him rather than written by him.",
+      },
+      {
+        question: "What was the original cause of the Sunni-Shi'a split?",
+        choices: [
+          "A disagreement over who should lead the community after Muhammad's death",
+          "A disagreement about whether God exists",
+          "A dispute over the number of pillars",
+          "A disagreement about the existence of the Qur'an",
+        ],
+        accept: ["A disagreement over who should lead the community after Muhammad's death"],
+        answer:
+          "Both branches share tawhid, the Qur'an and Muhammad's prophethood. The division was about leadership and authority.",
+      },
+      {
+        question: "What do Muslims believe about Jesus?",
+        choices: [
+          "He was a prophet, but not the Son of God",
+          "He was the Son of God",
+          "He never existed",
+          "He was the final prophet",
+        ],
+        accept: ["He was a prophet, but not the Son of God"],
+        answer:
+          "Isa is honoured as a prophet in Islam. Muhammad is held to be the final prophet, and Muslims do not accept the crucifixion as Christians describe it.",
+      },
+      {
+        question: "Which source do Muslims regard as the highest authority?",
+        choices: ["The Qur'an", "The Hadith", "The Sunnah", "The imam's opinion"],
+        accept: ["The Qur'an"],
+        answer:
+          "The Qur'an comes first as the direct word of God. The Sunnah and Hadith guide Muslims where the Qur'an is not specific.",
+      },
+      {
+        question: "Explain the importance of the Five Pillars in a Muslim's life. Write three or four sentences.",
+        answer:
+          "The Five Pillars structure belief into daily, annual and lifetime practice, so faith is something done rather than only held. Shahadah states what a Muslim believes, and salah returns them to it five times a day, shaping the rhythm of ordinary life around God. Zakah and sawm both direct attention outwards: giving a share of surplus wealth supports those in need, and fasting is widely described by Muslims as building empathy with the hungry as well as self-discipline. Hajj brings millions together dressed identically, which Muslims describe as a powerful expression of the equality of all believers before God and of belonging to the ummah. Mark this one yourself: all five named, and at least two explained in terms of what they DO for the believer.",
+      },
+      {
+        question: "'Salah is the most important of the Five Pillars.' Evaluate this statement.",
+        answer:
+          "For: salah is performed five times every day, so it shapes daily life more than any other pillar; it is the pillar most often mentioned in the Qur'an after belief itself; and Muslims describe it as the direct, regular link between the believer and God, available to everyone regardless of wealth or health. Against: Shahadah could be argued as more fundamental, since a person becomes Muslim by sincerely declaring it and every other pillar depends on that belief; zakah has the greatest effect on other people and so might be judged most important in its consequences; and hajj is described by many Muslims as the most transformative single experience of their lives. It is also worth noting that salah has more exemptions than the declaration of faith, which suggests it is not the foundation. A defensible judgement is that Shahadah is logically first because everything rests on it, while salah is the most important in practice because it is the one that shapes every day — and which counts as 'most important' depends on whether you mean foundational or influential. Mark this one yourself: both sides, at least two pillars compared directly, and a conclusion that explains what 'important' is being taken to mean.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Allah is a different god from the God of Christians and Jews.",
+        right:
+          "Allah is simply the Arabic word for God. Arabic-speaking Christians use the same word in church.",
+      },
+      {
+        wrong: "Muslims worship Muhammad.",
+        right:
+          "Muslims worship God alone. Muhammad is honoured as the final prophet, and is human, not divine.",
+      },
+      {
+        wrong: "Every Muslim must complete all Five Pillars.",
+        right:
+          "Hajj applies to those able to afford and undertake it, and the sick, pregnant, young and travelling are excused fasting.",
+      },
+      {
+        wrong: "Sunni and Shi'a Muslims believe in different gods.",
+        right:
+          "Both hold tawhid, accept the Qur'an and honour Muhammad. The original division was about leadership after his death.",
+      },
+      {
+        wrong: "Muslims reject Jesus.",
+        right:
+          "Isa is honoured as one of the great prophets in Islam. What Muslims reject is the claim that he was the Son of God.",
+      },
+    ],
+  },
 };
