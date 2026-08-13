@@ -788,9 +788,12 @@ comment of app/lib/content/religious-education.ts:
   2. Give non-religious views their strongest form; they carry marks.
   3. Diversity WITHIN a religion matters as much as difference between them.
 
-Done: what-is-religion, introducing-christianity. Remaining: 16 topics —
-introducing-islam, introducing-judaism, dharmic-religions,
-big-questions-and-ethics, then all of Years 10 and 11.
+Done (5): what-is-religion, introducing-christianity, introducing-islam,
+introducing-judaism, dharmic-religions.
+Remaining (13): big-questions-and-ethics, then all six Year 10 topics and all
+six Year 11 topics. Slugs are already registered in subjects.ts and
+known-topics.ts, so each one just needs its content object appending to
+app/lib/content/religious-education.ts.
 
 ⚠️ known-topics.ts contains TWO arrays — KNOWN_TOPIC_KEYS and
 RETIRED_TOPIC_KEYS. Appending "to the end of the file" puts new slugs in the
