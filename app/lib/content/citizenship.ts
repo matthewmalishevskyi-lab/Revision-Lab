@@ -216,6 +216,72 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         answer:
           "In favour: migrants fill skill shortages in sectors such as healthcare, agriculture and construction where employers cannot recruit locally; they pay taxes that fund public services; and with an ageing population there are fewer working-age people to support pensioners, which migration partly offsets. Cultural and economic enrichment is also frequently cited. Against: rapid population growth puts pressure on housing, school places and GP appointments, particularly in areas where investment has not kept pace; some argue it increases competition for lower-paid jobs and holds down wages; and others are concerned about the speed of cultural change in particular communities. Both positions are held sincerely by large numbers of people. A reasonable judgement is that the effects depend heavily on the pace of migration and on whether housing and services are expanded alongside it, rather than immigration being simply good or bad in itself. Mark this one yourself: full marks need genuine arguments on both sides AND a supported conclusion — not agreement with any particular view.",
       },
+      {
+        question: "Which of these best describes a MULTICULTURAL society?",
+        choices: [
+          "A society where several cultural groups live together and their differences are recognised",
+          "A society where everyone must adopt one single national culture",
+          "A society with no immigration",
+          "A society where cultural groups live entirely separately from one another",
+        ],
+        accept: [
+          "A society where several cultural groups live together and their differences are recognised",
+        ],
+        answer: "Multiculturalism means different cultures coexisting with their differences recognised. Requiring everyone to adopt one culture is assimilation, which is a different idea entirely.",
+      },
+      {
+        question: "Which of the following is NOT a protected characteristic under the Equality Act 2010?",
+        choices: [
+          "Political opinion",
+          "Age",
+          "Disability",
+          "Religion or belief",
+          "Sexual orientation",
+        ],
+        accept: [
+          "Political opinion",
+        ],
+        answer: "Political opinion is not a protected characteristic in Great Britain. Age, disability, religion or belief and sexual orientation all are, along with race, sex, gender reassignment, marriage or civil partnership, and pregnancy or maternity.",
+      },
+      {
+        question: "A shop refuses to serve someone because of their religion. What is this an example of?",
+        choices: [
+          "Direct discrimination",
+          "Indirect discrimination",
+          "Positive action",
+          "Stereotyping",
+        ],
+        accept: [
+          "Direct discrimination",
+        ],
+        answer: "Direct discrimination is treating someone worse BECAUSE OF a protected characteristic. Indirect discrimination is a rule that applies to everyone but disadvantages one group.",
+      },
+      {
+        question: "Which statement about identity is most accurate?",
+        choices: [
+          "A person has many overlapping identities at once",
+          "A person has one fixed identity decided at birth",
+          "Identity is only about nationality",
+          "Identity cannot change during a person's life",
+        ],
+        accept: [
+          "A person has many overlapping identities at once",
+        ],
+        answer: "Identity is layered — nationality, religion, ethnicity, gender, region, interests and roles all sit together, and the mix shifts over a lifetime.",
+      },
+      {
+        question: "What is the main purpose of the census?",
+        choices: [
+          "To collect information used to plan public services",
+          "To decide who is allowed to vote",
+          "To collect tax from households",
+          "To check people's immigration status",
+        ],
+        accept: [
+          "To collect information used to plan public services",
+        ],
+        answer: "The census counts the population and records characteristics so schools, hospitals, housing and transport can be planned. It is not a tax or immigration process.",
+      },
     ],
     misconceptions: [
       {
@@ -439,6 +505,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         question: "Discuss what should happen when freedom of expression conflicts with protection from hate speech.",
         answer:
           "Freedom of expression is fundamental to democracy: people must be able to criticise the government, challenge popular opinion and hold power to account, and a society that punishes unpopular speech tends not to stay free for long. Against that, speech which incites violence or targets people for a protected characteristic causes real harm — it can make groups fearful of using public spaces and, at the extreme, contributes to violence. UK law resolves this by treating expression as a QUALIFIED right: it can be restricted, but only where the restriction is proportionate and serves a legitimate aim such as public safety. The genuinely difficult cases are the ones in the middle, where speech is offensive but not threatening, and reasonable people disagree about where the line sits. A defensible judgement is that restriction should be reserved for speech that incites harm rather than speech that merely offends, since offence is subjective and using it as a test hands too much power to whoever is most easily offended. Mark this one yourself: full marks need both rights taken seriously, the qualified-right framework, and a reasoned line — not simply choosing a side.",
+      },
+      {
+        question: "Which document sets out rights agreed by the United Nations in 1948?",
+        choices: [
+          "The Universal Declaration of Human Rights",
+          "The Human Rights Act",
+          "The Magna Carta",
+          "The European Convention on Human Rights",
+        ],
+        accept: [
+          "The Universal Declaration of Human Rights",
+        ],
+        answer: "The Universal Declaration of Human Rights was adopted by the UN in 1948. The European Convention came later and is binding; the Declaration is not.",
+      },
+      {
+        question: "Which of these is an ABSOLUTE right that can never be limited?",
+        choices: [
+          "Freedom from torture",
+          "Freedom of expression",
+          "The right to protest",
+          "The right to privacy",
+        ],
+        accept: [
+          "Freedom from torture",
+        ],
+        answer: "Freedom from torture is absolute — no circumstance justifies it. Expression, protest and privacy are qualified rights, which can be limited to protect others or public safety.",
+      },
+      {
+        question: "A responsibility that comes with the right to free speech is:",
+        choices: [
+          "Not using it to incite hatred or violence",
+          "Only speaking when asked",
+          "Agreeing with the government",
+          "Never criticising other people",
+        ],
+        accept: [
+          "Not using it to incite hatred or violence",
+        ],
+        answer: "Rights carry responsibilities. Free speech is protected but does not cover incitement to hatred or violence, harassment or defamation.",
+      },
+      {
+        question: "Which of these is a LEGAL responsibility rather than a moral one?",
+        choices: [
+          "Paying tax on your earnings",
+          "Helping a neighbour",
+          "Being polite to strangers",
+          "Recycling where it is voluntary",
+        ],
+        accept: [
+          "Paying tax on your earnings",
+        ],
+        answer: "Legal responsibilities are enforceable by law — paying tax, obeying the law, attending education or training to 18. Moral responsibilities are expectations without legal force.",
+      },
+      {
+        question: "From what age can you serve on a jury in England and Wales?",
+        choices: [
+          "18",
+          "16",
+          "21",
+          "25",
+        ],
+        accept: [
+          "18",
+        ],
+        answer: "18 is the minimum age for jury service, and it is a legal duty rather than a choice when you are summoned.",
       },
     ],
     misconceptions: [
@@ -664,6 +795,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         answer:
           "In favour of raising it: at 10 a child's brain is still developing and their understanding of consequences is limited, so treating them as fully responsible may be unfair; most European countries set it considerably higher; and drawing a child into the criminal justice system early is associated with worse outcomes later. Against raising it: some serious crimes are committed by children under 14, and victims and their families expect accountability; the current system already treats children differently through youth courts and different sentences; and a higher age might leave no formal way of intervening with a child who is causing real harm. A reasonable judgement is that the strongest case is not for abolishing responsibility but for ensuring the response is welfare-focused rather than punitive — though where exactly the line falls is a genuine political disagreement. Mark this one yourself: full marks need both sides and a supported conclusion, not simply picking one.",
       },
+      {
+        question: "Which court would hear a serious criminal case such as murder?",
+        choices: [
+          "The Crown Court",
+          "A magistrates' court",
+          "A county court",
+          "The Supreme Court",
+        ],
+        accept: [
+          "The Crown Court",
+        ],
+        answer: "Serious criminal cases go to the Crown Court, with a judge and a jury of twelve. Magistrates handle the less serious 95%.",
+      },
+      {
+        question: "In a CIVIL case, what must be proved?",
+        choices: [
+          "That the claim is more likely than not to be true",
+          "That the claim is true beyond reasonable doubt",
+          "That the defendant confessed",
+          "That there were witnesses present",
+        ],
+        accept: [
+          "That the claim is more likely than not to be true",
+        ],
+        answer: "Civil cases use the balance of probabilities — more likely than not. Beyond reasonable doubt is the higher criminal standard.",
+      },
+      {
+        question: "Who normally brings a criminal prosecution in England and Wales?",
+        choices: [
+          "The Crown Prosecution Service",
+          "The victim personally",
+          "A private solicitor",
+          "The local council",
+        ],
+        accept: [
+          "The Crown Prosecution Service",
+        ],
+        answer: "Criminal law is enforced on behalf of society, so the state prosecutes through the CPS rather than the victim bringing the case themselves.",
+      },
+      {
+        question: "Which of these is a source of law made by JUDGES rather than Parliament?",
+        choices: [
+          "Common law",
+          "Statute law",
+          "A green paper",
+          "A manifesto",
+        ],
+        accept: [
+          "Common law",
+        ],
+        answer: "Common law, also called precedent, develops through judges' decisions in past cases. Statute law is passed by Parliament as an Act.",
+      },
+      {
+        question: "A 15-year-old is arrested. Which of the following must happen?",
+        choices: [
+          "An appropriate adult must be present during questioning",
+          "They must be tried in the Crown Court",
+          "They cannot be questioned at all",
+          "Their parents must pay a fine immediately",
+        ],
+        accept: [
+          "An appropriate adult must be present during questioning",
+        ],
+        answer: "Under-18s must have an appropriate adult present. They are normally dealt with in a youth court, which sits in private.",
+      },
     ],
     misconceptions: [
       {
@@ -886,6 +1082,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         question: "Discuss the arguments for and against the UK having an unelected House of Lords.",
         answer:
           "In favour: peers are appointed for expertise rather than popularity, so the chamber contains former judges, scientists, doctors and diplomats who improve the quality of legislation; because they do not face re-election they can take unpopular but sensible positions; and the Commons retains the final say, so the democratic mandate is not overridden. Against: it is difficult to justify unelected legislators in a democracy, particularly with places still reserved for hereditary peers and bishops; appointments are made largely on the advice of party leaders, which invites accusations of patronage; and other countries manage expert scrutiny through elected second chambers. Reform options include a fully elected chamber, a partly elected one, or simply reducing the size and removing the remaining hereditary places. A defensible judgement is that the revising function is genuinely valuable but its current composition is hard to defend on democratic grounds, so reform of membership is a stronger case than abolition. Mark this one yourself: full marks need both sides taken seriously plus a supported conclusion.",
+      },
+      {
+        question: "Which of these is an example of DIRECT democracy in the UK?",
+        choices: [
+          "A referendum",
+          "A general election",
+          "A by-election",
+          "Electing a local councillor",
+        ],
+        accept: [
+          "A referendum",
+        ],
+        answer: "A referendum asks citizens to decide an issue themselves. Elections are representative democracy, because you choose someone to decide for you.",
+      },
+      {
+        question: "What happens if the House of Lords disagrees with a bill passed by the Commons?",
+        choices: [
+          "It can delay and revise it, but the Commons can ultimately override it",
+          "It can block the bill permanently",
+          "The bill is automatically cancelled",
+          "The monarch decides the outcome",
+        ],
+        accept: [
+          "It can delay and revise it, but the Commons can ultimately override it",
+        ],
+        answer: "The Lords scrutinise and revise but cannot block indefinitely. Saying the Lords can veto legislation is one of the most common errors in this topic.",
+      },
+      {
+        question: "Which of these is a DEVOLVED matter in Scotland and Wales?",
+        choices: [
+          "Health",
+          "Defence",
+          "Foreign policy",
+          "The currency",
+        ],
+        accept: [
+          "Health",
+        ],
+        answer: "Health, education and transport are typically devolved. Defence, foreign policy, immigration and currency are reserved to Westminster.",
+      },
+      {
+        question: "What does it mean to say the UK constitution is UNCODIFIED?",
+        choices: [
+          "Its rules are spread across statutes, conventions and past cases",
+          "The UK has no constitutional rules at all",
+          "Only the monarch may change it",
+          "It is written in a single document",
+        ],
+        accept: [
+          "Its rules are spread across statutes, conventions and past cases",
+        ],
+        answer: "Uncodified does not mean unwritten. Much of it is written down — just across many sources rather than gathered into one document.",
+      },
+      {
+        question: "Which of these services is run by LOCAL councils?",
+        choices: [
+          "Refuse collection",
+          "The armed forces",
+          "The Bank of England",
+          "Issuing passports",
+        ],
+        accept: [
+          "Refuse collection",
+        ],
+        answer: "Councils run refuse collection, schools, housing, planning, social care, libraries and local roads. Defence, currency and passports are national.",
       },
     ],
     misconceptions: [
@@ -1113,6 +1374,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         answer:
           "For PR: seats would more closely match votes, so a party winning a third of the vote would win roughly a third of the seats; smaller parties with support spread across the country would no longer be shut out; and fewer votes would be wasted in safe seats, which might improve turnout. For keeping FPTP: it usually produces a single-party majority, so governments can act decisively and voters know who to blame at the next election; every MP represents an identifiable area, giving a direct constituency link that list systems can weaken; and it is simple to understand and count. Counter-arguments run both ways — PR often means coalitions, which supporters see as compromise and critics see as deals made after voters have left the room, while FPTP can hand a large majority to a party most voters did not choose. A reasonable conclusion notes that the choice is really a trade-off between proportionality and decisive single-party government, and that which you prefer depends on which you value more. Mark this one yourself: both sides plus a supported judgement, and no party-political point-scoring.",
       },
+      {
+        question: "Under First Past the Post, who wins a constituency?",
+        choices: [
+          "The candidate with the most votes",
+          "The candidate with over half the votes",
+          "The candidate chosen by the party leader",
+          "The candidate with the most party members",
+        ],
+        accept: [
+          "The candidate with the most votes",
+        ],
+        answer: "Most votes, not a majority. That single feature is the root of nearly every criticism of the system.",
+      },
+      {
+        question: "Which voting system lets voters RANK candidates in multi-member constituencies?",
+        choices: [
+          "The Single Transferable Vote",
+          "First Past the Post",
+          "The Additional Member System",
+          "A closed party list",
+        ],
+        accept: [
+          "The Single Transferable Vote",
+        ],
+        answer: "STV lets voters rank candidates in multi-member constituencies, so several parties can win seats in the same area. Scotland and Wales use AMS.",
+      },
+      {
+        question: "Which of these is a way of voting in a UK general election?",
+        choices: [
+          "By proxy",
+          "Online through a government website",
+          "By telephone",
+          "By text message",
+        ],
+        accept: [
+          "By proxy",
+        ],
+        answer: "The three ways are in person, by post, and by proxy. Online voting is not currently available in UK general elections.",
+      },
+      {
+        question: "Which of these is a CAUSE group rather than a sectional group?",
+        choices: [
+          "An environmental campaign group",
+          "A trade union",
+          "A doctors' professional body",
+          "A business trade association",
+        ],
+        accept: [
+          "An environmental campaign group",
+        ],
+        answer: "Cause groups campaign on an issue anyone can support. Sectional groups represent a specific group of people, such as a union representing its members.",
+      },
+      {
+        question: "A constituency where the same party wins comfortably every time is called:",
+        choices: [
+          "A safe seat",
+          "A marginal seat",
+          "A by-election",
+          "A swing seat",
+        ],
+        accept: [
+          "A safe seat",
+        ],
+        answer: "Safe seats can depress turnout, because voters on both sides feel the result is already decided. Marginals are the close ones campaigns concentrate on.",
+      },
     ],
     misconceptions: [
       {
@@ -1334,6 +1660,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         question: "Explain why a campaign might fail even if a lot of people supported it. Write three or four sentences.",
         answer:
           "Support is not the same as leverage: a campaign can gather thousands of signatures and still be aimed at someone who has no power to grant what it asks for. Timing matters too, since a decision may already have been taken by the time the campaign builds momentum. Support can also be shallow — people willing to sign or share online but not to turn up, write, or keep going once attention moves on. And opposing interests may be smaller in number but far better organised, better funded and more persistent. The lesson for your own action is to target the right decision-maker, plan for the long haul, and measure impact rather than activity. Mark this one yourself: at least two distinct reasons, each explained rather than just listed, is what earns the marks.",
+      },
+      {
+        question: "A UK Parliament petition reaching 100,000 signatures:",
+        choices: [
+          "Is considered for a debate in Parliament",
+          "Automatically becomes law",
+          "Forces a general election",
+          "Must be answered by the monarch",
+        ],
+        accept: [
+          "Is considered for a debate in Parliament",
+        ],
+        answer: "Considered, not guaranteed — the Petitions Committee decides. At 10,000 signatures the government must respond in writing.",
+      },
+      {
+        question: "Which of these is PRIMARY evidence for a citizenship action?",
+        choices: [
+          "A survey you carried out yourself",
+          "A newspaper article",
+          "A government report",
+          "A published charity study",
+        ],
+        accept: [
+          "A survey you carried out yourself",
+        ],
+        answer: "Primary evidence is gathered by you. Secondary evidence comes from someone else, and a strong action uses both so each can check the other.",
+      },
+      {
+        question: "Which aim would be BEST for a citizenship action, and why?",
+        choices: [
+          "Get a covered seating area built outside the sports hall",
+          "Raise awareness of school issues",
+          "Make the school a better place",
+          "Help students feel happier",
+        ],
+        accept: [
+          "Get a covered seating area built outside the sports hall",
+        ],
+        answer: "It is specific, so you can tell afterwards whether you achieved it. Vague aims cannot be evaluated, and evaluation is where most of the marks are.",
+      },
+      {
+        question: "You want a school rule changed. Who should your campaign target?",
+        choices: [
+          "The headteacher or governors",
+          "Your local MP",
+          "The Prime Minister",
+          "The United Nations",
+        ],
+        accept: [
+          "The headteacher or governors",
+        ],
+        answer: "Target whoever actually has the power to grant what you are asking for. Aiming a school campaign at an MP is a common and costly mistake.",
+      },
+      {
+        question: "Which of these is an IMPACT rather than an output?",
+        choices: [
+          "The school changed its policy",
+          "500 leaflets were handed out",
+          "A poster was displayed",
+          "An assembly was delivered",
+        ],
+        accept: [
+          "The school changed its policy",
+        ],
+        answer: "Outputs measure activity; impact measures what actually changed. Examiners credit impact, which is why your aim has to be measurable.",
       },
     ],
     misconceptions: [
@@ -1561,6 +1952,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         answer:
           "Arguments that it is effective: select committees are cross-party, can summon witnesses and produce reports that force a government response; Prime Minister's Questions and written questions put ministers on the record; individual ministerial responsibility means serious failures can end a career; and the Lords can force the Commons to think again about badly drafted legislation. Arguments that it is weak: a government with a large majority controls the Commons timetable and can usually win any vote it chooses; whips discipline MPs who might otherwise rebel; PMQs is often more theatre than scrutiny; select committee reports carry no power to compel action; and ministers can resist resigning even after significant departmental failures. A balanced judgement is that scrutiny works best when it is slow and detailed — committees and the Lords — and worst when it is fast and public, and that its strength depends heavily on the size of the government's majority rather than on the rules themselves. Mark this one yourself: full marks need mechanisms named on both sides and a conclusion that follows from them.",
       },
+      {
+        question: "Which branch of the state does the Cabinet belong to?",
+        choices: [
+          "The executive",
+          "The legislature",
+          "The judiciary",
+          "The civil service",
+        ],
+        accept: [
+          "The executive",
+        ],
+        answer: "The Cabinet is part of the executive, which runs the country. Parliament is the legislature and the courts are the judiciary.",
+      },
+      {
+        question: "A minister publicly opposes a Cabinet decision. Which rule have they broken?",
+        choices: [
+          "Collective responsibility",
+          "Individual ministerial responsibility",
+          "Judicial review",
+          "Parliamentary privilege",
+        ],
+        accept: [
+          "Collective responsibility",
+        ],
+        answer: "Collective responsibility requires ministers to support Cabinet decisions publicly or resign. Individual responsibility covers their own department instead.",
+      },
+      {
+        question: "What can a court do through judicial review?",
+        choices: [
+          "Rule that a government action was unlawful",
+          "Overturn a policy it thinks is unwise",
+          "Remove the Prime Minister from office",
+          "Change an Act of Parliament",
+        ],
+        accept: [
+          "Rule that a government action was unlawful",
+        ],
+        answer: "Judicial review tests lawfulness, not wisdom. A court cannot strike down a policy simply for being a bad idea.",
+      },
+      {
+        question: "Which of these is a CROSS-PARTY group that investigates a government department?",
+        choices: [
+          "A select committee",
+          "The Cabinet",
+          "The shadow cabinet",
+          "The whips' office",
+        ],
+        accept: [
+          "A select committee",
+        ],
+        answer: "Select committees are cross-party, can summon witnesses and publish reports the government must answer. That makes them the most substantial form of scrutiny.",
+      },
+      {
+        question: "What is the role of a party whip?",
+        choices: [
+          "To make sure their party's MPs vote as the party wants",
+          "To chair debates in the Commons",
+          "To count votes in a general election",
+          "To advise the monarch on new laws",
+        ],
+        accept: [
+          "To make sure their party's MPs vote as the party wants",
+        ],
+        answer: "Whips enforce party discipline. A three-line whip is the strongest instruction, and repeatedly defying it can cost an MP the party whip.",
+      },
     ],
     misconceptions: [
       {
@@ -1785,6 +2241,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         question: "Discuss whether social media has been good or bad for democracy.",
         answer:
           "Positive: it removes the gatekeepers, so anyone can publish and issues ignored by mainstream outlets can reach millions; it makes organising campaigns and protests far faster and cheaper; it lets citizens question politicians directly; and it has allowed evidence of abuses to reach the world from places where the press is controlled. Negative: there is no editorial check, so falsehoods spread as easily as facts and often faster because they are more surprising; algorithms optimise for engagement, which tends to reward outrage over accuracy; echo chambers reduce exposure to opposing views and harden divisions; and both anonymity and automated accounts make coordinated manipulation cheap. Attempts to regulate raise their own problem, since giving governments or companies power to remove content risks the censorship a free society is trying to avoid. A defensible conclusion is that social media has widened participation and weakened the shared factual basis that participation depends on, so the honest answer is that it has done both, and which matters more is still genuinely contested. Mark this one yourself: both sides, at least two developed points each, and a conclusion that acknowledges the trade-off.",
+      },
+      {
+        question: "Which of the following is legally required to be politically impartial?",
+        choices: [
+          "A UK television news broadcaster",
+          "A national newspaper",
+          "A political blog",
+          "A campaign group's website",
+        ],
+        accept: [
+          "A UK television news broadcaster",
+        ],
+        answer: "Broadcasters are bound by impartiality rules under Ofcom. Newspapers may openly support a party, which is a deliberate difference.",
+      },
+      {
+        question: "Information that is false and spread DELIBERATELY to mislead is called:",
+        choices: [
+          "Disinformation",
+          "Misinformation",
+          "Defamation",
+          "Censorship",
+        ],
+        accept: [
+          "Disinformation",
+        ],
+        answer: "Both are false; the difference is intent. Misinformation is spread by people who believe it, disinformation by people who know better.",
+      },
+      {
+        question: "A newspaper publishes an untrue story that damages someone's reputation. This is:",
+        choices: [
+          "Defamation",
+          "Censorship",
+          "Contempt of court",
+          "Impartiality",
+        ],
+        accept: [
+          "Defamation",
+        ],
+        answer: "Defamation covers untrue reputation-damaging statements; in permanent form such as print it is libel. Contempt of court is about prejudicing a trial.",
+      },
+      {
+        question: "Which of these counts as being in the PUBLIC INTEREST?",
+        choices: [
+          "Exposing corruption by a government minister",
+          "Photographs of a celebrity on a private holiday",
+          "Details of an ordinary person's medical history",
+          "A footballer's private relationship",
+        ],
+        accept: [
+          "Exposing corruption by a government minister",
+        ],
+        answer: "Public interest means something the public genuinely needs to know, not merely something they find interesting. That distinction is tested directly.",
+      },
+      {
+        question: "Which body regulates television and radio in the UK?",
+        choices: [
+          "Ofcom",
+          "IPSO",
+          "The BBC Trust",
+          "The Press Association",
+        ],
+        accept: [
+          "Ofcom",
+        ],
+        answer: "Ofcom enforces accuracy and impartiality on broadcasters and can fine them. IPSO is the main self-regulator for newspapers.",
       },
     ],
     misconceptions: [
@@ -2011,6 +2532,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         question: "Discuss whether countries should intervene militarily in other countries to prevent human rights abuses.",
         answer:
           "For intervention: some abuses, including genocide and ethnic cleansing, are so severe that standing by makes other states complicit; the international community has accepted a responsibility to protect civilians when their own government will not; and inaction can allow a conflict to spread across a region. Against: sovereignty is the foundation of international order, and intervention without consent undermines it for everyone; interventions frequently produce consequences nobody intended, including long instability and civilian deaths caused by the intervention itself; powerful states intervene selectively, which makes the principle look like a cover for national interest; and the Security Council veto means action often depends on which side the permanent members are on rather than on the severity of the abuse. A reasonable conclusion is that the strength of the case depends heavily on whether there is a clear legal mandate, a realistic plan for what follows, and consistency in how the principle is applied — and that all three are frequently missing. Mark this one yourself: both sides developed, and a conclusion that gives conditions rather than a flat yes or no.",
+      },
+      {
+        question: "Which organisation is the European Convention on Human Rights part of?",
+        choices: [
+          "The Council of Europe",
+          "The European Union",
+          "The United Nations",
+          "NATO",
+        ],
+        accept: [
+          "The Council of Europe",
+        ],
+        answer: "The Council of Europe is separate from the EU, which is why leaving the EU did not take the UK out of the Convention. Examiners test this deliberately.",
+      },
+      {
+        question: "What can a permanent member of the UN Security Council do that others cannot?",
+        choices: [
+          "Veto a resolution",
+          "Expel another country",
+          "Declare war on behalf of the UN",
+          "Appoint the Secretary-General alone",
+        ],
+        accept: [
+          "Veto a resolution",
+        ],
+        answer: "Any one of the five permanent members can block a resolution, which is why the Council is often deadlocked on the most serious conflicts.",
+      },
+      {
+        question: "Which of these describes NATO?",
+        choices: [
+          "A military alliance where an attack on one is an attack on all",
+          "A trade organisation that settles disputes",
+          "A court that tries war crimes",
+          "A voluntary association of former British territories",
+        ],
+        accept: [
+          "A military alliance where an attack on one is an attack on all",
+        ],
+        answer: "That collective defence commitment is the core of NATO. The WTO handles trade, the ICC tries war crimes, and the Commonwealth is the voluntary association.",
+      },
+      {
+        question: "Which is an example of DEVELOPMENT aid rather than humanitarian aid?",
+        choices: [
+          "Funding to build and staff a school over ten years",
+          "Emergency food after an earthquake",
+          "Tents for people displaced by fighting",
+          "Medical supplies flown in after a flood",
+        ],
+        accept: [
+          "Funding to build and staff a school over ten years",
+        ],
+        answer: "Humanitarian aid keeps people alive now; development aid changes the situation over years. Both matter, and they answer different questions.",
+      },
+      {
+        question: "What are economic penalties used to pressure a country without military force called?",
+        choices: [
+          "Sanctions",
+          "Peacekeeping",
+          "Tariff relief",
+          "Intervention",
+        ],
+        accept: [
+          "Sanctions",
+        ],
+        answer: "Sanctions avoid war but often affect ordinary citizens more than the leaders they target, which is the standard criticism of them.",
       },
     ],
     misconceptions: [
@@ -2240,6 +2826,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         answer:
           "For raising them: demand on health and social care is rising as the population ages, and services under strain deliver worse outcomes for everyone; public services are used most by those least able to buy private alternatives, so underfunding them widens inequality; and some spending, such as on early education or preventative healthcare, reduces costs later. Against: tax takes money from people who earned it and may spend it better themselves; higher taxes on work and business can reduce the incentive to work, hire or invest, so revenue may not rise as much as expected; and extra money does not automatically produce better services if the underlying problems are organisational. There is also the question of which taxes — raising VAT hits lower earners hardest as a share of income, while raising income tax rates affects higher earners more. A defensible conclusion is that the honest disagreement is less about whether services matter and more about how much of national income should pass through the state, and that reasonable people weigh that differently. Mark this one yourself: both sides, some mention of which taxes, and a judgement rather than a preference stated as fact.",
       },
+      {
+        question: "Which of these is an INDIRECT tax?",
+        choices: [
+          "VAT",
+          "Income tax",
+          "National Insurance",
+          "Corporation tax",
+        ],
+        accept: [
+          "VAT",
+        ],
+        answer: "Indirect taxes are paid on spending and collected by a business. Direct taxes come straight off income or wealth.",
+      },
+      {
+        question: "What is the difference between the deficit and the national debt?",
+        choices: [
+          "The deficit is one year's shortfall; the debt is the accumulated total",
+          "They are two names for the same figure",
+          "The deficit is money owed abroad; the debt is money owed at home",
+          "The debt is one year's shortfall; the deficit is the total",
+        ],
+        accept: [
+          "The deficit is one year's shortfall; the debt is the accumulated total",
+        ],
+        answer: "Swapping these two is one of the most common errors in the topic, and it changes the meaning of the whole answer.",
+      },
+      {
+        question: "Under the Consumer Rights Act 2015, you are entitled to a refund when goods are:",
+        choices: [
+          "Faulty, unfit for purpose or not as described",
+          "Simply not wanted any more",
+          "Bought at a higher price than elsewhere",
+          "Out of stock in another branch",
+        ],
+        accept: [
+          "Faulty, unfit for purpose or not as described",
+        ],
+        answer: "Change-of-mind returns are a shop's own policy, not a legal right. The legal right covers the three standards in the Act.",
+      },
+      {
+        question: "What is the figure on a payslip BEFORE tax and National Insurance called?",
+        choices: [
+          "Gross pay",
+          "Net pay",
+          "Take-home pay",
+          "Disposable income",
+        ],
+        accept: [
+          "Gross pay",
+        ],
+        answer: "Gross is before deductions, net is what reaches your account. Payslip questions almost always turn on this distinction.",
+      },
+      {
+        question: "Which area, together with pensions and welfare, makes up the largest share of UK public spending?",
+        choices: [
+          "Health",
+          "Defence",
+          "Transport",
+          "Overseas aid",
+        ],
+        accept: [
+          "Health",
+        ],
+        answer: "Health, pensions and welfare dominate public spending, which is why they dominate the political argument about tax.",
+      },
     ],
     misconceptions: [
       {
@@ -2466,6 +3117,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         answer:
           "For prison: it protects the public by removing dangerous offenders; it delivers a punishment proportionate to serious harm, which victims and society expect; and the prospect of it may deter some offending. Against: reoffending rates after short sentences are high, suggesting prison often fails at the thing it is meant to prevent; imprisonment breaks employment, housing and family ties, which are the very factors that most reduce reoffending; prison is expensive per place compared with community alternatives; and the effect falls on families and children who committed no offence. Alternatives such as community sentences, treatment programmes and restorative justice show better reoffending outcomes for lower-level offending, but they are less visible and can look lenient. A reasonable conclusion is that prison is necessary for serious and dangerous offending, where public protection outweighs everything else, but is a poor tool for low-level repeat offending where the underlying causes are addiction, poverty or mental ill health. Mark this one yourself: both sides with evidence, alternatives named, and a conclusion that distinguishes between types of offending rather than judging prison as a whole.",
       },
+      {
+        question: "Which of these is required before a stop and search can lawfully take place?",
+        choices: [
+          "Reasonable grounds for suspicion",
+          "A warrant signed by a judge",
+          "Permission from a senior officer",
+          "A complaint from a member of the public",
+        ],
+        accept: [
+          "Reasonable grounds for suspicion",
+        ],
+        answer: "The officer must also give their name, station and the grounds for the search. Those safeguards are what make the power lawful rather than arbitrary.",
+      },
+      {
+        question: "A suspended sentence means:",
+        choices: [
+          "A prison sentence that is not served unless the offender reoffends",
+          "A sentence that has been cancelled",
+          "A fine paid in instalments",
+          "Early release from prison under conditions",
+        ],
+        accept: [
+          "A prison sentence that is not served unless the offender reoffends",
+        ],
+        answer: "It is a real sentence held in reserve. Early release under conditions is parole, which is a different thing.",
+      },
+      {
+        question: "Why might police recorded crime figures understate the true level of crime?",
+        choices: [
+          "Many crimes are never reported to the police",
+          "The police are not allowed to record most offences",
+          "Only crimes that reach court are counted",
+          "Recorded crime excludes anything committed at night",
+        ],
+        accept: [
+          "Many crimes are never reported to the police",
+        ],
+        answer: "Domestic abuse, sexual offences and fraud are especially under-reported, which is why the Crime Survey for England and Wales is used alongside police figures.",
+      },
+      {
+        question: "What does restorative justice involve?",
+        choices: [
+          "Bringing offender and victim together so the offender confronts the harm caused",
+          "Reducing a sentence in exchange for a guilty plea",
+          "Returning stolen property to its owner only",
+          "Releasing an offender early for good behaviour",
+        ],
+        accept: [
+          "Bringing offender and victim together so the offender confronts the harm caused",
+        ],
+        answer: "It is not a soft option — facing the person you harmed is difficult, and evidence suggests it improves victim satisfaction and can reduce reoffending.",
+      },
+      {
+        question: "Which measure is used to judge whether a sentence worked?",
+        choices: [
+          "The reoffending rate",
+          "The length of the sentence",
+          "The number of arrests made",
+          "The cost of the trial",
+        ],
+        accept: [
+          "The reoffending rate",
+        ],
+        answer: "Recidivism is the standard measure, and high rates after short custodial sentences are the strongest evidence in the debate about prison.",
+      },
     ],
     misconceptions: [
       {
@@ -2685,6 +3401,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         question: "A question says: 'Evaluate the view that young people should be given the vote at 16. (12 marks)'. Write a full answer.",
         answer:
           "In favour: 16-year-olds can work and pay income tax and National Insurance, and the principle of no taxation without representation suggests those who contribute should have a say. They are directly affected by decisions on education, training and youth services, yet have no vote on them. Scotland and Wales already allow 16- and 17-year-olds to vote in devolved and local elections, so the practical objections have been tested rather than merely assumed. Voting earlier, while still in full-time education, may also build the habit at a point when schools can support it — and turnout is lowest among the youngest voters who currently start at 18. Against: many other legal thresholds — including some restrictions on work, and the age of majority — sit at 18, and moving the vote alone creates inconsistency. Critics argue that political judgement benefits from experience of paying rent, holding a job or using public services independently, which most 16-year-olds have not yet had. There is also a concern about influence from parents or teachers on students still in compulsory education. Conclusion: the strongest argument for is the tax and representation point combined with the evidence from Scotland and Wales, where extending the franchise did not produce the problems predicted. The strongest argument against is consistency across legal ages, which is a real objection but is an argument for aligning the thresholds rather than for keeping the vote at 18. On balance the case for votes at 16 is stronger, though it would be more coherent as part of a wider review of where the line between childhood and adulthood is drawn. Mark this one yourself: check that you gave at least three developed points on each side, used correct terminology, drew on real evidence such as Scotland and Wales, and finished with a conclusion that decided and gave a reason.",
+      },
+      {
+        question: "A question begins with 'Evaluate'. What does the answer need?",
+        choices: [
+          "Both sides of the argument and a supported conclusion",
+          "A list of facts with no argument",
+          "Your personal opinion only",
+          "A definition of every key term",
+        ],
+        accept: [
+          "Both sides of the argument and a supported conclusion",
+        ],
+        answer: "Evaluate, discuss, assess and 'to what extent' all need both sides plus a judgement. One-sided answers cannot reach the top band.",
+      },
+      {
+        question: "Roughly how much should you write for a 4-mark 'explain two ways' question?",
+        choices: [
+          "Two developed points, each explained",
+          "One long paragraph on a single point",
+          "Four separate one-word answers",
+          "A full essay with a conclusion",
+        ],
+        accept: [
+          "Two developed points, each explained",
+        ],
+        answer: "Two ways, each developed, gives you the four marks. Naming them without explaining how they work only earns half.",
+      },
+      {
+        question: "In a source question, what does a top-band answer use?",
+        choices: [
+          "The source AND your own knowledge",
+          "The source only",
+          "Your own knowledge only",
+          "Neither, as long as the argument is strong",
+        ],
+        accept: [
+          "The source AND your own knowledge",
+        ],
+        answer: "Most mark schemes require both, so an answer that uses only one of them is capped however well written it is.",
+      },
+      {
+        question: "Which conclusion would score highest?",
+        choices: [
+          "The case for is stronger, because the evidence from Scotland and Wales answers the main objection",
+          "There are good arguments on both sides",
+          "It depends on your point of view",
+          "In conclusion, I have discussed both sides of this issue",
+        ],
+        accept: [
+          "The case for is stronger, because the evidence from Scotland and Wales answers the main objection",
+        ],
+        answer: "A conclusion has to DECIDE and give a reason. Restating that both sides exist is the most common way to lose the final marks.",
+      },
+      {
+        question: "Why should you avoid quoting exact tax rates in an exam answer?",
+        choices: [
+          "They change at every Budget, so a memorised figure may be out of date",
+          "Numbers are never credited in Citizenship",
+          "Examiners are not allowed to accept figures",
+          "Tax is not part of the Citizenship course",
+        ],
+        accept: [
+          "They change at every Budget, so a memorised figure may be out of date",
+        ],
+        answer: "Describe the structure instead — direct and indirect, progressive bands. That stays true regardless of which year you sit the exam.",
       },
     ],
     misconceptions: [

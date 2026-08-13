@@ -79,11 +79,20 @@ export type TopicContent = {
   // correct wordings. Pretending otherwise would mark good answers wrong and
   // teach students to guess magic words. Knowing what NOT to automate is part
   // of the job.
+  //
+  // MULTIPLE CHOICE: add `choices` (4 to 6 of them) and the question renders as
+  // buttons instead of a text box. The correct one is whichever choice also
+  // appears in `accept`, so there is no second source of truth about what is
+  // right — the same comparison marks both kinds of question. Wrong choices
+  // should be real misconceptions rather than obvious filler: a distractor
+  // nobody would pick teaches nothing and turns a five-option question into a
+  // two-option one.
   practice?: {
     question: string;
     accept?: string[];
     answer: string;
     higherOnly?: boolean;
+    choices?: string[];
   }[];
 
   // "Students often think X, but actually Y." Targets the specific wrong ideas

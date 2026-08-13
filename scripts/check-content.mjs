@@ -39,6 +39,14 @@ const out = mkdtempSync(join(tmpdir(), "revision-check-"));
 // module scope rather than inside the loop: the first version sat below its own
 // use site and died with a temporal-dead-zone ReferenceError, which is exactly
 // the kind of thing that only shows up when you actually run the script.
+// Subjects whose multiple-choice questions have been written. The "at least
+// five per topic" rule only applies to these, so the checker stays green while
+// the remaining subjects are still being worked through — and the moment a
+// subject is added here, every one of its topics is locked to the standard and
+// cannot quietly regress. A rule that fails on 185 topics from day one is not a
+// rule, it is noise that people learn to ignore.
+const MCQ_DONE = new Set(["citizenship"]);
+
 const QUANTITATIVE_CHEMISTRY = new Set([
   "quantitative-chemistry",
   "formulae-and-equations",
@@ -298,6 +306,52 @@ try {
             (p) => p.accept && p.accept.some((a) => /^-?[\d.,]+%?$/.test(String(a).trim())),
           ).length;
           expect(numeric >= 5, at(`only ${numeric} calculation questions — Physics topics need at least 5`));
+        }
+
+        // ── MULTIPLE CHOICE ────────────────────────────────────────────────
+        //
+        // The correct answer is whichever choice appears in `accept`, so the
+        // checks below are mostly about that link holding. A question whose
+        // `accept` list matches NONE of its choices is unanswerable — the
+        // student would click every option and be told all five were wrong —
+        // and one matching TWO has no single right answer. Neither is visible
+        // by reading; both are one line of code to catch.
+        const mcqs = (c.practice ?? []).filter((q) => q.choices);
+        for (const q of mcqs) {
+          const label = `${key} — MCQ "${q.question.slice(0, 48)}"`;
+          expect(
+            q.choices.length >= 4 && q.choices.length <= 6,
+            `${label} has ${q.choices.length} choices — must be 4 to 6`,
+          );
+          expect(
+            new Set(q.choices.map((o) => normalise(o))).size === q.choices.length,
+            `${label} has two identical choices`,
+          );
+          const right = q.choices.filter((o) =>
+            (q.accept ?? []).some((a) => normalise(a) === normalise(o)),
+          );
+          expect(
+            right.length === 1,
+            `${label} has ${right.length} choices matching its accept list — must be exactly 1`,
+          );
+          // A distractor that is blank, or that says "none of the above", turns
+          // a knowledge question into a guessing game.
+          for (const o of q.choices) {
+            expect(
+              String(o).trim().length > 0,
+              `${label} has an empty choice`,
+            );
+            expect(
+              !/^(none|all) of (the )?above$/i.test(String(o).trim()),
+              `${label} uses "${o}" as a choice — banned, it tests exam tactics rather than the subject`,
+            );
+          }
+        }
+        if (MCQ_DONE.has(subject.slug)) {
+          expect(
+            mcqs.length >= 5,
+            at(`only ${mcqs.length} multiple-choice questions — needs at least 5`),
+          );
         }
 
         // ── Chemistry's quantitative topics need calculations too ───────────

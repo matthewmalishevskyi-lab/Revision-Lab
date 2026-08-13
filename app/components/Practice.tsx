@@ -33,6 +33,15 @@ type Question = {
   accept?: string[];
   answer: string;
   higherOnly?: boolean;
+  // ── MULTIPLE CHOICE ───────────────────────────────────────────────────────
+  // Present `choices` and the question renders as buttons instead of a text
+  // box. There is deliberately NO separate "correctIndex" field: the right
+  // answer is whichever choice appears in `accept`, so multiple choice reuses
+  // the marking code that already exists rather than introducing a second,
+  // subtly different way of being right. A duplicated marking path is how a
+  // site ends up marking the same answer correct in one place and wrong in
+  // another. The checker verifies that exactly one choice matches `accept`.
+  choices?: string[];
 };
 
 // Makes typed answers forgiving without making them wrong.
@@ -157,8 +166,12 @@ export function Practice({
     }));
   }
 
-  function check(index: number, question: Question) {
-    const typed = stateFor(index).input;
+  // `given` lets a click pass its answer straight in. Without it, a choice
+  // button would have to setState and then read the state back in the same
+  // tick — which React does not do, so the first click always marked the
+  // PREVIOUS selection. Passing the value avoids the race entirely.
+  function check(index: number, question: Question, given?: string) {
+    const typed = given ?? stateFor(index).input;
     if (!typed.trim()) return;
 
     const isCorrect = (question.accept ?? []).some(
@@ -254,6 +267,60 @@ export function Practice({
 
                   {autoMarked ? (
                     <>
+                      {item.choices ? (
+                        /* ── Multiple choice ──────────────────────────────
+                           Answered state is locked: once you have picked, the
+                           buttons stop responding. Re-clicking would let you
+                           cycle through options until one turned green, which
+                           is not revision, and it would also mean the progress
+                           figures counted a guessed answer as knowledge. */
+                        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                          {item.choices.map((option, optionIndex) => {
+                            const picked = state.input === option;
+                            const answered = state.status !== "unanswered";
+                            const isRight = (item.accept ?? []).some(
+                              (valid) => normalise(valid) === normalise(option),
+                            );
+                            // Reveal the right answer once they have committed,
+                            // whether they got it or not — being told only
+                            // "wrong" teaches nothing.
+                            const show = answered && (picked || isRight);
+                            return (
+                              <button
+                                key={option}
+                                type="button"
+                                disabled={answered}
+                                onClick={() => {
+                                  update(index, { input: option });
+                                  check(index, item, option);
+                                }}
+                                className={`flex items-start gap-2.5 rounded-xl border px-3.5 py-2.5 text-left text-sm transition ${
+                                  show && isRight
+                                    ? "border-green-600/60 bg-green-500/15 font-medium"
+                                    : show
+                                      ? "border-red-600/50 bg-red-500/10"
+                                      : answered
+                                        ? "border-black/10 opacity-55 dark:border-white/10"
+                                        : "border-black/10 hover:border-black/25 hover:bg-black/5 dark:border-white/15 dark:hover:border-white/30 dark:hover:bg-white/10"
+                                }`}
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className="mt-px font-semibold opacity-45"
+                                >
+                                  {"ABCDEF"[optionIndex]}
+                                </span>
+                                <span className="min-w-0 flex-1">{option}</span>
+                                {show && (
+                                  <span aria-hidden="true" className="font-bold">
+                                    {isRight ? "\u2713" : "\u2717"}
+                                  </span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ) : (
                       <div className="mt-3 flex flex-wrap gap-2">
                         <input
                           type="text"
@@ -294,6 +361,7 @@ export function Practice({
                           </button>
                         )}
                       </div>
+                      )}
 
                       {/* role="status" makes screen readers announce the result
                           as soon as it appears, rather than leaving blind users
@@ -311,7 +379,7 @@ export function Practice({
                           role="status"
                           className="mt-3 font-semibold text-red-700 dark:text-red-400"
                         >
-                          ✗ Not quite — try again, or reveal the answer
+                          {item.choices ? "\u2717 Not quite" : "✗ Not quite — try again, or reveal the answer"}
                         </p>
                       )}
                     </>
