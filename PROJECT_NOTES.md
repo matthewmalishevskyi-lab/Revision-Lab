@@ -788,8 +788,9 @@ comment of app/lib/content/religious-education.ts:
   2. Give non-religious views their strongest form; they carry marks.
   3. Diversity WITHIN a religion matters as much as difference between them.
 
-Done: what-is-religion. Remaining: 17 topics (5 more in Year 9, then Years 10
-and 11).
+Done: what-is-religion, introducing-christianity. Remaining: 16 topics —
+introducing-islam, introducing-judaism, dharmic-religions,
+big-questions-and-ethics, then all of Years 10 and 11.
 
 ⚠️ known-topics.ts contains TWO arrays — KNOWN_TOPIC_KEYS and
 RETIRED_TOPIC_KEYS. Appending "to the end of the file" puts new slugs in the
