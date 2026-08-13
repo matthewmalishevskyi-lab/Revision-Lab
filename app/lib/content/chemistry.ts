@@ -1757,6 +1757,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Mr = 24 + 12 + (3 x 16) = 24 + 12 + 48 = 84.",
       },
+      {
+        question: "Which state symbol means dissolved in water?",
+        choices: [
+          "(aq)",
+          "(l)",
+          "(s)",
+          "(g)",
+        ],
+        accept: [
+          "(aq)",
+        ],
+        answer: "Aqueous means dissolved in water. (l) is a pure liquid, so water itself is (l) but salt water is (aq).",
+      },
+      {
+        question: "Why must you never change a small subscript number when balancing?",
+        choices: [
+          "It would change the substance into a different one",
+          "It would make the equation longer",
+          "Subscripts are always correct by definition",
+          "It would change the state symbols",
+        ],
+        accept: [
+          "It would change the substance into a different one",
+        ],
+        answer: "H2O and H2O2 are water and hydrogen peroxide. Only the big numbers in front may be changed.",
+      },
+      {
+        question: "What is an IONIC equation?",
+        choices: [
+          "One showing only the species that actually change",
+          "One with all state symbols removed",
+          "One written without balancing",
+          "One showing only the metals",
+        ],
+        accept: [
+          "One showing only the species that actually change",
+        ],
+        answer: "Spectator ions appear unchanged on both sides and are left out, which shows what the reaction really does.",
+      },
+      {
+        question: "In the formula Al2(SO4)3, how many oxygen atoms are there?",
+        choices: [
+          "12",
+          "4",
+          "7",
+          "3",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "The bracket contains 4 oxygens and the subscript 3 multiplies everything inside: 4 x 3 = 12. Ignoring the bracket is a classic slip.",
+      },
+      {
+        question: "Which of these is a balanced equation?",
+        choices: [
+          "2H2 + O2 -> 2H2O",
+          "H2 + O2 -> H2O",
+          "H2 + O2 -> 2H2O",
+          "2H2 + O2 -> H2O",
+        ],
+        accept: [
+          "2H2 + O2 -> 2H2O",
+        ],
+        answer: "Four hydrogens and two oxygens on each side. Count each element on both sides before choosing.",
+      },
     ],
     misconceptions: [
       {
@@ -2089,6 +2154,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "percentage yield = (actual / theoretical) x 100 = (12 / 16) x 100 = 75%. Yield is never 100% in practice because of losses in transfer, incomplete reactions and side reactions.",
       },
+      {
+        question: "What does the law of conservation of mass state?",
+        choices: [
+          "Total mass of reactants equals total mass of products",
+          "Mass is always lost in a reaction",
+          "Mass increases in exothermic reactions",
+          "Only solids conserve mass",
+        ],
+        accept: [
+          "Total mass of reactants equals total mass of products",
+        ],
+        answer: "No atoms are created or destroyed, only rearranged. Apparent mass changes happen when a gas escapes or is taken in from the air.",
+      },
+      {
+        question: "A sealed flask loses no mass, but an open one does. The most likely reason is:",
+        choices: [
+          "A gas has escaped",
+          "The reaction stopped early",
+          "The balance was faulty",
+          "Mass was destroyed",
+        ],
+        accept: [
+          "A gas has escaped",
+        ],
+        answer: "Mass is conserved overall — the gas simply left the system being weighed. If mass INCREASES, a gas from the air has been taken in.",
+      },
+      {
+        question: "Percentage yield is always less than 100% because:",
+        choices: [
+          "Product is lost in transfer, reactions are incomplete, and side reactions occur",
+          "Atoms are destroyed during the reaction",
+          "The balance is never accurate",
+          "Products always evaporate",
+        ],
+        accept: [
+          "Product is lost in transfer, reactions are incomplete, and side reactions occur",
+        ],
+        answer: "Never say atoms are lost — mass is conserved. The loss is practical, not a breach of conservation.",
+      },
+      {
+        question: "Atom economy measures:",
+        choices: [
+          "The proportion of reactant mass that ends up as the desired product",
+          "How much product you actually made",
+          "The purity of the product",
+          "How fast the reaction goes",
+        ],
+        accept: [
+          "The proportion of reactant mass that ends up as the desired product",
+        ],
+        answer: "High atom economy means less waste, which matters for cost and the environment. It is a property of the equation, not of the practical work.",
+      },
+      {
+        question: "Which quantity is the LIMITING reactant?",
+        choices: [
+          "The one completely used up first",
+          "The one present in the greatest mass",
+          "The one with the highest Mr",
+          "The one added last",
+        ],
+        accept: [
+          "The one completely used up first",
+        ],
+        answer: "The limiting reactant determines how much product can form; the other reactants are in excess and some is left over.",
+      },
     ],
     misconceptions: [
       {
@@ -2350,6 +2480,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "7",
         ],
         answer: "7. Below 7 is acidic, above 7 is alkaline, and the scale is logarithmic — each step of 1 is a tenfold change in hydrogen ion concentration.",
+      },
+      {
+        question: "Which ion do all acids produce in aqueous solution?",
+        choices: [
+          "H+",
+          "OH-",
+          "Na+",
+          "Cl-",
+        ],
+        accept: [
+          "H+",
+        ],
+        answer: "Acids release hydrogen ions in water. Alkalis release hydroxide ions, and neutralisation is those two combining to form water.",
+      },
+      {
+        question: "What are the products of acid + metal carbonate?",
+        choices: [
+          "A salt, water and carbon dioxide",
+          "A salt and hydrogen only",
+          "A salt and water only",
+          "A salt and oxygen",
+        ],
+        accept: [
+          "A salt, water and carbon dioxide",
+        ],
+        answer: "The carbon dioxide is the giveaway — fizzing that turns limewater cloudy. Acid + metal gives salt plus hydrogen instead.",
+      },
+      {
+        question: "Which salt is made from hydrochloric acid?",
+        choices: [
+          "A chloride",
+          "A sulfate",
+          "A nitrate",
+          "A carbonate",
+        ],
+        accept: [
+          "A chloride",
+        ],
+        answer: "Hydrochloric gives chlorides, sulfuric gives sulfates, nitric gives nitrates. The acid decides the second half of the salt's name.",
+      },
+      {
+        question: "What distinguishes a STRONG acid from a CONCENTRATED one?",
+        choices: [
+          "Strong means fully ionised; concentrated means a lot of acid per volume",
+          "They mean the same thing",
+          "Strong means a lower pH only",
+          "Concentrated means fully ionised",
+        ],
+        accept: [
+          "Strong means fully ionised; concentrated means a lot of acid per volume",
+        ],
+        answer: "You can have a dilute strong acid or a concentrated weak one. Strength is about ionisation, concentration is about amount.",
+      },
+      {
+        question: "As pH DECREASES by 1, the hydrogen ion concentration:",
+        choices: [
+          "Increases tenfold",
+          "Decreases tenfold",
+          "Doubles",
+          "Stays the same",
+        ],
+        accept: [
+          "Increases tenfold",
+        ],
+        answer: "The pH scale is logarithmic, so pH 3 has ten times the hydrogen ion concentration of pH 4, and a hundred times that of pH 5.",
       },
     ],
     misconceptions: [
@@ -2897,6 +3092,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "2 — one from each chloride ion. Losing electrons is oxidation, and it happens at the anode, which is where the negative ions go.",
       },
+      {
+        question: "At which electrode are POSITIVE ions discharged?",
+        choices: [
+          "The cathode",
+          "The anode",
+          "Both equally",
+          "Neither",
+        ],
+        accept: [
+          "The cathode",
+        ],
+        answer: "Positive ions go to the negative cathode and gain electrons, which is reduction. Negative ions go to the anode and lose electrons.",
+      },
+      {
+        question: "Why must an ionic compound be molten or dissolved for electrolysis?",
+        choices: [
+          "The ions must be free to move",
+          "The compound must be hot to react",
+          "Water is needed as a catalyst",
+          "Solids have no ions",
+        ],
+        accept: [
+          "The ions must be free to move",
+        ],
+        answer: "In a solid lattice ions are locked in place and cannot carry charge to the electrodes.",
+      },
+      {
+        question: "Why is aluminium extracted by electrolysis rather than with carbon?",
+        choices: [
+          "Aluminium is more reactive than carbon",
+          "Aluminium ore contains no oxygen",
+          "Carbon is too expensive",
+          "Aluminium has a low melting point",
+        ],
+        accept: [
+          "Aluminium is more reactive than carbon",
+        ],
+        answer: "Carbon can only displace metals below it in the reactivity series. That is why electrolysis is used despite the enormous energy cost.",
+      },
+      {
+        question: "In the electrolysis of aqueous sodium chloride, what is produced at the cathode?",
+        choices: [
+          "Hydrogen",
+          "Sodium",
+          "Chlorine",
+          "Oxygen",
+        ],
+        accept: [
+          "Hydrogen",
+        ],
+        answer: "Sodium is more reactive than hydrogen, so hydrogen is discharged instead. That is why the products differ from molten sodium chloride.",
+      },
+      {
+        question: "Why is cryolite added during aluminium extraction?",
+        choices: [
+          "It lowers the melting point, saving energy",
+          "It acts as a catalyst",
+          "It removes the oxygen",
+          "It makes the aluminium purer",
+        ],
+        accept: [
+          "It lowers the melting point, saving energy",
+        ],
+        answer: "Pure aluminium oxide melts at over 2000 degrees C. Dissolving it in molten cryolite cuts the temperature and so the cost.",
+      },
     ],
     misconceptions: [
       {
@@ -3165,6 +3425,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "300",
         ],
         answer: "1500 - 1200 = +300 kJ/mol, so this one is endothermic — more energy went into breaking bonds than came back out when new bonds formed.",
+      },
+      {
+        question: "In an EXOTHERMIC reaction, the temperature of the surroundings:",
+        choices: [
+          "Increases",
+          "Decreases",
+          "Stays exactly the same",
+          "Falls then rises",
+        ],
+        accept: [
+          "Increases",
+        ],
+        answer: "Exothermic reactions release energy, so the surroundings warm up. Combustion, neutralisation and oxidation are the standard examples.",
+      },
+      {
+        question: "Which of these is an ENDOTHERMIC process?",
+        choices: [
+          "Thermal decomposition",
+          "Combustion",
+          "Neutralisation",
+          "Rusting",
+        ],
+        accept: [
+          "Thermal decomposition",
+        ],
+        answer: "Thermal decomposition and the reaction of citric acid with sodium hydrogencarbonate take energy in. The others release it.",
+      },
+      {
+        question: "On a reaction profile, activation energy is:",
+        choices: [
+          "The height from the reactants to the top of the curve",
+          "The difference between reactants and products",
+          "The total height of the diagram",
+          "The energy of the products alone",
+        ],
+        accept: [
+          "The height from the reactants to the top of the curve",
+        ],
+        answer: "Activation energy is the hump that must be climbed. The reactant-to-product difference is the overall energy change.",
+      },
+      {
+        question: "A catalyst speeds up a reaction by:",
+        choices: [
+          "Providing an alternative route with lower activation energy",
+          "Increasing the energy of the particles",
+          "Raising the temperature",
+          "Being used up in the reaction",
+        ],
+        accept: [
+          "Providing an alternative route with lower activation energy",
+        ],
+        answer: "A catalyst is not consumed and does not change the overall energy change — only how easily the reaction gets started.",
+      },
+      {
+        question: "Bond breaking and bond making are, respectively:",
+        choices: [
+          "Endothermic and exothermic",
+          "Exothermic and endothermic",
+          "Both endothermic",
+          "Both exothermic",
+        ],
+        accept: [
+          "Endothermic and exothermic",
+        ],
+        answer: "Breaking bonds takes energy in; making them gives energy out. Which is larger decides whether the reaction overall is exothermic or endothermic.",
       },
     ],
     misconceptions: [
@@ -3449,6 +3774,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "4",
         ],
         answer: "Two rises of 10 degrees, so the rate doubles twice: 2 x 2 = 4 times faster. Raising temperature increases both the frequency of collisions and the proportion that have the activation energy.",
+      },
+      {
+        question: "Increasing the temperature speeds up a reaction because particles:",
+        choices: [
+          "Collide more often AND more have the activation energy",
+          "Get physically bigger",
+          "Collide less often but harder",
+          "Become catalysts",
+        ],
+        accept: [
+          "Collide more often AND more have the activation energy",
+        ],
+        answer: "Both effects matter, and the second is the larger one. Mentioning only 'more collisions' costs a mark.",
+      },
+      {
+        question: "Increasing the surface area of a solid reactant speeds up the reaction because:",
+        choices: [
+          "More particles are exposed for collisions",
+          "The particles move faster",
+          "The activation energy falls",
+          "The concentration increases",
+        ],
+        accept: [
+          "More particles are exposed for collisions",
+        ],
+        answer: "Powder reacts faster than a lump for this reason. It does not change how fast the particles move.",
+      },
+      {
+        question: "On a graph of gas volume against time, the reaction is FASTEST when the line is:",
+        choices: [
+          "Steepest, at the start",
+          "Flattest, at the end",
+          "Horizontal",
+          "Curving upwards",
+        ],
+        accept: [
+          "Steepest, at the start",
+        ],
+        answer: "The gradient is the rate. It is steepest at the start when concentration is highest, and flattens as reactants are used up.",
+      },
+      {
+        question: "A reaction stops and the graph goes flat. This means:",
+        choices: [
+          "A reactant has been completely used up",
+          "The catalyst has been consumed",
+          "The temperature reached zero",
+          "The products have evaporated",
+        ],
+        accept: [
+          "A reactant has been completely used up",
+        ],
+        answer: "A flat line means no more product is forming. The height at which it flattens depends on how much of the limiting reactant there was.",
+      },
+      {
+        question: "Which change would NOT increase the rate of a reaction?",
+        choices: [
+          "Lowering the concentration of a reactant",
+          "Adding a catalyst",
+          "Raising the temperature",
+          "Grinding a solid into powder",
+        ],
+        accept: [
+          "Lowering the concentration of a reactant",
+        ],
+        answer: "Lower concentration means fewer particles in the same volume, so fewer collisions per second and a slower reaction.",
       },
     ],
     misconceptions: [
