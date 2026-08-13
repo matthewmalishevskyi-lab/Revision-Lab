@@ -218,6 +218,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "Invention can create a genuine monopoly and a strong USP, so the reward is potentially enormous. But it is usually the RISKIEST route, not the safest: it takes far more money and time, there is no proof anybody wants the product, and patents are expensive to obtain and defend. Innovating on something that already sells is lower risk because demand is already proven — the entrepreneur only has to be better, not first. Overall the friend has confused 'highest reward' with 'safest'; these are usually opposites. Mark this one yourself: full marks need both sides and a clear judgement at the end.",
       },
+      {
+        question: "What is an ENTREPRENEUR?",
+        choices: [
+          "Someone who takes a risk to set up and run a business",
+          "An employee of a large company",
+          "A government adviser on business",
+          "A customer who buys regularly",
+        ],
+        accept: [
+          "Someone who takes a risk to set up and run a business",
+        ],
+        answer: "Risk-taking is the defining feature. Entrepreneurs organise the other factors of production and bear the consequences if it fails.",
+      },
+      {
+        question: "Which of these is a NON-financial motive for starting a business?",
+        choices: [
+          "Independence and being your own boss",
+          "Making a profit",
+          "Increasing sales revenue",
+          "Raising more capital",
+        ],
+        accept: [
+          "Independence and being your own boss",
+        ],
+        answer: "Independence, a social aim, or a personal interest are non-financial. Profit and revenue are financial motives.",
+      },
+      {
+        question: "What does ADDING VALUE mean?",
+        choices: [
+          "Increasing what a customer will pay above the cost of the inputs",
+          "Raising prices with no other change",
+          "Reducing the number of staff",
+          "Buying cheaper raw materials",
+        ],
+        accept: [
+          "Increasing what a customer will pay above the cost of the inputs",
+        ],
+        answer: "Branding, convenience, quality and speed all add value, which is what allows a business to charge more than its costs.",
+      },
+      {
+        question: "Which is a common reason new businesses fail?",
+        choices: [
+          "Running out of cash",
+          "Having too many customers",
+          "Selling at a profit",
+          "Employing skilled staff",
+        ],
+        accept: [
+          "Running out of cash",
+        ],
+        answer: "Cash flow problems kill profitable businesses too — profit on paper does not pay a bill that is due today.",
+      },
+      {
+        question: "Opportunity cost means:",
+        choices: [
+          "The value of the next best option given up",
+          "The money spent on a purchase",
+          "The cost of borrowing money",
+          "The cost of an opportunity that failed",
+        ],
+        accept: [
+          "The value of the next best option given up",
+        ],
+        answer: "Every choice has one, because resources used one way cannot be used another.",
+      },
     ],
     misconceptions: [
       {
@@ -684,6 +749,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "It cannot win on price: Costa buys beans and cups in bulk and can absorb a price war far longer than a new independent could. So it should compete on non-price factors — better coffee, a distinctive atmosphere, local sourcing, knowing regulars by name, faster service at peak times, or something Costa's standardised model cannot offer, like hosting local events. It should also target a slightly different customer, such as remote workers wanting somewhere to sit for two hours. Overall, differentiation is the realistic strategy; matching a chain on price would be the fastest route to failure. Mark this one yourself: the top marks are for rejecting price competition WITH a reason, then giving specific alternatives.",
       },
+      {
+        question: "A GAP IN THE MARKET is:",
+        choices: [
+          "A customer need not currently being met",
+          "A shop that has closed down",
+          "A period when sales are low",
+          "A price no one will pay",
+        ],
+        accept: [
+          "A customer need not currently being met",
+        ],
+        answer: "Finding one is only useful if enough customers want it and will pay a price that covers costs.",
+      },
+      {
+        question: "Which is a benefit of understanding customer needs?",
+        choices: [
+          "Products can be designed that people actually want to buy",
+          "Costs are automatically reduced",
+          "Competition disappears",
+          "Taxes are lower",
+        ],
+        accept: [
+          "Products can be designed that people actually want to buy",
+        ],
+        answer: "It also improves customer retention and reduces the risk of launching something nobody wants.",
+      },
+      {
+        question: "What is a COMPETITIVE ADVANTAGE?",
+        choices: [
+          "Something that makes a business more attractive than its rivals",
+          "Having the largest premises",
+          "Being the oldest business in the area",
+          "Employing the most people",
+        ],
+        accept: [
+          "Something that makes a business more attractive than its rivals",
+        ],
+        answer: "It might be price, quality, location, service or brand — but it must matter to customers to count.",
+      },
+      {
+        question: "Product differentiation means:",
+        choices: [
+          "Making a product stand out from competitors",
+          "Selling several different products",
+          "Charging different prices in different shops",
+          "Copying a rival's product",
+        ],
+        accept: [
+          "Making a product stand out from competitors",
+        ],
+        answer: "Differentiation reduces direct price competition, which is why brands invest so heavily in it.",
+      },
+      {
+        question: "Which is an example of a business responding to a market trend?",
+        choices: [
+          "Launching a plant-based range as demand for it grows",
+          "Keeping the same products for decades",
+          "Reducing staff training",
+          "Ignoring customer feedback",
+        ],
+        accept: [
+          "Launching a plant-based range as demand for it grows",
+        ],
+        answer: "Trends change what customers want. Businesses that fail to notice lose share to those that do.",
+      },
     ],
     misconceptions: [
       {
@@ -904,6 +1034,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "With £300 it cannot afford much primary research: a professional survey or focus group would use the whole budget on a small sample. Secondary research is nearly free — government statistics, competitor websites and industry reports — so it should start there to size the market and see what rivals charge. But secondary data will not tell it whether local customers want THIS product, so a small amount of cheap primary research such as an online questionnaire or observation outside a competitor's shop is worth doing too. Overall, secondary first for context, then targeted low-cost primary to answer the specific question. Mark this one yourself: full marks need a recommendation, not just a list of both types.",
       },
+      {
+        question: "Which of these is PRIMARY market research?",
+        choices: [
+          "A survey the business carries out itself",
+          "A government statistics report",
+          "A competitor's published accounts",
+          "A newspaper article",
+        ],
+        accept: [
+          "A survey the business carries out itself",
+        ],
+        answer: "Primary data is collected first-hand for a specific purpose. Secondary data already exists and was gathered by someone else.",
+      },
+      {
+        question: "An advantage of SECONDARY research is that it is:",
+        choices: [
+          "Cheaper and quicker to obtain",
+          "Always more up to date",
+          "Specific to the business's exact question",
+          "Never biased",
+        ],
+        accept: [
+          "Cheaper and quicker to obtain",
+        ],
+        answer: "The drawback is that it was collected for someone else's purpose, so it may be out of date or not quite relevant.",
+      },
+      {
+        question: "QUALITATIVE data is best described as:",
+        choices: [
+          "Opinions and reasons, expressed in words",
+          "Numbers that can be counted",
+          "Data from a government source",
+          "Data from a competitor",
+        ],
+        accept: [
+          "Opinions and reasons, expressed in words",
+        ],
+        answer: "Quantitative data is numerical and easy to compare; qualitative explains WHY, which numbers alone cannot.",
+      },
+      {
+        question: "A focus group is useful because it:",
+        choices: [
+          "Explores customer opinions in depth",
+          "Produces a large statistical sample",
+          "Costs nothing to run",
+          "Removes all bias",
+        ],
+        accept: [
+          "Explores customer opinions in depth",
+        ],
+        answer: "The sample is small, so results may not represent the whole market, and a dominant voice can sway the group.",
+      },
+      {
+        question: "A biased sample is a problem because:",
+        choices: [
+          "The results may not represent the target market",
+          "It takes longer to collect",
+          "It always costs more",
+          "It cannot be written down",
+        ],
+        accept: [
+          "The results may not represent the target market",
+        ],
+        answer: "Surveying only existing customers, for example, tells you nothing about why other people do not buy.",
+      },
     ],
     misconceptions: [
       {
@@ -1119,6 +1314,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "It should be suspicious rather than excited. High quality at a low price usually means low or negative margins — the space may be empty precisely because it is not profitable, not because nobody thought of it. Established firms with far lower unit costs would also be better placed to occupy it and could undercut a newcomer. If the business genuinely has a cost advantage, such as direct-to-consumer selling with no shops to pay for, the position might be defensible. Overall it should investigate WHY the space is empty before committing, and a high-quality, higher-price niche is likely to be safer. Mark this one yourself: the key insight is asking why the gap exists — say that and you are in the top band.",
       },
+      {
+        question: "Market segmentation means:",
+        choices: [
+          "Dividing customers into groups with similar characteristics",
+          "Selling in several countries",
+          "Splitting a business into departments",
+          "Reducing the product range",
+        ],
+        accept: [
+          "Dividing customers into groups with similar characteristics",
+        ],
+        answer: "It allows marketing to be targeted, which is cheaper and more effective than treating everyone the same.",
+      },
+      {
+        question: "Which is an example of DEMOGRAPHIC segmentation?",
+        choices: [
+          "Age",
+          "Location",
+          "Lifestyle",
+          "Frequency of purchase",
+        ],
+        accept: [
+          "Age",
+        ],
+        answer: "Demographic covers age, gender, income and occupation. Location is geographic and lifestyle is psychographic.",
+      },
+      {
+        question: "A market MAP is used to:",
+        choices: [
+          "Show where products sit against two features, revealing gaps",
+          "Show where customers live",
+          "Track daily sales",
+          "List all competitors' prices",
+        ],
+        accept: [
+          "Show where products sit against two features, revealing gaps",
+        ],
+        answer: "Typical axes are price and quality. An empty area may be a gap — or a space where nobody wants to buy.",
+      },
+      {
+        question: "A NICHE market is one that is:",
+        choices: [
+          "Small and specialised",
+          "Very large and general",
+          "Only found online",
+          "Free from competition permanently",
+        ],
+        accept: [
+          "Small and specialised",
+        ],
+        answer: "Niches face less competition and allow premium prices, but sales volumes are limited and the business is vulnerable if demand shifts.",
+      },
+      {
+        question: "The main benefit of targeting a specific segment is:",
+        choices: [
+          "Marketing spend is less wasted on uninterested people",
+          "Costs of production always fall",
+          "Competitors are forced to leave",
+          "No research is needed",
+        ],
+        accept: [
+          "Marketing spend is less wasted on uninterested people",
+        ],
+        answer: "Targeting also lets the product and price be tailored more precisely to what that group values.",
+      },
     ],
     misconceptions: [
       {
@@ -1333,6 +1593,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A sole trader running a growing building firm is considering becoming a private limited company. Evaluate whether she should.",
         answer:
           "The strongest argument for is liability. Building work carries real risk of expensive claims, and as a sole trader her house and savings are exposed to any debt or lawsuit; incorporating caps her loss at what she invested. It would also make borrowing easier and may look more credible to larger clients. Against: registration, annual accounts and an accountant cost money and time, her finances become public for competitors to read, and if she sells shares to raise money she gives away control of a business she built. Overall, given the level of risk in construction, the liability protection probably outweighs the extra administration — but she should keep the shares herself so she does not trade one problem for another. Mark this one yourself: the judgement must weigh liability against cost and control, not just list both.",
+      },
+      {
+        question: "What does UNLIMITED LIABILITY mean?",
+        choices: [
+          "The owner is personally responsible for the business's debts",
+          "The business can borrow any amount",
+          "There is no limit on profits",
+          "The business never pays tax",
+        ],
+        accept: [
+          "The owner is personally responsible for the business's debts",
+        ],
+        answer: "Sole traders and ordinary partnerships have it, so personal assets are at risk. Limited companies do not.",
+      },
+      {
+        question: "Which form of ownership has a separate legal identity from its owners?",
+        choices: [
+          "A private limited company",
+          "A sole trader",
+          "An ordinary partnership",
+          "A market stall",
+        ],
+        accept: [
+          "A private limited company",
+        ],
+        answer: "Separate legal identity is what creates limited liability — the company owes the debts, not the shareholders personally.",
+      },
+      {
+        question: "An advantage of being a SOLE TRADER is:",
+        choices: [
+          "Full control and keeping all the profit",
+          "Limited liability",
+          "Easy access to large amounts of capital",
+          "Shared responsibility",
+        ],
+        accept: [
+          "Full control and keeping all the profit",
+        ],
+        answer: "The trade-offs are unlimited liability, difficulty raising finance, and no one to share the workload.",
+      },
+      {
+        question: "Shares in a PUBLIC limited company can be:",
+        choices: [
+          "Sold to the general public on the stock exchange",
+          "Sold only to family",
+          "Never sold once issued",
+          "Sold only to employees",
+        ],
+        accept: [
+          "Sold to the general public on the stock exchange",
+        ],
+        answer: "That raises large sums but means losing some control, and the accounts must be published.",
+      },
+      {
+        question: "A franchise arrangement means the franchisee:",
+        choices: [
+          "Pays to trade under an established brand's name and system",
+          "Owns the brand outright",
+          "Has no ongoing costs",
+          "Can change the product freely",
+        ],
+        accept: [
+          "Pays to trade under an established brand's name and system",
+        ],
+        answer: "Lower risk and instant recognition, but ongoing fees and very little freedom over how the business runs.",
       },
     ],
     misconceptions: [
@@ -1770,6 +2095,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A new premium chocolate brand plans to use penetration pricing. Evaluate that decision.",
         answer:
           "Penetration pricing would win trial quickly, which matters for an unknown brand competing for shelf space. But it conflicts directly with the rest of the mix: a low price signals low quality, undermining the premium positioning the product and packaging are built on, and customers who buy at the low price may resist the later increase. For a premium product, skimming or competitive pricing fits better, with promotion used to build the brand rather than discounting to buy volume. Overall the decision is a poor one because the four Ps must support each other, and this price contradicts the product. Mark this one yourself: the top marks are for identifying the CONFLICT within the marketing mix, not just for listing pricing strategies.",
+      },
+      {
+        question: "What are the four Ps of the marketing mix?",
+        choices: [
+          "Product, price, place, promotion",
+          "Product, profit, place, people",
+          "Price, profit, promotion, people",
+          "Product, price, planning, promotion",
+        ],
+        accept: [
+          "Product, price, place, promotion",
+        ],
+        answer: "They must work together — a premium product sold cheaply in a discount shop sends a contradictory message.",
+      },
+      {
+        question: "PRICE SKIMMING means:",
+        choices: [
+          "Setting a high price at launch, then lowering it",
+          "Setting a low price to gain market share",
+          "Matching competitors exactly",
+          "Selling below cost",
+        ],
+        accept: [
+          "Setting a high price at launch, then lowering it",
+        ],
+        answer: "It suits new technology with keen early buyers. Penetration pricing is the opposite: low at first to build share.",
+      },
+      {
+        question: "In the marketing mix, 'place' refers to:",
+        choices: [
+          "How and where the product reaches the customer",
+          "The location of the head office",
+          "Where the product is made",
+          "The country of origin",
+        ],
+        accept: [
+          "How and where the product reaches the customer",
+        ],
+        answer: "It covers distribution channels — shops, online, wholesalers — and how directly the business sells.",
+      },
+      {
+        question: "Which stage of the product life cycle usually sees sales rise most steeply?",
+        choices: [
+          "Growth",
+          "Introduction",
+          "Maturity",
+          "Decline",
+        ],
+        accept: [
+          "Growth",
+        ],
+        answer: "Introduction is slow and costly, maturity flattens, and decline falls. Extension strategies aim to delay decline.",
+      },
+      {
+        question: "An extension strategy is used to:",
+        choices: [
+          "Prolong the life of a product before it declines",
+          "Increase the size of the factory",
+          "Extend credit to customers",
+          "Lengthen the working day",
+        ],
+        accept: [
+          "Prolong the life of a product before it declines",
+        ],
+        answer: "New packaging, new markets, added features or a price change are all common extension strategies.",
       },
     ],
     misconceptions: [
