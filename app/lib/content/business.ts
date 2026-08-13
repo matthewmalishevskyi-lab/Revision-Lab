@@ -5193,6 +5193,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         answer:
           "There is something in it: compliance costs are largely fixed, so training, equipment and record-keeping take a much larger share of a small firm's revenue than a chain's, and the paperwork falls on an owner already doing five jobs. But the argument fails on the risks. A single serious accident or food poisoning case could bring a fine, a compensation claim and closure — losses a small business is least able to absorb, precisely because it has no reserves. Insurance premiums and staff turnover also fall when conditions are good. Overall the cost is a genuine burden but the alternative is worse for her than for a large firm, so the view is understandable but mistaken. Mark this one yourself: the top band needs the point that small firms are MORE exposed to the downside, not less.",
       },
+      {
+        question: "Consumer law requires goods sold to be:",
+        choices: [
+          "Of satisfactory quality, fit for purpose and as described",
+          "Cheaper than competitors",
+          "Made in the UK",
+          "Sold with a lifetime guarantee",
+        ],
+        accept: [
+          "Of satisfactory quality, fit for purpose and as described",
+        ],
+        answer: "Those three standards come from the Consumer Rights Act. A change-of-mind return is shop policy, not a legal right.",
+      },
+      {
+        question: "Employment law on discrimination means an employer must not treat someone worse because of:",
+        choices: [
+          "A protected characteristic such as age or disability",
+          "Poor performance at work",
+          "Lateness",
+          "Lack of relevant qualifications",
+        ],
+        accept: [
+          "A protected characteristic such as age or disability",
+        ],
+        answer: "Employers may act on performance and conduct. Acting on race, sex, age, disability, religion or sexual orientation is unlawful.",
+      },
+      {
+        question: "Health and safety law requires a business to:",
+        choices: [
+          "Assess risks and take reasonable steps to protect people",
+          "Eliminate every possible risk entirely",
+          "Insure only its managers",
+          "Close if any accident occurs",
+        ],
+        accept: [
+          "Assess risks and take reasonable steps to protect people",
+        ],
+        answer: "Training, equipment and risk assessments cost money, but accidents cost far more in compensation and reputation.",
+      },
+      {
+        question: "The National Minimum Wage means employers must:",
+        choices: [
+          "Pay at least a legal hourly rate, which varies by age",
+          "Pay everyone the same",
+          "Pay in cash only",
+          "Increase pay every year by law",
+        ],
+        accept: [
+          "Pay at least a legal hourly rate, which varies by age",
+        ],
+        answer: "It raises costs for labour-intensive businesses, but supporters argue it reduces poverty and staff turnover.",
+      },
+      {
+        question: "A business that breaks the law risks:",
+        choices: [
+          "Fines, legal action and lasting reputational damage",
+          "Only a written warning",
+          "Higher sales from publicity",
+          "Automatic closure in every case",
+        ],
+        accept: [
+          "Fines, legal action and lasting reputational damage",
+        ],
+        answer: "The reputational cost often outlasts the fine, which is why compliance is treated as a commercial issue, not just a legal one.",
+      },
     ],
     misconceptions: [
       {
@@ -5705,6 +5770,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         question: "A bakery is considering moving to just-in-time deliveries of flour. Evaluate the decision.",
         answer:
           "JIT would free up cash and storage space and reduce the risk of flour going stale or attracting pests, which matters for a food business with limited premises. But bread must be baked every morning, so a single late delivery means nothing to sell that day — lost revenue and customers who go elsewhere and may not return. Flour is also cheap to store relative to its value and does not spoil quickly, so the cash freed up is modest compared with the risk. A partial approach — reducing stock but keeping two or three days of buffer — captures most of the benefit with far less exposure. Overall full JIT is a poor fit here because the downside of a stockout is severe and the saving is small. Mark this one yourself: the top band weighs the SIZE of the saving against the SIZE of the risk, rather than listing both.",
+      },
+      {
+        question: "Holding too much stock is a problem because it:",
+        choices: [
+          "Ties up cash and risks waste or obsolescence",
+          "Always improves customer service",
+          "Reduces storage costs",
+          "Guarantees lower prices",
+        ],
+        accept: [
+          "Ties up cash and risks waste or obsolescence",
+        ],
+        answer: "Holding too little risks running out and losing sales, which is why stock control is a balancing act.",
+      },
+      {
+        question: "A reliable supplier is important because:",
+        choices: [
+          "Late or faulty deliveries stop production and disappoint customers",
+          "They always charge the least",
+          "They remove the need for stock control",
+          "They set the selling price",
+        ],
+        accept: [
+          "Late or faulty deliveries stop production and disappoint customers",
+        ],
+        answer: "This is why the cheapest supplier is not always the best — reliability and quality carry real financial value.",
+      },
+      {
+        question: "The reorder level on a stock control chart is the point at which:",
+        choices: [
+          "New stock must be ordered to avoid running out",
+          "Stock is at its maximum",
+          "Stock reaches zero",
+          "Deliveries arrive",
+        ],
+        accept: [
+          "New stock must be ordered to avoid running out",
+        ],
+        answer: "It must allow for the lead time — how long the supplier takes to deliver.",
+      },
+      {
+        question: "Buffer stock is held in order to:",
+        choices: [
+          "Cope with unexpected demand or delivery delays",
+          "Reduce total costs",
+          "Fill empty warehouse space",
+          "Avoid paying suppliers",
+        ],
+        accept: [
+          "Cope with unexpected demand or delivery delays",
+        ],
+        answer: "It is insurance against the unexpected, and is exactly what a Just In Time system deliberately gives up.",
+      },
+      {
+        question: "Procurement means:",
+        choices: [
+          "The process of finding and buying from suppliers",
+          "Selling goods to customers",
+          "Storing finished products",
+          "Advertising to new markets",
+        ],
+        accept: [
+          "The process of finding and buying from suppliers",
+        ],
+        answer: "Good procurement balances cost, quality, reliability and ethics rather than chasing the lowest price alone.",
       },
     ],
     misconceptions: [
