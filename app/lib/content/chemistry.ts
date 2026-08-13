@@ -253,6 +253,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "Isotopes have the same number of protons and therefore the same number of electrons in a neutral atom, arranged in the same electronic structure. Chemical reactions involve the loss, gain or sharing of outer electrons, so two isotopes behave identically in any reaction. The only difference is the number of neutrons, which changes the mass but has no effect on how the atom bonds. Mark this one yourself: the mark is for chemistry depending on ELECTRONS, not for simply stating that isotopes are similar.",
       },
+      {
+        question: "What is the relative charge on a neutron?",
+        choices: [
+          "0",
+          "+1",
+          "-1",
+          "+2",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "Neutrons are neutral. Protons are +1 and electrons -1, which is why an atom with equal numbers of each has no overall charge.",
+      },
+      {
+        question: "Isotopes of the same element have:",
+        choices: [
+          "The same number of protons but different numbers of neutrons",
+          "The same number of neutrons but different protons",
+          "Different numbers of electrons only",
+          "Completely different chemical properties",
+        ],
+        accept: [
+          "The same number of protons but different numbers of neutrons",
+        ],
+        answer: "Proton number defines the element, so isotopes react identically. Only the mass differs.",
+      },
+      {
+        question: "Which particle was discovered by the alpha scattering experiment?",
+        choices: [
+          "The nucleus",
+          "The electron",
+          "The neutron",
+          "The proton alone",
+        ],
+        accept: [
+          "The nucleus",
+        ],
+        answer: "Most alpha particles passed straight through, so atoms are mostly empty space; a few bounced back, showing a tiny dense positive nucleus.",
+      },
+      {
+        question: "Where is nearly all the mass of an atom concentrated?",
+        choices: [
+          "In the nucleus",
+          "In the electron shells",
+          "Spread evenly through the atom",
+          "In the outer shell only",
+        ],
+        accept: [
+          "In the nucleus",
+        ],
+        answer: "Protons and neutrons each have a relative mass of 1; electrons are so light their mass is treated as negligible.",
+      },
+      {
+        question: "An atom has 11 protons and 12 neutrons. What is its mass number?",
+        choices: [
+          "23",
+          "11",
+          "12",
+          "1",
+        ],
+        accept: [
+          "23",
+        ],
+        answer: "Mass number = protons + neutrons = 11 + 12 = 23. The atomic number, which identifies the element, is the proton count of 11.",
+      },
     ],
     misconceptions: [
       {
@@ -470,6 +535,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why Mendeleev's periodic table was accepted when earlier attempts were not.",
         answer:
           "Earlier tables arranged all known elements in order of atomic weight with no gaps, which forced some elements into groups whose properties they did not share. Mendeleev left gaps where he believed undiscovered elements belonged, and predicted the properties those elements would have. He also swapped the order of a few pairs so that each fell into the group matching its behaviour. When the missing elements were later discovered and matched his predictions closely, the table's predictive power convinced other scientists — and the discovery of protons later explained why his reordering had been right all along. Mark this one yourself: gaps, predictions and their later confirmation are the three key points.",
+      },
+      {
+        question: "What do elements in the same GROUP have in common?",
+        choices: [
+          "The same number of electrons in their outer shell",
+          "The same number of shells",
+          "The same mass number",
+          "The same number of neutrons",
+        ],
+        accept: [
+          "The same number of electrons in their outer shell",
+        ],
+        answer: "Outer electrons determine reactivity, which is why a group behaves as a family. Elements in the same PERIOD share the number of shells.",
+      },
+      {
+        question: "Why did Mendeleev leave gaps in his periodic table?",
+        choices: [
+          "He predicted elements that had not yet been discovered",
+          "He ran out of space",
+          "He could not decide the order",
+          "He excluded metals deliberately",
+        ],
+        accept: [
+          "He predicted elements that had not yet been discovered",
+        ],
+        answer: "He also swapped some elements out of strict mass order to fit properties. Later discoveries matched his predictions, which is why the table was accepted.",
+      },
+      {
+        question: "Which group contains the noble gases?",
+        choices: [
+          "Group 0",
+          "Group 1",
+          "Group 7",
+          "Group 2",
+        ],
+        accept: [
+          "Group 0",
+        ],
+        answer: "Noble gases have full outer shells, so they are unreactive. Group 1 are the alkali metals and Group 7 the halogens.",
+      },
+      {
+        question: "Going DOWN Group 1, reactivity:",
+        choices: [
+          "Increases, because the outer electron is lost more easily",
+          "Decreases, because atoms get heavier",
+          "Stays the same",
+          "Increases, because atoms gain electrons more easily",
+        ],
+        accept: [
+          "Increases, because the outer electron is lost more easily",
+        ],
+        answer: "The outer electron is further from the nucleus and shielded by more shells, so it is lost more readily. Group 7 works the opposite way.",
+      },
+      {
+        question: "Which of these is a property typical of transition metals but NOT of Group 1 metals?",
+        choices: [
+          "Forming coloured compounds",
+          "Being solid at room temperature",
+          "Conducting electricity",
+          "Being shiny when freshly cut",
+        ],
+        accept: [
+          "Forming coloured compounds",
+        ],
+        answer: "Transition metals form coloured compounds, have multiple oxidation states and act as catalysts. They are also harder, denser and less reactive.",
       },
     ],
     misconceptions: [
@@ -693,6 +823,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer:
           "Chlorine is simple molecular — small Cl₂ molecules with strong covalent bonds inside each one but only weak intermolecular forces between them. Boiling chlorine requires only enough energy to overcome those weak forces between molecules, not to break the covalent bonds, so it happens at a very low temperature. Sodium chloride is a giant ionic lattice held together by strong electrostatic attractions throughout, and there are millions of them to overcome, so it needs a far higher temperature. Mark this one yourself: the crucial point is that boiling breaks the forces BETWEEN molecules, not the covalent bonds.",
       },
+      {
+        question: "What happens to electrons in IONIC bonding?",
+        choices: [
+          "They are transferred from a metal to a non-metal",
+          "They are shared between two non-metals",
+          "They are delocalised across the whole structure",
+          "They are lost by both atoms",
+        ],
+        accept: [
+          "They are transferred from a metal to a non-metal",
+        ],
+        answer: "Metals lose electrons to form positive ions and non-metals gain them to form negative ions. Covalent bonding is sharing instead.",
+      },
+      {
+        question: "Why do ionic compounds have high melting points?",
+        choices: [
+          "Strong electrostatic forces act between oppositely charged ions in a giant lattice",
+          "The ions are very heavy",
+          "Covalent bonds must be broken",
+          "The particles are held by weak intermolecular forces",
+        ],
+        accept: [
+          "Strong electrostatic forces act between oppositely charged ions in a giant lattice",
+        ],
+        answer: "A great deal of energy is needed to overcome the forces throughout the lattice, which is why they are solids at room temperature.",
+      },
+      {
+        question: "Why does a simple molecular substance such as water have a low boiling point?",
+        choices: [
+          "The intermolecular forces between molecules are weak",
+          "The covalent bonds are weak",
+          "The molecules have no bonds at all",
+          "The molecules are charged",
+        ],
+        accept: [
+          "The intermolecular forces between molecules are weak",
+        ],
+        answer: "Boiling breaks the forces BETWEEN molecules, not the covalent bonds within them. Confusing the two is the classic error here.",
+      },
+      {
+        question: "Why can a metal conduct electricity?",
+        choices: [
+          "It has delocalised electrons free to move",
+          "Its ions move through the solid",
+          "It contains no charged particles",
+          "Its atoms share electrons in fixed pairs",
+        ],
+        accept: [
+          "It has delocalised electrons free to move",
+        ],
+        answer: "Metallic bonding is positive ions in a sea of delocalised electrons. Those free electrons carry both charge and heat.",
+      },
+      {
+        question: "Under which conditions can an ionic compound carry an electric current?",
+        choices: [
+          "When molten or dissolved in water",
+          "Only when solid",
+          "At all times",
+          "Never",
+        ],
+        accept: [
+          "When molten or dissolved in water",
+        ],
+        answer: "The ions must be free to move. In a solid lattice they are held in fixed positions, so a solid ionic compound does not conduct.",
+      },
     ],
     misconceptions: [
       {
@@ -912,6 +1107,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why nanoparticles are effective catalysts even in very small quantities.",
         answer:
           "Catalysis happens on the surface of the catalyst, so what matters is the total surface area available for reactions. Nanoparticles are so small that their surface area to volume ratio is enormous — dividing a lump into nanoparticles increases the exposed surface dramatically without increasing the mass. A tiny quantity therefore provides as much reacting surface as a much larger mass of ordinary material, which makes them both effective and cheaper to use. Mark this one yourself: the surface area to volume ratio, and the link to catalysis happening on the surface, are both needed.",
+      },
+      {
+        question: "Why is diamond very hard?",
+        choices: [
+          "Each carbon atom forms four strong covalent bonds in a giant structure",
+          "Its atoms are held by strong intermolecular forces",
+          "It contains delocalised electrons",
+          "Its atoms are very heavy",
+        ],
+        accept: [
+          "Each carbon atom forms four strong covalent bonds in a giant structure",
+        ],
+        answer: "Every atom is bonded four ways throughout the structure, so there are no weak points. Graphite bonds only three ways, leaving free layers.",
+      },
+      {
+        question: "Why can graphite conduct electricity when diamond cannot?",
+        choices: [
+          "Each carbon in graphite has one delocalised electron",
+          "Graphite contains metal atoms",
+          "Graphite has weaker covalent bonds",
+          "Diamond has no electrons",
+        ],
+        accept: [
+          "Each carbon in graphite has one delocalised electron",
+        ],
+        answer: "Three of the four outer electrons are used in bonding, leaving one delocalised. Diamond uses all four, so no electrons are free.",
+      },
+      {
+        question: "What is the correct term for a solid turning directly into a gas?",
+        choices: [
+          "Sublimation",
+          "Evaporation",
+          "Condensation",
+          "Freezing",
+        ],
+        accept: [
+          "Sublimation",
+        ],
+        answer: "Sublimation skips the liquid state entirely. Solid carbon dioxide does this, which is why it is called dry ice.",
+      },
+      {
+        question: "Which state of matter has particles that are close together but able to move past each other?",
+        choices: [
+          "Liquid",
+          "Solid",
+          "Gas",
+          "Plasma",
+        ],
+        accept: [
+          "Liquid",
+        ],
+        answer: "Solids vibrate in fixed positions, liquids are close but mobile, gases are far apart and move randomly at speed.",
+      },
+      {
+        question: "A property of nanoparticles that makes them useful is:",
+        choices: [
+          "A very high surface area to volume ratio",
+          "A very large mass",
+          "Being visible under a light microscope",
+          "Being chemically inert in all cases",
+        ],
+        accept: [
+          "A very high surface area to volume ratio",
+        ],
+        answer: "That ratio makes them effective catalysts and means much less material is needed. Their long-term health effects are still being researched.",
       },
     ],
     misconceptions: [
@@ -1149,6 +1409,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain how chromatography separates the dyes in a mixture of ink.",
         answer:
           "A spot of ink is placed on a pencil start line and the paper is stood in solvent, with the solvent level below the line. As the solvent moves up the paper — the mobile phase — it carries the dyes with it, while the paper acts as the stationary phase. Each dye is attracted to the solvent and to the paper to a different degree: a dye held strongly by the solvent travels far up the paper, while one held strongly by the paper barely moves. Because they travel different distances, the dyes end up as separate spots. Mark this one yourself: the mobile and stationary phases and the different attractions are the key ideas.",
+      },
+      {
+        question: "Which technique separates a soluble solid from its solution?",
+        choices: [
+          "Crystallisation",
+          "Filtration",
+          "Chromatography",
+          "Decanting",
+        ],
+        accept: [
+          "Crystallisation",
+        ],
+        answer: "Filtration only removes INSOLUBLE solids. A dissolved solid passes straight through the filter paper, so the solvent must be evaporated instead.",
+      },
+      {
+        question: "Which technique would separate two liquids with different boiling points?",
+        choices: [
+          "Fractional distillation",
+          "Filtration",
+          "Crystallisation",
+          "Chromatography",
+        ],
+        accept: [
+          "Fractional distillation",
+        ],
+        answer: "The fractionating column allows repeated evaporation and condensation, so liquids with close boiling points can still be separated.",
+      },
+      {
+        question: "In paper chromatography, a substance with a HIGH Rf value is:",
+        choices: [
+          "More attracted to the solvent than the paper",
+          "More attracted to the paper than the solvent",
+          "Insoluble in the solvent",
+          "Always a pure substance",
+        ],
+        accept: [
+          "More attracted to the solvent than the paper",
+        ],
+        answer: "Rf = distance moved by spot / distance moved by solvent, so it is always between 0 and 1. A high value means it travelled far with the solvent.",
+      },
+      {
+        question: "How can you tell from a chromatogram that a substance is PURE?",
+        choices: [
+          "It produces a single spot",
+          "It produces several spots",
+          "It does not move at all",
+          "It reaches the solvent front",
+        ],
+        accept: [
+          "It produces a single spot",
+        ],
+        answer: "A pure substance gives one spot in every solvent. A mixture separates into several.",
+      },
+      {
+        question: "Which method would you use to obtain pure water from seawater?",
+        choices: [
+          "Simple distillation",
+          "Filtration",
+          "Crystallisation",
+          "Chromatography",
+        ],
+        accept: [
+          "Simple distillation",
+        ],
+        answer: "The water evaporates and is condensed back, leaving the dissolved salt behind. Filtration cannot remove dissolved substances.",
       },
     ],
     misconceptions: [
@@ -2245,6 +2570,71 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Describe an experiment to show that iron needs both water and oxygen to rust.",
         answer:
           "Set up three test tubes, each with an iron nail. In the first, leave the nail in ordinary water with air above it — this is the control and the nail should rust. In the second, use water that has been boiled to remove dissolved oxygen and cover it with a layer of oil to stop air redissolving, so the nail has water but no oxygen. In the third, place the nail in dry air with a drying agent such as calcium chloride and a bung, so it has oxygen but no water. After several days only the first nail should have rusted, showing that both are needed. Mark this one yourself: three tubes, each removing one variable, plus the expected result, is full marks.",
+      },
+      {
+        question: "What happens to a metal atom when it is OXIDISED?",
+        choices: [
+          "It loses electrons",
+          "It gains electrons",
+          "It gains protons",
+          "It loses neutrons",
+        ],
+        accept: [
+          "It loses electrons",
+        ],
+        answer: "OIL RIG: Oxidation Is Loss, Reduction Is Gain — of electrons. Oxidation can also be described as gain of oxygen.",
+      },
+      {
+        question: "Which method is used to extract a metal MORE reactive than carbon?",
+        choices: [
+          "Electrolysis",
+          "Reduction with carbon",
+          "Heating in air alone",
+          "Filtering the ore",
+        ],
+        accept: [
+          "Electrolysis",
+        ],
+        answer: "Carbon can only displace metals below it in the reactivity series. Aluminium is above carbon, so it must be extracted by electrolysis.",
+      },
+      {
+        question: "A more reactive metal placed in the salt solution of a less reactive metal will:",
+        choices: [
+          "Displace it from the solution",
+          "Have no reaction",
+          "Dissolve without changing the solution",
+          "Turn into the less reactive metal",
+        ],
+        accept: [
+          "Displace it from the solution",
+        ],
+        answer: "Displacement reactions are how the reactivity series is established experimentally — the more reactive metal takes the place of the less reactive one.",
+      },
+      {
+        question: "Which of these metals is found in the Earth as the uncombined element?",
+        choices: [
+          "Gold",
+          "Iron",
+          "Aluminium",
+          "Zinc",
+        ],
+        accept: [
+          "Gold",
+        ],
+        answer: "Gold is so unreactive it exists as the native metal. The others are found as compounds in ores and must be extracted.",
+      },
+      {
+        question: "Which gas is produced when a metal reacts with a dilute acid?",
+        choices: [
+          "Hydrogen",
+          "Oxygen",
+          "Carbon dioxide",
+          "Chlorine",
+        ],
+        accept: [
+          "Hydrogen",
+        ],
+        answer: "Metal + acid gives a salt plus hydrogen, tested with a lit splint giving a squeaky pop. Metal CARBONATE + acid also gives carbon dioxide.",
       },
     ],
     misconceptions: [
