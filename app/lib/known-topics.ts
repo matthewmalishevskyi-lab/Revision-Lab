@@ -237,6 +237,27 @@ export const KNOWN_TOPIC_KEYS: readonly string[] = [
   "citizenship/crime-and-justice",
   "citizenship/citizenship-exam-practice",
 
+
+  // Religious Education, added after the multiple-choice rollout. All new.
+  "religious-education/what-is-religion",
+  "religious-education/introducing-christianity",
+  "religious-education/introducing-islam",
+  "religious-education/introducing-judaism",
+  "religious-education/dharmic-religions",
+  "religious-education/big-questions-and-ethics",
+  "religious-education/christian-beliefs",
+  "religious-education/christian-practices",
+  "religious-education/muslim-beliefs",
+  "religious-education/muslim-practices",
+  "religious-education/relationships-and-families",
+  "religious-education/religion-and-life",
+  "religious-education/the-existence-of-god",
+  "religious-education/peace-and-conflict",
+  "religious-education/crime-and-punishment",
+  "religious-education/human-rights-and-social-justice",
+  "religious-education/sources-of-authority",
+  "religious-education/re-exam-practice",
+
 ];
 
 // Topics deliberately withdrawn. Empty, and it should stay that way unless
@@ -261,24 +282,4 @@ export const RETIRED_TOPIC_KEYS: readonly string[] = [
   "geography/population-and-urbanisation",
   "geography/development-and-inequality",
   "geography/resources-and-sustainability",
-
-  // Religious Education, added after the multiple-choice rollout. All new.
-  "religious-education/what-is-religion",
-  "religious-education/introducing-christianity",
-  "religious-education/introducing-islam",
-  "religious-education/introducing-judaism",
-  "religious-education/dharmic-religions",
-  "religious-education/big-questions-and-ethics",
-  "religious-education/christian-beliefs",
-  "religious-education/christian-practices",
-  "religious-education/muslim-beliefs",
-  "religious-education/muslim-practices",
-  "religious-education/relationships-and-families",
-  "religious-education/religion-and-life",
-  "religious-education/the-existence-of-god",
-  "religious-education/peace-and-conflict",
-  "religious-education/crime-and-punishment",
-  "religious-education/human-rights-and-social-justice",
-  "religious-education/sources-of-authority",
-  "religious-education/re-exam-practice",
 ];
