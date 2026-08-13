@@ -1114,6 +1114,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because context is assessed as understanding of how circumstances shape MEANING, not as historical knowledge in isolation. A separate paragraph about Jacobean society demonstrates recall but says nothing about the text. Attaching the same fact to a specific moment — explaining why an original audience would have reacted with horror to a particular line — turns it into analysis, which is what earns the marks. (Mark this one yourself.)" },
       { question: "Explain why a character switching from verse to prose is worth commenting on.",
         answer: "Because the form is a deliberate authorial choice, and a break in it signals a break in something else. High-status characters normally speak in blank verse, so dropping into prose commonly marks madness, extreme distress or a collapse of authority. Noticing it lets you argue that the structure of the speech enacts what is happening to the character, which is a more sophisticated point than analysing the words alone. (Mark this one yourself.)" },
+      {
+        question: "What is a SOLILOQUY?",
+        choices: [
+          "A speech revealing a character's private thoughts to the audience",
+          "A conversation between two characters",
+          "A song performed on stage",
+          "A stage direction",
+        ],
+        accept: [
+          "A speech revealing a character's private thoughts to the audience",
+        ],
+        answer: "The character is alone, so the audience is trusted with what others cannot hear. An aside is much shorter.",
+      },
+      {
+        question: "Iambic pentameter consists of:",
+        choices: [
+          "Five pairs of unstressed then stressed syllables",
+          "Ten rhyming words",
+          "Five rhyming couplets",
+          "Two lines of any length",
+        ],
+        accept: [
+          "Five pairs of unstressed then stressed syllables",
+        ],
+        answer: "Shakespeare often gives verse to nobles and prose to lower-status characters, so a switch is worth noticing.",
+      },
+      {
+        question: "Dramatic irony occurs when:",
+        choices: [
+          "The audience knows something a character does not",
+          "A character tells a joke",
+          "Two characters argue",
+          "The plot ends unhappily",
+        ],
+        accept: [
+          "The audience knows something a character does not",
+        ],
+        answer: "It creates tension because we can see the mistake coming, which makes us watch differently.",
+      },
+      {
+        question: "In a Shakespearean tragedy, the protagonist usually has:",
+        choices: [
+          "A fatal flaw that leads to their downfall",
+          "A happy ending",
+          "No influence over events",
+          "Only minor problems",
+        ],
+        accept: [
+          "A fatal flaw that leads to their downfall",
+        ],
+        answer: "Ambition, jealousy and indecision are common flaws. The audience is meant to feel both pity and unease.",
+      },
+      {
+        question: "Why did Shakespeare's plays include comic scenes in tragedies?",
+        choices: [
+          "To vary the mood and heighten the tension that follows",
+          "To fill time",
+          "Because tragedies were unpopular",
+          "To avoid censorship",
+        ],
+        accept: [
+          "To vary the mood and heighten the tension that follows",
+        ],
+        answer: "Comic relief makes the return to darkness land harder, and appealed to a mixed audience.",
+      },
     ],
 
     misconceptions: [
@@ -1862,6 +1927,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the examiner already knows the text — nothing is demonstrated by recounting it. The marks are for constructing an argument about how the writer creates meaning and for analysing specific choices. A student who knows the play thoroughly but writes what happens has spent the whole essay proving something that was never in question, while never doing the thing being assessed. (Mark this one yourself.)" },
       { question: "Explain why tracing a character's development across the whole text scores higher than analysing one scene deeply.",
         answer: "Because the question is set on the whole text and rewards understanding of how ideas and characters develop. A single scene analysed brilliantly still shows only a snapshot, and cannot demonstrate change, cause or the writer's shaping of the work as a whole. Evidence from the beginning, middle and end lets you argue about what changes, when, and why the writer places it there. (Mark this one yourself.)" },
+      {
+        question: "Stage directions in a modern play are worth analysing because they:",
+        choices: [
+          "Reveal the writer's intentions for performance",
+          "Are not part of the text",
+          "Only describe scenery",
+          "Are written by the director",
+        ],
+        accept: [
+          "Reveal the writer's intentions for performance",
+        ],
+        answer: "Lighting, silence, positioning and props are all deliberate choices, and often carry theme as directly as dialogue does.",
+      },
+      {
+        question: "Which is a strong focus for an essay on a modern text?",
+        choices: [
+          "How a character develops and what that says about the writer's ideas",
+          "A chapter-by-chapter summary",
+          "Whether you liked the ending",
+          "The number of scenes",
+        ],
+        accept: [
+          "How a character develops and what that says about the writer's ideas",
+        ],
+        answer: "Characters in modern texts are usually vehicles for ideas about society, so link the two explicitly.",
+      },
+      {
+        question: "Writing about structure in a play might include:",
+        choices: [
+          "Where the writer places the climax and why",
+          "How many pages it has",
+          "The font used in the script",
+          "The names of the original cast",
+        ],
+        accept: [
+          "Where the writer places the climax and why",
+        ],
+        answer: "Structural choices — an act ending on a revelation, a cyclical opening and closing — are frequently under-used by students.",
+      },
+      {
+        question: "A modern text set in the past is often really commenting on:",
+        choices: [
+          "The writer's own society and time",
+          "Historical accuracy only",
+          "Nothing beyond the plot",
+          "The lives of real people",
+        ],
+        accept: [
+          "The writer's own society and time",
+        ],
+        answer: "Noticing that gap between when a play is SET and when it was WRITTEN often unlocks the whole argument.",
+      },
+      {
+        question: "Symbolism in a modern text works by:",
+        choices: [
+          "Using an object or image to represent a bigger idea",
+          "Repeating a character's name",
+          "Describing a setting realistically",
+          "Listing events in order",
+        ],
+        accept: [
+          "Using an object or image to represent a bigger idea",
+        ],
+        answer: "Trace where the symbol appears across the whole text rather than analysing one appearance in isolation.",
+      },
     ],
 
     misconceptions: [
@@ -2092,6 +2222,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the question explicitly asks about the extract AND the play as a whole, and the mark scheme allocates marks to whole-text understanding. An answer confined to the extract can only show close analysis of one moment, so it has no way to demonstrate how a character or theme develops, where the turning point falls, or how Shakespeare shapes the work overall — which is precisely what the second half of the marks is for. (Mark this one yourself.)" },
       { question: "Explain why tracking a motif such as blood or darkness is an efficient way to structure a whole-text answer.",
         answer: "Because a motif recurs at intervals across the play by design, so following it automatically takes you from the beginning to the end and gives you evidence at each stage. It also lets you argue about development rather than description: the same image meaning honour early and inescapable guilt later charts a character's decline in a way that listing separate quotations cannot. (Mark this one yourself.)" },
+      {
+        question: "When analysing a Shakespeare extract, you should:",
+        choices: [
+          "Link the extract to the play as a whole",
+          "Only discuss the extract",
+          "Summarise the plot first",
+          "Describe the theatre building",
+        ],
+        accept: [
+          "Link the extract to the play as a whole",
+        ],
+        answer: "Most mark schemes reward whole-text understanding, so the extract is a starting point rather than the whole answer.",
+      },
+      {
+        question: "Which is the strongest way to use a quotation?",
+        choices: [
+          "Embed a few words and analyse the word choice",
+          "Quote a full speech without comment",
+          "Paraphrase without quoting",
+          "Quote from a different play",
+        ],
+        accept: [
+          "Embed a few words and analyse the word choice",
+        ],
+        answer: "Zooming in on a single verb or image shows precision. Long quotations eat time and earn little.",
+      },
+      {
+        question: "Writing about how an audience would react is useful because:",
+        choices: [
+          "Plays are written to be performed, not just read",
+          "It fills space",
+          "It avoids needing quotations",
+          "Examiners prefer opinions",
+        ],
+        accept: [
+          "Plays are written to be performed, not just read",
+        ],
+        answer: "Considering staging, tone of voice and the reaction of a contemporary audience shows genuine dramatic understanding.",
+      },
+      {
+        question: "A character's status in a Shakespeare play is often signalled by:",
+        choices: [
+          "Whether they speak in verse or prose",
+          "The colour of their costume only",
+          "How many lines they have",
+          "Their name's length",
+        ],
+        accept: [
+          "Whether they speak in verse or prose",
+        ],
+        answer: "A noble slipping into prose, or a commoner rising into verse, is usually a deliberate signal worth commenting on.",
+      },
+      {
+        question: "Context is best used in a Shakespeare essay to:",
+        choices: [
+          "Explain why an idea would unsettle an audience of the time",
+          "List historical dates",
+          "Describe Shakespeare's family",
+          "Compare film adaptations",
+        ],
+        accept: [
+          "Explain why an idea would unsettle an audience of the time",
+        ],
+        answer: "Beliefs about kingship, gender and the supernatural are the ones that usually illuminate the text most directly.",
+      },
     ],
 
     misconceptions: [
@@ -2326,6 +2521,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the world of a nineteenth-century novel is genuinely unfamiliar, so a modern reader can miss what a contemporary one would have felt immediately. Knowing there was no welfare system, that poverty was widely blamed on the poor, and that a fallen woman faced social ruin explains why particular moments were confrontational rather than merely sad. Without that, you can analyse the language accurately and still misjudge the effect entirely. (Mark this one yourself.)" },
       { question: "Explain why asking what a narrator conceals is a more sophisticated point than describing what they reveal.",
         answer: "Because it treats the narrative voice as a deliberate choice rather than a neutral window. Every narrator has a perspective, and a first-person one in particular can only report what they noticed, understood and chose to share. Considering the gaps — what they avoid, misjudge or have reason to hide — opens up questions of reliability and irony that a summary of their account cannot reach. (Mark this one yourself.)" },
+      {
+        question: "Which narrative viewpoint uses 'I' to tell the story?",
+        choices: [
+          "First person",
+          "Third person limited",
+          "Third person omniscient",
+          "Second person",
+        ],
+        accept: [
+          "First person",
+        ],
+        answer: "First person creates intimacy but limits what the reader can know, which writers often exploit deliberately.",
+      },
+      {
+        question: "An omniscient narrator is one who:",
+        choices: [
+          "Knows the thoughts of all characters",
+          "Only knows one character's mind",
+          "Is a character in the story",
+          "Never comments on events",
+        ],
+        accept: [
+          "Knows the thoughts of all characters",
+        ],
+        answer: "It allows a writer to move between perspectives and pass judgement, which many 19th-century novelists do openly.",
+      },
+      {
+        question: "Why is social context especially important in 19th-century novels?",
+        choices: [
+          "Writers often criticised the class and poverty of their society",
+          "The books were very long",
+          "They were written in verse",
+          "Few people could read them",
+        ],
+        accept: [
+          "Writers often criticised the class and poverty of their society",
+        ],
+        answer: "Industrialisation, class division and the position of women shape most of the set texts, so context feeds directly into theme.",
+      },
+      {
+        question: "A BILDUNGSROMAN is a novel about:",
+        choices: [
+          "A character growing up and developing morally",
+          "A historical battle",
+          "A single day in a city",
+          "A detective solving a crime",
+        ],
+        accept: [
+          "A character growing up and developing morally",
+        ],
+        answer: "Tracking how the protagonist changes is exactly what whole-text questions on these novels reward.",
+      },
+      {
+        question: "Which is most useful when writing about a 19th-century novel's language?",
+        choices: [
+          "Explaining how the style shapes the reader's sympathy",
+          "Noting that the language is old-fashioned",
+          "Counting long words",
+          "Modernising the quotations",
+        ],
+        accept: [
+          "Explaining how the style shapes the reader's sympathy",
+        ],
+        answer: "Saying language is 'old' is not analysis. Showing how it directs feeling towards or against a character is.",
+      },
     ],
 
     misconceptions: [
@@ -2557,6 +2817,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because the subject is usually given by the question — both poems are about conflict, or power, or loss — so noting the shared theme compares nothing and could be done without reading either poem. The genuine differences lie in HOW each poet conveys it: form, voice, imagery, structure, where each places its weight. That is what demonstrates you have read both poems as crafted objects rather than as messages. (Mark this one yourself.)" },
       { question: "Explain why preparing poem pairings before the exam is worth the effort.",
         answer: "Because choosing under time pressure costs minutes you need for writing, and the decision made in a hurry is usually worse. Deciding in advance which poem you would pair with each likely theme means you arrive knowing your quotations, having already spotted the contrasts, and can start comparing in the first sentence rather than spending five minutes flicking through the anthology. (Mark this one yourself.)" },
+      {
+        question: "When comparing two anthology poems, you should:",
+        choices: [
+          "Compare ideas AND methods throughout",
+          "Write about one, then the other",
+          "Choose poems at random",
+          "Only compare their lengths",
+        ],
+        accept: [
+          "Compare ideas AND methods throughout",
+        ],
+        answer: "Integrated comparison, moving between poems in the same paragraph, scores far higher than two separate essays.",
+      },
+      {
+        question: "Which connective is most useful in a comparison essay?",
+        choices: [
+          "Whereas",
+          "Firstly",
+          "Finally",
+          "Also",
+        ],
+        accept: [
+          "Whereas",
+        ],
+        answer: "Similarly, in contrast and likewise do the same job. They make the comparison visible rather than implied.",
+      },
+      {
+        question: "Choosing which anthology poem to compare should depend on:",
+        choices: [
+          "A shared theme or contrasting treatment of one",
+          "Which is shortest",
+          "Which you read most recently",
+          "Which has the most rhymes",
+        ],
+        accept: [
+          "A shared theme or contrasting treatment of one",
+        ],
+        answer: "A poem that contrasts sharply often produces a better essay than one that simply agrees with the first.",
+      },
+      {
+        question: "Learning quotations from the anthology is important because:",
+        choices: [
+          "The poems are not always printed in full in the exam",
+          "Examiners test memory alone",
+          "It replaces the need for analysis",
+          "Quotations earn marks by themselves",
+        ],
+        accept: [
+          "The poems are not always printed in full in the exam",
+        ],
+        answer: "Short, flexible quotations that can support several points are more useful than long ones learned by rote.",
+      },
+      {
+        question: "A strong comparison paragraph typically:",
+        choices: [
+          "Makes a point about both poems and analyses evidence from each",
+          "Quotes one poem only",
+          "Describes what happens in both",
+          "Gives a personal preference",
+        ],
+        accept: [
+          "Makes a point about both poems and analyses evidence from each",
+        ],
+        answer: "The point should be about the IDEA being compared, with the poems as evidence — not a tour of the poems.",
+      },
     ],
 
     misconceptions: [
@@ -2786,6 +3111,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Because nobody has prepared for it. Every candidate meets the poem for the first time in the exam, so no amount of memorised material helps and the marks go entirely to method — reading carefully, identifying meaning, selecting evidence and analysing it. That also makes it the most improvable question, since practising the process reliably raises the mark in a way that learning more content cannot. (Mark this one yourself.)" },
       { question: "Explain why a tentative, partial reading scores better than a confident invented one.",
         answer: "Because interpretation must be grounded in the words on the page. A tentative reading signals that you are drawing a conclusion from evidence and remain open to alternatives, which is what literary analysis actually is. A confident claim the poem does not support shows the opposite — that the reading came from you rather than the text — and an examiner can see immediately that the evidence does not carry it. (Mark this one yourself.)" },
+      {
+        question: "The first thing to do with an unseen poem is:",
+        choices: [
+          "Read it twice and work out what it is about",
+          "Look for techniques immediately",
+          "Count the stanzas",
+          "Start writing straight away",
+        ],
+        accept: [
+          "Read it twice and work out what it is about",
+        ],
+        answer: "Meaning first, methods second. Technique-spotting without understanding produces a list rather than an argument.",
+      },
+      {
+        question: "If you do not understand every line of an unseen poem, you should:",
+        choices: [
+          "Focus on what you DO understand and analyse it well",
+          "Leave the question blank",
+          "Guess the poet's name",
+          "Write about a different poem",
+        ],
+        accept: [
+          "Focus on what you DO understand and analyse it well",
+        ],
+        answer: "Nobody is expected to grasp every line at first reading. Depth on a few moments beats confusion across all of them.",
+      },
+      {
+        question: "Which observation would earn the most credit?",
+        choices: [
+          "The short final line isolates the speaker, mirroring their loneliness",
+          "There is a simile in line four",
+          "The poem has four stanzas",
+          "The poem rhymes",
+        ],
+        accept: [
+          "The short final line isolates the speaker, mirroring their loneliness",
+        ],
+        answer: "It names a method AND explains its effect on meaning. Spotting alone earns almost nothing.",
+      },
+      {
+        question: "The title of an unseen poem is worth examining because it:",
+        choices: [
+          "Often signals the theme or the poet's attitude",
+          "Is chosen by the exam board",
+          "Never relates to the content",
+          "Tells you the poet's age",
+        ],
+        accept: [
+          "Often signals the theme or the poet's attitude",
+        ],
+        answer: "Returning to the title at the end of your answer, once you understand the poem, often produces a strong closing point.",
+      },
+      {
+        question: "When comparing two unseen poems, the safest structure is:",
+        choices: [
+          "Thematic paragraphs covering both poems",
+          "All of poem one, then all of poem two",
+          "A list of techniques",
+          "A summary of each",
+        ],
+        accept: [
+          "Thematic paragraphs covering both poems",
+        ],
+        answer: "Comparing by theme forces genuine comparison. Handling the poems one after another tends to produce two descriptions.",
+      },
     ],
 
     misconceptions: [
