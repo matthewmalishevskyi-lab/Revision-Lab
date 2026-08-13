@@ -379,6 +379,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer:
           "Lossless. Source code must be restored exactly — lossy compression permanently discards data, and one changed character would stop the program compiling or silently change what it does. Lossy is only acceptable where a small, unnoticeable quality reduction is fine, such as a photograph or a music file. (Mark this one yourself.)",
       },
+      {
+        question: "What is the denary value of the binary number 1010?",
+        choices: [
+          "10",
+          "12",
+          "8",
+          "20",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "8 + 0 + 2 + 0 = 10. Reading the place values from the left as 8, 4, 2, 1 is the reliable method.",
+      },
+      {
+        question: "A single byte is made up of how many bits?",
+        choices: [
+          "8",
+          "4",
+          "16",
+          "1024",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8 bits make a byte. A nibble is 4 bits, and 1000 bytes is usually taken as a kilobyte at GCSE.",
+      },
+      {
+        question: "Why is hexadecimal used by programmers?",
+        choices: [
+          "It is shorter than binary and easier to read without error",
+          "Computers store data in hexadecimal",
+          "It uses fewer bits of memory",
+          "It is the only base that represents colours",
+        ],
+        accept: [
+          "It is shorter than binary and easier to read without error",
+        ],
+        answer: "Each hex digit represents exactly four bits, so conversion is straightforward and long binary strings become manageable.",
+      },
+      {
+        question: "A binary left shift of one place has the effect of:",
+        choices: [
+          "Multiplying by 2",
+          "Dividing by 2",
+          "Adding 1",
+          "Reversing the number",
+        ],
+        accept: [
+          "Multiplying by 2",
+        ],
+        answer: "Each left shift doubles the value; each right shift halves it. Bits shifted off the end are lost.",
+      },
+      {
+        question: "What is an overflow error?",
+        choices: [
+          "The result of a calculation needs more bits than are available",
+          "A file is too large to save",
+          "Too many programs are open",
+          "The screen runs out of space",
+        ],
+        accept: [
+          "The result of a calculation needs more bits than are available",
+        ],
+        answer: "Adding two 8-bit numbers can produce a 9-bit result, and the extra bit is lost, giving a wrong answer.",
+      },
     ],
 
     misconceptions: [
@@ -1393,6 +1458,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer:
           "Client-server. With 60 machines, peer-to-peer would require backing up and securing every device individually, and performance degrades as peers are added. Client-server centralises files, backups, security and account management in one place. The trade-offs to acknowledge are the cost of the server, the expertise needed to run it, and that it is a single point of failure. (Mark this one yourself.)",
       },
+      {
+        question: "Which network type covers a small area on hardware the owner controls?",
+        choices: [
+          "LAN",
+          "WAN",
+          "PAN",
+          "VPN",
+        ],
+        accept: [
+          "LAN",
+        ],
+        answer: "A LAN covers a small area on hardware you own, such as a school or home. A WAN covers a wide area and usually relies on infrastructure owned by someone else.",
+      },
+      {
+        question: "In a client-server network, the server:",
+        choices: [
+          "Provides centralised resources and services",
+          "Has no connection to other computers",
+          "Is always the slowest machine",
+          "Is the same as a router",
+        ],
+        accept: [
+          "Provides centralised resources and services",
+        ],
+        answer: "Central management makes backups and security easier, but the server is a single point of failure.",
+      },
+      {
+        question: "What is the role of a router?",
+        choices: [
+          "To direct data between different networks",
+          "To store files for the network",
+          "To convert analogue signals to sound",
+          "To power the network cables",
+        ],
+        accept: [
+          "To direct data between different networks",
+        ],
+        answer: "A switch directs data within one network; a router connects networks together, such as a home network to the internet.",
+      },
+      {
+        question: "Which factor would REDUCE network performance?",
+        choices: [
+          "More devices sharing the same bandwidth",
+          "Using fibre optic cable",
+          "Reducing the distance between devices",
+          "Using a wired connection",
+        ],
+        accept: [
+          "More devices sharing the same bandwidth",
+        ],
+        answer: "Bandwidth is shared, so contention slows everyone down. Interference and long distances also degrade performance.",
+      },
+      {
+        question: "An advantage of a star topology over a bus topology is that:",
+        choices: [
+          "One failed cable affects only one device",
+          "It uses less cable",
+          "It needs no central switch",
+          "Data collisions are impossible in a bus",
+        ],
+        accept: [
+          "One failed cable affects only one device",
+        ],
+        answer: "Star is more robust and performs better, but uses more cable and depends on the central switch.",
+      },
     ],
 
     misconceptions: [
@@ -1646,6 +1776,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because it only has to do one job. It needs no operating system capable of running arbitrary software, no support for adding programs, and far less memory and processing power — so the hardware can be simpler, smaller, cheaper and with fewer things to go wrong. (Mark this one yourself.)" },
       { question: "Two CPUs have the same clock speed and core count, but one has much more cache. Explain why the larger cache improves performance.",
         answer: "Cache holds frequently used instructions and data very close to the CPU, and is far faster to access than RAM. With more cache, more of what the CPU needs is already to hand, so it spends less time waiting on slow trips out to RAM. The CPU is idle during those waits, so reducing them raises real throughput without changing the clock speed. (Mark this one yourself.)" },
+      {
+        question: "What does the CPU's control unit do?",
+        choices: [
+          "Directs the fetch-decode-execute cycle",
+          "Performs arithmetic calculations",
+          "Stores the program permanently",
+          "Displays output on screen",
+        ],
+        accept: [
+          "Directs the fetch-decode-execute cycle",
+        ],
+        answer: "The ALU does the arithmetic and logic; the control unit coordinates everything and manages the flow of data.",
+      },
+      {
+        question: "Which register holds the address of the next instruction?",
+        choices: [
+          "The program counter",
+          "The accumulator",
+          "The MDR",
+          "The MAR",
+        ],
+        accept: [
+          "The program counter",
+        ],
+        answer: "The PC holds the address, the MAR holds the address being accessed, the MDR holds the data, and the accumulator holds results.",
+      },
+      {
+        question: "Increasing which of these would generally improve CPU performance?",
+        choices: [
+          "Clock speed",
+          "Screen resolution",
+          "Hard disk size",
+          "Number of USB ports",
+        ],
+        accept: [
+          "Clock speed",
+        ],
+        answer: "Clock speed, number of cores and cache size all affect performance. More cores only help if the software can use them.",
+      },
+      {
+        question: "What is cache memory?",
+        choices: [
+          "Small, very fast memory close to the CPU",
+          "Long-term storage for files",
+          "Memory used only for graphics",
+          "A backup of the hard drive",
+        ],
+        accept: [
+          "Small, very fast memory close to the CPU",
+        ],
+        answer: "It stores frequently used instructions so the CPU waits less. It is faster than RAM but much smaller and more expensive.",
+      },
+      {
+        question: "In an embedded system, the software is:",
+        choices: [
+          "Built to do one dedicated job",
+          "Easily replaced by the user",
+          "Always written in assembly",
+          "Stored only in RAM",
+        ],
+        accept: [
+          "Built to do one dedicated job",
+        ],
+        answer: "Washing machines and traffic lights use embedded systems. They are cheaper and more reliable because they do less.",
+      },
     ],
 
     misconceptions: [
@@ -2994,6 +3189,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Because the formulas produce bits, and converting partway through introduces an extra step where a division by 8 or by 1000 can be applied at the wrong point or forgotten entirely. Working through to a bit total first, then converting once at the end, gives a single clear chain that also earns method marks if the final arithmetic slips. (Mark this one yourself.)" },
       { question: "Explain why hexadecimal is preferred over binary for humans reading memory addresses.",
         answer: "One hex digit represents four binary digits, so a value is about a quarter of the length. A 32-bit address is 32 binary digits but only 8 hex digits — far quicker to read aloud, write down and compare, and far less prone to miscounting a run of identical digits. The computer still works entirely in binary. (Mark this one yourself.)" },
+      {
+        question: "What does each pixel in a bitmap image store?",
+        choices: [
+          "A binary code for its colour",
+          "The width of the image",
+          "A compression setting",
+          "The file name",
+        ],
+        accept: [
+          "A binary code for its colour",
+        ],
+        answer: "Colour depth is the number of bits per pixel. More bits means more possible colours and a larger file.",
+      },
+      {
+        question: "Increasing the sample rate of a sound recording:",
+        choices: [
+          "Improves quality and increases file size",
+          "Improves quality and reduces file size",
+          "Reduces quality and file size",
+          "Has no effect on file size",
+        ],
+        accept: [
+          "Improves quality and increases file size",
+        ],
+        answer: "Sample rate is samples per second; bit depth is bits per sample. Raising either improves quality and enlarges the file.",
+      },
+      {
+        question: "Which character set can represent characters from most world languages?",
+        choices: [
+          "Unicode",
+          "ASCII",
+          "Denary",
+          "Hexadecimal",
+        ],
+        accept: [
+          "Unicode",
+        ],
+        answer: "ASCII uses 7 or 8 bits and covers mainly English. Unicode uses more bits and covers a far wider range of scripts and emoji.",
+      },
+      {
+        question: "Metadata in an image file stores:",
+        choices: [
+          "Information such as dimensions and colour depth",
+          "The pixels themselves",
+          "The compression algorithm's code",
+          "Nothing useful",
+        ],
+        accept: [
+          "Information such as dimensions and colour depth",
+        ],
+        answer: "Without metadata the computer would not know how to interpret the stream of pixel data.",
+      },
+      {
+        question: "In ASCII, the code for 'B' is one more than the code for 'A'. This means character codes are:",
+        choices: [
+          "Sequential within each set of letters",
+          "Randomly assigned",
+          "The same for upper and lower case",
+          "Chosen by the programmer",
+        ],
+        accept: [
+          "Sequential within each set of letters",
+        ],
+        answer: "That is why you can convert case by adding or subtracting a fixed value, and why sorting alphabetically works numerically.",
+      },
     ],
 
     misconceptions: [
@@ -3681,6 +3941,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "More RAM means more programs and data can be held in fast, directly accessible memory at once. With less RAM, the operating system has to move data out to virtual memory on secondary storage, which is far slower to access. Every swap costs time the CPU spends waiting rather than working, so reducing the number of swaps raises real performance without changing the processor at all. (Mark this one yourself.)" },
       { question: "A school must store 5 TB of lesson recordings that are rarely watched but must be kept for years. Recommend a storage type and justify it.",
         answer: "Magnetic hard disk drives. The data is large, rarely accessed and must be cheap to keep, and magnetic storage has by far the lowest cost per gigabyte at that capacity. Speed barely matters because the recordings are seldom watched, so the slow access time of magnetic storage costs nothing here — and the drives sit in a server rather than being carried, so the fragility of the moving parts is not a real risk. SSDs would work but cost several times as much for no benefit that this situation needs. (Mark this one yourself.)" },
+      {
+        question: "What is the key difference between RAM and ROM?",
+        choices: [
+          "RAM is volatile and loses data when powered off",
+          "ROM loses data when powered off",
+          "RAM is permanent storage",
+          "ROM is larger than RAM",
+        ],
+        accept: [
+          "RAM is volatile and loses data when powered off",
+        ],
+        answer: "ROM is non-volatile and typically holds the boot instructions. RAM holds programs and data currently in use.",
+      },
+      {
+        question: "What is virtual memory?",
+        choices: [
+          "Space on secondary storage used when RAM is full",
+          "Extra RAM added by the user",
+          "Memory inside the CPU",
+          "A type of cloud storage",
+        ],
+        accept: [
+          "Space on secondary storage used when RAM is full",
+        ],
+        answer: "It prevents crashes when RAM runs out, but is far slower because reading from disk takes much longer than reading from RAM.",
+      },
+      {
+        question: "Which storage type has no moving parts?",
+        choices: [
+          "Solid state (SSD)",
+          "Magnetic hard disk",
+          "Optical disc",
+          "Magnetic tape",
+        ],
+        accept: [
+          "Solid state (SSD)",
+        ],
+        answer: "SSDs are faster, quieter and more shock-resistant, but cost more per gigabyte and have a limited number of write cycles.",
+      },
+      {
+        question: "Which storage is best for very large, cheap, long-term backup?",
+        choices: [
+          "Magnetic tape",
+          "Solid state drive",
+          "Cache",
+          "RAM",
+        ],
+        accept: [
+          "Magnetic tape",
+        ],
+        answer: "Tape is extremely cheap per terabyte and lasts well, but access is sequential so retrieving one file is slow.",
+      },
+      {
+        question: "Why is lossy compression unsuitable for a text document?",
+        choices: [
+          "Discarded data cannot be recovered, changing the meaning",
+          "It makes files larger",
+          "Text cannot be compressed at all",
+          "It is too slow",
+        ],
+        accept: [
+          "Discarded data cannot be recovered, changing the meaning",
+        ],
+        answer: "Lossy suits images and audio where small losses go unnoticed. Text and program files need lossless compression.",
+      },
     ],
 
     misconceptions: [
@@ -4152,6 +4477,71 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer: "Each layer has one job and communicates only with the layers immediately above and below it through a fixed interface. That means a layer can be redesigned, optimised or replaced entirely without any of the others being rewritten, as long as the interface stays the same — which is how the web moved from HTTP to HTTPS without changing how packets are routed. It also splits an enormous problem into four smaller ones, so specialists can work on one layer while treating the rest as black boxes, and a fault can be traced to a single layer instead of the whole system. (Mark this one yourself.)" },
       { question: "Explain why packet switching makes a network more resilient than sending each file as one continuous stream.",
         answer: "Because no single route has to work for the whole transfer. Each packet is routed independently, so if a link becomes congested or fails entirely, routers simply send subsequent packets another way and the transfer continues. If any packet is lost or corrupted, only that small packet needs resending rather than the whole file. It also uses the network more efficiently, since many conversations can share the same links at once instead of one transfer occupying a route from start to finish. (Mark this one yourself.)" },
+      {
+        question: "Which term describes an agreed set of rules for how devices communicate?",
+        choices: [
+          "Protocol",
+          "Topology",
+          "Bandwidth",
+          "Encryption",
+        ],
+        accept: [
+          "Protocol",
+        ],
+        answer: "A protocol is the agreed set of rules. Without shared rules two devices could send perfectly valid data that the other cannot interpret.",
+      },
+      {
+        question: "Which protocol is used to send email?",
+        choices: [
+          "SMTP",
+          "HTTP",
+          "FTP",
+          "IMAP",
+        ],
+        accept: [
+          "SMTP",
+        ],
+        answer: "SMTP sends mail. POP and IMAP retrieve it, with IMAP leaving messages on the server so they sync across devices.",
+      },
+      {
+        question: "What does HTTPS add compared with HTTP?",
+        choices: [
+          "Encryption of the data being sent",
+          "Faster page loading",
+          "Automatic file compression",
+          "A different port for images",
+        ],
+        accept: [
+          "Encryption of the data being sent",
+        ],
+        answer: "Encryption means intercepted data is unreadable. It does not make a website trustworthy — only the connection secure.",
+      },
+      {
+        question: "Why are network protocols organised into LAYERS?",
+        choices: [
+          "Each layer can be developed and changed independently",
+          "It makes the network faster",
+          "It reduces the number of protocols needed",
+          "Layers encrypt the data",
+        ],
+        accept: [
+          "Each layer can be developed and changed independently",
+        ],
+        answer: "Layering breaks a complex problem into manageable parts, so Wi-Fi can change without rewriting how web pages work.",
+      },
+      {
+        question: "Which protocol converts a domain name into an IP address?",
+        choices: [
+          "DNS",
+          "TCP",
+          "FTP",
+          "SMTP",
+        ],
+        accept: [
+          "DNS",
+        ],
+        answer: "DNS acts as the internet's address book. Without it you would have to remember numeric IP addresses for every site.",
+      },
     ],
 
     misconceptions: [
