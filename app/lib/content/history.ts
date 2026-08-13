@@ -1209,6 +1209,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because it failed to solve the problems that had brought down the Tsar. Its decision to continue the war meant the casualties, hunger and shortages carried straight on, and Kerensky's failed June offensive destroyed what credibility remained. It also postponed land reform until an elected assembly could meet, which left peasants waiting for the one thing they wanted most. It shared power awkwardly with the Petrograd Soviet, which controlled the railways and the garrison and could countermand it. And it was provisional by its own description, so nobody was obliged to defend it — which is why so few did in October. (Mark this one yourself.)" },
       { question: "Explain why the war was the decisive factor in 1917, rather than long-term grievances alone.",
         answer: "The grievances were genuine and very old — autocracy, rural poverty, the broken promises of 1905 — but Russia had lived with them for generations without revolution. The war converted them into collapse. It killed and maimed millions, took peasants off the land, wrecked the transport system so cities went hungry, and put the Tsar personally in command so that every defeat was his. It also removed the regime's last safeguard: when soldiers in Petrograd were ordered to fire on the bread queues and refused, the machinery that had suppressed 1905 simply stopped working. Long-term causes explain the anger; the war explains the timing. (Mark this one yourself.)" },
+      {
+        question: "Who was the Tsar overthrown in 1917?",
+        choices: [
+          "Nicholas II",
+          "Alexander III",
+          "Peter the Great",
+          "Lenin",
+        ],
+        accept: [
+          "Nicholas II",
+        ],
+        answer: "His handling of the war, food shortages and the influence of Rasputin all eroded support before the February Revolution.",
+      },
+      {
+        question: "What was the main promise of the Bolsheviks in 1917?",
+        choices: [
+          "Peace, land and bread",
+          "Empire and expansion",
+          "A return of the Tsar",
+          "Free trade with Europe",
+        ],
+        accept: [
+          "Peace, land and bread",
+        ],
+        answer: "It addressed exactly what people wanted most, which is why a small party gained support so quickly.",
+      },
+      {
+        question: "What was a major cause of discontent before the revolution?",
+        choices: [
+          "Food shortages and heavy losses in the First World War",
+          "Rapid rises in living standards",
+          "A powerful elected parliament",
+          "The absence of any army",
+        ],
+        accept: [
+          "Food shortages and heavy losses in the First World War",
+        ],
+        answer: "The war turned long-standing grievances into a crisis by putting millions of armed, hungry men in a position to act.",
+      },
+      {
+        question: "What happened in the October Revolution of 1917?",
+        choices: [
+          "The Bolsheviks seized power from the Provisional Government",
+          "The Tsar abdicated",
+          "Russia entered the war",
+          "The Duma was created",
+        ],
+        accept: [
+          "The Bolsheviks seized power from the Provisional Government",
+        ],
+        answer: "The Provisional Government's decision to continue the war had destroyed its support in the months since February.",
+      },
+      {
+        question: "What followed the Bolshevik seizure of power?",
+        choices: [
+          "A civil war between Reds and Whites",
+          "Immediate peace and prosperity",
+          "The restoration of the monarchy",
+          "Union with Germany",
+        ],
+        accept: [
+          "A civil war between Reds and Whites",
+        ],
+        answer: "The Reds won partly through Trotsky's Red Army, control of the centre, and the disunity of their opponents.",
+      },
     ],
 
     misconceptions: [
@@ -1720,6 +1785,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because the parts Britain fought are the parts Britain remembers. Dunkirk, the Battle of Britain and D-Day are genuinely important — without the Battle of Britain there would have been no base from which to liberate western Europe. But roughly 80% of German military casualties were inflicted on the Eastern Front, and the USSR lost around 27 million people. Stalingrad destroyed German prospects in the east eighteen months before the Normandy landings. American industrial output and manpower were decisive too. A proportionate account keeps Britain's contribution real while recognising that Germany was broken mainly somewhere else. (Mark this one yourself.)" },
       { question: "Explain why appeasement is judged more harshly now than it was at the time.",
         answer: "Because we know how it ended and the people making the decisions did not. In 1938 Chamberlain was widely cheered: the memory of the First World War was raw, British rearmament had barely begun, the Depression had wrecked public finances, and many genuinely believed Versailles had treated Germany unfairly, which made some German demands look reasonable. Judging with hindsight makes those calculations look like cowardice. There is also a decent case that the year gained at Munich was used to build the radar network and fighters that won the Battle of Britain. Explaining why intelligent people chose it, and then judging it, is far better history than assuming they were simply weak. (Mark this one yourself.)" },
+      {
+        question: "What was BLITZKRIEG?",
+        choices: [
+          "A fast attack combining tanks, aircraft and infantry",
+          "A defensive trench system",
+          "A naval blockade",
+          "A bombing campaign against Britain only",
+        ],
+        accept: [
+          "A fast attack combining tanks, aircraft and infantry",
+        ],
+        answer: "It overwhelmed opponents before they could organise, which explains the speed of German success in 1939 to 1940.",
+      },
+      {
+        question: "What was the significance of Dunkirk in 1940?",
+        choices: [
+          "Over 300,000 troops were evacuated, though it was a retreat",
+          "It was a major British victory",
+          "It ended the war in Europe",
+          "Germany surrendered there",
+        ],
+        accept: [
+          "Over 300,000 troops were evacuated, though it was a retreat",
+        ],
+        answer: "It preserved an army and boosted morale, but presenting a retreat as triumph is itself worth analysing as propaganda.",
+      },
+      {
+        question: "What was the Battle of Britain?",
+        choices: [
+          "An air campaign in which the RAF prevented a German invasion",
+          "A naval battle in the Atlantic",
+          "A land battle in France",
+          "The bombing of Germany",
+        ],
+        accept: [
+          "An air campaign in which the RAF prevented a German invasion",
+        ],
+        answer: "Radar, the Spitfire and Hurricane, and German switching of targets to cities all contributed to the outcome.",
+      },
+      {
+        question: "What happened on D-Day in June 1944?",
+        choices: [
+          "Allied forces landed in Normandy to open a Western Front",
+          "Germany invaded Russia",
+          "Japan attacked Pearl Harbor",
+          "The war ended",
+        ],
+        accept: [
+          "Allied forces landed in Normandy to open a Western Front",
+        ],
+        answer: "It required immense planning and deception, and began the campaign that reached Germany within a year.",
+      },
+      {
+        question: "How did the Home Front affect British civilians?",
+        choices: [
+          "Rationing, evacuation and bombing changed daily life",
+          "Life continued unchanged",
+          "Civilians were not involved",
+          "Only soldiers were affected",
+        ],
+        accept: [
+          "Rationing, evacuation and bombing changed daily life",
+        ],
+        answer: "Total war blurred the line between soldier and civilian, which is one reason casualties among civilians were so high.",
+      },
     ],
 
     misconceptions: [
@@ -1949,6 +2079,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because it used the machinery of a modern state rather than the methods of a mob. Victims were identified through censuses and identity records, transported across a continent by railway timetable during a war, and killed in purpose-built facilities designed by engineers and supplied by companies that competed for the contracts. Government departments coordinated it, which is what the Wannsee Conference was for, and it was run with budgets, paperwork and quotas. That is the reason it is studied as a warning about how states and bureaucracies can function, and not only as an episode of extreme hatred — nothing about the administration broke down. (Mark this one yourself.)" },
       { question: "Explain why studying the escalation from 1933 to 1942 matters more than studying 1942 alone.",
         answer: "Because 1942 is incomprehensible on its own, and the escalation is where the lesson lies. In 1933 the measures were exclusion from jobs and boycotts of shops — things a society could tell itself were merely unpleasant politics. 1935 removed citizenship, which made Jews legally different. 1938 brought open violence with almost no public objection. Ghettos in 1939 put people out of sight, and the mass shootings of 1941 happened far away in the east. Each step made the next one thinkable, and each was accepted by enough people to allow the one after it. Studying only the camps makes the Holocaust look like an eruption; studying the escalation shows it as a series of steps that people took. (Mark this one yourself.)" },
+      {
+        question: "What were the Nuremberg Laws of 1935?",
+        choices: [
+          "Laws stripping Jewish people of citizenship and rights",
+          "Laws creating the concentration camps",
+          "Trials of Nazi leaders",
+          "Laws banning the Nazi Party",
+        ],
+        accept: [
+          "Laws stripping Jewish people of citizenship and rights",
+        ],
+        answer: "They marked a shift from social exclusion to legal persecution, and made discrimination a matter of state law.",
+      },
+      {
+        question: "What was Kristallnacht in November 1938?",
+        choices: [
+          "A violent attack on Jewish homes, businesses and synagogues",
+          "A peaceful protest",
+          "The liberation of a camp",
+          "A Nazi election victory",
+        ],
+        accept: [
+          "A violent attack on Jewish homes, businesses and synagogues",
+        ],
+        answer: "The state's open participation showed persecution had moved beyond law into organised violence.",
+      },
+      {
+        question: "What is meant by the Final Solution?",
+        choices: [
+          "The Nazi plan for the systematic murder of Europe's Jews",
+          "A resettlement programme",
+          "A peace treaty",
+          "An economic policy",
+        ],
+        accept: [
+          "The Nazi plan for the systematic murder of Europe's Jews",
+        ],
+        answer: "Around six million Jewish people were murdered, alongside Roma, disabled people, political opponents and others.",
+      },
+      {
+        question: "Why is studying survivor testimony important?",
+        choices: [
+          "It preserves individual human experience behind the statistics",
+          "It replaces documentary evidence",
+          "It is always completely accurate",
+          "It is the only evidence available",
+        ],
+        accept: [
+          "It preserves individual human experience behind the statistics",
+        ],
+        answer: "Testimony carries the personal reality that numbers cannot, and is used alongside documents rather than instead of them.",
+      },
+      {
+        question: "What does the Holocaust show about the role of ordinary people?",
+        choices: [
+          "Genocide required the participation or silence of many",
+          "Only a handful of leaders were involved",
+          "Nobody knew anything about it",
+          "It happened without any planning",
+        ],
+        accept: [
+          "Genocide required the participation or silence of many",
+        ],
+        answer: "Administrators, railway staff, police and neighbours all played parts. That is the most uncomfortable and important lesson of the topic.",
+      },
     ],
 
     misconceptions: [
@@ -2464,6 +2659,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because its only real powers were persuasion and economic pressure, and both work on countries that care about international opinion or need trade. Small states in disputes like the Aaland Islands or Upper Silesia had every reason to accept arbitration rather than fight a war they could not afford. A great power was a different matter: Japan and Italy could simply absorb condemnation, and sanctions against them would have damaged the countries applying them at the worst possible moment economically. With no army, no United States, and a rule requiring unanimity, the League could only ever do what its most powerful members already wanted to do. (Mark this one yourself.)" },
       { question: "'The Treaty of Versailles made the Second World War inevitable.' How far do you agree?",
         answer: "It contributed powerfully but did not make war inevitable. Versailles created lasting grievance and gave Hitler ready-made arguments, and the German public's sense of injustice was real. But Nazi support fell to 2.6% in 1928 while every clause of the treaty was still in force, which shows grievance alone did not produce catastrophe. What turned it into one was the Depression, the collapse of the League's authority over Manchuria and Abyssinia, and a series of Allied decisions not to act — most cheaply over the Rhineland in 1936. Versailles supplied the fuel; the choices of the 1930s supplied the spark, and choices can be made differently. (Mark this one yourself.)" },
+      {
+        question: "What was the main aim of the League of Nations?",
+        choices: [
+          "To keep peace through collective security",
+          "To punish Germany further",
+          "To create a European army",
+          "To manage colonial empires",
+        ],
+        accept: [
+          "To keep peace through collective security",
+        ],
+        answer: "It lacked an army and the USA never joined, which limited it whenever a major power ignored its rulings.",
+      },
+      {
+        question: "What is APPEASEMENT?",
+        choices: [
+          "Giving in to demands to avoid war",
+          "Declaring war immediately",
+          "Refusing all negotiation",
+          "Forming a military alliance",
+        ],
+        accept: [
+          "Giving in to demands to avoid war",
+        ],
+        answer: "Defenders point to Britain's unreadiness for war and public opinion; critics say it encouraged further demands.",
+      },
+      {
+        question: "What did the Munich Agreement of 1938 allow Germany to do?",
+        choices: [
+          "Take the Sudetenland from Czechoslovakia",
+          "Invade Poland",
+          "Rejoin the League of Nations",
+          "Reclaim its colonies",
+        ],
+        accept: [
+          "Take the Sudetenland from Czechoslovakia",
+        ],
+        answer: "Chamberlain called it 'peace for our time'. Germany occupied the rest of Czechoslovakia within six months.",
+      },
+      {
+        question: "Which event is generally taken as the start of the Second World War in Europe?",
+        choices: [
+          "The German invasion of Poland in 1939",
+          "The remilitarisation of the Rhineland",
+          "The Anschluss with Austria",
+          "The Munich Agreement",
+        ],
+        accept: [
+          "The German invasion of Poland in 1939",
+        ],
+        answer: "Britain and France had guaranteed Polish independence, so this time the response was a declaration of war.",
+      },
+      {
+        question: "Why did the League fail to stop aggression in Manchuria and Abyssinia?",
+        choices: [
+          "It had no army and members would not risk their own interests",
+          "Its rules forbade any action",
+          "Nobody reported the invasions",
+          "Both invasions were legal",
+        ],
+        accept: [
+          "It had no army and members would not risk their own interests",
+        ],
+        answer: "Economic sanctions were weak and slow, and Britain and France put their own strategic concerns first.",
+      },
     ],
 
     misconceptions: [
@@ -3068,6 +3328,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because it creates enormous numbers of similar injuries, urgent pressure to solve them, and governments willing to pay. Paré improved gunshot treatment because he was operating on battlefields; the First World War drove blood transfusion, X-rays near the front and the beginnings of plastic surgery; the Second World War is what turned penicillin from a laboratory curiosity into a mass-produced drug, funded by the US government for D-Day. War also suspends the normal caution about trying new methods, and it moves surgeons and researchers around so techniques spread quickly. The uncomfortable point worth making is that this progress is a by-product of enormous suffering, not a justification for it. (Mark this one yourself.)" },
       { question: "'Attitudes were the biggest obstacle to medical progress.' How far do you agree?",
         answer: "There is a strong case. Galen went unchallenged for roughly 1,400 years, not because his errors were undetectable but because education taught authority rather than enquiry and the Church approved his conclusions. Jenner proved vaccination worked in 1796 and was rejected by the Royal Society because he could not explain it. Public health was blocked for decades by the belief that government should not interfere in private business. But attitudes are not the only obstacle: technology genuinely was missing — nobody could see bacteria before microscopes improved — and money was often the real constraint, as penicillin shows. The strongest answer is that attitudes decided whether new evidence was accepted, while technology decided whether it could be produced at all. (Mark this one yourself.)" },
+      {
+        question: "What was the theory of the four humours?",
+        choices: [
+          "The belief that illness came from an imbalance of body fluids",
+          "The idea that germs cause disease",
+          "A surgical technique",
+          "A method of vaccination",
+        ],
+        accept: [
+          "The belief that illness came from an imbalance of body fluids",
+        ],
+        answer: "Blood, phlegm, black bile and yellow bile. It justified bleeding and purging for centuries because it seemed to explain everything.",
+      },
+      {
+        question: "What did Edward Jenner develop in 1796?",
+        choices: [
+          "The first vaccination, against smallpox",
+          "Antiseptic surgery",
+          "Penicillin",
+          "The germ theory",
+        ],
+        accept: [
+          "The first vaccination, against smallpox",
+        ],
+        answer: "He proved it worked but could not explain WHY, which is partly why acceptance was slow and opposition strong.",
+      },
+      {
+        question: "Whose Germ Theory transformed understanding of disease?",
+        choices: [
+          "Louis Pasteur",
+          "Galen",
+          "Hippocrates",
+          "Florence Nightingale",
+        ],
+        accept: [
+          "Louis Pasteur",
+        ],
+        answer: "Published in 1861, it showed microbes cause decay and disease. Koch then identified specific bacteria for specific illnesses.",
+      },
+      {
+        question: "What did Joseph Lister introduce to surgery?",
+        choices: [
+          "Antiseptics, using carbolic acid",
+          "Anaesthetics",
+          "Blood transfusion",
+          "X-rays",
+        ],
+        accept: [
+          "Antiseptics, using carbolic acid",
+        ],
+        answer: "Anaesthetics let surgeons operate for longer, which initially raised death rates from infection until antiseptics followed.",
+      },
+      {
+        question: "Which factor most accelerated medical progress in the 20th century?",
+        choices: [
+          "Government funding, war and scientific technology together",
+          "Religion",
+          "The decline of universities",
+          "Reduced communication between countries",
+        ],
+        accept: [
+          "Government funding, war and scientific technology together",
+        ],
+        answer: "War drove blood transfusion, plastic surgery and mass production of penicillin. Factors rarely act alone in this topic.",
+      },
     ],
 
     misconceptions: [
@@ -3296,6 +3621,71 @@ export const HISTORY: Record<string, TopicContent> = {
         answer: "Because crime is defined by law, and law is written by a society reflecting its own priorities and fears. The Normans invented forest crimes to protect royal hunting; the Tudors criminalised vagrancy because rising poverty frightened them; the 1640s produced witchcraft prosecutions when war and hardship made people look for hidden enemies. The reverse is even more revealing: suicide stopped being a crime in 1961 and homosexuality was partly decriminalised in 1967, without anybody's behaviour altering at all. What changed in each case was what the society considered dangerous, sinful or simply nobody else's business. Studying crime is therefore a way of studying the values of the people making the rules. (Mark this one yourself.)" },
       { question: "Explain why Peel's police were founded as an unarmed, uniformed civilian force.",
         answer: "Because Britain was deeply suspicious of anything resembling a standing army being used against its own people, particularly after Peterloo in 1819 when cavalry had charged a peaceful crowd. A force that looked like soldiers would have been resisted as a tool of political repression. So the Metropolitan Police were designed to look like citizens in uniform: top hats rather than helmets at first, blue rather than army red, armed with nothing but a truncheon, and instructed to prevent crime by presence rather than to suppress disorder by force. The design was a political calculation as much as a practical one, and it set the pattern for British policing ever since. (Mark this one yourself.)" },
+      {
+        question: "What was the Bloody Code?",
+        choices: [
+          "A period when many crimes carried the death penalty",
+          "A medieval trial by ordeal",
+          "A Victorian police force",
+          "A law protecting the poor",
+        ],
+        accept: [
+          "A period when many crimes carried the death penalty",
+        ],
+        answer: "Over 200 offences were capital by 1800. Juries often refused to convict, which helped bring about reform.",
+      },
+      {
+        question: "What was transportation as a punishment?",
+        choices: [
+          "Sending convicts overseas to Australia or America",
+          "Moving prisoners between jails",
+          "A fine for highway robbery",
+          "Public whipping",
+        ],
+        accept: [
+          "Sending convicts overseas to Australia or America",
+        ],
+        answer: "It removed offenders, provided labour for colonies, and was seen as more humane than execution.",
+      },
+      {
+        question: "Who established the Metropolitan Police in 1829?",
+        choices: [
+          "Robert Peel",
+          "Elizabeth Fry",
+          "John Howard",
+          "Oliver Cromwell",
+        ],
+        accept: [
+          "Robert Peel",
+        ],
+        answer: "Officers were nicknamed 'peelers' or 'bobbies'. Early public suspicion of a standing force took years to overcome.",
+      },
+      {
+        question: "What did Elizabeth Fry campaign for?",
+        choices: [
+          "Better conditions and education for prisoners, especially women",
+          "Harsher sentences",
+          "The return of transportation",
+          "The end of the police force",
+        ],
+        accept: [
+          "Better conditions and education for prisoners, especially women",
+        ],
+        answer: "Her work at Newgate shifted opinion towards reform as a purpose of prison rather than only punishment.",
+      },
+      {
+        question: "How did the definition of crime change over time?",
+        choices: [
+          "Some acts stopped being crimes while new crimes appeared",
+          "It never changed",
+          "Only punishments changed",
+          "Crime disappeared in the 20th century",
+        ],
+        accept: [
+          "Some acts stopped being crimes while new crimes appeared",
+        ],
+        answer: "Witchcraft ceased to be a crime; cybercrime and driving offences did not exist before. Crime reflects the values of its society.",
+      },
     ],
 
     misconceptions: [
