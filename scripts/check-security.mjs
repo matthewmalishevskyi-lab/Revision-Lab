@@ -22,6 +22,31 @@ import { join } from "node:path";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
+
+// Run the TypeScript compiler through Node directly, rather than through npx.
+//
+// WHY NOT `npx tsc`
+//
+// On Windows, npx is a .cmd batch file. Node 20.12 / 22 hardened spawnSync
+// against a batch-file argument-injection vulnerability (CVE-2024-27980) by
+// REFUSING to spawn .cmd files without `shell: true`. So this script, which
+// worked everywhere it had been run, failed on Matthew's Windows machine with
+// a bare `spawnSync npx.cmd EINVAL` — a message that names neither TypeScript
+// nor the real cause.
+//
+// Adding `shell: true` would fix it, but running through a shell means every
+// path is re-parsed by cmd.exe, and one temp directory with a space in it
+// would silently break the build again.
+//
+// Resolving tsc's own entry point and running it with the SAME Node that is
+// already running avoids batch files entirely. It works identically on Windows,
+// macOS and Linux, and skips npx's package resolution, so it is faster too.
+//
+// The general lesson: shelling out to a command-line tool by NAME depends on
+// how the operating system finds and executes that name. Calling the code
+// directly does not.
+const TSC = require.resolve("typescript/bin/tsc");
+
 const out = mkdtempSync(join(tmpdir(), "revision-throttle-"));
 
 let failures = 0;
@@ -37,9 +62,9 @@ function expect(condition, description) {
 
 try {
   execFileSync(
-    process.platform === "win32" ? "npx.cmd" : "npx",
+    process.execPath,
     [
-      "tsc",
+      TSC,
       "app/lib/throttle.ts",
       "--outDir", out,
       "--module", "commonjs",
