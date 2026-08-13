@@ -2774,6 +2774,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the method depends on the fact that if two things multiply to give zero, at least one of them must be zero. That is only true for zero — if the product equalled 10 there would be endless pairs of factors that work, and no way to pick the right one. Setting the equation to zero is what makes the factorised form give the solutions directly. (Mark this one yourself.)" },
       { question: "Explain how to check whether 100 appears in the sequence with nth term 3n + 2.",
         answer: "Set the nth term equal to the value and solve: 3n + 2 = 100, so 3n = 98 and n = 32.67. Since n must be a positive WHOLE number — it counts positions in the sequence — a fractional answer means 100 does not appear. The reasoning about n being a whole number is where the mark sits, not the yes-or-no answer. (Mark this one yourself.)" },
+      {
+        question: "Factorise x squared + 5x + 6.",
+        choices: [
+          "(x + 2)(x + 3)",
+          "(x + 1)(x + 6)",
+          "(x - 2)(x - 3)",
+          "(x + 5)(x + 1)",
+        ],
+        accept: [
+          "(x + 2)(x + 3)",
+        ],
+        answer: "Find two numbers that multiply to 6 and add to 5. Expanding your answer is the quickest check.",
+      },
+      {
+        question: "What shape is the graph of a quadratic?",
+        choices: [
+          "A parabola",
+          "A straight line",
+          "A circle",
+          "A hyperbola",
+        ],
+        accept: [
+          "A parabola",
+        ],
+        answer: "It is U-shaped when the x squared coefficient is positive and n-shaped when it is negative.",
+      },
+      {
+        question: "The nth term of 3, 7, 11, 15 is:",
+        choices: [
+          "4n - 1",
+          "3n",
+          "4n + 3",
+          "n + 4",
+        ],
+        accept: [
+          "4n - 1",
+        ],
+        answer: "The common difference 4 gives 4n, and 4 x 1 = 4 needs adjusting by -1 to reach 3.",
+      },
+      {
+        question: "A GEOMETRIC sequence is one where each term is found by:",
+        choices: [
+          "Multiplying the previous term by a fixed number",
+          "Adding a fixed number",
+          "Adding the two previous terms",
+          "Squaring the previous term",
+        ],
+        accept: [
+          "Multiplying the previous term by a fixed number",
+        ],
+        answer: "Arithmetic sequences add a common difference. Fibonacci-style sequences add the two previous terms.",
+      },
+      {
+        question: "Solving x squared = 16 gives:",
+        choices: [
+          "x = 4 or x = -4",
+          "x = 4 only",
+          "x = 8",
+          "x = -4 only",
+        ],
+        accept: [
+          "x = 4 or x = -4",
+        ],
+        answer: "Squaring removes the sign, so both roots are valid. Giving only the positive root loses a mark.",
+      },
     ],
 
     misconceptions: [
@@ -2986,6 +3051,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because circle theorem questions almost always split the marks between the value and the justification. The examiner is testing whether you know WHICH property applies, not whether you can subtract from 180. Writing 'because opposite angles in a cyclic quadrilateral add to 180 degrees' earns the second mark; the number on its own leaves half the marks on the table. (Mark this one yourself.)" },
       { question: "Describe how you would set out a multi-step circle theorem proof so it earns full marks.",
         answer: "One step per line, each with its reason written next to it. Mark every angle you find onto the diagram as you go, so later steps become visible. Use the full name of each theorem rather than an abbreviation, and look for the hidden isosceles triangle formed by two radii, which is unstated in the question but needed in many proofs. A paragraph of reasoning is hard to mark and loses marks that a line-by-line layout would have earned. (Mark this one yourself.)" },
+      {
+        question: "The angle in a semicircle is always:",
+        choices: [
+          "90 degrees",
+          "180 degrees",
+          "60 degrees",
+          "45 degrees",
+        ],
+        accept: [
+          "90 degrees",
+        ],
+        answer: "Any triangle drawn from the ends of a diameter to the circumference has a right angle at the circumference.",
+      },
+      {
+        question: "The angle at the centre is what compared with the angle at the circumference?",
+        choices: [
+          "Twice as large",
+          "Half as large",
+          "Equal",
+          "Three times as large",
+        ],
+        accept: [
+          "Twice as large",
+        ],
+        answer: "Both must be subtended by the same arc. Getting this the wrong way round halves rather than doubles your answer.",
+      },
+      {
+        question: "A tangent meets a radius at:",
+        choices: [
+          "90 degrees",
+          "45 degrees",
+          "180 degrees",
+          "60 degrees",
+        ],
+        accept: [
+          "90 degrees",
+        ],
+        answer: "The tangent touches the circle at exactly one point, and the radius to that point is perpendicular to it.",
+      },
+      {
+        question: "Opposite angles in a cyclic quadrilateral add up to:",
+        choices: [
+          "180",
+          "360",
+          "90",
+          "270",
+        ],
+        accept: [
+          "180",
+        ],
+        answer: "All four vertices must lie on the circumference for this to apply.",
+      },
+      {
+        question: "Angles in the same segment are:",
+        choices: [
+          "Equal",
+          "Supplementary",
+          "Complementary",
+          "Always right angles",
+        ],
+        accept: [
+          "Equal",
+        ],
+        answer: "They must be subtended by the same arc. Naming the theorem is worth a mark in itself, so learn the wording.",
+      },
     ],
 
     misconceptions: [
@@ -3206,6 +3336,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because a reflection must be described by the EQUATION of the mirror line, such as y = x or y = −x. 'The diagonal line' is ambiguous — there are two diagonals through the origin and infinitely many other diagonal lines — so it does not define the transformation. The equation is what makes the description complete and reproducible. (Mark this one yourself.)" },
       { question: "Explain why an enlargement of scale factor 3 multiplies area by 9 rather than by 3.",
         answer: "Because area is two-dimensional: it depends on two lengths multiplied together. If every length triples, then both the width and the height triple, so the area becomes 3 x 3 = 9 times larger. The same reasoning gives volume a factor of 3 x 3 x 3 = 27, since volume depends on three lengths. (Mark this one yourself.)" },
+      {
+        question: "Which transformation changes the SIZE of a shape?",
+        choices: [
+          "Enlargement",
+          "Rotation",
+          "Reflection",
+          "Translation",
+        ],
+        accept: [
+          "Enlargement",
+        ],
+        answer: "Rotation, reflection and translation all preserve size and shape, so the image is congruent to the object.",
+      },
+      {
+        question: "To fully describe a ROTATION you must give:",
+        choices: [
+          "The angle, the direction and the centre",
+          "Only the angle",
+          "Only the centre",
+          "The scale factor",
+        ],
+        accept: [
+          "The angle, the direction and the centre",
+        ],
+        answer: "Missing any one of the three loses marks. For a reflection you must state the mirror line as an equation.",
+      },
+      {
+        question: "A column vector with 3 on top and -2 underneath means:",
+        choices: [
+          "3 right and 2 down",
+          "3 up and 2 left",
+          "3 left and 2 up",
+          "2 right and 3 down",
+        ],
+        accept: [
+          "3 right and 2 down",
+        ],
+        answer: "The top number is horizontal and the bottom is vertical. Negative means left or down.",
+      },
+      {
+        question: "To fully describe a REFLECTION you must give:",
+        choices: [
+          "The equation of the mirror line",
+          "The angle of turn",
+          "The centre of enlargement",
+          "The column vector",
+        ],
+        accept: [
+          "The equation of the mirror line",
+        ],
+        answer: "Saying 'reflected in the x-axis' is fine, but 'reflected in a line' without the equation scores nothing.",
+      },
+      {
+        question: "Adding vector (2, 1) to vector (3, -4) gives:",
+        choices: [
+          "(5, -3)",
+          "(6, -4)",
+          "(-1, 5)",
+          "(5, 5)",
+        ],
+        accept: [
+          "(5, -3)",
+        ],
+        answer: "Add the top numbers and the bottom numbers separately: 2 + 3 = 5 and 1 + (-4) = -3.",
+      },
     ],
 
     misconceptions: [
@@ -3440,6 +3635,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because method marks are awarded independently of the final answer. With working shown, one arithmetic slip in the last line still scores most of the marks. Without it, the same slip scores zero — the examiner has no way to see that the method was correct. Over a whole paper this is worth many marks to people who already knew how to do the questions. (Mark this one yourself.)" },
       { question: "Describe a three-step routine for getting maximum value from a past paper.",
         answer: "First, sit it under timed conditions with no notes, so it tests recall rather than reading. Second, mark it yourself against the official mark scheme, noting exactly where each mark was awarded and which working earned method marks. Third, sort your errors into categories — misread command words, arithmetic slips, forgotten units, method gaps — and revise the category rather than the individual question, because the same category will recur on completely different content. (Mark this one yourself.)" },
+      {
+        question: "In a non-calculator paper, marks are often lost by:",
+        choices: [
+          "Not showing working, so method marks cannot be awarded",
+          "Writing too neatly",
+          "Using a ruler",
+          "Answering questions out of order",
+        ],
+        accept: [
+          "Not showing working, so method marks cannot be awarded",
+        ],
+        answer: "A wrong final answer with correct working still scores. A wrong answer alone scores nothing.",
+      },
+      {
+        question: "If a question says 'give your answer to 3 significant figures', you should round:",
+        choices: [
+          "Only at the very end of the calculation",
+          "After every step",
+          "Before starting",
+          "Never",
+        ],
+        accept: [
+          "Only at the very end of the calculation",
+        ],
+        answer: "Rounding early introduces errors that accumulate, and can make a correct method produce a wrong answer.",
+      },
+      {
+        question: "When a question is worth 5 marks, you should expect:",
+        choices: [
+          "Several steps of working",
+          "A one-word answer",
+          "A single calculation",
+          "A diagram only",
+        ],
+        accept: [
+          "Several steps of working",
+        ],
+        answer: "The mark count is a hint about how much is expected. One line for five marks usually means something has been missed.",
+      },
+      {
+        question: "Checking an answer is sensible means asking:",
+        choices: [
+          "Does the size and unit make sense in context?",
+          "Is it a whole number?",
+          "Is it the largest number I calculated?",
+          "Does it match my first guess?",
+        ],
+        accept: [
+          "Does the size and unit make sense in context?",
+        ],
+        answer: "A person weighing 700 kg or a probability of 4 signals an error immediately, and that check costs seconds.",
+      },
+      {
+        question: "The best use of the last ten minutes in a maths exam is usually to:",
+        choices: [
+          "Return to questions you left blank or were unsure about",
+          "Rewrite your neatest answers",
+          "Recheck the questions you found easiest",
+          "Leave early",
+        ],
+        accept: [
+          "Return to questions you left blank or were unsure about",
+        ],
+        answer: "Marks come from attempted questions. An unattempted question is guaranteed zero, while a partial method often scores.",
+      },
     ],
 
     misconceptions: [
@@ -4559,6 +4819,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because angles fix only the shape, not the scale. Knowing all three angles tells you how the sides are inclined to one another, but nothing about how long they are — you could draw a triangle with those angles on a postage stamp or across a field, and both would be perfectly valid. That is exactly what similarity means: same shape, any size. To pin down the size as well, at least one side length has to be known, which is why every congruence condition includes at least one side. (Mark this one yourself.)" },
       { question: "Explain why area scales by the square of the scale factor but volume scales by the cube.",
         answer: "Because of how many dimensions are involved. An area is produced by multiplying two lengths together, so if every length is multiplied by k, the area is multiplied by k × k = k². A volume comes from three lengths multiplied, so it is multiplied by k × k × k = k³. Picturing it helps: doubling the sides of a cube gives a shape you could fill with eight of the originals, and each face is now four of the original faces. It is also why the units carry those little numbers — cm² and cm³ are recording exactly the same fact. (Mark this one yourself.)" },
+      {
+        question: "Two shapes are CONGRUENT when they are:",
+        choices: [
+          "The same shape and the same size",
+          "The same shape but different sizes",
+          "Different shapes of equal area",
+          "Mirror images only",
+        ],
+        accept: [
+          "The same shape and the same size",
+        ],
+        answer: "Similar shapes have equal angles and proportional sides but may differ in size.",
+      },
+      {
+        question: "In similar shapes, corresponding angles are:",
+        choices: [
+          "Equal",
+          "Proportional",
+          "Doubled",
+          "Always 90 degrees",
+        ],
+        accept: [
+          "Equal",
+        ],
+        answer: "Angles stay the same; only the lengths scale. That is what makes similar triangles so useful for finding missing sides.",
+      },
+      {
+        question: "If a shape is enlarged by scale factor 3, its area increases by a factor of:",
+        choices: [
+          "9",
+          "3",
+          "6",
+          "27",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "Area scales by the square of the scale factor and volume by the cube, so volume would be 27 times.",
+      },
+      {
+        question: "Which is a valid congruence condition for triangles?",
+        choices: [
+          "SAS",
+          "AAA",
+          "SSA",
+          "ASS",
+        ],
+        accept: [
+          "SAS",
+        ],
+        answer: "SSS, SAS, ASA and RHS prove congruence. AAA only proves similarity, since the shapes could be different sizes.",
+      },
+      {
+        question: "A scale factor between 0 and 1 produces an image that is:",
+        choices: [
+          "Smaller than the original",
+          "Larger than the original",
+          "The same size",
+          "Rotated 90 degrees",
+        ],
+        accept: [
+          "Smaller than the original",
+        ],
+        answer: "A negative scale factor also flips the image through the centre of enlargement.",
+      },
     ],
 
     misconceptions: [
@@ -4787,6 +5112,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because the rule applies to the ends of the segment as well as to its middle. Alongside the segment, the points at that distance do form two parallel lines, one on each side. But at each end there is no more line to run alongside, and the points at that distance from the end point form a semicircle wrapping round it. The complete locus is therefore a racetrack shape: two parallel lines closed off by a semicircular end at each end of the segment. (Mark this one yourself.)" },
       { question: "Explain why the construction for a perpendicular bisector requires the compass to be set to more than half the length of the line.",
         answer: "Because the arcs drawn from each end have to overlap. Each arc is the set of points at that fixed distance from one end, and two such arcs only cross if their radii together exceed the distance between the two centres. If the radius were exactly half the line, the arcs would just touch at the midpoint and give no crossing points to join; anything less and they would not meet at all. Setting it comfortably over half guarantees two clear crossing points, one above the line and one below, and the line through them is the perpendicular bisector. (Mark this one yourself.)" },
+      {
+        question: "Bearings are always measured:",
+        choices: [
+          "Clockwise from north, using three figures",
+          "Anticlockwise from north",
+          "Clockwise from east",
+          "From the nearest landmark",
+        ],
+        accept: [
+          "Clockwise from north, using three figures",
+        ],
+        answer: "So east is 090 and south-west is 225. Writing 90 instead of 090 costs a mark.",
+      },
+      {
+        question: "The locus of points a fixed distance from a single point is:",
+        choices: [
+          "A circle",
+          "A straight line",
+          "A perpendicular bisector",
+          "An angle bisector",
+        ],
+        accept: [
+          "A circle",
+        ],
+        answer: "The locus of points equidistant from TWO points is the perpendicular bisector of the line joining them.",
+      },
+      {
+        question: "Which construction gives the locus of points equidistant from two lines?",
+        choices: [
+          "The angle bisector",
+          "The perpendicular bisector",
+          "A circle",
+          "A tangent",
+        ],
+        accept: [
+          "The angle bisector",
+        ],
+        answer: "Equidistant from two POINTS gives the perpendicular bisector; from two LINES gives the angle bisector.",
+      },
+      {
+        question: "When doing a construction in an exam, you must:",
+        choices: [
+          "Leave all construction arcs visible",
+          "Rub out the arcs neatly",
+          "Use a protractor only",
+          "Draw freehand",
+        ],
+        accept: [
+          "Leave all construction arcs visible",
+        ],
+        answer: "The arcs are the evidence you constructed rather than measured. Erasing them throws away most of the marks.",
+      },
+      {
+        question: "A bearing of 270 degrees points:",
+        choices: [
+          "West",
+          "East",
+          "South",
+          "North",
+        ],
+        accept: [
+          "West",
+        ],
+        answer: "000 is north, 090 east, 180 south, 270 west. Counting clockwise in ninety-degree steps is the safest check.",
+      },
     ],
 
     misconceptions: [
@@ -5016,6 +5406,71 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Because average speed is total distance divided by total time, and the two stages take different amounts of time. The first 30 miles at 60 mph takes half an hour; the second 30 miles at 30 mph takes a whole hour. So the journey is 60 miles in 1.5 hours, giving an average of 40 mph, not 45. Averaging the two speeds would only be right if equal TIME were spent at each, whereas here equal distance was covered — and more time is always spent at the slower speed, which is why the true average is dragged below the halfway point. (Mark this one yourself.)" },
       { question: "Explain why the unit of a compound measure tells you the formula.",
         answer: "Because the unit is the formula, written in units instead of words. 'Per' means divided by, so metres per second means metres divided by seconds, which is distance divided by time — the definition of speed. Grams per cubic centimetre means mass divided by volume, which is density, and newtons per square metre means force divided by area, which is pressure. This is a genuinely useful check in the exam: if you can read the unit in the question, you can reconstruct the formula even if you have forgotten it, and you can also tell whether your answer has come out in the right unit. (Mark this one yourself.)" },
+      {
+        question: "Speed is calculated as:",
+        choices: [
+          "Distance divided by time",
+          "Time divided by distance",
+          "Distance times time",
+          "Distance plus time",
+        ],
+        accept: [
+          "Distance divided by time",
+        ],
+        answer: "The same triangle gives distance = speed x time and time = distance divided by speed.",
+      },
+      {
+        question: "A car travels 150 km in 2 hours. What is its average speed in km/h?",
+        choices: [
+          "75",
+          "300",
+          "152",
+          "50",
+        ],
+        accept: [
+          "75",
+        ],
+        answer: "150 divided by 2 = 75 km/h. Average speed uses total distance over total time, not the mean of separate speeds.",
+      },
+      {
+        question: "Density is calculated as:",
+        choices: [
+          "Mass divided by volume",
+          "Volume divided by mass",
+          "Mass times volume",
+          "Force divided by area",
+        ],
+        accept: [
+          "Mass divided by volume",
+        ],
+        answer: "Pressure is force divided by area, which follows the same triangle pattern.",
+      },
+      {
+        question: "To convert a speed from m/s into km/h you should:",
+        choices: [
+          "Multiply by 3.6",
+          "Divide by 3.6",
+          "Multiply by 60",
+          "Divide by 1000",
+        ],
+        accept: [
+          "Multiply by 3.6",
+        ],
+        answer: "There are 3600 seconds in an hour and 1000 metres in a kilometre, so the factor is 3600/1000 = 3.6.",
+      },
+      {
+        question: "If distance stays the same and time doubles, the average speed:",
+        choices: [
+          "Halves",
+          "Doubles",
+          "Stays the same",
+          "Quadruples",
+        ],
+        accept: [
+          "Halves",
+        ],
+        answer: "Speed and time are inversely proportional for a fixed distance.",
+      },
     ],
 
     misconceptions: [

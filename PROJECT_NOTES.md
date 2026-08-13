@@ -759,9 +759,15 @@ question costs the whole batch.
 green while the rest are written, and each subject is locked against
 regression the moment it is added.
 
-- Done: citizenship (12), biology (20), chemistry (19) — all locked in MCQ_DONE
-- Not started: physics (19), business (26), computer-science (18), maths (19),
-  english (16), history (19), geography (17)
+- Done and locked in MCQ_DONE: citizenship (12), biology (20), chemistry (19),
+  physics (19), computer-science (18), maths (19) = 107 topics, 535 questions
+- Not started: business (26), english (16), history (19), geography (17)
+
+When rewording a question to dodge a duplicate, CHECK THE CHOICES STILL FIT.
+Three times now a reworded stem has been left with the old options underneath —
+"which part of the UK..." followed by four voting systems. The duplicate guard
+catches repeated questions; nothing catches a stem that no longer matches its
+own answers except reading it.
 
 Adding a subject to MCQ_DONE is the LAST step, and it must be its own command.
 Chaining it after `expand-topic.mjs` with `&&` means a failed insert silently
