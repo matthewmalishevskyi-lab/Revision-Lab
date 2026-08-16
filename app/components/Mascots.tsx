@@ -43,9 +43,7 @@ export const MASCOTS = {
   iris: Iris,
   bobby: Bobby,
   lumen: Lumen,
-  sol: Sol,
-  plume: Plume,
-  reise: Reise,
+  voyager: Voyager,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -1216,446 +1214,170 @@ export function Lumen(props: MascotProps) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// THE TRAVEL GIRLS — Spanish, French and German.
-//
-// One character per language, all built from the same skeleton so they read as
-// a matched set: a girl with a backpack, standing the way the rest of the cast
-// stands. What tells them apart is the hat, the pack colour and the hair — the
-// same trick Quill's ruff and Knight's helmet play, where ONE strong prop
-// carries the identity and everything else stays in the shared house style.
-//
-// ── Why "girl", and why a backpack ──────────────────────────────────────────
-//
-// Matthew asked for a travel girl for each language, matching the sciences —
-// meaning built to the same brief as Iris: a real character in real clothes,
-// not a mascot in fancy dress. The backpack is the thread that ties the three
-// together on sight, the way the goggles/glasses tie Pixel, Hoot, Quill and
-// Iris together. It also does honest work: a backpack is what a school pupil
-// actually carries, so "travel" reads as an extension of "student" rather than
-// as tourism.
-//
-// ── The head sits lower than the core four, like Bobby's ───────────────────
-//
-// Each of these wears a hat, and a hat needs headroom the same way Bobby's cap
-// did. The fix is the same one used there: shift the head down rather than
-// shrink it, so the head-to-body ratio that reads as "designed mascot" rather
-// than "toy" is undisturbed — the hat is extra mass on TOP, not a taller head.
-//
-// ── One shared shape, three different flags ────────────────────────────────
-//
-// Sol (Spain), Plume (France) and Reise (Germany) all use the same head
-// outline, the same eye setting, the same skirt-and-boots silhouette. National
-// colour appears exactly once each, in the backpack and the hat band — never as
-// a flag, a costume, or a stereotype-heavy outfit. A wide straw hat, a beret and
-// a felt alpine hat are worn everywhere those countries actually are, by real
-// people, which is the same test Quill's Elizabethan dress and Knight's armour
-// pass and a national costume would not.
-//
-// ── The eyewear thread continues, once ──────────────────────────────────────
-//
-// Sol wears round sunglasses pushed up onto her hat brim — echoing Iris's
-// goggles pushed up onto her forehead, and Pixel/Hoot/Quill's glasses before
-// that. Plume and Reise do not, the same way Knight, Atlas, Sterling and Bobby
-// do not: it is a recurring motif in this cast, not a uniform.
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ============================ SOL — Spanish ==================================
-export function Sol(props: MascotProps) {
+// ─────────────────────────────────────────────────────────────────────────────
+// VOYAGER — Languages (Spanish, French and German).
+//
+// Originally three separate "travel girl" mascots, one per language. Matthew
+// asked for them to become ONE shared character instead, matching how Science
+// already puts one mascot (Iris) in front of three separate GCSEs — the
+// homepage was getting cluttered with a card and a mascot per language, and
+// simpler was the right call, the same lesson Science had already taught.
+//
+// ── An explorer, not a tourist ──────────────────────────────────────────────
+//
+// A backpack and a map, rather than any of the national props the three
+// separate characters carried (a sun hat, a beret, an alpine hat) — nothing
+// here belongs to one country over the others, which is the whole point of a
+// single mascot standing in for three different languages at once.
+//
+// ── The face is Iris's, unchanged ───────────────────────────────────────────
+//
+// After the three-mascot version, Matthew asked specifically for this one to
+// be cute with no weird features — so rather than design a new face, this
+// reuses Iris's head, ears, brows, eyes, nose and mouth coordinates exactly.
+// That is the most-tested face in the whole cast, and copying proven geometry
+// is a smaller risk than inventing new geometry a second time. Nothing about
+// Voyager's face is new; only the hair, the outfit and the props are.
+//
+// ── One accent colour, once ─────────────────────────────────────────────────
+//
+// Matthew picked yellow for Languages. It appears in exactly one place — the
+// bandana at her neck — the same restraint Sol, Plume and Reise each showed
+// with their own single country colour. Everything else is worn khaki and
+// brown, so the one yellow note actually reads as a colour choice rather than
+// disappearing into a yellow character.
+// ─────────────────────────────────────────────────────────────────────────────
+export function Voyager(props: MascotProps) {
   return (
     <svg
       viewBox="0 0 120 140"
       role="img"
-      aria-label="Sol, the Spanish mascot: a smiling girl in a wide sun hat and a mustard backpack, sunglasses pushed up on her hat brim"
+      aria-label="Voyager, the Languages mascot: a smiling explorer with a backpack, holding an open map"
       {...props}
     >
       {/* Light from the upper left, as with every other character here. */}
 
-      {/* ── Shoes: simple espadrilles, toes turned slightly out ── */}
-      <path d="M35 128 Q35 122 44.5 120.5 Q54 120.5 54.5 127 Q54.5 132.5 44.5 133.5 Q35 133.5 35 128 Z" fill="#c9a26a" />
-      <path d="M85 128 Q85 122 75.5 120.5 Q66 120.5 65.5 127 Q65.5 132.5 75.5 133.5 Q85 133.5 85 128 Z" fill="#c9a26a" />
-      <path d="M75.5 120.5 Q85 122 85 128 Q85 133.5 75.5 133.5 Q79 127 75.5 120.5 Z" fill="#000000" opacity={0.18} />
-      {/* Ankle ties — two short strokes, and a plain espadrille reads as a boot */}
-      <path d="M39 121 L37.5 118 M50 120.5 L49.5 117.4" stroke="#8a6a3c" strokeWidth={1.4} strokeLinecap="round" />
-      <path d="M89 121 L90.5 118 M78 120.5 L78.5 117.4" stroke="#8a6a3c" strokeWidth={1.4} strokeLinecap="round" />
-
-      {/* ── Bare legs, below the skirt hem ── */}
-      <path d="M42 104 L40 122 Q46 124 51 122 L52 104 Z" fill="#f2cdae" />
-      <path d="M68 104 L70 122 Q75 124 80 122 L78 104 Z" fill="#f2cdae" />
-      <path d="M73 104 L75 122 Q78 123 80 122 L78 104 Z" fill="#000000" opacity={0.06} />
-
-      {/* ── Skirt. An A-line, wider at the hem than the waist, which is what
-             keeps it reading as fabric rather than as a rigid cone. ── */}
-      <path d="M36 78 Q60 71 84 78 L92 104 Q60 112 28 104 Z" fill="#d97706" />
-      <path d="M60 73 Q75 74.5 84 78 L92 104 Q76 109 60 110.5 Z" fill="#000000" opacity={0.17} />
-      <path d="M40 80 Q45 78.5 49 79 Q43 88 39 100 Z" fill="#ffffff" opacity={0.1} />
-
-      {/* ── Blouse, tucked in ── */}
-      <path d="M42 63 Q60 57 78 63 L80 80 Q60 85 40 80 Z" fill="#fdf6ec" />
-      <path d="M60 58 Q70 58.5 78 63 L80 80 Q70 83.4 60 84.4 Z" fill="#000000" opacity={0.06} />
-      {/* A drawstring neckline — one line, and it reads as a real garment */}
-      <path d="M48 63.6 Q60 68 72 63.6" stroke="#e8c468" strokeWidth={1.6} fill="none" strokeLinecap="round" />
-
-      {/* ── The neckerchief ── */}
-      <path d="M52 60 L68 60 L64 71 Q60 73.5 56 71 Z" fill="#ef6c53" />
-      <path d="M60 60 L68 60 L64 71 Q62 72.3 60 71.6 Z" fill="#000000" opacity={0.14} />
-      <path d="M52 60 Q60 57 68 60" stroke="#ef6c53" strokeWidth={3.4} fill="none" strokeLinecap="round" />
-
-      {/* ── Sleeves ── */}
-      <path d="M39 65 Q31 68 29 76 L31 82 Q37 82.5 38.5 77 L41 67 Z" fill="#fdf6ec" />
-      <path d="M81 65 Q89 68 91 76 L89 82 Q83 82.5 81.5 77 L79 67 Z" fill="#fdf6ec" />
-      <path d="M81 65 Q89 68 91 76 L89 82 Q86.5 82.3 85.5 79.5 L81 68 Z" fill="#000000" opacity={0.08} />
-
-      {/* ── The backpack. Drawn behind the arms so the straps cross in front
-             of the shoulders — that crossing is what tells the eye it is worn
-             on the back, not carried in a hand. ── */}
-      <path d="M15 92 Q13 105 18 116 Q26 120 28 112 Q23 100 24 90 Z" fill="#a35a1f" />
-      <path d="M18 93 Q16 105 20 115 Q17.5 106 19 93 Z" fill="#000000" opacity={0.16} />
-      <rect x="18" y="97" width="8" height="6" rx="1.6" fill="#f0c869" />
-      {/* Strap, crossing over the blouse — one asymmetric line, the same trick
-          Pixel's single aerial and Atlas's one raised arm use. */}
-      <path d="M43 63 Q30 76 22 91" stroke="#7a3f13" strokeWidth={5.5} fill="none" strokeLinecap="round" />
-      {/* A chest clip where the strap crosses — small, but it is the detail
-          that makes a pack read as WORN rather than pasted beside her. */}
-      <circle cx="43" cy="63.5" r="2.6" fill="#f0c869" />
-
-      {/* ── Arms. Left hangs holding a small postcard; right is raised to shade
-             her eyes, the single asymmetric gesture every character in this
-             cast gets one of. ── */}
-      <path d="M39 65 Q30 72 27 82" stroke="#f2cdae" strokeWidth={9} fill="none" strokeLinecap="round" />
-      <circle cx="26" cy="84" r="5.6" fill="#f2cdae" />
-      <path d="M23 83 L20 84.5 L23 87" stroke="#e0b48f" strokeWidth={1.6} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M81 65 Q90 58 92 47" stroke="#f2cdae" strokeWidth={9} fill="none" strokeLinecap="round" />
-      <circle cx="93" cy="45" r="5.6" fill="#f2cdae" />
-      <path d="M89.5 41.5 A5.6 5.6 0 0 1 89.5 48.5 A3.2 5.6 0 0 0 89.5 41.5 Z" fill="#000000" opacity={0.1} />
-
-      {/* ── The camera, hanging from a neck strap on her chest ── */}
-      <path d="M60 66 L60 78" stroke="#5b3a24" strokeWidth={1.6} opacity={0.3} fill="none" />
-      <rect x="53" y="76" width="14" height="10" rx="2" fill="#3a3a44" />
-      <circle cx="60" cy="81" r="3.6" fill="#1c1c22" />
-      <circle cx="60" cy="81" r="2" fill="#5b8fc9" />
-      <rect x="62.5" y="74.4" width="4" height="2.2" rx="0.6" fill="#3a3a44" />
-
-      {/* ── Neck ── */}
-      <rect x="53" y="53" width="14" height="14" rx="5" fill="#f2cdae" />
-      <path d="M53 55 Q60 60 67 55 L67 59 Q60 63 53 59 Z" fill="#000000" opacity={0.1} />
-
-      {/* ── Head, shifted down to leave room for the hat. Same oval silhouette
-             as the rest of the cast. ── */}
-      <path d="M35.5 36 C35.5 20 46 12 60 12 C74 12 84.5 20 84.5 36 C84.5 50 77 61.5 60 66 C43 61.5 35.5 50 35.5 36 Z" fill="#f2cdae" />
-      <path d="M60 12 C74 12 84.5 20 84.5 36 C84.5 50 77 61.5 60 66 C69 60 71 49 71 36 C71 22 66 15 60 12 Z" fill="#000000" opacity={0.1} />
-
-      {/* ── Ears ── */}
-      <ellipse cx="35.5" cy="41" rx="3.8" ry="5.2" fill="#f2cdae" />
-      <ellipse cx="84.5" cy="41" rx="3.8" ry="5.2" fill="#e8bd99" />
-
-      {/* ── Hair: a ponytail swept to one side, which is what sells "outdoors
-             and moving" rather than "posed indoors". ── */}
-      <path d="M36 38 Q33.5 16 60 12 Q86.5 16 84 38 Q83 27 78.5 24 Q69 29 60 28 Q51 27 42 24 Q37.5 27.6 36 38 Z" fill="#7a4a24" />
-      <path d="M60 12 Q86.5 16 84 38 Q83 27 78.5 24 Q69.5 28.8 60 27.8 Z" fill="#000000" opacity={0.14} />
-      <path d="M78.5 24 Q92 26 97 42 Q94 52 87 50 Q92 40 84 29 Z" fill="#7a4a24" />
-      <path d="M78.5 24 Q92 26 97 42 Q94 50 89.5 50.5 Q95 38 85 27.5 Z" fill="#000000" opacity={0.14} />
-      <path d="M47 20 Q54 14.4 63 15.2" stroke="#ffffff" strokeWidth={1.8} opacity={0.16} fill="none" strokeLinecap="round" />
-
-      {/* ── The hat: a wide straw brim, sitting behind the fringe so it reads
-             as WORN, then the crown on top. Kept a couple of units clear of
-             y=0 — the lesson learned from Pixel's aerial, once drawn at a
-             negative y and silently clipped by the canvas edge. ── */}
-      <ellipse cx="60" cy="15" rx="34" ry="7.5" fill="#e8c468" />
-      <path d="M60 7.5 A34 7.5 0 0 1 60 22.5 A20 7.5 0 0 0 60 7.5 Z" fill="#c9a04e" opacity={0.5} />
-      <path d="M60 1.5 C71 1.5 79 6 79 12.5 C79 17.5 71 21 60 21 C49 21 41 17.5 41 12.5 C41 6 49 1.5 60 1.5 Z" fill="#f0d38a" />
-      <path d="M60 1.5 C71 1.5 79 6 79 12.5 C79 17.5 71 21 60 21 C67 18 70 14 70 10.5 C70 6.5 66 3.4 60 1.5 Z" fill="#000000" opacity={0.1} />
-      <path d="M45 11 Q52 5 60 5" stroke="#ffffff" strokeWidth={1.6} opacity={0.25} fill="none" strokeLinecap="round" />
-      {/* A gold band, the family colour Hoot and Quill also carry */}
-      <path d="M42 15.5 Q60 19.4 78 15.5" stroke="#f0c869" strokeWidth={2.6} fill="none" strokeLinecap="round" />
-
-      {/* ── Sunglasses, pushed up on the brim — the eyewear thread, continued. ── */}
-      <path d="M47 12.4 Q52 10.4 57 12.4" stroke="#1e293b" strokeWidth={2} fill="none" strokeLinecap="round" />
-      <path d="M63 12.4 Q68 10.4 73 12.4" stroke="#1e293b" strokeWidth={2} fill="none" strokeLinecap="round" />
-      <circle cx="52" cy="13.4" r="4.4" fill="#1e293b" />
-      <circle cx="68" cy="13.4" r="4.4" fill="#1e293b" />
-      <path d="M56.4 13.4 L63.6 13.4" stroke="#1e293b" strokeWidth={2} />
-      <path d="M50 11.6 L53.6 11.6" stroke="#ffffff" strokeWidth={1.1} opacity={0.4} strokeLinecap="round" />
-
-      {/* ── Brows ── */}
-      <path d="M46.5 34.4 Q51.5 31.8 56 33.6" stroke="#5b3a1c" strokeWidth={2.1} strokeLinecap="round" fill="none" />
-      <path d="M64 33.6 Q68.5 31.8 73.5 34.4" stroke="#5b3a1c" strokeWidth={2.1} strokeLinecap="round" fill="none" />
-
-      {/* ── Eyes ── */}
-      <ellipse cx="51" cy="41" rx="5" ry="5.4" fill="#ffffff" />
-      <ellipse cx="69" cy="41" rx="5" ry="5.4" fill="#ffffff" />
-      <circle cx="51.7" cy="42" r="3" fill="#4a2e14" />
-      <circle cx="69.7" cy="42" r="3" fill="#4a2e14" />
-      <circle cx="50.2" cy="40" r="1.25" fill="#ffffff" />
-      <circle cx="68.2" cy="40" r="1.25" fill="#ffffff" />
-      <path d="M46 38.2 Q51 35.4 56 38.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
-      <path d="M64 38.2 Q69 35.4 74 38.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
-
-      {/* ── Nose ── */}
-      <path d="M59 45 Q57 50.5 61 51.5" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-
-      {/* ── Mouth: a wide, easy smile — she is the most outward-facing of the
-             three, which is deliberate: Spain's theme is the sun and warmth. ── */}
-      <path d="M52 56 Q60 63 68 56" stroke="#b06a56" strokeWidth={3} strokeLinecap="round" fill="none" />
-    </svg>
-  );
-}
-
-// ============================ PLUME — French ==================================
-export function Plume(props: MascotProps) {
-  return (
-    <svg
-      viewBox="0 0 120 140"
-      role="img"
-      aria-label="Plume, the French mascot: a smiling girl in a striped top, a blue beret and a blue backpack, holding a small sketchbook"
-      {...props}
-    >
-      {/* ── Shoes ── */}
-      <path d="M35 128 Q35 122 44.5 120.5 Q54 120.5 54.5 127 Q54.5 132.5 44.5 133.5 Q35 133.5 35 128 Z" fill="#2a2a33" />
-      <path d="M85 128 Q85 122 75.5 120.5 Q66 120.5 65.5 127 Q65.5 132.5 75.5 133.5 Q85 133.5 85 128 Z" fill="#2a2a33" />
-      <path d="M75.5 120.5 Q85 122 85 128 Q85 133.5 75.5 133.5 Q79 127 75.5 120.5 Z" fill="#000000" opacity={0.25} />
-      <path d="M39.5 122 Q37.5 126.5 39.5 131" stroke="#e2e2e8" strokeWidth={1.2} strokeLinecap="round" fill="none" opacity={0.4} />
-      <path d="M80.5 122 Q82.5 126.5 80.5 131" stroke="#e2e2e8" strokeWidth={1.2} strokeLinecap="round" fill="none" opacity={0.3} />
-
-      {/* ── Legs, in pale tights ── */}
-      <path d="M42 104 L40 122 Q46 124 51 122 L52 104 Z" fill="#e8e8ee" />
-      <path d="M68 104 L70 122 Q75 124 80 122 L78 104 Z" fill="#e8e8ee" />
-      <path d="M73 104 L75 122 Q78 123 80 122 L78 104 Z" fill="#000000" opacity={0.05} />
-
-      {/* ── Skirt — navy, pleated with three fold lines ── */}
-      <path d="M36 78 Q60 71 84 78 L92 104 Q60 112 28 104 Z" fill="#1e2a4a" />
-      <path d="M60 73 Q75 74.5 84 78 L92 104 Q76 109 60 110.5 Z" fill="#000000" opacity={0.2} />
-      <path d="M46 79.4 L42 102 M60 78 L59 108 M74 79.4 L78 102" stroke="#0f1830" strokeWidth={1.2} opacity={0.5} />
-
-      {/* ── The Breton top: white with navy stripes, worn everywhere along the
-             French coast and one of the most recognisable pieces of French
-             everyday dress there is — not a costume, a real garment. ── */}
-      <path d="M42 63 Q60 57 78 63 L80 80 Q60 85 40 80 Z" fill="#fdfdfb" />
-      <path d="M42.6 67 L77.4 67.6 M42.2 71.4 L78 72 M41.6 75.8 L79 76.4" stroke="#1e2a4a" strokeWidth={2.6} />
-      <path d="M60 58 Q70 58.5 78 63 L80 80 Q70 83.4 60 84.4 Z" fill="#000000" opacity={0.06} />
-
-      {/* ── The red neck scarf, tied at the side — the single accent colour on
-             an otherwise navy-and-white outfit ── */}
-      <path d="M50 60.5 Q60 65.5 70 60.5 L67 68 Q60 71 53 68 Z" fill="#c8372c" />
-      <path d="M50 60.5 Q60 65.5 70 60.5" stroke="#c8372c" strokeWidth={3.2} fill="none" strokeLinecap="round" />
-
-      {/* ── Sleeves, striped to match the top ── */}
-      <path d="M39 65 Q31 68 29 76 L31 82 Q37 82.5 38.5 77 L41 67 Z" fill="#fdfdfb" />
-      <path d="M81 65 Q89 68 91 76 L89 82 Q83 82.5 81.5 77 L79 67 Z" fill="#fdfdfb" />
-      <path d="M30.4 74.4 L38.4 72.8 M82 74.8 L89.6 73.4" stroke="#1e2a4a" strokeWidth={2} />
-      <path d="M81 65 Q89 68 91 76 L89 82 Q86.5 82.3 85.5 79.5 L81 68 Z" fill="#000000" opacity={0.08} />
-
-      {/* ── Backpack — cornflower blue, the subject's colour ── */}
-      <path d="M15 92 Q13 105 18 116 Q26 120 28 112 Q23 100 24 90 Z" fill="#2f6bb0" />
-      <path d="M18 93 Q16 105 20 115 Q17.5 106 19 93 Z" fill="#000000" opacity={0.16} />
-      <rect x="18" y="97" width="8" height="6" rx="1.6" fill="#e8e8ee" />
-      <path d="M43 63 Q30 76 22 91" stroke="#1e4f85" strokeWidth={5.5} fill="none" strokeLinecap="round" />
-      <circle cx="43" cy="63.5" r="2.6" fill="#e8e8ee" />
-
-      {/* ── Arms. Left holds a small sketchbook open against her chest; right
-             hangs loosely — the reverse asymmetry from Sol's, so the two do not
-             read as copies of each other. ── */}
-      <path d="M39 65 Q31 71 30 80" stroke="#f2cdae" strokeWidth={9} fill="none" strokeLinecap="round" />
-      <circle cx="31" cy="82" r="5.6" fill="#f2cdae" />
-      <path d="M81 65 Q89 70 91 79" stroke="#f2cdae" strokeWidth={9} fill="none" strokeLinecap="round" />
-      <circle cx="92" cy="81" r="5.6" fill="#f2cdae" />
-      <path d="M88.5 77.5 A5.6 5.6 0 0 1 88.5 84.5 A3.2 5.6 0 0 0 88.5 77.5 Z" fill="#000000" opacity={0.1} />
-
-      {/* ── The sketchbook, held against her chest — one open page, one closed
-             cover, and a pencil tucked in the spiral. ── */}
-      <rect x="49" y="80" width="22" height="16" rx="1.5" fill="#fdfdfb" />
-      <path d="M49 80 L60 82 L60 96 L49 96 Z" fill="#f1ede2" />
-      <path d="M53 85 L57 85 M53 89 L58 89" stroke="#9aa0ac" strokeWidth={1} />
-      <rect x="60" y="80" width="11" height="16" rx="1.5" fill="#2f6bb0" />
-      <path d="M65 80 L65 96" stroke="#1e2a4a" strokeWidth={1} opacity={0.5} />
-
-      {/* ── Neck ── */}
-      <rect x="53" y="53" width="14" height="14" rx="5" fill="#f2cdae" />
-      <path d="M53 55 Q60 60 67 55 L67 59 Q60 63 53 59 Z" fill="#000000" opacity={0.1} />
-
-      {/* ── Head ── */}
-      <path d="M35.5 36 C35.5 20 46 12 60 12 C74 12 84.5 20 84.5 36 C84.5 50 77 61.5 60 66 C43 61.5 35.5 50 35.5 36 Z" fill="#f2cdae" />
-      <path d="M60 12 C74 12 84.5 20 84.5 36 C84.5 50 77 61.5 60 66 C69 60 71 49 71 36 C71 22 66 15 60 12 Z" fill="#000000" opacity={0.1} />
-
-      {/* ── Ears ── */}
-      <ellipse cx="35.5" cy="41" rx="3.8" ry="5.2" fill="#f2cdae" />
-      <ellipse cx="84.5" cy="41" rx="3.8" ry="5.2" fill="#e8bd99" />
-
-      {/* ── Hair: dark, cut in a short bob just above the shoulder — tidy under
-             a beret, unlike Sol's loose ponytail, which is part of what tells
-             the two apart at a glance even in silhouette. ── */}
-      <path d="M35.5 40 Q32.5 17 60 13 Q87.5 17 84.5 40 Q84 30 80 45 Q83 30 78.5 24.4 Q69 29.6 60 28.6 Q51 27.6 42 24.4 Q37.4 30 40 45 Q36 30 35.5 40 Z" fill="#241812" />
-      <path d="M60 13 Q87.5 17 84.5 40 Q84 30 80 45 Q83 30 78.5 24.4 Q69.5 29.4 60 28.4 Z" fill="#000000" opacity={0.16} />
-      <path d="M46 20.4 Q53 15 62 15.8" stroke="#ffffff" strokeWidth={1.7} opacity={0.14} fill="none" strokeLinecap="round" />
-
-      {/* ── The beret — a soft dome, not a rigid disc, which is what separates
-             a beret from a shower cap: it sags slightly off-centre. Shifted
-             clear of y=0 for the same reason as Sol's hat crown, above. ── */}
-      <path d="M39 19 Q35 5 60 3 Q85 5 81 19 Q81 12 60 11.5 Q39 12 39 19 Z" fill="#2f6bb0" />
-      <path d="M60 3 Q85 5 81 19 Q81 12 60 11.5 Z" fill="#000000" opacity={0.14} />
-      <path d="M43 10 Q50 4 60 3.4" stroke="#ffffff" strokeWidth={1.8} opacity={0.2} fill="none" strokeLinecap="round" />
-      {/* The band, sitting at the hairline */}
-      <path d="M39 19 Q60 23 81 19 L81 21.6 Q60 25.6 39 21.6 Z" fill="#1e4f85" />
-      {/* The little stem on top — the detail that makes a dome read as a beret */}
-      <circle cx="66" cy="3" r="2.2" fill="#1e4f85" />
-
-      {/* ── Brows ── */}
-      <path d="M46.5 34.4 Q51.5 31.8 56 33.6" stroke="#241812" strokeWidth={2.1} strokeLinecap="round" fill="none" />
-      <path d="M64 33.6 Q68.5 31.8 73.5 34.4" stroke="#241812" strokeWidth={2.1} strokeLinecap="round" fill="none" />
-
-      {/* ── Eyes ── */}
-      <ellipse cx="51" cy="41" rx="5" ry="5.4" fill="#ffffff" />
-      <ellipse cx="69" cy="41" rx="5" ry="5.4" fill="#ffffff" />
-      <circle cx="51.7" cy="42" r="3" fill="#241812" />
-      <circle cx="69.7" cy="42" r="3" fill="#241812" />
-      <circle cx="50.2" cy="40" r="1.25" fill="#ffffff" />
-      <circle cx="68.2" cy="40" r="1.25" fill="#ffffff" />
-      <path d="M46 38.2 Q51 35.4 56 38.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
-      <path d="M64 38.2 Q69 35.4 74 38.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
-
-      {/* ── Nose ── */}
-      <path d="M59 45 Q57 50.5 61 51.5" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-
-      {/* ── Mouth: a small closed smile, more restrained than Sol's — a
-             deliberate contrast, not a lesser one. ── */}
-      <path d="M53.5 55.6 Q60 60.4 66.5 55.6" stroke="#b06a56" strokeWidth={2.8} strokeLinecap="round" fill="none" />
-    </svg>
-  );
-}
-
-// ============================ REISE — German ==================================
-export function Reise(props: MascotProps) {
-  return (
-    <svg
-      viewBox="0 0 120 140"
-      role="img"
-      aria-label="Reise, the German mascot: a smiling girl in a green felt hat with a feather and a green backpack, holding a map"
-      {...props}
-    >
-      {/* ── Boots — sturdier than the other two, with a thicker sole, because
-             the prop she carries is a map, not a camera: this is the hiker of
-             the three. ── */}
+      {/* ── Boots ── */}
       <path d="M34 127 Q34 120 44.5 118.5 Q55 118.5 55.5 126 Q55.5 132 44.5 133.2 Q34 133.2 34 127 Z" fill="#4a3423" />
       <path d="M86 127 Q86 120 75.5 118.5 Q65 118.5 64.5 126 Q64.5 132 75.5 133.2 Q86 133.2 86 127 Z" fill="#4a3423" />
       <path d="M75.5 118.5 Q86 120 86 127 Q86 132 75.5 133.2 Q80 126 75.5 118.5 Z" fill="#000000" opacity={0.22} />
       <path d="M34 131.4 h21.5 M64.5 131.4 h21.5" stroke="#2e2015" strokeWidth={2.2} strokeLinecap="round" />
       <path d="M39 121 L37.5 118 M50 120 L49 117 M81 121 L82.5 118 M70 120 L71 117" stroke="#6b4a2e" strokeWidth={1.4} strokeLinecap="round" />
 
-      {/* ── Socks, folded over the boot tops ── */}
+      {/* ── Socks, folded over the boot tops, with a thin yellow trim — a
+             quiet first touch of the one accent colour. ── */}
       <path d="M41 104 L39 120 Q46 122.4 52 120 L53 104 Z" fill="#f4f4ee" />
       <path d="M67 104 L69 120 Q75 122.4 81 120 L79 104 Z" fill="#f4f4ee" />
       <path d="M72 104 L74 120 Q78 121.4 81 120 L79 104 Z" fill="#000000" opacity={0.06} />
-      <path d="M39.4 108.6 h13.4 M67.6 108.6 h13.4" stroke="#84cc16" strokeWidth={2} opacity={0.6} />
+      <path d="M39.4 108.6 h13.4 M67.6 108.6 h13.4" stroke="#eab308" strokeWidth={2} opacity={0.7} />
 
-      {/* ── Shorts — practical, for a hiker, in place of the other two's
-             skirts. Chunky proportions kept by drawing them full and rounded
-             rather than fitted. ── */}
-      <path d="M38 79 Q60 73 82 79 L86 100 Q60 106 34 100 Z" fill="#3f6b1f" />
+      {/* ── Cargo shorts, khaki ── */}
+      <path d="M38 79 Q60 73 82 79 L86 100 Q60 106 34 100 Z" fill="#a9895c" />
       <path d="M60 74.4 Q73 75.6 82 79 L86 100 Q73 104 60 105.2 Z" fill="#000000" opacity={0.18} />
+      {/* A cargo pocket, kept clear of the map's footprint below so nothing
+          ends up hidden behind it. */}
+      <rect x="37" y="86" width="10" height="10" rx="1.5" fill="#8a6a3c" />
+      <path d="M37 89.4 h10" stroke="#6f5530" strokeWidth={1} />
 
-      {/* ── Shirt: a simple button-up with rolled sleeves, unbuttoned collar ── */}
-      <path d="M42 63 Q60 57 78 63 L80 81 Q60 86 40 81 Z" fill="#fdfdfb" />
+      {/* ── Shirt: a simple safari shirt with a breast pocket ── */}
+      <path d="M42 63 Q60 57 78 63 L80 81 Q60 86 40 81 Z" fill="#fdfaf0" />
       <path d="M60 58 Q70 58.5 78 63 L80 81 Q70 84.4 60 85.4 Z" fill="#000000" opacity={0.06} />
-      <path d="M60 63 L60 84" stroke="#c7c7bc" strokeWidth={1} opacity={0.5} />
-      <circle cx="60" cy="69" r="1" fill="#c7c7bc" />
-      <circle cx="60" cy="76" r="1" fill="#c7c7bc" />
+      <path d="M50 70 L60 69 L60.6 78 L50.6 79 Z" fill="#f1ecdc" />
+      <path d="M50.4 73.4 L60.2 72.6" stroke="#c7bda0" strokeWidth={1} />
 
-      {/* ── A pair of thin braces, in the subject's green, over the shoulders —
-             the detail that gives an otherwise plain shirt a travelling,
-             practical feel without becoming a full costume. ── */}
-      <path d="M50 62 L46 80" stroke="#3f6b1f" strokeWidth={3} fill="none" strokeLinecap="round" />
-      <path d="M70 62 L74 80" stroke="#3f6b1f" strokeWidth={3} fill="none" strokeLinecap="round" />
+      {/* ── The yellow bandana — the ONE accent colour, in the same spot Sol,
+             Plume and Reise each carried their own country's colour. ── */}
+      <path d="M50 60.5 Q60 65.5 70 60.5 L67 68 Q60 71 53 68 Z" fill="#eab308" />
+      <path d="M50 60.5 Q60 65.5 70 60.5" stroke="#eab308" strokeWidth={3.2} fill="none" strokeLinecap="round" />
+      <path d="M60 60.5 L67 68 Q64 69.6 60 68.6 Z" fill="#000000" opacity={0.12} />
 
-      {/* ── Rolled sleeves — a folded cuff band is what makes a sleeve read as
-             ROLLED rather than simply short. ── */}
-      <path d="M39 65 Q31 68 29 76 L31 82 Q37 82.5 38.5 77 L41 67 Z" fill="#fdfdfb" />
-      <path d="M81 65 Q89 68 91 76 L89 82 Q83 82.5 81.5 77 L79 67 Z" fill="#fdfdfb" />
-      <path d="M29.6 75.4 Q34.6 77.6 38.8 75.6" stroke="#c7c7bc" strokeWidth={2} fill="none" />
-      <path d="M81.2 75.6 Q85.4 77.6 90.4 75.4" stroke="#c7c7bc" strokeWidth={2} fill="none" />
+      {/* ── Sleeves, rolled ── */}
+      <path d="M39 65 Q31 68 29 76 L31 82 Q37 82.5 38.5 77 L41 67 Z" fill="#fdfaf0" />
+      <path d="M81 65 Q89 68 91 76 L89 82 Q83 82.5 81.5 77 L79 67 Z" fill="#fdfaf0" />
+      <path d="M29.6 75.4 Q34.6 77.6 38.8 75.6" stroke="#c7bda0" strokeWidth={2} fill="none" />
+      <path d="M81.2 75.6 Q85.4 77.6 90.4 75.4" stroke="#c7bda0" strokeWidth={2} fill="none" />
       <path d="M81 65 Q89 68 91 76 L89 82 Q86.5 82.3 85.5 79.5 L81 68 Z" fill="#000000" opacity={0.08} />
 
-      {/* ── Backpack — lime green, the subject's colour, and the biggest of
-             the three: a hiker's pack, with a rolled bedroll across the top. ── */}
-      <path d="M14 90 Q12 105 17 117 Q26 121.4 28.5 112.4 Q23 99 24.5 88 Z" fill="#5a9214" />
-      <path d="M18 91 Q15.4 105 19.4 116 Q16.8 106 18.4 91 Z" fill="#000000" opacity={0.16} />
-      <rect x="17.5" y="96" width="8.5" height="6" rx="1.6" fill="#e3f4c4" />
-      <path d="M15 90 Q21 85.4 27.4 89.4" stroke="#3f6b1f" strokeWidth={4.4} fill="none" strokeLinecap="round" />
-      <path d="M43 63 Q29 76 21 90" stroke="#3f6b1f" strokeWidth={5.5} fill="none" strokeLinecap="round" />
-      <circle cx="43" cy="63.5" r="2.6" fill="#e3f4c4" />
+      {/* ── The backpack — worn canvas brown, not yellow, so the accent stays
+             the bandana's alone rather than being smeared across the whole
+             outfit. ── */}
+      <path d="M14 90 Q12 105 17 117 Q26 121.4 28.5 112.4 Q23 99 24.5 88 Z" fill="#7a4a24" />
+      <path d="M18 91 Q15.4 105 19.4 116 Q16.8 106 18.4 91 Z" fill="#000000" opacity={0.18} />
+      <rect x="17.5" y="96" width="8.5" height="6" rx="1.6" fill="#c9a26a" />
+      <path d="M15 90 Q21 85.4 27.4 89.4" stroke="#5b3a1a" strokeWidth={4.4} fill="none" strokeLinecap="round" />
+      <path d="M43 63 Q29 76 21 90" stroke="#5b3a1a" strokeWidth={5.5} fill="none" strokeLinecap="round" />
+      <circle cx="43" cy="63.5" r="2.6" fill="#c9a26a" />
 
-      {/* ── Arms. Left holds a folded map open in front of her; right hangs.
-             The map is the identifying prop, the way the camera and sketchbook
-             are for the other two. ── */}
+      {/* ── Arms, both holding the map open in front of her ── */}
       <path d="M39 65 Q30 70 28 79" stroke="#f2cdae" strokeWidth={9} fill="none" strokeLinecap="round" />
       <circle cx="29" cy="81" r="5.6" fill="#f2cdae" />
       <path d="M81 65 Q90 69 92 78" stroke="#f2cdae" strokeWidth={9} fill="none" strokeLinecap="round" />
       <circle cx="93" cy="80" r="5.6" fill="#f2cdae" />
       <path d="M89.5 76.5 A5.6 5.6 0 0 1 89.5 83.5 A3.2 5.6 0 0 0 89.5 76.5 Z" fill="#000000" opacity={0.1} />
 
-      {/* ── The map, held open between her hands ── */}
+      {/* ── The map, held open between her hands — the prop that says
+             "explorer" at a glance, the way Sterling's briefcase says
+             "business". ── */}
       <path d="M47 78 L73 78 L71 95 L49 95 Z" fill="#f4ecd8" />
       <path d="M60 78 L60 95" stroke="#c7b98f" strokeWidth={1} />
       <path d="M51 83 Q58 81 60 85 Q62 81 69 83" stroke="#a3874f" strokeWidth={1.2} fill="none" strokeLinecap="round" />
       <path d="M53 89 L58 89 M63 89 L68 89" stroke="#a3874f" strokeWidth={1.2} strokeLinecap="round" />
       <circle cx="63" cy="86" r="1.4" fill="#c8372c" />
 
-      {/* ── Neck ── */}
-      <rect x="53" y="53" width="14" height="14" rx="5" fill="#f2cdae" />
-      <path d="M53 55 Q60 60 67 55 L67 59 Q60 63 53 59 Z" fill="#000000" opacity={0.1} />
+      {/* ── Neck, with the shadow the jaw casts onto it — Iris's exact
+             coordinates, see the note above. ── */}
+      <rect x="53" y="52" width="14" height="16" rx="5" fill="#e0b48f" />
+      <path d="M53 54 Q60 60 67 54 L67 58 Q60 63 53 58 Z" fill="#000000" opacity={0.16} />
 
-      {/* ── Head ── */}
-      <path d="M35.5 36 C35.5 20 46 12 60 12 C74 12 84.5 20 84.5 36 C84.5 50 77 61.5 60 66 C43 61.5 35.5 50 35.5 36 Z" fill="#f2cdae" />
-      <path d="M60 12 C74 12 84.5 20 84.5 36 C84.5 50 77 61.5 60 66 C69 60 71 49 71 36 C71 22 66 15 60 12 Z" fill="#000000" opacity={0.1} />
+      {/* ── The plait, drawn BEFORE the head so it sits behind it — the same
+             trick Iris's bun uses. ── */}
+      <path d="M84 20 Q94 24 92 36 Q90 46 82 48 Q88 45 88 36 Q88 26 80 22 Z" fill="#7a4a24" />
+      <path d="M84 20 Q94 24 92 36 Q90 46 82 48 Q87 44 86.4 36 Q86 27 80 22 Z" fill="#000000" opacity={0.15} />
+      <path d="M83.4 24.6 h2.6 M84 31.4 h2.4 M84.6 38.8 h2.2" stroke="#9a6a3c" strokeWidth={1.2} opacity={0.6} />
+      {/* The tie holding the plait, in the same gold as Hoot's and Quill's
+          glasses — the family colour, appearing once more. */}
+      <path d="M81.4 20 Q84 18.4 86.6 20" stroke="#f0c869" strokeWidth={2.4} fill="none" strokeLinecap="round" />
+
+      {/* ── Head — Iris's exact oval, unshifted. She wears no hat, so there is
+             no reason to move it down the way Sol, Plume and Reise's heads
+             were. ── */}
+      <path d="M35.5 31 C35.5 15 46 7 60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C43 56.5 35.5 45 35.5 31 Z" fill="#f2cdae" />
+      <path d="M60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C69 55 71 44 71 31 C71 17 66 10 60 7 Z" fill="#000000" opacity={0.11} />
 
       {/* ── Ears ── */}
-      <ellipse cx="35.5" cy="41" rx="3.8" ry="5.2" fill="#f2cdae" />
-      <ellipse cx="84.5" cy="41" rx="3.8" ry="5.2" fill="#e8bd99" />
+      <ellipse cx="35.5" cy="36" rx="3.8" ry="5.2" fill="#f2cdae" />
+      <ellipse cx="84.5" cy="36" rx="3.8" ry="5.2" fill="#e8bd99" />
 
-      {/* ── Hair: blonde, in two neat braids — the plaited detail is what
-             separates her silhouette from Sol's ponytail and Plume's bob at a
-             glance, even in profile. ── */}
-      <path d="M35.5 38 Q33 16 60 12.5 Q87 16 84.5 38 Q83.4 27 78.6 24 Q69 29.4 60 28.4 Q51 27.4 42 24 Q37 27.6 35.5 38 Z" fill="#e8c468" />
-      <path d="M60 12.5 Q87 16 84.5 38 Q83.4 27 78.6 24 Q69.4 28.8 60 27.8 Z" fill="#000000" opacity={0.12} />
-      <path d="M39.4 27 Q35 34 37 47 Q38.6 56 33.4 60 Q37.6 61.2 39.6 55 Q41.2 44 40.6 33 Z" fill="#e8c468" />
-      <path d="M80.6 27 Q85 34 83 47 Q81.4 56 86.6 60 Q82.4 61.2 80.4 55 Q78.8 44 79.4 33 Z" fill="#e8c468" />
-      <path d="M39.4 27 Q35 34 37 47 Q38.6 56 33.4 60 Q37.6 60.6 38.6 56 Q35.4 46 39.6 32 Z" fill="#000000" opacity={0.1} />
-      <path d="M39.4 30.6 h-2.6 M39 38 h-2.4 M38.4 45.4 h-2.2" stroke="#c9a04e" strokeWidth={1.2} opacity={0.6} />
-      <path d="M80.6 30.6 h2.6 M81 38 h2.4 M81.6 45.4 h2.2" stroke="#c9a04e" strokeWidth={1.2} opacity={0.6} />
+      {/* ── Hair: swept back off her face into the plait behind, with a soft
+             fringe — Iris's exact scalp shape, reused for the same reason as
+             the face: it is proven to fit this exact head outline. ── */}
+      <path d="M35.5 33 Q33 8 60 6 Q87 8 84.5 33 Q83 21 78 17.5 Q68 23 57 21 Q46 19 41 24 Q37 26.5 35.5 33 Z" fill="#7a4a24" />
+      <path d="M60 6 Q87 8 84.5 33 Q83 21 78 17.5 Q69 22.6 60 21.4 Z" fill="#000000" opacity={0.15} />
+      <path d="M43 23 Q52 12 68 10 Q78 9.6 82 14 Q71 11.6 59 15.6 Q48 19 45 25 Z" fill="#ffffff" opacity={0.14} />
+      <path d="M78 17.5 Q83 14.5 87 15" stroke="#7a4a24" strokeWidth={3.2} fill="none" strokeLinecap="round" />
 
-      {/* ── The felt hat: a soft rounded crown with a narrow brim, a band and
-             one small feather — the AUSTRIAN/BAVARIAN hiking hat that real
-             walkers still wear, chosen because it says "outdoors" first and
-             "Germany" second. Shifted clear of y=0, as with the other two
-             hats above. ── */}
-      <path d="M39 19 Q37 3 60 2 Q83 3 81 19 Q80 9.6 60 8.4 Q40 9.6 39 19 Z" fill="#3f6b1f" />
-      <path d="M60 2 Q83 3 81 19 Q80 9.6 60 8.4 Z" fill="#000000" opacity={0.16} />
-      <path d="M43 11 Q50 4 60 3.4" stroke="#ffffff" strokeWidth={1.8} opacity={0.2} fill="none" strokeLinecap="round" />
-      <path d="M36 19 Q60 24 84 19 L84 22 Q60 27 36 22 Z" fill="#e3f4c4" />
-      {/* The feather — a small asymmetric flourish, echoing Knight's plume */}
-      <path d="M78 14 Q90 6 94 14 Q88 18 80 17 Z" fill="#84cc16" />
-      <path d="M78 14 Q90 6 94 14 Q86 12 80 16 Z" fill="#000000" opacity={0.1} />
+      {/* ── Brows — Iris's exact coordinates. ── */}
+      <path d="M46.5 28.4 Q51.5 24.8 56 27.2" stroke="#42291b" strokeWidth={2.1} strokeLinecap="round" fill="none" />
+      <path d="M64 27.2 Q68.5 24.8 73.5 28.4" stroke="#42291b" strokeWidth={2.1} strokeLinecap="round" fill="none" />
 
-      {/* ── Brows ── */}
-      <path d="M46.5 34.4 Q51.5 31.8 56 33.6" stroke="#a3874f" strokeWidth={2.1} strokeLinecap="round" fill="none" />
-      <path d="M64 33.6 Q68.5 31.8 73.5 34.4" stroke="#a3874f" strokeWidth={2.1} strokeLinecap="round" fill="none" />
+      {/* ── Eyes — Iris's exact coordinates. ── */}
+      <ellipse cx="51" cy="36" rx="5" ry="5.4" fill="#ffffff" />
+      <ellipse cx="69" cy="36" rx="5" ry="5.4" fill="#ffffff" />
+      <circle cx="51.7" cy="37" r="3" fill="#2b1d14" />
+      <circle cx="69.7" cy="37" r="3" fill="#2b1d14" />
+      <circle cx="50.2" cy="35" r="1.25" fill="#ffffff" />
+      <circle cx="68.2" cy="35" r="1.25" fill="#ffffff" />
+      <path d="M46 33.2 Q51 30.4 56 33.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+      <path d="M64 33.2 Q69 30.4 74 33.2" stroke="#8a6240" strokeWidth={1.7} strokeLinecap="round" fill="none" />
 
-      {/* ── Eyes ── */}
-      <ellipse cx="51" cy="41" rx="5" ry="5.4" fill="#ffffff" />
-      <ellipse cx="69" cy="41" rx="5" ry="5.4" fill="#ffffff" />
-      <circle cx="51.7" cy="42" r="3" fill="#2f4a1c" />
-      <circle cx="69.7" cy="42" r="3" fill="#2f4a1c" />
-      <circle cx="50.2" cy="40" r="1.25" fill="#ffffff" />
-      <circle cx="68.2" cy="40" r="1.25" fill="#ffffff" />
-      <path d="M46 38.2 Q51 35.4 56 38.2" stroke="#a3874f" strokeWidth={1.7} strokeLinecap="round" fill="none" />
-      <path d="M64 38.2 Q69 35.4 74 38.2" stroke="#a3874f" strokeWidth={1.7} strokeLinecap="round" fill="none" />
+      {/* ── Nose — Iris's exact coordinates. ── */}
+      <path d="M59 40 Q57 45.5 61 46.5" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
 
-      {/* ── Nose ── */}
-      <path d="M59 45 Q57 50.5 61 51.5" stroke="#c99a72" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-
-      {/* ── Mouth: a broad, confident grin — of the three she is drawn as the
-             most sure of where she is going, which is the joke of giving the
-             map-carrying character the most decisive smile. ── */}
-      <path d="M51.5 56 Q60 64 68.5 56" stroke="#b06a56" strokeWidth={3} strokeLinecap="round" fill="none" />
+      {/* ── Mouth: a small, warm smile — Iris's exact coordinates. Steady
+             rather than a wide grin, reading as ready-for-anything rather
+             than over-excited. ── */}
+      <path d="M54 51 Q60 56.4 66 51" stroke="#b06a56" strokeWidth={3} strokeLinecap="round" fill="none" />
     </svg>
   );
 }

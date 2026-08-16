@@ -62,9 +62,7 @@ export type Subject = {
     | "iris"
     | "bobby"
     | "lumen"
-    | "sol"
-    | "plume"
-    | "reise";
+    | "voyager";
 
   // Which GROUP this subject belongs to, if any.
   //
@@ -73,11 +71,18 @@ export type Subject = {
   // on the homepage alongside six other subjects would make nine cards and bury
   // everything else, so they sit behind one "Science" card instead.
   //
+  // Languages works the same way and for the same reason: Spanish, French and
+  // German are three separate GCSEs with separate content and separate
+  // progress, so they sit behind one "Languages" card rather than three.
+  // Matthew asked for exactly this after the site briefly had three separate
+  // language cards and three separate mascots — it was too much clutter for
+  // one homepage, the same lesson Science had already taught.
+  //
   // Note what this does NOT do: it does not make them sub-subjects. They are
   // ordinary subjects with ordinary slugs and URLs, so progress tracking, the
   // sitemap, pre-rendering and every topic page work on them unchanged. The
   // group is purely a navigation layer on top.
-  group?: "science";
+  group?: "science" | "languages";
 
   years: YearGroup[];
 };
@@ -125,6 +130,22 @@ export const SUBJECT_GROUPS: SubjectGroup[] = [
       "shadow-[0_18px_40px_-18px_rgba(67,56,202,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(67,56,202,0.9)]",
     accent: "#4338ca",
     mascot: "iris",
+  },
+  {
+    slug: "languages",
+    name: "Languages",
+    blurb: "Spanish, French and German",
+    // Yellow, as Matthew asked. It only has to work as ONE card here — the
+    // three members underneath keep their own separate gold/blue/lime accents
+    // for the progress chart, where colour is the only thing telling nine-plus
+    // subjects apart. This group card is decoration, not an identifier, so it
+    // can afford to sit close to Spanish's own gold; the two never appear on
+    // the same chart together.
+    gradient: "linear-gradient(150deg, #fef08a 0%, #eab308 45%, #713f12 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(234,179,8,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(234,179,8,0.9)]",
+    accent: "#eab308",
+    mascot: "voyager",
   },
 ];
 
@@ -789,8 +810,14 @@ export const SUBJECTS: Subject[] = [
 
   // ─── SPANISH ──────────────────────────────────────────────────────────────
   //
-  // Mascot: Sol ("sun" in Spanish) — see the travel-girl note above Sol's
-  // component in Mascots.tsx for the full design reasoning.
+  // Grouped under "languages" — see the group entry above and its comment for
+  // why Spanish, French and German sit behind one homepage card rather than
+  // three, and why each still keeps its own accent colour below even so: this
+  // colour is what tells the three apart on the shared progress chart, where
+  // the group card never appears.
+  //
+  // Mascot: Voyager, shared by all three languages — see the design note above
+  // Voyager's component in Mascots.tsx.
   //
   // GOLD, not the obvious red. Spain's flag is red-and-gold, but History
   // already owns a deep red and Citizenship owns pink — a third warm-red card
@@ -811,11 +838,12 @@ export const SUBJECTS: Subject[] = [
     slug: "spanish",
     name: "Spanish",
     blurb: "Choose a topic to start revising",
+    group: "languages",
     gradient: "linear-gradient(150deg, #f7e3ad 0%, #ffc12b 45%, #8a5c05 100%)",
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(202,138,4,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(202,138,4,0.9)]",
     accent: "#ca8a04",
-    mascot: "sol",
+    mascot: "voyager",
     years: [
       {
         year: "Year 9",
@@ -855,9 +883,11 @@ export const SUBJECTS: Subject[] = [
 
   // ─── FRENCH ───────────────────────────────────────────────────────────────
   //
-  // Mascot: Plume ("feather/quill" in French) — chosen to echo Quill's own
-  // name across languages rather than to describe a prop; see the design note
-  // above the travel-girl mascots in Mascots.tsx.
+  // Grouped under "languages" — see the comment above Spanish for why, and why
+  // French still keeps its own accent colour below.
+  //
+  // Mascot: Voyager, shared by all three languages — see the design note above
+  // Voyager's component in Mascots.tsx.
   //
   // CORNFLOWER BLUE. It is the best-separated blue left once Physics's slate
   // and Science's indigo are accounted for — checked individually against
@@ -870,11 +900,12 @@ export const SUBJECTS: Subject[] = [
     slug: "french",
     name: "French",
     blurb: "Choose a topic to start revising",
+    group: "languages",
     gradient: "linear-gradient(150deg, #c2d7f1 0%, #5198e8 45%, #123a66 100%)",
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(30,111,191,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(30,111,191,0.9)]",
     accent: "#1e6fbf",
-    mascot: "plume",
+    mascot: "voyager",
     years: [
       {
         year: "Year 9",
@@ -922,8 +953,11 @@ export const SUBJECTS: Subject[] = [
   // covering three themes is tighter than French or Spanish get, which is an
   // honest reflection of starting a subject a year later, not a shortcut.
   //
-  // Mascot: Reise ("journey" in German) — see the travel-girl design note
-  // above Sol, Plume and Reise's components in Mascots.tsx.
+  // Grouped under "languages" — see the comment above Spanish for why, and why
+  // German still keeps its own accent colour below.
+  //
+  // Mascot: Voyager, shared by all three languages — see the design note above
+  // Voyager's component in Mascots.tsx.
   //
   // LIME GREEN, the strongest remaining separation from every other subject on
   // the progress chart once Spanish's gold and French's blue are placed —
@@ -932,11 +966,12 @@ export const SUBJECTS: Subject[] = [
     slug: "german",
     name: "German",
     blurb: "Choose a topic to start revising",
+    group: "languages",
     gradient: "linear-gradient(150deg, #e3f4c4 0%, #b3f04e 45%, #3f6b1f 100%)",
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(132,204,22,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(132,204,22,0.9)]",
     accent: "#84cc16",
-    mascot: "reise",
+    mascot: "voyager",
     years: [
       {
         year: "Year 10",
