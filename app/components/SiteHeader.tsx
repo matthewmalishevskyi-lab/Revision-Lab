@@ -3,15 +3,18 @@ import { Logo } from "./Logo";
 import { logout } from "../lib/actions";
 import { getViewer } from "../lib/viewer";
 import { ACCOUNTS_ENABLED } from "../lib/site";
+import { ThemeToggle } from "./ThemeToggle";
+import { chipClasses } from "./chipStyles";
 
 // The header that appears on every page.
 //
 // It works out for itself who's logged in, rather than each page fetching that
 // and passing it down. Server Components can do their own data loading, which
 // keeps pages from having to know things they don't care about.
-
-const chipClasses =
-  "flex items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-lg font-medium shadow-sm backdrop-blur transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20";
+//
+// chipClasses lives in its own file (chipStyles.ts), not here — see that
+// file's comment for why ThemeToggle can't safely import it from a Server
+// Component module.
 
 export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
   // Don't even ask who's logged in if accounts are switched off.
@@ -34,6 +37,11 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
           <HomeIcon />
           <span className="hidden sm:inline">Home</span>
         </Link>
+
+        {/* The one button in this row that changes something in the browser
+            rather than navigating anywhere, which is why it's a small Client
+            Component instead of another Server-rendered Link. */}
+        <ThemeToggle />
 
         {user ? (
           <>

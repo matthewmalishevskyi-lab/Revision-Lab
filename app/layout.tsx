@@ -85,12 +85,58 @@ export const metadata: Metadata = {
 
 import { SiteFooter } from "./components/SiteFooter";
 
+// --- Avoiding a flash of the wrong theme on load ----------------------------
+//
+// The class that switches dark mode on (`dark`, on <html>) is only added by
+// ThemeToggle.tsx, which is a Client Component — it can't run anything until
+// React has hydrated. Left alone, that means every dark-mode visitor would
+// see a flash of the light page first, every single load, before JavaScript
+// caught up and switched it. That flash is the classic giveaway of a
+// bolted-on dark mode.
+//
+// The fix is this tiny script, run as plain HTML rather than through React.
+// It sits in <head>, which the browser parses and executes BEFORE it starts
+// painting <body> — so by the time anything is on screen, the class is
+// already correct. No flash, because nothing wrong was ever drawn.
+//
+// It reads localStorage directly rather than waiting for a React component,
+// which is exactly why this has to be a raw <script>, not JSX logic.
+const THEME_BOOTSTRAP_SCRIPT = `
+  (function () {
+    try {
+      var stored = localStorage.getItem("theme");
+      if (stored === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+      // No stored value, or it's "light" — leave the class off. Light mode is
+      // the default for every first-time visitor, regardless of what their
+      // OS prefers; only an explicit choice from the toggle turns dark mode
+      // on, and only that choice is remembered.
+    } catch (e) {
+      // localStorage can throw (private browsing, disabled storage). Doing
+      // nothing here just means the visitor gets light mode, same as anyone
+      // whose browser has no opinion — never a broken page.
+    }
+  })();
+`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+    // suppressHydrationWarning is scoped to this one element on purpose. The
+    // bootstrap script above can add `dark` to <html> before React hydrates,
+    // which makes the class React sees on the client differ from the class
+    // it rendered on the server — normally a hydration error. Since we KNOW
+    // why they differ and that it's harmless, this tells React to stop
+    // checking THIS attribute, on THIS element, rather than silencing
+    // hydration warnings anywhere else in the app.
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
         <SiteFooter />

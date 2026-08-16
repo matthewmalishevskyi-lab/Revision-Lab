@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* --- Dark mode: switched by a class, not by the OS -------------------------
+   Tailwind's `dark:` variant defaults to `@media (prefers-color-scheme: dark)`
+   — it follows the operating system and nothing else. This line replaces that
+   with a variant that fires whenever the `dark` class is present on `<html>`
+   or an ancestor of the element instead.
+
+   That one line is doing a lot of work: every `dark:` class already written
+   across the site (the header, cards, forms, flashcards — 99 of them, in 20
+   files) was built against Tailwind's default media-query variant and was
+   quietly following whatever the visitor's OS preferred, with no way to
+   override it. Redefining the variant here switches ALL of them at once, from
+   "follows the OS" to "follows the `dark` class" — no other file needs to
+   change for the toggle to work.
+
+   ThemeToggle.tsx is what actually adds and removes that class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #f2f4fa;
   --foreground: #16182b;
@@ -12,11 +29,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0d1a;
-    --foreground: #e9eaf2;
-  }
+/* Same dark palette as before — it just responds to the `dark` class on
+   `<html>` now instead of the OS media query. */
+.dark {
+  --background: #0a0d1a;
+  --foreground: #e9eaf2;
 }
 
 /* --- Jumping to a section -------------------------------------------------
