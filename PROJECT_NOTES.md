@@ -809,3 +809,102 @@ round — all 18 RE slugs were already registered from the original build-out.)
 
 **Not yet done:** Physics content (0 of 19 topics) is now the only subject with
 zero content, per the Science section above.
+
+## Dark mode toggle (2026-08-14)
+
+Manual light/dark switch in the header. Light stays the true default —
+nothing follows the OS preference; a visitor has to click the button, and only
+then is the choice remembered (localStorage).
+
+**How it actually works, three pieces:** `globals.css` redefines Tailwind's
+`dark:` variant with `@custom-variant dark (&:where(.dark, .dark *));`, so it
+fires off a CLASS on `<html>` instead of the OS media query — retroactively
+turning on every `dark:` utility already written across the site with one
+line. `layout.tsx` runs a tiny blocking script in `<head>`, before React
+loads, that re-adds the class on refresh if dark was the last choice — that's
+what stops a flash of light mode. `ThemeToggle.tsx` is the only thing that
+ever adds or removes the class after that.
+
+⚠️ **The bug that only showed up on Matthew's real machine.** `chipClasses`
+used to live inside `SiteHeader.tsx`, a Server Component that reads the
+session via `next/headers`. The moment `ThemeToggle` (a Client Component)
+imported anything from that file, Next tried to pull the whole server-only
+module graph into the browser bundle. `tsc` and `eslint` both passed clean —
+neither understands the React Server/Client boundary — so this shipped
+looking fine and then did nothing when clicked. Fixed by extracting
+`chipClasses` into `chipStyles.ts`, a file with zero imports of its own that
+both components can depend on safely. **Lesson:** a sandbox that can't run
+`next build` (this one can't — see below) can't catch this class of bug by
+itself; it needed a real report from the real machine.
+
+⚠️ **Committing is not optional follow-through.** Twice now, files were
+written to disk and left "for Matthew to review and commit," and twice that
+caused real confusion (`git push` sending nothing; VS Code showing changes
+that looked uncommitted). The fix going forward: commit locally from this
+side whenever a change is finished, every time, and say so plainly — never
+leave that step implicit.
+
+## Spanish, French & German (2026-08-16)
+
+Three new full subjects: **Spanish** and **French**, Years 9–11 (18 topics
+each); **German**, Years 10–11 only (12 topics) — no Year 9, the same shape
+Business already uses for a GCSE option started a year later.
+
+**Topic shape, all three:** six topics per year — introductions, family &
+friends, free time & hobbies, school life, home & daily routine, and a
+dedicated grammar topic in Year 9/10; then technology, customs/festivals,
+town/region, holidays/travel, food, and a second grammar topic in Year 10/11
+(11 for German); then school system, post-16 choices, jobs, volunteering,
+global issues, and exam practice in Year 11. Two topics per subject are pure
+grammar reference ("Grammar toolkit: the present" / "...past & future") rather
+than vocabulary — the AQA-style themes don't have anywhere else for verb
+conjugation tables to live, and burying them inside a vocab topic made both
+worse.
+
+**Every practice list is a deliberate mix**, not just vocabulary recall:
+straight translation both directions, gap-fill verb conjugation ("complete
+with the correct form of..."), part-of-speech identification (often as
+multiple choice), and the usual vocab/MCQ questions — this was Matthew's
+explicit brief, not an add-on.
+
+**No `higherOnly` flag anywhere in these three subjects.** GCSE MFL tiering is
+about which speaking/writing TASKS a student attempts, not a block of
+vocabulary being off-limits the way circle theorems are in Maths — flagging
+individual facts would misrepresent how it actually works, and the checker's
+`TIERED` set does not include spanish/french/german, so using the flag here
+would fail the build anyway.
+
+**Colours** were picked the same way as Science's — CIE Lab distance against
+all existing subjects, not by eye: Spanish gold `#ca8a04`, French cornflower
+`#1e6fbf`, German lime `#84cc16`.
+
+**Three new mascots — Sol, Plume, Reise** — one "travel girl" per language,
+sharing a skeleton (same head oval, same eyes, a backpack) so they read as a
+matched set, the way the goggles/glasses thread ties Pixel/Hoot/Quill/Iris
+together. Each carries her country's colour exactly once, in the
+backpack/hat, and wears real everyday clothing (a sun hat, a beret, an alpine
+hiking hat) rather than a costume — the same test Quill's Elizabethan dress
+and Knight's armour already pass.
+
+⚠️ **Repeated the exact "Pixel's antenna" mistake, and caught it before
+shipping.** All three hats were first drawn with parts of the crown at
+negative y-coordinates — outside the `0 0 120 140` viewBox, so the browser
+would have silently clipped them. Every hat was shifted down a few units to
+clear y=0; documented inline at each fix so it isn't repeated a third time.
+
+**Content was written by three parallel subagents** (Spanish topics 2–18,
+French, German), each given the fully-worked `spanish/greetings-and-introductions`
+topic as a format/rigor template plus the complete checker rule set. One real
+bug survived their own self-checks and was caught by the actual
+`scripts/check-content.mjs` run: a German MCQ distractor ("zwei und zwanzig")
+normalised identically to its correct answer once spaces were stripped,
+producing a duplicate choice. Fixed with a genuinely different wrong option.
+
+`node scripts/check-content.mjs` passes clean — **all 87,554 checks** — and
+`tsc`/`eslint` are clean on every changed file, including `Mascots.tsx` and
+`Icon.tsx`, which the checker's own `tsc` invocation doesn't cover (it only
+type-checks the data files, not the components), so those two were verified
+separately by hand.
+
+**Not yet done:** Physics content is still the only subject with zero
+content written.
