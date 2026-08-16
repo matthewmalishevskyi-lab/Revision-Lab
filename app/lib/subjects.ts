@@ -24,7 +24,9 @@ export type IconName =
   | "castle" | "scroll" | "vote" | "gavel" | "atom" | "suitcase"
   // Geography
   | "map" | "cloud" | "volcano" | "droplet" | "wave" | "leaf" | "city"
-  | "thermometer" | "recycle";
+  | "thermometer" | "recycle"
+  // Languages
+  | "speech" | "heart" | "house" | "meal";
 
 export type Topic = {
   // The slug is the bit that appears in the URL, so it must be lowercase with
@@ -59,7 +61,10 @@ export type Subject = {
     | "sterling"
     | "iris"
     | "bobby"
-    | "lumen";
+    | "lumen"
+    | "sol"
+    | "plume"
+    | "reise";
 
   // Which GROUP this subject belongs to, if any.
   //
@@ -777,6 +782,182 @@ export const SUBJECTS: Subject[] = [
           { slug: "human-rights-and-social-justice", title: "Human rights & justice", icon: "globe" },
           { slug: "sources-of-authority", title: "Sources of authority", icon: "book" },
           { slug: "re-exam-practice", title: "Exam practice", icon: "news" },
+        ],
+      },
+    ],
+  },
+
+  // ─── SPANISH ──────────────────────────────────────────────────────────────
+  //
+  // Mascot: Sol ("sun" in Spanish) — see the travel-girl note above Sol's
+  // component in Mascots.tsx for the full design reasoning.
+  //
+  // GOLD, not the obvious red. Spain's flag is red-and-gold, but History
+  // already owns a deep red and Citizenship owns pink — a third warm-red card
+  // would be the tightest colour clash on the site. Gold is still recognisably
+  // Spanish (it is half the flag) and sits in one of the two largest unused
+  // hue gaps on the progress chart, measured against all nine existing
+  // subjects by CIE Lab distance rather than by eye.
+  //
+  // Topics follow the shape AQA, Edexcel and OCR all broadly share for GCSE
+  // French/German/Spanish: Identity & culture, Local area/holiday/travel, and
+  // School/future aspirations — spread across three years, with one explicit
+  // grammar topic per year rather than grammar hidden only inside vocabulary
+  // topics. Every topic's practice questions mix translation, gap-fill
+  // (supplying the correct verb form or word) and part-of-speech
+  // identification, not just vocabulary recall — Matthew asked for exactly
+  // that mix.
+  {
+    slug: "spanish",
+    name: "Spanish",
+    blurb: "Choose a topic to start revising",
+    gradient: "linear-gradient(150deg, #f7e3ad 0%, #ffc12b 45%, #8a5c05 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(202,138,4,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(202,138,4,0.9)]",
+    accent: "#ca8a04",
+    mascot: "sol",
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "greetings-and-introductions", title: "Greetings & introductions", icon: "speech" },
+          { slug: "family-and-friends", title: "Family & friends", icon: "heart" },
+          { slug: "free-time-and-hobbies", title: "Free time & hobbies", icon: "dice" },
+          { slug: "school-life", title: "School life", icon: "book" },
+          { slug: "home-and-daily-routine", title: "Home & daily routine", icon: "house" },
+          { slug: "grammar-toolkit-1", title: "Grammar toolkit: the present", icon: "cog" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "technology-and-social-media", title: "Technology & social media", icon: "chip" },
+          { slug: "customs-festivals-and-celebrations", title: "Customs, festivals & celebrations", icon: "mask" },
+          { slug: "town-and-region", title: "Town & region", icon: "city" },
+          { slug: "holidays-and-travel", title: "Holidays & travel", icon: "suitcase" },
+          { slug: "eating-out-and-food-culture", title: "Eating out & food culture", icon: "meal" },
+          { slug: "grammar-toolkit-2", title: "Grammar toolkit: past & future", icon: "flow" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "school-and-education-system", title: "School & education system", icon: "scroll" },
+          { slug: "post-16-choices-and-training", title: "Post-16 choices & training", icon: "compass" },
+          { slug: "jobs-and-careers", title: "Jobs & careers", icon: "toolbox" },
+          { slug: "volunteering-and-personal-qualities", title: "Volunteering & personal qualities", icon: "torch" },
+          { slug: "global-and-environmental-issues", title: "Global & environmental issues", icon: "leaf" },
+          { slug: "spanish-exam-practice", title: "Exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+
+  // ─── FRENCH ───────────────────────────────────────────────────────────────
+  //
+  // Mascot: Plume ("feather/quill" in French) — chosen to echo Quill's own
+  // name across languages rather than to describe a prop; see the design note
+  // above the travel-girl mascots in Mascots.tsx.
+  //
+  // CORNFLOWER BLUE. It is the best-separated blue left once Physics's slate
+  // and Science's indigo are accounted for — checked individually against
+  // both in Lab space, not assumed safe just because it "looks different".
+  //
+  // Same topic shape as Spanish, deliberately: a student taking both should
+  // find the two subjects structured identically, so the SKILL of revising
+  // transfers even where the words don't.
+  {
+    slug: "french",
+    name: "French",
+    blurb: "Choose a topic to start revising",
+    gradient: "linear-gradient(150deg, #c2d7f1 0%, #5198e8 45%, #123a66 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(30,111,191,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(30,111,191,0.9)]",
+    accent: "#1e6fbf",
+    mascot: "plume",
+    years: [
+      {
+        year: "Year 9",
+        topics: [
+          { slug: "greetings-and-introductions", title: "Greetings & introductions", icon: "speech" },
+          { slug: "family-and-friends", title: "Family & friends", icon: "heart" },
+          { slug: "free-time-and-hobbies", title: "Free time & hobbies", icon: "dice" },
+          { slug: "school-life", title: "School life", icon: "book" },
+          { slug: "home-and-daily-routine", title: "Home & daily routine", icon: "house" },
+          { slug: "grammar-toolkit-1", title: "Grammar toolkit: the present", icon: "cog" },
+        ],
+      },
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "technology-and-social-media", title: "Technology & social media", icon: "chip" },
+          { slug: "customs-festivals-and-celebrations", title: "Customs, festivals & celebrations", icon: "mask" },
+          { slug: "town-and-region", title: "Town & region", icon: "city" },
+          { slug: "holidays-and-travel", title: "Holidays & travel", icon: "suitcase" },
+          { slug: "eating-out-and-food-culture", title: "Eating out & food culture", icon: "meal" },
+          { slug: "grammar-toolkit-2", title: "Grammar toolkit: past & future", icon: "flow" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "school-and-education-system", title: "School & education system", icon: "scroll" },
+          { slug: "post-16-choices-and-training", title: "Post-16 choices & training", icon: "compass" },
+          { slug: "jobs-and-careers", title: "Jobs & careers", icon: "toolbox" },
+          { slug: "volunteering-and-personal-qualities", title: "Volunteering & personal qualities", icon: "torch" },
+          { slug: "global-and-environmental-issues", title: "Global & environmental issues", icon: "leaf" },
+          { slug: "french-exam-practice", title: "Exam practice", icon: "pencil" },
+        ],
+      },
+    ],
+  },
+
+  // ─── GERMAN ───────────────────────────────────────────────────────────────
+  //
+  // ⚠️ NO YEAR 9, the same shape as Business. German is usually a second
+  // language option started in Year 10 alongside — not instead of — French or
+  // Spanish, so Year 10 here covers the same "building blocks" ground that
+  // Spanish and French give Year 9, and Year 11 compresses the remaining two
+  // GCSE themes plus exam practice into one year rather than two. Two years
+  // covering three themes is tighter than French or Spanish get, which is an
+  // honest reflection of starting a subject a year later, not a shortcut.
+  //
+  // Mascot: Reise ("journey" in German) — see the travel-girl design note
+  // above Sol, Plume and Reise's components in Mascots.tsx.
+  //
+  // LIME GREEN, the strongest remaining separation from every other subject on
+  // the progress chart once Spanish's gold and French's blue are placed —
+  // confirmed by Lab distance, the same method used for the other two.
+  {
+    slug: "german",
+    name: "German",
+    blurb: "Choose a topic to start revising",
+    gradient: "linear-gradient(150deg, #e3f4c4 0%, #b3f04e 45%, #3f6b1f 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(132,204,22,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(132,204,22,0.9)]",
+    accent: "#84cc16",
+    mascot: "reise",
+    years: [
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "greetings-and-introductions", title: "Greetings & introductions", icon: "speech" },
+          { slug: "family-and-friends", title: "Family & friends", icon: "heart" },
+          { slug: "free-time-and-hobbies", title: "Free time & hobbies", icon: "dice" },
+          { slug: "school-life", title: "School life", icon: "book" },
+          { slug: "home-and-daily-routine", title: "Home & daily routine", icon: "house" },
+          { slug: "grammar-toolkit-1", title: "Grammar toolkit: the present", icon: "cog" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "town-and-region", title: "Town & region", icon: "city" },
+          { slug: "holidays-and-travel", title: "Holidays & travel", icon: "suitcase" },
+          { slug: "jobs-and-future-plans", title: "Jobs & future plans", icon: "toolbox" },
+          { slug: "technology-and-media", title: "Technology & media", icon: "chip" },
+          { slug: "grammar-toolkit-2", title: "Grammar toolkit: past & future", icon: "flow" },
+          { slug: "german-exam-practice", title: "Exam practice", icon: "pencil" },
         ],
       },
     ],

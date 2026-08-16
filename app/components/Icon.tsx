@@ -416,6 +416,36 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M10 8.5h6M10 12h6M10 15.5h4" />
     </>
   ),
+
+  // ─── Languages ───────────────────────────────────────────────────────────
+  // Same grid, same stroke, no fills — the rules that make a set look like a
+  // set rather than a pile of clip art.
+
+  // A speech bubble — greetings and conversation.
+  speech: (
+    <>
+      <path d="M3.5 5.5h17v11h-9L7 20v-3.5H3.5z" />
+      <path d="M7.5 9.5h9M7.5 13h6" />
+    </>
+  ),
+  // A heart — family, friends and relationships.
+  heart: (
+    <path d="M12 20.5C4 15.5 2.5 11 4.5 7.8a5 5 0 018.5-.6 5 5 0 018.5.6c2 3.2.5 7.7-7.5 12.7z" />
+  ),
+  // A little house — home life and daily routine.
+  house: (
+    <>
+      <path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 19z" />
+      <path d="M9.5 20.5V13h5v7.5" />
+    </>
+  ),
+  // A fork and knife — food, eating out and meals.
+  meal: (
+    <>
+      <path d="M7 3v5a2 2 0 004 0V3M9 8v13" />
+      <path d="M17 3l-2.5 5.5A2 2 0 0016 11h1v10" />
+    </>
+  ),
 };
 
 export function Icon({

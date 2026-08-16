@@ -258,6 +258,61 @@ export const KNOWN_TOPIC_KEYS: readonly string[] = [
   "religious-education/sources-of-authority",
   "religious-education/re-exam-practice",
 
+  // ─── Spanish, French & German (added 2026-08-16) ──────────────────────────
+  // Three new subjects at once. Spanish and French share topic slugs across
+  // Years 9-11 (the content differs, the shape doesn't); German starts at
+  // Year 10 with no Year 9, matching Business's precedent for a GCSE option
+  // begun a year later — see the comment above German in subjects.ts.
+  "spanish/greetings-and-introductions",
+  "spanish/family-and-friends",
+  "spanish/free-time-and-hobbies",
+  "spanish/school-life",
+  "spanish/home-and-daily-routine",
+  "spanish/grammar-toolkit-1",
+  "spanish/technology-and-social-media",
+  "spanish/customs-festivals-and-celebrations",
+  "spanish/town-and-region",
+  "spanish/holidays-and-travel",
+  "spanish/eating-out-and-food-culture",
+  "spanish/grammar-toolkit-2",
+  "spanish/school-and-education-system",
+  "spanish/post-16-choices-and-training",
+  "spanish/jobs-and-careers",
+  "spanish/volunteering-and-personal-qualities",
+  "spanish/global-and-environmental-issues",
+  "spanish/spanish-exam-practice",
+
+  "french/greetings-and-introductions",
+  "french/family-and-friends",
+  "french/free-time-and-hobbies",
+  "french/school-life",
+  "french/home-and-daily-routine",
+  "french/grammar-toolkit-1",
+  "french/technology-and-social-media",
+  "french/customs-festivals-and-celebrations",
+  "french/town-and-region",
+  "french/holidays-and-travel",
+  "french/eating-out-and-food-culture",
+  "french/grammar-toolkit-2",
+  "french/school-and-education-system",
+  "french/post-16-choices-and-training",
+  "french/jobs-and-careers",
+  "french/volunteering-and-personal-qualities",
+  "french/global-and-environmental-issues",
+  "french/french-exam-practice",
+
+  "german/greetings-and-introductions",
+  "german/family-and-friends",
+  "german/free-time-and-hobbies",
+  "german/school-life",
+  "german/home-and-daily-routine",
+  "german/grammar-toolkit-1",
+  "german/town-and-region",
+  "german/holidays-and-travel",
+  "german/jobs-and-future-plans",
+  "german/technology-and-media",
+  "german/grammar-toolkit-2",
+  "german/german-exam-practice",
 ];
 
 // Topics deliberately withdrawn. Empty, and it should stay that way unless

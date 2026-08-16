@@ -26,6 +26,9 @@ import { ENGLISH } from "./english";
 import { HISTORY } from "./history";
 import { GEOGRAPHY } from "./geography";
 import { MATHS } from "./maths";
+import { SPANISH } from "./spanish";
+import { FRENCH } from "./french";
+import { GERMAN } from "./german";
 
 // ─── Higher tier ────────────────────────────────────────────────────────────
 //
@@ -118,6 +121,9 @@ export const TOPIC_CONTENT: Record<string, TopicContent> = {
   ...PHYSICS,
   ...CITIZENSHIP,
   ...RELIGIOUS_EDUCATION,
+  ...SPANISH,
+  ...FRENCH,
+  ...GERMAN,
 };
 
 export function getTopicContent(
