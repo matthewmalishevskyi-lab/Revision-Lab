@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
 import { getViewer } from "../lib/viewer";
+import { getProgress } from "../lib/progress";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { homepageCards, isGroup, subjectsInGroup, SUBJECTS } from "../lib/subjects";
 
@@ -26,6 +27,19 @@ export default async function DashboardPage() {
   // isn't security, because anyone can undo it with dev tools. Here, a logged
   // out visitor never receives the page at all.
   if (!user) redirect("/login");
+
+  // Reuses the exact same recommendation the progress page already makes
+  // (least-covered subject, first untouched topic, or the weakest-answered
+  // one once everything's been touched) rather than inventing a second
+  // "what's next" idea. One consistent suggestion in two places beats two
+  // different opinions about what to revise. See getProgress in lib/progress.ts
+  // for how it's chosen. It's safe to call even with no database configured —
+  // it just comes back with no recorded activity, not an error.
+  const progress = await getProgress(user.id);
+  const nextUpSubject = progress.nextUp
+    ? progress.subjects.find((s) => s.slug === progress.nextUp!.subjectSlug)
+    : undefined;
+  const NextUpMascot = nextUpSubject ? MASCOTS[nextUpSubject.mascot] : null;
 
   // Counting topics from the data rather than typing "37" somewhere — the
   // number can never drift out of date because it's derived, not stored.
@@ -54,6 +68,45 @@ export default async function DashboardPage() {
           you like.
         </p>
       </section>
+
+      {/* ---------- Revise this next ---------- */}
+      {/* The dashboard is the page you land on right after logging in, so this
+          sits above the subject grid rather than only on /progress — the
+          whole point of a "what to do next" suggestion is that you see it
+          before you've had to go looking for it. */}
+      {progress.nextUp && nextUpSubject && (
+        <section className="mt-8">
+          <Link
+            href={`/subjects/${progress.nextUp.subjectSlug}/${progress.nextUp.topicSlug}`}
+            className="group relative flex flex-wrap items-center gap-6 overflow-hidden rounded-3xl p-6 text-white shadow-sm transition duration-300 hover:-translate-y-1 sm:p-8"
+            style={{ backgroundImage: nextUpSubject.gradient }}
+          >
+            <div className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-white/20 opacity-70 blur-3xl transition group-hover:opacity-100" />
+            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/30" />
+
+            {NextUpMascot && (
+              <NextUpMascot className="relative h-24 shrink-0 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]" />
+            )}
+
+            <div className="relative min-w-0 flex-1">
+              <span className="text-sm font-semibold uppercase tracking-wider opacity-80">
+                Revise this next
+              </span>
+              <h2 className="mt-1 text-2xl font-bold sm:text-3xl">
+                {progress.nextUp.topic}
+              </h2>
+              <p className="mt-1 opacity-80">{progress.nextUp.subject}</p>
+            </div>
+
+            <span
+              aria-hidden="true"
+              className="relative ml-auto text-3xl opacity-70 transition group-hover:translate-x-1 group-hover:opacity-100"
+            >
+              →
+            </span>
+          </Link>
+        </section>
+      )}
 
       {/* ---------- Subjects ---------- */}
       <section className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
