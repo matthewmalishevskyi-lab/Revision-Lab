@@ -1,0 +1,399 @@
+"use client";
+
+// A timed set of questions pulled from across a whole subject, rather than
+// one topic at a time — closer to what a real exam paper feels like: mixed
+// topics, a clock running, and one score at the end instead of a running
+// tally you can top up forever.
+//
+// Marking reuses `normalise` from Practice.tsx rather than writing a second
+// copy of "how forgiving is this comparison" — see that file's comment for
+// why two slightly different copies of the same rule is a real bug waiting
+// to happen, not just untidy code.
+//
+// Every question here carries its OWN topic (`topicSlug`/`topicTitle`),
+// unlike Practice.tsx where every question on the page belongs to the one
+// topic being viewed. That's the one genuine structural difference: each
+// answer is recorded against the topic IT came from, not against "the exam."
+// A mock exam still feeds the same progress data as ordinary practice — it's
+// a different way of ANSWERING questions, not a different kind of question.
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { normalise } from "./Practice";
+import { HigherBadge } from "./HigherBadge";
+import { recordAnswer } from "../lib/progress-actions";
+
+export type ExamQuestion = {
+  question: string;
+  accept?: string[];
+  answer: string;
+  higherOnly?: boolean;
+  choices?: string[];
+  topicSlug: string;
+  topicTitle: string;
+};
+
+type Status = "unanswered" | "correct" | "incorrect" | "selfMarked";
+type QuestionState = { input: string; status: Status; revealed: boolean };
+const EMPTY: QuestionState = { input: "", status: "unanswered", revealed: false };
+
+function formatClock(totalSeconds: number): string {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+
+export function MockExam({
+  questions,
+  subjectSlug,
+  subjectName,
+  colour,
+  durationSeconds,
+}: {
+  questions: ExamQuestion[];
+  subjectSlug: string;
+  subjectName: string;
+  colour: string;
+  durationSeconds: number;
+}) {
+  const [phase, setPhase] = useState<"intro" | "running" | "finished">("intro");
+  const [secondsLeft, setSecondsLeft] = useState(durationSeconds);
+  const [states, setStates] = useState<Record<number, QuestionState>>({});
+  const recorded = useRef<Set<number>>(new Set());
+
+  // A ref, not state, for the same reason StudyTimer elsewhere on the site
+  // uses one: the tick doesn't need to trigger a render by itself, only the
+  // seconds-left NUMBER does, and re-deriving "has this run out" from state
+  // that's already mid-update is exactly the kind of off-by-one a countdown
+  // is easy to get wrong in.
+  useEffect(() => {
+    if (phase !== "running") return;
+
+    const interval = setInterval(() => {
+      setSecondsLeft((current) => {
+        if (current <= 1) {
+          clearInterval(interval);
+          setPhase("finished");
+          return 0;
+        }
+        return current - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [phase]);
+
+  const stateFor = (index: number) => states[index] ?? EMPTY;
+
+  function update(index: number, changes: Partial<QuestionState>) {
+    setStates((current) => ({
+      ...current,
+      [index]: { ...(current[index] ?? EMPTY), ...changes },
+    }));
+  }
+
+  function check(index: number, question: ExamQuestion, given?: string) {
+    const typed = given ?? stateFor(index).input;
+    if (!typed.trim()) return;
+
+    const isCorrect = (question.accept ?? []).some(
+      (valid) => normalise(valid) === normalise(typed),
+    );
+    update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect });
+
+    // Same "first attempt only" rule as Practice.tsx, and the same reason:
+    // without it, pressing Check twice or holding Enter would inflate both
+    // the count and the accuracy figure with repeats of one answer.
+    if (!recorded.current.has(index)) {
+      recorded.current.add(index);
+      void recordAnswer(subjectSlug, question.topicSlug, isCorrect).catch(() => {});
+    }
+  }
+
+  const markable = questions.filter((q) => q.accept).length;
+  const correct = questions.filter(
+    (q, i) => q.accept && stateFor(i).status === "correct",
+  ).length;
+  const wrongQuestions = questions
+    .map((q, i) => ({ q, i }))
+    .filter(({ q, i }) => q.accept && stateFor(i).status === "incorrect");
+
+  // The topics that came up at all, in order of first appearance — used both
+  // in the intro (so it's clear this isn't one topic) and, once finished, to
+  // point at exactly what's worth revisiting.
+  const uniqueTopics = Array.from(
+    new Map(questions.map((q) => [q.topicSlug, q.topicTitle])).entries(),
+  );
+
+  if (phase === "intro") {
+    return (
+      <div className="rounded-3xl border border-white/60 bg-white/70 p-8 text-center shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+        <h2 className="text-2xl font-bold tracking-tight">
+          {questions.length} questions, {Math.round(durationSeconds / 60)}{" "}
+          minutes
+        </h2>
+        <p className="mx-auto mt-3 max-w-prose opacity-70">
+          Pulled from {uniqueTopics.length} different {subjectName} topics —
+          not just one, so this is closer to what the real paper feels like.
+          The clock starts the moment you click start, and answers are marked
+          the same way as everywhere else on the site.
+        </p>
+        <button
+          type="button"
+          onClick={() => setPhase("running")}
+          className="mt-6 rounded-xl px-6 py-3 text-base font-semibold text-white transition hover:opacity-90"
+          style={{ backgroundColor: colour }}
+        >
+          Start the exam
+        </button>
+      </div>
+    );
+  }
+
+  if (phase === "finished") {
+    return (
+      <div>
+        <div
+          className="rounded-3xl p-8 text-center text-white shadow-sm"
+          style={{ backgroundColor: colour }}
+        >
+          <p className="text-sm font-semibold uppercase tracking-wider opacity-80">
+            {secondsLeft === 0 ? "Time's up" : "Exam finished"}
+          </p>
+          <p className="mt-2 text-5xl font-bold tabular-nums">
+            {correct}/{markable}
+          </p>
+          <p className="mt-1 opacity-85">
+            {markable > 0
+              ? `${Math.round((correct / markable) * 100)}% of the auto-marked questions`
+              : "No auto-marked questions in this set"}
+          </p>
+        </div>
+
+        {wrongQuestions.length > 0 && (
+          <div className="mt-6 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+            <h3 className="font-semibold">Worth revisiting</h3>
+            <p className="mt-1 text-sm opacity-60">
+              Topics behind the questions you got wrong.
+            </p>
+            <ul className="mt-4 space-y-2">
+              {Array.from(
+                new Map(
+                  wrongQuestions.map(({ q }) => [q.topicSlug, q.topicTitle]),
+                ).entries(),
+              ).map(([slug, title]) => (
+                <li key={slug}>
+                  <Link
+                    href={`/subjects/${subjectSlug}/${slug}`}
+                    className="flex items-center justify-between rounded-xl border border-black/10 px-4 py-2.5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+                  >
+                    {title}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            href={`/subjects/${subjectSlug}/exam`}
+            className="rounded-xl px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+            style={{ backgroundColor: colour }}
+          >
+            Try another mock exam
+          </Link>
+          <Link
+            href={`/subjects/${subjectSlug}`}
+            className="rounded-xl border border-black/10 px-5 py-3 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+          >
+            Back to {subjectName}
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // phase === "running"
+  return (
+    <div>
+      {/* Sticks to the top so the time remaining is visible without
+          scrolling back up — the one thing about a timed exam that matters
+          more than anything else on the page. */}
+      <div
+        className="sticky top-0 z-10 -mx-6 mb-4 flex items-center justify-between border-b border-white/60 bg-white/90 px-6 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-neutral-900/90 sm:rounded-2xl sm:border sm:mx-0"
+        style={{ borderColor: secondsLeft <= 60 ? "#dc2626" : undefined }}
+      >
+        <span className="text-sm font-medium opacity-70">
+          {correct + wrongQuestions.length}/{markable} answered so far
+        </span>
+        <span
+          className={`text-xl font-bold tabular-nums ${
+            secondsLeft <= 60 ? "text-red-600 dark:text-red-400" : ""
+          }`}
+          style={{ color: secondsLeft <= 60 ? undefined : colour }}
+        >
+          {formatClock(secondsLeft)}
+        </span>
+        <button
+          type="button"
+          onClick={() => setPhase("finished")}
+          className="rounded-lg border border-black/10 px-3.5 py-1.5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+        >
+          Finish now
+        </button>
+      </div>
+
+      <ol className="space-y-3">
+        {questions.map((item, index) => {
+          const state = stateFor(index);
+          const autoMarked = Boolean(item.accept);
+
+          return (
+            <li
+              key={`${item.topicSlug}-${item.question}`}
+              className="rounded-2xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+            >
+              <div className="flex gap-4">
+                <span
+                  aria-hidden="true"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
+                  style={{ backgroundColor: colour }}
+                >
+                  {index + 1}
+                </span>
+
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-semibold uppercase tracking-wider opacity-45">
+                    {item.topicTitle}
+                  </p>
+                  {item.higherOnly && (
+                    <p className="mb-2 mt-1.5">
+                      <HigherBadge />
+                    </p>
+                  )}
+                  <p className="mt-1 whitespace-pre-line font-medium leading-relaxed">
+                    {item.question}
+                  </p>
+
+                  {autoMarked ? (
+                    <>
+                      {item.choices ? (
+                        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                          {item.choices.map((option, optionIndex) => {
+                            const picked = state.input === option;
+                            const answered = state.status !== "unanswered";
+                            const isRight = (item.accept ?? []).some(
+                              (valid) => normalise(valid) === normalise(option),
+                            );
+                            const show = answered && (picked || isRight);
+                            return (
+                              <button
+                                key={option}
+                                type="button"
+                                disabled={answered}
+                                onClick={() => {
+                                  update(index, { input: option });
+                                  check(index, item, option);
+                                }}
+                                className={`flex items-start gap-2.5 rounded-xl border px-3.5 py-2.5 text-left text-sm transition ${
+                                  show && isRight
+                                    ? "border-green-600/60 bg-green-500/15 font-medium"
+                                    : show
+                                      ? "border-red-600/50 bg-red-500/10"
+                                      : answered
+                                        ? "border-black/10 opacity-55 dark:border-white/10"
+                                        : "border-black/10 hover:border-black/25 hover:bg-black/5 dark:border-white/15 dark:hover:border-white/30 dark:hover:bg-white/10"
+                                }`}
+                              >
+                                <span aria-hidden="true" className="mt-px font-semibold opacity-45">
+                                  {"ABCDEF"[optionIndex]}
+                                </span>
+                                <span className="min-w-0 flex-1">{option}</span>
+                                {show && (
+                                  <span aria-hidden="true" className="font-bold">
+                                    {isRight ? "✓" : "✗"}
+                                  </span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <input
+                            type="text"
+                            value={state.input}
+                            onChange={(event) =>
+                              update(index, { input: event.target.value, status: "unanswered" })
+                            }
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter") check(index, item);
+                            }}
+                            placeholder="Your answer"
+                            aria-label={`Answer to question ${index + 1}`}
+                            className="w-44 rounded-lg border border-black/10 bg-white/80 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 dark:border-white/15 dark:bg-white/5"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => check(index, item)}
+                            className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                            style={{ backgroundColor: colour }}
+                          >
+                            Check
+                          </button>
+                        </div>
+                      )}
+
+                      {state.status === "correct" && (
+                        <p role="status" className="mt-3 font-semibold text-green-700 dark:text-green-400">
+                          ✓ Correct
+                        </p>
+                      )}
+                      {state.status === "incorrect" && (
+                        <p role="status" className="mt-3 font-semibold text-red-700 dark:text-red-400">
+                          {item.choices ? "✗ Not quite" : "✗ Not quite — try again"}
+                        </p>
+                      )}
+                    </>
+                  ) : (
+                    !state.revealed && (
+                      <button
+                        type="button"
+                        onClick={() => update(index, { revealed: true, status: "selfMarked" })}
+                        className="mt-3 rounded-lg border border-black/10 px-3.5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+                      >
+                        Show model answer
+                      </button>
+                    )
+                  )}
+
+                  {state.revealed && (
+                    <div className="mt-3 rounded-xl px-4 py-3" style={{ backgroundColor: `${colour}14` }}>
+                      <p className="text-xs font-semibold uppercase tracking-wider opacity-50">
+                        {autoMarked ? "Answer" : "Model answer — mark your own"}
+                      </p>
+                      <p className="mt-1 leading-relaxed opacity-85">{item.answer}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+
+      <div className="mt-6 flex justify-center">
+        <button
+          type="button"
+          onClick={() => setPhase("finished")}
+          className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+          style={{ backgroundColor: colour }}
+        >
+          Finish exam
+        </button>
+      </div>
+    </div>
+  );
+}

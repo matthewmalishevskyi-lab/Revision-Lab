@@ -88,7 +88,12 @@ type Question = {
 // "01011100", because a missing leading zero on an 8-bit answer genuinely IS
 // wrong and examiners mark it as such. Forgiving about typing, strict about the
 // answer.
-function normalise(text: string): string {
+// Exported so MockExam.tsx can mark answers exactly the same way. Two
+// slightly different copies of "how forgiving is marking" is how a site ends
+// up marking the same typed answer correct in one place and wrong in
+// another — the same reasoning that keeps multiple choice reusing this
+// instead of getting its own comparison.
+export function normalise(text: string): string {
   return text
     .toLowerCase()
     // Unify the various dash characters people and word processors produce.

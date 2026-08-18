@@ -81,6 +81,19 @@ export default async function SubjectPage({ params }: Props) {
           {subject.name}
         </h1>
         <p className="mt-3 text-xl opacity-60">{subject.blurb}</p>
+
+        {/* A timed, mixed-topic set rather than one topic at a time — see
+            app/subjects/[subject]/exam/page.tsx. Sits on every subject page
+            rather than only some, since every subject now has content to
+            build one from. */}
+        <Link
+          href={`/subjects/${subject.slug}/exam`}
+          className="mt-5 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+          style={{ backgroundColor: subject.accent }}
+        >
+          Try a mock exam
+          <span aria-hidden="true">→</span>
+        </Link>
       </section>
 
       {/* ---------- The year columns ----------
