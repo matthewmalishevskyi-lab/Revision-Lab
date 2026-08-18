@@ -1098,3 +1098,47 @@ checks, content untouched) all clean.
 **All three of Matthew's picks from this session are now done:** streaks
 and a daily goal, subject tests (formerly "mock exam"), and
 spaced-repetition flashcards.
+
+## XP, levels, badges, streak freeze, celebrations (2026-08-18)
+
+Duolingo-style layer on top, requested after seeing the streak feature.
+Everything here is DERIVED from figures `getProgress` was already
+computing — no new table, no new column, nothing to migrate.
+
+**XP is deliberately linear** — 10 XP per question, 5 per flashcard, and a
+flat 100 XP per level, not a curve that demands more each level. A growing
+requirement rewards people who were already doing a lot; flat means the
+tenth question tonight is worth exactly what the first was, which felt like
+the more honest message for a revision site specifically.
+
+**Badges are a fixed list of 8, always all returned, each with an `earned`
+flag** — First steps, Week warrior, Month master, Century, Flashcard
+fanatic, Subject master, All-rounder, Perfectionist. A locked badge is shown
+dimmed rather than hidden, on purpose: something to aim for, not a surprise
+that appears from nowhere.
+
+**The streak freeze forgives one missed day per rolling week, automatically
+— there's no currency or inventory to manage**, unlike Duolingo's own
+freeze tokens. Worth reading `computeStreak`'s comment in full if this is
+ever touched again: the first version had a real bug, caught before it
+shipped, where a freeze got "spent" on a brand-new user's very first
+(completely empty) day, and could manufacture a streak out of a single
+stray active day from weeks ago with nothing near it. The fix is a
+one-day look-ahead — a freeze is only actually spent if it bridges to more
+real activity just beyond the gap, never spent on a dead end.
+
+**Celebrations always show Pixel**, regardless which subject or mascot the
+moment came from — Matthew's explicit call: Pixel was the first mascot
+ever designed on this site and the one the whole visual style grew out of,
+so it's Pixel's job to celebrate, the way a game's mascot shows up at a
+results screen no matter which level you were playing. Confetti is a CSS
+keyframe added to `globals.css` (`animate-celebration-fall`), following the
+exact pattern the walk-cycle/bob animations already used there, not a new
+way of writing animations. `localStorage` remembers what's already been
+shown (level, each streak milestone, today's goal) — same tool
+`ThemeToggle.tsx` already uses, for the same kind of reason: this is a fact
+about the browser, not something the site's data needs to remember anywhere
+else.
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.
