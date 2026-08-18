@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Icon } from "../../components/Icon";
-import { MASCOTS } from "../../components/Mascots";
+import { MascotDisplay } from "../../components/MascotDisplay";
 import { SiteHeader } from "../../components/SiteHeader";
 import { BookArt, ExamArt } from "../../components/YearArt";
 import { SITE_NAME } from "../../lib/site";
@@ -68,8 +68,6 @@ export default async function SubjectPage({ params }: Props) {
   // Someone typing /subjects/geography gets a proper 404 rather than a crash.
   // Always assume the URL bar contains nonsense — anyone can type anything.
   if (!subject) notFound();
-
-  const Mascot = MASCOTS[subject.mascot];
 
   return (
     <main className="mx-auto w-full max-w-7xl px-6 py-8">
@@ -150,7 +148,10 @@ export default async function SubjectPage({ params }: Props) {
                       Picking this by position broke on Business, whose Year 11
                       sits at index 1 and was therefore handed the book. */}
                   {index === 0 ? (
-                    <Mascot className="h-40 drop-shadow-[0_8px_14px_rgba(0,0,0,0.25)]" />
+                    <MascotDisplay
+                      mascot={subject.mascot}
+                      className="h-40 drop-shadow-[0_8px_14px_rgba(0,0,0,0.25)]"
+                    />
                   ) : group.year === "Year 11" ? (
                     <ExamArt className="h-36 drop-shadow-[0_8px_14px_rgba(0,0,0,0.2)]" />
                   ) : (

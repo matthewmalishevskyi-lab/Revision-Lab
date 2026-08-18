@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MockExam, type ExamQuestion } from "../../../components/MockExam";
-import { MASCOTS } from "../../../components/Mascots";
+import { MascotDisplay } from "../../../components/MascotDisplay";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { getTopicContent } from "../../../lib/content";
 import { getSubject } from "../../../lib/subjects";
@@ -81,7 +81,6 @@ export default async function ExamPage({ params }: Props) {
 
   const pool = collectQuestionPool(subject.slug, subject.years);
   const questions = shuffle(pool).slice(0, QUESTION_COUNT);
-  const Mascot = MASCOTS[subject.mascot];
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-8">
@@ -103,7 +102,10 @@ export default async function ExamPage({ params }: Props) {
         className="mt-6 flex items-center gap-5 overflow-hidden rounded-3xl px-8 py-8 text-white shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)]"
         style={{ backgroundImage: subject.gradient }}
       >
-        <Mascot className="h-20 shrink-0 drop-shadow-[0_6px_10px_rgba(0,0,0,0.3)]" />
+        <MascotDisplay
+          mascot={subject.mascot}
+          className="h-20 shrink-0 drop-shadow-[0_6px_10px_rgba(0,0,0,0.3)]"
+        />
         <div>
           <p className="text-sm font-semibold uppercase tracking-wider opacity-80">
             {subject.name}

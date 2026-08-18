@@ -33,6 +33,7 @@
 
 import { useEffect, useRef } from "react";
 import { MASCOTS } from "./Mascots";
+import { MascotDisplay } from "./MascotDisplay";
 
 // Distance between rungs, in pixels. The mascot can only ever stop on one of
 // these, and the same number draws the rungs in CSS below — one source of
@@ -57,7 +58,6 @@ export function LadderCompanion({
   mascot: keyof typeof MASCOTS;
   colour: string;
 }) {
-  const Mascot = MASCOTS[mascot];
   const railsRef = useRef<HTMLDivElement>(null);
   const climberRef = useRef<HTMLDivElement>(null);
 
@@ -248,7 +248,10 @@ export function LadderCompanion({
           className="absolute left-1/2 top-0 w-[84px] will-change-transform"
           style={{ transform: "translate(-50%, 48px)" }}
         >
-          <Mascot className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]" />
+          <MascotDisplay
+            mascot={mascot}
+            className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]"
+          />
         </div>
       </div>
     </div>

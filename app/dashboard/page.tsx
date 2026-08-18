@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
 import { DashboardCelebrations } from "../components/DashboardCelebrations";
 import { FlameIcon } from "../components/FlameIcon";
+import { MascotDisplay } from "../components/MascotDisplay";
 import { PixelCompanion } from "../components/PixelCompanion";
 import { OUTFITS, type OutfitUnlockInfo } from "../components/PixelOutfits";
 import { getViewer } from "../lib/viewer";
@@ -44,7 +44,6 @@ export default async function DashboardPage() {
   const nextUpSubject = progress.nextUp
     ? progress.subjects.find((s) => s.slug === progress.nextUp!.subjectSlug)
     : undefined;
-  const NextUpMascot = nextUpSubject ? MASCOTS[nextUpSubject.mascot] : null;
 
   // Flashcards due for another look, across every subject — see
   // flashcard-review.ts. Only shown when there's something due; a "0 due"
@@ -240,8 +239,11 @@ export default async function DashboardPage() {
             <div className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-white/20 opacity-70 blur-3xl transition group-hover:opacity-100" />
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/30" />
 
-            {NextUpMascot && (
-              <NextUpMascot className="relative h-24 shrink-0 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]" />
+            {nextUpSubject && (
+              <MascotDisplay
+                mascot={nextUpSubject.mascot}
+                className="relative h-24 shrink-0 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]"
+              />
             )}
 
             <div className="relative min-w-0 flex-1">
@@ -267,8 +269,6 @@ export default async function DashboardPage() {
       {/* ---------- Subjects ---------- */}
       <section className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {homepageCards().map((card) => {
-          const Mascot = MASCOTS[card.mascot];
-
           // The dashboard follows the homepage: Science is one card, not three.
           // Nine cards here would bury everything else, and someone who wants a
           // specific science is one click away.
@@ -294,7 +294,10 @@ export default async function DashboardPage() {
               <p className="relative mt-1 text-sm opacity-80">
                 {topicCount} topics
               </p>
-              <Mascot className="pointer-events-none absolute -bottom-3 right-2 h-24 opacity-90 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)] transition group-hover:scale-105" />
+              <MascotDisplay
+                mascot={card.mascot}
+                className="pointer-events-none absolute -bottom-3 right-2 h-24 opacity-90 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)] transition group-hover:scale-105"
+              />
               <div className="h-16" />
             </Link>
           );

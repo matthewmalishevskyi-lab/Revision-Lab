@@ -2,7 +2,7 @@
 // `app/page.tsx` IS the route for "/" in the App Router.
 
 import Link from "next/link";
-import { MASCOTS } from "./components/Mascots";
+import { MascotDisplay } from "./components/MascotDisplay";
 import { SiteHeader } from "./components/SiteHeader";
 import { StreakSpotlight } from "./components/StreakSpotlight";
 import { StructuredData, websiteSchema } from "./components/StructuredData";
@@ -78,8 +78,6 @@ export default async function Home(props: PageProps<"/">) {
       {/* ---------- Subject cards ---------- */}
       <section className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
         {homepageCards().map((card, index) => {
-          const Mascot = MASCOTS[card.mascot];
-
           // A GROUP card links to its own chooser page and says how many
           // subjects are inside; a subject card links straight to its topics.
           //
@@ -141,7 +139,10 @@ export default async function Home(props: PageProps<"/">) {
                 style={{ animationDuration: WALK_DURATIONS[index] }}
               >
                 <div className="animate-bob">
-                  <Mascot className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]" />
+                  <MascotDisplay
+                    mascot={card.mascot}
+                    className="w-full drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]"
+                  />
                 </div>
               </div>
 

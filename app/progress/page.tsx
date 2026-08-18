@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { MASCOTS } from "../components/Mascots";
+import { MascotDisplay } from "../components/MascotDisplay";
 import { PixelCompanion } from "../components/PixelCompanion";
 import { ProgressRing } from "../components/ProgressRing";
 import { SiteHeader } from "../components/SiteHeader";
@@ -66,8 +66,9 @@ export default async function ProgressPage() {
               const subject = progress.subjects.find(
                 (s) => s.slug === progress.nextUp!.subjectSlug,
               );
-              const Mascot = subject ? MASCOTS[subject.mascot] : null;
-              return Mascot ? <Mascot className="h-14 shrink-0" /> : null;
+              return subject ? (
+                <MascotDisplay mascot={subject.mascot} className="h-14 shrink-0" />
+              ) : null;
             })()}
             <span className="min-w-0">
               <span className="block text-sm font-semibold uppercase tracking-wider opacity-50">
@@ -105,7 +106,6 @@ export default async function ProgressPage() {
       {/* ---------- The three subject cards ---------- */}
       <section className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {progress.subjects.map((subject) => {
-          const Mascot = MASCOTS[subject.mascot];
           const colour = subject.accent;
 
           return (
@@ -118,7 +118,7 @@ export default async function ProgressPage() {
                   className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl"
                   style={{ backgroundImage: subject.gradient }}
                 >
-                  <Mascot className="h-12" />
+                  <MascotDisplay mascot={subject.mascot} className="h-12" />
                 </span>
                 <h2 className="text-xl font-semibold">{subject.name}</h2>
               </div>

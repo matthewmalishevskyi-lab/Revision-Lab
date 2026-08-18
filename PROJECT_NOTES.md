@@ -1339,3 +1339,41 @@ untouched `<Pixel>` exactly as they did before the wardrobe existed.
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+## Retracting that last line: every Pixel now wears the outfit (2026-08-18)
+
+Same day, immediate follow-up. Matthew: "make sure that every single Pixel
+has an outfit equipped by the user" — and he was right to ask. The note
+directly above this one said the CS-subject-mascot places were untouched
+"on purpose", but that reasoning didn't survive contact with what he
+actually wanted: he doesn't think of Pixel as "the Computer Science icon
+that happens to also cameo elsewhere" any more, he thinks of Pixel as the
+site's character, full stop — so every one of those places was actually a
+gap, not a deliberate boundary.
+
+**Found every remaining spot with `grep -rn "MASCOTS\["`:** the homepage
+subject cards, the dashboard's subject grid, the "next up" mascot on both
+the dashboard and the progress page, the progress page's subject cards,
+the subject page's hero, the {subject} test intro screen, and the
+topic-page ladder — eight render sites across six files, all sharing the
+exact same generic pattern (`const Mascot = MASCOTS[x.mascot]; ...
+<Mascot />`), because every one of them draws whichever subject's mascot
+is relevant, Pixel included, with no special case for Pixel at all.
+
+**New shared `MascotDisplay.tsx` replaces every one of those sites.** Given
+a mascot key, it renders `PixelWithOutfit` with the equipped outfit if
+(and only if) that key is `"pixel"`, and otherwise renders the exact same
+plain mascot component `MASCOTS[mascot]` always rendered — so Hoot, Quill,
+Knight and the rest of the cast look precisely as they always have,
+everywhere. The special-casing lives in ONE place now, not duplicated
+across six files each deciding for themselves whether this particular
+mascot happens to be Pixel.
+
+Confirmed nothing was missed by re-running the same grep afterwards — the
+only `MASCOTS[` lookups left are `MascotDisplay`'s own fallback and the two
+subject-group picker pages (`subjects/languages`, `subjects/science`),
+which can only ever show Spanish/French/German or Biology/Chemistry/
+Physics and so never touch Pixel regardless.
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.
