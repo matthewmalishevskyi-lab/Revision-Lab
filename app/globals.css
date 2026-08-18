@@ -146,3 +146,31 @@ body {
     left: 0.75rem;
   }
 }
+
+/* --- Celebrations -----------------------------------------------------------
+   One piece of confetti falling from the top of the screen to about 70% of
+   the way down, spinning once, fading out as it lands. Celebration.tsx spawns
+   two dozen of these with randomised horizontal position, delay and duration
+   so they don't all fall in a single obvious column at once. */
+@keyframes celebration-fall {
+  from {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(70vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-celebration-fall {
+  animation-name: celebration-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-celebration-fall {
+    display: none;
+  }
+}

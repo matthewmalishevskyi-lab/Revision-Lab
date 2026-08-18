@@ -256,6 +256,36 @@ export default async function ProgressPage() {
         </div>
       </section>
 
+      {/* ---------- Badges ---------- */}
+      {/* Always all eight, earned or not — see computeBadges in
+          lib/progress.ts. A badge you can't see yet isn't something to aim
+          for, so locked ones stay visible, just dimmed. */}
+      <section className="mt-8 rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5">
+        <h2 className="text-2xl font-bold tracking-tight">Badges</h2>
+        <p className="mt-1 opacity-60">
+          {progress.badges.filter((b) => b.earned).length} of{" "}
+          {progress.badges.length} earned
+        </p>
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {progress.badges.map((badge) => (
+            <div
+              key={badge.id}
+              className={`rounded-2xl border p-4 text-center transition ${
+                badge.earned
+                  ? "border-amber-400/40 bg-amber-400/10"
+                  : "border-black/5 opacity-40 grayscale dark:border-white/10"
+              }`}
+            >
+              <p aria-hidden="true" className="text-3xl">
+                {badge.icon}
+              </p>
+              <p className="mt-2 text-sm font-semibold">{badge.name}</p>
+              <p className="mt-0.5 text-xs opacity-60">{badge.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ---------- What the numbers mean ---------- */}
       <section className="mt-8 rounded-3xl border border-white/60 bg-white/60 p-6 text-sm shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
         <h2 className="font-semibold">How these are worked out</h2>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
+import { DashboardCelebrations } from "../components/DashboardCelebrations";
 import { getViewer } from "../lib/viewer";
 import { getProgress } from "../lib/progress";
 import { getDueFlashcards } from "../lib/flashcard-review";
@@ -65,14 +66,39 @@ export default async function DashboardPage() {
     <main className="mx-auto w-full max-w-6xl px-6 py-8">
       <SiteHeader greeting={false} />
 
-      <section className="mt-10">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-          Hi, {user.name}
-        </h1>
-        <p className="mt-3 text-lg opacity-60">
-          {totalTopics} topics across {SUBJECTS.length} subjects. Pick up where
-          you like.
-        </p>
+      {/* Fires at most one celebration per visit — a level-up, a streak
+          milestone, or today's goal — and otherwise renders nothing at all.
+          See DashboardCelebrations.tsx for how it decides which, if any. */}
+      <DashboardCelebrations
+        goalReached={progress.today.count >= progress.today.goal}
+        streakCurrent={progress.streak.current}
+        streakActiveToday={progress.streak.activeToday}
+        level={progress.xp.level}
+      />
+
+      <section className="mt-10 flex flex-wrap items-center gap-4">
+        <div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            Hi, {user.name}
+          </h1>
+          <p className="mt-3 text-lg opacity-60">
+            {totalTopics} topics across {SUBJECTS.length} subjects. Pick up
+            where you like.
+          </p>
+        </div>
+
+        {/* XP and level — see computeXp in lib/progress.ts. A flat, always-
+            visible number rather than tucked away on the progress page,
+            because seeing it go up a little after every single question is
+            the point of having it at all. */}
+        <div className="ml-auto rounded-2xl border border-white/60 bg-white/70 px-5 py-3 text-center shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+          <p className="text-2xl font-bold tabular-nums">
+            Lvl {progress.xp.level}
+          </p>
+          <p className="text-xs opacity-50">
+            {progress.xp.intoLevel}/{progress.xp.forNextLevel} XP
+          </p>
+        </div>
       </section>
 
       {/* ---------- Streak & daily goal ---------- */}
@@ -101,6 +127,13 @@ export default async function DashboardPage() {
                   ? `day${progress.streak.current === 1 ? "" : "s"} in a row`
                   : `day${progress.streak.current === 1 ? "" : "s"} — revise today to keep it going`}
             </p>
+            {/* Only mentioned when it actually applied — see computeStreak's
+                comment on why a freeze is never spent for nothing. */}
+            {progress.streak.usedFreeze && (
+              <p className="text-xs opacity-45">
+                🧊 A streak freeze covered a missed day this week
+              </p>
+            )}
           </div>
         </div>
 

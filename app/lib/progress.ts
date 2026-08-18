@@ -179,9 +179,26 @@ export type Progress = {
      * is worded (a live streak vs. one that will end if nothing happens
      * today). */
     activeToday: boolean;
+    /** Whether a streak freeze covered a missed day somewhere in the current
+     * run — see computeStreak's comment for what a freeze actually is here. */
+    usedFreeze: boolean;
   };
   /** Today's progress toward the daily goal — see DAILY_GOAL below. */
   today: { count: number; goal: number };
+  /** Experience points and level — see computeXp. */
+  xp: {
+    total: number;
+    level: number;
+    /** XP earned so far within the current level. */
+    intoLevel: number;
+    /** XP needed to reach the next level — always XP_PER_LEVEL, kept here so
+     * the dashboard never has to import the constant to draw a progress bar. */
+    forNextLevel: number;
+  };
+  /** Milestone badges — see computeBadges. Always all of them, earned or not,
+   * so a locked badge can be shown as something to aim for rather than simply
+   * not existing yet. */
+  badges: Badge[];
 };
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -197,6 +214,31 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 // habit nudge.
 // ─────────────────────────────────────────────────────────────────────────────
 const DAILY_GOAL = 15;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// XP AND LEVELS
+//
+// Deliberately linear rather than a curve that demands more each time — 100
+// XP is always 100 XP, and level N always starts at exactly (N-1) × 100. A
+// growing requirement rewards people who were already doing a lot; a flat one
+// means the fifth question tonight is worth exactly as much as the first,
+// which is the more honest message for a revision site to send.
+//
+// A practice question is worth more than a flashcard flip (10 vs 5) because
+// answering and being marked is the harder, more valuable kind of practice —
+// not because flashcards don't count. Both earn something.
+// ─────────────────────────────────────────────────────────────────────────────
+const XP_PER_QUESTION = 10;
+const XP_PER_FLASHCARD = 5;
+const XP_PER_LEVEL = 100;
+
+export type Badge = {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  earned: boolean;
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // WHICH DAY DID THAT HAPPEN ON? — less obvious than it sounds
@@ -324,6 +366,9 @@ export async function getProgress(userId: string): Promise<Progress> {
 
   const totalQuestions = subjects.reduce((n, s) => n + s.questionsAnswered, 0);
   const totalCorrect = subjects.reduce((n, s) => n + s.questionsCorrect, 0);
+  const totalFlashcards = subjects.reduce((n, s) => n + s.flashcardsReviewed, 0);
+  const accuracy = totalQuestions > 0 ? totalCorrect / totalQuestions : null;
+  const streak = computeStreak(rows, todayKey);
 
   const todayCount = rows.filter(
     (r) =>
@@ -337,12 +382,20 @@ export async function getProgress(userId: string): Promise<Progress> {
     week,
     totalQuestions,
     totalCorrect,
-    accuracy: totalQuestions > 0 ? totalCorrect / totalQuestions : null,
-    totalFlashcards: subjects.reduce((n, s) => n + s.flashcardsReviewed, 0),
+    accuracy,
+    totalFlashcards,
     totalSecondsThisWeek: subjects.reduce((n, s) => n + s.secondsThisWeek, 0),
     nextUp: chooseNextUp(subjects),
-    streak: computeStreak(rows, todayKey),
+    streak,
     today: { count: todayCount, goal: DAILY_GOAL },
+    xp: computeXp(totalQuestions, totalFlashcards),
+    badges: computeBadges({
+      subjects,
+      totalQuestions,
+      totalFlashcards,
+      accuracy,
+      streakCurrent: streak.current,
+    }),
   };
 }
 
@@ -379,7 +432,8 @@ function weakestTopic(
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// THE STREAK — counts consecutive days, but is forgiving about "today"
+// THE STREAK — counts consecutive days, but is forgiving about "today", AND
+// forgiving about one missed day a week (the "streak freeze")
 //
 // A streak that resets to zero the instant midnight passes and nothing has
 // happened yet would show 0 to someone who is about to revise in five
@@ -391,6 +445,37 @@ function weakestTopic(
 // until the day actually ends with nothing recorded. `activeToday` tells the
 // caller which case it is, so the dashboard can word it correctly ("4-day
 // streak" vs "4-day streak — do something today to keep it going").
+//
+// THE FREEZE, AND WHY IT'S AUTOMATIC RATHER THAN A THING YOU SPEND.
+//
+// Duolingo sells/awards freeze tokens you bank and spend deliberately. This
+// site has no currency and no inventory to manage, so instead of a resource
+// to track, missing exactly one day in any run of seven is simply forgiven,
+// always, for free — the walk backward through the days keeps going instead
+// of stopping. A SECOND missed day within the same seven ends the streak
+// there, same as it always did. The point isn't the mechanic, it's the
+// outcome: one bad day — ill, busy, forgot — shouldn't erase three weeks of
+// real effort, which is the single biggest reason people abandon a streak
+// forever rather than just picking it back up.
+//
+// `usedFreeze` tells the caller whether a gap was actually forgiven in the
+// streak being reported, so the dashboard can mention it rather than the
+// number just looking one higher than the visible days would suggest.
+//
+// ⚠️ A FREEZE IS ONLY SPENT IF IT ACTUALLY BRIDGES TO MORE REAL ACTIVITY.
+//
+// The first version of this checked only "is a freeze available", and had a
+// real bug: for someone with NO history at all, the very first day checked
+// is a gap, a freeze was "available", so it got spent — reporting a freeze
+// had saved a streak that never existed in the first place. Same broken
+// result for a single stray active day from weeks ago with nothing else
+// around it: a "streak" would be manufactured out of nothing.
+//
+// The fix is a one-day look-ahead: before spending the freeze on a gap,
+// check whether the day just beyond it has real activity. If it does, the
+// freeze is genuinely bridging two real stretches of activity — spend it. If
+// it doesn't, spending it would only be padding out to nothing, so the walk
+// stops instead, exactly as it would with no freeze at all.
 // ─────────────────────────────────────────────────────────────────────────────
 function computeStreak(
   rows: ActivityRow[],
@@ -408,12 +493,128 @@ function computeStreak(
   if (!activeToday) cursor = new Date(cursor.getTime() - DAY_MS);
 
   let current = 0;
-  while (daysWithActivity.has(dayKey(cursor))) {
-    current++;
+  let usedFreeze = false;
+  let freezeAvailable = true; // resets every 7 days walked, see below
+  let daysThisWindow = 0;
+
+  while (true) {
+    const active = daysWithActivity.has(dayKey(cursor));
+    const dayBeyondGap = dayKey(new Date(cursor.getTime() - DAY_MS));
+    const bridgesToRealActivity = daysWithActivity.has(dayBeyondGap);
+
+    if (active) {
+      current++;
+    } else if (freezeAvailable && bridgesToRealActivity) {
+      // One free pass per rolling week of the streak — the day is skipped
+      // over rather than ending the walk, but doesn't add to the visible
+      // count, because nothing was actually done that day.
+      freezeAvailable = false;
+      usedFreeze = true;
+    } else {
+      break; // a real break: either the freeze is already spent this week,
+      // or there's nothing beyond this gap worth bridging to.
+    }
+
+    daysThisWindow++;
+    if (daysThisWindow === 7) {
+      daysThisWindow = 0;
+      freezeAvailable = true;
+    }
     cursor = new Date(cursor.getTime() - DAY_MS);
   }
 
-  return { current, activeToday };
+  return { current, activeToday, usedFreeze };
+}
+
+function computeXp(totalQuestions: number, totalFlashcards: number): Progress["xp"] {
+  const total = totalQuestions * XP_PER_QUESTION + totalFlashcards * XP_PER_FLASHCARD;
+  return {
+    total,
+    level: Math.floor(total / XP_PER_LEVEL) + 1,
+    intoLevel: total % XP_PER_LEVEL,
+    forNextLevel: XP_PER_LEVEL,
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BADGES — a fixed list, always all of them, each marked earned or not.
+//
+// Nothing is stored. Every badge's condition is worked out fresh from
+// figures already being computed anyway, the same "derive, don't store"
+// choice as the streak and the daily goal. The only cost of a badge here is
+// deciding what it means; there is no database row that could ever drift out
+// of sync with reality, because there is no database row.
+//
+// Returning the LOCKED ones too, not just earned ones, is deliberate: a
+// badge you can't see yet isn't something to aim for.
+// ─────────────────────────────────────────────────────────────────────────────
+function computeBadges(input: {
+  subjects: SubjectProgress[];
+  totalQuestions: number;
+  totalFlashcards: number;
+  accuracy: number | null;
+  streakCurrent: number;
+}): Badge[] {
+  const { subjects, totalQuestions, totalFlashcards, accuracy, streakCurrent } = input;
+
+  return [
+    {
+      id: "first-steps",
+      name: "First steps",
+      description: "Answer your first practice question",
+      icon: "🌱",
+      earned: totalQuestions >= 1,
+    },
+    {
+      id: "week-warrior",
+      name: "Week warrior",
+      description: "Reach a 7-day streak",
+      icon: "🔥",
+      earned: streakCurrent >= 7,
+    },
+    {
+      id: "month-master",
+      name: "Month master",
+      description: "Reach a 30-day streak",
+      icon: "🗓️",
+      earned: streakCurrent >= 30,
+    },
+    {
+      id: "century",
+      name: "Century",
+      description: "Answer 100 practice questions",
+      icon: "💯",
+      earned: totalQuestions >= 100,
+    },
+    {
+      id: "flashcard-fanatic",
+      name: "Flashcard fanatic",
+      description: "Review 100 flashcards",
+      icon: "📚",
+      earned: totalFlashcards >= 100,
+    },
+    {
+      id: "subject-master",
+      name: "Subject master",
+      description: "Cover every topic in one subject",
+      icon: "🎓",
+      earned: subjects.some((s) => s.percent === 100),
+    },
+    {
+      id: "all-rounder",
+      name: "All-rounder",
+      description: "Cover at least one topic in every subject",
+      icon: "🌐",
+      earned: subjects.every((s) => s.topicsCovered > 0),
+    },
+    {
+      id: "perfectionist",
+      name: "Perfectionist",
+      description: "90%+ accuracy over at least 20 questions",
+      icon: "🎯",
+      earned: totalQuestions >= 20 && accuracy !== null && accuracy >= 0.9,
+    },
+  ];
 }
 
 // The "Next up" card. Picks the subject you have covered least, because the

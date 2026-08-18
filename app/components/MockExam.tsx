@@ -21,6 +21,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { normalise } from "./Practice";
 import { HigherBadge } from "./HigherBadge";
+import { Celebration } from "./Celebration";
 import { recordAnswer } from "../lib/progress-actions";
 
 export type ExamQuestion = {
@@ -60,6 +61,16 @@ export function MockExam({
   const [secondsLeft, setSecondsLeft] = useState(durationSeconds);
   const [states, setStates] = useState<Record<number, QuestionState>>({});
   const recorded = useRef<Set<number>>(new Set());
+  const [celebrating, setCelebrating] = useState(false);
+
+  // Fires once, the moment the exam finishes, however it finished — running
+  // out of time or clicking "Finish now" both count. Watching `phase` rather
+  // than putting this inline in the two places that set it to "finished"
+  // means there's exactly one spot deciding when to celebrate, not two that
+  // could quietly drift apart.
+  useEffect(() => {
+    if (phase === "finished") setCelebrating(true);
+  }, [phase]);
 
   // A ref, not state, for the same reason StudyTimer elsewhere on the site
   // uses one: the tick doesn't need to trigger a render by itself, only the
@@ -153,6 +164,19 @@ export function MockExam({
   if (phase === "finished") {
     return (
       <div>
+        {celebrating && (
+          <Celebration
+            message={
+              markable === 0
+                ? "Test finished!"
+                : correct / markable >= 0.8
+                  ? `${correct}/${markable} — great work!`
+                  : "Test finished!"
+            }
+            onDismiss={() => setCelebrating(false)}
+          />
+        )}
+
         <div
           className="rounded-3xl p-8 text-center text-white shadow-sm"
           style={{ backgroundColor: colour }}
