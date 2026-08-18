@@ -69,6 +69,61 @@ export default async function DashboardPage() {
         </p>
       </section>
 
+      {/* ---------- Streak & daily goal ---------- */}
+      {/* Two habit nudges in one strip: how many days in a row you've
+          revised, and how far into today's (deliberately modest) goal you
+          are. Both are derived straight from getProgress — see
+          computeStreak's comment in lib/progress.ts for why the streak
+          doesn't zero itself out the instant a new day starts. */}
+      <section className="mt-8 flex flex-wrap items-center gap-6 rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+        <div className="flex items-center gap-3">
+          <FlameIcon
+            className={
+              progress.streak.current > 0
+                ? "h-9 w-9 text-amber-500 dark:text-amber-400"
+                : "h-9 w-9 opacity-30"
+            }
+          />
+          <div>
+            <p className="text-2xl font-bold tabular-nums">
+              {progress.streak.current}
+            </p>
+            <p className="text-sm opacity-60">
+              {progress.streak.current === 0
+                ? "Start a streak today"
+                : progress.streak.activeToday
+                  ? `day${progress.streak.current === 1 ? "" : "s"} in a row`
+                  : `day${progress.streak.current === 1 ? "" : "s"} — revise today to keep it going`}
+            </p>
+          </div>
+        </div>
+
+        <div className="min-w-[220px] flex-1">
+          <div className="flex items-center justify-between text-sm">
+            <span className="font-medium">Today&apos;s goal</span>
+            <span className="opacity-60 tabular-nums">
+              {Math.min(progress.today.count, progress.today.goal)}/
+              {progress.today.goal}
+            </span>
+          </div>
+          <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
+            <div
+              className="h-full rounded-full bg-emerald-500 transition-all"
+              style={{
+                width: `${Math.min(100, (progress.today.count / progress.today.goal) * 100)}%`,
+              }}
+            />
+          </div>
+          <p className="mt-1.5 text-sm opacity-60">
+            {progress.today.count >= progress.today.goal
+              ? "Goal reached — nice work"
+              : `${progress.today.goal - progress.today.count} more question${
+                  progress.today.goal - progress.today.count === 1 ? "" : "s"
+                } or flashcards to hit today's goal`}
+          </p>
+        </div>
+      </section>
+
       {/* ---------- Revise this next ---------- */}
       {/* The dashboard is the page you land on right after logging in, so this
           sits above the subject grid rather than only on /progress — the
@@ -180,5 +235,18 @@ export default async function DashboardPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+// Filled rather than stroked, unlike every other header/dashboard icon —
+// a flame reads as "flame" far more from its silhouette than from an
+// outline, and it's the one icon on this page meant to catch the eye rather
+// than sit quietly next to text. Colour is applied by the caller via
+// currentColor, same convention as everywhere else.
+function FlameIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12 2c1.2 3-2.8 4.4-2.8 8.2a2.8 2.8 0 005.6 0c0-.9-.6-1.7-.6-2.6 2.2 1.4 4.3 3.8 4.3 6.9a6.5 6.5 0 11-13 0C5.5 8.8 9 6.4 12 2z" />
+    </svg>
   );
 }

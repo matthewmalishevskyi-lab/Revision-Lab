@@ -172,9 +172,31 @@ export type Progress = {
   totalSecondsThisWeek: number;
   /** What to suggest doing next, for the card at the top of the page. */
   nextUp: { subject: string; subjectSlug: string; topic: string; topicSlug: string } | null;
+  /** Consecutive days with at least one recorded activity. See computeStreak. */
+  streak: {
+    current: number;
+    /** Whether today itself already has activity — changes how the streak
+     * is worded (a live streak vs. one that will end if nothing happens
+     * today). */
+    activeToday: boolean;
+  };
+  /** Today's progress toward the daily goal — see DAILY_GOAL below. */
+  today: { count: number; goal: number };
 };
 
 const DAY_MS = 24 * 60 * 60 * 1000;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DAILY GOAL
+//
+// Deliberately modest, and deliberately not time-based. Fifteen questions or
+// flashcards is a five-minute commitment on a bad day, not a wall. Counting
+// EITHER practice answers or flashcard flips (rather than requiring one
+// specific kind) means a day spent purely on flashcards still counts —
+// punishing someone for revising the "wrong" way defeats the point of a
+// habit nudge.
+// ─────────────────────────────────────────────────────────────────────────────
+const DAILY_GOAL = 15;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // WHICH DAY DID THAT HAPPEN ON? — less obvious than it sounds
@@ -303,6 +325,12 @@ export async function getProgress(userId: string): Promise<Progress> {
   const totalQuestions = subjects.reduce((n, s) => n + s.questionsAnswered, 0);
   const totalCorrect = subjects.reduce((n, s) => n + s.questionsCorrect, 0);
 
+  const todayCount = rows.filter(
+    (r) =>
+      (r.kind === "practice" || r.kind === "flashcard") &&
+      dayKey(new Date(r.created_at)) === todayKey,
+  ).length;
+
   return {
     hasAnyActivity: rows.length > 0,
     subjects,
@@ -313,6 +341,8 @@ export async function getProgress(userId: string): Promise<Progress> {
     totalFlashcards: subjects.reduce((n, s) => n + s.flashcardsReviewed, 0),
     totalSecondsThisWeek: subjects.reduce((n, s) => n + s.secondsThisWeek, 0),
     nextUp: chooseNextUp(subjects),
+    streak: computeStreak(rows, todayKey),
+    today: { count: todayCount, goal: DAILY_GOAL },
   };
 }
 
@@ -346,6 +376,44 @@ function weakestTopic(
   }
 
   return worst?.topic ?? null;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE STREAK — counts consecutive days, but is forgiving about "today"
+//
+// A streak that resets to zero the instant midnight passes and nothing has
+// happened yet would show 0 to someone who is about to revise in five
+// minutes — discouraging, and wrong: they haven't broken anything yet.
+//
+// So today is treated specially. If today already has activity, it's
+// included and the count runs backward from today. If today has nothing YET,
+// the count instead runs backward from YESTERDAY — the streak isn't broken
+// until the day actually ends with nothing recorded. `activeToday` tells the
+// caller which case it is, so the dashboard can word it correctly ("4-day
+// streak" vs "4-day streak — do something today to keep it going").
+// ─────────────────────────────────────────────────────────────────────────────
+function computeStreak(
+  rows: ActivityRow[],
+  todayKey: string,
+): Progress["streak"] {
+  const daysWithActivity = new Set(
+    rows.map((r) => dayKey(new Date(r.created_at))),
+  );
+
+  const activeToday = daysWithActivity.has(todayKey);
+
+  // Start from today if it's already active, otherwise start checking from
+  // yesterday — see the comment above for why.
+  let cursor = new Date(`${todayKey}T12:00:00Z`);
+  if (!activeToday) cursor = new Date(cursor.getTime() - DAY_MS);
+
+  let current = 0;
+  while (daysWithActivity.has(dayKey(cursor))) {
+    current++;
+    cursor = new Date(cursor.getTime() - DAY_MS);
+  }
+
+  return { current, activeToday };
 }
 
 // The "Next up" card. Picks the subject you have covered least, because the

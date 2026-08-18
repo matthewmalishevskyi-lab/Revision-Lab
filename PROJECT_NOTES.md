@@ -970,3 +970,32 @@ A few things worth knowing before you start:
 - If you make a change, please leave a dated section here the same way
   the rest of this file does, so neither of us has to reverse-engineer the
   other's work from a diff.
+
+## Streak & daily goal on the dashboard (2026-08-18)
+
+First of three features Matthew picked in one go — mock exam mode and
+spaced-repetition flashcards are next, see the roadmap section for where
+things stand.
+
+**No schema change.** Both are derived from the same `activity` rows
+`getProgress` already reads — no new table, no new Server Action.
+
+**The streak is deliberately forgiving about "today."** A naive
+consecutive-days count would show 0 the moment midnight passes and nothing's
+been done yet, which is discouraging and wrong — nothing has actually been
+broken. `computeStreak` in `lib/progress.ts` handles this: if today already
+has activity, the count runs backward from today; if not, it runs backward
+from YESTERDAY instead, so the streak survives until the day genuinely ends
+empty. `activeToday` on the result tells the dashboard which case it's in,
+so the wording changes ("4 days in a row" vs "4 days — revise today to keep
+it going") rather than just showing a number that might be about to vanish.
+
+**The daily goal counts practice answers OR flashcard flips, not one
+specific kind**, and stays modest on purpose — 15, a five-minute commitment,
+not a wall. Counting only one kind would mean a day spent purely on
+flashcards (a perfectly good way to revise) doesn't count towards the goal,
+which punishes people for revising the "wrong" way.
+
+`node scripts/check-content.mjs` still passes clean (87,556 checks — content
+wasn't touched), `tsc -p tsconfig.json` and `eslint` both clean on the two
+changed files (`lib/progress.ts`, `dashboard/page.tsx`).
