@@ -1,4 +1,7 @@
-// PHYSICS — Year 9 being written. Years 10 and 11 planned, not yet written.
+// PHYSICS — complete. All three years, 19 topics, locked into the checker's
+// multiple-choice rule same as every other subject. (This comment used to say
+// "Year 9 being written" and was never updated when the rest landed — see
+// PROJECT_NOTES.md, 2026-08-18, for the full correction.)
 //
 // ⚠️ FOUNDATION AND HIGHER
 //
