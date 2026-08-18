@@ -1229,3 +1229,65 @@ one to the other.
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+## Pixel's wardrobe, and a focus timer (2026-08-18)
+
+Two more of Matthew's picks from the same "any ideas?" round as the streak
+spotlight above.
+
+**Pixel's wardrobe.** Matthew's original phrase was "spend the XP you're
+already earning to unlock cosmetics" — read as XP (and the streak, and
+badges) being the UNLOCK CONDITION rather than a currency with a balance to
+manage. `PixelOutfits.tsx` defines five outfits (Classic, Shades, Party
+hat, Cape, Crown), each unlocked by a different existing figure —
+`getProgress` already computes level, streak and badges, so nothing new is
+stored for "is this unlocked", same "derive, don't store" reasoning as
+badges themselves. Deliberately varied conditions (a level, a streak
+length, a badge count) rather than all four gated on the same number, so
+unlocking one has nothing to do with what you were already doing to get
+another.
+
+**Which outfit is EQUIPPED, though, is a genuine preference with nothing
+server-side to check** — nobody else ever sees it, and getting it wrong
+costs nothing. That lives in `localStorage`, the same call already made for
+the theme toggle and for which celebrations have been shown. `/wardrobe`
+(new page) is where it's chosen; a "Dress up Pixel — N/5 unlocked" banner
+on the dashboard is how it's found, styled and positioned the same as the
+existing flashcards-due banner, except always shown — there's always
+another outfit worth working toward.
+
+**The actual payoff is in `Celebration.tsx`**, not the wardrobe page
+itself: Pixel now shows up wearing whatever's equipped every time something
+gets celebrated (a level-up, a streak milestone, the daily goal), so
+dressing Pixel up isn't a gallery you have to remember to go look at — it's
+what's waiting the next time there's something worth celebrating.
+
+**Outfits are a separate layer drawn on top of (or, for the cape, behind)
+the ordinary `<Pixel>`, not a change to Pixel's own SVG.** Every existing
+place Pixel already appears — subject cards, the topic-page ladder, the
+dashboard grid — renders through the untouched original component, so
+there was zero risk of an outfit change affecting any of them. The new
+`PixelWithOutfit` wrapper forces its box to Pixel's own 120:140 aspect
+ratio (`aspectRatio` in `style`) so an accessory positioned "over the eyes"
+or "above the head" as a percentage lines up correctly regardless of what
+height class a caller uses.
+
+**Focus timer.** A visible 25-minutes-on/5-minutes-off Pomodoro timer,
+shown on every topic page with real content. Deliberately does **not**
+call `recordStudyTime` itself — `StudyTimer` (unchanged) already records
+every second a topic page is visible and being used, focus timer running
+or not, so this would have double-counted the exact same minutes. Its only
+job is structure: a countdown, a clear focus/break label, and a chime
+(built with the Web Audio API, no audio file to ship) when a phase ends.
+Shown to every visitor, not just logged-in ones — unlike `StudyTimer`,
+using it needs no account and records nothing, so there was no reason to
+gate it.
+
+No new database tables, no new Server Actions, and no new Supabase SQL for
+either feature — everything here is either derived from figures that
+already existed, or a browser-only preference, in keeping with how
+everything else on this site is either "stored, once, as an event" or
+"computed fresh every time".
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.

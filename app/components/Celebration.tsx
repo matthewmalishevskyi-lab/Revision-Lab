@@ -11,13 +11,19 @@
 // the same way a mascot appears at the final screen of a game regardless of
 // which level you were playing.
 //
+// Pixel shows up wearing whatever outfit is currently equipped in the
+// wardrobe (see PixelOutfits.tsx and /wardrobe) — read from localStorage on
+// mount, same as the theme toggle. This is the whole payoff of unlocking an
+// outfit at all: it's not a gallery you have to go looking at, it's what
+// Pixel is wearing the next time there's something worth celebrating.
+//
 // The confetti keyframe lives in globals.css (`animate-celebration-fall`),
 // following the same pattern as the walk-cycle and bob animations already
 // there, rather than introducing a different way of writing CSS animations
 // just for this one component.
 
 import { useEffect, useState } from "react";
-import { Pixel } from "./Mascots";
+import { EQUIPPED_OUTFIT_KEY, PixelWithOutfit, type OutfitId } from "./PixelOutfits";
 
 const CONFETTI_COLOURS = [
   "#f59e0b",
@@ -48,6 +54,20 @@ export function Celebration({
       colour: CONFETTI_COLOURS[i % CONFETTI_COLOURS.length],
     })),
   );
+
+  // Same "read after mount" reasoning as DashboardCelebrations: localStorage
+  // doesn't exist during server rendering, so reading it during render would
+  // make the server's HTML and the browser's first render disagree.
+  const [outfit, setOutfit] = useState<OutfitId>("none");
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(EQUIPPED_OUTFIT_KEY) as OutfitId | null;
+      if (saved) setOutfit(saved);
+    } catch {
+      // No localStorage — Classic Pixel, same as anyone who's never opened
+      // the wardrobe.
+    }
+  }, []);
 
   // Dismisses itself after a few seconds so nobody has to click anything —
   // but clicking anywhere works too, for the one time in five it fires while
@@ -82,7 +102,7 @@ export function Celebration({
         onClick={(event) => event.stopPropagation()}
         className="relative flex flex-col items-center rounded-3xl bg-white px-8 py-8 text-center shadow-2xl dark:bg-neutral-900"
       >
-        <Pixel className="h-24 animate-bob" />
+        <PixelWithOutfit outfit={outfit} className="h-24 animate-bob" />
         <p className="mt-4 text-xl font-bold">{message}</p>
         <button
           type="button"

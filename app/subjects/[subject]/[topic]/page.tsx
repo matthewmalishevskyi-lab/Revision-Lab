@@ -7,6 +7,7 @@ import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";
 import { LadderCompanion } from "../../../components/LadderCompanion";
 import { ContentNotice } from "../../../components/ContentNotice";
+import { FocusTimer } from "../../../components/FocusTimer";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { StudyTimer } from "../../../components/StudyTimer";
 import { TopicNav, type NavSection } from "../../../components/TopicNav";
@@ -248,6 +249,13 @@ export default async function TopicPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {/* A Pomodoro-style timer, for anyone who wants some structure to
+            their revising — see FocusTimer.tsx for why it doesn't record
+            study time itself (StudyTimer above already does, silently).
+            Only shown once there's real content to focus on; the "coming
+            soon" panel has nothing to time. */}
+        {content && <FocusTimer colour={style.text} />}
 
         {/* Jump straight to a section. Sticks to the top of the window once you
             scroll past it, so it's reachable from anywhere on the page. */}

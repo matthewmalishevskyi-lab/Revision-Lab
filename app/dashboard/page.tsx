@@ -5,6 +5,7 @@ import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
 import { DashboardCelebrations } from "../components/DashboardCelebrations";
 import { FlameIcon } from "../components/FlameIcon";
+import { OUTFITS, type OutfitUnlockInfo } from "../components/PixelOutfits";
 import { getViewer } from "../lib/viewer";
 import { getProgress } from "../lib/progress";
 import { getDueFlashcards } from "../lib/flashcard-review";
@@ -48,6 +49,19 @@ export default async function DashboardPage() {
   // flashcard-review.ts. Only shown when there's something due; a "0 due"
   // banner every single day is just noise.
   const dueFlashcards = await getDueFlashcards(user.id);
+
+  // How many wardrobe outfits are unlocked right now — see PixelOutfits.tsx.
+  // Unlike the flashcard banner above, this one is always shown: there's
+  // always a next outfit to work toward, so "0 due" isn't a state that ever
+  // needs hiding.
+  const outfitInfo: OutfitUnlockInfo = {
+    level: progress.xp.level,
+    streakCurrent: progress.streak.current,
+    badgesEarned: progress.badges.filter((b) => b.earned).length,
+  };
+  const unlockedOutfitCount = OUTFITS.filter((o) =>
+    o.isUnlocked(outfitInfo),
+  ).length;
 
   // Counting topics from the data rather than typing "37" somewhere — the
   // number can never drift out of date because it's derived, not stored.
@@ -184,6 +198,26 @@ export default async function DashboardPage() {
           </span>
         </Link>
       )}
+
+      {/* ---------- Pixel's wardrobe ---------- */}
+      {/* Always shown, unlike the flashcard banner above — there's always
+          another outfit worth working toward, and the count itself is the
+          hook: seeing "2/5" is what makes someone curious what the other
+          three look like. */}
+      <Link
+        href="/wardrobe"
+        className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/60 bg-white/70 px-6 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+      >
+        <span>
+          <span className="font-semibold">Dress up Pixel</span>
+          <span className="ml-2 opacity-60">
+            {unlockedOutfitCount}/{OUTFITS.length} outfits unlocked
+          </span>
+        </span>
+        <span aria-hidden="true" className="text-xl opacity-40">
+          →
+        </span>
+      </Link>
 
       {/* ---------- Revise this next ---------- */}
       {/* The dashboard is the page you land on right after logging in, so this
