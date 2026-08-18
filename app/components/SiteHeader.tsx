@@ -5,6 +5,7 @@ import { getViewer } from "../lib/viewer";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchBox } from "./SearchBox";
+import { PixelCompanion } from "./PixelCompanion";
 import { chipClasses } from "./chipStyles";
 
 // The header that appears on every page.
@@ -52,6 +53,13 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
 
         {user ? (
           <>
+            {/* Pixel, wearing whatever's equipped in the wardrobe — see
+                PixelCompanion.tsx. This is the one placement that puts him on
+                literally every page, since SiteHeader is on all of them.
+                Before the greeting, the way a personal avatar usually sits
+                first in a row like this. */}
+            <PixelCompanion className="h-10" />
+
             {greeting && (
               <span className="hidden text-lg opacity-70 lg:inline">
                 Hi, {user.name}

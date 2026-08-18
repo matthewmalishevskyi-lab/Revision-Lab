@@ -5,6 +5,7 @@ import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
 import { DashboardCelebrations } from "../components/DashboardCelebrations";
 import { FlameIcon } from "../components/FlameIcon";
+import { PixelCompanion } from "../components/PixelCompanion";
 import { OUTFITS, type OutfitUnlockInfo } from "../components/PixelOutfits";
 import { getViewer } from "../lib/viewer";
 import { getProgress } from "../lib/progress";
@@ -92,6 +93,11 @@ export default async function DashboardPage() {
       />
 
       <section className="mt-10 flex flex-wrap items-center gap-4">
+        {/* Bigger than the header's version — this is the page you land on
+            right after logging in, so it's worth a proper introduction
+            rather than a small corner icon. */}
+        <PixelCompanion className="h-20" />
+
         <div>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Hi, {user.name}

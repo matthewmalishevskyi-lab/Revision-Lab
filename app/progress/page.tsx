@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { MASCOTS } from "../components/Mascots";
+import { PixelCompanion } from "../components/PixelCompanion";
 import { ProgressRing } from "../components/ProgressRing";
 import { SiteHeader } from "../components/SiteHeader";
 import { WeeklyChart } from "../components/WeeklyChart";
@@ -42,15 +43,18 @@ export default async function ProgressPage() {
 
       {/* ---------- Heading + next up ---------- */}
       <section className="mt-10 flex flex-wrap items-center justify-between gap-6">
-        <div>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Your progress
-          </h1>
-          <p className="mt-2 text-lg opacity-60">
-            {progress.hasAnyActivity
-              ? `Hi ${user.name} — here's what you've been revising.`
-              : `Hi ${user.name} — nothing recorded yet. Answer a question and it'll show up here.`}
-          </p>
+        <div className="flex flex-wrap items-center gap-4">
+          <PixelCompanion className="h-16" />
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Your progress
+            </h1>
+            <p className="mt-2 text-lg opacity-60">
+              {progress.hasAnyActivity
+                ? `Hi ${user.name} — here's what you've been revising.`
+                : `Hi ${user.name} — nothing recorded yet. Answer a question and it'll show up here.`}
+            </p>
+          </div>
         </div>
 
         {progress.nextUp && (

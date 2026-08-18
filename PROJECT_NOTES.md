@@ -1291,3 +1291,51 @@ everything else on this site is either "stored, once, as an event" or
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+## Pixel, everywhere (2026-08-18)
+
+Follow-up to the wardrobe, same day: "since Pixel is now our website
+character, put him in different parts of the pages... make sure he changes
+outfits depending on what's chosen." Before this, the only place a chosen
+outfit actually showed was the celebration popup — real, but easy to miss
+for days at a time. The wardrobe existed; Pixel wearing the result of it
+mostly didn't.
+
+**New shared component, `PixelCompanion.tsx`**, used everywhere below —
+one place that reads the equipped outfit from `localStorage` (see
+`PixelOutfits.tsx`) and renders `PixelWithOutfit`, rather than five copies
+of the same read-after-mount logic slowly drifting apart. Takes a size
+class and an optional `linkToWardrobe` (on by default — clicking Pixel
+anywhere takes you to the wardrobe to change him; off on the wardrobe page
+itself, since linking to the page you're already on is pointless).
+
+Five placements, each sized to the page it's on:
+
+- **The header** (`SiteHeader.tsx`) — small, first in the row before the
+  name greeting. This is the one that actually delivers "everywhere":
+  `SiteHeader` renders on every single page, so this alone puts Pixel on
+  every subject page, every topic page, the dashboard, progress, the
+  wardrobe — all of it — without touching any of those pages individually.
+- **The homepage** (`StreakSpotlight.tsx`) — centred above "Welcome back",
+  since that card is the first thing anyone logged in sees on the whole
+  site.
+- **The dashboard** — bigger, next to "Hi, {name}", the page you land on
+  right after logging in.
+- **The progress page** — same treatment as the dashboard, next to "Your
+  progress".
+- **The wardrobe page itself** — biggest of all, no link (see above),
+  since showing Pixel off IS this page's job.
+
+Only shown when logged in everywhere except the wardrobe page (which
+already redirects logged-out visitors away) — there's no outfit to wear
+without an account, so a logged-out visitor sees the exact same header,
+homepage and so on as before any of this existed.
+
+Zero changes to Pixel's own component or to any of the many places he
+already appeared as the Computer Science subject's mascot (subject cards,
+the topic-page ladder, mock exam screens) — those all render the original,
+untouched `<Pixel>` exactly as they did before the wardrobe existed.
+`PixelCompanion` is additive, not a replacement.
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FlameIcon } from "./FlameIcon";
+import { PixelCompanion } from "./PixelCompanion";
 import type { Progress } from "../lib/progress";
 
 // The first thing a logged-in visitor sees on the homepage — replaces the
@@ -55,7 +56,14 @@ export function StreakSpotlight({
           : "border-white/60 bg-white/55 dark:border-white/10 dark:bg-white/5"
       }`}
     >
-      <p className="text-lg opacity-70">Welcome back, {userName}</p>
+      {/* Pixel greeting you by name, wearing whatever's equipped — the
+          first thing anyone logged in sees on the whole site, since this
+          card is the first thing on the homepage. */}
+      <div className="flex justify-center">
+        <PixelCompanion className="h-16" />
+      </div>
+
+      <p className="mt-3 text-lg opacity-70">Welcome back, {userName}</p>
 
       <div className="mt-3 flex items-center justify-center gap-4">
         <FlameIcon

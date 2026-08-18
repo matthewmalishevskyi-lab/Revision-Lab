@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { PixelCompanion } from "../components/PixelCompanion";
 import { SiteHeader } from "../components/SiteHeader";
 import { Wardrobe } from "../components/Wardrobe";
 import { OUTFITS, type OutfitUnlockInfo } from "../components/PixelOutfits";
@@ -38,15 +39,21 @@ export default async function WardrobePage() {
     <main className="mx-auto w-full max-w-4xl px-6 py-8">
       <SiteHeader greeting={false} />
 
-      <section className="mt-10">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-          Pixel&apos;s wardrobe
-        </h1>
-        <p className="mt-3 text-lg opacity-60">
-          Outfits unlock as you level up, keep a streak going, and earn
-          badges. Whatever you pick, Pixel wears it every time you celebrate
-          something.
-        </p>
+      <section className="mt-10 flex flex-wrap items-center gap-6">
+        {/* No link back to /wardrobe here — that's the page already open.
+            Bigger than anywhere else Pixel appears, since this page's whole
+            job is showing him off. */}
+        <PixelCompanion className="h-28" linkToWardrobe={false} />
+        <div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            Pixel&apos;s wardrobe
+          </h1>
+          <p className="mt-3 max-w-prose text-lg opacity-60">
+            Outfits unlock as you level up, keep a streak going, and earn
+            badges. Whatever you pick, Pixel wears it here, in the header,
+            on your dashboard, and every time you celebrate something.
+          </p>
+        </div>
       </section>
 
       <Wardrobe unlockedIds={unlockedIds} />
