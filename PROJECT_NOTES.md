@@ -999,3 +999,46 @@ which punishes people for revising the "wrong" way.
 `node scripts/check-content.mjs` still passes clean (87,556 checks — content
 wasn't touched), `tsc -p tsconfig.json` and `eslint` both clean on the two
 changed files (`lib/progress.ts`, `dashboard/page.tsx`).
+
+## Mock exam mode (2026-08-18)
+
+Second of the three features Matthew picked. `/subjects/<subject>/exam` — a
+timed set of 20 questions pulled at random from EVERY written topic in a
+subject, not just one, closer to what an actual paper feels like.
+
+**A static route living next to a dynamic one, again.** `exam/` sits inside
+`app/subjects/[subject]/`, alongside `[topic]/`. Next checks static segments
+before dynamic ones, so `/subjects/maths/exam` reaches the exam page rather
+than being read as topic slug `exam` — same trick `/subjects/science`
+already uses to beat `/subjects/[subject]`. Checked there's no topic
+anywhere actually slugged `exam` before relying on this.
+
+**Deliberately NOT statically generated.** Every other subject/topic page
+has a `generateStaticParams` so Next can build it once at deploy time. This
+page skips that on purpose and sets `export const dynamic =
+"force-dynamic"` instead — a mock exam that showed the same 20 questions
+every single visit until the next deploy would defeat the entire point of
+"try another one." The random pick genuinely has to happen fresh, per
+request.
+
+**Marking reuses `normalise()` from `Practice.tsx`** — exported rather than
+copied. Two slightly different implementations of "how forgiving is this
+comparison" is exactly the kind of bug the codebase has already hit once
+(the hyphen-vs-minus-sign bug, documented at the top of `Practice.tsx`);
+reusing the one, tested function is what stops exam mode marking an answer
+correct that ordinary practice would call wrong, or the reverse.
+
+**Each question still records against its OWN topic**, not against "the
+exam" as a whole — `MockExam.tsx` tags every pulled question with the
+`topicSlug` it came from and calls `recordAnswer` per-question, same Server
+Action ordinary practice uses. A mock exam is a different way of ANSWERING
+questions, not a different kind of question, so it feeds the exact same
+progress data — coverage, accuracy, streaks, all of it — as answering them
+one topic at a time would.
+
+**The finish screen links straight back to whichever topics the wrong
+answers came from** — turning a score into something actionable rather
+than just a number.
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.
