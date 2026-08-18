@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!subject) return { title: "Not found" };
 
   return {
-    title: `${subject.name} mock exam`,
+    title: `${subject.name} test`,
     description: `A timed, mixed-topic practice set for GCSE ${subject.name} — ${QUESTION_COUNT} questions in ${DURATION_SECONDS / 60} minutes.`,
     // A fresh random set every visit means there's no one stable page for a
     // search engine to index — the same reasoning that keeps the dashboard
@@ -96,7 +96,7 @@ export default async function ExamPage({ params }: Props) {
           {subject.name}
         </Link>
         <span aria-hidden="true">›</span>
-        <span>Mock exam</span>
+        <span>Test</span>
       </nav>
 
       <section
@@ -108,7 +108,9 @@ export default async function ExamPage({ params }: Props) {
           <p className="text-sm font-semibold uppercase tracking-wider opacity-80">
             {subject.name}
           </p>
-          <h1 className="text-4xl font-bold tracking-tight">Mock exam</h1>
+          <h1 className="text-4xl font-bold tracking-tight">
+            {subject.name} test
+          </h1>
         </div>
       </section>
 

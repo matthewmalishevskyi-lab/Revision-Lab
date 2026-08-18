@@ -202,7 +202,7 @@ export function MockExam({
             className="rounded-xl px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
             style={{ backgroundColor: colour }}
           >
-            Try another mock exam
+            Try another {subjectName} test
           </Link>
           <Link
             href={`/subjects/${subjectSlug}`}

@@ -91,7 +91,7 @@ export default async function SubjectPage({ params }: Props) {
           className="mt-5 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
           style={{ backgroundColor: subject.accent }}
         >
-          Try a mock exam
+          Try a {subject.name} test
           <span aria-hidden="true">→</span>
         </Link>
       </section>

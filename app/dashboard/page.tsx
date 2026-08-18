@@ -5,6 +5,7 @@ import { MASCOTS } from "../components/Mascots";
 import { SiteHeader } from "../components/SiteHeader";
 import { getViewer } from "../lib/viewer";
 import { getProgress } from "../lib/progress";
+import { getDueFlashcards } from "../lib/flashcard-review";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { homepageCards, isGroup, subjectsInGroup, SUBJECTS } from "../lib/subjects";
 
@@ -40,6 +41,11 @@ export default async function DashboardPage() {
     ? progress.subjects.find((s) => s.slug === progress.nextUp!.subjectSlug)
     : undefined;
   const NextUpMascot = nextUpSubject ? MASCOTS[nextUpSubject.mascot] : null;
+
+  // Flashcards due for another look, across every subject — see
+  // flashcard-review.ts. Only shown when there's something due; a "0 due"
+  // banner every single day is just noise.
+  const dueFlashcards = await getDueFlashcards(user.id);
 
   // Counting topics from the data rather than typing "37" somewhere — the
   // number can never drift out of date because it's derived, not stored.
@@ -123,6 +129,27 @@ export default async function DashboardPage() {
           </p>
         </div>
       </section>
+
+      {/* ---------- Flashcards due for review ---------- */}
+      {dueFlashcards.length > 0 && (
+        <Link
+          href="/review"
+          className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/60 bg-white/70 px-6 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+        >
+          <span>
+            <span className="font-semibold">
+              {dueFlashcards.length} flashcard
+              {dueFlashcards.length === 1 ? "" : "s"} due for review
+            </span>
+            <span className="ml-2 opacity-60">
+              cards you&apos;ve marked before, worth another look
+            </span>
+          </span>
+          <span aria-hidden="true" className="text-xl opacity-40">
+            →
+          </span>
+        </Link>
+      )}
 
       {/* ---------- Revise this next ---------- */}
       {/* The dashboard is the page you land on right after logging in, so this

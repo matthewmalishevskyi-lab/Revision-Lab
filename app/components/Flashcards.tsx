@@ -9,6 +9,7 @@
 
 import { useState } from "react";
 import { recordFlashcard } from "../lib/progress-actions";
+import { reviewFlashcard } from "../lib/flashcard-actions";
 
 type Card = { term: string; definition: string };
 
@@ -84,6 +85,21 @@ export function Flashcards({
     // The `+ cards.length` handles going backwards from the first card, because
     // in JavaScript -1 % 23 is -1, not 22.
     setPosition((p) => (p + delta + cards.length) % cards.length);
+  }
+
+  // Self-judgement, for spaced repetition. This is separate from the
+  // `reviewed` tracking above — that fires the moment a card is FLIPPED, and
+  // exists to count "flashcards reviewed" on the progress page. This fires
+  // only when the student judges themselves, and feeds a different question
+  // entirely: not "did you look at this" but "did you actually know it,"
+  // which is what decides when the card comes back. See flashcard-review.ts
+  // for how the judgement turns into a schedule.
+  function judge(knewIt: boolean) {
+    const cardIndex = order[safePosition];
+    void reviewFlashcard(subject, topic, cards[cardIndex].term, knewIt).catch(
+      () => {},
+    );
+    go(1);
   }
 
   function shuffle() {
@@ -193,6 +209,29 @@ export function Flashcards({
           </div>
         </div>
       </button>
+
+      {/* Only appears once flipped — judging a card you haven't seen the
+          definition of yet isn't a judgement, it's a guess. Clicking either
+          one also moves on to the next card, so this doubles as "Next" once
+          you're actually testing yourself rather than just browsing. */}
+      {flipped && (
+        <div className="mt-3 flex gap-3">
+          <button
+            type="button"
+            onClick={() => judge(false)}
+            className="flex-1 rounded-xl border border-black/10 py-2.5 font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+          >
+            Still learning
+          </button>
+          <button
+            type="button"
+            onClick={() => judge(true)}
+            className="flex-1 rounded-xl bg-emerald-600 py-2.5 font-medium text-white transition hover:bg-emerald-700"
+          >
+            Got it
+          </button>
+        </div>
+      )}
 
       <div className="mt-3 flex gap-3">
         <button
