@@ -1192,3 +1192,40 @@ half of the condition).
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+## The streak moved to the homepage (2026-08-18)
+
+Matthew's ask: the streak already existed, but buried on `/dashboard` it
+wasn't doing its job — nobody sees a stat on a page they don't visit. "Make
+it more visible... give it the purpose of making people scared of losing
+it." Picked the boldest of three options offered (a small always-there
+header badge, a big homepage takeover, or both): the homepage takeover.
+
+**`StreakSpotlight` (new component) replaces the "Welcome back" box on the
+homepage for logged-in visitors.** Logged-out visitors still see the old
+plain welcome box — there's no streak to show someone who hasn't got an
+account. For everyone logged in, it's now the first thing on the page: a
+huge flame and streak number, a headline, today's goal bar, and a button
+straight into revising. The rest of the homepage (subject cards) just
+moved down to make room — nothing was removed, only reordered.
+
+**The "scared of losing it" part is a colour and a sentence, driven by one
+new condition: `atRisk` (`streak.current > 0 && !streak.activeToday`)** —
+there's a real streak, and nothing has been done yet today to protect it.
+Only then does the card turn amber/warning and say "Don't lose your N-day
+streak!" with a "Save your streak →" button. A brand-new streak of 0 isn't
+"at risk", it hasn't started yet — that gets an invitation ("Start your
+streak today"), not a warning. Getting this distinction right mattered: a
+warning on someone's very first visit, before they've ever done anything,
+would just be confusing.
+
+**`FlameIcon` moved out of `dashboard/page.tsx` into its own file**
+(`components/FlameIcon.tsx`) since two places now draw the exact same
+flame (the homepage spotlight and the dashboard strip) — pulling it out
+once means they can never quietly drift into two different-looking flames.
+The dashboard's own streak strip is untouched otherwise; it's still there,
+so the streak is now visible in two places instead of one, not moved from
+one to the other.
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.

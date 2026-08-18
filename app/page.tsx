@@ -4,8 +4,10 @@
 import Link from "next/link";
 import { MASCOTS } from "./components/Mascots";
 import { SiteHeader } from "./components/SiteHeader";
+import { StreakSpotlight } from "./components/StreakSpotlight";
 import { StructuredData, websiteSchema } from "./components/StructuredData";
 import { getViewer } from "./lib/viewer";
+import { getProgress } from "./lib/progress";
 import { SITE_NAME, SITE_URL } from "./lib/site";
 import { homepageCards, isGroup, subjectsInGroup } from "./lib/subjects";
 
@@ -18,6 +20,12 @@ const WALK_DURATIONS = ["13s", "17s", "10s"];
 // the browser. The page arrives already knowing who you are.
 export default async function Home(props: PageProps<"/">) {
   const user = await getViewer();
+
+  // Only fetched when someone is actually logged in — a logged-out visitor
+  // has no streak to show, and getProgress needs a real user id. Safe to
+  // call even with no database configured; it just comes back with no
+  // recorded activity, not an error.
+  const progress = user ? await getProgress(user.id) : null;
 
   // Deleting an account logs you out, so the confirmation cannot live on the
   // account page — there is no session left to show it with. It arrives as a
@@ -41,21 +49,31 @@ export default async function Home(props: PageProps<"/">) {
         </p>
       )}
 
-      {/* ---------- Welcome box ---------- */}
-      <section className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/60 bg-white/55 px-8 py-10 text-center shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
-          {user ? `Welcome back, ${user.name}` : "Welcome to Revision Lab"}
-        </h1>
-        <p className="mt-5 text-lg opacity-70 sm:text-2xl">
-          {/* Once you're logged in the heading is "Welcome back, <name>", which
-              no longer says the site's name anywhere — so the tagline picks it
-              up. Logged out, the heading already reads "Welcome to Revision
-              Lab", and repeating it here would be clumsy. */}
-          {user
-            ? "Revision Lab: Everything you would need for GCSE revision"
-            : "Everything you would need for GCSE revision"}
-        </p>
-      </section>
+      {/* ---------- Welcome box, or the streak spotlight ---------- */}
+      {/* Logged in and logged out visitors see genuinely different things
+          here, not just different text in the same box. A logged-out visitor
+          gets the plain marketing welcome — there's no streak to show them.
+          A logged-in visitor gets StreakSpotlight instead: the streak, at the
+          very top of the page, is what makes coming back mean something —
+          see that component's comment for why this replaced the welcome box
+          rather than sitting below it. */}
+      {user && progress ? (
+        <StreakSpotlight
+          userName={user.name}
+          streak={progress.streak}
+          today={progress.today}
+          nextUp={progress.nextUp}
+        />
+      ) : (
+        <section className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/60 bg-white/55 px-8 py-10 text-center shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
+            Welcome to Revision Lab
+          </h1>
+          <p className="mt-5 text-lg opacity-70 sm:text-2xl">
+            Everything you would need for GCSE revision
+          </p>
+        </section>
+      )}
 
       {/* ---------- Subject cards ---------- */}
       <section className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
