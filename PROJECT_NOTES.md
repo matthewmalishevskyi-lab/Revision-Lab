@@ -1042,3 +1042,59 @@ than just a number.
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+**Renamed to "\<Subject\> test" shortly after shipping**, per Matthew's
+feedback that "mock exam" didn't read naturally — "Computer Science test",
+"Chemistry test", and so on. Only the wording changed: the URL is still
+`/subjects/<subject>/exam`, unchanged, and everything above still applies.
+
+## Spaced-repetition flashcards (2026-08-18)
+
+Third and last of the three features Matthew picked in one go. New
+`/review` page, plus "Got it" / "Still learning" buttons on every ordinary
+flashcard deck.
+
+**Needs a database step Matthew has to do himself** — `FLASHCARD_SETUP.sql`,
+same pattern as `THROTTLE_SETUP.sql` and `ACCOUNT_SETUP.sql` before it. Until
+he runs it, judging a card silently does nothing (the Server Action checks
+`FLASHCARD_REVIEW_ENABLED` the same way `recordActivity` checks
+`PROGRESS_ENABLED` — missing config fails quiet, not loud).
+
+**An event log, not a state table — on purpose, and it's worth being
+explicit about why this wasn't the obvious "one row per card" design.**
+PROGRESS_SETUP.sql already argues for event logs over pre-computed state for
+the activity table; `flashcard_reviews` follows the same shape: one row per
+judgement, and `flashcard-review.ts` FOLDS a card's own history into its
+current box and next due date, the exact way `getProgress` already folds
+`activity` rows into coverage and accuracy. Consistency was the deciding
+factor over a marginally simpler upsert — the codebase now has exactly one
+pattern for "how do we store what someone did," not two.
+
+**A plain five-box Leitner system.** Box 1 → 10 minutes, box 2 → a day, box
+3 → three days, box 4 → a week, box 5 → 16 days. Get it right, climb a box;
+get it wrong, fall straight back to box 1. Box 5 isn't "solved forever" —
+memory fades even for things once known cold, so it keeps resurfacing every
+16 days rather than dropping out of rotation.
+
+**The card's identity is its own TERM TEXT**, not a database id — there was
+no id to use, every other identifier on the site (topic slugs, subject
+slugs) already exists, and inventing a new one just for this would be a
+second thing to keep in sync with the content files by hand. The cost:
+rewording a flashcard's term resets that one card's spaced-repetition
+history. Judged an acceptable, rare trade rather than a reason to add
+per-card ids to every content file.
+
+**Spaced repetition only tracks cards you've actually judged at least
+once** — flipping a card in the ordinary browsing view (Flashcards.tsx)
+still counts toward "flashcards reviewed" on the progress page as before,
+but doesn't put anything in the review queue. Only clicking "Got it" or
+"Still learning" schedules a card. Seeding every unreviewed flashcard on the
+site into "due" on day one would have buried the two or three cards someone
+has actually struggled with under hundreds they've never even seen.
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.
+
+**All three of Matthew's picks from this session are now done:** streaks
+and a daily goal, subject tests (formerly "mock exam"), and
+spaced-repetition flashcards.
