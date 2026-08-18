@@ -32,6 +32,23 @@ export default async function Home(props: PageProps<"/">) {
   // query string instead, which survives the redirect and the sign-out.
   const { deleted } = await props.searchParams;
 
+  // Heaviest typical workload first — see the big comment above
+  // SUBJECT_GROUPS in lib/subjects.ts for what "revisionWeight" actually
+  // means and why it's a rough estimate rather than measured data.
+  //
+  // `.sort()` mutates the array it's called on, which is safe here only
+  // because `homepageCards()` builds a brand new array on every call (see
+  // its own comment) — there's no shared array being reordered out from
+  // under the dashboard or anywhere else that also calls it.
+  //
+  // Deliberately only done HERE, not inside homepageCards() itself: Matthew
+  // asked for this ordering on the homepage specifically, and the dashboard
+  // calls the same function for its own subject grid, which should keep its
+  // existing order.
+  const cards = homepageCards().sort(
+    (a, b) => (b.revisionWeight ?? 0) - (a.revisionWeight ?? 0),
+  );
+
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-10">
       <StructuredData data={websiteSchema(SITE_URL, SITE_NAME)} />
@@ -77,7 +94,7 @@ export default async function Home(props: PageProps<"/">) {
 
       {/* ---------- Subject cards ---------- */}
       <section className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-        {homepageCards().map((card, index) => {
+        {cards.map((card, index) => {
           // A GROUP card links to its own chooser page and says how many
           // subjects are inside; a subject card links straight to its topics.
           //

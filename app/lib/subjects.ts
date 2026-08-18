@@ -84,6 +84,16 @@ export type Subject = {
   // group is purely a navigation layer on top.
   group?: "science" | "languages";
 
+  // A rough, hand-judged ranking of typical GCSE workload — see the comment
+  // above SUBJECT_GROUPS for what it's based on and why it's only ever used
+  // to ORDER the homepage cards, never shown as a number anywhere.
+  //
+  // Optional, and only ever set on the eight subjects that appear on the
+  // homepage on their own. A subject INSIDE a group (Biology, Spanish, and
+  // so on) never appears as its own homepage card — the group card does —
+  // so giving it a weight of its own would be a number nothing ever reads.
+  revisionWeight?: number;
+
   years: YearGroup[];
 };
 
@@ -96,6 +106,7 @@ export type SubjectGroup = {
   shadow: string;
   accent: string;
   mascot: Subject["mascot"];
+  revisionWeight: number;
 };
 
 // ⚠️ COLOURS WERE CHOSEN BY LOOKING AT THEM, NOT BY REASONING ABOUT THEM.
@@ -120,6 +131,31 @@ export type SubjectGroup = {
 // may, because it always appears as a large card with its own name and mascot
 // on it. Colour is decoration there; on a progress ring it is the only
 // identifier.
+//
+// ─────────────────────────────────────────────────────────────────────────────
+// revisionWeight — A ROUGH, HAND-JUDGED ESTIMATE, USED ONLY TO ORDER THE
+// HOMEPAGE CARDS
+//
+// Matthew asked for the homepage sorted by roughly how much revision each
+// subject usually takes. There's no way to measure that — it depends on the
+// exam board, the school, and the student — so this is a ballpark ranking
+// from ordinary GCSE study-time guidance, not something calculated from data
+// on the site. Roughly, it weighs how many exam papers a subject usually has
+// and how broad its content is: Combined/Triple Science covers the most
+// content across the most papers of any single card here, so it ranks
+// highest; Citizenship is commonly one of the lightest GCSEs, so it ranks
+// lowest.
+//
+// Higher number = more typical revision time = appears FIRST on the
+// homepage. It's a starting point, not a fact — if it doesn't match reality
+// for a given exam board or school, the fix is just to change the numbers
+// below; nothing else depends on the actual values, only their order.
+//
+// Deliberately NOT used to order the dashboard's subject grid or the
+// progress page — Matthew asked for this on the homepage specifically, and
+// those other two pages are about a real student's OWN recorded progress,
+// where a rough general guess like this one would be an odd thing to rank by.
+// ─────────────────────────────────────────────────────────────────────────────
 export const SUBJECT_GROUPS: SubjectGroup[] = [
   {
     slug: "science",
@@ -130,6 +166,9 @@ export const SUBJECT_GROUPS: SubjectGroup[] = [
       "shadow-[0_18px_40px_-18px_rgba(67,56,202,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(67,56,202,0.9)]",
     accent: "#4338ca",
     mascot: "iris",
+    // Three separate GCSEs' worth of content behind one card — the broadest
+    // and most exam-heavy subject on the homepage by a clear margin.
+    revisionWeight: 10,
   },
   {
     slug: "languages",
@@ -146,6 +185,10 @@ export const SUBJECT_GROUPS: SubjectGroup[] = [
       "shadow-[0_18px_40px_-18px_rgba(234,179,8,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(234,179,8,0.9)]",
     accent: "#eab308",
     mascot: "voyager",
+    // Four skills (reading, writing, listening, speaking) each demanding
+    // sustained vocabulary work — a lot of ongoing revision, even though it's
+    // "only" one language once a student picks one.
+    revisionWeight: 6,
   },
 ];
 
@@ -214,6 +257,9 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(37,99,235,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(37,99,235,0.9)]",
     accent: "#1d4ed8",
     mascot: "pixel",
+    // Two exam papers and a practical/programming element — solid content,
+    // but fewer papers than the essay-heavy subjects above it.
+    revisionWeight: 4,
     years: [
       {
         year: "Year 9",
@@ -259,6 +305,10 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(249,115,22,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(249,115,22,0.9)]",
     accent: "#b3350b",
     mascot: "hoot",
+    // Three papers and famously cumulative — each topic leans on the last,
+    // so it tends to need steady, ongoing practice rather than a late
+    // cram. One of the heaviest subjects here.
+    revisionWeight: 9,
     years: [
       {
         year: "Year 9",
@@ -305,6 +355,9 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(124,58,237,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(124,58,237,0.9)]",
     accent: "#6d28d9",
     mascot: "quill",
+    // Language and Literature combined — usually four exams between them,
+    // plus texts and quotations to actually memorise, not just understand.
+    revisionWeight: 8,
     years: [
       {
         year: "Year 9",
@@ -352,6 +405,10 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(220,38,38,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(220,38,38,0.9)]",
     accent: "#b91c1c",
     mascot: "knight",
+    // Widely reckoned one of the most content-heavy essay subjects — lots of
+    // dates, causes and case studies that mostly have to be recalled from
+    // memory rather than worked out.
+    revisionWeight: 7,
     // ─────────────────────────────────────────────────────────────────────────
     // ⚠️ HISTORY VARIES MORE THAN ANY OTHER SUBJECT ON THIS SITE.
     //
@@ -436,6 +493,9 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(22,163,74,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(22,163,74,0.9)]",
     accent: "#15803d",
     mascot: "atlas",
+    // Case studies and data-response skills across two or three papers —
+    // real content, but usually reckoned a shade lighter than History.
+    revisionWeight: 5,
     // ── Year 9 is written. Years 10 and 11 are PLANNED but not yet written ──
     // Their pages exist and work, showing the honest "content coming soon"
     // panel. Registering them now rather than later means the slugs are fixed
@@ -507,6 +567,9 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(13,148,136,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(13,148,136,0.9)]",
     accent: "#0f766e",
     mascot: "sterling",
+    // Usually two papers — solid but more contained than the subjects
+    // above it, with less to carry into the exam from memory alone.
+    revisionWeight: 3,
     years: [
       {
         year: "Year 10",
@@ -720,6 +783,9 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(219,39,119,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(219,39,119,0.9)]",
     accent: "#be185d",
     mascot: "bobby",
+    // Commonly reckoned one of the lightest GCSEs on offer — fewer papers
+    // and less content than any other subject on this list.
+    revisionWeight: 1,
     years: [
       {
         year: "Year 9",
@@ -771,6 +837,9 @@ export const SUBJECTS: Subject[] = [
       "shadow-[0_18px_40px_-18px_rgba(244,121,106,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(244,121,106,0.9)]",
     accent: "#c94f3d",
     mascot: "lumen",
+    // Usually one or two shorter papers — real content, but generally
+    // reckoned lighter than the full-content subjects above it.
+    revisionWeight: 2,
     years: [
       {
         year: "Year 9",

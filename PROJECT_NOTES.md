@@ -1377,3 +1377,44 @@ Physics and so never touch Pixel regardless.
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+## Homepage sorted by rough GCSE workload (2026-08-18)
+
+Matthew: "sort out the subjects... by how much [revision] people are
+usually doing on them, roughly" (heard as "supervision" — read as
+"revision" and confirmed with him before touching anything, since getting
+that one word wrong would have meant reordering the whole homepage on a
+guess). Asked what the ranking should actually be based on — his own
+recorded time, subject content volume, or a general workload estimate — and
+he picked the general estimate, applied to the homepage only.
+
+**New optional `revisionWeight` field on `Subject`, and a required one on
+`SubjectGroup`** (every group card always appears on the homepage, so it
+always needs one; a subject INSIDE a group like Biology or Spanish never
+appears as its own card, so it never gets one — a number nothing would ever
+read). Documented at length, right above `SUBJECT_GROUPS`, as exactly what
+it is: a rough, hand-judged ranking from ordinary GCSE study-time guidance —
+paper counts and content breadth, roughly — not anything measured from the
+site's own data, and not gospel. The comment says outright that the fix for
+a wrong-feeling order is just editing the numbers.
+
+**The actual ranking, heaviest to lightest:** Science (10, three GCSEs'
+worth of content behind one card), Maths (9, cumulative, three papers),
+English (8, Language + Literature combined, texts to memorise), History
+(7, widely reckoned one of the most content-heavy essay subjects),
+Languages (6, four skills each demanding ongoing vocabulary work),
+Geography (5), Computer Science (4), Business (3), Religious Education
+(2), Citizenship (1, commonly one of the lightest GCSEs on offer). Worth
+saying plainly: this is my best general read of typical GCSE workload, not
+authoritative — if any of it doesn't match Matthew's own school or exam
+board, the numbers are the whole mechanism and easy to change.
+
+**Sorted only in `app/page.tsx`, not inside `homepageCards()` itself** —
+that function is shared with the dashboard's own subject grid, and Matthew
+asked for this on the homepage specifically. `.sort()` mutates the array
+it's called on, which is safe here only because `homepageCards()` already
+builds a fresh array on every call; the dashboard's own call is completely
+unaffected.
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.
