@@ -4,6 +4,7 @@ import { logout } from "../lib/actions";
 import { getViewer } from "../lib/viewer";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { ThemeToggle } from "./ThemeToggle";
+import { SearchBox } from "./SearchBox";
 import { chipClasses } from "./chipStyles";
 
 // The header that appears on every page.
@@ -37,6 +38,12 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
           <HomeIcon />
           <span className="hidden sm:inline">Home</span>
         </Link>
+
+        {/* Finding a topic by typing beats clicking through a subject page to
+            find it, once there are this many topics on the site. Sits next to
+            Home because both are "get me somewhere", unlike the account
+            links after it. */}
+        <SearchBox />
 
         {/* The one button in this row that changes something in the browser
             rather than navigating anywhere, which is why it's a small Client
