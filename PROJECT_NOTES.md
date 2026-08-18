@@ -1142,3 +1142,53 @@ else.
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+## Four more badges, and a "languages count as one" rule (2026-08-18)
+
+Matthew asked for four more badges on top of the original eight: **Double
+century** (200 practice questions), **Test ace** (completed a test in every
+subject), **Grand master** (100% topic coverage AND a completed test, in
+every subject), and **Marathon reviser** (10 hours revising, all-time —
+not just this week, which is all `secondsThisWeek` tracked before now).
+
+**"Completed a test" needed a new kind of event.** Tests weren't being
+recorded anywhere — MockExam only ever called `recordAnswer` per question,
+same as ordinary practice. Added `kind: "test"` to `ActivityKind`, one row
+per finished test (recorded against the subject as a whole, since a test
+spans every topic rather than belonging to one), written by a new
+`recordTestCompletion(subject)` Server Action and fired from MockExam's
+existing "finished" effect. **This needed a database change** —
+`TEST_BADGE_SETUP.sql` widens the `activity` table's CHECK constraint to
+allow `'test'` alongside the existing three kinds. Matthew needs to run
+this one in the Supabase SQL Editor, the same way as the others — until
+then, `recordActivity` fails quietly on every test completion (by design,
+so a database hiccup never blocks the finish screen) and the two new
+test-based badges just never unlock.
+
+**The languages rule Matthew asked for:** "if a person does only one of
+the languages, count it as they do all of the languages, because people
+learn only one of the languages in school." Added a helper,
+`allSubjectsSatisfy`, used everywhere a badge means "every subject" —
+Spanish, French and German are treated as satisfied if the student has
+done the thing in ANY ONE of them, not all three, because a real GCSE
+student studies exactly one modern foreign language and the site lists all
+three only because it can't know in advance which one that is. This does
+**not** extend to Biology/Chemistry/Physics — those are three separate
+GCSEs everyone here actually takes, so "every subject" stays literal for
+the sciences. Retrofitted the existing **All-rounder** badge to use the
+same rule, since it was already an "every subject" badge and would have
+been inconsistent otherwise.
+
+**One judgement call worth flagging, since I was interrupted before I
+could ask:** "another badge for completing every single subject hundred
+percent, including the tasks" was ambiguous between "100% topic coverage"
+alone and "100% coverage AND the tests done too." Went with the second,
+stricter reading (Grand master needs both) — partly because "including the
+tasks" reads most naturally as an extra requirement, and partly because a
+badge that's just a rename of "Subject master, but for every subject" felt
+like it needed its own reason to exist. Matthew — if you meant just
+coverage, say so and it's a one-line change (drop the `testedSubjects.has`
+half of the condition).
+
+`tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
+checks, content untouched) all clean.

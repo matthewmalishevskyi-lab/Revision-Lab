@@ -27,6 +27,7 @@
 
 import { getCurrentUser } from "./actions";
 import { isRealTopic, recordActivity } from "./progress";
+import { getSubject } from "./subjects";
 
 // The timer sends a heartbeat every 30 seconds. Anything much larger than that
 // is either a bug or someone poking at the endpoint, and either way it should
@@ -83,5 +84,24 @@ export async function recordStudyTime(
     topic,
     kind: "time",
     seconds: safe,
+  });
+}
+
+// Records that a {subject} test was finished — see TEST_BADGE_SETUP.sql for
+// the matching database change. There's no "topic" here: a test spans every
+// topic in the subject, so it's recorded against the subject as a whole
+// rather than pretending it belongs to one topic. recordActivity's `topic`
+// column just gets the subject's own slug again, since the column is
+// required and there's no real topic to put there.
+export async function recordTestCompletion(subject: string): Promise<void> {
+  const user = await getCurrentUser();
+  if (!user) return;
+  if (!getSubject(subject)) return; // hostile input: only record real subjects
+
+  await recordActivity({
+    userId: user.id,
+    subject,
+    topic: subject,
+    kind: "test",
   });
 }

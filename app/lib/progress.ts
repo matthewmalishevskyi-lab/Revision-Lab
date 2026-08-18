@@ -16,7 +16,10 @@ const KEY_IS_LEGACY_JWT = (SUPABASE_KEY ?? "").startsWith("eyJ");
 
 export const PROGRESS_ENABLED = Boolean(SUPABASE_URL && SUPABASE_KEY);
 
-export type ActivityKind = "practice" | "flashcard" | "time";
+// "test" was added later, for the "completed a subject test" badges — see
+// TEST_BADGE_SETUP.sql for the matching database change this needed (the
+// `activity` table's CHECK constraint has to actually allow the new value).
+export type ActivityKind = "practice" | "flashcard" | "time" | "test";
 
 type ActivityRow = {
   subject: string;
@@ -376,6 +379,21 @@ export async function getProgress(userId: string): Promise<Progress> {
       dayKey(new Date(r.created_at)) === todayKey,
   ).length;
 
+  // Which subjects have a finished test on record — for the "completed a
+  // test in every subject" badges. A Set of subject slugs, not a count: a
+  // second test in the same subject shouldn't count twice.
+  const testedSubjects = new Set(
+    rows.filter((r) => r.kind === "test").map((r) => r.subject),
+  );
+
+  // All-time, unlike secondsThisWeek above which resets every Monday-ish
+  // window on purpose (see SubjectProgress). The "10 hours revising" badge
+  // is about a lifetime total, so it reads straight from the raw rows rather
+  // than summing something that was deliberately built to forget last week.
+  const totalSecondsAllTime = rows
+    .filter((r) => r.kind === "time")
+    .reduce((sum, r) => sum + (r.seconds ?? 0), 0);
+
   return {
     hasAnyActivity: rows.length > 0,
     subjects,
@@ -395,6 +413,8 @@ export async function getProgress(userId: string): Promise<Progress> {
       totalFlashcards,
       accuracy,
       streakCurrent: streak.current,
+      testedSubjects,
+      totalSecondsAllTime,
     }),
   };
 }
@@ -537,6 +557,42 @@ function computeXp(totalQuestions: number, totalFlashcards: number): Progress["x
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// "EVERY SUBJECT" BADGES, AND WHY LANGUAGES ARE SPECIAL
+//
+// Several badges ask for something in every subject. Taken completely
+// literally that includes Spanish, French AND German — but a real GCSE
+// student studies exactly ONE modern foreign language; the site lists all
+// three because it doesn't know in advance which one that is, not because
+// anyone is expected to do all of them. Taking "every subject" literally
+// would make those badges impossible for every real student on the site.
+//
+// So for badges that mean "every subject", the languages group is satisfied
+// by doing well in ANY ONE language, not all three — matching how the
+// subject is actually studied. This deliberately does NOT extend to the
+// sciences: Biology, Chemistry and Physics are three separate GCSEs
+// everyone here actually takes, so "every subject" stays literal for them.
+// ─────────────────────────────────────────────────────────────────────────────
+const LANGUAGE_GROUP_SLUGS = new Set(
+  SUBJECTS.filter((s) => s.group === "languages").map((s) => s.slug),
+);
+
+function allSubjectsSatisfy(
+  subjects: SubjectProgress[],
+  predicate: (subject: SubjectProgress) => boolean,
+): boolean {
+  const nonLanguages = subjects.filter((s) => !LANGUAGE_GROUP_SLUGS.has(s.slug));
+  const languages = subjects.filter((s) => LANGUAGE_GROUP_SLUGS.has(s.slug));
+
+  return (
+    nonLanguages.every(predicate) &&
+    // No languages on the site at all would be a strange world to design
+    // for, but "vacuously true" is the wrong answer if it ever happens —
+    // .some() on an empty array is false, so this makes it true instead.
+    (languages.length === 0 || languages.some(predicate))
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // BADGES — a fixed list, always all of them, each marked earned or not.
 //
 // Nothing is stored. Every badge's condition is worked out fresh from
@@ -554,8 +610,18 @@ function computeBadges(input: {
   totalFlashcards: number;
   accuracy: number | null;
   streakCurrent: number;
+  testedSubjects: Set<string>;
+  totalSecondsAllTime: number;
 }): Badge[] {
-  const { subjects, totalQuestions, totalFlashcards, accuracy, streakCurrent } = input;
+  const {
+    subjects,
+    totalQuestions,
+    totalFlashcards,
+    accuracy,
+    streakCurrent,
+    testedSubjects,
+    totalSecondsAllTime,
+  } = input;
 
   return [
     {
@@ -603,9 +669,11 @@ function computeBadges(input: {
     {
       id: "all-rounder",
       name: "All-rounder",
+      // "every subject" here means the languages group counts as covered by
+      // any ONE language — see the comment above allSubjectsSatisfy.
       description: "Cover at least one topic in every subject",
       icon: "🌐",
-      earned: subjects.every((s) => s.topicsCovered > 0),
+      earned: allSubjectsSatisfy(subjects, (s) => s.topicsCovered > 0),
     },
     {
       id: "perfectionist",
@@ -613,6 +681,42 @@ function computeBadges(input: {
       description: "90%+ accuracy over at least 20 questions",
       icon: "🎯",
       earned: totalQuestions >= 20 && accuracy !== null && accuracy >= 0.9,
+    },
+    {
+      id: "double-century",
+      name: "Double century",
+      description: "Answer 200 practice questions",
+      icon: "🏏",
+      earned: totalQuestions >= 200,
+    },
+    {
+      id: "test-ace",
+      name: "Test ace",
+      // Same languages-count-as-one rule as All-rounder.
+      description: "Complete a test in every subject",
+      icon: "📝",
+      earned: allSubjectsSatisfy(subjects, (s) => testedSubjects.has(s.slug)),
+    },
+    {
+      id: "grand-master",
+      name: "Grand master",
+      // "100%, including the tests": full topic coverage AND a completed
+      // test, in every subject — the two hardest single-subject badges
+      // (Subject master and Test ace) generalised across all of them at
+      // once. Same languages-count-as-one rule as the others.
+      description: "100% topic coverage AND a completed test, in every subject",
+      icon: "👑",
+      earned: allSubjectsSatisfy(
+        subjects,
+        (s) => s.percent === 100 && testedSubjects.has(s.slug),
+      ),
+    },
+    {
+      id: "marathon-reviser",
+      name: "Marathon reviser",
+      description: "Spend 10 hours revising in total",
+      icon: "⏱️",
+      earned: totalSecondsAllTime >= 10 * 60 * 60,
     },
   ];
 }

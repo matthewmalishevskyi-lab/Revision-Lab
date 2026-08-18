@@ -22,7 +22,7 @@ import Link from "next/link";
 import { normalise } from "./Practice";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
-import { recordAnswer } from "../lib/progress-actions";
+import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
 
 export type ExamQuestion = {
   question: string;
@@ -69,8 +69,16 @@ export function MockExam({
   // means there's exactly one spot deciding when to celebrate, not two that
   // could quietly drift apart.
   useEffect(() => {
-    if (phase === "finished") setCelebrating(true);
-  }, [phase]);
+    if (phase === "finished") {
+      setCelebrating(true);
+      // Fire-and-forget, same pattern as recordAnswer above — a failed write
+      // here should never stop the finish screen from showing. Records
+      // against the subject as a whole (there's no single topic a whole test
+      // belongs to), and is what the "completed a test in every subject"
+      // badges check for.
+      void recordTestCompletion(subjectSlug).catch(() => {});
+    }
+  }, [phase, subjectSlug]);
 
   // A ref, not state, for the same reason StudyTimer elsewhere on the site
   // uses one: the tick doesn't need to trigger a render by itself, only the
