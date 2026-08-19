@@ -120,6 +120,35 @@ const THEME_BOOTSTRAP_SCRIPT = `
   })();
 `;
 
+// The same "no flash on reload" trick as the theme script above, for the
+// three accessibility toggles from AccessibilityPanel.tsx. Without this, a
+// visitor who turned on larger text would see the ordinary-sized page for a
+// moment on every single load, right up until React hydrated and the panel's
+// own effect caught up — the same flash the theme script exists to prevent.
+//
+// This is a hand-written copy of AccessibilityPanel's readSettings/
+// applyClasses logic, not an import — a raw <head> script runs before any
+// JavaScript bundle has loaded, so it can't reach into that file. If the
+// stored keys or class names ever change, both places need updating; that's
+// the cost of avoiding the flash, the same cost the theme script already
+// pays.
+const A11Y_BOOTSTRAP_SCRIPT = `
+  (function () {
+    try {
+      var stored = localStorage.getItem("revision-lab:accessibility");
+      if (!stored) return;
+      var settings = JSON.parse(stored);
+      var root = document.documentElement;
+      if (settings.largeText) root.classList.add("a11y-large-text");
+      if (settings.dyslexiaFont) root.classList.add("a11y-dyslexia");
+      if (settings.reduceMotion) root.classList.add("a11y-reduce-motion");
+    } catch (e) {
+      // Same reasoning as the theme script: a broken or unavailable storage
+      // just means the visitor gets the ordinary page, never a crashed one.
+    }
+  })();
+`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // suppressHydrationWarning is scoped to this one element on purpose. The
@@ -136,6 +165,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: A11Y_BOOTSTRAP_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col">
         {children}

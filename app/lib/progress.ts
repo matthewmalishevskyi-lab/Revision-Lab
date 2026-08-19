@@ -27,6 +27,11 @@ type ActivityRow = {
   kind: ActivityKind;
   correct: boolean | null;
   seconds: number | null;
+  // Only meaningful for kind = 'test' — see TEST_SCORE_SETUP.sql. A test row
+  // recorded before that migration ran has both as null, which is why every
+  // reader of these two treats null as "no score recorded" rather than 0.
+  score_correct: number | null;
+  score_total: number | null;
   created_at: string;
 };
 
@@ -70,6 +75,9 @@ export async function recordActivity(input: {
   kind: ActivityKind;
   correct?: boolean;
   seconds?: number;
+  // Only sent for kind = 'test' — see TEST_SCORE_SETUP.sql.
+  scoreCorrect?: number;
+  scoreTotal?: number;
 }): Promise<void> {
   if (!PROGRESS_ENABLED) return;
 
@@ -87,6 +95,8 @@ export async function recordActivity(input: {
       kind: input.kind,
       correct: input.correct ?? null,
       seconds: input.seconds ?? null,
+      score_correct: input.scoreCorrect ?? null,
+      score_total: input.scoreTotal ?? null,
     }),
   });
 
@@ -108,7 +118,7 @@ async function readActivity(userId: string): Promise<ActivityRow[]> {
 
   const res = await supabase(
     `activity?user_id=eq.${encodeURIComponent(userId)}` +
-      `&select=subject,topic,kind,correct,seconds,created_at` +
+      `&select=subject,topic,kind,correct,seconds,score_correct,score_total,created_at` +
       `&order=created_at.desc&limit=${MAX_EVENTS_READ}`,
   );
 
@@ -202,6 +212,24 @@ export type Progress = {
    * so a locked badge can be shown as something to aim for rather than simply
    * not existing yet. */
   badges: Badge[];
+  /** Past mock exam results, newest first — see TestHistoryEntry. */
+  testHistory: TestHistoryEntry[];
+};
+
+// One row per finished mock exam. Read straight off the 'test' events in the
+// activity log rather than stored anywhere separately — same "derive, don't
+// store" choice as everything else on this page.
+export type TestHistoryEntry = {
+  subjectSlug: string;
+  subjectName: string;
+  mascot: Subject["mascot"];
+  accent: string;
+  /** ISO timestamp, straight from the row. */
+  date: string;
+  correct: number;
+  total: number;
+  /** Rounded percentage — the number the card actually shows. */
+  percent: number;
 };
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -394,6 +422,8 @@ export async function getProgress(userId: string): Promise<Progress> {
     .filter((r) => r.kind === "time")
     .reduce((sum, r) => sum + (r.seconds ?? 0), 0);
 
+  const testHistory = buildTestHistory(rows);
+
   return {
     hasAnyActivity: rows.length > 0,
     subjects,
@@ -416,7 +446,55 @@ export async function getProgress(userId: string): Promise<Progress> {
       testedSubjects,
       totalSecondsAllTime,
     }),
+    testHistory,
   };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEST SCORE HISTORY
+//
+// `rows` already arrives newest-first (readActivity orders by created_at
+// desc), so no re-sorting is needed here — just filter down to test events
+// and shape each one for the card that displays it.
+//
+// A test row with no score (recorded before TEST_SCORE_SETUP.sql ran, or a
+// subject with zero auto-marked questions in the pool) is skipped rather than
+// shown as "0/0" — that would read as a failed test rather than as "there's
+// nothing to show for this one".
+//
+// Capped at 30: this is a history to browse, not the raw event log — and it
+// keeps the progress page from growing without bound for someone who has sat
+// a hundred practice exams.
+const MAX_TEST_HISTORY = 30;
+
+function buildTestHistory(rows: ActivityRow[]): TestHistoryEntry[] {
+  const bySlug = new Map(SUBJECTS.map((s) => [s.slug, s]));
+
+  return rows
+    .filter(
+      (r): r is ActivityRow & { score_correct: number; score_total: number } =>
+        r.kind === "test" &&
+        r.score_correct !== null &&
+        r.score_total !== null &&
+        r.score_total > 0,
+    )
+    .map((r) => {
+      const subject = bySlug.get(r.subject);
+      return {
+        subjectSlug: r.subject,
+        // Falls back to the raw slug for a subject that's since been renamed
+        // or removed — the history still shows something rather than crashing
+        // on an old row that no longer matches anything in subjects.ts.
+        subjectName: subject?.name ?? r.subject,
+        mascot: subject?.mascot ?? "pixel",
+        accent: subject?.accent ?? "#2563eb",
+        date: r.created_at,
+        correct: r.score_correct,
+        total: r.score_total,
+        percent: Math.round((r.score_correct / r.score_total) * 100),
+      };
+    })
+    .slice(0, MAX_TEST_HISTORY);
 }
 
 // ─── Small helpers ──────────────────────────────────────────────────────────

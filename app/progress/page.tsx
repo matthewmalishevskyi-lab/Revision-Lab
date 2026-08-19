@@ -290,6 +290,80 @@ export default async function ProgressPage() {
         </div>
       </section>
 
+      {/* ---------- Test score history ---------- */}
+      {/* Only appears once there's something to show — an empty history
+          section above the "how these are worked out" panel would just be a
+          dead end for anyone who hasn't sat a mock exam yet. */}
+      {progress.testHistory.length > 0 && (
+        <section className="mt-8 rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5">
+          <h2 className="text-2xl font-bold tracking-tight">
+            Test score history
+          </h2>
+          <p className="mt-1 opacity-60">
+            Your last {progress.testHistory.length} mock exam
+            {progress.testHistory.length === 1 ? "" : "s"}, most recent first.
+          </p>
+
+          <ul className="mt-5 space-y-2.5">
+            {progress.testHistory.map((entry, index) => (
+              <li
+                key={`${entry.subjectSlug}-${entry.date}-${index}`}
+                className="flex items-center gap-4 rounded-2xl border border-black/5 p-4 dark:border-white/10"
+              >
+                <span
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+                  style={{ backgroundColor: `${entry.accent}18` }}
+                >
+                  <MascotDisplay mascot={entry.mascot} className="h-8" />
+                </span>
+
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate font-semibold">
+                    {entry.subjectName}
+                  </span>
+                  <span className="block text-sm opacity-50">
+                    {new Date(entry.date).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                      timeZone: "Europe/London",
+                    })}
+                  </span>
+                </span>
+
+                {/* A short bar rather than just the number — the same "shape
+                    you can compare at a glance" reasoning as the ring above,
+                    just linear instead of circular since this is a list, not
+                    a single card. */}
+                <span className="hidden w-28 shrink-0 sm:block">
+                  <span className="block h-2 overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
+                    <span
+                      className="block h-full rounded-full"
+                      style={{
+                        width: `${entry.percent}%`,
+                        backgroundColor: entry.accent,
+                      }}
+                    />
+                  </span>
+                </span>
+
+                <span className="shrink-0 text-right">
+                  <span
+                    className="block text-lg font-bold tabular-nums"
+                    style={{ color: entry.accent }}
+                  >
+                    {entry.percent}%
+                  </span>
+                  <span className="block text-xs opacity-50 tabular-nums">
+                    {entry.correct}/{entry.total}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* ---------- What the numbers mean ---------- */}
       <section className="mt-8 rounded-3xl border border-white/60 bg-white/60 p-6 text-sm shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
         <h2 className="font-semibold">How these are worked out</h2>

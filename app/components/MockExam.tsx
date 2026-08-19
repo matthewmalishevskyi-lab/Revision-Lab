@@ -75,9 +75,19 @@ export function MockExam({
       // here should never stop the finish screen from showing. Records
       // against the subject as a whole (there's no single topic a whole test
       // belongs to), and is what the "completed a test in every subject"
-      // badges check for.
-      void recordTestCompletion(subjectSlug).catch(() => {});
+      // badges — and now "Test score history" — read back.
+      //
+      // `correct`/`markable` are declared further down this component, but
+      // that's fine: this effect only actually reads them once it runs
+      // (after the whole render has finished), and by the time `phase`
+      // becomes "finished" there are no more questions left to answer, so
+      // they've already settled on their final values.
+      void recordTestCompletion(subjectSlug, correct, markable).catch(() => {});
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- deliberately
+    // NOT re-running this every time correct/markable tick up during the
+    // exam: it should fire exactly once, the moment phase becomes
+    // "finished", not on every answered question.
   }, [phase, subjectSlug]);
 
   // A ref, not state, for the same reason StudyTimer elsewhere on the site

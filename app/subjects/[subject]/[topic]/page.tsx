@@ -72,6 +72,27 @@ function truncate(text: string, max: number): string {
   return cut.slice(0, cut.lastIndexOf(" ")) + "…";
 }
 
+// Drawn in the same weight as SiteHeader's icons — 24 viewBox, 1.7 stroke,
+// rounded caps — so it doesn't look like it wandered in from a different site.
+function PrinterIcon() {
+  return (
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M7 8.5V4h10v4.5M7 17.5H5.5A1.5 1.5 0 014 16V10a1.5 1.5 0 011.5-1.5h13A1.5 1.5 0 0120 10v6a1.5 1.5 0 01-1.5 1.5H17" />
+      <rect x="7" y="13.5" width="10" height="6.5" rx="0.5" />
+    </svg>
+  );
+}
+
 export default async function TopicPage({ params }: Props) {
   const { subject: subjectSlug, topic: topicSlug } = await params;
   const found = getTopic(subjectSlug, topicSlug);
@@ -256,6 +277,22 @@ export default async function TopicPage({ params }: Props) {
             Only shown once there's real content to focus on; the "coming
             soon" panel has nothing to time. */}
         {content && <FocusTimer colour={style.text} />}
+
+        {/* A plain-paper version of the notes below, for anyone who'd rather
+            revise from something printed than a screen. Sits right by the
+            focus timer — both are "a different way to use this content"
+            rather than more content itself. */}
+        {content && (
+          <p className="mt-4 text-center">
+            <Link
+              href={`/subjects/${subject.slug}/${topic.slug}/print`}
+              className="inline-flex items-center gap-1.5 text-sm font-medium opacity-70 hover:opacity-100 hover:underline"
+            >
+              <PrinterIcon />
+              Printable revision sheet
+            </Link>
+          </p>
+        )}
 
         {/* Jump straight to a section. Sticks to the top of the window once you
             scroll past it, so it's reachable from anywhere on the page. */}

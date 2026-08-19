@@ -174,3 +174,66 @@ body {
     display: none;
   }
 }
+
+/* --- Printing ---------------------------------------------------------------
+   The printable revision sheet (app/subjects/[subject]/[topic]/print) builds
+   its own plain white layout and doesn't need any of this — it sets
+   `bg-white`/`text-black` on itself regardless of dark mode. This block is
+   for the rest of the site: if anyone hits Ctrl+P on an ORDINARY page (the
+   browser always offers it, whether or not this site suggests it), it should
+   still come out as ink on paper rather than the on-screen dark background
+   with its coloured glows — printing that would waste a full page of a
+   printer's ink turning the paper almost solid dark. */
+@media print {
+  body {
+    background-image: none;
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+/* --- Accessibility settings --------------------------------------------------
+   Three PREFERENCES, not site data — same category as dark mode above, and
+   the same reason: whether Matthew (or anyone else visiting) wants bigger
+   text is a fact about them, not something the site's database needs to
+   remember. AccessibilityPanel.tsx reads and writes them in localStorage, the
+   bootstrap script in layout.tsx applies the classes before first paint (see
+   that file's comment on THEME_BOOTSTRAP_SCRIPT for why that matters), and
+   these three blocks are what the classes actually DO.
+
+   Each one already has a real OS-level or browser-level equivalent
+   (`prefers-reduced-motion`, a browser zoom level, an OS dyslexia font) —
+   this doesn't replace those, it's for the visitor who wants the choice
+   sitting inside the site itself rather than dug out of OS settings, or
+   whose OS setting doesn't reach here for some reason. */
+
+/* Scales every rem-based size on the site at once, because Tailwind's utility
+   classes (text-lg, p-6, h-10, ...) are almost all defined in rem — so one
+   root font-size change reaches spacing and icon sizes too, not just text. */
+html.a11y-large-text {
+  font-size: 118.75%;
+}
+
+/* A plainer, more open sans-serif with extra breathing room. Not a
+   specialist dyslexia typeface (this site doesn't bundle one), but the
+   documented practical wins — clear letterforms, generous spacing, and no
+   tightly-kerned serif flourishes — are what those exist to give, and this
+   gets most of the way there with fonts every device already has. */
+.a11y-dyslexia body {
+  font-family: Verdana, Tahoma, "Trebuchet MS", sans-serif;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+}
+
+/* The exact same rule as the `prefers-reduced-motion` media query above,
+   just reachable by a class instead of only an OS setting — see that block's
+   comment for why this matters at all. */
+.a11y-reduce-motion .animate-walk,
+.a11y-reduce-motion .animate-bob {
+  animation: none;
+  left: 0.75rem;
+}
+
+.a11y-reduce-motion .animate-celebration-fall {
+  display: none;
+}

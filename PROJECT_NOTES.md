@@ -1418,3 +1418,115 @@ unaffected.
 
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
+
+## Three more: test score history, printable sheets, accessibility (2026-08-19)
+
+Matthew was out of ideas again and asked what's next. Offered four options;
+he picked three of the four — test score history, printable revision
+sheets, accessibility settings — and left "GCSE countdown & planner"
+unbuilt for now.
+
+### Test score history
+
+`recordTestCompletion` only ever recorded THAT a test happened, never how it
+went — no score existed anywhere to show a history of. **New
+`TEST_SCORE_SETUP.sql`** adds two more nullable columns to the `activity`
+table, `score_correct` and `score_total`, meaningful only for `kind =
+'test'` — the same "a column that's only meaningful for one kind of row"
+pattern as `correct` (practice) and `seconds` (time). **Matthew still needs
+to run this in Supabase**, the same as `TEST_BADGE_SETUP.sql` before it —
+until then, tests keep recording fine (badges still work), they just won't
+have a score attached, and the history stays empty.
+
+`recordTestCompletion(subject, correct, total)` now takes the score,
+clamped the same defensive way `recordStudyTime` clamps seconds (a Server
+Action is reachable by anything that can make an HTTP request, not just
+MockExam's own finish handler). `MockExam.tsx` passes its own `correct`/
+`markable` figures — declared further down the component than the effect
+that reads them, which is fine: the effect only actually reads them once it
+RUNS, by which point the whole render has finished and they've settled.
+
+`getProgress()` gained `testHistory`: every `'test'` row with a real score,
+newest first, capped at the last 30, shaped with the subject's name/mascot/
+colour already attached rather than making the page look them up. A test
+row with a missing score (recorded before the SQL above runs, or a subject
+whose pool has zero auto-marked questions) is filtered out rather than shown
+as a hollow "0/0". Rendered on `/progress` as a new section — mascot,
+subject, date, a short percentage bar, X/Y — that only appears once
+there's something in it.
+
+### Printable revision sheets
+
+**New route, `/subjects/[subject]/[topic]/print`**, not a print stylesheet
+bolted onto the ordinary topic page. The ordinary page is built for
+revising ON screen — a sticky jump menu, flip-to-reveal flashcards, a
+climbing mascot in the margin — none of which means anything on paper, and
+hiding all of it with `print:hidden` everywhere would mean two designs
+tangled into one file. The print route reads the exact same
+`getTopicContent`, lays out key facts, worked examples, common mistakes,
+plain term/definition pairs and exam technique as a plain black-on-white
+sheet, and leaves out the interactive practice questions and flip cards —
+there's nowhere on paper for the site to mark an answer. `break-inside-
+avoid` on each block stops a heading being stranded at the bottom of a page
+with its content on the next one. A small `PrintButton.tsx` Client
+Component is the only bit that needs the browser (`window.print()`).
+Linked from the ordinary topic page as "Printable revision sheet", next to
+the focus timer.
+
+Also added a real `@media print` block to `globals.css` for the rest of the
+site — if anyone hits Ctrl+P on an ordinary page, it now prints as ink on
+paper instead of the on-screen dark gradient background, which would have
+wasted a page of a printer's ink turning it almost solid dark.
+
+### Accessibility settings
+
+Three independent toggles — larger text, a dyslexia-friendly font, reduced
+motion — stored together as one PREFERENCE object in localStorage, the same
+category as dark mode: a fact about the visitor's browser, not the site's
+data. **New `AccessibilityPanel.tsx`** (three switches, same shape as
+`ThemeToggle`) and **new `/accessibility` page**, reachable from the
+footer next to Privacy since it works whether or not you're logged in.
+
+Same "no flash on reload" problem dark mode already solved, solved the same
+way: **`layout.tsx` gained a second bootstrap `<script>`** that reads the
+stored preferences and adds the matching classes to `<html>` before React
+ever hydrates. It's a hand-written copy of the panel's own read/apply logic
+rather than an import, because a raw `<head>` script runs before any JS
+bundle has loaded — the same trade-off the theme script already makes, and
+the same risk: if the stored key or class names ever change, both copies
+need updating together.
+
+`.a11y-large-text` scales the root font-size, which reaches Tailwind's
+spacing utilities too since almost all of them are rem-based, not just
+text. `.a11y-dyslexia` swaps to Verdana/Tahoma with extra letter and line
+spacing — not a dedicated dyslexia typeface (none is bundled), but the same
+practical wins with fonts every device already has. `.a11y-reduce-motion`
+is the exact same rule the `prefers-reduced-motion` media query already
+uses, just reachable by a class instead of only an OS setting, for a
+visitor who wants the choice sitting inside the site itself.
+
+### Verification, and one wrinkle worth recording
+
+`tsc -p tsconfig.json --noEmit` and `scripts/check-content.mjs` (87,556
+checks, content untouched) both ran clean. **`eslint` did not finish this
+round** — every invocation, even a single trivial file with a stripped-down
+non-type-aware config, ran past the 45-second ceiling this device session
+allows per command, and background processes (`nohup`/`disown`, and a
+detached `tmux` session) were both found to get killed the moment the
+device_bash call that launched them returns, rather than surviving to be
+polled from a later call the way earlier verification in this project
+assumed they would. Worth flagging rather than quietly skipping: this is an
+environment change, not a decision to skip checking. Every file was
+re-read and reasoned through by hand instead, and `MockExam.tsx`
+specifically carries an `eslint-disable-next-line react-hooks/exhaustive-
+deps` with a comment explaining exactly why (it should fire once per exam,
+not once per answered question) — the one rule most likely to actually
+flag something in this batch. Worth running `eslint` for real from a
+normal terminal before trusting this fully.
+
+One stray file: a throwaway `lint-fast.config.mjs`, used to attempt the
+faster non-type-aware eslint run above, couldn't be deleted from here (this
+bridge can't delete files on your machine) and was moved to
+`_to_delete/lint-fast.config.mjs` in the project root instead — safe to
+delete that file and the `_to_delete` folder yourself, and it was NOT
+committed to git.

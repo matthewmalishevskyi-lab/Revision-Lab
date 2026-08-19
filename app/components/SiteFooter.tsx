@@ -15,7 +15,7 @@ import { CONTACT_EMAIL } from "../lib/site";
 // short pages without pretending to be `position: fixed`.
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-black/5 px-6 py-8 text-sm dark:border-white/10">
+    <footer className="mt-auto border-t border-black/5 px-6 py-8 text-sm print:hidden dark:border-white/10">
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 opacity-60">
         <p>
           Revision Lab — a student project. Free, and always will be.
@@ -23,6 +23,12 @@ export function SiteFooter() {
         <nav className="flex flex-wrap items-center gap-5">
           <Link href="/privacy" className="hover:underline underline-offset-2">
             Privacy
+          </Link>
+          <Link
+            href="/accessibility"
+            className="hover:underline underline-offset-2"
+          >
+            Accessibility
           </Link>
           <a
             href={`mailto:${CONTACT_EMAIL}`}

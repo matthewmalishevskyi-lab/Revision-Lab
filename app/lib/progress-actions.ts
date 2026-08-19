@@ -93,15 +93,37 @@ export async function recordStudyTime(
 // rather than pretending it belongs to one topic. recordActivity's `topic`
 // column just gets the subject's own slug again, since the column is
 // required and there's no real topic to put there.
-export async function recordTestCompletion(subject: string): Promise<void> {
+//
+// `correct`/`total` are the auto-marked score out of the auto-marked
+// questions — see TEST_SCORE_SETUP.sql for the columns this feeds, and
+// progress.ts's buildTestHistory for how it turns into "Test score history".
+// Clamped the same way recordStudyTime clamps seconds: MockExam already only
+// ever sends real numbers, but a Server Action is reachable by anything that
+// can make an HTTP request, so nothing here trusts them blindly.
+export async function recordTestCompletion(
+  subject: string,
+  correct: number,
+  total: number,
+): Promise<void> {
   const user = await getCurrentUser();
   if (!user) return;
   if (!getSubject(subject)) return; // hostile input: only record real subjects
+
+  if (!Number.isFinite(correct) || !Number.isFinite(total)) return;
+  // A sanity ceiling, the same idea as MAX_SECONDS_PER_CALL above — no real
+  // mock exam here has anywhere near 500 questions in it.
+  const safeTotal = Math.floor(Math.min(Math.max(total, 0), 500));
+  const safeCorrect = Math.floor(Math.min(Math.max(correct, 0), safeTotal));
 
   await recordActivity({
     userId: user.id,
     subject,
     topic: subject,
     kind: "test",
+    // 0 auto-marked questions is a real, valid case (a test built entirely
+    // from self-marked questions) — still recorded, just with no score to
+    // show, which is exactly what buildTestHistory filters out.
+    scoreCorrect: safeCorrect,
+    scoreTotal: safeTotal,
   });
 }
