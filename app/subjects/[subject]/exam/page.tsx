@@ -70,12 +70,16 @@ function collectQuestionPool(subjectSlug: string, years: { topics: { slug: strin
 }
 
 // A query-string value comes back as `undefined` (missing), a single string
-// (one box ticked), or an array of strings (more than one ticked) — Next.js
-// decides which of those three shapes based on how many `years=` entries
-// were in the URL. Folding all three into one plain array here means the
-// rest of this file can just treat "which years are selected" as a list,
-// without caring how many boxes were ticked.
-function normalizeYears(raw: string | string[] | undefined): string[] {
+// (one value), or an array of strings (the same key repeated) — Next.js
+// decides which of those three shapes based on how many times the key
+// appeared in the URL. Folding all three into one plain array here means
+// the rest of this file can just check "is this value present", the same
+// way regardless of how many times the key showed up. Used both for
+// `years` (naturally repeatable — one tick per box) and for `configured`
+// (normally appears once, but nothing stops a hand-edited or bookmarked
+// URL from repeating it too, and this way that can't silently break the
+// "has the form been submitted" check).
+function normalizeQueryValue(raw: string | string[] | undefined): string[] {
   if (raw === undefined) return [];
   return Array.isArray(raw) ? raw : [raw];
 }
@@ -92,8 +96,8 @@ export default async function ExamPage({ params, searchParams }: Props) {
   // form" apart from "chose zero years" — an ordinary unticked checkbox
   // doesn't appear in the URL at all, so without this the two cases would
   // look identical.
-  const configured = query.configured === "1";
-  const selectedYears = normalizeYears(query.years);
+  const configured = normalizeQueryValue(query.configured).includes("1");
+  const selectedYears = normalizeQueryValue(query.years);
   const availableYears = subject.years.map((group) => group.year);
 
   // Only actually build a set of questions once the form has been

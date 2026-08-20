@@ -84,33 +84,6 @@ export function MockExam({
     [questions],
   );
 
-  // Fires once, the moment the exam finishes, however it finished — running
-  // out of time or clicking "Finish now" both count. Watching `phase` rather
-  // than putting this inline in the two places that set it to "finished"
-  // means there's exactly one spot deciding when to celebrate, not two that
-  // could quietly drift apart.
-  useEffect(() => {
-    if (phase === "finished") {
-      setCelebrating(true);
-      // Fire-and-forget, same pattern as recordAnswer above — a failed write
-      // here should never stop the finish screen from showing. Records
-      // against the subject as a whole (there's no single topic a whole test
-      // belongs to), and is what the "completed a test in every subject"
-      // badges — and now "Test score history" — read back.
-      //
-      // `correct`/`markable` are declared further down this component, but
-      // that's fine: this effect only actually reads them once it runs
-      // (after the whole render has finished), and by the time `phase`
-      // becomes "finished" there are no more questions left to answer, so
-      // they've already settled on their final values.
-      void recordTestCompletion(subjectSlug, correct, markable).catch(() => {});
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- deliberately
-    // NOT re-running this every time correct/markable tick up during the
-    // exam: it should fire exactly once, the moment phase becomes
-    // "finished", not on every answered question.
-  }, [phase, subjectSlug]);
-
   // A ref, not state, for the same reason StudyTimer elsewhere on the site
   // uses one: the tick doesn't need to trigger a render by itself, only the
   // seconds-left NUMBER does, and re-deriving "has this run out" from state
@@ -174,6 +147,35 @@ export function MockExam({
   const uniqueTopics = Array.from(
     new Map(questions.map((q) => [q.topicSlug, q.topicTitle])).entries(),
   );
+
+  // Fires once, the moment the exam finishes, however it finished — running
+  // out of time or clicking "Finish now" both count. Watching `phase` rather
+  // than putting this inline in the two places that set it to "finished"
+  // means there's exactly one spot deciding when to celebrate, not two that
+  // could quietly drift apart.
+  //
+  // Placed here, after `correct`/`markable` are declared above, rather than
+  // up near the other effects — the earlier ordering worked fine at runtime
+  // (an effect only actually reads its closed-over variables once it runs,
+  // well after the whole render has finished), but reading a variable before
+  // its declaration in the file is exactly the kind of thing that becomes a
+  // real bug the moment someone reorders the code around it, so it's worth
+  // just not writing it that way.
+  useEffect(() => {
+    if (phase === "finished") {
+      setCelebrating(true);
+      // Fire-and-forget, same pattern as recordAnswer above — a failed write
+      // here should never stop the finish screen from showing. Records
+      // against the subject as a whole (there's no single topic a whole test
+      // belongs to), and is what the "completed a test in every subject"
+      // badges — and now "Test score history" — read back.
+      void recordTestCompletion(subjectSlug, correct, markable).catch(() => {});
+    }
+    // NOT re-running this every time correct/markable tick up during the
+    // exam: it should fire exactly once, the moment phase becomes
+    // "finished", not on every answered question.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, subjectSlug]);
 
   if (phase === "intro") {
     return (

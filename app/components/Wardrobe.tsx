@@ -26,7 +26,22 @@ export function Wardrobe({ unlockedIds }: { unlockedIds: OutfitId[] }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(EQUIPPED_OUTFIT_KEY) as OutfitId | null;
-      if (saved && unlockedIds.includes(saved)) setEquipped(saved);
+      if (saved && unlockedIds.includes(saved)) {
+        setEquipped(saved);
+      } else if (saved && saved !== "none") {
+        // Equipped to something that isn't unlocked any more — most likely
+        // a streak-gated outfit worn while the streak was live, kept in
+        // localStorage after the streak broke (unlocks here are worked out
+        // fresh each time, never stored, so nothing un-equips it on its
+        // own). This is the one place that actually has real unlock data
+        // to check against, so it's also the one place that can correct
+        // the stored value — every other spot Pixel appears (header,
+        // dashboard, celebrations) just reads whatever's saved here with
+        // no way to know it's stale, so left uncorrected this would mean
+        // Pixel keeps wearing a "locked" outfit everywhere except the one
+        // page that says it's locked.
+        localStorage.setItem(EQUIPPED_OUTFIT_KEY, "none");
+      }
     } catch {
       // No localStorage available — Classic Pixel it is.
     }
