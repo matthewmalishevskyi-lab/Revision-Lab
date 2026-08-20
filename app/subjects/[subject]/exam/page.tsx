@@ -6,7 +6,7 @@ import { MascotDisplay } from "../../../components/MascotDisplay";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { getTopicContent } from "../../../lib/content";
 import { shuffle } from "../../../lib/shuffle";
-import { getSubject } from "../../../lib/subjects";
+import { getSubject, type YearGroup } from "../../../lib/subjects";
 
 // A STATIC segment ("exam") living alongside the DYNAMIC one ([topic]) in the
 // same folder. Next.js checks static segments first, so /subjects/maths/exam
@@ -18,7 +18,10 @@ import { getSubject } from "../../../lib/subjects";
 // page needs a FRESH random set of questions on every visit — that's the
 // whole point of "another mock exam" — and a statically pre-rendered page
 // would freeze on whichever questions were picked at build time. See
-// `dynamic = "force-dynamic"` below.
+// `dynamic = "force-dynamic"` below. Reading the year checkboxes back out of
+// the URL (searchParams) has the same effect: every different combination of
+// ticked years is its own URL, so there's no one fixed page to cache here
+// either.
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +32,10 @@ export const dynamic = "force-dynamic";
 const QUESTION_COUNT = 20;
 const DURATION_SECONDS = 20 * 60;
 
-type Props = { params: Promise<{ subject: string }> };
+type Props = {
+  params: Promise<{ subject: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { subject: slug } = await params;
@@ -63,13 +69,45 @@ function collectQuestionPool(subjectSlug: string, years: { topics: { slug: strin
   );
 }
 
-export default async function ExamPage({ params }: Props) {
+// A query-string value comes back as `undefined` (missing), a single string
+// (one box ticked), or an array of strings (more than one ticked) — Next.js
+// decides which of those three shapes based on how many `years=` entries
+// were in the URL. Folding all three into one plain array here means the
+// rest of this file can just treat "which years are selected" as a list,
+// without caring how many boxes were ticked.
+function normalizeYears(raw: string | string[] | undefined): string[] {
+  if (raw === undefined) return [];
+  return Array.isArray(raw) ? raw : [raw];
+}
+
+export default async function ExamPage({ params, searchParams }: Props) {
   const { subject: slug } = await params;
   const subject = getSubject(slug);
   if (!subject) notFound();
 
-  const pool = collectQuestionPool(subject.slug, subject.years);
-  const questions = shuffle(pool).slice(0, QUESTION_COUNT);
+  const query = await searchParams;
+
+  // The setup form below always submits a hidden "configured" field, ticked
+  // boxes or not. That's how this page tells "hasn't chosen yet — show the
+  // form" apart from "chose zero years" — an ordinary unticked checkbox
+  // doesn't appear in the URL at all, so without this the two cases would
+  // look identical.
+  const configured = query.configured === "1";
+  const selectedYears = normalizeYears(query.years);
+  const availableYears = subject.years.map((group) => group.year);
+
+  // Only actually build a set of questions once the form has been
+  // submitted — before that there's nothing to show yet but the form
+  // itself, so there's no point doing the work.
+  let yearsToInclude: YearGroup[] = [];
+  let questions: ExamQuestion[] = [];
+  if (configured) {
+    yearsToInclude = subject.years.filter((group) =>
+      selectedYears.includes(group.year),
+    );
+    const pool = collectQuestionPool(subject.slug, yearsToInclude);
+    questions = shuffle(pool).slice(0, QUESTION_COUNT);
+  }
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-8">
@@ -106,28 +144,97 @@ export default async function ExamPage({ params }: Props) {
       </section>
 
       <div className="mt-8">
-        {questions.length === 0 ? (
+        {!configured ? (
+          // Step one: pick which years to include. A plain HTML form with
+          // `method="get"` — no client-side JavaScript needed, since
+          // submitting it just reloads this same page with the ticked boxes
+          // turned into a query string, which the code above reads straight
+          // back out.
+          <form
+            method="get"
+            className="rounded-3xl border border-white/60 bg-white/70 p-8 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+          >
+            <h2 className="text-xl font-bold">Set up your test</h2>
+            <p className="mt-1 opacity-70">
+              Tick which years to include. Leave everything ticked for a full
+              mixed test across all of {subject.name}, or untick a year to
+              focus on just the one(s) you&apos;re revising right now.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              {availableYears.map((year) => (
+                <label
+                  key={year}
+                  className="flex cursor-pointer items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-sm font-medium shadow-sm transition hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                >
+                  <input
+                    type="checkbox"
+                    name="years"
+                    value={year}
+                    defaultChecked
+                    className="h-4 w-4"
+                    style={{ accentColor: subject.accent }}
+                  />
+                  {year}
+                </label>
+              ))}
+            </div>
+
+            <input type="hidden" name="configured" value="1" />
+
+            <button
+              type="submit"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+              style={{ backgroundColor: subject.accent }}
+            >
+              Start test
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+        ) : yearsToInclude.length === 0 ? (
           <div className="rounded-3xl border border-white/60 bg-white/70 p-8 text-center shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
             <p className="opacity-70">
-              No practice questions have been written for {subject.name} yet,
-              so there&apos;s nothing to build an exam from. Check back once
-              some topics have content.
+              You didn&apos;t tick any years, so there&apos;s nothing to
+              build a test from.
             </p>
             <Link
-              href={`/subjects/${subject.slug}`}
+              href={`/subjects/${subject.slug}/exam`}
               className="mt-4 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
             >
-              Back to {subject.name}
+              Choose again
+            </Link>
+          </div>
+        ) : questions.length === 0 ? (
+          <div className="rounded-3xl border border-white/60 bg-white/70 p-8 text-center shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+            <p className="opacity-70">
+              No practice questions have been written for the year(s) you
+              picked yet, so there&apos;s nothing to build an exam from.
+              Check back once some topics have content, or choose a
+              different year.
+            </p>
+            <Link
+              href={`/subjects/${subject.slug}/exam`}
+              className="mt-4 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            >
+              Choose again
             </Link>
           </div>
         ) : (
-          <MockExam
-            questions={questions}
-            subjectSlug={subject.slug}
-            subjectName={subject.name}
-            colour={subject.accent}
-            durationSeconds={DURATION_SECONDS}
-          />
+          <>
+            <Link
+              href={`/subjects/${subject.slug}/exam`}
+              className="mb-4 inline-block text-sm opacity-60 hover:underline hover:opacity-100"
+            >
+              ← Change which years are included
+            </Link>
+            <MockExam
+              questions={questions}
+              subjectSlug={subject.slug}
+              subjectName={subject.name}
+              colour={subject.accent}
+              durationSeconds={DURATION_SECONDS}
+            />
+          </>
         )}
       </div>
     </main>
