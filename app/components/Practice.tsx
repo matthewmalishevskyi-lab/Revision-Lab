@@ -27,6 +27,7 @@
 import { useState } from "react";
 import { HigherBadge } from "./HigherBadge";
 import { recordAnswer } from "../lib/progress-actions";
+import { shuffle } from "../lib/shuffle";
 
 type Question = {
   question: string;
@@ -118,6 +119,29 @@ type QuestionState = {
 
 const EMPTY: QuestionState = { input: "", status: "unanswered", revealed: false };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// WHY MULTIPLE CHOICE OPTIONS ARE SHUFFLED HERE RATHER THAN TRUSTED AS WRITTEN
+//
+// A REAL BUG THIS FUNCTION USED TO HAVE: content is written with the correct
+// choice listed FIRST, because that's the natural order to write it in — you
+// think of the right answer, then think of three wrong ones to go with it.
+// Nothing ever reordered them before showing them on screen, so on the huge
+// majority of multiple-choice questions across the whole site, the correct
+// answer sat in position A every single time. Spotted by Matthew after a
+// mock exam where every question he could answer by picking "A" — a student
+// could pass without knowing a single fact, which defeats the entire point
+// of a revision site.
+//
+// The fix shuffles the DISPLAY ORDER only, once per question, not the data
+// itself — `accept` still lists the right answer by its TEXT, not by
+// position, so marking needs no changes at all; see the comment on
+// `Question.choices` above for why there's no separate "correct index" to
+// keep in sync in the first place.
+// ─────────────────────────────────────────────────────────────────────────────
+function shuffledChoicesFor(questions: Question[]): (string[] | undefined)[] {
+  return questions.map((q) => (q.choices ? shuffle(q.choices) : undefined));
+}
+
 export function Practice({
   questions,
   colour,
@@ -155,11 +179,19 @@ export function Practice({
   const [recorded, setRecorded] = useState<Set<number>>(new Set());
 
   const [previousQuestions, setPreviousQuestions] = useState(questions);
+  // Shuffled ONCE per set of questions, not on every render — otherwise the
+  // buttons would reorder themselves under someone's finger while they were
+  // still deciding. Reset alongside everything else the moment the topic
+  // (and so the actual question list) changes, same as `states`/`recorded`.
+  const [shuffledChoices, setShuffledChoices] = useState(() =>
+    shuffledChoicesFor(questions),
+  );
   if (questions !== previousQuestions) {
     setPreviousQuestions(questions);
     setStates({});
     // A different topic's questions: start recording again.
     setRecorded(new Set());
+    setShuffledChoices(shuffledChoicesFor(questions));
   }
 
   const stateFor = (index: number) => states[index] ?? EMPTY;
@@ -245,6 +277,10 @@ export function Practice({
         {questions.map((item, index) => {
           const state = stateFor(index);
           const autoMarked = Boolean(item.accept);
+          // The shuffled DISPLAY order — see shuffledChoicesFor's comment.
+          // `item.choices` below still guards whether this is a multiple
+          // choice question at all; this is only ever read once that's true.
+          const choices = shuffledChoices[index];
 
           return (
             <li
@@ -280,7 +316,7 @@ export function Practice({
                            is not revision, and it would also mean the progress
                            figures counted a guessed answer as knowledge. */
                         <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                          {item.choices.map((option, optionIndex) => {
+                          {choices!.map((option, optionIndex) => {
                             const picked = state.input === option;
                             const answered = state.status !== "unanswered";
                             const isRight = (item.accept ?? []).some(

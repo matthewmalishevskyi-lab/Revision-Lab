@@ -5,6 +5,7 @@ import { MockExam, type ExamQuestion } from "../../../components/MockExam";
 import { MascotDisplay } from "../../../components/MascotDisplay";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { getTopicContent } from "../../../lib/content";
+import { shuffle } from "../../../lib/shuffle";
 import { getSubject } from "../../../lib/subjects";
 
 // A STATIC segment ("exam") living alongside the DYNAMIC one ([topic]) in the
@@ -60,18 +61,6 @@ function collectQuestionPool(subjectSlug: string, years: { topics: { slug: strin
       }));
     }),
   );
-}
-
-// Fisher–Yates. Picking `count` questions with `Math.random()` alone (sort by
-// random comparator) is a classic near-miss — it doesn't produce a uniform
-// shuffle and over-favours certain orderings. This does.
-function shuffle<T>(items: T[]): T[] {
-  const result = [...items];
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
-  }
-  return result;
 }
 
 export default async function ExamPage({ params }: Props) {

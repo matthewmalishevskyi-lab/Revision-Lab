@@ -17,12 +17,13 @@
 // A mock exam still feeds the same progress data as ordinary practice — it's
 // a different way of ANSWERING questions, not a different kind of question.
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { normalise } from "./Practice";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
+import { shuffle } from "../lib/shuffle";
 
 export type ExamQuestion = {
   question: string;
@@ -62,6 +63,26 @@ export function MockExam({
   const [states, setStates] = useState<Record<number, QuestionState>>({});
   const recorded = useRef<Set<number>>(new Set());
   const [celebrating, setCelebrating] = useState(false);
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // WHY MULTIPLE CHOICE OPTIONS ARE SHUFFLED HERE — see Practice.tsx's copy of
+  // this comment for the full story. Short version: content is written with
+  // the correct choice listed first, and nothing ever reordered it before
+  // showing it on screen — so on almost every multiple-choice question on the
+  // site, the right answer sat in position A. Spotted by Matthew after a mock
+  // exam where picking "A" every time answered every question correctly.
+  //
+  // `useMemo` rather than the reset-during-render pattern Practice.tsx uses:
+  // MockExam gets a brand new `questions` array every time the exam page is
+  // visited (a fresh random pick — see that page's comment), it never reuses
+  // one exam's question list for another, so there's no equivalent "topic
+  // changed under me" case to guard against. Shuffling once when `questions`
+  // is first seen is enough, and it stays stable for the rest of the exam
+  // because the array reference doesn't change again after that.
+  const shuffledChoices = useMemo(
+    () => questions.map((q) => (q.choices ? shuffle(q.choices) : undefined)),
+    [questions],
+  );
 
   // Fires once, the moment the exam finishes, however it finished — running
   // out of time or clicking "Finish now" both count. Watching `phase` rather
@@ -291,6 +312,10 @@ export function MockExam({
         {questions.map((item, index) => {
           const state = stateFor(index);
           const autoMarked = Boolean(item.accept);
+          // The shuffled DISPLAY order — see the comment on
+          // `shuffledChoices` above. `item.choices` still guards whether
+          // this is a multiple choice question at all.
+          const choices = shuffledChoices[index];
 
           return (
             <li
@@ -323,7 +348,7 @@ export function MockExam({
                     <>
                       {item.choices ? (
                         <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                          {item.choices.map((option, optionIndex) => {
+                          {choices!.map((option, optionIndex) => {
                             const picked = state.input === option;
                             const answered = state.status !== "unanswered";
                             const isRight = (item.accept ?? []).some(

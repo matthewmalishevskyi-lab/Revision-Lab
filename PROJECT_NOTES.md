@@ -1530,3 +1530,52 @@ bridge can't delete files on your machine) and was moved to
 `_to_delete/lint-fast.config.mjs` in the project root instead — safe to
 delete that file and the `_to_delete` folder yourself, and it was NOT
 committed to git.
+
+## The multiple-choice bug: every correct answer was "A" (2026-08-20)
+
+Matthew, after a mock exam: every multiple-choice question he could answer
+by just clicking option A. Checked it properly rather than taking it on
+faith — sampled the `choices`/`accept` pairs across several subjects'
+content files, and the correct answer sat in `choices[0]` on 85–100% of
+multiple-choice questions in every subject checked (Physics: the whole
+sample; Spanish 96/110; French 93/94; German 64/65; Religious Education
+91/91). Not bad luck — content is naturally WRITTEN with the right answer
+first (you think of the correct one, then invent three wrong ones to go
+with it), and nothing ever reordered the choices before showing them on
+screen. A student could pass most multiple-choice quizzes on the site
+without knowing a single fact, which is about as bad as a revision site's
+marking can be wrong.
+
+**Fixed at the display layer, not in the content.** Editing the correct
+answer's position across roughly a thousand multiple-choice questions in
+14 content files would be slow, error-prone, and would still need
+discipline forever afterwards to avoid the same bias creeping back in the
+next time someone (or something) writes a question. Instead, both places
+that render multiple choice — `Practice.tsx` (topic pages) and
+`MockExam.tsx` (mock exams) — now shuffle each question's `choices` array
+into a random display order the moment it's shown, once per question, not
+once per render (so the buttons don't reorder themselves under someone's
+finger mid-decision). `accept` still matches by the choice's TEXT, never
+its position, so marking needed no changes at all — this is purely "what
+order the buttons happen to appear in."
+
+**New shared `app/lib/shuffle.ts`**, holding the Fisher–Yates shuffle that
+used to live only inside the exam page (picking which questions appear in
+a mock exam). Same operation, two different arrays to apply it to — the
+exam page now imports it instead of keeping its own copy.
+
+`Practice.tsx` shuffles via a bit of state reset alongside its existing
+`states`/`recorded` reset (the same "topic changed under me" pattern
+already documented in that file), since the same component instance can be
+reused across topic navigations and needs fresh shuffles for fresh
+questions. `MockExam.tsx` shuffles via `useMemo` keyed on `questions`
+instead, since a mock exam's question list never changes mid-exam the way
+Practice's does between topics — simpler is correct there.
+
+`tsc -p tsconfig.json --noEmit` ran clean. `scripts/check-content.mjs`
+could not be run this round — the device connection kept timing out
+partway through the command after several retries — but nothing here
+touches the content files themselves (only how three components RENDER
+existing content), so there's no reason to expect it not to still pass;
+worth running it yourself to be sure. `eslint` still could not be verified
+from here either, for the same reason as the previous entry.
