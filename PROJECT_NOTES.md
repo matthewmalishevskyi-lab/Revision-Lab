@@ -1143,6 +1143,69 @@ else.
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
 
+## Monetisation planning — discussion, not yet implemented (2026-08-22)
+
+Matthew wants Revision Lab to become a real income-producing product while
+keeping the core revision experience accessible. The working model discussed
+with Jennifer is **free + light advertising + an optional Pro plan**, rather
+than putting essential GCSE content behind a paywall. Nothing in this section
+has been built or finally approved yet; the figures are planning assumptions
+to test against real usage.
+
+**Advertising idea:** at most two clearly labelled, responsive adverts on a
+long topic page — one after the summary/key-facts material and one near the end
+of the learning content. Short pages get one. Keep adverts completely out of
+practice questions, flashcards, subject tests, timers, account pages and the
+progress dashboard. No pop-ups, autoplay, full-screen adverts or sticky units
+that cover content. Because the audience includes children, the assumption is
+contextual/non-personalised advertising with unsuitable categories blocked.
+
+**Pro idea:** £4.99/month, with possible £34.99/year and roughly £12.99 for a
+four-month exam-season pass. Ad removal alone is not enough value at this
+price. The three proposed headline features are:
+
+1. A custom test builder (subjects/topics, difficulty, length and time limit)
+   with a weakness report.
+2. An adaptive revision planner using exam dates and available study time,
+   changing when work is missed or weaknesses change.
+3. Advanced analytics: improvement and accuracy trends, weakest topics, study
+   patterns and a clear "what should I revise tonight?" queue.
+
+Possible supporting Pro benefits: saved custom tests, printable/downloadable
+revision packs, deeper spaced-repetition controls, parent-friendly reports,
+and cosmetic themes or mascot rewards. The existing core notes, ordinary
+practice, flashcards and accessibility features should remain free; Pro sells
+personalisation, planning, convenience and insight.
+
+**First-school working model:** 280 monthly active students, 20 page views per
+student in a normal month, strong December/mock usage and a March-May exam
+surge. The explicit seasonal model totals 128,800 page views/year. At a middle
+planning rate of £2.50 page RPM that is about £322/year in advertising. The
+older £3 Plus scenario estimated about £216/year in subscriptions; combined
+gross revenue was £538, with roughly £250/year in commercial hosting, domain
+and payment costs, leaving about £288 before tax. Broad scenarios were roughly
+break-even / £288 / £778 profit for cautious / middle / strong years. These are
+not forecasts: actual ad RPM, retention, page views and conversion must be
+measured after launch. A £4.99 Pro plan changes the conversion and revenue
+assumptions and needs its own model once the feature set is chosen.
+
+**Distribution idea:** prove the site in Matthew's own school first, obtain
+teacher content review, privacy/safeguarding approval, anonymous usage and
+retention evidence, and a staff testimonial. Then ask the head teacher for
+warm introductions to nearby schools. Give other schools a low-effort ladder:
+share the link with teachers, display a QR poster, trial one class, mention it
+in a bulletin, then consider an assembly. Free teacher tools could become the
+scalable distribution channel; ads earn from most visitors and Pro from a
+small percentage. Direct school licensing and suitable sponsorship remain
+optional later channels rather than the assumed core model.
+
+**Constraints not to forget:** Vercel Hobby is non-commercial, so monetisation
+requires commercial-compatible hosting. Advertising/payment/hosting accounts
+need adult ownership while Matthew is below the services' required ages. The
+UK Children's Code, advertising rules for children, privacy policy and consent
+work must be reviewed before ads launch. Teacher review of the AI-assisted
+content remains a prerequisite for credible school endorsement.
+
 ## Four more badges, and a "languages count as one" rule (2026-08-18)
 
 Matthew asked for four more badges on top of the original eight: **Double
@@ -1619,3 +1682,62 @@ One more finding, judged not worth fixing today: the rate limiter that protects 
 **What was checked and found genuinely clean**, for the record: every Server Action in the codebase correctly takes the logged-in user's identity only from the session cookie (never from anything the browser sends as a parameter), and validates every subject slug, topic slug, and numeric input before touching the database — exactly the "treat every argument as hostile" rule this project has followed from early on. The password/session code, the login throttle's actual lockout numbers (simulated end-to-end against a fake clock), the multiple-choice shuffle fix, and the two hand-written `<head>` bootstrap scripts (which have to independently match what their real components do, since they run before any component code loads) were all read closely and found correct. `eslint` still flags eight spots — all the same "reading localStorage after the page has already loaded" pattern used for the theme toggle, accessibility settings, and equipped outfit — which is a real, deliberate, already-documented choice (there's no other way to read something that only exists in the browser without it disagreeing with what the server rendered), not a bug.
 
 **Verification.** A real `next build` succeeds and pre-renders all 534 pages; `tsc --noEmit` is clean; both content checkers (87,556 checks) and the security/throttle simulator (57 checks) pass. All three fixes above are committed, but — same as the last entry — pushing to GitHub is still blocked by a proxy error on this network; they're sitting locally ready to go up once that clears.
+
+## English content: cutting "name the term" questions in half (2026-08-22)
+
+Matthew's complaint, after actually looking at the site: English kept asking
+"what's the term for X?" far more than any other subject — a straight count
+across every subject found English at 95 of these, nowhere near the runner-up
+at 17 — and, in his words, that's "never really" what English is about.
+Naming vocabulary isn't the skill an exam rewards; using it to say something
+about a text is.
+
+**Started with one topic (Poetry Basics, the worst offender at 12) to agree
+the style before doing the rest.** Roughly half its "what's the term for..."
+questions were rewritten to test the skill instead of the name — given a
+short quotation or scenario and asked to identify a technique or explain its
+effect, rather than just recite a definition. Example: instead of "what's
+the term for words that almost rhyme," it now gives "heart" rhymed with
+"hurt" and asks what effect the near-miss creates. The other half stayed as
+straight recall — the vocabulary examiners actually expect used unprompted
+(enjambment, caesura, volta, extended metaphor, symbolism, dramatic
+monologue) is still worth just knowing cold.
+
+**Once that style was confirmed, applied the same treatment to every other
+English topic with these questions** — 14 more topics (grammar-punctuation-
+and-spelling had none, so it was untouched). Each topic's "what's the term
+for" questions were counted, roughly half converted to skill-testing
+questions using either a generic invented example or a quotation already
+present elsewhere in that same topic's own key facts/worked examples (never
+a fabricated claim about a real named text — several of these topics
+explicitly note the actual play/novel/poem varies by school, so nothing
+was invented and attributed to one), and the other half kept as plain
+recall, chosen for being the highest-value vocabulary students need to
+produce without being prompted.
+
+**Done with 14 parallel subagents, one per topic** (two very small topics —
+fiction-reading-and-writing and revision-and-exam-practice, with only 1-2
+such questions each — were paired with a neighbour rather than given a whole
+agent to themselves). Each agent worked on an isolated copy of just its own
+topic's content, specifically so 14 agents editing at once couldn't race
+each other or corrupt a shared file, and the results were stitched back
+together afterwards.
+
+**The numbers, before and after, across the whole subject:** auto-marked
+practice questions went from 336 to 315, and self-marked went from 32 to 53
+— a net change of zero in the total question count (368 either way), exactly
+as intended: nothing was added or removed, questions were converted from one
+style to the other in place.
+
+Verification this round was unusually thorough given the scale of the
+change (roughly 40 hand-written questions touched across 14 files at once):
+`scripts/check-content.mjs` (87,603 checks, up from 87,556 — new checks
+apply naturally to the new questions), `tsc --noEmit`, `eslint --max-
+warnings=0`, and — for the first time this project, a genuine `next build`
+rather than just a type-check, run in an environment without this session's
+usual constraints — a full production build, successfully compiling and
+pre-rendering all 534 pages. All four passed clean.
+
+Committed as `5c1da22`. Same story as recent sessions: pushing to GitHub is
+still blocked by a proxy error on Matthew's network — queued locally with
+the other recent commits, waiting on `git push` to work again.
