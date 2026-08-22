@@ -7,6 +7,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { SearchBox } from "./SearchBox";
 import { PixelCompanion } from "./PixelCompanion";
 import { chipClasses } from "./chipStyles";
+import { MobileMenu, mobileMenuItemClasses } from "./MobileMenu";
 
 // The header that appears on every page.
 //
@@ -53,48 +54,92 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
 
         {user ? (
           <>
-            {/* Pixel, wearing whatever's equipped in the wardrobe — see
-                PixelCompanion.tsx. This is the one placement that puts him on
-                literally every page, since SiteHeader is on all of them.
-                Before the greeting, the way a personal avatar usually sits
-                first in a row like this. */}
-            <PixelCompanion className="h-10" />
+            {/* Everything from here down is the same set of links rendered
+                TWICE — once for screens with room to spare, once inside the
+                phone hamburger below. See MobileMenu.tsx for why: this whole
+                group is 500+ pixels wide with Pixel and four chips in it,
+                which never fit next to Home/Search/the theme toggle on a
+                real phone screen. Only one of the two ever shows at once,
+                switched purely by CSS breakpoint (`hidden sm:flex` vs the
+                `sm:hidden` inside MobileMenu), so there's exactly one visible
+                copy of "Dashboard" at any given screen width. */}
+            <div className="hidden items-center gap-3 sm:flex">
+              {/* Pixel, wearing whatever's equipped in the wardrobe — see
+                  PixelCompanion.tsx. This is the one placement that puts him on
+                  literally every page, since SiteHeader is on all of them.
+                  Before the greeting, the way a personal avatar usually sits
+                  first in a row like this. */}
+              <PixelCompanion className="h-10" />
 
-            {greeting && (
-              <span className="hidden text-lg opacity-70 lg:inline">
-                Hi, {user.name}
-              </span>
-            )}
+              {greeting && (
+                <span className="hidden text-lg opacity-70 lg:inline">
+                  Hi, {user.name}
+                </span>
+              )}
 
-            {/* Progress before Dashboard: it's the thing people actually come
-                back for, and the reason accounts exist at all. */}
-            <Link href="/progress" className={chipClasses}>
-              <ChartIcon />
-              <span className="hidden sm:inline">Progress</span>
-            </Link>
+              {/* Progress before Dashboard: it's the thing people actually come
+                  back for, and the reason accounts exist at all. */}
+              <Link href="/progress" className={chipClasses}>
+                <ChartIcon />
+                <span className="hidden sm:inline">Progress</span>
+              </Link>
 
-            <Link href="/dashboard" className={chipClasses}>
-              <GridIcon />
-              <span className="hidden sm:inline">Dashboard</span>
-            </Link>
+              <Link href="/dashboard" className={chipClasses}>
+                <GridIcon />
+                <span className="hidden sm:inline">Dashboard</span>
+              </Link>
 
-            {/* Account settings need to be reachable in one click from
-                anywhere. Somebody who wants their data deleted should not have
-                to hunt for the page that does it. */}
-            <Link href="/account" className={chipClasses}>
-              <CogIcon />
-              <span className="hidden sm:inline">Account</span>
-            </Link>
+              {/* Account settings need to be reachable in one click from
+                  anywhere. Somebody who wants their data deleted should not have
+                  to hunt for the page that does it. */}
+              <Link href="/account" className={chipClasses}>
+                <CogIcon />
+                <span className="hidden sm:inline">Account</span>
+              </Link>
 
-            {/* Logging out CHANGES something on the server, so it's a form, not
-                a link. Links are for going places; anything that alters state
-                should be a real submission. */}
-            <form action={logout}>
-              <button type="submit" className={chipClasses}>
-                <ExitIcon />
-                <span className="hidden sm:inline">Log out</span>
-              </button>
-            </form>
+              {/* Logging out CHANGES something on the server, so it's a form, not
+                  a link. Links are for going places; anything that alters state
+                  should be a real submission. */}
+              <form action={logout}>
+                <button type="submit" className={chipClasses}>
+                  <ExitIcon />
+                  <span className="hidden sm:inline">Log out</span>
+                </button>
+              </form>
+            </div>
+
+            <MobileMenu>
+              <div className="flex items-center gap-3 border-b border-black/10 px-1 pb-3 dark:border-white/10">
+                <PixelCompanion className="h-10" />
+                {greeting && (
+                  <span className="text-lg font-medium opacity-80">
+                    Hi, {user.name}
+                  </span>
+                )}
+              </div>
+
+              <Link href="/progress" className={mobileMenuItemClasses}>
+                <ChartIcon />
+                <span>Progress</span>
+              </Link>
+
+              <Link href="/dashboard" className={mobileMenuItemClasses}>
+                <GridIcon />
+                <span>Dashboard</span>
+              </Link>
+
+              <Link href="/account" className={mobileMenuItemClasses}>
+                <CogIcon />
+                <span>Account</span>
+              </Link>
+
+              <form action={logout}>
+                <button type="submit" className={mobileMenuItemClasses}>
+                  <ExitIcon />
+                  <span>Log out</span>
+                </button>
+              </form>
+            </MobileMenu>
           </>
         ) : (
           // When accounts are off there's no Login button at all, rather than
