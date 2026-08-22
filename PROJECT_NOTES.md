@@ -1804,3 +1804,87 @@ measurements.
 **Next up, once Matthew's push goes through and this is confirmed live:**
 brainstorming Pro-subscription feature ideas, which he's deliberately asked
 to hold until the mobile pass was done.
+
+---
+
+## Pro-subscription plan, first pass — two tiers, not one (2026-08-22)
+
+Follow-up to the mobile pass above, same day. Claude offered eight Pro ideas
+(custom test builder, "revise my weak spots", a countdown/planner, deeper
+progress insights, more wardrobe items, no ads, cross-device preferences, a
+parent view). Matthew picked four and, in doing so, split them into **two
+separate tiers** rather than one Pro tier — his own idea, not offered as an
+option:
+
+- **Plus** — no ads. That's the whole tier. The cheap option for someone who
+  just wants the annoyance gone.
+- **Pro** — no ads, plus everything else: the custom test builder, the
+  planner, and the expanded wardrobe (below). The full tier.
+
+**Nothing here is built yet.** This section is a decision log — what the
+two tiers will contain when they exist — not a changelog. See Jennifer's
+"Monetisation planning" section elsewhere in this file for the pricing,
+ad-placement and legal side of the same plan; this section is the feature
+side.
+
+**The planner, redefined from Claude's original pitch.** Claude's version
+was a simple exam countdown plus an auto-generated schedule. Matthew wants
+more: an actual calendar-style view showing what you DID over roughly the
+last four weeks (pulled from the same `activity` event log everything else
+on this site already reads — no new tracking needed, same "derive, don't
+store" pattern as streaks/badges/XP), alongside a place to plan what you're
+going to do next. Two halves, look-back and look-forward, in one view.
+Needs proper design work before building — worth a short session just on
+what this screen actually looks like before writing any code.
+
+**Wardrobe, extended two ways:**
+
+1. **Every mascot gets a wardrobe, not just Pixel.** Today `PixelOutfits.tsx`
+   and the whole equip/unlock system is Pixel-only, wired in because Pixel
+   is treated as the site's character (see "Pixel, everywhere" and its
+   follow-up above). Pro would extend the same system — outfits, unlock
+   conditions, an equipped choice remembered per mascot — to Hoot, Quill,
+   Knight, Atlas, Iris, Sterling, Lumen and the three MFL girls. This is a
+   real chunk of work: the outfit-unlock/equip machinery generalises fine,
+   but every mascot needs its OWN set of outfit artwork drawn in its own
+   proportions, the way Pixel's Shades/Party hat/Cape/Crown were each
+   individually fitted to Pixel's shape.
+2. **A Pro-exclusive item for Pixel specifically** — Matthew's example was a
+   king's crown — that only a Pro subscriber can equip, on top of the
+   ordinary unlock-by-level/streak/badge outfits everyone gets for free.
+   This is the one place in the whole plan where a cosmetic is gated by
+   PAYMENT rather than by playing the site, which is a genuinely different
+   rule from every other outfit — worth being deliberate that it's a single,
+   clearly-labelled exception, not the start of a pattern, so free users
+   don't start feeling like the fun stuff is being held back from them.
+
+**A new feature this surfaced that isn't on any list yet: a leaderboard.**
+Matthew mentioned it in passing, planning ahead rather than asking for it
+today — "when we do an actual ranking amongst every single user, we'd have
+to add a little icon to the profile of people with Plus or Pro." Two things
+worth flagging for whenever that's actually designed, not now:
+
+- **Whatever the subscription-tier badge is, it should be small and
+  cosmetic** — a little icon, exactly as Matthew said — not a mechanism that
+  makes the ranking itself pay-to-win. The rank should still be earned by
+  revising.
+- **A public ranking of every user is a genuinely different kind of feature
+  from anything else on this site**, precisely because most users here are
+  under 16. Today nothing about a Revision Lab account is visible to any
+  other user — the privacy page (see the entry above) is built entirely
+  around that. A leaderboard needs its own real design pass on what's
+  actually shown (first name only? a chosen display name? no name at all,
+  just a rank and a streak?) before it gets built, not just bolted on as
+  "activity, sorted." Worth raising with Matthew directly when that
+  feature's turn comes round, rather than assuming.
+
+**Known blockers, already flagged once and still true:** actually charging
+for Plus or Pro needs Vercel's paid plan (Hobby is explicitly
+non-commercial) and a real payment processor (Stripe or similar) — neither
+exists yet. None of that blocks talking through what each tier contains,
+which is all this session did.
+
+**Not picked, at least for now:** "revise my weak spots" mode, deeper
+progress insights/trend graphs, and a parent/family view. Not rejected
+outright — just not part of this round's picks. Worth another look if
+Matthew wants to revisit the list.
