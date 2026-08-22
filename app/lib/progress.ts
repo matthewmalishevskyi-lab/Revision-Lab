@@ -839,3 +839,61 @@ export function formatDuration(seconds: number): string {
   if (hours === 0) return `${minutes}m`;
   return `${hours}h ${String(minutes).padStart(2, "0")}m`;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PREVIEW ONLY — for the Pro-tier planner (app/pro-preview/planner). Not used
+// by anything a real visitor can reach yet; see PRO_PREVIEW_ENABLED in
+// app/lib/site.ts. Written here rather than in the preview page itself for
+// the same reason getProgress's own week-building code lives in this file
+// and not on the progress page: reading and summing `activity` rows is
+// exactly this file's job, and the planner's look-back calendar needs the
+// same event log, just over 28 days instead of 7 and grouped by day rather
+// than by subject.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type PlannerDay = {
+  date: string; // "YYYY-MM-DD", Europe/London
+  label: string; // "12" — the day-of-month, for a calendar cell
+  isToday: boolean;
+  questionsAnswered: number;
+  minutesSpent: number;
+  flashcardsReviewed: number;
+};
+
+// The last 28 days, oldest first, today included — a plain calendar grid the
+// planner page can lay out 7-wide. Reuses `readActivity` and `dayKey` rather
+// than opening a second connection or re-deriving "what day was this event
+// in Matthew's timezone" a second way, which is exactly the kind of
+// duplicated logic PROJECT_NOTES already flags as a real bug risk elsewhere
+// on this site (see the marking-rule and multiple-choice-shuffle entries).
+export async function getMonthlyActivity(userId: string): Promise<PlannerDay[]> {
+  const rows = await readActivity(userId);
+
+  const todayKey = dayKey(new Date());
+  const noonToday = new Date(`${todayKey}T12:00:00Z`);
+
+  const days: PlannerDay[] = [];
+  for (let back = 27; back >= 0; back--) {
+    const date = new Date(noonToday.getTime() - back * DAY_MS);
+    const key = dayKey(date);
+    const onThisDay = rows.filter((r) => dayKey(new Date(r.created_at)) === key);
+
+    days.push({
+      date: key,
+      label: date.toLocaleDateString("en-GB", {
+        day: "numeric",
+        timeZone: TIMEZONE,
+      }),
+      isToday: key === todayKey,
+      questionsAnswered: onThisDay.filter((r) => r.kind === "practice").length,
+      minutesSpent: Math.round(
+        onThisDay
+          .filter((r) => r.kind === "time")
+          .reduce((sum, r) => sum + (r.seconds ?? 0), 0) / 60,
+      ),
+      flashcardsReviewed: onThisDay.filter((r) => r.kind === "flashcard").length,
+    });
+  }
+
+  return days;
+}

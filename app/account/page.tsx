@@ -7,6 +7,7 @@ import { ACCOUNTS_ENABLED } from "../lib/site";
 import { undoDeletion } from "../lib/account-actions";
 import { purgeDateFor } from "../lib/users";
 import { ChangePasswordForm, DeleteAccountForm } from "./AccountForms";
+import { UpgradeButtons } from "../components/UpgradeButtons";
 
 export const metadata: Metadata = {
   title: "Your account",
@@ -114,6 +115,19 @@ export default async function AccountPage() {
           are signed cookies rather than a list we keep, so there is nothing to
           revoke — an old one stays valid until it expires.
         </p>
+      </section>
+
+      {/* ── Plans ──────────────────────────────────────────────────────── */}
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">Go further</h2>
+        <p className="mt-1 opacity-70">
+          Every subject, topic and practice question stays free, always.
+          Plus and Pro are extra convenience on top of that, never a
+          replacement for it.
+        </p>
+        <div className="mt-5">
+          <UpgradeButtons />
+        </div>
       </section>
 
       {/* ── Delete ─────────────────────────────────────────────────────── */}

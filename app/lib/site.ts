@@ -77,3 +77,25 @@ export const ACCOUNTS_ENABLED =
   (Boolean(process.env.SUPABASE_URL) &&
     Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY) &&
     Boolean(process.env.SESSION_SECRET));
+
+// ─── Pro/Plus preview switch ────────────────────────────────────────────────
+//
+// The account page has real "Upgrade to Plus" / "Upgrade to Pro" buttons —
+// see UpgradeButtons.tsx — but clicking either only ever says "Coming soon".
+// There's no payment processor wired up anywhere, and Vercel's free Hobby
+// plan is explicitly non-commercial, so there is genuinely nothing to sell
+// yet even if someone wanted to pay right now.
+//
+// The features those buttons are FOR — a topic-by-topic custom test builder,
+// the calendar-style planner, and a wardrobe extended beyond Pixel — are
+// real, working code (see app/pro-preview/), not mockups. But nobody should
+// be able to reach them before there is an actual way to pay for them, so
+// every page under app/pro-preview/ checks this flag first and 404s while
+// it's off.
+//
+// It reads from an environment variable that is not set anywhere the site
+// is actually deployed, so this is false in production by default — the
+// preview pages don't exist as far as a real visitor is concerned. To try
+// them yourself, add PRO_PREVIEW_ENABLED=true to .env.local and restart the
+// dev server.
+export const PRO_PREVIEW_ENABLED = process.env.PRO_PREVIEW_ENABLED === "true";

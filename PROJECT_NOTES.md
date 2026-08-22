@@ -1888,3 +1888,129 @@ which is all this session did.
 progress insights/trend graphs, and a parent/family view. Not rejected
 outright — just not part of this round's picks. Worth another look if
 Matthew wants to revisit the list.
+
+---
+
+## Pro/Plus, built — live buttons, hidden features (2026-08-22)
+
+Same day, immediate follow-up to the decision log above. Matthew's ask:
+write real code for the four picked features, but make sure nobody can
+actually reach three of them yet, and add real "Upgrade to Plus"/"Upgrade
+to Pro" buttons to the account page that say **Coming soon** rather than
+charging anyone anything.
+
+**The account page change is LIVE** — every visitor with an account sees
+it once this is pushed. A new "Go further" section lists what Plus (no
+ads) and Pro (no ads, plus the three features below) each contain, with a
+button per plan. `UpgradeButtons.tsx` is a small Client Component: clicking
+either button reveals "Coming soon — thanks for the interest!" in place of
+itself. No network request, no redirect, nothing that could be mistaken
+for an actual transaction — there is no payment processor anywhere in this
+codebase, so a button that looked like it charged you but didn't would be
+a dark pattern, not an honest placeholder.
+
+**Everything else is real, working code that 404s on the live site.** New
+constant `PRO_PREVIEW_ENABLED` in `app/lib/site.ts`, same shape as the
+existing `ACCOUNTS_ENABLED` switch: reads an environment variable
+(`PRO_PREVIEW_ENABLED=true` in `.env.local`) that isn't set anywhere the
+site is actually deployed, so every page under the new `app/pro-preview/`
+folder calls `notFound()` and is false by default in production. Nothing
+needs deleting to hide these later — flipping one env var is the whole
+mechanism, same as accounts.
+
+**Custom test builder** — `app/pro-preview/custom-test/`. A subject picker,
+then a close cousin of the existing `/subjects/[subject]/exam` page: same
+form-with-no-JS pattern, same `MockExam` component, same
+`force-dynamic`/fresh-random-pick reasoning — the one real difference is
+the form ticks individual TOPICS rather than whole years, and nothing is
+ticked by default (the existing exam page ticks every year by default,
+which is right for "the whole subject" but wrong for "just the few things
+I actually want"). Genuinely finished, not a stub.
+
+**Planner** — `app/pro-preview/planner/`. Two halves, matching what
+Matthew actually asked for rather than Claude's original simpler pitch:
+
+- **Look back:** a 4-week calendar, one cell per day, shaded by how much
+  was revised that day (practice questions + flashcards + roughly
+  time/5min, banded into four shades). Built on a new exported function,
+  `getMonthlyActivity`, added to the bottom of `progress.ts` — pure
+  addition, nothing existing in that file was touched. It reads the same
+  `activity` event log everything else already reads, just grouped by day
+  over 28 days instead of 7, the same relationship `getMonthlyActivity` has
+  to `getProgress`'s existing 7-day chart-building code.
+- **Look forward:** a simple date + note list for what you're planning to
+  revise, in `PlannerNotes.tsx`. **Known, documented limitation:** this
+  half lives in localStorage, not the database — a real plan someone
+  writes on their laptop won't show up on their phone. Deliberate for this
+  preview specifically, so trying it doesn't need Matthew to run a new SQL
+  migration first; the file's own comment says outright that a shipped
+  version needs a real `planner_notes` table instead, same event-log shape
+  as everything else here.
+
+**Wardrobe, expanded — honestly scoped, not fully done.** This is the one
+place Claude pushed back a little rather than building exactly what was
+asked, and it's worth explaining why. "Every mascot gets a wardrobe" for
+real means drawing a full outfit set for each of the other ten mascots,
+individually fitted to each one's own proportions — the same care Pixel's
+original four outfits got (see the Business-section note about
+`preview-mascot.py`, built specifically so mascot art could be rendered
+and LOOKED AT before shipping, not just reasoned about). Doing that
+properly for ten mascots in one sitting isn't realistic without rushing
+the art, and rushed mascot art has caused real problems on this site
+before (see "Pixel's antenna" and the MFL hats, both clipped outside their
+viewBox and caught before shipping).
+
+So `app/pro-preview/wardrobe/` proves the PATTERN instead of faking the
+scope: a new, fully separate system (`MascotOutfits.tsx`,
+`MascotWardrobeGrid.tsx` — their own localStorage keys, prefixed
+`preview-`, so nothing here can be read by the LIVE header/dashboard/
+celebration code that renders Pixel's real, shipped outfits) with **one
+new item for a second mascot** (Hoot gets a reading scarf, unlocked at
+Level 3 same as Pixel's Shades) and **the one Pro-exclusive item Matthew
+asked for** — a Diamond crown for Pixel, deliberately a different name and
+design from the free "Crown" outfit that already exists (unlocked at
+Level 10 for everyone), so a Pro subscriber never wonders why they paid
+for something free players already have. The Diamond crown's lock always
+reads "Pro subscribers only" and stays permanently locked — there is no
+subscription record anywhere in this codebase yet for it to check, so
+`isProSubscriber` is a hardcoded `false` with a comment marking it as the
+one line to change once real subscriptions exist. **The other eight
+mascots have no outfits drawn.** That's the honest current state, not a
+bug — the code and data shape both support adding them; the art doesn't
+exist yet and shouldn't be rushed just to tick a box. Worth a dedicated
+session per mascot (or a few at a time) when this is ready to actually
+ship, the same way each existing mascot got its own attention.
+
+**Verification, and one real finding.** `tsc --noEmit` clean. A full
+`next build` succeeded — 537 pages, the three new preview routes included,
+correctly appearing static/dynamic as expected. `check-content.mjs` wasn't
+rerun since no content files were touched.
+
+**`eslint --max-warnings=0` currently fails — but not because of anything
+built this round.** Running it project-wide surfaced 10 errors, all the
+same rule (`react-hooks/set-state-in-effect`, from `eslint-config-next`/
+`eslint-plugin-react-hooks`), firing on the exact "read a value from
+localStorage inside `useEffect`, then `setState` with it" pattern this
+whole codebase already uses deliberately, on purpose, with a comment
+explaining why, in FOUR EXISTING files nobody touched this round —
+`ThemeToggle.tsx`, `PixelCompanion.tsx`, `MascotDisplay.tsx`, and
+`Wardrobe.tsx`. The two new preview files that use the same idiom
+(`PlannerNotes.tsx`, `MascotWardrobeGrid.tsx`) trip the identical rule, for
+the identical reason — they're consistent with the rest of the codebase,
+not newly broken.
+
+This means `npm run check`'s lint step has been silently failing
+project-wide for a while, independent of anything in this session — most
+likely a dependency update pulled in a newer `eslint-plugin-react-hooks`
+that added this rule after the pattern was already used everywhere. **Not
+fixed here on purpose:** the correct fix (React's own guidance points at
+`useSyncExternalStore` for reading external, browser-only state like
+localStorage, rather than `useEffect` + `setState`) is a real pattern
+change across at least four live, working files that touch dark mode and
+the real wardrobe — not something to rush through as a side effect of
+shipping four unrelated features under time pressure. Worth its own
+session. `npx tsc --noEmit` and a full `next build` both still pass clean
+in the meantime, which is the strongest signal available that nothing here
+is actually broken for a visitor.
+
+Not pushed yet — same proxy 403 blocking every push this week.
