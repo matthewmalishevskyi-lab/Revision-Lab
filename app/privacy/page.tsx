@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "What Revision Lab stores about you, why, and how to get it deleted.",
 };
 
-const LAST_UPDATED = "9 August 2026";
+const LAST_UPDATED = "22 August 2026";
 
 function Section({
   title,
@@ -63,9 +63,9 @@ export default function PrivacyPage() {
 
       <Section title="Who runs this site">
         <p>
-          Revision Lab is a personal project built and run by Matthew, a
-          secondary school student in the UK. It is not a company, and nobody is
-          paid for it. There are no adverts and nothing is sold.
+          Revision Lab is a personal, independent project built and run by
+          Matthew. It is not a company, and nobody is paid for it. There are
+          no adverts and nothing is sold.
         </p>
         <p>
           You can use the whole site — every subject, every topic, every
@@ -194,15 +194,14 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
-      <Section title="Security, honestly">
+      <Section title="Security">
         <p>
           Passwords are hashed with scrypt and a random salt, sign-in attempts
           are rate limited, and the database is not reachable from the browser.
         </p>
         <p>
-          But this is a student project rather than a bank, built by someone
-          learning as he goes. Please use a password you do not use anywhere
-          else — that is good advice for any site, and especially this one.
+          As with any account anywhere, it is good practice to use a password
+          you do not reuse on other sites.
         </p>
       </Section>
 
