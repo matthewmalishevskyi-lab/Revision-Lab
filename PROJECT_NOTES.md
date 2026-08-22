@@ -1741,3 +1741,66 @@ pre-rendering all 534 pages. All four passed clean.
 Committed as `5c1da22`. Same story as recent sessions: pushing to GitHub is
 still blocked by a proxy error on Matthew's network — queued locally with
 the other recent commits, waiting on `git push` to work again.
+
+---
+
+## Mobile audit: the header nav was unreachable on a phone (2026-08-22)
+
+Matthew's ask: "optimize it for a phone" before moving on to Pro-subscription
+feature ideas.
+
+**How it was checked, since this bridge has no real phone.** Chrome's own
+`resize_window` tool turned out not to actually resize the browser —
+`window.innerWidth` stayed at 1536 (Matthew's real, maximized desktop
+Chrome) no matter what size was requested. Worked around it by injecting a
+same-origin `<iframe>` fixed at 390×844 (an iPhone-sized viewport) into the
+live page and driving that instead — an iframe gets its own independent
+viewport for CSS media queries, so it genuinely renders mobile layouts
+rather than just a shrunk desktop one. Every page below was checked this
+way: homepage, a subject page, a topic page (key facts, worked examples,
+common mistakes, MCQ practice, flashcards, the focus timer, the printable-
+sheet link), the subject test page, the wardrobe, and the accessibility
+page.
+
+**One real, serious bug found, confirmed by measuring the actual DOM rather
+than just looking at it.** Logged in, the header's right-hand row — Home,
+Search, the theme toggle, Pixel, the greeting, Progress, Dashboard, Account,
+Log out — came out **674px wide inside a 387px-wide screen**, with no wrap
+and no hamburger menu. `overflow-x` on the header was `visible`, so instead
+of clipping, the extra content just sat off the right edge with nothing to
+scroll it into view — Progress, Dashboard, Account and Log out were
+**completely unreachable** on a phone for anyone logged in. This exists on
+every page, since `SiteHeader` renders on all of them.
+
+**Fixed with a hamburger menu, not by shrinking anything.** Home, Search and
+the theme toggle already fit fine on their own — they were never the
+problem. New `MobileMenu.tsx` (a small Client Component, since it needs
+open/closed state) holds a hamburger button that only shows below the `sm`
+breakpoint; tapping it opens a dropdown with the same Pixel avatar,
+greeting, and Progress/Dashboard/Account/Log out links the wider layout
+already had. The existing row is untouched and still shows in full on
+tablet and desktop (`hidden sm:flex`) — this is genuinely the same set of
+Links and the same logout `<form>`, rendered a second time for narrow
+screens and switched purely by CSS, so exactly one copy is ever visible at
+once. Tapping outside the panel, or pressing Escape, closes it; clicking any
+link inside it closes it too, for free, since navigating unmounts the menu.
+
+**Everything else checked came back clean.** Subject pages, topic pages
+(including multiple-choice questions, flashcards, and the practice question
+cards), the test setup screen, the wardrobe grid, and the accessibility
+toggles all stack and resize correctly at 390px with no other overflow
+found.
+
+**Verification:** `tsc --noEmit` clean, `eslint --max-warnings=0` clean, a
+full `next build` succeeded (534 pages). Content wasn't touched, so
+`check-content.mjs` wasn't rerun. **Could not be visually confirmed on the
+actual live site** — the fix is committed (`8240a8f`) but not deployed,
+because `git push` is still blocked by the same proxy error on Matthew's
+network as every commit this week. Worth a real look on an actual phone (or
+Chrome's own device toolbar) once it's pushed and Vercel has redeployed, to
+double-check the dropdown looks right rather than just trusting the DOM
+measurements.
+
+**Next up, once Matthew's push goes through and this is confirmed live:**
+brainstorming Pro-subscription feature ideas, which he's deliberately asked
+to hold until the mobile pass was done.
