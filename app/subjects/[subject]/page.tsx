@@ -5,8 +5,9 @@ import { Icon } from "../../components/Icon";
 import { MascotDisplay } from "../../components/MascotDisplay";
 import { SiteHeader } from "../../components/SiteHeader";
 import { BookArt, ExamArt } from "../../components/YearArt";
-import { SITE_NAME } from "../../lib/site";
+import { ACCOUNTS_ENABLED, SITE_NAME } from "../../lib/site";
 import { getSubject, SUBJECTS, yearStyle } from "../../lib/subjects";
+import { getViewer } from "../../lib/viewer";
 
 // The folder is called [subject] — square brackets mean "this bit of the URL is
 // a variable". So this ONE file serves /subjects/computer-science,
@@ -69,6 +70,12 @@ export default async function SubjectPage({ params }: Props) {
   // Always assume the URL bar contains nonsense — anyone can type anything.
   if (!subject) notFound();
 
+  // getViewer() is cached per request (see lib/viewer.ts), so this costs
+  // nothing extra — SiteHeader just below calls it too and React dedupes
+  // the two calls into one. Only used to decide whether to show a link to a
+  // page that requires an account; nothing here is gated behind it.
+  const user = ACCOUNTS_ENABLED ? await getViewer() : null;
+
   return (
     <main className="mx-auto w-full max-w-7xl px-6 py-8">
       <SiteHeader greeting={false} />
@@ -84,14 +91,29 @@ export default async function SubjectPage({ params }: Props) {
             app/subjects/[subject]/exam/page.tsx. Sits on every subject page
             rather than only some, since every subject now has content to
             build one from. */}
-        <Link
-          href={`/subjects/${subject.slug}/exam`}
-          className="mt-5 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
-          style={{ backgroundColor: subject.accent }}
-        >
-          Try a {subject.name} test
-          <span aria-hidden="true">→</span>
-        </Link>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href={`/subjects/${subject.slug}/exam`}
+            className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+            style={{ backgroundColor: subject.accent }}
+          >
+            Try a {subject.name} test
+            <span aria-hidden="true">→</span>
+          </Link>
+
+          {/* Only worth showing once there's an account to attach stats to —
+              a logged-out visitor sees the exact same panel as before this
+              existed. */}
+          {user && (
+            <Link
+              href={`/subjects/${subject.slug}/stats`}
+              className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+            >
+              Your {subject.name} stats
+              <span aria-hidden="true">→</span>
+            </Link>
+          )}
+        </div>
       </section>
 
       {/* ---------- The year columns ----------

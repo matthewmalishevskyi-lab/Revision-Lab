@@ -7,7 +7,7 @@
 // components reach it.
 
 import { randomUUID } from "node:crypto";
-import { SUBJECTS, type Subject } from "./subjects";
+import { SUBJECTS, type Subject, type Topic } from "./subjects";
 import { TOPIC_CONTENT } from "./content";
 
 const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/+$/, "");
@@ -969,4 +969,67 @@ export async function getTopicAccuracies(userId: string): Promise<TopicAccuracy[
 export async function getTouchedTopics(userId: string): Promise<Set<string>> {
   const rows = await readActivity(userId);
   return new Set(rows.map((r) => `${r.subject}/${r.topic}`));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FOR THE PER-SUBJECT STATISTICS PAGE (app/subjects/[subject]/stats/page.tsx)
+//
+// getProgress already returns one SubjectProgress per subject — a single
+// aggregate (topics covered, accuracy, level) for the WHOLE subject. That's
+// the right shape for the site-wide /progress page, where nine subjects have
+// to fit on one screen, but it has never told anyone WHICH topics inside a
+// subject are strong versus weak versus untouched. This is that breakdown,
+// one subject at a time rather than folded into Progress's return shape,
+// for the same reason getTopicAccuracies/getTouchedTopics above are their
+// own small functions: a caller that only needs one subject's detail
+// shouldn't have to pull in every other subject's to get it.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type TopicBreakdown = {
+  slug: string;
+  title: string;
+  icon: Topic["icon"];
+  questionsAnswered: number;
+  questionsCorrect: number;
+  /** correct ÷ answered, or null if this topic has no practice answers yet
+   * — never 0, which would misreport "answered everything wrong" for a
+   * topic that's simply never been attempted. */
+  accuracy: number | null;
+  flashcardsReviewed: number;
+  /** Any recorded activity at all — practice, flashcard or time — the same
+   * definition of "touched" as getTouchedTopics above. */
+  covered: boolean;
+};
+
+// Every topic in one subject, in the subject's own year/topic order (not
+// sorted by accuracy or anything else), so the page reads the same shape as
+// the ordinary subject page's topic list rather than shuffling itself
+// around as scores change.
+export async function getSubjectTopicBreakdown(
+  userId: string,
+  subjectSlug: string,
+): Promise<TopicBreakdown[]> {
+  const subject = SUBJECTS.find((s) => s.slug === subjectSlug);
+  if (!subject) return [];
+
+  const rows = await readActivity(userId);
+  const mine = rows.filter((r) => r.subject === subjectSlug);
+  const allTopics = subject.years.flatMap((group) => group.topics);
+
+  return allTopics.map((topic) => {
+    const topicRows = mine.filter((r) => r.topic === topic.slug);
+    const practice = topicRows.filter((r) => r.kind === "practice");
+    const correct = practice.filter((r) => r.correct === true).length;
+
+    return {
+      slug: topic.slug,
+      title: topic.title,
+      icon: topic.icon,
+      questionsAnswered: practice.length,
+      questionsCorrect: correct,
+      accuracy: practice.length > 0 ? correct / practice.length : null,
+      flashcardsReviewed: topicRows.filter((r) => r.kind === "flashcard").length,
+      covered: topicRows.length > 0,
+    };
+  });
 }

@@ -1,5 +1,63 @@
 # Project Notes - Revision Lab (GCSE revision website)
 
+## Per-subject statistics pages (2026-08-25)
+
+The oldest outstanding item on this whole file, from the day progress
+tracking was first built: "the per-subject statistics pages (Matthew asked
+for these; the main page came first)." `/progress` has always had to fit
+every subject on one screen, so it only ever showed one aggregate number
+per subject — never which topics inside it were actually strong, weak or
+untouched.
+
+**New route, `/subjects/<subject>/stats`.** Reserved-slug check done by
+hand first (there's still no automated checker for this — see the Science
+section above): no topic anywhere is slugged `stats`, so the static folder
+safely beats the dynamic `[topic]/page.tsx` the same way `exam/` and
+`print/` already do. Protected the same way `/progress` and `/dashboard`
+are — `ACCOUNTS_ENABLED` check, then `getViewer()`, then redirect to
+`/login` if nobody's signed in, checked on the server before any of the
+page is sent.
+
+**New `getSubjectTopicBreakdown(userId, subjectSlug)` in `progress.ts`** —
+purely additive, nothing existing in that file touched. Same shape as
+`getTopicAccuracies`/`getTouchedTopics` just above it: reads the activity
+log fresh with the file's existing `readActivity` helper and folds it, this
+time down to one row per topic in ONE subject rather than across every
+subject at once. Each topic comes back with its own questions
+answered/correct, accuracy (`null` rather than `0` for an untouched topic —
+0% would misreport "answered everything wrong" for something never
+attempted), flashcards reviewed, and a `covered` flag.
+
+**The page itself reuses, rather than recomputes, this subject's headline
+numbers.** `getProgress(user.id)` already computes one `SubjectProgress`
+per subject for `/progress`'s own cards — the new page just finds this
+subject's entry in that same array for its headline ring and stats, and
+filters `progress.testHistory` down to this subject for its own test
+history section. The one genuinely new read is the topic-by-topic
+breakdown; everything else on the page is the same numbers `/progress`
+already shows, reused rather than re-derived, so the two pages can never
+quietly disagree about the same subject.
+
+**Linked from the ordinary subject page**, next to the existing "Try a
+{subject} test" button — but only for a logged-in visitor. The subject page
+has no auth check of its own and is otherwise fully public/static, so it
+now reads `getViewer()` once itself purely to decide whether to show that
+one link; `getViewer` is cached per request (see `lib/viewer.ts`), and
+`SiteHeader` on the same page already calls it, so this costs nothing
+extra. A logged-out visitor sees exactly the same panel as before this
+existed — there's no stats to show without an account.
+
+**Verification.** `tsc -p tsconfig.json --noEmit`, and `eslint
+--max-warnings=0 .` run three times in a row (the practice established
+earlier this session, after the eslint cleanup below turned up a real
+silent-under-report), all clean. `scripts/check-content.mjs` unaffected —
+still all 87,603 checks passing (up from 87,556 purely because more
+auto-marked questions have been added to content since that number was
+last recorded here, not because of anything in this change).
+`next build` succeeds — 538 pages, `/subjects/[subject]/stats` correctly
+appearing as its own dynamic (ƒ) route, separate from both the static
+`/subjects/[subject]` cards and the dynamic `/subjects/[subject]/exam`.
+
 ## The `react-hooks/set-state-in-effect` cleanup, finally (2026-08-25)
 
 The pre-existing eslint failure flagged multiple times this session and
