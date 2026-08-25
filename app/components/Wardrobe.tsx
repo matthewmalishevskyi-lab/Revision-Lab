@@ -8,7 +8,8 @@
 // ids; this component only ever needs to know "can this be worn", not how
 // that was worked out.
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { readStorageRaw, useStoredRaw, writeStorageRaw } from "../lib/browserStore";
 import {
   EQUIPPED_OUTFIT_KEY,
   OUTFITS,
@@ -17,44 +18,38 @@ import {
 } from "./PixelOutfits";
 
 export function Wardrobe({ unlockedIds }: { unlockedIds: OutfitId[] }) {
-  const [equipped, setEquipped] = useState<OutfitId>("none");
+  // Reactive to localStorage via lib/browserStore.ts — no local `equipped`
+  // state to keep in sync any more; this always reflects whatever's
+  // actually stored, whether that changed via `equip` below or anything
+  // else writing the same key.
+  const stored = useStoredRaw(EQUIPPED_OUTFIT_KEY, null);
+  const equipped = (stored as OutfitId | null) ?? "none";
 
-  // Read after mount only — localStorage doesn't exist on the server, and
-  // reading it during render would mean the server-rendered HTML and the
-  // browser's first render disagree, which React treats as a hydration
-  // error. Same pattern as DashboardCelebrations for the same reason.
+  // Corrects a stale stored value. Still needs an effect — it's reaching
+  // outside React into storage, based on `unlockedIds`, a prop computed
+  // server-side — but no longer calls a React state setter, so it doesn't
+  // trip react-hooks/set-state-in-effect the way reading-then-setEquipped
+  // used to.
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(EQUIPPED_OUTFIT_KEY) as OutfitId | null;
-      if (saved && unlockedIds.includes(saved)) {
-        setEquipped(saved);
-      } else if (saved && saved !== "none") {
-        // Equipped to something that isn't unlocked any more — most likely
-        // a streak-gated outfit worn while the streak was live, kept in
-        // localStorage after the streak broke (unlocks here are worked out
-        // fresh each time, never stored, so nothing un-equips it on its
-        // own). This is the one place that actually has real unlock data
-        // to check against, so it's also the one place that can correct
-        // the stored value — every other spot Pixel appears (header,
-        // dashboard, celebrations) just reads whatever's saved here with
-        // no way to know it's stale, so left uncorrected this would mean
-        // Pixel keeps wearing a "locked" outfit everywhere except the one
-        // page that says it's locked.
-        localStorage.setItem(EQUIPPED_OUTFIT_KEY, "none");
-      }
-    } catch {
-      // No localStorage available — Classic Pixel it is.
+    const saved = readStorageRaw(EQUIPPED_OUTFIT_KEY) as OutfitId | null;
+    if (saved && saved !== "none" && !unlockedIds.includes(saved)) {
+      // Equipped to something that isn't unlocked any more — most likely a
+      // streak-gated outfit worn while the streak was live, kept in
+      // localStorage after the streak broke (unlocks here are worked out
+      // fresh each time, never stored, so nothing un-equips it on its
+      // own). This is the one place that actually has real unlock data to
+      // check against, so it's also the one place that can correct the
+      // stored value — every other spot Pixel appears (header, dashboard,
+      // celebrations) just reads whatever's saved here with no way to know
+      // it's stale, so left uncorrected this would mean Pixel keeps
+      // wearing a "locked" outfit everywhere except the one page that says
+      // it's locked.
+      writeStorageRaw(EQUIPPED_OUTFIT_KEY, "none");
     }
   }, [unlockedIds]);
 
   function equip(id: OutfitId) {
-    setEquipped(id);
-    try {
-      localStorage.setItem(EQUIPPED_OUTFIT_KEY, id);
-    } catch {
-      // Nothing to fall back to — the outfit just won't be remembered next
-      // visit, which is a shrug, not a broken page.
-    }
+    writeStorageRaw(EQUIPPED_OUTFIT_KEY, id);
   }
 
   return (

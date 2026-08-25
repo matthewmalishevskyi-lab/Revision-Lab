@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { useStoredRaw, writeStorageRaw } from "../lib/browserStore";
 
 // Three independent toggles — bigger text, a plainer font, and no moving
 // animation — each stored as its own PREFERENCE in localStorage rather than
@@ -29,14 +30,14 @@ const DEFAULT_SETTINGS: A11ySettings = {
   reduceMotion: false,
 };
 
-// Reads whatever's stored, falling back to "everything off" for a first-time
-// visitor or if the stored value doesn't parse — same defensive shape as
-// PixelOutfits.tsx reading the equipped outfit: a corrupted or unexpected
-// value should never crash the page, just behave like nothing was chosen.
-function readSettings(): A11ySettings {
+// Parses whatever's stored, falling back to "everything off" for a
+// first-time visitor or if the stored value doesn't parse — same
+// defensive shape as PixelOutfits.tsx reading the equipped outfit: a
+// corrupted or unexpected value should never crash the page, just behave
+// like nothing was chosen.
+function parseSettings(raw: string | null): A11ySettings {
+  if (!raw) return DEFAULT_SETTINGS;
   try {
-    const raw = localStorage.getItem(A11Y_KEY);
-    if (!raw) return DEFAULT_SETTINGS;
     const parsed = JSON.parse(raw);
     return {
       largeText: Boolean(parsed.largeText),
@@ -59,27 +60,22 @@ function applyClasses(settings: A11ySettings) {
 }
 
 export function AccessibilityPanel() {
-  // Same reasoning as ThemeToggle's isDark: start at the "everything off"
-  // default on both the server render and the first client render, so they
-  // agree and React never flags a hydration mismatch — then correct it in
-  // the effect below to match whatever the bootstrap script already decided.
-  const [settings, setSettings] = useState<A11ySettings>(DEFAULT_SETTINGS);
-
-  useEffect(() => {
-    setSettings(readSettings());
-  }, []);
+  // Reactive to localStorage via lib/browserStore.ts. `raw` is a stable
+  // string (or null), so memoizing the PARSED object on it means `settings`
+  // only gets a new object reference when the underlying JSON actually
+  // changes, not on every render — same reasoning as the planner's notes
+  // array. Renders the "everything off" default on the server and the
+  // client's first paint (nothing here can disagree with the bootstrap
+  // script, which has already applied the real classes to <html> before
+  // React even runs), then corrects the toggle switches themselves the
+  // moment React can see the real stored value — no effect involved.
+  const raw = useStoredRaw(A11Y_KEY, null);
+  const settings = useMemo(() => parseSettings(raw), [raw]);
 
   function update(changes: Partial<A11ySettings>) {
     const next = { ...settings, ...changes };
-    setSettings(next);
     applyClasses(next);
-    try {
-      localStorage.setItem(A11Y_KEY, JSON.stringify(next));
-    } catch {
-      // Storage unavailable (private browsing, locked-down browser) — the
-      // toggle still works for the rest of this visit, it just won't be
-      // remembered next time. Same trade-off ThemeToggle makes.
-    }
+    writeStorageRaw(A11Y_KEY, JSON.stringify(next));
   }
 
   return (

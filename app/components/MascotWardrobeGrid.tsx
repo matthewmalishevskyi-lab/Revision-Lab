@@ -7,7 +7,7 @@
 // Pixel's real, shipped outfits — see MascotOutfits.tsx for the full reason
 // this whole system is kept separate from the live one.
 
-import { useEffect, useState } from "react";
+import { useStoredRaw, writeStorageRaw } from "../lib/browserStore";
 import {
   MascotWithPreviewOutfit,
   PREVIEW_OUTFITS,
@@ -25,32 +25,19 @@ export function MascotWardrobeGrid({
   unlockedIds: PreviewOutfitId[];
 }) {
   // One equipped choice per mascot, not one shared value — putting on
-  // Hoot's scarf shouldn't un-equip Pixel's crown.
-  const [equipped, setEquipped] = useState<Record<PreviewMascotId, PreviewOutfitId | "none">>({
-    pixel: "none",
-    hoot: "none",
-  });
-
-  useEffect(() => {
-    try {
-      const pixel = localStorage.getItem(equippedKey("pixel")) as PreviewOutfitId | null;
-      const hoot = localStorage.getItem(equippedKey("hoot")) as PreviewOutfitId | null;
-      setEquipped({
-        pixel: pixel && unlockedIds.includes(pixel) ? pixel : "none",
-        hoot: hoot && unlockedIds.includes(hoot) ? hoot : "none",
-      });
-    } catch {
-      // No localStorage — everyone stays in their classic look.
-    }
-  }, [unlockedIds]);
+  // Hoot's scarf shouldn't un-equip Pixel's crown. Reactive to localStorage
+  // via lib/browserStore.ts, and fully derived — no local state, and no
+  // effect, needed at all: each is just "whatever's stored, or 'none' if
+  // that isn't unlocked any more."
+  const pixelRaw = useStoredRaw(equippedKey("pixel"), null) as PreviewOutfitId | null;
+  const hootRaw = useStoredRaw(equippedKey("hoot"), null) as PreviewOutfitId | null;
+  const equipped: Record<PreviewMascotId, PreviewOutfitId | "none"> = {
+    pixel: pixelRaw && unlockedIds.includes(pixelRaw) ? pixelRaw : "none",
+    hoot: hootRaw && unlockedIds.includes(hootRaw) ? hootRaw : "none",
+  };
 
   function equip(mascot: PreviewMascotId, id: PreviewOutfitId) {
-    setEquipped((prev) => ({ ...prev, [mascot]: id }));
-    try {
-      localStorage.setItem(equippedKey(mascot), id);
-    } catch {
-      // Not remembered next visit — a shrug, same as the live wardrobe.
-    }
+    writeStorageRaw(equippedKey(mascot), id);
   }
 
   return (

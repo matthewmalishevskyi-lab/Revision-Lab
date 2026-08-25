@@ -9,12 +9,14 @@
 // A Client Component because the equipped outfit lives in localStorage (see
 // PixelOutfits.tsx for why) — every one of the Server Component pages this
 // sits in already renders fine without knowing what Pixel is wearing; this
-// is the one small client island inside each of them that fills it in after
-// mount, same "read after mount, so the server's HTML and the browser's
-// first render agree" reasoning as Celebration.tsx and the wardrobe grid.
+// is the one small client island inside each of them that fills it in.
+// Reactive to storage via lib/browserStore.ts's useStoredRaw — no effect
+// needed, and it updates instantly if the wardrobe page (open in the same
+// tab, or open elsewhere in the page right now) changes the equipped
+// outfit while this is on screen.
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useStoredRaw } from "../lib/browserStore";
 import { EQUIPPED_OUTFIT_KEY, PixelWithOutfit, type OutfitId } from "./PixelOutfits";
 
 export function PixelCompanion({
@@ -26,16 +28,8 @@ export function PixelCompanion({
    * page you're already on. */
   linkToWardrobe?: boolean;
 }) {
-  const [outfit, setOutfit] = useState<OutfitId>("none");
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(EQUIPPED_OUTFIT_KEY) as OutfitId | null;
-      if (saved) setOutfit(saved);
-    } catch {
-      // No localStorage — Classic Pixel, same as everywhere else this is read.
-    }
-  }, []);
+  const stored = useStoredRaw(EQUIPPED_OUTFIT_KEY, null);
+  const outfit = (stored as OutfitId | null) ?? "none";
 
   const pixel = <PixelWithOutfit outfit={outfit} className={className} />;
 

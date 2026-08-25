@@ -23,6 +23,7 @@
 // just for this one component.
 
 import { useEffect, useState } from "react";
+import { useStoredRaw } from "../lib/browserStore";
 import { EQUIPPED_OUTFIT_KEY, PixelWithOutfit, type OutfitId } from "./PixelOutfits";
 
 const CONFETTI_COLOURS = [
@@ -55,19 +56,12 @@ export function Celebration({
     })),
   );
 
-  // Same "read after mount" reasoning as DashboardCelebrations: localStorage
-  // doesn't exist during server rendering, so reading it during render would
-  // make the server's HTML and the browser's first render disagree.
-  const [outfit, setOutfit] = useState<OutfitId>("none");
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(EQUIPPED_OUTFIT_KEY) as OutfitId | null;
-      if (saved) setOutfit(saved);
-    } catch {
-      // No localStorage — Classic Pixel, same as anyone who's never opened
-      // the wardrobe.
-    }
-  }, []);
+  // Reactive to localStorage via lib/browserStore.ts — localStorage doesn't
+  // exist during server rendering, so this renders "none" (Classic Pixel)
+  // on the server and the client's first paint, then corrects itself the
+  // moment React can see the real value, with no effect involved.
+  const stored = useStoredRaw(EQUIPPED_OUTFIT_KEY, null);
+  const outfit = (stored as OutfitId | null) ?? "none";
 
   // Dismisses itself after a few seconds so nobody has to click anything —
   // but clicking anywhere works too, for the one time in five it fires while

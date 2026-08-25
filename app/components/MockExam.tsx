@@ -62,7 +62,15 @@ export function MockExam({
   const [secondsLeft, setSecondsLeft] = useState(durationSeconds);
   const [states, setStates] = useState<Record<number, QuestionState>>({});
   const recorded = useRef<Set<number>>(new Set());
-  const [celebrating, setCelebrating] = useState(false);
+  // Whether the celebration overlay has been dismissed — not "is it
+  // showing", which is derived below as `celebrating`. Tracking dismissal
+  // rather than the shown/hidden state directly means there's no moment
+  // that needs a `setState` call INSIDE an effect just to turn it on: the
+  // overlay simply IS showing, automatically, the instant `phase` becomes
+  // "finished", because `celebrating` is computed from both values on every
+  // render rather than copied into its own state that has to be told to
+  // catch up.
+  const [dismissed, setDismissed] = useState(false);
 
   // ───────────────────────────────────────────────────────────────────────────
   // WHY MULTIPLE CHOICE OPTIONS ARE SHUFFLED HERE — see Practice.tsx's copy of
@@ -148,11 +156,19 @@ export function MockExam({
     new Map(questions.map((q) => [q.topicSlug, q.topicTitle])).entries(),
   );
 
-  // Fires once, the moment the exam finishes, however it finished — running
-  // out of time or clicking "Finish now" both count. Watching `phase` rather
-  // than putting this inline in the two places that set it to "finished"
-  // means there's exactly one spot deciding when to celebrate, not two that
-  // could quietly drift apart.
+  // Whether the celebration overlay is actually showing right now — "the
+  // exam just finished, AND nobody has dismissed it yet." Computed fresh on
+  // every render instead of stored in its own state, so there's no moment
+  // where something has to notice `phase` became "finished" and remember
+  // to flip a separate flag — it's simply true the instant the condition
+  // is, with nothing that can drift out of sync with it.
+  const celebrating = phase === "finished" && !dismissed;
+
+  // The one thing that genuinely can't be derived this way: telling the
+  // server a test finished is a real network call, not a render-time
+  // calculation, so it still needs an effect. Fires once, the moment the
+  // exam finishes, however it finished — running out of time or clicking
+  // "Finish now" both count.
   //
   // Placed here, after `correct`/`markable` are declared above, rather than
   // up near the other effects — the earlier ordering worked fine at runtime
@@ -163,7 +179,6 @@ export function MockExam({
   // just not writing it that way.
   useEffect(() => {
     if (phase === "finished") {
-      setCelebrating(true);
       // Fire-and-forget, same pattern as recordAnswer above — a failed write
       // here should never stop the finish screen from showing. Records
       // against the subject as a whole (there's no single topic a whole test
@@ -214,7 +229,7 @@ export function MockExam({
                   ? `${correct}/${markable} — great work!`
                   : "Test finished!"
             }
-            onDismiss={() => setCelebrating(false)}
+            onDismiss={() => setDismissed(true)}
           />
         )}
 

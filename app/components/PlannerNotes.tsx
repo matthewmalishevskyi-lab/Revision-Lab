@@ -19,29 +19,20 @@
 // this site. Left as localStorage for this preview specifically so trying
 // it out doesn't require Matthew to run a new SQL migration first.
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
+import { useStoredRaw, writeStorageRaw } from "../lib/browserStore";
 
 type PlannedItem = { date: string; note: string };
 
 const STORAGE_KEY = "revision-lab:preview-planner-notes";
 
-function loadNotes(): PlannedItem[] {
+function parseNotes(raw: string | null): PlannedItem[] {
+  if (!raw) return [];
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [];
   } catch {
     return [];
-  }
-}
-
-function saveNotes(items: PlannedItem[]) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  } catch {
-    // No localStorage available — the note just won't be remembered next
-    // time, same trade-off as every other browser-only preference here.
   }
 }
 
@@ -57,15 +48,18 @@ function todayISO(): string {
 }
 
 export function PlannerNotes() {
-  const [items, setItems] = useState<PlannedItem[]>([]);
+  // Reactive to localStorage via lib/browserStore.ts. `raw` is a stable
+  // string (or null) — memoizing the PARSED array on it means `items` only
+  // gets a new array reference when the underlying JSON actually changes,
+  // not on every render. That stability matters here in a way it didn't
+  // for the plain strings PixelCompanion/Wardrobe read: an array recreated
+  // on every render would look, to anything comparing it by reference, like
+  // the notes had changed every single time.
+  const raw = useStoredRaw(STORAGE_KEY, null);
+  const items = useMemo(() => parseNotes(raw), [raw]);
+
   const [date, setDate] = useState(todayISO());
   const [note, setNote] = useState("");
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setItems(loadNotes());
-    setLoaded(true);
-  }, []);
 
   function addNote(e: React.FormEvent) {
     e.preventDefault();
@@ -74,23 +68,21 @@ export function PlannerNotes() {
     const next = [...items, { date, note: trimmed }].sort((a, b) =>
       a.date.localeCompare(b.date),
     );
-    setItems(next);
-    saveNotes(next);
+    writeStorageRaw(STORAGE_KEY, JSON.stringify(next));
     setNote("");
   }
 
   function removeNote(index: number) {
     const next = items.filter((_, i) => i !== index);
-    setItems(next);
-    saveNotes(next);
+    writeStorageRaw(STORAGE_KEY, JSON.stringify(next));
   }
 
-  // Not rendering anything from storage until after mount keeps the
-  // server-rendered HTML and the first client render in agreement — the
-  // same "read after mount" reasoning as ThemeToggle and every other
-  // localStorage-backed component on this site.
-  if (!loaded) return null;
-
+  // No "not loaded yet" gate needed any more: useSyncExternalStore already
+  // keeps the server's first paint and the client's first paint in
+  // agreement (both render an empty list, from `serverValue: null` above),
+  // then corrects itself the moment React can see the real localStorage —
+  // with no manual flag, no effect, and no flash of a blank component
+  // while that happens.
   const today = todayISO();
   const upcoming = items.filter((item) => item.date >= today);
   const past = items.filter((item) => item.date < today);

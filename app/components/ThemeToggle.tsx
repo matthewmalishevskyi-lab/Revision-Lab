@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { chipClasses } from "./chipStyles";
 
 // The button that switches the whole site between light and dark mode.
@@ -20,23 +20,49 @@ import { chipClasses } from "./chipStyles";
 // turns dark mode on by itself. It only happens because a visitor asked for
 // it, and it's only remembered because they did.
 
-export function ThemeToggle() {
-  // Starting at `false` (light) rather than reading the DOM here matters: this
-  // component is server-rendered too, for the initial HTML, and `document`
-  // doesn't exist on the server. Starting both the server render and the
-  // first client render at the same value keeps them in agreement — React
-  // would otherwise flag a hydration mismatch. The effect below then corrects
-  // it to match whatever the boot script already decided, immediately after
-  // hydration and before the visitor can register the difference.
-  const [isDark, setIsDark] = useState(false);
+// This component is the ONLY thing that ever changes the class after the
+// boot script's first pass, so nothing outside it can announce a change —
+// this tiny listener list exists purely so `toggleTheme` can tell its own
+// `useSyncExternalStore` call "go re-read the DOM", the same job the
+// browser's own "storage" event does for lib/browserStore.ts.
+type Listener = () => void;
+let listeners: Listener[] = [];
 
-  useEffect(() => {
-    setIsDark(document.documentElement.classList.contains("dark"));
-  }, []);
+function subscribeToTheme(callback: Listener): () => void {
+  listeners.push(callback);
+  return () => {
+    listeners = listeners.filter((listener) => listener !== callback);
+  };
+}
+
+function notifyThemeChanged(): void {
+  for (const listener of listeners) listener();
+}
+
+function getThemeSnapshot(): boolean {
+  return document.documentElement.classList.contains("dark");
+}
+
+// The server, and the client's very first paint before hydration, can't
+// read the DOM class (there's no `document` on the server, and reading it
+// on the client before React has settled would disagree with what the
+// server sent) — `false` here is the same safe default this component used
+// to hand-render before a `useEffect` corrected it. `useSyncExternalStore`
+// is what now handles that correction, with no effect and no extra
+// `setState` call.
+function getServerThemeSnapshot(): boolean {
+  return false;
+}
+
+export function ThemeToggle() {
+  const isDark = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
 
   function toggleTheme() {
     const next = !isDark;
-    setIsDark(next);
     document.documentElement.classList.toggle("dark", next);
     try {
       // The only place a choice is written down. If storage is unavailable
@@ -46,6 +72,7 @@ export function ThemeToggle() {
     } catch {
       // Silently fine — see above.
     }
+    notifyThemeChanged();
   }
 
   return (

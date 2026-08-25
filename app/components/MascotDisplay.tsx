@@ -20,10 +20,10 @@
 // equipped outfit lives in localStorage (see PixelOutfits.tsx), which does
 // not exist during server rendering. Every page using this keeps rendering
 // fine on the server with the classic look, then fills in the real outfit
-// after mount — the same "read after mount" pattern used everywhere else
-// this value is read.
+// as soon as React can see the real value — reactive via
+// lib/browserStore.ts's useStoredRaw, no effect involved.
 
-import { useEffect, useState } from "react";
+import { useStoredRaw } from "../lib/browserStore";
 import { MASCOTS } from "./Mascots";
 import { EQUIPPED_OUTFIT_KEY, PixelWithOutfit, type OutfitId } from "./PixelOutfits";
 
@@ -34,21 +34,15 @@ export function MascotDisplay({
   mascot: keyof typeof MASCOTS;
   className?: string;
 }) {
-  const [outfit, setOutfit] = useState<OutfitId>("none");
-
-  useEffect(() => {
-    // No point reading localStorage for the nine mascots that never wear
-    // anything — this only ever matters for Pixel.
-    if (mascot !== "pixel") return;
-    try {
-      const saved = localStorage.getItem(EQUIPPED_OUTFIT_KEY) as OutfitId | null;
-      if (saved) setOutfit(saved);
-    } catch {
-      // No localStorage — Classic Pixel, same as everywhere else this is read.
-    }
-  }, [mascot]);
+  // Called unconditionally, same as any hook has to be — but only actually
+  // USED below when mascot is Pixel. Reading localStorage for the nine
+  // mascots that never wear anything is cheap enough that skipping the
+  // call isn't worth a conditional hook (which the rules of hooks forbid
+  // anyway).
+  const stored = useStoredRaw(EQUIPPED_OUTFIT_KEY, null);
 
   if (mascot === "pixel") {
+    const outfit = (stored as OutfitId | null) ?? "none";
     return <PixelWithOutfit outfit={outfit} className={className} />;
   }
 

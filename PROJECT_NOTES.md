@@ -1,5 +1,75 @@
 # Project Notes - Revision Lab (GCSE revision website)
 
+## The `react-hooks/set-state-in-effect` cleanup, finally (2026-08-25)
+
+The pre-existing eslint failure flagged multiple times this session and
+deliberately deferred each time ("needs its own session, not a rushed
+patch") — Matthew asked for it to actually happen today, after the queue
+work above. **`eslint --max-warnings=0` now passes clean across the whole
+project for the first time this whole engagement.**
+
+**Worth recording since it nearly got under-scoped: the project actually
+had TEN failing files, not five.** Every earlier count in this file (and
+every earlier full-project `eslint` run this session) only ever surfaced
+five: `ThemeToggle`, `PixelCompanion`, `Wardrobe`, `PlannerNotes`,
+`MockExam`. Fixing those and re-running turned up FIVE MORE with the
+identical rule — `AccessibilityPanel`, `Celebration`,
+`DashboardCelebrations`, `MascotDisplay`, `MascotWardrobeGrid` — that had
+apparently been there the whole time. The likely cause: this environment's
+`eslint` run had already been documented (2026-08-19 entry, above) as
+sometimes hitting a 45-second ceiling on a full project scan; it seems to
+fail SILENTLY past that point rather than reporting a timeout, so a run can
+look clean while quietly never having reached every file. **Ran the full
+project `eslint` three times in a row after this round of fixes, all
+silent, before trusting it.** Worth remembering for any future full-project
+lint claim made from this environment: one clean run isn't proof by itself.
+
+**The actual fix, in two shapes:**
+
+1. **New `app/lib/browserStore.ts`** — a small shared `useStoredRaw(key,
+   serverValue)` hook built on React's `useSyncExternalStore`, plus
+   `readStorageRaw`/`writeStorageRaw` helpers. This is the real, built-in
+   answer to the exact situation every one of these components was solving
+   by hand: reading a value that only exists in the browser (localStorage),
+   which has to render ONE way on the server and the client's first paint
+   (before hydration) and can then correct itself — without an effect, and
+   without an extra `setState` call, which is what the lint rule was
+   actually objecting to. Writes made through `writeStorageRaw` also fire a
+   same-tab custom event, since the browser's own `storage` event
+   deliberately never fires in the tab that made the change — needed
+   because Pixel's equipped outfit, for instance, is read by more than one
+   component on the same page at once (the header AND the wardrobe page).
+   Used by `PixelCompanion`, `Wardrobe`, `MascotDisplay`,
+   `MascotWardrobeGrid`, `Celebration`, `AccessibilityPanel` and
+   `PlannerNotes` — seven of the ten files, and each one got SIMPLER, not
+   just quieter: `Wardrobe` and `MascotWardrobeGrid` in particular no
+   longer need any local "equipped" state at all, since the stored value
+   now IS the state, reactively.
+2. **`ThemeToggle` and `MockExam` needed their own shape**, not the shared
+   hook. `ThemeToggle` reads a DOM class (`document.documentElement`), not
+   localStorage, and is the only thing that ever changes it — so it gets
+   its own tiny self-contained external store instead. `MockExam`'s
+   `celebrating` flag wasn't reading anything external at all; it was
+   state that should have been DERIVED (`phase === "finished" &&
+   !dismissed`) rather than copied into its own `useState` and set from an
+   effect — the actual bug-shaped root cause the lint rule exists to catch,
+   not just a localStorage-timing workaround. **`DashboardCelebrations`
+   needed a genuinely different fix again**: it has a real side effect
+   (marking a celebration "seen" in localStorage) that has to run exactly
+   once per new celebration, which a plain derived value can't do by
+   itself — split into a pure `decidePendingCelebration` (read-only,
+   memoized) and a `markCelebrated` write, with the effect only ever
+   calling the write, never a state setter.
+
+**Verification:** `tsc -p tsconfig.json --noEmit` clean. `eslint
+--max-warnings=0` clean project-wide, run three times. `scripts/check-
+content.mjs` — 87,603 checks, content untouched. A full production `next
+build` succeeds with the same route list as before (nothing here changes
+what any page renders, only how the ten components get there). No visible
+behaviour change anywhere — same defaults, same "read after mount"
+guarantee, same outfit/theme/accessibility persistence — this was a pure
+internal refactor.
+
 ## The homepage streak card now points at the queue too (2026-08-25)
 
 Small follow-up to the entry directly below this one, same day. The
