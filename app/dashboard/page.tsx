@@ -9,7 +9,7 @@ import { PixelCompanion } from "../components/PixelCompanion";
 import { OUTFITS, type OutfitUnlockInfo } from "../components/PixelOutfits";
 import { getViewer } from "../lib/viewer";
 import { getProgress } from "../lib/progress";
-import { getDueFlashcards } from "../lib/flashcard-review";
+import { getRevisionQueue, QUEUE_KIND_LABELS } from "../lib/revision-queue";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { homepageCards, isGroup, subjectsInGroup, SUBJECTS } from "../lib/subjects";
 
@@ -33,22 +33,15 @@ export default async function DashboardPage() {
   // out visitor never receives the page at all.
   if (!user) redirect("/login");
 
-  // Reuses the exact same recommendation the progress page already makes
-  // (least-covered subject, first untouched topic, or the weakest-answered
-  // one once everything's been touched) rather than inventing a second
-  // "what's next" idea. One consistent suggestion in two places beats two
-  // different opinions about what to revise. See getProgress in lib/progress.ts
-  // for how it's chosen. It's safe to call even with no database configured —
-  // it just comes back with no recorded activity, not an error.
   const progress = await getProgress(user.id);
-  const nextUpSubject = progress.nextUp
-    ? progress.subjects.find((s) => s.slug === progress.nextUp!.subjectSlug)
-    : undefined;
 
-  // Flashcards due for another look, across every subject — see
-  // flashcard-review.ts. Only shown when there's something due; a "0 due"
-  // banner every single day is just noise.
-  const dueFlashcards = await getDueFlashcards(user.id);
+  // THE GLOBAL "revise today" queue — overdue flashcards, weak-accuracy
+  // topics and never-touched topics, combined and ranked across EVERY
+  // subject at once. See lib/revision-queue.ts. This is what replaced the
+  // old single-subject "Revise this next" hero below: that only ever named
+  // one topic in one subject and had nothing to say about flashcards due or
+  // weak spots anywhere else on the site.
+  const queue = await getRevisionQueue(user.id);
 
   // How many wardrobe outfits are unlocked right now — see PixelOutfits.tsx.
   // Unlike the flashcard banner above, this one is always shown: there's
@@ -183,29 +176,8 @@ export default async function DashboardPage() {
         </div>
       </section>
 
-      {/* ---------- Flashcards due for review ---------- */}
-      {dueFlashcards.length > 0 && (
-        <Link
-          href="/review"
-          className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/60 bg-white/70 px-6 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
-        >
-          <span>
-            <span className="font-semibold">
-              {dueFlashcards.length} flashcard
-              {dueFlashcards.length === 1 ? "" : "s"} due for review
-            </span>
-            <span className="ml-2 opacity-60">
-              cards you&apos;ve marked before, worth another look
-            </span>
-          </span>
-          <span aria-hidden="true" className="text-xl opacity-40">
-            →
-          </span>
-        </Link>
-      )}
-
       {/* ---------- Pixel's wardrobe ---------- */}
-      {/* Always shown, unlike the flashcard banner above — there's always
+      {/* Always shown, unlike the revision queue below — there's always
           another outfit worth working toward, and the count itself is the
           hook: seeing "2/5" is what makes someone curious what the other
           three look like. */}
@@ -224,45 +196,58 @@ export default async function DashboardPage() {
         </span>
       </Link>
 
-      {/* ---------- Revise this next ---------- */}
-      {/* The dashboard is the page you land on right after logging in, so this
-          sits above the subject grid rather than only on /progress — the
-          whole point of a "what to do next" suggestion is that you see it
-          before you've had to go looking for it. */}
-      {progress.nextUp && nextUpSubject && (
+      {/* ---------- Revise today ---------- */}
+      {/* The dashboard is the page you land on right after logging in, so
+          this sits above the subject grid rather than only on /revise — the
+          whole point of a "what to do next" queue is that you see it before
+          you've had to go looking for it. Shows the top three items; the
+          rest (if any) are a click away on the full page. */}
+      {queue.length > 0 && (
         <section className="mt-8">
-          <Link
-            href={`/subjects/${progress.nextUp.subjectSlug}/${progress.nextUp.topicSlug}`}
-            className="group relative flex flex-wrap items-center gap-6 overflow-hidden rounded-3xl p-6 text-white shadow-sm transition duration-300 hover:-translate-y-1 sm:p-8"
-            style={{ backgroundImage: nextUpSubject.gradient }}
-          >
-            <div className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-white/20 opacity-70 blur-3xl transition group-hover:opacity-100" />
-            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/30" />
-
-            {nextUpSubject && (
-              <MascotDisplay
-                mascot={nextUpSubject.mascot}
-                className="relative h-24 shrink-0 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]"
-              />
-            )}
-
-            <div className="relative min-w-0 flex-1">
-              <span className="text-sm font-semibold uppercase tracking-wider opacity-80">
-                Revise this next
-              </span>
-              <h2 className="mt-1 text-2xl font-bold sm:text-3xl">
-                {progress.nextUp.topic}
-              </h2>
-              <p className="mt-1 opacity-80">{progress.nextUp.subject}</p>
-            </div>
-
-            <span
-              aria-hidden="true"
-              className="relative ml-auto text-3xl opacity-70 transition group-hover:translate-x-1 group-hover:opacity-100"
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="text-xl font-semibold">Revise today</h2>
+            <Link
+              href="/revise"
+              className="whitespace-nowrap text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
             >
-              →
-            </span>
-          </Link>
+              See all {queue.length} →
+            </Link>
+          </div>
+
+          <div className="mt-3 space-y-3">
+            {queue.slice(0, 3).map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                className="group flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 px-5 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+              >
+                <MascotDisplay
+                  mascot={item.mascot}
+                  className="h-12 w-12 shrink-0"
+                />
+                <div className="min-w-0 flex-1">
+                  <span
+                    className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold text-white"
+                    style={{ backgroundColor: item.accent }}
+                  >
+                    {QUEUE_KIND_LABELS[item.kind]}
+                  </span>
+                  <p className="mt-1.5 truncate font-semibold">
+                    {item.title}
+                  </p>
+                  <p className="truncate text-sm opacity-60">
+                    {item.subjectName} · {item.detail}
+                  </p>
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 text-xl opacity-40 transition group-hover:translate-x-1 group-hover:opacity-100"
+                >
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
         </section>
       )}
 

@@ -897,3 +897,76 @@ export async function getMonthlyActivity(userId: string): Promise<PlannerDay[]> 
 
   return days;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FOR THE GLOBAL "REVISE TODAY" QUEUE (app/lib/revision-queue.ts)
+//
+// Two small, focused readers rather than one big one — same reasoning as
+// getMonthlyActivity just above: each caller re-reads the log with
+// `readActivity` and folds it its own way, instead of this file trying to
+// grow one mega-function that returns everything anyone could ever want.
+// The cost (reading the same rows more than once per page load) is the same
+// cost this file has already accepted throughout; the MAX_EVENTS_READ
+// comment above still marks where that stops being fine.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type TopicAccuracy = {
+  subjectSlug: string;
+  topicSlug: string;
+  questionsAnswered: number;
+  correct: number;
+  /** correct ÷ questionsAnswered. Never null here — a topic with zero
+   * questions answered simply isn't in the returned array at all. */
+  accuracy: number;
+};
+
+// Every topic with at least one PRACTICE answer recorded, folded down to a
+// running accuracy — across every subject, not grouped by subject the way
+// SubjectProgress is. This is what lets the revision queue rank "weakest
+// topic anywhere on the site" rather than only "weakest topic in a subject
+// you've already finished", which is all chooseNextUp/weakestTopic above
+// ever needed.
+export async function getTopicAccuracies(userId: string): Promise<TopicAccuracy[]> {
+  const rows = await readActivity(userId);
+
+  const bySubjectTopic = new Map<
+    string,
+    { subject: string; topic: string; correct: number; total: number }
+  >();
+
+  for (const row of rows) {
+    if (row.kind !== "practice") continue;
+    const key = `${row.subject}/${row.topic}`;
+    const existing = bySubjectTopic.get(key);
+    if (existing) {
+      existing.total++;
+      if (row.correct === true) existing.correct++;
+    } else {
+      bySubjectTopic.set(key, {
+        subject: row.subject,
+        topic: row.topic,
+        correct: row.correct === true ? 1 : 0,
+        total: 1,
+      });
+    }
+  }
+
+  return [...bySubjectTopic.values()].map((v) => ({
+    subjectSlug: v.subject,
+    topicSlug: v.topic,
+    questionsAnswered: v.total,
+    correct: v.correct,
+    accuracy: v.correct / v.total,
+  }));
+}
+
+// Every topic with ANY recorded activity at all — practice, flashcard or
+// time — keyed as "subject/topic". This is exactly the definition of
+// "touched" that getProgress uses inside its own subjects.map to decide
+// nextTopic; re-derived here rather than threaded through Progress's return
+// shape, because the queue needs it flattened across every subject at once,
+// not nested one level down inside each SubjectProgress.
+export async function getTouchedTopics(userId: string): Promise<Set<string>> {
+  const rows = await readActivity(userId);
+  return new Set(rows.map((r) => `${r.subject}/${r.topic}`));
+}

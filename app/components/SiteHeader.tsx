@@ -89,6 +89,16 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 <span className="hidden sm:inline">Dashboard</span>
               </Link>
 
+              {/* The global daily queue — overdue flashcards, weak topics and
+                  new ones, across every subject at once. See
+                  lib/revision-queue.ts. Reachable from anywhere, the same
+                  reasoning as Progress and Dashboard sitting here rather
+                  than only being linked from inside one page. */}
+              <Link href="/revise" className={chipClasses}>
+                <ChecklistIcon />
+                <span className="hidden sm:inline">Revise today</span>
+              </Link>
+
               {/* Account settings need to be reachable in one click from
                   anywhere. Somebody who wants their data deleted should not have
                   to hunt for the page that does it. */}
@@ -126,6 +136,11 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
               <Link href="/dashboard" className={mobileMenuItemClasses}>
                 <GridIcon />
                 <span>Dashboard</span>
+              </Link>
+
+              <Link href="/revise" className={mobileMenuItemClasses}>
+                <ChecklistIcon />
+                <span>Revise today</span>
               </Link>
 
               <Link href="/account" className={mobileMenuItemClasses}>
@@ -195,6 +210,25 @@ function ChartIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+// Three ticked rows, for the revision queue — a literal checklist, since
+// that's exactly what the page behind it is: a ranked list of things to do.
+// Deliberately not reusing ChartIcon or GridIcon; two links sharing an icon
+// reads as one link with two names.
+function ChecklistIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4.5 6.5l1.5 1.5 2.5-2.5" />
+        <path d="M11 6.5h9" />
+        <path d="M4.5 12.5l1.5 1.5 2.5-2.5" />
+        <path d="M11 12.5h9" />
+        <path d="M4.5 18.5l1.5 1.5 2.5-2.5" />
+        <path d="M11 18.5h9" />
+      </g>
     </svg>
   );
 }

@@ -1,4 +1,152 @@
-# Project Notes — Revision Lab (GCSE revision website)
+# Project Notes - Revision Lab (GCSE revision website)
+
+## The global "Revise today" queue (2026-08-25)
+
+Matthew's pick, after weighing Jennifer's exam-board-accuracy research against
+this: a real, live, site-wide daily recommendation queue — the single feature
+this codebase had that competitors like Tassomai and Sparx have and we didn't.
+Every "what's next" hint on the site before this only ever looked at ONE
+thing: `/review` only knew about overdue flashcards, and the dashboard's old
+"Revise this next" hero only ever named a single topic in a single subject
+(`chooseNextUp` in `progress.ts` — still there, still used by the homepage's
+`StreakSpotlight`, untouched). A student with weak spots in three subjects and
+a pile of overdue flashcards in a fourth had no single place that said so.
+
+**New `app/lib/revision-queue.ts`, `getRevisionQueue(userId)`.** Combines
+three existing signals into one ranked list, aggregated across EVERY subject
+at once rather than scoped to whichever one you happen to be on:
+
+1. **Overdue flashcards**, one queue item per subject with cards due (reuses
+   `getDueFlashcards` from `flashcard-review.ts` unchanged — no new reader).
+   Ranked FIRST, ahead of everything else: a card being "due" means it once
+   climbed a Leitner box and is now at risk of being forgotten, which is a
+   genuinely time-decaying kind of urgency the other two categories don't
+   have — a weak topic is exactly as weak tomorrow as it is today.
+2. **Weak topics, anywhere on the site.** New `getTopicAccuracies(userId)` in
+   `progress.ts` folds every PRACTICE row into per-topic accuracy, globally —
+   something that didn't exist before (the file only ever had per-SUBJECT
+   accuracy, or a single weakest-topic fallback once a whole subject was
+   fully covered). Anything with 3+ answers and under 60% accuracy qualifies,
+   worst first.
+3. **Never-touched topics**, one per subject with room to grow, ordered
+   least-covered subject first — same reasoning `chooseNextUp` already uses
+   (revising the subject you already like is the human default a queue
+   exists to counter), just no longer limited to naming only the single
+   least-covered subject. Needed a second new `progress.ts` reader,
+   `getTouchedTopics(userId)`, since the existing "touched" set lived nested
+   one level down inside each `SubjectProgress` and this needed it flattened.
+
+Capped at 8 items total (`MAX_QUEUE_ITEMS`) — a "today" list with thirty
+things on it stops being a queue and starts being homework. The cap always
+drops the least urgent items first, since the three categories are
+concatenated in priority order before slicing.
+
+**Both new `progress.ts` readers follow the file's own established pattern**
+(see the comment above `getMonthlyActivity` from the planner work): re-read
+`readActivity` fresh rather than threading a new field through `Progress`'s
+return shape. Same accepted cost as everywhere else in this file — more
+Supabase reads per page load, in exchange for every consumer staying a small,
+independent function instead of one `getProgress` mega-function trying to
+return everything anyone could ever want.
+
+**New page, `/revise`** — the full queue, same protected-page pattern as
+`/dashboard` and `/review` (checked server-side, `noindex`). **Dashboard's old
+single-topic "Revise this next" hero is GONE**, replaced by a "Revise today"
+section showing the top 3 queue items plus a "See all N →" link to `/revise`.
+The old standalone "N flashcards due" banner on the dashboard is also gone —
+the queue already surfaces due flashcards per subject, more precisely, so
+the two banners would have said almost the same thing twice.
+
+**New "Revise today" link in the header nav** (`SiteHeader.tsx`, both the
+desktop row and the phone hamburger menu from the mobile-audit work) — sits
+between Dashboard and Account, reachable from literally every page, not just
+surfaced from inside the dashboard. New `ChecklistIcon`, same 1.7-stroke
+24-grid house style as every other nav icon.
+
+**Left alone, deliberately:** `chooseNextUp`/`Progress.nextUp` in
+`progress.ts` — still computed, still used by `StreakSpotlight` on the
+homepage for its "Keep it going" button. Didn't touch the homepage in this
+pass; the dashboard was the highest-value, most-requested surface and the
+place Matthew actually asked for this.
+
+**Verification:** `tsc -p tsconfig.json --noEmit`, `eslint` on every changed
+file, and `scripts/check-content.mjs` (87,603 checks, content untouched) all
+clean. A full `SESSION_SECRET=... SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=...
+NEXT_PUBLIC_SITE_URL=... npx next build` also succeeded — `/revise` shows up
+correctly as a dynamic (`ƒ`) route alongside `/dashboard` and `/review`.
+`eslint --max-warnings=0` across the whole project still shows exactly the
+same 10 pre-existing `react-hooks/set-state-in-effect` failures documented in
+the Pro/Plus entry below (`ThemeToggle`, `PixelCompanion`, `Wardrobe`,
+`PlannerNotes`, `MockExam`) — none of them in any file this pass touched.
+
+## Competitor research and first priority (2026-08-25)
+
+Matthew asked Jennifer to research ten major revision platforms and compare
+them with Revision Lab. The platforms reviewed were BBC Bitesize, Seneca,
+Save My Exams, Cognito, Physics & Maths Tutor, Quizlet, Anki, Tassomai,
+GCSEPod and Sparx Learning.
+
+**The broad finding:** Revision Lab already has an unusually strong engagement
+layer for an independent GCSE project: fourteen subjects, key facts, worked
+examples, common mistakes, practice questions, spaced flashcards, mock exams,
+test history, progress tracking, XP, levels, badges, streaks, daily goals,
+search, a focus timer, printable sheets, accessibility controls, mascots and a
+wardrobe. Its clearest advantages are its coherent personality, independent
+student focus and free core experience.
+
+**Where established competitors are stronger:** BBC Bitesize in editorial
+authority and multimedia; Seneca in board-specific adaptation and school
+workflows; Save My Exams in examiner-reviewed resources, model answers and
+mark-scheme guidance; Cognito and GCSEPod in short videos; Physics & Maths
+Tutor in past-paper depth; Quizlet in personal deck creation; Anki in mature
+spaced scheduling; Tassomai in weakness detection; and Sparx in maths
+diagnostics and question sequencing.
+
+**The first priority is content trust and exam-board accuracy, not another
+cosmetic or subscription feature.** Start with Computer Science as a pilot:
+map every topic against AQA, Edexcel and OCR; distinguish shared material from
+board-only material; show the relevant route after the student chooses their
+board; add specification/source and last-checked details; add a simple way to
+report a mistake; and have a qualified teacher review the material before
+calling it verified. Do not imply that a board is verified merely because the
+topics have been mechanically tagged.
+
+**Board choice belongs to each subject, not necessarily the whole account.**
+Students can take different boards for different GCSEs. Maths, Science and
+Computer Science share a large knowledge core but differ in grouping,
+terminology, paper structure, question style, mark schemes and some content.
+History and English Literature can differ much more because boards and schools
+choose different options and set texts.
+
+**Registration decision:** do NOT require an account to browse core revision
+content or choose an exam board. Save board choices locally on the device and
+let a visitor begin immediately. Offer optional registration for synchronising
+progress, streaks, test history, wardrobe choices and preferences across
+devices. Accounts can remain required for genuinely account-dependent features
+such as paid plans or future teacher-managed classes. This reduces entry
+friction and avoids collecting unnecessary data from an audience made up
+largely of under-16s.
+
+**Likely order after the Computer Science pilot:**
+
+1. Roll the board model out carefully to other subjects, accounting for
+   option-heavy History and set-text-heavy English.
+2. Build a transparent daily revision queue from overdue flashcards, recent
+   mistakes, weak mock-exam topics and material not reviewed recently.
+3. Add model answers, mark-scheme checklists and more topic-linked exam-style
+   questions before attempting automatic marking of extended answers.
+4. Pilot a few short, captioned explanations only where video adds real value;
+   include transcripts, text alternatives and follow-up retrieval questions.
+
+**Things not to copy:** compulsory registration for free content; public
+user-created decks before moderation exists; identifiable leaderboards
+involving minors; punitive streaks; rushed large-scale video; unverified AI
+marking; or paywalls around essential notes, practice, accessibility and spaced
+repetition.
+
+Revision Lab's strongest intended position is: a friendly, trustworthy and
+genuinely active GCSE revision companion that tells each student what to revise
+next, explains why, and makes steady progress feel rewarding.
 
 ## Science content (2026-08-10)
 
