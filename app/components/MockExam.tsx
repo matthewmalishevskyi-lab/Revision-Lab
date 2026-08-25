@@ -405,10 +405,29 @@ export function MockExam({
                           })}
                         </div>
                       ) : (
+                        // ── Locked after the first check, same reasoning as
+                        // multiple choice above — found in the 2026-08-25
+                        // deep bug hunt. This used to stay editable forever:
+                        // `onChange` reset `status` back to "unanswered" on
+                        // every keystroke, and `check()` re-evaluated and
+                        // overwrote `status` on every subsequent press with
+                        // no gate. `correct`/`markable` below (and the score
+                        // handed to recordTestCompletion when the exam
+                        // finishes) read straight off `status`, so a wrong
+                        // first answer could be edited and re-checked until
+                        // it read "correct" — inflating both the on-screen
+                        // tally and the score PERMANENTLY WRITTEN to the
+                        // database, not just this session's display. Practice.tsx
+                        // deliberately allows this (documented there: only the
+                        // first attempt is ever recorded, later ones are a
+                        // free-form retry aid) — but a mock exam's own score
+                        // is read live off this same status, so here it has to
+                        // behave like a real exam: one shot per question.
                         <div className="mt-3 flex flex-wrap gap-2">
                           <input
                             type="text"
                             value={state.input}
+                            disabled={state.status !== "unanswered"}
                             onChange={(event) =>
                               update(index, { input: event.target.value, status: "unanswered" })
                             }
@@ -417,12 +436,13 @@ export function MockExam({
                             }}
                             placeholder="Your answer"
                             aria-label={`Answer to question ${index + 1}`}
-                            className="w-44 rounded-lg border border-black/10 bg-white/80 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 dark:border-white/15 dark:bg-white/5"
+                            className="w-44 rounded-lg border border-black/10 bg-white/80 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 disabled:opacity-55 dark:border-white/15 dark:bg-white/5"
                           />
                           <button
                             type="button"
+                            disabled={state.status !== "unanswered"}
                             onClick={() => check(index, item)}
-                            className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                            className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-55"
                             style={{ backgroundColor: colour }}
                           >
                             Check
@@ -437,7 +457,10 @@ export function MockExam({
                       )}
                       {state.status === "incorrect" && (
                         <p role="status" className="mt-3 font-semibold text-red-700 dark:text-red-400">
-                          {item.choices ? "✗ Not quite" : "✗ Not quite — try again"}
+                          {/* Both kinds are locked after one attempt in a
+                              mock exam (see the free-text input's comment
+                              above), so neither wording invites a retry. */}
+                          ✗ Not quite
                         </p>
                       )}
                     </>

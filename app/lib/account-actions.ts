@@ -57,7 +57,17 @@ export async function changePassword(
   if (next.length > 200) return { error: "That password is too long." };
   if (next !== confirm) return { error: "The two new passwords don't match." };
 
-  const user = await findUserById(userId);
+  // findUserById throws on a database problem (see describeFailure in
+  // users.ts) — wrapped for the same reason getCurrentUser() now is (2026-08-25
+  // deep bug hunt): without this, a transient Supabase blip would throw
+  // straight out of this Server Action instead of showing a normal error.
+  let user;
+  try {
+    user = await findUserById(userId);
+  } catch (error) {
+    console.error("[account] could not look up account:", error);
+    return { error: "Something went wrong. Please try again." };
+  }
   if (!user) return { error: "We couldn't find your account." };
 
   if (current === next) {
@@ -107,7 +117,15 @@ export async function requestDeletion(
 
   const password = String(formData.get("password") ?? "");
 
-  const user = await findUserById(userId);
+  // Same guard as changePassword above, and for the same reason — a database
+  // blip should show an ordinary error here, not crash the Server Action.
+  let user;
+  try {
+    user = await findUserById(userId);
+  } catch (error) {
+    console.error("[account] could not look up account:", error);
+    return { error: "Something went wrong. Please try again." };
+  }
   if (!user) return { error: "We couldn't find your account." };
 
   // Asking for the password again is not paranoia about the logged-in user —

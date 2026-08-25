@@ -574,6 +574,25 @@ function weakestTopic(
 // freeze is genuinely bridging two real stretches of activity — spend it. If
 // it doesn't, spending it would only be padding out to nothing, so the walk
 // stops instead, exactly as it would with no freeze at all.
+//
+// ⚠️ THE WINDOW ITSELF HAD A SECOND BUG, FOUND IN THE 2026-08-25 DEEP BUG
+// HUNT — "resets every 7 days walked" IS NOT THE SAME THING AS "ROLLING".
+//
+// The original version reset `freezeAvailable` to true every 7th day
+// PROCESSED by this loop, regardless of when the freeze was last actually
+// used. If a freeze happened to be spent right on one of those 7-day
+// boundaries, the counter reset to 0 on that very same iteration — handing
+// out a second freeze just ONE real day later, nowhere near the "one per
+// rolling week" the comment above promises. Concretely: six active days,
+// then a gap bridged by a freeze on day 6 (the 7th day walked, so the window
+// resets immediately), one active day, then ANOTHER gap on day 8 — bridged
+// by a second freeze only two days after the first. That's a genuine bug in
+// the walk, not the deliberate "one freeze per week" design.
+//
+// The fix tracks days elapsed since the freeze was last actually used, and
+// only allows another once 7 real days have passed since then — a true
+// rolling window instead of a fixed block that can reset right next to a
+// freeze it just granted.
 // ─────────────────────────────────────────────────────────────────────────────
 function computeStreak(
   rows: ActivityRow[],
@@ -592,8 +611,10 @@ function computeStreak(
 
   let current = 0;
   let usedFreeze = false;
-  let freezeAvailable = true; // resets every 7 days walked, see below
-  let daysThisWindow = 0;
+  // "Never used yet" — large enough that a freeze is always allowed the
+  // first time one is needed, same starting behaviour as the old
+  // freezeAvailable = true.
+  let daysSinceLastFreeze = Infinity;
 
   while (true) {
     const active = daysWithActivity.has(dayKey(cursor));
@@ -602,22 +623,18 @@ function computeStreak(
 
     if (active) {
       current++;
-    } else if (freezeAvailable && bridgesToRealActivity) {
+    } else if (daysSinceLastFreeze >= 7 && bridgesToRealActivity) {
       // One free pass per rolling week of the streak — the day is skipped
       // over rather than ending the walk, but doesn't add to the visible
       // count, because nothing was actually done that day.
-      freezeAvailable = false;
+      daysSinceLastFreeze = 0;
       usedFreeze = true;
     } else {
-      break; // a real break: either the freeze is already spent this week,
-      // or there's nothing beyond this gap worth bridging to.
+      break; // a real break: either a freeze was used within the last 7
+      // real days, or there's nothing beyond this gap worth bridging to.
     }
 
-    daysThisWindow++;
-    if (daysThisWindow === 7) {
-      daysThisWindow = 0;
-      freezeAvailable = true;
-    }
+    daysSinceLastFreeze++;
     cursor = new Date(cursor.getTime() - DAY_MS);
   }
 
@@ -832,10 +849,24 @@ export function isRealTopic(subject: string, topic: string): boolean {
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// A ROUNDING BUG FOUND IN THE 2026-08-25 DEEP BUG HUNT: minutes could round
+// up to 60 without carrying into an extra hour.
+//
+// The old version rounded seconds-within-the-hour to the nearest minute
+// AFTER already splitting off the hour, so a duration like 59 minutes 50
+// seconds (well under an hour) rounded to "60m", and something like 1 hour
+// 59 minutes 40 seconds rounded to "1h 60m" — self-contradictory either way.
+//
+// The fix rounds to a total minute count FIRST, then splits that single
+// number into hours and minutes with floor/modulo, so a round-up into a new
+// hour is reflected as an actual extra hour rather than an impossible 60m.
+// ─────────────────────────────────────────────────────────────────────────────
 export function formatDuration(seconds: number): string {
   if (seconds < 60) return `${seconds}s`;
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.round((seconds % 3600) / 60);
+  const totalMinutes = Math.round(seconds / 60);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
   if (hours === 0) return `${minutes}m`;
   return `${hours}h ${String(minutes).padStart(2, "0")}m`;
 }

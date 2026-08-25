@@ -104,13 +104,31 @@ export async function recordFlashcardReview(input: {
 
 const MAX_EVENTS_READ = 5000; // same cap and reasoning as progress.ts
 
+// ─────────────────────────────────────────────────────────────────────────────
+// FETCHED NEWEST-FIRST, THEN REVERSED — found in the 2026-08-25 deep bug hunt.
+//
+// This used to fetch oldest-first (`created_at.asc`) directly, on the
+// reasoning that foldCardState needs to walk each card's history oldest-to-
+// newest. True, but it missed what that ordering does once MAX_EVENTS_READ
+// actually bites: ascending order + a fixed limit always returns the OLDEST
+// slice of history, so a user who ever exceeds 5000 lifetime flashcard
+// reviews would have every review after the 5000th silently invisible to
+// this function, forever — their box/due-date state would freeze at
+// whatever it was back then, no matter how much more revising they did.
+// progress.ts's readActivity avoids exactly this by ordering `desc`, so a
+// truncation there keeps the MOST RECENT history instead.
+//
+// The fix keeps that same "if truncated, keep the recent stuff" property —
+// fetch newest-first, then reverse in JS to restore the oldest-first order
+// foldCardState actually needs.
+// ─────────────────────────────────────────────────────────────────────────────
 async function readReviews(userId: string): Promise<ReviewRow[]> {
   if (!FLASHCARD_REVIEW_ENABLED) return [];
 
   const res = await supabase(
     `flashcard_reviews?user_id=eq.${encodeURIComponent(userId)}` +
       `&select=subject,topic,card_key,knew_it,created_at` +
-      `&order=created_at.asc&limit=${MAX_EVENTS_READ}`,
+      `&order=created_at.desc&limit=${MAX_EVENTS_READ}`,
   );
 
   if (!res.ok) {
@@ -121,7 +139,8 @@ async function readReviews(userId: string): Promise<ReviewRow[]> {
     return [];
   }
 
-  return (await res.json()) as ReviewRow[];
+  const rows = (await res.json()) as ReviewRow[];
+  return rows.reverse();
 }
 
 // Folds one card's judgement HISTORY, oldest first, into its CURRENT box and

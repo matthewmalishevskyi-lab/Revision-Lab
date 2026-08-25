@@ -1,378 +1,139 @@
-# Project Notes - Revision Lab (GCSE revision website)
+# Project Notes — Revision Lab (GCSE revision website)
 
-## The header row was actually overflowing the page (2026-08-25)
+## Deep bug hunt — auth, gamification, mock exams, SEO (2026-08-25)
 
-Matthew: "I don't like the button design at the top of the home page." Asked
-which button he meant, since the top of the page has several candidates —
-he meant the row of chip buttons in the header (Home, Progress, Dashboard,
-Revise today, Account, Log out and the rest), not the big streak-card
-button below it.
+Matthew asked for another periodic "deep bug fix" pass, same shape as the
+2026-08-09 hunts above. Six parallel searches covered auth/security,
+progress/gamification math, exam/practice marking, localStorage/state
+components (checking the recent `useSyncExternalStore` refactor for
+regressions), page routes, and the generated SEO files. Every finding was
+then re-read against the real code by hand before being trusted — a
+subagent's report is a lead, not a verdict — and two plausible-sounding ones
+turned out to be non-issues. Nine files changed; **not yet pushed from this
+side, same standing limitation as always (see the git section below)** —
+Matthew still needs to `git push` from his own machine.
 
-**Before touching any CSS, opened the real live site and looked.** Good
-thing, too — this wasn't a matter of taste. On a real 1536px-wide laptop
-screen (measured via `window.innerWidth`, and it matches Matthew's own
-device info exactly), the header row was **genuinely overflowing the
-page**: `document.documentElement.scrollWidth` (1586px) was wider than the
-window itself (1536px), and the visible symptom was "Log out" running off
-the right edge of the browser with a bottom horizontal scrollbar as the
-only clue. Not a rare edge case — the row's own content measured out at
-roughly 1450px needed for Pixel, a name greeting and six chips in a single
-line, against a page content column capped at `max-w-6xl` (≈1100px
-available). That gap exists on **any** desktop-width screen, not just
-narrow ones — it was never a "screen too small" bug, it was "this row was
-simply wider than the column it lives in," which a phone-width audit from
-an earlier session (see MobileMenu.tsx's own comment) had no reason to
-catch, since it was specifically checking the *narrow* end.
+**A transient Supabase blip could have crashed every page on the site, not
+just login.** `getCurrentUser()` (wrapped by `getViewer` in viewer.ts, which
+`SiteHeader` — present on literally every page — calls unconditionally) never
+caught the exception `findUserById` throws on a database problem. `login()`
+already treats exactly this as "show a friendly error," but nothing carried
+that same care to the function every single page depends on. Now wrapped in
+try/catch, failing safely as "nobody's logged in" rather than a site-wide
+500. The same unguarded call existed twice more, in `changePassword` and
+`requestDeletion` (account-actions.ts) — fixed the same way.
 
-**Fixed with several small, independently-justified cuts rather than one
-big rewrite:**
+**A mock exam's free-text answers could be edited and re-checked until they
+read "correct," inflating the score permanently written to the database.**
+`MockExam.tsx`'s free-text input let you keep retyping after Check, and
+`status` (which the score, the live tally, and `recordTestCompletion` all
+read straight off) updated on every attempt with no gate — unlike multiple
+choice questions in the same exam, which were already locked after one
+click. Now locked the same way: the input and Check button disable once
+answered. (Practice.tsx has the identical-looking "reset to unanswered on
+edit" behaviour, but its own comment says plainly that's deliberate — later
+attempts are a free retry aid and only the first is ever recorded to the
+database — so that one was left alone.)
 
-1. **Search and the theme toggle became icon-only.** A magnifying glass
-   and a sun/moon are both universally understood without a caption — the
-   text label was pure width cost. New `iconChipClasses` in
-   `chipStyles.ts`, alongside the existing `chipClasses`, sized with equal
-   padding on every side so a lone icon doesn't sit in a lopsided pill.
-   The mobile hamburger button switched to the same style for the same
-   reason and for visual consistency.
-2. **The "Hi, {name}" greeting was dropped from the header row entirely**,
-   not just shortened. It only ever appears on the homepage, and
-   `StreakSpotlight` already says "Welcome back, {name}" prominently right
-   below this row — the header's smaller copy of the same sentence was
-   pure width cost for zero new information, and it was one of the widest
-   single things in the row. Kept in the phone hamburger menu, which has
-   room to spare and no streak card nearby to make it redundant.
-3. **"Revise today" shortened to "Revise" on this one chip.** The fuller
-   phrase, with the live count, is still what the homepage's streak card
-   itself says — this chip only has to get you to `/revise`.
-4. **Chip padding and row gaps tightened slightly** (`chipStyles.ts`,
-   `SiteHeader.tsx`) — still comfortable to click, just less generous.
-5. **`flex-wrap` added to the row as a permanent safety net**, regardless
-   of whether the above cuts are enough on their own. If a future change —
-   a longer name, a new chip, someone turning on the "larger text"
-   accessibility setting — ever makes the row not fit again, it now wraps
-   onto a tidy second line instead of silently overflowing the page a
-   second time. This is the part that actually guarantees the bug can't
-   fully recur, independent of how precisely the width math works out.
+**The streak freeze could be spent twice within two days, not once a
+week.** `computeStreak`'s "one freeze per rolling week" reset a counter
+every 7 days *processed by the walk*, not 7 days since a freeze was
+actually used — so a freeze landing exactly on that 7th-day boundary reset
+the allowance on the same iteration it was spent, handing out a second one
+almost immediately. Reproduced: six active days, a freeze-bridged gap on
+day 6, one active day, then a second freeze-bridged gap on day 8. Fixed by
+tracking real days elapsed since the last freeze instead of a fixed block
+counter.
 
-**Verified against the real, deployed page, not a guess.** Rather than
-trust arithmetic alone, the exact planned markup and classes were patched
-into the live site's actual DOM (via the browser's console, on the real
-page Matthew is logged into — nothing was saved this way, it's a
-throwaway in-page edit purely for measuring) and re-measured at the same
-1536px width: `scrollWidth` dropped to 1521px against a 1536px window — no
-overflow, all six chips plus Search, the theme toggle and Pixel comfortably
-on one line, with room to spare. Screenshotted in both dark and light mode
-to confirm it reads cleanly in both.
+**`formatDuration` could print "60m" or "1h 60m."** Rounding
+seconds-within-the-hour to the nearest minute happened *after* splitting
+off the hour, so a value just under a full hour (or just under a full extra
+hour) rounded up without carrying. Fixed by rounding to a total-minute count
+first, then splitting that into hours/minutes.
 
-`tsc`, `eslint --max-warnings=0` (three clean runs), `next build`, and
-`scripts/check-content.mjs` (87,603 checks, content untouched — this was a
-UI-only change) all pass.
+**A corrupted local `users.json` would have been silently wiped on the next
+registration.** `readUsers()` caught a JSON parse failure the same way as a
+missing file — both returned `[]`. `createUser`'s local-file path reads this
+list, pushes one new user, and writes the whole thing back, so a genuinely
+corrupted (not missing) file would have been overwritten with a file
+containing only that one new account, permanently losing everyone else's on
+that laptop. Now only a genuinely missing file (ENOENT) is treated as "nobody's
+registered yet"; anything else is logged and re-thrown. Local-file-only —
+the live site uses Supabase and never reaches this path.
 
-## Per-subject statistics pages (2026-08-25)
+**Probing which emails already have an account was completely unthrottled.**
+`checkRegistrationAllowed` only ever counted *successful* registrations
+(`recordRegistration()` was called after `createUser` succeeded, never in
+the `EMAIL_TAKEN` branch), so someone could submit unlimited candidate
+emails to find out which ones exist without ever tripping the per-IP limit
+— the exact enumeration this codebase otherwise goes to real lengths to
+prevent (the login timing fix, the identical wrong-password/unknown-email
+wording). Now an `EMAIL_TAKEN` failure counts the same as a real signup.
 
-The oldest outstanding item on this whole file, from the day progress
-tracking was first built: "the per-subject statistics pages (Matthew asked
-for these; the main page came first)." `/progress` has always had to fit
-every subject on one screen, so it only ever showed one aggregate number
-per subject — never which topics inside it were actually strong, weak or
-untouched.
+**Flashcard spaced-repetition state could freeze permanently for a heavy
+user.** `flashcard-review.ts`'s `readReviews` fetched oldest-first
+(`created_at.asc`) with the same 5000-row cap `progress.ts` uses — but
+`progress.ts` fetches *newest*-first for exactly this reason: if the cap is
+ever hit, keep the recent history, not the stale end. Ascending order with a
+fixed limit does the opposite — a user who ever passed 5000 lifetime
+flashcard judgements would have every review after that point permanently
+invisible, freezing every card's box/due-date forever. Fixed by fetching
+newest-first (matching progress.ts) and reversing in JS to restore the
+oldest-first order the box-folding logic actually needs.
 
-**New route, `/subjects/<subject>/stats`.** Reserved-slug check done by
-hand first (there's still no automated checker for this — see the Science
-section above): no topic anywhere is slugged `stats`, so the static folder
-safely beats the dynamic `[topic]/page.tsx` the same way `exam/` and
-`print/` already do. Protected the same way `/progress` and `/dashboard`
-are — `ACCOUNTS_ENABLED` check, then `getViewer()`, then redirect to
-`/login` if nobody's signed in, checked on the server before any of the
-page is sent.
+**Two SEO files had quietly gone stale as the site grew.** `sitemap.ts` was
+built from `SUBJECTS` alone, so the two group "chooser" pages
+(`/subjects/science`, `/subjects/languages` — added when Science and
+Languages were grouped, well after the sitemap was written) were never
+listed despite being real, indexable pages. Added. Separately, `robots.ts`'s
+disallow list — described in its own comment as belt-and-braces alongside
+each page's `noindex` metadata — had drifted out of sync with which pages
+actually carry `robots: { index: false, follow: false }`: `/account`,
+`/progress`, `/review`, `/revise`, `/wardrobe` and every `/pro-preview`
+page were missing. Added (deliberately NOT the dynamic `/subjects/*/exam`,
+`/subjects/*/print` and `/subjects/*/stats` routes — those use
+`follow: true` on purpose, so crawlers can still follow their links back to
+real topic pages; disallowing them would break that).
 
-**New `getSubjectTopicBreakdown(userId, subjectSlug)` in `progress.ts`** —
-purely additive, nothing existing in that file touched. Same shape as
-`getTopicAccuracies`/`getTouchedTopics` just above it: reads the activity
-log fresh with the file's existing `readActivity` helper and folds it, this
-time down to one row per topic in ONE subject rather than across every
-subject at once. Each topic comes back with its own questions
-answered/correct, accuracy (`null` rather than `0` for an untouched topic —
-0% would misreport "answered everything wrong" for something never
-attempted), flashcards reviewed, and a `covered` flag.
+**DashboardCelebrations had regressed back into the exact hydration-mismatch
+bug the recent `useSyncExternalStore` refactor was meant to eliminate
+everywhere.** It read `localStorage` directly inside a plain `useMemo`,
+which runs during render — including the server's render and the client's
+very first render during hydration. The server always saw "nothing to
+celebrate" (no `localStorage`); the client's first render legitimately
+could see something different, which is a hydration mismatch. Fixed by
+routing its three "have I seen this" reads through `browserStore.ts`'s
+existing `useStoredRaw` — the same fix already used by ThemeToggle and
+everything else on the site that reads localStorage. ⚠️ The first attempt
+at this fix moved the read into a `useEffect` + `setState` instead, which
+eslint immediately flagged as `react-hooks/set-state-in-effect` — the exact
+rule the prior session's whole refactor existed to stop tripping. `useStoredRaw`
+is the actual fix; an effect-plus-setState is the pattern it replaces.
 
-**The page itself reuses, rather than recomputes, this subject's headline
-numbers.** `getProgress(user.id)` already computes one `SubjectProgress`
-per subject for `/progress`'s own cards — the new page just finds this
-subject's entry in that same array for its headline ring and stats, and
-filters `progress.testHistory` down to this subject for its own test
-history section. The one genuinely new read is the topic-by-topic
-breakdown; everything else on the page is the same numbers `/progress`
-already shows, reused rather than re-derived, so the two pages can never
-quietly disagree about the same subject.
+**Investigated and rejected as false positives:**
+- `changePassword`'s "that's the same password you already have" check
+  compares the raw submitted current/new password strings before verifying
+  the current one is correct. Sounds like a bypass; isn't — `verifyPassword`
+  still runs afterwards and is the only thing that actually authorises a
+  change, so a wrong "current password" that happens to equal the new one
+  either way ends in "that isn't your current password," never a silent
+  change. At worst a slightly confusing error ordering, not a security gap.
+- Practice.tsx resetting `status` to "unanswered" on every keystroke after
+  an answer was checked, letting the on-screen "X out of Y correct" figure
+  rise or fall on retries. Explicitly intentional per that file's own
+  comment ("Later attempts still work normally on screen. They just aren't
+  measured.") — only the first attempt is ever sent to the database, so
+  nothing persisted is affected. This is the opposite of the MockExam bug
+  above specifically because MockExam's on-screen tally IS what gets
+  persisted (via `recordTestCompletion`) and Practice's is not.
 
-**Linked from the ordinary subject page**, next to the existing "Try a
-{subject} test" button — but only for a logged-in visitor. The subject page
-has no auth check of its own and is otherwise fully public/static, so it
-now reads `getViewer()` once itself purely to decide whether to show that
-one link; `getViewer` is cached per request (see `lib/viewer.ts`), and
-`SiteHeader` on the same page already calls it, so this costs nothing
-extra. A logged-out visitor sees exactly the same panel as before this
-existed — there's no stats to show without an account.
-
-**Verification.** `tsc -p tsconfig.json --noEmit`, and `eslint
---max-warnings=0 .` run three times in a row (the practice established
-earlier this session, after the eslint cleanup below turned up a real
-silent-under-report), all clean. `scripts/check-content.mjs` unaffected —
-still all 87,603 checks passing (up from 87,556 purely because more
-auto-marked questions have been added to content since that number was
-last recorded here, not because of anything in this change).
-`next build` succeeds — 538 pages, `/subjects/[subject]/stats` correctly
-appearing as its own dynamic (ƒ) route, separate from both the static
-`/subjects/[subject]` cards and the dynamic `/subjects/[subject]/exam`.
-
-## The `react-hooks/set-state-in-effect` cleanup, finally (2026-08-25)
-
-The pre-existing eslint failure flagged multiple times this session and
-deliberately deferred each time ("needs its own session, not a rushed
-patch") — Matthew asked for it to actually happen today, after the queue
-work above. **`eslint --max-warnings=0` now passes clean across the whole
-project for the first time this whole engagement.**
-
-**Worth recording since it nearly got under-scoped: the project actually
-had TEN failing files, not five.** Every earlier count in this file (and
-every earlier full-project `eslint` run this session) only ever surfaced
-five: `ThemeToggle`, `PixelCompanion`, `Wardrobe`, `PlannerNotes`,
-`MockExam`. Fixing those and re-running turned up FIVE MORE with the
-identical rule — `AccessibilityPanel`, `Celebration`,
-`DashboardCelebrations`, `MascotDisplay`, `MascotWardrobeGrid` — that had
-apparently been there the whole time. The likely cause: this environment's
-`eslint` run had already been documented (2026-08-19 entry, above) as
-sometimes hitting a 45-second ceiling on a full project scan; it seems to
-fail SILENTLY past that point rather than reporting a timeout, so a run can
-look clean while quietly never having reached every file. **Ran the full
-project `eslint` three times in a row after this round of fixes, all
-silent, before trusting it.** Worth remembering for any future full-project
-lint claim made from this environment: one clean run isn't proof by itself.
-
-**The actual fix, in two shapes:**
-
-1. **New `app/lib/browserStore.ts`** — a small shared `useStoredRaw(key,
-   serverValue)` hook built on React's `useSyncExternalStore`, plus
-   `readStorageRaw`/`writeStorageRaw` helpers. This is the real, built-in
-   answer to the exact situation every one of these components was solving
-   by hand: reading a value that only exists in the browser (localStorage),
-   which has to render ONE way on the server and the client's first paint
-   (before hydration) and can then correct itself — without an effect, and
-   without an extra `setState` call, which is what the lint rule was
-   actually objecting to. Writes made through `writeStorageRaw` also fire a
-   same-tab custom event, since the browser's own `storage` event
-   deliberately never fires in the tab that made the change — needed
-   because Pixel's equipped outfit, for instance, is read by more than one
-   component on the same page at once (the header AND the wardrobe page).
-   Used by `PixelCompanion`, `Wardrobe`, `MascotDisplay`,
-   `MascotWardrobeGrid`, `Celebration`, `AccessibilityPanel` and
-   `PlannerNotes` — seven of the ten files, and each one got SIMPLER, not
-   just quieter: `Wardrobe` and `MascotWardrobeGrid` in particular no
-   longer need any local "equipped" state at all, since the stored value
-   now IS the state, reactively.
-2. **`ThemeToggle` and `MockExam` needed their own shape**, not the shared
-   hook. `ThemeToggle` reads a DOM class (`document.documentElement`), not
-   localStorage, and is the only thing that ever changes it — so it gets
-   its own tiny self-contained external store instead. `MockExam`'s
-   `celebrating` flag wasn't reading anything external at all; it was
-   state that should have been DERIVED (`phase === "finished" &&
-   !dismissed`) rather than copied into its own `useState` and set from an
-   effect — the actual bug-shaped root cause the lint rule exists to catch,
-   not just a localStorage-timing workaround. **`DashboardCelebrations`
-   needed a genuinely different fix again**: it has a real side effect
-   (marking a celebration "seen" in localStorage) that has to run exactly
-   once per new celebration, which a plain derived value can't do by
-   itself — split into a pure `decidePendingCelebration` (read-only,
-   memoized) and a `markCelebrated` write, with the effect only ever
-   calling the write, never a state setter.
-
-**Verification:** `tsc -p tsconfig.json --noEmit` clean. `eslint
---max-warnings=0` clean project-wide, run three times. `scripts/check-
-content.mjs` — 87,603 checks, content untouched. A full production `next
-build` succeeds with the same route list as before (nothing here changes
-what any page renders, only how the ten components get there). No visible
-behaviour change anywhere — same defaults, same "read after mount"
-guarantee, same outfit/theme/accessibility persistence — this was a pure
-internal refactor.
-
-## The homepage streak card now points at the queue too (2026-08-25)
-
-Small follow-up to the entry directly below this one, same day. The
-dashboard got the global queue; the homepage's `StreakSpotlight` — the big
-streak card every logged-in visitor sees first — still had its button
-wired to `chooseNextUp`'s single-topic opinion, left alone deliberately in
-the first pass so as not to touch two surfaces in one sitting.
-
-**The button now always goes to `/revise`.** `StreakSpotlight` dropped its
-`nextUp` prop entirely and takes `queueCount: number` instead — `app/page.tsx`
-calls `getRevisionQueue(user.id)` (only `.length` is needed) alongside the
-`getProgress` call it already made. When there's anything in the queue and
-the streak isn't at risk or already at goal, the button itself now reads
-"Revise today (N) →" rather than the generic "Keep it going →" — the same
-"put the live number on the button" idea the dashboard's own "See all N →"
-link already uses. The "Save your streak"/"Keep exploring" wording for the
-at-risk and goal-reached cases is untouched; only where the button LEADS
-changed, to the full ranked queue instead of one guessed topic.
-
-`chooseNextUp`/`Progress.nextUp` in `progress.ts` are untouched and not
-dead code — `SubjectProgress.nextTopic` (which `chooseNextUp` reads from)
-still drives the dashboard's per-subject "next topic" fallback inside
-`getRevisionQueue` itself (see step 3, never-touched topics), so the same
-underlying idea now feeds the global queue instead of only a single-topic
-hero.
-
-`tsc -p tsconfig.json --noEmit`, `eslint` on both changed files, and a full
-`next build` (confirmed no other file still referenced the old `nextUp`
-prop) all clean.
-
-## The global "Revise today" queue (2026-08-25)
-
-Matthew's pick, after weighing Jennifer's exam-board-accuracy research against
-this: a real, live, site-wide daily recommendation queue — the single feature
-this codebase had that competitors like Tassomai and Sparx have and we didn't.
-Every "what's next" hint on the site before this only ever looked at ONE
-thing: `/review` only knew about overdue flashcards, and the dashboard's old
-"Revise this next" hero only ever named a single topic in a single subject
-(`chooseNextUp` in `progress.ts` — still there, still used by the homepage's
-`StreakSpotlight`, untouched). A student with weak spots in three subjects and
-a pile of overdue flashcards in a fourth had no single place that said so.
-
-**New `app/lib/revision-queue.ts`, `getRevisionQueue(userId)`.** Combines
-three existing signals into one ranked list, aggregated across EVERY subject
-at once rather than scoped to whichever one you happen to be on:
-
-1. **Overdue flashcards**, one queue item per subject with cards due (reuses
-   `getDueFlashcards` from `flashcard-review.ts` unchanged — no new reader).
-   Ranked FIRST, ahead of everything else: a card being "due" means it once
-   climbed a Leitner box and is now at risk of being forgotten, which is a
-   genuinely time-decaying kind of urgency the other two categories don't
-   have — a weak topic is exactly as weak tomorrow as it is today.
-2. **Weak topics, anywhere on the site.** New `getTopicAccuracies(userId)` in
-   `progress.ts` folds every PRACTICE row into per-topic accuracy, globally —
-   something that didn't exist before (the file only ever had per-SUBJECT
-   accuracy, or a single weakest-topic fallback once a whole subject was
-   fully covered). Anything with 3+ answers and under 60% accuracy qualifies,
-   worst first.
-3. **Never-touched topics**, one per subject with room to grow, ordered
-   least-covered subject first — same reasoning `chooseNextUp` already uses
-   (revising the subject you already like is the human default a queue
-   exists to counter), just no longer limited to naming only the single
-   least-covered subject. Needed a second new `progress.ts` reader,
-   `getTouchedTopics(userId)`, since the existing "touched" set lived nested
-   one level down inside each `SubjectProgress` and this needed it flattened.
-
-Capped at 8 items total (`MAX_QUEUE_ITEMS`) — a "today" list with thirty
-things on it stops being a queue and starts being homework. The cap always
-drops the least urgent items first, since the three categories are
-concatenated in priority order before slicing.
-
-**Both new `progress.ts` readers follow the file's own established pattern**
-(see the comment above `getMonthlyActivity` from the planner work): re-read
-`readActivity` fresh rather than threading a new field through `Progress`'s
-return shape. Same accepted cost as everywhere else in this file — more
-Supabase reads per page load, in exchange for every consumer staying a small,
-independent function instead of one `getProgress` mega-function trying to
-return everything anyone could ever want.
-
-**New page, `/revise`** — the full queue, same protected-page pattern as
-`/dashboard` and `/review` (checked server-side, `noindex`). **Dashboard's old
-single-topic "Revise this next" hero is GONE**, replaced by a "Revise today"
-section showing the top 3 queue items plus a "See all N →" link to `/revise`.
-The old standalone "N flashcards due" banner on the dashboard is also gone —
-the queue already surfaces due flashcards per subject, more precisely, so
-the two banners would have said almost the same thing twice.
-
-**New "Revise today" link in the header nav** (`SiteHeader.tsx`, both the
-desktop row and the phone hamburger menu from the mobile-audit work) — sits
-between Dashboard and Account, reachable from literally every page, not just
-surfaced from inside the dashboard. New `ChecklistIcon`, same 1.7-stroke
-24-grid house style as every other nav icon.
-
-**Left alone, deliberately:** `chooseNextUp`/`Progress.nextUp` in
-`progress.ts` — still computed, still used by `StreakSpotlight` on the
-homepage for its "Keep it going" button. Didn't touch the homepage in this
-pass; the dashboard was the highest-value, most-requested surface and the
-place Matthew actually asked for this.
-
-**Verification:** `tsc -p tsconfig.json --noEmit`, `eslint` on every changed
-file, and `scripts/check-content.mjs` (87,603 checks, content untouched) all
-clean. A full `SESSION_SECRET=... SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=...
-NEXT_PUBLIC_SITE_URL=... npx next build` also succeeded — `/revise` shows up
-correctly as a dynamic (`ƒ`) route alongside `/dashboard` and `/review`.
-`eslint --max-warnings=0` across the whole project still shows exactly the
-same 10 pre-existing `react-hooks/set-state-in-effect` failures documented in
-the Pro/Plus entry below (`ThemeToggle`, `PixelCompanion`, `Wardrobe`,
-`PlannerNotes`, `MockExam`) — none of them in any file this pass touched.
-
-## Competitor research and first priority (2026-08-25)
-
-Matthew asked Jennifer to research ten major revision platforms and compare
-them with Revision Lab. The platforms reviewed were BBC Bitesize, Seneca,
-Save My Exams, Cognito, Physics & Maths Tutor, Quizlet, Anki, Tassomai,
-GCSEPod and Sparx Learning.
-
-**The broad finding:** Revision Lab already has an unusually strong engagement
-layer for an independent GCSE project: fourteen subjects, key facts, worked
-examples, common mistakes, practice questions, spaced flashcards, mock exams,
-test history, progress tracking, XP, levels, badges, streaks, daily goals,
-search, a focus timer, printable sheets, accessibility controls, mascots and a
-wardrobe. Its clearest advantages are its coherent personality, independent
-student focus and free core experience.
-
-**Where established competitors are stronger:** BBC Bitesize in editorial
-authority and multimedia; Seneca in board-specific adaptation and school
-workflows; Save My Exams in examiner-reviewed resources, model answers and
-mark-scheme guidance; Cognito and GCSEPod in short videos; Physics & Maths
-Tutor in past-paper depth; Quizlet in personal deck creation; Anki in mature
-spaced scheduling; Tassomai in weakness detection; and Sparx in maths
-diagnostics and question sequencing.
-
-**The first priority is content trust and exam-board accuracy, not another
-cosmetic or subscription feature.** Start with Computer Science as a pilot:
-map every topic against AQA, Edexcel and OCR; distinguish shared material from
-board-only material; show the relevant route after the student chooses their
-board; add specification/source and last-checked details; add a simple way to
-report a mistake; and have a qualified teacher review the material before
-calling it verified. Do not imply that a board is verified merely because the
-topics have been mechanically tagged.
-
-**Board choice belongs to each subject, not necessarily the whole account.**
-Students can take different boards for different GCSEs. Maths, Science and
-Computer Science share a large knowledge core but differ in grouping,
-terminology, paper structure, question style, mark schemes and some content.
-History and English Literature can differ much more because boards and schools
-choose different options and set texts.
-
-**Registration decision:** do NOT require an account to browse core revision
-content or choose an exam board. Save board choices locally on the device and
-let a visitor begin immediately. Offer optional registration for synchronising
-progress, streaks, test history, wardrobe choices and preferences across
-devices. Accounts can remain required for genuinely account-dependent features
-such as paid plans or future teacher-managed classes. This reduces entry
-friction and avoids collecting unnecessary data from an audience made up
-largely of under-16s.
-
-**Likely order after the Computer Science pilot:**
-
-1. Roll the board model out carefully to other subjects, accounting for
-   option-heavy History and set-text-heavy English.
-2. Build a transparent daily revision queue from overdue flashcards, recent
-   mistakes, weak mock-exam topics and material not reviewed recently.
-3. Add model answers, mark-scheme checklists and more topic-linked exam-style
-   questions before attempting automatic marking of extended answers.
-4. Pilot a few short, captioned explanations only where video adds real value;
-   include transcripts, text alternatives and follow-up retrieval questions.
-
-**Things not to copy:** compulsory registration for free content; public
-user-created decks before moderation exists; identifiable leaderboards
-involving minors; punitive streaks; rushed large-scale video; unverified AI
-marking; or paywalls around essential notes, practice, accessibility and spaced
-repetition.
-
-Revision Lab's strongest intended position is: a friendly, trustworthy and
-genuinely active GCSE revision companion that tells each student what to revise
-next, explains why, and makes steady progress feel rewarding.
+**Verification.** `tsc -p tsconfig.json --noEmit`, `eslint --max-warnings=0`
+(three consecutive clean runs), `scripts/check-content.mjs` (87,603 checks,
+content untouched), and `scripts/check-security.mjs` (57 checks, including
+the registration-throttle simulation) all passed clean against the fixed
+code. `next build` still cannot run from this environment (this sandbox's
+`node_modules` mismatch, not a code issue) — worth Matthew confirming with
+his own `npm run dev`/`npm run build`, as always.
 
 ## Science content (2026-08-10)
 
@@ -1517,69 +1278,6 @@ else.
 `tsc -p tsconfig.json`, `eslint`, and `scripts/check-content.mjs` (87,556
 checks, content untouched) all clean.
 
-## Monetisation planning — discussion, not yet implemented (2026-08-22)
-
-Matthew wants Revision Lab to become a real income-producing product while
-keeping the core revision experience accessible. The working model discussed
-with Jennifer is **free + light advertising + an optional Pro plan**, rather
-than putting essential GCSE content behind a paywall. Nothing in this section
-has been built or finally approved yet; the figures are planning assumptions
-to test against real usage.
-
-**Advertising idea:** at most two clearly labelled, responsive adverts on a
-long topic page — one after the summary/key-facts material and one near the end
-of the learning content. Short pages get one. Keep adverts completely out of
-practice questions, flashcards, subject tests, timers, account pages and the
-progress dashboard. No pop-ups, autoplay, full-screen adverts or sticky units
-that cover content. Because the audience includes children, the assumption is
-contextual/non-personalised advertising with unsuitable categories blocked.
-
-**Pro idea:** £4.99/month, with possible £34.99/year and roughly £12.99 for a
-four-month exam-season pass. Ad removal alone is not enough value at this
-price. The three proposed headline features are:
-
-1. A custom test builder (subjects/topics, difficulty, length and time limit)
-   with a weakness report.
-2. An adaptive revision planner using exam dates and available study time,
-   changing when work is missed or weaknesses change.
-3. Advanced analytics: improvement and accuracy trends, weakest topics, study
-   patterns and a clear "what should I revise tonight?" queue.
-
-Possible supporting Pro benefits: saved custom tests, printable/downloadable
-revision packs, deeper spaced-repetition controls, parent-friendly reports,
-and cosmetic themes or mascot rewards. The existing core notes, ordinary
-practice, flashcards and accessibility features should remain free; Pro sells
-personalisation, planning, convenience and insight.
-
-**First-school working model:** 280 monthly active students, 20 page views per
-student in a normal month, strong December/mock usage and a March-May exam
-surge. The explicit seasonal model totals 128,800 page views/year. At a middle
-planning rate of £2.50 page RPM that is about £322/year in advertising. The
-older £3 Plus scenario estimated about £216/year in subscriptions; combined
-gross revenue was £538, with roughly £250/year in commercial hosting, domain
-and payment costs, leaving about £288 before tax. Broad scenarios were roughly
-break-even / £288 / £778 profit for cautious / middle / strong years. These are
-not forecasts: actual ad RPM, retention, page views and conversion must be
-measured after launch. A £4.99 Pro plan changes the conversion and revenue
-assumptions and needs its own model once the feature set is chosen.
-
-**Distribution idea:** prove the site in Matthew's own school first, obtain
-teacher content review, privacy/safeguarding approval, anonymous usage and
-retention evidence, and a staff testimonial. Then ask the head teacher for
-warm introductions to nearby schools. Give other schools a low-effort ladder:
-share the link with teachers, display a QR poster, trial one class, mention it
-in a bulletin, then consider an assembly. Free teacher tools could become the
-scalable distribution channel; ads earn from most visitors and Pro from a
-small percentage. Direct school licensing and suitable sponsorship remain
-optional later channels rather than the assumed core model.
-
-**Constraints not to forget:** Vercel Hobby is non-commercial, so monetisation
-requires commercial-compatible hosting. Advertising/payment/hosting accounts
-need adult ownership while Matthew is below the services' required ages. The
-UK Children's Code, advertising rules for children, privacy policy and consent
-work must be reviewed before ads launch. Teacher review of the AI-assisted
-content remains a prerequisite for credible school endorsement.
-
 ## Four more badges, and a "languages count as one" rule (2026-08-18)
 
 Matthew asked for four more badges on top of the original eight: **Double
@@ -2034,357 +1732,3 @@ Fixed by re-running `TEST_BADGE_SETUP.sql`, which drops and recreates the constr
 **Verification.** `tsc -p tsconfig.json --noEmit` passes clean against the committed state, and `scripts/check-content.mjs` still passes all 87,556 checks (expected — this round of fixes didn't touch content, only how multiple-choice options render and one database constraint). `eslint` still couldn't be verified from this environment for the same reason noted in the previous entry, but the change here is small and mechanical enough (a shuffle applied at render time, a one-line SQL constraint fix) that this is a low-risk gap. Both fixes are committed (`15f2aaa`) and pushed to `origin/main`.
 
 One housekeeping note: there's a leftover `_to_delete/lint-fast.config.mjs` sitting in the project folder from an earlier attempt to speed up an `eslint` check — it's not part of the app and isn't committed to git, just delete that file (and the `_to_delete` folder, if it's empty afterwards) whenever convenient.
-
-## A deep bug check, and a year-filter for tests (2026-08-20)
-
-Two things happened in this session: a new feature, and then — at Matthew's request — the most thorough bug check this project has had, going well beyond what running `tsc` by hand usually catches.
-
-**New feature: choose which years to include in a test.** The "Try a test" button used to always build a mixed set from every year's topics. Now clicking it lands on a small setup screen first — a tick-box per year the subject actually has (Year 9, Year 10, Year 11, whichever apply; Business and German only have two, and the screen correctly only shows the ones that exist), all ticked by default. Untick a year and the test only draws from the ones still ticked. It's a plain HTML form using `method="get"` — no client-side JavaScript needed at all, since submitting it just reloads the same page with the ticked boxes turned into a `?years=...` query string, which the page reads straight back out. That also means the URL itself fully describes the test's setup, which is what let a couple of the bugs below get found by just thinking through unusual URLs.
-
-**The deep check.** Everything up to now had been verified with `tsc --noEmit` over the device bridge, because `eslint` reliably timed out in that environment (documented in an earlier entry). This session, the whole repository was instead packaged up and reviewed in a clean environment with no time limit, which made it possible to actually run the full `npm run check` pipeline for the first time in a while: a real `next build` (not just a type-check — this compiles and pre-renders all 534 pages), the full `eslint` pass, both content checkers, and the security/throttle simulator. On top of that, two independent close readings went through every file in the "business logic" layer (progress tracking, server actions, auth, rate limiting) and every interactive component, specifically hunting for real correctness and security bugs rather than style nitpicks.
-
-What came out of it, genuinely worth fixing:
-
-1. **A lint-flagged ordering bug in `MockExam.tsx` that happened to be harmless, but wasn't written safely.** The effect that records a finished test's score read `correct` and `markable` — two values declared further down the same function — relying on the fact that a `useEffect` callback isn't actually run until after the whole component has finished rendering, by which point those values already exist. That's true, and it worked, but it's the kind of thing that only keeps working by accident of exactly how the code happens to be arranged — reorder anything around it later and it could break. Fixed by moving the effect to after the values it uses, so the code reads the same way it runs. Also fixed, in the same spot: a disable-comment meant to silence one lint warning was sitting one line too high (above an explanatory comment block, not above the code it was meant to cover), so it was silently doing nothing while the warning it was supposed to suppress fired anyway, uncaught, further down. Both are now fixed with no change in behaviour — same exam, same scoring, same "fires once when the test finishes" timing.
-
-2. **A real, user-visible bug: outfits could stay "worn" after they stopped being unlocked.** Pixel's outfits (shades, party hat, cape, crown) are unlocked by streaks, levels and badges — all live figures that are worked out fresh every time rather than stored, which is deliberate (see the outfits file's own comment on why). The problem: which outfit is *equipped* is a separate thing, stored in the browser rather than the database, and nothing ever re-checked it against the live unlock figures except the Wardrobe page itself. So a student who reached a 3-day streak, equipped the party hat, and then missed a day would see the Wardrobe page correctly say the party hat is locked again — but Pixel would keep wearing it everywhere else on the site (the header, the dashboard, the progress page, every celebration popup), because those places just read whatever was saved and had no way to know it had gone stale. Fixed at the one place that actually has the real unlock figures to check against: the Wardrobe page now corrects the stored value back to "Classic Pixel" the moment it notices the equipped outfit isn't unlocked any more, so everywhere else Pixel appears picks up the correction automatically from then on.
-
-3. **A small inconsistency in the new year-filter feature.** The code correctly handled a year tick-box appearing more than once in the URL (Next.js turns repeated query keys into a list), but the hidden "has this form been submitted" marker wasn't handled the same way — if that one field ever appeared twice in a hand-edited or bookmarked link, the page would silently show the setup screen again instead of the test, even with valid years chosen. Never dangerous (it fails back to the setup screen, never to a broken or wrong test), but inconsistent with the care taken two lines above it. Fixed by handling both the same way.
-
-One more finding, judged not worth fixing today: the rate limiter that protects login (`throttle.ts`) reads the current failure count, adds one, and writes it back as two separate steps rather than one atomic database update. Two login attempts landing at almost exactly the same moment could each read the same starting count and both write "count + 1", losing one increment — which very slightly under-counts a real, fast, automated guessing attack, though it doesn't disable the protection. This would need a proper atomic update on the database side to fix, which is more moving parts than felt justified for a personal revision site with no evidence of ever having faced this kind of attack. Worth revisiting if that ever changes.
-
-**What was checked and found genuinely clean**, for the record: every Server Action in the codebase correctly takes the logged-in user's identity only from the session cookie (never from anything the browser sends as a parameter), and validates every subject slug, topic slug, and numeric input before touching the database — exactly the "treat every argument as hostile" rule this project has followed from early on. The password/session code, the login throttle's actual lockout numbers (simulated end-to-end against a fake clock), the multiple-choice shuffle fix, and the two hand-written `<head>` bootstrap scripts (which have to independently match what their real components do, since they run before any component code loads) were all read closely and found correct. `eslint` still flags eight spots — all the same "reading localStorage after the page has already loaded" pattern used for the theme toggle, accessibility settings, and equipped outfit — which is a real, deliberate, already-documented choice (there's no other way to read something that only exists in the browser without it disagreeing with what the server rendered), not a bug.
-
-**Verification.** A real `next build` succeeds and pre-renders all 534 pages; `tsc --noEmit` is clean; both content checkers (87,556 checks) and the security/throttle simulator (57 checks) pass. All three fixes above are committed, but — same as the last entry — pushing to GitHub is still blocked by a proxy error on this network; they're sitting locally ready to go up once that clears.
-
-## English content: cutting "name the term" questions in half (2026-08-22)
-
-Matthew's complaint, after actually looking at the site: English kept asking
-"what's the term for X?" far more than any other subject — a straight count
-across every subject found English at 95 of these, nowhere near the runner-up
-at 17 — and, in his words, that's "never really" what English is about.
-Naming vocabulary isn't the skill an exam rewards; using it to say something
-about a text is.
-
-**Started with one topic (Poetry Basics, the worst offender at 12) to agree
-the style before doing the rest.** Roughly half its "what's the term for..."
-questions were rewritten to test the skill instead of the name — given a
-short quotation or scenario and asked to identify a technique or explain its
-effect, rather than just recite a definition. Example: instead of "what's
-the term for words that almost rhyme," it now gives "heart" rhymed with
-"hurt" and asks what effect the near-miss creates. The other half stayed as
-straight recall — the vocabulary examiners actually expect used unprompted
-(enjambment, caesura, volta, extended metaphor, symbolism, dramatic
-monologue) is still worth just knowing cold.
-
-**Once that style was confirmed, applied the same treatment to every other
-English topic with these questions** — 14 more topics (grammar-punctuation-
-and-spelling had none, so it was untouched). Each topic's "what's the term
-for" questions were counted, roughly half converted to skill-testing
-questions using either a generic invented example or a quotation already
-present elsewhere in that same topic's own key facts/worked examples (never
-a fabricated claim about a real named text — several of these topics
-explicitly note the actual play/novel/poem varies by school, so nothing
-was invented and attributed to one), and the other half kept as plain
-recall, chosen for being the highest-value vocabulary students need to
-produce without being prompted.
-
-**Done with 14 parallel subagents, one per topic** (two very small topics —
-fiction-reading-and-writing and revision-and-exam-practice, with only 1-2
-such questions each — were paired with a neighbour rather than given a whole
-agent to themselves). Each agent worked on an isolated copy of just its own
-topic's content, specifically so 14 agents editing at once couldn't race
-each other or corrupt a shared file, and the results were stitched back
-together afterwards.
-
-**The numbers, before and after, across the whole subject:** auto-marked
-practice questions went from 336 to 315, and self-marked went from 32 to 53
-— a net change of zero in the total question count (368 either way), exactly
-as intended: nothing was added or removed, questions were converted from one
-style to the other in place.
-
-Verification this round was unusually thorough given the scale of the
-change (roughly 40 hand-written questions touched across 14 files at once):
-`scripts/check-content.mjs` (87,603 checks, up from 87,556 — new checks
-apply naturally to the new questions), `tsc --noEmit`, `eslint --max-
-warnings=0`, and — for the first time this project, a genuine `next build`
-rather than just a type-check, run in an environment without this session's
-usual constraints — a full production build, successfully compiling and
-pre-rendering all 534 pages. All four passed clean.
-
-Committed as `5c1da22`. Same story as recent sessions: pushing to GitHub is
-still blocked by a proxy error on Matthew's network — queued locally with
-the other recent commits, waiting on `git push` to work again.
-
----
-
-## Mobile audit: the header nav was unreachable on a phone (2026-08-22)
-
-Matthew's ask: "optimize it for a phone" before moving on to Pro-subscription
-feature ideas.
-
-**How it was checked, since this bridge has no real phone.** Chrome's own
-`resize_window` tool turned out not to actually resize the browser —
-`window.innerWidth` stayed at 1536 (Matthew's real, maximized desktop
-Chrome) no matter what size was requested. Worked around it by injecting a
-same-origin `<iframe>` fixed at 390×844 (an iPhone-sized viewport) into the
-live page and driving that instead — an iframe gets its own independent
-viewport for CSS media queries, so it genuinely renders mobile layouts
-rather than just a shrunk desktop one. Every page below was checked this
-way: homepage, a subject page, a topic page (key facts, worked examples,
-common mistakes, MCQ practice, flashcards, the focus timer, the printable-
-sheet link), the subject test page, the wardrobe, and the accessibility
-page.
-
-**One real, serious bug found, confirmed by measuring the actual DOM rather
-than just looking at it.** Logged in, the header's right-hand row — Home,
-Search, the theme toggle, Pixel, the greeting, Progress, Dashboard, Account,
-Log out — came out **674px wide inside a 387px-wide screen**, with no wrap
-and no hamburger menu. `overflow-x` on the header was `visible`, so instead
-of clipping, the extra content just sat off the right edge with nothing to
-scroll it into view — Progress, Dashboard, Account and Log out were
-**completely unreachable** on a phone for anyone logged in. This exists on
-every page, since `SiteHeader` renders on all of them.
-
-**Fixed with a hamburger menu, not by shrinking anything.** Home, Search and
-the theme toggle already fit fine on their own — they were never the
-problem. New `MobileMenu.tsx` (a small Client Component, since it needs
-open/closed state) holds a hamburger button that only shows below the `sm`
-breakpoint; tapping it opens a dropdown with the same Pixel avatar,
-greeting, and Progress/Dashboard/Account/Log out links the wider layout
-already had. The existing row is untouched and still shows in full on
-tablet and desktop (`hidden sm:flex`) — this is genuinely the same set of
-Links and the same logout `<form>`, rendered a second time for narrow
-screens and switched purely by CSS, so exactly one copy is ever visible at
-once. Tapping outside the panel, or pressing Escape, closes it; clicking any
-link inside it closes it too, for free, since navigating unmounts the menu.
-
-**Everything else checked came back clean.** Subject pages, topic pages
-(including multiple-choice questions, flashcards, and the practice question
-cards), the test setup screen, the wardrobe grid, and the accessibility
-toggles all stack and resize correctly at 390px with no other overflow
-found.
-
-**Verification:** `tsc --noEmit` clean, `eslint --max-warnings=0` clean, a
-full `next build` succeeded (534 pages). Content wasn't touched, so
-`check-content.mjs` wasn't rerun. **Could not be visually confirmed on the
-actual live site** — the fix is committed (`8240a8f`) but not deployed,
-because `git push` is still blocked by the same proxy error on Matthew's
-network as every commit this week. Worth a real look on an actual phone (or
-Chrome's own device toolbar) once it's pushed and Vercel has redeployed, to
-double-check the dropdown looks right rather than just trusting the DOM
-measurements.
-
-**Next up, once Matthew's push goes through and this is confirmed live:**
-brainstorming Pro-subscription feature ideas, which he's deliberately asked
-to hold until the mobile pass was done.
-
----
-
-## Pro-subscription plan, first pass — two tiers, not one (2026-08-22)
-
-Follow-up to the mobile pass above, same day. Claude offered eight Pro ideas
-(custom test builder, "revise my weak spots", a countdown/planner, deeper
-progress insights, more wardrobe items, no ads, cross-device preferences, a
-parent view). Matthew picked four and, in doing so, split them into **two
-separate tiers** rather than one Pro tier — his own idea, not offered as an
-option:
-
-- **Plus** — no ads. That's the whole tier. The cheap option for someone who
-  just wants the annoyance gone.
-- **Pro** — no ads, plus everything else: the custom test builder, the
-  planner, and the expanded wardrobe (below). The full tier.
-
-**Nothing here is built yet.** This section is a decision log — what the
-two tiers will contain when they exist — not a changelog. See Jennifer's
-"Monetisation planning" section elsewhere in this file for the pricing,
-ad-placement and legal side of the same plan; this section is the feature
-side.
-
-**The planner, redefined from Claude's original pitch.** Claude's version
-was a simple exam countdown plus an auto-generated schedule. Matthew wants
-more: an actual calendar-style view showing what you DID over roughly the
-last four weeks (pulled from the same `activity` event log everything else
-on this site already reads — no new tracking needed, same "derive, don't
-store" pattern as streaks/badges/XP), alongside a place to plan what you're
-going to do next. Two halves, look-back and look-forward, in one view.
-Needs proper design work before building — worth a short session just on
-what this screen actually looks like before writing any code.
-
-**Wardrobe, extended two ways:**
-
-1. **Every mascot gets a wardrobe, not just Pixel.** Today `PixelOutfits.tsx`
-   and the whole equip/unlock system is Pixel-only, wired in because Pixel
-   is treated as the site's character (see "Pixel, everywhere" and its
-   follow-up above). Pro would extend the same system — outfits, unlock
-   conditions, an equipped choice remembered per mascot — to Hoot, Quill,
-   Knight, Atlas, Iris, Sterling, Lumen and the three MFL girls. This is a
-   real chunk of work: the outfit-unlock/equip machinery generalises fine,
-   but every mascot needs its OWN set of outfit artwork drawn in its own
-   proportions, the way Pixel's Shades/Party hat/Cape/Crown were each
-   individually fitted to Pixel's shape.
-2. **A Pro-exclusive item for Pixel specifically** — Matthew's example was a
-   king's crown — that only a Pro subscriber can equip, on top of the
-   ordinary unlock-by-level/streak/badge outfits everyone gets for free.
-   This is the one place in the whole plan where a cosmetic is gated by
-   PAYMENT rather than by playing the site, which is a genuinely different
-   rule from every other outfit — worth being deliberate that it's a single,
-   clearly-labelled exception, not the start of a pattern, so free users
-   don't start feeling like the fun stuff is being held back from them.
-
-**A new feature this surfaced that isn't on any list yet: a leaderboard.**
-Matthew mentioned it in passing, planning ahead rather than asking for it
-today — "when we do an actual ranking amongst every single user, we'd have
-to add a little icon to the profile of people with Plus or Pro." Two things
-worth flagging for whenever that's actually designed, not now:
-
-- **Whatever the subscription-tier badge is, it should be small and
-  cosmetic** — a little icon, exactly as Matthew said — not a mechanism that
-  makes the ranking itself pay-to-win. The rank should still be earned by
-  revising.
-- **A public ranking of every user is a genuinely different kind of feature
-  from anything else on this site**, precisely because most users here are
-  under 16. Today nothing about a Revision Lab account is visible to any
-  other user — the privacy page (see the entry above) is built entirely
-  around that. A leaderboard needs its own real design pass on what's
-  actually shown (first name only? a chosen display name? no name at all,
-  just a rank and a streak?) before it gets built, not just bolted on as
-  "activity, sorted." Worth raising with Matthew directly when that
-  feature's turn comes round, rather than assuming.
-
-**Known blockers, already flagged once and still true:** actually charging
-for Plus or Pro needs Vercel's paid plan (Hobby is explicitly
-non-commercial) and a real payment processor (Stripe or similar) — neither
-exists yet. None of that blocks talking through what each tier contains,
-which is all this session did.
-
-**Not picked, at least for now:** "revise my weak spots" mode, deeper
-progress insights/trend graphs, and a parent/family view. Not rejected
-outright — just not part of this round's picks. Worth another look if
-Matthew wants to revisit the list.
-
----
-
-## Pro/Plus, built — live buttons, hidden features (2026-08-22)
-
-Same day, immediate follow-up to the decision log above. Matthew's ask:
-write real code for the four picked features, but make sure nobody can
-actually reach three of them yet, and add real "Upgrade to Plus"/"Upgrade
-to Pro" buttons to the account page that say **Coming soon** rather than
-charging anyone anything.
-
-**The account page change is LIVE** — every visitor with an account sees
-it once this is pushed. A new "Go further" section lists what Plus (no
-ads) and Pro (no ads, plus the three features below) each contain, with a
-button per plan. `UpgradeButtons.tsx` is a small Client Component: clicking
-either button reveals "Coming soon — thanks for the interest!" in place of
-itself. No network request, no redirect, nothing that could be mistaken
-for an actual transaction — there is no payment processor anywhere in this
-codebase, so a button that looked like it charged you but didn't would be
-a dark pattern, not an honest placeholder.
-
-**Everything else is real, working code that 404s on the live site.** New
-constant `PRO_PREVIEW_ENABLED` in `app/lib/site.ts`, same shape as the
-existing `ACCOUNTS_ENABLED` switch: reads an environment variable
-(`PRO_PREVIEW_ENABLED=true` in `.env.local`) that isn't set anywhere the
-site is actually deployed, so every page under the new `app/pro-preview/`
-folder calls `notFound()` and is false by default in production. Nothing
-needs deleting to hide these later — flipping one env var is the whole
-mechanism, same as accounts.
-
-**Custom test builder** — `app/pro-preview/custom-test/`. A subject picker,
-then a close cousin of the existing `/subjects/[subject]/exam` page: same
-form-with-no-JS pattern, same `MockExam` component, same
-`force-dynamic`/fresh-random-pick reasoning — the one real difference is
-the form ticks individual TOPICS rather than whole years, and nothing is
-ticked by default (the existing exam page ticks every year by default,
-which is right for "the whole subject" but wrong for "just the few things
-I actually want"). Genuinely finished, not a stub.
-
-**Planner** — `app/pro-preview/planner/`. Two halves, matching what
-Matthew actually asked for rather than Claude's original simpler pitch:
-
-- **Look back:** a 4-week calendar, one cell per day, shaded by how much
-  was revised that day (practice questions + flashcards + roughly
-  time/5min, banded into four shades). Built on a new exported function,
-  `getMonthlyActivity`, added to the bottom of `progress.ts` — pure
-  addition, nothing existing in that file was touched. It reads the same
-  `activity` event log everything else already reads, just grouped by day
-  over 28 days instead of 7, the same relationship `getMonthlyActivity` has
-  to `getProgress`'s existing 7-day chart-building code.
-- **Look forward:** a simple date + note list for what you're planning to
-  revise, in `PlannerNotes.tsx`. **Known, documented limitation:** this
-  half lives in localStorage, not the database — a real plan someone
-  writes on their laptop won't show up on their phone. Deliberate for this
-  preview specifically, so trying it doesn't need Matthew to run a new SQL
-  migration first; the file's own comment says outright that a shipped
-  version needs a real `planner_notes` table instead, same event-log shape
-  as everything else here.
-
-**Wardrobe, expanded — honestly scoped, not fully done.** This is the one
-place Claude pushed back a little rather than building exactly what was
-asked, and it's worth explaining why. "Every mascot gets a wardrobe" for
-real means drawing a full outfit set for each of the other ten mascots,
-individually fitted to each one's own proportions — the same care Pixel's
-original four outfits got (see the Business-section note about
-`preview-mascot.py`, built specifically so mascot art could be rendered
-and LOOKED AT before shipping, not just reasoned about). Doing that
-properly for ten mascots in one sitting isn't realistic without rushing
-the art, and rushed mascot art has caused real problems on this site
-before (see "Pixel's antenna" and the MFL hats, both clipped outside their
-viewBox and caught before shipping).
-
-So `app/pro-preview/wardrobe/` proves the PATTERN instead of faking the
-scope: a new, fully separate system (`MascotOutfits.tsx`,
-`MascotWardrobeGrid.tsx` — their own localStorage keys, prefixed
-`preview-`, so nothing here can be read by the LIVE header/dashboard/
-celebration code that renders Pixel's real, shipped outfits) with **one
-new item for a second mascot** (Hoot gets a reading scarf, unlocked at
-Level 3 same as Pixel's Shades) and **the one Pro-exclusive item Matthew
-asked for** — a Diamond crown for Pixel, deliberately a different name and
-design from the free "Crown" outfit that already exists (unlocked at
-Level 10 for everyone), so a Pro subscriber never wonders why they paid
-for something free players already have. The Diamond crown's lock always
-reads "Pro subscribers only" and stays permanently locked — there is no
-subscription record anywhere in this codebase yet for it to check, so
-`isProSubscriber` is a hardcoded `false` with a comment marking it as the
-one line to change once real subscriptions exist. **The other eight
-mascots have no outfits drawn.** That's the honest current state, not a
-bug — the code and data shape both support adding them; the art doesn't
-exist yet and shouldn't be rushed just to tick a box. Worth a dedicated
-session per mascot (or a few at a time) when this is ready to actually
-ship, the same way each existing mascot got its own attention.
-
-**Verification, and one real finding.** `tsc --noEmit` clean. A full
-`next build` succeeded — 537 pages, the three new preview routes included,
-correctly appearing static/dynamic as expected. `check-content.mjs` wasn't
-rerun since no content files were touched.
-
-**`eslint --max-warnings=0` currently fails — but not because of anything
-built this round.** Running it project-wide surfaced 10 errors, all the
-same rule (`react-hooks/set-state-in-effect`, from `eslint-config-next`/
-`eslint-plugin-react-hooks`), firing on the exact "read a value from
-localStorage inside `useEffect`, then `setState` with it" pattern this
-whole codebase already uses deliberately, on purpose, with a comment
-explaining why, in FOUR EXISTING files nobody touched this round —
-`ThemeToggle.tsx`, `PixelCompanion.tsx`, `MascotDisplay.tsx`, and
-`Wardrobe.tsx`. The two new preview files that use the same idiom
-(`PlannerNotes.tsx`, `MascotWardrobeGrid.tsx`) trip the identical rule, for
-the identical reason — they're consistent with the rest of the codebase,
-not newly broken.
-
-This means `npm run check`'s lint step has been silently failing
-project-wide for a while, independent of anything in this session — most
-likely a dependency update pulled in a newer `eslint-plugin-react-hooks`
-that added this rule after the pattern was already used everywhere. **Not
-fixed here on purpose:** the correct fix (React's own guidance points at
-`useSyncExternalStore` for reading external, browser-only state like
-localStorage, rather than `useEffect` + `setState`) is a real pattern
-change across at least four live, working files that touch dark mode and
-the real wardrobe — not something to rush through as a side effect of
-shipping four unrelated features under time pressure. Worth its own
-session. `npx tsc --noEmit` and a full `next build` both still pass clean
-in the meantime, which is the strongest signal available that nothing here
-is actually broken for a visitor.
-
-Not pushed yet — same proxy 403 blocking every push this week.

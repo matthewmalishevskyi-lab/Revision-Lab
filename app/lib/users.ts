@@ -195,9 +195,39 @@ async function supabase(path: string, init: RequestInit = {}): Promise<Response>
   });
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// WHY "FILE MISSING" AND "FILE CORRUPTED" ARE NOT THE SAME OUTCOME, FOUND IN
+// THE 2026-08-25 DEEP BUG HUNT
+//
+// The original version caught every failure here — a missing file AND a
+// corrupted one — and returned [] either way, on the reasoning that "no file
+// yet" just means nobody has registered. That reasoning is right for a missing
+// file and dangerous for a corrupted one: createUser's local-file path reads
+// this list, pushes ONE new user onto it, and writes the whole thing back.
+// If a real users.json existed but failed to parse (a half-written file, disk
+// corruption) and this silently returned [], the very next registration would
+// overwrite it with a file containing only that one new account — every
+// existing user on the laptop permanently gone, with nothing in the logs to
+// explain why.
+//
+// So only a genuinely missing file (ENOENT) is treated as "nobody's
+// registered yet". Anything else — a parse failure, a permissions problem —
+// is logged loudly and re-thrown, so the caller shows an ordinary error
+// instead of quietly proceeding to destroy data. This only matters on the
+// local JSON-file path (a laptop with no Supabase configured); the live site
+// uses the database and never reaches this function at all.
+// ─────────────────────────────────────────────────────────────────────────────
 async function readUsers(): Promise<User[]> {
+  let raw: string;
   try {
-    const raw = await readFile(USERS_FILE, "utf8");
+    raw = await readFile(USERS_FILE, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+    console.error("[users] could not read data/users.json:", error);
+    throw error;
+  }
+
+  try {
     // Accounts saved before deletion existed have no deletedAt field at all.
     // Defaulting it here means the rest of the code can rely on the property
     // being present, rather than every caller remembering that old rows differ.
@@ -205,9 +235,12 @@ async function readUsers(): Promise<User[]> {
       ...u,
       deletedAt: u.deletedAt ?? null,
     }));
-  } catch {
-    // File doesn't exist yet — that just means nobody has registered.
-    return [];
+  } catch (error) {
+    console.error(
+      "[users] data/users.json exists but could not be parsed — refusing to treat it as empty:",
+      error,
+    );
+    throw new Error("USERS_FILE_CORRUPTED");
   }
 }
 

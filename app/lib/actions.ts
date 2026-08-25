@@ -96,6 +96,17 @@ export async function register(
     await createSession(user.id, true);
   } catch (error) {
     if (error instanceof Error && error.message === "EMAIL_TAKEN") {
+      // Counts against the per-IP registration limit exactly like a genuine
+      // new account does. Found in the 2026-08-25 deep bug hunt: this branch
+      // used to return without ever calling recordRegistration(), which only
+      // fires on success below — so probing candidate emails to find out
+      // which ones already have an account was completely unthrottled, no
+      // matter how many were tried. The rest of this codebase goes out of
+      // its way to stop exactly that kind of email-enumeration (see the
+      // login timing fix and the identical wrong-password/unknown-email
+      // wording in throttle.ts) — a real registration and a "yes, that one's
+      // taken" answer should cost the attacker the same.
+      await recordRegistration();
       return { fieldErrors: { email: "An account with that email already exists." } };
     }
 
@@ -219,18 +230,38 @@ export async function logout() {
 
 // Used by pages to find out who's logged in. Returns just the safe fields —
 // never hand a password hash to a page, even by accident.
+//
+// ─────────────────────────────────────────────────────────────────────────────
+// WHY THIS IS WRAPPED IN A TRY/CATCH, FOUND IN THE 2026-08-25 DEEP BUG HUNT
+//
+// `getViewer` (app/lib/viewer.ts) wraps this in React's `cache()` and
+// `SiteHeader` — which renders on every single page — calls it unconditionally
+// whenever ACCOUNTS_ENABLED. `findUserById` throws on a database problem
+// (see `describeFailure` in users.ts), and nothing here used to catch that.
+// `login()` already treats a database blip as "show a friendly error" rather
+// than a crash, for exactly this reason; this function reached every page on
+// the site, logged in or not, so the SAME blip here would have taken down
+// EVERY page with an uncaught exception, not just the login form. Fail as
+// "nobody's logged in" instead — worse than a perfect answer, far better than
+// a site-wide outage over a transient Supabase hiccup.
+// ─────────────────────────────────────────────────────────────────────────────
 export async function getCurrentUser() {
   const userId = await getSessionUserId();
   if (!userId) return null;
 
-  const user = await findUserById(userId);
-  if (!user) return null;
+  try {
+    const user = await findUserById(userId);
+    if (!user) return null;
 
-  return {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    createdAt: user.createdAt,
-    deletedAt: user.deletedAt,
-  };
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt,
+      deletedAt: user.deletedAt,
+    };
+  } catch (error) {
+    console.error("[getCurrentUser] lookup failed:", error);
+    return null;
+  }
 }

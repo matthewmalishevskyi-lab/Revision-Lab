@@ -13,10 +13,38 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      // ─────────────────────────────────────────────────────────────────────
       // Private or pointless-in-search pages. These are also marked noindex in
       // their own metadata, which is the part that actually keeps them out of
       // results — this is just belt and braces.
-      disallow: ["/dashboard", "/login", "/register", "/forgot-password"],
+      //
+      // This list had drifted stale — found in the 2026-08-25 deep bug hunt.
+      // /account, /progress, /review, /revise, /wardrobe and every /pro-preview
+      // page all carry `robots: { index: false, follow: false }` in their own
+      // metadata but were missing here, so the "belt and braces" this comment
+      // promises wasn't actually happening for any of them. Added below —
+      // "/pro-preview" as one prefix rather than listing each sub-page, since
+      // a robots.txt disallow rule matches by prefix.
+      //
+      // Deliberately NOT added: /subjects/*/exam, /subjects/*/print and
+      // /subjects/*/stats. Those are also noindex, but with `follow: true` —
+      // they deliberately want crawlers to fetch the page and follow its
+      // links (back to the real, indexable topic pages) without indexing the
+      // page itself. Disallowing them here would stop crawlers reaching them
+      // at all, which would break that "follow" intent, not reinforce it.
+      // ─────────────────────────────────────────────────────────────────────
+      disallow: [
+        "/dashboard",
+        "/login",
+        "/register",
+        "/forgot-password",
+        "/account",
+        "/progress",
+        "/review",
+        "/revise",
+        "/wardrobe",
+        "/pro-preview",
+      ],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
