@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { chipClasses } from "./chipStyles";
+import { iconChipClasses } from "./chipStyles";
 
 // The hamburger menu that holds the "you're logged in" links (Progress,
 // Dashboard, Account, Log out, Pixel) on narrow screens.
@@ -38,10 +38,14 @@ export function MobileMenu({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative sm:hidden">
+      {/* Icon-only, the same reasoning as Search and the theme toggle now
+          use — a hamburger/close icon is self-explanatory, and this button
+          only ever appears on a phone-width screen where every pixel of
+          width matters more, not less. */}
       <button
         type="button"
         onClick={() => setOpen((wasOpen) => !wasOpen)}
-        className={chipClasses}
+        className={iconChipClasses}
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
       >

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { chipClasses } from "./chipStyles";
+import { iconChipClasses } from "./chipStyles";
 import { Icon } from "./Icon";
 import { SUBJECTS, getGroup, type IconName } from "../lib/subjects";
 
@@ -146,9 +146,19 @@ export function SearchBox() {
 
   return (
     <>
-      <button type="button" onClick={open} className={chipClasses}>
+      {/* Icon-only: a magnifying glass needs no label, and dropping the text
+          here is one of several trims that keep the header row fitting on
+          one line — see chipStyles.ts's comment. The keyboard shortcut still
+          shows up on hover via `title`, for anyone who wouldn't otherwise
+          know it exists. */}
+      <button
+        type="button"
+        onClick={open}
+        className={iconChipClasses}
+        aria-label="Search"
+        title="Search (press /)"
+      >
         <SearchIcon />
-        <span className="hidden sm:inline">Search</span>
       </button>
 
       {isOpen && (

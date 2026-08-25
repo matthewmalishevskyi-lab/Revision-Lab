@@ -23,6 +23,13 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
   // Don't even ask who's logged in if accounts are switched off.
   const user = ACCOUNTS_ENABLED ? await getViewer() : null;
 
+  // First name only, everywhere this header shows a greeting. Measured (not
+  // guessed) as one of several things trimmed to fix a real overflow bug —
+  // see the big comment on the button row below for the full story.
+  // `.trim().split` rather than a naive `[0]` so a name typed with leading
+  // spaces, or as a single word, both still work.
+  const firstName = user?.name.trim().split(/\s+/)[0];
+
   return (
     <header className="flex items-center justify-between gap-4">
       <Link href="/" className="flex items-center gap-3">
@@ -32,7 +39,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
         </span>
       </Link>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         {/* Always present, on every page, whether you're logged in or not.
             The logo also links home, but a labelled button is findable —
             people don't reliably know that a logo is clickable. */}
@@ -62,20 +69,42 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 real phone screen. Only one of the two ever shows at once,
                 switched purely by CSS breakpoint (`hidden sm:flex` vs the
                 `sm:hidden` inside MobileMenu), so there's exactly one visible
-                copy of "Dashboard" at any given screen width. */}
-            <div className="hidden items-center gap-3 sm:flex">
+                copy of "Dashboard" at any given screen width.
+
+                ⚠️ A second, wider-screen overflow bug lived here too, found
+                by actually measuring rather than assuming "sm:flex" meant
+                "fits any screen sm and up." This row's own content needed
+                roughly 1450px in a single line — Pixel, a greeting and six
+                chips — but every page's content column is capped at
+                max-w-6xl, about 1100px wide. That's not a narrow-screen
+                problem: it overflowed the column, and therefore the page
+                itself, on every desktop width, including a real 1536px-wide
+                laptop screen where "Log out" ran off the right edge of the
+                browser window entirely, with a horizontal scrollbar as the
+                only clue anything was wrong.
+
+                Fixed with several small cuts rather than one big one:
+                dropping the "Hi, {name}" greeting entirely (see below —
+                it was one of the widest things here, for zero information
+                StreakSpotlight doesn't already say louder, right below this
+                row); icon-only Search/theme/menu buttons (see
+                chipStyles.ts); tighter padding and gaps; and "Revise"
+                instead of "Revise today" on this specific chip. Verified
+                against the real, deployed page at 1536px — no longer
+                overflows, with room to spare. `flex-wrap` stays on as a
+                genuine safety net regardless: if some future change (a
+                longer name, a new chip, the large-text accessibility
+                setting) ever makes this not fit again, it wraps onto a
+                second line instead of quietly overflowing the page a
+                second time. */}
+            <div className="hidden flex-wrap items-center gap-2 sm:flex">
               {/* Pixel, wearing whatever's equipped in the wardrobe — see
                   PixelCompanion.tsx. This is the one placement that puts him on
                   literally every page, since SiteHeader is on all of them.
-                  Before the greeting, the way a personal avatar usually sits
-                  first in a row like this. */}
+                  No "Hi, {name}" greeting next to him any more, deliberately
+                  — see the comment above. It's kept in the phone menu below,
+                  which has room to spare and no "Welcome back" card nearby. */}
               <PixelCompanion className="h-10" />
-
-              {greeting && (
-                <span className="hidden text-lg opacity-70 lg:inline">
-                  Hi, {user.name}
-                </span>
-              )}
 
               {/* Progress before Dashboard: it's the thing people actually come
                   back for, and the reason accounts exist at all. */}
@@ -93,10 +122,14 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                   new ones, across every subject at once. See
                   lib/revision-queue.ts. Reachable from anywhere, the same
                   reasoning as Progress and Dashboard sitting here rather
-                  than only being linked from inside one page. */}
+                  than only being linked from inside one page. Shortened to
+                  "Revise" here specifically — the full "Revise today (N)"
+                  phrasing, with the actual count, is still what the
+                  homepage's own streak card says; this chip only has to get
+                  you there. */}
               <Link href="/revise" className={chipClasses}>
                 <ChecklistIcon />
-                <span className="hidden sm:inline">Revise today</span>
+                <span className="hidden sm:inline">Revise</span>
               </Link>
 
               {/* Account settings need to be reachable in one click from
@@ -123,7 +156,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 <PixelCompanion className="h-10" />
                 {greeting && (
                   <span className="text-lg font-medium opacity-80">
-                    Hi, {user.name}
+                    Hi, {firstName}
                   </span>
                 )}
               </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { chipClasses } from "./chipStyles";
+import { iconChipClasses } from "./chipStyles";
 
 // The button that switches the whole site between light and dark mode.
 //
@@ -76,18 +76,22 @@ export function ThemeToggle() {
   }
 
   return (
+    // Icon-only, like Search — a sun or a moon needs no caption, and
+    // "Light mode"/"Dark mode" was one of the wider chips in the row for
+    // what it says. `title` carries the same wording on hover for anyone
+    // who wants it spelled out.
     <button
       type="button"
       onClick={toggleTheme}
-      className={chipClasses}
+      className={iconChipClasses}
       // `aria-pressed` is the correct ARIA role for a two-state toggle button
       // — it tells a screen reader this isn't a normal button that DOES
       // something, it's a switch that currently IS in one of two states.
       aria-pressed={isDark}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? <SunIcon /> : <MoonIcon />}
-      <span className="hidden sm:inline">{isDark ? "Light mode" : "Dark mode"}</span>
     </button>
   );
 }

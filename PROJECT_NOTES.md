@@ -1,5 +1,73 @@
 # Project Notes - Revision Lab (GCSE revision website)
 
+## The header row was actually overflowing the page (2026-08-25)
+
+Matthew: "I don't like the button design at the top of the home page." Asked
+which button he meant, since the top of the page has several candidates —
+he meant the row of chip buttons in the header (Home, Progress, Dashboard,
+Revise today, Account, Log out and the rest), not the big streak-card
+button below it.
+
+**Before touching any CSS, opened the real live site and looked.** Good
+thing, too — this wasn't a matter of taste. On a real 1536px-wide laptop
+screen (measured via `window.innerWidth`, and it matches Matthew's own
+device info exactly), the header row was **genuinely overflowing the
+page**: `document.documentElement.scrollWidth` (1586px) was wider than the
+window itself (1536px), and the visible symptom was "Log out" running off
+the right edge of the browser with a bottom horizontal scrollbar as the
+only clue. Not a rare edge case — the row's own content measured out at
+roughly 1450px needed for Pixel, a name greeting and six chips in a single
+line, against a page content column capped at `max-w-6xl` (≈1100px
+available). That gap exists on **any** desktop-width screen, not just
+narrow ones — it was never a "screen too small" bug, it was "this row was
+simply wider than the column it lives in," which a phone-width audit from
+an earlier session (see MobileMenu.tsx's own comment) had no reason to
+catch, since it was specifically checking the *narrow* end.
+
+**Fixed with several small, independently-justified cuts rather than one
+big rewrite:**
+
+1. **Search and the theme toggle became icon-only.** A magnifying glass
+   and a sun/moon are both universally understood without a caption — the
+   text label was pure width cost. New `iconChipClasses` in
+   `chipStyles.ts`, alongside the existing `chipClasses`, sized with equal
+   padding on every side so a lone icon doesn't sit in a lopsided pill.
+   The mobile hamburger button switched to the same style for the same
+   reason and for visual consistency.
+2. **The "Hi, {name}" greeting was dropped from the header row entirely**,
+   not just shortened. It only ever appears on the homepage, and
+   `StreakSpotlight` already says "Welcome back, {name}" prominently right
+   below this row — the header's smaller copy of the same sentence was
+   pure width cost for zero new information, and it was one of the widest
+   single things in the row. Kept in the phone hamburger menu, which has
+   room to spare and no streak card nearby to make it redundant.
+3. **"Revise today" shortened to "Revise" on this one chip.** The fuller
+   phrase, with the live count, is still what the homepage's streak card
+   itself says — this chip only has to get you to `/revise`.
+4. **Chip padding and row gaps tightened slightly** (`chipStyles.ts`,
+   `SiteHeader.tsx`) — still comfortable to click, just less generous.
+5. **`flex-wrap` added to the row as a permanent safety net**, regardless
+   of whether the above cuts are enough on their own. If a future change —
+   a longer name, a new chip, someone turning on the "larger text"
+   accessibility setting — ever makes the row not fit again, it now wraps
+   onto a tidy second line instead of silently overflowing the page a
+   second time. This is the part that actually guarantees the bug can't
+   fully recur, independent of how precisely the width math works out.
+
+**Verified against the real, deployed page, not a guess.** Rather than
+trust arithmetic alone, the exact planned markup and classes were patched
+into the live site's actual DOM (via the browser's console, on the real
+page Matthew is logged into — nothing was saved this way, it's a
+throwaway in-page edit purely for measuring) and re-measured at the same
+1536px width: `scrollWidth` dropped to 1521px against a 1536px window — no
+overflow, all six chips plus Search, the theme toggle and Pixel comfortably
+on one line, with room to spare. Screenshotted in both dark and light mode
+to confirm it reads cleanly in both.
+
+`tsc`, `eslint --max-warnings=0` (three clean runs), `next build`, and
+`scripts/check-content.mjs` (87,603 checks, content untouched — this was a
+UI-only change) all pass.
+
 ## Per-subject statistics pages (2026-08-25)
 
 The oldest outstanding item on this whole file, from the day progress
