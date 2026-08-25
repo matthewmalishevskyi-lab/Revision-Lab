@@ -1,5 +1,35 @@
 # Project Notes - Revision Lab (GCSE revision website)
 
+## The homepage streak card now points at the queue too (2026-08-25)
+
+Small follow-up to the entry directly below this one, same day. The
+dashboard got the global queue; the homepage's `StreakSpotlight` — the big
+streak card every logged-in visitor sees first — still had its button
+wired to `chooseNextUp`'s single-topic opinion, left alone deliberately in
+the first pass so as not to touch two surfaces in one sitting.
+
+**The button now always goes to `/revise`.** `StreakSpotlight` dropped its
+`nextUp` prop entirely and takes `queueCount: number` instead — `app/page.tsx`
+calls `getRevisionQueue(user.id)` (only `.length` is needed) alongside the
+`getProgress` call it already made. When there's anything in the queue and
+the streak isn't at risk or already at goal, the button itself now reads
+"Revise today (N) →" rather than the generic "Keep it going →" — the same
+"put the live number on the button" idea the dashboard's own "See all N →"
+link already uses. The "Save your streak"/"Keep exploring" wording for the
+at-risk and goal-reached cases is untouched; only where the button LEADS
+changed, to the full ranked queue instead of one guessed topic.
+
+`chooseNextUp`/`Progress.nextUp` in `progress.ts` are untouched and not
+dead code — `SubjectProgress.nextTopic` (which `chooseNextUp` reads from)
+still drives the dashboard's per-subject "next topic" fallback inside
+`getRevisionQueue` itself (see step 3, never-touched topics), so the same
+underlying idea now feeds the global queue instead of only a single-topic
+hero.
+
+`tsc -p tsconfig.json --noEmit`, `eslint` on both changed files, and a full
+`next build` (confirmed no other file still referenced the old `nextUp`
+prop) all clean.
+
 ## The global "Revise today" queue (2026-08-25)
 
 Matthew's pick, after weighing Jennifer's exam-board-accuracy research against

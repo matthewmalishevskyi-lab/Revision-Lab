@@ -8,6 +8,7 @@ import { StreakSpotlight } from "./components/StreakSpotlight";
 import { StructuredData, websiteSchema } from "./components/StructuredData";
 import { getViewer } from "./lib/viewer";
 import { getProgress } from "./lib/progress";
+import { getRevisionQueue } from "./lib/revision-queue";
 import { SITE_NAME, SITE_URL } from "./lib/site";
 import { homepageCards, isGroup, subjectsInGroup } from "./lib/subjects";
 
@@ -26,6 +27,11 @@ export default async function Home(props: PageProps<"/">) {
   // call even with no database configured; it just comes back with no
   // recorded activity, not an error.
   const progress = user ? await getProgress(user.id) : null;
+
+  // The GLOBAL revision queue (lib/revision-queue.ts) — only its length is
+  // needed here, to put a live number on the streak card's button. Same
+  // "logged in only" guard as progress above, for the same reason.
+  const queueCount = user ? (await getRevisionQueue(user.id)).length : 0;
 
   // Deleting an account logs you out, so the confirmation cannot live on the
   // account page — there is no session left to show it with. It arrives as a
@@ -79,7 +85,7 @@ export default async function Home(props: PageProps<"/">) {
           userName={user.name}
           streak={progress.streak}
           today={progress.today}
-          nextUp={progress.nextUp}
+          queueCount={queueCount}
         />
       ) : (
         <section className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/60 bg-white/55 px-8 py-10 text-center shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">

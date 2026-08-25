@@ -16,16 +16,25 @@ import type { Progress } from "../lib/progress";
 // same friendly neutral card it is the rest of the time. Losing a streak you
 // never noticed you had doesn't motivate anyone; losing one you were just
 // told about does.
+//
+// The button used to link straight to ONE subject/topic — whichever single
+// suggestion chooseNextUp (lib/progress.ts) happened to make. It now always
+// goes to /revise instead: the GLOBAL queue (lib/revision-queue.ts) that
+// combines overdue flashcards, weak topics and new ones across every
+// subject, not just the one thing chooseNextUp picks. `queueCount` is shown
+// on the button itself so the number is visible before clicking through —
+// same reasoning as the "See all N →" link the dashboard's own queue
+// preview already uses.
 export function StreakSpotlight({
   userName,
   streak,
   today,
-  nextUp,
+  queueCount,
 }: {
   userName: string;
   streak: Progress["streak"];
   today: Progress["today"];
-  nextUp: Progress["nextUp"];
+  queueCount: number;
 }) {
   // "At risk" means there IS something to lose (a real streak) and nothing
   // has been done yet today to keep it — the exact moment a warning is
@@ -114,11 +123,7 @@ export function StreakSpotlight({
       </div>
 
       <Link
-        href={
-          nextUp
-            ? `/subjects/${nextUp.subjectSlug}/${nextUp.topicSlug}`
-            : "/dashboard"
-        }
+        href="/revise"
         className={`mt-7 inline-block rounded-xl px-7 py-3 text-base font-semibold text-white transition hover:opacity-90 ${
           atRisk ? "bg-amber-600" : "bg-blue-600"
         }`}
@@ -127,7 +132,9 @@ export function StreakSpotlight({
           ? "Save your streak →"
           : goalReached
             ? "Keep exploring →"
-            : "Keep it going →"}
+            : queueCount > 0
+              ? `Revise today (${queueCount}) →`
+              : "Keep it going →"}
       </Link>
     </section>
   );
