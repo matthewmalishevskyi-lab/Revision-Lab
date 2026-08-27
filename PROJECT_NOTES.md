@@ -1,5 +1,21 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## "Make heir" now actually designates a successor — not an instant handover (2026-08-27)
+
+Follow-up from Matthew, same day as the wording-only rename just below: "after pressing this button, you just make the person a heir, right, not the actual leader, and the person becomes leader only... when the leader leaves. Oh, and also, make sure that only the leader can make a heir." This is the SECOND option from the clarifying question I asked earlier today — the one he'd initially said no to ("Just rename it") — so the rename-only entry directly below this one is now superseded by this one, kept rather than edited so the back-and-forth is still visible.
+
+**What actually changed.** `designateClanHeir` (renamed from `transferClanLeadership`) now only ever writes a new `heir_id` column on `clans` — it no longer touches `created_by` at all. Clicking "Make heir" records a choice; it does not make anyone leader. `leaveClan` is what reads that choice: when the leader leaves, it hands `created_by` to the chosen heir if one was named and they're still a member, and only falls back to the old default (earliest-joined remaining member) when nobody was chosen, or the chosen heir already left. Either way the new leader starts with `heir_id` cleared — the previous leader's choice shouldn't read as though the new leader made it themselves. Separately, if the HEIR leaves without the leader ever leaving, `heir_id` is cleared too, so it can never point at somebody no longer even a member.
+
+**"Only the leader can make a heir"** — already true before Matthew asked for it explicitly: `designateClanHeir` checks the caller against `created_by` itself (`NOT_CREATOR`), the same data-layer check `updateClanBanner` uses for the banner, so it holds even if someone bypassed the page and posted the form directly — not just because the button is hidden from everyone else.
+
+**On the leaderboard:** the designated heir gets a purple "Heir" badge (distinct from the amber "Leader" one); anyone else who'd inherit by default when nobody's been chosen still gets the old, plainer "Next in line by default" text, so the two cases read differently rather than looking like the same guarantee.
+
+**New column:** `heir_id` (nullable uuid, no default) added to `CLAN_SETUP.sql` — **Matthew needs to re-run the updated SQL block in Supabase's SQL Editor** for the live site, the same step the banner resize feature needed (and for the same reason: a live table missing a column the code now queries throws `PGRST204`, not a code bug).
+
+Verified: `tsc --noEmit` and `eslint --max-warnings=0` clean, `check-content.mjs` (87,603 checks, untouched) and `check-security.mjs` (57 checks) both pass, plus a throwaway 14-check functional test against the local-file backend — heir starts null, non-leader blocked from designating, leader blocked from designating themselves, designating a non-member blocked, designating an heir leaves `created_by` unchanged, the chosen heir (not the default earliest-joiner) becomes leader when the leader leaves, the new leader starts with no heir of their own, a stale heir designation is cleared when the HEIR leaves early, and leaving still falls back to the old default when nobody was ever chosen — all passed, then deleted.
+
+Changed: `app/lib/clans.ts` (`designateClanHeir`, `leaveClan`), `app/lib/clan-actions.ts` (`designateHeirAction`), `app/clans/[id]/page.tsx` (badge + button logic), `CLAN_SETUP.sql` (`heir_id` column).
+
 ## Small wording tweak: "Make leader" → "👑 Make heir" (2026-08-27)
 
 Matthew: "can you change make leader to make crown inheritor or something? Make a heir" — sounded like it might mean an actual behaviour change (choosing a successor now who only takes over later), so I asked rather than guessed. His answer: just the wording. Same button, same `transferLeadershipAction`, same instant handover — only the visible label changed, on the button described in the entry just below.

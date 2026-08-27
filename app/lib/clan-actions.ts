@@ -14,10 +14,10 @@ import {
 } from "./clanBanners";
 import {
   createClan,
+  designateClanHeir,
   getUserClan,
   joinClan,
   leaveClan,
-  transferClanLeadership,
   updateClanBanner,
 } from "./clans";
 import { getSessionUserId } from "./session";
@@ -185,34 +185,36 @@ export async function updateClanBannerAction(
   redirect(`/clans/${clanId}`);
 }
 
-// Handing leadership to a specific member, by the leader's own choice —
-// see transferClanLeadership's own comment in clans.ts for how this
-// differs from the automatic handover that happens if a leader leaves
-// without ever doing this. A plain single-argument server action bound
-// directly to a form, the same shape as leaveClanAction just below — no
-// useActionState/ClanFormState needed here, since this button is only
-// ever rendered for the clan's actual current leader, about someone
-// who's actually a member of their own clan; a failure here means the
-// page was already out of date (a race, not a real user mistake), so it's
-// enough to log it and simply show the page as it now really is rather
-// than build error UI for a case nobody will normally hit.
-export async function transferLeadershipAction(formData: FormData): Promise<void> {
+// Choosing an heir — NOT an immediate handover. See designateClanHeir's own
+// comment in clans.ts for what this choice actually does: the chosen
+// person only becomes leader later, automatically, if the current leader
+// leaves without ever picking someone else instead. A plain
+// single-argument server action bound directly to a form, the same shape
+// as leaveClanAction just below — no useActionState/ClanFormState needed
+// here, since this button is only ever rendered for the clan's actual
+// current leader; a failure here means the page was already out of date
+// (a race, not a real user mistake), so it's enough to log it and simply
+// show the page as it now really is rather than build error UI for a case
+// nobody will normally hit. designateClanHeir itself re-checks that the
+// caller really is the current leader — this action trusting the button
+// being hidden from everyone else would not be enough on its own.
+export async function designateHeirAction(formData: FormData): Promise<void> {
   const userId = await getSessionUserId();
   if (!userId) redirect("/login");
 
   const clanId = String(formData.get("clanId") ?? "");
-  const newLeaderUserId = String(formData.get("newLeaderUserId") ?? "");
+  const heirUserId = String(formData.get("heirUserId") ?? "");
 
-  const result = await transferClanLeadership({
+  const result = await designateClanHeir({
     clanId,
     currentUserId: userId,
-    newLeaderUserId,
+    heirUserId,
   });
 
   if (result.ok) {
     revalidatePath(`/clans/${clanId}`);
   } else {
-    console.error("[transferLeadershipAction] failed:", result.error);
+    console.error("[designateHeirAction] failed:", result.error);
   }
 
   redirect(`/clans/${clanId}`);

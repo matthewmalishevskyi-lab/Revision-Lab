@@ -28,6 +28,11 @@ export type Clan = {
   iconOffsetY: number;
   createdBy: string;
   createdAt: string;
+  // Who the LEADER has chosen to inherit leadership next — null when nobody
+  // has been chosen. This is a standing choice, not an action: setting it
+  // does NOT make anyone leader now. See designateClanHeir and leaveClan's
+  // own comments for what it actually does.
+  heirId: string | null;
   memberCount: number;
 };
 
@@ -62,10 +67,11 @@ type ClanRow = {
   banner_icon_offset_y: number;
   created_by: string;
   created_at: string;
+  heir_id: string | null;
 };
 
 const CLAN_SELECT_COLUMNS =
-  "id,name,banner_color,banner_shape,banner_icon,banner_icon_scale,banner_icon_offset_x,banner_icon_offset_y,created_by,created_at";
+  "id,name,banner_color,banner_shape,banner_icon,banner_icon_scale,banner_icon_offset_x,banner_icon_offset_y,created_by,created_at,heir_id";
 
 async function supabase(p: string, init: RequestInit = {}): Promise<Response> {
   return fetch(`${SUPABASE_URL}/rest/v1/${p}`, {
@@ -135,6 +141,7 @@ function withCount(clan: ClanRecord, members: { clanId: string }[]): Clan {
     iconOffsetY: clan.iconOffsetY,
     createdBy: clan.createdBy,
     createdAt: clan.createdAt,
+    heirId: clan.heirId,
     memberCount: members.filter((m) => m.clanId === clan.id).length,
   };
 }
@@ -274,6 +281,7 @@ function fromRow(row: ClanRow): ClanRecord {
     iconOffsetY: row.banner_icon_offset_y ?? 0,
     createdBy: row.created_by,
     createdAt: row.created_at,
+    heirId: row.heir_id ?? null,
   };
 }
 
@@ -301,6 +309,10 @@ export async function createClan(input: {
     iconOffsetY: input.iconOffsetY,
     createdBy: input.creatorId,
     createdAt: new Date().toISOString(),
+    // No heir at creation — the leader hasn't chosen anyone yet, and
+    // `heir_id` has no default in CLAN_SETUP.sql, so this matches what the
+    // live database already gives a freshly-inserted row.
+    heirId: null,
   };
   const passwordHash = await hashPassword(input.password);
 
@@ -488,22 +500,29 @@ export async function updateClanBanner(input: {
   return { ok: true };
 }
 
-// Handing leadership to a specific member, BY THE LEADER'S OWN CHOICE, at
-// any time — not only when they're about to leave. See leaveClan's own
-// comment just below for the other half of this: what happens
-// AUTOMATICALLY if a leader leaves without ever making this choice. The
-// two exist for different moments — this one is deliberate, that one is
-// the fallback for nobody having decided anything.
-export type TransferLeadershipResult =
+// Choosing who inherits leadership NEXT — NOT an immediate handover. This
+// only ever changes `heir_id`; `created_by` (who's actually leader right
+// now) is untouched. The chosen person only actually becomes leader later,
+// automatically, if the current leader leaves — see leaveClan's own comment
+// just below for exactly how that plays out, including what happens if the
+// chosen heir themselves leaves first.
+//
+// Restricted to the clan's own CURRENT leader — checked here, in the data
+// layer, not only by which page shows the "Make heir" button. A hidden
+// button is a UI nicety; this is the actual guarantee that nobody but the
+// leader can ever choose who leads next, the same "don't trust the form,
+// trust the check" reasoning updateClanBanner's own NOT_CREATOR check
+// already follows.
+export type DesignateHeirResult =
   | { ok: true }
   | { ok: false; error: "NOT_FOUND" | "NOT_CREATOR" | "NOT_A_MEMBER" | "ALREADY_LEADER" };
 
-export async function transferClanLeadership(input: {
+export async function designateClanHeir(input: {
   clanId: string;
   currentUserId: string;
-  newLeaderUserId: string;
-}): Promise<TransferLeadershipResult> {
-  if (input.currentUserId === input.newLeaderUserId) {
+  heirUserId: string;
+}): Promise<DesignateHeirResult> {
+  if (input.currentUserId === input.heirUserId) {
     return { ok: false, error: "ALREADY_LEADER" };
   }
 
@@ -517,7 +536,7 @@ export async function transferClanLeadership(input: {
     if (rows[0].created_by !== input.currentUserId) return { ok: false, error: "NOT_CREATOR" };
 
     const memberRes = await supabase(
-      `clan_members?clan_id=eq.${encodeURIComponent(input.clanId)}&user_id=eq.${encodeURIComponent(input.newLeaderUserId)}&select=user_id&limit=1`,
+      `clan_members?clan_id=eq.${encodeURIComponent(input.clanId)}&user_id=eq.${encodeURIComponent(input.heirUserId)}&select=user_id&limit=1`,
     );
     const memberRows = memberRes.ok ? ((await memberRes.json()) as { user_id: string }[]) : [];
     if (!memberRows[0]) return { ok: false, error: "NOT_A_MEMBER" };
@@ -527,12 +546,12 @@ export async function transferClanLeadership(input: {
       {
         method: "PATCH",
         headers: { Prefer: "return=minimal" },
-        body: JSON.stringify({ created_by: input.newLeaderUserId }),
+        body: JSON.stringify({ heir_id: input.heirUserId }),
       },
     );
     if (!updateRes.ok) {
       throw new Error(
-        `[clans] could not transfer leadership: HTTP ${updateRes.status} ${(await updateRes.text()).slice(0, 200)}`,
+        `[clans] could not designate heir: HTTP ${updateRes.status} ${(await updateRes.text()).slice(0, 200)}`,
       );
     }
     return { ok: true };
@@ -543,24 +562,33 @@ export async function transferClanLeadership(input: {
   if (!clan) return { ok: false, error: "NOT_FOUND" };
   if (clan.createdBy !== input.currentUserId) return { ok: false, error: "NOT_CREATOR" };
   const targetIsMember = data.members.some(
-    (m) => m.clanId === input.clanId && m.userId === input.newLeaderUserId,
+    (m) => m.clanId === input.clanId && m.userId === input.heirUserId,
   );
   if (!targetIsMember) return { ok: false, error: "NOT_A_MEMBER" };
 
-  clan.createdBy = input.newLeaderUserId;
+  clan.heirId = input.heirUserId;
   await writeLocal(data);
   return { ok: true };
 }
 
-// If the person leaving is their clan's LEADER, hand leadership to whoever
-// joined earliest among everyone else — "the second person to join the
-// clan", in the ordinary case of nobody having transferred it already —
-// rather than leaving `created_by` pointing at someone no longer even a
-// member (which would mean nobody could ever edit the banner again, or
-// show up with the Leader badge, for the rest of that clan's life). A
-// clan where the leader was the only member simply has nobody to hand it
-// to; `created_by` is left exactly as it was, same as this always
-// behaved before this existed.
+// If the person leaving is their clan's LEADER, hand leadership on:
+// to their CHOSEN heir if they named one and that person is still around,
+// otherwise to whoever joined earliest among everyone else — "the second
+// person to join the clan", the same default this always fell back to
+// before an explicit heir was even a thing. Either way, `created_by` never
+// ends up pointing at someone no longer even a member (which would mean
+// nobody could ever edit the banner again, or show up with the Leader
+// badge, for the rest of that clan's life). A clan where the leader was
+// the only member simply has nobody to hand it to; `created_by` is left
+// exactly as it was, same as this always behaved.
+//
+// The new leader starts with no heir of their own (`heir_id` is cleared on
+// handover) — carrying the OLD leader's choice forward would read as if
+// the new leader had named a successor they never actually picked.
+//
+// Separately: if the person leaving is merely the CHOSEN heir (not the
+// leader), that choice is now stale — it would point at someone no longer
+// a member — so it's cleared rather than left dangling.
 //
 // A soft failure here (logged, not thrown) still lets the person actually
 // leave — the same "don't block the main action over a secondary one"
@@ -576,23 +604,30 @@ export async function leaveClan(userId: string): Promise<void> {
     const clanId = membershipRows[0]?.clan_id;
 
     if (clanId) {
-      const creatorRes = await supabase(
-        `clans?id=eq.${encodeURIComponent(clanId)}&select=created_by&limit=1`,
+      const clanRes = await supabase(
+        `clans?id=eq.${encodeURIComponent(clanId)}&select=created_by,heir_id&limit=1`,
       );
-      const creatorRows = creatorRes.ok
-        ? ((await creatorRes.json()) as { created_by: string }[])
+      const clanRows = clanRes.ok
+        ? ((await clanRes.json()) as { created_by: string; heir_id: string | null }[])
         : [];
+      const clanRow = clanRows[0];
 
-      if (creatorRows[0]?.created_by === userId) {
+      if (clanRow?.created_by === userId) {
         const memberIds = await getClanMemberIds(clanId);
-        const successorId = memberIds.find((id) => id !== userId);
+        const chosenHeirStillHere =
+          clanRow.heir_id !== null &&
+          clanRow.heir_id !== userId &&
+          memberIds.includes(clanRow.heir_id);
+        const successorId = chosenHeirStillHere
+          ? (clanRow.heir_id as string)
+          : memberIds.find((id) => id !== userId);
         if (successorId) {
           const handoverRes = await supabase(
             `clans?id=eq.${encodeURIComponent(clanId)}`,
             {
               method: "PATCH",
               headers: { Prefer: "return=minimal" },
-              body: JSON.stringify({ created_by: successorId }),
+              body: JSON.stringify({ created_by: successorId, heir_id: null }),
             },
           );
           if (!handoverRes.ok) {
@@ -602,6 +637,22 @@ export async function leaveClan(userId: string): Promise<void> {
               (await handoverRes.text()).slice(0, 200),
             );
           }
+        }
+      } else if (clanRow?.heir_id === userId) {
+        const clearRes = await supabase(
+          `clans?id=eq.${encodeURIComponent(clanId)}`,
+          {
+            method: "PATCH",
+            headers: { Prefer: "return=minimal" },
+            body: JSON.stringify({ heir_id: null }),
+          },
+        );
+        if (!clearRes.ok) {
+          console.error(
+            "[clans] could not clear stale heir on leave:",
+            clearRes.status,
+            (await clearRes.text()).slice(0, 200),
+          );
         }
       }
     }
@@ -623,12 +674,18 @@ export async function leaveClan(userId: string): Promise<void> {
   if (membership) {
     const clan = data.clans.find((c) => c.id === membership.clanId);
     if (clan && clan.createdBy === userId) {
-      const successor = data.members
+      const remaining = data.members
         .filter((m) => m.clanId === membership.clanId && m.userId !== userId)
-        .sort((a, b) => a.joinedAt.localeCompare(b.joinedAt))[0];
+        .sort((a, b) => a.joinedAt.localeCompare(b.joinedAt));
+      const chosenHeir =
+        clan.heirId !== null ? remaining.find((m) => m.userId === clan.heirId) : undefined;
+      const successor = chosenHeir ?? remaining[0];
       if (successor) {
         clan.createdBy = successor.userId;
+        clan.heirId = null;
       }
+    } else if (clan && clan.heirId === userId) {
+      clan.heirId = null;
     }
   }
 

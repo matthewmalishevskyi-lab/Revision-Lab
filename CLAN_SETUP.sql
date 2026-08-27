@@ -55,6 +55,17 @@ alter table public.clans
   add column if not exists banner_icon_offset_x double precision not null default 0,
   add column if not exists banner_icon_offset_y double precision not null default 0;
 
+-- ── Chosen heir, added when leadership handover became explicit ────────────
+--
+-- Nullable, no default — most clans never set one, and simply fall back to
+-- the earliest-joined remaining member instead (see leaveClan's own comment
+-- in lib/clans.ts). Only ever set by the clan's own leader (checked in
+-- designateClanHeir, not just by which page shows the button), and only
+-- ever points at someone who was a member at the time — leaveClan clears it
+-- the moment that stops being true, so it can never point at a stranger.
+alter table public.clans
+  add column if not exists heir_id uuid;
+
 -- Searching by name is the whole point of the browse/search page — without
 -- this, every search does a full table scan. `text_pattern_ops` is what lets
 -- Postgres use the index for a "starts with" / "contains" search rather than
