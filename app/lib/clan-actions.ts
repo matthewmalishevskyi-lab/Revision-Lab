@@ -81,18 +81,7 @@ export async function createClanAction(
     });
   } catch (error) {
     console.error("[createClanAction] failed:", error);
-    // ⚠️ TEMPORARY — surfacing the real reason instead of hiding it, the
-    // exact same debugging move PROJECT_NOTES.md records for the login
-    // timing bug (2026-08-09): "the real error was caught and discarded...
-    // turned it into a one-line answer" by actually showing it, rather than
-    // guessing from outside. Neither of us can see Vercel's server logs
-    // from here, so this is the only way to find out what's actually
-    // failing. `error.message` here only ever contains an HTTP status code
-    // and a truncated response body (see createClan's own throw in
-    // clans.ts) — never a key or a password. REVERT to the plain message
-    // below once the real cause is found.
-    const debugDetail = error instanceof Error ? error.message : String(error);
-    return { formError: `Something went wrong. Please try again. [debug: ${debugDetail.slice(0, 300)}]` };
+    return { formError: "Something went wrong. Please try again." };
   }
 
   revalidatePath("/clans");
