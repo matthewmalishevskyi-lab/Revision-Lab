@@ -51,12 +51,23 @@ export function MockExam({
   subjectName,
   colour,
   durationSeconds,
+  // Both default to the ORIGINAL "{Subject} test" behaviour, unchanged —
+  // added when the longer "past paper" mode needed its finish screen to
+  // link back to ANOTHER past paper, not another quick test. Without an
+  // override, finishing a 50-question past paper would land on a button
+  // reading "Try another {subject} test" pointing at the short 20-question
+  // version — a real, confusing bait-and-switch this component would have
+  // shipped silently if the link had stayed hardcoded.
+  retryHref = `/subjects/${subjectSlug}/exam`,
+  retryLabel = `Try another ${subjectName} test`,
 }: {
   questions: ExamQuestion[];
   subjectSlug: string;
   subjectName: string;
   colour: string;
   durationSeconds: number;
+  retryHref?: string;
+  retryLabel?: string;
 }) {
   const [phase, setPhase] = useState<"intro" | "running" | "finished">("intro");
   const [secondsLeft, setSecondsLeft] = useState(durationSeconds);
@@ -278,11 +289,11 @@ export function MockExam({
 
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
-            href={`/subjects/${subjectSlug}/exam`}
+            href={retryHref}
             className="rounded-xl px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
             style={{ backgroundColor: colour }}
           >
-            Try another {subjectName} test
+            {retryLabel}
           </Link>
           <Link
             href={`/subjects/${subjectSlug}`}

@@ -102,6 +102,21 @@ export default async function SubjectPage({ params }: Props) {
             <span aria-hidden="true">→</span>
           </Link>
 
+          {/* The longer, full-length sibling of the button above — see
+              app/subjects/[subject]/past-paper/page.tsx. A secondary
+              (outlined, not filled) style on purpose: the quick test is the
+              lighter-weight, more-often-used action, and a full past paper
+              is the bigger commitment someone reaches for less often —
+              same "primary vs secondary" reasoning the stats link below
+              already follows. */}
+          <Link
+            href={`/subjects/${subject.slug}/past-paper`}
+            className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+          >
+            Full past paper
+            <span aria-hidden="true">→</span>
+          </Link>
+
           {/* Only worth showing once there's an account to attach stats to —
               a logged-out visitor sees the exact same panel as before this
               existed. */}

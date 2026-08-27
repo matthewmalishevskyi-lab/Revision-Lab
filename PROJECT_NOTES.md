@@ -1,5 +1,68 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Past paper mode — a longer, full-length sibling of the quick test (2026-08-27)
+
+Matthew, after seeing the `/ideas_1` competitor research: "just do past
+paper style simulation... possible for now. I trust you with that" —
+picking idea #8 (of 8) and giving broad latitude on the details, same as
+the exam-board picker earlier. `/subjects/<subject>/past-paper` — new,
+alongside the existing `/subjects/<subject>/exam` ("{Subject} test").
+
+**Worth being upfront about: this substantially overlaps with a feature
+that already existed.** The 2026-08-18 "mock exam" entry already built
+exactly what idea #8 describes — a timed, mixed-topic set pulled from
+across a whole subject rather than one topic at a time — and it was
+renamed to "{Subject} test" shortly after shipping. Rather than silently
+rebuild something close to a duplicate, or ship nothing and just point
+this out, the honest middle path: keep the existing quick test exactly as
+it is (still useful — a five-minute check), and add a genuinely LONGER,
+more paper-like sibling next to it, reusing the same battle-tested
+`MockExam` component rather than writing a second one.
+
+**What's actually different:** up to 50 questions instead of 20, and 90
+seconds allowed per question instead of 60 (a full paper mixes in more
+extended, self-marked answers, not just short factual recall) — both
+still explicitly NOT claiming to reproduce any specific exam board's real
+paper timing, the same caution `revisionWeight`'s own comment in
+subjects.ts applies to its workload ranking; 14 subjects across 4 boards
+genuinely differ too much to state one figure as fact without risking
+telling someone the wrong thing about their own exam. The duration is
+computed from however many questions the pool and cap actually produce
+(`questions.length × 90`), not a fixed number — a smaller pool (one year
+ticked, or a subject with less written so far) correctly produces a
+shorter paper rather than the same clock regardless.
+
+**Shared code, not copied code.** `collectQuestionPool` and
+`normalizeQueryValue` — both needed identically by the new page — were
+pulled out of `exam/page.tsx` into a new `lib/examPool.ts` rather than
+pasted a second time; `exam/page.tsx` itself is otherwise completely
+unchanged, still builds its 20-question/20-minute test exactly as before.
+
+**One real near-bug caught before shipping:** `MockExam`'s finish screen
+had a hardcoded "Try another {subject} test" button linking to `/exam` —
+fine for the test it was built for, but finishing a 50-question past paper
+would have landed on a button advertising the SHORT version instead of
+another past paper, a genuine bait-and-switch. Fixed with two new
+optional props, `retryHref`/`retryLabel`, defaulting to the exact original
+behaviour (so the existing test page needed zero changes) and overridden
+by the new past-paper page to point back at itself.
+
+Verified: `tsc --noEmit` and `eslint --max-warnings=0` clean,
+`check-content.mjs` (87,603 checks, content untouched) and
+`check-security.mjs` (57 checks) both pass, plus a throwaway functional
+smoke test (11 checks — the pool genuinely pulls real questions with
+topic tags attached, a single-year pool is a proper subset of the full
+one, the question cap is respected, and the duration math scales with the
+actual question count rather than staying fixed) all passed, then
+deleted.
+
+New files: `app/lib/examPool.ts`, `app/subjects/[subject]/past-paper/
+page.tsx`. Changed: `app/components/MockExam.tsx` (the `retryHref`/
+`retryLabel` props), `app/subjects/[subject]/exam/page.tsx` (now imports
+the shared pool helpers instead of defining its own copy), `app/subjects/
+[subject]/page.tsx` (a new "Full past paper" button next to "Try a
+{subject} test").
+
 ## A missing schema migration, and a "Leader" badge for the clan's creator (2026-08-27)
 
 **Bug: creating a clan failed with "Something went wrong."** Not a code
