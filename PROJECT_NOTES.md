@@ -1,5 +1,11 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Small wording tweak: "Make leader" → "👑 Make heir" (2026-08-27)
+
+Matthew: "can you change make leader to make crown inheritor or something? Make a heir" — sounded like it might mean an actual behaviour change (choosing a successor now who only takes over later), so I asked rather than guessed. His answer: just the wording. Same button, same `transferLeadershipAction`, same instant handover — only the visible label changed, on the button described in the entry just below.
+
+Verified: `tsc --noEmit` and `eslint --max-warnings=0` clean on the one changed file. Changed: `app/clans/[id]/page.tsx` only.
+
 ## Clan leadership can now be handed over (2026-08-27)
 
 Closes the gap flagged when the Leader badge shipped earlier today: "if

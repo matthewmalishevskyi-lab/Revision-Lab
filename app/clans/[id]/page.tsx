@@ -193,7 +193,7 @@ export default async function ClanPage({ params }: Props) {
                       type="submit"
                       className="shrink-0 rounded-lg border border-black/10 px-2.5 py-1.5 text-xs font-semibold opacity-70 transition hover:bg-black/5 hover:opacity-100 dark:border-white/15 dark:hover:bg-white/10"
                     >
-                      Make leader
+                      👑 Make heir
                     </button>
                   </form>
                 )}
