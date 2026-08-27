@@ -1,4 +1,4 @@
-import { ClanBadgeIcon } from "./ClanBadgeIcon";
+import { CLAN_ICON_PATHS } from "./ClanBadgeIcon";
 import {
   colorHex,
   isClanIcon,
@@ -49,16 +49,35 @@ export function ClanBanner({
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
       <g fill={colorHex(banner.color)}>{SHAPES[shape]}</g>
-      {/* Icon.tsx's icons are drawn on a 24x24 grid; scaling by 1.8 and
-          centring the result inside the 100x100 banner puts the glyph at
-          roughly 43% of the banner's width, which reads clearly at both a
-          small search-result size and a large clan-page size. White,
-          hard-coded rather than currentColor: every banner colour here is
-          dark enough (see lib/clanBanners.ts) that white is always legible
-          on top of it, and a banner's icon shouldn't change colour just
-          because it sits inside coloured text. */}
-      <g transform="translate(28,28) scale(1.8)">
-        <ClanBadgeIcon name={icon} className="text-white" />
+      {/* Icons are drawn on a 24x24 grid; scaling by 1.8 and centring the
+          result inside the 100x100 banner puts the glyph at roughly 43% of
+          the banner's width, which reads clearly at both a small
+          search-result size and a large clan-page size.
+
+          ⚠️ This renders CLAN_ICON_PATHS directly rather than nesting a
+          <ClanBadgeIcon> — that was the very first version, and it was a
+          real, shipped bug: <ClanBadgeIcon> renders its own <svg>, and an
+          <svg> nested inside another <svg> with no explicit width/height
+          sizes itself to the PARENT's 100x100 viewport rather than its own
+          24x24 viewBox. The icon rendered roughly 4x too large as a result,
+          and the outer banner clipped almost all of it — which is exactly
+          what showed up as "the icon's stuck at the side, not centred."
+          A <g> has no viewport of its own, so the transform below applies
+          directly to the paths with nothing to size incorrectly.
+
+          The stroke attributes that used to live on <ClanBadgeIcon>'s own
+          <svg> now live directly on this <g> instead — fill="white" isn't
+          used because these are OUTLINE icons (fill="none", stroke draws
+          the shape), the same reasoning Icon.tsx's own icons use. */}
+      <g
+        transform="translate(28,28) scale(1.8)"
+        fill="none"
+        stroke="white"
+        strokeWidth={1.7}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {CLAN_ICON_PATHS[icon]}
       </g>
     </svg>
   );

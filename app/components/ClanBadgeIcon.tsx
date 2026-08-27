@@ -9,7 +9,15 @@ import type { ClanIconName } from "../lib/clanBanners";
 // would mean a stray clan icon could accidentally show up somewhere a topic
 // icon was expected.
 
-const PATHS: Record<ClanIconName, React.ReactNode> = {
+// Exported as well as used below — ClanBanner.tsx needs the raw paths, not
+// a whole <svg>. See that file's comment on why: nesting a second <svg>
+// (this component, as it renders standalone) inside a banner's own <svg>
+// caused a real, shipped bug — a nested svg with no explicit width/height
+// sizes itself to the PARENT's viewport rather than its own viewBox, so the
+// icon rendered far too large and got clipped by the banner's edge instead
+// of sitting centred inside it. A <g> of paths has no viewport of its own,
+// so it can't make that mistake.
+export const CLAN_ICON_PATHS: Record<ClanIconName, React.ReactNode> = {
   laptop: (
     <>
       <rect x="5" y="5" width="14" height="9" rx="1.2" />
@@ -111,7 +119,7 @@ export function ClanBadgeIcon({
       className={className}
       aria-hidden="true"
     >
-      {PATHS[name]}
+      {CLAN_ICON_PATHS[name]}
     </svg>
   );
 }
