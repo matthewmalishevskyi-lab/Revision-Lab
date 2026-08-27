@@ -70,7 +70,20 @@ export type ClanIconName =
   | "controller"
   | "headphones"
   | "lightbulb"
-  | "atom";
+  | "atom"
+  // Added on request: a microphone and a guitar were named specifically,
+  // plus five more of "small stuff" left open — paintbrush, football,
+  // camera and chess-pawn round out hobbies the first 15 didn't cover
+  // (music, sport, art, photography, games-as-strategy rather than
+  // games-as-controller), and lightning is just a good general "energy /
+  // fast / powerful" symbol that a lot of clan names will want.
+  | "microphone"
+  | "guitar"
+  | "paintbrush"
+  | "football"
+  | "camera"
+  | "pawn"
+  | "lightning";
 
 export const CLAN_ICONS: { value: ClanIconName; label: string }[] = [
   { value: "laptop", label: "Laptop" },
@@ -88,18 +101,64 @@ export const CLAN_ICONS: { value: ClanIconName; label: string }[] = [
   { value: "headphones", label: "Headphones" },
   { value: "lightbulb", label: "Lightbulb" },
   { value: "atom", label: "Atom" },
+  { value: "microphone", label: "Microphone" },
+  { value: "guitar", label: "Guitar" },
+  { value: "paintbrush", label: "Paintbrush" },
+  { value: "football", label: "Football" },
+  { value: "camera", label: "Camera" },
+  { value: "pawn", label: "Chess pawn" },
+  { value: "lightning", label: "Lightning" },
 ];
+
+// ─── Sizing and positioning the icon ────────────────────────────────────────
+//
+// Three independent numbers on top of the colour/shape/icon choice, added
+// when Matthew asked to "resize it and move it around" after seeing the
+// picker's fixed, centred default. `scale` is a MULTIPLIER on the icon's
+// normal size (1 = the original fixed look, unchanged for every clan made
+// before this existed — see DEFAULT_BANNER below), and `offsetX`/`offsetY`
+// nudge it away from dead-centre in the same 0–100 space the banner itself
+// is drawn in.
+//
+// Clamped ranges, not "whatever the slider allows" trusted blindly — the
+// same reasoning createClanAction already applies to colour/shape/icon:
+// never trust that a submitted number is one the picker's own slider could
+// actually have produced, since a POST body can be edited directly. Kept
+// here, not in clan-actions.ts, so the picker's sliders and the server's
+// validation can't quietly drift apart from each other.
+export const ICON_SCALE_MIN = 0.6;
+export const ICON_SCALE_MAX = 1.8;
+export const ICON_OFFSET_MIN = -24;
+export const ICON_OFFSET_MAX = 24;
+
+export function clampIconScale(value: number): number {
+  if (!Number.isFinite(value)) return 1;
+  return Math.min(ICON_SCALE_MAX, Math.max(ICON_SCALE_MIN, value));
+}
+
+export function clampIconOffset(value: number): number {
+  if (!Number.isFinite(value)) return 0;
+  return Math.min(ICON_OFFSET_MAX, Math.max(ICON_OFFSET_MIN, value));
+}
 
 export type ClanBannerConfig = {
   color: string;
   shape: ClanShapeName;
   icon: ClanIconName;
+  /** 1 = the original, fixed size every clan had before resizing existed. */
+  iconScale: number;
+  /** 0,0 = dead centre — the original, fixed position. */
+  iconOffsetX: number;
+  iconOffsetY: number;
 };
 
 export const DEFAULT_BANNER: ClanBannerConfig = {
   color: CLAN_COLORS[8].value, // blue
   shape: "shield",
   icon: "trophy",
+  iconScale: 1,
+  iconOffsetX: 0,
+  iconOffsetY: 0,
 };
 
 export function isClanColor(value: string): boolean {

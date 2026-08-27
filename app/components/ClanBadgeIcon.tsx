@@ -99,6 +99,49 @@ export const CLAN_ICON_PATHS: Record<ClanIconName, React.ReactNode> = {
       <ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)" />
     </>
   ),
+  microphone: (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M6 11v1a6 6 0 0012 0v-1" />
+      <path d="M12 18v3M9 21h6" />
+    </>
+  ),
+  guitar: (
+    <>
+      <circle cx="10" cy="16" r="5" />
+      <circle cx="10" cy="16" r="1.6" />
+      <path d="M11.3 12.3L16 3.7" />
+      <path d="M15 4.3l2.5-1M16.3 6l2.5-1" />
+    </>
+  ),
+  paintbrush: (
+    <>
+      <path d="M6 15.5c-1.4 1.7-1.9 3.8-1.5 5.5 1.9-.4 4-1 5.5-2.4" />
+      <path d="M8.5 15L15.7 6c1-1.2 2.7-1.2 3.6.1.9 1.2.6 2.9-.7 3.8l-8 6.2z" />
+    </>
+  ),
+  football: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 8.3l3 2.1-1.1 3.5H10.1L9 10.4z" />
+      <path d="M12 8.3V5M14.9 10.4l2.6-1.4M9.1 10.4L6.5 9M13.9 13.9l1 3.3M10.1 13.9l-1 3.3" />
+    </>
+  ),
+  camera: (
+    <>
+      <rect x="3" y="7" width="18" height="13" rx="2.5" />
+      <path d="M8.3 7l1.3-2.5h4.8L15.7 7" />
+      <circle cx="12" cy="13.7" r="4" />
+    </>
+  ),
+  pawn: (
+    <>
+      <circle cx="12" cy="6" r="2.4" />
+      <path d="M9.6 12.3c0-1.6 1.1-2.9 2.4-2.9s2.4 1.3 2.4 2.9c0 .9-.4 1.7-1.1 2.2l1.6 4.5H9.1l1.6-4.5c-.7-.5-1.1-1.3-1.1-2.2z" />
+      <path d="M7.5 20.5h9" />
+    </>
+  ),
+  lightning: <path d="M13 3L5.5 13.2h5.3L10 21l8.5-11.2h-5.3z" />,
 };
 
 export function ClanBadgeIcon({

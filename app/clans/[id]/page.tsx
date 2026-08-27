@@ -85,6 +85,9 @@ export default async function ClanPage({ params }: Props) {
             color: clan.bannerColor,
             shape: clan.bannerShape,
             icon: clan.bannerIcon,
+            iconScale: clan.iconScale,
+            iconOffsetX: clan.iconOffsetX,
+            iconOffsetY: clan.iconOffsetY,
           }}
           className="h-24 w-24 shrink-0"
         />
@@ -96,7 +99,15 @@ export default async function ClanPage({ params }: Props) {
         </div>
 
         {isMember && (
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-4">
+            {user?.id === clan.createdBy && (
+              <Link
+                href={`/clans/${clan.id}/edit`}
+                className="text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
+              >
+                Edit banner
+              </Link>
+            )}
             <LeaveClanButton />
           </div>
         )}

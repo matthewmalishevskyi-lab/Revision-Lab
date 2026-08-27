@@ -23,6 +23,9 @@ export type Clan = {
   bannerColor: string;
   bannerShape: string;
   bannerIcon: string;
+  iconScale: number;
+  iconOffsetX: number;
+  iconOffsetY: number;
   createdBy: string;
   createdAt: string;
   memberCount: number;
@@ -54,9 +57,15 @@ type ClanRow = {
   banner_color: string;
   banner_shape: string;
   banner_icon: string;
+  banner_icon_scale: number;
+  banner_icon_offset_x: number;
+  banner_icon_offset_y: number;
   created_by: string;
   created_at: string;
 };
+
+const CLAN_SELECT_COLUMNS =
+  "id,name,banner_color,banner_shape,banner_icon,banner_icon_scale,banner_icon_offset_x,banner_icon_offset_y,created_by,created_at";
 
 async function supabase(p: string, init: RequestInit = {}): Promise<Response> {
   return fetch(`${SUPABASE_URL}/rest/v1/${p}`, {
@@ -121,6 +130,9 @@ function withCount(clan: ClanRecord, members: { clanId: string }[]): Clan {
     bannerColor: clan.bannerColor,
     bannerShape: clan.bannerShape,
     bannerIcon: clan.bannerIcon,
+    iconScale: clan.iconScale,
+    iconOffsetX: clan.iconOffsetX,
+    iconOffsetY: clan.iconOffsetY,
     createdBy: clan.createdBy,
     createdAt: clan.createdAt,
     memberCount: members.filter((m) => m.clanId === clan.id).length,
@@ -142,7 +154,7 @@ export async function searchClans(query: string): Promise<Clan[]> {
       ? `&name=ilike.*${encodeURIComponent(q)}*`
       : "";
     const res = await supabase(
-      `clans?select=id,name,banner_color,banner_shape,banner_icon,created_by,created_at${filter}` +
+      `clans?select=${CLAN_SELECT_COLUMNS}${filter}` +
         `&order=created_at.desc&limit=${MAX_SEARCH_RESULTS}`,
     );
     if (!res.ok) {
@@ -184,7 +196,7 @@ export async function searchClans(query: string): Promise<Clan[]> {
 export async function getClanById(id: string): Promise<Clan | null> {
   if (CLANS_ENABLED) {
     const res = await supabase(
-      `clans?id=eq.${encodeURIComponent(id)}&select=id,name,banner_color,banner_shape,banner_icon,created_by,created_at&limit=1`,
+      `clans?id=eq.${encodeURIComponent(id)}&select=${CLAN_SELECT_COLUMNS}&limit=1`,
     );
     if (!res.ok) return null;
     const rows = (await res.json()) as ClanRow[];
@@ -244,6 +256,15 @@ function fromRow(row: ClanRow): ClanRecord {
     bannerColor: row.banner_color,
     bannerShape: row.banner_shape,
     bannerIcon: row.banner_icon,
+    // ?? 1 / ?? 0 rather than trusting the column is always present: a row
+    // fetched right after CLAN_SETUP.sql's ALTER TABLE ran, before Postgres
+    // has backfilled every existing row, could momentarily read as
+    // undefined here — same defensive instinct as everywhere else in this
+    // file that treats "not there yet" as the documented default rather
+    // than as a crash.
+    iconScale: row.banner_icon_scale ?? 1,
+    iconOffsetX: row.banner_icon_offset_x ?? 0,
+    iconOffsetY: row.banner_icon_offset_y ?? 0,
     createdBy: row.created_by,
     createdAt: row.created_at,
   };
@@ -257,6 +278,9 @@ export async function createClan(input: {
   bannerColor: string;
   bannerShape: string;
   bannerIcon: string;
+  iconScale: number;
+  iconOffsetX: number;
+  iconOffsetY: number;
   creatorId: string;
 }): Promise<Clan> {
   const record: ClanRecord = {
@@ -265,6 +289,9 @@ export async function createClan(input: {
     bannerColor: input.bannerColor,
     bannerShape: input.bannerShape,
     bannerIcon: input.bannerIcon,
+    iconScale: input.iconScale,
+    iconOffsetX: input.iconOffsetX,
+    iconOffsetY: input.iconOffsetY,
     createdBy: input.creatorId,
     createdAt: new Date().toISOString(),
   };
@@ -281,6 +308,9 @@ export async function createClan(input: {
         banner_color: record.bannerColor,
         banner_shape: record.bannerShape,
         banner_icon: record.bannerIcon,
+        banner_icon_scale: record.iconScale,
+        banner_icon_offset_x: record.iconOffsetX,
+        banner_icon_offset_y: record.iconOffsetY,
         created_by: record.createdBy,
         created_at: record.createdAt,
       }),
@@ -379,6 +409,74 @@ export async function joinClan(input: {
     userId: input.userId,
     joinedAt: new Date().toISOString(),
   });
+  await writeLocal(data);
+  return { ok: true };
+}
+
+// Changing an existing clan's banner — added alongside resizing/repositioning
+// so a clan made before that existed isn't stuck looking the way it always
+// did. Restricted to the clan's CREATOR, the same "only one person can touch
+// this" boundary account-actions.ts enforces for changing a password or
+// deleting an account — a clan's banner is closer to a shared setting than a
+// personal preference, so letting every member edit it would mean the last
+// person to touch it wins with no warning to anyone else.
+export type UpdateBannerResult =
+  | { ok: true }
+  | { ok: false; error: "NOT_FOUND" | "NOT_CREATOR" };
+
+export async function updateClanBanner(input: {
+  clanId: string;
+  userId: string;
+  bannerColor: string;
+  bannerShape: string;
+  bannerIcon: string;
+  iconScale: number;
+  iconOffsetX: number;
+  iconOffsetY: number;
+}): Promise<UpdateBannerResult> {
+  if (CLANS_ENABLED) {
+    const res = await supabase(
+      `clans?id=eq.${encodeURIComponent(input.clanId)}&select=created_by&limit=1`,
+    );
+    if (!res.ok) return { ok: false, error: "NOT_FOUND" };
+    const rows = (await res.json()) as { created_by: string }[];
+    if (!rows[0]) return { ok: false, error: "NOT_FOUND" };
+    if (rows[0].created_by !== input.userId) return { ok: false, error: "NOT_CREATOR" };
+
+    const updateRes = await supabase(
+      `clans?id=eq.${encodeURIComponent(input.clanId)}`,
+      {
+        method: "PATCH",
+        headers: { Prefer: "return=minimal" },
+        body: JSON.stringify({
+          banner_color: input.bannerColor,
+          banner_shape: input.bannerShape,
+          banner_icon: input.bannerIcon,
+          banner_icon_scale: input.iconScale,
+          banner_icon_offset_x: input.iconOffsetX,
+          banner_icon_offset_y: input.iconOffsetY,
+        }),
+      },
+    );
+    if (!updateRes.ok) {
+      throw new Error(
+        `[clans] could not update banner: HTTP ${updateRes.status} ${(await updateRes.text()).slice(0, 200)}`,
+      );
+    }
+    return { ok: true };
+  }
+
+  const data = await readLocal();
+  const clan = data.clans.find((c) => c.id === input.clanId);
+  if (!clan) return { ok: false, error: "NOT_FOUND" };
+  if (clan.createdBy !== input.userId) return { ok: false, error: "NOT_CREATOR" };
+
+  clan.bannerColor = input.bannerColor;
+  clan.bannerShape = input.bannerShape;
+  clan.bannerIcon = input.bannerIcon;
+  clan.iconScale = input.iconScale;
+  clan.iconOffsetX = input.iconOffsetX;
+  clan.iconOffsetY = input.iconOffsetY;
   await writeLocal(data);
   return { ok: true };
 }

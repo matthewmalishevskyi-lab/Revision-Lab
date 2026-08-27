@@ -88,6 +88,9 @@ export default async function ClansPage({ searchParams }: Props) {
                   color: clan.bannerColor,
                   shape: clan.bannerShape,
                   icon: clan.bannerIcon,
+                  iconScale: clan.iconScale,
+                  iconOffsetX: clan.iconOffsetX,
+                  iconOffsetY: clan.iconOffsetY,
                 }}
                 className="h-14 w-14 shrink-0"
               />

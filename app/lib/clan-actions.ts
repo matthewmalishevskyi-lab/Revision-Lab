@@ -6,11 +6,13 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import {
+  clampIconOffset,
+  clampIconScale,
   isClanColor,
   isClanIcon,
   isClanShape,
 } from "./clanBanners";
-import { createClan, getUserClan, joinClan, leaveClan } from "./clans";
+import { createClan, getUserClan, joinClan, leaveClan, updateClanBanner } from "./clans";
 import { getSessionUserId } from "./session";
 import { checkClanJoinAllowed, humanDelay, recordFailedClanJoin } from "./throttle";
 
@@ -28,6 +30,14 @@ export async function createClanAction(
   const bannerColor = String(formData.get("bannerColor") ?? "");
   const bannerShape = String(formData.get("bannerShape") ?? "");
   const bannerIcon = String(formData.get("bannerIcon") ?? "");
+  // clampIconScale/clampIconOffset already fall back to the untouched
+  // default (1, and 0/0) for anything that isn't a finite number, so a
+  // missing or tampered-with field can't produce an icon drawn off the
+  // banner entirely — same "clamp, don't just validate" reasoning as the
+  // sliders themselves in ClanBannerPicker.tsx.
+  const iconScale = clampIconScale(Number(formData.get("iconScale")));
+  const iconOffsetX = clampIconOffset(Number(formData.get("iconOffsetX")));
+  const iconOffsetY = clampIconOffset(Number(formData.get("iconOffsetY")));
 
   // Upper AND lower bounds, the same reasoning register()'s own comment
   // gives: generous limits nobody real will hit, just enough to stop
@@ -64,6 +74,9 @@ export async function createClanAction(
       bannerColor,
       bannerShape,
       bannerIcon,
+      iconScale,
+      iconOffsetX,
+      iconOffsetY,
       creatorId: userId,
     });
   } catch (error) {
@@ -107,6 +120,56 @@ export async function joinClanAction(
       NOT_FOUND: "That clan doesn't exist any more.",
       WRONG_PASSWORD: "That password's not right for this clan.",
       ALREADY_IN_A_CLAN: "You're already in a clan — leave it first.",
+    };
+    return { formError: messages[result.error] };
+  }
+
+  revalidatePath(`/clans/${clanId}`);
+  redirect(`/clans/${clanId}`);
+}
+
+// Changing an EXISTING clan's banner — a separate action from creating one,
+// not a reuse of createClanAction, because the checks are genuinely
+// different: no name or password here at all, and it needs a creator check
+// that createClanAction has no reason to make. `clanId` comes from a hidden
+// input the same way JoinClanForm's does, rather than a bound argument —
+// keeps every clan form in this file following the identical shape.
+export async function updateClanBannerAction(
+  _prevState: ClanFormState,
+  formData: FormData,
+): Promise<ClanFormState> {
+  const userId = await getSessionUserId();
+  if (!userId) return { formError: "Please log in first." };
+
+  const clanId = String(formData.get("clanId") ?? "");
+  if (!clanId) return { formError: "Something went wrong. Please try again." };
+
+  const bannerColor = String(formData.get("bannerColor") ?? "");
+  const bannerShape = String(formData.get("bannerShape") ?? "");
+  const bannerIcon = String(formData.get("bannerIcon") ?? "");
+  const iconScale = clampIconScale(Number(formData.get("iconScale")));
+  const iconOffsetX = clampIconOffset(Number(formData.get("iconOffsetX")));
+  const iconOffsetY = clampIconOffset(Number(formData.get("iconOffsetY")));
+
+  if (!isClanColor(bannerColor) || !isClanShape(bannerShape) || !isClanIcon(bannerIcon)) {
+    return { formError: "Something went wrong with the banner. Please try again." };
+  }
+
+  const result = await updateClanBanner({
+    clanId,
+    userId,
+    bannerColor,
+    bannerShape,
+    bannerIcon,
+    iconScale,
+    iconOffsetX,
+    iconOffsetY,
+  });
+
+  if (!result.ok) {
+    const messages: Record<typeof result.error, string> = {
+      NOT_FOUND: "That clan doesn't exist any more.",
+      NOT_CREATOR: "Only the clan's creator can change its banner.",
     };
     return { formError: messages[result.error] };
   }

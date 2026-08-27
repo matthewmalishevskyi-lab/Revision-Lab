@@ -216,7 +216,14 @@ export default async function DashboardPage() {
         >
           <span className="flex items-center gap-3">
             <ClanBanner
-              banner={{ color: clan.bannerColor, shape: clan.bannerShape, icon: clan.bannerIcon }}
+              banner={{
+                color: clan.bannerColor,
+                shape: clan.bannerShape,
+                icon: clan.bannerIcon,
+                iconScale: clan.iconScale,
+                iconOffsetX: clan.iconOffsetX,
+                iconOffsetY: clan.iconOffsetY,
+              }}
               className="h-9 w-9 shrink-0"
             />
             <span>

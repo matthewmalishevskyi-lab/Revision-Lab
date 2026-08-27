@@ -1,5 +1,84 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Clan banners: resize/reposition the icon, plus 7 more icons (2026-08-27)
+
+Matthew, right after the centering-bug fix above: "make us able to resize
+it and move it around... add a few other icons, which will include a
+microphone, a guitar... and another five stuff that can relate to small
+stuff in any way." **Needs the updated `CLAN_SETUP.sql` re-run in
+Supabase** — it's an idempotent `alter table ... add column if not exists`
+block, safe against the live table with real clans already in it, but
+without it the three new columns don't exist and every clan reads back
+`iconScale=1, offsets=0` (the exact old fixed look) until it's run.
+
+**Seven new icons:** microphone and guitar (named explicitly), plus
+paintbrush, football, camera, chess pawn and lightning — chosen to cover
+hobbies the first 15 didn't (music, sport, art, photography, strategy games,
+plus one general "energy" symbol). Same 24×24 stroke style as every
+existing icon, in `ClanBadgeIcon.tsx`'s `CLAN_ICON_PATHS`.
+
+**Resize and reposition are two new numbers, not a redesign.** `iconScale`
+(0.6–1.8×) and `iconOffsetX`/`iconOffsetY` (±24, in the banner's own 0–100
+space) sit alongside the existing colour/shape/icon choice — clamped in
+`lib/clanBanners.ts` (`clampIconScale`/`clampIconOffset`) so the same
+clamp function runs in the picker's own sliders AND again in the server
+action, the identical "never trust a submitted number is one the slider
+could have produced" reasoning already applied to colour/shape/icon.
+`ClanBanner.tsx`'s transform math solves for the translate that keeps the
+icon centred at any scale (`centred = 50 - 12 × scale`) rather than a fixed
+translate that only centred one specific size — this is also exactly what
+makes a clan with no saved scale/offset (`?? 1`, `?? 0`) render pixel-
+identical to how it always looked, so nothing changes for a clan nobody
+ever resizes.
+
+**Existing clans can now be resized too, not just new ones** — new
+`updateClanBanner` in `lib/clans.ts`, restricted to the clan's CREATOR
+(same "one person can touch this" boundary as changing an account
+password), reachable from a new "Edit banner" link on a clan's own page
+(shown only to its creator) leading to `/clans/[id]/edit`. Deliberately a
+*separate* action from creating a clan (`updateClanBannerAction`, not a
+reuse of `createClanAction`) — the checks genuinely differ: no name or
+password field at all, but a creator check `createClanAction` has no
+reason to make.
+
+**A near-miss caught before shipping:** the clan list page, the clan's own
+page, and the dashboard's clan card all called `<ClanBanner>` with only
+colour/shape/icon — none of them passed the three new fields through. Since
+`ClanBanner` already defaulted missing scale/offset to the untouched
+look, this would have compiled and looked completely fine for every clan
+that had never been resized, and only broken the moment someone actually
+used the new sliders: their own resized banner would show correctly on the
+edit form's live preview, then silently revert to the old fixed appearance
+everywhere else it's shown. Fixed by passing `iconScale`/`iconOffsetX`/
+`iconOffsetY` through at all three call sites.
+
+**Verified three ways:** `tsc --noEmit` and `eslint --max-warnings=0`
+clean; `check-content.mjs` (87,603 checks, content untouched) and
+`check-security.mjs` (57 checks) both pass; a throwaway functional smoke
+test against the local-file backend (18 checks — creating a clan with a
+scale/offset, reading it back, a non-creator rejected from editing the
+banner, the creator's edit actually landing, a missing clan reported
+correctly) all passed, then deleted; and, given the last bug here was a
+real visual regression, a headless-Chromium screenshot of the actual SHAPES
+and CLAN_ICON_PATHS data transcribed verbatim from the shipped files — all
+7 new icons render centred and recognisable, and resize/reposition at both
+extremes (max scale + full positive offset, min scale + full negative
+offset) moves the icon exactly as expected without garbling it, clipping
+at the shape's edge only when deliberately pushed to a corner.
+
+New files: `app/clans/[id]/edit/page.tsx`, `app/clans/[id]/
+EditClanBannerForm.tsx`. Changed: `CLAN_SETUP.sql` (new column migration),
+`app/lib/clanBanners.ts` (7 icons, scale/offset types + clamps), `app/
+components/ClanBadgeIcon.tsx` (7 new icon paths), `app/components/
+ClanBanner.tsx` (scale/offset transform math), `app/components/
+ClanBannerPicker.tsx` (three sliders, an `initial` prop so the same picker
+serves both creating and editing), `app/lib/clans.ts` (new
+`updateClanBanner`, extended `createClan`/`Clan`/`ClanRow`), `app/lib/
+clan-actions.ts` (extended `createClanAction`, new
+`updateClanBannerAction`), `app/clans/page.tsx`, `app/clans/[id]/page.tsx`
+and `app/dashboard/page.tsx` (passing the new fields to `<ClanBanner>`, the
+near-miss above).
+
 ## Clans — small self-made leaderboards with custom banners (2026-08-27)
 
 Matthew asked for the small-group leaderboard idea, then specifically: a

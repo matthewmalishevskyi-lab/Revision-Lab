@@ -41,6 +41,20 @@ create table if not exists public.clans (
   created_at    timestamptz not null default now()
 );
 
+-- ── Icon size and position, added after the banner picker shipped ──────────
+--
+-- `add column if not exists ... default` is the same idiom ACCOUNT_SETUP.sql
+-- uses to add `deleted_at` to an already-live `users` table: safe to run
+-- against a `clans` table that already has real rows in it, and Postgres
+-- backfills the default onto every existing row in the same statement — so
+-- every clan made before resizing existed gets iconScale=1, offsets=0,
+-- which lib/clanBanners.ts's own comment notes is deliberately the exact
+-- fixed look those clans always had, not a new default appearance.
+alter table public.clans
+  add column if not exists banner_icon_scale   double precision not null default 1,
+  add column if not exists banner_icon_offset_x double precision not null default 0,
+  add column if not exists banner_icon_offset_y double precision not null default 0;
+
 -- Searching by name is the whole point of the browse/search page — without
 -- this, every search does a full table scan. `text_pattern_ops` is what lets
 -- Postgres use the index for a "starts with" / "contains" search rather than

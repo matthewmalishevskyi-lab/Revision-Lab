@@ -1,5 +1,7 @@
 import { CLAN_ICON_PATHS } from "./ClanBadgeIcon";
 import {
+  clampIconOffset,
+  clampIconScale,
   colorHex,
   isClanIcon,
   isClanShape,
@@ -8,10 +10,20 @@ import {
 
 // Looser than ClanBannerConfig on purpose: the picker always supplies real
 // values from the fixed lists, but a banner read back from storage is just
-// whatever string was saved — never guaranteed to still be a shape or icon
-// this file recognises, the same defensive stance AccessibilityPanel's
+// whatever was saved — never guaranteed to still be a shape or icon this
+// file recognises, the same defensive stance AccessibilityPanel's
 // parseSettings takes on anything read from outside this file's control.
-type BannerLike = { color: string; shape: string; icon: string };
+// The three sizing/position fields are optional for the same reason: every
+// clan made before resizing existed has no opinion on them at all, and
+// this must still render exactly as it always did for those.
+type BannerLike = {
+  color: string;
+  shape: string;
+  icon: string;
+  iconScale?: number;
+  iconOffsetX?: number;
+  iconOffsetY?: number;
+};
 
 // Draws a clan's banner from its three stored choices — colour, shape, icon.
 // One component reused everywhere a banner appears (the picker's live
@@ -46,15 +58,22 @@ export function ClanBanner({
   const shape: ClanShapeName = isClanShape(banner.shape) ? banner.shape : "shield";
   const icon = isClanIcon(banner.icon) ? banner.icon : "trophy";
 
+  // 1.8 is the ORIGINAL fixed scale — the base every clan had before
+  // resizing existed, kept as the multiplier's anchor point so a clan with
+  // no scale/offset saved (iconScale ?? 1) renders pixel-identical to how
+  // it always did. Icons are drawn on a 24x24 grid; centring the SCALED
+  // icon means solving for the translate that puts its scaled midpoint
+  // (12 × scale) at the banner's own midpoint (50), rather than a fixed
+  // translate that only centred one specific scale correctly.
+  const scale = 1.8 * clampIconScale(banner.iconScale ?? 1);
+  const centred = 50 - 12 * scale;
+  const x = centred + clampIconOffset(banner.iconOffsetX ?? 0);
+  const y = centred + clampIconOffset(banner.iconOffsetY ?? 0);
+
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
       <g fill={colorHex(banner.color)}>{SHAPES[shape]}</g>
-      {/* Icons are drawn on a 24x24 grid; scaling by 1.8 and centring the
-          result inside the 100x100 banner puts the glyph at roughly 43% of
-          the banner's width, which reads clearly at both a small
-          search-result size and a large clan-page size.
-
-          ⚠️ This renders CLAN_ICON_PATHS directly rather than nesting a
+      {/* ⚠️ This renders CLAN_ICON_PATHS directly rather than nesting a
           <ClanBadgeIcon> — that was the very first version, and it was a
           real, shipped bug: <ClanBadgeIcon> renders its own <svg>, and an
           <svg> nested inside another <svg> with no explicit width/height
@@ -70,7 +89,7 @@ export function ClanBanner({
           used because these are OUTLINE icons (fill="none", stroke draws
           the shape), the same reasoning Icon.tsx's own icons use. */}
       <g
-        transform="translate(28,28) scale(1.8)"
+        transform={`translate(${x},${y}) scale(${scale})`}
         fill="none"
         stroke="white"
         strokeWidth={1.7}
