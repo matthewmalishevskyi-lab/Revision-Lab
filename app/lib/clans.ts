@@ -235,10 +235,14 @@ export async function getUserClan(userId: string): Promise<Clan | null> {
   return membership ? getClanById(membership.clanId) : null;
 }
 
+// Ordered EARLIEST JOINER FIRST — not just "whatever order storage happens
+// to return them in". Both leaveClan's automatic leadership handover below
+// and the clan page's own "next in line" label depend on this order
+// actually meaning something.
 export async function getClanMemberIds(clanId: string): Promise<string[]> {
   if (CLANS_ENABLED) {
     const res = await supabase(
-      `clan_members?clan_id=eq.${encodeURIComponent(clanId)}&select=user_id`,
+      `clan_members?clan_id=eq.${encodeURIComponent(clanId)}&select=user_id&order=joined_at.asc`,
     );
     if (!res.ok) return [];
     const rows = (await res.json()) as { user_id: string }[];
@@ -246,7 +250,10 @@ export async function getClanMemberIds(clanId: string): Promise<string[]> {
   }
 
   const { members } = await readLocal();
-  return members.filter((m) => m.clanId === clanId).map((m) => m.userId);
+  return members
+    .filter((m) => m.clanId === clanId)
+    .sort((a, b) => a.joinedAt.localeCompare(b.joinedAt))
+    .map((m) => m.userId);
 }
 
 function fromRow(row: ClanRow): ClanRecord {
@@ -481,8 +488,124 @@ export async function updateClanBanner(input: {
   return { ok: true };
 }
 
+// Handing leadership to a specific member, BY THE LEADER'S OWN CHOICE, at
+// any time — not only when they're about to leave. See leaveClan's own
+// comment just below for the other half of this: what happens
+// AUTOMATICALLY if a leader leaves without ever making this choice. The
+// two exist for different moments — this one is deliberate, that one is
+// the fallback for nobody having decided anything.
+export type TransferLeadershipResult =
+  | { ok: true }
+  | { ok: false; error: "NOT_FOUND" | "NOT_CREATOR" | "NOT_A_MEMBER" | "ALREADY_LEADER" };
+
+export async function transferClanLeadership(input: {
+  clanId: string;
+  currentUserId: string;
+  newLeaderUserId: string;
+}): Promise<TransferLeadershipResult> {
+  if (input.currentUserId === input.newLeaderUserId) {
+    return { ok: false, error: "ALREADY_LEADER" };
+  }
+
+  if (CLANS_ENABLED) {
+    const res = await supabase(
+      `clans?id=eq.${encodeURIComponent(input.clanId)}&select=created_by&limit=1`,
+    );
+    if (!res.ok) return { ok: false, error: "NOT_FOUND" };
+    const rows = (await res.json()) as { created_by: string }[];
+    if (!rows[0]) return { ok: false, error: "NOT_FOUND" };
+    if (rows[0].created_by !== input.currentUserId) return { ok: false, error: "NOT_CREATOR" };
+
+    const memberRes = await supabase(
+      `clan_members?clan_id=eq.${encodeURIComponent(input.clanId)}&user_id=eq.${encodeURIComponent(input.newLeaderUserId)}&select=user_id&limit=1`,
+    );
+    const memberRows = memberRes.ok ? ((await memberRes.json()) as { user_id: string }[]) : [];
+    if (!memberRows[0]) return { ok: false, error: "NOT_A_MEMBER" };
+
+    const updateRes = await supabase(
+      `clans?id=eq.${encodeURIComponent(input.clanId)}`,
+      {
+        method: "PATCH",
+        headers: { Prefer: "return=minimal" },
+        body: JSON.stringify({ created_by: input.newLeaderUserId }),
+      },
+    );
+    if (!updateRes.ok) {
+      throw new Error(
+        `[clans] could not transfer leadership: HTTP ${updateRes.status} ${(await updateRes.text()).slice(0, 200)}`,
+      );
+    }
+    return { ok: true };
+  }
+
+  const data = await readLocal();
+  const clan = data.clans.find((c) => c.id === input.clanId);
+  if (!clan) return { ok: false, error: "NOT_FOUND" };
+  if (clan.createdBy !== input.currentUserId) return { ok: false, error: "NOT_CREATOR" };
+  const targetIsMember = data.members.some(
+    (m) => m.clanId === input.clanId && m.userId === input.newLeaderUserId,
+  );
+  if (!targetIsMember) return { ok: false, error: "NOT_A_MEMBER" };
+
+  clan.createdBy = input.newLeaderUserId;
+  await writeLocal(data);
+  return { ok: true };
+}
+
+// If the person leaving is their clan's LEADER, hand leadership to whoever
+// joined earliest among everyone else — "the second person to join the
+// clan", in the ordinary case of nobody having transferred it already —
+// rather than leaving `created_by` pointing at someone no longer even a
+// member (which would mean nobody could ever edit the banner again, or
+// show up with the Leader badge, for the rest of that clan's life). A
+// clan where the leader was the only member simply has nobody to hand it
+// to; `created_by` is left exactly as it was, same as this always
+// behaved before this existed.
+//
+// A soft failure here (logged, not thrown) still lets the person actually
+// leave — the same "don't block the main action over a secondary one"
+// reasoning createClan's own creator-auto-join already follows.
 export async function leaveClan(userId: string): Promise<void> {
   if (CLANS_ENABLED) {
+    const membershipRes = await supabase(
+      `clan_members?user_id=eq.${encodeURIComponent(userId)}&select=clan_id&limit=1`,
+    );
+    const membershipRows = membershipRes.ok
+      ? ((await membershipRes.json()) as { clan_id: string }[])
+      : [];
+    const clanId = membershipRows[0]?.clan_id;
+
+    if (clanId) {
+      const creatorRes = await supabase(
+        `clans?id=eq.${encodeURIComponent(clanId)}&select=created_by&limit=1`,
+      );
+      const creatorRows = creatorRes.ok
+        ? ((await creatorRes.json()) as { created_by: string }[])
+        : [];
+
+      if (creatorRows[0]?.created_by === userId) {
+        const memberIds = await getClanMemberIds(clanId);
+        const successorId = memberIds.find((id) => id !== userId);
+        if (successorId) {
+          const handoverRes = await supabase(
+            `clans?id=eq.${encodeURIComponent(clanId)}`,
+            {
+              method: "PATCH",
+              headers: { Prefer: "return=minimal" },
+              body: JSON.stringify({ created_by: successorId }),
+            },
+          );
+          if (!handoverRes.ok) {
+            console.error(
+              "[clans] could not hand over leadership on leave:",
+              handoverRes.status,
+              (await handoverRes.text()).slice(0, 200),
+            );
+          }
+        }
+      }
+    }
+
     const res = await supabase(
       `clan_members?user_id=eq.${encodeURIComponent(userId)}`,
       { method: "DELETE" },
@@ -496,6 +619,19 @@ export async function leaveClan(userId: string): Promise<void> {
   }
 
   const data = await readLocal();
+  const membership = data.members.find((m) => m.userId === userId);
+  if (membership) {
+    const clan = data.clans.find((c) => c.id === membership.clanId);
+    if (clan && clan.createdBy === userId) {
+      const successor = data.members
+        .filter((m) => m.clanId === membership.clanId && m.userId !== userId)
+        .sort((a, b) => a.joinedAt.localeCompare(b.joinedAt))[0];
+      if (successor) {
+        clan.createdBy = successor.userId;
+      }
+    }
+  }
+
   data.members = data.members.filter((m) => m.userId !== userId);
   await writeLocal(data);
 }

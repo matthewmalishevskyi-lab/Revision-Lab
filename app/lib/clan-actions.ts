@@ -12,7 +12,14 @@ import {
   isClanIcon,
   isClanShape,
 } from "./clanBanners";
-import { createClan, getUserClan, joinClan, leaveClan, updateClanBanner } from "./clans";
+import {
+  createClan,
+  getUserClan,
+  joinClan,
+  leaveClan,
+  transferClanLeadership,
+  updateClanBanner,
+} from "./clans";
 import { getSessionUserId } from "./session";
 import { checkClanJoinAllowed, humanDelay, recordFailedClanJoin } from "./throttle";
 
@@ -175,6 +182,39 @@ export async function updateClanBannerAction(
   }
 
   revalidatePath(`/clans/${clanId}`);
+  redirect(`/clans/${clanId}`);
+}
+
+// Handing leadership to a specific member, by the leader's own choice —
+// see transferClanLeadership's own comment in clans.ts for how this
+// differs from the automatic handover that happens if a leader leaves
+// without ever doing this. A plain single-argument server action bound
+// directly to a form, the same shape as leaveClanAction just below — no
+// useActionState/ClanFormState needed here, since this button is only
+// ever rendered for the clan's actual current leader, about someone
+// who's actually a member of their own clan; a failure here means the
+// page was already out of date (a race, not a real user mistake), so it's
+// enough to log it and simply show the page as it now really is rather
+// than build error UI for a case nobody will normally hit.
+export async function transferLeadershipAction(formData: FormData): Promise<void> {
+  const userId = await getSessionUserId();
+  if (!userId) redirect("/login");
+
+  const clanId = String(formData.get("clanId") ?? "");
+  const newLeaderUserId = String(formData.get("newLeaderUserId") ?? "");
+
+  const result = await transferClanLeadership({
+    clanId,
+    currentUserId: userId,
+    newLeaderUserId,
+  });
+
+  if (result.ok) {
+    revalidatePath(`/clans/${clanId}`);
+  } else {
+    console.error("[transferLeadershipAction] failed:", result.error);
+  }
+
   redirect(`/clans/${clanId}`);
 }
 

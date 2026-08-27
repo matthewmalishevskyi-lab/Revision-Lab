@@ -5,6 +5,7 @@ import { SiteHeader } from "../../components/SiteHeader";
 import { ClanBanner } from "../../components/ClanBanner";
 import { ACCOUNTS_ENABLED } from "../../lib/site";
 import { getClanById, getClanMemberIds } from "../../lib/clans";
+import { transferLeadershipAction } from "../../lib/clan-actions";
 import { getProgress } from "../../lib/progress";
 import { findUserById } from "../../lib/users";
 import { getViewer } from "../../lib/viewer";
@@ -32,6 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // OWNS the clan, not a claim about who's best at it; those are different
 // things, and conflating them would be a strange way to reward whoever
 // happens to have made the clan rather than whoever's actually revising.
+//
+// `isNextInLine` marks whoever would automatically inherit leadership if
+// the current leader left without ever transferring it themselves — see
+// leaveClan's own comment in lib/clans.ts. Shown so the "default" rule is
+// something a member can actually see, not a hidden mechanic.
 type MemberRow = {
   userId: string;
   name: string;
@@ -39,6 +45,7 @@ type MemberRow = {
   xp: number;
   streak: number;
   isCreator: boolean;
+  isNextInLine: boolean;
 };
 
 export default async function ClanPage({ params }: Props) {
@@ -48,7 +55,13 @@ export default async function ClanPage({ params }: Props) {
   const clan = await getClanById(id);
   if (!clan) notFound();
 
+  // Join order, earliest first — see getClanMemberIds's own comment. This
+  // is what makes "the second person to join" a real, checkable fact
+  // rather than an assumption: the first entry is ordinarily the creator
+  // (they auto-join their own clan on creation), so the first ENTRY THAT
+  // ISN'T THE CREATOR is whoever actually joined second.
   const memberIds = await getClanMemberIds(id);
+  const nextInLineUserId = memberIds.find((memberId) => memberId !== clan.createdBy);
 
   // Small clans by design — see CreateClanForm's own framing, "people you
   // actually invite" — so fetching each member's progress in parallel costs
@@ -73,6 +86,7 @@ export default async function ClanPage({ params }: Props) {
           xp: progress.xp.total,
           streak: progress.streak.current,
           isCreator: userId === clan.createdBy,
+          isNextInLine: userId === nextInLineUserId,
         };
       }),
     )
@@ -82,6 +96,7 @@ export default async function ClanPage({ params }: Props) {
 
   const user = await getViewer();
   const isMember = user ? memberIds.includes(user.id) : false;
+  const viewerIsLeader = user?.id === clan.createdBy;
 
   return (
     <main className="mx-auto w-full max-w-3xl px-6 py-8">
@@ -108,7 +123,7 @@ export default async function ClanPage({ params }: Props) {
 
         {isMember && (
           <div className="ml-auto flex items-center gap-4">
-            {user?.id === clan.createdBy && (
+            {viewerIsLeader && (
               <Link
                 href={`/clans/${clan.id}/edit`}
                 className="text-sm font-semibold text-blue-600 hover:underline dark:text-blue-400"
@@ -152,6 +167,11 @@ export default async function ClanPage({ params }: Props) {
                       </span>
                     </p>
                   )}
+                  {!row.isCreator && row.isNextInLine && (
+                    <p className="mt-0.5 text-xs opacity-45">
+                      Next in line to lead, if the leader ever leaves
+                    </p>
+                  )}
                   <p className="text-sm opacity-55">
                     Level {row.level}
                     {row.streak > 0 &&
@@ -161,6 +181,22 @@ export default async function ClanPage({ params }: Props) {
                 <span className="shrink-0 text-lg font-bold tabular-nums">
                   {row.xp.toLocaleString()} XP
                 </span>
+                {/* Only the current leader sees this, and only on everyone
+                    ELSE's row — handing leadership to yourself isn't a
+                    thing. See transferLeadershipAction's own comment for
+                    why this is a plain form with no client state. */}
+                {viewerIsLeader && !row.isCreator && (
+                  <form action={transferLeadershipAction}>
+                    <input type="hidden" name="clanId" value={clan.id} />
+                    <input type="hidden" name="newLeaderUserId" value={row.userId} />
+                    <button
+                      type="submit"
+                      className="shrink-0 rounded-lg border border-black/10 px-2.5 py-1.5 text-xs font-semibold opacity-70 transition hover:bg-black/5 hover:opacity-100 dark:border-white/15 dark:hover:bg-white/10"
+                    >
+                      Make leader
+                    </button>
+                  </form>
+                )}
               </li>
             ))}
           </ul>

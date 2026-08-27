@@ -1,5 +1,58 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Clan leadership can now be handed over (2026-08-27)
+
+Closes the gap flagged when the Leader badge shipped earlier today: "if
+the creator ever leaves their own clan, nobody currently inherits the
+leader role." Matthew's design, verbatim: "let's let the leader choose
+the person, but by default, it should be the second person who joins the
+clan." Built exactly that — two mechanisms, for two different moments.
+
+**By choice, any time.** A "Make leader" button now appears next to every
+OTHER member's row on the leaderboard, visible only to the clan's current
+leader. One click hands `created_by` straight to that member — no
+confirmation dialog, same low-stakes reasoning `LeaveClanButton`'s own
+comment already gives for skipping one there.
+
+**Automatically, if nobody ever chose.** `leaveClan` now checks whether
+the person leaving IS the clan's leader before removing their membership,
+and if so hands leadership to whoever joined earliest among everyone else
+— "the second person to join," in the ordinary case where leadership was
+never transferred by hand. A clan where the leader was the only member
+has nobody to hand off to; `created_by` is simply left as it was, same as
+this always behaved before today.
+
+**Made "who joined when" a real, ordered fact rather than an assumption.**
+`getClanMemberIds` previously returned members in whatever order storage
+happened to hand them back — nothing depended on that order meaning
+anything, so nothing had ever needed it to. Both the automatic handover
+above and a new "Next in line to lead" label on the leaderboard (shown
+under whoever would inherit leadership by default) depend on it actually
+being join order, so it's now sorted earliest-first everywhere it's read
+— `order=joined_at.asc` on the live database, an explicit sort on the
+local-file backend.
+
+**No SQL to run this time** — `created_by` and `joined_at` already
+existed as ordinary columns on the live tables; this is pure application
+logic on top of data that was already there.
+
+Verified: `tsc --noEmit` and `eslint --max-warnings=0` clean,
+`check-content.mjs` (87,603 checks, untouched) and `check-security.mjs`
+(57 checks) both pass, plus a throwaway 15-check functional test against
+the local-file backend — join order, a non-creator blocked from
+transferring, transferring to a non-member blocked, transferring to
+yourself blocked, a successful explicit transfer, the automatic handover
+correctly picking the earliest remaining joiner when the leader leaves,
+an ordinary member leaving never touching who's the creator, and the
+very-last-member-leaving case correctly leaving `created_by` untouched —
+all passed, then deleted.
+
+New: `transferClanLeadership` and the automatic-handover logic inside
+`leaveClan` (`app/lib/clans.ts`), `transferLeadershipAction` (`app/lib/
+clan-actions.ts`). Changed: `getClanMemberIds` (now join-ordered),
+`app/clans/[id]/page.tsx` (the "Make leader" button and "Next in line"
+label).
+
 ## Past paper mode — a longer, full-length sibling of the quick test (2026-08-27)
 
 Matthew, after seeing the `/ideas_1` competitor research: "just do past
