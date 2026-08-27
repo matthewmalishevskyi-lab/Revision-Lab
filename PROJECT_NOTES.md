@@ -1,26 +1,150 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
-## "Make heir" now actually designates a successor — not an instant handover (2026-08-27)
+## Live head-to-head quiz — a Kahoot-style multiplayer round (2026-08-27)
 
-Follow-up from Matthew, same day as the wording-only rename just below: "after pressing this button, you just make the person a heir, right, not the actual leader, and the person becomes leader only... when the leader leaves. Oh, and also, make sure that only the leader can make a heir." This is the SECOND option from the clarifying question I asked earlier today — the one he'd initially said no to ("Just rename it") — so the rename-only entry directly below this one is now superseded by this one, kept rather than edited so the back-and-forth is still visible.
+Matthew's ask, transcribed from voice and genuinely ambiguous in two places
+that mattered enough to stop and ask about rather than guess: one host,
+join by room code, questions shown one at a time (not all at once, so
+per-question timing can actually be tracked), a final ranking by points,
+points that reward both correctness AND speed, and — twice, for emphasis —
+"make it a huge style... like Kahoot. People love that." **Needs
+`QUIZ_SETUP.sql` run once in Supabase → SQL Editor** before this works on
+the live site, the same pattern as every other feature that added a table.
 
-**What actually changed.** `designateClanHeir` (renamed from `transferClanLeadership`) now only ever writes a new `heir_id` column on `clans` — it no longer touches `created_by` at all. Clicking "Make heir" records a choice; it does not make anyone leader. `leaveClan` is what reads that choice: when the leader leaves, it hands `created_by` to the chosen heir if one was named and they're still a member, and only falls back to the old default (earliest-joined remaining member) when nobody was chosen, or the chosen heir already left. Either way the new leader starts with `heir_id` cleared — the previous leader's choice shouldn't read as though the new leader made it themselves. Separately, if the HEIR leaves without the leader ever leaving, `heir_id` is cleared too, so it can never point at somebody no longer even a member.
+**The literal request didn't fit the content that exists, so I asked rather
+than reinterpreted it.** "Twenty questions... about one of the topics" only
+works if a topic has 20 real multiple-choice questions — every topic on
+this site has somewhere between 5 and 9. Rather than silently deciding
+what to build (a shorter round? one topic stretched with repeats? pulling
+from the whole subject instead?), I asked Matthew directly. His answers,
+which shaped the whole feature: **the host picks 2–4 topics within one
+subject** (not the whole subject, not one topic alone) to build a pool big
+enough for up to 20 questions from; and **anyone with the room code can
+join by typing a name, no account needed — guest join, like Kahoot** — a
+logged-in player still gets real XP and progress recorded, a guest just
+plays for the leaderboard with nothing persisted afterwards.
 
-**"Only the leader can make a heir"** — already true before Matthew asked for it explicitly: `designateClanHeir` checks the caller against `created_by` itself (`NOT_CREATOR`), the same data-layer check `updateClanBanner` uses for the banner, so it holds even if someone bypassed the page and posted the form directly — not just because the button is hidden from everyone else.
+**What it does.** `/quiz` is the landing page (Host / Join). Hosting
+(`/quiz/host/new`, login required) picks a subject and 2–4 of its topics;
+`buildQuestionSet` pools every real multiple-choice question across just
+those topics, shuffles it, and keeps up to 20 — capped by whatever the
+chosen topics actually have, same honesty `revisionWeight` and the
+past-paper duration already practise elsewhere on this site: a smaller
+pool genuinely produces a shorter round rather than padding one out.
+`/quiz/host/[code]` is the host's own screen — a big room code, then each
+question shown full-screen with a live countdown, a "reveal" step showing
+the correct answer and a running leaderboard, then the next question, then
+final results. Anyone types the room code into `/quiz/join`, gives a name
+(or plays under their real logged-in name), and answers from
+`/quiz/play/[code]` on their own device — four to six shape-and-colour
+coded answer buttons (never colour alone, for the same accessibility
+reason icons already exist), never the host's screen.
 
-**On the leaderboard:** the designated heir gets a purple "Heir" badge (distinct from the amber "Leader" one); anyone else who'd inherit by default when nobody's been chosen still gets the old, plainer "Next in line by default" text, so the two cases read differently rather than looking like the same guarantee.
+**Scoring:** 1000 points for an instant correct answer, decaying to a
+floor of 500 as the clock runs out, 0 for wrong or no answer — so getting
+it right always beats getting it right slowly, but nobody who's correct is
+ever punished down to nothing just for using the last available second.
+Computed from `elapsedSeconds` measured against the SERVER's own clock and
+`phaseStartedAt`, never trusted from whatever a player's own browser
+reports its timing as — the same "never trust the client with a number
+that decides a score" reasoning `recordStudyTime` already applies to
+seconds spent studying.
 
-**New column:** `heir_id` (nullable uuid, no default) added to `CLAN_SETUP.sql` — **Matthew needs to re-run the updated SQL block in Supabase's SQL Editor** for the live site, the same step the banner resize feature needed (and for the same reason: a live table missing a column the code now queries throws `PGRST204`, not a code bug).
+**Live, but polling — not Realtime/WebSockets, and deliberately so.** Every
+other "live-feeling" number on this site (clan leaderboards, progress,
+test history) already works by "fetch the current state, show it," and
+that's genuinely fast enough here too: the host's and every player's screen
+poll a single shared `getQuizView` every 1.2–1.5 seconds, and each screen's
+own on-screen countdown is computed LOCALLY from a shared `phaseStartedAt`
+timestamp rather than pushed — so the timer itself never drifts just
+because a poll landed a little late, and a poll interval was never in
+tension with "the clock has to be accurate." The full, already-shuffled
+question set is resolved once and stored as JSON on the session row at
+creation time, not a re-derivable seed — the same reasoning as everywhere
+else data is written once rather than recomputed: there's only ever one
+true answer to "what is question 7," sitting in the row.
 
-Verified: `tsc --noEmit` and `eslint --max-warnings=0` clean, `check-content.mjs` (87,603 checks, untouched) and `check-security.mjs` (57 checks) both pass, plus a throwaway 14-check functional test against the local-file backend — heir starts null, non-leader blocked from designating, leader blocked from designating themselves, designating a non-member blocked, designating an heir leaves `created_by` unchanged, the chosen heir (not the default earliest-joiner) becomes leader when the leader leaves, the new leader starts with no heir of their own, a stale heir designation is cleared when the HEIR leaves early, and leaving still falls back to the old default when nobody was ever chosen — all passed, then deleted.
+**A guest player is a genuine, documented trade-off, not an oversight.**
+With no account, a guest has no session cookie to prove who they are —
+their `playerId`, handed back once on joining, works as a bearer
+capability: whoever holds it can act as that player for the rest of the
+game. Fine for a casual classroom/friend-group game where everyone already
+knows the room code; explicitly NOT the security model any account page on
+this site uses, and said so in the code rather than left implicit.
 
-Changed: `app/lib/clans.ts` (`designateClanHeir`, `leaveClan`), `app/lib/clan-actions.ts` (`designateHeirAction`), `app/clans/[id]/page.tsx` (badge + button logic), `CLAN_SETUP.sql` (`heir_id` column).
+**Progress recording had to happen on each player's OWN device, and here's
+why that wasn't a choice.** `recordAnswer`/`recordTestCompletion` (the same
+Server Actions ordinary practice and mock exams already use) can only ever
+record against whoever's own session cookie is calling them — there's no
+way for the host to record "on behalf of" someone else's account, by
+design, the same boundary that keeps one person's login from touching
+another's data anywhere else on the site. So `PlayQuizScreen.tsx` calls
+them itself, from each player's own browser, the instant that question's
+result is known — a logged-in player accumulates real XP and topic
+coverage from a quiz exactly as if they'd answered those same questions in
+ordinary practice; a guest's identical calls just quietly do nothing, per
+`progress-actions.ts`'s own "not logged in: nothing to record against, not
+an error" comment.
 
-## Small wording tweak: "Make leader" → "👑 Make heir" (2026-08-27)
+**One real bug caught by a functional test before it ever shipped:**
+`buildQuestionSet` originally set a question's correct choice directly from
+its `answer` field. Wrong — this site's own marking rule (documented at the
+top of `Practice.tsx`) is that the correct choice is whichever option
+matches the question's `accept` list under `normalise()`, not necessarily
+identical text to `answer`. Fixed by extracting `normalise()` out of
+`Practice.tsx` into a new, plain `app/lib/normalise.ts` (the original lived
+in a "use client" file, which server-only `quiz.ts` has no business
+importing from) and rewriting the correct-choice lookup to actually use it.
+A 27-check throwaway test against the data layer caught this; a second,
+32-check end-to-end throwaway test afterwards played two simulated players
+through an entire game — join, a non-host blocked from starting/revealing,
+double-answering blocked, correct scoring above the floor, wrong answers
+scoring zero, advancing through every question to a real "finished" state,
+and the final leaderboard correctly ranking the player who got everything
+right above the one who got nothing right — all passed, then deleted along
+with the throwaway compiled output before shipping.
 
-Matthew: "can you change make leader to make crown inheritor or something? Make a heir" — sounded like it might mean an actual behaviour change (choosing a successor now who only takes over later), so I asked rather than guessed. His answer: just the wording. Same button, same `transferLeadershipAction`, same instant handover — only the visible label changed, on the button described in the entry just below.
+**This codebase's stricter React Compiler lint rules
+(`react-hooks/set-state-in-effect`, `react-hooks/purity`) shaped the two
+screen components more than anything else did.** Both `HostQuizScreen.tsx`
+and `PlayQuizScreen.tsx` poll on a timer and run their own once-a-quarter-
+second countdown tick — exactly the kind of code that wants to call
+`setState` directly inside a `useEffect` body, which this codebase's lint
+config now forbids. The pattern that satisfies it, applied consistently
+across both files: a poll's very first call is deferred via
+`setTimeout(fn, 0)` rather than called directly, with `setInterval`
+handling every call after that; `Date.now()` is only ever read inside a
+`setInterval`-invoked tick callback, never during render; and resetting a
+piece of state when a prop-like value changes (the countdown when leaving
+the question phase, a player's selected answer when the question index
+moves on) uses React's own "adjust state during render" idiom —
+comparing against a tracked previous value directly in the render body —
+the exact same pattern `Practice.tsx` already established for a different
+reset, rather than an effect that calls `setState` in its own body.
 
-Verified: `tsc --noEmit` and `eslint --max-warnings=0` clean on the one changed file. Changed: `app/clans/[id]/page.tsx` only.
+**Verified:** `tsc --noEmit` and `eslint --max-warnings=0` clean across the
+whole project (not just the new files); `check-content.mjs` (87,603 checks,
+content genuinely untouched) and `check-security.mjs` (57 checks) both
+pass; plus the two throwaway functional tests described above, both
+deleted afterwards along with their compiled output and local test data.
+
+New files: `QUIZ_SETUP.sql`, `app/lib/quiz.ts`, `app/lib/quiz-actions.ts`,
+`app/lib/normalise.ts`, `app/components/quiz/quizChoiceStyles.ts`,
+`app/components/quiz/QuizShapeIcon.tsx`,
+`app/components/quiz/QuizChoiceButton.tsx`,
+`app/components/quiz/QuizLeaderboard.tsx`,
+`app/components/quiz/QuizConfetti.tsx`, `app/quiz/page.tsx`,
+`app/quiz/quizStorage.ts`, `app/quiz/host/new/page.tsx`,
+`app/quiz/host/new/HostSetupForm.tsx`, `app/quiz/host/[code]/page.tsx`,
+`app/quiz/host/[code]/HostQuizScreen.tsx`, `app/quiz/join/page.tsx`,
+`app/quiz/join/JoinQuizForm.tsx`, `app/quiz/play/[code]/page.tsx`,
+`app/quiz/play/[code]/PlayQuizScreen.tsx`. Changed:
+`app/components/Practice.tsx` and `app/components/MockExam.tsx` (now
+import `normalise` from the new shared file instead of each other),
+`app/components/SiteFooter.tsx` (a "Live quiz" link, reachable logged
+out), `app/dashboard/page.tsx` (a "Host a live quiz" card), `app/robots.ts`
+(added `/quiz` to the disallow list, matching every noindex quiz page's own
+metadata).
 
 ## Clan leadership can now be handed over (2026-08-27)
 

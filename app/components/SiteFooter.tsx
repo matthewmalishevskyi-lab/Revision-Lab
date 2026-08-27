@@ -36,6 +36,9 @@ export function SiteFooter() {
           >
             Exam board
           </Link>
+          <Link href="/quiz" className="hover:underline underline-offset-2">
+            Live quiz
+          </Link>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             className="hover:underline underline-offset-2"

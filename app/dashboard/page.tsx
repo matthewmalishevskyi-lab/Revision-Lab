@@ -254,6 +254,27 @@ export default async function DashboardPage() {
         </Link>
       )}
 
+      {/* ---------- Live quiz ---------- */}
+      {/* Same link-card shape again — a Kahoot-style live quiz needs a host,
+          and hosting requires an account, so this is the natural place to
+          surface it. Guests joining a room the host already started reach
+          it through the room code itself (or the footer's "Live quiz" link,
+          reachable logged out), never through here. */}
+      <Link
+        href="/quiz/host/new"
+        className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/60 bg-white/70 px-6 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+      >
+        <span>
+          <span className="font-semibold">Host a live quiz</span>
+          <span className="ml-2 opacity-60">
+            up to 20 questions, everyone ranked at the end — Kahoot-style
+          </span>
+        </span>
+        <span aria-hidden="true" className="text-xl opacity-40">
+          →
+        </span>
+      </Link>
+
       {/* ---------- Revise today ---------- */}
       {/* The dashboard is the page you land on right after logging in, so
           this sits above the subject grid rather than only on /revise — the

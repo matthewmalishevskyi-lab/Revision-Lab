@@ -19,7 +19,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { normalise } from "./Practice";
+import { normalise } from "../lib/normalise";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";

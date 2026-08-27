@@ -49,6 +49,13 @@ export default function robots(): MetadataRoute.Robots {
         // }` in their own metadata, the same reasoning as everything else
         // in this list.
         "/clans",
+        // Added alongside the live quiz feature — /quiz and every
+        // /quiz/host/*, /quiz/join and /quiz/play/* page all carry
+        // `robots: { index: false, follow: false }` in their own metadata,
+        // the same reasoning as everything else in this list. "/quiz" as
+        // one prefix covers all of them, the same trick already used above
+        // for "/pro-preview".
+        "/quiz",
       ],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,

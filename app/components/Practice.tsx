@@ -28,6 +28,13 @@ import { useState } from "react";
 import { HigherBadge } from "./HigherBadge";
 import { recordAnswer } from "../lib/progress-actions";
 import { shuffle } from "../lib/shuffle";
+// `normalise` used to be defined right here, and MockExam.tsx imported it
+// from this file. It now lives in lib/normalise.ts instead — pulled out the
+// moment a THIRD place (the live quiz's server-only data layer, lib/quiz.ts)
+// needed the exact same comparison and couldn't import a function from a
+// "use client" file. See that file's own header comment for the full
+// reasoning; nothing about how this file uses `normalise` changed.
+import { normalise } from "../lib/normalise";
 
 type Question = {
   question: string;
@@ -44,70 +51,6 @@ type Question = {
   // another. The checker verifies that exactly one choice matches `accept`.
   choices?: string[];
 };
-
-// Makes typed answers forgiving without making them wrong.
-//
-// ─────────────────────────────────────────────────────────────────────────────
-// A REAL BUG THIS FUNCTION USED TO HAVE
-//
-// The first version stripped every hyphen, so that "run-length encoding" would
-// match "run length encoding". Sensible-looking, and quietly catastrophic: it
-// also stripped the MINUS SIGN. "-3" became "3", so a student answering 3 to a
-// question whose answer was -3 was marked CORRECT.
-//
-// An automated check caught it. The lesson is worth more than the fix: a rule
-// that looks harmless in the case you were thinking about ("hyphens are just
-// punctuation") can be badly wrong in a case you weren't ("minus is not
-// punctuation, it's part of the number"). Test the edges, not the middle.
-//
-// The fix is to remove a hyphen only when it sits BETWEEN TWO LETTERS, which is
-// where word hyphens live. A hyphen next to a digit is a minus sign and stays.
-// ─────────────────────────────────────────────────────────────────────────────
-//
-// Removed: capitals, spaces, commas, word hyphens and a trailing full stop. So
-// "1.44 MB", "1.44mb" and "1.44 mb." all match, and "run-length encoding"
-// matches "run length encoding".
-//
-// ─────────────────────────────────────────────────────────────────────────────
-// SYMBOLS THAT DECORATE A NUMBER WITHOUT CHANGING IT
-//
-// A second bug, found the same way as the first. Asked "the bearing of A from
-// B?", a student who typed 230° was marked WRONG, because the accepted answer
-// was "230" and the degree sign made the strings differ. Same for 20% and £50.
-//
-// The fix is to drop a trailing ° or % and a leading currency symbol, because
-// none of them change the VALUE — 230 and 230° are the same answer written two
-// ways. The alternative was adding every variant to hundreds of accept lists
-// by hand, which would work until the first one anybody forgot.
-//
-// Note this cannot wrongly accept a percentage where a decimal was asked for:
-// "write 45% as a decimal" wants 0.45, and a student typing 45% still produces
-// "45", which still does not match. The symbol is stripped; the value is not.
-// ─────────────────────────────────────────────────────────────────────────────
-//
-// NOT removed: minus signs, and leading zeros. "1011100" stays different from
-// "01011100", because a missing leading zero on an 8-bit answer genuinely IS
-// wrong and examiners mark it as such. Forgiving about typing, strict about the
-// answer.
-// Exported so MockExam.tsx can mark answers exactly the same way. Two
-// slightly different copies of "how forgiving is marking" is how a site ends
-// up marking the same typed answer correct in one place and wrong in
-// another — the same reasoning that keeps multiple choice reusing this
-// instead of getting its own comparison.
-export function normalise(text: string): string {
-  return text
-    .toLowerCase()
-    // Unify the various dash characters people and word processors produce.
-    .replace(/[–—−]/g, "-")
-    // Drop hyphens only where a letter sits on each side.
-    .replace(/(?<=[a-z])-(?=[a-z])/g, "")
-    .replace(/[\s,]/g, "")
-    // A currency symbol in front of a number decorates it; £50 is 50.
-    .replace(/^[£$€]/, "")
-    // Trailing degree signs, percent signs and sentence punctuation, in any
-    // combination — "230°." and "20%" both reduce to the bare value.
-    .replace(/[°%.!?]+$/, "");
-}
 
 type Status = "unanswered" | "correct" | "incorrect" | "selfMarked";
 
