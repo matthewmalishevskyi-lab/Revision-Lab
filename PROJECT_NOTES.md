@@ -1,5 +1,47 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## A missing schema migration, and a "Leader" badge for the clan's creator (2026-08-27)
+
+**Bug: creating a clan failed with "Something went wrong."** Not a code
+bug — the live Supabase database was simply missing the three columns the
+resize/reposition feature above needs (`banner_icon_scale`,
+`banner_icon_offset_x`, `banner_icon_offset_y`). Diagnosed properly rather
+than guessed at: the create-clan action's catch block temporarily surfaced
+the *real* error to the screen (the exact same move `PROJECT_NOTES.md`
+already records for the 2026-08-09 login-timing bug — "the real error was
+caught and discarded... turned it into a one-line answer"), which showed
+Postgres's actual complaint: `PGRST204 — Could not find the
+'banner_icon_offset_x' column of 'clans' in the schema cache`. That
+confirmed the fix needed was running the updated `CLAN_SETUP.sql` in
+Supabase, not a code change — the debug text was reverted immediately
+once that was confirmed (`d1d71c4`), so nothing user-facing leaks internal
+error detail going forward.
+
+**Leader badge.** Matthew: "make the curator the owner of the [clan]...
+only he can change stuff, and he has the leader name under his name at
+the clan area." The "only the creator can change it" half was already
+true and needed no new code — `updateClanBanner` already checks
+`clan.createdBy` and rejects anyone else (see the resize feature above) —
+so this was purely the visible half: a small amber "👑 Leader" badge now
+appears directly under the clan creator's name on their row in the
+`/clans/[id]` leaderboard, wherever that row happens to rank. Deliberately
+does NOT affect ranking — the badge says who OWNS the clan, not who's
+best at it, and conflating the two would reward making a clan over
+actually revising in it.
+
+**One real limitation worth knowing about, not yet fixed because it
+wasn't asked for and needs a real design decision:** `created_by` never
+changes once a clan exists, including if the creator later leaves their
+own clan via "Leave" — nothing currently transfers leadership. Today that
+would mean nobody left in the clan can edit its banner any more (the
+Leader badge also just wouldn't appear on anyone, since the row only
+renders for current members). Worth raising with Matthew before it
+actually happens to someone, rather than after.
+
+`tsc --noEmit`, `eslint --max-warnings=0`, and `check-security.mjs` (57
+checks) all clean. Changed: `app/lib/clan-actions.ts` (temporary debug,
+reverted), `app/clans/[id]/page.tsx` (the Leader badge).
+
 ## Clan banners: resize/reposition the icon, plus 7 more icons (2026-08-27)
 
 Matthew, right after the centering-bug fix above: "make us able to resize

@@ -26,12 +26,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // not a full profile. Ranked by total XP: the same number that fills the
 // level bar on the dashboard, so a clan's leaderboard and a member's own
 // progress page always agree on what's being counted.
+//
+// `isCreator` doesn't change the ranking — the leader's row sits wherever
+// their own XP puts it, same as anyone else's. It's a label about WHO
+// OWNS the clan, not a claim about who's best at it; those are different
+// things, and conflating them would be a strange way to reward whoever
+// happens to have made the clan rather than whoever's actually revising.
 type MemberRow = {
   userId: string;
   name: string;
   level: number;
   xp: number;
   streak: number;
+  isCreator: boolean;
 };
 
 export default async function ClanPage({ params }: Props) {
@@ -65,6 +72,7 @@ export default async function ClanPage({ params }: Props) {
           level: progress.xp.level,
           xp: progress.xp.total,
           streak: progress.streak.current,
+          isCreator: userId === clan.createdBy,
         };
       }),
     )
@@ -137,6 +145,13 @@ export default async function ClanPage({ params }: Props) {
                       <span className="ml-2 text-sm font-normal opacity-50">(you)</span>
                     )}
                   </p>
+                  {row.isCreator && (
+                    <p className="mt-0.5">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/15 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+                        👑 Leader
+                      </span>
+                    </p>
+                  )}
                   <p className="text-sm opacity-55">
                     Level {row.level}
                     {row.streak > 0 &&
