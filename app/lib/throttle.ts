@@ -266,7 +266,10 @@ export type ThrottleVerdict =
   | { allowed: true }
   | { allowed: false; retryAfterSeconds: number };
 
-function humanDelay(seconds: number): string {
+// Exported so other throttled actions (clan joins) can build their own
+// message with the right subject — "sign-in attempts" would be a confusing
+// thing to tell someone mistyping a clan password.
+export function humanDelay(seconds: number): string {
   if (seconds < 60) return `${seconds} seconds`;
   const minutes = Math.ceil(seconds / 60);
   if (minutes < 60) return `${minutes} minute${minutes === 1 ? "" : "s"}`;
@@ -412,6 +415,53 @@ export async function recordRegistration(): Promise<void> {
     await bump(`register:${await clientIp()}`, Date.now(), REGISTER_TIERS, 60 * 60);
   } catch (error) {
     console.error("[throttle] could not record registration:", error);
+  }
+}
+
+// ─── Clan join passwords ────────────────────────────────────────────────────
+//
+// Found while BUILDING the clan feature, not by a later audit: joinClan()
+// checks a password the same way login does, and a clan password can be as
+// short as 4 characters — a much smaller space than an account password's
+// 8-character minimum — yet nothing here originally slowed down guessing it
+// at all. Reusing the exact same shape as login's own limiter (per-target
+// AND per-IP, same reasoning as the big comment at the top of this file for
+// why both are needed) rather than inventing a new one.
+//
+// Separate key prefixes from login's `email:`/`ip:` — a clan password
+// mistyped a dozen times shouldn't push someone toward being locked out of
+// their own account, and the two are different secrets protecting different
+// things.
+const CLAN_JOIN_TIERS: Tier[] = [
+  { atFailures: 6, lockSeconds: 60 },
+  { atFailures: 11, lockSeconds: 5 * 60 },
+  { atFailures: 21, lockSeconds: 15 * 60 },
+];
+const CLAN_JOIN_QUIET_SECONDS = 60 * 60;
+
+export async function checkClanJoinAllowed(clanId: string): Promise<ThrottleVerdict> {
+  const now = Date.now();
+  try {
+    const byIp = await checkKey(`clanjoin-ip:${await clientIp()}`, now);
+    if (!byIp.allowed) return byIp;
+    return await checkKey(`clanjoin-clan:${clanId}`, now);
+  } catch (error) {
+    // Fail open, for the identical reason checkLoginAllowed does — see its
+    // comment. A clan leaderboard is lower-stakes than an account, so this
+    // trade-off is at least as easy to justify here.
+    console.error("[throttle] clan-join check failed, allowing attempt:", error);
+    return { allowed: true };
+  }
+}
+
+export async function recordFailedClanJoin(clanId: string): Promise<void> {
+  try {
+    await Promise.all([
+      bump(`clanjoin-clan:${clanId}`, Date.now(), CLAN_JOIN_TIERS, CLAN_JOIN_QUIET_SECONDS),
+      bump(`clanjoin-ip:${await clientIp()}`, Date.now(), CLAN_JOIN_TIERS, CLAN_JOIN_QUIET_SECONDS),
+    ]);
+  } catch (error) {
+    console.error("[throttle] could not record failed clan join:", error);
   }
 }
 

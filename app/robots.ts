@@ -44,6 +44,11 @@ export default function robots(): MetadataRoute.Robots {
         "/revise",
         "/wardrobe",
         "/pro-preview",
+        // Added alongside the clans feature — /clans, /clans/new and every
+        // /clans/[id] page all carry `robots: { index: false, follow: false
+        // }` in their own metadata, the same reasoning as everything else
+        // in this list.
+        "/clans",
       ],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,

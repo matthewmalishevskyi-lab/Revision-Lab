@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SiteHeader } from "../components/SiteHeader";
+import { ClanBanner } from "../components/ClanBanner";
 import { DashboardCelebrations } from "../components/DashboardCelebrations";
 import { FlameIcon } from "../components/FlameIcon";
 import { MascotDisplay } from "../components/MascotDisplay";
 import { PixelCompanion } from "../components/PixelCompanion";
 import { OUTFITS, type OutfitUnlockInfo } from "../components/PixelOutfits";
 import { getViewer } from "../lib/viewer";
+import { getUserClan } from "../lib/clans";
 import { getProgress } from "../lib/progress";
 import { getRevisionQueue, QUEUE_KIND_LABELS } from "../lib/revision-queue";
 import { ACCOUNTS_ENABLED } from "../lib/site";
@@ -42,6 +44,10 @@ export default async function DashboardPage() {
   // one topic in one subject and had nothing to say about flashcards due or
   // weak spots anywhere else on the site.
   const queue = await getRevisionQueue(user.id);
+
+  // Whichever clan this account is currently in, or null — see lib/clans.ts.
+  // A user is in at most one at a time, so there's nothing to pick between.
+  const clan = await getUserClan(user.id);
 
   // How many wardrobe outfits are unlocked right now — see PixelOutfits.tsx.
   // Unlike the flashcard banner above, this one is always shown: there's
@@ -195,6 +201,51 @@ export default async function DashboardPage() {
           →
         </span>
       </Link>
+
+      {/* ---------- Clan ---------- */}
+      {/* Same link-card shape as the wardrobe one above, so the two read as
+          a matched pair of "other things to do here" rather than one being
+          a special case. Two different destinations depending on whether
+          this account is in a clan yet — same reasoning as SiteFooter's
+          Login/Register link only showing when there's somewhere useful for
+          it to go. */}
+      {clan ? (
+        <Link
+          href={`/clans/${clan.id}`}
+          className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/60 bg-white/70 px-6 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+        >
+          <span className="flex items-center gap-3">
+            <ClanBanner
+              banner={{ color: clan.bannerColor, shape: clan.bannerShape, icon: clan.bannerIcon }}
+              className="h-9 w-9 shrink-0"
+            />
+            <span>
+              <span className="font-semibold">{clan.name}</span>
+              <span className="ml-2 opacity-60">
+                {clan.memberCount} member{clan.memberCount === 1 ? "" : "s"} · see the leaderboard
+              </span>
+            </span>
+          </span>
+          <span aria-hidden="true" className="text-xl opacity-40">
+            →
+          </span>
+        </Link>
+      ) : (
+        <Link
+          href="/clans"
+          className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/60 bg-white/70 px-6 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+        >
+          <span>
+            <span className="font-semibold">Join or create a clan</span>
+            <span className="ml-2 opacity-60">
+              a small leaderboard for people you invite
+            </span>
+          </span>
+          <span aria-hidden="true" className="text-xl opacity-40">
+            →
+          </span>
+        </Link>
+      )}
 
       {/* ---------- Revise today ---------- */}
       {/* The dashboard is the page you land on right after logging in, so

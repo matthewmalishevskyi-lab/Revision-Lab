@@ -1,5 +1,73 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Clans — small self-made leaderboards with custom banners (2026-08-27)
+
+Matthew asked for the small-group leaderboard idea, then specifically: a
+"clan" system with a create button, a customisable banner (colour, shape,
+and a character/object on it — his examples were a laptop, mouse, pen,
+calculator), clans discoverable by search, and joining gated by a password
+he described mid-conversation ("they would have to put in the clan
+password so they can join it") rather than a hidden invite link. Built end
+to end this session; **not yet pushed from this side**, same standing
+limitation as always — Matthew still needs to `git push` from his own
+machine. **Needs `CLAN_SETUP.sql` run once in Supabase → SQL Editor**
+before this works on the live site, the same way `PROGRESS_SETUP.sql` and
+`ACCOUNT_SETUP.sql` did for their own features.
+
+**What it does.** `/clans` lists and searches clans by name; `/clans/new`
+creates one (name, a join password, and a banner built from 15 colours × 6
+shapes × 15 icons — see `lib/clanBanners.ts`); `/clans/[id]` shows a clan's
+banner, its member count, and a leaderboard ranked by total XP (the same
+number that fills the level bar on the dashboard), plus a join form gated
+by the clan's password or a leave button if you're already in it. A user
+is in at most one clan at a time, enforced by a real database constraint
+(`unique(user_id)` on `clan_members`) rather than just an application
+check — the same reasoning `users.email` being UNIQUE is what actually
+stops duplicate accounts, not a lookup beforehand. The dashboard shows a
+small card either linking to your clan or inviting you to join/create one.
+
+**Two things worth knowing were found and fixed while building this, not
+by a separate audit:**
+
+The password hash for a clan very nearly leaked into the data returned to
+pages. The local-file backend's "one clan record" object naturally wanted
+to carry its hash alongside everything else, and a `{ ...clan, memberCount
+}` spread would have copied it straight into everything this file hands
+back — the exact shape of bug the `passwordHash` field on the real
+`users` table has always been kept away from by `fromRow` only ever
+copying out named safe fields. Fixed the same way: `withCount` in
+`lib/clans.ts` now builds its return value field by field, so an object
+that happens to carry an extra property can't leak it regardless of what
+future code passes through.
+
+Clan join passwords had **no rate limiting at all**, unlike login
+passwords — and a clan password can be as short as 4 characters, a much
+smaller space than an account's 8-character minimum. `throttle.ts` gained
+`checkClanJoinAllowed`/`recordFailedClanJoin`, reusing the exact per-target
++ per-IP shape login already uses (see that file's own big comment for why
+both are needed), under separate key prefixes so a mistyped clan password
+never pushes someone toward being locked out of their actual account.
+
+New files: `CLAN_SETUP.sql`, `app/lib/clanBanners.ts`, `app/lib/clans.ts`,
+`app/lib/clan-actions.ts`, `app/components/ClanBadgeIcon.tsx`,
+`app/components/ClanBanner.tsx`, `app/components/ClanBannerPicker.tsx`,
+`app/clans/page.tsx`, `app/clans/new/page.tsx`,
+`app/clans/CreateClanForm.tsx`, `app/clans/[id]/page.tsx`,
+`app/clans/[id]/JoinClanForm.tsx`, `app/clans/[id]/LeaveClanButton.tsx`.
+Changed: `app/lib/throttle.ts` (clan-join rate limiting), `app/dashboard/
+page.tsx` (the new clan card), `app/robots.ts` (added `/clans` to the
+disallow list — every clan page is noindex, same reasoning as everything
+else already in that list).
+
+Verified: `tsc --noEmit` clean, `eslint --max-warnings=0` clean (twice),
+`check-content.mjs` 87,603 checks pass, `check-security.mjs` 57 checks
+pass, plus a throwaway end-to-end smoke test against the local-file
+backend (create, wrong password rejected, correct password joins, can't
+join a second clan while in one, search finds by partial name, leaving
+frees you to join elsewhere, password hash never appears in anything
+returned) — all passed, then deleted along with its test data before
+shipping.
+
 ## Exam board picker (2026-08-27)
 
 Matthew asked to start on the "varying exam boards" idea from the
