@@ -30,6 +30,12 @@ export function SiteFooter() {
           >
             Accessibility
           </Link>
+          <Link
+            href="/exam-board"
+            className="hover:underline underline-offset-2"
+          >
+            Exam board
+          </Link>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             className="hover:underline underline-offset-2"

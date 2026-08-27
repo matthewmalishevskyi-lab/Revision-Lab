@@ -1,5 +1,48 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Exam board picker (2026-08-27)
+
+Matthew asked to start on the "varying exam boards" idea from the
+competitive-ideas list, and gave broad latitude on how to do it ("I honestly
+want you to change it the way you want to... it's for you to decide"). Built
+end to end this session; **not yet pushed from this side**, same standing
+limitation as always — Matthew still needs to `git push` from his own
+machine.
+
+**What it does.** A new `/exam-board` settings page (linked from the footer,
+next to Accessibility) lets a student pick AQA / Edexcel / OCR / WJEC / "not
+sure," remembered on-device the same way the accessibility settings are —
+`lib/browserStore.ts`'s `useStoredRaw`/`writeStorageRaw`, no account needed.
+Every subject page's old, flat "topic lists vary between boards" sentence at
+the bottom is now `ExamBoardNote.tsx`: it renders that exact same sentence
+(plus a quiet link to set a board) until a board is actually chosen, so
+nobody who never visits the new page sees anything different — and once one
+is set, it swaps in a short, specific note for the five subjects where a
+real, well-known board difference exists (History's options, English's set
+texts, Business's AQA/Edexcel/OCR split, Computer Science's paper grouping,
+and RE's religion/theme choice) — see `lib/examBoards.ts`'s `BOARD_NOTES`.
+
+**Deliberately scoped to stay clear of the content freeze.** Everything here
+is new structural files (`lib/examBoards.ts`, `ExamBoardPanel.tsx`,
+`ExamBoardNote.tsx`, `/exam-board/page.tsx`) plus a link in the footer and a
+one-line swap in the subject page — nothing in `app/lib/content/*.ts` was
+touched, and no topic in `subjects.ts` was added, removed or reordered. The
+five `BOARD_NOTES` sentences are short and advisory, not new revision
+content, and are grounded in comments already written into `subjects.ts`
+(the History and Business entries specifically) plus well-known,
+easily-checked facts about how those boards structure their specs — not
+guesses. Worth Matthew double-checking those five sentences against his own
+school's actual board/scheme, the same "check and tell us what to change"
+spirit as the original disclaimer.
+
+New files: `app/lib/examBoards.ts`, `app/components/ExamBoardPanel.tsx`,
+`app/components/ExamBoardNote.tsx`, `app/exam-board/page.tsx`. Changed:
+`app/components/SiteFooter.tsx` (new "Exam board" link),
+`app/subjects/[subject]/page.tsx` (swapped the static disclaimer for
+`<ExamBoardNote>`). Verified: `tsc --noEmit` clean, `eslint --max-warnings=0`
+clean (twice), `check-content.mjs` 87,603 checks pass, `check-security.mjs`
+57 checks pass.
+
 ## Deep bug hunt — auth, gamification, mock exams, SEO (2026-08-25)
 
 Matthew asked for another periodic "deep bug fix" pass, same shape as the

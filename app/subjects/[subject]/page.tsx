@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ExamBoardNote } from "../../components/ExamBoardNote";
 import { Icon } from "../../components/Icon";
 import { MascotDisplay } from "../../components/MascotDisplay";
 import { SiteHeader } from "../../components/SiteHeader";
@@ -221,10 +222,7 @@ export default async function SubjectPage({ params }: Props) {
         })}
       </section>
 
-      <p className="mx-auto mt-10 max-w-3xl text-center text-sm opacity-50">
-        Topic lists vary between exam boards and schools — check these against
-        your own course and tell us what to change.
-      </p>
+      <ExamBoardNote subjectSlug={subject.slug} />
     </main>
   );
 }
