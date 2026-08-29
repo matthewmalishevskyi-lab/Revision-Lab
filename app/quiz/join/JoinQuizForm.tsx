@@ -85,7 +85,11 @@ export function JoinQuizForm({
 
       <button
         type="submit"
-        disabled={pending || code.length !== 6}
+        // Mirrors what joinQuizAction already enforces server-side (a
+        // guest with nothing typed gets "Enter a name…" back) — checked
+        // here too so the button reflects it up front instead of someone
+        // tapping Join and being told the same thing a moment later.
+        disabled={pending || code.length !== 6 || (!loggedInName && guestName.trim().length === 0)}
         className="mt-6 w-full rounded-xl bg-blue-600 py-3.5 text-lg font-bold text-white shadow-lg transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {pending ? "Joining…" : "Join"}

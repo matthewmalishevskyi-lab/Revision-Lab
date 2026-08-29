@@ -465,6 +465,55 @@ export async function recordFailedClanJoin(clanId: string): Promise<void> {
   }
 }
 
+// ─── Quiz room codes ────────────────────────────────────────────────────────
+//
+// Found the same way the clan-join gap above was: while BUILDING the feature,
+// not by a later audit. A quiz room code is only 6 digits — 900,000
+// possibilities — and unlike a clan, IT IS the whole secret. There's no
+// separate password to also get right; anyone who lands on a valid, still-
+// open code is in the room. Nothing originally stopped a script from just
+// trying every 6-digit number until one hit.
+//
+// Only ONE key here, not two like login/clan-join. Those have a stable
+// TARGET being guessed against (one email, one clan) as well as a stable
+// ATTACKER (one IP) — this doesn't. Every failed guess is a different
+// "target" (a different code), so there's nothing sensible to key a
+// per-target counter by; the IP making the guesses is the only stable thing
+// to count against. Same tiers as clan-join: generous enough that mistyping
+// a code a few times is invisible, tight enough that scanning the whole
+// 900,000-code space would take upwards of twenty years instead of however
+// long a script takes to fire off unlimited requests.
+const QUIZ_JOIN_TIERS: Tier[] = [
+  { atFailures: 6, lockSeconds: 60 },
+  { atFailures: 11, lockSeconds: 5 * 60 },
+  { atFailures: 21, lockSeconds: 15 * 60 },
+];
+const QUIZ_JOIN_QUIET_SECONDS = 60 * 60;
+
+export async function checkQuizJoinAllowed(): Promise<ThrottleVerdict> {
+  try {
+    return await checkKey(`quizjoin-ip:${await clientIp()}`, Date.now());
+  } catch (error) {
+    // Fail open, the same reasoning as every other check in this file — a
+    // casual multiplayer game is lower-stakes than an account, so this
+    // trade-off is at least as easy to justify here.
+    console.error("[throttle] quiz-join check failed, allowing attempt:", error);
+    return { allowed: true };
+  }
+}
+
+// Only called for a guess that DIDN'T resolve to a real, joinable room — a
+// correct code someone was actually handed isn't an attack and shouldn't
+// cost them anything, the same "only failures count" reasoning login
+// already follows.
+export async function recordFailedQuizJoin(): Promise<void> {
+  try {
+    await bump(`quizjoin-ip:${await clientIp()}`, Date.now(), QUIZ_JOIN_TIERS, QUIZ_JOIN_QUIET_SECONDS);
+  } catch (error) {
+    console.error("[throttle] could not record failed quiz join:", error);
+  }
+}
+
 // Exported only so the test script can check the staircase without a database.
 export const __testing = {
   lockoutFor,

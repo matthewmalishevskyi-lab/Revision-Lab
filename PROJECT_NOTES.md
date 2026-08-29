@@ -1,5 +1,346 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## "The clan I made didn't save" — almost certainly the same missing-column shape as before (2026-08-29)
+
+Matthew: a clan he created didn't save. Couldn't check his live Supabase
+directly from here, but the code points squarely at a repeat of the
+2026-08-27 incident ("A missing schema migration..." entry below) rather
+than a new bug.
+
+**The likely mechanics.** `createClan`'s own INSERT never touches
+`heir_id` (there's nothing to write yet — see its own comment), so it
+would succeed even against a `clans` table missing that column. But
+`createClanAction` redirects straight to `/clans/[id]`, whose page calls
+`getClanById` — and THAT does `select=...,heir_id` (it's in
+`CLAN_SELECT_COLUMNS`, used for every ordinary read). If the live table
+never got the `heir_id` column added when the 2026-08-27 leadership-handover
+feature shipped, that read fails, `getClanById` was returning a bare
+`null` with nothing logged, and `/clans/[id]/page.tsx` turns a `null` clan
+into `notFound()` — a genuine 404. From Matthew's side: click "Create,"
+land on a 404 page, look for the clan, it's not there. Very likely still
+sitting in the database the whole time.
+
+**Asked Matthew to re-run `CLAN_SETUP.sql`** in Supabase's SQL editor —
+it's idempotent (every column add is `if not exists`), so running it again
+changes nothing if the column is already there, and fixes exactly this if
+it isn't. Waiting to hear back on whether that was it.
+
+**Fixed regardless of the outcome: the actual silent-failure gap.**
+`getClanById`, `getUserClan`, `getClanMemberIds`, and the initial lookups
+in `joinClan`, `updateClanBanner`, and `designateClanHeir` all did
+`if (!res.ok) return null / [] / {ok:false,...}` with NO logging —
+`searchClans`, right above `getClanById` in the same file, already had
+the correct version of this (`console.error` before returning). A request
+that outright FAILED (bad schema, an expired key, Supabase down) was
+indistinguishable from a legitimate "no such row" everywhere except that
+one function. Added the same `console.error(status, body)` to all six —
+behavior is unchanged (still returns the same fallback value to the
+caller), but the NEXT time this shape of bug happens, the real Postgres
+error shows up in Vercel's function logs immediately, rather than needing
+another round of temporarily hacking a debug line into the catch block
+and reverting it (which is what the 2026-08-27 fix had to do, by its own
+account).
+
+`npm run check` (tsc, eslint --max-warnings=0, content, security) all
+clean. Changed: `app/lib/clans.ts` only. Not yet shipped — his computer
+is still not connected.
+
+## A round of function-and-design improvements to the quiz, after the redesign (2026-08-29)
+
+Matthew liked the redesigned answer buttons and asked me to think of any
+other ways to improve the quiz's function and design. Went back through
+every quiz file with that specific question in mind, the same "read it
+fresh, reason about what's actually missing or fragile" approach the
+earlier bug hunt used. Three real fixes, three additive pieces of polish,
+and one thing (sound) checked with Matthew first since it's genuinely
+subjective rather than a clear improvement — he said yes.
+
+**The real fix, and the one that mattered most: a stuck or closed host tab
+could freeze the game for everyone else.** `HostQuizScreen.tsx`'s own
+countdown effect is what moves a question from "question" to "reveal"
+once the 20 seconds are up — but that only runs inside the HOST'S one
+specific browser tab. Close the laptop lid, background the tab, lose the
+connection, and nothing else was ever going to call
+`revealCurrentQuestion` — every player's own device would sit there
+politely polling a question that had already expired, forever. Fixed with
+a new `autoRevealIfExpired` in `quiz.ts`, called from `getQuizView` —
+"the one function everyone's screen polls" per its own comment — so
+whichever device happens to poll first after the deadline (host or
+player, doesn't matter) is the one that flips the phase for the room.
+Purely time-based against the session's own server-recorded
+`phaseStartedAt`; nothing a player's device sends or controls. Reveal
+itself stays host-paced on purpose — this only generalises the ONE
+transition that already had a hard deadline attached. Verified with 7
+throwaway checks compiling the real `quiz.ts` (a fresh question phase is
+left alone, an expired one flips to reveal, a session already past
+"question" is never touched, a missing timestamp doesn't crash, and the
+flip genuinely persists to `data/quiz.json` and not just the return
+value) — all passed, then deleted.
+
+**Two smaller fixes, both "tell someone before the server has to."**
+`HostSetupForm.tsx` only checked topic COUNT client-side; a topic
+combination that totals under `MIN_QUESTIONS` (rare, but the code's own
+comment already flagged it as possible) only failed after a full submit
+round-trip. The "Create the room" button and its helper text now also
+check the real question total, same as the server does. `JoinQuizForm.tsx`
+had the same shape of gap — the button only checked the room code's
+length, even though `joinQuizAction` already rejects an empty guest name
+server-side — so it's now disabled until a guest has actually typed
+something, mirroring what the server was already enforcing.
+
+**Three additive pieces of polish, each built on what was already there.**
+A "Copy invite link" button on the host's lobby screen — the join page
+already reads a `?code=` query param to pre-fill the room code (its own
+comment says so — "handy for a QR code or a link shared straight from the
+host's own lobby screen"), but nothing ever actually offered that link.
+Every player now gets a small coloured "avatar" — one of the same six
+shapes and colours the answer buttons use, picked by hashing their own
+player id (`quizAvatar.ts`) so it's stable without storing anything new —
+shown next to their name in both lobby chip lists and every leaderboard
+row (`QuizPlayerAvatar.tsx`), tying the whole redesign together rather
+than leaving it confined to the answer buttons. And the reveal-phase
+tally, previously only a number in the corner, now also draws as a
+proportional fill bar behind each choice (`QuizChoiceButton.tsx`'s new
+`tallyFraction` prop) — readable at a glance from across a room, not just
+up close.
+
+**Sound — checked with Matthew first, since a classroom running this on a
+shared screen might genuinely not want noise, unlike the changes above.**
+He said yes. `quizSound.ts` synthesises everything with the Web Audio API
+that ships in every browser — NO audio files, no new packages, the same
+"read every line, nothing hidden in a dependency" choice this codebase
+already makes for password hashing and the Supabase client. A tick for the
+last five seconds of a question's countdown (once per second, not once per
+250ms internal timer tick — see the ref guard at each call site), a
+correct/wrong chime the instant a player's own answer is revealed, and a
+four-note fanfare when the game ends, on both the host's screen and every
+player's own device. A `QuizSoundToggle` (🔊/🔇) sits top-right on both
+screens, backed by the same reactive-localStorage pattern the theme toggle
+already uses, so muting it is remembered and never fights the
+`prefers-reduced-motion`-respecting confetti that was already there.
+
+**Verified:** `npm run check` (tsc, eslint --max-warnings=0, content,
+security) all pass clean. Screenshots re-taken with the same seeded-session
+technique confirm the avatars, copy-link button, sound toggle icon, and
+tally bars all actually render — not just compile.
+
+**Changed:** `app/lib/quiz.ts` (`autoRevealIfExpired`), `app/lib/quiz-actions.ts`
+(wired into `getQuizView`), `app/lib/quizSound.ts` (new),
+`app/quiz/host/new/HostSetupForm.tsx` (question-count gating),
+`app/quiz/join/JoinQuizForm.tsx` (guest-name gating),
+`app/components/quiz/QuizChoiceButton.tsx` (`tallyFraction` fill bar),
+`app/components/quiz/QuizLeaderboard.tsx` (avatar per row),
+`app/components/quiz/QuizPlayerAvatar.tsx` (new),
+`app/components/quiz/quizAvatar.ts` (new),
+`app/components/quiz/QuizSoundToggle.tsx` (new),
+`app/quiz/host/[code]/HostQuizScreen.tsx` (copy-link, avatars, tick/fanfare
+sound, sound toggle, tally-fraction wiring),
+`app/quiz/play/[code]/PlayQuizScreen.tsx` (avatars, tick/chime/fanfare
+sound, sound toggle). Not yet shipped to Matthew's own machine — see the
+note at the bottom of the previous two entries; his computer still wasn't
+connected when this was done.
+
+## Screenshots, then a redesign so the answer buttons stop reading as Kahoot (2026-08-29)
+
+Matthew asked for a few screenshots of the quiz feature's design. The
+dev server here kept timing out on real form submissions partway through
+registration and room creation (looks like Turbopack cold-compile delay on
+first-hit routes in this sandbox, not an app bug — never reproduced against
+the live site), so rather than keep fighting flaky clicks, I seeded a few
+quiz sessions directly into `data/*.json` in a throwaway local copy — one
+per screen state (empty lobby, lobby with players, live question, reveal,
+final leaderboard) — built a matching signed session cookie by hand using
+`session.ts`'s own HMAC algorithm, and used Playwright purely for
+navigation and screenshotting against the real, unmodified components. That
+scratch data never touched Matthew's own machine or got anywhere near git.
+
+Looking at the screenshots together, the answer buttons were a much closer
+copy of Kahoot than intended: the exact same four colours
+(`#e21b3c`/`#1368ce`/`#d89e00`/`#26890c`) and the exact same shapes, in the
+exact same order (triangle/diamond/circle/square). Matthew asked for it to
+stop looking like a straight rip-off, so `quizChoiceStyles.ts` now uses six
+colours pulled from `subjects.ts`'s own accent palette instead (the same
+indigo/rust/teal/fuchsia/lime/slate already used for Science, Maths,
+Business, Chemistry, Biology, and Physics elsewhere on the site) paired
+with six brand-new shapes drawn in `QuizShapeIcon.tsx` — hexagon, bolt,
+droplet, ring, plus, wave — none shared with Kahoot's set. `QuizChoiceButton.tsx`
+also puts each icon inside its own translucent white "coin" instead of
+sitting bare on the flat colour, and rounds the corners a little softer
+(`rounded-[1.75rem]`) than before. The colour+shape pairing itself (so
+colour-blind players can still tell answers apart, especially during
+reveal) is unchanged — only which colours and which shapes.
+
+**Verified:** `npm run check` (tsc, eslint --max-warnings=0, the content
+checker, the security checker) all pass clean against the new files —
+nothing here touches content or auth, only three small quiz-UI files, so
+the content/security checks passing is expected rather than a deep test of
+this specific change. Re-ran the same seeded-session screenshot technique
+afterwards to confirm the new colours and shapes actually render correctly
+across every phase (question, reveal with correct/wrong highlighting,
+faded-out wrong answers) rather than just checking it compiles.
+
+**Changed:** `app/components/quiz/quizChoiceStyles.ts` (new palette +
+shape names), `app/components/quiz/QuizShapeIcon.tsx` (six new hand-drawn
+SVG shapes), `app/components/quiz/QuizChoiceButton.tsx` (icon now sits in a
+translucent circle, softer corner radius). Not yet shipped to Matthew's own
+machine — see the note at the bottom of the previous entry; his computer
+still wasn't connected when this was done.
+
+## Quiz bug hunt — a real security gap, and a silent-failure bug (2026-08-29)
+
+Matthew asked me to review the just-shipped live quiz feature and improve
+whatever I could, since he "kinda looks alright, but I don't really know
+how to check it properly." Read through every quiz file fresh, the same
+"reason about it, then reproduce before fixing" approach the earlier deep
+bug hunts on this site used. Five real things found and fixed, in order of
+how much they mattered.
+
+**Room codes could be brute-forced — the single biggest issue.** Login
+attempts and clan-join passwords are both rate-limited; joining a quiz by
+room code had NO limit at all. That matters more here than it sounds,
+because unlike a clan (a stable target plus a separate password), a quiz
+room code IS the whole secret — there's nothing else standing between a
+stranger and a live room. With only 900,000 possible 6-digit codes and no
+throttle, a script could scan the entire space and drop into any open
+room. Fixed with a new per-IP-only limiter in `throttle.ts` —
+`checkQuizJoinAllowed`/`recordFailedQuizJoin`, same tiered shape and
+numbers as clan-join (6 free guesses, then 1/5/15-minute lockouts), but
+keyed on IP alone rather than IP-plus-target, since every wrong guess is a
+*different* target — there's no stable "room" to also count against. Only
+a genuinely wrong code (`NOT_FOUND`) counts as a failure; a correct code
+someone was actually handed doesn't cost them anything. Verified with a
+throwaway test compiling the real throttle.ts and stubbing `next/headers`
+(the same technique `check-security.mjs` already uses for login's own
+limiter) — 8 checks: fresh IP allowed, 5 wrong guesses free, the 6th locks
+it, a *different* IP is unaffected, persistent guessing caps at 15
+minutes. All passed, then deleted.
+
+**A player could believe they'd answered and actually hadn't.**
+`PlayQuizScreen.tsx`'s answer button turned "selected" the instant it was
+clicked and never once looked at whether `submitAnswerAction` actually
+succeeded. A countdown ending a beat before the tap landed, a network
+hiccup, anything — the screen looked identical to a real, scored answer:
+no error, no correction, silence, and 0 points with no way to ever find
+out why. Fixed: the result is checked now. A genuine failure reverts the
+optimistic selection and shows why ("Too slow — the question moved on
+before that got through," or a generic retry message); `ALREADY_ANSWERED`
+(most likely a doubled tap racing itself) is left alone, since a real
+answer already exists and the next poll's `myAnswer` will show it.
+
+**The host saw raw internal error codes.** `joinQuizAction` already mapped
+its failure codes to human sentences; `startQuizAction`/`revealAction`/
+`advanceAction` never got the same treatment, so any host-side hiccup
+printed the literal text `WRONG_PHASE` or `NOT_HOST` onto the screen.
+Fixed with a shared `hostActionErrorMessage()` mapping, the same pattern
+`joinQuizAction` already used. Also fixed while there: once shown, that
+error banner never cleared on a later SUCCESSFUL action, so one early hiccup
+stayed on screen for the rest of the game even after everything recovered
+fine — each handler now clears it before trying again.
+
+**Two numbers were duplicated as literals waiting to drift.** `MIN_TOPICS`/
+`MAX_TOPICS` existed separately in both `quiz-actions.ts` (the real
+server-side enforcement) and `HostSetupForm.tsx` (the client-side UI copy
+and disabling logic) — exactly the "same fact, two places" shape this
+project has been bitten by before (the 30-day account-deletion window is
+the standing example). Same for `MAX_QUESTIONS`, hardcoded as `20` inside
+`quiz.ts` and separately hand-typed as the literal "20" in the form's
+helper text. All three now live in one new file, `app/lib/quizConfig.ts`
+— deliberately with ZERO imports of its own, for the identical reason
+`chipStyles.ts` exists: `quiz-actions.ts` is a `"use server"` file (which
+can only export functions, not constants) and `quiz.ts` pulls in
+server-only `node:fs`/`node:crypto` code that a Client Component has no
+business bundling. Importing plain numbers from either would have risked
+quietly repeating the exact dark-mode-toggle bundling bug from 2026-08-14.
+
+**A topic combination producing too few real questions used to still
+create a dead database row.** `createQuizAction` called `createQuizSession`
+(which writes to the database) FIRST, then checked afterwards whether the
+result had any questions — so a combination that failed the check had
+already left an orphan session behind, despite the code's own comment
+claiming otherwise. Also, the check was only "zero questions," which let a
+technically-valid but silly one-or-two-question "round" through. Fixed by
+exporting `buildQuestionSet` from `quiz.ts` and having `createQuizAction`
+build and check the question count BEFORE calling `createQuizSession` at
+all (which now takes the already-built `questions` array as a plain
+argument instead of building it internally) — nothing is written unless
+there are at least `MIN_QUESTIONS` (3) real questions to show.
+
+**Also considered and deliberately left alone:** a rare TOCTOU window
+where an answer submitted in the last few milliseconds before a host's
+"reveal" click could theoretically land just after the phase officially
+changed — vanishingly unlikely and low-stakes for a casual game, not worth
+the added complexity of a stricter guard. And local-file-backend races
+under concurrent writes (two guests joining at literally the same instant
+on a laptop with no Supabase configured) — the live site always uses
+Supabase, where the real constraints (`unique(session_code, user_id)`, the
+`quiz_answers` composite primary key) already do the real work; the local
+file store is a laptop dev convenience, not what real players ever touch.
+
+**Two open product questions raised with Matthew rather than guessed at —
+and he said yes to both:** should the host be able to remove a player from
+the lobby before starting, and should the host have a way to end a game
+early if it needs abandoning partway through. Both built:
+
+**Remove a player, lobby only.** A small ✕ next to each name in the lobby
+player list, host-only (this whole screen already is), no confirmation
+step — removing someone before a game has even started is exactly the
+low-stakes, easily-undone (they can just rejoin with the code) action
+`LeaveClanButton`'s own comment already argues doesn't need one.
+Deliberately refuses once the game has actually started
+(`removePlayer(...)` returns `WRONG_PHASE`) rather than extending into a
+live game, where removing someone raises a real question this doesn't try
+to answer — what happens to their existing answers and score — that a
+pre-start removal never has to, since nothing has been recorded for
+anyone yet.
+
+**End the quiz early, from question or reveal.** A quiet "End quiz early"
+link below the question, host-only, that jumps straight to the final
+leaderboard using whatever answers already exist — nothing is discarded,
+an early-ended game simply has fewer questions counted than a full one
+would. THIS one gets a confirmation step, unlike removing a lobby player —
+a stray tap here ends the game for every other player in the room, not
+just something about the host's own account — but still not a native
+`confirm()` dialog: the same "click reveals the real, serious step" idiom
+`DeleteAccountForm` already uses for account deletion (see
+`AccountForms.tsx`), reused rather than reinvented.
+
+`checkHostAction` (the shared three-part "does this exist, is this really
+the host, is it in the right phase" checker every host action already
+funnelled through) now accepts either one status or a short list of
+them — needed because ending the quiz is valid from EITHER "question" or
+"reveal", and duplicating the whole checker into a second copy for that
+one case would have been exactly the kind of drift this review was
+already fixing elsewhere.
+
+Verified: `tsc --noEmit` and `eslint --max-warnings=0` clean across the
+whole project, `check-content.mjs` (87,603 checks, untouched) and
+`check-security.mjs` (57 checks) both pass, plus four throwaway
+functional tests — the throttle test above (8 checks), a full re-run of
+the original two-player end-to-end game simulation against the refactored
+`createQuizSession` signature (12 checks), one confirming
+`buildQuestionSet`/`createQuizSession` still work with `MAX_QUESTIONS`
+moved into the shared config file (3 checks), and one covering both new
+host controls (11 checks — a non-host blocked from removing a player or
+ending the quiz, a removed player actually gone while the other is
+untouched, removal refused once the game has started, ending early
+actually reaches "finished" with the clock cleared, and ending an
+already-finished quiz refused rather than silently no-op-succeeding) —
+all passed, then deleted along with their compiled output.
+
+New file: `app/lib/quizConfig.ts`. Changed: `app/lib/throttle.ts` (the new
+quiz-join limiter), `app/lib/quiz.ts` (`buildQuestionSet` now exported,
+`createQuizSession` takes a pre-built `questions` array, `MAX_QUESTIONS`
+moved out, `checkHostAction` accepts a status list, new `removePlayer`/
+`endQuizNow`), `app/lib/quiz-actions.ts` (the throttle wired into
+`joinQuizAction`, friendly host-action error messages, the MIN_QUESTIONS
+gate moved before the database write, new `removePlayerAction`/
+`endQuizAction`), `app/quiz/host/new/HostSetupForm.tsx` (imports the
+shared constants instead of its own copies), `app/quiz/host/[code]/
+HostQuizScreen.tsx` (clears its error banner before each new action, the
+remove-player ✕ and the end-quiz-early control), `app/quiz/play/[code]/
+PlayQuizScreen.tsx` (actually checks whether an answer submission
+succeeded).
+
 ## Live head-to-head quiz — a Kahoot-style multiplayer round (2026-08-27)
 
 Matthew's ask, transcribed from voice and genuinely ambiguous in two places

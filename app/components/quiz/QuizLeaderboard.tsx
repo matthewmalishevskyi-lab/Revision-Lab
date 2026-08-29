@@ -1,3 +1,5 @@
+import { QuizPlayerAvatar } from "./QuizPlayerAvatar";
+
 // Ranked highest-score-first — used for BOTH the running leaderboard shown
 // during reveal and the full final one at the end. The only difference
 // between the two is the heading passed in from whichever screen renders
@@ -40,6 +42,7 @@ export function QuizLeaderboard({
             <span className="w-8 shrink-0 text-center text-xl font-bold tabular-nums opacity-60">
               {medal ?? index + 1}
             </span>
+            <QuizPlayerAvatar playerId={row.player.id} size={compact ? 24 : 28} />
             <span className="min-w-0 flex-1 truncate font-semibold">
               {row.player.displayName}
               {isMe && <span className="ml-2 text-sm font-normal opacity-50">(you)</span>}

@@ -43,6 +43,7 @@ import path from "node:path";
 import { getTopicContent } from "./content";
 import { normalise } from "./normalise";
 import { shuffle } from "./shuffle";
+import { MAX_QUESTIONS } from "./quizConfig";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const QUIZ_FILE = path.join(DATA_DIR, "quiz.json");
@@ -226,8 +227,6 @@ async function writeLocal(data: LocalData): Promise<void> {
 
 // ─── Building the question set ──────────────────────────────────────────────
 
-const MAX_QUESTIONS = 20;
-
 // Pulls every multiple-choice practice question from the given topics,
 // shuffles which ones are picked AND the order their choices are shown in,
 // and caps the result at MAX_QUESTIONS — using however many genuinely exist
@@ -247,7 +246,7 @@ const MAX_QUESTIONS = 20;
 // `accept`." A question somehow missing a matching choice is skipped
 // rather than guessed at — better one fewer question in the round than one
 // with no correct answer that can ever be found.
-function buildQuestionSet(
+export function buildQuestionSet(
   subjectSlug: string,
   topics: { slug: string; title: string }[],
 ): QuizQuestion[] {
@@ -380,9 +379,16 @@ export async function createQuizSession(input: {
   hostUserId: string;
   subjectSlug: string;
   topics: { slug: string; title: string }[];
+  // Built by the CALLER via buildQuestionSet, not here — quiz-actions.ts
+  // needs to know the real, final question count BEFORE deciding whether to
+  // write anything at all (see its own MIN_QUESTIONS check), and building
+  // the set twice would both waste work and shuffle the choices differently
+  // each time, for no reason. This function's only job is writing the
+  // session row.
+  questions: QuizQuestion[];
   questionSeconds: number;
 }): Promise<QuizSession> {
-  const questions = buildQuestionSet(input.subjectSlug, input.topics);
+  const questions = input.questions;
   const code = await generateRoomCode();
 
   const session: QuizSession = {
@@ -550,15 +556,20 @@ type HostCheckResult =
   | { ok: false; error: "NOT_FOUND" | "NOT_HOST" | "WRONG_PHASE" }
   | { ok: true; session: QuizSession };
 
+// `expectedStatus` takes either one status (every existing caller) or a
+// short list of them — added for endQuizNow below, which is valid from
+// EITHER "question" or "reveal". Kept as one shared checker rather than
+// endQuizNow growing its own copy of the same three-part check.
 async function checkHostAction(
   code: string,
   hostUserId: string,
-  expectedStatus: QuizStatus,
+  expectedStatus: QuizStatus | QuizStatus[],
 ): Promise<HostCheckResult> {
   const session = await getQuizSession(code);
   if (!session) return { ok: false, error: "NOT_FOUND" };
   if (session.hostUserId !== hostUserId) return { ok: false, error: "NOT_HOST" };
-  if (session.status !== expectedStatus) return { ok: false, error: "WRONG_PHASE" };
+  const allowedStatuses = Array.isArray(expectedStatus) ? expectedStatus : [expectedStatus];
+  if (!allowedStatuses.includes(session.status)) return { ok: false, error: "WRONG_PHASE" };
   return { ok: true, session };
 }
 
@@ -591,6 +602,37 @@ export async function revealCurrentQuestion(
   return { ok: true };
 }
 
+// A SECOND way the question→reveal move can happen — not host-triggered at
+// all. HostQuizScreen.tsx already calls revealCurrentQuestion the instant
+// its own on-screen countdown hits zero, but that only runs inside ONE
+// specific browser tab: the host's. Nobody's tab is guaranteed to stay
+// open — a laptop lid closed to swap to another app, a phone that locked,
+// a flaky connection — and if that one tab stalls, nothing else was ever
+// going to call revealCurrentQuestion. Every OTHER screen in the room —
+// every player's own device, still politely polling — would sit frozen on
+// an expired question forever.
+//
+// So the same check also lives here, on getQuizView's own read path,
+// which EVERY screen already polls (host included) — whichever poller
+// happens to notice the clock has run out flips the phase for everyone,
+// host tab or not. It's purely a fact about the session's own
+// server-recorded `phaseStartedAt` versus the current time — nothing a
+// player's own device sends or controls — so there's no new way to cheat
+// hiding in this, only a way for the game to stop depending on one
+// specific tab staying alive. Reveal itself stays host-paced on purpose
+// (see advanceQuestion's own comment) — this only ever fires the ONE
+// transition that already had a hard deadline attached to it.
+export async function autoRevealIfExpired(session: QuizSession): Promise<QuizSession> {
+  if (session.status !== "question" || !session.phaseStartedAt) return session;
+
+  const elapsedSeconds = (Date.now() - new Date(session.phaseStartedAt).getTime()) / 1000;
+  if (elapsedSeconds < session.questionSeconds) return session;
+
+  const revealedAt = new Date().toISOString();
+  await patchSession(session.code, { status: "reveal", phase_started_at: revealedAt });
+  return { ...session, status: "reveal", phaseStartedAt: revealedAt };
+}
+
 // Moves on from the reveal screen — to the next question, or to the final
 // leaderboard if that was the last one. One action rather than two,
 // because "what happens next" is a plain fact about the session
@@ -610,6 +652,58 @@ export async function advanceQuestion(
     current_index: isLastQuestion ? check.session.currentIndex : check.session.currentIndex + 1,
     phase_started_at: isLastQuestion ? null : new Date().toISOString(),
   });
+  return { ok: true };
+}
+
+// Lets the host bail out of a game partway through — a class ran out of
+// time, the wrong topics got picked, whatever — rather than the only way
+// forward being to click Reveal/Next all the way to the natural end. Valid
+// from either "question" or "reveal"; NOT from "lobby" (that's just not
+// starting, no need for a separate action) or "finished" (already there).
+// Jumps straight to the final leaderboard using whatever answers already
+// exist — nothing is discarded, a game ended early simply has fewer
+// questions counted than a full one would have.
+export async function endQuizNow(code: string, hostUserId: string): Promise<HostActionResult> {
+  const check = await checkHostAction(code, hostUserId, ["question", "reveal"]);
+  if (!check.ok) return check;
+
+  await patchSession(code, {
+    status: "finished",
+    phase_started_at: null,
+  });
+  return { ok: true };
+}
+
+// Lets the host remove someone from the lobby before starting — a
+// duplicate join, someone clearly in the wrong room, a stranger who landed
+// on a valid code. Deliberately LOBBY-ONLY: once a game has started,
+// removing a player would raise real questions this doesn't try to answer
+// (what happens to their existing answers and score?) that a pre-start
+// removal never has to, since nothing has been recorded for anyone yet.
+export async function removePlayer(
+  code: string,
+  hostUserId: string,
+  playerId: string,
+): Promise<HostActionResult> {
+  const check = await checkHostAction(code, hostUserId, "lobby");
+  if (!check.ok) return check;
+
+  if (QUIZ_ENABLED) {
+    const res = await supabase(
+      `quiz_players?id=eq.${encodeURIComponent(playerId)}&session_code=eq.${encodeURIComponent(code)}`,
+      { method: "DELETE", headers: { Prefer: "return=minimal" } },
+    );
+    if (!res.ok) {
+      throw new Error(
+        `[quiz] could not remove player: HTTP ${res.status} ${(await res.text()).slice(0, 200)}`,
+      );
+    }
+    return { ok: true };
+  }
+
+  const { sessions, players, answers } = await readLocal();
+  const remaining = players.filter((p) => !(p.id === playerId && p.session_code === code));
+  await writeLocal({ sessions, players: remaining, answers });
   return { ok: true };
 }
 

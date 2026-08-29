@@ -205,7 +205,23 @@ export async function getClanById(id: string): Promise<Clan | null> {
     const res = await supabase(
       `clans?id=eq.${encodeURIComponent(id)}&select=${CLAN_SELECT_COLUMNS}&limit=1`,
     );
-    if (!res.ok) return null;
+    // Logged, not just swallowed — a request that outright FAILED (bad
+    // schema, an expired key, Supabase down) used to return the exact same
+    // `null` as "no clan has this id", which made a real backend problem
+    // look identical to "this clan doesn't exist" — see searchClans's own
+    // `console.error` a little above for the pattern this now matches.
+    // This is precisely how the 2026-08-27 missing-column incident could
+    // have looked from a freshly-created clan's own page: the INSERT can
+    // succeed while THIS read, needing a column the live schema doesn't
+    // have yet, fails right after — with nothing in the logs to say why.
+    if (!res.ok) {
+      console.error(
+        "[clans] getClanById failed:",
+        res.status,
+        (await res.text()).slice(0, 200),
+      );
+      return null;
+    }
     const rows = (await res.json()) as ClanRow[];
     if (!rows[0]) return null;
 
@@ -231,7 +247,16 @@ export async function getUserClan(userId: string): Promise<Clan | null> {
     const res = await supabase(
       `clan_members?user_id=eq.${encodeURIComponent(userId)}&select=clan_id&limit=1`,
     );
-    if (!res.ok) return null;
+    // See getClanById's own comment just above — same "a failed request
+    // isn't the same fact as 'not in a clan'" distinction.
+    if (!res.ok) {
+      console.error(
+        "[clans] getUserClan failed:",
+        res.status,
+        (await res.text()).slice(0, 200),
+      );
+      return null;
+    }
     const rows = (await res.json()) as { clan_id: string }[];
     if (!rows[0]) return null;
     return getClanById(rows[0].clan_id);
@@ -251,7 +276,18 @@ export async function getClanMemberIds(clanId: string): Promise<string[]> {
     const res = await supabase(
       `clan_members?clan_id=eq.${encodeURIComponent(clanId)}&select=user_id&order=joined_at.asc`,
     );
-    if (!res.ok) return [];
+    // Same reasoning as getClanById above — an empty list because the
+    // REQUEST failed is a different fact from an empty list because a
+    // clan genuinely has nobody in it, and only one of those should ever
+    // look the same as the other from the outside.
+    if (!res.ok) {
+      console.error(
+        "[clans] getClanMemberIds failed:",
+        res.status,
+        (await res.text()).slice(0, 200),
+      );
+      return [];
+    }
     const rows = (await res.json()) as { user_id: string }[];
     return rows.map((r) => r.user_id);
   }
@@ -382,7 +418,17 @@ export async function joinClan(input: {
     const res = await supabase(
       `clans?id=eq.${encodeURIComponent(input.clanId)}&select=password_hash&limit=1`,
     );
-    if (!res.ok) return { ok: false, error: "NOT_FOUND" };
+    // Logged rather than silently reported as NOT_FOUND — see
+    // getClanById's own comment for why a failed request and a genuinely
+    // missing row shouldn't be indistinguishable from the outside.
+    if (!res.ok) {
+      console.error(
+        "[clans] joinClan lookup failed:",
+        res.status,
+        (await res.text()).slice(0, 200),
+      );
+      return { ok: false, error: "NOT_FOUND" };
+    }
     const rows = (await res.json()) as { password_hash: string }[];
     if (!rows[0]) return { ok: false, error: "NOT_FOUND" };
 
@@ -457,7 +503,17 @@ export async function updateClanBanner(input: {
     const res = await supabase(
       `clans?id=eq.${encodeURIComponent(input.clanId)}&select=created_by&limit=1`,
     );
-    if (!res.ok) return { ok: false, error: "NOT_FOUND" };
+    // Logged rather than silently reported as NOT_FOUND — see
+    // getClanById's own comment for why a failed request and a genuinely
+    // missing row shouldn't be indistinguishable from the outside.
+    if (!res.ok) {
+      console.error(
+        "[clans] updateClanBanner lookup failed:",
+        res.status,
+        (await res.text()).slice(0, 200),
+      );
+      return { ok: false, error: "NOT_FOUND" };
+    }
     const rows = (await res.json()) as { created_by: string }[];
     if (!rows[0]) return { ok: false, error: "NOT_FOUND" };
     if (rows[0].created_by !== input.userId) return { ok: false, error: "NOT_CREATOR" };
@@ -530,7 +586,17 @@ export async function designateClanHeir(input: {
     const res = await supabase(
       `clans?id=eq.${encodeURIComponent(input.clanId)}&select=created_by&limit=1`,
     );
-    if (!res.ok) return { ok: false, error: "NOT_FOUND" };
+    // Logged rather than silently reported as NOT_FOUND — see
+    // getClanById's own comment for why a failed request and a genuinely
+    // missing row shouldn't be indistinguishable from the outside.
+    if (!res.ok) {
+      console.error(
+        "[clans] designateClanHeir lookup failed:",
+        res.status,
+        (await res.text()).slice(0, 200),
+      );
+      return { ok: false, error: "NOT_FOUND" };
+    }
     const rows = (await res.json()) as { created_by: string }[];
     if (!rows[0]) return { ok: false, error: "NOT_FOUND" };
     if (rows[0].created_by !== input.currentUserId) return { ok: false, error: "NOT_CREATOR" };

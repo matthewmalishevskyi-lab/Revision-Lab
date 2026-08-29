@@ -19,14 +19,20 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "./actions";
 import { getSessionUserId } from "./session";
 import { getSubject } from "./subjects";
+import { checkQuizJoinAllowed, humanDelay, recordFailedQuizJoin } from "./throttle";
+import { MAX_TOPICS, MIN_QUESTIONS, MIN_TOPICS, QUESTION_SECONDS } from "./quizConfig";
 import {
   advanceQuestion,
+  autoRevealIfExpired,
+  buildQuestionSet,
   createQuizSession,
+  endQuizNow,
   getLeaderboard,
   getQuizSession,
   getSessionAnswers,
   getSessionPlayers,
   joinQuizSession,
+  removePlayer,
   revealCurrentQuestion,
   startQuizSession,
   submitAnswer,
@@ -34,10 +40,6 @@ import {
 } from "./quiz";
 
 export type CreateQuizState = { formError?: string } | null;
-
-const MIN_TOPICS = 2;
-const MAX_TOPICS = 4;
-const QUESTION_SECONDS = 20;
 
 // Hosting requires an account, the same as creating a clan — someone has to
 // own the room and be trusted to control its pace. Redirects straight to the
@@ -70,20 +72,29 @@ export async function createQuizAction(
     return { formError: `Pick at most ${MAX_TOPICS} topics.` };
   }
 
+  // Built and checked BEFORE anything is written — a topic combination that
+  // can't produce a real round should never leave a dead session row
+  // behind, which calling createQuizSession first and only checking
+  // afterwards used to do.
+  const topicList = topics.map((t) => ({ slug: t.slug, title: t.title }));
+  const questions = buildQuestionSet(subjectSlug, topicList);
+
+  if (questions.length < MIN_QUESTIONS) {
+    // Covers both "zero" (every chosen topic's MCQs got filtered out — not
+    // expected given the site-wide MCQ minimum, but possible) and "one or
+    // two" (a real round shouldn't be able to end after ten seconds).
+    return {
+      formError: `Those topics only have ${questions.length} quiz-ready question${questions.length === 1 ? "" : "s"} between them — pick a couple more topics for a real round.`,
+    };
+  }
+
   const session = await createQuizSession({
     hostUserId: userId,
     subjectSlug,
-    topics: topics.map((t) => ({ slug: t.slug, title: t.title })),
+    topics: topicList,
+    questions,
     questionSeconds: QUESTION_SECONDS,
   });
-
-  if (session.questions.length === 0) {
-    // Can happen if every chosen topic's multiple-choice questions were
-    // somehow all filtered out — not expected given the site-wide MCQ
-    // minimum, but a quiz with zero questions is a worse failure mode than
-    // just saying so up front and leaving nothing behind in the database.
-    return { formError: "Those topics don't have any quiz-ready questions yet — try different ones." };
-  }
 
   redirect(`/quiz/host/${session.code}`);
 }
@@ -109,6 +120,19 @@ export async function joinQuizAction(
     return { ok: false, error: "Room codes are 6 digits — check what you typed." };
   }
 
+  // A room code is only 6 digits and, unlike a clan, IS the whole secret —
+  // nothing else stands between a stranger and a live room. Checked BEFORE
+  // touching the database, the same "the cheap, broad check guards the
+  // expensive, unbounded one" ordering checkLoginAllowed already follows —
+  // see throttle.ts's own comment on why this needed adding at all.
+  const throttle = await checkQuizJoinAllowed();
+  if (!throttle.allowed) {
+    return {
+      ok: false,
+      error: `Too many room codes tried too quickly. Please wait ${humanDelay(throttle.retryAfterSeconds)} and try again.`,
+    };
+  }
+
   const user = await getCurrentUser();
   const displayName = user
     ? user.name.trim().split(/\s+/)[0]
@@ -125,6 +149,14 @@ export async function joinQuizAction(
   });
 
   if (!result.ok) {
+    // Only an actually-wrong guess counts against the limit above — a
+    // correct code someone was handed by a real host isn't an attack, the
+    // same "only failures count" reasoning login's own throttle follows.
+    // ALREADY_STARTED means the code is real (found a real room, just not
+    // one that can be joined right now), so it isn't counted as a failed
+    // guess either.
+    if (result.error === "NOT_FOUND") await recordFailedQuizJoin();
+
     const messages: Record<typeof result.error, string> = {
       NOT_FOUND: "That room code doesn't exist — double check it.",
       ALREADY_STARTED: "That quiz has already started — ask the host for a new one.",
@@ -150,22 +182,58 @@ async function requireLoggedIn(): Promise<string> {
   return userId;
 }
 
+// Turns quiz.ts's internal HostActionResult error codes into something a
+// person can actually read. Before this, HostQuizScreen.tsx's error banner
+// showed the raw code — literally the text "WRONG_PHASE" — whenever a host
+// action failed, which is exactly the kind of thing joinQuizAction's own
+// `messages` record above already exists to avoid for joining. Shared
+// across all three actions below since the same three codes mean the same
+// three things regardless of which action hit them.
+function hostActionErrorMessage(error: "NOT_FOUND" | "NOT_HOST" | "WRONG_PHASE"): string {
+  const messages: Record<typeof error, string> = {
+    NOT_FOUND: "That room doesn't exist any more.",
+    NOT_HOST: "Only the person who created this room can control it.",
+    // In practice this fires when two clicks (or an auto-reveal and a
+    // manual one) land at almost the same moment — the game already moved
+    // on to what this button would have done, so there's nothing wrong to
+    // report beyond "you're a beat behind"; refresh() right after this
+    // catches the screen up regardless.
+    WRONG_PHASE: "The room already moved on — refreshing…",
+  };
+  return messages[error];
+}
+
 export async function startQuizAction(code: string): Promise<{ ok: boolean; error?: string }> {
   const hostUserId = await requireLoggedIn();
   const result = await startQuizSession(code, hostUserId);
-  return result.ok ? { ok: true } : { ok: false, error: result.error };
+  return result.ok ? { ok: true } : { ok: false, error: hostActionErrorMessage(result.error) };
 }
 
 export async function revealAction(code: string): Promise<{ ok: boolean; error?: string }> {
   const hostUserId = await requireLoggedIn();
   const result = await revealCurrentQuestion(code, hostUserId);
-  return result.ok ? { ok: true } : { ok: false, error: result.error };
+  return result.ok ? { ok: true } : { ok: false, error: hostActionErrorMessage(result.error) };
 }
 
 export async function advanceAction(code: string): Promise<{ ok: boolean; error?: string }> {
   const hostUserId = await requireLoggedIn();
   const result = await advanceQuestion(code, hostUserId);
-  return result.ok ? { ok: true } : { ok: false, error: result.error };
+  return result.ok ? { ok: true } : { ok: false, error: hostActionErrorMessage(result.error) };
+}
+
+export async function endQuizAction(code: string): Promise<{ ok: boolean; error?: string }> {
+  const hostUserId = await requireLoggedIn();
+  const result = await endQuizNow(code, hostUserId);
+  return result.ok ? { ok: true } : { ok: false, error: hostActionErrorMessage(result.error) };
+}
+
+export async function removePlayerAction(
+  code: string,
+  playerId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  const hostUserId = await requireLoggedIn();
+  const result = await removePlayer(code, hostUserId, playerId);
+  return result.ok ? { ok: true } : { ok: false, error: hostActionErrorMessage(result.error) };
 }
 
 export async function submitAnswerAction(
@@ -230,8 +298,13 @@ export async function getQuizView(
   code: string,
   viewerPlayerId?: string | null,
 ): Promise<QuizView | null> {
-  const session = await getQuizSession(code);
+  let session = await getQuizSession(code);
   if (!session) return null;
+
+  // See autoRevealIfExpired's own comment in quiz.ts — this is what makes
+  // the question timer's deadline real even if the host's own tab isn't
+  // the one that notices it passed.
+  session = await autoRevealIfExpired(session);
 
   const subject = getSubject(session.subjectSlug);
   const [players, answers, leaderboard] = await Promise.all([

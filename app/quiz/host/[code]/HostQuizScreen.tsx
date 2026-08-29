@@ -4,14 +4,19 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   advanceAction,
+  endQuizAction,
   getQuizView,
+  removePlayerAction,
   revealAction,
   startQuizAction,
   type QuizView,
 } from "../../../lib/quiz-actions";
+import { playCountdownTick, playFanfare } from "../../../lib/quizSound";
 import { QuizChoiceButton } from "../../../components/quiz/QuizChoiceButton";
 import { QuizLeaderboard } from "../../../components/quiz/QuizLeaderboard";
 import { QuizConfetti } from "../../../components/quiz/QuizConfetti";
+import { QuizPlayerAvatar } from "../../../components/quiz/QuizPlayerAvatar";
+import { QuizSoundToggle } from "../../../components/quiz/QuizSoundToggle";
 
 // The host's own screen — this is the "put it on a shared screen" half of
 // the feature. It never answers questions itself (there's no player
@@ -31,7 +36,19 @@ export function HostQuizScreen({ code }: { code: string }) {
   const [view, setView] = useState<QuizView | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+  const [removingPlayerId, setRemovingPlayerId] = useState<string | null>(null);
+  // "End quiz now" gets a second click to actually fire, rather than a
+  // native confirm() dialog — the same "hide the serious step behind an
+  // extra click" idiom DeleteAccountForm already uses (see AccountForms.tsx),
+  // not a new pattern invented just for this. Worth the extra step here
+  // specifically because, unlike leaving a clan or removing a lobby player,
+  // this ends the game for every OTHER player in the room too, not just
+  // something about the host's own account.
+  const [confirmingEnd, setConfirmingEnd] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
   const autoRevealed = useRef<number>(-1); // which question index has already auto-revealed
+  const lastTickSound = useRef<number | null>(null); // last whole second a tick actually played for
+  const fanfarePlayed = useRef(false);
 
   const refresh = useCallback(async () => {
     const next = await getQuizView(code);
@@ -81,11 +98,30 @@ export function HostQuizScreen({ code }: { code: string }) {
     const duration = view.questionSeconds;
     function tick() {
       const elapsed = (Date.now() - startedAtMs) / 1000;
-      setSecondsLeft(Math.max(0, Math.ceil(duration - elapsed)));
+      const remaining = Math.max(0, Math.ceil(duration - elapsed));
+      setSecondsLeft(remaining);
+      // Only actually plays a sound for the last few seconds (see
+      // playCountdownTick's own comment) — guarded by the ref so a tick
+      // fires once per SECOND, not once per 250ms TICK_MS interval, which
+      // would otherwise sound like a four-times-too-fast metronome.
+      if (remaining !== lastTickSound.current) {
+        lastTickSound.current = remaining;
+        playCountdownTick(remaining);
+      }
     }
     const interval = setInterval(tick, TICK_MS);
     return () => clearInterval(interval);
   }, [isQuestionPhase, view?.phaseStartedAt, view?.questionSeconds]);
+
+  // The finishing fanfare — fires exactly once, the moment this screen
+  // first sees "finished", the same one-shot-via-ref shape `autoRevealed`
+  // above and PlayQuizScreen.tsx's own `recordedFinish` ref both use.
+  useEffect(() => {
+    if (view?.status === "finished" && !fanfarePlayed.current) {
+      fanfarePlayed.current = true;
+      playFanfare();
+    }
+  }, [view?.status]);
 
   // Moves the game on for the host once the clock genuinely runs out, so a
   // room doesn't sit frozen on an expired question just because nobody
@@ -109,28 +145,72 @@ export function HostQuizScreen({ code }: { code: string }) {
     return <p className="mt-10 text-center opacity-60">Loading your room…</p>;
   }
 
+  // Each handler clears any earlier error before trying — without this, an
+  // error from one click (say, a WRONG_PHASE race between an auto-reveal
+  // and a manual click) stayed on screen forever, even once later clicks
+  // succeeded normally and the game had moved on fine.
   async function handleStart() {
+    setError(null);
     const result = await startQuizAction(code);
     if (!result.ok) setError(result.error ?? "Something went wrong.");
     await refresh();
   }
 
   async function handleReveal() {
+    setError(null);
     const result = await revealAction(code);
     if (!result.ok) setError(result.error ?? "Something went wrong.");
     await refresh();
   }
 
   async function handleAdvance() {
+    setError(null);
     const result = await advanceAction(code);
     if (!result.ok) setError(result.error ?? "Something went wrong.");
     await refresh();
+  }
+
+  async function handleRemovePlayer(playerId: string) {
+    setError(null);
+    setRemovingPlayerId(playerId);
+    const result = await removePlayerAction(code, playerId);
+    setRemovingPlayerId(null);
+    if (!result.ok) setError(result.error ?? "Something went wrong.");
+    await refresh();
+  }
+
+  async function handleEndQuiz() {
+    setError(null);
+    setConfirmingEnd(false);
+    const result = await endQuizAction(code);
+    if (!result.ok) setError(result.error ?? "Something went wrong.");
+    await refresh();
+  }
+
+  // Pasteable into a class chat/Teams/Google Classroom announcement,
+  // rather than only ever read out digit by digit — `?code=` is read by
+  // the join page itself (see its own comment) to pre-fill the room code.
+  async function handleCopyInviteLink() {
+    try {
+      const link = `${window.location.origin}/quiz/join?code=${code}`;
+      await navigator.clipboard.writeText(link);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch {
+      // Clipboard access can be blocked (an insecure context, browser
+      // settings) — nothing to recover from; the big room code on screen
+      // is still right there to read out or type in by hand.
+    }
   }
 
   const isLastQuestion = view.currentIndex + 1 >= view.totalQuestions;
 
   return (
     <div className="mt-8">
+      <div className="flex justify-end">
+        <QuizSoundToggle />
+      </div>
+
       {error && (
         <p className="mb-4 rounded-xl bg-red-50 px-4 py-2 text-sm text-red-700 dark:bg-red-500/10 dark:text-red-300">
           {error}
@@ -149,6 +229,13 @@ export function HostQuizScreen({ code }: { code: string }) {
             Go to <span className="font-semibold">/quiz/join</span> and enter
             this code to play — {view.subjectName}, {view.topicTitles.join(", ")}.
           </p>
+          <button
+            type="button"
+            onClick={handleCopyInviteLink}
+            className="mt-2 text-sm font-semibold text-blue-700 underline underline-offset-2 dark:text-blue-400"
+          >
+            {linkCopied ? "Link copied!" : "Copy invite link"}
+          </button>
 
           <div className="mx-auto mt-8 max-w-sm rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
             <p className="font-semibold">
@@ -158,9 +245,26 @@ export function HostQuizScreen({ code }: { code: string }) {
               {view.players.map((p) => (
                 <li
                   key={p.id}
-                  className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 dark:bg-blue-500/20 dark:text-blue-200"
+                  className="flex items-center gap-1.5 rounded-full bg-blue-100 py-1 pl-2 pr-1.5 text-sm font-medium text-blue-800 dark:bg-blue-500/20 dark:text-blue-200"
                 >
+                  <QuizPlayerAvatar playerId={p.id} size={20} />
                   {p.displayName}
+                  {/* Lobby-only — see removePlayer's own comment in quiz.ts
+                      for why this doesn't extend into a started game. No
+                      confirmation step: removing someone before the game
+                      has even started is exactly the low-stakes,
+                      easily-repeated action LeaveClanButton's own comment
+                      argues doesn't need one — they can just rejoin with
+                      the code if this was a mistake. */}
+                  <button
+                    type="button"
+                    onClick={() => handleRemovePlayer(p.id)}
+                    disabled={removingPlayerId === p.id}
+                    aria-label={`Remove ${p.displayName}`}
+                    className="flex h-5 w-5 items-center justify-center rounded-full text-blue-800/60 transition hover:bg-blue-200 hover:text-blue-900 disabled:opacity-40 dark:text-blue-200/60 dark:hover:bg-blue-500/30 dark:hover:text-white"
+                  >
+                    ✕
+                  </button>
                 </li>
               ))}
             </ul>
@@ -203,20 +307,34 @@ export function HostQuizScreen({ code }: { code: string }) {
           </h2>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {view.currentQuestion.choices.map((choice, index) => {
-              const isCorrect = view.revealedCorrectChoice === choice;
-              const variant =
-                view.status === "reveal" ? (isCorrect ? "correctReveal" : "fadedReveal") : "default";
-              return (
-                <QuizChoiceButton
-                  key={index}
-                  index={index}
-                  text={choice}
-                  variant={variant}
-                  tally={view.choiceTally?.[index]}
-                />
-              );
-            })}
+            {(() => {
+              // Total answers across every choice, computed once outside
+              // the map rather than re-summed per button — a fraction of
+              // this is what actually draws each button's fill bar (see
+              // QuizChoiceButton's own comment on why it needs a fraction,
+              // not just the raw count).
+              const totalTallied = view.choiceTally?.reduce((sum, n) => sum + n, 0) ?? 0;
+              return view.currentQuestion.choices.map((choice, index) => {
+                const isCorrect = view.revealedCorrectChoice === choice;
+                const variant =
+                  view.status === "reveal" ? (isCorrect ? "correctReveal" : "fadedReveal") : "default";
+                const tally = view.choiceTally?.[index];
+                return (
+                  <QuizChoiceButton
+                    key={index}
+                    index={index}
+                    text={choice}
+                    variant={variant}
+                    tally={tally}
+                    tallyFraction={
+                      view.status === "reveal" && totalTallied > 0 && typeof tally === "number"
+                        ? tally / totalTallied
+                        : undefined
+                    }
+                  />
+                );
+              });
+            })()}
           </div>
 
           {view.status === "question" ? (
@@ -244,6 +362,37 @@ export function HostQuizScreen({ code }: { code: string }) {
               </button>
             </div>
           )}
+
+          <div className="mt-10 text-center">
+            {confirmingEnd ? (
+              <p className="text-sm">
+                <span className="opacity-70">End the quiz for everyone right now? </span>
+                <button
+                  type="button"
+                  onClick={handleEndQuiz}
+                  className="font-semibold text-red-700 underline underline-offset-2 dark:text-red-400"
+                >
+                  Yes, end it
+                </button>
+                <span className="opacity-40"> · </span>
+                <button
+                  type="button"
+                  onClick={() => setConfirmingEnd(false)}
+                  className="font-semibold opacity-70 underline underline-offset-2"
+                >
+                  Never mind
+                </button>
+              </p>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setConfirmingEnd(true)}
+                className="text-sm opacity-40 underline underline-offset-2 transition hover:opacity-70"
+              >
+                End quiz early
+              </button>
+            )}
+          </div>
         </section>
       )}
 

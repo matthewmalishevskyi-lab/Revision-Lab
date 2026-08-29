@@ -2,7 +2,9 @@ import type { QuizChoiceStyle } from "./quizChoiceStyles";
 
 // One shape, drawn white-on-transparent so it sits on top of whatever
 // colour the button behind it is — see quizChoiceStyles.ts for why a shape
-// exists at all alongside the colour.
+// exists at all alongside the colour, and for why this set (hexagon, bolt,
+// droplet, ring, plus, wave) was drawn from scratch rather than reusing
+// Kahoot's own triangle/diamond/circle/square/pentagon/star.
 export function QuizShapeIcon({
   shape,
   className,
@@ -13,40 +15,47 @@ export function QuizShapeIcon({
   const common = { fill: "currentColor", "aria-hidden": true as const };
 
   switch (shape) {
-    case "triangle":
+    case "hexagon":
       return (
         <svg viewBox="0 0 24 24" className={className} {...common}>
-          <path d="M12 3.5 L21.5 20.5 L2.5 20.5 Z" />
+          <path d="M12 2.5 20.4 7.25 20.4 16.75 12 21.5 3.6 16.75 3.6 7.25Z" />
         </svg>
       );
-    case "diamond":
+    case "bolt":
       return (
         <svg viewBox="0 0 24 24" className={className} {...common}>
-          <path d="M12 2.5 L21.5 12 L12 21.5 L2.5 12 Z" />
+          <path d="M14 2 5 13.5 10.5 13.5 9 22 19.5 9.5 13 9.5Z" />
         </svg>
       );
-    case "circle":
+    case "droplet":
       return (
         <svg viewBox="0 0 24 24" className={className} {...common}>
-          <circle cx="12" cy="12" r="9.5" />
+          <path d="M12 2C12 2 5 11.2 5 16a7 7 0 0 0 14 0C19 11.2 12 2 12 2Z" />
         </svg>
       );
-    case "square":
+    case "ring":
       return (
-        <svg viewBox="0 0 24 24" className={className} {...common}>
-          <rect x="3" y="3" width="18" height="18" rx="2" />
+        <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+          <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="4.5" />
         </svg>
       );
-    case "pentagon":
+    case "plus":
       return (
         <svg viewBox="0 0 24 24" className={className} {...common}>
-          <path d="M12 2.5 L21 9.4 L17.5 21 L6.5 21 L3 9.4 Z" />
+          <path d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7Z" />
         </svg>
       );
-    case "star":
+    case "wave":
       return (
-        <svg viewBox="0 0 24 24" className={className} {...common}>
-          <path d="M12 2.5 L14.7 9.3 L22 9.9 L16.4 14.6 L18.2 21.7 L12 17.8 L5.8 21.7 L7.6 14.6 L2 9.9 L9.3 9.3 Z" />
+        <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+          <path
+            d="M2 15c1.7-5.5 4.3-5.5 6-2s4.3 3.5 6 0 4.3-5.5 6-2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       );
   }

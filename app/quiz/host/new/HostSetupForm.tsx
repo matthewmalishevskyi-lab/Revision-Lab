@@ -3,6 +3,11 @@
 import { useActionState, useState } from "react";
 import { createQuizAction, type CreateQuizState } from "../../../lib/quiz-actions";
 import { FormError } from "../../../components/FormBits";
+// From a tiny, zero-import file — NOT from quiz-actions.ts ("use server", so
+// it can only export functions) or quiz.ts (server-only node:fs/node:crypto
+// code that has no business in this Client Component's bundle) — see
+// quizConfig.ts's own comment for why this specific split exists.
+import { MAX_QUESTIONS, MAX_TOPICS, MIN_QUESTIONS, MIN_TOPICS } from "../../../lib/quizConfig";
 
 export type SubjectOption = {
   slug: string;
@@ -10,9 +15,6 @@ export type SubjectOption = {
   accent: string;
   topics: { slug: string; title: string; year: string; mcqCount: number }[];
 };
-
-const MIN_TOPICS = 2;
-const MAX_TOPICS = 4;
 
 export function HostSetupForm({ subjects }: { subjects: SubjectOption[] }) {
   const [state, action, pending] = useActionState<CreateQuizState, FormData>(
@@ -48,7 +50,16 @@ export function HostSetupForm({ subjects }: { subjects: SubjectOption[] }) {
         .reduce((sum, t) => sum + t.mcqCount, 0)
     : 0;
 
-  const canSubmit = selectedTopics.length >= MIN_TOPICS && selectedTopics.length <= MAX_TOPICS;
+  // Checked against the real question count too, not just how many topics
+  // are ticked — createQuizAction rejects a combination that can't produce
+  // at least MIN_QUESTIONS anyway (see its own comment on why that check
+  // has to happen before writing anything), but catching it here means the
+  // button explains itself instead of someone finding out only after a
+  // round trip to the server.
+  const canSubmit =
+    selectedTopics.length >= MIN_TOPICS &&
+    selectedTopics.length <= MAX_TOPICS &&
+    totalMcqs >= MIN_QUESTIONS;
 
   return (
     <form action={action} className="mt-8">
@@ -113,10 +124,19 @@ export function HostSetupForm({ subjects }: { subjects: SubjectOption[] }) {
         })}
       </div>
 
-      <p className="mt-3 text-sm opacity-60">
+      <p
+        className={[
+          "mt-3 text-sm",
+          selectedTopics.length > 0 && totalMcqs < MIN_QUESTIONS
+            ? "font-semibold text-red-700 dark:text-red-400"
+            : "opacity-60",
+        ].join(" ")}
+      >
         {selectedTopics.length === 0
           ? "No topics picked yet."
-          : `${selectedTopics.length} topic${selectedTopics.length === 1 ? "" : "s"} picked — up to ${totalMcqs} questions available (the room caps at 20).`}
+          : totalMcqs < MIN_QUESTIONS
+            ? `Only ${totalMcqs} question${totalMcqs === 1 ? "" : "s"} between those topics — pick at least one more for a real round (needs ${MIN_QUESTIONS}).`
+            : `${selectedTopics.length} topic${selectedTopics.length === 1 ? "" : "s"} picked — up to ${totalMcqs} questions available (the room caps at ${MAX_QUESTIONS}).`}
       </p>
 
       <FormError message={state?.formError} />

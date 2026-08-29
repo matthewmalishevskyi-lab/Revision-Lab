@@ -5,10 +5,13 @@ import Link from "next/link";
 import { getQuizView, submitAnswerAction, type QuizView } from "../../../lib/quiz-actions";
 import { recordAnswer, recordTestCompletion } from "../../../lib/progress-actions";
 import { useStoredRaw } from "../../../lib/browserStore";
+import { playCorrect, playCountdownTick, playFanfare, playWrong } from "../../../lib/quizSound";
 import { quizPlayerStorageKey, parseStoredQuizPlayer } from "../../quizStorage";
 import { QuizChoiceButton, type QuizChoiceVariant } from "../../../components/quiz/QuizChoiceButton";
 import { QuizLeaderboard } from "../../../components/quiz/QuizLeaderboard";
 import { QuizConfetti } from "../../../components/quiz/QuizConfetti";
+import { QuizPlayerAvatar } from "../../../components/quiz/QuizPlayerAvatar";
+import { QuizSoundToggle } from "../../../components/quiz/QuizSoundToggle";
 
 const POLL_MS = 1200;
 const TICK_MS = 250;
@@ -42,10 +45,12 @@ export function PlayQuizScreen({ code }: { code: string }) {
   const [view, setView] = useState<QuizView | null>(null);
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
 
   const recordedQuestions = useRef<Set<number>>(new Set());
   const recordedFinish = useRef(false);
+  const lastTickSound = useRef<number | null>(null); // last whole second a tick actually played for
 
   // Polling for STATE. The interval (and the deferred kickoff) are what's
   // allowed to call setState here, not a plain call at the top of the
@@ -76,6 +81,7 @@ export function PlayQuizScreen({ code }: { code: string }) {
   if (view && view.currentIndex !== lastResetIndex) {
     setLastResetIndex(view.currentIndex);
     setSelectedChoice(null);
+    setSubmitError(null);
   }
 
   // The on-screen countdown — see HostQuizScreen.tsx's identical comment
@@ -88,7 +94,14 @@ export function PlayQuizScreen({ code }: { code: string }) {
     const duration = view.questionSeconds;
     function tick() {
       const elapsed = (Date.now() - startedAtMs) / 1000;
-      setSecondsLeft(Math.max(0, Math.ceil(duration - elapsed)));
+      const remaining = Math.max(0, Math.ceil(duration - elapsed));
+      setSecondsLeft(remaining);
+      // Once per second, not once per 250ms TICK_MS interval — see
+      // HostQuizScreen.tsx's identical comment at its own copy of this.
+      if (remaining !== lastTickSound.current) {
+        lastTickSound.current = remaining;
+        playCountdownTick(remaining);
+      }
     }
     const interval = setInterval(tick, TICK_MS);
     return () => clearInterval(interval);
@@ -104,6 +117,16 @@ export function PlayQuizScreen({ code }: { code: string }) {
     if (recordedQuestions.current.has(view.currentIndex)) return;
 
     recordedQuestions.current.add(view.currentIndex);
+    // The correct/wrong chime lives in this same effect rather than a
+    // separate one — it needs to fire exactly once per question too, the
+    // instant the result is actually known, which is precisely what this
+    // ref guard already does for the progress call right below it.
+    // `myAnswer === null` (ran out of time without answering) plays
+    // neither — there's nothing to congratulate or console someone on.
+    if (view.myAnswer) {
+      if (view.myAnswer.correct) playCorrect();
+      else playWrong();
+    }
     void recordAnswer(
       view.subjectSlug,
       view.currentQuestion.topicSlug,
@@ -121,6 +144,7 @@ export function PlayQuizScreen({ code }: { code: string }) {
     if (recordedFinish.current) return;
     recordedFinish.current = true;
 
+    playFanfare();
     const myRow = view.leaderboard.find((row) => row.player.id === identity.playerId);
     void recordTestCompletion(view.subjectSlug, myRow?.correctCount ?? 0, view.totalQuestions).catch(
       () => {},
@@ -149,17 +173,48 @@ export function PlayQuizScreen({ code }: { code: string }) {
 
   const alreadyAnswered = view.myAnswer !== null || selectedChoice !== null;
 
+  // Before this, the result of submitAnswerAction was thrown away entirely
+  // — the button visually locked in as "selected" the instant it was
+  // clicked, REGARDLESS of whether the answer actually got recorded. A
+  // failure (the countdown ending a beat before the tap landed, a network
+  // hiccup, a doubled tap racing itself) looked identical on screen to a
+  // real, scored answer: no error, no correction, just silence. Someone
+  // could genuinely believe they'd answered and scored 0 points with no way
+  // to ever find out why.
   async function handleAnswer(index: number) {
     if (!identity || !view) return;
     if (alreadyAnswered || submitting || view.status !== "question") return;
     setSelectedChoice(index);
+    setSubmitError(null);
     setSubmitting(true);
-    await submitAnswerAction(code, identity.playerId, view.currentIndex, index);
+    const result = await submitAnswerAction(code, identity.playerId, view.currentIndex, index);
     setSubmitting(false);
+
+    if (!result.ok) {
+      if (result.error === "ALREADY_ANSWERED") {
+        // A real answer already exists for this question (most likely a
+        // doubled tap racing itself) — nothing to correct, the next poll's
+        // `myAnswer` will show the real one that was actually recorded.
+        return;
+      }
+      // Genuinely didn't get recorded — undo the optimistic selection so
+      // the buttons go back to tappable, and say why, rather than leaving
+      // a "selected" answer sitting there that was never actually scored.
+      setSelectedChoice(null);
+      setSubmitError(
+        result.error === "WRONG_PHASE"
+          ? "Too slow — the question moved on before that got through."
+          : "That didn't go through — try again if there's still time.",
+      );
+    }
   }
 
   return (
     <div className="mt-8">
+      <div className="flex justify-end">
+        <QuizSoundToggle />
+      </div>
+
       {view.status === "lobby" && (
         <section className="text-center">
           <p className="text-2xl font-bold">You&apos;re in! 🎉</p>
@@ -175,12 +230,13 @@ export function PlayQuizScreen({ code }: { code: string }) {
                 <li
                   key={p.id}
                   className={[
-                    "rounded-full px-3 py-1 text-sm font-medium",
+                    "flex items-center gap-1.5 rounded-full py-1 pl-1.5 pr-3 text-sm font-medium",
                     p.id === identity.playerId
                       ? "bg-blue-600 text-white"
                       : "bg-blue-100 text-blue-800 dark:bg-blue-500/20 dark:text-blue-200",
                   ].join(" ")}
                 >
+                  <QuizPlayerAvatar playerId={p.id} size={20} />
                   {p.displayName}
                 </li>
               ))}
@@ -207,6 +263,12 @@ export function PlayQuizScreen({ code }: { code: string }) {
           {view.status === "question" && alreadyAnswered && (
             <p className="mt-4 text-center font-semibold text-green-700 dark:text-green-400">
               Locked in! Waiting for everyone else…
+            </p>
+          )}
+
+          {view.status === "question" && submitError && (
+            <p className="mt-4 text-center font-semibold text-red-700 dark:text-red-400">
+              {submitError}
             </p>
           )}
 
