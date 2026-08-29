@@ -1,5 +1,56 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Bug hunt: the spaced-repetition review page earned zero credit for reviewing (2026-08-29)
+
+Matthew asked for a fresh bug hunt, no particular area named. Picked
+spaced-repetition flashcards (`/review`) since it hadn't had a dedicated
+pass since it shipped on 2026-08-18, and read every file involved fresh —
+`flashcard-review.ts`, `flashcard-actions.ts`, `ReviewQueue.tsx`,
+`Flashcards.tsx`, `review/page.tsx` — the same "reason about it, then
+verify before fixing" approach every earlier bug hunt here has used.
+
+**The actual review page did the reviewing, but none of the crediting.**
+`Flashcards.tsx` (the ordinary browsing deck) has always done TWO things
+when a card is flipped and judged: `reviewFlashcard` schedules it for
+spaced repetition, and `recordFlashcard` logs a `kind: "flashcard"`
+activity row — the row `getProgress`'s `flashcardsReviewed` count, the
+"Flashcard fanatic" badge ("Review 100 flashcards"), streak-day activity,
+and flashcard XP (5 per card) all read from. `ReviewQueue.tsx` — the
+`/review` page, i.e. actually working through what's DUE — only ever
+called `reviewFlashcard`. It never called `recordFlashcard` at all. The
+result: doing your due spaced-repetition reviews, arguably the single
+most "using this feature correctly" behaviour on the whole site, earned
+no XP, didn't move the streak, didn't count toward "flashcards reviewed"
+anywhere, and could never earn Flashcard fanatic — while idly flipping
+through an ordinary deck without ever testing yourself got full credit
+for all of it.
+
+**Fixed** by calling `recordFlashcard` from `ReviewQueue.tsx` too, on the
+same "first reveal only" moment `Flashcards.tsx` already uses — guarded by
+a `countedIndex` so flipping a card back and forth doesn't count it twice.
+`Flashcards.tsx` needs a `Set` for this because Shuffle can put a
+previously-seen card into a fresh position (see its own long comment on
+why); `ReviewQueue` never reorders or revisits a card, so a single number
+tracking "which index already counted" is enough — one card at a time,
+strictly forward.
+
+**Verified**: `npm run check` (tsc, eslint --max-warnings=0, content,
+security) all clean. Couldn't exercise this through a real browser session
+against a live server the way earlier bug hunts here have — both
+`recordFlashcard` and the due-card list it would need to actually show a
+queue (`getDueFlashcards`) require Supabase, and faking that would mean
+also mocking users/clans/quiz's own Supabase calls (they all flip to
+"live" mode off the same two env vars) just to test one small counting
+fix. Instead simulated the exact flip/guard state machine standalone — 8
+checks (a first flip records once with the right subject/topic; flipping
+back doesn't record; re-flipping the same card forward again doesn't
+double-count even after several more back-and-forths; moving to a new
+card lets it record independently, with ITS OWN subject/topic, not the
+previous card's; the double-flip guard re-arms per card) — all passed,
+then deleted.
+
+**Changed**: `app/components/ReviewQueue.tsx` only.
+
 ## "The clan I made didn't save" — almost certainly the same missing-column shape as before (2026-08-29)
 
 Matthew: a clan he created didn't save. Couldn't check his live Supabase

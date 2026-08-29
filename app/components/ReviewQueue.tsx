@@ -10,6 +10,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { reviewFlashcard } from "../lib/flashcard-actions";
+import { recordFlashcard } from "../lib/progress-actions";
 
 export type QueueCard = {
   subjectSlug: string;
@@ -25,6 +26,14 @@ export function ReviewQueue({ cards }: { cards: QueueCard[] }) {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [doneCount, setDoneCount] = useState(0);
+
+  // Which card index has already counted toward "flashcards reviewed" this
+  // visit — same reasoning as Flashcards.tsx's own `reviewed` set (see its
+  // long comment): flipping back and forth on the same card must only count
+  // once. A single number is enough here, unlike Flashcards.tsx's Set,
+  // because this queue never reorders or revisits a card — `index` only
+  // ever moves forward, one card at a time.
+  const [countedIndex, setCountedIndex] = useState(-1);
 
   if (index >= cards.length) {
     return (
@@ -66,7 +75,21 @@ export function ReviewQueue({ cards }: { cards: QueueCard[] }) {
 
       <button
         type="button"
-        onClick={() => setFlipped((f) => !f)}
+        onClick={() => {
+          const willFlip = !flipped;
+          setFlipped(willFlip);
+          // Reviewing a due card here is at least as real a review as
+          // flipping one in the ordinary browsing deck (Flashcards.tsx),
+          // which already counts toward "flashcards reviewed" the moment
+          // its definition is revealed. This queue is arguably the more
+          // deliberate use of the two, so it must not earn less credit —
+          // counted on first reveal, same as there, and guarded by
+          // `countedIndex` so flipping back and forth doesn't count twice.
+          if (willFlip && countedIndex !== index) {
+            setCountedIndex(index);
+            void recordFlashcard(card.subjectSlug, card.topicSlug).catch(() => {});
+          }
+        }}
         aria-live="polite"
         className="mt-3 w-full text-left"
         style={{ perspective: "1200px" }}
