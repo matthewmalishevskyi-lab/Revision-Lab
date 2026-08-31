@@ -1,5 +1,43 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Checking the scoring and the places shown on the leaderboard (2026-08-31)
+
+Matthew asked whether the points calculation and the place shown during a
+quiz are actually right. Two separate questions, and they had two different
+answers.
+
+**The points are correct.** Verified by driving the real `quiz.ts` against
+the file backend with `phase_started_at` set by hand, so each answer landed
+at a known elapsed time rather than whatever the test machine happened to
+manage — 17 checks, all passing. An instant correct answer scores the full
+1000; at exactly half the clock, 750; after the clock has run out, the 500
+floor and never less; a wrong answer scores 0 however fast it was; a second
+answer to the same question is refused; a `phase_started_at` in the FUTURE
+(a clock skew, say) still caps at 1000 rather than minting points, because
+`remainingFraction` is clamped at both ends. Scores also accumulate across
+questions rather than replacing each other, and the leaderboard sorts
+highest-first with every player present exactly once.
+
+**The place shown was wrong, though, in two ways.** `QuizLeaderboard` was
+printing the row's position in the array, which is not the same thing as a
+place. Two players on an identical score came out as 1st and 2nd, and the
+one behind them was 3rd when they should have been — and the far more
+visible version of the same bug: at the start of a game, when every single
+player is on nothing, whoever happened to be listed first was shown 🥇 with
+a score of 0. That gold-medal-for-zero is on the screenshots from the
+earlier bug hunt; it read as a glitch every time it appeared, which is
+exactly what it was.
+
+Fixed by counting how many players are strictly AHEAD of a row rather than
+where it sits in the list — the ordinary sporting answer, so two on 1000
+are both 1st and the next one down is 3rd — and by withholding a medal from
+anyone on 0. 10 checks over the tie shapes that matter (no ties, tie for
+first, three-way tie, tie for second, tie for third, everyone on zero, a
+lone zero at the bottom, a single player), then confirmed in a browser with
+a seeded real tie: 🥇 Ada 1,000 · 🥇 Beth 1,000 · 🥉 Cleo 700 · 4 Dan 0.
+
+**Changed:** `app/components/quiz/QuizLeaderboard.tsx` only.
+
 ## Playing the live quiz properly, and a name filter (2026-08-31)
 
 Matthew: "just try this whole live quiz hosting yourself and look for bugs and

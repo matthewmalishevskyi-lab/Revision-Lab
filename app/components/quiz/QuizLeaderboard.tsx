@@ -19,14 +19,27 @@ export function QuizLeaderboard({
 
   return (
     <ol className="space-y-2">
-      {rows.map((row, index) => {
+      {rows.map((row) => {
         const isMe = viewerPlayerId != null && row.player.id === viewerPlayerId;
+
+        // PLACE, NOT ROW NUMBER. This used to show the position in the
+        // array, which quietly made two people on the same score 1st and
+        // 2nd — and at the start of a game, where everyone is on nothing,
+        // it handed 1st place to whoever happened to be listed first.
+        // Counting how many players are strictly AHEAD is the ordinary
+        // sporting answer: two on 1000 are both 1st, and the next one down
+        // is 3rd rather than 2nd.
+        const place = rows.filter((other) => other.score > row.score).length + 1;
+
         // The literal top of the podium gets a colour, the same "who owns
         // this, not who's flashiest" restraint the clan Leader badge
         // already applies — a gold/silver/bronze treatment for the top
         // three, plain for everyone else, so the podium reads at a glance
-        // without every single row fighting for attention.
-        const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : null;
+        // without every single row fighting for attention. Nobody on zero
+        // gets one, though: a medal for having scored nothing reads as a
+        // bug even when the arithmetic behind it is right.
+        const medal =
+          row.score > 0 && place <= 3 ? ["🥇", "🥈", "🥉"][place - 1] : null;
 
         return (
           <li
@@ -40,7 +53,7 @@ export function QuizLeaderboard({
             ].join(" ")}
           >
             <span className="w-8 shrink-0 text-center text-xl font-bold tabular-nums opacity-60">
-              {medal ?? index + 1}
+              {medal ?? place}
             </span>
             <QuizPlayerAvatar playerId={row.player.id} size={compact ? 24 : 28} />
             <span className="min-w-0 flex-1 truncate font-semibold">
