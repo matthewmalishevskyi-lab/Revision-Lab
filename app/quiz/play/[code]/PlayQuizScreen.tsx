@@ -211,6 +211,19 @@ export function PlayQuizScreen({ code }: { code: string }) {
 
   const alreadyAnswered = view.myAnswer !== null || selectedChoice !== null;
 
+  // Once the countdown reaches zero the answer buttons stop working, right
+  // then, on this device — rather than staying tappable until a poll happens
+  // to notice the deadline and flip the room to "reveal". The server refuses
+  // a late answer either way (submitAnswer checks the clock itself, and is
+  // the only thing that actually decides), but a button that still looks
+  // pressable after time is up is a promise the game can't keep: you tap it,
+  // nothing scores, and the only feedback is an error a moment later.
+  //
+  // `secondsLeft` is null until the first tick of the countdown effect, which
+  // is NOT the same as zero — treating it as time-up would disable the
+  // buttons for a frame at the start of every question.
+  const timeIsUp = secondsLeft !== null && secondsLeft <= 0;
+
   // Before this, the result of submitAnswerAction was thrown away entirely
   // — the button visually locked in as "selected" the instant it was
   // clicked, REGARDLESS of whether the answer actually got recorded. A
@@ -222,6 +235,7 @@ export function PlayQuizScreen({ code }: { code: string }) {
   async function handleAnswer(index: number) {
     if (!identity || !view) return;
     if (alreadyAnswered || submitting || view.status !== "question") return;
+    if (timeIsUp) return;
     setSelectedChoice(index);
     setSubmitError(null);
     setSubmitting(true);
@@ -304,6 +318,15 @@ export function PlayQuizScreen({ code }: { code: string }) {
             </p>
           )}
 
+          {/* Time up, and nothing sent — say so, rather than leaving someone
+              staring at four buttons that have quietly stopped responding
+              with no explanation for why. */}
+          {view.status === "question" && timeIsUp && !alreadyAnswered && (
+            <p className="mt-4 text-center font-semibold opacity-60">
+              Time&apos;s up — waiting for the answer…
+            </p>
+          )}
+
           {view.status === "question" && submitError && (
             <p className="mt-4 text-center font-semibold text-red-700 dark:text-red-400">
               {submitError}
@@ -328,7 +351,7 @@ export function PlayQuizScreen({ code }: { code: string }) {
                   text={choice}
                   variant={variant}
                   onClick={
-                    view.status === "question" && !alreadyAnswered
+                    view.status === "question" && !alreadyAnswered && !timeIsUp
                       ? () => handleAnswer(index)
                       : undefined
                   }

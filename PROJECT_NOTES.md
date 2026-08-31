@@ -1,5 +1,51 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## You can no longer answer after the clock runs out (2026-08-31)
+
+Matthew: "make it the way that you can't answer the question after the time
+runs out." He was right that you could — and the scoring check earlier the
+same day had already proved it without either of us noticing what it meant:
+one of its passing assertions was "expired correct = 500 floor", an answer
+submitted THIRTY seconds into a twenty-second question being accepted and
+scored.
+
+**Why it was open.** `submitAnswer` only ever checked the session's `status`,
+and a question doesn't become "reveal" the moment its timer hits zero — it
+becomes "reveal" when some device next polls and `autoRevealIfExpired`
+notices (see its own entry above). So there was always a window of at least
+one poll, and an unbounded one if every screen in the room was closed or
+asleep, where a late answer was still accepted at the 500-point floor.
+
+**Fixed on the server, where it counts.** `submitAnswer` now checks the
+deadline itself — a plain fact about the session's own server-recorded
+`phaseStartedAt` and `questionSeconds`, nothing the player's device sends —
+rather than inferring it from a status somebody else has to update first.
+
+**With one second of grace, on purpose.** A tap made at 19.9 seconds still
+has to reach the server; rejecting it because it landed at 20.1 would punish
+a player for their broadband rather than for being slow. So the BUTTONS stop
+the instant the countdown hits zero, and the server allows a second of travel
+on top: strict where the player acts, forgiving only about the wire between.
+
+**And on the player's screen, so it doesn't lie.** The answer buttons go dead
+at zero rather than staying tappable until a poll happens to notice — a
+button that still looks pressable after time is up is a promise the game
+can't keep. Anyone who didn't get an answer in now sees "Time's up — waiting
+for the answer…" instead of four silently unresponsive buttons.
+
+**Verified:** 9 checks against the real `submitAnswer` with the clock set by
+hand — 5 seconds in accepted at 875, 19.5 seconds in still accepted, 20.5
+seconds accepted at the floor (inside the travel grace), 22 seconds refused,
+30 seconds refused (the case that used to score 500), two minutes refused,
+refused answers leaving no row and no score behind, and — worth checking —
+a refused late answer NOT burning the player's one attempt at that question.
+Then in a real browser: buttons enabled while the clock ran, all four
+disabled once it hit zero, no console errors. `npm run check` clean.
+
+**Changed:** `app/lib/quiz.ts` (the deadline check and
+`LATE_ANSWER_GRACE_SECONDS`), `app/quiz/play/[code]/PlayQuizScreen.tsx`
+(buttons stop at zero, plus the time's-up line).
+
 ## Checking the scoring and the places shown on the leaderboard (2026-08-31)
 
 Matthew asked whether the points calculation and the place shown during a

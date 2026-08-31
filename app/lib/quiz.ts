@@ -758,6 +758,20 @@ export type SubmitAnswerResult =
 const MAX_POINTS = 1000;
 const MIN_POINTS_FOR_CORRECT = 500;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// HOW LATE AN ANSWER IS STILL ALLOWED TO BE.
+//
+// Not zero, on purpose. A tap made at 19.9 seconds still has to travel to the
+// server, and rejecting it because it landed at 20.1 would punish a player
+// for their own broadband rather than for being slow — they'd get "too slow"
+// for an answer they genuinely got in on time.
+//
+// So the BUTTONS stop working the instant the countdown hits zero (see
+// PlayQuizScreen), and the server allows a second's worth of travel on top.
+// Strict where the player acts, forgiving only about the wire in between.
+// ─────────────────────────────────────────────────────────────────────────────
+const LATE_ANSWER_GRACE_SECONDS = 1;
+
 export async function submitAnswer(input: {
   code: string;
   playerId: string;
@@ -768,6 +782,25 @@ export async function submitAnswer(input: {
   if (!session) return { ok: false, error: "NOT_FOUND" };
   if (session.status !== "question" || session.currentIndex !== input.questionIndex) {
     return { ok: false, error: "WRONG_PHASE" };
+  }
+
+  // THE CLOCK, NOT JUST THE PHASE. `status` only becomes "reveal" once some
+  // device happens to poll after the deadline (see autoRevealIfExpired), so
+  // between the timer hitting zero and the next poll landing there was a
+  // window — over a second wide, and wider if every screen was closed — where
+  // a late answer was still accepted, and still scored the 500 floor. A
+  // 30-second answer to a 20-second question scored 500; that's what this
+  // stops.
+  //
+  // The deadline is a plain fact about the session's own server-recorded
+  // `phaseStartedAt` and `questionSeconds`, so it's checked here directly
+  // rather than being inferred from a status somebody else has to update
+  // first. Nothing the player's device sends is trusted for it.
+  if (session.phaseStartedAt) {
+    const elapsedSeconds = (Date.now() - new Date(session.phaseStartedAt).getTime()) / 1000;
+    if (elapsedSeconds > session.questionSeconds + LATE_ANSWER_GRACE_SECONDS) {
+      return { ok: false, error: "WRONG_PHASE" };
+    }
   }
 
   const players = await getSessionPlayers(input.code);
