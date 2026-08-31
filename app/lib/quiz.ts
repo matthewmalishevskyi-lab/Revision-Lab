@@ -38,7 +38,8 @@
 // the row.
 
 import { randomUUID } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
+import { writeJsonAtomic } from "./atomicWrite";
 import path from "node:path";
 import { getTopicContent } from "./content";
 import { normalise } from "./normalise";
@@ -222,7 +223,7 @@ async function readLocal(): Promise<LocalData> {
 
 async function writeLocal(data: LocalData): Promise<void> {
   await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(QUIZ_FILE, JSON.stringify(data, null, 2), "utf8");
+  await writeJsonAtomic(QUIZ_FILE, data);
 }
 
 // ─── Building the question set ──────────────────────────────────────────────
@@ -451,7 +452,7 @@ export async function createQuizSession(input: {
 
 export type JoinResult =
   | { ok: true; player: QuizPlayer }
-  | { ok: false; error: "NOT_FOUND" | "ALREADY_STARTED" };
+  | { ok: false; error: "NOT_FOUND" | "ALREADY_STARTED" | "NAME_TAKEN" };
 
 // Anyone with the room code can join — no account required, same as a
 // Kahoot game PIN. If `userId` is set (the visitor is logged in), joining
@@ -463,6 +464,35 @@ export type JoinResult =
 // has no identity to de-duplicate by, so refreshing the join form as a
 // guest simply adds another guest — an acceptable rough edge for a casual
 // game, not something worth a browser-side identity system to prevent.
+// ─────────────────────────────────────────────────────────────────────────────
+// TWO PEOPLE, ONE NAME — found by having two players join a real game as
+// "Sam". Both got in, and the lobby and every leaderboard afterwards showed
+// "Sam" twice with no way to tell which was which. (The coloured shape beside
+// each name does distinguish them, but a name is what people actually read.)
+//
+// A GUEST is simply asked for another one — they typed it, the box is right
+// there, and this is exactly what Kahoot does. A LOGGED-IN player's name
+// comes from their account and can't be edited from the join screen, so
+// refusing them would be a dead end with no way out; theirs gets a number
+// instead, which is the same answer a room full of Sams needs anyway.
+// ─────────────────────────────────────────────────────────────────────────────
+async function resolveDisplayName(
+  code: string,
+  userId: string | null,
+  requested: string,
+): Promise<{ ok: true; displayName: string } | { ok: false; error: "NAME_TAKEN" }> {
+  const taken = new Set(
+    (await getSessionPlayers(code)).map((player) => player.displayName.trim().toLowerCase()),
+  );
+  const wanted = requested.trim();
+  if (!taken.has(wanted.toLowerCase())) return { ok: true, displayName: wanted };
+  if (!userId) return { ok: false, error: "NAME_TAKEN" };
+
+  let suffix = 2;
+  while (taken.has(`${wanted} ${suffix}`.toLowerCase())) suffix += 1;
+  return { ok: true, displayName: `${wanted} ${suffix}` };
+}
+
 export async function joinQuizSession(input: {
   code: string;
   userId: string | null;
@@ -481,11 +511,14 @@ export async function joinQuizSession(input: {
       if (existingRows[0]) return { ok: true, player: playerFromRow(existingRows[0]) };
     }
 
+    const resolved = await resolveDisplayName(input.code, input.userId, input.displayName);
+    if (!resolved.ok) return resolved;
+
     const row: PlayerRow = {
       id: randomUUID(),
       session_code: input.code,
       user_id: input.userId,
-      display_name: input.displayName,
+      display_name: resolved.displayName,
       joined_at: new Date().toISOString(),
     };
     const res = await supabase("quiz_players", {
@@ -509,11 +542,14 @@ export async function joinQuizSession(input: {
     if (existing) return { ok: true, player: playerFromRow(existing) };
   }
 
+  const resolved = await resolveDisplayName(input.code, input.userId, input.displayName);
+  if (!resolved.ok) return resolved;
+
   const row: PlayerRow = {
     id: randomUUID(),
     session_code: input.code,
     user_id: input.userId,
-    display_name: input.displayName,
+    display_name: resolved.displayName,
     joined_at: new Date().toISOString(),
   };
   players.push(row);

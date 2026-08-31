@@ -171,6 +171,44 @@ export function PlayQuizScreen({ code }: { code: string }) {
     return <p className="mt-10 text-center opacity-60">Loading…</p>;
   }
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // REMOVED FROM THE ROOM — found by playing a real game and then watching
+  // what the removed player's own screen actually did.
+  //
+  // The host's ✕ takes someone out of the room, and the HOST's lobby updates
+  // correctly. The removed player's screen did not: it carried on cheerfully
+  // saying "You're in! 🎉" and listing the players still in the room, forever.
+  // They'd sit waiting for a game they were no longer part of, and only find
+  // out anything was wrong once it started and their answers had nowhere to
+  // land — the same "believing you'd answered when you hadn't" shape of
+  // silence handleAnswer's own comment below exists to stop.
+  //
+  // `view.players` is the room's real current list (straight from
+  // getSessionPlayers), and `view` is only ever set from a fetch that
+  // actually succeeded — a failed poll leaves the previous view in place
+  // rather than emptying it. So "my id isn't in this list" is a trustworthy
+  // signal that the row is genuinely gone rather than a network blip, and
+  // host removal is the only thing on the whole site that deletes one.
+  // ───────────────────────────────────────────────────────────────────────────
+  const stillInRoom = view.players.some((player) => player.id === identity.playerId);
+  if (!stillInRoom) {
+    return (
+      <div className="mt-10 text-center">
+        <p className="text-2xl font-bold">You&apos;re not in this room</p>
+        <p className="mt-2 opacity-70">
+          The host removed you from it. If that wasn&apos;t meant to happen, you
+          can join again with the same room code.
+        </p>
+        <Link
+          href={`/quiz/join?code=${code}`}
+          className="mt-5 inline-block rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-blue-700"
+        >
+          Join again
+        </Link>
+      </div>
+    );
+  }
+
   const alreadyAnswered = view.myAnswer !== null || selectedChoice !== null;
 
   // Before this, the result of submitAnswerAction was thrown away entirely

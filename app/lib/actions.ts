@@ -15,6 +15,7 @@
 
 import { redirect } from "next/navigation";
 import { createSession, destroySession, getSessionUserId } from "./session";
+import { containsProfanity, PROFANITY_REJECTION_MESSAGE } from "./cleanName";
 import {
   checkLoginAllowed,
   checkRegistrationAllowed,
@@ -68,6 +69,10 @@ export async function register(
   // should be. (The longest recorded surname is a little over 30 characters.)
   if (name.length < 2) fieldErrors.name = "Please enter your name.";
   else if (name.length > 100) fieldErrors.name = "That name is too long.";
+  // Checked HERE, at the one point an account name is set, which is what
+  // lets the quiz join screen trust a logged-in player's name without having
+  // to re-check something they can't edit from there.
+  else if (containsProfanity(name)) fieldErrors.name = PROFANITY_REJECTION_MESSAGE;
 
   if (!looksLikeEmail(email))
     fieldErrors.email = "That doesn't look like an email address.";

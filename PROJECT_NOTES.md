@@ -1,5 +1,101 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Playing the live quiz properly, and a name filter (2026-08-31)
+
+Matthew: "just try this whole live quiz hosting yourself and look for bugs and
+problems in it... take as much time as you want and make sure everything is
+great," plus "can you please deny the access for any swear words or dirty
+words in the names?" So: an actual played game rather than a code read — a
+dev server, two real browser contexts, a host and players, all ten questions
+through to the final leaderboard, then a pass of deliberately hostile inputs.
+
+**FIRST, WHAT ALREADY WORKED**, checked rather than assumed, so it's on record:
+a full ten-question two-player game runs start to finish; the 30-character cap
+on guest names holds; `<img src=x onerror=...>` in a name is escaped and
+rendered as literal text (React's default, verified with a real flag on
+`window`, not taken on trust); a nonexistent room code, a room that's already
+started, answering twice and answering after the reveal are all refused with
+a sentence a human can read; refreshing mid-game keeps a player's identity;
+and "End quiz early" genuinely ends it for everyone (an earlier run suggested
+it didn't — that was a bad selector in the test, not a bug in the site).
+
+**Bug 1 — players got 500s in a real game, and it was the file store tearing.**
+Two players answering seconds apart produced `QUIZ_FILE_CORRUPTED` on both
+their screens. `writeFile` is not one action: it truncates the file, then
+writes. A poll landing in that gap reads half a JSON document. With every
+screen polling `data/quiz.json` every 1.2 seconds and every answer being a
+read-modify-write of it, the gap gets hit constantly. New `atomicWrite.ts`
+writes to a temporary file beside the target and `rename`s it over — one
+action the OS can't split, so a reader gets the whole old file or the whole
+new one. Applied to quiz.ts, clans.ts AND users.ts, which all had the
+identical line; `users.json` holds accounts, so that one mattered most even
+though the quiz is what exposed it. Measured with a control rather than
+asserted: 1800 concurrent reads against the old way tore **607 times**,
+against the new way **0**. Live-site behaviour is unchanged either way —
+Supabase was never affected — but this is what Matthew hits every time he
+runs the site on his own laptop, which is most of the time.
+
+**Bug 2 — a removed player was never told, and didn't know.** The host's ✕
+removes someone and the host's own lobby updates correctly. The removed
+player's screen carried on saying "You're in! 🎉" and listing the players
+still in the room, indefinitely: they'd wait for a game they weren't in, and
+find out only when the quiz started and their answers had nowhere to go —
+the same shape of silence the earlier "believing you'd answered when you
+hadn't" fix already went after. `PlayQuizScreen` now checks its own id
+against the room's player list and says so plainly, with a "Join again"
+button. It updates on the ordinary poll, no refresh needed.
+
+**Bug 3 — two people could both be "Sam".** Both got in, and the lobby and
+every leaderboard afterwards showed "Sam" twice with no way to tell them
+apart. A guest is now asked for a different name (they typed it, the box is
+right there — this is what Kahoot does); a logged-in player, whose name comes
+from their account and isn't editable from the join screen, gets a number
+appended instead, because refusing them would be a dead end with no way out.
+Case-insensitive, so "sam" doesn't sneak past "Sam".
+
+**The name filter, and the trap it walked into first.** New `cleanName.ts`,
+zero imports for the same reason `quizConfig.ts` has none. It squashes a name
+to bare letters (accents off, leetspeak mapped back, spaces and punctuation
+removed) so "f u c k", "f.u.c.k", "sh1t" and "@ss" all collapse to the word
+they're hiding, and matches rude words as patterns that tolerate repeated
+letters, so "fuuuck" is caught too.
+
+The first version of it **blocked Jason, Ashley, Chase, Cassie and Cassius**.
+That is the Scunthorpe problem, and the file's own header comment warned
+about it before the code went and did it anyway — the cause was squashing
+repeats out of the NAME as well as the word, which shortens "ass" to "as"
+and "boob" to "bob". Caught only because the test suite checks 200+ real
+first names and surnames rather than just checking that swear words fail.
+Fixed by tolerating repeats in the pattern instead, dropping the bare "ass"
+root in favour of the compounds people actually use as insults (plus "arse",
+which a UK classroom would type anyway and which carries no such risk), and
+matching the genuinely ambiguous short words only as WHOLE words — so "a$$"
+and "dumb ass" are blocked while Cassie is not. There's also a list of
+innocent carriers (class, bass, assassin, analysis, Hancock, Cockburn,
+Dickens, shiitake, Pakistan, Saturday, flagship, Bagshaw…) stripped out
+before anything is searched for. 345 checks: every obfuscation blocked, every
+real name allowed.
+
+Wired in at the three places a name enters the site: guest names on the quiz
+join form, clan names (the most public text on the site — it shows in the
+browse list to everyone), and account names at registration. Checking it at
+registration is what lets the quiz trust a logged-in player's name without
+re-checking something they can't edit from there.
+
+**Verified:** `npm run check` clean (tsc, eslint --max-warnings=0, 87,603
+content checks, 57 security checks); a full ten-question two-player game with
+zero console errors; every fix above re-confirmed in a real browser (rude
+names refused, ordinary names admitted, duplicates refused, the removed
+player told, no corruption under five concurrent players). Throwaway tests
+deleted afterwards.
+
+**Changed:** `app/lib/atomicWrite.ts` (new), `app/lib/cleanName.ts` (new),
+`app/lib/quiz.ts` (atomic write, duplicate-name resolution),
+`app/lib/quiz-actions.ts` (profanity check, NAME_TAKEN message),
+`app/lib/clans.ts` + `app/lib/users.ts` (atomic write),
+`app/lib/clan-actions.ts` + `app/lib/actions.ts` (profanity check),
+`app/quiz/play/[code]/PlayQuizScreen.tsx` (removed-player screen).
+
 ## Bug hunt: the spaced-repetition review page earned zero credit for reviewing (2026-08-29)
 
 Matthew asked for a fresh bug hunt, no particular area named. Picked

@@ -29,7 +29,8 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { randomBytes, randomUUID, scrypt, timingSafeEqual } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
+import { writeJsonAtomic } from "./atomicWrite";
 import path from "node:path";
 import { promisify } from "node:util";
 
@@ -246,7 +247,7 @@ async function readUsers(): Promise<User[]> {
 
 async function writeUsers(users: User[]): Promise<void> {
   await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(USERS_FILE, JSON.stringify(users, null, 2), "utf8");
+  await writeJsonAtomic(USERS_FILE, users);
 }
 
 // Emails are case-insensitive in practice, so we store and compare them

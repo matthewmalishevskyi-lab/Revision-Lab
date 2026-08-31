@@ -10,7 +10,8 @@
 // applies here unchanged, so it isn't repeated.
 
 import { randomUUID } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
+import { writeJsonAtomic } from "./atomicWrite";
 import path from "node:path";
 import { hashPassword, verifyPassword } from "./users";
 
@@ -119,7 +120,7 @@ async function readLocal(): Promise<LocalData> {
 
 async function writeLocal(data: LocalData): Promise<void> {
   await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(CLANS_FILE, JSON.stringify(data, null, 2), "utf8");
+  await writeJsonAtomic(CLANS_FILE, data);
 }
 
 // Builds the return value FIELD BY FIELD rather than `{ ...clan, ... }` —

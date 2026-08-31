@@ -19,6 +19,7 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "./actions";
 import { getSessionUserId } from "./session";
 import { getSubject } from "./subjects";
+import { containsProfanity, PROFANITY_REJECTION_MESSAGE } from "./cleanName";
 import { checkQuizJoinAllowed, humanDelay, recordFailedQuizJoin } from "./throttle";
 import { MAX_TOPICS, MIN_QUESTIONS, MIN_TOPICS, QUESTION_SECONDS } from "./quizConfig";
 import {
@@ -142,6 +143,14 @@ export async function joinQuizAction(
     return { ok: false, error: "Enter a name so other players know who you are." };
   }
 
+  // Only the GUEST-typed name is checked. A logged-in player's name came
+  // from their account, was checked when they registered, and isn't editable
+  // from this screen — rejecting it here would be a dead end they had no way
+  // to get out of.
+  if (!user && containsProfanity(displayName)) {
+    return { ok: false, error: PROFANITY_REJECTION_MESSAGE };
+  }
+
   const result = await joinQuizSession({
     code: trimmedCode,
     userId: user?.id ?? null,
@@ -160,6 +169,7 @@ export async function joinQuizAction(
     const messages: Record<typeof result.error, string> = {
       NOT_FOUND: "That room code doesn't exist — double check it.",
       ALREADY_STARTED: "That quiz has already started — ask the host for a new one.",
+      NAME_TAKEN: "Someone in that room is already using that name — try another.",
     };
     return { ok: false, error: messages[result.error] };
   }

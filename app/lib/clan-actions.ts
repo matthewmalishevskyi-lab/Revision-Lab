@@ -22,6 +22,7 @@ import {
 } from "./clans";
 import { getSessionUserId } from "./session";
 import { checkClanJoinAllowed, humanDelay, recordFailedClanJoin } from "./throttle";
+import { containsProfanity, PROFANITY_REJECTION_MESSAGE } from "./cleanName";
 
 export type ClanFormState = { formError?: string } | null;
 
@@ -51,6 +52,10 @@ export async function createClanAction(
   // something silly being written straight into storage.
   if (name.length < 3) return { formError: "Clan names need to be at least 3 characters." };
   if (name.length > 40) return { formError: "That name is too long — 40 characters or fewer." };
+  // A clan name is the most public piece of text a visitor can put on this
+  // site — it shows up in the browse/search list to everyone, not just to
+  // the people in one room for one game.
+  if (containsProfanity(name)) return { formError: PROFANITY_REJECTION_MESSAGE };
   if (password.length < 4) return { formError: "Clan passwords need to be at least 4 characters." };
   if (password.length > 100) return { formError: "That password is too long." };
 
