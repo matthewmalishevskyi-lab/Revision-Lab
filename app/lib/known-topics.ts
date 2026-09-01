@@ -313,6 +313,39 @@ export const KNOWN_TOPIC_KEYS: readonly string[] = [
   "german/technology-and-media",
   "german/grammar-toolkit-2",
   "german/german-exam-practice",
+
+  // ── Physical Education, added 2026-09-01 ─────────────────────────────────
+  // Years 10 and 11 only: the PE everyone does lower down the school has no
+  // written exam behind it, so there is nothing there to revise or record.
+  // Paper 1 (the human body and movement):
+  "physical-education/the-skeletal-system",
+  "physical-education/the-muscular-system",
+  "physical-education/movement-analysis",
+  "physical-education/the-cardiovascular-system",
+  "physical-education/the-respiratory-system",
+  "physical-education/aerobic-and-anaerobic-exercise",
+  "physical-education/effects-of-exercise",
+  "physical-education/components-of-fitness",
+  "physical-education/fitness-testing",
+  "physical-education/principles-of-training",
+  "physical-education/training-methods",
+  "physical-education/preventing-injury",
+  "physical-education/use-of-data",
+  // Paper 2 (socio-cultural influences and wellbeing):
+  "physical-education/health-fitness-and-wellbeing",
+  "physical-education/diet-and-nutrition",
+  "physical-education/sedentary-lifestyle-and-obesity",
+  "physical-education/classification-of-skills",
+  "physical-education/goal-setting",
+  "physical-education/information-processing",
+  "physical-education/guidance-and-feedback",
+  "physical-education/mental-preparation",
+  "physical-education/personality-and-motivation",
+  "physical-education/engagement-patterns",
+  "physical-education/commercialisation-and-the-media",
+  "physical-education/ethics-in-sport",
+  "physical-education/drugs-in-sport",
+  "physical-education/spectator-behaviour",
 ];
 
 // Topics deliberately withdrawn. Empty, and it should stay that way unless

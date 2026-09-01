@@ -1,5 +1,77 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## GCSE PE — a fifteenth subject, Years 10 and 11 (2026-09-01)
+
+Matthew: make GCSE PE a new subject, everything for Years 10 and 11, from
+reliable sources, any colour. 27 topics, about 45,000 words.
+
+**Years 10 and 11 only, which was Matthew's call and the right one.** Every
+other subject starts at Year 9. The PE everyone does lower down the school is
+games lessons with nothing examined, so there is nothing there to revise. Only
+those who CHOSE GCSE PE sit written papers, and that starts in Year 10. The
+split follows the two papers rather than being arbitrary: Year 10 is Paper 1
+(the human body and movement), Year 11 is Paper 2 (socio-cultural influences
+and wellbeing).
+
+**Sourced from AQA rather than from memory.** The 8582 specification pages
+gave the paper structure and weightings (two written papers at 30% each, NEA
+40%), and the two subject-content pages gave the actual sub-topics — which is
+where the board-specific details came from that would otherwise have been
+guessed wrong. The most useful: AQA writes SMART as specific, measurable,
+ACCEPTED, realistic, time-bound, where most of the internet says achievable.
+That is taught explicitly, with a note for students on other boards. Also
+sourced: the balanced-diet split (55-60% carbohydrate, 25-30% fat, 15-20%
+protein), the ~2500/2000 kcal averages, the ten components of fitness, the
+nine named fitness tests, and the prohibited-substance categories.
+
+**Also checked, and worth recording: AQA published changes for summer 2026
+onwards, and they do NOT affect any of this.** They are entirely to the
+practical activity skill lists — heading in football, shot variety in
+badminton, tackle and ruck wording in rugby union, set variations in
+volleyball. No written-paper content changed. That was checked precisely
+because the earlier claim about a Computing GCSE turned out to be a review
+RECOMMENDATION being repeated as though it were a real qualification —
+Matthew corrected that, rightly, and this is the same class of claim.
+
+**Written partly by subagents, reviewed by me.** Four of the 27 topics were
+written directly; the other 23 were written by five parallel agents against a
+precise schema, the content checker's own rules, and the sourced AQA detail
+above. That is a real decision worth being honest about, given that content
+accuracy is this site's biggest standing risk. What was done about it: every
+numeric claim in the whole subject was extracted and checked by hand — the
+heart-rate arithmetic (220-16=204, 60% = 122; 220-20=200, 80% = 160;
+220-40=180, zone 144-162), the cardiac output sums, the mechanical advantage
+calculations, the diet percentages, DOMS at 24-36 hours, the 20m multi-stage
+fitness test. All correct. The two sensitive topics were read in full: the
+drugs topic names no real athletes and gives no doses, sources or concealment
+methods, and the engagement-patterns topic describes barriers without
+stereotyping — its own misconceptions section pushes back on exactly that.
+
+**The checker taught us its rules as we went**, which is what it is for: every
+topic needs at least 5 multiple-choice questions (unconditional, deliberately,
+so a new subject cannot dodge the standard); an MCQ's accept list must match
+exactly one choice character for character; a self-marked question's answer
+must contain the phrase telling the student to mark it; a topic with practice
+needs at least 16 questions; and every new topic must be registered in
+known-topics.ts. Those rules were then baked into the generator, so later
+batches could not break them. It also caught a real defect the agents
+produced: a two-part question whose accept list held two different numbers.
+
+**Still to do, and Matthew should decide:** the mascot is borrowed from the
+sciences as a placeholder until his own character exists; there is no topic on
+the practical assessment (40% of the grade) because he never picked one way or
+the other when asked; and nobody has had a PE teacher read any of this — which
+matters more here than usual, since Matthew does not take PE himself and so
+cannot sanity-check it the way he can Maths or Computer Science.
+
+**Verified:** 94,379 content checks and 174 security checks pass; five pages
+loaded in a real browser (homepage, subject page, three topics) with zero
+console and zero hydration errors.
+
+**Changed:** `app/lib/content/physical-education.ts` (new, 27 topics),
+`app/lib/subjects.ts` (the subject entry), `app/lib/content/index.ts`
+(registration), `app/lib/known-topics.ts` (27 keys).
+
 ## "Delete my progress history" on the progress page (2026-09-01)
 
 Matthew's ask: a button at the bottom of the progress page that asks for

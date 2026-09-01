@@ -1066,6 +1066,81 @@ export const SUBJECTS: Subject[] = [
       },
     ],
   },
+  {
+    slug: "physical-education",
+    name: "Physical Education",
+    blurb: "Choose a topic to start revising",
+    gradient: "linear-gradient(150deg, #fdba74 0%, #ea580c 45%, #7c2d12 100%)",
+    shadow:
+      "shadow-[0_18px_40px_-18px_rgba(234,88,12,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(234,88,12,0.9)]",
+    accent: "#ea580c",
+    // PLACEHOLDER. Every mascot on this list already belongs to something
+    // else, and Matthew is designing a character for PE separately — this is
+    // borrowed from the sciences (the anatomy and physiology half of PE is
+    // the closest thing to them) purely so the field is valid until then.
+    mascot: "iris",
+    // Two written papers at 30% each, plus a practical assessment worth 40%
+    // that no amount of revision replaces. The written content is genuinely
+    // smaller than the essay subjects, which is what this number is about —
+    // not how hard the course is overall.
+    revisionWeight: 3,
+    // ─────────────────────────────────────────────────────────────────────
+    // YEARS 10 AND 11 ONLY, deliberately.
+    //
+    // Every other subject here starts at Year 9, because Year 9 is when
+    // most schools begin GCSE content. PE is different: the PE everyone
+    // does lower down the school is games lessons, with nothing examined
+    // and nothing to revise. Only the people who CHOSE GCSE PE have written
+    // papers to sit, and that starts in Year 10 — Matthew's own point, and
+    // it is right.
+    //
+    // The split follows the two papers rather than being an arbitrary half:
+    // Year 10 is Paper 1 (the human body and movement) and Year 11 is
+    // Paper 2 (socio-cultural influences and wellbeing). Schools vary, and
+    // some teach them the other way round or interleave them — the order
+    // here is a sensible default, not a claim about any one school's
+    // scheme of work.
+    // ─────────────────────────────────────────────────────────────────────
+    years: [
+      {
+        year: "Year 10",
+        topics: [
+          { slug: "the-skeletal-system", title: "The skeletal system", icon: "cube" },
+          { slug: "the-muscular-system", title: "The muscular system", icon: "power" },
+          { slug: "movement-analysis", title: "Movement analysis", icon: "axis" },
+          { slug: "the-cardiovascular-system", title: "The cardiovascular system", icon: "heart" },
+          { slug: "the-respiratory-system", title: "The respiratory system", icon: "cloud" },
+          { slug: "aerobic-and-anaerobic-exercise", title: "Aerobic & anaerobic exercise", icon: "flask" },
+          { slug: "effects-of-exercise", title: "Effects of exercise", icon: "thermometer" },
+          { slug: "components-of-fitness", title: "Components of fitness", icon: "gauge" },
+          { slug: "fitness-testing", title: "Fitness testing", icon: "clock" },
+          { slug: "principles-of-training", title: "Principles of training", icon: "layers" },
+          { slug: "training-methods", title: "Training methods", icon: "toolbox" },
+          { slug: "preventing-injury", title: "Preventing injury", icon: "shield" },
+          { slug: "use-of-data", title: "Use of data", icon: "chart" },
+        ],
+      },
+      {
+        year: "Year 11",
+        topics: [
+          { slug: "health-fitness-and-wellbeing", title: "Health, fitness & wellbeing", icon: "leaf" },
+          { slug: "diet-and-nutrition", title: "Diet & nutrition", icon: "meal" },
+          { slug: "sedentary-lifestyle-and-obesity", title: "Sedentary lifestyle & obesity", icon: "scales" },
+          { slug: "classification-of-skills", title: "Classification of skills", icon: "grid" },
+          { slug: "goal-setting", title: "Goal setting", icon: "triangle" },
+          { slug: "information-processing", title: "Information processing", icon: "flow" },
+          { slug: "guidance-and-feedback", title: "Guidance & feedback", icon: "speech" },
+          { slug: "mental-preparation", title: "Mental preparation", icon: "candle" },
+          { slug: "personality-and-motivation", title: "Personality & motivation", icon: "mask" },
+          { slug: "engagement-patterns", title: "Engagement patterns", icon: "city" },
+          { slug: "commercialisation-and-the-media", title: "Commercialisation & the media", icon: "news" },
+          { slug: "ethics-in-sport", title: "Ethics in sport", icon: "gavel" },
+          { slug: "drugs-in-sport", title: "Drugs in sport", icon: "droplet" },
+          { slug: "spectator-behaviour", title: "Spectator behaviour", icon: "mic" },
+        ],
+      },
+    ],
+  },
 ];
 
 // ─── Lookups ────────────────────────────────────────────────────────────────

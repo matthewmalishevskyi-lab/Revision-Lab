@@ -20,6 +20,7 @@ import { BUSINESS } from "./business";
 import { CHEMISTRY } from "./chemistry";
 import { CITIZENSHIP } from "./citizenship";
 import { RELIGIOUS_EDUCATION } from "./religious-education";
+import { PHYSICAL_EDUCATION } from "./physical-education";
 import { PHYSICS } from "./physics";
 import { COMPUTER_SCIENCE } from "./computer-science";
 import { ENGLISH } from "./english";
@@ -119,6 +120,7 @@ export const TOPIC_CONTENT: Record<string, TopicContent> = {
   ...BIOLOGY,
   ...CHEMISTRY,
   ...PHYSICS,
+  ...PHYSICAL_EDUCATION,
   ...CITIZENSHIP,
   ...RELIGIOUS_EDUCATION,
   ...SPANISH,
