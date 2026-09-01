@@ -1,5 +1,67 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Worked examples for chemistry and physics, and a hydration bug found while checking them (2026-08-31)
+
+Matthew asked to expand the existing subjects by roughly a hundred words per
+topic, ahead of doing PE later.
+
+**Measured before writing anything, rather than padding every topic.** All
+251 topics already had `misconceptions` and `practice` — those are at 100%
+coverage across every subject. `workedExamples` were the real gap: 129 topics
+had none, and they are the one section that shows a method being APPLIED
+rather than stated. So the hundred words went there, where they add something,
+instead of being spread thinly over sections that already exist.
+
+**This batch: chemistry (13 topics) and physics (4), both now at 100%.**
+Chosen first on purpose — worked examples in these subjects are calculations
+and equations that can be CHECKED, which matters given nobody has had a
+teacher read this site (see the content-accuracy entry). Every number was
+worked through: MgCl₂ from group 2 + group 7, H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O,
+C₃H₈ + 5O₂ → 3CO₂ + 4H₂O, the lead bromide half equations, 6.4/8.0 = 80%
+yield, 21% of 500 cm³ = 105 cm³, 4,500 ÷ (0.50 × 10) = 900 J/kg°C for
+aluminium, 1,500 × 2.5 = 3,750 N. 1,661 words across 17 topics — 98 per
+topic, which is what was asked for.
+
+**Still without worked examples (112 topics), for a later batch:** business
+(20), biology (14), citizenship (12), RE (18), french (18), spanish (18),
+german (12). The languages, RE and citizenship ones are a different kind of
+thing — a model answer walked through rather than a calculation — and are
+worth Matthew's eye on the first one before the rest are written.
+
+**Found while checking one rendered: a React hydration error on every topic
+page with multiple-choice questions.** Not caused by the content — it was
+already there. `Practice.tsx` (and `MockExam.tsx` identically) shuffled the
+answer options with `Math.random()` during render. That runs twice, once on
+the server building the HTML and once in the browser taking over, giving two
+different orders — so React found HTML that didn't match, logged an error,
+threw the subtree away and rebuilt it. The server's work wasted, and console
+noise that makes real errors harder to spot.
+
+Fixed with `shuffleWithSeed`/`seedFromText` in `lib/shuffle.ts`: the order is
+now decided by the question's own TEXT, so the server and the browser compute
+the same one. `shuffle()` itself is untouched — `Math.random()` is still
+exactly right for picking WHICH questions go in a mock exam, which is not
+rendered twice.
+
+**Checked that this didn't undo the bug the shuffling exists for** — Matthew
+spotted in August that the correct answer was almost always option A. Across
+all 1,319 multiple-choice questions on the site: 99% have the right answer
+first in the raw data, and after the seeded shuffle it lands at A 26% / B 25%
+/ C 24% / D 25%. Even, and stable. The trade-off, stated plainly: a given
+question now shows its options in the same order every visit rather than a
+fresh one each time. Worth it to stop the page erroring, and a long way from
+"every answer is A" — but a one-line change if Matthew would rather have
+freshness back.
+
+**Verified:** `npm run check` clean (87,671 content checks — up from 87,603,
+the new checks being the added worked examples); four topic pages loaded in a
+real browser with zero hydration errors, where they previously errored every
+time.
+
+**Changed:** `app/lib/content/chemistry.ts`, `app/lib/content/physics.ts`,
+`app/lib/shuffle.ts`, `app/components/Practice.tsx`,
+`app/components/MockExam.tsx`.
+
 ## You can no longer answer after the clock runs out (2026-08-31)
 
 Matthew: "make it the way that you can't answer the question after the time

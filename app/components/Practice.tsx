@@ -27,7 +27,7 @@
 import { useState } from "react";
 import { HigherBadge } from "./HigherBadge";
 import { recordAnswer } from "../lib/progress-actions";
-import { shuffle } from "../lib/shuffle";
+import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 // `normalise` used to be defined right here, and MockExam.tsx imported it
 // from this file. It now lives in lib/normalise.ts instead — pulled out the
 // moment a THIRD place (the live quiz's server-only data layer, lib/quiz.ts)
@@ -82,7 +82,12 @@ const EMPTY: QuestionState = { input: "", status: "unanswered", revealed: false 
 // keep in sync in the first place.
 // ─────────────────────────────────────────────────────────────────────────────
 function shuffledChoicesFor(questions: Question[]): (string[] | undefined)[] {
-  return questions.map((q) => (q.choices ? shuffle(q.choices) : undefined));
+  // Seeded from the question's own text rather than Math.random() — see
+  // shuffleWithSeed's comment in lib/shuffle.ts for the hydration error that
+  // caused, which showed up as a React console error on every topic page.
+  return questions.map((q) =>
+    q.choices ? shuffleWithSeed(q.choices, seedFromText(q.question)) : undefined,
+  );
 }
 
 export function Practice({

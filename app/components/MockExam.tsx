@@ -23,7 +23,7 @@ import { normalise } from "../lib/normalise";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
-import { shuffle } from "../lib/shuffle";
+import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 
 export type ExamQuestion = {
   question: string;
@@ -99,7 +99,12 @@ export function MockExam({
   // is first seen is enough, and it stays stable for the rest of the exam
   // because the array reference doesn't change again after that.
   const shuffledChoices = useMemo(
-    () => questions.map((q) => (q.choices ? shuffle(q.choices) : undefined)),
+    // Seeded from each question's own text, not Math.random() — the same
+    // server/browser mismatch Practice.tsx had; see lib/shuffle.ts.
+    () =>
+      questions.map((q) =>
+        q.choices ? shuffleWithSeed(q.choices, seedFromText(q.question)) : undefined,
+      ),
     [questions],
   );
 
