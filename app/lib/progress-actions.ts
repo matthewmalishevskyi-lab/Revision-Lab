@@ -25,8 +25,10 @@
 // This is the defensive design topic on the site, applied to the site itself.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./actions";
-import { isRealTopic, recordActivity } from "./progress";
+import { deleteAllFlashcardReviews } from "./flashcard-review";
+import { deleteAllProgress, isRealTopic, recordActivity } from "./progress";
 import { getSubject } from "./subjects";
 
 // The timer sends a heartbeat every 30 seconds. Anything much larger than that
@@ -126,4 +128,48 @@ export async function recordTestCompletion(
     scoreCorrect: safeCorrect,
     scoreTotal: safeTotal,
   });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DELETE EVERYTHING I'VE DONE.
+//
+// WHOSE history gets deleted is read from the session cookie and nowhere else
+// — the same rule every action in this file follows, and it matters more here
+// than anywhere. If this took a user id as an argument, anyone able to make an
+// HTTP request could wipe somebody else's revision history by guessing an id.
+// There is deliberately no parameter to get wrong.
+//
+// Two tables, because a person's history lives in two: `activity` (everything
+// the progress page counts) and `flashcard_reviews` (which cards are due, and
+// when). Both are cleared, or the caller is told it failed — see
+// deleteAllProgress's own comment on why these two report failure when the
+// recording functions above quietly swallow it.
+// ─────────────────────────────────────────────────────────────────────────────
+export async function deleteMyProgress(): Promise<{ ok: boolean; error?: string }> {
+  const user = await getCurrentUser();
+  if (!user) return { ok: false, error: "You need to be signed in." };
+
+  try {
+    const [progressCleared, reviewsCleared] = await Promise.all([
+      deleteAllProgress(user.id),
+      deleteAllFlashcardReviews(user.id),
+    ]);
+
+    if (!progressCleared || !reviewsCleared) {
+      return {
+        ok: false,
+        error: "Something went wrong and nothing was deleted. Please try again.",
+      };
+    }
+  } catch (error) {
+    console.error("[progress] delete failed:", error);
+    return { ok: false, error: "Something went wrong. Please try again." };
+  }
+
+  // Every page that shows a figure derived from this data, so none of them can
+  // carry on displaying a total that no longer has any rows behind it.
+  revalidatePath("/progress");
+  revalidatePath("/dashboard");
+  revalidatePath("/review");
+  return { ok: true };
 }

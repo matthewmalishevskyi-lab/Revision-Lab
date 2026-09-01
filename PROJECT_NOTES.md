@@ -1,5 +1,63 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## "Delete my progress history" on the progress page (2026-09-01)
+
+Matthew's ask: a button at the bottom of the progress page that asks for
+confirmation and then deletes a person's progress history for good.
+
+**Built on the idiom this codebase already uses for serious actions**, not a
+native `confirm()`: the first click REVEALS the real step rather than doing
+anything. `DeleteAccountForm` established it and ending a quiz early reuses
+it; this is the third place, which is the point — something irreversible
+should always feel the same. A grey system dialog has no room to say what is
+actually about to go, and people dismiss those on reflex.
+
+**What actually gets deleted, and why it's two tables.** `activity` holds
+everything the progress page counts, and because that table is an EVENT LOG
+rather than stored totals, every derived figure — topics covered, accuracy,
+study time, XP, level, badges, streak — resets on its own once the rows are
+gone. There is no second copy to hunt down. `flashcard_reviews` is cleared
+too, which goes slightly beyond the literal ask: it isn't shown on the
+progress page, but it IS a record of what someone judged themselves on, and
+leaving it would mean cards still turning up in /review scheduled by
+judgements that supposedly no longer exist. Quiz answers are deliberately
+NOT touched — they belong to a room and a game, not to a person's history.
+The account itself is untouched, and the confirmation says so explicitly,
+since "delete my progress" and "delete my account" are very different things
+to click by mistake.
+
+**Whose history gets deleted comes from the session cookie and nowhere else.**
+`deleteMyProgress` takes no arguments at all, deliberately — the same rule
+every action in progress-actions.ts follows, and it matters most here. Had it
+taken a user id, anyone able to make an HTTP request could wipe somebody
+else's revision by guessing one. There is no parameter to get wrong.
+
+**These two deletes REPORT failure, unlike the recording functions beside
+them.** `recordActivity` logs and shrugs, because losing one statistic
+shouldn't interrupt someone mid-revision. Telling a person their history is
+gone when it is still sitting there would be a different kind of wrong, so
+both delete functions return a boolean and the UI only claims success if both
+actually succeeded.
+
+**Verified against a stand-in Supabase** (a small local HTTP server standing
+in for the REST API, since the progress tables only exist on the live
+database) — 16 checks, all passing: the section renders, the confirmation
+names what goes and says it is permanent with no undo, **revealing the
+confirmation deletes nothing**, **cancelling deletes nothing**, the real
+click sends DELETEs for both tables, **both are scoped to
+`user_id=eq.<this user>`**, the success message appears, and a reload shows
+the page genuinely empty. Zero console errors. `npm run check` clean.
+
+**One line of existing prose tightened:** the "how these are worked out"
+panel said "nothing you have done is ever removed" — true about a subject
+growing, but it now sits directly above a delete button, so it now says a
+subject growing never removes anything, which is what it always meant.
+
+**Changed:** `app/progress/DeleteProgressForm.tsx` (new),
+`app/progress/page.tsx`, `app/lib/progress.ts` (`deleteAllProgress`),
+`app/lib/flashcard-review.ts` (`deleteAllFlashcardReviews`),
+`app/lib/progress-actions.ts` (`deleteMyProgress`).
+
 ## Worked examples for chemistry and physics, and a hydration bug found while checking them (2026-08-31)
 
 Matthew asked to expand the existing subjects by roughly a hundred words per

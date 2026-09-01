@@ -100,6 +100,28 @@ export async function recordFlashcardReview(input: {
   }
 }
 
+// Cleared alongside the activity log when someone deletes their history —
+// these rows are a record of what they judged themselves on, so leaving them
+// behind would mean cards still turning up in /review scheduled by judgements
+// that supposedly no longer exist.
+export async function deleteAllFlashcardReviews(userId: string): Promise<boolean> {
+  if (!FLASHCARD_REVIEW_ENABLED) return true;
+
+  const res = await supabase(
+    `flashcard_reviews?user_id=eq.${encodeURIComponent(userId)}`,
+    { method: "DELETE", headers: { Prefer: "return=minimal" } },
+  );
+
+  if (!res.ok) {
+    console.error(
+      `[flashcard-review] could not delete reviews: HTTP ${res.status}`,
+      (await res.text()).slice(0, 200),
+    );
+    return false;
+  }
+  return true;
+}
+
 // ─── Reading ────────────────────────────────────────────────────────────────
 
 const MAX_EVENTS_READ = 5000; // same cap and reasoning as progress.ts

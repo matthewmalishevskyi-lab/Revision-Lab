@@ -111,6 +111,39 @@ export async function recordActivity(input: {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// DELETING EVERYTHING THIS PERSON HAS DONE.
+//
+// One statement, because of how this table was designed: `activity` is an
+// EVENT LOG, not a pile of pre-computed totals. Every figure on the progress
+// page — topics covered, accuracy, study time, XP, level, badges, the streak —
+// is worked out from these rows each time the page loads. So there is no
+// second copy of any of it to hunt down and clear separately; remove the rows
+// and every derived number goes back to zero on its own.
+//
+// Returns whether it actually succeeded, unlike recordActivity above, which
+// logs and shrugs. The difference is what the caller needs to say afterwards:
+// a lost statistic can fail quietly, but telling someone their history is gone
+// when it is still sitting there would be a lie.
+// ─────────────────────────────────────────────────────────────────────────────
+export async function deleteAllProgress(userId: string): Promise<boolean> {
+  if (!PROGRESS_ENABLED) return true;
+
+  const res = await supabase(
+    `activity?user_id=eq.${encodeURIComponent(userId)}`,
+    { method: "DELETE", headers: { Prefer: "return=minimal" } },
+  );
+
+  if (!res.ok) {
+    console.error(
+      `[progress] could not delete progress: HTTP ${res.status}`,
+      (await res.text()).slice(0, 200),
+    );
+    return false;
+  }
+  return true;
+}
+
 // ─── Reading ────────────────────────────────────────────────────────────────
 
 async function readActivity(userId: string): Promise<ActivityRow[]> {

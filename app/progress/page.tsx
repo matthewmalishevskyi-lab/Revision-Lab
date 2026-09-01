@@ -5,6 +5,7 @@ import { MascotDisplay } from "../components/MascotDisplay";
 import { PixelCompanion } from "../components/PixelCompanion";
 import { ProgressRing } from "../components/ProgressRing";
 import { SiteHeader } from "../components/SiteHeader";
+import { DeleteProgressForm } from "./DeleteProgressForm";
 import { WeeklyChart } from "../components/WeeklyChart";
 import { getViewer } from "../lib/viewer";
 import { formatDuration, getProgress, PROGRESS_ENABLED } from "../lib/progress";
@@ -373,7 +374,8 @@ export default async function ProgressPage() {
             you&apos;ve practised at least once. The count only ever goes up.
             The percentage beneath it can move down when new topics are added
             to a subject, because it is measured against a bigger total. That
-            isn&apos;t lost progress: nothing you have done is ever removed.
+            isn&apos;t lost progress: a subject growing never removes anything
+            you have done.
           </li>
           <li>
             <strong>Accuracy</strong> counts every answer you check, right or
@@ -392,6 +394,25 @@ export default async function ProgressPage() {
           </li>
         </ul>
       </section>
+
+      {/* Last thing on the page, deliberately. Someone here to see how they're
+          doing scrolls past everything they came for first; someone who came
+          to wipe it will keep scrolling. Same reasoning as putting the content
+          disclaimer at the foot of a topic rather than the top. Only shown
+          when there is a backend to delete from — with PROGRESS_ENABLED off
+          nothing is being recorded, so a delete button would promise to
+          remove something that was never there. */}
+      {PROGRESS_ENABLED && (
+        <section className="mt-14 border-t border-black/5 pt-8 dark:border-white/10">
+          <h2 className="text-lg font-semibold">Delete your progress history</h2>
+          <p className="mt-2 max-w-2xl text-sm opacity-60">
+            Starting again from scratch, or clearing this device before handing
+            it on. This removes what you&apos;ve done — it does not delete your
+            account.
+          </p>
+          <DeleteProgressForm />
+        </section>
+      )}
     </main>
   );
 }
