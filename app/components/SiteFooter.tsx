@@ -17,9 +17,17 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-black/5 px-6 py-8 text-sm print:hidden dark:border-white/10">
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 opacity-60">
-        <p>
-          Revision Lab — a student project. Free, and always will be.
-        </p>
+        {/* This said "a student project. Free, and always will be." Matthew
+            removed it himself, for the right reason: there are plans to charge
+            for something eventually, so "always will be" was a promise the
+            site could not keep. A broken promise about money is the kind users
+            remember, and it would have sat on every page.
+
+            "A student project" stays because it is true, and because it is
+            genuinely disarming — it sets the right expectation for content
+            that has not been through a textbook's review process. What is gone
+            is only the part that made a commitment about the future. */}
+        <p>Revision Lab — a student project.</p>
         <nav className="flex flex-wrap items-center gap-5">
           <Link href="/privacy" className="hover:underline underline-offset-2">
             Privacy

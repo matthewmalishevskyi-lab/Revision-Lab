@@ -120,10 +120,19 @@ export default async function AccountPage() {
       {/* ── Plans ──────────────────────────────────────────────────────── */}
       <section className="mt-8">
         <h2 className="text-xl font-semibold">Go further</h2>
+        {/* Also reworded, and this one mattered more than the footer: the old
+            text promised "stays free, always" while sitting directly above two
+            Upgrade buttons. Making an unbreakable pledge in the same breath as
+            asking for money is the worst possible place for a claim you might
+            have to walk back.
+
+            Present tense is the honest form. Everything IS free today, and
+            that is worth saying plainly — it just does not commit the site to
+            a pricing decision nobody has made yet. */}
         <p className="mt-1 opacity-70">
-          Every subject, topic and practice question stays free, always.
-          Plus and Pro are extra convenience on top of that, never a
-          replacement for it.
+          Every subject, topic and practice question is free to use right now.
+          Plus and Pro are extra convenience on top of that, not a replacement
+          for it.
         </p>
         <div className="mt-5">
           <UpgradeButtons />

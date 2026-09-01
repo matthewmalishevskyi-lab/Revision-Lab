@@ -16,12 +16,25 @@
 // account lockout is a way to attack a user rather than protect them.
 
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdtempSync, rmSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
+
+// Every file under a directory, recursively. Used by the checks that have to
+// look at the whole UI rather than a named list of files — a rule that only
+// inspects files someone remembered to list is a rule with holes in it.
+function listFiles(dir) {
+  const out = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...listFiles(path));
+    else out.push(path);
+  }
+  return out;
+}
 
 // Run the TypeScript compiler through Node directly, rather than through npx.
 //
@@ -598,6 +611,33 @@ try {
     /whitespace-nowrap[^"]*text-2xl|text-2xl[^"]*whitespace-nowrap/.test(headerSrc),
     "the Revision Lab wordmark cannot wrap onto two lines",
   );
+
+  // ── 10e. No promises about the future of pricing ─────────────────────────
+  //
+  // The footer used to say "Free, and always will be", and the account page —
+  // directly above two Upgrade buttons — said "stays free, always". There are
+  // plans to charge for something eventually, which made both of them
+  // commitments the site could not keep.
+  //
+  // Saying the site IS free is fine, and true. Saying it always WILL be is a
+  // promise about a decision nobody has made. This check only objects to the
+  // second kind. Comments are stripped first, so the explanations of why this
+  // exists do not trip the rule that they explain.
+  {
+    const uiFiles = listFiles("app").filter((f) => f.endsWith(".tsx"));
+    const promise =
+      /\balways\s+(?:will\s+be\s+)?free\b|\bfree\s*,?\s*(?:and\s+)?always\b|\bfree\s+forever\b|\bforever\s+free\b|\balways\s+will\s+be\b/i;
+    for (const file of uiFiles) {
+      const visible = readFileSync(file, "utf8")
+        .replace(/\/\*[\s\S]*?\*\//g, " ")
+        .replace(/^\s*\/\/.*$/gm, " ");
+      const hit = visible.match(promise);
+      expect(
+        hit === null,
+        `${file} promises "${hit?.[0]}" — the site may be free today, but it cannot promise to stay free when there are plans to charge`,
+      );
+    }
+  }
 
   // ── 11. Articles are chosen, not typed ───────────────────────────────────
   //
