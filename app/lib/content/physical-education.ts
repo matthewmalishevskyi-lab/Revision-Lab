@@ -1675,6 +1675,31 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "'Identify' wants a short named principle, while 'explain' wants a reason or consequence attached, such as why applying overload too quickly increases injury risk.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "A 15-year-old wants to train in the aerobic zone, which is 60 to 80 percent of maximum heart rate. Calculate the range they should work in, to the nearest whole number.",
+        steps: [
+          "Find maximum heart rate first: 220 - age = 220 - 15 = 205 bpm.",
+          "Lower limit: 60 percent of 205 = 0.60 x 205 = 123 bpm.",
+          "Upper limit: 80 percent of 205 = 0.80 x 205 = 164 bpm.",
+          "So the aerobic zone is 123 to 164 bpm. Remember 220 minus age is only an ESTIMATE - a real individual's maximum can be higher or lower.",
+        ],
+        answer: "123 to 164 bpm",
+      },
+      {
+        question:
+          "Apply the FITT principle to design one week of training for a beginner wanting to improve cardiovascular endurance.",
+        steps: [
+          "FREQUENCY - how often. A beginner starts at about three sessions a week, leaving rest days for the body to adapt.",
+          "INTENSITY - how hard. Work in the aerobic zone, 60 to 80 percent of maximum heart rate, since that is the zone that develops endurance.",
+          "TIME - how long. Around 20 to 30 minutes per session to begin with, building up gradually.",
+          "TYPE - what kind. Continuous training such as jogging, swimming or cycling, because it matches the aerobic demand of the goal - the principle of specificity.",
+          "Then apply progressive overload: increase ONE of these gradually over the weeks, not all at once, or injury risk rises sharply.",
+        ],
+        answer: "3 sessions a week, 60-80 percent of max HR, 20-30 minutes, continuous aerobic work - then overload one variable at a time",
+      },
+    ],
     practice: [
       {
         question:
@@ -2574,6 +2599,19 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "An 'explain' question about data wants you to say why something matters, for example why standardised conditions improve reliability, not just what the term means.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "A class records resting heart rates of 62, 58, 71, 65 and 74 bpm. Calculate the mean, the range, and state one thing the range tells you that the mean does not.",
+        steps: [
+          "Mean = add the values, then divide by how many there are.",
+          "62 + 58 + 71 + 65 + 74 = 330. Divide by 5: mean = 66 bpm.",
+          "Range = highest minus lowest = 74 - 58 = 16 bpm.",
+          "The mean tells you the typical value; the RANGE tells you how spread out the group is. Two classes could share a mean of 66 while one is tightly clustered and the other has very fit and very unfit students at the extremes.",
+        ],
+        answer: "Mean 66 bpm, range 16 bpm - the range shows the spread, which the mean hides",
+      },
+    ],
     practice: [
       {
         question:
@@ -3167,6 +3205,19 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         tip: "Use the word viscosity correctly.",
         detail:
           "Viscosity refers to the thickness of the blood, which increases with dehydration, so use this key term when explaining why the heart has to work harder.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A performer eats 2,500 kcal in a day. Using the balanced diet proportions, calculate how many kilocalories should come from carbohydrate if carbohydrate makes up 55 percent of intake.",
+        steps: [
+          "Turn the percentage into a decimal: 55 percent = 0.55.",
+          "Multiply by the total intake: 0.55 x 2,500.",
+          "= 1,375 kcal from carbohydrate.",
+          "Sense-check it against the whole diet: at 25 percent fat that is 625 kcal, and at 20 percent protein that is 500 kcal. 1,375 + 625 + 500 = 2,500, so the proportions account for the full intake.",
+        ],
+        answer: "1,375 kcal from carbohydrate",
       },
     ],
     practice: [
@@ -7600,6 +7651,19 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Gymnastics happens in all three. Ask what direction the body is travelling: forwards and back is sagittal, sideways is frontal, turning is transverse.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "During a bicep curl the effort arm is 4 cm and the resistance arm is 32 cm. Calculate the mechanical advantage and state what it tells you about the lever.",
+        steps: [
+          "Mechanical advantage = effort arm divided by resistance arm.",
+          "Substitute: 4 divided by 32.",
+          "= 0.125, which is well below 1.",
+          "A value below 1 means a large muscular effort is needed to move a comparatively small load - the signature of a third class lever. In exchange the hand travels a long way, quickly, which is what the body wants for throwing and lifting movements.",
+        ],
+        answer: "0.125 - a mechanical advantage below 1, typical of a third class lever",
+      },
+    ],
     practice: [
       {
         question:
@@ -7887,6 +7951,30 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         tip: "Link bradycardia back to stroke volume",
         detail:
           "A lower resting heart rate is not simply a sign of fitness — it happens because a stronger heart ejects more blood per beat, so fewer beats deliver the same cardiac output.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A performer has a resting stroke volume of 75 ml and a resting heart rate of 68 bpm. Calculate their cardiac output in litres per minute.",
+        steps: [
+          "Write the equation: cardiac output (Q) = stroke volume x heart rate.",
+          "Substitute: Q = 75 x 68.",
+          "75 x 68 = 5,100 ml per minute.",
+          "The question asks for litres, so divide by 1,000: 5.1 litres per minute. Always check which unit is being asked for - the marks go for the unit as well as the number.",
+        ],
+        answer: "5.1 litres per minute",
+      },
+      {
+        question:
+          "During exercise the same performer's stroke volume rises to 110 ml and their heart rate to 160 bpm. Calculate the increase in cardiac output compared with rest (5,100 ml/min).",
+        steps: [
+          "Find the new cardiac output first: Q = 110 x 160 = 17,600 ml per minute.",
+          "Now subtract the resting value: 17,600 - 5,100.",
+          "= 12,500 ml per minute, or 12.5 litres per minute more than at rest.",
+          "Note WHY it rose so much: both numbers in the equation increased, so the effect multiplies rather than adds.",
+        ],
+        answer: "An increase of 12,500 ml/min (12.5 litres per minute)",
       },
     ],
     practice: [

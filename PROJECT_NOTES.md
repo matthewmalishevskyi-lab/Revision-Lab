@@ -57,6 +57,21 @@ known-topics.ts. Those rules were then baked into the generator, so later
 batches could not break them. It also caught a real defect the agents
 produced: a two-part question whose accept list held two different numbers.
 
+**Checked afterwards that the rest of the site picked PE up on its own**, since
+a new subject is only useful if everything else knows about it. The live quiz
+builds valid question sets from PE topics (every one of the 27 has enough
+multiple-choice questions — none fall below four usable ones), and progress
+tracking accepts PE topics as real, so practice answers, flashcards, study
+time, XP and badges all record against PE with no extra wiring. Both were
+tested rather than assumed.
+
+**That check also found a genuine gap: all 27 topics had NO worked examples**,
+because the brief given to the agents never asked for any. Added to the five
+topics where a worked example actually teaches something — cardiac output,
+training zones and FITT, mechanical advantage, the balanced-diet percentages,
+and mean/range in the data topic. The remaining 22 are discussion topics where
+a worked calculation would be invented rather than useful.
+
 **Still to do, and Matthew should decide:** the mascot is borrowed from the
 sciences as a placeholder until his own character exists; there is no topic on
 the practical assessment (40% of the grade) because he never picked one way or
