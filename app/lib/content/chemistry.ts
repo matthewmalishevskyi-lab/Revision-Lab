@@ -441,6 +441,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Chlorine displaces bromine from potassium bromide. One worked example you can write out beats a vague sense of the rule.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "An element has the electronic structure 2,8,7. Give its group and period, and predict what happens when it reacts with sodium.",
+        steps: [
+          "Count the OUTER shell electrons: 7. The number of outer electrons gives the group, so this is group 7.",
+          "Count how many shells are occupied: 2, 8 and 7 means three shells, so it is in period 3.",
+          "2 + 8 + 7 = 17 electrons, so 17 protons — this is chlorine.",
+          "Sodium is in group 1. A group 1 metal and a group 7 non-metal transfer one electron and form an ionic compound: sodium chloride, NaCl.",
+        ],
+        answer: "Group 7, period 3 (chlorine); it forms sodium chloride, NaCl",
+      },
+    ],
     practice: [
       {
         question: "The periodic table is arranged in order of increasing what?",
@@ -728,6 +741,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "And use different symbols for each atom's electrons so it is clear where they came from. Charges must be shown on ions, in square brackets.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "Magnesium (group 2) reacts with chlorine (group 7). Work out the formula of the compound formed and name the type of bonding.",
+        steps: [
+          "Magnesium is in group 2, so it loses 2 electrons to form Mg²⁺.",
+          "Chlorine is in group 7, so each atom gains 1 electron to form Cl⁻.",
+          "The compound must have no overall charge, so one 2+ ion needs TWO 1− ions to balance it.",
+          "That gives MgCl₂. A metal with a non-metal, held together by the attraction between oppositely charged ions, is ionic bonding.",
+        ],
+        answer: "MgCl₂, held together by ionic bonding",
+      },
+    ],
     practice: [
       {
         question: "What type of bonding occurs between a metal and a non-metal?",
@@ -1011,6 +1037,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         tip: "Know what the simple particle model leaves out",
         detail:
           "Particles are not solid spheres, are not all the same size, and the forces between them are not shown. Criticising a model is a standard question.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Substance X melts at 801 °C, does not conduct electricity as a solid, but does conduct when molten. Substance Y melts at −7 °C and never conducts. Identify the structure of each.",
+        steps: [
+          "Take the melting points first. A very high melting point means strong forces throughout the whole structure; a melting point below room temperature means weak forces.",
+          "X conducts only when molten. Its charged particles are locked in place as a solid but free to move once melted — that is the behaviour of ions.",
+          "So X is a giant ionic lattice, such as sodium chloride.",
+          "Y never conducts, so it has no free charged particles at all, and its very low melting point means only weak intermolecular forces to overcome. Y is simple molecular, such as bromine.",
+        ],
+        answer: "X is giant ionic; Y is simple molecular",
       },
     ],
     practice: [
@@ -2350,6 +2389,20 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "That ionic equation is worth memorising — it is the same for every acid and alkali, and it is frequently asked for directly.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "Write the balanced equation for the reaction between sulfuric acid and sodium hydroxide solution, and name the salt produced.",
+        steps: [
+          "Acid + alkali → salt + water. That is the pattern every neutralisation follows.",
+          "Sulfuric acid (H₂SO₄) always gives a sulfate, and the metal comes from the alkali — so the salt is sodium sulfate, Na₂SO₄.",
+          "Unbalanced: H₂SO₄ + NaOH → Na₂SO₄ + H₂O.",
+          "Na₂SO₄ needs two sodiums, so put 2 in front of NaOH. That gives 2 hydrogens from the alkali plus 2 from the acid = 4 H, so 2 H₂O on the right.",
+          "Balanced: H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O.",
+        ],
+        answer: "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O; the salt is sodium sulfate",
+      },
+    ],
     practice: [
       {
         question: "What ion do all acids produce in aqueous solution?",
@@ -2671,6 +2724,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "It requires enormous amounts of electrical energy, so it is expensive. Cost is the reason carbon reduction is preferred wherever it works.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "A piece of zinc is placed in blue copper sulfate solution. Predict what you would see and write the balanced equation.",
+        steps: [
+          "Check the reactivity series: zinc is ABOVE copper, so zinc is more reactive and will displace it.",
+          "The more reactive metal takes the place of the less reactive one in the compound.",
+          "Observations: the blue colour of the solution fades, and a red-brown coating of copper forms on the zinc.",
+          "Equation: Zn + CuSO₄ → ZnSO₄ + Cu. The sulfate is a spectator — it simply swaps partners.",
+        ],
+        answer: "Blue fades and copper is deposited; Zn + CuSO₄ → ZnSO₄ + Cu",
+      },
+    ],
     practice: [
       {
         question: "Which non-metal is included in the reactivity series as the dividing line for extraction?",
@@ -2957,6 +3023,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         tip: "Remember a solid cannot be electrolysed",
         detail:
           "The ions are fixed in the lattice and cannot move. Melting or dissolving is what frees them to carry charge.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Molten lead bromide is electrolysed. Name the product at each electrode and write the half equation for each.",
+        steps: [
+          "Molten (not dissolved) means the only ions present are Pb²⁺ and Br⁻ from the compound itself — no water to complicate it.",
+          "Positive ions move to the negative electrode (cathode). Pb²⁺ arrives and GAINS electrons: Pb²⁺ + 2e⁻ → Pb.",
+          "Negative ions move to the positive electrode (anode). Br⁻ arrives and LOSES electrons: 2Br⁻ → Br₂ + 2e⁻.",
+          "Two bromide ions are needed because bromine is diatomic. Remember the pattern: reduction at the cathode, oxidation at the anode.",
+        ],
+        answer: "Lead at the cathode (Pb²⁺ + 2e⁻ → Pb); bromine at the anode (2Br⁻ → Br₂ + 2e⁻)",
       },
     ],
     practice: [
@@ -3965,6 +4044,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "It reaches the same equilibrium faster. If a question asks why iron is used in the Haber process, that is the answer.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "In the Haber process, N₂ + 3H₂ ⇌ 2NH₃, and the forward reaction is exothermic. Predict the effect on the yield of ammonia of (a) increasing the pressure and (b) increasing the temperature.",
+        steps: [
+          "Count the gas molecules on each side: 4 on the left (1 + 3) and 2 on the right.",
+          "(a) Raising the pressure shifts the equilibrium towards the side with FEWER gas molecules — the right. So the yield of ammonia increases.",
+          "(b) The forward reaction is exothermic, so raising the temperature shifts the equilibrium in the ENDOTHERMIC direction to oppose the change — backwards. So the yield of ammonia decreases.",
+          "That is why the real process uses a compromise temperature: a lower yield, but reached fast enough to be worth it.",
+        ],
+        answer: "(a) more ammonia; (b) less ammonia",
+      },
+    ],
     practice: [
       {
         question: "What symbol shows that a reaction is reversible?",
@@ -4256,6 +4348,20 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "It is toxic AND colourless and odourless, so it cannot be detected without an alarm. It binds to haemoglobin, reducing oxygen transport.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "Write the balanced equation for the complete combustion of propane, C₃H₈.",
+        steps: [
+          "Complete combustion means plenty of oxygen, so the only products are carbon dioxide and water.",
+          "Balance carbon first: 3 carbons in propane, so 3CO₂.",
+          "Then hydrogen: 8 hydrogens, and each water holds 2, so 4H₂O.",
+          "Now count the oxygens on the right: (3 × 2) + (4 × 1) = 10. Oxygen is diatomic, so that needs 5O₂.",
+          "Balanced: C₃H₈ + 5O₂ → 3CO₂ + 4H₂O.",
+        ],
+        answer: "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O",
+      },
+    ],
     practice: [
       {
         question: "What is a compound containing only hydrogen and carbon called?",
@@ -4539,6 +4645,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         tip: "Non-biodegradable is a property, not just a problem",
         detail:
           "It is exactly why plastics are so useful — they do not rot. The problem is what happens when we no longer want them.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Ethene, C₂H₄, polymerises to form poly(ethene). Describe the repeat unit and explain what happens to the double bond.",
+        steps: [
+          "Ethene is an alkene, so it contains a C=C double bond.",
+          "In addition polymerisation that double bond OPENS. One of the two bonds breaks, leaving each carbon with a spare bond.",
+          "Those spare bonds join to the neighbouring monomers, so molecules link end to end into one long chain.",
+          "The repeat unit is −[CH₂−CH₂]−, written with an n outside the bracket to show it repeats many times. Note the atoms are unchanged: only the bonding differs, which is why nothing else is produced.",
+        ],
+        answer: "Repeat unit −[CH₂−CH₂]−n; the C=C double bond opens to single bonds joining the chain",
       },
     ],
     practice: [
@@ -4825,6 +4944,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "In a mixture, one strong colour can mask another. That is a standard reason for preferring an instrumental method.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "A white solid dissolves in water. A flame test gives a lilac flame. Adding dilute nitric acid followed by silver nitrate solution gives a cream precipitate. Identify the compound.",
+        steps: [
+          "Take the flame test first: lilac means potassium. (Yellow is sodium, orange-red is calcium, green is copper.)",
+          "The silver nitrate test identifies halides by the colour of the precipitate: white is chloride, cream is bromide, yellow is iodide.",
+          "Cream, so the negative ion is bromide, Br⁻.",
+          "Putting the two halves together: potassium bromide, KBr. The nitric acid is added first to remove carbonate ions, which would otherwise also give a precipitate and a false result.",
+        ],
+        answer: "Potassium bromide, KBr",
+      },
+    ],
     practice: [
       {
         question: "What is the test for hydrogen gas?",
@@ -5108,6 +5240,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         tip: "Be measured about climate evidence",
         detail:
           "The basic science is very strongly supported; some detailed predictions are genuinely uncertain. Precision on that reads as more scientific than certainty either way.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Dry air is about 78% nitrogen and 21% oxygen. Calculate the volume of oxygen in a 500 cm³ sample of dry air, and name the gas that makes up most of the remaining 1%.",
+        steps: [
+          "Percentage means 'per hundred', so 21% is 21 ÷ 100 = 0.21.",
+          "Volume of oxygen = 0.21 × 500 cm³.",
+          "= 105 cm³.",
+          "78 + 21 = 99, so about 1% is left. Most of that is argon, a noble gas, with carbon dioxide only about 0.04% — small, but the part that matters for the greenhouse effect.",
+        ],
+        answer: "105 cm³ of oxygen; the remainder is mostly argon",
       },
     ],
     practice: [
@@ -5396,6 +5541,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Using less is always better than reusing, which is better than recycling. Questions sometimes ask which is preferable and why.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "A reaction has a theoretical yield of 8.0 g of copper oxide. A student carries it out and obtains 6.4 g. Calculate the percentage yield.",
+        steps: [
+          "Percentage yield = (actual yield ÷ theoretical yield) × 100.",
+          "Substitute: (6.4 ÷ 8.0) × 100.",
+          "6.4 ÷ 8.0 = 0.8.",
+          "0.8 × 100 = 80%. Yields are below 100% for real reasons worth naming in an exam: product lost when transferring between containers, reactions that do not go to completion, and side reactions producing something else.",
+        ],
+        answer: "80%",
+      },
+    ],
     practice: [
       {
         question: "What word describes water that is safe to drink?",
@@ -5678,6 +5836,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         tip: "Never leave a calculation blank",
         detail:
           "Write the formula and substitute what you can. A blank scores zero; a partial attempt frequently scores most of the marks.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Plan an answer to: 'Explain why sodium chloride has a high melting point, but poly(ethene) melts easily.' (4 marks)",
+        steps: [
+          "Spot that it is a COMPARE question worth 4 marks — that usually means two points about each substance, not four about one.",
+          "Sodium chloride: giant ionic lattice, with strong electrostatic forces of attraction between oppositely charged ions acting throughout the whole structure. A lot of energy is needed to overcome them.",
+          "Poly(ethene): long molecules with only weak intermolecular forces BETWEEN the chains. Only those weak forces are overcome on melting.",
+          "Say explicitly which forces are broken in each case. The commonest way to lose marks here is writing 'the bonds break' without saying which — examiners will not assume you mean the intermolecular ones.",
+        ],
+        answer: "Name the structure and the force for each, and state which force is overcome on melting",
       },
     ],
     practice: [

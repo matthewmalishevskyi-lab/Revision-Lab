@@ -466,6 +466,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Geothermal suits Iceland, tidal suits a large estuary, solar suits a sunny climate. Applying the resource to the place is what earns application marks.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "A wind turbine usefully transfers 1,200 J of energy from every 4,000 J carried by the wind. Calculate its efficiency.",
+        steps: [
+          "Efficiency = useful energy transferred ÷ total energy supplied.",
+          "Substitute: 1,200 ÷ 4,000.",
+          "= 0.3.",
+          "As a percentage, × 100 = 30%. Efficiency has no units — it is one energy divided by another, so the units cancel. The missing 70% is not destroyed: it is mostly transferred to the surroundings by heating and sound.",
+        ],
+        answer: "0.3, or 30%",
+      },
+    ],
     practice: [
       {
         question: "Is nuclear fuel renewable or non-renewable?",
@@ -5096,6 +5109,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "It is inferred from observations and not understood. Saying so is more scientific than pretending certainty, and it scores.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "Light from a distant galaxy has its spectral lines shifted towards the red end of the spectrum. Explain what this shows, and how it supports the Big Bang theory.",
+        steps: [
+          "A shift towards red means the observed wavelength is LONGER than it should be.",
+          "Longer wavelength means the source is moving away from us — this is red-shift.",
+          "The more distant a galaxy is, the greater its red-shift, so the more distant galaxies are moving away faster.",
+          "If everything is moving apart, and faster the further away it is, then running that backwards puts everything together at one point in the past — which is what the Big Bang theory describes.",
+        ],
+        answer: "The galaxy is moving away; more distant galaxies recede faster, so the universe is expanding",
+      },
+    ],
     practice: [
       {
         question: "What is the cloud of dust and gas that stars form from called?",
@@ -5407,6 +5433,20 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Heat lost to surroundings in specific heat capacity; the component heating up in resistance; reaction time in manual timing.",
       },
     ],
+    workedExamples: [
+      {
+        question:
+          "In the specific heat capacity practical, 4,500 J of energy raises the temperature of a 0.50 kg block by 10 °C. Calculate the specific heat capacity of the material.",
+        steps: [
+          "The equation is E = m × c × Δθ, where Δθ is the temperature CHANGE.",
+          "Rearrange for c: c = E ÷ (m × Δθ).",
+          "Substitute: c = 4,500 ÷ (0.50 × 10) = 4,500 ÷ 5.",
+          "= 900 J/kg°C, which matches aluminium.",
+          "In the real practical the measured value comes out higher than the true one, because some energy is transferred to the surroundings rather than into the block — insulating it is what reduces that error.",
+        ],
+        answer: "900 J/kg°C",
+      },
+    ],
     practice: [
       {
         question: "What is the variable you deliberately change called?",
@@ -5684,6 +5724,20 @@ export const PHYSICS: Record<string, TopicContent> = {
         tip: "Check the size of your answer",
         detail:
           "A car of mass 1,500 kg does not have a weight of 15 N. An implausible number usually means a unit conversion went wrong.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "A car of mass 1,500 kg accelerates from rest to 20 m/s in 8 s. Calculate the resultant force acting on it.",
+        steps: [
+          "You are not given the acceleration, so work it out first: a = (v − u) ÷ t.",
+          "a = (20 − 0) ÷ 8 = 2.5 m/s².",
+          "Now use F = m × a.",
+          "F = 1,500 × 2.5 = 3,750 N.",
+          "Two marks are routinely dropped here: forgetting that 'from rest' means u = 0, and leaving the unit off. Newtons, every time, for a force.",
+        ],
+        answer: "3,750 N",
       },
     ],
     practice: [
