@@ -24,10 +24,10 @@ export default function ForgotPasswordPage() {
 
   return (
     <AuthShell
-      heading="Not built yet."
+      heading="Locked out?"
       subheading="This one needs an email service behind it."
     >
-      <h2 className="text-3xl font-bold tracking-tight">Forgot password</h2>
+      <h2 className="text-3xl font-bold tracking-tight">Can&apos;t log in?</h2>
       <p className="mt-4 opacity-70">
         Password resets aren&apos;t working yet. Sending a secure reset link
         needs an email service wired up first, so it&apos;s on the list rather

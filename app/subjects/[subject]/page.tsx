@@ -8,6 +8,7 @@ import { SiteHeader } from "../../components/SiteHeader";
 import { BookArt, ExamArt } from "../../components/YearArt";
 import { ACCOUNTS_ENABLED, SITE_NAME } from "../../lib/site";
 import { getSubject, SUBJECTS, yearStyle } from "../../lib/subjects";
+import { indefiniteArticle } from "../../lib/text";
 import { getViewer } from "../../lib/viewer";
 
 // The folder is called [subject] — square brackets mean "this bit of the URL is
@@ -98,7 +99,7 @@ export default async function SubjectPage({ params }: Props) {
             className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
             style={{ backgroundColor: subject.accent }}
           >
-            Try a {subject.name} test
+            Try {indefiniteArticle(subject.name)} {subject.name} test
             <span aria-hidden="true">→</span>
           </Link>
 

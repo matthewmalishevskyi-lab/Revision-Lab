@@ -486,6 +486,50 @@ try {
     "SITE_DESCRIPTION is not a hard-coded string",
   );
 
+  // ── 10. Claims on the homepage stay true ─────────────────────────────────
+  //
+  // The homepage now makes a SPECIFIC claim — a count of topics, mistakes and
+  // questions. Specific claims are the only kind worth making, and the only
+  // kind that can go wrong. These two checks keep the numbers honest.
+  const homeSrc = readFileSync("app/page.tsx", "utf8");
+  expect(
+    homeSrc.includes("siteStats()"),
+    "homepage counts its figures from the content rather than hard-coding them",
+  );
+  expect(
+    !/\b\d{3,}\+?\s*(GCSE topics|common mistakes|flashcards)/.test(homeSrc),
+    "homepage has no hard-coded content totals — a typed number is true the day it is typed and a lie afterwards",
+  );
+  // Rounding must be DOWN. Rounding up is the natural marketing instinct and
+  // makes every figure a small false claim.
+  const statsSrc = readFileSync("app/lib/site-stats.ts", "utf8");
+  expect(
+    statsSrc.includes("Math.floor("),
+    "site stats round down, never up",
+  );
+  expect(
+    !statsSrc.includes("Math.ceil(") && !statsSrc.includes("Math.round("),
+    "site stats never round up or to nearest",
+  );
+
+  // ── 11. Articles are chosen, not typed ───────────────────────────────────
+  //
+  // "Try a English test" shipped and was found by an outside reviewer rather
+  // than by us. It is one character, in the exact place a new visitor decides
+  // whether this site is serious.
+  const textSrc = readFileSync("app/lib/text.ts", "utf8");
+  expect(
+    /return \/\^\[aeiou\]\/\.test\(first\) \? "an" : "a";/.test(textSrc),
+    "indefiniteArticle picks the article from the word",
+  );
+  for (const file of ["app/subjects/[subject]/page.tsx"]) {
+    const text = readFileSync(file, "utf8");
+    expect(
+      !/\b(a|A)\s+\{(subject|topic)\./.test(text),
+      `${file} does not hard-code "a" before an interpolated name — use indefiniteArticle()`,
+    );
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

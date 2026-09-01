@@ -10,6 +10,7 @@ import { getViewer } from "./lib/viewer";
 import { getProgress } from "./lib/progress";
 import { getRevisionQueue } from "./lib/revision-queue";
 import { SITE_NAME, SITE_URL } from "./lib/site";
+import { roundedDown, siteStats } from "./lib/site-stats";
 import { homepageCards, isGroup, subjectsInGroup } from "./lib/subjects";
 
 // Different walking speeds so the three characters never march in step — three
@@ -21,6 +22,9 @@ const WALK_DURATIONS = ["13s", "17s", "10s"];
 // the browser. The page arrives already knowing who you are.
 export default async function Home(props: PageProps<"/">) {
   const user = await getViewer();
+
+  // Counted from the content at build time, not typed in — see lib/site-stats.ts.
+  const stats = siteStats();
 
   // Only fetched when someone is actually logged in — a logged-out visitor
   // has no streak to show, and getProgress needs a real user id. Safe to
@@ -88,13 +92,101 @@ export default async function Home(props: PageProps<"/">) {
           queueCount={queueCount}
         />
       ) : (
+        // ---------- Signed-out hero ----------
+        //
+        // WHAT CHANGED AND WHY. This used to say "Welcome to Revision Lab" over
+        // "Everything you would need for GCSE revision". A review pointed out
+        // the obvious once it was said: that promise is broad, impossible to
+        // prove, and word-for-word what Seneca, Cognito, BBC Bitesize and Save
+        // My Exams all promise too. It gave a first-time visitor no reason to
+        // stay, and it hid the things that are actually unusual here.
+        //
+        // So the claim is now specific and checkable, and the numbers are
+        // COUNTED from the content rather than typed in (see lib/site-stats.ts)
+        // — a claim that can drift from the truth is worse than no claim.
+        //
+        // The lead is "common mistakes" because that is the genuinely different
+        // thing. Every revision site has notes and questions; very few tell you
+        // which specific error loses the mark.
         <section className="mx-auto mt-8 max-w-3xl rounded-3xl border border-white/60 bg-white/55 px-8 py-10 text-center shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
-            Welcome to Revision Lab
+            Find the marks you&apos;re losing
           </h1>
-          <p className="mt-5 text-lg opacity-70 sm:text-2xl">
-            Everything you would need for GCSE revision
+          <p className="mt-5 text-lg opacity-75 sm:text-xl">
+            {SITE_NAME} lists the mistakes examiners actually see — topic by
+            topic — then tests you on them until they stop costing you marks.
           </p>
+
+          {/* Real figures, rounded DOWN. See roundedDown() for why up would be
+              the wrong instinct. */}
+          <p className="mt-6 text-sm font-medium opacity-60">
+            {stats.topics} GCSE topics · {roundedDown(stats.mistakes)} common
+            mistakes · {roundedDown(stats.questions)} self-marking questions ·{" "}
+            {roundedDown(stats.flashcards)} flashcards
+          </p>
+        </section>
+      )}
+
+      {/* ---------- What's actually inside ----------
+           Only for signed-out visitors. Someone with a streak has already
+           found these; someone new had no way of knowing they existed,
+           because they all live one or two clicks deep inside a topic. Six
+           short lines is enough to say "there is more here than notes"
+           without turning the homepage into a sales page. Every item below is
+           a real, working feature — nothing aspirational. */}
+      {!user && (
+        <section className="mx-auto mt-10 max-w-5xl">
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                name: "Common mistakes",
+                text: "Every topic ends with the specific errors that lose marks, and what to write instead.",
+              },
+              {
+                name: "Exam technique",
+                text: "Command words, mark allocations and worked examples showing the method, not just the answer.",
+              },
+              {
+                name: "Questions that mark themselves",
+                text: "Type an answer and get told straight away — plus multiple choice built from real misconceptions.",
+              },
+              {
+                name: "Set your exam board",
+                text: "Tell us AQA, Edexcel, OCR or WJEC and we flag the topics where boards genuinely differ.",
+              },
+              {
+                name: "Printable revision sheets",
+                text: "Any topic as a clean printable page, for people who revise better on paper.",
+              },
+              {
+                name: "Live quizzes and progress",
+                text: "Head-to-head quizzes with friends, streaks, and a record of what you have actually revised.",
+              },
+            ].map((feature) => (
+              <li
+                key={feature.name}
+                className="rounded-2xl border border-white/60 bg-white/50 p-5 backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+              >
+                <h2 className="font-semibold">{feature.name}</h2>
+                <p className="mt-1.5 text-sm opacity-70">{feature.text}</p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/quiz"
+              className="rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+            >
+              Try a live quiz
+            </Link>
+            <Link
+              href="/exam-board"
+              className="rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+            >
+              Set your exam board
+            </Link>
+          </div>
         </section>
       )}
 

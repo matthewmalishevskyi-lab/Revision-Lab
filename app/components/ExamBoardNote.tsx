@@ -20,16 +20,16 @@ export function ExamBoardNote({ subjectSlug }: { subjectSlug: string }) {
 
   if (!board) {
     return (
-      <p className="mx-auto mt-10 max-w-3xl text-center text-sm opacity-50">
-        Topic lists vary between exam boards and schools — check these
-        against your own course and tell us what to change.{" "}
+      <p className="mx-auto mt-10 max-w-3xl text-center text-sm opacity-60">
         <Link
           href="/exam-board"
-          className="underline underline-offset-2 hover:opacity-80"
+          className="font-medium underline underline-offset-2 hover:opacity-80"
         >
           Set your exam board
         </Link>{" "}
-        and we&apos;ll flag it here when it matters.
+        and we&apos;ll point out where boards split this subject up
+        differently. Lists vary between schools too, so check against your own
+        course.
       </p>
     );
   }
@@ -37,16 +37,25 @@ export function ExamBoardNote({ subjectSlug }: { subjectSlug: string }) {
   const note = boardNoteFor(subjectSlug);
 
   return (
-    <p className="mx-auto mt-10 max-w-3xl text-center text-sm opacity-50">
+    <p className="mx-auto mt-10 max-w-3xl text-center text-sm opacity-60">
+      <strong className="font-medium">
+        You&apos;re set to {boardLabel(board)}.
+      </strong>{" "}
+      {/* Personalisation FIRST, caveat second. The old version led with the
+          warning and tacked the board on at the end, so a student who had
+          told us their board still got a page that read like a disclaimer —
+          exactly the thing that makes a feature feel unreliable. What is said
+          has not been softened; only the order has changed. Where there is
+          nothing specific to flag, we say so, because "we checked and there is
+          nothing" is information too, and it is what makes the feature feel
+          like it is working rather than absent. */}
       {note ??
-        "Topic lists vary between exam boards and schools — check these against your own course and tell us what to change."}{" "}
+        "Nothing specific to flag on this subject — still worth checking these topics against your school's own list."}{" "}
       <Link
         href="/exam-board"
         className="underline underline-offset-2 hover:opacity-80"
       >
-        {note
-          ? `You're set to ${boardLabel(board)} — change this`
-          : `You're on ${boardLabel(board)}`}
+        Change board
       </Link>
     </p>
   );
