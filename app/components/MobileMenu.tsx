@@ -14,7 +14,7 @@ import { iconChipClasses } from "./chipStyles";
 // Account, or even Log out.
 //
 // The fix keeps the wider-screen row exactly as it was (see the
-// `hidden sm:flex` wrapper in SiteHeader.tsx) and, only below that
+// `hidden @4xl:flex` wrapper in SiteHeader.tsx) and, only below that
 // breakpoint, renders the SAME Links and the same logout form a second time,
 // inside this dropdown instead. Nothing was removed from the site — it's
 // the same destinations, just reachable from a phone.
@@ -44,7 +44,7 @@ export function MobileMenu({ children }: { children: React.ReactNode }) {
     //
     // So the menu now exists at every width, and the settings-shaped links
     // (Dashboard, Account, Log out) live inside it permanently. The links that
-    // are ALSO in the visible row above `sm` carry `sm:hidden` individually,
+    // are ALSO in the visible row above `sm` carry `@4xl:hidden` individually,
     // so there is still exactly one reachable copy of each at any width.
     <div className="relative">
       {/* Icon-only, the same reasoning as Search and the theme toggle now

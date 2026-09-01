@@ -31,14 +31,40 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
   const firstName = user?.name.trim().split(/\s+/)[0];
 
   return (
-    <header className="flex items-center justify-between gap-4">
+    // ─────────────────────────────────────────────────────────────────────
+    // `@container`, and every breakpoint below is `@`-prefixed. This is the
+    // fix for a bug that kept coming back in different clothes.
+    //
+    // `sm:` and `lg:` ask how wide the WINDOW is. This header does not live in
+    // the window — it lives inside whatever column the page around it happens
+    // to have, and those range from max-w-md (448px) on the quiz join page to
+    // max-w-7xl (1280px). On a 1440px screen, `sm:` was true on every one of
+    // them, so the join page rendered the full wide header inside a 448px
+    // column and wrapped it into five ragged rows.
+    //
+    // Container queries ask how wide THIS ELEMENT is instead. The header now
+    // adapts to the space it actually has, which is the thing it was always
+    // trying to do. It fixes every narrow page at once — and 29 of the site's
+    // page columns are narrower than the 923px the full row needs.
+    //
+    // The ladder below is built from measured widths, not guesses:
+    //
+    //   base   306px  logo mark only, every chip icon-only
+    //   @xl    457px  + the "Revision Lab" wordmark          (container 576)
+    //   @2xl   546px  + the "Join quiz" label                (container 672)
+    //   @4xl   862px  + Pixel, Progress and Revise           (container 896)
+    //   @5xl   923px  + the "Home" label                     (container 1024)
+    //
+    // Each step has headroom over the container width that unlocks it.
+    // ─────────────────────────────────────────────────────────────────────
+    <header className="@container flex flex-wrap items-center justify-between gap-4">
       {/* `shrink-0` and `whitespace-nowrap` because in the screenshot that
           prompted this fix, "Revision Lab" had been squeezed into two lines by
           the button row next to it. A wordmark that breaks in half is the
           single most broken-looking thing a header can do. */}
       <Link href="/" className="flex shrink-0 items-center gap-3">
         <Logo className="h-9 w-9" />
-        <span className="whitespace-nowrap text-2xl font-semibold tracking-tight">
+        <span className="hidden whitespace-nowrap text-2xl font-semibold tracking-tight @xl:inline">
           Revision Lab
         </span>
       </Link>
@@ -58,7 +84,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
               cheapest 60px to give back, and the logo beside it already goes
               home. Above it, the label stays — people genuinely do not all
               know a logo is clickable. */}
-          <span className="hidden lg:inline">Home</span>
+          <span className="hidden @5xl:inline">Home</span>
         </Link>
 
         {/* Joining a live quiz, from anywhere on the site.
@@ -73,7 +99,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
             row it just joined. */}
         <Link href="/quiz/join" className={quizChipClasses}>
           <PlayIcon />
-          <span className="hidden md:inline">Join quiz</span>
+          <span className="hidden @2xl:inline">Join quiz</span>
         </Link>
 
         {/* Finding a topic by typing beats clicking through a subject page to
@@ -95,8 +121,8 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 group is 500+ pixels wide with Pixel and four chips in it,
                 which never fit next to Home/Search/the theme toggle on a
                 real phone screen. Only one of the two ever shows at once,
-                switched purely by CSS breakpoint (`hidden sm:flex` vs the
-                `sm:hidden` inside MobileMenu), so there's exactly one visible
+                switched purely by CSS breakpoint (`hidden @4xl:flex` vs the
+                `@4xl:hidden` on the duplicated items), so there's exactly one visible
                 copy of "Dashboard" at any given screen width.
 
                 ⚠️ A second, wider-screen overflow bug lived here too, found
@@ -125,7 +151,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 setting) ever makes this not fit again, it wraps onto a
                 second line instead of quietly overflowing the page a
                 second time. */}
-            <div className="hidden flex-wrap items-center gap-2 sm:flex">
+            <div className="hidden flex-wrap items-center gap-2 @4xl:flex">
               {/* Pixel, wearing whatever's equipped in the wardrobe — see
                   PixelCompanion.tsx. This is the one placement that puts him on
                   literally every page, since SiteHeader is on all of them.
@@ -138,7 +164,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                   back for, and the reason accounts exist at all. */}
               <Link href="/progress" className={chipClasses}>
                 <ChartIcon />
-                <span className="hidden sm:inline">Progress</span>
+                <span>Progress</span>
               </Link>
 
 
@@ -153,7 +179,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                   you there. */}
               <Link href="/revise" className={chipClasses}>
                 <ChecklistIcon />
-                <span className="hidden sm:inline">Revise</span>
+                <span>Revise</span>
               </Link>
 
 
@@ -161,7 +187,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
 
             <MobileMenu>
               {/* Pixel and the greeting are in the visible row above `sm`. */}
-              <div className="flex items-center gap-3 border-b border-black/10 px-1 pb-3 dark:border-white/10 sm:hidden">
+              <div className="flex items-center gap-3 border-b border-black/10 px-1 pb-3 dark:border-white/10 @4xl:hidden">
                 <PixelCompanion className="h-10" />
                 {greeting && (
                   <span className="text-lg font-medium opacity-80">
@@ -170,7 +196,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 )}
               </div>
 
-              <Link href="/progress" className={`${mobileMenuItemClasses} sm:hidden`}>
+              <Link href="/progress" className={`${mobileMenuItemClasses} @4xl:hidden`}>
                 <ChartIcon />
                 <span>Progress</span>
               </Link>
@@ -180,7 +206,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 <span>Dashboard</span>
               </Link>
 
-              <Link href="/revise" className={`${mobileMenuItemClasses} sm:hidden`}>
+              <Link href="/revise" className={`${mobileMenuItemClasses} @4xl:hidden`}>
                 <ChecklistIcon />
                 <span>Revise today</span>
               </Link>

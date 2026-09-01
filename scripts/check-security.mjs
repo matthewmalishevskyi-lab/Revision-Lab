@@ -570,6 +570,29 @@ try {
       `${label} appears exactly once in the header, so there is no duplicate copy at any screen width`,
     );
   }
+  // ── 10d. The header sizes itself by its own width, not the window's ──────
+  //
+  // This header renders inside page columns from max-w-md (448px) to max-w-7xl
+  // (1280px). A viewport breakpoint like `sm:` is true on a 1440px screen no
+  // matter how narrow the column actually is, which is how the quiz join page
+  // ended up rendering the full wide header inside 448px and wrapping it onto
+  // five rows.
+  //
+  // So every breakpoint in this file must be a CONTAINER query. A viewport one
+  // sneaking back in would reintroduce the bug on whichever narrow page nobody
+  // happened to open that week.
+  expect(headerSrc.includes("@container"), "the header is its own query container");
+  {
+    const classNames = [...headerSrc.matchAll(/className=(?:"([^"]*)"|\{`([^`]*)`\})/g)]
+      .map((m) => m[1] ?? m[2])
+      .join(" ");
+    const viewportVariant = classNames.match(/(?:^|\s)(sm|md|lg|xl|2xl):/);
+    expect(
+      viewportVariant === null,
+      `header uses only container queries — found viewport variant "${viewportVariant?.[1]}:", which ignores how much room the header actually has`,
+    );
+  }
+
   // The wordmark must not be allowed to break in half again.
   expect(
     /whitespace-nowrap[^"]*text-2xl|text-2xl[^"]*whitespace-nowrap/.test(headerSrc),
