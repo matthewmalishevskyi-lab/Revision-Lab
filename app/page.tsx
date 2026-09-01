@@ -127,53 +127,20 @@ export default async function Home(props: PageProps<"/">) {
         </section>
       )}
 
-      {/* ---------- What's actually inside ----------
-           Only for signed-out visitors. Someone with a streak has already
-           found these; someone new had no way of knowing they existed,
-           because they all live one or two clicks deep inside a topic. Six
-           short lines is enough to say "there is more here than notes"
-           without turning the homepage into a sales page. Every item below is
-           a real, working feature — nothing aspirational. */}
-      {!user && (
-        <section className="mx-auto mt-10 max-w-5xl">
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                name: "Common mistakes",
-                text: "Every topic ends with the specific errors that lose marks, and what to write instead.",
-              },
-              {
-                name: "Exam technique",
-                text: "Command words, mark allocations and worked examples showing the method, not just the answer.",
-              },
-              {
-                name: "Questions that mark themselves",
-                text: "Type an answer and get told straight away — plus multiple choice built from real misconceptions.",
-              },
-              {
-                name: "Set your exam board",
-                text: "Tell us AQA, Edexcel, OCR or WJEC and we flag the topics where boards genuinely differ.",
-              },
-              {
-                name: "Printable revision sheets",
-                text: "Any topic as a clean printable page, for people who revise better on paper.",
-              },
-              {
-                name: "Live quizzes and progress",
-                text: "Head-to-head quizzes with friends, streaks, and a record of what you have actually revised.",
-              },
-            ].map((feature) => (
-              <li
-                key={feature.name}
-                className="rounded-2xl border border-white/60 bg-white/50 p-5 backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
-              >
-                <h2 className="font-semibold">{feature.name}</h2>
-                <p className="mt-1.5 text-sm opacity-70">{feature.text}</p>
-              </li>
-            ))}
-          </ul>
+      {/* ---------- Two things worth finding ----------
+           A six-card grid describing the site's features used to sit here.
+           Matthew cut it: the homepage's job is to get you into a subject,
+           and a block of prose about features pushed the actual subject
+           cards below the fold on a laptop. The features are still there;
+           they just sell themselves better by being used than by being
+           listed.
 
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+           These two links stay because neither is discoverable otherwise —
+           /exam-board is not linked from any subject card, and the quiz
+           needed a way in before the header button existed. */}
+      {!user && (
+        <section className="mx-auto mt-8 max-w-5xl">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/quiz"
               className="rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"

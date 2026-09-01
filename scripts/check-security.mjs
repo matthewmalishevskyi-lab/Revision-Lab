@@ -512,6 +512,30 @@ try {
     "site stats never round up or to nearest",
   );
 
+  // ── 10b. Header buttons are all the same height ──────────────────────────
+  //
+  // Measured on the live site: text chips were 46px and icon-only chips 42px,
+  // so the header row did not line up. Four pixels, and it was the first thing
+  // someone said looked wrong.
+  //
+  // The two paddings have to move together. This check does not re-derive the
+  // arithmetic — it just refuses to let one change without the other being
+  // reconsidered, by pinning the pair that is currently known to match.
+  const chipSrc = readFileSync("app/components/chipStyles.ts", "utf8");
+  expect(
+    /chipClasses =\s*\n?\s*"[^"]*\bpy-2\b[^"]*\btext-lg\b/.test(chipSrc) ||
+      /chipClasses =\s*\n?\s*"[^"]*\btext-lg\b[^"]*\bpy-2\b/.test(chipSrc),
+    "text chips are still py-2 + text-lg (46px) — if this changed, iconChipClasses' padding must change too",
+  );
+  expect(
+    /iconChipClasses =\s*\n?\s*"[^"]*\bp-3\b/.test(chipSrc),
+    "icon-only chips are p-3, which is what makes them the same 46px height as text chips",
+  );
+  expect(
+    chipSrc.includes("quizChipClasses") && /quizChipClasses =\s*\n?\s*"[^"]*\bpy-2\b/.test(chipSrc),
+    "the quiz chip shares the text chip's vertical padding, so standing out by colour does not also change the row's height",
+  );
+
   // ── 11. Articles are chosen, not typed ───────────────────────────────────
   //
   // "Try a English test" shipped and was found by an outside reviewer rather

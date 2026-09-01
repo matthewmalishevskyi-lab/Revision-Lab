@@ -6,7 +6,7 @@ import { ACCOUNTS_ENABLED } from "../lib/site";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchBox } from "./SearchBox";
 import { PixelCompanion } from "./PixelCompanion";
-import { chipClasses } from "./chipStyles";
+import { chipClasses, quizChipClasses } from "./chipStyles";
 import { MobileMenu, mobileMenuItemClasses } from "./MobileMenu";
 
 // The header that appears on every page.
@@ -39,13 +39,33 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
         </span>
       </Link>
 
-      <div className="flex items-center gap-2">
+      {/* `flex-wrap` here for the same reason it is on the logged-in group
+          inside: this row now has one more button in it, and a row that
+          cannot wrap overflows the page instead — which is precisely the bug
+          that was fixed once already at 1536px. Wrapping is the ugly outcome;
+          overflowing off the edge of the browser is the broken one. */}
+      <div className="flex flex-wrap items-center justify-end gap-2">
         {/* Always present, on every page, whether you're logged in or not.
             The logo also links home, but a labelled button is findable —
             people don't reliably know that a logo is clickable. */}
         <Link href="/" className={chipClasses}>
           <HomeIcon />
           <span className="hidden sm:inline">Home</span>
+        </Link>
+
+        {/* Joining a live quiz, from anywhere on the site.
+            Placed in this always-visible group rather than with the
+            account links because it needs NO account — a room code is all
+            it takes, like a Kahoot PIN — so hiding it behind a login would
+            be wrong for the exact people most likely to use it: a class
+            where one person hosts and everyone else joins.
+
+            The label hides below `md` so that on a phone this costs 46px
+            rather than 130px, which is what keeps it from squeezing the
+            row it just joined. */}
+        <Link href="/quiz/join" className={quizChipClasses}>
+          <PlayIcon />
+          <span className="hidden md:inline">Join quiz</span>
         </Link>
 
         {/* Finding a topic by typing beats clicking through a subject page to
@@ -200,6 +220,32 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
         )}
       </div>
     </header>
+  );
+}
+
+// A play triangle in a rounded square, for the live quiz. Same 24 grid and 1.7
+// stroke as every other icon in this header — that consistency is what stops a
+// row of icons looking like it was assembled from three different websites.
+function PlayIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="4.5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <path
+        d="M10 8.5l5.5 3.5L10 15.5z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
