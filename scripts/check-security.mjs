@@ -536,6 +536,46 @@ try {
     "the quiz chip shares the text chip's vertical padding, so standing out by colour does not also change the row's height",
   );
 
+  // ── 10c. The header row stays on one line ────────────────────────────────
+  //
+  // MEASURED, not estimated, in the browser against the real chip font
+  // (500 18px Geist):
+  //
+  //     logo 187 + Home 107 + Join quiz 135 + Progress 133 + Revise 114
+  //     + search 46 + theme 46 + menu 46 + Pixel 45 + gaps 64  =  923px
+  //
+  //     ...against a content column of 1104px at 1440px wide, and 976px at
+  //     1024px wide. It fits at both.
+  //
+  // Adding Dashboard, Account and Log out back to the visible row takes it to
+  // 1346px, which is what made it wrap onto three ragged lines and prompted
+  // this fix. Those three belong inside the menu. This check makes putting
+  // them back a test failure rather than something noticed in a screenshot
+  // three weeks later.
+  const headerSrc = readFileSync("app/components/SiteHeader.tsx", "utf8");
+  const menuStart = headerSrc.indexOf("<MobileMenu>");
+  expect(menuStart > -1, "SiteHeader still renders the menu");
+  for (const [label, needle] of [
+    ["Dashboard", '"/dashboard"'],
+    ["Account", '"/account"'],
+    ["Log out", "action={logout}"],
+  ]) {
+    const first = headerSrc.indexOf(needle);
+    expect(
+      first > menuStart,
+      `${label} lives inside the menu, not the visible header row — the row measured 923px without it and 1346px with it, against a 1104px column`,
+    );
+    expect(
+      headerSrc.indexOf(needle, first + 1) === -1,
+      `${label} appears exactly once in the header, so there is no duplicate copy at any screen width`,
+    );
+  }
+  // The wordmark must not be allowed to break in half again.
+  expect(
+    /whitespace-nowrap[^"]*text-2xl|text-2xl[^"]*whitespace-nowrap/.test(headerSrc),
+    "the Revision Lab wordmark cannot wrap onto two lines",
+  );
+
   // ── 11. Articles are chosen, not typed ───────────────────────────────────
   //
   // "Try a English test" shipped and was found by an outside reviewer rather

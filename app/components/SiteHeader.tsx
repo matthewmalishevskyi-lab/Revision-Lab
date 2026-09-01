@@ -32,9 +32,13 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
 
   return (
     <header className="flex items-center justify-between gap-4">
-      <Link href="/" className="flex items-center gap-3">
+      {/* `shrink-0` and `whitespace-nowrap` because in the screenshot that
+          prompted this fix, "Revision Lab" had been squeezed into two lines by
+          the button row next to it. A wordmark that breaks in half is the
+          single most broken-looking thing a header can do. */}
+      <Link href="/" className="flex shrink-0 items-center gap-3">
         <Logo className="h-9 w-9" />
-        <span className="text-2xl font-semibold tracking-tight">
+        <span className="whitespace-nowrap text-2xl font-semibold tracking-tight">
           Revision Lab
         </span>
       </Link>
@@ -50,7 +54,11 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
             people don't reliably know that a logo is clickable. */}
         <Link href="/" className={chipClasses}>
           <HomeIcon />
-          <span className="hidden sm:inline">Home</span>
+          {/* `lg` rather than `sm`: below about 1024px this label is the
+              cheapest 60px to give back, and the logo beside it already goes
+              home. Above it, the label stays — people genuinely do not all
+              know a logo is clickable. */}
+          <span className="hidden lg:inline">Home</span>
         </Link>
 
         {/* Joining a live quiz, from anywhere on the site.
@@ -133,10 +141,6 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 <span className="hidden sm:inline">Progress</span>
               </Link>
 
-              <Link href="/dashboard" className={chipClasses}>
-                <GridIcon />
-                <span className="hidden sm:inline">Dashboard</span>
-              </Link>
 
               {/* The global daily queue — overdue flashcards, weak topics and
                   new ones, across every subject at once. See
@@ -152,27 +156,12 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 <span className="hidden sm:inline">Revise</span>
               </Link>
 
-              {/* Account settings need to be reachable in one click from
-                  anywhere. Somebody who wants their data deleted should not have
-                  to hunt for the page that does it. */}
-              <Link href="/account" className={chipClasses}>
-                <CogIcon />
-                <span className="hidden sm:inline">Account</span>
-              </Link>
 
-              {/* Logging out CHANGES something on the server, so it's a form, not
-                  a link. Links are for going places; anything that alters state
-                  should be a real submission. */}
-              <form action={logout}>
-                <button type="submit" className={chipClasses}>
-                  <ExitIcon />
-                  <span className="hidden sm:inline">Log out</span>
-                </button>
-              </form>
             </div>
 
             <MobileMenu>
-              <div className="flex items-center gap-3 border-b border-black/10 px-1 pb-3 dark:border-white/10">
+              {/* Pixel and the greeting are in the visible row above `sm`. */}
+              <div className="flex items-center gap-3 border-b border-black/10 px-1 pb-3 dark:border-white/10 sm:hidden">
                 <PixelCompanion className="h-10" />
                 {greeting && (
                   <span className="text-lg font-medium opacity-80">
@@ -181,7 +170,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 )}
               </div>
 
-              <Link href="/progress" className={mobileMenuItemClasses}>
+              <Link href="/progress" className={`${mobileMenuItemClasses} sm:hidden`}>
                 <ChartIcon />
                 <span>Progress</span>
               </Link>
@@ -191,7 +180,7 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
                 <span>Dashboard</span>
               </Link>
 
-              <Link href="/revise" className={mobileMenuItemClasses}>
+              <Link href="/revise" className={`${mobileMenuItemClasses} sm:hidden`}>
                 <ChecklistIcon />
                 <span>Revise today</span>
               </Link>

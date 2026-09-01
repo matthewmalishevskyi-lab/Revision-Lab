@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { iconChipClasses } from "./chipStyles";
 
-// The hamburger menu that holds the "you're logged in" links (Progress,
-// Dashboard, Account, Log out, Pixel) on narrow screens.
+// The menu that holds the "you're logged in" links.
 //
 // WHY THIS EXISTS: Home, Search and the theme toggle already fit on a phone
 // screen with room to spare. Adding Pixel's avatar plus four more chips next
@@ -37,7 +36,17 @@ export function MobileMenu({ children }: { children: React.ReactNode }) {
   }, [open]);
 
   return (
-    <div className="relative sm:hidden">
+    // NO LONGER PHONE-ONLY. This was `sm:hidden`, and the logged-in header
+    // outgrew its row anyway: nine buttons plus Pixel plus the logo needed
+    // about 1530px inside a column capped at 1152px, so it wrapped onto three
+    // ragged lines on an ordinary laptop. Wrapping was the safety net working
+    // as designed, but a safety net is not a layout.
+    //
+    // So the menu now exists at every width, and the settings-shaped links
+    // (Dashboard, Account, Log out) live inside it permanently. The links that
+    // are ALSO in the visible row above `sm` carry `sm:hidden` individually,
+    // so there is still exactly one reachable copy of each at any width.
+    <div className="relative">
       {/* Icon-only, the same reasoning as Search and the theme toggle now
           use — a hamburger/close icon is self-explanatory, and this button
           only ever appears on a phone-width screen where every pixel of
