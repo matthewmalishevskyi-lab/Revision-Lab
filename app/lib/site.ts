@@ -10,8 +10,16 @@ import { SUBJECTS } from "./subjects";
 // and on the real site without editing anything. Set NEXT_PUBLIC_SITE_URL in
 // Vercel to your actual domain once you have one — until then the fallback is
 // used, and the only consequence is that shared links preview oddly.
+//
+// This address changed once already, from revision-lab-sigma.vercel.app. The
+// "-sigma" was not chosen: Vercel bolts a random word onto the end when the
+// plain name is taken, and revision-lab.vercel.app belongs to somebody else.
+// Renaming the Vercel project is what changes it, and the OLD ADDRESS STOPS
+// WORKING the moment you do — so if this ever changes again, remember that
+// every link anyone has shared, and anything Google has already indexed, is
+// pointing at the dead one.
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revision-lab-sigma.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revisionlab-uk.vercel.app";
 
 export const SITE_NAME = "Revision Lab";
 
