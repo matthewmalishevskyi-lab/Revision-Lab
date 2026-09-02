@@ -14,12 +14,16 @@ import { SUBJECTS } from "./subjects";
 // This address changed once already, from revision-lab-sigma.vercel.app. The
 // "-sigma" was not chosen: Vercel bolts a random word onto the end when the
 // plain name is taken, and revision-lab.vercel.app belongs to somebody else.
-// Renaming the Vercel project is what changes it, and the OLD ADDRESS STOPS
-// WORKING the moment you do — so if this ever changes again, remember that
-// every link anyone has shared, and anything Google has already indexed, is
-// pointing at the dead one.
+// Renaming the project in the Vercel dashboard is what changes it.
+//
+// The old address was NOT lost, which is worth writing down because it is the
+// opposite of what I told Matthew would happen. Vercel kept
+// revision-lab-sigma.vercel.app on the project and redirects it here, so
+// every link anyone had already shared still works. Nothing needs deleting.
+// If this ever changes again, leave the previous address in place for the
+// same reason.
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revisionlab-uk.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://revision-lab-uk.vercel.app";
 
 export const SITE_NAME = "Revision Lab";
 

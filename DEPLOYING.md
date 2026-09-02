@@ -68,7 +68,7 @@ This matters because search engines and link previews need full addresses, not r
 1. Go to [Google Search Console](https://search.google.com/search-console) and sign in.
 2. You're offered two kinds of property. Choose **URL prefix**, on the right — not "Domain". Domain verification needs you to change DNS records, and you can't do that on a `.vercel.app` address because Vercel owns that domain, not you.
 3. Enter your full address including `https://`, with no trailing slash:
-   `https://revisionlab-uk.vercel.app`
+   `https://revision-lab-uk.vercel.app`
 
 ### 4b — Verify with the HTML tag method
 

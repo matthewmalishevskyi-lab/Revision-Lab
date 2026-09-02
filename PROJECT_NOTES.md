@@ -2052,7 +2052,7 @@ Content lives in `app/lib/content/`: `index.ts` is the registry and the type; on
 
 ## 🚀 THE SITE IS LIVE (2026-08-08)
 
-**https://revisionlab-uk.vercel.app**
+**https://revision-lab-uk.vercel.app**
 
 Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage renders correctly with all three mascots and subject cards.
 
@@ -2079,7 +2079,7 @@ Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage ren
 
 ### ⚠️ START HERE NEXT SESSION — three things, in order
 
-1. **Set the environment variable.** Vercel → Settings → Environment Variables → add `NEXT_PUBLIC_SITE_URL` = `https://revisionlab-uk.vercel.app` (no trailing slash), then redeploy. Until this is done the sitemap and link previews point at a guessed address. The code fallback has been corrected to the real URL as a stopgap, but the env var is the proper fix.
+1. **Set the environment variable.** Vercel → Settings → Environment Variables → add `NEXT_PUBLIC_SITE_URL` = `https://revision-lab-uk.vercel.app` (no trailing slash), then redeploy. Until this is done the sitemap and link previews point at a guessed address. The code fallback has been corrected to the real URL as a stopgap, but the env var is the proper fix.
 
 2. **There is one unpushed commit** fixing that fallback URL. Run `git push` to send it.
 
@@ -2087,7 +2087,7 @@ Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage ren
 
 ### Then, in rough priority order
 
-- **Google Search Console** — verify the site, submit `https://revisionlab-uk.vercel.app/sitemap.xml`. Deploying does not put you in Google; you must ask, then wait days-to-weeks.
+- **Google Search Console** — verify the site, submit `https://revision-lab-uk.vercel.app/sitemap.xml`. Deploying does not put you in Google; you must ask, then wait days-to-weeks.
 - **Database (Neon or Supabase)** — required before login can be turned back on. Only `app/lib/users.ts` needs rewriting; add `DATABASE_URL` and `SESSION_SECRET` to Vercel and accounts re-enable themselves automatically.
 - **Progress tracking** — the reason accounts exist. The dashboard has an empty state waiting for it.
 - **Get the content checked by teachers** before students rely on it, especially Maths (tier differences) and English (set texts vary).
