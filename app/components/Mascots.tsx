@@ -44,6 +44,7 @@ export const MASCOTS = {
   bobby: Bobby,
   lumen: Lumen,
   voyager: Voyager,
+  ridge: Ridge,
 } as const;
 
 // ============================ PIXEL — Computer Science ======================
@@ -1378,6 +1379,215 @@ export function Voyager(props: MascotProps) {
              rather than a wide grin, reading as ready-for-anything rather
              than over-excited. ── */}
       <path d="M54 51 Q60 56.4 66 51" stroke="#b06a56" strokeWidth={3} strokeLinecap="round" fill="none" />
+    </svg>
+  );
+}
+
+
+// ======================== RIDGE — Physical Education ========================
+//
+// The PE teacher, not the athlete. That was the choice worth thinking about:
+// every other character here is someone who KNOWS the subject and is pleased
+// to see you, and a sprinter mid-stride would have been the odd one out — a
+// performance rather than a person, and a silent suggestion that GCSE PE is
+// about being good at sport. It isn't. It is two written papers on anatomy,
+// physiology, movement, training and society, sat by plenty of people who
+// are ordinary at games. So Ridge is the one holding the clipboard: calm,
+// encouraging, keeping an eye on you rather than racing you.
+//
+// ── The tracksuit is navy, and the trousers are darker navy ─────────────────
+//
+// Matthew asked for navy after seeing him in orange. Two knock-ons had to
+// come with it, both because navy-on-navy simply disappears:
+//   • the lanyard was navy and is now ORANGE, so it still reads against the
+//     jacket — and it keeps a note of PE's own accent colour on him;
+//   • the tracksuit bottoms are a DARKER navy than the jacket rather than
+//     the same one, which is the only thing stopping him turning into a
+//     single blue shape at the small sizes he actually gets drawn at (he is
+//     28px wide in the revision queue).
+//
+// ── One gold thing ──────────────────────────────────────────────────────────
+//
+// The whistle is #f0c869 — the same gold that frames Hoot's and Quill's
+// glasses and clasps Sterling's briefcase. It is the thread that ties the
+// cast together, and it is worth being fussy about the SHAPE of it: the
+// first version was a large gold oval hanging dead centre, and it read
+// unmistakably as a MEDAL, which says "winner" rather than "coach". A
+// whistle is small, hangs slightly off centre, and its silhouette is a
+// rounded chamber with a flat mouthpiece sticking out to one side. Without
+// that mouthpiece it is just a bead.
+//
+// ── Not a likeness ──────────────────────────────────────────────────────────
+//
+// Matthew sent a photo of a real person as a reference. The cropped dark
+// hair, the grey at the temples and the stubble are styling cues taken from
+// it; the face is this cast's standard geometry, the same head outline and
+// eye positions as Sterling and Voyager. He is deliberately not a portrait
+// of anybody.
+// ─────────────────────────────────────────────────────────────────────────────
+export function Ridge(props: MascotProps) {
+  return (
+    <svg
+      viewBox="0 0 120 140"
+      role="img"
+      aria-label="Ridge, the Physical Education mascot: a smiling coach in a navy tracksuit with a whistle and a clipboard"
+      {...props}
+    >
+      {/* Light from the upper left, as with every other character here — so
+          every shadow below sits on the right of its own form. */}
+      {/* ── Trainers. White with an orange flash, drawn toes-out and apart so he
+             does not stand pigeon-toed — the same correction Sterling needed. ── */}
+      <path d="M35 130 Q35 123.5 45 122 Q55 122 55.5 129 Q55.5 135 45 136 Q35 136 35 130 Z" fill="#f4f5f7"/>
+      <path d="M85 130 Q85 123.5 75 122 Q65 122 64.5 129 Q64.5 135 75 136 Q85 136 85 130 Z" fill="#e6e8ec"/>
+      <path d="M75 122 Q85 123.5 85 130 Q85 135 75 136 Q79 129 75 122 Z" fill="#000000" opacity={0.14}/>
+      {/* Rubber soles */}
+      <path d="M35 131.5 Q42 136.6 51 135.6 Q55.2 134.6 55.5 132 L55.5 134 Q51 137.6 43 137.6 Q36 137.2 35 133.4 Z" fill="#2b3040"/>
+      <path d="M85 131.5 Q78 136.6 69 135.6 Q64.8 134.6 64.5 132 L64.5 134 Q69 137.6 77 137.6 Q84 137.2 85 133.4 Z" fill="#232838"/>
+      {/* One orange flash on each shoe. One stripe is all it takes to read as a trainer. */}
+      <path d="M39 127.5 Q45 125.5 51 127" stroke="#ea580c" strokeWidth={2.6} fill="none" strokeLinecap="round"/>
+      <path d="M81 127.5 Q75 125.5 69 127" stroke="#c2410c" strokeWidth={2.6} fill="none" strokeLinecap="round"/>
+
+      {/* ── Tracksuit bottoms. Navy, tapered, with the white side stripe that
+             says tracksuit faster than any other single detail. ── */}
+      <path d="M44.5 102 L43 125 Q48 127 53 125 L53.5 102 Z" fill="#1e2536"/>
+      <path d="M66.5 102 L67 125 Q72 127 77 125 L75.5 102 Z" fill="#1e2536"/>
+      <path d="M71 102 L72 125 Q74.5 126.2 77 125 L75.5 102 Z" fill="#000000" opacity={0.22}/>
+      <path d="M45.8 103 L44.4 124.4" stroke="#f4f5f7" strokeWidth={1.6} opacity={0.85} strokeLinecap="round"/>
+      <path d="M74.4 103 L75.6 124.4" stroke="#f4f5f7" strokeWidth={1.6} opacity={0.5} strokeLinecap="round"/>
+
+      {/* ── Track jacket. Tapered to the waist rather than a rounded blob. ── */}
+      <path d="M35 69 Q60 61.5 85 69 L86.5 106 Q60 113 33.5 106 Z" fill="#2f4f87"/>
+      <path d="M60 65.25 Q72.5 65.25 85 69 L86.5 106 Q73.25 109.5 60 109.5 Z" fill="#000000" opacity={0.17}/>
+      {/* Ribbed hem */}
+      <path d="M34.4 101.5 Q60 108.5 85.6 101.5 L86.5 106 Q60 113 33.5 106 Z" fill="#000000" opacity={0.16}/>
+
+      {/* ── The zip, running the full length: the detail that separates a track
+             jacket from a jumper. ── */}
+      <path d="M60 65 L60 107" stroke="#16264a" strokeWidth={1.9} strokeLinecap="round"/>
+      <rect x="58.4" y="70" width="3.2" height="5" rx="1.4" fill="#f0c869"/>
+
+      {/* ── Sleeves ── */}
+      <path d="M36.5 71.5 Q31 75.5 30 86.5 L32 93.5 Q37.5 94.5 39.5 88.5 L41.5 73.5 Z" fill="#2f4f87"/>
+      <path d="M83.5 71.5 Q89 75.5 90 86.5 L88 93.5 Q82.5 94.5 80.5 88.5 L78.5 73.5 Z" fill="#2f4f87"/>
+      <path d="M83.5 71.5 Q89 75.5 90 86.5 L88 93.5 Q85 94 84 91.5 L82.5 73.5 Z" fill="#000000" opacity={0.2}/>
+      {/* Two white stripes down the outside of each sleeve — the classic
+           tracksuit marking. Drawn after the sleeves so they sit on the fabric,
+           and following the sleeve's own curve rather than cutting across it. */}
+      <path d="M34.4 76.5 Q32.4 82.5 32 90" stroke="#f4f5f7" strokeWidth={1.5} fill="none" strokeLinecap="round" opacity={0.95}/>
+      <path d="M37.4 75.5 Q35.4 81.5 35 89.5" stroke="#f4f5f7" strokeWidth={1.5} fill="none" strokeLinecap="round" opacity={0.95}/>
+      <path d="M85.6 76.5 Q87.6 82.5 88 90" stroke="#f4f5f7" strokeWidth={1.5} fill="none" strokeLinecap="round" opacity={0.6}/>
+      <path d="M82.6 75.5 Q84.6 81.5 85 89.5" stroke="#f4f5f7" strokeWidth={1.5} fill="none" strokeLinecap="round" opacity={0.6}/>
+
+      {/* Ribbed cuffs */}
+      <path d="M30.4 90.5 Q34.5 92 39 90 L39 93.6 Q34.5 95.4 30.8 94 Z" fill="#223a66"/>
+      <path d="M81 90 Q85.5 92 89.6 90.5 L89.2 94 Q85 95.4 81 93.6 Z" fill="#1a2d51"/>
+
+      {/* ── Collar, standing up as a track jacket's does ── */}
+      <path d="M50.5 63.5 Q60 59.5 69.5 63.5 L68.5 69 Q60 65.5 51.5 69 Z" fill="#223a66"/>
+      <path d="M60 61.5 Q65.5 62 69.5 63.5 L68.5 69 Q64.5 67 60 66.5 Z" fill="#000000" opacity={0.14}/>
+
+      {/* ── Lanyard and whistle. The whistle is gold, picking up the same
+             #f0c869 that frames Hoot's and Quill's glasses and clasps Sterling's
+             briefcase — the thread that ties the cast together.
+             Rebuilt after the first render, where a large gold oval hanging dead
+             centre read as a MEDAL. A whistle is small, hangs slightly off centre,
+             and its silhouette is a rounded chamber with a flat mouthpiece out to
+             one side — without that mouthpiece it is just a bead. ── */}
+      <path d="M54 64 Q56 77 57.8 84" stroke="#ea580c" strokeWidth={1.9} fill="none" strokeLinecap="round"/>
+      <path d="M66 64 Q64 77 62.6 84" stroke="#ea580c" strokeWidth={1.9} fill="none" strokeLinecap="round" opacity={0.75}/>
+      {/* the split ring the whistle hangs from */}
+      <circle cx="60.2" cy="85.4" r="1.5" fill="none" stroke="#9aa3b2" strokeWidth={0.9}/>
+      {/* chamber */}
+      <path d="M57.4 87.6 Q60.6 86.6 62.6 88.2 Q64 89.6 63.4 91.4 Q62.4 93.4 59.6 93.4 Q56.8 93.2 56.2 91.2 Q55.8 89 57.4 87.6 Z" fill="#f0c869"/>
+      {/* mouthpiece, out to the right */}
+      <path d="M63 88.6 L67.6 89.4 Q68.6 90.2 67.6 91 L63.2 91.6 Z" fill="#f0c869"/>
+      <path d="M63 88.6 L67.6 89.4 Q68.6 90.2 67.6 91 L63.2 91.6 Q64.6 90.2 63 88.6 Z" fill="#000000" opacity={0.18}/>
+      <path d="M61 86.9 Q63.6 87.6 63.4 91.4 Q62.4 93.4 59.6 93.4 Q62.6 90.6 61 86.9 Z" fill="#000000" opacity={0.16}/>
+      {/* the air hole on top, and a highlight on the upper left */}
+      <ellipse cx="59.4" cy="88.6" rx="1.5" ry="0.9" fill="#7c2d12" opacity={0.55}/>
+      <path d="M57.6 88.4 Q58.6 87.4 60 87.3" stroke="#ffffff" strokeWidth={0.9} opacity={0.5} fill="none" strokeLinecap="round"/>
+
+      {/* ── The clipboard, drawn after the jacket so it sits in front of him.
+             The board is angled, because a flat rectangle reads as a sign rather
+             than something held. ── */}
+      <g transform="translate(3.5 -1) rotate(-11 26 104)">
+        <rect x="12" y="92" width="28" height="34" rx="3" fill="#c8a06a"/>
+        <rect x="26" y="92" width="14" height="34" rx="3" fill="#000000" opacity={0.14}/>
+        <rect x="15" y="98" width="22" height="25" rx="1.4" fill="#fbfbfd"/>
+        <rect x="21" y="89.5" width="10" height="6" rx="1.8" fill="#9aa3b2"/>
+        <rect x="22.6" y="88" width="6.8" height="4" rx="1.6" fill="#c3ccd9"/>
+        {/* Three ruled lines and a tick: enough to say "someone is being assessed" */}
+        <path d="M18 104 L34 104" stroke="#93a0b4" strokeWidth={1.2} strokeLinecap="round"/>
+        <path d="M18 110 L34 110" stroke="#93a0b4" strokeWidth={1.2} strokeLinecap="round"/>
+        <path d="M18 116 L29 116" stroke="#93a0b4" strokeWidth={1.2} strokeLinecap="round"/>
+        <path d="M29.5 112.5 L31.5 114.6 L35.5 109.6" stroke="#16a34a" strokeWidth={1.9} fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+
+      {/* ── Hands ── */}
+      <circle cx="34" cy="93" r="5" fill="#e8bb95"/>
+      <path d="M34 88 A5 5 0 0 1 34 98 A3 5 0 0 0 34 88 Z" fill="#000000" opacity={0.1}/>
+      <path d="M31.6 91.6 Q34.5 90 36.6 92.2" stroke="#c9906a" strokeWidth={2.1} strokeLinecap="round" fill="none"/>
+      <circle cx="86" cy="94.5" r="5.2" fill="#e8bb95"/>
+      <path d="M86 89.3 A5.2 5.2 0 0 1 86 99.7 A3 5.2 0 0 0 86 89.3 Z" fill="#000000" opacity={0.12}/>
+
+      {/* ── Neck, with the shadow the jaw casts onto it ── */}
+      <rect x="52.2" y="53" width="15.6" height="12" rx="5" fill="#dfae86"/>
+      <path d="M53.4 54.4 Q60 59.6 66.6 54.4 L66.6 58 Q60 62.4 53.4 58 Z" fill="#000000" opacity={0.16}/>
+
+      {/* ── Head. An oval taller than it is wide — a perfect circle is the most
+             toy-like shape available. Same geometry as the rest of the cast. ── */}
+      <path d="M35.5 31 C35.5 15 46 7 60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C43 56.5 35.5 45 35.5 31 Z" fill="#e8bb95"/>
+      <path d="M60 7 C74 7 84.5 15 84.5 31 C84.5 45 77 56.5 60 61 C69 55 71 44 71 31 C71 17 66 10 60 7 Z" fill="#000000" opacity={0.11}/>
+
+      {/* ── Ears ── */}
+      <ellipse cx="35.5" cy="36" rx="3.8" ry="5.2" fill="#e8bb95"/>
+      <ellipse cx="84.5" cy="36" rx="3.8" ry="5.2" fill="#dcab84"/>
+
+      {/* ── Hair. A short, dark crop, cropped tight at the sides and textured on
+             top rather than combed flat, with a touch of grey at the temples.
+             Styling cues taken from a reference photo Matthew sent; deliberately
+             NOT a likeness of that person. ── */}
+      <path d="M36.6 30 Q34 11 60 6.4 Q86 11 83.4 30 Q82.4 19.6 77 16.6 Q68 21.4 58 22.4 Q48 23.4 42.8 20.2 Q38.4 23 36.6 30 Z" fill="#241a12"/>
+      <path d="M60 6.4 Q86 11 83.4 30 Q82.4 19.6 77 16.6 Q68 21.4 60 22.2 Z" fill="#000000" opacity={0.2}/>
+      {/* Texture on top: short strokes rather than one smooth sweep, which is what
+           separates a cropped, styled cut from a helmet of hair. */}
+      <path d="M46 17 Q48.6 12.6 53 10.8" stroke="#3a2a1c" strokeWidth={1.6} opacity={0.75} fill="none" strokeLinecap="round"/>
+      <path d="M53.6 14 Q56.6 10.2 61 8.8" stroke="#3a2a1c" strokeWidth={1.6} opacity={0.7} fill="none" strokeLinecap="round"/>
+      <path d="M62 13.4 Q65.6 10 70 9.6" stroke="#3a2a1c" strokeWidth={1.6} opacity={0.6} fill="none" strokeLinecap="round"/>
+      <path d="M70 15 Q73.6 12.4 77 13.6" stroke="#3a2a1c" strokeWidth={1.6} opacity={0.5} fill="none" strokeLinecap="round"/>
+      <path d="M44 20 Q52 11.6 65 9.2 Q74 8.6 79 12.6 Q69 10.8 58.6 15.4 Q49.6 18.8 46 22" fill="none" stroke="#ffffff" strokeWidth={1.2} opacity={0.1} strokeLinecap="round"/>
+      {/* Grey at the temples — one small mark on each side, no more. */}
+      <path d="M37.6 27.6 Q38.4 22.6 42.8 20.2 Q39.8 24 39.2 28.4 Z" fill="#9aa0a6" opacity={0.5}/>
+      <path d="M82.4 27.6 Q81.8 22.4 78 19.8 Q80.6 23.8 80.8 28.4 Z" fill="#9aa0a6" opacity={0.32}/>
+      {/* Tapered sides: the hair stops above the ears, which is most of what makes
+           a short crop read as current rather than dated. */}
+      <path d="M36.9 30 Q37.4 24.5 42.8 20.2 Q39.4 24.6 39 29.6 Z" fill="#000000" opacity={0.22}/>
+      <path d="M83.1 30 Q82.8 24 78.6 20 Q81 24.4 81.4 29.8 Z" fill="#000000" opacity={0.16}/>
+
+      {/* ── Stubble. A soft shape following the jaw at low opacity — drawn
+             BEFORE the mouth so the mouth sits on top of it. Any darker and it
+             stops being stubble and becomes a beard. ── */}
+      <path d="M39.5 38 Q41 52 60 60.6 Q79 52 80.5 38 Q79.5 49 74 53.5 Q67 58 60 58.4 Q53 58 46 53.5 Q40.5 49 39.5 38 Z" fill="#3a2a1c" opacity={0.2}/>
+
+      {/* ── Brows. Level, not arched: an arch reads as surprise, and the
+             expression wanted is calm and encouraging. ── */}
+      <path d="M46.5 27.5 Q51 25.1 55.5 26.9" stroke="#2b1e14" strokeWidth={2.6} strokeLinecap="round" fill="none"/>
+      <path d="M64.5 26.9 Q69 25.1 73.5 27.5" stroke="#2b1e14" strokeWidth={2.6} strokeLinecap="round" fill="none"/>
+
+      {/* ── Eyes. Slightly oval, one highlight each. ── */}
+      <ellipse cx="51" cy="34.5" rx="4.1" ry="4.8" fill="#ffffff"/>
+      <ellipse cx="69" cy="34.5" rx="4.1" ry="4.8" fill="#ffffff"/>
+      <ellipse cx="51.6" cy="35.1" rx="2.6" ry="3.1" fill="#3a2b1c"/>
+      <ellipse cx="69.6" cy="35.1" rx="2.6" ry="3.1" fill="#3a2b1c"/>
+      <circle cx="50.4" cy="33.4" r="1.15" fill="#ffffff"/>
+      <circle cx="68.4" cy="33.4" r="1.15" fill="#ffffff"/>
+
+      {/* ── Nose: one short stroke. Any more and it becomes the focus. ── */}
+      <path d="M60 38.5 Q61.8 41.6 59.4 42.6" stroke="#c9906a" strokeWidth={1.7} fill="none" strokeLinecap="round"/>
+
+      {/* ── Mouth. An open, encouraging smile rather than a closed line. ── */}
+      <path d="M53 46.5 Q60 52.6 67 46.5 Q60 49.4 53 46.5 Z" fill="#7c3b32"/>
+      <path d="M54.6 47.4 Q60 51.6 65.4 47.4 Q60 49 54.6 47.4 Z" fill="#ffffff" opacity={0.9}/>
     </svg>
   );
 }

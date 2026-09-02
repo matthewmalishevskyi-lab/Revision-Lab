@@ -62,7 +62,8 @@ export type Subject = {
     | "iris"
     | "bobby"
     | "lumen"
-    | "voyager";
+    | "voyager"
+    | "ridge";
 
   // Which GROUP this subject belongs to, if any.
   //
@@ -1074,11 +1075,14 @@ export const SUBJECTS: Subject[] = [
     shadow:
       "shadow-[0_18px_40px_-18px_rgba(234,88,12,0.75)] hover:shadow-[0_28px_60px_-20px_rgba(234,88,12,0.9)]",
     accent: "#ea580c",
-    // PLACEHOLDER. Every mascot on this list already belongs to something
-    // else, and Matthew is designing a character for PE separately — this is
-    // borrowed from the sciences (the anatomy and physiology half of PE is
-    // the closest thing to them) purely so the field is valid until then.
-    mascot: "iris",
+    // Ridge — a PE teacher with a whistle and a clipboard rather than an
+    // athlete mid-stride, because GCSE PE is two written papers, not a
+    // trial. See the long note above his drawing in components/Mascots.tsx.
+    // His tracksuit is navy while this subject's accent is orange, which is
+    // deliberate: the orange lives on his lanyard and his trainers, so he
+    // carries the subject colour without being the same colour as the card
+    // he sits on.
+    mascot: "ridge",
     // Two written papers at 30% each, plus a practical assessment worth 40%
     // that no amount of revision replaces. The written content is genuinely
     // smaller than the essay subjects, which is what this number is about —
