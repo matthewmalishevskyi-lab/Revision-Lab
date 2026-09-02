@@ -13,6 +13,7 @@ import {
   type ResetRequestState,
 } from "../lib/reset-actions";
 import { Field, FormError, MailIcon, SubmitButton } from "../components/FormBits";
+import { CONTACT_EMAIL } from "../lib/site";
 
 export function ForgotPasswordForm() {
   const [state, action, pending] = useActionState<ResetRequestState, FormData>(
@@ -47,6 +48,37 @@ export function ForgotPasswordForm() {
             Still nothing? The most likely reason is a typo in the address, or
             that the account was made with a different one. Try again with
             another address.
+          </p>
+        </div>
+
+        {/* Matthew asked for this, and he was right to.
+            Somebody locked out of their account has just been handed a
+            sentence with an "if" in it and no way to tell whether anything is
+            actually happening. On a site with a support team that is fine,
+            because the next step is obvious. Here the next step is emailing a
+            fifteen-year-old who is at school all day, and saying so plainly
+            turns "this is broken" into "this is a person" — which is both true
+            and the difference between someone waiting and someone giving up.
+
+            Deliberately not an apology for the site being small. It sets an
+            expectation and says thank you, and it does it in three lines. */}
+        <div className="mt-6 rounded-xl border border-black/10 bg-black/[0.03] px-4 py-3 text-sm dark:border-white/10 dark:bg-white/5">
+          <p>
+            <strong>One quick thing.</strong> Revision Lab is built and run by
+            one person, not a company — so if this doesn&apos;t work and you
+            need a hand, it&apos;s me you&apos;re waiting on, and I might be in
+            lessons.
+          </p>
+          <p className="mt-2 opacity-80">
+            Email{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+            >
+              {CONTACT_EMAIL}
+            </a>{" "}
+            and I&apos;ll sort it out as soon as I can. Thanks for being
+            patient.
           </p>
         </div>
 

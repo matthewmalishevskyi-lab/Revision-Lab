@@ -1,5 +1,82 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Powers are written as powers now, and a note on the reset screen (2026-09-02)
+
+Two small things Matthew asked for after the 1.0 push.
+
+### 10² instead of 10^2
+
+`^` is how you TYPE a power, not how you WRITE one, and a revision site should
+show a student what the exam paper shows them. **247 exponents converted** to
+real superscripts across maths, physics, chemistry and computer science.
+
+Three rules kept it safe, and each of them was earned:
+
+**Accept lists were left alone entirely.** They are what a student's typed
+answer is compared against, and nobody types `10³` — you cannot get it off a
+keyboard. Most already carried both forms (`"6.02 x 10^23"` next to
+`"6.02 × 10²³"`), so the convention was already there.
+
+⚠️ **Except on multiple choice, where the checker caught a real break.** An MCQ's
+accept list has to match one of its CHOICES character for character. The choices
+converted, the accept list didn't, and two questions were silently left with no
+correct answer. `check-content.mjs` failed on exactly those two and nothing else
+— which is the whole reason that rule exists. Both now carry the superscript
+form first and the typeable one after it.
+
+**A superscript is a symbol, not a sentence.** The first pass turned
+`2^(colour depth)` into `2ᶜᵒˡᵒᵘʳᵈᵉᵖᵗʰ`, tiny raised letters with the space eaten.
+Anything containing a space, or three or more letters in a row, is now refused
+and was reworded by hand ("2 to the power of the colour depth"). The fractional
+indices went the same way — `a^(1/2)` reads worse as a stacked superscript than
+as "a to the power ½".
+
+**The glyphs were checked by rendering them, not by assuming.** ⁰¹²³⁴⁵⁶⁷⁸⁹ and
+⁺⁻⁽⁾ are safe everywhere; ᵃᵇᶜᵐⁿˣ are in a different Unicode block and could have
+come out as empty boxes. Screenshotted in the site's own font first — all fine,
+so `aᵐ × aⁿ = aᵐ⁺ⁿ` renders properly.
+
+Deliberately still `^`: the two exam tips telling students **not** to type
+`× 10 ^` on a calculator, and computer-science's list of programming operators,
+where `^` genuinely is one.
+
+### ÷ instead of /
+
+Much smaller than it sounds, because **÷ was already used 401 times** across the
+content — maths 140, physics 117, business 44, chemistry 43, biology 42. The
+convention existed; a few places had missed it.
+
+⚠️ **A blanket replace would have wrecked the site**, and the survey is why it
+wasn't done: of 3,271 slashes in the content, the overwhelming majority are
+units (`m/s` ×106, `km/h` ×30, `g/cm³` ×28, `kJ/mol`, `mol/dm³`), language
+pairs (`il/elle` ×26, `er/sie` ×23, `he/she`), command words (`Work out /
+Calculate`), topic slugs (`physics/waves`) and programming operators. Turning
+`m/s` into `m÷s` would be wrong physics; turning `il/elle` into `il÷elle` would
+be nonsense.
+
+Fractions were left as fractions too, on purpose: `1/2 + 1/3` in a topic ABOUT
+fractions must not become `1÷2 + 1÷3`.
+
+So **14 genuine divisions** were converted by hand, all of them formulas or sums:
+the sine rule, reciprocals, `moles ÷ Mr`, `concentration = moles ÷ volume`,
+`rate = quantity ÷ time`, `Rf = distance moved by spot ÷ distance moved by
+solvent`, `Magnification = image ÷ actual`, and the arithmetic inside those
+worked examples — while leaving the `mol/dm³`, `cm³/s` and `g/s` in the very
+same sentences alone.
+
+### "There's one person behind this"
+
+Matthew's ask, on the "check your email" screen after requesting a reset. A
+locked-out person has just been handed a sentence with an "if" in it, and on a
+normal site the next step is obvious. Here the next step is emailing a
+fifteen-year-old who is in lessons all day, so the screen now says so, gives
+the contact address, and thanks them for waiting. Not an apology for the site
+being small — an expectation, set in three lines.
+
+**Verified:** 94,411 content checks and 177 security checks pass; the indices
+topic rendered in a browser to confirm the superscripts actually appear and no
+stray `^` is left on the page.
+
 ## Password resets, sign-out-everywhere, and making the site work on a phone (2026-09-02)
 
 Matthew, the night before going back to school: get the site to a real 1.0. From

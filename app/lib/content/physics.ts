@@ -3411,7 +3411,7 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "The wave equation is:",
         choices: [
           "wave speed = frequency x wavelength",
-          "wave speed = frequency / wavelength",
+          "wave speed = frequency ÷ wavelength",
           "frequency = wavelength x amplitude",
           "wavelength = speed x amplitude",
         ],
@@ -3718,7 +3718,7 @@ export const PHYSICS: Record<string, TopicContent> = {
         accept: [
           "A vacuum",
         ],
-        answer: "They all travel at 3 x 10^8 m/s in a vacuum. In other materials they slow down by different amounts, which causes refraction.",
+        answer: "They all travel at 3 x 10⁸ m/s in a vacuum. In other materials they slow down by different amounts, which causes refraction.",
       },
       {
         question: "Which type of electromagnetic radiation is used for cooking in a microwave oven?",

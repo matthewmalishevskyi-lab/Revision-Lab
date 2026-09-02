@@ -35,7 +35,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Write the place values above the bits, doubling from right to left: 128, 64, 32, 16, 8, 4, 2, 1.",
           "Add up only the place values with a 1 underneath.",
           "Example: 01101101 → 64 + 32 + 8 + 4 + 1 = 109.",
-          "An 8-bit number can store 0 to 255, which is 256 different values (2^8).",
+          "An 8-bit number can store 0 to 255, which is 256 different values (2⁸).",
         ],
       },
       {
@@ -57,8 +57,8 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       {
         heading: "Binary shifts",
         points: [
-          "A left shift of n places multiplies the number by 2^n. Zeros fill in from the right.",
-          "A right shift of n places divides the number by 2^n. Zeros fill in from the left.",
+          "A left shift of n places multiplies the number by 2ⁿ. Zeros fill in from the right.",
+          "A right shift of n places divides the number by 2ⁿ. Zeros fill in from the left.",
           "Bits pushed off the end are lost, so a right shift can lose data and make the result inaccurate (it rounds down).",
           "Example: 00001100 (12) shifted left 2 places → 00110000 (48), which is 12 × 4.",
         ],
@@ -88,7 +88,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "A pixel is the smallest single point in a bitmap image.",
           "Resolution is the number of pixels, given as width × height.",
           "Colour depth is the number of bits used per pixel.",
-          "Number of possible colours = 2^(colour depth). 1 bit gives 2 colours; 8 bits gives 256.",
+          "Number of possible colours = 2 to the power of the colour depth. 1 bit gives 2 colours; 8 bits gives 256.",
           "File size in bits = width × height × colour depth.",
           "Metadata is data about the image rather than the image itself — dimensions, colour depth, date taken, camera settings.",
           "Increasing resolution or colour depth improves quality and increases file size.",
@@ -124,7 +124,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       { term: "Denary", definition: "The base-10 number system people normally use, with digits 0 to 9." },
       { term: "Hexadecimal", definition: "A base-16 number system using digits 0–9 and letters A–F, where one hex digit represents 4 bits." },
       { term: "Overflow", definition: "An error that occurs when the result of a calculation needs more bits than are available to store it." },
-      { term: "Binary shift", definition: "Moving all the bits in a binary number left or right. A shift of n places left multiplies by 2^n; right divides by 2^n." },
+      { term: "Binary shift", definition: "Moving all the bits in a binary number left or right. A shift of n places left multiplies by 2ⁿ; right divides by 2ⁿ." },
       { term: "Character set", definition: "A list of characters and the unique binary code used to represent each one." },
       { term: "ASCII", definition: "A 7-bit character set representing 128 characters, mainly English letters, digits and punctuation." },
       { term: "Unicode", definition: "A character set using more bits than ASCII so it can represent characters from most of the world's writing systems, plus emoji." },
@@ -176,7 +176,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       {
         tip: "Say by how much a shift multiplies or divides",
         detail:
-          "'It multiplies the number' is usually not enough. Say 'a left shift of 3 places multiplies the number by 2^3, which is 8'.",
+          "'It multiplies the number' is usually not enough. Say 'a left shift of 3 places multiplies the number by 2³, which is 8'.",
       },
       {
         tip: "Watch the command word",
@@ -319,19 +319,19 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         question: "How many different values can be represented using 8 bits?",
         accept: ["256"],
         answer:
-          "256. That is 2^8. The range is 0 to 255, which is 256 different values — a classic off-by-one trap.",
+          "256. That is 2⁸. The range is 0 to 255, which is 256 different values — a classic off-by-one trap.",
       },
       {
         question: "How many different colours can be represented with a colour depth of 4 bits?",
         accept: ["16"],
-        answer: "16 colours, because 2^4 = 16.",
+        answer: "16 colours, because 2⁴ = 16.",
       },
       {
         question:
           "Perform a left shift of 2 places on 00010110. Give the resulting 8-bit binary number.",
         accept: ["01011000"],
         answer:
-          "01011000. A left shift of 2 places multiplies by 2^2 = 4. The original is 22, and the result is 88.",
+          "01011000. A left shift of 2 places multiplies by 2² = 4. The original is 22, and the result is 88.",
       },
       {
         question:
@@ -1462,9 +1462,9 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Explain why IPv6 was introduced, using the numbers.",
         steps: [
           "IPv4 addresses are 32 bits long.",
-          "The number of possible addresses is therefore 2^32, which is about 4.3 billion.",
+          "The number of possible addresses is therefore 2³², which is about 4.3 billion.",
           "There are more than 4.3 billion internet-connected devices in the world, and most people own several.",
-          "IPv6 uses 128 bits, giving 2^128 addresses — a number vastly larger than any plausible need.",
+          "IPv6 uses 128 bits, giving 2¹²⁸ addresses — a number vastly larger than any plausible need.",
         ],
         answer:
           "Because 32-bit IPv4 provides only about 4.3 billion addresses and the world ran out. IPv6's 128 bits removes that limit.",
@@ -2152,7 +2152,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Linear search checks each item in turn, so the worst case is 1,000,000 comparisons and the average is 500,000.",
           "Binary search halves the remaining items each time.",
           "Ask: how many times can 1,000,000 be halved before one item remains?",
-          "2^20 is about 1,048,576, which is just over a million.",
+          "2²⁰ is about 1,048,576, which is just over a million.",
           "So binary search takes at most about 20 comparisons.",
         ],
         answer:
@@ -2166,7 +2166,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       { question: "Which search algorithm checks each item in turn from the start?",
         accept: ["linear", "linear search"], answer: "Linear search — slow on long lists but works on unsorted data." },
       { question: "A sorted list has 1000 items. Roughly how many comparisons does a binary search need at most?",
-        accept: ["10", "about 10", "10 comparisons"], answer: "About 10, because 2^10 = 1024, so the list can be halved ten times." },
+        accept: ["10", "about 10", "10 comparisons"], answer: "About 10, because 2¹⁰ = 1024, so the list can be halved ten times." },
       { question: "In the worst case, how many comparisons does a linear search of 50 items need?",
         accept: ["50", "50 comparisons"], answer: "50 — it may have to check every item before finding the target or reaching the end." },
       { question: "Which sorting algorithm repeatedly compares adjacent items and swaps them if they are in the wrong order?",
@@ -3192,7 +3192,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         heading: "Truth tables",
         points: [
           "A truth table lists every possible combination of inputs and the resulting output.",
-          "With 2 inputs there are 4 rows; with 3 inputs there are 8. The number of rows is 2^(number of inputs).",
+          "With 2 inputs there are 4 rows; with 3 inputs there are 8. The number of rows is 2 to the power of the number of inputs.",
           "Fill the input columns systematically so no combination is missed: for two inputs, 00, 01, 10, 11.",
           "AND: 0 0 → 0, 0 1 → 0, 1 0 → 0, 1 1 → 1.",
           "OR: 0 0 → 0, 0 1 → 1, 1 0 → 1, 1 1 → 1.",
@@ -3276,7 +3276,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       {
         question: "Complete a truth table for Q = A AND B.",
         steps: [
-          "Two inputs means 2^2 = 4 rows. Draw all four before filling anything in.",
+          "Two inputs means 2² = 4 rows. Draw all four before filling anything in.",
           "Fill the input columns in binary counting order so nothing is missed: 00, 01, 10, 11.",
           "A=0, B=0 → AND needs BOTH to be 1 → Q=0",
           "A=0, B=1 → not both → Q=0",
@@ -3288,7 +3288,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       {
         question: "Complete a truth table for Q = (A AND B) OR (NOT C).",
         steps: [
-          "Three inputs means 2^3 = 8 rows.",
+          "Three inputs means 2³ = 8 rows.",
           "Add a column for each intermediate result: one for (A AND B), one for (NOT C), then Q.",
           "Fill (A AND B): 1 only on the rows where A and B are both 1.",
           "Fill (NOT C): the opposite of C on every row.",
@@ -3333,12 +3333,12 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         answer:
           "1. NOT inverts its single input, turning 0 into 1 and 1 into 0." },
       { question: "How many rows does a truth table with 2 inputs have?", accept: ["4", "four"],
-        answer: "4, because 2^2 = 4. Draw them all before filling anything in." },
+        answer: "4, because 2² = 4. Draw them all before filling anything in." },
       { question: "How many rows does a truth table with 3 inputs have?", accept: ["8", "eight"],
         answer:
-          "8, because 2^3 = 8. Every extra input doubles the number of rows." },
+          "8, because 2³ = 8. Every extra input doubles the number of rows." },
       { question: "How many rows does a truth table with 4 inputs have?", accept: ["16", "sixteen"],
-        answer: "16, because 2^4 = 16. The rule is 2 to the power of the number of inputs." },
+        answer: "16, because 2⁴ = 16. The rule is 2 to the power of the number of inputs." },
       { question: "Which gate outputs 1 only when at least one input is 1?", accept: ["or", "or gate", "an or gate"],
         answer: "The OR gate. It also outputs 1 when both inputs are 1." },
       { question: "Which gate has only one input and inverts it?", accept: ["not", "not gate", "a not gate", "inverter"],
@@ -3461,8 +3461,8 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         heading: "Number systems",
         points: [
           "Denary is base 10, binary is base 2, hexadecimal is base 16.",
-          "8-bit place values: 128 64 32 16 8 4 2 1. An 8-bit number holds 0 to 255, which is 2^8 = 256 values.",
-          "n bits can represent 2^n different values.",
+          "8-bit place values: 128 64 32 16 8 4 2 1. An 8-bit number holds 0 to 255, which is 2⁸ = 256 values.",
+          "n bits can represent 2ⁿ different values.",
           "Hex digits: 0-9 then A=10, B=11, C=12, D=13, E=14, F=15.",
           "One hex digit is exactly one nibble, so convert binary to hex in groups of four bits from the right.",
           "Hex exists for human convenience: it is shorter than binary and far less error-prone to read and copy.",
@@ -3473,7 +3473,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         points: [
           "Addition rules: 0+0=0, 0+1=1, 1+1=0 carry 1, 1+1+1=1 carry 1.",
           "Overflow: the result needs more bits than the register holds, so a bit is lost and the stored answer is wrong.",
-          "Left shift of n places multiplies by 2^n; right shift of n places divides by 2^n.",
+          "Left shift of n places multiplies by 2ⁿ; right shift of n places divides by 2ⁿ.",
           "A right shift can lose bits off the end, so information is lost and the result is rounded down.",
         ],
       },
@@ -3491,7 +3491,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         heading: "Images and sound calculations",
         points: [
           "Image file size in bits = width × height × colour depth.",
-          "Number of colours available = 2^(colour depth).",
+          "Number of colours available = 2 to the power of the colour depth.",
           "Sound file size in bits = sample rate × bit depth × duration in seconds.",
           "Increasing resolution, colour depth, sample rate or bit depth all improve quality and increase file size.",
           "Metadata adds to the real file size but is normally ignored in exam calculations unless stated.",
@@ -3603,7 +3603,7 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         steps: [
           "Move every bit three places to the right, filling from the left with zeros.",
           "11110000 becomes 00011110.",
-          "In denary the original was 240, and the result is 30, which is 240 divided by 2^3 = 8.",
+          "In denary the original was 240, and the result is 30, which is 240 divided by 2³ = 8.",
           "The three bits pushed off the right-hand end were 0, 0, 0 — so nothing of value was lost this time.",
           "Had the original ended in 1s, those bits would be gone permanently and the division would round down.",
         ],
@@ -3615,9 +3615,9 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
     practice: [
       { question: "How many bits are in a nibble?", accept: ["4", "four"], answer: "4 bits — exactly what one hexadecimal digit represents." },
       { question: "How many different values can 4 bits represent?", accept: ["16", "sixteen"], answer:
-          "16, because 2^4 = 16. Each extra bit doubles the number of values." },
+          "16, because 2⁴ = 16. Each extra bit doubles the number of values." },
       { question: "How many different values can 10 bits represent?", accept: ["1024"], answer:
-          "1024, because 2^10 = 1024. This is why a binary search of 1000 items takes about 10 steps." },
+          "1024, because 2¹⁰ = 1024. This is why a binary search of 1000 items takes about 10 steps." },
       { question: "Convert the binary number 11001100 to denary.", accept: ["204"], answer: "204. That is 128 + 64 + 8 + 4 = 204." },
       { question: "Convert 150 to an 8-bit binary number.", accept: ["10010110"], answer: "10010110. 128 fits (22 left), 16 fits (6 left), 4 fits (2 left), 2 fits (0 left)." },
       { question: "Convert the binary number 10110011 to hexadecimal.", accept: ["b3", "0xb3"], answer: "B3. Split into nibbles: 1011 = 11 = B, and 0011 = 3." },
@@ -3628,9 +3628,9 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       { question: "A 5-second clip is sampled at 8000 Hz with a bit depth of 8. Give the file size in kilobytes.",
         accept: ["40", "40kb"], answer: "40 KB. 8000 x 8 = 64,000 bits per second; x 5 = 320,000 bits; divide by 8 = 40,000 bytes; divide by 1000 = 40 KB." },
       { question: "A left shift of 4 places multiplies a number by how much?", accept: ["16", "sixteen", "2^4"],
-        answer: "16, because a shift of n places multiplies by 2^n and 2^4 = 16." },
+        answer: "16, because a shift of n places multiplies by 2ⁿ and 2⁴ = 16." },
       { question: "How many colours can be represented with a colour depth of 1 bit?", accept: ["2", "two"],
-        answer: "2, because 2^1 = 2 — typically black and white." },
+        answer: "2, because 2¹ = 2 — typically black and white." },
       { question: "How many bits does standard ASCII use?", accept: ["7", "seven"],
         answer: "7 bits, giving 128 characters. Extended ASCII uses 8 bits for 256." },
       { question: "Which character set can represent characters from most of the world's writing systems?",

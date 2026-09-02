@@ -1486,7 +1486,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         accept: [
           "More attracted to the solvent than the paper",
         ],
-        answer: "Rf = distance moved by spot / distance moved by solvent, so it is always between 0 and 1. A high value means it travelled far with the solvent.",
+        answer: "Rf = distance moved by spot ÷ distance moved by solvent, so it is always between 0 and 1. A high value means it travelled far with the solvent.",
       },
       {
         question: "How can you tell from a chromatogram that a substance is PURE?",
@@ -2170,7 +2170,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         accept: [
           "2",
         ],
-        answer: "moles = mass / Mr = 88 / 44 = 2 mol. This is the single most useful equation in the whole topic, so learn the triangle: mass on top, moles and Mr underneath.",
+        answer: "moles = mass ÷ Mr = 88 ÷ 44 = 2 mol. This is the single most useful equation in the whole topic, so learn the triangle: mass on top, moles and Mr underneath.",
       },
       {
         question: "What is the mass of 0.5 mol of NaCl? (Mr = 58.5). Give the number of grams only.",
@@ -2184,14 +2184,14 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         accept: [
           "2",
         ],
-        answer: "Convert the volume first: 250 cm3 = 0.25 dm3. Then concentration = moles / volume = 0.5 / 0.25 = 2 mol/dm3. Forgetting to divide cm3 by 1000 is the most common error in this calculation.",
+        answer: "Convert the volume first: 250 cm3 = 0.25 dm3. Then concentration = moles ÷ volume = 0.5 ÷ 0.25 = 2 mol/dm3. Forgetting to divide cm3 by 1000 is the most common error in this calculation.",
       },
       {
         question: "A reaction has a theoretical yield of 16 g but produces 12 g. What is the percentage yield? Give the number only.",
         accept: [
           "75",
         ],
-        answer: "percentage yield = (actual / theoretical) x 100 = (12 / 16) x 100 = 75%. Yield is never 100% in practice because of losses in transfer, incomplete reactions and side reactions.",
+        answer: "percentage yield = (actual ÷ theoretical) x 100 = (12 ÷ 16) x 100 = 75%. Yield is never 100% in practice because of losses in transfer, incomplete reactions and side reactions.",
       },
       {
         question: "What does the law of conservation of mass state?",
@@ -2511,7 +2511,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         accept: [
           "0.125",
         ],
-        answer: "concentration = moles / volume = 0.0025 / 0.0200 = 0.125 mol/dm3. This is the second half of every titration calculation.",
+        answer: "concentration = moles ÷ volume = 0.0025 ÷ 0.0200 = 0.125 mol/dm3. This is the second half of every titration calculation.",
       },
       {
         question: "What is the concentration in g/dm3 of a 0.5 mol/dm3 solution of NaOH? (Mr = 40). Give the number only.",
@@ -3824,28 +3824,28 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         accept: [
           "0.4",
         ],
-        answer: "rate = quantity / time = 24 / 60 = 0.4 cm3/s. Mean rate uses the total change over the total time, which is why it is lower than the rate at the start.",
+        answer: "rate = quantity ÷ time = 24 ÷ 60 = 0.4 cm3/s. Mean rate uses the total change over the total time, which is why it is lower than the rate at the start.",
       },
       {
         question: "A flask loses 45 g of mass in 90 s. What is the mean rate of reaction in g/s? Give the number only.",
         accept: [
           "0.5",
         ],
-        answer: "45 / 90 = 0.5 g/s. Mass is lost because a gas is escaping, so mass loss is a perfectly good way of measuring how fast the reaction is going.",
+        answer: "45 ÷ 90 = 0.5 g/s. Mass is lost because a gas is escaping, so mass loss is a perfectly good way of measuring how fast the reaction is going.",
       },
       {
         question: "A reaction produces 0.6 g of product in 30 s. What is the mean rate in g/s? Give the number only.",
         accept: [
           "0.02",
         ],
-        answer: "0.6 / 30 = 0.02 g/s. Small numbers are correct here — do not be tempted to round to zero.",
+        answer: "0.6 ÷ 30 = 0.02 g/s. Small numbers are correct here — do not be tempted to round to zero.",
       },
       {
         question: "Gas is produced at 1.5 cm3/s. How long, in seconds, does it take to collect 30 cm3? Give the number only.",
         accept: [
           "20",
         ],
-        answer: "time = quantity / rate = 30 / 1.5 = 20 s. This is the same equation rearranged, which is why writing it out beats memorising three versions.",
+        answer: "time = quantity ÷ rate = 30 ÷ 1.5 = 20 s. This is the same equation rearranged, which is why writing it out beats memorising three versions.",
       },
       {
         question: "If the rate doubles for every 10 degree C rise, by what factor does it increase from 20 to 40 degrees C? Give the number only.",

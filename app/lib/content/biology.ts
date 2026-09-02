@@ -1700,7 +1700,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         accept: [
           "Image size divided by real size",
         ],
-        answer: "Magnification = image / actual. Rearranging it is the usual exam step, so learn the triangle rather than one version.",
+        answer: "Magnification = image ÷ actual. Rearranging it is the usual exam step, so learn the triangle rather than one version.",
       },
       {
         question: "What is the main advantage of an electron microscope over a light microscope?",
