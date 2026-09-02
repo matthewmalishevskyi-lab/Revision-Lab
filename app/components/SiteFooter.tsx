@@ -28,28 +28,32 @@ export function SiteFooter() {
             that has not been through a textbook's review process. What is gone
             is only the part that made a commitment about the future. */}
         <p>Revision Lab — a student project.</p>
-        <nav className="flex flex-wrap items-center gap-5">
-          <Link href="/privacy" className="hover:underline underline-offset-2">
+        {/* `gap-x-5 gap-y-1` plus `py-1.5` on each link below: these measured
+            20px tall, and a row of 20px targets five pixels apart is a row
+            of things a thumb misses. The padding is vertical only, so the
+            row still reads as one line of small print rather than a menu. */}
+        <nav className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <Link href="/privacy" className="py-1.5 hover:underline underline-offset-2">
             Privacy
           </Link>
           <Link
             href="/accessibility"
-            className="hover:underline underline-offset-2"
+            className="py-1.5 hover:underline underline-offset-2"
           >
             Accessibility
           </Link>
           <Link
             href="/exam-board"
-            className="hover:underline underline-offset-2"
+            className="py-1.5 hover:underline underline-offset-2"
           >
             Exam board
           </Link>
-          <Link href="/quiz" className="hover:underline underline-offset-2">
+          <Link href="/quiz" className="py-1.5 hover:underline underline-offset-2">
             Live quiz
           </Link>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="hover:underline underline-offset-2"
+            className="py-1.5 hover:underline underline-offset-2"
           >
             Contact
           </a>

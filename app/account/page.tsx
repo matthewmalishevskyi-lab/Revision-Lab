@@ -110,10 +110,11 @@ export default async function AccountPage() {
           <ChangePasswordForm />
         </div>
         <p className="mt-4 text-sm opacity-60">
-          Being straight with you about a limitation: changing your password
-          does <strong>not</strong> sign you out on other devices. Sessions here
-          are signed cookies rather than a list we keep, so there is nothing to
-          revoke — an old one stays valid until it expires.
+          Changing your password also signs you out{" "}
+          <strong>everywhere else</strong> — every other phone, tablet and
+          computer still logged in as you is signed out the moment you do it.
+          You stay signed in here. So if someone else knows your password, this
+          is the button that takes it back off them.
         </p>
       </section>
 

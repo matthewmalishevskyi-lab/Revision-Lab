@@ -64,6 +64,21 @@ export function ThemeToggle() {
   function toggleTheme() {
     const next = !isDark;
     document.documentElement.classList.toggle("dark", next);
+
+    // Repaint the browser's own chrome to match the page. On a phone this is
+    // the strip of colour around the address bar and the status bar above it,
+    // and leaving it behind is very obvious: press this button on an iPhone
+    // and the page goes dark while a bright bar stays sitting on top of it.
+    //
+    // ⚠️ Written in two places, here and in layout.tsx's bootstrap script,
+    // which is a real (small) duplication and deliberate for the same reason
+    // the `dark` class itself is: the bootstrap script runs before any bundle
+    // has loaded, so it cannot import from this file. The two colours must
+    // stay equal to --background and .dark's --background in globals.css.
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", next ? "#0a0d1a" : "#f2f4fa");
+
     try {
       // The only place a choice is written down. If storage is unavailable
       // (private browsing, a locked-down browser), the toggle still works for

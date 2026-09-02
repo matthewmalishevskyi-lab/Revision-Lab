@@ -259,6 +259,11 @@ makes a promise it does not keep.
 
    You should see `revision-lab-nightly-cleanup`.
 
+**If you'd rather not read cron tables**, paste **`CHECK_DELETION_WORKS.sql`**
+into the SQL Editor instead. It reads only — changes nothing — and answers the
+three questions that matter: does the job exist, has it actually run, and is
+anybody stuck past their 30 days.
+
 **Why step 3 is not optional.** Deleting an account marks it and erases it 30
 days later. If that nightly job isn't running, nothing ever erases it — the row
 sits in your database forever while the privacy page tells people it was
@@ -277,6 +282,76 @@ the queries at the bottom of `ACCOUNT_SETUP.sql` do it by hand.
 
 ---
 
+## Step 8 — Password resets, and signing out other devices
+
+Two things in one step, because they share one piece of SQL.
+
+**8a — Run the SQL.** Supabase → SQL Editor → paste the whole of
+**`SESSION_AND_RESET_SETUP.sql`** → Run. It adds one column to `users` and one
+new table. Safe to run twice.
+
+Until it runs, nothing breaks: everybody stays logged in, and reset requests
+fail with an honest message. Both features simply start working afterwards.
+
+**8b — Install the one new package.** This is the first real dependency the
+project has taken (see the long note at the top of `app/lib/email.ts` for why
+this one and not the others). On your own machine:
+
+```bash
+npm install
+```
+
+Vercel does this by itself on every deploy — this is only for running the site
+locally.
+
+**8c — Make a Gmail app password.** Google has refused ordinary account
+passwords for this since 2022, so you need a 16-character app password:
+
+1. Turn on **2-Step Verification** at
+   [myaccount.google.com/security](https://myaccount.google.com/security) if it
+   isn't on. App passwords do not exist without it.
+2. Go to
+   [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+3. Name it something like `Revision Lab` and create it.
+4. Copy the 16 characters it shows you. **It is shown once.** Spaces in it
+   don't matter.
+
+**8d — Add two settings to Vercel.** Settings → Environment Variables:
+
+| Name | Value |
+|---|---|
+| `GMAIL_USER` | the Gmail address the mail comes from |
+| `GMAIL_APP_PASSWORD` | the 16-character app password from 8c |
+
+Neither starts with `NEXT_PUBLIC_`, and that matters: anything with that prefix
+is baked into the JavaScript sent to the browser, where everyone can read it.
+
+Redeploy afterwards — environment variables are read at build time.
+
+**8e — Test it on yourself.** Log out, go to `/forgot-password`, put in your
+own address, and check the mail arrives. If nothing turns up:
+
+- **Check spam.** It is a Gmail address sending a link about a password, which
+  is exactly what a phishing message looks like. This is the most likely
+  answer.
+- **Check Vercel's function logs** for `[email] send failed`. A wrong app
+  password shows up there as an authentication error.
+- **`Invalid login: 535`** means the app password is wrong, or you used the
+  account password instead.
+
+### What you're accepting by using Gmail for this
+
+- Mail comes **from your own address**. It is already on the privacy page, so
+  it isn't new exposure — but it is your name on it.
+- Google's limit is roughly **500 messages a day**. Fine for a school, wrong
+  if this ever gets big.
+- The proper fix is a domain of your own (about £10 a year) plus a sending
+  service. That also gets you a real web address instead of a `.vercel.app`
+  one, so it is worth doing eventually — this is the version that works today
+  without spending anything.
+
+---
+
 ## Before real students sign up
 
 Once other people's data is involved, you have responsibilities. Worth talking through with a parent:
@@ -286,6 +361,8 @@ Once other people's data is involved, you have responsibilities. Worth talking t
 - **Passwords are already handled properly** — hashed with scrypt and salted, never stored as text. That part is genuinely done right.
 - **Consider "Sign in with Google" instead.** Then you never store passwords at all, which removes most of the risk. More setup, much less responsibility.
 - **Guessing passwords is now rate limited** (step 6) — but only if you ran the SQL.
+- ~~**A way back in if someone forgets their password**~~ — built (step 8). Before this, a locked-out person was told to make a new account, which meant losing their streak, XP, badges and every question they had ever answered.
+- **Changing a password now signs out every other device** (step 8) — so if someone else has your password, taking it back off them is one button.
 - **Get the content checked.** Over 190,000 words of revision material written by an AI, aimed at students sitting real exams. A teacher should look over it before anyone revises from it seriously.
 
 ---

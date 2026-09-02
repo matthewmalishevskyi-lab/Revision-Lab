@@ -105,7 +105,11 @@ export function PasswordField({
           onClick={() => setVisible((v) => !v)}
           // Icon-only buttons are invisible to screen readers without this.
           aria-label={visible ? "Hide password" : "Show password"}
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 opacity-50 transition hover:opacity-90"
+          // 30x30 measured, against a 44px minimum for anything meant to be
+          // tapped with a thumb. Bigger padding rather than a bigger icon:
+          // the eye stays the size it looks best at, the target around it
+          // grows. `flex` + `items-center` keeps the icon centred in it.
+          className="absolute right-1.5 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg opacity-50 transition hover:opacity-90"
         >
           <EyeIcon crossed={visible} />
         </button>

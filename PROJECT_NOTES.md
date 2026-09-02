@@ -1,5 +1,166 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Password resets, sign-out-everywhere, and making the site work on a phone (2026-09-02)
+
+Matthew, the night before going back to school: get the site to a real 1.0. From
+the honest list of what was missing he picked three — password reset, checking
+that "delete my account" actually deletes, and phones ("especially iPhones...
+you do it, I have no idea how") — plus signing out other devices when a password
+changes. He explicitly dropped two: the teacher content check (he is doing that
+himself, tomorrow) and PE's missing practical-assessment topic ("everybody knows
+about it. Forget it").
+
+### Phones, and the header that was four rows tall
+
+**Measured before changing anything**, at 320, 390 and 430px across eleven
+pages. The header was **four rows and 152 pixels tall on an iPhone** — a fifth
+of the screen spent on buttons before a word of revision. Everything else came
+out better than expected: no horizontal overflow anywhere, no console errors,
+and every input already at 16px (the size below which iOS zooms the page in on
+focus and never zooms back out).
+
+The header's old base rung kept the Home chip (50px) and a full "Login/Register"
+chip (157px), which needed 381px of row inside the 272px an iPhone SE gives it.
+It could only wrap. Two cuts fix it, both reversed as soon as there is room:
+Home goes (the logo already goes home, it returns at @md), and the account chip
+drops to a person icon (words return at @xl). **Now one row, 46px, at every
+width from 320 to 1536** — re-measured at twelve widths, logged out and logged
+in.
+
+The wordmark moved the other way: it was hidden below @xl, so every phone AND
+every small laptop window showed a bare book icon. Now visible from @sm.
+⚠️ Getting it onto a 390px phone was tried and reverted — it renders at 94px and
+puts the header straight back onto two rows. That would mean dropping Search or
+the theme toggle, which is the worse trade.
+
+**A real overlap bug found by screenshotting rather than reading:** AuthShell's
+top bar printed the "Back to home" button across the word "Lab" on every phone,
+and had done since it was written. Neither flex child would give up width.
+`min-w-0` on the wordmark is the fix — the rule flexbox never volunteers is that
+a flex child will not shrink below its own content unless told it may.
+
+**iOS-specific things that a desktop browser cannot show you**, all now handled
+in globals.css and layout.tsx: `background-attachment: fixed` (which iOS Safari
+has never properly supported — it either ignores it, stretching the colour wash
+over a 20,000px topic page so nobody ever sees it, or repaints the whole
+background every scroll frame) is now a fixed pseudo-element instead;
+`-webkit-text-size-adjust: 100%` stops Safari inflating text in landscape;
+`viewportFit: "cover"` plus `env(safe-area-inset-*)` padding fills the screen
+without running text under the notch; a `themeColor` meta tag tints the address
+bar, updated by hand from both the theme toggle and the bootstrap script
+because this site's dark mode does NOT follow the OS preference and a
+media-query pair would tint the chrome dark for someone looking at a light page.
+
+Tap targets: the accessibility switches (32px) and the show-password eye (30px)
+are now 44px of touch — `py-1.5 -my-1.5` grows the target while the negative
+margin takes the height back out of the layout, so nothing moves and the switch
+still looks 32px. Footer links went from 20px to 32px. The remaining small
+targets are inline links inside sentences, where padding would break the line
+spacing; left alone deliberately.
+
+### Signing out other devices
+
+The account page used to say, honestly, that changing your password did not sign
+you out anywhere else — sessions are signed cookies, not rows, so there was no
+list to revoke. `users.session_version` closes that: every cookie carries the
+version it was issued at, every request compares it against the number on the
+row, and `updatePassword` bumps it. One integer buys back the one thing a
+stateless session cannot do.
+
+**The check moved into `getSessionUserId` itself, not just `getCurrentUser`.**
+Twelve call sites read the session — quiz, clans, account, progress — and
+checking in only one of them would have left a revoked cookie still able to
+record progress and join clans, which is not signing out. That costs a database
+read where there was none, so it is wrapped in React's `cache()`: one lookup per
+request, shared with `getCurrentUser`, which now costs less than it did before.
+
+⚠️ **A bug caught by looking at a real data file rather than reasoning about
+one:** the local-file backend returns raw JSON objects, so accounts saved before
+this existed had no `sessionVersion` at all — 1 !== undefined, and every one of
+those accounts would have been silently logged out on the next page load.
+Defaulted in `readUsers`, exactly as `deletedAt` already was.
+
+**Verified end to end in a browser, 8 checks:** two devices logged in as the
+same person, one changes the password, the other is signed out and cannot reach
+a logged-in page, the device that made the change stays in, the old password is
+refused and the new one works.
+
+### Password reset
+
+`/forgot-password` was an honest placeholder for three weeks and is now real.
+It mattered because an account here holds a streak, XP, badges and months of
+answered questions — telling a locked-out person to start again means telling
+them to throw all of that away.
+
+**Gmail SMTP, which was Matthew's choice from three.** Checked against Resend's
+own documentation rather than assumed: every free sending service needs a
+verified DOMAIN, and without one you may only email yourself — useless for a
+locked-out classmate. A domain is ~£10/year and needs a card. Gmail costs
+nothing, needs an app password, sends from his own address and caps at ~500/day.
+**Two new environment variables** (`GMAIL_USER`, `GMAIL_APP_PASSWORD`) and
+**SESSION_AND_RESET_SETUP.sql**, both written up as step 8 of DEPLOYING.md.
+
+**This is the first real dependency the project has taken** (nodemailer), and
+the file says why at length: password hashing, sessions and the Supabase client
+are all hand-written so they can be read, but SMTP is an authentication
+handshake, base64 credentials, CRLF endings and dot-stuffing, where the failure
+mode is a reset email that quietly doesn't arrive for one person sometimes.
+**`npm install` needed once on Matthew's own machine**; Vercel does it itself.
+
+The four properties a reset link has to have, all tested: unguessable (32 bytes
+from the OS random source), short-lived (30 minutes), single-use, and **stored
+only as a sha256 hash** — one leaked backup or screenshot of that table is then
+worth nothing. sha256 rather than scrypt on purpose: slow hashing exists to make
+GUESSING expensive, and there is nothing to guess about 32 random bytes.
+
+⚠️ **A TIMING LEAK, found by testing rather than by reading.** The page says the
+same words whether or not an address has an account — the login page already
+goes to real lengths to prevent enumeration, and a forgot-password form that
+says "no account with that email" throws all of it away. But with the send
+awaited inline, an address WITH an account took **10.5 seconds** to reach the
+confirmation and one without took **0.2** — identical words, and the stopwatch
+gave the answer away anyway. This is the same shape as the 72x login timing bug
+this site already had to fix once. `after()` from next/server now sends the mail
+once the response has gone out: **measured again afterwards at 1.29x.** Two
+timeouts were added to the transport in the same pass, because the send did not
+fail on an unreachable mail server — it hung.
+
+Also: the reset page does NOT check the token on load, because checking it
+spends it and plenty of mail providers fetch every link in a message
+automatically — the person would click a link their own email service had
+already used up. `/reset-password` is in robots.ts's disallow list, and that
+one is not "no use to a searcher" like the rest: its URL contains a live
+credential.
+
+**Verified: 13 checks on the token layer** (never stored raw, single use,
+expiry, a second request retiring the first, one account's token never
+unlocking another's) and **14 in a real browser** (identical wording for real
+and unknown addresses, a truncated link explained, a made-up token refused at
+submit, mismatched and too-short passwords caught, a good reset landing logged
+in on the dashboard, the link refused the second time, the new password working
+and the old one not), plus 5 more confirming a reset ALSO signs out other
+devices and that asking repeatedly gets rate limited after a few honest tries.
+
+### "Delete my account" — a check, not a change
+
+Nothing in the code was wrong here. The risk is that ACCOUNT_SETUP.sql's
+nightly job was never run, in which case rows are marked and never erased and
+the privacy page is untrue — the same "a .sql file that was written but never
+run" shape as the quiz being dead for a week, except this one fails completely
+silently. **CHECK_DELETION_WORKS.sql** is read-only and answers the three
+questions that matter: does the job exist, has it run, is anybody stuck past
+their 30 days. Matthew to run it.
+
+**Verified overall:** `npm run check` clean — tsc, eslint --max-warnings=0,
+94,405 content checks, 177 security checks.
+
+**Still outstanding for 1.0:** the teacher content check (Matthew's, tomorrow);
+no error monitoring, so a page breaking for a friend is only discovered if they
+say so; and `_to_delete/` (~80 stale git lock files from working around this
+machine's file permissions) is sitting in the public repo and should be
+gitignored.
+
+
 ## GCSE PE — a fifteenth subject, Years 10 and 11 (2026-09-01)
 
 Matthew: make GCSE PE a new subject, everything for Years 10 and 11, from

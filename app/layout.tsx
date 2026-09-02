@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 import "./globals.css";
@@ -101,12 +101,49 @@ import { SiteFooter } from "./components/SiteFooter";
 //
 // It reads localStorage directly rather than waiting for a React component,
 // which is exactly why this has to be a raw <script>, not JSX logic.
+// ─── The phone half of the page setup ───────────────────────────────────────
+//
+// Next fills in a sensible default viewport on its own, so this export exists
+// for the two things it does NOT do by default, both of them iPhone-shaped.
+//
+// `viewportFit: "cover"` lets the page fill the whole screen, corners and all,
+// rather than sitting in a letterbox with blank bars beside the notch. That is
+// only safe because globals.css pads the body by `env(safe-area-inset-*)` to
+// match — the two changes belong together, and neither is right on its own.
+//
+// `themeColor` is what tints Safari's own address bar and the status bar above
+// it to match the page, which is most of the difference between a site that
+// feels like an app on a phone and one that feels like a web page in a box.
+//
+// ⚠️ It is a SINGLE colour, deliberately, not a light/dark pair keyed off
+// `prefers-color-scheme`. This site does not follow the OS preference — light
+// is the default for everyone until they press the toggle themselves (see
+// THEME_BOOTSTRAP_SCRIPT below). A media-query pair would therefore paint the
+// browser chrome dark for somebody whose phone is in dark mode but who is
+// looking at a light page, which is worse than not tinting at all. The toggle
+// updates this tag itself instead; ThemeToggle.tsx does it on click, and the
+// bootstrap script does it on load.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  // Matches --background in globals.css. If either changes, change both.
+  themeColor: "#f2f4fa",
+};
+
 const THEME_BOOTSTRAP_SCRIPT = `
   (function () {
     try {
       var stored = localStorage.getItem("theme");
       if (stored === "dark") {
         document.documentElement.classList.add("dark");
+        // Repaint the browser's own chrome to match, before first paint, for
+        // the same reason the class itself is added here rather than in an
+        // effect: otherwise a phone shows a light address bar above a dark
+        // page for a moment on every single load. See the viewport export
+        // above for why this is done by hand rather than by media query.
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", "#0a0d1a");
       }
       // No stored value, or it's "light" — leave the class off. Light mode is
       // the default for every first-time visitor, regardless of what their

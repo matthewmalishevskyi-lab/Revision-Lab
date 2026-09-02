@@ -52,6 +52,24 @@ export type User = {
   // — see the long note above scheduleDeletion() for why there is a wait, and
   // why that wait has to be honest.
   deletedAt: string | null;
+
+  // ─── The number that logs your other devices out ──────────────────────────
+  //
+  // Sessions on this site are SIGNED COOKIES, not rows in a table. That is a
+  // deliberate, well-documented choice (see session.ts) and it has exactly one
+  // sharp edge: because there is no list of active sessions anywhere, there is
+  // nothing to delete when you want to end them. Change your password on your
+  // phone because your brother knows it, and the cookie sitting in his browser
+  // carries on working for up to thirty days.
+  //
+  // This is what closes that. Every cookie carries the version it was issued
+  // at; every request compares it against the number here. Change the password
+  // and this goes up by one, which instantly makes every cookie that came
+  // before it — on every device, everywhere — fail that comparison.
+  //
+  // One integer buys back the one thing a stateless session cannot do, and it
+  // does not need the site to remember who is logged in where.
+  sessionVersion: number;
 };
 
 // ─── Storage: two backends, one set of functions ────────────────────────────
@@ -107,6 +125,7 @@ type UserRow = {
   password_hash: string;
   created_at: string;
   deleted_at: string | null;
+  session_version: number | null;
 };
 
 const fromRow = (row: UserRow): User => ({
@@ -116,6 +135,14 @@ const fromRow = (row: UserRow): User => ({
   email: row.email,
   passwordHash: row.password_hash,
   createdAt: row.created_at,
+  // `?? 1` matters, and it is not defensive padding. Rows created before
+  // SESSION_AND_RESET_SETUP.sql was run have no value in this column, and a
+  // column that has not been added yet comes back undefined rather than
+  // throwing. Reading either as version 1 means the site keeps working
+  // normally against a database the migration has not reached yet — everyone
+  // stays logged in, and sign-out-everywhere simply starts working once the
+  // SQL is run, instead of the whole site logging itself out in the meantime.
+  sessionVersion: row.session_version ?? 1,
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -235,6 +262,14 @@ async function readUsers(): Promise<User[]> {
     return (JSON.parse(raw) as User[]).map((u) => ({
       ...u,
       deletedAt: u.deletedAt ?? null,
+      // Same defaulting as `deletedAt`, and it is not theoretical: a laptop
+      // that has been running this site since before sessions had versions has
+      // a users.json full of records with no sessionVersion in them. Left
+      // undefined, the check in session.ts compares 1 against undefined, finds
+      // them different, and silently logs out every one of those accounts on
+      // the next page load. Caught by looking at a real file, not by reasoning
+      // about one.
+      sessionVersion: u.sessionVersion ?? 1,
     }));
   } catch (error) {
     console.error(
@@ -369,6 +404,7 @@ export async function createUser(input: {
     passwordHash: await hashPassword(input.password),
     createdAt: new Date().toISOString(),
     deletedAt: null,
+    sessionVersion: 1,
   };
 
   if (USING_DATABASE) {
@@ -424,6 +460,19 @@ export async function createUser(input: {
 // email address, then anyone who could call it could change anyone's password,
 // and the only thing standing between a stranger and every account on the site
 // would be that nobody thought to try.
+//
+// IT ALSO ENDS EVERY OTHER SESSION, which is the whole point of bumping
+// `session_version` alongside the hash rather than in a separate function
+// somebody could forget to call. The two belong together: the reason people
+// change a password is that somebody else might have the old one, and a
+// password change that leaves that person still logged in on their own laptop
+// has not actually done the thing it was asked to do.
+//
+// The increment is read-then-write rather than `session_version + 1` computed
+// by Postgres, because this API has no way to express arithmetic in a PATCH.
+// Two password changes landing in the same millisecond could therefore both
+// read 3 and both write 4 — and that is harmless here, because what matters is
+// only that the number MOVED. Every cookie issued at 3 is dead either way.
 export async function updatePassword(
   userId: string,
   newPassword: string,
@@ -431,9 +480,15 @@ export async function updatePassword(
   const passwordHash = await hashPassword(newPassword);
 
   if (USING_DATABASE) {
+    const current = await findUserById(userId);
+    if (!current) throw new Error("NO_SUCH_USER");
+
     const res = await supabase(`users?id=eq.${encodeURIComponent(userId)}`, {
       method: "PATCH",
-      body: JSON.stringify({ password_hash: passwordHash }),
+      body: JSON.stringify({
+        password_hash: passwordHash,
+        session_version: current.sessionVersion + 1,
+      }),
     });
     if (!res.ok) {
       throw new Error(describeFailure("password update", res.status, await res.text()));
@@ -445,6 +500,7 @@ export async function updatePassword(
   const user = users.find((u) => u.id === userId);
   if (!user) throw new Error("NO_SUCH_USER");
   user.passwordHash = passwordHash;
+  user.sessionVersion = (user.sessionVersion ?? 1) + 1;
   await writeUsers(users);
 }
 

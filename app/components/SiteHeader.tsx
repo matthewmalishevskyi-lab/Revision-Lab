@@ -49,22 +49,67 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
     //
     // The ladder below is built from measured widths, not guesses:
     //
-    //   base   306px  logo mark only, every chip icon-only
-    //   @xl    457px  + the "Revision Lab" wordmark          (container 576)
-    //   @2xl   546px  + the "Join quiz" label                (container 672)
+    //   base   252px  logo mark, Join/Search/Theme/account, all icon-only
+    //   @sm    364px  + the "Revision Lab" wordmark        (container 384)
+    //   @md    414px  + the Home chip                        (container 448)
+    //   @xl    549px  + the words on the account chip        (container 576)
+    //   @2xl   637px  + the "Join quiz" label                (container 672)
+    //   @3xl   687px  + the wordmark grows to text-2xl       (container 768)
     //   @4xl   862px  + Pixel, Progress and Revise           (container 896)
     //   @5xl   923px  + the "Home" label                     (container 1024)
     //
     // Each step has headroom over the container width that unlocks it.
+    //
+    // ── The phone rungs (base → @md) were added 2026-09-02, and they were
+    //    added because the header was MEASURED on a phone and was four rows
+    //    and 152 pixels tall — a fifth of an iPhone screen spent on nothing
+    //    but buttons, before a single word of revision. The old base rung
+    //    kept Home (50px) and a full-width "Login/Register" chip (157px)
+    //    visible, which needed 381px of row inside the 272px an iPhone SE
+    //    actually gives this header. It could only wrap.
+    //
+    //    Two cuts fix it, both reversed as soon as there is room: Home goes
+    //    (the logo beside it already goes home, and it comes back at @md),
+    //    and the account chip drops to its icon (its words come back at
+    //    @xl). That is 252px at the narrowest width this site is likely to
+    //    be opened at — one row, with 20px to spare.
+    //
+    //    The wordmark moves the other way. It used to be hidden below
+    //    @xl — so every phone AND every small laptop window showed a bare
+    //    book icon and nothing else. It now appears from @sm at text-base
+    //    and grows at @3xl.
+    //
+    //    @sm rather than lower is a MEASURED limit, not caution. The
+    //    wordmark renders at 94px; with the four icon chips (216px) and the
+    //    gaps the row then needs about 370px, and an iPhone 15 gives this
+    //    header 342px. Setting it to @xs was tried and put the header
+    //    straight back onto two rows at 375, 390 and 414. Fitting it on a
+    //    phone would mean dropping Search, the theme toggle or Join quiz,
+    //    which is the worse trade — the name is nice, a working control is
+    //    useful. `sm:` and `lg:`
+    //    are still the wrong tools here — see the container-query note
+    //    above — so these are `@`-prefixed like every other rung.
+    //
+    //    Every rung above was re-measured after the change, at twelve widths
+    //    from 320px to 1536px. The band that still needed work was 500-700px
+    //    — a small laptop window, or a tablet — where the wordmark and the
+    //    account label both arriving at once overflowed again; hence the
+    //    account label waiting until @xl and the big wordmark until @3xl,
+    //    rather than both landing on the same rung.
     // ─────────────────────────────────────────────────────────────────────
-    <header className="@container flex flex-wrap items-center justify-between gap-4">
+    <header className="@container flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
       {/* `shrink-0` and `whitespace-nowrap` because in the screenshot that
           prompted this fix, "Revision Lab" had been squeezed into two lines by
           the button row next to it. A wordmark that breaks in half is the
           single most broken-looking thing a header can do. */}
-      <Link href="/" className="flex shrink-0 items-center gap-3">
+      <Link href="/" className="flex shrink-0 items-center gap-2 @sm:gap-3">
         <Logo className="h-9 w-9" />
-        <span className="hidden whitespace-nowrap text-2xl font-semibold tracking-tight @xl:inline">
+        {/* Two sizes rather than hidden-then-shown: on a phone the wordmark
+            has to earn its 96px, so it is text-base there and only grows to
+            the full text-2xl once the container is wide enough not to
+            notice. Below @sm there genuinely isn't room, and a squeezed
+            wordmark is worse than none. */}
+        <span className="hidden whitespace-nowrap text-base font-semibold tracking-tight @sm:inline @3xl:text-2xl">
           Revision Lab
         </span>
       </Link>
@@ -78,12 +123,17 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
         {/* Always present, on every page, whether you're logged in or not.
             The logo also links home, but a labelled button is findable —
             people don't reliably know that a logo is clickable. */}
-        <Link href="/" className={chipClasses}>
+        {/* Hidden entirely below @md, not just its label. On a phone this
+            chip is 50px spent on a destination the logo two inches to its
+            left already reaches, and 50px is the difference between one row
+            and two. It returns the moment there is room. */}
+        <Link href="/" className={`hidden @md:flex ${chipClasses}`}>
           <HomeIcon />
-          {/* `lg` rather than `sm`: below about 1024px this label is the
-              cheapest 60px to give back, and the logo beside it already goes
-              home. Above it, the label stays — people genuinely do not all
-              know a logo is clickable. */}
+          {/* The LABEL waits until @5xl even once the chip itself is
+              back: below about 1024px it is the cheapest 60px to give back,
+              and the logo beside it already goes home. Above it, the label
+              stays — people genuinely do not all know a logo is
+              clickable. */}
           <span className="hidden @5xl:inline">Home</span>
         </Link>
 
@@ -94,8 +144,8 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
             be wrong for the exact people most likely to use it: a class
             where one person hosts and everyone else joins.
 
-            The label hides below `md` so that on a phone this costs 46px
-            rather than 130px, which is what keeps it from squeezing the
+            The label hides below @2xl so that on a phone this costs 50px
+            rather than 138px, which is what keeps it from squeezing the
             row it just joined. */}
         <Link href="/quiz/join" className={quizChipClasses}>
           <PlayIcon />
@@ -228,8 +278,20 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
           // When accounts are off there's no Login button at all, rather than
           // one that leads somewhere apologetic.
           ACCOUNTS_ENABLED && (
-            <Link href="/login" className={chipClasses}>
-              Login/Register
+            // "Login/Register" is 157px of text — by a distance the widest
+            // thing in this row, and on a phone it was the single item
+            // pushing the header onto a fourth line. Below @md it is the
+            // icon alone; the words come back the moment the container can
+            // hold them. An aria-label carries the meaning while the text
+            // is hidden, so this is only ever a VISUAL shortening — a
+            // screen reader still hears the whole thing.
+            <Link
+              href="/login"
+              className={chipClasses}
+              aria-label="Login or register"
+            >
+              <UserIcon />
+              <span className="hidden @xl:inline">Login/Register</span>
             </Link>
           )
         )}
@@ -260,6 +322,22 @@ function PlayIcon() {
         strokeWidth="1.7"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+// A head and shoulders, for the logged-out account chip. Same 24 grid and 1.7
+// stroke as every other icon in this header. Deliberately not the cog (that
+// one belongs to Account, for people who are already logged in) — two
+// different destinations sharing an icon reads as one destination with two
+// names.
+function UserIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8.5" r="3.75" />
+        <path d="M4.75 19.5a7.25 7.25 0 0114.5 0" />
+      </g>
     </svg>
   );
 }

@@ -514,6 +514,59 @@ export async function recordFailedQuizJoin(): Promise<void> {
   }
 }
 
+// ─── Asking for a password-reset email ──────────────────────────────────────
+//
+// Two things need slowing down here, and they are not the same thing.
+//
+// The obvious one is EMAIL FLOODING: type someone's address into the forgot-
+// password form five hundred times and their inbox fills up with reset links
+// they never asked for. That is harassment with a form as the weapon, and it
+// also burns through the Gmail sending limit this site's email runs on (about
+// 500 a day — see email.ts), which would take the feature down for everybody.
+//
+// The subtler one is ENUMERATION. The page deliberately says the same thing
+// whether an address has an account or not, exactly as the login page does.
+// That care is wasted if a REQUEST that finds an account behaves observably
+// differently from one that doesn't — and a limiter keyed only on the address
+// would do precisely that, since only real accounts would ever cause an email
+// and therefore a count. So requests are counted per IP regardless of outcome:
+// every request costs the same whether or not there was anybody there.
+//
+// The numbers are deliberately gentler than login's. A person who genuinely
+// cannot get in will legitimately ask twice — the first mail lands in spam,
+// or they mistype their own address — and being told off for that is how a
+// locked-out person gives up on the site entirely.
+const RESET_REQUEST_TIERS: Tier[] = [
+  { atFailures: 5, lockSeconds: 15 * 60 }, // five an hour, then a quarter hour
+  { atFailures: 10, lockSeconds: 60 * 60 },
+];
+const RESET_REQUEST_QUIET_SECONDS = 60 * 60;
+
+export async function checkResetRequestAllowed(): Promise<ThrottleVerdict> {
+  try {
+    return await checkKey(`reset-ip:${await clientIp()}`, Date.now());
+  } catch (error) {
+    console.error("[throttle] reset-request check failed, allowing:", error);
+    return { allowed: true };
+  }
+}
+
+// Note this is called for EVERY request, not only ones that found an account
+// — see the enumeration note above. It is the one limiter in this file that
+// deliberately counts successes.
+export async function recordResetRequest(): Promise<void> {
+  try {
+    await bump(
+      `reset-ip:${await clientIp()}`,
+      Date.now(),
+      RESET_REQUEST_TIERS,
+      RESET_REQUEST_QUIET_SECONDS,
+    );
+  } catch (error) {
+    console.error("[throttle] could not record reset request:", error);
+  }
+}
+
 // Exported only so the test script can check the staircase without a database.
 export const __testing = {
   lockoutFor,

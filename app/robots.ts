@@ -38,6 +38,12 @@ export default function robots(): MetadataRoute.Robots {
         "/login",
         "/register",
         "/forgot-password",
+        // The page the emailed reset link lands on. This one is not just
+        // "no use to a searcher" like the rest of this list — its URL
+        // CONTAINS a live reset token while a reset is in flight, and a
+        // crawler that followed one would be holding a working key to
+        // somebody's account for the next half hour.
+        "/reset-password",
         "/account",
         "/progress",
         "/review",

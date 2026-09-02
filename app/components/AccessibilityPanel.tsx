@@ -126,7 +126,13 @@ function Toggle({
         aria-checked={checked}
         aria-label={label}
         onClick={() => onChange(!checked)}
-        className={`relative h-8 w-14 shrink-0 rounded-full transition ${
+        // `py-1.5 -my-1.5` is the trick worth knowing: the padding grows the
+        // TOUCH area to 44px — Apple's own minimum, and this switch measured
+        // 32px — while the negative margin takes the extra height straight
+        // back out of the layout, so nothing on the page moves and the switch
+        // still LOOKS 32px tall. `bg-clip-content` keeps the colour inside the
+        // padding, so the pill doesn't visually grow with it.
+        className={`relative -my-1.5 h-11 w-14 shrink-0 rounded-full bg-clip-content py-1.5 transition ${
           checked ? "bg-blue-600" : "bg-black/15 dark:bg-white/15"
         }`}
       >

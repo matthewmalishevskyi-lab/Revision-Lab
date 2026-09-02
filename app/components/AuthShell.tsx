@@ -20,19 +20,38 @@ export function AuthShell({
   return (
     <main className="mx-auto w-full max-w-7xl px-6 py-8">
       {/* --- Top bar --- */}
-      <div className="flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <Logo className="h-9 w-9" />
-          <span className="text-2xl font-semibold tracking-tight">
+      {/* ⚠️ `min-w-0` and `shrink-0`, because without them this bar was
+          BROKEN ON EVERY PHONE and had been for as long as it existed: at
+          390px the wordmark and the "Back to home" button both refused to
+          give up any width, so they overlapped and the button sat printed
+          across the top of the word "Lab". Caught by screenshotting the page
+          at phone size, not by reading it — an overlap costs no console error
+          and no layout warning, it just looks like a mistake.
+
+          The rule is the one flexbox never volunteers: a flex child will not
+          shrink below the width of its own content unless it is told it may,
+          and `min-w-0` is how it is told. So the wordmark shrinks and the
+          button, which is the thing you cannot half-render, does not. */}
+      <div className="flex items-center justify-between gap-3">
+        <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3">
+          <Logo className="h-9 w-9 shrink-0" />
+          {/* `truncate` as the last line of defence at the very narrowest
+              widths: better a clipped word than one printed over a button. */}
+          <span className="truncate text-lg font-semibold tracking-tight sm:text-2xl">
             Revision Lab
           </span>
         </Link>
 
         <Link
           href="/"
-          className="flex items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20"
+          className="flex shrink-0 items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20"
         >
-          <span aria-hidden="true">←</span> Back to home
+          <span aria-hidden="true">←</span>
+          {/* Just the arrow on a phone. The words are 90px that the wordmark
+              beside it needs more, and an arrow pointing left in the corner of
+              a login page is not ambiguous. */}
+          <span className="hidden sm:inline">Back to home</span>
+          <span className="sm:hidden">Home</span>
         </Link>
       </div>
 

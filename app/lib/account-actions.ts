@@ -97,13 +97,21 @@ export async function changePassword(
 
   await clearLoginFailures(user.email);
 
-  // Issue a fresh session cookie. This does NOT sign out other devices — the
-  // session is a signed cookie rather than a row in a table, so there is no
-  // list of active sessions to revoke, and an old cookie stays valid until it
-  // expires. Worth being straight about rather than implying otherwise: the
-  // account page says so, and fixing it properly needs a version number stored
-  // on the user and checked on every request.
-  await createSession(userId, true);
+  // Issue a fresh session cookie — and this one DOES sign out every other
+  // device, which is the opposite of what this comment used to have to admit.
+  //
+  // updatePassword bumped the account's session_version on its way past, so
+  // every cookie handed out before this moment now fails the version check in
+  // session.ts and is dead on the next request. That includes the cookie in
+  // THIS browser, which is why a fresh one has to be issued right here: skip
+  // this line and changing your own password would log you out of your own
+  // account a second later.
+  //
+  // The new version has to be re-read rather than assumed to be "the one we
+  // had plus one" — `user` above was fetched before the update and is now
+  // stale by exactly one.
+  const updated = await findUserById(userId);
+  await createSession(userId, true, updated?.sessionVersion ?? 1);
 
   return { success: "Password changed." };
 }

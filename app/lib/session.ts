@@ -22,7 +22,9 @@
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { cache } from "react";
 import { cookies } from "next/headers";
+import { findUserById, type User } from "./users";
 
 // Renaming this logs everyone out, because browsers will keep sending the old
 // cookie name and the server will no longer look for it. Harmless right now
@@ -35,6 +37,13 @@ const SECRET_FILE = path.join(DATA_DIR, "session-secret.txt");
 type SessionPayload = {
   userId: string;
   expiresAt: number;
+
+  // Which "generation" of this account's sessions the cookie belongs to. Left
+  // out of cookies issued before this existed, hence optional — one of those
+  // is treated as version 1, the same reading users.ts gives a row with no
+  // value in the column, so nobody gets logged out by the upgrade itself.
+  // See User.sessionVersion in users.ts for what this is for.
+  v?: number;
 };
 
 // The signing key. In a deployed app this MUST come from an environment
@@ -120,12 +129,16 @@ async function decodeSession(token: string): Promise<SessionPayload | null> {
   }
 }
 
-export async function createSession(userId: string, rememberMe: boolean) {
+export async function createSession(
+  userId: string,
+  rememberMe: boolean,
+  sessionVersion: number,
+) {
   // "Keep me logged in" ticked → 30 days. Otherwise the session lasts a day.
   const days = rememberMe ? 30 : 1;
   const expiresAt = Date.now() + days * 24 * 60 * 60 * 1000;
 
-  const token = await encodeSession({ userId, expiresAt });
+  const token = await encodeSession({ userId, expiresAt, v: sessionVersion });
   const cookieStore = await cookies();
 
   cookieStore.set(COOKIE_NAME, token, {
@@ -150,13 +163,55 @@ export async function destroySession() {
   cookieStore.delete(COOKIE_NAME);
 }
 
-// Returns the id of whoever is logged in, or null. Used by pages to decide
-// what to show.
-export async function getSessionUserId(): Promise<string | null> {
+// ─── Who is logged in, checked properly ─────────────────────────────────────
+//
+// This used to be a pure cookie read: valid signature, not expired, here is
+// your user id. Fast, and wrong in one specific way — a cookie handed out
+// before a password change stayed valid until it expired, so "change your
+// password" did nothing at all to whoever was already signed in somewhere
+// else. The account page said so out loud, which was honest but not a fix.
+//
+// So the account itself is now consulted, and the cookie's version compared
+// against the one stored on the row (see User.sessionVersion in users.ts).
+// That is a database read, where before there was none — which is why it is
+// wrapped in React's `cache()`. Every call within a single request now shares
+// one lookup, including getCurrentUser's, so a page that asks who is logged in
+// three times still costs exactly one query. Between requests the memory is
+// thrown away, so one visitor's account can never be served to another.
+//
+// A blip talking to the database throws rather than returning null, and every
+// caller already treats a thrown lookup as "show an ordinary error" — the
+// alternative, quietly reading a database outage as "nobody is logged in",
+// would sign the whole site out every time Supabase hiccuped.
+const readVerifiedSession = cache(async (): Promise<User | null> => {
   const cookieStore = await cookies();
   const token = cookieStore.get(COOKIE_NAME)?.value;
   if (!token) return null;
 
   const payload = await decodeSession(token);
-  return payload?.userId ?? null;
+  if (!payload) return null;
+
+  const user = await findUserById(payload.userId);
+  if (!user) return null;
+
+  // `?? 1` on the cookie side for the same reason as on the row side: a cookie
+  // issued before this check existed carries no version, and treating it as
+  // version 1 is what stops shipping this from logging out everyone who was
+  // signed in at the time.
+  if ((payload.v ?? 1) !== user.sessionVersion) return null;
+
+  return user;
+});
+
+// Returns the id of whoever is logged in, or null. Used by pages and Server
+// Actions to decide what to show and what to allow.
+export async function getSessionUserId(): Promise<string | null> {
+  return (await readVerifiedSession())?.id ?? null;
+}
+
+// The whole account, for the one caller that needs more than the id. Shares
+// the cached lookup above, so asking for this costs nothing beyond asking for
+// the id.
+export async function getSessionUser(): Promise<User | null> {
+  return readVerifiedSession();
 }

@@ -51,6 +51,19 @@
    below the bar. */
 html {
   scroll-behavior: smooth;
+
+  /* The page's own colour lives here rather than on `body`, so that the
+     fixed colour wash in `body::before` below has something to sit in FRONT
+     of. See that rule for the whole story. */
+  background-color: var(--background);
+
+  /* Turn an iPhone one-quarter turn and Safari, left alone, inflates the
+     body text to "help" — so a paragraph that was carefully sized in
+     portrait becomes a different size in landscape, and the two orientations
+     stop looking like the same website. This switches that off and leaves
+     the site's own sizes alone; it does NOT stop anyone pinch-zooming, which
+     is a real accessibility need and is untouched. */
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Some people get motion sick from movement on screen, and set a system-wide
@@ -63,22 +76,76 @@ html {
 }
 
 body {
-  /* Instead of a flat white page, three very faint pools of colour sit behind
-     everything — blue top-left, orange top-right, violet along the bottom.
-     They're the same colours as the three subject cards, at roughly a tenth of
-     the strength, so the page feels related to the cards rather than being a
-     blank sheet they're stuck onto.
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 
-     `background-attachment: fixed` keeps the wash still while the content
-     scrolls over it, which reads as depth. */
-  background-color: var(--background);
+  /* Notched and Dynamic-Island iPhones. With `viewportFit: "cover"` set in
+     layout.tsx, the page is allowed to fill the whole screen including the
+     rounded corners — which looks right, but in LANDSCAPE would otherwise
+     run text underneath the notch and off the curved edge. `env()` reports
+     how much room the phone needs on each side; on every device without a
+     notch it reports 0, so this costs nothing anywhere else. */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Instead of a flat white page, three very faint pools of colour sit behind
+   everything — blue top-left, orange top-right, violet along the bottom.
+   They're the same colours as the three subject cards, at roughly a tenth of
+   the strength, so the page feels related to the cards rather than being a
+   blank sheet they're stuck onto.
+
+   ⚠️ THIS USED TO BE `background-attachment: fixed` ON `body`, AND THAT DOES
+   NOT WORK ON AN iPHONE. Safari on iOS has never properly supported a fixed
+   background attachment: it either ignores it — in which case the wash is
+   stretched over the whole DOCUMENT rather than the window, so on a topic
+   page twenty thousand pixels long the violet pool ends up somewhere below
+   the footer and nobody ever sees any of it — or it honours it and repaints
+   the entire background on every scroll frame, which is exactly the kind of
+   thing that makes a page feel sticky on a phone.
+
+   A fixed pseudo-element has neither problem and looks identical on a
+   desktop, which was checked by screenshotting before and after rather than
+   assumed. `z-index: -1` is what puts it behind the page's content; it still
+   sits in front of the window's own colour because that colour now lives on
+   `html` above, not on `body`. `pointer-events: none` so an invisible sheet
+   over the whole window can never eat a tap. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-image:
     radial-gradient(55rem 40rem at 8% -12%, rgba(37, 99, 235, 0.16), transparent 60%),
     radial-gradient(45rem 35rem at 96% -6%, rgba(249, 115, 22, 0.14), transparent 60%),
     radial-gradient(50rem 40rem at 50% 112%, rgba(124, 58, 237, 0.16), transparent 60%);
-  background-attachment: fixed;
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* --- Two more things that only bite on a phone ---------------------------- */
+
+/* iOS Safari ZOOMS THE WHOLE PAGE IN when you tap a text box whose font is
+   smaller than 16px, and it does not zoom back out afterwards — you are left
+   scrolling a page that no longer fits, mid-form. Every input on this site is
+   currently `text-base` (16px) and so already safe; this rule is here so that
+   the next one written at `text-sm` doesn't quietly reintroduce it. `max()`
+   rather than a flat 16px so the larger-text accessibility setting can still
+   scale these UP. */
+@media (max-width: 820px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+}
+
+/* Tapping anything on iOS flashes a grey rectangle over it — square corners
+   and all, which looks wrong over this site's rounded pills and cards. A
+   faint blue tint in its place still confirms the tap landed (removing the
+   feedback entirely would be worse than the grey box). */
+* {
+  -webkit-tap-highlight-color: rgba(37, 99, 235, 0.12);
 }
 
 /* --- The walk cycle -------------------------------------------------------
@@ -185,10 +252,22 @@ body {
    with its coloured glows — printing that would waste a full page of a
    printer's ink turning the paper almost solid dark. */
 @media print {
+  html {
+    background-color: #fff;
+  }
+
   body {
     background-image: none;
     background-color: #fff;
     color: #000;
+  }
+
+  /* The colour wash moved off `body` and onto this pseudo-element (see
+     above), so hiding it now needs its own line — without it, printing
+     would go straight back to wasting a page of ink on three coloured
+     glows, which is the exact thing this block exists to stop. */
+  body::before {
+    display: none;
   }
 }
 

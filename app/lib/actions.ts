@@ -14,7 +14,7 @@
 // tools and skip the check.
 
 import { redirect } from "next/navigation";
-import { createSession, destroySession, getSessionUserId } from "./session";
+import { createSession, destroySession, getSessionUser } from "./session";
 import { containsProfanity, PROFANITY_REJECTION_MESSAGE } from "./cleanName";
 import {
   checkLoginAllowed,
@@ -27,7 +27,6 @@ import {
 import {
   createUser,
   findUserByEmail,
-  findUserById,
   spendPasswordCheckTime,
   verifyPassword,
 } from "./users";
@@ -98,7 +97,7 @@ export async function register(
   try {
     const user = await createUser({ name, email, password });
     await recordRegistration();
-    await createSession(user.id, true);
+    await createSession(user.id, true, user.sessionVersion);
   } catch (error) {
     if (error instanceof Error && error.message === "EMAIL_TAKEN") {
       // Counts against the per-IP registration limit exactly like a genuine
@@ -211,7 +210,7 @@ export async function login(
   // production this throws a deliberately loud error, so catch it and say
   // something a visitor can act on rather than showing them a stack trace.
   try {
-    await createSession(user.id, rememberMe);
+    await createSession(user.id, rememberMe, user.sessionVersion);
   } catch (error) {
     console.error("[login] session creation failed:", error);
     return { formError: "We couldn't start your session. Please try again." };
@@ -251,11 +250,13 @@ export async function logout() {
 // a site-wide outage over a transient Supabase hiccup.
 // ─────────────────────────────────────────────────────────────────────────────
 export async function getCurrentUser() {
-  const userId = await getSessionUserId();
-  if (!userId) return null;
-
   try {
-    const user = await findUserById(userId);
+    // getSessionUser rather than getSessionUserId-then-findUserById: it has
+    // already fetched the account in order to check the cookie's session
+    // version against it, and its lookup is cached per request — so asking
+    // for the whole user here costs nothing extra, where fetching it a second
+    // time by id would have quietly doubled the queries on every page.
+    const user = await getSessionUser();
     if (!user) return null;
 
     return {
