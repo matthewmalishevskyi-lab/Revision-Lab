@@ -58,6 +58,26 @@ const require = createRequire(import.meta.url);
 // directly does not.
 const TSC = require.resolve("typescript/bin/tsc");
 
+// ── Which diagrams actually exist ──────────────────────────────────────────
+//
+// MathsDiagram.tsx is a React component file, so this script cannot import it
+// — Node has no idea what JSX is. But the registry at the bottom of it is a
+// plain object literal whose keys are quoted strings, so reading them out with
+// a regex is enough, and it stays in step with the component automatically.
+//
+// If the registry is ever refactored into something this can't read, the set
+// comes back empty and EVERY diagram name fails at once, which is loud and
+// obvious rather than quietly passing everything.
+const DIAGRAM_NAMES = (() => {
+  const src = readFileSync(new URL("../app/components/MathsDiagram.tsx", import.meta.url), "utf8");
+  const registry = src.split("export const MATHS_DIAGRAMS = {")[1]?.split("} as const;")[0];
+  if (!registry) {
+    console.error("check-content: could not find MATHS_DIAGRAMS in MathsDiagram.tsx");
+    process.exit(1);
+  }
+  return new Set([...registry.matchAll(/^\s*"([a-z0-9-]+)":/gm)].map((m) => m[1]));
+})();
+
 const out = mkdtempSync(join(tmpdir(), "revision-check-"));
 
 // Chemistry topics where calculations genuinely belong. Declared up here at
@@ -179,6 +199,25 @@ try {
         for (const b of c.keyFacts) {
           expect(b.points.length >= 3, at(`key-fact block "${b.heading}" has only ${b.points.length} points`));
           expect(new Set(b.points).size === b.points.length, at(`duplicate point inside "${b.heading}" — React key collision`));
+
+          // Diagram names are plain strings, because content files must never
+          // import React (this script compiles and reads them with plain Node).
+          // That means TypeScript cannot tell a real diagram from a typo, and
+          // DiagramRow deliberately SKIPS names it doesn't recognise rather
+          // than crashing the page — so a misspelling would silently render
+          // nothing at all, and the only way to notice is to look at every
+          // topic by eye. This is the check that turns that into a build
+          // failure.
+          for (const name of b.diagrams ?? []) {
+            expect(
+              DIAGRAM_NAMES.has(name),
+              at(`"${b.heading}" asks for a diagram called "${name}", which is not in MATHS_DIAGRAMS in app/components/MathsDiagram.tsx`),
+            );
+          }
+          expect(
+            new Set(b.diagrams ?? []).size === (b.diagrams ?? []).length,
+            at(`"${b.heading}" lists the same diagram twice — React uses the name as a key, so one would vanish`),
+          );
         }
 
         // ── Flashcards ─────────────────────────────────────────────────────

@@ -593,6 +593,12 @@ export const MATHS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Basic angle facts",
+        diagrams: [
+          "angles-on-a-line",
+          "angles-around-a-point",
+          "vertically-opposite",
+          "angles-in-a-triangle",
+        ],
         points: [
           "Angles on a straight line add to 180°.",
           "Angles around a point add to 360°.",
@@ -603,6 +609,11 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Parallel lines",
+        diagrams: [
+          "parallel-corresponding",
+          "parallel-alternate",
+          "parallel-co-interior",
+        ],
         points: [
           "Corresponding angles are equal — they form an F shape.",
           "Alternate angles are equal — they form a Z shape.",
@@ -612,6 +623,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Triangles",
+        diagrams: [
+          "exterior-angle-triangle",
+        ],
         points: [
           "Equilateral: all sides equal, all angles 60°.",
           "Isosceles: two equal sides and two equal base angles.",
@@ -633,6 +647,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Polygons",
+        diagrams: [
+          "polygon-exterior-angles",
+        ],
         points: [
           "Sum of interior angles = (n − 2) × 180°, where n is the number of sides.",
           "Sum of exterior angles of any polygon = 360°, always, regardless of the number of sides.",
@@ -643,6 +660,10 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Area and perimeter",
+        diagrams: [
+          "triangle-perpendicular-height",
+          "trapezium-area",
+        ],
         points: [
           "Rectangle: area = length × width.",
           "Triangle: area = ½ × base × perpendicular height. The height must be perpendicular, not a slanted side.",
@@ -1723,6 +1744,9 @@ export const MATHS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Pythagoras' theorem",
+        diagrams: [
+          "pythagoras",
+        ],
         points: [
           "a² + b² = c², where c is the hypotenuse — the longest side, always opposite the right angle.",
           "To find the hypotenuse: square both shorter sides, add, then square root.",
@@ -1733,6 +1757,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Trigonometry in right-angled triangles",
+        diagrams: [
+          "sohcahtoa",
+        ],
         points: [
           "SOHCAHTOA: sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse, tan = opposite ÷ adjacent.",
           "Label relative to the angle you are using: hypotenuse is always opposite the right angle; opposite faces the angle; adjacent is next to it.",
@@ -1751,6 +1778,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "The sine rule",
+        diagrams: [
+          "sine-rule",
+        ],
         points: [
           "a ÷ sin A = b ÷ sin B = c ÷ sin C.",
           "Each side is paired with the angle opposite it — that pairing is the whole idea.",
@@ -1760,6 +1790,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "The cosine rule",
+        diagrams: [
+          "cosine-rule",
+        ],
         points: [
           "a² = b² + c² − 2bc cos A.",
           "Use when you know all three sides, or two sides and the angle BETWEEN them.",
@@ -2032,6 +2065,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Tree diagrams",
+        diagrams: [
+          "tree-diagram",
+        ],
         points: [
           "Each branch is labelled with a probability, and the probabilities on each set of branches add to 1.",
           "Multiply ALONG branches to find the probability of a sequence of events.",
@@ -2050,6 +2086,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Relative frequency and Venn diagrams",
+        diagrams: [
+          "venn-two-sets",
+        ],
         points: [
           "Relative frequency = number of times an outcome occurred ÷ total number of trials.",
           "It estimates probability from experiment, and becomes more reliable as the number of trials increases.",
@@ -2863,6 +2902,9 @@ export const MATHS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Parts of a circle",
+        diagrams: [
+          "circle-parts",
+        ],
         points: [
           "Radius: from the centre to the edge. Diameter: all the way across through the centre, equal to twice the radius.",
           "Chord: a straight line joining two points on the circumference, not through the centre.",
@@ -2872,6 +2914,14 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "The main theorems",
+        diagrams: [
+          "circle-angle-at-centre",
+          "circle-semicircle",
+          "circle-same-segment",
+          "circle-cyclic-quadrilateral",
+          "circle-tangent-radius",
+          "circle-alternate-segment",
+        ],
         points: [
           "The angle at the centre is twice the angle at the circumference, when both are subtended by the same arc.",
           "The angle in a semicircle is 90°.",
@@ -2895,6 +2945,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Arc, sector and segment calculations",
+        diagrams: [
+          "circle-sector-arc",
+        ],
         points: [
           "Arc length = (angle ÷ 360) × 2πr.",
           "Sector area = (angle ÷ 360) × πr².",
@@ -4027,6 +4080,10 @@ export const MATHS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Perimeter and area of straight-sided shapes",
+        diagrams: [
+          "triangle-perpendicular-height",
+          "trapezium-area",
+        ],
         points: [
           "Perimeter is the total distance around the outside. Add every side — including the ones you have to work out yourself.",
           "Rectangle: area = length × width.",
@@ -4038,6 +4095,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Circles",
+        diagrams: [
+          "circle-parts",
+        ],
         points: [
           "The radius is the distance from the centre to the edge; the diameter is all the way across, so d = 2r.",
           "Circumference = π × diameter = 2 × π × radius.",
@@ -4048,6 +4108,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Arcs and sectors",
+        diagrams: [
+          "circle-sector-arc",
+        ],
         points: [
           "A sector is a slice of a circle bounded by two radii and an arc; the angle at the centre decides how big a fraction it is.",
           "Arc length = (θ ÷ 360) × π × d — the fraction of the full circumference.",
@@ -4930,6 +4993,10 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "The four constructions to know",
+        diagrams: [
+          "perpendicular-bisector",
+          "angle-bisector",
+        ],
         points: [
           "Perpendicular bisector of a line AB: compass more than half of AB, arc from A above and below, same radius arc from B, join the two crossing points.",
           "Angle bisector: arc from the vertex cutting both arms, then equal arcs from those two points, and join the crossing point to the vertex.",
@@ -4951,6 +5018,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Bearings",
+        diagrams: [
+          "bearing",
+        ],
         points: [
           "A bearing is measured from NORTH, CLOCKWISE, and always written with three figures. 70° is written 070°.",
           "Every bearing question starts by drawing a north line at the point you are measuring FROM.",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Flashcards } from "../../../components/Flashcards";
+import { DiagramRow } from "../../../components/MathsDiagram";
 import { HigherBadge, HigherNotice } from "../../../components/HigherBadge";
 import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";
@@ -329,6 +330,11 @@ export default async function TopicPage({ params }: Props) {
                         </li>
                       ))}
                     </ul>
+
+                    {/* Diagrams, under the points they illustrate. Geometry is
+                        the one part of maths that cannot be taught in
+                        sentences — see MathsDiagram.tsx. */}
+                    {block.diagrams && <DiagramRow names={block.diagrams} />}
                   </div>
                 ))}
               </div>

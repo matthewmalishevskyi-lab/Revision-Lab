@@ -48,7 +48,23 @@ import { GERMAN } from "./german";
 
 export type TopicContent = {
   summary: string;
-  keyFacts: { heading: string; points: string[]; higherOnly?: boolean }[];
+  keyFacts: {
+    heading: string;
+    points: string[];
+    higherOnly?: boolean;
+
+    // Named diagrams to draw under this block — see components/MathsDiagram.tsx
+    // for the list and for why they live there rather than here.
+    //
+    // Deliberately a plain string[] rather than the component's own union type.
+    // Content files must not import from components: they are data, they are
+    // read by scripts/check-content.mjs with plain Node, and dragging React
+    // into them would break that. The COST of using loose strings is that a
+    // typo would render nothing at all, silently — so check-content.mjs
+    // verifies every name here exists in the registry, which buys the safety
+    // back without the import.
+    diagrams?: string[];
+  }[];
   flashcards: { term: string; definition: string }[];
   examTips: { tip: string; detail: string }[];
 

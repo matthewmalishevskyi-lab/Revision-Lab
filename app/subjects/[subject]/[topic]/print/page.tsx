@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DiagramRow } from "../../../../components/MathsDiagram";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PrintButton } from "../../../../components/PrintButton";
@@ -123,6 +124,12 @@ export default async function PrintSheetPage({ params }: Props) {
                   <li key={point}>{point}</li>
                 ))}
               </ul>
+
+              {/* Diagrams print too. They matter MORE on paper than on screen:
+                  a printed revision sheet is what somebody takes into a room
+                  without a device, and an angle rule with no picture is the
+                  thing they will not be able to look up. */}
+              {block.diagrams && <DiagramRow names={block.diagrams} />}
             </div>
           ))}
         </div>
