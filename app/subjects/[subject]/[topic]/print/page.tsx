@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DiagramRow } from "../../../../components/MathsDiagram";
+import { DiagramRow } from "../../../../components/diagrams";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PrintButton } from "../../../../components/PrintButton";

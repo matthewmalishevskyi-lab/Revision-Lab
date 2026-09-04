@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Flashcards } from "../../../components/Flashcards";
-import { DiagramRow } from "../../../components/MathsDiagram";
+import { DiagramRow } from "../../../components/diagrams";
 import { HigherBadge, HigherNotice } from "../../../components/HigherBadge";
 import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";

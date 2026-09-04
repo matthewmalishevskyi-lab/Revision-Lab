@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Where files go when they need deleting and the tooling has no rm.
+    // Nothing in here is part of the site, and linting stale snapshots of
+    // old config files fails the build for no reason.
+    "_to_delete/**",
   ]),
 ]);
 

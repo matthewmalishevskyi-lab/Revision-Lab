@@ -1024,6 +1024,10 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Weight and resultant force",
+        diagrams: [
+          "free-body-diagram",
+          "resultant-force",
+        ],
         points: [
           "WEIGHT = mass × gravitational field strength: W = m × g. Weight is a FORCE, measured in newtons.",
           "MASS is a scalar measured in kilograms and does not change with location; WEIGHT does.",
@@ -1046,6 +1050,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Moments",
+        diagrams: [
+          "moments",
+        ],
         points: [
           "A MOMENT is the turning effect of a force: moment = force × perpendicular distance from the pivot.",
           "Moments are measured in newton-metres (Nm).",
@@ -1325,6 +1332,9 @@ export const PHYSICS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Charge, current and potential difference",
+        diagrams: [
+          "ammeter-voltmeter",
+        ],
         points: [
           "CURRENT is the rate of flow of electric charge, measured in amperes (amps).",
           "CHARGE FLOW = current × time: Q = I × t. Charge is measured in coulombs.",
@@ -1346,6 +1356,10 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Series and parallel",
+        diagrams: [
+          "series-circuit",
+          "parallel-circuit",
+        ],
         points: [
           "In SERIES, the current is the SAME everywhere.",
           "In series, the potential difference is SHARED between components and adds up to the supply.",
@@ -1637,6 +1651,9 @@ export const PHYSICS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The atom and the changing model",
+        diagrams: [
+          "atom-shells",
+        ],
         points: [
           "Atoms have a radius of about 1 × 10⁻¹⁰ m; the nucleus is around 1/10,000 of that.",
           "Protons +1, neutrons 0, electrons −1. Almost all the mass is in the nucleus.",
@@ -1950,6 +1967,9 @@ export const PHYSICS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Series circuits",
+        diagrams: [
+          "series-circuit",
+        ],
         points: [
           "There is only ONE path, so the CURRENT is the same at every point.",
           "The POTENTIAL DIFFERENCE is shared between the components and adds up to the supply.",
@@ -1960,6 +1980,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Parallel circuits",
+        diagrams: [
+          "parallel-circuit",
+        ],
         points: [
           "Each branch has the FULL supply potential difference across it.",
           "The CURRENT is shared between branches, and the branch currents add up to the total.",
@@ -1981,6 +2004,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Investigating circuits",
+        diagrams: [
+          "ammeter-voltmeter",
+        ],
         points: [
           "To find resistance: measure current with an ammeter in series and p.d. with a voltmeter in parallel, then use R = V ÷ I.",
           "A VARIABLE RESISTOR changes the current so several pairs of readings can be taken.",
@@ -2573,6 +2599,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Distance-time graphs",
+        diagrams: [
+          "distance-time-graph",
+        ],
         points: [
           "The GRADIENT of a distance-time graph gives the SPEED.",
           "A horizontal line means the object is stationary.",
@@ -2583,6 +2612,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Velocity-time graphs",
+        diagrams: [
+          "velocity-time-graph",
+        ],
         points: [
           "The GRADIENT of a velocity-time graph gives the ACCELERATION.",
           "The AREA UNDER a velocity-time graph gives the DISTANCE travelled.",
@@ -2872,6 +2904,9 @@ export const PHYSICS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The three laws",
+        diagrams: [
+          "free-body-diagram",
+        ],
         points: [
           "FIRST LAW: an object stays still, or moves at constant velocity, unless a RESULTANT force acts on it.",
           "So if velocity is constant, the resultant force must be zero — and vice versa.",
@@ -3182,6 +3217,10 @@ export const PHYSICS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "What a wave is",
+        diagrams: [
+          "transverse-wave",
+          "longitudinal-wave",
+        ],
         points: [
           "A wave transfers ENERGY from place to place WITHOUT transferring matter.",
           "The particles oscillate about a fixed point; they do not travel with the wave.",
@@ -3193,6 +3232,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Describing a wave",
+        diagrams: [
+          "transverse-wave",
+        ],
         points: [
           "AMPLITUDE is the maximum displacement from the rest position — NOT the full height from top to bottom.",
           "WAVELENGTH is the distance from one point on a wave to the same point on the next, measured in metres.",
@@ -3215,6 +3257,10 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Reflection and refraction",
+        diagrams: [
+          "reflection-law",
+          "refraction",
+        ],
         points: [
           "REFLECTION: the angle of incidence equals the angle of reflection, both measured from the NORMAL.",
           "The NORMAL is an imaginary line at right angles to the surface at the point where the ray hits.",
@@ -3815,6 +3861,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Pressure in liquids",
+        diagrams: [
+          "pressure-in-liquids",
+        ],
         points: [
           "Pressure in a liquid increases with DEPTH, because there is more liquid above pressing down.",
           "It also increases with the DENSITY of the liquid.",
@@ -4103,6 +4152,9 @@ export const PHYSICS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Magnets and fields",
+        diagrams: [
+          "bar-magnet-field",
+        ],
         points: [
           "Like poles REPEL; unlike poles ATTRACT. Both are non-contact forces.",
           "A PERMANENT magnet produces its own magnetic field all the time.",

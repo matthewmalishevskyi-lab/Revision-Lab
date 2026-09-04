@@ -48,6 +48,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Atomic number and mass number",
+        diagrams: [
+          "isotope-notation",
+        ],
         points: [
           "ATOMIC NUMBER = the number of protons. It defines which element the atom is.",
           "MASS NUMBER = protons + neutrons.",
@@ -59,6 +62,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Electron shells",
+        diagrams: [
+          "electron-shells",
+        ],
         points: [
           "Electrons occupy shells, filling the lowest available shell first.",
           "The first shell holds up to 2 electrons; the second and third hold up to 8 each at GCSE.",
@@ -661,6 +667,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Ionic bonding",
+        diagrams: [
+          "ionic-bonding",
+        ],
         points: [
           "The metal atom loses electrons to become a positive ion; the non-metal gains them to become negative.",
           "The bond is the strong ELECTROSTATIC ATTRACTION between oppositely charged ions.",
@@ -672,6 +681,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Covalent bonding",
+        diagrams: [
+          "covalent-bonding",
+        ],
         points: [
           "A covalent bond is a SHARED PAIR of electrons, and it is very strong.",
           "SIMPLE MOLECULAR substances have strong bonds within the molecule but WEAK INTERMOLECULAR FORCES between molecules.",
@@ -683,6 +695,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Metallic bonding and alloys",
+        diagrams: [
+          "metallic-bonding",
+        ],
         points: [
           "Metals are a lattice of positive ions in a 'sea' of DELOCALISED electrons.",
           "The bond is the attraction between the positive ions and those delocalised electrons.",
@@ -970,6 +985,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Diamond, graphite and graphene",
+        diagrams: [
+          "diamond-graphite",
+        ],
         points: [
           "DIAMOND: each carbon forms FOUR covalent bonds in a rigid giant structure. Very hard, very high melting point, does NOT conduct.",
           "It does not conduct because all four outer electrons are used in bonding, leaving none delocalised.",
@@ -1269,6 +1287,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Distillation",
+        diagrams: [
+          "fractional-distillation",
+        ],
         points: [
           "SIMPLE DISTILLATION separates a solvent from a solution, using the difference in boiling points.",
           "The solution is heated, the solvent evaporates, then condenses in the condenser and is collected.",
@@ -1280,6 +1301,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Chromatography",
+        diagrams: [
+          "chromatography",
+        ],
         points: [
           "Chromatography separates substances by how strongly they are attracted to a STATIONARY phase versus a MOBILE phase.",
           "The stationary phase is the paper; the mobile phase is the solvent moving through it.",
@@ -2933,6 +2957,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The basics",
+        diagrams: [
+          "electrolysis-cell",
+        ],
         points: [
           "ELECTROLYSIS is the breaking down of an ionic compound using electricity.",
           "The ELECTROLYTE is the molten or dissolved ionic compound, in which ions are free to move.",
@@ -3282,6 +3309,10 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Reaction profiles",
+        diagrams: [
+          "reaction-profile-exothermic",
+          "reaction-profile-endothermic",
+        ],
         points: [
           "A reaction profile plots energy against the progress of the reaction.",
           "EXOTHERMIC: the products are LOWER in energy than the reactants, so the overall change is negative.",
@@ -3606,6 +3637,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Collision theory",
+        diagrams: [
+          "collision-theory",
+        ],
         points: [
           "For a reaction to happen, particles must COLLIDE with at least the ACTIVATION ENERGY.",
           "Rate depends on the FREQUENCY of collisions and the PROPORTION that are successful.",
@@ -3628,6 +3662,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Reading rate graphs",
+        diagrams: [
+          "rate-graph",
+        ],
         points: [
           "A STEEPER line means a FASTER reaction.",
           "Two experiments with the same amount of reactant reach the same final level, however fast they get there.",
@@ -4267,6 +4304,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Fractional distillation and properties",
+        diagrams: [
+          "fractional-distillation",
+        ],
         points: [
           "Crude oil is separated into FRACTIONS by fractional distillation, using differences in boiling point.",
           "The column is hottest at the bottom and coolest at the top; short molecules rise highest.",
@@ -4288,6 +4328,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Cracking and alkenes",
+        diagrams: [
+          "alkane-alkene",
+        ],
         points: [
           "CRACKING breaks long-chain hydrocarbons into shorter, more useful ones.",
           "It is done by CATALYTIC cracking, using a hot catalyst, or STEAM cracking, using very high temperatures.",

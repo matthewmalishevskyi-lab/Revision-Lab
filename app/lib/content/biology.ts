@@ -44,6 +44,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "The parts of an animal cell",
+        diagrams: [
+          "animal-cell",
+        ],
         points: [
           "NUCLEUS — contains the DNA, and controls the activities of the cell.",
           "CYTOPLASM — the jelly where most chemical reactions happen.",
@@ -54,6 +57,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "What plant cells have as well",
+        diagrams: [
+          "plant-cell",
+        ],
         points: [
           "CELL WALL made of cellulose, which strengthens the cell and stops it bursting.",
           "PERMANENT VACUOLE containing cell sap, which helps keep the cell firm.",
@@ -332,6 +338,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Osmosis",
+        diagrams: [
+          "osmosis",
+        ],
         points: [
           "Osmosis is the movement of WATER only, through a partially permeable membrane.",
           "Water moves from a DILUTE solution (high water concentration) to a CONCENTRATED one (low water concentration).",
@@ -909,6 +918,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "What enzymes are",
+        diagrams: [
+          "enzyme-lock-and-key",
+        ],
         points: [
           "An enzyme is a BIOLOGICAL CATALYST: it speeds up a reaction without being used up.",
           "Enzymes are large protein molecules with a specific shape.",
@@ -919,6 +931,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Temperature and pH",
+        diagrams: [
+          "enzyme-lock-and-key",
+        ],
         points: [
           "Raising the temperature increases the rate — particles collide more often and with more energy.",
           "Past the OPTIMUM, the enzyme DENATURES: the active site changes shape and the substrate no longer fits.",
@@ -1195,6 +1210,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Plant tissues and the leaf",
+        diagrams: [
+          "leaf-cross-section",
+        ],
         points: [
           "EPIDERMAL tissue covers the plant; the upper epidermis is transparent to let light through, and has a waxy cuticle to reduce water loss.",
           "PALISADE MESOPHYLL is packed with chloroplasts and sits near the top of the leaf, where most photosynthesis happens.",
@@ -1489,6 +1507,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "The magnification equation",
+        diagrams: [
+          "microscope-magnification",
+        ],
         points: [
           "magnification = size of image ÷ size of real object.",
           "Rearranged: real size = image size ÷ magnification.",
@@ -2380,6 +2401,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Limiting factors",
+        diagrams: [
+          "photosynthesis-limiting-factors",
+        ],
         points: [
           "A LIMITING FACTOR is the one in shortest supply, which is holding the rate back at that moment.",
           "The four are: light intensity, carbon dioxide concentration, temperature, and the amount of chlorophyll.",
@@ -2985,6 +3009,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "The reflex arc",
+        diagrams: [
+          "reflex-arc",
+        ],
         points: [
           "A reflex is automatic and rapid, and does NOT involve the conscious part of the brain.",
           "This is what makes it fast, and why reflexes protect the body from harm.",
@@ -2995,6 +3022,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Neurones and synapses",
+        diagrams: [
+          "synapse",
+        ],
         points: [
           "A neurone carries an electrical impulse along its AXON.",
           "A SYNAPSE is the tiny gap between two neurones.",
@@ -3542,6 +3572,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The heart and double circulation",
+        diagrams: [
+          "double-circulation",
+        ],
         points: [
           "Humans have a DOUBLE circulatory system: blood passes through the heart TWICE for each full circuit.",
           "One loop goes to the lungs to pick up oxygen; the other goes to the rest of the body to deliver it.",
@@ -3553,6 +3586,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "The blood vessels",
+        diagrams: [
+          "blood-vessels",
+        ],
         points: [
           "ARTERIES carry blood AWAY from the heart. Thick muscular and elastic walls, small lumen, high pressure.",
           "VEINS carry blood back TO the heart. Thinner walls, large lumen, low pressure, and VALVES to stop backflow.",
@@ -3868,6 +3904,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "DNA and genes",
+        diagrams: [
+          "dna-double-helix",
+        ],
         points: [
           "DNA is a polymer made of two strands coiled into a DOUBLE HELIX.",
           "A GENE is a small section of DNA that codes for a particular sequence of amino acids, making a specific protein.",
@@ -4156,6 +4195,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The vocabulary",
+        diagrams: [
+          "punnett-square",
+        ],
         points: [
           "An ALLELE is a different version of the same gene.",
           "A DOMINANT allele is expressed even if only one copy is present. Written as a CAPITAL letter.",
@@ -5069,6 +5111,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Food chains and biomass",
+        diagrams: [
+          "food-chain",
+        ],
         points: [
           "PRODUCERS are usually green plants or algae, which make glucose by photosynthesis.",
           "PRIMARY consumers eat producers; SECONDARY consumers eat primary consumers, and so on.",

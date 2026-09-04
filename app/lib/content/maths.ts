@@ -2353,6 +2353,10 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Charts and graphs",
+        diagrams: [
+          "histogram",
+          "cumulative-frequency",
+        ],
         points: [
           "Bar charts: for discrete or qualitative data, with gaps between the bars.",
           "Pie charts: 360° represents the total, so each category's angle = (frequency ÷ total) × 360.",
@@ -2363,6 +2367,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Scatter graphs and correlation",
+        diagrams: [
+          "scatter-correlation",
+        ],
         points: [
           "Scatter graphs show the relationship between two variables.",
           "Positive correlation: as one increases so does the other. Negative: as one increases the other decreases. No correlation: no pattern.",
@@ -2373,6 +2380,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Spread and comparison",
+        diagrams: [
+          "box-plot",
+        ],
         points: [
           "Quartiles split ordered data into four. The lower quartile is a quarter of the way through, the upper quartile three quarters.",
           "Interquartile range = upper quartile − lower quartile. It describes the middle 50% and ignores extreme values.",
@@ -3203,6 +3213,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Vector arithmetic",
+        diagrams: [
+          "vector-addition",
+        ],
         points: [
           "To add vectors, add the top numbers and add the bottom numbers separately.",
           "To subtract, subtract each component separately.",
@@ -3214,6 +3227,12 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "The four transformations",
+        diagrams: [
+          "transformation-reflection",
+          "transformation-rotation",
+          "transformation-translation",
+          "transformation-enlargement",
+        ],
         points: [
           "Translation: a slide, described by a column vector. Size and orientation are unchanged.",
           "Reflection: a flip in a mirror line, which must be given by its equation, such as y = x or x = 2.",
@@ -3235,6 +3254,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Enlargement details",
+        diagrams: [
+          "transformation-enlargement",
+        ],
         points: [
           "A scale factor greater than 1 makes the shape bigger; between 0 and 1 makes it smaller.",
           "A negative scale factor puts the image on the opposite side of the centre, upside down.",
@@ -4122,6 +4144,10 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Volume",
+        diagrams: [
+          "prism-cross-section",
+          "cylinder",
+        ],
         points: [
           "A prism has the same cross-section all the way along. Volume = area of cross-section × length.",
           "Cuboid: volume = length × width × height.",
@@ -4133,6 +4159,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Surface area and units",
+        diagrams: [
+          "cuboid-net",
+        ],
         points: [
           "Surface area is the total area of all the faces. The reliable method is to list every face, find each area, then add.",
           "Cylinder: total surface area = 2πr² (the two circular ends) + 2πrh (the curved surface, which unrolls into a rectangle).",
@@ -4401,6 +4430,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "y = mx + c",
+        diagrams: [
+          "gradient-intercept",
+        ],
         points: [
           "In y = mx + c, m is the gradient (the steepness) and c is the y-intercept (where the line crosses the y-axis).",
           "Gradient = change in y ÷ change in x — 'rise over run'.",
@@ -4421,6 +4453,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Parallel and perpendicular",
+        diagrams: [
+          "parallel-perpendicular",
+        ],
         points: [
           "Parallel lines have the SAME gradient. y = 3x + 1 and y = 3x − 7 never meet.",
           "Perpendicular lines have gradients that multiply to −1. The perpendicular gradient is the negative reciprocal: flip the fraction and change the sign.",
@@ -4705,6 +4740,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Similarity",
+        diagrams: [
+          "similar-triangles",
+        ],
         points: [
           "Similar shapes have the same shape but different sizes: all matching angles are equal, and all matching sides are in the same ratio.",
           "That ratio is the scale factor. Scale factor = length on the new shape ÷ matching length on the original.",
@@ -4715,6 +4753,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Area and volume scale factors",
+        diagrams: [
+          "area-volume-scale-factors",
+        ],
         points: [
           "If lengths scale by k, then areas scale by k² and volumes scale by k³.",
           "So doubling every length multiplies area by 4 and volume by 8.",

@@ -69,10 +69,10 @@ const TSC = require.resolve("typescript/bin/tsc");
 // comes back empty and EVERY diagram name fails at once, which is loud and
 // obvious rather than quietly passing everything.
 const DIAGRAM_NAMES = (() => {
-  const src = readFileSync(new URL("../app/components/MathsDiagram.tsx", import.meta.url), "utf8");
-  const registry = src.split("export const MATHS_DIAGRAMS = {")[1]?.split("} as const;")[0];
+  const src = readFileSync(new URL("../app/components/diagrams/index.tsx", import.meta.url), "utf8");
+  const registry = src.split("export const DIAGRAMS = {")[1]?.split("} as const;")[0];
   if (!registry) {
-    console.error("check-content: could not find MATHS_DIAGRAMS in MathsDiagram.tsx");
+    console.error("check-content: could not find DIAGRAMS in app/components/diagrams/index.tsx");
     process.exit(1);
   }
   return new Set([...registry.matchAll(/^\s*"([a-z0-9-]+)":/gm)].map((m) => m[1]));
@@ -211,7 +211,7 @@ try {
           for (const name of b.diagrams ?? []) {
             expect(
               DIAGRAM_NAMES.has(name),
-              at(`"${b.heading}" asks for a diagram called "${name}", which is not in MATHS_DIAGRAMS in app/components/MathsDiagram.tsx`),
+              at(`"${b.heading}" asks for a diagram called "${name}", which is not in the registry in app/components/diagrams/index.tsx`),
             );
           }
           expect(
