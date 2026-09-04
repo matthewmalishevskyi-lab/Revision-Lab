@@ -880,420 +880,2137 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
     ],
   },
 
+  // ─── THE PROGRAMMING LADDER, RUNG 1 ───────────────────────────────────────
+  //
+  // Matthew: "start from the easy stuff and then get harder and harder
+  // gradually." This is the bottom rung, and it assumes nothing at all.
+  //
+  // This slug used to hold SEVEN blocks — constructs, variables, data types,
+  // operators, input/output, planning and debugging — which is most of a
+  // year's programming in one page. The slug is kept (progress rows are stored
+  // against it, and renaming would orphan them) but it now teaches one idea.
   "computer-science/programming-foundations": {
     summary:
-      "Programming is writing precise instructions for a machine that will do exactly what you say and nothing you meant. Almost every program ever written is built from just three structures — sequence, selection and iteration — plus somewhere to store values. Get those four ideas solid and the rest of the course is detail.",
+      "Before a program can do anything interesting it has to hold on to things: a score, a name, a price. A variable is the box it holds them in, and the data type is what kind of thing is allowed in the box. Everything else in programming is built on top of these two ideas, so it is worth being genuinely solid on them rather than nearly solid.",
     keyFacts: [
       {
-        heading: "The three programming constructs",
-        points: [
-          "Sequence: instructions run one after another, in order.",
-          "Selection: the program chooses between paths — if, elif/else if, else.",
-          "Iteration: instructions repeat. A count-controlled loop (for) repeats a set number of times; a condition-controlled loop (while) repeats until a condition changes.",
-          "Every program is built from these three. There is no fourth.",
-        ],
-      },
-      {
-        heading: "Variables and constants",
+        heading: "What a variable actually is",
         points: [
           "A variable is a named place in memory whose value can change while the program runs.",
-          "A constant is a named value that cannot change once set.",
-          "Assignment stores a value in a variable, usually written with = in code and ← in pseudocode.",
-          "Use meaningful names: totalScore, not x. Readable code is a skill examiners award marks for.",
+          "Assignment puts a value into it: score = 0 in most languages, score <- 0 in pseudocode. The name goes on the left, the value on the right.",
+          "Reading a variable does not empty it. You can use score as many times as you like and it still holds the same value.",
+          "Assigning again REPLACES what was there. After score = 5 then score = 8, the 5 is gone — there is no history.",
+          "The name is yours to choose. totalScore says what it holds; x does not, and examiners give credit for readable names.",
         ],
       },
       {
-        heading: "Data types",
+        heading: "The data types you must know",
         points: [
-          "Integer: a whole number, positive or negative, no decimal point.",
-          "Real / float: a number with a decimal point.",
-          "Boolean: True or False only.",
-          "Character: a single letter, digit or symbol. String: a sequence of characters.",
-          "Casting converts between types — int('7') gives the number 7, str(7) gives the text '7'. Input from a keyboard arrives as a string, so it usually needs casting before arithmetic.",
+          "Integer: a whole number, positive or negative, with no decimal point. 7, 0, -412.",
+          "Real (also called float): a number with a decimal point. 3.14, 0.5, -2.0. Note that 2.0 is a real, not an integer, even though it looks whole.",
+          "Boolean: only ever True or False. Nothing else fits in it.",
+          "Character: exactly one letter, digit or symbol. 'a', '7', '?'.",
+          "String: a sequence of characters, written in quotes. 'hello', '7', ''. The empty string is still a string.",
+          "Choosing the type is a real decision: a phone number is a STRING, not an integer, because it can start with 0 and you never do arithmetic on it.",
         ],
       },
       {
-        heading: "Operators",
+        heading: "Constants",
         points: [
-          "Arithmetic: + - * / with ^ or ** for powers, DIV or // for integer division, MOD or % for the remainder.",
-          "Comparison: == equal to, != not equal to, < > <= >=.",
-          "Boolean: AND, OR, NOT — used to combine conditions.",
-          "MOD is enormously useful: number MOD 2 == 0 tests whether a number is even.",
-          "= assigns a value; == compares two values. Mixing them up is the single most common beginner error.",
+          "A constant is a named value that is set once and cannot change while the program runs.",
+          "Use one for anything fixed that appears more than once: VAT rate, maximum players, the value of pi.",
+          "The point is not that the computer needs it. The point is that changing one line changes the whole program, and that nothing can accidentally overwrite it.",
+          "Conventionally written in capitals — MAX_SCORE, VAT_RATE — so a reader can see at a glance that it will not move.",
         ],
       },
       {
-        heading: "Input, output and validation",
+        heading: "Casting between types",
         points: [
-          "Input takes data from the user; output displays it.",
-          "Validation checks data is sensible before using it: range check, type check, presence check, length check, format check.",
-          "Validation checks the data is reasonable. Verification checks it was entered correctly, for example typing a password twice.",
-          "Validation cannot tell whether data is true — only whether it is plausible. A valid date of birth can still be the wrong one.",
-        ],
-      },
-      {
-        heading: "Writing algorithms before code",
-        points: [
-          "Pseudocode is structured English describing the steps, with no fixed syntax rules.",
-          "A flowchart shows the same thing as a diagram: oval for start/stop, parallelogram for input/output, rectangle for a process, diamond for a decision.",
-          "Planning first catches logic errors before you have written a hundred lines around them.",
-        ],
-      },
-      {
-        heading: "Errors and debugging",
-        points: [
-          "A syntax error breaks the rules of the language, so the program will not run at all — a missing bracket or colon.",
-          "A logic error runs perfectly but produces the wrong answer — using + where you meant *.",
-          "A runtime error crashes the program while it is running, such as dividing by zero.",
-          "A trace table tracks the value of each variable line by line and is the fastest way to find a logic error by hand.",
+          "Casting converts a value from one type to another: int('7') gives the number 7; str(7) gives the text '7'.",
+          "The two are not the same thing. '7' + '7' gives '77' because joining strings sticks them together; 7 + 7 gives 14.",
+          "int() on something that is not a number — int('hello') — crashes the program with a runtime error.",
+          "float('3.5') gives the real number 3.5. int('3.5') fails, because 3.5 is not a whole number written as text.",
         ],
       },
     ],
     flashcards: [
-      { term: "Sequence", definition: "Program instructions carried out one after another, in the order written." },
-      { term: "Selection", definition: "A construct where the program chooses between different paths depending on a condition, using if/else." },
-      { term: "Iteration", definition: "A construct that repeats a set of instructions, either a fixed number of times or until a condition changes." },
-      { term: "Count-controlled loop", definition: "A loop that repeats a known, fixed number of times, typically a for loop." },
-      { term: "Condition-controlled loop", definition: "A loop that keeps repeating while a condition is true, typically a while loop." },
       { term: "Variable", definition: "A named location in memory whose stored value can change while the program is running." },
+      { term: "Assignment", definition: "Storing a value in a variable, written as name = value in code or name <- value in pseudocode." },
       { term: "Constant", definition: "A named value that is set once and cannot be changed while the program runs." },
-      { term: "Assignment", definition: "Storing a value in a variable." },
-      { term: "Integer", definition: "A whole number data type, with no fractional or decimal part." },
-      { term: "Real (float)", definition: "A data type for numbers that include a decimal point." },
+      { term: "Data type", definition: "The kind of value a variable holds, which decides what can be stored in it and what operations are allowed." },
+      { term: "Integer", definition: "A whole number data type, with no fractional or decimal part, which may be positive or negative." },
+      { term: "Real (float)", definition: "A data type for numbers that include a decimal point, such as 3.14 or 0.5." },
       { term: "Boolean", definition: "A data type with only two possible values: True or False." },
-      { term: "String", definition: "A data type holding a sequence of characters." },
+      { term: "Character", definition: "A data type holding exactly one letter, digit, space or symbol." },
+      { term: "String", definition: "A data type holding a sequence of characters, such as a word, a sentence or a phone number." },
       { term: "Casting", definition: "Converting a value from one data type to another, such as turning the string '7' into the integer 7." },
-      { term: "MOD", definition: "An operator returning the remainder after integer division. 17 MOD 5 is 2." },
-      { term: "DIV", definition: "An operator returning the whole-number part of a division, discarding the remainder. 17 DIV 5 is 3." },
-      { term: "Validation", definition: "An automatic check that entered data is sensible and within expected limits before it is used." },
-      { term: "Verification", definition: "A check that data has been entered correctly, for example by entering it twice and comparing." },
-      { term: "Syntax error", definition: "An error breaking the rules of the programming language, which prevents the program from running." },
-      { term: "Logic error", definition: "An error where the program runs without crashing but produces an incorrect result." },
-      { term: "Trace table", definition: "A table recording the value of each variable at each step of an algorithm, used to find errors by hand." },
-      { term: "Pseudocode", definition: "A way of describing an algorithm in structured English, without the strict syntax of a real language." },
+      { term: "Identifier", definition: "The name given to a variable, constant or subprogram in a program." },
+      { term: "Initialisation", definition: "Giving a variable its first value before the rest of the program uses it." },
     ],
     examTips: [
       {
-        tip: "Fill in trace tables one row per line executed, not one per loop",
+        tip: "Name the type exactly, not approximately",
         detail:
-          "Write down every variable's value each time a line changes it, including the loop counter. Rushing these is where marks vanish. If the table has columns you never fill in, you have probably missed an iteration.",
+          "'Integer' scores. 'Number' does not, because it does not distinguish an integer from a real. If a question asks for the most appropriate data type, it wants one word and it wants the right one.",
       },
       {
-        tip: "Pseudocode is marked on logic, not spelling",
+        tip: "Phone numbers, postcodes and card numbers are strings",
         detail:
-          "You will not lose marks for writing 'if' instead of 'IF'. You will lose them for missing an else, forgetting to initialise a total to zero, or having a loop that never ends. Indent clearly so the structure is visible.",
+          "This comes up almost every year. They can begin with a zero, they may contain spaces or letters, and you never add them together. Storing 07700 900123 as an integer loses the leading zero immediately.",
       },
       {
-        tip: "Always initialise your totals and counters",
+        tip: "Initialise before you use",
         detail:
-          "total = 0 before the loop, count = 0 before you start counting. Answers that add to a variable that was never given a starting value are marked wrong even if the rest is perfect.",
+          "total = 0 before the loop that adds to it. count = 0 before you start counting. Adding to a variable that was never given a starting value is marked wrong even when the rest of the algorithm is perfect.",
       },
       {
-        tip: "Know the difference between = and == cold",
+        tip: "Say what a constant is FOR, not just what it is",
         detail:
-          "One assigns, the other compares. In an exam, writing if score = 10 instead of if score == 10 is a syntax error and costs the mark.",
+          "'A value that cannot change' is half a mark. 'A value that cannot change, so the VAT rate is written once and updating it means changing one line' is the full answer examiners are looking for.",
       },
       {
-        tip: "For error questions, name the type and give an example",
+        tip: "Watch for reals that look like integers",
         detail:
-          "'Syntax error — a missing closing bracket, so the program will not run' scores. Just writing 'an error in the code' does not.",
+          "2.0 is a real. The decimal point is what decides it, not whether the number happens to be whole. Questions use this deliberately to see whether you are reading or guessing.",
       },
       {
-        tip: "Remember that input() returns a string",
+        tip: "Use the meaningful name in your answer",
         detail:
-          "If the question involves doing arithmetic on something the user typed, cast it first. Examiners specifically look for this and it is an easy mark to drop.",
-      },
-      {
-        tip: "Choose the right loop and be ready to justify it",
-        detail:
-          "If you know how many repetitions are needed, use a count-controlled loop. If it depends on something happening — the user typing 'quit', a value being found — use a condition-controlled loop.",
-      },
-      {
-        tip: "Validation questions want the TYPE of check named",
-        detail:
-          "Say 'a range check to make sure the age is between 0 and 120', not 'check the age is sensible'. Naming the check is the mark.",
+          "When writing pseudocode in an exam, calling it numberOfPlayers rather than n costs you nothing and reads as someone who knows what they are doing. Some mark schemes credit it directly.",
       },
     ],
-
     workedExamples: [
       {
         question:
-          "Trace this algorithm and give the final value of total.\n\n  total = 0\n  FOR i = 1 TO 5\n    total = total + i\n  NEXT i",
+          "State the most appropriate data type for each, and justify the last one.\n\n  a) the number of students in a class\n  b) the price of a book\n  c) whether a user is logged in\n  d) a UK mobile number",
         steps: [
-          "Before the loop: total = 0.",
-          "i = 1 → total = 0 + 1 = 1",
-          "i = 2 → total = 1 + 2 = 3",
-          "i = 3 → total = 3 + 3 = 6",
-          "i = 4 → total = 6 + 4 = 10",
-          "i = 5 → total = 10 + 5 = 15. The loop ends because i has reached 5.",
-        ],
-        answer: "15",
-      },
-      {
-        question: "Work out 17 MOD 5 and 17 DIV 5, and explain the difference.",
-        steps: [
-          "Divide 17 by 5: it goes in 3 times, because 3 x 5 = 15.",
-          "That leaves 17 − 15 = 2 left over.",
-          "DIV gives the whole-number part of the division: 3.",
-          "MOD gives the remainder: 2.",
+          "a) You cannot have half a student, so a whole number is right: integer.",
+          "b) A price has pence, so it needs a decimal point: real (float).",
+          "c) Logged in or not — two possibilities only: boolean.",
+          "d) A mobile number starts 07..., and a leading zero is lost the moment it becomes an integer. You also never do arithmetic on it.",
         ],
         answer:
-          "17 DIV 5 = 3 and 17 MOD 5 = 2. DIV is how many whole times it fits; MOD is what is left over.",
+          "a) integer  b) real  c) boolean  d) string, because the leading zero must be kept and no arithmetic is ever done on it.",
+      },
+      {
+        question: "What does this print, and why?\n\n  a = '5'\n  b = '3'\n  print(a + b)",
+        steps: [
+          "Look at the quotes. Both a and b are strings, not numbers.",
+          "The + operator on two strings does not add — it joins them end to end. This is called concatenation.",
+          "So '5' + '3' becomes the string '53'.",
+          "To get 8 you would have to cast first: int(a) + int(b).",
+        ],
+        answer: "It prints 53, because both values are strings and + joins strings rather than adding them.",
+      },
+      {
+        question: "Trace this and give the final value of x.\n\n  x = 4\n  y = x\n  x = 10",
+        steps: [
+          "x = 4 puts 4 into x.",
+          "y = x copies the CURRENT value of x into y, so y is 4. It does not link the two variables together.",
+          "x = 10 replaces the 4 in x with 10. y is untouched.",
+          "So x is 10 and y is still 4.",
+        ],
+        answer: "x is 10 and y is 4. Assignment copies a value at that moment; it does not tie two variables together.",
       },
       {
         question:
-          "This program should print 'Adult' for anyone 18 or over. Find and fix the error.\n\n  age = input('Age? ')\n  IF age > 18 THEN\n    print('Adult')",
+          "This should work out how much change is left. Find the error.\n\n  PRICE = 3\n  paid = 5\n  PRICE = paid - PRICE",
         steps: [
-          "First problem: input returns a STRING, so age holds the text '20', not the number 20. Comparing text to a number is either an error or gives nonsense.",
-          "Fix: age = int(input('Age? ')) to cast it to an integer.",
-          "Second problem: > 18 excludes someone who is exactly 18, but the specification says 18 or over.",
-          "Fix: use >= 18.",
+          "PRICE is written in capitals, which by convention means it is meant to be a constant.",
+          "The last line assigns a new value to PRICE, which a constant is not allowed to have.",
+          "It also destroys the price, so the program can never refer to it again.",
+          "The fix is to put the result somewhere else: change = paid - PRICE.",
         ],
         answer:
-          "age = int(input('Age? ')) and IF age >= 18 THEN. Two separate bugs: a missing cast, and a boundary error.",
-      },
-      {
-        question:
-          "Write a validation check that only accepts a percentage mark between 0 and 100 inclusive, and name the type of check.",
-        steps: [
-          "The value must be at least 0 AND at most 100 — both conditions must hold, so combine them with AND.",
-          "'Inclusive' means 0 and 100 themselves are allowed, so use >= and <=, not > and <.",
-          "In pseudocode: IF mark >= 0 AND mark <= 100 THEN accept ELSE reject.",
-          "This restricts a value to a permitted span, so it is a range check.",
-        ],
-        answer:
-          "IF mark >= 0 AND mark <= 100 THEN accept — a range check.",
-      },
-      {
-        question:
-          "Complete a trace table for this algorithm.\n\n  x = 10\n  WHILE x > 6\n    x = x - 2\n  ENDWHILE",
-        steps: [
-          "Start: x = 10. Is 10 > 6? Yes → x becomes 8.",
-          "Is 8 > 6? Yes → x becomes 6.",
-          "Is 6 > 6? No — 6 is not greater than 6, so the loop stops.",
-          "The condition is checked BEFORE each pass, which is why the loop exits without running again.",
-        ],
-        answer: "x ends as 6, after two passes of the loop.",
+          "The last line reassigns a constant. It should store the result in a new variable: change = paid - PRICE.",
       },
     ],
-
     practice: [
+      {
+        question: "Which data type stores a value that can only be True or False?",
+        accept: ["Boolean"],
+        choices: ["Boolean", "Integer", "String", "Real"],
+        answer: "Boolean. It is the only type with exactly two possible values, and it is what every condition in a program evaluates to.",
+      },
+      {
+        question: "Which data type should be used to store a UK mobile phone number?",
+        accept: ["String"],
+        choices: ["String", "Integer", "Real", "Character"],
+        answer: "String. It begins with a leading zero, which an integer would throw away, and no arithmetic is ever performed on it.",
+      },
+      {
+        question: "Which of these is a real (float) rather than an integer?",
+        accept: ["2.0"],
+        choices: ["2.0", "2", "-2", "0"],
+        answer: "2.0. The decimal point is what makes it a real, even though the value happens to be a whole number.",
+      },
+      {
+        question: "What is the value of the string expression '5' + '3'?",
+        accept: ["53"],
+        choices: ["53", "8", "15", "an error"],
+        answer: "53. The + operator joins two strings end to end rather than adding them, which is called concatenation.",
+      },
+      {
+        question: "What is the term for converting the string '7' into the integer 7?",
+        accept: ["Casting"],
+        choices: ["Casting", "Assignment", "Validation", "Initialisation"],
+        answer: "Casting. It converts a value from one data type to another, and is needed whenever text has to be used as a number.",
+      },
+      {
+        question: "Name the data type that holds exactly one letter, digit or symbol.",
+        accept: ["character", "char"],
+        answer: "Character. A string holds a sequence of them; a character holds precisely one.",
+      },
+      {
+        question: "What is the most appropriate data type for the price of an item in pounds and pence?",
+        accept: ["real", "float"],
+        answer: "Real, also called float. Pence require a decimal point, which an integer cannot store.",
+      },
+      {
+        question: "What is the most appropriate data type for the number of pupils in a class?",
+        accept: ["integer", "int"],
+        answer: "Integer. The count is always a whole number, so a real would be storing precision that cannot exist.",
+      },
+      {
+        question: "Give the term for a named value that cannot be changed while the program runs.",
+        accept: ["constant"],
+        answer: "A constant. Using one means a fixed value such as a VAT rate is written once and updated in a single place.",
+      },
+      {
+        question: "After x = 4, then y = x, then x = 10, what value does y hold?",
+        accept: ["4"],
+        answer: "4. Assignment copies the value at that moment. It does not link the two variables, so changing x later leaves y alone.",
+      },
+      {
+        question: "Why should a variable be initialised before a loop that adds to it?",
+        accept: ["so it has a starting value", "it has no starting value otherwise", "to give it a starting value"],
+        answer: "Because adding to a variable that has never been given a starting value has no defined result, and in most languages crashes the program.",
+      },
+      {
+        question: "What happens when int('hello') is run?",
+        accept: ["a runtime error", "runtime error", "it crashes", "an error"],
+        answer: "It causes a runtime error and the program stops, because 'hello' is not a number written as text and there is nothing to convert it to.",
+      },
+      {
+        question: "Which is the better variable name for a running total of marks: t or totalMarks?",
+        accept: ["totalMarks"],
+        answer: "totalMarks. It says what the variable holds without anyone having to read the rest of the program, and mark schemes credit readable identifiers.",
+      },
+      {
+        question: "Write the pseudocode line that stores the number 0 in a variable called score.",
+        accept: ["score <- 0", "score = 0"],
+        answer: "score <- 0, or score = 0 in most real languages. The name being assigned to goes on the left of the operator.",
+      },
+      {
+        question: "Which data type would you use to record whether a light is switched on?",
+        accept: ["boolean", "bool"],
+        answer: "Boolean. On or off is exactly two possibilities, which is what a boolean exists to store.",
+      },
+      {
+        question: "Explain why a postcode should be stored as a string rather than an integer.",
+        accept: ["it contains letters", "postcodes contain letters", "letters"],
+        answer: "A postcode contains letters as well as digits, and no arithmetic is ever done on it, so a string is the only type that can hold it at all.",
+      },
+      {
+        question: "What is the empty string?",
+        accept: ["a string with no characters", "a string containing no characters", "no characters"],
+        answer: "A string containing no characters at all, written as two quote marks with nothing between them. It is still a string, and it is not the same as zero or nothing.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A variable holds a value, so reading it uses the value up.",
+        right:
+          "Reading a variable leaves it exactly as it was. You can use score a hundred times and it still holds the same number. Only assignment changes it.",
+      },
+      {
+        wrong: "2.0 is an integer because it has no fractional part.",
+        right:
+          "It is a real. The decimal point decides the type, not the value that happens to be in it. This is deliberately tested.",
+      },
+      {
+        wrong: "Phone numbers are numbers, so they should be stored as integers.",
+        right:
+          "They should be strings. Storing 07700 900123 as an integer drops the leading zero, and adding two phone numbers together is meaningless anyway.",
+      },
+      {
+        wrong: "y = x makes y follow x, so if x changes later y changes too.",
+        right:
+          "Assignment copies the value once, at that moment. After y = x, the two variables have no connection at all.",
+      },
+      {
+        wrong: "'5' and 5 are the same thing because they look the same on screen.",
+        right:
+          "One is text and one is a number. '5' + '5' gives '55'; 5 + 5 gives 10. The quotes are the whole difference.",
+      },
+    ],
+  },
+  // ─── RUNG 2 ───────────────────────────────────────────────────────────────
+  //
+  // Once a program can hold a value, the next thing it needs is a way to get
+  // values in and out, and to do arithmetic on them. DIV and MOD live here
+  // rather than three topics later because they are needed the moment anyone
+  // writes a program that works in minutes and seconds.
+  "computer-science/programming-input-and-output": {
+    summary:
+      "A program that cannot take anything in or give anything back is just a very expensive way of heating a room. This rung covers getting data from the user, showing results, and the arithmetic operators you need in between — including DIV and MOD, which look obscure until the first time you have to turn 200 seconds into minutes and seconds.",
+    keyFacts: [
+      {
+        heading: "Input and output",
+        points: [
+          "Input takes data from outside the program — usually the keyboard — and stores it in a variable.",
+          "Output displays something to the user, usually with print or OUTPUT.",
+          "Almost always you want a prompt so the user knows what to type: name = input('What is your name? ').",
+          "Without a prompt the program appears to have frozen, which is a usability point examiners do give credit for.",
+        ],
+      },
+      {
+        heading: "Input arrives as text — always",
+        points: [
+          "Whatever the user types, input() hands back a STRING. Typing 25 gives you '25', not 25.",
+          "So arithmetic on raw input either crashes or does the wrong thing: '25' * 2 gives '2525', not 50.",
+          "Cast it as you read it: age = int(input('Age? ')) for a whole number, or float(...) for a decimal.",
+          "This is the single most common bug in beginner code, and one examiners look for on purpose.",
+        ],
+      },
+      {
+        heading: "Arithmetic operators",
+        points: [
+          "+ add, - subtract, * multiply, / divide.",
+          "^ or ** raises to a power: 2 ** 3 is 8.",
+          "Normal division always produces a real, even when it divides exactly. 10 / 2 gives 5.0, not 5.",
+          "Brackets work exactly as they do in maths, and the usual order of operations applies.",
+        ],
+      },
+      {
+        heading: "DIV and MOD",
+        points: [
+          "DIV (written // in Python) gives the whole-number part of a division and throws the remainder away. 17 DIV 5 is 3.",
+          "MOD (written % in Python) gives the remainder and throws the whole part away. 17 MOD 5 is 2.",
+          "Together they split a division cleanly: 17 = 3 lots of 5, remainder 2.",
+          "MOD 2 is the standard test for even or odd: if n MOD 2 == 0 then n is even.",
+          "Converting units is the classic use: 200 seconds is 200 DIV 60 = 3 minutes and 200 MOD 60 = 20 seconds.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Input", definition: "Data taken into a program from outside it, most often typed by the user at the keyboard." },
+      { term: "Output", definition: "Data sent out of a program for the user to see, usually printed to the screen." },
+      { term: "Prompt", definition: "A message shown before an input so the user knows what they are expected to type." },
+      { term: "Casting", definition: "Converting a value from one data type to another, such as int('25') to turn typed text into a number." },
+      { term: "DIV", definition: "An operator giving the whole-number part of a division, discarding the remainder. 17 DIV 5 is 3." },
+      { term: "MOD", definition: "An operator giving the remainder after integer division. 17 MOD 5 is 2." },
+      { term: "Concatenation", definition: "Joining two strings end to end, which is what the + operator does when both sides are strings." },
+      { term: "Operator", definition: "A symbol that performs an operation on values, such as +, *, DIV or MOD." },
+      { term: "Operand", definition: "A value that an operator acts on. In 17 MOD 5, the operands are 17 and 5." },
+      { term: "Integer division", definition: "Division that keeps only the whole-number part of the result, discarding anything after the decimal point." },
+    ],
+    examTips: [
+      {
+        tip: "Cast the input in the same line you read it",
+        detail:
+          "age = int(input('Age? ')) rather than reading it and casting later. It is shorter, it is what mark schemes show, and it makes forgetting impossible.",
+      },
+      {
+        tip: "MOD questions are usually about even, odd or units",
+        detail:
+          "If a question mentions 'every third', 'even', 'leftover', 'minutes and seconds' or 'how many complete boxes', it is a DIV or MOD question. Spotting that is most of the work.",
+      },
+      {
+        tip: "Say which one gives which",
+        detail:
+          "DIV gives the whole part, MOD gives the remainder. Answers that describe them the wrong way round score nothing even if the arithmetic underneath is right, so learn one of them properly and get the other by elimination.",
+      },
+      {
+        tip: "Remember that / produces a real",
+        detail:
+          "10 / 2 is 5.0, not 5. If a question needs a whole number of anything — boxes, minutes, players — you want DIV, not /.",
+      },
+      {
+        tip: "Include the prompt when writing input in an exam",
+        detail:
+          "Some mark schemes award a usability mark for it, and none deduct for it. It costs you five words.",
+      },
+      {
+        tip: "Show the division when you work out MOD",
+        detail:
+          "For 23 MOD 4, write 23 = 5 x 4 + 3 so the 3 is visible as the remainder. If you slip, an examiner can still see the method.",
+      },
+    ],
+    workedExamples: [
+      {
+        question: "Work out 17 DIV 5 and 17 MOD 5, and say what each one means.",
+        steps: [
+          "Divide 17 by 5. It goes in 3 whole times, because 3 x 5 = 15.",
+          "That leaves 17 - 15 = 2 left over.",
+          "DIV keeps the whole-number part: 3.",
+          "MOD keeps the remainder: 2.",
+        ],
+        answer: "17 DIV 5 = 3 and 17 MOD 5 = 2. DIV is how many whole times it fits, MOD is what is left over.",
+      },
+      {
+        question: "A program has 200 seconds. Write pseudocode that outputs it as minutes and seconds.",
+        steps: [
+          "There are 60 seconds in a minute, so the number of whole minutes is 200 DIV 60.",
+          "200 DIV 60 = 3, because 3 x 60 = 180 and a fourth minute will not fit.",
+          "The seconds left over are 200 MOD 60 = 20.",
+          "So: minutes <- 200 DIV 60 and seconds <- 200 MOD 60, then output both.",
+        ],
+        answer:
+          "minutes <- 200 DIV 60 gives 3, seconds <- 200 MOD 60 gives 20. The output is 3 minutes and 20 seconds.",
+      },
+      {
+        question: "This should double the number the user types. Find and fix the bug.\n\n  n = input('Number? ')\n  print(n * 2)",
+        steps: [
+          "input() always returns a string, so n holds the text '7', not the number 7.",
+          "Multiplying a string by 2 repeats the string, so typing 7 prints 77.",
+          "The program does not crash, which is what makes this bug hard to spot — it is a logic error, not a syntax one.",
+          "Fix: cast on input with n = int(input('Number? ')).",
+        ],
+        answer:
+          "n = int(input('Number? ')). Without the cast the string is repeated rather than the number doubled, so 7 prints as 77.",
+      },
+      {
+        question: "Write a condition that is true only when a number n is even.",
+        steps: [
+          "An even number divides by 2 with nothing left over.",
+          "The remainder after dividing by 2 is n MOD 2.",
+          "For an even number that remainder is 0.",
+          "So the condition is n MOD 2 == 0. Use ==, because this compares rather than assigns.",
+        ],
+        answer: "n MOD 2 == 0, which is written n % 2 == 0 in Python.",
+      },
+    ],
+    practice: [
+      {
+        question: "What data type does input() return, whatever the user types?",
+        accept: ["String"],
+        choices: ["String", "Integer", "Real", "It depends on what they type"],
+        answer: "String. Even typing 25 gives back the text '25', which is why arithmetic on raw input needs a cast first.",
+      },
       {
         question: "What is 17 MOD 5?",
         accept: ["2"],
-        answer: "2. MOD gives the remainder after division: 17 = 3 x 5 + 2.",
+        choices: ["2", "3", "3.4", "12"],
+        answer: "2. MOD gives the remainder: 17 = 3 x 5 + 2, so 2 is left over.",
       },
       {
         question: "What is 17 DIV 5?",
         accept: ["3"],
-        answer: "3. DIV gives the whole-number part of the division, discarding the remainder.",
+        choices: ["3", "2", "3.4", "85"],
+        answer: "3. DIV gives the whole-number part of the division and throws the remainder away.",
+      },
+      {
+        question: "Which expression is true only when n is even?",
+        accept: ["n MOD 2 == 0"],
+        choices: ["n MOD 2 == 0", "n MOD 2 == 1", "n DIV 2 == 0", "n / 2 == 0"],
+        answer: "n MOD 2 == 0. An even number leaves no remainder when divided by two.",
+      },
+      {
+        question: "What does the code print?\n\n  n = input('Number? ')\n  print(n * 2)\n\nThe user types 7.",
+        accept: ["77"],
+        choices: ["77", "14", "7", "an error"],
+        answer: "77. n holds the string '7', and multiplying a string repeats it rather than doubling a number.",
       },
       {
         question: "What is 23 MOD 4?",
         accept: ["3"],
-        answer: "3, because 23 = 5 x 4 + 3.",
+        answer: "3, because 23 = 5 x 4 + 3. Five whole fours fit into 23 and three are left over.",
       },
       {
-        question:
-          "Name the data type used to store a value that can only be True or False.",
-        accept: ["boolean", "bool"],
-        answer:
-          "Boolean. It is the only data type with just two possible values, which is why it underpins every IF statement.",
+        question: "What is 23 DIV 4?",
+        accept: ["5"],
+        answer: "5. Four goes into 23 five whole times, and DIV discards the remainder of 3.",
       },
       {
-        question: "Name the data type for a whole number with no decimal point.",
-        accept: ["integer", "int"],
-        answer:
-          "Integer. Use a real (float) instead if the value could have a decimal part.",
+        question: "How many whole minutes are there in 200 seconds?",
+        accept: ["3"],
+        answer: "3. That is 200 DIV 60, because three lots of 60 fit into 200 and a fourth would not.",
       },
       {
-        question:
-          "Which data type would you use to store the value 3.75?",
-        accept: ["real", "float", "a real", "a float"],
-        answer: "Real (also called float) — a number with a decimal point.",
+        question: "How many seconds are left over after taking the whole minutes out of 200 seconds?",
+        accept: ["20"],
+        answer: "20. That is 200 MOD 60, the remainder once three whole minutes of 60 seconds have been removed.",
       },
       {
-        question:
-          "Name the programming construct that repeats a set of instructions.",
-        accept: ["iteration", "a loop", "loop"],
-        answer: "Iteration (a loop). The other two constructs are sequence and selection.",
+        question: "Write the line that reads a whole number from the user into a variable called age.",
+        accept: ["age = int(input())", "age = int(input('Age? '))", "age <- int(input())"],
+        answer: "age = int(input('Age? ')). The int() cast is what turns the typed text into a number you can do arithmetic on.",
       },
       {
-        question:
-          "Name the construct that chooses between different paths depending on a condition.",
-        accept: ["selection"],
-        answer: "Selection, using IF / ELSE.",
+        question: "What is the value of 10 / 2 in most languages, and what data type is it?",
+        accept: ["5.0", "5.0, a real"],
+        answer: "5.0, which is a real. Normal division always produces a real even when the division is exact, so use DIV if a whole number is needed.",
       },
       {
-        question:
-          "Which type of loop should you use when you know exactly how many repetitions are needed?",
-        accept: [
-          "count controlled", "a count controlled loop", "count-controlled",
-          "for loop", "a for loop", "for",
-        ],
-        answer:
-          "A count-controlled loop (a FOR loop). Use a condition-controlled loop (WHILE) when the number of repetitions depends on something happening.",
+        question: "What is 2 ** 3?",
+        accept: ["8"],
+        answer: "8. The ** operator raises to a power, so this is two cubed.",
       },
       {
-        question:
-          "What is the final value of total?\n\n  total = 0\n  FOR i = 1 TO 4\n    total = total + i\n  NEXT i",
-        accept: ["10"],
-        answer: "10, because 1 + 2 + 3 + 4 = 10.",
+        question: "Why should an input have a prompt?",
+        accept: ["so the user knows what to type", "so the user knows what to enter", "to tell the user what to type"],
+        answer: "So the user knows what is expected. Without one the program looks as though it has frozen, and some mark schemes award a usability mark for including it.",
       },
       {
-        question:
-          "What is the final value of x?\n\n  x = 20\n  WHILE x > 12\n    x = x - 3\n  ENDWHILE",
-        accept: ["11"],
-        answer:
-          "11. The values go 20, 17, 14, 11 — and once x is 11 the condition 11 > 12 is false, so the loop stops.",
+        question: "What is the term for joining two strings end to end?",
+        accept: ["concatenation"],
+        answer: "Concatenation. It is what the + operator does when both of its operands are strings rather than numbers.",
       },
       {
-        question:
-          "What type of error is a missing closing bracket, which stops the program running at all?",
-        accept: ["syntax error", "syntax", "a syntax error"],
-        answer:
-          "A syntax error — it breaks the rules of the language, so the program will not run.",
+        question: "A shop packs eggs into boxes of 6. How many full boxes do 20 eggs fill?",
+        accept: ["3"],
+        answer: "3, which is 20 DIV 6. Two eggs are left over, and 20 MOD 6 = 2 would tell you that.",
       },
       {
-        question:
-          "What type of error is using + where you meant *, so the program runs but gives the wrong answer?",
-        accept: ["logic error", "logic", "a logic error"],
-        answer:
-          "A logic error. The program runs perfectly; it just does the wrong thing, which makes these much harder to find.",
+        question: "In the same problem, how many eggs are left over?",
+        accept: ["2"],
+        answer: "2, which is 20 MOD 6. Three full boxes use 18 eggs and two cannot fill a fourth.",
       },
       {
-        question:
-          "What is the name of the table used to track the value of each variable line by line when checking an algorithm by hand?",
-        accept: ["trace table", "a trace table"],
-        answer:
-          "A trace table — the fastest way to find a logic error without a computer.",
-      },
-      {
-        question:
-          "Name the type of validation check that confirms a value falls between two limits.",
-        accept: ["range check", "a range check", "range"],
-        answer:
-          "A range check. Others include type, presence, length and format checks.",
-      },
-      {
-        question:
-          "What is the difference between = and == in most programming languages? Give the purpose of each.",
-        accept: [
-          "= assigns and == compares", "assignment and comparison",
-          "= assignment == comparison", "one assigns one compares",
-        ],
-        answer:
-          "= assigns a value to a variable; == compares two values and gives True or False. Writing = where you meant == is the most common beginner error there is.",
-      },
-      {
-        question:
-          "Explain why a program must usually cast the result of input() before doing arithmetic with it.",
-        answer:
-          "Because input() returns a string, not a number. '5' + '3' would join the text to give '53', or raise an error when mixed with numbers. Casting with int() or float() converts the text into a number so arithmetic behaves as intended. (Mark this one yourself.)",
-      },
-      {
-        question:
-          "Explain the difference between validation and verification, with an example of each.",
-        answer:
-          "Validation checks data is SENSIBLE — for example a range check confirming an age is between 0 and 120. Verification checks data was entered CORRECTLY — for example typing a password twice and comparing. Validation cannot tell whether data is true: a valid date of birth can still be the wrong one. (Mark this one yourself.)",
-      },
-      {
-        question: "Which of these is an example of ITERATION?",
-        choices: [
-          "A for loop repeating ten times",
-          "An if statement checking a value",
-          "Assigning a value to a variable",
-          "Declaring a constant",
-        ],
-        accept: [
-          "A for loop repeating ten times",
-        ],
-        answer: "Iteration is repetition. Selection is choosing with if or case, and sequence is running lines in order.",
-      },
-      {
-        question: "What is a variable?",
-        choices: [
-          "A named store whose value can change while the program runs",
-          "A value that never changes",
-          "A type of loop",
-          "A built-in function",
-        ],
-        accept: [
-          "A named store whose value can change while the program runs",
-        ],
-        answer: "A constant is the opposite — its value is fixed once set, which prevents accidental changes.",
-      },
-      {
-        question: "Which data type would best store a person's age in whole years?",
-        choices: [
-          "Integer",
-          "Real",
-          "String",
-          "Boolean",
-        ],
-        accept: [
-          "Integer",
-        ],
-        answer: "Integers are whole numbers. Real allows decimals, string holds text, and boolean holds only true or false.",
-      },
-      {
-        question: "What does the MOD operator return?",
-        choices: [
-          "The remainder after division",
-          "The whole number part of a division",
-          "The larger of two numbers",
-          "The result of multiplication",
-        ],
-        accept: [
-          "The remainder after division",
-        ],
-        answer: "DIV gives the whole number part. MOD is useful for checking whether a number divides exactly, such as testing for even numbers.",
-      },
-      {
-        question: "What is a WHILE loop best used for?",
-        choices: [
-          "Repeating an unknown number of times until a condition changes",
-          "Repeating an exact number of times",
-          "Choosing between two options",
-          "Storing a list of values",
-        ],
-        accept: [
-          "Repeating an unknown number of times until a condition changes",
-        ],
-        answer: "A for loop suits a known count. A while loop that never changes its condition becomes an infinite loop.",
+        question: "Which operator would you use to find out whether a number divides exactly by 7?",
+        accept: ["MOD"],
+        answer: "MOD. If n MOD 7 is 0 there is no remainder, which is exactly what dividing exactly means.",
       },
     ],
-
     misconceptions: [
       {
-        wrong: "\"= and == do the same thing.\"",
+        wrong: "If the user types a number, the program gets a number.",
         right:
-          "= assigns; == compares. IF score = 10 is a syntax error in most languages, or silently sets score to 10 in others — which is worse, because the program runs and quietly does the wrong thing.",
+          "It gets a string of digits. Nothing about typing 25 makes it a number until you cast it, which is why '25' * 2 gives '2525'.",
       },
       {
-        wrong: "\"input() gives me a number if the user types a number.\"",
+        wrong: "DIV and MOD are the same thing written two ways.",
         right:
-          "input() always returns a string. '5' + '3' gives '53', not 8. Cast with int() or float() before doing arithmetic.",
+          "They are the two halves of one division. DIV keeps the whole part and throws away the remainder; MOD keeps the remainder and throws away the whole part.",
       },
       {
-        wrong: "\"A logic error is less serious than a syntax error.\"",
+        wrong: "10 / 2 gives the integer 5.",
         right:
-          "The opposite, usually. A syntax error stops the program immediately and tells you where. A logic error runs perfectly and produces a wrong answer that nobody notices — which is how real systems ship bugs.",
+          "It gives the real 5.0. Ordinary division always produces a real, which matters when a question asks for a whole number of boxes or players.",
       },
       {
-        wrong: "\"WHILE x > 6 will stop when x equals 6, so it runs while x is 6.\"",
+        wrong: "A program that does not crash has no bugs in its input handling.",
         right:
-          "It stops as soon as x is 6, because 6 > 6 is false. Confusing > with >= is the single most common source of off-by-one errors.",
+          "Forgetting to cast usually does not crash. It quietly does the wrong thing, which is far harder to spot than an error message.",
+      },
+    ],
+  },
+  // ─── RUNG 3 ───────────────────────────────────────────────────────────────
+  //
+  // The first rung where the program stops being a straight line. Selection is
+  // also where = against == does its annual damage, so that gets its own
+  // block rather than a footnote.
+  "computer-science/programming-selection": {
+    summary:
+      "Up to now a program has run straight through, top to bottom. Selection is the point where it starts making decisions: do this if that is true, otherwise do something else. It is one of the three constructs every program is built from, and almost every interesting thing a computer does comes down to a very large number of very small decisions.",
+    keyFacts: [
+      {
+        heading: "What selection is",
+        diagrams: [
+          "flowchart-selection",
+        ],
+        points: [
+          "Selection means the program chooses between paths depending on a condition.",
+          "A condition is anything that evaluates to True or False — that is, to a boolean.",
+          "IF ... THEN runs a block only when the condition is true, and skips it otherwise.",
+          "ELSE gives the alternative path, run only when the condition was false. Exactly one of the two runs — never both, never neither.",
+          "ELIF (ELSE IF) chains more conditions on. They are tested in order, and the FIRST true one wins; the rest are not even looked at.",
+        ],
       },
       {
-        wrong: "\"Validation proves the data is correct.\"",
-        right:
-          "Validation only proves the data is plausible. A range check confirms an age is between 0 and 120; it cannot tell that the person typed 34 when they are actually 43.",
+        heading: "Comparison operators",
+        points: [
+          "== equal to, != not equal to, < less than, > greater than, <= less than or equal to, >= greater than or equal to.",
+          "= assigns a value. == compares two values. They are different operators and confusing them is the most common beginner error there is.",
+          "Boundaries matter enormously: 'at least 18' is >= 18, not > 18. That single character is the difference between right and wrong.",
+          "Comparisons work on strings too, comparing alphabetically: 'apple' < 'banana' is True.",
+        ],
       },
       {
-        wrong: "\"Comments should explain what each line does.\"",
+        heading: "Combining conditions",
+        points: [
+          "AND is true only when BOTH sides are true.",
+          "OR is true when EITHER side is true, including when both are.",
+          "NOT flips a condition: NOT True is False.",
+          "A common trap: 'between 10 and 20' means x >= 10 AND x <= 20. Writing 10 <= x <= 20 works in Python but not in most pseudocode, and writing OR instead of AND makes it true for every number in existence.",
+        ],
+      },
+      {
+        heading: "Order and nesting",
+        points: [
+          "In an IF/ELIF chain, put the most restrictive condition FIRST. If mark >= 40 comes before mark >= 70, nobody ever gets the top grade.",
+          "Nested selection is an IF inside another IF, used when the second question only makes sense once the first is answered.",
+          "Nesting more than two or three deep becomes unreadable. Combining conditions with AND is usually clearer.",
+          "Indentation is not decoration — in Python it is what defines which lines belong to which branch, and in exams it is what shows the examiner your structure.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Selection", definition: "A construct where the program chooses between different paths depending on whether a condition is true." },
+      { term: "Condition", definition: "An expression that evaluates to either True or False, used to decide which path a program takes." },
+      { term: "IF statement", definition: "A statement that runs a block of code only when its condition is true." },
+      { term: "ELSE", definition: "The branch of a selection statement that runs only when the condition was false." },
+      { term: "ELIF", definition: "A further condition tested only if all the conditions above it were false. Short for else if." },
+      { term: "Nested selection", definition: "A selection statement placed inside another, so the inner condition is only tested when the outer one is true." },
+      { term: "AND", definition: "A boolean operator that is true only when both of its conditions are true." },
+      { term: "OR", definition: "A boolean operator that is true when at least one of its conditions is true." },
+      { term: "NOT", definition: "A boolean operator that reverses a condition, turning true into false and false into true." },
+      { term: "Comparison operator", definition: "An operator such as ==, !=, < or >= that compares two values and produces a boolean result." },
+      { term: "Boundary value", definition: "A value exactly on the edge of a condition, such as 18 when the test is age >= 18." },
+    ],
+    examTips: [
+      {
+        tip: "Read the boundary wording twice",
+        detail:
+          "'Over 18' is > 18. 'At least 18', '18 or over' and 'aged 18 and above' are all >= 18. Questions are written to test exactly this, and one character is the whole mark.",
+      },
+      {
+        tip: "Put the strictest condition first in a chain",
+        detail:
+          "Grade boundaries are the classic case. Testing mark >= 40 before mark >= 70 means every mark over 70 is caught by the first branch and nobody ever gets an A. Work downwards from the top.",
+      },
+      {
+        tip: "AND for 'between', never OR",
+        detail:
+          "x >= 10 OR x <= 20 is true for every number that exists, because every number satisfies at least one half. It is a favourite trap and it looks perfectly reasonable at a glance.",
+      },
+      {
+        tip: "One = assigns, two == compares",
+        detail:
+          "IF score = 10 is a syntax error in most languages and a silent disaster in a few. In pseudocode write == when you mean 'is equal to' and you will never be marked down.",
+      },
+      {
+        tip: "Indent your branches in written answers",
+        detail:
+          "Examiners are looking for structure. Lines that all start in the same column make it impossible to see which belong to the IF and which to the ELSE, and marks go with clarity.",
+      },
+      {
+        tip: "Every ELSE needs an IF, but not every IF needs an ELSE",
+        detail:
+          "If nothing should happen when the condition is false, leave the ELSE out entirely rather than writing an empty one.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "Write pseudocode that prints 'Pass' for a mark of 40 or more and 'Fail' otherwise.",
+        steps: [
+          "'40 or more' includes 40 itself, so the operator is >=, not >.",
+          "There are exactly two outcomes, so one IF with an ELSE covers it.",
+          "IF mark >= 40 THEN OUTPUT 'Pass' ELSE OUTPUT 'Fail' ENDIF.",
+          "No third branch is needed: anything not 40 or more is automatically below it.",
+        ],
+        answer: "IF mark >= 40 THEN OUTPUT 'Pass' ELSE OUTPUT 'Fail' ENDIF",
+      },
+      {
+        question:
+          "This is meant to award grades. Explain why nobody ever gets an A.\n\n  IF mark >= 40 THEN grade <- 'C'\n  ELIF mark >= 60 THEN grade <- 'B'\n  ELIF mark >= 80 THEN grade <- 'A'",
+        steps: [
+          "Conditions in a chain are tested in order, and the first true one wins.",
+          "A mark of 85 is tested against mark >= 40 first. That is true.",
+          "So grade is set to 'C' and the rest of the chain is never reached.",
+          "Every mark of 40 or over is caught by the first branch.",
+        ],
+        answer:
+          "The conditions are in the wrong order. Testing mark >= 80 first, then 60, then 40, fixes it — the most restrictive condition has to come first.",
+      },
+      {
+        question: "Write a condition that is true only when x is between 10 and 20 inclusive.",
+        steps: [
+          "'Inclusive' means 10 and 20 themselves count, so the operators are >= and <=.",
+          "Both must hold at the same time, so the two halves are joined with AND.",
+          "x >= 10 AND x <= 20.",
+          "Using OR here would be true for every number, because every number is either at least 10 or at most 20.",
+        ],
+        answer: "x >= 10 AND x <= 20",
+      },
+      {
+        question:
+          "Trace this and say what is printed when age is 15 and ticket is 'child'.\n\n  IF age < 16 THEN\n    IF ticket == 'child' THEN\n      OUTPUT 'Free'\n    ELSE\n      OUTPUT 'Half price'\n    ENDIF\n  ELSE\n    OUTPUT 'Full price'\n  ENDIF",
+        steps: [
+          "The outer condition is age < 16. 15 < 16 is True, so we go into the outer IF and the ELSE at the bottom is skipped entirely.",
+          "The inner condition is ticket == 'child'. That is True.",
+          "So the inner IF branch runs.",
+          "'Free' is printed, and nothing else.",
+        ],
+        answer: "Free. The outer condition sends it into the nested block, and the inner condition then chooses the first branch.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which operator means 'is equal to' in a condition?",
+        accept: ["=="],
+        choices: ["==", "=", "!=", "<="],
+        answer: "==. A single = assigns a value to a variable; two of them compare two values and produce True or False.",
+      },
+      {
+        question: "Which condition is true only when x is between 10 and 20 inclusive?",
+        accept: ["x >= 10 AND x <= 20"],
+        choices: ["x >= 10 AND x <= 20", "x >= 10 OR x <= 20", "x > 10 AND x < 20", "x >= 10 AND x >= 20"],
+        answer: "x >= 10 AND x <= 20. Both halves must hold, and 'inclusive' means the endpoints count, so >= and <= are right.",
+      },
+      {
+        question: "How should 'the user must be 18 or over' be written?",
+        accept: ["age >= 18"],
+        choices: ["age >= 18", "age > 18", "age = 18", "age <= 18"],
+        answer: "age >= 18. 'Or over' includes 18 itself, so a plain > would wrongly reject someone on their eighteenth birthday.",
+      },
+      {
+        question: "In an IF/ELIF chain, which branch runs when more than one condition is true?",
+        accept: ["The first true one"],
+        choices: ["The first true one", "The last true one", "All the true ones", "None of them"],
+        answer: "The first true one. The chain is tested in order and stops as soon as something matches, which is why order matters so much.",
+      },
+      {
+        question: "What is the result of NOT (5 > 3)?",
+        accept: ["False"],
+        choices: ["False", "True", "5", "An error"],
+        answer: "False. 5 > 3 is True, and NOT reverses it.",
+      },
+      {
+        question: "What does an ELSE branch run in response to?",
+        accept: ["the condition being false", "when the condition is false", "a false condition"],
+        answer: "The condition being false. Exactly one of the IF branch and the ELSE branch runs — never both and never neither.",
+      },
+      {
+        question: "Name the construct where a program chooses between different paths.",
+        accept: ["selection"],
+        answer: "Selection. It is one of the three programming constructs, alongside sequence and iteration.",
+      },
+      {
+        question: "Is 'apple' < 'banana' True or False?",
+        accept: ["True"],
+        answer: "True. Strings compare alphabetically, and apple comes before banana.",
+      },
+      {
+        question: "Write the condition for 'the score is not zero'.",
+        accept: ["score != 0"],
+        answer: "score != 0. The != operator means 'not equal to' and is the direct opposite of ==.",
+      },
+      {
+        question: "Why does testing mark >= 40 before mark >= 70 mean nobody gets the top grade?",
+        accept: ["the first true condition wins", "the first condition is always true first", "it matches the first condition"],
+        answer: "Because the chain stops at the first true condition. A mark of 85 satisfies mark >= 40, so it is graded there and the later branches are never tested.",
+      },
+      {
+        question: "What is the term for an IF statement placed inside another IF statement?",
+        accept: ["nested selection", "nesting", "nested if"],
+        answer: "Nested selection. The inner condition is only ever tested when the outer one has already turned out to be true.",
+      },
+      {
+        question: "What does a condition evaluate to?",
+        accept: ["a boolean", "true or false", "boolean"],
+        answer: "A boolean — True or False. That is the only thing a condition can produce, which is why booleans and selection are so closely tied together.",
+      },
+      {
+        question: "Is x >= 10 OR x <= 20 true for the number 500?",
+        accept: ["Yes", "yes", "true"],
+        answer: "Yes, and that is the bug. 500 is at least 10, so the OR is satisfied. This condition is true for every number in existence, which is why 'between' always needs AND.",
+      },
+      {
+        question: "How many branches of an IF/ELSE statement run each time it is reached?",
+        accept: ["1", "one", "exactly one"],
+        answer: "Exactly one. Either the condition is true and the IF branch runs, or it is false and the ELSE branch runs. Never both.",
+      },
+      {
+        question: "Which boolean operator is true only when both conditions are true?",
+        accept: ["AND"],
+        answer: "AND. OR needs only one side to be true, and NOT works on a single condition rather than joining two.",
+      },
+      {
+        question: "In Python, what defines which lines belong inside an IF branch?",
+        accept: ["indentation", "the indentation"],
+        answer: "Indentation. Unlike most languages Python has no brackets or ENDIF, so the spacing at the start of a line is what the interpreter actually reads.",
+      },
+      {
+        question: "Rewrite 'over 18' and 'at least 18' as conditions on a variable called age.",
+        accept: ["age > 18 and age >= 18", "age > 18, age >= 18"],
+        answer: "'Over 18' is age > 18; 'at least 18' is age >= 18. The wording of the question is what decides which one is wanted, and questions are written to test exactly that.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "= and == both mean 'is equal to' in a condition.",
         right:
-          "Comments should explain WHY. '# add 1 to i' restates the code and is worthless. '# skip the header row' tells a reader something the code cannot.",
+          "= assigns a value to a variable. == asks whether two values are the same. Using = in a condition is a syntax error in most languages.",
+      },
+      {
+        wrong: "'Between 10 and 20' means x >= 10 OR x <= 20.",
+        right:
+          "It means AND. The OR version is true for every number there is, because any number is either at least 10 or at most 20.",
+      },
+      {
+        wrong: "The order of the conditions in an IF/ELIF chain does not matter.",
+        right:
+          "It decides the answer. The first true condition wins, so a loose test placed early swallows every case that should have reached the stricter ones below it.",
+      },
+      {
+        wrong: "'Over 18' and '18 or over' mean the same thing.",
+        right:
+          "They differ by exactly one person: someone who is 18. > 18 excludes them, >= 18 includes them, and exam questions choose their wording deliberately.",
+      },
+      {
+        wrong: "An IF is incomplete without an ELSE.",
+        right:
+          "If nothing should happen when the condition is false, no ELSE is needed. Writing an empty one is worse than leaving it out.",
+      },
+    ],
+  },
+  // ─── RUNG 4 ───────────────────────────────────────────────────────────────
+  //
+  // Loops. The off-by-one error and the accidental infinite loop both live
+  // here, and both are worth meeting on purpose rather than at 11pm the night
+  // before a deadline.
+  "computer-science/programming-iteration": {
+    summary:
+      "Iteration is the third construct, and it is where programs stop being things a person could just as easily do by hand. A loop repeats instructions — a fixed number of times, or until something changes. Choosing the right kind of loop, and knowing exactly how many times it runs, is worth a great many marks and an enormous amount of debugging time.",
+    keyFacts: [
+      {
+        heading: "Count-controlled loops",
+        diagrams: [
+          "flowchart-loop",
+        ],
+        points: [
+          "A count-controlled loop repeats a known, fixed number of times. In most languages it is a FOR loop.",
+          "FOR i <- 1 TO 5 runs five times, with i holding 1, then 2, then 3, 4 and 5.",
+          "Python counts differently: for i in range(5) gives 0, 1, 2, 3, 4 — five values, but starting at zero and stopping BEFORE the number you wrote.",
+          "The loop counter is a real variable. You can use it inside the loop, which is what makes FOR i <- 1 TO 12 useful for a times table.",
+          "Use a count-controlled loop whenever you know the number of repetitions before the loop starts.",
+        ],
+      },
+      {
+        heading: "Condition-controlled loops",
+        points: [
+          "A condition-controlled loop keeps going while a condition is true. In most languages it is a WHILE loop.",
+          "The condition is checked BEFORE each pass, so a WHILE loop can run zero times if it is false to begin with.",
+          "REPEAT ... UNTIL checks AFTER each pass, so it always runs at least once. That difference is examinable.",
+          "Something inside the loop must be able to change the condition, or it will never stop.",
+          "Use a condition-controlled loop when the number of repetitions depends on something happening — the user typing 'quit', a value being found, a total being reached.",
+        ],
+      },
+      {
+        heading: "Infinite loops and off-by-one errors",
+        diagrams: [
+          "trace-table",
+        ],
+        points: [
+          "An infinite loop is one whose condition never becomes false. The classic cause is forgetting to change the variable the condition tests.",
+          "WHILE x > 0 with nothing inside that reduces x will run for ever.",
+          "An off-by-one error is a loop that runs one time too many or too few — usually a < where <= was meant, or forgetting that Python's range stops early.",
+          "The cure for both is a trace table. Write out every pass by hand and the mistake becomes obvious in about four rows.",
+        ],
+      },
+      {
+        heading: "Nested loops",
+        points: [
+          "A nested loop is a loop inside another loop. The inner one completes fully on every single pass of the outer one.",
+          "So an outer loop of 3 around an inner loop of 4 runs the inner body 12 times.",
+          "Nested loops are how you work through a grid, a table or a two-dimensional array — outer loop for rows, inner loop for columns.",
+          "Use different counter variables for each. Reusing i for both is a guaranteed bug.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Iteration", definition: "A construct that repeats a set of instructions, either a fixed number of times or until a condition changes." },
+      { term: "Count-controlled loop", definition: "A loop that repeats a known, fixed number of times, typically written as a FOR loop." },
+      { term: "Condition-controlled loop", definition: "A loop that keeps repeating while a condition remains true, typically written as a WHILE loop." },
+      { term: "Loop counter", definition: "The variable a count-controlled loop uses to track which repetition it is on." },
+      { term: "Infinite loop", definition: "A loop whose condition never becomes false, so the program never moves past it." },
+      { term: "Off-by-one error", definition: "A loop that runs one time too many or one too few, usually caused by the wrong comparison operator." },
+      { term: "Nested loop", definition: "A loop placed inside another loop, so the inner loop runs completely on every pass of the outer one." },
+      { term: "REPEAT UNTIL", definition: "A loop that checks its condition after each pass, so its body always runs at least once." },
+      { term: "Trace table", definition: "A table recording the value of every variable at each step of an algorithm, used to find loop errors by hand." },
+      { term: "Loop body", definition: "The block of instructions that a loop repeats." },
+    ],
+    examTips: [
+      {
+        tip: "Say WHICH loop and WHY, not just which",
+        detail:
+          "'A count-controlled loop, because the number of players is known before the loop starts' is the answer. Naming the loop alone usually scores one of the two marks available.",
+      },
+      {
+        tip: "Count the passes on your fingers for a FOR loop",
+        detail:
+          "FOR i <- 1 TO 5 is five passes. FOR i <- 0 TO 5 is six. range(5) in Python is five, starting at 0. Getting this wrong is the single commonest slip in trace-table questions.",
+      },
+      {
+        tip: "A WHILE loop can run zero times",
+        detail:
+          "The condition is tested first, so if it is false at the start the body never runs at all. REPEAT UNTIL always runs at least once. Questions ask about this difference directly.",
+      },
+      {
+        tip: "Check the loop can actually end",
+        detail:
+          "For any WHILE you write, point at the line inside it that changes the variable in the condition. If you cannot, you have written an infinite loop.",
+      },
+      {
+        tip: "Multiply for nested loops",
+        detail:
+          "Outer 3 times inner 4 is 12 runs of the inner body. Examiners like asking how many times something is printed, and it is one multiplication.",
+      },
+      {
+        tip: "Fill trace tables one row per line executed",
+        detail:
+          "Not one row per loop. Every time a line changes a value, that is a row, including the counter. Blank columns at the end usually mean you missed an iteration.",
+      },
+    ],
+    workedExamples: [
+      {
+        question: "How many times does the loop body run?\n\n  FOR i <- 1 TO 5\n    OUTPUT i\n  NEXT i",
+        steps: [
+          "The counter starts at 1 and finishes at 5, and in pseudocode both ends are included.",
+          "So i takes the values 1, 2, 3, 4, 5.",
+          "That is five values.",
+          "The body runs once per value: five times.",
+        ],
+        answer: "Five times, printing 1 2 3 4 5.",
+      },
+      {
+        question: "Trace this loop and give the final value of x.\n\n  x <- 10\n  WHILE x > 6\n    x <- x - 2\n  ENDWHILE",
+        steps: [
+          "Start with x = 10. Check 10 > 6: true, so x becomes 8.",
+          "Check 8 > 6: true, so x becomes 6.",
+          "Check 6 > 6: FALSE — 6 is not greater than 6 — so the loop stops.",
+          "The condition is checked before each pass, which is why it exits without running a third time.",
+        ],
+        answer: "x ends as 6, after two passes.",
+      },
+      {
+        question: "Explain why this loop never ends and fix it.\n\n  count <- 1\n  WHILE count < 5\n    OUTPUT 'hello'\n  ENDWHILE",
+        steps: [
+          "The condition tests count.",
+          "Nothing inside the loop changes count, so it stays at 1 for ever.",
+          "1 < 5 is true on every check, so the loop never exits and 'hello' prints for ever.",
+          "The fix is to add count <- count + 1 inside the loop.",
+        ],
+        answer:
+          "count is never changed, so the condition is always true. Adding count <- count + 1 inside the loop fixes it and prints hello four times.",
+      },
+      {
+        question: "How many times does OUTPUT run?\n\n  FOR row <- 1 TO 3\n    FOR col <- 1 TO 4\n      OUTPUT row, col\n    NEXT col\n  NEXT row",
+        steps: [
+          "The outer loop runs 3 times, once for each row.",
+          "On every single one of those passes, the inner loop runs completely — all 4 columns.",
+          "So the inner body runs 4 times for each of 3 outer passes.",
+          "3 x 4 = 12.",
+        ],
+        answer: "12 times.",
+      },
+      {
+        question:
+          "A program should keep asking for a password until the user gets it right. Which loop, and why?",
+        steps: [
+          "You do not know in advance how many attempts the user will need — it might be one, it might be nine.",
+          "The number of repetitions depends on something happening, not on a count.",
+          "That rules out a count-controlled loop.",
+          "It should also run at least once, since you always have to ask the first time, which makes REPEAT UNTIL a natural fit.",
+        ],
+        answer:
+          "A condition-controlled loop, because the number of attempts is not known in advance. REPEAT ... UNTIL correct is neatest, as the question always has to be asked at least once.",
+      },
+    ],
+    practice: [
+      {
+        question: "How many times does FOR i <- 1 TO 5 run its body?",
+        accept: ["5"],
+        choices: ["5", "4", "6", "1"],
+        answer: "5. In pseudocode both ends of the range are included, so i takes the values 1, 2, 3, 4 and 5.",
+      },
+      {
+        question: "Which loop should be used when the number of repetitions is NOT known in advance?",
+        accept: ["A condition-controlled loop"],
+        choices: ["A condition-controlled loop", "A count-controlled loop", "A nested loop", "A FOR loop"],
+        answer: "A condition-controlled loop, such as WHILE. Count-controlled loops need the number of repetitions before they start.",
+      },
+      {
+        question: "How many times does the inner body run?\n\n  FOR a <- 1 TO 3\n    FOR b <- 1 TO 4\n      OUTPUT a\n    NEXT b\n  NEXT a",
+        accept: ["12"],
+        choices: ["12", "7", "3", "4"],
+        answer: "12. The inner loop completes fully on every pass of the outer one, so it is 3 x 4.",
+      },
+      {
+        question: "What is the minimum number of times a WHILE loop can run its body?",
+        accept: ["0"],
+        choices: ["0", "1", "2", "It always runs at least once"],
+        answer: "0. The condition is checked before the first pass, so if it is false to begin with the body never runs at all.",
+      },
+      {
+        question: "What is the usual cause of an infinite loop?",
+        accept: ["The condition is never changed"],
+        choices: [
+          "The condition is never changed",
+          "The loop counter starts at zero",
+          "The loop is nested inside another",
+          "The condition uses AND",
+        ],
+        answer: "Nothing inside the loop changes the variable the condition tests, so the condition stays true for ever.",
+      },
+      {
+        question: "How many values does range(5) produce in Python, and what are they?",
+        accept: ["5 values: 0 1 2 3 4", "0 1 2 3 4"],
+        answer: "Five values: 0, 1, 2, 3 and 4. It starts at zero and stops before the number written, which is a very common source of off-by-one errors.",
+      },
+      {
+        question: "Which loop always runs its body at least once?",
+        accept: ["repeat until", "repeat", "REPEAT UNTIL"],
+        answer: "REPEAT ... UNTIL. It checks its condition after the body has run, unlike WHILE which checks before.",
+      },
+      {
+        question: "Name the construct that repeats a set of instructions.",
+        accept: ["iteration"],
+        answer: "Iteration. It is the third of the three programming constructs, alongside sequence and selection.",
+      },
+      {
+        question: "Trace: x <- 10, WHILE x > 6 DO x <- x - 2. What is x at the end?",
+        accept: ["6"],
+        answer: "6. It goes 10, then 8, then 6, and the check 6 > 6 is false so the loop stops.",
+      },
+      {
+        question: "What is an off-by-one error?",
+        accept: ["a loop running one time too many or too few", "a loop that runs once too many or too few", "running one extra or one fewer time"],
+        answer: "A loop that runs one iteration too many or too few, usually caused by using < where <= was meant, or by forgetting that Python's range stops early.",
+      },
+      {
+        question: "In a nested loop, which loop completes first?",
+        accept: ["the inner loop", "inner"],
+        answer: "The inner loop. It runs all the way through on every single pass of the outer loop.",
+      },
+      {
+        question: "A program repeats until the user types 'quit'. Which type of loop is that?",
+        accept: ["condition-controlled", "a condition-controlled loop", "while"],
+        answer: "A condition-controlled loop. The number of repetitions depends on what the user does, so it cannot be known before the loop starts.",
+      },
+      {
+        question: "How many times does FOR i <- 0 TO 5 run its body in pseudocode?",
+        accept: ["6"],
+        answer: "6. The values are 0, 1, 2, 3, 4 and 5 — both ends included, which is one more than people usually expect.",
+      },
+      {
+        question: "What is the fastest way to find a logic error in a loop by hand?",
+        accept: ["a trace table", "trace table"],
+        answer: "A trace table. Writing out the value of every variable on every pass makes an off-by-one or a never-ending condition obvious within a few rows.",
+      },
+      {
+        question: "Why should nested loops use different counter variables?",
+        accept: ["the inner loop would overwrite the outer counter", "they would interfere", "the inner one changes the outer one"],
+        answer: "Because the inner loop would overwrite the counter the outer loop is relying on, so the outer loop would lose its place and the program would misbehave in a way that is very hard to trace.",
+      },
+      {
+        question: "Which construct would you use to print the 7 times table from 1 to 12?",
+        accept: ["a count-controlled loop", "count-controlled", "for loop"],
+        answer: "A count-controlled loop, such as FOR i <- 1 TO 12. The number of repetitions is known before the loop starts, which is exactly what count-controlled means.",
+      },
+      {
+        question: "When is the condition of a WHILE loop checked?",
+        accept: ["before each pass", "before the body runs", "before each iteration"],
+        answer: "Before each pass through the body. That is why a WHILE loop can run zero times, and it is the difference between WHILE and REPEAT UNTIL.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "FOR i <- 1 TO 5 runs four times, because 5 minus 1 is 4.",
+        right:
+          "It runs five times. Both ends of the range are included in pseudocode, so i takes five separate values.",
+      },
+      {
+        wrong: "range(5) in Python gives 1, 2, 3, 4, 5.",
+        right:
+          "It gives 0, 1, 2, 3, 4. It starts at zero and stops BEFORE the number written, which is a different convention from pseudocode.",
+      },
+      {
+        wrong: "A WHILE loop always runs at least once.",
+        right:
+          "That is REPEAT UNTIL. A WHILE checks its condition first, so if the condition is false at the start the body is skipped entirely.",
+      },
+      {
+        wrong: "A nested loop of 3 inside 4 runs 7 times.",
+        right:
+          "It runs 12 times. The inner loop completes fully on every pass of the outer one, so the counts multiply rather than add.",
+      },
+      {
+        wrong: "An infinite loop will crash the program with an error message.",
+        right:
+          "It usually just hangs, doing nothing visible, which is far harder to diagnose than a crash. Nothing has gone wrong as far as the computer is concerned.",
+      },
+    ],
+  },
+  // ─── RUNG 5 ───────────────────────────────────────────────────────────────
+  //
+  // The first rung that needs a loop AND a variable working together, which is
+  // why it sits after both. Zero-based indexing gets its own block because it
+  // is the thing that trips everyone at exactly this point.
+  "computer-science/programming-lists-and-arrays": {
+    summary:
+      "So far every value has needed its own variable, which falls apart the moment you have thirty marks to store. An array — Python calls it a list — holds many values under one name, reached by position. Combined with a loop it is what lets ten lines of code handle ten items or ten thousand, and almost every real program is built on that.",
+    keyFacts: [
+      {
+        heading: "What an array is",
+        points: [
+          "An array is a single named variable holding many values, each reached by its position.",
+          "The position is called the index, and looking one up is written scores[2].",
+          "A traditional array is fixed in size and holds all one data type. A Python list can grow and shrink and hold mixed types.",
+          "Arrays exist so that a loop can work through the values. Thirty separate variables cannot be looped over; one array of thirty can.",
+        ],
+      },
+      {
+        heading: "Indexing starts at ZERO",
+        diagrams: [
+          "array-indexing",
+        ],
+        points: [
+          "The first item is at index 0, not 1. In an array of 5 items the valid indexes are 0, 1, 2, 3 and 4.",
+          "So the LAST index is always the length minus one. For 5 items, the last is index 4.",
+          "Asking for scores[5] in a 5-item array is an out-of-range error and crashes the program.",
+          "This causes more off-by-one errors than anything else in programming, and it is worth over-learning rather than nearly learning.",
+        ],
+      },
+      {
+        heading: "Looping through an array",
+        points: [
+          "The standard pattern is a count-controlled loop from 0 to length minus one, using the counter as the index.",
+          "FOR i <- 0 TO 4 with OUTPUT scores[i] inside prints all five values.",
+          "Python offers for score in scores, which hands you each value directly and cannot go out of range — but gives you no index.",
+          "Use the index version when you need to know WHERE something is, and the direct version when you only care about the values.",
+        ],
+      },
+      {
+        heading: "The three patterns worth memorising",
+        points: [
+          "TOTAL: set total <- 0 before the loop, then total <- total + array[i] inside. Forgetting to initialise is the classic error.",
+          "LARGEST: set highest <- array[0] before the loop, then replace it whenever you find something bigger. Starting from 0 breaks on all-negative data.",
+          "SEARCH: loop through comparing each item to the target; if it matches, you have found it and can record the index.",
+          "COUNT: set count <- 0 and add one each time an item meets the condition. Almost every array question is one of these four in disguise.",
+        ],
+      },
+      {
+        heading: "Two-dimensional arrays",
+        points: [
+          "A 2D array is an array of arrays — a grid, with a row and a column index: grid[row][column].",
+          "Both indexes start at zero, so the top-left cell is grid[0][0].",
+          "Nested loops walk a grid: the outer loop over rows, the inner over columns.",
+          "Seating plans, game boards, spreadsheets and images are all 2D arrays underneath.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Array", definition: "A single named variable holding multiple values of the same type, each accessed by its position." },
+      { term: "List", definition: "Python's version of an array, which can change size and hold values of different types." },
+      { term: "Index", definition: "The position of an item within an array, counting from zero." },
+      { term: "Element", definition: "A single value stored inside an array." },
+      { term: "Zero-based indexing", definition: "The convention that the first element of an array is at index 0, so the last is at length minus one." },
+      { term: "Out-of-range error", definition: "A runtime error caused by asking for an index that does not exist in the array." },
+      { term: "Two-dimensional array", definition: "An array of arrays, forming a grid addressed by a row index and a column index." },
+      { term: "Traversal", definition: "Working through every element of an array in turn, usually with a loop." },
+      { term: "Linear search", definition: "Checking each element of an array in order until the target is found or the array runs out." },
+      { term: "Accumulator", definition: "A variable that builds up a running total or count as a loop works through an array." },
+    ],
+    examTips: [
+      {
+        tip: "Write out the indexes before answering",
+        detail:
+          "For a 6-item array, jot 0 1 2 3 4 5 above the values. Every off-by-one mistake in the question disappears once you can see them, and it takes four seconds.",
+      },
+      {
+        tip: "The last index is length minus one",
+        detail:
+          "Say it to yourself before every array question. An array of 10 has a last index of 9, and asking for [10] crashes the program.",
+      },
+      {
+        tip: "Initialise before the loop, not inside it",
+        detail:
+          "total <- 0 goes ABOVE the loop. Put it inside and it resets on every pass, so the answer is always just the last element. This is a favourite trick in 'find the error' questions.",
+      },
+      {
+        tip: "For largest, start from the first element",
+        detail:
+          "highest <- array[0], not highest <- 0. If every value is negative, starting from zero means nothing ever beats it and the answer comes out as 0, which is not even in the array.",
+      },
+      {
+        tip: "Name the array pattern you are using",
+        detail:
+          "Saying 'a linear search' or 'a running total' before the code shows the examiner you know what you are doing, and often picks up a method mark even if the code has a slip in it.",
+      },
+      {
+        tip: "Rows then columns, always in that order",
+        detail:
+          "grid[row][column]. Getting the two the wrong way round gives an answer from the wrong cell, or an out-of-range error on a non-square grid.",
+      },
+    ],
+    workedExamples: [
+      {
+        question:
+          "An array scores holds 12, 45, 7, 30, 22. What is scores[0], scores[3] and scores[5]?",
+        steps: [
+          "Write the indexes above the values: 0 is 12, 1 is 45, 2 is 7, 3 is 30, 4 is 22.",
+          "scores[0] is the FIRST item, which is 12.",
+          "scores[3] is the fourth item, which is 30.",
+          "There is no index 5 — the array has 5 items so the last index is 4.",
+        ],
+        answer: "scores[0] is 12, scores[3] is 30, and scores[5] is an out-of-range error because the last valid index is 4.",
+      },
+      {
+        question: "Write pseudocode to add up every value in an array called marks of length 10.",
+        steps: [
+          "Create the accumulator BEFORE the loop: total <- 0.",
+          "Loop over every valid index. For 10 items those are 0 to 9.",
+          "Inside the loop, add the current element: total <- total + marks[i].",
+          "After the loop finishes, total holds the sum, so output it there and not inside.",
+        ],
+        answer:
+          "total <- 0\nFOR i <- 0 TO 9\n  total <- total + marks[i]\nNEXT i\nOUTPUT total",
+      },
+      {
+        question: "Find the error.\n\n  FOR i <- 0 TO 4\n    total <- 0\n    total <- total + nums[i]\n  NEXT i",
+        steps: [
+          "total <- 0 is inside the loop, so it runs on every single pass.",
+          "That means the running total is wiped out immediately before each addition.",
+          "So after the loop, total holds only the very last element.",
+          "The fix is to move total <- 0 above the FOR line so it happens once.",
+        ],
+        answer:
+          "The accumulator is being reset inside the loop. Moving total <- 0 above the loop fixes it.",
+      },
+      {
+        question: "Write pseudocode to find the largest value in an array called temps of length 7.",
+        steps: [
+          "Start by assuming the first element is the biggest: highest <- temps[0].",
+          "Loop through the rest, from index 1 to 6.",
+          "If the current element is bigger than highest, replace highest with it.",
+          "Starting from temps[0] rather than 0 means it still works when every temperature is below zero.",
+        ],
+        answer:
+          "highest <- temps[0]\nFOR i <- 1 TO 6\n  IF temps[i] > highest THEN highest <- temps[i]\nNEXT i\nOUTPUT highest",
+      },
+      {
+        question: "A 2D array seats has 3 rows and 4 columns. How many cells, and what is the bottom-right one?",
+        steps: [
+          "Every row has 4 cells and there are 3 rows, so 3 x 4 = 12 cells.",
+          "Row indexes run 0, 1, 2 — the last row is 2.",
+          "Column indexes run 0, 1, 2, 3 — the last column is 3.",
+          "So the bottom-right cell is seats[2][3].",
+        ],
+        answer: "12 cells, and the bottom-right is seats[2][3].",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the index of the FIRST element of an array?",
+        accept: ["0"],
+        choices: ["0", "1", "-1", "It depends on the language"],
+        answer: "0. Arrays are zero-indexed, which is why the last index is always the length minus one.",
+      },
+      {
+        question: "An array has 8 elements. What is the index of the last one?",
+        accept: ["7"],
+        choices: ["7", "8", "9", "0"],
+        answer: "7. With 8 elements the valid indexes are 0 to 7, so asking for index 8 is out of range.",
+      },
+      {
+        question: "The array nums holds 4, 9, 1, 6. What is nums[2]?",
+        accept: ["1"],
+        choices: ["1", "9", "6", "4"],
+        answer: "1. Counting from zero, index 0 is 4, index 1 is 9 and index 2 is 1.",
+      },
+      {
+        question: "What happens if a program asks for an index that does not exist?",
+        accept: ["A runtime error"],
+        choices: ["A runtime error", "It returns zero", "It returns the last element", "A syntax error"],
+        answer: "A runtime error, and the program stops. It is not a syntax error, because the code is perfectly legal — the problem only appears when it runs.",
+      },
+      {
+        question: "Where should total <- 0 be placed when summing an array?",
+        accept: ["Before the loop"],
+        choices: ["Before the loop", "Inside the loop", "After the loop", "It does not matter"],
+        answer: "Before the loop. Putting it inside resets the running total on every pass, so only the final element ends up counted.",
+      },
+      {
+        question: "Why should a 'find the largest' algorithm start from the first element rather than from 0?",
+        accept: ["because all the values might be negative", "the values could be negative", "negative values"],
+        answer: "Because if every value is negative, nothing ever beats a starting value of 0, so the answer comes out as 0 — a number that is not even in the array.",
+      },
+      {
+        question: "What is the term for the position of an item in an array?",
+        accept: ["index"],
+        answer: "The index. It starts at zero, so the third item is at index 2.",
+      },
+      {
+        question: "How many cells are in a 2D array with 5 rows and 3 columns?",
+        accept: ["15"],
+        answer: "15. Every one of the 5 rows has 3 cells, so the two dimensions multiply.",
+      },
+      {
+        question: "How do you refer to the top-left cell of a 2D array called grid?",
+        accept: ["grid[0][0]"],
+        answer: "grid[0][0]. Both the row index and the column index start at zero, and rows always come first.",
+      },
+      {
+        question: "What kind of loop is normally used to work through every element of an array?",
+        accept: ["a count-controlled loop", "count-controlled", "for loop"],
+        answer: "A count-controlled loop. The length of the array is known, so the number of repetitions is known before the loop starts.",
+      },
+      {
+        question: "Name the search that checks each element in order until it finds the target.",
+        accept: ["linear search"],
+        answer: "A linear search. It is simple and works on unsorted data, but on a long array it is slow compared with a binary search.",
+      },
+      {
+        question: "What is the main advantage of an array over 30 separate variables?",
+        accept: ["a loop can work through it", "you can loop through it", "it can be looped through"],
+        answer: "A loop can work through it. Thirty separate variables need thirty lines of code; one array of thirty needs a loop of three, and that same loop works for three thousand.",
+      },
+      {
+        question: "Which loops walk a two-dimensional array?",
+        accept: ["nested loops", "two nested loops", "nested"],
+        answer: "Nested loops — the outer one over the rows and the inner one over the columns, so the inner completes fully for each row.",
+      },
+      {
+        question: "The array names holds 'Ali', 'Beth', 'Cai'. What is names[1]?",
+        accept: ["Beth"],
+        answer: "Beth. Index 0 is Ali, so index 1 is the second name.",
+      },
+      {
+        question: "In an array of length n, write the range of valid indexes.",
+        accept: ["0 to n-1", "0 to n - 1"],
+        answer: "0 to n-1. This is worth memorising as a phrase, because it is the source of most off-by-one errors in array questions.",
+      },
+      {
+        question: "What does traversal mean?",
+        accept: ["working through every element", "going through every element", "visiting every element"],
+        answer: "Working through every element of an array in turn, normally with a loop. Totalling, searching and counting are all traversals with different work done inside.",
+      },
+      {
+        question: "A program must count how many marks in an array are 40 or over. What starting value does the counter need?",
+        accept: ["0"],
+        answer: "0, set before the loop. Each time a mark meets the condition the counter goes up by one, so it has to begin from nothing.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "The first element of an array is at index 1.",
+        right:
+          "It is at index 0. That means the last index is the length minus one, and an array of 10 has no index 10 at all.",
+      },
+      {
+        wrong: "An array of 8 items has indexes 1 to 8.",
+        right:
+          "It has indexes 0 to 7. Asking for index 8 is out of range and stops the program at runtime.",
+      },
+      {
+        wrong: "It does not matter whether total <- 0 goes inside or outside the loop.",
+        right:
+          "It decides the answer. Inside the loop it resets on every pass, so the total ends up equal to the last element rather than the sum.",
+      },
+      {
+        wrong: "Starting 'find the largest' from 0 is safe because scores are never negative.",
+        right:
+          "Temperatures, balances and score differences all go negative. Starting from array[0] costs nothing and is right in every case.",
+      },
+      {
+        wrong: "grid[3][1] and grid[1][3] refer to the same cell.",
+        right:
+          "They are different cells. The row index always comes first, and on a non-square grid one of the two may not exist at all.",
+      },
+    ],
+  },
+  // ─── RUNG 6 ───────────────────────────────────────────────────────────────
+  //
+  // Strings after arrays on purpose: a string IS a sequence with indexes, so
+  // everything learned about zero-based indexing transfers directly and this
+  // rung is mostly about reusing it.
+  "computer-science/programming-strings": {
+    summary:
+      "A string is a sequence of characters, and once you know that, it behaves almost exactly like an array you already understand — same zero-based indexes, same loops. This rung covers measuring, slicing, joining and comparing text, which is what a surprising amount of real programming turns out to be.",
+    keyFacts: [
+      {
+        heading: "A string is a sequence",
+        points: [
+          "A string holds characters in order, and each one has an index starting at 0.",
+          "In 'HELLO', index 0 is 'H' and index 4 is 'O'. The last index is the length minus one, exactly as with arrays.",
+          "You can loop over a string one character at a time, which is how you count vowels or check a password.",
+          "In most languages a string cannot be changed in place — operations build a NEW string rather than editing the old one.",
+        ],
+      },
+      {
+        heading: "Length, position and slicing",
+        points: [
+          "LEN(name) or len(name) gives the number of characters, counting spaces and punctuation.",
+          "A substring is a piece of a string. name[0:3] takes characters from index 0 up to BUT NOT INCLUDING index 3 — so three characters.",
+          "That exclusive end is where people slip. 'HELLO'[1:4] is 'ELL', not 'ELLO'.",
+          "Some pseudocode uses a different convention — SUBSTRING(name, 1, 3) meaning start and length — so read the question's own definition if it gives one.",
+        ],
+      },
+      {
+        heading: "Joining and converting",
+        points: [
+          "Concatenation joins strings with +: 'Hi ' + name gives 'Hi Sam'.",
+          "You cannot concatenate a string and a number directly — 'Score: ' + 7 is an error. Cast first: 'Score: ' + str(7).",
+          "str() turns a number into text; int() and float() turn text into numbers.",
+          "This is the same casting idea from earlier, arriving from the other direction.",
+        ],
+      },
+      {
+        heading: "Case and comparison",
+        points: [
+          "upper() and lower() convert case. They return a NEW string and leave the original alone.",
+          "String comparison is case-sensitive: 'Yes' == 'yes' is False, which breaks a lot of beginner menus.",
+          "The standard fix is to convert before comparing: IF answer.lower() == 'yes'.",
+          "Comparing with < and > sorts alphabetically, but all capitals come before all lowercase in the character set, so 'Zebra' < 'apple' is True.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "String", definition: "A data type holding a sequence of characters, such as a word, sentence or password." },
+      { term: "Character", definition: "A single letter, digit, space or symbol, which is the unit a string is made of." },
+      { term: "Substring", definition: "A section of a string taken from it, such as the first three characters of a name." },
+      { term: "Concatenation", definition: "Joining two or more strings end to end to make a single longer string." },
+      { term: "LEN", definition: "A function returning the number of characters in a string, including spaces and punctuation." },
+      { term: "Slicing", definition: "Taking a substring using a start and end index, where the end index is not included." },
+      { term: "Case sensitivity", definition: "The property that uppercase and lowercase letters are treated as different characters when comparing strings." },
+      { term: "upper()", definition: "A function returning a new string with every letter converted to uppercase, leaving the original unchanged." },
+      { term: "Casting", definition: "Converting between data types, such as str(7) to turn the number 7 into the text '7'." },
+      { term: "Immutable", definition: "A value that cannot be changed in place, so operations on it create a new value instead." },
+    ],
+    examTips: [
+      {
+        tip: "Write the string out with its indexes",
+        detail:
+          "For any slicing question, write the characters in a row with 0 1 2 3 4 underneath. Every off-by-one disappears and it takes seconds.",
+      },
+      {
+        tip: "The end index of a slice is NOT included",
+        detail:
+          "name[0:3] gives three characters, at indexes 0, 1 and 2. This is the single most tested detail about strings and it catches people every year.",
+      },
+      {
+        tip: "Always lower() before comparing user input",
+        detail:
+          "'Yes' == 'yes' is False. A menu that only accepts one exact capitalisation is a real bug, and examiners give credit for handling it.",
+      },
+      {
+        tip: "LEN counts spaces",
+        detail:
+          "'Hello World' is 11 characters, not 10. Punctuation counts too. Questions use strings with spaces on purpose.",
+      },
+      {
+        tip: "Cast numbers before joining them to text",
+        detail:
+          "'Total: ' + total crashes if total is a number. 'Total: ' + str(total) is what mark schemes expect to see.",
+      },
+      {
+        tip: "Check whether the question defines its own SUBSTRING",
+        detail:
+          "Some boards use start-and-length rather than start-and-end. If the paper gives you a definition, use theirs, not Python's.",
+      },
+    ],
+    workedExamples: [
+      {
+        question: "The variable word holds 'COMPUTER'. What is word[0], word[3] and LEN(word)?",
+        steps: [
+          "Write the indexes: C=0, O=1, M=2, P=3, U=4, T=5, E=6, R=7.",
+          "word[0] is the first character: 'C'.",
+          "word[3] is 'P'.",
+          "There are 8 characters in total, so LEN(word) is 8 and the last valid index is 7.",
+        ],
+        answer: "word[0] is 'C', word[3] is 'P', and LEN(word) is 8.",
+      },
+      {
+        question: "What is 'HELLO'[1:4]?",
+        steps: [
+          "Index the string: H=0, E=1, L=2, L=3, O=4.",
+          "The slice starts at index 1, which is 'E'.",
+          "It ends BEFORE index 4, so it takes indexes 1, 2 and 3.",
+          "Those characters are E, L and L.",
+        ],
+        answer: "'ELL'. The end index of a slice is not included, so it gives three characters, not four.",
+      },
+      {
+        question:
+          "This should greet the user by name and show their score. Find both errors.\n\n  name = input('Name? ')\n  score = 7\n  print('Hi ' + name + ' your score is ' + score)",
+        steps: [
+          "score holds the number 7, not the text '7'.",
+          "Concatenating a string and a number is an error in most languages, so the program crashes.",
+          "The fix is str(score).",
+          "There is also no space handling problem here, but the greeting reads better if the strings already contain their spaces — which they do.",
+        ],
+        answer:
+          "The only real error is joining a number to a string. It should be + str(score), because + can concatenate two strings or add two numbers, but not mix them.",
+      },
+      {
+        question: "Write pseudocode that accepts 'yes' from the user whatever capitalisation they use.",
+        steps: [
+          "Read the input into a variable: answer <- USERINPUT.",
+          "String comparison is case-sensitive, so comparing directly to 'yes' rejects 'Yes' and 'YES'.",
+          "Convert to a single case first with lower().",
+          "Then compare against the lowercase version: IF answer.lower() == 'yes' THEN ...",
+        ],
+        answer: "IF answer.lower() == 'yes' THEN ... — converting before comparing removes the case problem entirely.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is 'HELLO'[1:4]?",
+        accept: ["ELL"],
+        choices: ["ELL", "ELLO", "HELL", "LLO"],
+        answer: "ELL. The slice starts at index 1 and stops BEFORE index 4, so it takes indexes 1, 2 and 3.",
+      },
+      {
+        question: "What is LEN('Hello World')?",
+        accept: ["11"],
+        choices: ["11", "10", "12", "2"],
+        answer: "11. The space between the two words is a character and counts, which is exactly why questions use strings with spaces.",
+      },
+      {
+        question: "Is 'Yes' == 'yes' True or False?",
+        accept: ["False"],
+        choices: ["False", "True", "It depends on the language", "An error"],
+        answer: "False. String comparison is case-sensitive, which is why user input should be converted with lower() before being compared.",
+      },
+      {
+        question: "What does 'Score: ' + 7 do in most languages?",
+        accept: ["Causes an error"],
+        choices: ["Causes an error", "Gives 'Score: 7'", "Gives 'Score: ' 7", "Gives 7"],
+        answer: "It causes an error, because + cannot mix a string and a number. Casting with str(7) first is what makes it work.",
+      },
+      {
+        question: "What index is the first character of a string at?",
+        accept: ["0"],
+        choices: ["0", "1", "-1", "The same as its length"],
+        answer: "0. Strings are indexed exactly like arrays, so the last character is at the length minus one.",
+      },
+      {
+        question: "The variable w holds 'COMPUTER'. What is w[3]?",
+        accept: ["P"],
+        answer: "P. Counting from zero: C is 0, O is 1, M is 2 and P is 3.",
+      },
+      {
+        question: "What is the term for joining two strings together?",
+        accept: ["concatenation"],
+        answer: "Concatenation. The + operator performs it when both of its operands are strings.",
+      },
+      {
+        question: "What is the last valid index of the string 'CAT'?",
+        accept: ["2"],
+        answer: "2. The string has 3 characters at indexes 0, 1 and 2, so the last index is the length minus one.",
+      },
+      {
+        question: "Which function converts a number into a string?",
+        accept: ["str()", "str"],
+        answer: "str(). It is needed whenever a number has to be joined onto text, such as 'Total: ' + str(total).",
+      },
+      {
+        question: "What does upper() do to the original string it is called on?",
+        accept: ["nothing", "leaves it unchanged", "it is unchanged"],
+        answer: "Nothing. It returns a new uppercase string and leaves the original exactly as it was, which is why the result has to be stored or used.",
+      },
+      {
+        question: "How would you make a comparison accept 'YES', 'Yes' and 'yes' equally?",
+        accept: ["convert to lower case first", "use lower()", "lower() then compare"],
+        answer: "Convert the input to a single case before comparing, with something like answer.lower() == 'yes'. Comparing directly is case-sensitive and would reject two of the three.",
+      },
+      {
+        question: "How many characters does the slice name[2:6] return?",
+        accept: ["4"],
+        answer: "4. It takes indexes 2, 3, 4 and 5 — the end index is not included, so it is simply 6 minus 2.",
+      },
+      {
+        question: "What is a substring?",
+        accept: ["a section of a string", "part of a string", "a piece of a string"],
+        answer: "A section taken from a string, such as the first three characters of a name. Slicing is how you get one.",
+      },
+      {
+        question: "Why is 'Zebra' < 'apple' True?",
+        accept: ["capitals come before lowercase", "uppercase comes first", "capital letters sort first"],
+        answer: "Because in the character set every uppercase letter comes before every lowercase one, so a capital Z still sorts ahead of a lowercase a.",
+      },
+      {
+        question: "Give the term for a value that cannot be changed in place.",
+        accept: ["immutable"],
+        answer: "Immutable. Strings work this way in most languages, so operations on them build a new string rather than editing the existing one.",
+      },
+      {
+        question: "Write the expression that gets the first character of a string called word.",
+        accept: ["word[0]"],
+        answer: "word[0]. Indexing starts at zero, so index 0 is the first character rather than the second.",
+      },
+      {
+        question: "A password must be at least 8 characters. Write the condition that rejects it.",
+        accept: ["LEN(password) < 8", "len(password) < 8"],
+        answer: "LEN(password) < 8. 'At least 8' means 8 is acceptable, so anything strictly below 8 is what should be rejected.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "'HELLO'[1:4] gives 'ELLO'.",
+        right:
+          "It gives 'ELL'. The end index is not included, so the slice stops one character earlier than it looks like it should.",
+      },
+      {
+        wrong: "LEN('Hello World') is 10, because there are ten letters.",
+        right:
+          "It is 11. The space is a character too, and so is every punctuation mark.",
+      },
+      {
+        wrong: "'Yes' and 'yes' are the same string.",
+        right:
+          "They are different. Comparison is case-sensitive, which is why almost every real program converts input to one case before checking it.",
+      },
+      {
+        wrong: "upper() changes the string it is used on.",
+        right:
+          "It returns a new string and leaves the original untouched. If you do not store or use the result, nothing has happened.",
+      },
+      {
+        wrong: "'Score: ' + 7 prints 'Score: 7'.",
+        right:
+          "It is an error in most languages. + either adds two numbers or joins two strings, and it cannot do one of each.",
+      },
+    ],
+  },
+  // ─── RUNG 7 ───────────────────────────────────────────────────────────────
+  //
+  // Subprograms only make sense once there is something worth reusing, which
+  // is why they sit after arrays and strings rather than near the start.
+  "computer-science/programming-subprograms": {
+    summary:
+      "A subprogram is a named, reusable chunk of a program that does one job. Once a program is more than a page long, breaking it into subprograms is the difference between something you can fix and something you have to throw away. This rung covers procedures, functions, parameters, return values and scope — the last of which explains most of the confusing bugs at this level.",
+    keyFacts: [
+      {
+        heading: "Why subprograms exist",
+        points: [
+          "They stop repetition: write the code once, call it from five places.",
+          "They make a program readable — calculateTotal() says what is happening in a way twenty lines of arithmetic does not.",
+          "They make testing possible: you can test one subprogram on its own rather than the whole program at once.",
+          "They are how decomposition — breaking a big problem into smaller ones — actually appears in code.",
+        ],
+      },
+      {
+        heading: "Procedures and functions",
+        points: [
+          "A FUNCTION returns a value to whatever called it. A PROCEDURE does a job but returns nothing.",
+          "A function call is used as a value: total <- add(3, 4). A procedure call is a statement on its own: printMenu().",
+          "Rule of thumb: if you want an answer back, write a function. If you want something to happen, write a procedure.",
+          "Python uses def for both — whether it returns something is what decides which it is.",
+        ],
+      },
+      {
+        heading: "Parameters and arguments",
+        diagrams: [
+          "subprogram-call",
+        ],
+        points: [
+          "A parameter is the named placeholder in the subprogram's definition. An argument is the actual value passed in when it is called.",
+          "In FUNCTION area(width, height), width and height are parameters. In area(5, 3), the 5 and 3 are arguments.",
+          "Arguments are matched to parameters BY POSITION, so the order matters: area(5, 3) is not the same as area(3, 5) unless the maths happens to be symmetrical.",
+          "Parameters are what make a subprogram reusable. A subprogram with no parameters can only ever do the exact same thing.",
+        ],
+      },
+      {
+        heading: "Return values",
+        points: [
+          "RETURN sends a value back and ends the subprogram immediately — nothing after it runs.",
+          "The value has to be caught or used, or it is thrown away: writing add(3, 4) on its own line computes 7 and discards it.",
+          "Returning is not the same as printing. A function that prints gives the value to the user; a function that returns gives it to the program.",
+          "Printing inside a function you meant to return from is one of the most common errors at this level.",
+        ],
+      },
+      {
+        heading: "Scope",
+        points: [
+          "A local variable exists only inside the subprogram that created it, and vanishes when it finishes.",
+          "A global variable exists everywhere in the program.",
+          "Two subprograms can each have a local variable called total without any clash at all — they are genuinely different variables.",
+          "Local is the default and the right choice. Globals can be changed from anywhere, which makes bugs almost impossible to track down.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "Subprogram", definition: "A named, reusable block of code that performs one specific task and can be called from elsewhere." },
+      { term: "Procedure", definition: "A subprogram that carries out a task but does not return a value to whatever called it." },
+      { term: "Function", definition: "A subprogram that returns a value to the code that called it." },
+      { term: "Parameter", definition: "A named placeholder in a subprogram's definition, which receives a value when the subprogram is called." },
+      { term: "Argument", definition: "The actual value passed into a subprogram when it is called, filling one of its parameters." },
+      { term: "Return value", definition: "The value a function sends back to the code that called it." },
+      { term: "Local variable", definition: "A variable that exists only inside the subprogram where it was created, and is destroyed when it ends." },
+      { term: "Global variable", definition: "A variable accessible from anywhere in the program, including inside every subprogram." },
+      { term: "Scope", definition: "The region of a program in which a particular variable can be accessed." },
+      { term: "Decomposition", definition: "Breaking a large problem into smaller sub-problems that can each be solved separately." },
+      { term: "Call", definition: "The instruction that runs a subprogram, optionally passing arguments to it." },
+    ],
+    examTips: [
+      {
+        tip: "Function returns, procedure does not — say it that way",
+        detail:
+          "That one sentence is the whole distinction and it appears in some form nearly every year. Add an example of each and the marks are yours.",
+      },
+      {
+        tip: "Parameter is in the definition, argument is in the call",
+        detail:
+          "Definition, parameter. Call, argument. Examiners use the two words precisely, so an answer that swaps them looks like a guess even when the understanding is there.",
+      },
+      {
+        tip: "RETURN is not PRINT",
+        detail:
+          "print shows a value to the user. return hands it back to the program so it can be stored or used. A function that prints instead of returning cannot be used in a calculation.",
+      },
+      {
+        tip: "Give a reason when asked why subprograms are used",
+        detail:
+          "'Avoids repetition', 'makes the code easier to read', 'allows each part to be tested separately'. Two named benefits usually score two marks; 'it is tidier' scores none.",
+      },
+      {
+        tip: "Local variables cannot be seen outside",
+        detail:
+          "If a question shows a variable created inside a subprogram and then used after it, that is the error. Say the word 'scope' in your answer.",
+      },
+      {
+        tip: "Watch the order of arguments",
+        detail:
+          "They fill the parameters by position, not by name. Swapping two arguments compiles perfectly and gives a wrong answer, which makes it a favourite for 'find the logic error'.",
+      },
+    ],
+    workedExamples: [
+      {
+        question: "Is this a function or a procedure, and why?\n\n  SUBROUTINE greet(name)\n    OUTPUT 'Hello ' + name\n  ENDSUBROUTINE",
+        steps: [
+          "Look for a RETURN statement. There is not one.",
+          "It does something — it outputs a greeting — but it hands nothing back to the caller.",
+          "A subprogram that does a job without returning a value is a procedure.",
+          "You would call it as a statement on its own: greet('Sam').",
+        ],
+        answer: "A procedure, because it performs a task but does not return a value.",
+      },
+      {
+        question: "Write a function that takes two numbers and returns the larger.",
+        steps: [
+          "It has to give an answer back, so it is a function with a RETURN.",
+          "It needs two pieces of information, so it needs two parameters.",
+          "Compare them with selection, and return whichever is bigger.",
+          "Return, not print — the caller may want to do something further with the answer.",
+        ],
+        answer:
+          "FUNCTION larger(a, b)\n  IF a > b THEN\n    RETURN a\n  ELSE\n    RETURN b\n  ENDIF\nENDFUNCTION",
+      },
+      {
+        question:
+          "Why does this fail?\n\n  SUBROUTINE calculate()\n    total <- 5 * 3\n  ENDSUBROUTINE\n\n  calculate()\n  OUTPUT total",
+        steps: [
+          "total is created inside the subprogram, so it is a local variable.",
+          "A local variable only exists while its subprogram is running.",
+          "When calculate() finishes, total is destroyed.",
+          "The OUTPUT line then refers to a variable that does not exist, which is a scope error.",
+        ],
+        answer:
+          "total is local to calculate(), so it no longer exists by the time OUTPUT runs. Make it a function that RETURNs the value instead.",
+      },
+      {
+        question: "In area(5, 3), which are the parameters and which are the arguments?\n\n  FUNCTION area(width, height)\n    RETURN width * height\n  ENDFUNCTION",
+        steps: [
+          "The definition line names width and height — those are the placeholders.",
+          "Placeholders in a definition are called parameters.",
+          "The call supplies the actual values 5 and 3.",
+          "Actual values in a call are called arguments, and they fill the parameters in order: width gets 5, height gets 3.",
+        ],
+        answer:
+          "width and height are the parameters; 5 and 3 are the arguments. They are matched by position, so width is 5 and height is 3.",
+      },
+    ],
+    practice: [
+      {
+        question: "What is the difference between a function and a procedure?",
+        accept: ["A function returns a value, a procedure does not"],
+        choices: [
+          "A function returns a value, a procedure does not",
+          "A procedure returns a value, a function does not",
+          "A function takes parameters, a procedure does not",
+          "There is no difference",
+        ],
+        answer: "A function returns a value to whatever called it. A procedure carries out a task but hands nothing back.",
+      },
+      {
+        question: "In FUNCTION area(width, height), what are width and height called?",
+        accept: ["Parameters"],
+        choices: ["Parameters", "Arguments", "Local variables", "Return values"],
+        answer: "Parameters. They are the placeholders in the definition; the values passed in when it is called are the arguments.",
+      },
+      {
+        question: "A variable created inside a subprogram is described as what?",
+        accept: ["Local"],
+        choices: ["Local", "Global", "Constant", "Returned"],
+        answer: "Local. It exists only while that subprogram is running and is destroyed when it finishes.",
+      },
+      {
+        question: "What happens to any code written after a RETURN statement in a function?",
+        accept: ["It never runs"],
+        choices: ["It never runs", "It runs first", "It runs afterwards", "It causes a syntax error"],
+        answer: "It never runs. RETURN sends the value back and ends the subprogram there and then.",
+      },
+      {
+        question: "Which is the best reason to use subprograms?",
+        accept: ["They avoid repeating the same code"],
+        choices: [
+          "They avoid repeating the same code",
+          "They make the program run faster",
+          "They use less memory",
+          "They are required by the language",
+        ],
+        answer: "They avoid repetition, and they also make a program readable and testable. Speed is not the reason.",
+      },
+      {
+        question: "What is the value passed into a subprogram when it is called?",
+        accept: ["an argument"],
+        answer: "An argument. The placeholder that receives it, back in the definition, is the parameter.",
+      },
+      {
+        question: "Name the term for the region of a program where a variable can be accessed.",
+        accept: ["scope"],
+        answer: "Scope. A local variable's scope is the subprogram it was created in; a global's scope is the whole program.",
+      },
+      {
+        question: "Why is print not a substitute for return in a function?",
+        accept: ["print shows it to the user, return gives it to the program", "return gives the value back to the program", "printing does not give the value back"],
+        answer: "print displays the value to the user; return hands it back to the program so it can be stored or used in a calculation. A function that prints cannot be used as part of a bigger expression.",
+      },
+      {
+        question: "Can two different subprograms each have a local variable called total?",
+        accept: ["yes"],
+        answer: "Yes. They are genuinely separate variables with separate scopes, and neither can see the other.",
+      },
+      {
+        question: "What is decomposition?",
+        accept: ["breaking a problem into smaller problems", "breaking a large problem into smaller ones", "splitting a problem into smaller parts"],
+        answer: "Breaking a large problem into smaller sub-problems that can each be solved separately. Subprograms are how it shows up in actual code.",
+      },
+      {
+        question: "In the call area(5, 3), which parameter does the 5 fill?",
+        accept: ["the first one", "width", "the first parameter"],
+        answer: "The first one. Arguments are matched to parameters by position, not by name, which is why swapping two of them gives a silently wrong answer.",
+      },
+      {
+        question: "Give one benefit of subprograms for testing.",
+        accept: ["each one can be tested separately", "they can be tested on their own", "you can test them individually"],
+        answer: "Each subprogram can be tested on its own, so a fault can be located in one small block rather than searched for across the whole program.",
+      },
+      {
+        question: "Why are global variables usually avoided?",
+        accept: ["they can be changed from anywhere", "any part of the program can change them", "they can be changed anywhere"],
+        answer: "Because any part of the program can change them, so when one holds the wrong value there is no small place to look for the cause.",
+      },
+      {
+        question: "What keyword sends a value back from a function?",
+        accept: ["RETURN", "return"],
+        answer: "RETURN. It both supplies the value and ends the subprogram immediately.",
+      },
+      {
+        question: "Is greet('Sam') that outputs a message a function or a procedure?",
+        accept: ["a procedure", "procedure"],
+        answer: "A procedure. It does a job but hands no value back, which is exactly what distinguishes the two.",
+      },
+      {
+        question: "What is wrong with using a variable after the subprogram that created it has finished?",
+        accept: ["it is out of scope", "the variable is local", "it no longer exists"],
+        answer: "The variable was local, so it was destroyed when the subprogram ended and is now out of scope. The fix is to return the value instead.",
+      },
+      {
+        question: "A subprogram takes no parameters. What limits does that place on it?",
+        accept: ["it can only ever do the same thing", "it always does the same thing", "it cannot be reused with different values"],
+        answer: "It can only ever do exactly the same thing, because nothing can be passed in to vary its behaviour. Parameters are what make a subprogram genuinely reusable.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "A function and a procedure are two words for the same thing.",
+        right:
+          "A function returns a value; a procedure does not. Which one you need depends on whether the caller wants an answer back.",
+      },
+      {
+        wrong: "Printing a value inside a function is the same as returning it.",
+        right:
+          "Printing shows it to the user and then loses it. Returning gives it to the program, so it can be stored, compared or used in a calculation.",
+      },
+      {
+        wrong: "Parameter and argument mean the same thing.",
+        right:
+          "The parameter is the placeholder in the definition; the argument is the actual value in the call. Exam questions use the two words precisely.",
+      },
+      {
+        wrong: "A variable made inside a subprogram can be used after it finishes.",
+        right:
+          "It is local and is destroyed when the subprogram ends. To get the value out, the subprogram has to return it.",
+      },
+      {
+        wrong: "Arguments are matched to parameters by name.",
+        right:
+          "They are matched by position. area(3, 5) and area(5, 3) fill the parameters differently, and nothing warns you about it.",
+      },
+    ],
+  },
+  // ─── RUNG 8 ───────────────────────────────────────────────────────────────
+  //
+  // Files are the first time a program's data survives the program ending,
+  // which is a genuinely new idea rather than another operation to learn.
+  "computer-science/programming-file-handling": {
+    summary:
+      "Everything a program has stored so far disappears the moment it stops. A file is how data outlives the program that made it — high scores, saved games, records, logs. The operations are few and always the same: open, read or write, close. The details that cost marks are which mode to open in, and remembering to close it afterwards.",
+    keyFacts: [
+      {
+        heading: "Why files at all",
+        points: [
+          "Variables and arrays live in RAM, which is volatile — it empties when the program ends or the power goes.",
+          "A file is stored on secondary storage, so the data is still there next time.",
+          "That is the whole reason for file handling: persistence between runs.",
+          "A text file is the simplest kind, holding readable characters, usually one record per line.",
+        ],
+      },
+      {
+        heading: "Open, use, close",
+        points: [
+          "Every file operation follows the same three steps: open the file, read from or write to it, close it.",
+          "Opening needs a filename and a MODE saying what you intend to do with it.",
+          "Closing releases the file and — importantly — makes sure everything written has actually been saved to disk.",
+          "Forgetting to close can lose the last thing you wrote, and mark schemes look for the close.",
+        ],
+      },
+      {
+        heading: "The three modes",
+        points: [
+          "READ opens an existing file to look at its contents. Opening a file that does not exist is an error.",
+          "WRITE creates the file if it does not exist — and ERASES everything in it if it does. This is the dangerous one.",
+          "APPEND adds to the end, keeping what was already there. This is what you almost always want for a log or a high-score table.",
+          "Choosing WRITE when you meant APPEND destroys the file's contents instantly and without warning.",
+        ],
+      },
+      {
+        heading: "Reading a file",
+        points: [
+          "readLine() reads one line at a time and moves on to the next.",
+          "A loop over the lines is the normal pattern, ending when there are no lines left — endOfFile() is the usual test.",
+          "Everything read from a text file arrives as a STRING, exactly like input from a keyboard, so numbers need casting before arithmetic.",
+          "Lines often end with a newline character that needs stripping before the value is used or compared.",
+        ],
+      },
+      {
+        heading: "CSV files",
+        points: [
+          "CSV stands for comma-separated values: one record per line, fields separated by commas.",
+          "'Sam,15,Blue' is one record with three fields.",
+          "To use the fields, split the line on the commas into an array, then index it.",
+          "CSV is popular because almost everything can read it — spreadsheets, databases and programs alike — and it is just a text file underneath.",
+        ],
+      },
+    ],
+    flashcards: [
+      { term: "File handling", definition: "Reading data from and writing data to a file so that it survives after the program ends." },
+      { term: "Persistence", definition: "Data continuing to exist after the program that created it has stopped running." },
+      { term: "Read mode", definition: "Opening a file in order to look at its contents, which fails if the file does not exist." },
+      { term: "Write mode", definition: "Opening a file for writing, which creates it if absent and erases its existing contents if present." },
+      { term: "Append mode", definition: "Opening a file for writing so that new data is added to the end, keeping what was already there." },
+      { term: "readLine", definition: "An operation that reads the next single line from an open file and moves the position on." },
+      { term: "endOfFile", definition: "A test that becomes true when there are no more lines left to read, used to end a reading loop." },
+      { term: "CSV", definition: "Comma-separated values: a text file holding one record per line with fields separated by commas." },
+      { term: "Record", definition: "One complete set of related fields, usually stored as a single line of a file." },
+      { term: "Field", definition: "One individual item of data within a record, such as a name or an age." },
+    ],
+    examTips: [
+      {
+        tip: "Name the mode and say what it does to existing data",
+        detail:
+          "'Append, because write mode would delete the existing high scores' is a complete answer. Naming the mode alone usually gets one mark of two.",
+      },
+      {
+        tip: "Always close the file in written answers",
+        detail:
+          "It is a line of code and it is often a mark. It also matters in reality, because unclosed files can lose the last thing written.",
+      },
+      {
+        tip: "Cast anything read from a file before doing arithmetic",
+        detail:
+          "File contents come back as strings, exactly like keyboard input. This is the same trap as int(input()) arriving in a new place.",
+      },
+      {
+        tip: "Read the file line by line with a loop and an end test",
+        detail:
+          "WHILE NOT endOfFile() ... readLine() ... ENDWHILE is the pattern examiners expect. A loop that reads a fixed number of lines is fragile and scores less.",
+      },
+      {
+        tip: "For CSV, split then index",
+        detail:
+          "Split the line on commas into an array, then take fields[0], fields[1] and so on. Say the word 'split' — it is often the mark.",
+      },
+      {
+        tip: "Watch for the file that might not exist",
+        detail:
+          "Opening a missing file in read mode is a runtime error. A robust answer checks first, or handles the error, and questions about defensive design reward saying so.",
+      },
+    ],
+    workedExamples: [
+      {
+        question: "A program adds a new score to an existing high-score file. Which mode, and why?",
+        steps: [
+          "The existing scores have to survive, so the file must not be emptied.",
+          "WRITE mode erases the contents of an existing file the moment it is opened.",
+          "READ mode cannot add anything at all.",
+          "APPEND adds to the end and keeps what was there, which is exactly what is needed.",
+        ],
+        answer:
+          "Append mode, because write mode would erase the existing high scores as soon as the file was opened.",
+      },
+      {
+        question: "Write pseudocode that reads and outputs every line of scores.txt.",
+        steps: [
+          "Open the file in read mode.",
+          "Loop until there is nothing left to read, using the end-of-file test.",
+          "Inside the loop, read one line and output it.",
+          "Close the file after the loop, not inside it.",
+        ],
+        answer:
+          "file <- OPEN('scores.txt', READ)\nWHILE NOT file.endOfFile()\n  line <- file.readLine()\n  OUTPUT line\nENDWHILE\nfile.close()",
+      },
+      {
+        question: "A CSV line holds 'Sam,15,Blue'. How do you get the age out of it as a number?",
+        steps: [
+          "Split the line on the commas, which gives an array: ['Sam', '15', 'Blue'].",
+          "The fields are indexed from zero, so the age is at index 1.",
+          "That value is the STRING '15', because everything read from a file is text.",
+          "Cast it with int() to get the number 15 before doing any arithmetic on it.",
+        ],
+        answer: "fields <- line.split(','), then age <- int(fields[1]) gives the number 15.",
+      },
+      {
+        question:
+          "Explain what goes wrong here.\n\n  file <- OPEN('log.txt', WRITE)\n  file.writeLine('Started')\n  file <- OPEN('log.txt', WRITE)\n  file.writeLine('Finished')\n  file.close()",
+        steps: [
+          "The first open in WRITE mode creates or empties the file, then 'Started' is written.",
+          "The file is then opened in WRITE mode AGAIN, which empties it a second time.",
+          "So 'Started' is destroyed before it was ever kept.",
+          "The first file was also never closed, which can lose data on its own.",
+        ],
+        answer:
+          "Opening in WRITE mode a second time erases 'Started'. The file should be opened once, or reopened in APPEND mode, and every open needs a matching close.",
+      },
+    ],
+    practice: [
+      {
+        question: "Which mode adds data to the end of a file without erasing what is there?",
+        accept: ["Append"],
+        choices: ["Append", "Write", "Read", "Open"],
+        answer: "Append. Write mode erases the existing contents as soon as the file is opened, which is the classic way to destroy a high-score table.",
+      },
+      {
+        question: "What happens when an existing file is opened in WRITE mode?",
+        accept: ["Its contents are erased"],
+        choices: ["Its contents are erased", "The new data is added to the end", "It causes an error", "Nothing changes until you write"],
+        answer: "Its contents are erased immediately. That is why append mode exists and why choosing between them matters so much.",
+      },
+      {
+        question: "What data type is returned when a line is read from a text file?",
+        accept: ["String"],
+        choices: ["String", "Integer", "Real", "It depends on the contents"],
+        answer: "String. Exactly like keyboard input, anything read from a text file is text and must be cast before arithmetic.",
+      },
+      {
+        question: "What does CSV stand for?",
+        accept: ["Comma-separated values"],
+        choices: ["Comma-separated values", "Column-sorted values", "Character string values", "Compressed storage volume"],
+        answer: "Comma-separated values. Each line is one record and the commas divide it into fields.",
+      },
+      {
+        question: "Why must a file be closed after use?",
+        accept: ["To make sure everything written is saved"],
+        choices: [
+          "To make sure everything written is saved",
+          "To delete the file",
+          "To convert it to a string",
+          "To move it to secondary storage",
+        ],
+        answer: "To make sure everything written has actually reached the disk, and to release the file so other programs can use it.",
+      },
+      {
+        question: "Why is a file needed rather than just an array?",
+        accept: ["arrays are lost when the program ends", "RAM is volatile", "the data would be lost"],
+        answer: "Because an array lives in RAM, which is volatile — everything in it is lost when the program ends. A file is on secondary storage and persists.",
+      },
+      {
+        question: "Name the three steps every file operation follows.",
+        accept: ["open, read or write, close", "open, use, close", "open read write close"],
+        answer: "Open, read or write, then close. The mode is chosen at the open step and the close is what guarantees the data is saved.",
+      },
+      {
+        question: "In the CSV line 'Sam,15,Blue', how many fields are there?",
+        accept: ["3"],
+        answer: "3. The two commas divide the record into three fields: a name, an age and a colour.",
+      },
+      {
+        question: "After splitting 'Sam,15,Blue' on commas, which index holds the age?",
+        accept: ["1"],
+        answer: "1. The array is indexed from zero, so index 0 is 'Sam' and index 1 is '15'.",
+      },
+      {
+        question: "What test ends a loop that is reading through a file?",
+        accept: ["endOfFile", "end of file", "endOfFile()"],
+        answer: "The end-of-file test. Looping while it is false reads exactly as many lines as the file has, however many that turns out to be.",
+      },
+      {
+        question: "What happens if a program opens a non-existent file in read mode?",
+        accept: ["a runtime error", "an error", "it crashes"],
+        answer: "A runtime error, and the program stops. A robust program checks the file exists first, or handles the error rather than crashing.",
+      },
+      {
+        question: "Give the term for data surviving after the program that created it stops.",
+        accept: ["persistence"],
+        answer: "Persistence. It is the entire reason file handling exists, and it is what distinguishes secondary storage from RAM.",
+      },
+      {
+        question: "A program keeps a log of every time it runs. Which mode should it open the log with?",
+        accept: ["append"],
+        answer: "Append. Each run adds a new line to the end, and the previous entries survive — which is the whole point of a log.",
+      },
+      {
+        question: "What is one record in a CSV file usually stored as?",
+        accept: ["one line", "a line", "a single line"],
+        answer: "One line. Records are separated by line breaks and fields within a record are separated by commas.",
+      },
+      {
+        question: "Why must a number read from a file be cast before it is used in a calculation?",
+        accept: ["it is read as a string", "it comes back as text", "because it is a string"],
+        answer: "Because everything read from a text file comes back as a string. Adding two of them would concatenate rather than add.",
+      },
+      {
+        question: "Which storage is a file kept on, and which is an array kept in?",
+        accept: ["secondary storage and RAM", "secondary storage, RAM"],
+        answer: "A file is on secondary storage, which is non-volatile. An array is in RAM, which is volatile and empties when the program ends.",
+      },
+      {
+        question: "Write the pseudocode line that opens data.txt so that new lines are added to the end.",
+        accept: ["OPEN('data.txt', APPEND)", "open('data.txt', append)", "file <- OPEN('data.txt', APPEND)"],
+        answer: "OPEN('data.txt', APPEND). Using WRITE here would erase everything already in the file the instant it opened.",
+      },
+    ],
+    misconceptions: [
+      {
+        wrong: "Write mode adds new data to the end of the file.",
+        right:
+          "It erases everything already there. Append is the mode that adds to the end, and confusing the two destroys the file's contents instantly.",
+      },
+      {
+        wrong: "Numbers read from a file come back as numbers.",
+        right:
+          "They come back as strings, exactly like keyboard input. Doing arithmetic on them without casting either concatenates or crashes.",
+      },
+      {
+        wrong: "Closing a file is optional tidying up.",
+        right:
+          "It is what guarantees the data has actually reached the disk. An unclosed file can silently lose the last thing written to it.",
+      },
+      {
+        wrong: "A CSV file is a special file format that needs special software.",
+        right:
+          "It is an ordinary text file. The commas are just characters, which is exactly why so many different programs can read it.",
+      },
+      {
+        wrong: "Opening a file that does not exist creates it, whatever the mode.",
+        right:
+          "Write and append create it. Read does not — opening a missing file in read mode is a runtime error.",
       },
     ],
   },
@@ -2004,6 +3721,10 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       },
       {
         heading: "Expressing algorithms",
+        diagrams: [
+          "flowchart-shapes",
+          "flowchart-selection",
+        ],
         points: [
           "Pseudocode: structured English with no strict syntax, used to plan logic.",
           "Flowcharts: oval = start/stop, parallelogram = input/output, rectangle = process, diamond = decision, arrows = flow.",
@@ -2281,313 +4002,290 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
     ],
   },
 
+  // ─── RUNG 9, THE TOP ──────────────────────────────────────────────────────
+  //
+  // The capstone. This slug used to be a second grab-bag — arrays, subprograms,
+  // strings, files, defensive design and testing all in one topic, with the
+  // last two duplicating defensive-design-and-testing outright. Each of those
+  // now has its own rung, so this one does the job none of them can: putting
+  // the pieces together, and finding out why the result does not work.
+  //
+  // The slug is kept because progress rows are stored against it.
   "computer-science/programming": {
     summary:
-      "This is the practical half of the course — actually writing programs that work. It builds on the three constructs with the tools real programs need: arrays to hold many values, subprograms to avoid repeating yourself, string handling, file access, and the defensive habits that stop a program falling over the moment a real user touches it.",
+      "Every rung below this one taught a piece. This one is about assembling them into a program that actually runs — planning before you type, structuring the result so it can be read, and finding the fault when it misbehaves. Debugging is the part nobody teaches and everybody spends most of their time doing, so it gets the space here that it deserves.",
     keyFacts: [
       {
-        heading: "Arrays and lists",
+        heading: "Plan before you type",
+        diagrams: [
+          "flowchart-shapes",
+        ],
         points: [
-          "An array is a data structure holding multiple values of the same type under one name.",
-          "Each item is accessed by its index. Indexes usually start at 0, so the first item is array[0].",
-          "An array of 10 items has indexes 0 to 9. Asking for array[10] causes an out-of-range error.",
-          "A 2D array is an array of arrays, used for grids and tables: board[row][column].",
-          "Loop through an array with a count-controlled loop, using the loop counter as the index.",
+          "Work out WHAT the program must do before deciding HOW. Inputs, processing, outputs — in that order.",
+          "Pseudocode is structured English with no strict syntax, used to get the logic right while it is still cheap to change.",
+          "A flowchart shows the same logic as a picture: oval for start and stop, parallelogram for input and output, rectangle for a process, diamond for a decision.",
+          "Planning first catches logic errors before you have written a hundred lines around them, which is the cheapest debugging there is.",
         ],
       },
       {
-        heading: "Subprograms",
+        heading: "The shape of a working program",
         points: [
-          "A subprogram is a named block of code that can be called from elsewhere. Procedures and functions are both subprograms.",
-          "A function returns a value; a procedure carries out a task without returning one.",
-          "Parameters are the variables listed in the subprogram's definition; arguments are the actual values passed in when it is called.",
-          "Benefits: avoids repeating code, makes programs easier to read, test and maintain, and lets several people work on different parts.",
-          "A local variable exists only inside its subprogram. A global variable is accessible throughout the program. Prefer local — globals make bugs much harder to track down.",
+          "Constants first, then subprograms, then the main code that calls them. Anyone reading it can then find things.",
+          "Input, validate, process, output is the standard order — and validating before processing rather than after is what stops most crashes.",
+          "Give every variable a name that says what it holds, and every subprogram a name that says what it does.",
+          "Comment the WHY, not the what. total <- total + 1 needs no comment; a magic number does.",
         ],
       },
       {
-        heading: "String handling",
+        heading: "The three kinds of error",
         points: [
-          "length: the number of characters in a string.",
-          "substring: extracting part of a string by position.",
-          "concatenation: joining strings together, usually with +.",
-          "Converting case with upper and lower, which is essential when comparing user input.",
-          "ASCII conversion: turning a character into its numeric code and back.",
-          "Strings are indexed from 0, exactly like arrays.",
+          "A SYNTAX error breaks the rules of the language, so the program will not run at all — a missing bracket, colon or quote.",
+          "A RUNTIME error stops the program while it is running — dividing by zero, an array index out of range, a missing file.",
+          "A LOGIC error runs perfectly and gives the wrong answer — a + where you meant *, a > where you meant >=.",
+          "Logic errors are by far the most dangerous, because nothing tells you they are there. The program is confidently wrong.",
         ],
       },
       {
-        heading: "File handling",
+        heading: "Finding the fault",
+        diagrams: [
+          "trace-table",
+        ],
         points: [
-          "Files let data persist after the program closes; variables do not.",
-          "The pattern is always: open the file, read from or write to it, then close it.",
-          "Write mode usually overwrites existing contents; append mode adds to the end. Choosing the wrong one destroys data.",
-          "Reading line by line is normal for text files.",
+          "A trace table records every variable's value line by line, and is the fastest way to find a logic error by hand.",
+          "A breakpoint pauses a running program so the current values can be inspected — the same idea, done by the computer.",
+          "Print statements at key points are the crudest debugging tool and still one of the most effective.",
+          "Narrow it down: find the last line you are sure is right and the first you are sure is wrong, then look between them.",
         ],
       },
       {
-        heading: "Defensive design and validation",
+        heading: "Making it work for other people",
         points: [
-          "Anticipate misuse: assume users will enter text where you expected numbers, or nothing at all.",
-          "Validation types: range check, type check, presence check, length check, format check.",
-          "Authentication confirms who the user is, usually with a username and password.",
-          "Maintainability comes from meaningful names, comments explaining WHY, consistent indentation, and subprograms.",
-          "Comments should explain the reason for the code, not restate it. '# add 1 to i' is worthless.",
-        ],
-      },
-      {
-        heading: "Testing",
-        points: [
-          "Iterative testing happens throughout development; final testing happens once the program is complete.",
-          "Normal data: values that should be accepted, such as 25 for an age.",
-          "Boundary data: values at the very edge of what is acceptable, such as 0 and 120.",
-          "Erroneous (invalid) data: values that should be rejected, such as -5 or 'banana'.",
-          "A test plan lists the test, the data used, the expected result and the actual result.",
-          "Boundary data is where bugs hide, because > and >= are so easily confused.",
+          "Validate every input. Users mistype, leave boxes empty, and enter a date of birth in the future.",
+          "Handle the predictable failures: a file that is missing, a number that is zero, an empty array.",
+          "Test with normal, boundary and erroneous data. Boundary data — the value right on the edge of a condition — finds the most bugs per test.",
+          "A program that only works when used correctly is not finished.",
         ],
       },
     ],
     flashcards: [
-      { term: "Array", definition: "A data structure holding multiple values of the same data type under a single name, accessed by index." },
-      { term: "Index", definition: "The position number identifying an item in an array, normally starting at 0." },
-      { term: "2D array", definition: "An array whose elements are themselves arrays, used to store grids or tables of data." },
-      { term: "Subprogram", definition: "A named block of code that can be called from elsewhere in a program." },
-      { term: "Function", definition: "A subprogram that returns a value to the part of the program that called it." },
-      { term: "Procedure", definition: "A subprogram that carries out a task but does not return a value." },
-      { term: "Parameter", definition: "A variable listed in a subprogram's definition that receives a value when it is called." },
-      { term: "Argument", definition: "The actual value passed into a subprogram when it is called." },
-      { term: "Local variable", definition: "A variable that only exists and can only be used inside the subprogram where it is declared." },
-      { term: "Global variable", definition: "A variable that can be accessed from anywhere in the program." },
-      { term: "Concatenation", definition: "Joining two or more strings together to form a single string." },
-      { term: "Substring", definition: "A section of a string extracted by position." },
-      { term: "Defensive design", definition: "Writing programs that anticipate misuse and invalid input so they do not crash or behave unpredictably." },
-      { term: "Authentication", definition: "Confirming the identity of a user, typically through a username and password." },
-      { term: "Normal data", definition: "Test data within the acceptable range that the program should process correctly." },
-      { term: "Boundary data", definition: "Test data at the extreme edges of the acceptable range." },
-      { term: "Erroneous data", definition: "Test data that the program should reject because it is invalid." },
-      { term: "Test plan", definition: "A document listing each test, the data used, the expected result and the actual result." },
+      { term: "Pseudocode", definition: "A way of describing an algorithm in structured English, without the strict syntax of a real language." },
+      { term: "Flowchart", definition: "A diagram showing an algorithm's steps, using set shapes for input, processing, decisions and start or stop." },
+      { term: "Syntax error", definition: "An error breaking the rules of the programming language, which prevents the program from running at all." },
+      { term: "Runtime error", definition: "An error that stops a program while it is running, such as dividing by zero or reading past the end of an array." },
+      { term: "Logic error", definition: "An error where the program runs without crashing but produces an incorrect result." },
+      { term: "Trace table", definition: "A table recording the value of every variable at each step of an algorithm, used to find errors by hand." },
+      { term: "Breakpoint", definition: "A marker that pauses a running program so the current values of its variables can be inspected." },
+      { term: "Boundary data", definition: "Test data on the exact edge of a valid range, such as 0 and 100 for a percentage." },
+      { term: "Erroneous data", definition: "Test data that should be rejected outright, such as letters typed into an age field." },
+      { term: "Normal data", definition: "Ordinary, valid test data that a program is expected to accept and handle correctly." },
+      { term: "Maintainability", definition: "How easy a program is for someone else to read, understand and change later." },
     ],
     examTips: [
       {
-        tip: "Remember arrays start at 0",
+        tip: "Name the error type AND give an example",
         detail:
-          "An array of 10 items has indexes 0 to 9. Loops that run from 1 to 10 are the classic off-by-one error and examiners deliberately test it.",
+          "'Syntax error — a missing closing bracket, so the program will not run' scores. 'There is an error in the code' does not. The example is usually half the mark.",
       },
       {
-        tip: "Function returns, procedure does not — say the word 'return'",
+        tip: "Logic errors do not stop the program",
         detail:
-          "This distinction comes up almost every year. Use the word explicitly: 'a function returns a value to the calling code'.",
+          "If a question says the program runs but gives the wrong answer, that is a logic error every time, and nothing else fits.",
       },
       {
-        tip: "Give all three categories in testing questions",
+        tip: "Give test data as actual values, not descriptions",
         detail:
-          "Normal, boundary and erroneous. If asked for test data for an age between 0 and 120, offer something like 25, then 0 and 120, then -1 and 'banana'. Give an actual value, not a description.",
+          "For a 0 to 100 field: normal 50, boundary 0 and 100, erroneous 101 or 'abc'. Writing 'a sensible number' scores nothing.",
       },
       {
-        tip: "Boundary data means ON the boundary",
+        tip: "Fill trace tables one row per line executed",
         detail:
-          "For a range of 0 to 120, the boundaries are 0 and 120, and just outside them -1 and 121. Writing 60 as boundary data is a guaranteed lost mark.",
+          "Not one per loop. Every time a line changes a value that is a row, including the loop counter. Blank columns at the end usually mean a missed iteration.",
       },
       {
-        tip: "Justify subprograms with more than 'it's tidy'",
+        tip: "Use the flowchart shapes correctly",
         detail:
-          "Say it avoids duplicating code, makes the program easier to test because each part can be checked separately, and allows a team to work on different sections at once.",
+          "Diamond for a decision, parallelogram for input and output, rectangle for a process, oval for start and stop. Marks are given for the right shape in the right place.",
       },
       {
-        tip: "Write real code in code questions, not a description",
+        tip: "Say why maintainability matters when asked",
         detail:
-          "'I would use a loop to go through the array' scores nothing. Write the loop. Approximate syntax is generally accepted; a paragraph about what you would do is not.",
-      },
-      {
-        tip: "Comment the why, not the what",
-        detail:
-          "Comments restating the code earn nothing and can lose marks for maintainability. Explain the reasoning behind a decision instead.",
-      },
-      {
-        tip: "Prefer local variables and be able to justify it",
-        detail:
-          "Local variables cannot be changed accidentally by other parts of the program, which makes bugs easier to find and the code safer to modify.",
+          "'So another programmer can understand and change it later' is the answer. Meaningful names, comments, indentation and subprograms are the four things to name.",
       },
     ],
-
     workedExamples: [
       {
-        question: "An array called scores holds 10 values. Write a loop that adds them all up, and explain the index range.",
+        question:
+          "Classify each error.\n\n  a) print('hello  — a missing closing quote\n  b) total <- total + 1 where it should be total + n\n  c) dividing by a variable that turns out to be 0",
         steps: [
-          "Indexes start at 0, so an array of 10 items has indexes 0 to 9.",
-          "Initialise the total BEFORE the loop: total = 0. Adding to a variable that was never given a value is the classic error.",
-          "Loop from 0 to 9 inclusive: FOR i = 0 TO 9",
-          "Inside the loop, use the counter as the index: total = total + scores[i]",
-          "After the loop, total holds the sum. Looping 1 TO 10 would miss scores[0] and crash on scores[10].",
+          "a) The quote makes the line break the rules of the language, so it will not run at all — syntax.",
+          "b) The program runs perfectly and produces a number, but the wrong one — logic.",
+          "c) The program starts fine and only fails at the moment the division happens — runtime.",
+          "The distinguishing question is: does it refuse to run, crash partway, or finish with a wrong answer?",
         ],
-        answer: "total = 0; FOR i = 0 TO 9; total = total + scores[i]; NEXT i",
+        answer: "a) syntax  b) logic  c) runtime.",
       },
       {
-        question: "Write test data for a field that accepts a percentage mark from 0 to 100 inclusive, giving all three categories.",
+        question: "Give normal, boundary and erroneous test data for a field accepting a percentage from 0 to 100.",
         steps: [
-          "NORMAL data: a value comfortably inside the range that should be accepted — 57.",
-          "BOUNDARY data: values at the very edges of the range — 0 and 100, which must be accepted.",
-          "Boundary data just outside: -1 and 101, which must be rejected.",
-          "ERRONEOUS data: values of the wrong kind entirely — 'banana', or leaving it blank.",
-          "Give actual values, not descriptions. 'A sensible number' scores nothing.",
+          "Normal data is an ordinary value well inside the range: 50.",
+          "Boundary data sits exactly on the edges, which is where off-by-one errors hide: 0 and 100.",
+          "It is also worth testing just outside: -1 and 101 should both be rejected.",
+          "Erroneous data is something that should never be accepted at all: 'abc', or leaving it blank.",
         ],
         answer:
-          "Normal: 57. Boundary: 0, 100 (accept) and -1, 101 (reject). Erroneous: 'banana' or an empty entry.",
-      },
-      {
-        question: "Explain the difference between a function and a procedure, using an example of each.",
-        steps: [
-          "Both are subprograms — named blocks of code called from elsewhere.",
-          "A FUNCTION returns a value to whatever called it.",
-          "Example: calculateArea(width, height) returns the area, so you can write area = calculateArea(5, 3).",
-          "A PROCEDURE carries out a task but returns nothing.",
-          "Example: printReceipt(order) displays the receipt; there is no value to assign to anything.",
-        ],
-        answer:
-          "A function returns a value; a procedure does not. The word 'return' is what earns the mark.",
+          "Normal: 50. Boundary: 0 and 100 (accepted), -1 and 101 (rejected). Erroneous: 'abc' or an empty entry.",
       },
       {
         question:
-          "This code is meant to count how many values in an array are above 50, but always reports 0. Find the bug.\n\n  FOR i = 0 TO 9\n    count = 0\n    IF values[i] > 50 THEN count = count + 1\n  NEXT i",
+          "This should average three marks but always gives the wrong answer. Find the error.\n\n  total <- a + b + c / 3\n  OUTPUT total",
         steps: [
-          "Read where each line sits relative to the loop.",
-          "count = 0 is INSIDE the loop, so it is reset to zero on every single pass.",
-          "Anything counted on one pass is wiped at the start of the next.",
-          "The final value therefore reflects only the last item — 0 or 1, and usually 0.",
-          "Fix: move count = 0 to before the FOR line, so it initialises once.",
+          "The program runs and prints a number, so it is not a syntax or runtime error — it is a logic error.",
+          "Division happens before addition in the order of operations.",
+          "So this calculates a + b + (c / 3), not the average.",
+          "The fix is brackets: (a + b + c) / 3.",
         ],
         answer:
-          "count = 0 must be moved outside the loop, above it. Initialising inside the loop resets the total every pass.",
+          "A logic error caused by operator precedence. It should be total <- (a + b + c) / 3.",
+      },
+      {
+        question: "Complete a trace table for this and give the final total.\n\n  total <- 0\n  FOR i <- 1 TO 4\n    total <- total + i\n  NEXT i",
+        steps: [
+          "Before the loop: total = 0.",
+          "i = 1 gives total = 0 + 1 = 1.",
+          "i = 2 gives total = 1 + 2 = 3.",
+          "i = 3 gives total = 3 + 3 = 6, and i = 4 gives total = 6 + 4 = 10.",
+        ],
+        answer: "10, after four passes with i taking the values 1, 2, 3 and 4.",
+      },
+      {
+        question: "Which flowchart shape is used for a decision, and how many arrows leave it?",
+        steps: [
+          "A decision asks a yes or no question.",
+          "The shape for that is a diamond.",
+          "Because the answer is either yes or no, the program takes one of two paths.",
+          "So two arrows leave it, one labelled Yes and one labelled No.",
+        ],
+        answer: "A diamond, with two labelled arrows leaving it — one for Yes and one for No.",
       },
     ],
-
     practice: [
-      { question: "An array has 10 items. What is the index of the first item?", accept: ["0", "zero"],
-        answer: "0. Indexes start at 0, so an array of 10 items has indexes 0 to 9." },
-      { question: "An array has 10 items. What is the index of the LAST item?", accept: ["9", "nine"],
-        answer: "9. Asking for index 10 causes an out-of-range error — the classic off-by-one bug." },
-      { question: "Which type of subprogram returns a value to the code that called it?",
-        accept: ["function", "a function"], answer: "A function. A procedure carries out a task without returning a value." },
-      { question: "Which type of subprogram carries out a task but does NOT return a value?",
-        accept: ["procedure", "a procedure"],
-        answer:
-          "A procedure. It does the job and stops \u2014 there is no value to hand back to the caller." },
-      { question: "What is the name for a variable that only exists inside the subprogram where it is declared?",
-        accept: ["local", "local variable", "a local variable"],
-        answer: "A local variable. Preferred over global, because it cannot be changed accidentally elsewhere." },
-      { question: "What is the name for a variable accessible from anywhere in the program?",
-        accept: ["global", "global variable", "a global variable"],
-        answer: "A global variable. Convenient but a common source of hard-to-find bugs." },
-      { question: "What is the term for the values listed in a subprogram's definition?",
-        accept: ["parameters", "parameter"], answer: "Parameters. The actual values passed in when it is called are arguments." },
-      { question: "What is the term for the actual values passed into a subprogram when it is called?",
-        accept: ["arguments", "argument"], answer: "Arguments, as opposed to the parameters in the definition." },
-      { question: "Name the operation that joins two strings together.",
-        accept: ["concatenation", "concatenate", "concatination"],
-        answer: "Concatenation, usually written with a + in code." },
-      { question: "For an age field accepting 0 to 120, give one piece of BOUNDARY test data that should be accepted.",
-        accept: ["0", "120", "zero"], answer: "0 or 120 — the values at the very edge of the acceptable range. 60 would be normal data, not boundary." },
-      { question: "For an age field accepting 0 to 120, give one piece of erroneous test data.",
-        accept: ["banana", "-1", "abc", "text", "hello", "letters", "a word", "121"],
-        answer: "Something the field should reject outright — text such as 'banana', or a value outside the range like -1 or 121." },
-      { question: "What is the name for a 2D array element accessed as board[2][3]?",
-        accept: ["2d array", "two dimensional array", "2 dimensional array", "twodimensionalarray"],
-        answer: "A 2D array — an array of arrays, used for grids and tables, indexed by row then column." },
-      { question: "Name the design approach of writing programs that anticipate misuse and invalid input.",
-        accept: ["defensive design", "defensive programming"],
-        answer: "Defensive design — assuming users will type text where numbers are expected, or nothing at all." },
-      { question: "What is the term for confirming a user's identity, usually with a username and password?",
-        accept: ["authentication"], answer: "Authentication. Distinct from validation, which checks whether data is sensible." },
-      { question: "Which file mode adds to the end of a file rather than overwriting it?",
-        accept: ["append", "append mode"], answer: "Append mode. Write mode usually overwrites the existing contents, which destroys data if chosen by mistake." },
-      { question: "In a test plan, what are the three categories of test data?",
-        accept: ["normal boundary erroneous", "normal, boundary, erroneous", "normalboundaryerroneous",
-                 "normal boundary invalid", "normal, boundary and erroneous"],
-        answer: "Normal, boundary and erroneous. A complete answer gives an actual value for each, not a description." },
-      { question: "Explain why local variables are usually preferred over global variables.",
-        answer: "A local variable exists only inside its subprogram, so no other part of the program can change it by accident. That makes bugs far easier to locate: if a local value is wrong, the cause must be within that one subprogram. A global can be modified from anywhere, so tracking down what changed it may mean reading the entire program. (Mark this one yourself.)" },
-      { question: "Explain why boundary data is the most valuable category of test data.",
-        answer: "Because boundary values are where the most common coding errors live — confusing > with >=, or looping 1 to 10 instead of 0 to 9. Normal data usually works even in buggy code, and erroneous data tests a different thing entirely. Testing 0 and 100 on a 0-to-100 field finds off-by-one errors that testing 50 never would. (Mark this one yourself.)" },
       {
-        question: "What is a function that returns a value usually called?",
-        choices: [
-          "A function",
-          "A procedure",
-          "A variable",
-          "A constant",
-        ],
-        accept: [
-          "A function",
-        ],
-        answer: "In most GCSE specifications a procedure carries out a task without returning a value, while a function returns one.",
+        question: "A program runs but gives the wrong answer. What kind of error is that?",
+        accept: ["Logic error"],
+        choices: ["Logic error", "Syntax error", "Runtime error", "Boundary error"],
+        answer: "A logic error. The code is legal and it runs to completion, but the instructions do not do what was intended.",
       },
       {
-        question: "Why are subroutines useful?",
-        choices: [
-          "Code can be reused and the program is easier to read and test",
-          "They make programs run faster",
-          "They remove the need for variables",
-          "They prevent all errors",
-        ],
-        accept: [
-          "Code can be reused and the program is easier to read and test",
-        ],
-        answer: "Breaking a program into named parts means each can be tested separately and fixed without disturbing the rest.",
+        question: "A missing closing bracket causes which kind of error?",
+        accept: ["Syntax error"],
+        choices: ["Syntax error", "Logic error", "Runtime error", "Validation error"],
+        answer: "A syntax error. It breaks the rules of the language, so the program will not run at all.",
       },
       {
-        question: "What is a local variable?",
-        choices: [
-          "One that exists only inside the subroutine where it is declared",
-          "One available anywhere in the program",
-          "One that cannot be changed",
-          "One stored on the hard disk",
-        ],
-        accept: [
-          "One that exists only inside the subroutine where it is declared",
-        ],
-        answer: "Local variables avoid accidental interference between parts of a program, which is why they are preferred to global ones.",
+        question: "Which flowchart shape represents a decision?",
+        accept: ["Diamond"],
+        choices: ["Diamond", "Rectangle", "Parallelogram", "Oval"],
+        answer: "A diamond, with two labelled arrows leaving it for the Yes and No paths.",
       },
       {
-        question: "What does a two-dimensional array represent well?",
-        choices: [
-          "A table or grid of values",
-          "A single number",
-          "A yes or no answer",
-          "A file path",
-        ],
-        accept: [
-          "A table or grid of values",
-        ],
-        answer: "You index it with a row and a column, which suits seating plans, game boards and spreadsheets.",
+        question: "For a field accepting 0 to 100, which is boundary data?",
+        accept: ["100"],
+        choices: ["100", "50", "abc", "999"],
+        answer: "100. Boundary data sits exactly on the edge of the valid range, which is where off-by-one errors hide.",
       },
       {
-        question: "String concatenation means:",
-        choices: [
-          "Joining two strings together",
-          "Splitting a string in half",
-          "Converting a string to a number",
-          "Finding the length of a string",
-        ],
-        accept: [
-          "Joining two strings together",
-        ],
-        answer: "Note that adding the strings 2 and 3 gives 23, not 5 — which is why casting between types matters.",
+        question: "Which flowchart shape is used for input and output?",
+        accept: ["Parallelogram"],
+        choices: ["Parallelogram", "Rectangle", "Diamond", "Oval"],
+        answer: "A parallelogram. Rectangles are for processing and ovals mark the start and stop.",
+      },
+      {
+        question: "Name the error type that stops a program part-way through running.",
+        accept: ["runtime error", "runtime"],
+        answer: "A runtime error. Dividing by zero, reading past the end of an array and opening a missing file are the classic causes.",
+      },
+      {
+        question: "What is the fastest way to find a logic error by hand?",
+        accept: ["a trace table", "trace table"],
+        answer: "A trace table. Recording every variable's value line by line exposes the exact step where the values stop being what you expected.",
+      },
+      {
+        question: "Give an example of erroneous test data for an age field.",
+        accept: ["abc", "a letter", "letters", "-5"],
+        answer: "Something that should be rejected outright, such as 'abc' or a negative number. Erroneous data tests that the program refuses bad input rather than accepting it.",
+      },
+      {
+        question: "What does a breakpoint do?",
+        accept: ["pauses the program", "it pauses the program", "stops the program so you can inspect variables"],
+        answer: "It pauses a running program so the current values of its variables can be inspected — a trace table done by the computer instead of by hand.",
+      },
+      {
+        question: "Why is a logic error more dangerous than a syntax error?",
+        accept: ["nothing tells you it is there", "the program still runs", "it does not crash"],
+        answer: "Because nothing tells you it is there. A syntax error refuses to run; a logic error runs happily and produces a confident wrong answer.",
+      },
+      {
+        question: "Why should input be validated before it is processed rather than after?",
+        accept: ["to stop the program crashing", "to prevent errors", "so bad data never reaches the processing"],
+        answer: "So bad data never reaches the processing at all. Validating afterwards means the crash or the wrong result has already happened.",
+      },
+      {
+        question: "Name two things that make a program maintainable.",
+        accept: ["meaningful names and comments", "comments and indentation", "meaningful variable names and subprograms"],
+        answer: "Meaningful identifier names, comments explaining why, consistent indentation and breaking the work into subprograms. Any two of those score.",
+      },
+      {
+        question: "What is total <- (a + b + c) / 3 fixing, compared with a + b + c / 3?",
+        accept: ["operator precedence", "the order of operations", "precedence"],
+        answer: "The order of operations. Without brackets the division happens first, so only c is divided by three and the result is not the average.",
+      },
+      {
+        question: "In what order should a program handle its data?",
+        accept: ["input, validate, process, output", "input validate process output"],
+        answer: "Input, validate, process, output. Validating in the middle is what stops bad data reaching the processing stage.",
+      },
+      {
+        question: "What should a comment explain?",
+        accept: ["why", "the why", "why the code does something"],
+        answer: "Why the code does what it does. Restating what a line obviously does adds nothing; explaining a decision or a magic number is genuinely useful later.",
+      },
+      {
+        question: "Give normal test data for a field accepting a percentage from 0 to 100.",
+        accept: ["50", "any value between 1 and 99"],
+        answer: "An ordinary value well inside the range, such as 50. Normal data checks that the program works in the everyday case.",
+      },
+      {
+        question: "Which flowchart shape marks the start and the end?",
+        accept: ["oval", "an oval"],
+        answer: "An oval. Rectangles are processes, diamonds are decisions and parallelograms are input or output.",
       },
     ],
-
     misconceptions: [
-      { wrong: "\"An array of 10 items has indexes 1 to 10.\"",
-        right: "Indexes start at 0, so they run 0 to 9. Looping 1 TO 10 skips the first item and crashes on the eleventh, which does not exist." },
-      { wrong: "\"Boundary data means a value in the middle of the range.\"",
-        right: "It means values ON the boundary. For 0 to 120, the boundaries are 0 and 120, plus -1 and 121 just outside. Writing 60 as boundary data is a guaranteed lost mark." },
-      { wrong: "\"A function and a procedure are the same, just different words.\"",
-        right: "A function RETURNS a value to whatever called it; a procedure does not. Use the word 'return' explicitly — that is what the mark scheme looks for." },
-      { wrong: "\"You can describe what code would do instead of writing it.\"",
-        right: "'I would use a loop to go through the array' scores nothing on a code question. Write the loop. Approximate syntax is normally accepted; a description is not." },
-      { wrong: "\"Comments make code more maintainable, so more is better.\"",
-        right: "Comments restating the code are worthless and can lose maintainability marks. Explain WHY a decision was made — the code already says what it does." },
-      { wrong: "\"Initialising a total inside the loop is fine, it just runs more often.\"",
-        right: "It resets the total to zero on every pass, wiping everything counted so far. Initialise before the loop, always." },
+      {
+        wrong: "If the program runs, there are no errors in it.",
+        right:
+          "Running proves there is no syntax error. A logic error runs perfectly and returns the wrong answer, which is precisely what makes it hard to find.",
+      },
+      {
+        wrong: "A syntax error and a runtime error are the same thing.",
+        right:
+          "A syntax error stops it running at all. A runtime error only appears once it is already running, and may only happen with certain inputs.",
+      },
+      {
+        wrong: "Testing means checking the program works.",
+        right:
+          "Testing means trying to make it fail. Normal data proves very little; boundary and erroneous data are what find the bugs.",
+      },
+      {
+        wrong: "Comments should explain what every line does.",
+        right:
+          "Restating obvious code adds noise. Comments should explain why a decision was made, which is the thing the code itself cannot say.",
+      },
+      {
+        wrong: "Planning on paper is a waste of time when you could be coding.",
+        right:
+          "It is the cheapest debugging available. A logic error caught in pseudocode costs a minute; the same error found after a hundred lines are built on top of it costs an afternoon.",
+      },
     ],
   },
 

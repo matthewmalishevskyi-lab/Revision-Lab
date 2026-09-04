@@ -10,6 +10,7 @@
 
 import * as biology from "./biology";
 import * as chemistry from "./chemistry";
+import * as computerScience from "./computer-science";
 import * as maths from "./maths";
 import * as physics from "./physics";
 
@@ -124,6 +125,14 @@ export const DIAGRAMS = {
   "food-chain": biology.FoodChain,
   "photosynthesis-limiting-factors": biology.PhotosynthesisLimitingFactors,
   "microscope-magnification": biology.MicroscopeMagnification,
+
+  // ── Computer science ─────────────────────────────────────────────────────
+  "flowchart-shapes": computerScience.FlowchartShapes,
+  "flowchart-selection": computerScience.FlowchartSelection,
+  "flowchart-loop": computerScience.FlowchartLoop,
+  "trace-table": computerScience.TraceTable,
+  "array-indexing": computerScience.ArrayIndexing,
+  "subprogram-call": computerScience.SubprogramCall,
 } as const;
 
 export type DiagramName = keyof typeof DIAGRAMS;

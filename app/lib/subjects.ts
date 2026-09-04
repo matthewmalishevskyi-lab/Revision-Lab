@@ -267,7 +267,14 @@ export const SUBJECTS: Subject[] = [
         topics: [
           { slug: "digital-literacy", title: "Digital literacy", icon: "globe" },
           { slug: "binary-and-data", title: "Binary & data", icon: "binary" },
-          { slug: "programming-foundations", title: "Programming foundations", icon: "code" },
+          // ── THE PROGRAMMING LADDER ──────────────────────────────────
+          // Matthew: "start from the easy stuff and then get harder and
+          // harder gradually." Rungs 1-4 are here in Year 9, 5-9 in Year 10.
+          // Each one assumes only the ones above it, and nothing else.
+          { slug: "programming-foundations", title: "Variables & data types", icon: "code" },
+          { slug: "programming-input-and-output", title: "Input, output & operators", icon: "terminal" },
+          { slug: "programming-selection", title: "Selection: if & else", icon: "compass" },
+          { slug: "programming-iteration", title: "Iteration: loops", icon: "circle" },
           { slug: "networks-basics", title: "Networks basics", icon: "network" },
         ],
       },
@@ -278,7 +285,13 @@ export const SUBJECTS: Subject[] = [
           { slug: "memory-and-storage", title: "Memory & storage", icon: "disk" },
           { slug: "system-software", title: "System software", icon: "cog" },
           { slug: "algorithms", title: "Algorithms", icon: "flow" },
-          { slug: "programming", title: "Programming", icon: "terminal" },
+          // Rungs 5-9. Lists come first because everything after them
+          // assumes you can loop over a collection.
+          { slug: "programming-lists-and-arrays", title: "Lists & arrays", icon: "grid" },
+          { slug: "programming-strings", title: "Working with text", icon: "quote" },
+          { slug: "programming-subprograms", title: "Subprograms", icon: "cube" },
+          { slug: "programming-file-handling", title: "File handling", icon: "book" },
+          { slug: "programming", title: "Putting a program together", icon: "toolbox" },
           { slug: "network-protocols-and-layers", title: "Protocols & layers", icon: "layers" },
           { slug: "cyber-security", title: "Cyber security", icon: "shield" },
           { slug: "databases", title: "Databases", icon: "database" },
