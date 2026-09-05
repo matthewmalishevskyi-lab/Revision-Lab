@@ -443,8 +443,8 @@ export function PhotosynthesisLimitingFactors(props: DiagramProps) {
       <Fig d="M 28 14 L 28 90 L 200 90" />
       <path d="M 28 90 C 62 90, 84 40, 116 34 L 192 34" className={angleStroke} strokeWidth={2} fill="none" />
       <Fig d="M 116 34 L 116 90" dashed />
-      <text x={44} y={30} className={label}>light limits</text>
-      <text x={196} y={104} textAnchor="end" className={plainLabel}>something else limits</text>
+      <text x={44} y={48} className={label}>light limits</text>
+      <text x={192} y={28} textAnchor="end" className={plainLabel}>something else limits</text>
       <text x={24} y={14} textAnchor="end" className={plainLabel}>rate</text>
       <text x={200} y={103} textAnchor="end" className={plainLabel}>light</text>
     </Frame>

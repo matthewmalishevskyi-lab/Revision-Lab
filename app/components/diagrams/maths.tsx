@@ -379,7 +379,7 @@ export function CircleParts(props: DiagramProps) {
             radius above its own line, diameter below the horizontal, chord
             outside the circle with a leader of white space. */}
         <text x={62} y={26} textAnchor="middle" className={plainLabel}>radius</text>
-        <text x={104} y={74} className={plainLabel}>diameter</text>
+        <text x={98} y={74} className={plainLabel}>diameter</text>
         <text x={96} y={108} textAnchor="middle" className={plainLabel}>chord</text>
         <text x={172} y={40} className={plainLabel}>tangent</text>
       </CircleFrame>
@@ -462,6 +462,14 @@ export function CircleSameSegment(props: DiagramProps) {
   );
 }
 
+/** The end angle that sweeps the SHORT way round from `from` to `to`. */
+function shortTurn(from: number, to: number) {
+  let d = to - from;
+  while (d > 180) d -= 360;
+  while (d <= -180) d += 360;
+  return from + d;
+}
+
 export function CircleCyclicQuadrilateral(props: DiagramProps) {
   const pts = [55, 145, 215, 325];
   const [p0, p1, p2, p3] = pts.map((d) => onCircle(d));
@@ -475,7 +483,11 @@ export function CircleCyclicQuadrilateral(props: DiagramProps) {
         <Fig
           d={`M ${p0[0].toFixed(1)} ${p0[1].toFixed(1)} L ${p1[0].toFixed(1)} ${p1[1].toFixed(1)} L ${p2[0].toFixed(1)} ${p2[1].toFixed(1)} L ${p3[0].toFixed(1)} ${p3[1].toFixed(1)} Z`}
         />
-        <Angle d={wedge(p0[0], p0[1], 15, bearingBetween(55, 145), bearingBetween(55, 325) + 360)} />
+        {/* The interior angle is the SHORT way round between the two sides.
+            An earlier version added 360 here to force the sweep direction,
+            which pushed the difference past 180 and made arc() draw the
+            reflex angle instead — 'a' came out as very nearly a full circle. */}
+        <Angle d={wedge(p0[0], p0[1], 15, bearingBetween(55, 145), shortTurn(bearingBetween(55, 145), bearingBetween(55, 325)))} />
         <Angle d={wedge(p2[0], p2[1], 15, bearingBetween(215, 325), bearingBetween(215, 145))} />
         <text x={144} y={44} className={label}>a</text>
         <text x={68} y={82} className={label}>b</text>
@@ -594,7 +606,7 @@ export function Sohcahtoa(props: DiagramProps) {
       <text x={60} y={86} className={label}>θ</text>
       <text x={90} y={107} textAnchor="middle" className={plainLabel}>adjacent</text>
       <text x={156} y={64} className={plainLabel}>opposite</text>
-      <text x={82} y={52} textAnchor="middle" className={plainLabel}>hypotenuse</text>
+      <text x={70} y={44} textAnchor="middle" className={plainLabel}>hypotenuse</text>
     </Frame>
   );
 }
@@ -732,10 +744,10 @@ export function VennTwoSets(props: DiagramProps) {
       label="A Venn diagram of two overlapping sets inside a rectangle, with the overlap and the outside region labelled"
     >
       <Fig d="M 12 10 L 208 10 L 208 100 L 12 100 Z" />
-      <circle cx={84} cy={55} r={33} className={line} strokeWidth={2} fill="none" />
-      <circle cx={136} cy={55} r={33} className={line} strokeWidth={2} fill="none" />
-      <text x={62} y={59} textAnchor="middle" className={plainLabel}>A only</text>
-      <text x={158} y={59} textAnchor="middle" className={plainLabel}>B only</text>
+      <circle cx={80} cy={55} r={32} className={line} strokeWidth={2} fill="none" />
+      <circle cx={140} cy={55} r={32} className={line} strokeWidth={2} fill="none" />
+      <text x={74} y={59} textAnchor="middle" className={plainLabel}>A only</text>
+      <text x={146} y={59} textAnchor="middle" className={plainLabel}>B only</text>
       <text x={110} y={59} textAnchor="middle" className={label}>both</text>
       <text x={30} y={92} className={plainLabel}>neither</text>
     </Frame>
@@ -1073,7 +1085,7 @@ export function Cylinder(props: DiagramProps) {
       <path d="M 40 76 A 38 13 0 0 0 116 76" className={line} strokeWidth={2} fill="none" />
       <Mark d="M 78 26 L 116 26" />
       <circle cx={78} cy={26} r={2.4} className="fill-blue-600 dark:fill-blue-400" />
-      <text x={98} y={40} textAnchor="middle" className={label}>r</text>
+      <text x={98} y={44} textAnchor="middle" className={label}>r</text>
       <Fig d="M 132 26 L 132 76" dashed />
       <text x={140} y={54} className={label}>h</text>
     </Frame>

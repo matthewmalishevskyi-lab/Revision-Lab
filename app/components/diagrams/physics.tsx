@@ -358,7 +358,7 @@ export function DistanceTimeGraph(props: DiagramProps) {
     >
       <Fig d="M 30 16 L 30 88 L 200 88" />
       <path d="M 30 88 L 84 58 L 128 58 L 186 20" className={angleStroke} strokeWidth={2} fill="none" />
-      <text x={46} y={70} className={plainLabel}>steady</text>
+      <text x={34} y={60} className={plainLabel}>steady</text>
       <text x={106} y={52} textAnchor="middle" className={plainLabel}>stopped</text>
       <text x={150} y={62} className={label}>faster</text>
       <text x={26} y={18} textAnchor="end" className={plainLabel}>d</text>

@@ -1668,9 +1668,6 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Count-controlled loops",
-        diagrams: [
-          "flowchart-loop",
-        ],
         points: [
           "A count-controlled loop repeats a known, fixed number of times. In most languages it is a FOR loop.",
           "FOR i <- 1 TO 5 runs five times, with i holding 1, then 2, then 3, 4 and 5.",
@@ -1681,6 +1678,9 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       },
       {
         heading: "Condition-controlled loops",
+        diagrams: [
+          "flowchart-loop",
+        ],
         points: [
           "A condition-controlled loop keeps going while a condition is true. In most languages it is a WHILE loop.",
           "The condition is checked BEFORE each pass, so a WHILE loop can run zero times if it is false to begin with.",

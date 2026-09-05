@@ -4195,9 +4195,6 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The vocabulary",
-        diagrams: [
-          "punnett-square",
-        ],
         points: [
           "An ALLELE is a different version of the same gene.",
           "A DOMINANT allele is expressed even if only one copy is present. Written as a CAPITAL letter.",
@@ -4209,6 +4206,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Punnett squares",
+        diagrams: [
+          "punnett-square",
+        ],
         points: [
           "Put one parent's alleles along the top and the other's down the side.",
           "Fill each box by combining the allele from its row and its column.",

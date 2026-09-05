@@ -229,14 +229,14 @@ export function DiamondGraphite(props: DiagramProps) {
       ))}
       <Fig d="M 54 40 L 34 62 M 54 40 L 74 62 M 34 62 L 54 84 M 74 62 L 54 84 M 54 40 L 54 22 M 54 84 L 54 98" />
       <text x={156} y={16} textAnchor="middle" className={label}>graphite</text>
-      {[36, 62, 88].map((y) => (
+      {[30, 54, 78].map((y) => (
         <g key={y}>
           <Fig d={hex(134, y, 11)} />
           <Fig d={hex(153, y, 11)} />
           <Fig d={hex(172, y, 11)} />
         </g>
       ))}
-      <text x={156} y={100} textAnchor="middle" className={plainLabel}>weak between layers</text>
+      <text x={156} y={104} textAnchor="middle" className={plainLabel}>weak between layers</text>
     </Frame>
   );
 }
@@ -291,9 +291,9 @@ export function Chromatography(props: DiagramProps) {
       <path d="M 44 20 L 176 20 L 176 92 L 44 92 Z" className={line} strokeWidth={1.4} fill="none" />
       <path d="M 44 78 L 176 78 L 176 92 L 44 92 Z" className={angleFill} strokeWidth={0} />
       <Fig d="M 44 78 L 176 78" />
-      <text x={110} y={92} textAnchor="middle" className={plainLabel}>solvent</text>
+      <text x={110} y={90} textAnchor="middle" className={plainLabel}>solvent</text>
       <Mark d="M 52 66 L 168 66" />
-      <text x={110} y={106} textAnchor="middle" className={label}>pencil baseline</text>
+      <text x={180} y={62} textAnchor="end" className={label}>baseline</text>
       {spots.map((x, i) => (
         <g key={x}>
           <circle cx={x} cy={66} r={3} className="fill-current opacity-50" />
@@ -330,11 +330,11 @@ export function ReactionProfileExothermic(props: DiagramProps) {
       <Fig d={`M 42 ${reactants} L 176 ${reactants}`} dashed />
       <Mark d={`M 66 ${reactants} L 66 ${peak}`} />
       <Mark d={`M 62 ${peak} L 70 ${peak}`} />
-      <text x={58} y={(reactants + peak) / 2 + 4} textAnchor="end" className={label}>Ea</text>
+      <text x={58} y={peak + 8} textAnchor="end" className={label}>Ea</text>
       <Mark d={`M 176 ${reactants} L 176 ${products}`} />
       <text x={180} y={(reactants + products) / 2 + 4} className={label}>ΔH</text>
-      <text x={44} y={reactants + 14} className={plainLabel}>reactants</text>
-      <text x={192} y={products - 6} textAnchor="end" className={plainLabel}>products</text>
+      <text x={40} y={reactants + 16} className={plainLabel}>reactants</text>
+      <text x={168} y={products + 16} textAnchor="end" className={plainLabel}>products</text>
     </Frame>
   );
 }
