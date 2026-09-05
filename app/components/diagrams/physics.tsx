@@ -493,3 +493,243 @@ export function PressureInLiquids(props: DiagramProps) {
     </Frame>
   );
 }
+
+// ─── Energy ─────────────────────────────────────────────────────────────────
+
+export function SankeyDiagram(props: DiagramProps) {
+  // The width of each arm is the energy in it, which is the whole point of a
+  // Sankey — a fat waste branch IS the answer to "is this efficient?".
+  // Drawn to scale: 100 in, 25 useful, 75 wasted.
+  //
+  // One continuous shape rather than three rectangles. Drawn as separate
+  // boxes it read as three unrelated blocks sitting on top of each other,
+  // which is exactly what a Sankey is not.
+  return (
+    <Frame
+      caption={"the width is the energy — this one is 25% efficient"}
+      {...props}
+      label="A Sankey diagram for a filament lamp with one hundred joules in, twenty five leaving as light and seventy five branching away as wasted heat, drawn to scale"
+    >
+      <path
+        d="M 10 18 L 70 18 L 70 33 L 200 33 L 200 48 L 70 48 L 70 78 L 10 78 Z"
+        className={`${angleFill} ${angleStroke}`}
+        strokeWidth={1.6}
+      />
+      <path d="M 70 48 L 124 48 L 150 86 L 96 86 Z" className={line} strokeWidth={1.6} fill="none" />
+      <text x={38} y={52} textAnchor="middle" className={label}>100 J</text>
+      <text x={150} y={29} textAnchor="middle" className={label}>25 J light</text>
+      <text x={124} y={78} textAnchor="middle" className={plainLabel}>75 J heat</text>
+      <text x={110} y={106} textAnchor="middle" className={plainLabel}>efficiency = useful ÷ total</text>
+    </Frame>
+  );
+}
+
+export function StatesOfMatter(props: DiagramProps) {
+  // Arrangement, spacing and movement, side by side. Every particle-model
+  // question is really asking you to read one of these three pictures.
+  const grid = (x0: number, jitter: number, gap: number, n: number) => {
+    const out: [number, number][] = [];
+    let seed = 7;
+    const rnd = () => {
+      seed = (seed * 16807) % 2147483647;
+      return (seed / 2147483647 - 0.5) * jitter;
+    };
+    for (let r = 0; r < n; r++)
+      for (let c = 0; c < n; c++) out.push([x0 + c * gap + rnd(), 34 + r * gap + rnd()]);
+    return out;
+  };
+  const panels = [
+    { x: 12, name: "solid", pts: grid(22, 0, 11, 4) },
+    { x: 82, name: "liquid", pts: grid(92, 7, 11, 4) },
+    { x: 152, name: "gas", pts: grid(160, 22, 18, 3) },
+  ];
+  return (
+    <Frame
+      caption={"same particles — the arrangement and the energy change"}
+      {...props}
+      label="Particles drawn in a solid as a fixed regular lattice, in a liquid as close but disordered, and in a gas as far apart and random"
+    >
+      {panels.map((p) => (
+        <g key={p.name}>
+          <rect x={p.x} y={24} width={56} height={54} className={line} strokeWidth={1.4} fill="none" />
+          {p.pts.map(([x, y], i) => (
+            <circle key={i} cx={x} cy={y} r={3.4} className={`${angleFill} ${angleStroke}`} strokeWidth={1} />
+          ))}
+          <text x={p.x + 28} y={92} textAnchor="middle" className={label}>{p.name}</text>
+        </g>
+      ))}
+      <text x={110} y={16} textAnchor="middle" className={plainLabel}>
+        heating gives the particles more energy
+      </text>
+    </Frame>
+  );
+}
+
+// ─── Mains electricity ──────────────────────────────────────────────────────
+
+export function ThreePinPlug(props: DiagramProps) {
+  // Which wire goes where. Asked most years, and it is pure recall that a
+  // picture fixes instantly — but only if it actually looks like a plug,
+  // which the first version did not.
+  return (
+    <Frame
+      caption={"brown live, blue neutral, green and yellow earth"}
+      {...props}
+      label="A three pin plug seen from inside: the longer earth pin at the top centre, live on the right with the fuse beside it, and neutral on the left"
+    >
+      {/* the pins */}
+      <rect x={104} y={8} width={9} height={26} className={line} strokeWidth={1.6} fill="none" />
+      <rect x={62} y={20} width={9} height={16} className={line} strokeWidth={1.6} fill="none" />
+      <rect x={148} y={20} width={9} height={16} className={line} strokeWidth={1.6} fill="none" />
+      {/* the body */}
+      <path d="M 40 36 L 178 36 L 178 92 L 40 92 Z" className={line} strokeWidth={2} fill="none" />
+      {/* the fuse, in the live side */}
+      <rect x={144} y={44} width={18} height={26} className={`${angleFill} ${angleStroke}`} strokeWidth={1.6} />
+      <text x={153} y={60} textAnchor="middle" className="fill-current text-[7px]">fuse</text>
+      {/* the wires */}
+      <Fig d="M 66 36 L 66 74 L 109 74" />
+      <Fig d="M 153 70 L 153 74 L 109 74" />
+      <Fig d="M 109 34 L 109 74" />
+      <text x={36} y={50} textAnchor="end" className={plainLabel}>blue</text>
+      <text x={184} y={50} className={plainLabel}>brown</text>
+      <text x={109} y={88} textAnchor="middle" className={label}>earth</text>
+      <text x={110} y={106} textAnchor="middle" className={plainLabel}>the fuse is always in the live wire</text>
+    </Frame>
+  );
+}
+
+// ─── The electromagnetic spectrum ───────────────────────────────────────────
+
+export function EmSpectrum(props: DiagramProps) {
+  const bands = ["radio", "micro", "IR", "vis", "UV", "X-ray", "gamma"];
+  const w = 196 / bands.length;
+  return (
+    <Frame
+      caption={"one order: radio, micro, infrared, visible, UV, X-ray, gamma"}
+      {...props}
+      label="The electromagnetic spectrum in order from radio waves to gamma rays, with wavelength decreasing and frequency and energy increasing from left to right"
+    >
+      {bands.map((b, i) => (
+        <g key={b}>
+          <rect
+            x={12 + i * w}
+            y={34}
+            width={w}
+            height={22}
+            className={b === "vis" ? `${angleFill} ${angleStroke}` : line}
+            strokeWidth={1.2}
+            fill={b === "vis" ? undefined : "none"}
+          />
+          <text x={12 + i * w + w / 2} y={48} textAnchor="middle" className="fill-current text-[7px]">{b}</text>
+        </g>
+      ))}
+      <Mark d="M 12 24 L 100 24" />
+      <Mark d={arrowHead(12, 24, 180)} />
+      <text x={104} y={27} className={plainLabel}>longer wavelength</text>
+      <Mark d="M 208 70 L 120 70" />
+      <Mark d={arrowHead(208, 70, 0)} />
+      <text x={116} y={73} textAnchor="end" className={plainLabel}>more energy</text>
+      <text x={110} y={94} textAnchor="middle" className={plainLabel}>
+        visible light is a very narrow band
+      </text>
+    </Frame>
+  );
+}
+
+// ─── Radioactivity ──────────────────────────────────────────────────────────
+
+export function HalfLifeGraph(props: DiagramProps) {
+  // Halving, then halving again, drawn so the equal steps along the bottom
+  // are visible. "It never quite reaches zero" is the other half of the idea.
+  const pts: [number, number][] = [];
+  for (let t = 0; t <= 100; t += 2) pts.push([t, 100 * Math.pow(0.5, t / 25)]);
+  return (
+    <Frame
+      caption={"each half-life halves what is left — it never reaches zero"}
+      {...props}
+      label="A radioactive decay curve halving every quarter of the axis, with dashed lines showing the count falling from one hundred to fifty to twenty five"
+    >
+      <Fig d="M 30 14 L 30 88 L 200 88" />
+      <path
+        d={pts.map(([t, v], i) => `${i === 0 ? "M" : "L"} ${(30 + t * 1.7).toFixed(1)} ${(88 - v * 0.72).toFixed(1)}`).join(" ")}
+        className={angleStroke}
+        strokeWidth={2}
+        fill="none"
+      />
+      <Fig d="M 30 52 L 72 52 L 72 88" dashed />
+      <Fig d="M 30 70 L 115 70 L 115 88" dashed />
+      <text x={26} y={20} textAnchor="end" className={plainLabel}>100</text>
+      <text x={26} y={56} textAnchor="end" className={plainLabel}>50</text>
+      <text x={26} y={74} textAnchor="end" className={plainLabel}>25</text>
+      <text x={72} y={100} textAnchor="middle" className={label}>1</text>
+      <text x={115} y={100} textAnchor="middle" className={label}>2</text>
+      <text x={168} y={100} textAnchor="middle" className={plainLabel}>half-lives</text>
+    </Frame>
+  );
+}
+
+export function RadiationPenetration(props: DiagramProps) {
+  const rows = [
+    { y: 26, name: "alpha", stops: 74 },
+    { y: 50, name: "beta", stops: 122 },
+    { y: 74, name: "gamma", stops: 186 },
+  ];
+  return (
+    <Frame
+      caption={"alpha stopped by paper, beta by aluminium, gamma needs lead"}
+      {...props}
+      label="Alpha radiation stopped by paper, beta radiation stopped by aluminium, and gamma radiation only reduced by thick lead"
+    >
+      {[["paper", 74], ["aluminium", 122], ["lead", 170]].map(([n, x]) => (
+        <g key={n as string}>
+          <rect x={x as number} y={16} width={10} height={70} className={line} strokeWidth={1.4} fill="none" />
+          <text x={(x as number) + 5} y={100} textAnchor="middle" className={plainLabel}>{n as string}</text>
+        </g>
+      ))}
+      {rows.map((r) => (
+        <g key={r.name}>
+          <Mark d={`M 16 ${r.y} L ${r.stops} ${r.y}`} />
+          <Mark d={arrowHead(r.stops, r.y, 0)} />
+          <text x={14} y={r.y - 5} className={label}>{r.name}</text>
+        </g>
+      ))}
+    </Frame>
+  );
+}
+
+// ─── Space ──────────────────────────────────────────────────────────────────
+
+export function StarLifeCycle(props: DiagramProps) {
+  // Two endings, and which one you get depends only on the mass. That fork
+  // is the examinable idea and it is why this is a diagram, not a list.
+  const box = (x: number, y: number, w: number, t: string, hi = false) => (
+    <g key={t}>
+      <rect x={x} y={y} width={w} height={18} className={hi ? `${angleFill} ${angleStroke}` : line} strokeWidth={1.4} fill={hi ? undefined : "none"} />
+      <text x={x + w / 2} y={y + 12} textAnchor="middle" className="fill-current text-[7.5px]">{t}</text>
+    </g>
+  );
+  return (
+    <Frame
+      caption={"the mass of the star decides which ending it gets"}
+      {...props}
+      label="A star's life cycle branching after the main sequence: smaller stars become a red giant then a white dwarf, larger stars a red supergiant then a supernova and a neutron star or black hole"
+    >
+      {box(8, 42, 40, "nebula")}
+      {box(56, 42, 52, "main sequence", true)}
+      <Mark d="M 48 51 L 54 51" />
+      <Mark d={arrowHead(54, 51, 0)} />
+      <Fig d="M 108 51 L 118 51 L 118 22 L 128 22 M 118 51 L 118 80 L 128 80" />
+      {box(130, 13, 40, "red giant")}
+      {box(130, 70, 52, "supergiant")}
+      {box(178, 13, 36, "dwarf")}
+      {box(132, 90, 68, "supernova")}
+      <Mark d="M 156 88 L 156 90" />
+      <Fig d="M 156 80 L 156 88" />
+      <Fig d={arrowHead(156, 88, 270)} />
+      <Mark d="M 170 22 L 176 22" />
+      <Mark d={arrowHead(176, 22, 0)} />
+      <text x={128} y={9} className={plainLabel}>smaller</text>
+      <text x={128} y={68} className={label}>bigger</text>
+    </Frame>
+  );
+}

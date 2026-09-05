@@ -1173,3 +1173,232 @@ export function AreaVolumeScaleFactors(props: DiagramProps) {
     </Frame>
   );
 }
+
+// ─── Quadratics ─────────────────────────────────────────────────────────────
+
+export function QuadraticGraph(props: DiagramProps) {
+  // A real parabola, plotted from y = x^2 - 2x - 3, so the roots at -1 and 3
+  // and the turning point at (1, -4) are actually where the maths puts them
+  // rather than where they look about right.
+  const sx = (x: number) => 110 + x * 22;
+  const sy = (y: number) => 52 - y * 7;
+  const pts: string[] = [];
+  for (let x = -2.2; x <= 4.2; x += 0.1) {
+    const y = x * x - 2 * x - 3;
+    pts.push(`${pts.length === 0 ? "M" : "L"} ${sx(x).toFixed(1)} ${sy(y).toFixed(1)}`);
+  }
+  return (
+    <Frame
+      caption={"the roots are where it crosses y = 0"}
+      {...props}
+      label="The parabola y equals x squared minus two x minus three, crossing the x-axis at minus one and three, with its turning point at one, minus four"
+    >
+      <Fig d={`M 30 ${sy(0)} L 196 ${sy(0)}`} />
+      <Fig d={`M ${sx(0)} 8 L ${sx(0)} 96`} />
+      <path d={pts.join(" ")} className={angleStroke} strokeWidth={2} fill="none" />
+      <circle cx={sx(-1)} cy={sy(0)} r={3} className="fill-blue-600 dark:fill-blue-400" />
+      <circle cx={sx(3)} cy={sy(0)} r={3} className="fill-blue-600 dark:fill-blue-400" />
+      <text x={sx(-1)} y={sy(0) - 7} textAnchor="middle" className={label}>−1</text>
+      <text x={sx(3)} y={sy(0) - 7} textAnchor="middle" className={label}>3</text>
+      <circle cx={sx(1)} cy={sy(-4)} r={3} className="fill-current opacity-70" />
+      <text x={sx(1) + 6} y={sy(-4) + 4} className={plainLabel}>turning point</text>
+    </Frame>
+  );
+}
+
+// ─── Inequalities ───────────────────────────────────────────────────────────
+
+export function InequalityNumberLine(props: DiagramProps) {
+  // The open and closed circle is the entire notation, and it is one mark
+  // every time. Both are shown together so the difference is unmissable.
+  const sx = (v: number) => 26 + (v + 1) * 26;
+  return (
+    <Frame
+      caption={"open circle excludes it, filled circle includes it"}
+      {...props}
+      label="Two number lines: the first showing x greater than one with an open circle, the second showing x less than or equal to three with a filled circle"
+    >
+      <Fig d="M 20 30 L 200 30" />
+      {[-1, 0, 1, 2, 3, 4, 5].map((v) => (
+        <g key={`a${v}`}>
+          <Fig d={`M ${sx(v)} 26 L ${sx(v)} 34`} />
+          <text x={sx(v)} y={44} textAnchor="middle" className="fill-current text-[8px] opacity-60">{v}</text>
+        </g>
+      ))}
+      <circle cx={sx(1)} cy={30} r={4} className={`${angleStroke} fill-transparent`} strokeWidth={2} />
+      <Mark d={`M ${sx(1)} 30 L 196 30`} />
+      <text x={16} y={22} className={label}>x &gt; 1</text>
+
+      <Fig d="M 20 74 L 200 74" />
+      {[-1, 0, 1, 2, 3, 4, 5].map((v) => (
+        <g key={`b${v}`}>
+          <Fig d={`M ${sx(v)} 70 L ${sx(v)} 78`} />
+          <text x={sx(v)} y={88} textAnchor="middle" className="fill-current text-[8px] opacity-60">{v}</text>
+        </g>
+      ))}
+      <circle cx={sx(3)} cy={74} r={4} className="fill-blue-600 dark:fill-blue-400" />
+      <Mark d={`M ${sx(3)} 74 L 24 74`} />
+      <text x={16} y={66} className={label}>x ≤ 3</text>
+    </Frame>
+  );
+}
+
+// ─── Ratio ──────────────────────────────────────────────────────────────────
+
+export function RatioBarModel(props: DiagramProps) {
+  // Sharing £40 in 3:5. Counting the parts is the method, and a bar makes
+  // the count impossible to get wrong.
+  const unit = 22;
+  return (
+    <Frame
+      caption={"count the parts first, then find what one part is worth"}
+      {...props}
+      label="A bar model sharing forty pounds in the ratio three to five, showing eight equal parts of five pounds each"
+    >
+      <text x={110} y={16} textAnchor="middle" className={plainLabel}>share £40 in the ratio 3 : 5</text>
+      {Array.from({ length: 8 }, (_, i) => (
+        <rect
+          key={i}
+          x={22 + i * unit}
+          y={30}
+          width={unit}
+          height={26}
+          className={i < 3 ? `${angleFill} ${angleStroke}` : line}
+          strokeWidth={1.4}
+          fill={i < 3 ? undefined : "none"}
+        />
+      ))}
+      <Mark d={`M 22 64 L ${22 + 3 * unit} 64`} />
+      <text x={22 + 1.5 * unit} y={78} textAnchor="middle" className={label}>£15</text>
+      <Mark d={`M ${22 + 3 * unit} 64 L ${22 + 8 * unit} 64`} />
+      <text x={22 + 5.5 * unit} y={78} textAnchor="middle" className={plainLabel}>£25</text>
+      <text x={110} y={98} textAnchor="middle" className={plainLabel}>
+        8 parts, so one part is £40 ÷ 8 = £5
+      </text>
+    </Frame>
+  );
+}
+
+// ─── Compound measures ──────────────────────────────────────────────────────
+
+export function SpeedFormulaTriangle(props: DiagramProps) {
+  return (
+    <Frame
+      caption={"cover the one you want and read off the rest"}
+      {...props}
+      label="A formula triangle with distance on top and speed and time underneath, for rearranging the speed equation"
+    >
+      <path d="M 110 12 L 178 88 L 42 88 Z" className={`${angleFill} ${angleStroke}`} strokeWidth={2} />
+      <Fig d="M 62 62 L 158 62" />
+      <Fig d="M 110 62 L 110 88" />
+      <text x={110} y={50} textAnchor="middle" className={label}>D</text>
+      <text x={84} y={80} textAnchor="middle" className={label}>S</text>
+      <text x={138} y={80} textAnchor="middle" className={label}>T</text>
+      <text x={110} y={104} textAnchor="middle" className={plainLabel}>
+        speed = distance ÷ time
+      </text>
+    </Frame>
+  );
+}
+
+// ─── Bounds ─────────────────────────────────────────────────────────────────
+
+export function BoundsNumberLine(props: DiagramProps) {
+  // 24 to the nearest whole number. The upper bound being 24.5 — a value that
+  // rounds UP, and so is not itself included — is the bit everyone loses.
+  return (
+    <Frame
+      caption={"the upper bound is the value that would round up"}
+      {...props}
+      label="A number line showing that a length given as 24 to the nearest whole number lies between a lower bound of 23.5 and an upper bound of 24.5"
+    >
+      <Fig d="M 20 48 L 200 48" />
+      <path d="M 62 38 L 158 38 L 158 58 L 62 58 Z" className={angleFill} strokeWidth={0} />
+      <Mark d="M 62 34 L 62 62" />
+      <Mark d="M 158 34 L 158 62" />
+      <text x={62} y={78} textAnchor="middle" className={label}>23.5</text>
+      <text x={158} y={78} textAnchor="middle" className={label}>24.5</text>
+      <text x={110} y={30} textAnchor="middle" className={plainLabel}>anything here rounds to 24</text>
+      <text x={62} y={94} textAnchor="middle" className={plainLabel}>lower bound</text>
+      <text x={158} y={94} textAnchor="middle" className={plainLabel}>upper bound</text>
+    </Frame>
+  );
+}
+
+// ─── Algebra ────────────────────────────────────────────────────────────────
+
+export function ExpandingBracketsGrid(props: DiagramProps) {
+  // The area model. Four boxes, four products, nothing forgotten — which is
+  // the failure mode of FOIL done in a hurry.
+  const x0 = 58;
+  const y0 = 30;
+  const w = 62;
+  const h = 26;
+  const cells = [
+    ["x²", "3x"],
+    ["2x", "6"],
+  ];
+  return (
+    <Frame
+      caption={"four boxes, four terms — nothing gets forgotten"}
+      {...props}
+      label="A grid method for expanding x plus two times x plus three, giving x squared, three x, two x and six"
+    >
+      <text x={110} y={14} textAnchor="middle" className={label}>(x + 2)(x + 3)</text>
+      <text x={x0 + w / 2} y={26} textAnchor="middle" className={plainLabel}>x</text>
+      <text x={x0 + w + w / 2} y={26} textAnchor="middle" className={plainLabel}>+3</text>
+      <text x={x0 - 8} y={y0 + 18} textAnchor="end" className={plainLabel}>x</text>
+      <text x={x0 - 8} y={y0 + h + 18} textAnchor="end" className={plainLabel}>+2</text>
+      {cells.map((row, r) =>
+        row.map((c, i) => (
+          <g key={`${r}${i}`}>
+            <rect
+              x={x0 + i * w}
+              y={y0 + r * h}
+              width={w}
+              height={h}
+              className={line}
+              strokeWidth={1.4}
+              fill="none"
+            />
+            <text x={x0 + i * w + w / 2} y={y0 + r * h + 17} textAnchor="middle" className="fill-current text-[11px]">
+              {c}
+            </text>
+          </g>
+        )),
+      )}
+      <text x={110} y={100} textAnchor="middle" className={label}>= x² + 5x + 6</text>
+    </Frame>
+  );
+}
+
+// ─── Percentages ────────────────────────────────────────────────────────────
+
+export function PercentageMultiplier(props: DiagramProps) {
+  const rows = [
+    ["+20%", "× 1.2"],
+    ["−20%", "× 0.8"],
+    ["+5%", "× 1.05"],
+    ["−15%", "× 0.85"],
+  ];
+  return (
+    <Frame
+      caption={"one multiplication does the whole change"}
+      {...props}
+      label="A table of percentage changes and their multipliers: plus twenty per cent is times one point two, minus twenty per cent is times zero point eight"
+    >
+      <text x={110} y={16} textAnchor="middle" className={plainLabel}>change → multiplier</text>
+      {rows.map(([c, m], r) => (
+        <g key={c}>
+          <rect x={34} y={24 + r * 19} width={70} height={17} className={line} strokeWidth={1.1} fill="none" />
+          <text x={69} y={36 + r * 19} textAnchor="middle" className="fill-current text-[9px]">{c}</text>
+          <rect x={104} y={24 + r * 19} width={82} height={17} className={`${angleFill} ${angleStroke}`} strokeWidth={1.1} />
+          <text x={145} y={36 + r * 19} textAnchor="middle" className={label}>{m}</text>
+        </g>
+      ))}
+      <text x={110} y={110} textAnchor="middle" className={plainLabel}>
+        to reverse a change, divide by the multiplier
+      </text>
+    </Frame>
+  );
+}

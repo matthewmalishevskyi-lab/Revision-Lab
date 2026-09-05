@@ -39,6 +39,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Bounds",
+        diagrams: [
+          "bounds-number-line",
+        ],
         points: [
           "A value rounded to the nearest 10 has bounds 5 either side: 40 to the nearest 10 has lower bound 35 and upper bound 45.",
           "The upper bound is written as the value you would round up from, even though it would itself round the other way.",
@@ -324,6 +327,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Expanding brackets",
+        diagrams: [
+          "expanding-brackets-grid",
+        ],
         points: [
           "Multiply every term inside the bracket by the term outside: 3(2x + 4) = 6x + 12.",
           "A negative outside changes both signs inside: −2(x − 3) = −2x + 6.",
@@ -943,6 +949,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Percentage change with multipliers",
+        diagrams: [
+          "percentage-multiplier",
+        ],
         points: [
           "Increase by 20%: multiply by 1.2. Decrease by 20%: multiply by 0.8.",
           "The multiplier is 1 + (percentage ÷ 100) for an increase, 1 − (percentage ÷ 100) for a decrease.",
@@ -1198,6 +1207,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Sharing in a ratio",
+        diagrams: [
+          "ratio-bar-model",
+        ],
         points: [
           "Add the parts to find the total number of parts.",
           "Divide the total amount by the number of parts to find the value of one part.",
@@ -1494,6 +1506,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Inequality notation",
+        diagrams: [
+          "inequality-number-line",
+        ],
         points: [
           "< less than, > greater than, ≤ less than or equal to, ≥ greater than or equal to.",
           "On a number line, an open circle means the value is not included (< or >), a filled circle means it is (≤ or ≥).",
@@ -2648,6 +2663,9 @@ export const MATHS: Record<string, TopicContent> = {
       },
       {
         heading: "Quadratic graphs",
+        diagrams: [
+          "quadratic-graph",
+        ],
         points: [
           "The graph is a parabola: a U shape if the x² coefficient is positive, an n shape if negative.",
           "Roots are where the curve crosses the x-axis — these are the solutions when y = 0.",
@@ -5324,6 +5342,9 @@ export const MATHS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The three compound measures",
+        diagrams: [
+          "speed-formula-triangle",
+        ],
         points: [
           "Speed = distance ÷ time. Common units: m/s, km/h, mph.",
           "Density = mass ÷ volume. Common units: g/cm³, kg/m³.",

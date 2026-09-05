@@ -133,6 +133,45 @@ export const DIAGRAMS = {
   "trace-table": computerScience.TraceTable,
   "array-indexing": computerScience.ArrayIndexing,
   "subprogram-call": computerScience.SubprogramCall,
+
+  // ── Chemistry, second batch ──────────────────────────────────────────────
+  "periodic-table-layout": chemistry.PeriodicTableLayout,
+  "balancing-equations": chemistry.BalancingEquations,
+  "mole-triangle": chemistry.MoleTriangle,
+  "ph-scale": chemistry.PhScale,
+  "reactivity-series": chemistry.ReactivitySeries,
+  "dynamic-equilibrium": chemistry.DynamicEquilibrium,
+  "addition-polymerisation": chemistry.AdditionPolymerisation,
+  "gas-tests": chemistry.GasTests,
+  "greenhouse-effect": chemistry.GreenhouseEffect,
+  "water-treatment": chemistry.WaterTreatment,
+
+  // ── Physics, second batch ────────────────────────────────────────────────
+  "sankey-diagram": physics.SankeyDiagram,
+  "states-of-matter": physics.StatesOfMatter,
+  "three-pin-plug": physics.ThreePinPlug,
+  "em-spectrum": physics.EmSpectrum,
+  "half-life-graph": physics.HalfLifeGraph,
+  "radiation-penetration": physics.RadiationPenetration,
+  "star-life-cycle": physics.StarLifeCycle,
+
+  // ── Biology, second batch ────────────────────────────────────────────────
+  "mitosis-vs-meiosis": biology.MitosisVsMeiosis,
+  "digestive-system": biology.DigestiveSystem,
+  "respiration-comparison": biology.RespirationComparison,
+  "negative-feedback": biology.NegativeFeedback,
+  "natural-selection": biology.NaturalSelection,
+  "classification-hierarchy": biology.ClassificationHierarchy,
+  "carbon-cycle": biology.CarbonCycle,
+
+  // ── Maths, second batch ──────────────────────────────────────────────────
+  "quadratic-graph": maths.QuadraticGraph,
+  "inequality-number-line": maths.InequalityNumberLine,
+  "ratio-bar-model": maths.RatioBarModel,
+  "speed-formula-triangle": maths.SpeedFormulaTriangle,
+  "bounds-number-line": maths.BoundsNumberLine,
+  "expanding-brackets-grid": maths.ExpandingBracketsGrid,
+  "percentage-multiplier": maths.PercentageMultiplier,
 } as const;
 
 export type DiagramName = keyof typeof DIAGRAMS;

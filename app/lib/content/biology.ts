@@ -640,6 +640,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Chromosomes and the cell cycle",
+        diagrams: [
+          "mitosis-vs-meiosis",
+        ],
         points: [
           "Chromosomes are long molecules of DNA carrying the genes. Human body cells have 23 PAIRS, so 46 in total.",
           "The cell cycle has three stages: growth and DNA replication, then mitosis, then cytokinesis when the cytoplasm and membrane divide.",
@@ -944,6 +947,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "The digestive enzymes",
+        diagrams: [
+          "digestive-system",
+        ],
         points: [
           "CARBOHYDRASES break carbohydrates into simple sugars. Amylase breaks starch into maltose, then to glucose.",
           "PROTEASES break proteins into amino acids.",
@@ -2736,6 +2742,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Anaerobic respiration",
+        diagrams: [
+          "respiration-comparison",
+        ],
         points: [
           "In MUSCLE: glucose → lactic acid. No oxygen is needed.",
           "In PLANTS AND YEAST: glucose → ethanol + carbon dioxide. This is called FERMENTATION.",
@@ -3314,6 +3323,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Higher tier: negative feedback",
+        diagrams: [
+          "negative-feedback",
+        ],
         higherOnly: true,
         points: [
           "NEGATIVE FEEDBACK means a change triggers a response that reverses the change, returning the level to normal.",
@@ -3939,6 +3951,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Meiosis",
+        diagrams: [
+          "mitosis-vs-meiosis",
+        ],
         points: [
           "Meiosis happens in the reproductive organs and produces GAMETES.",
           "It produces FOUR cells, each with HALF the number of chromosomes — 23 in humans.",
@@ -4519,6 +4534,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Natural selection",
+        diagrams: [
+          "natural-selection",
+        ],
         points: [
           "Individuals within a species show variation.",
           "Those with characteristics best suited to the environment are more likely to SURVIVE.",
@@ -4810,6 +4828,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Traditional classification",
+        diagrams: [
+          "classification-hierarchy",
+        ],
         points: [
           "LINNAEUS classified organisms by their structure and characteristics.",
           "His groups run: kingdom, phylum, class, order, family, genus, species.",
@@ -5446,6 +5467,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
       },
       {
         heading: "Climate change and conservation",
+        diagrams: [
+          "carbon-cycle",
+        ],
         points: [
           "Levels of carbon dioxide and methane in the atmosphere are increasing, contributing to global warming.",
           "Consequences include rising sea levels, changes in the distribution and migration patterns of species, and reduced biodiversity.",

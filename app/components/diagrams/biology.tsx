@@ -476,3 +476,254 @@ export function MicroscopeMagnification(props: DiagramProps) {
     </Frame>
   );
 }
+
+// ─── Cell division ──────────────────────────────────────────────────────────
+
+export function MitosisVsMeiosis(props: DiagramProps) {
+  // Side by side, because the only way anyone remembers which is which is by
+  // the counts: mitosis gives 2 identical, meiosis gives 4 different halves.
+  const cell = (x: number, y: number, r: number, hi = false) => (
+    <circle cx={x} cy={y} r={r} className={hi ? `${angleFill} ${angleStroke}` : line} strokeWidth={1.6} fill={hi ? undefined : "none"} />
+  );
+  return (
+    <Frame
+      caption={"mitosis: 2 identical. meiosis: 4 different, half the chromosomes"}
+      {...props}
+      label="Mitosis producing two identical diploid cells beside meiosis producing four genetically different haploid cells"
+    >
+      <text x={54} y={14} textAnchor="middle" className={label}>mitosis</text>
+      {cell(54, 34, 11, true)}
+      <Mark d="M 54 46 L 54 56" />
+      <Mark d={arrowHead(54, 56, 270)} />
+      {cell(38, 70, 10)}
+      {cell(70, 70, 10)}
+      <text x={54} y={94} textAnchor="middle" className={plainLabel}>2 identical</text>
+
+      <Fig d="M 110 12 L 110 96" dashed />
+
+      <text x={162} y={14} textAnchor="middle" className={label}>meiosis</text>
+      {cell(162, 34, 11, true)}
+      <Mark d="M 162 46 L 162 54" />
+      <Mark d={arrowHead(162, 54, 270)} />
+      {cell(132, 70, 7)}
+      {cell(152, 70, 7)}
+      {cell(172, 70, 7)}
+      {cell(192, 70, 7)}
+      <text x={162} y={94} textAnchor="middle" className={plainLabel}>4 different, halved</text>
+    </Frame>
+  );
+}
+
+// ─── Digestion ──────────────────────────────────────────────────────────────
+
+export function DigestiveSystem(props: DiagramProps) {
+  // Named in the order food travels, because that is how the question is
+  // always asked. Bile is included because it is the one that is not an
+  // enzyme and gets confused with one every year.
+  const steps = [
+    { y: 18, n: "mouth", d: "amylase starts on starch" },
+    { y: 34, n: "stomach", d: "protease, and acid" },
+    { y: 50, n: "liver", d: "makes bile — not an enzyme" },
+    { y: 66, n: "small intestine", d: "all three, plus absorption" },
+    { y: 82, n: "large intestine", d: "water absorbed" },
+  ];
+  return (
+    <Frame
+      caption={"bile is made in the liver and is not an enzyme"}
+      {...props}
+      label="The digestive system listed in order — mouth, stomach, liver, small intestine, large intestine — with what happens at each stage"
+    >
+      {steps.map((s, i) => (
+        <g key={s.n}>
+          <rect
+            x={10}
+            y={s.y - 10}
+            width={72}
+            height={14}
+            className={i === 3 ? `${angleFill} ${angleStroke}` : line}
+            strokeWidth={1.2}
+            fill={i === 3 ? undefined : "none"}
+          />
+          <text x={46} y={s.y} textAnchor="middle" className="fill-current text-[8px]">{s.n}</text>
+          <text x={88} y={s.y} className="fill-current text-[8px] opacity-70">{s.d}</text>
+          {i < steps.length - 1 ? <Mark d={`M 46 ${s.y + 4} L 46 ${s.y + 6}`} /> : null}
+        </g>
+      ))}
+    </Frame>
+  );
+}
+
+// ─── Respiration ────────────────────────────────────────────────────────────
+
+export function RespirationComparison(props: DiagramProps) {
+  const rows = [
+    ["oxygen", "needed", "none"],
+    ["product", "CO₂ + water", "lactic acid"],
+    ["energy", "a lot", "a little"],
+  ];
+  const x = [12, 78, 146];
+  const w = [66, 68, 62];
+  const y0 = 26;
+  const h = 19;
+  return (
+    <Frame
+      caption={"anaerobic is quicker to start and gives far less energy"}
+      {...props}
+      label="A table comparing aerobic and anaerobic respiration by oxygen needed, products made and energy released"
+    >
+      {["", "aerobic", "anaerobic"].map((head, c) => (
+        <g key={c}>
+          <rect x={x[c]} y={y0} width={w[c]} height={h} className={c === 0 ? line : `${angleFill} ${angleStroke}`} strokeWidth={1.2} fill={c === 0 ? "none" : undefined} />
+          <text x={x[c] + w[c] / 2} y={y0 + 13} textAnchor="middle" className={label}>{head}</text>
+        </g>
+      ))}
+      {rows.map((row, r) =>
+        row.map((cell, c) => (
+          <g key={`${r}-${c}`}>
+            <rect x={x[c]} y={y0 + h * (r + 1)} width={w[c]} height={h} className={line} strokeWidth={1} fill="none" />
+            <text x={x[c] + w[c] / 2} y={y0 + h * (r + 1) + 13} textAnchor="middle" className="fill-current text-[8.5px]">
+              {cell}
+            </text>
+          </g>
+        )),
+      )}
+    </Frame>
+  );
+}
+
+// ─── Homeostasis ────────────────────────────────────────────────────────────
+
+export function NegativeFeedback(props: DiagramProps) {
+  // A loop, drawn as a loop. Blood glucose is the example every paper uses,
+  // and the point is that the correction feeds back to the thing it corrects.
+  return (
+    <Frame
+      caption={"the correction feeds back and switches itself off"}
+      {...props}
+      label="A negative feedback loop: blood glucose rises, the pancreas releases insulin, glucose is stored, the level falls and the change is detected again"
+    >
+      {[
+        { x: 74, y: 10, t: "glucose rises" },
+        { x: 146, y: 44, t: "insulin out" },
+        { x: 74, y: 78, t: "glucose falls" },
+        { x: 6, y: 44, t: "detected" },
+      ].map((b, i) => (
+        <g key={b.t}>
+          <rect x={b.x} y={b.y} width={68} height={22} className={i === 1 ? `${angleFill} ${angleStroke}` : line} strokeWidth={1.6} fill={i === 1 ? undefined : "none"} />
+          <text x={b.x + 34} y={b.y + 15} textAnchor="middle" className="fill-current text-[8.5px]">{b.t}</text>
+        </g>
+      ))}
+      <Mark d="M 142 22 L 158 40" />
+      <Mark d={arrowHead(158, 40, -50)} />
+      <Mark d="M 158 68 L 142 78" />
+      <Mark d={arrowHead(142, 78, -150)} />
+      <Mark d="M 74 88 L 56 70" />
+      <Mark d={arrowHead(56, 70, 135)} />
+      <Mark d="M 56 40 L 74 22" />
+      <Mark d={arrowHead(74, 22, 45)} />
+      <text x={110} y={48} textAnchor="middle" className={label}>pancreas</text>
+    </Frame>
+  );
+}
+
+// ─── Evolution ──────────────────────────────────────────────────────────────
+
+export function NaturalSelection(props: DiagramProps) {
+  const steps = ["variation", "selection pressure", "survivors breed", "allele more common"];
+  return (
+    <Frame
+      caption={"four steps, and the mark scheme wants all four"}
+      {...props}
+      label="The four steps of natural selection: variation exists, a selection pressure acts, the better suited survive and breed, and the allele becomes more common"
+    >
+      {steps.map((s, i) => (
+        <g key={s}>
+          <rect
+            x={10}
+            y={12 + i * 22}
+            width={200}
+            height={18}
+            className={i === 3 ? `${angleFill} ${angleStroke}` : line}
+            strokeWidth={1.4}
+            fill={i === 3 ? undefined : "none"}
+          />
+          <text x={20} y={25 + i * 22} className="fill-current text-[9px]">
+            {i + 1}. {s}
+          </text>
+          {i < 3 ? <Mark d={`M 110 ${30 + i * 22} L 110 ${34 + i * 22}`} /> : null}
+        </g>
+      ))}
+      <text x={110} y={106} textAnchor="middle" className={plainLabel}>
+        populations change, not individuals
+      </text>
+    </Frame>
+  );
+}
+
+export function ClassificationHierarchy(props: DiagramProps) {
+  const levels = ["kingdom", "phylum", "class", "order", "family", "genus", "species"];
+  return (
+    <Frame
+      caption={"kingdom down to species — each level is narrower"}
+      {...props}
+      label="The classification hierarchy from kingdom at the top narrowing down to species at the bottom"
+    >
+      {levels.map((l, i) => {
+        const w = 180 - i * 22;
+        return (
+          <g key={l}>
+            <rect
+              x={110 - w / 2}
+              y={8 + i * 13}
+              width={w}
+              height={11}
+              className={i === 6 ? `${angleFill} ${angleStroke}` : line}
+              strokeWidth={1}
+              fill={i === 6 ? undefined : "none"}
+            />
+            <text x={110} y={17 + i * 13} textAnchor="middle" className="fill-current text-[7.5px]">{l}</text>
+          </g>
+        );
+      })}
+      <text x={110} y={106} textAnchor="middle" className={plainLabel}>fewer organisms at every step down</text>
+    </Frame>
+  );
+}
+
+// ─── Ecology ────────────────────────────────────────────────────────────────
+
+export function CarbonCycle(props: DiagramProps) {
+  // Redrawn: the first version had "photosynthesis" written across its own
+  // arrow and "respiration, burning" running off the right-hand edge.
+  return (
+    <Frame
+      caption={"photosynthesis takes it out; respiration and burning put it back"}
+      {...props}
+      label="The carbon cycle: carbon dioxide in the air taken in by photosynthesis, passed along by feeding, and returned by respiration, decay and combustion"
+    >
+      <rect x={68} y={10} width={84} height={20} className={`${angleFill} ${angleStroke}`} strokeWidth={1.6} />
+      <text x={110} y={24} textAnchor="middle" className={label}>CO₂ in the air</text>
+
+      <rect x={14} y={62} width={54} height={20} className={line} strokeWidth={1.4} fill="none" />
+      <text x={41} y={76} textAnchor="middle" className="fill-current text-[8.5px]">plants</text>
+      <rect x={84} y={62} width={54} height={20} className={line} strokeWidth={1.4} fill="none" />
+      <text x={111} y={76} textAnchor="middle" className="fill-current text-[8.5px]">animals</text>
+      <rect x={154} y={62} width={52} height={20} className={line} strokeWidth={1.4} fill="none" />
+      <text x={180} y={76} textAnchor="middle" className="fill-current text-[8.5px]">fuels</text>
+
+      <Mark d="M 76 30 L 52 58" />
+      <Mark d={arrowHead(52, 58, -130)} />
+      <text x={6} y={48} className="fill-current text-[8px] opacity-70">photosynthesis</text>
+
+      <Mark d="M 111 58 L 111 34" />
+      <Mark d={arrowHead(111, 34, 90)} />
+      <Mark d="M 176 58 L 150 34" />
+      <Mark d={arrowHead(150, 34, 137)} />
+      <text x={214} y={48} textAnchor="end" className="fill-current text-[8px] opacity-70">respiration</text>
+
+      <Fig d="M 68 72 L 82 72" />
+      <Fig d={arrowHead(82, 72, 0)} />
+      <text x={110} y={98} textAnchor="middle" className={plainLabel}>decay and burning return it too</text>
+    </Frame>
+  );
+}

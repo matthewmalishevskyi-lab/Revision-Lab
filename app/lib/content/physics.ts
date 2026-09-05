@@ -54,6 +54,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Dissipation and efficiency",
+        diagrams: [
+          "sankey-diagram",
+        ],
         points: [
           "Some energy is always DISSIPATED — transferred to the surroundings, usually as heat, where it is no longer useful.",
           "Dissipated energy is not lost. It has simply spread out and become impossible to use.",
@@ -715,6 +718,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "The three states",
+        diagrams: [
+          "states-of-matter",
+        ],
         points: [
           "SOLID: particles in fixed positions, vibrating. Fixed shape and volume, highest density.",
           "LIQUID: particles close but able to move past each other. Fixed volume, takes the container's shape.",
@@ -1665,6 +1671,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Types of radiation",
+        diagrams: [
+          "radiation-penetration",
+        ],
         points: [
           "ALPHA (α) is a helium nucleus — 2 protons and 2 neutrons. Highly ionising, stopped by paper, range a few cm in air.",
           "BETA (β) is a fast electron from the nucleus. Moderately ionising, stopped by a few mm of aluminium, range about a metre.",
@@ -2278,6 +2287,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "The three wires",
+        diagrams: [
+          "three-pin-plug",
+        ],
         points: [
           "LIVE wire, brown, carries the alternating potential difference from the supply at about 230 V.",
           "NEUTRAL wire, blue, completes the circuit and is at close to 0 V.",
@@ -3541,6 +3553,9 @@ export const PHYSICS: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The spectrum",
+        diagrams: [
+          "em-spectrum",
+        ],
         points: [
           "In order of INCREASING frequency and DECREASING wavelength: radio, microwave, infrared, visible light, ultraviolet, X-ray, gamma.",
           "A mnemonic: Raging Martians Invaded Venus Using X-ray Guns.",
@@ -4785,6 +4800,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Half-life",
+        diagrams: [
+          "half-life-graph",
+        ],
         points: [
           "HALF-LIFE is the time for the number of undecayed nuclei, or the activity, to HALVE.",
           "After 1 half-life ½ remains; after 2, ¼; after 3, ⅛; after n half-lives, (½)ⁿ.",
@@ -4796,6 +4814,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "Contamination and irradiation",
+        diagrams: [
+          "radiation-penetration",
+        ],
         points: [
           "IRRADIATION is exposure to radiation from an external source; it stops the moment you move away.",
           "CONTAMINATION is radioactive material getting onto or into an object or person, and it continues until removed.",
@@ -5081,6 +5102,9 @@ export const PHYSICS: Record<string, TopicContent> = {
       },
       {
         heading: "The life cycle of stars",
+        diagrams: [
+          "star-life-cycle",
+        ],
         points: [
           "A star forms from a nebula pulled together by gravity, becoming a PROTOSTAR as it heats up.",
           "When it is hot enough, hydrogen nuclei FUSE into helium, releasing energy — the MAIN SEQUENCE stage.",

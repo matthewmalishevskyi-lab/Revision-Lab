@@ -477,3 +477,365 @@ export function AlkaneAlkene(props: DiagramProps) {
     </Frame>
   );
 }
+
+// ─── The periodic table ─────────────────────────────────────────────────────
+
+export function PeriodicTableLayout(props: DiagramProps) {
+  // Not the whole table — the SHAPE of it, which is what the questions are
+  // about. Group number is the outer electrons, period number is the shells,
+  // and the metals are everything left of the staircase.
+  const w = 10.5;
+  const h = 11;
+  const x0 = 8;
+  const y0 = 30;
+  // Which cells are filled, row by row, as a real periodic table is shaped.
+  const filled: [number, number][] = [];
+  const push = (row: number, from: number, to: number) => {
+    for (let c = from; c <= to; c++) filled.push([row, c]);
+  };
+  push(0, 1, 1); push(0, 18, 18);
+  push(1, 1, 2); push(1, 13, 18);
+  push(2, 1, 2); push(2, 13, 18);
+  push(3, 1, 18);
+  push(4, 1, 18);
+  return (
+    <Frame
+      caption={"group = outer electrons, period = number of shells"}
+      {...props}
+      label="The shape of the periodic table with group 1 and group 7 and group 0 picked out, and the staircase dividing metals from non-metals"
+    >
+      {filled.map(([r, c]) => {
+        const highlight = c === 1 || c === 17 || c === 18;
+        return (
+          <rect
+            key={`${r}-${c}`}
+            x={x0 + (c - 1) * w}
+            y={y0 + r * h}
+            width={w - 1}
+            height={h - 1}
+            className={highlight ? `${angleFill} ${angleStroke}` : line}
+            strokeWidth={0.8}
+            fill={highlight ? undefined : "none"}
+          />
+        );
+      })}
+      <text x={x0 + 4} y={y0 - 4} textAnchor="middle" className={label}>1</text>
+      <text x={x0 + 16 * w + 4} y={y0 - 4} textAnchor="middle" className={label}>7</text>
+      <text x={x0 + 17.6 * w} y={y0 - 4} textAnchor="middle" className={label}>0</text>
+      <text x={110} y={y0 - 14} textAnchor="middle" className={plainLabel}>group</text>
+      <text x={60} y={98} textAnchor="middle" className={plainLabel}>metals</text>
+      <text x={168} y={98} textAnchor="middle" className={plainLabel}>non-metals</text>
+      <Mark d={`M ${x0 + 12 * w} ${y0 + 2 * h} L ${x0 + 12 * w} ${y0 + 5 * h}`} />
+    </Frame>
+  );
+}
+
+// ─── Equations ──────────────────────────────────────────────────────────────
+
+export function BalancingEquations(props: DiagramProps) {
+  // Balancing is counting atoms, and counting is much easier to do when the
+  // atoms are drawn. The numbers here are for CH4 + 2O2 -> CO2 + 2H2O.
+  const rows = [
+    ["C", "1", "1"],
+    ["H", "4", "4"],
+    ["O", "4", "4"],
+  ];
+  const x = [46, 96, 146];
+  const w = 50;
+  const y0 = 40;
+  const hh = 17;
+  return (
+    <Frame
+      caption={"balanced means the same count of every atom on both sides"}
+      {...props}
+      label="A table counting the carbon, hydrogen and oxygen atoms on each side of a balanced equation, showing the totals match"
+    >
+      <text x={110} y={22} textAnchor="middle" className={label}>
+        CH₄ + 2O₂ → CO₂ + 2H₂O
+      </text>
+      {["atom", "left", "right"].map((head, c) => (
+        <g key={head}>
+          <rect x={x[c]} y={y0} width={w} height={hh} className={`${angleFill} ${angleStroke}`} strokeWidth={1.2} />
+          <text x={x[c] + w / 2} y={y0 + 12} textAnchor="middle" className="fill-current text-[9px] font-semibold">
+            {head}
+          </text>
+        </g>
+      ))}
+      {rows.map((row, r) =>
+        row.map((cell, c) => (
+          <g key={`${r}-${c}`}>
+            <rect x={x[c]} y={y0 + hh * (r + 1)} width={w} height={hh} className={line} strokeWidth={1} fill="none" />
+            <text
+              x={x[c] + w / 2}
+              y={y0 + hh * (r + 1) + 12}
+              textAnchor="middle"
+              className="fill-current text-[9px]"
+            >
+              {cell}
+            </text>
+          </g>
+        )),
+      )}
+    </Frame>
+  );
+}
+
+export function MoleTriangle(props: DiagramProps) {
+  return (
+    <Frame
+      caption={"cover the one you want and read off the other two"}
+      {...props}
+      label="A formula triangle with mass on top, and moles and relative formula mass underneath, for rearranging the moles equation"
+    >
+      <path d="M 110 12 L 178 88 L 42 88 Z" className={`${angleFill} ${angleStroke}`} strokeWidth={2} />
+      <Fig d="M 62 62 L 158 62" />
+      <Fig d="M 110 62 L 110 88" />
+      <text x={110} y={50} textAnchor="middle" className={label}>mass</text>
+      <text x={84} y={80} textAnchor="middle" className={label}>mol</text>
+      <text x={138} y={80} textAnchor="middle" className={label}>Mr</text>
+      <text x={110} y={104} textAnchor="middle" className={plainLabel}>moles = mass ÷ Mr</text>
+    </Frame>
+  );
+}
+
+// ─── Acids ──────────────────────────────────────────────────────────────────
+
+export function PhScale(props: DiagramProps) {
+  // Drawn as a strip with the numbers under it. Deliberately not coloured
+  // like a universal indicator chart: the site uses two colours everywhere,
+  // and a colour-blind student would get nothing from a rainbow anyway.
+  const x0 = 12;
+  const wide = 196;
+  const cell = wide / 15;
+  return (
+    <Frame
+      caption={"7 is neutral; every step is ten times stronger"}
+      {...props}
+      label="The pH scale from 0 to 14 with the acidic, neutral and alkaline regions marked"
+    >
+      {Array.from({ length: 15 }, (_, i) => (
+        <g key={i}>
+          <rect
+            x={x0 + i * cell}
+            y={34}
+            width={cell}
+            height={20}
+            className={i === 7 ? `${angleFill} ${angleStroke}` : line}
+            strokeWidth={1}
+            fill={i === 7 ? undefined : "none"}
+          />
+          {i % 2 === 0 || i === 7 ? (
+            <text
+              x={x0 + i * cell + cell / 2}
+              y={66}
+              textAnchor="middle"
+              className="fill-current text-[8px] opacity-70"
+            >
+              {i}
+            </text>
+          ) : null}
+        </g>
+      ))}
+      <text x={x0 + 3.5 * cell} y={26} textAnchor="middle" className={plainLabel}>acidic</text>
+      <text x={x0 + 7.5 * cell} y={26} textAnchor="middle" className={label}>neutral</text>
+      <text x={x0 + 11.5 * cell} y={26} textAnchor="middle" className={plainLabel}>alkaline</text>
+      <text x={110} y={90} textAnchor="middle" className={plainLabel}>
+        pH 3 is ten times more acidic than pH 4
+      </text>
+    </Frame>
+  );
+}
+
+// ─── Reactivity ─────────────────────────────────────────────────────────────
+
+export function ReactivitySeries(props: DiagramProps) {
+  // Ordered top to bottom, because "more reactive" and "higher up" is the
+  // mental model every displacement question relies on.
+  const metals = ["potassium", "sodium", "calcium", "magnesium", "CARBON", "zinc", "iron", "copper", "gold"];
+  return (
+    <Frame
+      caption={"a metal displaces any metal below it"}
+      {...props}
+      label="The reactivity series listed from potassium at the top down to gold at the bottom, with an arrow showing reactivity decreasing downwards"
+    >
+      {metals.map((m, i) => (
+        <text
+          key={m}
+          x={82}
+          y={16 + i * 11}
+          textAnchor="end"
+          className={i === 4 ? label : "fill-current text-[9px]"}
+        >
+          {m === "CARBON" ? "carbon" : m}
+        </text>
+      ))}
+      <Mark d="M 92 8 L 92 104" />
+      <Mark d={arrowHead(92, 104, 270)} />
+      <text x={100} y={26} className={plainLabel}>less</text>
+      <text x={100} y={38} className={plainLabel}>reactive</text>
+      {/* Carbon is in the list, so the line it marks means something.
+          Without it the dashed rule floated between two metals for no
+          visible reason. */}
+      <Fig d="M 98 56 L 214 56" dashed />
+      <text x={100} y={72} className={plainLabel}>carbon extracts</text>
+      <text x={100} y={84} className={plainLabel}>anything below</text>
+    </Frame>
+  );
+}
+
+// ─── Equilibrium ────────────────────────────────────────────────────────────
+
+export function DynamicEquilibrium(props: DiagramProps) {
+  // Two rates converging and then staying level. Equilibrium is not "the
+  // reaction stopped" — both directions are still going, at the same rate,
+  // which is exactly what the graph shows and a sentence does not.
+  return (
+    <Frame
+      caption={"both reactions continue — at equal rates"}
+      {...props}
+      label="A graph of forward and backward reaction rates converging to the same value, showing that at equilibrium both continue at an equal rate"
+    >
+      <Fig d="M 30 14 L 30 88 L 200 88" />
+      <path d="M 30 22 C 60 22, 80 52, 130 52 L 192 52" className={angleStroke} strokeWidth={2} fill="none" />
+      <path d="M 30 86 C 70 86, 86 52, 130 52 L 192 52" className={line} strokeWidth={2} fill="none" />
+      <text x={36} y={18} className={label}>forward</text>
+      <text x={36} y={78} className={plainLabel}>backward</text>
+      <Fig d="M 130 52 L 130 88" dashed />
+      <text x={132} y={44} className={label}>equilibrium</text>
+      <text x={26} y={12} textAnchor="end" className={plainLabel}>rate</text>
+    </Frame>
+  );
+}
+
+// ─── Polymers ───────────────────────────────────────────────────────────────
+
+export function AdditionPolymerisation(props: DiagramProps) {
+  // Many monomers, one polymer, nothing else produced. The "nothing else"
+  // is the whole difference from condensation polymerisation.
+  return (
+    <Frame
+      caption={"many monomers, one polymer, nothing else made"}
+      {...props}
+      label="Three ethene monomers with double bonds joining into a length of poly(ethene) with single bonds, producing no other product"
+    >
+      {[20, 62, 104].map((x) => (
+        <g key={x}>
+          <text x={x} y={40} textAnchor="middle" className="fill-current text-[9px]">C=C</text>
+          <rect x={x - 16} y={26} width={32} height={20} className={line} strokeWidth={1.4} fill="none" />
+        </g>
+      ))}
+      <text x={62} y={16} textAnchor="middle" className={plainLabel}>monomers</text>
+      <Mark d="M 128 36 L 150 36" />
+      <Mark d={arrowHead(150, 36, 0)} />
+      <path d="M 20 62 L 200 62 L 200 84 L 20 84 Z" className={`${angleFill} ${angleStroke}`} strokeWidth={1.6} />
+      <text x={110} y={77} textAnchor="middle" className="fill-current text-[9px]">
+        —C—C—C—C—C—C—
+      </text>
+      <text x={110} y={100} textAnchor="middle" className={label}>polymer: the double bonds open up</text>
+    </Frame>
+  );
+}
+
+// ─── Chemical analysis ──────────────────────────────────────────────────────
+
+export function GasTests(props: DiagramProps) {
+  const rows = [
+    ["oxygen", "relights a glowing splint"],
+    ["hydrogen", "squeaky pop with a lit splint"],
+    ["CO₂", "turns limewater cloudy"],
+    ["chlorine", "bleaches damp litmus paper"],
+  ];
+  const x0 = 12;
+  const w1 = 54;
+  const w2 = 142;
+  const y0 = 18;
+  const h = 20;
+  return (
+    <Frame
+      caption={"name the test AND the result — both are marks"}
+      {...props}
+      label="A table of the four gas tests: oxygen relights a glowing splint, hydrogen gives a squeaky pop, carbon dioxide turns limewater cloudy, and chlorine bleaches damp litmus paper"
+    >
+      {rows.map(([gas, test], r) => (
+        <g key={gas}>
+          <rect x={x0} y={y0 + r * h} width={w1} height={h} className={`${angleFill} ${angleStroke}`} strokeWidth={1} />
+          <text x={x0 + w1 / 2} y={y0 + r * h + 13} textAnchor="middle" className="fill-current text-[9px] font-semibold">
+            {gas}
+          </text>
+          <rect x={x0 + w1} y={y0 + r * h} width={w2} height={h} className={line} strokeWidth={1} fill="none" />
+          <text x={x0 + w1 + 6} y={y0 + r * h + 13} className="fill-current text-[9px]">
+            {test}
+          </text>
+        </g>
+      ))}
+    </Frame>
+  );
+}
+
+// ─── The atmosphere ─────────────────────────────────────────────────────────
+
+export function GreenhouseEffect(props: DiagramProps) {
+  // Short-wave in, long-wave out, some of it trapped. The two different
+  // wavelengths are the mechanism, and the reason a diagram beats a sentence.
+  return (
+    <Frame
+      caption={"short-wave in, long-wave out, some of it trapped"}
+      {...props}
+      label="Short wavelength radiation from the Sun passing through the atmosphere to the Earth, and longer wavelength radiation leaving, with some re-radiated back down by greenhouse gases"
+    >
+      <Fig d="M 14 88 L 206 88" />
+      <text x={110} y={100} textAnchor="middle" className={plainLabel}>Earth</text>
+      <Fig d="M 14 34 L 206 34" dashed />
+      <text x={62} y={26} className={plainLabel}>greenhouse gases</text>
+      <Fig d="M 16 8 L 56 88" />
+      <Fig d={arrowHead(56, 88, -63)} />
+      <text x={10} y={64} className={plainLabel}>in</text>
+      <Mark d="M 112 88 L 146 34" />
+      <Mark d={arrowHead(146, 34, 58)} />
+      <Mark d="M 146 34 L 176 88" />
+      <Mark d={arrowHead(176, 88, -61)} />
+      <text x={182} y={62} className={label}>back</text>
+      <Mark d="M 146 34 L 158 10" />
+      <Mark d={arrowHead(158, 10, 63)} />
+      <text x={164} y={14} className={plainLabel}>out</text>
+    </Frame>
+  );
+}
+
+// ─── Resources ──────────────────────────────────────────────────────────────
+
+export function WaterTreatment(props: DiagramProps) {
+  const steps = ["filter", "sterilise", "safe to drink"];
+  return (
+    <Frame
+      caption={"potable means safe to drink, not pure"}
+      {...props}
+      label="The stages of treating fresh water to make it potable: filtering out solids, then sterilising to kill microbes"
+    >
+      <text x={110} y={20} textAnchor="middle" className={plainLabel}>fresh water</text>
+      {steps.map((s, i) => (
+        <g key={s}>
+          <rect
+            x={12 + i * 70}
+            y={38}
+            width={62}
+            height={26}
+            className={i === 2 ? `${angleFill} ${angleStroke}` : line}
+            strokeWidth={1.8}
+            fill={i === 2 ? undefined : "none"}
+          />
+          <text x={43 + i * 70} y={55} textAnchor="middle" className="fill-current text-[9px]">{s}</text>
+          {i < 2 ? (
+            <>
+              <Mark d={`M ${74 + i * 70} 51 L ${80 + i * 70} 51`} />
+              <Mark d={arrowHead(80 + i * 70, 51, 0)} />
+            </>
+          ) : null}
+        </g>
+      ))}
+      <text x={110} y={86} textAnchor="middle" className={plainLabel}>
+        potable water still contains dissolved salts
+      </text>
+    </Frame>
+  );
+}

@@ -360,6 +360,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "How it is arranged",
+        diagrams: [
+          "periodic-table-layout",
+        ],
         points: [
           "Elements are arranged in order of increasing ATOMIC NUMBER.",
           "Elements with similar properties fall into columns called GROUPS.",
@@ -1594,6 +1597,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Balancing and conservation of mass",
+        diagrams: [
+          "balancing-equations",
+        ],
         points: [
           "Atoms are never created or destroyed in a chemical reaction, only rearranged.",
           "So the total mass of the products equals the total mass of the reactants.",
@@ -1944,6 +1950,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Higher tier: moles",
+        diagrams: [
+          "mole-triangle",
+        ],
         higherOnly: true,
         points: [
           "One MOLE of a substance has a mass in grams equal to its relative formula mass.",
@@ -2318,6 +2327,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The pH scale and indicators",
+        diagrams: [
+          "ph-scale",
+        ],
         points: [
           "The pH scale runs from 0 to 14. Below 7 is acidic, 7 is neutral, above 7 is alkaline.",
           "ACIDS produce H⁺ ions in aqueous solution.",
@@ -2659,6 +2671,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "The reactivity series",
+        diagrams: [
+          "reactivity-series",
+        ],
         points: [
           "Most to least reactive: potassium, sodium, calcium, magnesium, aluminium, CARBON, zinc, iron, HYDROGEN, copper, silver, gold.",
           "Carbon and hydrogen are non-metals but are included as reference points.",
@@ -2679,6 +2694,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Extraction of metals",
+        diagrams: [
+          "reactivity-series",
+        ],
         points: [
           "An ORE is a rock containing enough of a metal compound to make extraction worthwhile.",
           "Metals LESS reactive than carbon can be extracted by REDUCTION with carbon — iron, zinc, copper.",
@@ -4002,6 +4020,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Dynamic equilibrium",
+        diagrams: [
+          "dynamic-equilibrium",
+        ],
         points: [
           "Equilibrium is reached only in a CLOSED SYSTEM, where nothing can enter or leave.",
           "At equilibrium the forward and reverse reactions happen at the SAME RATE.",
@@ -4601,6 +4622,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     keyFacts: [
       {
         heading: "Addition polymerisation",
+        diagrams: [
+          "addition-polymerisation",
+        ],
         points: [
           "Many small MONOMERS join to make one very large POLYMER molecule.",
           "The monomers must be ALKENES — they need a carbon-carbon double bond.",
@@ -4909,6 +4933,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Tests for gases",
+        diagrams: [
+          "gas-tests",
+        ],
         points: [
           "HYDROGEN: a lighted splint gives a squeaky pop.",
           "OXYGEN: a glowing splint RELIGHTS.",
@@ -5216,6 +5243,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "The greenhouse effect and climate change",
+        diagrams: [
+          "greenhouse-effect",
+        ],
         points: [
           "Greenhouse gases — carbon dioxide, methane and water vapour — absorb outgoing INFRARED radiation and re-radiate some back to Earth.",
           "That keeps the planet warm enough for life; the problem is the recent INCREASE in those gases.",
@@ -5504,6 +5534,9 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       },
       {
         heading: "Potable water",
+        diagrams: [
+          "water-treatment",
+        ],
         points: [
           "POTABLE water is safe to drink. It is NOT pure water — it contains dissolved salts and treatment chemicals.",
           "In the UK: choose an appropriate source, filter to remove solids, then STERILISE to kill microbes.",
