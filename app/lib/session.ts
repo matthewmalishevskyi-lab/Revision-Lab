@@ -95,6 +95,33 @@ function sign(data: string, secret: string): string {
   return createHmac("sha256", secret).update(data).digest("base64url");
 }
 
+// ─── Signing things that are not sessions ───────────────────────────────────
+//
+// The same key, the same HMAC, exposed for one other job: proving that a
+// short string the browser hands back is one WE issued, rather than one
+// somebody typed. The quiz uses it to make a guest's player id unforgeable
+// (see lib/quizPlayerToken.ts) — a guest has no account, so there is no
+// cookie to check them against, and without a signature "which player are
+// you" is answered entirely by whatever the browser claims.
+//
+// Deliberately narrow: it signs and it verifies, and it never says what the
+// string means. Callers namespace their own values so a token minted for one
+// purpose cannot be replayed at another.
+export async function signValue(value: string): Promise<string> {
+  return sign(value, await getSecret());
+}
+
+export async function verifySignedValue(
+  value: string,
+  signature: string,
+): Promise<boolean> {
+  const expected = await signValue(value);
+  // Same timing-safe comparison as everywhere else a signature is checked.
+  const a = Buffer.from(signature);
+  const b = Buffer.from(expected);
+  return a.length === b.length && timingSafeEqual(a, b);
+}
+
 async function encodeSession(payload: SessionPayload): Promise<string> {
   const secret = await getSecret();
   const body = Buffer.from(JSON.stringify(payload)).toString("base64url");

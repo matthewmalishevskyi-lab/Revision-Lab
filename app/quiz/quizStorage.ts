@@ -10,14 +10,40 @@ export function quizPlayerStorageKey(code: string): string {
   return `revision-lab:quiz-player:${code}`;
 }
 
-export type StoredQuizPlayer = { playerId: string; displayName: string };
+// `token` is the server's signature over this room code and player id — see
+// lib/quizPlayerToken.ts. It is stored right beside the id because the two are
+// only useful together: the id says which player, the token proves the server
+// is the one who said so.
+export type StoredQuizPlayer = {
+  playerId: string;
+  displayName: string;
+  token: string;
+};
 
+// ⚠️ A STORED IDENTITY WITH NO TOKEN IS NOT AN IDENTITY.
+//
+// Anything saved by a browser before tokens existed parses to null here, on
+// purpose. The alternative — accepting it and letting the token be optional —
+// would leave the exact hole the token exists to close, because a forger would
+// simply omit it too. Null is already a case the play screen handles well: it
+// shows "you haven't joined this room from this device yet" with a Join button
+// under it, and joining again mints a proper token. The cost is re-joining
+// once; the cost of the other choice is the feature not working.
 export function parseStoredQuizPlayer(raw: string | null): StoredQuizPlayer | null {
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw) as Partial<StoredQuizPlayer>;
-    if (typeof parsed.playerId === "string" && typeof parsed.displayName === "string") {
-      return { playerId: parsed.playerId, displayName: parsed.displayName };
+    if (
+      typeof parsed.playerId === "string" &&
+      typeof parsed.displayName === "string" &&
+      typeof parsed.token === "string" &&
+      parsed.token.length > 0
+    ) {
+      return {
+        playerId: parsed.playerId,
+        displayName: parsed.displayName,
+        token: parsed.token,
+      };
     }
     return null;
   } catch {

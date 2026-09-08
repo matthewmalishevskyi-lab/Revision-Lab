@@ -43,7 +43,13 @@ export function JoinQuizForm({
     // quizStorage.ts's own comment for why this is scoped per room code.
     writeStorageRaw(
       quizPlayerStorageKey(result.code),
-      JSON.stringify({ playerId: result.playerId, displayName: result.displayName }),
+      JSON.stringify({
+        playerId: result.playerId,
+        displayName: result.displayName,
+        // Saved with the id, never derived from it — only the server can mint
+        // one. See lib/quizPlayerToken.ts.
+        token: result.token,
+      }),
     );
     router.push(`/quiz/play/${result.code}`);
   }

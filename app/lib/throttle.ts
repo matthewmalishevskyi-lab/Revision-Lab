@@ -349,12 +349,67 @@ export async function recordFailedLogin(email: string): Promise<void> {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// COUNTING A FAILURE WITHOUT LOSING COUNT
+//
+// ⚠️ THE BUG THIS REPLACED, found in the 2026-09-06 bug hunt.
+//
+// This used to be read the counter → add one → write it back, from here. Three
+// separate trips, and correct only if the attempts arrive one at a time.
+//
+// They do not have to. Fifty simultaneous login attempts all READ "failures: 0"
+// before any of them has written "1", so all fifty write 1 and a counter that
+// should say fifty says one. The tiers never fire. Nothing in the guessing has
+// to be clever; it just has to be parallel, which is one line of code.
+//
+// The simulation in scripts/check-security.mjs reported a healthy 21 guesses an
+// hour throughout, because it models a patient attacker guessing in SEQUENCE.
+// That is the politest possible attacker, and it was the only one being tested.
+//
+// A read-modify-write in application code cannot be fixed in application code:
+// whatever you wrap it in, the gap between the read and the write is still
+// there. The database is the only thing that can close it, because it is the
+// only thing that can hold a lock on the row — so on the live site the whole
+// operation is now ONE call to bump_login_throttle (see PART 4 of
+// RUN_THIS_IN_SUPABASE.sql), and Postgres queues the racers behind each other.
+//
+// The tiers stay HERE and are passed in. The database is doing the counting,
+// not the deciding — the numbers that say what a lockout is worth belong in
+// this file where they can be read, argued with and simulated.
+//
+// The in-memory path below is unchanged and does not need changing: a laptop
+// running one dev server has a single event loop, and there is nothing to race.
+// ─────────────────────────────────────────────────────────────────────────────
 async function bump(
   key: string,
   now: number,
   tiers: Tier[],
   quietSeconds: number,
 ): Promise<void> {
+  if (USING_DATABASE) {
+    const response = await supabase("rpc/bump_login_throttle", {
+      method: "POST",
+      body: JSON.stringify({
+        p_key: key,
+        p_quiet_seconds: quietSeconds,
+        p_tiers: tiers.map((tier) => ({ at: tier.atFailures, lock: tier.lockSeconds })),
+      }),
+    });
+    if (!response.ok) {
+      // A 404 here means the function has not been created yet — the SQL in
+      // RUN_THIS_IN_SUPABASE.sql has not been run. Say so precisely, because
+      // "throttle write: HTTP 404" sent somebody hunting through this file
+      // once already for a problem that was never in it.
+      const body = await response.text();
+      throw new Error(
+        response.status === 404
+          ? `throttle bump: the bump_login_throttle function does not exist — run PART 4 of RUN_THIS_IN_SUPABASE.sql. (${body.slice(0, 200)})`
+          : `throttle bump: HTTP ${response.status} ${body.slice(0, 200)}`,
+      );
+    }
+    return;
+  }
+
   const existing = await readCounter(key);
 
   // Forgotten only after a stretch of QUIET — see the note on the constants.

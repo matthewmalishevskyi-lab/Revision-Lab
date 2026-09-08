@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { getQuizView, submitAnswerAction, type QuizView } from "../../../lib/quiz-actions";
 import { recordAnswer, recordTestCompletion } from "../../../lib/progress-actions";
@@ -40,7 +40,25 @@ export function PlayQuizScreen({ code }: { code: string }) {
   // that pattern exists to avoid, and DashboardCelebrations' entry in
   // PROJECT_NOTES.md for a real case of getting this wrong.
   const storedRaw = useStoredRaw(quizPlayerStorageKey(code), null);
-  const identity = parseStoredQuizPlayer(storedRaw);
+  // ── useMemo IS NOT A MICRO-OPTIMISATION HERE, IT IS THE BUG FIX ──────────
+  //
+  // `parseStoredQuizPlayer` builds a fresh object every time it runs, so
+  // without this `identity` was a NEW value on every render — and it is in
+  // the polling effect's dependency list below. React compares dependencies
+  // by identity, so the effect tore itself down and set itself up again on
+  // every single render, and its `setTimeout(poll, 0)` kickoff fired
+  // immediately each time.
+  //
+  // That closed a loop: poll → setView → re-render → new identity → effect
+  // restarts → poll again, back to back, as fast as the network could
+  // answer. The 1200ms interval never got a chance to matter. Every phone in
+  // a classroom round was doing that at once.
+  //
+  // `storedRaw` is a plain string from useSyncExternalStore, so it is stable
+  // between renders, and memoising on it makes `identity` stable too.
+  // HostQuizScreen never had this problem because its poll depends on a
+  // useCallback, which is the same fix wearing a different hat.
+  const identity = useMemo(() => parseStoredQuizPlayer(storedRaw), [storedRaw]);
 
   const [view, setView] = useState<QuizView | null>(null);
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
@@ -59,8 +77,9 @@ export function PlayQuizScreen({ code }: { code: string }) {
   useEffect(() => {
     if (!identity) return;
     const playerId = identity.playerId;
+    const token = identity.token;
     async function poll() {
-      const next = await getQuizView(code, playerId);
+      const next = await getQuizView(code, playerId, token);
       if (next) setView(next);
     }
     const kickoff = setTimeout(poll, 0);
@@ -239,7 +258,13 @@ export function PlayQuizScreen({ code }: { code: string }) {
     setSelectedChoice(index);
     setSubmitError(null);
     setSubmitting(true);
-    const result = await submitAnswerAction(code, identity.playerId, view.currentIndex, index);
+    const result = await submitAnswerAction(
+      code,
+      identity.playerId,
+      identity.token,
+      view.currentIndex,
+      index,
+    );
     setSubmitting(false);
 
     if (!result.ok) {

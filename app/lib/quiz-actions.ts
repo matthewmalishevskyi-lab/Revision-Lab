@@ -21,6 +21,7 @@ import { getSessionUserId } from "./session";
 import { getSubject } from "./subjects";
 import { containsProfanity, PROFANITY_REJECTION_MESSAGE } from "./cleanName";
 import { checkQuizJoinAllowed, humanDelay, recordFailedQuizJoin } from "./throttle";
+import { issuePlayerToken, playerTokenIsValid } from "./quizPlayerToken";
 import { MAX_TOPICS, MIN_QUESTIONS, MIN_TOPICS, QUESTION_SECONDS } from "./quizConfig";
 import {
   advanceQuestion,
@@ -101,7 +102,7 @@ export async function createQuizAction(
 }
 
 export type JoinQuizResult =
-  | { ok: true; code: string; playerId: string; displayName: string }
+  | { ok: true; code: string; playerId: string; displayName: string; token: string }
   | { ok: false; error: string };
 
 // Called directly from the join page's Client Component, not bound to a
@@ -179,6 +180,11 @@ export async function joinQuizAction(
     code: trimmedCode,
     playerId: result.player.id,
     displayName: result.player.displayName,
+    // The signature that makes this id worth something. See
+    // quizPlayerToken.ts — the browser stores it beside the id and hands
+    // both back on every answer, which is what stops one player answering
+    // as another.
+    token: await issuePlayerToken(trimmedCode, result.player.id),
   };
 }
 
@@ -249,6 +255,7 @@ export async function removePlayerAction(
 export async function submitAnswerAction(
   code: string,
   playerId: string,
+  token: string,
   questionIndex: number,
   choiceIndex: number,
 ): Promise<{ ok: boolean; correct?: boolean; points?: number; error?: string }> {
@@ -258,6 +265,19 @@ export async function submitAnswerAction(
     !Number.isInteger(choiceIndex) ||
     choiceIndex < 0
   ) {
+    return { ok: false, error: "NOT_A_PLAYER" };
+  }
+
+  // ── WHOSE ANSWER IS THIS? ────────────────────────────────────────────────
+  // Before this line existed, the answer was whoever the caller SAID it was.
+  // `submitAnswer` checks that the id belongs to a player in the room, which
+  // sounds like a check and is not one: every id in the room is already on
+  // every player's screen. The signature is the part that cannot be copied
+  // off someone else. See quizPlayerToken.ts for the whole shape of it.
+  //
+  // Deliberately the same error a made-up id gets. There is nothing useful
+  // to tell someone forging a token that they do not already know.
+  if (!(await playerTokenIsValid(code, playerId, token))) {
     return { ok: false, error: "NOT_A_PLAYER" };
   }
 
@@ -307,9 +327,22 @@ export type QuizView = {
 export async function getQuizView(
   code: string,
   viewerPlayerId?: string | null,
+  viewerToken?: string | null,
 ): Promise<QuizView | null> {
   let session = await getQuizSession(code);
   if (!session) return null;
+
+  // `myAnswer` below is the one field in this view that is about ONE player
+  // rather than the room, so the same signature that guards submitting an
+  // answer guards reading one. Without it, passing a rival's id — visible to
+  // everyone in the room — showed you what they had picked while the question
+  // was still open. An unsigned or mismatched token is not an error: the view
+  // is simply returned with no personal half, exactly as it is for the host
+  // and for anyone watching who never joined.
+  const viewerId =
+    viewerPlayerId && (await playerTokenIsValid(code, viewerPlayerId, viewerToken))
+      ? viewerPlayerId
+      : null;
 
   // See autoRevealIfExpired's own comment in quiz.ts — this is what makes
   // the question timer's deadline real even if the host's own tab isn't
@@ -335,8 +368,8 @@ export async function getQuizView(
         )
       : null;
 
-  const myAnswerRow = viewerPlayerId
-    ? currentQuestionAnswers.find((a) => a.playerId === viewerPlayerId)
+  const myAnswerRow = viewerId
+    ? currentQuestionAnswers.find((a) => a.playerId === viewerId)
     : undefined;
 
   return {

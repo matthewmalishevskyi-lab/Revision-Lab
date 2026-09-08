@@ -155,10 +155,28 @@ export async function deleteMyProgress(): Promise<{ ok: boolean; error?: string 
       deleteAllFlashcardReviews(user.id),
     ]);
 
+    // ⚠️ "NOTHING WAS DELETED" WAS A GUESS, AND SOMETIMES A WRONG ONE.
+    //
+    // These are two separate deletes running together. If the activity rows
+    // went and the flashcard reviews did not, the old wording told the person
+    // their history was untouched while half of it was already gone — the one
+    // thing worse than a failed delete is being told the wrong thing about it.
+    //
+    // Both of these are safe to repeat (deleting rows that are already gone
+    // deletes nothing), so "try again" is still the right advice; it just has
+    // to be said without promising what did or did not happen. The log below
+    // records which half actually failed, for the one person who can look.
     if (!progressCleared || !reviewsCleared) {
+      console.error(
+        "[progress] delete incomplete — activity cleared:",
+        progressCleared,
+        "flashcard reviews cleared:",
+        reviewsCleared,
+      );
       return {
         ok: false,
-        error: "Something went wrong and nothing was deleted. Please try again.",
+        error:
+          "Something went wrong part-way through, so some of your history may still be here. Please try again — running it a second time is safe.",
       };
     }
   } catch (error) {

@@ -1,5 +1,173 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Deep bug hunt: two quiz bugs, a limiter that could be outrun, and a reset that never worked (2026-09-06 → 09-08)
+
+Matthew asked for a deep bug check across the whole site. Everything the
+project's own checks cover was already green — tsc, eslint, 97,790 content
+checks, 184 security checks — so this is a list of what those checks do not
+look at.
+
+### 1. Anyone in a quiz room could answer as another player
+
+`submitAnswerAction` took a player id from the browser and trusted it. The only
+check was that a player with that id existed in the room, which sounds like a
+check and is not one: `getQuizView` sends the room's whole player list, ids
+included, to every player's screen, because the play page needs them to
+highlight you on the leaderboard and to notice when the host removes you.
+
+So any student in the room could read a rival's id out of dev tools and answer
+on their behalf. Worse, the primary key on `(session_code, player_id,
+question_index)` — the thing that stops a doubled tap counting twice — then
+works against the victim: their own real answer arrives second and is rejected
+as a duplicate. One deliberately wrong answer per question, per rival, and the
+leaderboard is whatever the attacker wants it to be.
+
+A logged-in player could have been checked against their session cookie. A
+GUEST could not: not having an account is the entire point of guest play, so
+there is nothing on the server to compare them against.
+
+**The fix: sign the id at the moment it is handed out.** New
+`app/lib/quizPlayerToken.ts` HMACs `quiz-player:<code>:<playerId>` with the same
+key session.ts uses for login cookies (now exposed through `signValue` /
+`verifySignedValue` rather than a second key being invented). The browser stores
+the signature beside the id and sends both back; `submitAnswerAction` and
+`getQuizView` verify it. Reading another player's id is still possible and still
+harmless — producing the signature for it is not.
+
+The room code is inside the signed string, so a token minted in one room is
+useless in another, and the `quiz-player:` prefix stops it being replayed
+anywhere else that signs with the same key.
+
+⚠️ **A stored identity with no token is treated as no identity.** Anything a
+browser saved before today parses as null. Accepting token-less identities
+"for compatibility" would have left the hole exactly as it was, since a forger
+would simply omit the token too. The play screen already handles null well — it
+shows "you haven't joined this room from this device yet" with a Join button —
+so the cost is re-joining once.
+
+Same signature also guards `myAnswer`: passing a rival's id used to show what
+they had picked while the question was still open.
+
+### 2. The player's quiz screen polled in a loop
+
+`parseStoredQuizPlayer` builds a fresh object every time it runs, and `identity`
+was in the polling effect's dependency list. React compares dependencies by
+identity, so the effect tore itself down and rebuilt itself on every render, and
+its `setTimeout(poll, 0)` kickoff fired immediately each time.
+
+That closes a loop: poll → setView → re-render → new identity → effect restarts
+→ poll again, back to back, as fast as the network can answer. The 1200ms
+interval never got a chance to apply. Every phone in a classroom round was doing
+it at once, on a Vercel Hobby plan.
+
+`useMemo` on `storedRaw` — a plain string, stable between renders — fixes it.
+HostQuizScreen never had the bug because its poll depends on a `useCallback`,
+which is the same fix wearing a different hat.
+
+### 3. The rate limiter could be outrun by not waiting
+
+`bump()` read the counter, added one and wrote it back: three separate trips.
+Correct only if attempts arrive one at a time, and they do not have to. Fifty
+simultaneous guesses all read "failures: 0" before any of them writes "1", so a
+counter that should say fifty says one and the tiers never fire.
+
+`check-security.mjs` reported a healthy 21 guesses an hour throughout, because
+it modelled a patient attacker guessing in sequence. That is the politest
+attacker there is, and it was the only one being tested.
+
+This cannot be fixed in application code — whatever you wrap a read and a write
+in, the gap between them is still there. So the whole operation is now one call
+to `bump_login_throttle` (PART 4 of RUN_THIS_IN_SUPABASE.sql), an `insert ...
+on conflict do update` that makes Postgres hold the row lock and queue the
+racers behind each other. The tiers stay in throttle.ts and are passed in: the
+database counts, this codebase still decides what a lockout is worth.
+
+**Measured, not assumed.** Postgres 16 was installed locally, the function
+created, and 50 simultaneous failures fired at one email:
+
+    the new function : 50 counted, 900-second lockout
+    read-modify-write: 2 counted
+
+Also verified against a real database: the tiers fire at 6 / 11 / 21, an
+existing longer lockout is never shortened by a later failure, and the quiet
+window resets after an hour but not before.
+
+⚠️ **The function had to be locked down.** Postgres grants EXECUTE to PUBLIC by
+default and Supabase publishes every public-schema function at
+`/rest/v1/rpc/<name>`. Left alone, anyone holding the publishable key — which is
+in every visitor's browser by design — could have called it and driven any email
+address's counter up until that account locked out. A rate limiter strangers can
+fire at you is a weapon pointing the wrong way. It is now service-role only,
+confirmed on the live database as `postgres=X/postgres, service_role=X/postgres`.
+
+`check-security.mjs` grew a section for all of this (192 checks now): the
+parallel race modelled both ways, a check that the live path uses the RPC and
+never reads-then-writes, and checks that the SQL defines the function and
+revokes execute from public, anon and authenticated. The broken model is kept
+deliberately — if it ever counts all fifty, it has stopped reproducing the bug
+and the check above it is guarding nothing. Verified to bite by breaking the
+call on purpose and watching it fail.
+
+### 4. What the live database actually had — and password reset had never worked
+
+Opening Supabase to run the SQL turned up something the file itself was wrong
+about. All nine tables already existed: the quiz tables, flashcard_reviews and
+login_throttle had all been created at some point, so RUN_THIS_IN_SUPABASE.sql's
+claim that missing tables were "why the quiz has never worked on the live site"
+was out of date.
+
+What had never been run was `SESSION_AND_RESET_SETUP.sql`:
+
+⚠️ **`password_resets` did not exist, so password reset was silently broken.**
+Someone locked out asked for a link, the screen said "check your email", the
+insert threw, reset-actions.ts caught it, logged it, and returned `sent: true`
+anyway. The "say the same thing whether or not the account exists" design is
+right — it stops the page telling strangers who has an account here — and it was
+also hiding a total failure. Nobody has ever received a reset email.
+
+**`users.session_version` did not exist**, so changing a password did not sign
+out other devices — the exact thing that column was added for. Nothing broke,
+because a missing column reads as version 1, so the feature simply was not
+there.
+
+Both are now created on the live database, along with the new function, and
+verified column by column.
+
+The lesson worth keeping: a setup file that says "run this once" is a note to
+yourself that nothing checks. Three separate features were quietly missing their
+storage, two of them for weeks, and the only reason it surfaced was going and
+looking. Migrations belong in the repo with something that can tell whether they
+have been applied.
+
+### 5. Smaller things fixed in the same pass
+
+- **Security headers.** `next.config.ts` sent none. It now sends
+  `X-Frame-Options` (the account page could be framed), `X-Content-Type-Options`,
+  `Referrer-Policy` (reset tokens ride in the query string, so an outbound click
+  would have handed the whole URL to another site), `Permissions-Policy` and
+  HSTS. Confirmed by building and curling the running server. **CSP deliberately
+  left out**: layout.tsx runs two inline bootstrap scripts that must execute
+  before first paint, so a real policy needs per-request nonces rather than
+  'unsafe-inline', which would defeat the point. Worth doing properly, later.
+- **`deleteMyProgress` could lie.** Two deletes run together; if the activity
+  rows went and the flashcard reviews did not, it said "nothing was deleted".
+  It now says some history may remain, that retrying is safe, and logs which
+  half failed.
+
+### Found and not fixed
+
+- `consumeResetToken` checks `usedAt` then marks it used in a separate call, so
+  two requests arriving together can both spend one token. Small, and only
+  reachable by someone racing their own reset link.
+- `clientIp()` trusts `x-real-ip`. Worth confirming Vercel overwrites a
+  client-supplied one; if it does not, every IP-based limit is bypassable with a
+  header.
+- Room codes are never freed. 900,000 of them, sessions never deleted, and
+  `generateRoomCode` gives up after 10 collisions.
+
+**Verified:** 192 security checks, 97,790 content checks, tsc and eslint clean,
+and a full production build.
+
 ## Powers are written as powers now, and a note on the reset screen (2026-09-02)
 
 Two small things Matthew asked for after the 1.0 push.

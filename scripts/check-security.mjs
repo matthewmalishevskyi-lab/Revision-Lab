@@ -133,6 +133,111 @@ try {
     lockoutFor(IP_TIERS, 1_000_000) >= 60 * 60,
     "a persistent IP is blocked for at least an hour",
   );
+
+  // ── 2b. THE COUNTER CANNOT BE OUTRUN BY GOING IN PARALLEL ────────────────
+  //
+  // ⚠️ THE BUG THIS SECTION EXISTS FOR, found in the 2026-09-08 bug hunt.
+  //
+  // Everything above models a PATIENT attacker: one guess, wait for the
+  // answer, next guess. That is the politest attacker there is, and it was the
+  // only one ever simulated — so a limiter that counted perfectly in sequence
+  // and lost count under load reported a healthy 21 guesses an hour for weeks.
+  //
+  // recordFailedLogin used to read the counter, add one and write it back, as
+  // three separate trips to the database. Fire fifty guesses at once and all
+  // fifty read "failures: 0" before any of them has written "1", so a counter
+  // that should say fifty says one and the tiers never fire. Nothing about
+  // that attack is clever. It just has to not wait.
+  //
+  // Both shapes are modelled below. The point of keeping the broken one is
+  // that the number it produces is the argument: if it ever counts all fifty,
+  // this model has stopped reproducing the bug and the check below it is
+  // guarding nothing.
+  const ATTACKERS = 50;
+
+  async function raceReadModifyWrite() {
+    let stored = 0;
+    await Promise.all(
+      Array.from({ length: ATTACKERS }, async () => {
+        const seen = stored;                        // trip 1: read
+        await new Promise((r) => setImmediate(r));  // the gap, where they pile in
+        stored = seen + 1;                          // trip 2: write back
+      }),
+    );
+    return stored;
+  }
+
+  async function raceSingleStatement() {
+    // What `insert ... on conflict do update` buys: the read and the write are
+    // one indivisible step, so nothing can interleave between them.
+    let stored = 0;
+    await Promise.all(
+      Array.from({ length: ATTACKERS }, async () => {
+        await new Promise((r) => setImmediate(r));
+        stored = stored + 1;                        // no await inside — one step
+      }),
+    );
+    return stored;
+  }
+
+  const naive = await raceReadModifyWrite();
+  const atomic = await raceSingleStatement();
+  console.log(
+    `  \u2192 ${ATTACKERS} simultaneous guesses: read-then-write counted ${naive}, one statement counted ${atomic}`,
+  );
+
+  expect(
+    atomic === ATTACKERS,
+    `one statement counts every one of ${ATTACKERS} simultaneous guesses`,
+  );
+  expect(
+    naive < ATTACKERS,
+    `read-then-write really does lose count (counted ${naive}) — if this ever passes, the model has stopped reproducing the bug`,
+  );
+
+  // The fix cannot live in application code. Whatever you wrap a read and a
+  // write in, the gap between them is still there — so the live path has to
+  // hand the whole operation to Postgres as one statement.
+  const throttleSource = readFileSync("app/lib/throttle.ts", "utf8");
+  const bumpFn = throttleSource.slice(throttleSource.indexOf("async function bump("));
+  expect(
+    bumpFn.includes("rpc/bump_login_throttle"),
+    "recording a failure goes through the atomic bump_login_throttle function",
+  );
+  const dbBranch = bumpFn.slice(
+    bumpFn.indexOf("if (USING_DATABASE)"),
+    bumpFn.indexOf("const existing = await readCounter"),
+  );
+  expect(
+    dbBranch.length > 0 && !dbBranch.includes("readCounter") && !dbBranch.includes("writeCounter"),
+    "the database path never reads the counter and writes it back itself",
+  );
+
+  // And the function it calls has to exist, count in one statement, and be
+  // reachable only by the site. Postgres grants EXECUTE to PUBLIC by default
+  // and Supabase publishes every public function at /rest/v1/rpc/<name>: left
+  // alone, anyone holding the publishable key — which is in every visitor's
+  // browser — could drive any email's counter up until that account locked
+  // out. A rate limiter strangers can fire at you is a weapon pointing the
+  // wrong way.
+  const setupSql = readFileSync("RUN_THIS_IN_SUPABASE.sql", "utf8");
+  expect(
+    setupSql.includes("create or replace function public.bump_login_throttle"),
+    "the setup SQL defines bump_login_throttle",
+  );
+  expect(
+    /on conflict \(key\) do update/.test(setupSql),
+    "bump_login_throttle counts with a single insert ... on conflict do update",
+  );
+  expect(
+    /revoke execute on function public\.bump_login_throttle[^;]*from public;/.test(setupSql) &&
+      /revoke execute on function public\.bump_login_throttle[^;]*from anon, authenticated;/.test(setupSql),
+    "execute on bump_login_throttle is revoked from public, anon and authenticated",
+  );
+  expect(
+    /grant\s+execute on function public\.bump_login_throttle[^;]*to service_role;/.test(setupSql),
+    "execute on bump_login_throttle is granted to service_role",
+  );
   expect(
     lockoutFor(IP_TIERS, 20) === 0,
     "20 failures from one IP is still free (a whole school shares one IP)",
