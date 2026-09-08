@@ -798,6 +798,25 @@ try {
     ".hover-reveal is defined and gated on `hover: hover`, not on screen width",
   );
 
+  // ── 10c. Teacher Tools says what it is ───────────────────────────────────
+  //
+  // Every page under /teacher-tools ends with "More coming soon." — Matthew
+  // asked for it on all of them, and it is load-bearing: the section opens with
+  // one tool in it, and a page showing one feature and saying nothing else
+  // reads as finished rather than as a beginning.
+  //
+  // The reason this is a check and not a note: the promise is only kept while
+  // somebody remembers it on every page they add next. That is exactly the kind
+  // of thing that quietly stops being true.
+  for (const file of listFiles("app/teacher-tools").filter((f) => f.endsWith("page.tsx"))) {
+    const text = readFileSync(file, "utf8");
+    expect(
+      text.includes("<MoreComingSoon />"),
+      `${file} ends with <MoreComingSoon /> — every Teacher Tools page says ` +
+        `"More coming soon."`,
+    );
+  }
+
   // ── 11. Articles are chosen, not typed ───────────────────────────────────
   //
   // "Try a English test" shipped and was found by an outside reviewer rather

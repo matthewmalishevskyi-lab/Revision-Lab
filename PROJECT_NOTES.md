@@ -1,5 +1,82 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Teacher Tools, and a diagram library that maintains itself (2026-09-08)
+
+Matthew: a button next to the clan one on the dashboard saying Teacher tools,
+leading somewhere a teacher can pick a topic that has diagrams and see them.
+"More coming soon" at the bottom of every page under it. Make it look pretty.
+
+### What is there
+
+  /teacher-tools                                  the hub, one tool in it
+  /teacher-tools/diagrams                         the five subjects that have any
+  /teacher-tools/diagrams/[subject]               its topics, grouped by year
+  /teacher-tools/diagrams/[subject]/[topic]       the diagrams themselves
+
+142 diagrams across 73 topics in 5 subjects, which is every diagram on the site.
+Each one is captioned with the key-fact heading it belongs to, and the last page
+links back to the revision page it came from.
+
+### ⚠️ Nothing lists which topics have diagrams, on purpose
+
+The obvious build is a list: these topics have pictures. That list is wrong the
+moment somebody adds a diagram and forgets to update it, and nothing says so —
+the library just quietly stops showing the newest ones. A teacher cannot report
+a picture they do not know exists.
+
+So `lib/teacher-tools.ts` derives everything by walking the content that already
+declares its own diagrams (`keyFacts[].diagrams`), in the order subjects and
+years are already defined. Add a diagram to a topic and it appears here; remove
+one and it goes. There is no second place to keep in step, which is the only
+version of this that stays true.
+
+Names not in the registry are dropped rather than shown as a gap.
+`check-content.mjs` already fails the build on an unknown name, so this is belt
+and braces — but a teacher in front of a class is not who should find a typo.
+
+Subjects with no diagrams are left out of the list entirely, and a topic without
+any 404s rather than rendering an empty page: "Spanish — 0 diagrams" is a row
+that only ever wastes a tap.
+
+### Not behind a login
+
+Everything else with its own section — clans, the wardrobe, hosting a quiz —
+needs an account because it writes something down about you. This does not: it
+reads content that is already public and arranges it differently. Making a
+teacher sign up to look at a diagram would lose most of them at the first
+screen, and would collect something the page has no use for. The way IN is the
+dashboard card Matthew asked for; the pages themselves are plain URLs he can
+send to anyone.
+
+### Two details worth recording
+
+**The diagrams are capped, not stretched.** First version gave each one the full
+976px column, on the reasoning that this page exists for projecting. They are
+drawn on a ~220-unit canvas with label text sized for it, so at that width the
+word "diameter" came out larger than the page's own heading — technically
+bigger, visibly wrong. 36rem, centred, is about half again the size a topic page
+gives them: readable from the back of a room without the labels swamping the
+drawing.
+
+**One column, not two.** The topic pages put diagrams two-up beside the text
+they illustrate, because there they support something. Here they ARE the thing,
+so two-up would only make every diagram half the size.
+
+### "More coming soon." is a check, not a note
+
+It is on all four pages, and it is doing a job: the section opens with one tool
+in it, and a page showing a single feature and saying nothing else reads as
+finished rather than as a beginning. It lives in one component so the wording
+exists once, and `check-security.mjs` now fails if any page under
+`app/teacher-tools` is missing it — because the promise is only kept while
+somebody remembers it on every page they add next, which is exactly the sort of
+thing that quietly stops being true. Confirmed to fail when removed.
+
+**Verified:** 203 security checks, 97,790 content checks, tsc and eslint clean,
+a production build (693 static pages, 78 of them new), and every page loaded in
+Chromium, Firefox and WebKit with the diagrams rendering and no JavaScript
+errors. Screenshotted at 1280px and 390px.
+
 ## "It doesn't climb in Edge" — and it was never about Edge (2026-09-08)
 
 Matthew's Computer Science teacher reported that the mascot on the ladder beside

@@ -254,6 +254,30 @@ export default async function DashboardPage() {
         </Link>
       )}
 
+      {/* ---------- Teacher tools ---------- */}
+      {/* Sits next to the clan card because that is where Matthew asked for
+          it, and the shape matches for the same reason the clan and wardrobe
+          cards match each other: these are all "somewhere else worth going",
+          and a row of identical cards is easier to scan than three designs.
+
+          Unlike the others this destination needs no account at all — it only
+          rearranges content that is already public — so it is also a link a
+          teacher can be sent directly. See app/teacher-tools/page.tsx. */}
+      <Link
+        href="/teacher-tools"
+        className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/60 bg-white/70 px-6 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+      >
+        <span>
+          <span className="font-semibold">Teacher tools</span>
+          <span className="ml-2 opacity-60">
+            every diagram on the site, by subject and topic
+          </span>
+        </span>
+        <span aria-hidden="true" className="text-xl opacity-40">
+          →
+        </span>
+      </Link>
+
       {/* ---------- Live quiz ---------- */}
       {/* Same link-card shape again — a Kahoot-style live quiz needs a host,
           and hosting requires an account, so this is the natural place to
