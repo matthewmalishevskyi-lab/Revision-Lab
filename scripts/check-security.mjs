@@ -744,6 +744,60 @@ try {
     }
   }
 
+  // ── 10b. Things a SETTING can switch off ─────────────────────────────────
+  //
+  // Two bugs found on 2026-09-08 had the same shape: a feature that worked
+  // perfectly on the machine it was written on, and did not exist at all on
+  // someone else's — not because of their browser, but because of a setting
+  // their browser reports.
+  //
+  //   - The ladder mascot "did not climb in Edge". Edge was innocent: that
+  //     laptop had Windows' animation effects turned off, so every browser on
+  //     it reports `prefers-reduced-motion: reduce`, and the component's
+  //     reduced-motion branch parked the mascot and returned.
+  //   - "Choose a topic →" on the homepage cards sat at `opacity-0` until
+  //     `group-hover`. A touchscreen cannot hover, so no phone visitor was
+  //     ever shown that line.
+  //
+  // Both are invisible from a developer's own machine, which is exactly why
+  // they are worth a check rather than a memory.
+  console.log("Checking what a phone or an accessibility setting still gets...");
+
+  // Reduced motion must remove the ANIMATION, not the feature. The ladder's
+  // branch has to keep following the reader, which means it listens for scroll.
+  const ladderSrc = readFileSync("app/components/LadderCompanion.tsx", "utf8");
+  const reducedBranch = ladderSrc.slice(ladderSrc.indexOf("if (reduceMotion)"));
+  const branchEnd = reducedBranch.indexOf("\n    }\n");
+  const reducedBody = reducedBranch.slice(0, branchEnd > 0 ? branchEnd : 800);
+  expect(
+    reducedBody.includes('addEventListener("scroll"'),
+    "under reduced motion the ladder still follows the page — it drops the " +
+      "animation, not the feature (see the note in LadderCompanion.tsx)",
+  );
+
+  // Content revealed only on hover is content a touchscreen never sees.
+  // `.hover-reveal` is the sanctioned way to do it: visible by default, hidden
+  // only inside `@media (hover: hover)`.
+  for (const file of listFiles("app").filter((f) => f.endsWith(".tsx"))) {
+    const text = readFileSync(file, "utf8");
+    for (const match of text.matchAll(/className="([^"]*group-hover:opacity-[^"]*)"/g)) {
+      const cls = match[1];
+      if (!/\bopacity-0\b/.test(cls)) continue; // fading between two visible states is fine
+      expect(
+        false,
+        `${file} hides text at opacity-0 until group-hover — a touchscreen ` +
+          `cannot hover, so nobody on a phone ever sees it. Use .hover-reveal ` +
+          `(app/globals.css) instead: "${cls.slice(0, 60)}"`,
+      );
+    }
+  }
+
+  const css = readFileSync("app/globals.css", "utf8");
+  expect(
+    css.includes(".hover-reveal") && css.includes("(hover: hover)"),
+    ".hover-reveal is defined and gated on `hover: hover`, not on screen width",
+  );
+
   // ── 11. Articles are chosen, not typed ───────────────────────────────────
   //
   // "Try a English test" shipped and was found by an outside reviewer rather

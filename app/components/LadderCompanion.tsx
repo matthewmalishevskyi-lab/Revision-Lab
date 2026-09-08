@@ -72,11 +72,6 @@ export function LadderCompanion({
 
     const yForRung = (rung: number) => LADDER_INSET + rung * RUNG_SPACING;
 
-    if (reduceMotion) {
-      climber.style.transform = `translate(-50%, ${yForRung(1)}px)`;
-      return;
-    }
-
     // The highest rung that still leaves the mascot fully on the ladder.
     const lastRung = () =>
       Math.max(
@@ -125,6 +120,50 @@ export function LadderCompanion({
     const handlePointer = (event: MouseEvent) => {
       lastPointerY = event.clientY;
     };
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // REDUCED MOTION USED TO MEAN "SWITCHED OFF", WHICH IS A DIFFERENT THING
+    //
+    // Reported as an Edge bug: a Computer Science teacher's mascot would not
+    // climb, while it climbed fine elsewhere. Edge is Chromium, so that made
+    // little sense — and it turned out not to be about the browser at all.
+    //
+    // Windows has an accessibility setting — Settings → Accessibility → Visual
+    // effects → Animation effects — and school and other managed machines very
+    // often ship with it OFF. Every browser on such a machine then reports
+    // `prefers-reduced-motion: reduce`. Chrome on that same laptop would have
+    // done exactly the same thing; it was simply Edge that got looked at.
+    // Confirmed by emulating the setting rather than guessing: frozen in
+    // Chromium, Firefox AND WebKit, and climbing normally in all three without
+    // it.
+    //
+    // The old branch parked the mascot on rung 1 and returned, so it sat near
+    // the top of the page doing nothing for the whole visit. That does not read
+    // as "the animation is off". It reads as "this is broken".
+    //
+    // What the setting asks for is no ANIMATION: no easing, no arc, no leaning
+    // and swaying, nothing moving under its own steam and catching the eye. It
+    // does not ask for the feature to be taken away. So the mascot still
+    // follows where you are on the page — it is placed there, in one move, as
+    // the page scrolls, exactly the way anything else positioned on the page
+    // moves when you scroll. Same information, no independent motion.
+    // ─────────────────────────────────────────────────────────────────────────
+    if (reduceMotion) {
+      const place = () => {
+        recalculateTarget();
+        climber.style.transform = `translate(-50%, ${yForRung(targetRung)}px)`;
+      };
+      window.addEventListener("mousemove", handlePointer, { passive: true });
+      window.addEventListener("scroll", place, { passive: true });
+      window.addEventListener("resize", place, { passive: true });
+      place();
+      return () => {
+        window.removeEventListener("mousemove", handlePointer);
+        window.removeEventListener("scroll", place);
+        window.removeEventListener("resize", place);
+      };
+    }
+
 
     // `passive: true` promises we won't call preventDefault, which lets the
     // browser scroll without waiting to find out.

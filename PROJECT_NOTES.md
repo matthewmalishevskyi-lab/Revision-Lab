@@ -1,5 +1,87 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## "It doesn't climb in Edge" — and it was never about Edge (2026-09-08)
+
+Matthew's Computer Science teacher reported that the mascot on the ladder beside
+a topic page does not climb in Edge, while it climbs elsewhere. He asked for
+everything to work in every browser — Chrome, Edge, Firefox, the lot.
+
+### Edge was innocent
+
+Edge is Chromium, the same engine as Chrome, so "works in Chrome, not Edge" was
+suspicious from the start. Firefox and WebKit were installed here and the ladder
+driven in all three: it climbed correctly in every one.
+
+Then the real variable. **Windows has an accessibility setting — Settings →
+Accessibility → Visual effects → Animation effects — and school and other
+managed machines very often ship with it off.** Every browser on such a machine
+reports `prefers-reduced-motion: reduce`. Emulating that reproduced the report
+exactly, in Chromium, Firefox AND WebKit:
+
+    prefers-reduced-motion         chromium   firefox   webkit
+    no-preference (climbs)         moved      moved     moved
+    reduce        (was frozen)     frozen     frozen    frozen
+
+So it was that laptop, not that browser. Chrome on the same machine would have
+done the same thing; Edge simply happened to be what was open.
+
+### The bug was in what "reduced motion" was taken to mean
+
+    if (reduceMotion) {
+      climber.style.transform = `translate(-50%, ${yForRung(1)}px)`;
+      return;
+    }
+
+Park on rung 1 and give up. For the whole visit the mascot then sits near the
+top of a 15,000px page doing nothing, which does not read as "animations are
+off" — it reads as broken, which is exactly how it was reported.
+
+The setting asks for no ANIMATION: nothing easing, arcing, leaning or swaying
+under its own steam and pulling at the eye. It does not ask for the feature to
+be removed. So the mascot now still follows where you are on the page — it is
+placed there in one move as the page scrolls, the way anything else positioned
+on the page moves when you scroll. Same information, no independent motion.
+Verified in all three engines, with the setting on and off.
+
+### The same shape of bug, found next door
+
+`prefers-reduced-motion` is not the only setting that can silently delete a
+feature for someone. Hover is another: three pages hid a line of text at
+`opacity-0` until `group-hover`, and a touchscreen cannot hover, so no phone
+visitor was ever shown it. (Fixed in the phone pass earlier the same day; the
+two belong together.)
+
+Both are invisible from the machine the code was written on. That is precisely
+what a check is for, so `check-security.mjs` grew a section — 194 checks now:
+
+  - the ladder's reduced-motion branch must still listen for scroll, i.e. it
+    drops the animation and keeps the feature;
+  - no component may hide text at `opacity-0` behind `group-hover` — the
+    sanctioned way is `.hover-reveal`, which is visible by default and hidden
+    only inside `@media (hover: hover)`;
+  - `.hover-reveal` must be gated on `hover: hover` and not on screen width,
+    because a touchscreen laptop is wide and still cannot hover.
+
+Each was confirmed to fail when the fix is taken back out.
+
+### While three engines were installed, everything else was driven in them too
+
+36 checks across Chromium, Firefox and WebKit, all passing: seven pages loading
+with no JavaScript error; the search box opening and returning 11 topics for
+"binary" in every engine; the dark-mode toggle; answering a practice question
+and getting feedback; a flashcard revealing; and the ladder climbing on scroll.
+
+⚠️ **Two of those "failures" were mine, not the site's.** The first run reported
+the theme toggle and practice questions broken in all three engines — which is
+the tell: a real browser bug shows up in one engine, not identically in all of
+them. Both were wrong selectors in the test (the theme is a `dark` class, not a
+`data-theme` attribute; practice choices are buttons, not radio inputs). Same
+lesson as the phone pass, where a blocked script made a working menu look
+broken: check the harness before believing the bug.
+
+**Verified:** 194 security checks, 97,790 content checks, tsc and eslint clean,
+and the full cross-engine run at 36/36.
+
 ## The phone version: what was cut off, what could not be tapped, and what a phone was never shown (2026-09-08)
 
 Matthew: on a phone the site "looks very cut" and some things can't be reached.
