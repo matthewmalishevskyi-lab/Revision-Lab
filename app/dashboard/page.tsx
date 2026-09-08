@@ -287,7 +287,7 @@ export default async function DashboardPage() {
             <h2 className="text-xl font-semibold">Revise today</h2>
             <Link
               href="/revise"
-              className="whitespace-nowrap text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
+              className="tap-pad whitespace-nowrap text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
             >
               See all {queue.length} →
             </Link>
@@ -298,11 +298,11 @@ export default async function DashboardPage() {
               <Link
                 key={item.id}
                 href={item.href}
-                className="group flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 px-5 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+                className="group flex items-center gap-3 rounded-2xl border border-white/60 bg-white/70 px-4 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md sm:gap-4 sm:px-5 dark:border-white/10 dark:bg-white/5"
               >
                 <MascotDisplay
                   mascot={item.mascot}
-                  className="h-12 w-12 shrink-0"
+                  className="h-11 w-11 shrink-0 sm:h-12 sm:w-12"
                 />
                 <div className="min-w-0 flex-1">
                   <span
@@ -311,10 +311,10 @@ export default async function DashboardPage() {
                   >
                     {QUEUE_KIND_LABELS[item.kind]}
                   </span>
-                  <p className="mt-1.5 truncate font-semibold">
+                  <p className="mt-1.5 line-clamp-2 font-semibold">
                     {item.title}
                   </p>
-                  <p className="truncate text-sm opacity-60">
+                  <p className="line-clamp-2 text-sm opacity-60">
                     {item.subjectName} · {item.detail}
                   </p>
                 </div>
@@ -396,7 +396,7 @@ export default async function DashboardPage() {
           </p>
           <Link
             href="/progress"
-            className="mt-4 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="inline-flex items-center justify-center min-h-11 mt-4 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
           >
             See your progress →
           </Link>

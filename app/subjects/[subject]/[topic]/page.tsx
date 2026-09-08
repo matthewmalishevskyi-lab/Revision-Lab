@@ -191,11 +191,11 @@ export default async function TopicPage({ params }: Props) {
         {/* Breadcrumbs: where you are, and a way back up. Cheap to add, and
             people rely on them more than you'd think. */}
         <nav className="mt-8 flex flex-wrap items-center gap-2 text-sm opacity-60">
-          <Link href="/" className="hover:underline">
+          <Link href="/" className="tap-pad hover:underline">
             Home
           </Link>
           <span aria-hidden="true">›</span>
-          <Link href={`/subjects/${subject.slug}`} className="hover:underline">
+          <Link href={`/subjects/${subject.slug}`} className="tap-pad hover:underline">
             {subject.name}
           </Link>
           <span aria-hidden="true">›</span>
@@ -287,7 +287,7 @@ export default async function TopicPage({ params }: Props) {
           <p className="mt-4 text-center">
             <Link
               href={`/subjects/${subject.slug}/${topic.slug}/print`}
-              className="inline-flex items-center gap-1.5 text-sm font-medium opacity-70 hover:opacity-100 hover:underline"
+              className="tap-pad inline-flex items-center gap-1.5 text-sm font-medium opacity-70 hover:opacity-100 hover:underline"
             >
               <PrinterIcon />
               Printable revision sheet

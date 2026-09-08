@@ -96,7 +96,7 @@ export default async function SubjectPage({ params }: Props) {
         <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={`/subjects/${subject.slug}/exam`}
-            className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+            className="min-h-11 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
             style={{ backgroundColor: subject.accent }}
           >
             Try {indefiniteArticle(subject.name)} {subject.name} test
@@ -112,7 +112,7 @@ export default async function SubjectPage({ params }: Props) {
               already follows. */}
           <Link
             href={`/subjects/${subject.slug}/past-paper`}
-            className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+            className="min-h-11 inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
           >
             Full past paper
             <span aria-hidden="true">→</span>
@@ -124,7 +124,7 @@ export default async function SubjectPage({ params }: Props) {
           {user && (
             <Link
               href={`/subjects/${subject.slug}/stats`}
-              className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+              className="min-h-11 inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
             >
               Your {subject.name} stats
               <span aria-hidden="true">→</span>

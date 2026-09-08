@@ -333,7 +333,7 @@ export function Practice({
                         <button
                           type="button"
                           onClick={() => check(index, item)}
-                          className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                          className="min-h-11 rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
                           style={{ backgroundColor: colour }}
                         >
                           Check
@@ -344,7 +344,7 @@ export function Practice({
                             onClick={() =>
                               update(index, { revealed: true, status: "selfMarked" })
                             }
-                            className="rounded-lg border border-black/10 px-3.5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+                            className="min-h-11 rounded-lg border border-black/10 px-3.5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
                           >
                             Show answer
                           </button>
@@ -378,7 +378,7 @@ export function Practice({
                       <button
                         type="button"
                         onClick={() => update(index, { revealed: true })}
-                        className="mt-3 rounded-lg border border-black/10 px-3.5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+                        className="mt-3 min-h-11 rounded-lg border border-black/10 px-3.5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
                       >
                         Show model answer
                       </button>

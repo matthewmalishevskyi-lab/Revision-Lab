@@ -101,7 +101,7 @@ export function Celebration({
         <button
           type="button"
           onClick={onDismiss}
-          className="mt-4 rounded-xl bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+          className="inline-flex items-center justify-center min-h-11 mt-4 rounded-xl bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
         >
           Nice!
         </button>

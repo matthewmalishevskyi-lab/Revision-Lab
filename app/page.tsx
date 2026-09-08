@@ -143,13 +143,13 @@ export default async function Home(props: PageProps<"/">) {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/quiz"
-              className="rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+              className="inline-flex items-center justify-center min-h-11 rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
             >
               Try a live quiz
             </Link>
             <Link
               href="/exam-board"
-              className="rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+              className="inline-flex items-center justify-center min-h-11 rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
             >
               Set your exam board
             </Link>
@@ -182,7 +182,14 @@ export default async function Home(props: PageProps<"/">) {
               // `group` lets the child layers below react when THIS card is
               // hovered. `relative` + `overflow-hidden` keep the glow layers
               // and the walking character clipped inside the rounded corners.
-              className={`group relative block min-h-[24rem] overflow-hidden rounded-2xl p-7 text-white transition duration-300 ease-out hover:-translate-y-1 ${card.shadow}`}
+              // ── 24rem is a LAPTOP card height ──────────────────────────────
+              // Fifteen of these at 384px each is a 5,700px scroll on a phone,
+              // most of it empty gradient: the card was sized around a walking
+              // mascot and a hover caption, and on a phone the mascot is the
+              // same size while the screen is a third of the width. 17rem
+              // still clears the character (112px wide, 16px off the bottom)
+              // and turns that scroll into something a thumb can get through.
+              className={`group relative block min-h-[17rem] overflow-hidden rounded-2xl p-6 text-white transition duration-300 ease-out hover:-translate-y-1 sm:min-h-[24rem] sm:p-7 ${card.shadow}`}
               // The gradient goes in `style` rather than a class because it's a
               // per-subject value. Tailwind scans source files as plain text to
               // decide which CSS to generate, so it can only find classes that
@@ -237,7 +244,7 @@ export default async function Home(props: PageProps<"/">) {
               {group && (
                 <p className="relative mt-1 text-sm opacity-75">{card.blurb}</p>
               )}
-              <p className="relative mt-2 opacity-0 transition duration-300 group-hover:opacity-80">
+              <p className="hover-reveal relative mt-2 text-sm transition duration-300">
                 {caption}
               </p>
             </Link>

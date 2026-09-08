@@ -94,7 +94,7 @@ export default function SciencePage() {
                 ))}
               </ul>
 
-              <p className="relative mt-5 text-sm opacity-0 transition duration-300 group-hover:opacity-85">
+              <p className="hover-reveal relative mt-5 text-sm transition duration-300">
                 Choose a topic →
               </p>
             </Link>

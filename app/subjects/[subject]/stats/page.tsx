@@ -83,7 +83,7 @@ export default async function SubjectStatsPage({ params }: Props) {
 
         <Link
           href={`/subjects/${subject.slug}`}
-          className="rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+          className="inline-flex items-center justify-center min-h-11 rounded-xl border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
         >
           ← Back to {subject.name}
         </Link>
@@ -158,9 +158,22 @@ export default async function SubjectStatsPage({ params }: Props) {
 
         <ul className="mt-5 space-y-2.5">
           {breakdown.map((topic) => (
+            // ── THE ROW WRAPS INSTEAD OF SQUEEZING ─────────────────────────
+            // Icon, title and status in one row needs about 340px before the
+            // title starts losing width. A 390px phone, minus the page gutter
+            // and this row's own padding, offers about 300 — so "Putting a
+            // program together" was folding onto three lines inside a 160px
+            // column while "Not started yet" sat beside it holding 90px open.
+            // Nothing was cut off; it just looked broken, which for a page
+            // someone opens to see how they are doing is nearly as bad.
+            //
+            // Below `sm` the status takes a line of its own (indented to clear
+            // the icon, so it reads as part of the same row), which gives the
+            // title the full width back. From `sm` up the original one-line
+            // layout is untouched.
             <li
               key={topic.slug}
-              className="flex flex-wrap items-center gap-4 rounded-2xl border border-black/5 p-4 dark:border-white/10"
+              className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border border-black/5 p-3.5 sm:gap-x-4 sm:p-4 dark:border-white/10"
             >
               <span
                 className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
@@ -175,13 +188,17 @@ export default async function SubjectStatsPage({ params }: Props) {
 
               <Link
                 href={`/subjects/${subject.slug}/${topic.slug}`}
-                className="min-w-0 flex-1 font-medium hover:underline"
+                // The topic title is the link, and on a phone it was a 24px
+                // strip of text — the main way to get from this page into a
+                // topic, and the smallest thing on it. `flex items-center`
+                // keeps the text where it was and grows only the box.
+                className="flex min-h-11 min-w-0 flex-1 items-center font-medium hover:underline"
               >
                 {topic.title}
               </Link>
 
               {!topic.covered ? (
-                <span className="shrink-0 text-sm opacity-40">
+                <span className="w-full pl-14 text-sm opacity-40 sm:w-auto sm:shrink-0 sm:pl-0">
                   Not started yet
                 </span>
               ) : (
@@ -200,7 +217,7 @@ export default async function SubjectStatsPage({ params }: Props) {
                     </span>
                   )}
 
-                  <span className="shrink-0 text-right text-sm">
+                  <span className="w-full pl-14 text-sm sm:w-auto sm:shrink-0 sm:pl-0 sm:text-right">
                     {topic.questionsAnswered > 0 ? (
                       <>
                         <span className="block font-semibold tabular-nums">
@@ -285,7 +302,7 @@ export default async function SubjectStatsPage({ params }: Props) {
 
       <p className="mx-auto mt-10 max-w-2xl text-center text-sm opacity-50">
         Want the same view across every subject at once?{" "}
-        <Link href="/progress" className="underline">
+        <Link href="/progress" className="tap-pad underline">
           See your overall progress →
         </Link>
       </p>

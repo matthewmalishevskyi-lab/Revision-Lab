@@ -39,7 +39,7 @@ export default async function ClansPage({ searchParams }: Props) {
         {user ? (
           <Link
             href="/clans/new"
-            className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+            className="min-h-11 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
           >
             Create a clan
           </Link>
@@ -47,7 +47,7 @@ export default async function ClansPage({ searchParams }: Props) {
           ACCOUNTS_ENABLED && (
             <Link
               href="/login"
-              className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+              className="min-h-11 inline-flex items-center gap-2 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
             >
               Log in to create one
             </Link>

@@ -45,7 +45,7 @@ export function ReviewQueue({ cards }: { cards: QueueCard[] }) {
         </p>
         <Link
           href="/dashboard"
-          className="mt-5 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+          className="inline-flex items-center justify-center min-h-11 mt-5 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
         >
           Back to dashboard
         </Link>

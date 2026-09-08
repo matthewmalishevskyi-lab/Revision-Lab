@@ -28,32 +28,36 @@ export function SiteFooter() {
             that has not been through a textbook's review process. What is gone
             is only the part that made a commitment about the future. */}
         <p>Revision Lab — a student project.</p>
-        {/* `gap-x-5 gap-y-1` plus `py-1.5` on each link below: these measured
-            20px tall, and a row of 20px targets five pixels apart is a row
-            of things a thumb misses. The padding is vertical only, so the
-            row still reads as one line of small print rather than a menu. */}
-        <nav className="flex flex-wrap items-center gap-x-5 gap-y-1">
-          <Link href="/privacy" className="py-1.5 hover:underline underline-offset-2">
+        {/* Each link is its own 44px-tall box rather than 20px of text with
+            padding hung off it. The distinction matters because this row
+            WRAPS on a phone: with `.tap-pad`'s negative margins the boxes on
+            one line reached 18px into the line below, so a tap aimed at
+            "Contact" could land on "Privacy" — a bigger target that hits the
+            wrong thing is worse than a small one that hits the right thing.
+            Real height plus `gap-y-0` keeps every box exactly where it looks
+            like it is. */}
+        <nav className="flex flex-wrap items-center gap-x-5 gap-y-0">
+          <Link href="/privacy" className="flex min-h-11 items-center hover:underline underline-offset-2">
             Privacy
           </Link>
           <Link
             href="/accessibility"
-            className="py-1.5 hover:underline underline-offset-2"
+            className="flex min-h-11 items-center hover:underline underline-offset-2"
           >
             Accessibility
           </Link>
           <Link
             href="/exam-board"
-            className="py-1.5 hover:underline underline-offset-2"
+            className="flex min-h-11 items-center hover:underline underline-offset-2"
           >
             Exam board
           </Link>
-          <Link href="/quiz" className="py-1.5 hover:underline underline-offset-2">
+          <Link href="/quiz" className="flex min-h-11 items-center hover:underline underline-offset-2">
             Live quiz
           </Link>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="py-1.5 hover:underline underline-offset-2"
+            className="flex min-h-11 items-center hover:underline underline-offset-2"
           >
             Contact
           </a>

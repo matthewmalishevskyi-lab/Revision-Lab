@@ -62,7 +62,7 @@ export default async function AccountPage() {
           <form action={undoDeletion}>
             <button
               type="submit"
-              className="mt-4 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
+              className="inline-flex items-center justify-center min-h-11 mt-4 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
             >
               Undo — keep my account
             </button>

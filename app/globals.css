@@ -90,6 +90,63 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* ─── A thumb is not a mouse pointer ────────────────────────────────────────
+   A link sitting in a line of text is about 20px tall, because that is how
+   tall the text is. With a mouse that is plenty — the pointer is one pixel
+   wide and you can see exactly where it is. With a thumb it is not: the
+   contact patch is nearer 10mm across and its centre is somewhere under your
+   own finger, which is why Apple asks for 44pt and Google for 48dp.
+
+   Making those links physically bigger would be wrong; they belong to the
+   sentence around them. So this grows the HIT AREA without moving anything:
+   padding pushes the clickable box out, and an equal negative margin pulls
+   the layout back to exactly where it was. The line spacing does not change,
+   nothing reflows, and the target goes from roughly 20px to 44px.
+
+   `pointer: coarse` means "the primary input is a finger" — so this applies
+   on phones and tablets and leaves a laptop alone, where the tight box is
+   both accurate and easier to point at.
+
+   ⚠️ ONLY FOR A LINK THAT STANDS ALONE ON ITS LINE — a breadcrumb, a "see
+   all" beside a heading. A grown box overlaps whatever is directly above and
+   below it, so on a link sitting INSIDE a paragraph it would quietly cover
+   the lines of ordinary text either side of it, and a tap on that text would
+   follow the link. It was tried in the footer too and had to be taken out
+   again: that row wraps, and the boxes on one line reached into the line
+   below. Those links carry their own real height instead. */
+@media (pointer: coarse) {
+  .tap-pad {
+    padding-block: 0.6875rem; /* 11px each side: 20px of text -> 42-44px */
+    margin-block: -0.6875rem;
+    /* The bigger box must not swallow taps meant for the text either side
+       of it, so it stays inline and only grows vertically. */
+    display: inline-block;
+  }
+}
+
+/* ─── Hover is not universal ────────────────────────────────────────────────
+   Three pages hide a line of text at `opacity-0` and bring it back on
+   `group-hover`. On a laptop that is a nice touch: the card is calm until you
+   point at it. On a phone it is not a touch at all — there is no hover state,
+   so the text was simply never shown to anyone holding the site in their
+   hand, which is most of the people using it.
+
+   So the line is visible by default, and only HIDDEN where hovering is
+   actually possible. `hover: hover` is true for a mouse or trackpad and false
+   for a touchscreen — the right question to ask, rather than guessing from
+   screen width (a touchscreen laptop is wide and still cannot hover). */
+.hover-reveal {
+  opacity: 0.8;
+}
+@media (hover: hover) {
+  .hover-reveal {
+    opacity: 0;
+  }
+  .group:hover .hover-reveal {
+    opacity: 0.8;
+  }
+}
+
 /* Instead of a flat white page, three very faint pools of colour sit behind
    everything — blue top-left, orange top-right, violet along the bottom.
    They're the same colours as the three subject cards, at roughly a tenth of

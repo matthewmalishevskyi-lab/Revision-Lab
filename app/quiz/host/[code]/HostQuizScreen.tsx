@@ -341,7 +341,7 @@ export function HostQuizScreen({ code }: { code: string }) {
             <button
               type="button"
               onClick={handleReveal}
-              className="mx-auto mt-8 block rounded-xl border border-black/10 px-6 py-2.5 text-sm font-semibold opacity-70 transition hover:bg-black/5 hover:opacity-100 dark:border-white/15 dark:hover:bg-white/10"
+              className="mx-auto mt-8 flex min-h-11 w-fit items-center justify-center rounded-xl border border-black/10 px-6 py-2.5 text-sm font-semibold opacity-70 transition hover:bg-black/5 hover:opacity-100 dark:border-white/15 dark:hover:bg-white/10"
             >
               Reveal now
             </button>

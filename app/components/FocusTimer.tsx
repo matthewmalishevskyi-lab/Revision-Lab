@@ -128,7 +128,7 @@ export function FocusTimer({ colour }: { colour: string }) {
           <button
             type="button"
             onClick={() => setRunning((r) => !r)}
-            className="rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+            className="inline-flex items-center justify-center min-h-11 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
             style={{ backgroundColor: colour }}
           >
             {running ? "Pause" : atStart ? "Start" : "Resume"}
@@ -136,7 +136,7 @@ export function FocusTimer({ colour }: { colour: string }) {
           <button
             type="button"
             onClick={reset}
-            className="rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+            className="inline-flex items-center justify-center min-h-11 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
           >
             Reset
           </button>

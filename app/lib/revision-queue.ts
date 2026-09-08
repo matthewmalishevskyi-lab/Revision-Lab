@@ -184,7 +184,12 @@ export async function getRevisionQueue(userId: string): Promise<RevisionQueueIte
       accent: subject.accent,
       mascot: subject.mascot,
       title: untouched.title,
-      detail: `Not started yet in ${subject.name}`,
+      // Deliberately NOT "Not started yet in Computer Science": every place
+      // this is rendered already prints `subjectName · detail`, so naming the
+      // subject here said it twice — "Computer Science · Not started yet in
+      // Computer Science", 369px of text in a 200px column on a phone. Found
+      // by measuring what actually got clipped, not by reading the string.
+      detail: "Not started yet",
       href: `/subjects/${subject.slug}/${untouched.slug}`,
     });
   }

@@ -1,5 +1,113 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The phone version: what was cut off, what could not be tapped, and what a phone was never shown (2026-09-08)
+
+Matthew: on a phone the site "looks very cut" and some things can't be reached.
+He asked for every feature to work on every phone, iPhone and Android.
+
+### How this was checked, because "looks fine to me" is not a method
+
+The site was cloned, built and driven in a real browser at four phone sizes —
+320×568 (an iPhone SE, the narrowest screen still in use), 360×800 (a typical
+Android), 390×844 (iPhone 13/14/15) and 430×932 (a Pro Max) — with touch
+emulation and real iOS and Android user-agent strings, signed in as a real
+account so the pages behind the login actually rendered.
+
+Four things were measured on every page rather than looked at:
+
+  1. **Horizontal overflow** — `scrollWidth` past `innerWidth`, plus every
+     element whose box crossed the right edge, ignoring anything deliberately
+     inside a horizontal scroller or clipped by an ancestor.
+  2. **Clipped text** — any element whose `scrollWidth` exceeds its
+     `clientWidth`, which is what "truncate" looks like from the inside.
+  3. **Overlapping targets** — every pair of flex/grid siblings whose boxes
+     intersect.
+  4. **Tap-target height** — every link, button and control under 44px, which
+     is Apple's minimum (Google asks for 48dp).
+
+⚠️ **The first run was wrong and it took a while to notice.** A Next dev-server
+guard was refusing a JavaScript chunk to the test browser, so no page hydrated,
+so nothing client-side worked — and the honest-looking conclusion was "the
+hamburger menu doesn't open on a phone, Progress and Account are unreachable".
+That was the harness, not the site. Once the chunk loaded, the menu opened and
+every destination was reachable. Worth writing down: a test that fails for its
+own reasons produces a bug report indistinguishable from a real one.
+
+### What was actually wrong
+
+**1. The revision queue cut off the thing it exists to tell you.** The cards on
+the dashboard and `/revise` used `truncate` — one line, ellipsis. That column is
+200px on a 390px phone and 130px on a 320px one, and the text it was given ran
+to 369px: "Computer Science · Not started yet in Computer Science" arrived as
+"Computer Science · Not started yet in Compute…", and titles like "Enterprise &
+entrepreneurship" lost their ending. Now two wrapped lines, with the mascot and
+padding trimmed on small screens to give them room.
+
+Half of that length was self-inflicted: the queue's `detail` said "Not started
+yet in Computer Science" while the line already began with the subject name, so
+every one of those rows named its subject twice. The detail is now just "Not
+started yet".
+
+**2. Every subject card was 384px tall on a phone.** `min-h-[24rem]` was chosen
+around a walking mascot and a hover caption on a laptop. Fifteen of them made
+the homepage a 5,800px scroll of mostly empty gradient. 17rem below `sm` still
+clears the character and cuts roughly 1,700px off the page.
+
+**3. A phone was never shown the caption at all.** "Choose a topic →" on the
+homepage cards, and the same line on the Science and Languages pages, sat at
+`opacity-0` until `group-hover`. A touchscreen has no hover, so that line was
+invisible to every phone visitor — not cramped, not cut off, simply never
+displayed. It is now visible by default and hidden only under
+`@media (hover: hover)`, which asks the right question: a touchscreen laptop is
+wide and still cannot hover, so screen width would have been the wrong test.
+
+**4. The per-subject stats page squeezed its topic titles to a third of the
+width.** Icon, title and "Not started yet" in one row needs about 340px; a
+390px phone offers about 300. So "Putting a program together" folded onto three
+lines inside a 160px column while the status held 90px open beside it. Below
+`sm` the status now takes its own line, indented to clear the icon, and the
+title gets the full width back.
+
+**5. Things too small to tap.** Measured, not guessed:
+
+  - the jump-menu chips on every topic page — **32px**, in a horizontally
+    scrolling strip where a low tap scrolls instead of following the link
+  - the topic links on the stats page — **24px**, the main way into a topic
+    from there
+  - Check / Show answer / Shuffle in practice and flashcards — **34-38px**
+  - the Time/Questions toggle on the progress page — **28px**, and the only
+    control on that page
+  - about forty primary buttons at **40-42px**
+  - footer links and standalone links like "See all 8 →" at **20-32px**
+
+All now at least 44px, mostly by `min-h-11` rather than more padding, so text
+stays where it was and only the box grows.
+
+⚠️ **A bigger target that hits the wrong thing is worse than a small one.** The
+first attempt gave inline links a `.tap-pad` class — vertical padding cancelled
+by an equal negative margin, so the hit area grows without moving the layout.
+In the footer that backfired: the row wraps on a phone, the rows are 4px apart,
+and the boxes on one line reached 18px into the line below, so a tap aimed at
+"Contact" could land on "Privacy". The overlap check caught it. Footer links
+now carry real height instead, and `.tap-pad` is documented as being only for a
+link that stands alone on its line — inside a paragraph it would cover the
+ordinary text above and below, and a tap on that text would follow the link.
+Two mid-paragraph links were reverted to plain text for exactly that reason.
+
+### What turned out to be fine
+
+Worth recording so it isn't re-investigated: no page overflows horizontally at
+any of the four widths; the safe-area padding and `viewportFit: "cover"` from
+the 2026-09-02 phone pass are doing their job; no input has a font-size below
+16px, so iOS never zooms in when a field is focused; the header's container
+queries put every logged-in destination in the menu at phone width; and the
+live quiz — host, join, lobby, question and reveal — already reads well on a
+phone at 320px.
+
+**Verified:** 192 security checks, 97,790 content checks, tsc and eslint clean,
+a production build, and a re-run of all four measurements across 25 routes at
+four widths: zero overflow, zero clipped text, zero overlapping targets.
+
 ## Deep bug hunt: two quiz bugs, a limiter that could be outrun, and a reset that never worked (2026-09-06 → 09-08)
 
 Matthew asked for a deep bug check across the whole site. Everything the

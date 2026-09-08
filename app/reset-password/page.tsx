@@ -66,13 +66,13 @@ export default async function ResetPasswordPage({
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/forgot-password"
-            className="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="inline-flex items-center justify-center min-h-11 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
           >
             Send me a new link
           </Link>
           <Link
             href="/login"
-            className="rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+            className="inline-flex items-center justify-center min-h-11 rounded-xl border border-black/10 px-5 py-2.5 text-sm font-semibold transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
           >
             Back to log in
           </Link>

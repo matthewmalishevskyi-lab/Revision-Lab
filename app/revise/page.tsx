@@ -47,11 +47,11 @@ export default async function RevisePage() {
             <Link
               key={item.id}
               href={item.href}
-              className="group flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 px-5 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+              className="group flex items-center gap-3 rounded-2xl border border-white/60 bg-white/70 px-4 py-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md sm:gap-4 sm:px-5 dark:border-white/10 dark:bg-white/5"
             >
               <MascotDisplay
                 mascot={item.mascot}
-                className="h-12 w-12 shrink-0"
+                className="h-11 w-11 shrink-0 sm:h-12 sm:w-12"
               />
               <div className="min-w-0 flex-1">
                 <span
@@ -60,8 +60,8 @@ export default async function RevisePage() {
                 >
                   {QUEUE_KIND_LABELS[item.kind]}
                 </span>
-                <p className="mt-1.5 truncate font-semibold">{item.title}</p>
-                <p className="truncate text-sm opacity-60">
+                <p className="mt-1.5 line-clamp-2 font-semibold">{item.title}</p>
+                <p className="line-clamp-2 text-sm opacity-60">
                   {item.subjectName} · {item.detail}
                 </p>
               </div>

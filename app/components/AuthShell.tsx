@@ -44,7 +44,7 @@ export function AuthShell({
 
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20"
+          className="min-h-11 flex shrink-0 items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20"
         >
           <span aria-hidden="true">←</span>
           {/* Just the arrow on a phone. The words are 90px that the wordmark

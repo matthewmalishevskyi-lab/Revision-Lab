@@ -142,7 +142,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
               {availableYears.map((year) => (
                 <label
                   key={year}
-                  className="flex cursor-pointer items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-sm font-medium shadow-sm transition hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                  className="min-h-11 flex cursor-pointer items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-4 py-2.5 text-sm font-medium shadow-sm transition hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
                 >
                   <input
                     type="checkbox"
@@ -161,7 +161,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
 
             <button
               type="submit"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+              className="min-h-11 mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
               style={{ backgroundColor: subject.accent }}
             >
               Start test
@@ -176,7 +176,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
             </p>
             <Link
               href={`/subjects/${subject.slug}/exam`}
-              className="mt-4 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+              className="inline-flex items-center justify-center min-h-11 mt-4 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
             >
               Choose again
             </Link>
@@ -191,7 +191,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
             </p>
             <Link
               href={`/subjects/${subject.slug}/exam`}
-              className="mt-4 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+              className="inline-flex items-center justify-center min-h-11 mt-4 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
             >
               Choose again
             </Link>

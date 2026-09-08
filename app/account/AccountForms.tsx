@@ -62,7 +62,7 @@ export function DeleteAccountForm() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-6 rounded-xl border border-red-500/40 px-5 py-2.5 text-sm font-semibold text-red-700 transition hover:bg-red-500/10 dark:text-red-300"
+        className="inline-flex items-center justify-center min-h-11 mt-6 rounded-xl border border-red-500/40 px-5 py-2.5 text-sm font-semibold text-red-700 transition hover:bg-red-500/10 dark:text-red-300"
       >
         Delete my account
       </button>
@@ -92,14 +92,14 @@ export function DeleteAccountForm() {
         <button
           type="submit"
           disabled={pending}
-          className="rounded-xl bg-red-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60"
+          className="inline-flex items-center justify-center min-h-11 rounded-xl bg-red-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60"
         >
           {pending ? "Just a moment…" : "Yes, delete my account"}
         </button>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="rounded-xl border border-white/60 bg-white/60 px-5 py-2.5 text-sm font-semibold transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10"
+          className="inline-flex items-center justify-center min-h-11 rounded-xl border border-white/60 bg-white/60 px-5 py-2.5 text-sm font-semibold transition hover:bg-white/90 dark:border-white/15 dark:bg-white/10"
         >
           Cancel
         </button>

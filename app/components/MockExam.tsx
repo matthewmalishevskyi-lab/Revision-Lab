@@ -281,7 +281,7 @@ export function MockExam({
                 <li key={slug}>
                   <Link
                     href={`/subjects/${subjectSlug}/${slug}`}
-                    className="flex items-center justify-between rounded-xl border border-black/10 px-4 py-2.5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+                    className="min-h-11 flex items-center justify-between rounded-xl border border-black/10 px-4 py-2.5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
                   >
                     {title}
                     <span aria-hidden="true">→</span>
@@ -458,7 +458,7 @@ export function MockExam({
                             type="button"
                             disabled={state.status !== "unanswered"}
                             onClick={() => check(index, item)}
-                            className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-55"
+                            className="inline-flex items-center justify-center min-h-11 rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-55"
                             style={{ backgroundColor: colour }}
                           >
                             Check

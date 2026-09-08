@@ -76,7 +76,11 @@ export function WeeklyChart({
               type="button"
               onClick={() => setMode(option)}
               aria-pressed={mode === option}
-              className={`rounded-md px-3 py-1 font-medium transition ${
+              // 28px was the smallest tap target on the whole progress page,
+              // and this pair is the only control on it. min-h-9 inside a
+              // segmented control that is itself only ~36px tall keeps the
+              // pill shape while giving a thumb something to hit.
+              className={`min-h-9 rounded-md px-3 py-1 font-medium transition ${
                 mode === option
                   ? "bg-blue-600 text-white"
                   : "opacity-60 hover:opacity-100"

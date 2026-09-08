@@ -185,7 +185,14 @@ export function TopicNav({
               // aria-current tells a screen reader which one you're on. The
               // colour alone conveys nothing to someone who can't see it.
               aria-current={isActive ? "true" : undefined}
-              className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm font-medium transition ${
+              // ── 44px, not 32 ────────────────────────────────────────────
+              // These chips are how you move around a topic on a phone, and
+              // they were 32px tall: under Apple's 44pt minimum and under
+              // Google's 48dp one, in a horizontally scrolling strip where a
+              // slightly low tap scrolls the strip instead of following the
+              // link. `min-h` rather than more padding so the text stays
+              // vertically centred and the strip keeps its height on a laptop.
+              className={`flex min-h-11 shrink-0 items-center rounded-full px-3.5 text-sm font-medium transition ${
                 isActive
                   ? "text-white"
                   : "opacity-60 hover:bg-black/5 hover:opacity-100 dark:hover:bg-white/10"

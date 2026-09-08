@@ -87,7 +87,7 @@ function PlanCard({ plan }: { plan: PlanId }) {
         <button
           type="button"
           onClick={() => setClicked(true)}
-          className="mt-5 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+          className="inline-flex items-center justify-center min-h-11 mt-5 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
         >
           Upgrade to {copy.name}
         </button>
