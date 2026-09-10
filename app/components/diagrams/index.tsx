@@ -8,6 +8,7 @@
 // Names are kebab-case and must be unique across every subject file. That is
 // enforced by TypeScript: two identical keys in the object below is an error.
 
+import { interactiveDiagram } from "./interactive";
 import * as biology from "./biology";
 import * as chemistry from "./chemistry";
 import * as computerScience from "./computer-science";
@@ -181,17 +182,38 @@ export type DiagramName = keyof typeof DIAGRAMS;
  *
  * An unknown name is skipped rather than crashing the page — but
  * check-content.mjs fails the build first, so it should never get here.
+ *
+ * `interactive` opts a page into the draggable version of any diagram that has
+ * one (see ./interactive). It is OFF by default, and the print pages must never
+ * turn it on: a handle you cannot drag is a blue dot on paper, and the live
+ * readout would print whatever the diagram happened to start at, which on a
+ * revision sheet is a number a student might copy down as an answer.
  */
-export function DiagramRow({ names }: { names: readonly string[] }) {
+export function DiagramRow({
+  names,
+  interactive = false,
+}: {
+  names: readonly string[];
+  interactive?: boolean;
+}) {
   const found = names.filter((name): name is DiagramName => name in DIAGRAMS);
   if (found.length === 0) return null;
 
+  const anyDraggable = interactive && found.some((name) => interactiveDiagram(name));
+
   return (
     <div
-      className={`mt-5 grid gap-4 ${found.length > 1 ? "sm:grid-cols-2" : "max-w-sm"}`}
+      // A draggable diagram gets a row to itself and a little more width. Two-up
+      // at 384px puts the handles about 20px apart, which is under half a
+      // fingertip — the same tap-target floor the rest of the site was measured
+      // against on a phone.
+      className={`mt-5 grid gap-4 ${
+        anyDraggable ? "max-w-md" : found.length > 1 ? "sm:grid-cols-2" : "max-w-sm"
+      }`}
     >
       {found.map((name) => {
-        const Diagram = DIAGRAMS[name];
+        const Interactive = interactive ? interactiveDiagram(name) : undefined;
+        const Diagram = Interactive ?? DIAGRAMS[name];
         return (
           <div
             key={name}

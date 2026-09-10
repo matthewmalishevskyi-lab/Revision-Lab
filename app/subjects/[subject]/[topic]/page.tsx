@@ -334,7 +334,7 @@ export default async function TopicPage({ params }: Props) {
                     {/* Diagrams, under the points they illustrate. Geometry is
                         the one part of maths that cannot be taught in
                         sentences — see MathsDiagram.tsx. */}
-                    {block.diagrams && <DiagramRow names={block.diagrams} />}
+                    {block.diagrams && <DiagramRow names={block.diagrams} interactive />}
                   </div>
                 ))}
               </div>

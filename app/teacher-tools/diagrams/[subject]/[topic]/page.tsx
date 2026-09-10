@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "../../../../components/SiteHeader";
 import { MoreComingSoon } from "../../../../components/MoreComingSoon";
 import { DIAGRAMS } from "../../../../components/diagrams";
+import { interactiveDiagram } from "../../../../components/diagrams/interactive";
 import { subjectsWithDiagrams, topicDiagrams } from "../../../../lib/teacher-tools";
 
 type Props = { params: Promise<{ subject: string; topic: string }> };
@@ -82,7 +83,12 @@ export default async function TopicDiagramsPage({ params }: Props) {
       */}
       <ul className="mt-9 space-y-6">
         {topic.diagrams.map((entry, index) => {
-          const Diagram = DIAGRAMS[entry.name];
+          // The draggable version wherever there is one. This page exists to
+          // put a diagram on the board in front of a class, which is the single
+          // best place on the site for one: a teacher can move a point and ask
+          // what happens to the angle, instead of asserting that it holds.
+          const Draggable = interactiveDiagram(entry.name);
+          const Diagram = Draggable ?? DIAGRAMS[entry.name];
           return (
             // The key includes the index because the same diagram can
             // legitimately appear under two different headings in one topic.
@@ -99,7 +105,14 @@ export default async function TopicDiagramsPage({ params }: Props) {
               <div
                 className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-black/5 px-6 py-4 dark:border-white/10"
               >
-                <h2 className="font-semibold">{entry.heading}</h2>
+                <h2 className="font-semibold">
+                  {entry.heading}
+                  {Draggable ? (
+                    <span className="ml-2 rounded-md bg-blue-600/10 px-1.5 py-0.5 align-middle text-[11px] font-semibold uppercase tracking-wide text-blue-700 dark:bg-blue-400/15 dark:text-blue-300">
+                      Drag me
+                    </span>
+                  ) : null}
+                </h2>
                 {/* The registry name, quietly. A teacher never needs it — but
                     when one of these is wrong, "which picture?" is the first
                     question, and the answer is right there on the page. */}
@@ -117,7 +130,12 @@ export default async function TopicDiagramsPage({ params }: Props) {
                   visibly wrong. 36rem is about half again the size a topic page
                   gives them: comfortably readable from the back of a room
                   without the labels swamping the drawing. */}
-              <div className="bg-white px-6 py-8">
+              {/* `diagram-light` is what makes this panel actually light: the
+                  white was already here, but the INK still followed the page's
+                  theme, so in dark mode every diagram in this library drew
+                  near-white on white and could not be seen at all. See
+                  "Diagram ink" in globals.css. */}
+              <div className="diagram-light bg-white px-6 py-8">
                 <div className="mx-auto max-w-[36rem]">
                   <Diagram />
                 </div>

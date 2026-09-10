@@ -373,3 +373,83 @@ html.a11y-large-text {
 .a11y-reduce-motion .animate-celebration-fall {
   display: none;
 }
+
+/* ── Draggable diagram handles ──────────────────────────────────────────────
+   The invisible circle you actually grab on an interactive diagram.
+
+   ⚠️ WHY THIS IS A MEDIA QUERY AND NOT JUST A BIGGER NUMBER IN THE COMPONENT.
+
+   These diagrams are drawn on a fixed 220-unit canvas and displayed at whatever
+   width the column happens to be, so ONE radius in user units is two different
+   sizes in fingertips. Measured: at the 36rem the teacher-tools library gives
+   them, a radius of 11 units is a 57px target; on a 390px phone the same 11
+   units is 29px — well under the 44px floor the rest of this site was measured
+   against in the September phone pass.
+
+   Making it 16 everywhere is not the fix: on the wide view that becomes a 83px
+   blob, and with the quadrilateral's corners 30 units apart the grab areas of
+   neighbouring points would overlap so much you could not pick the one you
+   meant. Big where the picture is small, precise where it is large.
+
+   `r` as a CSS property is SVG 2 (Chrome 90+, Firefox 88+, Safari 16+). The
+   element also carries r="11" as an attribute, so anything that does not
+   support it still gets the desktop-sized target rather than none at all. */
+@media (max-width: 700px) {
+  circle.diagram-hit-area {
+    r: 18px;
+  }
+}
+
+/* ── Diagram ink ────────────────────────────────────────────────────────────
+   ⚠️ FOUND IN DARK MODE ON THE TEACHER-TOOLS LIBRARY, AND IT AFFECTED ALL 142.
+
+   That page puts every diagram on a WHITE panel in both themes, on purpose —
+   they are drawn as dark strokes on a light ground, and a diagram is the one
+   thing on this site somebody might photograph off a screen or project. But
+   only the BACKGROUND was forced. The strokes are `currentColor` and the angle
+   colours were `dark:` variants, both of which follow the page's theme rather
+   than the panel's — so in dark mode the whole library rendered near-white ink
+   on a white panel. "dilute" and "concentrated" on the osmosis diagram were
+   invisible; so was every caption.
+
+   It had been that way since the library shipped, because the pass that
+   rendered and checked all 142 only ever looked at them in light mode.
+
+   The fix is to stop asking the page what colour a diagram is. Every diagram
+   colour is now one of these variables, so a container can state the palette
+   for the ink inside it: `.diagram-light` re-asserts the light one, whatever
+   the rest of the page is doing. */
+:root {
+  --diagram-accent: #2563eb; /* blue-600 */
+  --diagram-accent-soft: rgb(37 99 235 / 0.1);
+  --diagram-accent-text: #1d4ed8; /* blue-700 */
+  --diagram-good: #16a34a; /* green-600 */
+  --diagram-border: rgb(0 0 0 / 0.12);
+  --diagram-hover: rgb(0 0 0 / 0.05);
+  --diagram-handle-ring: #ffffff;
+}
+
+.dark {
+  --diagram-accent: #60a5fa; /* blue-400 */
+  --diagram-accent-soft: rgb(96 165 250 / 0.2);
+  --diagram-accent-text: #93c5fd; /* blue-300 */
+  --diagram-good: #4ade80; /* green-400 */
+  --diagram-border: rgb(255 255 255 / 0.15);
+  --diagram-hover: rgb(255 255 255 / 0.1);
+  --diagram-handle-ring: #171717;
+}
+
+/* A panel that is light whatever the page around it is doing. `color` covers
+   every `currentColor` stroke and every unstyled caption; the variables cover
+   the angle colours and the controls. */
+.diagram-light,
+.dark .diagram-light {
+  color: #1f2937;
+  --diagram-accent: #2563eb;
+  --diagram-accent-soft: rgb(37 99 235 / 0.1);
+  --diagram-accent-text: #1d4ed8;
+  --diagram-good: #16a34a;
+  --diagram-border: rgb(0 0 0 / 0.12);
+  --diagram-hover: rgb(0 0 0 / 0.05);
+  --diagram-handle-ring: #ffffff;
+}

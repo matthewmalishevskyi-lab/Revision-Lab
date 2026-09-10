@@ -835,6 +835,70 @@ try {
     );
   }
 
+  // ── 12. Interactive diagrams stay off paper, and stay legible ────────────
+  //
+  // Three invariants that are invisible from the machine the code is written
+  // on, which is what a check is for.
+  {
+    const printPage = readFileSync("app/subjects/[subject]/[topic]/print/page.tsx", "utf8");
+    // ⚠️ Tests the PROP, not the word. The first version searched the whole
+    // file for "interactive" and fired on a comment two hundred lines away
+    // about practice questions — the same trap the Tailwind-interpolation
+    // check fell into once. The fix is a more precise check, never a weaker
+    // one: this looks inside the <DiagramRow ...> tag itself.
+    const diagramRowTags = [...printPage.matchAll(/<DiagramRow\b[^>]*>/g)].map((m) => m[0]);
+    expect(diagramRowTags.length > 0, "the print page still renders diagrams at all");
+    expect(
+      diagramRowTags.every((tag) => !/\binteractive\b/.test(tag)),
+      "the print page renders STATIC diagrams — a handle you cannot drag is a " +
+        "blue dot on paper, and the live readout would print whatever number " +
+        "the diagram happened to start at, which a student might copy down",
+    );
+
+    // Every interactive name must be a real diagram. TypeScript already says
+    // so; this catches the registry being edited without a typecheck, and says
+    // plainly what went wrong when it does.
+    const registry = readFileSync("app/components/diagrams/index.tsx", "utf8");
+    const known = new Set(
+      [...(registry.split("export const DIAGRAMS = {")[1] ?? "")
+        .split("} as const;")[0]
+        .matchAll(/^\s*"([a-z0-9-]+)":/gm)].map((m) => m[1]),
+    );
+    const interactive = readFileSync("app/components/diagrams/interactive/index.tsx", "utf8");
+    const names = [...(interactive.split("export const INTERACTIVE")[1] ?? "")
+      .matchAll(/^\s*"([a-z0-9-]+)":/gm)].map((m) => m[1]);
+    expect(names.length > 0, "there is at least one interactive diagram");
+    for (const name of names) {
+      expect(known.has(name), `interactive diagram "${name}" is a real diagram name`);
+    }
+
+    // The teacher-tools library forces a WHITE panel in both themes. For a
+    // year it forced only the background, so in dark mode all 142 diagrams
+    // drew near-white ink on it and could not be seen — see "Diagram ink" in
+    // globals.css. `diagram-light` is what actually makes the panel light.
+    const libraryPage = readFileSync(
+      "app/teacher-tools/diagrams/[subject]/[topic]/page.tsx",
+      "utf8",
+    );
+    expect(
+      /diagram-light bg-white/.test(libraryPage),
+      "the teacher-tools diagram panel carries `diagram-light` beside `bg-white`, " +
+        "so the INK is light-theme too and the diagrams are visible in dark mode",
+    );
+    const css = readFileSync("app/globals.css", "utf8");
+    expect(
+      /\.dark \.diagram-light/.test(css),
+      "`.diagram-light` re-asserts the light palette even inside `.dark`",
+    );
+    const shared = readFileSync("app/components/diagrams/shared.tsx", "utf8");
+    expect(
+      !/dark:(stroke|fill)-/.test(shared),
+      "diagram colours come from CSS variables, not `dark:` variants — a " +
+        "`dark:` variant asks the PAGE what colour to be, and the library's " +
+        "panel is white whatever the page is doing",
+    );
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

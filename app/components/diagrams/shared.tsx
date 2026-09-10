@@ -85,10 +85,15 @@ export function ray(cx: number, cy: number, r: number, degrees: number) {
 // Equal angles are marked with matching numbers of arcs, not with different
 // colours — that is what a real textbook does, and it is the version that
 // still works for a colour-blind student.
+// ⚠️ These are CSS VARIABLES, not `dark:` variants, and that is the whole
+// point — see "Diagram ink" in globals.css. A `dark:` variant asks the PAGE
+// what colour to be, and the teacher-tools library puts diagrams on a white
+// panel whatever the page is doing, so for a year every diagram there rendered
+// near-white on white in dark mode. A variable lets the panel answer instead.
 export const line = "stroke-current opacity-60";
-export const angleStroke = "stroke-blue-600 dark:stroke-blue-400";
-export const angleFill = "fill-blue-600/10 dark:fill-blue-400/20";
-export const label = "fill-blue-700 dark:fill-blue-300 text-[13px] font-semibold";
+export const angleStroke = "stroke-[var(--diagram-accent)]";
+export const angleFill = "fill-[var(--diagram-accent-soft)]";
+export const label = "fill-[var(--diagram-accent-text)] text-[13px] font-semibold";
 export const plainLabel = "fill-current text-[11px] opacity-70";
 
 export function Angle({ d }: { d: string }) {
