@@ -3,7 +3,8 @@ import Link from "next/link";
 import { SiteHeader } from "../../components/SiteHeader";
 import { MoreComingSoon } from "../../components/MoreComingSoon";
 import { MascotDisplay } from "../../components/MascotDisplay";
-import { subjectsWithDiagrams } from "../../lib/teacher-tools";
+import { searchableDiagrams, subjectsWithDiagrams } from "../../lib/teacher-tools";
+import { DiagramSearch } from "../DiagramSearch";
 
 export const metadata: Metadata = {
   title: "Diagram library",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default function DiagramLibraryPage() {
   const subjects = subjectsWithDiagrams();
+  const diagrams = searchableDiagrams();
 
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-8">
@@ -27,16 +29,28 @@ export default function DiagramLibraryPage() {
       <section className="mt-4">
         <h1 className="text-4xl font-bold tracking-tight">Diagram library</h1>
         <p className="mt-3 max-w-2xl opacity-70">
-          Pick a subject, then a topic. Only subjects that actually have
-          diagrams are listed, so nothing here is a dead end.
+          Search for a diagram by name, or pick a subject and then a topic.
+          Only subjects that actually have diagrams are listed, so nothing
+          here is a dead end.
         </p>
       </section>
+
+      <DiagramSearch diagrams={diagrams} />
+
+      {/* This heading exists because of the search box above it. With results
+          on screen, an unlabelled grid directly underneath them reads as more
+          results — you scroll past ten diagrams and land on "Biology" without
+          anything saying you have left the list. Naming it settles that, and
+          costs nothing when the box is empty. */}
+      <h2 className="mt-10 text-sm font-semibold uppercase tracking-[0.14em] opacity-50">
+        Browse by subject
+      </h2>
 
       {/* Two columns from `sm` up. Each card carries the subject's own gradient
           as a thin spine rather than filling the card with it: fifteen full
           gradient cards next to each other is the homepage, and this page has a
           different job — scanning a list, not choosing a subject to revise. */}
-      <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {subjects.map((subject) => (
           <li key={subject.slug}>
             <Link

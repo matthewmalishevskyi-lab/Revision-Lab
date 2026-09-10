@@ -55,6 +55,17 @@ export function SiteFooter() {
           <Link href="/quiz" className="flex min-h-11 items-center hover:underline underline-offset-2">
             Live quiz
           </Link>
+          {/* Teacher tools needs no account — it only rearranges content that
+              is already public — but until this link existed the only way in
+              was the dashboard, which does need one. A teacher sent the site
+              could not find it, which made "no account needed" true and
+              useless at the same time. */}
+          <Link
+            href="/teacher-tools"
+            className="flex min-h-11 items-center hover:underline underline-offset-2"
+          >
+            Teacher tools
+          </Link>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             className="flex min-h-11 items-center hover:underline underline-offset-2"

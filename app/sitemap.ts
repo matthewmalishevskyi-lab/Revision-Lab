@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "./lib/site";
 import { SUBJECTS, SUBJECT_GROUPS } from "./lib/subjects";
+import { subjectsWithDiagrams } from "./lib/teacher-tools";
 
 // A sitemap is a list of every page on the site, handed straight to search
 // engines. Without one, Google finds pages only by following links, which is
@@ -58,7 +59,52 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   );
 
+  // ── TEACHER TOOLS ───────────────────────────────────────────────────────────
+  // These pages never needed an account (see teacher-tools/page.tsx's comment),
+  // but for a long while the only link to them was a card on /dashboard, which
+  // redirects to /login. So a crawler following links from the homepage could
+  // never reach them, and a teacher searching for "GCSE osmosis diagram" would
+  // never be shown them. Public but unfindable is the same as private.
+  //
+  // Built from the same derived index the pages themselves use, so a new topic
+  // with a diagram appears here on its own — the guarantee the rest of this
+  // file makes.
+  const teacherToolPages = [
+    {
+      url: `${SITE_URL}/teacher-tools`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/teacher-tools/diagrams`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    ...subjectsWithDiagrams().flatMap((subject) => [
+      {
+        url: `${SITE_URL}/teacher-tools/diagrams/${subject.slug}`,
+        lastModified,
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      },
+      ...subject.topics.map((topic) => ({
+        url: `${SITE_URL}/teacher-tools/diagrams/${subject.slug}/${topic.slug}`,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
+      })),
+    ]),
+  ];
+
   // Login, register, dashboard and forgot-password are deliberately absent —
   // they're marked noindex, so listing them here would contradict that.
-  return [home, ...subjectPages, ...groupPages, ...topicPages];
+  return [
+    home,
+    ...subjectPages,
+    ...groupPages,
+    ...topicPages,
+    ...teacherToolPages,
+  ];
 }

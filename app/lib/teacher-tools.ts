@@ -139,3 +139,49 @@ export function diagramLibraryTotals(): {
     diagrams: subjects.reduce((n, s) => n + s.diagramCount, 0),
   };
 }
+
+/**
+ * Every diagram on the site as one flat, searchable list.
+ *
+ * Derived from the same walk as everything else in this file, so a diagram
+ * added to a topic becomes searchable with no second place to update — the
+ * whole reason this module exists.
+ *
+ * `label` is the registry name with its hyphens opened out, so
+ * "circle-angle-at-centre" is searchable as "circle angle at centre" and a
+ * teacher typing what they can see gets a hit. It is derived rather than
+ * written down for the same reason as the rest.
+ */
+export type SearchableDiagram = {
+  name: DiagramName;
+  label: string;
+  heading: string;
+  topicSlug: string;
+  topicTitle: string;
+  subjectSlug: string;
+  subjectName: string;
+  year: string;
+};
+
+export function searchableDiagrams(): SearchableDiagram[] {
+  const out: SearchableDiagram[] = [];
+
+  for (const subject of subjectsWithDiagrams()) {
+    for (const topic of subject.topics) {
+      for (const entry of topic.diagrams) {
+        out.push({
+          name: entry.name,
+          label: entry.name.replace(/-/g, " "),
+          heading: entry.heading,
+          topicSlug: topic.slug,
+          topicTitle: topic.title,
+          subjectSlug: subject.slug,
+          subjectName: subject.name,
+          year: topic.year,
+        });
+      }
+    }
+  }
+
+  return out;
+}

@@ -88,7 +88,13 @@ export default async function TopicDiagramsPage({ params }: Props) {
             // legitimately appear under two different headings in one topic.
             <li
               key={`${entry.name}-${index}`}
-              className="overflow-hidden rounded-3xl border border-white/60 bg-white/70 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+              // The id is what the library's search links to, so a result
+              // lands on the diagram rather than the top of a page holding
+              // fourteen of them. Only the first card for a given name gets
+              // it: a duplicate id is invalid HTML, and the browser would
+              // jump to whichever came first anyway.
+              id={topic.diagrams.findIndex((d) => d.name === entry.name) === index ? entry.name : undefined}
+              className="scroll-mt-6 overflow-hidden rounded-3xl border border-white/60 bg-white/70 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
             >
               <div
                 className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-black/5 px-6 py-4 dark:border-white/10"
