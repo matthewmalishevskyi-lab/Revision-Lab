@@ -106,17 +106,34 @@ export function WeeklyChart({
         ))}
       </div>
 
-      <div className="mt-4 flex gap-3">
+      {/* ⚠️ THE SMALLEST PHONE HAS TO FIT SEVEN DAY NAMES, AND IT DIDN'T.
+          Measured at 320px: this card's min-content is 292 units inside a
+          272-unit column, so /progress scrolled sideways by 21px and the
+          right-hand edge of the card — and the ends of the subject names
+          beside it — were off screen. Seven three-letter labels, six gaps, a
+          scale column and 20px of card padding each side simply do not fit in
+          232px at 12px type.
+          Nothing here can shrink below its text, so the space has to come out
+          of the chrome: tighter gaps, tighter padding, and a smaller axis type
+          size below `sm` only. `0.625rem` rather than `10px` so it still grows
+          with the site's own large-text setting.
+          The earlier phone pass recorded "no page overflows horizontally at
+          any of the four widths" — true when it was written, and this page has
+          gained a subject since. check-security cannot see layout, so the
+          browser sweep in check-interactive.mjs now measures it every run. */}
+      <div className="mt-4 flex gap-2 sm:gap-3">
         {/* The scale down the left. Four labels is enough to read a value
             approximately, which is all a bar chart is for. */}
-        <div className="flex h-40 flex-col justify-between pb-6 text-right text-xs opacity-40">
+        <div className="flex h-40 flex-col justify-between pb-6 text-right text-[0.625rem] opacity-40 sm:text-xs">
           {[1, 0.66, 0.33, 0].map((fraction) => (
             <span key={fraction}>{axisLabel(highest * fraction)}</span>
           ))}
         </div>
 
         <div className="flex-1">
-          <div className="flex h-40 items-end gap-1 sm:gap-3">
+          {/* gap-0.5 below sm, measured: the seven day columns and their six
+              gaps were still 3 units over the 320px budget at gap-1. */}
+          <div className="flex h-40 items-end gap-0.5 sm:gap-3">
             {week.map((day) => (
               <div key={day.date} className="flex flex-1 flex-col items-center">
                 <div className="flex h-full w-full items-end justify-center gap-0.5 sm:gap-1">
@@ -147,7 +164,7 @@ export function WeeklyChart({
                     );
                   })}
                 </div>
-                <span className="mt-2 text-xs opacity-50">{day.day}</span>
+                <span className="mt-2 text-[0.625rem] opacity-50 sm:text-xs">{day.day}</span>
               </div>
             ))}
           </div>

@@ -309,6 +309,15 @@ body::before {
    with its coloured glows — printing that would waste a full page of a
    printer's ink turning the paper almost solid dark. */
 @media print {
+  /* A draggable diagram on paper: the dots cannot be dragged and the button
+     cannot be pressed, so the instruction to drag them is a lie in ink.
+     Hidden here rather than in the component because print is a medium, not a
+     prop — and because Ctrl+P on any page must behave, not just the one route
+     that remembers to ask for the static version. */
+  .diagram-controls {
+    display: none !important;
+  }
+
   html {
     background-color: #fff;
   }
@@ -359,6 +368,16 @@ html.a11y-large-text {
   font-family: Verdana, Tahoma, "Trebuchet MS", sans-serif;
   letter-spacing: 0.02em;
   line-height: 1.7;
+}
+
+/* ⚠️ Smooth scrolling is motion too, and the class was not switching it off.
+   `html { scroll-behavior: smooth }` was unset only inside the
+   `prefers-reduced-motion` media query, so someone using the site's own
+   toggle still got an animated glide every time they tapped a jump-menu chip.
+   Same gap as the ladder: the class covered the CSS animations and nothing
+   else. */
+.a11y-reduce-motion {
+  scroll-behavior: auto;
 }
 
 /* The exact same rule as the `prefers-reduced-motion` media query above,

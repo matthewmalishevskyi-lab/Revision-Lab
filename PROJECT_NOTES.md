@@ -1,5 +1,176 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Bug hunt over the last seven days' work (2026-09-11)
+
+Matthew: "run a bug check of things we have added in last 7 days." Seventeen
+commits — the quiz-security hunt, the phone pass, the reduced-motion fix,
+teacher tools, the diagram library, 17 draggable diagrams, and the rebuilt
+Computer Science programming ladder.
+
+Everything the project's own checks cover was green before starting, so this is
+a list of what those checks do not look at. Four parallel audits, then every
+finding reproduced by hand before being believed.
+
+### The one that matters most: a tap on a link followed a different link
+
+⚠️ **THIS IS THE SECOND TIME THIS EXACT BUG HAS SHIPPED.**
+
+The teacher-tools breadcrumbs are a `flex-wrap` row of `.tap-pad` links with a
+column gap and no ROW gap. `.tap-pad` grows a link's hit box to 42px using
+padding cancelled by an equal negative margin, so the layout row stays 20px
+tall — two wrapped lines 20px apart with 42px boxes overlap by 22, and the
+later link wins the hit test. Reproduced with a real synthetic tap at 320, 360
+and 390px: tapping the visible words "Teacher tools" navigated to the SUBJECT
+page. All nine Computer Science topic pages at the commonest phone widths.
+
+The 2026-09-08 phone pass hit this in the footer, fixed it, and wrote the rule
+into globals.css: `.tap-pad` is only safe on a link standing alone on its line.
+A new file reintroduced it three days later. **A comment in another file is not
+a check** — so check-security.mjs now fails on any wrapping row of `.tap-pad`
+links with no row gap, and it was confirmed to bite.
+
+Two independent audits found this one, which is the tell that it is real.
+
+### A finger drag scrolled the page, on the devices the feature is for
+
+`touch-action: none` sat on the handle's `<g>`. A non-root SVG element has no
+CSS box, so every browser ignored the declaration — the point followed the
+finger AND the page slid 90px underneath it. The file's own header comment
+describes the behaviour it was supposed to prevent.
+
+Verified against a control page rather than assumed, because a CDP-synthesised
+touch could plausibly bypass the compositor: honoured on a `div`, honoured on a
+root `<svg>`, ignored on a `<g>`. Moved to the root `<svg>` in
+`InteractiveFigure`.
+
+⚠️ **The check for it passed while the bug was reinstated.** It split the source
+on `<` and required the offending block to start with "svg" — and the comment
+explaining the fix says "on the root `<svg>` in InteractiveFigure now", which
+split the source so the className landed in a block beginning "svg". The check
+read its own explanation and was satisfied. Same failure and same fix as the
+Tailwind-interpolation rule from 2026-08-09: strip the comments, keep the rule
+strict. Both now bite.
+
+### keepClear did not converge, and put a ticked, meaningless statement on screen
+
+`keepClear(value, others, gap)` walked the list once, pushing clear of each
+neighbour in turn. Pushing clear of the second can shove the point straight
+back into the first, and nothing looked again. Swept over the domain: **3,960
+of 129,600 calls breached the minimum, and the worst came back at a gap of
+exactly ZERO** — two points of a circle drawn on top of each other. No
+triangle, "0° at the centre = 2 × 0° at the edge ✓" printed underneath, and the
+point below permanently ungrabbable because the other's hit area covered it.
+
+Neither existing check could see it. check-geometry.ts had 917,654 assertions
+and never passed keepClear two neighbours close to EACH OTHER;
+check-interactive.mjs drags one handle to one place and this needs a two-step
+setup — and at the degenerate point the rule assertion is satisfied, because 0
+really is twice 0.
+
+Rewritten as a search: the candidates are the edges of each neighbour's
+forbidden arc plus the requested value, and it takes the legal one nearest the
+finger. When the neighbours are closer together than two gaps and no legal spot
+exists, it takes the roomiest rather than the first tried. The invariant is now
+asserted directly over every arrangement the diagrams can reach — 1,239,302
+geometry checks, up from 917,654.
+
+### Ctrl+P on a topic page printed the drag handles and a Reset button
+
+The `/print` route was clean because it never asks for the interactive version.
+But Ctrl+P on an ordinary topic page is the discoverable way to print, and that
+page does. Measured under print emulation: 18 grab dots, 12 "Drag the blue
+points" and a bordered Reset button on the paper. Hidden with a `@media print`
+rule on a `.diagram-controls` class rather than a prop, because print is a
+medium and every page has to behave, not just the one route that remembers.
+
+### /progress scrolled sideways at 320px
+
+21px over. The weekly chart's min-content is 292 in a 272-unit column: seven
+three-letter day names, six gaps, a scale column and 20px of card padding do
+not fit in 232px at 12px type. Nothing there can shrink below its text, so the
+space came out of the chrome — tighter gaps and padding, and `0.625rem` axis
+type below `sm` (rem, so it still grows with the large-text setting).
+
+⚠️ **My own first three attempts to reproduce this measured the login page.**
+Registration was being throttled, the session never landed, /progress redirected
+to /login, and 320 == 320 looked like "cannot reproduce". Only asserting the
+logged-in state before measuring found it. The standing lesson, again: check the
+harness before believing OR disbelieving the bug.
+
+The phone pass was a one-off measurement and the site kept growing, so
+check-interactive.mjs grew a third phase: ten public routes at 320px, every run.
+
+### Drift I introduced myself, the day before
+
+The library search indexed only the de-kebabed slug. Diagrams got real names
+that same week, and nothing joined the two up — so **109 of the 124 diagrams
+could not be found by the name printed above them**. "Alternate segment
+theorem" returned "Nothing matches"; you had to guess "circle alternate
+segment". Worse, a row headed "transformation enlargement" led to a card headed
+"Enlargement from a centre": two names for one picture, in the module whose
+whole argument is that there is no second place to keep in step.
+
+Also fixed there: four diagrams appear under two headings in one topic and
+produced two search rows with identical links, the second naming a heading the
+reader would never find (only the first card gets the anchor id). One row per
+picture now. The search box looked 50px tall and its INPUT was 24px, because
+the padding belongs to the wrapper and tapping a div does not focus an input.
+And the field had `outline-none` with nothing put back — the only input on the
+site with no visible focus state.
+
+### Smaller, all confirmed
+
+- The site's own "Reduce motion" switch did not reach the ladder (113 distinct
+  transforms with the class on, 2 with the OS setting on) or smooth scrolling.
+  The class rules only cover CSS animations; the ladder's motion is a
+  JavaScript transform. That matters because the switch's own wording offers it
+  as a stand-in for the OS setting.
+- `aria-valuetext` is not valid on `role="button"` and Chromium drops it, so a
+  screen-reader user arrowing a triangle corner heard nothing about the value.
+  The two-axis handles put the value in the name instead.
+- Slider ranges were hard-coded 0–360 for handles that are not angles:
+  Pythagoras' sides run 1.5–8.5 and refraction's ray 6–80, both announcing
+  themselves as a few per cent of a full turn.
+- A worked example asked "Find both errors" and its own answer said "the only
+  real error is...". The content checker only reads `practice[]`, not
+  `workedExamples`.
+- `X-Powered-By: Next.js` was still being sent.
+- The `role="status"` readout was mounted with its text already in it, which
+  screen readers frequently do not announce — so the FIRST search was the one
+  most likely to be silent.
+- "40+ diagrams match" fired on exactly 40, because the count was taken after
+  the slice.
+
+### Checked and found correct, so the next hunt need not re-tread
+
+The quiz player token holds against cross-room, cross-player, delimiter
+re-splitting and cross-protocol replay against the session cookie (that last
+one is isolated only because "quiz" base64-decodes to bytes JSON cannot parse —
+real, but accidental). Every action taking a player id verifies it, and
+`removePlayerAction` is correctly host-gated instead. The comparison is
+timing-safe. The polling loop fix is complete — all four dependency arrays
+traced. The throttle RPC is genuinely atomic and its table's grants are locked
+down, not just the function's. All 48 executable Python claims in the CS ladder
+run correctly, every MCQ's accept value is among its choices, and the security
+headers all arrive on every response type.
+
+Two candidate findings were the auditors' harnesses rather than the site:
+`scrollWidth` is meaningless on SVG text (`getBBox` says every label fits), and
+a heading measured as overflowing had 38px of clearance when the painted glyphs
+were range-measured.
+
+**Verified:** 1,387 security checks (five new, each confirmed to fail when its
+fix is removed), 97,790 content checks, 1,239,302 geometry checks, 587 browser
+checks, tsc and eslint clean.
+
+**Not fixed, deliberately.** A missing `bump_login_throttle` silently disables
+rate limiting entirely and only logs — real, but it is a trap for the next
+environment rather than a live bug, and the live database has the function. One
+HMAC key serves two value formats. A non-string token throws instead of
+returning false. The focus halo on a diagram handle is ~1.1:1 against white,
+under WCAG 2.4.11's 3:1. The Pomodoro timer's Start/Reset still prints. Two
+fingers on one handle freezes the drag until you let go.
+
 ## Diagrams you can drag, checked by driving them (2026-09-10 → 09-11)
 
 Matthew, in two goes: make the diagrams interactive, "especially circle

@@ -66,9 +66,23 @@ export function LadderCompanion({
     const climber = climberRef.current;
     if (!rails || !climber) return;
 
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    // ⚠️ BOTH SOURCES, NOT JUST THE OPERATING SYSTEM'S.
+    //
+    // This used to read `prefers-reduced-motion` alone, so the site's own
+    // "Reduce motion" switch on /accessibility did nothing to the largest
+    // moving thing on a topic page — the mascot kept easing, arcing, leaning
+    // and swaying. The class rules in globals.css only cover CSS animations,
+    // and this motion is a transform written from JavaScript, so nothing
+    // reached it.
+    //
+    // That matters more than a missed corner because of what the switch
+    // PROMISES: "use it if that setting isn't reaching this site for some
+    // reason". It is offered as a stand-in for the OS setting, so it has to
+    // behave like one. Measured before the fix: 113 distinct transforms with
+    // the class on, 2 with the OS setting on.
+    const reduceMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      document.documentElement.classList.contains("a11y-reduce-motion");
 
     const yForRung = (rung: number) => LADDER_INSET + rung * RUNG_SPACING;
 

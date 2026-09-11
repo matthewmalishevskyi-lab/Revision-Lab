@@ -785,6 +785,71 @@ function parseRatio(text: string): number {
   }
 }
 
+// ─── keepClear must actually keep things clear ──────────────────────────────
+//
+// ⚠️ THE ONE-PASS VERSION OF THIS SHIPPED, AND NOTHING HERE COULD SEE IT.
+//
+// It pushed clear of each neighbour in turn, so the second push could shove
+// the point straight back into the first. Two points of a circle ended up at
+// exactly the same place: no triangle, "0° at the centre = 2 × 0° at the edge
+// ✓" printed underneath, and the point underneath permanently ungrabbable
+// because the other's hit area covered it.
+//
+// This file had 917,654 assertions at the time and every one of them passed,
+// because none of them ever passed keepClear two neighbours that were close to
+// EACH OTHER. The browser check could not see it either — it drags one handle
+// to one place, and this needs a two-step setup, and the rule assertion is
+// satisfied at the degenerate point because 0 really is twice 0.
+//
+// So the invariant is asserted directly, over every arrangement the diagrams
+// can reach: if a legal position exists at all, the answer is legal; and the
+// answer is NEVER on top of a neighbour.
+{
+  for (const gap of [18, 22, 38]) {
+    for (let first = 0; first < 360; first += 5) {
+      for (const offset of [4, 8, 18, 22, 25, 36, 40, 90, 170]) {
+        const others = [norm360(first), norm360(first + offset)];
+        for (let target = 0; target < 360; target += 5) {
+          const out = keepClear(target, others, gap);
+          const room = Math.min(...others.map((o) => Math.abs(norm180(out - o))));
+
+          // A legal spot exists exactly when the two neighbours are at least
+          // two gaps apart — otherwise their forbidden arcs cover the circle.
+          const feasible = Math.abs(norm180(others[0] - others[1])) >= 2 * gap - 1e-9;
+          if (feasible) {
+            ok(
+              room >= gap - 1e-6,
+              "keepClear leaves the requested gap when one is available",
+              `gap ${gap}, others ${others.map((o) => o.toFixed(0))}, target ${target} -> ${out.toFixed(2)} (room ${room.toFixed(2)})`,
+            );
+          }
+
+          // Even when no legal spot exists, landing ON a neighbour is never the
+          // answer: that is the collapse the whole function exists to prevent.
+          ok(
+            room > 1e-6,
+            "keepClear never puts a point exactly on top of another",
+            `gap ${gap}, others ${others.map((o) => o.toFixed(0))}, target ${target} -> ${out.toFixed(2)}`,
+          );
+
+          ok(Number.isFinite(out) && out >= 0 && out < 360, "keepClear returns a real bearing", `${out}`);
+        }
+      }
+    }
+  }
+
+  // Three neighbours, which is what the cyclic quadrilateral and the
+  // same-segment diagram actually pass.
+  for (const gap of [18, 22]) {
+    for (let t = 0; t < 360; t += 3) {
+      const others = [10, 30, 200];
+      const out = keepClear(t, others, gap);
+      const room = Math.min(...others.map((o) => Math.abs(norm180(out - o))));
+      ok(room > 1e-6, "keepClear with three neighbours never lands on one", `${t} -> ${out.toFixed(2)}`);
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} geometry check${failures === 1 ? "" : "s"} FAILED out of ${checks}.`);
   process.exit(1);

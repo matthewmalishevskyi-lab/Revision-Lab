@@ -82,6 +82,16 @@ export type HandleProps = {
   /** The current value and its unit, when the handle runs along one dimension. */
   value?: number;
   valueText?: string;
+  /**
+   * What `value` actually runs between, for `aria-valuemin`/`max`.
+   *
+   * ⚠️ NOT OPTIONAL BECAUSE IT WAS GUESSED, AND THE GUESS WAS WRONG. It used
+   * to be hard-coded 0-360 on the assumption that every sliding handle is an
+   * angle. Most are; Pythagoras' two sides run 1.5-8.5 and refraction's ray
+   * runs 6-80, and both announced themselves as a few per cent of a full turn.
+   * A default would just reinstate the guess quietly, so the handle has to say.
+   */
+  range?: readonly [number, number];
   /** A one-letter tag drawn beside the dot, matching the figure's labels. */
   tag?: string;
   tagAt?: number;
@@ -96,11 +106,17 @@ export function Handle({
   name,
   value,
   valueText,
+  range = [0, 360],
   tag,
   tagAt = 45,
 }: HandleProps) {
   const svgRef = useContext(SvgContext);
   const [active, setActive] = useState(false);
+  // A point that moves in two dimensions is not a slider; see the roles below.
+  const isSlider = !onNudgeXY;
+  // ⚠️ Not Math.round. Pythagoras' sides move in halves, so rounding announced
+  // "7" for a side of 6.5 — a number that is not on the diagram anywhere.
+  const round1 = (v: number) => Math.round(v * 10) / 10;
 
   const move = useCallback(
     (event: React.PointerEvent) => {
@@ -154,11 +170,23 @@ export function Handle({
       // not exist. Announced as a plain focusable control instead.
       role={onNudgeXY ? "button" : "slider"}
       tabIndex={0}
-      aria-label={name}
-      aria-valuenow={value === undefined ? undefined : Math.round(value)}
-      aria-valuetext={valueText}
-      aria-valuemin={value === undefined ? undefined : 0}
-      aria-valuemax={value === undefined ? undefined : 360}
+      // ⚠️ `aria-valuetext` IS NOT VALID ON role="button" AND IS SILENTLY
+      // DROPPED. Read back out of Chromium's accessibility tree, the two-axis
+      // handles announced as `{"role":"button","name":"Corner A"}` with the
+      // value gone — so a screen-reader user arrowing a triangle corner about
+      // heard nothing at all about what changed. On a button the live value
+      // has to go in the NAME, which is the only property the role carries.
+      aria-label={onNudgeXY ? (valueText ?? name) : name}
+      aria-valuenow={isSlider && value !== undefined ? round1(value) : undefined}
+      aria-valuetext={isSlider ? valueText : undefined}
+      // ⚠️ The range was hard-coded 0-360 for every slider, including ones
+      // that are not angles: Pythagoras' "Side a" reported 6 out of 0-360 when
+      // it runs 1.5 to 8.5, and refraction's ray reported 52 out of 0-360 when
+      // it runs 6 to 80. A screen reader says "1.7 per cent" for a control
+      // near the top of its travel, and a voice command to set it halfway
+      // lands nowhere near the middle.
+      aria-valuemin={isSlider && value !== undefined ? range[0] : undefined}
+      aria-valuemax={isSlider && value !== undefined ? range[1] : undefined}
       onKeyDown={handleKeyDown}
       onPointerDown={(event) => {
         // Only the primary button — a right-click should open the menu, and
@@ -177,8 +205,9 @@ export function Handle({
         (event.target as Element).releasePointerCapture(event.pointerId);
       }}
       onPointerCancel={() => setActive(false)}
-      className="cursor-grab touch-none outline-none focus-visible:[&>.ring]:opacity-100 active:cursor-grabbing"
-      style={{ touchAction: "none" }}
+      // No `touch-action` here — an SVG <g> has no CSS box, so it never did
+      // anything. It lives on the root <svg> in InteractiveFigure now.
+      className="cursor-grab outline-none focus-visible:[&>.ring]:opacity-100 active:cursor-grabbing"
     >
       {/* The hit area, invisible and much bigger than the dot: a 4-unit dot is
           about a 20px target, half what a finger needs. Grown further on small
@@ -251,7 +280,21 @@ export function InteractiveFigure({
           viewBox={viewBox}
           role="img"
           aria-label={label}
-          className="h-auto w-full select-none"
+          // ⚠️ `touch-action` GOES HERE, NOT ON THE HANDLE.
+          //
+          // It used to sit on the handle's <g>, which is an SVG element with no
+          // CSS box — so every browser ignored the declaration and a finger
+          // drag moved the point AND scrolled the page underneath it, on
+          // exactly the phones and classroom touchscreens this whole feature
+          // exists for. Measured: the point followed the finger while the page
+          // slid 90px. A root <svg> DOES generate a box, so the rule takes
+          // effect here; verified against a control page where the same
+          // declaration on a <g> scrolled and on an <svg> did not.
+          //
+          // On the whole figure rather than per handle: a fingertip that lands
+          // slightly off a dot should not start scrolling the page either.
+          className="h-auto w-full touch-none select-none"
+          style={{ touchAction: "none" }}
         >
           {children}
         </svg>
@@ -264,7 +307,16 @@ export function InteractiveFigure({
           </span>
           <span className="mt-0.5 block opacity-60">{caption}</span>
 
-          <span className="mt-2 flex items-center justify-center gap-3 text-xs opacity-60">
+          {/* ⚠️ `diagram-controls` IS WHAT KEEPS THIS OFF PAPER.
+              The /print route is clean because it never asks for the
+              interactive version — but Ctrl+P on an ordinary topic page is the
+              discoverable way to print, and that page DOES. Measured under
+              print emulation: 18 grab dots, 12 "Drag the blue points" and a
+              bordered Reset button on the printout.
+              The drawing and the readout stay, because both are true of the
+              figure as it stands. What goes is the instruction to do something
+              paper cannot do, and a button. See @media print in globals.css. */}
+          <span className="diagram-controls mt-2 flex items-center justify-center gap-3 text-xs opacity-60">
             {/* Says what to do without a paragraph about it. Hidden from
                 screen readers because the handles announce themselves as
                 sliders, which is the accurate instruction for that reader. */}

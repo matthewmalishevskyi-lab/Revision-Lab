@@ -198,7 +198,7 @@ export default async function ProgressPage() {
         </h2>
 
         <div className="mt-6 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
-          <div className="rounded-2xl border border-black/5 p-5 dark:border-white/10">
+          <div className="rounded-2xl border border-black/5 p-4 dark:border-white/10 sm:p-5">
             <WeeklyChart
               week={progress.week}
               series={progress.subjects.map((s) => ({

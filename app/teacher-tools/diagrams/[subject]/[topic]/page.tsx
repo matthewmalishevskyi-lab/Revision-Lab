@@ -40,9 +40,21 @@ export default async function TopicDiagramsPage({ params }: Props) {
     <main className="mx-auto w-full max-w-5xl px-6 py-8">
       <SiteHeader greeting={false} />
 
+      {/* ⚠️ `gap-y-4`, AND THE ROW GAP IS NOT COSMETIC.
+          This row wraps on a phone, and every crumb carries `.tap-pad`, which
+          grows the hit box to 42px with a negative margin so the layout stays
+          20px tall. Two wrapped lines 20px apart with 42px boxes overlap by 22
+          — and the later link wins the hit test, so a real tap on the visible
+          words "Teacher tools" navigated to the SUBJECT page instead. Measured
+          and reproduced with a synthetic tap at 320, 360 and 390px.
+          This is the footer bug from the 2026-09-08 phone pass, returned in a
+          new file: see `.tap-pad` in globals.css, which says in as many words
+          that it is only safe on a link standing alone on its line. The row
+          gap gives the padded boxes room to not touch. check-security.mjs now
+          fails if a wrapping row of `.tap-pad` links has no row gap. */}
       <nav
         aria-label="Breadcrumb"
-        className="mt-8 flex flex-wrap items-center gap-x-2 text-sm opacity-60"
+        className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-4 text-sm opacity-60"
       >
         <Link href="/teacher-tools" className="tap-pad hover:underline">
           Teacher tools

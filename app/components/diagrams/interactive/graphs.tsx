@@ -367,6 +367,7 @@ export function Pythagoras() {
         onNudge={(step) => setA(a + step * 0.5)}
         name="Side a"
         value={a}
+        range={[1.5, 8.5]}
         valueText={`Side a is ${num(a)}`}
       />
       <Handle
@@ -376,6 +377,7 @@ export function Pythagoras() {
         onNudge={(step) => setB(b + step * 0.5)}
         name="Side b"
         value={b}
+        range={[1.5, 8.5]}
         valueText={`Side b is ${num(b)}`}
       />
     </InteractiveFigure>

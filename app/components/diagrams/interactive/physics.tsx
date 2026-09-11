@@ -63,6 +63,11 @@ function path(...points: Point[]) {
     .join(" ");
 }
 
+// The two ends of the incidence angle's travel, named so the handle can tell a
+// screen reader its real range rather than announcing "52 out of 360".
+const MIN_INCIDENCE = 6;
+const MAX_INCIDENCE = 80;
+
 export function Refraction() {
   const [state, setState] = useState(START);
   const reset = useCallback(() => setState(START), []);
@@ -71,7 +76,7 @@ export function Refraction() {
   // normals sit on top of the ray, and beyond about 80° the ray skims the
   // surface and the entry angle is unreadable.
   const setIncidence = (v: number) =>
-    setState({ incidence: Math.min(80, Math.max(6, v)) });
+    setState({ incidence: Math.min(MAX_INCIDENCE, Math.max(MIN_INCIDENCE, v)) });
 
   const theta1 = state.incidence;
   // Air into glass: always a real angle, because glass is the denser of the
@@ -218,6 +223,7 @@ export function Refraction() {
         onNudge={(step) => setIncidence(theta1 + step)}
         name="The incoming ray"
         value={theta1}
+        range={[MIN_INCIDENCE, MAX_INCIDENCE]}
         valueText={`Angle of incidence ${degrees(theta1)}, refracting to ${degrees(theta2)}`}
       />
     </InteractiveFigure>

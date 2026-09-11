@@ -1066,6 +1066,122 @@ try {
       "the diagram library shows each diagram's own name and reason, not just the heading it is filed under");
   }
 
+  // ── 15. The bugs from the 2026-09-11 hunt, so they cannot come back ─────
+  {
+    // ⚠️ `.tap-pad` ON A ROW THAT WRAPS. THIS HAS NOW SHIPPED TWICE.
+    //
+    // `.tap-pad` grows a link's hit box to 42px using padding plus an equal
+    // negative margin, so the layout row stays ~20px tall. Two wrapped lines
+    // 20px apart with 42px boxes overlap by 22, and the later link wins the
+    // hit test — a real tap on the visible words "Teacher tools" navigated to
+    // the subject page instead, at 320, 360 and 390px.
+    //
+    // The 2026-09-08 phone pass hit exactly this in the footer, fixed it, and
+    // wrote the rule into globals.css: only safe on a link standing alone on
+    // its line. A new file reintroduced it three days later, because a comment
+    // in another file is not a check. This is the check.
+    for (const file of listFiles("app").filter((f) => f.endsWith(".tsx"))) {
+      const source = readFileSync(file, "utf8");
+      // Only class strings that actually wrap AND actually contain a tap-pad
+      // child are at risk; a nowrap row cannot produce a second line.
+      for (const [, classes] of source.matchAll(/className=(?:"([^"]*)"|\{`([^`]*)`\})/g)) {
+        const value = classes ?? "";
+        if (!/\bflex-wrap\b/.test(value)) continue;
+        // Does the element this class sits on contain a .tap-pad link? Look at
+        // the 900 characters after it, which comfortably covers a nav row.
+        const at = source.indexOf(value);
+        const region = source.slice(at, at + 900);
+        if (!/\btap-pad\b/.test(region)) continue;
+        expect(
+          /\bgap-y-\d/.test(value) || /\bgap-\d/.test(value),
+          `${file}: a wrapping row containing .tap-pad links needs a ROW gap — ` +
+            "the padded hit boxes are 42px tall and reach into the line below, " +
+            "so a tap on one link follows another (class: " + value.slice(0, 80) + ")",
+        );
+      }
+    }
+
+    // ⚠️ `touch-action` ON AN SVG CHILD DOES NOTHING.
+    //
+    // It lived on the handle's <g> for the whole life of the feature. A
+    // non-root SVG element generates no CSS box, so every browser ignored the
+    // declaration — and a finger drag moved the point AND scrolled the page
+    // under it, on exactly the phones and classroom touchscreens the feature
+    // exists for. Verified against a control page: honoured on a div and on a
+    // root <svg>, ignored on a <g>.
+    for (const file of listFiles("app/components/diagrams").filter((f) => f.endsWith(".tsx"))) {
+      // ⚠️ COMMENTS ARE STRIPPED FIRST, and the first version of this check
+      // did not do that — so it PASSED while the bug was reinstated. The
+      // comment explaining the fix says "on the root `<svg>` in
+      // InteractiveFigure now", and that `<svg>` split the source such that
+      // the offending className landed in a block beginning "svg". The check
+      // read its own explanation and was satisfied by it.
+      //
+      // Same failure and same fix as the Tailwind-interpolation rule, which
+      // once fired on the comment describing the trap: strip the prose, keep
+      // the rule strict.
+      const source = readFileSync(file, "utf8")
+        .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/^\s*\/\/.*$/gm, "");
+
+      // The only element allowed to carry it is a root <svg>: everything else
+      // in an SVG tree has no CSS box, so the declaration is inert.
+      for (const block of source.split(/<(?=[a-zA-Z])/)) {
+        if (!/touch-none|touchAction/.test(block)) continue;
+        const tag = block.slice(0, 16).split(/[\s>/]/)[0];
+        expect(
+          tag === "svg",
+          `${file}: touch-action belongs on the root <svg>, not on <${tag}> — ` +
+            "an SVG child has no CSS box, so the browser ignores it and the page " +
+            "scrolls under the finger while the point follows it",
+        );
+      }
+    }
+
+    // A draggable diagram must not print its controls: Ctrl+P on an ordinary
+    // topic page is the discoverable way to print, and that page DOES ask for
+    // the interactive version.
+    {
+      const parts = readFileSync("app/components/diagrams/interactive/parts.tsx", "utf8");
+      const css = readFileSync("app/globals.css", "utf8");
+      expect(/diagram-controls/.test(parts), "the drag hint and Reset button carry `diagram-controls`");
+      expect(
+        /@media print[\s\S]*?\.diagram-controls\s*\{[\s\S]*?display:\s*none/.test(css),
+        "`.diagram-controls` is hidden in print — a Reset button cannot be pressed on paper",
+      );
+    }
+
+    // The library search must index the name the page actually prints, or a
+    // teacher who has seen a diagram cannot find it by what they saw.
+    {
+      const index = readFileSync("app/lib/teacher-tools.ts", "utf8");
+      const ui = readFileSync("app/teacher-tools/DiagramSearch.tsx", "utf8");
+      expect(
+        /DIAGRAM_NOTES\[entry\.name\]\.title/.test(index),
+        "the search index carries each diagram's real title, not just its de-kebabed slug",
+      );
+      expect(/d\.title\.toLowerCase\(\)\.includes\(q\)/.test(ui), "a search matches the diagram's real title");
+      expect(/\{d\.title\}/.test(ui), "a search result is headed by the same name the card shows");
+    }
+
+    // The site's own reduce-motion switch has to reach the JavaScript-driven
+    // motion too, not only the CSS animations.
+    {
+      const ladder = readFileSync("app/components/LadderCompanion.tsx", "utf8");
+      expect(
+        /a11y-reduce-motion/.test(ladder),
+        "the ladder honours the site's own Reduce motion switch, not only the OS setting — " +
+          "the switch's own wording offers it as a stand-in for that setting",
+      );
+      const css = readFileSync("app/globals.css", "utf8");
+      expect(
+        /\.a11y-reduce-motion\s*\{[^}]*scroll-behavior:\s*auto/.test(css),
+        "the site's own Reduce motion switch also turns off smooth scrolling",
+      );
+    }
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

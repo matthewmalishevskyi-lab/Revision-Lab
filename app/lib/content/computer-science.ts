@@ -2326,15 +2326,15 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
       },
       {
         question:
-          "This should greet the user by name and show their score. Find both errors.\n\n  name = input('Name? ')\n  score = 7\n  print('Hi ' + name + ' your score is ' + score)",
+          "This should greet the user by name and show their score, and it crashes. Find the error.\n\n  name = input('Name? ')\n  score = 7\n  print('Hi ' + name + ' your score is ' + score)",
         steps: [
           "score holds the number 7, not the text '7'.",
-          "Concatenating a string and a number is an error in most languages, so the program crashes.",
-          "The fix is str(score).",
-          "There is also no space handling problem here, but the greeting reads better if the strings already contain their spaces — which they do.",
+          "In Python, + between a string and a number is a TypeError, so the program stops there.",
+          "name came from input(), which always returns a string, so joining that part is fine.",
+          "The fix is str(score), which makes the number into text before joining it.",
         ],
         answer:
-          "The only real error is joining a number to a string. It should be + str(score), because + can concatenate two strings or add two numbers, but not mix them.",
+          "One error: joining a number to a string. It should be + str(score), because + can concatenate two strings or add two numbers, but not mix them.",
       },
       {
         question: "Write pseudocode that accepts 'yes' from the user whatever capitalisation they use.",

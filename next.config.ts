@@ -57,6 +57,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Next sends `X-Powered-By: Next.js` on every response by default. Naming
+  // your framework and letting an attacker skip straight to its known issues
+  // is free information for them and worth nothing to anyone else — and this
+  // sits squarely inside what the headers block below set out to do.
+  poweredByHeader: false,
+
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

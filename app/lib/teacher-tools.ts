@@ -22,6 +22,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { DIAGRAMS, type DiagramName } from "../components/diagrams";
+import { DIAGRAM_NOTES } from "../components/diagrams/notes";
 import { getTopicContent } from "./content";
 import { SUBJECTS, type IconName } from "./subjects";
 
@@ -154,6 +155,21 @@ export function diagramLibraryTotals(): {
  */
 export type SearchableDiagram = {
   name: DiagramName;
+  /**
+   * The diagram's real name, the one printed above the picture.
+   *
+   * ⚠️ WITHOUT THIS, 109 OF THE 124 DIAGRAMS COULD NOT BE FOUND BY THE NAME
+   * THE SITE ITSELF SHOWS. The index only held the de-kebabed slug, so a
+   * teacher who had seen "Alternate segment theorem" on a card and typed it
+   * got "Nothing matches" — and the row for a picture they DID find was
+   * headed "transformation enlargement" while the card it led to said
+   * "Enlargement from a centre". Two names for one thing, in a module whose
+   * whole argument is that there is no second place to keep in step.
+   *
+   * Drift, not a mistake at the time: the search was built the day before
+   * diagrams got real names. Which is exactly why it is derived now.
+   */
+  title: string;
   label: string;
   heading: string;
   topicSlug: string;
@@ -165,12 +181,26 @@ export type SearchableDiagram = {
 
 export function searchableDiagrams(): SearchableDiagram[] {
   const out: SearchableDiagram[] = [];
+  // ⚠️ ONE ROW PER PICTURE, NOT PER PLACEMENT.
+  //
+  // Four diagrams legitimately appear under two headings in the same topic,
+  // and the index used to list each placement separately. That produced two
+  // search rows with byte-identical links, and the second one named a heading
+  // the reader would not find when they arrived — because only the FIRST card
+  // for a name gets the anchor id (a duplicate id is invalid HTML), so both
+  // rows land on the first card. Offering a destination that does not exist is
+  // worse than not offering it.
+  const seen = new Set<string>();
 
   for (const subject of subjectsWithDiagrams()) {
     for (const topic of subject.topics) {
       for (const entry of topic.diagrams) {
+        const key = `${subject.slug}/${topic.slug}#${entry.name}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
         out.push({
           name: entry.name,
+          title: DIAGRAM_NOTES[entry.name].title,
           label: entry.name.replace(/-/g, " "),
           heading: entry.heading,
           topicSlug: topic.slug,

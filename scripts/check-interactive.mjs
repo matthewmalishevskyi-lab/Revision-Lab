@@ -541,6 +541,71 @@ async function run() {
     ok(found.overlapping.length === 0, `${where}: no two labels sit on top of each other`, found.overlapping.join("; "));
   }
 
+  // ── PHASE THREE: does anything scroll sideways on the narrowest phone? ──
+  //
+  // ⚠️ THE PHONE PASS WAS A ONE-OFF MEASUREMENT, AND THE SITE KEPT GROWING.
+  //
+  // 2026-09-08 measured 25 routes at four widths and recorded "zero overflow".
+  // True when written. By 2026-09-11 /progress was 21px too wide at 320px —
+  // the weekly chart cannot fit seven day names, a scale column and its own
+  // padding into 232px — and nothing noticed, because nothing was looking any
+  // more.
+  //
+  // 320px is a live width: an iPhone SE, a Galaxy S8, an Android split view.
+  // Sideways scroll there is the exact complaint the phone pass existed to
+  // answer, so it is measured on every run now rather than when somebody
+  // remembers.
+  //
+  // Public pages only. The ones behind a login need an account, and creating
+  // one from a check would write to the real store; /progress itself is
+  // covered by the WeeklyChart budget being measured directly below.
+  {
+    const narrow = await browser.newContext({
+      viewport: { width: 320, height: 800 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const phone = await narrow.newPage();
+    const ROUTES = [
+      "/",
+      "/teacher-tools",
+      "/teacher-tools/diagrams",
+      "/teacher-tools/diagrams/maths",
+      "/teacher-tools/diagrams/maths/circle-theorems",
+      "/subjects/maths",
+      "/subjects/maths/circle-theorems",
+      "/accessibility",
+      "/quiz",
+      "/login",
+    ];
+    for (const route of ROUTES) {
+      const response = await phone.goto(`${BASE}${route}`, { waitUntil: "domcontentloaded", timeout: 90000 });
+      if (!response?.ok()) {
+        ok(false, `${route} loads at 320px`, String(response?.status()));
+        continue;
+      }
+      await phone.waitForTimeout(150);
+      const found = await phone.evaluate(() => {
+        const de = document.documentElement;
+        if (de.scrollWidth <= de.clientWidth) return null;
+        const past = [...document.querySelectorAll("*")]
+          .filter((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.width < 1) return false;
+            for (let a = el.parentElement; a; a = a.parentElement) {
+              if (getComputedStyle(a).overflowX !== "visible") return false;
+            }
+            return r.right > de.clientWidth + 1;
+          })
+          .slice(0, 3)
+          .map((el) => `<${el.tagName.toLowerCase()} class="${String(el.className).slice(0, 48)}">`);
+        return `${de.scrollWidth} wide in ${de.clientWidth}: ${past.join(" ")}`;
+      });
+      ok(found === null, `${route} does not scroll sideways at 320px`, found ?? "");
+    }
+    await narrow.close();
+  }
+
   await browser.close();
 
   // Every registered interactive diagram must actually have been reached and

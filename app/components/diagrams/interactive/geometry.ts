@@ -180,14 +180,64 @@ export function interiorSweep(
  * showing a broken figure, a dragged point stops just short.
  */
 export function keepClear(value: number, others: number[], gap = 8): number {
-  let out = norm360(value);
-  for (const other of others) {
-    const delta = norm180(out - other);
-    if (Math.abs(delta) < gap) {
-      out = norm360(other + (delta >= 0 ? gap : -gap));
+  // ⚠️ THE OBVIOUS VERSION OF THIS DOES NOT CONVERGE, AND IT PUT A TICKED,
+  // MEANINGLESS STATEMENT ON SCREEN.
+  //
+  // It used to walk the list once, pushing `out` clear of each `other` in turn.
+  // Pushing clear of the second neighbour can shove it straight back into the
+  // first, and nothing looked again. Swept over the whole domain: 3,960 of
+  // 129,600 calls came back breaching the minimum, and the worst case came
+  // back at a gap of EXACTLY ZERO — two points of the circle drawn on top of
+  // each other. The diagram then showed no triangle, printed
+  // "0° at the centre = 2 × 0° at the edge ✓", and the point underneath could
+  // never be grabbed again because the other one's hit area covered it.
+  //
+  // Neither existing check could see it. check-geometry.ts tested the module
+  // but never with two mutually-close neighbours; check-interactive.mjs drags
+  // ONE handle to ONE random place, and this needs a two-step setup — and at
+  // the degenerate point the rule assertion is satisfied, because 0 really is
+  // 2 × 0.
+  //
+  // So this now SEARCHES rather than nudges. The legal positions are the ones
+  // at least `gap` from every neighbour; the candidates that matter are the
+  // two edges of each neighbour's forbidden arc, plus `value` itself. Pick the
+  // legal candidate nearest to where the finger actually is.
+  const out = norm360(value);
+  if (others.length === 0) return out;
+
+  const clearOf = (candidate: number) =>
+    Math.min(...others.map((other) => Math.abs(norm180(candidate - other))));
+
+  if (clearOf(out) >= gap - 1e-9) return out;
+
+  const candidates = [out, ...others.flatMap((other) => [other + gap, other - gap])].map(norm360);
+
+  let best: number | null = null;
+  let bestTravel = Infinity;
+  for (const candidate of candidates) {
+    if (clearOf(candidate) < gap - 1e-9) continue;
+    const travel = Math.abs(norm180(candidate - out));
+    if (travel < bestTravel) {
+      bestTravel = travel;
+      best = candidate;
     }
   }
-  return out;
+  if (best !== null) return best;
+
+  // No legal position exists — the neighbours are themselves closer together
+  // than 2 × gap, so every point is too near one of them. Take the roomiest
+  // spot available rather than the first one tried, which is what stops two
+  // points landing on each other in the case that caused this.
+  let roomiest = candidates[0];
+  let mostRoom = -1;
+  for (const candidate of candidates) {
+    const room = clearOf(candidate);
+    if (room > mostRoom + 1e-9) {
+      mostRoom = room;
+      roomiest = candidate;
+    }
+  }
+  return roomiest;
 }
 
 /**
