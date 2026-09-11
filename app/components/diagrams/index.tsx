@@ -9,6 +9,7 @@
 // enforced by TypeScript: two identical keys in the object below is an error.
 
 import { interactiveDiagram } from "./interactive";
+import { DIAGRAM_NOTES } from "./notes";
 import * as biology from "./biology";
 import * as chemistry from "./chemistry";
 import * as computerScience from "./computer-science";
@@ -214,13 +215,27 @@ export function DiagramRow({
       {found.map((name) => {
         const Interactive = interactive ? interactiveDiagram(name) : undefined;
         const Diagram = Interactive ?? DIAGRAMS[name];
+        const note = DIAGRAM_NOTES[name];
         return (
-          <div
+          <figure
             key={name}
             className="rounded-xl border border-black/10 bg-white/70 p-3 dark:border-white/10 dark:bg-white/5"
           >
+            {/* The name goes ABOVE the drawing and the reason BELOW it, in that
+                order, because that is the order they are used in: you need to
+                know what you are looking at before you look, and why it is true
+                only once you have. A diagram with no heading is a drawing
+                floating in the middle of some prose — which is what these were.
+
+                The caption inside <Frame> sits between the two and states the
+                RULE. Name, rule, reason: three different jobs, and the reason
+                is the one that was missing. */}
+            <p className="mb-1 text-sm font-semibold leading-snug">{note.title}</p>
             <Diagram />
-          </div>
+            <figcaption className="mt-2 border-t border-black/5 pt-2 text-xs leading-relaxed opacity-70 dark:border-white/10">
+              {note.why}
+            </figcaption>
+          </figure>
         );
       })}
     </div>

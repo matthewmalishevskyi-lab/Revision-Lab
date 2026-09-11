@@ -960,6 +960,112 @@ try {
     }
   }
 
+  // ── 14. Every diagram is named, and explained ───────────────────────────
+  //
+  // Matthew: "every diagram has its name at the top of it and has an
+  // explanation at the bottom why it works this way."
+  //
+  // COMPLETENESS IS NOT CHECKED HERE, on purpose — `DIAGRAM_NOTES` is typed
+  // `Record<DiagramName, DiagramNote>`, so a missing entry or an entry for a
+  // name that is not a diagram is a compile error before this script runs. A
+  // type is a better guard than a check: it cannot be forgotten and it fires
+  // in the editor. What a type cannot see is whether the words are any good,
+  // which is everything below.
+  {
+    const notes = readFileSync("app/components/diagrams/notes.ts", "utf8");
+    const entries = [
+      ...notes.matchAll(/^ {2}"([a-z0-9-]+)": \{\n\s+title: "((?:[^"\\]|\\.)*)",\n\s+why: "((?:[^"\\]|\\.)*)",/gm),
+    ].map(([, slug, title, why]) => ({ slug, title, why: why.replace(/\\"/g, '"') }));
+
+    expect(entries.length > 100, `notes.ts parsed ${entries.length} entries`);
+
+    // The captions, pulled out of the subject files the same way the registry
+    // maps a name to a component — so "does the explanation just repeat the
+    // caption" can actually be asked.
+    const components = {};
+    for (const file of listFiles("app/components/diagrams").filter((f) => /\/(maths|physics|chemistry|biology|computer-science)\.tsx$/.test(f))) {
+      const parts = readFileSync(file, "utf8").split(/\nexport function (\w+)/);
+      for (let i = 1; i < parts.length; i += 2) {
+        const caption = parts[i + 1].match(/caption=(?:"([^"]*)"|\{"([^"]*)"\})/);
+        if (caption) components[parts[i]] = caption[1] ?? caption[2];
+      }
+    }
+    const registry = readFileSync("app/components/diagrams/index.tsx", "utf8");
+    const captionOf = {};
+    for (const [, slug, , comp] of registry.matchAll(/"([a-z0-9-]+)":\s*(\w+)\.(\w+),/g)) {
+      captionOf[slug] = components[comp];
+    }
+
+    const seenTitles = new Map();
+    for (const { slug, title, why } of entries) {
+      const key = title.toLowerCase();
+      expect(
+        !seenTitles.has(key),
+        `"${title}" is used by ${slug} alone — two pictures sharing one name is not a name ` +
+          `(also on ${seenTitles.get(key)})`,
+      );
+      seenTitles.set(key, slug);
+
+      const words = title.trim().split(/\s+/).length;
+      expect(words >= 2 && words <= 5, `${slug}: the title is 2-5 words, not ${words} ("${title}")`);
+      expect(!/[.!?,;:]$/.test(title), `${slug}: the title has no trailing punctuation ("${title}")`);
+      // ⚠️ THERE IS DELIBERATELY NO "the title must differ from the slug" CHECK.
+      // The first version had one, on the reasoning that a de-kebabed key is a
+      // key rather than a name. It immediately fired on "Series circuit" and
+      // "Parallel circuit", which are exactly what an exam paper calls them —
+      // and of course they match, because the slug was NAMED AFTER the diagram.
+      // A check that fires on the correct answer is worse than no check: it
+      // teaches you to write a worse title to keep the build green.
+
+      expect(why.length >= 150 && why.length <= 400, `${slug}: the explanation is 150-400 characters, not ${why.length}`);
+      // It is about the maths, not about the drawing — the reader can already
+      // see the drawing.
+      // ⚠️ "image" is NOT in this list, and was to begin with. It caught
+      // "the image is the same size and shape, only flipped" and "a smooth
+      // mirror sends parallel rays away still parallel and you see a clear
+      // image" — in reflection, rotation, enlargement and optics an image is
+      // the technical term for the thing being described, not a way of talking
+      // about the drawing. Same lesson as above: narrow the check, do not
+      // reword correct physics to satisfy it.
+      expect(!/\b(diagram|picture)\b/i.test(why), `${slug}: the explanation talks about the subject, not about the drawing`);
+      expect(!/\^|\*/.test(why), `${slug}: powers are written as superscripts, never with ^ or *`);
+      expect(
+        !why.toLowerCase().startsWith(title.toLowerCase()),
+        `${slug}: the explanation does not open by repeating the title, which is directly above it`,
+      );
+      expect(
+        !/^(this |here |as you can see|the diagram)/i.test(why),
+        `${slug}: the explanation starts with the reason, not with "this shows"`,
+      );
+
+      // ⚠️ THE RULE IS ALREADY ON SCREEN. The caption sits between the picture
+      // and this text and states what to remember; the explanation exists to
+      // say WHY, and one that paraphrases the caption has added nothing while
+      // looking like it has. Six consecutive shared words is well past
+      // coincidence for sentences this short.
+      const caption = captionOf[slug];
+      if (caption) {
+        const norm = (t) => t.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter(Boolean);
+        const cap = norm(caption);
+        const text = norm(why).join(" ");
+        let echoed = "";
+        for (let i = 0; i + 6 <= cap.length; i += 1) {
+          const run = cap.slice(i, i + 6).join(" ");
+          if (text.includes(run)) echoed = run;
+        }
+        expect(!echoed, `${slug}: the explanation gives a reason rather than repeating the caption ("${echoed}")`);
+      }
+    }
+
+    // And both actually reach a page.
+    const row = readFileSync("app/components/diagrams/index.tsx", "utf8");
+    expect(/DIAGRAM_NOTES\[name\]/.test(row) && /note\.title/.test(row) && /note\.why/.test(row),
+      "DiagramRow draws the diagram's name above it and the reason below it");
+    const library = readFileSync("app/teacher-tools/diagrams/[subject]/[topic]/page.tsx", "utf8");
+    expect(/note\.title/.test(library) && /note\.why/.test(library),
+      "the diagram library shows each diagram's own name and reason, not just the heading it is filed under");
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

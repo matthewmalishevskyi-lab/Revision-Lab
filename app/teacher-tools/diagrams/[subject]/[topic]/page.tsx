@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "../../../../components/SiteHeader";
 import { MoreComingSoon } from "../../../../components/MoreComingSoon";
 import { DIAGRAMS } from "../../../../components/diagrams";
+import { DIAGRAM_NOTES } from "../../../../components/diagrams/notes";
 import { interactiveDiagram } from "../../../../components/diagrams/interactive";
 import { subjectsWithDiagrams, topicDiagrams } from "../../../../lib/teacher-tools";
 
@@ -89,6 +90,7 @@ export default async function TopicDiagramsPage({ params }: Props) {
           // what happens to the angle, instead of asserting that it holds.
           const Draggable = interactiveDiagram(entry.name);
           const Diagram = Draggable ?? DIAGRAMS[entry.name];
+          const note = DIAGRAM_NOTES[entry.name];
           return (
             // The key includes the index because the same diagram can
             // legitimately appear under two different headings in one topic.
@@ -105,8 +107,17 @@ export default async function TopicDiagramsPage({ params }: Props) {
               <div
                 className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-black/5 px-6 py-4 dark:border-white/10"
               >
+                {/* ⚠️ THE DIAGRAM'S OWN NAME, not the heading it is filed
+                    under. The key-fact heading is where it appears in the
+                    topic, which is a different fact and changes with the
+                    content: the same picture was called "Extraction of metals"
+                    here and something else on the next page, and a teacher
+                    putting one on a board could not say what it was called.
+                    The heading is still shown, underneath, because knowing
+                    which part of the topic it belongs to is genuinely useful
+                    — it is just not the name. */}
                 <h2 className="font-semibold">
-                  {entry.heading}
+                  {note.title}
                   {Draggable ? (
                     <span className="ml-2 rounded-md bg-blue-600/10 px-1.5 py-0.5 align-middle text-[11px] font-semibold uppercase tracking-wide text-blue-700 dark:bg-blue-400/15 dark:text-blue-300">
                       Drag me
@@ -117,6 +128,9 @@ export default async function TopicDiagramsPage({ params }: Props) {
                     when one of these is wrong, "which picture?" is the first
                     question, and the answer is right there on the page. */}
                 <code className="text-xs opacity-40">{entry.name}</code>
+                <p className="w-full text-sm opacity-60">
+                  From &ldquo;{entry.heading}&rdquo;
+                </p>
               </div>
 
               {/* White behind every diagram in both themes: they are drawn as
@@ -139,6 +153,15 @@ export default async function TopicDiagramsPage({ params }: Props) {
                 <div className="mx-auto max-w-[36rem]">
                   <Diagram />
                 </div>
+              </div>
+
+              {/* WHY it works, at the bottom, outside the white panel. Outside
+                  because the panel is the thing somebody photographs off a
+                  screen or projects onto a board, and a paragraph of prose in
+                  the middle of that is the first thing they would want gone.
+                  The reason belongs to the reader, not to the projection. */}
+              <div className="border-t border-black/5 px-6 py-4 text-sm leading-relaxed opacity-75 dark:border-white/10">
+                {note.why}
               </div>
             </li>
           );
