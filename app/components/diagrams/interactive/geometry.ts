@@ -613,3 +613,65 @@ export function reachInside(
  * screen at every size.
  */
 export const HANDLE_BOX = { left: 18, right: 202, top: 18, bottom: 106 };
+
+/**
+ * A rational number written exactly — as an integer, a terminating decimal, or
+ * a fraction — never as a rounded decimal pretending to be exact.
+ *
+ * ⚠️ A ROUNDED GRADIENT DESCRIBES A DIFFERENT LINE.
+ *
+ * The browser check caught "y = 0.67x + 1.67" on a line through (2, 3) and
+ * (8, 7). Substitute x = 2 and that equation gives y = 3.01, so neither point
+ * the reader can see is actually on the line the caption claims. Worse than
+ * untidy: this diagram exists to show that the two points DETERMINE the
+ * equation, and a rounded m quietly breaks the only thing it is proving.
+ *
+ * The graph coordinates snap to halves, so every gradient and intercept is a
+ * ratio of two integers and can be printed exactly. A denominator built only
+ * from 2s and 5s terminates in decimal and is printed that way, because 1.5
+ * reads better than 3/2 in an equation; anything else stays a fraction, where
+ * 2/3 is right and 0.67 is not.
+ */
+export function exactRatio(numerator: number, denominator: number): string {
+  if (denominator === 0) return "undefined";
+  // Sign lives on the numerator, so a negative denominator does not print as
+  // "1/-3".
+  const sign = denominator < 0 ? -1 : 1;
+  let n = Math.round(numerator) * sign;
+  let d = Math.round(denominator) * sign;
+
+  const divisor = gcd(Math.abs(n), d);
+  if (divisor > 1) {
+    n /= divisor;
+    d /= divisor;
+  }
+  if (d === 1) return `${n === 0 ? 0 : n}`;
+
+  // How many decimal places a terminating expansion needs: the larger of the
+  // counts of 2 and 5 in the denominator. If anything else is left over the
+  // decimal recurs, and only a fraction is honest.
+  let rest = d;
+  let twos = 0;
+  let fives = 0;
+  while (rest % 2 === 0) {
+    rest /= 2;
+    twos += 1;
+  }
+  while (rest % 5 === 0) {
+    rest /= 5;
+    fives += 1;
+  }
+  if (rest !== 1) return `${n}/${d}`;
+
+  const places = Math.max(twos, fives);
+  return (n / d).toFixed(places);
+}
+
+function gcd(a: number, b: number): number {
+  let x = Math.abs(a);
+  let y = Math.abs(b);
+  while (y !== 0) {
+    [x, y] = [y, x % y];
+  }
+  return x === 0 ? 1 : x;
+}

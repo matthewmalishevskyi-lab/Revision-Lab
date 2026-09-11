@@ -20,7 +20,7 @@
 
 import { useCallback, useId, useState } from "react";
 import { line as figureLine, Fig } from "../shared";
-import { clampToBox, rightAngleMark, type Point } from "./geometry";
+import { clampToBox, exactRatio, rightAngleMark, type Point } from "./geometry";
 import { Handle, Holds, InteractiveFigure } from "./parts";
 
 const VIEWBOX = "0 0 220 132";
@@ -139,6 +139,25 @@ export function GradientIntercept() {
   const m = rise / run;
   const c = P.y - m * P.x;
 
+  // ⚠️ THE EQUATION ON SCREEN HAS TO PASS THROUGH THE POINTS ON SCREEN.
+  //
+  // See `exactRatio` for the bug this fixes. Everything snaps to halves, so
+  // doubling every coordinate gives whole numbers and the two answers are
+  // exact ratios of integers:
+  //
+  //   m = rise ÷ run                      (the halves cancel)
+  //   c = y₁ − m·x₁ = (y₁·run − rise·x₁) ÷ run,  doubled to clear the halves
+  //
+  // Integer arithmetic throughout, so no rounding enters before printing.
+  const riseHalves = Math.round(rise * 2);
+  const runHalves = Math.round(run * 2);
+  const pxHalves = Math.round(P.x * 2);
+  const pyHalves = Math.round(P.y * 2);
+  const mText = exactRatio(riseHalves, runHalves);
+  const cNumerator = pyHalves * runHalves - riseHalves * pxHalves;
+  const cText = exactRatio(Math.abs(cNumerator), 2 * Math.abs(runHalves));
+  const cNegative = cNumerator * runHalves < 0;
+
   // Where the line leaves the visible grid, so it is drawn as a LINE rather
   // than as the segment between the two points — the intercept is usually
   // outside them, and it is the thing being read off.
@@ -158,7 +177,7 @@ export function GradientIntercept() {
       onReset={reset}
       readout={
         <>
-          y = {num(m)}x {c < 0 ? "−" : "+"} {num(Math.abs(c))}
+          y = {mText}x {cNegative ? "−" : "+"} {cText}
           <span className="mx-1.5 opacity-40">·</span>
           m = {num(rise)} ÷ {num(run)}
           <Holds ok={Math.abs(m * P.x + c - P.y) < 1e-9} />
@@ -258,6 +277,13 @@ export function Pythagoras() {
   const setB = (v: number) => setLegs((s) => ({ ...s, b: clamp(v) }));
 
   const sumOfSquares = a * a + b * b;
+  // ⚠️ "136.25 = 11.67²" IS A FALSE STATEMENT, and the browser check said so:
+  // 11.67² is 136.19. The hypotenuse of a right-angled triangle is usually
+  // irrational, so no rounded decimal can be squared back to the sum — writing
+  // an equals sign between them teaches the opposite of what this diagram is
+  // for. The line now says what the method actually does: add the squares,
+  // then square-root, and say "approximately" when the root does not come out.
+  const cExact = Math.abs(c - Math.round(c * 100) / 100) < 1e-9;
 
   return (
     <InteractiveFigure
@@ -267,7 +293,8 @@ export function Pythagoras() {
       onReset={reset}
       readout={
         <>
-          {num(a)}² + {num(b)}² = {num(sumOfSquares)} = {num(c)}²
+          {num(a)}² + {num(b)}² = {num(sumOfSquares)}, so c = √{num(sumOfSquares)}{" "}
+          {cExact ? "=" : "≈"} {num(c)}
           <Holds ok={Math.abs(sumOfSquares - c * c) < 1e-9} />
         </>
       }

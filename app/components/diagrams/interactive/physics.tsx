@@ -121,7 +121,20 @@ export function Refraction() {
         <>
           air {degrees(theta1)} → glass {degrees(theta2)}
           <span className="mx-1.5 opacity-40">·</span>
-          1.00 sin {degrees(theta1)} = 1.50 sin {degrees(theta2)}
+          {/* ⚠️ "=" WOULD BE A LIE HERE, AND IT IS NOT THE PHYSICS THAT IS AT
+              FAULT. θ₂ is derived from θ₁ exactly (see `refract`), so the law
+              holds to nine decimal places — but the two angles are each PRINTED
+              to one decimal place, and no pair of 1-d.p. angles satisfies
+              Snell's law exactly. A reader checking "sin 61.2° = 1.50 sin 35.8°"
+              on a calculator gets 0.8767 against 0.8775 and concludes the
+              diagram is wrong, when only the printing is approximate.
+              Elsewhere the fix was to choose a precision at which the printed
+              line balances (`consistentSum`); a sine cannot be made to do that,
+              because the rounding happens before the function is applied. So
+              the honest move is the smaller one: say "approximately", which is
+              exactly what a measured pair of angles gives you in a real
+              experiment. The ✓ beside it still tests the unrounded values. */}
+          1.00 sin {degrees(theta1)} ≈ 1.50 sin {degrees(theta2)}
           <Holds
             ok={
               Math.abs(

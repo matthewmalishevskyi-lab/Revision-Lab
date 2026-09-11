@@ -183,6 +183,20 @@ export function CircleAngleAtCentre() {
 
   const clear = (others: number[]) => (v: number) => keepClear(v, others, 18);
 
+  // ⚠️ ROUNDING TWO NUMBERS SEPARATELY BREAKS THE THEOREM ON SCREEN.
+  //
+  // The browser check caught "209.5° at the centre = 2 × 104.7° at the edge",
+  // and 2 × 104.7 is 209.4. Both figures were rounded honestly and the line
+  // they formed was still false — which is the worst kind of wrong here,
+  // because the whole point of this diagram is that the reader should be able
+  // to check the arithmetic themselves.
+  //
+  // `consistentSum` prints a total that is the sum of the printed parts, so
+  // feeding it the edge angle TWICE makes the centre figure exactly double the
+  // edge figure by construction, at the fewest decimal places that still round
+  // the real centre angle honestly.
+  const doubled = consistentSum(atCentre, [atEdge, atEdge]);
+
   return (
     <InteractiveFigure
       viewBox={CIRCLE_VIEWBOX}
@@ -191,7 +205,7 @@ export function CircleAngleAtCentre() {
       onReset={reset}
       readout={
         <>
-          {degrees(atCentre)} at the centre = 2 × {degrees(atEdge)} at the edge
+          {doubled.total} at the centre = 2 × {doubled.parts[0]} at the edge
           <Holds ok={Math.abs(atCentre - 2 * atEdge) < 0.05} />
         </>
       }

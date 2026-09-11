@@ -25,6 +25,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import {
+  exactRatio,
   angleAt,
   angleLabelPlacement,
   angleOf,
@@ -726,6 +727,61 @@ console.log("Checking the specific arrangements that break a naive version...");
       "a point's label fits the canvas too",
       `${tag.x.toFixed(1)},${tag.y.toFixed(1)}`,
     );
+  }
+}
+
+// ─── exactRatio: the printed equation has to be the real one ────────────────
+//
+// This is the fix for "y = 0.67x + 1.67" on a line through (2, 3) and (8, 7).
+// The property that matters is not "does it look tidy" but "does parsing the
+// printed text back give the exact value" — so that is what is checked, over
+// every pair of coordinates the diagram can actually produce.
+
+/** Read back what a reader (or the browser check) would read. */
+function parseRatio(text: string): number {
+  const parts = text.split("/");
+  return parts.length === 2 ? Number(parts[0]) / Number(parts[1]) : Number(text);
+}
+
+{
+  ok(exactRatio(4, 6) === "2/3", "two thirds prints as a fraction, not 0.67", exactRatio(4, 6));
+  ok(exactRatio(3, 2) === "1.5", "a half prints as a decimal", exactRatio(3, 2));
+  ok(exactRatio(6, 3) === "2", "an integer prints bare", exactRatio(6, 3));
+  ok(exactRatio(0, 7) === "0", "zero prints as 0, never -0", exactRatio(0, 7));
+  ok(exactRatio(1, -3) === "-1/3", "the sign lives on the numerator", exactRatio(1, -3));
+  ok(exactRatio(-2, -4) === "0.5", "two negatives cancel", exactRatio(-2, -4));
+  ok(exactRatio(1, 8) === "0.125", "eighths terminate", exactRatio(1, 8));
+  ok(exactRatio(1, 40) === "0.025", "fortieths terminate", exactRatio(1, 40));
+  ok(exactRatio(1, 7) === "1/7", "sevenths never terminate", exactRatio(1, 7));
+
+  // The real domain: every pair of grid points the y = mx + c diagram allows.
+  // Coordinates snap to halves in [0, 10]; the two x values are kept at least
+  // one whole unit apart.
+  for (let px2 = 0; px2 <= 20; px2 += 1) {
+    for (let qx2 = 0; qx2 <= 20; qx2 += 1) {
+      if (Math.abs(qx2 - px2) < 2) continue;
+      for (let py2 = 0; py2 <= 20; py2 += 5) {
+        for (let qy2 = 0; qy2 <= 20; qy2 += 5) {
+          const riseHalves = qy2 - py2;
+          const runHalves = qx2 - px2;
+          const mText = exactRatio(riseHalves, runHalves);
+          const cNumerator = py2 * runHalves - riseHalves * px2;
+          const cText = exactRatio(Math.abs(cNumerator), 2 * Math.abs(runHalves));
+          const m = parseRatio(mText);
+          const c = (cNumerator * runHalves < 0 ? -1 : 1) * parseRatio(cText);
+
+          // The whole point: the printed equation passes through BOTH printed
+          // points, exactly — not to a tolerance a reader would have to grant.
+          close(m * (px2 / 2) + c, py2 / 2, "the printed line passes through the first point", 1e-9);
+          close(m * (qx2 / 2) + c, qy2 / 2, "the printed line passes through the second point", 1e-9);
+          ok(!/e[+-]/i.test(mText) && !/e[+-]/i.test(cText), "no exponent notation leaks out", `${mText} / ${cText}`);
+          // ⚠️ The first version of this asserted `!startsWith("-0")`, which
+          // fails on the perfectly good gradient -0.3125. The thing that must
+          // never appear is the VALUE negative zero, not a leading "-0.".
+          ok(mText !== "-0" && cText !== "-0", "no negative zero on screen", `${mText} / ${cText}`);
+        }
+      }
+    }
   }
 }
 

@@ -193,16 +193,26 @@ export function AnglesAroundAPoint() {
   const tips = rays.map((r) => alongRay(POINT_CENTRE, r, 44));
   const grabs = rays.map((r) => grabOn(POINT_CENTRE, r, 44));
 
-  // The three angles BETWEEN consecutive rays, going round. Taken as the gaps
-  // in the sorted order rather than as `angleAt`, because these three fill the
-  // whole turn and one of them is usually reflex — which `angleAt` cannot
-  // report, since it only ever gives the non-reflex answer.
-  const gaps = rays.map((r, i) => norm360(rays[(i + 1) % 3] - r));
+  // ⚠️ THE RAYS MUST BE PUT IN ROTATIONAL ORDER BEFORE THE GAPS ARE TAKEN.
+  //
+  // This read `rays[i+1] - rays[i]` in the order the three happen to be stored
+  // in state, and that order is whatever dragging left behind — `keepClear`
+  // enforces separation, not sequence. Drag ray 1 past ray 2 and the "gaps"
+  // wrap the circle twice: the diagram printed "338° + 295.5° + 86.5° = 720°"
+  // and offered it as a demonstration that angles round a point make 360.
+  //
+  // Sorted, the three gaps partition the turn exactly once and always total
+  // 360, whatever order the handles were dragged into. Found by the browser
+  // check, which drags to random positions; nothing in the module tests could
+  // see it, because the module was being handed the wrong angles rather than
+  // computing the wrong answer.
+  const spin = [0, 1, 2].sort((i, j) => rays[i] - rays[j]);
+  const gaps = spin.map((idx, k) => norm360(rays[spin[(k + 1) % 3]] - rays[idx]));
   const total = gaps.reduce((n, g) => n + g, 0);
   const sum = consistentSum(total, gaps);
 
   const labels = separateLabels(
-    rays.map((r, i) => bisectorPoint(POINT_CENTRE, r, r + gaps[i], 27)),
+    spin.map((idx, k) => bisectorPoint(POINT_CENTRE, rays[idx], rays[idx] + gaps[k], 27)),
     tips,
   );
 
@@ -225,8 +235,11 @@ export function AnglesAroundAPoint() {
       {tips.map((tip, i) => (
         <Seg key={i} from={POINT_CENTRE} to={tip} />
       ))}
-      {rays.map((r, i) => (
-        <Angle key={i} d={wedge(POINT_CENTRE.x, POINT_CENTRE.y, 15 + i * 3, r, r + gaps[i])} />
+      {spin.map((idx, k) => (
+        <Angle
+          key={idx}
+          d={wedge(POINT_CENTRE.x, POINT_CENTRE.y, 15 + k * 3, rays[idx], rays[idx] + gaps[k])}
+        />
       ))}
       <Dot at={POINT_CENTRE} />
       {labels.map((at, i) => (
@@ -266,8 +279,18 @@ export function VerticallyOpposite() {
   const grabOne = grabOn(POINT_CENTRE, one, 56);
   const grabTwo = grabOn(POINT_CENTRE, two, 56);
 
-  // Four angles round the crossing; opposite pairs are the ones two apart.
-  const order = [one, two, one + 180, two + 180];
+  // ⚠️ SORTED, for the same reason as the diagram above.
+  //
+  // Written as [one, two, one+180, two+180] this assumed those four were
+  // already in rotational order. Swing the second line past the first and they
+  // are not, and the consecutive differences stop being angles at all: the
+  // diagram displayed "340° = 340° · 200° = 200°" and ticked it, when no angle
+  // at a crossing of two straight lines can exceed 180.
+  //
+  // In rotational order the four rays alternate between the two lines — which
+  // is what makes the pairs two apart genuinely OPPOSITE, and is guaranteed
+  // here because the lines are kept 20° clear of each other.
+  const order = [one, two, one + 180, two + 180].map((d) => norm360(d)).sort((a, b) => a - b);
   const gaps = order.map((r, i) => norm360(order[(i + 1) % 4] - r));
 
   const labels = separateLabels(
