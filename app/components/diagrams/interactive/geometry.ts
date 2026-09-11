@@ -472,3 +472,144 @@ export function separateLabels(
 
   return placed;
 }
+
+// ─── For the diagrams whose points are not on a circle ──────────────────────
+
+/** Keep a freely-dragged point inside the drawing area. */
+export function clampToBox(
+  p: Point,
+  box: { left: number; right: number; top: number; bottom: number },
+): Point {
+  return {
+    x: Math.min(box.right, Math.max(box.left, p.x)),
+    y: Math.min(box.bottom, Math.max(box.top, p.y)),
+  };
+}
+
+/**
+ * How far a triangle is from being a triangle: the area of it, doubled.
+ *
+ * Three points in a line have an angle sum that is still 180° on paper and a
+ * picture that is a line segment, with two of its angles undefined. Dragging a
+ * corner onto the opposite side is easy to do by accident, so the diagrams
+ * refuse the last little bit of the way.
+ */
+export function doubleArea(a: Point, b: Point, c: Point): number {
+  return Math.abs((b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x));
+}
+
+/**
+ * Snell's law: n₁ sin θ₁ = n₂ sin θ₂, angles measured from the NORMAL.
+ *
+ * Returns the refracted angle in degrees, or null when there isn't one —
+ * past the critical angle, going from dense to less dense, the light does not
+ * emerge at all and is totally internally reflected. Returning null rather
+ * than a NaN or a clamped 90° is the point: total internal reflection is a
+ * real answer that the diagram has to draw differently, not an error.
+ */
+export function refract(incidenceDeg: number, n1: number, n2: number): number | null {
+  const sinOut = (n1 * Math.sin((incidenceDeg * Math.PI) / 180)) / n2;
+  if (Math.abs(sinOut) > 1) return null;
+  return (Math.asin(sinOut) * 180) / Math.PI;
+}
+
+/** The angle past which light cannot leave the denser material at all. */
+export function criticalAngle(n1: number, n2: number): number | null {
+  if (n2 >= n1) return null;
+  return (Math.asin(n2 / n1) * 180) / Math.PI;
+}
+
+/**
+ * Format a total and its parts so that the numbers ON SCREEN actually add up.
+ *
+ * ⚠️ ROUNDING EACH NUMBER SEPARATELY BREAKS THE VERY IDENTITY THE DIAGRAM IS
+ * DEMONSTRATING.
+ *
+ * The exterior-angle diagram printed "133° = 48.1° + 84.8°", and 48.1 + 84.8 is
+ * 132.9. The geometry was exact — the three values agreed to nine decimal
+ * places — but 132.954 rounds up to 133 while both parts round down, so the one
+ * line whose entire job is to show a sum working showed a sum not working. On a
+ * revision site that is worse than useless: a student checking the arithmetic
+ * finds it wrong and has no way to know the picture is right and the printing
+ * is at fault.
+ *
+ * So the precision is chosen rather than fixed: the fewest decimal places at
+ * which the rounded parts really do add to the rounded total. Nice arrangements
+ * still read "128° + 52° = 180°"; awkward ones quietly show a second decimal
+ * instead of lying.
+ */
+export function consistentSum(
+  total: number,
+  parts: number[],
+): { total: string; parts: string[] } {
+  // The total is printed as the sum of the ROUNDED parts, so the line balances
+  // by construction rather than by luck. The only question is how many decimal
+  // places to use, and the answer is the fewest at which that printed total is
+  // still an honest rounding of the real one.
+  for (const places of [1, 2, 3, 4]) {
+    const factor = 10 ** places;
+    const roundedParts = parts.map((p) => Math.round(p * factor) / factor);
+    const printedTotal = Math.round(roundedParts.reduce((n, p) => n + p, 0) * factor) / factor;
+    // Half a unit in the last place is what "rounds to" means; the slack is for
+    // floating point, not for licence.
+    if (Math.abs(printedTotal - total) <= 0.5 / factor + 1e-9) {
+      return { total: show(printedTotal), parts: roundedParts.map(show) };
+    }
+  }
+
+  // Four decimal places is far below anything the picture can express; at that
+  // point print what the parts add to and accept the last digit.
+  const roundedParts = parts.map((p) => Math.round(p * 10000) / 10000);
+  return {
+    total: show(Math.round(roundedParts.reduce((n, p) => n + p, 0) * 10000) / 10000),
+    parts: roundedParts.map(show),
+  };
+}
+
+/** A rounded value as text: no trailing zeros, and never "-0". */
+function show(value: number): string {
+  const safe = Object.is(value, -0) ? 0 : value;
+  // `toFixed` then strip, rather than String(), so 132.95000000000002 does not
+  // print itself in full.
+  const text = safe.toFixed(4).replace(/\.?0+$/, "");
+  return `${text === "" || text === "-" ? "0" : text}°`;
+}
+
+/**
+ * How far along a ray you can go and still be inside the drawing area.
+ *
+ * ⚠️ A HANDLE HALF OFF THE CANVAS IS HALF A HANDLE.
+ *
+ * The grab areas are 18 units of invisible circle on a phone, and SVG clips
+ * anything past the viewBox — so a handle drawn at the end of a long line put
+ * a third of its own touch target outside the picture, where no finger can
+ * reach it. Found by measuring every element's box against its canvas rather
+ * than by looking, because the part that goes missing is transparent.
+ *
+ * The fix is not a shorter line: a line should look like a line. It is to draw
+ * the handle at the furthest point along that line which is still comfortably
+ * inside — the drag maths only ever uses the DIRECTION from the centre, so
+ * where the grab dot sits changes nothing about the geometry.
+ */
+export function reachInside(
+  from: Point,
+  direction: Point,
+  max: number,
+  box: { left: number; right: number; top: number; bottom: number },
+): number {
+  let t = max;
+  if (direction.x > 1e-9) t = Math.min(t, (box.right - from.x) / direction.x);
+  if (direction.x < -1e-9) t = Math.min(t, (box.left - from.x) / direction.x);
+  if (direction.y > 1e-9) t = Math.min(t, (box.bottom - from.y) / direction.y);
+  if (direction.y < -1e-9) t = Math.min(t, (box.top - from.y) / direction.y);
+  return Math.max(0, t);
+}
+
+/**
+ * Where a handle may be drawn on a 220×124 canvas.
+ *
+ * Inset by the radius of the grab area at its largest — 18 units, which is
+ * what the small-screen media query grows it to — so the whole target is on
+ * screen at every size.
+ */
+export const HANDLE_BOX = { left: 18, right: 202, top: 18, bottom: 106 };

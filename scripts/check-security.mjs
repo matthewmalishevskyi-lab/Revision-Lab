@@ -890,13 +890,21 @@ try {
       /\.dark \.diagram-light/.test(css),
       "`.diagram-light` re-asserts the light palette even inside `.dark`",
     );
-    const shared = readFileSync("app/components/diagrams/shared.tsx", "utf8");
-    expect(
-      !/dark:(stroke|fill)-/.test(shared),
-      "diagram colours come from CSS variables, not `dark:` variants — a " +
-        "`dark:` variant asks the PAGE what colour to be, and the library's " +
-        "panel is white whatever the page is doing",
-    );
+    // Every diagram file, not just shared.tsx: nine more `dark:fill-blue-400`
+    // dots were sitting in maths, physics and biology, each one invisible on
+    // the library's white panel in dark mode for exactly the same reason.
+    for (const file of listFiles("app/components/diagrams").filter((f) => f.endsWith(".tsx"))) {
+      const text = readFileSync(file, "utf8")
+        .split("\n")
+        .filter((l) => !l.trim().startsWith("//") && !l.trim().startsWith("*"))
+        .join("\n");
+      expect(
+        !/dark:(stroke|fill|text)-/.test(text),
+        `${file} takes its colours from CSS variables, not \`dark:\` variants — ` +
+          "a `dark:` variant asks the PAGE what colour to be, and the teacher- " +
+          "tools panel is white whatever the page is doing",
+      );
+    }
   }
 
   console.log("");

@@ -44,6 +44,7 @@ import {
   distance,
   CIRCLE_VIEWBOX,
   clampBetween,
+  consistentSum,
   degrees,
   inscribedAngle,
   interiorSweep,
@@ -359,6 +360,7 @@ export function CircleSameSegment() {
   // showing up on its own. Blocking the drag would hide the connection and
   // leave a student thinking the rule is about any two angles on a chord.
   const together = onArcCCW(a, b, p) === onArcCCW(a, b, q);
+  const oppositeSum = consistentSum(atP + atQ, [atP, atQ]);
 
   const clear = (others: number[]) => (v: number) => keepClear(v, others, 18);
 
@@ -380,7 +382,7 @@ export function CircleSameSegment() {
           </>
         ) : (
           <>
-            {degrees(atP)} + {degrees(atQ)} = {degrees(atP + atQ)}
+            {oppositeSum.parts[0]} + {oppositeSum.parts[1]} = {oppositeSum.total}
             <Holds ok={Math.abs(atP + atQ - 180) < 0.05} />
           </>
         )
@@ -429,6 +431,9 @@ export function CircleCyclicQuadrilateral() {
   const fitB = angleLabelPlacement(B, A, C, 14);
   const fitC = angleLabelPlacement(C, B, D, 14);
   const fitD = angleLabelPlacement(D, C, A, 14);
+  const ac = consistentSum(atA.size + atC.size, [atA.size, atC.size]);
+  const bd = consistentSum(atB.size + atD.size, [atB.size, atD.size]);
+
   const [labelA, labelB, labelC, labelD] = separateLabels(
     [
       bisectorPoint(A, atA.from, atA.to, fitA.label),
@@ -454,10 +459,10 @@ export function CircleCyclicQuadrilateral() {
       onReset={reset}
       readout={
         <>
-          A + C = {degrees(atA.size)} + {degrees(atC.size)} = {degrees(atA.size + atC.size)}
+          A + C = {ac.parts[0]} + {ac.parts[1]} = {ac.total}
           <Holds ok={Math.abs(atA.size + atC.size - 180) < 0.05} />
           <span className="mx-1.5 opacity-40">·</span>
-          B + D = {degrees(atB.size + atD.size)}
+          B + D = {bd.total}
           <Holds ok={Math.abs(atB.size + atD.size - 180) < 0.05} />
         </>
       }
@@ -476,10 +481,10 @@ export function CircleCyclicQuadrilateral() {
       <path d={arc(B.x, B.y, fitB.arc, atB.from, atB.to)} className="stroke-[var(--diagram-accent)] opacity-50" strokeWidth={1.4} fill="none" />
       <path d={arc(D.x, D.y, fitD.arc, atD.from, atD.to)} className="stroke-[var(--diagram-accent)] opacity-50" strokeWidth={1.4} fill="none" />
 
-      <Value at={labelA}>{degrees(atA.size)}</Value>
-      <Value at={labelC}>{degrees(atC.size)}</Value>
-      <Value at={labelB}>{degrees(atB.size)}</Value>
-      <Value at={labelD}>{degrees(atD.size)}</Value>
+      <Value at={labelA}>{ac.parts[0]}</Value>
+      <Value at={labelC}>{ac.parts[1]}</Value>
+      <Value at={labelB}>{bd.parts[0]}</Value>
+      <Value at={labelD}>{bd.parts[1]}</Value>
 
       <Handle {...bind("a", A, angles, set, between(d, b))} name="Corner A" tag="A" tagAt={a} valueText={`A at ${Math.round(a)} degrees, angle ${degrees(atA.size)}`} />
       <Handle {...bind("b", B, angles, set, between(a, c))} name="Corner B" tag="B" tagAt={b} valueText={`B at ${Math.round(b)} degrees, angle ${degrees(atB.size)}`} />

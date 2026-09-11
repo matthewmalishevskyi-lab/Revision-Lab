@@ -32,16 +32,21 @@ import {
   bisectorPoint,
   CIRCLE,
   clampBetween,
+  consistentSum,
+  criticalAngle,
   degrees,
   inscribedAngle,
   interiorSweep,
   keepClear,
   norm180,
+  refract,
   norm360,
   onArcCCW,
   bisectorReach,
   distance,
+  HANDLE_BOX,
   onCircle,
+  reachInside,
   separateLabels,
   rightAngleMark,
   sideOfLine,
@@ -492,6 +497,139 @@ for (let i = 0; i < 10000; i += 1) {
   for (let k = 0; k < out.length; k += 1) {
     ok(distance(out[k], labels[k]) <= 34, "and stays near the angle it belongs to");
   }
+}
+
+console.log("Checking Snell's law...");
+
+// The refraction diagram claims a scale drawing, not a suggestive one, so the
+// angle it draws has to satisfy n1 sin(θ1) = n2 sin(θ2) exactly. Checked here
+// by putting the result back INTO the law rather than by recomputing it the
+// same way — which would only prove the function is deterministic.
+for (let i = 0; i < 20000; i += 1) {
+  const theta1 = random() * 89.9;
+  const n1 = 1 + random() * 1.5;
+  const n2 = 1 + random() * 1.5;
+  const theta2 = refract(theta1, n1, n2);
+
+  if (theta2 === null) {
+    // No refracted ray: that is total internal reflection, and it can only
+    // happen going from denser to less dense, past the critical angle.
+    ok(n1 > n2, "light only fails to emerge when leaving the denser material");
+    const critical = criticalAngle(n1, n2);
+    ok(critical !== null && theta1 > critical - 1e-9, "and only past the critical angle");
+    continue;
+  }
+
+  close(
+    n1 * Math.sin((theta1 * Math.PI) / 180),
+    n2 * Math.sin((theta2 * Math.PI) / 180),
+    "the refracted angle satisfies Snell's law",
+    1e-9,
+  );
+
+  // The direction of the bend is the thing students get backwards, so assert
+  // it explicitly rather than trusting the arithmetic to imply it.
+  if (n2 > n1) {
+    ok(theta2 <= theta1 + 1e-9, "into a denser material, the ray bends TOWARDS the normal");
+  } else if (n2 < n1) {
+    ok(theta2 >= theta1 - 1e-9, "into a less dense material, it bends AWAY from the normal");
+  } else {
+    close(theta2, theta1, "with no change of material, it does not bend at all", 1e-9);
+  }
+}
+{
+  // The values the diagram itself uses: air into crown glass at 52 degrees.
+  const inGlass = refract(52, 1, 1.5);
+  ok(inGlass !== null, "air into glass always gives a refracted ray");
+  close(inGlass as number, 31.6912, "52 degrees in air is about 31.7 in glass", 1e-3);
+  // And a slab puts it back out at the angle it came in — the "emerges
+  // parallel" claim the caption makes.
+  const backOut = refract(inGlass as number, 1.5, 1);
+  close(backOut as number, 52, "and it leaves the far side at the angle it arrived", 1e-9);
+  // Glass to air has a critical angle around 41.8 degrees.
+  close(criticalAngle(1.5, 1) as number, 41.8103, "the critical angle for glass is about 41.8", 1e-3);
+  ok(refract(45, 1.5, 1) === null, "past it, the light does not get out at all");
+  ok(criticalAngle(1, 1.5) === null, "and there is no critical angle going the other way");
+}
+
+console.log("Checking that a printed sum actually adds up...");
+
+// The defect: "133° = 48.1° + 84.8°", printed by a diagram whose geometry was
+// exact to nine decimal places. The parts rounded down and the total rounded
+// up. Whatever else is true, the numbers on the screen have to add up, because
+// a student checking the arithmetic has no way to know which half is at fault.
+for (let i = 0; i < 20000; i += 1) {
+  const count = 2 + Math.floor(random() * 3);
+  const parts = [];
+  for (let k = 0; k < count; k += 1) parts.push(random() * 180);
+  const total = parts.reduce((n, p) => n + p, 0);
+
+  const shown = consistentSum(total, parts);
+  const asNumber = (s: string) => Number(s.replace("°", ""));
+  const partsSum = shown.parts.reduce((n, p) => n + asNumber(p), 0);
+  close(partsSum, asNumber(shown.total), "the printed parts add to the printed total", 1e-9);
+  ok(shown.parts.length === parts.length, "every part is printed");
+
+  // And the printed values are still the real ones, not something invented to
+  // make the line balance.
+  for (let k = 0; k < parts.length; k += 1) {
+    ok(
+      Math.abs(asNumber(shown.parts[k]) - parts[k]) < 0.51,
+      "a printed part is still the value it stands for",
+      `${shown.parts[k]} vs ${parts[k].toFixed(4)}`,
+    );
+  }
+  ok(Math.abs(asNumber(shown.total) - total) < 0.51, "and so is the printed total");
+}
+{
+  // The exact case that was wrong on screen.
+  const shown = consistentSum(132.954592, [48.12213, 84.832461]);
+  const sum = shown.parts.reduce((n, p) => n + Number(p.replace("°", "")), 0);
+  close(sum, Number(shown.total.replace("°", "")), "the exterior-angle line now balances");
+  // A tidy arrangement still prints tidily rather than gaining decimals it
+  // does not need.
+  const tidy = consistentSum(180, [128, 52]);
+  ok(tidy.total === "180°" && tidy.parts[0] === "128°", "whole degrees stay whole", tidy.total);
+}
+
+console.log("Checking that a handle is never drawn off the canvas...");
+
+// The grab area is 18 units of invisible circle, and SVG clips past the
+// viewBox — so a handle near an edge silently loses part of its own touch
+// target. Measured rather than eyeballed, because the missing part is
+// transparent.
+for (let i = 0; i < 20000; i += 1) {
+  const from = { x: 20 + random() * 180, y: 20 + random() * 84 };
+  const deg = randomAngle();
+  const r = (deg * Math.PI) / 180;
+  const dir = { x: Math.cos(r), y: -Math.sin(r) };
+  const max = 20 + random() * 120;
+
+  const t = reachInside(from, dir, max, HANDLE_BOX);
+  const at = { x: from.x + dir.x * t, y: from.y + dir.y * t };
+
+  ok(t >= 0 && t <= max + 1e-9, "never further than asked for", `${t} of ${max}`);
+  ok(
+    at.x >= HANDLE_BOX.left - 1e-6 &&
+      at.x <= HANDLE_BOX.right + 1e-6 &&
+      at.y >= HANDLE_BOX.top - 1e-6 &&
+      at.y <= HANDLE_BOX.bottom + 1e-6,
+    "and always lands somewhere a whole handle fits",
+    `${at.x.toFixed(2)},${at.y.toFixed(2)}`,
+  );
+  // The full distance is used whenever it is available — the handle is not
+  // dragged in towards the middle for no reason.
+  const full = { x: from.x + dir.x * max, y: from.y + dir.y * max };
+  const fullFits =
+    full.x >= HANDLE_BOX.left && full.x <= HANDLE_BOX.right &&
+    full.y >= HANDLE_BOX.top && full.y <= HANDLE_BOX.bottom;
+  if (fullFits) close(t, max, "and goes the whole way when the whole way fits", 1e-9);
+}
+{
+  // The whole handle, not just its centre: 18 units of grab area either side.
+  const box = HANDLE_BOX;
+  ok(box.left >= 18 && box.top >= 18, "the box insets by the grab radius");
+  ok(box.right <= 220 - 18 && box.bottom <= 124 - 18, "on the far sides too");
 }
 
 console.log("Checking how angles are written out...");

@@ -33,7 +33,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { DiagramName } from "..";
+import * as angleRules from "./angle-rules";
 import * as circles from "./circle-theorems";
+import * as graphs from "./graphs";
+import * as parallels from "./parallel-lines";
+import * as physics from "./physics";
 
 export const INTERACTIVE: Partial<Record<DiagramName, () => React.ReactElement>> = {
   "circle-angle-at-centre": circles.CircleAngleAtCentre,
@@ -42,6 +46,29 @@ export const INTERACTIVE: Partial<Record<DiagramName, () => React.ReactElement>>
   "circle-cyclic-quadrilateral": circles.CircleCyclicQuadrilateral,
   "circle-tangent-radius": circles.CircleTangentRadius,
   "circle-alternate-segment": circles.CircleAlternateSegment,
+
+  // The angle rules. Dragged for the opposite reason to the circle theorems:
+  // not because they are hard, but because the exam draws them a different way
+  // up and a student who learnt the picture rather than the rule does not
+  // recognise them. See angle-rules.tsx.
+  "angles-on-a-line": angleRules.AnglesOnALine,
+  "angles-around-a-point": angleRules.AnglesAroundAPoint,
+  "vertically-opposite": angleRules.VerticallyOpposite,
+  "angles-in-a-triangle": angleRules.AnglesInATriangle,
+  "exterior-angle-triangle": angleRules.ExteriorAngleTriangle,
+
+  // The F, the Z and the C — which stop being letters as soon as you tilt them,
+  // and stay true anyway.
+  "parallel-corresponding": parallels.ParallelCorresponding,
+  "parallel-alternate": parallels.ParallelAlternate,
+  "parallel-co-interior": parallels.ParallelCoInterior,
+
+  // Where the number you are being taught to calculate is the thing that moves.
+  "gradient-intercept": graphs.GradientIntercept,
+  pythagoras: graphs.Pythagoras,
+
+  // The most-often-drawn-backwards diagram in GCSE physics.
+  refraction: physics.Refraction,
 };
 
 /** Is there a draggable version of this diagram? */

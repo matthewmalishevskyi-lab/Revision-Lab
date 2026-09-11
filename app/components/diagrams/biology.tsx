@@ -243,7 +243,7 @@ export function Synapse(props: DiagramProps) {
       <path d="M 12 36 L 76 36 L 90 50 L 76 64 L 12 64 Z" className={`${angleFill} ${angleStroke}`} strokeWidth={1.8} />
       <path d="M 130 30 L 208 30 L 208 70 L 130 70 L 118 50 Z" className={line} strokeWidth={1.8} fill="none" />
       {([[98, 42], [104, 54], [110, 46], [98, 60]] as const).map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={3} className="fill-blue-600 dark:fill-blue-400" />
+        <circle key={i} cx={x} cy={y} r={3} className="fill-[var(--diagram-accent)]" />
       ))}
       <Mark d="M 92 50 L 114 50" />
       <Mark d={arrowHead(114, 50, 0)} />

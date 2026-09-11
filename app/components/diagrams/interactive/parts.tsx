@@ -61,8 +61,22 @@ export type HandleProps = {
   y: number;
   /** Called with the pointer's position, in diagram coordinates. */
   onDragTo: (point: { x: number; y: number }) => void;
-  /** Called with a signed step when nudged by keyboard. */
-  onNudge: (step: number) => void;
+  /**
+   * Called with a signed step when nudged by keyboard.
+   *
+   * For a point that runs along one dimension — anywhere on a circle, an angle,
+   * a position on an axis — which is most of them, and which is also why those
+   * handles can honestly call themselves sliders.
+   */
+  onNudge?: (step: number) => void;
+  /**
+   * The same for a point that moves freely in two.
+   *
+   * A triangle's corner has no single dimension to nudge along, so left/right
+   * and up/down do the obvious separate things. Given instead of `onNudge`,
+   * never as well — a handle is one or the other.
+   */
+  onNudgeXY?: (dx: number, dy: number) => void;
   /** What this handle is, for a screen reader: "point A". */
   name: string;
   /** The current value and its unit, when the handle runs along one dimension. */
@@ -78,6 +92,7 @@ export function Handle({
   y,
   onDragTo,
   onNudge,
+  onNudgeXY,
   name,
   value,
   valueText,
@@ -101,6 +116,25 @@ export function Handle({
     // Shift for a coarse step, so you can get somewhere without forty presses,
     // and a plain press for the fine one you need to land on a special case.
     const big = event.shiftKey ? 5 : 1;
+
+    if (onNudgeXY) {
+      const moves: Record<string, [number, number]> = {
+        ArrowRight: [big, 0],
+        ArrowLeft: [-big, 0],
+        // SVG y points down, so "up" is negative. Doing this here means no
+        // diagram has to remember it.
+        ArrowUp: [0, -big],
+        ArrowDown: [0, big],
+      };
+      const move = moves[event.key];
+      if (move) {
+        event.preventDefault();
+        onNudgeXY(move[0], move[1]);
+      }
+      return;
+    }
+
+    if (!onNudge) return;
     if (event.key === "ArrowRight" || event.key === "ArrowUp") {
       event.preventDefault();
       onNudge(big);
@@ -115,7 +149,10 @@ export function Handle({
 
   return (
     <g
-      role="slider"
+      // A point that moves in two dimensions is not a slider, and calling it
+      // one would tell a screen-reader user to expect a single value that does
+      // not exist. Announced as a plain focusable control instead.
+      role={onNudgeXY ? "button" : "slider"}
       tabIndex={0}
       aria-label={name}
       aria-valuenow={value === undefined ? undefined : Math.round(value)}

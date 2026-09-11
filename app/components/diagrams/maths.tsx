@@ -892,7 +892,7 @@ export function GradientIntercept(props: DiagramProps) {
       <Fig d={`M ${gx(30)} ${gy(42)} L ${gx(66)} ${gy(42)} L ${gx(66)} ${gy(69)}`} dashed />
       <text x={gx(48)} y={gy(42) + 13} textAnchor="middle" className={plainLabel}>across</text>
       <text x={gx(66) + 5} y={gy(56)} className={plainLabel}>up</text>
-      <circle cx={gx(0)} cy={gy(20)} r={3} className="fill-blue-600 dark:fill-blue-400" />
+      <circle cx={gx(0)} cy={gy(20)} r={3} className="fill-[var(--diagram-accent)]" />
       <text x={gx(0) - 5} y={gy(20) + 4} textAnchor="end" className={label}>c</text>
     </Frame>
   );
@@ -1001,7 +1001,7 @@ export function TransformationRotation(props: DiagramProps) {
       <Fig d={`M ${cx} ${cy} L ${object[0][0]} ${object[0][1]}`} dashed />
       <Fig d={`M ${cx} ${cy} L ${image[0][0]} ${image[0][1]}`} dashed />
       <Mark d={arc(cx, cy, 15, 55, 145)} />
-      <circle cx={cx} cy={cy} r={3.4} className="fill-blue-600 dark:fill-blue-400" />
+      <circle cx={cx} cy={cy} r={3.4} className="fill-[var(--diagram-accent)]" />
       <text x={cx - 6} y={cy + 14} textAnchor="end" className={label}>centre</text>
       <text x={cx + 24} y={cy - 22} className={plainLabel}>90° anticlockwise</text>
     </Frame>
@@ -1046,7 +1046,7 @@ export function TransformationEnlargement(props: DiagramProps) {
         className={`${angleFill} ${angleStroke}`}
         strokeWidth={2}
       />
-      <circle cx={c[0]} cy={c[1]} r={3.4} className="fill-blue-600 dark:fill-blue-400" />
+      <circle cx={c[0]} cy={c[1]} r={3.4} className="fill-[var(--diagram-accent)]" />
       <text x={c[0] + 2} y={c[1] + 14} className={label}>centre</text>
     </Frame>
   );
@@ -1084,7 +1084,7 @@ export function Cylinder(props: DiagramProps) {
       <Fig d="M 116 26 L 116 76" />
       <path d="M 40 76 A 38 13 0 0 0 116 76" className={line} strokeWidth={2} fill="none" />
       <Mark d="M 78 26 L 116 26" />
-      <circle cx={78} cy={26} r={2.4} className="fill-blue-600 dark:fill-blue-400" />
+      <circle cx={78} cy={26} r={2.4} className="fill-[var(--diagram-accent)]" />
       <text x={98} y={44} textAnchor="middle" className={label}>r</text>
       <Fig d="M 132 26 L 132 76" dashed />
       <text x={140} y={54} className={label}>h</text>
@@ -1196,8 +1196,8 @@ export function QuadraticGraph(props: DiagramProps) {
       <Fig d={`M 30 ${sy(0)} L 196 ${sy(0)}`} />
       <Fig d={`M ${sx(0)} 8 L ${sx(0)} 96`} />
       <path d={pts.join(" ")} className={angleStroke} strokeWidth={2} fill="none" />
-      <circle cx={sx(-1)} cy={sy(0)} r={3} className="fill-blue-600 dark:fill-blue-400" />
-      <circle cx={sx(3)} cy={sy(0)} r={3} className="fill-blue-600 dark:fill-blue-400" />
+      <circle cx={sx(-1)} cy={sy(0)} r={3} className="fill-[var(--diagram-accent)]" />
+      <circle cx={sx(3)} cy={sy(0)} r={3} className="fill-[var(--diagram-accent)]" />
       <text x={sx(-1)} y={sy(0) - 7} textAnchor="middle" className={label}>−1</text>
       <text x={sx(3)} y={sy(0) - 7} textAnchor="middle" className={label}>3</text>
       <circle cx={sx(1)} cy={sy(-4)} r={3} className="fill-current opacity-70" />
@@ -1236,7 +1236,7 @@ export function InequalityNumberLine(props: DiagramProps) {
           <text x={sx(v)} y={88} textAnchor="middle" className="fill-current text-[8px] opacity-60">{v}</text>
         </g>
       ))}
-      <circle cx={sx(3)} cy={74} r={4} className="fill-blue-600 dark:fill-blue-400" />
+      <circle cx={sx(3)} cy={74} r={4} className="fill-[var(--diagram-accent)]" />
       <Mark d={`M ${sx(3)} 74 L 24 74`} />
       <text x={16} y={66} className={label}>x ≤ 3</text>
     </Frame>

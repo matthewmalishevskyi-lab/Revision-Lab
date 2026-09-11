@@ -452,7 +452,7 @@ export function AtomShells(props: DiagramProps) {
           <circle cx={cx} cy={cy} r={s.r} className={line} strokeWidth={1.4} fill="none" />
           {Array.from({ length: s.n }, (_, i) => {
             const [x, y] = polar(cx, cy, s.r, (360 / s.n) * i + 90);
-            return <circle key={i} cx={x} cy={y} r={2.8} className="fill-blue-600 dark:fill-blue-400" />;
+            return <circle key={i} cx={x} cy={y} r={2.8} className="fill-[var(--diagram-accent)]" />;
           })}
         </g>
       ))}
