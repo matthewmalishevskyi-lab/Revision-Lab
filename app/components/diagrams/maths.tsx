@@ -818,11 +818,13 @@ export function CumulativeFrequency(props: DiagramProps) {
       {...props}
       label="A cumulative frequency curve with a dashed line showing the median being read off at half of the total frequency"
     >
-      <Axes x="value" y="c.f." />
+      <Axes x="mass (g)" y="cumulative frequency" />
       <path d={plot(curve)} className={angleStroke} strokeWidth={2} fill="none" strokeLinecap="round" />
       <Fig d={`M ${PLOT.left} ${gy(50)} L ${gx(50)} ${gy(50)} L ${gx(50)} ${PLOT.bottom}`} dashed />
       <text x={PLOT.left + 4} y={gy(50) - 5} className={label}>half the total</text>
-      <text x={gx(50)} y={PLOT.bottom + 13} textAnchor="middle" className={label}>median</text>
+      {/* Just inside the plot, not under the axis: the axis name lives there now
+          and two labels centred on the same point is one unreadable label. */}
+      <text x={gx(50) + 4} y={PLOT.bottom - 5} className={label}>median</text>
     </Frame>
   );
 }
@@ -843,7 +845,7 @@ export function Histogram(props: DiagramProps) {
       {...props}
       label="A histogram with bars of unequal width, showing that frequency is the area of a bar rather than its height"
     >
-      <Axes x="value" y="f.d." />
+      <Axes x="time (minutes)" y="frequency density" />
       {bars.map((b) => (
         <path
           key={b.from}
@@ -867,7 +869,7 @@ export function ScatterCorrelation(props: DiagramProps) {
       {...props}
       label="A scatter graph showing positive correlation with a line of best fit drawn through the points"
     >
-      <Axes />
+      <Axes x="revision time (hours)" y="test score (%)" />
       {points.map(([x, y]) => (
         <circle key={`${x}-${y}`} cx={gx(x)} cy={gy(y)} r={2.6} className="fill-current opacity-60" />
       ))}
@@ -887,7 +889,7 @@ export function GradientIntercept(props: DiagramProps) {
       {...props}
       label="A straight line graph showing the y-intercept c and a step triangle measuring the gradient as rise over run"
     >
-      <Axes />
+      <Axes x="x" y="y" />
       <path d={plot([[0, 20], [96, 92]])} className={angleStroke} strokeWidth={2} fill="none" />
       <Fig d={`M ${gx(30)} ${gy(42)} L ${gx(66)} ${gy(42)} L ${gx(66)} ${gy(69)}`} dashed />
       <text x={gx(48)} y={gy(42) + 13} textAnchor="middle" className={plainLabel}>across</text>
@@ -1003,7 +1005,10 @@ export function TransformationRotation(props: DiagramProps) {
       <Mark d={arc(cx, cy, 15, 55, 145)} />
       <circle cx={cx} cy={cy} r={3.4} className="fill-[var(--diagram-accent)]" />
       <text x={cx - 6} y={cy + 14} textAnchor="end" className={label}>centre</text>
-      <text x={cx + 24} y={cy - 22} className={plainLabel}>90° anticlockwise</text>
+      {/* ⚠️ Start-anchored from the centre, this ran to x = 223.6 on a
+          220-unit canvas and lost its last letters. End-anchored at the
+          right edge it says the same thing and fits. */}
+      <text x={216} y={cy - 22} textAnchor="end" className={plainLabel}>90° anticlockwise</text>
     </Frame>
   );
 }
@@ -1396,7 +1401,10 @@ export function PercentageMultiplier(props: DiagramProps) {
           <text x={145} y={36 + r * 19} textAnchor="middle" className={label}>{m}</text>
         </g>
       ))}
-      <text x={110} y={110} textAnchor="middle" className={plainLabel}>
+      {/* ⚠️ y=110 on a 112-unit canvas left two units for the descenders, so
+          the tails of "divide by the multiplier" were sliced off. Measured,
+          not spotted: the text box ran to 113.1. */}
+      <text x={110} y={106} textAnchor="middle" className={plainLabel}>
         to reverse a change, divide by the multiplier
       </text>
     </Frame>

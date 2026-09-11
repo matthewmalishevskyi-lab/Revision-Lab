@@ -6,6 +6,7 @@
 // is not what the mark scheme is looking at.
 
 import {
+  AxisNames,
   Fig,
   Frame,
   Mark,
@@ -431,6 +432,8 @@ export function FoodChain(props: DiagramProps) {
   );
 }
 
+const PHOTO_BOX = { left: 28, right: 200, top: 14, bottom: 90 };
+
 export function PhotosynthesisLimitingFactors(props: DiagramProps) {
   // Rises, then flattens. The flat part is the examinable bit: something ELSE
   // has become the limiting factor, and the graph is how you say which.
@@ -445,8 +448,11 @@ export function PhotosynthesisLimitingFactors(props: DiagramProps) {
       <Fig d="M 116 34 L 116 90" dashed />
       <text x={44} y={48} className={label}>light limits</text>
       <text x={192} y={28} textAnchor="end" className={plainLabel}>something else limits</text>
-      <text x={24} y={14} textAnchor="end" className={plainLabel}>rate</text>
-      <text x={200} y={103} textAnchor="end" className={plainLabel}>light</text>
+      <AxisNames
+        x="light intensity (arbitrary units)"
+        y="rate of photosynthesis (bubbles per minute)"
+        box={PHOTO_BOX}
+      />
     </Frame>
   );
 }

@@ -6,6 +6,7 @@
 // that — which is why every exam paper draws them.
 
 import {
+  AxisNames,
   Fig,
   Frame,
   Mark,
@@ -349,6 +350,10 @@ export function Refraction(props: DiagramProps) {
 
 // ─── Motion graphs ──────────────────────────────────────────────────────────
 
+// The axis box these two draw by hand, named so AxisNames can put the
+// quantities in the right place rather than each diagram guessing.
+const DT_BOX = { left: 30, right: 200, top: 16, bottom: 88 };
+
 export function DistanceTimeGraph(props: DiagramProps) {
   return (
     <Frame
@@ -361,8 +366,7 @@ export function DistanceTimeGraph(props: DiagramProps) {
       <text x={34} y={60} className={plainLabel}>steady</text>
       <text x={106} y={52} textAnchor="middle" className={plainLabel}>stopped</text>
       <text x={150} y={62} className={label}>faster</text>
-      <text x={26} y={18} textAnchor="end" className={plainLabel}>d</text>
-      <text x={200} y={101} textAnchor="end" className={plainLabel}>t</text>
+      <AxisNames x="time (s)" y="distance (m)" box={DT_BOX} />
     </Frame>
   );
 }
@@ -378,8 +382,7 @@ export function VelocityTimeGraph(props: DiagramProps) {
       <Fig d="M 30 16 L 30 88 L 200 88" />
       <path d="M 30 88 L 86 34 L 140 34 L 190 88" className={angleStroke} strokeWidth={2} fill="none" />
       <text x={110} y={68} textAnchor="middle" className={label}>area = distance</text>
-      <text x={26} y={18} textAnchor="end" className={plainLabel}>v</text>
-      <text x={200} y={101} textAnchor="end" className={plainLabel}>t</text>
+      <AxisNames x="time (s)" y="velocity (m/s)" box={DT_BOX} />
     </Frame>
   );
 }
@@ -638,6 +641,10 @@ export function EmSpectrum(props: DiagramProps) {
 
 // ─── Radioactivity ──────────────────────────────────────────────────────────
 
+// Top at 10, not at the 14 the axis line is drawn from: the "100" tick label
+// sits right at the top of the axis, and the quantity name landed on it.
+const HL_BOX = { left: 30, right: 200, top: 12, bottom: 88 };
+
 export function HalfLifeGraph(props: DiagramProps) {
   // Halving, then halving again, drawn so the equal steps along the bottom
   // are visible. "It never quite reaches zero" is the other half of the idea.
@@ -663,7 +670,12 @@ export function HalfLifeGraph(props: DiagramProps) {
       <text x={26} y={74} textAnchor="end" className={plainLabel}>25</text>
       <text x={72} y={100} textAnchor="middle" className={label}>1</text>
       <text x={115} y={100} textAnchor="middle" className={label}>2</text>
-      <text x={168} y={100} textAnchor="middle" className={plainLabel}>half-lives</text>
+      <AxisNames
+        x="time (half-lives)"
+        y="count rate (counts per minute)"
+        box={HL_BOX}
+        gap={22}
+      />
     </Frame>
   );
 }
@@ -728,7 +740,9 @@ export function StarLifeCycle(props: DiagramProps) {
       <Fig d={arrowHead(156, 88, 270)} />
       <Mark d="M 170 22 L 176 22" />
       <Mark d={arrowHead(176, 22, 0)} />
-      <text x={128} y={9} className={plainLabel}>smaller</text>
+      {/* ⚠️ A baseline of 9 with 11px text puts the top of the box at −2.1,
+          i.e. above the canvas, and the caps were shaved off. */}
+      <text x={128} y={13} className={plainLabel}>smaller</text>
       <text x={128} y={68} className={label}>bigger</text>
     </Frame>
   );

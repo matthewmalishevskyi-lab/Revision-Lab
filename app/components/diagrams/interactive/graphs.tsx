@@ -219,10 +219,15 @@ export function GradientIntercept() {
       {interceptVisible ? (
         <>
           <circle cx={px(0)} cy={py(c)} r={3} className="fill-[var(--diagram-accent)]" />
+          {/* ⚠️ To the RIGHT of the axis. On the left it shared its space
+              with the y-axis tick numbers, and whenever the intercept was
+              near a tick the "c" sat on top of the number — "2" and "c"
+              overlapping by 8 units, found by measuring every label on the
+              site against every other. Inside the grid there is nothing to
+              collide with. */}
           <text
-            x={px(0) - 5}
-            y={py(c) + 3}
-            textAnchor="end"
+            x={px(0) + 5}
+            y={py(c) - 4}
             className="fill-[var(--diagram-accent-text)] text-[9px] font-semibold"
           >
             c

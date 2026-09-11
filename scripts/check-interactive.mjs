@@ -462,6 +462,85 @@ async function run() {
     }
   }
 
+  // ── PHASE TWO: does every label on every diagram FIT, and not sit on top of
+  //    another one? ────────────────────────────────────────────────────────
+  //
+  // ⚠️ THIS IS A DIFFERENT KIND OF WRONG FROM EVERYTHING ABOVE, AND NOTHING
+  // ELSE ON THE SITE CAN SEE IT.
+  //
+  // The rules above prove the numbers are right. They say nothing about
+  // whether you can READ them. Diagrams are drawn on a ~220-unit canvas and
+  // SVG silently clips anything past the viewBox, so a label one character too
+  // long does not error, does not warn, and does not appear — it is simply
+  // missing, and only from some diagrams, and only sometimes.
+  //
+  // This project has been caught by exactly that twice: the captions that were
+  // SVG text and were cut off on over half the diagrams, and the handles drawn
+  // outside the canvas. Both were found by rendering and looking. This does
+  // the looking with getBBox() instead of eyes, over every diagram on every
+  // page of the library, so it happens on every run rather than when somebody
+  // remembers.
+  //
+  // It found five real defects the first time it ran, three of them older than
+  // the change that prompted it.
+  //
+  // The overlap floor is 3 units, and it is not slack. A text bounding box is
+  // the full em box — ascender to descender, including the empty space above a
+  // lower-case word — so two ordinary stacked lines of an 11px label at 12
+  // units of leading overlap by about 2 units of pure whitespace and look
+  // perfectly separated. Verified by screenshotting the ones between 2 and 3.
+  const sweep = await fetch(`${BASE}/sitemap.xml`).then((r) => r.text());
+  const libraryPages = [...sweep.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map((m) => m[1].replace(/^https?:\/\/[^/]+/, BASE))
+    .filter((u) => /\/teacher-tools\/diagrams\/[^/]+\/[^/]+$/.test(u));
+
+  ok(libraryPages.length > 0, "the sitemap lists the diagram library pages");
+
+  for (const url of libraryPages) {
+    const response = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 90000 });
+    ok(response?.ok(), `${url.split("/diagrams/")[1]} loads`, String(response?.status()));
+    if (!response?.ok()) continue;
+    await page.waitForTimeout(100);
+
+    const found = await page.evaluate(() => {
+      const clipped = [];
+      const overlapping = [];
+      let drawn = 0;
+      for (const svg of document.querySelectorAll("svg")) {
+        const vb = svg.viewBox?.baseVal;
+        if (!vb || !vb.width) continue;
+        drawn += 1;
+        const boxes = [];
+        for (const node of svg.querySelectorAll("text")) {
+          const text = node.textContent.trim();
+          if (!text) continue;
+          const b = node.getBBox();
+          if (b.x < -0.5 || b.x + b.width > vb.width + 0.5 || b.y < -0.5 || b.y + b.height > vb.height + 0.5) {
+            clipped.push(`"${text}" runs to ${(b.x + b.width).toFixed(1)},${(b.y + b.height).toFixed(1)} on a ${vb.width}x${vb.height} canvas`);
+          }
+          boxes.push({ text, x1: b.x, x2: b.x + b.width, y1: b.y, y2: b.y + b.height });
+        }
+        for (let i = 0; i < boxes.length; i += 1) {
+          for (let j = i + 1; j < boxes.length; j += 1) {
+            const a = boxes[i];
+            const c = boxes[j];
+            const ox = Math.min(a.x2, c.x2) - Math.max(a.x1, c.x1);
+            const oy = Math.min(a.y2, c.y2) - Math.max(a.y1, c.y1);
+            if (ox > 3 && oy > 3) {
+              overlapping.push(`"${a.text}" over "${c.text}" by ${ox.toFixed(1)}x${oy.toFixed(1)}`);
+            }
+          }
+        }
+      }
+      return { clipped, overlapping, drawn };
+    });
+
+    const where = url.split("/diagrams/")[1];
+    ok(found.drawn > 0, `${where} actually drew a diagram`);
+    ok(found.clipped.length === 0, `${where}: no label is clipped by its canvas`, found.clipped.join("; "));
+    ok(found.overlapping.length === 0, `${where}: no two labels sit on top of each other`, found.overlapping.join("; "));
+  }
+
   await browser.close();
 
   // Every registered interactive diagram must actually have been reached and

@@ -95,6 +95,12 @@ export const angleStroke = "stroke-[var(--diagram-accent)]";
 export const angleFill = "fill-[var(--diagram-accent-soft)]";
 export const label = "fill-[var(--diagram-accent-text)] text-[13px] font-semibold";
 export const plainLabel = "fill-current text-[11px] opacity-70";
+// ⚠️ Smaller than plainLabel, and it has to be. These are drawn on a 220-unit
+// canvas where a CSS pixel is a user unit, so plainLabel's 11px is about six
+// units per character — "rate of photosynthesis (bubbles per minute)" would be
+// 250 units wide on a 220-wide picture and simply run off both ends. A real
+// quantity name is long by nature; the size is what has to give.
+export const axisName = "fill-current text-[7px] opacity-70";
 
 export function Angle({ d }: { d: string }) {
   return <path d={d} className={`${angleFill} ${angleStroke}`} strokeWidth={1.6} />;
@@ -191,20 +197,81 @@ export function gy(v: number) {
   return PLOT.bottom - (v / 100) * (PLOT.bottom - PLOT.top);
 }
 
+/**
+ * The two axis names.
+ *
+ * ⚠️ AN AXIS WITH A LETTER ON IT IS NOT A LABELLED AXIS.
+ *
+ * Matthew, looking at the science graphs: "where there are y and x axis name
+ * them e.g. 'time taken for the reaction' and 'oxygen produced in cm squared'".
+ * He is describing a mark. Every exam board's practical papers award a point
+ * for labelling axes with the QUANTITY and its UNIT, and "rate" against "time"
+ * — or worse, "v" against "t" — earns none of it. A revision diagram that
+ * models the unlabelled version teaches the habit that loses the mark.
+ *
+ * So the names here are real quantities with real units wherever the quantity
+ * has one. Pure-maths graphs are the honest exception: a scatter graph needs a
+ * context to have units at all, so those are given one.
+ *
+ * ── WHERE THEY GO, AND WHY NOT WHERE THEY WENT BEFORE ──
+ *
+ * The y name used to be end-anchored at `PLOT.left - 4`, which is x = 26 on a
+ * 220-unit canvas: it grew LEFTWARDS off the picture, so it could only ever
+ * hold about six characters. "f.d." fitted. "frequency density" would have
+ * been clipped, which is presumably why it said "f.d." The name now sits
+ * horizontally above the top of the y-axis, reading left to right from the
+ * canvas edge, where there is room for a real quantity — and horizontal rather
+ * than rotated because a rotated label is unreadable at the size these are
+ * printed on a worksheet, and this diagram exists to be read.
+ */
+export function AxisNames({
+  x,
+  y,
+  box = PLOT,
+  gap = 14,
+}: {
+  x: string;
+  y: string;
+  box?: { left: number; right: number; top: number; bottom: number };
+  /**
+   * How far below the axis the x name sits. The default clears the axis line
+   * itself; a graph with its own tick numbers under the axis passes a bigger
+   * one so the name goes below THEM. Found by measuring: the half-life graph
+   * numbers its half-lives along the bottom, and the name landed exactly on
+   * the "2".
+   */
+  gap?: number;
+}) {
+  return (
+    <>
+      <text
+        x={(box.left + box.right) / 2}
+        y={box.bottom + gap}
+        textAnchor="middle"
+        className={axisName}
+      >
+        {x}
+      </text>
+      {/* ⚠️ Clamped at both edges. The half-life graph starts its axis high up
+          the canvas, and "count rate (counts per minute)" placed five units
+          above it had its box top at −1.9 — the caps shaved off. Measured
+          across all 580 rendered diagrams, not eyeballed. */}
+      <text
+        x={Math.max(2, box.left - 26)}
+        y={Math.max(7, box.top - 5)}
+        className={axisName}
+      >
+        {y}
+      </text>
+    </>
+  );
+}
+
 export function Axes({ x, y }: { x?: string; y?: string }) {
   return (
     <>
       <Fig d={`M ${PLOT.left} ${PLOT.top} L ${PLOT.left} ${PLOT.bottom} L ${PLOT.right} ${PLOT.bottom}`} />
-      {x ? (
-        <text x={PLOT.right} y={PLOT.bottom + 13} textAnchor="end" className={plainLabel}>
-          {x}
-        </text>
-      ) : null}
-      {y ? (
-        <text x={PLOT.left - 4} y={PLOT.top + 2} textAnchor="end" className={plainLabel}>
-          {y}
-        </text>
-      ) : null}
+      {x && y ? <AxisNames x={x} y={y} /> : null}
     </>
   );
 }

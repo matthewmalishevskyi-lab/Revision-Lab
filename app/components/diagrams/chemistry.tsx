@@ -6,6 +6,7 @@
 // electrolysis cells and the giant structures.
 
 import {
+  AxisNames,
   Fig,
   Frame,
   Mark,
@@ -306,6 +307,11 @@ export function Chromatography(props: DiagramProps) {
 
 // ─── Energy changes ─────────────────────────────────────────────────────────
 
+// The hand-drawn axis boxes, named so AxisNames lands the quantities on them.
+const PROFILE_BOX = { left: 30, right: 200, top: 14, bottom: 92 };
+const CHEM_BOX = { left: 28, right: 200, top: 14, bottom: 90 };
+const EQM_BOX = { left: 30, right: 200, top: 14, bottom: 88 };
+
 export function ReactionProfileExothermic(props: DiagramProps) {
   // Rebuilt: the first version wrote "reactants", "Ea" and the y-axis label on
   // top of one another, and put the activation-energy bar nowhere near the
@@ -335,6 +341,7 @@ export function ReactionProfileExothermic(props: DiagramProps) {
       <text x={180} y={(reactants + products) / 2 + 4} className={label}>ΔH</text>
       <text x={40} y={reactants + 16} className={plainLabel}>reactants</text>
       <text x={168} y={products + 16} textAnchor="end" className={plainLabel}>products</text>
+      <AxisNames x="progress of reaction" y="energy (kJ/mol)" box={PROFILE_BOX} />
     </Frame>
   );
 }
@@ -361,6 +368,7 @@ export function ReactionProfileEndothermic(props: DiagramProps) {
       <text x={180} y={(reactants + products) / 2 + 4} className={label}>ΔH</text>
       <text x={44} y={reactants + 12} className={plainLabel}>reactants</text>
       <text x={192} y={products - 6} textAnchor="end" className={plainLabel}>products</text>
+      <AxisNames x="progress of reaction" y="energy (kJ/mol)" box={PROFILE_BOX} />
     </Frame>
   );
 }
@@ -415,8 +423,7 @@ export function RateGraph(props: DiagramProps) {
       <path d="M 28 90 C 80 60, 110 26, 190 26" className={line} strokeWidth={2} fill="none" />
       <text x={82} y={44} className={label}>faster</text>
       <text x={140} y={54} className={plainLabel}>slower</text>
-      <text x={30} y={10} textAnchor="middle" className={plainLabel}>product</text>
-      <text x={200} y={103} textAnchor="end" className={plainLabel}>time</text>
+      <AxisNames x="time taken for the reaction (s)" y="volume of gas produced (cm³)" box={CHEM_BOX} />
     </Frame>
   );
 }
@@ -664,7 +671,15 @@ export function ReactivitySeries(props: DiagramProps) {
           x={82}
           y={16 + i * 11}
           textAnchor="end"
-          className={i === 4 ? label : "fill-current text-[9px]"}
+          // ⚠️ Carbon is picked out by COLOUR, not by size. `label` is 13px
+          // inside an 11-unit row rhythm, so the carbon row overlapped
+          // magnesium above it by 4.7 units and zinc below it by 2 —
+          // measured across every diagram on the site, not noticed by eye.
+          className={
+            i === 4
+              ? "fill-[var(--diagram-accent-text)] text-[9px] font-semibold"
+              : "fill-current text-[9px]"
+          }
         >
           {m === "CARBON" ? "carbon" : m}
         </text>
@@ -698,11 +713,21 @@ export function DynamicEquilibrium(props: DiagramProps) {
       <Fig d="M 30 14 L 30 88 L 200 88" />
       <path d="M 30 22 C 60 22, 80 52, 130 52 L 192 52" className={angleStroke} strokeWidth={2} fill="none" />
       <path d="M 30 86 C 70 86, 86 52, 130 52 L 192 52" className={line} strokeWidth={2} fill="none" />
-      <text x={36} y={18} className={label}>forward</text>
+      {/* Moved off the top-left corner, which is where the y-axis quantity
+          name now lives — measured, not guessed: the two boxes overlapped by
+          41 units. Here it labels the upper curve from just underneath it. */}
+      {/* ⚠️ Placed by measuring the gap, not by eye. The top-left corner is
+          where this label used to sit and is now the y-axis quantity name;
+          the upper curve occupies the rest of that corner. The widest clear
+          space is BETWEEN the two curves at x 36-80, which is 22 units tall
+          — so the label is 11px rather than 13px to fit inside it. */}
+      <text x={38} y={56} className="fill-[var(--diagram-accent-text)] text-[11px] font-semibold">
+        forward
+      </text>
       <text x={36} y={78} className={plainLabel}>backward</text>
       <Fig d="M 130 52 L 130 88" dashed />
       <text x={132} y={44} className={label}>equilibrium</text>
-      <text x={26} y={12} textAnchor="end" className={plainLabel}>rate</text>
+      <AxisNames x="time (s)" y="rate of reaction (mol/s)" box={EQM_BOX} />
     </Frame>
   );
 }

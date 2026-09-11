@@ -907,6 +907,59 @@ try {
     }
   }
 
+  // ── 13. A graph with an unnamed axis ────────────────────────────────────
+  //
+  // Matthew: "on the scientific diagrams where there are y and x axis name
+  // them". Every board gives a mark for labelling an axis with the quantity
+  // AND its unit, and a revision diagram that shows "v" against "t" models the
+  // version that scores nothing.
+  //
+  // The rule is DERIVED rather than a list of graph diagrams to keep in step:
+  // an axis pair is an L — a vertical line and a horizontal one meeting at a
+  // corner — and that is a shape a regex can find in the path data. Any
+  // function that draws one, or calls <Axes>, must also name both axes. A new
+  // graph diagram is therefore covered the day it is written, which a
+  // hand-maintained list never is.
+  {
+    const AXIS_L = /d=(?:"|\{`)M (\d+) (\d+) L \1 (\d+) L (\d+) \3/;
+    // ⚠️ FAIL-CLOSED, AND THE EXEMPTIONS ARE THE POINT.
+    //
+    // An L of two strokes is an axis pair on a graph and the left-and-bottom
+    // of a box everywhere else, and no regex can tell those apart. Guessing
+    // in the direction of "probably not a graph" would let a new graph ship
+    // with bare axes, which is the failure this exists to stop — so anything
+    // that draws an L must either name two axes or be named here, with a
+    // reason. A new GRAPH is caught automatically; only a new non-graph
+    // L-shape costs a line, and the failure message says exactly which
+    // function to look at.
+    const NOT_A_GRAPH = new Set([
+      "Chromatography",     // the solvent front and baseline of a TLC plate
+      "ElectrolysisCell",   // the wall and floor of the beaker
+      "FlowchartSelection", // the routing lines between decision boxes
+      "PressureInLiquids",  // the side and base of the container
+      "ThreePinPlug",       // the plug casing
+    ]);
+    for (const file of listFiles("app/components/diagrams").filter((f) => f.endsWith(".tsx"))) {
+      const source = readFileSync(file, "utf8");
+      const parts = source.split(/\nexport function (\w+)/);
+      for (let i = 1; i < parts.length; i += 2) {
+        const [name, body] = [parts[i], parts[i + 1]];
+        const code = body
+          .split("\n")
+          .filter((l) => !l.trim().startsWith("//") && !l.trim().startsWith("*") && !l.trim().startsWith("{/*"))
+          .join("\n");
+        const drawsAxes = AXIS_L.test(code) || /<Axes\b/.test(code);
+        if (!drawsAxes || NOT_A_GRAPH.has(name)) continue;
+        expect(
+          /<AxisNames\b/.test(code) || /<Axes[^/>]*\bx=[^/>]*\by=/.test(code),
+          `${name} draws a pair of axes and must name both of them — an axis ` +
+            "with a letter on it, or nothing, is an axis a student loses the " +
+            "labelling mark for",
+        );
+      }
+    }
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);
