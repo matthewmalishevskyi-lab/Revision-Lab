@@ -1,5 +1,140 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Diagrams you can drag, checked by driving them (2026-09-10 → 09-11)
+
+Matthew, in two goes: make the diagrams interactive, "especially circle
+theorems... you can change where the points are and the angles will be shown".
+Then, having seen them: "check that everything works by the rules. For example
+in circle theorems a triangle drawn from diameter does have a 90 degree angle...
+Also make sure that every diagram has its name at the top of it and has an
+explanation at the bottom why it works this way. On the scientific diagrams
+where there are y and x axis name them e.g. 'time taken for the reaction' and
+'oxygen produced in cm squared'."
+
+17 diagrams are now draggable: the six circle theorems, five angle rules, the
+three parallel-line rules, y = mx + c, Pythagoras and refraction. All 124 have
+a name and a reason. Ten graphs have real axis names.
+
+### The three checks, and why each finds something the others cannot
+
+**`check-geometry.ts` — 917,654 assertions, no browser.** The maths lives in
+`interactive/geometry.ts` with no React in it, so a plain Node script can
+re-derive every quantity a SECOND, INDEPENDENT way — the cosine rule from raw
+coordinates, never from the arcs the component drew. A static diagram is one
+picture; a draggable one is every picture the handles can reach, so the test
+sweeps the whole reachable space rather than a few nice positions.
+
+**`check-interactive.mjs` — a real browser, dragging.** ⚠️ This exists because
+check-geometry.ts passed the entire time two diagrams were visibly wrong. It
+tests the MODULE. It cannot tell whether a component passed the right arguments
+— and two did not:
+
+    angles-around-a-point   "338° + 295.5° + 86.5° = 720°"
+    vertically-opposite     "340° = 340° · 200° = 200°"
+
+Both took the gaps between rays in storage order instead of rotational order,
+so a gap was measured the long way round. Nothing at a crossing of two straight
+lines can exceed 180°; nothing round a point totals 720°. The harness drags a
+random handle to a random place and, after every drag, re-derives the rule from
+the rendered SVG with plain trigonometry.
+
+**The label sweep, phase two of the same script.** getBBox() on every text node
+of all 580 diagrams in the library, against its own viewBox. SVG clips silently
+past the viewBox: a label one character too long does not error, does not warn,
+and is simply not there. Five were broken, three of them for months.
+
+### Display truthfulness is its own category of bug
+
+The picture right, the sentence under it false. Four of these, all found by the
+browser check:
+
+    "209.5° at the centre = 2 × 104.7° at the edge"   2 × 104.7 is 209.4
+    "y = 0.67x + 1.67"                                through neither point
+    "8.5² + 8² = 136.25 = 11.67²"                     11.67² is 136.19
+    "1.00 sin 61.2° = 1.50 sin 35.8°"                 0.8767 against 0.8775
+
+On a revision site this is worse than untidy: a student who checks the
+arithmetic finds it wrong and has no way to know the picture is right and the
+printing is at fault. Three fixes and one admission:
+
+  - the doubling reuses `consistentSum` with the edge angle given TWICE, so the
+    centre figure is double the edge figure by construction;
+  - `exactRatio` prints m and c as exact ratios — the coordinates snap to
+    halves, so everything is a ratio of integers and 2/3 is available where
+    0.67 is a lie. Denominators built from 2s and 5s print as decimals, because
+    1.5 reads better than 3/2;
+  - Pythagoras says what the method does: "8.5² + 8² = 136.25, so c = √136.25 ≈
+    11.67", with = only when the root is exact;
+  - refraction says ≈. θ₂ is derived from θ₁ exactly, but no pair of 1-d.p.
+    angles satisfies Snell's law exactly and no precision trick fixes it — the
+    rounding happens before the sine is taken. The harness now checks the shown
+    angle lies inside the bracket the law gives for any incidence angle that
+    would print as the one shown.
+
+### Naming the axes was about a mark, not about tidiness
+
+Every board's practical papers give a point for labelling an axis with the
+QUANTITY and its UNIT. "rate" against "time", or "v" against "t", earns none of
+it, and a revision diagram that models the unlabelled version teaches the habit
+that loses the mark.
+
+The old placement is why they were letters: the y name was end-anchored at
+x = 26 on a 220-unit canvas, so it grew LEFTWARDS off the picture and held
+about six characters. "f.d." fitted; "frequency density" would have been
+clipped. It now sits horizontally above the top of the axis, at 7px rather than
+11px, because a real quantity name is long by nature and the size is what has
+to give. A scatter graph has no units until it has a context, so it was given
+one: test score against revision time.
+
+`check-security.mjs` enforces it fail-closed — any function drawing an L of two
+strokes must name both axes or be listed as not-a-graph with a reason. No regex
+can tell a graph's axes from the left-and-bottom of a box, and guessing
+"probably not a graph" would let the next bare-axis graph ship. Five box-shaped
+exemptions are named; a new GRAPH is caught for free.
+
+### Name, rule, reason — three different jobs
+
+A diagram had no NAME: the library used the key-fact heading it happened to be
+filed under, so the same picture was headed "Extraction of metals" here and
+something else there, and on a topic page it had no heading at all. A diagram
+had no REASON: it had a caption, which states the rule. That is what to
+remember, not why it is so, and a student with only the rule can recall it and
+cannot rebuild it — the whole distance between the marks on "state" and the
+marks on "explain".
+
+`DIAGRAM_NOTES` is typed `Record<DiagramName, DiagramNote>`, so a diagram with
+no entry, or an entry for a name that is not a diagram, will not compile. A type
+is a better guard than a check: it cannot be forgotten and it fires in the
+editor. check-security.mjs takes the half a type cannot see — unique titles,
+length, no "diagram"/"picture" in the reason, and no six consecutive words
+shared with the caption sitting directly above it.
+
+⚠️ **Two of those rules were wrong on their first run and the content was
+right.** "The title must not be the de-kebabed slug" fired on "Series circuit"
+and "Parallel circuit", which is exactly what an exam paper calls them — of
+course they match, the slug was named after the diagram. Banning "image" fired
+on "the image is the same size and shape, only flipped". Both were narrowed
+rather than the content reworded. A check that fires on the correct answer is
+worse than no check: it teaches you to write a worse answer to keep the build
+green. This is the third time this project has recorded that lesson.
+
+### Other things worth not relearning
+
+**A pre-existing bug in all 142 diagram placements**: in dark mode the ink went
+near-white while the teacher-tools panel stays forced white, so every diagram in
+the library was invisible. A `dark:` variant asks the PAGE what colour to be; a
+CSS variable lets the panel answer. See "Diagram ink" in globals.css.
+
+**Two of the failures were mine, not the site's**, which is now the standing
+pattern: cards below the 1000px viewport meant drags silently never landed
+(`scrollIntoViewIfNeeded`), and an assertion that no gradient may start "-0"
+fails on the perfectly good -0.3125.
+
+**Verified:** 1,376 security checks, 97,790 content checks, 917,654 geometry
+checks, 1,576 browser checks at 40 drags per diagram, tsc and eslint clean, and
+the library card, the topic page and the printable sheet each screenshotted and
+read.
+
 ## Teacher Tools, and a diagram library that maintains itself (2026-09-08)
 
 Matthew: a button next to the clan one on the dashboard saying Teacher tools,
