@@ -1,5 +1,58 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Google Search Console is done — on the sigma domain (2026-09-12)
+
+Outstanding since 2026-08-08 and now closed. Matthew submitted the sitemap:
+**Success, 383 discovered pages**, which matches the live sitemap exactly.
+
+### It was further along than the notes said
+
+Two surprises when he opened the console, neither of them written down anywhere:
+
+  - **The property was already verified.** A `GOOGLE_SITE_VERIFICATION`
+    environment variable was already set in Vercel and the meta tag has been
+    live on the site for some time — `layout.tsx` reads it into
+    `metadata.verification.google`. Somebody got most of the way through this
+    weeks ago and never finished the last step.
+  - **The site is already indexed and getting search clicks** — 4 of them,
+    starting around 1 September. Nobody knew.
+
+### ⚠️ It is verified for revision-lab-SIGMA, not revision-lab-uk
+
+`NEXT_PUBLIC_SITE_URL` is set in Vercel to `https://revision-lab-sigma.vercel.app`,
+so the sitemap, every canonical tag and every Open Graph URL name that domain.
+The code's own fallback in `site.ts` is the -uk address, so this is a Vercel
+setting rather than anything in the repo.
+
+    revision-lab-sigma.vercel.app/subjects/maths  ->  307
+    revision-lab-uk.vercel.app/subjects/maths     ->  200
+
+So Google indexes an address that bounces, and every visitor from a search
+result takes one extra hop before landing.
+
+**Deliberately left alone, and that is a change of advice.** The first
+instinct was to switch the variable to -uk. That would have been wrong on its
+own: everything is currently CONSISTENT on sigma — verified property, submitted
+sitemap, canonicals, Open Graph — and moving one of those four leaves Search
+Console tracking a domain the site no longer mentions. A 307 is a temporary
+redirect, so Google keeps the original URL indexed rather than consolidating on
+the target; the arrangement is stable, just slightly wasteful.
+
+Moving properly means all of: set the variable, redeploy, add a SECOND
+URL-prefix property for -uk (the verification tag is already live there, so it
+verifies instantly), resubmit the sitemap there. Worth doing, not urgent.
+
+**The better version of this fix is a real domain.** Both of these are Vercel
+preview-style subdomains. Buying `revisionlab.co.uk` or similar (~£10/year)
+makes the question disappear, gives a name a teacher would actually type, and
+is the point at which a DNS-verified Domain property becomes possible — which
+covers every subdomain at once instead of needing one property per host.
+
+⚠️ **A Domain property cannot be verified on a vercel.app subdomain.** DNS is
+the only accepted proof for one, and the DNS for `vercel.app` belongs to
+Vercel. It has to be a URL-prefix property here. That is the commonest way
+people get stuck on this screen, and worth not rediscovering.
+
 ## Bug hunt over the last seven days' work (2026-09-11)
 
 Matthew: "run a bug check of things we have added in last 7 days." Seventeen
@@ -3066,7 +3119,7 @@ Deployed successfully from `main`, commit `f71e786`. Status: Ready. Homepage ren
 
 ### Then, in rough priority order
 
-- **Google Search Console** — verify the site, submit `https://revision-lab-uk.vercel.app/sitemap.xml`. Deploying does not put you in Google; you must ask, then wait days-to-weeks.
+- ~~**Google Search Console**~~ — DONE, see the 2026-09-12 entry at the top. Verified and the sitemap is submitted; the site is already indexed and taking search clicks.
 - **Database (Neon or Supabase)** — required before login can be turned back on. Only `app/lib/users.ts` needs rewriting; add `DATABASE_URL` and `SESSION_SECRET` to Vercel and accounts re-enable themselves automatically.
 - **Progress tracking** — the reason accounts exist. The dashboard has an empty state waiting for it.
 - **Get the content checked by teachers** before students rely on it, especially Maths (tier differences) and English (set texts vary).
