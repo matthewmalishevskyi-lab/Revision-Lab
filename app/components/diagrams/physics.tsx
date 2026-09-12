@@ -251,7 +251,17 @@ export function TransverseWave(props: DiagramProps) {
         wavelength
       </text>
       <Mark d={`M ${x0 + 130.5} ${mid} L ${x0 + 130.5} ${mid - amp}`} />
-      <text x={x0 + 136} y={mid - amp / 2 + 4} className={label}>amplitude</text>
+      {/* ⚠️ ANCHORED AT ITS END, NOT ITS START.
+          Left-anchored at x0 + 136 the word ran to 220.6 on a 220-unit canvas
+          and was clipped by 0.6 — invisible to the eye, caught by the label
+          sweep. Fixing it by nudging the start left only moves the same
+          fragility: the word's width depends on the font that happens to
+          render it, so any start position is a guess about glyph metrics.
+          Anchoring the END at 218 pins the side that was overflowing and lets
+          the word grow leftwards into the space that is actually free. */}
+      <text x={218} y={mid - amp / 2 + 4} textAnchor="end" className={label}>
+        amplitude
+      </text>
     </Frame>
   );
 }

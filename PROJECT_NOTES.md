@@ -203,6 +203,17 @@ checks, tsc and eslint clean; the vectors topic rendered at 1280px and 320px
 with the stacked vectors and tariffs read off the screen, plus the printable
 sheet; zero console errors.
 
+### One unrelated thing the run turned up: "amplitude" was clipped by 0.6 units
+
+Found by the label sweep while verifying this work, and nothing here caused it
+— no diagram file was touched. The physics transverse-wave label was
+left-anchored at x = 158 and ran to 220.6 on a 220-unit canvas. Its own comment
+says it "used to run off the edge as 'amplitud'" and had been nudged left once
+already, which is the tell: **any start position is a guess about glyph
+metrics**, and the word's width depends on whatever font renders it. It is now
+anchored at its END, so the side that was overflowing is the side that is
+pinned and the word grows leftwards into space that is genuinely free.
+
 **Still open, and worth Matthew's eye:** Geography's entire self-marked set is
 "Explain why...", so the subject derives no 9-mark question at all — a content
 gap rather than a derivation bug. English tops out at 4 for the same reason.
