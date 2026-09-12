@@ -3337,15 +3337,15 @@ export const MATHS: Record<string, TopicContent> = {
 
     workedExamples: [
       {
-        question: "Vector a has components (3, 4) and vector b has components (1, -2). Find a + b and the magnitude of a.",
+        question: "Vector a is the column vector\n⎛3⎞\n⎝4⎠\nand vector b is the column vector\n⎛ 1⎞\n⎝−2⎠\nFind a + b and the magnitude of a.",
         steps: [
           "To add vectors, add the components separately — never diagonally.",
-          "Top: 3 + 1 = 4. Bottom: 4 + (−2) = 2. So a + b = (4, 2).",
+          "Top: 3 + 1 = 4. Bottom: 4 + (−2) = 2. So a + b is the column vector\n⎛4⎞\n⎝2⎠",
           "Magnitude means length, found with Pythagoras on the components.",
           "|a| = √(3² + 4²) = √(9 + 16) = √25.",
           "= 5.",
         ],
-        answer: "a + b = (4, 2), and |a| = 5",
+        answer: "a + b is the column vector\n⎛4⎞\n⎝2⎠\nand |a| = 5",
       },
       {
         question:
@@ -3355,9 +3355,9 @@ export const MATHS: Record<string, TopicContent> = {
           "A translation must be described by a column vector; words are not enough.",
           "Right is positive on the top: 3.",
           "Down is negative on the bottom: −2.",
-          "Full description: a translation by the vector (3, −2).",
+          "Full description: a translation by the column vector\n⎛ 3⎞\n⎝−2⎠",
         ],
-        answer: "A translation by the column vector (3, −2)",
+        answer: "A translation by the column vector\n⎛ 3⎞\n⎝−2⎠",
       },
       {
         question:
@@ -3388,17 +3388,17 @@ export const MATHS: Record<string, TopicContent> = {
     ],
 
     practice: [
-      { question: "Vector a = (3, 4) and b = (1, -2). What is the top component of a + b?",
+      { question: "Vector a is the column vector\n⎛3⎞\n⎝4⎠\nand vector b is the column vector\n⎛ 1⎞\n⎝−2⎠\nWhat is the top component of a + b?",
         accept: ["4"], answer: "4. Add the components separately: 3 + 1." },
-      { question: "Vector a = (3, 4) and b = (1, -2). What is the bottom component of a + b?",
+      { question: "Vector a is the column vector\n⎛3⎞\n⎝4⎠\nand vector b is the column vector\n⎛ 1⎞\n⎝−2⎠\nWhat is the bottom component of a + b?",
         accept: ["2"], answer:
           "2, because 4 + (−2) = 2. Components add separately, never diagonally." },
-      { question: "What is the magnitude of the vector (3, 4)?",
+      { question: "What is the magnitude of the column vector\n⎛3⎞\n⎝4⎠?",
         accept: ["5"], answer: "5. Use Pythagoras on the components: √(9 + 16) = √25." },
-      { question: "What is the magnitude of the vector (5, 12)?",
+      { question: "What is the magnitude of the column vector\n⎛ 5⎞\n⎝12⎠?",
         accept: ["13"], answer: "13, because √(25 + 144) = √169." },
-      { question: "Vector a = (2, 5). What is the top component of 3a?",
-        accept: ["6"], answer: "6. A scalar multiplies BOTH components: 3a = (6, 15)." },
+      { question: "Vector a is the column vector\n⎛2⎞\n⎝5⎠\nWhat is the top component of 3a?",
+        accept: ["6"], answer: "6. A scalar multiplies BOTH components, so 3a is the column vector\n⎛ 6⎞\n⎝15⎠" },
       { question: "Which transformation is fully described by a column vector alone?",
         accept: ["translation", "a translation"], answer: "A translation — size and orientation are unchanged." },
       { question: "Which transformation needs an angle, a direction and a centre to be fully described?",
@@ -3456,7 +3456,7 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Missing any one of the three loses marks. For a reflection you must state the mirror line as an equation.",
       },
       {
-        question: "A column vector with 3 on top and -2 underneath means:",
+        question: "A column vector with 3 on top and −2 underneath means:",
         choices: [
           "3 right and 2 down",
           "3 up and 2 left",
@@ -3482,17 +3482,17 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Saying 'reflected in the x-axis' is fine, but 'reflected in a line' without the equation scores nothing.",
       },
       {
-        question: "Adding vector (2, 1) to vector (3, -4) gives:",
+        question: "Adding the column vector\n⎛2⎞\n⎝1⎠\nto the column vector\n⎛ 3⎞\n⎝−4⎠\ngives a vector with:",
         choices: [
-          "(5, -3)",
-          "(6, -4)",
-          "(-1, 5)",
-          "(5, 5)",
+          "5 on top and −3 underneath",
+          "6 on top and −4 underneath",
+          "−1 on top and 5 underneath",
+          "5 on top and 5 underneath",
         ],
         accept: [
-          "(5, -3)",
+          "5 on top and −3 underneath",
         ],
-        answer: "Add the top numbers and the bottom numbers separately: 2 + 3 = 5 and 1 + (-4) = -3.",
+        answer: "Add the top numbers and the bottom numbers separately: 2 + 3 = 5, and 1 + (−4) = −3.",
       },
     ],
 

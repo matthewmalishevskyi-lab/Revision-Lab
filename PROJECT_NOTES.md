@@ -1,5 +1,212 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Marks per question, and vectors that were written as coordinates (2026-09-12)
+
+Two asks in one message. "On the exam style questions, can you please tell how
+many marks you're getting for different questions? Because for now it's the
+same... according to the actual AQA marking thing." And: "when you write
+Vector, you write it the way you write coordinates. And that's wrong. So can
+you fix it?"
+
+He also corrected the brief mid-way: **"if anything I said '4 marks' as an
+example. You change them similar to actual AQA marking."** So this is not a
+capped four-point scale; it is the real per-subject tariffs.
+
+### ⚠️ THERE IS NO "ACTUAL AQA MARKING THING" TO COPY FROM
+
+The obvious build is a lookup table — State = 1, Explain = 3, Evaluate = 6.
+That table does not exist, and AQA disclaims it in the same document that
+prints one:
+
+> "Any command word can be used for any mark and any AO."
+> — AQA, *Get to grips with GCSE Geography command words*
+
+In their own table "Suggest" appears against 1, 2, 4, 6 AND 9 marks. What IS
+real and quotable is the principle underneath: **low tariffs are point-marked,
+one mark per creditable point or per completed step; high tariffs are
+levels-marked, where the number signals expected depth.** `app/lib/marks.ts`
+applies that principle rather than pretending to have found a table.
+
+### The gaps in each subject's tariff set matter as much as the values
+
+Read off real papers, not memory. There is **no 6-mark question on a GCSE Maths
+paper** — the ceiling is 5 across sixteen papers. **Business has no 3-mark
+question**; Geography skips 5, 7 and 8; PE skips 7 and 8. Marking a Maths
+question "6 marks" is wrong in a way a teacher spots instantly, so a derived
+value is always snapped onto the subject's real set.
+
+⚠️ **Business was re-verified against the actual mark scheme during this work**,
+because it looked wrong and memory said otherwise. AQA 8132/1 runs 1, 2, 4, 5,
+6, 9, 12 — no 3. The recorded research was right and the recollection was
+wrong, which is the reason the tariff sets are cited rather than remembered.
+
+⚠️ RE's own HTML scheme-of-assessment page says "1, 1, 4, 6 and 12" and is
+WRONG; the specification PDF and the real 2022 and 2023 papers all say 1, 2, 4,
+5, 12.
+
+### Derived, not written onto 5,745 questions
+
+Same choice this codebase already makes for badges, XP, streaks and the
+teacher-tools library. Writing a number onto each question is 5,745 chances to
+be inconsistent with no way to see the reasoning. A question that genuinely
+needs a different number can still carry an explicit `marks`, and one that
+states its own tariff in its text is believed outright.
+
+### Four real defects in the derivation, each found by looking at the output
+
+**1. The command word is not always the first word.** Every pattern was
+anchored with `^`, so only the first word of a stem was ever read. Real
+questions put the context first:
+
+    "A café owner wants both to open three new branches next year and to
+     maximise profit next year. Evaluate whether both aims can be met."
+
+Twenty-three of Business's biggest questions were sitting in its smallest band
+at 2 marks. Command words are now looked for at the start of any SENTENCE —
+sentence-initial rather than anywhere, because "state which expression you
+would evaluate first" is not an essay.
+
+**2. A sentence can end with a closing quote.** Splitting on a terminator
+followed directly by whitespace never saw the break in
+
+    'Salah is the most important of the Five Pillars.' Evaluate this statement.
+
+so **all nineteen of AQA RE's 12-mark questions** were read as having no
+command word and marked 2. The split now allows a closing quote or bracket
+after the full stop.
+
+**3. "How far do you agree" is a command word.** It is the standard stem of AQA
+History's biggest question and four 16-mark essays were marked 2. Listed as a
+phrase, not trusted to "how" — "how does a catalyst work" is a different
+question.
+
+**4. The same command word is worth wildly different amounts in different
+subjects.** "Explain why dividing an inequality by a negative number reverses
+the sign" was coming out at **5 marks** — the rarest tariff Maths uses at all,
+on its commonest kind of written question. On a real paper that is the one
+"give a reason" mark beside the working. Fixed with two per-subject ceilings:
+`WRITTEN_CEILING` (the most a subject pays for prose alone — 2 for Maths and
+the languages, 4 elsewhere) and `LEVELS_CEILING` (its one big levels-marked
+question — 12 for Business, RE, Citizenship, History and English; 9 for
+Geography, PE and Computer Science; 6 for the sciences; Maths has none).
+
+### ⚠️ Two questions the student can see are the same size must carry the same number
+
+    "...What is the TOP component of a + b?"     [2 marks]
+    "...What is the BOTTOM component of a + b?"  [3 marks]
+
+Both are one number read off a sum. They differed only because the second one's
+model answer happens to show its arithmetic — "2, because 4 + (−2) = 2" has
+three operators, the first has one — and the operator count was allowed to
+decide whether the question was a calculation at all. **A mark that changes
+when the explanation changes is a mark that looks made up.**
+
+Now the command word decides the KIND of question and the operator count only
+sizes one already agreed to be a calculation. There is a permanent check for
+this: same topic, stems differing in exactly one word, neither containing a
+number word — equal tariffs required. The number-word exemption is deliberate,
+because "Give two reasons" genuinely IS 2 and "Give three reasons" IS 3, and a
+check that fires on the correct answer is worse than no check.
+
+### What the 1-mark share is, and why it is not a bug
+
+65–80% of questions come out at 1 mark, against 35–50% on a real paper. That
+looked wrong until 22 of them were sampled by hand: 1,511 are single-answer
+multiple choice (1 mark in every AQA subject that sets them, no exception
+found) and 2,935 are short recall drills — "Which part of a cell makes
+proteins?" This is a question BANK, not a paper, and it is mostly drills. The
+right calibration target is whether each individual question is right, not
+whether the distribution matches a paper's.
+
+The honest limit, written into the file: the derived value is within about ±1
+of a real mark scheme, the whole rule is visible in one place that can be
+argued with, and anything that deserves better can say so.
+
+### The score is now out of marks
+
+Practice and the subject test both count marks rather than questions. **This
+changes what goes into the database** — `recordTestCompletion` writes
+`score_correct` / `score_total`, and every row before today is a count of
+QUESTIONS while every row after is MARKS. That was a choice: keeping question
+counts would mean the finish screen and Test Score History disagree, and a
+student seeing 34/58 then finding 12/20 in their history for the same test has
+no way to tell which is their score. Both render as a fraction and a
+percentage, so the history stays readable across the boundary. What is lost is
+that the raw "out of" jumps once, in September 2026.
+
+### Vectors: the topic contradicted its own key facts
+
+The key facts said "a column vector is written with the horizontal movement on
+top and the vertical movement underneath". The questions directly below wrote
+`(3, −2)` — which is how you write the coordinates of a POINT. Matthew spotted
+it; nine strings in `vectors-and-transformations` had it.
+
+They are now stacked, with real bracket halves:
+
+    ⎛ 3⎞
+    ⎝−2⎠
+
+**Three details that make that work in plain text**, none of them obvious:
+
+  - **A FIGURE SPACE (U+2007) is exactly one digit wide**, so padding the
+    shorter component right-aligns 3 over −2 without a monospace font. Checked
+    by rendering it, not assumed — the same rule the superscript conversion
+    followed.
+  - **Each vector stands alone on its own two lines.** Two vectors side by side
+    on one line did align in a test render, but only by luck of how wide "+"
+    happens to be in this font. One per line-pair is font-independent.
+  - **`accept` lists were left as typeable text.** Nobody can type a stacked
+    bracket, exactly as nobody types 10³. For the one multiple-choice question
+    whose OPTIONS were vectors, the options moved to the site's own existing
+    inline wording — "5 on top and −3 underneath" — because an MCQ's accept
+    list has to match a choice character for character.
+
+**Only question stems preserved line breaks**, so `whitespace-pre-line` was
+added to worked-example questions, steps and answers (topic page and printable
+sheet) and to the model-answer paragraph in Practice and MockExam. It changes
+nothing for a string without a newline, since pre-line still collapses ordinary
+runs of spaces.
+
+⚠️ **That turned up a separate, older bug worth fixing next: five
+worked-example answers contain pseudocode with real newlines** — the CS list,
+subprogram and file-handling examples — and they were being rendered collapsed
+onto one line. The topic page and print sheet now honour them; nothing else was
+checked.
+
+### The tariff prints inline, and the first version broke the phone
+
+`[3 marks]` sat in its own right-hand column. A flex row reserves the badge's
+width down the whole height of the block, so at 320px a three-word line became
+one word per line beside an otherwise empty column. Inline after the question
+costs nothing at any width and is closer to what a paper actually prints.
+Measured at 320 and 1280: no overflow, no console errors.
+
+### New permanent checks (154,026, up from 97,790)
+
+All four confirmed to fail when their fix is removed:
+
+  - every derived tariff is one the subject's papers actually use;
+  - nothing is worth zero or half a mark;
+  - a single-answer multiple choice is 1 mark;
+  - the twin-question rule above;
+  - no content string writes a vector as a coordinate pair (skipping `accept`).
+
+⚠️ The vector check appeared to pass when first tested to destruction, and the
+test was wrong, not the check: the replacement string used an ordinary space
+where the file holds a figure space, so the sabotage never landed. It bites
+once the sabotage actually applies. Same standing lesson as the /progress
+overflow and the blocked-chunk phone pass — **check the harness before
+believing OR disbelieving the result.**
+
+**Verified:** 154,026 content checks, 1,239,302 geometry checks, 1,388 security
+checks, tsc and eslint clean; the vectors topic rendered at 1280px and 320px
+with the stacked vectors and tariffs read off the screen, plus the printable
+sheet; zero console errors.
+
+**Still open, and worth Matthew's eye:** Geography's entire self-marked set is
+"Explain why...", so the subject derives no 9-mark question at all — a content
+gap rather than a derivation bug. English tops out at 4 for the same reason.
+
 ## Google Search Console is done — on the sigma domain (2026-09-12)
 
 Outstanding since 2026-08-08 and now closed. Matthew submitted the sitemap:

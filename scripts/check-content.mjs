@@ -103,6 +103,7 @@ try {
       "app/lib/content/computer-science.ts",
       "app/lib/content/maths.ts",
       "app/lib/content/english.ts",
+      "app/lib/marks.ts",
       "--outDir", out,
       "--module", "commonjs",
       "--target", "es2020",
@@ -114,6 +115,7 @@ try {
 
   const { SUBJECTS, getSubject, getTopic, YEAR_STYLES } = require(join(out, "subjects.js"));
   const { TOPIC_CONTENT, getTopicContent } = require(join(out, "content", "index.js"));
+  const { marksFor, TARIFFS_FOR_CHECKING } = require(join(out, "marks.js"));
 
   // ── The marking rule, copied from Practice.tsx ─────────────────────────────
   // Deliberately duplicated rather than imported: this is the checker's
@@ -559,6 +561,106 @@ try {
         `NEW TOPIC NOT REGISTERED: "${key}" exists but is missing from known-topics.ts. ` +
         `Add it, so that deleting it later becomes an error rather than a surprise.`);
     }
+  }
+
+  // ── MARKS ───────────────────────────────────────────────────────────────────
+  //
+  // Three properties of the derivation in lib/marks.ts. Read that file's header
+  // before changing any of them — the numbers come off real AQA papers.
+  for (const [key, topic] of Object.entries(TOPIC_CONTENT)) {
+    const subject = key.split("/")[0];
+    const allowed = TARIFFS_FOR_CHECKING[subject];
+    for (const q of topic.practice ?? []) {
+      const m = marksFor(subject, q);
+
+      // 1. A tariff that subject's papers do not use is wrong in a way a
+      //    teacher spots instantly — a 6-mark Maths question, a 3-mark
+      //    Business one. See TARIFFS in lib/marks.ts.
+      expect(
+        !allowed || allowed.includes(m),
+        `${key}: "${q.question.slice(0, 50)}" is ${m} marks, which ${subject} papers never use (${allowed})`,
+      );
+
+      // 2. Nothing is worth nothing, and nothing is worth half a mark.
+      expect(
+        Number.isInteger(m) && m >= 1,
+        `${key}: "${q.question.slice(0, 50)}" derived ${m} marks`,
+      );
+
+      // 3. A single-answer multiple choice is 1 mark in every AQA subject that
+      //    sets them. If this ever fires, either the rule changed or a
+      //    multi-select question has appeared, which pays per selection.
+      if (q.choices && q.choices.length > 0) {
+        expect(m === 1, `${key}: multiple choice "${q.question.slice(0, 40)}" is ${m} marks, not 1`);
+      }
+    }
+  }
+
+  // ⚠️ TWO QUESTIONS THE STUDENT CAN SEE ARE THE SAME SIZE MUST CARRY THE SAME
+  //    NUMBER. This is a real bug that shipped: "What is the TOP component of
+  //    a + b?" came out at 2 marks and "What is the BOTTOM component of a + b?"
+  //    at 3, purely because the second one's model answer showed its arithmetic
+  //    and the derivation was counting operators. A mark that changes when the
+  //    explanation changes is a mark that looks made up.
+  //
+  //    "Twin" is deliberately narrow: same topic, stems differing in exactly
+  //    one word, and neither stem containing a number word. Questions that
+  //    differ by a COUNT genuinely should differ in marks — "Give two reasons"
+  //    is 2 and "Give three reasons" is 3 — and a check that fired on those
+  //    would be a check that fires on the correct answer, which this project
+  //    has been bitten by three times.
+  const NUMBER_WORD_RE = /\b(one|two|three|four|five|six|\d+)\b/i;
+  for (const [key, topic] of Object.entries(TOPIC_CONTENT)) {
+    const subject = key.split("/")[0];
+    const qs = (topic.practice ?? [])
+      .filter((q) => !NUMBER_WORD_RE.test(q.question))
+      .map((q) => ({ q, words: q.question.toLowerCase().split(/\s+/) }));
+    for (let i = 0; i < qs.length; i++) {
+      for (let j = i + 1; j < qs.length; j++) {
+        const a = qs[i], b = qs[j];
+        if (a.words.length !== b.words.length) continue;
+        let differing = 0;
+        for (let w = 0; w < a.words.length; w++) if (a.words[w] !== b.words[w]) differing++;
+        if (differing !== 1) continue;
+        const ma = marksFor(subject, a.q), mb = marksFor(subject, b.q);
+        expect(
+          ma === mb,
+          `${key}: two questions differing by one word carry different tariffs (${ma} vs ${mb}) — "${a.q.question.slice(0, 60)}"`,
+        );
+      }
+    }
+  }
+
+  // ── VECTOR NOTATION ─────────────────────────────────────────────────────────
+  //
+  // ⚠️ Matthew: "when you write Vector, you write it the way you write
+  // coordinates. And that's wrong." He was right — the topic's own key facts
+  // said "a column vector is written with the horizontal movement on top and
+  // the vertical movement underneath", and the questions directly below it
+  // wrote (3, −2), which is how you write the coordinates of a POINT.
+  //
+  // A column vector is now stacked, with real bracket halves, and rendered
+  // through `whitespace-pre-line`. This fails on any string that goes back to
+  // the coordinate form while talking about vectors or translations. It does
+  // NOT look at `accept` lists: those are what a student TYPES, and nobody can
+  // type a stacked bracket — the same exemption the superscript convention
+  // already makes for 10³.
+  const COORD_PAIR = /\(\s*[−-]?\d+\s*,\s*[−-]?\d+\s*\)/;
+  for (const [key, topic] of Object.entries(TOPIC_CONTENT)) {
+    const scan = (value, where) => {
+      if (typeof value === "string") {
+        if (/\bvector|\btranslation by|\btranslated by/i.test(value) && COORD_PAIR.test(value)) {
+          expect(false, `${key} ${where}: a vector is written as coordinates — "${value.slice(0, 80)}"`);
+        } else {
+          checks++;
+        }
+      } else if (Array.isArray(value)) {
+        value.forEach((v) => scan(v, where));
+      } else if (value && typeof value === "object") {
+        for (const k of Object.keys(value)) if (k !== "accept") scan(value[k], where ? `${where}.${k}` : k);
+      }
+    };
+    scan(topic, "");
   }
 
   // ── Copy that hardcodes a number the data would contradict ─────────────────

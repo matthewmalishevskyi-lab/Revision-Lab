@@ -382,12 +382,18 @@ export default async function TopicPage({ params }: Props) {
                             >
                               {stepIndex + 1}
                             </span>
-                            <span className="opacity-80">{step}</span>
+                            {/* `whitespace-pre-line` because a step can now
+                                contain a real stacked column vector — see the
+                                notation note in lib/content/maths.ts. A step
+                                with no newline in it is completely unaffected,
+                                since pre-line still collapses ordinary runs of
+                                spaces. */}
+                            <span className="whitespace-pre-line opacity-80">{step}</span>
                           </li>
                         ))}
                       </ol>
                       <p
-                        className="border-t border-black/5 px-6 py-4 font-semibold dark:border-white/10"
+                        className="whitespace-pre-line border-t border-black/5 px-6 py-4 font-semibold dark:border-white/10"
                         style={{ color: style.text }}
                       >
                         Answer: {example.answer}

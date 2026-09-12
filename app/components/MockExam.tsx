@@ -23,6 +23,8 @@ import { normalise } from "../lib/normalise";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
+import { MarkTariff } from "./MarkTariff";
+import { marksFor } from "../lib/marks";
 import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 
 export type ExamQuestion = {
@@ -165,6 +167,37 @@ export function MockExam({
     .map((q, i) => ({ q, i }))
     .filter(({ q, i }) => q.accept && stateFor(i).status === "incorrect");
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // THE SCORE IS OUT OF MARKS — see Practice.tsx for the same reasoning, and
+  // lib/marks.ts for where the number comes from.
+  //
+  // ⚠️ THIS CHANGES WHAT GOES INTO THE DATABASE, and the history already there
+  // means something slightly different. `recordTestCompletion` writes
+  // score_correct / score_total, and every row written before today is a count
+  // of QUESTIONS. Rows written from now on are MARKS.
+  //
+  // That was a real choice, not an oversight. The alternative — keep recording
+  // question counts so the column stays one thing — would mean the number on
+  // the finish screen and the number in Test Score History disagree, which is
+  // worse: a student sees 34/58 and then finds 12/20 in their history for the
+  // same test and has no way to tell which is their score. Both forms are
+  // displayed as a fraction and a percentage, and a percentage of marks and a
+  // percentage of questions are the same KIND of figure, so the history stays
+  // readable across the boundary. What is genuinely lost is that the raw
+  // "out of" jumps once, in September 2026.
+  // ───────────────────────────────────────────────────────────────────────────
+  const totalMarks = questions.reduce(
+    (sum, q) => (q.accept ? sum + marksFor(subjectSlug, q) : sum),
+    0,
+  );
+  const earnedMarks = questions.reduce(
+    (sum, q, i) =>
+      q.accept && stateFor(i).status === "correct"
+        ? sum + marksFor(subjectSlug, q)
+        : sum,
+    0,
+  );
+
   // The topics that came up at all, in order of first appearance — used both
   // in the intro (so it's clear this isn't one topic) and, once finished, to
   // point at exactly what's worth revisiting.
@@ -200,7 +233,7 @@ export function MockExam({
       // against the subject as a whole (there's no single topic a whole test
       // belongs to), and is what the "completed a test in every subject"
       // badges — and now "Test score history" — read back.
-      void recordTestCompletion(subjectSlug, correct, markable).catch(() => {});
+      void recordTestCompletion(subjectSlug, earnedMarks, totalMarks).catch(() => {});
     }
     // NOT re-running this every time correct/markable tick up during the
     // exam: it should fire exactly once, the moment phase becomes
@@ -239,10 +272,10 @@ export function MockExam({
         {celebrating && (
           <Celebration
             message={
-              markable === 0
+              totalMarks === 0
                 ? "Test finished!"
-                : correct / markable >= 0.8
-                  ? `${correct}/${markable} — great work!`
+                : earnedMarks / totalMarks >= 0.8
+                  ? `${earnedMarks}/${totalMarks} marks — great work!`
                   : "Test finished!"
             }
             onDismiss={() => setDismissed(true)}
@@ -257,11 +290,11 @@ export function MockExam({
             {secondsLeft === 0 ? "Time's up" : "Exam finished"}
           </p>
           <p className="mt-2 text-5xl font-bold tabular-nums">
-            {correct}/{markable}
+            {earnedMarks}/{totalMarks}
           </p>
           <p className="mt-1 opacity-85">
-            {markable > 0
-              ? `${Math.round((correct / markable) * 100)}% of the auto-marked questions`
+            {totalMarks > 0
+              ? `${Math.round((earnedMarks / totalMarks) * 100)}% — ${correct} of ${markable} auto-marked questions right`
               : "No auto-marked questions in this set"}
           </p>
         </div>
@@ -322,7 +355,8 @@ export function MockExam({
         style={{ borderColor: secondsLeft <= 60 ? "#dc2626" : undefined }}
       >
         <span className="text-sm font-medium opacity-70">
-          {correct + wrongQuestions.length}/{markable} answered so far
+          {correct + wrongQuestions.length}/{markable} answered ·{" "}
+          {earnedMarks}/{totalMarks} marks
         </span>
         <span
           className={`text-xl font-bold tabular-nums ${
@@ -373,8 +407,17 @@ export function MockExam({
                       <HigherBadge />
                     </p>
                   )}
+                  {/* The tariff prints INLINE, right after the question, the way a paper
+                      does — "...find the area of the larger. [3 marks]".
+                  
+                      ⚠️ It used to sit in its own right-hand column, and that broke the
+                      phone. A flex row reserves the badge's width down the whole height of
+                      the block, so on a 320px screen a three-word line became one word per
+                      line beside an otherwise empty column. Inline costs nothing at any
+                      width and is closer to the real thing anyway. */}
                   <p className="mt-1 whitespace-pre-line font-medium leading-relaxed">
                     {item.question}
+                    <MarkTariff marks={marksFor(subjectSlug, item)} />
                   </p>
 
                   {autoMarked ? (
@@ -497,7 +540,7 @@ export function MockExam({
                       <p className="text-xs font-semibold uppercase tracking-wider opacity-50">
                         {autoMarked ? "Answer" : "Model answer — mark your own"}
                       </p>
-                      <p className="mt-1 leading-relaxed opacity-85">{item.answer}</p>
+                      <p className="mt-1 whitespace-pre-line leading-relaxed opacity-85">{item.answer}</p>
                     </div>
                   )}
                 </div>

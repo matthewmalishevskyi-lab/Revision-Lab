@@ -154,10 +154,12 @@ export default async function PrintSheetPage({ params }: Props) {
                 </p>
                 <ol className="mt-1 list-decimal space-y-1 pl-5 text-sm leading-relaxed">
                   {example.steps.map((step) => (
-                    <li key={step}>{step}</li>
+                    <li key={step} className="whitespace-pre-line">
+                      {step}
+                    </li>
                   ))}
                 </ol>
-                <p className="mt-1 text-sm font-semibold">
+                <p className="mt-1 whitespace-pre-line text-sm font-semibold">
                   Answer: {example.answer}
                 </p>
               </div>

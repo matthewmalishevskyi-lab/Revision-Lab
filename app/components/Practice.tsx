@@ -35,6 +35,8 @@ import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 // "use client" file. See that file's own header comment for the full
 // reasoning; nothing about how this file uses `normalise` changed.
 import { normalise } from "../lib/normalise";
+import { MarkTariff } from "./MarkTariff";
+import { marksFor } from "../lib/marks";
 
 type Question = {
   question: string;
@@ -207,6 +209,29 @@ export function Practice({
     (q, i) => q.accept && stateFor(i).status !== "unanswered",
   ).length;
 
+  // ───────────────────────────────────────────────────────────────────────────
+  // THE SCORE IS OUT OF MARKS, NOT OUT OF QUESTIONS — Matthew's ask.
+  //
+  // A flat count says a one-word recall and a four-step calculation are worth
+  // the same, which is the one thing a real paper never says. Weighting by the
+  // tariff means the score on screen moves the way a real score would: getting
+  // the long question right is worth more than getting three short ones right.
+  //
+  // Only the AUTO-MARKED questions count, exactly as the old count did — a
+  // self-marked question has no verdict for the site to add up, and quietly
+  // folding in a mark the student awarded themselves would inflate the number
+  // without their knowing.
+  // ───────────────────────────────────────────────────────────────────────────
+  const totalMarks = questions.reduce(
+    (sum, q) => (q.accept ? sum + marksFor(subject, q) : sum),
+    0,
+  );
+  const earnedMarks = questions.reduce(
+    (sum, q, i) =>
+      q.accept && stateFor(i).status === "correct" ? sum + marksFor(subject, q) : sum,
+    0,
+  );
+
   return (
     <div>
       {/* Score, shown only once something has been attempted — a 0/14 staring
@@ -216,7 +241,10 @@ export function Practice({
           className="mb-4 rounded-2xl px-5 py-3.5 font-medium"
           style={{ backgroundColor: `${colour}14`, color: colour }}
         >
-          {correct} out of {markable} correct
+          {earnedMarks} out of {totalMarks} marks
+          {correct !== earnedMarks || markable !== totalMarks
+            ? ` · ${correct}/${markable} questions`
+            : ""}
           {attempted < markable && ` · ${markable - attempted} still to try`}
         </div>
       )}
@@ -250,8 +278,17 @@ export function Practice({
                       <HigherBadge />
                     </p>
                   )}
+                  {/* The tariff prints INLINE, right after the question, the way a paper
+                      does — "...find the area of the larger. [3 marks]".
+                  
+                      ⚠️ It used to sit in its own right-hand column, and that broke the
+                      phone. A flex row reserves the badge's width down the whole height of
+                      the block, so on a 320px screen a three-word line became one word per
+                      line beside an otherwise empty column. Inline costs nothing at any
+                      width and is closer to the real thing anyway. */}
                   <p className="whitespace-pre-line font-medium leading-relaxed">
                     {item.question}
+                    <MarkTariff marks={marksFor(subject, item)} />
                   </p>
 
                   {autoMarked ? (
@@ -393,7 +430,7 @@ export function Practice({
                       <p className="text-xs font-semibold uppercase tracking-wider opacity-50">
                         {autoMarked ? "Answer" : "Model answer — mark your own"}
                       </p>
-                      <p className="mt-1 leading-relaxed opacity-85">
+                      <p className="mt-1 whitespace-pre-line leading-relaxed opacity-85">
                         {item.answer}
                       </p>
                     </div>
