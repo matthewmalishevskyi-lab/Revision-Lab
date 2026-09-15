@@ -98,7 +98,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })),
     ]),
 
-    // The lesson pages, same reasoning. ⚠️ The /print route of each is left
+    // The lesson pages, same reasoning. ⚠️ The /slides route of each is left
+    // out as well: it is a .pptx download rather than a page, so a crawler
+    // following it would fetch a binary it cannot index and would make the
+    // server build a deck to do it. ⚠️ The /print route of each is left
     // OUT deliberately — it is the same questions with the answers attached,
     // and two URLs carrying one page's content is what a search engine calls
     // duplicate content. The printable revision sheets are handled the same

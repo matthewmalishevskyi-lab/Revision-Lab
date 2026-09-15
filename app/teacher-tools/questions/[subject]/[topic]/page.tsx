@@ -6,6 +6,10 @@ import { MoreComingSoon } from "../../../../components/MoreComingSoon";
 import { PrintButton } from "../../../../components/PrintButton";
 import { buildLessonPlan, subjectsWithLessons } from "../../../../lib/lesson-plan";
 import { LessonSummaryLine, LessonView } from "./LessonView";
+import { PresentMode } from "./PresentMode";
+import { RunningOrder, HowThisWorks } from "./RunningOrder";
+import { CopyButton } from "../../../../components/CopyButton";
+import { lessonText } from "../../../../lib/lesson-text";
 
 type Params = { params: Promise<{ subject: string; topic: string }> };
 
@@ -94,7 +98,32 @@ export default async function LessonPage({ params }: Params) {
         )}
       </p>
 
-      <div className="diagram-controls mt-5 flex flex-wrap gap-3">
+      {/* ⚠️ THE FOUR WAYS OUT OF HERE COME BEFORE THE LESSON, NOT AFTER IT.
+          A teacher's first question is "can I get this into my own slides",
+          and the answer was previously at the bottom of a very long page. The
+          two that put the lesson in front of a class — the deck and Present —
+          lead; the worksheet and the revision page follow. */}
+      <div className="diagram-controls mt-5 flex flex-wrap items-center gap-3">
+        <PresentMode plan={plan} />
+        {/* A plain <a>, not next/link: this is a file download rather than a
+            route, and prefetching it would build a .pptx on the server for
+            every teacher who merely scrolled past the button. `download`
+            makes the browser save it instead of navigating, so the page they
+            came from is still there afterwards. */}
+        <a
+          href={`/teacher-tools/questions/${plan.subjectSlug}/${plan.topicSlug}/slides`}
+          download
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-black/10 px-5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+        >
+          <span aria-hidden="true">↓</span>
+          PowerPoint
+        </a>
+        <CopyButton
+          text={lessonText(plan)}
+          label="Copy all questions"
+          copiedLabel="Questions copied"
+          title={`Copy all ${plan.topicTitle} questions as plain text`}
+        />
         <Link
           href={`/teacher-tools/questions/${plan.subjectSlug}/${plan.topicSlug}/print`}
           className="inline-flex min-h-11 items-center rounded-full border border-black/10 px-5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
@@ -108,6 +137,9 @@ export default async function LessonPage({ params }: Params) {
           The revision page
         </Link>
       </div>
+
+      <HowThisWorks plan={plan} />
+      <RunningOrder plan={plan} />
 
       <LessonView plan={plan} />
 

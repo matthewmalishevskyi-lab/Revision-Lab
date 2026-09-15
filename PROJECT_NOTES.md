@@ -1,5 +1,135 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Getting a lesson into a teacher's own PowerPoint (2026-09-15, later)
+
+Matthew: *"make sure that it is very easy for teachers to use in their
+PowerPoint presentations and easy to follow how it goes properly. One of our
+main priorities on Teacher tools is accessibility for the teachers."*
+
+Asked before building, because "use it in their PowerPoint" splits three ways
+and they are different builds. He picked **all three**, with answers in the
+**speaker notes only**, and **both** senses of "easy to follow".
+
+    Present            full screen, one question at a time, from the page
+    PowerPoint         a .pptx download, one question per slide
+    Copy               plain text on the clipboard, per part or whole lesson
+    How the hour runs  the phases, timings and purpose on one screen
+    New here — …       what the page is, for a teacher who arrived cold
+
+### The .pptx is hand-written OOXML, and that needed an argument
+
+A .pptx is a ZIP of XML. The project's rule for dependencies is not "is there
+a library" but **what the failure mode looks like**: SMTP earned nodemailer
+because a reset email that quietly does not arrive is silent and
+intermittent. A malformed .pptx fails the opposite way — PowerPoint refuses to
+open it, immediately and totally — and it can be checked. So `app/lib/pptx.ts`
+is about 200 lines that can be read: a ZIP writer, and the dozen OOXML parts a
+deck cannot open without.
+
+Verified two independent ways rather than by reasoning: **python-pptx parses
+it** (41 slides, 39 with notes, correct 16:9 dimensions) and **LibreOffice
+converts it to PDF**, which is a real rendering engine accepting the file. A
+slide was then rendered to an image and looked at.
+
+Three details that are not obvious:
+
+  - **CRC-32 is written out rather than taken from `zlib.crc32`.** That
+    function exists in Node 22 and not in 18 or 20, and Vercel picks the
+    runtime's Node version without this repo being touched — so using it means
+    a download that works locally and 500s in production after somebody else's
+    upgrade.
+  - **XML escaping is not a nicety here.** This site's questions contain `<`,
+    `>` and `&` as ordinary subject matter — every Computer Science comparison
+    operator. One unescaped `<` produces a file PowerPoint calls damaged.
+  - **Every slide gets a notes part, even an empty one.** PowerPoint does not
+    care; Google Slides has historically dropped the notes pane for a deck
+    where only some slides have one, and a teacher who found the answers
+    missing would conclude the feature is broken rather than that their app is
+    picky.
+
+### ⚠️ THE ANSWER-LEAK CHECK WAS WRONG THE FIRST TIME, IN THE USUAL DIRECTION
+
+`scripts/check-pptx.mjs` exists because the printable worksheet shipped giving
+away its own answers. Its first rule was the obvious one — **no answer may
+appear on any slide** — and it failed on three decks. Two of them were
+correct content:
+
+    History, first world war
+      Q4 (starter): "Who assassinated him?"     asked on slide 6
+      taught on slide 10: "…by Gavrilo Princip, a Bosnian Serb nationalist."
+
+Asking a class what they remember and then teaching it properly is retrieval
+practice. The rule was punishing the right answer — the fifth time this
+project has recorded that failure, and the second time in one day.
+
+**The real invariant is order: nobody may meet an answer BEFORE the question.**
+The check now walks the deck the way a teacher advances through it,
+accumulating what the class has seen, and asks only whether each slide's own
+answer was already on the board. Slides carry a non-rendered `secret` field so
+the check can ask that precisely instead of guessing from text.
+
+Rewritten that way, exactly **one** genuine violation survived — Computer
+Science's databases topic teaches
+`SELECT Name, Grade FROM Students WHERE Grade > 5 ORDER BY Name ASC;` as a key
+fact and three slides later asks the class to write it as a worked example. On
+the revision page the two sit in different sections minutes apart; projected
+in sequence, the second is already answered on the board behind it. The deck
+drops a slide whose secret has already been shown, rather than editing content
+that is correct where it lives.
+
+Confirmed to bite: printing the answer on every question slide fails **4,827**
+of the 19,705 checks.
+
+### Present mode is mostly accessibility code, deliberately
+
+Anything covering the whole screen takes the page away from whoever was using
+it and has to hand it back. It is a real `role="dialog" aria-modal`, moves
+focus in on open and **back onto the button that opened it** on close (focus
+left on a removed element falls to `<body>`, and a keyboard user has to tab
+from the top of the document again), closes on Escape, traps Tab, announces
+each question through a live region, restores `body` scroll, and has a real
+button for every key — an interactive whiteboard has a finger and no keyboard.
+
+Space reveals rather than advances, because a teacher wants the answer to the
+question in front of them far more often than the next one. **Every move hides
+the answer again** — leaving it revealed would be the worksheet bug rebuilt as
+a state bug.
+
+Measured, not asserted: 0 unnamed controls, 0 unreachable by Tab, the trap
+holds over more presses than there are controls, focus ring present, text
+contrast **21:1**, no overflow at 320px with the overlay open.
+
+⚠️ **`useCallback` was refused by the linter** —
+`react-hooks/preserve-manual-memoization`. The React Compiler memoises here
+itself, so hand-written memoisation is redundant at best and a drifting
+dependency array at worst. The keyboard effect is written not to depend on the
+function at all, which is what actually stops it re-subscribing.
+
+⚠️ **A screenshot appeared to show a floating element covering the "Back"
+button.** It was `NEXTJS-PORTAL`, the dev-mode indicator, which does not exist
+in production. Confirmed by hiding it and asserting the button receives its
+own clicks at its own centre. Same standing lesson as the blocked chunk, the
+/progress redirect and the figure-space sabotage: **check the harness before
+believing OR disbelieving what you are looking at.**
+
+### The copy button's fallback is the point of it
+
+`navigator.clipboard.writeText` needs a secure context and a permission, and
+**rejects rather than throwing** in between — an http page, a denied
+permission, a school-managed Chrome with a policy. All real on a school
+network, and in every one of them the naive version does nothing at all: no
+error, a button that looks like it worked, and a teacher who pastes whatever
+was on the clipboard before. On failure the text appears in a focused,
+selected textarea, so Ctrl+C still does the thing they were trying to do.
+
+No copy path includes answers, and `lesson-text.ts` is kept free of React so
+the checker can assert that over all 285 topics.
+
+**Verified:** 154,063 content, 1,239,302 geometry, 1,403 security and 19,705
+slide-deck checks, tsc and eslint clean; decks for four subjects parsed;
+present mode and both copy paths driven in a real browser with zero console
+errors; the page, present mode and a rendered slide each looked at.
+
 ## Teacher Tools → Question examples, and a check that was green while its own bug was live (2026-09-15)
 
 Matthew: "go to teacher tools, then question examples, pick your subject, the

@@ -28,6 +28,8 @@ import { Icon } from "../../../../components/Icon";
 import { HigherBadge } from "../../../../components/HigherBadge";
 import { MarkTariff } from "../../../../components/MarkTariff";
 import type { LessonPlan, LessonPhase } from "../../../../lib/lesson-plan";
+import { CopyButton } from "../../../../components/CopyButton";
+import { phaseText } from "../../../../lib/lesson-text";
 
 export function LessonView({ plan }: { plan: LessonPlan }) {
   const [showAnswers, setShowAnswers] = useState(false);
@@ -148,6 +150,21 @@ function PhaseBlock({
         </span>
       </div>
       <p className="mt-1.5 max-w-2xl text-sm opacity-70">{phase.purpose}</p>
+
+      {/* Per part, not per question. A copy button on every one of seventeen
+          questions is seventeen more things to look at on a page whose job is
+          to be scanned, and a teacher building a slide for one part wants the
+          part. The whole lesson is copyable from the top of the page. */}
+      {phase.questions.length > 0 && (
+        <p className="diagram-controls mt-3">
+          <CopyButton
+            text={phaseText(phase, firstQuestionNumber)}
+            label={`Copy these ${phase.questions.length} question${phase.questions.length === 1 ? "" : "s"}`}
+            copiedLabel="Copied"
+            title={`Copy the ${phase.title} questions as plain text`}
+          />
+        </p>
+      )}
 
       {/* ── Teach this ─────────────────────────────────────────────────── */}
       {phase.teachingPoints.length > 0 && (
