@@ -280,7 +280,22 @@ function startsSentenceWith(stem: string, pattern: RegExp): boolean {
     // Splitting on a terminator followed directly by whitespace never saw the
     // break, so every one of AQA RE's 12-mark questions was being read as
     // having no command word at all and marked 2.
-    .split(/(?<=[.!?;:]['")\]”’]?)\s+/)
+    //
+    // ⚠️ A LINE BREAK IS A SENTENCE BOUNDARY TOO, AND LEAVING IT OUT PUT THE
+    // ORIGINAL TWIN-QUESTION BUG STRAIGHT BACK.
+    //   Vector a is the column vector
+    //   ⎛3⎞
+    //   ⎝4⎠
+    //   ...
+    //   What is the top component of a + b?
+    // is one sentence by the punctuation rule above — there is no full stop
+    // anywhere in it — so "What" was never sentence-initial, RECALL never
+    // matched, and the operator count in the model answer was left deciding
+    // the tariff again. That is the exact defect this file already records as
+    // fixed: the twin came out 2 and 3. A stem that puts a diagram on its own
+    // lines and the question on the last one is using the line break as its
+    // terminator, and it has to be read that way.
+    .split(/(?<=[.!?;:]['")\]”’]?)\s+|\n+/)
     .some((sentence) => pattern.test(sentence.trim()));
 }
 

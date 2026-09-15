@@ -604,24 +604,34 @@ try {
   //    explanation changes is a mark that looks made up.
   //
   //    "Twin" is deliberately narrow: same topic, stems differing in exactly
-  //    one word, and neither stem containing a number word. Questions that
-  //    differ by a COUNT genuinely should differ in marks — "Give two reasons"
+  //    one word, and that one differing word not being a COUNT. Questions that
+  //    differ by a count genuinely should differ in marks — "Give two reasons"
   //    is 2 and "Give three reasons" is 3 — and a check that fired on those
   //    would be a check that fires on the correct answer, which this project
   //    has been bitten by three times.
-  const NUMBER_WORD_RE = /\b(one|two|three|four|five|six|\d+)\b/i;
+  //
+  // ⚠️ THE EXEMPTION USED TO SKIP ANY STEM CONTAINING A DIGIT ANYWHERE, AND
+  //    THAT SWALLOWED THE PAIR THIS CHECK WAS WRITTEN FOR. Both vector twins
+  //    above draw their column vectors as ⎛3⎞ ⎝4⎠, so `\b\d+\b` matched the 3,
+  //    both questions were filtered out before the comparison, and the check
+  //    could never fire on its own founding case — it sat green while the bug
+  //    was live again. The exemption now looks only at the ONE WORD THAT
+  //    DIFFERS: if the stems disagree about a count, that count can explain a
+  //    different tariff; if the numbers in them are identical, it cannot, and
+  //    a digit sitting inside a diagram is not a count of anything.
+  const NUMBER_WORD_RE = /^\(?(one|two|three|four|five|six|\d+)\)?[.,:;?]?$/i;
   for (const [key, topic] of Object.entries(TOPIC_CONTENT)) {
     const subject = key.split("/")[0];
     const qs = (topic.practice ?? [])
-      .filter((q) => !NUMBER_WORD_RE.test(q.question))
       .map((q) => ({ q, words: q.question.toLowerCase().split(/\s+/) }));
     for (let i = 0; i < qs.length; i++) {
       for (let j = i + 1; j < qs.length; j++) {
         const a = qs[i], b = qs[j];
         if (a.words.length !== b.words.length) continue;
-        let differing = 0;
-        for (let w = 0; w < a.words.length; w++) if (a.words[w] !== b.words[w]) differing++;
+        let differing = 0, at = -1;
+        for (let w = 0; w < a.words.length; w++) if (a.words[w] !== b.words[w]) { differing++; at = w; }
         if (differing !== 1) continue;
+        if (NUMBER_WORD_RE.test(a.words[at]) || NUMBER_WORD_RE.test(b.words[at])) continue;
         const ma = marksFor(subject, a.q), mb = marksFor(subject, b.q);
         expect(
           ma === mb,

@@ -810,6 +810,31 @@ try {
   // of thing that quietly stops being true.
   for (const file of listFiles("app/teacher-tools").filter((f) => f.endsWith("page.tsx"))) {
     const text = readFileSync(file, "utf8");
+
+    // ⚠️ A PRINT ROUTE IS A DOCUMENT, NOT A PAGE, AND IS EXEMPT.
+    //
+    // This rule fired on the printable worksheet the moment it was written, and
+    // the check was right to fire and wrong to be obeyed: "More coming soon."
+    // photocopied onto a sheet handed to thirty students is nonsense. The
+    // promise is aimed at a teacher browsing a section that has two tools in
+    // it, and nobody browses a worksheet.
+    //
+    // Written as an exemption rather than by narrowing the file list, so it
+    // stays FAIL-CLOSED: a print route must still be a real print route to
+    // skip the rule, and every other page added under Teacher Tools is caught
+    // exactly as before. That is the same shape as the axis-naming rule, and
+    // the fourth time this project has narrowed a check rather than worsen the
+    // thing the check fired on.
+    const isPrintRoute = file.includes("/print/");
+    if (isPrintRoute) {
+      expect(
+        text.includes("window.print") || text.includes("PrintButton"),
+        `${file} is exempt from "More coming soon." as a print route, so it ` +
+          `must actually be one — no print control found`,
+      );
+      continue;
+    }
+
     expect(
       text.includes("<MoreComingSoon />"),
       `${file} ends with <MoreComingSoon /> — every Teacher Tools page says ` +

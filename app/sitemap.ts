@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "./lib/site";
 import { SUBJECTS, SUBJECT_GROUPS } from "./lib/subjects";
 import { subjectsWithDiagrams } from "./lib/teacher-tools";
+import { subjectsWithLessons } from "./lib/lesson-plan";
 
 // A sitemap is a list of every page on the site, handed straight to search
 // engines. Without one, Google finds pages only by following links, which is
@@ -91,6 +92,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
       ...subject.topics.map((topic) => ({
         url: `${SITE_URL}/teacher-tools/diagrams/${subject.slug}/${topic.slug}`,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
+      })),
+    ]),
+
+    // The lesson pages, same reasoning. ⚠️ The /print route of each is left
+    // OUT deliberately — it is the same questions with the answers attached,
+    // and two URLs carrying one page's content is what a search engine calls
+    // duplicate content. The printable revision sheets are handled the same
+    // way, and each print page carries `robots: noindex` of its own besides.
+    {
+      url: `${SITE_URL}/teacher-tools/questions`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    ...subjectsWithLessons().flatMap((subject) => [
+      {
+        url: `${SITE_URL}/teacher-tools/questions/${subject.slug}`,
+        lastModified,
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      },
+      ...subject.topics.map((topic) => ({
+        url: `${SITE_URL}/teacher-tools/questions/${subject.slug}/${topic.slug}`,
         lastModified,
         changeFrequency: "monthly" as const,
         priority: 0.5,

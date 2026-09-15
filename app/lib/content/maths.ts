@@ -192,7 +192,11 @@ export const MATHS: Record<string, TopicContent> = {
 
     practice: [
       { question: "Work out 3 + 4 x 2", accept: ["11"], answer: "11. BIDMAS: multiplication before addition, so 4 x 2 = 8 first, then 3 + 8." },
-      { question: "Work out 2⁵", accept: ["32"], answer: "32, because 2 x 2 x 2 x 2 x 2 = 32." },
+      { question: "Work out 2⁵", accept: ["32"], answer: "32, because 2 x 2 x 2 x 2 x 2 = 32.",
+        // 1, like "Work out 5⁰" three lines down. Derived as 2 only because the
+        // "=" in this explanation is the one arithmetic character the operator
+        // count can see — the multiplication is written with a letter x.
+        marks: 1 },
       { question: "Work out 5⁰", accept: ["1", "one"], answer: "1. Any non-zero number raised to the power 0 equals 1." },
       { question: "Work out 2⁻² as a decimal", accept: ["0.25", ".25", "1/4"], answer: "0.25. A negative index means the reciprocal: 2⁻² = 1 divided by 2² = 1/4." },
       { question: "What is the HCF of 12 and 18?", accept: ["6"], answer: "6. The factors shared by both are 1, 2, 3 and 6, and 6 is the highest." },
@@ -214,7 +218,10 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "65 kg. Half of 10 is 5, so the true value lies within 5 either side." },
       { question: "Work out (-4)²", accept: ["16"], answer: "16. Squaring a negative gives a positive, because the two minus signs cancel." },
       { question: "Work out -4²", accept: ["-16"],
-        answer: "-16. Without brackets this means -(4²), so square first and then apply the minus. Compare with (-4)² = 16." },
+        answer: "-16. Without brackets this means -(4²), so square first and then apply the minus. Compare with (-4)² = 16.",
+        // 1, like "Work out (-4)²" directly above. Derived as 2 only because
+        // this explanation compares the two cases and so contains an "=".
+        marks: 1 },
       { question: "Write 60 as a product of its prime factors, using index notation.",
         accept: ["2^2x3x5", "2^2 x 3 x 5", "2^2*3*5", "22x3x5", "2^2×3×5"],
         answer: "2² x 3 x 5. Build it with a factor tree: 60 = 6 x 10 = (2 x 3) x (2 x 5)." },
@@ -1099,7 +1106,11 @@ export const MATHS: Record<string, TopicContent> = {
       { question: "Write 0.35 as a fraction in its simplest form.", accept: ["7/20"],
         answer: "7/20. Start with 35/100 and divide both parts by 5." },
       { question: "Write 1/8 as a percentage.", accept: ["12.5", "12.5%"], answer: "12.5%. Worth memorising along with 1/2, 1/4, 1/5 and 1/10." },
-      { question: "Write 3/5 as a decimal.", accept: ["0.6", ".6"], answer: "0.6. Divide the numerator by the denominator: 3 ÷ 5." },
+      { question: "Write 3/5 as a decimal.", accept: ["0.6", ".6"], answer: "0.6. Divide the numerator by the denominator: 3 ÷ 5.",
+        // 1, like "Write 45% as a decimal" beside it. Derived as 2 only because
+        // this explanation spells the division out with a ÷ and that one says
+        // "divide by 100" in words. One conversion is one mark either way.
+        marks: 1 },
       { question: "Write 45% as a decimal.", accept: ["0.45", ".45"], answer: "0.45. Divide the percentage by 100." },
       { question: "Does 1/3 give a terminating or a recurring decimal?", accept: ["recurring"],
         answer: "Recurring — 0.333... A fraction terminates only if its denominator in simplest form has prime factors of just 2 and 5, and 3 is neither." },
@@ -3985,7 +3996,11 @@ export const MATHS: Record<string, TopicContent> = {
       { question: "Work out 2⁻³ as a fraction.", accept: ["1/8", "0.125"],
         answer: "1/8. A negative index means the reciprocal — it never makes the answer negative." },
       { question: "Work out 5⁻² as a fraction.", accept: ["1/25", "0.04"],
-        answer: "1/25. A negative index means the reciprocal, so the answer is a fraction — never −25." },
+        answer: "1/25. A negative index means the reciprocal, so the answer is a fraction — never −25.",
+        // 1, like "Work out 2⁻³ as a fraction" beside it. Derived as 2 only
+        // because of the minus in "−25" — a sign naming the answer students
+        // wrongly give, not an operation being carried out.
+        marks: 1 },
       { question: "Write 47,000 in standard form.",
         accept: ["4.7x10^4", "4.7×10^4", "4.7*10^4", "4.7e4", "4.7 x 10^4"],
         answer: "4.7 × 10⁴. The decimal point moves 4 places left." },

@@ -108,12 +108,22 @@ export type TopicContent = {
   // should be real misconceptions rather than obvious filler: a distractor
   // nobody would pick teaches nothing and turns a five-option question into a
   // two-option one.
+  //
+  // MARKS are DERIVED, not written here — see `app/lib/marks.ts`, which reads
+  // the command word and the subject's real tariff set rather than trusting
+  // 5,745 hand-typed numbers to stay consistent with each other. `marks` is
+  // the escape hatch that file has always documented ("a question that
+  // deserves better can carry an explicit `marks`") and, until now, never
+  // actually had: the field existed on marks.ts's own `MarkableQuestion` but
+  // not on this type, so writing one here would not compile. Use it only when
+  // the derivation is provably wrong about a specific question, and say why.
   practice?: {
     question: string;
     accept?: string[];
     answer: string;
     higherOnly?: boolean;
     choices?: string[];
+    marks?: number;
   }[];
 
   // "Students often think X, but actually Y." Targets the specific wrong ideas

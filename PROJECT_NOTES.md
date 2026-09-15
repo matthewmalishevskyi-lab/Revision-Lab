@@ -1,5 +1,150 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Teacher Tools → Question examples, and a check that was green while its own bug was live (2026-09-15)
+
+Matthew: "go to teacher tools, then question examples, pick your subject, the
+year you're teaching, then the topic, and think about the lesson structure —
+start with something easier, then it builds up, all linked in one topic." Plus,
+explicitly: **"use the questions that we already have in revision"** — build it
+from the existing bank rather than writing anything new.
+
+    /teacher-tools/questions                          the subjects
+    /teacher-tools/questions/[subject]                its topics, grouped by year
+    /teacher-tools/questions/[subject]/[topic]        the lesson
+    /teacher-tools/questions/[subject]/[topic]/print  the worksheet
+
+### The mark tariff turned out to be the ordering key
+
+`marksFor()` was built last session to print "[3 marks]" beside a question. It
+is also the only thing on this site that knows how BIG a question is, which is
+what "start easier and build up" actually needs. So a lesson is not a new pile
+of content — it is the topic's own practice questions sorted by tariff and
+dealt into eight phases. Nothing was written; nothing can drift.
+
+**The ramp is monotonic by construction, not by assertion.** The first version
+banded the questions and handed each phase a band, which gave Maths a guided
+phase of [2, 2, 3] followed by an independent phase of [1, 1, 1, 1] — the
+lesson going backwards at its halfway point. The second dealt everything from
+the front of a sorted pool, which on a recall-heavy topic meant seventeen
+consecutive 1-markers and the hard questions never reached at all. What works
+is the harder phases claiming from the BACK of the pool first: stretch takes
+the 6+ marks, then independent, then guided, and the starter gets what is left,
+which is by definition the easiest. There is no rule forbidding a step
+backwards because the order makes one impossible.
+
+### ⚠️ THE PRINTED WORKSHEET GAVE AWAY ITS OWN ANSWERS
+
+The "Teach this" bullets landed directly under the starter questions, and one
+of them reads *"Translation: a slide, described by a column vector"* — the
+literal answer to question 4 on the same page. The worked examples and
+misconceptions carry answers too.
+
+Invisible in the source. It was only found by rendering the sheet and reading
+it top to bottom as a student would, which is the whole argument for looking at
+the artefact rather than the code. Split into a student half (numbered
+questions, tariff-scaled ruled writing space) and, after a page break, a
+teacher's half.
+
+### ⚠️ A CHECK WAS GREEN THE WHOLE TIME ITS OWN FOUNDING BUG WAS LIVE
+
+This is the finding worth keeping. The twin-question rule added last session
+exists for exactly one pair:
+
+    "...What is the top component of a + b?"     [2 marks]
+    "...What is the bottom component of a + b?"  [3 marks]
+
+Rendering the worksheet showed them printed at **2 and 3 again**. Two separate
+faults, either of which alone would have been caught:
+
+**1. The derivation.** `startsSentenceWith` split a stem on punctuation only.
+The vector stems put the diagram on its own lines and the question on the last
+one, with no full stop anywhere in them — so the whole thing was ONE sentence
+beginning "Vector", "What" was never sentence-initial, the RECALL command word
+never matched, and the operator count in the model answer was left deciding the
+tariff again. **A line break is a sentence boundary**; it is now split on too.
+Measured across all 5,745 questions before believing it: exactly two tariffs
+change, and they are the two.
+
+**2. The check could not see them.** Its number-word exemption — there so that
+"Give two reasons" and "Give three reasons" may legitimately differ — was
+`/\b(one|two|...|\d+)\b/` tested against the WHOLE STEM. Both vector questions
+draw their columns as ⎛3⎞ ⎝4⎠, the `3` matched, both were filtered out before
+the comparison, and the check has therefore never once been able to fire on the
+case it was written for.
+
+**Proved rather than assumed:** with the derivation sabotaged back to the buggy
+version, the old check reports **"All 154,026 checks passed"** — the exact
+number written into this file as the verified state last session. The check was
+green while the bug was live, and the bug came back unnoticed.
+
+The exemption now looks only at the ONE WORD THAT DIFFERS. If the stems
+disagree about a count, that count can explain a different tariff; if their
+numbers are identical, it cannot, and a digit inside a diagram is not a count.
+Both halves confirmed to fail when their fix is removed.
+
+**Fifth entry in the standing lesson:** a check that cannot fire is worse than
+no check, because it reports a number that reads as safety. The previous four
+were about checks firing on the CORRECT answer; this is the mirror image, and
+it hid for a week.
+
+### What the widened check then found, and what was deliberately not done
+
+Six more pairs, all real, all Maths, all the same shape — the tariff diverging
+on questions a student can see are identical in size:
+
+    "Work out 2⁵"                  2   vs  "Work out 5⁰"                1
+    "Write 3/5 as a decimal."      2   vs  "Write 45% as a decimal."    1
+    "Work out 5⁻² as a fraction."  2   vs  "Work out 2⁻³ as a fraction." 1
+
+The cause is that `operationsIn` counts arithmetic characters anywhere in a
+PROSE answer. "32, because 2 x 2 x 2 x 2 x 2 = 32." scores an operation for its
+`=` — the multiplication is written with a letter x, so the equals sign is the
+only character it can see. "…so the answer is a fraction — never −25." scores
+one for a minus sign naming the answer students wrongly give.
+
+**Two candidate fixes were measured and both rejected.** Requiring the command
+word to enter the calculation branch (which is what this file's own comment
+CLAIMS the code does — it does not) changed 17 questions and demoted genuine
+calculations whose command word follows a context clause: "Using y = 60/x, find
+y when x = 10" is not recall. Not counting `=` and unary minus changed 161, of
+which 111 were 3→2, far too many to accept without reading them.
+
+So the four wrong questions carry an explicit `marks: 1` with a comment saying
+why, and the proxy is left alone for a pass of its own. **That escape hatch is
+documented all over `marks.ts` and did not exist**: `marks` was on marks.ts's
+own `MarkableQuestion` but not on the content type, so writing one would not
+compile. Added.
+
+**Still open, and the next job here:** the operator count is a noisy proxy at
+the 1/2 boundary, and the code contradicts its own documented intent —
+`(!asksToRecall && numeric && ops >= 1)` still lets the operator count decide
+whether something is a calculation AT ALL, which the comment above it says was
+removed. Worth a measured pass with Matthew's eye on a sample of the 161.
+
+### Smaller things found by looking at the rendered pages
+
+- **Questions were unnumbered on screen and numbered in print.** A teacher
+  projecting the board cannot say "everyone do question four" if the sheet in
+  front of the class disagrees. Numbered continuously, matching the print
+  exactly. Numbering per phase would have been easier and just as wrong.
+- **`let asked = 0` mutated during render** to do that numbering — eslint's
+  `Cannot reassign variable after render completes`, the React Compiler rule
+  this project has been bitten by before. Replaced with a pure prefix sum.
+- **The "More coming soon" check fired on the printable worksheet.** Correct to
+  fire, wrong to obey — a worksheet is not a section index. Exempted
+  fail-closed: a print route skips the rule only if it PROVES it is one, by
+  containing a print control. Both halves confirmed to bite.
+- **Nine lessons have no ramp at all** (every Computer Science programming
+  topic — all questions 1 mark). `flatDifficulty` says so above the fold rather
+  than presenting a build-up that does not build. It was missing from the
+  printed sheet, where it matters more: a teacher can print from a link and
+  never see the page.
+
+**Verified:** 154,063 content checks, 1,239,302 geometry checks, 1,400 security
+checks, tsc and eslint clean; three route levels at 1280 and 320px with no
+overflow and zero console errors; the worst-case flat lesson read end to end;
+the worksheet re-rendered and read as a student would.
+
 ## Marks per question, and vectors that were written as coordinates (2026-09-12)
 
 Two asks in one message. "On the exam style questions, can you please tell how

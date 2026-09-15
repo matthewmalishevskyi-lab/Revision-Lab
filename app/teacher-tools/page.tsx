@@ -4,6 +4,7 @@ import { SiteHeader } from "../components/SiteHeader";
 import { MoreComingSoon } from "../components/MoreComingSoon";
 import { Icon } from "../components/Icon";
 import { diagramLibraryTotals } from "../lib/teacher-tools";
+import { lessonLibraryTotals } from "../lib/lesson-plan";
 
 export const metadata: Metadata = {
   title: "Teacher tools",
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
 // ─────────────────────────────────────────────────────────────────────────────
 export default function TeacherToolsPage() {
   const totals = diagramLibraryTotals();
+  const lessons = lessonLibraryTotals();
 
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-8">
@@ -48,11 +50,62 @@ export default function TeacherToolsPage() {
         </p>
       </section>
 
-      {/* The one tool there is. A single card rather than a grid of one:
-          a grid with one thing in it looks like something failed to load. */}
+      {/* Two tools now, so this is a list rather than the single card it was.
+          Question examples goes FIRST: a teacher arriving here is more likely
+          to be planning a lesson than hunting one picture, and the diagram
+          library is the thing they will find on the way. */}
+      <Link
+        href="/teacher-tools/questions"
+        className="group mt-10 flex flex-col gap-6 rounded-3xl border border-white/60 bg-white/70 p-7 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md sm:flex-row sm:items-center dark:border-white/10 dark:bg-white/5"
+      >
+        <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-emerald-600/10 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-400">
+          <Icon name="pencil" className="h-8 w-8" />
+        </span>
+
+        <span className="min-w-0 flex-1">
+          <span className="block text-2xl font-semibold tracking-tight">
+            Question examples
+          </span>
+          <span className="mt-1.5 block opacity-70">
+            A lesson&apos;s worth of questions for any topic, already in order —
+            a recall starter, a worked example to model, practice that builds,
+            and an exit ticket. Every question shows its marks.
+          </span>
+          <span className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm opacity-60">
+            <span>
+              <strong className="font-semibold tabular-nums">
+                {lessons.questions.toLocaleString()}
+              </strong>{" "}
+              questions
+            </span>
+            <span>
+              across{" "}
+              <strong className="font-semibold tabular-nums">
+                {lessons.topics}
+              </strong>{" "}
+              topics
+            </span>
+            <span>
+              in{" "}
+              <strong className="font-semibold tabular-nums">
+                {lessons.subjects}
+              </strong>{" "}
+              subjects
+            </span>
+          </span>
+        </span>
+
+        <span
+          aria-hidden="true"
+          className="shrink-0 text-2xl opacity-40 transition group-hover:translate-x-1 group-hover:opacity-100"
+        >
+          →
+        </span>
+      </Link>
+
       <Link
         href="/teacher-tools/diagrams"
-        className="group mt-10 flex flex-col gap-6 rounded-3xl border border-white/60 bg-white/70 p-7 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md sm:flex-row sm:items-center dark:border-white/10 dark:bg-white/5"
+        className="group mt-5 flex flex-col gap-6 rounded-3xl border border-white/60 bg-white/70 p-7 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md sm:flex-row sm:items-center dark:border-white/10 dark:bg-white/5"
       >
         <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-blue-600/10 text-blue-600 dark:bg-blue-400/10 dark:text-blue-400">
           <Icon name="chart" className="h-8 w-8" />
