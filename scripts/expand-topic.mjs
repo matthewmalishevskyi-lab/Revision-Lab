@@ -54,7 +54,14 @@ function findArray(src, from, name) {
 // Render a JS value as a TypeScript literal at the given indent.
 function lit(v, ind) {
   const pad = " ".repeat(ind);
-  if (typeof v === "string") return JSON.stringify(v);
+  // ⚠️ NOT `typeof v === "string"`, WHICH IS WHAT THIS SAID AND IT WAS A BUG.
+  // Anything not a string fell through to the object branch below, where
+  // Object.keys(true) is [] — so `higherOnly: true` was written into the
+  // content file as `higherOnly: {}`, and the numeric `marks` and `difficulty`
+  // overrides would have gone the same way. It never showed up because until
+  // now every value ever inserted by this tool happened to be a string.
+  // JSON.stringify renders strings, numbers and booleans correctly.
+  if (typeof v !== "object" || v === null) return JSON.stringify(v);
   if (Array.isArray(v))
     return `[\n${v.map((x) => `${pad}  ${lit(x, ind + 2)},`).join("\n")}\n${pad}]`;
   const keys = Object.keys(v);

@@ -324,6 +324,109 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Mass number = protons + neutrons = 11 + 12 = 23. The atomic number, which identifies the element, is the proton count of 11.",
       },
+      {
+        question: "An ion of iron is written ⁵⁶Fe³⁺. Work out how many neutrons it has. Give the number only.",
+        accept: [
+          "30",
+        ],
+        answer: "30. Iron has proton number 26, and the charge sits on the electrons, not the nucleus, so neutrons = 56 − 26.",
+      },
+      {
+        question: "A magnesium ion is written Mg²⁺. Work out how many electrons it has. Give the number only.",
+        accept: [
+          "10",
+        ],
+        answer: "10. A magnesium atom has 12 electrons, and the 2+ charge means two have been lost: 12 − 2.",
+      },
+      {
+        question: "Calculate how many electrons are in the OUTER shell of an atom with 19 electrons. Give the number only.",
+        accept: [
+          "1",
+        ],
+        answer: "1. Filling in order gives 2, 8, 8 and then a single electron left over, because 19 − 18 leaves one for the fourth shell.",
+      },
+      {
+        question: "Work out the charge on an ion that has 16 protons and 18 electrons. Give the sign and the number.",
+        accept: [
+          "2-",
+          "-2",
+          "2 minus",
+        ],
+        answer: "2−. There are two more electrons than protons, and each electron carries one negative charge: 16 − 18 leaves a net 2− ion.",
+      },
+      {
+        question: "An atom has the electronic structure 2,8,7. Work out its atomic number. Give the number only.",
+        accept: [
+          "17",
+        ],
+        answer: "17. Adding the shells gives 2 + 8 + 7 electrons, and in a neutral atom the number of electrons equals the proton number.",
+      },
+      {
+        question: "The radius of an atom is about 0.1 nm. Calculate this in metres, giving your answer in standard form.",
+        accept: [
+          "1x10^-10",
+          "1 x 10^-10",
+          "1e-10",
+          "0.0000000001",
+          "1 x 10 -10",
+        ],
+        answer: "1 × 10⁻¹⁰ m. One nanometre is 10⁻⁹ m, so a tenth of that is 10⁻¹⁰ m. This is the figure AQA expects you to quote for atomic radius.",
+      },
+      {
+        question: "Magnesium is 79% ²⁴Mg, 10% ²⁵Mg and 11% ²⁶Mg. Calculate its relative atomic mass to one decimal place.",
+        accept: [
+          "24.3",
+        ],
+        answer: "24.3. Multiply each mass by its abundance: 24 × 79 = 1896, 25 × 10 = 250 and 26 × 11 = 286. Those total 2432, and 2432 ÷ 100 = 24.32, which rounds to 24.3.",
+      },
+      {
+        question: "Boron exists only as ¹⁰B and ¹¹B, and its relative atomic mass is 10.8. Calculate the percentage of ¹¹B.",
+        accept: [
+          "80",
+        ],
+        answer: "80%. Let the percentage of ¹¹B be x, so ¹⁰B is (100 − x). Then (10 × (100 − x) + 11x) ÷ 100 = 10.8, so 1000 + x = 1080 and x = 80.",
+        higherOnly: true,
+      },
+      {
+        question: "An ion X²⁻ has the electronic structure 2,8,8 and a mass number of 32. Work out which element X is.",
+        accept: [
+          "sulfur",
+          "sulphur",
+        ],
+        answer: "Sulfur. The ion holds 2 + 8 + 8 = 18 electrons, but the 2− charge means it gained two, so the atom had 16 electrons and therefore 16 protons. Element 16 is sulfur, and 32 − 16 = 16 neutrons.",
+      },
+      {
+        question: "Element Y has two more protons than an atom whose electronic structure is 2,8,6, and Y has a mass number of 40. Calculate the number of neutrons in one atom of Y.",
+        accept: [
+          "22",
+        ],
+        answer: "22. The structure 2, 8, 6 adds to 16 electrons, so that atom has 16 protons. Two more gives Y 18 protons, and 40 − 18 = 22 neutrons.",
+      },
+      {
+        question: "An atomic radius is about 1 × 10⁻¹⁰ m and a nuclear radius about 1 × 10⁻¹⁴ m. Calculate how many times wider the atom is than its nucleus.",
+        accept: [
+          "10000",
+          "10,000",
+          "10^4",
+        ],
+        answer: "10,000 times. Dividing the radii gives (1 × 10⁻¹⁰) ÷ (1 × 10⁻¹⁴) = 10⁴, which is 10,000. That ratio is exactly why almost all of an atom is empty space and most alpha particles went straight through the foil.",
+      },
+      {
+        question: "Explain why the relative atomic mass of chlorine is 35.5, even though every individual chlorine atom has a whole-number mass number.",
+        answer: "Chlorine exists as two isotopes, chlorine-35 and chlorine-37, which have the same proton number but different numbers of neutrons. Relative atomic mass is the weighted mean of those mass numbers, taking their abundances into account. Because roughly three quarters of chlorine atoms are chlorine-35, the mean sits close to 35 rather than halfway, giving 35.5. No single atom weighs 35.5 — the figure describes the mixture. (Mark this one yourself.)",
+      },
+      {
+        question: "A student says that a sodium ion, Na⁺, must be a different element from a sodium atom because it has a different number of electrons. Explain why the student is wrong.",
+        answer: "Which element an atom belongs to is fixed by its proton number, not by its electrons. Na⁺ still has 11 protons, so it is still sodium; it has simply lost one electron from its outer shell. Gaining or losing electrons changes the charge and the chemical behaviour, but it cannot change the identity of the element. Only changing the number of protons would do that. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the nuclear model was accepted even though only a very small fraction of alpha particles were deflected in the scattering experiment.",
+        answer: "The plum pudding model predicted that every alpha particle would pass through with at most a tiny deflection, so even one particle bouncing back was a result the old model could not produce at all. The rarity of the large deflections was itself the evidence: it showed the charged, massive region must be very small compared with the whole atom. A model was needed that explained both the many undeflected particles and the few reflected ones, and the nuclear model did. Other scientists then repeated the work and got the same result. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why nearly all of an atom's mass is in the nucleus, even though electrons take up nearly all of its volume.",
+        answer: "Protons and neutrons each have a relative mass of 1, while an electron's relative mass is about 1/1840, so the electrons contribute almost nothing to the total. The protons and neutrons are packed into a nucleus around ten thousand times smaller in radius than the atom. The electrons occupy shells spread out over the remaining space, which is why the atom is large but light outside the nucleus. Volume and mass are therefore concentrated in completely different places. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -622,6 +725,106 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Forming coloured compounds",
         ],
         answer: "Transition metals form coloured compounds, have multiple oxidation states and act as catalysts. They are also harder, denser and less reactive.",
+      },
+      {
+        question: "Calculate the relative formula mass of chlorine gas, Cl₂. (Ar: Cl = 35.5) Give the number only.",
+        accept: [
+          "71",
+        ],
+        answer: "71. Chlorine is diatomic, so the molecule is 2 × 35.5 = 71. Writing 35.5 is the usual slip: that is the atom, not the molecule.",
+      },
+      {
+        question: "An element has the electronic structure 2,8,8,2. Work out which period of the periodic table it is in. Give the number only.",
+        accept: [
+          "4",
+        ],
+        answer: "4. There are four occupied shells, and period number = number of occupied electron shells. The element is calcium.",
+      },
+      {
+        question: "Element Z is in period 3 and group 6. Work out its electronic structure, writing the shells separated by commas.",
+        accept: [
+          "2,8,6",
+          "2 8 6",
+        ],
+        answer: "2,8,6. Period 3 means three occupied shells and group 6 means six outer electrons, so 2 + 8 fill the inner shells and the remaining six sit outside. Z is sulfur.",
+      },
+      {
+        question: "Chlorine water is added to potassium bromide solution. Work out the formula of the halogen that is displaced.",
+        accept: [
+          "Br2",
+          "br2",
+        ],
+        answer: "Br₂. Chlorine is above bromine in group 7 and so is more reactive: Cl₂ + 2KBr → 2KCl + Br₂. The bromine released is diatomic, which is why it is Br₂ and not Br.",
+      },
+      {
+        question: "Sodium is dropped onto water. Work out the formula of the alkali produced.",
+        accept: [
+          "NaOH",
+          "naoh",
+        ],
+        answer: "NaOH, sodium hydroxide. A group 1 metal plus water gives the metal hydroxide and hydrogen: 2Na + 2H₂O makes 2NaOH and H₂. The hydroxide is why the water turns universal indicator purple.",
+      },
+      {
+        question: "Calculate the number of protons in an atom of the element in period 2, group 7. Give the number only.",
+        accept: [
+          "9",
+        ],
+        answer: "9. That element is fluorine, structure 2,7, so 2 + 7 = 9 electrons, and a neutral atom has an equal number of protons.",
+      },
+      {
+        question: "Bromine water added to potassium chloride solution gives no change, but added to potassium iodide solution it turns brown. Work out the order of reactivity of chlorine, bromine and iodine, most reactive first.",
+        accept: [
+          "chlorine bromine iodine",
+          "chlorine, bromine, iodine",
+          "cl br i",
+          "cl2 br2 i2",
+        ],
+        answer: "Chlorine, then bromine, then iodine. Br₂ + 2KCl gives no reaction, so bromine cannot displace chloride and chlorine must be the more reactive of the two. Br₂ + 2KI → 2KBr + I₂ does happen, so bromine beats iodine. Combining the two results gives chlorine first, and that matches reactivity falling down group 7.",
+      },
+      {
+        question: "Element X has a relative atomic mass of 39, forms 1+ ions, reacts violently with water and gives a lilac flame. Calculate the number of neutrons in one atom of X.",
+        accept: [
+          "20",
+        ],
+        answer: "20. The 1+ ion and the violent reaction with water place X in group 1, and the lilac flame identifies it as potassium, proton number 19. Neutrons = mass number − proton number = 39 − 19 = 20.",
+      },
+      {
+        question: "Mendeleev predicted an element of mass about 72 forming an oxide XO₂; germanium, Ar 72.6, fitted. Calculate the percentage by mass of germanium in GeO₂ to one decimal place. (Ar: O = 16)",
+        accept: [
+          "69.4",
+        ],
+        answer: "69.4%. First the formula mass: Mr(GeO₂) = 72.6 + (2 × 16) = 104.6. Then the fraction that is germanium: (72.6 ÷ 104.6) × 100 = 69.40, which rounds to 69.4%.",
+      },
+      {
+        question: "Sodium, potassium and rubidium melt at 98°C, 63°C and 39°C. Calculate the mean fall in melting point from one element to the next going down group 1.",
+        accept: [
+          "29.5",
+        ],
+        answer: "29.5°C. Sodium to potassium falls 98 − 63 = 35°C, and potassium to rubidium falls 63 − 39 = 24°C. The mean of the two steps is (35 + 24) ÷ 2 = 29.5°C.",
+      },
+      {
+        question: "Chlorine displaces bromine: Cl₂ + 2KBr → 2KCl + Br₂. Calculate the mass of bromine produced when 23.8 g of potassium bromide reacts completely. (Mr: KBr = 119, Br₂ = 160)",
+        accept: [
+          "16",
+        ],
+        answer: "16 g. Moles of KBr = 23.8 ÷ 119 = 0.2 mol. The equation needs two KBr for each Br₂, so 0.2 ÷ 2 = 0.1 mol of bromine forms. Mass = 0.1 × 160 = 16 g.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why the noble gases were missing from Mendeleev's original table, and why discovering them later supported his work rather than undermining it.",
+        answer: "The noble gases are almost completely unreactive, so they form no compounds to be noticed and were not known when Mendeleev published. When argon and the others were found, they all had the same very low reactivity and fitted together as a single new column at the edge of the table. Because the table was built on repeating patterns of properties, a whole family slotting neatly into one group was strong evidence that the pattern was real. A table built only on atomic mass with no grouping could not have absorbed them so cleanly. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the reactivity of group 7 elements decreases going down the group.",
+        answer: "A halogen reacts by gaining one electron into its outer shell, so reactivity depends on how strongly the nucleus can pull an extra electron in. Going down the group each element has one more occupied shell, so the outer shell is further from the nucleus and better shielded by the inner electrons. The attraction on an incoming electron is therefore weaker, and the electron is gained less easily. That is why fluorine is the most reactive halogen and iodine the least. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why transition metals are described as typical metals while group 1 metals are unusual ones, using melting point, density and reactivity.",
+        answer: "Transition metals are hard, dense and have high melting points — iron melts at over 1500°C — which is what most people picture when they think of a metal. Group 1 metals are soft enough to cut with a knife, have low densities (lithium, sodium and potassium float on water) and melt at low temperatures. Group 1 metals also react vigorously with water and air, whereas transition metals react slowly or not at all. So the everyday idea of a metal matches the transition block far better than it matches group 1. (Mark this one yourself.)",
+      },
+      {
+        question: "Tellurium has a higher relative atomic mass than iodine, yet it is placed before iodine. Explain why the modern periodic table orders elements by atomic number rather than atomic mass.",
+        answer: "Ordering by mass puts iodine before tellurium, which would place iodine in the same group as oxygen and sulfur and tellurium with the halogens, contradicting their chemistry. Mendeleev swapped such pairs to keep the properties right, but had no reason for doing so beyond the pattern itself. Once protons were discovered, atomic number gave a physical quantity that increases by exactly one at each step and never needs a swap. Isotopes explain the anomaly: tellurium's heavier isotopes are more abundant, so its mean mass overtakes iodine's while its proton number stays lower. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -932,6 +1135,107 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "The ions must be free to move. In a solid lattice they are held in fixed positions, so a solid ionic compound does not conduct.",
       },
+      {
+        question: "Work out the formula of the ionic compound formed between magnesium and chlorine.",
+        accept: [
+          "MgCl2",
+          "mgcl2",
+        ],
+        answer: "MgCl₂. Magnesium forms Mg²⁺ and chlorine forms Cl⁻, so two chloride ions are needed for every magnesium ion before the charges cancel: 2 × 1 balances 2.",
+      },
+      {
+        question: "Work out the formula of aluminium oxide.",
+        accept: [
+          "Al2O3",
+          "al2o3",
+        ],
+        answer: "Al₂O₃. Aluminium forms Al³⁺ and oxygen forms O²⁻, so two aluminium ions carry six positive charges and three oxide ions carry six negative: 2 × 3 matches 3 × 2.",
+      },
+      {
+        question: "Calculate the total number of atoms in one formula unit of magnesium nitrate, Mg(NO₃)₂. Give the number only.",
+        accept: [
+          "9",
+        ],
+        answer: "9. One magnesium atom, then the bracket doubles the nitrate group to give two nitrogen and six oxygen atoms: 1 + 8 atoms in total.",
+      },
+      {
+        question: "Calculate how many electrons are shared in total in one molecule of methane, CH₄. Give the number only.",
+        accept: [
+          "8",
+        ],
+        answer: "8. Each carbon–hydrogen bond is one shared pair and there are four bonds, so 4 × 2 electrons are shared. Carbon ends up with eight outer electrons, which is the point of bonding at all.",
+      },
+      {
+        question: "Work out the charge on the ion formed by an atom with the electronic structure 2,8,6. Give the sign and the number.",
+        accept: [
+          "2-",
+          "-2",
+          "2 minus",
+        ],
+        answer: "2−. Six outer electrons means gaining two is quicker than losing six, and gaining electrons makes the ion negative, so the charge is two minus.",
+      },
+      {
+        question: "Work out how many covalent bonds a nitrogen atom forms in ammonia, NH₃. Give the number only.",
+        accept: [
+          "3",
+        ],
+        answer: "3. Nitrogen has five outer electrons and needs three more to reach a full shell, so it shares with three hydrogen atoms: 5 + 3 = 8 outer electrons.",
+      },
+      {
+        question: "Calculate the empirical formula of the compound formed when 0.6 g of magnesium combines completely with 0.4 g of oxygen. (Ar: Mg = 24, O = 16)",
+        accept: [
+          "MgO",
+          "mgo",
+        ],
+        answer: "MgO. Moles of magnesium = 0.6 ÷ 24 = 0.025 mol, and moles of oxygen = 0.4 ÷ 16 = 0.025 mol. Dividing by the smaller gives 0.025 ÷ 0.025 = 1 : 1, so the formula is MgO — exactly what Mg²⁺ with O²⁻ predicts.",
+        higherOnly: true,
+      },
+      {
+        question: "A compound contains Fe³⁺ and SO₄²⁻ ions. Work out its formula and then calculate its relative formula mass. (Ar: Fe = 56, S = 32, O = 16) Give the number only.",
+        accept: [
+          "400",
+        ],
+        answer: "400. Two Fe³⁺ give six positive charges and three SO₄²⁻ give six negative, so the formula is Fe₂(SO₄)₃. One sulfate group is 32 + 64 = 96, so Mr = (2 × 56) + (3 × 96) = 112 + 288 = 400.",
+      },
+      {
+        question: "Calculate the mass of sodium chloride formed when 4.6 g of sodium reacts completely with chlorine. (Ar: Na = 23, Cl = 35.5)",
+        accept: [
+          "11.7",
+        ],
+        answer: "11.7 g. Moles of sodium = 4.6 ÷ 23 = 0.2 mol. The equation 2Na + Cl₂ → 2NaCl puts sodium and sodium chloride in a 1 : 1 ratio, so 0.2 mol forms. Mr(NaCl) = 23 + 35.5 = 58.5, so mass = 0.2 × 58.5 = 11.7 g.",
+        higherOnly: true,
+      },
+      {
+        question: "A 250 g brass ornament is 70% copper by mass and the rest is zinc. Calculate the number of moles of zinc it contains, to two decimal places. (Ar: Zn = 65)",
+        accept: [
+          "1.15",
+        ],
+        answer: "1.15 mol. Zinc makes up 100 − 70 = 30% of the mass, so mass of zinc = 0.30 × 250 = 75 g. Moles = 75 ÷ 65 = 1.1538, which is 1.15 mol to two decimal places.",
+        higherOnly: true,
+      },
+      {
+        question: "Ethene, C₂H₄, contains a carbon-to-carbon double bond. Calculate the total number of electrons shared in one molecule. Give the number only.",
+        accept: [
+          "12",
+        ],
+        answer: "12. There are four carbon–hydrogen single bonds, each sharing a pair, giving 4 × 2 = 8 electrons. The C=C double bond shares two pairs, another 4 electrons. Adding them gives 8 + 4 = 12 shared electrons.",
+      },
+      {
+        question: "Explain why magnesium oxide melts at a much higher temperature than sodium chloride, even though both are ionic compounds.",
+        answer: "Both have giant ionic lattices, so melting means overcoming electrostatic attraction between oppositely charged ions throughout the structure. Magnesium oxide is built from Mg²⁺ and O²⁻, which carry twice the charge of the Na⁺ and Cl⁻ in sodium chloride. Stronger charges mean a stronger attraction between neighbouring ions, so far more energy is needed to pull the lattice apart. That is why magnesium oxide melts near 2850°C and sodium chloride near 800°C. (Mark this one yourself.)",
+      },
+      {
+        question: "A student says that in sodium chloride each sodium ion is joined to one particular chloride ion, like a molecule. Explain why this is wrong.",
+        answer: "Sodium chloride is a giant lattice, not a set of separate units: every sodium ion is surrounded by six chloride ions and every chloride ion by six sodium ions. The electrostatic attraction acts in all directions at once, so no ion belongs to any single partner. NaCl is an empirical formula giving the 1 : 1 ratio in the lattice, not the contents of a molecule. This is also why melting it needs so much energy — you have to break attractions throughout the whole structure. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why metals conduct both heat and electricity well, and why alloying a metal usually makes it a poorer conductor.",
+        answer: "In a metal the outer electrons are delocalised and free to move through the lattice of positive ions. Those moving electrons carry charge through the metal, which is electrical conduction, and they also carry kinetic energy from hot regions to cold ones, which is thermal conduction. In an alloy the added atoms are a different size, so the regular layers are disrupted and the delocalised electrons are scattered more as they move. That scattering reduces the flow of both charge and energy, so alloys conduct less well than the pure metal. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain, in terms of electrons, why a group 2 metal and a group 6 non-metal bond ionically while two group 6 non-metals bond covalently.",
+        answer: "A group 2 atom has two outer electrons it can lose fairly easily, and a group 6 atom needs two more to complete its shell, so electrons transfer outright and oppositely charged ions form and attract. Two group 6 non-metals both need to gain electrons, and neither will give any up, so transfer is impossible. Instead they share pairs of electrons, and each atom counts the shared pairs towards its own full shell. Both routes end with full outer shells, but only transfer produces ions. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -1232,6 +1536,107 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "A very high surface area to volume ratio",
         ],
         answer: "That ratio makes them effective catalysts and means much less material is needed. Their long-term health effects are still being researched.",
+      },
+      {
+        question: "A particle has a total surface area of 600 nm² and a volume of 1000 nm³. Calculate its surface area to volume ratio. Give the number only.",
+        accept: [
+          "0.6",
+        ],
+        answer: "0.6. Surface area to volume ratio is surface area divided by volume: 600 ÷ 1000 = 0.6. The smaller the particle, the larger this number gets.",
+      },
+      {
+        question: "Each carbon atom in graphite forms three covalent bonds. Work out how many of its four outer electrons are delocalised. Give the number only.",
+        accept: [
+          "1",
+        ],
+        answer: "1. Carbon has four outer electrons and three are tied up in covalent bonds, so 4 − 3 = 1 electron per atom is free to move between the layers.",
+      },
+      {
+        question: "Sulfur melts at 115°C and boils at 445°C. Work out its state at 200°C and give the state symbol.",
+        accept: [
+          "(l)",
+          "l",
+          "liquid",
+          "liquid (l)",
+        ],
+        answer: "Liquid, symbol (l). The melting point of 115°C has already been passed, and boiling is still 445 − 200 = 245°C away, so sulfur is molten.",
+      },
+      {
+        question: "A nanoparticle has a diameter of 50 nm. Calculate its diameter in metres, giving your answer in standard form.",
+        accept: [
+          "5x10^-8",
+          "5 x 10^-8",
+          "5e-8",
+          "0.00000005",
+          "5 x 10 -8",
+        ],
+        answer: "5 × 10⁻⁸ m. One nanometre is 10⁻⁹ m, so 50 nm is 50 × 10⁻⁹ m, which is tidied to 5 × 10⁻⁸ m.",
+      },
+      {
+        question: "A poly(ethene) chain contains 500 repeating units, each with a relative formula mass of 28. Calculate the relative molecular mass of the chain.",
+        accept: [
+          "14000",
+          "14,000",
+        ],
+        answer: "14,000. Multiply the repeat unit by the number of units: 500 × 28 = 14,000. Molecules this large have strong intermolecular forces, which is why polymers are solid at room temperature.",
+      },
+      {
+        question: "Graphite layers sit 0.34 nm apart. Calculate how many layers there are in a graphite crystal 1.7 nm thick. Give the number only.",
+        accept: [
+          "5",
+        ],
+        answer: "5. Divide the thickness by the spacing between layers: 1.7 ÷ 0.34 = 5. A single one of those layers is graphene.",
+      },
+      {
+        question: "In buckminsterfullerene, C₆₀, each carbon atom forms three covalent bonds. Calculate the total number of covalent bonds in one molecule.",
+        accept: [
+          "90",
+        ],
+        answer: "90. Sixty carbon atoms each forming three bonds gives 60 × 3 = 180 bond ends. Every bond is shared between two atoms, so the number of bonds is 180 ÷ 2 = 90, not 180.",
+      },
+      {
+        question: "A 2 cm cube is cut into eight 1 cm cubes. Calculate how many times larger the total surface area to volume ratio becomes.",
+        accept: [
+          "2",
+        ],
+        answer: "2 times. The 2 cm cube has surface area 6 × 4 = 24 cm² and volume 8 cm³, a ratio of 24 ÷ 8 = 3. The eight small cubes have total surface area 8 × 6 = 48 cm² with the same total volume of 8 cm³, a ratio of 48 ÷ 8 = 6. Comparing them, 6 ÷ 3 = 2 — and this is why nanoparticles are so reactive.",
+      },
+      {
+        question: "A sheet of graphene contains 1000 carbon atoms. Calculate what fraction of all the outer electrons present are delocalised. Give your answer as a decimal.",
+        accept: [
+          "0.25",
+        ],
+        answer: "0.25. Each carbon has four outer electrons, so 1000 atoms have 1000 × 4 = 4000 outer electrons altogether. Three per atom are used in covalent bonds and one is delocalised, giving 1000 delocalised electrons. The fraction is 1000 ÷ 4000 = 0.25.",
+      },
+      {
+        question: "A sample of a substance occupies 24 dm³ as a gas and 18 cm³ as a liquid. Calculate how many times greater the gas volume is, to the nearest whole number.",
+        accept: [
+          "1333",
+        ],
+        answer: "1333 times. Convert first so the units match: 24 dm³ = 24 × 1000 = 24,000 cm³. Then 24,000 ÷ 18 = 1333.3, so the gas takes over a thousand times the space. The particles are the same size in both — it is the spacing between them that changes.",
+      },
+      {
+        question: "Ice has a density of 0.92 g/cm³ and water 1.00 g/cm³. Calculate the increase in volume when 100 g of water freezes, to one decimal place.",
+        accept: [
+          "8.7",
+        ],
+        answer: "8.7 cm³. Volume = mass ÷ density, so the ice takes 100 ÷ 0.92 = 108.7 cm³ while the water took 100 ÷ 1.00 = 100 cm³. The increase is 108.7 − 100 = 8.7 cm³, which is why water pipes split when they freeze.",
+      },
+      {
+        question: "Explain why the simple particle model, which treats particles as solid spheres with nothing between them, cannot account for substances having different melting points.",
+        answer: "In the simple model every particle is an identical featureless sphere, so there is nothing in it to distinguish one substance from another. Melting actually depends on the strength of the forces between particles, and the model shows no forces at all. It also ignores the fact that particles have different sizes and that some are ions or giant structures rather than molecules. To explain why sodium chloride melts at 801°C and oxygen at −219°C you need bonding, which the model leaves out. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why graphene is both an excellent electrical conductor and extremely strong for its mass.",
+        answer: "Graphene is a single layer of carbon atoms, each covalently bonded to three others in a hexagonal sheet. Those covalent bonds are strong and hold the sheet rigid, and because the layer is only one atom thick there is almost no mass for that strength. Each carbon has a fourth outer electron that is not used in bonding, so it becomes delocalised and free to move across the whole sheet. Those delocalised electrons carry charge, which is what makes graphene conduct. (Mark this one yourself.)",
+      },
+      {
+        question: "Silicon dioxide melts above 1700°C but carbon dioxide is a gas at room temperature, although both contain covalent bonds between a group 4 element and oxygen. Explain the difference.",
+        answer: "Carbon dioxide is simple molecular: each molecule is held together by strong covalent bonds, but the separate molecules are only attracted to each other by weak intermolecular forces. Boiling breaks those weak forces, not the covalent bonds, so very little energy is needed. Silicon dioxide is a giant covalent structure in which every silicon is bonded to four oxygens and every oxygen to two silicons, in one continuous network. Melting it means breaking many strong covalent bonds, which takes far more energy. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why nanoparticles of a material may be harmful to health even when the same material in bulk is considered safe.",
+        answer: "Nanoparticles have an enormous surface area for their volume, so a given mass is far more reactive than the same mass of bulk material and can catalyse reactions inside the body. They are also small enough to be breathed deep into the lungs and to cross membranes that would stop larger particles, including into the bloodstream. Their long-term effects have not been tested for as long as the bulk forms have. So safety data for the bulk material cannot simply be assumed to carry over. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -1540,6 +1945,101 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Simple distillation",
         ],
         answer: "The water evaporates and is condensed back, leaving the dissolved salt behind. Filtration cannot remove dissolved substances.",
+      },
+      {
+        question: "A substance has an Rf value of 0.6 and the solvent front travels 15 cm. Calculate how far the spot has moved, in cm.",
+        accept: [
+          "9",
+        ],
+        answer: "9 cm. Rearranging the Rf formula gives spot distance = Rf × solvent distance, so 0.6 × 15 = 9 cm.",
+      },
+      {
+        question: "40 g of a salt solution is evaporated to dryness and 6 g of solid remains. Calculate the percentage by mass of dissolved solid.",
+        accept: [
+          "15",
+        ],
+        answer: "15%. The fraction that was dissolved solid is 6 ÷ 40, and multiplying by 100 gives 15%. The rest was water, which has evaporated.",
+      },
+      {
+        question: "In a fractionating column petrol condenses between 40°C and 100°C and kerosene between 150°C and 250°C. Work out which of the two leaves the column higher up.",
+        accept: [
+          "petrol",
+        ],
+        answer: "Petrol. The column is coolest at the top, so the fraction with the lower boiling range condenses further up, and petrol's range sits 150 − 100 = 50°C below kerosene's.",
+      },
+      {
+        question: "Ethanol boils at 78°C and water at 100°C. Work out the temperature the thermometer should hold steady at while ethanol distils over from a mixture of the two.",
+        accept: [
+          "78",
+          "78c",
+          "78 c",
+        ],
+        answer: "78°C. The liquid with the lower boiling point comes over first, and the thermometer stays at its boiling point until it has all gone. Only then does the reading climb the remaining 100 − 78 = 22°C towards water's boiling point.",
+      },
+      {
+        question: "50 cm³ of a solution contains 0.16 g of copper sulfate per cm³. Calculate the mass of crystals obtained when it is fully crystallised.",
+        accept: [
+          "8",
+        ],
+        answer: "8 g. Mass of solute = concentration × volume, so 0.16 × 50 = 8 g remains once all the water has evaporated.",
+      },
+      {
+        question: "0.4 g of a 12 g residue is left stuck to the filter paper. Calculate the percentage of the residue that is lost, to one decimal place.",
+        accept: [
+          "3.3",
+        ],
+        answer: "3.3%. The fraction left behind is 0.4 ÷ 12, and multiplying by 100 gives 3.33%, which rounds to 3.3%. Losses like this are why practical yields fall short.",
+      },
+      {
+        question: "A chromatogram of a food colouring shows spots at 2.4 cm, 4.8 cm and 6.0 cm with the solvent front at 8.0 cm. A reference dye has an Rf of 0.60. Calculate how far the matching spot has moved, in cm.",
+        accept: [
+          "4.8",
+        ],
+        answer: "4.8 cm. Dividing each spot distance by the solvent front gives 2.4 ÷ 8.0 = 0.30, then 4.8 ÷ 8.0 = 0.60, then 6.0 ÷ 8.0 = 0.75. Only the middle spot has an Rf of 0.60, so that one is the reference dye.",
+      },
+      {
+        question: "25.0 g of a salt and sand mixture is stirred with water, filtered and evaporated. 18.5 g of salt and 6.0 g of dry sand are recovered. Calculate the percentage of the starting mass not accounted for.",
+        accept: [
+          "2",
+        ],
+        answer: "2%. The recovered solids total 18.5 + 6.0 = 24.5 g. Subtracting from the start gives 25.0 − 24.5 = 0.5 g missing. As a percentage that is (0.5 ÷ 25.0) × 100 = 2%, lost mainly on the filter paper and the evaporating basin.",
+      },
+      {
+        question: "500 cm³ of seawater contains 17.5 g of dissolved salt. 400 cm³ of pure water is distilled off. Calculate the concentration of salt in the liquid left behind, in g/dm³.",
+        accept: [
+          "175",
+        ],
+        answer: "175 g/dm³. Distillation removes only water, so all 17.5 g of salt stays behind in 500 − 400 = 100 cm³. Converting the volume, 100 ÷ 1000 = 0.1 dm³, and concentration = 17.5 ÷ 0.1 = 175 g/dm³.",
+      },
+      {
+        question: "A 200 tonne batch of crude oil is fractionally distilled into 62 tonnes of petrol, 48 tonnes of diesel, 30 tonnes of kerosene and the rest bitumen and gases. Calculate the percentage that is bitumen and gases.",
+        accept: [
+          "30",
+        ],
+        answer: "30%. The three named fractions come to 62 + 48 + 30 = 140 tonnes. The remainder is 200 − 140 = 60 tonnes, so (60 ÷ 200) × 100 = 30%.",
+      },
+      {
+        question: "40.0 g of hydrated copper sulfate crystals is heated until no further change, leaving 25.6 g of white anhydrous solid. Calculate the percentage by mass of water in the crystals.",
+        accept: [
+          "36",
+        ],
+        answer: "36%. The water driven off is 40.0 − 25.6 = 14.4 g. As a fraction of the starting mass that is 14.4 ÷ 40.0 = 0.36, so the percentage is 0.36 × 100 = 36%.",
+      },
+      {
+        question: "Explain why the start line on a chromatogram is drawn in pencil and must sit above the level of the solvent in the tank.",
+        answer: "Pencil is graphite, which is insoluble in the solvent, so the line stays where it was drawn and does not travel up the paper. Ink would dissolve and separate into its own spots, contaminating the result. If the start line were below the solvent level, the samples would dissolve straight into the solvent in the tank and wash away instead of moving up the paper. Either mistake destroys the chromatogram before it starts. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why fractional distillation rather than simple distillation is needed to separate ethanol from water.",
+        answer: "Their boiling points are only 22°C apart, so when the mixture is heated the vapour contains a good deal of water as well as ethanol, and simple distillation would collect both. A fractionating column gives the vapour many surfaces to condense and re-evaporate on as it rises. Each of those cycles enriches the rising vapour in the lower-boiling ethanol and returns water to the flask. The distillate that reaches the condenser is therefore much purer than simple distillation could give. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why salt and sand can be separated using only water, filtration and evaporation, while the sodium and chlorine in sodium chloride cannot be separated by any of them.",
+        answer: "Salt and sand form a mixture, so the two substances are not chemically joined and each keeps its own properties — salt dissolves and sand does not. Filtration exploits that difference to remove the sand, and evaporating the filtrate recovers the salt unchanged. Sodium chloride is a compound in which sodium and chlorine are held by ionic bonds, and separating them means breaking those bonds, which is a chemical change. Physical methods supply nowhere near enough energy, which is why electrolysis is needed instead. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how chromatography can show that a food colouring contains a banned dye, and why a reference sample must be run on the same piece of paper.",
+        answer: "The colouring is spotted on the start line and the solvent carries each component up at a rate set by how strongly it is attracted to the paper compared with the solvent, so a mixture separates into several spots. If one of those spots has the same Rf value as the banned dye, the dye is present. Rf depends on the solvent, the paper and the conditions, so a value measured on one chromatogram cannot safely be compared with one measured elsewhere. Running the reference alongside the sample means both experience identical conditions, and the spots can be compared directly. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -1890,6 +2390,107 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "2H2 + O2 -> 2H2O",
         ],
         answer: "Four hydrogens and two oxygens on each side. Count each element on both sides before choosing.",
+      },
+      {
+        question: "Work out the number that goes in front of H₂O to balance: C₃H₈ + 5O₂ → 3CO₂ + __H₂O",
+        accept: [
+          "4",
+        ],
+        answer: "4. Propane supplies eight hydrogen atoms and each water molecule takes two, so 8 ÷ 2 = 4 water molecules are needed.",
+      },
+      {
+        question: "Calculate the relative formula mass of Al₂(SO₄)₃. (Ar: Al = 27, S = 32, O = 16) Give the number only.",
+        accept: [
+          "342",
+        ],
+        answer: "342. Two aluminium atoms give 54, and each sulfate group weighs 96, so the three of them add 3 × 96 more.",
+      },
+      {
+        question: "Work out the formula of the salt produced when nitric acid reacts with calcium hydroxide.",
+        accept: [
+          "Ca(NO3)2",
+          "ca(no3)2",
+          "CaN2O6",
+        ],
+        answer: "Ca(NO₃)₂. Nitric acid supplies the nitrate ion NO₃⁻ and calcium forms Ca²⁺, so two nitrate ions are needed per calcium ion: 2 × 1 balances the 2 positive charges.",
+      },
+      {
+        question: "2.4 g of magnesium burns completely in air to give 4.0 g of magnesium oxide. Calculate the mass of oxygen that reacted.",
+        accept: [
+          "1.6",
+        ],
+        answer: "1.6 g. No atoms are created or destroyed, so the extra mass came from the air: 4.0 − 2.4 = 1.6 g of oxygen.",
+      },
+      {
+        question: "Work out the number that goes in front of HCl to balance: Fe₂O₃ + __HCl → 2FeCl₃ + 3H₂O",
+        accept: [
+          "6",
+        ],
+        answer: "6. The two FeCl₃ need six chlorine atoms, so 2 × 3 = 6 molecules of HCl, and those also supply the six hydrogens for three waters.",
+      },
+      {
+        question: "Work out which element is oxidised in the reaction Zn + CuSO₄ → ZnSO₄ + Cu.",
+        accept: [
+          "zinc",
+          "zn",
+        ],
+        answer: "Zinc. It starts as Zn atoms and ends as Zn²⁺ ions, so each atom has lost two electrons, and losing electrons = oxidation under OIL RIG.",
+      },
+      {
+        question: "Work out the four balancing numbers for __C₂H₆ + __O₂ → __CO₂ + __H₂O, in order and separated by commas.",
+        accept: [
+          "2,7,4,6",
+          "2 7 4 6",
+        ],
+        answer: "2, 7, 4, 6. Starting with two ethane molecules avoids fractions: 2C₂H₆ contains 4 carbon and 12 hydrogen atoms, so 4CO₂ and 6H₂O are needed. Those products hold (4 × 2) + 6 = 14 oxygen atoms, and 14 atoms means 7O₂ on the left.",
+      },
+      {
+        question: "48 g of magnesium burns completely in oxygen. Calculate the mass of magnesium oxide formed. (Ar: Mg = 24, O = 16)",
+        accept: [
+          "80",
+        ],
+        answer: "80 g. Moles of magnesium = 48 ÷ 24 = 2 mol. In 2Mg + O₂ → 2MgO the magnesium and the oxide are in a 1 : 1 ratio, so 2 mol of MgO forms. Mr(MgO) = 24 + 16 = 40, so the mass is 2 × 40 = 80 g.",
+        higherOnly: true,
+      },
+      {
+        question: "A compound is 40.0% carbon, 6.7% hydrogen and 53.3% oxygen by mass. Calculate its empirical formula. (Ar: C = 12, H = 1, O = 16)",
+        accept: [
+          "CH2O",
+          "ch2o",
+        ],
+        answer: "CH₂O. Divide each percentage by the relevant Ar: carbon gives 40.0 ÷ 12 = 3.33, hydrogen 6.7 ÷ 1 = 6.7, oxygen 53.3 ÷ 16 = 3.33. Dividing all three by the smallest, 3.33, gives a whole-number ratio of 1 : 2 : 1.",
+        higherOnly: true,
+      },
+      {
+        question: "A sealed flask holding 2.50 g of calcium carbonate and excess acid weighs 150.00 g. After reacting, the stopper is removed and the mass falls to 148.90 g. Calculate the carbon dioxide lost as a percentage of the carbonate's mass.",
+        accept: [
+          "44",
+        ],
+        answer: "44%. The mass drops only once the gas can escape, so the carbon dioxide released is 150.00 − 148.90 = 1.10 g. As a percentage of the carbonate used, (1.10 ÷ 2.50) × 100 = 44%. That is exactly what Mr predicts, since CO₂ is 44 of CaCO₃'s 100.",
+      },
+      {
+        question: "Silver nitrate solution is added to sodium chloride solution and silver chloride precipitates. Calculate the mass of precipitate formed from 0.02 mol of silver nitrate reacting completely. (Mr: AgCl = 143.5)",
+        accept: [
+          "2.87",
+        ],
+        answer: "2.87 g. Sodium and nitrate are spectator ions, so the ionic equation is Ag⁺(aq) + Cl⁻(aq) → AgCl(s). One silver ion gives one formula unit of precipitate, so 0.02 mol of silver nitrate makes 0.02 mol of AgCl. Mass = 0.02 × 143.5 = 2.87 g.",
+        higherOnly: true,
+      },
+      {
+        question: "A student writes the equation for burning hydrogen as H₂ + O₂ → H₂O₂. Explain what is wrong with it, even though the atoms balance.",
+        answer: "The atoms do balance — two hydrogens and two oxygens on each side — so balancing alone cannot catch this mistake. The problem is that the product is wrong: burning hydrogen makes water, H₂O, not hydrogen peroxide. Balancing numbers may be adjusted freely, but the formula of a substance is fixed by the bonding between its atoms and cannot be invented to make an equation work. The correct equation is 2H₂ + O₂ → 2H₂O. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what a spectator ion is, and why writing a precipitation reaction as an ionic equation is more useful than writing the full one.",
+        answer: "A spectator ion is one that is present in solution before and after the reaction and is not changed by it, such as the sodium and nitrate ions when silver nitrate meets sodium chloride. Leaving them in clutters the equation with species that take no part. The ionic equation Ag⁺(aq) + Cl⁻(aq) → AgCl(s) shows only what actually changes: two free ions combining into an insoluble solid. It also makes clear that any soluble silver salt with any soluble chloride would give the same precipitate. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how you can tell, from a symbol equation alone, whether a reaction is a neutralisation, a displacement or a thermal decomposition.",
+        answer: "A thermal decomposition has one reactant and two or more products, so the equation starts with a single substance breaking apart, as in CaCO₃ → CaO + CO₂. A neutralisation has an acid on the left and a salt with water on the right, so hydrogen ions from the acid end up in the water. A displacement shows a more reactive element swapping places with a less reactive one in a compound, with an element on each side of the arrow. Counting substances either side and looking for an element on its own usually settles it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what the state symbols in an equation tell a chemist, and why (aq) and (l) must not be used interchangeably.",
+        answer: "State symbols record the physical state of each substance under the reaction conditions: (s) solid, (l) liquid, (g) gas and (aq) dissolved in water. They matter because the same substance can behave completely differently in different states — solid sodium chloride does not conduct, molten and aqueous sodium chloride do. (l) means the pure substance is melted, whereas (aq) means it is dissolved in water and its ions are separated and free to move. Writing NaCl(l) when you mean NaCl(aq) describes a different substance at a different temperature, and in electrolysis it changes the products. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -2291,6 +2892,106 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "The limiting reactant determines how much product can form; the other reactants are in excess and some is left over.",
       },
+      {
+        question: "Calculate the relative formula mass of ammonium sulfate, (NH₄)₂SO₄. (Ar: N = 14, H = 1, S = 32, O = 16) Give the number only.",
+        accept: [
+          "132",
+        ],
+        answer: "132. Each ammonium group weighs 18, so the bracket gives two of them, 36, and the sulfate group adds 96: 36 + 96.",
+      },
+      {
+        question: "Calculate the percentage by mass of nitrogen in ammonium nitrate, NH₄NO₃. (Mr = 80, Ar: N = 14) Give the number only.",
+        accept: [
+          "35",
+        ],
+        answer: "35%. There are two nitrogen atoms, a mass of 28, and 28 out of 80 is (28 ÷ 80) of the compound, which is 35%. This is why ammonium nitrate is sold as a fertiliser.",
+      },
+      {
+        question: "Calculate the concentration, in g/dm³, of a solution containing 4.5 g of solute in 300 cm³.",
+        accept: [
+          "15",
+        ],
+        answer: "15 g/dm³. Convert the volume first, to 0.3 dm³, then divide the mass by it: 4.5 ÷ 0.3 = 15.",
+      },
+      {
+        question: "Calculate the percentage yield of a reaction whose theoretical yield is 25 g but which actually produces 21 g.",
+        accept: [
+          "84",
+        ],
+        answer: "84%. Divide the actual mass by the theoretical mass: 21 ÷ 25 gives 0.84, which as a percentage is 84%.",
+      },
+      {
+        question: "Calculate the mass of copper oxide formed when 12.7 g of copper reacts completely with 3.2 g of oxygen.",
+        accept: [
+          "15.9",
+        ],
+        answer: "15.9 g. No atoms are lost, so the product must weigh as much as the two reactants together: 12.7 + 3.2 = 15.9 g.",
+      },
+      {
+        question: "Calculate the atom economy for making hydrogen by Zn + H₂SO₄ → ZnSO₄ + H₂, to one decimal place. (Mr: H₂ = 2, ZnSO₄ = 161)",
+        accept: [
+          "1.2",
+        ],
+        answer: "1.2%. The wanted product has Mr 2 out of a total product mass of 163, and 2 ÷ 163 is 0.0123, which is 1.2%. Almost all the mass ends up as the zinc sulfate by-product.",
+      },
+      {
+        question: "Calculate the mass of aluminium oxide formed when 5.4 g of aluminium burns completely. 4Al + 3O₂ → 2Al₂O₃. (Ar: Al = 27, O = 16)",
+        accept: [
+          "10.2",
+        ],
+        answer: "10.2 g. Moles of aluminium = 5.4 ÷ 27 = 0.2 mol. The equation gives two Al₂O₃ for every four Al, so 0.2 ÷ 2 = 0.1 mol of oxide. Mr(Al₂O₃) = (2 × 27) + (3 × 16) = 102, so mass = 0.1 × 102 = 10.2 g.",
+        higherOnly: true,
+      },
+      {
+        question: "6.0 g of magnesium is added to 100 cm³ of 2.0 mol/dm³ hydrochloric acid. Mg + 2HCl → MgCl₂ + H₂. Calculate the mass of hydrogen produced. (Ar: Mg = 24, Mr: H₂ = 2)",
+        accept: [
+          "0.2",
+        ],
+        answer: "0.2 g. Moles of magnesium = 6.0 ÷ 24 = 0.25 mol, and moles of acid = 0.100 × 2.0 = 0.20 mol. Two HCl are needed per magnesium, so 0.25 mol of metal would need 0.50 mol of acid — the acid runs out first and is limiting. Hydrogen forms from acid in a 2 : 1 ratio, so 0.20 ÷ 2 = 0.10 mol, and mass = 0.10 × 2 = 0.2 g.",
+        higherOnly: true,
+      },
+      {
+        question: "50 g of calcium carbonate is heated and gives 22.4 g of calcium oxide. CaCO₃ → CaO + CO₂. Calculate the percentage yield. (Mr: CaCO₃ = 100, CaO = 56)",
+        accept: [
+          "80",
+        ],
+        answer: "80%. Moles of calcium carbonate = 50 ÷ 100 = 0.5 mol, and the 1 : 1 ratio means 0.5 mol of calcium oxide should form. Theoretical mass = 0.5 × 56 = 28 g. So percentage yield = (22.4 ÷ 28) × 100 = 80%.",
+        higherOnly: true,
+      },
+      {
+        question: "25.0 cm³ of 0.200 mol/dm³ sodium hydroxide solution is diluted with water to a total volume of 250 cm³. Calculate the new concentration in mol/dm³.",
+        accept: [
+          "0.02",
+          "0.0200",
+          "0.020",
+        ],
+        answer: "0.02 mol/dm³. Moles of NaOH = 0.0250 × 0.200 = 0.00500 mol, and adding water cannot change that number. The new volume is 250 ÷ 1000 = 0.250 dm³, so the concentration = 0.00500 ÷ 0.250 = 0.0200 mol/dm³ — ten times weaker, as the tenfold dilution suggests.",
+        higherOnly: true,
+      },
+      {
+        question: "Calculate the volume of carbon dioxide, in dm³, given off at room temperature and pressure when 20 g of calcium carbonate decomposes completely. (Mr: CaCO₃ = 100; one mole of any gas occupies 24 dm³)",
+        accept: [
+          "4.8",
+        ],
+        answer: "4.8 dm³. Moles of calcium carbonate = 20 ÷ 100 = 0.2 mol. CaCO₃ → CaO + CO₂ makes one CO₂ per carbonate, so 0.2 mol of gas forms. Volume = 0.2 × 24 = 4.8 dm³.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why the percentage yield of an industrial reaction is almost never 100%, giving three different reasons.",
+        answer: "Some reactions are reversible, so the products turn back into reactants and the reaction never goes fully to completion. Some of the reactants may take part in side reactions that give unwanted products instead of the one being measured. Product is also lost physically during separation and purification — left on filter paper, stuck to glassware or evaporated away. All three reduce the mass collected even when the chemistry itself worked. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a reaction with a high percentage yield can still be a poor industrial process if its atom economy is low.",
+        answer: "Percentage yield compares what you actually got with what that reaction could have given, so it says nothing about how much of the reactant mass was destined to become waste. Atom economy compares the mass of the useful product with the mass of everything produced, so a low value means most of the raw material ends up as by-product no matter how well the reaction runs. A process could convert 95% of its theoretical yield and still throw away three quarters of the atoms it started with. That means higher raw material costs, more waste to dispose of and a worse environmental footprint. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what is meant by the limiting reactant, and why adding more of the other reactant does not increase the mass of product.",
+        answer: "The limiting reactant is the one that is completely used up first, and it therefore fixes how much product can be made. Once it has gone the reaction stops, however much of the other reactant is still sitting in the flask. The extra reactant is said to be in excess and simply remains unchanged at the end. This is why a reacting mass calculation must always be based on the limiting reactant, not on whichever mass the question gives first. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why relative formula mass has no units while the mass of one mole of the same substance is measured in grams.",
+        answer: "Relative formula mass is a ratio: it compares the mass of a formula unit with one twelfth of the mass of a carbon-12 atom. Dividing a mass by a mass cancels the units, so Mr is just a number and writing grams after it is wrong. Molar mass is a different quantity — the mass of 6.02 × 10²³ formula units — and that is a real mass, measured in grams per mole. The two share the same numerical value, which is why they are so easily confused. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -2635,6 +3336,119 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "The pH scale is logarithmic, so pH 3 has ten times the hydrogen ion concentration of pH 4, and a hundred times that of pH 5.",
       },
+      {
+        question: "Work out the name and formula of the salt produced when sulfuric acid reacts with potassium hydroxide.",
+        accept: [
+          "potassium sulfate",
+          "K2SO4",
+          "k2so4",
+          "potassium sulphate",
+        ],
+        answer: "Potassium sulfate, K₂SO₄. Sulfuric acid always gives a sulfate, and two K⁺ ions are needed to balance one SO₄²⁻ ion: 2 × 1 balances the 2 negative charges.",
+      },
+      {
+        question: "Work out the two products formed when zinc reacts with hydrochloric acid, and give the formula of the gas.",
+        accept: [
+          "H2",
+          "h2",
+          "zinc chloride and H2",
+          "hydrogen H2",
+        ],
+        answer: "Zinc chloride and hydrogen, H₂. Acid plus metal always gives a salt plus hydrogen: Zn + 2HCl → ZnCl₂ + H₂. The gas is what makes the squeaky pop with a lit splint.",
+      },
+      {
+        question: "Calculate the volume of water, in cm³, that must be added to 100 cm³ of acid to lower its concentration from 2.0 g/dm³ to 0.5 g/dm³.",
+        accept: [
+          "300",
+        ],
+        answer: "300 cm³. The concentration has to fall by a factor of 2.0 ÷ 0.5, which is four, so the total volume must become four times larger, 400 cm³. That means adding 300 cm³ of water to the 100 cm³ already there.",
+      },
+      {
+        question: "Calculate the concentration, in g/dm³, of a solution containing 7.3 g of hydrogen chloride in 200 cm³.",
+        accept: [
+          "36.5",
+        ],
+        answer: "36.5 g/dm³. Convert the volume to dm³ first — 200 cm³ is 0.2 dm³ — then divide the mass by it: 7.3 ÷ 0.2.",
+      },
+      {
+        question: "Work out the formula of the salt made when nitric acid reacts with copper(II) oxide.",
+        accept: [
+          "Cu(NO3)2",
+          "cu(no3)2",
+          "CuN2O6",
+        ],
+        answer: "Cu(NO₃)₂. Nitric acid always gives a nitrate, NO₃⁻, and copper(II) is Cu²⁺, so two nitrate ions are needed: 2 × 1 balances the 2 positive charges.",
+      },
+      {
+        question: "Work out which acid and which alkali you would react together to make sodium nitrate.",
+        accept: [
+          "nitric acid and sodium hydroxide",
+          "nitric acid, sodium hydroxide",
+          "HNO3 and NaOH",
+          "hno3 and naoh",
+          "nitric acid sodium hydroxide",
+        ],
+        answer: "Nitric acid and sodium hydroxide. Read the salt backwards: the metal part comes from the alkali, so sodium = NaOH, and the rest comes from the acid, so nitrate means nitric acid.",
+      },
+      {
+        question: "In a titration, 25.0 cm³ of sodium hydroxide is exactly neutralised by 20.0 cm³ of 0.100 mol/dm³ hydrochloric acid. NaOH + HCl → NaCl + H₂O. Calculate the concentration of the sodium hydroxide in mol/dm³.",
+        accept: [
+          "0.08",
+          "0.0800",
+          "0.080",
+        ],
+        answer: "0.08 mol/dm³. Moles of acid = 0.0200 × 0.100 = 0.00200 mol. The equation is 1 : 1, so the flask held 0.00200 mol of sodium hydroxide. Concentration = 0.00200 ÷ 0.0250 = 0.0800 mol/dm³.",
+        higherOnly: true,
+      },
+      {
+        question: "24.0 cm³ of 0.500 mol/dm³ sulfuric acid exactly neutralises 30.0 cm³ of sodium hydroxide. H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O. Calculate the concentration of the sodium hydroxide in mol/dm³.",
+        accept: [
+          "0.8",
+          "0.800",
+          "0.80",
+        ],
+        answer: "0.8 mol/dm³. Moles of sulfuric acid = 0.0240 × 0.500 = 0.0120 mol. Each acid molecule neutralises two NaOH, so the flask held 0.0120 × 2 = 0.0240 mol. Concentration = 0.0240 ÷ 0.0300 = 0.800 mol/dm³. Forgetting the 2 : 1 ratio halves the answer.",
+        higherOnly: true,
+      },
+      {
+        question: "A sodium hydroxide solution has a concentration of 0.250 mol/dm³. Calculate the mass of sodium hydroxide dissolved in 200 cm³ of it. (Mr: NaOH = 40)",
+        accept: [
+          "2",
+        ],
+        answer: "2 g. Converting to mass concentration, 0.250 × 40 = 10 g/dm³. The volume is 200 ÷ 1000 = 0.200 dm³, so the mass present = 10 × 0.200 = 2 g.",
+        higherOnly: true,
+      },
+      {
+        question: "8.0 g of copper oxide is added to excess sulfuric acid and 19.2 g of copper sulfate crystals are collected, against a theoretical yield of 24.0 g. Calculate the percentage yield.",
+        accept: [
+          "80",
+        ],
+        answer: "80%. Percentage yield is actual over theoretical: (19.2 ÷ 24.0) × 100 = 80%. The missing fifth is typical of this practical — crystals are lost on the filter paper, some salt stays dissolved rather than crystallising, and a little is left on the evaporating basin.",
+      },
+      {
+        question: "Two acids have the same concentration in mol/dm³: acid A has pH 1 and acid B has pH 3. Calculate how many times greater the hydrogen ion concentration in A is.",
+        accept: [
+          "100",
+        ],
+        answer: "100 times. Each pH unit is a factor of ten in hydrogen ion concentration, and the gap here is 3 − 1 = 2 units, so the factor is 10 × 10 = 100. Since both solutions contain the same number of moles of acid per dm³, B must be only partly ionised — it is the weak acid.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain the difference between a strong acid and a concentrated acid, and why a dilute strong acid can have a lower pH than a concentrated weak one.",
+        answer: "Strong describes how completely the acid ionises in water: a strong acid releases all of its hydrogen ions, while a weak acid only partly ionises and sits in equilibrium with un-ionised molecules. Concentrated describes how many moles of acid there are per dm³ of solution, which is about amount, not behaviour. pH depends only on the hydrogen ion concentration actually present. So a dilute strong acid that fully ionises can produce more hydrogen ions than a much more concentrated weak acid that barely ionises at all. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a titration is repeated until concordant results are obtained, and why a burette is used rather than a measuring cylinder.",
+        answer: "A single titre could be wrong through overshooting the end point, a misread scale or a trapped air bubble, and nothing in one result would reveal it. Repeating until two or three titres agree within 0.10 cm³ shows the technique is reproducible, and only those concordant values are averaged. A burette is graduated to 0.05 cm³ and lets the tap be closed one drop at a time, so the exact volume at the colour change can be found. A measuring cylinder is far less precise and cannot be controlled drop by drop, so the end point would be missed. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain, in terms of ions, what happens during neutralisation, and why any strong acid with any alkali releases a similar amount of energy per mole.",
+        answer: "An acid in solution supplies H⁺ ions and an alkali supplies OH⁻ ions, and neutralisation is those two combining: H⁺(aq) + OH⁻(aq) → H₂O(l). The metal ion from the alkali and the negative ion from the acid are spectators and stay in solution as the dissolved salt. Because a strong acid and a strong alkali are both fully ionised, the only reaction actually happening is that same one, whichever pair you choose. The same bond is made in every case, so the energy released per mole of water is much the same. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why carbon dioxide is given off when an acid reacts with a carbonate but not when it reacts with a metal oxide.",
+        answer: "A metal oxide contains only the metal ion and O²⁻, so the hydrogen ions from the acid can only combine with the oxide to make water, leaving a salt in solution. A carbonate contains the CO₃²⁻ ion, which has carbon in it, and when hydrogen ions attack it the carbonate breaks down into water and carbon dioxide. That is why the carbonate reaction fizzes and the oxide reaction does not. The bubbles turning limewater cloudy are the standard test that a carbonate was present. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -2938,6 +3752,110 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Hydrogen",
         ],
         answer: "Metal + acid gives a salt plus hydrogen, tested with a lit splint giving a squeaky pop. Metal CARBONATE + acid also gives carbon dioxide.",
+      },
+      {
+        question: "Work out the two products formed when magnesium ribbon is added to copper sulfate solution.",
+        accept: [
+          "magnesium sulfate and copper",
+          "copper and magnesium sulfate",
+          "magnesium sulphate and copper",
+          "magnesium sulfate + copper",
+        ],
+        answer: "Magnesium sulfate and copper. Magnesium is above copper in the reactivity series, so it displaces it: Mg + CuSO₄ → MgSO₄ + Cu. The blue colour fades and a pink-brown solid appears.",
+      },
+      {
+        question: "Calculate the percentage by mass of iron in iron(III) oxide, Fe₂O₃, to one decimal place. (Ar: Fe = 56, O = 16)",
+        accept: [
+          "70.0",
+          "70",
+        ],
+        answer: "70.0%. Two iron atoms contribute 112 out of a total Mr of 160, and 112 ÷ 160 is 0.70, which is 70.0%. This is why haematite is worth mining.",
+      },
+      {
+        question: "Zinc, copper and magnesium are each added to dilute hydrochloric acid. Work out which one does not react.",
+        accept: [
+          "copper",
+          "cu",
+        ],
+        answer: "Copper. It sits below hydrogen in the reactivity series, so it cannot displace hydrogen from an acid. The other two can: Mg + 2HCl → MgCl₂ + H₂, and zinc behaves the same way, more slowly.",
+      },
+      {
+        question: "79.5 g of copper oxide is reduced to 63.5 g of copper. Calculate the mass of oxygen removed.",
+        accept: [
+          "16",
+        ],
+        answer: "16 g. Reduction is loss of oxygen, and mass is conserved, so the oxygen taken away by the reducing agent is 79.5 − 63.5 = 16 g.",
+      },
+      {
+        question: "Work out whether the iron is oxidised or reduced in Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
+        accept: [
+          "reduced",
+          "reduction",
+        ],
+        answer: "Reduced. The iron starts combined with oxygen and ends as the element, and loss of oxygen = reduction. The carbon monoxide picks that oxygen up, so it is the one oxidised — the two always happen together.",
+      },
+      {
+        question: "Iron makes up 52.3% by mass of the rust it forms. Calculate the mass of rust produced when a 5.6 g iron nail rusts completely, to one decimal place.",
+        accept: [
+          "10.7",
+        ],
+        answer: "10.7 g. If the iron is 52.3% of the rust, the total mass is 5.6 ÷ 0.523 = 10.7 g. The extra mass is oxygen and water taken from the surroundings, which is why a rusted object weighs more than it did.",
+      },
+      {
+        question: "Iron is extracted in the blast furnace: Fe₂O₃ + 3CO → 2Fe + 3CO₂. Calculate the mass of iron produced from 800 tonnes of iron(III) oxide. (Mr: Fe₂O₃ = 160, Ar: Fe = 56)",
+        accept: [
+          "560",
+        ],
+        answer: "560 tonnes. Working in tonne-moles, 800 ÷ 160 = 5. Each Fe₂O₃ gives two iron atoms, so 5 × 2 = 10. Mass of iron = 10 × 56 = 560 tonnes.",
+        higherOnly: true,
+      },
+      {
+        question: "Metal X displaces copper from copper sulfate but not zinc from zinc sulfate. Metal Y displaces zinc but not magnesium. Work out the order of X, Y, zinc and copper, most reactive first.",
+        accept: [
+          "y zinc x copper",
+          "y, zinc, x, copper",
+          "y zn x cu",
+        ],
+        answer: "Y, zinc, X, copper. X + CuSO₄ → XSO₄ + Cu happens, so X is above copper, but X with ZnSO₄ gives no reaction, so X is below zinc. Y + ZnSO₄ → YSO₄ + Zn happens, so Y is above zinc, and failing against magnesium puts Y below it. Putting the two experiments together gives Y, zinc, X, copper.",
+      },
+      {
+        question: "Copper oxide is reduced by carbon: 2CuO + C → 2Cu + CO₂. Calculate the mass of carbon needed to reduce 15.9 g of copper oxide completely. (Mr: CuO = 79.5, Ar: C = 12)",
+        accept: [
+          "1.2",
+        ],
+        answer: "1.2 g. Moles of copper oxide = 15.9 ÷ 79.5 = 0.2 mol. The equation needs one carbon for every two CuO, so 0.2 ÷ 2 = 0.1 mol of carbon. Mass = 0.1 × 12 = 1.2 g.",
+        higherOnly: true,
+      },
+      {
+        question: "An ore contains 5.0% copper(II) oxide by mass. Calculate the mass of ore needed to obtain 1.0 tonne of copper, to the nearest tonne. (Mr: CuO = 79.5, Ar: Cu = 63.5)",
+        accept: [
+          "25",
+        ],
+        answer: "25 tonnes. Copper is 63.5 of CuO's 79.5, so 1.0 tonne of copper requires 1.0 × (79.5 ÷ 63.5) = 1.25 tonnes of copper oxide. That oxide is only 5% of the rock, so the ore needed = 1.25 ÷ 0.05 = 25 tonnes. Moving 25 tonnes of rock per tonne of metal is why low-grade ores are a problem.",
+      },
+      {
+        question: "In the displacement Mg + Cu²⁺ → Mg²⁺ + Cu, calculate the number of electrons transferred per magnesium atom.",
+        accept: [
+          "2",
+        ],
+        answer: "2. The half equations are Mg → Mg²⁺ + 2e⁻ and Cu²⁺ + 2e⁻ → Cu. Magnesium loses two electrons and so is oxidised, and the copper ions gain those same two and are reduced. Scaling up, 3 mol of magnesium would move 3 × 2 = 6 mol of electrons.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why gold is found in the Earth as the uncombined metal while aluminium never is.",
+        answer: "Gold is at the very bottom of the reactivity series, so it has almost no tendency to lose electrons and form positive ions. It therefore does not react with oxygen, water or acids over geological time and stays as the element. Aluminium is near the top, so it readily loses electrons and reacts with oxygen to form a very stable oxide. Any aluminium metal exposed on the early Earth would long ago have become aluminium oxide, which is why it is only ever mined as a compound. (Mark this one yourself.)",
+      },
+      {
+        question: "Aluminium is more reactive than iron, yet an aluminium window frame lasts for decades while an iron one rusts away. Explain why.",
+        answer: "Aluminium does react quickly with oxygen, but the aluminium oxide it forms is a thin, hard layer that sticks tightly to the surface underneath. That layer seals the metal off from air and water, so the reaction stops almost as soon as it starts. Rust is hydrated iron(III) oxide, which is flaky and porous, so it does not seal the surface and simply falls away. Fresh iron is exposed underneath and the rusting continues until the object has corroded through. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why galvanising still protects iron where the zinc layer has been scratched, while tin plating stops protecting as soon as it is damaged.",
+        answer: "Both coatings start as a barrier that keeps oxygen and water away from the iron. Zinc is more reactive than iron, so where the coating is broken the zinc loses electrons in preference and corrodes instead, and the iron is protected sacrificially. Tin is less reactive than iron, so at a scratch it is the iron that loses electrons, and the iron actually corrodes faster than it would with no coating at all. The barrier matters for both, but only zinc keeps working once that barrier fails. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain, in terms of electrons, why a displacement reaction between a metal and a salt solution is a redox reaction, and why it is always the more reactive metal that is oxidised.",
+        answer: "The metal atoms give up electrons to become positive ions, which is oxidation, and the metal ions already in solution take those electrons and become atoms, which is reduction. Both happen in the same reaction, so it is a redox reaction. Reactivity is essentially a measure of how readily a metal loses electrons, so the more reactive metal is the one that gives them up. The less reactive metal's ions accept them and are deposited as the solid element. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -3281,6 +4199,118 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Pure aluminium oxide melts at over 2000 degrees C. Dissolving it in molten cryolite cuts the temperature and so the cost.",
       },
+      {
+        question: "Work out the product formed at the cathode when molten aluminium oxide is electrolysed.",
+        accept: [
+          "aluminium",
+          "al",
+          "aluminum",
+        ],
+        answer: "Aluminium. Metal ions are positive, so Al³⁺ is attracted to the negative cathode, where it gains electrons: Al³⁺ + 3e⁻ → Al.",
+      },
+      {
+        question: "Work out the product formed at the anode when dilute sulfuric acid is electrolysed.",
+        accept: [
+          "oxygen",
+          "o2",
+        ],
+        answer: "Oxygen. The negative ions available are OH⁻ and SO₄²⁻, and sulfate is too stable to be discharged, so hydroxide ions give up electrons instead: 4OH⁻ → O₂ + 2H₂O + 4e⁻.",
+      },
+      {
+        question: "Calculate the total number of electrons transferred when one formula unit of Al₂O₃ is fully electrolysed.",
+        accept: [
+          "6",
+        ],
+        answer: "6. Each Al³⁺ takes three electrons and there are two of them, so 2 × 3 = 6 electrons are gained at the cathode. The three O²⁻ ions release exactly the same six at the anode.",
+      },
+      {
+        question: "Copper is purified by electrolysis using copper electrodes. Work out what happens to the mass of the anode.",
+        accept: [
+          "decreases",
+          "it decreases",
+          "loses mass",
+          "it loses mass",
+          "decrease",
+          "goes down",
+        ],
+        answer: "It decreases. The impure anode dissolves as Cu → Cu²⁺ + 2e⁻, and those ions travel across and plate onto the cathode. So the anode gets lighter by almost exactly the mass the cathode gains, with the impurities dropping off as sludge.",
+      },
+      {
+        question: "Work out the product formed at the anode when copper chloride solution is electrolysed.",
+        accept: [
+          "chlorine",
+          "cl2",
+        ],
+        answer: "Chlorine. When a halide ion is present in a reasonably concentrated solution it is discharged in preference to hydroxide: 2Cl⁻ → Cl₂ + 2e⁻. You would smell it and it would bleach damp litmus paper.",
+      },
+      {
+        question: "Work out which electrode a bromide ion travels to during electrolysis, and name the type of reaction that happens to it there.",
+        accept: [
+          "anode",
+          "the anode",
+          "anode oxidation",
+          "anode, oxidation",
+        ],
+        answer: "The anode. Bromide ions are negative, so they are attracted to the positive electrode, and there they give up electrons — loss of electrons = oxidation.",
+      },
+      {
+        question: "Calculate the mass of aluminium produced when 1.2 mol of electrons passes through molten aluminium oxide. (Ar: Al = 27)",
+        accept: [
+          "10.8",
+        ],
+        answer: "10.8 g. The half equation Al³⁺ + 3e⁻ → Al uses three electrons per atom, so 1.2 ÷ 3 = 0.4 mol of aluminium is deposited. Mass = 0.4 × 27 = 10.8 g.",
+        higherOnly: true,
+      },
+      {
+        question: "Molten sodium chloride is electrolysed and 4.6 g of sodium forms at the cathode. Calculate the volume of chlorine produced at room temperature and pressure, in dm³. (Ar: Na = 23; one mole of gas occupies 24 dm³)",
+        accept: [
+          "2.4",
+        ],
+        answer: "2.4 dm³. Moles of sodium = 4.6 ÷ 23 = 0.2 mol, and Na⁺ + e⁻ → Na means 0.2 mol of electrons crossed. At the anode 2Cl⁻ → Cl₂ + 2e⁻ gives one chlorine molecule per two electrons, so 0.2 ÷ 2 = 0.1 mol forms. Volume = 0.1 × 24 = 2.4 dm³.",
+        higherOnly: true,
+      },
+      {
+        question: "Sodium chloride solution is electrolysed with inert electrodes. Work out the three useful products, naming what forms at each electrode and what is left in solution.",
+        accept: [
+          "hydrogen chlorine and sodium hydroxide",
+          "hydrogen, chlorine and sodium hydroxide",
+          "hydrogen chlorine sodium hydroxide",
+          "hydrogen, chlorine, sodium hydroxide",
+        ],
+        answer: "Hydrogen at the cathode, chlorine at the anode, and sodium hydroxide left in the solution. The water supplies H⁺ + OH⁻ alongside the Na⁺ and Cl⁻ from the salt. At the cathode 2H⁺ + 2e⁻ → H₂ wins, because sodium is more reactive than hydrogen and its ions stay put. At the anode the halide is discharged as 2Cl⁻ → Cl₂ + 2e⁻, leaving Na⁺ and OH⁻ behind as sodium hydroxide.",
+      },
+      {
+        question: "During copper purification the anode loses 6.35 g. Calculate the number of moles of electrons that passed through the cell. (Ar: Cu = 63.5)",
+        accept: [
+          "0.2",
+        ],
+        answer: "0.2 mol. Moles of copper dissolved = 6.35 ÷ 63.5 = 0.1 mol. Each atom leaves as Cu → Cu²⁺ + 2e⁻, releasing two electrons, so 0.1 × 2 = 0.2 mol of electrons flowed. The cathode uses the same 0.2 mol and therefore gains the same 6.35 g.",
+        higherOnly: true,
+      },
+      {
+        question: "Calculate the mass of aluminium oxide needed to produce 1080 tonnes of aluminium. (Mr: Al₂O₃ = 102, Ar: Al = 27)",
+        accept: [
+          "2040",
+        ],
+        answer: "2040 tonnes. Working in tonne-moles, 1080 ÷ 27 = 40 of aluminium. Each Al₂O₃ contains two aluminium atoms, so 40 ÷ 2 = 20 are needed. Mass = 20 × 102 = 2040 tonnes of oxide for every 1080 tonnes of metal.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why electrolysing copper sulfate solution with copper electrodes purifies copper, while using inert carbon electrodes does not.",
+        answer: "With copper electrodes the impure anode itself dissolves, Cu → Cu²⁺ + 2e⁻, so copper ions are continually fed into the solution and plated as pure metal on the cathode. Impurities such as gold and silver are less reactive and do not dissolve, so they fall to the bottom as anode sludge, while more reactive impurities dissolve but stay in solution rather than plating out. With inert carbon electrodes the anode takes no part, so oxygen is released there instead and the copper ions in the solution are simply used up. The copper deposited would be no purer than what was already dissolved. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a molten ionic compound conducts electricity and is broken down by it, while molten wax conducts nothing at all.",
+        answer: "In a solid ionic lattice the ions are locked in place, but melting frees them to move, and because they carry charge their movement is an electric current. Positive ions travel to the cathode and negative ions to the anode, where they gain or lose electrons and turn into elements, so the compound is decomposed. Wax is made of neutral molecules with no charged particles at all, so melting it produces mobile particles that carry no charge. With nothing to carry current there is no conduction and no decomposition. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the electrolysis of brine is such a valuable industrial process, naming the three products and a use for each.",
+        answer: "One cheap and effectively unlimited raw material, sea water, yields three products that are all in demand. Chlorine from the anode is used to sterilise drinking water and to make bleach and PVC. Hydrogen from the cathode is used in the manufacture of ammonia and as a fuel. The sodium hydroxide left in solution is used to make soaps, detergents and paper. Almost nothing is wasted, which is what makes the economics work. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why oxidation always happens at the anode and reduction always at the cathode, in terms of where electrons go.",
+        answer: "The power supply pulls electrons away from the anode, so that electrode is short of electrons and is positive. Negative ions are attracted to it and give up their electrons there, and loss of electrons is oxidation. The same electrons are pushed onto the cathode, making it negative, so positive ions are attracted and take electrons from it, and gain of electrons is reduction. The two must happen together, because every electron released at the anode is one delivered at the cathode. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -3618,6 +4648,105 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Endothermic and exothermic",
         ],
         answer: "Breaking bonds takes energy in; making them gives energy out. Which is larger decides whether the reaction overall is exothermic or endothermic.",
+      },
+      {
+        question: "Calculate the energy transferred, in joules, when 100 g of water rises by 15°C. (c = 4.2 J/g°C)",
+        accept: [
+          "6300",
+        ],
+        answer: "6300 J. Substituting into q = mcΔT gives 100 × 4.2 × 15 joules. Always check the mass used is the mass of the solution being heated, not the mass of fuel burnt.",
+      },
+      {
+        question: "A reaction profile shows the reactants at 250 kJ and the peak of the curve at 400 kJ. Calculate the activation energy.",
+        accept: [
+          "150",
+        ],
+        answer: "150 kJ. Activation energy is measured from the reactants up to the top of the hump, not from the products: 400 − 250. The products' energy plays no part in it.",
+      },
+      {
+        question: "Calculate the temperature rise, in °C, when 4200 J is transferred to 50 g of water. (c = 4.2 J/g°C)",
+        accept: [
+          "20",
+        ],
+        answer: "20°C. Rearranging q = mcΔT means dividing the energy by mass times specific heat capacity, so 4200 ÷ 210.",
+      },
+      {
+        question: "Burning 0.25 mol of a fuel releases 320 kJ. Calculate the energy released per mole, in kJ/mol.",
+        accept: [
+          "1280",
+        ],
+        answer: "1280 kJ/mol. Divide the energy by the number of moles burnt: 320 ÷ 0.25. Per-mole figures let you compare fuels fairly however much of each you burn.",
+      },
+      {
+        question: "Dissolving ammonium nitrate in water makes the beaker feel cold. Work out whether the process is exothermic or endothermic.",
+        accept: [
+          "endothermic",
+        ],
+        answer: "Endothermic. The beaker feels cold because energy is being taken in from the surroundings, so their temperature falls and the energy change = a positive value. Instant cold packs use exactly this.",
+      },
+      {
+        question: "Two reactions are both exothermic, but one needs strong heating to start and the other happens at room temperature. Work out which has the higher activation energy.",
+        accept: [
+          "the one that needs heating",
+          "the one needing heating",
+          "the one that needs strong heating",
+          "the heated one",
+        ],
+        answer: "The one that needs strong heating. Activation energy = the minimum energy a collision must have to succeed, so if it is high only a tiny fraction of collisions at room temperature are energetic enough. Heating raises that fraction. How much energy a reaction gives out is a separate question from how easily it starts.",
+      },
+      {
+        question: "Calculate the overall energy change, in kJ/mol, for CH₄ + 2O₂ → CO₂ + 2H₂O. (Bond energies in kJ/mol: C–H 412, O=O 496, C=O 743, O–H 463)",
+        accept: [
+          "-698",
+        ],
+        answer: "−698 kJ/mol. Bonds broken: four C–H at 412 gives 1648, plus two O=O at 496 gives 992, a total of 2640 kJ. Bonds made: two C=O gives 1486, plus four O–H gives 1852, a total of 3338 kJ. Energy change = broken − made = 2640 − 3338 = −698 kJ/mol, so combustion is exothermic.",
+        higherOnly: true,
+      },
+      {
+        question: "50 cm³ of acid is mixed with 50 cm³ of alkali and the temperature rises by 6.5°C. Calculate the energy released, in kJ. (density 1 g/cm³, c = 4.2 J/g°C)",
+        accept: [
+          "2.73",
+        ],
+        answer: "2.73 kJ. The mass being heated is the whole mixture: 50 + 50 = 100 g. Then q = mcΔT = 100 × 4.2 × 6.5 = 2730 J. Converting, 2730 ÷ 1000 = 2.73 kJ.",
+      },
+      {
+        question: "Burning 0.50 g of ethanol raises the temperature of 200 g of water by 15°C. Calculate the energy released per gram of ethanol, in kJ/g. (c = 4.2 J/g°C)",
+        accept: [
+          "25.2",
+        ],
+        answer: "25.2 kJ/g. Energy gained by the water = 200 × 4.2 × 15 = 12,600 J. In kilojoules that is 12,600 ÷ 1000 = 12.6 kJ. Per gram of fuel, 12.6 ÷ 0.50 = 25.2 kJ/g. The accepted value for ethanol is nearer 30 kJ/g, and the shortfall is heat lost to the air and the apparatus.",
+      },
+      {
+        question: "25.0 cm³ of 2.00 mol/dm³ hydrochloric acid is neutralised and 2.86 kJ is released. Calculate the energy change in kJ/mol, including the sign.",
+        accept: [
+          "-57.2",
+        ],
+        answer: "−57.2 kJ/mol. Moles of acid = 0.0250 × 2.00 = 0.0500 mol. Energy per mole = 2.86 ÷ 0.0500 = 57.2 kJ. The sign is negative because energy was given out to the surroundings.",
+        higherOnly: true,
+      },
+      {
+        question: "The energy change for N₂ + 3H₂ → 2NH₃ is −92 kJ/mol. Calculate the N–H bond energy, to the nearest whole number. (N≡N 941 kJ/mol, H–H 436 kJ/mol)",
+        accept: [
+          "390",
+        ],
+        answer: "390 kJ/mol. Bonds broken = 941 + (3 × 436) = 2249 kJ. Since energy change = bonds broken − bonds made, −92 = 2249 − bonds made, so bonds made = 2341 kJ. Two ammonia molecules contain six N–H bonds, so each is 2341 ÷ 6 = 390 kJ/mol.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain how a reaction can be endothermic overall, given that making bonds always releases energy.",
+        answer: "Every reaction both breaks bonds, which takes energy in, and makes bonds, which gives energy out, and the overall change is the difference between the two totals. If the energy needed to break the reactant bonds is greater than the energy released when the product bonds form, the reaction has to take the shortfall from its surroundings. That is what makes it endothermic, and why the temperature of the surroundings falls. Bond making is still exothermic — it is simply not enough to pay for the bond breaking. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a hydrogen fuel cell may be preferred to a rechargeable battery for a long journey, and give one drawback of using it.",
+        answer: "A fuel cell keeps producing a voltage for as long as hydrogen and oxygen are supplied, so range depends on tank size rather than on stored charge, and refuelling takes minutes instead of hours of recharging. The only product is water, so nothing polluting comes out of the vehicle, and the cell does not lose capacity through repeated charge cycles the way a battery does. The drawbacks are real, though: hydrogen is a gas that is difficult and expensive to store safely at high pressure, and most of it is currently made from fossil fuels, which moves the emissions elsewhere rather than removing them. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the temperature rise measured in a school calorimetry experiment is always lower than the true value, and how the apparatus could be improved.",
+        answer: "Energy escapes to the surroundings instead of reaching the water — heating the air, the container, the thermometer and the stand — so less of the reaction's energy is measured. With a burning fuel, some of it may also evaporate or burn incompletely, releasing less energy than the calculation assumes. Insulating the container with a lid and lagging, and shielding the flame from draughts, keeps more of the energy where it is wanted. Using a copper calorimeter close above the flame also improves the transfer, though some loss is unavoidable. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what activation energy is, and why an exothermic reaction with a high activation energy may not happen at all at room temperature.",
+        answer: "Activation energy is the minimum energy that colliding particles must have for the collision to be successful and the reaction to occur. Whether a reaction gives energy out overall says nothing about how much energy it needs to get started, because the reactant bonds still have to be broken first. At room temperature only a small fraction of particles have enough energy, so if the activation energy is high almost no collisions succeed and the rate is effectively zero. A spark, heating or a catalyst that lowers the barrier is needed before the reaction proceeds — which is why petrol sits safely in a tank. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -3974,6 +5103,118 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Lower concentration means fewer particles in the same volume, so fewer collisions per second and a slower reaction.",
       },
+      {
+        question: "A flask loses 1.8 g in the first 30 s and a further 0.6 g in the next 30 s. Calculate the mean rate over the whole minute, in g/s.",
+        accept: [
+          "0.04",
+        ],
+        answer: "0.04 g/s. The total loss is 2.4 g over 60 s, so the mean rate = 2.4 ÷ 60. The mean hides the fact that the first half was three times faster than the second.",
+      },
+      {
+        question: "A tangent drawn to a rate curve at 20 s has a rise of 18 cm³ over a run of 15 s. Calculate the rate of reaction at 20 s, in cm³/s.",
+        accept: [
+          "1.2",
+        ],
+        answer: "1.2 cm³/s. The gradient of the tangent is the rate at that instant, so divide the rise by the run: 18 ÷ 15.",
+        higherOnly: true,
+      },
+      {
+        question: "In a disappearing-cross experiment the cross can no longer be seen after 40 s. Calculate 1 ÷ time as a measure of the rate, in s⁻¹.",
+        accept: [
+          "0.025",
+        ],
+        answer: "0.025 per second. Rate is proportional to 1 ÷ time, so dividing 1 by 40 s gives 0.025. The faster the reaction, the bigger this number, which is why it is plotted rather than the time itself.",
+      },
+      {
+        question: "A reaction produces gas at a mean rate of 0.8 cm³/s. Calculate the volume collected after 25 s.",
+        accept: [
+          "20",
+        ],
+        answer: "20 cm³. Rearranging, volume = rate × time, so 0.8 × 25 cm³ is collected.",
+      },
+      {
+        question: "Calculate the mean rate of reaction, in mol/s, if 0.06 mol of gas is produced in 150 s.",
+        accept: [
+          "0.0004",
+          "4x10^-4",
+          "4 x 10^-4",
+          "4e-4",
+        ],
+        answer: "0.0004 mol/s. Divide the amount of substance formed by the time taken: 0.06 ÷ 150. Quoting a rate in mol/s rather than cm³/s makes different gases comparable.",
+      },
+      {
+        question: "The same mass of marble chips is crushed to a powder before being added to the same acid. Work out what happens to the total volume of carbon dioxide collected.",
+        accept: [
+          "it stays the same",
+          "stays the same",
+          "no change",
+          "the same",
+          "unchanged",
+          "it is the same",
+        ],
+        answer: "It stays the same. Powdering increases the surface area, so more collisions happen per second and the graph is steeper, but the amount of reactant = the same as before. Surface area changes how fast, never how much.",
+      },
+      {
+        question: "A reaction gives 60 cm³ of gas in total, with 45 cm³ collected by 30 s and the reaction finishing at 90 s. Calculate how many times faster the mean rate over the first 30 s is than over the last 60 s.",
+        accept: [
+          "6",
+        ],
+        answer: "6 times. Over the first 30 s the rate is 45 ÷ 30 = 1.5 cm³/s. In the remaining time only 60 − 45 = 15 cm³ forms, over 60 s, giving 15 ÷ 60 = 0.25 cm³/s. Comparing the two, 1.5 ÷ 0.25 = 6.",
+      },
+      {
+        question: "0.12 g of magnesium reacts completely with excess acid in 50 s. Mg + 2HCl → MgCl₂ + H₂. Calculate the mean rate in mol of hydrogen per second. (Ar: Mg = 24)",
+        accept: [
+          "0.0001",
+          "1x10^-4",
+          "1 x 10^-4",
+          "1e-4",
+        ],
+        answer: "0.0001 mol/s. Moles of magnesium = 0.12 ÷ 24 = 0.005 mol. One H₂ forms per magnesium, so 0.005 mol of hydrogen is released. Rate = 0.005 ÷ 50 = 0.0001 mol/s.",
+        higherOnly: true,
+      },
+      {
+        question: "24 cm³ of hydrogen is collected in 40 s at room temperature and pressure. Calculate the mean rate in mol/s. (One mole of any gas occupies 24 dm³ at RTP.)",
+        accept: [
+          "0.000025",
+          "2.5x10^-5",
+          "2.5 x 10^-5",
+          "2.5e-5",
+        ],
+        answer: "0.000025 mol/s. Convert the volume first: 24 ÷ 1000 = 0.024 dm³. Moles = 0.024 ÷ 24 = 0.001 mol. Rate = 0.001 ÷ 40 = 0.000025 mol/s, or 2.5 × 10⁻⁵ mol/s.",
+        higherOnly: true,
+      },
+      {
+        question: "Halving the concentration of the acid makes a reaction take 90 s instead of 30 s. Calculate the ratio of the faster rate to the slower one.",
+        accept: [
+          "3",
+          "3:1",
+          "3 : 1",
+        ],
+        answer: "3, or 3 : 1. Rate is proportional to 1 ÷ time, so the two rates are 1 ÷ 30 = 0.0333 and 1 ÷ 90 = 0.0111 per second. Dividing them gives 0.0333 ÷ 0.0111 = 3. Halving the concentration cut the rate by a factor of three, not two, so rate is not simply proportional to concentration here.",
+      },
+      {
+        question: "A catalysed reaction reaches its final volume of 80 cm³ in 25 s; without the catalyst it takes 100 s. Calculate the difference between the two mean rates, in cm³/s.",
+        accept: [
+          "2.4",
+        ],
+        answer: "2.4 cm³/s. With the catalyst the mean rate is 80 ÷ 25 = 3.2 cm³/s; without it, 80 ÷ 100 = 0.8 cm³/s. The difference is 3.2 − 0.8 = 2.4 cm³/s. Both reach 80 cm³, because a catalyst changes the rate and not the amount of product.",
+      },
+      {
+        question: "Explain, using collision theory, why a reaction between marble chips and acid slows down as it goes on, even though nothing is taken away.",
+        answer: "As the reaction proceeds the acid is used up, so there are fewer acid particles in each cm³ of solution and fewer collisions with the marble every second. The chips also shrink, reducing the surface area available for collisions to happen on. Fewer collisions per second means fewer successful collisions per second, so the rate falls. The graph therefore gets shallower and finally flattens when one reactant has run out completely. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the rate graph for a catalysed reaction is steeper than the uncatalysed one but levels off at exactly the same height.",
+        answer: "A catalyst provides an alternative reaction pathway with a lower activation energy, so a greater proportion of collisions have enough energy to succeed. More successful collisions per second means a faster rate, which shows as a steeper line early on. The catalyst is not used up and does not change the reactants or the products, so the same amount of gas can be made either way. The height of the plateau is fixed by the amount of the limiting reactant, which the catalyst has not altered. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why raising the pressure speeds up a reaction between two gases, but raising the pressure on a reaction between two solutions does not.",
+        answer: "Increasing the pressure on a gas squeezes the same number of particles into a smaller volume, so there are more particles per cm³ and they collide more often. More collisions per second gives more successful collisions per second, and the rate rises. Liquids are effectively incompressible, so applying pressure to a solution barely changes its volume. The number of particles per cm³ stays the same, the collision frequency does not change, and neither does the rate. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why timing how long a cross takes to disappear gives only a rough measure of rate, and how the method could be improved.",
+        answer: "Deciding the exact moment the cross vanishes is a judgement made by eye, and different people call it at different points, so the result depends on the observer. The same person may also judge it differently between runs, and the reaction does not stop at that instant — it is simply obscured. Using a light sensor and a data logger to record when the transmitted light falls below a set level removes the human judgement and gives a consistent end point. Repeating each concentration and taking a mean, with the same depth of solution and the same cross each time, also improves it. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -4276,6 +5517,120 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Speeds up both directions equally, so equilibrium is reached sooner",
         ],
         answer: "A catalyst changes the time taken, never the position of equilibrium. That distinction is tested regularly.",
+      },
+      {
+        question: "A Haber plant makes 68 tonnes of ammonia against a theoretical 170 tonnes. Calculate the percentage yield.",
+        accept: [
+          "40",
+        ],
+        answer: "40%. Divide the actual mass by the theoretical mass: 68 ÷ 170 gives 0.4, which is 40%. Unreacted gases are recycled, so the overall conversion is far better than one pass suggests.",
+      },
+      {
+        question: "25 g of blue hydrated copper sulfate is heated until 16 g of white powder remains. Calculate the mass of water driven off.",
+        accept: [
+          "9",
+        ],
+        answer: "9 g. The only thing lost is the water of crystallisation, so 25 − 16 = 9 g. Adding that water back turns the powder blue again, which is what makes the change reversible.",
+      },
+      {
+        question: "Work out the colour change seen when blue anhydrous cobalt chloride paper is used to test a liquid and water is present.",
+        accept: [
+          "blue to pink",
+          "pink",
+          "turns pink",
+          "it turns pink",
+          "blue turns pink",
+        ],
+        answer: "Blue to pink. The anhydrous form is blue and the hydrated form is pink: CoCl₂ + 6H₂O ⇌ CoCl₂·6H₂O. Warming the pink paper drives the water off again and it returns to blue.",
+      },
+      {
+        question: "The forward reaction 2SO₂ + O₂ ⇌ 2SO₃ is exothermic. Work out what happens to the yield of SO₃ when the temperature is raised.",
+        accept: [
+          "it decreases",
+          "decreases",
+          "it falls",
+          "falls",
+          "goes down",
+          "it goes down",
+          "lower",
+        ],
+        answer: "It decreases. Raising the temperature shifts the position of equilibrium in the endothermic direction, which here is the reverse reaction, so more SO₃ breaks back down = a lower yield. The rate goes up at the same time, which is the whole industrial dilemma.",
+        higherOnly: true,
+      },
+      {
+        question: "N₂ + 3H₂ ⇌ 2NH₃. Calculate the mass of ammonia that 28 tonnes of nitrogen would give at 100% conversion. (Mr: N₂ = 28, NH₃ = 17)",
+        accept: [
+          "34",
+        ],
+        answer: "34 tonnes. 28 tonnes is one tonne-mole of nitrogen, and each N₂ gives two NH₃, so the mass is 2 × 17 tonnes. The real plant never reaches this, because the reaction is reversible.",
+      },
+      {
+        question: "Work out whether a reversible reaction taking place in an open beaker can reach equilibrium.",
+        accept: [
+          "no",
+          "it cannot",
+          "cannot",
+          "no it cannot",
+        ],
+        answer: "No. Equilibrium needs a closed system, and in an open beaker any gas produced escapes into the room. The reverse reaction then has nothing to work with, so the two rates can never become equal = no equilibrium is ever established.",
+      },
+      {
+        question: "A Haber plant runs at a yield of 15%. Calculate the mass of nitrogen needed to make 340 tonnes of ammonia, to the nearest tonne. (Mr: N₂ = 28, NH₃ = 17)",
+        accept: [
+          "1867",
+        ],
+        answer: "1867 tonnes. 340 ÷ 17 = 20 tonne-moles of ammonia, and two ammonia come from each nitrogen, so 20 ÷ 2 = 10 tonne-moles of N₂ are needed. At 100% that is 10 × 28 = 280 tonnes. At only 15% yield the feed required is 280 ÷ 0.15 = 1867 tonnes.",
+        higherOnly: true,
+      },
+      {
+        question: "For 2SO₂ + O₂ ⇌ 2SO₃ the forward reaction has an energy change of −196 kJ/mol. Work out the temperature and pressure conditions that would give the highest yield of SO₃.",
+        accept: [
+          "low temperature and high pressure",
+          "low temperature, high pressure",
+          "low temp and high pressure",
+          "cool and high pressure",
+        ],
+        answer: "Low temperature and high pressure. The forward reaction is exothermic, so cooling shifts the equilibrium towards SO₃. There are 2 + 1 = 3 gas molecules on the left against 2 on the right, so squeezing the mixture also favours the product side. Industry does not use both: a low temperature makes the rate uselessly slow, so about 450°C is chosen, and the yield at ordinary pressure is already around 96%, so high pressure is not worth the cost.",
+        higherOnly: true,
+      },
+      {
+        question: "0.50 mol of N₂ and 1.50 mol of H₂ are sealed in a vessel. At equilibrium 0.20 mol of NH₃ has formed. Calculate the moles of nitrogen remaining.",
+        accept: [
+          "0.4",
+          "0.40",
+        ],
+        answer: "0.40 mol. N₂ + 3H₂ ⇌ 2NH₃ makes two ammonia for each nitrogen, so the nitrogen used is 0.20 ÷ 2 = 0.10 mol. Subtracting from what was there at the start, 0.50 − 0.10 = 0.40 mol is left. For the same reason 3 × 0.10 = 0.30 mol of hydrogen has gone.",
+        higherOnly: true,
+      },
+      {
+        question: "A 2.0 dm³ vessel at equilibrium holds 0.80 mol of N₂O₄ and 0.40 mol of NO₂. Calculate the percentage of the molecules present that are NO₂, to one decimal place.",
+        accept: [
+          "33.3",
+        ],
+        answer: "33.3%. The total amount present is 0.80 + 0.40 = 1.20 mol. The fraction that is NO₂ is 0.40 ÷ 1.20 = 0.333, so as a percentage that is 33.3%. Its concentration is 0.40 ÷ 2.0 = 0.20 mol/dm³ — equilibrium does not mean equal amounts.",
+      },
+      {
+        question: "Hydrated copper sulfate is CuSO₄·5H₂O. Calculate the percentage by mass of water in the crystals. (Mr: CuSO₄ = 160, H₂O = 18)",
+        accept: [
+          "36",
+        ],
+        answer: "36%. The five water molecules weigh 5 × 18 = 90, and the whole crystal weighs 160 + 90 = 250. The water is therefore (90 ÷ 250) × 100 = 36% of the mass, which is the mass a heated sample should lose.",
+      },
+      {
+        question: "Explain why the Haber process uses a pressure of about 200 atmospheres rather than the highest pressure the equipment could manage.",
+        answer: "There are four molecules of gas on the reactant side and two on the product side, so higher pressure does shift the equilibrium towards ammonia and raise the yield. But very high pressures need thick-walled vessels and powerful compressors, which cost a great deal to build, to run and to maintain safely. Beyond a point the extra ammonia is worth less than the extra cost of getting it. About 200 atmospheres is the compromise where the value of the increased yield still outweighs what it takes to achieve. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why an iron catalyst is used in the Haber process even though it cannot increase the yield of ammonia.",
+        answer: "A catalyst lowers the activation energy for both the forward and the reverse reaction by the same amount, so it speeds both up equally and the position of equilibrium is unchanged. What it does change is how quickly equilibrium is reached, which matters enormously when the plant is running continuously. Without it the compromise temperature of 450°C would give an unworkably slow rate, and a higher temperature would lower the yield further. The catalyst therefore lets the plant use a cooler, higher-yielding temperature and still produce ammonia fast enough to be profitable. (Mark this one yourself.)",
+      },
+      {
+        question: "A sealed tube containing brown NO₂ in equilibrium with colourless N₂O₄ turns paler when stood in iced water. Explain what this shows about the forward reaction.",
+        answer: "Paler means less of the brown NO₂ and more of the colourless N₂O₄, so cooling has shifted the position of equilibrium towards the products of the forward reaction. Lowering the temperature removes energy from the system, and the equilibrium responds by favouring the direction that releases energy. The forward reaction must therefore be the exothermic one, with a negative energy change. Warming the tube again would drive it back and the brown colour would deepen. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why adding more of one reactant to a reversible reaction at equilibrium increases the amount of product, in terms of the two rates.",
+        answer: "At equilibrium the forward and reverse reactions are happening at exactly the same rate, so the amounts of everything stay constant. Adding more reactant raises the concentration on that side, so collisions between reactant particles become more frequent and the forward rate rises above the reverse rate. Product therefore builds up faster than it breaks down, until the rising product concentration has raised the reverse rate to match. A new equilibrium is then reached with more product present than before. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -4586,6 +5941,112 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Alcohols end in -ol and contain -OH. Carboxylic acids contain -COOH and end in -oic acid.",
       },
+      {
+        question: "Work out the molecular formula of the alkane with six carbon atoms.",
+        accept: [
+          "C6H14",
+          "c6h14",
+        ],
+        answer: "C₆H₁₄, hexane. The general formula CₙH₂ₙ₊₂ gives 2 × 6 plus 2 more hydrogens for six carbons.",
+      },
+      {
+        question: "Work out the molecular formula of the alkene with five carbon atoms.",
+        accept: [
+          "C5H10",
+          "c5h10",
+        ],
+        answer: "C₅H₁₀, pentene. Alkenes follow CₙH₂ₙ, so five carbons carry 5 × 2 hydrogens — two fewer than the matching alkane, because of the double bond.",
+      },
+      {
+        question: "Calculate the relative formula mass of propane, C₃H₈. (Ar: C = 12, H = 1) Give the number only.",
+        accept: [
+          "44",
+        ],
+        answer: "44. Three carbon atoms give 3 × 12 = 36, and the eight hydrogens add another 8.",
+      },
+      {
+        question: "Work out the number that goes in front of O₂ to balance: 2C₄H₁₀ + __O₂ → 8CO₂ + 10H₂O",
+        accept: [
+          "13",
+        ],
+        answer: "13. Count the oxygen on the product side: 16 + 10 = 26 atoms. Each O₂ molecule supplies two of them, so 13 molecules are needed. Doubling the butane first is what keeps the number whole.",
+      },
+      {
+        question: "Cracking decane, C₁₀H₂₂, gives octane, C₈H₁₈, and one other molecule. Work out the formula of that molecule.",
+        accept: [
+          "C2H4",
+          "c2h4",
+        ],
+        answer: "C₂H₄, ethene. No atoms are gained or lost, so what is left over is 10 − 8 carbons and 22 − 18 hydrogens. Ethene fits CₙH₂ₙ, so it is an alkene, which is exactly what cracking is wanted for.",
+      },
+      {
+        question: "Work out the formula of the alcohol with three carbon atoms.",
+        accept: [
+          "C3H7OH",
+          "c3h7oh",
+          "C3H8O",
+          "c3h8o",
+        ],
+        answer: "C₃H₇OH, propanol. Alcohols follow CₙH₂ₙ₊₁OH, so three carbons carry 2 × 3 plus one hydrogen along the chain, with the OH group on the end.",
+      },
+      {
+        question: "Calculate the mass of carbon dioxide produced when 32 g of methane burns completely. CH₄ + 2O₂ → CO₂ + 2H₂O. (Mr: CH₄ = 16, CO₂ = 44)",
+        accept: [
+          "88",
+        ],
+        answer: "88 g. Moles of methane = 32 ÷ 16 = 2 mol. One CO₂ forms per CH₄, so 2 mol of carbon dioxide. Mass = 2 × 44 = 88 g — nearly three times the mass of fuel burnt, because the oxygen comes from the air.",
+        higherOnly: true,
+      },
+      {
+        question: "Calculate the volume of oxygen, in dm³, needed to burn 4.4 g of propane completely at room temperature and pressure. C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. (Mr: C₃H₈ = 44; one mole of gas occupies 24 dm³)",
+        accept: [
+          "12",
+        ],
+        answer: "12 dm³. Moles of propane = 4.4 ÷ 44 = 0.1 mol. The equation needs five O₂ per propane, so 0.1 × 5 = 0.5 mol of oxygen. Volume = 0.5 × 24 = 12 dm³.",
+        higherOnly: true,
+      },
+      {
+        question: "A hydrocarbon is 82.8% carbon and 17.2% hydrogen by mass, and its Mr is 58. Calculate its molecular formula. (Ar: C = 12, H = 1)",
+        accept: [
+          "C4H10",
+          "c4h10",
+        ],
+        answer: "C₄H₁₀, butane. Dividing by the Ar values gives 82.8 ÷ 12 = 6.9 for carbon and 17.2 ÷ 1 = 17.2 for hydrogen. Dividing both by 6.9 gives 1 : 2.5, which doubles to a whole-number ratio of 2 : 5, so the empirical formula is C₂H₅ with a mass of 29. Since 58 ÷ 29 = 2, the molecular formula is twice that.",
+        higherOnly: true,
+      },
+      {
+        question: "Cracking C₁₂H₂₆ gives one molecule of C₈H₁₈ and two identical alkene molecules. Work out the formula of the alkene.",
+        accept: [
+          "C2H4",
+          "c2h4",
+          "ethene",
+        ],
+        answer: "C₂H₄, ethene. Carbon must balance: 12 − 8 = 4 carbons are left over, shared between two molecules, so 4 ÷ 2 = 2 each. Hydrogen the same way: 26 − 18 = 8, and 8 ÷ 2 = 4 each. C₂H₄ fits CₙH₂ₙ, confirming it is an alkene.",
+      },
+      {
+        question: "2.4 g of carbon in a fuel burns incompletely to carbon monoxide. Calculate the mass of carbon monoxide produced. (Ar: C = 12, O = 16)",
+        accept: [
+          "5.6",
+        ],
+        answer: "5.6 g. Moles of carbon = 2.4 ÷ 12 = 0.2 mol, and each carbon atom gives one CO molecule. Mr(CO) = 12 + 16 = 28, so the mass is 0.2 × 28 = 5.6 g. Burning completely instead would have given 0.2 × 44 = 8.8 g of carbon dioxide and used twice the oxygen.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why the boiling point of a hydrocarbon rises as its chain gets longer.",
+        answer: "Boiling separates whole molecules from one another, so it is the forces between molecules that have to be overcome, not the covalent bonds inside them. Longer chains have more points of contact with their neighbours, so the intermolecular forces holding them together are stronger. More energy is therefore needed to pull them apart, and the boiling point is higher. This is what lets fractional distillation sort crude oil by chain length in the first place. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why incomplete combustion produces carbon monoxide and soot, and why a boiler with a blocked air intake is dangerous.",
+        answer: "Complete combustion needs enough oxygen to convert every carbon atom all the way to carbon dioxide. When the oxygen supply is limited, some carbon atoms end up in carbon monoxide, with only one oxygen each, and some are released as unburnt carbon particles, which is soot. Carbon monoxide is toxic because it binds to haemoglobin in place of oxygen, so less oxygen reaches the tissues. It is colourless and has no smell, so a person is not warned, which is why a blocked intake on a boiler can be fatal. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how bromine water distinguishes an alkene from an alkane, referring to what happens to the double bond.",
+        answer: "Bromine water is orange, and an alkane leaves it orange because a saturated molecule has no spare bonding capacity to react with it. An alkene is unsaturated: the carbon-to-carbon double bond can open up, so one bromine atom adds to each of the two carbons in an addition reaction. The bromine is used up as it becomes part of a colourless product, so the orange colour disappears. Decolourising bromine water is therefore the standard test for a carbon-to-carbon double bond. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why crude oil is described as a finite resource, and why the short-chain fractions are the most valuable.",
+        answer: "Crude oil formed over millions of years from the remains of ancient marine organisms buried under sediment, and it is being used far faster than any is being made, so the supply will eventually run out. The short-chain fractions are runnier, more volatile and more flammable, which makes them good fuels for engines and heating, and demand for them is high. Distillation of crude oil gives comparatively little of them and a great deal of long-chain material that few people want. That mismatch between supply and demand is what makes the short chains valuable and makes cracking worth doing. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -4887,6 +6348,104 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Thermosoftening polymers have separate tangled chains held by weak forces, so they melt and can be remoulded.",
       },
+      {
+        question: "Work out the formula of the repeating unit in poly(propene).",
+        accept: [
+          "C3H6",
+          "c3h6",
+        ],
+        answer: "C₃H₆. Propene is C₃H₆, and addition polymerisation keeps every atom, so the repeat unit formula = the monomer formula with the double bond opened out into two single bonds.",
+      },
+      {
+        question: "Calculate the relative formula mass of the repeating unit of poly(chloroethene), C₂H₃Cl. (Ar: C = 12, H = 1, Cl = 35.5)",
+        accept: [
+          "62.5",
+        ],
+        answer: "62.5. The two carbons give 24 and the three hydrogens give 3, then the chlorine adds 35.5: 24 + 3 + 35.5. One chlorine dominates the mass of the unit.",
+      },
+      {
+        question: "A poly(ethene) molecule has a relative molecular mass of 42,000 and a repeating unit of Mr 28. Calculate the number of repeating units in the chain.",
+        accept: [
+          "1500",
+          "1,500",
+        ],
+        answer: "1500. Divide the mass of the whole chain by the mass of one unit: 42,000 ÷ 28. Chains of this length are why poly(ethene) is a solid while ethene is a gas.",
+      },
+      {
+        question: "Calculate how many water molecules are released when 50 monomer units join end to end to form one condensation polymer chain.",
+        accept: [
+          "49",
+        ],
+        answer: "49. Every new link between two units expels one water molecule, and a chain of 50 units contains 50 − 1 = 49 links. There is always one fewer link than there are units.",
+      },
+      {
+        question: "Work out whether a saucepan handle should be made from a thermosoftening or a thermosetting polymer.",
+        accept: [
+          "thermosetting",
+          "thermoset",
+          "a thermosetting polymer",
+        ],
+        answer: "Thermosetting. Its chains are joined by cross-links, which are strong covalent bonds, so heating cannot let the chains slide past each other = the handle keeps its shape next to a hot pan rather than softening.",
+      },
+      {
+        question: "Calculate the percentage by mass of chlorine in poly(chloroethene), repeat unit C₂H₃Cl with Mr 62.5, to one decimal place. (Ar: Cl = 35.5)",
+        accept: [
+          "56.8",
+        ],
+        answer: "56.8%. Chlorine is 35.5 of the repeat unit's 62.5, and 35.5 ÷ 62.5 is 0.568, so 56.8%. More than half the mass of PVC is chlorine, which is why burning it releases so much hydrogen chloride.",
+      },
+      {
+        question: "Calculate the mass of poly(ethene) obtained from 1.4 tonnes of ethene at a yield of 90%.",
+        accept: [
+          "1.26",
+        ],
+        answer: "1.26 tonnes. Addition polymerisation keeps every atom, so the theoretical mass of polymer equals the mass of monomer, 1.4 tonnes, and the atom economy = 100%. At 90% yield the mass actually obtained is 0.90 × 1.4 = 1.26 tonnes.",
+      },
+      {
+        question: "A polyester chain forms from 200 monomers of Mr 166 and 200 of Mr 62, losing one water molecule at every link. Calculate the relative molecular mass of the chain. (Mr: H₂O = 18)",
+        accept: [
+          "38418",
+          "38,418",
+        ],
+        answer: "38,418. The monomers together weigh (200 × 166) + (200 × 62) = 33,200 + 12,400 = 45,600. Four hundred units joined in a chain make 400 − 1 = 399 links, so 399 × 18 = 7182 of water is lost. The chain is therefore 45,600 − 7182 = 38,418.",
+      },
+      {
+        question: "Glycine is an amino acid, H₂NCH₂COOH. Calculate the percentage by mass of nitrogen in it, to one decimal place. (Ar: H = 1, C = 12, N = 14, O = 16)",
+        accept: [
+          "18.7",
+        ],
+        answer: "18.7%. Counting atoms gives C₂H₅NO₂, so Mr = (2 × 12) + 5 + 14 + (2 × 16) = 24 + 5 + 14 + 32 = 75. The nitrogen share is (14 ÷ 75) × 100 = 18.67%, which rounds to 18.7%.",
+      },
+      {
+        question: "A 250 g sample of waste plastic is 60% poly(ethene) and the rest PVC. Calculate the mass of chlorine in the sample. (PVC repeat unit C₂H₃Cl, Mr 62.5, Ar: Cl = 35.5)",
+        accept: [
+          "56.8",
+        ],
+        answer: "56.8 g. The PVC makes up 100 − 60 = 40% of the sample, so its mass is 0.40 × 250 = 100 g. Chlorine is 35.5 ÷ 62.5 = 0.568 of PVC by mass, so the chlorine present is 0.568 × 100 = 56.8 g — all of which would become hydrogen chloride if it were burnt.",
+      },
+      {
+        question: "Recycling one tonne of poly(ethene) saves 1.8 tonnes of crude oil. A town collects 45 tonnes of waste plastic, of which 80% is poly(ethene), and a tenth of that is rejected as too contaminated. Calculate the mass of crude oil saved.",
+        accept: [
+          "58.32",
+        ],
+        answer: "58.32 tonnes. The poly(ethene) collected is 0.80 × 45 = 36 tonnes. Rejecting a tenth leaves 0.90 × 36 = 32.4 tonnes actually recycled. At 1.8 tonnes of oil saved per tonne, that is 32.4 × 1.8 = 58.32 tonnes. Contamination costs this scheme over six tonnes of oil.",
+      },
+      {
+        question: "Explain why a thermosoftening polymer can be melted and remoulded while a thermosetting one cannot, in terms of what holds the chains together.",
+        answer: "In a thermosoftening polymer the separate chains are held near each other only by weak intermolecular forces. Heating gives the chains enough energy to overcome those weak forces and slide past one another, so the material softens and can be reshaped, then sets again on cooling. A thermosetting polymer has covalent cross-links joining the chains into one rigid three-dimensional network. Those bonds are far stronger, so heating cannot free the chains, and the material keeps its shape until the temperature is high enough to char it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why poly(ethene) is not biodegradable while starch, which is also a polymer, is.",
+        answer: "Biodegradation depends on microorganisms having enzymes that fit the bonds in the polymer and can break them. Starch is built from glucose units joined by links that organisms have evolved to digest, because starch is a food, so the enzymes are widespread. Poly(ethene) is a long carbon chain with only strong, unreactive C–C and C–H bonds and no such links anywhere along it. No common enzyme recognises that structure, so the polymer stays intact in landfill and in the sea for a very long time. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why addition polymerisation has an atom economy of 100% while condensation polymerisation does not.",
+        answer: "In addition polymerisation the monomers' double bonds simply open up and join, so the only product is the polymer and every atom from the monomers ends up in it. Atom economy is the mass of the wanted product over the mass of all products, which comes to 100% when there is nothing else formed. Condensation polymerisation joins two functional groups and expels a small molecule, usually water, at every link. That water is a second product carrying away some of the starting mass, so the atom economy is below 100%, though it is still high because water is light. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why burning waste plastic to generate electricity is not a straightforward answer to plastic pollution.",
+        answer: "Burning does recover some energy and reduces the volume going to landfill, so it is not worthless. But plastics are made from crude oil, so burning them releases carbon dioxide that adds to climate change, and it destroys material that could have been recycled into new products. Plastics containing chlorine, such as PVC, produce hydrogen chloride and other toxic gases unless the flue gases are carefully cleaned. Incinerators are also expensive to build and run, and having one creates a demand for waste plastic that can discourage reduction and reuse. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -5186,6 +6745,116 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "More accurate, more sensitive and faster",
         ],
         answer: "They detect tiny amounts and give reliable results quickly, which is why they are used in forensics and medicine despite the cost.",
+      },
+      {
+        question: "Acidified silver nitrate gives a white precipitate with a solution. Work out which halide ion is present.",
+        accept: [
+          "chloride",
+          "cl-",
+          "chloride ion",
+        ],
+        answer: "Chloride, Cl⁻. The three silver halides differ by colour — chloride white, bromide cream, iodide yellow — so white = chloride.",
+      },
+      {
+        question: "Sodium hydroxide solution is added to an unknown solution and a green precipitate forms. Work out which metal ion is present.",
+        accept: [
+          "iron(ii)",
+          "iron 2",
+          "fe2+",
+          "iron(ii) ion",
+          "iron II",
+        ],
+        answer: "Iron(II), Fe²⁺. The hydroxide ions combine with it to give an insoluble green solid: Fe²⁺ + 2OH⁻ → Fe(OH)₂. Iron(III) would give a brown precipitate instead, and copper(II) a blue one.",
+      },
+      {
+        question: "A 650 mg tablet contains 500 mg of active ingredient. Calculate the percentage by mass of active ingredient, to one decimal place.",
+        accept: [
+          "76.9",
+        ],
+        answer: "76.9%. Divide the mass of active ingredient by the total mass: 500 ÷ 650 gives 0.769, which is 76.9%. The remaining quarter is binders and coating, which is what makes it a formulation.",
+      },
+      {
+        question: "A gas puts out a lit splint, and bubbling it through limewater turns the limewater milky. Work out which gas it is.",
+        accept: [
+          "carbon dioxide",
+          "co2",
+        ],
+        answer: "Carbon dioxide. It does not support combustion, so the splint goes out, and the limewater going cloudy = the confirming test. Nitrogen would also put the splint out, which is why the second test is needed.",
+      },
+      {
+        question: "A pure substance melts sharply at 80°C. A sample of it melts between 74°C and 79°C. Calculate the width of the sample's melting range.",
+        accept: [
+          "5",
+        ],
+        answer: "5°C. Take the lower temperature from the upper one: 79 − 74. Melting over a range rather than at a single point shows the sample is impure — a mixture, not a pure substance.",
+      },
+      {
+        question: "A flame test is carried out on a solid containing both sodium and potassium ions. Work out the flame colour that will be seen.",
+        accept: [
+          "yellow",
+          "yellow-orange",
+        ],
+        answer: "Yellow. Sodium gives such an intense yellow flame that the lilac of potassium = completely hidden behind it. This masking is one reason laboratories prefer instrumental methods for mixtures.",
+      },
+      {
+        question: "An unknown white solid gives a lilac flame, no precipitate with sodium hydroxide, and a white precipitate with acidified barium chloride. Work out its name and formula.",
+        accept: [
+          "potassium sulfate",
+          "K2SO4",
+          "k2so4",
+          "potassium sulphate",
+        ],
+        answer: "Potassium sulfate, K₂SO₄. The lilac flame identifies K⁺. Group 1 hydroxides are soluble, so getting no precipitate with sodium hydroxide is exactly what a potassium salt should do. The white precipitate with acidified barium chloride is barium sulfate: Ba²⁺ + SO₄²⁻ → BaSO₄. Two K⁺ balance one SO₄²⁻, since 2 × 1 matches 2. Its relative formula mass is (2 × 39) + 96 = 174.",
+      },
+      {
+        question: "A solution gives a brown precipitate with sodium hydroxide and a cream precipitate with acidified silver nitrate. Work out the formula of the compound in it.",
+        accept: [
+          "FeBr3",
+          "febr3",
+        ],
+        answer: "FeBr₃. A brown precipitate with sodium hydroxide is iron(III) hydroxide, so the metal ion is Fe³⁺: Fe³⁺ + 3OH⁻ → Fe(OH)₃. Cream with acidified silver nitrate means bromide, Br⁻. Three bromide ions balance one iron(III) ion, since 3 × 1 matches 3. Its relative formula mass is 56 + (3 × 80) = 296.",
+      },
+      {
+        question: "Excess barium chloride is added to 25.0 cm³ of 0.100 mol/dm³ sodium sulfate solution. Calculate the mass of barium sulfate precipitated. (Mr: BaSO₄ = 233)",
+        accept: [
+          "0.5825",
+          "0.58",
+        ],
+        answer: "0.5825 g. Moles of sulfate = 0.0250 × 0.100 = 0.00250 mol. One sulfate ion gives one formula unit of precipitate, so 0.00250 mol of BaSO₄ forms. Mass = 0.00250 × 233 = 0.5825 g.",
+        higherOnly: true,
+      },
+      {
+        question: "A sample of lithium chloride is measured as 16.4% lithium by mass. Calculate the theoretical percentage, to one decimal place. (Ar: Li = 7, Cl = 35.5)",
+        accept: [
+          "16.5",
+          "16.47",
+        ],
+        answer: "16.5%. Mr(LiCl) = 7 + 35.5 = 42.5, so the lithium share is (7 ÷ 42.5) × 100 = 16.47%, which rounds to 16.5%. The measured 16.4% sits within experimental error of that, so the sample is consistent with pure lithium chloride.",
+      },
+      {
+        question: "50 cm³ of a chloride solution gives 2.87 g of silver chloride with excess silver nitrate. Calculate the concentration of chloride ions in mol/dm³. (Mr: AgCl = 143.5)",
+        accept: [
+          "0.4",
+          "0.40",
+        ],
+        answer: "0.4 mol/dm³. Moles of precipitate = 2.87 ÷ 143.5 = 0.0200 mol, and each one came from a single chloride ion, so 0.0200 mol of Cl⁻ was present. The volume is 50 ÷ 1000 = 0.0500 dm³, so concentration = 0.0200 ÷ 0.0500 = 0.400 mol/dm³.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why dilute nitric acid is added before silver nitrate in the halide test, and dilute hydrochloric acid before barium chloride in the sulfate test.",
+        answer: "Carbonate ions are a common impurity and they form white precipitates with both silver and barium, which would be mistaken for a positive result. Adding acid first reacts any carbonate away as carbon dioxide, so nothing is left to give a false white precipitate. The acid chosen must not introduce the ion being tested for: hydrochloric acid would add chloride and ruin the halide test, so nitric acid is used there. Conversely nitric acid is fine before barium chloride, but hydrochloric acid is used because it adds no sulfate. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a forensic laboratory uses instrumental methods rather than flame tests and precipitate colours, and what the simple chemical tests are still useful for.",
+        answer: "Instruments such as flame emission spectroscopy are far more sensitive, so they can identify ions present in traces far too small to colour a flame, and they are much faster once set up. They are also more accurate and give quantitative results rather than a colour someone has to judge by eye, and they can handle mixtures where one ion masks another. Chemical tests remain useful because the apparatus is cheap, portable and needs no calibration, so they are ideal for classrooms and for quick checks in the field. Their weaknesses are exactly the instrument's strengths: they need a reasonable amount of sample and depend on human judgement of colour. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a paint or a medicine is described as a formulation rather than a pure substance, and why the proportions of its components matter.",
+        answer: "A formulation is a mixture designed for a purpose, in which each component is included in a measured quantity for a particular job — in paint, a pigment for colour, a binder to hold it to the surface and a solvent to let it spread. Because the components are only mixed, not chemically joined, the mixture melts over a range rather than at a sharp temperature, which is how you can tell it is not pure. The proportions decide whether the product performs: too much solvent and the paint runs, too little and it will not spread. In a medicine the same logic is safety-critical, since the dose of active ingredient must be right every time. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how you would distinguish between separate solutions of sodium chloride, magnesium chloride and calcium chloride.",
+        answer: "A flame test separates two of them straight away: sodium gives an intense yellow flame and calcium an orange-red one, while magnesium gives no characteristic colour. Adding sodium hydroxide solution confirms it, since magnesium and calcium both give a white precipitate of the metal hydroxide but sodium gives none, because group 1 hydroxides are soluble. Taking the two results together identifies each solution without ambiguity. All three would give the same white precipitate with acidified silver nitrate, which only tells you that every one of them is a chloride. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -5487,6 +7156,106 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Acid rain",
         ],
         answer: "Sulfur dioxide and oxides of nitrogen dissolve in rainwater to form acids that damage buildings, trees and lakes.",
+      },
+      {
+        question: "Air is about 78% nitrogen by volume. Calculate the volume of nitrogen in 2.5 dm³ of air.",
+        accept: [
+          "1.95",
+        ],
+        answer: "1.95 dm³. Take 78% of the total volume: 0.78 × 2.5. Percentage by volume works directly like this for gases, because equal volumes contain equal numbers of molecules.",
+      },
+      {
+        question: "Carbon dioxide makes up about 0.04% of the atmosphere. Calculate the volume of carbon dioxide, in cm³, in 1 dm³ of air.",
+        accept: [
+          "0.4",
+        ],
+        answer: "0.4 cm³. One dm³ is 1000 cm³, and 0.04% of that is 0.0004 × 1000 cm³. Less than half a cm³ in a litre, yet enough to change the climate when it rises.",
+      },
+      {
+        question: "Burning a litre of petrol releases 2.3 kg of carbon dioxide. Calculate the mass released on a journey using 45 litres.",
+        accept: [
+          "103.5",
+        ],
+        answer: "103.5 kg. Multiply the emission per litre by the number of litres: 2.3 × 45. Figures like this are what a carbon footprint is built from.",
+      },
+      {
+        question: "Work out the formula of the pollutant gas formed when the air inside a hot car engine reacts.",
+        accept: [
+          "NO",
+          "no",
+          "nitrogen monoxide",
+          "nitrogen oxide",
+          "nitrogen oxides",
+          "nox",
+        ],
+        answer: "Nitrogen monoxide, NO. The engine is hot enough for nitrogen and oxygen already in the air to react: N₂ + O₂ → 2NO. It oxidises further to NO₂, and these nitrogen oxides cause breathing problems and acid rain.",
+      },
+      {
+        question: "A country's annual carbon dioxide emissions fall from 500 million tonnes to 425 million tonnes. Calculate the percentage reduction.",
+        accept: [
+          "15",
+        ],
+        answer: "15%. The fall of 75 million tonnes is 75 ÷ 500 of what was emitted before, which is 15%. Percentage change is always measured against the starting value, not the new one.",
+      },
+      {
+        question: "A product's carbon footprint is 12 kg of CO₂ for manufacture, 3 kg for transport and 25 kg for use. Calculate the percentage contributed by the use stage.",
+        accept: [
+          "62.5",
+        ],
+        answer: "62.5%. The whole life cycle comes to 40 kg, and the use stage is 25 ÷ 40 of that, which is 62.5%. For appliances, the use stage usually dominates, which is why efficiency matters more than packaging.",
+      },
+      {
+        question: "Photosynthesis is 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Calculate the mass of oxygen released when 66 g of carbon dioxide is used up. (Mr: CO₂ = 44, O₂ = 32)",
+        accept: [
+          "48",
+        ],
+        answer: "48 g. Moles of carbon dioxide = 66 ÷ 44 = 1.5 mol. The ratio of CO₂ to O₂ is 6 : 6, so 1.5 mol of oxygen is released. Mass = 1.5 × 32 = 48 g. Repeated over hundreds of millions of years, this is where the oxygen in the air came from.",
+        higherOnly: true,
+      },
+      {
+        question: "Assume the early atmosphere was 95% carbon dioxide and today's is 0.04%. Calculate how many times more carbon dioxide a 2000 dm³ sample of early air held than the same volume of air today.",
+        accept: [
+          "2375",
+        ],
+        answer: "2375 times. In the early atmosphere, 0.95 × 2000 = 1900 dm³ of the sample would be carbon dioxide. The same volume today holds 0.0004 × 2000 = 0.8 dm³. Dividing the two, 1900 ÷ 0.8 = 2375.",
+      },
+      {
+        question: "2C₈H₁₈ + 25O₂ → 16CO₂ + 18H₂O. Calculate the mass of carbon dioxide, in kg, produced by burning 1.14 kg of octane. (Mr: C₈H₁₈ = 114, CO₂ = 44)",
+        accept: [
+          "3.52",
+        ],
+        answer: "3.52 kg. Working in grams, moles of octane = 1140 ÷ 114 = 10 mol. The equation gives 16 CO₂ for every 2 octane, so 10 × 8 = 80 mol of carbon dioxide. Mass = 80 × 44 = 3520 g, which is 3.52 kg — over three times the mass of the fuel.",
+        higherOnly: true,
+      },
+      {
+        question: "2.0 tonnes of coal contains 1.5% sulfur by mass. Calculate the mass of sulfur dioxide released, in kg, when it all burns. (Ar: S = 32, O = 16)",
+        accept: [
+          "60",
+        ],
+        answer: "60 kg. The sulfur present is 0.015 × 2.0 = 0.030 tonnes, which is 30 kg. Each sulfur atom becomes one SO₂ molecule, and Mr(SO₂) = 32 + 32 = 64 against Ar(S) = 32, so the mass doubles: 30 × 2 = 60 kg of sulfur dioxide.",
+      },
+      {
+        question: "Methane traps 25 times as much energy per tonne as carbon dioxide. A farm emits 400 tonnes of carbon dioxide and 12 tonnes of methane a year. Calculate the total in tonnes of carbon dioxide equivalent.",
+        accept: [
+          "700",
+        ],
+        answer: "700 tonnes. The methane counts as 12 × 25 = 300 tonnes of carbon dioxide equivalent. Adding the carbon dioxide itself gives 400 + 300 = 700 tonnes. The methane is only 12 ÷ 412 of the mass emitted, under 3%, but well over a third of the warming.",
+      },
+      {
+        question: "Explain why scientists cannot be certain about the composition of the Earth's early atmosphere.",
+        answer: "The evidence is nearly four and a half billion years old, and there are no samples of that air and no direct measurements of it. What survives is indirect: rocks, the minerals in them and comparisons with the atmospheres of other planets, all of which have to be interpreted. Different assumptions about volcanic activity and the early oceans give different answers, so the theories change as new evidence appears. That is normal science rather than a weakness, but it means the figures quoted are best estimates rather than facts. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between a greenhouse gas and a pollutant such as carbon monoxide, and why carbon dioxide is treated as a serious problem even though it is not toxic.",
+        answer: "A pollutant like carbon monoxide causes direct harm to people who breathe it, by binding to haemoglobin and reducing the oxygen carried in the blood. A greenhouse gas causes harm indirectly, by absorbing the long-wavelength infrared radiated from the Earth's surface and re-emitting some of it back down, which raises the average temperature. Carbon dioxide is harmless to breathe at atmospheric levels, so it fails the usual test of a pollutant. Its danger is in the scale and the timescale: small rises in concentration drive climate change, sea level rise and extreme weather that affect everyone. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why reducing a country's carbon footprint is difficult in practice, even where the technology to do it already exists.",
+        answer: "Low-carbon alternatives usually need large investment before they save anything, and governments and companies are reluctant to spend when the returns are decades away. Fossil fuels are deeply built into transport, heating, farming and manufacturing, so switching means changing systems rather than single products. Individuals and businesses may also be unwilling to accept higher prices or changes to how they live, and disagreement between countries means action in one can be undone elsewhere. There is also a genuine lack of public understanding of how large the necessary changes are. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how a catalytic converter reduces the pollutants leaving a car exhaust, and why it cannot reduce the carbon dioxide emitted.",
+        answer: "The converter has a large surface area coated in catalyst, and the hot exhaust gases pass over it. Carbon monoxide is oxidised to carbon dioxide, and nitrogen oxides are reduced back to nitrogen, so two harmful gases are converted into ones already present in air. Unburnt hydrocarbons are also oxidised to carbon dioxide and water. Carbon dioxide is the unavoidable product of burning a hydrocarbon fuel, so converting the other pollutants actually produces more of it — the only way to cut it is to burn less fuel. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -5790,6 +7559,102 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Dissolved salt cannot be filtered out. Desalination works but uses a great deal of energy, which is why it is a last resort.",
       },
+      {
+        question: "500 dm³ of water must have its chloride level cut from 300 mg/dm³ to 250 mg/dm³. Calculate the mass of chloride removed, in grams.",
+        accept: [
+          "25",
+        ],
+        answer: "25 g. The reduction needed is 50 mg in every dm³, so across the whole batch that is 50 × 500 = 25,000 mg, and 25,000 mg is 25 g.",
+      },
+      {
+        question: "A low-grade ore contains 0.8% copper by mass. Calculate the mass of ore, in tonnes, needed to obtain 4 tonnes of copper.",
+        accept: [
+          "500",
+        ],
+        answer: "500 tonnes. Divide the copper wanted by the fraction present: 4 ÷ 0.008. Shifting five hundred tonnes of rock for four of metal is exactly why phytomining and bioleaching are being developed.",
+      },
+      {
+        question: "Ash from a phytomining crop is 25% copper by mass. Calculate the mass of copper in 12 tonnes of ash.",
+        accept: [
+          "3",
+        ],
+        answer: "3 tonnes. Take a quarter of the ash: 0.25 × 12. Burning the plants is what concentrates the metal into a mass small enough to be worth processing.",
+      },
+      {
+        question: "Sea water contains 35 g of dissolved salts per dm³. Calculate the mass of salts in 250 cm³ of sea water.",
+        accept: [
+          "8.75",
+        ],
+        answer: "8.75 g. Convert the volume to 0.25 dm³ first, then multiply by the concentration: 35 × 0.25. Getting the unit conversion in before anything else is what keeps these questions simple.",
+      },
+      {
+        question: "Extracting 1 tonne of a metal needs 200 MJ; recycling the same tonne needs 5% of that. Calculate the energy saved by recycling, in MJ.",
+        accept: [
+          "190",
+        ],
+        answer: "190 MJ. Recycling needs 0.05 × 200 MJ, which is 10 MJ, so the saving is the other 190 MJ. Savings of this order are why aluminium recycling is worth the collection costs.",
+      },
+      {
+        question: "Work out the order of the three Rs, from the one that saves most resources to the one that saves least.",
+        accept: [
+          "reduce reuse recycle",
+          "reduce, reuse, recycle",
+          "reduce reuse and recycle",
+        ],
+        answer: "Reduce, reuse, recycle. Not making the object at all saves every stage; reusing it avoids repeating the manufacture; recycling still needs collection, sorting, transport and reprocessing, so it saves the least = it comes last of the three.",
+      },
+      {
+        question: "A 50 tonne batch of ore contains 0.6% copper, and phytomining recovers 70% of it. Calculate the mass of copper obtained, in kg.",
+        accept: [
+          "210",
+        ],
+        answer: "210 kg. Copper in the ore = 0.006 × 50 = 0.3 tonnes, which is 300 kg. Recovering 70% of that gives 0.70 × 300 = 210 kg. The 90 kg left behind is one of the real costs of the method.",
+      },
+      {
+        question: "A reverse osmosis plant treats 20,000 dm³ of sea water an hour, containing 35 g/dm³ of dissolved salts, and removes 99% of the salt. Calculate the mass of salt removed per hour, in kg.",
+        accept: [
+          "693",
+        ],
+        answer: "693 kg. Salt entering each hour = 35 × 20,000 = 700,000 g, which is 700 kg. Removing 99% of it gives 0.99 × 700 = 693 kg. The remaining 7 kg an hour is why the product water is potable rather than pure.",
+      },
+      {
+        question: "Extracting 1 tonne of aluminium needs 15,000 kWh and recycling the same tonne needs 750 kWh. Calculate the energy saved, in kWh, when 40 tonnes are recycled.",
+        accept: [
+          "570000",
+          "570,000",
+        ],
+        answer: "570,000 kWh. The saving per tonne is 15,000 − 750 = 14,250 kWh, which is (14,250 ÷ 15,000) × 100 = 95% of the extraction energy. Over 40 tonnes that comes to 14,250 × 40 = 570,000 kWh.",
+      },
+      {
+        question: "A sewage works receives 40,000,000 dm³ a day containing 250 mg/dm³ of organic matter and removes 96% of it. Calculate the mass of organic matter still present each day, in kg.",
+        accept: [
+          "400",
+        ],
+        answer: "400 kg. The organic matter arriving is 40,000,000 × 250 = 10,000,000,000 mg a day, which is 10,000 kg. Removing 96% leaves 100 − 96 = 4%, so 0.04 × 10,000 = 400 kg goes out with the effluent.",
+      },
+      {
+        question: "A plastic bag takes 1.6 MJ to make and is used 4 times; a cotton bag takes 60 MJ and is used 200 times. Calculate the energy per use of the better option, in MJ.",
+        accept: [
+          "0.3",
+        ],
+        answer: "0.3 MJ per use, for the cotton bag. The plastic bag costs 1.6 ÷ 4 = 0.4 MJ each time it is used. The cotton bag costs 60 ÷ 200 = 0.3 MJ per use, so it wins — but only if it really is used 200 times. Used just 100 times it would be 60 ÷ 100 = 0.6 MJ per use, worse than the plastic.",
+      },
+      {
+        question: "Explain why a life cycle assessment is not a fully objective process, and how a company could use that to mislead.",
+        answer: "Some parts of an LCA are genuine measurements, such as the mass of a material or the energy used in manufacture, but others require a judgement — how to weigh pollution against water use, or what value to place on damage that happens decades later. The boundaries are also chosen: whether transport of raw materials, or disposal, or the building of the factory is counted at all. A company can therefore pick boundaries and weightings that flatter its own product, or leave out a stage where it performs badly. Because the result still looks like a number, selective reporting of an LCA can be used as evidence for a claim the full assessment would not support. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why producing potable water in the UK involves different steps from producing it in a hot, dry country.",
+        answer: "The UK has plentiful fresh water in rivers, reservoirs and aquifers, so the salt content is already low and the job is to remove solids and kill microorganisms. That needs only filtration through beds of sand and gravel, followed by sterilisation with chlorine, ozone or ultraviolet light, which is cheap and uses little energy. A hot, dry country may have no fresh source and must start from sea water, where the problem is dissolved salt that no filter bed will remove. Desalination by distillation or reverse osmosis is required, and both use a great deal of energy, which makes the water far more expensive. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why phytomining and bioleaching are becoming more attractive to the mining industry, despite being slow.",
+        answer: "The high-grade ores that traditional smelting depends on are running out, and what is left is low-grade rock where the metal is too dilute for conventional extraction to pay. Phytomining uses plants to concentrate the metal, and bioleaching uses bacteria to produce a leachate solution, so both can work on material that would otherwise be waste. Neither needs the huge temperatures of a furnace, so energy use and carbon dioxide emissions are much lower, and large-scale quarrying and its landscape damage can be avoided. The slowness is a real disadvantage, but it is weighed against ore that could not be used at all. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why copper is described as a finite resource, even though the copper atoms in a scrapped cable are not destroyed.",
+        answer: "Finite refers to the amount that can be economically extracted from the Earth, and new copper ore is not being formed on any human timescale. The atoms in scrap do survive, but they are dispersed through landfill, alloys and buried infrastructure where collecting them costs more than the metal is worth. Each round of use also loses some copper to corrosion, wear and mixing with other metals. So the stock of copper that can actually be recovered and used shrinks, which is what makes recycling and careful design worth the effort. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -6086,6 +7951,108 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Cover both things and make explicit comparisons",
         ],
         answer: "Use words like 'whereas' and 'in contrast'. Writing two separate descriptions without linking them rarely reaches the top band.",
+      },
+      {
+        question: "A question gives a volume of 25 cm³ and asks for a concentration in g/dm³. Calculate the volume in dm³ that should be your first line of working.",
+        accept: [
+          "0.025",
+        ],
+        answer: "0.025 dm³, from 25 ÷ 1000 = 0.025. Getting the conversion onto the page before anything else is the easiest mark in the whole question, and skipping it is the commonest way to lose the lot.",
+      },
+      {
+        question: "A calculator shows 12.4567. Work out the answer to three significant figures.",
+        accept: [
+          "12.5",
+        ],
+        answer: "12.5. The first three significant figures are 1, 2 and 4, and the digit after them is 5, so the 4 rounds up = 12.5. Round like this only once, at the very end.",
+      },
+      {
+        question: "Five titres read 24.8, 25.0, 24.9, 28.6 and 25.1 cm³. Calculate the mean, ignoring the anomalous result.",
+        accept: [
+          "24.95",
+        ],
+        answer: "24.95 cm³. Discard 28.6 first, since no other reading is anywhere near it, then take the mean of what is left: 99.8 ÷ 4 = 24.95. Including the anomaly would give 25.68, a value none of the repeats supports.",
+      },
+      {
+        question: "A six-mark question asks you to compare two methods. Work out roughly how many separate points your answer should make.",
+        accept: [
+          "6",
+          "six",
+        ],
+        answer: "About six, one per mark, covering both methods and drawing an explicit comparison between them. Six marks = a levels-marked answer, so the examiner is judging range and development rather than ticking a list, but a thin answer cannot reach the top band.",
+      },
+      {
+        question: "A mass comes out as 0.0000345 g. Calculate this in standard form.",
+        accept: [
+          "3.45x10^-5",
+          "3.45 x 10^-5",
+          "3.45e-5",
+          "3.45 x 10 -5",
+        ],
+        answer: "3.45 × 10⁻⁵ g. Move the decimal point five places to the right to reach 3.45, so the power is −5. Quoting tiny masses like this is clearer than counting zeros and is less likely to be misread.",
+      },
+      {
+        question: "A gas syringe reading of 48.0 cm³ has an uncertainty of ±0.5 cm³. Calculate the percentage uncertainty, to one decimal place.",
+        accept: [
+          "1.0",
+          "1",
+        ],
+        answer: "1.0%. Percentage uncertainty is the uncertainty divided by the measurement, as a percentage, so 0.5 ÷ 48.0 gives 0.0104, which is 1.0%. Quoting it shows the examiner you know how good the measurement actually is.",
+      },
+      {
+        question: "Three titres read 23.10, 23.15 and 23.60 cm³. Calculate the mean titre you should use.",
+        accept: [
+          "23.125",
+        ],
+        answer: "23.125 cm³. Concordant means within 0.10 cm³ of each other: 23.10 and 23.15 differ by only 0.05, but 23.60 is 0.45 away and is discarded. The mean is then (23.10 + 23.15) ÷ 2 = 23.125 cm³. Averaging all three would give 23.28 and lose the mark.",
+      },
+      {
+        question: "25.0 cm³ of 0.100 mol/dm³ sodium hydroxide is neutralised by 0.0500 mol/dm³ sulfuric acid. H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O. Calculate the volume of acid needed, in cm³.",
+        accept: [
+          "25",
+        ],
+        answer: "25 cm³. Moles of NaOH = 0.0250 × 0.100 = 0.00250 mol. Two NaOH are neutralised by each H₂SO₄, so the acid needed is 0.00250 ÷ 2 = 0.00125 mol. Volume = 0.00125 ÷ 0.0500 = 0.0250 dm³, which is 25 cm³. The equal volumes are a coincidence of the numbers, not a rule.",
+        higherOnly: true,
+      },
+      {
+        question: "A balance reads to ±0.01 g and a mass of 2.50 g is found from a before-and-after reading. Calculate the percentage uncertainty in that mass, to one decimal place.",
+        accept: [
+          "0.8",
+        ],
+        answer: "0.8%. A mass found by difference uses two readings, so the uncertainties add: 2 × 0.01 = 0.02 g. As a percentage of the measured mass, (0.02 ÷ 2.50) × 100 = 0.8%. Forgetting to double the uncertainty halves the answer and is the usual slip here.",
+      },
+      {
+        question: "0.60 g of magnesium is burnt and 0.95 g of magnesium oxide is collected, against a theoretical 1.00 g. Calculate the percentage yield.",
+        accept: [
+          "95",
+        ],
+        answer: "95%. Percentage yield = (0.95 ÷ 1.00) × 100 = 95%. Lay it out as formula, then substitution, then answer with its unit — three lines, and marks for each stage even if the arithmetic slips. The missing 5% is oxide lost as white smoke when the lid is raised, plus any magnesium that never reacted.",
+      },
+      {
+        question: "A student dissolves 2.0 g of sodium hydroxide in 250 cm³ of water and writes the concentration as 0.050 mol/dm³. Calculate the correct concentration in mol/dm³. (Mr: NaOH = 40)",
+        accept: [
+          "0.2",
+          "0.20",
+          "0.200",
+        ],
+        answer: "0.2 mol/dm³. Moles of NaOH = 2.0 ÷ 40 = 0.050 mol, which is the figure they quoted — but that is an amount of substance, not a concentration. The volume is 250 ÷ 1000 = 0.250 dm³, so concentration = 0.050 ÷ 0.250 = 0.200 mol/dm³. Stopping one line early is one of the commonest ways to throw away the final mark.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why writing a unit beside a final answer can earn a mark, and why writing the wrong one can cost marks you had already earned.",
+        answer: "Mark schemes often award the final accuracy mark for the correct value with its correct unit, because a number without a unit does not say what quantity has been found. Writing the wrong unit is worse than writing none, since it tells the examiner you do not know what you have calculated — g/dm³ and mol/dm³ describe different things. It can also signal that a conversion was missed, which casts doubt on working that would otherwise have gained method marks. Copying the unit from the question, or building it from the formula you used, avoids the problem entirely. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a six-mark question is marked in levels rather than by counting points, and what that means for how you write your answer.",
+        answer: "Levels marking judges the whole response — its range, how well the points are developed and whether they are linked logically — rather than awarding a mark for each fact spotted. A list of six disconnected statements can sit in a lower band than four points that are explained and joined up. So the answer needs a clear order, chemical detail rather than vague description, and sentences that connect cause to effect. Planning two or three ideas and developing each one beats writing everything you can remember. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why you should carry the full unrounded value through a multi-step calculation and round only at the end.",
+        answer: "Rounding partway through throws away information, and the error introduced is then carried into every later step and can grow. A figure rounded to two significant figures early on can shift the final answer enough to fall outside the range the mark scheme allows, even though the method was perfectly correct. Keeping the full value on the calculator, and writing intermediate figures down only as a record, avoids this. Round once, at the end, to a sensible number of significant figures — usually the same as the least precise data in the question. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why marks are available for saying how you would make a required practical repeatable, and what a good answer includes.",
+        answer: "A result that cannot be reproduced is not evidence, so examiners test whether you understand how a reliable measurement is produced rather than just the order of the steps. A good answer states the independent variable being changed and the range used, names the control variables being kept the same, and says how each is kept constant. It specifies the measurements taken, with the apparatus and its precision, and says that each condition is repeated and a mean taken with anomalies excluded. Naming actual quantities and apparatus, rather than saying just to keep everything else the same, is what separates a top-band answer from a vague one. (Mark this one yourself.)",
       },
     ],
     misconceptions: [

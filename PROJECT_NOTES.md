@@ -1,5 +1,174 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Today's practice — 1,155 new questions and a recommender to serve them (2026-09-18)
+
+Matthew, relaying his maths teacher's idea: *"make a recommendation of
+different questions based on how well students do on different topics. If a
+student doesn't do well on one of the topics, we give him more of the questions
+of that topic. And they get increasingly hard."* Plus: expand the question bank
+across maths and the three sciences, nothing else.
+
+Asked first, because three things were genuinely open. He chose: **derive
+difficulty with an override**, **15 new questions per topic**, and a **daily
+set on the dashboard**.
+
+### The bank: 1,695 → 2,850 questions in four subjects
+
+Written by four parallel agents, one per subject, each producing JSON consumed
+by the repo's own `scripts/expand-topic.mjs` rather than editing the content
+files — so four agents could run at once with no chance of colliding in a
+6,000-line file.
+
+⚠️ **They were told to write genuinely harder questions, NOT to hit the
+derivation.** Instructing an author to produce a particular operator count
+games the scorer instead of improving the content; the honest order is write
+the question, then measure what the derivation says, then fix whichever is
+wrong.
+
+**Everything was re-verified rather than trusted.** Each agent reported its own
+arithmetic clean; that is not evidence. What was done here:
+
+  - the repo's own checker, which went 154,063 → **170,076** checks;
+  - every numeric `accept` compared against its own answer text — 624 of 624
+    consistent;
+  - every new `accept` value checked to be typeable on a keyboard — 0 failures;
+  - **16 of the hardest new questions verified by hand**, one per subject
+    across a spread of topics: the N–H bond energy (2341 ÷ 6 = 390), the 323°
+    bearing, 58.32 tonnes of crude oil, 87.2 J of work, the 2/3 carrier
+    probability. All correct.
+
+⚠️ **THE AUTOMATED ARITHMETIC CHECKER WAS WRONG THREE TIMES BEFORE IT WAS
+RIGHT, AND IT WAS ALWAYS THE HARNESS.** First version: 71 "mismatches".
+Second: 57. Every single one inspected was the checker — it capped expressions
+at three operands, so `12 + 15 + 9 + 20 + 14 = 70` was read as `9 + 20 + 14 =
+70`; it treated `a/b` fractions as division, so `12 ÷ 3/4 = 16` evaluated as
+12/3/4; and it matched the numerator of a fractional answer, so `3/6 = 1/2`
+became `3/6 = 1`. It could not see leading `½ ×`, `√(`, `tan⁻¹(` or
+superscripts either. The third version only checks what it can parse without
+ambiguity and **says how much it skipped** — 42 checked, 1,271 skipped, 0
+mismatches. An honest small number beat a dishonest large one.
+
+Two content problems the agents raised themselves and were right about: a
+**dihybrid cross** (AQA GCSE biology is monohybrid only — replaced with a
+conditional-probability question that is in spec and just as multi-step), and
+an **ethanol calorimetry figure** that came out above the accepted value and
+so contradicted its own note about heat loss.
+
+### Difficulty is derived, and the mark tariff alone could not do it
+
+`app/lib/difficulty.ts`: 1 recognise · 2 recall · 3 apply · 4 analyse · 5
+explain, with an explicit `difficulty` override on the question.
+
+⚠️ **Reusing `marksFor()` was the obvious build and it does not work.**
+Measured before writing anything: maths had 316 questions at 1 mark against 95
+at 2 and 26 at 3. Seventy per cent of every subject sits on one value, so a
+ladder built from the tariff has one rung. The tariff says what a question is
+WORTH; it cannot tell recognising an answer from a list — the easiest thing a
+question can ask — from recalling it cold, and both are 1 mark.
+
+⚠️ **The level-4 boundary is at THREE marks, not four, and that was measured
+too.** Four is the intuitive place and it makes the rung unreachable: the mark
+derivation caps an auto-marked calculation at 3 by design, so only Higher-tier
+flags could reach 4 — and physics carries none, so **physics had zero level-4
+questions across all nineteen topics**, in the subject with the most multi-step
+calculation on the site. At 3 it has 85. The temptation was to flag more
+questions `higherOnly` instead, which would have been a content lie: this
+codebase's tier policy is to UNDER-flag, because wrongly flagging tells a
+Foundation student to skip something that IS on their paper.
+
+Thin rungs (a topic-level with under three questions) went **193 → 40**.
+
+⚠️ **The escape hatch was wired through the content type on day one**, unlike
+`marks`, which was documented for three days while being impossible to
+compile. And `scripts/expand-topic.mjs` turned out to render every non-string
+value as `{}` — `higherOnly: true` became `higherOnly: {}` — which would have
+hit the numeric overrides too. It had never shown up because every value ever
+inserted by that tool had happened to be a string.
+
+### The recommender: no new storage, and a pure function
+
+`activity` has recorded one row per practice answer since progress tracking was
+built, so "how well does this student do on each topic" is already answerable.
+No migration, and nothing for Matthew to run — which matters, because this
+project's notes record three features that sat silently broken for weeks
+because a .sql file was written and never run.
+
+⚠️ **RANKING BY RAW ACCURACY IS UNUSABLE AND IT IS THE OBVIOUS BUILD.** One
+wrong answer puts a topic at 0%, the worst score possible, so the first
+question a student ever gets wrong pins that topic to the top of their
+recommendations forever — while a topic they have genuinely struggled with over
+thirty questions sits at 40% and ranks below it. They would be handed the topic
+they know LEAST ABOUT, which is not the topic they are WORST AT. Each topic now
+starts with four imaginary answers at 60%: one wrong out of one comes to 48%,
+five wrong out of five to 27%, and thirty answers swamp the prior entirely.
+
+The displayed figure is the raw accuracy, not the smoothed one — the smoothing
+decides the ranking, but a student should be shown their real score.
+
+⚠️ **THE SITE CANNOT KNOW WHICH QUESTIONS A STUDENT HAS ALREADY SEEN.**
+`activity` records the topic and whether it was right, never the question. The
+set rotates its starting point by the day instead — 0 of 10 questions repeat
+day to day — and the card does not claim a question is new.
+
+**Eligibility is derived, not a list of four subject slugs.** A topic qualifies
+on bank size and how many difficulty levels it actually has, so the day someone
+expands History it joins on its own. 79 topics qualify today.
+
+**The climb is sorted once over the whole set**, not per topic and
+concatenated — which would give two climbs, hard then easy again, the exact
+defect the lesson builder shipped and had to be rewritten for.
+
+### Checked as properties, over 300 invented students
+
+`scripts/check-recommendation.mjs` — 9,886 checks. A recommender is easy to
+test wrongly: look at one student's ten questions and decide they seem
+sensible. That says nothing about the student who has answered one question, or
+who is perfect at everything, or whose weakest topic has a gap in its ladder.
+
+Asserted for all of them: the set never goes backwards in difficulty; no
+question appears twice in a day; **the student's single weakest attempted topic
+is always actually drawn from** (a recommender returning ten valid questions
+from anywhere would pass every other check and do nothing useful); the set is
+identical on two calls the same day and different the next; a brand-new student
+with no history still gets a full set.
+
+Both of the checks that matter were confirmed to bite: removing the climb sort
+fails 369, ranking by strength instead of weakness fails 223.
+
+⚠️ **Six failures on the first run were the check, not the algorithm** — it
+rebuilt each question from the fields the set carries, which drops the explicit
+`marks: 1` override four maths questions have, so it re-derived a different
+level. It now looks the original up. That is the fifth time in three days.
+
+### What it looks like
+
+`/today`, reached from a card on the dashboard. Rendered and read: the ladder
+came out **Recognise · Recognise · Recall · Recall · Apply · Apply · Analyse ·
+Analyse · Explain · Explain**, alternating between the two weakest topics, with
+the headline *"10 questions, mostly Electrolysis — you are on 27% there, your
+lowest."*
+
+Answers record against the question's own topic, not against "today's
+practice" — a daily set is a different way of REACHING questions, so it feeds
+coverage, accuracy, XP and the streak exactly as the topic page does, and
+today's answers are tomorrow's input. Marking reuses `normalise()` rather than
+reimplementing it, because two implementations disagreeing is a bug this
+project has already had once.
+
+No grade and no prediction on the finish screen — Matthew's own rule.
+
+**Verified:** 170,076 content, 1,239,302 geometry, 1,405 security, 19,711
+slide-deck and 9,886 recommendation checks; tsc and eslint clean; the runner
+driven in a browser with zero console errors and the ladder read off the
+screen.
+
+**Left for its own pass:** the operator count in `marks.ts` is still a noisy
+proxy at the 1/2 boundary, and it is now visible at the 3/4 difficulty boundary
+too — "apply" questions whose answers spell out their arithmetic derive 3 marks
+and land at level 4, which is why L3 is the thin rung in 38 topics while L4 is
+crowded. Two candidate fixes were measured on 2026-09-15 (17 and 161 questions
+changed) and both rejected as unvalidated.
+
 ## Getting a lesson into a teacher's own PowerPoint (2026-09-15, later)
 
 Matthew: *"make sure that it is very easy for teachers to use in their

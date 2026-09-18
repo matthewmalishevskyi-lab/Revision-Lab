@@ -344,6 +344,110 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "It still exists but is spread out and hard to recover. Saying energy is 'lost' or 'destroyed' loses marks.",
       },
+      {
+        question: "Calculate the kinetic energy of a 1,200 kg car travelling at 15 m/s.",
+        accept: [
+          "135000",
+          "135,000",
+          "135000 J",
+          "135 kJ",
+        ],
+        answer: "135,000 J. Ek = ½ × 1200 × 15² = 135,000 J. Square the speed before you multiply, not after.",
+      },
+      {
+        question: "A 0.15 kg ball is dropped from a height of 12 m. Calculate the gravitational potential energy it loses. (g = 9.8 N/kg)",
+        accept: [
+          "17.64",
+          "17.6",
+        ],
+        answer: "17.64 J. Ep = m × g × h = 0.15 × 9.8 × 12 = 17.64 J, which rounds to 17.6 J.",
+      },
+      {
+        question: "A kettle transfers 180,000 J of energy in 100 seconds. Calculate its power output in watts.",
+        accept: [
+          "1800",
+          "1,800",
+        ],
+        answer: "1,800 W. P = E ÷ t = 180,000 ÷ 100 = 1,800 W, which is 1.8 kW.",
+      },
+      {
+        question: "A spring with a spring constant of 250 N/m is extended by 0.08 m. Calculate the energy in its elastic potential store.",
+        accept: [
+          "0.8",
+        ],
+        answer: "0.8 J. Ee = ½ × k × e² = ½ × 250 × 0.08² = ½ × 250 × 0.0064 = 0.8 J.",
+      },
+      {
+        question: "Calculate the energy needed to raise the temperature of 0.5 kg of aluminium by 30°C. (c = 900 J/kg°C)",
+        accept: [
+          "13500",
+          "13,500",
+        ],
+        answer: "13,500 J. E = m × c × Δθ = 0.5 × 900 × 30 = 13,500 J.",
+      },
+      {
+        question: "A motor is supplied with 2,500 J and usefully transfers 1,750 J. Work out its efficiency as a percentage.",
+        accept: [
+          "70",
+          "70%",
+        ],
+        answer: "70%. Efficiency = useful out ÷ total in = 1750 ÷ 2500 = 0.7, and 0.7 × 100 = 70%.",
+      },
+      {
+        question: "A 0.4 kg ball is thrown straight up at 14 m/s. Calculate the maximum height it reaches, ignoring air resistance. (g = 9.8 N/kg)",
+        accept: [
+          "10",
+          "10 m",
+        ],
+        answer: "10 m. Ek at launch = ½ × 0.4 × 14² = 39.2 J. At the top all of it has become Ep, so h = Ep ÷ (m × g) = 39.2 ÷ (0.4 × 9.8) = 10 m.",
+      },
+      {
+        question: "A 2 kg rock falls from rest off a 20 m cliff. Calculate its speed just before it lands, ignoring air resistance. Take g = 10 N/kg.",
+        accept: [
+          "20",
+          "20 m/s",
+        ],
+        answer: "20 m/s. Ep lost = m × g × h = 2 × 10 × 20 = 400 J. That becomes kinetic energy, so ½ × 2 × v² = 400, giving v² = 400 and v = 20 m/s.",
+      },
+      {
+        question: "A 2 kW immersion heater warms 5 kg of water from 20°C to 60°C. Calculate how long this takes if no energy is wasted. (c = 4,200 J/kg°C)",
+        accept: [
+          "420",
+          "420 s",
+        ],
+        answer: "420 s. Δθ = 60 − 20 = 40°C, so E = 5 × 4200 × 40 = 840,000 J. Convert 2 kW to 2,000 W, then t = E ÷ P = 840,000 ÷ 2,000 = 420 s (7 minutes).",
+      },
+      {
+        question: "A crane lifts a 500 kg load through 12 m in 20 s while its motor draws 4,000 W. Calculate the crane's efficiency as a percentage. (g = 9.8 N/kg)",
+        accept: [
+          "73.5",
+          "73.5%",
+        ],
+        answer: "73.5%. Useful energy = m × g × h = 500 × 9.8 × 12 = 58,800 J. Useful power = 58,800 ÷ 20 = 2,940 W. Efficiency = 2940 ÷ 4000 = 0.735, so 73.5%.",
+      },
+      {
+        question: "Supplying 9,600 J to a 0.8 kg metal block raises its temperature from 18°C to 48°C. Calculate the specific heat capacity of the metal.",
+        accept: [
+          "400",
+        ],
+        answer: "400 J/kg°C. Δθ = 48 − 18 = 30°C. Rearranging E = m × c × Δθ gives c = E ÷ (m × Δθ) = 9600 ÷ (0.8 × 30) = 9600 ÷ 24 = 400 J/kg°C.",
+      },
+      {
+        question: "A ball bearing dropped onto a table bounces back to a lower height every time. Explain where the missing energy has gone and why none of it has been destroyed.",
+        answer: "Each impact squashes the ball and the table slightly, and friction inside the materials transfers some energy to their thermal stores; a little is also carried away as sound. That energy has been dissipated to the surroundings, not destroyed, so the total in the closed system is unchanged. It is simply spread so thinly that nothing can usefully be done with it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a material with a low thermal conductivity slows the cooling of a house, and name one place such a material is used.",
+        answer: "Thermal conductivity measures how fast energy passes through a material, so a low value means energy leaks out of the building slowly. Thicker walls of that material slow it further, because the energy has further to travel. Loft insulation and the foam in a cavity wall are both low-conductivity materials used for exactly this. (Mark this one yourself.)",
+      },
+      {
+        question: "A car brakes from 30 m/s to a stop. Explain the energy transfers involved and why the total energy of the system has not changed.",
+        answer: "The kinetic energy store of the car empties as friction between the brake pads and discs does work against the motion. That energy is transferred to the thermal stores of the brakes, tyres and surrounding air, which is why brake discs get hot. Nothing is created or destroyed; the same quantity of energy is simply now spread across the surroundings in a form that cannot be used to drive the car. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why lubricating the moving parts of a machine increases its efficiency.",
+        answer: "Without lubrication the surfaces rub together and friction does work against the motion, transferring energy to the thermal stores of the parts and the air around them. That energy is wasted, so less of the input ends up in the useful output store. A lubricant keeps the surfaces apart so there is less friction, less energy dissipated as heat, and a greater fraction of the input transferred usefully. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -672,6 +776,109 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Step-up transformers raise voltage for transmission; step-down transformers lower it again before it reaches homes.",
       },
+      {
+        question: "A wind turbine has a power output of 1.5 MW. Calculate the energy it transfers in one hour, in megajoules.",
+        accept: [
+          "5400",
+          "5,400",
+        ],
+        answer: "5,400 MJ. 1.5 MW is 1.5 × 10^6 W, and one hour is 3,600 s, so E = P × t = 1,500,000 × 3,600 = 5.4 × 10^9 J = 5,400 MJ.",
+      },
+      {
+        question: "A solar panel receives 2,000 J of light energy every second and is 18% efficient. Calculate its useful electrical output in watts.",
+        accept: [
+          "360",
+          "360 W",
+        ],
+        answer: "360 W. Useful output = 0.18 × 2,000 = 360 J each second, and one joule per second is one watt.",
+      },
+      {
+        question: "A power station burns coal supplying 5,000 MJ and generates 1,750 MJ of electricity. Work out its efficiency as a percentage.",
+        accept: [
+          "35",
+          "35%",
+        ],
+        answer: "35%. Efficiency = useful out ÷ total in = 1750 ÷ 5000 = 0.35, so 35%. The other 65% leaves as heat up the cooling towers.",
+      },
+      {
+        question: "A tidal barrage generates 60 MW. Calculate how many 60 W lamps it could run at the same time.",
+        accept: [
+          "1000000",
+          "1,000,000",
+        ],
+        answer: "1,000,000 lamps. Convert first: 60 MW = 60,000,000 W. Then 60,000,000 ÷ 60 = 1,000,000.",
+      },
+      {
+        question: "A country uses 1,800 TWh of electricity a year, of which 126 TWh comes from wind. Calculate the percentage supplied by wind.",
+        accept: [
+          "7",
+          "7%",
+        ],
+        answer: "7%. 126 ÷ 1800 = 0.07, and 0.07 × 100 = 7%.",
+      },
+      {
+        question: "Calculate the energy in joules supplied by a 2 MW hydroelectric station running for 5 minutes.",
+        accept: [
+          "600000000",
+          "600 MJ",
+          "6 x 10^8",
+        ],
+        answer: "600,000,000 J. Convert both units: 2 MW = 2,000,000 W and 5 minutes = 300 s. E = P × t = 2,000,000 × 300 = 6 × 10^8 J, or 600 MJ.",
+      },
+      {
+        question: "A 2 MW wind turbine produces its full output for only 30% of the year. Calculate the energy it actually delivers in a year, in megawatt-hours.",
+        accept: [
+          "5256",
+        ],
+        answer: "5,256 MWh. A year is 365 × 24 = 8,760 hours. At full output it would give 2 × 8,760 = 17,520 MWh, but only 30% of that is delivered: 0.30 × 17,520 = 5,256 MWh.",
+      },
+      {
+        question: "A gas power station is 45% efficient and its fuel supplies 8,000 MJ every minute. Calculate its electrical power output in megawatts.",
+        accept: [
+          "60",
+          "60 MW",
+        ],
+        answer: "60 MW. Useful energy each minute = 0.45 × 8,000 = 3,600 MJ. A minute is 60 s, so P = 3,600 ÷ 60 = 60 MJ per second, which is 60 MW.",
+      },
+      {
+        question: "A 4 m² solar panel receives 800 W of sunlight per square metre and is 15% efficient. Calculate the useful energy it transfers in 2 hours, in kilojoules.",
+        accept: [
+          "3456",
+        ],
+        answer: "3,456 kJ. Input power = 800 × 4 = 3,200 W. Useful power = 0.15 × 3,200 = 480 W. Two hours is 7,200 s, so E = 480 × 7,200 = 3,456,000 J = 3,456 kJ.",
+      },
+      {
+        question: "A 1,000 MW nuclear station is to be replaced by wind turbines rated at 2.5 MW that average only 40% of their rating. Calculate how many turbines are needed.",
+        accept: [
+          "1000",
+          "1,000",
+        ],
+        answer: "1,000 turbines. Each turbine averages 0.40 × 2.5 = 1 MW. To match 1,000 MW you therefore need 1,000 ÷ 1 = 1,000 of them — which is why replacing one station like-for-like is not simple.",
+      },
+      {
+        question: "Burning 1 kg of coal releases 30 MJ. Calculate the mass of coal a 38% efficient station must burn to generate 570 MJ of electricity.",
+        accept: [
+          "50",
+          "50 kg",
+        ],
+        answer: "50 kg. The fuel must supply 570 ÷ 0.38 = 1,500 MJ. At 30 MJ per kilogram that is 1,500 ÷ 30 = 50 kg of coal.",
+      },
+      {
+        question: "Explain why a country cannot rely on wind and solar alone, even if it builds enough of them to match its total yearly demand.",
+        answer: "Matching demand over a whole year says nothing about matching it at any given moment, and both resources are unreliable: solar gives nothing at night and wind gives nothing on a still day. Demand does not fall away at the same times, so on a calm winter evening the shortfall has to come from somewhere else. That is why a mix including reliable resources, or large-scale storage, is needed alongside them. (Mark this one yourself.)",
+      },
+      {
+        question: "A government is choosing between a tidal barrage and a gas power station. Discuss the trade-offs it should weigh up.",
+        answer: "The barrage is very predictable because tides follow the moon, produces no carbon dioxide in use and costs almost nothing to run, but it is hugely expensive to build and a barrage wrecks the estuary habitat behind it. The gas station is far cheaper and faster to build and can be turned up on demand, but it releases carbon dioxide for as long as it runs and its fuel will eventually run out. The honest answer depends on which criterion is weighted most heavily — cost now, reliability, or long-term emissions. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why biofuel is described as roughly carbon neutral rather than completely carbon neutral.",
+        answer: "The crop absorbs carbon dioxide as it grows and releases roughly the same amount when burnt, so in principle the two cancel. In practice fossil fuels are burnt to plant, harvest, process and transport the crop, and land is often cleared to grow it, which releases stored carbon as well. Those extra emissions are not cancelled by the growing, so the balance is close to neutral but not exactly so. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the start-up cost and the running cost of a renewable resource pull in opposite directions when judging whether it is good value.",
+        answer: "Renewables are usually expensive to build — turbines, panels or a barrage all cost a great deal before a single joule is generated — but they need no fuel, so the running cost is very low. Fossil fuel stations are the other way round: cheaper to build, then paying for fuel every day they operate. Which looks better therefore depends on how long the plant runs for, because the high start-up cost is spread over its whole lifetime. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -983,6 +1190,111 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Solid",
         ],
         answer: "Particles are most closely packed in a solid. Water is the famous exception, because ice is less dense than liquid water.",
+      },
+      {
+        question: "Calculate the mass of a 0.4 m³ block of concrete with a density of 2,400 kg/m³.",
+        accept: [
+          "960",
+          "960 kg",
+        ],
+        answer: "960 kg. Rearranging ρ = m ÷ V gives m = ρ × V = 2,400 × 0.4 = 960 kg.",
+      },
+      {
+        question: "Calculate the energy needed to melt 1.5 kg of ice at 0°C. (Specific latent heat of fusion = 334,000 J/kg)",
+        accept: [
+          "501000",
+          "501,000",
+        ],
+        answer: "501,000 J. E = m × L = 1.5 × 334,000 = 501,000 J, or 501 kJ. The temperature does not change, so no mcΔθ term appears.",
+      },
+      {
+        question: "Calculate the volume of a 1.2 kg lump of metal whose density is 8,000 kg/m³.",
+        accept: [
+          "0.00015",
+          "1.5 x 10^-4",
+        ],
+        answer: "0.00015 m³. V = m ÷ ρ = 1.2 ÷ 8,000 = 1.5 × 10^-4 m³, which is 150 cm³.",
+      },
+      {
+        question: "Calculate the energy released when 0.05 kg of steam at 100°C condenses into water at 100°C. (L = 2,260,000 J/kg)",
+        accept: [
+          "113000",
+          "113,000",
+        ],
+        answer: "113,000 J. E = m × L = 0.05 × 2,260,000 = 113,000 J. Condensing is the reverse of boiling, so the same latent heat comes back out.",
+      },
+      {
+        question: "Calculate the energy needed to raise 0.25 kg of copper from 20°C to 120°C. (c = 385 J/kg°C)",
+        accept: [
+          "9625",
+          "9,625",
+        ],
+        answer: "9,625 J. Δθ = 120 − 20 = 100°C, so E = m × c × Δθ = 0.25 × 385 × 100 = 9,625 J.",
+      },
+      {
+        question: "A fixed mass of gas at 200 kPa occupies 0.03 m³. Calculate its pressure when it is squeezed to 0.012 m³ at constant temperature.",
+        accept: [
+          "500",
+          "500 kPa",
+        ],
+        answer: "500 kPa. For a fixed mass at constant temperature p × V stays constant: 200 × 0.03 = 6 kPa m³, so p = 6 ÷ 0.012 = 500 kPa.",
+        higherOnly: true,
+      },
+      {
+        question: "A block measuring 5 cm × 4 cm × 2 cm has a mass of 0.32 kg. Calculate its density in kg/m³.",
+        accept: [
+          "8000",
+          "8,000",
+        ],
+        answer: "8,000 kg/m³. Volume = 5 × 4 × 2 = 40 cm³. Converting, 1 cm³ = 10^-6 m³, so 40 cm³ = 0.00004 m³. Then ρ = m ÷ V = 0.32 ÷ 0.00004 = 8,000 kg/m³.",
+      },
+      {
+        question: "Calculate the total energy needed to turn 0.2 kg of ice at 0°C into water at 50°C. (L = 334,000 J/kg, c = 4,200 J/kg°C)",
+        accept: [
+          "108800",
+          "108,800",
+        ],
+        answer: "108,800 J. Melt it first: E = m × L = 0.2 × 334,000 = 66,800 J. Then warm the water: E = m × c × Δθ = 0.2 × 4,200 × 50 = 42,000 J. Total = 66,800 + 42,000 = 108,800 J.",
+      },
+      {
+        question: "A 500 W heater melts 0.1 kg of ice at 0°C with no energy wasted. Calculate the time this takes. (L = 334,000 J/kg)",
+        accept: [
+          "66.8",
+          "66.8 s",
+        ],
+        answer: "66.8 s. Energy needed = m × L = 0.1 × 334,000 = 33,400 J. Then t = E ÷ P = 33,400 ÷ 500 = 66.8 s.",
+      },
+      {
+        question: "A steel rod is 50 cm long with a cross-sectional area of 4 cm². Steel has a density of 7.9 g/cm³. Calculate the rod's mass in kilograms.",
+        accept: [
+          "1.58",
+          "1.58 kg",
+        ],
+        answer: "1.58 kg. Volume = area × length = 4 × 50 = 200 cm³. Mass = ρ × V = 7.9 × 200 = 1,580 g. Dividing by 1,000 gives 1.58 kg.",
+      },
+      {
+        question: "A 60 W heater boils away 0.008 kg of water at 100°C in 5 minutes. Calculate the specific latent heat of vaporisation this gives.",
+        accept: [
+          "2250000",
+          "2,250,000",
+        ],
+        answer: "2,250,000 J/kg. Five minutes is 300 s, so the energy supplied is E = P × t = 60 × 300 = 18,000 J. Rearranging E = m × L gives L = 18,000 ÷ 0.008 = 2,250,000 J/kg — close to the true 2.26 × 10^6 J/kg, the difference being energy lost to the room.",
+      },
+      {
+        question: "A bicycle pump gets noticeably warm when the air in it is compressed quickly. Explain this using the idea of work done and internal energy.",
+        answer: "Pushing the plunger in exerts a force through a distance, so work is done on the gas. That work is a mechanical transfer of energy into the gas's internal energy store, and since no change of state occurs the particles simply move faster. Faster particles mean a higher temperature, so the pump and the air inside it warm up. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why steam at 100°C scalds far more badly than water at 100°C.",
+        answer: "Both are at the same temperature, so temperature alone cannot be the reason. When steam touches skin it condenses, and condensing releases the specific latent heat of vaporisation — about 2.26 million joules for every kilogram — before the temperature starts to fall at all. That extra energy is delivered into the skin on top of the cooling from 100°C, so far more energy is transferred than from the same mass of hot water. (Mark this one yourself.)",
+      },
+      {
+        question: "Water in a sealed flask is frozen. Explain why its mass is unchanged although its volume is not.",
+        answer: "Freezing is a physical change: the same particles are still present, none has been added or removed, so the total mass is conserved. What changes is the arrangement — in ice the molecules lock into an open lattice that holds them slightly further apart on average than in liquid water. The same mass in a larger volume means a lower density, which is why ice floats. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a substance as a gas has a much lower density than the same substance as a liquid.",
+        answer: "Density is mass divided by volume, and a change of state does not change the mass. In a liquid the particles are touching, whereas in a gas they are far apart with empty space between them, so the same number of particles spreads through a vastly larger volume. Dividing the same mass by a much bigger volume gives a much smaller density. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -1301,6 +1613,110 @@ export const PHYSICS: Record<string, TopicContent> = {
           "The limit of proportionality has not been exceeded",
         ],
         answer: "Beyond that point extension is no longer proportional to force, and the graph curves away from the straight line.",
+      },
+      {
+        question: "Calculate the weight of a 4.5 kg bowling ball on Earth. (g = 9.8 N/kg)",
+        accept: [
+          "44.1",
+          "44.1 N",
+        ],
+        answer: "44.1 N. W = m × g = 4.5 × 9.8 = 44.1 N. Weight is a force, so the answer is in newtons, not kilograms.",
+      },
+      {
+        question: "A crate is dragged 12 m along a floor against a friction force of 85 N. Calculate the work done against friction.",
+        accept: [
+          "1020",
+          "1,020",
+        ],
+        answer: "1,020 J. W = F × s = 85 × 12 = 1,020 J. All of it ends up in the thermal store of the crate and the floor.",
+      },
+      {
+        question: "Calculate the spring constant of a spring that extends 0.25 m when a force of 30 N is applied.",
+        accept: [
+          "120",
+          "120 N/m",
+        ],
+        answer: "120 N/m. Rearranging F = k × e gives k = F ÷ e = 30 ÷ 0.25 = 120 N/m.",
+      },
+      {
+        question: "A force of 60 N is applied to a spanner at right angles, 0.35 m from the bolt. Calculate the moment.",
+        accept: [
+          "21",
+          "21 Nm",
+        ],
+        answer: "21 Nm. Moment = force × perpendicular distance = 60 × 0.35 = 21 Nm.",
+      },
+      {
+        question: "Calculate the energy stored in a spring of spring constant 400 N/m when it is stretched by 0.15 m.",
+        accept: [
+          "4.5",
+          "4.5 J",
+        ],
+        answer: "4.5 J. Ee = ½ × k × e² = ½ × 400 × 0.15² = ½ × 400 × 0.0225 = 4.5 J.",
+      },
+      {
+        question: "A car engine drives it forwards with 2,500 N while air resistance is 900 N and friction is 300 N. Calculate the resultant force.",
+        accept: [
+          "1300",
+          "1,300",
+        ],
+        answer: "1,300 N forwards. Forces in opposite directions subtract: 2,500 − 900 − 300 = 1,300 N, and the sign tells you it acts in the direction of motion.",
+      },
+      {
+        question: "An unstretched spring is 10 cm long. Hanging a 0.3 kg mass on it stretches it to 22 cm. Calculate the spring constant in N/m. Take g = 10 N/kg.",
+        accept: [
+          "25",
+          "25 N/m",
+        ],
+        answer: "25 N/m. The stretching force is the weight: W = m × g = 0.3 × 10 = 3 N. The extension is 22 − 10 = 12 cm = 0.12 m. Then k = F ÷ e = 3 ÷ 0.12 = 25 N/m.",
+      },
+      {
+        question: "A 60 kg climber goes 25 m up a vertical rock face. Calculate the work done against gravity. (g = 9.8 N/kg)",
+        accept: [
+          "14700",
+          "14,700",
+        ],
+        answer: "14,700 J. The force to lift is the climber's weight: W = m × g = 60 × 9.8 = 588 N. Then work done = F × s = 588 × 25 = 14,700 J.",
+      },
+      {
+        question: "A uniform plank is pivoted at its centre. A 20 N weight sits 0.4 m to the left of the pivot. Calculate how far right of the pivot a 16 N weight must go to balance it.",
+        accept: [
+          "0.5",
+          "0.5 m",
+        ],
+        answer: "0.5 m. The anticlockwise moment is 20 × 0.4 = 8 Nm. For balance the clockwise moment must also be 8 Nm, so d = 8 ÷ 16 = 0.5 m.",
+      },
+      {
+        question: "A spring of spring constant 500 N/m is stretched by a force of 25 N. Calculate the energy stored in it.",
+        accept: [
+          "0.625",
+          "0.63",
+        ],
+        answer: "0.625 J. First find the extension: e = F ÷ k = 25 ÷ 500 = 0.05 m. Then Ee = ½ × k × e² = ½ × 500 × 0.0025 = 0.625 J.",
+      },
+      {
+        question: "A 2.5 kg box is lifted 1.6 m onto a bench, then dragged 4 m along it against 12 N of friction. Calculate the total work done. (g = 9.8 N/kg)",
+        accept: [
+          "87.2",
+          "87.2 J",
+        ],
+        answer: "87.2 J. Lifting: the force is the weight, 2.5 × 9.8 = 24.5 N, so the work is 24.5 × 1.6 = 39.2 J. Dragging: 12 × 4 = 48 J. Total = 39.2 + 48 = 87.2 J.",
+      },
+      {
+        question: "Explain why Hooke's law uses the extension of a spring rather than its total length.",
+        answer: "A spring already has a length before any force is applied, and that length is not caused by the force, so including it would credit the force with a stretch it did not produce. The law says the force is proportional to the extra length gained, which is the total length minus the original length. Using the total length instead gives a graph that does not pass through the origin and a spring constant that is simply wrong. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why weight is treated as a vector while mass is a scalar, and why that matters when combining forces.",
+        answer: "Mass is a measure of how much matter an object contains, and an amount has no direction, so it is a scalar. Weight is the gravitational force on that mass and always acts downwards towards the centre of the Earth, so it has both size and direction and is a vector. That matters because vectors must be combined with direction taken into account: an upward 40 N tension and a downward 30 N weight give a resultant of 10 N upwards, not 70 N. (Mark this one yourself.)",
+      },
+      {
+        question: "A force-extension graph for a spring is a straight line through the origin and then bends. Explain what the bend shows and why the spring constant cannot be read from that part.",
+        answer: "The straight section shows force proportional to extension, which is Hooke's law holding, and its gradient is the spring constant. The bend marks the limit of proportionality: beyond it each extra newton produces more extension than the one before, so the relationship is no longer proportional. A gradient taken there would not be constant, so there is no single spring constant to read, and the spring may also be permanently deformed. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain, using moments, why a door handle is fitted at the edge of the door furthest from the hinges.",
+        answer: "The hinges act as the pivot, and the moment of a force is the force multiplied by its perpendicular distance from that pivot. Putting the handle at the far edge makes that distance as large as the door allows, so a small push produces the largest possible turning effect. A handle near the hinges would need a far bigger force to open the same door. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -1621,6 +2037,110 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Its resistance is very high in the reverse direction, which is why diodes are used to control the direction of current.",
       },
+      {
+        question: "Calculate the resistance of a component that draws 0.4 A from a 12 V supply.",
+        accept: [
+          "30",
+          "30 ohms",
+        ],
+        answer: "30 Ω. Rearranging V = I × R gives R = V ÷ I = 12 ÷ 0.4 = 30 Ω.",
+      },
+      {
+        question: "Calculate the energy transferred when 250 C of charge passes through a 12 V battery.",
+        accept: [
+          "3000",
+          "3,000",
+        ],
+        answer: "3,000 J. E = Q × V = 250 × 12 = 3,000 J. Potential difference is energy per coulomb, so multiplying by the coulombs gives the energy.",
+      },
+      {
+        question: "Calculate the power dissipated when a current of 3 A flows through a 15 Ω resistor.",
+        accept: [
+          "135",
+          "135 W",
+        ],
+        answer: "135 W. P = I² × R = 3² × 15 = 9 × 15 = 135 W. Square the current first — squaring after multiplying is the usual slip.",
+      },
+      {
+        question: "A hairdryer draws 8 A from a 230 V supply. Calculate its power.",
+        accept: [
+          "1840",
+          "1,840",
+        ],
+        answer: "1,840 W. P = V × I = 230 × 8 = 1,840 W, which is 1.84 kW.",
+      },
+      {
+        question: "Resistors of 4 Ω, 7 Ω and 9 Ω are connected in series. Calculate the total resistance.",
+        accept: [
+          "20",
+          "20 ohms",
+        ],
+        answer: "20 Ω. In series the resistances simply add: 4 + 7 + 9 = 20 Ω.",
+      },
+      {
+        question: "Calculate the current drawn by a 2,300 W heater connected to a 230 V supply.",
+        accept: [
+          "10",
+          "10 A",
+        ],
+        answer: "10 A. Rearranging P = V × I gives I = P ÷ V = 2,300 ÷ 230 = 10 A.",
+      },
+      {
+        question: "A current of 250 mA flows for 2 minutes. Calculate the charge that has flowed, in coulombs.",
+        accept: [
+          "30",
+          "30 C",
+        ],
+        answer: "30 C. Convert both units first: 250 mA = 0.25 A and 2 minutes = 120 s. Then Q = I × t = 0.25 × 120 = 30 C.",
+      },
+      {
+        question: "A 6 V battery is connected across a 12 Ω resistor. Calculate the energy transferred in 5 minutes.",
+        accept: [
+          "900",
+          "900 J",
+        ],
+        answer: "900 J. First the current: I = V ÷ R = 6 ÷ 12 = 0.5 A. Then the power: P = V × I = 6 × 0.5 = 3 W. Five minutes is 300 s, so E = P × t = 3 × 300 = 900 J.",
+      },
+      {
+        question: "A 4 Ω and an 8 Ω resistor are in series across a 12 V supply. Calculate the potential difference across the 8 Ω resistor.",
+        accept: [
+          "8",
+          "8 V",
+        ],
+        answer: "8 V. Total resistance = 4 + 8 = 12 Ω, so the current is I = 12 ÷ 12 = 1 A. The same current flows through both, so across the 8 Ω resistor V = I × R = 1 × 8 = 8 V.",
+      },
+      {
+        question: "Two 6 Ω resistors are connected in parallel across a 9 V supply. Calculate the total current drawn from the supply.",
+        accept: [
+          "3",
+          "3 A",
+        ],
+        answer: "3 A. Each branch has the full 9 V across it, so each carries I = 9 ÷ 6 = 1.5 A. The branch currents add: 1.5 + 1.5 = 3 A.",
+      },
+      {
+        question: "A 4 Ω and a 2 Ω resistor are in series across a 24 V supply. Calculate the power dissipated in the 4 Ω resistor.",
+        accept: [
+          "64",
+          "64 W",
+        ],
+        answer: "64 W. Total resistance = 4 + 2 = 6 Ω, so I = V ÷ R = 24 ÷ 6 = 4 A. That current flows through the 4 Ω resistor, so P = I² × R = 16 × 4 = 64 W.",
+      },
+      {
+        question: "Explain why adding a second identical lamp in parallel leaves the first one as bright, while adding it in series dims it.",
+        answer: "A lamp added in parallel gets the full supply potential difference across it, exactly as the first one does, so the current through the first lamp is unchanged and it stays as bright — the battery simply supplies more total current. Added in series, the two lamps share the supply potential difference, so each has only half of it. The total resistance has also doubled, so the current falls, and less power is transferred in each lamp. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why an ammeter is connected in series but a voltmeter in parallel.",
+        answer: "An ammeter measures the current through a component, and in series it carries exactly that current; it is built with a very low resistance so adding it barely changes the circuit. A voltmeter measures the energy transferred per coulomb across a component, so it must be connected across the two ends to see that difference. It has a very high resistance so almost no current is diverted through it, leaving the circuit it is measuring essentially undisturbed. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe the shape of a current-potential difference graph for a diode and explain why it has that shape.",
+        answer: "In the forward direction almost no current flows until the potential difference reaches a threshold, after which the current rises very steeply. In the reverse direction the line stays flat along the axis, because the diode's resistance is extremely high that way and virtually no charge can flow. The graph is therefore strongly asymmetric, which is exactly what makes a diode useful for allowing current one way only. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what it means, in terms of charge and energy, to say that a battery has a potential difference of 12 V.",
+        answer: "Potential difference is the energy transferred per unit of charge, so 12 V means 12 joules of energy are given to every coulomb of charge that passes through the battery. A coulomb travelling right round the circuit therefore delivers those 12 joules to the components. This is why E = Q × V works: multiply the joules per coulomb by the number of coulombs and you get the total energy. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -1938,6 +2458,104 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Only the average behaviour of a large number of nuclei is predictable, which is what half-life describes.",
       },
+      {
+        question: "A strontium nucleus has a mass number of 90 and an atomic number of 38. Calculate the number of neutrons it contains.",
+        accept: [
+          "52",
+        ],
+        answer: "52 neutrons. Neutrons = mass number − atomic number = 90 − 38 = 52. The atomic number is the proton count, so the rest of the mass number must be neutrons.",
+      },
+      {
+        question: "Uranium-238 emits an alpha particle. Calculate the mass number of the nucleus produced.",
+        accept: [
+          "234",
+        ],
+        answer: "234. An alpha particle carries away 2 protons and 2 neutrons, so the mass number falls by 4: 238 − 4 = 234.",
+      },
+      {
+        question: "Carbon-14 has an atomic number of 6 and emits a beta particle. Work out the atomic number of the nucleus produced.",
+        accept: [
+          "7",
+        ],
+        answer: "7. In beta decay a neutron becomes a proton, so the atomic number rises by one: 6 + 1 = 7. The mass number stays at 14, giving nitrogen-14.",
+      },
+      {
+        question: "A radium-226 nucleus contains 88 protons. Calculate how many more neutrons than protons it has.",
+        accept: [
+          "50",
+        ],
+        answer: "50 more. Neutrons = 226 − 88 = 138, so the excess is 138 − 88 = 50. Heavy nuclei need this neutron surplus to stay bound at all.",
+      },
+      {
+        question: "An atom has a radius of about 1 × 10^-10 m and its nucleus is about 1/10,000 of that. Calculate the radius of the nucleus.",
+        accept: [
+          "1 x 10^-14",
+          "10^-14",
+          "0.00000000000001",
+        ],
+        answer: "About 1 × 10^-14 m. Dividing by 10,000 means dividing by 10^4, so 10^-10 ÷ 10^4 = 10^-14 m. The nucleus is a speck at the centre of an almost empty atom.",
+      },
+      {
+        question: "A source with a half-life of 6 days starts at 4,800 counts per minute. Calculate its count rate after 24 days.",
+        accept: [
+          "300",
+        ],
+        answer: "300 counts per minute. 24 ÷ 6 = 4 half-lives. Halving four times: 4,800 → 2,400 → 1,200 → 600 → 300.",
+      },
+      {
+        question: "Radon-222 has an atomic number of 86. It emits an alpha particle, and the nucleus produced then emits a beta particle. Calculate the atomic number of the final nucleus.",
+        accept: [
+          "85",
+        ],
+        answer: "85. Alpha decay drops the atomic number by 2: 86 − 2 = 84. Beta decay then raises it by 1: 84 + 1 = 85. The mass number meanwhile goes 222 → 218 and stays there.",
+      },
+      {
+        question: "Thorium-232 (atomic number 90) decays in a chain to lead-208 (atomic number 82). Calculate how many beta decays the chain contains.",
+        accept: [
+          "4",
+        ],
+        answer: "4 beta decays. Only alpha decay changes the mass number, and it drops by 232 − 208 = 24, so there are 24 ÷ 4 = 6 alpha decays. Those alone would take the atomic number to 90 − 12 = 78, but it ends at 82, so 82 − 78 = 4 beta decays must have raised it back.",
+      },
+      {
+        question: "A source with a half-life of 15 hours now has a count rate of 50 counts per minute. Calculate what its count rate was 60 hours ago.",
+        accept: [
+          "800",
+        ],
+        answer: "800 counts per minute. 60 ÷ 15 = 4 half-lives have passed, so the rate has halved four times. Working backwards means doubling four times: 50 → 100 → 200 → 400 → 800.",
+      },
+      {
+        question: "A sample contains 8 × 10^8 undecayed nuclei and has a half-life of 25 minutes. Calculate how many remain after 2 hours and 5 minutes.",
+        accept: [
+          "25000000",
+          "2.5 x 10^7",
+          "25,000,000",
+        ],
+        answer: "2.5 × 10^7 nuclei. Convert the time: 2 hours 5 minutes = 125 minutes, which is 125 ÷ 25 = 5 half-lives. Halving 8 × 10^8 five times divides it by 32: 8 × 10^8 ÷ 32 = 2.5 × 10^7.",
+      },
+      {
+        question: "A count rate falls from 640 to 40 counts per minute over 12 hours. Calculate the half-life of the source.",
+        accept: [
+          "3",
+          "3 hours",
+        ],
+        answer: "3 hours. Halve 640 until you reach 40: 640 → 320 → 160 → 80 → 40, which is 4 steps, so 4 half-lives fit into 12 hours. The half-life is therefore 12 ÷ 4 = 3 hours.",
+      },
+      {
+        question: "Explain how the results of the alpha scattering experiment showed that the plum pudding model was wrong.",
+        answer: "The plum pudding model had positive charge spread thinly through the whole atom, so every alpha particle should have passed almost straight through with only a slight deflection. Instead most passed through undeviated, a few were deflected through large angles, and a very small number bounced almost straight back. That could only happen if the positive charge and nearly all the mass were concentrated in a tiny region, which is the nuclear model. (Mark this one yourself.)",
+      },
+      {
+        question: "A nucleus contains only protons and neutrons, yet it can emit a beta particle. Explain how this is possible.",
+        answer: "The electron is not sitting in the nucleus waiting to leave. In beta decay a neutron inside the nucleus changes into a proton, and an electron is created and ejected at the moment of that change. This is why the mass number is unchanged — the total number of protons and neutrons is the same — while the atomic number rises by one. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why gamma emission changes neither the mass number nor the atomic number of a nucleus.",
+        answer: "Gamma radiation is electromagnetic radiation, not a particle, so nothing with mass or charge leaves the nucleus. What is emitted is surplus energy from a nucleus left in an excited state, usually just after an alpha or beta decay. Since the count of protons and neutrons is untouched, both numbers in the nuclear symbol stay exactly as they were. (Mark this one yourself.)",
+      },
+      {
+        question: "Two isotopes of the same element react identically in chemistry but one is radioactive and the other is not. Explain why.",
+        answer: "Chemical behaviour is set by the electrons, and isotopes have the same number of protons and therefore the same electron arrangement, so they bond in exactly the same way. Radioactivity is a property of the nucleus, and the isotopes differ in how many neutrons they contain. One neutron-to-proton ratio can be stable while another is not, so one isotope decays and the other does not. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -2246,6 +2864,110 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A break anywhere in a series circuit stops the current everywhere. In parallel, the other branches keep working.",
       },
+      {
+        question: "A 15 Ω and a 25 Ω resistor are connected in series across a 12 V supply. Calculate the current in the circuit.",
+        accept: [
+          "0.3",
+          "0.3 A",
+        ],
+        answer: "0.3 A. Total resistance = 15 + 25 = 40 Ω, so I = V ÷ R = 12 ÷ 40 = 0.3 A.",
+      },
+      {
+        question: "Three identical 9 Ω resistors are connected in parallel. Calculate the total resistance.",
+        accept: [
+          "3",
+          "3 ohms",
+        ],
+        answer: "3 Ω. Identical branches share the current equally, so n identical resistors in parallel give R ÷ n: 9 ÷ 3 = 3 Ω. Note it is smaller than any one branch.",
+      },
+      {
+        question: "A 5 Ω resistor in a series circuit has 4 V across it. Calculate the current flowing through the circuit.",
+        accept: [
+          "0.8",
+          "0.8 A",
+        ],
+        answer: "0.8 A. I = V ÷ R = 4 ÷ 5 = 0.8 A. In series that same current flows through every component.",
+      },
+      {
+        question: "A parallel circuit draws 1.2 A from the supply and one branch carries 0.45 A. Calculate the current in the other branch.",
+        accept: [
+          "0.75",
+          "0.75 A",
+        ],
+        answer: "0.75 A. The branch currents add to the supply current, so 1.2 − 0.45 = 0.75 A.",
+      },
+      {
+        question: "A component has 6 V across it and carries a current of 0.25 A. Calculate its resistance.",
+        accept: [
+          "24",
+          "24 ohms",
+        ],
+        answer: "24 Ω. R = V ÷ I = 6 ÷ 0.25 = 24 Ω.",
+      },
+      {
+        question: "Three components are in series across a 12 V supply. Two of them have 8 V and 1.5 V across them. Calculate the potential difference across the third.",
+        accept: [
+          "2.5",
+          "2.5 V",
+        ],
+        answer: "2.5 V. In series the potential differences add up to the supply, so 12 − 8 − 1.5 = 2.5 V.",
+      },
+      {
+        question: "A 20 Ω and a 30 Ω resistor are in series across a 10 V supply. Calculate the potential difference across the 30 Ω resistor.",
+        accept: [
+          "6",
+          "6 V",
+        ],
+        answer: "6 V. Total resistance = 20 + 30 = 50 Ω, so I = 10 ÷ 50 = 0.2 A. The same current flows through the 30 Ω resistor, so V = I × R = 0.2 × 30 = 6 V.",
+      },
+      {
+        question: "A 12 Ω and a 6 Ω resistor are connected in parallel across a 24 V supply. Calculate the total resistance of the combination.",
+        accept: [
+          "4",
+          "4 ohms",
+        ],
+        answer: "4 Ω. Each branch has the full 24 V, so the currents are 24 ÷ 12 = 2 A and 24 ÷ 6 = 4 A, giving 6 A in total. The combination behaves like one resistor of R = V ÷ I = 24 ÷ 6 = 4 Ω, which is less than either branch.",
+      },
+      {
+        question: "A 9 V battery drives 1.5 A through a 3 Ω resistor in series with a lamp. Calculate the resistance of the lamp.",
+        accept: [
+          "3",
+          "3 ohms",
+        ],
+        answer: "3 Ω. The whole circuit has R = V ÷ I = 9 ÷ 1.5 = 6 Ω. Series resistances add, so the lamp accounts for 6 − 3 = 3 Ω.",
+      },
+      {
+        question: "An I-V graph for a fixed resistor is a straight line through the points (0.4 A, 2.0 V) and (1.2 A, 6.0 V). Calculate its resistance from the gradient.",
+        accept: [
+          "5",
+          "5 ohms",
+        ],
+        answer: "5 Ω. Gradient = change in V ÷ change in I = (6.0 − 2.0) ÷ (1.2 − 0.4) = 4.0 ÷ 0.8 = 5. For a V against I graph the gradient is the resistance, so R = 5 Ω.",
+      },
+      {
+        question: "Two 6 Ω resistors in parallel are connected in series with a 4 Ω resistor across a 14 V supply. Calculate the current drawn from the supply.",
+        accept: [
+          "2",
+          "2 A",
+        ],
+        answer: "2 A. Two identical 6 Ω resistors in parallel give 6 ÷ 2 = 3 Ω. That is in series with the 4 Ω, so the total is 3 + 4 = 7 Ω. Then I = V ÷ R = 14 ÷ 7 = 2 A.",
+      },
+      {
+        question: "Explain why connecting a second resistor in parallel gives a total resistance smaller than either resistor on its own.",
+        answer: "Resistance measures how hard it is for charge to get round the circuit, and a second branch gives the charge an extra route it did not have before. Both branches still have the full supply potential difference across them, so the original branch carries exactly the current it did before and the new one adds more on top. More total current for the same potential difference means a smaller total resistance, which must therefore be below the smaller branch value. (Mark this one yourself.)",
+      },
+      {
+        question: "In a series circuit, explain why each voltmeter reads less than the supply and why the readings add up to it.",
+        answer: "Potential difference is the energy transferred per coulomb, and each component takes only a share of the energy each coulomb carries. No single component can take more than the battery supplied, so each reading is smaller than the supply. Since every coulomb passes through all of them in turn and gives up all its energy by the time it returns, the shares must total the supply potential difference. (Mark this one yourself.)",
+      },
+      {
+        question: "In the required practical to measure resistance, explain why the circuit is switched off between readings.",
+        answer: "A current passing through a component transfers energy to its thermal store, and for a wire or a filament a rise in temperature raises the resistance. If the current is left on, later readings are taken on a hotter component than earlier ones, so the resistance drifts during the experiment. Switching off between readings lets it cool back to room temperature, keeping the control variable genuinely controlled. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a thermistor is a suitable component for the sensing part of a fire alarm circuit.",
+        answer: "A thermistor's resistance falls sharply as its temperature rises, so a fire produces a large, automatic change in the circuit with no moving parts. That drop in resistance increases the current, and the change can be used to trigger the alarm once it passes a set value. The response is fast and repeatable, and the thermistor resets itself when the temperature falls again. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -2552,6 +3274,109 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Their casing is made of an insulator so it cannot become live",
         ],
         answer: "With a plastic casing there is no conducting surface to touch, so an earth connection would serve no purpose.",
+      },
+      {
+        question: "A 920 W microwave runs from the 230 V mains. Calculate the current it draws.",
+        accept: [
+          "4",
+          "4 A",
+        ],
+        answer: "4 A. Rearranging P = V × I gives I = P ÷ V = 920 ÷ 230 = 4 A.",
+      },
+      {
+        question: "A 2.5 kW oven is used for 90 minutes. Calculate the energy transferred in kilowatt-hours.",
+        accept: [
+          "3.75",
+        ],
+        answer: "3.75 kWh. Ninety minutes is 1.5 hours, and energy in kWh = power in kW × time in hours = 2.5 × 1.5 = 3.75 kWh.",
+      },
+      {
+        question: "Calculate the cost of 14 kWh of electricity at 28p per kWh. Give your answer in pounds.",
+        accept: [
+          "3.92",
+          "£3.92",
+        ],
+        answer: "£3.92. Cost = energy × price per unit = 14 × 28 = 392p, and 392p ÷ 100 = £3.92.",
+      },
+      {
+        question: "Calculate the power wasted in a cable of resistance 0.5 Ω carrying a current of 12 A.",
+        accept: [
+          "72",
+          "72 W",
+        ],
+        answer: "72 W. P = I² × R = 12² × 0.5 = 144 × 0.5 = 72 W. All of it heats the cable rather than doing anything useful.",
+      },
+      {
+        question: "UK mains has a frequency of 50 Hz. Calculate the time taken for one complete cycle.",
+        accept: [
+          "0.02",
+          "20 ms",
+        ],
+        answer: "0.02 s. Period = 1 ÷ frequency = 1 ÷ 50 = 0.02 s, which is 20 milliseconds.",
+      },
+      {
+        question: "A 60 W bulb is left on for 5 hours. Calculate the energy it uses in kilowatt-hours.",
+        accept: [
+          "0.3",
+        ],
+        answer: "0.3 kWh. Convert the power first: 60 W = 0.06 kW. Then energy = 0.06 × 5 = 0.3 kWh.",
+      },
+      {
+        question: "A 3 kW immersion heater runs for 2 hours 30 minutes. Calculate the cost at 32p per kWh, in pounds.",
+        accept: [
+          "2.40",
+          "2.4",
+          "£2.40",
+        ],
+        answer: "£2.40. The time is 2.5 hours, so the energy is 3 × 2.5 = 7.5 kWh. Cost = 7.5 × 32 = 240p = £2.40.",
+      },
+      {
+        question: "An electric shower is rated at 8.5 kW on the 230 V mains. Calculate the current it draws and give the smallest suitable fuse from 30 A, 40 A and 45 A.",
+        accept: [
+          "40",
+          "40 A",
+        ],
+        answer: "The current is I = P ÷ V = 8,500 ÷ 230 = 37 A to two significant figures. The fuse must be rated above the normal current, so 30 A would blow in ordinary use and the correct choice is the 40 A fuse.",
+      },
+      {
+        question: "A 2 kW kettle takes 3 minutes to boil. Calculate the energy transferred in joules.",
+        accept: [
+          "360000",
+          "360,000",
+        ],
+        answer: "360,000 J. Convert both units: 2 kW = 2,000 W and 3 minutes = 180 s. Then E = P × t = 2,000 × 180 = 360,000 J.",
+      },
+      {
+        question: "A 0.8 kW fridge runs continuously for 30 days. Calculate the cost at 25p per kWh, in pounds.",
+        accept: [
+          "144",
+          "£144",
+        ],
+        answer: "£144. The running time is 30 × 24 = 720 hours, so the energy used is 0.8 × 720 = 576 kWh. Cost = 576 × 25 = 14,400p = £144.",
+      },
+      {
+        question: "A transmission cable of resistance 4 Ω carries a current of 200 A. Calculate the power wasted as heat, in kilowatts.",
+        accept: [
+          "160",
+          "160 kW",
+        ],
+        answer: "160 kW. P = I² × R = 200² × 4 = 40,000 × 4 = 160,000 W. Dividing by 1,000 gives 160 kW — and halving the current would cut this to a quarter.",
+      },
+      {
+        question: "Explain why mains electricity is supplied as alternating current rather than direct current.",
+        answer: "Transformers only work with a changing current, because they rely on a changing magnetic field inducing a potential difference in the second coil. Alternating current therefore lets the National Grid step the potential difference up for transmission and back down for homes. Transmitting at high potential difference means a small current, and since the power wasted in the cables depends on the current squared, that saves an enormous amount of energy. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why fitting a fuse rated far above an appliance's normal current is dangerous, and why one rated below it is useless.",
+        answer: "A fuse is meant to melt and cut the supply as soon as the current rises above the safe value for that appliance and its cable. Rated too high, a fault current can flow that is well beyond what the wiring can carry without overheating, and the fuse never blows — so the appliance may catch fire. Rated below the normal operating current, it melts every time the appliance is switched on, so it protects nothing and is simply replaced until someone fits the wrong one. (Mark this one yourself.)",
+      },
+      {
+        question: "A bird can perch on a bare high-voltage overhead line without harm. Explain why.",
+        answer: "Current flows through something only when there is a potential difference across it. Both of the bird's feet are on the same cable, so the potential difference between them is almost nothing and effectively no current passes through its body. A person touching the line while standing on the ground would have the full line potential difference across them, giving a path to earth and a lethal current. (Mark this one yourself.)",
+      },
+      {
+        question: "A kettle is rated at 3 kW and a fridge at 0.1 kW, yet the fridge can cost more to run over a month. Explain how this is possible.",
+        answer: "Energy used is power multiplied by time, so the power rating alone does not decide the bill. The kettle transfers energy very fast but is only on for a few minutes a day, giving a small total. The fridge draws far less power but runs around the clock, so its hours accumulate and can easily outweigh the kettle's higher rating. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -2880,6 +3705,105 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Zero gradient means zero acceleration. A horizontal line at zero velocity would mean stationary.",
       },
+      {
+        question: "Calculate the time taken for a train travelling at 45 m/s to cover 1,350 m.",
+        accept: [
+          "30",
+          "30 s",
+        ],
+        answer: "30 s. Rearranging v = s ÷ t gives t = s ÷ v = 1,350 ÷ 45 = 30 s.",
+      },
+      {
+        question: "A dropped ball reaches 14 m/s after 1.4 s. Calculate its acceleration.",
+        accept: [
+          "10",
+        ],
+        answer: "10 m/s². a = (v − u) ÷ t = (14 − 0) ÷ 1.4 = 10 m/s², which is about the free-fall value near the Earth.",
+      },
+      {
+        question: "Calculate the distance travelled by a car moving at a steady 22 m/s for 9 s.",
+        accept: [
+          "198",
+          "198 m",
+        ],
+        answer: "198 m. s = v × t = 22 × 9 = 198 m. On a velocity-time graph this is the area of a rectangle 9 s wide and 22 m/s tall.",
+      },
+      {
+        question: "A cyclist travelling at 4 m/s accelerates at 1.5 m/s² for 6 s. Calculate her final velocity.",
+        accept: [
+          "13",
+        ],
+        answer: "13 m/s. Rearranging a = (v − u) ÷ t gives v = u + a × t = 4 + 1.5 × 6 = 4 + 9 = 13 m/s.",
+      },
+      {
+        question: "A car travelling at 24 m/s decelerates at 6 m/s². Calculate the time it takes to stop.",
+        accept: [
+          "4",
+          "4 s",
+        ],
+        answer: "4 s. The velocity must change by 24 m/s, and it loses 6 m/s every second, so t = 24 ÷ 6 = 4 s.",
+      },
+      {
+        question: "Use v² − u² = 2as to calculate the stopping distance of a car travelling at 20 m/s that decelerates at 5 m/s².",
+        accept: [
+          "40",
+          "40 m",
+        ],
+        answer: "40 m. Here v = 0, u = 20 and a = −5, so 0 − 400 = 2 × (−5) × s, giving −400 = −10s and s = 40 m.",
+      },
+      {
+        question: "A velocity-time graph rises in a straight line from rest to 18 m/s over 6 s, then stays flat at 18 m/s for 10 s. Calculate the total distance travelled.",
+        accept: [
+          "234",
+          "234 m",
+        ],
+        answer: "234 m. The area under the line is the distance. The sloping part is a triangle: ½ × 6 × 18 = 54 m. The flat part is a rectangle: 18 × 10 = 180 m. Total = 54 + 180 = 234 m.",
+      },
+      {
+        question: "A car covers 90 km in 1 hour and 15 minutes. Calculate its average speed in m/s.",
+        accept: [
+          "20",
+        ],
+        answer: "20 m/s. Convert both units: 90 km = 90,000 m, and 1 hour 15 minutes = 75 × 60 = 4,500 s. Then v = s ÷ t = 90,000 ÷ 4,500 = 20 m/s.",
+      },
+      {
+        question: "A velocity-time graph falls in a straight line from 30 m/s at 4 s to 6 m/s at 10 s. Calculate the acceleration from the gradient.",
+        accept: [
+          "-4",
+        ],
+        answer: "−4 m/s². The gradient is the change in velocity divided by the change in time: (6 − 30) ÷ (10 − 4) = −24 ÷ 6 = −4 m/s². The minus sign says the object is slowing down.",
+      },
+      {
+        question: "A train travels 3,000 m at 25 m/s and then 1,500 m at 15 m/s. Calculate its average speed for the whole journey, to 1 decimal place.",
+        accept: [
+          "20.5",
+        ],
+        answer: "20.5 m/s. First leg: t = 3,000 ÷ 25 = 120 s. Second leg: t = 1,500 ÷ 15 = 100 s. Average speed = total distance ÷ total time = 4,500 ÷ 220 = 20.45 m/s, which is 20.5 m/s to 1 d.p. Notice it is not the mean of 25 and 15.",
+      },
+      {
+        question: "A ball is thrown straight up at 15 m/s and decelerates at 10 m/s². Use v² − u² = 2as to calculate the maximum height it reaches.",
+        accept: [
+          "11.25",
+          "11.3",
+        ],
+        answer: "11.25 m. At the top v = 0, with u = 15 and a = −10. So 0 − 15² = 2 × (−10) × s, giving −225 = −20s and s = 11.25 m.",
+      },
+      {
+        question: "Explain why a distance-time graph can never slope downwards, while a velocity-time graph can.",
+        answer: "Distance is a scalar that only ever accumulates: however an object moves, the total distance travelled cannot decrease, so the line is flat or rising. A velocity-time graph plots a vector, and velocity can fall as the object slows or even become negative when it reverses direction. A downward slope there means deceleration, and a line below the axis means travelling the other way. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the area under a velocity-time graph gives the distance travelled.",
+        answer: "For any short strip of the graph the height is the velocity and the width is a small interval of time, and velocity multiplied by time is distance. Adding all those strips together adds up all the small distances, which is the total distance travelled. That is why the area is split into triangles and rectangles and summed, rather than a gradient being taken. (Mark this one yourself.)",
+      },
+      {
+        question: "A car and a lorry have the same average speed over the same journey but very different velocity-time graphs. Explain how that is possible.",
+        answer: "Average speed is the total distance divided by the total time, so it says nothing about what happened in between. The lorry might travel steadily near that average the whole way, while the car races ahead, stops in traffic, then races again. Both cover the same distance in the same time, so the areas under their graphs are equal even though the shapes are not. (Mark this one yourself.)",
+      },
+      {
+        question: "A runner completes exactly one lap of a circular track. Explain why the distance travelled is large but the displacement is zero.",
+        answer: "Distance is a scalar and simply totals the ground covered, so a full lap adds up to the whole circumference. Displacement is a vector measured from the starting point to the finishing point in a straight line, together with a direction. Finishing exactly where they started means that straight-line separation is zero, so the displacement is zero no matter how far they ran. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -3192,6 +4116,111 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Greater than the resistive forces",
         ],
         answer: "A resultant force in the direction of travel produces acceleration. When they balance, the car travels at constant speed.",
+      },
+      {
+        question: "Calculate the resultant force on a 0.15 kg ball accelerating at 40 m/s².",
+        accept: [
+          "6",
+          "6 N",
+        ],
+        answer: "6 N. F = m × a = 0.15 × 40 = 6 N.",
+      },
+      {
+        question: "A cyclist and bike have a combined mass of 90 kg. Calculate the acceleration produced by a resultant force of 135 N.",
+        accept: [
+          "1.5",
+        ],
+        answer: "1.5 m/s². Rearranging F = m × a gives a = F ÷ m = 135 ÷ 90 = 1.5 m/s².",
+      },
+      {
+        question: "Calculate the mass of an object that accelerates at 2.5 m/s² when a resultant force of 600 N acts on it.",
+        accept: [
+          "240",
+          "240 kg",
+        ],
+        answer: "240 kg. Rearranging F = m × a gives m = F ÷ a = 600 ÷ 2.5 = 240 kg. This is the inertial mass — how hard the object is to accelerate.",
+      },
+      {
+        question: "Calculate the momentum of a 0.045 kg golf ball travelling at 70 m/s.",
+        accept: [
+          "3.15",
+        ],
+        answer: "3.15 kg m/s. p = m × v = 0.045 × 70 = 3.15 kg m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A car has a thinking distance of 15 m and a total stopping distance of 55 m. Calculate its braking distance.",
+        accept: [
+          "40",
+          "40 m",
+        ],
+        answer: "40 m. Stopping distance = thinking distance + braking distance, so braking distance = 55 − 15 = 40 m.",
+      },
+      {
+        question: "A driver travelling at 30 m/s has a reaction time of 0.7 s. Calculate the thinking distance.",
+        accept: [
+          "21",
+          "21 m",
+        ],
+        answer: "21 m. During the reaction time the car carries on at full speed, so s = v × t = 30 × 0.7 = 21 m before the brakes are even touched.",
+      },
+      {
+        question: "A 1,400 kg car speeds up from 8 m/s to 20 m/s in 6 s. Calculate the resultant force acting on it.",
+        accept: [
+          "2800",
+          "2,800",
+        ],
+        answer: "2,800 N. First the acceleration: a = (v − u) ÷ t = (20 − 8) ÷ 6 = 2 m/s². Then F = m × a = 1,400 × 2 = 2,800 N.",
+      },
+      {
+        question: "A 500 kg rocket is fired upwards with a thrust of 8,000 N. Calculate its initial acceleration. (g = 9.8 N/kg)",
+        accept: [
+          "6.2",
+        ],
+        answer: "6.2 m/s². Its weight is m × g = 500 × 9.8 = 4,900 N downwards, so the resultant force is 8,000 − 4,900 = 3,100 N upwards. Then a = F ÷ m = 3,100 ÷ 500 = 6.2 m/s².",
+      },
+      {
+        question: "A 2 kg trolley moving at 3 m/s collides with a stationary 4 kg trolley and they move off joined together. Calculate their common velocity.",
+        accept: [
+          "1",
+          "1 m/s",
+        ],
+        answer: "1 m/s. Momentum before = 2 × 3 + 4 × 0 = 6 kg m/s. Momentum is conserved, so after the collision 6 = (2 + 4) × v, giving v = 6 ÷ 6 = 1 m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A 0.5 kg ball hits a wall at 8 m/s and rebounds at 6 m/s. The contact lasts 0.04 s. Calculate the average force on the ball.",
+        accept: [
+          "175",
+          "175 N",
+        ],
+        answer: "175 N. Taking the rebound direction as positive, the velocity changes from −8 m/s to +6 m/s, a change of 14 m/s. Change in momentum = 0.5 × 14 = 7 kg m/s. Then F = change in momentum ÷ time = 7 ÷ 0.04 = 175 N.",
+        higherOnly: true,
+      },
+      {
+        question: "A 900 kg car travelling at 18 m/s brakes to a stop in 27 m. Calculate the average braking force.",
+        accept: [
+          "5400",
+          "5,400",
+        ],
+        answer: "5,400 N. The kinetic energy to remove is ½ × 900 × 18² = ½ × 900 × 324 = 145,800 J. The brakes do that much work over 27 m, so F = W ÷ s = 145,800 ÷ 27 = 5,400 N.",
+      },
+      {
+        question: "Explain, using Newton's first law, why passengers are thrown forwards when a car brakes sharply.",
+        answer: "Newton's first law says an object keeps moving at constant velocity unless a resultant force acts on it. The braking force acts on the car, not directly on the passengers, so their bodies carry on forwards at the original speed. They only slow down when something exerts a force on them, which is why a seatbelt is needed to supply that force gradually rather than the dashboard supplying it suddenly. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why doubling a car's speed roughly quadruples its braking distance.",
+        answer: "The brakes must do work equal to the car's kinetic energy, and kinetic energy is ½mv², so it depends on the square of the speed. Doubling the speed therefore gives four times the kinetic energy to remove. Since the braking force is roughly the same whatever the speed, and work done is force times distance, four times the energy needs about four times the distance. (Mark this one yourself.)",
+      },
+      {
+        question: "A rifle recoils slowly when it fires a fast bullet. Explain why this is consistent with conservation of momentum.",
+        answer: "Before firing, nothing moves, so the total momentum of the rifle and bullet is zero. Momentum is conserved, so afterwards the forward momentum of the bullet and the backward momentum of the rifle must add to zero and are therefore equal in size and opposite in direction. Because the rifle's mass is hundreds of times greater than the bullet's, it needs only a small velocity to carry the same momentum. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why inertial mass is defined as resultant force divided by acceleration rather than simply as the amount of matter.",
+        answer: "Defining a quantity means saying how it is measured, and \"amount of matter\" gives no measurement procedure. Force divided by acceleration does: apply a known resultant force, measure the acceleration produced, and the ratio tells you how strongly the object resists having its velocity changed. It also makes the physical meaning explicit — a large inertial mass is one that accelerates very little for a given force. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -3517,6 +4546,106 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Refraction happens because the wave changes speed. Reflection is bouncing back and diffraction is spreading through a gap.",
       },
+      {
+        question: "Calculate the wavelength of a 550 Hz sound wave travelling at 330 m/s.",
+        accept: [
+          "0.6",
+          "0.6 m",
+        ],
+        answer: "0.6 m. Rearranging v = f × λ gives λ = v ÷ f = 330 ÷ 550 = 0.6 m.",
+      },
+      {
+        question: "Calculate the frequency of a wave whose period is 0.004 s.",
+        accept: [
+          "250",
+          "250 Hz",
+        ],
+        answer: "250 Hz. f = 1 ÷ T = 1 ÷ 0.004 = 250 Hz. A short period means a high frequency.",
+      },
+      {
+        question: "Calculate the speed of a wave of frequency 12 Hz and wavelength 0.75 m.",
+        accept: [
+          "9",
+          "9 m/s",
+        ],
+        answer: "9 m/s. v = f × λ = 12 × 0.75 = 9 m/s.",
+      },
+      {
+        question: "Radio waves travel at 3 × 10^8 m/s. Calculate the wavelength of a radio wave of frequency 1 × 10^8 Hz.",
+        accept: [
+          "3",
+          "3 m",
+        ],
+        answer: "3 m. λ = v ÷ f = (3 × 10^8) ÷ (1 × 10^8) = 3 m. Dividing the powers of ten cancels them completely here.",
+      },
+      {
+        question: "A wave's crest is 12 cm above its trough. Calculate its amplitude.",
+        accept: [
+          "6",
+          "6 cm",
+        ],
+        answer: "6 cm. Amplitude is measured from the rest position to the crest, which is half the crest-to-trough distance: 12 ÷ 2 = 6 cm. Quoting 12 cm is the standard error here.",
+      },
+      {
+        question: "A ray of light strikes a plane mirror at an angle of incidence of 35°. Calculate the angle between the incident ray and the reflected ray.",
+        accept: [
+          "70",
+        ],
+        answer: "70°. The angle of reflection equals the angle of incidence, so both are 35° from the normal. The two rays are on opposite sides of the normal, so the angle between them is 35 + 35 = 70°.",
+      },
+      {
+        question: "A water wave has a period of 2.5 s and a wavelength of 6 m. Calculate its speed.",
+        accept: [
+          "2.4",
+        ],
+        answer: "2.4 m/s. First the frequency: f = 1 ÷ T = 1 ÷ 2.5 = 0.4 Hz. Then v = f × λ = 0.4 × 6 = 2.4 m/s.",
+      },
+      {
+        question: "A radio station broadcasts at 96 MHz. Radio waves travel at 3 × 10^8 m/s. Calculate the wavelength to 2 significant figures.",
+        accept: [
+          "3.1",
+        ],
+        answer: "3.1 m. Convert the frequency first: 96 MHz = 96 × 10^6 Hz = 9.6 × 10^7 Hz. Then λ = v ÷ f = (3 × 10^8) ÷ (9.6 × 10^7) = 3.125 m, which is 3.1 m to 2 s.f.",
+      },
+      {
+        question: "A 2 kHz sound wave has a wavelength of 16.5 cm in air. Calculate its speed in m/s.",
+        accept: [
+          "330",
+        ],
+        answer: "330 m/s. Convert both: 2 kHz = 2,000 Hz and 16.5 cm = 0.165 m. Then v = f × λ = 2,000 × 0.165 = 330 m/s, the usual speed of sound in air.",
+      },
+      {
+        question: "Twenty complete waves pass a point in 8 s, and the wavelength is 1.2 m. Calculate the wave speed.",
+        accept: [
+          "3",
+          "3 m/s",
+        ],
+        answer: "3 m/s. Frequency is waves per second: f = 20 ÷ 8 = 2.5 Hz. Then v = f × λ = 2.5 × 1.2 = 3 m/s.",
+      },
+      {
+        question: "A ship sends a sonar pulse to the seabed and receives the echo 0.6 s later. Sound travels at 1,500 m/s in seawater. Calculate the depth.",
+        accept: [
+          "450",
+          "450 m",
+        ],
+        answer: "450 m. The total distance travelled is s = v × t = 1,500 × 0.6 = 900 m. That is down and back again, so the depth is 900 ÷ 2 = 450 m.",
+      },
+      {
+        question: "Explain why a light wave's wavelength gets shorter when it enters glass while its frequency stays the same.",
+        answer: "Frequency is set by the source: the number of waves arriving each second at the boundary must equal the number leaving it, or waves would pile up there. Light travels more slowly in glass than in air, and since v = f × λ with f fixed, a smaller speed must mean a smaller wavelength. The waves are effectively squashed closer together, which is also what makes the ray bend towards the normal. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between specular and diffuse reflection, and why a sheet of white paper does not act as a mirror.",
+        answer: "In specular reflection the surface is smooth, so parallel rays arriving together are all reflected in the same direction and an image is formed. In diffuse reflection the surface is rough on a small scale, so the normal points in a slightly different direction at each point and the rays are scattered in all directions. Paper is rough in exactly this way, so although every single ray still obeys the law of reflection, the light leaves in all directions and no image survives. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how a sound wave carries energy across a room even though the air itself does not travel across it.",
+        answer: "Sound is longitudinal, so the air particles oscillate backwards and forwards along the direction the wave travels, forming compressions where they bunch together and rarefactions where they spread out. Each particle pushes on its neighbour and then returns to its own rest position, so the pattern of compressions moves across the room while the particles stay put on average. It is that pattern, carrying energy, that travels — which is also why sound cannot cross a vacuum. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the amplitude of a wave is measured from the rest position rather than from trough to crest.",
+        answer: "Amplitude is defined as the maximum displacement of a particle from where it would sit if the wave were not there, and displacement is always measured from that rest position. The trough-to-crest distance covers the full swing in both directions, so it is twice the amplitude rather than the amplitude itself. Using it would double every answer, and for sound it would misstate how much energy the wave is carrying. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -3819,6 +4948,110 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Transverse",
         ],
         answer: "The whole spectrum is transverse and can travel through a vacuum, which is why sunlight reaches us through space.",
+      },
+      {
+        question: "Calculate the time taken for light to travel 300 km along an optical fibre. (c = 3 × 10^8 m/s)",
+        accept: [
+          "0.001",
+          "1 ms",
+        ],
+        answer: "0.001 s. Convert first: 300 km = 300,000 m. Then t = s ÷ v = 300,000 ÷ (3 × 10^8) = 1 × 10^-3 s, or 1 millisecond.",
+      },
+      {
+        question: "Calculate the wavelength of a microwave of frequency 2.4 × 10^9 Hz. (c = 3 × 10^8 m/s)",
+        accept: [
+          "0.125",
+        ],
+        answer: "0.125 m. λ = c ÷ f = (3 × 10^8) ÷ (2.4 × 10^9) = 0.125 m, which is 12.5 cm.",
+      },
+      {
+        question: "Calculate the frequency of green light of wavelength 5 × 10^-7 m. (c = 3 × 10^8 m/s)",
+        accept: [
+          "6 x 10^14",
+          "600000000000000",
+          "6e14",
+        ],
+        answer: "6 × 10^14 Hz. f = c ÷ λ = (3 × 10^8) ÷ (5 × 10^-7) = 6 × 10^14 Hz. Dividing by a negative power of ten makes the answer larger.",
+      },
+      {
+        question: "Calculate the time for a radio signal to travel the 36,000 km from a satellite down to the ground. (c = 3 × 10^8 m/s)",
+        accept: [
+          "0.12",
+        ],
+        answer: "0.12 s. Convert first: 36,000 km = 3.6 × 10^7 m. Then t = s ÷ v = (3.6 × 10^7) ÷ (3 × 10^8) = 0.12 s — the delay you sometimes hear on a satellite phone call.",
+      },
+      {
+        question: "Calculate the wavelength of an X-ray of frequency 3 × 10^18 Hz. (c = 3 × 10^8 m/s)",
+        accept: [
+          "1 x 10^-10",
+          "10^-10",
+          "0.0000000001",
+        ],
+        answer: "1 × 10^-10 m. λ = c ÷ f = (3 × 10^8) ÷ (3 × 10^18) = 1 × 10^-10 m, which is about the width of an atom — why X-rays can probe atomic structure.",
+      },
+      {
+        question: "A long-wave radio station broadcasts at 150 kHz. Calculate its wavelength. (c = 3 × 10^8 m/s)",
+        accept: [
+          "2000",
+          "2,000",
+        ],
+        answer: "2,000 m. Convert the frequency: 150 kHz = 150,000 Hz. Then λ = c ÷ f = (3 × 10^8) ÷ 150,000 = 2,000 m.",
+      },
+      {
+        question: "A Wi-Fi router transmits at 5 GHz. Calculate the wavelength in centimetres. (c = 3 × 10^8 m/s)",
+        accept: [
+          "6",
+          "6 cm",
+        ],
+        answer: "6 cm. Convert the frequency: 5 GHz = 5 × 10^9 Hz. Then λ = c ÷ f = (3 × 10^8) ÷ (5 × 10^9) = 0.06 m. Multiplying by 100 gives 6 cm.",
+      },
+      {
+        question: "Red light has a wavelength of 700 nm. Calculate its frequency to 2 significant figures. (c = 3 × 10^8 m/s)",
+        accept: [
+          "4.3 x 10^14",
+          "4.3e14",
+        ],
+        answer: "4.3 × 10^14 Hz. One nanometre is 10^-9 m, so 700 nm = 7 × 10^-7 m. Then f = c ÷ λ = (3 × 10^8) ÷ (7 × 10^-7) = 4.29 × 10^14 Hz, which is 4.3 × 10^14 Hz to 2 s.f.",
+      },
+      {
+        question: "Light from the Sun takes about 500 s to reach the Earth. Calculate the distance to the Sun in kilometres. (c = 3 × 10^8 m/s)",
+        accept: [
+          "1.5 x 10^8",
+          "150000000",
+          "150,000,000",
+        ],
+        answer: "1.5 × 10^8 km. First in metres: s = v × t = (3 × 10^8) × 500 = 1.5 × 10^11 m. Dividing by 1,000 gives 1.5 × 10^8 km, or 150 million kilometres.",
+      },
+      {
+        question: "A microwave oven uses waves of wavelength 12.2 cm. Calculate their frequency in gigahertz, to 2 significant figures. (c = 3 × 10^8 m/s)",
+        accept: [
+          "2.5",
+        ],
+        answer: "2.5 GHz. Convert the wavelength: 12.2 cm = 0.122 m. Then f = c ÷ λ = (3 × 10^8) ÷ 0.122 = 2.46 × 10^9 Hz. One gigahertz is 10^9 Hz, so that is 2.5 GHz to 2 s.f.",
+      },
+      {
+        question: "A radar pulse reflects from an aircraft and returns 4 × 10^-4 s after it was sent. Calculate the distance to the aircraft in kilometres. (c = 3 × 10^8 m/s)",
+        accept: [
+          "60",
+          "60 km",
+        ],
+        answer: "60 km. Total distance = v × t = (3 × 10^8) × (4 × 10^-4) = 120,000 m. That covers the trip out and back, so the aircraft is 60,000 m away, which is 60 km.",
+      },
+      {
+        question: "Explain why microwaves are used for satellite communication while much longer radio waves are used for broadcasting across the ground.",
+        answer: "Microwaves pass through the atmosphere and the ionosphere with little absorption, so a signal can reach a satellite in orbit and come back down again. Long radio waves cannot do this — they are reflected by the ionosphere — but that same reflection, along with their ability to diffract around hills and buildings, lets them travel far over the curved surface of the Earth. Each part of the spectrum is chosen for how it behaves at the boundaries it has to cross. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why visible light, ultraviolet and X-rays come from changes involving electrons while gamma rays do not.",
+        answer: "Visible light, ultraviolet and X-rays are emitted when an electron moves from a higher energy level to a lower one and the surplus energy leaves as a photon; the bigger the drop, the higher the frequency. Gamma rays carry far more energy than any electron transition can supply. They come instead from a nucleus left in an excited state after a decay, which is why a gamma emission changes neither the mass number nor the atomic number. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the risk of harm from electromagnetic radiation generally rises as you move up the spectrum.",
+        answer: "Each wave of higher frequency carries more energy, so what it can do on absorption changes in kind, not just in degree. Low-frequency radiation mostly heats tissue, which is why infrared burns the skin and microwaves can heat tissue underneath it. Ultraviolet, X-rays and gamma rays carry enough energy to ionise atoms, knocking electrons out and damaging DNA, so the risk becomes mutation and cancer rather than a burn. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a radio aerial absorbing a radio wave produces an alternating current of the same frequency as the wave.",
+        answer: "A radio wave carries an oscillating electric field, and when it reaches the aerial that field pushes the free electrons in the metal back and forth along it. The electrons follow the field, so they reverse direction exactly as often as the field does. That oscillating flow of charge is an alternating current whose frequency must therefore match the frequency of the wave that produced it. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -4128,6 +5361,110 @@ export const PHYSICS: Record<string, TopicContent> = {
           "There is less air above you",
         ],
         answer: "The atmosphere also becomes less dense with height, so both the weight above and the density fall.",
+      },
+      {
+        question: "A crate pressing down with a force of 720 N rests on an area of 0.9 m². Calculate the pressure it exerts.",
+        accept: [
+          "800",
+          "800 Pa",
+        ],
+        answer: "800 Pa. p = F ÷ A = 720 ÷ 0.9 = 800 Pa, which is 800 newtons on every square metre.",
+      },
+      {
+        question: "Calculate the pressure 30 m below the surface of seawater of density 1,030 kg/m³. (g = 9.8 N/kg)",
+        accept: [
+          "302820",
+          "302,820",
+        ],
+        answer: "302,820 Pa. p = h × ρ × g = 30 × 1,030 × 9.8 = 302,820 Pa — about three times atmospheric pressure, from the water alone.",
+      },
+      {
+        question: "Calculate the depth in fresh water at which the pressure due to the water is 78,400 Pa. (ρ = 1,000 kg/m³, g = 9.8 N/kg)",
+        accept: [
+          "8",
+          "8 m",
+        ],
+        answer: "8 m. Rearranging p = h × ρ × g gives h = p ÷ (ρ × g) = 78,400 ÷ (1,000 × 9.8) = 78,400 ÷ 9,800 = 8 m.",
+      },
+      {
+        question: "Calculate the area over which a force of 900 N produces a pressure of 4,500 Pa.",
+        accept: [
+          "0.2",
+        ],
+        answer: "0.2 m². Rearranging p = F ÷ A gives A = F ÷ p = 900 ÷ 4,500 = 0.2 m².",
+      },
+      {
+        question: "Air has a density of 1.2 kg/m³. Calculate the mass of the air in a 2.5 m³ box.",
+        accept: [
+          "3",
+          "3 kg",
+        ],
+        answer: "3 kg. Rearranging ρ = m ÷ V gives m = ρ × V = 1.2 × 2.5 = 3 kg. Air is not weightless, just thin.",
+      },
+      {
+        question: "A drawing pin is pushed with a force of 20 N and its point has an area of 0.000002 m². Calculate the pressure at the point.",
+        accept: [
+          "10000000",
+          "1 x 10^7",
+          "10,000,000",
+        ],
+        answer: "1 × 10^7 Pa. p = F ÷ A = 20 ÷ 0.000002 = 10,000,000 Pa. The force is small; it is the tiny area that makes the pressure enormous.",
+      },
+      {
+        question: "A block has a mass of 0.6 kg and a volume of 750 cm³. Calculate its density in kg/m³.",
+        accept: [
+          "800",
+        ],
+        answer: "800 kg/m³. Convert the volume: 1 cm³ = 10^-6 m³, so 750 cm³ = 0.00075 m³. Then ρ = m ÷ V = 0.6 ÷ 0.00075 = 800 kg/m³. That is below water's 1,000 kg/m³, so it would float.",
+      },
+      {
+        question: "A 2 kg block measuring 20 cm × 10 cm × 5 cm rests on its largest face. Calculate the pressure it exerts on the floor. (g = 9.8 N/kg)",
+        accept: [
+          "980",
+          "980 Pa",
+        ],
+        answer: "980 Pa. The force is the block's weight: W = m × g = 2 × 9.8 = 19.6 N. The largest face is 20 cm by 10 cm, which is 0.2 m × 0.1 m = 0.02 m². Then p = F ÷ A = 19.6 ÷ 0.02 = 980 Pa.",
+      },
+      {
+        question: "Calculate the total pressure at the bottom of a freshwater lake 6 m deep, including atmospheric pressure of 100,000 Pa. (ρ = 1,000 kg/m³, g = 9.8 N/kg)",
+        accept: [
+          "158800",
+          "158,800",
+        ],
+        answer: "158,800 Pa. The water contributes p = h × ρ × g = 6 × 1,000 × 9.8 = 58,800 Pa. The atmosphere presses on the surface as well, so the total is 58,800 + 100,000 = 158,800 Pa.",
+      },
+      {
+        question: "An object of volume 0.002 m³ is fully submerged in water of density 1,000 kg/m³. Calculate the upthrust on it. (g = 9.8 N/kg)",
+        accept: [
+          "19.6",
+          "19.6 N",
+        ],
+        answer: "19.6 N. The upthrust equals the weight of water displaced. The displaced water has mass m = ρ × V = 1,000 × 0.002 = 2 kg, so its weight is W = m × g = 2 × 9.8 = 19.6 N.",
+        higherOnly: true,
+      },
+      {
+        question: "The pressure at the bottom of a 2.5 m column of oil is 19,600 Pa. Calculate the density of the oil. (g = 9.8 N/kg)",
+        accept: [
+          "800",
+        ],
+        answer: "800 kg/m³. Rearranging p = h × ρ × g gives ρ = p ÷ (h × g) = 19,600 ÷ (2.5 × 9.8) = 19,600 ÷ 24.5 = 800 kg/m³ — lighter than water, which is why oil floats on it.",
+      },
+      {
+        question: "Explain why the pressure at a point in a liquid acts in all directions rather than only downwards.",
+        answer: "Pressure in a fluid comes from particles colliding with whatever surface is there, and those particles are moving randomly in every direction. A surface placed at that point is struck just as often from the side or from below as from above, so it experiences a force whichever way it faces. That is why a diving mask presses on the face from every angle and why a hole in the side of a container squirts water sideways. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why atmospheric pressure falls as you climb a mountain.",
+        answer: "Atmospheric pressure at any height is produced by the weight of all the air above that point pressing down, together with the collisions of its molecules. Climbing higher leaves less atmosphere above you, so there is less weight bearing down. The air up there is also less dense, so fewer molecules collide with a given surface each second, and both effects reduce the pressure. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a submarine at 300 m must be built far more strongly than one designed for 30 m.",
+        answer: "Pressure due to a liquid is given by p = hρg, so it is directly proportional to depth: ten times deeper means ten times the water pressure. At 300 m the water alone exerts roughly three million pascals, pressing inwards over every square metre of the hull. The total inward force on the hull is therefore ten times greater, and the structure has to resist it without buckling. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how the difference in pressure between the top and bottom of a submerged object produces upthrust.",
+        answer: "Pressure in a liquid increases with depth, so the bottom surface of a submerged object sits at a greater depth than the top and experiences a greater pressure. Force is pressure multiplied by area, so the upward force on the bottom is larger than the downward force on the top. The difference between them is a net upward force, which is the upthrust; if it equals the object's weight the object floats. (Mark this one yourself.)",
+        higherOnly: true,
       },
     ],
     misconceptions: [
@@ -4446,6 +5783,115 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Closer lines mean a stronger field, which is why they bunch together at the poles.",
       },
+      {
+        question: "Calculate the force on a 0.25 m wire carrying 8 A at right angles to a magnetic field of flux density 0.15 T.",
+        accept: [
+          "0.3",
+          "0.3 N",
+        ],
+        answer: "0.3 N. F = B × I × l = 0.15 × 8 × 0.25 = 0.3 N.",
+        higherOnly: true,
+      },
+      {
+        question: "A 0.6 m wire at right angles to a 0.4 T field feels a force of 1.2 N. Calculate the current in it.",
+        accept: [
+          "5",
+          "5 A",
+        ],
+        answer: "5 A. Rearranging F = B × I × l gives I = F ÷ (B × l) = 1.2 ÷ (0.4 × 0.6) = 1.2 ÷ 0.24 = 5 A.",
+        higherOnly: true,
+      },
+      {
+        question: "A transformer has 150 primary turns and 3,000 secondary turns, with 12 V across the primary. Calculate the secondary potential difference.",
+        accept: [
+          "240",
+          "240 V",
+        ],
+        answer: "240 V. Vp ÷ Vs = np ÷ ns, so Vs = Vp × ns ÷ np = 12 × 3,000 ÷ 150 = 240 V. Twenty times the turns gives twenty times the potential difference.",
+      },
+      {
+        question: "A step-down transformer reduces 11,500 V to 230 V and has 5,000 primary turns. Calculate the number of secondary turns.",
+        accept: [
+          "100",
+        ],
+        answer: "100 turns. The turns ratio matches the potential difference ratio: 11,500 ÷ 230 = 50, so the primary has 50 times as many turns. Therefore ns = 5,000 ÷ 50 = 100.",
+      },
+      {
+        question: "A transformer's secondary coil supplies 6 A at 24 V. Calculate the power output of the secondary.",
+        accept: [
+          "144",
+          "144 W",
+        ],
+        answer: "144 W. P = V × I = 24 × 6 = 144 W. In a 100% efficient transformer the primary must supply the same 144 W.",
+      },
+      {
+        question: "Calculate the magnetic flux density needed to produce a 0.9 N force on a 0.3 m wire carrying 6 A at right angles to the field.",
+        accept: [
+          "0.5",
+          "0.5 T",
+        ],
+        answer: "0.5 T. Rearranging F = B × I × l gives B = F ÷ (I × l) = 0.9 ÷ (6 × 0.3) = 0.9 ÷ 1.8 = 0.5 T.",
+        higherOnly: true,
+      },
+      {
+        question: "A 100% efficient transformer steps 230 V down to 11.5 V. The primary current is 0.4 A. Calculate the secondary current.",
+        accept: [
+          "8",
+          "8 A",
+        ],
+        answer: "8 A. Power in = power out, so Vp × Ip = Vs × Is. The primary power is 230 × 0.4 = 92 W, so Is = 92 ÷ 11.5 = 8 A. Stepping the potential difference down by 20 steps the current up by 20.",
+        higherOnly: true,
+      },
+      {
+        question: "A transformer with 800 primary turns and 200 secondary turns has 240 V across the primary. The secondary is connected to a 12 Ω resistor. Calculate the current in the secondary.",
+        accept: [
+          "5",
+          "5 A",
+        ],
+        answer: "5 A. First the secondary potential difference: Vs = 240 × 200 ÷ 800 = 60 V. Then apply Ohm's law to the resistor: I = V ÷ R = 60 ÷ 12 = 5 A.",
+      },
+      {
+        question: "A 400 kV transmission line carries 800 MW through cables of total resistance 5 Ω. Calculate the power wasted as heat, in megawatts.",
+        accept: [
+          "20",
+          "20 MW",
+        ],
+        answer: "20 MW. First the current: I = P ÷ V = (800 × 10^6) ÷ (400 × 10^3) = 2,000 A. Then the loss: P = I² × R = 2,000² × 5 = 2 × 10^7 W = 20 MW, which is only 2.5% of what is sent.",
+      },
+      {
+        question: "A wire 4 cm long carries 250 mA at right angles to a 0.8 T field. Calculate the force on it.",
+        accept: [
+          "0.008",
+          "8 mN",
+        ],
+        answer: "0.008 N. Convert both units first: 4 cm = 0.04 m and 250 mA = 0.25 A. Then F = B × I × l = 0.8 × 0.25 × 0.04 = 0.008 N.",
+        higherOnly: true,
+      },
+      {
+        question: "A 100% efficient step-up transformer has 400 primary turns and 10,000 secondary turns. The primary draws 15 A at 240 V. Calculate the secondary current.",
+        accept: [
+          "0.6",
+          "0.6 A",
+        ],
+        answer: "0.6 A. Secondary p.d.: Vs = 240 × 10,000 ÷ 400 = 6,000 V. Primary power: 240 × 15 = 3,600 W. Since power out equals power in, Is = 3,600 ÷ 6,000 = 0.6 A.",
+        higherOnly: true,
+      },
+      {
+        question: "You have a bar magnet and an iron rod. Explain how you could tell whether the rod is a permanent magnet or only becomes magnetic when near one.",
+        answer: "Bring each end of the bar magnet up to each end of the rod in turn and watch for repulsion, not attraction. An induced magnet always has the opposite pole induced in it, so it is attracted whichever way round you try. Only a permanent magnet, which keeps its own fixed north and south poles, can be repelled, so a single clear repulsion proves it is permanent. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a current-carrying wire placed parallel to a magnetic field feels no force at all.",
+        answer: "The motor effect comes from the interaction between the circular field the current makes around the wire and the field it is sitting in. When the wire lies along the field lines, that circular field is symmetrical about the direction of the external field, so the reinforcing and cancelling regions balance out and there is nothing to push the wire either way. Turning the wire towards 90° increases the asymmetry, and the force is greatest when the wire is perpendicular to the field. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how a scrapyard crane picks up and later releases a car, and why a permanent magnet would be unsuitable.",
+        answer: "The crane uses an electromagnet: a solenoid wound on an iron core, so a current produces a strong magnetic field that induces magnetism in the steel car body and attracts it. Switching the current off collapses the field, the induced magnetism in the car largely disappears, and the car drops where it is wanted. A permanent magnet could not be switched off, so once the car was attached there would be no way to release it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the magnetic field around a solenoid looks like that of a bar magnet, and what happens to it if the current is reversed.",
+        answer: "Each turn of the coil produces its own circular field, and because the turns are stacked in the same direction those fields add inside the coil to give a strong, nearly uniform field along the axis. Outside, the field lines spread and loop back from one end to the other, giving the solenoid an effective north pole at one end and a south at the other, exactly as a bar magnet has. Reversing the current reverses the direction of every circular field, so the two poles swap ends while the pattern itself stays the same shape. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -4753,6 +6199,114 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Force equals change in momentum divided by time, so a longer time means a smaller force. Airbags and seatbelts work the same way.",
       },
+      {
+        question: "Calculate the work done when a force of 45 N pushes a trolley 7.5 m.",
+        accept: [
+          "337.5",
+        ],
+        answer: "337.5 J. W = F × s = 45 × 7.5 = 337.5 J, and that is also the energy transferred to the trolley and its surroundings.",
+      },
+      {
+        question: "A lift motor does 96,000 J of work in 40 s. Calculate its power output.",
+        accept: [
+          "2400",
+          "2,400",
+        ],
+        answer: "2,400 W. P = W ÷ t = 96,000 ÷ 40 = 2,400 W, or 2.4 kW.",
+      },
+      {
+        question: "Calculate the momentum of a 0.16 kg cricket ball travelling at 35 m/s.",
+        accept: [
+          "5.6",
+        ],
+        answer: "5.6 kg m/s. p = m × v = 0.16 × 35 = 5.6 kg m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A 40,000 kg train has a momentum of 600,000 kg m/s. Calculate its velocity.",
+        accept: [
+          "15",
+          "15 m/s",
+        ],
+        answer: "15 m/s. Rearranging p = m × v gives v = p ÷ m = 600,000 ÷ 40,000 = 15 m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A lorry travels at a steady 25 m/s against total resistive forces of 4,000 N. Calculate the power output of its engine.",
+        accept: [
+          "100000",
+          "100,000",
+        ],
+        answer: "100,000 W. At constant speed the driving force equals the resistive force, so P = F × v = 4,000 × 25 = 100,000 W, or 100 kW.",
+      },
+      {
+        question: "A ball's momentum changes by 7 kg m/s in 0.05 s. Calculate the average force acting on it.",
+        accept: [
+          "140",
+          "140 N",
+        ],
+        answer: "140 N. Force = change in momentum ÷ time = 7 ÷ 0.05 = 140 N. This is Newton's second law written in terms of momentum.",
+        higherOnly: true,
+      },
+      {
+        question: "A crane lifts a 250 kg load 18 m in 30 s. Calculate its useful power output. (g = 9.8 N/kg)",
+        accept: [
+          "1470",
+          "1,470",
+        ],
+        answer: "1,470 W. The lifting force is the weight: W = m × g = 250 × 9.8 = 2,450 N. Work done = F × s = 2,450 × 18 = 44,100 J. Then P = W ÷ t = 44,100 ÷ 30 = 1,470 W.",
+      },
+      {
+        question: "A 3 kg trolley moving right at 4 m/s collides head-on with a 1 kg trolley moving left at 2 m/s. They stick together. Calculate their common velocity.",
+        accept: [
+          "2.5",
+        ],
+        answer: "2.5 m/s to the right. Taking right as positive, the momentum before is (3 × 4) + (1 × −2) = 12 − 2 = 10 kg m/s. After the collision the combined mass is 4 kg, so 10 = 4 × v and v = 2.5 m/s. The positive sign confirms they move to the right.",
+        higherOnly: true,
+      },
+      {
+        question: "Two skaters stand still and push apart. The 60 kg skater moves off at 2 m/s. Calculate the speed of the 40 kg skater.",
+        accept: [
+          "3",
+          "3 m/s",
+        ],
+        answer: "3 m/s in the opposite direction. The total momentum before is zero, so the two momenta afterwards must cancel: 60 × 2 = 120 kg m/s one way, so 40 × v = 120 the other way, giving v = 3 m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A 1,400 kg car travelling at 20 m/s hits a wall and stops in 0.14 s. Calculate the average force on the car.",
+        accept: [
+          "200000",
+          "200,000",
+        ],
+        answer: "200,000 N. The change in momentum is m × Δv = 1,400 × 20 = 28,000 kg m/s. Then F = change in momentum ÷ time = 28,000 ÷ 0.14 = 200,000 N — roughly 200 kN, which is why crumple zones matter.",
+        higherOnly: true,
+      },
+      {
+        question: "A car engine delivers 48 kW while the car travels at a steady 30 m/s. Calculate the total resistive force acting on it.",
+        accept: [
+          "1600",
+          "1,600",
+        ],
+        answer: "1,600 N. Convert the power: 48 kW = 48,000 W. Rearranging P = F × v gives F = P ÷ v = 48,000 ÷ 30 = 1,600 N. At constant speed this driving force is balanced by the resistive forces, so they are 1,600 N too.",
+      },
+      {
+        question: "Explain why a cycle helmet with a crushable liner protects the head better than a rigid shell on its own.",
+        answer: "In an impact the head's momentum must change to zero either way, so the liner cannot reduce how much momentum has to go. What it does is crush, letting the head come to rest over a longer time and distance instead of stopping almost instantly. Since force equals change in momentum divided by time, a longer stopping time means a much smaller force on the skull. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why momentum is conserved in a collision while kinetic energy usually is not.",
+        answer: "Momentum is conserved because the forces the two objects exert on each other are equal and opposite and act for the same time, so the momentum one gains the other loses and the total is unchanged. Kinetic energy has no such protection: during the collision the objects deform, rub and vibrate, so energy is transferred to thermal stores and to sound. The total energy is still conserved, but it is no longer all kinetic, which is what makes most real collisions inelastic. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "A porter holds a heavy suitcase still while waiting for a train and becomes tired. Explain why no work is done on the suitcase.",
+        answer: "Work done is force multiplied by the distance moved along the line of that force, and the suitcase does not move at all, so that distance is zero and the work done on it is zero. No energy has been transferred to the suitcase — its stores are exactly as they were. The porter still tires because his muscle fibres repeatedly contract and relax to hold the load, transferring chemical energy to thermal energy inside his own body. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the power output of a car engine travelling at constant speed equals the resistive force multiplied by the speed.",
+        answer: "At constant speed the resultant force is zero, so the driving force exactly matches the total resistive force. In each second the car moves a distance equal to its speed, and the work done is that driving force multiplied by that distance. Power is work per second, so dividing by one second leaves force multiplied by speed, which is why P = F × v. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -5059,6 +6613,109 @@ export const PHYSICS: Record<string, TopicContent> = {
           "It stops being radioactive quickly, limiting the patient's exposure",
         ],
         answer: "It also needs to be a gamma emitter so the radiation escapes the body to be detected, and is weakly ionising inside.",
+      },
+      {
+        question: "A source has an activity of 9,600 Bq and a half-life of 8 minutes. Calculate its activity after 32 minutes.",
+        accept: [
+          "600",
+          "600 Bq",
+        ],
+        answer: "600 Bq. 32 ÷ 8 = 4 half-lives, so the activity halves four times: 9,600 → 4,800 → 2,400 → 1,200 → 600 Bq.",
+      },
+      {
+        question: "Calculate the fraction of the original nuclei still undecayed after 6 half-lives.",
+        accept: [
+          "1/64",
+          "0.015625",
+        ],
+        answer: "1/64. Each half-life multiplies the number remaining by ½, so after six it is (½)^6 = 1 ÷ 64 of the original.",
+      },
+      {
+        question: "A source has an activity of 400 Bq. Calculate the number of decays that occur in one minute.",
+        accept: [
+          "24000",
+          "24,000",
+        ],
+        answer: "24,000 decays. One becquerel is one decay per second, so 400 Bq means 400 decays each second. In 60 s that is 400 × 60 = 24,000.",
+      },
+      {
+        question: "A detector reads 148 counts per minute next to a source, and the background is 28 counts per minute. Calculate the corrected count rate.",
+        accept: [
+          "120",
+        ],
+        answer: "120 counts per minute. Corrected count rate = measured − background = 148 − 28 = 120. Forgetting this step makes every later half-life wrong.",
+      },
+      {
+        question: "A source's activity falls from 3,200 Bq to 100 Bq. Calculate how many half-lives have passed.",
+        accept: [
+          "5",
+          "five",
+        ],
+        answer: "5 half-lives. Halve repeatedly and count: 3,200 → 1,600 → 800 → 400 → 200 → 100, which is five steps.",
+      },
+      {
+        question: "Technetium-99m has a half-life of 6 hours. Calculate the fraction of an injected dose still active after 24 hours.",
+        accept: [
+          "1/16",
+          "0.0625",
+        ],
+        answer: "1/16. 24 ÷ 6 = 4 half-lives, so the fraction remaining is (½)^4 = 1/16 — which is exactly why such a short half-life is chosen for a tracer.",
+      },
+      {
+        question: "A detector reads 620 counts per minute from a source against a background of 20. Twelve hours later it reads 95 counts per minute. Calculate the half-life.",
+        accept: [
+          "4",
+          "4 hours",
+        ],
+        answer: "4 hours. Correct both readings first: 620 − 20 = 600 and 95 − 20 = 75 counts per minute. Halving 600 gives 300, 150, 75 — three half-lives in 12 hours, so the half-life is 12 ÷ 3 = 4 hours.",
+      },
+      {
+        question: "A sample of 4.8 × 10^10 undecayed nuclei has a half-life of 45 minutes. Calculate how many remain after 3 hours.",
+        accept: [
+          "3 x 10^9",
+          "3000000000",
+          "3,000,000,000",
+        ],
+        answer: "3 × 10^9 nuclei. Three hours is 180 minutes, and 180 ÷ 45 = 4 half-lives. Halving four times divides by 16, so (4.8 × 10^10) ÷ 16 = 3 × 10^9.",
+      },
+      {
+        question: "Radioactive waste of activity 80,000 Bq is only safe to handle below 2,500 Bq. Its half-life is 30 years. Calculate the minimum storage time.",
+        accept: [
+          "150",
+          "150 years",
+        ],
+        answer: "150 years. The activity must fall by a factor of 80,000 ÷ 2,500 = 32, and 32 = 2^5, so five half-lives are needed. That is 5 × 30 = 150 years.",
+      },
+      {
+        question: "A rock contains 1 uranium atom for every 15 atoms of its stable decay product. The half-life is 700 million years. Calculate the rock's age in millions of years.",
+        accept: [
+          "2800",
+          "2,800",
+        ],
+        answer: "2,800 million years. For every 16 original atoms only 1 is left undecayed, so the fraction remaining is 1/16 = (½)^4, meaning 4 half-lives have passed. The age is 4 × 700 = 2,800 million years.",
+      },
+      {
+        question: "A source with a half-life of 20 minutes has a corrected count rate of 45 counts per minute. Calculate what its corrected count rate was one hour ago.",
+        accept: [
+          "360",
+        ],
+        answer: "360 counts per minute. One hour is 60 ÷ 20 = 3 half-lives. Going backwards in time means doubling rather than halving: 45 → 90 → 180 → 360 counts per minute.",
+      },
+      {
+        question: "Explain why a beta emitter, rather than an alpha or gamma source, is used in a gauge that checks the thickness of paper.",
+        answer: "The gauge works by comparing how much radiation gets through the paper, so the amount absorbed must change noticeably when the thickness changes. Alpha would be stopped completely by even thin paper, giving no reading at all, while gamma would pass straight through almost unaffected and never vary. Beta is partly absorbed by paper, so the count rate reaching the detector rises or falls as the sheet gets thinner or thicker. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the background count must be subtracted before a half-life is worked out from detector readings.",
+        answer: "A detector picks up radiation from rocks, cosmic rays and the air as well as from the source, so every reading is too high by roughly the background amount. That fixed offset does not halve as the source decays, so the readings appear to fall towards the background rather than towards zero. Working from uncorrected numbers therefore makes the source look as though it is decaying more slowly, giving a half-life that is too long. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the alpha source in a smoke alarm is safe in the room but would be dangerous if the material were inhaled.",
+        answer: "Alpha particles are very strongly ionising but travel only a few centimetres in air and are stopped by the plastic case, so outside the alarm they cannot reach anyone and the device only irradiates the air in a tiny gap. Inhaling the material is contamination instead: the source is then inside the body with no air gap or casing between it and living tissue. All that ionising power is absorbed by a small number of cells, so the risk of DNA damage is high and it continues until the material is removed or decays. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why radiotherapy uses several gamma beams aimed at the tumour from different directions.",
+        answer: "Gamma radiation is very penetrating, so any single beam damages healthy tissue all along its path as well as the tumour. Rotating the beam, or using several from different angles, means each path through healthy tissue receives only a small dose. The tumour lies where every beam crosses, so it receives the sum of all of them and gets a lethal dose while the surrounding tissue does not. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -5382,6 +7039,106 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A higher orbit has weaker gravity, so a lower speed is needed to stay in orbit — which is counter-intuitive but examined.",
       },
+      {
+        question: "Calculate the weight of a 70 kg astronaut on Mars, where g = 3.7 N/kg.",
+        accept: [
+          "259",
+          "259 N",
+        ],
+        answer: "259 N. W = m × g = 70 × 3.7 = 259 N. The astronaut's mass is still 70 kg — only the weight has changed.",
+      },
+      {
+        question: "Calculate the distance light travels in one year, in metres. Take a year as 3.15 × 10^7 s and c = 3 × 10^8 m/s.",
+        accept: [
+          "9.45 x 10^15",
+          "9450000000000000",
+        ],
+        answer: "9.45 × 10^15 m. s = v × t = (3 × 10^8) × (3.15 × 10^7). Multiply the coefficients, 3 × 3.15 = 9.45, and add the powers, 10^8 × 10^7 = 10^15, giving 9.45 × 10^15 m — one light-year.",
+      },
+      {
+        question: "Jupiter is 7.8 × 10^11 m from the Sun. Calculate the time sunlight takes to reach it, in minutes, to 1 decimal place. (c = 3 × 10^8 m/s)",
+        accept: [
+          "43.3",
+        ],
+        answer: "43.3 minutes. t = s ÷ v = (7.8 × 10^11) ÷ (3 × 10^8) = 2,600 s. Dividing by 60 gives 43.3 minutes.",
+      },
+      {
+        question: "A 12 kg rock weighs 19.2 N on a moon. Calculate that moon's gravitational field strength.",
+        accept: [
+          "1.6",
+        ],
+        answer: "1.6 N/kg. Rearranging W = m × g gives g = W ÷ m = 19.2 ÷ 12 = 1.6 N/kg, which is roughly a sixth of Earth's value.",
+      },
+      {
+        question: "The Sun's mass is about 2 × 10^30 kg and Jupiter's about 1.9 × 10^27 kg. Calculate how many times more massive the Sun is, to the nearest hundred.",
+        accept: [
+          "1100",
+          "1,100",
+        ],
+        answer: "About 1,100 times. (2 × 10^30) ÷ (1.9 × 10^27) = 1.05 × 10^3 = 1,053, which is 1,100 to the nearest hundred.",
+      },
+      {
+        question: "A satellite completes one orbit every 90 minutes. Calculate how many complete orbits it makes in one day.",
+        accept: [
+          "16",
+        ],
+        answer: "16 orbits. A day is 24 × 60 = 1,440 minutes, so the number of orbits is 1,440 ÷ 90 = 16.",
+      },
+      {
+        question: "A satellite orbits at a radius of 7.0 × 10^6 m with a period of 5,800 s. Calculate its orbital speed to 2 significant figures. (circumference = 2πr)",
+        accept: [
+          "7600",
+          "7,600",
+        ],
+        answer: "7,600 m/s. The distance travelled in one orbit is 2πr = 2 × π × (7.0 × 10^6) = 4.40 × 10^7 m. Then v = s ÷ t = (4.40 × 10^7) ÷ 5,800 = 7,583 m/s, which is 7,600 m/s to 2 s.f.",
+      },
+      {
+        question: "The Moon orbits at a radius of 3.84 × 10^8 m with a period of 27.3 days. Calculate its orbital speed in m/s, to 3 significant figures.",
+        accept: [
+          "1020",
+          "1,020",
+        ],
+        answer: "1,020 m/s. The orbit's circumference is 2πr = 2 × π × (3.84 × 10^8) = 2.41 × 10^9 m. The period in seconds is 27.3 × 24 × 3,600 = 2.36 × 10^6 s. Then v = (2.41 × 10^9) ÷ (2.36 × 10^6) = 1,020 m/s.",
+      },
+      {
+        question: "A spectral line with a laboratory wavelength of 434 nm is measured at 456 nm in light from a galaxy. Calculate the percentage red shift to 1 decimal place.",
+        accept: [
+          "5.1",
+        ],
+        answer: "5.1%. The increase in wavelength is 456 − 434 = 22 nm. As a fraction of the original that is 22 ÷ 434 = 0.0507, and multiplying by 100 gives 5.1%.",
+      },
+      {
+        question: "A star is 8.6 light-years from Earth. Calculate that distance in metres to 2 significant figures, taking one light-year as 9.5 × 10^15 m.",
+        accept: [
+          "8.2 x 10^16",
+          "82000000000000000",
+        ],
+        answer: "8.2 × 10^16 m. Distance = 8.6 × (9.5 × 10^15) = 81.7 × 10^15 m. Written properly in standard form that is 8.17 × 10^16 m, which is 8.2 × 10^16 m to 2 s.f.",
+      },
+      {
+        question: "A spacecraft travels at 15,000 m/s towards a star 4.0 × 10^16 m away. Calculate the journey time in years to 2 significant figures, taking a year as 3.15 × 10^7 s.",
+        accept: [
+          "85000",
+          "85,000",
+        ],
+        answer: "About 85,000 years. First in seconds: t = s ÷ v = (4.0 × 10^16) ÷ 15,000 = 2.67 × 10^12 s. Then convert: (2.67 × 10^12) ÷ (3.15 × 10^7) = 84,700 years, which is 85,000 to 2 s.f.",
+      },
+      {
+        question: "Explain why a satellite moving round the Earth at a constant speed is still accelerating.",
+        answer: "Acceleration is the rate of change of velocity, and velocity is a vector with both a size and a direction. A satellite in a circular orbit keeps the same speed but its direction of travel changes continuously, so its velocity is changing all the time. That change is produced by the Earth's gravitational pull acting towards the centre of the orbit, which is the resultant force causing the acceleration. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a star spends most of its life on the main sequence, and what brings that stage to an end.",
+        answer: "On the main sequence the outward pressure from hydrogen fusion in the core exactly balances the inward pull of gravity, so the star neither collapses nor expands and the arrangement is stable. It lasts billions of years because a star contains an enormous quantity of hydrogen to fuse. The stage ends when the core's hydrogen runs low, the outward pressure can no longer match gravity, and the star's structure changes — it swells into a red giant or a red supergiant. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what the cosmic microwave background radiation adds to the evidence for the Big Bang beyond red shift.",
+        answer: "Red shift shows that galaxies are moving apart and that the universe is expanding, which implies it was smaller and denser in the past, but on its own it does not prove the hot beginning. The cosmic microwave background is faint radiation coming from every direction at the same temperature, and the Big Bang model predicts exactly this as the cooled remnant of radiation from a hot, dense early universe. No rival theory has explained it, and finding a predicted observation after the prediction was made is unusually strong evidence. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why scientists proposed dark matter, and why proposing something nobody has seen can still be good science.",
+        answer: "Galaxies rotate far too quickly at their edges for the gravity of the visible stars and gas to hold them together, so either there is extra mass we cannot see or our understanding of gravity is wrong. Dark matter is the name for that extra mass, and it is taken seriously because it is inferred from measurements rather than simply invented. It counts as good science because it makes testable predictions about how galaxies and light behave, and it would be abandoned if those observations disagreed. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -5683,6 +7440,106 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "It shifts every reading by the same amount, so repeating does not help — the instrument must be zeroed or the offset subtracted.",
       },
+      {
+        question: "A micrometer reads 0.03 mm when fully closed. A wire measured with it reads 0.48 mm. Calculate the true diameter.",
+        accept: [
+          "0.45",
+        ],
+        answer: "0.45 mm. The 0.03 mm is a zero error, a systematic offset on every reading, so subtract it: 0.48 − 0.03 = 0.45 mm.",
+      },
+      {
+        question: "In the resistance practical a wire carries 0.30 A with 1.5 V across it. Calculate its resistance.",
+        accept: [
+          "5",
+          "5 ohms",
+        ],
+        answer: "5 Ω. R = V ÷ I = 1.5 ÷ 0.30 = 5 Ω. This is the pair of readings the whole practical is built around.",
+      },
+      {
+        question: "A pendulum takes 24.0 s to complete 20 full swings. Calculate its period.",
+        accept: [
+          "1.2",
+          "1.2 s",
+        ],
+        answer: "1.2 s. Period = total time ÷ number of swings = 24.0 ÷ 20 = 1.2 s. Timing many swings and dividing keeps the reaction-time error small.",
+      },
+      {
+        question: "A trolley carrying a 5.0 cm card passes through a light gate in 0.025 s. Calculate its speed in m/s.",
+        accept: [
+          "2",
+          "2 m/s",
+        ],
+        answer: "2 m/s. Convert the card length: 5.0 cm = 0.05 m. Then v = s ÷ t = 0.05 ÷ 0.025 = 2 m/s.",
+      },
+      {
+        question: "Four timings are recorded: 12.4 s, 12.6 s, 12.5 s and 12.5 s. Calculate the mean.",
+        accept: [
+          "12.5",
+          "12.50",
+        ],
+        answer: "12.5 s. Add them: 12.4 + 12.6 + 12.5 + 12.5 = 50.0 s, then divide by 4 to get 12.5 s. None is anomalous, so all four are kept.",
+      },
+      {
+        question: "A measuring cylinder reads 35 cm³ before an object is lowered in and 58 cm³ afterwards. Calculate the object's volume.",
+        accept: [
+          "23",
+        ],
+        answer: "23 cm³. The object pushes aside its own volume of water, so V = 58 − 35 = 23 cm³. Read both values from the bottom of the meniscus at eye level.",
+      },
+      {
+        question: "In the Hooke's law practical a spring is 4.0 cm long unloaded and 10.0 cm long carrying a 3.0 N load. Calculate the spring constant in N/m.",
+        accept: [
+          "50",
+          "50 N/m",
+        ],
+        answer: "50 N/m. The extension is 10.0 − 4.0 = 6.0 cm, which is 0.06 m. Then k = F ÷ e = 3.0 ÷ 0.06 = 50 N/m. Using the full length instead of the extension is the classic error.",
+      },
+      {
+        question: "A 50 W heater warms a 0.80 kg metal block for 3 minutes and the temperature rises by 12.5°C. Calculate the specific heat capacity this gives.",
+        accept: [
+          "900",
+        ],
+        answer: "900 J/kg°C. Energy supplied = P × t = 50 × 180 = 9,000 J. Rearranging E = m × c × Δθ gives c = 9,000 ÷ (0.80 × 12.5) = 9,000 ÷ 10 = 900 J/kg°C.",
+      },
+      {
+        question: "In a ripple tank, 12 wavefronts pass a point in 8.0 s and 5 wavelengths measure 15 cm in total. Calculate the wave speed in m/s.",
+        accept: [
+          "0.045",
+        ],
+        answer: "0.045 m/s. Frequency = 12 ÷ 8.0 = 1.5 Hz. One wavelength = 15 ÷ 5 = 3 cm = 0.03 m. Then v = f × λ = 1.5 × 0.03 = 0.045 m/s.",
+      },
+      {
+        question: "In the acceleration practical a 0.50 kg trolley speeds up from 0.20 m/s to 0.80 m/s in 0.40 s. Calculate the resultant force on it.",
+        accept: [
+          "0.75",
+          "0.75 N",
+        ],
+        answer: "0.75 N. First the acceleration: a = (v − u) ÷ t = (0.80 − 0.20) ÷ 0.40 = 1.5 m/s². Then F = m × a = 0.50 × 1.5 = 0.75 N.",
+      },
+      {
+        question: "An object of mass 0.20 kg displaces 25 cm³ of water. Calculate its density in kg/m³.",
+        accept: [
+          "8000",
+          "8,000",
+        ],
+        answer: "8,000 kg/m³. Convert the volume: 25 cm³ = 25 × 10^-6 = 0.000025 m³. Then ρ = m ÷ V = 0.20 ÷ 0.000025 = 8,000 kg/m³.",
+      },
+      {
+        question: "Explain why timing 20 oscillations and dividing by 20 gives a better period than timing a single oscillation.",
+        answer: "Starting and stopping the stopwatch involves a reaction time of a couple of tenths of a second, and that error is roughly the same size whether one swing or twenty is timed. Over one swing it is a large fraction of the reading, but over twenty it is spread across a total perhaps twenty times larger, so the percentage uncertainty is far smaller. Dividing at the end gives a period with much less of that timing error in it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why repeating a measurement does not remove a systematic error, and describe how you would detect one.",
+        answer: "A systematic error shifts every reading by the same amount in the same direction, so the repeats agree closely with each other and averaging them simply returns the same shifted value. Random errors scatter either side of the true value and do average out, which is what makes the two kinds behave so differently. To find a systematic error, check the instrument reads zero when it should, or measure something of known value and see whether the readings are offset. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the specific heat capacity measured in the school practical usually comes out above the accepted value.",
+        answer: "The calculation assumes every joule supplied by the heater went into raising the block's temperature, but some is transferred to the surroundings and some heats the heater and thermometer. The temperature rise is therefore smaller than the energy supplied would suggest. Since c = E ÷ (m × Δθ), dividing the full energy by an undersized temperature rise gives a value that is too large, which is why the block is insulated. (Mark this one yourself.)",
+      },
+      {
+        question: "In the Leslie cube investigation, explain why every face must be at the same temperature and the detector the same distance from each.",
+        answer: "The independent variable is the type of surface, so everything else affecting the reading has to be a control variable. Infrared emission rises steeply with temperature, so a hotter face would give a bigger reading regardless of its colour or finish, and the intensity also falls off with distance from the source. If either is allowed to vary, a difference in the readings cannot be attributed to the surface, and the comparison between matt black and shiny surfaces means nothing. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -5975,6 +7832,106 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Matching the least precise value in the question",
         ],
         answer: "Copying every digit from the calculator implies precision the data does not support, and can cost a mark.",
+      },
+      {
+        question: "Convert 45 cm² into square metres.",
+        accept: [
+          "0.0045",
+          "4.5 x 10^-3",
+        ],
+        answer: "0.0045 m². There are 10,000 cm² in 1 m², so divide by 10,000: 45 ÷ 10,000 = 0.0045 m². Dividing by 100 is the usual slip.",
+      },
+      {
+        question: "A length is given as 2.4 × 10^-3 m. Convert it to millimetres.",
+        accept: [
+          "2.4",
+        ],
+        answer: "2.4 mm. One metre is 1,000 mm, so multiply by 1,000: (2.4 × 10^-3) × 10^3 = 2.4 mm. The powers of ten cancel exactly.",
+      },
+      {
+        question: "A device wastes 360 J of every 900 J supplied to it. Calculate its efficiency as a percentage.",
+        accept: [
+          "60",
+          "60%",
+        ],
+        answer: "60%. The useful output is 900 − 360 = 540 J. Efficiency = 540 ÷ 900 = 0.6, so 60%. Substituting the wasted energy straight into the equation is the trap here.",
+      },
+      {
+        question: "Calculate the momentum of a 0.02 kg bullet travelling at 400 m/s.",
+        accept: [
+          "8",
+        ],
+        answer: "8 kg m/s. p = m × v = 0.02 × 400 = 8 kg m/s. A small mass at high speed can carry as much momentum as a heavy object moving slowly.",
+        higherOnly: true,
+      },
+      {
+        question: "A wave has a period of 0.008 s. Calculate its frequency.",
+        accept: [
+          "125",
+          "125 Hz",
+        ],
+        answer: "125 Hz. f = 1 ÷ T = 1 ÷ 0.008 = 125 Hz.",
+      },
+      {
+        question: "Write 0.0472 to 2 significant figures.",
+        accept: [
+          "0.047",
+        ],
+        answer: "0.047. Leading zeros are not significant, so the first two significant figures are the 4 and the 7. The next digit is 2, which rounds down, giving 0.047.",
+      },
+      {
+        question: "A force of 12 N acts over an area of 300 cm². Calculate the pressure in pascals.",
+        accept: [
+          "400",
+          "400 Pa",
+        ],
+        answer: "400 Pa. Convert the area first: 300 ÷ 10,000 = 0.03 m². Then p = F ÷ A = 12 ÷ 0.03 = 400 Pa. Leaving the area in cm² gives 0.04, which is wrong by a factor of 10,000.",
+      },
+      {
+        question: "A 1,500 kg car travelling at 12 m/s is brought to rest in 24 m. Calculate the average braking force.",
+        accept: [
+          "4500",
+          "4,500",
+        ],
+        answer: "4,500 N. The kinetic energy to remove is ½ × 1,500 × 12² = ½ × 1,500 × 144 = 108,000 J. The brakes do that work over 24 m, so F = W ÷ s = 108,000 ÷ 24 = 4,500 N.",
+      },
+      {
+        question: "A 2 kW heater warms 3 kg of water by 25°C with no losses. Calculate the time taken. (c = 4,200 J/kg°C)",
+        accept: [
+          "157.5",
+        ],
+        answer: "157.5 s. Energy needed = m × c × Δθ = 3 × 4,200 × 25 = 315,000 J. Convert the power: 2 kW = 2,000 W. Then t = E ÷ P = 315,000 ÷ 2,000 = 157.5 s.",
+      },
+      {
+        question: "A ball is dropped from 3.2 m and bounces back to 1.8 m. Calculate the percentage of its energy retained in the bounce.",
+        accept: [
+          "56.25",
+        ],
+        answer: "56.25%. Gravitational potential energy is m × g × h, and m and g are the same before and after, so the energy ratio is just the height ratio: 1.8 ÷ 3.2 = 0.5625, which is 56.25%. The mass is not needed at all.",
+      },
+      {
+        question: "A 230 V appliance transfers 1,380,000 J in 10 minutes. Calculate the current it draws.",
+        accept: [
+          "10",
+          "10 A",
+        ],
+        answer: "10 A. Ten minutes is 600 s, so the power is P = E ÷ t = 1,380,000 ÷ 600 = 2,300 W. Then I = P ÷ V = 2,300 ÷ 230 = 10 A.",
+      },
+      {
+        question: "A student calculates that lifting a kettle onto a worktop needs 4,000,000 J. Explain why that answer should be challenged and what you would check first.",
+        answer: "Four million joules is roughly the energy in a large meal, and lifting a kettle a short distance plainly cannot need it, so the magnitude alone shows something is wrong. The first thing to check is the units that went into Ep = m × g × h: a mass entered in grams instead of kilograms, or a height in centimetres instead of metres, changes the answer by a factor of a thousand or a hundred. Checking that an answer is a sensible size is a habit worth building, because it catches conversion errors the arithmetic never will. (Mark this one yourself.)",
+      },
+      {
+        question: "Using a velocity-time graph as your example, explain the difference between what \"describe\" and \"explain\" are asking for.",
+        answer: "\"Describe\" wants what the graph shows: the line rises steeply for four seconds, then levels off, then slopes gently down to zero. \"Explain\" wants the physics behind it: it rises because the resultant force is forwards, it levels off because the driving force and the resistive forces have become balanced, and it falls because braking gives a resultant force backwards. If there is no \"because\" in the answer, it is a description and will not earn explanation marks. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why units should be converted before substituting into an equation rather than adjusted at the end.",
+        answer: "Every standard equation assumes SI units, so substituting centimetres or grams produces a number that is not in the unit the equation gives, and there is often no obvious sign that anything is wrong. Adjusting afterwards means remembering which factor applies and whether it has been squared, which is exactly where cm² to m² goes astray by 10,000 instead of 100. Converting first means the substitution line is correct as written, so it earns its method mark even if the arithmetic later slips. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how a method mark can be earned on a calculation whose final answer is wrong, and what must appear on the page to secure it.",
+        answer: "Mark schemes award credit per completed stage, so the correct equation and a correct substitution are worth marks in their own right, independently of the final number. A slip on the calculator at the last step loses only the accuracy mark if the earlier stages are visible. To secure them, write the equation on its own line, show the converted values, and show the substitution — an answer standing alone with no working can only score full marks or none. (Mark this one yourself.)",
       },
     ],
     misconceptions: [

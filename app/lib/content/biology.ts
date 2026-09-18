@@ -292,6 +292,120 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Root hair cells have no chloroplasts — they are underground and get no light. The long projection increases surface area for absorption.",
       },
+      {
+        question: "Calculate how many bacteria, each 2 µm long, would stretch end to end across 1 mm.",
+        accept: [
+          "500",
+        ],
+        answer: "1 mm = 1000 µm. 1000 ÷ 2 = 500 bacteria.",
+      },
+      {
+        question: "Calculate how many times wider a liver cell 25 µm across is than a bacterium 2.5 µm across.",
+        accept: [
+          "10",
+          "10 times",
+        ],
+        answer: "25 ÷ 2.5 = 10. The liver cell is 10 times wider — a typical eukaryote-to-prokaryote gap.",
+      },
+      {
+        question: "Work out the width in micrometres of a cell measuring 0.05 mm across.",
+        accept: [
+          "50",
+          "50 um",
+        ],
+        answer: "1 mm = 1000 µm, so 0.05 × 1000 = 50 µm. That is a fairly large eukaryotic cell.",
+      },
+      {
+        question: "A cell under the microscope has a cellulose cell wall, a permanent vacuole and a nucleus, but no chloroplasts at all. Suggest which part of the plant it was taken from.",
+        accept: [
+          "root",
+          "the root",
+          "roots",
+          "a root",
+          "root cell",
+        ],
+        answer: "Cellulose wall and permanent vacuole make it a plant cell, but no chloroplasts means it never receives light — so it came from the root.",
+      },
+      {
+        question: "Sperm cells are packed with mitochondria. Name the process happening inside them that supplies the energy for the tail to beat.",
+        accept: [
+          "aerobic respiration",
+          "respiration",
+        ],
+        answer: "Mitochondria are the site of aerobic respiration, which transfers the energy the tail needs to keep swimming.",
+      },
+      {
+        question: "Which structure is found in BOTH a bacterial cell and a plant cell?",
+        choices: [
+          "Cell wall",
+          "Nucleus",
+          "Chloroplast",
+          "Permanent vacuole",
+          "Mitochondria",
+        ],
+        accept: [
+          "cell wall",
+        ],
+        answer: "Both have a cell wall, though the bacterial one is not made of cellulose. Bacteria have no nucleus, chloroplasts, vacuole or mitochondria.",
+      },
+      {
+        question: "A model cell is a cube with sides of 2 mm. Calculate its surface area to volume ratio as a single number.",
+        accept: [
+          "3",
+          "3:1",
+        ],
+        answer: "Surface area = 6 × 2 × 2 = 24 mm². Volume = 2 × 2 × 2 = 8 mm³. Ratio = 24 ÷ 8 = 3, so 3:1.",
+      },
+      {
+        question: "Calculate how many times greater the volume of a cube-shaped eukaryotic cell of side 100 µm is than a cube-shaped prokaryotic cell of side 2 µm.",
+        accept: [
+          "125000",
+          "125 000",
+          "1.25 x 10^5",
+        ],
+        answer: "The side is 100 ÷ 2 = 50 times longer. Volume scales with the cube of length, so 50³ = 125 000 times greater.",
+      },
+      {
+        question: "A drawing of a plant cell measures 90 mm across. The real cell is 60 µm across. Calculate the magnification of the drawing.",
+        accept: [
+          "1500",
+          "x1500",
+          "1500x",
+        ],
+        answer: "Convert to the same unit: 90 mm = 90 000 µm. Magnification = image ÷ real = 90 000 ÷ 60 = 1500.",
+      },
+      {
+        question: "Xylem is made of dead hollow cells; phloem is made of living cells. A poison stops all respiration in a plant stem. Name the transport tissue that stops working because of it.",
+        accept: [
+          "phloem",
+          "the phloem",
+        ],
+        answer: "Phloem cells are alive and need energy from respiration to move sugars, so phloem fails. Xylem cells are already dead and water is pulled up without cell energy, so xylem carries on.",
+      },
+      {
+        question: "A palisade cell contains 40 chloroplasts. A spongy mesophyll cell from the same leaf contains 8. Calculate the percentage decrease in chloroplast number.",
+        accept: [
+          "80",
+          "80%",
+        ],
+        answer: "Decrease = 40 − 8 = 32. Percentage = 32 ÷ 40 × 100 = 80%.",
+      },
+      {
+        question: "Explain why a bacterium can respire even though it has no mitochondria. Write two or three sentences.",
+        answer: "Mitochondria are one place respiration can happen, not the only one. A bacterium carries the enzymes for respiration in its cytoplasm and on the inside of its cell membrane, so the reactions still take place and energy is still transferred. Having no mitochondria is part of being prokaryotic, not a sign the cell is inactive. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a large surface area to volume ratio matters to a cell, and why this puts a limit on how big one cell can grow.",
+        answer: "Substances enter and leave across the surface, but they are used up and produced throughout the volume. As a cell gets bigger its volume grows faster than its surface area, so the ratio falls and the membrane can no longer supply the inside fast enough. That is why cells stay small and organisms get bigger by having more cells rather than larger ones. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why finding a cell wall is not enough to prove a cell came from a plant.",
+        answer: "Bacteria and fungi have cell walls too, and the bacterial wall is not made of cellulose. To call a cell a plant cell you need the whole set: a nucleus, a cellulose wall, a permanent vacuole, and usually chloroplasts. A wall on its own only tells you the cell is not an animal cell. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what differentiation is, and why most plant cells keep the ability to differentiate throughout life while most animal cells lose it.",
+        answer: "Differentiation is a cell becoming specialised for a particular job by developing different structures. Most animal cells differentiate early and afterwards only divide to repair or replace, so the adult body relies on stem cells for new cell types. Plants keep growing new roots, shoots and leaves all their lives, so many plant cells stay able to differentiate and can regrow a whole plant from a cutting. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -604,6 +718,118 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Rate rises with a steeper gradient, larger surface area, shorter diffusion distance and higher temperature.",
       },
+      {
+        question: "Calculate the surface area to volume ratio of a cube-shaped organism with sides of 6 mm. Give the number only.",
+        accept: [
+          "1",
+          "1:1",
+        ],
+        answer: "Surface area = 6 × 6 × 6 = 216 mm². Volume = 6 × 6 × 6 = 216 mm³. Ratio = 216 ÷ 216 = 1.",
+      },
+      {
+        question: "A bag of visking tubing filled with concentrated sugar solution is left in distilled water and gains mass. Name the process responsible.",
+        accept: [
+          "osmosis",
+        ],
+        answer: "Visking tubing is partially permeable, so water moves in from the dilute outside to the concentrated inside. That is osmosis — only water crosses, not the sugar.",
+      },
+      {
+        question: "Glucose is still absorbed from the small intestine when the concentration in the gut is LOWER than in the blood. Name the transport process being used.",
+        accept: [
+          "active transport",
+        ],
+        answer: "Moving glucose from low to high concentration is against the gradient, so it cannot be diffusion. Active transport uses energy from respiration to pump it across.",
+      },
+      {
+        question: "Which feature of an alveolus most directly shortens the distance oxygen has to diffuse?",
+        choices: [
+          "A wall one cell thick",
+          "A very large total surface area",
+          "A rich blood supply",
+          "Being ventilated by breathing",
+          "A moist lining",
+        ],
+        accept: [
+          "a wall one cell thick",
+        ],
+        answer: "Diffusion is faster over a shorter distance, and the one-cell-thick wall is what makes the distance short. The other features help by raising surface area or keeping the gradient steep, not by shortening the path.",
+      },
+      {
+        question: "Work out the final mass of a potato cylinder that starts at 2.50 g and gains 4% in mass.",
+        accept: [
+          "2.6",
+          "2.60",
+        ],
+        answer: "4% of 2.50 g = 0.10 g. Final mass = 2.50 + 0.10 = 2.60 g.",
+      },
+      {
+        question: "A piece of potato is placed in a sugar solution of exactly the same concentration as its cytoplasm. State what happens to its mass.",
+        accept: [
+          "no change",
+          "nothing",
+          "stays the same",
+          "it stays the same",
+          "no change in mass",
+          "unchanged",
+        ],
+        answer: "There is no water potential difference, so water enters and leaves at the same rate. The mass stays the same — this is the point where the osmosis graph crosses zero.",
+      },
+      {
+        question: "Calculate how many times greater the surface area to volume ratio of a 1 mm cube is than that of a 5 mm cube.",
+        accept: [
+          "5",
+          "5 times",
+        ],
+        answer: "1 mm cube: 6 ÷ 1 = 6. 5 mm cube: 150 ÷ 125 = 1.2. 6 ÷ 1.2 = 5 times greater — which is why small organisms can rely on diffusion and large ones cannot.",
+      },
+      {
+        question: "Potato cylinder A falls from 3.20 g to 2.88 g in solution 1. Cylinder B rises from 3.20 g to 3.36 g in solution 2. Work out both percentage changes, then name the solution (1 or 2) that was more dilute than the potato cells.",
+        accept: [
+          "2",
+          "solution 2",
+          "the second",
+          "second",
+        ],
+        answer: "A: −0.32 ÷ 3.20 × 100 = −10%. B: +0.16 ÷ 3.20 × 100 = +5%. B gained water, so water moved in — solution 2 must have been more dilute than the cell contents.",
+      },
+      {
+        question: "One alveolus has a surface area of about 0.14 mm² and an adult has around 500 million of them. Calculate the total alveolar surface area in m².",
+        accept: [
+          "70",
+          "70 m2",
+        ],
+        answer: "0.14 × 500 000 000 = 70 000 000 mm². There are 1 000 000 mm² in 1 m², so 70 000 000 ÷ 1 000 000 = 70 m².",
+      },
+      {
+        question: "A dye diffuses 12 mm through agar in 8 minutes at 20 °C, and 12 mm in 5 minutes at 40 °C. Calculate the increase in the rate of diffusion, in mm per minute.",
+        accept: [
+          "0.9",
+        ],
+        answer: "Rate at 20 °C = 12 ÷ 8 = 1.5 mm/min. Rate at 40 °C = 12 ÷ 5 = 2.4 mm/min. Increase = 2.4 − 1.5 = 0.9 mm/min, because warmer particles have more kinetic energy.",
+      },
+      {
+        question: "In an osmosis practical the percentage change in mass was +6% at 0.0 mol/dm³ sucrose, +2% at 0.2, −3% at 0.4 and −8% at 0.6. Estimate, to one decimal place, the concentration in mol/dm³ at which there would be no change in mass.",
+        accept: [
+          "0.3",
+        ],
+        answer: "The line crosses zero between 0.2 (+2%) and 0.4 (−3%) — a fall of 5% across 0.2 mol/dm³. Zero is 2/5 of the way along: 0.2 + 0.08 = 0.28, so about 0.3 mol/dm³. That concentration matches the cell contents.",
+      },
+      {
+        question: "Explain why active transport stops when a cell runs out of oxygen, but osmosis carries on.",
+        answer: "Active transport moves substances against the concentration gradient, which needs energy transferred by respiration — and without oxygen aerobic respiration stops, so the pumps have nothing to run on. Osmosis is passive: the water moves down its own gradient without the cell spending anything. That is why root hair cells in waterlogged soil stop taking up minerals long before they stop taking up water. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a single-celled amoeba needs no lungs or blood system, but a mouse does.",
+        answer: "The amoeba is tiny, so its surface area is enormous compared with its volume and every part of it is close to the outside — diffusion alone supplies oxygen fast enough. A mouse has a much smaller surface area to volume ratio and cells buried deep inside, so diffusion across its skin could never keep up. It therefore needs lungs to give a large thin exchange surface and a blood system to carry the oxygen the rest of the way. (Mark this one yourself.)",
+      },
+      {
+        question: "A plant cell is left in concentrated sugar solution. Explain what happens to it and what the cell wall does.",
+        answer: "The solution outside is more concentrated than the cytoplasm, so water leaves the cell by osmosis and the vacuole shrinks. The cell first goes flaccid and then plasmolysed, with the membrane pulling away from the wall. The wall itself is rigid and stays roughly where it is, which is why a plasmolysed plant cell keeps its shape instead of collapsing the way an animal cell would. (Mark this one yourself.)",
+      },
+      {
+        question: "In the potato osmosis practical, explain why each cylinder must be blotted dry before it is reweighed.",
+        answer: "Surface water left on a cylinder adds mass that has nothing to do with water moving into or out of the cells, so the percentage change would be too positive. Blotting removes it and makes the reading a measure of osmosis alone. Every cylinder must be blotted the same way, or the comparison between concentrations is not fair. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -889,6 +1115,116 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Are not rejected by the patient's immune system",
         ],
         answer: "The stem cells are genetically identical to the patient, so rejection is avoided. Ethical objections centre on the use of embryos.",
+      },
+      {
+        question: "Calculate how many cells there are after one cell has gone through four rounds of mitosis.",
+        accept: [
+          "16",
+        ],
+        answer: "Each round doubles the number: 1 → 2 → 4 → 8 → 16. So 2⁴ = 16 cells.",
+      },
+      {
+        question: "A bacterium divides every 20 minutes. Calculate how many bacteria there are after 2 hours, starting from a single cell.",
+        accept: [
+          "64",
+        ],
+        answer: "2 hours = 120 minutes, so 120 ÷ 20 = 6 divisions. 2⁶ = 64 bacteria.",
+      },
+      {
+        question: "A human body cell has 46 chromosomes. Work out how many chromosomes each daughter cell has after mitosis.",
+        accept: [
+          "46",
+        ],
+        answer: "Mitosis copies the DNA first and then gives each daughter cell a full set, so both have 46 — identical to the parent. Halving only happens in meiosis.",
+      },
+      {
+        question: "Onion root tips are used to see mitosis under a microscope. Name the region of the root where the dividing cells are found.",
+        accept: [
+          "meristem",
+          "the meristem",
+          "root tip meristem",
+          "meristem tissue",
+        ],
+        answer: "Plant stem cells sit in the meristem at the very tip of the root, so that is where cells are actively dividing and where the stages of mitosis are visible.",
+      },
+      {
+        question: "Which description matches the product of mitosis?",
+        choices: [
+          "Two genetically identical body cells",
+          "Four genetically different gametes",
+          "Two cells with half the usual number of chromosomes",
+          "Four genetically identical gametes",
+          "One cell with twice the usual number of chromosomes",
+        ],
+        accept: [
+          "two genetically identical body cells",
+        ],
+        answer: "Mitosis makes two cells, each with the full chromosome number and the same genes as the parent. The four-cell, half-chromosome answers describe meiosis.",
+      },
+      {
+        question: "A skin cell is replaced roughly every 28 days. Calculate how many times one line of skin cells divides in a year, to the nearest whole number.",
+        accept: [
+          "13",
+        ],
+        answer: "365 ÷ 28 = 13.04, so 13 divisions a year. Skin is one of the tissues replaced continuously by mitosis.",
+      },
+      {
+        question: "A root tip cell cycle lasts 24 hours. In a sample of 600 cells, 50 are visibly in mitosis. Calculate how long mitosis lasts, in minutes.",
+        accept: [
+          "120",
+        ],
+        answer: "The fraction in mitosis matches the fraction of the cycle it takes: 50 ÷ 600 = 1/12. The cycle is 24 × 60 = 1440 minutes, so mitosis = 1440 ÷ 12 = 120 minutes.",
+      },
+      {
+        question: "A healthy tissue sample has 18 dividing cells out of 240. A tumour sample has 45 out of 300. Calculate how many times greater the tumour's mitotic index is.",
+        accept: [
+          "2",
+          "2 times",
+          "twice",
+        ],
+        answer: "Healthy: 18 ÷ 240 × 100 = 7.5%. Tumour: 45 ÷ 300 × 100 = 15%. 15 ÷ 7.5 = 2, so the tumour cells are dividing twice as often.",
+      },
+      {
+        question: "A tumour of 2000 cells doubles every 5 days. Calculate the number of days before it first exceeds 100 000 cells.",
+        accept: [
+          "30",
+        ],
+        answer: "2000 × 2⁵ = 64 000, which is not enough; 2000 × 2⁶ = 128 000, which is. That is 6 doublings, so 6 × 5 = 30 days.",
+      },
+      {
+        question: "A cell spends 18 hours growing and copying its DNA, 1 hour in mitosis and 1 hour in cytokinesis. Calculate the percentage of the cell cycle NOT spent on growth and DNA replication.",
+        accept: [
+          "10",
+          "10%",
+        ],
+        answer: "Total cycle = 18 + 1 + 1 = 20 hours. Time outside the growth stage = 2 hours. 2 ÷ 20 × 100 = 10%, which is why most cells you look at are not visibly dividing.",
+      },
+      {
+        question: "Stem cells grown from a therapeutic clone carry the patient's own genes. Name the problem this avoids that a donor's cells would cause.",
+        accept: [
+          "rejection",
+          "immune rejection",
+          "being rejected",
+          "rejection by the immune system",
+          "tissue rejection",
+        ],
+        answer: "The immune system attacks cells whose surface proteins it does not recognise as the body's own. Clone cells carry the patient's genes, so they make the patient's own proteins and are not attacked — rejection is avoided, and there is no need for drugs to suppress the immune system.",
+      },
+      {
+        question: "Explain how uncontrolled mitosis leads to cancer, and why that is dangerous to the body.",
+        answer: "Mitosis is normally switched on only when a cell needs replacing, but changes to the genes controlling the cycle can leave it running continuously. The cells keep dividing and pile up into a tumour, which presses on nearby tissue and takes its blood supply. If cells break away and spread in the blood, tumours form elsewhere too, which is what makes cancer so hard to treat. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why embryonic stem cells are more medically useful than adult stem cells, and why many people object to using them.",
+        answer: "Embryonic stem cells can differentiate into almost any cell type, so they could in principle repair nerves, pancreas or muscle, while adult bone marrow cells mostly make blood cells and so treat a narrower range of conditions. The objection is that taking them destroys the embryo, which some people regard as destroying a potential human life. Others reply that the embryos are spare ones from fertility treatment that would be destroyed anyway, and a good exam answer gives both sides. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the two cells made by mitosis are genetically identical, referring to what happens before mitosis begins.",
+        answer: "In the long first stage of the cell cycle the cell copies every chromosome, so each one is two identical strands joined together. In mitosis those strands are pulled apart so that one copy of every chromosome goes to each end of the cell. Each daughter nucleus therefore gets one complete, identical set, which is why mitosis can grow and repair a body without changing it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a whole plant can be grown from a small cutting, but a whole human cannot be grown from a skin sample in the same way.",
+        answer: "Plants keep undifferentiated stem cells in their meristems all their lives, and many plant cells can differentiate again into any tissue, so a cutting can regrow roots, stem and leaves. Almost all human cells differentiate early and permanently, so a skin cell can only make more skin. To get cells that could build a whole human body you would need embryonic stem cells, which is why cloning a human is a completely different procedure. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -1180,6 +1516,117 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Benedict's turns from blue to brick red with reducing sugars. Iodine tests starch, Biuret tests protein, and ethanol tests lipids.",
       },
+      {
+        question: "Calculate the rate of an enzyme reaction, in cm³ of gas per minute, if 24 cm³ of gas is collected in 3 minutes.",
+        accept: [
+          "8",
+        ],
+        answer: "Rate = amount ÷ time = 24 ÷ 3 = 8 cm³ per minute.",
+      },
+      {
+        question: "Calculate the rate of an amylase reaction in arbitrary units, given that the starch disappears after 25 seconds and rate = 1000 ÷ time.",
+        accept: [
+          "40",
+        ],
+        answer: "1000 ÷ 25 = 40 arbitrary units. Using 1000 ÷ time turns a short time into a high rate, which is the point of the conversion.",
+      },
+      {
+        question: "An enzyme has an optimum of 40 °C. State what happens to its rate of reaction when the temperature is raised from 40 °C to 60 °C.",
+        accept: [
+          "it decreases",
+          "decreases",
+          "it falls",
+          "falls",
+          "it slows down",
+          "slows down",
+          "it stops",
+          "decreases to zero",
+          "goes down",
+        ],
+        answer: "Above the optimum the enzyme denatures — the active site changes shape and the substrate no longer fits — so the rate falls, eventually to zero. Raising the temperature does not always speed a reaction up.",
+      },
+      {
+        question: "A student wants to digest a protein meal in a test tube at body temperature. Which enzyme and pH should they choose to copy what the stomach does?",
+        choices: [
+          "Protease at pH 2",
+          "Amylase at pH 2",
+          "Lipase at pH 7",
+          "Protease at pH 12",
+          "Carbohydrase at pH 8",
+        ],
+        accept: [
+          "protease at pH 2",
+        ],
+        answer: "Protein is digested by protease, and the stomach's protease has an optimum of about pH 2. Amylase and carbohydrase work on starch, and lipase works on fats.",
+      },
+      {
+        question: "In the milk and lipase practical, an indicator changes colour as the pH falls. Name the class of product responsible for that fall.",
+        accept: [
+          "fatty acids",
+          "fatty acid",
+          "the fatty acids",
+        ],
+        answer: "Lipase breaks lipids into fatty acids and glycerol. The fatty acids are acidic, so the pH drops and the indicator changes — that colour change is the timer for the experiment.",
+      },
+      {
+        question: "Work out the difference between the optimum pH of stomach protease and the optimum pH of the enzymes in the small intestine.",
+        accept: [
+          "6",
+        ],
+        answer: "Stomach protease works best at about pH 2; small intestine enzymes at about pH 8. 8 − 2 = 6, and bridging that gap is exactly what alkaline bile is for.",
+      },
+      {
+        question: "In a starch-amylase experiment the time taken was 100 s at pH 5, 50 s at pH 6, 40 s at pH 7 and 80 s at pH 8. Using rate = 1000 ÷ time, calculate the rate at the optimum pH.",
+        accept: [
+          "25",
+        ],
+        answer: "The optimum is the pH with the shortest time, pH 7 at 40 s. Rate = 1000 ÷ 40 = 25 arbitrary units.",
+      },
+      {
+        question: "Bile splits one large fat droplet into 1000 identical smaller droplets. Calculate how many times greater the total surface area becomes.",
+        accept: [
+          "10",
+          "10 times",
+        ],
+        answer: "Each small droplet has 1/1000 of the volume, so its radius is 1/10 and its surface area is 1/100 of the original. Total area = 1000 × 1/100 = 10 times the original. More surface means lipase has far more places to attack.",
+      },
+      {
+        question: "A tube holds 2.0 g of protein. Protease digests 1.5 g of it in 10 minutes. Assuming the same percentage is digested in each 10-minute period, calculate the mass of protein left after 20 minutes, in grams.",
+        accept: [
+          "0.125",
+        ],
+        answer: "First 10 minutes: 1.5 ÷ 2.0 = 75% digested, leaving 0.5 g. Second 10 minutes: 75% of 0.5 g = 0.375 g digested, leaving 0.5 − 0.375 = 0.125 g.",
+      },
+      {
+        question: "A patient has their gall bladder removed and afterwards struggles to digest fatty meals. Name the enzyme whose rate of working falls as a result.",
+        accept: [
+          "lipase",
+        ],
+        answer: "The gall bladder stores bile, and bile emulsifies fat into small droplets with a large surface area. Without that store, less bile reaches the small intestine at the right moment, the fat stays in large droplets and lipase — the fat-digesting enzyme — works much more slowly.",
+      },
+      {
+        question: "An enzyme works at 2 cm³ per minute at 10 °C, and its rate doubles for every 10 °C rise up to its optimum of 40 °C. Calculate its rate at the optimum.",
+        accept: [
+          "16",
+        ],
+        answer: "10 → 20 °C: 4. 20 → 30 °C: 8. 30 → 40 °C: 16 cm³ per minute. Three doublings, so 2 × 2³ = 16. Past 40 °C this pattern would break down as the enzyme denatures.",
+      },
+      {
+        question: "Using the lock and key model, explain why amylase cannot digest protein.",
+        answer: "An enzyme's active site has a specific shape, and only a substrate with the matching shape can fit into it. Amylase's active site fits starch, so protein molecules cannot bind and no reaction is catalysed. That specificity is why the body needs a separate protease rather than one all-purpose digestive enzyme. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why chilling an enzyme slows it down reversibly, but overheating it does not.",
+        answer: "Cooling simply gives the particles less kinetic energy, so enzyme and substrate collide less often and with less energy — the enzyme itself is unchanged and warming it back up restores the rate. Overheating makes the enzyme molecule vibrate so much that the bonds holding its shape break, and the active site is permanently deformed. A denatured enzyme cannot bind its substrate again no matter how it is cooled. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the gut needs to be acidic in one place and alkaline in another.",
+        answer: "Different enzymes have different optimum pH values, and each works fastest only near its own. Stomach protease is adapted to about pH 2, which also helps kill bacteria in food, while the enzymes released into the small intestine work best around pH 8. Bile is alkaline and neutralises the stomach acid as food arrives, so each enzyme meets the conditions its active site needs. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why enzymes let the body carry out at 37 °C reactions that industry would need high temperatures and pressures for.",
+        answer: "A catalyst lowers the energy a reaction needs to get started, so it can proceed quickly under much milder conditions. Enzymes hold the substrate in an active site that brings it into exactly the right position, which is far more effective than simply making the particles collide harder. That is why a cell can break starch down in seconds at body temperature, while doing the same in a factory would take heat, acid and pressure. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -1466,6 +1913,117 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "The palisade mesophyll",
         ],
         answer: "Palisade cells sit near the top surface, packed with chloroplasts, so they catch the most light.",
+      },
+      {
+        question: "Calculate the rate of water uptake in a potometer, in mm per minute, if the air bubble moves 45 mm in 15 minutes.",
+        accept: [
+          "3",
+        ],
+        answer: "Rate = distance ÷ time = 45 ÷ 15 = 3 mm per minute.",
+      },
+      {
+        question: "Calculate the volume of water taken up, in mm³, when a potometer bubble moves 40 mm along a capillary tube of cross-sectional area 0.5 mm².",
+        accept: [
+          "20",
+        ],
+        answer: "Volume = area × distance = 0.5 × 40 = 20 mm³. Turning a distance into a volume is what makes potometer results comparable between different tubes.",
+      },
+      {
+        question: "The upper epidermis of a leaf is transparent. Which adaptation does that directly support?",
+        choices: [
+          "Letting light reach the palisade cells",
+          "Allowing gases to diffuse out of the leaf",
+          "Reducing water loss from the surface",
+          "Storing starch made in the day",
+          "Holding the leaf flat against the wind",
+        ],
+        accept: [
+          "letting light reach the palisade cells",
+        ],
+        answer: "The palisade mesophyll sits just below the upper epidermis and holds most of the chloroplasts, so light must pass through unobstructed. The waxy cuticle, not the transparency, is what cuts water loss.",
+      },
+      {
+        question: "A ring of bark containing the phloem is cut all the way round a tree trunk. Name the process that stops as a result.",
+        accept: [
+          "translocation",
+        ],
+        answer: "Phloem carries dissolved sugars from the leaves to the rest of the plant, so removing a ring of it cuts translocation below the ring. Xylem is deeper in the wood, so water still travels up and the leaves stay alive for a while.",
+      },
+      {
+        question: "On a hot dry afternoon the guard cells of a leaf lose water and become flaccid. State what happens to the stomata.",
+        accept: [
+          "they close",
+          "close",
+          "closes",
+          "it closes",
+          "they shut",
+          "shut",
+          "the stomata close",
+        ],
+        answer: "Turgid guard cells bow apart and hold the pore open; flaccid ones straighten and the pore shuts. Closing the stomata protects the plant from drying out.",
+      },
+      {
+        question: "Work out the percentage of a leaf's water loss that goes through the lower surface, if it loses 3.2 g through the lower surface and 0.8 g through the upper surface.",
+        accept: [
+          "80",
+          "80%",
+        ],
+        answer: "Total loss = 3.2 + 0.8 = 4.0 g. 3.2 ÷ 4.0 × 100 = 80%, which fits most stomata being on the underside.",
+      },
+      {
+        question: "A potometer bubble moves 30 mm in 10 minutes in still air, and 30 mm in 4 minutes with a fan on. Calculate the percentage increase in the rate of transpiration.",
+        accept: [
+          "150",
+          "150%",
+        ],
+        answer: "Still air: 30 ÷ 10 = 3 mm/min. With the fan: 30 ÷ 4 = 7.5 mm/min. Increase = 4.5 mm/min, so 4.5 ÷ 3 × 100 = 150%. Moving air sweeps away the humid layer, keeping the gradient steep.",
+      },
+      {
+        question: "A leaf has 250 stomata per mm² on its lower surface. Calculate the total number of stomata on the lower surface of a leaf measuring 40 mm by 20 mm.",
+        accept: [
+          "200000",
+          "200 000",
+          "2 x 10^5",
+        ],
+        answer: "Area = 40 × 20 = 800 mm². Total = 800 × 250 = 200 000 stomata — a huge combined area for gas exchange packed into one leaf.",
+      },
+      {
+        question: "Four identical leaves lose mass over 3 hours: untreated 1.20 g, Vaseline on the lower surface only 0.30 g, Vaseline on the upper surface only 1.05 g, Vaseline on both surfaces 0.15 g. Calculate the mass lost through the lower surface alone, in grams.",
+        accept: [
+          "0.9",
+          "0.90",
+        ],
+        answer: "Blocking the lower surface removes the lower-surface loss: 1.20 − 0.30 = 0.90 g. Checking it, the upper surface accounts for 1.20 − 1.05 = 0.15 g and the cuticle for the remaining 0.15 g, which adds back to 1.20 g.",
+      },
+      {
+        question: "A tree's roots cannot keep up with water loss on a hot day, so its guard cells go flaccid. Name the process inside the leaf that slows down as a direct consequence, other than transpiration.",
+        accept: [
+          "photosynthesis",
+        ],
+        answer: "Flaccid guard cells close the stomata, and the stomata are the way carbon dioxide gets into the leaf. With the supply of carbon dioxide cut off, photosynthesis slows — which is why a plant short of water also stops growing.",
+      },
+      {
+        question: "A tree with 400 m² of leaf area transpires 200 dm³ of water in a day. Calculate the water lost per square metre of leaf, in cm³.",
+        accept: [
+          "500",
+        ],
+        answer: "1 dm³ = 1000 cm³, so 200 dm³ = 200 000 cm³. 200 000 ÷ 400 = 500 cm³ per m² of leaf.",
+      },
+      {
+        question: "Explain why a potometer really measures water uptake rather than water loss, and why it is still accepted as a measure of transpiration.",
+        answer: "The bubble tracks water being drawn into the cut stem, not vapour leaving the leaves, and a small amount of that water is used in photosynthesis or held in the plant rather than transpired. But the great majority of water taken up is lost again as vapour, so uptake and transpiration are very nearly equal over a short experiment. The apparatus is therefore a good proxy, provided you say that is what it is. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how the structure of xylem suits carrying water, and how phloem differs because of the job it does.",
+        answer: "Xylem cells are dead, hollow and joined end to end into continuous tubes with no end walls, so water pulled up by transpiration meets almost no resistance, and lignin in their walls stops them collapsing. Phloem cells are alive, with sieve plates and companion cells, because moving sugars needs energy from respiration. That is also why phloem can move sugars both up and down the plant while xylem only ever carries water upwards. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why having most stomata on the underside of a leaf is an advantage.",
+        answer: "The underside is shaded and cooler than the upper surface, so the water vapour just outside the pore evaporates and disperses more slowly and the plant loses less water. It is also less exposed to wind, which would otherwise sweep away humid air and steepen the gradient. The leaf still gets the carbon dioxide it needs, because gases diffuse freely into the air spaces of the spongy mesophyll from below. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe the full journey of a water molecule from the soil to the air, naming the processes and tissues involved.",
+        answer: "Water enters a root hair cell by osmosis, because the soil solution is more dilute than the cell contents, and the root hair's long projection gives a large surface area for this. It then passes into the xylem and is pulled up the stem in a continuous column — the transpiration stream — as water evaporates at the top. In the leaf it evaporates from the mesophyll cell surfaces into the air spaces and diffuses out through the open stomata as water vapour. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -1781,6 +2339,111 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Air bubbles look like dark-edged circles and are easily mistaken for cells, which is exactly the error the technique prevents.",
       },
+      {
+        question: "Calculate the total magnification when a ×15 eyepiece lens is used with a ×40 objective lens.",
+        accept: [
+          "600",
+          "x600",
+        ],
+        answer: "Total magnification = eyepiece × objective = 15 × 40 = 600. It has no units, so it is written ×600.",
+      },
+      {
+        question: "Work out the real width of a cell in micrometres, given that its image is 45 mm wide at a magnification of ×1,500.",
+        accept: [
+          "30",
+        ],
+        answer: "Convert first: 45 mm = 45 000 µm. Real size = image ÷ magnification = 45 000 ÷ 1500 = 30 µm.",
+      },
+      {
+        question: "Calculate the width, in millimetres, of the image of a 50 µm cell drawn at ×200 magnification.",
+        accept: [
+          "10",
+        ],
+        answer: "Image = real × magnification = 50 × 200 = 10 000 µm. 10 000 ÷ 1000 = 10 mm.",
+      },
+      {
+        question: "Work out the length of a ribosome in nanometres, given that it measures 0.02 µm across.",
+        accept: [
+          "20",
+        ],
+        answer: "1 µm = 1000 nm, so 0.02 × 1000 = 20 nm. A ribosome is far below what a light microscope can resolve, which is why it took an electron microscope to find one.",
+      },
+      {
+        question: "A student needs to see whether a mitochondrion has internal folds. Which instrument should they use?",
+        choices: [
+          "An electron microscope",
+          "A light microscope at ×400",
+          "A light microscope at ×1,000",
+          "A hand lens",
+          "A potometer",
+        ],
+        accept: [
+          "an electron microscope",
+        ],
+        answer: "Internal folds are far too small for a light microscope to resolve, however much it magnifies. Only the electron microscope has the resolution to separate detail that fine.",
+      },
+      {
+        question: "A student measures how fast starch is digested at three temperatures, keeping the pH and the enzyme concentration the same throughout. Name the independent variable.",
+        accept: [
+          "temperature",
+          "the temperature",
+        ],
+        answer: "The independent variable is the one deliberately changed, which here is temperature. Time to digest the starch is the dependent variable, and pH and concentration are control variables.",
+      },
+      {
+        question: "A drawing of a cell is 55 mm wide and labelled ×2,200. A second drawing of the same cell is 30 mm wide. Calculate the magnification of the second drawing.",
+        accept: [
+          "1200",
+          "x1200",
+        ],
+        answer: "Real size = 55 ÷ 2200 = 0.025 mm. Second magnification = 30 ÷ 0.025 = 1200, so it is drawn at ×1200.",
+      },
+      {
+        question: "An electron micrograph carries a scale bar 20 mm long labelled 10 µm. A mitochondrion on the same image is 6 mm long. Calculate its real length in micrometres.",
+        accept: [
+          "3",
+        ],
+        answer: "The scale bar gives the magnification: 20 mm = 20 000 µm, so 20 000 ÷ 10 = ×2000. The mitochondrion is 6 mm = 6000 µm on the image, so real length = 6000 ÷ 2000 = 3 µm.",
+      },
+      {
+        question: "A light microscope can just separate points 0.2 µm apart; an electron microscope can separate points 0.2 nm apart. Calculate how many times better the electron microscope's resolution is.",
+        accept: [
+          "1000",
+          "1000 times",
+        ],
+        answer: "Put both in the same unit: 0.2 µm = 200 nm. 200 ÷ 0.2 = 1000 times better. That, not magnification, is why the electron microscope revealed sub-cellular structures.",
+      },
+      {
+        question: "At ×100 total magnification a field of view measures 1.8 mm across, and 12 cells fit end to end along it. Calculate the average length of one cell in micrometres.",
+        accept: [
+          "150",
+        ],
+        answer: "1.8 mm = 1800 µm. 1800 ÷ 12 = 150 µm per cell. Counting across a known field of view is how cell size is estimated without a graticule.",
+      },
+      {
+        question: "Five repeats of a timed reaction give 24, 26, 25, 48 and 25 seconds. Exclude the anomalous result and calculate the mean of the rest, in seconds.",
+        accept: [
+          "25",
+          "25.0",
+        ],
+        answer: "48 s is the anomaly — it is nowhere near the others. Mean of the remaining four = (24 + 26 + 25 + 25) ÷ 4 = 100 ÷ 4 = 25.0 s. Always say which result you excluded and why.",
+      },
+      {
+        question: "Explain why magnification is written with no units, but resolution is always quoted in nanometres or micrometres.",
+        answer: "Magnification is a ratio of two lengths — image size divided by real size — and the units cancel, leaving a pure number such as ×400. Resolution is an actual distance: the smallest gap between two points that can still be seen as two, so it has to be measured in a unit of length. Confusing the two is why students sometimes think a higher magnification must show more detail, when in fact detail is limited by resolution. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why an electron microscope cannot be used on living specimens, and what biologists lose because of that.",
+        answer: "The specimen has to be placed in a vacuum and is usually coated or sliced extremely thinly first, and the electron beam itself would destroy living tissue. So everything seen is dead and chemically treated, which means processes cannot be watched happening and there is always a risk that some of the structure is an artefact of the preparation. Light microscopes stay useful precisely because they can show a living cell moving and dividing. (Mark this one yourself.)",
+      },
+      {
+        question: "A set of repeated measurements is very close to one another but well away from the true value. Explain what this tells you about the method.",
+        answer: "Results close together are precise, but being far from the true value means they are not accurate, so the error is repeating itself rather than varying at random. That points to a systematic fault — a balance that was never zeroed, a ruler read from the wrong end, a stopwatch started late every time. Repeating the readings more often will not help; the method or the equipment has to be corrected. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why you start on the lowest power objective and always focus by moving the lens away from the slide.",
+        answer: "The lowest power gives the widest field of view, so the specimen is far easier to find before you magnify it. Focusing by moving the lens away means the lens travels in the safe direction: if you overshoot, nothing happens, whereas racking it towards the slide can crack the cover slip and scratch the objective. Once the specimen is centred and focused on low power, switching up keeps it roughly in view and only the fine focus is needed. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -2072,6 +2735,125 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Match the control to the transmission route — waterborne spread is stopped by sanitation, airborne by masks and distancing, and vector-borne by controlling the vector.",
       },
+      {
+        question: "A GP diagnoses a bacterial chest infection. Name the class of drug that will kill the pathogen inside the body.",
+        accept: [
+          "antibiotics",
+          "antibiotic",
+          "an antibiotic",
+        ],
+        answer: "Antibiotics kill bacteria without harming body cells. Painkillers would ease the symptoms but leave the bacteria multiplying.",
+      },
+      {
+        question: "A gardener finds black spots on rose leaves and the leaves then drop off. State the effect this has on the plant's rate of photosynthesis.",
+        accept: [
+          "it decreases",
+          "decreases",
+          "it falls",
+          "falls",
+          "reduces",
+          "it is reduced",
+          "goes down",
+          "it goes down",
+        ],
+        answer: "Rose black spot is a fungus. Damaged and fallen leaves mean less leaf surface holding chlorophyll, so less light is absorbed and photosynthesis falls — the plant grows poorly.",
+      },
+      {
+        question: "Calculate the percentage of a village of 2,000 people who are unvaccinated, if 1,840 have had the measles vaccine.",
+        accept: [
+          "8",
+          "8%",
+        ],
+        answer: "Unvaccinated = 2000 − 1840 = 160. 160 ÷ 2000 × 100 = 8%.",
+      },
+      {
+        question: "An untreated HIV patient develops repeated serious infections. Which type of cell has the virus destroyed?",
+        choices: [
+          "White blood cells",
+          "Red blood cells",
+          "Nerve cells",
+          "Liver cells",
+          "Platelets",
+        ],
+        accept: [
+          "white blood cells",
+        ],
+        answer: "HIV attacks white blood cells, which are the cells that carry out phagocytosis and make antibodies. Without them the body cannot fight off pathogens it would normally shrug off.",
+      },
+      {
+        question: "Salmonella bacteria make people ill by releasing substances that damage the gut lining. Name those substances.",
+        accept: [
+          "toxins",
+          "toxin",
+          "bacterial toxins",
+        ],
+        answer: "Bacteria damage tissue by producing toxins — that is why white blood cells make antitoxins as well as antibodies. Viruses cause damage differently, by bursting the cells they reproduce in.",
+      },
+      {
+        question: "Calculate how many Salmonella bacteria there would be after 4 hours, starting from one cell that divides every 30 minutes.",
+        accept: [
+          "256",
+        ],
+        answer: "4 hours = 240 minutes, so 240 ÷ 30 = 8 divisions. 2⁸ = 256 bacteria. Rapid division is why food left warm becomes dangerous so quickly.",
+      },
+      {
+        question: "Herd immunity for a disease needs 95% of a population vaccinated. In a school of 840 pupils, 756 have been vaccinated. Calculate how many more pupils must be vaccinated to reach the threshold.",
+        accept: [
+          "42",
+        ],
+        answer: "95% of 840 = 798 pupils needed. 798 − 756 = 42 more. Below the threshold the pathogen can still pass from person to person.",
+      },
+      {
+        question: "After a first vaccination, antibody concentration peaks at 8 arbitrary units on day 14. After a booster it peaks at 64 units on day 4. Calculate how many times greater the mean rate of antibody production is after the booster.",
+        accept: [
+          "28",
+          "28 times",
+        ],
+        answer: "First dose: 8 ÷ 14 = 0.571 units per day. Booster: 64 ÷ 4 = 16 units per day. 16 ÷ 0.571 = 28 times faster, because memory cells are already there and do not have to be made from scratch.",
+      },
+      {
+        question: "HIV gradually destroys the white blood cells that make antibodies. Name the stage of the infection reached when the immune system is so damaged that other infections become life-threatening.",
+        accept: [
+          "aids",
+        ],
+        answer: "Once the white blood cell count falls far enough the condition is called AIDS. The patient usually dies of an infection that a healthy immune system would clear, not of the virus directly — which is why antiretroviral drugs that keep the virus in check are so effective.",
+      },
+      {
+        question: "Mosquito nets, draining standing water and spraying insecticide all reduce malaria without any drug reaching the protist. State what all three measures target.",
+        accept: [
+          "the vector",
+          "vector",
+          "the mosquito",
+          "mosquitoes",
+          "the mosquito vector",
+          "the vectors",
+        ],
+        answer: "Malaria's protist can only reach a new person inside a mosquito, so the mosquito is the vector. Break the vector's life cycle — by stopping bites, removing breeding water or killing adults — and transmission stops even though the protist itself is untouched.",
+      },
+      {
+        question: "In a vaccine trial, 5 of 4,000 vaccinated people and 120 of 4,000 unvaccinated people caught the disease. Calculate the percentage reduction in cases produced by the vaccine, to one decimal place.",
+        accept: [
+          "95.8",
+          "95.83",
+        ],
+        answer: "Cases prevented = 120 − 5 = 115. 115 ÷ 120 × 100 = 95.8%. Comparing equal-sized groups is what makes the two figures directly comparable.",
+      },
+      {
+        question: "Explain why someone who has had measles once will almost certainly not catch it again.",
+        answer: "During the first infection white blood cells produce antibodies specific to the measles antigen, and memory cells are left behind afterwards. If the same virus enters again, those memory cells recognise the antigen immediately and produce a much larger quantity of antibody far faster. The virus is destroyed before it can reproduce enough to cause symptoms, so the person is immune. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how herd immunity protects a baby who is too young to be vaccinated.",
+        answer: "A pathogen spreads by passing from an infected person to a susceptible one, so it needs a chain of people who can catch it. When most of the population is vaccinated those chains keep running into people who are immune and break, and the pathogen dies out locally. The unvaccinated baby is protected not by their own immune system but because nobody nearby is carrying the disease to pass on. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between the body's non-specific defences and the immune response, and why both are needed.",
+        answer: "Non-specific defences — skin, mucus and cilia, stomach acid — act the same way against every pathogen and work immediately, keeping most microorganisms out before they ever get in. The immune response is specific: white blood cells recognise a particular antigen and make antibodies that fit only that pathogen, which takes days but is far more thorough. Barriers alone would eventually be breached and antibodies alone would always arrive too late, so the body needs both. (Mark this one yourself.)",
+      },
+      {
+        question: "Tobacco mosaic virus produces a mosaic of discoloured patches on the leaves of a crop. Explain how this reduces the farmer's yield.",
+        answer: "The discoloured patches contain little or no chlorophyll, so those areas of leaf cannot absorb light for photosynthesis. Less glucose is made across the whole plant, so there is less to convert into the starch, cellulose and protein the plant needs to grow. Smaller, slower-growing plants produce a smaller crop, and the virus spreads through the field by contact. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -2355,6 +3137,122 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "They are linked, but one does not necessarily cause the other",
         ],
         answer: "Correlation is not causation. Establishing cause needs a mechanism and controlled evidence, which is exactly what examiners probe.",
+      },
+      {
+        question: "Calculate the percentage of a group of 250 patients who smoke, if 90 of them do.",
+        accept: [
+          "36",
+          "36%",
+        ],
+        answer: "90 ÷ 250 × 100 = 36% of the group are smokers. Turning counts into percentages is what lets you compare groups of different sizes.",
+      },
+      {
+        question: "A scan shows a growth sitting inside a membrane in one place, with no sign of it invading nearby tissue. Name this type of tumour.",
+        accept: [
+          "benign",
+          "a benign tumour",
+          "benign tumour",
+          "benign tumor",
+        ],
+        answer: "Contained inside a membrane and not invading means benign. Benign tumours are usually only dangerous if they press on something important, such as inside the skull.",
+      },
+      {
+        question: "Cells from a patient's breast tumour are found growing in her liver. Name what the liver growth is called.",
+        accept: [
+          "secondary tumour",
+          "a secondary tumour",
+          "secondary tumor",
+          "secondary",
+          "secondaries",
+          "metastasis",
+        ],
+        answer: "Malignant cells break away and travel in the blood, then start dividing somewhere new. That new growth is a secondary tumour, and spreading like this is what makes malignant cancer so hard to treat.",
+      },
+      {
+        question: "Which change would most reduce a population's rate of Type 2 diabetes?",
+        choices: [
+          "Reducing obesity levels",
+          "Reducing alcohol consumption",
+          "Reducing exposure to UV light",
+          "Increasing vaccination rates",
+          "Reducing exposure to ionising radiation",
+        ],
+        accept: [
+          "reducing obesity levels",
+        ],
+        answer: "Obesity is the major risk factor for Type 2 diabetes. Alcohol mainly damages the liver and brain, UV and ionising radiation raise cancer risk, and vaccines only affect communicable disease.",
+      },
+      {
+        question: "Work out the annual cost to a health service of treating 40,000 patients at £12,500 each. Give your answer in pounds.",
+        accept: [
+          "500000000",
+          "500 000 000",
+          "500 million",
+          "500m",
+        ],
+        answer: "40 000 × 12 500 = £500 000 000, or £500 million a year. Figures like this are why prevention campaigns are funded at all.",
+      },
+      {
+        question: "UV light from sunbeds is a carcinogen. Name the type of cancer whose risk it raises most.",
+        accept: [
+          "skin cancer",
+          "skin",
+          "melanoma",
+        ],
+        answer: "UV damages the DNA of skin cells, and those changes can lead to uncontrolled division. Skin cancer is the result, which is why sunbed use in teenagers is such a concern.",
+      },
+      {
+        question: "In a study, 30 of 500 smokers and 2 of 500 non-smokers developed lung cancer. Calculate how many times more likely a smoker was to develop it.",
+        accept: [
+          "15",
+          "15 times",
+        ],
+        answer: "Smokers: 30 ÷ 500 = 6%. Non-smokers: 2 ÷ 500 = 0.4%. 6 ÷ 0.4 = 15 times more likely. Comparing rates rather than raw counts is what makes the two groups comparable.",
+      },
+      {
+        question: "A country spends £900 million a year treating smoking-related illness. A £60 million campaign cuts smoking by 5%. Calculate the annual saving in treatment cost, in £ million.",
+        accept: [
+          "45",
+        ],
+        answer: "5% of £900 million = £45 million saved. That is less than the £60 million spent, so in its first year the campaign does not pay for itself — but the saving repeats every year afterwards while the cost was one-off, so over time it does.",
+      },
+      {
+        question: "Lung cancer deaths in men fell from 110 per 100,000 in 1975 to 38 per 100,000 in 2015. Calculate the mean decrease per decade, in deaths per 100,000.",
+        accept: [
+          "18",
+        ],
+        answer: "Total fall = 110 − 38 = 72 per 100 000, over 40 years, which is 4 decades. 72 ÷ 4 = 18 per decade. The fall follows the decline in smoking, with a lag of two or three decades because cancer takes years to develop.",
+      },
+      {
+        question: "BMI = mass ÷ height². A person 1.6 m tall weighing 96 kg loses 16 kg. Calculate their new BMI.",
+        accept: [
+          "31.25",
+        ],
+        answer: "New mass = 96 − 16 = 80 kg. Height² = 1.6 × 1.6 = 2.56. BMI = 80 ÷ 2.56 = 31.25 — still in the obese range, so the risk of Type 2 diabetes has fallen but not gone.",
+      },
+      {
+        question: "Study A follows 40 people for 1 year. Study B follows 20,000 people for 15 years. Calculate the number of person-years covered by Study B.",
+        accept: [
+          "300000",
+          "300 000",
+        ],
+        answer: "20 000 × 15 = 300 000 person-years, against 40 for Study A. A conclusion drawn from Study B is far more trustworthy: a big sample followed for long enough to let slow diseases actually appear.",
+      },
+      {
+        question: "Explain why obesity raises the risk of Type 2 diabetes, and why losing weight can improve the condition.",
+        answer: "In Type 2 diabetes the body still makes insulin but the cells stop responding to it properly, so glucose is not taken out of the blood and blood glucose stays dangerously high. Carrying a lot of excess fat makes cells less responsive to insulin, which is why obesity is the main risk factor. Losing weight and exercising make the cells respond to insulin again, so for many people the condition improves or is controlled without drugs. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what makes a malignant tumour more dangerous than a benign one.",
+        answer: "A benign tumour stays in one place inside a membrane, so it can often be removed cleanly and only causes harm by pressing on surrounding tissue. Malignant cells invade the tissue around them and break away into the bloodstream, where they travel and start secondary tumours in other organs. Once a cancer has spread there is no single lump to cut out, so treatment has to reach the whole body and is much less likely to succeed. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why preventing non-communicable disease is usually cheaper for a country than treating it.",
+        answer: "Treatment means years of drugs, hospital beds, surgery and specialist staff for each individual patient, and many non-communicable diseases are lifelong. Prevention — a tax, a health campaign, a screening programme — is paid for once and reaches the whole population at a tiny cost per person. There is also the cost of working days lost, which prevention avoids entirely because people stay well rather than recovering. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why non-communicable diseases tend to be commoner in poorer communities, and why governments treat that as a problem.",
+        answer: "Risk factors cluster with poverty: smoking rates are higher, fresh food is more expensive than energy-dense processed food, housing and air quality are worse, and there is less time and space for exercise. Access to early diagnosis and treatment is often poorer too, so the same disease is caught later and does more damage. The result is a large, predictable difference in healthy life expectancy between rich and poor areas, which is why public health policy targets deprived areas specifically. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -2686,6 +3584,125 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Light intensity follows an inverse square law: intensity is proportional to 1 divided by distance squared, so double the distance means a quarter the intensity.",
       },
+      {
+        question: "Calculate the rate of oxygen production in cm³ per hour for pondweed that makes 4.5 cm³ of oxygen in 15 minutes.",
+        accept: [
+          "18",
+        ],
+        answer: "15 minutes is a quarter of an hour, so multiply by 4: 4.5 × 4 = 18 cm³ per hour.",
+      },
+      {
+        question: "A leaf kept in the dark for two days is tested with iodine and stays orange-brown. State what this shows about the leaf.",
+        accept: [
+          "no starch",
+          "there is no starch",
+          "no starch is present",
+          "starch is absent",
+          "it has no starch",
+          "it contains no starch",
+        ],
+        answer: "Iodine turns blue-black only where starch is present. Staying orange-brown shows the leaf has no starch, because without light it could not photosynthesise and its stores have been used up.",
+      },
+      {
+        question: "A greenhouse already has bright lighting and plenty of carbon dioxide, but is kept at 10 °C. Which change would increase the rate of photosynthesis most?",
+        choices: [
+          "Raising the temperature",
+          "Adding more lamps",
+          "Adding more carbon dioxide",
+          "Watering the soil more often",
+          "Increasing the humidity",
+        ],
+        accept: [
+          "raising the temperature",
+        ],
+        answer: "Light and carbon dioxide are already plentiful, so neither is limiting and adding more of either changes nothing. At 10 °C the enzymes are working slowly, so temperature is the limiting factor.",
+      },
+      {
+        question: "Using the balanced symbol equation for photosynthesis, work out how many oxygen molecules are released for every glucose molecule made.",
+        accept: [
+          "6",
+        ],
+        answer: "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂, so one glucose molecule comes with 6 molecules of oxygen.",
+      },
+      {
+        question: "A sunflower seed stores oils rather than starch. Name the substance made by photosynthesis that the plant converted into those oils.",
+        accept: [
+          "glucose",
+        ],
+        answer: "Photosynthesis makes only glucose. Everything else — starch, cellulose, amino acids, oils — is built from it afterwards, and oils are chosen for seeds because they store the most energy per gram.",
+      },
+      {
+        question: "A grower's paraffin heater costs £4,000 a year to run and raises the value of the crop by £3,200 a year. State whether the grower should keep using it.",
+        accept: [
+          "no",
+          "no they should not",
+          "it is not worth it",
+          "not worth it",
+          "no it is not worth it",
+        ],
+        answer: "The heater loses £800 a year. Raising a limiting factor only pays if the extra yield is worth more than the fuel, which is why growers do the sums rather than simply maximising every factor.",
+      },
+      {
+        question: "Higher tier: a lamp 10 cm from pondweed gives a relative light intensity of 1.00 arbitrary units. Using intensity ∝ 1 ÷ d², calculate the relative intensity at 25 cm.",
+        accept: [
+          "0.16",
+        ],
+        answer: "Intensity ∝ 1 ÷ d², so the ratio is (10 ÷ 25)² = 0.4² = 0.16. Moving the lamp 2.5 times further away leaves only 16% of the light, not 40%.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: using intensity = 1 ÷ d², calculate how many times greater the light intensity on pondweed is at 5 cm than at 20 cm from the lamp.",
+        accept: [
+          "16",
+          "16 times",
+        ],
+        answer: "At 20 cm: 1 ÷ 400 = 0.0025. At 5 cm: 1 ÷ 25 = 0.04. 0.04 ÷ 0.0025 = 16 times greater — the same as (20 ÷ 5)², because intensity depends on the square of the distance.",
+        higherOnly: true,
+      },
+      {
+        question: "Pondweed produces 24 bubbles per minute at 15 °C, 42 at 25 °C and only 9 at 45 °C. Calculate the percentage decrease in rate between 25 °C and 45 °C, to one decimal place.",
+        accept: [
+          "78.6",
+          "78.57",
+        ],
+        answer: "Decrease = 42 − 9 = 33. 33 ÷ 42 × 100 = 78.6%. The rate falls rather than levelling off because above the optimum the photosynthesis enzymes denature.",
+      },
+      {
+        question: "Higher tier: with carbon dioxide at 0.04% the rate levels off at 30 units as light is increased; at 0.10% it levels off at 55 units. Name the factor limiting the rate on the plateau of the lower curve.",
+        accept: [
+          "carbon dioxide",
+          "carbon dioxide concentration",
+          "co2",
+          "co2 concentration",
+          "the carbon dioxide concentration",
+        ],
+        answer: "Once a curve is flat, light is no longer limiting — more of it changes nothing. The only difference between the two experiments is the carbon dioxide, and the curve with more of it plateaus higher, so carbon dioxide concentration is what caps the lower curve.",
+        higherOnly: true,
+      },
+      {
+        question: "In bright light a plant photosynthesises at 12 arbitrary units and respires at 4 arbitrary units at the same time. Calculate the net rate at which it releases oxygen.",
+        accept: [
+          "8",
+        ],
+        answer: "Respiration uses oxygen while photosynthesis makes it, so the plant only releases the difference: 12 − 4 = 8 units. At the compensation point the two are equal and no oxygen leaves the plant at all.",
+      },
+      {
+        question: "Higher tier: explain why a grower who adds extra lamps to a greenhouse may see no increase in growth at all.",
+        answer: "Only one factor limits the rate at any moment — the one in shortest supply relative to what the plant could use. If carbon dioxide or temperature is already the limiting factor, the plant cannot use any extra light, so the rate stays exactly where it was. The money spent on lamps and electricity is wasted until the factor that is actually limiting is raised as well. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why a plant converts glucose into starch for storage instead of simply keeping the glucose.",
+        answer: "Glucose is soluble, so storing it in quantity would make the cell contents far more concentrated and water would flood in by osmosis, swelling the cell. Starch is insoluble, so it has no effect on the water potential of the cell and can be stored in bulk safely. It is also compact and can be broken back down to glucose whenever the plant needs it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a plant must be destarched in the dark for two days before a starch test is used to investigate photosynthesis.",
+        answer: "Leaves already contain starch made on previous days, so a positive iodine test at the start would tell you nothing about the conditions being tested. Two days in the dark stops photosynthesis while respiration continues, so the existing store is used up and every leaf begins from no starch. Any starch found afterwards must therefore have been made during the experiment. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why photosynthesis is endothermic and respiration is exothermic, in terms of energy transfer.",
+        answer: "Photosynthesis takes in energy from light and stores it in the chemical bonds of glucose, so energy moves from the surroundings into the products — that is what endothermic means. Respiration breaks those bonds again and transfers the stored energy out to the cell and its surroundings, which is exothermic. The two are chemically the reverse of one another, which is why their energy changes run in opposite directions. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -2971,6 +3988,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Much less energy per glucose molecule",
         ],
         answer: "Anaerobic respiration is faster to start but incomplete, so it releases far less energy and cannot be sustained.",
+      },
+      {
+        question: "Calculate a person's breathing rate in breaths per minute if they take 84 breaths in 3 minutes.",
+        accept: [
+          "28",
+        ],
+        answer: "84 ÷ 3 = 28 breaths per minute — roughly what you would expect part-way through exercise, against about 12 at rest.",
+      },
+      {
+        question: "Using the balanced symbol equation for aerobic respiration, work out how many oxygen molecules are used for every glucose molecule.",
+        accept: [
+          "6",
+        ],
+        answer: "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O, so 6 oxygen molecules are used and 6 carbon dioxide molecules are made per glucose.",
+      },
+      {
+        question: "Bread dough rises because yeast releases a gas as it respires without oxygen. Name the gas.",
+        accept: [
+          "carbon dioxide",
+          "co2",
+        ],
+        answer: "Anaerobic respiration in yeast is fermentation: glucose → ethanol + carbon dioxide. The carbon dioxide bubbles are trapped in the dough and make it rise; the ethanol evaporates during baking.",
+      },
+      {
+        question: "Which process supplies the energy a plant uses to build amino acids from nitrates at night?",
+        choices: [
+          "Aerobic respiration",
+          "Photosynthesis",
+          "Transpiration",
+          "Translocation",
+          "Fermentation",
+        ],
+        accept: [
+          "aerobic respiration",
+        ],
+        answer: "Plants respire day and night. Photosynthesis needs light and so stops at night, but respiration in the mitochondria keeps supplying energy for building larger molecules.",
+      },
+      {
+        question: "Calculate the volume of carbon dioxide produced in 5 minutes by yeast releasing 4.2 cm³ per minute.",
+        accept: [
+          "21",
+        ],
+        answer: "4.2 × 5 = 21 cm³. Measuring gas volume over time is the standard way to follow the rate of fermentation.",
+      },
+      {
+        question: "Work out the energy released, in kJ, when 4 g of glucose is respired, given that 1 g releases about 16 kJ.",
+        accept: [
+          "64",
+        ],
+        answer: "4 × 16 = 64 kJ. That is the aerobic figure — respiring the same glucose anaerobically would release only a fraction of it.",
+      },
+      {
+        question: "At rest a person takes 12 breaths a minute of 0.5 dm³ each. Exercising, they take 30 breaths a minute of 2.5 dm³. Calculate how many times greater the volume of air breathed per minute becomes.",
+        accept: [
+          "12.5",
+          "12.5 times",
+        ],
+        answer: "At rest: 12 × 0.5 = 6 dm³ per minute. Exercising: 30 × 2.5 = 75 dm³ per minute. 75 ÷ 6 = 12.5 times greater — rate and depth both rise, and their effects multiply.",
+      },
+      {
+        question: "A muscle respiring aerobically uses 0.9 g of glucose a minute. Anaerobic respiration releases only one twentieth as much energy per gram. Calculate the mass of glucose, in grams, the muscle would need anaerobically to release the same energy in a minute.",
+        accept: [
+          "18",
+        ],
+        answer: "Getting one twentieth of the energy per gram means needing twenty times the glucose: 0.9 × 20 = 18 g a minute. Glucose is only partly broken down without oxygen, which is why a sprint cannot be kept up for long.",
+      },
+      {
+        question: "After a sprint, a runner's oxygen uptake is 1.2 dm³ per minute for 6 minutes, against a resting rate of 0.8 dm³ per minute. Calculate the oxygen debt in dm³.",
+        accept: [
+          "2.4",
+        ],
+        answer: "Extra oxygen per minute = 1.2 − 0.8 = 0.4 dm³. Over 6 minutes that is 0.4 × 6 = 2.4 dm³. This is the oxygen needed to break down the lactic acid that built up.",
+      },
+      {
+        question: "A poison destroys the mitochondria in a muscle cell. Name the type of respiration the cell can still carry out.",
+        accept: [
+          "anaerobic respiration",
+          "anaerobic",
+          "anaerobically",
+        ],
+        answer: "Aerobic respiration happens in the mitochondria, so it stops completely. Anaerobic respiration takes place in the cytoplasm, so the cell can still make lactic acid from glucose — but at a fraction of the energy yield, so it cannot survive long.",
+      },
+      {
+        question: "Fermenting 180 g of glucose produces 88 g of carbon dioxide. Calculate the mass of glucose, in grams, used by yeast that has produced 44 g of carbon dioxide.",
+        accept: [
+          "90",
+        ],
+        answer: "44 g is half of 88 g, so half as much glucose was used: 180 ÷ 2 = 90 g. The ratio holds because the equation fixes two carbon dioxide molecules per glucose molecule.",
+      },
+      {
+        question: "Explain why anaerobic respiration is useful during a sprint, even though it releases far less energy per glucose molecule.",
+        answer: "During a sprint the heart and lungs cannot deliver oxygen to the leg muscles fast enough for aerobic respiration to keep up with demand. Anaerobic respiration needs no oxygen at all, so it can supply energy immediately and keep the muscles contracting. The cost is that much less energy is released per gram of glucose and lactic acid builds up, causing fatigue — so it buys speed for a short time, not endurance. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a trained athlete recovers from a hard sprint faster than an untrained person.",
+        answer: "Recovery means repaying the oxygen debt: getting enough oxygen to the liver to convert the accumulated lactic acid back into glucose. A trained athlete has a larger, stronger heart and greater lung capacity, so they deliver more oxygen per minute and clear the lactic acid sooner. They also respire aerobically for longer before switching to anaerobic respiration, so less lactic acid builds up in the first place. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between respiration and breathing, and why treating them as the same thing loses marks.",
+        answer: "Breathing, or ventilation, is a physical movement of the ribs and diaphragm that draws air in and pushes it out of the lungs. Respiration is a chemical reaction inside every living cell that releases energy from glucose, and it happens continuously whether or not the organism has lungs. Writing that a plant 'breathes' or that respiration happens in the lungs contradicts the definition, so an examiner cannot award the mark even if the rest of the answer is right. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a plant needs to respire at all, given that photosynthesis already makes glucose.",
+        answer: "Photosynthesis stores energy in glucose, but a plant cannot use glucose directly — the energy has to be released again, and respiration is the only process that does that. It needs the released energy to build starch, cellulose and proteins, to take up minerals by active transport and to keep its cells working, day and night. So a plant does both: photosynthesis only in the light, respiration all the time. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -3261,6 +4382,125 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Cerebellum for balance and coordination, cerebral cortex for consciousness and memory, medulla for unconscious activities such as heart rate.",
       },
+      {
+        question: "In the ruler drop test, name the receptor organ that detects the ruler beginning to fall.",
+        accept: [
+          "the eye",
+          "eye",
+          "eyes",
+          "the eyes",
+        ],
+        answer: "The stimulus is a change in what you can see, so the receptors are the light receptors in the eye. From there the pathway runs eye → sensory neurone → CNS → motor neurone → hand muscles.",
+      },
+      {
+        question: "A person touches a hot pan and snatches their hand away before they feel any pain. Name the type of response.",
+        accept: [
+          "reflex",
+          "a reflex",
+          "reflex action",
+          "a reflex action",
+          "reflex arc",
+        ],
+        answer: "The hand moves before the brain has processed the sensation, which is the giveaway: the pathway went through the spinal cord only. That is a reflex action, and it is fast precisely because the conscious brain is bypassed.",
+      },
+      {
+        question: "In the pathway for pulling your hand away from something hot, name the effector.",
+        accept: [
+          "muscle",
+          "a muscle",
+          "muscles",
+          "arm muscle",
+          "the biceps",
+          "biceps",
+          "arm muscles",
+        ],
+        answer: "The effector is whatever carries out the response — here the muscle in the arm that contracts to pull the hand back. Effectors are always muscles or glands.",
+      },
+      {
+        question: "A drug blocks the receptor molecules that neurotransmitters bind to on the far side of a synapse. What is the effect?",
+        choices: [
+          "The impulse cannot pass to the next neurone",
+          "The impulse travels faster along the axon",
+          "The relay neurone is bypassed",
+          "The receptor detects a stronger stimulus",
+          "The effector contracts more strongly",
+        ],
+        accept: [
+          "the impulse cannot pass to the next neurone",
+        ],
+        answer: "The chemical still crosses the gap by diffusion, but with nothing to bind to it cannot trigger a new electrical impulse in the next neurone. The signal stops at that synapse.",
+      },
+      {
+        question: "Calculate the speed of a nerve impulse in metres per second if it travels 1.2 m in 0.02 s.",
+        accept: [
+          "60",
+        ],
+        answer: "Speed = distance ÷ time = 1.2 ÷ 0.02 = 60 m/s.",
+      },
+      {
+        question: "In a spinal reflex, name the part of the central nervous system where the relay neurone is found.",
+        accept: [
+          "spinal cord",
+          "the spinal cord",
+        ],
+        answer: "The relay neurone sits in the spinal cord, connecting the sensory neurone straight to the motor neurone. Because the impulse never has to reach the brain, the response is much quicker.",
+      },
+      {
+        question: "A ruler falls 12.2 cm before being caught. Using t = √(2s ÷ g) with g = 9.8 m/s², calculate the reaction time in seconds to two decimal places.",
+        accept: [
+          "0.16",
+        ],
+        answer: "Convert first: 12.2 cm = 0.122 m. 2s ÷ g = 0.244 ÷ 9.8 = 0.0249. √0.0249 = 0.158, so 0.16 s to two decimal places.",
+      },
+      {
+        question: "A caffeine group has a mean reaction time of 0.19 s and the control group 0.25 s. Calculate the percentage decrease in reaction time.",
+        accept: [
+          "24",
+          "24%",
+        ],
+        answer: "Decrease = 0.25 − 0.19 = 0.06 s. 0.06 ÷ 0.25 × 100 = 24%. The control group is the baseline, so it goes on the bottom of the fraction.",
+      },
+      {
+        question: "Each synapse adds a 0.5 ms delay. A conscious response crosses 12 synapses and the impulses themselves take 14 ms to travel. Calculate the total time for the response, in milliseconds.",
+        accept: [
+          "20",
+        ],
+        answer: "Synapse delay = 12 × 0.5 = 6 ms. Total = 14 + 6 = 20 ms. A reflex crossing only two or three synapses saves most of that delay, which is why it is faster.",
+      },
+      {
+        question: "A patient's spinal cord is cut high in the neck. A pin pricks their foot: they feel nothing at all, but the leg still jerks away. Name the intact pathway that produces the jerk.",
+        accept: [
+          "the reflex arc",
+          "reflex arc",
+          "the spinal reflex arc",
+          "spinal reflex arc",
+          "a reflex arc",
+        ],
+        answer: "Feeling the pin needs impulses to reach the brain, and the cut in the neck stops that, so there is no sensation. The reflex arc runs receptor → sensory neurone → relay neurone in the lower spinal cord → motor neurone → muscle, none of which crosses the cut, so the withdrawal still happens.",
+      },
+      {
+        question: "Five reaction times are recorded: 0.22, 0.24, 0.23, 0.55 and 0.19 s. Exclude the anomalous result and calculate the mean of the rest, in seconds.",
+        accept: [
+          "0.22",
+        ],
+        answer: "0.55 s is far outside the others and is the anomaly — the student was probably distracted. Mean of the remaining four = (0.22 + 0.24 + 0.23 + 0.19) ÷ 4 = 0.88 ÷ 4 = 0.22 s. Always state which value you excluded.",
+      },
+      {
+        question: "Explain why a synapse slows a signal down, and why the nervous system has synapses at all.",
+        answer: "The electrical impulse cannot jump the gap, so the neurone releases a chemical neurotransmitter that has to diffuse across before triggering a new impulse, and diffusion takes time. The pay-off is control: because each junction is chemical, one neurone can connect to many others, signals can be routed or blocked, and pathways can be strengthened by learning. A single continuous wire would be faster but could not do any of that. (Mark this one yourself.)",
+      },
+      {
+        question: "A student investigates whether caffeine shortens reaction time. Explain two control variables they must keep the same and why each matters.",
+        answer: "The same hand and the same starting position for the ruler must be used, because a different hand or a bigger initial gap changes the distance fallen for reasons that have nothing to do with caffeine. The person dropping the ruler must give no warning and use the same pattern, or the subject can anticipate the drop and appear to react faster than they really do. Tiredness and practice also change reaction time, so testing at the same time of day and allowing practice attempts first stops them masking the effect being measured. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how the ruler drop test turns a distance into a reaction time, and give one reason the result may be inaccurate.",
+        answer: "The ruler is in free fall, so the distance it drops before being caught depends only on how long it has been falling, and the equation t = √(2s ÷ g) converts that distance into a time. It is inaccurate because the measurement is taken where the thumb lands, and a hand that closes slowly or grips low adds distance that is not reaction time. Repeating and taking a mean reduces random error but cannot remove a systematic one such as always gripping late. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between a receptor and an effector, using the pupil reflex as your example.",
+        answer: "A receptor detects a stimulus, and in the pupil reflex those are the light receptors in the retina picking up a sudden increase in brightness. An effector carries out the response, and here they are the circular and radial muscles of the iris, which contract to make the pupil smaller. Between the two sit the sensory neurone, the CNS and the motor neurone, so receptor and effector are the two ends of the pathway rather than two names for the same thing. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -3547,6 +4787,140 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "The pancreas does not produce enough insulin",
         ],
         answer: "Type 1 is usually treated with insulin injections. Type 2 is where cells stop responding properly to insulin, and is often managed by diet and exercise.",
+      },
+      {
+        question: "A person's blood glucose falls to 3.2 mmol/dm³ four hours after eating. Name the organ that converts its stored glycogen back into glucose.",
+        accept: [
+          "liver",
+          "the liver",
+        ],
+        answer: "Low blood glucose makes the pancreas release glucagon, and glucagon acts on the liver. The liver breaks its glycogen store down into glucose and releases it into the blood.",
+      },
+      {
+        question: "Calculate the mass of glucose, in grams, in 5 dm³ of blood at a concentration of 1.0 g per dm³.",
+        accept: [
+          "5",
+        ],
+        answer: "Mass = concentration × volume = 1.0 × 5 = 5 g. That is roughly a teaspoon of sugar dissolved in the whole of an adult's blood, which is why the level has to be controlled so tightly.",
+      },
+      {
+        question: "A person with Type 1 diabetes needs 1 unit of insulin for every 10 g of carbohydrate. Work out the dose in units for a meal containing 60 g of carbohydrate.",
+        accept: [
+          "6",
+        ],
+        answer: "60 ÷ 10 = 6 units. Matching the dose to the meal is what keeps blood glucose from spiking, because the pancreas cannot do it for them.",
+      },
+      {
+        question: "Which statement correctly matches a gland to a hormone it releases?",
+        choices: [
+          "The thyroid releases thyroxine",
+          "The pancreas releases adrenaline",
+          "The ovaries release testosterone",
+          "The adrenal glands release insulin",
+          "The pituitary releases oestrogen",
+        ],
+        accept: [
+          "the thyroid releases thyroxine",
+        ],
+        answer: "Thyroxine comes from the thyroid and sets the metabolic rate. Adrenaline is adrenal, insulin is pancreatic, testosterone comes from the testes and oestrogen from the ovaries.",
+      },
+      {
+        question: "A person is badly frightened. Name the gland that releases the hormone preparing them for fight or flight.",
+        accept: [
+          "adrenal gland",
+          "adrenal glands",
+          "the adrenal glands",
+          "the adrenal gland",
+          "adrenals",
+        ],
+        answer: "The adrenal glands, sitting on top of the kidneys, release adrenaline. It raises heart rate and breathing rate so more oxygen and glucose reach the muscles.",
+      },
+      {
+        question: "Thyroxine sets the basal metabolic rate. State what happens to a person's metabolic rate if their thyroid gland produces too little of it.",
+        accept: [
+          "it decreases",
+          "decreases",
+          "it falls",
+          "falls",
+          "goes down",
+          "it slows down",
+          "slows down",
+          "it is lower",
+          "lower",
+        ],
+        answer: "Less thyroxine means a lower basal metabolic rate, so chemical reactions across the body run more slowly. That is why an underactive thyroid causes tiredness, weight gain and feeling cold.",
+      },
+      {
+        question: "Blood glucose is 4.5 mmol/dm³ before a meal and peaks at 7.2 mmol/dm³ thirty minutes later. Calculate the mean rate of increase, in mmol/dm³ per minute.",
+        accept: [
+          "0.09",
+          "0.090",
+        ],
+        answer: "Rise = 7.2 − 4.5 = 2.7 mmol/dm³ over 30 minutes. 2.7 ÷ 30 = 0.09 mmol/dm³ per minute. The pancreas detects that rise and releases insulin to bring it back down.",
+      },
+      {
+        question: "A Type 1 diabetic's blood glucose is 18 mmol/dm³ and the target is 6 mmol/dm³. One unit of insulin lowers it by 2.5 mmol/dm³. Calculate the number of units needed.",
+        accept: [
+          "4.8",
+        ],
+        answer: "The fall needed is 18 − 6 = 12 mmol/dm³. 12 ÷ 2.5 = 4.8 units. Too much insulin would take the level below normal, which is dangerous in its own right.",
+      },
+      {
+        question: "Higher tier: a patient's blood thyroxine concentration falls below normal. State what happens to the amount of TSH released by the pituitary gland.",
+        accept: [
+          "it increases",
+          "increases",
+          "it rises",
+          "rises",
+          "goes up",
+          "it goes up",
+          "increased",
+          "more is released",
+        ],
+        answer: "Negative feedback reverses the change. Low thyroxine removes the inhibition on the pituitary, so it releases more TSH, which stimulates the thyroid to make more thyroxine until the level is back to normal.",
+        higherOnly: true,
+      },
+      {
+        question: "Higher tier: a tumour makes a patient's thyroid release thyroxine continuously, whatever the pituitary does. Predict what happens to their blood TSH concentration.",
+        accept: [
+          "it falls",
+          "falls",
+          "it decreases",
+          "decreases",
+          "it drops",
+          "drops",
+          "goes down",
+          "it goes down",
+          "very low",
+          "low",
+        ],
+        answer: "Thyroxine is high, so the negative feedback loop inhibits the pituitary and TSH release is switched down. The loop cannot fix the problem because the thyroid is no longer listening to TSH, so thyroxine stays high while TSH stays very low — which is exactly the pattern a blood test would show.",
+        higherOnly: true,
+      },
+      {
+        question: "Adrenaline raises heart rate from 70 to 140 beats per minute and stroke volume from 70 cm³ to 105 cm³. Calculate how many times greater the cardiac output becomes.",
+        accept: [
+          "3",
+          "3 times",
+        ],
+        answer: "Cardiac output = heart rate × stroke volume. At rest: 70 × 70 = 4900 cm³ per minute. With adrenaline: 140 × 105 = 14 700 cm³ per minute. 14 700 ÷ 4900 = 3 times greater, which is how the muscles get the extra oxygen and glucose.",
+      },
+      {
+        question: "Explain why insulin has to be injected rather than taken as a tablet.",
+        answer: "Insulin is a protein, and anything protein that reaches the stomach and small intestine meets protease enzymes. Those enzymes would digest it into amino acids, so it would never arrive in the blood as working insulin. Injecting puts it straight into the tissue under the skin, from where it is absorbed into the blood with the digestive system bypassed altogether. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the endocrine system, rather than the nervous system, is used to control growth and development.",
+        answer: "Nervous impulses are fast, precisely targeted and very short-lived, which suits pulling a hand from a flame but is useless for a change that must last for years. Hormones travel in the blood, so they reach every cell in the body at once and their effects persist long after release. Growth needs exactly that: a slow, widespread, sustained signal, which is why hormones such as growth hormone and the sex hormones do the job. (Mark this one yourself.)",
+      },
+      {
+        question: "Higher tier: explain how negative feedback keeps the concentration of thyroxine in the blood roughly constant.",
+        answer: "The pituitary releases TSH, which stimulates the thyroid to make thyroxine, and the thyroxine concentration in the blood is monitored in turn. When thyroxine rises above normal it inhibits the pituitary, so less TSH is released and the thyroid slows down; when it falls, the inhibition is lifted and more TSH is released. Each change therefore triggers the response that reverses it, so the level oscillates around a set point rather than drifting away from it. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why Type 2 diabetes can often be controlled by diet and exercise, while Type 1 cannot.",
+        answer: "In Type 2 diabetes the pancreas still makes insulin; the problem is that body cells have stopped responding to it properly, and losing weight and exercising make the cells sensitive to insulin again. In Type 1 the insulin-producing cells of the pancreas have been destroyed, so there is little or no insulin in the blood however carefully the person eats. No amount of diet can replace a hormone that is not being made, which is why Type 1 always needs injected insulin. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -3878,6 +5252,129 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Blood in veins is at low pressure, so valves are needed to keep it moving in one direction back to the heart.",
       },
+      {
+        question: "Higher tier: calculate the rate of blood flow in cm³ per minute for a heart that pumps 70 cm³ with each of its 72 beats per minute.",
+        accept: [
+          "5040",
+        ],
+        answer: "Volume per minute = 70 × 72 = 5040 cm³ per minute, which is close to the 5 dm³ a resting adult heart is expected to pump.",
+        higherOnly: true,
+      },
+      {
+        question: "Name the blood vessel that carries oxygenated blood from the lungs back to the heart.",
+        accept: [
+          "pulmonary vein",
+          "the pulmonary vein",
+          "pulmonary veins",
+        ],
+        answer: "The pulmonary vein. It is the exception to the usual rule, because veins normally carry deoxygenated blood — here the blood has just been oxygenated at the lungs.",
+      },
+      {
+        question: "A patient's coronary arteries are narrowed by fatty deposits. State which muscle receives less oxygen as a result.",
+        accept: [
+          "the heart",
+          "heart",
+          "heart muscle",
+          "the heart muscle",
+          "cardiac muscle",
+        ],
+        answer: "The coronary arteries are the vessels that supply the wall of the heart itself. Narrowing them starves the heart muscle of oxygen, which causes chest pain and eventually a heart attack.",
+      },
+      {
+        question: "A patient has one badly narrowed coronary artery and needs blood flow through it restored straight away. Which treatment fits best?",
+        choices: [
+          "A stent",
+          "Statins",
+          "A mechanical heart valve",
+          "An artificial pacemaker",
+          "A course of antibiotics",
+        ],
+        accept: [
+          "a stent",
+        ],
+        answer: "A stent is a mesh tube pushed into the narrowed artery to hold it open, so flow is restored immediately. Statins work slowly and only slow further build-up, and the other options treat different problems altogether.",
+      },
+      {
+        question: "Work out the percentage of a 5.0 dm³ blood volume that is plasma, given that the plasma volume is 2.75 dm³.",
+        accept: [
+          "55",
+          "55%",
+        ],
+        answer: "2.75 ÷ 5.0 × 100 = 55%. The rest is mostly red blood cells, with a small fraction of white cells and platelets.",
+      },
+      {
+        question: "A mature red blood cell has no nucleus. State the advantage this gives the cell.",
+        accept: [
+          "more room for haemoglobin",
+          "more space for haemoglobin",
+          "it can carry more haemoglobin",
+          "more haemoglobin",
+          "it can carry more oxygen",
+          "more oxygen",
+          "space for more haemoglobin",
+        ],
+        answer: "Losing the nucleus frees up the space it would occupy, so the cell can be packed with haemoglobin instead. More haemoglobin means more oxygen carried per cell.",
+      },
+      {
+        question: "Higher tier: at rest a person's rate of blood flow is 4.2 dm³ per minute. Exercising, their heart beats 150 times a minute with a stroke volume of 112 cm³. Calculate how many times greater the rate of blood flow becomes.",
+        accept: [
+          "4",
+          "4 times",
+        ],
+        answer: "Exercising: 150 × 112 = 16 800 cm³ per minute = 16.8 dm³ per minute. 16.8 ÷ 4.2 = 4 times greater. Both a faster rate and a bigger stroke volume contribute, and their effects multiply.",
+        higherOnly: true,
+      },
+      {
+        question: "A capillary is 8 µm in diameter and a red blood cell is 7 µm across. Calculate the percentage of the capillary's diameter taken up by one red blood cell.",
+        accept: [
+          "87.5",
+          "87.5%",
+        ],
+        answer: "7 ÷ 8 × 100 = 87.5%. The cell almost fills the tube, so it is pressed against the one-cell-thick wall and has to travel in single file — both of which make oxygen diffusion out of it faster.",
+      },
+      {
+        question: "A fish has a single circulation: blood leaves the gills at low pressure and travels straight on to the body. State whether a fish delivers oxygen to its tissues faster or more slowly than a mammal of the same size.",
+        accept: [
+          "more slowly",
+          "slower",
+          "slowly",
+          "less quickly",
+          "slower than a mammal",
+          "more slowly than a mammal",
+        ],
+        answer: "Blood loses most of its pressure squeezing through the gill capillaries, and nothing raises it again before the body. Low pressure means slow flow, so oxygen arrives more slowly. A mammal's double circulation returns blood to the heart after the lungs and pumps it out again at high pressure.",
+      },
+      {
+        question: "A person's blood delivers 250 cm³ of oxygen to the body each minute. Calculate the volume of oxygen delivered in one hour, in dm³.",
+        accept: [
+          "15",
+        ],
+        answer: "250 × 60 = 15 000 cm³ in an hour. 1 dm³ = 1000 cm³, so 15 000 ÷ 1000 = 15 dm³.",
+      },
+      {
+        question: "Over five years, 84 of 1,200 patients taking statins had a heart attack, against 140 of 1,200 taking a placebo. Calculate the percentage reduction in heart attacks.",
+        accept: [
+          "40",
+          "40%",
+        ],
+        answer: "Heart attacks prevented = 140 − 84 = 56. 56 ÷ 140 × 100 = 40%. The groups are the same size, so the counts can be compared directly, and the placebo group is the baseline.",
+      },
+      {
+        question: "Explain why the wall of the left ventricle is much thicker than the wall of the right ventricle.",
+        answer: "The right ventricle only has to push blood as far as the lungs, which are close by and easily damaged by high pressure. The left ventricle has to force blood all the way round the rest of the body and back, against far greater resistance. A thicker muscular wall contracts more powerfully and generates the higher pressure that longer journey needs. (Mark this one yourself.)",
+      },
+      {
+        question: "Compare treating coronary heart disease with a stent and treating it with statins, giving an advantage and a drawback of each.",
+        answer: "A stent works immediately and mechanically reopens a specific blocked artery, but it is surgery with a risk of infection or clotting, and it does nothing about the fatty deposits building up elsewhere. Statins lower blood cholesterol across the whole circulation, so they slow the disease everywhere and reduce the chance of future blockages. Their drawbacks are that they take effect slowly, must be taken for life, and cause side effects such as muscle pain in some patients. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how the structure of a capillary suits exchange, and why an artery could not do the same job.",
+        answer: "A capillary wall is a single cell thick, so the distance substances have to diffuse between blood and tissue is as short as it can be, and capillaries branch into vast networks giving an enormous total surface area. Their narrow lumen also slows the blood down, giving more time for exchange. An artery has thick muscular and elastic walls to withstand high pressure, and that thickness is exactly what would make diffusion across it far too slow. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why veins contain valves but arteries do not.",
+        answer: "Blood in an artery has just left the heart, so it is under high pressure and is pushed strongly in one direction with no chance of flowing backwards. By the time blood reaches the veins it has passed through the capillaries and lost almost all that pressure, and in the legs it also has to travel upwards against gravity. Valves let blood through in one direction and shut if it starts to fall back, so the slow, low-pressure return flow still reaches the heart. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -4173,6 +5670,114 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "In the nucleus",
         ],
         answer: "Eukaryotes keep DNA in a nucleus as chromosomes. Prokaryotes have a single DNA loop free in the cytoplasm plus plasmids.",
+      },
+      {
+        question: "One strand of a DNA molecule reads TACGGA. Write the base sequence of the complementary strand.",
+        accept: [
+          "atgcct",
+        ],
+        answer: "A pairs with T and C pairs with G, so working along: T→A, A→T, C→G, G→C, G→C, A→T. The complementary strand is ATGCCT.",
+      },
+      {
+        question: "Three bases code for one amino acid. Calculate the number of amino acids coded for by a gene 900 bases long.",
+        accept: [
+          "300",
+        ],
+        answer: "900 ÷ 3 = 300 amino acids. The order of those bases sets the order of the amino acids, and that order determines which protein is made.",
+      },
+      {
+        question: "Work out the percentage of thymine in a DNA sample that contains 20% adenine.",
+        accept: [
+          "20",
+          "20%",
+        ],
+        answer: "A always pairs with T, so there must be exactly as much thymine as adenine: 20%. That leaves 60% split equally between C and G, 30% each.",
+      },
+      {
+        question: "A strawberry plant sends out runners that root and grow into new plants. Which statement about those new plants is correct?",
+        choices: [
+          "They are genetically identical to the parent",
+          "They have half the parent's number of chromosomes",
+          "They are genetically different from each other",
+          "They were produced by meiosis",
+          "They each have two parents",
+        ],
+        accept: [
+          "they are genetically identical to the parent",
+        ],
+        answer: "Runners are asexual reproduction using mitosis only, so every new plant is a clone of the parent with the full chromosome number. Halving and variation belong to meiosis and sexual reproduction.",
+      },
+      {
+        question: "Name the process that restores the full 46 chromosomes when a sperm and an egg meet.",
+        accept: [
+          "fertilisation",
+          "fertilization",
+        ],
+        answer: "Each gamete carries 23 chromosomes, and at fertilisation the two nuclei fuse to give a single cell with 46. That cell then divides by mitosis to build the embryo.",
+      },
+      {
+        question: "Work out the percentage fall in the price of sequencing a genome if it dropped from £2,000 to £500.",
+        accept: [
+          "75",
+          "75%",
+        ],
+        answer: "Fall = 2000 − 500 = £1500. 1500 ÷ 2000 × 100 = 75%. Falling costs are why genome sequencing has moved from a research project to something a hospital can order.",
+      },
+      {
+        question: "A DNA molecule contains 3,000 base pairs, and 30% of its bases are adenine. Calculate the number of cytosine bases it contains.",
+        accept: [
+          "1200",
+        ],
+        answer: "3000 base pairs means 6000 bases in total. A = 30%, and T must match it at 30%, leaving 40% for C and G together. C is half of that, 20%, so 0.20 × 6000 = 1200 cytosine bases.",
+      },
+      {
+        question: "Each of a human gamete's 23 chromosomes can be the one inherited from the mother or the one from the father. Calculate the number of genetically different gametes this alone could produce.",
+        accept: [
+          "8388608",
+          "2^23",
+        ],
+        answer: "Each of the 23 chromosomes is an independent either-or choice, so the total is 2 × 2 × … twenty-three times, which is 2²³ = 8 388 608. That is before any mixing within chromosomes, which is why no two gametes are alike.",
+      },
+      {
+        question: "A single base is changed in the middle of a gene, so the protein made contains one different amino acid. Name the part of an enzyme that could be altered enough by this to stop it working.",
+        accept: [
+          "the active site",
+          "active site",
+        ],
+        answer: "One changed amino acid changes how the protein chain folds. If the change falls in or near the active site, its shape no longer matches the substrate, so the substrate cannot bind and the enzyme stops catalysing its reaction.",
+      },
+      {
+        question: "A field holds 1,000 plants grown asexually from a single parent. A new fungal disease arrives that the parent had no resistance to. Work out the percentage of the field expected to survive.",
+        accept: [
+          "0",
+          "0%",
+          "none",
+        ],
+        answer: "Every plant is a clone, so every plant has exactly the same genes and exactly the same lack of resistance. There is no variation for any of them to survive by, so in principle none does. A sexually produced field would contain some resistant individuals.",
+      },
+      {
+        question: "Sequencing a human genome cost about $100 million in 2001 and about $600 in 2021. Calculate how many times cheaper it became, to the nearest thousand.",
+        accept: [
+          "167000",
+          "167 000",
+        ],
+        answer: "100 000 000 ÷ 600 = 166 667, which is 167 000 to the nearest thousand. A cost falling by that much in twenty years is why sequencing has become a routine medical tool.",
+      },
+      {
+        question: "Explain why meiosis must halve the chromosome number, and what would happen over generations if it did not.",
+        answer: "At fertilisation two gametes fuse, so each must carry half a set for the new cell to end up with the normal 46. If gametes kept the full 46, the fertilised egg would have 92, the next generation 184, and the number would double every generation. The cell could not organise or copy that much DNA, so the offspring would not be viable — halving in meiosis is what keeps the species' chromosome number constant. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how the order of bases in a gene determines which protein a cell makes.",
+        answer: "The bases are read in groups of three, and each group codes for one particular amino acid. Working along the gene therefore gives a specific sequence of amino acids, which are joined together in that order by the ribosomes. The sequence determines how the chain folds into a three-dimensional shape, and that shape is what makes the protein a particular enzyme, hormone or structural protein rather than another. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a species that reproduces only asexually is at risk when its environment changes.",
+        answer: "Asexual reproduction uses mitosis alone, so every offspring is a clone and the population holds almost no genetic variation. If the conditions change — a new disease, a colder winter, a new predator — there are no individuals with a different combination of genes that happens to cope better. Natural selection has nothing to select from, so the whole population can be wiped out at once, which is why many organisms that reproduce asexually also reproduce sexually when conditions turn bad. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between a gene, a chromosome and a genome.",
+        answer: "A gene is a short section of DNA coding for one sequence of amino acids, and so for one protein. A chromosome is a single very long DNA molecule carrying many genes along its length, and humans have 46 of them in each body cell. The genome is the whole lot — the entire genetic material of the organism, every chromosome and every gene on it. They are three different scales of the same molecule, not three different substances. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -4488,6 +6093,120 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Genotype is the combination of alleles; phenotype is what you observe. The same phenotype can come from more than one genotype.",
       },
+      {
+        question: "In pea plants tall (T) is dominant to short (t). State the phenotype of a plant with the genotype Tt.",
+        accept: [
+          "tall",
+        ],
+        answer: "One copy of a dominant allele is enough for it to be expressed, so a Tt plant is tall. Only tt plants are short.",
+      },
+      {
+        question: "Two pea plants with the genotype Tt are crossed, where tall (T) is dominant to short (t). Calculate the percentage of offspring expected to be short.",
+        accept: [
+          "25",
+          "25%",
+        ],
+        answer: "The Punnett square gives TT, Tt, Tt, tt. Only tt is short, so 1 box in 4, which is 25%.",
+      },
+      {
+        question: "A homozygous dominant pea plant is crossed with a homozygous recessive one. State whether the offspring are homozygous or heterozygous.",
+        accept: [
+          "heterozygous",
+          "they are heterozygous",
+          "all heterozygous",
+        ],
+        answer: "One parent can only give a dominant allele and the other can only give a recessive one, so every offspring receives one of each. All of them are heterozygous, and all show the dominant phenotype.",
+      },
+      {
+        question: "Polydactyly is caused by a dominant allele D. A person with the genotype Dd has a child with someone whose genotype is dd. What is the chance the child has polydactyly?",
+        choices: [
+          "50%",
+          "25%",
+          "75%",
+          "0%",
+          "100%",
+        ],
+        accept: [
+          "50%",
+        ],
+        answer: "The dd parent can only pass on d. The Dd parent passes D half the time, so half the children are Dd and have polydactyly, and half are dd and do not.",
+      },
+      {
+        question: "A couple already have three girls. Calculate the percentage chance that their next child is a boy.",
+        accept: [
+          "50",
+          "50%",
+        ],
+        answer: "The egg always carries X and the sperm carries X or Y with equal chance, so each pregnancy is an independent 50:50. Previous children change nothing — the gametes have no memory.",
+      },
+      {
+        question: "A man with cystic fibrosis (ff) has children with a woman who is homozygous dominant (FF). Work out the percentage of their children expected to have cystic fibrosis.",
+        accept: [
+          "0",
+          "0%",
+          "none",
+          "zero",
+        ],
+        answer: "The father can only pass on f and the mother can only pass on F, so every child is Ff. Cystic fibrosis is recessive and needs two copies, so none of the children has it — though every one of them is a carrier.",
+      },
+      {
+        question: "Two carriers of cystic fibrosis have two children. Calculate the percentage probability that BOTH children have the disorder.",
+        accept: [
+          "6.25",
+          "6.25%",
+        ],
+        answer: "Each child independently has a 1 in 4 chance, so both is 1/4 × 1/4 = 1/16. As a percentage that is 6.25%. Multiplying is right because the two pregnancies are independent events.",
+      },
+      {
+        question: "Two carriers of cystic fibrosis have a child who does NOT have the disorder. Give, as a fraction, the probability that this child is a carrier.",
+        accept: [
+          "2/3",
+          "two thirds",
+        ],
+        answer: "The Punnett square gives FF, Ff, Ff, ff. Knowing the child is unaffected rules out ff, leaving three equally likely outcomes, of which two are carriers. So the probability is 2/3, not 1/2 — information about the phenotype changes the odds.",
+      },
+      {
+        question: "Cystic fibrosis is caused by a recessive allele f. Two carrier parents (Ff) have a child who does NOT have cystic fibrosis. Calculate the probability that this child is a carrier, as a fraction.",
+        accept: [
+          "2/3",
+        ],
+        answer: "2/3. The cross Ff x Ff gives FF, Ff, Ff, ff in equal proportions. The child is known NOT to have the condition, so the ff quarter is ruled out and only three outcomes remain. Two of those three are carriers, so the probability is 2/3 — not 1/2, and not the 2/4 you would get before using the information given.",
+      },
+      {
+        question: "A cross using alleles B and b gives 400 offspring: 302 show the dominant phenotype and 98 the recessive. State whether each parent was homozygous or heterozygous.",
+        accept: [
+          "both heterozygous",
+          "heterozygous",
+          "they are both heterozygous",
+          "both were heterozygous",
+          "both parents were heterozygous",
+        ],
+        answer: "302 : 98 is very close to 3 : 1, and the only cross giving a 3 : 1 phenotype ratio is heterozygous × heterozygous. The numbers are not exactly 300 : 100 because inheritance is a probability, and real samples scatter around the expected ratio.",
+      },
+      {
+        question: "A woman whose father had cystic fibrosis does not have the disorder herself. She has children with a man who is a known carrier. Calculate the percentage chance that their first child has cystic fibrosis.",
+        accept: [
+          "25",
+          "25%",
+        ],
+        answer: "Her father was ff, so she must have inherited one f from him; as she is unaffected she must be Ff. The father of the child is Ff too, so the cross is Ff × Ff, which gives a 1 in 4 chance of ff — 25%.",
+      },
+      {
+        question: "Explain why a Punnett square gives a probability rather than a prediction of what will actually happen in a family.",
+        answer: "A Punnett square shows the four equally likely combinations each fertilisation could produce, so a 1 in 4 box means each pregnancy independently has a 25% chance. Which sperm reaches the egg is random, and a previous child has no influence on the next. So two carrier parents can easily have four affected children or none at all — the ratio only emerges reliably across very large numbers of offspring. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a dominant disorder such as polydactyly cannot be carried silently, but a recessive one such as cystic fibrosis can.",
+        answer: "A dominant allele is expressed whenever it is present, so anyone carrying even one copy shows the condition and can be identified. A recessive allele is only expressed when both copies are recessive, so a heterozygous person has a working allele that masks it and shows no symptoms at all. That person is a carrier, and the allele can pass down several generations unnoticed until two carriers happen to have children together. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why roughly equal numbers of boys and girls are born, referring to gametes.",
+        answer: "Every egg carries an X chromosome, so the mother contributes the same thing every time. The father makes equal numbers of X-carrying and Y-carrying sperm during meiosis, and which type fertilises the egg is random. An XX × XY Punnett square therefore gives two XX and two XY, a 50:50 chance at every fertilisation, which averages out to a near-equal ratio across a whole population. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between genotype and phenotype, and why two people with the same phenotype may have different genotypes.",
+        answer: "The genotype is the combination of alleles an organism carries; the phenotype is the characteristic you can actually observe. Because a dominant allele masks a recessive one, both a homozygous dominant BB individual and a heterozygous Bb individual show exactly the same characteristic. So the same phenotype can hide two different genotypes, which is why family history and test crosses are needed to work out what someone is carrying. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -4792,6 +6511,132 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Selective breeding is artificial selection over generations. Transferring genes between species is genetic engineering, which is different.",
       },
+      {
+        question: "A culture of 2,000 bacteria is treated with an antibiotic and 4 cells survive. Calculate the percentage of the original population that was resistant.",
+        accept: [
+          "0.2",
+          "0.2%",
+        ],
+        answer: "4 ÷ 2000 × 100 = 0.2%. Those few cells were already resistant before the antibiotic arrived — the antibiotic selected them, it did not create them.",
+      },
+      {
+        question: "'A giraffe stretched its neck reaching for leaves, and its offspring inherited the longer neck.' Name the scientist whose rejected theory this describes.",
+        accept: [
+          "lamarck",
+          "lamarcks",
+          "jean baptiste lamarck",
+        ],
+        answer: "This is Lamarck's idea of inherited acquired characteristics. It was shown to be wrong: changes made to a body during life do not alter the alleles in its gametes, so they are not passed on.",
+      },
+      {
+        question: "Which of these is variation caused by the environment alone?",
+        choices: [
+          "A scar from an accident",
+          "Eye colour",
+          "Blood group",
+          "Natural hair colour",
+          "Biological sex",
+        ],
+        accept: [
+          "a scar from an accident",
+        ],
+        answer: "A scar is caused entirely by what happened to the individual and is not coded for by any allele. The other four are determined by genes inherited at fertilisation.",
+      },
+      {
+        question: "A mutation changes a single base in a stretch of DNA that does not code for any protein. State the most likely effect on the organism's phenotype.",
+        accept: [
+          "none",
+          "no effect",
+          "nothing",
+          "it has no effect",
+          "no change",
+          "none at all",
+          "no effect at all",
+        ],
+        answer: "Most mutations have no effect on the phenotype, and a change outside any gene is very unlikely to alter a protein at all. Only the rare mutation that changes a protein enough to matter can be acted on by natural selection.",
+      },
+      {
+        question: "Four resistant bacteria are left after an antibiotic course and divide every 30 minutes. Calculate how many there are after 6 hours.",
+        accept: [
+          "16384",
+        ],
+        answer: "6 hours = 360 minutes, so 360 ÷ 30 = 12 divisions. 4 × 2¹² = 4 × 4096 = 16 384. With the competition wiped out, the resistant strain takes over very quickly.",
+      },
+      {
+        question: "Higher tier: a new river divides one population of beetles into two groups that can no longer meet. Name what this separation is called in the process of speciation.",
+        accept: [
+          "isolation",
+          "geographical isolation",
+          "geographic isolation",
+        ],
+        answer: "This is geographical isolation, the first step in speciation. Once the two groups can no longer interbreed, their gene pools are separate and natural selection can push them in different directions.",
+        higherOnly: true,
+      },
+      {
+        question: "MRSA made up 2% of a hospital's Staphylococcus samples in 1998 and 42% in 2004. Calculate the mean increase in percentage points per year.",
+        accept: [
+          "6.7",
+          "6.67",
+        ],
+        answer: "Increase = 42 − 2 = 40 percentage points, over 1998 to 2004, which is 6 years. 40 ÷ 6 = 6.7 percentage points a year.",
+      },
+      {
+        question: "A population of 1,000,000 bacteria contains a single resistant cell. An antibiotic kills every non-resistant cell, and the survivor then divides every 20 minutes. Calculate how long it takes to rebuild a population of 1,000,000, to the nearest hour.",
+        accept: [
+          "7",
+        ],
+        answer: "2¹⁹ = 524 288, which is not enough; 2²⁰ = 1 048 576, which is. That is 20 divisions, so 20 × 20 = 400 minutes = 6.7 hours, which is 7 hours to the nearest hour.",
+      },
+      {
+        question: "A peppered moth population is 90% pale and 10% dark. After 50 years of soot-blackened bark it is 5% pale and 95% dark. Calculate the percentage increase in the dark form.",
+        accept: [
+          "850",
+          "850%",
+        ],
+        answer: "Increase = 95 − 10 = 85 percentage points. As a percentage of the original 10: 85 ÷ 10 × 100 = 850%. Dark moths were better camouflaged on sooty bark, so more of them survived to breed.",
+      },
+      {
+        question: "A patient stops taking an antibiotic after three days because they feel better. Name the group of bacteria most likely to be left alive to multiply.",
+        accept: [
+          "the most resistant",
+          "most resistant",
+          "the most resistant bacteria",
+          "the partly resistant ones",
+          "partly resistant",
+          "the resistant ones",
+          "resistant bacteria",
+          "the resistant bacteria",
+        ],
+        answer: "The antibiotic kills the least resistant bacteria first, which is why the patient starts feeling better before the infection is cleared. Stopping early leaves the most resistant individuals alive with no competition, so they reproduce and the next infection is harder to treat.",
+      },
+      {
+        question: "Higher tier: two squirrel populations are separated by a canyon for 10,000 generations. When reunited they will mate, but their offspring are always sterile. State whether they are now one species or two.",
+        accept: [
+          "two species",
+          "two",
+          "2",
+          "2 species",
+        ],
+        answer: "A species is defined by being able to breed and produce FERTILE offspring. Mating successfully is not enough — sterile offspring means the two gene pools can no longer mix, so speciation is complete and they are two separate species.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why antibiotic resistance is described as natural selection happening fast enough to watch.",
+        answer: "Bacteria divide every twenty minutes or so and there are billions of them, so random mutations that happen to confer resistance appear regularly. When an antibiotic is used it kills the non-resistant bacteria, and the resistant ones survive, reproduce and pass the allele on with no competition. Within weeks the whole population can be resistant, so a process that takes millions of years in a large animal plays out in front of us — which is why it is such strong evidence for evolution. (Mark this one yourself.)",
+      },
+      {
+        question: "Higher tier: explain how one population of a species can become two separate species over time.",
+        answer: "The population is first split so the two groups can no longer interbreed, for example by a mountain range, a new river or being carried to an island. The two environments differ, so natural selection favours different characteristics in each group, and different alleles become common in each population. Mutations also accumulate independently in the two gene pools, and after enough generations the groups are so genetically different that even if reunited they cannot produce fertile offspring — at which point they are two species. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why most mutations make no difference to an organism.",
+        answer: "Much of an organism's DNA does not code for protein at all, so a change there usually alters nothing. Even within a gene, several different base triplets can code for the same amino acid, so the protein often comes out identical, and a single changed amino acid far from the active or binding site frequently leaves the protein working normally. Only the small minority of mutations that change a protein's shape enough to change what it does can affect the phenotype, and rarer still is one that helps. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what the fossil record can and cannot tell us about the history of life.",
+        answer: "Fossils show that organisms alive in the distant past were different from those alive now, and that some groups changed gradually over millions of years, which is direct evidence that species are not fixed. But the record is badly incomplete: soft-bodied organisms almost never fossilise, most fossils that did form have been destroyed by heat, pressure or erosion, and many remain undiscovered. So it cannot show how life began, and gaps in a lineage are evidence of missing fossils rather than evidence against evolution. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -5080,6 +6925,126 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Reduced genetic variation, leaving a population vulnerable to disease",
         ],
         answer: "Inbreeding concentrates alleles, including harmful ones, and narrows the gene pool so one disease can affect the whole population.",
+      },
+      {
+        question: "In the binomial name Canis lupus, name the classification group that 'lupus' represents.",
+        accept: [
+          "species",
+          "the species",
+        ],
+        answer: "A binomial name is genus then species, so Canis is the genus and lupus is the species. The genus takes a capital and the species does not.",
+      },
+      {
+        question: "Two organisms share the same genus but are different species. Another two share only the same family. State which pair is more closely related.",
+        accept: [
+          "the first pair",
+          "the first",
+          "the same genus pair",
+          "the two in the same genus",
+          "the ones in the same genus",
+          "the genus pair",
+        ],
+        answer: "Genus is a smaller, more specific group than family, so organisms sharing a genus share a much more recent common ancestor. The first pair is therefore more closely related.",
+      },
+      {
+        question: "Bacteria are given a human gene so that they produce human insulin. Which technique is being used?",
+        choices: [
+          "Genetic engineering",
+          "Selective breeding",
+          "Cloning by tissue culture",
+          "Natural selection",
+          "Classification",
+        ],
+        accept: [
+          "genetic engineering",
+        ],
+        answer: "A gene has been cut from one organism and inserted into another using enzymes and a vector, which is genetic engineering. Selective breeding could never move a gene between a human and a bacterium.",
+      },
+      {
+        question: "A dog breed produced by decades of selective breeding now has a very high rate of inherited hip problems. Name the underlying cause, in terms of the population's alleles.",
+        accept: [
+          "a reduced gene pool",
+          "reduced gene pool",
+          "inbreeding",
+          "a smaller gene pool",
+          "smaller gene pool",
+          "loss of genetic variation",
+          "reduced variation",
+          "less genetic variation",
+        ],
+        answer: "Breeding only from a small number of chosen parents over many generations removes alleles from the population. The gene pool shrinks, closely related animals are bred together, and rare harmful recessive alleles end up paired far more often than they would in a varied population.",
+      },
+      {
+        question: "Selective breeding raises a wheat yield by 0.25 tonnes per hectare each generation. Calculate the number of generations needed to take the yield from 4.0 to 6.0 tonnes per hectare.",
+        accept: [
+          "8",
+        ],
+        answer: "Increase needed = 6.0 − 4.0 = 2.0 tonnes. 2.0 ÷ 0.25 = 8 generations. Selective breeding is slow, which is one reason genetic engineering is attractive.",
+      },
+      {
+        question: "A single-celled organism with no nucleus lives in a hot spring at 90 °C, and its RNA sequence differs greatly from that of true bacteria. Name its domain.",
+        accept: [
+          "archaea",
+          "the archaea",
+          "archaeon",
+        ],
+        answer: "Looking like a bacterium is not enough — Woese's domains are based on RNA sequence, and on that evidence these extremophiles form a separate domain, the Archaea.",
+      },
+      {
+        question: "On an evolutionary tree, species A and B share a common ancestor 2 million years ago, while A and C, and B and C, both share one 8 million years ago. Name the species most closely related to A.",
+        accept: [
+          "b",
+          "species b",
+        ],
+        answer: "Closeness is measured by how recently two species share a branch point, not by how near they are drawn on the page. A and B diverged only 2 million years ago, against 8 million for A and C, so B is A's closest relative.",
+      },
+      {
+        question: "A cattle herd that once used 50 breeding bulls now uses only 8 after 30 years of selective breeding. Calculate the percentage reduction in the number of bulls contributing alleles.",
+        accept: [
+          "84",
+          "84%",
+        ],
+        answer: "Reduction = 50 − 8 = 42. 42 ÷ 50 × 100 = 84%. With so few fathers, the gene pool narrows sharply and the herd becomes vulnerable to a disease that none of them resists.",
+      },
+      {
+        question: "Golden Rice contains 30 µg of beta-carotene per gram, and a child needs 1,500 µg a day. Calculate the mass of rice, in grams, needed to supply a full day's requirement.",
+        accept: [
+          "50",
+        ],
+        answer: "1500 ÷ 30 = 50 g of rice a day. Adding a vitamin pathway to a staple crop is one of the strongest arguments made for genetic engineering, since 50 g is a realistic portion.",
+      },
+      {
+        question: "An insect-resistant GM maize yields 11.5 tonnes per hectare against 9.2 for the non-GM variety, but the seed costs £180 more per hectare. Maize sells for £160 a tonne. Calculate the extra profit per hectare in pounds.",
+        accept: [
+          "188",
+        ],
+        answer: "Extra yield = 11.5 − 9.2 = 2.3 tonnes, worth 2.3 × 160 = £368. Subtract the extra seed cost: 368 − 180 = £188 more profit per hectare.",
+      },
+      {
+        question: "Two microorganisms look almost identical under a light microscope, but their RNA sequences differ more than a human's does from a mushroom's. State how many domains they belong to.",
+        accept: [
+          "two",
+          "2",
+          "two domains",
+          "2 domains",
+        ],
+        answer: "Appearance turned out to be a poor guide to relatedness, which is exactly why Woese used RNA instead. A difference that large means they belong to two different domains, even though Linnaeus's system would have placed them side by side.",
+      },
+      {
+        question: "Explain how selective breeding and natural selection produce similar results by different means.",
+        answer: "Both work by letting only some individuals pass their alleles on, so over many generations the chosen characteristics become more common in the population. In natural selection it is the environment that decides which individuals survive and breed, and the characteristics favoured are whatever helps in those conditions. In selective breeding a human chooses the parents, so the characteristics favoured are whatever people want — high milk yield or a gentle temperament — even when they would be no advantage in the wild. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain what genetic engineering can achieve that selective breeding cannot.",
+        answer: "Selective breeding can only work with alleles that already exist somewhere in the species, because the parents must be able to breed together. Genetic engineering cuts a gene out of one organism and inserts it into a completely unrelated one, so a human gene can be put into a bacterium or a vitamin pathway into rice. It is also far faster, producing the desired organism in one step rather than over dozens of generations. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how you work out from an evolutionary tree which species is most closely related to a named one.",
+        answer: "Start at the named species and trace its line backwards until it meets another line, because each branch point is a common ancestor. The species whose line joins yours at the most recent branch point is the closest relative, since they shared an ancestor most recently. How near two species are drawn across the page is irrelevant — only where and when the branches meet counts, which is the mistake that costs most marks. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why Linnaeus's binomial naming is still used even though his classification has been replaced in part.",
+        answer: "A binomial name gives every organism one unique label, in one language, that every scientist in the world recognises, which common names cannot do — the same bird has dozens of local names. It also carries information, because two species sharing a genus are known to be closely related. Woese's domains changed the highest levels of the hierarchy, but the genus and species names underneath still work, so there was no reason to throw them away. (Mark this one yourself.)",
       },
     ],
     misconceptions: [
@@ -5400,6 +7365,122 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Abiotic factors are non-living — light, temperature, moisture, pH, wind. Predators, food and disease are biotic.",
       },
+      {
+        question: "Grass is eaten by rabbits, which are eaten by foxes. Name the trophic level the fox occupies.",
+        accept: [
+          "secondary consumer",
+          "a secondary consumer",
+          "secondary",
+        ],
+        answer: "Grass is the producer, the rabbit is the primary consumer and the fox, eating the primary consumer, is the secondary consumer.",
+      },
+      {
+        question: "A compost heap is turned over regularly to let air into it. Name the condition for decay that this improves.",
+        accept: [
+          "oxygen",
+          "oxygen supply",
+          "more oxygen",
+          "the oxygen level",
+          "oxygen availability",
+          "aerobic conditions",
+        ],
+        answer: "Decomposers respire aerobically, so more oxygen means faster respiration, faster growth and faster breakdown of the dead material. Warmth and moisture are the other two conditions a compost heap is designed to provide.",
+      },
+      {
+        question: "Which pair are BOTH abiotic factors?",
+        choices: [
+          "Light intensity and soil pH",
+          "Food availability and temperature",
+          "New predators and new pathogens",
+          "Competition and moisture",
+          "Wind and disease",
+        ],
+        accept: [
+          "light intensity and soil pH",
+        ],
+        answer: "Abiotic means non-living, and both light intensity and soil pH are physical or chemical conditions. Every other pair contains at least one living factor — food, predators, pathogens, competition or disease.",
+      },
+      {
+        question: "Calculate the mean number of daisies per quadrat, given that ten quadrats contained 85 daisies in total.",
+        accept: [
+          "8.5",
+        ],
+        answer: "85 ÷ 10 = 8.5 daisies per quadrat. A mean can be a decimal even though you cannot have half a daisy — it is an average across the samples.",
+      },
+      {
+        question: "A polar bear has small ears and a thick layer of fat under its skin. State which type of adaptation this is.",
+        accept: [
+          "structural",
+          "structural adaptation",
+          "a structural adaptation",
+        ],
+        answer: "These are features of the animal's body shape and build, so they are structural adaptations. Migrating would be behavioural, and a change in metabolism would be functional.",
+      },
+      {
+        question: "Coal is burned in a power station. Name the process in the carbon cycle that returns its carbon to the atmosphere.",
+        accept: [
+          "combustion",
+          "burning",
+        ],
+        answer: "Combustion releases carbon locked in fossil fuels as carbon dioxide. Respiration and decay do the same for carbon in living and dead organisms, while photosynthesis is the only process that removes it.",
+      },
+      {
+        question: "A 400 m² field is sampled with twelve quadrats of 0.25 m² each, containing 96 plants in total. Estimate the total number of plants in the field.",
+        accept: [
+          "12800",
+          "12 800",
+        ],
+        answer: "Mean per quadrat = 96 ÷ 12 = 8. Each quadrat is 0.25 m², so that is 8 ÷ 0.25 = 32 plants per m². Across the field: 32 × 400 = 12 800 plants. Forgetting that the quadrat is not 1 m² is the usual mistake.",
+      },
+      {
+        question: "Producers in a food chain fix 80,000 kJ. Calculate the energy in kJ available to a tertiary consumer, assuming 10% transfer at each level.",
+        accept: [
+          "80",
+        ],
+        answer: "Producers 80 000 → primary consumer 8000 → secondary consumer 800 → tertiary consumer 80 kJ. Three transfers means multiplying by 0.1 three times, so only a thousandth of the original energy is left.",
+      },
+      {
+        question: "A pyramid of biomass shows 10,000 kg of producers supporting 800 kg of primary consumers. Calculate the percentage of biomass transferred.",
+        accept: [
+          "8",
+          "8%",
+        ],
+        answer: "800 ÷ 10 000 × 100 = 8%, slightly below the usual 10% figure. Much of the plant material is never eaten, and of what is eaten, some passes through undigested and much is used in respiration.",
+      },
+      {
+        question: "Along a transect from an open path into woodland, daisy numbers per m² are 22, 14, 6 and 1, while light intensity falls from 900 to 120 arbitrary units. Name the abiotic factor most likely limiting the daisies.",
+        accept: [
+          "light",
+          "light intensity",
+          "the light intensity",
+          "the light",
+        ],
+        answer: "Both the daisy count and the light intensity fall steadily along the same transect, so they are strongly correlated. Daisies are low-growing plants that need direct light to photosynthesise, so light intensity is the abiotic factor limiting them under the tree canopy.",
+      },
+      {
+        question: "A rabbit population falls from 500 to 150 after a new predator arrives. Calculate the percentage decrease in the population.",
+        accept: [
+          "70",
+          "70%",
+        ],
+        answer: "Decrease = 500 − 150 = 350. 350 ÷ 500 × 100 = 70%. A new predator is a biotic factor, because it is a living part of the ecosystem.",
+      },
+      {
+        question: "Explain why removing a single species can destabilise a whole community. Use an example.",
+        answer: "Species in a community are interdependent: they rely on each other for food, shelter, pollination and seed dispersal, so a change to one ripples outwards. If bees disappear, the plants they pollinate set far less seed, so those plant populations fall and the animals that eat them or shelter in them fall too. A stable community is one where all the populations and the physical conditions stay in balance, and removing a link breaks that balance in both directions along the food chain. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how a compost heap is set up to make decay as fast as possible.",
+        answer: "Decomposers are bacteria and fungi, so anything that makes them respire and reproduce faster speeds up decay. The heap is kept moist so enzymes can work and material can be digested, turned so oxygen reaches the microorganisms for aerobic respiration, and made large enough to trap the heat their respiration releases, which raises the temperature further. Material is also shredded first, because smaller pieces have a far greater surface area for the decomposers to work on. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why quadrats must be placed randomly, and why using more of them gives a better estimate.",
+        answer: "Choosing where to put a quadrat introduces bias, because people unconsciously pick patches that look interesting or are easy to reach, and the sample then over-represents those areas. Using random number coordinates means every part of the area has an equal chance of being sampled, so the mean reflects the whole field. More quadrats reduce the effect of any one unusual patch on the mean, so the estimate becomes more reliable — at the cost of taking longer. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how the carbon atoms in a fallen tree end up back in the atmosphere.",
+        answer: "Decomposers — bacteria and fungi — feed on the dead wood, secreting enzymes that digest the cellulose and absorbing the products. They respire those products, which releases carbon dioxide into the air, and the process is faster when conditions are warm, moist and well aerated. If the wood is burned instead, combustion releases the same carbon as carbon dioxide in minutes rather than years, and either way the carbon becomes available for photosynthesis again. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -5688,6 +7769,119 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Breeding programmes, protected habitats, reduced deforestation and field margins all help. The other options reduce biodiversity.",
       },
+      {
+        question: "Calculate the percentage decrease in a forest's area if it falls from 4,500 km² to 2,700 km².",
+        accept: [
+          "40",
+          "40%",
+        ],
+        answer: "Decrease = 4500 − 2700 = 1800 km². 1800 ÷ 4500 × 100 = 40%.",
+      },
+      {
+        question: "Sulfur dioxide from a coal-fired power station dissolves in rain clouds. Name the environmental problem this causes.",
+        accept: [
+          "acid rain",
+        ],
+        answer: "Sulfur dioxide is an acidic gas, so rain falling through it becomes acidic. Acid rain damages trees, and acidifies lakes and soils, killing organisms and reducing biodiversity a long way from the power station.",
+      },
+      {
+        question: "Which action would most directly increase the biodiversity of an intensively farmed field?",
+        choices: [
+          "Leaving uncultivated field margins",
+          "Applying more nitrate fertiliser",
+          "Removing hedgerows to make larger fields",
+          "Spraying a broad-spectrum insecticide",
+          "Draining a nearby peat bog",
+        ],
+        accept: [
+          "leaving uncultivated field margins",
+        ],
+        answer: "A field margin left uncultivated provides habitat and food for wild flowers, insects, birds and small mammals within farmland that otherwise holds one crop species. Every other option removes habitat or kills organisms.",
+      },
+      {
+        question: "A tropical forest absorbs 6 tonnes of carbon dioxide per hectare per year. Calculate the annual absorption of a 350 hectare forest, in tonnes.",
+        accept: [
+          "2100",
+        ],
+        answer: "6 × 350 = 2100 tonnes of carbon dioxide a year. Clearing that forest removes the absorption as well as releasing the carbon already stored in the trees.",
+      },
+      {
+        question: "Twenty-four captive-bred birds of a rare species are released into a protected reserve. Name the general type of measure this is.",
+        accept: [
+          "conservation",
+          "a conservation measure",
+          "conservation measure",
+          "a breeding programme",
+          "breeding programme",
+        ],
+        answer: "This is conservation: a breeding programme combined with habitat protection. Conservation works to maintain biodiversity by keeping endangered species alive and giving them somewhere to live.",
+      },
+      {
+        question: "Cattle farming and flooded rice fields both release a greenhouse gas other than carbon dioxide. Name it.",
+        accept: [
+          "methane",
+          "ch4",
+        ],
+        answer: "Methane. It is released by cattle digesting their food and by bacteria in the waterlogged soil of rice paddies, and it is a far more powerful greenhouse gas than carbon dioxide.",
+      },
+      {
+        question: "A peat bog holds 500 tonnes of carbon per hectare. 240 hectares are drained and the peat decays. Each tonne of carbon produces 3.67 tonnes of carbon dioxide. Calculate the mass of carbon dioxide released, in tonnes.",
+        accept: [
+          "440400",
+          "440 400",
+        ],
+        answer: "Carbon released = 500 × 240 = 120 000 tonnes. Carbon dioxide = 120 000 × 3.67 = 440 400 tonnes. The carbon dioxide figure is larger than the carbon figure because each carbon atom gains two oxygen atoms.",
+      },
+      {
+        question: "Atmospheric carbon dioxide rose from 315 ppm in 1958 to 420 ppm in 2023. Calculate the mean increase in ppm per year, to one decimal place.",
+        accept: [
+          "1.6",
+          "1.62",
+        ],
+        answer: "Rise = 420 − 315 = 105 ppm, over 2023 − 1958 = 65 years. 105 ÷ 65 = 1.6 ppm per year. The real rate has not been steady — it has accelerated — so a mean hides part of the picture.",
+      },
+      {
+        question: "Fertiliser washes into a lake, algae grow rapidly across the surface, then die and are broken down by bacteria. Name the substance that runs short in the water and kills the fish.",
+        accept: [
+          "oxygen",
+          "dissolved oxygen",
+          "the oxygen",
+        ],
+        answer: "The bloom blocks light so plants below die, and the huge numbers of decomposers respiring aerobically on all that dead material use up the dissolved oxygen. The fish suffocate — the fertiliser never touched them directly.",
+      },
+      {
+        question: "Woodland A has 40 species and its commonest makes up 12% of individuals. Woodland B has 8 species and its commonest makes up 70%. State which woodland is more likely to survive a disease that attacks its commonest species.",
+        accept: [
+          "woodland a",
+          "a",
+          "woodland a is",
+        ],
+        answer: "In B, losing the commonest species removes 70% of the individuals and one eighth of the species, and everything that depended on it. In A the same disease removes only 12% of individuals from a community of 40 species, so other species can fill the gap. High biodiversity means less dependence on any single species.",
+      },
+      {
+        question: "A town of 40,000 people produces 1.2 kg of waste per person per day. Calculate the mass of waste produced in a year, in tonnes.",
+        accept: [
+          "17520",
+          "17 520",
+        ],
+        answer: "Daily: 40 000 × 1.2 = 48 000 kg. Yearly: 48 000 × 365 = 17 520 000 kg. There are 1000 kg in a tonne, so that is 17 520 tonnes a year from one town.",
+      },
+      {
+        question: "Explain why the loss of a species is described as irreversible, and why that matters when decisions are being made now.",
+        answer: "Extinction removes a unique combination of alleles that took millions of years of natural selection to assemble, and nothing in biology can put it back — there is no store to draw the species from again. That makes it different from most environmental damage, where a polluted river or a felled wood can recover over time. So a decision that drives a species extinct cannot be reversed by a later change of mind, which is the argument for acting before the population reaches the point of no return. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how digging up a peat bog to sell as compost contributes to global warming.",
+        answer: "Peat is partly decayed plant material that has built up over thousands of years in waterlogged, low-oxygen conditions that stop decomposers finishing the job, so it holds an enormous store of carbon. Digging it up and draining the bog exposes that material to air, so decomposers respire it and release carbon dioxide, and peat burned as fuel releases it faster still. The bog also stops absorbing any more carbon, so the same action both adds a greenhouse gas and removes a store. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a rising standard of living increases pollution, not just a rising population.",
+        answer: "Pollution depends on how much each person consumes as well as how many people there are, and a higher standard of living means more energy, more manufactured goods, more travel and more packaging per person. Producing and transporting those goods burns more fuel, releasing carbon dioxide and acidic gases, and discarding them fills more landfill and releases more toxic chemicals. So a wealthy country with a stable population can still have a rising environmental impact, which is why consumption and recycling matter alongside population. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a warming climate changes where species live, and why that can reduce biodiversity.",
+        answer: "Every species is adapted to a particular range of temperature, rainfall and seasonal timing, so as an area warms, conditions drift outside what some species can tolerate and they move towards the poles or higher up mountains. Species that cannot move fast enough, or that run out of land to move into, die out locally and sometimes completely. Migration timings also fall out of step with the food they depend on, so populations that survive the temperature change can still collapse, and every local extinction lowers biodiversity. (Mark this one yourself.)",
+      },
     ],
     misconceptions: [
       {
@@ -5967,6 +8161,119 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "A value that lies far outside the pattern of the others",
         ],
         answer: "Anomalies should be identified and normally excluded from a mean, but you should say you have done so and suggest why it happened.",
+      },
+      {
+        question: "A Biology paper lasts 105 minutes and is worth 100 marks. Work out how many minutes to spend on a 6-mark question if time is shared in proportion to marks, to one decimal place.",
+        accept: [
+          "6.3",
+        ],
+        answer: "105 ÷ 100 = 1.05 minutes per mark. 1.05 × 6 = 6.3 minutes. The rough rule of a minute a mark leaves a few minutes at the end to check, which is why it is worth keeping.",
+      },
+      {
+        question: "A student writes that 'the enzyme died at 70 °C'. Give the correct scientific term for what happened.",
+        accept: [
+          "denatured",
+          "it denatured",
+          "denaturation",
+          "it was denatured",
+        ],
+        answer: "An enzyme is a molecule, not an organism, so it cannot die. Above the optimum its shape changes permanently and the active site no longer fits the substrate — it denatures.",
+      },
+      {
+        question: "A question says 'Evaluate the use of stents in treating coronary heart disease'. Which answer structure does the command word require?",
+        choices: [
+          "Advantages, disadvantages and a supported conclusion",
+          "A list of facts about stents",
+          "A description of the procedure only",
+          "Only the disadvantages",
+          "A labelled diagram of the heart",
+        ],
+        accept: [
+          "advantages, disadvantages and a supported conclusion",
+        ],
+        answer: "Evaluate means weigh both sides and then come down somewhere. An answer that gives only the good points, or gives both but never reaches a conclusion, cannot reach the top band.",
+      },
+      {
+        question: "A food sample turns Benedict's solution brick red, and iodine solution stays orange-brown. State what the sample contains.",
+        accept: [
+          "a reducing sugar",
+          "reducing sugar",
+          "sugar",
+          "glucose",
+          "sugars",
+        ],
+        answer: "Brick red with Benedict's means a reducing sugar is present. Iodine staying orange-brown means there is no starch, so the sample contains sugar but not starch — the two tests together say more than either alone.",
+      },
+      {
+        question: "Work out the magnification you should write beside a drawing that is 60 mm across of a cell measuring 0.03 mm across.",
+        accept: [
+          "2000",
+          "x2000",
+        ],
+        answer: "60 ÷ 0.03 = 2000, written ×2000. Magnification is a ratio of two lengths, so it has no unit — adding mm or µm loses the mark.",
+      },
+      {
+        question: "A student writes their answer to 'calculate the rate of reaction' as simply '12'. State what is missing.",
+        accept: [
+          "the units",
+          "units",
+          "the unit",
+          "a unit",
+          "the unit of rate",
+        ],
+        answer: "A rate always needs a unit — cm³ per minute, bubbles per minute, mm per second. Leaving it off costs a mark even when the number is correct, and it is one of the commonest avoidable errors in Biology papers.",
+      },
+      {
+        question: "Five timings are recorded: 32, 34, 33, 61 and 35 seconds. Exclude the anomalous result and calculate the mean of the rest, to one decimal place.",
+        accept: [
+          "33.5",
+        ],
+        answer: "61 s is the anomaly. Mean of the remaining four = (32 + 34 + 33 + 35) ÷ 4 = 134 ÷ 4 = 33.5 s. Say in your answer that you excluded 61 s and why — the examiner is looking for that sentence.",
+      },
+      {
+        question: "A reaction produces oxygen at 0.4 cm³ per second. Convert this rate into dm³ per hour.",
+        accept: [
+          "1.44",
+        ],
+        answer: "Per minute: 0.4 × 60 = 24 cm³. Per hour: 24 × 60 = 1440 cm³. There are 1000 cm³ in 1 dm³, so 1440 ÷ 1000 = 1.44 dm³ per hour. Convert one step at a time rather than trying to do it in one go.",
+      },
+      {
+        question: "Asked to EXPLAIN why a potato cylinder gained mass in distilled water, a student writes 'water went into the potato'. Name the single word their answer needs before it can count as an explanation.",
+        accept: [
+          "because",
+        ],
+        answer: "The answer describes what happened but never says why. Adding 'because the water outside was more dilute than the cell contents, so water moved in by osmosis' turns a description into an explanation. If your answer contains no 'because', it is probably not explaining anything.",
+      },
+      {
+        question: "A graph of oxygen volume against time rises in a straight line from 0 cm³ at 0 s to 36 cm³ at 120 s, then flattens. Calculate the rate of reaction during the straight section, in cm³ per minute.",
+        accept: [
+          "18",
+        ],
+        answer: "Gradient = 36 ÷ 120 = 0.3 cm³ per second. Multiply by 60 to convert: 0.3 × 60 = 18 cm³ per minute. The flat section afterwards means the reaction has finished, so it is not part of the rate.",
+      },
+      {
+        question: "Five osmosis results give percentage mass changes of +4, +3, +4, −12 and +4. A student averages all five to get +0.6% and concludes the potato barely changed. Calculate the correct mean after excluding the anomaly, to one decimal place.",
+        accept: [
+          "3.8",
+          "3.75",
+        ],
+        answer: "−12 is clearly anomalous — probably a cylinder that was not blotted, or was weighed wrongly. Mean of the rest = (4 + 3 + 4 + 4) ÷ 4 = 15 ÷ 4 = 3.8%. Leaving the anomaly in dragged the mean down by more than 3 percentage points and produced the wrong conclusion entirely.",
+      },
+      {
+        question: "Using a graph of enzyme activity against temperature, explain the difference between what DESCRIBE and what EXPLAIN would require.",
+        answer: "Describe means say what the data shows: the rate rises steadily to a peak at about 40 °C and then falls sharply to zero by about 60 °C, with figures quoted from the axes. Explain means say why: collisions between enzyme and substrate become more frequent and more energetic as temperature rises, and above the optimum the enzyme denatures so the active site no longer fits the substrate. Writing the description when the question said explain is one of the most common ways to score nothing on an otherwise correct answer. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why you should set out your working in a calculation even when you are confident of the answer.",
+        answer: "Marks in a calculation are awarded for method as well as for the final figure, so a correct conversion or a correctly substituted equation earns credit even if the arithmetic then goes wrong. With no working shown, a wrong answer scores zero because there is nothing for the examiner to give marks to. Written working also makes slips easier for you to spot when you check, and forces you to convert units before dividing rather than in your head. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how you would spend the first thirty seconds of a six-mark question asking why the small intestine is adapted for absorbing digested food.",
+        answer: "Do not start writing: jot three or four points in the margin first — villi and microvilli giving a huge surface area, a wall one cell thick for a short diffusion distance, a rich blood supply keeping the concentration gradient steep, and its great length giving time for absorption. Then decide the order, so each point links to the next with 'because' or 'which means that' rather than sitting as a list. Six-mark questions are marked in bands on the quality of the whole answer, so thirty seconds of planning is worth more than thirty seconds of extra writing. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why writing 'respiration makes energy' loses a mark, and what should be written instead.",
+        answer: "Energy cannot be created, so nothing 'makes' it — respiration transfers energy that was already stored in the chemical bonds of glucose. Examiners treat this as a scientific error rather than loose wording, because it contradicts conservation of energy, and the same applies to 'produces energy'. Write that respiration releases or transfers energy from glucose for the cell to use, and the mark is safe. (Mark this one yourself.)",
       },
     ],
     misconceptions: [

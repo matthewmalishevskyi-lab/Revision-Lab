@@ -12,6 +12,7 @@ import { getViewer } from "../lib/viewer";
 import { getUserClan } from "../lib/clans";
 import { getProgress } from "../lib/progress";
 import { getRevisionQueue, QUEUE_KIND_LABELS } from "../lib/revision-queue";
+import { getDailySet } from "../lib/daily-practice-server";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { homepageCards, isGroup, subjectsInGroup, SUBJECTS } from "../lib/subjects";
 
@@ -44,6 +45,11 @@ export default async function DashboardPage() {
   // one topic in one subject and had nothing to say about flashcards due or
   // weak spots anywhere else on the site.
   const queue = await getRevisionQueue(user.id);
+
+  // Today's set — the questions this student should actually answer, picked
+  // from the topics their own history says they are weakest at. See
+  // lib/daily-practice.ts for the algorithm and why it is a pure function.
+  const daily = await getDailySet(user.id);
 
   // Whichever clan this account is currently in, or null — see lib/clans.ts.
   // A user is in at most one at a time, so there's nothing to pick between.
@@ -298,6 +304,49 @@ export default async function DashboardPage() {
           →
         </span>
       </Link>
+
+      {/* ---------- Today's practice ---------- */}
+      {/* ⚠️ ABOVE "Revise today", AND THEY ARE DIFFERENT THINGS.
+          The queue below says WHERE to go — a topic page, a flashcard deck.
+          This says what to DO, right now, without choosing anything: ten
+          questions already picked, already in order. Matthew's maths teacher's
+          point was that a student who is behind does not know which topic to
+          pick, and asking them to choose is the step where they stop. */}
+      {daily.questions.length > 0 && (
+        <Link
+          href="/today"
+          className="group mt-8 block rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+        >
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 className="text-xl font-semibold">Today&apos;s practice</h2>
+            <span className="text-sm tabular-nums opacity-55">
+              {daily.questions.length} questions · about {daily.minutes} min
+            </span>
+          </div>
+          <p className="mt-1.5 opacity-70">{daily.summary}</p>
+
+          {/* The ladder, drawn. Ten dots rising through the difficulty levels
+              says "this gets harder" in less space than the sentence does. */}
+          <div className="mt-4 flex items-end gap-1.5" aria-hidden="true">
+            {daily.questions.map((q, i) => (
+              <span
+                key={i}
+                className="w-full max-w-6 rounded-sm"
+                style={{
+                  height: `${6 + q.difficulty * 5}px`,
+                  backgroundColor: q.accent,
+                  opacity: 0.35 + q.difficulty * 0.13,
+                }}
+              />
+            ))}
+          </div>
+
+          <p className="mt-3 text-sm font-medium" style={{ color: "inherit" }}>
+            <span className="opacity-60">Starts easier, gets harder</span>{" "}
+            <span className="inline-block transition group-hover:translate-x-1">→</span>
+          </p>
+        </Link>
+      )}
 
       {/* ---------- Revise today ---------- */}
       {/* The dashboard is the page you land on right after logging in, so

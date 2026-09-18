@@ -124,6 +124,14 @@ export type TopicContent = {
     higherOnly?: boolean;
     choices?: string[];
     marks?: number;
+    /**
+     * 1 recognise · 2 recall · 3 apply · 4 analyse · 5 explain.
+     *
+     * Also derived — see `app/lib/difficulty.ts` — and also only written here
+     * when the derivation is provably wrong about a specific question. Say why
+     * in a comment, as with `marks`.
+     */
+    difficulty?: number;
   }[];
 
   // "Students often think X, but actually Y." Targets the specific wrong ideas
