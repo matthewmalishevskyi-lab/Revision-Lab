@@ -46,6 +46,9 @@ export default function robots(): MetadataRoute.Robots {
         "/reset-password",
         "/account",
         "/progress",
+        // Today's practice — different for every visitor and different every
+        // day, so there is nothing here a searcher could ever land on usefully.
+        "/today",
         "/review",
         "/revise",
         "/wardrobe",

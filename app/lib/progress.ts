@@ -6,6 +6,7 @@
 // browser. The Server Actions in `progress-actions.ts` are how client
 // components reach it.
 
+import { cache } from "react";
 import { randomUUID } from "node:crypto";
 import { SUBJECTS, type Subject, type Topic } from "./subjects";
 import { TOPIC_CONTENT } from "./content";
@@ -146,7 +147,20 @@ export async function deleteAllProgress(userId: string): Promise<boolean> {
 
 // ─── Reading ────────────────────────────────────────────────────────────────
 
-async function readActivity(userId: string): Promise<ActivityRow[]> {
+// ⚠️ WRAPPED IN React's cache(), AND THE DASHBOARD IS WHY.
+//
+// Five separate readers fold these same rows — getProgress, getTopicAccuracies
+// and getTouchedTopics (twice over, once for the revision queue and once for
+// today's practice) — and the dashboard calls all of them. That was three full
+// reads of up to 5,000 rows before "today's practice" was added and FIVE
+// after, for one page load, all fetching identical data.
+//
+// cache() remembers the answer for the lifetime of ONE REQUEST and throws it
+// away when the request ends, so five calls become one round trip and no
+// user's rows can outlive their own request into somebody else's page. This
+// is the same fix, for the same reason, that getViewer already uses for the
+// duplicate "who is logged in" lookup — see lib/viewer.ts.
+const readActivity = cache(async function readActivity(userId: string): Promise<ActivityRow[]> {
   if (!PROGRESS_ENABLED) return [];
 
   const res = await supabase(
@@ -166,7 +180,7 @@ async function readActivity(userId: string): Promise<ActivityRow[]> {
   }
 
   return (await res.json()) as ActivityRow[];
-}
+});
 
 // ─── Turning events into figures ────────────────────────────────────────────
 

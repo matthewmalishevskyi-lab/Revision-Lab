@@ -11,7 +11,7 @@
 // set and wrong on the topic page for the identical answer, which is worse
 // than either rule being wrong on its own.
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { normalise } from "../lib/normalise";
 import { HigherBadge } from "../components/HigherBadge";
@@ -26,6 +26,8 @@ export function DailyPracticeRunner({ set }: { set: DailySet }) {
   const [at, setAt] = useState(0);
   const [typed, setTyped] = useState("");
   const [states, setStates] = useState<State[]>(() => set.questions.map(() => "unanswered"));
+  /** Which questions have already been sent to the database. See settle(). */
+  const recorded = useRef<Set<number>>(new Set());
 
   const q = set.questions[at];
   const state = states[at];
@@ -40,15 +42,42 @@ export function DailyPracticeRunner({ set }: { set: DailySet }) {
       copy[at] = next;
       return copy;
     });
-    // ⚠️ Recorded against the question's OWN topic, not "today's practice".
-    // A daily set is a different way of REACHING questions, not a different
-    // kind of question — so it feeds topic coverage, accuracy, XP and the
-    // streak exactly as answering them on the topic page would. It is also
-    // what makes the recommendation improve: today's answers are tomorrow's
-    // input.
-    if (states[at] === "unanswered") {
-      void recordAnswer(q.subjectSlug, q.topicSlug, next === "correct");
-    }
+
+    // ⚠️ REVEALING A MODEL ANSWER IS NOT GETTING IT WRONG.
+    //
+    // This recorded `next === "correct"`, so pressing "Show the model answer"
+    // on an extended question filed it as an INCORRECT answer. That is wrong
+    // twice over. It makes accuracy a lie — the site cannot mark an extended
+    // answer, which is the entire reason those questions are self-marked — and
+    // it feeds straight back into the recommender, so a student who engages
+    // with the hardest questions in a topic makes that topic look weaker, and
+    // is handed more of it tomorrow. A loop that punishes doing the hard part.
+    //
+    // Practice.tsx has always got this right: its "Show answer" sets a
+    // `selfMarked` status and never calls recordAnswer at all. Same here.
+    if (next === "shown") return;
+
+    // ⚠️ RECORDED ONCE PER QUESTION, VIA A REF RATHER THAN THE RENDER'S STATE.
+    // The guard used to read `states[at]`, which is the value captured when
+    // this render ran — so two clicks landing before React re-renders both saw
+    // "unanswered" and both recorded. Holding Enter on the text input is the
+    // realistic way to do it, and this project has already shipped that exact
+    // bug once: key repeat turned one answered question into twenty recorded
+    // events. A ref is written synchronously, so the second call sees the
+    // first.
+    if (recorded.current.has(at)) return;
+    recorded.current.add(at);
+
+    // Recorded against the question's OWN topic, not "today's practice". A
+    // daily set is a different way of REACHING questions, not a different kind
+    // of question — so it feeds topic coverage, accuracy, XP and the streak
+    // exactly as answering them on the topic page would. It is also what makes
+    // the recommendation improve: today's answers are tomorrow's input.
+    //
+    // Not awaited, and failures are swallowed: the tick has already appeared,
+    // and losing one statistic matters less than an error interrupting
+    // revision. Same call and same reasoning as Practice.tsx.
+    void recordAnswer(q.subjectSlug, q.topicSlug, next === "correct").catch(() => {});
   }
 
   function check() {
