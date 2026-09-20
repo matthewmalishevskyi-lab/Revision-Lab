@@ -63,6 +63,18 @@ create table if not exists public.content_reports (
 create index if not exists content_reports_created_idx
   on public.content_reports (created_at desc);
 
+-- ⚠️ ROW LEVEL SECURITY ON, WITH NO POLICIES — WHICH MEANS "NOBODY", AND THAT
+-- IS THE POINT. Every other table in this project does the same (see
+-- PROGRESS_SETUP.sql and CLAN_SETUP.sql), and this file was missing it: an
+-- oversight caught by Supabase's own SQL editor, which refuses to create a
+-- public table without RLS unless you insist.
+--
+-- With RLS on and no policy written, anon and authenticated can read nothing
+-- and write nothing, whatever grants exist. The server's service_role key
+-- bypasses RLS entirely, so the app is unaffected. Belt and braces on top of
+-- the revoke below: the revoke is the lock, this is the door.
+alter table public.content_reports enable row level security;
+
 -- ⚠️ SINCE APRIL 2026 A NEW TABLE IN `public` IS NOT AUTOMATICALLY EXPOSED TO
 -- THE API, and every tutorial written before then leaves this out. Without it
 -- the insert fails with PGRST205 "Could not find the table in the schema
