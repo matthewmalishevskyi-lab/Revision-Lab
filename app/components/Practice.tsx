@@ -27,6 +27,7 @@
 import { useState } from "react";
 import { HigherBadge } from "./HigherBadge";
 import { recordAnswer } from "../lib/progress-actions";
+import { ReportQuestion } from "./ReportQuestion";
 import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 // `normalise` used to be defined right here, and MockExam.tsx imported it
 // from this file. It now lives in lib/normalise.ts instead — pulled out the
@@ -434,6 +435,18 @@ export function Practice({
                         {item.answer}
                       </p>
                     </div>
+                  )}
+
+                  {/* Only once the answer is on screen — see the comment in
+                      ReportQuestion.tsx. Before that, "this looks wrong" is
+                      what being stuck feels like, not what a mistake looks
+                      like. */}
+                  {state.revealed && (
+                    <ReportQuestion
+                      subjectSlug={subject}
+                      topicSlug={topic}
+                      question={item.question}
+                    />
                   )}
                 </div>
               </div>

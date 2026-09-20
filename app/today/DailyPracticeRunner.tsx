@@ -16,6 +16,7 @@ import Link from "next/link";
 import { normalise } from "../lib/normalise";
 import { HigherBadge } from "../components/HigherBadge";
 import { MarkTariff } from "../components/MarkTariff";
+import { ReportQuestion } from "../components/ReportQuestion";
 import { DIFFICULTY_LABELS } from "../lib/difficulty";
 import { recordAnswer } from "../lib/progress-actions";
 import type { DailySet } from "../lib/daily-practice";
@@ -235,6 +236,14 @@ export function DailyPracticeRunner({ set }: { set: DailySet }) {
               </p>
             )}
           </div>
+        )}
+
+        {state !== "unanswered" && (
+          <ReportQuestion
+            subjectSlug={q.subjectSlug}
+            topicSlug={q.topicSlug}
+            question={q.question}
+          />
         )}
       </article>
 

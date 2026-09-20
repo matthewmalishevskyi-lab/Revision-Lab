@@ -49,6 +49,10 @@ export default function robots(): MetadataRoute.Robots {
         // Today's practice — different for every visitor and different every
         // day, so there is nothing here a searcher could ever land on usefully.
         "/today",
+        // The reported-questions list. notFound()s for everyone but the site
+        // contact, so a crawler would only ever get a 404 — listed anyway,
+        // same belt-and-braces as every other private route here.
+        "/admin",
         "/review",
         "/revise",
         "/wardrobe",

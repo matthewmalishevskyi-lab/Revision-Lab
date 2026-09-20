@@ -1,5 +1,115 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## "This looks wrong" — turning every reader into a proofreader (2026-09-20)
+
+Matthew: *"just in case something is wrong and we recheck the question if it's
+wrong, because you're not so reliable... people do not really trust you for
+some reason."* He gave explicit consent to use his email address for it.
+
+That is the right instinct, and it is the first thing built that actually
+ATTACKS the project's biggest standing risk rather than disclosing it. 651,000
+words, no subject teacher has read any of them, and the site has always said so
+at the foot of every topic page — but there has never been a way for the person
+who SPOTS a mistake to tell anyone. A disclaimer admits the risk; a report
+button does something about it.
+
+His three decisions: **saved AND emailed**, **practice questions only** ("make
+it a small button that won't bother our nice design"), **logged-in only**.
+
+### ⚠️ SAVED FIRST, EMAILED SECOND, AND THE ORDER IS THE WHOLE DESIGN
+
+The obvious build is "email Matthew and be done". It is also the exact shape of
+the worst bug this project has had: `password_resets` did not exist on the live
+database for weeks, so a reset request threw on insert, the error was caught
+and logged, and the screen said "check your email" anyway. Nobody ever received
+one and nobody found out, because **a failure that apologises politely looks
+exactly like a success**.
+
+A report is worth more than a reset link — it is somebody saying the content is
+WRONG. So the row goes in first and the email is only the nudge. If Gmail is
+unreachable, if `GMAIL_USER` was never set in Vercel, if the app password
+expired, the report is still in `content_reports` and still listed on
+`/admin/reports`. The action returns `{ ok, emailed }` and the student is told
+the truth either way; a save failure is shown, never swallowed.
+
+`/admin/reports` states it outright when `EMAIL_ENABLED` is false, because
+otherwise the only symptom of unset Gmail variables is a quiet inbox.
+
+**Needs `CONTENT_REPORTS_SETUP.sql` run once in Supabase**, including the
+`grant`/`notify pgrst` block — since April 2026 a new table in `public` is not
+exposed to the API without it, which is how this project once lost an afternoon
+on `PGRST205`.
+
+### The question text is checked against the real content
+
+A Server Action is reachable by anything that can make an HTTP request, not
+only by our button, and this one puts text into an email to Matthew's personal
+address. So the action verifies the question genuinely exists in that topic
+before doing anything. Without that it is an open "send arbitrary text to the
+site owner" endpoint.
+
+Stored as TEXT rather than an index into the content, deliberately: a
+question's position changes every time one is added above it, and this site
+added 1,155 in a single go.
+
+### The throttle is keyed on the USER, which is backwards from every other one
+
+Every other limiter in `throttle.ts` counts per IP, because it is defending
+against a stranger guessing at a password or a room code and there is no
+account to blame. This one defends an inbox against a logged-in student who has
+found the button funny — and that person has an account. Per-IP would punish a
+whole school behind one NAT for one pupil and would let the same pupil continue
+from their phone. The allowance is deliberately generous (12 before any pause):
+somebody finding three real mistakes in a topic is exactly who this is for.
+
+### ⚠️ SMALL TEXT IS NOT THE SAME AS A SMALL TAP TARGET
+
+The link is 12px at 45% opacity, per the brief. `.tap-pad` was applied, which
+this codebase uses to grow a hit box to ~42px without moving the layout —
+and it still came out at **38px on an iPhone 13 and at 320px**, under Apple's
+44px minimum and under this project's own rule.
+
+The cause: `.tap-pad`'s 11px of padding is calibrated for 20px text (20 + 22 =
+42). This link's line box is 16px, so it reached 38. A new `.tap-pad-xs` with
+14px takes a 16px line box to exactly 44. Verified afterwards that no tap
+targets overlap and that a tap at the link's centre reaches the link — the
+overlap trap `.tap-pad` has sprung twice before.
+
+⚠️ **And the first measurement was the harness, again — the sixth time.** The
+desktop run reported 16px and looked like a serious failure. The whole
+`.tap-pad` block lives inside `@media (pointer: coarse)`, so it correctly does
+nothing for a mouse. It had to be measured with touch emulation to mean
+anything.
+
+### It only appears once the answer has been seen
+
+Before that, a student who cannot do a question has no way of knowing whether
+it is wrong, and offering "this looks wrong" at the exact moment somebody is
+stuck invites a report that means "I don't know this". After the answer is on
+screen the person has actually compared the two, which is the only report worth
+reading.
+
+### The page only Matthew can see
+
+`/admin/reports`, gated on the viewer's email matching `CONTACT_EMAIL` — which
+is already the site's single source of truth for "who is this site" — rather
+than an `admin` column, which would be a second place to keep that fact and one
+bad UPDATE from being wrong. `notFound()` rather than a refusal page, so the
+route's existence is not confirmed to anyone who guesses it. **The Server
+Action behind "Mark done" repeats the check**: hiding a page is not access
+control when the action is reachable directly.
+
+**Verified:** 170,076 content, 1,239,302 geometry, 1,409 security, 19,711
+slide-deck and 9,886 recommendation checks; tsc and eslint clean; driven in a
+browser — hidden before the answer, one link after it, 44px on touch, zero
+overlapping targets, and a logged-out attempt correctly refused with "You need
+to be logged in to report a question" rather than silently accepted.
+
+**Still outstanding:** `CONTENT_REPORTS_SETUP.sql` has not been run, and
+whether `GMAIL_USER`/`GMAIL_APP_PASSWORD` are set in Vercel is still unknown
+from here — if they are not, reports will save and no email will arrive, which
+the admin page now says in as many words.
+
 ## Today's practice — 1,155 new questions and a recommender to serve them (2026-09-18)
 
 Matthew, relaying his maths teacher's idea: *"make a recommendation of

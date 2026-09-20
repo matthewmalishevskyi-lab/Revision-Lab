@@ -122,6 +122,25 @@ body {
        of it, so it stays inline and only grows vertically. */
     display: inline-block;
   }
+
+  /* ⚠️ .tap-pad IS CALIBRATED FOR 20px TEXT AND UNDERSHOOTS ON SMALLER TEXT.
+     Its 11px of padding assumes a 20px line box: 20 + 22 = 42. The "this looks
+     wrong" link under a practice question is deliberately tiny — 12px text,
+     so a 16px line box — and .tap-pad alone brought it to 38px, measured on an
+     iPhone 13 and at 320px. That is under Apple's 44px minimum and under this
+     project's own rule, and it was invisible from a desktop browser because
+     the whole block only applies at `pointer: coarse`.
+
+     14px each side takes a 16px line box to exactly 44. Same negative-margin
+     trick, so the layout does not move and the link still LOOKS small, which
+     was the whole brief. Safe on this link for the same reason .tap-pad is
+     safe anywhere: it stands alone on its own line, with non-interactive text
+     above it and the end of the card below. */
+  .tap-pad-xs {
+    padding-block: 0.875rem;
+    margin-block: -0.875rem;
+    display: inline-block;
+  }
 }
 
 /* ─── Hover is not universal ────────────────────────────────────────────────

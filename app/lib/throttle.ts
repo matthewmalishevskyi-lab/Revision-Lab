@@ -622,6 +622,48 @@ export async function recordResetRequest(): Promise<void> {
   }
 }
 
+// ── "This looks wrong" reports ───────────────────────────────────────────────
+//
+// ⚠️ KEYED ON THE USER, NOT THE IP, AND THAT IS THE OPPOSITE OF EVERY OTHER
+//    LIMITER IN THIS FILE. The rest are defending against a stranger guessing
+//    at something — a password, a room code — so they count per IP, because
+//    the attacker chooses their target and there is no account to blame.
+//
+//    This one defends Matthew's inbox against a logged-in student who has
+//    found the button funny, and that person HAS an account. Counting by IP
+//    would punish a whole school behind one NAT for one pupil's boredom, and
+//    would let the same pupil carry on from their phone. Counting by user is
+//    both fairer and harder to get around, and reporting is login-only, so
+//    there is always a user to count.
+//
+// The allowance is deliberately generous. Somebody working through a topic and
+// finding three genuine mistakes in it is the exact person this feature is
+// for, and being told off for it would be the worst possible outcome.
+const REPORT_TIERS: Tier[] = [
+  { atFailures: 12, lockSeconds: 30 * 60 },
+  { atFailures: 25, lockSeconds: 4 * 60 * 60 },
+];
+const REPORT_QUIET_SECONDS = 24 * 60 * 60;
+
+export async function checkReportAllowed(userId: string): Promise<ThrottleVerdict> {
+  try {
+    return await checkKey(`report:${userId}`, Date.now());
+  } catch (error) {
+    // Fails open, like every limiter here: a database blip must not stop
+    // somebody telling us the content is wrong.
+    console.error("[throttle] report check failed, allowing:", error);
+    return { allowed: true };
+  }
+}
+
+export async function recordReport(userId: string): Promise<void> {
+  try {
+    await bump(`report:${userId}`, Date.now(), REPORT_TIERS, REPORT_QUIET_SECONDS);
+  } catch (error) {
+    console.error("[throttle] could not record report:", error);
+  }
+}
+
 // Exported only so the test script can check the staircase without a database.
 export const __testing = {
   lockoutFor,
