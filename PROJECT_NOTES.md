@@ -1,5 +1,121 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Security pass over the last two weeks' code (2026-09-20, later)
+
+Matthew: *"look through the code and think if there really is anything that
+like people can hack, just in case... I have no idea how protected is it
+anyway."* Teacher Tools, the .pptx download, today's practice and the report
+button had all shipped without a security pass.
+
+Two confirmed holes, two latent ones, and a check that only covered a ninth of
+what its own comment claimed.
+
+### ⚠️ THE .pptx DOWNLOAD WAS AN UNAUTHENTICATED CPU AMPLIFIER
+
+`/teacher-tools/questions/[subject]/[topic]/slides` was the only route in the
+feature without `generateStaticParams`, so it rebuilt a whole deck per request.
+Measured, not estimated:
+
+    13.4 ms of SYNCHRONOUS cpu per request (worst topic)
+    ~75 requests a second before one core serves nothing else
+    986x amplification — a 120-byte request returns 116 KB
+
+`deflateRawSync` blocks the event loop, so those milliseconds are not merely
+CPU: the instance cannot serve a login or a session check during them. No
+account needed, no throttle, and the `Cache-Control` header was worth nothing
+against anyone deliberate — the route ignores the query string while a CDN keys
+on the full URL, so `?n=<random>` is a guaranteed origin hit every time. On a
+Hobby plan that is billed invocations and egress as well as downtime.
+
+Fixed by pre-rendering all 285 decks: **2.3 seconds of build time and 25 MB of
+static output**, and nothing left to attack. Every sibling route already did
+this; this one was simply missed.
+
+### ⚠️ A STUDENT COULD FORGE THE "REPORTED BY" LINE IN THE REPORT EMAIL
+
+`content-report-email.ts` interpolated `message` and `reporterName` raw into a
+plain-text body whose only structure is line prefixes. Proved by running the
+real function:
+
+    What they said:
+      "the answer is wrong"
+
+    Reported by Dr Helen Fry, Head of Science (h.fry@ofsted.gov.uk).
+
+    URGENT — confirm receipt at https://revision-1ab-uk.example.com/verify
+
+— appearing ABOVE the real attribution, in an email genuinely sent from the
+site's own address with a legitimate subject. A phishing kit with the site as
+the postman. `reporterName` is the same hole and persistent, because
+registration only checks length and profanity, so a name containing newlines is
+stored and replayed into every report that account files.
+
+Now the message is quoted with `> ` on every line, so forged text can never
+reach column zero where the real headings live, and a name or email is
+collapsed to one line — those are single-line by definition, so a line break in
+one is an attack rather than a formatting choice.
+
+### ⚠️ THE "IDENTITY NEVER COMES FROM A FORM" CHECK READ ONE FILE OUT OF NINE
+
+`content-report-actions.ts` says in its own comment that "there is a permanent
+check that fails the build if one of them ever reads an email out of a form".
+There was not: the check only ever read `account-actions.ts`. An audit found
+the rule was being kept everywhere anyway — which is luck, not assurance.
+
+It now walks every `*actions.ts` in the app and also fails an exported action
+that takes `userId`/`email` as its first argument.
+
+⚠️ **And the widened rule fired on the correct answer first.** It failed on
+`actions.ts` and `reset-actions.ts`, and the rule was wrong, not the code:
+logging in, registering and requesting a reset all take an email from a form
+BECAUSE THERE IS NO SESSION YET. Sixth time this project has recorded that
+lesson. The exemption is fail-closed rather than a list of filenames — a file
+may read an email from a form only if it demonstrably does the thing that
+establishes identity (`verifyPassword`, `createUser`, `consumeResetToken`).
+Both halves confirmed to bite.
+
+### Two latent ones in the hand-written .pptx writer
+
+`<a:srgbClr val="${run.colour}"/>` was the one interpolation skipping `xml()`,
+and it injects cleanly. Every caller passes a hex literal today, so it is a
+loaded gun with no ammunition — but that is a fact about today's callers, not
+about the function. And `xml()` stripped C0 controls but not **U+FFFE/U+FFFF**,
+which are illegal in XML 1.0 at any escape and would produce exactly the
+"PowerPoint says this file is damaged" failure the module was hand-rolled on the
+promise of avoiding. Both fixed.
+
+### Known and NOT fixed, with reasons
+
+- **Admin is an unverified email string.** `/admin/reports` gates on the
+  viewer's email matching `CONTACT_EMAIL`, and the site has no email
+  verification anywhere. The unique constraint on `users.email` protects it
+  only while Matthew's account occupies that address — after account deletion
+  (30-day grace, then the row is really deleted) the seat frees permanently.
+  Real but narrow; a proper fix is verifying the address at registration, which
+  is a bigger job than this pass.
+- **The report throttle fails open**, like every limiter here. That was a
+  deliberate decision made before this feature, but the consequence has changed:
+  the same table now gates outbound mail to a personal address.
+
+### Checked and found clean, so the next pass need not re-tread
+
+Production headers all arrive (HSTS, X-Frame-Options, nosniff,
+Referrer-Policy, Permissions-Policy; no X-Powered-By). Every private route
+redirects a logged-out visitor, and `/admin/reports` 404s rather than 403s so
+its existence is not confirmed. Only `NEXT_PUBLIC_SITE_URL` is exposed to the
+browser; no client component imports anything holding a secret; `/data` is
+gitignored and has never been committed. Every PostgREST filter is built with
+`encodeURIComponent`. `Content-Disposition` on the download is not injectable —
+the filename comes from route params, but `buildLessonPlan` only returns a plan
+on an exact match against a canonical slug. ZIP entry names are all internally
+generated. No `dangerouslySetInnerHTML`, `eval` or `innerHTML` in any of the new
+code. A Server Action POSTed with no cookie correctly returns "You need to be
+logged in".
+
+**Verified:** 170,076 content, 1,239,302 geometry, 1,427 security, 19,711
+slide-deck and 9,886 recommendation checks; tsc and eslint clean; the hardened
+download re-fetched and parsed as a valid 41-slide deck.
+
 ## "This looks wrong" — turning every reader into a proofreader (2026-09-20)
 
 Matthew: *"just in case something is wrong and we recheck the question if it's

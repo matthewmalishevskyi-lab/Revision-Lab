@@ -142,7 +142,12 @@ function xml(text: string): string {
     .replace(/'/g, "&apos;")
     // Control characters are not legal in XML at all, at any escape. Strip
     // rather than encode: there is no representation that would survive.
-    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g, "");
+    //
+    // U+FFFE and U+FFFF are in the same category and were missing: they are
+    // illegal in XML 1.0 at any escape, so one of them anywhere in the content
+    // would produce exactly the "PowerPoint says this file is damaged" failure
+    // this module was allowed to be hand-written on the promise of avoiding.
+    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\uFFFE\uFFFF]/g, "");
 }
 
 const DECL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n';
@@ -188,8 +193,15 @@ function runXml(run: TextRun): string {
     `b="${run.bold ? 1 : 0}"`,
     `dirty="0"`,
   ].join(" ");
+  // ⚠️ ESCAPED EVEN THOUGH EVERY CALLER PASSES A HEX LITERAL TODAY.
+  // This was the one interpolation in the file that skipped xml(), and it
+  // injects cleanly: a colour of `000000"/></a:solidFill><a:solidFill…` closes
+  // the attribute and writes new elements. Nothing reaches it from a request,
+  // so it is a loaded gun with no ammunition — but "no ammunition" is a fact
+  // about today's callers, not about this function, and the next person to
+  // make a colour dynamic will not read this far.
   const fill = run.colour
-    ? `<a:solidFill><a:srgbClr val="${run.colour}"/></a:solidFill>`
+    ? `<a:solidFill><a:srgbClr val="${xml(run.colour)}"/></a:solidFill>`
     : "";
   return `<a:r><a:rPr ${props}>${fill}</a:rPr><a:t>${xml(run.text)}</a:t></a:r>`;
 }

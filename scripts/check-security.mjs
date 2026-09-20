@@ -520,7 +520,57 @@ try {
     "the sign-up form links to the privacy page, where it is actually relevant",
   );
 
-  // Identity must come from the session, never from the form.
+  // ⚠️ THE RULE IS NOW CHECKED ACROSS EVERY ACTION FILE, NOT JUST ONE.
+  //
+  // `content-report-actions.ts` says in its own comment that "there is a
+  // permanent check that fails the build if one of them ever reads an email
+  // out of a form" — and there was not. The check below only ever read
+  // account-actions.ts, so the rule it claims to enforce site-wide was
+  // enforced on one file out of nine. An audit found the rule was actually
+  // being kept everywhere; that is luck, not assurance, and the next action
+  // file is the one that would break it.
+  //
+  // Identity in this codebase comes from the signed session cookie and from
+  // nowhere else. An action that takes a user id or an email as an argument is
+  // an action anyone can call as anyone.
+  for (const file of [...new Set(listFiles("app").filter(
+    (f) => /(-actions|actions)\.ts$/.test(f),
+  ))]) {
+    const src = readFileSync(file, "utf8");
+    const stripped = src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+
+    // ⚠️ AN AUTHENTICATION ENTRY POINT IS EXEMPT, AND MUST PROVE IT IS ONE.
+    //
+    // The first version of this rule failed on actions.ts and
+    // reset-actions.ts, and it was the rule that was wrong: logging in,
+    // registering and asking for a reset link all take an email from a form
+    // BECAUSE THERE IS NO SESSION YET. That is the whole point of them. A
+    // check that fires on the correct answer is worse than no check, which
+    // this project has now recorded five separate times.
+    //
+    // So the exemption is fail-closed rather than a list of filenames: a file
+    // may read an email from a form only if it actually does the thing that
+    // establishes identity — checks a password, creates the account, or spends
+    // a reset token. Any other action file that starts reading emails from
+    // forms still fails, which is the case worth catching.
+    const isAuthEntryPoint =
+      /verifyPassword|createUser|consumeResetToken|spendPasswordCheckTime/.test(stripped);
+
+    expect(
+      isAuthEntryPoint ||
+        !/formData\.get\(\s*["'](email|userId|user_id)["']\s*\)/.test(stripped),
+      `${file} reads an identity out of a form — it must come from the session cookie`,
+    );
+    // An exported action whose first parameter is named like an identity.
+    const idArg = stripped.match(
+      /export async function \w+\(\s*(userId|user_id|email|accountId)\b/,
+    );
+    expect(
+      idArg === null,
+      `${file} exports an action taking ${idArg?.[1]} as an argument — anyone could call it as anyone`,
+    );
+  }
+
   const accountActions = readFileSync("app/lib/account-actions.ts", "utf8");
   expect(
     !/formData\.get\(\s*["']email["']\s*\)/.test(accountActions),
