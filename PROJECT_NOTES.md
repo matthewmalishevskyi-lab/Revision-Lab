@@ -1,5 +1,56 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Hoot's calculator (2026-09-21, later)
+
+Matthew: *"a little calculator button that will put on a cute calculator where
+the students might need calculations."* Asked first; he chose **scientific**,
+**maths and the three sciences only**, **a switch to hide it** for
+non-calculator practice, and **Hoot holding it**.
+
+Where it is: beside practice questions, in the timed test's header, and once
+on `/today` when any question there is from a calculator subject. Driven by
+`calculator: true` on the subject in subjects.ts, not a list of slugs.
+
+### ⚠️ No eval(), because eval gets GCSE maths wrong
+
+`lib/calculator.ts` is a small parser that follows a Casio fx-83GT, because a
+calculator that disagrees with the student's own one makes them doubt their
+method, not our code. The cases `eval` gets wrong are exactly the ones a
+student will try: `−2²` is −4; `sin 30` is 0.5 (degrees, not radians);
+`2π` and `3(4+1)` are ordinary maths; `0.1+0.2` shows 0.3; `2^3^2` is 512.
+`1 ÷ 2π` is 1 ÷ (2π), because a Casio binds side-by-side multiplication tighter
+than ÷ — a circle formula checked against their own calculator must match.
+`tan 90` is a Maths error, not 1.6 × 10¹⁶. Standard form prints as
+`6.02 × 10²³`, never `6.02e+23`.
+
+check-calculator.mjs (78 checks), each sabotage confirmed to bite. ⚠️ Two of
+its first expected values were wrong, typed from memory; the calculator was
+right. Cross-checked in Python — the standing lesson, again.
+
+### Found by driving it, not by reading it
+
+- **"/" opened the site search.** SearchBox listens for "/" page-wide, so
+  typing `12/4` into the calculator took the keyboard away mid-sum. The panel
+  now stops propagation of any key it has used.
+- **On an iPhone SE it covered the question.** All 33 keys at a tappable
+  size is ~550px on a 568px screen. Phones now see half the keypad at a time
+  (numbers, or `sin √ π` like SHIFT, which lets go after one function), keys
+  are 44px, there is a fold button that shrinks it to its screen, and the page
+  gets extra bottom room while it is open so the question can be scrolled
+  above it.
+- **A second button beside "Finish exam"** — my replace matched twice. The
+  checker now requires exactly one per place.
+
+It is deliberately **not a modal**: it sits in the corner, the page stays
+usable, and the answer box still takes typing while it is open (verified).
+Keys are only heard inside the panel, so it never steals a digit from the
+answer box. Escape closes it and returns focus to the button.
+
+**Verified:** all checks green (78 calculator); driven on desktop and iPhone SE
+— tapped and typed sums, Ans carry-on, fold, hide survives a reload and comes
+back, no button on English or History tests, no horizontal overflow, zero
+console errors.
+
 ## Four in one morning: the History gate, lessons that climb, one minute per mark, and wrong answers that come back (2026-09-21)
 
 Matthew, walking to school: fix #4 first — *"make sure that people who revised

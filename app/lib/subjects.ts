@@ -68,6 +68,10 @@ export type Subject = {
   // subject optional only means it is suggested a little later, while wrongly
   // calling it compulsory pushes it on people who dropped it.
   compulsory?: boolean;
+  // Offers the pop-up calculator beside practice and tests. The subjects
+  // whose GCSE papers are calculator papers (or, for Maths, two of three):
+  // a calculator button on an English essay would be noise.
+  calculator?: boolean;
 
   mascot:
     | "pixel"
@@ -329,6 +333,7 @@ export const SUBJECTS: Subject[] = [
   },
   {
     slug: "maths",
+    calculator: true,
     compulsory: true,
     name: "Maths",
     blurb: "Choose a topic to start revising",
@@ -651,6 +656,7 @@ export const SUBJECTS: Subject[] = [
   // ─── BIOLOGY ──────────────────────────────────────────────────────────────
   {
     slug: "biology",
+    calculator: true,
     compulsory: true,
     name: "Biology",
     blurb: "Choose a topic to start revising",
@@ -702,6 +708,7 @@ export const SUBJECTS: Subject[] = [
   // ─── CHEMISTRY ────────────────────────────────────────────────────────────
   {
     slug: "chemistry",
+    calculator: true,
     compulsory: true,
     name: "Chemistry",
     blurb: "Choose a topic to start revising",
@@ -752,6 +759,7 @@ export const SUBJECTS: Subject[] = [
   // ─── PHYSICS ──────────────────────────────────────────────────────────────
   {
     slug: "physics",
+    calculator: true,
     compulsory: true,
     name: "Physics",
     blurb: "Choose a topic to start revising",

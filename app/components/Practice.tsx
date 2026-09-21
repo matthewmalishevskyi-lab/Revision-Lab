@@ -26,6 +26,8 @@
 
 import { useState } from "react";
 import { HigherBadge } from "./HigherBadge";
+import { Calculator } from "./Calculator";
+import { getSubject } from "../lib/subjects";
 import { recordAnswer } from "../lib/progress-actions";
 import { ReportQuestion } from "./ReportQuestion";
 import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
@@ -233,8 +235,17 @@ export function Practice({
     0,
   );
 
+  // Only in subjects whose papers allow a calculator — see subjects.ts.
+  const calculatorSubject = getSubject(subject);
+
   return (
     <div>
+      {calculatorSubject?.calculator && (
+        <div className="mb-3 flex justify-end">
+          <Calculator colour={calculatorSubject.accent} />
+        </div>
+      )}
+
       {/* Score, shown only once something has been attempted — a 0/14 staring
           at you before you start is discouraging and tells you nothing. */}
       {attempted > 0 && (

@@ -22,6 +22,8 @@ import Link from "next/link";
 import { normalise } from "../lib/normalise";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
+import { Calculator } from "./Calculator";
+import { getSubject } from "../lib/subjects";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
 import { MarkTariff } from "./MarkTariff";
 import { marksFor } from "../lib/marks";
@@ -482,6 +484,7 @@ export function MockExam({
         >
           {formatClock(secondsLeft)}
         </span>
+        {getSubject(subjectSlug)?.calculator && <Calculator colour={colour} />}
         <button
           type="button"
           onClick={() => setPhase("finished")}
