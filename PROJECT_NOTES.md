@@ -1,5 +1,115 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Four in one morning: the History gate, lessons that climb, one minute per mark, and wrong answers that come back (2026-09-21)
+
+Matthew, walking to school: fix #4 first — *"make sure that people who revised
+geography and didn't do more than 10 questions of History never got it on
+their suggested today's practice"* — then do #1, #2 and #3 "in a sequence from
+the least to the hardest". Done in that order, unattended, one commit each.
+
+### #4 — History only appears once you have done more than ten of it
+
+Measured before fixing: **17 of 400 brand-new students and 4 of 100
+Geography-only students were being served History** in today's practice, via
+the "you have not tried this yet" slots. Subjects now carry `compulsory: true`
+(Maths, English and the three sciences — what every GCSE student sits). Any
+other subject is only eligible once the student has answered **more than 10**
+questions in it: 10 is still locked, 11 unlocks. `subjectUnlocked()` in
+daily-practice.ts, and the existing "weakest topic is always drawn from" check
+now respects it. Checked on 400 new students, Geography-only students, and
+the exact boundary.
+
+### #1 — Teacher Tools lessons climb by difficulty, not marks
+
+⚠️ **179 of the 285 lessons went backwards somewhere.** They were ordered by
+mark tariff, and after the difficulty ladder shipped a 1-mark "explain" (L5)
+could land in the starter while a 2-mark "recall" sat in stretch. Phases now
+claim by derived difficulty from the back, with `takeAtLevel` falling back
+DOWNWARD only, so a thin rung can never pull a harder question into an easier
+phase.
+
+Two of my own bugs, caught on the way: the first exit-ticket code consumed a
+question and threw it away; and a stretch fallback produced **L2 after L5** —
+a backwards ramp my narrow "Guided vs Independent" metric could not see. The
+check is now the full ramp: no phase's easiest question may be easier than the
+previous phase's hardest (check-pptx.mjs, 20,274 checks).
+
+### #2 — One minute per mark, and a clock that allows it
+
+⚠️ **Every subject test asked for more marks than it had minutes** — Physics a
+median 46 marks in 20 minutes. A pace hint on that clock would have told every
+student they were behind from minute one, so the clock had to be fixed before
+the hint could mean anything.
+
+The test is now a **20-mark budget** (the past paper 80) filled greedily from
+the shuffled pool, and the clock is exactly one minute per mark. ⚠️ **The
+visible change: a subject test now has fewer, harder questions** — Physics is
+typically about 7 questions in 20 minutes rather than 20.
+
+During the test a quiet `role="status"` line says "On pace", "3 min behind" or
+"2 min ahead", with a one-minute dead band so it does not chatter (a perfectly
+paced sitting changes label at most twice). Time per question is measured
+between answers; the finish screen says where the time went — only flagging a
+question that took both 1.5× its share AND a full minute over it, so a 1-mark
+question answered in 40 seconds is not called slow. `exam-pacing.ts`,
+check-pacing.mjs (2,715 checks).
+
+### #3 — The questions you got wrong come back
+
+A wrong answer was the most useful thing the site learned about a student, and
+it threw it away: `activity` records the topic, never the question. New table
+`question_reviews` — one row per answer, folded like flashcard_reviews — on
+**the same five Leitner boxes as flashcards** (10 min, 1, 3, 7, 16 days), on
+purpose: two schedules on one site would be two answers to "when will I see
+this again".
+
+⚠️ **A question enters only when first got WRONG.** Right first time means
+learned, and bringing it back would bury the real mistakes.
+
+Due questions appear on `/today` as **"Revisit your mistakes"**, at most five,
+most overdue first, ABOVE the daily climb rather than folded into it — a wrong
+answer can be any difficulty, and mixing them in would break the easy-to-hard
+order. Same runner component, so marking and recording cannot drift; a
+question already in today's set is not asked twice.
+
+Three things that matter more than they look:
+
+  - **`recordAnswer` checks the question text exists in that topic** before
+    storing it. A Server Action is reachable by anything that can make an
+    HTTP request; without the check anyone could fill their list with
+    arbitrary text.
+  - **The two writes use `Promise.allSettled`.** Until the SQL is run the
+    table does not exist and every insert is refused — that must never cost
+    the student their recorded answer, streak or XP. Proven in a browser
+    against a fake Supabase with the table missing: the answer still landed
+    in `activity`, the revisit section simply did not render, no page broke.
+  - **"Delete my progress" now clears three tables**, and a missing table
+    counts as success — otherwise every press would report "some of your
+    history may still be here" about rows that never existed.
+
+check-question-review.mjs (43 checks), confirmed to bite on: dropping the
+newest-first reverse (the flashcard bug from August), listing never-wrong
+questions, reporting a missing table as a failed delete, a caller not passing
+the question, and asking a question twice. ⚠️ One line turned out NOT to be
+guarded: the "don't climb before the first mistake" condition is logically
+redundant, because the reset to box 1 erases any earlier climb. Sabotaging it
+changes nothing, which is correct — noted in the code rather than pretending
+the check covers it.
+
+Driven end to end in a real browser against a stand-in Supabase: a wrong
+answer on the indices topic was stored, aged an hour, appeared under "Revisit
+your mistakes" on /today, no overflow at 320px, zero console errors, and
+"Delete my progress" left 0 rows behind.
+
+**⚠️ NEEDS `QUESTION_REVIEW_SETUP.sql` RUN ONCE IN SUPABASE**, including its
+`grant`/`notify pgrst` block. Until then nothing breaks — the feature just
+stays invisible, and a `[question-review] insert failed: 404 PGRST205` line
+appears in the Vercel logs on every answer.
+
+**Verified:** 170,076 content, 1,239,302 geometry, 1,427 security, 20,274
+slide-deck, 9,892 recommendation, 2,715 pacing and 43 question-review checks;
+tsc and eslint clean.
+
 ## Security pass over the last two weeks' code (2026-09-20, later)
 
 Matthew: *"look through the code and think if there really is anything that
