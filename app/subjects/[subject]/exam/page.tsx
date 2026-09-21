@@ -4,7 +4,12 @@ import { notFound } from "next/navigation";
 import { MockExam, type ExamQuestion } from "../../../components/MockExam";
 import { MascotDisplay } from "../../../components/MascotDisplay";
 import { SiteHeader } from "../../../components/SiteHeader";
-import { collectQuestionPool, normalizeQueryValue } from "../../../lib/examPool";
+import {
+  collectQuestionPool,
+  normalizeQueryValue,
+  pickToMarkBudget,
+  secondsAtOneMinutePerMark,
+} from "../../../lib/examPool";
 import { shuffle } from "../../../lib/shuffle";
 import { getSubject, type YearGroup } from "../../../lib/subjects";
 
@@ -25,12 +30,16 @@ import { getSubject, type YearGroup } from "../../../lib/subjects";
 
 export const dynamic = "force-dynamic";
 
-// How many questions, and how long to answer them. Not trying to reproduce
-// any specific exam board's real timing — boards and papers vary — just
-// enough of both to feel like a proper sitting rather than a couple of
-// practice questions.
-const QUESTION_COUNT = 20;
-const DURATION_SECONDS = 20 * 60;
+// ⚠️ A MARK BUDGET, NOT A QUESTION COUNT — see "ONE MINUTE PER MARK" in
+// lib/examPool.ts. This was 20 questions in a fixed 20 minutes, which after
+// September's harder questions meant a median 46 marks in 20 minutes for
+// Physics: more than twice a real paper's pace. The test keeps its identity
+// as a quick twenty-minute sitting by filling 20 MARKS of questions instead,
+// so the number of questions varies (fewer when they are harder) and the
+// clock is exactly one minute per mark. The long, paper-length sitting is the
+// past paper; this is the short one, and it should stay short.
+const MARK_BUDGET = 20;
+const QUESTION_COUNT = MARK_BUDGET; // used in the page description only
 
 type Props = {
   params: Promise<{ subject: string }>;
@@ -44,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${subject.name} test`,
-    description: `A timed, mixed-topic practice set for GCSE ${subject.name} — ${QUESTION_COUNT} questions in ${DURATION_SECONDS / 60} minutes.`,
+    description: `A timed, mixed-topic practice set for GCSE ${subject.name} — ${QUESTION_COUNT} marks in ${QUESTION_COUNT} minutes, at one minute per mark like the real exam.`,
     // A fresh random set every visit means there's no one stable page for a
     // search engine to index — the same reasoning that keeps the dashboard
     // and login pages out of search results, just for a different cause.
@@ -83,7 +92,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
       selectedYears.includes(group.year),
     );
     const pool = collectQuestionPool(subject.slug, yearsToInclude);
-    questions = shuffle(pool).slice(0, QUESTION_COUNT);
+    questions = pickToMarkBudget(shuffle(pool), subject.slug, MARK_BUDGET);
   }
 
   return (
@@ -209,7 +218,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
               subjectSlug={subject.slug}
               subjectName={subject.name}
               colour={subject.accent}
-              durationSeconds={DURATION_SECONDS}
+              durationSeconds={secondsAtOneMinutePerMark(questions, subject.slug)}
             />
           </>
         )}

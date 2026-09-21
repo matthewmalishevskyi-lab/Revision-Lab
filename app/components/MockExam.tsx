@@ -25,6 +25,7 @@ import { Celebration } from "./Celebration";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
 import { MarkTariff } from "./MarkTariff";
 import { marksFor } from "../lib/marks";
+import { pace, spokenDuration, timeBreakdown } from "../lib/exam-pacing";
 import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 
 export type ExamQuestion = {
@@ -74,6 +75,11 @@ export function MockExam({
   const [phase, setPhase] = useState<"intro" | "running" | "finished">("intro");
   const [secondsLeft, setSecondsLeft] = useState(durationSeconds);
   const [states, setStates] = useState<Record<number, QuestionState>>({});
+  // Seconds into the test at which each question was FIRST answered — see
+  // lib/exam-pacing.ts. State rather than a ref because the finish screen
+  // reads it during render, and this codebase's React Compiler rules forbid
+  // reading a ref during render.
+  const [answeredAt, setAnsweredAt] = useState<Record<number, number>>({});
   const recorded = useRef<Set<number>>(new Set());
   // Whether the celebration overlay has been dismissed — not "is it
   // showing", which is derived below as `celebrating`. Tracking dismissal
@@ -139,6 +145,15 @@ export function MockExam({
       ...current,
       [index]: { ...(current[index] ?? EMPTY), ...changes },
     }));
+
+    // Stamp the moment a question is first committed — checked, picked, or its
+    // model answer revealed. Typing leaves status "unanswered", so keystrokes
+    // never count. The functional update keeps the FIRST stamp: a student who
+    // edits and re-checks is not charged the time twice.
+    if (changes.status && changes.status !== "unanswered") {
+      const at = durationSeconds - secondsLeft;
+      setAnsweredAt((current) => (index in current ? current : { ...current, [index]: at }));
+    }
   }
 
   function check(index: number, question: ExamQuestion, given?: string) {
@@ -190,6 +205,17 @@ export function MockExam({
     (sum, q) => (q.accept ? sum + marksFor(subjectSlug, q) : sum),
     0,
   );
+  // Marks answered so far, for the pace line — every committed question counts,
+  // self-marked ones included, because the time spent on them was real.
+  const questionMarks = questions.map((q) => marksFor(subjectSlug, q));
+  const marksAnswered = questionMarks.reduce(
+    (n, m, i) => (i in answeredAt ? n + m : n),
+    0,
+  );
+  const livePace = pace(durationSeconds - secondsLeft, marksAnswered);
+  const breakdown = timeBreakdown(questionMarks, answeredAt, durationSeconds, secondsLeft);
+  const phaseAnswered = Object.keys(answeredAt).length;
+
   const earnedMarks = questions.reduce(
     (sum, q, i) =>
       q.accept && stateFor(i).status === "correct"
@@ -248,11 +274,17 @@ export function MockExam({
           {questions.length} questions, {Math.round(durationSeconds / 60)}{" "}
           minutes
         </h2>
+        {/* Says the rule out loud, because it is the whole point of the clock
+            and the reason the question count now varies from test to test. */}
+        <p className="mt-2 text-sm font-medium" style={{ color: colour }}>
+          One minute per mark — the pace a real paper expects
+        </p>
         <p className="mx-auto mt-3 max-w-prose opacity-70">
           Pulled from {uniqueTopics.length} different {subjectName} topics —
           not just one, so this is closer to what the real paper feels like.
-          The clock starts the moment you click start, and answers are marked
-          the same way as everywhere else on the site.
+          The clock starts the moment you click start, and you&apos;ll see as
+          you go whether you&apos;re keeping pace. At the end it shows where
+          your time went.
         </p>
         <button
           type="button"
@@ -298,6 +330,73 @@ export function MockExam({
               : "No auto-marked questions in this set"}
           </p>
         </div>
+
+        {/* ── Where the time went ─────────────────────────────────────────
+            The other half of one minute per mark. The score says how many
+            marks you got; this says how many you never had time to try, and
+            which question cost you them. */}
+        {(breakdown.overran.length > 0 || breakdown.unansweredCount > 0) ? (
+          <div className="mt-6 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+            <h3 className="font-semibold">Where your time went</h3>
+            <p className="mt-1 text-sm opacity-60">
+              At one minute per mark — the pace a real paper expects.
+            </p>
+
+            {breakdown.ranOut && (
+              <p className="mt-4 rounded-xl bg-amber-500/10 px-4 py-3 text-sm">
+                <strong className="font-semibold">You ran out of time</strong> with{" "}
+                {breakdown.unansweredCount} question{breakdown.unansweredCount === 1 ? "" : "s"}{" "}
+                and <span className="tabular-nums">{breakdown.unansweredMarks}</span> mark
+                {breakdown.unansweredMarks === 1 ? "" : "s"} still to try.
+                {breakdown.overran.length > 0 &&
+                  " The questions below are where that time went."}
+              </p>
+            )}
+            {!breakdown.ranOut && breakdown.unansweredCount > 0 && (
+              <p className="mt-4 text-sm opacity-75">
+                You finished with {breakdown.unansweredCount} question
+                {breakdown.unansweredCount === 1 ? "" : "s"} ({breakdown.unansweredMarks} mark
+                {breakdown.unansweredMarks === 1 ? "" : "s"}) unanswered.
+              </p>
+            )}
+
+            {breakdown.overran.length > 0 && (
+              <ul className="mt-4 space-y-2">
+                {breakdown.overran.slice(0, 4).map((o) => (
+                  <li
+                    key={o.index}
+                    className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-xl border border-black/10 px-4 py-2.5 text-sm dark:border-white/15"
+                  >
+                    <span>
+                      <span className="font-semibold">Question {o.index + 1}</span>{" "}
+                      <span className="opacity-60">
+                        ({o.marks} mark{o.marks === 1 ? "" : "s"})
+                      </span>
+                    </span>
+                    <span className="tabular-nums">
+                      {spokenDuration(o.seconds)}{" "}
+                      <span className="opacity-60">
+                        — about {o.ratio >= 1.95 ? `${Math.round(o.ratio)}×` : "double"} its share
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* Honest about what the number is. The test shows every question
+                at once, so the site cannot know which one you were LOOKING at —
+                only when each answer went down. */}
+            <p className="mt-3 text-xs opacity-50">
+              Time is counted between your answers, so if you skipped around it
+              lands on whichever question you answered next.
+            </p>
+          </div>
+        ) : phaseAnswered > 0 ? (
+          <p className="mt-6 text-center text-sm text-green-700 dark:text-green-400">
+            Good pacing — nothing took much more than its marks were worth.
+          </p>
+        ) : null}
 
         {wrongQuestions.length > 0 && (
           <div className="mt-6 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
@@ -351,12 +450,29 @@ export function MockExam({
           scrolling back up — the one thing about a timed exam that matters
           more than anything else on the page. */}
       <div
-        className="sticky top-0 z-10 -mx-6 mb-4 flex items-center justify-between border-b border-white/60 bg-white/90 px-6 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-neutral-900/90 sm:rounded-2xl sm:border sm:mx-0"
+        className="sticky top-0 z-10 -mx-6 mb-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-b border-white/60 bg-white/90 px-6 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-neutral-900/90 sm:rounded-2xl sm:border sm:mx-0"
         style={{ borderColor: secondsLeft <= 60 ? "#dc2626" : undefined }}
       >
         <span className="text-sm font-medium opacity-70">
           {correct + wrongQuestions.length}/{markable} answered ·{" "}
           {earnedMarks}/{totalMarks} marks
+        </span>
+        {/* One minute per mark, live. Announced politely rather than shown
+            silently, but only when it CHANGES — see the dead band in
+            exam-pacing.ts, which is what stops it chattering. */}
+        <span
+          role="status"
+          aria-live="polite"
+          className={`whitespace-nowrap text-sm font-semibold tabular-nums ${
+            livePace.tone === "warn"
+              ? "text-amber-700 dark:text-amber-400"
+              : livePace.tone === "good"
+                ? "text-green-700 dark:text-green-400"
+                : "opacity-70"
+          }`}
+          title="One minute per mark: the time you have used, against the marks you have answered"
+        >
+          {livePace.label}
         </span>
         <span
           className={`text-xl font-bold tabular-nums ${
@@ -369,7 +485,7 @@ export function MockExam({
         <button
           type="button"
           onClick={() => setPhase("finished")}
-          className="rounded-lg border border-black/10 px-3.5 py-1.5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+          className="min-h-11 whitespace-nowrap rounded-lg border border-black/10 px-3.5 py-1.5 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
         >
           Finish now
         </button>

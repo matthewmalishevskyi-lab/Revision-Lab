@@ -8,6 +8,7 @@
 // `shuffle()` were already shared rather than copied.
 
 import { getTopicContent } from "./content";
+import { marksFor } from "./marks";
 import type { ExamQuestion } from "../components/MockExam";
 import type { YearGroup } from "./subjects";
 
@@ -44,4 +45,65 @@ export function collectQuestionPool(
 export function normalizeQueryValue(raw: string | string[] | undefined): string[] {
   if (raw === undefined) return [];
   return Array.isArray(raw) ? raw : [raw];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ONE MINUTE PER MARK
+//
+// The standard exam-technique rule, and the one Matthew picked in September:
+// "That is actually sick." It could only be taught once every question had a
+// tariff (lib/marks.ts), and it turned out it could not be taught at all on
+// the clock the tests used to have.
+//
+// ⚠️ EVERY SUBJECT'S TEST ASKED FOR MORE MARKS THAN IT HAD MINUTES.
+// The subject test was 20 questions in a fixed 20 minutes, set when nearly
+// every question was worth 1. Measured once 1,155 harder questions had been
+// added, over 500 random tests per subject:
+//
+//     physics    median 46 marks in 20 minutes   2.30 marks a minute
+//     chemistry         40                      2.00
+//     maths             36                      1.80
+//     history           26                      1.30   (never expanded)
+//
+// More than twice a real paper's pace, in every subject — including the ones
+// that were never touched. A pace indicator on that clock would have told
+// every student they were behind from the first minute, which is not advice.
+// So the clock now follows the rule instead of the question count.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Shuffled questions, taken in order while they fit a MARK budget, so the
+ * paper takes the time its marks say it should.
+ *
+ * Greedy rather than optimal, on purpose: the input is already shuffled, so
+ * taking whatever fits next preserves the randomness a knapsack solver would
+ * throw away by always preferring the same combinations. A question worth more
+ * than what is left is skipped rather than allowed to overshoot, so the total
+ * never exceeds the budget and the clock is never shorter than the paper.
+ */
+export function pickToMarkBudget<T extends { accept?: string[]; question: string; choices?: string[] }>(
+  shuffled: T[],
+  subjectSlug: string,
+  budget: number,
+  maxQuestions = 50,
+): T[] {
+  const picked: T[] = [];
+  let used = 0;
+  for (const q of shuffled) {
+    if (picked.length >= maxQuestions || used >= budget) break;
+    const m = marksFor(subjectSlug, q);
+    if (used + m > budget) continue;
+    picked.push(q);
+    used += m;
+  }
+  return picked;
+}
+
+/** Seconds allowed for a set of questions, at exactly one minute per mark. */
+export function secondsAtOneMinutePerMark<T extends { accept?: string[]; question: string; choices?: string[] }>(
+  questions: T[],
+  subjectSlug: string,
+): number {
+  const marks = questions.reduce((n, q) => n + marksFor(subjectSlug, q), 0);
+  return Math.max(60, marks * 60);
 }

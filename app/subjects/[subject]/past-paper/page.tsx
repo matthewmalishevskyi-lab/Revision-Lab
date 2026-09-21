@@ -4,7 +4,12 @@ import { notFound } from "next/navigation";
 import { MockExam, type ExamQuestion } from "../../../components/MockExam";
 import { MascotDisplay } from "../../../components/MascotDisplay";
 import { SiteHeader } from "../../../components/SiteHeader";
-import { collectQuestionPool, normalizeQueryValue } from "../../../lib/examPool";
+import {
+  collectQuestionPool,
+  normalizeQueryValue,
+  pickToMarkBudget,
+  secondsAtOneMinutePerMark,
+} from "../../../lib/examPool";
 import { shuffle } from "../../../lib/shuffle";
 import { getSubject, type YearGroup } from "../../../lib/subjects";
 
@@ -22,17 +27,15 @@ export const dynamic = "force-dynamic";
 // This is the LONGER, full-length sibling of the quick "{Subject} test" —
 // idea #8 from the competitor research (`/ideas_1`): "a full, timed paper
 // under real exam conditions, not just topic-by-topic practice." The short
-// test (20 questions, 20 minutes) is a quick check; this is meant to be
-// sat like an actual paper nearer the real exam.
+// test (20 marks, 20 minutes) is a quick check; this is meant to be sat like
+// an actual paper nearer the real exam.
 //
-// Still NOT trying to reproduce any specific exam board's real timing —
-// boards, papers and mark schemes vary far too much across 14 subjects to
-// state one as fact without risking telling someone the wrong thing about
-// their own exam, the same caution `revisionWeight`'s own comment in
-// subjects.ts applies to its workload ranking. 90 seconds a question is a
-// rough, adjustable estimate — a bit more generous than the quick test's
-// 60 — to account for a full paper mixing in more extended, self-marked
-// answers rather than being all short factual recall.
+// Still NOT claiming any specific board's paper timing — boards and papers
+// vary too much across 14 subjects to state one as fact. What it does use is
+// the rule every board's exam-technique advice agrees on, one minute per mark,
+// which replaced the 90-seconds-a-question estimate this file used to carry:
+// a flat per-question allowance gave a paper of 4-mark calculations the same
+// clock as a paper of 1-mark recall.
 //
 // The cap (50) bounds how long a single sitting can get for a
 // content-heavy subject; the actual duration is computed from however many
@@ -40,7 +43,14 @@ export const dynamic = "force-dynamic";
 // small pool (one year ticked, on a subject with less written yet) should
 // mean a shorter paper, not the same fixed clock regardless.
 const QUESTION_COUNT_CAP = 50;
-const SECONDS_PER_QUESTION = 90;
+
+// ⚠️ NOW A MARK BUDGET AT ONE MINUTE PER MARK — see lib/examPool.ts.
+// This was 90 seconds per question regardless of what the question was worth,
+// so a paper of 4-mark calculations and a paper of 1-mark recall got the same
+// clock. 80 marks is the size of a typical real GCSE paper, which is the
+// point of this mode: it should feel like the real sitting, and a real sitting
+// is timed by its marks.
+const MARK_BUDGET = 80;
 
 type Props = {
   params: Promise<{ subject: string }>;
@@ -79,9 +89,9 @@ export default async function PastPaperPage({ params, searchParams }: Props) {
       selectedYears.includes(group.year),
     );
     const pool = collectQuestionPool(subject.slug, yearsToInclude);
-    questions = shuffle(pool).slice(0, QUESTION_COUNT_CAP);
+    questions = pickToMarkBudget(shuffle(pool), subject.slug, MARK_BUDGET, QUESTION_COUNT_CAP);
   }
-  const durationSeconds = questions.length * SECONDS_PER_QUESTION;
+  const durationSeconds = secondsAtOneMinutePerMark(questions, subject.slug);
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-8">
