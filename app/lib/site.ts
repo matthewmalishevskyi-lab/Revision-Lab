@@ -27,6 +27,20 @@ export const SITE_URL =
 
 export const SITE_NAME = "Revision Lab";
 
+/**
+ * The address a person would type, for the small credit on every diagram,
+ * slide and printed sheet.
+ *
+ * ⚠️ NOT derived from SITE_URL, and that was the first version. On the live
+ * site NEXT_PUBLIC_SITE_URL is still revision-lab-SIGMA.vercel.app — kept on
+ * purpose so Search Console, the sitemap and canonical tags stay consistent
+ * (see PROJECT_NOTES, 2026-09-12). Sigma works but redirects, so derived from
+ * it every diagram on the site would have printed the old address. The credit
+ * is for a human reading a screenshot, and it should name the address that
+ * answers directly. The day the site gets a real domain, change this one line.
+ */
+export const SITE_HOST = "revision-lab-uk.vercel.app";
+
 // The address on the privacy page, so people can ask for their data or its
 // deletion. UK data protection law requires a route to a real human; this is
 // it.

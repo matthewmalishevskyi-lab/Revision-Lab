@@ -48,6 +48,8 @@
 // SVG puts y DOWNWARDS, maths puts it upwards. Every angle in this file is a
 // normal maths angle and this one function is the only place that difference
 // is dealt with.
+import { DiagramCredit, withCreditStrip } from "./credit";
+
 export function polar(cx: number, cy: number, r: number, degrees: number) {
   const radians = (degrees * Math.PI) / 180;
   return [cx + r * Math.cos(radians), cy - r * Math.sin(radians)] as const;
@@ -152,12 +154,13 @@ export function Frame({
   return (
     <figure className={className}>
       <svg
-        viewBox="0 0 220 112"
+        viewBox={withCreditStrip("0 0 220 112")}
         role="img"
         aria-label={ariaLabel}
         className="h-auto w-full"
       >
         {children}
+        <DiagramCredit viewBox="0 0 220 112" />
       </svg>
 
       {/* The caption used to be an SVG <text> inside the picture, and on over

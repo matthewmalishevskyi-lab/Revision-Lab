@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PrintButton } from "../../../../../components/PrintButton";
 import { buildLessonPlan, subjectsWithLessons } from "../../../../../lib/lesson-plan";
+import { SITE_HOST } from "../../../../../lib/site";
 
 // The photocopiable version.
 //
@@ -130,6 +131,13 @@ export default async function PrintLessonPage({ params }: Params) {
         ),
       )}
 
+      {/* The credit at the foot of the STUDENT half too — that is the part a
+          class actually gets handed, and the teacher's footer below only ever
+          prints on the teacher's own pages. */}
+      <p className="mt-8 text-right text-[10px] opacity-50">
+        Revision Lab · {SITE_HOST}
+      </p>
+
       {/* ── Everything below here is the teacher's, and starts on a new page ── */}
       <section className="mt-10 break-before-page border-t-2 border-black pt-4">
         <h2 className="text-lg font-bold">Teacher&apos;s notes</h2>
@@ -236,7 +244,7 @@ export default async function PrintLessonPage({ params }: Params) {
       )}
 
       <p className="mt-8 border-t border-black/10 pt-3 text-xs">
-        Revision Lab · Questions written for revision and arranged into a lesson
+        Revision Lab ({SITE_HOST}) · Questions written for revision and arranged into a lesson
         automatically. Mark tariffs are derived from AQA&apos;s marking
         principles, not copied from a mark scheme — check anything you are going
         to hand out.

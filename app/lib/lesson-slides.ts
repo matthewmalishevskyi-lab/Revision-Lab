@@ -22,6 +22,7 @@
 import type { LessonPlan, LessonPhase } from "./lesson-plan";
 import type { Slide, Para, TextBox } from "./pptx";
 import { buildPptx, PPTX_SLIDE_WIDTH, PPTX_SLIDE_HEIGHT } from "./pptx";
+import { SITE_HOST, SITE_NAME } from "./site";
 
 // A half-inch margin all round, in EMU.
 const M = 685800;
@@ -283,7 +284,25 @@ export function lessonSlides(plan: LessonPlan): Slide[] {
     });
   }
 
-  return slides;
+  // Every slide gets a small credit at the bottom — Matthew's idea: a deck a
+  // teacher projects is seen by a whole class, and the address tells anyone
+  // who liked it where it came from. Added LAST, after the answer-leak dedupe
+  // above, so it can never make a slide look like one already shown.
+  return slides.map((slide) => ({ ...slide, boxes: [...slide.boxes, creditBox()] }));
+}
+
+/** Bottom strip reserved for the credit — no content box may reach into it. */
+export const CREDIT_TOP = PPTX_SLIDE_HEIGHT - 430000;
+export const CREDIT_TEXT = `${SITE_NAME}  ·  ${SITE_HOST}`;
+
+function creditBox(): TextBox {
+  return {
+    x: M,
+    y: CREDIT_TOP,
+    w: CONTENT_W,
+    h: 260000,
+    paras: [{ runs: [{ text: CREDIT_TEXT, size: 10, colour: "9CA3AF" }] }],
+  };
 }
 
 export function lessonPptx(plan: LessonPlan): Buffer {

@@ -59,7 +59,7 @@ try {
   );
 
   const { subjectsWithLessons, buildLessonPlan } = require_(join(out, "lesson-plan.js"));
-  const { lessonSlides, lessonPptx, lessonPptxFilename } = require_(join(out, "lesson-slides.js"));
+  const { lessonSlides, lessonPptx, lessonPptxFilename, CREDIT_TEXT, CREDIT_TOP } = require_(join(out, "lesson-slides.js"));
 
   // ── 1. Nothing on a slide gives away an answer ────────────────────────────
   //
@@ -84,6 +84,17 @@ try {
 
       const slides = lessonSlides(plan);
       slideCount += slides.length;
+
+      // The credit at the foot of every slide, and nothing sitting on it.
+      for (const [i, slide] of slides.entries()) {
+        const last = slide.boxes[slide.boxes.length - 1];
+        const text = last?.paras.flatMap((p) => p.runs.map((r) => r.text)).join("");
+        expect(text === CREDIT_TEXT, `${subject.slug}/${topic.slug}: slide ${i + 1} has no Revision Lab credit`);
+        for (const b of slide.boxes.slice(0, -1)) {
+          expect(b.y + b.h <= CREDIT_TOP,
+            `${subject.slug}/${topic.slug}: slide ${i + 1} has a text box reaching into the credit strip at the bottom`);
+        }
+      }
 
       // ⚠️ THE RULE IS ORDER-AWARE, AND THE BLUNT VERSION FIRED ON GOOD
       //    TEACHING. The first version asserted that an answer never appears

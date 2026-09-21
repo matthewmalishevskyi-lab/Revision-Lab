@@ -31,6 +31,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { createContext, useCallback, useContext, useRef, useState } from "react";
+import { DiagramCredit, withCreditStrip } from "../credit";
 
 // ─── Getting from a screen pixel to a diagram coordinate ────────────────────
 //
@@ -277,7 +278,7 @@ export function InteractiveFigure({
       <figure className={className}>
         <svg
           ref={svgRef}
-          viewBox={viewBox}
+          viewBox={withCreditStrip(viewBox)}
           role="img"
           aria-label={label}
           // ⚠️ `touch-action` GOES HERE, NOT ON THE HANDLE.
@@ -297,6 +298,7 @@ export function InteractiveFigure({
           style={{ touchAction: "none" }}
         >
           {children}
+          <DiagramCredit viewBox={viewBox} />
         </svg>
 
         <figcaption className="mt-1.5 text-center text-sm leading-snug">

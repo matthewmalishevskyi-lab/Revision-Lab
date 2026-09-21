@@ -734,6 +734,24 @@ function allSubjectsSatisfy(
   );
 }
 
+/**
+ * How many subjects meet a condition, with the three languages counting as ONE
+ * subject between them — for the same reason as allSubjectsSatisfy: a student
+ * studies one language, so finishing French and Spanish is not two subjects'
+ * worth of Grand master, just as it would not be two GCSEs.
+ */
+function countSubjectsSatisfying(
+  subjects: SubjectProgress[],
+  predicate: (subject: SubjectProgress) => boolean,
+): number {
+  const nonLanguages = subjects.filter((s) => !LANGUAGE_GROUP_SLUGS.has(s.slug) && predicate(s)).length;
+  const anyLanguage = subjects.some((s) => LANGUAGE_GROUP_SLUGS.has(s.slug) && predicate(s));
+  return nonLanguages + (anyLanguage ? 1 : 0);
+}
+
+/** Grand master: this many subjects fully covered and tested. */
+export const GRAND_MASTER_SUBJECTS = 5;
+
 // ─────────────────────────────────────────────────────────────────────────────
 // BADGES — a fixed list, always all of them, each marked earned or not.
 //
@@ -746,7 +764,7 @@ function allSubjectsSatisfy(
 // Returning the LOCKED ones too, not just earned ones, is deliberate: a
 // badge you can't see yet isn't something to aim for.
 // ─────────────────────────────────────────────────────────────────────────────
-function computeBadges(input: {
+export function computeBadges(input: {
   subjects: SubjectProgress[];
   totalQuestions: number;
   totalFlashcards: number;
@@ -843,15 +861,16 @@ function computeBadges(input: {
       id: "grand-master",
       name: "Grand master",
       // "100%, including the tests": full topic coverage AND a completed
-      // test, in every subject — the two hardest single-subject badges
-      // (Subject master and Test ace) generalised across all of them at
-      // once. Same languages-count-as-one rule as the others.
-      description: "100% topic coverage AND a completed test, in every subject",
+      // test — in FIVE subjects, not all of them. Matthew, 2026-09-21: "make
+      // it easier... 100% in 5 subjects". Every subject was fifteen subjects'
+      // worth of 100% coverage, which nobody taking GCSEs would ever reach,
+      // so the badge rewarded no one. Five is about half a real timetable.
+      // The languages still count as one between them.
+      description: `100% topic coverage AND a completed test, in ${GRAND_MASTER_SUBJECTS} subjects`,
       icon: "👑",
-      earned: allSubjectsSatisfy(
-        subjects,
-        (s) => s.percent === 100 && testedSubjects.has(s.slug),
-      ),
+      earned:
+        countSubjectsSatisfying(subjects, (s) => s.percent === 100 && testedSubjects.has(s.slug)) >=
+        GRAND_MASTER_SUBJECTS,
     },
     {
       id: "marathon-reviser",

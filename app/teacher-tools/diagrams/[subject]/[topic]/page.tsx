@@ -7,6 +7,7 @@ import { DIAGRAMS } from "../../../../components/diagrams";
 import { DIAGRAM_NOTES } from "../../../../components/diagrams/notes";
 import { interactiveDiagram } from "../../../../components/diagrams/interactive";
 import { subjectsWithDiagrams, topicDiagrams } from "../../../../lib/teacher-tools";
+import { DiagramDownload } from "../../../../components/diagrams/DiagramDownload";
 
 type Props = { params: Promise<{ subject: string; topic: string }> };
 
@@ -163,7 +164,11 @@ export default async function TopicDiagramsPage({ params }: Props) {
                   "Diagram ink" in globals.css. */}
               <div className="diagram-light bg-white px-6 py-8">
                 <div className="mx-auto max-w-[36rem]">
-                  <Diagram />
+                  {/* One click to a PNG for a slide or worksheet, carrying the
+                      Revision Lab credit — see DiagramDownload. */}
+                  <DiagramDownload name={entry.name} title={note.title}>
+                    <Diagram />
+                  </DiagramDownload>
                 </div>
               </div>
 

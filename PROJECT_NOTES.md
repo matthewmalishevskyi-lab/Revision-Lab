@@ -1,5 +1,61 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## A credit on every diagram, a PNG download, and an easier Grand master (2026-09-21, late)
+
+Matthew, after finding the site still had five registered users: *"every single
+diagram they would want to use or download, somewhere there is a very little
+sign that says Revision Lab... and I'll get teachers to actually use it."* He
+chose: **name + address**, **every diagram everywhere**, **a PNG download in
+Teacher Tools**, and **a footer on the slides and worksheets**.
+
+### The credit
+
+"Revision Lab · revision-lab-uk.vercel.app", grey, at the foot of all 124
+diagrams (`components/diagrams/credit.tsx`). Two places reach all of them: the
+shared `<Frame>` and the draggable `InteractiveFigure`.
+
+⚠️ **In its own strip, never on the drawing.** Every diagram fills its 220×112
+canvas edge to edge; a corner credit would sit on a label somewhere. The canvas
+is 8 units taller and the credit goes in the new space. Nothing moves, and the
+draggable diagrams map the pointer through getScreenCTM, so a taller canvas
+does not shift where a drag lands — check-interactive (739 checks, labels and
+drags) passes. Inside the SVG, not a caption, so screenshots and downloads
+carry it. `aria-hidden`, so screen readers are not read a URL after every
+diagram. Made slightly smaller (4.4 units) at Matthew's request.
+
+⚠️ **The address is pinned, not derived from SITE_URL, and that was a real
+catch.** On the live site `NEXT_PUBLIC_SITE_URL` is still the old
+revision-lab-SIGMA address (kept for Search Console consistency), which
+redirects. Derived, every diagram would have printed the old address.
+`SITE_HOST` in site.ts is the one line to change when the site gets a domain.
+
+### Download PNG (Teacher Tools)
+
+`DiagramDownload.tsx`: 1760 px wide on white. ⚠️ **The computed styles are
+copied onto the clone first**, because these diagrams are coloured by CSS
+(currentColor, Tailwind classes, --diagram-ink) that does not exist once the
+SVG leaves the page — serialised as-is, everything turns black. Verified by
+downloading a static and a draggable diagram and opening both: colours match
+the page, drag handles come out as plain dots with no halos, credit present.
+
+### Slides and worksheets
+
+Every slide of every deck has the credit at the bottom (`lesson-slides.ts`),
+added after the answer-leak dedupe so it can never make a slide look already
+shown. check-pptx now asserts it on all 10,359 slides and that no box reaches
+into its strip (59,200 checks). The teacher worksheet gets the credit at the
+foot of the STUDENT half too — the old footer only printed on the teacher's
+pages, never on what a class is handed.
+
+### Grand master: five subjects, not all fifteen
+
+*"How about we make Grandmaster easier. Making it 100% in 5 subjects."* It was
+100% coverage plus a test in every subject — fifteen subjects, which no GCSE
+student reaches, so it rewarded nobody. Now five, with the languages still
+counting as one between them (French + Spanish is one subject, not two).
+`check-badges.mjs` (8 checks): five earns it, four does not, an untested one
+does not, two languages do not double-count.
+
 ## The accessibility switches' knob was 6px too high (2026-09-21, late)
 
 Matthew, wandering the site: *"I've seen these very weird switches."* The white

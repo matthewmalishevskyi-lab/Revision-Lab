@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PrintButton } from "../../../../components/PrintButton";
 import { getTopicContent } from "../../../../lib/content";
-import { SITE_URL } from "../../../../lib/site";
+import { SITE_HOST, SITE_URL } from "../../../../lib/site";
 import { getTopic, SUBJECTS } from "../../../../lib/subjects";
 
 // A stripped-down, print-friendly version of a topic page: just the notes,
@@ -218,8 +218,8 @@ export default async function PrintSheetPage({ params }: Props) {
       </section>
 
       <p className="mt-8 border-t border-black/20 pt-3 text-xs opacity-50 print:mt-6">
-        Printed from Revision Lab, a free GCSE revision site. Exam boards and
-        schools vary — check this against your own course.
+        Printed from Revision Lab ({SITE_HOST}), a free GCSE revision site.
+        Exam boards and schools vary — check this against your own course.
       </p>
     </main>
     </div>
