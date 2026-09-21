@@ -34,7 +34,7 @@ try {
     "--moduleResolution", "node", "--skipLibCheck",
   ], { stdio: "inherit" });
 
-  const { buildDailySet, eligibleTopics, smoothedAccuracy, DAILY_SIZE } =
+  const { buildDailySet, eligibleTopics, smoothedAccuracy, DAILY_SIZE, subjectUnlocked } =
     require_(join(out, "daily-practice.js"));
   const { difficultyOf } = require_(join(out, "difficulty.js"));
   const { TOPIC_CONTENT } = require_(join(out, "content", "index.js"));
@@ -109,8 +109,20 @@ try {
     // valid questions from anywhere would pass every check above and do
     // nothing useful. If the student has attempted anything, their single
     // weakest attempted topic must be one of the ones drawn from.
-    if (scores.length > 0) {
-      const weakest = [...scores]
+    //
+    // ⚠️ "WEAKEST" MEANS WEAKEST AMONG SUBJECTS THIS STUDENT IS ALLOWED.
+    // When the History gate went in, this check failed on student 86, whose
+    // weakest topic was History on fewer than 11 answers — and the gate was
+    // right to leave it out. The check predated the rule, so it was asking for
+    // exactly the thing the rule forbids. It now asks the same question the
+    // algorithm does.
+    const answeredBySubject = new Map();
+    for (const sc of scores) {
+      answeredBySubject.set(sc.subjectSlug, (answeredBySubject.get(sc.subjectSlug) ?? 0) + sc.questionsAnswered);
+    }
+    const allowed = scores.filter((sc) => subjectUnlocked(sc.subjectSlug, answeredBySubject));
+    if (allowed.length > 0) {
+      const weakest = [...allowed]
         .sort((a, b) =>
           smoothedAccuracy(a.correct, a.questionsAnswered) - smoothedAccuracy(b.correct, b.questionsAnswered))
         [0];
@@ -164,6 +176,82 @@ try {
       s.add(set.questions.map((q) => q.question).join("|"));
     }
     expect(s.size > 1, "every brand-new student is handed the identical set");
+  }
+
+  // ── MATTHEW'S RULE: no History unless you have done more than 10 of it ────
+  //
+  // "make sure that people who revised geography and didn't do more than 10
+  // questions of History never got it on their suggested today's practice."
+  //
+  // Checked at the boundary on purpose. "More than 10" is exactly the kind of
+  // phrase that becomes >= 10 in code, and the only way to know the line is in
+  // the right place is to stand on both sides of it.
+  {
+    const { OPTIONAL_SUBJECT_THRESHOLD } = require_(join(out, "daily-practice.js"));
+    const historyTopics = topics.filter((t) => t.subjectSlug === "history");
+    expect(historyTopics.length > 0,
+      "no History topic qualifies any more — this check would pass without testing anything");
+
+    const hasHistory = (set) => set.questions.some((q) => q.subjectSlug === "history");
+
+    // 1. A brand-new student: nothing touched, so the fallback picks untouched
+    //    topics. Across many different students that fallback must never land
+    //    on History — before this rule, it could.
+    let newStudentsWithHistory = 0;
+    for (let i = 0; i < 400; i++) {
+      const set = buildDailySet({ userId: `fresh-${i}`, scores: [], touched: new Set(), date: "2026-09-21" });
+      if (hasHistory(set)) newStudentsWithHistory += 1;
+    }
+    expect(newStudentsWithHistory === 0,
+      `${newStudentsWithHistory} of 400 brand-new students were handed History`);
+
+    // 2. Matthew's own example: revised Geography, never touched History.
+    {
+      const scores = [{ subjectSlug: "geography", topicSlug: "rivers", questionsAnswered: 40, correct: 10 }];
+      let bad = 0;
+      for (let i = 0; i < 100; i++) {
+        const set = buildDailySet({ userId: `geo-${i}`, scores, touched: new Set(["geography/rivers"]), date: "2026-09-21" });
+        if (hasHistory(set)) bad += 1;
+      }
+      expect(bad === 0, `${bad} of 100 Geography-only students were handed History`);
+    }
+
+    // 3. EXACTLY the threshold — "didn't do more than 10" — must still be
+    //    locked, even when History is by far their weakest topic.
+    const weakHistory = (answered) => [{
+      subjectSlug: "history", topicSlug: historyTopics[0].topicSlug,
+      questionsAnswered: answered, correct: 0,
+    }];
+    {
+      const set = buildDailySet({
+        userId: "boundary-10", scores: weakHistory(OPTIONAL_SUBJECT_THRESHOLD),
+        touched: new Set([`history/${historyTopics[0].topicSlug}`]), date: "2026-09-21",
+      });
+      expect(!hasHistory(set),
+        `a student with exactly ${OPTIONAL_SUBJECT_THRESHOLD} History questions was given History — "more than 10" means 11`);
+    }
+
+    // 4. One past the threshold, and History their weakest topic — now it
+    //    SHOULD appear. A rule that simply bans History would pass checks 1-3
+    //    and quietly remove the subject for the students who actually take it.
+    {
+      const set = buildDailySet({
+        userId: "boundary-11", scores: weakHistory(OPTIONAL_SUBJECT_THRESHOLD + 1),
+        touched: new Set([`history/${historyTopics[0].topicSlug}`]), date: "2026-09-21",
+      });
+      expect(hasHistory(set),
+        `a student with ${OPTIONAL_SUBJECT_THRESHOLD + 1} History questions, all wrong, was NOT given History — the gate is blocking the students it should serve`);
+    }
+
+    // 5. Compulsory subjects are not gated: a new student still gets maths or
+    //    science, or the card would be empty for everyone on their first day.
+    {
+      const set = buildDailySet({ userId: "fresh-compulsory", scores: [], touched: new Set(), date: "2026-09-21" });
+      expect(set.questions.length > 0 &&
+        set.questions.every((q) => ["maths", "biology", "chemistry", "physics", "english"].includes(q.subjectSlug)),
+        "a brand-new student's set contains an optional subject, or is empty");
+    }
+    console.log(`History gate: checked at ${OPTIONAL_SUBJECT_THRESHOLD} (locked) and ${OPTIONAL_SUBJECT_THRESHOLD + 1} (unlocked), and over 500 students who never took it.`);
   }
 
   if (failures > 0) {

@@ -52,6 +52,23 @@ export type Subject = {
   // YEAR_STYLES, which only has three entries — so the fourth subject silently
   // came out blue. Colours that mean "which subject" belong to the subject.
   accent: string;
+
+  // Whether every GCSE student in England takes this subject.
+  //
+  // Maths, English Language and science are compulsory; everything else is an
+  // option somebody CHOSE. That difference matters the moment the site starts
+  // guessing what a student wants: recommending Maths to someone who has never
+  // touched it is a reasonable nudge, because they are sitting the paper.
+  // Recommending History to someone who does not take History is recommending
+  // a subject they will never be examined on.
+  //
+  // First read by today's practice (see daily-practice.ts), which will not
+  // offer an optional subject until the student has shown they study it.
+  // Absent means optional — the safe default, because wrongly calling a
+  // subject optional only means it is suggested a little later, while wrongly
+  // calling it compulsory pushes it on people who dropped it.
+  compulsory?: boolean;
+
   mascot:
     | "pixel"
     | "hoot"
@@ -312,6 +329,7 @@ export const SUBJECTS: Subject[] = [
   },
   {
     slug: "maths",
+    compulsory: true,
     name: "Maths",
     blurb: "Choose a topic to start revising",
     gradient: "linear-gradient(150deg, #fbbf24 0%, #f97316 45%, #b3350b 100%)",
@@ -362,6 +380,7 @@ export const SUBJECTS: Subject[] = [
   },
   {
     slug: "english",
+    compulsory: true,
     name: "English",
     blurb: "Choose a topic to start revising",
     gradient: "linear-gradient(150deg, #c084fc 0%, #7c3aed 45%, #43146e 100%)",
@@ -632,6 +651,7 @@ export const SUBJECTS: Subject[] = [
   // ─── BIOLOGY ──────────────────────────────────────────────────────────────
   {
     slug: "biology",
+    compulsory: true,
     name: "Biology",
     blurb: "Choose a topic to start revising",
     group: "science",
@@ -682,6 +702,7 @@ export const SUBJECTS: Subject[] = [
   // ─── CHEMISTRY ────────────────────────────────────────────────────────────
   {
     slug: "chemistry",
+    compulsory: true,
     name: "Chemistry",
     blurb: "Choose a topic to start revising",
     group: "science",
@@ -731,6 +752,7 @@ export const SUBJECTS: Subject[] = [
   // ─── PHYSICS ──────────────────────────────────────────────────────────────
   {
     slug: "physics",
+    compulsory: true,
     name: "Physics",
     blurb: "Choose a topic to start revising",
     group: "science",

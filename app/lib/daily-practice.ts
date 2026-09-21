@@ -111,6 +111,44 @@ export function smoothedAccuracy(correct: number, answered: number): number {
 const MIN_BANK = 24;
 const MIN_LEVELS = 3;
 
+/**
+ * An optional subject is only recommended once the student has answered MORE
+ * than this many of its questions.
+ *
+ * ⚠️ MATTHEW'S RULE, IN HIS WORDS: "make sure that people who revised
+ * geography and didn't do more than 10 questions of History never got it on
+ * their suggested today's practice."
+ *
+ * The gap it closes is the new-student fallback below. With no history to be
+ * weak at, the set fills its slots from topics the student has not touched —
+ * and before this, "not touched" included History, so a student who only ever
+ * revised Geography could be handed History questions on day one. History is
+ * an OPTION. Plenty of students have never studied it and never will, and a
+ * recommendation for a subject you do not take is not personalisation, it is
+ * noise that teaches you to ignore the card.
+ *
+ * It gates BOTH routes, not just the fallback. A student who once answered
+ * three History questions out of curiosity has technically "attempted" it, and
+ * would otherwise be ranked on 3 answers — so the same threshold applies to
+ * weak-topic selection too. Ten is Matthew's number; "more than ten" means 11.
+ *
+ * Compulsory subjects (maths, English, the sciences) are never gated: every
+ * student sits those papers, so recommending one to somebody who has not
+ * started it yet is exactly the nudge the feature exists to give.
+ */
+export const OPTIONAL_SUBJECT_THRESHOLD = 10;
+
+const COMPULSORY = new Set(SUBJECTS.filter((s) => s.compulsory).map((s) => s.slug));
+
+/** Whether this student may be recommended anything from this subject. */
+export function subjectUnlocked(
+  subjectSlug: string,
+  answeredBySubject: Map<string, number>,
+): boolean {
+  if (COMPULSORY.has(subjectSlug)) return true;
+  return (answeredBySubject.get(subjectSlug) ?? 0) > OPTIONAL_SUBJECT_THRESHOLD;
+}
+
 function ladderOf(subjectSlug: string, topicSlug: string) {
   const content = TOPIC_CONTENT[`${subjectSlug}/${topicSlug}`];
   const practice = content?.practice ?? [];
@@ -182,7 +220,22 @@ export function buildDailySet(input: {
   size?: number;
 }): DailySet {
   const size = input.size ?? DAILY_SIZE;
-  const eligible = eligibleTopics();
+
+  // Total questions answered per SUBJECT, summed across its topics — the
+  // threshold is about whether you study the subject, not any one topic in it.
+  const answeredBySubject = new Map<string, number>();
+  for (const s of input.scores) {
+    answeredBySubject.set(
+      s.subjectSlug,
+      (answeredBySubject.get(s.subjectSlug) ?? 0) + s.questionsAnswered,
+    );
+  }
+
+  // Filtered once, here, so that BOTH the weak-topic route and the new-student
+  // fallback below can only ever see subjects this student is allowed.
+  const eligible = eligibleTopics().filter((t) =>
+    subjectUnlocked(t.subjectSlug, answeredBySubject),
+  );
   const byKey = new Map(eligible.map((t) => [`${t.subjectSlug}/${t.topicSlug}`, t]));
 
   const attempted = input.scores
