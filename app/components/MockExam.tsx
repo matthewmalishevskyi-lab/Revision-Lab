@@ -23,7 +23,6 @@ import { normalise } from "../lib/normalise";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
 import { Calculator } from "./Calculator";
-import { getSubject } from "../lib/subjects";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
 import { MarkTariff } from "./MarkTariff";
 import { marksFor } from "../lib/marks";
@@ -65,6 +64,7 @@ export function MockExam({
   // shipped silently if the link had stayed hardcoded.
   retryHref = `/subjects/${subjectSlug}/exam`,
   retryLabel = `Try another ${subjectName} test`,
+  calculator = false,
 }: {
   questions: ExamQuestion[];
   subjectSlug: string;
@@ -73,6 +73,9 @@ export function MockExam({
   durationSeconds: number;
   retryHref?: string;
   retryLabel?: string;
+  // True when any question in this set comes from a topic with sums in it —
+  // worked out on the server by topicNeedsCalculator.
+  calculator?: boolean;
 }) {
   const [phase, setPhase] = useState<"intro" | "running" | "finished">("intro");
   const [secondsLeft, setSecondsLeft] = useState(durationSeconds);
@@ -484,7 +487,7 @@ export function MockExam({
         >
           {formatClock(secondsLeft)}
         </span>
-        {getSubject(subjectSlug)?.calculator && <Calculator colour={colour} />}
+        {calculator && <Calculator colour={colour} />}
         <button
           type="button"
           onClick={() => setPhase("finished")}

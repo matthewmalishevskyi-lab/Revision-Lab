@@ -6,7 +6,7 @@ import { getViewer } from "../lib/viewer";
 import { getDailySet, getRevisitSet } from "../lib/daily-practice-server";
 import { DailyPracticeRunner } from "./DailyPracticeRunner";
 import { Calculator } from "../components/Calculator";
-import { getSubject } from "../lib/subjects";
+import { topicNeedsCalculator } from "../lib/calculator-topics";
 
 export const metadata: Metadata = {
   title: "Today's practice",
@@ -44,7 +44,7 @@ export default async function TodayPage() {
         {/* Once for the whole page, not once per runner — two buttons would
             open the same thing. Shown when any question on the page is from a
             calculator subject; revisited mistakes can come from anywhere. */}
-        {[...set.questions, ...revisit.questions].some((q) => getSubject(q.subjectSlug)?.calculator) && (
+        {[...set.questions, ...revisit.questions].some((q) => topicNeedsCalculator(q.subjectSlug, q.topicSlug)) && (
           <div className="mt-4">
             <Calculator colour="#2563eb" />
           </div>

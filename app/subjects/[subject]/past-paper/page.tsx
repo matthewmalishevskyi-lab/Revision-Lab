@@ -12,6 +12,7 @@ import {
 } from "../../../lib/examPool";
 import { shuffle } from "../../../lib/shuffle";
 import { getSubject, type YearGroup } from "../../../lib/subjects";
+import { topicNeedsCalculator } from "../../../lib/calculator-topics";
 
 // A STATIC segment living alongside "exam" and the dynamic [topic] segment,
 // same trick as that page's own comment explains — Next checks static
@@ -209,6 +210,7 @@ export default async function PastPaperPage({ params, searchParams }: Props) {
               ← Change which years are included
             </Link>
             <MockExam
+              calculator={questions.some((q) => topicNeedsCalculator(subject.slug, q.topicSlug))}
               questions={questions}
               subjectSlug={subject.slug}
               subjectName={subject.name}

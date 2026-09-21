@@ -12,6 +12,7 @@ import {
 } from "../../../lib/examPool";
 import { shuffle } from "../../../lib/shuffle";
 import { getSubject, type YearGroup } from "../../../lib/subjects";
+import { topicNeedsCalculator } from "../../../lib/calculator-topics";
 
 // A STATIC segment ("exam") living alongside the DYNAMIC one ([topic]) in the
 // same folder. Next.js checks static segments first, so /subjects/maths/exam
@@ -214,6 +215,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
               ← Change which years are included
             </Link>
             <MockExam
+              calculator={questions.some((q) => topicNeedsCalculator(subject.slug, q.topicSlug))}
               questions={questions}
               subjectSlug={subject.slug}
               subjectName={subject.name}

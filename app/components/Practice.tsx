@@ -100,6 +100,7 @@ export function Practice({
   colour,
   subject,
   topic,
+  calculator = false,
 }: {
   questions: Question[];
   colour: string;
@@ -107,6 +108,9 @@ export function Practice({
   // against it. Passed in rather than worked out here, because a component
   // that has to guess where it is being used is a component that will
   // eventually guess wrong.
+  // Worked out on the server by topicNeedsCalculator — see that file for why
+  // it cannot be worked out here.
+  calculator?: boolean;
   subject: string;
   topic: string;
 }) {
@@ -235,14 +239,14 @@ export function Practice({
     0,
   );
 
-  // Only in subjects whose papers allow a calculator — see subjects.ts.
+  // The calculator takes the subject's own colour, not the year colour.
   const calculatorSubject = getSubject(subject);
 
   return (
     <div>
-      {calculatorSubject?.calculator && (
+      {calculator && (
         <div className="mb-3 flex justify-end">
-          <Calculator colour={calculatorSubject.accent} />
+          <Calculator colour={calculatorSubject?.accent ?? colour} />
         </div>
       )}
 

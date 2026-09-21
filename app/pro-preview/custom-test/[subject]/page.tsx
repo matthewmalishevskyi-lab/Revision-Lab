@@ -8,6 +8,7 @@ import { getTopicContent } from "../../../lib/content";
 import { shuffle } from "../../../lib/shuffle";
 import { getSubject } from "../../../lib/subjects";
 import { PRO_PREVIEW_ENABLED } from "../../../lib/site";
+import { topicNeedsCalculator } from "../../../lib/calculator-topics";
 
 // PREVIEW ONLY — see app/pro-preview/custom-test/page.tsx for the full
 // explanation. This page is a close cousin of
@@ -209,6 +210,7 @@ export default async function CustomTestPage({ params, searchParams }: Props) {
               ← Change which topics are included
             </Link>
             <MockExam
+              calculator={questions.some((q) => topicNeedsCalculator(subject.slug, q.topicSlug))}
               questions={questions}
               subjectSlug={subject.slug}
               subjectName={subject.name}

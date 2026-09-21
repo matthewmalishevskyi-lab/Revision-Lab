@@ -51,6 +51,33 @@ answer box. Escape closes it and returns focus to the button.
 back, no button on English or History tests, no horizontal overflow, zero
 console errors.
 
+### Then: every topic with sums in it, not just four subjects
+
+Matthew, same day: *"in every topic where you have to do calculations, just
+add that calculator"* — Business and Geography by name. Derived from the
+content rather than listed: `lib/calculator-topics.ts` gives a topic the
+button when any practice answer or worked-example step contains a real sum
+(number, operator, number — "7 × 0.5", "220 − 16", "3 x 5"; never "/" or a
+bare hyphen, which are units, fractions and years). Maths and the sciences
+keep it on every topic. Today that adds **6 Business, 2 Geography, 4 PE and
+3 Computer Science topics**; no English, History, RE, Citizenship or language
+topic qualifies, and a check fails if one ever does.
+
+Four CS programming topics are listed as exceptions: their sums are code
+traces ("total = 3 + 3 = 6"), where working it by hand IS the skill.
+
+⚠️ **The helper reads the whole content registry, so it is server-only.**
+Pages pass `Practice` and `MockExam` a plain `calculator` boolean; a check
+fails if any `"use client"` file imports it, because that would ship every
+topic on the site to every browser.
+
+⚠️ **CS and the exam rule:** GCSE Computer Science papers do not allow a
+calculator. The CS data topics have the button because Matthew asked for
+every calculation topic; the hide switch covers practising the real way.
+
+check-calculator.mjs now 96 checks; breaking the detector (off, or matching
+any character) fails 8 and 6 of them.
+
 ## Four in one morning: the History gate, lessons that climb, one minute per mark, and wrong answers that come back (2026-09-21)
 
 Matthew, walking to school: fix #4 first — *"make sure that people who revised

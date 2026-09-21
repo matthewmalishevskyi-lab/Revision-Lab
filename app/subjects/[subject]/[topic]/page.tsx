@@ -20,6 +20,7 @@ import { getTopicContent } from "../../../lib/content";
 import { ACCOUNTS_ENABLED, SITE_NAME, SITE_URL } from "../../../lib/site";
 import { getViewer } from "../../../lib/viewer";
 import { getTopic, SUBJECTS, yearStyle } from "../../../lib/subjects";
+import { topicNeedsCalculator } from "../../../lib/calculator-topics";
 
 // Two variables in the URL now: /subjects/[subject]/[topic].
 // One file, and every topic across every subject has a real page.
@@ -453,6 +454,7 @@ export default async function TopicPage({ params }: Props) {
                     colour={style.text}
                     subject={subject.slug}
                     topic={topic.slug}
+                    calculator={topicNeedsCalculator(subject.slug, topic.slug)}
                   />
                 </div>
               </section>

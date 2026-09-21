@@ -22,8 +22,9 @@ function expect(ok, message) {
 
 try {
   execFileSync(process.execPath, [
-    "node_modules/typescript/bin/tsc", "app/lib/calculator.ts",
+    "node_modules/typescript/bin/tsc", "app/lib/calculator.ts", "app/lib/calculator-topics.ts",
     "--outDir", out, "--module", "commonjs", "--target", "es2020", "--skipLibCheck",
+    "--moduleResolution", "node", "--resolveJsonModule",
   ], { stdio: "inherit" });
   const { evaluate, formatNumber } = require_(join(out, "calculator.js"));
 
@@ -124,6 +125,41 @@ try {
     const n = (strip(readFileSync(f, "utf8")).match(/<Calculator\b/g) ?? []).length;
     expect(n === 1, `${f} renders ${n} calculators, not 1`);
   }
+  // ── Which topics get it: derived from the content ─────────────────────────
+  // Matthew: "in every topic where you have to do calculations".
+  {
+    const { topicNeedsCalculator } = require_(join(out, "calculator-topics.js"));
+    const { SUBJECTS } = require_(join(out, "subjects.js"));
+    const on = (s, t) => topicNeedsCalculator(s, t);
+    for (const [s, t] of [
+      ["business", "break-even-analysis"], ["business", "revenue-costs-and-profit"], ["business", "cash-flow"],
+      ["geography", "map-skills"], ["geography", "maps-graphs-and-statistics"],
+      ["physical-education", "principles-of-training"], ["physical-education", "the-cardiovascular-system"],
+      ["computer-science", "binary-and-data"], ["maths", "algebra-basics"], ["biology", SUBJECTS.find((x) => x.slug === "biology").years[0].topics[0].slug],
+    ]) expect(on(s, t), `${s}/${t} has sums in it and no calculator`);
+    // Code traces are worked by hand on purpose.
+    expect(!on("computer-science", "programming"), "a code-trace topic got a calculator");
+    // Subjects with no sums never get one — a calculator beside an essay is noise.
+    for (const slug of ["english", "history", "religious-education", "citizenship", "spanish", "french", "german"]) {
+      const subject = SUBJECTS.find((x) => x.slug === slug);
+      const topics = subject.years.flatMap((y) => y.topics);
+      const hits = topics.filter((t) => on(slug, t.slug)).map((t) => t.slug);
+      expect(hits.length === 0, `${slug} got a calculator on ${hits.join(", ")}`);
+    }
+  }
+  // ⚠️ The content registry must never reach the browser: every client file
+  // takes a boolean from its page instead.
+  {
+    const { readdirSync, statSync } = await import("node:fs");
+    const walk = (d) => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
+    for (const f of walk("app").filter((f) => /\.tsx?$/.test(f))) {
+      const src = readFileSync(f, "utf8");
+      if (/^["']use client["']/m.test(src) && /calculator-topics/.test(src)) {
+        expect(false, `${f} is a client component importing calculator-topics — it would ship all the content to every browser`);
+      }
+    }
+  }
+
   // The hide switch must exist, and the way back must too.
   const comp = readFileSync("app/components/Calculator.tsx", "utf8");
   expect(comp.includes('writeStorageRaw(CALCULATOR_PREF_KEY, "off")'), "no way to hide the calculator for non-calculator practice");
