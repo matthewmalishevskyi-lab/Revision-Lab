@@ -1257,6 +1257,21 @@ try {
     }
   }
 
+  // ── The accessibility switches' knob sits inside its track ────────────────
+  // The switch's tap area is grown with invisible vertical padding (py-N), and
+  // the knob is positioned against the WHOLE button — so its `top` has to be
+  // the padding plus its gap inside the track. When the padding went in and
+  // the knob did not move, it rode 6px high and poked out of the track.
+  {
+    const src = readFileSync("app/components/AccessibilityPanel.tsx", "utf8");
+    const step = (cls) => Number((cls ?? "0").replace("-", "."));
+    const pad = step(src.match(/className=\{`relative[^`]*?\bpy-([\d.-]+)/)?.[1]);
+    const top = step(src.match(/absolute top-([\d.-]+) h-6 w-6/)?.[1]);
+    const left = step(src.match(/checked \? "left-[\d.]+" : "left-([\d.]+)"/)?.[1]);
+    expect(pad > 0 && top === pad + left,
+      `the accessibility switch knob is off-centre: top-${top} but the track starts at py-${pad} and the knob sits left-${left} in from its edge`);
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

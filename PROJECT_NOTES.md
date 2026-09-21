@@ -1,5 +1,21 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The accessibility switches' knob was 6px too high (2026-09-21, late)
+
+Matthew, wandering the site: *"I've seen these very weird switches."* The white
+knob on /accessibility sat high, poking out of the top of its track.
+
+My own doing, from the 2026-09-02 phone pass: the switch was given a 44px tap
+area with invisible `py-1.5` padding (the track still looks 32px), but the
+knob is positioned against the WHOLE button and stayed at `top-1`. So it sat
+4px from the top of the tap area — 2px above the visible track. It is now
+`top-2.5`: 6px of padding plus 4px inside the track. Measured in a browser,
+off and on, desktop and phone: an even 4px gap above, below and at the end.
+
+A check in check-security.mjs now works the sum out from the classes (knob
+top = track padding + knob inset) and fails if they disagree; putting top-1
+back fails it. Only one switch exists on the site, so nothing else was hit.
+
 ## Answers that survive a reload, and an answer box that grows (2026-09-21, evening)
 
 Two asks back to back. *"If you reload the website or just exit and enter

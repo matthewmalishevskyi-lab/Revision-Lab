@@ -136,8 +136,14 @@ function Toggle({
           checked ? "bg-blue-600" : "bg-black/15 dark:bg-white/15"
         }`}
       >
+        {/* ⚠️ top-2.5, NOT top-1. The button is 44px tall but the visible
+            track is only its middle 32px (the py-1.5 above). The knob is
+            positioned against the whole button, so it has to clear the 6px
+            of invisible padding as well as sit 4px inside the track: 6 + 4 =
+            10px. At top-1 it rode 6px high and poked out of the track —
+            Matthew: "these very weird switches". */}
         <span
-          className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-sm transition ${
+          className={`absolute top-2.5 h-6 w-6 rounded-full bg-white shadow-sm transition ${
             checked ? "left-7" : "left-1"
           }`}
         />
