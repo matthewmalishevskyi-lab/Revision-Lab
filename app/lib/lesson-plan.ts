@@ -43,6 +43,7 @@ import { SUBJECTS, type IconName } from "./subjects";
 
 import { getTopicContent, type TopicContent } from "./content";
 import { marksFor } from "./marks";
+import { difficultyOf, type Difficulty } from "./difficulty";
 
 export type LessonQuestion = {
   question: string;
@@ -51,6 +52,8 @@ export type LessonQuestion = {
   choices?: string[];
   higherOnly?: boolean;
   marks: number;
+  /** 1 recognise · 2 recall · 3 apply · 4 analyse · 5 explain — see difficulty.ts. */
+  difficulty: Difficulty;
   /** No `accept` list, so the student judges their own answer — see content/index.ts. */
   selfMarked: boolean;
 };
@@ -144,10 +147,19 @@ function pricedQuestions(subjectSlug: string, content: TopicContent): LessonQues
       choices: q.choices,
       higherOnly: q.higherOnly,
       marks: marksFor(subjectSlug, q),
+      difficulty: difficultyOf(subjectSlug, q),
       selfMarked: !q.accept,
       index,
     }))
-    .sort((a, b) => a.marks - b.marks || a.index - b.index)
+    // ⚠️ SORTED BY DIFFICULTY FIRST, THEN MARKS — AND THE ORDER MATTERS.
+    // This sorted by marks alone until today, and marks were never built to
+    // be a difficulty scale: seventy per cent of every subject sits on one
+    // value. When 1,155 new questions arrived most of the maths ones were
+    // worth 3, so Guided and Independent practice both filled with nothing
+    // but 3s and became the same exercise twice — in 64 lessons. Difficulty
+    // separates recognising an answer from recalling it from applying a
+    // method, which is the ladder a lesson is supposed to climb.
+    .sort((a, b) => a.difficulty - b.difficulty || a.marks - b.marks || a.index - b.index)
     // `index` did its job in the sort and has no business travelling further —
     // a question's position in the source file is not a fact any page should
     // be able to read.
@@ -158,6 +170,7 @@ function pricedQuestions(subjectSlug: string, content: TopicContent): LessonQues
       choices: q.choices,
       higherOnly: q.higherOnly,
       marks: q.marks,
+      difficulty: q.difficulty,
       selfMarked: q.selfMarked,
     }));
 }
@@ -197,6 +210,33 @@ function takeFromEnd(
     }
   }
   return taken;
+}
+
+/**
+ * Take up to `limit` questions AT `level`, from its hardest end, topping up
+ * from the levels BELOW it — never above — if the topic runs short there.
+ *
+ * ⚠️ "ONLY DOWNWARDS" IS WHAT KEEPS THE RAMP MONOTONIC.
+ * Phases are claimed hardest-first (see buildLessonPlan). If Guided, short of
+ * level-3 questions, were allowed to borrow a level-4 one, it could end up
+ * harder than Independent practice sitting after it — the backwards ramp the
+ * first version of this file shipped. Borrowing only from below means a phase
+ * that runs short comes out a little EASIER than intended, which is a lesson
+ * that climbs more gently rather than one that falls over.
+ *
+ * Fifteen topics have no level-3 question at all, which is why the fallback is
+ * not hypothetical.
+ */
+function takeAtLevel(
+  pool: LessonQuestion[],
+  limit: number,
+  level: Difficulty,
+): LessonQuestion[] {
+  const taken: LessonQuestion[] = [];
+  for (let l = level; l >= 1 && taken.length < limit; l--) {
+    taken.unshift(...takeFromEnd(pool, limit - taken.length, (q) => q.difficulty === l));
+  }
+  return taken.sort((a, b) => a.difficulty - b.difficulty || a.marks - b.marks);
 }
 
 function phase(
@@ -280,7 +320,23 @@ export function buildLessonPlan(
   // which is neither the easiest recall nor the hardest essay — and if it were
   // taken last it would be whatever happened to be left, which is not the same
   // thing at all.
-  const exitTicket = take(pool, 1, (q) => q.marks >= 2 && q.marks <= 4);
+  //
+  // ⚠️ AN APPLY QUESTION, CHOSEN BY DIFFICULTY RATHER THAN BY MARKS.
+  // This used to take the first question worth 2 to 4 marks from the EASY end,
+  // which on most topics meant the easiest 2-marker in the topic — so in 53
+  // lessons the exit ticket came out easier than every question in Guided
+  // practice before it. An exit ticket is a check that the lesson's method
+  // landed, and "apply the method" is level 3 by definition. Falls back to
+  // analyse, then recall, for a topic missing level 3.
+  //
+  // Each `take` REMOVES what it finds, so the fallbacks must run only when the
+  // one before found nothing — which `??` guarantees, since a `take` that finds
+  // nothing returns an empty array and `[0]` of it is undefined.
+  const exitPick =
+    take(pool, 1, (q) => q.difficulty === 3)[0] ??
+    take(pool, 1, (q) => q.difficulty === 4)[0] ??
+    take(pool, 1, (q) => q.difficulty === 2)[0];
+  const exitTicket: LessonQuestion[] = exitPick ? [exitPick] : [];
 
   // ── ⚠️ THE RAMP IS DEALT, NOT BANDED, AND THE FIRST VERSION GOT THIS WRONG
   //
@@ -318,10 +374,55 @@ export function buildLessonPlan(
   // then guided — each taking from the back of what is left, and the starter
   // takes the easiest from the front at the end. Every phase still cannot hold
   // anything harder than the phase after it, because that phase already took it.
-  const stretch = takeFromEnd(pool, 2, (q) => q.marks >= 6);
-  const independent = takeFromEnd(pool, 5, () => true);
-  const guided = takeFromEnd(pool, 5, () => true);
-  const starter = take(pool, 6, () => true);
+  //
+  // ⚠️ EACH PHASE NOW TARGETS ITS OWN LEVEL, WHICH THE MARK-BASED VERSION
+  // COULD NOT DO. A fixed band was rejected above because mark tariffs are
+  // each subject's own — Maths stops at 5, Citizenship jumps to 12, so "Guided
+  // is 2-3 marks" means something different everywhere. Difficulty does not
+  // have that problem: it is 1 to 5 in every subject by construction. So the
+  // ladder a teacher expects — recall, then apply, then analyse, then explain —
+  // can finally be the ladder the lesson actually uses.
+  //
+  // Claimed hardest-first so each phase takes the best of its level before a
+  // lower phase's fallback could reach it. `takeAtLevel` only ever borrows
+  // DOWNWARDS, so a later phase still cannot be easier than an earlier one.
+  //
+  // ⚠️ A TOPIC WITH NO MIDDLE RUNG GIVES ITS EXPLAIN QUESTIONS TO INDEPENDENT.
+  // Switching to difficulty exposed something the mark-based sort had been
+  // hiding. 94 topics — every one outside maths and the sciences, which were
+  // the four subjects expanded in September — have questions at recall and at
+  // explain and NOTHING in between: no apply, no analyse. Targeting levels,
+  // Independent found no level 4 or 3, fell back to recall, and came out
+  // identical to Guided, while the explain questions all went to Stretch.
+  //
+  // The old sort "worked" for these only by accident — it dumped the explain
+  // questions into Independent because they happened to be worth the most.
+  // Doing that deliberately is the right call: when there is no method to
+  // practise, the step after recall IS the extended answer, and a lesson that
+  // repeats recall in two consecutive phases teaches nothing in the second.
+  // Stretch then gets whatever explain questions are left over, which may be
+  // none — and a missing Stretch reads far better than a duplicated phase.
+  //
+  // Topics that DO have a middle are untouched by this: Independent takes
+  // analyse and Stretch takes explain, exactly as intended.
+  const hasMiddle = pool.some((q) => q.difficulty === 3 || q.difficulty === 4);
+  const independent = hasMiddle
+    ? takeAtLevel(pool, 5, 4)                              // analyse
+    : takeFromEnd(pool, 5, (q) => q.difficulty === 5);     // explain, no middle to use
+  // ⚠️ STRETCH NEVER FALLS BACK, UNLIKE EVERY OTHER PHASE.
+  // It used `takeAtLevel` like the rest, and that broke the ramp in exactly the
+  // case the rule above creates: on a topic with no middle rung Independent
+  // takes the explain questions, Stretch finds none left, falls back
+  // downwards, and comes out as LEVEL-2 RECALL — the hardest phase of the
+  // lesson easier than the one before it. Measured on computer-science/
+  // networks-basics and history/the-first-world-war. The check at the time only
+  // compared Guided with Independent, so it reported zero problems while the
+  // lesson was visibly going backwards; see the full monotonicity check in
+  // check-content.mjs. Stretch is optional by nature: with nothing hard left
+  // it is simply empty, and `hasContent` drops the phase.
+  const stretch = takeFromEnd(pool, 2, (q) => q.difficulty === 5); // explain, if any remain
+  const guided = takeAtLevel(pool, 5, 3);                  // apply
+  const starter = take(pool, 6, (q) => q.difficulty <= 2); // recognise, recall
   const leftOver = pool.length;
 
   // ⚠️ Said out loud when it is true, rather than hidden by the layout. On a
@@ -329,8 +430,14 @@ export function buildLessonPlan(
   // build — a teacher should know that from the page, not discover it halfway
   // down. Comparing the starter's hardest with independent practice's hardest
   // is the cheapest honest test of whether the lesson actually climbs.
-  const hardestEarly = Math.max(0, ...starter.map((q) => q.marks));
-  const hardestLate = Math.max(0, ...independent.map((q) => q.marks), ...stretch.map((q) => q.marks));
+  //
+  // Judged by DIFFICULTY now, like the ramp itself. It used marks, which meant
+  // the flag and the lesson could disagree: a lesson climbing from recognise to
+  // explain on questions all worth 1 or 2 marks would have been called flat
+  // while visibly climbing, and the notice would have told a teacher the page
+  // they were looking at was wrong.
+  const hardestEarly = Math.max(0, ...starter.map((q) => q.difficulty));
+  const hardestLate = Math.max(0, ...independent.map((q) => q.difficulty), ...stretch.map((q) => q.difficulty));
   const flat = starter.length > 0 && hardestLate <= hardestEarly;
 
   const phases: LessonPhase[] = [

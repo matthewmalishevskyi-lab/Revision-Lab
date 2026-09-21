@@ -150,6 +150,70 @@ try {
     }
   }
 
+  // ── 1b. The lesson the deck is built from actually climbs ─────────────────
+  //
+  // ⚠️ CHECKED IN FULL, BECAUSE A NARROW VERSION OF THIS ALREADY LIED ONCE.
+  // When the lesson builder moved from marks to difficulty, the first check
+  // compared only Guided with Independent, and reported zero problems while
+  // computer-science/networks-basics put LEVEL-2 recall in Stretch, straight
+  // after level-5 Independent practice — the hardest phase easier than the one
+  // before it. The metric had been chosen to measure the defect already known
+  // about, and could not see the one the fix introduced.
+  //
+  // So this walks every phase in lesson order and requires that no phase's
+  // easiest question is easier than the previous phase's hardest. The exit
+  // ticket is excluded on purpose: it is a check that the method landed, not
+  // the summit of the lesson, and it comes last on the page for a different
+  // reason than difficulty.
+  //
+  // Measured against the old mark-ordered builder on this same rule: 179 of 285
+  // lessons went backwards somewhere, and 21 had Guided identical to
+  // Independent. Marks were never a difficulty scale; they were hiding it.
+  {
+    const RAMP = ["starter", "guided", "independent", "stretch"];
+    let lessons = 0;
+    for (const subject of subjectsWithLessons()) {
+      for (const topic of subject.topics) {
+        const plan = buildLessonPlan(subject.slug, topic.slug);
+        if (!plan) continue;
+        lessons += 1;
+        const phases = RAMP
+          .map((id) => plan.phases.find((p) => p.id === id))
+          .filter((p) => p && p.questions.length > 0);
+
+        for (let i = 1; i < phases.length; i++) {
+          const prevHardest = Math.max(...phases[i - 1].questions.map((q) => q.difficulty));
+          const curEasiest = Math.min(...phases[i].questions.map((q) => q.difficulty));
+          expect(
+            curEasiest >= prevHardest,
+            `${subject.slug}/${topic.slug}: the lesson goes backwards — ${phases[i - 1].id} reaches level ${prevHardest}, then ${phases[i].id} drops to level ${curEasiest}`,
+          );
+        }
+
+        const levels = (id) =>
+          JSON.stringify((plan.phases.find((p) => p.id === id)?.questions ?? []).map((q) => q.difficulty));
+        const g = plan.phases.find((p) => p.id === "guided");
+        const ind = plan.phases.find((p) => p.id === "independent");
+        if (g?.questions.length && ind?.questions.length) {
+          expect(
+            levels("guided") !== levels("independent"),
+            `${subject.slug}/${topic.slug}: Guided and Independent practice are the same exercise twice (${levels("guided")})`,
+          );
+        }
+
+        // The exit ticket must not be easier than the practice it follows.
+        const exit = plan.phases.find((p) => p.id === "exit");
+        if (exit?.questions.length && g?.questions.length) {
+          expect(
+            exit.questions[0].difficulty >= Math.min(...g.questions.map((q) => q.difficulty)),
+            `${subject.slug}/${topic.slug}: the exit ticket (level ${exit.questions[0].difficulty}) is easier than every question in Guided practice`,
+          );
+        }
+      }
+    }
+    console.log(`${lessons} lessons checked: each climbs, no phase repeats, no exit ticket undercuts the practice.`);
+  }
+
   // ── 2. The file is a real .pptx ───────────────────────────────────────────
   const plan = buildLessonPlan("maths", "vectors-and-transformations");
   const buf = lessonPptx(plan);
