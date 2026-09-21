@@ -122,6 +122,25 @@ answer box. Escape closes it and returns focus to the button.
 back, no button on English or History tests, no horizontal overflow, zero
 console errors.
 
+### Then: the subject's own character, and nobody loses a wing
+
+Matthew, with a screenshot: *"it can't be Hoot all the time... in different
+subjects, change it to different characters. And also, Hoot kind of lost his
+wing."* Each calculator now belongs to its subject's mascot — Iris in the
+sciences, Sterling in Business, Atlas in Geography, Ridge in PE, Pixel in CS
+(wearing his equipped outfit, via MascotDisplay) — and the title says whose.
+On /today it is the character of the subject most of the day's sums come from.
+`MASCOT_NAMES` sits beside `MASCOTS`, typed against it, so a new mascot
+without a name does not compile.
+
+⚠️ **The wing.** Hoot was drawn inside a small `overflow-hidden` box to show
+only his top half, which also sliced him down the side. Now the whole
+character is drawn at full width BEHIND the calculator body (z-0 under
+z-10), so the body hides the lower part and nothing is ever cut sideways.
+Measured for all six characters in a browser: no clipping ancestor, and the
+calculator body is what sits on top below its edge. The first raise showed
+only heads on the human characters; lifted so about 70% shows.
+
 ### Then: every topic with sums in it, not just four subjects
 
 Matthew, same day: *"in every topic where you have to do calculations, just

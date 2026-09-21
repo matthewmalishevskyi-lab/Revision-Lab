@@ -1,6 +1,8 @@
 "use client";
 
-// The pop-up calculator, with Hoot peeking over the top of it.
+// The pop-up calculator, with the subject's own character peeking over the
+// top of it — Hoot in Maths, Iris in the sciences, Sterling in Business, and
+// so on. Matthew: "it can't be Hoot all the time."
 //
 // Beside practice questions, tests and today's practice in the subjects whose
 // papers allow a calculator (`calculator: true` in subjects.ts). All the maths
@@ -26,7 +28,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { evaluate } from "../lib/calculator";
 import { useStoredRaw, writeStorageRaw } from "../lib/browserStore";
-import { Hoot } from "./Mascots";
+import { MASCOT_NAMES, type MASCOTS } from "./Mascots";
+import { MascotDisplay } from "./MascotDisplay";
 
 /** "off" = the student is practising for the non-calculator paper. */
 export const CALCULATOR_PREF_KEY = "revision-lab:calculator";
@@ -91,7 +94,14 @@ const TYPED: Record<string, string> = {
   "(": "(", ")": ")", ".": ".", "%": "%", p: "π",
 };
 
-export function Calculator({ colour }: { colour: string }) {
+export function Calculator({
+  colour,
+  mascot = "hoot",
+}: {
+  colour: string;
+  /** Whose calculator it is — the subject's own character. */
+  mascot?: keyof typeof MASCOTS;
+}) {
   const id = useId();
   const pref = useStoredRaw(CALCULATOR_PREF_KEY, null);
   const hidden = pref === "off";
@@ -249,22 +259,30 @@ export function Calculator({ colour }: { colour: string }) {
           className="calc-panel fixed inset-x-3 bottom-3 z-50 outline-none sm:inset-x-auto sm:right-5 sm:bottom-5 sm:w-[19rem]"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
-          {/* Hoot, peeking over the top edge. Decorative, so hidden from
-              screen readers and never in the way of a tap. */}
+          {/* The character, peeking over the top edge. Decorative, so hidden
+              from screen readers and never in the way of a tap.
+
+              ⚠️ BEHIND THE CALCULATOR, NOT CROPPED. The first version put
+              Hoot in a small box with overflow-hidden to show only his top
+              half — which also sliced his wing off at the side. Now the
+              whole character is drawn, at full width, BEHIND the calculator
+              body (z-0 under z-10), so the calculator itself hides the lower
+              half and nothing is ever cut through sideways. Matthew: "poor
+              Hoot lost his wing." */}
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -top-[3.1rem] left-5 block h-16 w-14 overflow-hidden"
+            className="pointer-events-none absolute -top-[4.25rem] left-4 z-0 block"
           >
-            <Hoot className="h-[5.5rem] w-auto" />
+            <MascotDisplay mascot={mascot} className="h-24 w-auto" />
           </span>
 
           <div
-            className="relative rounded-[1.75rem] border-4 p-3 shadow-[0_20px_50px_-20px_rgba(22,24,43,0.55)]"
+            className="relative z-10 rounded-[1.75rem] border-4 p-3 shadow-[0_20px_50px_-20px_rgba(22,24,43,0.55)]"
             style={{ borderColor: colour, backgroundColor: colour }}
           >
             <div className="mb-2 flex items-center justify-between px-1 text-white">
-              <span className="whitespace-nowrap pl-16 text-xs font-bold uppercase tracking-wide opacity-90 max-sm:hidden">
-                Hoot&apos;s calculator
+              <span className="whitespace-nowrap pl-20 text-xs font-bold uppercase tracking-wide opacity-90 max-sm:hidden">
+                {MASCOT_NAMES[mascot]}&apos;s calculator
               </span>
               {!mini && (
                 <button

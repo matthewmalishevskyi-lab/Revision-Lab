@@ -7,6 +7,7 @@ import { getDailySet, getRevisitSet } from "../lib/daily-practice-server";
 import { DailyPracticeRunner } from "./DailyPracticeRunner";
 import { Calculator } from "../components/Calculator";
 import { topicNeedsCalculator } from "../lib/calculator-topics";
+import { getSubject } from "../lib/subjects";
 
 export const metadata: Metadata = {
   title: "Today's practice",
@@ -29,6 +30,15 @@ export default async function TodayPage() {
   // and the section below does not render.
   const revisit = await getRevisitSet(viewer.id, set);
 
+  // Whose calculator: the character of the subject most of today's
+  // calculation questions come from — so a mostly-Physics day gets Iris,
+  // a mostly-Maths day gets Hoot.
+  const calcCounts = new Map<string, number>();
+  for (const q of [...set.questions, ...revisit.questions]) {
+    if (topicNeedsCalculator(q.subjectSlug, q.topicSlug)) calcCounts.set(q.subjectSlug, (calcCounts.get(q.subjectSlug) ?? 0) + 1);
+  }
+  const calcSubject = getSubject([...calcCounts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "");
+
   return (
     <main className="mx-auto w-full max-w-3xl px-6 py-8">
       <SiteHeader greeting={false} />
@@ -44,9 +54,9 @@ export default async function TodayPage() {
         {/* Once for the whole page, not once per runner — two buttons would
             open the same thing. Shown when any question on the page is from a
             calculator subject; revisited mistakes can come from anywhere. */}
-        {[...set.questions, ...revisit.questions].some((q) => topicNeedsCalculator(q.subjectSlug, q.topicSlug)) && (
+        {calcSubject && (
           <div className="mt-4">
-            <Calculator colour="#2563eb" />
+            <Calculator colour={calcSubject.accent} mascot={calcSubject.mascot} />
           </div>
         )}
       </section>

@@ -300,7 +300,7 @@ export function Practice({
     <div>
       {calculator && (
         <div className="mb-3 flex justify-end">
-          <Calculator colour={calculatorSubject?.accent ?? colour} />
+          <Calculator colour={calculatorSubject?.accent ?? colour} mascot={calculatorSubject?.mascot} />
         </div>
       )}
 

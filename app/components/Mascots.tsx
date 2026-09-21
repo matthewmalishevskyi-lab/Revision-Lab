@@ -47,6 +47,25 @@ export const MASCOTS = {
   ridge: Ridge,
 } as const;
 
+/**
+ * Each mascot's name, for anywhere a character is named in words — "Iris's
+ * calculator". Typed against MASCOTS, so a new mascot without a name, or a
+ * name for a mascot that does not exist, will not compile.
+ */
+export const MASCOT_NAMES: Record<keyof typeof MASCOTS, string> = {
+  pixel: "Pixel",
+  hoot: "Hoot",
+  quill: "Quill",
+  knight: "Gaunt",
+  atlas: "Atlas",
+  sterling: "Sterling",
+  iris: "Iris",
+  bobby: "Bobby",
+  lumen: "Lumen",
+  voyager: "Voyager",
+  ridge: "Ridge",
+};
+
 // ============================ PIXEL — Computer Science ======================
 export function Pixel(props: MascotProps) {
   return (
