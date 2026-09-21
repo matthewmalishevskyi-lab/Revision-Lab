@@ -664,6 +664,43 @@ export async function recordReport(userId: string): Promise<void> {
   }
 }
 
+// ─── The developer early-access code ────────────────────────────────────────
+//
+// One fixed code, typed on the progress page, unlocks the game preview. It is
+// 8 characters, so a script trying codes with nothing in the way would get
+// there. Counted per IP AND per account, the clan-join shape: per-account
+// stops one logged-in person guessing from many networks, per-IP stops one
+// machine guessing across many accounts. Only wrong codes count.
+const DEV_ACCESS_TIERS: Tier[] = [
+  { atFailures: 6, lockSeconds: 60 },
+  { atFailures: 11, lockSeconds: 15 * 60 },
+  { atFailures: 21, lockSeconds: 60 * 60 },
+];
+const DEV_ACCESS_QUIET_SECONDS = 60 * 60;
+
+export async function checkDevAccessAllowed(userId: string): Promise<ThrottleVerdict> {
+  const now = Date.now();
+  try {
+    const byIp = await checkKey(`devaccess-ip:${await clientIp()}`, now);
+    if (!byIp.allowed) return byIp;
+    return await checkKey(`devaccess-user:${userId}`, now);
+  } catch (error) {
+    console.error("[throttle] dev-access check failed, allowing attempt:", error);
+    return { allowed: true };
+  }
+}
+
+export async function recordFailedDevAccess(userId: string): Promise<void> {
+  try {
+    await Promise.all([
+      bump(`devaccess-user:${userId}`, Date.now(), DEV_ACCESS_TIERS, DEV_ACCESS_QUIET_SECONDS),
+      bump(`devaccess-ip:${await clientIp()}`, Date.now(), DEV_ACCESS_TIERS, DEV_ACCESS_QUIET_SECONDS),
+    ]);
+  } catch (error) {
+    console.error("[throttle] could not record failed dev-access attempt:", error);
+  }
+}
+
 // Exported only so the test script can check the staircase without a database.
 export const __testing = {
   lockoutFor,

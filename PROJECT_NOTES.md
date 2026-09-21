@@ -1,5 +1,48 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Early access for developers — the game preview behind a code (2026-09-21, night)
+
+Matthew: *"a button... early access for developers, at the bottom of the
+progress thing... a code that will let me access what we're doing here now,
+like the game thing."* The game itself is not built; `/early-access` shows
+the character art (regular alien, boss front and back), what has been agreed
+about the game, and "next up: the levels", which he wants to talk through
+from tomorrow.
+
+⚠️ **The code is not in the repository, because the repository is public.**
+`lib/dev-access.ts` holds a salted scrypt hash of it, the same treatment an
+account password gets, and the form is rate limited per IP and per account
+(`checkDevAccessAllowed` in throttle.ts). Typed input is uppercased and has
+spaces removed first, because phones do both on their own. check-security
+fails if the code appears anywhere in app/ — and since the check cannot hold
+the code either, it tests every code-shaped token against the hash, with a
+1-in-256 sha256 prefilter so only a few tokens pay for scrypt. Confirmed to
+bite by pasting the code, in lower case, into a comment.
+
+⚠️ **Access belongs to the account, not the browser.** The cookie is
+`signValue("dev-access:<user id>")`: unforgeable, and copied into another
+logged-in browser it does nothing. Verified: a second account given the
+first account's cookie is sent back to /progress, and the page's HTML never
+reached it.
+
+⚠️ **The art is not in public/.** Everything there is a URL anyone can open,
+so the code would guard an empty room. The SVGs live in
+`app/early-access/art.ts` as data URIs and only leave the server inside the
+page's HTML after the access check. A check fails if a client file imports it.
+
+**Deliberately not in robots.ts** — that file is public, and listing a hidden
+page there advertises it. The page is noindex instead.
+
+**To change the code:** hash the new one as hashPassword does, replace
+DEV_CODE_HASH, and change the two-character PREFIX in check-security.mjs to
+the first two hex characters of sha256(new code). People who already unlocked
+keep access.
+
+**Verified in a browser:** locked visitors are redirected to the form, a wrong
+code says so, the right code typed in lower case with stray spaces unlocks, the three
+drawings load, /progress then shows "Open the game preview", logged-out gets
+a redirect, no overflow at 320px, zero console errors.
+
 ## A credit on every diagram, a PNG download, and an easier Grand master (2026-09-21, late)
 
 Matthew, after finding the site still had five registered users: *"every single

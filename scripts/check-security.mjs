@@ -1272,6 +1272,45 @@ try {
       `the accessibility switch knob is off-centre: top-${top} but the track starts at py-${pad} and the knob sits left-${left} in from its edge`);
   }
 
+  // ── Developer early access ────────────────────────────────────────────────
+  // The code must never be written in plain text anywhere in app/ — this repo
+  // is public. The check cannot hold the code either, so it tests every
+  // code-shaped token against the stored scrypt hash, after a 1-in-256
+  // prefilter (two hex characters of a sha256, which says nothing useful about
+  // the code) so that only a handful of tokens pay for a slow scrypt.
+  {
+    const { createHash, scryptSync, timingSafeEqual } = await import("node:crypto");
+    const devSrc = readFileSync("app/lib/dev-access.ts", "utf8");
+    const stored = devSrc.match(/DEV_CODE_HASH =\s*"([0-9a-f]+):([0-9a-f]+)"/);
+    expect(stored, "dev-access.ts stores the developer code as a salted scrypt hash");
+    const PREFIX = "a2";
+    const tokens = new Set();
+    for (const file of listFiles("app").filter((f) => /\.(ts|tsx|css)$/.test(f))) {
+      for (const t of readFileSync(file, "utf8").match(/\b[A-Za-z0-9]{6,12}\b/g) ?? []) {
+        if (/[A-Za-z]/.test(t) && /\d/.test(t)) tokens.add(t.toUpperCase());
+      }
+    }
+    const leaked = stored ? [...tokens].filter((t) =>
+      createHash("sha256").update(t).digest("hex").startsWith(PREFIX) &&
+      timingSafeEqual(scryptSync(t, stored[1], 64), Buffer.from(stored[2], "hex"))) : [];
+    expect(leaked.length === 0, "the developer code appears in plain text somewhere in app/");
+
+    const page = readFileSync("app/early-access/page.tsx", "utf8");
+    const guard = page.indexOf("hasDevAccess(user.id)");
+    expect(guard > 0 && guard < page.indexOf("return ("),
+      "/early-access checks hasDevAccess before it renders anything");
+    expect(!readFileSync("app/robots.ts", "utf8").includes("early-access"),
+      "/early-access is not advertised in the public robots.txt");
+    const action = readFileSync("app/lib/dev-access-actions.ts", "utf8");
+    expect(action.includes("getSessionUserId()") && action.includes("recordFailedDevAccess"),
+      "the unlock action takes the user from the session and counts wrong codes");
+    const clientImportsArt = listFiles("app").filter((f) => /\.tsx?$/.test(f)).filter((f) => {
+      const src = readFileSync(f, "utf8");
+      return /^["']use client["']/m.test(src) && /from ["'][^"']*early-access\/art["']|from ["']\.\/art["']/.test(src);
+    });
+    expect(clientImportsArt.length === 0, `the game art is imported by a client file: ${clientImportsArt.join(", ")}`);
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

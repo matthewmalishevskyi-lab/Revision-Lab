@@ -6,6 +6,8 @@ import { PixelCompanion } from "../components/PixelCompanion";
 import { ProgressRing } from "../components/ProgressRing";
 import { SiteHeader } from "../components/SiteHeader";
 import { DeleteProgressForm } from "./DeleteProgressForm";
+import { DevAccessForm } from "./DevAccessForm";
+import { hasDevAccess } from "../lib/dev-access";
 import { WeeklyChart } from "../components/WeeklyChart";
 import { getViewer } from "../lib/viewer";
 import { formatDuration, getProgress, PROGRESS_ENABLED } from "../lib/progress";
@@ -36,6 +38,7 @@ export default async function ProgressPage() {
   if (!user) redirect("/login");
 
   const progress = await getProgress(user.id);
+  const devAccess = await hasDevAccess(user.id);
 
 
   return (
@@ -413,6 +416,31 @@ export default async function ProgressPage() {
           <DeleteProgressForm />
         </section>
       )}
+
+      {/* Matthew's own way into the game while it is being built. At the
+          very foot, below even "delete", because nobody revising needs it.
+          The code is checked on the server (lib/dev-access.ts). */}
+      <section id="early-access" className="mt-14 border-t border-black/5 pt-8 dark:border-white/10">
+        <h2 className="text-lg font-semibold">Early access for developers</h2>
+        {devAccess ? (
+          <>
+            <p className="mt-2 max-w-2xl text-sm opacity-60">This account has early access.</p>
+            <Link
+              href="/early-access"
+              className="mt-4 inline-flex min-h-11 items-center rounded-full bg-neutral-900 px-5 text-sm font-semibold text-white transition hover:bg-neutral-700 dark:bg-white dark:text-neutral-900"
+            >
+              Open the game preview →
+            </Link>
+          </>
+        ) : (
+          <>
+            <p className="mt-2 max-w-2xl text-sm opacity-60">
+              For the people building Revision Lab. You&apos;ll need the code.
+            </p>
+            <DevAccessForm />
+          </>
+        )}
+      </section>
     </main>
   );
 }
