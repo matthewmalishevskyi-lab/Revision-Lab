@@ -17,9 +17,12 @@ import { normalise } from "../lib/normalise";
 import { HigherBadge } from "../components/HigherBadge";
 import { MarkTariff } from "../components/MarkTariff";
 import { ReportQuestion } from "../components/ReportQuestion";
+import { AnswerBox } from "../components/AnswerBox";
 import { DIFFICULTY_LABELS } from "../lib/difficulty";
 import { recordAnswer } from "../lib/progress-actions";
 import type { DailySet } from "../lib/daily-practice";
+import { useStoredRaw } from "../lib/browserStore";
+import { dailyAnswersKey, forgetOtherDays, parseSaved, saveAnswers } from "../lib/savedAnswers";
 
 type State = "unanswered" | "correct" | "wrong" | "shown";
 
@@ -40,13 +43,47 @@ export function DailyPracticeRunner({
   /** Which questions have already been sent to the database. See settle(). */
   const recorded = useRef<Set<number>>(new Set());
 
-  const q = set.questions[at];
-  const state = states[at];
-  const done = states.filter((s) => s !== "unanswered").length;
-  const right = states.filter((s) => s === "correct").length;
-  const finished = done === set.questions.length;
+  // What was typed for each question answered on this visit — the text box
+  // itself is cleared on moving, but an answered question should still show
+  // what you put.
+  const [inputs, setInputs] = useState<Record<number, string>>({});
 
-  function settle(next: State) {
+  // ───────────────────────────────────────────────────────────────────────────
+  // TODAY'S ANSWERS SURVIVE A RELOAD — the set is the same all day, so coming
+  // back to it half-done should find it half-done. Saved answers sit
+  // underneath the live ones (see the same note in Practice.tsx).
+  //
+  // ⚠️ NOT for the "revisit" list. A mistake you get wrong again comes back
+  // ten minutes later, the same day; if its old answer were restored it would
+  // appear already answered and locked, and you could never try it again.
+  // ───────────────────────────────────────────────────────────────────────────
+  const savedKey = variant === "daily" ? dailyAnswersKey(set.date) : null;
+  const savedRaw = useStoredRaw(savedKey ?? "revision-lab:answers:none", null);
+  const saved = savedKey ? parseSaved(savedRaw) : {};
+  const stateAt = (i: number): State => {
+    if (states[i] !== "unanswered") return states[i];
+    const s = saved[set.questions[i]?.question ?? ""]?.status;
+    return s === "correct" || s === "wrong" || s === "shown" ? s : "unanswered";
+  };
+  const inputAt = (i: number) => inputs[i] ?? saved[set.questions[i]?.question ?? ""]?.input ?? "";
+
+  const q = set.questions[at];
+  const state = stateAt(at);
+  const allStates = set.questions.map((_, i) => stateAt(i));
+  const done = allStates.filter((s) => s !== "unanswered").length;
+  const right = allStates.filter((s) => s === "correct").length;
+  const finished = done === set.questions.length;
+  // Once answered, the box shows what was answered, not whatever is being typed.
+  const shownInput = state === "unanswered" ? typed : inputAt(at);
+
+  function settle(next: State, input = typed) {
+    // Already answered — on this visit or, restored, on an earlier one.
+    if (stateAt(at) !== "unanswered") return;
+    setInputs((prev) => ({ ...prev, [at]: input }));
+    if (savedKey) {
+      saveAnswers(savedKey, { [q.question]: { input, status: next, recorded: next !== "shown" } });
+      forgetOtherDays(savedKey);
+    }
     setStates((prev) => {
       if (prev[at] !== "unanswered") return prev;
       const copy = [...prev];
@@ -108,7 +145,7 @@ export function DailyPracticeRunner({
           a teacher's "3 of 10" is easier to hold than a percentage. */}
       <div className="flex flex-wrap items-center gap-3">
         <ol className="flex flex-wrap gap-1.5" aria-label={`${variant === "revisit" ? "Revisit, question" : "Question"} ${at + 1} of ${set.questions.length}`}>
-          {states.map((s, i) => (
+          {allStates.map((s, i) => (
             <li key={i}>
               <button
                 type="button"
@@ -164,7 +201,7 @@ export function DailyPracticeRunner({
           <ul className="mt-5 grid gap-2 sm:grid-cols-2">
             {q.choices.map((choice) => {
               const isRight = (q.accept ?? []).some((a) => normalise(a) === normalise(choice));
-              const picked = typed === choice;
+              const picked = shownInput === choice;
               const reveal = state !== "unanswered";
               return (
                 <li key={choice}>
@@ -174,7 +211,7 @@ export function DailyPracticeRunner({
                     onClick={() => {
                       if (state !== "unanswered") return;
                       setTyped(choice);
-                      settle(isRight ? "correct" : "wrong");
+                      settle(isRight ? "correct" : "wrong", choice);
                     }}
                     className={`min-h-11 w-full rounded-xl border px-4 py-3 text-left text-sm transition ${
                       reveal && isRight
@@ -193,14 +230,12 @@ export function DailyPracticeRunner({
         ) : q.accept ? (
           <div className="mt-5 flex flex-wrap gap-2">
             <label className="sr-only" htmlFor="answer">Your answer</label>
-            <input
+            <AnswerBox
               id="answer"
-              value={typed}
-              onChange={(e) => setTyped(e.target.value)}
-              onKeyDown={(e) => { if (e.key === "Enter") check(); }}
+              value={shownInput}
+              onChange={setTyped}
+              onSubmit={check}
               disabled={state !== "unanswered"}
-              autoComplete="off"
-              className="min-h-11 flex-1 rounded-xl border border-black/15 bg-white/80 px-4 text-base dark:border-white/20 dark:bg-black/30"
               placeholder="Type your answer"
             />
             <button

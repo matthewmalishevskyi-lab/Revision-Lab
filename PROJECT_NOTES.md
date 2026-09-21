@@ -1,5 +1,76 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Answers that survive a reload, and an answer box that grows (2026-09-21, evening)
+
+Two asks back to back. *"If you reload the website or just exit and enter
+again, you can't see what you wrote, and that's very annoying."* Then, while
+that was being built: *"make it expand after you reach a certain number of
+letters and it stretches"* — the answer box was a one-line input 11rem wide,
+so a sentence scrolled sideways out of sight.
+
+### Saved answers — on this device, answers and ticks, practice and today
+
+Matthew's three choices: **saved in the browser** (instant, works logged out,
+no SQL — an answer typed on a phone does not follow you to a laptop),
+**answers AND verdicts come back** (the page looks exactly as you left it),
+in **topic practice and Today's practice** but not timed tests (a test is a
+fresh random set each time, so there is nothing to return to).
+
+`lib/savedAnswers.ts`, pure and checked (`check-saved-answers.mjs`, 32 checks).
+
+⚠️ **Keyed by the question's TEXT, not its position.** This site once added
+1,155 questions in one go; keyed by position, every saved answer below an
+insertion would land on the wrong question. Keyed by text, a reworded question
+just comes back blank.
+
+⚠️ **Saved answers sit underneath the live ones; they are never copied in.**
+The obvious build loads them into state in an effect after the page mounts —
+a setState-in-effect this codebase's lint refuses, and a flash of empty boxes.
+Instead `stateFor` falls back to the saved answer for any question not touched
+this visit, read through `useStoredRaw` so server HTML and first paint agree.
+Writes happen in an effect over the settled state, because a multiple-choice
+click runs two updates in one tick and only the second is worth saving.
+
+⚠️ **A reload must never count an answer twice.** The in-memory "recorded"
+set is empty after a reload, so each saved answer carries `recorded: true` and
+Practice checks it before calling `recordAnswer`. Removing that guard is one
+of the sabotages the checker catches.
+
+⚠️ **Not for the "Revisit your mistakes" list.** A mistake got wrong again
+comes back ten minutes later the SAME day; restoring its old answer would show
+it already answered and locked, and it could never be retried.
+
+Everything read back is validated — unknown statuses, non-string inputs, a
+non-boolean `recorded` (which could suppress real recording) are all dropped,
+inputs capped at 2,000 characters, and a corrupt save is forgotten rather than
+thrown. Topic answers expire after 60 days untouched; yesterday's daily set is
+deleted when today's is saved. A small "Your answers are saved on this device
+· Clear my answers" line appears once anything is saved.
+
+### The answer box grows
+
+`components/AnswerBox.tsx` replaces all three answer inputs (practice, tests,
+today). It starts the old size, widens with the text until it fills the row,
+then wraps and grows taller. Still **Enter to check** — every answer is one
+line of meaning, and marking strips all whitespace anyway, so wrapping cannot
+change a result.
+
+⚠️ **Not `field-sizing: content`** — one CSS line, but Firefox lacks it, and a
+box that never grows in one browser is the bug being fixed. Width is worked
+out from the length during render; height is measured in a callback ref.
+
+⚠️ **The first version clipped the last line by 2px** — `scrollHeight`
+excludes the border on a border-box element. Found by measuring
+`scrollHeight <= clientHeight` in a browser, not by looking; fixed by adding
+the border back.
+
+**Verified:** all checks green (32 saved-answer, 96 calculator); driven on
+desktop and iPhone SE — typed and multiple-choice answers with their ticks
+restored after reload, "Clear my answers" really clears, the box widened
+176 → 762px and grew to two fully visible lines, no horizontal overflow, zero
+console errors. Firefox is not installed here, so the "works without
+field-sizing" claim rests on the code path rather than a Firefox run.
+
 ## Hoot's calculator (2026-09-21, later)
 
 Matthew: *"a little calculator button that will put on a cute calculator where

@@ -24,11 +24,20 @@
 // skill, not a cop-out.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HigherBadge } from "./HigherBadge";
 import { Calculator } from "./Calculator";
+import { AnswerBox } from "./AnswerBox";
 import { getSubject } from "../lib/subjects";
 import { recordAnswer } from "../lib/progress-actions";
+import { useStoredRaw } from "../lib/browserStore";
+import {
+  clearAnswers,
+  parseSaved,
+  saveAnswers,
+  topicAnswersKey,
+  type SavedAnswer,
+} from "../lib/savedAnswers";
 import { ReportQuestion } from "./ReportQuestion";
 import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 // `normalise` used to be defined right here, and MockExam.tsx imported it
@@ -63,6 +72,8 @@ type QuestionState = {
   input: string;
   status: Status;
   revealed: boolean;
+  /** Sent to the progress table already — possibly on an earlier visit. */
+  recorded?: boolean;
 };
 
 const EMPTY: QuestionState = { input: "", status: "unanswered", revealed: false };
@@ -151,13 +162,52 @@ export function Practice({
     setShuffledChoices(shuffledChoicesFor(questions));
   }
 
-  const stateFor = (index: number) => states[index] ?? EMPTY;
+  // ───────────────────────────────────────────────────────────────────────────
+  // SAVED ANSWERS SIT UNDERNEATH, THEY ARE NOT COPIED IN.
+  //
+  // What was typed before a reload lives in localStorage (see savedAnswers.ts).
+  // The obvious build copies it into `states` in an effect after the page
+  // loads — a setState-in-effect, which this codebase's lint rules refuse, and
+  // a flash of empty boxes before the answers appear. Instead `stateFor` falls
+  // back to the saved answer for any question not touched on this visit, read
+  // through useStoredRaw so the server's HTML and the first paint agree.
+  // ───────────────────────────────────────────────────────────────────────────
+  const savedKey = topicAnswersKey(subject, topic);
+  const saved = parseSaved(useStoredRaw(savedKey, null));
+  const savedFor = (index: number): QuestionState | undefined => {
+    const a = saved[questions[index]?.question ?? ""];
+    if (!a || !["unanswered", "correct", "incorrect", "selfMarked"].includes(a.status)) return undefined;
+    return { input: a.input, status: a.status as Status, revealed: Boolean(a.revealed), recorded: a.recorded };
+  };
+
+  const stateFor = (index: number) => states[index] ?? savedFor(index) ?? EMPTY;
 
   function update(index: number, changes: Partial<QuestionState>) {
     setStates((current) => ({
       ...current,
-      [index]: { ...(current[index] ?? EMPTY), ...changes },
+      [index]: { ...(current[index] ?? savedFor(index) ?? EMPTY), ...changes },
     }));
+  }
+
+  // Everything touched on this visit is written back. An effect, not the
+  // handlers, because a multiple-choice click runs two updates in one tick
+  // (the pick, then the check) and only the settled state is worth saving.
+  // Writing to localStorage is talking to the outside world, which is exactly
+  // what an effect is for; it sets no React state.
+  useEffect(() => {
+    const changes: Record<string, SavedAnswer> = {};
+    for (const [i, st] of Object.entries(states)) {
+      const q = questions[Number(i)];
+      if (q) changes[q.question] = { input: st.input, status: st.status, revealed: st.revealed, recorded: st.recorded };
+    }
+    if (Object.keys(changes).length > 0) saveAnswers(savedKey, changes);
+  }, [states, questions, savedKey]);
+
+  const anythingSaved = questions.some((_, i) => stateFor(i).status !== "unanswered" || stateFor(i).input);
+
+  function startAgain() {
+    clearAnswers(savedKey);
+    setStates({});
   }
 
   // `given` lets a click pass its answer straight in. Without it, a choice
@@ -171,7 +221,11 @@ export function Practice({
     const isCorrect = (question.accept ?? []).some(
       (valid) => normalise(valid) === normalise(typed),
     );
-    update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect });
+    // ⚠️ A question answered on an EARLIER visit has already been recorded, and
+    // after a reload the `recorded` set below is empty again. Without the saved
+    // flag, reloading and pressing Check would count the same answer twice.
+    const alreadyRecorded = recorded.has(index) || Boolean(stateFor(index).recorded);
+    update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect, recorded: true });
 
     // ─────────────────────────────────────────────────────────────────────────
     // ONLY THE FIRST ATTEMPT AT EACH QUESTION IS RECORDED, and this was a bug
@@ -192,7 +246,7 @@ export function Practice({
     //
     // Later attempts still work normally on screen. They just aren't measured.
     // ─────────────────────────────────────────────────────────────────────────
-    if (!recorded.has(index)) {
+    if (!alreadyRecorded) {
       setRecorded((previous) => new Set(previous).add(index));
 
       // Not awaited. The tick or cross has already appeared, because `update`
@@ -262,6 +316,17 @@ export function Practice({
             ? ` · ${correct}/${markable} questions`
             : ""}
           {attempted < markable && ` · ${markable - attempted} still to try`}
+        </div>
+      )}
+
+      {/* Answers are kept on this device between visits, so there has to be a
+          way to wipe them and have another go from scratch. */}
+      {anythingSaved && (
+        <div className="-mt-2 mb-3 flex items-center justify-between gap-3 text-xs opacity-60">
+          <span>Your answers are saved on this device.</span>
+          <button type="button" onClick={startAgain} className="tap-pad-xs font-medium underline-offset-2 hover:underline">
+            Clear my answers
+          </button>
         </div>
       )}
 
@@ -364,24 +429,13 @@ export function Practice({
                         </div>
                       ) : (
                       <div className="mt-3 flex flex-wrap gap-2">
-                        <input
-                          type="text"
+                        {/* Enter still checks — see AnswerBox. It grows as
+                            the answer gets longer, so a sentence stays readable. */}
+                        <AnswerBox
                           value={state.input}
-                          onChange={(event) =>
-                            update(index, {
-                              input: event.target.value,
-                              status: "unanswered",
-                            })
-                          }
-                          // Enter should submit. Making people reach for the
-                          // mouse between every question is the fastest way to
-                          // stop them doing all sixteen.
-                          onKeyDown={(event) => {
-                            if (event.key === "Enter") check(index, item);
-                          }}
-                          placeholder="Your answer"
-                          aria-label={`Answer to question ${index + 1}`}
-                          className="w-44 rounded-lg border border-black/10 bg-white/80 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 dark:border-white/15 dark:bg-white/5"
+                          onChange={(input) => update(index, { input, status: "unanswered" })}
+                          onSubmit={() => check(index, item)}
+                          ariaLabel={`Answer to question ${index + 1}`}
                         />
                         <button
                           type="button"

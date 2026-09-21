@@ -23,6 +23,7 @@ import { normalise } from "../lib/normalise";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
 import { Calculator } from "./Calculator";
+import { AnswerBox } from "./AnswerBox";
 import { recordAnswer, recordTestCompletion } from "../lib/progress-actions";
 import { MarkTariff } from "./MarkTariff";
 import { marksFor } from "../lib/marks";
@@ -605,19 +606,12 @@ export function MockExam({
                         // is read live off this same status, so here it has to
                         // behave like a real exam: one shot per question.
                         <div className="mt-3 flex flex-wrap gap-2">
-                          <input
-                            type="text"
+                          <AnswerBox
                             value={state.input}
                             disabled={state.status !== "unanswered"}
-                            onChange={(event) =>
-                              update(index, { input: event.target.value, status: "unanswered" })
-                            }
-                            onKeyDown={(event) => {
-                              if (event.key === "Enter") check(index, item);
-                            }}
-                            placeholder="Your answer"
-                            aria-label={`Answer to question ${index + 1}`}
-                            className="w-44 rounded-lg border border-black/10 bg-white/80 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 disabled:opacity-55 dark:border-white/15 dark:bg-white/5"
+                            onChange={(input) => update(index, { input, status: "unanswered" })}
+                            onSubmit={() => check(index, item)}
+                            ariaLabel={`Answer to question ${index + 1}`}
                           />
                           <button
                             type="button"
