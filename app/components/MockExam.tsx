@@ -170,7 +170,7 @@ export function MockExam({
     // the count and the accuracy figure with repeats of one answer.
     if (!recorded.current.has(index)) {
       recorded.current.add(index);
-      void recordAnswer(subjectSlug, question.topicSlug, isCorrect).catch(() => {});
+      void recordAnswer(subjectSlug, question.topicSlug, isCorrect, question.question).catch(() => {});
     }
   }
 

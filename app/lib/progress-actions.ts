@@ -28,6 +28,8 @@
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./actions";
 import { deleteAllFlashcardReviews } from "./flashcard-review";
+import { deleteAllQuestionReviews, recordQuestionReview } from "./question-review";
+import { getTopicContent } from "./content";
 import { deleteAllProgress, isRealTopic, recordActivity } from "./progress";
 import { getSubject } from "./subjects";
 
@@ -40,18 +42,43 @@ export async function recordAnswer(
   subject: string,
   topic: string,
   correct: boolean,
+  // Which question — so a wrong one can be brought back later. Optional so
+  // every existing caller keeps working unchanged. See question-review.ts.
+  question?: string,
 ): Promise<void> {
   const user = await getCurrentUser();
   if (!user) return; // Not logged in: nothing to record against. Not an error.
   if (!isRealTopic(subject, topic)) return;
 
-  await recordActivity({
-    userId: user.id,
-    subject,
-    topic,
-    kind: "practice",
-    correct,
-  });
+  // ⚠️ THE TWO WRITES ARE INDEPENDENT, AND ONLY THE FIRST ONE MATTERS TODAY.
+  // `activity` is what the streak, XP, the dashboard and today's practice all
+  // read. `question_reviews` is new and may not exist yet if
+  // QUESTION_REVIEW_SETUP.sql has not been run. allSettled rather than all, so
+  // a refused review can never cost a student their recorded answer.
+  await Promise.allSettled([
+    recordActivity({
+      userId: user.id,
+      subject,
+      topic,
+      kind: "practice",
+      correct,
+    }),
+    question && isRealQuestion(subject, topic, question)
+      ? recordQuestionReview({ userId: user.id, subject, topic, question, correct })
+      : Promise.resolve(),
+  ]);
+}
+
+/**
+ * ⚠️ CHECKED AGAINST THE CONTENT, NOT TRUSTED FROM THE BROWSER.
+ * A Server Action is reachable by anything that can make an HTTP request, so
+ * `question` could be any text at all. Without this, anyone could fill their
+ * own review list — or, if a bug ever let it cross users, somebody else's —
+ * with arbitrary strings. It has to be a question that genuinely exists in
+ * that topic, the same check the report button makes.
+ */
+function isRealQuestion(subject: string, topic: string, question: string): boolean {
+  return (getTopicContent(subject, topic)?.practice ?? []).some((q) => q.question === question);
 }
 
 export async function recordFlashcard(
@@ -139,9 +166,10 @@ export async function recordTestCompletion(
 // HTTP request could wipe somebody else's revision history by guessing an id.
 // There is deliberately no parameter to get wrong.
 //
-// Two tables, because a person's history lives in two: `activity` (everything
-// the progress page counts) and `flashcard_reviews` (which cards are due, and
-// when). Both are cleared, or the caller is told it failed — see
+// Three tables, because a person's history lives in three: `activity`
+// (everything the progress page counts), `flashcard_reviews` (which cards are
+// due, and when) and `question_reviews` (which wrong questions come back, and
+// when). All are cleared, or the caller is told it failed — see
 // deleteAllProgress's own comment on why these two report failure when the
 // recording functions above quietly swallow it.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -150,9 +178,10 @@ export async function deleteMyProgress(): Promise<{ ok: boolean; error?: string 
   if (!user) return { ok: false, error: "You need to be signed in." };
 
   try {
-    const [progressCleared, reviewsCleared] = await Promise.all([
+    const [progressCleared, reviewsCleared, questionsCleared] = await Promise.all([
       deleteAllProgress(user.id),
       deleteAllFlashcardReviews(user.id),
+      deleteAllQuestionReviews(user.id),
     ]);
 
     // ⚠️ "NOTHING WAS DELETED" WAS A GUESS, AND SOMETIMES A WRONG ONE.
@@ -166,12 +195,14 @@ export async function deleteMyProgress(): Promise<{ ok: boolean; error?: string 
     // deletes nothing), so "try again" is still the right advice; it just has
     // to be said without promising what did or did not happen. The log below
     // records which half actually failed, for the one person who can look.
-    if (!progressCleared || !reviewsCleared) {
+    if (!progressCleared || !reviewsCleared || !questionsCleared) {
       console.error(
         "[progress] delete incomplete — activity cleared:",
         progressCleared,
         "flashcard reviews cleared:",
         reviewsCleared,
+        "question reviews cleared:",
+        questionsCleared,
       );
       return {
         ok: false,

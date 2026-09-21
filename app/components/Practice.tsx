@@ -198,7 +198,7 @@ export function Practice({
       //
       // Wrong answers are recorded as well as right ones. Only counting
       // correct answers would make accuracy meaningless.
-      void recordAnswer(subject, topic, isCorrect).catch(() => {});
+      void recordAnswer(subject, topic, isCorrect, question.question).catch(() => {});
     }
   }
 

@@ -8,6 +8,8 @@
 
 import { getTopicAccuracies, getTouchedTopics } from "./progress";
 import { buildDailySet, type DailySet } from "./daily-practice";
+import { getDueQuestions } from "./question-review";
+import { buildRevisitSet } from "./revisit";
 
 /** Today in the UK, as YYYY-MM-DD — the same day boundary progress uses. */
 export function todayKey(now: Date = new Date()): string {
@@ -33,4 +35,13 @@ export async function getDailySet(userId: string): Promise<DailySet> {
     touched,
     date: todayKey(),
   });
+}
+
+/**
+ * Today's wrong-answer revisit list. [] when the table does not exist yet, when
+ * nothing is due, or on any failure — the section then simply does not appear.
+ */
+export async function getRevisitSet(userId: string, today: DailySet): Promise<DailySet> {
+  const due = await getDueQuestions(userId);
+  return buildRevisitSet(due, today.date, new Set(today.questions.map((q) => q.question)));
 }

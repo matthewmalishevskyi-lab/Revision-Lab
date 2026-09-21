@@ -23,7 +23,17 @@ import type { DailySet } from "../lib/daily-practice";
 
 type State = "unanswered" | "correct" | "wrong" | "shown";
 
-export function DailyPracticeRunner({ set }: { set: DailySet }) {
+export function DailyPracticeRunner({
+  set,
+  variant = "daily",
+}: {
+  set: DailySet;
+  // "revisit" is the wrong-answer list above the daily set. Same runner, so
+  // marking and recording cannot drift between the two — only the words on
+  // the finish card differ, because "tomorrow's set will use today's answers"
+  // is not what happens to a revisited question.
+  variant?: "daily" | "revisit";
+}) {
   const [at, setAt] = useState(0);
   const [typed, setTyped] = useState("");
   const [states, setStates] = useState<State[]>(() => set.questions.map(() => "unanswered"));
@@ -78,7 +88,7 @@ export function DailyPracticeRunner({ set }: { set: DailySet }) {
     // Not awaited, and failures are swallowed: the tick has already appeared,
     // and losing one statistic matters less than an error interrupting
     // revision. Same call and same reasoning as Practice.tsx.
-    void recordAnswer(q.subjectSlug, q.topicSlug, next === "correct").catch(() => {});
+    void recordAnswer(q.subjectSlug, q.topicSlug, next === "correct", q.question).catch(() => {});
   }
 
   function check() {
@@ -97,7 +107,7 @@ export function DailyPracticeRunner({ set }: { set: DailySet }) {
       {/* Progress through the set. A plain list of dots rather than a bar:
           a teacher's "3 of 10" is easier to hold than a percentage. */}
       <div className="flex flex-wrap items-center gap-3">
-        <ol className="flex flex-wrap gap-1.5" aria-label={`Question ${at + 1} of ${set.questions.length}`}>
+        <ol className="flex flex-wrap gap-1.5" aria-label={`${variant === "revisit" ? "Revisit, question" : "Question"} ${at + 1} of ${set.questions.length}`}>
           {states.map((s, i) => (
             <li key={i}>
               <button
@@ -269,7 +279,9 @@ export function DailyPracticeRunner({ set }: { set: DailySet }) {
 
       {finished && (
         <section className="mt-8 rounded-3xl border border-white/60 bg-white/70 p-6 text-center shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
-          <h2 className="text-2xl font-bold tracking-tight">That is today&apos;s set done</h2>
+          <h2 className="text-2xl font-bold tracking-tight">
+            {variant === "revisit" ? "Mistakes revisited" : <>That is today&apos;s set done</>}
+          </h2>
           <p className="mt-2 tabular-nums opacity-70">
             {right} of {set.questions.length} right.
           </p>
@@ -277,8 +289,17 @@ export function DailyPracticeRunner({ set }: { set: DailySet }) {
               Matthew's own rule: we are not qualified to mark extended answers,
               so we do not dress a self-assessment up as an estimate. */}
           <p className="mt-3 text-sm opacity-60">
-            Tomorrow&apos;s set will use today&apos;s answers, so the topics you
-            found hard will come back.
+            {variant === "revisit" ? (
+              <>
+                The ones you got right will wait longer before coming back. Any
+                you missed will be back in about ten minutes.
+              </>
+            ) : (
+              <>
+                Tomorrow&apos;s set will use today&apos;s answers, so the topics
+                you found hard will come back.
+              </>
+            )}
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             {set.focus.map((f) => (

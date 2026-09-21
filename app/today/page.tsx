@@ -3,7 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SiteHeader } from "../components/SiteHeader";
 import { getViewer } from "../lib/viewer";
-import { getDailySet } from "../lib/daily-practice-server";
+import { getDailySet, getRevisitSet } from "../lib/daily-practice-server";
 import { DailyPracticeRunner } from "./DailyPracticeRunner";
 
 export const metadata: Metadata = {
@@ -22,6 +22,10 @@ export default async function TodayPage() {
   if (!viewer) redirect("/login");
 
   const set = await getDailySet(viewer.id);
+  // After the daily set, because it needs to know which questions are already
+  // in it. Never throws: a missing table or a failed read gives an empty set,
+  // and the section below does not render.
+  const revisit = await getRevisitSet(viewer.id, set);
 
   return (
     <main className="mx-auto w-full max-w-3xl px-6 py-8">
@@ -65,6 +69,22 @@ export default async function TodayPage() {
             {set.minutes} minutes at a minute a mark. The set is the same all
             day, so you can come back and finish it.
           </p>
+        </section>
+      )}
+
+      {/* ⚠️ ABOVE THE CLIMB, NOT MIXED INTO IT.
+          A specific question you got wrong is a different thing from a topic
+          you are weak at, and folding these into the ladder would break its
+          easy-to-hard order (a wrong answer can be any difficulty). Kept
+          separate, and short — see MAX_REVISIT in lib/revisit.ts. */}
+      {revisit.questions.length > 0 && (
+        <section className="mt-8" aria-labelledby="revisit-heading">
+          <h2 id="revisit-heading" className="text-2xl font-bold tracking-tight">
+            Revisit your mistakes
+          </h2>
+          <p className="mt-2 max-w-2xl opacity-70">{revisit.summary}</p>
+          <DailyPracticeRunner set={revisit} variant="revisit" />
+          <h2 className="mt-12 text-2xl font-bold tracking-tight">Today&apos;s set</h2>
         </section>
       )}
 
