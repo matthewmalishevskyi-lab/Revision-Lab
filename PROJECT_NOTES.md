@@ -1,5 +1,109 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The game after Matthew played it: free aim, a knife, cleverer aliens, stashes, full screen, jumping (2026-09-22, evening)
+
+Matthew finished all three levels — "about 7 minutes fast, 15 if I tried to
+kill every single alien" — and came back with a list. All of it is in.
+
+### Look up and down, and shoot where you look
+
+⚠️ **Shooting was only ever along one line.** The renderer already supported a
+shifted horizon, so looking up and down is a pitch offset in pixels, Doom-style
+(no real 3D, so a wall never leans). What had to change is the aim: the shot
+used to test only the horizontal middle of the screen, at the horizon row. It
+now tests the alien's ACTUAL drawn rectangle against the crosshair — screen
+middle, both axes — and the depth under the crosshair, so looking over an
+alien's head genuinely misses.
+
+### A knife, and wrong answers charge nothing
+
+His two rules: *"they shouldn't be able to have any ammunition added if they
+pick the wrong answer"* and, once the knife exists, *"you can answer only
+correctly to actually shoot"*. So a right answer is +3 cells, a wrong one is
+nothing (it was +1), and the fists are now a combat knife: 20 damage inside
+1.3 squares, against the blaster's 15. Answer badly and you are a knife
+fighter until you answer well.
+
+### Jumping (SPACE)
+
+Real gravity: 0.43 squares high, which clears waist-high cover exactly. You can
+jump onto crates, consoles and mess tables and stand on them (the collision
+ignores cover once your feet are above it, and the ground under you is the
+crate top), which raises your view. You can jump over an alien, but not over a
+wall, and not in the vents. SPACE still stomps when you are behind an unaware
+alien — the prompt says which you are about to do.
+
+### Aliens: cleverer and nastier, still not clairvoyant
+
+- **They come round corners.** A breadth-first flow field to the player,
+  rebuilt three times a second, so they follow corridors instead of pressing
+  into the wall between you.
+- **They shout.** Anything within 6 squares and in sight of an alien that spots
+  you starts looking too, so you fight groups rather than a queue.
+- **They sidestep** while shooting instead of standing and trading, back off if
+  you crowd them, and change direction when you hit them.
+- **They aim a little ahead of you** when you run, with a tighter spread, and
+  fire more often (down to ~1.0 s on deck 3). Reaction is 0.45–0.85 s.
+- Still no perfect aim, no dodging your shots, no memory of where you hid.
+
+### A guarded stash on every level
+
+⚠️ Behind a false wall (E to open), each holding three med-kits, ammo and
+three or four aliens facing the door: **level 1** a medical store under the
+cargo bay, **level 2** a supply locker off the exit corridor, **level 3** a
+sick bay behind the storage room. Nothing needs them; that is the point.
+
+### Full screen
+
+Clicking to start now asks for full screen as well as the mouse, and there is a
+button in the corner. ⚠️ The shell goes full screen and the 16:9 picture is
+letterboxed inside it, because stretching a 16:9 world onto a 16:10 laptop
+screen makes every alien fat. Measured in a browser: 1400×788 centred in
+1400×950, black bars top and bottom.
+
+⚠️ **check-security caught the corner button**: it was invisible until hover,
+which the codebase forbids (a touchscreen cannot hover). Now always visible.
+
+### The repeating questions
+
+Matthew: *"if a person is doing year nine maths, they would have a lot of same
+questions popping up."* A topic carries 5–9 multiple-choice questions, so three
+topics is about twenty and one playthrough asks more than that. Two fixes, both
+using only questions the site already has:
+
+1. **Numeric written answers become multiple choice** — the real answer plus
+   three wrong numbers built from it (double, half, ±1, out by a place…),
+   never a value the question would accept. **1,357 extra askable questions**
+   across the site, on top of the 1,531 already written as multiple choice.
+   Only numbers: a wrong option has to be definitely wrong, and that is
+   checkable for a number and a guess for a sentence.
+2. **Topping up from the rest of the subject** when the chosen topics give
+   fewer than 60, nearest years first. Every question shows its own topic, and
+   the play page says how many came from elsewhere.
+
+`scripts/check-game-questions.mjs` (20,335 checks, in `npm run check`) builds
+every generated question in the registry and asserts the correct button is an
+accepted answer, no wrong button is ALSO accepted, and no two buttons say the
+same thing — the failure that would matter most is a "wrong" answer that is
+actually right.
+
+### The mascot sat off to one side
+
+⚠️ Matthew: *"the character would be in the middle of the icon"*. The portrait
+is deliberately bigger than its window (head and shoulders), and an element
+wider than its box ignores `mx-auto` and hangs off the right. Centred by
+position instead (`left-1/2 -translate-x-1/2`); checked with three mascots.
+
+**Verified:** 46 browser checks (jump height, jumping onto a crate and the view
+it gives, walking off it, looking up making a shot miss, the knife's damage and
+its range, wrong answers charging nothing, plus the old 35), three clean runs;
+fuzz and route bots clean on all three levels; play-through bots still finish
+every level; `npm run check` green including the new 20,335.
+
+⚠️ **A bug of mine, found by the fuzz test:** with jumping, landing on an alien
+left the two overlapping. You now pass over an alien while you are above it,
+and land beside it.
+
 ## Bug check of the three game levels (2026-09-22, afternoon)
 
 Matthew, from a maths lesson: *"run a bug check in the levels you've got so

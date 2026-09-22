@@ -8,7 +8,7 @@ import { getViewer } from "../../lib/viewer";
 import { hasDevAccess } from "../../lib/dev-access";
 import { ACCOUNTS_ENABLED } from "../../lib/site";
 import { SUBJECTS, getSubject } from "../../lib/subjects";
-import { buildGameQuestions, playableTopics } from "../../lib/game-questions";
+import { buildGameQuestions, countGameQuestions, playableTopics } from "../../lib/game-questions";
 import { GameClient } from "./GameClient";
 
 // Play the alien game (developer early access). Three steps, all plain links
@@ -40,6 +40,7 @@ export default async function PlayPage({ searchParams }: Props) {
     const allowed = new Set(playableTopics(subject.slug).flatMap((y) => y.topics.map((t) => t.slug)));
     const topics = list(q.topic).filter((t) => allowed.has(t)).slice(0, MAX_TOPICS);
     const { reload, easy } = buildGameQuestions(subject.slug, topics);
+    const { own } = countGameQuestions(subject.slug, topics);
     if (reload.length >= 3) {
       return (
         <main className="min-h-screen bg-[#03060d] px-4 py-6 text-white">
@@ -51,6 +52,9 @@ export default async function PlayPage({ searchParams }: Props) {
             <GameClient subject={subject.slug} mascot={mascot} mascotName={MASCOT_NAMES[mascot]} reload={reload} easy={easy} startLevel={level - 1} />
             <p className="mt-4 text-sm opacity-60">
               Keyboard and mouse only for now. Every answer counts like a practice question, so the ones you get wrong come back in “Revisit your mistakes”.
+            </p>
+            <p className="mt-1 text-sm opacity-60">
+              {reload.length} questions in the pool{own < reload.length ? ` — ${own} from your topics, the rest from elsewhere in ${subject.name} so they don’t repeat` : ""}.
             </p>
           </div>
         </main>
@@ -116,7 +120,7 @@ export default async function PlayPage({ searchParams }: Props) {
               </label>
             ))}
           </div>
-          <p className="mt-2 text-xs opacity-60">Early access lets you jump ahead. Levels 2 and 3 start you with the pistol.</p>
+          <p className="mt-2 text-xs opacity-60">Early access lets you jump ahead. Levels 2 and 3 start you with the blaster.</p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <button type="submit" className="min-h-11 rounded-full bg-neutral-900 px-6 font-semibold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900">Start the game →</button>

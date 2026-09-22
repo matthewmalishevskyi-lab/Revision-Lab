@@ -18,7 +18,7 @@ import { makeRenderer, type Drawable } from "./render";
 import { buildSprites, type Sprite } from "./sprites";
 import { buildTextures, type TexSet } from "./textures";
 import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
-import { buildWorld, lineOfSight, type World } from "./world";
+import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type World } from "./world";
 
 export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string };
 export type GameOptions = {
@@ -29,9 +29,11 @@ export type GameOptions = {
   startLevel?: number;
   /** The player's mascot, who talks to you on the comms screen. */
   mascotName?: string;
+  /** Called on the click that starts or resumes play (the page asks for full screen). */
+  onStart?: () => void;
 };
 
-type Alien = { x: number; y: number; face: number; hp: number; state: "idle" | "noticing" | "alert" | "dead"; timer: number; cooldown: number; lastX: number; lastY: number; hurt: number };
+type Alien = { x: number; y: number; face: number; hp: number; state: "idle" | "noticing" | "alert" | "dead"; timer: number; cooldown: number; lastX: number; lastY: number; hurt: number; strafe: number; strafeT: number };
 type Pickup = { t: string; x: number; y: number; taken: boolean };
 type Bolt = { x: number; y: number; vx: number; vy: number; life: number };
 type Mode = "title" | "play" | "reload" | "stomp" | "paused" | "dead" | "complete" | "done";
@@ -40,7 +42,9 @@ type Quiz = { kind: "reload" | "stomp"; qs: Question[]; index: number; time: num
 // The 3D view is drawn at 576x324 and scaled up. If a computer can't draw that
 // in time, it drops to 480x270 by itself (see frame()): smoother beats sharper.
 const SHARP = [576, 324] as const, LIGHT = [480, 270] as const;
-const RADIUS = 0.22, ALIEN_R = 0.26, WALK = 2.6, RUN = 4.2;
+const PITCH_MAX = 150; // how far up or down you can look, in pixels of horizon shift
+const RADIUS = 0.22, ALIEN_R = 0.26, ALIEN_H = 0.58, WALK = 2.6, RUN = 4.2;
+const GRAVITY = 7.5, JUMP = 2.6; // a jump clears waist-high cover and little else
 const DECOR = new Set(["lamp", "canister", "holo"]);
 
 export class Game {
@@ -66,7 +70,7 @@ export class Game {
   private easyDeck: Question[] = [];
 
   // player
-  private p = { x: 0, y: 0, vx: 0, vy: 0, angle: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "fists" as "fists" | "pistol", keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0 };
+  private p = { x: 0, y: 0, vx: 0, vy: 0, z: 0, vz: 0, angle: 0, pitch: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "knife" as "knife" | "pistol", keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0 };
   private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false };
   private aliens: Alien[] = [];
   private pickups: Pickup[] = [];
@@ -133,13 +137,13 @@ export class Game {
     this.levelIndex = n;
     const def = LEVELS[n];
     this.world = buildWorld(def, this.tex);
-    this.p.x = def.START.x; this.p.y = def.START.y; this.p.angle = def.START.angle; this.p.eye = 0.5; this.p.vx = 0; this.p.vy = 0;
+    this.p.x = def.START.x; this.p.y = def.START.y; this.p.angle = def.START.angle; this.p.eye = 0.5; this.p.pitch = 0; this.p.vx = 0; this.p.vy = 0; this.p.z = 0; this.p.vz = 0;
     this.p.health = this.carry.health; this.p.vest = this.carry.vest; this.p.ammo = this.carry.ammo; this.p.hasPistol = this.carry.hasPistol;
-    this.p.weapon = this.p.hasPistol ? "pistol" : "fists"; this.p.keys = new Set(); this.p.radTime = 0; this.p.hurt = 0;
+    this.p.weapon = this.p.hasPistol ? "pistol" : "knife"; this.p.keys = new Set(); this.p.radTime = 0; this.p.hurt = 0;
     this.aliens = []; this.pickups = []; this.decor = []; this.bolts = []; this.quiz = null;
     for (const s of def.SPRITES) {
       if (s.t === "alien" || s.t === "alienBack") {
-        this.aliens.push({ x: s.x, y: s.y, face: s.face ?? Math.atan2(def.START.y - s.y, def.START.x - s.x) + Math.PI * (s.t === "alienBack" ? 1 : 0), hp: 30, state: "idle", timer: 0, cooldown: 1, lastX: s.x, lastY: s.y, hurt: 0 });
+        this.aliens.push({ x: s.x, y: s.y, face: s.face ?? Math.atan2(def.START.y - s.y, def.START.x - s.x) + Math.PI * (s.t === "alienBack" ? 1 : 0), hp: 30, state: "idle", timer: 0, cooldown: 1, lastX: s.x, lastY: s.y, hurt: 0, strafe: 1, strafeT: 0 });
       } else if (DECOR.has(s.t)) this.decor.push({ x: s.x, y: s.y, sprite: s.t });
       else this.pickups.push({ t: s.t, x: s.x, y: s.y, taken: false });
     }
@@ -156,15 +160,19 @@ export class Game {
   };
   private lock() { this.ov.requestPointerLock?.(); this.ensureAudio(); }
   private onMouseDown = (e: MouseEvent) => {
-    if (this.mode === "title") { this.mode = "play"; this.lock(); return; }
-    if (this.mode === "paused") { this.mode = this.pausedFrom; this.lock(); return; }
+    if (this.mode === "title") { this.mode = "play"; this.opts.onStart?.(); this.lock(); return; }
+    if (this.mode === "paused") { this.mode = this.pausedFrom; this.opts.onStart?.(); this.lock(); return; }
     if (this.mode === "dead" || this.mode === "complete" || this.mode === "done") return;
     if (document.pointerLockElement !== this.ov) { this.lock(); return; }
     if (e.button === 0 && (this.mode === "play" || this.mode === "reload")) this.fire();
   };
   private onMouseMove = (e: MouseEvent) => {
     if (document.pointerLockElement !== this.ov || this.mode === "stomp") return;
-    this.p.angle += Math.max(-250, Math.min(250, e.movementX)) * 0.0026; // some browsers report one huge jump when the mouse is captured
+    // clamped, because some browsers report one huge jump when the mouse is captured
+    this.p.angle += Math.max(-250, Math.min(250, e.movementX)) * 0.0026;
+    // looking up and down shifts the horizon (the way Doom-era engines did it),
+    // and the crosshair stays in the middle of the screen, so you shoot where you look
+    this.p.pitch = Math.max(-PITCH_MAX, Math.min(PITCH_MAX, this.p.pitch - Math.max(-250, Math.min(250, e.movementY)) * 0.9));
   };
   private onKeyDown = (e: KeyboardEvent) => {
     const k = e.key.toLowerCase();
@@ -184,9 +192,9 @@ export class Game {
     if (k === "f" || k === "control") this.fire(); // keyboard shooting, like Doom's Ctrl
     if (k === "r") this.startReload();
     if (k === "e") this.use();
-    if (k === " ") this.tryStomp();
+    if (k === " ") { if (this.stompTarget()) this.tryStomp(); else this.jump(); }
     if (k === "m") this.muted = !this.muted;
-    if (digit === "1") this.p.weapon = "fists";
+    if (digit === "1") this.p.weapon = "knife";
     if (digit === "2" && this.p.hasPistol) this.p.weapon = "pistol";
   };
   private onKeyUp = (e: KeyboardEvent) => { this.keys.delete(e.key.toLowerCase()); };
@@ -242,11 +250,24 @@ export class Game {
       const tip = this.world.def.HINTS?.[key]; if (tip) this.hint("area:" + key, tip);
     }
     if (this.p.health > 0 && this.p.health <= 35) this.hint("hurt", "You're hurt! Look for a med-kit, the white box with the blue cross.");
-    if (this.p.hasPistol && this.p.ammo === 0) this.hint("empty", "Out of cells! Press R and answer questions to recharge. Get behind cover first.");
+    if (this.p.hasPistol && this.p.ammo === 0) this.hint("empty", "Out of cells! Press R and answer. Only right answers charge the blaster, so take your time — or use the knife (1).");
   }
 
   private cell(x: number, y: number) { return Math.floor(y) * this.world.W + Math.floor(x); }
-  private free(x: number, y: number) { return circleFree(this.world, x, y, RADIUS); }
+  private free(x: number, y: number) { return circleFree(this.world, x, y, RADIUS, this.p.z); }
+  /** The floor under you: the top of a crate if you are standing on one. */
+  private groundHeight(x: number, y: number) {
+    const w = this.world, i = this.cell(x, y);
+    // only counts once your feet are up there; you can't stand inside a crate
+    return w.solid[i] === 2 && this.p.z >= COVER_H - 0.02 ? COVER_H : 0;
+  }
+  /** SPACE with nothing to jump on: an ordinary jump. */
+  private jump() {
+    const p = this.p;
+    if (this.inDuct()) { this.pickupMsg("Too low to jump in here"); return; }
+    if (p.z > this.groundHeight(p.x, p.y) + 0.02 || p.vz > 0) return; // already in the air
+    p.vz = JUMP; this.beep(260, 420, 0.1, "sine", 0.04);
+  }
   private inDuct() { return this.world.ceilH[this.cell(this.p.x, this.p.y)] < 1; }
 
   private update(dt: number) {
@@ -255,6 +276,9 @@ export class Game {
     // turning with the keyboard too
     if (this.keys.has("arrowleft")) p.angle -= 2.4 * dt;
     if (this.keys.has("arrowright")) p.angle += 2.4 * dt;
+    if (this.keys.has("pageup")) p.pitch = Math.min(PITCH_MAX, p.pitch + 200 * dt);
+    if (this.keys.has("pagedown")) p.pitch = Math.max(-PITCH_MAX, p.pitch - 200 * dt);
+    if (this.keys.has("end")) p.pitch = 0;
     // moving: WASD, sliding along walls one axis at a time
     let fwd = 0, strafe = 0;
     if (this.keys.has("w") || this.keys.has("arrowup")) fwd += 1;
@@ -262,6 +286,14 @@ export class Game {
     if (this.keys.has("d")) strafe += 1;
     if (this.keys.has("a")) strafe -= 1;
     const crouch = this.inDuct();
+    // gravity, and the crate you may be standing on
+    const ground = this.groundHeight(p.x, p.y);
+    if (p.z > ground || p.vz > 0) {
+      p.vz -= GRAVITY * dt; p.z += p.vz * dt;
+      const headroom = w.ceilH[this.cell(p.x, p.y)] - 0.25;
+      if (p.z > headroom) { p.z = headroom; p.vz = Math.min(0, p.vz); }
+      if (p.z <= ground) { if (p.vz < -3) this.beep(90, 60, 0.07, "triangle", 0.03); p.z = ground; p.vz = 0; }
+    } else p.z = ground;
     const speed = (this.keys.has("shift") && !crouch ? RUN : WALK) * (crouch ? 0.65 : 1);
     const len = Math.hypot(fwd, strafe) || 1;
     const wantX = ((Math.cos(p.angle) * fwd - Math.sin(p.angle) * strafe) / len) * speed;
@@ -271,18 +303,18 @@ export class Game {
     const grip = Math.min(1, dt * 14);
     p.vx += (wantX - p.vx) * grip; p.vy += (wantY - p.vy) * grip;
     const ox = p.x, oy = p.y;
-    [p.x, p.y] = moveCircle(w, p.x, p.y, p.vx * dt, p.vy * dt, RADIUS);
-    // aliens are solid too: you can't walk through one
-    for (const a of this.aliens) {
+    [p.x, p.y] = moveCircle(w, p.x, p.y, p.vx * dt, p.vy * dt, RADIUS, p.z);
+    // aliens are solid too: you can't walk through one — though you can jump over
+    for (const a of p.z > 0.3 ? [] : this.aliens) {
       if (a.state === "dead") continue;
       const dx = p.x - a.x, dy = p.y - a.y, d = Math.hypot(dx, dy), min = RADIUS + ALIEN_R;
-      if (d < min && d > 1e-6) { [p.x, p.y] = pushOut(w, p.x + (dx / d) * (min - d), p.y + (dy / d) * (min - d), RADIUS); }
+      if (d < min && d > 1e-6) { [p.x, p.y] = pushOut(w, p.x + (dx / d) * (min - d), p.y + (dy / d) * (min - d), RADIUS, p.z); }
     }
     // keep the real speed, so walking into a wall stops you rather than storing speed
     const moved = Math.hypot(p.x - ox, p.y - oy);
     if (dt > 0) { p.vx = (p.x - ox) / dt; p.vy = (p.y - oy) / dt; }
     p.bob += moved * 2.6; // the head bobs with distance actually walked, not keys held
-    p.eye += ((crouch ? 0.34 : 0.5) - p.eye) * Math.min(1, dt * 8);
+    p.eye += ((crouch ? 0.34 : 0.5) + p.z - p.eye) * Math.min(1, dt * (p.z > 0.01 || p.vz !== 0 ? 30 : 8));
     p.kick = Math.max(0, p.kick - dt * 6); p.flash = Math.max(0, p.flash - dt); p.hurt = Math.max(0, p.hurt - dt * 1.5);
     p.fireWait = Math.max(0, p.fireWait - dt); p.radTime = Math.max(0, p.radTime - dt); this.tickVisor(dt);
 
@@ -307,7 +339,7 @@ export class Game {
     // pickups
     for (const k of this.pickups) {
       if (k.taken || Math.hypot(k.x - p.x, k.y - p.y) > 0.55) continue;
-      if (k.t === "pistol") { p.hasPistol = true; p.weapon = "pistol"; p.ammo = 6; this.pickupMsg("Blaster · 6 cells"); this.hint("pistol", "Got it! Six shots. When they run out, press R and answer questions to recharge."); }
+      if (k.t === "pistol") { p.hasPistol = true; p.weapon = "pistol"; p.ammo = 6; this.pickupMsg("Blaster · 6 cells"); this.hint("pistol", "Got it! Six shots. Press R and answer to recharge: three cells for a right answer, nothing for a wrong one."); }
       else if (k.t === "ammo") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 3); this.pickupMsg("Energy cells · +3"); }
       else if (k.t === "health") { if (p.health >= 100) continue; p.health = Math.min(100, p.health + 25); this.pickupMsg("Med-kit · +25"); }
       else if (k.t === "keycard") { p.keys.add("blue"); this.pickupMsg("Blue keycard"); this.hint("keycard", "The blue keycard! Now the locked door will open."); }
@@ -320,7 +352,13 @@ export class Game {
     this.updateBolts(dt);
   }
 
-  // ── aliens: a bit stupid, but they shoot back ─────────────────────────────
+  // ── aliens: not clever, but not daft either ───────────────────────────────
+  //
+  // They notice quickly, shout to the ones nearby, come round corners instead
+  // of walking into the wall between you (a flow field, rebuilt a few times a
+  // second), sidestep while they shoot, and aim a little ahead of where you
+  // are running. What they never do is aim perfectly or read your mind:
+  // Matthew asked for "a bit stupid but some challenge".
   private canSee(a: Alien) {
     const p = this.p, dx = p.x - a.x, dy = p.y - a.y, dist = Math.hypot(dx, dy);
     if (dist > 11) return false;
@@ -328,12 +366,66 @@ export class Game {
     if (!lineOfSight(this.world, a.x, a.y, p.x, p.y)) return false;
     if (a.state === "alert") return true;
     let diff = Math.atan2(dy, dx) - a.face; diff = Math.atan2(Math.sin(diff), Math.cos(diff));
-    return Math.abs(diff) < 0.8 || dist < 1.6 && Math.abs(diff) < 1.6;
+    return Math.abs(diff) < 0.9 || (dist < 2 && Math.abs(diff) < 1.7);
   }
-  private alert(a: Alien) { if (a.state === "idle") { a.state = "noticing"; a.timer = 0.6 + Math.random() * 0.4; } }
+  private alert(a: Alien, delay = 0.45 + Math.random() * 0.4) {
+    if (a.state !== "idle") return;
+    a.state = "noticing"; a.timer = delay;
+    // it shouts: anything close by and in sight of it starts looking too
+    for (const b of this.aliens) {
+      if (b === a || b.state !== "idle") continue;
+      if (Math.hypot(b.x - a.x, b.y - a.y) < 6 && lineOfSight(this.world, a.x, a.y, b.x, b.y)) {
+        b.state = "noticing"; b.timer = delay + 0.3 + Math.random() * 0.4;
+      }
+    }
+  }
+
+  // Steps from every square to the player, so aliens can follow corridors.
+  private flow: Int32Array | null = null;
+  private flowT = 0; private flowX = -1; private flowY = -1;
+  private updateFlow(dt: number) {
+    this.flowT -= dt;
+    const px = Math.floor(this.p.x), py = Math.floor(this.p.y);
+    if (this.flow && this.flowT > 0 && px === this.flowX && py === this.flowY) return;
+    this.flowT = 0.3; this.flowX = px; this.flowY = py;
+    const w = this.world, N = w.W * w.H;
+    const d = this.flow && this.flow.length === N ? this.flow : new Int32Array(N);
+    d.fill(-1);
+    if (blocked(w, px, py)) { this.flow = d; return; }
+    const queue = new Int32Array(N); let head = 0, tail = 0;
+    const startCell = py * w.W + px; d[startCell] = 0; queue[tail++] = startCell;
+    while (head < tail) {
+      const i = queue[head++], x = i % w.W, y = (i / w.W) | 0, next = d[i] + 1;
+      for (const [dx, dy] of DIRS) {
+        const nx = x + dx, ny = y + dy; if (nx < 0 || ny < 0 || nx >= w.W || ny >= w.H) continue;
+        const j = ny * w.W + nx; if (d[j] !== -1 || blocked(w, nx, ny)) continue;
+        d[j] = next; queue[tail++] = j;
+      }
+    }
+    this.flow = d;
+  }
+  /** Which way an alien should walk to reach the player from where it stands. */
+  private towardsPlayer(a: Alien): [number, number] | null {
+    const w = this.world, d = this.flow; if (!d) return null;
+    const x = Math.floor(a.x), y = Math.floor(a.y);
+    if (x < 0 || y < 0 || x >= w.W || y >= w.H) return null;
+    const here = d[y * w.W + x]; if (here < 0) return null;
+    let best = here, bx = 0, by = 0;
+    for (const [dx, dy] of DIRS) {
+      const nx = x + dx, ny = y + dy; if (nx < 0 || ny < 0 || nx >= w.W || ny >= w.H) continue;
+      const v = d[ny * w.W + nx]; if (v < 0 || v >= best) continue;
+      best = v; bx = dx; by = dy;
+    }
+    if (!bx && !by) return null;
+    // aim at the middle of the next square, so they don't scrape along walls
+    const tx = x + bx + 0.5 - a.x, ty = y + by + 0.5 - a.y, len = Math.hypot(tx, ty) || 1;
+    return [tx / len, ty / len];
+  }
 
   private updateAliens(dt: number) {
     const p = this.p;
+    this.updateFlow(dt);
+    const hard = this.levelIndex * 0.1; // later decks are a little sharper
     for (const a of this.aliens) {
       if (a.state === "dead") continue;
       a.hurt = Math.max(0, a.hurt - dt);
@@ -341,24 +433,38 @@ export class Game {
       if (a.state === "idle") { if (sees) this.alert(a); continue; }
       if (a.state === "noticing") { a.timer -= dt; if (a.timer <= 0) a.state = "alert"; continue; }
       if (sees) { a.lastX = p.x; a.lastY = p.y; }
-      const tx = a.lastX - a.x, ty = a.lastY - a.y, dist = Math.hypot(tx, ty);
-      // turn slowly towards where it last saw you
-      let diff = Math.atan2(ty, tx) - a.face; diff = Math.atan2(Math.sin(diff), Math.cos(diff));
-      a.face += Math.sign(diff) * Math.min(Math.abs(diff), 2.6 * dt);
-      // walk closer if far, straight at you (no clever paths)
       const pd = Math.hypot(p.x - a.x, p.y - a.y);
-      if (dist > 0.3 && (pd > 2.8 || !sees)) {
-        const sp = 1.1 * dt;
-        // they can open ordinary doors in their way (not locked, secret or lift doors)
-        const ahead = this.world.door[this.cell(a.x + (tx / dist) * 0.6, a.y + (ty / dist) * 0.6)];
+      // face where you are, or where it last saw you
+      let diff = Math.atan2(a.lastY - a.y, a.lastX - a.x) - a.face; diff = Math.atan2(Math.sin(diff), Math.cos(diff));
+      a.face += Math.sign(diff) * Math.min(Math.abs(diff), (3.2 + hard) * dt);
+      // where to walk: straight at you when it can see you and is far off,
+      // otherwise along the flow field, which goes round corners
+      let mx = 0, my = 0;
+      const wantCloser = pd > 3.2 || !sees;
+      if (wantCloser) {
+        const step: [number, number] | null = sees ? [(p.x - a.x) / pd, (p.y - a.y) / pd] : this.towardsPlayer(a);
+        if (step) { mx = step[0]; my = step[1]; }
+      } else if (sees) {
+        // in range: sidestep, so standing still and trading shots doesn't work
+        a.strafeT -= dt;
+        if (a.strafeT <= 0) { a.strafeT = 0.7 + Math.random(); a.strafe = Math.random() < 0.5 ? -1 : 1; }
+        mx = -Math.sin(a.face) * a.strafe; my = Math.cos(a.face) * a.strafe;
+        if (pd < 1.6) { mx -= (p.x - a.x) / pd; my -= (p.y - a.y) / pd; } // and back off if you crowd it
+      }
+      if (mx || my) {
+        const sp = (wantCloser ? 1.35 : 1.0) * dt;
+        const ahead = this.world.door[this.cell(a.x + mx * 0.6, a.y + my * 0.6)];
         if (ahead && !ahead.key && !ahead.secret && !ahead.exit && !ahead.needs) ahead.target = 1;
-        [a.x, a.y] = moveCircle(this.world, a.x, a.y, (tx / dist) * sp, (ty / dist) * sp, ALIEN_R);
+        const len = Math.hypot(mx, my) || 1;
+        [a.x, a.y] = moveCircle(this.world, a.x, a.y, (mx / len) * sp, (my / len) * sp, ALIEN_R);
       }
       a.cooldown -= dt;
-      if (sees && a.cooldown <= 0 && Math.abs(diff) < 0.35) {
-        const ang = Math.atan2(p.y - a.y, p.x - a.x) + (Math.random() - 0.5) * 0.22; // not a perfect shot
-        this.bolts.push({ x: a.x + Math.cos(ang) * 0.3, y: a.y + Math.sin(ang) * 0.3, vx: Math.cos(ang) * 5.5, vy: Math.sin(ang) * 5.5, life: 4 });
-        a.cooldown = 1.5 + Math.random() * 1.3;
+      if (sees && a.cooldown <= 0 && Math.abs(diff) < 0.4) {
+        // aim a little ahead of where you are moving, and not perfectly straight
+        const travel = pd / 6.2, aimX = p.x + p.vx * travel * 0.5, aimY = p.y + p.vy * travel * 0.5;
+        const ang = Math.atan2(aimY - a.y, aimX - a.x) + (Math.random() - 0.5) * 0.14;
+        this.bolts.push({ x: a.x + Math.cos(ang) * 0.3, y: a.y + Math.sin(ang) * 0.3, vx: Math.cos(ang) * 6.2, vy: Math.sin(ang) * 6.2, life: 4 });
+        a.cooldown = Math.max(0.7, 1.2 - hard) + Math.random() * 1.1;
         this.beep(1200, 300, 0.18, "sine", 0.05); // pew
       }
     }
@@ -375,7 +481,7 @@ export class Game {
         }
       }
       const dx = a.x - p.x, dy = a.y - p.y, d = Math.hypot(dx, dy), min = RADIUS + ALIEN_R;
-      if (d < min && d > 1e-6) [a.x, a.y] = pushOut(this.world, a.x + (dx / d) * (min - d), a.y + (dy / d) * (min - d), ALIEN_R);
+      if (d < min && d > 1e-6 && p.z <= 0.3) [a.x, a.y] = pushOut(this.world, a.x + (dx / d) * (min - d), a.y + (dy / d) * (min - d), ALIEN_R);
     }
   }
 
@@ -402,14 +508,16 @@ export class Game {
   private fire() {
     const p = this.p; if (p.fireWait > 0) return;
     if (p.weapon === "pistol") {
-      if (p.ammo <= 0) { this.say("Out of cells! Press R and answer to recharge."); this.beep(90, 80, 0.08, "square", 0.05); p.fireWait = 0.3; return; }
+      if (p.ammo <= 0) { this.say("Out of cells! Press R and answer — only a right answer charges it."); this.beep(90, 80, 0.08, "square", 0.05); p.fireWait = 0.3; return; }
       p.ammo--; p.fireWait = 0.35; p.kick = 1; p.flash = 0.08; this.beep(700, 120, 0.12, "square", 0.07);
-    } else { p.fireWait = 0.45; p.kick = 0.6; this.beep(200, 100, 0.08, "triangle", 0.05); }
+    } else { p.fireWait = 0.42; p.kick = 0.6; this.beep(300, 90, 0.09, "triangle", 0.05); } // the knife
     // anyone near enough to hear a shot comes looking
     if (p.weapon === "pistol") for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
     const best = this.aimTarget();
     if (best) {
-      best.hp -= p.weapon === "pistol" ? 15 : 10; best.hurt = 0.15;
+      // the knife hurts more than a shot, but you have to be next to it
+      best.hp -= p.weapon === "pistol" ? 15 : 20;
+      best.hurt = 0.15; best.strafeT = 0; // being hit makes it change direction
       if (best.state !== "alert") { best.state = "alert"; best.cooldown = 0.8; }
       if (best.hp <= 0) this.kill(best); else this.beep(300, 200, 0.1, "square", 0.05);
     }
@@ -424,7 +532,11 @@ export class Game {
       if (dist <= 0.1) continue;
       const half = (0.23 * this.R.proj) / dist;
       if (Math.abs(screenX - this.R.W / 2) > half) continue;
-      if (p.weapon === "fists" && dist > 1.1) continue;
+      // and vertically: where the alien is actually drawn on the screen must
+      // cover the crosshair, so looking over its head really does miss
+      const bottom = this.R.horizon() + (p.eye * this.R.proj) / dist, top = bottom - (ALIEN_H * this.R.proj) / dist;
+      if (this.R.H / 2 < top || this.R.H / 2 > bottom) continue;
+      if (p.weapon === "knife" && dist > 1.3) continue;
       if (dist > this.R.centreDepth.value + 0.35) continue; // a wall is in the way
       if (!lineOfSight(this.world, p.x, p.y, a.x, a.y, true)) continue; // or a grille
       if (dist < bestD) { best = a; bestD = dist; }
@@ -444,7 +556,7 @@ export class Game {
       this.mode = "complete"; document.exitPointerLock(); this.beep(300, 900, 0.6, "triangle", 0.07);
       return;
     }
-    if (d.secret && d.target === 0) { d.target = 1; this.say("A secret!"); this.beep(400, 1200, 0.5, "triangle", 0.06); }
+    if (d.secret && d.target === 0) { d.target = 1; this.say("A hidden room! Careful — something is usually guarding one."); this.beep(400, 1200, 0.5, "triangle", 0.06); }
   }
 
   // ── the quizzes ───────────────────────────────────────────────────────────
@@ -457,7 +569,7 @@ export class Game {
   }
   private startReload() {
     const p = this.p;
-    if (p.hasPistol && p.weapon === "fists" && p.ammo < 6) p.weapon = "pistol"; // R with fists up means "get the blaster ready"
+    if (p.hasPistol && p.weapon === "knife" && p.ammo < 6) p.weapon = "pistol"; // R with the knife out means "get the blaster ready"
     if (!p.hasPistol || p.weapon !== "pistol" || this.quiz || p.ammo >= 6) { if (p.ammo >= 6 && p.hasPistol && !this.quiz) this.pickupMsg("Already full"); return; }
     const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload"); if (q) qs.push(q); }
     if (!qs.length) { p.ammo = 6; return; }
@@ -487,14 +599,14 @@ export class Game {
     const cur = q.qs[q.index], right = i === cur.correct;
     q.results.push(right);
     if (right) { this.stats.right++; this.beep(660, 990, 0.15, "triangle", 0.06); } else { this.stats.wrong++; this.beep(220, 110, 0.3, "sawtooth", 0.06); }
-    if (q.kind === "reload") this.p.ammo = Math.min(6, this.p.ammo + (right ? 3 : 1));
+    if (q.kind === "reload" && right) this.p.ammo = Math.min(6, this.p.ammo + 3); // a wrong answer charges nothing: get it right or use the knife
     this.opts.onAnswer?.(cur, right);
   }
   private updateQuiz(dt: number) {
     const q = this.quiz; if (!q) return;
     if (q.picked === null) {
       q.time -= dt;
-      if (q.time <= 0) { q.picked = -1; q.feedback = 0.9; q.results.push(false); this.stats.wrong++; if (q.kind === "reload") this.p.ammo = Math.min(6, this.p.ammo + 1); this.opts.onAnswer?.(q.qs[q.index], false); this.beep(220, 110, 0.3, "sawtooth", 0.06); }
+      if (q.time <= 0) { q.picked = -1; q.feedback = 0.9; q.results.push(false); this.stats.wrong++; this.opts.onAnswer?.(q.qs[q.index], false); this.beep(220, 110, 0.3, "sawtooth", 0.06); }
       return;
     }
     q.feedback -= dt; if (q.feedback > 0) return;
@@ -524,6 +636,7 @@ export class Game {
   /** What a key would do right now, shown as a prompt. */
   private prompt() {
     if (this.stompTarget()) return { key: "SPACE", text: "It hasn't seen you: jump on it" };
+    if (this.p.z > 0.05) return null;
     const p = this.p, d = this.world.door[this.cell(p.x + Math.cos(p.angle) * 0.9, p.y + Math.sin(p.angle) * 0.9)];
     if (d?.exit) return { key: "E", text: "Take the lift" };
     return null;
@@ -541,7 +654,7 @@ export class Game {
     }
     for (const b of this.bolts) things.push({ x: b.x, y: b.y, z: 0.32, sprite: "bolt" });
     const t0 = performance.now();
-    const img = this.R.render(this.world, this.tex, this.spr, { x: p.x, y: p.y, angle: p.angle }, things, p.eye + Math.sin(p.bob * 2) * 0.012);
+    const img = this.R.render(this.world, this.tex, this.spr, { x: p.x, y: p.y, angle: p.angle }, things, p.eye + Math.sin(p.bob * 2) * 0.012, p.pitch);
     this.g.putImageData(img, 0, 0);
     if (this.mode !== "stomp") drawWeapon(this.g, this.R.W, this.R.H, p.weapon, p.bob, p.kick, p.flash, p.ammo);
     // a soft glow: the frame shrunk and laid back over itself on a "screen"
@@ -567,7 +680,7 @@ export class Game {
       drawQuiz(o, view);
     }
     const mins = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-    if (this.mode === "title") drawScreen(o, def.TITLE, ["WASD to move · mouse to look · click to shoot · Shift to run", "R: recharge the blaster by answering questions · E: use · SPACE: jump on an alien from behind", "Follow the amber marker on the compass · 1 fists · 2 blaster · M sound · Esc pause"], "Click to start");
+    if (this.mode === "title") drawScreen(o, def.TITLE, ["WASD to move · mouse to look (up and down too) · click to shoot · Shift to run", "R: recharge the blaster by answering questions · E: use · SPACE: jump (or jump on an alien from behind)", "Look up and down with the mouse · 1 knife · 2 blaster · M sound · Esc pause"], "Click to start");
     if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], "Click to carry on");
     if (this.mode === "dead") drawScreen(o, "Suit failure", [`${this.stats.kills} alien${this.stats.kills === 1 ? "" : "s"} defeated · ${this.stats.right} question${this.stats.right === 1 ? "" : "s"} right`], "Press Enter to try the level again", "#ff6b6b");
     if (this.mode === "complete") drawScreen(o, "Level complete!", [`Time ${mins(this.stats.time)} · aliens ${this.stats.kills}/${this.aliens.length} · questions right ${this.stats.right}/${this.stats.right + this.stats.wrong}`, this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now."], "Press Enter to carry on", "#2fd48a");

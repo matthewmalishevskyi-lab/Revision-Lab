@@ -28,6 +28,9 @@ export const LEVEL1: LevelDef = (() => {
     reactor: { r: [33, 8, 42, 19],  name: "5 Reactor",          light: [0.7, 0.85, 1.1],   wall: "reactor", floor: "fReactor", ceil: "reactor" },
     corF:    { r: [38, 20, 39, 21], name: "",                   light: [0.6, 0.68, 0.85],  wall: "corridor", floor: "fGrate",  ceil: "corridor" },
     bridge:  { r: [34, 22, 43, 28], name: "6 Bridge",           light: [0.95, 1.0, 1.1],   wall: "bridge",  floor: "fBridge",  ceil: "light" },
+    // Hidden, and guarded: three aliens sitting on a pile of med-kits. Nothing
+    // in the level needs it, which is the point of a stash.
+    store:   { r: [18, 22, 24, 26], name: "Medical store",     light: [0.5, 0.56, 0.78],  wall: "pipes",   floor: "fTile",    ceil: "dark" },
   };
 
   // Doors between areas. Doom doors rise into the ceiling; ours slide up too.
@@ -42,6 +45,7 @@ export const LEVEL1: LevelDef = (() => {
     { cells: [[29, 17], [29, 18]], tex: "door" },        // maintenance shortcut
     { cells: [[38, 21], [39, 21]], tex: "door" },        // onto the bridge
     { cells: [[15, 7]], tex: "secret", secret: true },   // looks like wall
+    { cells: [[20, 20], [20, 21]], tex: "secret", secret: true }, // down to the medical store
     { cells: [[44, 24], [44, 25]], tex: "exit", exit: true },
   ];
 
@@ -66,6 +70,8 @@ export const LEVEL1: LevelDef = (() => {
     [32, 10, FACE.E, "camera"], [43, 12, FACE.W, "sign"], [43, 17, FACE.W, "screen"], [37, 20, FACE.E, "arrowR", true],
     [33, 23, FACE.E, "camera"], [44, 23, FACE.W, "arrowR"], [44, 26, FACE.W, "arrowR", true],
     [30, 16, FACE.S, "sign"], [31, 19, FACE.N, "cables"],
+    [19, 20, FACE.S, "screen"], [21, 20, FACE.S, "cables"], // a hint that something is behind this wall
+    [17, 24, FACE.E, "sign"], [25, 24, FACE.W, "camera"],
   ];
   // Low cover: waist-high, you can shoot over it and crouch behind it.
   const COVER: NonNullable<LevelDef["COVER"]> = [
@@ -74,6 +80,7 @@ export const LEVEL1: LevelDef = (() => {
     ...[[35, 11], [40, 11], [35, 16], [40, 16]].map((c): [number, number, string] => [c[0], c[1], "console"]),
     ...[[36, 27], [37, 27], [40, 27], [41, 27]].map((c): [number, number, string] => [c[0], c[1], "console"]),
     [11, 22, "crate"],
+    [19, 24, "crate"], [23, 24, "crate"],
   ];
 
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
@@ -89,6 +96,10 @@ export const LEVEL1: LevelDef = (() => {
     { t: "lamp", x: 33.5, y: 8.5 }, { t: "lamp", x: 42.5, y: 8.5 }, { t: "lamp", x: 33.5, y: 19.5 }, { t: "lamp", x: 42.5, y: 19.5 },
     { t: "alien", x: 35.2, y: 23.4 }, { t: "alien", x: 42.4, y: 26.2 }, { t: "holo", x: 38.5, y: 24.8 }, { t: "health", x: 43.4, y: 22.6 },
     { t: "lamp", x: 34.4, y: 28.6 }, { t: "lamp", x: 43.6, y: 28.6 },
+    // the medical store: three guards, and what they are guarding
+    { t: "alien", x: 19.5, y: 23.5, face: 1.57 }, { t: "alien", x: 22.6, y: 23.4, face: 1.57 }, { t: "alien", x: 21.2, y: 25.6, face: -1.57 },
+    { t: "health", x: 18.6, y: 25.5 }, { t: "health", x: 23.5, y: 25.5 }, { t: "health", x: 21.5, y: 22.6 },
+    { t: "ammo", x: 19.4, y: 22.5 }, { t: "lamp", x: 24.4, y: 22.6 }, { t: "canister", x: 18.5, y: 22.5 },
   ];
 
   // Extra light that spills from bright things, on top of each area's own.
@@ -96,6 +107,7 @@ export const LEVEL1: LevelDef = (() => {
     { x: 37.9, y: 13.9, rgb: [0.25, 0.75, 1.1], r: 5.5 },   // reactor core
     { x: 38.5, y: 24.8, rgb: [0.15, 0.35, 0.6], r: 3.5 },   // holo-table
     { x: 3.5, y: 28.5, rgb: [0.1, 0.2, 0.45], r: 3 },       // airlock window
+    { x: 21, y: 24, rgb: [0.1, 0.16, 0.3], r: 4 },          // medical store
   ];
 
   const START = { x: 6.0, y: 30.2, angle: -Math.PI / 2 };
@@ -108,6 +120,7 @@ export const LEVEL1: LevelDef = (() => {
     armoury: "The blaster should be on the floor in here.",
     hub: "Three aliens in the cargo bay. The crates are cover: their shots can't get through, but yours go over the top.",
     secret: "A secret room! Nice find.",
+    store: "Med-kits — that's why they were guarding it.",
     obs: "Keep going along the deck. The way down to the reactor is at the far end.",
     maint: "A shortcut into the reactor room.",
     reactor: "The reactor! The door to the bridge is on the far side, past the core.",
@@ -139,6 +152,9 @@ export const LEVEL2: LevelDef = (() => {
     pump:    { r: [39, 3, 44, 9],   name: "5 Pump room",       light: [0.5, 0.56, 0.78], wall: "pipes",    floor: "fGrate",  ceil: "dark" },
     exitCor: { r: [36, 20, 37, 23], name: "",                  light: [0.55, 0.62, 0.78], wall: "corridor", floor: "fGrate", ceil: "corridor" },
     exit:    { r: [33, 24, 41, 28], name: "6 Lift to deck 3",  light: [0.9, 0.95, 1.05], wall: "panel",    floor: "fTile",   ceil: "light" },
+    // hidden supply locker, reached through a false wall on the exit corridor
+    storeCor:{ r: [32, 22, 34, 22], name: "",                  light: [0.45, 0.5, 0.7],  wall: "pipes",    floor: "fGrate",  ceil: "dark" },
+    store:   { r: [26, 20, 31, 26], name: "Supply locker",     light: [0.5, 0.56, 0.78], wall: "pipes",    floor: "fTile",   ceil: "dark" },
   };
   const DOORS: NonNullable<LevelDef["DOORS"]> = [
     { cells: [[8, 15], [8, 16]], tex: "door" },
@@ -148,6 +164,7 @@ export const LEVEL2: LevelDef = (() => {
     { cells: [[38, 5], [38, 6]], tex: "door" },
     { cells: [[36, 19], [37, 19]], tex: "keyDoor", key: "blue" },
     { cells: [[42, 25], [42, 26]], tex: "exit", exit: true },
+    { cells: [[35, 22]], tex: "secret", secret: true }, // into the supply locker
   ];
   const CORE: [number, number][] = [];
   for (let y = 8; y <= 11; y++) for (let x = 27; x <= 30; x++) CORE.push([x, y]);
@@ -164,6 +181,7 @@ export const LEVEL2: LevelDef = (() => {
     [21, 13, "crate"], [37, 14, "crate"], [22, 16, "crate"],
     [41, 7, "crate"], [42, 7, "crate"],
     [35, 26, "crate"], [39, 26, "crate"],
+    [27, 24, "crate"], [30, 24, "crate"],
     [15, 5, "console"], [16, 5, "console"],
   ];
   const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
@@ -177,6 +195,7 @@ export const LEVEL2: LevelDef = (() => {
     [14, 2, FACE.S, "screen"], [10, 8, FACE.N, "camera"], [20, 7, FACE.E, "rad"], [20, 8, FACE.E, "arrowR", true],
     [20, 12, FACE.E, "arrowR", true], [38, 3, FACE.W, "rad"], [38, 12, FACE.W, "arrowR"], [38, 18, FACE.W, "keycard"],
     [38, 8, FACE.E, "rad"], [45, 4, FACE.W, "camera"], [35, 21, FACE.E, "arrowR", true], [42, 27, FACE.W, "sign"],
+    [36, 23, FACE.W, "screen"], [25, 23, FACE.E, "sign"], [32, 21, FACE.S, "cables"],
   ];
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
     { t: "lamp", x: 3.6, y: 13.6 }, { t: "lamp", x: 7.4, y: 13.6 },
@@ -187,10 +206,16 @@ export const LEVEL2: LevelDef = (() => {
     { t: "alien", x: 28.5, y: 7.4 }, { t: "alien", x: 31.5, y: 12.4 }, { t: "alien", x: 36.6, y: 8.2 }, { t: "ammo", x: 26.5, y: 12.5 },
     { t: "keycard", x: 43.5, y: 4.4 }, { t: "alien", x: 41.5, y: 5.4 }, { t: "alien", x: 43.3, y: 8.4 }, { t: "canister", x: 39.4, y: 8.6 }, { t: "canister", x: 39.4, y: 3.4 },
     { t: "alien", x: 38.6, y: 27.3 }, { t: "health", x: 33.6, y: 27.6 }, { t: "lamp", x: 33.4, y: 24.4 }, { t: "lamp", x: 41.6, y: 24.4 },
+    // the supply locker: four guards round the med-kits
+    { t: "alien", x: 30.4, y: 22.5, face: 0 }, { t: "alien", x: 27.5, y: 21.4, face: 1.57 },
+    { t: "alien", x: 29.5, y: 25.5, face: -1.57 }, { t: "alien", x: 26.6, y: 24.5, face: 0 },
+    { t: "health", x: 26.6, y: 20.6 }, { t: "health", x: 31.4, y: 20.6 }, { t: "health", x: 28.5, y: 25.6 },
+    { t: "ammo", x: 31.4, y: 25.5 }, { t: "lamp", x: 26.5, y: 26.5 }, { t: "canister", x: 31.4, y: 26.4 },
   ];
   const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
     { x: 29, y: 10, rgb: [0.3, 0.75, 1.3], r: 8 },
     { x: 20.5, y: 5, rgb: [0.15, 0.3, 0.6], r: 3 },
+    { x: 29, y: 23.5, rgb: [0.1, 0.16, 0.3], r: 4 },        // supply locker
   ];
   const START = { x: 5.5, y: 15.5, angle: 0 };
   const ROUTE = [[5.5, 15.5], [12.5, 15.5], [12.5, 8], [15, 6.5], [21.5, 5], [21.8, 9.5], [26.5, 9.5], [26.5, 12.5], [31.5, 12.5], [31.5, 9.5], [36.5, 9.5], [36.5, 5.5], [41.5, 5.5], [43.5, 4.5], [41.5, 5.5], [36.8, 6], [36.8, 24.5], [41.5, 25.5]];
@@ -204,6 +229,7 @@ export const LEVEL2: LevelDef = (() => {
     decon: "Decontamination. A radiation suit would let us walk through the coolant.",
     hall: "Don't step in the glowing coolant: it burns. Stay on the catwalks and go round the core.",
     pump: "The pump room. The blue keycard should be in here somewhere.",
+    store: "A supply locker! Grab the med-kits.",
     exit: "Nearly there. Walk up to the lift and press E.",
   };
   const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
@@ -233,6 +259,8 @@ export const LEVEL3: LevelDef = (() => {
     mess:    { r: [20, 10, 29, 22], name: "3 Mess hall",   light: [0.9, 0.95, 1.0],  wall: "mess",     floor: "fMess",  ceil: "grid" },
     barracks:{ r: [19, 2, 27, 6],   name: "4 Barracks",    light: [0.55, 0.6, 0.85], wall: "bunks",    floor: "fTile",  ceil: "light" },
     corE:    { r: [31, 21, 32, 22], name: "",              light: [0.55, 0.62, 0.78], wall: "corridor", floor: "fGrate", ceil: "corridor" },
+    // hidden sick bay behind the storage room's west wall
+    store:   { r: [3, 14, 8, 18],   name: "Sick bay",      light: [0.5, 0.56, 0.75], wall: "pipes",    floor: "fTile",  ceil: "dark" },
     exit:    { r: [33, 12, 40, 24], name: "5 Hangar door", light: [0.85, 0.92, 1.05], wall: "panel",    floor: "fTile",  ceil: "grid" },
     // the vents
     d1: { ...duct, r: [12, 8, 12, 17] },
@@ -246,6 +274,7 @@ export const LEVEL3: LevelDef = (() => {
     { cells: [[19, 20], [19, 21]], tex: "door" },
     { cells: [[30, 21], [30, 22]], tex: "door" },
     { cells: [[41, 17], [41, 18]], tex: "exit", exit: true },
+    { cells: [[8, 19]], tex: "secret", secret: true }, // into the sick bay
   ];
   // see-through grilles between the vents and the rooms
   const GRILLES: NonNullable<LevelDef["GRILLES"]> = [[22, 9], [26, 9], [30, 13], [30, 17], [32, 18]];
@@ -253,6 +282,7 @@ export const LEVEL3: LevelDef = (() => {
     ...[[22, 13], [23, 13], [22, 18], [23, 18], [26, 13], [27, 13], [26, 18], [27, 18]].map((c): [number, number, string] => [c[0], c[1], "table"]),
     [10, 19, "crate"], [11, 19, "crate"], [14, 23, "crate"], [14, 24, "crate"], [10, 24, "crate"],
     [35, 16, "crate"], [38, 20, "crate"], [36, 22, "console"],
+    [4, 16, "crate"], [7, 16, "crate"],
   ];
   const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
     if (ai === "lift" && f === FACE.E && x === 2 && y === 22) return "exit";
@@ -263,6 +293,7 @@ export const LEVEL3: LevelDef = (() => {
     [11, 17, FACE.S, "arrowR"], [13, 17, FACE.S, "sign"], [8, 18, FACE.E, "camera"],
     [21, 9, FACE.S, "screen"], [30, 11, FACE.W, "camera"], [24, 23, FACE.N, "sign"],
     [18, 22, FACE.N, "arrowR", true], [34, 11, FACE.S, "camera"], [41, 20, FACE.W, "arrowR", true],
+    [9, 18, FACE.W, "screen"], [9, 20, FACE.W, "cables"],
   ];
   // Aliens carry a facing angle so the map can show what each one watches.
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
@@ -275,8 +306,15 @@ export const LEVEL3: LevelDef = (() => {
     { t: "vest", x: 19.6, y: 2.6 }, { t: "ammo", x: 27.3, y: 5.5 },
     { t: "alienBack", x: 33.7, y: 14.5, face: 0, stomp: true }, { t: "alien", x: 38.5, y: 21.8, face: -2.2 },
     { t: "health", x: 39.5, y: 12.6 }, { t: "lamp", x: 33.4, y: 24.4 }, { t: "lamp", x: 40.6, y: 12.4 }, { t: "canister", x: 40.5, y: 24.3 },
+    // the sick bay: three guards and the med-kits they are sitting on
+    { t: "alien", x: 4.5, y: 15.5, face: 0.8 }, { t: "alien", x: 7.4, y: 14.6, face: 1.57 }, { t: "alien", x: 5.5, y: 17.5, face: 0 },
+    { t: "health", x: 3.6, y: 14.6 }, { t: "health", x: 7.4, y: 17.5 }, { t: "health", x: 3.6, y: 17.5 },
+    { t: "ammo", x: 6.5, y: 14.5 }, { t: "lamp", x: 8.4, y: 14.6 },
   ];
-  const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [{ x: 24.5, y: 16, rgb: [0.15, 0.18, 0.2], r: 5 }];
+  const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
+    { x: 24.5, y: 16, rgb: [0.15, 0.18, 0.2], r: 5 },
+    { x: 5.5, y: 16, rgb: [0.1, 0.16, 0.3], r: 4 }, // sick bay
+  ];
   const START = { x: 5.5, y: 22, angle: 0 };
   const ROUTE = [[5.5, 22], [11, 22], [12.5, 18.5], [12.5, 8.5], [22.5, 8.5], [22.5, 7], [22.5, 8.5], [31.5, 8.5], [31.5, 14.5], [33.5, 14.5], [36.5, 17.5], [40.5, 17.5]];
   const ALT_ROUTE = [[11, 21], [16, 20.8], [19.5, 20.6], [25, 16], [29.5, 21.5], [33.5, 21.5], [36.5, 18]];
@@ -284,7 +322,8 @@ export const LEVEL3: LevelDef = (() => {
   const LEGEND = [["alienBack", "Alien with its back to you"], ["vest", "Vest (armour)"]];
   const INTRO = "This is where the aliens live. The mess hall is full of them. Maybe there's a sneakier way through.";
   const HINTS = {
-    storage: "See the vent in the north wall? We could crawl through it. They can't see us in the vents.",
+    storage: "See the vent in the north wall? We could crawl through it. They can't see us in the vents. That west wall sounds hollow, too…",
+    store: "A sick bay. Three of them, and three med-kits.",
     d1: "Crawl quietly. Look through the grilles to see where they are.",
     d4: "One's right below, with its back to us! Get close and press SPACE to jump on it.",
     barracks: "There's a vest in here. Another one has its back turned: sneak up behind it.",

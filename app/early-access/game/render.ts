@@ -21,7 +21,7 @@ export function makeRenderer(W: number, H: number) {
   const px = img.data;
   const depth = new Float32Array(W * H);
   const FOV = (72 * Math.PI) / 180, planeLen = Math.tan(FOV / 2), proj = W / 2 / planeLen;
-  const centreDepth = { value: 1e9 };
+  const centreDepth = { value: 1e9 }; // how far the wall under the crosshair is
 
   // Colour one pixel: texture x light, glowing texels stay lit, far away fades to navy.
   function shade(p: number, t: Tex | Sprite, ti: number, sr: number, sg: number, sb: number, dist: number) {
@@ -34,11 +34,12 @@ export function makeRenderer(W: number, H: number) {
     px[o + 2] = t.base[ti + 2] * (sb + (1.25 - sb) * gl) * keep + FOG_B * add;
   }
 
+  let lastHorizon = H / 2;
   function render(w: World, tex: TexSet, spr: Record<string, Sprite>, cam: { x: number; y: number; angle: number }, things: Drawable[], eye: number, bob = 0) {
     const out = tex.out;
     const px0 = cam.x, py0 = cam.y;
     const EYE = eye;
-    const horizon = H / 2 + bob;
+    const horizon = H / 2 + bob; lastHorizon = horizon;
     const dx = Math.cos(cam.angle), dy = Math.sin(cam.angle), plx = -dy * planeLen, ply = dx * planeLen;
     const WW = w.W, FW = w.W * LIGHT_SUB, FH = w.H * LIGHT_SUB, fine = w.fine;
     depth.fill(1e9);
@@ -173,7 +174,7 @@ export function makeRenderer(W: number, H: number) {
         }
       }
     }
-    centreDepth.value = depth[Math.floor(horizon) * W + (W >> 1)];
+    centreDepth.value = depth[(H >> 1) * W + (W >> 1)]; // the crosshair sits at the middle of the screen, whatever the horizon is doing
 
     // sprites, far to near, clipped per pixel against depth
     const list = things.map((s) => ({ s, dist: (s.x - px0) ** 2 + (s.y - py0) ** 2 })).sort((a, b) => b.dist - a.dist);
@@ -212,5 +213,5 @@ export function makeRenderer(W: number, H: number) {
     return { screenX: (W / 2) * (1 + tX / tY), dist: tY };
   }
 
-  return { render, project, centreDepth, W, H, proj };
+  return { render, project, centreDepth, horizon: () => lastHorizon, W, H, proj };
 }

@@ -17,7 +17,7 @@ const CYAN = "#7fe6ff", CYAN_DIM = "rgba(127,230,255,0.35)", GLASS = "rgba(6,14,
 const FONT = "system-ui, sans-serif", MONO = `ui-monospace, "DejaVu Sans Mono", monospace`;
 
 export type HudState = {
-  health: number; vest: number; ammo: number; hasPistol: boolean; weapon: "fists" | "pistol";
+  health: number; vest: number; ammo: number; hasPistol: boolean; weapon: "knife" | "pistol";
   keys: string[]; radTime: number; level: string; aliensLeft: number;
   hurt: number; hits: { a: number; t: number }[]; aim: boolean;
   heading: number; objective: { text: string; bearing: number; dist: number } | null;
@@ -120,9 +120,9 @@ export function drawHud(x: Ctx, s: HudState) {
   const empty = s.hasPistol && s.ammo === 0;
   panel(x, AX, AY, 300, 86, empty ? "rgba(255,93,108,0.7)" : CYAN_DIM);
   if (!s.hasPistol) {
-    label(x, "NO WEAPON", AX + 18, AY + 24); x.font = `bold 17px ${FONT}`; x.fillStyle = "#c9d6e8"; x.fillText("Fists only · find the blaster", AX + 18, AY + 58);
+    label(x, "KNIFE", AX + 18, AY + 24); x.font = `bold 17px ${FONT}`; x.fillStyle = "#c9d6e8"; x.fillText("Close range only · find the blaster", AX + 18, AY + 58);
   } else {
-    label(x, s.weapon === "pistol" ? "BLASTER" : "FISTS  (2: blaster)", AX + 18, AY + 24);
+    label(x, s.weapon === "pistol" ? "BLASTER" : "KNIFE  (2: blaster)", AX + 18, AY + 24);
     for (let i = 0; i < 6; i++) {
       const on = i < s.ammo; x.fillStyle = on ? CYAN : "rgba(127,230,255,0.12)";
       if (on) { x.shadowColor = CYAN; x.shadowBlur = 10; }
@@ -247,7 +247,7 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   x.fillStyle = accent; x.fillRect(X + 22, Y, PW - 44, 2);
   x.fillStyle = accent; x.font = `bold 32px ${FONT}`; const title = stomp ? "STOMP!" : "RELOAD"; x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
   x.fillStyle = "#c9d6e8"; x.font = `16px ${FONT}`;
-  x.fillText(stomp ? "Get all 3 right to finish it off" : "Right: +3 cells · Wrong: +1 cell", X + 30 + titleW + 16, Y + 44); // measured, so no font can make them overlap
+  x.fillText(stomp ? "Get all 3 right to finish it off" : "Right: +3 cells · Wrong: nothing", X + 30 + titleW + 16, Y + 44); // measured, so no font can make them overlap
   x.font = `bold 13px ${FONT}`; const tw = x.measureText(q.topic).width + 22;
   x.fillStyle = "#1c6fd6"; x.beginPath(); x.roundRect(X + 30, Y + 64, tw, 26, 13); x.fill(); x.fillStyle = "#eaf6ff"; x.fillText(q.topic, X + 41, Y + 82);
   for (let i = 0; i < q.total; i++) {
@@ -296,27 +296,30 @@ export function drawScreen(x: Ctx, title: string, lines: string[], footer: strin
   x.restore();
 }
 
-// The blaster (or your gloved fists), drawn at game resolution so it is
+// The blaster (or the knife), drawn at game resolution so it is
 // pixelated like the world. Held low on the right and angled in, rather than
 // straight up the middle of the screen, and its six cells glow along the top:
 // you can see how many shots are left by looking at the gun itself.
-export function drawWeapon(x: Ctx, W: number, H: number, weapon: "fists" | "pistol", bob: number, kick: number, flash: number, ammo: number) {
+export function drawWeapon(x: Ctx, W: number, H: number, weapon: "knife" | "pistol", bob: number, kick: number, flash: number, ammo: number) {
   const s = W / 640;
   const poly = (col: string, pts: number[][]) => { x.fillStyle = col; x.beginPath(); pts.forEach(([a, b], i) => (i ? x.lineTo(a, b) : x.moveTo(a, b))); x.closePath(); x.fill(); };
   x.save();
   x.translate(W * 0.64 + Math.sin(bob) * 7 * s - kick * 6 * s, H + Math.abs(Math.cos(bob)) * 6 * s + kick * 10 * s); x.scale(s, s);
-  if (weapon === "fists") {
-    // one suit glove, low on the right; a punch jabs it up and in
-    x.translate(40 - kick * 70, 10 - kick * 50);
-    poly("#8795a8", [[70, 30], [150, 30], [70, -76], [14, -58]]);        // forearm
-    poly("#9aa8ba", [[84, 30], [150, 30], [76, -70], [40, -60]]);
-    poly("#1c6fd6", [[8, -56], [72, -80], [62, -100], [-2, -76]]);       // cuff
-    x.save(); x.translate(10, -118); x.rotate(-0.3);
-    x.fillStyle = "#c3ccd8"; x.beginPath(); x.ellipse(0, 4, 44, 34, 0, 0, 7); x.fill();   // fist, shaded
-    x.fillStyle = "#e9eef4"; x.beginPath(); x.ellipse(-2, -2, 40, 29, 0, 0, 7); x.fill();
-    x.fillStyle = "#f7f9fb"; for (let i = 0; i < 4; i++) { x.beginPath(); x.arc(-26 + i * 17, -18, 9, 0, 7); x.fill(); } // knuckles
-    x.strokeStyle = "#aab5c4"; x.lineWidth = 2; for (let i = 1; i < 4; i++) { x.beginPath(); x.moveTo(-34 + i * 17, -22); x.lineTo(-32 + i * 17, 2); x.stroke(); }
-    x.fillStyle = "#d3dae4"; x.beginPath(); x.roundRect(-30, 6, 46, 14, 7); x.fill();       // thumb
+  if (weapon === "knife") {
+    // a combat knife in a gloved hand, low on the right; a stab drives it up and in
+    x.translate(30 - kick * 80, 10 - kick * 60);
+    x.save(); x.rotate(-0.55 + kick * 0.35);
+    poly("#8795a8", [[60, 40], [140, 40], [72, -60], [20, -46]]);         // forearm
+    poly("#1c6fd6", [[16, -44], [76, -62], [70, -80], [10, -62]]);        // cuff
+    poly("#e9eef4", [[2, -56], [12, -104], [70, -96], [78, -52]]);        // glove
+    poly("#c3ccd8", [[6, -80], [74, -72], [76, -62], [4, -70]]);          // fingers
+    poly("#1b222d", [[14, -96], [64, -90], [62, -74], [12, -80]]);        // grip
+    poly("#2f3b4c", [[10, -108], [70, -100], [68, -92], [12, -98]]);      // guard
+    // the blade: a long triangle with a bright edge and a fuller down the middle
+    poly("#aeb9c8", [[30, -108], [58, -104], [44, -232], [34, -206]]);
+    poly("#eef3f8", [[34, -106], [50, -104], [44, -232], [40, -200]]);
+    poly("#8a96a6", [[38, -150], [46, -149], [44, -206], [40, -196]]);
+    x.fillStyle = "#ffffff"; x.beginPath(); x.moveTo(44, -232); x.lineTo(48, -212); x.lineTo(44, -214); x.fill(); // the point catches the light
     x.restore(); x.restore(); return;
   }
   x.rotate(-0.1); x.scale(0.9, 0.9);
