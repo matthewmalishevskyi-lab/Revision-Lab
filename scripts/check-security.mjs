@@ -1309,6 +1309,19 @@ try {
       return /^["']use client["']/m.test(src) && /from ["'][^"']*early-access\/art["']|from ["']\.\/art["']/.test(src);
     });
     expect(clientImportsArt.length === 0, `the game art is imported by a client file: ${clientImportsArt.join(", ")}`);
+
+    // The playable game. Its page must check access before it builds any
+    // questions or renders the game, and the question builder reads the whole
+    // content registry, so a client file may only import its TYPE.
+    const play = readFileSync("app/early-access/play/page.tsx", "utf8");
+    const playGuard = play.indexOf("hasDevAccess(user.id)");
+    expect(playGuard > 0 && playGuard < play.indexOf("buildGameQuestions(") && playGuard < play.indexOf("return ("),
+      "/early-access/play checks hasDevAccess before it builds questions or renders the game");
+    const clientImportsQuestions = listFiles("app").filter((f) => /\.tsx?$/.test(f)).filter((f) => {
+      const src = readFileSync(f, "utf8");
+      return /^["']use client["']/m.test(src) && /^import (?!type )[^\n]*game-questions["']/m.test(src);
+    });
+    expect(clientImportsQuestions.length === 0, `the game question builder is imported by a client file: ${clientImportsQuestions.join(", ")}`);
   }
 
   console.log("");

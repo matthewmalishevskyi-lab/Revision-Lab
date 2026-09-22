@@ -1,5 +1,57 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The alien game is playable — three levels, behind early access (2026-09-22)
+
+Matthew, after seeing the level designs: *"Make it playable."* `/early-access/play`:
+pick a subject, up to 8 topics, a mascot and a starting level, then play.
+Same gate as /early-access (logged in + `hasDevAccess`), keyboard and mouse only.
+
+**What it is.** A Doom-style grid raycaster, hand-written, no game library
+(`app/early-access/game/`, ~2,200 lines): world.ts builds the map and bakes
+the light, render.ts draws it at 480×270 and scales it up pixelated, hud.ts
+draws the status bar and quizzes on a sharp 1280×720 overlay, game.ts runs
+everything. The mascot's face in the status bar is the real MascotDisplay laid
+over the canvas, so an equipped outfit shows there too.
+
+**The rules agreed earlier, all in:** start with nothing, find the pistol; 6
+shots; R to reload by answering questions (right +3, wrong +1, the game keeps
+running while you answer, so reloading mid-fight is a risk); aliens notice
+you, turn slowly and shoot 20-damage bolts you can dodge or hide from behind
+crates; level 2's coolant hurts without the rad suit and has a keycard door;
+level 3's vents make you crouch and hide you, and from behind an unaware
+alien SPACE jumps on it — three easy 5-second questions, all right kills it,
+one wrong throws you off for 20 damage and wakes it.
+
+**Questions come from the site's own bank, server-side.** `lib/game-questions.ts`
+sends only the chosen topics' multiple-choice questions (max 80). The "easy"
+pool for stomps is difficulty 1–2 on the existing ladder. Every answer goes
+through the ordinary `recordAnswer`, so wrong ones reach "Revisit your
+mistakes" like any practice question.
+
+⚠️ **Two games were running on one canvas in development.** React mounts an
+effect twice in dev; `init()` awaits the sprites, so the first game was
+"destroyed" before it had started — and then finished starting anyway, adding
+its own key listeners and animation loop. Both heard every key. It looked like
+flaky reload marking in the play-test. `init()` now bails if destroyed.
+
+⚠️ **Honest correction to the entry below:** the game's code and drawings now
+ship as ordinary JavaScript chunks, loaded by the gated page. The chunk URLs
+are technically public; what the gate protects is the page, the questions and
+the answer recording, not the art. Fine for a preview; not a vault.
+
+**Checked:** a browser play-test drives all three levels through a test hook
+(`overlay.game`) — 31 checks: pistol pickup, walls stopping shots, all three
+reload rules, being shot, cover blocking bolts, the lift, carrying the pistol
+into level 2, coolant and suit, keycard door, vent crouch, stomp prompt, a
+three-right stomp kill, a wrong one throwing you off, death and restart. Zero
+console errors. check-security now also fails if /early-access/play renders
+before the access check, or if a client file imports the question builder
+(both confirmed to bite).
+
+**Not done yet:** the boss level, phones/touch, a leaderboard. Headless
+Chromium runs it at ~25 fps (software rendering); a real GPU should be well
+above that, but it has not been measured on Matthew's machine.
+
 ## Early access for developers — the game preview behind a code (2026-09-21, night)
 
 Matthew: *"a button... early access for developers, at the bottom of the

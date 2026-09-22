@@ -66,9 +66,15 @@ export default async function EarlyAccessPage() {
       </p>
       <h1 className="mt-2 text-3xl font-bold sm:text-4xl">The alien game</h1>
       <p className="mt-3 max-w-2xl opacity-70">
-        Nothing here is playable yet. This is where the game gets shown while
-        it is built: the characters first, then the levels.
+        The first three levels are playable. Pick a subject and some topics,
+        and your reload questions come from them.
       </p>
+      <Link
+        href="/early-access/play"
+        className="mt-5 inline-flex min-h-11 items-center rounded-full bg-emerald-600 px-6 font-semibold text-white shadow-lg transition hover:bg-emerald-500"
+      >
+        Play now →
+      </Link>
 
       <section className="mt-10">
         <h2 className="text-xl font-semibold">The characters</h2>
@@ -99,9 +105,9 @@ export default async function EarlyAccessPage() {
       </section>
 
       <section className="mt-12 rounded-2xl border border-black/5 p-6 dark:border-white/10">
-        <h2 className="text-lg font-semibold">Next up: the levels</h2>
+        <h2 className="text-lg font-semibold">Next up: the boss</h2>
         <p className="mt-2 max-w-2xl text-sm opacity-70">
-          The maps of the battleship, room by room — being talked through next.
+          Levels 1–3 are in. The final fight with the boss in the business suit comes next.
         </p>
       </section>
 
