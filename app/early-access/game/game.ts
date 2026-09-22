@@ -151,7 +151,8 @@ export class Game {
   // ── input ─────────────────────────────────────────────────────────────────
   private onLockChange = () => {
     const locked = document.pointerLockElement === this.ov;
-    if (!locked && (this.mode === "play" || this.mode === "reload")) { this.pausedFrom = this.mode; this.mode = "paused"; this.keys.clear(); }
+    // (a stomp counts too: its clock must stop while you're away)
+    if (!locked && (this.mode === "play" || this.mode === "reload" || this.mode === "stomp")) { this.pausedFrom = this.mode; this.mode = "paused"; this.keys.clear(); }
   };
   private lock() { this.ov.requestPointerLock?.(); this.ensureAudio(); }
   private onMouseDown = (e: MouseEvent) => {
@@ -172,7 +173,7 @@ export class Game {
     // read digits by KEY POSITION, so they still work while Shift (run) is held,
     // when the browser reports "!" instead of "1", and from the number pad
     const digit = /^(?:Digit|Numpad)([1-4])$/.exec(e.code)?.[1] ?? (["1", "2", "3", "4"].includes(k) ? k : null);
-    if (this.quiz && this.quiz.picked === null && digit) { this.answer(Number(digit) - 1); return; }
+    if (this.quiz && this.quiz.picked === null && digit && (this.mode === "reload" || this.mode === "stomp")) { this.answer(Number(digit) - 1); return; }
     if (this.mode === "dead" && k === "enter") { this.loadLevel(this.levelIndex); this.mode = "play"; this.lock(); return; }
     if (this.mode === "complete" && k === "enter") {
       this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol };
@@ -434,6 +435,7 @@ export class Game {
 
   // ── use: doors that need a button ─────────────────────────────────────────
   private use() {
+    if (this.quiz) return; // finish the questions first (the lift used to end the level with a quiz still open)
     const p = this.p, w = this.world;
     const lx = p.x + Math.cos(p.angle) * 0.9, ly = p.y + Math.sin(p.angle) * 0.9;
     const d = w.door[this.cell(lx, ly)];
@@ -455,6 +457,7 @@ export class Game {
   }
   private startReload() {
     const p = this.p;
+    if (p.hasPistol && p.weapon === "fists" && p.ammo < 6) p.weapon = "pistol"; // R with fists up means "get the blaster ready"
     if (!p.hasPistol || p.weapon !== "pistol" || this.quiz || p.ammo >= 6) { if (p.ammo >= 6 && p.hasPistol && !this.quiz) this.pickupMsg("Already full"); return; }
     const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload"); if (q) qs.push(q); }
     if (!qs.length) { p.ammo = 6; return; }

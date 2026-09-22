@@ -61,10 +61,10 @@ export const LEVEL1: LevelDef = (() => {
     [4, 14, FACE.E, "arrowR"], [8, 14, FACE.N, "arrowR", true], [11, 11, FACE.S, "arrowR"], [13, 11, FACE.S, "camera"],
     [9, 17, FACE.S, "screen"], [4, 23, FACE.E, "cables"],
     [15, 20, FACE.N, "camera"], [28, 7, FACE.S, "camera"], [20, 7, FACE.S, "sign"], [29, 13, FACE.W, "screen"], [23, 7, FACE.S, "arrowR", true],
-    [20, 5, FACE.E, "arrowR", true], [26, 5, FACE.N, "arrowR", true], [33, 5, FACE.N, "arrowR", true], [24, 5, FACE.N, "cables"],
+    [20, 5, FACE.E, "arrowR"], [26, 5, FACE.N, "arrowR", true], [33, 5, FACE.N, "arrowR", true], [24, 5, FACE.N, "cables"],
     [34, 6, FACE.E, "arrowR", true], [37, 6, FACE.W, "sign"],
-    [32, 10, FACE.E, "camera"], [43, 12, FACE.W, "sign"], [43, 17, FACE.W, "screen"], [37, 20, FACE.E, "arrowR"],
-    [33, 23, FACE.E, "camera"], [44, 23, FACE.W, "arrowR", true], [44, 26, FACE.W, "arrowR"],
+    [32, 10, FACE.E, "camera"], [43, 12, FACE.W, "sign"], [43, 17, FACE.W, "screen"], [37, 20, FACE.E, "arrowR", true],
+    [33, 23, FACE.E, "camera"], [44, 23, FACE.W, "arrowR"], [44, 26, FACE.W, "arrowR", true],
     [30, 16, FACE.S, "sign"], [31, 19, FACE.N, "cables"],
   ];
   // Low cover: waist-high, you can shoot over it and crouch behind it.
@@ -111,7 +111,7 @@ export const LEVEL1: LevelDef = (() => {
     obs: "Keep going along the deck. The way down to the reactor is at the far end.",
     maint: "A shortcut into the reactor room.",
     reactor: "The reactor! The door to the bridge is on the far side, past the core.",
-    bridge: "The bridge. The lift out is on the right-hand wall: walk up to it and press E.",
+    bridge: "The bridge. The lift out is on the east wall, to your left as you come in: walk up to it and press E.",
   };
   const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
     { text: "Get the blaster", at: [10.5, 20.5], until: "pistol" },

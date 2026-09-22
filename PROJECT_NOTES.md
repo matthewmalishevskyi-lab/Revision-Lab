@@ -1,5 +1,38 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Bug check of the three game levels (2026-09-22, afternoon)
+
+Matthew, from a maths lesson: *"run a bug check in the levels you've got so
+far"* (and keep everything in the cloud until he can push).
+
+**How:** a bot played every level for real (aliens alive, reloading by
+answering, stomping), once as an aimbot and once as a slower "human" (0.45 s
+reaction, 2.2 rad/s turning). Every level was finished every time; the human
+bot ended level 2 on as little as 8 health, so there is real challenge. Also:
+a camera sweep of every room in four directions, a check that every blue
+arrow on the walls points the way the route goes, and edge cases around the
+quizzes. Found and fixed:
+
+- ⚠️ **Four wall arrows pointed the wrong way.** Level 1's corridor up to the
+  observation deck and the corridor down to the bridge pointed back where you
+  came from, and the two arrows beside the bridge lift pointed away from it.
+  Found by computing each arrow's direction against the route, not by eye.
+- **The lift could end a level with a reload quiz still open**, leaving the
+  quiz on the "Level complete" screen. The lift now waits.
+- **Number keys answered questions while paused.**
+- **Leaving the window during a stomp didn't pause it**, so its 5-second
+  clock ran out while you were away and threw you off.
+- **R with fists up did nothing**; it now switches to the blaster and reloads.
+- **Level 1's bridge tip said the lift was on your right**; coming in from the
+  north it's on your left.
+- A bug of my own, caught before it shipped: a comment inserted mid-line
+  commented out the rest of the line and broke the game's parse. The dev
+  server showed a 500; `tsc` would have caught it, and now always runs first.
+
+Checked and fine: the secret wall opens with E and you can walk in, level
+transitions carry the blaster, restarting resets aliens and health, finishing
+level 3 shows the early-access end screen, dying mid-stomp ends the quiz.
+
 ## The alien game: a helmet visor instead of a Doom bar, real collision, and level fixes (2026-09-22, later)
 
 Matthew: *"polish it looking for any bad designs or inconveniences in the
