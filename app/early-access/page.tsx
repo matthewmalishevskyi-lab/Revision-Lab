@@ -40,11 +40,11 @@ const CHARACTERS = [
 ];
 
 const AGREED = [
-  "A Doom-style first-person shooter on a space battleship full of green aliens",
+  "A first-person shooter seen through a space helmet, on a battleship full of green aliens (Doom-like to play, not to look at)",
   "Pick your subjects and topics, then your mascot, and play",
   "Six shots. Answer a question to reload: right reloads three, wrong reloads one",
   "Wrong answers go to “Revisit your mistakes”",
-  "Start with nothing, then a pistol, then a new weapon every level or two",
+  "Start with nothing, then a blaster, then a new weapon every level or two",
   "Levels first, then an endless arena until you die, with a high-score board",
   "Logged-in players only, switched off in school hours, PC first",
 ];

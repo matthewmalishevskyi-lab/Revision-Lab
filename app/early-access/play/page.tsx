@@ -48,7 +48,7 @@ export default async function PlayPage({ searchParams }: Props) {
               <Link href="/early-access" className="tap-pad opacity-70 hover:opacity-100">← Early access</Link>
               <p className="opacity-70">{subject.name} · {topics.length} topic{topics.length === 1 ? "" : "s"} · playing as {MASCOT_NAMES[mascot]}</p>
             </div>
-            <GameClient subject={subject.slug} mascot={mascot} reload={reload} easy={easy} startLevel={level - 1} />
+            <GameClient subject={subject.slug} mascot={mascot} mascotName={MASCOT_NAMES[mascot]} reload={reload} easy={easy} startLevel={level - 1} />
             <p className="mt-4 text-sm opacity-60">
               Keyboard and mouse only for now. Every answer counts like a practice question, so the ones you get wrong come back in “Revisit your mistakes”.
             </p>

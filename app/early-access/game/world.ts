@@ -22,7 +22,7 @@ export type Area = {
   ceilH?: number;
   upper?: string;
 };
-export type DoorDef = { cells: [number, number][]; tex: string; key?: string; secret?: boolean; exit?: boolean };
+export type DoorDef = { cells: [number, number][]; tex: string; key?: string; secret?: boolean; exit?: boolean; /** stays shut until you have this */ needs?: "pistol" };
 export type Thing = { t: string; x: number; y: number; face?: number; stomp?: boolean; z?: number };
 export type LevelDef = {
   TITLE: string;
@@ -41,6 +41,13 @@ export type LevelDef = {
   LIGHTS?: { x: number; y: number; rgb: [number, number, number]; r: number }[];
   START: { x: number; y: number; angle: number };
   CORE?: [number, number][];
+  /** What the mascot says when the level starts. */
+  INTRO?: string;
+  /** Tips the mascot gives the first time you walk into an area. */
+  HINTS?: Record<string, string>;
+  /** Where the compass marker points, in order; each is done once you have its `until`. */
+  OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "keycard" }[];
+  LOCKED_HINT?: string;
 };
 
 export type Box = { x0: number; y0: number; w: number; h: number };
@@ -212,13 +219,15 @@ export function blocked(w: World, x: number, y: number): boolean {
   return w.solid[i] !== 0 || w.grille[i] === 1;
 }
 
-/** Does anything opaque stand between two points? Cover doesn't block sight. */
-export function lineOfSight(w: World, ax: number, ay: number, bx: number, by: number): boolean {
+/** Does anything opaque stand between two points? Cover doesn't block sight.
+ *  With `solidGrilles`, vent grilles count too: you can SEE through one, but a
+ *  shot can't go through it (otherwise the vents would be a safe sniper nest). */
+export function lineOfSight(w: World, ax: number, ay: number, bx: number, by: number, solidGrilles = false): boolean {
   const dist = Math.hypot(bx - ax, by - ay); const steps = Math.ceil(dist * 4);
   for (let s = 1; s < steps; s++) {
     const t = s / steps, x = Math.floor(ax + (bx - ax) * t), y = Math.floor(ay + (by - ay) * t);
     const i = y * w.W + x; const d = w.door[i];
-    if (d ? d.open < 0.9 : w.solid[i] === 1) return false;
+    if (d ? d.open < 0.9 : w.solid[i] === 1 || (solidGrilles && w.grille[i] === 1)) return false;
   }
   return true;
 }

@@ -34,7 +34,9 @@ export const LEVEL1: LevelDef = (() => {
   const DOORS: NonNullable<LevelDef["DOORS"]> = [
     { cells: [[5, 25], [6, 25]], tex: "door" },          // airlock inner door
     { cells: [[7, 20], [7, 21]], tex: "door" },          // into the armoury
-    { cells: [[14, 12], [14, 13]], tex: "door" },        // into the cargo bay
+    // into the cargo bay: stays shut until you have the blaster, so nobody walks
+    // into the first fight unarmed because they missed the armoury door
+    { cells: [[14, 12], [14, 13]], tex: "door", needs: "pistol" },
     { cells: [[21, 7], [22, 7]], tex: "door" },          // up to the observation deck
     { cells: [[35, 7], [36, 7]], tex: "door" },          // down into the reactor
     { cells: [[29, 17], [29, 18]], tex: "door" },        // maintenance shortcut
@@ -100,7 +102,22 @@ export const LEVEL1: LevelDef = (() => {
   const ROUTE = [[6, 30], [6, 20.5], [10.5, 20.5], [6, 20.5], [6, 12.5], [15.5, 12.5], [21.5, 10], [21.5, 3.6], [35.5, 3.6], [35.5, 9], [37, 17.5], [38.5, 21], [38.5, 24], [43.5, 24.5]];
   const ALT_ROUTE = [[27, 17.5], [33, 17.5], [36, 17.5]];
 
-  return { TITLE: "Level 1 — Boarding", W, H, AREAS, DOORS, BLOCKS, FLOORS, WALL_OVERRIDE, DECALS, CORE, COVER, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE };
+  // What your mascot says on the comms screen, and where the compass points.
+  const INTRO = "We're aboard! First, grab the blaster from the armoury, just up this corridor.";
+  const HINTS = {
+    armoury: "The blaster should be on the floor in here.",
+    hub: "Three aliens in the cargo bay. The crates are cover: their shots can't get through, but yours go over the top.",
+    secret: "A secret room! Nice find.",
+    obs: "Keep going along the deck. The way down to the reactor is at the far end.",
+    maint: "A shortcut into the reactor room.",
+    reactor: "The reactor! The door to the bridge is on the far side, past the core.",
+    bridge: "The bridge. The lift out is on the right-hand wall: walk up to it and press E.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Get the blaster", at: [10.5, 20.5], until: "pistol" },
+    { text: "Reach the lift on the bridge", at: [43.5, 24.5] },
+  ];
+  return { TITLE: "Level 1 — Boarding", W, H, AREAS, DOORS, BLOCKS, FLOORS, WALL_OVERRIDE, DECALS, CORE, COVER, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, INTRO, HINTS, OBJECTIVES };
 })();
 
 // Level 2: "Meltdown" — the lift from level 1 drops you at the ship's nuclear
@@ -176,11 +193,25 @@ export const LEVEL2: LevelDef = (() => {
     { x: 20.5, y: 5, rgb: [0.15, 0.3, 0.6], r: 3 },
   ];
   const START = { x: 5.5, y: 15.5, angle: 0 };
-  const ROUTE = [[5.5, 15.5], [12.5, 15.5], [12.5, 8], [15, 5], [21.5, 5], [21.8, 9.5], [26.5, 9.5], [26.5, 12.5], [31.5, 12.5], [31.5, 9.5], [36.5, 9.5], [36.5, 5.5], [41.5, 5.5], [43.5, 4.5], [41.5, 5.5], [36.8, 6], [36.8, 24.5], [41.5, 25.5]];
+  const ROUTE = [[5.5, 15.5], [12.5, 15.5], [12.5, 8], [15, 6.5], [21.5, 5], [21.8, 9.5], [26.5, 9.5], [26.5, 12.5], [31.5, 12.5], [31.5, 9.5], [36.5, 9.5], [36.5, 5.5], [41.5, 5.5], [43.5, 4.5], [41.5, 5.5], [36.8, 6], [36.8, 24.5], [41.5, 25.5]];
   const ALT_ROUTE = [[12.5, 5], [6, 5], [12.5, 5.2], [21.5, 5.2], [24, 5.5], [34.5, 5.5]];
   const LABELS = { lift: [5.5, 12.4], check: [12.8, 11.6], control: [14.5, 2.4], decon: [6, 2.4], hall: [29, 1.4], pump: [41.8, 2.4], exit: [37, 29.2] };
   const LEGEND = [["radsuit", "Radiation suit (wade through coolant)"], ["keycard", "Blue keycard (opens the locked door)"]];
-  return { TITLE: "Level 2 — Meltdown", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND, CORE };
+  const INTRO = "This deck is the reactor. We have to go straight through it to reach the next lift.";
+  const HINTS = {
+    check: "A security checkpoint. Use the consoles as cover.",
+    control: "The control room. Look through the window: that's the reactor hall. There's a room off to the left, too.",
+    decon: "Decontamination. A radiation suit would let us walk through the coolant.",
+    hall: "Don't step in the glowing coolant: it burns. Stay on the catwalks and go round the core.",
+    pump: "The pump room. The blue keycard should be in here somewhere.",
+    exit: "Nearly there. Walk up to the lift and press E.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Find the blue keycard", at: [43.5, 4.4], until: "keycard" },
+    { text: "Take the lift to deck 3", at: [41.5, 25.5] },
+  ];
+  const LOCKED_HINT = "Locked! It needs the blue keycard. Try the pump room, through the door on the east walkway.";
+  return { INTRO, HINTS, OBJECTIVES, LOCKED_HINT, TITLE: "Level 2 — Meltdown", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND, CORE };
 })();
 
 // Level 3: "Crew deck" — the aliens live here. The mess hall is packed: six
@@ -240,7 +271,7 @@ export const LEVEL3: LevelDef = (() => {
     { t: "alien", x: 23.5, y: 11.4, face: 1.6 }, { t: "alien", x: 24.6, y: 15.6, face: 3.1 }, { t: "alien", x: 21.2, y: 20.2, face: 0.2 },
     { t: "alien", x: 28.5, y: 19.8, face: 2.6 }, { t: "alienBack", x: 28.6, y: 11.3, face: -1.6 }, { t: "alien", x: 25, y: 21.4, face: -1.6 },
     { t: "lamp", x: 20.5, y: 10.5 }, { t: "lamp", x: 29.5, y: 10.5 },
-    { t: "alienBack", x: 22.5, y: 5.8, face: -1.57, stomp: true }, { t: "alien", x: 25.8, y: 3.2, face: 3.0 },
+    { t: "alienBack", x: 22.5, y: 5.8, face: -1.57, stomp: true }, { t: "alienBack", x: 25.8, y: 3.2, face: 0 }, // facing the wall, so a quiet player can stomp this one too
     { t: "vest", x: 19.6, y: 2.6 }, { t: "ammo", x: 27.3, y: 5.5 },
     { t: "alienBack", x: 33.7, y: 14.5, face: 0, stomp: true }, { t: "alien", x: 38.5, y: 21.8, face: -2.2 },
     { t: "health", x: 39.5, y: 12.6 }, { t: "lamp", x: 33.4, y: 24.4 }, { t: "lamp", x: 40.6, y: 12.4 }, { t: "canister", x: 40.5, y: 24.3 },
@@ -251,7 +282,18 @@ export const LEVEL3: LevelDef = (() => {
   const ALT_ROUTE = [[11, 21], [16, 20.8], [19.5, 20.6], [25, 16], [29.5, 21.5], [33.5, 21.5], [36.5, 18]];
   const LABELS = { lift: [5.5, 19.4], storage: [12, 26.4], mess: [24.5, 23.5], barracks: [23, 1.4], exit: [36.8, 11.3] };
   const LEGEND = [["alienBack", "Alien with its back to you"], ["vest", "Vest (armour)"]];
-  return { TITLE: "Level 3 — Crew deck", W, H, DUCT_H, AREAS, DOORS, GRILLES, COVER, WALL_OVERRIDE, FLOORS, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
+  const INTRO = "This is where the aliens live. The mess hall is full of them. Maybe there's a sneakier way through.";
+  const HINTS = {
+    storage: "See the vent in the north wall? We could crawl through it. They can't see us in the vents.",
+    d1: "Crawl quietly. Look through the grilles to see where they are.",
+    d4: "One's right below, with its back to us! Get close and press SPACE to jump on it.",
+    barracks: "There's a vest in here. Another one has its back turned: sneak up behind it.",
+    d5: "The hangar! There's one right below. Jump on it, then run for the lift.",
+    mess: "That's a lot of aliens. Use the tables as cover!",
+    exit: "The lift is on the far wall. Walk up to it and press E.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [{ text: "Reach the lift by the hangar door", at: [40.5, 17.5] }];
+  return { INTRO, HINTS, OBJECTIVES, TITLE: "Level 3 — Crew deck", W, H, DUCT_H, AREAS, DOORS, GRILLES, COVER, WALL_OVERRIDE, FLOORS, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
 })();
 
 export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3];

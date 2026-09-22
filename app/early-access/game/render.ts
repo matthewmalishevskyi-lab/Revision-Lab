@@ -13,7 +13,7 @@ import { COVER_H, FACE, LIGHT_SUB, ROOM_H, type World } from "./world";
 
 export type Drawable = { x: number; y: number; z?: number; sprite: string; alpha?: number };
 
-const FOG_R = 6, FOG_G = 10, FOG_B = 20;
+const FOG_R = 12, FOG_G = 26, FOG_B = 48; // distance fades into a deep blue haze, not black
 const T = 128, T1 = 127;
 
 export function makeRenderer(W: number, H: number) {

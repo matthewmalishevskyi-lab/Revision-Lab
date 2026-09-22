@@ -1,5 +1,75 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The alien game: a helmet visor instead of a Doom bar, real collision, and level fixes (2026-09-22, later)
+
+Matthew: *"polish it looking for any bad designs or inconveniences in the
+levels. Also make sure that physics work properly. Can you make it look a bit
+less like a doom rip off but still in the similar vibes?"* He picked the
+**helmet visor** look from three options.
+
+### The look
+
+- **No status bar.** The 3D view fills the screen; readouts sit in the corners
+  of a helmet visor (vignette, faint scan lines, corner brackets): suit
+  integrity bottom left, the blaster's six cells bottom right, level and
+  aliens left top right. The grey bar with a face in the middle was the most
+  recognisably Doom thing in the game.
+- **The mascot is on a comms screen** (top left, the real MascotDisplay, so
+  outfits show) and **talks**: an intro per level, a tip the first time you
+  enter each area (`HINTS` in levels.ts), and help when you need it (locked
+  door, no weapon, out of cells, hurt, in the coolant). Messages queue and
+  wait while a quiz is up, so none is missed.
+- **Compass with an objective marker** along the top (`OBJECTIVES`): "Get
+  the blaster" → "Reach the lift on the bridge", etc., with the distance.
+- **Reticle turns amber** when a shot would hit; **red arcs** show which way
+  a hit came from; room names appear as you walk in; "E · Take the lift" and
+  "SPACE · jump on it" prompts.
+- **The pistol is now a blaster** held low on the right, with its six cells
+  glowing on the side of the gun; fists are a suit glove.
+- The view is a little sharper (576×324, dropping to 480×270 by itself if a
+  computer can't keep up), distance fades into blue haze, and a blurred,
+  screen-blended copy of the frame gives lights a soft glow.
+
+### Physics
+
+⚠️ **The player was a square that tried each axis in turn**, so it stopped
+short of walls at speed and snagged on every door frame and crate corner.
+Everything that walks is now a **circle pushed out of squares**
+(`game/physics.ts`), in steps of at most 0.2, so you slide round corners and
+can't tunnel through a wall on a slow frame. Movement also has a quarter of a
+second of acceleration, and the head bob follows distance actually walked
+(it used to bob while you pushed into a wall).
+
+Also fixed: **you could walk through aliens, and they through each other**
+(now solid); **aliens only checked their centre against walls**, so they
+clipped into them (now circles too); being **thrown off a stomp could
+teleport you through a thin wall** (the path is now checked); **bolts passed
+through vent grilles**, and **your shots did too**, which made the vents a
+safe sniper nest; **Shift + 1–4 didn't answer** (the browser sends "!"), so
+answering while running failed; **Alt-Tab while holding W** left you walking
+forever; one huge mouse jump on capture could spin you round. Aliens can now
+open ordinary doors when chasing you.
+
+### The levels
+
+Checked by a flood fill (every area, pickup and exit reachable, key items not
+behind their own lock, nothing inside a wall), a bot that walks every route
+with the real movement code, and ten simulated minutes of random running per
+level (the player and every alien never overlapped a wall). Changes:
+
+- **Level 1: you could walk into the first fight unarmed.** The cargo bay door
+  was on the main corridor and the armoury a side room. It now stays shut
+  until you have the blaster, and Hoot says why.
+- **Level 2:** a quarter of a second's grace before coolant hurts, so clipping
+  a catwalk edge is free; the locked door's hint says where the keycard is.
+- **Level 3:** the second barracks alien now faces the wall, so a quiet
+  player can stomp it too (it used to spot you the moment you dropped in);
+  crawling is a bit faster (0.65 of walking, was 0.55).
+
+**Verified:** gametest now 35 checks (door lock, wall slide, solid aliens, no
+shooting through grilles, Shift answers, plus the old 30), three clean runs in
+a row; route bot and fuzz clean on all three levels; `npm run check` green.
+
 ## The alien game is playable — three levels, behind early access (2026-09-22)
 
 Matthew, after seeing the level designs: *"Make it playable."* `/early-access/play`:
