@@ -24,13 +24,13 @@
 // skill, not a cop-out.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { HigherBadge } from "./HigherBadge";
 import { Calculator } from "./Calculator";
 import { AnswerBox } from "./AnswerBox";
 import { getSubject } from "../lib/subjects";
 import { recordAnswer } from "../lib/progress-actions";
-import { useStoredRaw } from "../lib/browserStore";
+import { useStoredRaw, writeStorageRaw } from "../lib/browserStore";
 import {
   clearAnswers,
   parseSaved,
@@ -77,6 +77,32 @@ type QuestionState = {
 };
 
 const EMPTY: QuestionState = { input: "", status: "unanswered", revealed: false };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEN AT A TIME, AND A BUTTON FOR THE NEXT TEN
+//
+// Every practice question in a topic used to be on screen at once. That was
+// fine at 18 and awkward at 38; maths topics now hold up to 128, and a page
+// that opens with a hundred questions is a page nobody starts.
+//
+// So the pool is dealt out in sets of ten — about five minutes' work, short
+// enough to finish — and "New questions" moves to the next set. Two details
+// matter more than they look:
+//
+//   THE SET IS THE NEXT ONE, NOT A RANDOM ONE. Picking ten at random every
+//   press would hand back questions already seen while others in the pool were
+//   never shown at all. Walking the pool in order means the button always
+//   delivers something genuinely new until the whole topic has been offered.
+//
+//   THE ORDER IS SHUFFLED ONCE, BY TOPIC, NOT BY THE CLOCK. Questions are
+//   written in blocks — ten on simplifying, then ten on factorising — so ten
+//   CONSECUTIVE questions would be ten of the same thing, and practising one
+//   skill in a block is measurably worse for remembering it than mixing skills
+//   up. Shuffling with the topic's own name as the seed mixes them while
+//   keeping the order identical on the server and in the browser, which is
+//   what stops React tearing the page down on arrival (see shuffleWithSeed).
+// ─────────────────────────────────────────────────────────────────────────────
+const BATCH = 10;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // WHY MULTIPLE CHOICE OPTIONS ARE SHUFFLED HERE RATHER THAN TRUSTED AS WRITTEN
@@ -182,6 +208,34 @@ export function Practice({
 
   const stateFor = (index: number) => states[index] ?? savedFor(index) ?? EMPTY;
 
+  // ── Which ten are on screen ───────────────────────────────────────────────
+  // `order` holds POSITIONS in the full pool, not questions, and every piece of
+  // state below is still keyed by a question's position in that pool. That is
+  // deliberate: the flashcard deck once counted a card by its SLOT, and Shuffle
+  // moving a card into a used slot made it stop counting. Identity belongs to
+  // the question, never to where it currently happens to sit on screen.
+  const order = shuffleWithSeed(
+    questions.map((_, i) => i),
+    seedFromText(`${subject}/${topic}`),
+  );
+  const setCount = Math.max(1, Math.ceil(order.length / BATCH));
+  // Which set you were on is remembered on this device, like the answers
+  // themselves — coming back to a topic and being dropped at set 1 with every
+  // question already ticked is the reason this is stored at all.
+  const setKey = `practice-set:${subject}/${topic}`;
+  const storedSet = Number.parseInt(useStoredRaw(setKey, "0") ?? "0", 10);
+  const currentSet = Number.isFinite(storedSet) && storedSet > 0 ? storedSet % setCount : 0;
+  const shown = order.slice(currentSet * BATCH, currentSet * BATCH + BATCH);
+  const listRef = useRef<HTMLOListElement>(null);
+
+  function nextSet() {
+    writeStorageRaw(setKey, String((currentSet + 1) % setCount));
+    // The new questions replace the old ones in place, so without this the
+    // page stays scrolled to wherever the LAST set's question 8 was — which
+    // looks like nothing happened.
+    listRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+
   function update(index: number, changes: Partial<QuestionState>) {
     setStates((current) => ({
       ...current,
@@ -262,13 +316,21 @@ export function Practice({
     }
   }
 
-  const markable = questions.filter((q) => q.accept).length;
-  const correct = questions.filter(
-    (q, i) => q.accept && stateFor(i).status === "correct",
+  // The score is about the set on screen, not the whole topic. "3 out of 214
+  // marks" on a maths topic would be true, useless and quietly demoralising;
+  // the whole-topic figure is the separate line under the button.
+  const inSet = shown.map((i) => ({ q: questions[i], i })).filter((x) => x.q);
+  const markable = inSet.filter((x) => x.q.accept).length;
+  const correct = inSet.filter(
+    (x) => x.q.accept && stateFor(x.i).status === "correct",
   ).length;
-  const attempted = questions.filter(
+  const attempted = inSet.filter(
+    (x) => x.q.accept && stateFor(x.i).status !== "unanswered",
+  ).length;
+  const attemptedInTopic = questions.filter(
     (q, i) => q.accept && stateFor(i).status !== "unanswered",
   ).length;
+  const markableInTopic = questions.filter((q) => q.accept).length;
 
   // ───────────────────────────────────────────────────────────────────────────
   // THE SCORE IS OUT OF MARKS, NOT OUT OF QUESTIONS — Matthew's ask.
@@ -283,13 +345,13 @@ export function Practice({
   // folding in a mark the student awarded themselves would inflate the number
   // without their knowing.
   // ───────────────────────────────────────────────────────────────────────────
-  const totalMarks = questions.reduce(
-    (sum, q) => (q.accept ? sum + marksFor(subject, q) : sum),
+  const totalMarks = inSet.reduce(
+    (sum, x) => (x.q.accept ? sum + marksFor(subject, x.q) : sum),
     0,
   );
-  const earnedMarks = questions.reduce(
-    (sum, q, i) =>
-      q.accept && stateFor(i).status === "correct" ? sum + marksFor(subject, q) : sum,
+  const earnedMarks = inSet.reduce(
+    (sum, x) =>
+      x.q.accept && stateFor(x.i).status === "correct" ? sum + marksFor(subject, x.q) : sum,
     0,
   );
 
@@ -330,8 +392,9 @@ export function Practice({
         </div>
       )}
 
-      <ol className="space-y-3">
-        {questions.map((item, index) => {
+      <ol ref={listRef} className="scroll-mt-20 space-y-3">
+        {shown.map((index, position) => {
+          const item = questions[index];
           const state = stateFor(index);
           const autoMarked = Boolean(item.accept);
           // The shuffled DISPLAY order — see shuffledChoicesFor's comment.
@@ -350,7 +413,7 @@ export function Practice({
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
                   style={{ backgroundColor: colour }}
                 >
-                  {index + 1}
+                  {position + 1}
                 </span>
 
                 <div className="min-w-0 flex-1">
@@ -435,7 +498,7 @@ export function Practice({
                           value={state.input}
                           onChange={(input) => update(index, { input, status: "unanswered" })}
                           onSubmit={() => check(index, item)}
-                          ariaLabel={`Answer to question ${index + 1}`}
+                          ariaLabel={`Answer to question ${position + 1}`}
                         />
                         <button
                           type="button"
@@ -523,6 +586,24 @@ export function Practice({
           );
         })}
       </ol>
+
+      {setCount > 1 && (
+        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <button
+            type="button"
+            onClick={nextSet}
+            className="min-h-11 rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+            style={{ backgroundColor: colour }}
+          >
+            New questions
+          </button>
+          <p className="text-sm opacity-60">
+            Set {currentSet + 1} of {setCount} · {questions.length} questions in this topic
+            {attemptedInTopic > 0 &&
+              ` · you have answered ${attemptedInTopic} of ${markableInTopic}`}
+          </p>
+        </div>
+      )}
 
       <p className="mt-4 text-sm opacity-50">
         {markable > 0

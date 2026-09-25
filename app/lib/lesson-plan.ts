@@ -276,7 +276,7 @@ function hasContent(p: LessonPhase): boolean {
  *
  * ⚠️ THE BANDS ARE DELIBERATELY WIDE AND THE CAPS DELIBERATELY LOW.
  *
- * A topic has 16 to 33 practice questions. Pouring all of them onto one page
+ * A topic has 16 to 128 practice questions. Pouring all of them onto one page
  * gives a teacher a list to triage, which is the job they were trying to avoid.
  * So each phase takes a handful — enough to run, few enough to read — and the
  * page says how many were left over rather than hiding that it chose.

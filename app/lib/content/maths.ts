@@ -391,6 +391,389 @@ export const MATHS: Record<string, TopicContent> = {
         question: "A mass is given as 24 kg. Explain why truncating to the nearest kilogram and rounding to the nearest kilogram give different intervals for the true mass.",
         answer: "Rounding to the nearest kilogram means the true value is within half a unit either side, so it lies between 23.5 kg and 24.5 kg. Truncating simply chops off the decimal part, so any value from 24 kg up to just below 25 kg becomes 24 kg. Truncation therefore gives the interval 24 kg to 25 kg, which sits entirely at or above the stated value rather than being centred on it. (Mark this one yourself.)",
       },
+      {
+        question: "In the number 3.049, what is the value of the digit 4? Give your answer as a decimal.",
+        accept: [
+          "0.04",
+        ],
+        answer: "0.04. The digit 4 sits in the hundredths column, so it is worth 4 hundredths, which is 4 ÷ 100 = 0.04. Read the columns after the point as tenths, hundredths, thousandths.",
+      },
+      {
+        question: "Write down the largest of these numbers: 0.43, 0.093, 0.4, 0.409.",
+        accept: [
+          "0.43",
+        ],
+        answer: "0.43. Line the numbers up by the decimal point and compare column by column. All have 0 units; the tenths are 4, 0, 4, 4, so 0.093 is out. Of the rest compare hundredths: 3, 0 and 0, so 0.43 is biggest.",
+      },
+      {
+        question: "Round 7.3649 to 2 decimal places.",
+        accept: [
+          "7.36",
+        ],
+        answer: "7.36. Two decimal places means you keep the digits up to hundredths, 7.36, then look at the next digit, which is 4. Since 4 is less than 5 you round down and leave the 6 unchanged.",
+      },
+      {
+        question: "Round 58,472 to the nearest thousand.",
+        accept: [
+          "58000",
+        ],
+        answer: "58000. The thousands digit is 8, and the digit to its right (the hundreds digit) is 4. Since 4 is less than 5 the thousands digit stays as it is and every digit after it becomes zero.",
+      },
+      {
+        question: "Round 0.08256 to 1 significant figure.",
+        accept: [
+          "0.08",
+        ],
+        answer: "0.08. Zeros in front of the first non-zero digit are only place holders, so the first significant figure is the 8. The next digit is 2, which is less than 5, so the 8 stays and the answer is 0.08.",
+      },
+      {
+        question: "Estimate 402 ÷ 19.6 by rounding each number to 1 significant figure.",
+        accept: [
+          "20",
+        ],
+        answer: "20. Rounding to 1 significant figure gives 400 ÷ 20. Since 40 ÷ 2 = 20, the estimate is 20. Always write down the rounded values you used, because those earn the method mark.",
+      },
+      {
+        question: "Estimate the square root of 8.9 × 4.1 by rounding each number to 1 significant figure.",
+        accept: [
+          "6",
+        ],
+        answer: "6. Round to 9 × 4 = 36, and the square root of 36 is 6. Rounding to numbers whose product is a square number is exactly what makes an estimate easy to do without a calculator.",
+      },
+      {
+        question: "Work out −7 − 12 + 5.",
+        accept: [
+          "-14",
+        ],
+        answer: "−14. Hold the signs: −7 − 12 = −19, then −19 + 5 = −14. Moving left on a number line for a subtraction and right for an addition keeps the direction clear.",
+      },
+      {
+        question: "Work out −6 × −7.",
+        accept: [
+          "42",
+        ],
+        answer: "42. Multiplying two negatives gives a positive, so the answer is 6 × 7 = 42 with a positive sign. Two negative signs cancel each other out in a multiplication or a division.",
+      },
+      {
+        question: "The temperature in a freezer falls from 4 °C to −11 °C. By how many degrees has it fallen?",
+        accept: [
+          "15",
+        ],
+        answer: "15 degrees. Count from 4 down to 0, which is 4 degrees, then from 0 down to −11, which is 11 more, giving 4 + 11 = 15. Subtracting also works: 4 − (−11) = 4 + 11 = 15.",
+      },
+      {
+        question: "Work out 5 + 6 × 3² ÷ 2.",
+        accept: [
+          "32",
+        ],
+        answer: "32. Indices first: 3² = 9. Then multiplication and division from left to right: 6 × 9 = 54 and 54 ÷ 2 = 27. Finally the addition: 5 + 27 = 32.",
+      },
+      {
+        question: "Work out 20 − 3 × (7 − 9).",
+        accept: [
+          "26",
+        ],
+        answer: "26. Brackets first: 7 − 9 = −2. Then multiply: 3 × (−2) = −6. Finally 20 − (−6) = 20 + 6 = 26, because subtracting a negative is the same as adding.",
+      },
+      {
+        question: "List all the factors of 28 in ascending order, separated by commas.",
+        accept: [
+          "1, 2, 4, 7, 14, 28",
+        ],
+        answer: "1, 2, 4, 7, 14, 28. Work in factor pairs from the outside in: 1 × 28, 2 × 14, 4 × 7. Once the pairs start repeating you have them all, so nothing is missed.",
+      },
+      {
+        question: "What is the smallest prime number greater than 50?",
+        accept: [
+          "53",
+        ],
+        answer: "53. Test each number upwards: 51 = 3 × 17 and 52 is even, but 53 has no factors other than 1 and itself, since it is not divisible by 2, 3, 5 or 7 and 7² is already above 53.",
+      },
+      {
+        question: "Write 84 as a product of its prime factors. Use x for each multiplication and no index notation, for example 2x3x5.",
+        accept: [
+          "2x2x3x7",
+        ],
+        answer: "2 × 2 × 3 × 7. Split 84 into 2 × 42, then 42 into 2 × 21, then 21 into 3 × 7. A factor tree ends when every branch is prime, and the primes multiplied together give the original number back.",
+      },
+      {
+        question: "Express 360 as a product of prime numbers only, writing x for each multiplication and no indices.",
+        accept: [
+          "2x2x2x3x3x5",
+        ],
+        answer: "2 × 2 × 2 × 3 × 3 × 5. Divide repeatedly by the smallest prime that fits: 360 ÷ 2 = 180, ÷ 2 = 90, ÷ 2 = 45, then ÷ 3 = 15, ÷ 3 = 5, and 5 is prime. In index form that is 2³ × 3² × 5.",
+      },
+      {
+        question: "Find the HCF of 45 and 75.",
+        accept: [
+          "15",
+        ],
+        answer: "15. In prime factors 45 = 3² × 5 and 75 = 3 × 5². The HCF takes the lowest power of each shared prime, giving 3 × 5 = 15, the largest number that divides into both.",
+      },
+      {
+        question: "Find the LCM of 12 and 20.",
+        accept: [
+          "60",
+        ],
+        answer: "60. In prime factors 12 = 2² × 3 and 20 = 2² × 5. The LCM takes the highest power of every prime that appears, so 2² × 3 × 5 = 60, the first number in both times tables.",
+      },
+      {
+        question: "Two numbers have prime factorisations 2² × 3² × 5 and 2³ × 3 × 7. Work out their highest common factor.",
+        accept: [
+          "12",
+        ],
+        answer: "12. Take only the primes in both lists, each to the lower power: 2² is the lower power of 2, 3¹ is the lower power of 3, and 5 and 7 appear in only one number, so the HCF is 4 × 3 = 12.",
+      },
+      {
+        question: "Using the prime factorisations 2 × 3² × 5 and 2² × 3 × 5², work out the lowest common multiple.",
+        accept: [
+          "900",
+        ],
+        answer: "900. Take every prime that appears, each to its highest power: 2² × 3² × 5² = 4 × 9 × 25 = 900. Choosing the highest power guarantees the result is divisible by both numbers.",
+      },
+      {
+        question: "Calculate 12³ without a calculator.",
+        accept: [
+          "1728",
+        ],
+        answer: "1728. Cubing means multiplying the number by itself three times: 12 × 12 = 144, then 144 × 12 = 1728. Build it in two steps rather than trying to do all three at once.",
+      },
+      {
+        question: "Work out the cube root of 343.",
+        accept: [
+          "7",
+        ],
+        answer: "7. You need the number that multiplies by itself three times to make 343. Trying 6 gives 216 and trying 7 gives 7 × 7 × 7 = 343, so the cube root is 7.",
+      },
+      {
+        question: "Work out √196 + √81.",
+        accept: [
+          "23",
+        ],
+        answer: "23. Take each root separately: √196 = 14 because 14 × 14 = 196, and √81 = 9 because 9 × 9 = 81. Then 14 + 9 = 23. You cannot add the numbers inside the roots first.",
+      },
+      {
+        question: "A pencil is measured as 6.4 cm to the nearest 0.1 cm. Write down its lower bound in cm.",
+        accept: [
+          "6.35",
+        ],
+        answer: "6.35 cm. The measurement is to the nearest 0.1 cm, so the true length lies within half of 0.1 cm, that is 0.05 cm, either side. The smallest it could be is 6.4 − 0.05 = 6.35 cm.",
+        higherOnly: true,
+      },
+      {
+        question: "A crowd size is reported as 48,000 correct to 2 significant figures. Write down the upper bound.",
+        accept: [
+          "48500",
+        ],
+        answer: "48500. To 2 significant figures the rounding is to the nearest 1000, so the crowd lies within 500 of 48000. The upper bound is 48000 + 500 = 48500, the value everything below rounds down to.",
+        higherOnly: true,
+      },
+      {
+        question: "A rectangle measures 12 cm by 8 cm, each side correct to the nearest centimetre. Calculate the lower bound of its area in cm².",
+        accept: [
+          "86.25",
+        ],
+        answer: "86.25 cm². For the smallest possible area use the smallest possible sides: 11.5 cm and 7.5 cm, since each is half a centimetre below the stated value. Then 11.5 × 7.5 = 86.25 cm².",
+        higherOnly: true,
+      },
+      {
+        question: "p = 20 and q = 6, each correct to the nearest whole number. Calculate the upper bound of p − q.",
+        accept: [
+          "15",
+        ],
+        answer: "15. A subtraction is largest when the first value is as big as possible and the second as small as possible, so use 20.5 − 5.5 = 15. Using both upper bounds, 20.5 − 6.5, is the standard mistake.",
+        higherOnly: true,
+      },
+      {
+        question: "Which of these numbers is the smallest?",
+        choices: [
+          "0.0551",
+          "0.5",
+          "0.505",
+          "0.55",
+        ],
+        accept: [
+          "0.0551",
+        ],
+        answer: "0.0551. Compare the tenths column first: 0.0551 has 0 tenths while the others have 5, so it is smallest. Having the most digits does not make a decimal large, and 0.5 = 0.500 is not the smallest.",
+      },
+      {
+        question: "What is 4.2857 written correct to 2 decimal places?",
+        choices: [
+          "4.29",
+          "4.28",
+          "4.286",
+          "4.3",
+        ],
+        accept: [
+          "4.29",
+        ],
+        answer: "4.29. Keep two digits after the point, 4.28, then look at the next digit, 5. Since it is 5 or more the second decimal rounds up from 8 to 9. 4.286 is 3 decimal places and 4.3 is only 1.",
+      },
+      {
+        question: "Rounded to 1 significant figure, 0.04973 is:",
+        choices: [
+          "0.05",
+          "0.049",
+          "0.0497",
+          "0.1",
+        ],
+        accept: [
+          "0.05",
+        ],
+        answer: "0.05. The first significant figure is the 4, because leading zeros do not count. The next digit is 9, so the 4 rounds up to 5, giving 0.05. The other options keep two or three significant figures.",
+      },
+      {
+        question: "Which calculation estimates 59.4 × 0.412 by rounding each number to 1 significant figure?",
+        choices: [
+          "60 x 0.4",
+          "60 x 0.5",
+          "59 x 0.41",
+          "50 x 0.4",
+        ],
+        accept: [
+          "60 x 0.4",
+        ],
+        answer: "60 × 0.4 = 24. Rounding to 1 significant figure takes 59.4 to 60 and 0.412 to 0.4. Rounding 0.412 to 0.5 is 1 decimal place, and 59 × 0.41 has barely been rounded at all.",
+      },
+      {
+        question: "What is the value of −5 − (−9)?",
+        choices: [
+          "4",
+          "-14",
+          "-4",
+          "14",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4. Subtracting a negative is the same as adding, so −5 − (−9) becomes −5 + 9 = 4. Treating it as −5 − 9 gives −14, which is the commonest slip here.",
+      },
+      {
+        question: "Using the correct order of operations, 12 + 8 ÷ 4 × 2 equals:",
+        choices: [
+          "16",
+          "13",
+          "10",
+          "28",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "16. Division and multiplication rank equally and are done left to right: 8 ÷ 4 = 2, then 2 × 2 = 4, then 12 + 4 = 16. Doing 4 × 2 first gives 13, and adding first gives 10.",
+      },
+      {
+        question: "Which of these numbers is prime?",
+        choices: [
+          "59",
+          "51",
+          "57",
+          "91",
+        ],
+        accept: [
+          "59",
+        ],
+        answer: "59. Test small primes: 51 = 3 × 17, 57 = 3 × 19 and 91 = 7 × 13, so all three have factors. 59 is not divisible by 2, 3, 5 or 7, and 7² is already bigger than 59, so it is prime.",
+      },
+      {
+        question: "Which of these shows 126 written fully as a product of prime factors? (x means multiply.)",
+        choices: [
+          "2x3x3x7",
+          "2x63",
+          "2x3x21",
+          "3x3x14",
+        ],
+        accept: [
+          "2x3x3x7",
+        ],
+        answer: "2 × 3² × 7. Divide down: 126 ÷ 2 = 63, 63 ÷ 3 = 21, 21 ÷ 3 = 7. The other options all multiply to 126 but stop early, leaving 63, 21 or 14, none of which are prime.",
+      },
+      {
+        question: "The highest common factor of 2³ × 5 × 7 and 2² × 5² is:",
+        choices: [
+          "20",
+          "1400",
+          "100",
+          "10",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20. Use only the primes that appear in both, each to the lower power: 2² and 5¹, giving 4 × 5 = 20. Taking the higher powers of everything gives 1400, which is the LCM, not the HCF.",
+      },
+      {
+        question: "Which pair of numbers has a lowest common multiple of 36?",
+        choices: [
+          "4 and 9",
+          "6 and 12",
+          "9 and 18",
+          "12 and 24",
+        ],
+        accept: [
+          "4 and 9",
+        ],
+        answer: "4 and 9. They share no prime factors, so the LCM is simply 4 × 9 = 36. In the other pairs the larger number is already a multiple of the smaller, so the LCM is just the larger number: 12, 18 and 24.",
+      },
+      {
+        question: "The value of √(9 × 16) is:",
+        choices: [
+          "12",
+          "7",
+          "25",
+          "144",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12. Work inside the root first: 9 × 16 = 144, and √144 = 12. You could also use √9 × √16 = 3 × 4 = 12. Adding the roots gives 7 and adding inside the root gives 25, both wrong.",
+      },
+      {
+        question: "A distance is 250 m correct to the nearest 10 m. Its error interval is:",
+        choices: [
+          "245 m to 255 m",
+          "249.5 m to 250.5 m",
+          "240 m to 260 m",
+          "245 m to 250 m",
+        ],
+        accept: [
+          "245 m to 255 m",
+        ],
+        answer: "245 m to 255 m. Half of the rounding unit 10 m is 5 m, so the true distance is within 5 m either side of 250 m. Using half of 1 m gives 249.5 to 250.5, and using the whole 10 m gives 240 to 260.",
+        higherOnly: true,
+      },
+      {
+        question: "Which of these is the correct value of 2⁴ × 5²?",
+        choices: [
+          "400",
+          "160",
+          "1000",
+          "80",
+        ],
+        accept: [
+          "400",
+        ],
+        answer: "400. Work out each power first: 2⁴ = 16 and 5² = 25, then 16 × 25 = 400. Multiplying the bases and adding the powers gives 1000, and 2 × 4 × 5 × 2 gives 80.",
+      },
+      {
+        question: "Explain how you decide which digits to keep when rounding a number such as 0.0020871 to 3 significant figures, and why the zeros at the front are not counted.",
+        answer: "Significant figures are counted from the first non-zero digit, here the 2, because the zeros in front only fix the size of the number rather than carry information. So the three significant figures are 2, 0 and 8, and the next digit, 7, decides whether the 8 rounds up. It does, giving 0.00209. The leading zeros must still be written or the number would be a thousand times too big. (Mark this one yourself.)",
+      },
+      {
+        question: "Show that the HCF of 18 and 24 multiplied by their LCM gives the same result as 18 × 24.",
+        answer: "In prime factors 18 = 2 × 3² and 24 = 2³ × 3. The HCF takes the lower power of each shared prime, 2 × 3 = 6, and the LCM takes the higher power of each, 2³ × 3² = 72. Then 6 × 72 = 432 and 18 × 24 = 432, so they agree. This happens because between them the HCF and the LCM use every prime factor of both numbers exactly once each. (Mark this one yourself.)",
+      },
+      {
+        question: "Use the pattern −3 × 2, −3 × 1, −3 × 0, −3 × −1 to explain why multiplying two negative numbers gives a positive answer.",
+        answer: "The products run −6, −3, 0, and each step up in the second number adds 3 to the answer. Continuing the pattern, −3 × −1 must be 0 + 3 = 3, which is positive. Carrying on gives −3 × −2 = 6 and so on. The rule is not arbitrary: it is the only way multiplication can stay consistent as the second number passes through zero. (Mark this one yourself.)",
+      },
+      {
+        question: "Using 24 ÷ 4 × 2 as an example, explain why BIDMAS does not mean that division is always carried out before multiplication.",
+        answer: "Division and multiplication have equal priority, so they are worked from left to right. Here 24 ÷ 4 = 6 first, then 6 × 2 = 12. Reading BIDMAS as an order of six separate steps would give 4 × 2 = 8 first and then 24 ÷ 8 = 3, which is wrong. The same equal-priority rule applies to addition and subtraction. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how you would test whether 391 is prime, and explain why you only need to try prime numbers up to its square root.",
+        answer: "Divide 391 by each prime in turn: 2, 3, 5, 7, 11, 13, 17. You find 391 = 17 × 23, so it is not prime. You can stop at the square root, which is just under 20, because if 391 had a factor larger than its square root it would have to be paired with one smaller than the square root, and that smaller factor would already have been found. Only primes need testing, since any composite divisor is built from primes. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -785,6 +1168,804 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain how to check a solution to a linear equation without repeating the algebra, and why this is worth doing in an exam.",
         answer: "Substitute the answer back into the original equation and work out both sides separately; if they match, the solution is right. This uses a different process from the one that produced the answer, so it catches sign slips and mistakes in expanding brackets. It takes a few seconds and can save the accuracy mark on a question where the method marks are already secure. (Mark this one yourself.)",
+      },
+      {
+        question: "Simplify 7y + 2y − 5y + y.",
+        accept: [
+          "5y",
+        ],
+        answer: "5y. All four terms are like terms in y, so combine the coefficients: 7 + 2 − 5 + 1 = 5. A lone y counts as 1y, which is the part most often missed.",
+      },
+      {
+        question: "Simplify 6p + 4q − 2p − 7q.",
+        accept: [
+          "4p - 3q",
+          "-3q + 4p",
+        ],
+        answer: "4p − 3q. Deal with each letter separately: 6p − 2p = 4p and 4q − 7q = −3q. Terms in p and terms in q are not like terms, so the answer keeps both.",
+      },
+      {
+        question: "Simplify 5c × 3d.",
+        choices: [
+          "15cd",
+          "8cd",
+          "15c + 3d",
+          "15c²d²",
+        ],
+        accept: [
+          "15cd",
+        ],
+        answer: "Multiply the numbers, 5 × 3 = 15, then write the letters side by side: 15cd. Adding the numbers gives 8cd, which is what happens when a product is treated as a sum.",
+      },
+      {
+        question: "The expression 9x − 4 has two terms. Write down the coefficient of x.",
+        accept: [
+          "9",
+        ],
+        answer: "9. The coefficient is the number multiplying the letter, so in the term 9x it is 9. The −4 is a constant term, with no letter attached to it at all.",
+      },
+      {
+        question: "Which of these is an equation rather than an expression?",
+        choices: [
+          "4x − 1 = 11",
+          "4x − 1",
+          "4(x − 1)",
+          "4x − x",
+        ],
+        accept: [
+          "4x - 1 = 11",
+        ],
+        answer: "An equation contains an equals sign and can be solved; the other three are expressions, which can only be simplified or expanded. Here 4x − 1 = 11 solves to give x = 3.",
+      },
+      {
+        question: "Simplify 4ab + 7ba.",
+        accept: [
+          "11ab",
+          "11ba",
+        ],
+        answer: "11ab. Multiplication can be done in any order, so ab and ba mean the same thing and the two terms are like terms. Adding the coefficients gives 4 + 7 = 11.",
+      },
+      {
+        question: "Simplify 3x + 5 + 2x − 9.",
+        choices: [
+          "5x − 4",
+          "5x + 14",
+          "5x + 4",
+          "x",
+        ],
+        accept: [
+          "5x - 4",
+        ],
+        answer: "Collect the x terms, 3x + 2x = 5x, then the numbers, 5 − 9 = −4. The two parts are unlike terms, so the answer stays as 5x − 4 rather than collapsing to a single term.",
+      },
+      {
+        question: "Explain why 4 + 3x cannot be simplified to 7x, using a value of x to support your answer.",
+        answer: "4 and 3x are not like terms: one is a fixed number and the other changes with x, so there is nothing to collect. Testing a value settles it — with x = 2, 4 + 3x = 4 + 6 = 10, while 7x = 14. Two expressions that give different values for the same x cannot be the same expression. (Mark this one yourself.)",
+      },
+      {
+        question: "In the expression 5w − 8, what does the 5 tell you about w?",
+        choices: [
+          "w is multiplied by 5",
+          "5 is added to w",
+          "w is divided by 5",
+          "w is equal to 5",
+        ],
+        accept: [
+          "w is multiplied by 5",
+        ],
+        answer: "5w is shorthand for 5 × w, so the 5 multiplies w. Writing the multiplication sign out whenever you are unsure stops 5w being read as 5 + w or as the value of w itself.",
+      },
+      {
+        question: "Expand 5(3x − 2).",
+        accept: [
+          "15x - 30",
+        ],
+        answer: "15x − 30. Multiply both terms inside the bracket by 5: 5 × 3x = 15x and 5 × −2 = −30. Forgetting the second term is the commonest slip on this type.",
+      },
+      {
+        question: "Expand −4(2y + 5).",
+        accept: [
+          "-8y - 20",
+        ],
+        answer: "−8y − 20. A negative multiplier changes the sign of every term inside the bracket: −4 × 2y = −8y and −4 × 5 = −20.",
+      },
+      {
+        question: "Expand and simplify 4(2a + 3) + 3(a − 5).",
+        choices: [
+          "11a − 3",
+          "11a + 27",
+          "11a − 15",
+          "7a − 3",
+        ],
+        accept: [
+          "11a - 3",
+        ],
+        answer: "Expanding gives 8a + 12 + 3a − 15. Collecting terms, 8a + 3a = 11a and 12 − 15 = −3, so the answer is 11a − 3. Getting +27 means the −15 was added instead of subtracted.",
+      },
+      {
+        question: "Expand and simplify 6(2m − 1) − 2(3m − 4).",
+        accept: [
+          "6m + 2",
+          "2 + 6m",
+        ],
+        answer: "6m + 2. The first bracket gives 12m − 6 and the second gives −6m + 8, because −2 × −4 = +8. Collecting: 12m − 6m = 6m and −6 + 8 = 2.",
+      },
+      {
+        question: "Expand −3(x − 6).",
+        choices: [
+          "−3x + 18",
+          "−3x − 18",
+          "3x − 18",
+          "−3x + 6",
+        ],
+        accept: [
+          "-3x + 18",
+        ],
+        answer: "Both terms inside the bracket are affected: −3 × x = −3x and −3 × −6 = +18. Two negatives multiplied give a positive, which is exactly where −3x − 18 goes wrong.",
+      },
+      {
+        question: "Expand and simplify 2(x + 5) + 3(x + 1).",
+        choices: [
+          "5x + 13",
+          "5x + 6",
+          "6x + 13",
+          "18x",
+        ],
+        accept: [
+          "5x + 13",
+        ],
+        answer: "2(x + 5) = 2x + 10 and 3(x + 1) = 3x + 3, so adding gives 5x + 13. Leaving the constants unmultiplied gives 5x + 6, and collecting 5x with 13 into 18x mixes unlike terms.",
+      },
+      {
+        question: "Expand and simplify 5(y + 3) − (y + 8).",
+        accept: [
+          "4y + 7",
+          "7 + 4y",
+        ],
+        answer: "4y + 7. A minus sign in front of a bracket means −1 times everything inside, so −(y + 8) becomes −y − 8. Then 5y + 15 − y − 8 = 4y + 7.",
+      },
+      {
+        question: "Describe the method for expanding and simplifying 3(2x − 1) − 4(x − 5), and say where the sign error usually happens.",
+        answer: "Multiply every term inside each bracket by the number outside, keeping the sign in front of the bracket attached to that number. That gives 6x − 3 from the first bracket and −4x + 20 from the second, because −4 × −5 = +20. Collecting like terms leaves 2x + 17. The sign error almost always happens on that last product, where −20 is written instead of +20. (Mark this one yourself.)",
+      },
+      {
+        question: "Expand and simplify (x + 6)(x + 2) − x².",
+        accept: [
+          "8x + 12",
+          "12 + 8x",
+        ],
+        answer: "8x + 12. Expanding the brackets gives x² + 2x + 6x + 12, which simplifies to x² + 8x + 12, and subtracting x² removes the squared term.",
+      },
+      {
+        question: "Expand (x + 9)(x + 4). Write down the coefficient of x in the answer.",
+        accept: [
+          "13",
+        ],
+        answer: "13. The two x terms are 4x and 9x, which collect to 13x. The pattern (x + a)(x + b) = x² + (a + b)x + ab turns this into a one-line check: 9 + 4 = 13.",
+      },
+      {
+        question: "Expand (x − 5)(x + 3). Write down the constant term.",
+        accept: [
+          "-15",
+        ],
+        answer: "−15. The constant comes from multiplying the two numbers in the brackets: −5 × 3 = −15. The full expansion is x² − 2x − 15.",
+      },
+      {
+        question: "Expand and simplify (2x + 1)(x + 4) − 2x².",
+        accept: [
+          "9x + 4",
+          "4 + 9x",
+        ],
+        answer: "9x + 4. Multiplying out gives 2x² + 8x + x + 4 = 2x² + 9x + 4, and subtracting 2x² leaves 9x + 4. Only the squared terms cancel.",
+      },
+      {
+        question: "When (x + 5)(x − 5) is expanded and fully simplified, how many terms are left?",
+        choices: [
+          "2",
+          "3",
+          "4",
+          "1",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "The expansion is x² − 5x + 5x − 25, and the two x terms cancel, leaving x² − 25, which is two terms. This is the difference of two squares: the middle term always disappears when the numbers match.",
+      },
+      {
+        question: "Which pair of brackets multiplies out to give x² + 7x + 12?",
+        choices: [
+          "(x + 3)(x + 4)",
+          "(x + 2)(x + 6)",
+          "(x + 1)(x + 12)",
+          "(x + 7)(x + 12)",
+        ],
+        accept: [
+          "(x + 3)(x + 4)",
+        ],
+        answer: "The two numbers must multiply to 12 and add to 7, and 3 and 4 do both. (x + 2)(x + 6) gives the right constant but 8x in the middle, so checking the middle term as well as the last one matters.",
+      },
+      {
+        question: "Expand and simplify (x + 3)² − (x² + 9).",
+        accept: [
+          "6x",
+        ],
+        answer: "6x. (x + 3)² means (x + 3)(x + 3) = x² + 6x + 9, not x² + 9. Subtracting x² + 9 leaves only the middle term, 6x — precisely the part that squaring term by term throws away.",
+      },
+      {
+        question: "Show that (n + 4)(n + 1) − (n + 2)(n + 3) gives the same value for every value of n, and state that value.",
+        answer: "Expanding gives (n + 4)(n + 1) = n² + 5n + 4 and (n + 2)(n + 3) = n² + 5n + 6. Subtracting, the n² terms cancel and the 5n terms cancel, leaving 4 − 6 = −2. No n survives, so the expression equals −2 whatever n is; substituting n = 0 and then n = 10 gives −2 both times as a check. (Mark this one yourself.)",
+      },
+      {
+        question: "Factorise 10x + 15.",
+        accept: [
+          "5(2x + 3)",
+        ],
+        answer: "5(2x + 3). The highest common factor of 10 and 15 is 5, and dividing each term by 5 gives the contents of the bracket. Expanding again returns 10x + 15, which is the check.",
+      },
+      {
+        question: "Factorise 12y − 18 fully.",
+        choices: [
+          "6(2y − 3)",
+          "6(2y − 12)",
+          "6(y − 3)",
+          "12(y − 18)",
+        ],
+        accept: [
+          "6(2y - 3)",
+        ],
+        answer: "The highest common factor of 12 and 18 is 6, and 12y ÷ 6 = 2y while 18 ÷ 6 = 3. Expanding 6(2y − 3) returns 12y − 18; expanding any of the others does not.",
+      },
+      {
+        question: "Factorise 7a² + 21a fully.",
+        accept: [
+          "7a(a + 3)",
+        ],
+        answer: "7a(a + 3). Both terms contain 7 and at least one a, so the highest common factor is 7a. Dividing gives 7a² ÷ 7a = a and 21a ÷ 7a = 3.",
+      },
+      {
+        question: "Factorise 8x²y − 12xy² fully.",
+        accept: [
+          "4xy(2x - 3y)",
+        ],
+        answer: "4xy(2x − 3y). The number factor is 4, and both terms share one x and one y, so the common factor is 4xy. Dividing gives 8x²y ÷ 4xy = 2x and 12xy² ÷ 4xy = 3y.",
+      },
+      {
+        question: "Factorise 6n² + 9n fully.",
+        choices: [
+          "3n(2n + 3)",
+          "3(2n + 3)",
+          "3n(2n − 3)",
+          "9n(n + 1)",
+        ],
+        accept: [
+          "3n(2n + 3)",
+        ],
+        answer: "The common factor is 3n, because 3 divides both numbers and both terms contain n. Dividing gives 2n and 3. Leaving the n outside gives 3(2n + 3), which expands to 6n + 9 and is a different expression.",
+      },
+      {
+        question: "Factorise 20p − 35pq fully.",
+        accept: [
+          "5p(4 - 7q)",
+        ],
+        answer: "5p(4 − 7q). The highest common factor of 20 and 35 is 5, and both terms contain p. Dividing gives 20p ÷ 5p = 4 and 35pq ÷ 5p = 7q.",
+      },
+      {
+        question: "Explain how you can tell that 2(6x + 10) is not fully factorised, and give the fully factorised form.",
+        answer: "Look inside the bracket: 6x and 10 still share a factor of 2, so more could have been taken out. Fully factorised means the terms left inside share no common factor at all. The original expression is 12x + 20, whose highest common factor is 4, so the fully factorised form is 4(3x + 5), and 3 and 5 share nothing. (Mark this one yourself.)",
+      },
+      {
+        question: "Factorise x² + 8x + 15.",
+        accept: [
+          "(x+3)(x+5)",
+          "(x+5)(x+3)",
+        ],
+        answer: "(x + 3)(x + 5). Look for two numbers that multiply to 15 and add to 8, which are 3 and 5. Expanding confirms it: x² + 5x + 3x + 15 = x² + 8x + 15.",
+      },
+      {
+        question: "Factorise x² + 2x − 24.",
+        accept: [
+          "(x+6)(x-4)",
+          "(x-4)(x+6)",
+        ],
+        answer: "(x + 6)(x − 4). A negative constant means the two numbers have opposite signs. They must multiply to −24 and add to +2, which gives +6 and −4.",
+      },
+      {
+        question: "Factorise x² − 11x + 30.",
+        accept: [
+          "(x-5)(x-6)",
+          "(x-6)(x-5)",
+        ],
+        answer: "(x − 5)(x − 6). The constant is positive but the x term is negative, so both numbers are negative: −5 × −6 = 30 and −5 + −6 = −11.",
+      },
+      {
+        question: "Factorise x² − 49.",
+        accept: [
+          "(x+7)(x-7)",
+          "(x-7)(x+7)",
+        ],
+        answer: "(x + 7)(x − 7). This is the difference of two squares, because x² − 49 is x² − 7². The brackets are identical apart from the sign, and the x terms cancel when you expand.",
+      },
+      {
+        question: "Factorise 2x² + 7x + 3.",
+        choices: [
+          "(2x + 1)(x + 3)",
+          "(2x + 3)(x + 1)",
+          "(2x + 7)(x + 3)",
+          "(x + 1)(x + 3)",
+        ],
+        accept: [
+          "(2x + 1)(x + 3)",
+        ],
+        answer: "With a 2 in front of x², where each number goes matters. (2x + 1)(x + 3) gives 2x² + 6x + x + 3 = 2x² + 7x + 3. Swapping the 1 and the 3 gives 5x in the middle instead of 7x.",
+        higherOnly: true,
+      },
+      {
+        question: "Factorise 9x² − 25.",
+        accept: [
+          "(3x+5)(3x-5)",
+          "(3x-5)(3x+5)",
+        ],
+        answer: "(3x + 5)(3x − 5). Both parts are squares: 9x² is (3x)² and 25 is 5². The difference of two squares a² − b² always factorises as (a + b)(a − b).",
+      },
+      {
+        question: "The expression x² + bx − 21 factorises to (x + 7)(x − 3). What is the value of b?",
+        choices: [
+          "4",
+          "−4",
+          "10",
+          "−21",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "Expanding gives x² − 3x + 7x − 21 = x² + 4x − 21, so b = 4. The middle coefficient is the sum of the two numbers, 7 + (−3), not the difference between them.",
+      },
+      {
+        question: "Describe how to factorise x² + 9x + 20 without guessing at random, and explain how the signs tell you what to look for.",
+        answer: "List the factor pairs of the constant 20 — 1 and 20, 2 and 10, 4 and 5 — then pick the pair that adds to the coefficient of x, which is 9. That pair is 4 and 5, so the answer is (x + 4)(x + 5). Both signs in the original are positive, so both numbers are positive. A negative constant would mean one positive and one negative; a positive constant with a negative x term would mean both negative. (Mark this one yourself.)",
+      },
+      {
+        question: "Work out the value of 5a − 3 when a = 7.",
+        accept: [
+          "32",
+        ],
+        answer: "32. Substitute first and then follow the order of operations: 5 × 7 = 35, and 35 − 3 = 32.",
+      },
+      {
+        question: "Work out the value of 4x + 2y when x = 3 and y = −5.",
+        accept: [
+          "2",
+        ],
+        answer: "2. Substituting gives 4 × 3 + 2 × (−5) = 12 + (−10). Adding a negative is the same as subtracting, so the total is 12 − 10 = 2.",
+      },
+      {
+        question: "Find the value of x² − 4x when x = −2.",
+        choices: [
+          "12",
+          "4",
+          "−4",
+          "−12",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "Write the substitution with brackets: (−2)² − 4 × (−2) = 4 + 8 = 12. Squaring a negative gives a positive, and subtracting a negative adds.",
+      },
+      {
+        question: "Find the value of 3(n + 4) when n = −7.",
+        choices: [
+          "−9",
+          "9",
+          "−17",
+          "−25",
+        ],
+        accept: [
+          "-9",
+        ],
+        answer: "Work out the bracket first: −7 + 4 = −3, then 3 × (−3) = −9. Multiplying before adding gives −21 + 4 = −17, which is the usual mistake here.",
+      },
+      {
+        question: "The perimeter of a rectangle is P = 2(l + w). Work out P when l = 9.5 cm and w = 4 cm.",
+        accept: [
+          "27",
+          "27cm",
+        ],
+        answer: "27 cm. Add inside the bracket first: 9.5 + 4 = 13.5. Then double it: 2 × 13.5 = 27 cm.",
+      },
+      {
+        question: "Use the formula v = u + at to work out v when u = 12, a = −3 and t = 5.",
+        accept: [
+          "-3",
+        ],
+        answer: "−3. The product comes before the addition, so at = −3 × 5 = −15. Then v = 12 + (−15) = −3.",
+      },
+      {
+        question: "Work out the value of (2b)² − 2b² when b = 5.",
+        accept: [
+          "50",
+        ],
+        answer: "50. In (2b)² the whole of 2b is squared, giving 10² = 100. In 2b² only the b is squared, giving 2 × 25 = 50. So the answer is 100 − 50 = 50.",
+      },
+      {
+        question: "The formula C = 5(F − 32)/9 converts a Fahrenheit temperature to Celsius. Work out C when F = 41.",
+        choices: [
+          "5",
+          "9",
+          "45",
+          "73",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "Do the bracket first: 41 − 32 = 9. Then 5 × 9 = 45, and 45 ÷ 9 = 5. Stopping at the bracket gives 9, and adding instead of subtracting gives 73.",
+      },
+      {
+        question: "Work out the value of 2p³ when p = −2.",
+        accept: [
+          "-16",
+        ],
+        answer: "−16. Cube first: (−2)³ = −8, because an odd power keeps the negative sign. Then 2 × (−8) = −16.",
+      },
+      {
+        question: "Solve 4x − 9 = 23.",
+        accept: [
+          "8",
+          "x = 8",
+        ],
+        answer: "x = 8. Add 9 to both sides to get 4x = 32, then divide both sides by 4.",
+      },
+      {
+        question: "Solve 7 − 2x = 1.",
+        accept: [
+          "3",
+          "x = 3",
+        ],
+        answer: "x = 3. Add 2x to both sides to get 7 = 1 + 2x, then subtract 1 to get 6 = 2x. Moving the x term to the side where it comes out positive avoids a sign error.",
+      },
+      {
+        question: "Solve x ÷ 5 + 2 = 6.",
+        choices: [
+          "20",
+          "40",
+          "1.6",
+          "0.8",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "Undo the operations in reverse order: subtract 2 to get x ÷ 5 = 4, then multiply both sides by 5 to get x = 20. Adding the 2 before multiplying gives 40.",
+      },
+      {
+        question: "Solve 3(2x − 5) = 21.",
+        accept: [
+          "6",
+          "x = 6",
+        ],
+        answer: "x = 6. Dividing both sides by 3 first gives 2x − 5 = 7, so 2x = 12. Expanding to 6x − 15 = 21 leads to the same place.",
+      },
+      {
+        question: "Solve 8x + 3 = 5x + 18.",
+        accept: [
+          "5",
+          "x = 5",
+        ],
+        answer: "x = 5. Subtract 5x from both sides to get 3x + 3 = 18, then subtract 3 to get 3x = 15.",
+      },
+      {
+        question: "Solve 4(x + 2) = 2(x + 11).",
+        accept: [
+          "7",
+          "x = 7",
+        ],
+        answer: "x = 7. Expanding both sides gives 4x + 8 = 2x + 22. Subtracting 2x leaves 2x + 8 = 22, so 2x = 14.",
+      },
+      {
+        question: "Solve 5x − 4 = 2x − 19.",
+        accept: [
+          "-5",
+          "x = -5",
+        ],
+        answer: "x = −5. Subtracting 2x from both sides gives 3x − 4 = −19, then adding 4 gives 3x = −15. A negative solution is perfectly normal and is not a sign that something has gone wrong.",
+      },
+      {
+        question: "Solve 2x + 11 = 3.",
+        choices: [
+          "−4",
+          "4",
+          "−8",
+          "8",
+        ],
+        accept: [
+          "-4",
+        ],
+        answer: "Subtracting 11 from both sides gives 2x = −8, so x = −4. Forgetting the final division leaves −8, and 11 − 3 = 8 comes from subtracting the wrong way round.",
+      },
+      {
+        question: "Solve 6(x − 1) = 4x + 10.",
+        choices: [
+          "8",
+          "5.5",
+          "16",
+          "2",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "Expand first: 6x − 6 = 4x + 10. Subtracting 4x gives 2x − 6 = 10, so 2x = 16 and x = 8. Multiplying only the x by 6 gives 5.5, and forgetting to halve gives 16.",
+      },
+      {
+        question: "Solve (x + 3) ÷ 4 = 5.",
+        accept: [
+          "17",
+          "x = 17",
+        ],
+        answer: "x = 17. The whole of x + 3 is divided by 4, so multiply both sides by 4 first to get x + 3 = 20, then subtract 3.",
+      },
+      {
+        question: "Explain why doing the same operation to both sides of an equation keeps it true, and what goes wrong if you change only one side.",
+        answer: "An equation says two quantities are equal, so changing both sides in the same way leaves them equal — the same idea as keeping a balance level by adding equal weights to both pans. Change one side alone and you have written down a different equation with a different solution: 2x + 1 = 9 gives x = 4, but subtracting 1 from only the left gives 2x = 9 and x = 4.5. Substituting your answer back into the original equation catches this immediately. (Mark this one yourself.)",
+      },
+      {
+        question: "Make x the subject of y = x + 7.",
+        accept: [
+          "x = y - 7",
+          "y - 7",
+        ],
+        answer: "x = y − 7. Subtract 7 from both sides. Rearranging follows exactly the same rules as solving, except that the answer is an expression rather than a number.",
+      },
+      {
+        question: "Make t the subject of v = 5t.",
+        accept: [
+          "t = v/5",
+          "v/5",
+        ],
+        answer: "t = v/5. The t is multiplied by 5, so divide both sides by 5 to undo it. Every term on the other side has to be divided, not just part of it.",
+      },
+      {
+        question: "Rearrange y = 4x − 3 to make x the subject.",
+        accept: [
+          "x = (y+3)/4",
+          "(y+3)/4",
+        ],
+        answer: "x = (y + 3)/4. Add 3 to both sides to get y + 3 = 4x, then divide by 4. The bracket matters, because the whole of y + 3 is divided and not just the y.",
+      },
+      {
+        question: "Make a the subject of the formula P = 2a + 2b.",
+        accept: [
+          "a = (P - 2b)/2",
+          "(P - 2b)/2",
+          "a = P/2 - b",
+        ],
+        answer: "a = (P − 2b)/2. Subtract 2b from both sides to get P − 2b = 2a, then divide by 2. Dividing every term by 2 gives the equivalent form a = P/2 − b.",
+      },
+      {
+        question: "The area of a triangle is A = bh/2. Which rearrangement makes h the subject?",
+        choices: [
+          "h = 2A/b",
+          "h = A/(2b)",
+          "h = 2b/A",
+          "h = Ab/2",
+        ],
+        accept: [
+          "h = 2A/b",
+        ],
+        answer: "Multiply both sides by 2 to get 2A = bh, then divide both sides by b. Dividing by 2 instead of multiplying gives h = A/(2b), which is the usual error.",
+      },
+      {
+        question: "The equation of a straight line is y = 6x + c. Make c the subject.",
+        accept: [
+          "c = y - 6x",
+          "y - 6x",
+        ],
+        answer: "c = y − 6x. Subtract 6x from both sides. The whole term moves across, coefficient included, so subtracting only x or only 6 would be wrong.",
+      },
+      {
+        question: "Make x the subject of 5x + 2y = 20.",
+        choices: [
+          "x = (20 − 2y)/5",
+          "x = 20 − 2y/5",
+          "x = (20 + 2y)/5",
+          "x = 5(20 − 2y)",
+        ],
+        accept: [
+          "x = (20 - 2y)/5",
+        ],
+        answer: "Subtract 2y from both sides to get 5x = 20 − 2y, then divide all of that by 5. Without the bracket only the 2y is divided, which gives a different value for every y.",
+      },
+      {
+        question: "Which step correctly starts making x the subject of 3(x + 4) = y?",
+        choices: [
+          "Divide both sides by 3",
+          "Subtract 4 from both sides",
+          "Subtract 3 from both sides",
+          "Divide both sides by 4",
+        ],
+        accept: [
+          "Divide both sides by 3",
+        ],
+        answer: "The 3 multiplies the whole bracket, so dividing both sides by 3 gives x + 4 = y/3, and subtracting 4 then finishes it. The 4 cannot be dealt with first because it is locked inside the bracket.",
+      },
+      {
+        question: "Explain why making r the subject of A = πr² needs a square root, and why only the positive root is used for a circle.",
+        answer: "Dividing both sides by π gives r² = A ÷ π, and the inverse of squaring is taking a square root, so r is the square root of A ÷ π. Algebraically every positive number has two square roots, one positive and one negative, but here r is a length and a negative radius has no meaning, so only the positive root is kept. (Mark this one yourself.)",
+      },
+      {
+        question: "A pen costs p pence. Write an expression for the cost of 6 pens in pence.",
+        accept: [
+          "6p",
+        ],
+        answer: "6p. Six lots of p pence is 6 × p, written with the number in front. Writing p6 or p + 6 are the two usual slips, and p + 6 would mean six extra pence rather than six pens.",
+      },
+      {
+        question: "Ben is n years old. His sister is 4 years younger than him. Write an expression for her age.",
+        accept: [
+          "n - 4",
+        ],
+        answer: "n − 4. Younger means fewer years, so subtract. Writing 4 − n reverses the meaning and would give a negative age for anyone over four.",
+      },
+      {
+        question: "A rectangle has width x cm and a length 3 cm greater than its width. Write a simplified expression for its perimeter in cm.",
+        accept: [
+          "4x + 6",
+          "6 + 4x",
+        ],
+        answer: "4x + 6. The length is x + 3, and the perimeter is two widths plus two lengths: 2x + 2(x + 3) = 2x + 2x + 6.",
+      },
+      {
+        question: "Sam thinks of a number n, doubles it and then subtracts 5. Which expression gives his result?",
+        choices: [
+          "2n − 5",
+          "2(n − 5)",
+          "n² − 5",
+          "5 − 2n",
+        ],
+        accept: [
+          "2n - 5",
+        ],
+        answer: "Doubling comes first, giving 2n, and subtracting 5 then gives 2n − 5. The bracket in 2(n − 5) would mean subtracting first, and n² means multiplying n by itself rather than doubling it.",
+      },
+      {
+        question: "Tickets cost £9 each and every order carries a single £2 booking fee. Write an expression for the total cost in pounds of n tickets in one order.",
+        accept: [
+          "9n + 2",
+          "2 + 9n",
+        ],
+        answer: "9n + 2. The £9 is charged per ticket, so it multiplies n, while the £2 is charged once and is simply added on. Writing 9n + 2n would charge the booking fee on every ticket.",
+      },
+      {
+        question: "A taxi charges £3 plus £2 for every mile travelled. A journey of m miles costs £17. Form an equation and solve it to find m.",
+        accept: [
+          "7",
+          "m = 7",
+        ],
+        answer: "m = 7. The cost is 3 + 2m pounds, so the equation is 3 + 2m = 17. Subtracting 3 gives 2m = 14, and dividing by 2 gives m = 7 miles.",
+      },
+      {
+        question: "Tuition costs £24 an hour plus a one-off registration fee of £15. Which expression gives the total cost in pounds for h hours?",
+        choices: [
+          "24h + 15",
+          "24 + 15h",
+          "39h",
+          "24h − 15",
+        ],
+        accept: [
+          "24h + 15",
+        ],
+        answer: "The hourly charge multiplies the number of hours, giving 24h, and the one-off fee is added once, giving 24h + 15. Choosing 39h adds the two amounts first, which charges the £15 every hour.",
+      },
+      {
+        question: "Three consecutive whole numbers add up to 72. Write down the largest of the three.",
+        accept: [
+          "25",
+        ],
+        answer: "25. Calling the smallest n, the three numbers are n, n + 1 and n + 2, so 3n + 3 = 72. Then 3n = 69 and n = 23, making the numbers 23, 24 and 25.",
+      },
+      {
+        question: "Explain why you should state what your letter stands for when forming an equation from a worded problem, and give an example of a mistake this prevents.",
+        answer: "A letter only means something once its definition is written down, and 'let w be the width in cm' fixes both the quantity and the units so every later line refers to the same thing. Without that, it is easy to start with w as the width and finish by quoting the length, or to mix centimetres with metres part way through. In a problem where the length is 5 cm more than the width, an undefined letter often stands for the width in one line and the length in the next, and the final answer is then correct for a question nobody asked. (Mark this one yourself.)",
+      },
+      {
+        question: "Simplify p⁴ × p⁶. Give the power of p in your answer.",
+        accept: [
+          "10",
+        ],
+        answer: "10, so the simplified term is p¹⁰. Multiplying powers of the same base means adding the indices: 4 + 6 = 10. Multiplying the indices to get 24 is the usual error.",
+      },
+      {
+        question: "What is the value of 5x⁰ when x = 7?",
+        accept: [
+          "5",
+        ],
+        answer: "5. Anything to the power of zero equals 1, so x⁰ = 1 and 5 × 1 = 5. The index applies only to the x, so the 5 in front is untouched.",
+      },
+      {
+        question: "Write (k⁵)⁴ as a single power of k.",
+        choices: [
+          "k to the 20",
+          "k to the 9",
+          "k to the 1",
+          "k to the 54",
+        ],
+        accept: [
+          "k to the 20",
+        ],
+        answer: "A power raised to a power means multiplying the indices: 5 × 4 = 20, giving k²⁰. Adding them gives k⁹ and subtracting them gives k¹, both of which come from reaching for the wrong index law.",
+      },
+      {
+        question: "Work out the value of 3t⁻¹ when t = 4.",
+        accept: [
+          "0.75",
+          "3/4",
+        ],
+        answer: "0.75. A negative index means the reciprocal, so t⁻¹ = 1/4. Then 3 × 1/4 = 3/4 = 0.75. The index applies only to the t, so the 3 is left alone.",
+      },
+      {
+        question: "Simplify a⁷ × a ÷ a³.",
+        choices: [
+          "a to the 5",
+          "a to the 4",
+          "a to the 21",
+          "a to the 11",
+        ],
+        accept: [
+          "a to the 5",
+        ],
+        answer: "A letter written on its own counts as a¹, so the indices work out as 7 + 1 − 3 = 5. Ignoring that lone a gives 4, and multiplying 7 by 3 gives 21.",
+      },
+      {
+        question: "Simplify (2w³)⁴ and state the number in front of the power of w.",
+        accept: [
+          "16",
+        ],
+        answer: "16, since the simplified term is 16w¹². The index outside the bracket applies to everything inside it: 2⁴ = 16 and (w³)⁴ = w¹². Leaving the 2 unraised gives 2w¹², which is the commonest error.",
+      },
+      {
+        question: "A student writes a⁵ × a³ = a¹⁵. Write down the correct power of a.",
+        accept: [
+          "8",
+        ],
+        answer: "8, so the correct answer is a⁸. Multiplying powers of the same base adds the indices, 5 + 3 = 8. The student has multiplied them, which is the rule for a power raised to a power instead.",
+      },
+      {
+        question: "Write x/3 + x/4 as a single fraction in its simplest form.",
+        accept: [
+          "7x/12",
+        ],
+        answer: "7x/12. Use a common denominator of 12: x/3 becomes 4x/12 and x/4 becomes 3x/12. Adding the numerators gives 7x/12. Adding the denominators to get 2x/7 is the usual error.",
+      },
+      {
+        question: "Simplify 10x² ÷ 2x.",
+        accept: [
+          "5x",
+        ],
+        answer: "5x. Divide the numbers, 10 ÷ 2 = 5, and subtract the indices of x, 2 − 1 = 1. Writing it as a fraction and cancelling one x from top and bottom gives the same result.",
+      },
+      {
+        question: "Simplify (x² + 5x)/(x + 5).",
+        accept: [
+          "x",
+        ],
+        answer: "x. Factorise the numerator first: x² + 5x = x(x + 5). The bracket (x + 5) is now a factor of both the top and the bottom, so it cancels and leaves x. Only complete factors can be cancelled, never single terms.",
+        higherOnly: true,
+      },
+      {
+        question: "Simplify (x² − 9)/(x + 3).",
+        choices: [
+          "x − 3",
+          "x + 3",
+          "x − 9",
+          "x² − 3",
+        ],
+        accept: [
+          "x - 3",
+        ],
+        answer: "The numerator is a difference of two squares: x² − 9 = (x + 3)(x − 3). Cancelling the common factor (x + 3) leaves x − 3. Cancelling the 9 against the 3 is not allowed, because they are terms and not factors.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why (x + 4)/x cannot be simplified by cancelling the x, and give a value of x that proves it.",
+        answer: "Cancelling is only allowed when the same factor multiplies the whole of the top and the whole of the bottom. Here the x on top is added to 4 rather than multiplying it, so it is a term, not a factor. Testing x = 2 settles it: (2 + 4)/2 = 3, while the cancelled version would give 4. The fraction can be split into 1 + 4/x, but it cannot be shortened to 4. (Mark this one yourself.)",
+        higherOnly: true,
       },
     ],
 
@@ -1204,6 +2385,355 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain why a regular polygon can tile a flat surface on its own only when its interior angle divides exactly into 360°.",
         answer: "At every point where tiles meet, the angles must fill a complete turn of 360 degrees with no gap and no overlap. Since all the angles meeting there are the interior angle of the same regular polygon, the interior angle must go into 360 a whole number of times. This works for the equilateral triangle at 60 degrees, the square at 90 and the regular hexagon at 120, but not for the regular pentagon at 108. (Mark this one yourself.)",
       },
+      {
+        question: "Two angles sit on a straight line. One of them is 63°. Work out the other angle, in degrees.",
+        accept: [
+          "117",
+        ],
+        answer: "117°. Angles on a straight line add to 180°, so the missing angle is 180 − 63 = 117.",
+      },
+      {
+        question: "Three angles meet at a point and two of them are 145° and 88°. Calculate the third angle, in degrees.",
+        accept: [
+          "127",
+        ],
+        answer: "127°. Angles around a point add to 360°, so the third is 360 − 145 − 88 = 127.",
+      },
+      {
+        question: "Two straight lines cross each other. One of the four angles formed is 38°. Write down the angle vertically opposite it, in degrees.",
+        accept: [
+          "38",
+        ],
+        answer: "38°. Vertically opposite angles are equal, so the angle facing it across the crossing point is exactly the same size.",
+      },
+      {
+        question: "A triangle has angles of 47° and 68°. Find the third angle, in degrees.",
+        accept: [
+          "65",
+        ],
+        answer: "65°. Angles in a triangle add to 180°, so the third angle is 180 − 47 − 68 = 65.",
+      },
+      {
+        question: "Three angles of a quadrilateral are 95°, 72° and 118°. Work out the remaining angle, in degrees.",
+        accept: [
+          "75",
+        ],
+        answer: "75°. Angles in a quadrilateral add to 360°, so the last one is 360 − 95 − 72 − 118 = 75.",
+      },
+      {
+        question: "Two parallel lines are crossed by a transversal. One of the angles is 74°. Write down the size of its corresponding angle, in degrees.",
+        accept: [
+          "74",
+        ],
+        answer: "74°. Corresponding angles are equal — they sit in matching positions at the two crossings and make an F shape.",
+      },
+      {
+        question: "A transversal crosses two parallel lines. One co-interior angle is 112°. Work out the other co-interior angle, in degrees.",
+        accept: [
+          "68",
+        ],
+        answer: "68°. Co-interior (allied) angles lie inside the parallel lines on the same side of the transversal and add to 180°, so 180 − 112 = 68.",
+      },
+      {
+        question: "Two equal angles lie inside a pair of parallel lines, on opposite sides of the transversal. Name the angle rule that connects them.",
+        accept: [
+          "alternate angles",
+          "alternate",
+        ],
+        answer: "Alternate angles. They form a Z shape between the parallel lines and are always equal, and naming the rule is what earns the reasoning mark.",
+      },
+      {
+        question: "Angles of 130° and 50° lie between two parallel lines on the same side of the transversal. Name the rule that links them.",
+        accept: [
+          "co-interior angles",
+          "co-interior",
+          "allied angles",
+          "allied",
+        ],
+        answer: "Co-interior (allied) angles. They add to 180°, and here 130 + 50 = 180, so the rule checks out; a C or U shape is the clue for spotting them.",
+      },
+      {
+        question: "Work out the sum of the interior angles of an octagon, in degrees.",
+        accept: [
+          "1080",
+        ],
+        answer: "1080°. Use the formula (n − 2) × 180 with n = 8, which gives 6 × 180 = 1080.",
+      },
+      {
+        question: "Calculate the size of each exterior angle of a regular 15-sided polygon, in degrees.",
+        accept: [
+          "24",
+        ],
+        answer: "24°. The exterior angles of any polygon total 360°, so each one of fifteen equal ones is 360 ÷ 15 = 24.",
+      },
+      {
+        question: "Calculate the size of one interior angle of a regular octagon, in degrees.",
+        accept: [
+          "135",
+        ],
+        answer: "135°. Each exterior angle is 360 ÷ 8 = 45°, and the interior angle beside it completes a straight line, so 180 − 45 = 135.",
+      },
+      {
+        question: "A regular polygon has interior angles of 162°. Work out how many sides it has.",
+        accept: [
+          "20",
+        ],
+        answer: "20 sides. The exterior angle is 180 − 162 = 18°, and the number of sides is 360 ÷ 18 = 20.",
+      },
+      {
+        question: "The interior angles of a polygon add up to 1440°. Find the number of sides.",
+        accept: [
+          "10",
+        ],
+        answer: "10 sides. Set (n − 2) × 180 = 1440, so n − 2 = 8 and therefore n = 10.",
+      },
+      {
+        question: "The exterior angle at one vertex of a triangle is 125°, and one of the two opposite interior angles is 48°. Calculate the other opposite interior angle, in degrees.",
+        accept: [
+          "77",
+        ],
+        answer: "77°. The exterior angle of a triangle equals the sum of the two opposite interior angles, so the missing one is 125 − 48 = 77.",
+      },
+      {
+        question: "An isosceles triangle has base angles of 72° each. Calculate the apex angle, in degrees.",
+        accept: [
+          "36",
+        ],
+        answer: "36°. The two base angles total 72 + 72 = 144°, and the three angles must total 180°, so the apex is 180 − 144 = 36.",
+      },
+      {
+        question: "How many lines of symmetry does a regular pentagon have?",
+        accept: [
+          "5",
+          "five",
+        ],
+        answer: "5. A regular polygon has as many lines of symmetry as it has sides, each running from a vertex through the middle of the opposite side.",
+      },
+      {
+        question: "State the order of rotational symmetry of a parallelogram.",
+        accept: [
+          "2",
+          "two",
+        ],
+        answer: "2. A half turn maps a parallelogram onto itself, and the full turn brings it back, so it fits its own outline twice in 360°.",
+      },
+      {
+        question: "How many lines of symmetry does a rhombus have?",
+        accept: [
+          "2",
+          "two",
+        ],
+        answer: "2. Both diagonals are mirror lines; the lines through the midpoints of opposite sides are not, which is what separates a rhombus from a square.",
+      },
+      {
+        question: "Name the quadrilateral that has exactly one pair of parallel sides.",
+        accept: [
+          "trapezium",
+          "a trapezium",
+        ],
+        answer: "A trapezium. Exactly one pair of parallel sides is the defining property; if both pairs were parallel the shape would be a parallelogram.",
+      },
+      {
+        question: "Name the quadrilateral whose four sides are equal and whose diagonals cross at right angles, but which has no right angles at its corners.",
+        accept: [
+          "rhombus",
+          "a rhombus",
+        ],
+        answer: "A rhombus. Four equal sides and perpendicular diagonals are shared with the square, so the corner angles are what tell the two shapes apart.",
+      },
+      {
+        question: "The three angles of a triangle are x°, (2x + 10)° and (3x − 4)°. Calculate the size of the largest angle, in degrees.",
+        accept: [
+          "83",
+        ],
+        answer: "83°. The angles total 180°, so 6x + 6 = 180 and x = 29. The three angles are then 29°, 68° and 83°, and the largest is 83°.",
+      },
+      {
+        question: "One angle of a parallelogram is 118°. Work out the size of an angle next to it, in degrees.",
+        accept: [
+          "62",
+        ],
+        answer: "62°. Neighbouring angles of a parallelogram are co-interior between a pair of parallel sides, so they add to 180° and 180 − 118 = 62.",
+      },
+      {
+        question: "Two of the angles round a point are equal, and the other two are 84° and 116°. Calculate the size of one of the equal angles, in degrees.",
+        accept: [
+          "80",
+        ],
+        answer: "80°. All four total 360°, so the two equal angles share 360 − 84 − 116 = 160 between them, and 160 ÷ 2 = 80.",
+      },
+      {
+        question: "Angles in a quadrilateral add up to:",
+        choices: [
+          "180°",
+          "270°",
+          "360°",
+          "540°",
+        ],
+        accept: [
+          "360°",
+        ],
+        answer: "360°. A diagonal splits any quadrilateral into two triangles, and 2 × 180 = 360; 540° is the pentagon's total.",
+      },
+      {
+        question: "Between parallel lines, angles that make a C or U shape are:",
+        choices: [
+          "equal",
+          "add to 180°",
+          "add to 360°",
+          "add to 90°",
+        ],
+        accept: [
+          "add to 180°",
+        ],
+        answer: "They add to 180°. A C or U shape marks co-interior angles, which are supplementary, unlike the Z and F shapes where the angles are equal.",
+      },
+      {
+        question: "Angles that make an F shape at two parallel lines are called:",
+        choices: [
+          "corresponding",
+          "alternate",
+          "co-interior",
+          "vertically opposite",
+        ],
+        accept: [
+          "corresponding",
+        ],
+        answer: "Corresponding angles. They sit in the same position at each crossing and are equal; the Z shape is alternate and the C shape is co-interior.",
+      },
+      {
+        question: "The interior angles of a hexagon add up to:",
+        choices: [
+          "540°",
+          "720°",
+          "900°",
+          "1080°",
+        ],
+        accept: [
+          "720°",
+        ],
+        answer: "720°. Using (n − 2) × 180 with n = 6 gives 4 × 180 = 720; 540° belongs to the pentagon and 1080° to the octagon.",
+      },
+      {
+        question: "Each exterior angle of a regular pentagon is:",
+        choices: [
+          "72°",
+          "108°",
+          "60°",
+          "45°",
+        ],
+        accept: [
+          "72°",
+        ],
+        answer: "72°. The exterior angles total 360°, so 360 ÷ 5 = 72; picking 108° gives the interior angle instead, which is the usual slip.",
+      },
+      {
+        question: "Which quadrilateral always has four equal sides and four right angles?",
+        choices: [
+          "square",
+          "rhombus",
+          "rectangle",
+          "kite",
+        ],
+        accept: [
+          "square",
+        ],
+        answer: "A square. A rhombus has four equal sides but no right angles, and a rectangle has right angles but not four equal sides.",
+      },
+      {
+        question: "Which quadrilateral has two pairs of adjacent equal sides and exactly one line of symmetry?",
+        choices: [
+          "kite",
+          "rhombus",
+          "parallelogram",
+          "trapezium",
+        ],
+        accept: [
+          "kite",
+        ],
+        answer: "A kite. Its equal sides are adjacent rather than opposite, and only the diagonal joining the two unequal angles is a mirror line.",
+      },
+      {
+        question: "A parallelogram has rotational symmetry of order:",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "Order 2. A half turn maps it onto itself. Order 1 would mean no rotational symmetry at all, which people guess because it has no mirror lines.",
+      },
+      {
+        question: "The exterior angle of a triangle is equal to:",
+        choices: [
+          "the sum of the two opposite interior angles",
+          "the adjacent interior angle",
+          "the sum of all three interior angles",
+          "twice the adjacent interior angle",
+        ],
+        accept: [
+          "the sum of the two opposite interior angles",
+        ],
+        answer: "The sum of the two opposite interior angles. It follows from the straight line at that vertex combined with the 180° angle sum of the triangle.",
+      },
+      {
+        question: "An isosceles triangle has an angle of 40° between its two equal sides. Each base angle is:",
+        choices: [
+          "70°",
+          "40°",
+          "100°",
+          "50°",
+        ],
+        accept: [
+          "70°",
+        ],
+        answer: "70°. The two base angles share 180 − 40 = 140°, so each is 70°; 100° comes from treating the 40° as a base angle instead of the apex.",
+      },
+      {
+        question: "Each interior angle of a regular nine-sided polygon is:",
+        choices: [
+          "140°",
+          "40°",
+          "135°",
+          "150°",
+        ],
+        accept: [
+          "140°",
+        ],
+        answer: "140°. The exterior angle is 360 ÷ 9 = 40°, so the interior angle is 180 − 40 = 140°; choosing 40° means stopping one step early.",
+      },
+      {
+        question: "Which shape has exactly two lines of symmetry and rotational symmetry of order 2?",
+        choices: [
+          "rectangle",
+          "square",
+          "equilateral triangle",
+          "regular pentagon",
+        ],
+        accept: [
+          "rectangle",
+        ],
+        answer: "A rectangle. A square has four mirror lines and order 4, an equilateral triangle three and order 3, and a regular pentagon five and order 5.",
+      },
+      {
+        question: "A transversal crosses two parallel lines and one of the angles formed is 68°. Work out the size of the co-interior angle and give the reason for your answer.",
+        answer: "112°, because co-interior (allied) angles between parallel lines add to 180°, so 180 − 68 = 112. The reason carries its own mark, so write the name of the rule rather than 'they add up'. (Mark this one yourself.)",
+      },
+      {
+        question: "Angles of 90°, 137° and z meet at a point. Find z and name the angle fact you used.",
+        answer: "z = 133°, because angles around a point add to 360°, so z = 360 − 90 − 137 = 133. Write the fact in words beside the working: 'angles around a point' is accepted, 'because they go all the way round' is not. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a triangle cannot contain two obtuse angles.",
+        answer: "An obtuse angle is more than 90°, so two of them already come to more than 180° between them, leaving nothing for the third angle. The three angles of a triangle must total exactly 180°, so at most one of them can be obtuse. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe the difference between a line of symmetry and rotational symmetry, and name a shape that has rotational symmetry but no line of symmetry.",
+        answer: "A line of symmetry is a mirror line: fold along it and the two halves land on each other. Rotational symmetry counts how many times a shape fits its own outline during one full turn. A parallelogram that is neither a rhombus nor a rectangle has rotational symmetry of order 2 and no mirror line at all. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -1597,6 +3127,708 @@ export const MATHS: Record<string, TopicContent> = {
         question: "A student works out 3 years of compound interest by finding one year's interest and multiplying it by 3. Explain what this actually calculates and why the true figure is higher.",
         answer: "Multiplying one year's interest by three calculates simple interest, where the interest is always worked out on the original amount. Compound interest is worked out on the balance at the start of each year, so in years two and three it is calculated on an amount that already includes the earlier interest. The compound total is therefore always larger than the simple total after the first year, and the gap widens the longer the money is invested. (Mark this one yourself.)",
       },
+      {
+        question: "Work out 2/5 + 1/4. Give your answer as a fraction in its simplest form.",
+        accept: [
+          "13/20",
+        ],
+        answer: "13/20. The lowest common denominator of 5 and 4 is 20, so 2/5 = 8/20 and 1/4 = 5/20. Adding only the numerators gives 13/20, which will not simplify.",
+      },
+      {
+        question: "Work out 5/6 − 1/4, simplifying if you can.",
+        accept: [
+          "7/12",
+        ],
+        answer: "7/12. Use 12 as the common denominator: 5/6 = 10/12 and 1/4 = 3/12. Then 10 − 3 = 7, so the answer is 7/12 and 7 shares no factor with 12.",
+      },
+      {
+        question: "Work out 3/7 × 14/15, giving the answer in its simplest form.",
+        accept: [
+          "2/5",
+        ],
+        answer: "2/5. Cancel before multiplying: the 7 divides into 14 twice and the 3 divides into 15 five times, leaving 1/1 × 2/5 = 2/5. Multiplying first gives 42/105, which cancels to the same thing.",
+      },
+      {
+        question: "Work out 4/9 ÷ 2/3 and simplify your answer.",
+        accept: [
+          "2/3",
+        ],
+        answer: "2/3. Keep, flip, change: 4/9 × 3/2 = 12/18. Dividing top and bottom by 6 leaves 2/3.",
+      },
+      {
+        question: "Work out 1⅖ + 2¾. Give your answer as a mixed number.",
+        accept: [
+          "4 3/20",
+          "83/20",
+        ],
+        answer: "4 3/20. As improper fractions this is 7/5 + 11/4. Over a denominator of 20 that is 28/20 + 55/20 = 83/20, and 83 ÷ 20 = 4 remainder 3, so the answer is 4 3/20.",
+      },
+      {
+        question: "Work out 3⅓ − 1⅚. Write your answer as a mixed number.",
+        accept: [
+          "1 1/2",
+          "3/2",
+        ],
+        answer: "1 1/2. Change to improper fractions: 10/3 − 11/6. Over sixths that is 20/6 − 11/6 = 9/6, which cancels to 3/2, or 1 1/2.",
+      },
+      {
+        question: "Work out 3¾ ÷ 1½, giving your answer as a mixed number.",
+        accept: [
+          "2 1/2",
+          "5/2",
+        ],
+        answer: "2 1/2. Convert first: 15/4 ÷ 3/2. Flip the second fraction and multiply: 15/4 × 2/3 = 30/12, which cancels to 5/2, or 2 1/2.",
+      },
+      {
+        question: "Work out 2½ × 1⅗.",
+        accept: [
+          "4",
+        ],
+        answer: "4. Convert to improper fractions: 5/2 × 8/5. The fives cancel, leaving 8/2 = 4. Multiplying the whole parts and fraction parts separately would have given the wrong answer.",
+      },
+      {
+        question: "Work out 3/8 of 640.",
+        accept: [
+          "240",
+        ],
+        answer: "240. Divide by the denominator and multiply by the numerator: 640 ÷ 8 = 80, and 80 × 3 = 240.",
+      },
+      {
+        question: "Work out 1/3 + 2/5.",
+        choices: [
+          "11/15",
+          "3/8",
+          "3/15",
+          "2/15",
+        ],
+        accept: [
+          "11/15",
+        ],
+        answer: "11/15. Fifteenths are the common denominator: 1/3 = 5/15 and 2/5 = 6/15, so the total is 11/15. Adding the tops and the bottoms to get 3/8 is the classic error.",
+      },
+      {
+        question: "To work out 4/5 ÷ 2/7, which of these should you do?",
+        choices: [
+          "multiply 4/5 by 7/2",
+          "multiply 4/5 by 2/7",
+          "multiply 5/4 by 2/7",
+          "multiply 5/4 by 7/2",
+        ],
+        accept: [
+          "multiply 4/5 by 7/2",
+        ],
+        answer: "Dividing by a fraction is the same as multiplying by its reciprocal, so turn 2/7 upside down: 4/5 × 7/2 = 28/10 = 14/5. Only the second fraction is flipped.",
+      },
+      {
+        question: "Work out 1½ × 2⅓.",
+        choices: [
+          "3 1/2",
+          "2 1/6",
+          "3 1/6",
+          "2 5/6",
+        ],
+        accept: [
+          "3 1/2",
+        ],
+        answer: "3 1/2. As improper fractions this is 3/2 × 7/3 = 21/6, which cancels to 7/2, or 3 1/2. Multiplying 1 × 2 and ½ × ⅓ separately gives 2 1/6, which is wrong.",
+      },
+      {
+        question: "5/6 of a number is 45. What is the number?",
+        choices: [
+          "54",
+          "37.5",
+          "270",
+          "9",
+        ],
+        accept: [
+          "54",
+        ],
+        answer: "54. If five sixths is 45, then one sixth is 45 ÷ 5 = 9, so six sixths is 9 × 6 = 54. Working out 5/6 of 45 instead gives 37.5, which reverses the question.",
+      },
+      {
+        question: "Work out 7/10 of £36. Give your answer in pounds.",
+        choices: [
+          "25.20",
+          "10.80",
+          "5.14",
+          "3.60",
+        ],
+        accept: [
+          "25.20",
+          "25.2",
+        ],
+        answer: "£25.20. One tenth of 36 is 3.60, and seven tenths is 3.60 × 7 = 25.20. The £10.80 left over is the other three tenths, not the answer.",
+      },
+      {
+        question: "Show that 2⅔ ÷ 1⅓ = 2.",
+        answer: "Convert both mixed numbers to improper fractions: 2⅔ = 8/3 and 1⅓ = 4/3. Dividing means multiplying by the reciprocal, so 8/3 ÷ 4/3 = 8/3 × 3/4 = 24/12 = 2. You can also see it directly: 4/3 fits into 8/3 exactly twice because 8 is twice 4 and the thirds are the same size. (Mark this one yourself.)",
+      },
+      {
+        question: "A student writes 2½ × 3 = 6½. Explain the mistake and give the correct answer.",
+        answer: "The student has multiplied only the whole number part by 3 and copied the half across unchanged. Every part of the mixed number must be multiplied, so the safe method is to convert first: 2½ = 5/2, and 5/2 × 3 = 15/2 = 7½. Checking by repeated addition confirms it, since 2½ + 2½ + 2½ = 7½. (Mark this one yourself.)",
+      },
+      {
+        question: "Write the decimal 0.625 as a fraction in its simplest form.",
+        accept: [
+          "5/8",
+        ],
+        answer: "5/8. The last digit is in the thousandths column, so start with 625/1000. Dividing top and bottom by 125 gives 5/8.",
+      },
+      {
+        question: "Write the fraction 7/20 as a percentage.",
+        accept: [
+          "35%",
+        ],
+        answer: "35%. Scale the denominator to 100 by multiplying top and bottom by 5, giving 35/100, which is 35%. Alternatively 7 ÷ 20 = 0.35, then multiply by 100.",
+      },
+      {
+        question: "Write 12.5% as a fraction in its lowest terms.",
+        accept: [
+          "1/8",
+        ],
+        answer: "1/8. Percent means out of 100, so this is 12.5/100. Doubling both parts clears the decimal to give 25/200, and dividing both by 25 leaves 1/8.",
+      },
+      {
+        question: "Convert 9/16 into a decimal.",
+        accept: [
+          "0.5625",
+          ".5625",
+        ],
+        answer: "0.5625. Divide the numerator by the denominator: 9 ÷ 16 = 0.5625. It terminates because 16 = 2⁴ and the only prime factor is 2.",
+      },
+      {
+        question: "Write 175% as a mixed number in its simplest form.",
+        accept: [
+          "1 3/4",
+          "7/4",
+        ],
+        answer: "1 3/4. Start with 175/100. Dividing top and bottom by 25 gives 7/4, and 7 ÷ 4 = 1 remainder 3, so the mixed number is 1 3/4.",
+      },
+      {
+        question: "Which of these values is the largest?",
+        choices: [
+          "0.7",
+          "3/5",
+          "68%",
+          "0.66",
+        ],
+        accept: [
+          "0.7",
+        ],
+        answer: "0.7 is the largest. Turn them all into decimals first: 3/5 = 0.6, 68% = 0.68 and 0.66 stays as it is, so 0.7 beats all three. Comparing forms without converting is where marks are lost.",
+      },
+      {
+        question: "Which of these fractions, in its simplest form, is equal to 0.45?",
+        choices: [
+          "9/20",
+          "9/25",
+          "11/20",
+          "45/10",
+        ],
+        accept: [
+          "9/20",
+        ],
+        answer: "9/20. The 5 is in the hundredths column, so the fraction is 45/100. Dividing both parts by 5 gives 9/20 — you must divide top and bottom by the SAME number.",
+      },
+      {
+        question: "Convert the decimal 0.08 into a percentage.",
+        choices: [
+          "8%",
+          "0.8%",
+          "80%",
+          "0.08%",
+        ],
+        accept: [
+          "8%",
+        ],
+        answer: "8%. To turn a decimal into a percentage multiply by 100, which moves both digits two places left: 0.08 × 100 = 8. Only moving one place gives 0.8%, which is the usual slip.",
+      },
+      {
+        question: "Explain how to turn 13/25 into a percentage without using a calculator, and state the percentage.",
+        answer: "A percentage is a fraction out of 100, so look for a number that multiplies the denominator up to 100. Here 25 × 4 = 100, so multiply the numerator by 4 as well: 13 × 4 = 52, giving 52/100 = 52%. The same trick works for any denominator that divides into 100, such as 2, 4, 5, 10, 20, 25 and 50. (Mark this one yourself.)",
+      },
+      {
+        question: "Does the fraction 13/32 have a terminating decimal? Answer yes or no.",
+        accept: [
+          "yes",
+        ],
+        answer: "Yes. In its simplest form the denominator is 32 = 2⁵, and a fraction terminates whenever the denominator has no prime factors other than 2 and 5. In fact 13 ÷ 32 = 0.40625.",
+      },
+      {
+        question: "Write down whether 7/30 converts to a terminating decimal or a recurring decimal.",
+        accept: [
+          "recurring",
+        ],
+        answer: "Recurring. The denominator 30 factorises as 2 × 3 × 5, and that factor of 3 stops it ever being rewritten over a power of 10, so the decimal 0.2333... repeats forever.",
+      },
+      {
+        question: "Write the recurring decimal 0.7777... as a fraction in its simplest form.",
+        accept: [
+          "7/9",
+        ],
+        answer: "7/9. Let x = 0.7777..., so 10x = 7.7777.... Subtracting the first line from the second removes the repeating tail: 9x = 7, giving x = 7/9.",
+        higherOnly: true,
+      },
+      {
+        question: "The recurring decimal 0.181818... repeats the digits 18 forever. Write it as a fraction in its simplest form.",
+        accept: [
+          "2/11",
+        ],
+        answer: "2/11. Let x = 0.181818.... Two digits repeat, so multiply by 100: 100x = 18.181818.... Subtracting gives 99x = 18, so x = 18/99, which cancels by 9 to 2/11.",
+        higherOnly: true,
+      },
+      {
+        question: "Use algebra to convert 0.4111..., in which only the 1 recurs, to a fraction in its simplest form.",
+        accept: [
+          "37/90",
+        ],
+        answer: "37/90. Let x = 0.4111.... Multiply by 10 to get 10x = 4.111... and by 100 to get 100x = 41.111.... The recurring tails now line up, so subtracting gives 90x = 37 and x = 37/90.",
+        higherOnly: true,
+      },
+      {
+        question: "You are converting 0.636363... to a fraction and you let x = 0.636363... . Which of these should you subtract x from?",
+        choices: [
+          "100x",
+          "10x",
+          "1000x",
+          "63x",
+        ],
+        accept: [
+          "100x",
+        ],
+        answer: "100x. Two digits repeat, so you need to shift the decimal point two places to line the repeating tails up. Then 100x − x = 63.6363... − 0.6363... = 63, so 99x = 63 and x = 7/11.",
+        higherOnly: true,
+      },
+      {
+        question: "Which of these fractions gives a recurring decimal?",
+        choices: [
+          "7/15",
+          "7/16",
+          "7/20",
+          "7/25",
+        ],
+        accept: [
+          "7/15",
+        ],
+        answer: "7/15. Its denominator factorises as 3 × 5, and the 3 forces the decimal to repeat as 0.4666.... The other three denominators are 16 = 2⁴, 20 = 2² × 5 and 25 = 5², all built only from 2s and 5s, so they terminate.",
+      },
+      {
+        question: "Which fraction is equal to 0.1666... ?",
+        choices: [
+          "1/6",
+          "16/99",
+          "1/16",
+          "5/6",
+        ],
+        accept: [
+          "1/6",
+        ],
+        answer: "1/6. The digit 6 repeats but the 1 does not, so this is not simply a digit over 9. Writing 16 over 99 gives 0.161616..., a different number. Dividing 1 by 6 confirms 0.1666....",
+      },
+      {
+        question: "Show that 0.121212... is equal to 4/33.",
+        answer: "Let x = 0.121212.... Two digits repeat, so multiply by 100: 100x = 12.121212.... Subtracting the first equation from the second cancels the infinite tail, leaving 99x = 12. Dividing gives x = 12/99, and dividing top and bottom by 3 gives x = 4/33. Checking, 4 ÷ 33 = 0.121212.... (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Work out 35% of 420.",
+        accept: [
+          "147",
+        ],
+        answer: "147. Multiply by the decimal equivalent: 0.35 × 420 = 147. Without a calculator, 10% is 42, so 30% is 126, and 5% is 21, giving 126 + 21 = 147.",
+      },
+      {
+        question: "Find 8% of £65. Give your answer in pounds to the nearest penny.",
+        accept: [
+          "5.20",
+          "5.2",
+        ],
+        answer: "£5.20. Multiply by 0.08: 0.08 × 65 = 5.2, which is £5.20. Building it up instead, 1% of 65 is 65p, so 8% is 8 × 65p = 520p.",
+      },
+      {
+        question: "Work out 12% of 350 kg. Give your answer in kilograms.",
+        accept: [
+          "42",
+        ],
+        answer: "42 kg. Using the multiplier, 0.12 × 350 = 42. Building from 10% of 350 = 35 and 1% = 3.5 gives 35 + 3.5 + 3.5 = 42.",
+      },
+      {
+        question: "Calculate 2.5% of £1840, giving your answer in pounds.",
+        accept: [
+          "46",
+          "46.00",
+        ],
+        answer: "£46. As a decimal 2.5% is 0.025, and 0.025 × 1840 = 46. Alternatively 1% of 1840 is 18.40, so 2.5% is 2.5 × 18.40 = 46.",
+      },
+      {
+        question: "Work out 130% of 60.",
+        accept: [
+          "78",
+        ],
+        answer: "78. A percentage over 100 gives an answer larger than the original. The multiplier is 1.3, and 1.3 × 60 = 78, which is 60 plus 30% of 60.",
+      },
+      {
+        question: "What is 45% of 300?",
+        choices: [
+          "135",
+          "13.5",
+          "165",
+          "1350",
+        ],
+        accept: [
+          "135",
+        ],
+        answer: "135. Multiplying by 0.45 gives 135. A useful check is that 45% is just under half, and half of 300 is 150. The answer 165 comes from finding 55% by mistake.",
+      },
+      {
+        question: "A bill of £48 has VAT added at 20%. What is the total bill in pounds?",
+        choices: [
+          "57.60",
+          "9.60",
+          "38.40",
+          "60.00",
+        ],
+        accept: [
+          "57.60",
+          "57.6",
+        ],
+        answer: "£57.60. Multiply by 1.2: 48 × 1.2 = 57.6. The VAT alone is £9.60, and £60 is what you get by wrongly treating £48 as 80% of the total.",
+      },
+      {
+        question: "Increase 250 by 14%.",
+        accept: [
+          "285",
+        ],
+        answer: "285. The multiplier for a 14% rise is 1.14, and 1.14 × 250 = 285. Finding 14% separately gives 35, and 250 + 35 = 285 as a check.",
+      },
+      {
+        question: "Decrease 180 by 35%.",
+        accept: [
+          "117",
+        ],
+        answer: "117. A 35% fall leaves 65% behind, so multiply by 0.65: 0.65 × 180 = 117. The amount removed is 63.",
+      },
+      {
+        question: "Increase £72 by 8.5%. Give your answer in pounds to the nearest penny.",
+        accept: [
+          "78.12",
+        ],
+        answer: "£78.12. The multiplier is 1.085, and 72 × 1.085 = 78.12. Splitting it up, 8% of 72 is 5.76 and 0.5% is 0.36, so the rise is £6.12.",
+      },
+      {
+        question: "Write down the decimal multiplier for a 6% increase.",
+        accept: [
+          "1.06",
+        ],
+        answer: "1.06. For an increase the multiplier is 1 + (percentage ÷ 100), and 6 ÷ 100 = 0.06. Using 1.6 by mistake would add 60%.",
+      },
+      {
+        question: "A salary of £28400 rises by 4%. Work out the new salary in pounds.",
+        accept: [
+          "29536",
+          "29536.00",
+        ],
+        answer: "£29536. Multiply by 1.04: 28400 × 1.04 = 29536. Checking, 1% of 28400 is 284, so 4% is 1136, and 28400 + 1136 = 29536.",
+      },
+      {
+        question: "A population of 4500 falls by 12%. What is the new population?",
+        choices: [
+          "3960",
+          "540",
+          "5040",
+          "4488",
+        ],
+        accept: [
+          "3960",
+        ],
+        answer: "3960. A 12% fall leaves 88%, so multiply by 0.88: 0.88 × 4500 = 3960. The figure 540 is the size of the fall, not the population left.",
+      },
+      {
+        question: "Which multiplier decreases an amount by 7%?",
+        choices: [
+          "0.93",
+          "1.07",
+          "0.07",
+          "0.7",
+        ],
+        accept: [
+          "0.93",
+        ],
+        answer: "0.93. A 7% decrease leaves 100 − 7 = 93% of the original, and 93% as a decimal is 0.93. Multiplying by 0.07 would leave only 7%.",
+      },
+      {
+        question: "A club has 800 members and the number drops by 2.5%. How many members are there now?",
+        choices: [
+          "780",
+          "820",
+          "775",
+          "797.5",
+        ],
+        accept: [
+          "780",
+        ],
+        answer: "780. The multiplier is 1 − 0.025 = 0.975, and 0.975 × 800 = 780. The fall is 2.5% of 800 = 20 members, not 2.5 members.",
+      },
+      {
+        question: "A coat costs £68 in a sale after a 15% discount. What was its price before the sale, in pounds?",
+        accept: [
+          "80",
+          "80.00",
+        ],
+        answer: "£80. The sale price is 85% of the original, so divide rather than subtract: 68 ÷ 0.85 = 80. Checking forwards, 80 × 0.85 = 68.",
+      },
+      {
+        question: "A car is worth £9180 after losing 15% of its value. Work out what it was worth before, in pounds.",
+        accept: [
+          "10800",
+          "10800.00",
+        ],
+        answer: "£10800. The remaining value is 85% of the original, so the original is 9180 ÷ 0.85 = 10800. Adding 15% to £9180 would give £10557, which is not the same thing.",
+      },
+      {
+        question: "60% of a number is 156. Work out the number.",
+        accept: [
+          "260",
+        ],
+        answer: "260. Divide by the multiplier: 156 ÷ 0.6 = 260. Building it up instead, 10% is 156 ÷ 6 = 26, so 100% is 260.",
+      },
+      {
+        question: "A restaurant bill including 20% VAT comes to £486. What was the bill before VAT was added, in pounds?",
+        accept: [
+          "405",
+          "405.00",
+        ],
+        answer: "£405. The total is 120% of the pre-VAT bill, so divide by 1.2: 486 ÷ 1.2 = 405. The VAT is therefore £81, not 20% of £486.",
+      },
+      {
+        question: "Ticket sales rose by 8% to 2916. How many tickets were sold before the rise?",
+        accept: [
+          "2700",
+        ],
+        answer: "2700. The new figure is 108% of the old one, so divide by 1.08: 2916 ÷ 1.08 = 2700. Taking 8% off 2916 gives 2682.72, which is wrong.",
+      },
+      {
+        question: "A television is reduced by 30% to £245. What was its original price in pounds?",
+        choices: [
+          "350",
+          "318.50",
+          "171.50",
+          "816.67",
+        ],
+        accept: [
+          "350",
+        ],
+        answer: "£350. The sale price is 70% of the original, so 245 ÷ 0.7 = 350. Multiplying by 0.7 instead gives £171.50, and adding 30% on gives £318.50 — both reverse the wrong way.",
+      },
+      {
+        question: "35% of a length is 84 cm. What is the full length in cm?",
+        choices: [
+          "240",
+          "29.4",
+          "294",
+          "119",
+        ],
+        accept: [
+          "240",
+        ],
+        answer: "240 cm. Divide by the multiplier: 84 ÷ 0.35 = 240. Or find 1% as 84 ÷ 35 = 2.4 cm, then multiply by 100.",
+      },
+      {
+        question: "Describe the method for finding the original price of an item that cost £84 after a 30% discount, and explain why adding 30% to £84 does not work.",
+        answer: "The £84 is what is left after the discount, so it represents 70% of the original price. Dividing by the multiplier undoes the multiplication that produced it: 84 ÷ 0.7 = £120, and checking forwards 120 × 0.7 = 84. Adding 30% to £84 gives £109.20, because that takes 30% of the smaller, discounted price rather than of the larger original price. The two percentages are of different amounts, which is why only division works. (Mark this one yourself.)",
+      },
+      {
+        question: "A value falls from 80 to 68. Work out the percentage decrease.",
+        accept: [
+          "15%",
+        ],
+        answer: "15%. The change is 80 − 68 = 12. Divide by the ORIGINAL value and multiply by 100: 12 ÷ 80 = 0.15, which is 15%.",
+      },
+      {
+        question: "A share price rises from £2.40 to £3.00. Work out the percentage increase.",
+        accept: [
+          "25%",
+        ],
+        answer: "25%. The rise is 3.00 − 2.40 = £0.60. Dividing by the starting price gives 0.60 ÷ 2.40 = 0.25, so the increase is 25%. Dividing by £3.00 would give 20%, which is the classic trap.",
+      },
+      {
+        question: "A shop buys mugs for £3.20 each and sells them for £4.80 each. Work out the percentage profit.",
+        accept: [
+          "50%",
+        ],
+        answer: "50%. The profit on each mug is 4.80 − 3.20 = £1.60. Percentage profit divides by the cost price: 1.60 ÷ 3.20 = 0.5, which is 50%.",
+      },
+      {
+        question: "Attendance at a club falls from 1250 to 1185. Work out the percentage decrease.",
+        accept: [
+          "5.2%",
+        ],
+        answer: "5.2%. The fall is 1250 − 1185 = 65 people. Dividing by the original attendance gives 65 ÷ 1250 = 0.052, so the decrease is 5.2%.",
+      },
+      {
+        question: "A number increases from 45 to 54. What is the percentage increase?",
+        choices: [
+          "20%",
+          "9%",
+          "16.7%",
+          "120%",
+        ],
+        accept: [
+          "20%",
+        ],
+        answer: "20%. The increase is 9, and 9 ÷ 45 = 0.2, so the answer is 20%. Dividing by the new value of 54 gives about 16.7%, which is the commonest error here.",
+      },
+      {
+        question: "A car bought for £12000 is sold for £9600. What is the percentage loss?",
+        choices: [
+          "20%",
+          "25%",
+          "80%",
+          "2400%",
+        ],
+        accept: [
+          "20%",
+        ],
+        answer: "20%. The loss is 12000 − 9600 = £2400, and percentage loss divides by the price paid: 2400 ÷ 12000 = 0.2, so 20%. Dividing by the selling price gives 25%, which is wrong.",
+      },
+      {
+        question: "Explain why percentage change is always worked out by dividing by the original amount rather than the new amount.",
+        answer: "A percentage change describes how big the change is compared with where you started, so the starting value is the whole that the 100% refers to. If a price goes from £40 to £50, the £10 rise is a quarter of the £40 you began with, which is a 25% increase. Dividing by the new £50 would give 20%, but that answers a different question — what fraction of the final price the change makes up. Using the original also means the increase and the multiplier agree, since 40 × 1.25 = 50. (Mark this one yourself.)",
+      },
+      {
+        question: "£2000 is invested at 4% simple interest for 5 years. Work out the total interest earned, in pounds.",
+        accept: [
+          "400",
+          "400.00",
+        ],
+        answer: "£400. Simple interest is worked out on the original amount every year: 4% of 2000 is £80, and £80 × 5 years = £400. The balance never grows for the purposes of the calculation.",
+      },
+      {
+        question: "£750 is invested at 3% simple interest for 4 years. What is the total value of the investment in pounds?",
+        accept: [
+          "840",
+          "840.00",
+        ],
+        answer: "£840. One year's interest is 0.03 × 750 = £22.50, so four years give 22.50 × 4 = £90. Adding this to the original £750 gives £840.",
+      },
+      {
+        question: "£5000 is invested at 2% compound interest for 3 years. Work out its value to the nearest penny.",
+        accept: [
+          "5306.04",
+        ],
+        answer: "£5306.04. Use the multiplier once per year: 5000 × 1.02³. Since 1.02³ = 1.061208, the value is 5000 × 1.061208 = £5306.04. Simple interest would have given only £5300.",
+      },
+      {
+        question: "£1200 is invested at 5% compound interest. Find its value after 4 years, to the nearest penny.",
+        accept: [
+          "1458.61",
+        ],
+        answer: "£1458.61. Raise the multiplier to the power of the number of years: 1200 × 1.05⁴. As 1.05⁴ = 1.21550625, the value is 1200 × 1.21550625 = 1458.6075, which rounds to £1458.61.",
+      },
+      {
+        question: "£500 is invested for 3 years at 4%. How much more interest is earned with compound interest than with simple interest, to the nearest penny?",
+        accept: [
+          "2.43",
+        ],
+        answer: "£2.43. Simple interest gives 0.04 × 500 × 3 = £60. Compound gives 500 × 1.04³ = £562.43, so the interest is £62.43 to the nearest penny. The difference is 62.432 − 60 = £2.43, which is the interest earned on earlier interest.",
+      },
+      {
+        question: "£3000 is invested at 5% simple interest for 3 years. What is the total interest earned?",
+        choices: [
+          "450",
+          "472.88",
+          "3450",
+          "150",
+        ],
+        accept: [
+          "450",
+        ],
+        answer: "£450. Simple interest uses the original £3000 each year: 5% of 3000 is £150, and 150 × 3 = £450. The £472.88 option is what compound interest would have paid, and £3450 is the total balance rather than the interest.",
+      },
+      {
+        question: "£800 is invested at 6% compound interest for 2 years. How much interest is earned, to the nearest penny?",
+        choices: [
+          "98.88",
+          "96.00",
+          "898.88",
+          "48.00",
+        ],
+        accept: [
+          "98.88",
+        ],
+        answer: "£98.88. The balance is 800 × 1.06² = 800 × 1.1236 = £898.88, so the interest is 898.88 − 800 = £98.88. Simple interest would have given £96, and £898.88 is the whole balance rather than the interest.",
+      },
+      {
+        question: "A savings account pays 3% compound interest each year. Describe how you would find the smallest whole number of years for £2000 to grow to more than £2500.",
+        answer: "Write the balance after n years as 2000 × 1.03 to the power n, then try whole number values of n until the balance first passes £2500. After 7 years the balance is about £2459.75, which is still short; after 8 years it is about £2533.54, which is over. So the answer is 8 years. A quicker version is to note that you need the multiplier to exceed 2500 ÷ 2000 = 1.25 and test powers of 1.03 against that. (Mark this one yourself.)",
+      },
+      {
+        question: "A car worth £18000 depreciates by 20% in its first year. What is it worth at the end of that year, in pounds?",
+        accept: [
+          "14400",
+          "14400.00",
+        ],
+        answer: "£14400. Depreciation is a percentage decrease, so the multiplier is 0.8: 18000 × 0.8 = 14400. The car has lost £3600 of value.",
+      },
+      {
+        question: "A van bought for £24000 depreciates by 15% each year. Work out its value after 3 years, to the nearest penny.",
+        accept: [
+          "14739",
+          "14739.00",
+        ],
+        answer: "£14739. Apply the multiplier 0.85 once per year: 24000 × 0.85³. Since 0.85³ = 0.614125, the value is 24000 × 0.614125 = £14739.00. Taking off 45% in one go would wrongly give £13200.",
+      },
+      {
+        question: "A tractor bought for £55000 loses 12% of its value every year. Find its value after 4 years, to the nearest penny.",
+        accept: [
+          "32983.24",
+        ],
+        answer: "£32983.24. The yearly multiplier is 0.88, so the value is 55000 × 0.88⁴. As 0.88⁴ = 0.59969536, this gives 55000 × 0.59969536 = 32983.2448, or £32983.24 to the nearest penny.",
+      },
+      {
+        question: "A machine worth £40000 depreciates by 10% each year. What is it worth after 2 years?",
+        choices: [
+          "32400",
+          "32000",
+          "36000",
+          "48400",
+        ],
+        accept: [
+          "32400",
+        ],
+        answer: "£32400. Multiply by 0.9 twice: 40000 × 0.9² = 40000 × 0.81 = 32400. Taking off 20% in one step gives £32000, which is too low because the second year's 10% is of the smaller value.",
+      },
+      {
+        question: "A price rises by 10% and then rises by a further 20%. What single percentage increase is this equivalent to?",
+        accept: [
+          "32%",
+        ],
+        answer: "32%. Combine the multipliers: 1.1 × 1.2 = 1.32, which is a 32% increase. Simply adding 10% and 20% to get 30% misses the 20% charged on the first rise.",
+      },
+      {
+        question: "A population of 12000 grows by 3% each year. Work out the population after 4 years, to the nearest whole number.",
+        accept: [
+          "13506",
+        ],
+        answer: "13506. Use the multiplier to the power of the number of years: 12000 × 1.03⁴. Since 1.03⁴ = 1.12550881, the population is 13506.10572, which is 13506 people to the nearest whole number.",
+      },
+      {
+        question: "A quantity increases by 25% and then decreases by 25%. What is the overall change?",
+        choices: [
+          "a 6.25% decrease",
+          "no change",
+          "a 6.25% increase",
+          "a 12.5% decrease",
+        ],
+        accept: [
+          "a 6.25% decrease",
+        ],
+        answer: "A 6.25% decrease. The combined multiplier is 1.25 × 0.75 = 0.9375, and 1 − 0.9375 = 0.0625, so 6.25% is lost. The two changes do not cancel because the 25% taken off is 25% of a larger amount.",
+      },
+      {
+        question: "Show that reducing £20000 by 10% a year for three years does not give the same result as a single reduction of 30%, and say which leaves more.",
+        answer: "Repeated reduction multiplies by 0.9 three times: 20000 × 0.9³ = 20000 × 0.729 = £14580. A single 30% reduction multiplies by 0.7 once: 20000 × 0.7 = £14000. The repeated version leaves £580 more. This happens because each 10% is taken from a smaller amount than the one before, so the three cuts together remove only 27.1% of the original, not 30%. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -1979,6 +4211,678 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain why comparing the price per unit is a fairer test of value than comparing how much money each pack saves.",
         answer: "A larger pack almost always costs more in total and can appear to save more money simply because it contains more, so the raw saving does not say which is better value. Price per unit, such as pence per 100 g, divides out the difference in size and puts both packs on the same footing. Working to the same unit for both is what makes the comparison valid. (Mark this one yourself.)",
+      },
+      {
+        question: "Simplify the ratio 24 : 36 : 60.",
+        accept: [
+          "2:3:5",
+          "2 : 3 : 5",
+        ],
+        answer: "2 : 3 : 5. The highest common factor of 24, 36 and 60 is 12, and dividing every part by 12 gives 2 : 3 : 5.",
+      },
+      {
+        question: "Write 350 g : 1.4 kg as a ratio in its simplest form.",
+        accept: [
+          "1:4",
+          "1 : 4",
+        ],
+        answer: "1 : 4. Convert to the same unit first: 1.4 kg = 1400 g, so the ratio is 350 : 1400, and dividing both parts by 350 gives 1 : 4.",
+      },
+      {
+        question: "Express 3/4 : 5/8 as a ratio of whole numbers in its simplest form.",
+        accept: [
+          "6:5",
+          "6 : 5",
+        ],
+        answer: "6 : 5. Multiply both parts by 8 to clear the fractions: 3/4 × 8 = 6 and 5/8 × 8 = 5, giving 6 : 5, which has no common factor.",
+      },
+      {
+        question: "Write 40 minutes : 2 hours as a ratio in its simplest form.",
+        accept: [
+          "1:3",
+          "1 : 3",
+        ],
+        answer: "1 : 3. Change both to minutes: 2 hours = 120 minutes, so the ratio is 40 : 120. Dividing both parts by 40 gives 1 : 3.",
+      },
+      {
+        question: "The ratio 8 : 28 is written in the form 1 : n. Work out n.",
+        accept: [
+          "3.5",
+          "n = 3.5",
+          "7/2",
+        ],
+        answer: "n = 3.5. To make the first part 1 you divide both parts by 8, and 28 ÷ 8 = 3.5, so the ratio is 1 : 3.5.",
+      },
+      {
+        question: "Write 1.2 : 0.9 in its simplest whole-number form.",
+        accept: [
+          "4:3",
+          "4 : 3",
+        ],
+        answer: "4 : 3. Multiplying both parts by 10 clears the decimals to give 12 : 9, and dividing by the common factor 3 gives 4 : 3.",
+      },
+      {
+        question: "Which of these is 18 : 24 written in its simplest form?",
+        choices: [
+          "3 : 4",
+          "9 : 12",
+          "6 : 8",
+          "4 : 3",
+        ],
+        accept: [
+          "3 : 4",
+        ],
+        answer: "3 : 4. The highest common factor of 18 and 24 is 6, and 18 ÷ 6 = 3 with 24 ÷ 6 = 4. Dividing by 2 or by 3 alone leaves a ratio that can still be reduced.",
+      },
+      {
+        question: "Write 250 ml : 2 litres in its simplest form.",
+        choices: [
+          "1 : 8",
+          "125 : 1000",
+          "1 : 4",
+          "8 : 1",
+        ],
+        accept: [
+          "1 : 8",
+        ],
+        answer: "1 : 8. Convert to the same unit first: 2 litres = 2000 ml, giving 250 : 2000. Dividing both parts by 250 gives 1 : 8.",
+      },
+      {
+        question: "Share 180 counters in the ratio 3 : 7. How many counters are in the smaller share?",
+        accept: [
+          "54",
+        ],
+        answer: "54 counters. There are 3 + 7 = 10 parts, so one part is 180 ÷ 10 = 18. The smaller share is 3 × 18 = 54.",
+      },
+      {
+        question: "£560 is divided in the ratio 3 : 4 : 1. Work out the largest share, in pounds.",
+        accept: [
+          "280",
+          "£280",
+        ],
+        answer: "£280. The total number of parts is 3 + 4 + 1 = 8, so one part is 560 ÷ 8 = £70. The largest share is 4 × 70 = £280.",
+      },
+      {
+        question: "96 marbles are split between two boxes in the ratio 5 : 3. How many more marbles are in the bigger box?",
+        accept: [
+          "24",
+        ],
+        answer: "24 marbles. With 5 + 3 = 8 parts, one part is 96 ÷ 8 = 12. The difference is 5 − 3 = 2 parts, which is 2 × 12 = 24.",
+      },
+      {
+        question: "Three cousins share 315 stickers in the ratio 2 : 3 : 4. How many stickers does the cousin with the smallest share receive?",
+        accept: [
+          "70",
+        ],
+        answer: "70 stickers. There are 2 + 3 + 4 = 9 parts and 315 ÷ 9 = 35 per part, so the smallest share is 2 × 35 = 70.",
+      },
+      {
+        question: "A rectangle has a perimeter of 60 cm, and its length to width ratio is 3 : 2. Work out its area in cm².",
+        accept: [
+          "216",
+        ],
+        answer: "216 cm². Half the perimeter is the length plus the width, which is 30 cm. Splitting 30 in the ratio 3 : 2 gives 18 cm and 12 cm, so the area is 18 × 12 = 216 cm².",
+      },
+      {
+        question: "The three angles of a triangle are in the ratio 2 : 3 : 5. Find the largest angle, in degrees.",
+        accept: [
+          "90",
+        ],
+        answer: "90°. The angles add to 180°, and there are 2 + 3 + 5 = 10 parts, so one part is 180 ÷ 10 = 18°. The largest angle is 5 × 18 = 90°.",
+      },
+      {
+        question: "72 sweets are shared in the ratio 1 : 2 : 3. How many sweets are in the middle share?",
+        choices: [
+          "12",
+          "18",
+          "24",
+          "36",
+        ],
+        accept: [
+          "24",
+        ],
+        answer: "24 sweets. The parts total 1 + 2 + 3 = 6, so one part is 72 ÷ 6 = 12. The middle share is 2 × 12 = 24. Picking 12 gives the smallest share and 36 gives the largest.",
+      },
+      {
+        question: "£84 is shared in the ratio 4 : 3. How much more money does the larger share get?",
+        choices: [
+          "£7",
+          "£12",
+          "£36",
+          "£48",
+        ],
+        accept: [
+          "£12",
+        ],
+        answer: "£12. There are 4 + 3 = 7 parts, so one part is 84 ÷ 7 = £12. The difference is 4 − 3 = 1 part, so the larger share gets £12 more. The two shares themselves are £48 and £36.",
+      },
+      {
+        question: "Two numbers are in the ratio 7 : 4 and they differ by 18. What is the larger number?",
+        accept: [
+          "42",
+        ],
+        answer: "42. The difference is 7 − 4 = 3 parts, and those 3 parts are worth 18, so one part is 6. The larger number is 7 × 6 = 42.",
+      },
+      {
+        question: "Sam and Tia share sweets in the ratio 3 : 8. Tia receives 40 sweets. How many sweets were shared altogether?",
+        accept: [
+          "55",
+        ],
+        answer: "55 sweets. Tia's 8 parts are worth 40, so one part is 40 ÷ 8 = 5. Altogether there are 3 + 8 = 11 parts, giving 11 × 5 = 55.",
+      },
+      {
+        question: "A rescue centre keeps cats and dogs in the ratio 5 : 9, and there are 20 more dogs than cats. How many animals are there in total?",
+        accept: [
+          "70",
+        ],
+        answer: "70 animals. The difference of 9 − 5 = 4 parts is worth 20, so one part is 5. The total is 5 + 9 = 14 parts, which is 14 × 5 = 70.",
+      },
+      {
+        question: "Concrete is mixed with cement to sand in the ratio 1 : 5. When 24 kg of sand is used, what mass of cement is needed, in kilograms?",
+        accept: [
+          "4.8",
+          "4.8kg",
+        ],
+        answer: "4.8 kg. The sand is 5 parts and is worth 24 kg, so one part is 24 ÷ 5 = 4.8 kg. The cement is 1 part, so 4.8 kg is needed.",
+      },
+      {
+        question: "A pastry recipe uses flour to butter in the ratio 5 : 2. For 350 g of flour, what mass of butter is required, in grams?",
+        accept: [
+          "140",
+          "140g",
+        ],
+        answer: "140 g. The flour is 5 parts worth 350 g, so one part is 350 ÷ 5 = 70 g. The butter is 2 parts, which is 2 × 70 = 140 g.",
+      },
+      {
+        question: "A theatre sold adult and child tickets in the ratio 3 : 5, selling 60 more child tickets than adult tickets. How many adult tickets were sold?",
+        accept: [
+          "90",
+        ],
+        answer: "90 adult tickets. The difference of 5 − 3 = 2 parts is worth 60, so one part is 30. Adult tickets are 3 parts, which is 3 × 30 = 90.",
+      },
+      {
+        question: "In a ratio of 2 : 9, the smaller part has value 14. What is the larger part?",
+        choices: [
+          "7",
+          "21",
+          "63",
+          "126",
+        ],
+        accept: [
+          "63",
+        ],
+        answer: "63. The smaller part is 2 parts worth 14, so one part is 7. The larger part is 9 × 7 = 63. Multiplying 14 by 9 gives 126 and skips the step of finding one part.",
+      },
+      {
+        question: "Given a : b = 2 : 3 and b : c = 4 : 5, the ratio a : c can be written as 8 : n. Find n.",
+        accept: [
+          "15",
+          "n = 15",
+        ],
+        answer: "n = 15. Make b match in both ratios: multiply 2 : 3 by 4 to get 8 : 12, and multiply 4 : 5 by 3 to get 12 : 15. So a : b : c = 8 : 12 : 15 and a : c = 8 : 15.",
+      },
+      {
+        question: "A school of 330 students has boys to girls in the ratio 5 : 6. Among the girls, those who wear glasses to those who do not are in the ratio 1 : 5. How many girls wear glasses?",
+        accept: [
+          "30",
+        ],
+        answer: "30 girls. There are 5 + 6 = 11 parts, so one part is 330 ÷ 11 = 30 students and the number of girls is 6 × 30 = 180. Splitting 180 in the ratio 1 : 5 gives 6 parts of 30, so 1 × 30 = 30 girls wear glasses.",
+      },
+      {
+        question: "Arthur, Beth and Cara share £310. Arthur : Beth = 3 : 5 and Beth : Cara = 2 : 3. How much does Cara receive, in pounds?",
+        accept: [
+          "150",
+          "£150",
+        ],
+        answer: "£150. Match Beth in both ratios by scaling 3 : 5 by 2 and 2 : 3 by 5, giving Arthur : Beth : Cara = 6 : 10 : 15. That is 31 parts, so one part is 310 ÷ 31 = £10 and Cara gets 15 × 10 = £150.",
+      },
+      {
+        question: "For a set of beads, red : blue = 3 : 2 and blue : green = 5 : 4. There are 16 green beads. How many red beads are there?",
+        accept: [
+          "30",
+        ],
+        answer: "30 red beads. Scale to make blue agree: 3 : 2 becomes 15 : 10 and 5 : 4 becomes 10 : 8, so red : blue : green = 15 : 10 : 8. The 8 green parts are worth 16, so one part is 2 and red is 15 × 2 = 30.",
+      },
+      {
+        question: "If p : q = 1 : 3 and q : r = 6 : 5, what is p : r in its simplest form?",
+        choices: [
+          "2 : 5",
+          "1 : 5",
+          "6 : 5",
+          "5 : 2",
+        ],
+        accept: [
+          "2 : 5",
+        ],
+        answer: "2 : 5. Scale the first ratio by 2 so that q matches: 1 : 3 becomes 2 : 6, and q : r is 6 : 5. So p : q : r = 2 : 6 : 5, giving p : r = 2 : 5. Writing 1 : 5 comes from taking the outer numbers without scaling.",
+      },
+      {
+        question: "A drink is mixed with orange : lemonade = 2 : 5 and lemonade : soda = 3 : 4. A 451 ml glass is poured. How much soda does it contain?",
+        choices: [
+          "66 ml",
+          "164 ml",
+          "165 ml",
+          "220 ml",
+        ],
+        accept: [
+          "220 ml",
+        ],
+        answer: "220 ml. Scale so lemonade matches: 2 : 5 becomes 6 : 15 and 3 : 4 becomes 15 : 20, so orange : lemonade : soda = 6 : 15 : 20. That is 41 parts and 451 ÷ 41 = 11 ml per part, so the soda is 20 × 11 = 220 ml. Using 2 : 5 : 4 without scaling gives the wrong answer of 164 ml.",
+      },
+      {
+        question: "In a ratio of 5 : 7, what fraction of the whole is the second share? Give your answer as a fraction.",
+        accept: [
+          "7/12",
+        ],
+        answer: "7/12. The total number of parts is 5 + 7 = 12, and the second share is 7 of those parts, so it is 7/12 of the whole.",
+      },
+      {
+        question: "Two fifths of a club's members are women. Writing women : men as 2 : n, find n.",
+        accept: [
+          "3",
+          "n = 3",
+        ],
+        answer: "n = 3. If 2/5 are women then 3/5 are men, so for every 2 women there are 3 men and the ratio is 2 : 3.",
+      },
+      {
+        question: "There are 63 books on a shelf, with fiction to non-fiction in the ratio 4 : 5. What fraction of the books are non-fiction? Give your answer in its simplest form.",
+        accept: [
+          "5/9",
+        ],
+        answer: "5/9. The parts total 4 + 5 = 9, and non-fiction is 5 of them, so the fraction is 5/9. As a check, 63 ÷ 9 = 7, so there are 35 non-fiction books and 35/63 = 5/9.",
+      },
+      {
+        question: "In a bag, the ratio of red counters to blue counters is 3 : 5. What fraction of the counters are red?",
+        choices: [
+          "3/5",
+          "3/8",
+          "5/8",
+          "2/8",
+        ],
+        accept: [
+          "3/8",
+        ],
+        answer: "3/8. The denominator of the fraction is the total number of parts, 3 + 5 = 8, so the red counters are 3/8 of the bag. Writing 3/5 is the common slip of using one part as the denominator instead of the total.",
+      },
+      {
+        question: "In a car park, 5/9 of the vehicles are cars and the rest are vans. What is the ratio of cars to vans?",
+        choices: [
+          "5 : 9",
+          "5 : 4",
+          "4 : 5",
+          "9 : 5",
+        ],
+        accept: [
+          "5 : 4",
+        ],
+        answer: "5 : 4. If 5/9 are cars then 4/9 are vans, so out of every 9 vehicles 5 are cars and 4 are vans, giving 5 : 4. Answering 5 : 9 uses the total rather than the second part.",
+      },
+      {
+        question: "A recipe for 4 people needs 320 g of rice. What mass of rice is needed for 7 people, in grams?",
+        accept: [
+          "560",
+          "560g",
+        ],
+        answer: "560 g. One person needs 320 ÷ 4 = 80 g, so 7 people need 7 × 80 = 560 g.",
+      },
+      {
+        question: "Twelve muffins need 180 g of sugar. How much sugar is needed for 20 muffins, in grams?",
+        accept: [
+          "300",
+          "300g",
+        ],
+        answer: "300 g. Each muffin uses 180 ÷ 12 = 15 g of sugar, so 20 muffins need 20 × 15 = 300 g.",
+      },
+      {
+        question: "A cake recipe for 8 people uses 250 ml of milk. Priya has 400 ml of milk and nothing else is limited. What is the greatest whole number of people she can make the cake for?",
+        accept: [
+          "12",
+        ],
+        answer: "12 people. One person needs 250 ÷ 8 = 31.25 ml, and 400 ÷ 31.25 = 12.8. You cannot make part of a person's portion, so you round down to 12.",
+      },
+      {
+        question: "A batch of 10 flapjacks uses 125 g of oats. Using 400 g of oats, how many whole flapjacks can be made?",
+        accept: [
+          "32",
+        ],
+        answer: "32 flapjacks. Each flapjack takes 125 ÷ 10 = 12.5 g of oats, and 400 ÷ 12.5 = 32 exactly, so 32 whole flapjacks can be made.",
+      },
+      {
+        question: "A recipe for 6 people needs 150 g of butter. How much butter is needed for 9 people?",
+        choices: [
+          "100 g",
+          "153 g",
+          "225 g",
+          "300 g",
+        ],
+        accept: [
+          "225 g",
+        ],
+        answer: "225 g. The scale factor is 9 ÷ 6 = 1.5, so the butter is 150 × 1.5 = 225 g. Answering 153 g comes from adding the difference of 3 instead of multiplying, and 100 g comes from using the scale factor upside down.",
+      },
+      {
+        question: "A recipe for 15 pancakes uses 300 ml of milk. Ali wants to make 25 pancakes. How much milk does he need?",
+        choices: [
+          "180 ml",
+          "310 ml",
+          "500 ml",
+          "600 ml",
+        ],
+        accept: [
+          "500 ml",
+        ],
+        answer: "500 ml. One pancake needs 300 ÷ 15 = 20 ml, so 25 pancakes need 25 × 20 = 500 ml. Answering 310 ml comes from adding 10 rather than scaling, and 180 ml comes from multiplying by 15/25 instead of 25/15.",
+      },
+      {
+        question: "Coffee is sold as 200 g for £4.50 or 350 g for £7.35. Work out the price per 100 g of the better-value pack, in pounds.",
+        accept: [
+          "2.10",
+          "2.1",
+          "£2.10",
+        ],
+        answer: "£2.10. The 200 g pack is 4.50 ÷ 2 = £2.25 per 100 g and the 350 g pack is 7.35 ÷ 3.5 = £2.10 per 100 g, so the larger pack is better value at £2.10 per 100 g.",
+      },
+      {
+        question: "Pens are sold in packs of 5 for £2.75 or packs of 8 for £4.32. Work out the cost of one pen from the cheaper pack, in pence.",
+        accept: [
+          "54",
+          "54p",
+        ],
+        answer: "54p. The 5-pack works out at 275 ÷ 5 = 55p per pen and the 8-pack at 432 ÷ 8 = 54p per pen, so the 8-pack is cheaper at 54p each.",
+      },
+      {
+        question: "Yoghurts come in a 4-pack for £1.56 or a 6-pack for £2.28. How much is saved, in pence, by buying 12 pots using the better-value packs?",
+        accept: [
+          "12",
+          "12p",
+        ],
+        answer: "12p. The 4-pack is 156 ÷ 4 = 39p per pot and the 6-pack is 228 ÷ 6 = 38p per pot. Twelve pots cost 3 × £1.56 = £4.68 as 4-packs and 2 × £2.28 = £4.56 as 6-packs, a saving of 12p.",
+      },
+      {
+        question: "Washing powder is sold in four sizes: 1 kg at £3.20, 1.5 kg at £4.65, 2 kg at £6.00 and 2.5 kg at £7.75. Which size is the best value?",
+        choices: [
+          "The 1 kg box",
+          "The 1.5 kg box",
+          "The 2 kg box",
+          "The 2.5 kg box",
+        ],
+        accept: [
+          "The 2 kg box",
+        ],
+        answer: "The 2 kg box. Dividing price by mass gives £3.20, £3.10, £3.00 and £3.10 per kilogram, so the 2 kg box is cheapest per kilogram. The biggest box is not automatically the best buy, which is what makes the 2.5 kg option tempting.",
+      },
+      {
+        question: "A 2 kg bag of rice costs £3.10 and a 5 kg bag costs £7.50. Which bag is better value, and by how much per kilogram?",
+        choices: [
+          "The 5 kg bag, by 5p per kg",
+          "The 2 kg bag, by 5p per kg",
+          "The 5 kg bag, by 50p per kg",
+          "They are equally good value",
+        ],
+        accept: [
+          "The 5 kg bag, by 5p per kg",
+        ],
+        answer: "The 5 kg bag, by 5p per kilogram. The 2 kg bag is 3.10 ÷ 2 = £1.55 per kg and the 5 kg bag is 7.50 ÷ 5 = £1.50 per kg, a difference of 5p per kg.",
+      },
+      {
+        question: "The exchange rate is £1 = €1.16. Convert £250 into euros.",
+        accept: [
+          "290",
+          "€290",
+        ],
+        answer: "€290. Going from pounds to euros you multiply by the rate, so 250 × 1.16 = 290 euros.",
+      },
+      {
+        question: "£1 = €1.15 and €1 = 1.08 Swiss francs. Convert £400 into Swiss francs.",
+        accept: [
+          "496.80",
+          "496.8",
+        ],
+        answer: "496.80 Swiss francs. First change pounds to euros: 400 × 1.15 = €460. Then change euros to francs: 460 × 1.08 = 496.80 francs. Do the two steps in order and only round at the end.",
+      },
+      {
+        question: "A watch costs £180 in London and $215 in New York, where £1 = $1.27. How much cheaper is the New York price, in pounds to the nearest penny?",
+        accept: [
+          "10.71",
+          "£10.71",
+        ],
+        answer: "£10.71. Convert the dollar price to pounds by dividing: 215 ÷ 1.27 = £169.2913..., and 180 − 169.2913... = £10.7086..., which is £10.71 to the nearest penny. Keep the full value in your calculator until the final rounding.",
+      },
+      {
+        question: "Sonia changes £600 into dollars at $1.31 to the pound, spends $500, then changes the rest back at $1.36 to the pound. How much does she receive, in pounds to the nearest penny?",
+        accept: [
+          "210.29",
+          "£210.29",
+        ],
+        answer: "£210.29. She gets 600 × 1.31 = $786, spends $500 and has $286 left. Changing back means dividing: 286 ÷ 1.36 = £210.294..., which is £210.29 to the nearest penny.",
+      },
+      {
+        question: "The exchange rate is £1 = $1.24. A jacket is priced at $93. What is the price in pounds?",
+        choices: [
+          "£74.40",
+          "£75.00",
+          "£115.32",
+          "£116.25",
+        ],
+        accept: [
+          "£75.00",
+        ],
+        answer: "£75.00. Going from dollars to pounds you divide by the rate: 93 ÷ 1.24 = £75. Multiplying instead gives £115.32, which is the classic direction error, and rounding the rate to 1.25 first loses accuracy.",
+      },
+      {
+        question: "The exchange rate is £1 = €1.18. Ellie changes €295 into pounds. How much does she get?",
+        choices: [
+          "£236.00",
+          "£250.00",
+          "£295.00",
+          "£348.10",
+        ],
+        accept: [
+          "£250.00",
+        ],
+        answer: "£250.00. Euros to pounds means dividing by the rate: 295 ÷ 1.18 = £250. Multiplying by 1.18 gives £348.10, which would mean she ends up with more money than she started with.",
+      },
+      {
+        question: "y is directly proportional to x, and y = 45 when x = 9. Work out y when x = 14.",
+        accept: [
+          "70",
+          "y = 70",
+        ],
+        answer: "y = 70. In direct proportion y = kx, so k = 45 ÷ 9 = 5. Then y = 5 × 14 = 70.",
+      },
+      {
+        question: "d is directly proportional to t, and d = 120 when t = 8. Find t when d = 195.",
+        accept: [
+          "13",
+          "t = 13",
+        ],
+        answer: "t = 13. The constant is k = 120 ÷ 8 = 15, so d = 15t. Setting 15t = 195 gives t = 195 ÷ 15 = 13.",
+      },
+      {
+        question: "P is directly proportional to Q, and P = 21 when Q = 6. Write a formula for P in terms of Q, using a decimal for the constant.",
+        accept: [
+          "P = 3.5Q",
+        ],
+        answer: "P = 3.5Q. Direct proportion means P = kQ, and substituting the pair of values gives 21 = 6k, so k = 21 ÷ 6 = 3.5.",
+      },
+      {
+        question: "t is inversely proportional to n, and t = 12 when n = 5. Calculate t when n = 8.",
+        accept: [
+          "7.5",
+          "t = 7.5",
+        ],
+        answer: "t = 7.5. Inverse proportion means t = k/n, so k = 12 × 5 = 60. Then t = 60 ÷ 8 = 7.5.",
+      },
+      {
+        question: "V is inversely proportional to p, and V = 30 when p = 4. Write a formula for V in terms of p.",
+        accept: [
+          "V = 120/p",
+        ],
+        answer: "V = 120/p. Inverse proportion means V = k/p, so k = V × p = 30 × 4 = 120, giving V = 120/p.",
+        higherOnly: true,
+      },
+      {
+        question: "y is directly proportional to x, and y = 30 when x = 12. Find y when x = 20.",
+        choices: [
+          "18",
+          "38",
+          "50",
+          "600",
+        ],
+        accept: [
+          "50",
+        ],
+        answer: "y = 50. The constant is k = 30 ÷ 12 = 2.5, so y = 2.5 × 20 = 50. Answering 18 treats the relationship as inverse, 38 adds 8 to y because x rose by 8, and 600 forgets to divide by 12 first.",
+      },
+      {
+        question: "In the equation y = 18/x, what happens to y when the value of x is doubled?",
+        choices: [
+          "y halves",
+          "y doubles",
+          "y stays the same",
+          "y increases by 18",
+        ],
+        accept: [
+          "y halves",
+        ],
+        answer: "y halves. Replacing x by 2x gives 18 ÷ (2x), which is half of 18 ÷ x. In an inverse relationship, multiplying the input by a number divides the output by that same number.",
+      },
+      {
+        question: "Which pair of quantities is in inverse proportion?",
+        choices: [
+          "The number of workers and the time a fixed job takes",
+          "The number of litres of petrol bought and the cost",
+          "The side length of a square and its perimeter",
+          "The number of hours worked and the pay at a fixed hourly rate",
+        ],
+        accept: [
+          "The number of workers and the time a fixed job takes",
+        ],
+        answer: "The number of workers and the time a fixed job takes. More workers means proportionally less time, so their product stays constant. The other three pairs all increase together at a constant rate, which is direct proportion.",
+      },
+      {
+        question: "Four identical bricks have a total mass of 9.2 kg. What is the mass of 7 of these bricks?",
+        choices: [
+          "5.3 kg",
+          "16.1 kg",
+          "36.8 kg",
+          "64.4 kg",
+        ],
+        accept: [
+          "16.1 kg",
+        ],
+        answer: "16.1 kg. One brick has mass 9.2 ÷ 4 = 2.3 kg, so 7 bricks have mass 7 × 2.3 = 16.1 kg. Answering 64.4 kg multiplies by 7 without dividing by 4 first, and 5.3 kg uses the scale factor upside down.",
+      },
+      {
+        question: "It takes 3 painters 8 hours to paint a hall. How long would 4 painters take, working at the same rate?",
+        choices: [
+          "6 hours",
+          "9 hours",
+          "10.7 hours",
+          "24 hours",
+        ],
+        accept: [
+          "6 hours",
+        ],
+        answer: "6 hours. The job takes 3 × 8 = 24 painter-hours, so 4 painters need 24 ÷ 4 = 6 hours. Answering 10.7 hours treats the relationship as direct proportion, which would mean more painters take longer.",
+      },
+      {
+        question: "y is directly proportional to x². When x = 5, y = 50. Work out y when x = 8.",
+        accept: [
+          "128",
+          "y = 128",
+        ],
+        answer: "y = 128. Write y = kx². Substituting gives 50 = k × 25, so k = 2. Then y = 2 × 8² = 2 × 64 = 128. Square the x value before multiplying by k.",
+        higherOnly: true,
+      },
+      {
+        question: "V is directly proportional to r³, and V = 54 when r = 3. Calculate V when r = 5.",
+        accept: [
+          "250",
+          "V = 250",
+        ],
+        answer: "V = 250. From V = kr³ we get 54 = k × 27, so k = 2. Then V = 2 × 5³ = 2 × 125 = 250.",
+        higherOnly: true,
+      },
+      {
+        question: "y is directly proportional to x², with y = 80 when x = 4. Find the positive value of x when y = 245.",
+        accept: [
+          "7",
+          "x = 7",
+        ],
+        answer: "x = 7. From y = kx² we get 80 = k × 16, so k = 5 and y = 5x². Setting 5x² = 245 gives x² = 49, so the positive value is x = 7.",
+        higherOnly: true,
+      },
+      {
+        question: "The mass of a solid sphere is directly proportional to the cube of its radius. A sphere of radius 2 cm has mass 24 g. Work out the mass of a sphere of radius 5 cm, in grams.",
+        accept: [
+          "375",
+          "375g",
+        ],
+        answer: "375 g. Write m = kr³. Substituting gives 24 = k × 8, so k = 3. Then m = 3 × 5³ = 3 × 125 = 375 g.",
+        higherOnly: true,
+      },
+      {
+        question: "A quantity y is inversely proportional to x². Given that y = 4 when x = 3, find y when x = 6.",
+        choices: [
+          "1",
+          "2",
+          "8",
+          "16",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "y = 1. Write y = k/x². Substituting gives 4 = k ÷ 9, so k = 36. Then y = 36 ÷ 6² = 36 ÷ 36 = 1. Answering 2 treats it as inverse in x rather than x², and 16 treats it as direct.",
+        higherOnly: true,
+      },
+      {
+        question: "y is directly proportional to x². If the value of x is multiplied by 3, what happens to y?",
+        choices: [
+          "y is multiplied by 3",
+          "y is multiplied by 6",
+          "y is multiplied by 9",
+          "y is multiplied by 27",
+        ],
+        accept: [
+          "y is multiplied by 9",
+        ],
+        answer: "y is multiplied by 9. Replacing x by 3x gives k(3x)² = 9kx², so the output grows by the square of the scale factor. Answering 3 forgets to square, and 27 uses a cube instead.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why, when a ratio question gives you the difference between two shares, you must find the value of one part before you can find the total.",
+        answer: "The ratio numbers are parts, not amounts, so no answer can be read off until you know what one part is worth. The difference between the shares is the difference between the part counts, so in 7 : 4 the difference is 3 parts. Dividing the given difference by 3 gives the value of one part, and every other quantity, including the total of 11 parts, is then a multiplication. Skipping this step and dividing the difference by the total number of parts is the usual error. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how to combine a : b and b : c into a single ratio a : b : c when the two values of b are not the same.",
+        answer: "You scale each ratio so that b becomes the same number in both. Find the lowest common multiple of the two b values, then multiply every part of the first ratio by whatever makes its b reach that number, and do the same for the second. Because you multiply every part of a ratio by the same number, the ratio itself is unchanged. The two ratios can then be written side by side as a three-part ratio, which you simplify at the end if it has a common factor. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain the difference between saying '3 out of every 5 students walk to school' and 'walkers to non-walkers are in the ratio 3 : 5'.",
+        answer: "The first is a part-to-whole statement: 3/5 of the students walk, so 2/5 do not, and in a group of 5 there are 3 walkers and 2 non-walkers. The second is a part-to-part statement: for every 3 walkers there are 5 non-walkers, so the group size is 8 and the fraction who walk is 3/8, not 3/5. Reading a ratio as a fraction of the whole is one of the most common ratio errors, and the fix is to add the parts to get the denominator. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a '3 for the price of 2' offer is not automatically better value than a larger pack, and describe the calculation that settles it.",
+        answer: "The offer only tells you the discount on one particular pack size; it says nothing about how that pack was priced to begin with. A larger pack at full price can still work out cheaper per unit. To decide, convert both options to the same unit rate: divide the total cost you would actually pay by the total quantity you would actually receive, giving a price per gram, per litre or per item, then compare those two numbers. The smaller unit price is the better value. (Mark this one yourself.)",
+      },
+      {
+        question: "A student converts £40 into euros at a rate of £1 = €1.18 by calculating 40 ÷ 1.18. Explain the error and describe how to decide whether to multiply or divide by an exchange rate.",
+        answer: "The rate says one pound is worth more than one euro's face value, so £40 must become a larger number of euros, yet dividing makes the number smaller. The student should have calculated 40 × 1.18 = €47.20. The reliable method is to write the rate as an equation, £1 = €1.18, and go in the direction the question asks: pounds to euros multiplies by 1.18, euros to pounds divides by 1.18. A quick sanity check on whether the answer should be bigger or smaller catches the error every time. (Mark this one yourself.)",
+      },
+      {
+        question: "Show that if y is inversely proportional to x, then the product xy is the same for every pair of values.",
+        answer: "Inverse proportion means y = k/x for some fixed constant k. Multiplying both sides by x gives xy = k. Because k does not change, the product xy takes the same value for every pair of matching x and y values. This is why you find k in an inverse proportion question by multiplying the given pair together, and why a table of values is inversely proportional exactly when every row has the same product. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why doubling the radius multiplies the volume by 8 when volume is directly proportional to the cube of the radius.",
+        answer: "If V = kr³ then replacing r by 2r gives k(2r)³. Cubing the bracket cubes both the 2 and the r, so k(2r)³ = 8kr³, which is 8 times the original volume. The scale factor applies to each of the three dimensions, so the volume scale factor is the length scale factor cubed. The same reasoning gives an area scale factor of 4 when lengths double. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Describe how to check that your answers to a 'share in a given ratio' question are correct before moving on.",
+        answer: "First add your shares together and confirm they give back the original total, since every part must be accounted for. Then divide your shares by each other, or simplify them as a ratio, and check that the result matches the ratio in the question. Finally check that the biggest ratio number has produced the biggest share, which catches the common slip of matching the shares to the wrong parts. All three checks take a few seconds and use only the numbers already in front of you. (Mark this one yourself.)",
       },
     ],
 
@@ -2374,6 +5278,787 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain why multiplying every term by the denominator is the safest first step when an equation contains a fraction.",
         answer: "Clearing the fraction at the start turns the problem into an ordinary linear equation, so the remaining steps are simple additions and divisions with less chance of slipping. The key point is that every term must be multiplied, including the ones that are not fractions, or the equation stops being balanced. Leaving the fraction in place tempts you into cancelling parts of an expression that are not factors, which is where marks are usually lost. (Mark this one yourself.)",
+      },
+      {
+        question: "Solve 5x + 7 = 32",
+        accept: [
+          "5",
+          "x = 5",
+        ],
+        answer: "x = 5. Subtract 7 from both sides to get 5x = 25, then divide both sides by 5.",
+      },
+      {
+        question: "Solve 9x − 4 = 5x + 20",
+        accept: [
+          "6",
+          "x = 6",
+        ],
+        answer: "x = 6. Subtract 5x from both sides to get 4x − 4 = 20, add 4 to give 4x = 24, then divide by 4.",
+      },
+      {
+        question: "Solve 8 − 3x = 23",
+        accept: [
+          "-5",
+          "x = -5",
+        ],
+        answer: "x = −5. Subtract 8 from both sides to get −3x = 15, then divide by −3. Dividing a negative by a negative here gives a negative x because 15 is positive.",
+      },
+      {
+        question: "Solve 7(x − 2) = 42",
+        accept: [
+          "8",
+          "x = 8",
+        ],
+        answer: "x = 8. Divide both sides by 7 first, which gives x − 2 = 6, then add 2. Expanding to 7x − 14 = 42 works just as well.",
+      },
+      {
+        question: "Solve 2(3x − 1) = 4(x + 5)",
+        accept: [
+          "11",
+          "x = 11",
+        ],
+        answer: "x = 11. Expand both sides to 6x − 2 = 4x + 20, subtract 4x to get 2x − 2 = 20, add 2, then divide by 2.",
+      },
+      {
+        question: "Solve 4x + 9 = 2. Give your answer as a decimal.",
+        accept: [
+          "-1.75",
+          "x = -1.75",
+          "-7/4",
+        ],
+        answer: "x = −1.75. Subtract 9 from both sides to get 4x = −7, then divide by 4. A negative, non-whole answer is perfectly allowed — do not assume you have gone wrong.",
+      },
+      {
+        question: "Solve 10 − 2x = 4x − 8",
+        accept: [
+          "3",
+          "x = 3",
+        ],
+        answer: "x = 3. Add 2x to both sides so the x term stays positive: 10 = 6x − 8. Add 8 to get 18 = 6x, then divide by 6.",
+      },
+      {
+        question: "Solve 3(2x + 1) − 2(x − 4) = 27",
+        accept: [
+          "4",
+          "x = 4",
+        ],
+        answer: "x = 4. Expand carefully: 6x + 3 − 2x + 8. The −2 multiplies the −4 to give +8. Collect to 4x + 11 = 27, so 4x = 16.",
+      },
+      {
+        question: "Solve 7x + 3 = 5x − 9",
+        choices: [
+          "x = -6",
+          "x = 6",
+          "x = -3",
+          "x = -12",
+        ],
+        accept: [
+          "x = -6",
+        ],
+        answer: "Subtract 5x from both sides to get 2x + 3 = −9, then subtract 3 to get 2x = −12 and divide by 2. Forgetting the final division leaves −12; losing the minus sign gives 6.",
+      },
+      {
+        question: "Solve 5 − 2x = 11",
+        choices: [
+          "x = -3",
+          "x = 3",
+          "x = -8",
+          "x = 8",
+        ],
+        accept: [
+          "x = -3",
+        ],
+        answer: "Subtract 5 from both sides to get −2x = 6, then divide by −2. The commonest slip is to subtract 5 from 11 and forget that the x term is negative.",
+      },
+      {
+        question: "Which of these is a correct first step when solving 5x − 8 = 2x + 7?",
+        choices: [
+          "Subtract 2x from both sides",
+          "Subtract 2x from the left-hand side only",
+          "Add 8 to the left-hand side only",
+          "Divide the left-hand side by 5",
+        ],
+        accept: [
+          "Subtract 2x from both sides",
+        ],
+        answer: "An equation stays true only if you do exactly the same thing to both sides. Subtracting 2x from both sides gathers the letters on the left and keeps the coefficient of x positive.",
+      },
+      {
+        question: "Give two different correct first steps for solving 3(x + 4) = 21, and explain why both lead to the same answer.",
+        answer: "One first step is to expand the bracket, giving 3x + 12 = 21, then subtract 12 and divide by 3. The other is to divide both sides by 3 straight away, giving x + 4 = 7, then subtract 4. Both are valid because each does the same thing to both sides, so the balance is never broken; the second is quicker here because 21 divides exactly by 3. Either way x = 5. (Mark this one yourself.)",
+      },
+      {
+        question: "Solve x/4 + 3 = 10",
+        accept: [
+          "28",
+          "x = 28",
+        ],
+        answer: "x = 28. Subtract 3 from both sides to get x/4 = 7, then multiply both sides by 4. Undo the addition before the division.",
+      },
+      {
+        question: "Solve (x + 5)/3 = 7",
+        accept: [
+          "16",
+          "x = 16",
+        ],
+        answer: "x = 16. Multiply both sides by 3 so the whole bracket is freed: x + 5 = 21. Then subtract 5.",
+      },
+      {
+        question: "Solve (2x − 3)/5 = 3",
+        accept: [
+          "9",
+          "x = 9",
+        ],
+        answer: "x = 9. Multiply both sides by 5 to get 2x − 3 = 15, add 3 to give 2x = 18, then halve.",
+      },
+      {
+        question: "Solve x/2 + x/3 = 10",
+        accept: [
+          "12",
+          "x = 12",
+        ],
+        answer: "x = 12. Multiply every term by 6, the lowest common denominator, giving 3x + 2x = 60. Collect to 5x = 60 and divide by 5.",
+      },
+      {
+        question: "Solve (3x + 1)/4 = (x + 4)/2",
+        accept: [
+          "7",
+          "x = 7",
+        ],
+        answer: "x = 7. Multiply every term by 4, the lowest common denominator, giving 3x + 1 = 2(x + 4). Expand to 3x + 1 = 2x + 8, so x = 7.",
+      },
+      {
+        question: "Solve (x − 1)/2 + (x + 2)/3 = 4. Give your answer as a decimal.",
+        accept: [
+          "4.6",
+          "x = 4.6",
+          "23/5",
+        ],
+        answer: "x = 4.6. Multiply every term by 6: 3(x − 1) + 2(x + 2) = 24. Expand to 3x − 3 + 2x + 4 = 24, collect to 5x + 1 = 24, so 5x = 23.",
+      },
+      {
+        question: "Solve 20/x = 4",
+        accept: [
+          "5",
+          "x = 5",
+        ],
+        answer: "x = 5. Here the unknown is on the bottom, so multiply both sides by x first: 20 = 4x. Then divide by 4.",
+      },
+      {
+        question: "What is the best first step when solving x/3 + x/4 = 7?",
+        choices: [
+          "Multiply every term by 12",
+          "Multiply every term by 7",
+          "Cancel the x from both fractions",
+          "Add 3 and 4 to get x/7 = 7",
+        ],
+        accept: [
+          "Multiply every term by 12",
+        ],
+        answer: "12 is the lowest common multiple of 3 and 4, so multiplying every term by 12 clears both denominators at once and leaves 4x + 3x = 84. You cannot add denominators, and cancelling the x would destroy the unknown you are solving for.",
+      },
+      {
+        question: "Solve (x + 7)/2 = x − 1",
+        choices: [
+          "x = 9",
+          "x = 8",
+          "x = 3",
+          "x = -15",
+        ],
+        accept: [
+          "x = 9",
+        ],
+        answer: "Multiply BOTH sides by 2, remembering that the right-hand side is a whole expression: x + 7 = 2(x − 1) = 2x − 2. Subtract x and add 2 to get x = 9. Multiplying only the x on the right gives the wrong value 8.",
+      },
+      {
+        question: "Show that the solution of 3/(x + 2) = 1/2 is x = 4, explaining each step of your working.",
+        answer: "The unknown is inside a denominator, so clear the fractions by cross-multiplying: 3 × 2 = 1 × (x + 2), which is the same as multiplying both sides by 2(x + 2). That gives 6 = x + 2, so x = 4. Always finish by substituting back: 3/(4 + 2) = 3/6 = 1/2, which matches the right-hand side, and x = 4 does not make any denominator zero. (Mark this one yourself.)",
+      },
+      {
+        question: "A rectangle has length (x + 5) cm and width x cm. Its perimeter is 38 cm. Work out the value of x.",
+        accept: [
+          "7",
+          "x = 7",
+          "7 cm",
+        ],
+        answer: "x = 7. Perimeter is 2 lots of length plus width, so 2(x + 5 + x) = 38. That gives 4x + 10 = 38, so 4x = 28. Check: 12 + 7 + 12 + 7 = 38 cm.",
+      },
+      {
+        question: "Three consecutive whole numbers add up to 84. Work out the largest of the three.",
+        accept: [
+          "29",
+        ],
+        answer: "29. Call the middle number n, so the three are n − 1, n and n + 1. They add to 3n, so 3n = 84 and n = 28. The largest is 29, and 27 + 28 + 29 = 84.",
+      },
+      {
+        question: "Amara thinks of a number, multiplies it by 4 and then subtracts 7. Her result is 29. What number did she think of?",
+        accept: [
+          "9",
+        ],
+        answer: "9. Let the number be n, so 4n − 7 = 29. Add 7 to get 4n = 36, then divide by 4. Reversing the operations in the order given is what turns the words into an equation.",
+      },
+      {
+        question: "The three angles of a triangle are x°, (2x)° and (3x + 12)°. Work out the value of x.",
+        accept: [
+          "28",
+          "x = 28",
+        ],
+        answer: "x = 28. Angles in a triangle add to 180°, so x + 2x + 3x + 12 = 180. Collect to 6x + 12 = 180, so 6x = 168. The angles are 28°, 56° and 96°.",
+      },
+      {
+        question: "A quadrilateral has angles x°, (x + 20)°, (2x)° and (2x + 10)°. Work out the size of its largest angle, in degrees.",
+        accept: [
+          "120",
+        ],
+        answer: "120°. Angles in a quadrilateral add to 360°, so 6x + 30 = 360 and x = 55. The four angles are 55°, 75°, 110° and 120°, and the largest is 120°.",
+      },
+      {
+        question: "A pen costs p pence. A notebook costs 45p more than a pen. Three pens and two notebooks cost 465p altogether. Work out the cost of one pen, in pence.",
+        accept: [
+          "75",
+          "75p",
+        ],
+        answer: "75 pence. A notebook is (p + 45), so 3p + 2(p + 45) = 465. Expand to 3p + 2p + 90 = 465, collect to 5p = 375, so p = 75. A notebook is then 120p, and 225 + 240 = 465.",
+      },
+      {
+        question: "A taxi firm charges a fixed £3 booking fee plus £1.60 for every mile travelled. A journey costs £19. How many miles was the journey?",
+        accept: [
+          "10",
+        ],
+        answer: "10 miles. Let the distance be m, so 3 + 1.6m = 19. Subtract the fixed fee first: 1.6m = 16, then divide by 1.6. Dividing £19 by £1.60 without removing the booking fee is the usual error.",
+      },
+      {
+        question: "A number n is doubled and then 9 is added. The result is the same as 5 less than four times the number. Which equation represents this?",
+        choices: [
+          "2n + 9 = 4n - 5",
+          "2n + 9 = 5 - 4n",
+          "2(n + 9) = 4n - 5",
+          "2n + 9 = 4(n - 5)",
+        ],
+        accept: [
+          "2n + 9 = 4n - 5",
+        ],
+        answer: "'Doubled then 9 added' is 2n + 9. '5 less than four times the number' is 4n − 5, not 5 − 4n and not 4(n − 5). Translating each phrase separately before joining them with the equals sign avoids all three traps.",
+      },
+      {
+        question: "A rectangle is 3 cm longer than it is wide. Its perimeter is 34 cm. What is its width?",
+        choices: [
+          "7 cm",
+          "8.5 cm",
+          "10 cm",
+          "14 cm",
+        ],
+        accept: [
+          "7 cm",
+        ],
+        answer: "Let the width be w, so the length is w + 3 and 2(w + w + 3) = 34. That gives 4w + 6 = 34, so w = 7 cm and the length is 10 cm. Dividing 34 by 4 and ignoring the extra 3 gives 8.5 cm.",
+      },
+      {
+        question: "Two angles on a straight line are (3x − 10)° and (x + 30)°. Work out the value of x.",
+        choices: [
+          "40",
+          "50",
+          "85",
+          "17.5",
+        ],
+        accept: [
+          "40",
+        ],
+        answer: "Angles on a straight line add to 180°, so (3x − 10) + (x + 30) = 180. Collect to 4x + 20 = 180, giving 4x = 160 and x = 40. The angles are 110° and 70°. Using 360° gives 85 and using 90° gives 17.5.",
+      },
+      {
+        question: "A square has sides of length (2x − 1) cm and a perimeter of 36 cm. Show clearly that x = 5.",
+        answer: "All four sides are equal, so the perimeter is 4(2x − 1) = 36. Dividing both sides by 4 gives 2x − 1 = 9, then adding 1 gives 2x = 10 and x = 5. Substituting back, each side is 2 × 5 − 1 = 9 cm and 4 × 9 = 36 cm, which confirms it. For a 'show that' question the marks are for the equation and the steps, so the final line alone would score nothing. (Mark this one yourself.)",
+      },
+      {
+        question: "Solve 5x − 3 ≥ 17. The solution can be written as x ≥ n. What is the value of n?",
+        accept: [
+          "4",
+          "n = 4",
+        ],
+        answer: "n = 4. Add 3 to both sides to get 5x ≥ 20, then divide by 5. Dividing by a positive number leaves the inequality sign the way it was.",
+      },
+      {
+        question: "Solve 4x + 9 < 1. Writing the answer as x < n, find n.",
+        accept: [
+          "-2",
+          "n = -2",
+        ],
+        answer: "n = −2. Subtract 9 from both sides to get 4x < −8, then divide by 4. The 4 is positive, so the sign does not flip; the answer is simply negative.",
+      },
+      {
+        question: "Solve 7 − 3x ≤ 1. The answer has the form x ≥ n. State the value of n.",
+        accept: [
+          "2",
+          "n = 2",
+        ],
+        answer: "n = 2. Subtract 7 to get −3x ≤ −6, then divide by −3 and REVERSE the sign, giving x ≥ 2. Alternatively add 3x to both sides to get 7 ≤ 1 + 3x, which avoids the negative divisor altogether.",
+      },
+      {
+        question: "What is the largest integer that satisfies 3x < 20?",
+        accept: [
+          "6",
+        ],
+        answer: "6. Dividing by 3 gives x < 6.67 (to 2 d.p.), so x must be strictly below that. The largest whole number below 6.67 is 6, and 3 × 6 = 18, which is indeed less than 20.",
+      },
+      {
+        question: "Find the smallest integer value of x for which 4x + 5 > 12.",
+        accept: [
+          "2",
+        ],
+        answer: "2. Subtract 5 to get 4x > 7, then divide by 4 to get x > 1.75. The smallest integer above 1.75 is 2, and 4 × 2 + 5 = 13, which is greater than 12.",
+      },
+      {
+        question: "A number line shows a FILLED circle at −1 with the line shaded to the right. Write this as an inequality in x, typing >= for 'greater than or equal to'.",
+        accept: [
+          "x >= -1",
+        ],
+        answer: "x >= −1. A filled circle means the endpoint itself is included, so the sign is 'greater than or equal to', and shading to the right means the values are larger than the endpoint.",
+      },
+      {
+        question: "Solve −4x > 20",
+        choices: [
+          "x < -5",
+          "x > -5",
+          "x < 5",
+          "x > 5",
+        ],
+        accept: [
+          "x < -5",
+        ],
+        answer: "Divide both sides by −4 and REVERSE the inequality, giving x < −5. Check with x = −6: −4 × −6 = 24, which is greater than 20. Keeping the sign as it was gives x > −5, which is the opposite set of numbers.",
+      },
+      {
+        question: "A number line shows an OPEN circle at 4 with the line shaded to the left. Which inequality does it represent?",
+        choices: [
+          "x is less than 4",
+          "x is less than or equal to 4",
+          "x is greater than 4",
+          "x is greater than or equal to 4",
+        ],
+        accept: [
+          "x is less than 4",
+        ],
+        answer: "An open (hollow) circle means the endpoint is excluded, so the sign is strict. Shading to the left means the values are smaller than 4, giving x < 4.",
+      },
+      {
+        question: "Which of these values of x satisfies 2x + 1 > 9?",
+        choices: [
+          "x = 6",
+          "x = 4",
+          "x = 3",
+          "x = 0",
+        ],
+        accept: [
+          "x = 6",
+        ],
+        answer: "Solving gives 2x > 8, so x > 4. Only 6 is strictly greater than 4. x = 4 is the boundary and gives exactly 9, which is not greater than 9, so it fails.",
+      },
+      {
+        question: "Solve 6x + 1 > 2x + 21",
+        choices: [
+          "x > 5",
+          "x < 5",
+          "x > 5.5",
+          "x > 4",
+        ],
+        accept: [
+          "x > 5",
+        ],
+        answer: "Subtract 2x to get 4x + 1 > 21, then subtract 1 to get 4x > 20 and divide by 4. Adding the 1 instead of subtracting it gives the wrong boundary of 5.5.",
+      },
+      {
+        question: "Describe exactly how you would show x ≤ 3 on a number line, and say what you would change to show x < 3 instead.",
+        answer: "For x ≤ 3 put a circle at 3 and fill it in, because 3 itself is part of the solution, then draw a line from that circle going left with an arrow on the end to show the values continue without limit. For x < 3 everything stays the same except the circle is left hollow, because 3 is no longer included. The filled or hollow circle is the only thing that carries the 'or equal to' information, so examiners look at it first. (Mark this one yourself.)",
+      },
+      {
+        question: "How many integers satisfy −3 ≤ n < 2?",
+        accept: [
+          "5",
+          "five",
+        ],
+        answer: "5 of them: −3, −2, −1, 0 and 1. The −3 is included because the sign is 'greater than or equal to', but the 2 is excluded because that sign is strict. Do not forget to count 0.",
+      },
+      {
+        question: "Solve −5 < 2x + 1 ≤ 9 and state how many integers satisfy it.",
+        accept: [
+          "7",
+          "seven",
+        ],
+        answer: "7 integers. Subtract 1 from all three parts to get −6 < 2x ≤ 8, then halve all three parts to get −3 < x ≤ 4. The integers are −2, −1, 0, 1, 2, 3 and 4.",
+      },
+      {
+        question: "Solve 1 ≤ 3x − 2 < 13. What is the smallest integer value that x can take?",
+        accept: [
+          "1",
+        ],
+        answer: "1. Add 2 to all three parts to get 3 ≤ 3x < 15, then divide all three parts by 3 to get 1 ≤ x < 5. Because the left-hand sign includes the endpoint, x = 1 itself is allowed.",
+      },
+      {
+        question: "The solution of 4 < x + 6 ≤ 11 has the form a < x ≤ b. Work out the value of a.",
+        accept: [
+          "-2",
+          "a = -2",
+        ],
+        answer: "a = −2. Subtract 6 from all three parts: 4 − 6 = −2, x + 6 − 6 = x, and 11 − 6 = 5, giving −2 < x ≤ 5. The signs themselves never change because 6 is simply being subtracted.",
+      },
+      {
+        question: "Work out the sum of all the integers that satisfy −2 < x ≤ 3.",
+        accept: [
+          "5",
+        ],
+        answer: "5. The integers are −1, 0, 1, 2 and 3, since −2 is excluded by the strict sign but 3 is included. Adding them: −1 + 0 + 1 + 2 + 3 = 5.",
+      },
+      {
+        question: "Which double inequality means 'x is at least 2 and less than 7'?",
+        choices: [
+          "2 <= x < 7",
+          "2 < x <= 7",
+          "2 < x < 7",
+          "2 <= x <= 7",
+        ],
+        accept: [
+          "2 <= x < 7",
+        ],
+        answer: "'At least 2' includes 2, so the left sign is 'or equal to'. 'Less than 7' excludes 7, so the right sign is strict. Reading the two phrases separately stops you mixing the ends up.",
+      },
+      {
+        question: "How many integers satisfy −4 ≤ 2x − 1 < 5?",
+        choices: [
+          "4",
+          "5",
+          "6",
+          "3",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "Add 1 to all three parts to get −3 ≤ 2x < 6, then halve to get −1.5 ≤ x < 3. The integers are −1, 0, 1 and 2, so there are 4. Counting 3 as well is the usual slip.",
+      },
+      {
+        question: "Explain how to solve −3 < 2x + 5 ≤ 11, and say why doing the same thing to all three parts keeps the statement true.",
+        answer: "Treat it as two inequalities joined together and work on all three parts at once. Subtract 5 from each part to get −8 < 2x ≤ 6, then divide each part by 2 to get −4 < x ≤ 3. It stays true because the double inequality is really a pair of separate statements about the same x, and any operation applied identically to every part preserves both of them. If you ever multiply or divide all three parts by a negative you must reverse BOTH signs and swap the ends round. (Mark this one yourself.)",
+      },
+      {
+        question: "Solve 2x + 3y = 18 and 2x − y = 2 simultaneously. What is the value of y?",
+        accept: [
+          "4",
+          "y = 4",
+        ],
+        answer: "y = 4. The x terms are both +2x, so SUBTRACT the equations: 3y − (−y) = 4y and 18 − 2 = 16, giving 4y = 16. Substituting back gives x = 3, and both equations check.",
+      },
+      {
+        question: "Solve 3x + 2y = 23 and x + 2y = 13. Give the value of x.",
+        accept: [
+          "5",
+          "x = 5",
+        ],
+        answer: "x = 5. Both equations contain +2y, the same sign, so subtract the second from the first: 2x = 10. Substituting into x + 2y = 13 gives y = 4, and 3(5) + 2(4) = 23 confirms it.",
+      },
+      {
+        question: "Solve the pair 4x + 3y = 25 and 4x − 2y = 10. What is y?",
+        accept: [
+          "3",
+          "y = 3",
+        ],
+        answer: "y = 3. The x terms match in size and sign, so subtract: 3y − (−2y) = 5y and 25 − 10 = 15, giving 5y = 15. Then 4x = 25 − 9 = 16, so x = 4.",
+      },
+      {
+        question: "Solve 3x + 2y = 18 together with 5x − 2y = 14. Work out x.",
+        accept: [
+          "4",
+          "x = 4",
+        ],
+        answer: "x = 4. The y terms are +2y and −2y — same size, opposite signs — so ADD the equations: 8x = 32. Substituting gives 12 + 2y = 18, so y = 3.",
+      },
+      {
+        question: "Solve x + 4y = 10 and 3x − 2y = 16. Work out the value of x.",
+        accept: [
+          "6",
+          "x = 6",
+        ],
+        answer: "x = 6. Multiply the second equation by 2 to get 6x − 4y = 32, so the y terms are +4y and −4y. Adding gives 7x = 42. Then 6 + 4y = 10, so y = 1.",
+      },
+      {
+        question: "Solve 4x + y = 0 and 2x + 3y = 10. What is the value of y?",
+        choices: [
+          "4",
+          "-4",
+          "2",
+          "10",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "Multiply the first equation by 3 to get 12x + 3y = 0, then subtract the second: 10x = −10, so x = −1 and y = 4. Check in both: 4(−1) + 4 = 0 and 2(−1) + 3(4) = 10.",
+      },
+      {
+        question: "You are given 5x + 2y = 21 and 3x + 2y = 15. What should you do first?",
+        choices: [
+          "Subtract the second equation from the first",
+          "Add the two equations together",
+          "Multiply the first equation by 3 and the second by 5",
+          "Substitute y = 21 − 5x into the first equation",
+        ],
+        accept: [
+          "Subtract the second equation from the first",
+        ],
+        answer: "The y terms are +2y in both — same size, same sign — so subtracting removes them straight away and leaves 2x = 6, giving x = 3 and y = 3. Adding would produce 4y and get you nowhere, and substituting an expression back into the equation it came from just gives 21 = 21.",
+      },
+      {
+        question: "For 2x + 5y = 16 and 3x − 5y = −1, explain why you ADD the equations rather than subtract, and describe how you would check your answer.",
+        answer: "The y terms are +5y and −5y. They are the same size but have opposite signs, so adding them gives zero and eliminates y, whereas subtracting would give +10y and leave both letters in. Adding produces 5x = 15, so x = 3, and substituting into the first equation gives 6 + 5y = 16, so y = 2. To check, put x = 3 and y = 2 into BOTH originals: 2(3) + 5(2) = 16 and 3(3) − 5(2) = −1. A slip often satisfies one equation and not the other, which is exactly why both must be tested. (Mark this one yourself.)",
+      },
+      {
+        question: "Solve y = 2x + 1 and 3x + y = 16 by substitution. What is x?",
+        accept: [
+          "3",
+          "x = 3",
+        ],
+        answer: "x = 3. Replace y in the second equation with 2x + 1: 3x + 2x + 1 = 16. Collect to 5x + 1 = 16, so 5x = 15. Then y = 2(3) + 1 = 7.",
+      },
+      {
+        question: "Given x = 3y and x + 2y = 20, work out the value of y.",
+        accept: [
+          "4",
+          "y = 4",
+        ],
+        answer: "y = 4. The first equation already gives x in terms of y, so substitute: 3y + 2y = 20, which is 5y = 20. Then x = 3 × 4 = 12, and 12 + 8 = 20 checks out.",
+      },
+      {
+        question: "Solve y = x − 4 with 2x + 3y = 13. Give the value of x.",
+        accept: [
+          "5",
+          "x = 5",
+        ],
+        answer: "x = 5. Substitute to get 2x + 3(x − 4) = 13. Expand to 2x + 3x − 12 = 13, collect to 5x = 25. Then y = 5 − 4 = 1, and 10 + 3 = 13.",
+      },
+      {
+        question: "Two lines have equations y = 3x − 2 and y = x + 6. What is the y-coordinate of the point where they meet?",
+        accept: [
+          "10",
+          "y = 10",
+        ],
+        answer: "y = 10. Both equations give y, so set them equal: 3x − 2 = x + 6. That gives 2x = 8 and x = 4, so y = 4 + 6 = 10. The lines cross at (4, 10).",
+      },
+      {
+        question: "Solve x = 2y + 1 and 3x − y = 13. What is y?",
+        choices: [
+          "2",
+          "5",
+          "3",
+          "1",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "Substitute x = 2y + 1 into the second equation: 3(2y + 1) − y = 13, so 6y + 3 − y = 13 and 5y = 10. That gives y = 2 and x = 5, so answering 5 means you have given x instead of y.",
+      },
+      {
+        question: "To solve y = 5 − x and 4x + y = 14 by substitution, which equation do you write next?",
+        choices: [
+          "4x + 5 - x = 14",
+          "4x + 5 + x = 14",
+          "4(5 - x) + y = 14",
+          "4x + y = 5 - x",
+        ],
+        accept: [
+          "4x + 5 - x = 14",
+        ],
+        answer: "Replace the y in 4x + y = 14 by the whole expression 5 − x, giving 4x + (5 − x) = 14. Simplifying gives 3x + 5 = 14, so x = 3 and y = 2. Substituting into the x term instead of the y term, or dropping the minus sign, are the two usual errors.",
+      },
+      {
+        question: "At a café, 3 coffees and 2 teas cost £11.40, while 1 coffee and 2 teas cost £6.60. Work out the cost of one coffee, in pounds.",
+        accept: [
+          "2.40",
+          "2.4",
+          "£2.40",
+        ],
+        answer: "£2.40. Let c and t be the prices. Both equations contain 2t, so subtract: 2c = 11.40 − 6.60 = 4.80, giving c = £2.40. A tea then costs £2.10, and 3(2.40) + 2(2.10) = £11.40.",
+      },
+      {
+        question: "Using the same café prices — 3 coffees and 2 teas for £11.40, 1 coffee and 2 teas for £6.60 — find the cost of one tea, in pounds.",
+        accept: [
+          "2.10",
+          "2.1",
+          "£2.10",
+        ],
+        answer: "£2.10. Once a coffee is known to be £2.40, substitute into c + 2t = 6.60 to get 2.40 + 2t = 6.60. So 2t = 4.20 and t = £2.10. Checking in the other equation: 7.20 + 4.20 = £11.40.",
+      },
+      {
+        question: "Four adult tickets and three child tickets cost £62. Two adult tickets and three child tickets cost £40. Work out the price of one adult ticket, in pounds.",
+        accept: [
+          "11",
+          "£11",
+        ],
+        answer: "£11. Both totals include 3 child tickets, so subtracting removes them: 2 adults cost 62 − 40 = £22, so one adult ticket is £11. A child ticket is then (40 − 22) ÷ 3 = £6.",
+      },
+      {
+        question: "Two numbers have a sum of 47 and a difference of 9. Work out the larger number.",
+        accept: [
+          "28",
+        ],
+        answer: "28. Write x + y = 47 and x − y = 9. Adding the equations eliminates y and gives 2x = 56, so x = 28. The smaller number is 19, and 28 + 19 = 47 with 28 − 19 = 9.",
+      },
+      {
+        question: "Five apples and two pears cost 190p. Three apples and two pears cost 134p. What is the cost of one apple?",
+        choices: [
+          "28p",
+          "25p",
+          "32p",
+          "56p",
+        ],
+        accept: [
+          "28p",
+        ],
+        answer: "Both purchases include 2 pears, so subtracting gives 2 apples = 190 − 134 = 56p, and one apple is 28p. Stopping at 56p gives the cost of two apples; 25p is the price of a pear.",
+      },
+      {
+        question: "Two mugs and one plate cost £14. One mug and three plates cost £17. How much is one mug?",
+        choices: [
+          "£5",
+          "£4",
+          "£3",
+          "£7",
+        ],
+        accept: [
+          "£5",
+        ],
+        answer: "From the first, a plate costs 14 − 2m. Substituting into the second gives m + 3(14 − 2m) = 17, so m + 42 − 6m = 17 and 5m = 25. A mug is £5 and a plate is £4. Halving £14 gives £7 and ignores the plate entirely.",
+      },
+      {
+        question: "The curve y = x² and the line y = x + 6 cross at two points. Work out the positive value of x where they cross.",
+        accept: [
+          "3",
+          "x = 3",
+        ],
+        answer: "x = 3. Substitute to get x² = x + 6, then rearrange to x² − x − 6 = 0. Factorising gives (x − 3)(x + 2) = 0, so x = 3 or x = −2. The positive solution is 3, where y = 9.",
+        higherOnly: true,
+      },
+      {
+        question: "The line y = x + 1 meets the circle x² + y² = 25. Work out the positive value of x at a crossing point.",
+        accept: [
+          "3",
+          "x = 3",
+        ],
+        answer: "x = 3. Substitute y = x + 1 into the circle: x² + (x + 1)² = 25. Expanding gives 2x² + 2x + 1 = 25, so 2x² + 2x − 24 = 0 and x² + x − 12 = 0. Factorising gives (x + 4)(x − 3) = 0, so x = 3 or x = −4. The positive one is 3, with y = 4.",
+        higherOnly: true,
+      },
+      {
+        question: "The line y = 3x − 16 touches the curve y = x² − 5x at exactly one point. Work out the x-coordinate of that point.",
+        accept: [
+          "4",
+          "x = 4",
+        ],
+        answer: "x = 4. Substituting gives x² − 5x = 3x − 16, which rearranges to x² − 8x + 16 = 0. That factorises as (x − 4)², a repeated root, so there is only one solution, x = 4, and y = −4. A repeated root is exactly what a tangent looks like algebraically.",
+        higherOnly: true,
+      },
+      {
+        question: "The line y = 2x + 3 crosses the curve y = x² twice. What is the negative x-coordinate of the two crossing points?",
+        choices: [
+          "-1",
+          "1",
+          "-3",
+          "3",
+        ],
+        accept: [
+          "-1",
+        ],
+        answer: "Substituting gives x² = 2x + 3, so x² − 2x − 3 = 0. This factorises as (x − 3)(x + 1) = 0, giving x = 3 and x = −1. The negative one is −1, where y = 1. Getting −3 and 1 means the factor signs have been swapped.",
+        higherOnly: true,
+      },
+      {
+        question: "Solving y = x² − 4x + 7 and y = x + 1 together gives two values of x. What is the smaller of them?",
+        choices: [
+          "2",
+          "3",
+          "6",
+          "-2",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "Set them equal: x² − 4x + 7 = x + 1, which rearranges to x² − 5x + 6 = 0. Factorising gives (x − 2)(x − 3) = 0, so x = 2 or x = 3, and the smaller is 2. Choosing 6 means reading off the constant term instead of solving.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why elimination will not work when one of a pair of simultaneous equations is quadratic, and why you should normally expect two solution pairs.",
+        answer: "Elimination relies on adding or subtracting multiples of the equations to cancel a whole variable, but an x² term cannot be cancelled against a linear x term no matter what you multiply by, so the quadratic never disappears. Instead you rearrange the linear equation to make one letter the subject and substitute it into the quadratic, which leaves a single quadratic equation in one unknown. A quadratic usually has two roots, and each root gives its own value of the other variable, so you normally get two complete solution pairs — geometrically, the line cuts the curve twice. One repeated root means the line is a tangent, and no real roots means they never meet. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Solve x² < 16. The solution has the form −a < x < a. Work out the value of a.",
+        accept: [
+          "4",
+          "a = 4",
+        ],
+        answer: "a = 4. The critical values come from x² = 16, so x = 4 and x = −4. Sketching y = x² − 16 shows a U-shaped curve that is below the axis between its roots, so the solution is −4 < x < 4. Writing only x < 4 wrongly allows values such as −100.",
+        higherOnly: true,
+      },
+      {
+        question: "How many integers satisfy x² − 9x + 20 ≤ 0?",
+        accept: [
+          "2",
+          "two",
+        ],
+        answer: "2 of them. Factorising gives (x − 4)(x − 5) ≤ 0, so the critical values are 4 and 5. The U-shaped curve is on or below the axis between them, giving 4 ≤ x ≤ 5. The only integers in that range are 4 and 5.",
+        higherOnly: true,
+      },
+      {
+        question: "The solution of x² + 2x − 15 < 0 can be written as a < x < b. Work out the value of b.",
+        accept: [
+          "3",
+          "b = 3",
+        ],
+        answer: "b = 3. Factorising gives (x + 5)(x − 3) < 0, so the critical values are −5 and 3. The curve is below the axis between the roots, so the solution is −5 < x < 3 and the upper end is 3.",
+        higherOnly: true,
+      },
+      {
+        question: "Solve x² > 49",
+        choices: [
+          "x < -7 or x > 7",
+          "-7 < x < 7",
+          "x > 7",
+          "x < 7",
+        ],
+        accept: [
+          "x < -7 or x > 7",
+        ],
+        answer: "The critical values are x = 7 and x = −7. The U-shaped curve y = x² − 49 lies ABOVE the axis outside its roots, so the solution is in two separate pieces. Only taking the positive square root loses the whole negative branch, even though (−8)² = 64 is greater than 49.",
+        higherOnly: true,
+      },
+      {
+        question: "Solve x² − 5x + 6 < 0",
+        choices: [
+          "2 < x < 3",
+          "x < 2 or x > 3",
+          "-3 < x < -2",
+          "x > 3",
+        ],
+        accept: [
+          "2 < x < 3",
+        ],
+        answer: "Factorise to (x − 2)(x − 3) < 0, giving critical values 2 and 3. A U-shaped curve is below the axis BETWEEN its roots, so the answer is the middle region. Testing x = 2.5 gives 6.25 − 12.5 + 6 = −0.25, which is negative, confirming it.",
+        higherOnly: true,
+      },
+      {
+        question: "Solve x² − x − 12 > 0",
+        choices: [
+          "x < -3 or x > 4",
+          "-3 < x < 4",
+          "x < -4 or x > 3",
+          "-4 < x < 3",
+        ],
+        accept: [
+          "x < -3 or x > 4",
+        ],
+        answer: "Factorise to (x + 3)(x − 4) > 0, so the critical values are −3 and 4. 'Greater than zero' means above the axis, which for a U-shaped curve is outside the roots. Swapping the signs of the factors gives the wrong pair −4 and 3.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain how sketching y = x² − 6x + 8 helps you solve x² − 6x + 8 < 0, and state the solution.",
+        answer: "Factorise first: x² − 6x + 8 = (x − 2)(x − 4), so the curve crosses the x-axis at 2 and 4, and because the coefficient of x² is positive it is U-shaped. The inequality asks where the curve is BELOW the x-axis, and a sketch shows that this is the dip between the two roots, so the solution is 2 < x < 4. The sketch is what stops you writing x < 2 or x > 4, which is the region above the axis and is the answer to the opposite inequality. (Mark this one yourself.)",
+        higherOnly: true,
       },
     ],
 
@@ -2779,6 +6464,516 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "A calculator returns the acute angle, but the sine of an obtuse angle equals the sine of its supplement, so for example sin 30° and sin 150° are both 0.5. When the sine rule is used to find an angle, both the acute value and 180° minus that value can fit the given sides. You check which one is possible by testing whether the three angles can still total 180° and whether the largest angle faces the longest side. (Mark this one yourself.)",
         higherOnly: true,
       },
+      {
+        question: "A right-angled triangle has shorter sides of 5 cm and 12 cm. Work out the length of the hypotenuse, in cm.",
+        accept: [
+          "13",
+          "13 cm",
+        ],
+        answer: "13 cm. 5² + 12² = 25 + 144 = 169, and √169 = 13. The 5-12-13 triangle is worth recognising on sight.",
+      },
+      {
+        question: "The two shorter sides of a right-angled triangle measure 2.5 m and 6 m. Calculate the hypotenuse, in m.",
+        accept: [
+          "6.5",
+          "6.5 m",
+        ],
+        answer: "6.5 m. 2.5² + 6² = 6.25 + 36 = 42.25, and √42.25 = 6.5. Decimals behave exactly like whole numbers in Pythagoras.",
+      },
+      {
+        question: "A right-angled triangle has shorter sides 7 cm and 10 cm. Find the hypotenuse in cm, to 1 decimal place.",
+        accept: [
+          "12.2",
+          "12.2 cm",
+        ],
+        answer: "12.2 cm. 7² + 10² = 49 + 100 = 149, and √149 = 12.206…, which rounds to 12.2.",
+      },
+      {
+        question: "A right-angled triangle has legs of 20 mm and 21 mm. Calculate the hypotenuse, in mm.",
+        accept: [
+          "29",
+          "29 mm",
+        ],
+        answer: "29 mm. 20² + 21² = 400 + 441 = 841, and √841 = 29 exactly, so this is another whole-number triple.",
+      },
+      {
+        question: "In a right-angled triangle the hypotenuse is 17 cm and one shorter side is 8 cm. Work out the other shorter side, in cm.",
+        accept: [
+          "15",
+          "15 cm",
+        ],
+        answer: "15 cm. Subtract when the hypotenuse is the side you already know: 17² − 8² = 289 − 64 = 225, and √225 = 15.",
+      },
+      {
+        question: "The hypotenuse of a right-angled triangle is 26 m and one of the other sides is 24 m. Find the remaining side, in m.",
+        accept: [
+          "10",
+          "10 m",
+        ],
+        answer: "10 m. 26² − 24² = 676 − 576 = 100, so the side is √100 = 10. Subtracting rather than adding is the whole difference here.",
+      },
+      {
+        question: "A right-angled triangle has a hypotenuse of 15 cm and one shorter side of 11 cm. Calculate the third side in cm, to 1 decimal place.",
+        accept: [
+          "10.2",
+          "10.2 cm",
+        ],
+        answer: "10.2 cm. 15² − 11² = 225 − 121 = 104, and √104 = 10.198…, which is 10.2 to 1 decimal place.",
+      },
+      {
+        question: "A 5 m ladder leans against a vertical wall with its foot 1.4 m from the base of the wall. Calculate how far up the wall the ladder reaches, in m.",
+        accept: [
+          "4.8",
+          "4.8 m",
+        ],
+        answer: "4.8 m. The ladder is the hypotenuse, so 5² − 1.4² = 25 − 1.96 = 23.04, and √23.04 = 4.8.",
+      },
+      {
+        question: "A rectangular gate panel measures 1.2 m by 0.5 m. Calculate the length of its diagonal, in m.",
+        accept: [
+          "1.3",
+          "1.3 m",
+        ],
+        answer: "1.3 m. 1.2² + 0.5² = 1.44 + 0.25 = 1.69, and √1.69 = 1.3. A diagonal always makes a right-angled triangle with two sides of the rectangle.",
+      },
+      {
+        question: "Find the distance between the points A(1, 2) and B(7, 10). Give your answer as a whole number.",
+        accept: [
+          "10",
+        ],
+        answer: "10. The horizontal gap is 6 and the vertical gap is 8, so the distance is √(6² + 8²) = √100 = 10.",
+      },
+      {
+        question: "Work out the distance between the points P(−3, 4) and Q(2, −8). Give your answer as a whole number.",
+        accept: [
+          "13",
+        ],
+        answer: "13. The differences are 5 across and 12 down, so the distance is √(5² + 12²) = √169 = 13. Square the differences, never the coordinates themselves.",
+      },
+      {
+        question: "Calculate the distance from the origin to the point (5, 9), to 1 decimal place.",
+        accept: [
+          "10.3",
+        ],
+        answer: "10.3. √(5² + 9²) = √(25 + 81) = √106 = 10.295…, which rounds to 10.3.",
+      },
+      {
+        question: "An isosceles triangle has a base of 10 cm and two equal sides of 13 cm. Calculate its perpendicular height, in cm.",
+        accept: [
+          "12",
+          "12 cm",
+        ],
+        answer: "12 cm. Splitting the triangle down the middle gives a right-angled triangle with hypotenuse 13 and base 5, so the height is √(169 − 25) = √144 = 12.",
+      },
+      {
+        question: "A square has sides of 9 cm. Work out the length of its diagonal in cm, to 1 decimal place.",
+        accept: [
+          "12.7",
+          "12.7 cm",
+        ],
+        answer: "12.7 cm. The diagonal cuts the square into two right-angled triangles, so it is √(9² + 9²) = √162 = 12.727…, which is 12.7 to 1 decimal place.",
+      },
+      {
+        question: "A triangle has sides 9 cm, 40 cm and 41 cm. Is it right-angled? Answer yes or no.",
+        accept: [
+          "yes",
+        ],
+        answer: "Yes. 9² + 40² = 81 + 1600 = 1681 and 41² = 1681. The two totals match, so by the converse of Pythagoras' theorem there is a right angle opposite the 41 cm side.",
+      },
+      {
+        question: "A triangle has sides of 5 cm, 6 cm and 8 cm. Is this triangle right-angled? Answer yes or no.",
+        accept: [
+          "no",
+        ],
+        answer: "No. 5² + 6² = 25 + 36 = 61 but 8² = 64. Because 61 does not equal 64 the triangle cannot contain a right angle — always square the two SHORTER sides and compare with the longest.",
+      },
+      {
+        question: "A right-angled triangle has a hypotenuse of 18 cm and an angle of 27°. Calculate the side opposite that angle, in cm to 1 decimal place.",
+        accept: [
+          "8.2",
+          "8.2 cm",
+        ],
+        answer: "8.2 cm. Opposite and hypotenuse means sine, so opposite = 18 × sin 27° = 8.171…, which rounds to 8.2.",
+      },
+      {
+        question: "In a right-angled triangle the side adjacent to a 40° angle is 9 cm. Calculate the opposite side, in cm to 1 decimal place.",
+        accept: [
+          "7.6",
+          "7.6 cm",
+        ],
+        answer: "7.6 cm. Opposite and adjacent means tangent, so opposite = 9 × tan 40° = 7.551…, giving 7.6 to 1 decimal place.",
+      },
+      {
+        question: "The side opposite a 55° angle in a right-angled triangle is 12 cm. Work out the hypotenuse, in cm to 1 decimal place.",
+        accept: [
+          "14.6",
+          "14.6 cm",
+        ],
+        answer: "14.6 cm. sin 55° = 12 ÷ hypotenuse, so hypotenuse = 12 ÷ sin 55° = 14.649…, which is 14.6. When the unknown sits on the bottom of the fraction you divide rather than multiply.",
+      },
+      {
+        question: "A right-angled triangle has a hypotenuse of 25 m and an angle of 68° at one end. Find the side adjacent to that angle, in m to 1 decimal place.",
+        accept: [
+          "9.4",
+          "9.4 m",
+        ],
+        answer: "9.4 m. Adjacent and hypotenuse means cosine, so adjacent = 25 × cos 68° = 9.365…, which rounds to 9.4.",
+      },
+      {
+        question: "A right-angled triangle has a hypotenuse of 13 cm. Calculate the angle whose opposite side is 5 cm, in degrees to 1 decimal place.",
+        accept: [
+          "22.6",
+          "22.6 degrees",
+        ],
+        answer: "22.6 degrees. Opposite over hypotenuse is sine, so use the inverse: sin⁻¹(5 ÷ 13) = 22.619…, which rounds to 22.6.",
+      },
+      {
+        question: "In a right-angled triangle the adjacent side is 8 cm and the hypotenuse is 17 cm. Work out the size of the angle between them, to 1 decimal place.",
+        accept: [
+          "61.9",
+          "61.9 degrees",
+        ],
+        answer: "61.9 degrees. Adjacent over hypotenuse is cosine, so the angle is cos⁻¹(8 ÷ 17) = 61.927…, which is 61.9 to 1 decimal place.",
+      },
+      {
+        question: "The two shorter sides of a right-angled triangle are 11 cm (opposite) and 4 cm (adjacent). Find the angle, in degrees to 1 decimal place.",
+        accept: [
+          "70.0",
+          "70",
+        ],
+        answer: "70.0 degrees. Opposite over adjacent is tangent, so the angle is tan⁻¹(11 ÷ 4) = 70.016…, which rounds to 70.0.",
+      },
+      {
+        question: "Standing 20 m from a tree, the angle of elevation of the top of the tree is 38°. Calculate the height of the tree, in m to 1 decimal place.",
+        accept: [
+          "15.6",
+          "15.6 m",
+        ],
+        answer: "15.6 m. The 20 m is adjacent to the angle and the height is opposite it, so height = 20 × tan 38° = 15.625…, which rounds to 15.6. This assumes the angle is measured at ground level.",
+      },
+      {
+        question: "From the top of a 45 m lighthouse the angle of depression of a boat is 12°. Calculate the horizontal distance from the boat to the foot of the lighthouse, in m to 1 decimal place.",
+        accept: [
+          "211.7",
+          "211.7 m",
+        ],
+        answer: "211.7 m. The angle of depression equals the angle of elevation measured at the boat, so tan 12° = 45 ÷ distance, giving distance = 45 ÷ tan 12° = 211.708…, or 211.7.",
+      },
+      {
+        question: "A kite is flown on a straight string 30 m long at an angle of elevation of 52°. Calculate the height of the kite above the hand holding the string, in m to 1 decimal place.",
+        accept: [
+          "23.6",
+          "23.6 m",
+        ],
+        answer: "23.6 m. The string is the hypotenuse and the height is opposite the 52° angle, so height = 30 × sin 52° = 23.640…, which rounds to 23.6.",
+      },
+      {
+        question: "A plane is 3000 m above the ground and 5000 m horizontally from an airport. Calculate the angle of elevation of the plane from the airport, in degrees to 1 decimal place.",
+        accept: [
+          "31.0",
+          "31",
+        ],
+        answer: "31.0 degrees. Height over horizontal distance is a tangent, so the angle is tan⁻¹(3000 ÷ 5000) = tan⁻¹(0.6) = 30.963…, which rounds to 31.0.",
+      },
+      {
+        question: "Write down the exact value of cos 30°. Write root 3 as sqrt3.",
+        accept: [
+          "sqrt3/2",
+          "root3/2",
+          "(sqrt3)/2",
+        ],
+        answer: "√3/2. It comes from an equilateral triangle of side 2 cut in half, which leaves a right-angled triangle with sides 1, √3 and 2.",
+      },
+      {
+        question: "State the exact value of tan 30°, writing root 3 as sqrt3.",
+        accept: [
+          "1/sqrt3",
+          "sqrt3/3",
+          "1/root3",
+          "root3/3",
+        ],
+        answer: "1/√3, which can also be written √3/3. In the half-equilateral triangle the side opposite 30° is 1 and the side adjacent to it is √3.",
+      },
+      {
+        question: "Give the exact value of sin 45°. Write root 2 as sqrt2.",
+        accept: [
+          "1/sqrt2",
+          "sqrt2/2",
+          "1/root2",
+          "root2/2",
+        ],
+        answer: "1/√2, the same value as √2/2. It comes from a right-angled isosceles triangle with two sides of 1 and a hypotenuse of √2.",
+      },
+      {
+        question: "A cuboid measures 3 cm by 4 cm by 12 cm. Calculate the length of the longest straight rod that will fit inside it, in cm.",
+        accept: [
+          "13",
+          "13 cm",
+        ],
+        answer: "13 cm. Use 3D Pythagoras: the space diagonal is √(3² + 4² + 12²) = √(9 + 16 + 144) = √169 = 13. All three dimensions are squared and added.",
+        higherOnly: true,
+      },
+      {
+        question: "In triangle ABC, angle A = 52°, angle B = 71° and side a = 8 cm. Use the sine rule to calculate side b, in cm to 1 decimal place.",
+        accept: [
+          "9.6",
+          "9.6 cm",
+        ],
+        answer: "9.6 cm. The sine rule gives b = 8 × sin 71° ÷ sin 52° = 9.599…, which rounds to 9.6. Side b is the one opposite angle B, so pair them before substituting.",
+        higherOnly: true,
+      },
+      {
+        question: "A triangle has sides of 7 cm and 10 cm with an angle of 65° between them. Use the cosine rule to find the third side, in cm to 1 decimal place.",
+        accept: [
+          "9.5",
+          "9.5 cm",
+        ],
+        answer: "9.5 cm. The cosine rule gives the square of the third side as 7² + 10² − 2 × 7 × 10 × cos 65° = 89.83…, and the square root of that is 9.478…, which rounds to 9.5.",
+        higherOnly: true,
+      },
+      {
+        question: "A triangle has two sides of 9 cm and 12 cm with an included angle of 47°. Calculate its area in cm², to 1 decimal place.",
+        accept: [
+          "39.5",
+        ],
+        answer: "39.5 cm². Area = ½ab sin C = 0.5 × 9 × 12 × sin 47° = 39.493…, which rounds to 39.5. The angle used must be the one between the two sides.",
+        higherOnly: true,
+      },
+      {
+        question: "A right-angled triangle has shorter sides of 8 cm and 15 cm. What is the length of the hypotenuse?",
+        choices: [
+          "17 cm",
+          "23 cm",
+          "12.7 cm",
+          "289 cm",
+        ],
+        accept: [
+          "17 cm",
+        ],
+        answer: "17 cm. 8² + 15² = 64 + 225 = 289, and √289 = 17. Adding the sides gives 23, subtracting the squares gives 12.7, and forgetting the square root leaves 289.",
+      },
+      {
+        question: "The hypotenuse of a right-angled triangle is 20 cm and one shorter side is 16 cm. Which of these is the third side?",
+        choices: [
+          "12 cm",
+          "25.6 cm",
+          "4 cm",
+          "144 cm",
+        ],
+        accept: [
+          "12 cm",
+        ],
+        answer: "12 cm. 20² − 16² = 400 − 256 = 144, and √144 = 12. Adding the squares instead gives 25.6, subtracting the lengths gives 4, and stopping before the square root gives 144.",
+      },
+      {
+        question: "Which of these sets of side lengths forms a right-angled triangle?",
+        choices: [
+          "8 cm, 15 cm, 17 cm",
+          "6 cm, 7 cm, 9 cm",
+          "5 cm, 9 cm, 10 cm",
+          "4 cm, 5 cm, 7 cm",
+        ],
+        accept: [
+          "8 cm, 15 cm, 17 cm",
+        ],
+        answer: "8, 15 and 17, because 8² + 15² = 289 = 17². For the others the two smaller squares add to 85, 106 and 41, while the largest squares are 81, 100 and 49, so none of them matches.",
+      },
+      {
+        question: "A coastguard at the top of a cliff looks down at a boat. The angle between her horizontal line of sight and her line of sight to the boat is called:",
+        choices: [
+          "the angle of depression",
+          "the angle of elevation",
+          "the bearing of the boat",
+          "the angle of inclination",
+        ],
+        accept: [
+          "the angle of depression",
+        ],
+        answer: "The angle of depression, measured down from the horizontal. The angle of elevation is measured up from the horizontal, and the two are equal here because the two horizontal lines are parallel.",
+      },
+      {
+        question: "A right-angled triangle has a hypotenuse of 12 cm and one angle of 40°. Which calculation gives the side adjacent to the 40° angle?",
+        choices: [
+          "Multiply 12 by cos 40",
+          "Multiply 12 by sin 40",
+          "Divide 12 by cos 40",
+          "Multiply 12 by tan 40",
+        ],
+        accept: [
+          "Multiply 12 by cos 40",
+        ],
+        answer: "Multiply 12 by cos 40°, because adjacent and hypotenuse is the cosine pair, giving 9.19 cm. Sine would give the opposite side, tangent needs the adjacent side you do not have, and dividing is only right when the hypotenuse is the unknown.",
+      },
+      {
+        question: "Which of these is the exact value of sin 60°, with root 3 written as sqrt3?",
+        choices: [
+          "sqrt3/2",
+          "1/2",
+          "1/sqrt2",
+          "sqrt3",
+        ],
+        accept: [
+          "sqrt3/2",
+        ],
+        answer: "√3/2. Both sin 60° and cos 30° are √3/2; the value 1/2 is sin 30°, 1/√2 is sin 45° and √3 is tan 60°.",
+      },
+      {
+        question: "Which of these is the exact value of cos 90°?",
+        choices: [
+          "0",
+          "1",
+          "0.5",
+          "-1",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0. As the angle grows towards 90° the adjacent side shrinks to nothing, so cos 90° = 0. The value 1 is cos 0°, 0.5 is cos 60° and −1 is cos 180°.",
+      },
+      {
+        question: "A boat is 50 m from the base of a 30 m cliff. What is the angle of depression of the boat from the top of the cliff, in degrees to 1 decimal place?",
+        choices: [
+          "31.0",
+          "59.0",
+          "36.9",
+          "53.1",
+        ],
+        accept: [
+          "31.0",
+          "31",
+        ],
+        answer: "31.0 degrees. The angle of depression equals the angle of elevation at the boat, and tan⁻¹(30 ÷ 50) = 30.96…, so 31.0. Using 50 ÷ 30 gives 59.0, while inverse sine and inverse cosine of 0.6 give 36.9 and 53.1.",
+      },
+      {
+        question: "A cube has edges of 6 cm. How long is the diagonal running from one corner to the opposite corner through the middle of the cube, to 1 decimal place?",
+        choices: [
+          "10.4 cm",
+          "8.5 cm",
+          "18.0 cm",
+          "12.0 cm",
+        ],
+        accept: [
+          "10.4 cm",
+        ],
+        answer: "10.4 cm. The space diagonal is √(6² + 6² + 6²) = √108 = 10.392…, so 10.4. The 8.5 cm is the diagonal of one face, 18 cm is three edges added and 12 cm is two edges.",
+        higherOnly: true,
+      },
+      {
+        question: "You know all three sides of a triangle that has no right angle, and you want one of its angles. Which method should you use?",
+        choices: [
+          "The cosine rule",
+          "The sine rule",
+          "SOHCAHTOA",
+          "Pythagoras' theorem",
+        ],
+        accept: [
+          "The cosine rule",
+        ],
+        answer: "The cosine rule, rearranged so that cos A is the subject. The sine rule needs an angle together with the side opposite it, and both SOHCAHTOA and Pythagoras need a right angle to exist in the first place.",
+        higherOnly: true,
+      },
+      {
+        question: "A triangle has sides 6 cm, 9 cm and 11 cm. What is the size of its largest angle, in degrees to 1 decimal place?",
+        choices: [
+          "92.1",
+          "87.9",
+          "54.8",
+          "33.0",
+        ],
+        accept: [
+          "92.1",
+        ],
+        answer: "92.1 degrees. cos C = (6² + 9² − 11²) ÷ (2 × 6 × 9) = −0.037, and the inverse cosine of that is 92.12°. Losing the minus sign gives 87.9°, while 54.8° and 33.0° are the other two angles of the triangle.",
+        higherOnly: true,
+      },
+      {
+        question: "A triangle has two sides of 7 cm and 10 cm with an angle of 30° between them. What is its area in cm²?",
+        choices: [
+          "17.5",
+          "35",
+          "70",
+          "30.3",
+        ],
+        accept: [
+          "17.5",
+        ],
+        answer: "17.5. Area = ½ab sin C = 0.5 × 7 × 10 × sin 30° = 17.5. Forgetting the half gives 35, multiplying the two sides alone gives 70, and using cos 30° instead of sin 30° gives 30.3.",
+        higherOnly: true,
+      },
+      {
+        question: "In triangle ABC, angle A = 40°, angle C = 75° and side c = 14 cm. How long is side a, to 1 decimal place?",
+        choices: [
+          "9.3 cm",
+          "21.0 cm",
+          "13.1 cm",
+          "9.0 cm",
+        ],
+        accept: [
+          "9.3 cm",
+        ],
+        answer: "9.3 cm. The sine rule gives a = 14 × sin 40° ÷ sin 75° = 9.315…, so 9.3. Turning the fraction upside down gives 21.0 cm, working with angle B by mistake gives 13.1 cm, and forgetting to divide by sin 75° gives 9.0 cm.",
+        higherOnly: true,
+      },
+      {
+        question: "A rectangular gate is 2 m wide and 1.5 m high, and a brace runs from one corner to the opposite corner. How long is the brace?",
+        choices: [
+          "2.5 m",
+          "3.5 m",
+          "1.3 m",
+          "6.25 m",
+        ],
+        accept: [
+          "2.5 m",
+        ],
+        answer: "2.5 m. 2² + 1.5² = 4 + 2.25 = 6.25, and √6.25 = 2.5. Adding the sides gives 3.5 m, subtracting the squares gives 1.3 m and stopping before the square root gives 6.25 m.",
+      },
+      {
+        question: "The angles in a right-angled triangle are 90°, 55° and 35°. Which side is the hypotenuse?",
+        choices: [
+          "The side opposite the right angle",
+          "The side opposite the 55 degree angle",
+          "The side opposite the 35 degree angle",
+          "The shortest side of the three",
+        ],
+        accept: [
+          "The side opposite the right angle",
+        ],
+        answer: "The side opposite the right angle, which is always the longest side. The side opposite 55° is the second longest and the side opposite 35° is the shortest, so calling the shortest side the hypotenuse is exactly backwards.",
+      },
+      {
+        question: "Which angle between 0° and 90° has a cosine of exactly 1/2?",
+        choices: [
+          "60 degrees",
+          "30 degrees",
+          "45 degrees",
+          "0 degrees",
+        ],
+        accept: [
+          "60 degrees",
+        ],
+        answer: "60°, because cos 60° = 1/2. The value √3/2 belongs to cos 30°, 1/√2 belongs to cos 45° and 1 belongs to cos 0°.",
+      },
+      {
+        question: "Show that a triangle with sides of 10 cm, 24 cm and 26 cm is right-angled.",
+        answer: "Square the two shorter sides: 10² + 24² = 100 + 576 = 676. Square the longest side: 26² = 676. The two totals are equal, so by the converse of Pythagoras' theorem the triangle is right-angled, with the right angle opposite the 26 cm side. Writing both totals and then stating that they match is what earns the marks. (Mark this one yourself.)",
+      },
+      {
+        question: "A surveyor stands 40 m from a mast. Her eye is 1.6 m above the ground and the angle of elevation of the top of the mast from her eye is 31°. Describe the full method for finding the height of the mast.",
+        answer: "Draw the right-angled triangle starting at eye level, with 40 m as the adjacent side and 31° at the surveyor's eye. The opposite side is 40 × tan 31° = 24.03 m, which is the height of the mast above eye level. Add the 1.6 m eye height to get about 25.6 m for the whole mast. The mark most often dropped here is forgetting to add the eye height back on. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the angle of elevation of a cliff top from a boat equals the angle of depression of the boat from the cliff top.",
+        answer: "The horizontal line at the boat and the horizontal line at the cliff top are parallel. The line of sight joining the two is a transversal crossing both of them. The angle of elevation and the angle of depression are therefore alternate angles between parallel lines, and alternate angles are equal. This is why a depression angle given at the top can be moved straight into the triangle at the bottom. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how you decide between the sine rule and the cosine rule, and what goes wrong if you pick the wrong one.",
+        answer: "Use the sine rule when you have a matching pair — an angle together with the side opposite it — plus one more piece of information. Use the cosine rule when you have two sides and the angle between them, or all three sides and want an angle. Reaching for the sine rule without a complete pair leaves two unknowns in one equation, so you simply cannot finish. Using the cosine rule when the given angle is not the included one pairs the wrong angle with the wrong side, and that produces a plausible-looking answer that is quietly wrong. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Show that the exact value of tan 30° is 1/sqrt3, starting from an equilateral triangle with sides of 2 units.",
+        answer: "Cut the equilateral triangle in half through one vertex. The half has a hypotenuse of 2, a base of 1 and angles of 30°, 60° and 90°. Its height is √(2² − 1²) = √3 by Pythagoras. The 30° angle is at the top, so the side opposite it is 1 and the side adjacent to it is √3, giving tan 30° = 1 ÷ √3. Rationalising the denominator turns that into √3/3, which is the same number. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -3167,6 +7362,452 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain the difference between theoretical and experimental probability, and say when each is the right one to use.",
         answer: "Theoretical probability is worked out from the structure of the situation, such as 1/6 for a six on a fair dice, and applies when every outcome is known to be equally likely. Experimental probability, or relative frequency, is worked out from results actually observed, and is needed when the outcomes are not equally likely or the situation cannot be modelled, such as a biased spinner or a drawing pin landing point up. Comparing the two is also how you test whether something is fair. (Mark this one yourself.)",
+      },
+      {
+        question: "A bag contains 3 red, 4 blue and 5 yellow counters. One is taken at random. Write P(yellow) as a fraction in its simplest form.",
+        accept: [
+          "5/12",
+        ],
+        answer: "5/12. There are 3 + 4 + 5 = 12 counters altogether and 5 of them are yellow, so it is favourable outcomes over total outcomes. The fraction 5/12 will not cancel.",
+      },
+      {
+        question: "The probability that a train is late is 0.15. Write down the probability that it is not late.",
+        accept: [
+          "0.85",
+          ".85",
+        ],
+        answer: "0.85. The event and its complement must total 1, so P(not late) = 1 − 0.15 = 0.85.",
+      },
+      {
+        question: "A spinner has 8 equal sections numbered 1 to 8. Find P(the number is greater than 5), as a fraction in its simplest form.",
+        accept: [
+          "3/8",
+          "0.375",
+        ],
+        answer: "3/8. Only 6, 7 and 8 are greater than 5, so 3 sections out of 8. Including 5 itself would wrongly give 4/8 — 'greater than' does not mean 'or equal to'.",
+      },
+      {
+        question: "A machine makes components and 2% of them are faulty. Work out the expected number of faulty components in a batch of 4500.",
+        accept: [
+          "90",
+        ],
+        answer: "90. Expected frequency = probability × number of trials, so 0.02 × 4500 = 90. Writing 2% as 0.02 before multiplying avoids the commonest slip here.",
+      },
+      {
+        question: "A dice is rolled 150 times and lands on six 27 times. Work out the relative frequency of a six, as a decimal.",
+        accept: [
+          "0.18",
+          ".18",
+        ],
+        answer: "0.18. Relative frequency = successes ÷ total trials = 27 ÷ 150 = 0.18. It estimates the probability from the experiment, so it need not equal the theoretical 1/6.",
+      },
+      {
+        question: "Two fair dice are rolled and the two scores are added. Find the probability that the total is 10, as a fraction in its simplest form.",
+        accept: [
+          "1/12",
+          "3/36",
+        ],
+        answer: "1/12. There are 36 outcomes in the sample space, and the pairs giving 10 are 4 and 6, 5 and 5, and 6 and 4 — three of them. So 3/36 = 1/12.",
+      },
+      {
+        question: "Two fair dice are rolled. Work out the probability that the product of the two scores is 12, as a simplified fraction.",
+        accept: [
+          "1/9",
+          "4/36",
+        ],
+        answer: "1/9. The pairs multiplying to 12 are 2 and 6, 6 and 2, 3 and 4, and 4 and 3 — four outcomes out of 36, which cancels to 1/9. Order matters, so each pair counts twice.",
+      },
+      {
+        question: "A fair coin is flipped and a fair six-sided dice is rolled. How many outcomes are there in the sample space?",
+        accept: [
+          "12",
+        ],
+        answer: "12. Each of the 2 coin results pairs with each of the 6 dice scores, so the sample space has 2 × 6 = 12 cells rather than 2 + 6 = 8.",
+      },
+      {
+        question: "A fair coin is flipped and a fair four-sided dice is rolled. Find the probability of a head and a 3. Give your answer as a fraction.",
+        accept: [
+          "1/8",
+          "0.125",
+        ],
+        answer: "1/8. The two events are independent, so AND means multiply: 1/2 × 1/4 = 1/8. Listing the 8 outcomes in a sample space diagram gives the same answer.",
+      },
+      {
+        question: "30 students were asked how they travel to school.\n          Walk   Cycle\nBoys        8       6\nGirls      11       5\nOne student is chosen at random. Find the probability that the student is a girl who cycles, as a fraction in its simplest form.",
+        accept: [
+          "1/6",
+          "5/30",
+        ],
+        answer: "1/6. Read the single cell where the Girls row meets the Cycle column: 5 students. The total is 8 + 6 + 11 + 5 = 30, so the probability is 5/30 = 1/6.",
+      },
+      {
+        question: "A two-way table shows the drinks chosen by 50 people.\n            Tea   Coffee\nAdults       12      18\nChildren     14       6\nOne person is chosen at random. Work out the probability that they chose tea, as a fraction in its simplest form.",
+        accept: [
+          "13/25",
+          "26/50",
+          "0.52",
+        ],
+        answer: "13/25. Add down the tea column: 12 + 14 = 26 people. The total is 50, so the probability is 26/50, which cancels to 13/25. Only using the adults row would give 12/50.",
+      },
+      {
+        question: "In a class of 30 students, 18 play football, 14 play tennis and 8 play both. One student is picked at random. Find the probability that the student plays football only, as a fraction in its simplest form.",
+        accept: [
+          "1/3",
+          "10/30",
+        ],
+        answer: "1/3. Fill the Venn overlap first with 8, then football only is 18 − 8 = 10. So the probability is 10/30 = 1/3. Using 18 would count the 8 who also play tennis.",
+      },
+      {
+        question: "Two sets have n(A) = 12, n(B) = 9 and n(A ∩ B) = 4. Find n(A ∪ B).",
+        accept: [
+          "17",
+        ],
+        answer: "17. The union is everything in either set, so add the two sets and subtract the overlap once because it has been counted twice: 12 + 9 − 4 = 17.",
+      },
+      {
+        question: "In a universal set of 40 members, n(A) = 22, n(B) = 15 and n(A ∩ B) = 9. Work out how many members are in neither set.",
+        accept: [
+          "12",
+        ],
+        answer: "12. First find the union: 22 + 15 − 9 = 28 members are in at least one set. Everything else is outside both, so 40 − 28 = 12.",
+      },
+      {
+        question: "In set notation, A′ stands for all the elements that are not in A. What is this set called?",
+        accept: [
+          "complement",
+          "the complement",
+          "complement of a",
+        ],
+        answer: "The complement of A. It covers everything in the universal set that is outside A, which is why P(A) and P(A′) always add up to 1.",
+      },
+      {
+        question: "The probability that Amir hits a target with one shot is 0.7. He takes two independent shots. Work out the probability that he hits the target both times.",
+        accept: [
+          "0.49",
+        ],
+        answer: "0.49. Independent events multiply, so 0.7 × 0.7 = 0.49 — the product of the two probabilities along one path of the tree diagram.",
+      },
+      {
+        question: "A bus is on time with probability 0.8 on any day, independently of other days. Calculate the probability that it is on time on Monday and late on Tuesday.",
+        accept: [
+          "0.16",
+        ],
+        answer: "0.16. P(late) = 1 − 0.8 = 0.2, and multiplying along the branches gives 0.8 × 0.2 = 0.16. The order is fixed by the question, so only one path counts.",
+      },
+      {
+        question: "A light bulb fails within a year with probability 0.05, independently of any other bulb. Two bulbs are fitted. Calculate the probability that at least one of them fails within the year.",
+        accept: [
+          "0.0975",
+        ],
+        answer: "0.0975. Use the opposite case: P(neither fails) = 0.95 × 0.95 = 0.9025, so P(at least one fails) = 1 − 0.9025 = 0.0975.",
+      },
+      {
+        question: "A fair coin is flipped four times. Find the probability of getting four tails, as a fraction.",
+        accept: [
+          "1/16",
+          "0.0625",
+        ],
+        answer: "1/16. Each flip is independent with probability 1/2, so multiply along the four branches: 1/2 × 1/2 × 1/2 × 1/2 = 1/16.",
+      },
+      {
+        question: "A spinner has P(green) = 3/10 and is spun 250 times. Work out the expected number of greens.",
+        accept: [
+          "75",
+        ],
+        answer: "75. Expected frequency = probability × trials, so 3/10 × 250 = 75. It is an expectation, not a guarantee — a real experiment would land near 75, not exactly on it.",
+      },
+      {
+        question: "A biased coin has P(heads) = 0.62. In 500 flips, calculate the expected number of tails.",
+        accept: [
+          "190",
+        ],
+        answer: "190. Find the complement first: P(tails) = 1 − 0.62 = 0.38. Then 0.38 × 500 = 190. Multiplying 0.62 by 500 answers the wrong question.",
+      },
+      {
+        question: "In a trial, 84 out of 350 seeds germinated. Use this to estimate how many of 1200 seeds would germinate.",
+        accept: [
+          "288",
+        ],
+        answer: "288. The relative frequency is 84 ÷ 350 = 0.24, and that estimate is then scaled up: 0.24 × 1200 = 288.",
+      },
+      {
+        question: "A spinner can land on red, white or blue only. P(red) = 0.32 and P(white) = 0.45. Work out P(blue).",
+        accept: [
+          "0.23",
+        ],
+        answer: "0.23. The three probabilities must total 1, so P(blue) = 1 − 0.32 − 0.45 = 0.23.",
+      },
+      {
+        question: "A bag holds only red and green counters, and P(red) = 2/5. There are 45 counters altogether. How many are green?",
+        accept: [
+          "27",
+        ],
+        answer: "27. P(green) = 1 − 2/5 = 3/5, and 3/5 of 45 is 27. Checking works: 2/5 of 45 is 18 red, and 18 + 27 = 45.",
+      },
+      {
+        question: "A box holds 6 red and 4 blue pens. Two pens are taken without replacement. Calculate the probability that both are red, as a fraction in its simplest form.",
+        accept: [
+          "1/3",
+          "30/90",
+        ],
+        answer: "1/3. First pick 6/10, then only 5 red are left out of 9 pens, so 5/9. Multiply along the branches: 6/10 × 5/9 = 30/90 = 1/3.",
+      },
+      {
+        question: "A bag holds 5 white and 3 black balls. One white ball is taken out and kept. Find the probability that the next ball taken is black, as a fraction.",
+        accept: [
+          "3/7",
+        ],
+        answer: "3/7. The white ball is not replaced, so 7 balls remain and all 3 black ones are still there. The numerator is unchanged but the denominator has dropped from 8 to 7.",
+        higherOnly: true,
+      },
+      {
+        question: "In a group of 60 people, 25 own a cat, 18 own a dog and 7 own both. A cat owner is chosen at random. Find the probability that this person also owns a dog, as a fraction in its simplest form.",
+        accept: [
+          "7/25",
+        ],
+        answer: "7/25. Being told the person owns a cat shrinks the sample space from 60 to the 25 cat owners, and 7 of those also own a dog. Dividing by 60 answers a different question.",
+        higherOnly: true,
+      },
+      {
+        question: "Two counters are taken without replacement from a bag holding 7 red and 5 blue counters. Calculate the probability that both are blue, as a simplified fraction.",
+        accept: [
+          "5/33",
+          "20/132",
+        ],
+        answer: "5/33. There are 12 counters, so the first pick is 5/12 and the second is 4/11 because both numbers drop. Multiplying gives 20/132, which cancels to 5/33.",
+      },
+      {
+        question: "A jar holds 9 mints and 6 toffees. Two sweets are eaten one after the other, without replacement. Work out the probability that the first is a mint and the second a toffee. Give a simplified fraction.",
+        accept: [
+          "9/35",
+          "54/210",
+        ],
+        answer: "9/35. The first pick is 9/15 for a mint. One sweet has gone but no toffees have, so the second pick is 6/14. Then 9/15 × 6/14 = 54/210 = 9/35.",
+      },
+      {
+        question: "Two fair four-sided dice numbered 1 to 4 are rolled and the scores added. Find the probability that the total is 5, as a fraction in its simplest form.",
+        accept: [
+          "1/4",
+          "4/16",
+          "0.25",
+        ],
+        answer: "1/4. The sample space has 4 × 4 = 16 outcomes, and four of them total 5: 1 and 4, 2 and 3, 3 and 2, 4 and 1. So 4/16 = 1/4.",
+      },
+      {
+        question: "A fair six-sided dice is rolled. What is the probability of scoring an even number?",
+        choices: [
+          "1/2",
+          "1/6",
+          "1/3",
+          "3",
+        ],
+        accept: [
+          "1/2",
+        ],
+        answer: "Three of the six faces are even — 2, 4 and 6 — so the probability is 3/6 = 1/2. The answer 3 is the count of favourable outcomes, not a probability, and probabilities can never exceed 1.",
+      },
+      {
+        question: "P(A) = 0.42. What is P(not A)?",
+        choices: [
+          "0.58",
+          "0.42",
+          "1.42",
+          "−0.42",
+        ],
+        accept: [
+          "0.58",
+        ],
+        answer: "P(not A) = 1 − P(A) = 1 − 0.42 = 0.58. Adding 1 instead of subtracting gives 1.42, which is impossible because no probability can be above 1.",
+      },
+      {
+        question: "A spinner is spun 80 times and lands on blue 20 times. What is the relative frequency of blue?",
+        choices: [
+          "0.25",
+          "4",
+          "20",
+          "0.75",
+        ],
+        accept: [
+          "0.25",
+        ],
+        answer: "Relative frequency = 20 ÷ 80 = 0.25. Dividing the other way round gives 4, which is above 1 and so cannot be a probability, and 0.75 is the relative frequency of not blue.",
+      },
+      {
+        question: "A game has P(win) = 0.35 and is played 200 times. What is the expected number of wins?",
+        choices: [
+          "70",
+          "130",
+          "571",
+          "7",
+        ],
+        accept: [
+          "70",
+        ],
+        answer: "Expected frequency = 0.35 × 200 = 70. The value 130 is the expected number of losses, and 571 comes from dividing 200 by 0.35 instead of multiplying.",
+      },
+      {
+        question: "Two fair coins are flipped. What is the probability of getting exactly one head?",
+        choices: [
+          "1/2",
+          "1/4",
+          "1/3",
+          "3/4",
+        ],
+        accept: [
+          "1/2",
+        ],
+        answer: "The four equally likely outcomes are HH, HT, TH and TT, and two of them have exactly one head, so 2/4 = 1/2. Treating 'two heads, one head, no heads' as three equal cases wrongly gives 1/3.",
+      },
+      {
+        question: "In a sample space diagram for two fair six-sided dice, how many outcomes give a total of 4?",
+        choices: [
+          "3",
+          "4",
+          "2",
+          "6",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "The outcomes are 1 and 3, 2 and 2, and 3 and 1 — three cells of the 36. Counting 2 and 2 twice gives 4, and leaving it out altogether gives 2.",
+      },
+      {
+        question: "A two-way table records how 60 people travel.\n            Bus   Car\nAdults       14    22\nTeenagers    16     8\nOne person is chosen at random. What is the probability that they travel by car?",
+        choices: [
+          "1/2",
+          "11/30",
+          "8/60",
+          "2/5",
+        ],
+        accept: [
+          "1/2",
+        ],
+        answer: "Add down the car column: 22 + 8 = 30 out of 60, which is 1/2. Using only the adults cell gives 11/30 and only the teenagers cell gives 8/60, and 2/5 is the teenagers row total.",
+      },
+      {
+        question: "A Venn diagram has 5 in A only, 3 in the overlap, 6 in B only and 2 outside both sets. What is P(A)?",
+        choices: [
+          "1/2",
+          "5/16",
+          "3/16",
+          "8/14",
+        ],
+        accept: [
+          "1/2",
+        ],
+        answer: "Set A holds the 5 plus the 3 in the overlap, so n(A) = 8, and the total is 5 + 3 + 6 + 2 = 16. So P(A) = 8/16 = 1/2. Forgetting the 2 outside gives 8/14.",
+      },
+      {
+        question: "What does P(A ∩ B) represent?",
+        choices: [
+          "The probability that both A and B happen",
+          "The probability that A or B happens",
+          "The probability that neither happens",
+          "The probability of A but not B",
+        ],
+        accept: [
+          "The probability that both A and B happen",
+        ],
+        answer: "The intersection symbol means AND, so it is the overlap of the two sets in a Venn diagram. The union symbol, which opens upwards, is the one that means OR.",
+      },
+      {
+        question: "On a tree diagram, how do you find the probability of one complete path?",
+        choices: [
+          "Multiply along the branches",
+          "Add along the branches",
+          "Multiply the totals of different paths",
+          "Subtract each branch from 1",
+        ],
+        accept: [
+          "Multiply along the branches",
+        ],
+        answer: "Multiply along a path to get that sequence of events, then add between different paths when several of them satisfy the condition. Along means multiply, between means add.",
+      },
+      {
+        question: "Two independent events have P(A) = 0.4 and P(B) = 0.5. What is P(A and B)?",
+        choices: [
+          "0.2",
+          "0.9",
+          "0.1",
+          "0.45",
+        ],
+        accept: [
+          "0.2",
+        ],
+        answer: "AND means multiply for independent events: 0.4 × 0.5 = 0.2. Adding gives 0.9, subtracting gives 0.1 and averaging gives 0.45 — none of which is how independent events combine.",
+      },
+      {
+        question: "A bag has 4 red and 6 green counters. One counter is taken and not replaced. How many counters are there for the second pick?",
+        choices: [
+          "9",
+          "10",
+          "8",
+          "11",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "One counter has been removed and not put back, so 10 − 1 = 9 remain. Keeping the denominator at 10 is the commonest mistake in without-replacement questions.",
+      },
+      {
+        question: "A box has 3 white and 5 black balls. Two are taken without replacement. What is P(both white)?",
+        choices: [
+          "3/28",
+          "9/64",
+          "3/32",
+          "37/56",
+        ],
+        accept: [
+          "3/28",
+        ],
+        answer: "The picks are 3/8 then 2/7, because both numbers fall, and 3/8 × 2/7 = 6/56 = 3/28. Leaving the denominator at 8 gives 3/32, replacing the ball gives 9/64, and adding instead of multiplying gives 37/56.",
+      },
+      {
+        question: "At a school, P(a student is late) = 0.2 and P(a student is late and travels by bus) = 0.08. What is P(travels by bus, given late)?",
+        choices: [
+          "0.4",
+          "0.16",
+          "0.28",
+          "0.12",
+        ],
+        accept: [
+          "0.4",
+        ],
+        answer: "Conditional probability divides: 0.08 ÷ 0.2 = 0.4. Being told the student is late shrinks the sample space to the late students, so the 0.08 is measured against 0.2 rather than against 1.",
+        higherOnly: true,
+      },
+      {
+        question: "Which of these values cannot be a probability?",
+        choices: [
+          "1.2",
+          "0.99",
+          "0",
+          "1",
+        ],
+        accept: [
+          "1.2",
+        ],
+        answer: "Probability runs from 0 for impossible to 1 for certain, so 1.2 is outside the scale. Both 0 and 1 are perfectly valid — they describe events that never happen and events that always do.",
+      },
+      {
+        question: "Explain why the probability of an event and the probability of its complement must add up to 1.",
+        answer: "The complement of an event is everything else that could happen, so between them the event and its complement cover every possible outcome and overlap nowhere. Since the probabilities of all possible outcomes always total 1, and these two groups between them contain all of those outcomes exactly once, their probabilities must total 1 as well. That is why P(not A) = 1 − P(A), and it is usually far quicker than adding up every other outcome one by one. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how you would use a sample space diagram to find the probability that two fair dice show a total of 9.",
+        answer: "Draw a grid with the scores 1 to 6 for the first dice along the top and the same down the side, giving 36 cells, and write the total of the two scores in each cell. Then count how many cells contain 9: they are 3 and 6, 4 and 5, 5 and 4, and 6 and 3, which is four cells. The probability is that count over the total number of cells, 4/36, which simplifies to 1/9. The grid matters because it forces you to treat 3 and 6 as a different outcome from 6 and 3, which is exactly what a casual list tends to miss. (Mark this one yourself.)",
+      },
+      {
+        question: "Show that the probability of drawing two red counters without replacement from a bag of 8 red and 4 blue counters is 14/33.",
+        answer: "There are 12 counters to start with, 8 of them red, so the first probability is 8/12. Once a red counter has been taken and kept, only 7 red counters remain and only 11 counters in total, so the second probability is 7/11 — both the numerator and the denominator have fallen by one. Multiplying along the branches gives 8/12 × 7/11 = 56/132. Dividing top and bottom by 4 gives 14/33, which is the required result. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how a Venn diagram prevents double-counting when finding P(A or B).",
+        answer: "If you simply add P(A) and P(B), anything belonging to both sets gets counted once inside A and again inside B, so the total is too big. A Venn diagram makes that overlap visible as a separate region, and the usual method is to write the intersection in first and then subtract it from each set to get the 'only' regions. Adding the three regions — A only, the overlap, and B only — then counts every outcome exactly once. This is the same idea as the rule P(A or B) = P(A) + P(B) − P(A and B), where the subtraction removes the double count. (Mark this one yourself.)",
+      },
+      {
+        question: "A weather app gives P(rain) = 0.3 for each day of the coming week. Explain why the probability of rain on at least one day is much greater than 0.3.",
+        answer: "Each day is a separate opportunity for rain, and 'at least one day' is satisfied by any one of them, so there are seven chances rather than one. The clean way to see the size of it is to work with the opposite case: the probability of no rain on a particular day is 0.7, so the probability of a completely dry week is 0.7 multiplied by itself seven times, which is about 0.082. That leaves about 0.918 for at least one wet day. Repeating a fairly unlikely event many times makes it quite likely that it happens somewhere along the way. (Mark this one yourself.)",
       },
     ],
 
@@ -3568,6 +8209,397 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "When class widths differ, plotting frequency as the height makes wide classes look far more common than they are, because the eye compares areas rather than heights. A histogram fixes this by plotting frequency density, which is frequency divided by class width, so that the area of each bar is the frequency. Area then represents frequency consistently and the classes can be compared fairly. (Mark this one yourself.)",
         higherOnly: true,
       },
+      {
+        question: "Work out the mean of the five numbers 8, 12, 5, 11 and 14.",
+        accept: [
+          "10",
+        ],
+        answer: "10. Add the five values to get 8 + 12 + 5 + 11 + 14 = 50, then divide by how many there are: 50 ÷ 5 = 10.",
+      },
+      {
+        question: "Seven scores are recorded: 3, 8, 5, 8, 2, 8 and 5. Write down the mode.",
+        accept: [
+          "8",
+        ],
+        answer: "8. The mode is the most frequent value: 8 appears three times, 5 twice and the rest once each.",
+      },
+      {
+        question: "The lowest temperature one week was −2 °C and the highest was 11 °C. Work out the range, in °C.",
+        accept: [
+          "13",
+        ],
+        answer: "13 °C. Range = largest − smallest = 11 − (−2) = 13. Subtracting a negative adds, which is where marks are usually lost.",
+      },
+      {
+        question: "Six lap times in seconds are 7, 2, 9, 4, 12 and 6. Work out the median.",
+        accept: [
+          "6.5",
+        ],
+        answer: "6.5 seconds. Put them in order first: 2, 4, 6, 7, 9, 12. With six values there is no single middle one, so take the mean of the third and fourth: (6 + 7) ÷ 2 = 6.5.",
+      },
+      {
+        question: "Eight numbers have a mean of 9.5. Work out the total of the eight numbers.",
+        accept: [
+          "76",
+        ],
+        answer: "76. Mean = total ÷ how many, so total = mean × how many = 9.5 × 8 = 76. Reversing the mean formula like this is a very common exam step.",
+      },
+      {
+        question: "A frequency table records goals in 20 matches: 0 goals in 5 matches, 1 goal in 8 matches, 2 goals in 4 matches and 3 goals in 3 matches. Calculate the mean number of goals per match.",
+        accept: [
+          "1.25",
+        ],
+        answer: "1.25 goals. Multiply each value by its frequency: 0 × 5 = 0, 1 × 8 = 8, 2 × 4 = 8, 3 × 3 = 9. The total number of goals is 25, and the total frequency is 20, so the mean is 25 ÷ 20 = 1.25.",
+      },
+      {
+        question: "Shoe sizes of 30 pupils are recorded: size 4 for 6 pupils, size 5 for 8 pupils, size 6 for 11 pupils and size 7 for 5 pupils. Find the median shoe size.",
+        accept: [
+          "6",
+        ],
+        answer: "Size 6. The median position is (30 + 1) ÷ 2 = 15.5, so it lies between the 15th and 16th values. Running totals are 6, 14, 25, 30, so both the 15th and the 16th pupil are in the size 6 group.",
+      },
+      {
+        question: "Heights are grouped as 140 < h ≤ 150 with frequency 4, 150 < h ≤ 160 with frequency 10 and 160 < h ≤ 170 with frequency 6. Calculate an estimate of the mean height, in cm.",
+        accept: [
+          "156",
+        ],
+        answer: "An estimate of 156 cm. Use the class midpoints 145, 155 and 165. Then 145 × 4 = 580, 155 × 10 = 1550 and 165 × 6 = 990, giving a total of 3120. Divide by the total frequency 20: 3120 ÷ 20 = 156. Say ESTIMATE, because the original heights are unknown.",
+      },
+      {
+        question: "Waiting times are grouped as 0 < t ≤ 5 with frequency 7, 5 < t ≤ 10 with frequency 12 and 10 < t ≤ 15 with frequency 9. Write down the midpoint of the modal class.",
+        accept: [
+          "7.5",
+        ],
+        answer: "7.5 minutes. The modal class is the one with the highest frequency, which is 5 < t ≤ 10 with 12. Its midpoint is halfway between the boundaries: (5 + 10) ÷ 2 = 7.5.",
+      },
+      {
+        question: "In a survey of 60 people, 25 chose football. Work out the angle of the football sector on a pie chart, in degrees.",
+        accept: [
+          "150",
+        ],
+        answer: "150 degrees. Angle = (frequency ÷ total) × 360 = (25 ÷ 60) × 360 = 150. A useful check is that 25 out of 60 is a bit under half, and 150° is a bit under half of 360°.",
+      },
+      {
+        question: "A pie chart represents 90 students. One sector has an angle of 64°. Work out how many students that sector represents.",
+        accept: [
+          "16",
+        ],
+        answer: "16 students. Work backwards from the angle: the fraction of the whole is 64 ÷ 360, so the frequency is (64 ÷ 360) × 90 = 16. Each student is worth 360 ÷ 90 = 4°, and 64 ÷ 4 = 16 confirms it.",
+      },
+      {
+        question: "A bar chart of items sold shows Monday 14, Tuesday 9, Wednesday 17 and Thursday 12. How many more items were sold on Wednesday than on Tuesday?",
+        accept: [
+          "8",
+        ],
+        answer: "8 items. Read the height of each bar against the scale, then subtract: 17 − 9 = 8. Always check what one square on the vertical axis is worth before reading values off.",
+      },
+      {
+        question: "A line graph shows a shop's takings as £4200 in January, £3800 in February and £4600 in March. Calculate the mean monthly takings over these three months, in pounds.",
+        accept: [
+          "4200",
+        ],
+        answer: "£4200. Add the three values: 4200 + 3800 + 4600 = 12600, then divide by 3 to get 4200. A line graph is used here because takings change over time, so joining the points shows the trend.",
+      },
+      {
+        question: "On a scatter graph of the age of a car against its value, the points fall steadily from left to right. State the type of correlation.",
+        accept: [
+          "negative",
+          "negative correlation",
+        ],
+        answer: "Negative correlation. As the age increases the value decreases, so the points slope downwards from left to right and a line of best fit would have a negative gradient.",
+      },
+      {
+        question: "A line of best fit has equation y = 3x + 7, where x is the number of hours revised. Use it to estimate y when x = 6.",
+        accept: [
+          "25",
+        ],
+        answer: "25. Substitute the value into the equation: y = 3 × 6 + 7 = 18 + 7 = 25. Because x = 6 sits inside the range of the data, this is interpolation and is reasonably reliable.",
+      },
+      {
+        question: "A line of best fit passes through the point where x = 2 and y = 14, and the point where x = 8 and y = 38. Work out the gradient of the line.",
+        accept: [
+          "4",
+        ],
+        answer: "4. Gradient = change in y ÷ change in x = (38 − 14) ÷ (8 − 2) = 24 ÷ 6 = 4. The gradient of a line of best fit tells you how much y rises for each extra unit of x.",
+      },
+      {
+        question: "A stem and leaf diagram has stem 3 with leaves 1, 4, 4 and 7, and stem 4 with leaves 0, 2 and 5. The stem represents tens. Write down the median.",
+        accept: [
+          "37",
+        ],
+        answer: "37. The diagram keeps the original values: 31, 34, 34, 37, 40, 42, 45. They are already in order, and with 7 values the median is the 4th, which is 37. This is why a stem and leaf diagram needs a key.",
+      },
+      {
+        question: "A cumulative frequency curve is drawn for 80 people. At which cumulative frequency should you read across to estimate the median?",
+        accept: [
+          "40",
+        ],
+        answer: "40. The median is the middle value, so read across at half the total frequency: 80 ÷ 2 = 40. Then drop down to the horizontal axis to read the median itself.",
+        higherOnly: true,
+      },
+      {
+        question: "A cumulative frequency graph is drawn for 120 values. State the cumulative frequency at which you read across to find the upper quartile.",
+        accept: [
+          "90",
+        ],
+        answer: "90. The upper quartile is three quarters of the way through the data, so use 3/4 × 120 = 90. The lower quartile would use 1/4 × 120 = 30.",
+        higherOnly: true,
+      },
+      {
+        question: "A box plot has a lower quartile of 24, a median of 31 and an upper quartile of 40. Work out the interquartile range.",
+        accept: [
+          "16",
+        ],
+        answer: "16. Interquartile range = upper quartile − lower quartile = 40 − 24 = 16. The median is not used in this calculation. The IQR describes the middle 50% of the data and ignores extreme values.",
+        higherOnly: true,
+      },
+      {
+        question: "A box plot shows a minimum of 5, a lower quartile of 12, a median of 18, an upper quartile of 26 and a maximum of 41. Work out the range.",
+        accept: [
+          "36",
+        ],
+        answer: "36. The range uses the two ends of the whiskers: maximum − minimum = 41 − 5 = 36. Take care not to use the ends of the box, which would give the interquartile range instead.",
+        higherOnly: true,
+      },
+      {
+        question: "A histogram class covering 0 < x ≤ 8 has a frequency of 24. Calculate its frequency density.",
+        accept: [
+          "3",
+        ],
+        answer: "3. Frequency density = frequency ÷ class width. The class width is 8 − 0 = 8, so 24 ÷ 8 = 3. The height of the bar is this frequency density, never the frequency itself.",
+        higherOnly: true,
+      },
+      {
+        question: "A histogram bar covers 20 < x ≤ 50 and has a frequency density of 1.5. Work out the frequency of that class.",
+        accept: [
+          "45",
+        ],
+        answer: "45. In a histogram the AREA of the bar is the frequency, so frequency = frequency density × class width. The width is 50 − 20 = 30, so 1.5 × 30 = 45.",
+        higherOnly: true,
+      },
+      {
+        question: "In a histogram the bar for 30 < x ≤ 45 has a height of 6 on the frequency density axis. The whole data set has a total frequency of 200. Calculate the percentage of the data in this class.",
+        accept: [
+          "45",
+          "45%",
+        ],
+        answer: "45%. First find the frequency from the area: width 45 − 30 = 15, so frequency = 6 × 15 = 90. Then write that as a percentage of the total: (90 ÷ 200) × 100 = 45%.",
+        higherOnly: true,
+      },
+      {
+        question: "In a random sample of 80 fish caught from a lake, 12 are trout. The lake is believed to hold 2000 fish. Estimate the number of trout in the lake.",
+        accept: [
+          "300",
+        ],
+        answer: "300 trout. The sample proportion is 12 ÷ 80 = 0.15, and assuming the sample is representative, apply it to the whole population: 0.15 × 2000 = 300. This only works if the sample was taken fairly.",
+      },
+      {
+        question: "Nine students sat a test and their mean mark was 14. A tenth student then scored 24. Calculate the new mean.",
+        accept: [
+          "15",
+        ],
+        answer: "15. Turn the mean back into a total: 9 × 14 = 126. Add the new mark: 126 + 24 = 150. Then divide by the new number of students: 150 ÷ 10 = 15.",
+      },
+      {
+        question: "15 adults have a mean mass of 70 kg and 5 children have a mean mass of 30 kg. Calculate the mean mass of all 20 people, in kg.",
+        accept: [
+          "60",
+        ],
+        answer: "60 kg. Find each total separately: 15 × 70 = 1050 and 5 × 30 = 150. The combined total is 1200 and there are 20 people, so the mean is 1200 ÷ 20 = 60. Averaging 70 and 30 to get 50 is wrong because the groups are different sizes.",
+      },
+      {
+        question: "A shoe shop records the sizes it sells and wants to know which size to order most of. Which average should it use?",
+        choices: [
+          "The mode",
+          "The mean",
+          "The median",
+          "The range",
+        ],
+        accept: [
+          "The mode",
+        ],
+        answer: "The mode is the size that sells most often, which is exactly what the shop needs. A mean shoe size of 6.83 is not a size anyone wears, and the range is a measure of spread, not an average.",
+      },
+      {
+        question: "Nine workers at a firm earn about £22 000 each and the owner earns £400 000. Which average best represents a typical wage there?",
+        choices: [
+          "The median",
+          "The mean",
+          "The mode",
+          "The range",
+        ],
+        accept: [
+          "The median",
+        ],
+        answer: "The median. One very large value drags the mean far above what almost everyone actually earns, while the median simply picks out the middle wage and is unaffected by that extreme value. This is why incomes and house prices are reported using medians.",
+      },
+      {
+        question: "Which of these data sets has no mode?",
+        choices: [
+          "2, 4, 6, 8",
+          "2, 2, 4, 6",
+          "3, 3, 5, 5",
+          "1, 1, 1, 4",
+        ],
+        accept: [
+          "2, 4, 6, 8",
+        ],
+        answer: "In 2, 4, 6, 8 every value appears exactly once, so no value occurs more often than the others and there is no mode. The set 3, 3, 5, 5 does have modes — it is bimodal, with two of them.",
+      },
+      {
+        question: "Which diagram lets you read off the original data values after it has been drawn?",
+        choices: [
+          "A stem and leaf diagram",
+          "A pie chart",
+          "A histogram",
+          "A grouped bar chart",
+        ],
+        accept: [
+          "A stem and leaf diagram",
+        ],
+        answer: "A stem and leaf diagram splits each value into a stem and a leaf, so with the key you can rebuild every original number and find an exact median. Pie charts, histograms and grouped bar charts all group or scale the data, so the individual values are lost.",
+      },
+      {
+        question: "A scatter graph of daily temperature against ice cream sales shows strong positive correlation. Which conclusion is safe to write?",
+        choices: [
+          "Higher temperatures are associated with higher sales",
+          "Higher temperatures cause higher sales",
+          "Selling more ice cream makes the weather warmer",
+          "Temperature and sales are unrelated",
+        ],
+        accept: [
+          "Higher temperatures are associated with higher sales",
+        ],
+        answer: "Correlation shows that two variables move together, not that one causes the other. Stating an association is safe; claiming cause is not, because another factor such as the school holidays could be driving both. Examiners specifically reward this caution.",
+      },
+      {
+        question: "In a histogram with unequal class widths, what is plotted on the vertical axis?",
+        choices: [
+          "Frequency density",
+          "Frequency",
+          "Class width",
+          "Cumulative frequency",
+        ],
+        accept: [
+          "Frequency density",
+        ],
+        answer: "Frequency density, found by dividing frequency by class width. Plotting frequency itself would make a wide class look far more common than it is, because the eye compares the AREA of the bars.",
+        higherOnly: true,
+      },
+      {
+        question: "Visitor numbers were recorded for years 1 to 10. Using the line of best fit to predict the figure for year 20 is an example of:",
+        choices: [
+          "Extrapolation",
+          "Interpolation",
+          "Correlation",
+          "Sampling",
+        ],
+        accept: [
+          "Extrapolation",
+        ],
+        answer: "Extrapolation means estimating outside the range of the data collected. It is unreliable because the trend is not known to continue beyond year 10 — the venue could close or double in size. Interpolation would be estimating a value between years 1 and 10.",
+      },
+      {
+        question: "A survey about school meals is carried out only by asking people queueing in the canteen at lunchtime. What is the main problem with this?",
+        choices: [
+          "The sample is biased because students who bring packed lunches are left out",
+          "The sample is too small to analyse at all",
+          "The results will be qualitative rather than quantitative",
+          "The sample is random, so the results must be reliable",
+        ],
+        accept: [
+          "The sample is biased because students who bring packed lunches are left out",
+        ],
+        answer: "Everyone in the queue has already chosen to use the canteen, so the people most likely to be critical of school meals can never be asked. The sample is not representative of the whole school, and no sample size fixes that — the selection method has to change.",
+      },
+      {
+        question: "A cumulative frequency curve is drawn for 200 values. The lower quartile is read across at a cumulative frequency of:",
+        choices: [
+          "50",
+          "25",
+          "100",
+          "150",
+        ],
+        accept: [
+          "50",
+        ],
+        answer: "The lower quartile is a quarter of the way through the data, so use 1/4 × 200 = 50. Reading at 25 confuses the quartile with 25 values rather than a quarter of them; 100 gives the median and 150 gives the upper quartile.",
+        higherOnly: true,
+      },
+      {
+        question: "Two box plots are drawn on the same scale. Plot A has an interquartile range of 9 and plot B has an interquartile range of 20. Which statement is correct?",
+        choices: [
+          "Plot A shows more consistent data",
+          "Plot B shows more consistent data",
+          "Plot A must have the higher median",
+          "The two data sets are equally spread",
+        ],
+        accept: [
+          "Plot A shows more consistent data",
+        ],
+        answer: "A smaller interquartile range means the middle half of the data is packed into a narrower band, so plot A is more consistent. The IQR says nothing about where the median sits, so you cannot conclude which set has the higher average from spread alone.",
+        higherOnly: true,
+      },
+      {
+        question: "What must be shown alongside every stem and leaf diagram?",
+        choices: [
+          "A key",
+          "Equal class widths",
+          "A line of best fit",
+          "A frequency density column",
+        ],
+        accept: [
+          "A key",
+        ],
+        answer: "A key such as '3 | 4 means 34' is essential, because without it the same leaves could mean 3.4, 34 or 340. It is worth a mark on its own and is the detail most often forgotten.",
+      },
+      {
+        question: "A survey records each person's favourite colour. What type of data is this?",
+        choices: [
+          "Qualitative",
+          "Discrete quantitative",
+          "Continuous quantitative",
+          "Cumulative",
+        ],
+        accept: [
+          "Qualitative",
+        ],
+        answer: "Favourite colour is described in words rather than numbers, so it is qualitative. Quantitative data is numerical: discrete when it takes only separate values such as the number of pets, continuous when it can take any value in a range such as height.",
+      },
+      {
+        question: "To find the mean from a frequency table you should:",
+        choices: [
+          "Multiply each value by its frequency, total those products, then divide by the total frequency",
+          "Divide the total of the values by the number of different values",
+          "Divide the total frequency by the number of rows in the table",
+          "Add the frequencies and divide by the largest value",
+        ],
+        accept: [
+          "Multiply each value by its frequency, total those products, then divide by the total frequency",
+        ],
+        answer: "Each value has to be counted as many times as it occurred, so add an extra column for value × frequency, total it, and divide by the total frequency. Dividing by the number of rows instead is the classic error — it treats a value seen 30 times as though it were seen once.",
+      },
+      {
+        question: "Explain why a line of best fit should not be used to predict values far outside the plotted data, and describe what could go wrong.",
+        answer: "Predicting beyond the data collected is extrapolation, and it assumes the trend carries on outside the range you actually measured. There is no evidence for that assumption. A line fitted to a baby's height over its first year would predict an adult height of several metres; a line fitted to sales during a hot summer would predict impossible figures in December. Inside the range the line is supported by real points either side of the estimate, which is why interpolation is trusted and extrapolation is not. A full answer states that the trend is not known to continue beyond the data. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how to take a simple random sample of 50 students from a school of 1200, and explain why this reduces bias.",
+        answer: "Obtain a complete list of all 1200 students and number them 1 to 1200. Use a random number generator, or draw numbers without replacement, to pick 50 different numbers, then survey exactly those students. The key feature is that every student has the same chance of being selected and the choice does not depend on who is convenient to ask, who volunteers, or who happens to be in one place at one time. Convenience samples such as asking your own friends or everyone in the library over-represent one kind of student, and that bias cannot be removed later by increasing the sample size. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how to estimate the median and the interquartile range from a cumulative frequency curve.",
+        answer: "First read the total frequency from the top of the curve, call it n. For the median, go to n ÷ 2 on the vertical axis, read across to the curve and drop down to the horizontal axis. For the lower quartile use n ÷ 4 and for the upper quartile use 3n ÷ 4 in the same way. The interquartile range is then upper quartile − lower quartile. Every value is an estimate because the curve is a smooth line drawn through points plotted at the upper class boundaries, so it assumes the data is spread evenly within each class rather than using the original values. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "A report says the mean income in a town is £48 000, but most people there earn about £22 000. Explain how both statements can be true, and say which average describes the town better.",
+        answer: "The mean uses every value, so a small number of very high earners can pull it a long way above what a typical person receives. If a handful of residents earn hundreds of thousands, they add enormously to the total but only a little to the count, and the mean rises even though nobody's actual wage has changed. The median is the middle value once incomes are ordered, so extreme values at one end shift it barely at all. It therefore describes a typical income far better, which is why official statistics on pay and house prices normally quote medians rather than means. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe the steps needed to draw a pie chart from a frequency table, and state the check you should make at the end.",
+        answer: "Start by adding all the frequencies to find the total, since the total represents the full 360° of the circle. For each category work out its angle as (frequency ÷ total) × 360, rounding sensibly if it is not exact. Draw a circle, mark a radius to start from, then measure each angle in turn with a protractor, always measuring from the previous radius rather than from the start. Label every sector or add a key. The final check is that all the angles add up to 360° — if they do not, one has been measured or calculated wrongly, and a sector that is out by a few degrees usually means a rounding error. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -3967,6 +8999,731 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "A student solves (x − 4)(x + 1) = 6 by writing x − 4 = 6 and x + 1 = 6. Explain why this gives wrong answers.",
         answer: "Setting each bracket to a value only works when the product is zero, because zero is the one number that forces at least one factor to be zero. When the product is 6 there are endless pairs of numbers that multiply to 6, so neither bracket has to equal 6. The correct method is to expand, subtract 6 to get x² − 3x − 10 = 0, and then factorise to give x = 5 or x = −2. (Mark this one yourself.)",
+      },
+      {
+        question: "Expand and simplify (x + 6)(x + 2).",
+        accept: [
+          "x^2+8x+12",
+        ],
+        answer: "x² + 8x + 12. Multiply every term in the first bracket by every term in the second: 6 + 2 = 8 gives the x term and 6 × 2 = 12 gives the constant.",
+      },
+      {
+        question: "Expand and simplify (x − 3)(x + 7).",
+        accept: [
+          "x^2+4x-21",
+        ],
+        answer: "x² + 4x − 21. The four products are x², +7x, −3x and −21, and +7x − 3x = +4x. A negative times a positive gives the negative constant.",
+      },
+      {
+        question: "Expand and simplify (3x + 2)(x + 5).",
+        accept: [
+          "3x^2+17x+10",
+        ],
+        answer: "3x² + 17x + 10. The four products are 3x², 15x, 2x and 10, and 15x + 2x = 17x. With a coefficient in front of x the first term becomes 3x², not x².",
+      },
+      {
+        question: "Expand and simplify (2x − 1)(3x + 4).",
+        accept: [
+          "6x^2+5x-4",
+        ],
+        answer: "6x² + 5x − 4. Multiplying gives 6x², +8x, −3x and −4, and 8x − 3x = 5x. Take care that only one of the four products is negative here.",
+      },
+      {
+        question: "When (x − 6)² is expanded and simplified, what is the coefficient of x?",
+        choices: [
+          "-12",
+          "12",
+          "-6",
+          "36",
+        ],
+        accept: [
+          "-12",
+        ],
+        answer: "(x − 6)² means (x − 6)(x − 6), which gives −6x − 6x = −12x. Squaring the 6 produces the constant 36, not the x term, and squaring each part separately is the classic error.",
+      },
+      {
+        question: "In the expansion of (x + 7)(x − 2), what is the constant term?",
+        choices: [
+          "-14",
+          "14",
+          "5",
+          "-5",
+        ],
+        accept: [
+          "-14",
+        ],
+        answer: "The constant comes from multiplying the two numbers: 7 × (−2) = −14. The value 5 comes from 7 − 2 and is the coefficient of x, so it belongs to the middle term instead.",
+      },
+      {
+        question: "Factorise x² + 9x + 20.",
+        accept: [
+          "(x+4)(x+5)",
+          "(x+5)(x+4)",
+        ],
+        answer: "(x + 4)(x + 5). Look for two numbers that multiply to 20 and add to 9: the factor pairs of 20 are 1 and 20, 2 and 10, 4 and 5, and only 4 and 5 add to 9.",
+      },
+      {
+        question: "Factorise x² − 7x + 10.",
+        accept: [
+          "(x-2)(x-5)",
+          "(x-5)(x-2)",
+        ],
+        answer: "(x − 2)(x − 5). The constant is positive and the middle term negative, so both numbers must be negative: −2 × −5 = 10 and −2 − 5 = −7.",
+      },
+      {
+        question: "Which pair of numbers lets you factorise x² − 5x − 24?",
+        choices: [
+          "3 and -8",
+          "-3 and 8",
+          "4 and -6",
+          "-4 and 6",
+        ],
+        accept: [
+          "3 and -8",
+        ],
+        answer: "You need a product of −24 and a sum of −5. Here 3 × (−8) = −24 and 3 + (−8) = −5, giving (x + 3)(x − 8). The pair 4 and −6 multiplies to −24 but adds to −2.",
+      },
+      {
+        question: "Factorise x² − 49.",
+        accept: [
+          "(x+7)(x-7)",
+          "(x-7)(x+7)",
+        ],
+        answer: "(x + 7)(x − 7). With no middle term this is the difference of two squares, and 49 = 7². Expanding back gives +7x − 7x, which cancels.",
+      },
+      {
+        question: "Factorise 9x² − 16.",
+        accept: [
+          "(3x+4)(3x-4)",
+          "(3x-4)(3x+4)",
+        ],
+        answer: "(3x + 4)(3x − 4). Here 9x² = (3x)² and 16 = 4², so the difference of two squares still applies even though the x term has a coefficient.",
+      },
+      {
+        question: "Use the difference of two squares to work out 101² − 99² without a calculator.",
+        accept: [
+          "400",
+        ],
+        answer: "400. Writing it as (101 + 99)(101 − 99) gives 200 × 2 = 400, which is far quicker than squaring both numbers and subtracting.",
+      },
+      {
+        question: "Factorising x² − 64 gives:",
+        choices: [
+          "(x + 8)(x - 8)",
+          "(x - 8)(x - 8)",
+          "(x + 8)(x + 8)",
+          "(x + 64)(x - 1)",
+        ],
+        accept: [
+          "(x + 8)(x - 8)",
+        ],
+        answer: "The difference of two squares needs one plus bracket and one minus bracket, so the middle terms +8x and −8x cancel. Two identical brackets would leave a middle term of ±16x.",
+      },
+      {
+        question: "Factorise 2x² + 7x + 3.",
+        accept: [
+          "(2x+1)(x+3)",
+          "(x+3)(2x+1)",
+        ],
+        answer: "(2x + 1)(x + 3). Split the middle term using two numbers that multiply to 2 × 3 = 6 and add to 7, which are 1 and 6: 2x² + x + 6x + 3, then factorise in pairs.",
+        higherOnly: true,
+      },
+      {
+        question: "Factorise 3x² − 10x + 8.",
+        accept: [
+          "(3x-4)(x-2)",
+          "(x-2)(3x-4)",
+        ],
+        answer: "(3x − 4)(x − 2). Two numbers multiplying to 3 × 8 = 24 and adding to −10 are −4 and −6, giving 3x² − 4x − 6x + 8 = x(3x − 4) − 2(3x − 4).",
+        higherOnly: true,
+      },
+      {
+        question: "Factorise 6x² + x − 12.",
+        accept: [
+          "(3x-4)(2x+3)",
+          "(2x+3)(3x-4)",
+        ],
+        answer: "(3x − 4)(2x + 3). Numbers multiplying to 6 × (−12) = −72 and adding to 1 are 9 and −8, so 6x² + 9x − 8x − 12 = 3x(2x + 3) − 4(2x + 3).",
+        higherOnly: true,
+      },
+      {
+        question: "Factorise 5x² + 13x − 6.",
+        choices: [
+          "(5x - 2)(x + 3)",
+          "(5x + 2)(x - 3)",
+          "(5x - 3)(x + 2)",
+          "(5x + 6)(x - 1)",
+        ],
+        accept: [
+          "(5x - 2)(x + 3)",
+        ],
+        answer: "Expanding the correct brackets gives 5x² + 15x − 2x − 6 = 5x² + 13x − 6. Always multiply your answer back out, because swapping the signs changes the middle term to −13x.",
+        higherOnly: true,
+      },
+      {
+        question: "Solve (2x − 3)(x + 6) = 0. Give the negative solution.",
+        accept: [
+          "-6",
+          "x=-6",
+        ],
+        answer: "x = −6. Each bracket is set to zero in turn: 2x − 3 = 0 gives x = 1.5, and x + 6 = 0 gives x = −6. The sign flips as you read it off.",
+      },
+      {
+        question: "Solve x² − 5x − 14 = 0. Give the negative solution.",
+        accept: [
+          "-2",
+          "x=-2",
+        ],
+        answer: "x = −2. Two numbers multiplying to −14 and adding to −5 are −7 and +2, so (x − 7)(x + 2) = 0 and the solutions are x = 7 and x = −2.",
+      },
+      {
+        question: "Solve x² = 7x. Give the non-zero solution.",
+        accept: [
+          "7",
+          "x=7",
+        ],
+        answer: "x = 7. Rearrange to x² − 7x = 0 and factorise to x(x − 7) = 0, giving x = 0 or x = 7. Never divide both sides by x, because that throws away the root x = 0.",
+      },
+      {
+        question: "Solve x² + 4x = 21. Give the positive solution.",
+        accept: [
+          "3",
+          "x=3",
+        ],
+        answer: "x = 3. First make it equal zero: x² + 4x − 21 = 0. That factorises to (x + 7)(x − 3) = 0, so x = −7 or x = 3.",
+      },
+      {
+        question: "Solve x² − 6x + 9 = 0.",
+        accept: [
+          "3",
+          "x=3",
+        ],
+        answer: "x = 3. This factorises to (x − 3)(x − 3) = 0, a repeated root, so unusually there is only one solution. On the graph the parabola touches the x-axis at that point instead of crossing it.",
+      },
+      {
+        question: "The solutions of (x − 2)(x + 9) = 0 are:",
+        choices: [
+          "x = 2 or x = -9",
+          "x = -2 or x = 9",
+          "x = 2 or x = 9",
+          "x = -2 or x = -9",
+        ],
+        accept: [
+          "x = 2 or x = -9",
+        ],
+        answer: "Set each bracket to zero: x − 2 = 0 gives x = 2, and x + 9 = 0 gives x = −9. Reading the numbers straight off the brackets without flipping the signs is the commonest slip here.",
+      },
+      {
+        question: "Solving x² − 11x + 30 = 0 gives:",
+        choices: [
+          "x = 5 or x = 6",
+          "x = -5 or x = -6",
+          "x = 5 or x = -6",
+          "x = 3 or x = 10",
+        ],
+        accept: [
+          "x = 5 or x = 6",
+        ],
+        answer: "You need two numbers multiplying to +30 and adding to −11, which are −5 and −6, so (x − 5)(x − 6) = 0. The pair 3 and 10 multiplies to 30 but adds to 13, so it fails the second test.",
+      },
+      {
+        question: "Solve x² + 5x + 3 = 0 using the quadratic formula. Give the solution closer to zero, to 2 decimal places.",
+        accept: [
+          "-0.70",
+          "-0.6972",
+          "-0.7",
+        ],
+        answer: "x = −0.70. With a = 1, b = 5 and c = 3, b² − 4ac = 25 − 12 = 13 and √13 = 3.6056. The roots are (−5 ± 3.6056) ÷ 2, which are −0.6972 and −4.3028, so the one closer to zero is −0.70.",
+        higherOnly: true,
+      },
+      {
+        question: "Solve 2x² − 5x − 1 = 0 with the quadratic formula. Give the positive solution to 2 decimal places.",
+        accept: [
+          "2.69",
+          "2.6861",
+        ],
+        answer: "x = 2.69. Here a = 2, b = −5 and c = −1, so b² − 4ac = 25 + 8 = 33 and √33 = 5.7446. The positive root is (5 + 5.7446) ÷ 4 = 2.6861. Note that 2a = 4, not 2.",
+        higherOnly: true,
+      },
+      {
+        question: "Solve x² − 4x − 8 = 0 using the quadratic formula. Give the positive solution to 1 decimal place.",
+        accept: [
+          "5.5",
+          "5.4641",
+        ],
+        answer: "x = 5.5. With a = 1, b = −4 and c = −8, b² − 4ac = 16 + 32 = 48 and √48 = 6.9282, so the positive root is (4 + 6.9282) ÷ 2 = 5.4641. Minus a negative b becomes +4 on top.",
+        higherOnly: true,
+      },
+      {
+        question: "Using the quadratic formula on 2x² − 3x − 4 = 0, the value of b² − 4ac is:",
+        choices: [
+          "41",
+          "-23",
+          "25",
+          "-41",
+        ],
+        accept: [
+          "41",
+        ],
+        answer: "b² − 4ac = (−3)² − 4 × 2 × (−4) = 9 + 32 = 41. Minus a negative becomes plus; treating it as 9 − 32 gives −23, and leaving out the a gives 9 + 16 = 25.",
+        higherOnly: true,
+      },
+      {
+        question: "In the quadratic formula, the expression −b ± √(b² − 4ac) is divided by:",
+        choices: [
+          "2a",
+          "a",
+          "2",
+          "2ac",
+        ],
+        accept: [
+          "2a",
+        ],
+        answer: "The denominator is 2a, and the fraction bar runs under the whole numerator, not just the square root. Forgetting the a is why answers to equations like 2x² − 5x − 1 = 0 come out double the right size.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain how you decide whether to solve a quadratic by factorising or by using the quadratic formula.",
+        answer: "Try factorising first, since it is quicker and easier to check: look for two numbers that multiply to give ac and add to give b. If no whole-number pair works, use the formula. A question that asks for the answer to a number of decimal places is a strong hint that the roots are not whole numbers, so the formula is expected. Completing the square is the third option, and is the one to reach for when the question also wants the turning point. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Write x² + 8x + 3 in the form (x + p)² + q and state the value of q.",
+        accept: [
+          "-13",
+        ],
+        answer: "q = −13. Half of 8 is 4, and (x + 4)² = x² + 8x + 16. That is 13 more than the original constant of 3, so x² + 8x + 3 = (x + 4)² − 13.",
+        higherOnly: true,
+      },
+      {
+        question: "x² − 10x + 7 is written in the form (x − a)² + b. Work out the value of b.",
+        accept: [
+          "-18",
+        ],
+        answer: "b = −18. Half of 10 is 5, and (x − 5)² = x² − 10x + 25. That is 18 more than the 7 needed, so the expression is (x − 5)² − 18.",
+        higherOnly: true,
+      },
+      {
+        question: "Use completing the square to write down the minimum value of x² − 6x + 10.",
+        accept: [
+          "1",
+        ],
+        answer: "1. Completing the square gives (x − 3)² + 1. A square can never be negative, so the smallest (x − 3)² can be is 0, which happens at x = 3 and leaves a minimum value of 1.",
+        higherOnly: true,
+      },
+      {
+        question: "Solve x² + 6x − 1 = 0 by completing the square. Give the positive solution to 2 decimal places.",
+        accept: [
+          "0.16",
+          "0.1623",
+        ],
+        answer: "x = 0.16. Completing the square gives (x + 3)² − 9 − 1 = 0, so (x + 3)² = 10 and x = −3 ± √10. Since √10 = 3.1623, the positive root is 0.1623 and the other is −6.1623.",
+        higherOnly: true,
+      },
+      {
+        question: "When x² + 10x − 2 is written in the form (x + p)² + q, the value of q is:",
+        choices: [
+          "-27",
+          "23",
+          "-2",
+          "-102",
+        ],
+        accept: [
+          "-27",
+        ],
+        answer: "Half of 10 is 5 and (x + 5)² = x² + 10x + 25, so 25 must be subtracted again: q = −2 − 25 = −27. Adding 25 instead gives 23, and squaring 10 rather than 5 gives −102.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why writing a quadratic in the form (x + p)² + q tells you its turning point straight away.",
+        answer: "The squared bracket can never be negative, so the smallest value it can take is zero, and that happens exactly when x = −p. At that x the whole expression is just q, which must therefore be the lowest value y ever reaches. So the minimum point is where x = −p and y = q, and the curve is symmetrical about the vertical line through it. If the x² coefficient were negative the same reasoning gives a maximum instead. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Work out the value of the discriminant of x² + 5x + 6.",
+        accept: [
+          "1",
+        ],
+        answer: "1. The discriminant is b² − 4ac = 5² − 4 × 1 × 6 = 25 − 24 = 1. Being positive, it tells you there are two different real roots, and indeed the expression factorises.",
+        higherOnly: true,
+      },
+      {
+        question: "Find the positive value of k for which x² + kx + 9 = 0 has exactly one solution.",
+        accept: [
+          "6",
+          "k=6",
+        ],
+        answer: "k = 6. Exactly one solution means a repeated root, so the discriminant is zero: k² − 4 × 1 × 9 = 0 gives k² = 36 and k = 6 or k = −6. Taking the positive value, x² + 6x + 9 = (x + 3)².",
+        higherOnly: true,
+      },
+      {
+        question: "How many real roots does x² + 3x + 7 have?",
+        choices: [
+          "0",
+          "1",
+          "2",
+          "3",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "b² − 4ac = 9 − 28 = −19. A negative discriminant means you would have to square-root a negative number, which is impossible here, so the parabola never reaches the x-axis and there are no real roots.",
+        higherOnly: true,
+      },
+      {
+        question: "A quadratic has b² − 4ac = −5. Its graph:",
+        choices: [
+          "Does not cross the x-axis",
+          "Crosses the x-axis twice",
+          "Touches the x-axis at exactly one point",
+          "Crosses the x-axis at x = -5",
+        ],
+        accept: [
+          "Does not cross the x-axis",
+        ],
+        answer: "A negative discriminant means no real roots, so the curve stays entirely above or entirely below the x-axis. Two crossings need a positive discriminant, and a single touch needs a discriminant of exactly zero.",
+        higherOnly: true,
+      },
+      {
+        question: "Explain what the sign of the discriminant tells you about the roots of a quadratic equation.",
+        answer: "The discriminant b² − 4ac sits under the square root in the formula. If it is positive you are square-rooting a positive number, so the ± gives two different real roots and the graph crosses the x-axis twice. If it is exactly zero the ± adds and subtracts nothing, so there is one repeated root and the curve just touches the axis at its turning point. If it is negative there is no real square root, so there are no real roots and the curve misses the x-axis completely. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Where does the graph of y = x² + 3x − 10 cross the y-axis? Give the y-coordinate.",
+        accept: [
+          "-10",
+        ],
+        answer: "−10. The y-axis is the line x = 0, and substituting x = 0 wipes out both x terms and leaves only the constant, so the y-intercept is always the constant term.",
+      },
+      {
+        question: "The curve y = (x + 1)² − 9 has a minimum point. Write down its y-coordinate.",
+        accept: [
+          "-9",
+        ],
+        answer: "−9. In the form (x + p)² + q the turning point sits at x = −p and y = q, so this minimum is at x = −1 with a y-coordinate of −9.",
+      },
+      {
+        question: "The graph of y = x² − 6x + 5 crosses the x-axis at x = 1 and x = 5. Write down the equation of its line of symmetry.",
+        accept: [
+          "x=3",
+        ],
+        answer: "x = 3. A parabola is symmetrical about a vertical line through its turning point, which lies exactly halfway between the two roots: (1 + 5) ÷ 2 = 3.",
+      },
+      {
+        question: "Which point is the turning point of y = (x + 5)² − 3?",
+        choices: [
+          "(-5, -3)",
+          "(5, -3)",
+          "(-5, 3)",
+          "(5, 3)",
+        ],
+        accept: [
+          "(-5, -3)",
+        ],
+        answer: "From the form (x + p)² + q the turning point is at x = −p and y = q. The sign of the number inside the bracket flips, but the sign of the number outside it does not.",
+      },
+      {
+        question: "The graph of y = −x² + 4 is:",
+        choices: [
+          "An n-shaped parabola crossing the y-axis at 4",
+          "A U-shaped parabola crossing the y-axis at 4",
+          "An n-shaped parabola crossing the y-axis at -4",
+          "A straight line with gradient -1",
+        ],
+        accept: [
+          "An n-shaped parabola crossing the y-axis at 4",
+        ],
+        answer: "A negative x² coefficient flips the U upside down into an n shape, and putting x = 0 gives y = 4, so it meets the y-axis above the origin.",
+      },
+      {
+        question: "The graph of y = (x − 1)(x + 4) crosses the x-axis at:",
+        choices: [
+          "x = 1 and x = -4",
+          "x = -1 and x = 4",
+          "x = 1 and x = 4",
+          "x = -1 and x = -4",
+        ],
+        accept: [
+          "x = 1 and x = -4",
+        ],
+        answer: "The curve meets the x-axis where y = 0, so set each bracket to zero in turn. The signs flip: x − 1 = 0 gives x = 1 and x + 4 = 0 gives x = −4.",
+      },
+      {
+        question: "Describe how you would sketch the graph of y = x² − 2x − 8, saying which points you would label.",
+        answer: "Start with the shape: the x² coefficient is positive, so it is a U. Factorise to (x − 4)(x + 2) to find the roots x = 4 and x = −2, and mark both where the curve cuts the x-axis. Put x = 0 to get the y-intercept at −8. The turning point lies halfway between the roots at x = 1, and substituting gives y = 1 − 2 − 8 = −9. Draw a smooth symmetrical curve through those points and label all four, because an unlabelled curve of the right shape scores almost nothing. (Mark this one yourself.)",
+      },
+      {
+        question: "A right-angled triangle has base (x + 2) cm and height x cm, and an area of 24 cm². Work out the value of x.",
+        accept: [
+          "6",
+          "x=6",
+        ],
+        answer: "x = 6. Half the base times the height gives x(x + 2) ÷ 2 = 24, so x² + 2x = 48 and x² + 2x − 48 = 0. Factorising gives (x + 8)(x − 6) = 0, and only the positive root makes sense: 8 × 6 ÷ 2 = 24. ✓",
+      },
+      {
+        question: "Two consecutive positive whole numbers multiply to give 156. Work out the smaller number.",
+        accept: [
+          "12",
+        ],
+        answer: "12. Calling them n and n + 1 gives n(n + 1) = 156, so n² + n − 156 = 0, which factorises to (n + 13)(n − 12) = 0. Taking the positive root the numbers are 12 and 13, and 12 × 13 = 156.",
+      },
+      {
+        question: "A positive number added to its own square gives 72. Work out the number.",
+        accept: [
+          "8",
+        ],
+        answer: "8. The equation is x² + x = 72, so x² + x − 72 = 0 and (x + 9)(x − 8) = 0. The two roots are −9 and 8, and the question asks for the positive one: 64 + 8 = 72. ✓",
+      },
+      {
+        question: "The height of a ball, h metres, after t seconds is h = 20t − 5t². Apart from at t = 0, after how many seconds is the height zero?",
+        accept: [
+          "4",
+        ],
+        answer: "4 seconds. Setting 20t − 5t² = 0 and factorising gives 5t(4 − t) = 0, so t = 0 at the moment of the throw and t = 4 when the ball lands again.",
+      },
+      {
+        question: "A square lawn of side x metres is made 3 m longer on one side, giving a rectangle of area 70 m². Which equation is correct?",
+        choices: [
+          "x(x + 3) = 70",
+          "x + 3x = 70",
+          "2(x + x + 3) = 70",
+          "x + (x + 3) = 70",
+        ],
+        accept: [
+          "x(x + 3) = 70",
+        ],
+        answer: "Area is length × width, so the new rectangle measures x by (x + 3) and x(x + 3) = 70. The option with the 2 outside is the perimeter, and adding the two sides is not an area at all.",
+      },
+      {
+        question: "A student solving a quadratic for the length of a rectangle gets x = 4 and x = −9. Explain what they should do next.",
+        answer: "They should write down both solutions of the equation, then reject x = −9 with a reason, because a length cannot be negative — saying so explicitly is usually worth a mark on its own. Next they substitute x = 4 back into the expressions for the sides and check that the area or perimeter matches the figure in the question. Finally they give the answer with its units, since a bare number is not a length. (Mark this one yourself.)",
+      },
+      {
+        question: "Find the nth term of 2, 9, 16, 23.",
+        accept: [
+          "7n-5",
+        ],
+        answer: "7n − 5. The common difference is 7, so the rule starts 7n. At n = 1 that gives 7, which is 5 more than the first term, so subtract 5. Check n = 4: 28 − 5 = 23. ✓",
+      },
+      {
+        question: "Find the nth term of 20, 17, 14, 11.",
+        accept: [
+          "23-3n",
+          "-3n+23",
+        ],
+        answer: "23 − 3n. The sequence falls by 3 each time, so the coefficient of n is −3, and the zeroth term — the value before the first — is 20 + 3 = 23.",
+      },
+      {
+        question: "Which term of the sequence 3, 10, 17, 24 is equal to 94? Give the position number.",
+        accept: [
+          "14",
+        ],
+        answer: "14. The common difference is 7 and the zeroth term is −4, so the nth term is 7n − 4. Setting 7n − 4 = 94 gives 7n = 98 and n = 14. A whole number confirms 94 really is in the sequence.",
+      },
+      {
+        question: "An arithmetic sequence has first term 8 and common difference 6. Write down its nth term.",
+        accept: [
+          "6n+2",
+        ],
+        answer: "6n + 2. The common difference becomes the coefficient of n, and the constant is the zeroth term, found by going one step back from the first: 8 − 6 = 2.",
+      },
+      {
+        question: "A linear sequence has 4th term 19 and 9th term 44. Find its nth term.",
+        accept: [
+          "5n-1",
+        ],
+        answer: "5n − 1. There are 5 steps from the 4th term to the 9th, and 44 − 19 = 25, so the common difference is 25 ÷ 5 = 5. Stepping back from the 4th term, the first term is 19 − 3 × 5 = 4, so the zeroth term is −1.",
+      },
+      {
+        question: "One of these four sequences is arithmetic. Which one?",
+        choices: [
+          "4, 11, 18, 25",
+          "2, 4, 8, 16",
+          "1, 4, 9, 16",
+          "1, 1, 2, 3",
+        ],
+        accept: [
+          "4, 11, 18, 25",
+        ],
+        answer: "Arithmetic means a constant difference, and 4, 11, 18, 25 goes up by 7 every time. The others are geometric with a ratio of 2, the square numbers, and a Fibonacci-style sequence.",
+      },
+      {
+        question: "The first negative term of the sequence with nth term 50 − 6n is at which position?",
+        choices: [
+          "n = 9",
+          "n = 8",
+          "n = 10",
+          "n = 7",
+        ],
+        accept: [
+          "n = 9",
+        ],
+        answer: "Solving 50 − 6n < 0 gives n > 8.33, and n must be a whole number, so the answer is n = 9. Checking confirms it: the 8th term is 2, still positive, and the 9th is −4.",
+      },
+      {
+        question: "The nth term of 9, 14, 19, 24 is:",
+        choices: [
+          "5n + 4",
+          "5n",
+          "5n + 9",
+          "4n + 5",
+        ],
+        accept: [
+          "5n + 4",
+        ],
+        answer: "The common difference 5 gives 5n, which produces 5, 10, 15, 20 — each one 4 short — so the rule is 5n + 4. Using the first term as the constant gives the common wrong answer 5n + 9.",
+      },
+      {
+        question: "Explain why the common difference of a linear sequence becomes the coefficient of n in the nth term.",
+        answer: "Moving from one position to the next increases n by exactly 1, so a rule of the form dn + a goes up by d every single time. That means d has to be the common difference of the sequence. The constant a then slides the whole sequence up or down so the first term comes out right, which is why a is simply the value the rule would give at n = 0, one step before the sequence starts. (Mark this one yourself.)",
+      },
+      {
+        question: "The first term of a geometric sequence is 5 and the common ratio is 3. Work out the 4th term.",
+        accept: [
+          "135",
+        ],
+        answer: "135. Multiply by 3 each time: 5, 15, 45, 135. Equivalently the 4th term is 5 × 3³ = 5 × 27, because you take three steps to get from the first term to the fourth.",
+      },
+      {
+        question: "The geometric sequence 80, 40, 20, 10 has what common ratio?",
+        accept: [
+          "0.5",
+          "1/2",
+        ],
+        answer: "0.5. Divide any term by the one before it: 40 ÷ 80 = 0.5. A ratio between 0 and 1 makes a geometric sequence shrink instead of grow.",
+      },
+      {
+        question: "Work out the next term of the geometric sequence 2, −6, 18, −54.",
+        accept: [
+          "162",
+        ],
+        answer: "162. The common ratio is −3, since −6 ÷ 2 = −3, and −54 × −3 = 162. A negative ratio makes the signs alternate, so the next term must be positive.",
+      },
+      {
+        question: "A geometric sequence has 2nd term 12 and 3rd term 36. Work out the first term.",
+        accept: [
+          "4",
+        ],
+        answer: "4. The common ratio is 36 ÷ 12 = 3. To step backwards through a geometric sequence you divide rather than multiply, so the first term is 12 ÷ 3 = 4.",
+      },
+      {
+        question: "In the sequence 1, 4, 16, 64 the next term is:",
+        choices: [
+          "256",
+          "128",
+          "80",
+          "68",
+        ],
+        accept: [
+          "256",
+        ],
+        answer: "Each term is multiplied by 4, so the next is 64 × 4 = 256. Doubling gives 128, adding the previous term gives 80 and simply adding 4 gives 68, and none of those keeps the ratio constant.",
+      },
+      {
+        question: "A geometric sequence starts 3, 12, 48. Its 5th term is:",
+        choices: [
+          "768",
+          "192",
+          "3072",
+          "96",
+        ],
+        accept: [
+          "768",
+        ],
+        answer: "The common ratio is 4, so the terms run 3, 12, 48, 192, 768. Counting positions matters: 192 is the 4th term and 3072 would be the 6th.",
+      },
+      {
+        question: "Find the nth term of the quadratic sequence 4, 7, 12, 19, 28.",
+        accept: [
+          "n^2+3",
+        ],
+        answer: "n² + 3. The first differences are 3, 5, 7, 9 and the second difference is a constant 2, so the coefficient of n² is 2 ÷ 2 = 1. Subtracting 1, 4, 9, 16, 25 from the terms leaves 3 every time.",
+        higherOnly: true,
+      },
+      {
+        question: "Find the nth term of the quadratic sequence 5, 12, 23, 38, 57.",
+        accept: [
+          "2n^2+n+2",
+        ],
+        answer: "2n² + n + 2. The first differences are 7, 11, 15, 19, so the second difference is 4 and the sequence contains 2n². Subtracting 2, 8, 18, 32, 50 leaves 3, 4, 5, 6, 7, whose nth term is n + 2.",
+        higherOnly: true,
+      },
+      {
+        question: "Find the nth term of the quadratic sequence 0, 3, 8, 15, 24.",
+        accept: [
+          "n^2-1",
+        ],
+        answer: "n² − 1. The second difference is 2, so the coefficient of n² is 1. Subtracting the square numbers 1, 4, 9, 16, 25 leaves −1 each time, so this is just the square numbers shifted down by one.",
+        higherOnly: true,
+      },
+      {
+        question: "Which of these sequences is quadratic?",
+        choices: [
+          "3, 6, 11, 18",
+          "3, 6, 9, 12",
+          "3, 6, 12, 24",
+          "3, 5, 8, 13",
+        ],
+        accept: [
+          "3, 6, 11, 18",
+        ],
+        answer: "Its first differences are 3, 5, 7 and the second differences are a constant 2, which is the test for a quadratic sequence. The others are linear with a constant first difference, geometric with a ratio of 2, and Fibonacci-style.",
+      },
+      {
+        question: "Write down the next triangular number after 15.",
+        accept: [
+          "21",
+        ],
+        answer: "21. The triangular numbers are 1, 3, 6, 10, 15, 21, and each one is found by adding one more than you added last time, so 15 + 6 = 21.",
+      },
+      {
+        question: "The first two terms of a Fibonacci-style sequence are 4 and 7. Work out the 5th term.",
+        accept: [
+          "29",
+        ],
+        answer: "29. Each term is the sum of the two before it, so the sequence runs 4, 7, 11, 18, 29. Write the terms out in order rather than trying to jump straight to the fifth.",
+      },
+      {
+        question: "In a Fibonacci-style sequence the 3rd term is 10 and the 4th term is 16. Work out the 2nd term.",
+        accept: [
+          "6",
+        ],
+        answer: "6. The 4th term is the 3rd plus the 2nd, so 16 = 10 + the 2nd term, giving 6. Working backwards through a Fibonacci-style rule means subtracting rather than adding.",
+      },
+      {
+        question: "Which of these is a triangular number?",
+        choices: [
+          "28",
+          "24",
+          "32",
+          "35",
+        ],
+        accept: [
+          "28",
+        ],
+        answer: "The triangular numbers run 1, 3, 6, 10, 15, 21, 28, each one adding the next whole number in turn. The values 24, 32 and 35 never appear in that list — the numbers either side of 28 are 21 and 36.",
+      },
+      {
+        question: "The 4th cube number is:",
+        choices: [
+          "64",
+          "12",
+          "16",
+          "81",
+        ],
+        accept: [
+          "64",
+        ],
+        answer: "A cube number is a whole number multiplied by itself three times, so the 4th is 4³ = 4 × 4 × 4 = 64. Multiplying by 3 gives 12 and squaring gives 16, both of which confuse cubing with something simpler.",
+      },
+      {
+        question: "Explain how the triangular numbers are built up, and why the gaps between them keep growing.",
+        answer: "A triangular number counts the dots in a triangle, so each new one is made by adding a whole extra row along the bottom. The first is 1, then you add 2 to get 3, then 3 to get 6, then 4 to get 10, then 5 to get 15. The gap grows by exactly 1 each time because every new row holds one more dot than the row before it. That steady increase in the differences is the same constant second difference of 1 that marks the triangular numbers out as a quadratic sequence. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the sequence 1, 2, 4, 8, 16 cannot have an nth term of the form an + b.",
+        answer: "A rule of the form an + b changes by the same amount a each time n goes up by 1, so it can only ever produce a sequence with a constant difference. Here the differences are 1, 2, 4, 8, which keep growing, so no values of a and b will fit. The sequence is geometric instead: every term is double the one before, so the rule is 2 to the power of n − 1. (Mark this one yourself.)",
       },
     ],
 
@@ -4374,6 +10131,318 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain the difference between a sector and a segment of a circle, and how the working needed for their areas differs.",
         answer: "A sector is the slice bounded by two radii and the arc between them, while a segment is the region cut off by a chord and the arc above it. A sector's area is just a fraction of the whole circle, found from the angle over 360. A segment needs an extra step: find the sector, then subtract the triangle formed by the two radii and the chord. (Mark this one yourself.)",
       },
+      {
+        question: "P, Q and R lie on a circle and PR is a diameter. Write down the size of angle PQR, in degrees.",
+        accept: [
+          "90",
+          "90 degrees",
+        ],
+        answer: "90 degrees. The angle in a semicircle is a right angle, so spotting a diameter in the diagram hands you a right angle before you calculate anything.",
+      },
+      {
+        question: "O is the centre of a circle and the angle AOB at the centre is 96°. Work out the angle ACB at the circumference standing on the same arc, in degrees.",
+        accept: [
+          "48",
+          "48 degrees",
+        ],
+        answer: "48 degrees. The angle at the centre is twice the angle at the circumference on the same arc, so halving 96 gives 48.",
+        higherOnly: true,
+      },
+      {
+        question: "An angle of 27° is formed at the circumference of a circle. Calculate the angle at the centre standing on the same arc, in degrees.",
+        accept: [
+          "54",
+          "54 degrees",
+        ],
+        answer: "54 degrees, because the angle at the centre is double the angle at the circumference: 2 × 27 = 54. Going from circumference to centre you double, and the other way you halve.",
+        higherOnly: true,
+      },
+      {
+        question: "Points X and Y lie on a circle with centre O, and the reflex angle XOY is 230°. Find the angle at the circumference standing on the same arc XY, in degrees.",
+        accept: [
+          "115",
+          "115 degrees",
+        ],
+        answer: "115 degrees. The doubling rule works with the reflex angle too, as long as the point on the circumference is on the other arc, so halve 230 to get 115.",
+        higherOnly: true,
+      },
+      {
+        question: "Points A, B, C and D lie on a circle, with C and D on the same side of the chord AB. Angle ADB is 38°. Write down angle ACB, in degrees.",
+        accept: [
+          "38",
+          "38 degrees",
+        ],
+        answer: "38 degrees. Angles in the same segment standing on the same chord are equal, so once you see that C and D are on the same side of AB there is nothing to calculate.",
+        higherOnly: true,
+      },
+      {
+        question: "Angles ACB and ADB stand on the same chord AB and lie in the same segment. Angle ACB = 3x° and angle ADB = 51°. Work out the value of x.",
+        accept: [
+          "17",
+        ],
+        answer: "17. Angles in the same segment are equal, so 3x = 51 and therefore x = 51 ÷ 3 = 17.",
+        higherOnly: true,
+      },
+      {
+        question: "A cyclic quadrilateral has one angle of 112°. Calculate the angle opposite it, in degrees.",
+        accept: [
+          "68",
+          "68 degrees",
+        ],
+        answer: "68 degrees. Opposite angles of a cyclic quadrilateral add to 180, so 180 − 112 = 68. Take care to use the opposite angle rather than one next to it.",
+        higherOnly: true,
+      },
+      {
+        question: "In cyclic quadrilateral PQRS the vertices are in order around the circle. Angle P = 76° and angle Q = 118°. Find angle S, in degrees.",
+        accept: [
+          "62",
+          "62 degrees",
+        ],
+        answer: "62 degrees. In PQRS the opposite pairs are P with R and Q with S, so angle S = 180 − 118 = 62. The 76° belongs to the other pair and is not needed here.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent touches a circle with centre O at the point T, and P lies on the tangent. Angle TOP is 58°. Calculate angle OPT, in degrees.",
+        accept: [
+          "32",
+          "32 degrees",
+        ],
+        answer: "32 degrees. The tangent meets the radius OT at 90°, so triangle OTP contains 90° and 58°, leaving 180 − 90 − 58 = 32.",
+        higherOnly: true,
+      },
+      {
+        question: "Two tangents are drawn from an external point P to a circle with centre O, touching it at A and B. Angle APB is 44°. Work out angle AOB, in degrees.",
+        accept: [
+          "136",
+          "136 degrees",
+        ],
+        answer: "136 degrees. OAPB is a quadrilateral with right angles at A and B where each tangent meets its radius, so angle AOB = 360 − 90 − 90 − 44 = 136.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent from a point P touches a circle of radius 9 cm at A, and OP = 15 cm where O is the centre. Calculate the length PA, in cm.",
+        accept: [
+          "12",
+          "12 cm",
+        ],
+        answer: "12 cm. Angle OAP is 90° because a tangent meets a radius at right angles, so PA = √(15² − 9²) = √(225 − 81) = √144 = 12.",
+        higherOnly: true,
+      },
+      {
+        question: "Tangents from a point P touch a circle at A and B, and angle APB is 50°. Find angle PAB, in degrees.",
+        accept: [
+          "65",
+          "65 degrees",
+        ],
+        answer: "65 degrees. The two tangents from P are equal in length, so triangle APB is isosceles and its two base angles match: (180 − 50) ÷ 2 = 65.",
+        higherOnly: true,
+      },
+      {
+        question: "The angle between a tangent and a chord drawn from the point of contact is 73°. Write down the angle in the alternate segment, in degrees.",
+        accept: [
+          "73",
+          "73 degrees",
+        ],
+        answer: "73 degrees. The alternate segment theorem says the angle between a tangent and a chord equals the angle that chord subtends in the alternate segment, so the two are identical.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent touches a circle at A and the chord AB makes an angle of 48° with the tangent. C lies in the alternate segment and angle ABC is 71°. Calculate angle BAC, in degrees.",
+        accept: [
+          "61",
+          "61 degrees",
+        ],
+        answer: "61 degrees. By the alternate segment theorem angle ACB = 48°, and the angles of triangle ABC add to 180, so angle BAC = 180 − 71 − 48 = 61.",
+        higherOnly: true,
+      },
+      {
+        question: "Complete the name of the theorem: the angle in a ______ is always 90°.",
+        accept: [
+          "semicircle",
+          "a semicircle",
+          "semi-circle",
+        ],
+        answer: "Semicircle. Whenever one side of a triangle is a diameter, the angle at the third vertex on the circumference is a right angle.",
+      },
+      {
+        question: "Fill in the missing word: the angle at the centre of a circle is ______ the angle at the circumference standing on the same arc.",
+        accept: [
+          "twice",
+          "double",
+          "two times",
+        ],
+        answer: "Twice. The angle at the centre is double the one at the circumference, so you halve as you move inwards to the centre and double as you move outwards.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent and a radius meet at the point where the tangent touches the circle. Complete the reason: the tangent is ______ to the radius.",
+        accept: [
+          "perpendicular",
+          "at right angles",
+          "at 90 degrees",
+        ],
+        answer: "Perpendicular. The full wording that earns the reason mark is 'the tangent is perpendicular to the radius at the point of contact', and that right angle is the way into almost every tangent question.",
+        higherOnly: true,
+      },
+      {
+        question: "What is the name of the theorem stating that the angle between a tangent and a chord equals the angle in the opposite segment?",
+        accept: [
+          "alternate segment theorem",
+          "the alternate segment theorem",
+          "alternate segment",
+        ],
+        answer: "The alternate segment theorem. Naming it in full is what earns the reason mark, and the alternate segment is the one on the other side of the chord from the angle you were given.",
+        higherOnly: true,
+      },
+      {
+        question: "The angle at the centre of a circle standing on arc AB is 84°. What is the angle at the circumference standing on the same arc, in degrees?",
+        choices: [
+          "42",
+          "168",
+          "96",
+          "84",
+        ],
+        accept: [
+          "42",
+        ],
+        answer: "42°, because the angle at the centre is twice the angle at the circumference, so you halve it. Doubling instead gives 168°, subtracting from 180 gives 96°, and 84° assumes the two angles are equal.",
+        higherOnly: true,
+      },
+      {
+        question: "ABCD is a cyclic quadrilateral with its vertices in order around the circle, and angle B is 104°. Which statement is correct?",
+        choices: [
+          "Angle D = 76 degrees",
+          "Angle D = 104 degrees",
+          "Angle A = 76 degrees",
+          "Angle C = 76 degrees",
+        ],
+        accept: [
+          "Angle D = 76 degrees",
+        ],
+        answer: "Angle D = 76°, because D is opposite B and opposite angles of a cyclic quadrilateral add to 180: 180 − 104 = 76. Angles A and C sit next to B rather than opposite it, so this information says nothing about them.",
+        higherOnly: true,
+      },
+      {
+        question: "PA and PB are tangents from an external point P to a circle with centre O. Which statement is always true?",
+        choices: [
+          "PA = PB",
+          "PA = PO",
+          "Angle APB = 90°",
+          "OA = PA",
+        ],
+        accept: [
+          "PA = PB",
+        ],
+        answer: "PA = PB, because two tangents from the same external point are equal in length, which makes triangle APB isosceles. PO is the hypotenuse of right-angled triangle OAP so it is always longer than PA, angle APB changes as P moves, and OA is a radius rather than a tangent length.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent touches a circle at A and the chord AB is drawn. The angle between the tangent and the chord is 35°. What is the angle in the alternate segment, in degrees?",
+        choices: [
+          "35",
+          "55",
+          "70",
+          "145",
+        ],
+        accept: [
+          "35",
+        ],
+        answer: "35°. The alternate segment theorem makes the two angles equal. Subtracting from 90 gives 55°, doubling gives 70° and subtracting from 180 gives 145°, all of which come from reaching for a different theorem.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent touches a circle of radius 7 cm at T, and a point P on the tangent is 24 cm from T. How far is P from the centre of the circle?",
+        choices: [
+          "25 cm",
+          "31 cm",
+          "23.0 cm",
+          "17 cm",
+        ],
+        accept: [
+          "25 cm",
+        ],
+        answer: "25 cm. The radius meets the tangent at 90°, so OP = √(7² + 24²) = √625 = 25. Adding the lengths gives 31 cm, subtracting the squares gives 23.0 cm and subtracting the lengths gives 17 cm.",
+        higherOnly: true,
+      },
+      {
+        question: "A, B and C lie on a circle with centre O, and angle AOB is exactly twice angle ACB. Which theorem does this describe?",
+        choices: [
+          "The angle at the centre is twice the angle at the circumference",
+          "Angles in the same segment are equal",
+          "The alternate segment theorem",
+          "Opposite angles in a cyclic quadrilateral add to 180°",
+        ],
+        accept: [
+          "The angle at the centre is twice the angle at the circumference",
+        ],
+        answer: "The angle at the centre is twice the angle at the circumference on the same arc. The same-segment rule compares two angles that are both on the circumference, the alternate segment theorem needs a tangent, and the cyclic quadrilateral rule needs four points on the circle.",
+        higherOnly: true,
+      },
+      {
+        question: "C and D lie on the major arc of a circle, and angles ACB and ADB both stand on the chord AB. Angle ACB is 41°. What is angle ADB, in degrees?",
+        choices: [
+          "41",
+          "82",
+          "139",
+          "49",
+        ],
+        accept: [
+          "41",
+        ],
+        answer: "41°. Angles in the same segment standing on the same chord are equal. Doubling gives 82°, which would be the angle at the centre, while 139° and 49° come from subtracting from 180 and from 90.",
+        higherOnly: true,
+      },
+      {
+        question: "AB is a diameter of a circle with centre O, and C lies on the circumference. Angle BOC is 110°. What is angle BAC, in degrees?",
+        choices: [
+          "55",
+          "110",
+          "35",
+          "70",
+        ],
+        accept: [
+          "55",
+        ],
+        answer: "55°. Angle BOC is at the centre and angle BAC is at the circumference, both standing on arc BC, so angle BAC is half of 110. The 35° is angle ABC, found from the right angle at C, and 70° is 180 − 110.",
+        higherOnly: true,
+      },
+      {
+        question: "Two tangents from a point P touch a circle with centre O at A and B, and angle AOB is 118°. What is angle APB, in degrees?",
+        choices: [
+          "62",
+          "118",
+          "31",
+          "242",
+        ],
+        accept: [
+          "62",
+        ],
+        answer: "62°. The quadrilateral OAPB has right angles at A and B and its angles add to 360, so angle APB = 360 − 90 − 90 − 118 = 62. Halving 62 gives 31 and the reflex angle at O is 242.",
+        higherOnly: true,
+      },
+      {
+        question: "AB is a diameter of a circle and C lies on the circumference. Angle ABC is 58°. Find angle BAC and give a reason for each step.",
+        answer: "Angle ACB = 90° because the angle in a semicircle is a right angle. The angles of triangle ABC then add to 180°, so angle BAC = 180 − 90 − 58 = 32°. Both reasons have to be written down: 'angle in a semicircle' for the right angle and 'angles in a triangle add to 180°' for the subtraction. The number on its own would collect only part of the marks. (Mark this one yourself.)",
+      },
+      {
+        question: "WXYZ is a cyclic quadrilateral with its vertices in order around the circle, and angle W is 103°. Write down angle Y and give the reason.",
+        answer: "Angle Y = 77°, because opposite angles of a cyclic quadrilateral add up to 180° and 180 − 103 = 77. The reason mark needs the words 'opposite angles of a cyclic quadrilateral add to 180°', not just 'circle theorem'. Check that you have paired opposite vertices rather than adjacent ones before subtracting. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "PA and PB are tangents to a circle with centre O, touching at A and B, and angle APB is 56°. Find angle OAB, giving full reasons.",
+        answer: "Angle OAP and angle OBP are both 90°, because a tangent meets a radius at right angles. Quadrilateral OAPB has angles adding to 360°, so angle AOB = 360 − 90 − 90 − 56 = 124°. Triangle OAB is isosceles because OA and OB are both radii, so its base angles are equal and angle OAB = (180 − 124) ÷ 2 = 28°. Three separate reasons are wanted, one for each step. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent touches a circle at A and the chord AB is drawn. Explain what the alternate segment theorem tells you here, and describe how to identify the correct segment.",
+        answer: "The chord AB splits the circle into two segments. The angle between the tangent and the chord on one side of AB equals the angle that AB subtends at any point on the arc of the segment on the other side. To find the right segment, see which side of the chord the tangent-chord angle opens into, then cross the chord to the segment opposite. Choosing the segment on the same side is the usual error, and it gives the supplement of the correct answer. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "A student writes '90°, because of the circle theorem' as the reason in a question about a diameter. Explain why this earns no reason mark and write out a reason that would.",
+        answer: "'The circle theorem' identifies nothing — there are several of them and an examiner cannot tell which one has been used. The reason mark is for naming the specific rule together with the condition that makes it apply. A version that scores is 'angle ACB = 90° because the angle in a semicircle is a right angle, and AB is a diameter'. Learning each theorem as a sentence rather than as a picture is what turns the reason mark into a reliable one. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -4777,6 +10846,301 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain why the magnitude of a vector is found using Pythagoras rather than by adding its two components.",
         answer: "The components are the horizontal and vertical parts of the journey, and these are at right angles to each other rather than along the same line. The magnitude is the straight-line distance from start to finish, which is the hypotenuse of the right-angled triangle those components form. Adding them would give the distance travelled along two sides instead, which is longer, as with 3 and 4 giving 7 rather than the correct 5. (Mark this one yourself.)",
       },
+      {
+        question: "Vector p is the column vector\n⎛ 6⎞\n⎝−2⎠\nand vector q is the column vector\n⎛−1⎞\n⎝ 5⎠\nWork out p + q. Give your answer as (top,bottom).",
+        accept: [
+          "(5,3)",
+          "5,3",
+        ],
+        answer: "The top is 6 + (−1) = 5 and the bottom is −2 + 5 = 3. Column vectors are added component by component, never mixed together.",
+      },
+      {
+        question: "Vector a is the column vector\n⎛ 4⎞\n⎝−3⎠\nCalculate the magnitude of a.",
+        accept: [
+          "5",
+        ],
+        answer: "5. The magnitude is √(4² + (−3)²) = √25 = 5. Squaring removes the minus sign, so a negative component never shortens a vector.",
+      },
+      {
+        question: "Calculate the magnitude of the column vector with −9 on top and 12 underneath.",
+        accept: [
+          "15",
+        ],
+        answer: "15. Square both components and add: 81 + 144 = 225, and √225 = 15. This is Pythagoras on the right-angled triangle the arrow makes.",
+      },
+      {
+        question: "Vector m is the column vector\n⎛−2⎞\n⎝ 7⎠\nWork out 4m. Give your answer as (top,bottom).",
+        accept: [
+          "(-8,28)",
+          "-8,28",
+        ],
+        answer: "The top is 4 × (−2) = −8 and the bottom is 4 × 7 = 28. Multiplying by a scalar stretches both components by the same factor.",
+      },
+      {
+        question: "Vector s has 5 on top and −1 underneath, and vector t has −3 on top and 6 underneath. Work out 3s + 2t. Give your answer as (top,bottom).",
+        accept: [
+          "(9,9)",
+          "9,9",
+        ],
+        answer: "The top is 3 × 5 + 2 × (−3) = 15 − 6 = 9 and the bottom is 3 × (−1) + 2 × 6 = −3 + 12 = 9. Multiply each one out first, then add.",
+      },
+      {
+        question: "Vector u has −4 on top and 1 underneath. Work out −2u. Give your answer as (top,bottom).",
+        accept: [
+          "(8,-2)",
+          "8,-2",
+        ],
+        answer: "The top is −2 × (−4) = 8 and the bottom is −2 × 1 = −2. A negative scalar reverses the direction as well as changing the length.",
+      },
+      {
+        question: "Vector c has 7 on top and 2 underneath, and vector d has 9 on top and −5 underneath. Work out c − d. Give your answer as (top,bottom).",
+        accept: [
+          "(-2,7)",
+          "-2,7",
+        ],
+        answer: "The top is 7 − 9 = −2 and the bottom is 2 − (−5) = 7. Subtracting a negative component adds, which is where most marks are dropped.",
+      },
+      {
+        question: "A translation moves every point of a shape 3 units left and 7 units up. Write this as a column vector, giving your answer as (top,bottom).",
+        accept: [
+          "(-3,7)",
+          "-3,7",
+        ],
+        answer: "Left is the negative x direction, so the top number is −3. Up is positive, so the bottom number is 7. The movement across always goes on top.",
+      },
+      {
+        question: "The point with x-coordinate −1 and y-coordinate 4 is translated by the column vector with 6 on top and −9 underneath. Work out the coordinates of the image. Give your answer as (x,y).",
+        accept: [
+          "(5,-5)",
+          "5,-5",
+        ],
+        answer: "The image has x = −1 + 6 = 5 and y = 4 + (−9) = −5. The top number is added to the x-coordinate and the bottom number to the y-coordinate.",
+      },
+      {
+        question: "The point (3, −5) is reflected in the y-axis. Work out the coordinates of the image. Give your answer as (x,y).",
+        accept: [
+          "(-3,-5)",
+          "-3,-5",
+        ],
+        answer: "(−3, −5). Reflecting in the y-axis changes the sign of the x-coordinate and leaves the y-coordinate exactly as it was.",
+      },
+      {
+        question: "The point (−2, 6) is reflected in the line y = −x. Work out the coordinates of the image. Give your answer as (x,y).",
+        accept: [
+          "(-6,2)",
+          "-6,2",
+        ],
+        answer: "(−6, 2). Reflecting in y = −x swaps the two coordinates and changes both signs, so −2 and 6 become −6 and 2.",
+      },
+      {
+        question: "The point (5, 2) is rotated 90° clockwise about the origin. Work out the coordinates of the image. Give your answer as (x,y).",
+        accept: [
+          "(2,-5)",
+          "2,-5",
+        ],
+        answer: "(2, −5). A quarter turn clockwise about the origin sends a point with coordinates a and b to the point with coordinates b and −a. Tracing paper is the safest check in the exam.",
+      },
+      {
+        question: "A triangle has a corner at (4, −2). The triangle is rotated 180° about the origin. Work out the coordinates of the image of that corner. Give your answer as (x,y).",
+        accept: [
+          "(-4,2)",
+          "-4,2",
+        ],
+        answer: "(−4, 2). A half turn about the origin changes the sign of both coordinates, and for 180° it makes no difference which way you turn.",
+      },
+      {
+        question: "The point (3, 4) is enlarged by scale factor 3 with centre the origin. Work out the coordinates of the image. Give your answer as (x,y).",
+        accept: [
+          "(9,12)",
+          "9,12",
+        ],
+        answer: "(9, 12). With the origin as centre, multiply both coordinates by the scale factor: 3 × 3 = 9 and 3 × 4 = 12.",
+      },
+      {
+        question: "A shape is enlarged by scale factor −2 with centre the origin. One corner of the shape is at (1, −3). Work out the coordinates of its image. Give your answer as (x,y).",
+        accept: [
+          "(-2,6)",
+          "-2,6",
+        ],
+        answer: "(−2, 6). Multiply both coordinates by −2. The image is twice as big and lands on the opposite side of the centre, turned upside down.",
+      },
+      {
+        question: "The point (8, −4) is enlarged by scale factor 1/4 with centre the origin. Work out the coordinates of the image. Give your answer as (x,y).",
+        accept: [
+          "(2,-1)",
+          "2,-1",
+        ],
+        answer: "(2, −1). A fractional scale factor shrinks the shape: 8 ÷ 4 = 2 and −4 ÷ 4 = −1. It is still called an enlargement even though it gets smaller.",
+      },
+      {
+        question: "The point (2, 1) is reflected in the x-axis, and the image is then rotated 90° anticlockwise about the origin. Work out the coordinates of the final image. Give your answer as (x,y).",
+        accept: [
+          "(1,2)",
+          "1,2",
+        ],
+        answer: "(1, 2). The reflection gives (2, −1). A quarter turn anticlockwise sends a point with coordinates a and b to the point with coordinates −b and a, so (2, −1) becomes (1, 2). Do one transformation at a time.",
+      },
+      {
+        question: "The point (−6, 3) is enlarged by scale factor 1/3 with centre the origin, and the image is then reflected in the line y = x. Work out the coordinates of the final image. Give your answer as (x,y).",
+        accept: [
+          "(1,-2)",
+          "1,-2",
+        ],
+        answer: "(1, −2). Dividing both coordinates by 3 gives (−2, 1), and reflecting in y = x swaps the coordinates over to give (1, −2).",
+      },
+      {
+        question: "In triangle OAB, OA = a and OB = b. The point P lies on OA so that OP : PA = 1 : 2. Write OP in terms of a.",
+        accept: [
+          "(1/3)a",
+          "a/3",
+          "1/3a",
+        ],
+        answer: "(1/3)a. The ratio 1 : 2 splits OA into three equal parts and OP is one of them, so OP is a third of the way along a. Read the ratio as parts of the whole, not as a fraction of the other piece.",
+        higherOnly: true,
+      },
+      {
+        question: "A shape is translated so that every point moves 4 units right and 5 units down. Which column vector describes this?",
+        choices: [
+          "4 on top and −5 underneath",
+          "−4 on top and 5 underneath",
+          "5 on top and −4 underneath",
+          "4 on top and 5 underneath",
+        ],
+        accept: [
+          "4 on top and -5 underneath",
+        ],
+        answer: "The movement across goes on top and upwards is positive, so 4 right gives 4 on top and 5 down gives −5 underneath.",
+      },
+      {
+        question: "A shape and its image are the same size, but the image has been turned about a fixed point. The transformation is a:",
+        choices: [
+          "Rotation",
+          "Reflection",
+          "Translation",
+          "Enlargement",
+        ],
+        accept: [
+          "Rotation",
+        ],
+        answer: "Only a rotation turns a shape about a fixed point while keeping every length unchanged. A reflection would produce a mirror image instead.",
+      },
+      {
+        question: "The magnitude of the column vector with 7 on top and 24 underneath is:",
+        choices: [
+          "25",
+          "31",
+          "17",
+          "625",
+        ],
+        accept: [
+          "25",
+        ],
+        answer: "Squaring and adding gives 49 + 576 = 625, and √625 = 25. Adding the components gives 31 and forgetting the square root leaves 625.",
+      },
+      {
+        question: "An enlargement with scale factor −3 gives an image that is:",
+        choices: [
+          "Three times as large and inverted through the centre",
+          "Three times as large and the same way up",
+          "A third of the size and inverted through the centre",
+          "The same size but turned through 90°",
+        ],
+        accept: [
+          "Three times as large and inverted through the centre",
+        ],
+        answer: "The 3 controls the size and the minus sign puts the image on the opposite side of the centre, so it comes out upside down.",
+      },
+      {
+        question: "The point (2, 5) is reflected in the x-axis. Its image is:",
+        choices: [
+          "(2, −5)",
+          "(−2, 5)",
+          "(5, 2)",
+          "(−2, −5)",
+        ],
+        accept: [
+          "(2, -5)",
+        ],
+        answer: "Reflecting in the x-axis changes the sign of the y-coordinate only, so 5 becomes −5 while the 2 stays put.",
+      },
+      {
+        question: "To describe a single enlargement fully you must state:",
+        choices: [
+          "The scale factor and the centre of enlargement",
+          "The scale factor only",
+          "The centre and the angle of turn",
+          "The mirror line and the direction",
+        ],
+        accept: [
+          "The scale factor and the centre of enlargement",
+        ],
+        answer: "Two images can share a scale factor and still sit in completely different places, so the centre is needed as well as the size.",
+      },
+      {
+        question: "A point is moved by the column vector with 3 on top and 4 underneath, and then by the column vector with −3 on top and −4 underneath. The point ends up:",
+        choices: [
+          "Back where it started",
+          "Six units to the right",
+          "Eight units up",
+          "Five units from where it started",
+        ],
+        accept: [
+          "Back where it started",
+        ],
+        answer: "The two column vectors add to zero in both components, so the second move undoes the first exactly, wherever the point began.",
+      },
+      {
+        question: "A shape is rotated 90° anticlockwise about the origin, and the image is then rotated 90° anticlockwise about the origin again. A single transformation with the same effect is:",
+        choices: [
+          "A half turn about the origin",
+          "A quarter turn clockwise about the origin",
+          "A reflection in the y-axis",
+          "A translation of 2 units to the right",
+        ],
+        accept: [
+          "A half turn about the origin",
+        ],
+        answer: "Two quarter turns the same way make a half turn — a rotation of 180° — and the centre of the combined rotation is the point both turns used.",
+      },
+      {
+        question: "Vector b is equal to 4a. Vectors a and b must therefore be:",
+        choices: [
+          "Parallel, with b four times as long as a",
+          "Perpendicular to each other",
+          "Equal in length but opposite in direction",
+          "At 45° to each other",
+        ],
+        accept: [
+          "Parallel, with b four times as long as a",
+        ],
+        answer: "One being a multiple of the other is the definition of parallel, and the multiplier gives the ratio of their lengths.",
+      },
+      {
+        question: "A triangle is enlarged by scale factor 1/2. Compared with the original, the image is:",
+        choices: [
+          "Smaller, with every length halved",
+          "Smaller, with every length quartered",
+          "Larger, with every length doubled",
+          "The same size, but reflected",
+        ],
+        accept: [
+          "Smaller, with every length halved",
+        ],
+        answer: "A scale factor between 0 and 1 shrinks the shape and every length is multiplied by 1/2. The area, by contrast, is quartered.",
+      },
+      {
+        question: "In triangle OAB, OA = a and OB = b. N lies on AB so that AN : NB = 1 : 3. Show that ON = (3/4)a + (1/4)b.",
+        answer: "Build the journey from O to N out of the two arrows you were given. Going from A to B means travelling back along a to O and then out along b, so AB = b − a. The ratio 1 : 3 splits AB into four equal parts and AN is one of them, so AN = (1/4)(b − a). Now go the long way round: ON = OA + AN = a + (1/4)b − (1/4)a. Collecting the a terms gives a − (1/4)a = (3/4)a, so ON = (3/4)a + (1/4)b as required. The habit that earns the marks is writing every route as a chain of the given arrows before doing any algebra. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "A shape is mapped onto an image that is the same size and the same way round, with every point moved the same distance in the same direction. Describe fully the single transformation, and state exactly what information must be given.",
+        answer: "It is a translation. To describe it fully you must use the word translation and give the column vector, with the movement across written on top and the movement up or down written underneath, using a minus sign for left and for down. A description in words such as 'moved right and down a bit' does not earn the mark, because it is not precise enough to redraw the image from. Nothing else should be added: a translation has no centre, no angle and no mirror line, and offering those suggests the transformation has not been identified. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why reflecting a shape in one mirror line and then reflecting the image in a second, parallel mirror line has the same effect as a single translation.",
+        answer: "Each reflection reverses the shape, so doing it twice turns it back the right way round, which is why the final image is the same way round as the original rather than a mirror image. Every point also ends up moved in the same direction, perpendicular to the two mirrors, and by the same distance — twice the gap between the mirrors — no matter which point you follow or which side of the first mirror it started on. A movement that is identical for every point is exactly what a translation is, so the pair of reflections can be replaced by one. The gap between the mirrors is what controls how far the shape travels. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -5179,6 +11543,212 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain how to use the formula sheet efficiently during the exam, and which formulae you should still know without it.",
         answer: "The sheet is there for the formulae that are awkward to recall, such as the volume of a sphere or cone and the trigonometric rules, so it is worth glancing at the layout before the exam so you can find them quickly. Stopping to look up something basic costs time and breaks your train of thought. Areas of triangles, parallelograms and trapezia, the circle formulae, speed, density and pressure, and Pythagoras should all be automatic. (Mark this one yourself.)",
+      },
+      {
+        question: "A rectangle has a perimeter of 46 cm, and its length is 5 cm more than its width. Work out its area in cm².",
+        accept: [
+          "126",
+        ],
+        answer: "126 cm². Half the perimeter is length plus width, which is 23 cm. If the width is w then w + (w + 5) = 23, so 2w = 18 and w = 9 cm, making the length 14 cm. The area is 9 × 14 = 126 cm².",
+      },
+      {
+        question: "£2400 is invested at 3.5% compound interest per year. Work out the value of the investment after 4 years, to the nearest penny.",
+        accept: [
+          "2754.06",
+          "£2754.06",
+        ],
+        answer: "£2754.06. Each year the amount is multiplied by 1.035, so after 4 years it is 2400 × 1.035⁴ = 2754.0552..., which is £2754.06 to the nearest penny. Use the power key rather than multiplying four times, and round only at the end.",
+      },
+      {
+        question: "A solid cylinder has radius 5 cm and height 12 cm. Calculate its volume in cm³, to 3 significant figures.",
+        accept: [
+          "942",
+        ],
+        answer: "942 cm³. The volume of a cylinder is π × r² × h, so it is π × 5² × 12 = 300π = 942.477... cm³, which is 942 cm³ to 3 significant figures. Keep π in the calculator rather than using 3.14.",
+      },
+      {
+        question: "A ship sails 9 km due north, then 12 km due east, taking 45 minutes altogether. Work out its average speed along the straight line from start to finish, in km/h.",
+        accept: [
+          "20",
+        ],
+        answer: "20 km/h. By Pythagoras the direct distance is the square root of 9² + 12² = 81 + 144 = 225, which is 15 km. 45 minutes is 0.75 hours, so the average speed is 15 ÷ 0.75 = 20 km/h. Converting the time to hours before dividing is the step most often missed.",
+      },
+      {
+        question: "A trader buys 40 shirts for a total of £520 and sells 35 of them at £22 each. Calculate the percentage profit, to 1 decimal place.",
+        accept: [
+          "48.1",
+        ],
+        answer: "48.1%. The income is 35 × 22 = £770, so the profit is 770 − 520 = £250. Percentage profit is profit ÷ cost × 100 = 250 ÷ 520 × 100 = 48.0769...%, which is 48.1% to 1 decimal place. The five unsold shirts still cost money, so the full £520 stays in the denominator.",
+      },
+      {
+        question: "The ratio of Jo's age to Ken's age is 2 : 5. In 6 years' time the ratio will be 1 : 2. How old is Jo now?",
+        accept: [
+          "12",
+        ],
+        answer: "Jo is 12. Let the ages be 2x and 5x. In 6 years they are 2x + 6 and 5x + 6, and this is a ratio of 1 : 2, so 2(2x + 6) = 5x + 6. That gives 4x + 12 = 5x + 6, so x = 6 and Jo is 2 × 6 = 12. Check: 18 and 36 are in the ratio 1 : 2.",
+      },
+      {
+        question: "Work out (3.6 × 10⁵) × (2.5 × 10⁻³). Give your answer as an ordinary number.",
+        accept: [
+          "900",
+        ],
+        answer: "900. Multiply the front numbers and add the powers: 3.6 × 2.5 = 9 and 10⁵ × 10⁻³ = 10², so the result is 9 × 10², which is 900 as an ordinary number.",
+      },
+      {
+        question: "A restaurant bill comes to £94.50 after a 12.5% service charge has been added. Work out the bill before the service charge, in pounds.",
+        accept: [
+          "84",
+          "£84",
+        ],
+        answer: "£84. Adding 12.5% multiplies by 1.125, so the original bill is 94.50 ÷ 1.125 = £84. This is a reverse percentage, so you divide by the multiplier rather than taking 12.5% off £94.50, which would give the wrong answer of £82.69.",
+      },
+      {
+        question: "A right-angled triangle has a hypotenuse of 13 cm and one other side of 5 cm. Work out its perimeter in cm.",
+        accept: [
+          "30",
+        ],
+        answer: "30 cm. By Pythagoras the third side squared is 13² − 5² = 169 − 25 = 144, so that side is 12 cm. The perimeter is 5 + 12 + 13 = 30 cm. Subtract rather than add, because the hypotenuse is the longest side and is already given.",
+      },
+      {
+        question: "Solve 3(2x − 5) = 4x + 7.",
+        accept: [
+          "x = 11",
+          "11",
+        ],
+        answer: "x = 11. Expanding the bracket gives 6x − 15 = 4x + 7. Subtracting 4x from both sides gives 2x − 15 = 7, then adding 15 gives 2x = 22, so x = 11. Substituting back gives 3 × 17 = 51 on the left and 44 + 7 = 51 on the right.",
+      },
+      {
+        question: "A car worth £18 000 loses 15% of its value each year. Work out its value after 3 years, to the nearest pound.",
+        accept: [
+          "11054",
+          "£11054",
+        ],
+        answer: "£11 054. Losing 15% leaves 85%, so each year the value is multiplied by 0.85. After 3 years it is 18000 × 0.85³ = 18000 × 0.614125 = £11 054.25, which is £11 054 to the nearest pound. Taking 45% off in one go would be wrong because each year's loss is based on a smaller amount.",
+      },
+      {
+        question: "A cyclist rides 18 km at an average speed of 24 km/h. How many minutes does the ride take?",
+        accept: [
+          "45",
+        ],
+        answer: "45 minutes. Time is distance ÷ speed = 18 ÷ 24 = 0.75 hours. Converting to minutes gives 0.75 × 60 = 45 minutes. The question asks for minutes, so leaving the answer as 0.75 would lose the final mark.",
+      },
+      {
+        question: "Work out 2.45 × 3.55 × 4.65. Give your answer to 2 decimal places.",
+        accept: [
+          "40.44",
+        ],
+        answer: "40.44. Multiplying in full gives 2.45 × 3.55 = 8.6975, and 8.6975 × 4.65 = 40.443375, which is 40.44 to 2 decimal places. Rounding each number to 1 significant figure first would give 42.30, which shows why you round only once, at the very end.",
+      },
+      {
+        question: "A student works out the area of a circle of diameter 10 cm and gets 314 cm². Which mistake have they made?",
+        choices: [
+          "They used the diameter in place of the radius",
+          "They used the circumference formula instead",
+          "They forgot to square the radius",
+          "They used 3 instead of pi",
+        ],
+        accept: [
+          "They used the diameter in place of the radius",
+        ],
+        answer: "They used the diameter in place of the radius. Squaring 10 instead of 5 gives π × 100 = 314 cm², whereas the correct area is π × 5² = 78.5 cm². Forgetting to square would give 15.7, and the circumference formula would give 31.4, so neither matches 314.",
+      },
+      {
+        question: "A question says 'Show that the area of the shape is 48 cm².' Which response earns full marks?",
+        choices: [
+          "A complete calculation whose final line gives the stated area",
+          "Writing the given area down and underlining it",
+          "Stating that the given area looks about right for the diagram",
+          "Measuring the diagram and checking it agrees",
+        ],
+        accept: [
+          "A complete calculation whose final line gives the stated area",
+        ],
+        answer: "A complete calculation whose final line gives the stated area. In a 'show that' question the answer is already given, so every mark is for the working that produces it. Writing or checking the given figure earns nothing, and measuring a diagram is never valid because diagrams are not drawn accurately.",
+      },
+      {
+        question: "A student calculates the mean of 4, 7, 9 and 12 as 3.2. Which check shows immediately that this must be wrong?",
+        choices: [
+          "The mean must lie between the smallest and largest values",
+          "The mean must be a whole number",
+          "The mean must equal the median",
+          "The mean must be larger than the number of values",
+        ],
+        accept: [
+          "The mean must lie between the smallest and largest values",
+        ],
+        answer: "The mean must lie between the smallest and largest values. Since 3.2 is below 4, it cannot be an average of these numbers. The actual mean is 32 ÷ 4 = 8. A mean need not be a whole number, need not equal the median, and has nothing to do with how many values there are.",
+      },
+      {
+        question: "A calculation gives 0.0748392. What is this rounded to 3 significant figures?",
+        choices: [
+          "0.0748",
+          "0.0749",
+          "0.075",
+          "0.748",
+        ],
+        accept: [
+          "0.0748",
+        ],
+        answer: "0.0748. Leading zeros are not significant, so the first significant figure is the 7. The three significant figures are 7, 4 and 8, and the next digit is 3, which rounds down, leaving 0.0748. Answering 0.075 gives only 2 significant figures.",
+      },
+      {
+        question: "Which of these is the best estimate of 6.1 × 19.7?",
+        choices: [
+          "12",
+          "26",
+          "120",
+          "1200",
+        ],
+        accept: [
+          "120",
+        ],
+        answer: "120. Rounding each number to 1 significant figure gives 6 × 20 = 120. An estimate should be quick and close, and this one is within about 1% of the exact value of 120.17. Answering 26 comes from adding instead of multiplying.",
+      },
+      {
+        question: "On a calculator paper, what is the safest way to keep full accuracy through a multi-step calculation?",
+        choices: [
+          "Use the calculator's ANS key or memory to carry the exact value forward",
+          "Round each step to 2 decimal places before continuing",
+          "Write each step to 3 significant figures and retype it",
+          "Do the middle steps in your head to save time",
+        ],
+        accept: [
+          "Use the calculator's ANS key or memory to carry the exact value forward",
+        ],
+        answer: "Use the calculator's ANS key or memory to carry the exact value forward. Rounding or retyping a middle value introduces an error that grows with each step and can change the final rounded answer, which costs the accuracy mark. Write down the intermediate values for your working, but let the calculator keep the full ones.",
+      },
+      {
+        question: "A bag holds 3 red and 5 blue counters. Two counters are taken out without replacement. What is the probability that both are red?",
+        choices: [
+          "2/7",
+          "3/28",
+          "3/32",
+          "9/64",
+        ],
+        accept: [
+          "3/28",
+        ],
+        answer: "3/28. The first counter is red with probability 3/8. One red has gone and only 7 counters remain, so the second is red with probability 2/7. Multiplying gives 6/56 = 3/28. Using 3/8 twice gives 9/64 and assumes replacement; using 2/8 for the second stage forgets that the total has fallen.",
+      },
+      {
+        question: "Explain how to check a solution to an equation without redoing the algebra.",
+        answer: "Substitute your value back into the original equation, before any rearranging, and work out each side separately. If the two sides give the same number, your solution is correct; if they differ, there is a mistake somewhere in the working. Using the original equation matters, because substituting into a line you rearranged incorrectly will simply confirm your own error. This check takes seconds and catches most sign and division slips. (Mark this one yourself.)",
+      },
+      {
+        question: "A school needs coaches for 214 students, and each coach seats 48. A calculator gives 214 ÷ 48 = 4.458. Explain why the correct answer is 5 and not 4.",
+        answer: "Four coaches provide only 4 × 48 = 192 seats, which leaves 22 students behind, so four is not enough. The context requires whole coaches and every student must travel, so the answer must be rounded up rather than to the nearest whole number. The decimal 0.458 represents a part-full fifth coach, and a part of a coach still has to be booked in full. Always ask what the leftover means before deciding how to round. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how to set out the working for a multi-step problem so that a marker can follow it.",
+        answer: "Work down the page in labelled steps, one calculation per line, and say briefly what each line is finding, for example 'area of triangle' or 'cost per kilogram'. Write the calculation in full before its result so the method is visible even if the arithmetic is wrong, since method marks are awarded for the calculation, not the number. Keep units with every quantity, and box or underline the final answer with its unit. Never cross out an attempt unless you are replacing it, because crossed-out work cannot be marked. (Mark this one yourself.)",
+      },
+      {
+        question: "Show that the sum of any three consecutive integers is always a multiple of 3.",
+        answer: "Let the middle integer be n, so the three consecutive integers are n − 1, n and n + 1. Their sum is (n − 1) + n + (n + 1) = 3n. Since n is an integer, 3n is 3 times an integer and is therefore a multiple of 3. Using algebra rather than examples is what the word 'show' requires here, because testing particular numbers only demonstrates certain cases and never proves the general statement. (Mark this one yourself.)",
+      },
+      {
+        question: "Show that the recurring decimal 0.444... is equal to 4/9.",
+        answer: "Let x = 0.444... Multiplying by 10 gives 10x = 4.444..., which has the same recurring tail. Subtracting the first equation from the second removes the decimal part entirely: 10x − x = 4.444... − 0.444..., so 9x = 4 and x = 4/9. The multiplier is 10 because one digit repeats; if two digits repeated you would multiply by 100 instead. Each line of that working carries a mark. (Mark this one yourself.)",
       },
     ],
 
@@ -5606,6 +12176,472 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Surds can only be collected when they contain the same number under the root, in the same way as like terms in algebra. Since 8 = 4 × 2, √8 simplifies to 2√2, so √8 + √2 becomes 2√2 + √2 = 3√2. With √3 there is no way to rewrite either surd so that the numbers under the roots match, so the expression stays as it is. (Mark this one yourself.)",
         higherOnly: true,
       },
+      {
+        question: "Simplify 4⁶ × 4⁷, writing the answer as a power of 4. Give the index only.",
+        accept: [
+          "13",
+        ],
+        answer: "13, so the answer is 4¹³. The bases match, so the multiplication law applies: add the indices, 6 + 7 = 13. The base itself never changes.",
+      },
+      {
+        question: "Work out the missing index in 6¹¹ ÷ 6³ = 6ⁿ.",
+        accept: [
+          "8",
+        ],
+        answer: "n = 8. Dividing two powers of the same base subtracts the indices: 11 − 3 = 8, giving 6⁸.",
+      },
+      {
+        question: "Simplify (2⁴)⁵ and state the power of 2 in your answer.",
+        accept: [
+          "20",
+        ],
+        answer: "20, giving 2²⁰. A power raised to another power multiplies the indices: 4 × 5 = 20. Adding them would give 2⁹, which is far too small.",
+      },
+      {
+        question: "Simplify x⁹ × x⁴ ÷ x⁶, then write down the power of x.",
+        accept: [
+          "7",
+        ],
+        answer: "7, so the answer is x⁷. Add for the multiplication and subtract for the division: 9 + 4 − 6 = 7.",
+      },
+      {
+        question: "Simplify 5y⁴ × 3y⁶.",
+        accept: [
+          "15y^10",
+          "15y10",
+        ],
+        answer: "15y¹⁰. Deal with the numbers and the letters separately: 5 × 3 = 15, and the indices add because the base y is the same, 4 + 6 = 10.",
+      },
+      {
+        question: "Simplify (3a⁵)³ completely.",
+        accept: [
+          "27a^15",
+          "27a15",
+        ],
+        answer: "27a¹⁵. Everything inside the bracket is cubed, so the 3 becomes 3³ = 27, and the index multiplies: 5 × 3 = 15. Leaving the 3 alone is the usual slip.",
+      },
+      {
+        question: "Work out 15⁰ + 8⁰.",
+        accept: [
+          "2",
+        ],
+        answer: "2. Any non-zero number raised to the power zero is 1, so this is 1 + 1 = 2 — not 0 and not 23.",
+      },
+      {
+        question: "Evaluate 4⁻² and give your answer as a fraction.",
+        accept: [
+          "1/16",
+          "0.0625",
+        ],
+        answer: "1/16. A negative index means take the reciprocal, so 4⁻² = 1 ÷ 4² = 1/16. It never makes the answer negative.",
+      },
+      {
+        question: "Write 10⁻³ as a decimal.",
+        accept: [
+          "0.001",
+        ],
+        answer: "0.001. The negative index gives the reciprocal of 10³, so it is 1 ÷ 1000. Each unit of the index moves the decimal point one place.",
+      },
+      {
+        question: "The fraction 1/81 can be written as 3ⁿ. What is the value of n?",
+        accept: [
+          "-4",
+        ],
+        answer: "n = −4. First spot that 81 = 3⁴, then use the fact that a reciprocal flips the sign of the index, so 1/81 = 3⁻⁴.",
+      },
+      {
+        question: "Evaluate 64 to the power one third.",
+        accept: [
+          "4",
+        ],
+        answer: "4. A unit fraction index means a root, and the denominator 3 says cube root. The cube root of 64 is 4 because 4 × 4 × 4 = 64.",
+        higherOnly: true,
+      },
+      {
+        question: "Evaluate 8 to the power two thirds without a calculator.",
+        accept: [
+          "4",
+        ],
+        answer: "4. The denominator gives the root and the numerator gives the power, so cube root 8 to get 2, then square it: 2² = 4. Rooting first keeps the numbers small.",
+        higherOnly: true,
+      },
+      {
+        question: "Work out 32 to the power three fifths.",
+        accept: [
+          "8",
+        ],
+        answer: "8. The fifth root of 32 is 2, since 2⁵ = 32, and then 2³ = 8. Taking the root before the power avoids having to handle 32³.",
+        higherOnly: true,
+      },
+      {
+        question: "Evaluate 25 to the power minus one half, giving your answer as a fraction.",
+        accept: [
+          "1/5",
+          "0.2",
+        ],
+        answer: "1/5. Handle the two parts separately: the half means square root, giving 5, and the minus sign means reciprocal, giving 1/5.",
+        higherOnly: true,
+      },
+      {
+        question: "Work out 125 to the power two thirds.",
+        accept: [
+          "25",
+        ],
+        answer: "25. Cube root 125 to get 5, then square it: 5² = 25. The denominator of the fraction is always the root and the numerator is always the power.",
+        higherOnly: true,
+      },
+      {
+        question: "Write 380,000 in standard form.",
+        accept: [
+          "3.8x10^5",
+          "3.8*10^5",
+          "3.8e5",
+        ],
+        answer: "3.8 × 10⁵. Move the decimal point until exactly one non-zero digit sits in front of it — that is 5 places — and a large number takes a positive index.",
+      },
+      {
+        question: "Write 0.0000094 in standard form.",
+        accept: [
+          "9.4x10^-6",
+          "9.4*10^-6",
+          "9.4e-6",
+        ],
+        answer: "9.4 × 10⁻⁶. The point moves 6 places right to reach 9.4, and because the number is smaller than 1 the index is negative.",
+      },
+      {
+        question: "Write 2.06 × 10⁴ as an ordinary number.",
+        accept: [
+          "20600",
+          "20,600",
+        ],
+        answer: "20600. An index of 4 moves the decimal point 4 places right, and the empty places are filled with zeros: 2.06 becomes 20600.",
+      },
+      {
+        question: "Write 7.3 × 10⁻⁵ as an ordinary number.",
+        accept: [
+          "0.000073",
+        ],
+        answer: "0.000073. A negative index of 5 moves the decimal point 5 places left, which leaves four zeros between the point and the 7.",
+      },
+      {
+        question: "A country has a population of 63,700,000 people. Write this figure in standard form.",
+        accept: [
+          "6.37x10^7",
+          "6.37*10^7",
+          "6.37e7",
+        ],
+        answer: "6.37 × 10⁷. Counting from 6.37 out to 63,700,000 is 7 decimal places, so the index is 7. Trailing zeros are never part of the front number.",
+      },
+      {
+        question: "Work out (4 × 10⁶) × (2.5 × 10³). Give your answer in standard form.",
+        accept: [
+          "1x10^10",
+          "1*10^10",
+          "1e10",
+        ],
+        answer: "1 × 10¹⁰. Multiply the fronts, 4 × 2.5 = 10, and add the indices, 6 + 3 = 9, giving 10 × 10⁹. That is not standard form, so rewrite it as 1 × 10¹⁰.",
+      },
+      {
+        question: "Work out (7.2 × 10⁻⁴) ÷ (1.8 × 10²), giving your answer in standard form.",
+        accept: [
+          "4x10^-6",
+          "4*10^-6",
+          "4e-6",
+        ],
+        answer: "4 × 10⁻⁶. Divide the fronts, 7.2 ÷ 1.8 = 4, and subtract the indices, −4 − 2 = −6. Subtracting a positive index from a negative one makes it more negative.",
+      },
+      {
+        question: "Work out (5 × 10⁷) + (6 × 10⁶). Give your answer in standard form.",
+        accept: [
+          "5.6x10^7",
+          "5.6*10^7",
+          "5.6e7",
+        ],
+        answer: "5.6 × 10⁷. Addition needs matching indices, so rewrite 6 × 10⁶ as 0.6 × 10⁷. Then 5 + 0.6 = 5.6, and the index stays at 7.",
+      },
+      {
+        question: "Work out (3 × 10⁴)³, giving your answer in standard form.",
+        accept: [
+          "2.7x10^13",
+          "2.7*10^13",
+          "2.7e13",
+        ],
+        answer: "2.7 × 10¹³. Cube both parts: 3³ = 27 and the index multiplies by 3 to give 10¹². Then 27 × 10¹² is rewritten as 2.7 × 10¹³.",
+      },
+      {
+        question: "A single bacterium has a mass of 4 × 10⁻⁷ g. Calculate the total mass of 2.5 × 10⁹ bacteria, as an ordinary number in grams.",
+        accept: [
+          "1000",
+          "1,000",
+        ],
+        answer: "1000 g. Multiply the fronts, 4 × 2.5 = 10, and add the indices, −7 + 9 = 2, giving 10 × 10², which is 1000.",
+      },
+      {
+        question: "Simplify √75, writing root 3 as root3 in your answer.",
+        accept: [
+          "5root3",
+          "5sqrt3",
+        ],
+        answer: "5√3. Look for a perfect-square factor: 75 = 25 × 3, so √75 = √25 × √3 = 5√3.",
+        higherOnly: true,
+      },
+      {
+        question: "Simplify √8 × √6, writing root 3 as root3.",
+        accept: [
+          "4root3",
+          "4sqrt3",
+        ],
+        answer: "4√3. Combine under one root first: √8 × √6 = √48. Then 48 = 16 × 3, so √48 = 4√3.",
+        higherOnly: true,
+      },
+      {
+        question: "Rationalise the denominator of 6/√3. Write root 3 as root3.",
+        accept: [
+          "2root3",
+          "2sqrt3",
+        ],
+        answer: "2√3. Multiply top and bottom by √3, which gives 6√3 on top and 3 on the bottom, and 6 ÷ 3 = 2.",
+        higherOnly: true,
+      },
+      {
+        question: "Expand and simplify (4 + √7)(4 − √7).",
+        accept: [
+          "9",
+        ],
+        answer: "9. Expanding gives 16 − 4√7 + 4√7 − 7. The two surd terms cancel because the signs are opposite, leaving 16 − 7 = 9.",
+        higherOnly: true,
+      },
+      {
+        question: "Simplify √12 + √27. Write root 3 as root3.",
+        accept: [
+          "5root3",
+          "5sqrt3",
+        ],
+        answer: "5√3. Simplify each surd first: √12 = 2√3 and √27 = 3√3. They are now like terms, so 2√3 + 3√3 = 5√3.",
+        higherOnly: true,
+      },
+      {
+        question: "What is the value of 3⁻²?",
+        choices: [
+          "1/9",
+          "−9",
+          "−6",
+          "9",
+        ],
+        accept: [
+          "1/9",
+        ],
+        answer: "A negative index means the reciprocal, so 3⁻² = 1 ÷ 3² = 1/9. The minus sign moves the power to the bottom of a fraction; it does not make the value negative.",
+      },
+      {
+        question: "Simplify 2⁵ × 2⁴ ÷ 2³ and give its value.",
+        choices: [
+          "64",
+          "512",
+          "8",
+          "36",
+        ],
+        accept: [
+          "64",
+        ],
+        answer: "Add then subtract the indices: 5 + 4 − 3 = 6, so the answer is 2⁶ = 64. 512 comes from forgetting to divide, 8 from dividing the index by 3, and 36 from reading 2⁶ as 6².",
+      },
+      {
+        question: "A student writes 7³ × 7⁵ = 49⁸. What has gone wrong?",
+        choices: [
+          "The base should stay as 7",
+          "The indices should have been multiplied",
+          "The indices should have been subtracted",
+          "The expression cannot be simplified at all",
+        ],
+        accept: [
+          "The base should stay as 7",
+        ],
+        answer: "Adding the indices was right, but the base is never multiplied as well. The law is aᵐ × aⁿ = aᵐ⁺ⁿ, so the answer is 7⁸, which is far smaller than 49⁸.",
+      },
+      {
+        question: "What is 9 to the power one half?",
+        choices: [
+          "3",
+          "4.5",
+          "18",
+          "81",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "An index of one half means the square root, so the answer is √9 = 3. 4.5 comes from halving 9, and 81 from squaring it instead of rooting it.",
+        higherOnly: true,
+      },
+      {
+        question: "Evaluate 16 to the power minus one half.",
+        choices: [
+          "1/4",
+          "−4",
+          "4",
+          "1/16",
+        ],
+        accept: [
+          "1/4",
+        ],
+        answer: "The half gives the square root of 16, which is 4, and the minus sign turns it into the reciprocal, 1/4. Ignoring the sign gives 4; ignoring the half gives 1/16.",
+        higherOnly: true,
+      },
+      {
+        question: "A number is written in standard form as A × 10ⁿ. Which condition must A satisfy?",
+        choices: [
+          "A is at least 1 and less than 10",
+          "A is any whole number",
+          "A is less than 1",
+          "A is at least 0 and less than 100",
+        ],
+        accept: [
+          "A is at least 1 and less than 10",
+        ],
+        answer: "Exactly one non-zero digit must sit in front of the decimal point, so A runs from 1 up to but not including 10. That is why 12.5 × 10⁴ and 0.7 × 10⁶ both fail the test.",
+      },
+      {
+        question: "What is 8.4 × 10⁻³ as an ordinary number?",
+        choices: [
+          "0.0084",
+          "0.084",
+          "0.00084",
+          "8400",
+        ],
+        accept: [
+          "0.0084",
+        ],
+        answer: "A negative index of 3 moves the decimal point 3 places left, giving 0.0084. Moving it the wrong number of places gives 0.084 or 0.00084, and moving it right gives 8400.",
+      },
+      {
+        question: "What is the value of 6.3 × 10⁴?",
+        choices: [
+          "63000",
+          "630000",
+          "6300",
+          "0.00063",
+        ],
+        accept: [
+          "63000",
+        ],
+        answer: "The index of 4 moves the decimal point 4 places right: 6.3 becomes 63000. Counting the zeros rather than the places is what produces 630000.",
+      },
+      {
+        question: "Work out (2 × 10⁵) × (4 × 10⁻²) as an ordinary number.",
+        choices: [
+          "8000",
+          "80000000",
+          "6000",
+          "800",
+        ],
+        accept: [
+          "8000",
+        ],
+        answer: "Multiply the fronts, 2 × 4 = 8, and add the indices, 5 + (−2) = 3, so the answer is 8 × 10³ = 8000. Subtracting the indices instead gives 10⁷, and adding the fronts gives 6000.",
+      },
+      {
+        question: "Four numbers are 3.5 × 10⁵, 9.1 × 10⁴, 2.8 × 10⁵ and 7.6 × 10³. Which is the largest? Give it as an ordinary number.",
+        choices: [
+          "350000",
+          "91000",
+          "280000",
+          "7600",
+        ],
+        accept: [
+          "350000",
+        ],
+        answer: "Compare the indices first: two numbers have index 5, so only those two matter, and 3.5 beats 2.8. Looking at the front numbers first would wrongly pick 9.1 × 10⁴.",
+      },
+      {
+        question: "Four numbers are 6.2 × 10⁻³, 4.7 × 10⁻², 8.9 × 10⁻⁴ and 1.5 × 10⁻³. Which is the smallest? Give it as an ordinary number.",
+        choices: [
+          "0.00089",
+          "0.0015",
+          "0.0062",
+          "0.047",
+        ],
+        accept: [
+          "0.00089",
+        ],
+        answer: "The most negative index gives the smallest number, and −4 is more negative than −3 or −2, so 8.9 × 10⁻⁴ = 0.00089 wins even though 8.9 is the biggest front number.",
+      },
+      {
+        question: "√45 can be written in the form a√5. What is the value of a?",
+        choices: [
+          "3",
+          "9",
+          "5",
+          "15",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "45 = 9 × 5, and 9 is a perfect square, so √45 = √9 × √5 = 3√5. The 9 is the factor, not the answer — it has to be square rooted first.",
+        higherOnly: true,
+      },
+      {
+        question: "The fraction 5/√2 is rationalised. What number is the denominator afterwards?",
+        choices: [
+          "2",
+          "√2",
+          "5",
+          "10",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "Multiplying top and bottom by √2 gives 5√2 over √2 × √2, and √2 × √2 = 2. Multiplying only the top leaves the surd on the bottom, which is the point of the method.",
+        higherOnly: true,
+      },
+      {
+        question: "What is the exact value of √8 × √2?",
+        choices: [
+          "4",
+          "16",
+          "√10",
+          "2√2",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "Combine under one root: √8 × √2 = √16 = 4, so no surd remains. Adding the numbers under the root gives √10, and forgetting to take the root gives 16.",
+        higherOnly: true,
+      },
+      {
+        question: "A student says that 2⁻³ equals −8. Which statement corrects the error?",
+        choices: [
+          "A negative index gives a reciprocal, so the answer is 1/8",
+          "A negative index means subtract 3, so the answer is −1",
+          "The answer is −6, because −3 × 2 = −6",
+          "The answer is 6, because 2 × 3 = 6",
+        ],
+        accept: [
+          "A negative index gives a reciprocal, so the answer is 1/8",
+        ],
+        answer: "2⁻³ = 1 ÷ 2³ = 1/8. The minus sign in an index tells you where the power belongs — on the bottom of a fraction — and says nothing about whether the value is positive or negative.",
+      },
+      {
+        question: "Show that 2⁻³ × 2⁵ equals 4, setting out each step of your working.",
+        answer: "Start with the multiplication law, which applies because both bases are 2: add the indices, −3 + 5 = 2. That gives 2², which is 4. The alternative route is to evaluate each part first: 2⁻³ = 1/8 and 2⁵ = 32, and 1/8 × 32 = 32/8 = 4. Both routes give the same value, which is a useful check that the law handles negative indices exactly as it handles positive ones. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why 3² × 3⁴ is 3⁶ rather than 9⁶.",
+        answer: "Write the powers out in full: 3² × 3⁴ means (3 × 3) × (3 × 3 × 3 × 3), which is six threes multiplied together, so it is 3⁶. The index counts how many threes there are, and multiplying two powers just puts the two lists of threes end to end — it never changes what is being multiplied. Writing 9⁶ would mean six nines, which is 3¹², a number over 500 times larger. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe the steps you would take to write a very small decimal in standard form.",
+        answer: "First find the first non-zero digit and put the decimal point immediately after it, so the front number lies between 1 and 10. Then count how many places the point has moved from its original position. Because the original number is smaller than 1 the point moves to the right, so the index is negative, and the number of places moved is the size of that index. Finally check the front number really is at least 1 and below 10, since that is what makes it standard form rather than just a rewrite. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why √18 can be simplified but √19 cannot.",
+        answer: "Simplifying a surd depends on finding a factor that is a perfect square. 18 factorises as 9 × 2, and 9 is a perfect square, so √18 = √9 × √2 = 3√2 and part of the root comes out as a whole number. 19 is prime, so its only factors are 1 and 19, and 1 is the only square among them — taking it out changes nothing. With no square factor bigger than 1 there is nothing to extract, so √19 is already in its simplest form. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Show that (1 + √2)² can be written as 3 + 2√2.",
+        answer: "Squaring a bracket means multiplying it by itself, so write (1 + √2)(1 + √2) rather than squaring each term. Expanding gives 1 × 1 = 1, then 1 × √2 = √2, then √2 × 1 = √2, then √2 × √2 = 2. Collecting up, the whole numbers give 1 + 2 = 3 and the surd terms give √2 + √2 = 2√2, so the result is 3 + 2√2. The common error is writing 1 + 2, because squaring each term separately is not what squaring a bracket means. (Mark this one yourself.)",
+        higherOnly: true,
+      },
     ],
 
     misconceptions: [
@@ -6029,6 +13065,391 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain how to find the volume of any prism and why a cylinder counts as one.",
         answer: "A prism has the same cross-section all the way along its length, so its volume is the area of that cross-section multiplied by the length. A cylinder fits this description, because every slice through it parallel to the ends is the same circle, so its volume is πr² × h. Recognising a shape as a prism means you only ever have to find one area and then multiply, whatever the cross-section looks like. (Mark this one yourself.)",
       },
+      {
+        question: "A rectangle is 9.5 cm long and 4 cm wide. Work out its perimeter in cm.",
+        accept: [
+          "27",
+        ],
+        answer: "27 cm. Perimeter is the distance all the way round, so add both lengths and both widths: 9.5 + 9.5 + 4 + 4 = 27 cm. A quicker route is 2 × (9.5 + 4) = 2 × 13.5 = 27.",
+      },
+      {
+        question: "A rectangle has perimeter 34 cm and length 11 cm. Work out its width in cm.",
+        accept: [
+          "6",
+        ],
+        answer: "6 cm. Half the perimeter is one length plus one width, so 34 ÷ 2 = 17. Then the width is 17 − 11 = 6 cm. Subtracting 11 from the full perimeter first is the usual error.",
+      },
+      {
+        question: "A triangle has base 15 cm and perpendicular height 8 cm. Work out its area in cm².",
+        accept: [
+          "60",
+        ],
+        answer: "60 cm². The area of a triangle is half the base times the perpendicular height: ½ × 15 × 8. Doing 15 × 8 = 120 first and then halving gives 60 cm².",
+      },
+      {
+        question: "A triangle has area 54 cm² and base 12 cm. Work out its perpendicular height in cm.",
+        accept: [
+          "9",
+        ],
+        answer: "9 cm. Since area = ½ × base × height, double the area first: 2 × 54 = 108. Then divide by the base: 108 ÷ 12 = 9 cm. Forgetting to double gives 4.5, which is half the correct height.",
+      },
+      {
+        question: "A parallelogram has area 96 cm² and perpendicular height 8 cm. Find the length of its base in cm.",
+        accept: [
+          "12",
+        ],
+        answer: "12 cm. The area of a parallelogram is base × perpendicular height, with no halving, so the base is 96 ÷ 8 = 12 cm. Rearranging the formula rather than guessing keeps this safe.",
+      },
+      {
+        question: "A trapezium has parallel sides of 7 cm and 13 cm and a perpendicular height of 5 cm. Work out its area in cm².",
+        accept: [
+          "50",
+        ],
+        answer: "50 cm². Add the parallel sides, 7 + 13 = 20, halve to get the average width, 10, then multiply by the height: 10 × 5 = 50 cm². This is the formula ½(a + b)h in three steps.",
+      },
+      {
+        question: "A 3 cm by 4 cm rectangle is cut out of one corner of a 10 cm by 8 cm rectangle. Work out the area that is left, in cm².",
+        accept: [
+          "68",
+        ],
+        answer: "68 cm². Find the whole rectangle first: 10 × 8 = 80 cm². The piece removed is 3 × 4 = 12 cm². Subtracting gives 80 − 12 = 68 cm². Splitting a compound shape into rectangles works just as well.",
+      },
+      {
+        question: "Work out the area of a circle of radius 5 cm, leaving your answer in terms of π (for example, type 9π as 9pi).",
+        accept: [
+          "25pi",
+        ],
+        answer: "25π cm². The area of a circle is π × radius², so π × 5² = π × 25 = 25π cm². Leaving the answer in terms of π keeps it exact; squaring the radius before multiplying by π avoids the common slip of writing 10π.",
+      },
+      {
+        question: "A circle has radius 7 cm. Work out its circumference in cm, to 1 decimal place.",
+        accept: [
+          "44.0",
+          "44",
+        ],
+        answer: "44.0 cm. Circumference is π × diameter, and the diameter is 2 × 7 = 14 cm, so π × 14 = 43.98… which is 44.0 cm to 1 decimal place. Using the radius instead of the diameter halves the answer.",
+      },
+      {
+        question: "The area of a circle is 100π cm². Work out its radius in cm.",
+        accept: [
+          "10",
+        ],
+        answer: "10 cm. Since area = πr², divide by π to get r² = 100, then take the square root: r = 10 cm. Dividing 100 by 2 instead of square rooting is the mistake to avoid.",
+      },
+      {
+        question: "A circular pond has diameter 9 m. Work out its area in m², to 1 decimal place.",
+        accept: [
+          "63.6",
+        ],
+        answer: "63.6 m². Halve the diameter first to get the radius, 4.5 m, then use π × 4.5² = π × 20.25 = 63.61… which is 63.6 m² to 1 decimal place. Using 9 as the radius gives four times too much.",
+      },
+      {
+        question: "A sector of a circle has radius 12 cm and an angle of 90° at the centre. Work out its arc length in terms of π (for example, type 5π as 5pi).",
+        accept: [
+          "6pi",
+        ],
+        answer: "6π cm. The sector is 90 ÷ 360 = ¼ of the circle, and the whole circumference is 2 × π × 12 = 24π cm. A quarter of 24π is 6π cm. Always take the fraction of the full circumference, not of the radius.",
+      },
+      {
+        question: "Work out the area of a sector of radius 10 cm with an angle of 72° at the centre. Give your answer in terms of π (type 3π as 3pi).",
+        accept: [
+          "20pi",
+        ],
+        answer: "20π cm². The fraction of the circle is 72 ÷ 360 = 1/5. The full area is π × 10² = 100π cm², and one fifth of that is 20π cm². The same fraction is used for area as for arc length.",
+      },
+      {
+        question: "An arc of a circle of radius 15 cm subtends an angle of 40° at the centre. Work out the arc length in cm, to 2 decimal places.",
+        accept: [
+          "10.47",
+        ],
+        answer: "10.47 cm. The full circumference is 2 × π × 15 = 30π cm. The arc is 40 ÷ 360 = 1/9 of that, so 30π ÷ 9 = 10.471… which is 10.47 cm to 2 decimal places. Keep π in the calculator until the final rounding.",
+      },
+      {
+        question: "A cuboid measures 7 cm by 5 cm by 2 cm. Work out its total surface area in cm².",
+        accept: [
+          "118",
+        ],
+        answer: "118 cm². The faces come in matching pairs: 7 × 5 = 35, 7 × 2 = 14 and 5 × 2 = 10. Adding gives 59, and doubling for the opposite faces gives 118 cm². Counting only three faces is the usual error.",
+      },
+      {
+        question: "A cuboid has volume 480 cm³, length 10 cm and width 6 cm. Work out its height in cm.",
+        accept: [
+          "8",
+        ],
+        answer: "8 cm. The base area is 10 × 6 = 60 cm². Since volume = base area × height, the height is 480 ÷ 60 = 8 cm. Dividing by only one of the two given lengths is the mistake to watch for.",
+      },
+      {
+        question: "A triangular prism has a cross-section with base 6 cm and perpendicular height 4 cm, and the prism is 15 cm long. Work out its volume in cm³.",
+        accept: [
+          "180",
+        ],
+        answer: "180 cm³. First the cross-sectional area: ½ × 6 × 4 = 12 cm². Then volume = cross-section × length = 12 × 15 = 180 cm³. Forgetting the half turns a triangular prism into a cuboid.",
+      },
+      {
+        question: "A cylinder has radius 5 cm and height 12 cm. Work out its volume in cm³, to 1 decimal place.",
+        accept: [
+          "942.5",
+        ],
+        answer: "942.5 cm³. The circular end has area π × 5² = 25π cm², and volume is that area times the height: 25π × 12 = 300π = 942.47… which is 942.5 cm³ to 1 decimal place.",
+      },
+      {
+        question: "A closed cylinder has radius 3 cm and height 10 cm. Work out its total surface area in terms of π (type 7π as 7pi).",
+        accept: [
+          "78pi",
+        ],
+        answer: "78π cm². The two circular ends give 2 × π × 3² = 18π cm². The curved surface unrolls into a rectangle of width 2π × 3 = 6π and height 10, giving 60π cm². Adding them gives 78π cm².",
+      },
+      {
+        question: "A cone has base radius 3 cm and vertical height 7 cm. Work out its volume in terms of π (type 4π as 4pi).",
+        accept: [
+          "21pi",
+        ],
+        answer: "21π cm³. The volume of a cone is one third of π × radius² × height, so ⅓ × π × 9 × 7 = 21π cm³. Use the vertical height here, never the slant height.",
+        higherOnly: true,
+      },
+      {
+        question: "A sphere has radius 6 cm. Work out its volume in cm³, to 1 decimal place.",
+        accept: [
+          "904.8",
+        ],
+        answer: "904.8 cm³. The volume of a sphere is four thirds of π × radius³. Here 6³ = 216, so the volume is (4 ÷ 3) × π × 216 = 288π = 904.77… which is 904.8 cm³ to 1 decimal place.",
+        higherOnly: true,
+      },
+      {
+        question: "A square-based pyramid has base edges of 9 cm and a vertical height of 10 cm. Work out its volume in cm³.",
+        accept: [
+          "270",
+        ],
+        answer: "270 cm³. The base area is 9 × 9 = 81 cm². A pyramid is one third of base area × vertical height, so ⅓ × 81 × 10 = 270 cm³. Leaving out the third gives 810, the volume of the surrounding prism.",
+        higherOnly: true,
+      },
+      {
+        question: "A sphere has surface area 144π cm². Work out its radius in cm.",
+        accept: [
+          "6",
+        ],
+        answer: "6 cm. The surface area of a sphere is 4πr², so 4πr² = 144π. Dividing both sides by 4π gives r² = 36, and the square root gives r = 6 cm.",
+        higherOnly: true,
+      },
+      {
+        question: "A cone has base radius 5 cm and slant height 13 cm. Work out its curved surface area in terms of π (type 2π as 2pi).",
+        accept: [
+          "65pi",
+        ],
+        answer: "65π cm². The curved surface area of a cone is π × radius × slant height, so π × 5 × 13 = 65π cm². The slant height is used here, not the vertical height of 12 cm.",
+        higherOnly: true,
+      },
+      {
+        question: "A cylindrical tank of radius 40 cm is filled with water to a depth of 50 cm. Work out the volume of water in litres, to the nearest litre. (1 litre = 1000 cm³.)",
+        accept: [
+          "251",
+        ],
+        answer: "251 litres. The volume is π × 40² × 50 = 80000π = 251327 cm³ to the nearest cm³. Dividing by 1000 converts to litres, giving 251.3 litres, which is 251 litres to the nearest litre.",
+      },
+      {
+        question: "A protractor is a semicircle of diameter 12 cm. Work out its perimeter, including the straight edge, in cm to 1 decimal place.",
+        accept: [
+          "30.8",
+        ],
+        answer: "30.8 cm. The curved edge is half the circumference: ½ × π × 12 = 6π = 18.849… cm. The straight edge is the diameter, 12 cm. Adding gives 30.84… which is 30.8 cm to 1 decimal place.",
+      },
+      {
+        question: "A rectangle measures 1.2 m by 80 cm. Work out its area in cm².",
+        accept: [
+          "9600",
+        ],
+        answer: "9600 cm². Convert to one unit first: 1.2 m = 120 cm. Then the area is 120 × 80 = 9600 cm². Multiplying 1.2 by 80 without converting gives 96, which is neither cm² nor m².",
+      },
+      {
+        question: "A rectangle is 6 cm by 4 cm. Its perimeter in cm is:",
+        choices: [
+          "20",
+          "24",
+          "10",
+          "48",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20 cm. Perimeter adds all four sides: 6 + 4 + 6 + 4 = 20 cm. 24 is the area in cm², 10 is only one length plus one width, and 48 is twice the area.",
+      },
+      {
+        question: "Which of these correctly describes the area of a trapezium?",
+        choices: [
+          "Half the sum of the parallel sides, multiplied by the perpendicular height",
+          "The sum of the parallel sides, multiplied by the perpendicular height",
+          "Half the product of the parallel sides, multiplied by the perpendicular height",
+          "The average of all four sides, multiplied by the perpendicular height",
+        ],
+        accept: [
+          "Half the sum of the parallel sides, multiplied by the perpendicular height",
+        ],
+        answer: "Half the sum of the parallel sides, times the perpendicular height, which is ½(a + b)h. Halving the sum gives the average width of the shape. Forgetting to halve doubles the area, and multiplying the parallel sides together is a different quantity altogether.",
+      },
+      {
+        question: "A triangle has base 9 cm and perpendicular height 6 cm. Its area in cm² is:",
+        choices: [
+          "27",
+          "54",
+          "15",
+          "13.5",
+        ],
+        accept: [
+          "27",
+        ],
+        answer: "27 cm². Area is ½ × 9 × 6 = 27 cm². 54 comes from forgetting the half, 15 from adding the base and height, and 13.5 from halving twice.",
+      },
+      {
+        question: "The circumference of a circle of diameter 14 cm, to 1 decimal place, is:",
+        choices: [
+          "44.0 cm",
+          "22.0 cm",
+          "153.9 cm",
+          "88.0 cm",
+        ],
+        accept: [
+          "44.0 cm",
+        ],
+        answer: "44.0 cm. Circumference is π × diameter = π × 14 = 43.98… cm. Using the radius gives 22.0 cm, using πr² gives the area 153.9 cm², and doubling the diameter first gives 88.0 cm.",
+      },
+      {
+        question: "A circle has radius 4 cm. Written with pi for π, its area is:",
+        choices: [
+          "16pi",
+          "8pi",
+          "64pi",
+          "32pi",
+        ],
+        accept: [
+          "16pi",
+        ],
+        answer: "16π cm². Area is πr² = π × 4² = 16π cm². 8π is the circumference 2πr, 64π comes from squaring the diameter instead of the radius, and 32π from doubling the correct area.",
+      },
+      {
+        question: "Which of these gives the volume of a cylinder?",
+        choices: [
+          "The area of one circular end multiplied by the height",
+          "The circumference of one end multiplied by the height",
+          "Half the area of one end multiplied by the height",
+          "The area of one end added to the height",
+        ],
+        accept: [
+          "The area of one circular end multiplied by the height",
+        ],
+        answer: "The area of one circular end multiplied by the height, that is πr²h. A cylinder is a prism with a circular cross-section, so the prism rule applies. Using the circumference instead gives the curved surface area, not a volume.",
+      },
+      {
+        question: "The volume of a cuboid 5 cm by 4 cm by 3 cm, in cm³, is:",
+        choices: [
+          "60",
+          "94",
+          "12",
+          "47",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "60 cm³. Volume multiplies all three dimensions: 5 × 4 × 3 = 60 cm³. 94 cm² is the total surface area, 12 is the three lengths added, and 47 is half the surface area.",
+      },
+      {
+        question: "A cube has a total surface area of 96 cm². Its edge length in cm is:",
+        choices: [
+          "4",
+          "16",
+          "6",
+          "24",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4 cm. A cube has 6 identical square faces, so one face has area 96 ÷ 6 = 16 cm², and the edge is √16 = 4 cm. 16 is the area of a face, and 24 comes from dividing by 4 instead of 6.",
+      },
+      {
+        question: "A sector has an angle of 45° at the centre. What fraction of the whole circle is it?",
+        choices: [
+          "1/8",
+          "1/4",
+          "1/45",
+          "45/100",
+        ],
+        accept: [
+          "1/8",
+        ],
+        answer: "One eighth. The fraction is the angle over the full turn: 45 ÷ 360 = 1/8. A quarter would need 90°, and 45/100 wrongly treats the angle as a percentage of 100 rather than of 360.",
+      },
+      {
+        question: "Every length of a solid is multiplied by 3. Its volume is multiplied by:",
+        choices: [
+          "27",
+          "9",
+          "3",
+          "6",
+        ],
+        accept: [
+          "27",
+        ],
+        answer: "27. Volume depends on three dimensions, so each is tripled: 3 × 3 × 3 = 27. The area scale factor would be 9 and the length scale factor 3, which is why the units cm, cm² and cm³ behave differently.",
+      },
+      {
+        question: "A cone and a cylinder have the same radius and the same height. The volume of the cone is:",
+        choices: [
+          "One third of the volume of the cylinder",
+          "Half the volume of the cylinder",
+          "The same as the volume of the cylinder",
+          "Two thirds of the volume of the cylinder",
+        ],
+        accept: [
+          "One third of the volume of the cylinder",
+        ],
+        answer: "One third. The cylinder holds πr²h and the cone holds ⅓πr²h, so exactly three cone-fuls fill the cylinder. This is why the cone formula is the prism formula with a third in front of it.",
+        higherOnly: true,
+      },
+      {
+        question: "A circle has circumference 12π cm. Its radius in cm is:",
+        choices: [
+          "6",
+          "12",
+          "24",
+          "3",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6 cm. Circumference is 2πr, so 2πr = 12π gives r = 6 cm. 12 is the diameter, 24 comes from multiplying by 2 instead of dividing, and 3 from halving twice.",
+      },
+      {
+        question: "A parallelogram has base 10 cm, sloping side 6 cm and perpendicular height 5 cm. Its area in cm² is:",
+        choices: [
+          "50",
+          "60",
+          "30",
+          "21",
+        ],
+        accept: [
+          "50",
+        ],
+        answer: "50 cm². Area is base × perpendicular height = 10 × 5 = 50 cm². Using the sloping side of 6 cm gives 60, halving as though it were a triangle gives 25 or 30, and 21 is the perimeter of two sides.",
+      },
+      {
+        question: "Show that a cylinder of radius 4 cm and height 4 cm holds more than a cube of side 5 cm.",
+        answer: "The cylinder has volume π × 4² × 4 = 64π = 201.06 cm³ to 2 decimal places. The cube has volume 5 × 5 × 5 = 125 cm³. Since 201.06 > 125, the cylinder holds more. A 'show that' answer needs both volumes worked out and the comparison stated, not just the conclusion. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how you would find the area of a shape made from a rectangle with a semicircle joined to one end, and say which measurement must not be counted twice.",
+        answer: "Split the shape into the rectangle and the semicircle, find each area separately, then add. The rectangle is length × width. The semicircle has radius equal to half the width of the rectangle it joins, so its area is ½ × π × r². The join itself is a straight edge inside the shape, so it is not part of the perimeter and its length is never added into the area twice. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the area of a sector can be found by treating the angle at the centre as a fraction of 360°.",
+        answer: "A full turn at the centre is 360° and gives the whole circle, area πr². Because the sector is cut by two radii, doubling the angle doubles the slice of the circle, so the area is directly proportional to the angle. That means a sector of angle θ takes the fraction θ/360 of the whole, giving area (θ ÷ 360) × πr². The same reasoning gives the arc length as that fraction of the circumference. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how to find the surface area of a triangular prism, and explain why five faces have to be accounted for.",
+        answer: "A triangular prism has two identical triangular ends and three rectangles making up the sides, which is five faces in total. Find the area of one triangle, ½ × base × perpendicular height, and double it. Then find each rectangle as the length of the prism multiplied by one side of the triangle, and add all three; the three triangle sides are usually different, so the rectangles are usually different too. Adding all five gives the surface area, in square units. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why two rectangles can have the same perimeter but different areas, and give an example of your own.",
+        answer: "Perimeter fixes only the total of the four sides, while area depends on how that total is shared between length and width. A 1 cm by 9 cm rectangle and a 5 cm by 5 cm rectangle both have perimeter 20 cm, but their areas are 9 cm² and 25 cm². For a fixed perimeter the area is largest when the shape is closest to a square and smallest when it is long and thin. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -6434,6 +13855,583 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain why a line can look steeper or shallower than its gradient suggests when the two axes use different scales.",
         answer: "The gradient is a numerical ratio of the change in y to the change in x, worked out from the values on the axes, not from how the picture looks. If one square on the y-axis stands for 10 units while one square on the x-axis stands for 1, the same gradient will appear far steeper on the page. This is why gradients should always be read off using the axis scales rather than counted in squares. (Mark this one yourself.)",
+      },
+      {
+        question: "A line passes through (2, 1) and (6, 9). Work out its gradient.",
+        accept: [
+          "2",
+        ],
+        answer: "2. Change in y is 9 − 1 = 8 and change in x is 6 − 2 = 4, so the gradient is 8 ÷ 4 = 2.",
+      },
+      {
+        question: "Work out the gradient of the line joining (−1, 4) and (3, −4).",
+        accept: [
+          "-2",
+        ],
+        answer: "−2. Change in y is −4 − 4 = −8 and change in x is 3 − (−1) = 4, so −8 ÷ 4 = −2. The line falls, so a negative answer is expected.",
+      },
+      {
+        question: "Work out the gradient of the line through (−5, −2) and (1, 7).",
+        accept: [
+          "1.5",
+          "3/2",
+        ],
+        answer: "1.5. Change in y is 7 − (−2) = 9 and change in x is 1 − (−5) = 6, so 9 ÷ 6 = 1.5. A gradient does not have to be a whole number.",
+      },
+      {
+        question: "State the gradient of y = −4x + 7.",
+        accept: [
+          "-4",
+        ],
+        answer: "−4. In y = mx + c the gradient is the number multiplying x, and the minus sign belongs to it.",
+      },
+      {
+        question: "State the y-intercept of y = 8 − 3x.",
+        accept: [
+          "8",
+        ],
+        answer: "8. Rewritten as y = −3x + 8 the constant term is 8, so the line crosses the y-axis there. Being written first does not make it the gradient.",
+      },
+      {
+        question: "Rearrange 3x + y = 11 into the form y = mx + c.",
+        accept: [
+          "y = -3x + 11",
+          "-3x+11",
+        ],
+        answer: "y = −3x + 11. Subtract 3x from both sides; y is already on its own, so no dividing is needed.",
+      },
+      {
+        question: "Rearrange 4y − 8x = 20 into the form y = mx + c.",
+        accept: [
+          "y = 2x + 5",
+          "2x+5",
+        ],
+        answer: "y = 2x + 5. Add 8x to both sides to get 4y = 8x + 20, then divide every term by 4.",
+      },
+      {
+        question: "The line 5x + 2y = 9 is rearranged into the form y = mx + c. State the gradient.",
+        accept: [
+          "-2.5",
+          "-5/2",
+        ],
+        answer: "−2.5. Subtracting 5x gives 2y = −5x + 9, and dividing by 2 gives y = −2.5x + 4.5, so m = −2.5.",
+      },
+      {
+        question: "State the gradient of the line 10x − 5y = 30.",
+        accept: [
+          "2",
+        ],
+        answer: "2. Rearranged, 5y = 10x − 30, so y = 2x − 6. Moving the negative y term across before dividing avoids the usual sign error.",
+      },
+      {
+        question: "Find the equation of the line with gradient −3 that passes through (0, 8). Give it in the form y = mx + c.",
+        accept: [
+          "y = -3x + 8",
+          "-3x+8",
+        ],
+        answer: "y = −3x + 8. The point has x = 0, so it is the y-intercept and c = 8 can be written straight down.",
+      },
+      {
+        question: "A line has gradient 5 and passes through (2, 13). Find its equation in the form y = mx + c.",
+        accept: [
+          "y = 5x + 3",
+          "5x+3",
+        ],
+        answer: "y = 5x + 3. Substitute the point: 13 = 5 × 2 + c, so c = 13 − 10 = 3.",
+      },
+      {
+        question: "Find the equation of the line through (−1, 5) and (3, 13). Give it in the form y = mx + c.",
+        accept: [
+          "y = 2x + 7",
+          "2x+7",
+        ],
+        answer: "y = 2x + 7. The gradient is (13 − 5) ÷ (3 − (−1)) = 8 ÷ 4 = 2, then 5 = 2 × (−1) + c gives c = 7.",
+      },
+      {
+        question: "A line passes through (2, −1) and (5, 8). Work out its equation in the form y = mx + c.",
+        accept: [
+          "y = 3x - 7",
+          "3x-7",
+        ],
+        answer: "y = 3x − 7. The gradient is (8 − (−1)) ÷ (5 − 2) = 9 ÷ 3 = 3, and −1 = 3 × 2 + c gives c = −7. Check the other point: 3 × 5 − 7 = 8.",
+      },
+      {
+        question: "Write down the equation of the line parallel to y = 7x − 1 that crosses the y-axis at −4. Give it in the form y = mx + c.",
+        accept: [
+          "y = 7x - 4",
+          "7x-4",
+        ],
+        answer: "y = 7x − 4. Parallel means the gradient is unchanged, and the new intercept simply replaces the old one.",
+      },
+      {
+        question: "A line is parallel to y = −2x + 5 and passes through (3, 1). Find its equation in the form y = mx + c.",
+        accept: [
+          "y = -2x + 7",
+          "-2x+7",
+        ],
+        answer: "y = −2x + 7. Keep m = −2, then 1 = −2 × 3 + c gives c = 1 + 6 = 7.",
+      },
+      {
+        question: "Is the line 6x − 2y = 14 parallel to y = 3x + 1? Answer yes or no.",
+        accept: [
+          "yes",
+        ],
+        answer: "Yes. Rearranging gives 2y = 6x − 14 and then y = 3x − 7, so both gradients are 3 even though the intercepts differ.",
+      },
+      {
+        question: "State the gradient of any line perpendicular to y = 5x − 3.",
+        accept: [
+          "-1/5",
+          "-0.2",
+        ],
+        answer: "−1/5. The negative reciprocal of 5 is −1/5, and 5 × (−1/5) = −1 as required.",
+        higherOnly: true,
+      },
+      {
+        question: "A line is perpendicular to 2y = −x + 6 and passes through (1, 4). Find its equation in the form y = mx + c.",
+        accept: [
+          "y = 2x + 2",
+          "2x+2",
+        ],
+        answer: "y = 2x + 2. First get y = −0.5x + 3, so the gradient is −0.5 and the perpendicular gradient is 2. Then 4 = 2 × 1 + c gives c = 2.",
+        higherOnly: true,
+      },
+      {
+        question: "The lines y = mx + 4 and y = 3x − 1 are perpendicular. Work out the value of m.",
+        accept: [
+          "-1/3",
+        ],
+        answer: "−1/3. Perpendicular gradients multiply to −1, so m × 3 = −1 and m = −1/3.",
+        higherOnly: true,
+      },
+      {
+        question: "Find the x-intercept of the line y = 3x + 12. Give the x value only.",
+        accept: [
+          "-4",
+        ],
+        answer: "−4. The x-axis is where y = 0, so 0 = 3x + 12 and x = −12 ÷ 3 = −4.",
+      },
+      {
+        question: "The line 5x + 4y = 40 crosses the y-axis. Work out the y value at that point.",
+        accept: [
+          "10",
+        ],
+        answer: "10. On the y-axis x = 0, so the equation becomes 4y = 40 and y = 10.",
+      },
+      {
+        question: "Work out where the line y = −2x + 9 crosses the x-axis. Give the x value only.",
+        accept: [
+          "4.5",
+          "9/2",
+        ],
+        answer: "4.5. Set y = 0, so 0 = −2x + 9, giving 2x = 9 and x = 4.5.",
+      },
+      {
+        question: "Find the midpoint of (1, 6) and (9, 2). Write it as (a,b) with no spaces.",
+        accept: [
+          "(5,4)",
+          "5,4",
+        ],
+        answer: "(5, 4). The x values average to (1 + 9) ÷ 2 = 5 and the y values to (6 + 2) ÷ 2 = 4.",
+      },
+      {
+        question: "Find the midpoint of (−7, 3) and (5, −11). Write it as (a,b) with no spaces.",
+        accept: [
+          "(-1,-4)",
+          "-1,-4",
+        ],
+        answer: "(−1, −4). (−7 + 5) ÷ 2 = −1 and (3 + (−11)) ÷ 2 = −4. Averaging works exactly the same with negatives.",
+      },
+      {
+        question: "M is the midpoint of AB. A is the point (2, 5) and M is the point (6, 1). Work out the coordinates of B. Write it as (a,b) with no spaces.",
+        accept: [
+          "(10,-3)",
+          "10,-3",
+        ],
+        answer: "(10, −3). Going from A to M is 4 right and 4 down, so repeating that step from M lands on B.",
+      },
+      {
+        question: "The midpoint of (3, k) and (11, 8) is (7, 5). Work out the value of k.",
+        accept: [
+          "2",
+        ],
+        answer: "2. The y values must average to 5, so (k + 8) ÷ 2 = 5, giving k + 8 = 10 and k = 2.",
+      },
+      {
+        question: "Calculate the length of the line segment joining (0, 0) and (6, 8).",
+        accept: [
+          "10",
+        ],
+        answer: "10. The horizontal step is 6 and the vertical step is 8, so the length is √(6² + 8²) = √100 = 10.",
+      },
+      {
+        question: "Calculate the length of the line segment from (−2, 1) to (3, 13).",
+        accept: [
+          "13",
+        ],
+        answer: "13. The steps are 5 across and 12 up, and √(5² + 12²) = √169 = 13. Always use the differences, not the coordinates themselves.",
+      },
+      {
+        question: "Work out the distance between the points (1, −3) and (5, 2), to 1 decimal place.",
+        accept: [
+          "6.4",
+        ],
+        answer: "6.4. The steps are 4 across and 5 up, so the distance is √(4² + 5²) = √41 = 6.403..., which rounds to 6.4.",
+      },
+      {
+        question: "Does the point (−2, 13) lie on the line y = −5x + 3? Answer yes or no.",
+        accept: [
+          "yes",
+        ],
+        answer: "Yes. Substituting x = −2 gives −5 × (−2) + 3 = 10 + 3 = 13, which matches the y value of the point.",
+      },
+      {
+        question: "Does the point (6, 1) lie on the line 2x + 3y = 14? Answer yes or no.",
+        accept: [
+          "no",
+        ],
+        answer: "No. 2 × 6 + 3 × 1 = 12 + 3 = 15, and 15 is not 14, so the point misses the line.",
+      },
+      {
+        question: "The point (a, 17) lies on the line y = 4x − 3. Work out the value of a.",
+        accept: [
+          "5",
+        ],
+        answer: "5. Substitute y = 17 to get 17 = 4a − 3, so 4a = 20 and a = 5.",
+      },
+      {
+        question: "A line is drawn through (0, 5) and falls 2 units for every 1 unit to the right. Write its equation in the form y = mx + c.",
+        accept: [
+          "y = -2x + 5",
+          "-2x+5",
+        ],
+        answer: "y = −2x + 5. Falling means a negative gradient, and 2 down for 1 across gives m = −2, with c = 5 read off the y-axis.",
+      },
+      {
+        question: "For the line y = 0.5x + 7, work out the value of x when y = 10.",
+        accept: [
+          "6",
+        ],
+        answer: "6. Substitute to get 10 = 0.5x + 7, so 0.5x = 3 and x = 3 ÷ 0.5 = 6.",
+      },
+      {
+        question: "A plumber charges a £45 call-out fee plus £30 per hour. Work out the total cost of a four-hour job, in pounds.",
+        accept: [
+          "165",
+          "£165",
+        ],
+        answer: "£165. The fixed part is 45 and the hourly part is 30 × 4 = 120, so the total is 45 + 120 = 165. On a graph the 45 is the y-intercept and the 30 is the gradient.",
+      },
+      {
+        question: "A taxi fare is given by C = 2.50 + 1.80d, where d is the distance in miles. Work out the fare for a 7-mile journey, in pounds.",
+        accept: [
+          "15.10",
+          "15.1",
+        ],
+        answer: "£15.10. The variable part is 1.80 × 7 = 12.60, and adding the fixed 2.50 gives 15.10.",
+      },
+      {
+        question: "A gym charges a £25 joining fee plus £19 each month. Write a formula for the total cost C in pounds after m months.",
+        accept: [
+          "C = 25 + 19m",
+          "C=19m+25",
+          "25+19m",
+        ],
+        answer: "C = 25 + 19m. The joining fee is paid once, so it is the constant; the £19 is the rate, so it multiplies m. This is y = mx + c wearing different letters.",
+      },
+      {
+        question: "A van hire firm charges a fixed fee plus a rate per mile. A 50-mile hire costs £85 and a 90-mile hire costs £125. Work out the cost per mile in pounds.",
+        accept: [
+          "1",
+          "£1",
+          "1.00",
+        ],
+        answer: "£1 per mile. The extra 40 miles cost 125 − 85 = £40, so the rate is 40 ÷ 40 = 1. That rate is the gradient of the cost graph.",
+      },
+      {
+        question: "The lines y = 2x + 1 and y = −x + 10 cross at one point. Work out the y-coordinate of that point.",
+        accept: [
+          "7",
+        ],
+        answer: "7. Setting 2x + 1 = −x + 10 gives 3x = 9 and x = 3, then y = 2 × 3 + 1 = 7.",
+      },
+      {
+        question: "Which of these lines is parallel to y = 2x − 5?",
+        choices: [
+          "y = 2x + 1",
+          "y = −2x − 5",
+          "y = 5x − 2",
+          "y = −x/2 − 5",
+        ],
+        accept: [
+          "y = 2x + 1",
+        ],
+        answer: "Parallel lines have equal gradients, so only the number in front of x matters; the intercept can be anything at all.",
+      },
+      {
+        question: "Which of these lines is perpendicular to y = 3x + 2?",
+        choices: [
+          "y = −x/3 + 2",
+          "y = 3x − 2",
+          "y = −3x + 2",
+          "y = x/3 + 2",
+        ],
+        accept: [
+          "y = -x/3 + 2",
+        ],
+        answer: "The negative reciprocal of 3 is −1/3. Changing the sign alone, or flipping alone, each gets you only half way.",
+        higherOnly: true,
+      },
+      {
+        question: "The gradient of the line through (2, 5) and (6, 13) is:",
+        choices: [
+          "2",
+          "4",
+          "8",
+          "1/2",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "Change in y is 13 − 5 = 8 and change in x is 6 − 2 = 4, so the gradient is 8 ÷ 4 = 2. Stopping at 8 is the commonest slip.",
+      },
+      {
+        question: "The line x = 4 is:",
+        choices: [
+          "Vertical, with an undefined gradient",
+          "Horizontal, with gradient 0",
+          "A line with gradient 4",
+          "A line through the origin",
+        ],
+        accept: [
+          "Vertical, with an undefined gradient",
+        ],
+        answer: "Every point on x = 4 has the same x value, so the run is zero and dividing by zero has no meaning.",
+      },
+      {
+        question: "Rearranged into y = mx + c, the line 2x + y = 7 has gradient:",
+        choices: [
+          "−2",
+          "2",
+          "7",
+          "1/2",
+        ],
+        accept: [
+          "-2",
+        ],
+        answer: "Subtract 2x from both sides to get y = −2x + 7. The 7 is the intercept, not the gradient.",
+      },
+      {
+        question: "The midpoint of (4, 2) and (10, 8) is:",
+        choices: [
+          "(7, 5)",
+          "(6, 6)",
+          "(14, 10)",
+          "(3, 3)",
+        ],
+        accept: [
+          "(7, 5)",
+        ],
+        answer: "Average each coordinate: (4 + 10) ÷ 2 = 7 and (2 + 8) ÷ 2 = 5. Subtracting instead of averaging gives (6, 6).",
+      },
+      {
+        question: "A line crosses the y-axis at −3 and has gradient 4. Its equation is:",
+        choices: [
+          "y = 4x − 3",
+          "y = −3x + 4",
+          "y = 4x + 3",
+          "y = 3x − 4",
+        ],
+        accept: [
+          "y = 4x - 3",
+        ],
+        answer: "The gradient is m and the intercept is c, so 4 and −3 slot into y = mx + c in that order.",
+      },
+      {
+        question: "The length of the line segment from (0, 0) to (5, 12) is:",
+        choices: [
+          "13",
+          "17",
+          "7",
+          "169",
+        ],
+        accept: [
+          "13",
+        ],
+        answer: "Pythagoras on a right-angled triangle with sides 5 and 12 gives √(5² + 12²) = √169 = 13. Forgetting the square root leaves 169.",
+      },
+      {
+        question: "Which point lies on the line y = 5x − 2?",
+        choices: [
+          "(3, 13)",
+          "(2, 5)",
+          "(1, 7)",
+          "(0, 2)",
+        ],
+        accept: [
+          "(3, 13)",
+        ],
+        answer: "Substitute each x value into the equation: 5 × 3 − 2 = 13, which matches. The others give a different y.",
+      },
+      {
+        question: "Which of these is the equation of a horizontal line?",
+        choices: [
+          "y = −2",
+          "x = −2",
+          "y = −2x",
+          "y = x − 2",
+        ],
+        accept: [
+          "y = -2",
+        ],
+        answer: "y = −2 fixes the y value for every point, giving a horizontal row. x = −2 would be vertical.",
+      },
+      {
+        question: "A line has gradient 0. This tells you the line:",
+        choices: [
+          "Is horizontal",
+          "Is vertical",
+          "Passes through the origin",
+          "Falls steeply from left to right",
+        ],
+        accept: [
+          "Is horizontal",
+        ],
+        answer: "Gradient is change in y ÷ change in x, so a zero on top means y never changes as x does.",
+      },
+      {
+        question: "The line y = −x + 6 crosses the x-axis at:",
+        choices: [
+          "(6, 0)",
+          "(0, 6)",
+          "(−6, 0)",
+          "(0, −6)",
+        ],
+        accept: [
+          "(6, 0)",
+        ],
+        answer: "Crossing the x-axis means y = 0, so 0 = −x + 6 and x = 6. Reading the 6 straight off gives the y-intercept instead.",
+      },
+      {
+        question: "A repair shop charges £18 plus £6 for each replacement part. On a graph of cost against number of parts, the £18 is:",
+        choices: [
+          "The y-intercept",
+          "The gradient",
+          "The x-intercept",
+          "The midpoint",
+        ],
+        accept: [
+          "The y-intercept",
+        ],
+        answer: "The fixed charge applies before any parts are used, so it is the cost when x = 0 — where the line meets the y-axis.",
+      },
+      {
+        question: "In the real-life graph C = 15 + 4t, where t is time in hours, the 4 represents:",
+        choices: [
+          "The cost for each extra hour",
+          "The fixed charge",
+          "The total cost",
+          "The number of hours",
+        ],
+        accept: [
+          "The cost for each extra hour",
+        ],
+        answer: "The number multiplying the variable is the rate of change, which on this graph is the gradient of the line.",
+      },
+      {
+        question: "Two lines have gradients 4 and −1/4. The lines are:",
+        choices: [
+          "Perpendicular",
+          "Parallel",
+          "The same line",
+          "Both horizontal",
+        ],
+        accept: [
+          "Perpendicular",
+        ],
+        answer: "Multiply the gradients: 4 × (−1/4) = −1, which is exactly the test for perpendicular lines.",
+        higherOnly: true,
+      },
+      {
+        question: "The gradient of the line joining (−3, 6) and (1, −2) is:",
+        choices: [
+          "−2",
+          "2",
+          "−1/2",
+          "8",
+        ],
+        accept: [
+          "-2",
+        ],
+        answer: "Change in y is −2 − 6 = −8 and change in x is 1 − (−3) = 4, so −8 ÷ 4 = −2. Losing the minus sign gives 2.",
+      },
+      {
+        question: "Which equation describes a line that passes through the origin?",
+        choices: [
+          "y = 6x",
+          "y = 6x + 1",
+          "y = 6",
+          "x = 6",
+        ],
+        accept: [
+          "y = 6x",
+        ],
+        answer: "A line through the origin has c = 0, so its equation is simply y = mx with no constant term on the end.",
+      },
+      {
+        question: "To find where two straight lines cross, you should:",
+        choices: [
+          "Solve their equations simultaneously",
+          "Add their gradients",
+          "Average their y-intercepts",
+          "Multiply their gradients",
+        ],
+        accept: [
+          "Solve their equations simultaneously",
+        ],
+        answer: "The crossing point is the one pair of values satisfying both equations at once, which is what simultaneous solving finds.",
+      },
+      {
+        question: "The points (7, 2) and (7, 11) both lie on the same straight line. The gradient of that line is:",
+        choices: [
+          "Undefined",
+          "0",
+          "9",
+          "1",
+        ],
+        accept: [
+          "Undefined",
+        ],
+        answer: "Both points have x = 7, so the change in x is zero. Dividing by zero is impossible, so the gradient is undefined rather than very large.",
+      },
+      {
+        question: "Show that the line through (0, 2) and (4, 4) is perpendicular to the line through (1, 5) and (3, 1).",
+        answer: "Work out both gradients and multiply them. The first line rises 4 − 2 = 2 over a run of 4 − 0 = 4, so its gradient is 2 ÷ 4 = 0.5. The second falls 1 − 5 = −4 over a run of 3 − 1 = 2, so its gradient is −4 ÷ 2 = −2. Multiplying gives 0.5 × (−2) = −1, and two gradients multiplying to −1 is the condition for perpendicular lines, so the two lines meet at a right angle. Writing the multiplication down is what earns the final mark: a 'show that' question wants the test applied, not just the two gradients stated. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Explain how to find the equation of a straight line when you are given only two points on it.",
+        answer: "First find the gradient, by dividing the change in y by the change in x, keeping the two points in the same order on the top and the bottom so the sign comes out right. That gives m. Then substitute the gradient and either one of the two points into y = mx + c, which leaves c as the only unknown, and solve for it. Finally write the equation out with both letters replaced by numbers, and check it by putting the other point in: if that point also satisfies the equation, the working is almost certainly right. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how you would check, without drawing anything, whether the three points (1, 3), (4, 9) and (7, 15) lie on the same straight line.",
+        answer: "Find the gradient between the first pair and then between the second pair, and compare them. From (1, 3) to (4, 9) the change in y is 6 and the change in x is 3, giving a gradient of 2. From (4, 9) to (7, 15) the change in y is again 6 and the change in x is again 3, giving 2 as well. Because the two gradients are equal and the segments share the point (4, 9), there is no bend, so all three points lie on one line. Equal gradients alone are not enough if the segments do not share a point — that would only show the two segments are parallel. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why a mobile phone bill with a fixed monthly charge plus a cost per minute gives a straight-line graph that does not pass through the origin.",
+        answer: "The cost per minute is the same for every minute, so each extra minute adds the same amount to the bill. A constant rate of change is exactly what gives a straight line, and that rate is the gradient. The fixed monthly charge is paid whether or not any calls are made, so when the number of minutes is zero the bill is not zero but equal to that fixed charge. That value is the y-intercept, and because it is not zero the line starts part way up the vertical axis instead of at the origin. (Mark this one yourself.)",
+      },
+      {
+        question: "A student says the line 3x + y = 6 has gradient 3. Explain the mistake and state the correct gradient.",
+        answer: "The student has read the number in front of x straight off an equation that is not yet in y = mx + c form. The equation has to be rearranged first: subtracting 3x from both sides gives y = −3x + 6. Only now can m be read off, and it is −3, not 3. The sign matters as much as the number — the line falls rather than rises. A quick sanity check is to substitute two x values: x = 0 gives y = 6 and x = 1 gives y = 3, so y drops by 3 as x rises by 1. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why swapping the order of the two points when calculating a gradient does not change the answer.",
+        answer: "Swapping the points changes the sign of the change in y and the sign of the change in x at the same time. If the first order gives a rise of 6 over a run of 3, the reversed order gives −6 over −3. Dividing a negative by a negative gives a positive, so −6 ÷ −3 is still 2. The two sign changes cancel, which is why either order is safe. What is not safe is mixing the orders, taking y from one direction and x from the other: that changes only one sign and produces a gradient with the wrong sign. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how the graph of y = 2x + 1 changes when the equation becomes y = 2x − 4, and separately when it becomes y = 5x + 1.",
+        answer: "Changing the constant from 1 to −4 changes only c, so the steepness is untouched and the whole line slides straight down the y-axis by 5 units; the new line is parallel to the old one and crosses the y-axis at −4 instead of 1. Changing the 2 to a 5 changes only m, so the crossing point on the y-axis stays at 1 and the line pivots about that point, becoming steeper: y now rises 5 for every 1 across instead of 2. In short, c moves the line and m tilts it, and the two can be changed independently. (Mark this one yourself.)",
       },
     ],
 
@@ -6844,6 +14842,313 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain how to work out which sides correspond when two similar triangles are drawn in different orientations.",
         answer: "Match the triangles by their angles rather than by their position on the page, because corresponding sides are the ones opposite equal angles. Writing the vertices in matching order, such as triangle ABC similar to triangle PQR, then tells you that AB corresponds to PQ and so on. Checking that the scale factor comes out the same for two different pairs of sides confirms the matching is right before you use it. (Mark this one yourself.)",
       },
+      {
+        question: "Name the congruence condition that uses two angles and the side between them. Give the letters.",
+        accept: [
+          "ASA",
+        ],
+        answer: "ASA — angle, side, angle. The side lies BETWEEN the two angles, which is what separates it from the case where the side is somewhere else.",
+      },
+      {
+        question: "Which congruence condition uses two sides and the angle between them? Give the letters.",
+        accept: [
+          "SAS",
+        ],
+        answer: "SAS. The angle has to be the included one, sitting between the two known sides; an angle anywhere else does not lock the triangle's shape.",
+      },
+      {
+        question: "In the congruence condition RHS, what does the R stand for?",
+        accept: [
+          "right angle",
+          "right-angle",
+          "a right angle",
+        ],
+        answer: "The right angle. RHS means right angle, hypotenuse and one other side, and it is the only condition restricted to right-angled triangles.",
+      },
+      {
+        question: "Two similar shapes have matching sides of 6 cm and 21 cm. Work out the length scale factor from the smaller to the larger.",
+        accept: [
+          "3.5",
+        ],
+        answer: "3.5. Divide the matching lengths the right way round: 21 ÷ 6 = 3.5, so every length on the larger shape is 3.5 times the one it matches.",
+      },
+      {
+        question: "Two similar triangles have matching sides of 9 cm and 12 cm. Another side of the smaller triangle is 15 cm. Calculate the matching side of the larger, in cm.",
+        accept: [
+          "20",
+        ],
+        answer: "20 cm. The scale factor is 12 ÷ 9 = 4/3, and the same factor applies to every length, so the missing side is 15 × 4/3 = 20.",
+      },
+      {
+        question: "A model car is made to a scale of 1 : 25. The real car is 4.5 m long. Calculate the length of the model, in cm.",
+        accept: [
+          "18",
+        ],
+        answer: "18 cm. Convert to one unit first: 4.5 m is 450 cm, and 450 ÷ 25 = 18. Converting before dividing is what prevents the factor-of-100 slip.",
+      },
+      {
+        question: "Triangle PQR is similar to triangle XYZ, with PQ = 8 cm, XY = 20 cm and YZ = 35 cm. Calculate the length of QR, in cm.",
+        accept: [
+          "14",
+        ],
+        answer: "14 cm. The lettering shows PQ matches XY, so the scale factor from XYZ to PQR is 8 ÷ 20 = 0.4, and QR matches YZ, giving 35 × 0.4 = 14.",
+      },
+      {
+        question: "In triangle ABC, X lies on AB and Y lies on AC, with XY parallel to BC. AX = 6 cm, XB = 4 cm and BC = 15 cm. Calculate the length of XY, in cm.",
+        accept: [
+          "9",
+        ],
+        answer: "9 cm. AX corresponds to the whole of AB, which is 6 + 4 = 10, so the scale factor is 6 ÷ 10 = 0.6 and XY = 15 × 0.6 = 9.",
+      },
+      {
+        question: "Two similar shapes have a length scale factor of 6. Work out the area scale factor.",
+        accept: [
+          "36",
+        ],
+        answer: "36. Area scales by the square of the length scale factor, so 6 × 6 = 36; a shape six times as long is thirty-six times the area.",
+        higherOnly: true,
+      },
+      {
+        question: "The area scale factor between two similar shapes is 0.25. Work out the length scale factor.",
+        accept: [
+          "0.5",
+        ],
+        answer: "0.5. Go backwards by taking the square root of the area scale factor: the square root of 0.25 is 0.5, so the image is half as long.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar solids have a length scale factor of 4. Calculate the volume scale factor.",
+        accept: [
+          "64",
+        ],
+        answer: "64. Volume scales by the cube of the length scale factor, so the answer is 4 × 4 × 4 = 64.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar prisms have volumes of 64 cm³ and 216 cm³. Work out the length scale factor from the smaller to the larger.",
+        accept: [
+          "1.5",
+        ],
+        answer: "1.5. The volume scale factor is 216 ÷ 64 = 3.375, and the length scale factor is its cube root, which is 1.5.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar triangles have areas of 16 cm² and 81 cm². Calculate the length scale factor from the smaller to the larger.",
+        accept: [
+          "2.25",
+        ],
+        answer: "2.25. The area scale factor is 81 ÷ 16 = 5.0625, and the length scale factor is the square root of that, which is 2.25.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar cuboids have heights of 3 cm and 9 cm. The smaller has volume 12 cm³. Calculate the volume of the larger, in cm³.",
+        accept: [
+          "324",
+        ],
+        answer: "324 cm³. The length scale factor is 9 ÷ 3 = 3, so the volume scale factor is 3 × 3 × 3 = 27, and 12 × 27 = 324.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar shapes have a length scale factor of 5. The larger shape has area 200 cm². Calculate the area of the smaller, in cm².",
+        accept: [
+          "8",
+        ],
+        answer: "8 cm². The area scale factor is 5 × 5 = 25, and going from larger to smaller you divide by it, so 200 ÷ 25 = 8.",
+        higherOnly: true,
+      },
+      {
+        question: "A photograph is 8 cm wide and 12 cm tall. It is enlarged so that its width becomes 20 cm. Calculate the new height, in cm.",
+        accept: [
+          "30",
+        ],
+        answer: "30 cm. The scale factor is 20 ÷ 8 = 2.5, and the same factor must be used on the height, so the new height is 12 × 2.5 = 30.",
+      },
+      {
+        question: "Two similar triangles have corresponding sides of 14 cm and 35 cm. Calculate the length scale factor from the larger to the smaller, as a decimal.",
+        accept: [
+          "0.4",
+        ],
+        answer: "0.4. Going from larger to smaller you divide the smaller by the larger, so 14 ÷ 35 = 0.4 — a factor below 1, because the shape shrinks.",
+      },
+      {
+        question: "Triangle ABC is congruent to triangle DEF, and AB = 5 cm. Write down the length of DE, in cm.",
+        accept: [
+          "5",
+        ],
+        answer: "5 cm. Congruent triangles are identical in size, and the order of the lettering shows that AB matches DE, so the two lengths are equal.",
+      },
+      {
+        question: "Two similar cones have heights of 7 cm and 21 cm. The smaller has slant height 9 cm. Calculate the slant height of the larger, in cm.",
+        accept: [
+          "27",
+        ],
+        answer: "27 cm. The length scale factor is 21 ÷ 7 = 3, and slant height is a length, so it scales by the same factor: 9 × 3 = 27.",
+      },
+      {
+        question: "Two similar bottles have surface areas of 45 cm² and 180 cm². Calculate the length scale factor from the smaller to the larger.",
+        accept: [
+          "2",
+        ],
+        answer: "2. Surface area is an area, so the area scale factor is 180 ÷ 45 = 4, and the length scale factor is the square root of 4, which is 2.",
+        higherOnly: true,
+      },
+      {
+        question: "An equilateral triangle of side 4 cm is enlarged into one of side 10 cm. Work out the length scale factor, as a decimal.",
+        accept: [
+          "2.5",
+        ],
+        answer: "2.5. Divide the new length by the old one: 10 ÷ 4 = 2.5, and every other length in the triangle is multiplied by the same number.",
+      },
+      {
+        question: "Which of these does NOT prove that two triangles are congruent?",
+        choices: [
+          "AAA",
+          "SSS",
+          "SAS",
+          "RHS",
+        ],
+        accept: [
+          "AAA",
+        ],
+        answer: "AAA. Three equal angles only prove the triangles are the same shape, which makes them similar; nothing in AAA fixes how big either one is.",
+      },
+      {
+        question: "Two similar solids have a length scale factor of 3. Their volumes are in the ratio:",
+        choices: [
+          "1 : 27",
+          "1 : 3",
+          "1 : 9",
+          "1 : 6",
+        ],
+        accept: [
+          "1 : 27",
+        ],
+        answer: "1 : 27. Volume scales by the cube, so 3 × 3 × 3 = 27; 1 : 9 would be the ratio of the areas and 1 : 3 the ratio of the lengths.",
+        higherOnly: true,
+      },
+      {
+        question: "Which pair of triangles must be congruent?",
+        choices: [
+          "two triangles with sides 3 cm, 4 cm and 5 cm",
+          "two triangles each with angles 40°, 60° and 80°",
+          "two right-angled triangles each with a hypotenuse of 10 cm",
+          "two isosceles triangles each containing a 50° angle",
+        ],
+        accept: [
+          "two triangles with sides 3 cm, 4 cm and 5 cm",
+        ],
+        answer: "The pair with three matching sides, by SSS. Matching angles alone only give similarity, and RHS needs a matching shorter side as well as the hypotenuse.",
+      },
+      {
+        question: "The scale factor from a larger shape to a smaller similar shape is always:",
+        choices: [
+          "less than 1",
+          "greater than 1",
+          "equal to 1",
+          "negative",
+        ],
+        accept: [
+          "less than 1",
+        ],
+        answer: "Less than 1. You divide the smaller length by the larger, so the factor is a proper fraction; it is never negative, because lengths are positive.",
+      },
+      {
+        question: "Two similar rectangles have lengths of 4 cm and 6 cm. The area scale factor is:",
+        choices: [
+          "2.25",
+          "1.5",
+          "3",
+          "2",
+        ],
+        accept: [
+          "2.25",
+        ],
+        answer: "2.25. The length scale factor is 6 ÷ 4 = 1.5, and area scales by the square, so 1.5 × 1.5 = 2.25; answering 1.5 forgets to square it.",
+        higherOnly: true,
+      },
+      {
+        question: "Which statement about two congruent shapes is true?",
+        choices: [
+          "They have equal angles and equal sides.",
+          "They have equal angles and sides in the same ratio.",
+          "They must face the same way on the page.",
+          "They have equal sides but their angles may differ.",
+        ],
+        accept: [
+          "They have equal angles and equal sides.",
+        ],
+        answer: "Equal angles and equal sides. The second option describes similar shapes, the third is wrong because congruent shapes may be rotated or reflected, and the fourth describes a rhombus next to a square.",
+      },
+      {
+        question: "A cube of side 2 cm is enlarged into a cube of side 6 cm. Its volume increases by a factor of:",
+        choices: [
+          "27",
+          "3",
+          "9",
+          "12",
+        ],
+        accept: [
+          "27",
+        ],
+        answer: "27. The length scale factor is 6 ÷ 2 = 3, and volume scales by the cube, so 3 × 3 × 3 = 27; 9 is the factor the surface area grows by.",
+        higherOnly: true,
+      },
+      {
+        question: "Which condition proves congruence using a right angle, the hypotenuse and one shorter side?",
+        choices: [
+          "RHS",
+          "SAS",
+          "ASA",
+          "SSS",
+        ],
+        accept: [
+          "RHS",
+        ],
+        answer: "RHS. It works because Pythagoras' theorem fixes the remaining side as soon as the hypotenuse and one shorter side are known.",
+      },
+      {
+        question: "Two similar triangles have corresponding sides of 5 cm and 15 cm. A second side of the smaller triangle is 7 cm. The matching side of the larger is:",
+        choices: [
+          "21 cm",
+          "17 cm",
+          "12 cm",
+          "35 cm",
+        ],
+        accept: [
+          "21 cm",
+        ],
+        answer: "21 cm. The scale factor is 15 ÷ 5 = 3, so the matching side is 7 × 3 = 21; 17 cm comes from adding 10 instead of multiplying by 3.",
+      },
+      {
+        question: "Reflecting a shape in a mirror line produces an image that is:",
+        choices: [
+          "congruent to the original",
+          "similar but not congruent",
+          "an enlargement of the original",
+          "smaller than the original",
+        ],
+        accept: [
+          "congruent to the original",
+        ],
+        answer: "Congruent. A reflection changes the orientation and nothing else — not one length and not one angle — so the image is identical in shape and size.",
+      },
+      {
+        question: "Show that any two squares must be similar to each other, whatever their side lengths.",
+        answer: "Every square has four right angles, so all corresponding angles are equal. Every square also has four equal sides, so if one has side a and the other side b, all four pairs of corresponding sides are in the same ratio b to a. Equal angles together with a constant ratio of sides is exactly the definition of similar shapes. (Mark this one yourself.)",
+      },
+      {
+        question: "A diagonal is drawn across a parallelogram. Describe how you would prove that the two triangles it creates are congruent, naming the condition you use.",
+        answer: "The diagonal is a side of both triangles, so it is a common side and equal to itself. Opposite sides of a parallelogram are equal, which supplies the other two pairs. Three pairs of equal sides is SSS, so the triangles are congruent. Set it out with each equal pair on its own line and its reason beside it, then name the condition at the end. (Mark this one yourself.)",
+      },
+      {
+        question: "A student says that doubling every dimension of a fish tank doubles the amount of water it holds. Explain the mistake and state what really happens.",
+        answer: "Capacity is a volume, and volume scales by the cube of the length scale factor rather than by the factor itself. Doubling every dimension gives a volume scale factor of 2 × 2 × 2 = 8, so the tank actually holds eight times as much water. The same trap catches area, which scales by the square. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Explain why proving two triangles congruent lets you say a third pair of sides is equal without measuring them.",
+        answer: "Congruent means identical in shape and size, so once congruence is established every corresponding part matches, not only the three facts used in the proof. That is the point of a congruence condition: three matching facts are enough to force all six. In an answer, quote the condition first and then state the equal pair as a consequence of it. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -7244,6 +15549,210 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain why bearings are always written with three figures, and what confusion this convention prevents.",
         answer: "Writing every bearing with three figures makes the format consistent, so 45 degrees is always recorded as 045 rather than 45. Without it, a bearing could be misread as a different number of degrees or confused with an ordinary angle measurement in a diagram. The convention also makes bearings easy to compare and sort at a glance, since they all occupy the same three digits from 000 to 360. (Mark this one yourself.)",
       },
+      {
+        question: "The bearing of Q from P is 073°. Calculate the bearing of P from Q. Give three figures.",
+        accept: [
+          "253",
+        ],
+        answer: "253°. A back bearing is half a turn away, and 073 is under 180, so you add: 73 + 180 = 253, which is still under 360.",
+      },
+      {
+        question: "A lighthouse is on a bearing of 295° from a boat. Work out the bearing of the boat from the lighthouse. Give three figures.",
+        accept: [
+          "115",
+        ],
+        answer: "115°. The bearing is over 180°, so subtract instead of adding: 295 − 180 = 115. Three figures keep it clearly a bearing rather than a length.",
+      },
+      {
+        question: "Which construction produces the locus of points equidistant from two fixed points?",
+        accept: [
+          "perpendicular bisector",
+          "the perpendicular bisector",
+        ],
+        answer: "The perpendicular bisector of the line joining the two points. Every point on it is the same distance from both ends, which is exactly the locus wanted.",
+      },
+      {
+        question: "A garden sprinkler wets every point within 6 m of itself. Calculate the area of lawn it wets, in m², to 1 decimal place.",
+        accept: [
+          "113.1",
+        ],
+        answer: "113.1 m². The locus of points within 6 m of a point is a circle of radius 6, so the area is π × 6² = 36π = 113.097..., which is 113.1 to 1 decimal place.",
+      },
+      {
+        question: "When you construct an equilateral triangle with compasses, what size is each of its angles, in degrees?",
+        accept: [
+          "60",
+        ],
+        answer: "60°. All three sides are struck with the same compass radius, so all three angles are equal and 180 ÷ 3 = 60. This is how a 60° angle is made without a protractor.",
+      },
+      {
+        question: "On a map with a scale of 1 : 20 000, two villages are 7 cm apart. Calculate the real distance between them, in kilometres.",
+        accept: [
+          "1.4",
+        ],
+        answer: "1.4 km. The real distance is 7 × 20 000 = 140 000 cm. Divide by 100 to get 1400 m, then by 1000 to get 1.4 km.",
+      },
+      {
+        question: "A scale drawing uses 1 cm to represent 5 m. A wall is 32 m long. Calculate its length on the drawing, in cm.",
+        accept: [
+          "6.4",
+        ],
+        answer: "6.4 cm. Going from real life to the drawing you divide by the scale, so 32 ÷ 5 = 6.4. Going the other way you would multiply instead.",
+      },
+      {
+        question: "A ship sails 15 km due north, then 15 km due west. Calculate the bearing of its finishing point from its starting point. Give three figures.",
+        accept: [
+          "315",
+        ],
+        answer: "315°. Equal distances north and west put the finish exactly north-west of the start, and north-west is 315° measured clockwise from north.",
+      },
+      {
+        question: "Points A and B are 9 cm apart. The perpendicular bisector of AB crosses AB at P. Calculate the length of AP, in cm.",
+        accept: [
+          "4.5",
+        ],
+        answer: "4.5 cm. A perpendicular bisector cuts the segment exactly in half, so AP = 9 ÷ 2 = 4.5, and PB is the same length.",
+      },
+      {
+        question: "A plane is flying on a bearing of 040°. It turns clockwise through 85°. Work out its new bearing. Give three figures.",
+        accept: [
+          "125",
+        ],
+        answer: "125°. Bearings are measured clockwise, so a clockwise turn is added on: 40 + 85 = 125. An anticlockwise turn would be subtracted.",
+      },
+      {
+        question: "The bearing of B from A is 008°. Calculate the bearing of A from B. Give three figures.",
+        accept: [
+          "188",
+        ],
+        answer: "188°. The two north lines are parallel, so the bearings differ by 180°; 8 is under 180, so add to get 8 + 180 = 188.",
+      },
+      {
+        question: "A walker leaves camp, walks 9 km on a bearing of 090°, then 9 km on a bearing of 000°. Calculate the bearing of the camp from the walker. Give three figures.",
+        accept: [
+          "225",
+        ],
+        answer: "225°. The walker finishes 9 km east and 9 km north of camp, so camp lies exactly south-west of the walker, and south-west is 225° clockwise from north.",
+      },
+      {
+        question: "To construct an angle of exactly 60° with compasses you draw:",
+        choices: [
+          "an equilateral triangle",
+          "a perpendicular bisector",
+          "an angle bisector twice",
+          "a semicircle",
+        ],
+        accept: [
+          "an equilateral triangle",
+        ],
+        answer: "An equilateral triangle. Setting the compasses to the base length and striking an arc from each end gives three equal sides, so every angle must be 60°.",
+      },
+      {
+        question: "The locus of points exactly 3 cm from a line segment AB is:",
+        choices: [
+          "two parallel lines 3 cm from AB, joined by a semicircle at each end",
+          "a circle of radius 3 cm",
+          "two parallel lines 3 cm from AB and nothing else",
+          "one line 3 cm above AB",
+        ],
+        accept: [
+          "two parallel lines 3 cm from AB, joined by a semicircle at each end",
+        ],
+        answer: "Two parallel lines closed off by semicircular ends — a running-track shape. The ends matter: points beyond A or beyond B are still 3 cm away, measured from the end point.",
+      },
+      {
+        question: "A bearing of 045° points:",
+        choices: [
+          "north-east",
+          "north-west",
+          "south-east",
+          "south-west",
+        ],
+        accept: [
+          "north-east",
+        ],
+        answer: "North-east. Bearings run clockwise from north, so 045° is exactly halfway between north at 000° and east at 090°.",
+      },
+      {
+        question: "On a map with a scale of 1 : 50 000, one centimetre represents:",
+        choices: [
+          "0.5 km",
+          "5 km",
+          "50 km",
+          "0.05 km",
+        ],
+        accept: [
+          "0.5 km",
+        ],
+        answer: "0.5 km. One centimetre stands for 50 000 cm, which is 500 m, and 500 m is 0.5 km. Dividing by 100 and then by 1000 is the safe route.",
+      },
+      {
+        question: "To find the shortest distance from a point P to a line L, you construct:",
+        choices: [
+          "the perpendicular from P to L",
+          "the perpendicular bisector of L",
+          "the bisector of the angle at P",
+          "an equilateral triangle on L",
+        ],
+        accept: [
+          "the perpendicular from P to L",
+        ],
+        answer: "The perpendicular from P to L. The shortest route from a point to a line always meets it at right angles, so the construction gives the distance as well as the line.",
+      },
+      {
+        question: "When constructing a perpendicular bisector, the compass point is placed:",
+        choices: [
+          "at each end of the line in turn",
+          "at the midpoint of the line",
+          "at any single point on the line",
+          "off the line altogether",
+        ],
+        accept: [
+          "at each end of the line in turn",
+        ],
+        answer: "At each end in turn, keeping the radius the same. The two pairs of arcs cross above and below the line, and joining those crossings gives the bisector.",
+      },
+      {
+        question: "A coin is buried within 5 m of a tree and no more than 3 m from a straight fence. The possible region is:",
+        choices: [
+          "the overlap of a circle and a strip",
+          "the whole circle",
+          "the whole strip",
+          "a single point",
+        ],
+        accept: [
+          "the overlap of a circle and a strip",
+        ],
+        answer: "The overlap of the two regions. Each condition gives its own region — a circle of radius 5 m and a strip 3 m either side of the fence — and 'both conditions' keeps only the part they share.",
+      },
+      {
+        question: "Describe, step by step, how to construct the perpendicular bisector of a line segment AB using only a ruler and a pair of compasses.",
+        answer: "Open the compasses to more than half of AB. With the point on A, draw arcs above and below the line. Without changing the radius, move the point to B and draw two more arcs so that they cross the first pair. Rule a straight line through the two crossing points, and that line cuts AB in half at right angles. Leave every arc visible, because the arcs are what the method mark is given for. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how to construct the bisector of an angle ABC with compasses, and say how you would check your answer is accurate.",
+        answer: "Put the compass point on B and draw an arc that crosses both arms, marking a point on each. Move the point to each of those marks in turn, keeping the radius the same, and draw two arcs that cross in the space between the arms. Join B to that crossing. To check, measure the two new angles with a protractor: they should be equal and should together rebuild the original angle. (Mark this one yourself.)",
+      },
+      {
+        question: "Describe how to construct the perpendicular from a point P to a line L when P does not lie on L.",
+        answer: "With the compass point on P, draw an arc wide enough to cut L in two places, and call those crossings X and Y. Now construct the perpendicular bisector of XY by striking equal arcs from X and from Y. The line through P and the crossing of those arcs meets L at right angles, and the shortest distance from P to L is measured along it. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how constructing an equilateral triangle gives you an angle of exactly 60°, and how you would then produce an angle of 30°.",
+        answer: "Striking arcs of equal radius from both ends of a base line finds a point that is the same distance from each end, so all three sides are equal and all three angles must therefore be 60°. To reach 30°, bisect one of those 60° angles using the ordinary angle-bisector construction. Both steps use compasses only, so no protractor is needed anywhere. (Mark this one yourself.)",
+      },
+      {
+        question: "Two straight hedges meet at a corner of a field. Describe the locus of points inside the field that are the same distance from both hedges, and how you would draw it.",
+        answer: "It is the bisector of the angle between the hedges — a straight line running from the corner into the field. Draw it with the angle-bisector construction: an arc from the corner cutting both hedges, then equal arcs from those two marks crossing inside the field, then a line from the corner through that crossing. Distance to a line always means the perpendicular distance, which is why the bisector is the right locus. (Mark this one yourself.)",
+      },
+      {
+        question: "A radio mast must be more than 200 m from a straight road and within 500 m of a village. Describe how you would shade the possible region on a scale drawing, and state the scale you would use.",
+        answer: "Choose a scale that fits the page, for example 1 cm to 100 m, which makes 200 m into 2 cm and 500 m into 5 cm. Draw the road and the village to that scale. Rule lines 2 cm either side of the road and draw a circle of radius 5 cm around the village. Shade the part that is inside the circle and outside both road lines. Use a dashed line for the road boundary, because 'more than 200 m' excludes the boundary itself. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain why the north lines drawn at two different points on a map are treated as parallel, and how that fact produces the back bearing rule.",
+        answer: "Every north line on a map points the same way, so the north line at A and the north line at B never meet and are treated as parallel. The straight line joining A and B cuts across both of them, so the angles it makes with the two north lines are tied together by the parallel-line rules, and following them round from one north line to the other accounts for exactly half a turn. That is why the two bearings always differ by 180°: add 180° when the first bearing is under 180°, and subtract it when the first bearing is larger. (Mark this one yourself.)",
+      },
     ],
 
     misconceptions: [
@@ -7638,6 +16147,391 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain why a speed given in m/s cannot be compared directly with one given in km/h, and describe how to make the comparison fair.",
         answer: "The two figures use different units for both distance and time, so the numbers are measuring on different scales and the larger number is not necessarily the faster speed. To compare them, convert one into the other's units: multiply m/s by 3.6 to get km/h, or divide km/h by 3.6 to get m/s. Once both are in the same units the comparison is valid, and 10 m/s turns out to be 36 km/h. (Mark this one yourself.)",
+      },
+      {
+        question: "A cyclist rides 45 km in 3 hours. Work out the average speed, in km/h.",
+        accept: [
+          "15",
+        ],
+        answer: "15 km/h. Speed = distance ÷ time = 45 ÷ 3 = 15. The unit km/h tells you which way round the division goes: kilometres per hour means kilometres divided by hours.",
+      },
+      {
+        question: "A car drives at 60 km/h for 45 minutes. Work out the distance travelled, in km.",
+        accept: [
+          "45",
+        ],
+        answer: "45 km. Convert the time to hours first, because the speed is in km/h: 45 minutes = 45 ÷ 60 = 0.75 hours. Then distance = speed × time = 60 × 0.75 = 45 km.",
+      },
+      {
+        question: "A ferry crosses 210 km of open sea at an average speed of 84 km/h. How long does the crossing take, in hours?",
+        accept: [
+          "2.5",
+          "2.5 hours",
+        ],
+        answer: "2.5 hours. Time = distance ÷ speed = 210 ÷ 84 = 2.5. That is 2 hours 30 minutes, since 0.5 of an hour is 30 minutes — never write it as 2 hours 50 minutes.",
+      },
+      {
+        question: "A walker covers 6 km in 1 hour 30 minutes. Work out their speed, in km/h.",
+        accept: [
+          "4",
+        ],
+        answer: "4 km/h. Write the time as a decimal number of hours: 1 hour 30 minutes = 1.5 hours. Then speed = distance ÷ time = 6 ÷ 1.5 = 4 km/h. Using 1.30 instead of 1.5 is the standard trap here.",
+      },
+      {
+        question: "A car is travelling at 15 m/s. Write this speed in km/h.",
+        accept: [
+          "54",
+        ],
+        answer: "54 km/h. In one hour it covers 15 × 3600 = 54 000 metres, which is 54 000 ÷ 1000 = 54 km. The shortcut is to multiply metres per second by 3.6.",
+      },
+      {
+        question: "A driver covers 90 km in the first hour and 150 km in the next 2 hours. Calculate the average speed for the whole journey, in km/h.",
+        accept: [
+          "80",
+        ],
+        answer: "80 km/h. Average speed is always total distance ÷ total time, never the average of the separate speeds. Total distance = 90 + 150 = 240 km and total time = 1 + 2 = 3 hours, so 240 ÷ 3 = 80 km/h.",
+      },
+      {
+        question: "A cyclist rides 30 km at 15 km/h and then a further 30 km at 10 km/h. Calculate the average speed for the whole ride, in km/h.",
+        accept: [
+          "12",
+        ],
+        answer: "12 km/h. Work out each time separately: 30 ÷ 15 = 2 hours and 30 ÷ 10 = 3 hours, giving 5 hours in total for 60 km. Average speed = 60 ÷ 5 = 12 km/h. It is below the halfway figure of 12.5 because more time is spent going slowly.",
+      },
+      {
+        question: "A piece of oak has mass 420 g and volume 600 cm³. Calculate its density, in g/cm³.",
+        accept: [
+          "0.7",
+        ],
+        answer: "0.7 g/cm³. Density = mass ÷ volume = 420 ÷ 600 = 0.7. A density below 1 g/cm³ means the wood is less dense than water, which is why oak floats.",
+      },
+      {
+        question: "Aluminium has a density of 2.7 g/cm³. Calculate the mass, in grams, of a block with a volume of 50 cm³.",
+        accept: [
+          "135",
+        ],
+        answer: "135 g. Rearranging density = mass ÷ volume gives mass = density × volume = 2.7 × 50 = 135 g. Checking the units helps: g/cm³ multiplied by cm³ leaves grams.",
+      },
+      {
+        question: "A gold bar has mass 386 g and a density of 19.3 g/cm³. Calculate its volume, in cm³.",
+        accept: [
+          "20",
+        ],
+        answer: "20 cm³. Rearranging density = mass ÷ volume gives volume = mass ÷ density = 386 ÷ 19.3 = 20 cm³. Gold is extremely dense, so a large mass occupies a surprisingly small space.",
+      },
+      {
+        question: "A box exerts a force of 750 N on an area of 2.5 m². Calculate the pressure, in N/m².",
+        accept: [
+          "300",
+        ],
+        answer: "300 N/m². Pressure = force ÷ area = 750 ÷ 2.5 = 300. The unit N/m² is itself the formula written out: newtons per square metre.",
+      },
+      {
+        question: "A pressure of 40 N/m² acts over an area of 6 m². Calculate the size of the force, in N.",
+        accept: [
+          "240",
+        ],
+        answer: "240 N. Rearranging pressure = force ÷ area gives force = pressure × area = 40 × 6 = 240 N. Multiplying is correct here because the pressure acts on every square metre of the surface.",
+      },
+      {
+        question: "A force of 900 N produces a pressure of 300 N/m². Calculate the area it acts on, in m².",
+        accept: [
+          "3",
+        ],
+        answer: "3 m². Rearranging pressure = force ÷ area gives area = force ÷ pressure = 900 ÷ 300 = 3 m². Spreading the same force over a larger area always lowers the pressure.",
+      },
+      {
+        question: "Ben is paid £11.40 per hour. Calculate his pay for a shift lasting 7.5 hours, in pounds.",
+        accept: [
+          "85.50",
+          "85.5",
+        ],
+        answer: "£85.50. Pay = rate × time = 11.40 × 7.5 = 85.5, which as money is written £85.50. A rate of pay is a compound measure too, measured in pounds per hour.",
+      },
+      {
+        question: "Amira earns £216 for 18 hours of work. Calculate her hourly rate of pay, in pounds.",
+        accept: [
+          "12",
+        ],
+        answer: "£12 per hour. Divide the total pay by the number of hours: 216 ÷ 18 = 12. The unit £/hour tells you to divide pounds by hours.",
+      },
+      {
+        question: "A 750 g bag of rice costs £2.40. Calculate the price per kilogram, in pounds.",
+        accept: [
+          "3.20",
+          "3.2",
+        ],
+        answer: "£3.20 per kg. First write the mass in kilograms: 750 g = 0.75 kg. Then price per kg = 2.40 ÷ 0.75 = 3.2, written as £3.20. Dividing by 750 instead would give the price per gram, a hundred times too small.",
+      },
+      {
+        question: "A 6-pack of drinks costs £3.60 and a 10-pack of the same drinks costs £5.50. Work out the price per drink of the better value pack, in pence.",
+        accept: [
+          "55",
+          "55p",
+        ],
+        answer: "55p. Work in pence: 360 ÷ 6 = 60p per drink for the 6-pack, and 550 ÷ 10 = 55p per drink for the 10-pack. The 10-pack is cheaper per drink, so the answer is 55p. Comparing the total prices instead is meaningless because the packs hold different amounts.",
+      },
+      {
+        question: "On a distance–time graph a straight line rises from 0 km to 24 km between 10:00 and 10:40. Calculate the speed, in km/h.",
+        accept: [
+          "36",
+        ],
+        answer: "36 km/h. The gradient of a distance–time graph is the speed. The rise is 24 km and the run is 40 minutes, which is 40 ÷ 60 = 2/3 of an hour. Speed = 24 ÷ (2/3) = 36 km/h. Dividing by 40 instead would give km per minute.",
+      },
+      {
+        question: "A distance–time graph shows a walker reaching a point 5 km from home after 1 hour, resting there for 30 minutes, then walking home in 1 hour 15 minutes. Calculate the speed on the return leg, in km/h.",
+        accept: [
+          "4",
+        ],
+        answer: "4 km/h. Only the return leg matters, so ignore the rest. The walker covers 5 km in 1 hour 15 minutes, which is 1.25 hours, so speed = 5 ÷ 1.25 = 4 km/h. On the graph this is the steepness of the line coming back down to zero.",
+      },
+      {
+        question: "On a velocity–time graph a car speeds up steadily from 4 m/s to 22 m/s in 6 seconds. Calculate the acceleration, in m/s².",
+        accept: [
+          "3",
+        ],
+        answer: "3 m/s². The gradient of a velocity–time graph is the acceleration. The change in velocity is 22 − 4 = 18 m/s over 6 seconds, so 18 ÷ 6 = 3 m/s². Using 22 rather than the change of 18 is the usual slip.",
+      },
+      {
+        question: "A velocity–time graph shows a train slowing steadily from 30 m/s to 10 m/s over 20 seconds. Calculate the distance travelled in that time, in metres.",
+        accept: [
+          "400",
+        ],
+        answer: "400 m. The area under a velocity–time graph is the distance. The shape is a trapezium with parallel sides 30 and 10 and width 20, so the area is ((30 + 10) ÷ 2) × 20 = 20 × 20 = 400 m.",
+      },
+      {
+        question: "A velocity–time curve passes through 0 m/s at t = 0 s, 6 m/s at t = 2 s and 14 m/s at t = 4 s. Use two strips of width 2 seconds and the trapezium rule to estimate the distance travelled, in metres.",
+        accept: [
+          "26",
+        ],
+        answer: "An estimate of 26 m. Split the region into two trapeziums. The first has parallel sides 0 and 6 and width 2, giving ((0 + 6) ÷ 2) × 2 = 6 m. The second has parallel sides 6 and 14 and width 2, giving ((6 + 14) ÷ 2) × 2 = 20 m. The total is 6 + 20 = 26 m. Because the curve bends upwards here, the straight tops of the trapeziums sit above it and the estimate is slightly too large.",
+        higherOnly: true,
+      },
+      {
+        question: "A tap fills a 90 litre tank in 12 minutes. Calculate the rate of flow, in litres per minute.",
+        accept: [
+          "7.5",
+        ],
+        answer: "7.5 litres per minute. The unit gives the formula: litres per minute means litres divided by minutes, so 90 ÷ 12 = 7.5.",
+      },
+      {
+        question: "A material has a density of 3 g/cm³. Write this density in kg/m³.",
+        accept: [
+          "3000",
+        ],
+        answer: "3000 kg/m³. Deal with each unit in turn. There are 1 000 000 cm³ in 1 m³, so 1 m³ of the material has mass 3 × 1 000 000 = 3 000 000 g. Dividing by 1000 to convert grams to kilograms gives 3000 kg/m³. In general, multiply a density in g/cm³ by 1000 to get kg/m³.",
+      },
+      {
+        question: "A town has 84 000 residents living in an area of 24 km². Calculate the population density, in people per km².",
+        accept: [
+          "3500",
+        ],
+        answer: "3500 people per km². Population density is another compound measure, and the unit says people divided by square kilometres: 84 000 ÷ 24 = 3500.",
+      },
+      {
+        question: "A journey of 15 miles takes 20 minutes. Calculate the average speed, in miles per hour.",
+        accept: [
+          "45",
+        ],
+        answer: "45 mph. The unit is miles per hour, so the time must be in hours: 20 minutes = 1/3 of an hour. Speed = 15 ÷ (1/3) = 45 mph. A quick check is that 20 minutes fits into an hour three times, and 3 × 15 = 45 miles.",
+      },
+      {
+        question: "A runner completes a 10 km race in 50 minutes. Calculate their average speed in m/s, to 2 decimal places.",
+        accept: [
+          "3.33",
+        ],
+        answer: "3.33 m/s. Convert both quantities before dividing: 10 km = 10 000 m and 50 minutes = 50 × 60 = 3000 seconds. Speed = 10 000 ÷ 3000 = 3.333... which rounds to 3.33 m/s.",
+      },
+      {
+        question: "A car covers 120 miles in 2 hours 30 minutes. What is its average speed?",
+        choices: [
+          "48 mph",
+          "60 mph",
+          "52.2 mph",
+          "240 mph",
+        ],
+        accept: [
+          "48 mph",
+        ],
+        answer: "Write the time as 2.5 hours, then speed = 120 ÷ 2.5 = 48 mph. Typing 2.30 into a calculator gives 52.2 mph, ignoring the half hour gives 60 mph, and multiplying instead of dividing gives 240 mph.",
+      },
+      {
+        question: "A recipe uses 450 g of pasta for 3 people. How much pasta is needed for 7 people?",
+        choices: [
+          "1050 g",
+          "3150 g",
+          "1350 g",
+          "900 g",
+        ],
+        accept: [
+          "1050 g",
+        ],
+        answer: "Find the unitary rate first: 450 ÷ 3 = 150 g per person. Then 150 × 7 = 1050 g. Multiplying 450 by 7 without dividing gives 3150 g, and multiplying by 3 gives 1350 g.",
+      },
+      {
+        question: "A speed of 20 m/s is the same as:",
+        choices: [
+          "72 km/h",
+          "7.2 km/h",
+          "1200 km/h",
+          "0.02 km/h",
+        ],
+        accept: [
+          "72 km/h",
+        ],
+        answer: "In one hour the object travels 20 × 3600 = 72 000 m, and 72 000 m is 72 km, so the speed is 72 km/h. Multiplying by 60 only gives 1200, converting metres to kilometres only gives 0.02, and dividing by 3.6 instead of multiplying gives 7.2.",
+      },
+      {
+        question: "The unit N/m² shows that pressure is worked out as:",
+        choices: [
+          "Force divided by area",
+          "Force multiplied by area",
+          "Area divided by force",
+          "Mass divided by area",
+        ],
+        accept: [
+          "Force divided by area",
+        ],
+        answer: "A unit written as one thing 'per' another is a division, so newtons per square metre means newtons divided by square metres — force ÷ area. Reading the unit is the quickest way to recover any compound measure formula you have forgotten.",
+      },
+      {
+        question: "On a distance–time graph, a steeper line means that:",
+        choices: [
+          "The speed is greater",
+          "The distance is greater",
+          "The journey took longer",
+          "The object is stationary",
+        ],
+        accept: [
+          "The speed is greater",
+        ],
+        answer: "The gradient of a distance–time graph is the speed, so a steeper line means more distance is covered in each unit of time. A horizontal line has zero gradient and shows the object is stationary.",
+      },
+      {
+        question: "A horizontal line on a velocity–time graph tells you the object is:",
+        choices: [
+          "Moving at a constant speed",
+          "Stationary",
+          "Accelerating steadily",
+          "Slowing down",
+        ],
+        accept: [
+          "Moving at a constant speed",
+        ],
+        answer: "On a velocity–time graph the height is the velocity, so a horizontal line means the velocity is not changing — constant speed. A horizontal line means stationary only on a DISTANCE–time graph, and mixing the two up is the most common error in this topic.",
+      },
+      {
+        question: "Four packs of the same coffee are on sale. Pack A is 400 g for £1.60, pack B is 250 g for £1.05, pack C is 600 g for £2.52 and pack D is 1 kg for £4.30. Which pack is the best value?",
+        choices: [
+          "Pack A",
+          "Pack B",
+          "Pack C",
+          "Pack D",
+        ],
+        accept: [
+          "Pack A",
+        ],
+        answer: "Compare a common unit, such as the price per kilogram. Pack A is 1.60 ÷ 0.4 = £4.00 per kg, pack B is 1.05 ÷ 0.25 = £4.20 per kg, pack C is 2.52 ÷ 0.6 = £4.20 per kg and pack D is £4.30 per kg. Pack A is cheapest per kilogram, even though pack D costs the most in total.",
+      },
+      {
+        question: "A tap fills a bath at 12 litres per minute. How long will it take to put 180 litres into the bath?",
+        choices: [
+          "15 minutes",
+          "12 minutes",
+          "2160 minutes",
+          "168 minutes",
+        ],
+        accept: [
+          "15 minutes",
+        ],
+        answer: "Time = amount ÷ rate = 180 ÷ 12 = 15 minutes. Multiplying instead gives 2160 and subtracting gives 168, both of which fail a sense check: 15 minutes at 12 litres a minute is 180 litres.",
+      },
+      {
+        question: "A liquid has a density of 1.2 g/cm³. What is the mass of 250 cm³ of it?",
+        choices: [
+          "300 g",
+          "208.3 g",
+          "251.2 g",
+          "30 g",
+        ],
+        accept: [
+          "300 g",
+        ],
+        answer: "Mass = density × volume = 1.2 × 250 = 300 g. Dividing gives 208.3 g, adding gives 251.2 g, and slipping a decimal place gives 30 g. A density above 1 g/cm³ means the mass in grams must be larger than the volume in cm³, which rules out the last two immediately.",
+      },
+      {
+        question: "Which of these increases the pressure a person exerts on the ground?",
+        choices: [
+          "Standing on one foot instead of two",
+          "Lying down flat on the ground",
+          "Changing into much wider boots",
+          "Taking off a heavy backpack",
+        ],
+        accept: [
+          "Standing on one foot instead of two",
+        ],
+        answer: "Pressure = force ÷ area, so halving the contact area while the weight stays the same doubles the pressure. Lying down or wearing wider boots increases the area and lowers the pressure, and removing a backpack lowers the force.",
+      },
+      {
+        question: "Acceleration is found from a velocity–time graph by:",
+        choices: [
+          "Finding the gradient of the line",
+          "Finding the area under the line",
+          "Reading the value where the line crosses the vertical axis",
+          "Multiplying the velocity by the time",
+        ],
+        accept: [
+          "Finding the gradient of the line",
+        ],
+        answer: "Acceleration is the rate at which velocity changes, which is change in velocity ÷ change in time — exactly the gradient. The area under the same graph gives the distance travelled instead, so knowing which is which is worth several marks.",
+      },
+      {
+        question: "A worker is paid £9.60 an hour plus a fixed £15 bonus for each shift. What is the pay for an 8-hour shift, in pounds?",
+        choices: [
+          "91.80",
+          "76.80",
+          "196.80",
+          "120.00",
+        ],
+        accept: [
+          "91.80",
+          "91.8",
+        ],
+        answer: "Work out the hourly pay first: 9.60 × 8 = 76.80, then add the single bonus to get 76.80 + 15 = 91.80. Forgetting the bonus gives 76.80, paying the bonus for every hour gives 196.80, and using only the bonus gives 120.00.",
+      },
+      {
+        question: "Which of these journeys has the greatest average speed?",
+        choices: [
+          "30 km in 20 minutes",
+          "8 km in 6 minutes",
+          "120 km in 2 hours",
+          "50 km in 1 hour",
+        ],
+        accept: [
+          "30 km in 20 minutes",
+        ],
+        answer: "Convert each one to km/h before comparing. 30 km in 20 minutes is 90 km/h, 8 km in 6 minutes is 80 km/h, 120 km in 2 hours is 60 km/h and 50 km in 1 hour is 50 km/h. The largest distance does not win — the rate does.",
+      },
+      {
+        question: "Show that a car travelling at 30 mph is moving at about 13.4 metres per second. Use 1 mile = 1609 m.",
+        answer: "Start from the distance covered in one hour: 30 miles is 30 × 1609 = 48 270 m. One hour is 60 × 60 = 3600 seconds. Dividing gives 48 270 ÷ 3600 = 13.408... m/s, which is about 13.4 m/s as required. Setting the work out in that order — convert the distance, convert the time, then divide once — avoids the usual mistake of converting the finished speed by a single factor. A useful rough check is that miles per hour roughly halves to give metres per second. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how to find the total distance travelled from a velocity–time graph when the graph is a curve, and say why the answer can only be an estimate.",
+        answer: "The distance is the area between the curve and the time axis, but a curved edge has no area formula. Divide the region into vertical strips of equal width and treat the top of each strip as a straight line, making each strip a trapezium. Work out every trapezium area using ((a + b) ÷ 2) × width, where a and b are the two vertical sides, then add them all. The answer is only an estimate because the real top of each strip is curved, not straight: where the curve bends upwards the straight tops lie above it and the estimate is too large, and where it bends downwards the estimate is too small. Using narrower strips reduces the error. (Mark this one yourself.)",
+        higherOnly: true,
+      },
+      {
+        question: "Two shops sell the same cereal in differently sized boxes at different prices. Describe the steps you would take to decide which shop offers better value.",
+        answer: "Direct comparison of the prices is meaningless because the boxes hold different amounts, so reduce both to the same unit. Choose one unit — price per 100 g, price per kilogram, or grams per pound spent — and use it for both shops. For price per kilogram, convert each mass to kilograms and divide the price by that mass; the lower figure is better value. Alternatively divide the mass by the price to find grams per pound, in which case the higher figure wins, so it is important to state which measure you used. Work in the same currency unit throughout, and round only at the very end. (Mark this one yourself.)",
+      },
+      {
+        question: "A car's distance–time graph is a straight line for the first hour and then becomes a curve that gets steadily steeper. Describe the motion in each part of the journey.",
+        answer: "In the first hour the line is straight, so the gradient is constant and the car is travelling at a steady speed, covering equal distances in equal times. After that the graph curves and becomes steeper, so the gradient is increasing: the car covers more distance in each successive minute, meaning it is speeding up, or accelerating. To find the speed at one particular moment in the curved section you would draw a tangent to the curve at that point and work out the gradient of the tangent. The curve never turning back downwards shows the car is always moving away from the start. (Mark this one yourself.)",
+      },
+      {
+        question: "Explain how to change a density given in kg/m³ into g/cm³, and why the two numbers differ by a factor of 1000.",
+        answer: "Convert the top and the bottom of the unit separately. One kilogram is 1000 grams, so the mass figure is multiplied by 1000. One cubic metre is 100 × 100 × 100 = 1 000 000 cubic centimetres, so the volume figure is multiplied by 1 000 000. The overall effect is to multiply by 1000 and divide by 1 000 000, which is the same as dividing by 1000. So a density in kg/m³ is divided by 1000 to give g/cm³, and a density in g/cm³ is multiplied by 1000 to give kg/m³. The factor is 1000 rather than 100 because the length conversion is cubed. Water, at 1000 kg/m³, is 1 g/cm³, which is a handy check. (Mark this one yourself.)",
       },
     ],
 

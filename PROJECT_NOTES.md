@@ -1,5 +1,139 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## 1,000 new maths questions, and ten questions at a time (2026-09-25)
+
+Matthew: *"add a lot of new questions to Maths since it is necessary for this
+specific subject… add 1000 new maths questions spread out on all the different
+topics. But the proportions of each topic to questions should be reasonable…
+for algebra there is much more need for questions then geometry."* Plus a
+**"new questions" button on the revision page of each topic**.
+
+Maths goes from 722 practice questions to **1,722** — 389 multiple choice, 224
+self-marked, 220 flagged Higher tier. Every other subject is untouched.
+
+### The split, and why it is not even
+
+He is right that algebra needs more than geometry, and the reason is two
+separate things pointing the same way: algebra is a bigger share of a real
+paper (about 30% of Higher), and it is the strand where repetition actually
+works — factorising twenty quadratics makes you better at factorising, whereas
+doing twenty perpendicular-bisector constructions mostly makes you bored. So
+the weighting follows exam share AND how much a skill rewards drilling.
+
+    algebra-basics                  +90   →  128      angles-and-2d-shapes    +40 →  78
+    equations-and-inequalities      +85   →  123      similarity-congruence   +35 →  73
+    fractions-decimals-percentages  +80   →  118      circle-theorems         +32 →  70
+    quadratics-and-sequences        +80   →  118      vectors-transformations +32 →  70
+    ratio-and-proportion            +75   →  113      constructions-loci      +26 →  64
+    straight-line-graphs            +65   →  103      revision-exam-practice  +25 →  63
+    pythagoras-and-trigonometry     +55   →   93
+    indices-and-standard-form       +50   →   88      Algebra strand    320 of the 1,000
+    probability                     +50   →   88      Geometry strand   265
+    number-and-place-value          +45   →   83
+    perimeter-area-and-volume       +45   →   83
+    statistics-and-charts           +45   →   83
+    compound-measures-and-rates     +45   →   83
+
+Written by eleven parallel agents against a written brief (every rule
+`check-content.mjs` enforces, the notation conventions, the marking rule) and
+inserted with the repo's own `scripts/expand-topic.mjs`, so no agent ever
+edited the 7,000-line content file and none could collide with another.
+
+### ⚠️ HOW THEY WERE CHECKED, BECAUSE AN AGENT'S OWN REPORT IS A LEAD, NOT A VERDICT
+
+Each writer reported its own arithmetic clean. This project has recorded three
+occasions where that was not enough, so the real check is a **blind re-solve**:
+184 of the 889 new auto-marked questions — every fifth one in every topic, so
+the sample is spread rather than clustered — were handed to five fresh agents
+as question text ALONE, with no answer and no accept list, and solved from
+scratch. Their answers were then compared against the site's accept lists
+through the site's own `normalise`.
+
+**184 of 184 agreed.** Nothing in the sample is wrong.
+
+⚠️ **The automated parser that reads the sums inside model answers reported 122
+mismatches and every single one was the parser** — the fourth entry in this
+project's standing lesson. It read "3/36 = 1/12" as "3/36 = 1" (it took the
+numerator of the stated value and stopped), "−7 − 12 = −19" as "7 − 12 = −19"
+(the lookbehind ate the leading minus), "½ × 9 × 6 = 27" as "9 × 6 = 27" (the
+coefficient was not a digit), and on a chain "2⁻³ × 2⁵ = 1/8 × 32 = 4" it
+paired the wrong two sides. Rewritten to read a whole chain and require every
+side to agree, it checks 62 chains and skips 975 it cannot read without
+guessing — an honest small number, and the blind re-solve is what actually
+carries the weight here.
+
+### Six questions the blind solvers improved
+
+None was a wrong answer; all six were questions where a second right answer was
+reachable, which on a marked question is the same problem:
+
+- *"the congruence condition that uses two angles and a corresponding side"*
+  describes **AAS** exactly as well as ASA. Now "the side between them".
+- *"Two consecutive whole numbers multiply to give 156"* — −13 and −12 do too.
+  Now "consecutive positive whole numbers".
+- A transformations option read *"At the origin"*, which is true whenever the
+  point started there. Replaced with adding the magnitudes, a real slip.
+- *"hypotenuse 13 cm and an opposite side of 5 cm, calculate the angle"* never
+  said which angle: 22.6° and 67.4° both answer it.
+- *"the best estimate of 59.4 × 0.412"* — the distractor 59 × 0.41 is genuinely
+  closer than the intended 60 × 0.4. Now asks which rounds to 1 s.f.
+- *"the perimeter of a semicircle"* is a standing ambiguity. Now says
+  "including the straight edge".
+
+Five money answers also gained the short form, so `2.4` is accepted alongside
+`2.40` — the same number, so the accept-list rule is untouched, and a student
+who leaves off a trailing zero has not made a mistake.
+
+### "New questions" — ten at a time
+
+Every practice question in a topic used to be on screen at once. Fine at 18,
+awkward at 38, and impossible at 128: a page that opens with a hundred
+questions is a page nobody starts. So `Practice.tsx` deals the pool out in sets
+of ten and the button moves to the next set, wrapping at the end. Every topic
+on the site gets it, not just maths.
+
+Three decisions inside that:
+
+- ⚠️ **The next set, not a random one.** Ten at random each press would hand
+  back questions already seen while others were never shown at all. Walking the
+  pool in order means the button always delivers something genuinely new until
+  the whole topic has been offered. The browser test asserts exactly this: 13
+  presses on algebra-basics show all 128 questions with no repeat.
+- ⚠️ **The order is shuffled once, seeded by the topic's name.** Questions are
+  written in blocks — ten on simplifying, then ten on factorising — so ten
+  CONSECUTIVE questions would be ten of the same thing, and blocked practice is
+  measurably worse for retention than mixing skills. Seeding from the topic
+  name rather than the clock is what keeps the server's HTML and the browser's
+  first render identical (the hydration bug `shuffleWithSeed` exists for).
+- ⚠️ **State is still keyed by a question's position in the FULL pool**, never
+  by where it sits on screen. The flashcard deck once counted a card by its
+  SLOT and Shuffle moving a card into a used slot made it stop counting.
+  Identity belongs to the question.
+
+Which set you are on is remembered on this device, beside the saved answers —
+coming back to a topic and being dropped at set 1 with every question already
+ticked is the whole reason it is stored. The score line now counts the ten on
+screen; "3 out of 214 marks" would be true, useless and quietly demoralising.
+The whole-topic figure moved to the line under the button.
+
+**Verified:** `npm run check` fully green — 188,027 content, 1,239,302
+geometry, 1,450 security, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge and 25,300
+game-question checks, tsc and eslint clean. Plus **41 browser checks** on the
+button (ten shown, numbering restarting at 1, all 13 sets distinct, wrap-around,
+the set surviving a reload, a typed answer surviving a trip round the whole
+pool, the score scoped to the set, 44px tap target and no overflow at 320px,
+zero console errors) and a smoke test on biology, English and computer science
+so the change is known to hold outside maths.
+
+**A side effect worth knowing:** the alien game's question pool grew with it —
+1,820 written multiple-choice questions and 1,771 built from numeric answers,
+up from 1,531 and 1,357. The repeats Matthew hit in the game get rarer again.
+
+**Not done:** nobody has had a maths teacher read the new questions, which is
+the same standing risk the rest of the site carries.
+
+
 ## The game after Matthew played it: free aim, a knife, cleverer aliens, stashes, full screen, jumping (2026-09-22, evening)
 
 Matthew finished all three levels — "about 7 minutes fast, 15 if I tried to
