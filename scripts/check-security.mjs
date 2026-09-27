@@ -1324,6 +1324,132 @@ try {
     expect(clientImportsQuestions.length === 0, `the game question builder is imported by a client file: ${clientImportsQuestions.join(", ")}`);
   }
 
+  // ── The search index does not go stale ────────────────────────────────────
+  //
+  // lib/siteSearch.ts is a HAND-WRITTEN list of the site's pages, which is the
+  // one kind of list this codebase normally refuses to keep (see the file's own
+  // header for why it has to be one here). A hand-written list of routes rots
+  // in two directions: an entry can point at a page that no longer exists, and
+  // a page can be added that nobody ever adds to the list. Both are silent —
+  // the search box simply never mentions the new feature, which is exactly the
+  // problem it was widened to fix.
+  console.log("Checking the search index against the real routes...");
+  {
+    execFileSync(process.execPath, [
+      TSC, "app/lib/siteSearch.ts",
+      "--outDir", out, "--module", "commonjs", "--target", "es2022",
+      "--moduleResolution", "node", "--skipLibCheck",
+    ], { stdio: "pipe" });
+    const siteSearch = require(join(out, "siteSearch.js"));
+    const { SEARCHABLE_PAGE_HREFS, searchSite, suggestions, SEARCH_INDEX } = siteSearch;
+
+    // Every route the app has, dynamic segments included.
+    //
+    // ⚠️ THE FIRST VERSION OF THIS CHECK THREW THE DYNAMIC ROUTES AWAY and then
+    // reported all sixty per-subject entries as pointing at pages that do not
+    // exist. /subjects/maths/exam is served by app/subjects/[subject]/exam —
+    // a real page, reached through a variable segment. A checker that cannot
+    // read the router's own convention will confidently fail correct code.
+    const allRoutes = listFiles("app")
+      .filter((f) => f.endsWith("page.tsx"))
+      .map((f) => "/" + f.replace(/^app[/\\]?/, "").replace(/[/\\]?page\.tsx$/, "").replace(/\\/g, "/"))
+      .map((r) => (r === "/" ? "/" : r.replace(/\/$/, "")))
+      .map((r) => (r === "" ? "/" : r));
+    const staticRoutes = allRoutes.filter((r) => !r.includes("["));
+    const routeMatchers = allRoutes.map(
+      (r) => new RegExp("^" + r.replace(/\[[^\]]+\]/g, "[^/]+") + "$"),
+    );
+    const isRealRoute = (href) => routeMatchers.some((re) => re.test(href));
+
+    // Pages left out on purpose. Each needs a reason, because "we forgot" and
+    // "we decided" look identical in a list of omissions.
+    const EXEMPT = {
+      "/early-access": "the gated developer preview — listing a hidden page advertises it, the same reason it is not in robots.ts",
+      "/early-access/play": "same gate as above",
+      "/admin/reports": "404s for everyone but the site owner; searchable would confirm it exists",
+      "/forgot-password": "reached from the login page at the moment it is needed, and not somewhere to browse to",
+      "/reset-password": "its URL carries a live token; there is nothing to search for",
+      "/pro-preview/custom-test": "an unfinished preview, not a feature yet",
+      "/pro-preview/planner": "an unfinished preview, not a feature yet",
+      "/pro-preview/wardrobe": "an unfinished preview, not a feature yet",
+      "/quiz/host": "not a page of its own",
+    };
+
+    for (const href of SEARCHABLE_PAGE_HREFS) {
+      expect(isRealRoute(href), `search offers ${href}, which is not a real route`);
+    }
+    for (const route of staticRoutes) {
+      expect(
+        SEARCHABLE_PAGE_HREFS.includes(route) || route in EXEMPT,
+        `the page ${route} is not searchable and is not on the deliberately-left-out list in check-security.mjs`,
+      );
+    }
+    expect(!SEARCHABLE_PAGE_HREFS.includes("/early-access"), "the developer preview is not searchable");
+
+    // ⚠️ THE FOUNDING CASE, ASSERTED DIRECTLY. Matthew asked for exactly this
+    // sentence: "if you write teacher tools, it gives you the teacher tools".
+    // A scoring change that quietly buries it under fifteen subject pages
+    // would pass every structural check above.
+    const tt = searchSite("teacher tools", false);
+    expect(tt.pages[0]?.href === "/teacher-tools",
+      `searching "teacher tools" gives ${tt.pages[0]?.href ?? "nothing"} first`);
+    for (const [query, href] of [
+      ["wardrobe", "/wardrobe"], ["clans", "/clans"], ["live quiz", "/quiz"],
+      ["accessibility", "/accessibility"], ["exam board", "/exam-board"],
+      ["progress", "/progress"], ["maths test", "/subjects/maths/exam"],
+      ["physics past paper", "/subjects/physics/past-paper"],
+      ["today", "/today"], ["diagrams", "/teacher-tools/diagrams"],
+      ["wardrobe", "/wardrobe"], ["xp", "/progress"], ["kahoot", "/quiz"],
+      ["dyslexia", "/accessibility"], ["aqa", "/exam-board"],
+      ["lesson plan", "/teacher-tools/questions"], ["outfits", "/wardrobe"],
+    ]) {
+      expect(searchSite(query, true).pages[0]?.href === href,
+        `searching "${query}" gives ${searchSite(query, true).pages[0]?.href ?? "nothing"} first, not ${href}`);
+    }
+
+    // ⚠️ A REAL BUG THE BROWSER RUN FOUND: searching "wardrobe" returned THE
+    // FIRST WORLD WAR, because the plural-tolerant word match let a typed word
+    // match any word it merely STARTED WITH, and "wardrobe" starts with "war".
+    for (const [query, mustNotBe] of [["wardrobe", "war"], ["classroom", "class"], ["password", "pass"]]) {
+      const hit = searchSite(query, true);
+      const all = [...hit.pages, ...hit.topics];
+      expect(!all.some((r) => r.title.toLowerCase().split(/[^a-z]+/).includes(mustNotBe)),
+        `searching "${query}" matches something only because it contains "${mustNotBe}"`);
+    }
+
+    // Topics still win when a topic is what was typed.
+    const ct = searchSite("circle theorems", true);
+    expect(ct.topics[0]?.href === "/subjects/maths/circle-theorems",
+      "searching a topic name no longer finds the topic first");
+
+    // A result nobody can open is worse than no result.
+    for (const query of ["wardrobe", "progress", "today", "account", "statistics", "host"]) {
+      const offered = searchSite(query, false);
+      const locked = [...offered.pages, ...offered.topics].filter((r) => r.needsAccount);
+      expect(locked.length === 0,
+        `a logged-out visitor searching "${query}" is offered ${locked.map((l) => l.href).join(", ")}`);
+    }
+    expect(suggestions(false).every((s) => !s.needsAccount),
+      "the empty-box suggestions include a page a logged-out visitor cannot open");
+    expect(suggestions(false).length > 0 && suggestions(true).length > 0,
+      "the search box offers nothing before anything is typed");
+
+    // Logging in should not still be offered to somebody already logged in.
+    expect(searchSite("log in", true).pages.every((p) => p.href !== "/login"),
+      "a logged-in visitor is still offered the login page");
+    expect(searchSite("log in", false).pages.some((p) => p.href === "/login"),
+      "a logged-out visitor cannot find the login page");
+
+    // Nothing in the index is unreachable or unlabelled.
+    for (const entry of SEARCH_INDEX) {
+      expect(entry.title.trim().length > 0 && entry.detail.trim().length > 0,
+        `a search entry for ${entry.href} has no title or no detail line`);
+      expect(entry.href.startsWith("/"), `a search entry points at ${entry.href}`);
+    }
+    const hrefs = SEARCH_INDEX.map((e) => e.href);
+    expect(new Set(hrefs).size === hrefs.length, "two search entries point at the same page");
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

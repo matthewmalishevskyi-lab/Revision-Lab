@@ -152,11 +152,16 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
           <span className="hidden @2xl:inline">Join quiz</span>
         </Link>
 
-        {/* Finding a topic by typing beats clicking through a subject page to
-            find it, once there are this many topics on the site. Sits next to
-            Home because both are "get me somewhere", unlike the account
-            links after it. */}
-        <SearchBox />
+        {/* Typing where you want to go beats clicking through to find it, once
+            there are this many topics AND this many features on the site. Sits
+            next to Home because both are "get me somewhere", unlike the
+            account links after it.
+
+            `signedIn` is passed so the results can leave out the pages that
+            would only bounce a logged-out visitor to the login screen — the
+            wardrobe, today's practice, your own statistics. A search result
+            that cannot be opened is worse than no result. */}
+        <SearchBox signedIn={Boolean(user)} />
 
         {/* The one button in this row that changes something in the browser
             rather than navigating anywhere, which is why it's a small Client

@@ -4,81 +4,44 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { iconChipClasses } from "./chipStyles";
 import { Icon } from "./Icon";
-import { SUBJECTS, getGroup, type IconName } from "../lib/subjects";
+import {
+  searchSite,
+  suggestions,
+  type SearchResult,
+} from "../lib/siteSearch";
 
-// Jump straight to a topic by typing its name, instead of clicking through a
-// subject page to find it. Useful the moment there are more than a handful of
-// topics on the site — which there now are.
+// Jump straight to anywhere on the site by typing its name, instead of
+// clicking through to find it.
 //
-// The searchable list is built ONCE, outside the component, from SUBJECTS —
-// the same single source of truth every other page reads from. Nothing here
-// is hand-typed, so a new topic added to subjects.ts is searchable
-// automatically, the same guarantee the rest of the site already relies on.
+// ⚠️ IT USED TO FIND TOPICS AND NOTHING ELSE, which quietly made every feature
+// that is not a topic harder to reach than it should be. Matthew: *"you can
+// search up the different buttons. And not just the topics. For example, if
+// you write teacher tools, it gives you the teacher tools."* Teacher tools,
+// the live quiz, clans, the wardrobe, today's practice, the accessibility
+// settings — each is reached from a button on exactly one page, and on a phone
+// most of those buttons are inside a menu. If you did not already know where a
+// thing lived, search could not tell you.
 //
-// SUBJECTS is safe to import into a Client Component: unlike progress.ts or
-// viewer.ts, subjects.ts never touches cookies, the database or any other
-// server-only API. It's just data.
+// The index itself lives in lib/siteSearch.ts, which is plain data with no
+// server-only imports — see that file for what is in it, and for why
+// /early-access deliberately is not.
 
-type SearchEntry = {
-  subjectSlug: string;
-  // What shows under the topic title. For a topic inside a group (Languages,
-  // Science) this is "Languages · Spanish" rather than just "Spanish", so a
-  // result makes sense on its own without already knowing the site's
-  // grouping.
-  subjectLabel: string;
-  topicSlug: string;
-  topicTitle: string;
-  icon: IconName;
-};
-
-const SEARCH_INDEX: SearchEntry[] = SUBJECTS.flatMap((subject) => {
-  const group = subject.group ? getGroup(subject.group) : undefined;
-  const subjectLabel = group ? `${group.name} · ${subject.name}` : subject.name;
-
-  return subject.years.flatMap((yearGroup) =>
-    yearGroup.topics.map((topic) => ({
-      subjectSlug: subject.slug,
-      subjectLabel,
-      topicSlug: topic.slug,
-      topicTitle: topic.title,
-      icon: topic.icon,
-    })),
-  );
-});
-
-// How many results to show at once. Beyond this, typing one more letter is
-// faster than scrolling a long list — so the list narrows instead of growing.
-const MAX_RESULTS = 8;
-
-function search(query: string): SearchEntry[] {
-  const q = query.trim().toLowerCase();
-  if (!q) return [];
-
-  // Topic-title matches are what someone is almost always looking for, so
-  // they're listed first; a match only in the subject name ("show me
-  // everything in maths") comes after.
-  const titleMatches: SearchEntry[] = [];
-  const subjectOnlyMatches: SearchEntry[] = [];
-
-  for (const entry of SEARCH_INDEX) {
-    if (entry.topicTitle.toLowerCase().includes(q)) {
-      titleMatches.push(entry);
-    } else if (entry.subjectLabel.toLowerCase().includes(q)) {
-      subjectOnlyMatches.push(entry);
-    }
-  }
-
-  return [...titleMatches, ...subjectOnlyMatches].slice(0, MAX_RESULTS);
-}
-
-export function SearchBox() {
+export function SearchBox({ signedIn = false }: { signedIn?: boolean }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const results = search(query);
+  const typed = query.trim() !== "";
+  const { pages, topics } = searchSite(query, signedIn);
+  // Before anything is typed, offer a few places rather than an empty panel —
+  // a search box that shows nothing until you guess a word cannot teach you
+  // what it now knows about.
+  const offered = typed ? [] : suggestions(signedIn);
+  // One flat list for the keyboard, so Up/Down walks the sections in the order
+  // they appear rather than treating them as two separate lists.
+  const results: SearchResult[] = typed ? [...pages, ...topics] : offered;
 
   function open() {
     setIsOpen(true);
@@ -90,8 +53,8 @@ export function SearchBox() {
     setIsOpen(false);
   }
 
-  function goToTopic(entry: SearchEntry) {
-    router.push(`/subjects/${entry.subjectSlug}/${entry.topicSlug}`);
+  function go(entry: SearchResult) {
+    router.push(entry.href);
     close();
   }
 
@@ -140,7 +103,7 @@ export function SearchBox() {
     } else if (event.key === "Enter") {
       event.preventDefault();
       const entry = results[selectedIndex];
-      if (entry) goToTopic(entry);
+      if (entry) go(entry);
     }
   }
 
@@ -186,49 +149,104 @@ export function SearchBox() {
                   setSelectedIndex(0);
                 }}
                 onKeyDown={handleInputKeyDown}
-                placeholder="Search for a topic…"
+                placeholder="Search topics, tools and settings…"
                 className="w-full bg-transparent text-lg outline-none placeholder:opacity-50"
               />
             </div>
 
-            {query.trim() !== "" && (
-              <ul className="mt-2 max-h-96 overflow-y-auto">
-                {results.length === 0 ? (
-                  <li className="px-3.5 py-3 text-base opacity-60">
-                    No topics found for “{query}”.
-                  </li>
-                ) : (
-                  results.map((entry, index) => (
-                    <li key={`${entry.subjectSlug}-${entry.topicSlug}`}>
-                      <button
-                        type="button"
-                        onClick={() => goToTopic(entry)}
-                        onMouseEnter={() => setSelectedIndex(index)}
-                        className={`flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-left transition ${
-                          index === selectedIndex
-                            ? "bg-black/5 dark:bg-white/10"
-                            : ""
-                        }`}
-                      >
-                        <Icon name={entry.icon} className="h-5 w-5 shrink-0 opacity-70" />
-                        <span>
-                          <span className="block text-base font-medium">
-                            {entry.topicTitle}
-                          </span>
-                          <span className="block text-sm opacity-60">
-                            {entry.subjectLabel}
-                          </span>
-                        </span>
-                      </button>
-                    </li>
-                  ))
-                )}
-              </ul>
-            )}
+            <ul className="mt-2 max-h-96 overflow-y-auto">
+              {!typed && offered.length > 0 && <SectionHeading>Jump to</SectionHeading>}
+              {!typed &&
+                offered.map((entry, index) => (
+                  <ResultRow
+                    key={entry.href}
+                    entry={entry}
+                    selected={index === selectedIndex}
+                    onSelect={() => setSelectedIndex(index)}
+                    onGo={() => go(entry)}
+                  />
+                ))}
+
+              {typed && results.length === 0 && (
+                <li className="px-3.5 py-3 text-base opacity-60">
+                  Nothing on the site matches “{query}”.
+                </li>
+              )}
+
+              {typed && pages.length > 0 && <SectionHeading>Pages</SectionHeading>}
+              {typed &&
+                pages.map((entry, index) => (
+                  <ResultRow
+                    key={entry.href}
+                    entry={entry}
+                    selected={index === selectedIndex}
+                    onSelect={() => setSelectedIndex(index)}
+                    onGo={() => go(entry)}
+                  />
+                ))}
+
+              {typed && topics.length > 0 && <SectionHeading>Topics</SectionHeading>}
+              {typed &&
+                topics.map((entry, index) => {
+                  // Continues the numbering from the pages above it: the
+                  // keyboard walks one list, even though the eye sees two.
+                  const flat = pages.length + index;
+                  return (
+                    <ResultRow
+                      key={entry.href}
+                      entry={entry}
+                      selected={flat === selectedIndex}
+                      onSelect={() => setSelectedIndex(flat)}
+                      onGo={() => go(entry)}
+                    />
+                  );
+                })}
+            </ul>
           </div>
         </div>
       )}
     </>
+  );
+}
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <li
+      // Presentational: a screen reader should hear the results, not a word
+      // that only exists to break them into two visual groups.
+      aria-hidden="true"
+      className="px-3.5 pb-1 pt-2.5 text-xs font-semibold uppercase tracking-wider opacity-45"
+    >
+      {children}
+    </li>
+  );
+}
+
+function ResultRow({
+  entry, selected, onSelect, onGo,
+}: {
+  entry: SearchResult;
+  selected: boolean;
+  onSelect: () => void;
+  onGo: () => void;
+}) {
+  return (
+    <li>
+      <button
+        type="button"
+        onClick={onGo}
+        onMouseEnter={onSelect}
+        className={`flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-left transition ${
+          selected ? "bg-black/5 dark:bg-white/10" : ""
+        }`}
+      >
+        <Icon name={entry.icon} className="h-5 w-5 shrink-0 opacity-70" />
+        <span className="min-w-0">
+          <span className="block text-base font-medium">{entry.title}</span>
+          <span className="block truncate text-sm opacity-60">{entry.detail}</span>
+        </span>
+      </button>
+    </li>
   );
 }
 

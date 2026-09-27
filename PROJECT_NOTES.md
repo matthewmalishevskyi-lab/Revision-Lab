@@ -1,5 +1,113 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Search finds the whole site now, not just topics (2026-09-27)
+
+Matthew: *"modify the search bar a bit. So you can search up the different
+buttons. And not just the topics. For example, if you write teacher tools, it
+gives you the teacher tools."*
+
+He is describing a real problem with how this site has grown. Teacher tools,
+the live quiz, clans, the wardrobe, today's practice, the accessibility
+settings, the exam-board picker — each is reached from a button on exactly one
+page, and on a phone most of those buttons live inside a menu. Search knew
+about 285 topics and nothing else, so if you did not already know where a
+feature lived, nothing could tell you.
+
+### What is searchable now
+
+`app/lib/siteSearch.ts` holds one index of three kinds of thing:
+
+- **21 hand-written pages** — the tools, the settings, the account pages.
+- **62 per-subject destinations**, derived from SUBJECTS: every subject page,
+  plus its test, its past paper and its statistics. "maths test" and "physics
+  past paper" were three clicks deep with no way to search for them.
+- **285 topics**, exactly as before.
+
+Results come back in two labelled groups, Pages then Topics, up to eight in
+total, and whichever group has nothing to show gives its room to the other.
+They are kept apart rather than merged because they are different KINDS of
+answer — "take me to the wardrobe" and "teach me circle theorems" are not
+competing for one slot, and a merged list makes the one you wanted depend on a
+scoring tie-break nobody can see.
+
+Typing nothing now offers four places instead of an empty panel. A search box
+that shows nothing until you guess a word cannot teach you what it knows.
+
+### ⚠️ Three things that needed deciding rather than coding
+
+**The page list is hand-written, and that is a real exception.** This codebase
+normally refuses hand-written lists — teacher-tools.ts derives which topics
+have diagrams rather than listing them, for the standard reason. Topics can be
+derived because SUBJECTS already exists. There is no equivalent source for
+"what a page is FOR": a route folder knows a path, and a result reading
+`/teacher-tools/questions` would be worse than no result. Somebody has to write
+the sentence. What stops it rotting is a check (below) rather than discipline.
+
+**`keywords` matter more than they look.** People search for what a thing
+DOES, not what this site decided to call it: "kahoot" for the live quiz,
+"dyslexia" for the accessibility settings, "aqa" for the exam board, "xp" for
+the progress page, "outfits" for the wardrobe. A search that only matches our
+own vocabulary only helps people who already know it.
+
+**⚠️ /early-access is deliberately NOT searchable.** It is the developer
+preview behind a code, and it is kept out of robots.ts for exactly the same
+reason — listing a hidden page advertises it. Search is a list a visitor reads,
+so putting it there would undo the gate.
+
+Pages that need an account are hidden from anyone logged out, and the login and
+register pages are hidden from anyone logged in. `SiteHeader` passes
+`signedIn`. A result that cannot be opened is worse than no result.
+
+### The check that stops the list going stale
+
+check-security.mjs (2,334 now) walks every `page.tsx` in the app and fails if a
+route is neither searchable nor on a short list of deliberate omissions, each
+with a written reason — the early-access pages, `/admin/reports` (searchable
+would confirm it exists), the reset and forgot-password pages, the three
+unfinished pro-previews. It also fails if the index points at a route that does
+not exist, and it asserts the founding case directly: **searching "teacher
+tools" must return teacher tools first.** A scoring change that buried it under
+fifteen subject pages would pass every structural check.
+
+⚠️ **The first version of that check threw the dynamic routes away** and then
+reported all sixty per-subject entries as pointing at pages that do not exist.
+`/subjects/maths/exam` is served by `app/subjects/[subject]/exam` — a real page,
+reached through a variable segment. A checker that cannot read the router's own
+convention will confidently fail correct code.
+
+⚠️ **And `SEARCHABLE_PAGE_HREFS` was built from the wrong half of the index**,
+so the check reported `/subjects/science` and `/subjects/languages` as missing
+when they were in fact there — a check lying about the thing it guards, which
+this file has now recorded more than once.
+
+### ⚠️ Searching "wardrobe" returned THE FIRST WORLD WAR
+
+Found by driving it in a browser, not by reading it. Ranking tolerates plurals,
+because people type them: a typed word matches an indexed word if either starts
+with the other. With only a three-letter floor on the reverse direction,
+"wardrobe" starts with "war" — so a history topic answered a query about
+Pixel's outfits. The reverse direction exists for a plural or a short suffix
+and nothing more, so the typed word may now be at most two characters longer
+than the word it matches. "diagrams" still finds "diagram"; "wardrobe" no
+longer finds "war". Regression checks cover wardrobe/war, classroom/class and
+password/pass.
+
+⚠️ Before that, **searching the plural of a page's own name ranked it no higher
+than every page that merely mentions the word** — "diagrams" put Teacher tools
+above the Diagram library, on a tie. That is what the bidirectional match was
+added for in the first place.
+
+**Verified:** `npm run check` fully green — 188,027 content, 1,239,302
+geometry, **2,334 security**, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge and 25,272
+game-question checks, tsc and eslint clean. Plus **33 browser checks**: the "/"
+shortcut, the suggestions before typing, fourteen queries landing on the right
+page, topics still winning when a topic is typed, Enter and the arrow keys
+walking both sections as one list, no account-only page offered to a logged-out
+visitor, the empty-result message, no overflow at 320px and a 44px row on a
+phone, zero console errors.
+
+
 ## 1,000 new maths questions, and ten questions at a time (2026-09-25)
 
 Matthew: *"add a lot of new questions to Maths since it is necessary for this
