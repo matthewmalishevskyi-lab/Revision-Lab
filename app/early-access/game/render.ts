@@ -11,7 +11,14 @@ import type { Sprite } from "./sprites";
 import type { Tex, TexSet } from "./textures";
 import { COVER_H, FACE, LIGHT_SUB, ROOM_H, type World } from "./world";
 
-export type Drawable = { x: number; y: number; z?: number; sprite: string; alpha?: number };
+export type Drawable = {
+  x: number; y: number; z?: number; sprite: string;
+  /** Multiplies the sprite's world height, so one puff can grow into a fireball. */
+  scale?: number;
+  /** 0-1. Below 1 the sprite is blended over what is already there AND does not
+   *  write depth — an explosion's glow should light things up, not hide them. */
+  alpha?: number;
+};
 
 const FOG_R = 12, FOG_G = 26, FOG_B = 48; // distance fades into a deep blue haze, not black
 const T = 128, T1 = 127;
@@ -24,14 +31,21 @@ export function makeRenderer(W: number, H: number) {
   const centreDepth = { value: 1e9 }; // how far the wall under the crosshair is
 
   // Colour one pixel: texture x light, glowing texels stay lit, far away fades to navy.
-  function shade(p: number, t: Tex | Sprite, ti: number, sr: number, sg: number, sb: number, dist: number) {
+  function shade(p: number, t: Tex | Sprite, ti: number, sr: number, sg: number, sb: number, dist: number, alpha = 1) {
     const gl = t.glow[ti] * (1 / 255);
     const fog = dist < 3 ? 0 : dist > 19 ? 1 : (dist - 3) / 16;
     const keep = 1 - fog * (1 - gl * 0.7), add = fog * (1 - gl * 0.7);
     const o = p << 2;
-    px[o] = t.base[ti] * (sr + (1.25 - sr) * gl) * keep + FOG_R * add;
-    px[o + 1] = t.base[ti + 1] * (sg + (1.25 - sg) * gl) * keep + FOG_G * add;
-    px[o + 2] = t.base[ti + 2] * (sb + (1.25 - sb) * gl) * keep + FOG_B * add;
+    const r = t.base[ti] * (sr + (1.25 - sr) * gl) * keep + FOG_R * add;
+    const g = t.base[ti + 1] * (sg + (1.25 - sg) * gl) * keep + FOG_G * add;
+    const b = t.base[ti + 2] * (sb + (1.25 - sb) * gl) * keep + FOG_B * add;
+    // `alpha` is what makes a muzzle flash or an explosion fade out rather than
+    // vanish between one frame and the next. The sprite's own per-texel alpha
+    // still decides its SHAPE (checked by the caller); this fades the whole
+    // thing evenly on top of it.
+    if (alpha >= 1) { px[o] = r; px[o + 1] = g; px[o + 2] = b; return; }
+    const k = 1 - alpha;
+    px[o] = px[o] * k + r * alpha; px[o + 1] = px[o + 1] * k + g * alpha; px[o + 2] = px[o + 2] * k + b * alpha;
   }
 
   let lastHorizon = H / 2;
@@ -185,20 +199,26 @@ export function makeRenderer(W: number, H: number) {
       const tX = inv * (dy * rx - dx * ry), tY = inv * (-ply * rx + plx * ry);
       if (tY <= 0.1) continue;
       const screenX = (W / 2) * (1 + tX / tY);
-      const rows = sp.bottom + 1, hPix = (sp.height * proj) / tY, wPix = (hPix * sp.w) / rows;
+      const scale = s.scale ?? 1;
+      const rows = sp.bottom + 1, hPix = (sp.height * scale * proj) / tY, wPix = (hPix * sp.w) / rows;
       const yBottom = horizon + ((EYE - (s.z || 0)) * proj) / tY, yTopS = yBottom - hPix;
       const x0 = Math.max(0, Math.floor(screenX - wPix / 2)), x1 = Math.min(W - 1, Math.floor(screenX + wPix / 2));
       const cxi = Math.min(w.W - 1, Math.max(0, Math.floor(s.x))), cyi = Math.min(w.H - 1, Math.max(0, Math.floor(s.y)));
       const li = (cyi * WW + cxi) * 3, k = 1 / (1 + tY * tY * 0.004);
       const sr = w.light[li] * k, sg = w.light[li + 1] * k, sb = w.light[li + 2] * k;
-      const minA = s.sprite === "bolt" ? 30 : 128;
+      const alpha = s.alpha ?? 1;
+      if (alpha <= 0.02) continue;
+      const minA = s.sprite === "bolt" || alpha < 1 ? 30 : 128;
       for (let x = x0; x <= x1; x++) {
         const u = Math.floor(((x - (screenX - wPix / 2)) / wPix) * sp.w); if (u < 0 || u >= sp.w) continue;
         for (let y = Math.max(0, Math.floor(yTopS)); y < Math.min(H, Math.ceil(yBottom)); y++) {
           const p = y * W + x; if (depth[p] < tY) continue;
           const v = Math.floor(((y - yTopS) / hPix) * rows); if (v < 0 || v >= sp.h) continue;
           const ti = (v * sp.w + u) << 2; if (sp.base[ti + 3] < minA) continue;
-          shade(p, sp, ti, sr, sg, sb, tY); depth[p] = tY;
+          // a see-through effect fades the texel's own alpha in too, so the
+          // edge of a fireball is soft rather than a hard cut-out
+          shade(p, sp, ti, sr, sg, sb, tY, alpha < 1 ? alpha * (sp.base[ti + 3] / 255) : 1);
+          if (alpha >= 1) depth[p] = tY;
         }
       }
     }

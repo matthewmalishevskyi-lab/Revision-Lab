@@ -1450,6 +1450,89 @@ try {
     expect(new Set(hrefs).size === hrefs.length, "two search entries point at the same page");
   }
 
+  // ── The game's comms messages fit on the comms panel ──────────────────────
+  //
+  // ⚠️ A message longer than the panel is not clipped visibly — it is simply
+  // never finished. hud.ts wraps the mascot's line at 360px and then takes the
+  // FIRST FOUR lines (drawComms), so the end of a long hint silently does not
+  // exist, and the one place that would tell you is a screenshot nobody takes.
+  // Caught exactly that way: level 4's intro ended mid-word at "until yo".
+  //
+  // The width is worked out the way a canvas would, without a canvas: per
+  // character at bold 18px system-ui. ⚠️ The first version's advances were 20%
+  // too NARROW, which is the useless direction — it would have waved through a
+  // message that really needed five lines. Checked against a real canvas over
+  // every message in the game (37 of them): these advances are never under the
+  // real width and at worst count one line too many, so the check can nag but
+  // cannot miss.
+  console.log("Checking the alien game's comms messages fit...");
+  {
+    execFileSync(process.execPath, [
+      TSC, "app/early-access/game/levels.ts",
+      "--outDir", out, "--module", "commonjs", "--target", "es2022",
+      "--moduleResolution", "node", "--skipLibCheck",
+    ], { stdio: "pipe" });
+    const { LEVELS } = require(join(out, "levels.js"));
+    // rough advance widths at bold 18px system-ui, as a fraction of the size
+    const WIDE = "MWQ@%", NARROW = "iljt.,'’!|: ";
+    const textWidth = (s) => [...s].reduce((w, c) => w + 18 * (WIDE.includes(c) ? 1.13 : NARROW.includes(c) ? 0.39 : c === c.toUpperCase() && c !== c.toLowerCase() ? 0.84 : 0.69), 0);
+    const linesNeeded = (text) => {
+      let lines = 1, line = "";
+      for (const word of text.split(" ")) {
+        const next = line ? `${line} ${word}` : word;
+        if (textWidth(next) > 360 && line) { lines++; line = word; } else line = next;
+      }
+      return lines;
+    };
+    let messages = 0;
+    for (const level of LEVELS) {
+      const all = [["INTRO", level.INTRO], ["LOCKED_HINT", level.LOCKED_HINT], ...Object.entries(level.HINTS ?? {})];
+      for (const [where, text] of all) {
+        if (!text) continue;
+        messages++;
+        expect(linesNeeded(text) <= 4,
+          `${level.TITLE}: the "${where}" comms message needs ${linesNeeded(text)} lines and only four are ever drawn — "${text.slice(0, 48)}…"`);
+      }
+    }
+    expect(messages > 20, `only ${messages} comms messages were checked, so the check is looking in the wrong place`);
+
+    // ⚠️ Every `t` a level places must be something game.ts actually does
+    // something with. A typo'd pickup is the worst kind of content bug here:
+    // it draws nothing, picks up as nothing and throws no error, so the level
+    // looks finished and one item in it silently does not exist.
+    const game = readFileSync("app/early-access/game/game.ts", "utf8");
+    const handled = new Set(["alien", "alienBack", ...[...game.matchAll(/k\.t === "([a-z]+)"/g)].map((m) => m[1]),
+      ...(/const DECOR = new Set\(\[([^\]]*)\]\)/.exec(game)?.[1] ?? "").match(/"([a-z]+)"/g)?.map((s) => s.slice(1, -1)) ?? []]);
+    expect(handled.has("grenade") && handled.has("lamp") && handled.size > 8,
+      `the sprite-type list read out of game.ts looks wrong (${[...handled].join(", ")})`);
+    for (const level of LEVELS) {
+      for (const s of new Set(level.SPRITES.map((t) => t.t))) {
+        expect(handled.has(s), `${level.TITLE} places a "${s}", which game.ts does nothing with`);
+      }
+    }
+
+    // Grenades belong to the deck that has them. Matthew: "add granates in the
+    // storage level that is new, not everywhere." Both halves matter — a deck
+    // with no grenades must not offer the key, and a deck with grenades must.
+    const controls = /if \(this\.mode === "title"\) drawScreen\(o, def\.TITLE, \[([\s\S]*?)\], "Click to start"\)/.exec(game)?.[1] ?? "";
+    expect(/this\.hasNades \? " · G: throw a grenade"/.test(controls),
+      "the game's controls card offers G on every level rather than only where grenades exist");
+    expect(/hasGrenades\(LEVELS\[start\]\)/.test(game),
+      "jumping ahead hands out a grenade by level number rather than by whether that level has any");
+    const nadeLevels = LEVELS.filter((l) => l.SPRITES.some((s) => s.t === "grenade"));
+    expect(nadeLevels.length >= 1, "no level has any grenades on it at all");
+    for (const level of nadeLevels) {
+      const loose = level.SPRITES.filter((s) => s.t === "grenade").length;
+      expect(loose >= 2, `${level.TITLE} has grenades but only ${loose} of them, so most players will never find one`);
+    }
+    // and every level still has an intro and an objective, which is how the
+    // compass and the mascot know what to say at all
+    for (const level of LEVELS) {
+      expect(typeof level.INTRO === "string" && level.INTRO.length > 0, `${level.TITLE} has no intro line`);
+      expect((level.OBJECTIVES ?? []).length > 0, `${level.TITLE} has no objective for the compass`);
+    }
+  }
+
   console.log("");
   if (failures === 0) {
     console.log(`All ${checks} security and account checks passed.`);

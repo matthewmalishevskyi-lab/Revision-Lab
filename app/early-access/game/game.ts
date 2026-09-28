@@ -18,7 +18,7 @@ import { makeRenderer, type Drawable } from "./render";
 import { buildSprites, type Sprite } from "./sprites";
 import { buildTextures, type TexSet } from "./textures";
 import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
-import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type World } from "./world";
+import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type LevelDef, type World } from "./world";
 
 export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string };
 export type GameOptions = {
@@ -36,6 +36,12 @@ export type GameOptions = {
 type Alien = { x: number; y: number; face: number; hp: number; state: "idle" | "noticing" | "alert" | "dead"; timer: number; cooldown: number; lastX: number; lastY: number; hurt: number; strafe: number; strafeT: number };
 type Pickup = { t: string; x: number; y: number; taken: boolean };
 type Bolt = { x: number; y: number; vx: number; vy: number; life: number };
+/** A grenade in the air. Bounces, then goes off on its fuse rather than on
+ *  contact, so you can bank one round a corner or roll it down an aisle. */
+type Nade = { x: number; y: number; z: number; vx: number; vy: number; vz: number; fuse: number };
+/** Anything drawn for a fraction of a second: muzzle flash, tracer, sparks,
+ *  a fireball, smoke. It has no effect on the game, only on how it feels. */
+type Fx = { x: number; y: number; z: number; vx: number; vy: number; vz: number; sprite: string; t: number; life: number; scale: number; grow: number; drag: number };
 type Mode = "title" | "play" | "reload" | "stomp" | "paused" | "dead" | "complete" | "done";
 type Quiz = { kind: "reload" | "stomp"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null };
 
@@ -46,6 +52,24 @@ const PITCH_MAX = 150; // how far up or down you can look, in pixels of horizon 
 const RADIUS = 0.22, ALIEN_R = 0.26, ALIEN_H = 0.58, WALK = 2.6, RUN = 4.2;
 const GRAVITY = 7.5, JUMP = 2.6; // a jump clears waist-high cover and little else
 const DECOR = new Set(["lamp", "canister", "holo"]);
+
+// ── grenades ────────────────────────────────────────────────────────────────
+// Matthew's rule: "one shot it in epicentre, and will hurt if in a metre or two
+// away." One square is about a metre here, so: anything inside KILL_R dies
+// outright, and past that the damage falls away to nothing by HURT_R. An alien
+// has 30 health, so the kill actually reaches about 1.65 squares and the last
+// three quarters of a square only hurts — which is exactly the shape asked for.
+// A wall between you and the blast stops all of it (lineOfSight), so throwing
+// one round a corner protects you from your own grenade.
+const NADE_KILL_R = 0.9, NADE_HURT_R = 2.4, NADE_DMG = 60, NADE_SELF = 85;
+const NADE_FUSE = 2.0, NADE_MAX = 3, NADE_SPEED = 7.2;
+
+// ⚠️ Grenades belong to the deck that HAS them, not to the game. Matthew asked
+// for them "in the storage level that is new, not everywhere", and the way to
+// keep that true as levels are added is to derive it from what is actually
+// lying on the floor rather than writing "level 4" into three different places.
+// The controls card, the starting kit and the visor all read this one answer.
+function hasGrenades(def: LevelDef) { return def.SPRITES.some((s) => s.t === "grenade"); }
 
 export class Game {
   private cv: HTMLCanvasElement;
@@ -70,12 +94,28 @@ export class Game {
   private easyDeck: Question[] = [];
 
   // player
-  private p = { x: 0, y: 0, vx: 0, vy: 0, z: 0, vz: 0, angle: 0, pitch: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "knife" as "knife" | "pistol", keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0 };
-  private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false };
+  private p = { x: 0, y: 0, vx: 0, vy: 0, z: 0, vz: 0, angle: 0, pitch: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "knife" as "knife" | "pistol", keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0,
+    grenades: 0, nadeWait: 0,
+    /** Recoil, in pixels of horizon: the view jumps and settles, so a shot has weight. */
+    recoil: 0, recoilV: 0,
+    /** Counts down after a shot connects, and draws the hit marker. 2 = a kill. */
+    hitMark: 0, hitKill: false,
+    /** How visible you are right now, 0-1, from the light you are standing in. */
+    exposure: 0 };
+  private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false, grenades: 0 };
   private aliens: Alien[] = [];
   private pickups: Pickup[] = [];
   private decor: Drawable[] = [];
   private bolts: Bolt[] = [];
+  private nades: Nade[] = [];
+  private fx: Fx[] = [];
+  /** Whole-screen shake, in pixels, from an explosion going off near you. */
+  private shake = 0;
+  /** Does this deck have grenades on it? (See hasGrenades, above.) */
+  private hasNades = false;
+  /** Is this deck dark enough for the sneaking tip to be worth saying? Worked
+   *  out from the baked light map, so it cannot disagree with what you see. */
+  private dim = false;
   private quiz: Quiz | null = null;
   // what the visor shows: comms messages from the mascot, a pickup feed, room names, hit arcs
   private comms: { text: string; age: number; life: number } | null = null;
@@ -104,7 +144,9 @@ export class Game {
     // and two games ran on one canvas, both hearing every key.
     if (this.destroyed) return;
     const start = Math.min(LEVELS.length - 1, Math.max(0, this.opts.startLevel ?? 0));
-    if (start > 0) this.carry = { health: 100, vest: 0, ammo: 6, hasPistol: true };
+    // Jumping ahead hands you what you would have been carrying by then — but
+    // only a grenade if that deck is one that has grenades on it at all.
+    if (start > 0) this.carry = { health: 100, vest: 0, ammo: 6, hasPistol: true, grenades: hasGrenades(LEVELS[start]) ? 1 : 0 };
     this.loadLevel(start);
     // lets automated play-tests reach inside (teleport, read state); harmless in a browser
     (this.ov as HTMLCanvasElement & { game?: Game }).game = this;
@@ -137,10 +179,18 @@ export class Game {
     this.levelIndex = n;
     const def = LEVELS[n];
     this.world = buildWorld(def, this.tex);
+    this.hasNades = hasGrenades(def);
+    {
+      let total = 0, cells = 0;
+      const L = this.world.light;
+      for (let i = 0; i < this.world.W * this.world.H; i++) if (this.world.area[i]) { total += (L[i * 3] + L[i * 3 + 1] + L[i * 3 + 2]) / 3; cells++; }
+      this.dim = cells > 0 && total / cells < 0.6;
+    }
     this.p.x = def.START.x; this.p.y = def.START.y; this.p.angle = def.START.angle; this.p.eye = 0.5; this.p.pitch = 0; this.p.vx = 0; this.p.vy = 0; this.p.z = 0; this.p.vz = 0;
     this.p.health = this.carry.health; this.p.vest = this.carry.vest; this.p.ammo = this.carry.ammo; this.p.hasPistol = this.carry.hasPistol;
+    this.p.grenades = this.carry.grenades; this.p.nadeWait = 0; this.p.recoil = 0; this.p.recoilV = 0; this.p.hitMark = 0; this.shake = 0;
     this.p.weapon = this.p.hasPistol ? "pistol" : "knife"; this.p.keys = new Set(); this.p.radTime = 0; this.p.hurt = 0;
-    this.aliens = []; this.pickups = []; this.decor = []; this.bolts = []; this.quiz = null;
+    this.aliens = []; this.pickups = []; this.decor = []; this.bolts = []; this.nades = []; this.fx = []; this.quiz = null;
     for (const s of def.SPRITES) {
       if (s.t === "alien" || s.t === "alienBack") {
         this.aliens.push({ x: s.x, y: s.y, face: s.face ?? Math.atan2(def.START.y - s.y, def.START.x - s.x) + Math.PI * (s.t === "alienBack" ? 1 : 0), hp: 30, state: "idle", timer: 0, cooldown: 1, lastX: s.x, lastY: s.y, hurt: 0, strafe: 1, strafeT: 0 });
@@ -184,7 +234,7 @@ export class Game {
     if (this.quiz && this.quiz.picked === null && digit && (this.mode === "reload" || this.mode === "stomp")) { this.answer(Number(digit) - 1); return; }
     if (this.mode === "dead" && k === "enter") { this.loadLevel(this.levelIndex); this.mode = "play"; this.lock(); return; }
     if (this.mode === "complete" && k === "enter") {
-      this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol };
+      this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, grenades: this.p.grenades };
       if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; this.lock(); } else this.mode = "done";
       return;
     }
@@ -192,6 +242,7 @@ export class Game {
     if (k === "f" || k === "control") this.fire(); // keyboard shooting, like Doom's Ctrl
     if (k === "r") this.startReload();
     if (k === "e") this.use();
+    if (k === "g") this.throwGrenade();
     if (k === " ") { if (this.stompTarget()) this.tryStomp(); else this.jump(); }
     if (k === "m") this.muted = !this.muted;
     if (digit === "1") this.p.weapon = "knife";
@@ -210,6 +261,40 @@ export class Game {
     o.frequency.setValueAtTime(freq, a.currentTime); o.frequency.exponentialRampToValueAtTime(Math.max(30, to), a.currentTime + dur);
     g.gain.setValueAtTime(vol, a.currentTime); g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur);
     o.connect(g).connect(a.destination); o.start(); o.stop(a.currentTime + dur);
+  }
+  /** A burst of filtered noise. A pure tone is a "pew"; a shot or an explosion
+   *  is mostly noise, and layering the two is what makes one sound like a hit
+   *  rather than a beep. Built here rather than loaded, like every other sound. */
+  private noise(dur: number, vol: number, from: number, to: number) {
+    const a = this.audio; if (!a || this.muted) return;
+    const n = Math.max(1, Math.floor(a.sampleRate * dur));
+    const buf = a.createBuffer(1, n, a.sampleRate), ch = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / n);
+    const src = a.createBufferSource(); src.buffer = buf;
+    const f = a.createBiquadFilter(); f.type = "lowpass";
+    f.frequency.setValueAtTime(from, a.currentTime); f.frequency.exponentialRampToValueAtTime(Math.max(50, to), a.currentTime + dur);
+    const g = a.createGain(); g.gain.setValueAtTime(vol, a.currentTime); g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur);
+    src.connect(f).connect(g).connect(a.destination); src.start();
+  }
+
+  // ── short-lived effects: flashes, tracers, sparks, fire and smoke ──────────
+  // None of these touch the game at all. They exist so a shot LOOKS like it
+  // went somewhere and landed on something, which is what Matthew meant by
+  // "more energetic and lively" — the shooting worked, it just felt flat.
+  private addFx(sprite: string, x: number, y: number, z: number, life: number, scale: number, opts: { vx?: number; vy?: number; vz?: number; grow?: number; drag?: number } = {}) {
+    if (this.fx.length > 110) this.fx.shift(); // a cap, so a firefight can't pile up thousands
+    this.fx.push({ x, y, z, vx: opts.vx ?? 0, vy: opts.vy ?? 0, vz: opts.vz ?? 0, sprite, t: 0, life, scale, grow: opts.grow ?? 0, drag: opts.drag ?? 0 });
+  }
+  private updateFx(dt: number) {
+    for (const f of this.fx) {
+      f.t += dt;
+      f.x += f.vx * dt; f.y += f.vy * dt; f.z += f.vz * dt;
+      const k = Math.max(0, 1 - f.drag * dt);
+      f.vx *= k; f.vy *= k; f.vz *= k;
+      f.scale += f.grow * dt;
+    }
+    if (this.fx.some((f) => f.t >= f.life)) this.fx = this.fx.filter((f) => f.t < f.life);
+    this.shake = Math.max(0, this.shake - dt * 2.4);
   }
 
   /** The mascot says something on the comms screen (queued, never cut off). */
@@ -316,7 +401,14 @@ export class Game {
     p.bob += moved * 2.6; // the head bobs with distance actually walked, not keys held
     p.eye += ((crouch ? 0.34 : 0.5) + p.z - p.eye) * Math.min(1, dt * (p.z > 0.01 || p.vz !== 0 ? 30 : 8));
     p.kick = Math.max(0, p.kick - dt * 6); p.flash = Math.max(0, p.flash - dt); p.hurt = Math.max(0, p.hurt - dt * 1.5);
-    p.fireWait = Math.max(0, p.fireWait - dt); p.radTime = Math.max(0, p.radTime - dt); this.tickVisor(dt);
+    p.fireWait = Math.max(0, p.fireWait - dt); p.radTime = Math.max(0, p.radTime - dt);
+    p.nadeWait = Math.max(0, p.nadeWait - dt); p.hitMark = Math.max(0, p.hitMark - dt * 2.6);
+    // Recoil is a spring, not a fixed offset: the view jumps and settles back,
+    // so a shot has weight. It moves the AIM as well as the picture, because
+    // the crosshair is tested against the horizon the last frame actually drew.
+    p.recoilV -= (p.recoil * 190 + p.recoilV * 16) * dt; p.recoil += p.recoilV * dt;
+    this.tickExposure(dt);
+    this.tickVisor(dt);
 
     // doors open as you walk up (except locked, secret and lift doors)
     for (const d of w.doors) {
@@ -345,11 +437,115 @@ export class Game {
       else if (k.t === "keycard") { p.keys.add("blue"); this.pickupMsg("Blue keycard"); this.hint("keycard", "The blue keycard! Now the locked door will open."); }
       else if (k.t === "radsuit") { p.radTime = 30; this.pickupMsg("Radiation suit · 30 s"); this.hint("radsuit", "Radiation suit on: you can wade through the coolant for 30 seconds."); }
       else if (k.t === "vest") { p.vest = 100; this.pickupMsg("Vest · takes a third of the damage"); }
+      else if (k.t === "grenade") {
+        if (p.grenades >= NADE_MAX) continue;
+        p.grenades = Math.min(NADE_MAX, p.grenades + 1); this.pickupMsg("Grenade · press G to throw");
+        this.hint("grenade", "A grenade! Press G to lob it. Anything right beside it is finished; a square or two away it only hurts — you included.");
+      }
       k.taken = true; this.beep(520, 900, 0.15, "triangle", 0.06);
     }
 
     this.updateAliens(dt);
     this.updateBolts(dt);
+    this.updateNades(dt);
+    this.updateFx(dt);
+  }
+
+  // ── how visible you are ───────────────────────────────────────────────────
+  // Level 4 is dark on purpose, and darkness that only changes how a room LOOKS
+  // is decoration. So how far an alien can see you is worked out from the light
+  // where you are standing and whether you are still, walking or running —
+  // 4 squares in a dark corner, standing still, up to 12 in a lit aisle at a
+  // run. The visor shows the number, so the rule is visible rather than secret.
+  private tickExposure(dt: number) {
+    const p = this.p, L = this.world.light, i = this.cell(p.x, p.y) * 3;
+    const lit = Math.max(0, Math.min(1, ((L[i] + L[i + 1] + L[i + 2]) / 3 - 0.15) / 0.75));
+    const speed = Math.hypot(p.vx, p.vy);
+    const move = speed < 0.3 ? -0.1 : speed < 3.0 ? 0.1 : 0.3;
+    // ⚠️ light and movement ADD rather than multiply. Multiplied, a dark room
+    // makes the whole term zero and running is then free — which is exactly
+    // backwards, because sprinting is the loudest thing you can do. Added, both
+    // matter everywhere: creeping in the dark is about 4 squares, walking about
+    // 5, and sprinting down a lit aisle about 10.
+    const want = Math.max(0, Math.min(1, lit * 0.7 + move - (this.inDuct() ? 0.2 : 0)));
+    p.exposure += (want - p.exposure) * Math.min(1, dt * 4);
+  }
+  private sightRange() { return 4 + this.p.exposure * 8; }
+
+  // ── grenades ──────────────────────────────────────────────────────────────
+  /** G: lob one along your line of sight. It goes off on its fuse, not on
+   *  contact, so it can be banked round a corner or rolled down an aisle. */
+  private throwGrenade() {
+    const p = this.p;
+    if (this.quiz || p.nadeWait > 0) return;
+    if (p.grenades <= 0) { this.pickupMsg("No grenades left"); this.beep(90, 70, 0.07, "square", 0.04); return; }
+    if (this.inDuct()) { this.pickupMsg("No room to throw in here"); return; }
+    p.grenades--; p.nadeWait = 0.65; p.kick = 0.8;
+    const up = p.pitch / this.R.proj; // the crosshair's elevation, as a gradient
+    const c = Math.cos(p.angle), s = Math.sin(p.angle);
+    this.nades.push({
+      x: p.x + c * 0.35, y: p.y + s * 0.35, z: Math.max(0.12, p.eye - 0.1),
+      vx: c * NADE_SPEED + p.vx * 0.4, vy: s * NADE_SPEED + p.vy * 0.4, vz: up * NADE_SPEED + 1.5, fuse: NADE_FUSE,
+    });
+    this.beep(340, 620, 0.09, "triangle", 0.05);
+  }
+  private updateNades(dt: number) {
+    const w = this.world; if (!this.nades.length) return;
+    const R = 0.1;
+    for (const n of this.nades) {
+      n.fuse -= dt; n.vz -= GRAVITY * dt;
+      const nx = n.x + n.vx * dt;
+      if (circleFree(w, nx, n.y, R, n.z)) n.x = nx; else { n.vx *= -0.42; n.vy *= 0.85; }
+      const ny = n.y + n.vy * dt;
+      if (circleFree(w, n.x, ny, R, n.z)) n.y = ny; else { n.vy *= -0.42; n.vx *= 0.85; }
+      n.z += n.vz * dt;
+      const head = w.ceilH[this.cell(n.x, n.y)] - 0.08;
+      if (n.z > head) { n.z = head; n.vz = -Math.abs(n.vz) * 0.4; }
+      if (n.z < 0.06) {
+        n.z = 0.06;
+        if (Math.abs(n.vz) > 0.7) { n.vz = -n.vz * 0.36; this.beep(170, 110, 0.05, "triangle", 0.03); }
+        else { n.vz = 0; n.vx *= 0.5; n.vy *= 0.5; }
+      }
+    }
+    const going = this.nades.filter((n) => n.fuse <= 0);
+    if (!going.length) return;
+    this.nades = this.nades.filter((n) => n.fuse > 0);
+    for (const n of going) this.explode(n.x, n.y, n.z);
+  }
+  private explode(x: number, y: number, z: number) {
+    const w = this.world;
+    // the fireball, some flying sparks, and smoke left behind
+    this.addFx("blast", x, y, Math.max(0.05, z - 0.1), 0.34, 1.3, { grow: 2.0 });
+    this.addFx("blast", x, y, Math.max(0.05, z - 0.1), 0.6, 0.8, { grow: 2.8, vz: 0.5 });
+    for (let i = 0; i < 7; i++) {
+      const a = Math.random() * Math.PI * 2, sp = 1.6 + Math.random() * 3;
+      this.addFx("spark", x, y, z, 0.28 + Math.random() * 0.2, 0.7, { vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, vz: 0.8 + Math.random() * 2, drag: 2.5 });
+    }
+    for (let i = 0; i < 4; i++) {
+      const a = Math.random() * Math.PI * 2;
+      this.addFx("smoke", x + Math.cos(a) * 0.3, y + Math.sin(a) * 0.3, z, 1.1 + Math.random() * 0.5, 0.6, { vz: 0.35, grow: 0.9, drag: 1.2 });
+    }
+    this.noise(0.55, 0.22, 1600, 60); this.beep(130, 40, 0.5, "sawtooth", 0.11);
+
+    const falloff = (d: number) => Math.max(0, 1 - (d - NADE_KILL_R) / (NADE_HURT_R - NADE_KILL_R));
+    for (const a of this.aliens) {
+      if (a.state === "dead") continue;
+      const d = Math.hypot(a.x - x, a.y - y);
+      if (d > NADE_HURT_R || !lineOfSight(w, x, y, a.x, a.y)) continue;
+      if (d <= NADE_KILL_R) { this.kill(a); continue; }
+      a.hp -= NADE_DMG * falloff(d); a.hurt = 0.2; a.strafeT = 0;
+      if (a.hp <= 0) this.kill(a); else if (a.state === "idle") this.alert(a, 0.2);
+    }
+    // it catches YOU too, at the same shape but harder, so throwing one at your
+    // own feet is the mistake it ought to be
+    const pd = Math.hypot(this.p.x - x, this.p.y - y);
+    if (pd < NADE_HURT_R && lineOfSight(w, x, y, this.p.x, this.p.y)) {
+      this.damage(NADE_SELF * (pd <= NADE_KILL_R ? 1 : falloff(pd)));
+      this.hits.push({ a: Math.atan2(y - this.p.y, x - this.p.x), t: 1 });
+    }
+    this.shake = Math.min(1.6, this.shake + Math.max(0.25, 1.5 * (1 - pd / 7)));
+    // a bang is loud: everything nearby comes looking, whether it saw you or not
+    for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - x, a.y - y) < 10) this.alert(a, 0.3 + Math.random() * 0.4);
   }
 
   // ── aliens: not clever, but not daft either ───────────────────────────────
@@ -361,7 +557,9 @@ export class Game {
   // Matthew asked for "a bit stupid but some challenge".
   private canSee(a: Alien) {
     const p = this.p, dx = p.x - a.x, dy = p.y - a.y, dist = Math.hypot(dx, dy);
-    if (dist > 11) return false;
+    // how far they can see depends on how visible you are (see tickExposure);
+    // one already hunting you keeps looking a bit further than one at rest
+    if (dist > Math.min(12, this.sightRange() * (a.state === "alert" ? 1.35 : 1))) return false;
     if (this.inDuct() && dist > 1.2) return false; // vents hide you
     if (!lineOfSight(this.world, a.x, a.y, p.x, p.y)) return false;
     if (a.state === "alert") return true;
@@ -507,19 +705,49 @@ export class Game {
   // ── shooting ──────────────────────────────────────────────────────────────
   private fire() {
     const p = this.p; if (p.fireWait > 0) return;
-    if (p.weapon === "pistol") {
+    const pistol = p.weapon === "pistol";
+    if (pistol) {
       if (p.ammo <= 0) { this.say("Out of cells! Press R and answer — only a right answer charges it."); this.beep(90, 80, 0.08, "square", 0.05); p.fireWait = 0.3; return; }
-      p.ammo--; p.fireWait = 0.35; p.kick = 1; p.flash = 0.08; this.beep(700, 120, 0.12, "square", 0.07);
-    } else { p.fireWait = 0.42; p.kick = 0.6; this.beep(300, 90, 0.09, "triangle", 0.05); } // the knife
+      p.ammo--; p.fireWait = 0.35; p.kick = 1; p.flash = 0.13;
+      p.recoilV += 120; this.shake = Math.min(1.6, this.shake + 0.18);
+      // three layers rather than one beep: a crack, a thump underneath, and a
+      // hiss of noise on top. One tone on its own is what made it sound like a toy.
+      this.beep(880, 150, 0.09, "square", 0.05); this.beep(210, 70, 0.17, "sawtooth", 0.05); this.noise(0.12, 0.09, 4200, 500);
+    } else {
+      p.fireWait = 0.42; p.kick = 0.6; p.recoilV += 40;
+      this.beep(320, 90, 0.09, "triangle", 0.05); this.noise(0.09, 0.05, 2600, 700);
+    }
     // anyone near enough to hear a shot comes looking
-    if (p.weapon === "pistol") for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
+    if (pistol) for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
     const best = this.aimTarget();
+    const c = Math.cos(p.angle), s = Math.sin(p.angle), up = p.pitch / this.R.proj;
+    if (pistol) {
+      // muzzle flash out in the world, so it lights the wall in front of you too
+      this.addFx("spark", p.x + c * 0.6, p.y + s * 0.6, p.eye - 0.18, 0.07, 0.3);
+      // And a visible line of travel: a handful of bright puffs along the shot.
+      // ⚠️ Each puff's scale grows with how far away it is, so they all come out
+      // the same size ON SCREEN and read as one straight streak. At a fixed
+      // scale the nearest one is drawn enormous and the shot looks like a
+      // firework going off in your hand.
+      const reach = Math.min(best ? Math.hypot(best.x - p.x, best.y - p.y) : this.R.centreDepth.value, 22);
+      for (let i = 1; i <= 7; i++) {
+        const d = (reach * i) / 8;
+        this.addFx("tracer", p.x + c * d, p.y + s * d, p.eye - 0.06 + up * d, 0.07, Math.max(0.15, d * 0.16));
+      }
+      this.addFx("spark", p.x + c * reach, p.y + s * reach, p.eye - 0.12 + up * reach, 0.16, Math.max(0.3, reach * (best ? 0.2 : 0.13)));
+    }
     if (best) {
       // the knife hurts more than a shot, but you have to be next to it
-      best.hp -= p.weapon === "pistol" ? 15 : 20;
+      best.hp -= pistol ? 15 : 20;
       best.hurt = 0.15; best.strafeT = 0; // being hit makes it change direction
       if (best.state !== "alert") { best.state = "alert"; best.cooldown = 0.8; }
-      if (best.hp <= 0) this.kill(best); else this.beep(300, 200, 0.1, "square", 0.05);
+      const dead = best.hp <= 0;
+      p.hitMark = 1; p.hitKill = dead;
+      for (let i = 0; i < 4; i++) {
+        const a = Math.random() * Math.PI * 2;
+        this.addFx("spark", best.x, best.y, 0.3 + Math.random() * 0.3, 0.2, 0.35, { vx: Math.cos(a) * 1.4, vy: Math.sin(a) * 1.4, vz: 1.1, drag: 3 });
+      }
+      if (dead) this.kill(best); else { this.beep(340, 220, 0.09, "square", 0.05); this.noise(0.07, 0.05, 1800, 300); }
     }
   }
   /** The alien the reticle is on, if a shot would reach it (also lights the reticle). */
@@ -543,7 +771,14 @@ export class Game {
     }
     return best;
   }
-  private kill(a: Alien) { a.state = "dead"; a.hp = 0; this.stats.kills++; this.beep(400, 60, 0.4, "sawtooth", 0.06); }
+  private kill(a: Alien) {
+    a.state = "dead"; a.hp = 0; this.stats.kills++;
+    this.beep(400, 60, 0.4, "sawtooth", 0.06); this.noise(0.22, 0.07, 1200, 160);
+    for (let i = 0; i < 5; i++) {
+      const ang = Math.random() * Math.PI * 2;
+      this.addFx("spark", a.x, a.y, 0.3 + Math.random() * 0.35, 0.3, 0.4, { vx: Math.cos(ang) * 1.8, vy: Math.sin(ang) * 1.8, vz: 1.3, drag: 2.6 });
+    }
+  }
 
   // ── use: doors that need a button ─────────────────────────────────────────
   private use() {
@@ -653,8 +888,14 @@ export class Game {
       things.push({ x: a.x, y: a.y, sprite: Math.abs(diff) > 1.9 ? "alienBack" : "alien" });
     }
     for (const b of this.bolts) things.push({ x: b.x, y: b.y, z: 0.32, sprite: "bolt" });
+    for (const n of this.nades) things.push({ x: n.x, y: n.y, z: n.z, sprite: "grenade", scale: 0.55 });
+    for (const f of this.fx) things.push({ x: f.x, y: f.y, z: f.z, sprite: f.sprite, scale: f.scale, alpha: Math.max(0, 1 - f.t / f.life) });
     const t0 = performance.now();
-    const img = this.R.render(this.world, this.tex, this.spr, { x: p.x, y: p.y, angle: p.angle }, things, p.eye + Math.sin(p.bob * 2) * 0.012, p.pitch);
+    // recoil and blast shake ride on the pitch, because the horizon is the one
+    // thing this renderer can move the whole picture with
+    const jolt = this.shake > 0.01 ? (Math.random() - 0.5) * this.shake * 16 : 0;
+    const view = Math.max(-PITCH_MAX - 60, Math.min(PITCH_MAX + 60, p.pitch + p.recoil + jolt));
+    const img = this.R.render(this.world, this.tex, this.spr, { x: p.x, y: p.y, angle: p.angle }, things, p.eye + Math.sin(p.bob * 2) * 0.012, view);
     this.g.putImageData(img, 0, 0);
     if (this.mode !== "stomp") drawWeapon(this.g, this.R.W, this.R.H, p.weapon, p.bob, p.kick, p.flash, p.ammo);
     // a soft glow: the frame shrunk and laid back over itself on a "screen"
@@ -668,6 +909,7 @@ export class Game {
     const playing = this.mode === "play" || this.mode === "reload";
     drawHud(o, {
       health: p.health, vest: p.vest, ammo: p.ammo, hasPistol: p.hasPistol, weapon: p.weapon, keys: [...p.keys], radTime: p.radTime,
+      grenades: p.grenades, hitMark: p.hitMark, hitKill: p.hitKill, exposure: p.exposure,
       level: def.TITLE, aliensLeft: left, hurt: p.hurt, aim: playing && !!this.aimTarget(),
       hits: this.hits.map((h) => ({ a: h.a - p.angle, t: h.t })),
       heading: p.angle, objective: this.objective(),
@@ -680,11 +922,18 @@ export class Game {
       drawQuiz(o, view);
     }
     const mins = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-    if (this.mode === "title") drawScreen(o, def.TITLE, ["WASD to move · mouse to look (up and down too) · click to shoot · Shift to run", "R: recharge the blaster by answering questions · E: use · SPACE: jump (or jump on an alien from behind)", "Look up and down with the mouse · 1 knife · 2 blaster · M sound · Esc pause"], "Click to start");
+    // The controls card lists what this deck can actually do: no G on a deck
+    // with no grenades, and no sneaking tip on one with the lights on.
+    if (this.mode === "title") drawScreen(o, def.TITLE, [
+      "WASD to move · mouse to look (up and down too) · click to shoot · Shift to run",
+      `R: recharge the blaster by answering questions · E: use${this.hasNades ? " · G: throw a grenade" : ""}`,
+      "SPACE: jump, or jump on an alien from behind · 1 knife · 2 blaster · M sound · Esc pause",
+      ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
+    ], "Click to start");
     if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], "Click to carry on");
     if (this.mode === "dead") drawScreen(o, "Suit failure", [`${this.stats.kills} alien${this.stats.kills === 1 ? "" : "s"} defeated · ${this.stats.right} question${this.stats.right === 1 ? "" : "s"} right`], "Press Enter to try the level again", "#ff6b6b");
     if (this.mode === "complete") drawScreen(o, "Level complete!", [`Time ${mins(this.stats.time)} · aliens ${this.stats.kills}/${this.aliens.length} · questions right ${this.stats.right}/${this.stats.right + this.stats.wrong}`, this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now."], "Press Enter to carry on", "#2fd48a");
-    if (this.mode === "done") drawScreen(o, "You finished early access!", ["All three levels done. The boss is still being built."], "Reload the page to play again", "#ffd65a");
+    if (this.mode === "done") drawScreen(o, "You finished early access!", [`All ${LEVELS.length} levels done. The boss is still being built.`], "Reload the page to play again", "#ffd65a");
     // frame timings, readable in dev tools (data-render-ms / data-hud-ms on the overlay)
     this.ov.dataset.renderMs = (t1 - t0).toFixed(1); this.ov.dataset.hudMs = (performance.now() - t1).toFixed(1);
   }

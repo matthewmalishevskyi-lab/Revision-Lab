@@ -1,5 +1,187 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Level 4, grenades, and shooting that feels like something (2026-09-28)
+
+Matthew, walking to school: *"make another level that will be themed as the
+storage level where you also have to be sneaky, also in that storage add a
+granate that will one shot it in epicentre (very close to the ailien) and will
+hurt if in a metre or two away. Also I want you to make the shooting system
+look a bit more energetic and lively in a way."* Three things, all in. He was
+unattended, so every choice below was made rather than asked about.
+
+### ⚠️ A DARK ROOM FULL OF CRATES HIDES NOBODY
+
+The obvious storage level is a warehouse of crates with the lights off, and it
+would not be a stealth level at all, for two reasons that only show up once you
+try it:
+
+**Cover you can see over is not cover.** Every crate in this game is
+`COVER_H = 0.34` and your eyes are at 0.5. `lineOfSight` deliberately ignores
+cover, because you are meant to shoot over it. So a room packed with crates has
+exactly the sight lines of an empty room. Level 4's shelving is therefore
+full-height `BLOCKS`, not `COVER`: measured, you can see **29% of the stacks
+from the average spot in it, against 79% of level 1's cargo bay**. That number
+is now a check, along with the reverse one — the lit middle aisle has to stay
+clear end to end, because it is meant to be the tempting way through.
+
+**Darkness that only changes the picture is decoration.** Sight range was a
+flat 11 squares in every room on every level. It is now worked out from the
+light where you are standing and whether you are still, walking or running
+(`tickExposure`), and the visor shows it as a HIDDEN / SEEN / EXPOSED bar under
+the reticle — the rule has to be readable or it is just the game being unfair.
+
+    dark aisle, standing still   4.0 squares      lit main aisle, sprinting   9.4
+    dark aisle, walking          5.3              the lit office, sprinting  12.0
+
+⚠️ **Light and movement ADD; they do not multiply.** Multiplied — which is what
+was written first — a dark room makes the whole term zero and sprinting is then
+free, which is exactly backwards. Levels 1–3 are almost unchanged by this,
+because their rooms are bright: 12 squares running, against the old flat 11.
+
+### The grenade, and the shape Matthew described
+
+`NADE_KILL_R = 0.9`, `NADE_HURT_R = 2.4`, 60 damage at the inner edge falling to
+nothing at the outer one. An alien has 30 health, so **the outright kill reaches
+about 1.65 squares and the last three quarters of a square only hurts** — "one
+shot in the epicentre, hurts a metre or two away", with a square standing in for
+a metre.
+
+Four decisions inside that:
+
+- **It goes off on its fuse, not on contact** (2 seconds, and it bounces), so it
+  can be banked round a corner or rolled down an aisle. A contact grenade is
+  just a slower bullet.
+- **The blast is line-of-sight gated**, so a shelf between you and it stops all
+  of it — for the aliens and for you.
+- **It catches you at the same shape, harder**: 85 at the centre. Thrown at your
+  own feet it takes you to 15 health. A grenade you cannot hurt yourself with is
+  a free button.
+- **They are scarce pickups, never rechargeable by answering.** The answer-to-
+  reload loop is the whole point of the game; a grenade you can quiz your way
+  into would quietly replace it. One in plain sight on level 4, one in the
+  stacks, three behind the false wall, and you can carry three.
+
+The bang alerts everything within ten squares whether it saw you or not, which
+is what stops "grenade first, ask later" being the whole level.
+
+### Shooting: the same bullets, a lot more to look at
+
+Nothing about damage or accuracy changed. What was missing was any evidence that
+a shot had happened: one beep, a two-frame flash, and an alien that lost 15
+health somewhere off screen.
+
+- **A tracer** — seven bright puffs along the line of the shot. ⚠️ Each one's
+  scale grows with its distance, so they all come out the SAME SIZE on screen
+  and read as one straight streak; at a fixed scale the nearest is drawn
+  enormous and the shot looks like a firework going off in your hand.
+- **An impact spark** where it lands, on the alien or on the wall.
+- **Recoil as a spring** rather than a fixed offset: the view kicks about 3.4px
+  and settles in half a second. It moves the AIM too, because the crosshair is
+  tested against the horizon the last frame actually drew.
+- **A hit marker** on the reticle, and a bigger red one for a kill — the one
+  piece of feedback that says a shot LANDED rather than went past.
+- **Layered sound.** `beep()` alone is a tone, and a tone sounds like a toy. A
+  shot is now a crack, a thump under it and a hiss of filtered noise on top
+  (`noise()`, synthesised like everything else here — no audio files).
+- Screen shake on a shot and, much harder, on an explosion.
+
+⚠️ The renderer can only move the whole picture by its HORIZON, so recoil and
+shake ride on the pitch. That is also why `Drawable` grew `scale` and `alpha`,
+and why a see-through sprite does not write depth: an explosion's glow should
+light things up, not hide them.
+
+### Level 4 — Cargo hold
+
+Lift → intake bay → the stacks → loading office (the keycard) → freight lift,
+with three ways east: the lit main aisle, the dark perimeter walkways, and a
+floor duct out of the intake bay that comes up behind the shelving. 15 aliens,
+four of them with their backs turned. The ordnance locker — three grenades and
+three guards — is behind a false wall, and nothing needs it.
+
+The level picker on the play page is now **derived from `LEVELS`** instead of
+being a hand-typed list of three, which is the second place this codebase has
+had to stop keeping the same fact twice.
+
+### ⚠️ Grenades belong to the deck that has them, not to the game
+
+Matthew, after seeing the first version: *"if anything add granates in the
+storage level that is new, not everywhere."* He was right, and what had leaked
+was not the weapon — no other level places one, and the visor's grenade badge
+only appears once you are carrying one — it was the WORDS. Every level's
+controls card said "G: throw a grenade" and offered the sneaking tip, on decks
+where you can never have a grenade and the lights are all on.
+
+Both are now read off the level itself rather than written down:
+
+- `hasGrenades(def)` is simply "does this level's SPRITES contain one", and it
+  decides the controls card AND what jumping ahead hands you. That replaced
+  `start >= 3`, which was the level number written into the code — true today
+  and quietly wrong the moment a level is inserted.
+- `dim` is the average of the level's own baked light map. Measured: 0.86,
+  0.83 and 0.75 for decks 1–3 against **0.49** for the cargo hold, so the 0.6
+  threshold sits in clear air rather than on a judgement call.
+
+Four new checks, each confirmed to fail when its fix is removed: a level that
+places grenades must place at least two (one lonely grenade on a deck is a
+player who never finds it); the controls card must gate G on `hasNades`;
+jumping ahead must not hand one out by level number; and — the useful one
+beyond this ask — **every sprite `t` a level places must be something game.ts
+actually does something with.** A typo'd pickup draws nothing, picks up as
+nothing and throws no error, so the level looks finished and one item in it
+silently does not exist. 2,415 security checks now.
+
+⚠️ **`drawScreen` does not wrap** — it sizes its panel to the widest line, so
+one long line of controls pushes the card off both edges of the screen. It was
+already within about 20px of the edge before the grenade line was added. It now
+shrinks the text to fit, and a browser check measures the panel's real pixels at
+every level (19..1260 of 1280 on the cargo hold, 26..1140 on the others).
+
+### ⚠️ A HINT LONGER THAN FOUR LINES IS NEVER SAID, AND NOTHING SAID SO
+
+`drawComms` wraps the mascot's line at 360px and takes the first four lines. A
+longer message is not clipped visibly — the end simply does not exist. Level
+4's intro ended mid-word at "until yo", and it was found by looking at a
+screenshot, which is not a method that scales. `check-security.mjs` now works
+out how many lines each `INTRO`, `HINT` and `LOCKED_HINT` in every level needs
+and fails if it is more than four (2,415 checks now, up from 2,334).
+
+⚠️ **The first version of that estimator was 20% too NARROW**, which is the
+useless direction — it would have waved through a message that really needed
+five lines. Checked against a real canvas over all 37 messages in the game: the
+advances now used are never under the real width and at worst count one line too
+many, so the check can nag but cannot miss.
+
+### ⚠️ Four "failures" in the first test run were the test, not the game
+
+The game's own `requestAnimationFrame` loop keeps calling `update()` between one
+`evaluate()` and the next, so by the time an assertion looked, the grenade had
+already bounced off a wall, the recoil had already settled to zero and an
+alerted alien had walked out of the crosshair. Every one of those reads as a bug
+in the game. The fix is one line — cancel the game's frame loop and drive
+`update()` by hand — and it is the same standing lesson this file has recorded
+seven times now: **check the harness before believing the bug.** A fifth was
+real sloppiness: the blast was being set off at the alien's own feet in every
+falloff test, so of course everything died.
+
+**Verified:** `npm run check` fully green — 188,027 content, 1,239,302 geometry,
+**2,415 security**, 59,200 slide-deck, 9,892 recommendation, 2,715 pacing, 43
+question-review, 96 calculator, 32 saved-answer, 8 badge and 25,335
+game-question checks, tsc and eslint clean. Plus, in a real browser: **42 new
+checks** (the damage shape at 0.3, 1.4, 2.1 and 3.0 squares, a wall shielding
+both of you, the bang waking a neighbour, carrying grenades between levels, the
+pickup cap, the tracer and muzzle flash, recoil peaking and settling, the hit
+and kill markers, the four exposure figures above, an alien that cannot see you
+in the dark and can when lit, the keycard, the locked lift and the false wall),
+**13 route checks** walking every level's main and alternative route end to end
+with the real movement code, **17 title-card checks** (the right keys offered on
+the right deck, and the card fitting the screen), the **46 existing game checks** still green on
+levels 1–3, the fuzz bot clean on all four levels, and **953 static level
+checks** (every area, pickup and alien reachable, nothing inside a wall, no door
+that joins only one room, the keycard not behind its own lock).
+
+**Not done:** the boss, phones and touch controls, a leaderboard. And nobody has
+played level 4 for fun yet — bots finish it, which is not the same thing.
+
 ## Search finds the whole site now, not just topics (2026-09-27)
 
 Matthew: *"modify the search bar a bit. So you can search up the different

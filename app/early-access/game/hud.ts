@@ -19,6 +19,11 @@ const FONT = "system-ui, sans-serif", MONO = `ui-monospace, "DejaVu Sans Mono", 
 export type HudState = {
   health: number; vest: number; ammo: number; hasPistol: boolean; weapon: "knife" | "pistol";
   keys: string[]; radTime: number; level: string; aliensLeft: number;
+  grenades: number;
+  /** 1 → 0 just after a shot connected; `hitKill` makes the marker a kill mark. */
+  hitMark: number; hitKill: boolean;
+  /** 0–1: how visible the player is right now (see tickExposure in game.ts). */
+  exposure: number;
   hurt: number; hits: { a: number; t: number }[]; aim: boolean;
   heading: number; objective: { text: string; bearing: number; dist: number } | null;
   comms: { who: string; text: string; age: number; left: number } | null;
@@ -83,12 +88,33 @@ export function drawHud(x: Ctx, s: HudState) {
   for (let i = 0; i < 4; i++) { const a = (i * Math.PI) / 2 + Math.PI / 4; x.beginPath(); x.arc(cx, cy, r, a - 0.45, a + 0.45); x.stroke(); }
   x.fillStyle = col; x.fillRect(cx - 1, cy - 1, 2, 2);
 
+  // hit marker: four diagonal ticks that snap out and fade. It is the one bit
+  // of feedback that tells you a shot LANDED rather than went past — red and
+  // bigger when that shot finished the alien off.
+  if (s.hitMark > 0) {
+    const t = Math.min(1, s.hitMark), spread = (s.hitKill ? 16 : 11) + (1 - t) * 10;
+    x.save(); x.globalAlpha = t; x.lineCap = "round";
+    x.strokeStyle = s.hitKill ? "#ff8a5c" : "#ffffff"; x.lineWidth = s.hitKill ? 4 : 3;
+    x.shadowColor = x.strokeStyle as string; x.shadowBlur = 8;
+    for (let i = 0; i < 4; i++) {
+      const a = (i * Math.PI) / 2 + Math.PI / 4, ca = Math.cos(a), sa = Math.sin(a);
+      x.beginPath(); x.moveTo(cx + ca * spread, cy + sa * spread); x.lineTo(cx + ca * (spread + 9), cy + sa * (spread + 9)); x.stroke();
+    }
+    x.restore();
+  }
+
+  drawExposure(x, s.exposure);
+
   drawCompass(x, s);
 
   // top right: where you are
   x.textAlign = "right";
   x.fillStyle = "rgba(6,14,28,0.5)"; x.beginPath(); x.roundRect(W - 300, 22, 278, 52, 12); x.fill();
-  label(x, s.level.toUpperCase(), W - 38, 42, "rgba(210,235,255,0.9)", 13);
+  // ⚠️ shrink to fit rather than trusting the title to be short: "LEVEL 4 —
+  // CARGO HOLD" at 13px with 2px letter spacing runs straight out of the panel.
+  x.save(); x.font = `bold 13px ${FONT}`; x.letterSpacing = "2px";
+  const titleW = x.measureText(s.level.toUpperCase()).width; x.restore();
+  label(x, s.level.toUpperCase(), W - 38, 42, "rgba(210,235,255,0.9)", titleW > 246 ? Math.max(9, (13 * 246) / titleW) : 13);
   x.font = `bold 16px ${FONT}`; x.fillStyle = s.aliensLeft ? "#e8f2ff" : GOOD;
   x.fillText(s.aliensLeft ? `${s.aliensLeft} alien${s.aliensLeft === 1 ? "" : "s"} on this deck` : "Deck clear", W - 38, 64);
   x.textAlign = "left";
@@ -138,6 +164,21 @@ export function drawHud(x: Ctx, s: HudState) {
     x.fillStyle = "#0a1830"; x.fillRect(kx + 6, AY - 32, 14, 9); x.fillStyle = "#eaf6ff"; x.fillRect(kx + 24, AY - 30, 16, 3); kx -= 10;
   }
   if (s.radTime > 0) { x.textAlign = "right"; x.font = `bold 15px ${FONT}`; x.fillStyle = "#f2d64a"; x.fillText(`RAD SUIT ${Math.ceil(s.radTime)}s`, kx, AY - 18); x.textAlign = "left"; }
+  // grenades, above the blaster panel — only once you have one, so the earlier
+  // levels' visors look exactly as they did
+  if (s.grenades > 0) {
+    const GX = AX + 18, GY = AY - 44;
+    x.fillStyle = "rgba(6,14,28,0.6)"; x.beginPath(); x.roundRect(GX - 8, GY - 22, 150, 34, 10); x.fill();
+    x.strokeStyle = CYAN_DIM; x.lineWidth = 1.5; x.stroke();
+    for (let i = 0; i < s.grenades; i++) {
+      const gx = GX + i * 17;
+      x.fillStyle = "#2a3342"; x.fillRect(gx + 4, GY - 18, 5, 4);                                  // the fuse cap
+      x.fillStyle = "#8ba179"; x.beginPath(); x.roundRect(gx, GY - 14, 12, 17, 5); x.fill();
+      x.fillStyle = "#5d6f52"; x.fillRect(gx, GY - 8, 12, 1); x.fillRect(gx, GY - 3, 12, 1);       // the ribs
+      x.fillStyle = "#ffb640"; x.fillRect(gx + 1, GY - 12, 10, 2);
+    }
+    x.font = `bold 13px ${FONT}`; x.fillStyle = "rgba(210,235,255,0.9)"; x.fillText("G · THROW", GX + 60, GY - 2);
+  }
 
   // a big name when you walk into a new room
   if (s.area && s.area.t > 0) {
@@ -148,6 +189,19 @@ export function drawHud(x: Ctx, s: HudState) {
     x.fillStyle = "#eaf6ff"; x.shadowColor = CYAN; x.shadowBlur = 18; x.fillText(s.area.name.toUpperCase(), W / 2, 170); x.restore();
   }
   if (s.prompt) drawPrompt(x, s.prompt.key, s.prompt.text);
+}
+
+// How visible you are, under the reticle. Deliberately small and quiet: it is
+// there so the darkness in the storage deck is a RULE you can read rather than
+// a guess, but it must not sit in the middle of the picture shouting.
+function drawExposure(x: Ctx, e: number) {
+  const cx = HUD_W / 2, y = HUD_H / 2 + 44, w = 96;
+  const col = e < 0.34 ? "rgba(47,212,138,0.85)" : e < 0.7 ? "rgba(255,182,64,0.85)" : "rgba(255,93,108,0.9)";
+  x.fillStyle = "rgba(127,230,255,0.13)"; x.beginPath(); x.roundRect(cx - w / 2, y, w, 5, 3); x.fill();
+  x.fillStyle = col; x.beginPath(); x.roundRect(cx - w / 2, y, Math.max(3, w * Math.min(1, e)), 5, 3); x.fill();
+  x.save(); x.textAlign = "center"; x.font = `bold 10px ${FONT}`; x.letterSpacing = "2px";
+  x.fillStyle = "rgba(170,210,240,0.65)"; x.fillText(e < 0.34 ? "HIDDEN" : e < 0.7 ? "SEEN" : "EXPOSED", cx, y + 18);
+  x.restore();
 }
 
 // Heading strip along the top, like a helmet's compass. The diamond is where
@@ -284,13 +338,20 @@ export function drawQuiz(x: Ctx, q: QuizView) {
 export function drawScreen(x: Ctx, title: string, lines: string[], footer: string, accent = CYAN) {
   const W = HUD_W, H = HUD_H;
   x.save(); x.fillStyle = "rgba(2,6,14,0.62)"; x.fillRect(0, 0, W, H);
-  x.font = `20px ${FONT}`; const widest = Math.max(...lines.map((l) => x.measureText(l).width), 520);
+  // ⚠️ This panel is sized to its widest line and does not wrap, so one long
+  // line of controls pushes it off both edges of the screen. Shrink the text
+  // instead: the controls card is already within about 20px of the edge.
+  x.font = `20px ${FONT}`;
+  const natural = Math.max(...lines.map((l) => x.measureText(l).width), 520);
+  const size = natural + 120 > W - 40 ? Math.max(13, (20 * (W - 160)) / natural) : 20;
+  x.font = `${size}px ${FONT}`;
+  const widest = Math.max(...lines.map((l) => x.measureText(l).width), 520);
   const PW = widest + 120, PH = 170 + lines.length * 34, X = W / 2 - PW / 2, Y = H / 2 - PH / 2;
   x.fillStyle = "rgba(6,14,28,0.88)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 24); x.fill();
   x.strokeStyle = accent; x.lineWidth = 2; x.stroke(); x.fillStyle = accent; x.fillRect(X + 30, Y, PW - 60, 3);
   x.textAlign = "center";
   x.fillStyle = accent; x.font = `bold 46px ${FONT}`; x.shadowColor = accent; x.shadowBlur = 20; x.fillText(title, W / 2, Y + 70); x.shadowBlur = 0;
-  x.fillStyle = "#e8f2ff"; x.font = `20px ${FONT}`;
+  x.fillStyle = "#e8f2ff"; x.font = `${size}px ${FONT}`;
   lines.forEach((l, i) => x.fillText(l, W / 2, Y + 118 + i * 34));
   x.fillStyle = "#ffd65a"; x.font = `bold 21px ${FONT}`; x.fillText(footer, W / 2, Y + PH - 30);
   x.restore();

@@ -107,7 +107,7 @@ export default async function EarlyAccessPage() {
       <section className="mt-12 rounded-2xl border border-black/5 p-6 dark:border-white/10">
         <h2 className="text-lg font-semibold">Next up: the boss</h2>
         <p className="mt-2 max-w-2xl text-sm opacity-70">
-          Levels 1–3 are in. The final fight with the boss in the business suit comes next.
+          Levels 1–4 are in, including the dark cargo hold you have to sneak through. The final fight with the boss in the business suit comes next.
         </p>
       </section>
 

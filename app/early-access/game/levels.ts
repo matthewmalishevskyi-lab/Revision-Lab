@@ -335,4 +335,150 @@ export const LEVEL3: LevelDef = (() => {
   return { INTRO, HINTS, OBJECTIVES, TITLE: "Level 3 — Crew deck", W, H, DUCT_H, AREAS, DOORS, GRILLES, COVER, WALL_OVERRIDE, FLOORS, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
 })();
 
-export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3];
+// Level 4: "Cargo hold" — Matthew's ask: "a storage level where you also have
+// to be sneaky", plus grenades. Two things make it a stealth level rather than
+// a shooting level with the lights off:
+//
+//   1. TALL SHELVING, not crates. Waist-high cover stops a bolt but you can see
+//      straight over it, so a room full of crates hides nobody. The stacks are
+//      full-height blocks, so the only sight lines are along the aisles — which
+//      is what lets you move from one to the next while something walks past.
+//   2. THE DARK IS A RULE. The hold's own light is low and only a few lamps
+//      make pools, and how far an alien can see you is worked out from the
+//      light where you stand and whether you are still, walking or running
+//      (tickExposure in game.ts). Sprinting down a lit aisle is genuinely
+//      worse than walking round the dark edge, and the visor says so.
+//
+// There are three ways east: the lit main aisle (fast, watched), the dark
+// perimeter walkways, and a floor duct out of the intake bay that comes up
+// behind the shelving. The exit needs the keycard from the loading office, so
+// the route has to double back through territory you have already crept past.
+
+export const LEVEL4: LevelDef = (() => {
+  const W = 46, H = 30, DUCT_H = 0.7;
+  const duct: Omit<LevelDef["AREAS"][string], "r"> = { name: "", light: [0.5, 0.55, 0.7], wall: "duct", floor: "fDuct", ceil: "duct", ceilH: DUCT_H };
+  const AREAS: NonNullable<LevelDef["AREAS"]> = {
+    lift:    { r: [3, 14, 7, 18],   name: "1 Lift",            light: [0.82, 0.88, 1.0],  wall: "panel",    floor: "fTile",  ceil: "light" },
+    corA:    { r: [9, 16, 11, 17],  name: "",                  light: [0.42, 0.47, 0.62], wall: "corridor", floor: "fGrate", ceil: "corridor" },
+    intake:  { r: [12, 12, 19, 23], name: "2 Intake bay",      light: [0.32, 0.36, 0.5],  wall: "hub",      floor: "fTile",  ceil: "dark" },
+    corC:    { r: [17, 11, 18, 11], name: "",                  light: [0.5, 0.56, 0.72],  wall: "corridor", floor: "fGrate", ceil: "corridor" },
+    office:  { r: [14, 4, 21, 9],   name: "4 Loading office",  light: [0.85, 0.9, 1.05],  wall: "control",  floor: "fBridge", ceil: "light" },
+    corB:    { r: [21, 17, 22, 18], name: "",                  light: [0.42, 0.47, 0.62], wall: "corridor", floor: "fGrate", ceil: "corridor" },
+    stacks:  { r: [23, 5, 36, 24],  name: "3 The stacks",      light: [0.24, 0.28, 0.4],  wall: "hub",      floor: "fTile",  ceil: "dark", ceilH: 1.6 },
+    dock:    { r: [38, 13, 43, 21], name: "5 Freight lift",    light: [0.8, 0.86, 1.0],   wall: "panel",    floor: "fTile",  ceil: "light" },
+    // the ordnance locker: behind a false wall in the intake bay, three guards
+    // sitting on the grenades. Nothing needs it — that is what a stash is for.
+    store:   { r: [6, 22, 10, 27],  name: "Ordnance locker",   light: [0.34, 0.38, 0.52], wall: "pipes",    floor: "fTile",  ceil: "dark" },
+    // the floor duct out of the intake bay, along under the stacks
+    d1: { ...duct, r: [15, 24, 15, 26] },
+    d2: { ...duct, r: [16, 26, 30, 26] },
+    d3: { ...duct, r: [30, 25, 30, 25] }, // comes up behind the shelving
+  };
+  const DOORS: NonNullable<LevelDef["DOORS"]> = [
+    { cells: [[8, 16], [8, 17]], tex: "door" },            // out of the lift
+    { cells: [[17, 10], [18, 10]], tex: "door" },          // up into the loading office
+    { cells: [[20, 17], [20, 18]], tex: "door" },          // intake bay into the stacks corridor
+    { cells: [[22, 6], [22, 7]], tex: "door" },            // office straight into the stacks
+    { cells: [[37, 16], [37, 17]], tex: "keyDoor", key: "blue" },
+    { cells: [[44, 16], [44, 17]], tex: "exit", exit: true },
+    { cells: [[11, 22]], tex: "secret", secret: true },    // into the ordnance locker
+  ];
+  // See-through grilles: from the duct you can watch the aisle above before
+  // deciding to come up.
+  const GRILLES: NonNullable<LevelDef["GRILLES"]> = [[25, 25], [28, 25]];
+  // Full-height shelving. Each unbroken run is its own block so the texture
+  // wraps round that run rather than round the whole room.
+  const SHELVES: [number, number][][] = [];
+  for (const y of [8, 12, 16, 20]) {
+    SHELVES.push([25, 26, 27, 28].map((x): [number, number] => [x, y]));
+    SHELVES.push([31, 32, 33, 34].map((x): [number, number] => [x, y]));
+  }
+  const BLOCKS: NonNullable<LevelDef["BLOCKS"]> = SHELVES.map((cells) => ({ cells, tex: "cargo" }));
+  const FLOORS: NonNullable<LevelDef["FLOORS"]> = [
+    [15, 23, 15, 23, "fDuct"],      // the vent mouth in the intake bay floor
+    [38, 13, 38, 21, "fHazard"],
+    [23, 17, 36, 19, "fGrate"],     // the main aisle, so it reads as the obvious way
+  ];
+  // Waist-high cover, left in the walkways where a firefight can actually start.
+  const COVER: NonNullable<LevelDef["COVER"]> = [
+    ...[[24, 10], [35, 8], [35, 13], [24, 20], [36, 22]].map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...[[13, 14], [14, 14], [13, 21], [18, 13], [18, 21]].map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...[[15, 8], [16, 8]].map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...[[39, 15], [42, 19]].map((c): [number, number, string] => [c[0], c[1], "console"]),
+    [7, 23, "crate"], [9, 26, "crate"],
+  ];
+  const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
+    if (ai === "lift" && f === FACE.E && x === 2 && y === 16) return "exit";
+    if (ai === "office" && f === FACE.N && y === 3) return x % 3 === 0 ? "computer" : "window";
+    if (ai === "stacks" && (x === 22 || x === 37)) return y % 3 === 0 ? "cargo" : "panel";
+    if (ai === "intake" && f === FACE.N && y === 24) return x % 4 === 0 ? "cargo" : "panel";
+  };
+  const DECALS: NonNullable<LevelDef["DECALS"]> = [
+    [8, 15, FACE.E, "camera"], [12, 18, FACE.W, "arrowR"], [11, 21, FACE.E, "cables"], [11, 20, FACE.E, "screen"],
+    [16, 12, FACE.S, "sign"], [17, 9, FACE.S, "arrowR"], [13, 3, FACE.S, "screen"], [22, 4, FACE.W, "keycard"],
+    [20, 16, FACE.N, "arrowR", true], [23, 4, FACE.S, "camera"], [22, 19, FACE.E, "sign"],
+    [37, 15, FACE.W, "keycard"], [37, 19, FACE.W, "arrowR", true], [37, 11, FACE.W, "camera"],
+    [44, 20, FACE.W, "arrowR", true], [38, 22, FACE.N, "sign"], [30, 27, FACE.N, "cables"],
+    [22, 12, FACE.E, "arrowR", true], [22, 22, FACE.E, "arrowR", true],
+  ];
+  const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
+    { t: "lamp", x: 3.6, y: 14.6 }, { t: "lamp", x: 7.4, y: 14.6 },
+    // intake bay: dark, two of them, and the first grenade in plain sight
+    { t: "grenade", x: 13.5, y: 16.5 }, { t: "ammo", x: 18.5, y: 22.5 }, { t: "health", x: 12.6, y: 12.6 },
+    { t: "alienBack", x: 16.5, y: 19.5, face: -1.57, stomp: true }, { t: "alien", x: 18.4, y: 15.5, face: 3.1 },
+    { t: "lamp", x: 15.5, y: 12.5 }, { t: "canister", x: 19.4, y: 12.6 }, { t: "canister", x: 12.5, y: 23.4 },
+    // loading office: lit, guarded, and it has the keycard
+    { t: "keycard", x: 20.5, y: 5.5 }, { t: "alien", x: 17.5, y: 5.5, face: 1.57 }, { t: "alien", x: 20.4, y: 8.5, face: 3.1 },
+    { t: "vest", x: 14.6, y: 4.6 }, { t: "lamp", x: 21.4, y: 4.6 },
+    // the stacks: aisles, a few lamps, and six of them walking between them
+    { t: "alien", x: 24.5, y: 7.5, face: 1.57 }, { t: "alienBack", x: 29.5, y: 10.5, face: -1.57, stomp: true },
+    { t: "alien", x: 33.5, y: 14.5, face: 3.1 }, { t: "alien", x: 26.5, y: 18.5, face: 0 },
+    { t: "alienBack", x: 35.5, y: 21.5, face: 1.57, stomp: true }, { t: "alien", x: 32.5, y: 6.5, face: 2.4 },
+    { t: "ammo", x: 29.5, y: 6.5 }, { t: "ammo", x: 23.5, y: 23.5 }, { t: "health", x: 36.5, y: 5.5 },
+    { t: "grenade", x: 29.5, y: 18.5 }, { t: "lamp", x: 29.5, y: 17.5 }, { t: "lamp", x: 23.5, y: 13.5 },
+    { t: "canister", x: 30.4, y: 23.5 }, { t: "canister", x: 29.6, y: 23.5 },
+    // freight lift
+    { t: "alien", x: 40.5, y: 15.5, face: 3.1 }, { t: "alien", x: 41.5, y: 20.5, face: 2.4 },
+    { t: "health", x: 42.5, y: 14.5 }, { t: "lamp", x: 38.6, y: 13.6 }, { t: "lamp", x: 38.6, y: 20.4 },
+    // the ordnance locker: three guards sitting on the grenades
+    { t: "alien", x: 6.6, y: 23.5, face: 1.57 }, { t: "alien", x: 9.5, y: 22.6, face: 1.57 }, { t: "alien", x: 8.0, y: 26.5, face: -1.57 },
+    { t: "grenade", x: 6.6, y: 26.5 }, { t: "grenade", x: 9.5, y: 26.4 }, { t: "grenade", x: 8.0, y: 22.6 },
+    { t: "health", x: 6.5, y: 24.6 }, { t: "ammo", x: 9.5, y: 24.5 }, { t: "lamp", x: 10.4, y: 27.4 },
+  ];
+  // Only a handful of pools of light, and the level is built round where they are.
+  const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
+    { x: 29.5, y: 18, rgb: [0.5, 0.53, 0.62], r: 5 },     // the main aisle: the fast way, and the watched one
+    { x: 34.5, y: 18, rgb: [0.4, 0.43, 0.52], r: 4 },
+    { x: 23.5, y: 13.5, rgb: [0.3, 0.33, 0.42], r: 3.5 },
+    { x: 36.5, y: 8, rgb: [0.26, 0.3, 0.4], r: 3 },
+    { x: 15.5, y: 12.5, rgb: [0.3, 0.33, 0.42], r: 3.5 },
+    { x: 20.5, y: 9.5, rgb: [0.3, 0.34, 0.45], r: 3.5 },  // light spilling out of the office door
+    { x: 8, y: 25, rgb: [0.12, 0.16, 0.26], r: 3.5 },
+  ];
+  const START = { x: 5.5, y: 16.5, angle: 0 };
+  const ROUTE = [[5.5, 16.5], [10.5, 16.5], [15, 16.5], [17.5, 12.5], [17.5, 8], [20.5, 5.5], [17.5, 8], [17.5, 12.5], [16, 18], [21.5, 17.5], [24, 17.5], [29.5, 17.5], [34, 17.5], [36.5, 16.5], [40, 16.5], [43, 16.5]];
+  const ALT_ROUTE = [[15.5, 23.5], [15.5, 25.5], [18, 26.5], [28, 26.5], [30.5, 25.5], [30.5, 23], [30.5, 18.5], [23.5, 6.5], [21.5, 6.5]];
+  const LABELS = { lift: [5.5, 12.4], intake: [15.5, 24.6], office: [17.5, 2.4], stacks: [29.5, 3.4], dock: [40.5, 11.4] };
+  const LEGEND = [["grenade", "Grenade (G to throw)"], ["keycard", "Blue keycard (opens the freight lift)"]];
+  // ⚠️ Each of these has to fit the comms panel: it wraps at four lines of about
+  // 40 characters, and anything past that is simply never said.
+  const INTRO = "The cargo hold, and most of the lights are out. Stay dark, walk instead of running, and they won't see you coming.";
+  const HINTS = {
+    intake: "Dark in here. The SEEN bar under your sights says how close they have to get. And that west wall sounds hollow…",
+    store: "The ordnance locker! Three grenades, and three of them guarding it.",
+    corC: "Stairs up to the loading office. It's lit up there, so they will see you coming.",
+    office: "The keycard for the freight lift should be on a desk in here.",
+    stacks: "The shelving is too tall to see over: they can only spot you down an aisle. The lit middle one is the risky way.",
+    d1: "A cargo duct, running right under the stacks. Look through the grilles before you come up.",
+    d3: "Out behind the shelving, and nothing has seen you.",
+    dock: "The freight lift is on the far wall. Walk up to it and press E.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Find the blue keycard", at: [20.5, 5.5], until: "keycard" },
+    { text: "Reach the freight lift", at: [43, 16.5] },
+  ];
+  const LOCKED_HINT = "Locked. The freight lift wants the blue keycard — try the loading office.";
+  return { INTRO, HINTS, OBJECTIVES, LOCKED_HINT, TITLE: "Level 4 — Cargo hold", W, H, DUCT_H, AREAS, DOORS, GRILLES, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
+})();
+
+export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4];

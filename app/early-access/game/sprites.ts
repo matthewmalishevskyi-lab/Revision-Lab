@@ -73,6 +73,65 @@ const SPRITE_DEFS: Record<string, SpriteDef> = {
     x.fillStyle = "#1c9bff"; x.beginPath(); x.roundRect(2, 2, 36, 24, 4); x.fill(); g.fillStyle = "#fff"; g.beginPath(); g.roundRect(2, 2, 36, 24, 4); g.fill();
     x.fillStyle = "#0a1830"; x.fillRect(6, 8, 12, 8); x.fillStyle = "#eaf6ff"; x.fillRect(22, 8, 12, 2); x.fillRect(22, 13, 8, 2);
   } },
+  // ── things that only exist for a fraction of a second ─────────────────────
+  //
+  // These are drawn with `alpha` and `scale` (see render.ts) rather than as
+  // solid objects, so one small drawing becomes a fireball by growing and
+  // fading. Everything here is pure glow: it is put in the GLOW layer as well
+  // as the base, so distance fog never dulls it — an explosion twelve squares
+  // away should still look like an explosion.
+  blast: { w: 96, h: 96, height: 0.9, draw(x, g) {
+    const core = x.createRadialGradient(48, 48, 2, 48, 48, 46);
+    core.addColorStop(0, "#ffffff"); core.addColorStop(0.18, "#fff6c8");
+    core.addColorStop(0.42, "#ffb340"); core.addColorStop(0.72, "rgba(255,90,30,0.55)");
+    core.addColorStop(1, "rgba(180,40,10,0)");
+    x.fillStyle = core; x.beginPath(); x.arc(48, 48, 46, 0, 7); x.fill();
+    g.fillStyle = core; g.beginPath(); g.arc(48, 48, 46, 0, 7); g.fill();
+    // a few lumps, so it is not a perfect circle
+    for (const [cx, cy, r] of [[22, 34, 14], [70, 30, 12], [34, 70, 13], [66, 66, 11]]) {
+      const lg = x.createRadialGradient(cx, cy, 1, cx, cy, r);
+      lg.addColorStop(0, "rgba(255,240,190,0.9)"); lg.addColorStop(1, "rgba(255,120,40,0)");
+      x.fillStyle = lg; x.beginPath(); x.arc(cx, cy, r, 0, 7); x.fill();
+      g.fillStyle = lg; g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fill();
+    }
+  } },
+  // grey smoke, left behind once the fire has gone
+  smoke: { w: 64, h: 64, height: 0.7, draw(x) {
+    const sg = x.createRadialGradient(32, 32, 2, 32, 32, 30);
+    sg.addColorStop(0, "rgba(150,150,158,0.75)"); sg.addColorStop(0.6, "rgba(90,92,102,0.4)"); sg.addColorStop(1, "rgba(60,62,72,0)");
+    x.fillStyle = sg; x.beginPath(); x.arc(32, 32, 30, 0, 7); x.fill();
+  } },
+  // where a shot lands: a small cyan star of sparks
+  spark: { w: 48, h: 48, height: 0.25, draw(x, g) {
+    const c = x.createRadialGradient(24, 24, 0.5, 24, 24, 16);
+    c.addColorStop(0, "#ffffff"); c.addColorStop(0.3, "#d6f7ff"); c.addColorStop(0.65, "rgba(127,230,255,0.65)"); c.addColorStop(1, "rgba(58,168,255,0)");
+    x.fillStyle = c; x.beginPath(); x.arc(24, 24, 16, 0, 7); x.fill();
+    g.fillStyle = c; g.beginPath(); g.arc(24, 24, 16, 0, 7); g.fill();
+    x.strokeStyle = "rgba(240,252,255,0.9)"; x.lineWidth = 2; x.lineCap = "round";
+    g.strokeStyle = x.strokeStyle; g.lineWidth = 2; g.lineCap = "round";
+    for (let i = 0; i < 6; i++) {
+      const a = (i * Math.PI) / 3 + 0.3, r = i % 2 ? 22 : 15;
+      for (const ctx of [x, g]) { ctx.beginPath(); ctx.moveTo(24 + Math.cos(a) * 5, 24 + Math.sin(a) * 5); ctx.lineTo(24 + Math.cos(a) * r, 24 + Math.sin(a) * r); ctx.stroke(); }
+    }
+  } },
+  // the player's own shot, in flight: a bright streak, longer than it is tall
+  tracer: { w: 96, h: 24, height: 0.09, draw(x, g) {
+    const t = x.createLinearGradient(0, 0, 96, 0);
+    t.addColorStop(0, "rgba(127,230,255,0)"); t.addColorStop(0.55, "rgba(180,244,255,0.85)");
+    t.addColorStop(0.85, "#eaffff"); t.addColorStop(1, "rgba(255,255,255,0)");
+    for (const ctx of [x, g]) { ctx.fillStyle = t; ctx.beginPath(); ctx.ellipse(48, 12, 47, 6, 0, 0, 7); ctx.fill(); }
+  } },
+  // grenades on the floor, and the one you have thrown
+  grenade: { w: 48, h: 48, height: 0.22, draw(x, g) {
+    for (const [ox, oy] of [[6, 14], [26, 10], [16, 24]]) {
+      const b = x.createLinearGradient(ox, oy, ox + 18, oy + 20);
+      b.addColorStop(0, "#5d6f52"); b.addColorStop(0.45, "#8ba179"); b.addColorStop(1, "#3f4c38");
+      x.fillStyle = b; x.beginPath(); x.roundRect(ox, oy, 17, 21, 6); x.fill();
+      x.fillStyle = "#2a3342"; x.fillRect(ox + 5, oy - 4, 7, 5);
+      x.fillStyle = "#ffb640"; x.fillRect(ox + 2, oy + 7, 13, 3);
+      g.fillStyle = "#fff"; g.fillRect(ox + 2, oy + 7, 13, 3);
+    }
+  } },
   health: { w: 48, h: 40, height: 0.16, draw(x, g) { // a white med-kit with a BLUE plus: a red cross is a protected emblem
     x.fillStyle = "#f4f7fb"; x.fillRect(2, 8, 44, 30); x.fillStyle = "#bcc7d3"; x.fillRect(2, 32, 44, 6); x.fillStyle = "#3f4b5c"; x.fillRect(16, 2, 16, 7);
     x.fillStyle = "#1c9bff"; x.fillRect(20, 12, 8, 18); x.fillRect(15, 17, 18, 8); g.fillStyle = "#fff"; g.fillRect(20, 12, 8, 18); g.fillRect(15, 17, 18, 8);

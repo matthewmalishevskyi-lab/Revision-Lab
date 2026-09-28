@@ -10,6 +10,7 @@ import { ACCOUNTS_ENABLED } from "../../lib/site";
 import { SUBJECTS, getSubject } from "../../lib/subjects";
 import { buildGameQuestions, countGameQuestions, playableTopics } from "../../lib/game-questions";
 import { GameClient } from "./GameClient";
+import { LEVELS } from "../game/levels";
 
 // Play the alien game (developer early access). Three steps, all plain links
 // and a GET form, so nothing here needs JavaScript until the game starts:
@@ -33,7 +34,7 @@ export default async function PlayPage({ searchParams }: Props) {
   const subject = getSubject(list(q.subject)[0] ?? "");
   const mascotRaw = list(q.mascot)[0] ?? "";
   const mascot = (mascotRaw in MASCOTS ? mascotRaw : "pixel") as keyof typeof MASCOTS;
-  const level = Math.min(3, Math.max(1, Number(list(q.level)[0]) || 1));
+  const level = Math.min(LEVELS.length, Math.max(1, Number(list(q.level)[0]) || 1));
 
   // 3 · play
   if (subject && list(q.topic).length) {
@@ -114,13 +115,23 @@ export default async function PlayPage({ searchParams }: Props) {
 
           <h2 className="mt-8 text-lg font-semibold">4 · Start on level</h2>
           <div className="mt-3 flex flex-wrap gap-3">
-            {[["1", "Boarding"], ["2", "Meltdown"], ["3", "Crew deck"]].map(([n, name]) => (
+            {/* derived from LEVELS, so a new level appears here on its own rather
+                than being a second list somebody has to remember to update */}
+            {LEVELS.map((l, i) => [String(i + 1), l.TITLE.replace(/^Level \d+ — /, "")]).map(([n, name]) => (
               <label key={n} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-xl border border-black/10 px-4 text-sm has-[:checked]:border-blue-500 has-[:checked]:bg-blue-500/10 dark:border-white/10">
                 <input type="radio" name="level" value={n} defaultChecked={n === "1"} /> Level {n} · {name}
               </label>
             ))}
           </div>
-          <p className="mt-2 text-xs opacity-60">Early access lets you jump ahead. Levels 2 and 3 start you with the blaster.</p>
+          {/* which levels have grenades is read off the levels themselves, not
+              written down here, so it stays true when a level is added */}
+          <p className="mt-2 text-xs opacity-60">
+            Early access lets you jump ahead. Levels 2 and up start you with the blaster
+            {(() => {
+              const withNades = LEVELS.map((l, i) => (l.SPRITES.some((s) => s.t === "grenade") ? i + 1 : 0)).filter(Boolean);
+              return withNades.length ? `; grenades are only on level${withNades.length > 1 ? "s" : ""} ${withNades.join(" and ")}, and starting there gives you one` : "";
+            })()}.
+          </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <button type="submit" className="min-h-11 rounded-full bg-neutral-900 px-6 font-semibold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900">Start the game →</button>
