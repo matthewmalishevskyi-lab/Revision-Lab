@@ -6,6 +6,7 @@ import { PixelCompanion } from "../components/PixelCompanion";
 import { ProgressRing } from "../components/ProgressRing";
 import { SiteHeader } from "../components/SiteHeader";
 import { DeleteProgressForm } from "./DeleteProgressForm";
+import { ShipsLog } from "./ShipsLog";
 import { DevAccessForm } from "./DevAccessForm";
 import { hasDevAccess } from "../lib/dev-access";
 import { WeeklyChart } from "../components/WeeklyChart";
@@ -405,6 +406,9 @@ export default async function ProgressPage() {
           when there is a backend to delete from — with PROGRESS_ENABLED off
           nothing is being recorded, so a delete button would promise to
           remove something that was never there. */}
+      {/* renders nothing unless a deck of the alien game has been finished */}
+      <ShipsLog />
+
       {PROGRESS_ENABLED && (
         <section className="mt-14 border-t border-black/5 pt-8 dark:border-white/10">
           <h2 className="text-lg font-semibold">Delete your progress history</h2>

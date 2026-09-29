@@ -19,6 +19,7 @@ import { buildSprites, type Sprite } from "./sprites";
 import { buildTextures, type TexSet } from "./textures";
 import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
 import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type LevelDef, type World } from "./world";
+import { formatClock, gradeFor, scoreRun, type LevelBest, type Run } from "../../lib/shipsLog";
 
 export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string; why?: string };
 export type GameOptions = {
@@ -31,6 +32,13 @@ export type GameOptions = {
   mascotName?: string;
   /** Called on the click that starts or resumes play (the page asks for full screen). */
   onStart?: () => void;
+  /** Called once a deck is cleared, so the page can keep the ship's log. */
+  onLevelDone?: (run: Run) => void;
+  /** The best run on a deck so far, asked for the moment one is finished, so
+   *  the finish screen can say what there is to beat. A FUNCTION rather than a
+   *  value: four decks can be finished without a page reload, and a snapshot
+   *  taken when the game mounted would still be showing the first one's. */
+  best?: (level: string) => LevelBest | undefined;
 };
 
 type Alien = { x: number; y: number; face: number; hp: number; state: "idle" | "noticing" | "alert" | "dead"; timer: number; cooldown: number; lastX: number; lastY: number; hurt: number; strafe: number; strafeT: number };
@@ -63,6 +71,14 @@ const DECOR = new Set(["lamp", "canister", "holo"]);
 // one round a corner protects you from your own grenade.
 const NADE_KILL_R = 0.9, NADE_HURT_R = 2.4, NADE_DMG = 60, NADE_SELF = 85;
 const NADE_FUSE = 2.0, NADE_MAX = 3, NADE_SPEED = 7.2;
+
+// ⚠️ An alien you defeat drops a single cell, two times in five — and the
+// arithmetic is the whole point. Shooting one costs TWO cells and returns 0.4,
+// so the blaster is still paid for by answering questions and nothing else.
+// A knife kill or a stomp costs no cells at all, so creeping up on something
+// is the only way fighting pays. That is the incentive this adds: not "shoot
+// more", but "it is worth engaging rather than sprinting past everything".
+const DROP_CHANCE = 0.4;
 
 /** How long a WRONG answer stays on screen with the right one showing. Long
  *  enough to read a sentence; skippable with SPACE for anyone who does not
@@ -118,6 +134,8 @@ export class Game {
   private shake = 0;
   /** Does this deck have grenades on it? (See hasGrenades, above.) */
   private hasNades = false;
+  /** The best previous run on this deck, read once when it is finished. */
+  private bestBefore: LevelBest | undefined;
   /** Is this deck dark enough for the sneaking tip to be worth saying? Worked
    *  out from the baked light map, so it cannot disagree with what you see. */
   private dim = false;
@@ -442,6 +460,7 @@ export class Game {
       if (k.taken || Math.hypot(k.x - p.x, k.y - p.y) > 0.55) continue;
       if (k.t === "pistol") { p.hasPistol = true; p.weapon = "pistol"; p.ammo = 6; this.pickupMsg("Blaster · 6 cells"); this.hint("pistol", "Got it! Six shots. Press R and answer to recharge: three cells for a right answer, nothing for a wrong one."); }
       else if (k.t === "ammo") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 3); this.pickupMsg("Energy cells · +3"); }
+      else if (k.t === "cell") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 1); this.pickupMsg("Energy cell · +1"); }
       else if (k.t === "health") { if (p.health >= 100) continue; p.health = Math.min(100, p.health + 25); this.pickupMsg("Med-kit · +25"); }
       else if (k.t === "keycard") { p.keys.add("blue"); this.pickupMsg("Blue keycard"); this.hint("keycard", "The blue keycard! Now the locked door will open."); }
       else if (k.t === "radsuit") { p.radTime = 30; this.pickupMsg("Radiation suit · 30 s"); this.hint("radsuit", "Radiation suit on: you can wade through the coolant for 30 seconds."); }
@@ -782,6 +801,7 @@ export class Game {
   }
   private kill(a: Alien) {
     a.state = "dead"; a.hp = 0; this.stats.kills++;
+    if (Math.random() < DROP_CHANCE) this.pickups.push({ t: "cell", x: a.x, y: a.y, taken: false });
     this.beep(400, 60, 0.4, "sawtooth", 0.06); this.noise(0.22, 0.07, 1200, 160);
     for (let i = 0; i < 5; i++) {
       const ang = Math.random() * Math.PI * 2;
@@ -798,6 +818,12 @@ export class Game {
     if (!d) return;
     if (d.exit) {
       this.mode = "complete"; document.exitPointerLock(); this.beep(300, 900, 0.6, "triangle", 0.07);
+      // asked BEFORE the run is filed, so the screen shows what this run had
+      // to beat rather than a best that already includes it
+      this.bestBefore = this.opts.best?.(LEVELS[this.levelIndex].TITLE);
+      // reported here rather than on the Enter that moves on, so a player who
+      // closes the tab on the results screen still keeps the run
+      this.opts.onLevelDone?.(this.runResult());
       return;
     }
     if (d.secret && d.target === 0) { d.target = 1; this.say("A hidden room! Careful — something is usually guarding one."); this.beep(400, 1200, 0.5, "triangle", 0.06); }
@@ -875,6 +901,33 @@ export class Game {
     q.index++; q.picked = null; q.time = q.per;
   }
 
+  // ── how a finished deck is scored ─────────────────────────────────────────
+  /**
+   * Par time, in seconds: how long the level's own route is to walk, times
+   * three.
+   *
+   * ⚠️ Derived, not written down per level. A hand-written par is a second
+   * copy of "how big is this deck" that goes stale the moment a corridor moves
+   * — and this codebase has the scars. The route is already in the level for
+   * the play-test bots to follow, and the bots walk levels 1-4 in 36, 36, 31
+   * and 26 seconds flat out with nothing shooting at them; three times that
+   * leaves room to fight, answer questions and take a wrong turn.
+   */
+  private par(def: LevelDef) {
+    const route = def.ROUTE ?? [];
+    let d = 0;
+    for (let i = 1; i < route.length; i++) d += Math.hypot(route[i][0] - route[i - 1][0], route[i][1] - route[i - 1][1]);
+    return Math.max(45, (d / WALK) * 3);
+  }
+  private runResult(): Run {
+    const def = LEVELS[this.levelIndex];
+    return {
+      level: def.TITLE, seconds: this.stats.time, kills: this.stats.kills,
+      aliens: this.aliens.length, right: this.stats.right, wrong: this.stats.wrong,
+      par: this.par(def),
+    };
+  }
+
   /** The current objective, for the compass: the first one not yet done. */
   private objective() {
     const list = this.world.def.OBJECTIVES; if (!list?.length) return null;
@@ -946,7 +999,19 @@ export class Game {
     ], "Click to start");
     if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], "Click to carry on");
     if (this.mode === "dead") drawScreen(o, "Suit failure", [`${this.stats.kills} alien${this.stats.kills === 1 ? "" : "s"} defeated · ${this.stats.right} question${this.stats.right === 1 ? "" : "s"} right`], "Press Enter to try the level again", "#ff6b6b");
-    if (this.mode === "complete") drawScreen(o, "Level complete!", [`Time ${mins(this.stats.time)} · aliens ${this.stats.kills}/${this.aliens.length} · questions right ${this.stats.right}/${this.stats.right + this.stats.wrong}`, this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now."], "Press Enter to carry on", "#2fd48a");
+    if (this.mode === "complete") {
+      const run = this.runResult(), score = scoreRun(run), letter = gradeFor(score);
+      const asked = run.right + run.wrong;
+      const was = this.bestBefore;
+      const lines = [
+        `Grade ${letter} · ${score}/100`,
+        `Time ${mins(run.seconds)} (par ${mins(run.par)}) · aliens ${run.kills}/${run.aliens} · questions right ${run.right}/${asked}`,
+      ];
+      // the previous best, so there is something to beat next time
+      if (was) lines.push(`Your best on this deck: grade ${was.bestGrade} · ${formatClock(was.bestSeconds)} · ${was.mostKills} aliens`);
+      lines.push(this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now.");
+      drawScreen(o, `Level complete — ${letter}`, lines, "Press Enter to carry on", score >= 75 ? "#ffd65a" : "#2fd48a");
+    }
     if (this.mode === "done") drawScreen(o, "You finished early access!", [`All ${LEVELS.length} levels done. The boss is still being built.`], "Reload the page to play again", "#ffd65a");
     // frame timings, readable in dev tools (data-render-ms / data-hud-ms on the overlay)
     this.ov.dataset.renderMs = (t1 - t0).toFixed(1); this.ov.dataset.hudMs = (performance.now() - t1).toFixed(1);

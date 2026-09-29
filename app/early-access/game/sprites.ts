@@ -132,6 +132,16 @@ const SPRITE_DEFS: Record<string, SpriteDef> = {
       g.fillStyle = "#fff"; g.fillRect(ox + 2, oy + 7, 13, 3);
     }
   } },
+  // ONE energy cell, dropped by an alien you defeat. Deliberately smaller and
+  // plainer than the three-cell `ammo` pickup, because it is worth a third as
+  // much and should not be mistaken for it across a room.
+  cell: { w: 28, h: 40, height: 0.14, draw(x, g) {
+    x.fillStyle = "#3f4b5c"; x.fillRect(6, 6, 16, 32);
+    x.fillStyle = "#3aa8ff"; x.fillRect(9, 11, 10, 22);
+    g.fillStyle = "#fff"; g.fillRect(9, 11, 10, 22);
+    x.fillStyle = "#e4eaf1"; x.fillRect(10, 1, 8, 6);
+    x.fillStyle = "rgba(58,168,255,0.3)"; x.beginPath(); x.ellipse(14, 38, 12, 3, 0, 0, 7); x.fill();
+  } },
   health: { w: 48, h: 40, height: 0.16, draw(x, g) { // a white med-kit with a BLUE plus: a red cross is a protected emblem
     x.fillStyle = "#f4f7fb"; x.fillRect(2, 8, 44, 30); x.fillStyle = "#bcc7d3"; x.fillRect(2, 32, 44, 6); x.fillStyle = "#3f4b5c"; x.fillRect(16, 2, 16, 7);
     x.fillStyle = "#1c9bff"; x.fillRect(20, 12, 8, 18); x.fillRect(15, 17, 18, 8); g.fillStyle = "#fff"; g.fillRect(20, 12, 8, 18); g.fillRect(15, 17, 18, 8);

@@ -14,6 +14,8 @@ import { MascotDisplay } from "../../components/MascotDisplay";
 import type { MASCOTS } from "../../components/Mascots";
 import { recordAnswer } from "../../lib/progress-actions";
 import type { GameQuestion } from "../../lib/game-questions";
+import { readStorageRaw, writeStorageRaw } from "../../lib/browserStore";
+import { foldRun, parseLog, SHIPS_LOG_KEY } from "../../lib/shipsLog";
 import { Game } from "../game/game";
 
 export function GameClient({ subject, mascot, mascotName, reload, easy, startLevel = 0 }: { subject: string; mascot: keyof typeof MASCOTS; mascotName: string; reload: GameQuestion[]; easy: GameQuestion[]; startLevel?: number }) {
@@ -42,6 +44,15 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
       // clicking the title screen asks for full screen as well as the mouse
       onStart: () => { if (!document.fullscreenElement) shellRef.current?.requestFullscreen?.().catch(() => {}); },
       onAnswer: (q, correct) => { recordAnswer(subject, q.topic, correct, q.question).catch(() => {}); },
+      // The ship's log lives in this browser (see lib/shipsLog.ts for why).
+      // ⚠️ Both of these read the store at the moment they are called, never
+      // a copy taken when the game mounted: a session can finish four decks
+      // without a reload, and a stale copy would throw away the first three.
+      best: (level) => parseLog(readStorageRaw(SHIPS_LOG_KEY))[level],
+      onLevelDone: (run) => {
+        try { writeStorageRaw(SHIPS_LOG_KEY, JSON.stringify(foldRun(parseLog(readStorageRaw(SHIPS_LOG_KEY)), run))); }
+        catch { /* a full or blocked store must never interrupt the game */ }
+      },
     }, bloomRef.current ?? undefined);
     game.init().catch((error) => { console.error("[game]", error); setFailed(true); });
     const onFullscreen = () => setFull(document.fullscreenElement === shellRef.current);

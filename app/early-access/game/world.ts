@@ -45,6 +45,9 @@ export type LevelDef = {
   INTRO?: string;
   /** Tips the mascot gives the first time you walk into an area. */
   HINTS?: Record<string, string>;
+  /** The way through, as waypoints. The play-test bots walk it, and the
+   *  level's par time for its grade is worked out from how long it is. */
+  ROUTE?: number[][];
   /** Where the compass marker points, in order; each is done once you have its `until`. */
   OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "keycard" }[];
   LOCKED_HINT?: string;
