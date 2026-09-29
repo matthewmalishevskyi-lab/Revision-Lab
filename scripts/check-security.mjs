@@ -1514,9 +1514,18 @@ try {
     // Grenades belong to the deck that has them. Matthew: "add granates in the
     // storage level that is new, not everywhere." Both halves matter — a deck
     // with no grenades must not offer the key, and a deck with grenades must.
-    const controls = /if \(this\.mode === "title"\) drawScreen\(o, def\.TITLE, \[([\s\S]*?)\], "Click to start"\)/.exec(game)?.[1] ?? "";
-    expect(/this\.hasNades \? " · G: throw a grenade"/.test(controls),
-      "the game's controls card offers G on every level rather than only where grenades exist");
+    // ⚠️ Shape-independent on purpose. The first version of this pulled the
+    // controls card out with a regex that assumed one array literal, and the
+    // moment a second one was added for touch it matched nothing and reported
+    // the correct code as broken. What actually matters is simpler: every
+    // place the card offers G must be inside a `this.hasNades ?` ternary.
+    const gMentions = [...game.matchAll(/G: (?:throw a )?grenade/g)];
+    expect(gMentions.length > 0, "the controls card never mentions the grenade key at all");
+    for (const m of gMentions) {
+      const before = game.slice(Math.max(0, m.index - 60), m.index);
+      expect(/this\.hasNades \?\s*"[^"]*$/.test(before),
+        `the controls card offers "${m[0]}" without checking whether this deck has grenades`);
+    }
     expect(/hasGrenades\(LEVELS\[start\]\)/.test(game),
       "jumping ahead hands out a grenade by level number rather than by whether that level has any");
     const nadeLevels = LEVELS.filter((l) => l.SPRITES.some((s) => s.t === "grenade"));

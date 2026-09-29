@@ -12,7 +12,7 @@
 // Every answer is sent back to the site (onAnswer), so wrong ones go into
 // "Revisit your mistakes" exactly like practice questions.
 
-import { drawHud, drawQuiz, drawScreen, drawWeapon, HUD_H, HUD_W, type QuizView } from "./hud";
+import { drawHud, drawQuiz, drawScreen, drawWeapon, HUD_H, HUD_W, quizChoiceAt, touchButtons, TOUCH_STICK, type QuizView } from "./hud";
 import { LEVELS } from "./levels";
 import { makeRenderer, type Drawable } from "./render";
 import { buildSprites, type Sprite } from "./sprites";
@@ -136,6 +136,20 @@ export class Game {
   private hasNades = false;
   /** The best previous run on this deck, read once when it is finished. */
   private bestBefore: LevelBest | undefined;
+
+  // ── touch ────────────────────────────────────────────────────────────────
+  // A phone has no keyboard and no pointer lock, so the whole input model
+  // changes: a stick for moving, a drag for looking, circles for the keys, and
+  // the quiz answered by tapping the answer rather than pressing 1-4.
+  /** On a touchscreen? Decided once, from the device, not from the width —
+   *  a touchscreen laptop is wide and still has no keyboard shortcut for R. */
+  private touchDevice = false;
+  /** The finger driving the movement stick, and where it started. */
+  private stickTouch: { id: number; ox: number; oy: number; dx: number; dy: number } | null = null;
+  /** The finger looking around, and where it was last frame. */
+  private lookTouch: { id: number; x: number; y: number } | null = null;
+  /** Which on-screen buttons are held, by id, so they can be drawn pressed. */
+  private heldButtons = new Map<number, string>();
   /** Is this deck dark enough for the sneaking tip to be worth saying? Worked
    *  out from the baked light map, so it cannot disagree with what you see. */
   private dim = false;
@@ -173,6 +187,18 @@ export class Game {
     this.loadLevel(start);
     // lets automated play-tests reach inside (teleport, read state); harmless in a browser
     (this.ov as HTMLCanvasElement & { game?: Game }).game = this;
+    // ⚠️ `pointer: coarse` asks the right question — is the main input a
+    // finger — rather than "is the screen narrow", which a touchscreen laptop
+    // answers wrongly. `?touch=1` forces it on for testing on a desktop.
+    this.touchDevice = typeof window !== "undefined"
+      && (new URLSearchParams(location.search).get("touch") === "1"
+        || (window.matchMedia?.("(pointer: coarse)").matches ?? false));
+    if (this.touchDevice) {
+      this.ov.addEventListener("touchstart", this.onTouchStart, { passive: false });
+      this.ov.addEventListener("touchmove", this.onTouchMove, { passive: false });
+      this.ov.addEventListener("touchend", this.onTouchEnd, { passive: false });
+      this.ov.addEventListener("touchcancel", this.onTouchEnd, { passive: false });
+    }
     window.addEventListener("keydown", this.onKeyDown);
     window.addEventListener("keyup", this.onKeyUp);
     window.addEventListener("blur", this.onBlur);
@@ -182,6 +208,11 @@ export class Game {
     this.last = performance.now();
     this.raf = requestAnimationFrame(this.frame);
   }
+
+  /** Which answer is drawn at this point of the visor, or -1. Used by the
+   *  touch handler above and by the play-tests, which need to know where to
+   *  put a finger without reimplementing the panel's layout. */
+  quizAt(x: number, y: number) { return quizChoiceAt(x, y); }
 
   private destroyed = false;
   destroy() {
@@ -193,6 +224,10 @@ export class Game {
     document.removeEventListener("mousemove", this.onMouseMove);
     document.removeEventListener("pointerlockchange", this.onLockChange);
     this.ov.removeEventListener("mousedown", this.onMouseDown);
+    this.ov.removeEventListener("touchstart", this.onTouchStart);
+    this.ov.removeEventListener("touchmove", this.onTouchMove);
+    this.ov.removeEventListener("touchend", this.onTouchEnd);
+    this.ov.removeEventListener("touchcancel", this.onTouchEnd);
     if (document.pointerLockElement === this.ov) document.exitPointerLock();
     this.audio?.close();
   }
@@ -227,15 +262,17 @@ export class Game {
 
   // ── input ─────────────────────────────────────────────────────────────────
   private onLockChange = () => {
+    if (this.touchDevice) return; // there is no lock to lose on a phone
     const locked = document.pointerLockElement === this.ov;
     // (a stomp counts too: its clock must stop while you're away)
     if (!locked && (this.mode === "play" || this.mode === "reload" || this.mode === "stomp")) { this.pausedFrom = this.mode; this.mode = "paused"; this.keys.clear(); }
   };
-  private lock() { this.ov.requestPointerLock?.(); this.ensureAudio(); }
+  private lock() { if (!this.touchDevice) this.ov.requestPointerLock?.(); this.ensureAudio(); }
   private onMouseDown = (e: MouseEvent) => {
     if (this.mode === "title") { this.mode = "play"; this.opts.onStart?.(); this.lock(); return; }
     if (this.mode === "paused") { this.mode = this.pausedFrom; this.opts.onStart?.(); this.lock(); return; }
     if (this.mode === "dead" || this.mode === "complete" || this.mode === "done") return;
+    if (this.touchDevice) return; // a phone's tap is handled by onTouchStart
     if (document.pointerLockElement !== this.ov) { this.lock(); return; }
     if (e.button === 0 && (this.mode === "play" || this.mode === "reload")) this.fire();
   };
@@ -276,6 +313,86 @@ export class Game {
     if (digit === "2" && this.p.hasPistol) this.p.weapon = "pistol";
   };
   private onKeyUp = (e: KeyboardEvent) => { this.keys.delete(e.key.toLowerCase()); };
+
+  // ── touch input ───────────────────────────────────────────────────────────
+  /** A touch point in the visor's own 1280x720 space, whatever size the
+   *  canvas is being displayed at and wherever the black bars are. */
+  private toVisor(t: Touch): [number, number] {
+    const r = this.ov.getBoundingClientRect();
+    return [((t.clientX - r.left) / r.width) * HUD_W, ((t.clientY - r.top) / r.height) * HUD_H];
+  }
+  /** What one press does. Shared by a tap and by the key of the same name, so
+   *  the two can never drift into doing different things. */
+  private press(id: string) {
+    if (id === "fire") this.fire();
+    else if (id === "reload") this.startReload();
+    else if (id === "use") this.use();
+    else if (id === "nade") this.throwGrenade();
+    else if (id === "jump") { if (this.stompTarget()) this.tryStomp(); else this.jump(); }
+  }
+  private onTouchStart = (e: TouchEvent) => {
+    if (!this.touchDevice) return;
+    e.preventDefault();
+    this.ensureAudio();
+    for (const t of Array.from(e.changedTouches)) {
+      const [x, y] = this.toVisor(t);
+      // ⚠️ Starting and un-pausing come FIRST: on a phone there is no pointer
+      // lock to click for, so the tap that starts the game must not also fire
+      // the blaster underneath the title card.
+      if (this.mode === "title" || this.mode === "paused") {
+        this.mode = this.mode === "title" ? "play" : this.pausedFrom; this.opts.onStart?.(); continue;
+      }
+      if (this.mode === "dead") { this.loadLevel(this.levelIndex); this.mode = "play"; continue; }
+      if (this.mode === "complete") {
+        this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, grenades: this.p.grenades };
+        if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; } else this.mode = "done";
+        continue;
+      }
+      if (this.mode === "done") continue;
+      // a quiz takes the whole screen: tap the answer, or tap anywhere to move on
+      if (this.quiz) {
+        if (this.quiz.picked !== null) { if (this.quiz.feedback > 0) this.quiz.feedback = 0; continue; }
+        const choice = quizChoiceAt(x, y);
+        if (choice >= 0) { this.answer(choice); continue; }
+        if (this.mode === "stomp") continue; // the world is frozen: nothing else to do
+      }
+      const button = touchButtons({ grenades: this.p.grenades }).find((b) => Math.hypot(x - b.x, y - b.y) <= b.r);
+      if (button) { this.heldButtons.set(t.identifier, button.id); this.press(button.id); continue; }
+      if (!this.stickTouch && Math.hypot(x - TOUCH_STICK.x, y - TOUCH_STICK.y) <= TOUCH_STICK.r * 1.35) {
+        this.stickTouch = { id: t.identifier, ox: x, oy: y, dx: 0, dy: 0 }; continue;
+      }
+      if (!this.lookTouch) this.lookTouch = { id: t.identifier, x, y };
+    }
+  };
+  private onTouchMove = (e: TouchEvent) => {
+    if (!this.touchDevice) return;
+    e.preventDefault();
+    for (const t of Array.from(e.changedTouches)) {
+      const [x, y] = this.toVisor(t);
+      if (this.stickTouch?.id === t.identifier) {
+        const reach = TOUCH_STICK.r - TOUCH_STICK.knob;
+        let dx = (x - this.stickTouch.ox) / reach, dy = (y - this.stickTouch.oy) / reach;
+        const len = Math.hypot(dx, dy);
+        if (len > 1) { dx /= len; dy /= len; }
+        this.stickTouch.dx = dx; this.stickTouch.dy = dy;
+      } else if (this.lookTouch?.id === t.identifier) {
+        // the same sensitivity as the mouse, in visor pixels rather than
+        // device pixels, so it feels the same on any size of screen
+        this.p.angle += (x - this.lookTouch.x) * 0.0042;
+        this.p.pitch = Math.max(-PITCH_MAX, Math.min(PITCH_MAX, this.p.pitch - (y - this.lookTouch.y) * 1.1));
+        this.lookTouch.x = x; this.lookTouch.y = y;
+      }
+    }
+  };
+  private onTouchEnd = (e: TouchEvent) => {
+    if (!this.touchDevice) return;
+    e.preventDefault();
+    for (const t of Array.from(e.changedTouches)) {
+      if (this.stickTouch?.id === t.identifier) this.stickTouch = null;
+      if (this.lookTouch?.id === t.identifier) this.lookTouch = null;
+      this.heldButtons.delete(t.identifier);
+    }
+  };
   // Alt-Tab away while holding W and the browser never sends the key-up: without
   // this you would come back to a player still walking into a wall.
   private onBlur = () => { this.keys.clear(); };
@@ -397,6 +514,15 @@ export class Game {
     if (this.keys.has("s") || this.keys.has("arrowdown")) fwd -= 1;
     if (this.keys.has("d")) strafe += 1;
     if (this.keys.has("a")) strafe -= 1;
+    // the on-screen stick adds to the same two numbers, so nothing downstream
+    // has to know whether a finger or a key asked for it
+    let stickPush = 0;
+    if (this.stickTouch) {
+      stickPush = Math.hypot(this.stickTouch.dx, this.stickTouch.dy);
+      // a dead zone, so a thumb resting on the stick does not walk you into a
+      // wall for the rest of the level
+      if (stickPush > 0.15) { fwd -= this.stickTouch.dy; strafe += this.stickTouch.dx; } else stickPush = 0;
+    }
     const crouch = this.inDuct();
     // gravity, and the crate you may be standing on
     const ground = this.groundHeight(p.x, p.y);
@@ -406,7 +532,10 @@ export class Game {
       if (p.z > headroom) { p.z = headroom; p.vz = Math.min(0, p.vz); }
       if (p.z <= ground) { if (p.vz < -3) this.beep(90, 60, 0.07, "triangle", 0.03); p.z = ground; p.vz = 0; }
     } else p.z = ground;
-    const speed = (this.keys.has("shift") && !crouch ? RUN : WALK) * (crouch ? 0.65 : 1);
+    // running is Shift, or pushing the stick right to its edge — a phone has
+    // no modifier key, and a walk/run choice is what the SEEN bar is about
+    const running = (this.keys.has("shift") || stickPush > 0.92) && !crouch;
+    const speed = (running ? RUN : WALK) * (crouch ? 0.65 : 1);
     const len = Math.hypot(fwd, strafe) || 1;
     const wantX = ((Math.cos(p.angle) * fwd - Math.sin(p.angle) * strafe) / len) * speed;
     const wantY = ((Math.sin(p.angle) * fwd + Math.cos(p.angle) * strafe) / len) * speed;
@@ -937,7 +1066,7 @@ export class Game {
   }
   /** What a key would do right now, shown as a prompt. */
   private prompt() {
-    if (this.stompTarget()) return { key: "SPACE", text: "It hasn't seen you: jump on it" };
+    if (this.stompTarget()) return { key: this.touchDevice ? "JUMP" : "SPACE", text: "It hasn't seen you: jump on it" };
     if (this.p.z > 0.05) return null;
     const p = this.p, d = this.world.door[this.cell(p.x + Math.cos(p.angle) * 0.9, p.y + Math.sin(p.angle) * 0.9)];
     if (d?.exit) return { key: "E", text: "Take the lift" };
@@ -982,6 +1111,11 @@ export class Game {
       heading: p.angle, objective: this.objective(),
       comms: this.comms && !this.quiz ? { who: this.opts.mascotName ?? "Comms", text: this.comms.text, age: this.comms.age, left: this.comms.life - this.comms.age } : null,
       feed: this.feed, area: this.areaBanner, prompt: this.mode === "play" ? this.prompt() : null,
+      // hidden behind a quiz and on every screen that is not the game itself:
+      // a FIRE button over the title card would be tapped by mistake
+      touch: this.touchDevice && playing && !this.quiz
+        ? { grenades: p.grenades, held: new Set(this.heldButtons.values()), stick: this.stickTouch }
+        : null,
     });
     if (this.quiz) {
       const q = this.quiz, cur = q.qs[q.index];
@@ -991,14 +1125,20 @@ export class Game {
     const mins = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
     // The controls card lists what this deck can actually do: no G on a deck
     // with no grenades, and no sneaking tip on one with the lights on.
-    if (this.mode === "title") drawScreen(o, def.TITLE, [
+    if (this.mode === "title") drawScreen(o, def.TITLE, this.touchDevice ? [
+      "Left thumb on the stick to move · push it all the way to run",
+      "Drag anywhere else to look around · FIRE to shoot",
+      `R: answer questions to recharge the blaster · E: use · JUMP${this.hasNades ? " · G: grenade" : ""}`,
+      "Tap an answer to answer a question",
+      ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
+    ] : [
       "WASD to move · mouse to look (up and down too) · click to shoot · Shift to run",
       `R: recharge the blaster by answering questions · E: use${this.hasNades ? " · G: throw a grenade" : ""}`,
       "SPACE: jump, or jump on an alien from behind · 1 knife · 2 blaster · M sound · Esc pause",
       ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
-    ], "Click to start");
-    if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], "Click to carry on");
-    if (this.mode === "dead") drawScreen(o, "Suit failure", [`${this.stats.kills} alien${this.stats.kills === 1 ? "" : "s"} defeated · ${this.stats.right} question${this.stats.right === 1 ? "" : "s"} right`], "Press Enter to try the level again", "#ff6b6b");
+    ], this.touchDevice ? "Tap to start" : "Click to start");
+    if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], this.touchDevice ? "Tap to carry on" : "Click to carry on");
+    if (this.mode === "dead") drawScreen(o, "Suit failure", [`${this.stats.kills} alien${this.stats.kills === 1 ? "" : "s"} defeated · ${this.stats.right} question${this.stats.right === 1 ? "" : "s"} right`], this.touchDevice ? "Tap to try the level again" : "Press Enter to try the level again", "#ff6b6b");
     if (this.mode === "complete") {
       const run = this.runResult(), score = scoreRun(run), letter = gradeFor(score);
       const asked = run.right + run.wrong;
@@ -1010,7 +1150,7 @@ export class Game {
       // the previous best, so there is something to beat next time
       if (was) lines.push(`Your best on this deck: grade ${was.bestGrade} · ${formatClock(was.bestSeconds)} · ${was.mostKills} aliens`);
       lines.push(this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now.");
-      drawScreen(o, `Level complete — ${letter}`, lines, "Press Enter to carry on", score >= 75 ? "#ffd65a" : "#2fd48a");
+      drawScreen(o, `Level complete — ${letter}`, lines, this.touchDevice ? "Tap to carry on" : "Press Enter to carry on", score >= 75 ? "#ffd65a" : "#2fd48a");
     }
     if (this.mode === "done") drawScreen(o, "You finished early access!", [`All ${LEVELS.length} levels done. The boss is still being built.`], "Reload the page to play again", "#ffd65a");
     // frame timings, readable in dev tools (data-render-ms / data-hud-ms on the overlay)

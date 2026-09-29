@@ -1,5 +1,121 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Three things the game was missing: teaching, a point to fighting, and a phone (2026-09-29)
+
+Matthew: *"do you have any ideas how we can improve the current game we have?"*
+Five were offered; he picked three, and they are in, one commit each.
+
+Two facts were checked before offering any of them, rather than asserted:
+a wrong reload answer DID light the right button green — for 0.7 seconds — and
+`game-questions.ts` was throwing the site's model answer away entirely.
+
+### 1 · The game tested you and never taught you
+
+The site stores a model answer for every question, often with the working
+("32, because 2 x 2 x 2 x 2 x 2 = 32"). The game only ever sent the four button
+labels. Now `whyFor()` passes it through as `why`, the panel draws it under the
+choices after a WRONG answer, and the hold goes from 0.7 s to 3.2 s. SPACE
+skips it — checked BEFORE the jump handler, or space would make you jump while
+the panel was up. A right answer is untouched: 0.7 s, no explanation, keep
+moving. **100% of the 3,589 askable questions carry one.**
+
+⚠️ **A model answer that only restates the button is worse than none**, because
+it teaches people to ignore the panel. "About 100" under a button reading 100
+begins with the word "about", so testing whether it STARTS with the answer lets
+it through; the test is to take the answer out of the sentence and see whether
+ten characters of substance are left.
+
+⚠️ **And trimming a long one to whole sentences can leave ONLY the button
+text.** Caught by the new check on a real maths question whose first sentence
+IS its own multiple-choice option and whose teaching is all in the second. It
+now cuts at a word instead and marks it with an ellipsis: the start of a real
+explanation beats a sentence that says nothing.
+
+### 2 · There was no reason to fight anything
+
+Killing an alien gave nothing — no ammo, no score, nothing recorded — so
+sprinting past everything was optimal, which is why deck 1 to 3 took seven
+minutes. Three changes:
+
+**Drops.** A defeated alien leaves ONE cell, two times in five. The arithmetic
+is the whole design: shooting one costs TWO cells and returns 0.4, so the
+blaster is still paid for by answering questions and nothing else — while a
+knife kill or a stomp costs no cells, so creeping up on something is the only
+way fighting pays. The incentive is "it is worth engaging", not "shoot more".
+
+**A grade out of 100** on the finish screen: accuracy 40, aliens cleared 30,
+pace 30. ⚠️ Accuracy is the biggest share on purpose — this is a revision site,
+and a grade paying more for shooting would say the opposite. Never answering a
+question scores the MIDDLE, not full marks, or "press R, never" would be the
+fastest route to an S. Par time is derived from the level's own route rather
+than written per level, so it cannot go stale when a corridor moves.
+
+**A ship's log** — best grade, time, kills and accuracy per deck — on the
+finish screen and on /progress.
+
+⚠️ **It lives in localStorage, not the `activity` table, and that is a
+decision rather than laziness.** A new `kind` means widening a CHECK constraint
+in Supabase, and this project already lost a week to exactly that: every
+completed test was silently refused by Postgres for weeks while the site showed
+no error (2026-08-20). A game score is not worth that risk, and it genuinely is
+a fact about one device. The cost is stated in the file: a best time set on a
+laptop does not follow you to a phone.
+
+`check-ships-log.mjs` (165 checks) covers the grade's properties and the
+parser's refusal to hand the page anything broken. ⚠️ It caught a real one: a
+NaN par produced a NaN score, because **`par <= 0` is false for NaN**.
+
+### 3 · Phones
+
+A stick for moving, a drag anywhere else to look, and FIRE / JUMP / R / E / G
+as circles. Drawn on the visor canvas rather than as HTML over it, because the
+picture is letterboxed inside whatever shape the phone is and a CSS-positioned
+button drifts away from the view it belongs to. A quiz is answered by tapping
+the answer, hit-tested against the rectangles `drawQuiz` RECORDED while drawing
+them — their position depends on how many lines the question wrapped to, and a
+second calculation of that is a second thing to get wrong.
+
+⚠️ **THE CONTROLS WERE BELOW THE FOLD.** A 16:9 view across the full width of a
+sideways iPhone 13 is 812×457 inside a 390px-tall screen, so the stick and FIRE
+sat 67 pixels off the bottom of the screen and no tap could ever reach them.
+Found because a Playwright tap did nothing while a hand-dispatched TouchEvent
+worked — `elementFromPoint` returned nothing, because the point was off-screen.
+The frame is now capped to the viewport height on a coarse pointer and scrolls
+itself into view on start. iOS Safari will not put an arbitrary element full
+screen, so a phone stays in the page and the page has to fit it.
+
+⚠️ **And the buttons were under the 44px minimum — for the third time on this
+site.** The radii are in VISOR pixels and the visor is scaled DOWN to fit the
+phone, so r=40 came out at 35 CSS px on a sideways iPhone SE. The small ones
+are now r=52, which is 46px on the smallest screen the game runs on.
+
+Detected with `(pointer: coarse)`, never a screen width — a touchscreen laptop
+is wide and still has no key for R. Pointer lock is never requested and losing
+it no longer pauses. Running is pushing the stick to its edge (a phone has no
+Shift), with a dead zone so a thumb resting on the stick does not walk you into
+a wall for the rest of the level.
+
+### ⚠️ A check of my own broke because its regex assumed a shape
+
+The "no G on a deck without grenades" rule pulled the controls card out with a
+regex that assumed ONE array literal. Adding a second for touch made it match
+nothing, and it reported correct code as broken. Rewritten to the thing that
+actually matters — every mention of the G key must sit inside a
+`this.hasNades ?` ternary — which no layout change can fool. Confirmed to bite.
+
+**Verified:** `npm run check` fully green — 188,027 content, 1,239,302
+geometry, **2,418 security**, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge, 25,389
+game-question and **165 ship's-log** checks; tsc and eslint clean. In a
+browser: **21 teaching checks**, **22 drop-and-log checks** (including a
+corrupt log not breaking /progress), **24 touch checks on a real touchscreen
+context** at iPhone SE and iPhone 13 sizes, and the existing 45 game, 42
+grenade, 17 title-card and 13 route checks all still green.
+
+**Not done from that list:** drawing the game's questions from the student's
+WEAKEST topics using /today's recommender (the one with the biggest
+educational payoff for the least code), a second kind of alien, and the boss.
+
 ## Level 4, grenades, and shooting that feels like something (2026-09-28)
 
 Matthew, walking to school: *"make another level that will be themed as the

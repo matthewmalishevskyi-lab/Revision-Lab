@@ -42,7 +42,13 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
     const game = new Game(cv, ov, {
       reload, easy, startLevel, mascotName,
       // clicking the title screen asks for full screen as well as the mouse
-      onStart: () => { if (!document.fullscreenElement) shellRef.current?.requestFullscreen?.().catch(() => {}); },
+      onStart: () => {
+        // ⚠️ iOS Safari will not put an arbitrary element full screen, so a
+        // phone stays in the page and the game has to be scrolled to instead —
+        // otherwise the controls along the bottom edge start below the fold.
+        shellRef.current?.scrollIntoView({ block: "center", behavior: "instant" as ScrollBehavior });
+        if (!document.fullscreenElement) shellRef.current?.requestFullscreen?.().catch(() => {});
+      },
       onAnswer: (q, correct) => { recordAnswer(subject, q.topic, correct, q.question).catch(() => {}); },
       // The ship's log lives in this browser (see lib/shipsLog.ts for why).
       // ⚠️ Both of these read the store at the moment they are called, never
@@ -64,10 +70,17 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
 
   return (
     <div ref={shellRef} className={`group relative select-none bg-black shadow-2xl ${full ? "flex h-screen w-screen items-center justify-center" : ""}`}>
-      <div className={`relative aspect-video w-full overflow-hidden ${full ? "" : "rounded-2xl"}`} style={full ? { maxHeight: "100vh", maxWidth: "calc(100vh * 16 / 9)" } : undefined}>
+      <div className={`game-frame relative aspect-video w-full overflow-hidden ${full ? "" : "rounded-2xl"}`} style={full ? { maxHeight: "100vh", maxWidth: "calc(100vh * 16 / 9)" } : undefined}>
       <canvas ref={gameRef} className="absolute inset-0 h-full w-full" style={{ imageRendering: "pixelated" }} aria-label="The game" />
       <canvas ref={bloomRef} className="pointer-events-none absolute inset-0 h-full w-full opacity-40 mix-blend-screen blur-[2px]" aria-hidden />
-      <canvas ref={overlayRef} className="absolute inset-0 h-full w-full cursor-crosshair" />
+      {/* ⚠️ touch-action: none, or dragging to look also scrolls the page under
+          it. A canvas is an ordinary CSS box so the declaration is honoured —
+          unlike the SVG <g> this project got caught by once (PROJECT_NOTES,
+          2026-09-11). */}
+      <canvas ref={overlayRef} className="absolute inset-0 h-full w-full cursor-crosshair touch-none" />
+      <div className="touch-portrait-only pointer-events-none absolute inset-0 z-20 items-center justify-center bg-black/80 p-6 text-center">
+        <p className="text-lg font-semibold text-white">Turn your phone sideways to play.</p>
+      </div>
       {/* the mascot on the visor's comms screen (COMMS_BOX in hud.ts: 26,26 104x104 of 1280x720) */}
       {/* The mascot is TALLER AND WIDER than its window on purpose (you see its
           head and shoulders), so it has to be centred by position, not by

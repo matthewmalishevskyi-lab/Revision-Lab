@@ -52,7 +52,7 @@ export default async function PlayPage({ searchParams }: Props) {
             </div>
             <GameClient subject={subject.slug} mascot={mascot} mascotName={MASCOT_NAMES[mascot]} reload={reload} easy={easy} startLevel={level - 1} />
             <p className="mt-4 text-sm opacity-60">
-              Keyboard and mouse only for now. Every answer counts like a practice question, so the ones you get wrong come back in “Revisit your mistakes”.
+              Keyboard and mouse, or touch controls on a phone — turn it sideways. Every answer counts like a practice question, so the ones you get wrong come back in “Revisit your mistakes”.
             </p>
             <p className="mt-1 text-sm opacity-60">
               {reload.length} questions in the pool{own < reload.length ? ` — ${own} from your topics, the rest from elsewhere in ${subject.name} so they don’t repeat` : ""}.

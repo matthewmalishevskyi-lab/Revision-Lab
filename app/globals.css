@@ -166,6 +166,34 @@ body {
   }
 }
 
+/* ⚠️ On a phone the game has to FIT THE SCREEN. Measured on a sideways
+   iPhone 13 (844x390): a 16:9 view across the full width is 812x457, which is
+   67px taller than the screen — so the movement stick and the FIRE button,
+   which sit along the bottom edge, were simply below the fold and could not be
+   tapped at all. Capping the height and letting the width follow keeps the
+   whole picture, controls included, on the screen. dvh rather than vh because
+   a phone browser's address bar comes and goes. */
+@media (pointer: coarse) {
+  .game-frame {
+    max-height: 100dvh;
+    max-width: calc(100dvh * 16 / 9);
+    margin-inline: auto;
+  }
+}
+
+/* "Turn your phone sideways" over the alien game.
+   Gated on (pointer: coarse) rather than a screen width, for the same reason
+   .hover-reveal above is: a narrow browser window on a laptop is not a phone,
+   and telling somebody with a mouse to rotate their monitor is nonsense. */
+.touch-portrait-only {
+  display: none;
+}
+@media (pointer: coarse) and (orientation: portrait) {
+  .touch-portrait-only {
+    display: flex;
+  }
+}
+
 /* Instead of a flat white page, three very faint pools of colour sit behind
    everything — blue top-left, orange top-right, violet along the bottom.
    They're the same colours as the three subject cards, at roughly a tenth of

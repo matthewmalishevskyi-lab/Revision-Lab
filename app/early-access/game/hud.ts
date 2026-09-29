@@ -16,6 +16,67 @@ export const HUD_W = 1280, HUD_H = 720;
 const CYAN = "#7fe6ff", CYAN_DIM = "rgba(127,230,255,0.35)", GLASS = "rgba(6,14,28,0.62)", WARN = "#ffb640", DANGER = "#ff5d6c", GOOD = "#2fd48a";
 const FONT = "system-ui, sans-serif", MONO = `ui-monospace, "DejaVu Sans Mono", monospace`;
 
+// ── touch controls ───────────────────────────────────────────────────────────
+//
+// Drawn on the visor canvas rather than as HTML over it, for one reason that
+// decides everything else: the picture is letterboxed inside whatever shape the
+// phone is, so a button positioned in CSS would drift away from the view it
+// belongs to. Living in the same 1280x720 space as the rest of the visor, a
+// button is always exactly where it looks like it is.
+//
+// The same list is used to DRAW them and to work out what a finger hit, so the
+// two cannot disagree — the class of bug where a button moves and its hit box
+// stays behind.
+export type TouchButton = { id: "fire" | "jump" | "reload" | "use" | "nade"; x: number; y: number; r: number; label: string; hint: string };
+
+/** Where the movement stick sits, and how far the knob can travel. */
+export const TOUCH_STICK = { x: 190, y: HUD_H - 230, r: 92, knob: 38 };
+
+// ⚠️ The radii are in VISOR pixels and the visor is scaled down to fit the
+// phone, so the rule is not "44 in here" — it is 44 CSS pixels on the
+// smallest screen the game runs on. A sideways iPhone SE gives the 1280-wide
+// visor about 568 real pixels, a scale of 0.44, so nothing may be smaller
+// than about r=50. Hence 52 for the small ones rather than the 40 they
+// started at, which came out at 35 CSS pixels and would have been the third
+// time this project shipped a tap target under the minimum.
+const TOUCH_BUTTONS: TouchButton[] = [
+  { id: "fire", x: HUD_W - 170, y: HUD_H - 230, r: 66, label: "FIRE", hint: "shoot" },
+  { id: "jump", x: HUD_W - 320, y: HUD_H - 250, r: 56, label: "JUMP", hint: "jump / stomp" },
+  { id: "reload", x: HUD_W - 150, y: HUD_H - 400, r: 52, label: "R", hint: "answer to reload" },
+  { id: "use", x: HUD_W - 300, y: HUD_H - 420, r: 52, label: "E", hint: "use" },
+  { id: "nade", x: HUD_W - 430, y: HUD_H - 330, r: 52, label: "G", hint: "grenade" },
+];
+
+/** The buttons a given moment actually offers — no G without grenades. */
+export function touchButtons(opts: { grenades: number }): TouchButton[] {
+  return TOUCH_BUTTONS.filter((b) => b.id !== "nade" || opts.grenades > 0);
+}
+
+export function drawTouchControls(x: Ctx, s: { grenades: number; held: Set<string>; stick: { dx: number; dy: number } | null }) {
+  x.save();
+  // the movement stick
+  const st = TOUCH_STICK;
+  x.fillStyle = "rgba(4,10,22,0.42)"; x.beginPath(); x.arc(st.x, st.y, st.r, 0, 7); x.fill();
+  x.strokeStyle = "rgba(127,230,255,0.45)"; x.lineWidth = 2.5; x.stroke();
+  const kx = st.x + (s.stick?.dx ?? 0) * (st.r - st.knob), ky = st.y + (s.stick?.dy ?? 0) * (st.r - st.knob);
+  x.fillStyle = s.stick ? "rgba(127,230,255,0.45)" : "rgba(127,230,255,0.22)";
+  x.beginPath(); x.arc(kx, ky, st.knob, 0, 7); x.fill();
+  x.strokeStyle = "rgba(200,240,255,0.7)"; x.lineWidth = 2; x.stroke();
+
+  for (const b of touchButtons(s)) {
+    const down = s.held.has(b.id);
+    // dark enough to read against a white wall, which is most of deck 1
+    x.fillStyle = down ? "rgba(127,230,255,0.4)" : "rgba(4,10,22,0.58)";
+    x.beginPath(); x.arc(b.x, b.y, b.r, 0, 7); x.fill();
+    x.strokeStyle = down ? CYAN : "rgba(127,230,255,0.55)"; x.lineWidth = 3; x.stroke();
+    x.textAlign = "center"; x.textBaseline = "middle";
+    x.fillStyle = "#eaf6ff"; x.font = `bold ${b.label.length > 2 ? 20 : 26}px ${FONT}`;
+    x.fillText(b.label, b.x, b.y);
+  }
+  x.textAlign = "left"; x.textBaseline = "alphabetic";
+  x.restore();
+}
+
 export type HudState = {
   health: number; vest: number; ammo: number; hasPistol: boolean; weapon: "knife" | "pistol";
   keys: string[]; radTime: number; level: string; aliensLeft: number;
@@ -30,6 +91,8 @@ export type HudState = {
   feed: { text: string; t: number }[];
   area: { name: string; t: number } | null;
   prompt: { key: string; text: string } | null;
+  /** Draw the on-screen stick and buttons (a touchscreen, no keyboard). */
+  touch?: { grenades: number; held: Set<string>; stick: { dx: number; dy: number } | null } | null;
 };
 
 // ── the visor itself: drawn once, reused every frame ─────────────────────────
@@ -189,6 +252,7 @@ export function drawHud(x: Ctx, s: HudState) {
     x.fillStyle = "#eaf6ff"; x.shadowColor = CYAN; x.shadowBlur = 18; x.fillText(s.area.name.toUpperCase(), W / 2, 170); x.restore();
   }
   if (s.prompt) drawPrompt(x, s.prompt.key, s.prompt.text);
+  if (s.touch) drawTouchControls(x, s.touch);
 }
 
 // How visible you are, under the reticle. Deliberately small and quiet: it is
@@ -288,6 +352,18 @@ function wrap(x: Ctx, text: string, maxW: number): string[] {
   if (line) lines.push(line); return lines;
 }
 
+// Where the four answer buttons ended up last time the quiz was drawn, so a
+// finger can be tested against them. ⚠️ Recorded BY the drawing rather than
+// worked out a second time: their position depends on how many lines the
+// question wrapped to, which needs a canvas to measure, and a second
+// calculation of that is a second thing to get wrong.
+let lastChoiceBoxes: { x: number; y: number; w: number; h: number }[] = [];
+
+/** Which answer a tap at this point in visor space is on, or -1. */
+export function quizChoiceAt(px: number, py: number): number {
+  return lastChoiceBoxes.findIndex((r) => px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h);
+}
+
 export function drawQuiz(x: Ctx, q: QuizView) {
   const W = HUD_W;
   x.save();
@@ -321,8 +397,10 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   x.fillStyle = "#ffffff"; x.font = `bold 30px ${FONT}`;
   lines.forEach((l, i) => x.fillText(l, X + 30, Y + 132 + i * 38));
   const oy = Y + 112 + lines.length * 38;
+  lastChoiceBoxes = [];
   q.choices.forEach((o, i) => {
     const bx = X + 30 + (i % 2) * ((PW - 72) / 2 + 12), by = oy + Math.floor(i / 2) * 64, bw = (PW - 72) / 2;
+    lastChoiceBoxes.push({ x: bx, y: by, w: bw, h: 54 });
     const picked = q.picked === i, isRight = i === q.correct, reveal = q.picked !== null;
     x.fillStyle = reveal && isRight ? "#1f8a57" : reveal && picked ? "#9b2c2c" : "rgba(22,32,46,0.9)";
     x.beginPath(); x.roundRect(bx, by, bw, 54, 12); x.fill();
