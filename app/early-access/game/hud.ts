@@ -278,6 +278,8 @@ export function drawPrompt(x: Ctx, key: string, text: string) {
 export type QuizView = {
   kind: "reload" | "stomp"; topic: string; index: number; total: number; question: string; choices: string[];
   time: number; perQuestion: number; picked: number | null; correct: number; results: boolean[]; ammo: number;
+  /** The site's model answer, shown only after a WRONG answer. */
+  why?: string;
 };
 
 function wrap(x: Ctx, text: string, maxW: number): string[] {
@@ -293,7 +295,13 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   if (stomp) { x.fillStyle = "rgba(3,6,13,0.5)"; x.fillRect(0, 0, W, HUD_H); }
   const PW = stomp ? 760 : 680, X = W / 2 - PW / 2, Y = stomp ? 80 : 150;
   x.font = `bold 30px ${FONT}`; const lines = wrap(x, q.question, PW - 64).slice(0, 3);
-  const PH = 300 + lines.length * 38;
+  // Room for the model answer, but only when there is one to show. Measuring
+  // it here rather than guessing keeps the panel the same size as before on
+  // every right answer, which is most of them.
+  const wrong = q.picked !== null && q.picked !== q.correct;
+  x.font = `17px ${FONT}`;
+  const whyLines = wrong && q.why ? wrap(x, q.why, (stomp ? 760 : 680) - 124).slice(0, 4) : [];
+  const PH = 300 + lines.length * 38 + (whyLines.length ? 34 + whyLines.length * 24 : 0);
   const accent = stomp ? "#ffd65a" : CYAN;
   x.fillStyle = stomp ? "rgba(8,16,30,0.94)" : "rgba(6,14,28,0.84)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 22); x.fill();
   x.strokeStyle = accent; x.lineWidth = 2.5; x.stroke();
@@ -325,12 +333,29 @@ export function drawQuiz(x: Ctx, q: QuizView) {
     if (text !== o) text = text.slice(0, -1) + "…";
     x.fillText(text, bx + 44, by + 34);
   });
+  // ⚠️ Why this is here at all: the right answer used to light up green for
+  // 0.7 seconds and the game moved on, so a wrong answer told you nothing but
+  // that you were wrong. The site already stores a model answer — often with
+  // the working — and the game was throwing it away.
+  if (whyLines.length) {
+    const wy = oy + Math.ceil(q.choices.length / 2) * 64 + 6;
+    x.fillStyle = "rgba(47,212,138,0.10)"; x.beginPath(); x.roundRect(X + 30, wy, PW - 60, 26 + whyLines.length * 24, 12); x.fill();
+    x.strokeStyle = "rgba(47,212,138,0.45)"; x.lineWidth = 1.5; x.stroke();
+    label(x, "WHY", X + 46, wy + 20, GOOD, 11);
+    x.fillStyle = "#dff6ea"; x.font = `17px ${FONT}`;
+    whyLines.forEach((l, i) => x.fillText(l, X + 84, wy + 20 + i * 24));
+  }
   const tY = Y + PH - 36; const frac = Math.max(0, q.time / q.perQuestion);
   x.fillStyle = "#2a3647"; x.beginPath(); x.roundRect(X + 30, tY, PW - 150, 10, 5); x.fill();
   x.fillStyle = q.time < 2 ? "#ff4d4d" : "#ffd65a"; x.beginPath(); x.roundRect(X + 30, tY, (PW - 150) * frac, 10, 5); x.fill();
   x.fillStyle = "#c9d6e8"; x.font = `bold 15px ${FONT}`; x.fillText(`${Math.max(0, q.time).toFixed(1)} s`, X + PW - 104, tY + 10);
   x.fillStyle = "#9fb3cf"; x.font = `13px ${FONT}`;
-  x.fillText(stomp ? "Press 1–4. One wrong and it throws you off. Wrong answers go to “Revisit your mistakes”." : "Press 1–4 to answer. You can still move while you reload!", X + 30, tY + 28);
+  x.fillText(
+    q.picked !== null
+      ? (wrong ? "SPACE to carry on · this one goes to “Revisit your mistakes”" : "SPACE to carry on")
+      : stomp ? "Press 1–4. One wrong and it throws you off. Wrong answers go to “Revisit your mistakes”."
+      : "Press 1–4 to answer. You can still move while you reload!",
+    X + 30, tY + 28);
   x.restore();
 }
 

@@ -20,7 +20,7 @@ import { buildTextures, type TexSet } from "./textures";
 import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
 import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type LevelDef, type World } from "./world";
 
-export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string };
+export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string; why?: string };
 export type GameOptions = {
   reload: Question[];
   easy: Question[];
@@ -63,6 +63,11 @@ const DECOR = new Set(["lamp", "canister", "holo"]);
 // one round a corner protects you from your own grenade.
 const NADE_KILL_R = 0.9, NADE_HURT_R = 2.4, NADE_DMG = 60, NADE_SELF = 85;
 const NADE_FUSE = 2.0, NADE_MAX = 3, NADE_SPEED = 7.2;
+
+/** How long a WRONG answer stays on screen with the right one showing. Long
+ *  enough to read a sentence; skippable with SPACE for anyone who does not
+ *  need it. A right answer still moves on in 0.7s. */
+const WRONG_HOLD = 3.2;
 
 // ⚠️ Grenades belong to the deck that HAS them, not to the game. Matthew asked
 // for them "in the storage level that is new, not everywhere", and the way to
@@ -232,6 +237,10 @@ export class Game {
     // when the browser reports "!" instead of "1", and from the number pad
     const digit = /^(?:Digit|Numpad)([1-4])$/.exec(e.code)?.[1] ?? (["1", "2", "3", "4"].includes(k) ? k : null);
     if (this.quiz && this.quiz.picked === null && digit && (this.mode === "reload" || this.mode === "stomp")) { this.answer(Number(digit) - 1); return; }
+    // reading the model answer is optional: SPACE or Enter moves straight on.
+    // ⚠️ Checked BEFORE the jump/stomp handler below, or SPACE would make you
+    // jump while the panel is up rather than dismissing it.
+    if (this.quiz && this.quiz.picked !== null && this.quiz.feedback > 0 && (k === " " || k === "enter")) { this.quiz.feedback = 0; return; }
     if (this.mode === "dead" && k === "enter") { this.loadLevel(this.levelIndex); this.mode = "play"; this.lock(); return; }
     if (this.mode === "complete" && k === "enter") {
       this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, grenades: this.p.grenades };
@@ -830,8 +839,13 @@ export class Game {
   }
   private answer(i: number) {
     const q = this.quiz; if (!q || q.picked !== null) return;
-    q.picked = i; q.feedback = 0.7;
     const cur = q.qs[q.index], right = i === cur.correct;
+    q.picked = i;
+    // ⚠️ A wrong answer used to flash the right one green for 0.7s and move on,
+    // which marks you and teaches you nothing. Get it wrong and the panel now
+    // holds long enough to actually read the model answer — SPACE skips it, so
+    // anyone who already knows is not made to wait mid-firefight.
+    q.feedback = right ? 0.7 : WRONG_HOLD;
     q.results.push(right);
     if (right) { this.stats.right++; this.beep(660, 990, 0.15, "triangle", 0.06); } else { this.stats.wrong++; this.beep(220, 110, 0.3, "sawtooth", 0.06); }
     if (q.kind === "reload" && right) this.p.ammo = Math.min(6, this.p.ammo + 3); // a wrong answer charges nothing: get it right or use the knife
@@ -841,7 +855,7 @@ export class Game {
     const q = this.quiz; if (!q) return;
     if (q.picked === null) {
       q.time -= dt;
-      if (q.time <= 0) { q.picked = -1; q.feedback = 0.9; q.results.push(false); this.stats.wrong++; this.opts.onAnswer?.(q.qs[q.index], false); this.beep(220, 110, 0.3, "sawtooth", 0.06); }
+      if (q.time <= 0) { q.picked = -1; q.feedback = WRONG_HOLD; q.results.push(false); this.stats.wrong++; this.opts.onAnswer?.(q.qs[q.index], false); this.beep(220, 110, 0.3, "sawtooth", 0.06); }
       return;
     }
     q.feedback -= dt; if (q.feedback > 0) return;
@@ -918,7 +932,7 @@ export class Game {
     });
     if (this.quiz) {
       const q = this.quiz, cur = q.qs[q.index];
-      const view: QuizView = { kind: q.kind, topic: cur.topicTitle, index: q.index, total: q.kind === "stomp" ? 3 : q.qs.length, question: cur.question, choices: cur.choices, time: q.time, perQuestion: q.per, picked: q.picked, correct: cur.correct, results: q.results, ammo: p.ammo };
+      const view: QuizView = { kind: q.kind, topic: cur.topicTitle, index: q.index, total: q.kind === "stomp" ? 3 : q.qs.length, question: cur.question, choices: cur.choices, time: q.time, perQuestion: q.per, picked: q.picked, correct: cur.correct, results: q.results, ammo: p.ammo, why: cur.why };
       drawQuiz(o, view);
     }
     const mins = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;

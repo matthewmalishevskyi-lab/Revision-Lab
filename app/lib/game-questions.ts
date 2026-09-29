@@ -30,7 +30,59 @@ import { normalise } from "./normalise";
 import { shuffle } from "./shuffle";
 import { getSubject } from "./subjects";
 
-export type GameQuestion = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string };
+export type GameQuestion = {
+  question: string; choices: string[]; correct: number; topic: string; topicTitle: string;
+  /** The site's model answer, shown after a WRONG answer so the game teaches
+   *  rather than only marking. Absent when the model answer says no more than
+   *  the button already did — see `whyFor`. */
+  why?: string;
+};
+
+/** The longest model answer the quiz panel can hold without becoming a wall of
+ *  text mid-firefight. Measured against the panel: three wrapped lines. */
+const WHY_MAX = 190;
+
+/**
+ * What to show a student who just got this wrong.
+ *
+ * ⚠️ NOT simply the model answer. Most of them are worth reading — "32, because
+ * 2 x 2 x 2 x 2 x 2 = 32" teaches the method — but plenty are just the answer
+ * again ("About 100"), and printing that under a button that already says 100
+ * is noise that trains people to ignore the panel. So a model answer earns its
+ * place only if it says something the right button does not.
+ *
+ * Long ones are cut at a SENTENCE, never mid-word: half an explanation is worse
+ * than none, because the reader cannot tell what they are missing.
+ */
+export function whyFor(answer: string, right: string): string | undefined {
+  const text = (answer ?? "").trim();
+  if (!text) return undefined;
+  // Does this say anything the right button does not? ⚠️ Testing only whether
+  // it STARTS with the answer is not enough: "About 100" against a button
+  // reading 100 begins with the word "about" and sails through, and printing
+  // that under the button is pure noise. So take the answer out of the sentence
+  // and see whether anything of substance is left.
+  const rightBare = normalise(right);
+  const adds = (s: string) => { const b = normalise(s); return b !== rightBare && b.replace(rightBare, "").length >= 10; };
+  if (!adds(text)) return undefined;
+  if (text.length <= WHY_MAX) return text;
+
+  // Too long: keep whole sentences up to the cap.
+  const parts = text.split(/(?<=[.!?])\s+/);
+  let out = parts[0];
+  for (const p of parts.slice(1)) { if ((out + " " + p).length > WHY_MAX) break; out += " " + p; }
+  // (the first sentence on its own can already be over the cap, so test both)
+  if (out.length <= WHY_MAX && adds(out)) return out;
+
+  // ⚠️ But cutting to whole sentences can leave ONLY a restatement of the
+  // button, which is the very thing this function exists to refuse. Caught by
+  // the checker on a real maths question whose first sentence is its own
+  // multiple-choice option and whose second sentence is the actual teaching. So
+  // when that happens, cut at a WORD instead: the start of a real explanation,
+  // marked as cut, beats a sentence that says nothing.
+  const cut = text.slice(0, WHY_MAX - 1), atWord = cut.slice(0, cut.lastIndexOf(" "));
+  return (atWord.length > 40 ? atWord : cut).trimEnd() + "…";
+}
 
 const MAX_POOL = 120;
 /** Below this many reload questions, top up from the rest of the subject. */
@@ -81,7 +133,7 @@ function numericChoices(rightText: string, accepted: string[]): string[] | null 
   return wrong.length === MAX_CHOICES - 1 ? wrong : null;
 }
 
-type Raw = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string; easy: boolean };
+type Raw = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string; easy: boolean; why?: string };
 
 /** Every question in one topic that the game can ask, ready-made or built.
  *  Cached: the picker asks for every topic of every subject to size the pools. */
@@ -102,7 +154,7 @@ function topicQuestions(subjectSlug: string, slug: string, title: string): Raw[]
       // Four buttons, keys 1-4: keep the right answer plus up to three wrong ones.
       const wrong = shuffle(q.choices.filter((c) => c !== right)).slice(0, MAX_CHOICES - 1);
       const choices = shuffle([right, ...wrong]);
-      out.push({ question: q.question, choices, correct: choices.indexOf(right), topic: slug, topicTitle: title, easy });
+      out.push({ question: q.question, choices, correct: choices.indexOf(right), topic: slug, topicTitle: title, easy, why: whyFor(q.answer, right) });
       continue;
     }
     // written answer: only numbers can be turned into buttons safely
@@ -111,7 +163,7 @@ function topicQuestions(subjectSlug: string, slug: string, title: string): Raw[]
     const wrong = numericChoices(rightText, accepted);
     if (!wrong) continue;
     const choices = shuffle([rightText, ...wrong]);
-    out.push({ question: q.question, choices, correct: choices.indexOf(rightText), topic: slug, topicTitle: title, easy });
+    out.push({ question: q.question, choices, correct: choices.indexOf(rightText), topic: slug, topicTitle: title, easy, why: whyFor(q.answer, rightText) });
   }
   return out;
 }
@@ -142,9 +194,9 @@ export function buildGameQuestions(subjectSlug: string, topicSlugs: string[]): {
   // the buttons are shuffled per game, not per server process: the cache above
   // holds one fixed order, and a fixed order is how "the answer is always A"
   // happened on the rest of the site
-  const strip = ({ question, choices, correct, topic, topicTitle }: Raw): GameQuestion => {
+  const strip = ({ question, choices, correct, topic, topicTitle, why }: Raw): GameQuestion => {
     const right = choices[correct], mixed = shuffle([...choices]);
-    return { question, choices: mixed, correct: mixed.indexOf(right), topic, topicTitle };
+    return { question, choices: mixed, correct: mixed.indexOf(right), topic, topicTitle, ...(why ? { why } : {}) };
   };
   const ownEasy = picked.slice(0, fromChosen).filter((q) => q.easy);
   return {

@@ -100,6 +100,54 @@ try {
     const { reload, easy } = buildGameQuestions("not-a-subject", ["nope"]);
     expect(reload.length === 0 && easy.length === 0, "an unknown subject produced questions");
   }
+
+  // ── The model answer shown after a WRONG answer ───────────────────────────
+  //
+  // Getting a question wrong used to teach nothing: the right button went green
+  // for 0.7 seconds and the game moved on. The site already stores a model
+  // answer for every question — often with the working — so the game now shows
+  // it. Two ways that can go quietly wrong, and neither shows up on screen:
+  // the explanation stops appearing at all (a content shape changes and every
+  // `why` comes back undefined), or it says nothing the button did not.
+  {
+    const { whyFor } = require_(join(out, "game-questions.js"));
+    // the filter fires on an answer that only restates the button
+    for (const [answer, right] of [["32", "32"], ["32.", "32"], ["About 100", "100"], ["Yes", "Yes"], ["", "7"], ["   ", "7"]]) {
+      expect(whyFor(answer, right) === undefined, `"${answer}" was offered as an explanation of the button "${right}"`);
+    }
+    // and does not fire on one that teaches the method
+    const real = whyFor("32, because 2 x 2 x 2 x 2 x 2 = 32.", "32");
+    expect(real === "32, because 2 x 2 x 2 x 2 x 2 = 32.", `a real worked answer was thrown away: ${real}`);
+    // a long one is cut at a sentence, never mid-word
+    const long = whyFor(`${"The first step is to find the common factor. ".repeat(8)}`, "6");
+    expect(long !== undefined && long.length <= 190 && /[.!?…]$/.test(long), `a long model answer was cut badly: "${long?.slice(-40)}"`);
+
+    let withWhy = 0, asked = 0, tooLong = 0, saysNothing = 0, cutMidWord = 0;
+    for (const subject of SUBJECTS) {
+      for (const year of subject.years) {
+        for (const topic of year.topics) {
+          for (const q of buildGameQuestions(subject.slug, [topic.slug]).reload) {
+            if (q.topic !== topic.slug) continue;
+            asked += 1;
+            if (!q.why) continue;
+            withWhy += 1;
+            if (q.why.length > 190) tooLong += 1;
+            if (normalise(q.why) === normalise(q.choices[q.correct])) saysNothing += 1;
+            // "…" is the deliberate cut; a bare letter after a cut is not
+            if (q.why.endsWith("…") && !/\s\S*…$/.test(q.why)) cutMidWord += 1;
+          }
+        }
+      }
+    }
+    expect(tooLong === 0, `${tooLong} explanations are longer than the panel can hold`);
+    expect(saysNothing === 0, `${saysNothing} explanations say exactly what their own button says`);
+    expect(cutMidWord === 0, `${cutMidWord} explanations were cut mid-word`);
+    // ⚠️ A share, not a count: the point is that the feature is actually
+    // reaching questions. It is 100% today, so a drop to even 90% means a
+    // content shape changed underneath it.
+    expect(withWhy / asked > 0.9, `only ${((withWhy / asked) * 100).toFixed(0)}% of askable questions explain themselves (${withWhy} of ${asked})`);
+    console.log(`${((withWhy / asked) * 100).toFixed(0)}% of askable questions carry a model answer to show after a wrong one.`);
+  }
 } finally {
   rmSync(out, { recursive: true, force: true });
 }
