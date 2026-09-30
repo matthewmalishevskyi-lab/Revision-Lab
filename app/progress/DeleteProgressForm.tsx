@@ -17,6 +17,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteMyProgress } from "../lib/progress-actions";
+import { SHIPS_LOG_KEY } from "../lib/shipsLog";
 
 export function DeleteProgressForm() {
   const router = useRouter();
@@ -37,6 +38,11 @@ export function DeleteProgressForm() {
         setError(result.error ?? "Something went wrong. Please try again.");
         return;
       }
+      // ⚠️ The ship's log lives in localStorage, not in the database, so the
+      // two server-side deletes never touched it — leaving every grade, time
+      // and kill count sitting on the page directly under a button that says
+      // "this removes what you've done". A promise the page could not keep.
+      try { localStorage.removeItem(SHIPS_LOG_KEY); } catch { /* private mode: nothing to clear */ }
       setDone(true);
       setOpen(false);
       // The progress page is a Server Component, so the new (empty) figures
@@ -74,8 +80,9 @@ export function DeleteProgressForm() {
         <strong>every question you&apos;ve answered, every flashcard you&apos;ve
         reviewed, all your study time, your test results, your streak, your XP
         and your badges</strong>{" "}
-        — and the record of which flashcards were due for review. Everything on
-        this page goes back to zero.
+        — the record of which flashcards were due for review, and the alien
+        game&apos;s ship&apos;s log on this device. Everything on this page goes
+        back to zero.
         <br />
         <br />
         This happens <strong>immediately and permanently</strong>. There is no

@@ -59,6 +59,34 @@ try {
   expect(skipped < answered, `never answering (${skipped}) scores as well as answering everything right (${answered})`);
   expect(skipped > 0, "never answering scores zero, which punishes a player who never found the blaster");
 
+  // ⚠️ THE GRADE MUST NEVER MAKE TRYING WORSE THAN REFUSING TO TRY. This is
+  // the one property a revision site's score cannot get wrong, and the first
+  // version did: with raw accuracy, one wrong answer — including one the clock
+  // timed out — cost 20 of the 40 accuracy marks, so opening a quiz at all was
+  // a losing move. Every assertion below was measured against the old formula
+  // and fails on it.
+  const deck = { kills: 8, aliens: 8, seconds: 90, par: 102 };
+  const none = scoreRun(run({ ...deck, right: 0, wrong: 0 }));
+  const oneWrong = scoreRun(run({ ...deck, right: 0, wrong: 1 }));
+  const oneRight = scoreRun(run({ ...deck, right: 1, wrong: 0 }));
+  expect(none - oneWrong <= 5, `one wrong answer costs ${none - oneWrong} marks against never opening a quiz — trying has to be cheap`);
+  expect(oneRight > none, `one right answer (${oneRight}) does not beat never opening a quiz (${none})`);
+  // and a sustained run of wrong answers still has to cost something real,
+  // or the accuracy mark stops meaning anything
+  expect(scoreRun(run({ ...deck, right: 0, wrong: 8 })) <= none - 15,
+    "a whole deck of wrong answers barely dents the grade, so accuracy is not being measured");
+  // both ends still reachable: an S has to be possible and a 0 has to be possible
+  expect(scoreRun(run({ ...deck, right: 12, wrong: 0, seconds: 10 })) === 100, "a perfect run can no longer reach 100");
+  expect(scoreRun(run({ right: 0, wrong: 12, kills: 0, aliens: 8, seconds: 900, par: 102 })) === 0, "the worst possible run can no longer reach 0");
+  // monotonic in the thing it measures: more right answers never scores less
+  for (let asked = 1; asked <= 12; asked++) {
+    for (let right = 0; right < asked; right++) {
+      const a = scoreRun(run({ ...deck, right, wrong: asked - right }));
+      const b = scoreRun(run({ ...deck, right: right + 1, wrong: asked - right - 1 }));
+      expect(b >= a, `${right + 1} of ${asked} right (${b}) scores less than ${right} of ${asked} (${a})`);
+    }
+  }
+
   // a level with no aliens on it is cleared by definition, not failed
   expect(scoreRun(run({ aliens: 0, kills: 0, right: 10, wrong: 0, seconds: 10 })) === 100,
     "an empty deck cannot be fully cleared");

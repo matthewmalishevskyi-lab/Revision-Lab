@@ -27,9 +27,15 @@ export function ShipsLog() {
   return (
     <section className="mt-10 rounded-2xl border border-black/5 p-6 dark:border-white/10">
       <h2 className="text-lg font-semibold">Ship&apos;s log</h2>
+      {/* ⚠️ "Your best RUN" was a lie, and a checkable one: each figure is the
+          best of its own column, so a slow careful run and a fast reckless one
+          produce a row — B, 0:35, 8 aliens, 100% right — that nobody ever
+          played. These are records, one per column, and the wording now says
+          so rather than inventing a run out of four separate bests. */}
       <p className="mt-1 text-sm opacity-70">
-        Your best run on each deck of the alien game — {runs} run{runs === 1 ? "" : "s"} so far.
-        Kept on this device only.
+        Your records on each deck of the alien game — best grade, fastest time, most aliens,
+        best accuracy, each from whichever run set it. {runs} run{runs === 1 ? "" : "s"} so far,
+        kept on this device only.
       </p>
       <ul className="mt-4 space-y-2">
         {decks.map(([level, best]) => (
@@ -39,10 +45,10 @@ export function ShipsLog() {
             </span>
             <span className="min-w-0 flex-1 text-sm font-medium">{level}</span>
             <span className="text-sm tabular-nums opacity-70">{best.bestScore}/100</span>
-            <span className="text-sm tabular-nums opacity-70">{formatClock(best.bestSeconds)}</span>
-            <span className="text-sm tabular-nums opacity-70">{best.mostKills} aliens</span>
+            <span className="text-sm tabular-nums opacity-70">fastest {formatClock(best.bestSeconds)}</span>
+            <span className="text-sm tabular-nums opacity-70">most {best.mostKills} aliens</span>
             {best.bestAccuracy !== null && (
-              <span className="text-sm tabular-nums opacity-70">{Math.round(best.bestAccuracy * 100)}% right</span>
+              <span className="text-sm tabular-nums opacity-70">best {Math.round(best.bestAccuracy * 100)}% right</span>
             )}
           </li>
         ))}
