@@ -1,5 +1,150 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Bug check of the cargo hold, grenades, teaching, the grade and touch (2026-09-30)
+
+Matthew: *"Run a full bug check in the new levels and new features added"*.
+That is the four commits `4c59747` (level 4 + grenades + shooting), `90a4493`
+(the teaching panel), `b972d7c` (drops, grade, ship's log) and `b5e978d`
+(touch controls). Levels 5 and 6 are still a plan, not code, so there was
+nothing in them to check.
+
+**Method, because it is the part worth keeping.** Baseline green first, so a
+failure later means the fix and not the ground moving. Then four read-only
+audits in parallel. Then — and this is the rule — *every* lead reproduced in a
+real browser before a line was changed, with the game's own animation loop
+cancelled and its state stepped by hand, so the measurement is of the game and
+not of my patience. Fix. Re-run an inverted version of each reproduction.
+Add a permanent check, and confirm the check FAILS on the old code before
+believing it.
+
+Two audit findings were wrong and were thrown out after measuring. The touch
+buttons were reported as 43.6 CSS px, below the 44 minimum, by taking the
+page's `px-4` off the viewport width; the frame actually gets the full 568, so
+they are 46.1. Arithmetic is not measurement.
+
+### The worst one: a grenade you could not see, killing you
+
+Throwing a grenade with your back to a shelf killed you outright with nothing
+on screen. The spawn is 0.35 squares in front of the player, `pushOut` only
+keeps the player's CENTRE 0.22 clear of a wall, so against shelving the
+grenade was created INSIDE the solid: every move was refused, the wall was
+nearer to the camera than the grenade so it was never drawn, and two seconds
+later the fuse ran out inside your own hip. Measured at (24.77, 8.5) facing
+level 4's stacks: travelled 0.0000 squares, health 100 → 0, mode `"dead"`.
+It now tries 0.35, then 0.26, then 0.18 and takes the first that is free.
+
+### The other twelve in the game
+
+Exposure was never reset by `loadLevel`, so you walked into the dark cargo
+hold still lit from sprinting into the lift — visible from twelve squares.
+Shake and recoil decay only inside `update()`, which stops when you die, so a
+death by your own grenade left the card jittering for ever. The AIM was tested
+against a horizon that included the random shake jolt — ±12 px of fresh
+`Math.random()` every frame against a 29 px alien; the picture still shakes,
+the shot no longer does. The touch stick survived a level change and a blur,
+so a finger still down walked you off the new spawn. Pressing 1 during the new
+3.2 s wrong-answer hold put the knife away, because the hold is still "reload"
+mode and the digit fell through. An empty blaster refused instead of swinging
+— and there is no "1" key on a phone, so a player out of cells had no attack
+at all. A held key repeated thirty times a second. The controls card is only
+drawn for the deck you START on, so walking into the cargo hold from deck 3
+never mentioned G — said over comms now. On touch, FIRE and JUMP were still
+hit-tested behind a reload quiz while not being drawn, so a resting thumb
+spent the cell you were answering questions to earn. Any tap dismissed the
+death and grade screens instantly, and you are usually mid-tap on FIRE when
+you die — 0.9 s lock now. A stomp could ask the same question twice. A dropped
+cell spawned at the corpse's exact coordinates.
+
+### The phone, measured on a sideways iPhone SE
+
+⚠️ **The quiz answer boxes were 24 CSS pixels tall** — the fourth sub-44 px tap
+target this site has shipped, and the only way to answer a question on a phone.
+Now 45.3. The model answer that the whole teaching commit exists for was
+**7.5 CSS px**; now 13.3, with the question at 16.0 and the answers at 14.2.
+The panel told phone players to "Press 1–4" and "SPACE to carry on". The
+stick's entire travel was 24 CSS px, so the walk band was 17 px and any
+decisive push was a run — on the deck where walking quietly *is* the mechanic.
+The "turn your phone sideways" notice did not block taps, so the game ran
+behind it with half its controls off the picture. The full-screen button is
+now hidden where the browser refuses it, because iOS Safari will only put a
+`<video>` full screen and it was a button that visibly did nothing.
+
+⚠️ **The rule this keeps proving:** every HUD size is in VISOR pixels and the
+visor is scaled DOWN. A sideways iPhone SE gives the 1280-wide visor 568 CSS
+px — scale 0.4437 — so 44 CSS px is 99 visor px. Anything written in visor
+pixels without dividing is a guess.
+
+### Level 4
+
+The third ordnance grenade was standing on a crate. A pickup is collected
+within 0.55 squares and a standing player cannot get within 0.62 of a crate's
+middle, so it could not be picked up at all. New permanent security check: no
+pickup may sit on cover, a block or a door — confirmed to fail on the old
+placement before the crate was moved.
+
+### The grade punished trying
+
+Found by running `scoreRun` over real numbers rather than reading it. Never
+opening a quiz scores the middle of the accuracy marks — no evidence either
+way. With RAW accuracy, one wrong answer therefore scored 0 and cost 20 marks,
+and a timed-out question counts as wrong. Level 1, deck cleared, 90 seconds:
+
+    never presses R at all        80  (A)
+    answers 10, gets 5 right      80  (A)   <- identical to never trying
+    answers 1, gets it wrong      60  (B)   <- -20 for trying once
+
+On a revision site that is the one thing a grade must never say. Accuracy now
+fades in over the first six questions: one wrong answer costs 3, a right one
+gains 3, and both ends stay reachable — a perfect run is still 100 and a run
+of wrong answers still reaches 0. Same confidence device `daily-practice.ts`
+uses to rank topics, ramped rather than permanent, because a grade has to
+reach both ends and a ranking does not.
+
+⚠️ **"Your best run on each deck" was never a run.** `foldRun` takes the
+maximum of each column independently, so a slow careful run and a fast reckless
+one produce a row — B, 0:35, 8 aliens, 100% right — that nobody played. They
+are records, one per column, and the page and the finish screen now say so.
+
+Also in the log: `scoreRun` guarded `par` alone, by name, because that is the
+one a check had caught — `right=10/wrong=-5` scored 140 out of 100, and
+`Number.isFinite(1e308)` is true while `3 * 1e308` is Infinity, so the guard
+needed a ceiling as well as a floor. One non-finite `seconds` destroyed a
+deck's whole history, because NaN through `Math.min` stringifies as `null` and
+`parseLog` then rejected the entry, runs and kills and accuracy with it.
+`parseLog` capped at 40 entries BEFORE validating, so forty junk keys hid every
+real deck. And "Delete my progress history" did not touch the ship's log
+sitting directly above it — a promise the page could not keep.
+
+### Checks that could not fail
+
+⚠️ Three of the four checks shipped with the teaching panel could not fail.
+The "no mid-word cut" rule tested for whitespace followed by a non-space,
+which is true of every multi-word string on earth. Replaced with real
+assertions against `whyFor` itself. Two more of the same kind turned up while
+building this pass's own tools: a quiz-panel sweep that read canvas alpha,
+which the visor paints edge to edge, so it always reported the whole screen;
+and a title-card probe reading one pixel, which failed on correct code once
+the card legitimately grew over that point. The panel check now records the
+drawing calls and diffs the list between a frame with a quiz and one without,
+and the title-card check asks a functional question instead: a tap where FIRE
+lives must start the game and must not fire.
+
+**A check that cannot fail is worse than no check**, because it is counted in
+the total and read as coverage. Three instances in one pass.
+
+**Verified.** `npm run check` fully green — 188,027 content, 1,239,302
+geometry, 2,463 security, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge, 25,329
+game-question and 248 ship's-log checks; `tsc` and `eslint` clean. In a real
+browser: 15 checks re-running every confirmed bug against the fixed code, 12
+measuring the quiz panel's drawn extent on a phone and a desktop, 0 touch
+targets under 44 px at iPhone SE and iPhone 13 sizes, and the existing 42
+grenade, 21 teaching, 22 log, 25 touch, 17 title-card, 13 route and 953 static
+level checks still green, with no console errors.
+
+Two commits, `1050661` and `d5c7c93`, sent as patches (the sandbox cannot
+push).
+
 ## Three things the game was missing: teaching, a point to fighting, and a phone (2026-09-29)
 
 Matthew: *"do you have any ideas how we can improve the current game we have?"*
