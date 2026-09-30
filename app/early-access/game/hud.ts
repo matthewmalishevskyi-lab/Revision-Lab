@@ -30,7 +30,12 @@ const FONT = "system-ui, sans-serif", MONO = `ui-monospace, "DejaVu Sans Mono", 
 export type TouchButton = { id: "fire" | "jump" | "reload" | "use" | "nade"; x: number; y: number; r: number; label: string; hint: string };
 
 /** Where the movement stick sits, and how far the knob can travel. */
-export const TOUCH_STICK = { x: 190, y: HUD_H - 230, r: 92, knob: 38 };
+// ⚠️ `r - knob` is the whole travel of the thumb, in VISOR pixels, and the
+// visor is about 0.44 of a phone's CSS pixels — so the old 92/38 gave a total
+// throw of 24 CSS px, inside which the walk band was 17px and a decisive push
+// was always a run. On the dark deck, where walking rather than running IS the
+// mechanic, a phone player was permanently EXPOSED. 112/42 gives 31 CSS px.
+export const TOUCH_STICK = { x: 190, y: HUD_H - 230, r: 112, knob: 42 };
 
 // ⚠️ The radii are in VISOR pixels and the visor is scaled down to fit the
 // phone, so the rule is not "44 in here" — it is 44 CSS pixels on the
@@ -52,13 +57,17 @@ export function touchButtons(opts: { grenades: number }): TouchButton[] {
   return TOUCH_BUTTONS.filter((b) => b.id !== "nade" || opts.grenades > 0);
 }
 
-export function drawTouchControls(x: Ctx, s: { grenades: number; held: Set<string>; stick: { dx: number; dy: number } | null }) {
+export function drawTouchControls(x: Ctx, s: { grenades: number; held: Set<string>; stick: { dx: number; dy: number; ox?: number; oy?: number } | null }) {
   x.save();
-  // the movement stick
+  // The movement stick. ⚠️ Drawn around WHERE THE THUMB LANDED, not around the
+  // fixed centre: the grab area is 1.35x the ring, so grabbing its outer edge
+  // used to render the knob up to half a ring away from the finger and hit its
+  // stop while the thumb was still travelling.
   const st = TOUCH_STICK;
-  x.fillStyle = "rgba(4,10,22,0.42)"; x.beginPath(); x.arc(st.x, st.y, st.r, 0, 7); x.fill();
+  const cx = s.stick?.ox ?? st.x, cy = s.stick?.oy ?? st.y;
+  x.fillStyle = "rgba(4,10,22,0.42)"; x.beginPath(); x.arc(cx, cy, st.r, 0, 7); x.fill();
   x.strokeStyle = "rgba(127,230,255,0.45)"; x.lineWidth = 2.5; x.stroke();
-  const kx = st.x + (s.stick?.dx ?? 0) * (st.r - st.knob), ky = st.y + (s.stick?.dy ?? 0) * (st.r - st.knob);
+  const kx = cx + (s.stick?.dx ?? 0) * (st.r - st.knob), ky = cy + (s.stick?.dy ?? 0) * (st.r - st.knob);
   x.fillStyle = s.stick ? "rgba(127,230,255,0.45)" : "rgba(127,230,255,0.22)";
   x.beginPath(); x.arc(kx, ky, st.knob, 0, 7); x.fill();
   x.strokeStyle = "rgba(200,240,255,0.7)"; x.lineWidth = 2; x.stroke();
@@ -92,7 +101,7 @@ export type HudState = {
   area: { name: string; t: number } | null;
   prompt: { key: string; text: string } | null;
   /** Draw the on-screen stick and buttons (a touchscreen, no keyboard). */
-  touch?: { grenades: number; held: Set<string>; stick: { dx: number; dy: number } | null } | null;
+  touch?: { grenades: number; held: Set<string>; stick: { dx: number; dy: number; ox?: number; oy?: number } | null } | null;
 };
 
 // ── the visor itself: drawn once, reused every frame ─────────────────────────
@@ -344,10 +353,25 @@ export type QuizView = {
   time: number; perQuestion: number; picked: number | null; correct: number; results: boolean[]; ammo: number;
   /** The site's model answer, shown only after a WRONG answer. */
   why?: string;
+  /** A touchscreen: bigger everything. See the note at the top of drawQuiz. */
+  touch?: boolean;
 };
 
 function wrap(x: Ctx, text: string, maxW: number): string[] {
-  const words = text.split(/\s+/); const lines: string[] = []; let line = "";
+  const lines: string[] = []; let line = "";
+  // ⚠️ One token wider than the whole panel used to run straight off both
+  // edges, because nothing ever broke a word. Nothing in the bank does that
+  // today; a URL or a long chemical name would.
+  const words: string[] = [];
+  for (const raw of text.split(/\s+/)) {
+    let wd = raw;
+    while (x.measureText(wd).width > maxW && wd.length > 1) {
+      let cut = wd.length;
+      while (cut > 1 && x.measureText(wd.slice(0, cut)).width > maxW) cut--;
+      words.push(wd.slice(0, cut)); wd = wd.slice(cut);
+    }
+    words.push(wd);
+  }
   for (const wd of words) { const t = line ? line + " " + wd : wd; if (x.measureText(t).width > maxW && line) { lines.push(line); line = wd; } else line = t; }
   if (line) lines.push(line); return lines;
 }
@@ -364,29 +388,43 @@ export function quizChoiceAt(px: number, py: number): number {
   return lastChoiceBoxes.findIndex((r) => px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h);
 }
 
+// ⚠️ EVERY SIZE IN HERE IS IN VISOR PIXELS, AND A PHONE SEES ABOUT 0.44 OF ONE.
+// A sideways iPhone SE gives the 1280-wide visor 568 real pixels. Measured on
+// exactly that: the answer boxes were 24 CSS px tall — the fourth sub-44px tap
+// target this site has shipped, and the only way to answer a question on a
+// phone — and the model answer the teaching commit exists for was 7.5 CSS px,
+// which nobody can read. So a touchscreen gets its own set of numbers: a panel
+// nearly the full width, 100-px-tall boxes (44 CSS px) and type roughly 1.7x.
+// The desktop numbers below are unchanged, and the deltas are written as
+// (touch ? a : b) so that stays true by construction.
 export function drawQuiz(x: Ctx, q: QuizView) {
   const W = HUD_W;
   x.save();
-  const stomp = q.kind === "stomp";
+  const stomp = q.kind === "stomp", touch = !!q.touch;
   if (stomp) { x.fillStyle = "rgba(3,6,13,0.5)"; x.fillRect(0, 0, W, HUD_H); }
-  const PW = stomp ? 760 : 680, X = W / 2 - PW / 2, Y = stomp ? 80 : 150;
-  x.font = `bold 30px ${FONT}`; const lines = wrap(x, q.question, PW - 64).slice(0, 3);
+  const ROW = touch ? 112 : 64, BOXH = touch ? 100 : 54;
+  const QF = touch ? 36 : 30, QLH = touch ? 46 : 38;
+  const WF = touch ? 30 : 17, WLH = touch ? 38 : 24, WMAX = touch ? 3 : 4;
+  const AF = touch ? 32 : 19, NF = touch ? 22 : 17;
+  const HEAD = touch ? 124 : 112, FOOTF = touch ? 20 : 13, TIMEF = touch ? 19 : 15;
+  const PW = touch ? 1200 : stomp ? 760 : 680, X = W / 2 - PW / 2, Y = touch ? 16 : stomp ? 80 : 150;
+  x.font = `bold ${QF}px ${FONT}`; const lines = wrap(x, q.question, PW - 64).slice(0, 3);
   // Room for the model answer, but only when there is one to show. Measuring
   // it here rather than guessing keeps the panel the same size as before on
   // every right answer, which is most of them.
   const wrong = q.picked !== null && q.picked !== q.correct;
-  x.font = `17px ${FONT}`;
-  const whyLines = wrong && q.why ? wrap(x, q.why, (stomp ? 760 : 680) - 124).slice(0, 4) : [];
-  const PH = 300 + lines.length * 38 + (whyLines.length ? 34 + whyLines.length * 24 : 0);
+  x.font = `${WF}px ${FONT}`;
+  const whyLines = wrong && q.why ? wrap(x, q.why, PW - 124).slice(0, WMAX) : [];
+  const PH = (HEAD - 112) + 300 + (ROW - 64) * 2 + lines.length * QLH + (whyLines.length ? 34 + whyLines.length * WLH : 0);
   const accent = stomp ? "#ffd65a" : CYAN;
   x.fillStyle = stomp ? "rgba(8,16,30,0.94)" : "rgba(6,14,28,0.84)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 22); x.fill();
   x.strokeStyle = accent; x.lineWidth = 2.5; x.stroke();
   // a thin bright edge along the top, like a hologram's projector line
   x.fillStyle = accent; x.fillRect(X + 22, Y, PW - 44, 2);
-  x.fillStyle = accent; x.font = `bold 32px ${FONT}`; const title = stomp ? "STOMP!" : "RELOAD"; x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
-  x.fillStyle = "#c9d6e8"; x.font = `16px ${FONT}`;
+  x.fillStyle = accent; x.font = `bold ${touch ? 36 : 32}px ${FONT}`; const title = stomp ? "STOMP!" : "RELOAD"; x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
+  x.fillStyle = "#c9d6e8"; x.font = `${touch ? 20 : 16}px ${FONT}`;
   x.fillText(stomp ? "Get all 3 right to finish it off" : "Right: +3 cells · Wrong: nothing", X + 30 + titleW + 16, Y + 44); // measured, so no font can make them overlap
-  x.font = `bold 13px ${FONT}`; const tw = x.measureText(q.topic).width + 22;
+  x.font = `bold ${touch ? 16 : 13}px ${FONT}`; const tw = x.measureText(q.topic).width + 22;
   x.fillStyle = "#1c6fd6"; x.beginPath(); x.roundRect(X + 30, Y + 64, tw, 26, 13); x.fill(); x.fillStyle = "#eaf6ff"; x.fillText(q.topic, X + 41, Y + 82);
   for (let i = 0; i < q.total; i++) {
     const cx = X + PW - 40 - (q.total - 1 - i) * 36, cy = Y + 40; x.beginPath(); x.arc(cx, cy, 12, 0, 7);
@@ -394,45 +432,48 @@ export function drawQuiz(x: Ctx, q: QuizView) {
     else if (i === q.index) { x.strokeStyle = accent; x.lineWidth = 3; x.stroke(); }
     else { x.fillStyle = "#2a3647"; x.fill(); }
   }
-  x.fillStyle = "#ffffff"; x.font = `bold 30px ${FONT}`;
-  lines.forEach((l, i) => x.fillText(l, X + 30, Y + 132 + i * 38));
-  const oy = Y + 112 + lines.length * 38;
+  x.fillStyle = "#ffffff"; x.font = `bold ${QF}px ${FONT}`;
+  lines.forEach((l, i) => x.fillText(l, X + 30, Y + (HEAD + 20) + i * QLH));
+  const oy = Y + HEAD + lines.length * QLH;
   lastChoiceBoxes = [];
   q.choices.forEach((o, i) => {
-    const bx = X + 30 + (i % 2) * ((PW - 72) / 2 + 12), by = oy + Math.floor(i / 2) * 64, bw = (PW - 72) / 2;
-    lastChoiceBoxes.push({ x: bx, y: by, w: bw, h: 54 });
+    const bx = X + 30 + (i % 2) * ((PW - 72) / 2 + 12), by = oy + Math.floor(i / 2) * ROW, bw = (PW - 72) / 2;
+    lastChoiceBoxes.push({ x: bx, y: by, w: bw, h: BOXH });
     const picked = q.picked === i, isRight = i === q.correct, reveal = q.picked !== null;
     x.fillStyle = reveal && isRight ? "#1f8a57" : reveal && picked ? "#9b2c2c" : "rgba(22,32,46,0.9)";
-    x.beginPath(); x.roundRect(bx, by, bw, 54, 12); x.fill();
+    x.beginPath(); x.roundRect(bx, by, bw, BOXH, 12); x.fill();
     x.strokeStyle = reveal && isRight ? GOOD : "#3f4b5c"; x.lineWidth = 2; x.stroke();
-    x.fillStyle = accent; x.font = `bold 17px ${FONT}`; x.fillText(String(i + 1), bx + 16, by + 34);
-    x.fillStyle = "#ffffff"; x.font = `bold 19px ${FONT}`;
+    x.fillStyle = accent; x.font = `bold ${NF}px ${FONT}`; x.fillText(String(i + 1), bx + 16, by + BOXH / 2 + NF / 3);
+    x.fillStyle = "#ffffff"; x.font = `bold ${AF}px ${FONT}`;
     let text = o; while (x.measureText(text).width > bw - 60 && text.length > 4) text = text.slice(0, -2);
     if (text !== o) text = text.slice(0, -1) + "…";
-    x.fillText(text, bx + 44, by + 34);
+    x.fillText(text, bx + (touch ? 56 : 44), by + BOXH / 2 + AF / 3);
   });
   // ⚠️ Why this is here at all: the right answer used to light up green for
   // 0.7 seconds and the game moved on, so a wrong answer told you nothing but
   // that you were wrong. The site already stores a model answer — often with
   // the working — and the game was throwing it away.
   if (whyLines.length) {
-    const wy = oy + Math.ceil(q.choices.length / 2) * 64 + 6;
-    x.fillStyle = "rgba(47,212,138,0.10)"; x.beginPath(); x.roundRect(X + 30, wy, PW - 60, 26 + whyLines.length * 24, 12); x.fill();
+    const wy = oy + Math.ceil(q.choices.length / 2) * ROW + 6;
+    x.fillStyle = "rgba(47,212,138,0.10)"; x.beginPath(); x.roundRect(X + 30, wy, PW - 60, 26 + whyLines.length * WLH, 12); x.fill();
     x.strokeStyle = "rgba(47,212,138,0.45)"; x.lineWidth = 1.5; x.stroke();
-    label(x, "WHY", X + 46, wy + 20, GOOD, 11);
-    x.fillStyle = "#dff6ea"; x.font = `17px ${FONT}`;
-    whyLines.forEach((l, i) => x.fillText(l, X + 84, wy + 20 + i * 24));
+    label(x, "WHY", X + 46, wy + 20, GOOD, touch ? 14 : 11);
+    x.fillStyle = "#dff6ea"; x.font = `${WF}px ${FONT}`;
+    whyLines.forEach((l, i) => x.fillText(l, X + (touch ? 96 : 84), wy + 22 + i * WLH));
   }
   const tY = Y + PH - 36; const frac = Math.max(0, q.time / q.perQuestion);
   x.fillStyle = "#2a3647"; x.beginPath(); x.roundRect(X + 30, tY, PW - 150, 10, 5); x.fill();
   x.fillStyle = q.time < 2 ? "#ff4d4d" : "#ffd65a"; x.beginPath(); x.roundRect(X + 30, tY, (PW - 150) * frac, 10, 5); x.fill();
-  x.fillStyle = "#c9d6e8"; x.font = `bold 15px ${FONT}`; x.fillText(`${Math.max(0, q.time).toFixed(1)} s`, X + PW - 104, tY + 10);
-  x.fillStyle = "#9fb3cf"; x.font = `13px ${FONT}`;
+  x.fillStyle = "#c9d6e8"; x.font = `bold ${TIMEF}px ${FONT}`; x.fillText(`${Math.max(0, q.time).toFixed(1)} s`, X + PW - 104, tY + 10);
+  x.fillStyle = "#9fb3cf"; x.font = `${FOOTF}px ${FONT}`;
+  // ⚠️ A phone has no SPACE and no number keys. This panel was telling every
+  // phone player to press keys their device does not have — including the one
+  // line that explains how to dismiss the model answer.
   x.fillText(
     q.picked !== null
-      ? (wrong ? "SPACE to carry on · this one goes to “Revisit your mistakes”" : "SPACE to carry on")
-      : stomp ? "Press 1–4. One wrong and it throws you off. Wrong answers go to “Revisit your mistakes”."
-      : "Press 1–4 to answer. You can still move while you reload!",
+      ? (wrong ? `${touch ? "Tap" : "SPACE"} to carry on · this one goes to “Revisit your mistakes”` : `${touch ? "Tap" : "SPACE"} to carry on`)
+      : stomp ? `${touch ? "Tap an answer" : "Press 1–4"}. One wrong and it throws you off. Wrong answers go to “Revisit your mistakes”.`
+      : `${touch ? "Tap an answer" : "Press 1–4"} to answer. You can still move while you reload!`,
     X + 30, tY + 28);
   x.restore();
 }

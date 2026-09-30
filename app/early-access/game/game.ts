@@ -70,7 +70,7 @@ const DECOR = new Set(["lamp", "canister", "holo"]);
 // A wall between you and the blast stops all of it (lineOfSight), so throwing
 // one round a corner protects you from your own grenade.
 const NADE_KILL_R = 0.9, NADE_HURT_R = 2.4, NADE_DMG = 60, NADE_SELF = 85;
-const NADE_FUSE = 2.0, NADE_MAX = 3, NADE_SPEED = 7.2;
+const NADE_FUSE = 2.0, NADE_MAX = 3, NADE_SPEED = 7.2, NADE_R = 0.1;
 
 // ⚠️ An alien you defeat drops a single cell, two times in five — and the
 // arithmetic is the whole point. Shooting one costs TWO cells and returns 0.4,
@@ -132,6 +132,12 @@ export class Game {
   private fx: Fx[] = [];
   /** Whole-screen shake, in pixels, from an explosion going off near you. */
   private shake = 0;
+  /** The horizon the AIM is tested against: pitch and recoil, never the random
+   *  shake jolt. See the comment where it is set in draw(). */
+  private aimHorizon = 0;
+  /** A results or death screen ignores taps for this long, so the tap you were
+   *  already making at FIRE does not dismiss the grade you just earned. */
+  private screenLock = 0;
   /** Does this deck have grenades on it? (See hasGrenades, above.) */
   private hasNades = false;
   /** The best previous run on this deck, read once when it is finished. */
@@ -237,7 +243,6 @@ export class Game {
     this.levelIndex = n;
     const def = LEVELS[n];
     this.world = buildWorld(def, this.tex);
-    this.hasNades = hasGrenades(def);
     {
       let total = 0, cells = 0;
       const L = this.world.light;
@@ -247,6 +252,20 @@ export class Game {
     this.p.x = def.START.x; this.p.y = def.START.y; this.p.angle = def.START.angle; this.p.eye = 0.5; this.p.pitch = 0; this.p.vx = 0; this.p.vy = 0; this.p.z = 0; this.p.vz = 0;
     this.p.health = this.carry.health; this.p.vest = this.carry.vest; this.p.ammo = this.carry.ammo; this.p.hasPistol = this.carry.hasPistol;
     this.p.grenades = this.carry.grenades; this.p.nadeWait = 0; this.p.recoil = 0; this.p.recoilV = 0; this.p.hitMark = 0; this.shake = 0;
+    // ⚠️ Carried grenades count. `hasGrenades(def)` alone meant a deck that
+    // places none never offered G — including to a player who walked in with
+    // three saved from the cargo hold, which is exactly the person who needs
+    // telling. Computed AFTER the carry, or it reads the previous deck's count.
+    this.hasNades = hasGrenades(def) || this.p.grenades > 0;
+    // ⚠️ Exposure is a fact about where you are standing NOW. Left over from
+    // the last deck it made you arrive EXPOSED — sprint into a lift on deck 3
+    // and you spawn on the dark cargo hold visible from twelve squares for the
+    // half-second it takes to settle, which is long enough to wake a room.
+    this.p.exposure = 0;
+    // and a finger still on the stick when the level changed used to keep
+    // walking you forward at the new spawn, with no knob drawn to explain it
+    this.stickTouch = null; this.lookTouch = null; this.heldButtons.clear();
+    this.screenLock = 0;
     this.p.weapon = this.p.hasPistol ? "pistol" : "knife"; this.p.keys = new Set(); this.p.radTime = 0; this.p.hurt = 0;
     this.aliens = []; this.pickups = []; this.decor = []; this.bolts = []; this.nades = []; this.fx = []; this.quiz = null;
     for (const s of def.SPRITES) {
@@ -258,6 +277,10 @@ export class Game {
     this.stats = { kills: 0, right: 0, wrong: 0, time: 0 };
     this.comms = null; this.commsQueue = []; this.hinted = new Set(); this.feed = []; this.hits = []; this.lastArea = ""; this.areaBanner = null;
     if (def.INTRO) this.hint("intro", def.INTRO);
+    // ⚠️ The controls card is only ever shown for the deck you START on, so
+    // walking into the cargo hold from deck 3 never mentioned G. Say it here
+    // instead, which covers every way of arriving — including carrying them in.
+    if (this.hasNades) this.hint("nades", this.touchDevice ? "Grenades on this deck — the G button lobs one." : "Grenades on this deck — press G to lob one.");
   }
 
   // ── input ─────────────────────────────────────────────────────────────────
@@ -303,14 +326,22 @@ export class Game {
       return;
     }
     if (this.mode !== "play" && this.mode !== "reload") return;
+    // ⚠️ A held key repeats about thirty times a second. Firing is rate-limited
+    // by fireWait and walking reads `this.keys`, so neither cares — but G with
+    // no grenades machine-gunned the error beep, and M flipped the sound on and
+    // off until you let go. An action happens once per press.
+    if (e.repeat) return;
     if (k === "f" || k === "control") this.fire(); // keyboard shooting, like Doom's Ctrl
     if (k === "r") this.startReload();
     if (k === "e") this.use();
     if (k === "g") this.throwGrenade();
     if (k === " ") { if (this.stompTarget()) this.tryStomp(); else this.jump(); }
     if (k === "m") this.muted = !this.muted;
-    if (digit === "1") this.p.weapon = "knife";
-    if (digit === "2" && this.p.hasPistol) this.p.weapon = "pistol";
+    // ⚠️ Not while a quiz is on screen. The 3.2s hold after a wrong answer is
+    // still `reload` mode, so "1" fell through to here and silently swapped you
+    // to the knife — you closed the quiz with six cells and a melee weapon.
+    if (!this.quiz && digit === "1") this.p.weapon = "knife";
+    if (!this.quiz && digit === "2" && this.p.hasPistol) this.p.weapon = "pistol";
   };
   private onKeyUp = (e: KeyboardEvent) => { this.keys.delete(e.key.toLowerCase()); };
 
@@ -342,6 +373,10 @@ export class Game {
       if (this.mode === "title" || this.mode === "paused") {
         this.mode = this.mode === "title" ? "play" : this.pausedFrom; this.opts.onStart?.(); continue;
       }
+      // ⚠️ On a phone any tap advances these screens, and you are usually
+      // mid-tap on FIRE when you die. Without a short lock the grade you just
+      // earned is gone before you have read a word of it.
+      if ((this.mode === "dead" || this.mode === "complete") && this.screenLock > 0) continue;
       if (this.mode === "dead") { this.loadLevel(this.levelIndex); this.mode = "play"; continue; }
       if (this.mode === "complete") {
         this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, grenades: this.p.grenades };
@@ -354,7 +389,11 @@ export class Game {
         if (this.quiz.picked !== null) { if (this.quiz.feedback > 0) this.quiz.feedback = 0; continue; }
         const choice = quizChoiceAt(x, y);
         if (choice >= 0) { this.answer(choice); continue; }
-        if (this.mode === "stomp") continue; // the world is frozen: nothing else to do
+        // ⚠️ and nothing else. The buttons are NOT DRAWN while a quiz is up
+        // (see `touch:` in draw), but they used to still be hit-tested, so a
+        // thumb resting to the right of the reload panel — where FIRE lives —
+        // spent a cell you were answering questions to earn, invisibly.
+        continue;
       }
       const button = touchButtons({ grenades: this.p.grenades }).find((b) => Math.hypot(x - b.x, y - b.y) <= b.r);
       if (button) { this.heldButtons.set(t.identifier, button.id); this.press(button.id); continue; }
@@ -367,6 +406,9 @@ export class Game {
   private onTouchMove = (e: TouchEvent) => {
     if (!this.touchDevice) return;
     e.preventDefault();
+    // the mouse handler has this guard; the touch one did not, so a finger
+    // still turned the camera behind a stomp panel or a death screen
+    if (this.mode !== "play" && this.mode !== "reload") return;
     for (const t of Array.from(e.changedTouches)) {
       const [x, y] = this.toVisor(t);
       if (this.stickTouch?.id === t.identifier) {
@@ -379,7 +421,7 @@ export class Game {
         // the same sensitivity as the mouse, in visor pixels rather than
         // device pixels, so it feels the same on any size of screen
         this.p.angle += (x - this.lookTouch.x) * 0.0042;
-        this.p.pitch = Math.max(-PITCH_MAX, Math.min(PITCH_MAX, this.p.pitch - (y - this.lookTouch.y) * 1.1));
+        this.p.pitch = Math.max(-PITCH_MAX, Math.min(PITCH_MAX, this.p.pitch - (y - this.lookTouch.y) * 0.7));
         this.lookTouch.x = x; this.lookTouch.y = y;
       }
     }
@@ -395,7 +437,13 @@ export class Game {
   };
   // Alt-Tab away while holding W and the browser never sends the key-up: without
   // this you would come back to a player still walking into a wall.
-  private onBlur = () => { this.keys.clear(); };
+  private onBlur = () => {
+    this.keys.clear();
+    // the same hazard on a touchscreen: an app switch or an incoming call can
+    // swallow the touchend, and the stick keeps its last push with no finger on
+    // the screen and no knob drawn to explain why you are walking
+    this.stickTouch = null; this.lookTouch = null; this.heldButtons.clear();
+  };
 
   // ── sound: tiny synthesised effects, no files ──────────────────────────────
   private ensureAudio() { if (!this.audio) { try { this.audio = new AudioContext(); } catch { this.audio = null; } } }
@@ -454,6 +502,15 @@ export class Game {
   private frame = (now: number) => {
     const dt = Math.min(0.05, (now - this.last) / 1000); this.last = now;
     if (this.mode === "play" || this.mode === "reload") this.update(dt);
+    else {
+      // ⚠️ shake and recoil are decayed inside update(), which stops the moment
+      // you die or pause — so a death caused by your own grenade left the
+      // "Suit failure" card jittering over the world for as long as you left it
+      // there. They have to settle on every screen.
+      this.shake = Math.max(0, this.shake - dt * 2.4);
+      this.p.recoil *= Math.max(0, 1 - dt * 6); this.p.recoilV = 0;
+    }
+    if (this.screenLock > 0) this.screenLock = Math.max(0, this.screenLock - dt);
     if (this.mode === "stomp" || this.mode === "reload") this.updateQuiz(dt);
     this.draw();
     // too slow for this computer? after a couple of seconds of play, go lighter
@@ -588,8 +645,8 @@ export class Game {
     for (const k of this.pickups) {
       if (k.taken || Math.hypot(k.x - p.x, k.y - p.y) > 0.55) continue;
       if (k.t === "pistol") { p.hasPistol = true; p.weapon = "pistol"; p.ammo = 6; this.pickupMsg("Blaster · 6 cells"); this.hint("pistol", "Got it! Six shots. Press R and answer to recharge: three cells for a right answer, nothing for a wrong one."); }
-      else if (k.t === "ammo") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 3); this.pickupMsg("Energy cells · +3"); }
-      else if (k.t === "cell") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 1); this.pickupMsg("Energy cell · +1"); }
+      else if (k.t === "ammo") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 3); if (p.weapon === "knife") p.weapon = "pistol"; this.pickupMsg("Energy cells · +3"); }
+      else if (k.t === "cell") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 1); if (p.weapon === "knife") p.weapon = "pistol"; this.pickupMsg("Energy cell · +1"); }
       else if (k.t === "health") { if (p.health >= 100) continue; p.health = Math.min(100, p.health + 25); this.pickupMsg("Med-kit · +25"); }
       else if (k.t === "keycard") { p.keys.add("blue"); this.pickupMsg("Blue keycard"); this.hint("keycard", "The blue keycard! Now the locked door will open."); }
       else if (k.t === "radsuit") { p.radTime = 30; this.pickupMsg("Radiation suit · 30 s"); this.hint("radsuit", "Radiation suit on: you can wade through the coolant for 30 seconds."); }
@@ -640,15 +697,29 @@ export class Game {
     p.grenades--; p.nadeWait = 0.65; p.kick = 0.8;
     const up = p.pitch / this.R.proj; // the crosshair's elevation, as a gradient
     const c = Math.cos(p.angle), s = Math.sin(p.angle);
+    const z = Math.max(0.12, p.eye - 0.1);
+    // ⚠️ NOT simply 0.35 in front of you. pushOut only keeps your CENTRE 0.22
+    // from a wall face, so standing against a shelf and pressing G put the
+    // grenade 0.13 INSIDE the shelf: every step was then refused, so it never
+    // moved, the wall was nearer than it so the renderer never drew it, and two
+    // seconds later it took you from 100 health to dead with nothing on screen
+    // to explain why. Step out only as far as is actually free, and if nothing
+    // in front of you is, drop it at your feet — where you can at least see it
+    // and run.
+    let sx = p.x, sy = p.y;
+    for (const d of [0.35, 0.26, 0.18]) {
+      const tx = p.x + c * d, ty = p.y + s * d;
+      if (circleFree(this.world, tx, ty, NADE_R, z)) { sx = tx; sy = ty; break; }
+    }
     this.nades.push({
-      x: p.x + c * 0.35, y: p.y + s * 0.35, z: Math.max(0.12, p.eye - 0.1),
+      x: sx, y: sy, z,
       vx: c * NADE_SPEED + p.vx * 0.4, vy: s * NADE_SPEED + p.vy * 0.4, vz: up * NADE_SPEED + 1.5, fuse: NADE_FUSE,
     });
     this.beep(340, 620, 0.09, "triangle", 0.05);
   }
   private updateNades(dt: number) {
     const w = this.world; if (!this.nades.length) return;
-    const R = 0.1;
+    const R = NADE_R;
     for (const n of this.nades) {
       n.fuse -= dt; n.vz -= GRAVITY * dt;
       const nx = n.x + n.vx * dt;
@@ -658,8 +729,12 @@ export class Game {
       n.z += n.vz * dt;
       const head = w.ceilH[this.cell(n.x, n.y)] - 0.08;
       if (n.z > head) { n.z = head; n.vz = -Math.abs(n.vz) * 0.4; }
-      if (n.z < 0.06) {
-        n.z = 0.06;
+      // the ground under it is the crate top when it is over waist-high cover:
+      // without this the horizontal test (taken at the OLD z) lets it in above
+      // the crate and the next frame has it below the crate's top, inside it
+      const floorZ = w.solid[this.cell(n.x, n.y)] === 2 ? COVER_H + 0.06 : 0.06;
+      if (n.z < floorZ) {
+        n.z = floorZ;
         if (Math.abs(n.vz) > 0.7) { n.vz = -n.vz * 0.36; this.beep(170, 110, 0.05, "triangle", 0.03); }
         else { n.vz = 0; n.vx *= 0.5; n.vy *= 0.5; }
       }
@@ -856,15 +931,22 @@ export class Game {
     if (p.vest > 0) { const soak = Math.min(p.vest, n / 3); p.vest -= soak; n -= soak; }
     p.health -= n; p.hurt = Math.min(1, p.hurt + 0.5);
     if (!quiet) this.beep(140, 60, 0.25, "sawtooth", 0.08);
-    if (p.health <= 0) { p.health = 0; this.mode = "dead"; this.quiz = null; document.exitPointerLock(); }
+    if (p.health <= 0) { p.health = 0; this.mode = "dead"; this.quiz = null; this.screenLock = 0.9; document.exitPointerLock(); }
   }
 
   // ── shooting ──────────────────────────────────────────────────────────────
   private fire() {
     const p = this.p; if (p.fireWait > 0) return;
+    // ⚠️ An empty blaster falls back to the knife instead of refusing. On a
+    // phone there is no "1" key and no weapon button, so a player out of cells
+    // had no attack at all — and on any device "the blaster is empty, so swing"
+    // is exactly what the knife is for.
+    if (p.weapon === "pistol" && p.ammo <= 0) {
+      p.weapon = "knife";
+      this.say("Out of cells — knife out. Press R and answer to recharge; only a right answer charges it.");
+    }
     const pistol = p.weapon === "pistol";
     if (pistol) {
-      if (p.ammo <= 0) { this.say("Out of cells! Press R and answer — only a right answer charges it."); this.beep(90, 80, 0.08, "square", 0.05); p.fireWait = 0.3; return; }
       p.ammo--; p.fireWait = 0.35; p.kick = 1; p.flash = 0.13;
       p.recoilV += 120; this.shake = Math.min(1.6, this.shake + 0.18);
       // three layers rather than one beep: a crack, a thump underneath, and a
@@ -919,7 +1001,7 @@ export class Game {
       if (Math.abs(screenX - this.R.W / 2) > half) continue;
       // and vertically: where the alien is actually drawn on the screen must
       // cover the crosshair, so looking over its head really does miss
-      const bottom = this.R.horizon() + (p.eye * this.R.proj) / dist, top = bottom - (ALIEN_H * this.R.proj) / dist;
+      const bottom = this.aimHorizon + (p.eye * this.R.proj) / dist, top = bottom - (ALIEN_H * this.R.proj) / dist;
       if (this.R.H / 2 < top || this.R.H / 2 > bottom) continue;
       if (p.weapon === "knife" && dist > 1.3) continue;
       if (dist > this.R.centreDepth.value + 0.35) continue; // a wall is in the way
@@ -930,7 +1012,15 @@ export class Game {
   }
   private kill(a: Alien) {
     a.state = "dead"; a.hp = 0; this.stats.kills++;
-    if (Math.random() < DROP_CHANCE) this.pickups.push({ t: "cell", x: a.x, y: a.y, taken: false });
+    // nudged clear of the corpse sprite: at identical coordinates the two sort
+    // to the same depth and which one you can see is a coin toss
+    if (Math.random() < DROP_CHANCE) {
+      let dx = 0, dy = 0;
+      for (const [ox, oy] of [[0.3, 0], [-0.3, 0], [0, 0.3], [0, -0.3]] as [number, number][]) {
+        if (circleFree(this.world, a.x + ox, a.y + oy, 0.12, 0.1)) { dx = ox; dy = oy; break; }
+      }
+      this.pickups.push({ t: "cell", x: a.x + dx, y: a.y + dy, taken: false });
+    }
     this.beep(400, 60, 0.4, "sawtooth", 0.06); this.noise(0.22, 0.07, 1200, 160);
     for (let i = 0; i < 5; i++) {
       const ang = Math.random() * Math.PI * 2;
@@ -946,7 +1036,7 @@ export class Game {
     const d = w.door[this.cell(lx, ly)];
     if (!d) return;
     if (d.exit) {
-      this.mode = "complete"; document.exitPointerLock(); this.beep(300, 900, 0.6, "triangle", 0.07);
+      this.mode = "complete"; this.screenLock = 0.9; document.exitPointerLock(); this.beep(300, 900, 0.6, "triangle", 0.07);
       // asked BEFORE the run is filed, so the screen shows what this run had
       // to beat rather than a best that already includes it
       this.bestBefore = this.opts.best?.(LEVELS[this.levelIndex].TITLE);
@@ -959,18 +1049,28 @@ export class Game {
   }
 
   // ── the quizzes ───────────────────────────────────────────────────────────
-  private draw1(deck: "reload" | "easy"): Question | null {
+  /** One question off the top of a shuffled deck, reshuffled when it runs out.
+   *  ⚠️ `avoid` is the set already drawn for THIS quiz: a three-question draw
+   *  that straddles a reshuffle could otherwise ask the same question twice in
+   *  one stomp, which on the small easy pools is about one stomp in a hundred. */
+  private draw1(deck: "reload" | "easy", avoid: Question[] = []): Question | null {
     const pool = deck === "reload" ? this.opts.reload : this.opts.easy.length >= 3 ? this.opts.easy : this.opts.reload;
     if (!pool.length) return null;
     const d = deck === "reload" ? this.reloadDeck : this.easyDeck;
-    if (!d.length) { d.push(...[...pool].sort(() => Math.random() - 0.5)); }
+    for (let tries = 0; tries < 4; tries++) {
+      if (!d.length) d.push(...[...pool].sort(() => Math.random() - 0.5));
+      const q = d.pop();
+      if (!q) return null;
+      if (!avoid.some((a) => a.question === q.question)) return q;
+      if (pool.length <= avoid.length) return q; // nothing else exists to offer
+    }
     return d.pop() ?? null;
   }
   private startReload() {
     const p = this.p;
     if (p.hasPistol && p.weapon === "knife" && p.ammo < 6) p.weapon = "pistol"; // R with the knife out means "get the blaster ready"
     if (!p.hasPistol || p.weapon !== "pistol" || this.quiz || p.ammo >= 6) { if (p.ammo >= 6 && p.hasPistol && !this.quiz) this.pickupMsg("Already full"); return; }
-    const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload"); if (q) qs.push(q); }
+    const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload", qs); if (q) qs.push(q); }
     if (!qs.length) { p.ammo = 6; return; }
     this.quiz = { kind: "reload", qs, index: 0, time: 10, per: 10, picked: null, feedback: 0, results: [], target: null };
     this.mode = "reload";
@@ -1090,7 +1190,16 @@ export class Game {
     // recoil and blast shake ride on the pitch, because the horizon is the one
     // thing this renderer can move the whole picture with
     const jolt = this.shake > 0.01 ? (Math.random() - 0.5) * this.shake * 16 : 0;
-    const view = Math.max(-PITCH_MAX - 60, Math.min(PITCH_MAX + 60, p.pitch + p.recoil + jolt));
+    // ⚠️ The shot is tested against the horizon the last frame drew, so anything
+    // in that number decides whether a shot lands. Recoil belongs there — it is
+    // your gun kicking and you can hold through it. The shake JOLT is fresh
+    // `Math.random()` every frame: at full shake it moves the horizon +-12px
+    // while an alien eight squares away is 29px tall, so after an explosion
+    // whether a shot connected was partly a coin toss. The picture still shakes;
+    // the aim no longer does.
+    const aimView = Math.max(-PITCH_MAX - 60, Math.min(PITCH_MAX + 60, p.pitch + p.recoil));
+    this.aimHorizon = this.R.H / 2 + aimView;
+    const view = Math.max(-PITCH_MAX - 60, Math.min(PITCH_MAX + 60, aimView + jolt));
     const img = this.R.render(this.world, this.tex, this.spr, { x: p.x, y: p.y, angle: p.angle }, things, p.eye + Math.sin(p.bob * 2) * 0.012, view);
     this.g.putImageData(img, 0, 0);
     if (this.mode !== "stomp") drawWeapon(this.g, this.R.W, this.R.H, p.weapon, p.bob, p.kick, p.flash, p.ammo);
@@ -1119,7 +1228,7 @@ export class Game {
     });
     if (this.quiz) {
       const q = this.quiz, cur = q.qs[q.index];
-      const view: QuizView = { kind: q.kind, topic: cur.topicTitle, index: q.index, total: q.kind === "stomp" ? 3 : q.qs.length, question: cur.question, choices: cur.choices, time: q.time, perQuestion: q.per, picked: q.picked, correct: cur.correct, results: q.results, ammo: p.ammo, why: cur.why };
+      const view: QuizView = { kind: q.kind, topic: cur.topicTitle, index: q.index, total: q.kind === "stomp" ? 3 : q.qs.length, question: cur.question, choices: cur.choices, time: q.time, perQuestion: q.per, picked: q.picked, correct: cur.correct, results: q.results, ammo: p.ammo, why: cur.why, touch: this.touchDevice };
       drawQuiz(o, view);
     }
     const mins = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
@@ -1148,7 +1257,8 @@ export class Game {
         `Time ${mins(run.seconds)} (par ${mins(run.par)}) · aliens ${run.kills}/${run.aliens} · questions right ${run.right}/${asked}`,
       ];
       // the previous best, so there is something to beat next time
-      if (was) lines.push(`Your best on this deck: grade ${was.bestGrade} · ${formatClock(was.bestSeconds)} · ${was.mostKills} aliens`);
+      // records, not one run: each of these came from whichever run set it
+      if (was) lines.push(`Your records on this deck: best grade ${was.bestGrade} · fastest ${formatClock(was.bestSeconds)} · most ${was.mostKills} aliens`);
       lines.push(this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now.");
       drawScreen(o, `Level complete — ${letter}`, lines, this.touchDevice ? "Tap to carry on" : "Press Enter to carry on", score >= 75 ? "#ffd65a" : "#2fd48a");
     }

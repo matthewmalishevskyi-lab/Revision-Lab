@@ -1501,13 +1501,33 @@ try {
     // it draws nothing, picks up as nothing and throws no error, so the level
     // looks finished and one item in it silently does not exist.
     const game = readFileSync("app/early-access/game/game.ts", "utf8");
-    const handled = new Set(["alien", "alienBack", ...[...game.matchAll(/k\.t === "([a-z]+)"/g)].map((m) => m[1]),
-      ...(/const DECOR = new Set\(\[([^\]]*)\]\)/.exec(game)?.[1] ?? "").match(/"([a-z]+)"/g)?.map((s) => s.slice(1, -1)) ?? []]);
+    const DECOR_TYPES = new Set((/const DECOR = new Set\(\[([^\]]*)\]\)/.exec(game)?.[1] ?? "").match(/"([a-z]+)"/g)?.map((s) => s.slice(1, -1)) ?? []);
+    const handled = new Set(["alien", "alienBack", ...[...game.matchAll(/k\.t === "([a-z]+)"/g)].map((m) => m[1]), ...DECOR_TYPES]);
     expect(handled.has("grenade") && handled.has("lamp") && handled.size > 8,
       `the sprite-type list read out of game.ts looks wrong (${[...handled].join(", ")})`);
     for (const level of LEVELS) {
       for (const s of new Set(level.SPRITES.map((t) => t.t))) {
         expect(handled.has(s), `${level.TITLE} places a "${s}", which game.ts does nothing with`);
+      }
+    }
+
+    // ⚠️ AND IT MUST BE STANDING SOMEWHERE A PLAYER CAN REACH IT. A pickup is
+    // collected within 0.55 squares of its middle, and a standing player
+    // (radius 0.22) cannot get closer than about 0.62 to the middle of a
+    // waist-high crate — so a pickup sitting ON one can only be had by jumping
+    // on top of the crate, and it renders half buried inside it. Level 4's
+    // third ordnance grenade did exactly that and nothing caught it: the flood
+    // fill said the square was reachable, because it is, and the sprite-type
+    // rule above only looks at the letter of the name.
+    for (const level of LEVELS) {
+      const occupied = new Map();
+      for (const [x, y] of level.COVER ?? []) occupied.set(`${x},${y}`, "waist-high cover");
+      for (const b of level.BLOCKS ?? []) for (const [x, y] of b.cells) occupied.set(`${x},${y}`, "a full-height block");
+      for (const d of level.DOORS) for (const [x, y] of d.cells) occupied.set(`${x},${y}`, "a door");
+      for (const s of level.SPRITES) {
+        if (s.t === "alien" || s.t === "alienBack" || DECOR_TYPES.has(s.t)) continue;
+        const on = occupied.get(`${Math.floor(s.x)},${Math.floor(s.y)}`);
+        expect(!on, `${level.TITLE}: the ${s.t} at ${s.x},${s.y} is standing on ${on} — it cannot be picked up on foot`);
       }
     }
 

@@ -405,7 +405,13 @@ export const LEVEL4: LevelDef = (() => {
     ...[[13, 14], [14, 14], [13, 21], [18, 13], [18, 21]].map((c): [number, number, string] => [c[0], c[1], "crate"]),
     ...[[15, 8], [16, 8]].map((c): [number, number, string] => [c[0], c[1], "console"]),
     ...[[39, 15], [42, 19]].map((c): [number, number, string] => [c[0], c[1], "console"]),
-    [7, 23, "crate"], [9, 26, "crate"],
+    // ⚠️ this crate used to be at [9, 26], which is the square the third
+    // ordnance grenade stands on. A pickup is collected within 0.55 squares
+    // and a standing player cannot get closer than 0.62 to the middle of a
+    // crate, so that grenade could not be picked up at all — only by jumping
+    // on top of the crate, and it was drawn half buried in it. There is now a
+    // permanent check that no pickup sits on cover.
+    [7, 23, "crate"], [10, 25, "crate"],
   ];
   const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
     if (ai === "lift" && f === FACE.E && x === 2 && y === 16) return "exit";

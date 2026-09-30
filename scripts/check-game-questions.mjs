@@ -121,8 +121,22 @@ try {
     // a long one is cut at a sentence, never mid-word
     const long = whyFor(`${"The first step is to find the common factor. ".repeat(8)}`, "6");
     expect(long !== undefined && long.length <= 190 && /[.!?…]$/.test(long), `a long model answer was cut badly: "${long?.slice(-40)}"`);
+    // ⚠️ THE OLD MID-WORD CHECK COULD NOT FIRE. It asked whether the text held
+    // whitespace then non-space then "…" — true of every multi-word string, so
+    // it could only ever have caught a `why` containing no spaces at all.
+    // Asserted against the function instead, with input that really does cut
+    // inside a word.
+    const oneWord = whyFor("x " + "supercalifragilisticexpialidocious".repeat(9), "x");
+    expect(oneWord === undefined || !/[A-Za-z]{25,}…$/.test(oneWord), `a single enormous word was cut mid-word: "${oneWord?.slice(-30)}"`);
+    const dangling = whyFor(`${"Peace is central to the tradition and war is read as a failure of it. ".repeat(2)}Violence is a distortion of, not an expression of, their faith.`, "Peace");
+    expect(dangling !== undefined && !/\bnot\s*…$/.test(dangling), `the cut left a dangling negation: "${dangling?.slice(-40)}"`);
+    // a real line break in a model answer becomes a space on the canvas, so
+    // the prose is kept and the drawn-out vector after it is dropped
+    const multiline = whyFor("A scalar multiplies BOTH components, so 3a is the column vector\n\u239b 6\u239e\n\u239d15\u23a0", "18");
+    expect(multiline !== undefined && !/[\r\n\u239b\u239e\u239d\u23a0]/.test(multiline),
+      `a model answer with a drawn vector in it reached the canvas: ${JSON.stringify(multiline)}`);
 
-    let withWhy = 0, asked = 0, tooLong = 0, saysNothing = 0, cutMidWord = 0;
+    let withWhy = 0, asked = 0, tooLong = 0, saysNothing = 0, danglingNegation = 0;
     for (const subject of SUBJECTS) {
       for (const year of subject.years) {
         for (const topic of year.topics) {
@@ -133,15 +147,17 @@ try {
             withWhy += 1;
             if (q.why.length > 190) tooLong += 1;
             if (normalise(q.why) === normalise(q.choices[q.correct])) saysNothing += 1;
-            // "…" is the deliberate cut; a bare letter after a cut is not
-            if (q.why.endsWith("…") && !/\s\S*…$/.test(q.why)) cutMidWord += 1;
+            // ⚠️ and the cut must not leave the reader with a REVERSED sense.
+            // One real explanation ended "…as a distortion of, not", which
+            // says the opposite of what the full answer says.
+            if (/\b(?:not|never|unless|except|rather than|instead of)\s*…$/i.test(q.why)) danglingNegation += 1;
           }
         }
       }
     }
     expect(tooLong === 0, `${tooLong} explanations are longer than the panel can hold`);
     expect(saysNothing === 0, `${saysNothing} explanations say exactly what their own button says`);
-    expect(cutMidWord === 0, `${cutMidWord} explanations were cut mid-word`);
+    expect(danglingNegation === 0, `${danglingNegation} explanations end on a dangling negation, which reverses what they say`);
     // ⚠️ A share, not a count: the point is that the feature is actually
     // reaching questions. It is 100% today, so a drop to even 90% means a
     // content shape changed underneath it.

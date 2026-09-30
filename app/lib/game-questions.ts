@@ -55,7 +55,15 @@ const WHY_MAX = 190;
  * than none, because the reader cannot tell what they are missing.
  */
 export function whyFor(answer: string, right: string): string | undefined {
-  const text = (answer ?? "").trim();
+  // ⚠️ The panel draws PLAIN TEXT on a canvas: `wrap()` splits on whitespace,
+  // so a real line break becomes a space and a two-line answer arrives as one
+  // run-on sentence. One model answer (maths, vectors) is prose followed by a
+  // stacked column vector drawn out of U+239B..U+23A0 bracket pieces, which no
+  // system font on a phone or a laptop has — it came out as four empty boxes
+  // glued to the end of the sentence. Keep the prose, drop the picture.
+  let text = (answer ?? "").replace(/\u00a0/g, " ").trim();
+  const firstBreak = text.search(/[\r\n]/);
+  if (firstBreak >= 0) text = text.slice(0, firstBreak).trim().replace(/[\s,;:—-]+$/, "") + "…";
   if (!text) return undefined;
   // Does this say anything the right button does not? ⚠️ Testing only whether
   // it STARTS with the answer is not enough: "About 100" against a button
@@ -80,8 +88,25 @@ export function whyFor(answer: string, right: string): string | undefined {
   // multiple-choice option and whose second sentence is the actual teaching. So
   // when that happens, cut at a WORD instead: the start of a real explanation,
   // marked as cut, beats a sentence that says nothing.
-  const cut = text.slice(0, WHY_MAX - 1), atWord = cut.slice(0, cut.lastIndexOf(" "));
-  return (atWord.length > 40 ? atWord : cut).trimEnd() + "…";
+  // ⚠️ And WHERE it is cut decides whether what is left still means anything.
+  // Cutting at the last word leaves danglers that reverse the sense — one real
+  // one ended "…as a distortion of, not", and several ended on the subject of a
+  // clause with its predicate gone ("…closed skills such as a free throw"). So
+  // prefer the last CLAUSE boundary in the back half of the window: a shorter
+  // complete thought beats a longer half of one.
+  const cut = text.slice(0, WHY_MAX - 1);
+  const clause = Math.max(cut.lastIndexOf(", "), cut.lastIndexOf("; "), cut.lastIndexOf(" — "), cut.lastIndexOf(": "));
+  const word = cut.lastIndexOf(" ");
+  const at = clause > WHY_MAX * 0.55 ? clause : word;
+  // No usable boundary in the first 190 characters means the model answer is
+  // one enormous unbroken token, which teaches nothing anyway — better to show
+  // no explanation than half a word with an ellipsis glued to it.
+  if (at <= 40) return undefined;
+  let out2 = cut.slice(0, at).trimEnd();
+  // a trailing connective is the same dangling-clause problem in one word
+  out2 = out2.replace(/[\s,;:—-]*\b(?:and|or|but|not|never|unless|so|because|than|that|which|with|of|to|for|a|an|the|is|are|was|were)$/i, "").trimEnd();
+  out2 = out2.replace(/[\s,;:—-]+$/, "");
+  return out2.length > 40 ? out2 + "…" : undefined;
 }
 
 const MAX_POOL = 120;

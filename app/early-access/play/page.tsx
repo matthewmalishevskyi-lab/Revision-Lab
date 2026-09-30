@@ -40,6 +40,11 @@ export default async function PlayPage({ searchParams }: Props) {
   if (subject && list(q.topic).length) {
     const allowed = new Set(playableTopics(subject.slug).flatMap((y) => y.topics.map((t) => t.slug)));
     const topics = list(q.topic).filter((t) => allowed.has(t)).slice(0, MAX_TOPICS);
+    // ⚠️ A URL naming only topics that do not exist filtered to an empty list,
+    // and buildGameQuestions then topped up from the WHOLE subject — so the
+    // game started under a header reading "0 topics · 0 from your topics".
+    // An empty list here means the request was wrong, not that everything goes.
+    if (topics.length) {
     const { reload, easy } = buildGameQuestions(subject.slug, topics);
     const { own } = countGameQuestions(subject.slug, topics);
     if (reload.length >= 3) {
@@ -60,6 +65,7 @@ export default async function PlayPage({ searchParams }: Props) {
           </div>
         </main>
       );
+    }
     }
   }
 
@@ -137,6 +143,12 @@ export default async function PlayPage({ searchParams }: Props) {
             <button type="submit" className="min-h-11 rounded-full bg-neutral-900 px-6 font-semibold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900">Start the game →</button>
             <Link href="/early-access/play" className="tap-pad text-sm opacity-60 hover:opacity-100">Choose a different subject</Link>
           </div>
+          {/* ⚠️ The "> 0" guard meant submitting with NOTHING ticked re-rendered
+              the form with no message at all — the button simply appeared not to
+              work. The two cases need different words, and both need saying. */}
+          {list(q.topic).length === 0 && q.topic !== undefined && (
+            <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-400">Pick at least one topic first.</p>
+          )}
           {list(q.topic).length > 0 && <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-400">Those topics don&apos;t have enough multiple-choice questions yet. Pick a few more.</p>}
         </form>
       )}

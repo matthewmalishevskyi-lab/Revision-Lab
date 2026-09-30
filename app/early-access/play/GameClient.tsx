@@ -25,6 +25,15 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
   const shellRef = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
   const [full, setFull] = useState(false);
+  // ⚠️ iOS Safari only puts a <video> full screen, so on an iPhone the button
+  // below was visible and did nothing at all. Read the capability rather than
+  // sniffing the browser, and read it in an effect: `document` does not exist
+  // while this renders on the server, and a value that differs between the
+  // server's HTML and the first client render is a hydration mismatch.
+  const [canFullscreen, setCanFullscreen] = useState(true);
+  useEffect(() => {
+    setCanFullscreen(typeof document !== "undefined" && document.fullscreenEnabled !== false && typeof shellRef.current?.requestFullscreen === "function");
+  }, []);
 
   // Full screen: the shell element goes full screen and the 16:9 picture is
   // centred in it, so a screen that isn't 16:9 gets black bars rather than a
@@ -78,7 +87,12 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
           unlike the SVG <g> this project got caught by once (PROJECT_NOTES,
           2026-09-11). */}
       <canvas ref={overlayRef} className="absolute inset-0 h-full w-full cursor-crosshair touch-none" />
-      <div className="touch-portrait-only pointer-events-none absolute inset-0 z-20 items-center justify-center bg-black/80 p-6 text-center">
+      {/* ⚠️ NOT pointer-events-none. The controls are laid out for a 16:9
+          landscape visor, so in portrait the stick and FIRE are ~29 CSS px and
+          half of them are off the picture — but the canvas underneath still
+          took every tap, so the game started and ran behind the notice telling
+          you to turn the phone round. It has to block, not advise. */}
+      <div className="touch-portrait-only absolute inset-0 z-20 items-center justify-center bg-black/80 p-6 text-center">
         <p className="text-lg font-semibold text-white">Turn your phone sideways to play.</p>
       </div>
       {/* the mascot on the visor's comms screen (COMMS_BOX in hud.ts: 26,26 104x104 of 1280x720) */}
@@ -89,12 +103,17 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
       <div className="pointer-events-none absolute overflow-hidden rounded-[1.2%]" style={{ left: "2.03%", width: "8.13%", top: "3.61%", height: "14.44%" }}>
         <MascotDisplay mascot={mascot} className="absolute left-1/2 top-[8%] h-[150%] w-auto max-w-none -translate-x-1/2" />
       </div>
-      <button
-        type="button" onClick={toggleFullscreen}
-        className="absolute right-3 top-3 z-10 min-h-11 rounded-xl border border-white/25 bg-black/50 px-3 text-sm font-semibold text-white opacity-60 transition hover:bg-black/80 hover:opacity-100 focus-visible:opacity-100"
-      >
-        {full ? "Leave full screen" : "Full screen ⛶"}
-      </button>
+      {/* ⚠️ Hidden where the browser will not do it. iOS Safari refuses
+          requestFullscreen on anything but a <video>, so on an iPhone this was
+          a button that visibly did nothing at all — worse than no button. */}
+      {canFullscreen && (
+        <button
+          type="button" onClick={toggleFullscreen}
+          className="absolute right-3 top-3 z-10 min-h-11 rounded-xl border border-white/25 bg-black/50 px-3 text-sm font-semibold text-white opacity-60 transition hover:bg-black/80 hover:opacity-100 focus-visible:opacity-100"
+        >
+          {full ? "Leave full screen" : "Full screen ⛶"}
+        </button>
+      )}
       </div>
     </div>
   );
