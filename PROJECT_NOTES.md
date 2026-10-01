@@ -1,5 +1,235 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Decks 5 and 6, hit zones, a rifle, and a grenade that costs three questions (2026-10-01)
+
+Matthew, on his way to school: *"do two more levels… add assault rifle… every
+question you answer gives you five bullets but the bullet usually gives less
+damage… if you headshot the alien, or your torso or the legs, vary the health
+there in some way. But headshot shouldn't be like one shot."* Then the new one:
+*"you have to answer three questions when you throw a grenade, the whole world
+freezes before it explodes, and you just get the grenade back in your inventory
+if you fail."* And a thinking job — multiplayer, and joining all six decks into
+one walkable ship — explicitly **not** to be built yet.
+
+He was away all day, so the three questions left open from the levels 5/6 plan
+were answered rather than asked: alien health 30 → 40 yes, the rifle's leg
+penalty as designed, build it.
+
+### Where you hit them, and the number that makes it work
+
+Alien health went 30 → 40 **because at 30 the feature was impossible**. A
+blaster head shot and a body shot both killed in two, so the head zone would
+have existed and changed nothing. 40 is the smallest number that makes three
+zones three different answers:
+
+                   head x1.75    torso x1.0    legs x0.55
+    blaster (15)   26.25 → 2     15   → 3      8.25 → 5
+    rifle    (8)   14    → 3      8   → 5      4.4  → 10
+
+    head then body  = 41.25  DEAD in two
+    head then legs  = 34.50  still standing
+    three body      = 45.00  DEAD in three
+
+A head shot saves exactly one shot **and only if the follow-up is a good one**.
+Head then legs is worse than simply aiming at the chest — which is Matthew's
+"you also had to hit the legs" idea the right way round.
+
+⚠️ **THE HEAD BAND HAD TO BE A TENTH OF THE SPRITE, NOT A QUARTER, AND NOTHING
+ABOUT THE PICTURE SHOWED IT.** An alien is 0.58 squares tall and your eye is at
+0.5, so a crosshair at rest crosses its body 0.138 down from the crown — the
+same fraction **at every distance**, because the distance cancels. With a
+quarter-height head band the resting shot was therefore ALWAYS a head shot:
+anyone standing still two-shot everything, "three body shots" never happened to
+a single player, and the three zones collapsed back into the one they replaced.
+
+The fix is 0.10, and the real fix is the **check**, because this is not visible
+in any one constant — it falls out of the alien's height, the eye height and
+the band together. There is now a permanent rule that the resting crosshair
+must be on the torso, with three decimal places of clearance from the head
+band so recoil cannot flip it.
+
+What that costs: at ten squares the head band is under three pixels of a
+twenty-eight-pixel alien. That is perspective doing its job — the reticle names
+the zone BEFORE you fire, by colour and by shape, so a head shot is a
+close-range skill and at range you take the torso.
+
+### The rifle is a trade, not an upgrade
+
+8 damage, 15 rounds, five a right answer, 0.11 s between shots.
+
+**Per question the blaster wins** (3 × 15 = 45 against 5 × 8 = 40). **Per second
+the rifle wins by a lot** (73 against 43). So the blaster is the weapon when
+questions are scarce and you can pick your shots, and the rifle is the weapon
+when three of them are already running at you. Five rounds is exactly one torso
+kill — one question, one alien — and that is the number the whole weapon was
+balanced to produce. Both of those are checks now, because the moment either
+stops being true one gun is dead weight.
+
+A third of the recoil per round, because it fires three times as often and the
+aim is tested against that same horizon. ⚠️ **A phone has no "3" key**, so
+without a ⇄ button a player who picked the rifle up could never go back to the
+blaster — half the choice the rifle exists to create, silently removed on the
+device most likely to be used.
+
+### The grenade quiz
+
+G no longer throws: it pulls the pin, and the deck stops. One line does the
+freezing — `frame()` only runs `update()` in play and reload — so the aliens,
+the bolts, the fuses and the head bob all stop together rather than a pause
+flag being threaded through everything. Three right answers and it flies; one
+wrong and the pin goes back in and you keep it.
+
+⚠️ **A FREEZE YOU CAN SUMMON IS A PANIC BUTTON**, and that is the one thing
+this must not become: about to die, press G, and the room politely stops
+shooting while you think. Three things keep it honest, each with its own check:
+
+- **the aim is taken when the pin comes out** and held, so the frozen world
+  cannot be used to line up a throw you had not already lined up;
+- **a failed quiz costs six seconds** before G works again;
+- ⚠️ **the run clock keeps running while everything else is stopped.** Pace is
+  30 of the 100 marks on a deck. Without that one line the freeze is free, and
+  "press G to stop the world" becomes the correct way to play — the exact
+  shape of the bug the grade itself had last week, where never answering beat
+  answering.
+
+The grenade is spent in exactly one place, reached only by three right answers,
+so a wrong answer cannot cost the throw *and* the grenade. One wrong answer
+ends it rather than finishing all three: the teaching panel has already held
+for 3.2 seconds by then, so the explanation was read, and making somebody
+answer two more questions for a grenade they have already lost is punishment
+rather than revision.
+
+### Deck 5 — Flight deck, and deck 6 — Hydroponics
+
+**Deck 5** is the opposite of the cargo hold: lights all on, a 2.6-square
+ceiling, and a hangar 23 by 24. Measured, you can see 50% of it from the
+average spot in it against 28% of deck 4's stacks — stealth is simply not on
+the table, which is the argument for the rifle rather than a paragraph saying
+the rifle is good. The shuttle across the middle is what stops it being a
+shooting gallery. The hangar door will not open until you are carrying the
+rifle. 22 aliens, no grenades placed.
+
+**Deck 6** is bright like 5 and broken up like 4 — 28% and 27% visibility in
+its two halls — except the lights are on, so the cover is the planting rather
+than the dark, and the two halls' rack rows do not line up. 24 aliens, the
+densest ordinary deck in the game.
+
+⚠️ **Deck 6's irrigation channels were written as a floor called `fWater` and
+there was no `fWater`.** An unknown floor texture does not throw, it falls
+back — so the channels would have shipped invisible and the deck's whole new
+mechanic would have been a hint about water nobody could see. There is now a
+rule that every floor a level paints must be one `textures.ts` actually draws,
+and a second that a floor meant to DO something must be read by `game.ts`.
+Wading now raises the SEEN bar; standing in the water does not, so it is the
+splashing that gives you away, and the dry strip in the middle of the hall is
+a real decision.
+
+### ⚠️ Eleven route legs ran straight through the furniture — two on deck 1
+
+Found by walking every leg of every route with the real collision code rather
+than a flood fill. The `ROUTE` is not decoration: the wall arrows point along
+it, **par time is its length**, and the play-test bots follow it. A leg drawn
+through a crate means the signposted way through needs a jump and par is
+measured along a path nobody walks.
+
+Nothing had ever caught it, because the two tools that look at routes both
+can't see it: the flood fill walks round cover quite happily, and the old route
+bot pushed W and reported "stuck" without saying what it was stuck on. Nine
+crates moved a square; deck 3's routes now thread the gap between the mess
+tables instead of crossing them. **All six decks walk every leg of both routes
+end to end, which decks 1, 2 and 3 never did.**
+
+### The checks, and three harness bugs on the way
+
+3,846 security checks, up from 2,463, and 19 sabotages were run to confirm
+every new rule fails on the old code before any of them was believed.
+
+The balance rules read every number **out of `game.ts`** rather than keeping a
+copy, because a check holding its own idea of the design is a second place the
+design lives and the two drift.
+
+The big one: **"can you actually walk this deck" moved out of a scratchpad
+script and into `npm run check`.** It had been run by hand against a compiled
+copy of the levels that was months stale by the end. It is now a flood fill
+over the real `buildWorld`, every build — every pickup, alien and area
+reachable, nothing inside a wall, an exit you can reach, no keycard behind its
+own door, and the rifle in front of the door that needs it (checked by walking
+the deck's own area graph with that door removed).
+
+⚠️ **Three harness bugs, all of which reported correct code as broken:**
+
+- **A door is solid.** `buildWorld` sets `solid = 1` on every door cell and
+  hangs the door off `w.door`. The first flood fill read `solid` alone, reached
+  only the room you spawn in, and declared all six decks — including four that
+  bots have walked for weeks — unfinishable.
+- **Probing the centre of a room** called the three best rooms in the game
+  sealed off, because the reactor core and the shuttle are parked in the middle
+  of them. It asks whether 90% of a room is reachable now.
+- **Sampling a straight line eight times a square** clips the corner cell of a
+  doorway, which looked like nine routes running through walls. It takes three
+  consecutive blocked samples now — 0.37 of a square genuinely inside
+  something, which a corner clip never reaches and a crate always does.
+
+And a fourth in the existing suite, which had been flaking one run in five:
+`gametest.mjs` budgeted 3,250 ms of fixed sleeps for the 3.2-second wrong-
+answer hold. ⚠️ **Headless Chromium runs the game at about twelve frames a
+second with `dt` capped at 0.05, so the hold takes about 5.3 seconds of wall
+clock** — measured at 5,226 ms on the new code and 5,344 ms on the old, so it
+was never my changes. It waits for the panel now instead of sleeping through
+it. Four clean runs since.
+
+⚠️ One rule had quietly stopped covering half of what it claimed: the
+controls-card check matched `G: (?:throw a )?grenade`, exactly the two strings
+that existed the day it was written, and the moment the desktop line became
+"G: pull a grenade pin" it matched one card out of two and still reported
+success. It matches on the shape now and requires both cards.
+
+### A design bug the browser caught that reading never would
+
+Jumping ahead to a deck handed you the rifle if **that deck** places one — which
+is the right rule for grenades (a consumable: does this deck use them?) and the
+exactly wrong one for the rifle. Deck 5 is the deck that places it, so starting
+there put it in your hands at the spawn, skipped the arms locker, and made the
+hangar door's entire reason for being gated disappear. It reads off the decks
+**before** this one now.
+
+### Verified
+
+`npm run check` fully green — 188,027 content, 1,239,302 geometry, **3,846**
+security, 59,200 slide-deck, 9,892 recommendation, 2,715 pacing, 43
+question-review, 96 calculator, 32 saved-answer, 8 badge, 25,322 game-question
+and 248 ship's-log checks; `tsc` and `eslint` clean. In a real browser: **50 new
+checks** on the zones, the rifle and the grenade quiz (including that the deck
+really is frozen — an alerted alien moves 0.0000 squares in 1.2 s — and that
+the run clock really is not), **12 route walks** over all six decks with the real
+movement code, 42 grenade, 44 game, 25 touch, 25 title-card (now all six decks),
+22 log, 21 teaching and 18 quiz-panel checks, with no console errors.
+
+### Multiplayer and the one ship — thinking only, as asked
+
+Written up in full in `claude/multiplayer-and-one-big-ship.md`. The headline:
+**joining the decks is nearly free technically and expensive in design**, and
+**multiplayer is the other way round**.
+
+Measured: all six decks together are 8,816 squares and one `update()` on the
+flight deck takes **0.045 ms**, so a combined ship is about six times the grid
+and three decimal places inside the budget. A raycaster costs one ray per
+screen column, so map size barely touches drawing. What breaks is everything
+built on "a deck is a unit" — the ship's log, the grade, par, the compass, the
+controls card, `dim` — plus the fact that all six decks are authored from 0,0
+and overlap.
+
+⚠️ **And the number that decides multiplayer is not a netcode number.** Supabase's
+free plan allows 2 million realtime messages a month, and a broadcast counts as
+one message sent **plus one per client that receives it**. At the ~15 updates a
+second a shooter needs, two players is 60 messages a second: **about nine hours
+of two-player play a month, in total, across the whole site**, with no overage
+— it stops rather than charging. Four players is two hours. So the live quiz's
+polling model cannot be reused here at any tick rate. What works is peer to
+peer with Supabase only introducing the players (about twenty messages a
+match), or a small WebSocket server of our own somewhere that can hold a
+connection open, which Vercel cannot.
+
 ## Bug check of the cargo hold, grenades, teaching, the grade and touch (2026-09-30)
 
 Matthew: *"Run a full bug check in the new levels and new features added"*.
