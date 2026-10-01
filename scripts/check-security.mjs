@@ -1468,7 +1468,7 @@ try {
   console.log("Checking the alien game's comms messages fit...");
   {
     execFileSync(process.execPath, [
-      TSC, "app/early-access/game/levels.ts",
+      TSC, "app/early-access/game/levels.ts", "app/early-access/game/world.ts",
       "--outDir", out, "--module", "commonjs", "--target", "es2022",
       "--moduleResolution", "node", "--skipLibCheck",
     ], { stdio: "pipe" });
@@ -1539,8 +1539,14 @@ try {
     // moment a second one was added for touch it matched nothing and reported
     // the correct code as broken. What actually matters is simpler: every
     // place the card offers G must be inside a `this.hasNades ?` ternary.
-    const gMentions = [...game.matchAll(/G: (?:throw a )?grenade/g)];
-    expect(gMentions.length > 0, "the controls card never mentions the grenade key at all");
+    // ⚠️ The regex has to match EVERY wording the card uses, or it quietly
+    // stops covering one of them. It was `G: (?:throw a )?grenade`, exactly
+    // the two strings that existed the day it was written; the moment the
+    // desktop line became "G: pull a grenade pin" it matched one card out of
+    // two and still reported success. Match on the shape (G:, then the word
+    // grenade) and require BOTH cards, so a third wording cannot slip past.
+    const gMentions = [...game.matchAll(/G: [a-z ]*grenade[a-z ]*/g)];
+    expect(gMentions.length >= 2, `the controls card mentions the grenade key ${gMentions.length} time(s); both the touch and the desktop card should`);
     for (const m of gMentions) {
       const before = game.slice(Math.max(0, m.index - 60), m.index);
       expect(/this\.hasNades \?\s*"[^"]*$/.test(before),
@@ -1554,6 +1560,375 @@ try {
       const loose = level.SPRITES.filter((s) => s.t === "grenade").length;
       expect(loose >= 2, `${level.TITLE} has grenades but only ${loose} of them, so most players will never find one`);
     }
+    // ── hit zones, the rifle, and the grenade quiz ───────────────────────
+    //
+    // ⚠️ EVERY NUMBER BELOW IS READ OUT OF game.ts, never re-typed here. A
+    // check holding its own copy of the balance is a second place the design
+    // lives, and the two drift — which is how a check ends up asserting the
+    // thing the game used to do.
+    const gnum = (name) => {
+      const m = new RegExp(`\\b${name}\\s*=\\s*(-?[0-9.]+)`).exec(game);
+      return m ? Number(m[1]) : NaN;
+    };
+    const G = {};
+    for (const k of ["ALIEN_HP", "PISTOL_DMG", "KNIFE_DMG", "RIFLE_DMG", "RIFLE_MAG", "RIFLE_PER_ANSWER",
+      "RIFLE_WAIT", "PISTOL_MAG", "PISTOL_PER_ANSWER", "PISTOL_WAIT", "NADE_DMG", "NADE_SELF",
+      "NADE_KILL_R", "NADE_HURT_R", "NADE_FAIL_WAIT", "HEAD_BELOW", "LEGS_BELOW"]) {
+      G[k] = gnum(k);
+      expect(Number.isFinite(G[k]) && G[k] > 0, `could not read ${k} out of game.ts, so every weapon check below is guarding nothing`);
+    }
+    const zoneSrc = /const ZONE_MULT[^=]*=\s*\{([^}]*)\}/.exec(game)?.[1] ?? "";
+    const Z = {};
+    for (const m of zoneSrc.matchAll(/(head|torso|legs):\s*([0-9.]+)/g)) Z[m[1]] = Number(m[2]);
+    expect(Z.head > 0 && Z.torso > 0 && Z.legs > 0, "could not read ZONE_MULT out of game.ts");
+
+    const shots = (dmg, mult) => Math.ceil(G.ALIEN_HP / (dmg * mult));
+    for (const [gun, dmg] of [["blaster", G.PISTOL_DMG], ["rifle", G.RIFLE_DMG]]) {
+      const h = shots(dmg, Z.head), t = shots(dmg, Z.torso), l = shots(dmg, Z.legs);
+      // ⚠️ THE REASON ALIEN HEALTH WENT 30 → 40. At 30 a blaster head shot and
+      // a blaster body shot both killed in two, so the head zone existed and
+      // changed nothing — a feature nobody could feel. Three zones have to be
+      // three different answers or they are decoration.
+      expect(h < t && t < l, `the ${gun}'s three zones come out as ${h}/${t}/${l} shots — they must all differ, or hitting the head is worth nothing`);
+      // Matthew's rule, in as many words: "headshot shouldn't be like one shot."
+      expect(h >= 2, `one ${gun} head shot kills outright (${h} shot), which is the one thing Matthew ruled out`);
+    }
+    // ⚠️ THE CHECK THAT CAUGHT THE REAL BUG IN THIS FEATURE, and it is not
+    // visible in any single constant. The crosshair at rest — pitch zero, no
+    // recoil — crosses an alien at (ALIEN_H - eye) / ALIEN_H down from its
+    // crown, the same fraction at every distance. With the head band first
+    // set at 0.25 that resting shot was ALWAYS a head shot, so every player
+    // who stood still two-shot everything and the torso and leg zones were
+    // unreachable except by accident. Three zones that collapse to one are
+    // decoration, which is what alien health went up to avoid.
+    const alienH = gnum("ALIEN_H"), eye = 0.5;
+    expect(Number.isFinite(alienH) && alienH > eye, "could not read ALIEN_H, so the resting-aim check is guarding nothing");
+    const restF = (alienH - eye) / alienH;
+    expect(restF > G.HEAD_BELOW && restF < G.LEGS_BELOW,
+      `a crosshair at rest sits ${restF.toFixed(3)} down the alien, which is the ${restF <= G.HEAD_BELOW ? "HEAD" : "LEGS"} band — standing still must be a TORSO shot, or the zone you get is the one you never chose`);
+    expect(restF - G.HEAD_BELOW > 0.03,
+      `the resting crosshair is only ${(restF - G.HEAD_BELOW).toFixed(3)} clear of the head band; recoil alone would flip it, so the zone would read as random`);
+
+    // The follow-up rule: a head shot OPENS the door, the second hit has to
+    // walk through it. Head then body kills in two; head then legs does not,
+    // so aiming high and then low is worse than simply aiming at the chest.
+    expect(G.PISTOL_DMG * (Z.head + Z.torso) >= G.ALIEN_HP,
+      "a blaster head shot followed by a body shot does not kill, so there is no reward for aiming high at all");
+    expect(G.PISTOL_DMG * (Z.head + Z.legs) < G.ALIEN_HP,
+      "a blaster head shot followed by a LEG shot kills, so the follow-up does not have to be a good one");
+    // The two guns have to be a real trade, not an upgrade: the blaster pays
+    // more per QUESTION, the rifle far more per SECOND. If either stops being
+    // true there is no decision left and one gun is simply dead weight.
+    const perQPistol = G.PISTOL_PER_ANSWER * G.PISTOL_DMG, perQRifle = G.RIFLE_PER_ANSWER * G.RIFLE_DMG;
+    expect(perQPistol > perQRifle, `a right answer buys ${perQRifle} rifle damage against ${perQPistol} blaster damage — the blaster must win per question or answering for the rifle is strictly better`);
+    expect(G.RIFLE_DMG / G.RIFLE_WAIT > G.PISTOL_DMG / G.PISTOL_WAIT,
+      "the rifle does not out-damage the blaster per second, so it has no reason to exist");
+    // and the number that makes the economy legible: one question, one alien.
+    expect(perQRifle === G.ALIEN_HP, `${G.RIFLE_PER_ANSWER} rifle rounds do ${perQRifle} against ${G.ALIEN_HP} health — "one right answer is one alien" is the whole feel of the weapon`);
+    expect(G.RIFLE_MAG === G.RIFLE_PER_ANSWER * 3, "the rifle's magazine is not a whole number of right answers, so a full reload wastes rounds");
+
+    // ⚠️ THE GRENADE MUST BEHAVE EXACTLY AS IT DID BEFORE. Raising alien
+    // health without raising NADE_DMG would have quietly shrunk the blast
+    // Matthew approved last week. The outright-kill radius is the number to
+    // pin, because that is the one a player can feel.
+    const killR = G.NADE_KILL_R + (G.NADE_HURT_R - G.NADE_KILL_R) * (1 - G.ALIEN_HP / G.NADE_DMG);
+    expect(Math.abs(killR - 1.65) < 0.005, `a grenade now kills outright to ${killR.toFixed(3)} squares, not the 1.650 that shipped`);
+    expect(G.NADE_SELF < 100, "a grenade at your own feet kills you outright; it is meant to be a mistake, not a suicide button");
+
+    // ── the grenade quiz ─────────────────────────────────────────────────
+    // Matthew: "you just get the grenade back in your inventory if you fail."
+    // So the grenade is spent in ONE place, and that place is the one reached
+    // only by three right answers.
+    const body = (name) => {
+      const i = game.indexOf(`private ${name}(`);
+      if (i < 0) return "";
+      const j = game.indexOf("\n  private ", i + 10);
+      return game.slice(i, j < 0 ? game.length : j);
+    };
+    expect(body("throwGrenade").length > 0 && body("releaseNade").length > 0 && body("failNadeQuiz").length > 0,
+      "throwGrenade / releaseNade / failNadeQuiz are not all there, so the checks below are guarding nothing");
+    expect((game.match(/p\.grenades--/g) ?? []).length === 1,
+      "the grenade is spent in more than one place, so one of them can spend it on a failed quiz");
+    expect(!/grenades--/.test(body("throwGrenade")),
+      "pulling the pin spends the grenade, so a wrong answer costs it as well as the throw");
+    expect(/grenades--/.test(body("releaseNade")),
+      "the grenade is never actually spent when it is thrown");
+    expect(!/grenades/.test(body("failNadeQuiz")) || /grenades\s*\+/.test(body("failNadeQuiz")),
+      "a failed grenade quiz touches your grenade count — failing is supposed to give it back, not take it");
+    expect(/nadeWait = NADE_FAIL_WAIT/.test(body("failNadeQuiz")) && G.NADE_FAIL_WAIT >= 3,
+      "a failed grenade quiz costs no cooldown, so G is a freeze button you can hold down whenever you are losing");
+    // ⚠️ And the freeze must not be free. The world stops in "nade" mode
+    // because frame() only runs update() in play and reload — which also
+    // stops the run clock, and pace is 30 of the 100 marks on a deck. Without
+    // this line "press G to stop the world" is the correct way to play.
+    expect(/this\.mode === "nade"\) this\.stats\.time \+= dt/.test(game),
+      "the run clock stops while a grenade quiz is up, so freezing the deck costs the player nothing");
+    expect(/if \(this\.mode === "play" \|\| this\.mode === "reload"\) this\.update\(dt\);/.test(game),
+      "update() runs in a mode other than play and reload, so the grenade quiz may not actually freeze anything");
+    // the aim is taken when the pin comes out, so a frozen world cannot be
+    // used to line a throw up that you had not lined up already
+    expect(/nade: this\.aimNade\(\)/.test(game),
+      "the throw is not aimed at the moment the pin comes out, so the freeze can be used to re-aim");
+
+    // ── the rifle belongs to the deck that has it ────────────────────────
+    // ⚠️ The decks BEFORE this one, not this one. On the deck that places the
+    // rifle those are opposite answers, and the wrong one hands it over at
+    // the spawn — which skips the arms locker and makes the hangar door's
+    // whole reason for being gated disappear.
+    expect(/LEVELS\.slice\(0, start\)\.some\(hasRifle\)/.test(game),
+      "jumping ahead decides the rifle from the deck you land on rather than from the decks you would have walked through");
+    expect(!/hasRifle\(LEVELS\[start\]\)/.test(game),
+      "jumping ahead still hands out the rifle on the very deck you are meant to find it on");
+    const rifleMentions = [...game.matchAll(/3 rifle|3: rifle/g)];
+    expect(rifleMentions.length > 0, "the controls card never mentions the rifle key");
+    for (const m of rifleMentions) {
+      const before = game.slice(Math.max(0, m.index - 70), m.index);
+      expect(/this\.hasGun \?\s*["`][^"`]*$/.test(before),
+        `the controls card offers "${m[0]}" without checking whether this deck has a rifle`);
+    }
+    const rifleLevels = LEVELS.filter((l) => l.SPRITES.some((s) => s.t === "rifle"));
+    expect(rifleLevels.length >= 1, "no level places the rifle at all, so it can never be picked up");
+    for (const level of rifleLevels) {
+      expect(level.SPRITES.filter((s) => s.t === "rifle").length === 1,
+        `${level.TITLE} places more than one rifle; the second can never be worth anything`);
+    }
+
+    // ⚠️ AND THE RIFLE MUST NOT BE BEHIND THE DOOR THAT NEEDS THE RIFLE.
+    // This is the keycard rule again — the level would simply be unfinishable
+    // — and it is a genuinely easy mistake to make, because the arms locker
+    // and the hangar are next to each other. Checked by walking the level's
+    // own AREA graph with the gated door removed.
+    for (const level of LEVELS) {
+      const gated = (level.DOORS ?? []).filter((d) => d.needs);
+      if (!gated.length) continue;
+      const areas = Object.entries(level.AREAS ?? {});
+      expect(areas.length > 1, `${level.TITLE} has a door with a "needs" but no areas to check it against`);
+      const areaAt = (x, y) => areas.find(([, a]) => x >= a.r[0] && x <= a.r[2] && y >= a.r[1] && y <= a.r[3])?.[0] ?? null;
+      for (const d of gated) {
+        // every door joins the areas its own cells' neighbours sit in
+        const edges = new Map(areas.map(([k]) => [k, new Set()]));
+        // ⚠️ AND SO DOES A SHARED EDGE. Two area rectangles that touch are
+        // one open space with no door between them — level 5's entrance
+        // corridor is three rectangles in an L. Reading only the doors
+        // reported the arms locker as unreachable and the level as
+        // unfinishable, which is the check failing, not the level.
+        const touches = (a, b) =>
+          (a.r[0] <= b.r[2] && b.r[0] <= a.r[2] && (a.r[3] + 1 === b.r[1] || b.r[3] + 1 === a.r[1])) ||
+          (a.r[1] <= b.r[3] && b.r[1] <= a.r[3] && (a.r[2] + 1 === b.r[0] || b.r[2] + 1 === a.r[0]));
+        for (const [ka, a] of areas) for (const [kb, b] of areas) {
+          if (ka !== kb && touches(a, b)) { edges.get(ka).add(kb); edges.get(kb).add(ka); }
+        }
+        for (const door of level.DOORS) {
+          if (door === d || door.secret) continue;
+          const touch = new Set();
+          for (const [cx, cy] of door.cells) {
+            for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+              const a = areaAt(cx + dx, cy + dy); if (a) touch.add(a);
+            }
+          }
+          for (const a of touch) for (const b of touch) if (a !== b) edges.get(a).add(b);
+        }
+        const start = areaAt(Math.floor(level.START.x), Math.floor(level.START.y));
+        expect(start, `${level.TITLE}: the start position is not inside any area`);
+        const seen = new Set([start]), queue = [start];
+        while (queue.length) for (const n of edges.get(queue.pop()) ?? []) if (!seen.has(n)) { seen.add(n); queue.push(n); }
+        const needed = level.SPRITES.find((s) => s.t === d.needs);
+        expect(needed, `${level.TITLE} has a door needing a "${d.needs}" that the level never places`);
+        if (!needed) continue;
+        const where = areaAt(Math.floor(needed.x), Math.floor(needed.y));
+        expect(where && seen.has(where),
+          `${level.TITLE}: the ${d.needs} is in "${where}", which can only be reached through the door that needs it — the level cannot be finished`);
+      }
+    }
+
+    // ── floors a level paints must be floors that exist ─────────────────
+    // ⚠️ The same hole the sprite-type rule closed, one layer down, and it
+    // bit immediately: level 6's irrigation channels were written as
+    // "fWater" and there was no fWater. An unknown floor texture does not
+    // throw — it falls back — so the channels would have been invisible, and
+    // the deck's whole new mechanic would have shipped as a paragraph in a
+    // hint about water nobody could see.
+    const texSrc = readFileSync("app/early-access/game/textures.ts", "utf8");
+    const floorTex = new Set([...texSrc.matchAll(/^\s{2}(f[A-Z][A-Za-z]*)\(/gm)].map((m) => m[1]));
+    expect(floorTex.size > 5, `only found ${floorTex.size} floor textures in textures.ts, so this check is looking in the wrong place`);
+    for (const level of LEVELS) {
+      for (const f of level.FLOORS ?? []) {
+        const name = f[4];
+        expect(floorTex.has(name), `${level.TITLE} paints a "${name}" floor, which textures.ts does not draw`);
+      }
+      for (const a of Object.values(level.AREAS ?? {})) {
+        expect(floorTex.has(a.floor), `${level.TITLE}'s "${a.name || "unnamed"}" area asks for a "${a.floor}" floor, which textures.ts does not draw`);
+      }
+    }
+    // and a floor that is supposed to DO something must be read by the game,
+    // or it is paint pretending to be a rule
+    for (const level of LEVELS) {
+      for (const f of level.FLOORS ?? []) {
+        if (f[4] !== "fWater") continue;
+        expect(game.includes('"fWater"'), `${level.TITLE} paints irrigation water, but game.ts never reads fWater — walking through it does nothing`);
+      }
+    }
+    // ⚠️ AND THE WATER MUST NOT WALL THE DECK OFF. The channels are meant to
+    // be a decision — splash across, or walk to the dry strip — which only
+    // works if a dry strip exists. Water running the full height of the hall
+    // is not a decision, it is a wall you cannot see.
+    for (const level of LEVELS) {
+      const water = (level.FLOORS ?? []).filter((f) => f[4] === "fWater");
+      if (!water.length) continue;
+      const wet = new Set();
+      let y0 = Infinity, y1 = -Infinity;
+      for (const [ax, ay, bx, by] of water) {
+        for (let x = ax; x <= bx; x++) for (let y = ay; y <= by; y++) wet.add(`${x},${y}`);
+        y0 = Math.min(y0, ay); y1 = Math.max(y1, by);
+      }
+      const cols = new Set([...wet].map((k) => Number(k.split(",")[0])));
+      for (const x of cols) {
+        let dry = 0;
+        for (let y = y0; y <= y1; y++) if (!wet.has(`${x},${y}`)) dry++;
+        expect(dry >= 2, `${level.TITLE}: the water at x=${x} runs the whole length of the hall with ${dry} dry square(s) — there is no way across without splashing`);
+      }
+    }
+
+    // ── can you actually WALK the deck? ─────────────────────────────────
+    // ⚠️ This used to live in a scratchpad script run by hand against a
+    // compiled copy of the levels that was months old by the end. A level
+    // that cannot be finished is the worst bug this game can ship, and it is
+    // caught by a flood fill that takes under a second, so it belongs in the
+    // run that happens every time. `buildWorld` is the real one the game
+    // uses — a second idea of what a wall is would be a second thing to get
+    // wrong.
+    {
+      const { buildWorld } = require(join(out, "world.js"));
+      const tex = { out: {}, add() {} };   // buildWorld only records names
+      for (const level of LEVELS) {
+        const w = buildWorld(level, tex);
+        // ⚠️ A DOOR IS SOLID. buildWorld sets solid = 1 on every door cell and
+        // hangs the door object off w.door, exactly as lineOfSight has to
+        // allow for (world.ts line 233). Reading solid alone, the first
+        // version of this flood fill reached only the room you spawn in and
+        // reported every deck in the game — including the four that bots have
+        // walked end to end for weeks — as unfinishable. The harness, not the
+        // levels, for the ninth time in this file.
+        const open = (x, y) => {
+          if (x < 0 || y < 0 || x >= w.W || y >= w.H) return false;
+          const i = y * w.W + x;
+          return w.solid[i] !== 1 || !!w.door[i];
+        };
+        const seen = new Uint8Array(w.W * w.H);
+        const sx = Math.floor(level.START.x), sy = Math.floor(level.START.y);
+        expect(open(sx, sy), `${level.TITLE}: you start inside a wall at ${sx},${sy}`);
+        const queue = [[sx, sy]]; seen[sy * w.W + sx] = 1;
+        while (queue.length) {
+          const [x, y] = queue.pop();
+          for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+            const nx = x + dx, ny = y + dy;
+            if (!open(nx, ny) || seen[ny * w.W + nx]) continue;
+            seen[ny * w.W + nx] = 1; queue.push([nx, ny]);
+          }
+        }
+        const reached = (x, y) => seen[Math.floor(y) * w.W + Math.floor(x)] === 1;
+        for (const sp of level.SPRITES) {
+          expect(reached(sp.x, sp.y), `${level.TITLE}: the ${sp.t} at ${sp.x},${sp.y} is walled off — nothing can get to it`);
+          expect(open(Math.floor(sp.x), Math.floor(sp.y)), `${level.TITLE}: the ${sp.t} at ${sp.x},${sp.y} is standing inside a wall`);
+        }
+        // ⚠️ NOT "is the middle of the room reachable". Three of the biggest
+        // rooms in the game have something parked in the middle of them — the
+        // reactor core on decks 1 and 2, the shuttle on the flight deck — so
+        // the centre probe reported the three best rooms in the game as
+        // sealed off. What matters is that the room is reachable AND that
+        // nearly all of it is: a corner cut off by a block is a real bug, one
+        // solid square in the middle is the level design.
+        for (const [name, a] of Object.entries(level.AREAS ?? {})) {
+          let cells = 0, got = 0;
+          for (let y = a.r[1]; y <= a.r[3]; y++) for (let x = a.r[0]; x <= a.r[2]; x++) {
+            if (w.solid[y * w.W + x] === 1) continue;
+            cells++; if (seen[y * w.W + x]) got++;
+          }
+          const label = `${level.TITLE}: the "${a.name || name}" area`;
+          expect(cells > 0, `${label} has no open floor in it at all`);
+          expect(got > 0, `${label} cannot be walked to`);
+          expect(cells === 0 || got / cells > 0.9, `${label} is ${Math.round((1 - got / cells) * 100)}% walled off from the rest of the deck`);
+        }
+        const exit = (level.DOORS ?? []).find((d) => d.exit);
+        expect(exit, `${level.TITLE} has no exit at all`);
+        if (exit) expect(exit.cells.some(([x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => reached(x + dx, y + dy))),
+          `${level.TITLE}: the lift out cannot be reached, so the deck cannot be finished`);
+        // ⚠️ and the keycard is never behind the door it opens. Same shape as
+        // the rifle rule above; this one has bitten real level design before.
+        for (const d of (level.DOORS ?? []).filter((d) => d.key)) {
+          const card = level.SPRITES.find((sp) => sp.t === "keycard");
+          expect(card, `${level.TITLE} locks a door with a keycard it never places`);
+          if (!card) continue;
+          const blocked = new Uint8Array(w.W * w.H);
+          const shut = new Set(d.cells.map(([x, y]) => y * w.W + x));
+          const q2 = [[sx, sy]]; blocked[sy * w.W + sx] = 1;
+          while (q2.length) {
+            const [x, y] = q2.pop();
+            for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+              const nx = x + dx, ny = y + dy, i = ny * w.W + nx;
+              if (!open(nx, ny) || blocked[i] || shut.has(i)) continue;
+              blocked[i] = 1; q2.push([nx, ny]);
+            }
+          }
+          expect(blocked[Math.floor(card.y) * w.W + Math.floor(card.x)] === 1,
+            `${level.TITLE}: the keycard is behind the door it unlocks`);
+        }
+        // ⚠️ NO ROUTE LEG MAY RUN THROUGH WAIST-HIGH COVER. The ROUTE is not
+        // decoration: the wall arrows point along it, `par` (30 of the 100
+        // marks on a deck) is derived from its length, and the play-test bots
+        // follow it. A leg drawn straight through a crate means the signposted
+        // way through needs a jump, and the par time is measured along a path
+        // nobody walks. Eleven legs across four decks were doing this —
+        // including two on level 1, which has shipped for weeks — and nothing
+        // caught them, because the flood fill above walks round cover quite
+        // happily and the old route bot pushed W and reported "stuck".
+        // ⚠️ A RUN of blocked samples, not a single one. Sampling a straight
+        // line eight times a square clips the corner cell of a doorway
+        // whenever a leg passes diagonally through one, and the first version
+        // of this rule reported nine of those as routes running through
+        // walls. Three consecutive samples is 0.37 of a square actually
+        // inside something, which a corner clip never reaches and a leg drawn
+        // through the middle of a crate always does.
+        const cross = (r, which) => {
+          for (let i = 1; i < (r ?? []).length; i++) {
+            const [ax, ay] = r[i - 1], [bx, by] = r[i];
+            const n = Math.ceil(Math.hypot(bx - ax, by - ay) * 8);
+            let run = 0, what = 0, where = "";
+            for (let k = 0; k <= n; k++) {
+              const x = Math.floor(ax + ((bx - ax) * k) / n), y = Math.floor(ay + ((by - ay) * k) / n);
+              // ⚠️ COVER ONLY, deliberately. The same sampler flagged four
+              // legs of level 4's alternative route as running through a
+              // wall; that route drops into the floor duct and runs UNDER
+              // the shelving, so a flat 2D sample of it is wrong and I could
+              // not tell a real crossing from that without modelling height.
+              // Walls are already covered properly, twice: the flood fill
+              // above walks the deck, and walk56.mjs drives the real
+              // collision code along every leg. Cover is the gap — the flood
+              // fill walks round it quite happily — and cover is where the
+              // eleven real bugs were.
+              const j = y * w.W + x, blocked = w.door[j] || w.solid[j] !== 2 ? 0 : 2;
+              if (blocked && blocked === what) { run++; } else { run = blocked ? 1 : 0; what = blocked; where = `${x},${y}`; }
+              if (run >= 3) {
+                expect(false, `${level.TITLE}: leg ${i} of its ${which} runs straight through ${what === 2 ? "the cover" : "a wall"} at ${where}`);
+                run = 0; what = 0;
+              }
+            }
+            checks++;   // the leg that passed, so a clean route still counts
+          }
+        };
+        cross(level.ROUTE, "main route");
+        cross(level.ALT_ROUTE, "alternative route");
+
+        // nothing may be standing on top of something else
+        const spots = new Map();
+        for (const sp of level.SPRITES) {
+          const k = `${sp.x},${sp.y}`;
+          expect(!spots.has(k), `${level.TITLE}: a ${sp.t} and a ${spots.get(k)} are both at ${k}`);
+          spots.set(k, sp.t);
+        }
+      }
+    }
+
     // and every level still has an intro and an objective, which is how the
     // compass and the mascot know what to say at all
     for (const level of LEVELS) {
