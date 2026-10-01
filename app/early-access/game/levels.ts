@@ -76,8 +76,8 @@ export const LEVEL1: LevelDef = (() => {
   // Low cover: waist-high, you can shoot over it and crouch behind it.
   const COVER: NonNullable<LevelDef["COVER"]> = [
     ...[[21, 12], [22, 12], [22, 13], [16, 15], [16, 16], [27, 13], [27, 14], [21, 17], [22, 17]].map((c): [number, number, string] => [c[0], c[1], "crate"]),
-    ...[[27, 4], [31, 3]].map((c): [number, number, string] => [c[0], c[1], "crate"]),
-    ...[[35, 11], [40, 11], [35, 16], [40, 16]].map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...[[27, 4], [30, 4]].map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...[[34, 10], [40, 11], [35, 16], [40, 16]].map((c): [number, number, string] => [c[0], c[1], "console"]),
     ...[[36, 27], [37, 27], [40, 27], [41, 27]].map((c): [number, number, string] => [c[0], c[1], "console"]),
     [11, 22, "crate"],
     [19, 24, "crate"], [23, 24, "crate"],
@@ -177,12 +177,12 @@ export const LEVEL2: LevelDef = (() => {
     [5, 5, 5, 5, "fAirlock"],
   ];
   const COVER: NonNullable<LevelDef["COVER"]> = [
-    [11, 14, "console"], [12, 14, "console"], [14, 17, "console"], [15, 17, "console"],
+    [11, 14, "console"], [11, 13, "console"], [14, 17, "console"], [15, 17, "console"],
     [21, 13, "crate"], [37, 14, "crate"], [22, 16, "crate"],
     [41, 7, "crate"], [42, 7, "crate"],
     [35, 26, "crate"], [39, 26, "crate"],
     [27, 24, "crate"], [30, 24, "crate"],
-    [15, 5, "console"], [16, 5, "console"],
+    [14, 4, "console"], [15, 4, "console"],
   ];
   const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
     if (ai === "control" && f === FACE.W && x === 20) return "reactorWin";
@@ -316,8 +316,16 @@ export const LEVEL3: LevelDef = (() => {
     { x: 5.5, y: 16, rgb: [0.1, 0.16, 0.3], r: 4 }, // sick bay
   ];
   const START = { x: 5.5, y: 22, angle: 0 };
-  const ROUTE = [[5.5, 22], [11, 22], [12.5, 18.5], [12.5, 8.5], [22.5, 8.5], [22.5, 7], [22.5, 8.5], [31.5, 8.5], [31.5, 14.5], [33.5, 14.5], [36.5, 17.5], [40.5, 17.5]];
-  const ALT_ROUTE = [[11, 21], [16, 20.8], [19.5, 20.6], [25, 16], [29.5, 21.5], [33.5, 21.5], [36.5, 18]];
+  // ⚠️ [12.5, 20.5] and [35.5, 14.5] are here to steer the route AROUND two
+  // crates it used to be drawn straight through. A route leg through cover
+  // is not harmless: the wall arrows point along it, the par time (30 of the
+  // 100 marks on a deck) is its length, and the play-test bots follow it — so
+  // the signposted way through needed a jump and par was measured along a
+  // path nobody walks. There is a permanent check for it now.
+  const ROUTE = [[5.5, 22], [11, 22], [12.5, 20.5], [12.5, 18.5], [12.5, 8.5], [22.5, 8.5], [22.5, 7], [22.5, 8.5], [31.5, 8.5], [31.5, 14.5], [33.5, 14.5], [35.5, 14.5], [36.5, 17.5], [40.5, 17.5]];
+  // the mess tables stand in two rows with a gap at x = 24-25; this threads
+  // it rather than walking over the furniture
+  const ALT_ROUTE = [[11, 21], [16, 20.8], [19.5, 20.6], [24.5, 19], [25, 16], [25.5, 19], [29.5, 21.5], [33.5, 21.5], [36.5, 18]];
   const LABELS = { lift: [5.5, 19.4], storage: [12, 26.4], mess: [24.5, 23.5], barracks: [23, 1.4], exit: [36.8, 11.3] };
   const LEGEND = [["alienBack", "Alien with its back to you"], ["vest", "Vest (armour)"]];
   const INTRO = "This is where the aliens live. The mess hall is full of them. Maybe there's a sneakier way through.";
@@ -487,4 +495,275 @@ export const LEVEL4: LevelDef = (() => {
   return { INTRO, HINTS, OBJECTIVES, LOCKED_HINT, TITLE: "Level 4 — Cargo hold", W, H, DUCT_H, AREAS, DOORS, GRILLES, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
 })();
 
-export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4];
+
+// Level 5: "Flight deck" — the first level with the assault rifle, and the
+// level built to make you want it. Everything about it is the opposite of the
+// cargo hold: the lights are on, the ceiling is 2.6 squares high, and the
+// hangar is one room 23 x 24 squares across. There is nowhere to hide and no
+// darkness to hide in, so the answer is not stealth, it is volume of fire —
+// which is exactly the weapon the arms locker gives you on the way in.
+//
+// The shuttle parked in the middle is what stops it being a shooting gallery:
+// it splits the hall into a north side and a south side, so you fight one
+// half at a time and can break line of sight by walking round it.
+//
+// The hangar door will not open until you are carrying the rifle. Same
+// reasoning as level 1's cargo bay door: nobody should walk into the biggest
+// fight in the game because they missed the room with the gun in it.
+
+export const LEVEL5: LevelDef = (() => {
+  const W = 50, H = 34;
+  const AREAS: NonNullable<LevelDef["AREAS"]> = {
+    lift:  { r: [3, 15, 7, 19],   name: "1 Docking lift",   light: [0.82, 0.88, 1.0],  wall: "panel",    floor: "fTile",    ceil: "light" },
+    corA:  { r: [9, 16, 12, 18],  name: "",                 light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate",   ceil: "corridor" },
+    corB:  { r: [10, 13, 11, 15], name: "",                 light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate",   ceil: "corridor" },
+    arms:  { r: [8, 6, 14, 11],   name: "2 Arms locker",    light: [0.88, 0.92, 1.05], wall: "control",  floor: "fTile",    ceil: "light" },
+    corD:  { r: [13, 16, 14, 19], name: "",                 light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate",   ceil: "corridor" },
+    deck:  { r: [16, 4, 38, 27],  name: "3 Flight deck",    light: [0.95, 1.0, 1.1],   wall: "hall",     floor: "fCatwalk", ceil: "grid", ceilH: 2.6 },
+    corE:  { r: [20, 29, 21, 29], name: "",                 light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate",   ceil: "corridor" },
+    tower: { r: [17, 30, 26, 32], name: "4 Control tower",  light: [0.9, 0.95, 1.1],   wall: "bridge",   floor: "fBridge",  ceil: "light" },
+    dock:  { r: [40, 17, 46, 26], name: "5 Launch lift",    light: [0.84, 0.9, 1.02],  wall: "panel",    floor: "fTile",    ceil: "light" },
+    // Behind a false wall on the east hull: the fuel bay. Three guards, a vest
+    // and the spare cells. Nothing in the level needs it.
+    bay:   { r: [40, 5, 46, 11],  name: "Fuel bay",         light: [0.42, 0.48, 0.62], wall: "pipes",    floor: "fHazard",  ceil: "dark" },
+  };
+  const DOORS: NonNullable<LevelDef["DOORS"]> = [
+    { cells: [[8, 16], [8, 17], [8, 18]], tex: "door" },                        // out of the docking lift
+    { cells: [[10, 12], [11, 12]], tex: "door" },                               // up into the arms locker
+    // the hangar door: four cells wide, and it stays shut until you have the rifle
+    { cells: [[15, 16], [15, 17], [15, 18], [15, 19]], tex: "door", needs: "rifle" },
+    { cells: [[20, 28], [21, 28]], tex: "door" },                               // stairs down to the control tower
+    { cells: [[39, 7], [39, 8]], tex: "secret", secret: true },                 // the fuel bay
+    { cells: [[39, 21], [39, 22]], tex: "keyDoor", key: "blue" },               // into the launch lift
+    { cells: [[47, 21], [47, 22]], tex: "exit", exit: true },
+  ];
+  // The shuttle, parked nose-west. Full height, so it genuinely splits the hall.
+  const HULL: [number, number][] = [];
+  for (let y = 13; y <= 17; y++) for (let x = 24; x <= 33; x++) HULL.push([x, y]);
+  const BLOCKS: NonNullable<LevelDef["BLOCKS"]> = [
+    { cells: HULL, tex: "core" },
+    { cells: [[21, 15], [22, 15], [23, 15]], tex: "core" },   // port wing
+    { cells: [[34, 15], [35, 15], [36, 15]], tex: "core" },   // starboard wing
+    ...([[18, 8], [18, 23], [36, 8], [36, 23]] as [number, number][]).map((c) => ({ cells: [c] as [number, number][], tex: "pillar" })),
+  ];
+  const FLOORS: NonNullable<LevelDef["FLOORS"]> = [
+    [16, 4, 38, 4, "fHazard"], [16, 27, 38, 27, "fHazard"],   // the painted edge of the launch floor
+    [16, 16, 23, 19, "fGrate"], [37, 16, 38, 22, "fGrate"],
+  ];
+  const COVER: NonNullable<LevelDef["COVER"]> = [
+    ...([[19, 6], [22, 9], [28, 8], [32, 10], [35, 6], [20, 11]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[18, 21], [23, 24], [27, 22], [31, 25], [34, 20], [26, 26]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[9, 9], [13, 9]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...([[18, 31], [25, 31], [21, 32], [22, 32]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...([[41, 19], [45, 24]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    [41, 10, "crate"], [46, 10, "crate"],
+  ];
+  const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
+    if (ai === "lift" && f === FACE.E && x === 2 && y === 17) return "exit";
+    if (ai === "arms" && f === FACE.W && x === 7) return "rack";
+    if (ai === "deck" && f === FACE.S && y === 3) return x % 3 === 0 ? "pillar" : "window";
+    if (ai === "tower" && f === FACE.N && y === 33) return x >= 19 && x <= 24 ? "window" : "computer";
+    if (ai === "deck" && f === FACE.W && x === 39 && y >= 12 && y <= 15) return "cargo";
+  };
+  const DECALS: NonNullable<LevelDef["DECALS"]> = [
+    [8, 15, FACE.E, "camera"], [12, 13, FACE.E, "arrowR", true], [9, 12, FACE.S, "sign"],
+    [7, 8, FACE.E, "screen"], [15, 8, FACE.W, "sign"], [12, 19, FACE.N, "arrowR"],
+    [15, 20, FACE.N, "camera"], [16, 3, FACE.S, "sign"], [39, 16, FACE.W, "keycard"],
+    [22, 28, FACE.E, "arrowR"], [19, 29, FACE.W, "sign"], [27, 33, FACE.N, "screen"],
+    [39, 20, FACE.W, "arrowR", true], [39, 12, FACE.W, "cables"], [47, 20, FACE.W, "arrowR", true],
+    [39, 6, FACE.W, "cables"], [39, 9, FACE.W, "screen"],
+  ];
+  const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
+    { t: "lamp", x: 3.6, y: 15.6 }, { t: "lamp", x: 7.4, y: 15.6 },
+    // the arms locker: the rifle, and two guards who have not heard you yet
+    { t: "rifle", x: 11.5, y: 8.5 }, { t: "ammo", x: 9.5, y: 10.5 }, { t: "vest", x: 13.5, y: 6.5 },
+    { t: "alienBack", x: 9.5, y: 7.5, face: 1.57, stomp: true }, { t: "alien", x: 13.5, y: 10.5, face: 3.1 },
+    { t: "lamp", x: 11.5, y: 6.5 },
+    // the flight deck, north of the shuttle
+    { t: "alien", x: 18.5, y: 6.5, face: 1.57 }, { t: "alien", x: 21.5, y: 9.5, face: 0 },
+    { t: "alien", x: 26.5, y: 7.5, face: 1.57 }, { t: "alien", x: 31.5, y: 6.5, face: 3.1 },
+    { t: "alien", x: 35.5, y: 9.5, face: 3.1 }, { t: "alienBack", x: 37.5, y: 12.5, face: -1.57, stomp: true },
+    { t: "alien", x: 19.5, y: 13.5, face: 1.57 },
+    { t: "ammo", x: 24.5, y: 5.5 }, { t: "health", x: 17.5, y: 5.5 }, { t: "ammo", x: 37.5, y: 5.5 },
+    { t: "lamp", x: 20.5, y: 5.5 }, { t: "lamp", x: 34.5, y: 5.5 }, { t: "canister", x: 29.4, y: 11.5 }, { t: "canister", x: 30.3, y: 11.5 },
+    // and south of it
+    { t: "alien", x: 17.5, y: 20.5, face: 1.57 }, { t: "alien", x: 20.5, y: 24.5, face: 0 },
+    { t: "alien", x: 25.5, y: 21.5, face: 1.57 }, { t: "alien", x: 29.5, y: 25.5, face: 3.1 },
+    { t: "alien", x: 33.5, y: 22.5, face: 3.1 }, { t: "alienBack", x: 37.5, y: 25.5, face: -1.57, stomp: true },
+    { t: "alien", x: 19.5, y: 17.5, face: 0 },
+    { t: "health", x: 18.5, y: 26.5 }, { t: "ammo", x: 32.5, y: 19.5 }, { t: "ammo", x: 22.5, y: 26.5 },
+    { t: "lamp", x: 20.5, y: 26.5 }, { t: "lamp", x: 34.5, y: 26.5 }, { t: "canister", x: 24.4, y: 19.5 },
+    // the control tower: the keycard for the launch lift
+    { t: "keycard", x: 22.5, y: 31.5 }, { t: "alien", x: 19.5, y: 31.5, face: 0 }, { t: "alien", x: 24.5, y: 31.5, face: 3.1 },
+    { t: "holo", x: 22.5, y: 30.6 }, { t: "health", x: 25.5, y: 32.5 },
+    // the launch lift
+    { t: "alien", x: 42.5, y: 19.5, face: 3.1 }, { t: "alien", x: 44.5, y: 24.5, face: 2.4 },
+    { t: "health", x: 45.5, y: 18.5 }, { t: "lamp", x: 40.6, y: 17.6 }, { t: "lamp", x: 40.6, y: 25.4 },
+    // the fuel bay, behind the false wall
+    { t: "alien", x: 41.5, y: 6.5, face: 3.1 }, { t: "alien", x: 45.5, y: 6.5, face: 3.1 }, { t: "alien", x: 43.5, y: 10.5, face: -1.57 },
+    { t: "vest", x: 43.5, y: 6.5 }, { t: "ammo", x: 41.5, y: 9.5 }, { t: "ammo", x: 45.5, y: 9.5 }, { t: "health", x: 46.5, y: 8.5 },
+  ];
+  const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
+    { x: 27.5, y: 8, rgb: [0.3, 0.33, 0.4], r: 7 },
+    { x: 27.5, y: 23, rgb: [0.3, 0.33, 0.4], r: 7 },
+    { x: 11.5, y: 8.5, rgb: [0.25, 0.28, 0.36], r: 4 },
+    { x: 22.5, y: 31, rgb: [0.2, 0.3, 0.45], r: 4 },
+    { x: 43.5, y: 21.5, rgb: [0.22, 0.25, 0.32], r: 4 },
+    { x: 43.5, y: 8, rgb: [0.1, 0.14, 0.22], r: 4 },
+  ];
+  const START = { x: 5.5, y: 17.5, angle: 0 };
+  const ROUTE = [[5.5, 17.5], [10.5, 17], [10.5, 14], [10.5, 9.5], [11.5, 8.5], [10.5, 14], [11, 17.5], [14, 17.5], [17, 17.5], [19, 21], [22, 24], [20.5, 27], [20.5, 29.5], [22.5, 31.5], [20.5, 29.5], [20.5, 27], [28, 24], [34, 22], [37.5, 21.5], [41, 21.5], [45.5, 21.5]];
+  const ALT_ROUTE = [[17, 17.5], [18, 11], [22, 6.5], [30, 6.5], [37, 9], [37.5, 13], [37.5, 19], [37.5, 21.5]];
+  const LABELS = { lift: [5.5, 13.4], arms: [11.5, 4.4], deck: [27.5, 2.4], tower: [21.5, 33.4], dock: [43.5, 15.4] };
+  const LEGEND = [["rifle", "Assault rifle (5 rounds per right answer)"], ["keycard", "Blue keycard (opens the launch lift)"]];
+  const INTRO = "The flight deck. No cover, no shadows. Get the rifle from the arms locker first.";
+  const HINTS = {
+    arms: "There it is. The rifle hits softer than the blaster but empties five times as fast.",
+    deck: "Huge, bright, and they can see all of it. Keep the shuttle between you and whatever is shooting.",
+    tower: "The keycard for the launch lift will be on the console down here.",
+    bay: "The fuel bay. Three of them, and a spare vest.",
+    dock: "The launch lift is on the far wall. Walk up to it and press E.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Get the assault rifle", at: [11.5, 8.5], until: "rifle" },
+    { text: "Find the blue keycard", at: [22.5, 31.5], until: "keycard" },
+    { text: "Reach the launch lift", at: [45.5, 21.5] },
+  ];
+  const LOCKED_HINT = "Locked. The launch lift wants the blue keycard — try the control tower, south side.";
+  return { INTRO, HINTS, OBJECTIVES, LOCKED_HINT, TITLE: "Level 5 — Flight deck", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
+})();
+
+// Level 6: "Hydroponics" — the last ordinary deck before the boss, and the one
+// that asks you to use everything the first five taught you. It is bright, so
+// darkness is no help; what breaks the sight lines here is the planting, rows
+// of full-height racks you move between exactly the way you moved between the
+// shelving on level 4 — except the aliens are twice as thick on the ground and
+// the racks run the other way, so an aisle that hides you from one room shows
+// you to the next.
+//
+// One new rule, and it is one line of maths rather than a new system: the
+// irrigation channels in the growing hall raise your exposure while you are
+// moving through them. Splashing. The dry crossing in the middle is the only
+// quiet way across, which turns a straight run east into a decision.
+
+export const LEVEL6: LevelDef = (() => {
+  const W = 46, H = 32;
+  const AREAS: NonNullable<LevelDef["AREAS"]> = {
+    lift:  { r: [3, 13, 7, 17],   name: "1 Lift",               light: [0.82, 0.88, 1.0],  wall: "panel",    floor: "fTile",  ceil: "light" },
+    corA:  { r: [9, 14, 11, 16],  name: "",                     light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate", ceil: "corridor" },
+    germ:  { r: [13, 8, 21, 21],  name: "2 Germination hall",   light: [0.62, 0.78, 0.66], wall: "hub",      floor: "fTile",  ceil: "grid", ceilH: 1.5 },
+    corB:  { r: [23, 14, 24, 15], name: "",                     light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate", ceil: "corridor" },
+    grow:  { r: [26, 4, 38, 26],  name: "3 Growing hall",       light: [0.8, 1.0, 0.85],   wall: "hall",     floor: "fTile",  ceil: "grid", ceilH: 1.8 },
+    corC:  { r: [14, 22, 15, 24], name: "",                     light: [0.5, 0.58, 0.6],   wall: "corridor", floor: "fGrate", ceil: "corridor" },
+    pump:  { r: [10, 25, 19, 29], name: "4 Pump room",          light: [0.44, 0.52, 0.6],  wall: "pipes",    floor: "fGrate", ceil: "dark" },
+    dock:  { r: [40, 13, 43, 20], name: "5 Lift to the spine",  light: [0.84, 0.9, 1.02],  wall: "panel",    floor: "fTile",  ceil: "light" },
+    // behind a false wall off the pump room
+    vault: { r: [3, 22, 8, 28],   name: "Seed vault",           light: [0.36, 0.42, 0.5],  wall: "pipes",    floor: "fTile",  ceil: "dark" },
+  };
+  const DOORS: NonNullable<LevelDef["DOORS"]> = [
+    { cells: [[8, 14], [8, 15], [8, 16]], tex: "door" },          // out of the lift
+    { cells: [[12, 14], [12, 15], [12, 16]], tex: "door" },       // into the germination hall
+    { cells: [[22, 14], [22, 15]], tex: "door" },                 // east, towards the growing hall
+    { cells: [[25, 14], [25, 15]], tex: "door" },
+    { cells: [[39, 16], [39, 17]], tex: "keyDoor", key: "blue" }, // into the lift bay
+    { cells: [[44, 16], [44, 17]], tex: "exit", exit: true },
+    { cells: [[9, 26], [9, 27]], tex: "secret", secret: true },   // the seed vault
+  ];
+  // Planting racks: full height, so they break the sight line the way level 4's
+  // shelving does. The germination hall's run east-west; the growing hall's run
+  // the same way but are split by the irrigation channel down the middle, so the
+  // two halls never give you the same set of angles.
+  const RACKS: [number, number][][] = [];
+  for (const y of [10, 13, 16, 19]) RACKS.push([14, 15, 16, 17, 18, 19].map((x): [number, number] => [x, y]));
+  for (const y of [6, 9, 12, 18, 21, 24]) {
+    RACKS.push([27, 28, 29, 30].map((x): [number, number] => [x, y]));
+    RACKS.push([34, 35, 36, 37].map((x): [number, number] => [x, y]));
+  }
+  const BLOCKS: NonNullable<LevelDef["BLOCKS"]> = RACKS.map((cells) => ({ cells, tex: "cargo" }));
+  const FLOORS: NonNullable<LevelDef["FLOORS"]> = [
+    [31, 5, 32, 12, "fWater"], [31, 15, 32, 25, "fWater"],   // the irrigation channels
+    [31, 13, 32, 14, "fCatwalk"],                            // the dry crossing
+    [26, 4, 26, 26, "fGrate"], [38, 4, 38, 26, "fGrate"],     // the two edge walkways
+  ];
+  const COVER: NonNullable<LevelDef["COVER"]> = [
+    ...([[13, 11], [19, 14], [13, 17], [21, 20], [20, 9]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[32, 6], [33, 20], [26, 16], [37, 10], [33, 11], [27, 8]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[11, 26], [18, 28], [14, 29]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...([[41, 14], [42, 19]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    [4, 23, "crate"], [7, 27, "crate"],
+  ];
+  const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
+    if (ai === "lift" && f === FACE.E && x === 2 && y === 15) return "exit";
+    if (ai === "grow" && f === FACE.S && y === 3) return x % 3 === 0 ? "pillar" : "window";
+    if (ai === "germ" && f === FACE.W && x === 12) return y % 3 === 0 ? "cargo" : "panel";
+    if (ai === "pump" && f === FACE.N && y === 30) return x % 2 === 0 ? "tank" : "pipes";
+  };
+  const DECALS: NonNullable<LevelDef["DECALS"]> = [
+    [8, 13, FACE.E, "camera"], [12, 13, FACE.E, "arrowR"], [22, 13, FACE.E, "arrowR"],
+    [13, 22, FACE.E, "sign"], [16, 22, FACE.W, "arrowR"], [9, 25, FACE.E, "cables"],
+    [9, 28, FACE.E, "screen"], [39, 15, FACE.W, "keycard"], [39, 18, FACE.W, "arrowR", true],
+    [44, 15, FACE.W, "arrowR", true], [25, 13, FACE.E, "sign"], [33, 3, FACE.S, "camera"],
+    [20, 30, FACE.N, "sign"], [39, 12, FACE.W, "cables"],
+  ];
+  const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
+    { t: "lamp", x: 3.6, y: 13.6 }, { t: "lamp", x: 7.4, y: 13.6 },
+    // germination hall: four rack rows, six of them working between them
+    { t: "alien", x: 13.5, y: 9.5, face: 1.57 }, { t: "alienBack", x: 20.5, y: 11.5, face: -1.57, stomp: true },
+    { t: "alien", x: 16.5, y: 14.5, face: 0 }, { t: "alien", x: 20.5, y: 17.5, face: 3.1 },
+    { t: "alien", x: 14.5, y: 20.5, face: 1.57 }, { t: "alien", x: 18.5, y: 8.5, face: 0 },
+    { t: "ammo", x: 17.5, y: 11.5 }, { t: "health", x: 21.5, y: 8.5 }, { t: "ammo", x: 13.5, y: 14.5 },
+    { t: "lamp", x: 17.5, y: 8.5 }, { t: "lamp", x: 17.5, y: 21.5 }, { t: "canister", x: 21.4, y: 21.5 },
+    // growing hall: the densest room in the game, and the water runs down the middle
+    { t: "alien", x: 26.5, y: 5.5, face: 1.57 }, { t: "alien", x: 33.5, y: 5.5, face: 1.57 },
+    { t: "alien", x: 38.5, y: 7.5, face: 3.1 }, { t: "alien", x: 33.5, y: 10.5, face: 0 },
+    { t: "alienBack", x: 26.5, y: 12.5, face: 1.57, stomp: true }, { t: "alien", x: 38.5, y: 14.5, face: 3.1 },
+    { t: "alien", x: 33.5, y: 16.5, face: 1.57 }, { t: "alien", x: 26.5, y: 19.5, face: 1.57 },
+    { t: "alien", x: 33.5, y: 23.5, face: 3.1 }, { t: "alienBack", x: 38.5, y: 22.5, face: -1.57, stomp: true },
+    { t: "alien", x: 30.5, y: 26.5, face: 3.1 }, { t: "alien", x: 36.5, y: 26.5, face: 3.1 },
+    { t: "ammo", x: 33.5, y: 13.5 }, { t: "ammo", x: 26.5, y: 23.5 }, { t: "health", x: 38.5, y: 4.5 },
+    { t: "vest", x: 33.5, y: 26.5 }, { t: "ammo", x: 38.5, y: 19.5 },
+    { t: "lamp", x: 33.5, y: 4.5 }, { t: "lamp", x: 33.5, y: 14.5 }, { t: "lamp", x: 33.5, y: 25.5 },
+    { t: "canister", x: 26.4, y: 10.5 }, { t: "canister", x: 26.6, y: 17.5 },
+    // pump room: dark, loud, and the keycard is down here
+    { t: "keycard", x: 15.5, y: 27.5 }, { t: "alien", x: 11.5, y: 28.5, face: 0 },
+    { t: "alien", x: 18.5, y: 26.5, face: 3.1 }, { t: "alienBack", x: 15.5, y: 25.5, face: -1.57, stomp: true },
+    { t: "health", x: 10.5, y: 25.5 }, { t: "ammo", x: 19.5, y: 29.5 }, { t: "lamp", x: 15.5, y: 29.5 },
+    // the seed vault, behind the false wall
+    { t: "alien", x: 4.5, y: 22.5, face: 1.57 }, { t: "alien", x: 7.5, y: 22.5, face: 1.57 }, { t: "alien", x: 5.5, y: 27.5, face: -1.57 },
+    { t: "health", x: 3.5, y: 25.5 }, { t: "health", x: 7.5, y: 25.5 }, { t: "ammo", x: 5.5, y: 24.5 },
+    { t: "vest", x: 3.5, y: 27.5 }, { t: "lamp", x: 6.5, y: 28.4 },
+    // the lift out
+    { t: "alien", x: 41.5, y: 17.5, face: 3.1 }, { t: "health", x: 43.5, y: 13.5 },
+    { t: "lamp", x: 40.6, y: 13.6 }, { t: "lamp", x: 40.6, y: 19.4 },
+  ];
+  const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
+    { x: 32, y: 8, rgb: [0.24, 0.34, 0.26], r: 6 },
+    { x: 32, y: 21, rgb: [0.24, 0.34, 0.26], r: 6 },
+    { x: 17.5, y: 15, rgb: [0.2, 0.28, 0.22], r: 6 },
+    { x: 15, y: 27, rgb: [0.12, 0.16, 0.2], r: 4 },
+    { x: 5.5, y: 25.5, rgb: [0.1, 0.13, 0.18], r: 4 },
+    { x: 41.5, y: 16.5, rgb: [0.2, 0.24, 0.3], r: 4 },
+  ];
+  const START = { x: 5.5, y: 15.5, angle: 0 };
+  const ROUTE = [[5.5, 15.5], [10.5, 15], [14, 15], [20.5, 15], [20.5, 21], [15, 21.5], [15, 24], [15.5, 27.5], [15, 24], [15, 21.5], [20.5, 15], [23.5, 14.5], [26.5, 14.5], [31.5, 13.5], [33.5, 14.5], [38, 16.5], [41, 16.5], [43, 16.5]];
+  const ALT_ROUTE = [[26.5, 14.5], [26.5, 7.5], [33.5, 7.5], [38.5, 8.5], [38.5, 16.5]];
+  const LABELS = { lift: [5.5, 11.4], germ: [17.5, 6.4], grow: [32.5, 2.4], pump: [15, 30.6], dock: [41.5, 11.4] };
+  const LEGEND = [["keycard", "Blue keycard (opens the lift to the spine)"]];
+  const INTRO = "Hydroponics. Lights all on, so the racks are your only cover. And the water gives you away.";
+  const HINTS = {
+    germ: "Seedling racks, too tall to see over. Same trick as the cargo hold: move when the aisle is empty.",
+    grow: "Watch the channels. Walking through water raises your SEEN bar. Cross on the dry strip.",
+    corC: "Steps down to the pump room. It is dark below, which is the first break you have had all deck.",
+    pump: "The keycard should be on the pump housing. Something is guarding it.",
+    vault: "The seed vault. Two med-kits, a vest, and three of them sat on top.",
+    dock: "The lift up to the spine is on the far wall. Walk up to it and press E.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Find the blue keycard", at: [15.5, 27.5], until: "keycard" },
+    { text: "Reach the lift to the spine", at: [43, 16.5] },
+  ];
+  const LOCKED_HINT = "Locked. The lift wants the blue keycard — try the pump room, below the germination hall.";
+  return { INTRO, HINTS, OBJECTIVES, LOCKED_HINT, TITLE: "Level 6 — Hydroponics", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
+})();
+
+export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6];
