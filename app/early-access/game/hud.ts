@@ -27,7 +27,7 @@ const FONT = "system-ui, sans-serif", MONO = `ui-monospace, "DejaVu Sans Mono", 
 // The same list is used to DRAW them and to work out what a finger hit, so the
 // two cannot disagree — the class of bug where a button moves and its hit box
 // stays behind.
-export type TouchButton = { id: "fire" | "jump" | "reload" | "use" | "nade"; x: number; y: number; r: number; label: string; hint: string };
+export type TouchButton = { id: "fire" | "jump" | "reload" | "use" | "nade" | "swap"; x: number; y: number; r: number; label: string; hint: string };
 
 /** Where the movement stick sits, and how far the knob can travel. */
 // ⚠️ `r - knob` is the whole travel of the thumb, in VISOR pixels, and the
@@ -50,14 +50,21 @@ const TOUCH_BUTTONS: TouchButton[] = [
   { id: "reload", x: HUD_W - 150, y: HUD_H - 400, r: 52, label: "R", hint: "answer to reload" },
   { id: "use", x: HUD_W - 300, y: HUD_H - 420, r: 52, label: "E", hint: "use" },
   { id: "nade", x: HUD_W - 430, y: HUD_H - 330, r: 52, label: "G", hint: "grenade" },
+  // ⚠️ A phone has no "2" or "3" key, so without this button a player who
+  // picked the rifle up could never go back to the blaster — and the blaster
+  // is the better weapon per question, which is half the choice the rifle
+  // exists to create. It only appears once there is a second gun to swap to.
+  { id: "swap", x: HUD_W - 470, y: HUD_H - 470, r: 52, label: "⇄", hint: "swap gun" },
 ];
 
-/** The buttons a given moment actually offers — no G without grenades. */
-export function touchButtons(opts: { grenades: number }): TouchButton[] {
-  return TOUCH_BUTTONS.filter((b) => b.id !== "nade" || opts.grenades > 0);
+/** The buttons a given moment actually offers — no G without grenades, and no
+ *  swap until you are carrying two guns. */
+export function touchButtons(opts: { grenades: number; guns?: number }): TouchButton[] {
+  return TOUCH_BUTTONS.filter((b) =>
+    (b.id !== "nade" || opts.grenades > 0) && (b.id !== "swap" || (opts.guns ?? 0) > 1));
 }
 
-export function drawTouchControls(x: Ctx, s: { grenades: number; held: Set<string>; stick: { dx: number; dy: number; ox?: number; oy?: number } | null }) {
+export function drawTouchControls(x: Ctx, s: { grenades: number; guns?: number; held: Set<string>; stick: { dx: number; dy: number; ox?: number; oy?: number } | null }) {
   x.save();
   // The movement stick. ⚠️ Drawn around WHERE THE THUMB LANDED, not around the
   // fixed centre: the grab area is 1.35x the ring, so grabbing its outer edge
@@ -86,22 +93,63 @@ export function drawTouchControls(x: Ctx, s: { grenades: number; held: Set<strin
   x.restore();
 }
 
+type Poly = (col: string, pts: number[][]) => void;
+function drawRifle(x: Ctx, _s: number, _bob: number, kick: number, flash: number, ammo: number, mag: number, poly: Poly) {
+  x.rotate(-0.07); x.scale(0.9, 0.9);
+  if (flash > 0) {
+    const g = x.createRadialGradient(-168, -140, 2, -168, -140, 40);
+    g.addColorStop(0, "rgba(255,248,224,0.95)"); g.addColorStop(0.4, "rgba(255,182,64,0.75)"); g.addColorStop(1, "rgba(255,140,30,0)");
+    x.fillStyle = g; x.beginPath(); x.arc(-168, -140, 40, 0, 7); x.fill();
+  }
+  poly("#5d6b80", [[40, 20], [160, 20], [112, -50], [30, -40]]);          // forearm, in the suit
+  poly("#72819a", [[40, 20], [70, 20], [44, -42], [30, -40]]);
+  poly("#1c6fd6", [[24, -36], [106, -46], [100, -62], [20, -50]]);        // suit cuff
+  poly("#3a4556", [[44, -96], [120, -92], [124, -120], [48, -126]]);      // stock, back to the shoulder
+  poly("#e6ecf2", [[-30, -104], [-22, -146], [60, -138], [52, -100]]);    // receiver
+  poly("#b8c4d2", [[-30, -104], [52, -100], [50, -92], [-28, -96]]);
+  poly("#d2dbe5", [[-162, -124], [-156, -142], [-20, -140], [-26, -110]]); // the long barrel
+  poly("#f7fafc", [[-156, -140], [-20, -138], [-20, -134], [-154, -136]]);
+  poly("#2a3342", [[-70, -150], [-10, -144], [-10, -138], [-70, -144]]);  // sight rail
+  poly("#2a3342", [[-150, -152], [-132, -150], [-132, -142], [-150, -144]]); // front sight
+  x.fillStyle = "#26303d"; x.beginPath(); x.ellipse(-162, -131, 6, 11, 0, 0, 7); x.fill(); // muzzle
+  x.fillStyle = "#ffb640"; x.beginPath(); x.ellipse(-163, -131, 3, 6, 0, 0, 7); x.fill();
+  // the magazine hanging under the receiver, and the rounds left showing in it
+  poly("#1b222d", [[-14, -96], [26, -92], [36, -24], [-6, -28]]);
+  poly("#0e141d", [[-8, -90], [20, -87], [28, -32], [0, -35]]);
+  for (let i = 0; i < mag; i++) {
+    const t = i / Math.max(1, mag - 1), cy = -84 + t * 44, cx = -4 + t * 5;
+    poly(i < ammo ? "#ffb640" : "#2a3647", [[cx, cy], [cx + 20, cy + 2], [cx + 20, cy + 5], [cx, cy + 3]]);
+  }
+  poly("#d5dce6", [[32, -56], [40, -100], [96, -95], [106, -54]]);        // glove round the grip
+  poly("#b9c3d0", [[36, -82], [100, -77], [102, -69], [34, -75]]);
+  poly("#2a3342", [[6, -100], [16, -108], [32, -103], [22, -94]]);        // trigger guard
+  // a thin amber charge strip along the receiver, so the gun itself shows empty
+  poly(ammo > 0 ? "#ffb640" : "#4a3a1c", [[-18, -132], [44, -128], [44, -123], [-18, -127]]);
+  if (kick > 0.01) { x.globalAlpha = Math.min(0.5, kick); x.fillStyle = "#ffd79a"; x.beginPath(); x.ellipse(-20, -150, 16, 7, 0, 0, 7); x.fill(); x.globalAlpha = 1; }
+}
+
+/** Where on an alien the crosshair is sitting. See aimTarget() in game.ts. */
+export type AimZone = "head" | "torso" | "legs";
+
 export type HudState = {
-  health: number; vest: number; ammo: number; hasPistol: boolean; weapon: "knife" | "pistol";
+  health: number; vest: number; ammo: number; hasPistol: boolean; weapon: "knife" | "pistol" | "rifle";
+  hasRifle: boolean; rifleAmmo: number; rifleMag: number;
   keys: string[]; radTime: number; level: string; aliensLeft: number;
   grenades: number;
   /** 1 → 0 just after a shot connected; `hitKill` makes the marker a kill mark. */
   hitMark: number; hitKill: boolean;
   /** 0–1: how visible the player is right now (see tickExposure in game.ts). */
   exposure: number;
-  hurt: number; hits: { a: number; t: number }[]; aim: boolean;
+  hurt: number; hits: { a: number; t: number }[];
+  /** null when a shot would not connect; otherwise WHERE it would land. */
+  aim: AimZone | null;
   heading: number; objective: { text: string; bearing: number; dist: number } | null;
   comms: { who: string; text: string; age: number; left: number } | null;
   feed: { text: string; t: number }[];
   area: { name: string; t: number } | null;
   prompt: { key: string; text: string } | null;
   /** Draw the on-screen stick and buttons (a touchscreen, no keyboard). */
-  touch?: { grenades: number; held: Set<string>; stick: { dx: number; dy: number; ox?: number; oy?: number } | null } | null;
+  touch?: { grenades: number; guns?: number; held: Set<string>; stick: { dx: number; dy: number; ox?: number; oy?: number } | null } | null;
 };
 
 // ── the visor itself: drawn once, reused every frame ─────────────────────────
@@ -154,10 +202,19 @@ export function drawHud(x: Ctx, s: HudState) {
     x.beginPath(); x.arc(0, 0, 250, -Math.PI / 2 - 0.28, -Math.PI / 2 + 0.28); x.stroke(); x.restore();
   }
 
-  // reticle: turns amber and closes in when the blaster would hit something
-  const cx = W / 2, cy = H / 2, r = s.aim ? 10 : 15, col = s.aim ? WARN : "rgba(127,230,255,0.85)";
-  x.strokeStyle = col; x.lineWidth = 2;
+  // Reticle: closes in when a shot would hit something, and says WHERE.
+  // ⚠️ The zone has to be readable before you pull the trigger or hit zones
+  // are just the game being unfair — the same argument the HIDDEN/SEEN bar
+  // settled for the exposure rule on the cargo hold. Three states, told apart
+  // by colour AND by shape, never colour alone: a head shot gets a ring, legs
+  // get a wider, dimmer bracket, a body shot is the amber it has always been.
+  const cx = W / 2, cy = H / 2;
+  const zoneCol: Record<AimZone, string> = { head: "#ffffff", torso: WARN, legs: "rgba(255,182,64,0.55)" };
+  const r = s.aim ? (s.aim === "legs" ? 13 : 10) : 15;
+  const col = s.aim ? zoneCol[s.aim] : "rgba(127,230,255,0.85)";
+  x.strokeStyle = col; x.lineWidth = s.aim === "head" ? 2.5 : 2;
   for (let i = 0; i < 4; i++) { const a = (i * Math.PI) / 2 + Math.PI / 4; x.beginPath(); x.arc(cx, cy, r, a - 0.45, a + 0.45); x.stroke(); }
+  if (s.aim === "head") { x.lineWidth = 1.5; x.beginPath(); x.arc(cx, cy, 4.5, 0, 7); x.stroke(); }
   x.fillStyle = col; x.fillRect(cx - 1, cy - 1, 2, 2);
 
   // hit marker: four diagonal ticks that snap out and fade. It is the one bit
@@ -213,21 +270,38 @@ export function drawHud(x: Ctx, s: HudState) {
     x.fillText("+ " + f.text, PX + 6, PY - 14 - i * 22); x.globalAlpha = 1;
   });
 
-  // bottom right: the blaster's cells
+  // bottom right: whichever gun is in your hands, and what is left in it.
+  // ⚠️ ONE panel, not two side by side. The rifle holds fifteen rounds and the
+  // blaster six; drawn as two permanent panels the bottom-right corner is a
+  // wall of pips on a deck where you are also reading a SEEN bar and a model
+  // answer. The panel shows the weapon you are HOLDING and names the other.
   const AX = W - 326, AY = H - 112;
-  const empty = s.hasPistol && s.ammo === 0;
-  panel(x, AX, AY, 300, 86, empty ? "rgba(255,93,108,0.7)" : CYAN_DIM);
-  if (!s.hasPistol) {
+  const RIFLE_AMBER = "#ffb640", RIFLE_DIM = "rgba(255,182,64,0.45)";
+  const rifleOut = s.weapon === "rifle" && s.hasRifle;
+  const now = rifleOut ? s.rifleAmmo : s.ammo, mag = rifleOut ? s.rifleMag : 6;
+  const armed = rifleOut ? s.hasRifle : s.hasPistol;
+  const tint = rifleOut ? RIFLE_AMBER : CYAN, tintDim = rifleOut ? RIFLE_DIM : CYAN_DIM;
+  const empty = armed && now === 0;
+  panel(x, AX, AY, 300, 86, empty ? "rgba(255,93,108,0.7)" : tintDim);
+  if (!s.hasPistol && !s.hasRifle) {
     label(x, "KNIFE", AX + 18, AY + 24); x.font = `bold 17px ${FONT}`; x.fillStyle = "#c9d6e8"; x.fillText("Close range only · find the blaster", AX + 18, AY + 58);
   } else {
-    label(x, s.weapon === "pistol" ? "BLASTER" : "KNIFE  (2: blaster)", AX + 18, AY + 24);
-    for (let i = 0; i < 6; i++) {
-      const on = i < s.ammo; x.fillStyle = on ? CYAN : "rgba(127,230,255,0.12)";
-      if (on) { x.shadowColor = CYAN; x.shadowBlur = 10; }
-      x.beginPath(); x.roundRect(AX + 18 + i * 26, AY + 36, 18, 30, 4); x.fill(); x.shadowBlur = 0;
+    // what the other weapon key would give you, named rather than assumed
+    const other = s.weapon === "knife"
+      ? (s.hasRifle ? "(2: blaster · 3: rifle)" : "(2: blaster)")
+      : s.hasPistol && s.hasRifle ? (rifleOut ? "(2: blaster)" : "(3: rifle)") : "";
+    const name = s.weapon === "knife" ? "KNIFE" : rifleOut ? "RIFLE" : "BLASTER";
+    label(x, `${name}${other ? "  " + other : ""}`, AX + 18, AY + 24);
+    // ⚠️ The pips are sized to the magazine, not drawn at a fixed width, or
+    // fifteen rounds at the blaster's 26px pitch runs 90px off the panel.
+    const pitch = Math.min(26, 264 / mag), pw = Math.max(5, pitch - 8);
+    for (let i = 0; i < mag; i++) {
+      const on = i < now; x.fillStyle = on ? tint : rifleOut ? "rgba(255,182,64,0.12)" : "rgba(127,230,255,0.12)";
+      if (on) { x.shadowColor = tint; x.shadowBlur = 10; }
+      x.beginPath(); x.roundRect(AX + 18 + i * pitch, AY + 36, pw, 30, 4); x.fill(); x.shadowBlur = 0;
     }
-    glowText(x, `${s.ammo}/6`, AX + 282, AY + 64, 30, empty ? DANGER : CYAN, "right");
-    if (s.ammo <= 2) { x.font = `bold 13px ${FONT}`; x.fillStyle = empty ? DANGER : WARN; x.fillText("R · answer questions to recharge", AX + 18, AY + 80); }
+    glowText(x, `${now}/${mag}`, AX + 282, AY + 64, 30, empty ? DANGER : tint, "right");
+    if (now <= mag / 3) { x.font = `bold 13px ${FONT}`; x.fillStyle = empty ? DANGER : WARN; x.fillText("R · answer questions to recharge", AX + 18, AY + 80); }
   }
   // keycard and suit timer sit above the blaster panel
   let kx = W - 30;
@@ -349,7 +423,9 @@ export function drawPrompt(x: Ctx, key: string, text: string) {
 }
 
 export type QuizView = {
-  kind: "reload" | "stomp"; topic: string; index: number; total: number; question: string; choices: string[];
+  kind: "reload" | "stomp" | "nade"; topic: string; index: number; total: number; question: string; choices: string[];
+  /** For the reload panel's subtitle: how much a right answer is worth. */
+  perAnswer?: number;
   time: number; perQuestion: number; picked: number | null; correct: number; results: boolean[]; ammo: number;
   /** The site's model answer, shown only after a WRONG answer. */
   why?: string;
@@ -400,14 +476,18 @@ export function quizChoiceAt(px: number, py: number): number {
 export function drawQuiz(x: Ctx, q: QuizView) {
   const W = HUD_W;
   x.save();
-  const stomp = q.kind === "stomp", touch = !!q.touch;
-  if (stomp) { x.fillStyle = "rgba(3,6,13,0.5)"; x.fillRect(0, 0, W, HUD_H); }
+  const stomp = q.kind === "stomp", nade = q.kind === "nade", touch = !!q.touch;
+  // ⚠️ The grenade panel dims the whole screen the way the stomp does, and it
+  // is doing more than decoration: the world behind it is FROZEN, and a frozen
+  // picture that looks exactly like a running one reads as the game having
+  // hung. The dim says "nothing out there is moving".
+  if (stomp || nade) { x.fillStyle = "rgba(3,6,13,0.5)"; x.fillRect(0, 0, W, HUD_H); }
   const ROW = touch ? 112 : 64, BOXH = touch ? 100 : 54;
   const QF = touch ? 36 : 30, QLH = touch ? 46 : 38;
   const WF = touch ? 30 : 17, WLH = touch ? 38 : 24, WMAX = touch ? 3 : 4;
   const AF = touch ? 32 : 19, NF = touch ? 22 : 17;
   const HEAD = touch ? 124 : 112, FOOTF = touch ? 20 : 13, TIMEF = touch ? 19 : 15;
-  const PW = touch ? 1200 : stomp ? 760 : 680, X = W / 2 - PW / 2, Y = touch ? 16 : stomp ? 80 : 150;
+  const PW = touch ? 1200 : stomp || nade ? 760 : 680, X = W / 2 - PW / 2, Y = touch ? 16 : stomp || nade ? 80 : 150;
   x.font = `bold ${QF}px ${FONT}`; const lines = wrap(x, q.question, PW - 64).slice(0, 3);
   // Room for the model answer, but only when there is one to show. Measuring
   // it here rather than guessing keeps the panel the same size as before on
@@ -416,14 +496,19 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   x.font = `${WF}px ${FONT}`;
   const whyLines = wrong && q.why ? wrap(x, q.why, PW - 124).slice(0, WMAX) : [];
   const PH = (HEAD - 112) + 300 + (ROW - 64) * 2 + lines.length * QLH + (whyLines.length ? 34 + whyLines.length * WLH : 0);
-  const accent = stomp ? "#ffd65a" : CYAN;
-  x.fillStyle = stomp ? "rgba(8,16,30,0.94)" : "rgba(6,14,28,0.84)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 22); x.fill();
+  const accent = stomp ? "#ffd65a" : nade ? "#8ba179" : CYAN;
+  x.fillStyle = stomp || nade ? "rgba(8,16,30,0.94)" : "rgba(6,14,28,0.84)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 22); x.fill();
   x.strokeStyle = accent; x.lineWidth = 2.5; x.stroke();
   // a thin bright edge along the top, like a hologram's projector line
   x.fillStyle = accent; x.fillRect(X + 22, Y, PW - 44, 2);
-  x.fillStyle = accent; x.font = `bold ${touch ? 36 : 32}px ${FONT}`; const title = stomp ? "STOMP!" : "RELOAD"; x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
+  x.fillStyle = accent; x.font = `bold ${touch ? 36 : 32}px ${FONT}`;
+  const title = stomp ? "STOMP!" : nade ? "PIN OUT" : "RELOAD";
+  x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
   x.fillStyle = "#c9d6e8"; x.font = `${touch ? 20 : 16}px ${FONT}`;
-  x.fillText(stomp ? "Get all 3 right to finish it off" : "Right: +3 cells · Wrong: nothing", X + 30 + titleW + 16, Y + 44); // measured, so no font can make them overlap
+  const sub = stomp ? "Get all 3 right to finish it off"
+    : nade ? "All 3 right and it flies · one wrong and the pin goes back in"
+    : `Right: +${q.perAnswer ?? 3} · Wrong: nothing`;
+  x.fillText(sub, X + 30 + titleW + 16, Y + 44); // measured, so no font can make them overlap
   x.font = `bold ${touch ? 16 : 13}px ${FONT}`; const tw = x.measureText(q.topic).width + 22;
   x.fillStyle = "#1c6fd6"; x.beginPath(); x.roundRect(X + 30, Y + 64, tw, 26, 13); x.fill(); x.fillStyle = "#eaf6ff"; x.fillText(q.topic, X + 41, Y + 82);
   for (let i = 0; i < q.total; i++) {
@@ -505,7 +590,7 @@ export function drawScreen(x: Ctx, title: string, lines: string[], footer: strin
 // pixelated like the world. Held low on the right and angled in, rather than
 // straight up the middle of the screen, and its six cells glow along the top:
 // you can see how many shots are left by looking at the gun itself.
-export function drawWeapon(x: Ctx, W: number, H: number, weapon: "knife" | "pistol", bob: number, kick: number, flash: number, ammo: number) {
+export function drawWeapon(x: Ctx, W: number, H: number, weapon: "knife" | "pistol" | "rifle", bob: number, kick: number, flash: number, ammo: number, mag = 6) {
   const s = W / 640;
   const poly = (col: string, pts: number[][]) => { x.fillStyle = col; x.beginPath(); pts.forEach(([a, b], i) => (i ? x.lineTo(a, b) : x.moveTo(a, b))); x.closePath(); x.fill(); };
   x.save();
@@ -527,6 +612,13 @@ export function drawWeapon(x: Ctx, W: number, H: number, weapon: "knife" | "pist
     x.fillStyle = "#ffffff"; x.beginPath(); x.moveTo(44, -232); x.lineTo(48, -212); x.lineTo(44, -214); x.fill(); // the point catches the light
     x.restore(); x.restore(); return;
   }
+  // ⚠️ The rifle is the same gloved hand and the same arm — it has to read as
+  // the SAME suit holding a different gun, or the first-person view looks like
+  // two games. What changes is the silhouette (longer barrel, a magazine under
+  // it, a stock back against the shoulder) and the colour: amber, where the
+  // blaster is cyan, so a glance at the bottom of the screen tells you which
+  // one you are holding without reading the panel.
+  if (weapon === "rifle") { drawRifle(x, s, bob, kick, flash, ammo, mag, poly); x.restore(); return; }
   x.rotate(-0.1); x.scale(0.9, 0.9);
   if (flash > 0) {
     const g = x.createRadialGradient(-96, -128, 2, -96, -128, 46); g.addColorStop(0, "rgba(234,255,255,0.95)"); g.addColorStop(0.4, "rgba(127,230,255,0.75)"); g.addColorStop(1, "rgba(58,168,255,0)");

@@ -529,6 +529,24 @@ const FLOORS: Record<string, Draw> = {
     for (let y = 0; y < TS; y += 32) { ctx.fillStyle = "#7d8ca0"; ctx.fillRect(0, y, TS, 5); g.fillStyle = "#000"; g.fillRect(0, y, TS, 5); }
     hazard(ctx, 0, 0, 8, TS, C.amber, "#2a2f38"); hazard(ctx, TS - 8, 0, 8, TS, C.amber, "#2a2f38"); g.fillStyle = "#000"; g.fillRect(0, 0, 8, TS); g.fillRect(TS - 8, 0, 8, TS);
   },
+  // Shallow irrigation water in the growing hall. Deliberately NOT the glowing
+  // blue of the reactor coolant, which hurts — this one only makes a noise, and
+  // a floor that looks like the one that burns you would teach the wrong thing.
+  fWater(ctx: Ctx, g: Ctx) {
+    const bg = ctx.createLinearGradient(0, 0, 0, TS); bg.addColorStop(0, "#15424a"); bg.addColorStop(1, "#1d5a60");
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, TS, TS);
+    g.fillStyle = "rgba(255,255,255,0.14)"; g.fillRect(0, 0, TS, TS);
+    const r = mulberry(913);
+    ctx.strokeStyle = "rgba(180,235,235,0.35)"; ctx.lineWidth = 2;
+    for (let i = 0; i < 7; i++) {
+      const y = r() * TS, x = r() * TS, w = 26 + r() * 44;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.bezierCurveTo(x + w / 3, y - 5, x + (2 * w) / 3, y + 5, x + w, y); ctx.stroke();
+    }
+    // the tiled channel floor showing through, so it reads as shallow
+    ctx.strokeStyle = "rgba(10,30,34,0.5)"; ctx.lineWidth = 1;
+    for (let k = 0; k <= TS; k += 32) { ctx.beginPath(); ctx.moveTo(k, 0); ctx.lineTo(k, TS); ctx.moveTo(0, k); ctx.lineTo(TS, k); ctx.stroke(); }
+    for (let i = 0; i < 22; i++) { ctx.fillStyle = "rgba(220,255,255,0.5)"; ctx.fillRect(r() * TS, r() * TS, 2, 2); }
+  },
   fDuct(ctx: Ctx) {
     ctx.fillStyle = "#5c6878"; ctx.fillRect(0, 0, TS, TS);
     for (let y = 0; y < TS; y += 32) { ctx.fillStyle = "#3f4a58"; ctx.fillRect(0, y, TS, 3); ctx.fillStyle = "#8a97a8"; ctx.fillRect(0, y + 3, TS, 1); }

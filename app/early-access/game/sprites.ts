@@ -44,6 +44,21 @@ const SPRITE_DEFS: Record<string, SpriteDef> = {
     x.fillStyle = "#bcc7d3"; x.fillRect(12, 16, 12, 14); x.fillStyle = "#1b222d"; x.fillRect(48, 8, 6, 6); x.fillRect(24, 16, 8, 4);
     x.fillStyle = "rgba(127,230,255,0.35)"; x.beginPath(); x.ellipse(32, 30, 30, 3, 0, 0, 7); x.fill();
   } },
+  // The assault rifle on the floor: longer than the blaster, with a magazine
+  // under it, and AMBER where the blaster is cyan — so the two are told apart
+  // across a room by colour as well as by silhouette, which is the same rule
+  // the cell pickup follows against the three-cell one.
+  rifle: { w: 80, h: 36, height: 0.22, draw(x, g) {
+    x.fillStyle = "#1b222d"; x.fillRect(2, 9, 10, 9);                         // stock
+    x.fillStyle = "#d7dde6"; x.fillRect(10, 8, 48, 10);                       // receiver
+    x.fillStyle = "#9aa6b4"; x.fillRect(56, 11, 18, 5);                       // barrel
+    x.fillStyle = "#2a3342"; x.fillRect(62, 8, 4, 4);                         // front sight
+    x.fillStyle = "#1b222d"; x.fillRect(18, 18, 11, 14);                      // magazine
+    x.fillStyle = "#1b222d"; x.fillRect(34, 18, 7, 9);                        // grip
+    x.fillStyle = "#ffb640"; x.fillRect(24, 10, 26, 4);                       // charge strip
+    g.fillStyle = "#fff"; g.fillRect(24, 10, 26, 4);
+    x.fillStyle = "rgba(255,182,64,0.3)"; x.beginPath(); x.ellipse(40, 34, 34, 3, 0, 0, 7); x.fill();
+  } },
   ammo: { w: 48, h: 40, height: 0.2, draw(x, g) { // energy cells: reload for the pistol
     for (const ox of [4, 18, 32]) { x.fillStyle = "#3f4b5c"; x.fillRect(ox, 6, 12, 32); x.fillStyle = "#3aa8ff"; x.fillRect(ox + 2, 10, 8, 24); g.fillStyle = "#fff"; g.fillRect(ox + 2, 10, 8, 24); x.fillStyle = "#e4eaf1"; x.fillRect(ox + 3, 2, 6, 5); }
   } },

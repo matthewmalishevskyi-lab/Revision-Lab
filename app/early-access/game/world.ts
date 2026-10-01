@@ -22,7 +22,7 @@ export type Area = {
   ceilH?: number;
   upper?: string;
 };
-export type DoorDef = { cells: [number, number][]; tex: string; key?: string; secret?: boolean; exit?: boolean; /** stays shut until you have this */ needs?: "pistol" };
+export type DoorDef = { cells: [number, number][]; tex: string; key?: string; secret?: boolean; exit?: boolean; /** stays shut until you have this */ needs?: "pistol" | "rifle" };
 export type Thing = { t: string; x: number; y: number; face?: number; stomp?: boolean; z?: number };
 export type LevelDef = {
   TITLE: string;
@@ -49,7 +49,7 @@ export type LevelDef = {
    *  level's par time for its grade is worked out from how long it is. */
   ROUTE?: number[][];
   /** Where the compass marker points, in order; each is done once you have its `until`. */
-  OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "keycard" }[];
+  OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "rifle" | "keycard" }[];
   LOCKED_HINT?: string;
 };
 

@@ -50,8 +50,14 @@ type Nade = { x: number; y: number; z: number; vx: number; vy: number; vz: numbe
 /** Anything drawn for a fraction of a second: muzzle flash, tracer, sparks,
  *  a fireball, smoke. It has no effect on the game, only on how it feels. */
 type Fx = { x: number; y: number; z: number; vx: number; vy: number; vz: number; sprite: string; t: number; life: number; scale: number; grow: number; drag: number };
-type Mode = "title" | "play" | "reload" | "stomp" | "paused" | "dead" | "complete" | "done";
-type Quiz = { kind: "reload" | "stomp"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null };
+type Mode = "title" | "play" | "reload" | "stomp" | "nade" | "paused" | "dead" | "complete" | "done";
+type Weapon = "knife" | "pistol" | "rifle";
+/** Where on an alien a shot landed. The knife has no zones — a swing is a swing. */
+type Zone = "head" | "torso" | "legs";
+/** A grenade that has been pulled but not thrown: the aim it was pulled with,
+ *  held while the three questions are answered. See throwGrenade(). */
+type PendingNade = { c: number; s: number; up: number; vx: number; vy: number };
+type Quiz = { kind: "reload" | "stomp" | "nade"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null; nade?: PendingNade };
 
 // The 3D view is drawn at 576x324 and scaled up. If a computer can't draw that
 // in time, it drops to 480x270 by itself (see frame()): smoother beats sharper.
@@ -61,16 +67,71 @@ const RADIUS = 0.22, ALIEN_R = 0.26, ALIEN_H = 0.58, WALK = 2.6, RUN = 4.2;
 const GRAVITY = 7.5, JUMP = 2.6; // a jump clears waist-high cover and little else
 const DECOR = new Set(["lamp", "canister", "holo"]);
 
+// ── weapons, and where you hit them ─────────────────────────────────────────
+//
+// An alien has 40 health, and that number is doing a lot of work. At 30 a
+// blaster headshot and a blaster body shot BOTH killed in two, so a head zone
+// would have been invisible — the feature would have existed and changed
+// nothing. 40 is the smallest number that makes head, torso and legs come out
+// as three different answers for both weapons:
+//
+//                    head x1.75      torso x1.0      legs x0.55
+//   blaster (15)     26.25 → 2       15   → 3        8.25 → 5
+//   rifle    (8)     14    → 3        8   → 5        4.4  → 10
+//
+// A headshot therefore saves you exactly one shot, AND ONLY IF YOU FOLLOW IT
+// UP PROPERLY: head then body is 41.25 and kills in two, head then legs is
+// 34.50 and leaves it standing — worse than simply aiming at the chest. The
+// head opens the door; the second shot has to walk through it.
+const ALIEN_HP = 40;
+const ZONE_MULT: Record<Zone, number> = { head: 1.75, torso: 1.0, legs: 0.55 };
+// Where the zones sit down the alien's drawn height, 0 at the top of its head.
+//
+// ⚠️ THESE TWO NUMBERS WERE 0.25 AND 0.65 AND THEY MADE THE WHOLE FEATURE
+// POINTLESS, which was found by running the real arithmetic rather than by
+// looking at the picture. An alien is ALIEN_H = 0.58 tall and your eye is at
+// 0.5, so a crosshair at rest — pitch zero, no recoil — crosses its body at
+// (0.58 - 0.5) / 0.58 = 0.138 down from the crown, AT EVERY DISTANCE. With a
+// head band of 0.25 the resting crosshair was therefore ALWAYS on the head,
+// so every competent player two-shot everything, "three body shots" never
+// happened to anybody, and the three zones collapsed back into one.
+//
+// At 0.10 the resting shot is unambiguously a TORSO shot and the head has to
+// be aimed for. There is a permanent check on exactly that (check-security),
+// because it is not visible in either number on its own.
+//
+// What that costs: the head band is a tenth of the sprite, which at ten
+// squares is under three pixels of a twenty-eight-pixel alien. That is
+// perspective doing its job rather than a problem — the reticle names the
+// zone BEFORE you fire, so a head shot is a close-range skill and at range
+// you take the torso, which is exactly how it should feel.
+const HEAD_BELOW = 0.10, LEGS_BELOW = 0.55;
+const PISTOL_DMG = 15, KNIFE_DMG = 20;
+//
+// ⚠️ The rifle is deliberately NOT "the blaster but better". Per QUESTION the
+// blaster wins (3 cells x 15 = 45 against 5 rounds x 8 = 40); per SECOND the
+// rifle wins by a lot (73 damage against 43). So the blaster is the weapon
+// when questions are scarce and you can pick your shots, and the rifle is the
+// weapon when three of them are already running at you. Five rounds is exactly
+// one torso kill, which is what makes the economy something you can feel:
+// one question, one alien.
+const RIFLE_DMG = 8, RIFLE_MAG = 15, RIFLE_PER_ANSWER = 5, RIFLE_WAIT = 0.11;
+const PISTOL_MAG = 6, PISTOL_PER_ANSWER = 3, PISTOL_WAIT = 0.35;
+
 // ── grenades ────────────────────────────────────────────────────────────────
 // Matthew's rule: "one shot it in epicentre, and will hurt if in a metre or two
 // away." One square is about a metre here, so: anything inside KILL_R dies
-// outright, and past that the damage falls away to nothing by HURT_R. An alien
-// has 30 health, so the kill actually reaches about 1.65 squares and the last
-// three quarters of a square only hurts — which is exactly the shape asked for.
-// A wall between you and the blast stops all of it (lineOfSight), so throwing
-// one round a corner protects you from your own grenade.
-const NADE_KILL_R = 0.9, NADE_HURT_R = 2.4, NADE_DMG = 60, NADE_SELF = 85;
+// outright, and past that the damage falls away to nothing by HURT_R.
+// ⚠️ NADE_DMG went 60 → 80 alongside alien health 30 → 40, which keeps the
+// outright-kill radius at 1.650 squares — identical to what shipped. The blast
+// Matthew approved behaves exactly as it did; only the arithmetic underneath
+// it moved. A wall between you and it stops all of it (lineOfSight), so
+// throwing one round a corner protects you from your own grenade.
+const NADE_KILL_R = 0.9, NADE_HURT_R = 2.4, NADE_DMG = 80, NADE_SELF = 85;
 const NADE_FUSE = 2.0, NADE_MAX = 3, NADE_SPEED = 7.2, NADE_R = 0.1;
+/** Seconds per question in the grenade quiz, and the cooldown a failed one
+ *  costs. See throwGrenade() for why the cooldown has to exist at all. */
+const NADE_QUIZ_PER = 10, NADE_FAIL_WAIT = 6;
 
 // ⚠️ An alien you defeat drops a single cell, two times in five — and the
 // arithmetic is the whole point. Shooting one costs TWO cells and returns 0.4,
@@ -91,6 +152,9 @@ const WRONG_HOLD = 3.2;
 // lying on the floor rather than writing "level 4" into three different places.
 // The controls card, the starting kit and the visor all read this one answer.
 function hasGrenades(def: LevelDef) { return def.SPRITES.some((s) => s.t === "grenade"); }
+/** Same rule, same reason, for the assault rifle: derived from the deck, never
+ *  from its number. Level 5's hangar door will not open without one. */
+function hasRifle(def: LevelDef) { return def.SPRITES.some((s) => s.t === "rifle"); }
 
 export class Game {
   private cv: HTMLCanvasElement;
@@ -115,15 +179,18 @@ export class Game {
   private easyDeck: Question[] = [];
 
   // player
-  private p = { x: 0, y: 0, vx: 0, vy: 0, z: 0, vz: 0, angle: 0, pitch: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "knife" as "knife" | "pistol", keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0,
+  private p = { x: 0, y: 0, vx: 0, vy: 0, z: 0, vz: 0, angle: 0, pitch: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "knife" as Weapon, keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0,
+    hasRifle: false, rifleAmmo: 0,
     grenades: 0, nadeWait: 0,
     /** Recoil, in pixels of horizon: the view jumps and settles, so a shot has weight. */
     recoil: 0, recoilV: 0,
     /** Counts down after a shot connects, and draws the hit marker. 2 = a kill. */
     hitMark: 0, hitKill: false,
+    /** Which zone the last shot that connected hit, for the marker's colour. */
+    hitZone: null as Zone | null,
     /** How visible you are right now, 0-1, from the light you are standing in. */
     exposure: 0 };
-  private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false, grenades: 0 };
+  private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false, hasRifle: false, rifleAmmo: 0, grenades: 0 };
   private aliens: Alien[] = [];
   private pickups: Pickup[] = [];
   private decor: Drawable[] = [];
@@ -132,6 +199,8 @@ export class Game {
   private fx: Fx[] = [];
   /** Whole-screen shake, in pixels, from an explosion going off near you. */
   private shake = 0;
+  /** Counts down between splash sounds, so wading is a rhythm not a buzz. */
+  private splash = 0;
   /** The horizon the AIM is tested against: pitch and recoil, never the random
    *  shake jolt. See the comment where it is set in draw(). */
   private aimHorizon = 0;
@@ -140,6 +209,8 @@ export class Game {
   private screenLock = 0;
   /** Does this deck have grenades on it? (See hasGrenades, above.) */
   private hasNades = false;
+  /** Likewise the rifle: on this deck, or already in your hands. */
+  private hasGun = false;
   /** The best previous run on this deck, read once when it is finished. */
   private bestBefore: LevelBest | undefined;
 
@@ -189,7 +260,16 @@ export class Game {
     const start = Math.min(LEVELS.length - 1, Math.max(0, this.opts.startLevel ?? 0));
     // Jumping ahead hands you what you would have been carrying by then — but
     // only a grenade if that deck is one that has grenades on it at all.
-    if (start > 0) this.carry = { health: 100, vest: 0, ammo: 6, hasPistol: true, grenades: hasGrenades(LEVELS[start]) ? 1 : 0 };
+    // ⚠️ The rifle is handed out by what you would ALREADY HAVE PICKED UP,
+    // which is the decks BEFORE this one — not, as this first read, whether
+    // this deck has one. Those are opposite answers on the flight deck, which
+    // is the deck that places it: handing it over at the spawn skips the arms
+    // locker, and the hangar door is gated on the rifle precisely to make you
+    // go there. Caught by a browser check, not by reading it. The grenade
+    // rule below is genuinely the other way round — a grenade is a
+    // consumable, so "does this deck use them" is the right question.
+    const carriedRifle = LEVELS.slice(0, start).some(hasRifle);
+    if (start > 0) this.carry = { health: 100, vest: 0, ammo: 6, hasPistol: true, hasRifle: carriedRifle, rifleAmmo: carriedRifle ? RIFLE_MAG : 0, grenades: hasGrenades(LEVELS[start]) ? 1 : 0 };
     this.loadLevel(start);
     // lets automated play-tests reach inside (teleport, read state); harmless in a browser
     (this.ov as HTMLCanvasElement & { game?: Game }).game = this;
@@ -251,12 +331,14 @@ export class Game {
     }
     this.p.x = def.START.x; this.p.y = def.START.y; this.p.angle = def.START.angle; this.p.eye = 0.5; this.p.pitch = 0; this.p.vx = 0; this.p.vy = 0; this.p.z = 0; this.p.vz = 0;
     this.p.health = this.carry.health; this.p.vest = this.carry.vest; this.p.ammo = this.carry.ammo; this.p.hasPistol = this.carry.hasPistol;
+    this.p.hasRifle = this.carry.hasRifle; this.p.rifleAmmo = this.carry.rifleAmmo;
     this.p.grenades = this.carry.grenades; this.p.nadeWait = 0; this.p.recoil = 0; this.p.recoilV = 0; this.p.hitMark = 0; this.shake = 0;
     // ⚠️ Carried grenades count. `hasGrenades(def)` alone meant a deck that
     // places none never offered G — including to a player who walked in with
     // three saved from the cargo hold, which is exactly the person who needs
     // telling. Computed AFTER the carry, or it reads the previous deck's count.
     this.hasNades = hasGrenades(def) || this.p.grenades > 0;
+    this.hasGun = hasRifle(def) || this.p.hasRifle;
     // ⚠️ Exposure is a fact about where you are standing NOW. Left over from
     // the last deck it made you arrive EXPOSED — sprint into a lift on deck 3
     // and you spawn on the dark cargo hold visible from twelve squares for the
@@ -266,11 +348,12 @@ export class Game {
     // walking you forward at the new spawn, with no knob drawn to explain it
     this.stickTouch = null; this.lookTouch = null; this.heldButtons.clear();
     this.screenLock = 0;
-    this.p.weapon = this.p.hasPistol ? "pistol" : "knife"; this.p.keys = new Set(); this.p.radTime = 0; this.p.hurt = 0;
+    this.p.weapon = this.p.hasRifle && this.p.rifleAmmo > 0 ? "rifle" : this.p.hasPistol ? "pistol" : "knife";
+    this.p.keys = new Set(); this.p.radTime = 0; this.p.hurt = 0;
     this.aliens = []; this.pickups = []; this.decor = []; this.bolts = []; this.nades = []; this.fx = []; this.quiz = null;
     for (const s of def.SPRITES) {
       if (s.t === "alien" || s.t === "alienBack") {
-        this.aliens.push({ x: s.x, y: s.y, face: s.face ?? Math.atan2(def.START.y - s.y, def.START.x - s.x) + Math.PI * (s.t === "alienBack" ? 1 : 0), hp: 30, state: "idle", timer: 0, cooldown: 1, lastX: s.x, lastY: s.y, hurt: 0, strafe: 1, strafeT: 0 });
+        this.aliens.push({ x: s.x, y: s.y, face: s.face ?? Math.atan2(def.START.y - s.y, def.START.x - s.x) + Math.PI * (s.t === "alienBack" ? 1 : 0), hp: ALIEN_HP, state: "idle", timer: 0, cooldown: 1, lastX: s.x, lastY: s.y, hurt: 0, strafe: 1, strafeT: 0 });
       } else if (DECOR.has(s.t)) this.decor.push({ x: s.x, y: s.y, sprite: s.t });
       else this.pickups.push({ t: s.t, x: s.x, y: s.y, taken: false });
     }
@@ -288,7 +371,7 @@ export class Game {
     if (this.touchDevice) return; // there is no lock to lose on a phone
     const locked = document.pointerLockElement === this.ov;
     // (a stomp counts too: its clock must stop while you're away)
-    if (!locked && (this.mode === "play" || this.mode === "reload" || this.mode === "stomp")) { this.pausedFrom = this.mode; this.mode = "paused"; this.keys.clear(); }
+    if (!locked && (this.mode === "play" || this.mode === "reload" || this.mode === "stomp" || this.mode === "nade")) { this.pausedFrom = this.mode; this.mode = "paused"; this.keys.clear(); }
   };
   private lock() { if (!this.touchDevice) this.ov.requestPointerLock?.(); this.ensureAudio(); }
   private onMouseDown = (e: MouseEvent) => {
@@ -300,7 +383,7 @@ export class Game {
     if (e.button === 0 && (this.mode === "play" || this.mode === "reload")) this.fire();
   };
   private onMouseMove = (e: MouseEvent) => {
-    if (document.pointerLockElement !== this.ov || this.mode === "stomp") return;
+    if (document.pointerLockElement !== this.ov || this.mode === "stomp" || this.mode === "nade") return;
     // clamped, because some browsers report one huge jump when the mouse is captured
     this.p.angle += Math.max(-250, Math.min(250, e.movementX)) * 0.0026;
     // looking up and down shifts the horizon (the way Doom-era engines did it),
@@ -314,14 +397,14 @@ export class Game {
     // read digits by KEY POSITION, so they still work while Shift (run) is held,
     // when the browser reports "!" instead of "1", and from the number pad
     const digit = /^(?:Digit|Numpad)([1-4])$/.exec(e.code)?.[1] ?? (["1", "2", "3", "4"].includes(k) ? k : null);
-    if (this.quiz && this.quiz.picked === null && digit && (this.mode === "reload" || this.mode === "stomp")) { this.answer(Number(digit) - 1); return; }
+    if (this.quiz && this.quiz.picked === null && digit && (this.mode === "reload" || this.mode === "stomp" || this.mode === "nade")) { this.answer(Number(digit) - 1); return; }
     // reading the model answer is optional: SPACE or Enter moves straight on.
     // ⚠️ Checked BEFORE the jump/stomp handler below, or SPACE would make you
     // jump while the panel is up rather than dismissing it.
     if (this.quiz && this.quiz.picked !== null && this.quiz.feedback > 0 && (k === " " || k === "enter")) { this.quiz.feedback = 0; return; }
     if (this.mode === "dead" && k === "enter") { this.loadLevel(this.levelIndex); this.mode = "play"; this.lock(); return; }
     if (this.mode === "complete" && k === "enter") {
-      this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, grenades: this.p.grenades };
+      this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades };
       if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; this.lock(); } else this.mode = "done";
       return;
     }
@@ -342,6 +425,7 @@ export class Game {
     // to the knife — you closed the quiz with six cells and a melee weapon.
     if (!this.quiz && digit === "1") this.p.weapon = "knife";
     if (!this.quiz && digit === "2" && this.p.hasPistol) this.p.weapon = "pistol";
+    if (!this.quiz && digit === "3" && this.p.hasRifle) this.p.weapon = "rifle";
   };
   private onKeyUp = (e: KeyboardEvent) => { this.keys.delete(e.key.toLowerCase()); };
 
@@ -357,6 +441,7 @@ export class Game {
   private press(id: string) {
     if (id === "fire") this.fire();
     else if (id === "reload") this.startReload();
+    else if (id === "swap") this.swapGun();
     else if (id === "use") this.use();
     else if (id === "nade") this.throwGrenade();
     else if (id === "jump") { if (this.stompTarget()) this.tryStomp(); else this.jump(); }
@@ -379,7 +464,7 @@ export class Game {
       if ((this.mode === "dead" || this.mode === "complete") && this.screenLock > 0) continue;
       if (this.mode === "dead") { this.loadLevel(this.levelIndex); this.mode = "play"; continue; }
       if (this.mode === "complete") {
-        this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, grenades: this.p.grenades };
+        this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades };
         if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; } else this.mode = "done";
         continue;
       }
@@ -395,7 +480,7 @@ export class Game {
         // spent a cell you were answering questions to earn, invisibly.
         continue;
       }
-      const button = touchButtons({ grenades: this.p.grenades }).find((b) => Math.hypot(x - b.x, y - b.y) <= b.r);
+      const button = touchButtons({ grenades: this.p.grenades, guns: this.gunCount() }).find((b) => Math.hypot(x - b.x, y - b.y) <= b.r);
       if (button) { this.heldButtons.set(t.identifier, button.id); this.press(button.id); continue; }
       if (!this.stickTouch && Math.hypot(x - TOUCH_STICK.x, y - TOUCH_STICK.y) <= TOUCH_STICK.r * 1.35) {
         this.stickTouch = { id: t.identifier, ox: x, oy: y, dx: 0, dy: 0 }; continue;
@@ -511,7 +596,15 @@ export class Game {
       this.p.recoil *= Math.max(0, 1 - dt * 6); this.p.recoilV = 0;
     }
     if (this.screenLock > 0) this.screenLock = Math.max(0, this.screenLock - dt);
-    if (this.mode === "stomp" || this.mode === "reload") this.updateQuiz(dt);
+    // ⚠️ The run clock KEEPS RUNNING while a grenade quiz is up, even though
+    // nothing else does. It is the only cost a failed throw carries besides
+    // the cooldown, and pace is 30 of the 100 marks on a deck — without this
+    // line the freeze is genuinely free, and "press G to stop the world" is
+    // then the correct way to play, which is the opposite of the point.
+    // ⚠️ Measured here rather than in update(), which is exactly what does
+    // not run in this mode.
+    if (this.mode === "nade") this.stats.time += dt;
+    if (this.mode === "stomp" || this.mode === "reload" || this.mode === "nade") this.updateQuiz(dt);
     this.draw();
     // too slow for this computer? after a couple of seconds of play, go lighter
     if (this.mode === "play" && this.R.W === SHARP[0]) {
@@ -630,6 +723,10 @@ export class Game {
       if (near && !d.secret && !d.exit) {
         if (d.key && !p.keys.has(d.key)) { if (d.target === 0) this.hint("locked", this.world.def.LOCKED_HINT ?? "Locked. It needs the blue keycard."); }
         else if (d.needs === "pistol" && !p.hasPistol) this.hint("unarmed", "Don't go in there with bare hands! Get the blaster from the armoury first.");
+        // ⚠️ Same guard, same reason, for the flight deck: that door opens on
+        // the biggest fight in the game, and nobody should walk into it
+        // because they missed the room with the rifle in it.
+        else if (d.needs === "rifle" && !p.hasRifle) this.hint("norifle", "That's the hangar — it's wide open in there. Get the rifle from the arms locker first.");
         else if (d.target === 0) { d.target = 1; this.beep(180, 90, 0.4, "sawtooth", 0.04); }
       }
       d.open += Math.sign(d.target - d.open) * Math.min(Math.abs(d.target - d.open), dt * 1.6);
@@ -644,7 +741,12 @@ export class Game {
     // pickups
     for (const k of this.pickups) {
       if (k.taken || Math.hypot(k.x - p.x, k.y - p.y) > 0.55) continue;
-      if (k.t === "pistol") { p.hasPistol = true; p.weapon = "pistol"; p.ammo = 6; this.pickupMsg("Blaster · 6 cells"); this.hint("pistol", "Got it! Six shots. Press R and answer to recharge: three cells for a right answer, nothing for a wrong one."); }
+      if (k.t === "rifle") {
+        p.hasRifle = true; p.weapon = "rifle"; p.rifleAmmo = RIFLE_MAG;
+        this.pickupMsg(`Assault rifle · ${RIFLE_MAG} rounds`);
+        this.hint("rifle", `Rifle up. Softer rounds, far faster — ${RIFLE_PER_ANSWER} per right answer. Aim high: a head shot hurts, but it still takes a second hit.`);
+      }
+      else if (k.t === "pistol") { p.hasPistol = true; p.weapon = "pistol"; p.ammo = 6; this.pickupMsg("Blaster · 6 cells"); this.hint("pistol", "Got it! Six shots. Press R and answer to recharge: three cells for a right answer, nothing for a wrong one."); }
       else if (k.t === "ammo") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 3); if (p.weapon === "knife") p.weapon = "pistol"; this.pickupMsg("Energy cells · +3"); }
       else if (k.t === "cell") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 1); if (p.weapon === "knife") p.weapon = "pistol"; this.pickupMsg("Energy cell · +1"); }
       else if (k.t === "health") { if (p.health >= 100) continue; p.health = Math.min(100, p.health + 25); this.pickupMsg("Med-kit · +25"); }
@@ -681,22 +783,80 @@ export class Game {
     // backwards, because sprinting is the loudest thing you can do. Added, both
     // matter everywhere: creeping in the dark is about 4 squares, walking about
     // 5, and sprinting down a lit aisle about 10.
-    const want = Math.max(0, Math.min(1, lit * 0.7 + move - (this.inDuct() ? 0.2 : 0)));
+    // ⚠️ Level 6's irrigation channels: MOVING through water is loud, standing
+    // in it is not. One term, added like the other two for the same reason —
+    // multiplied, a dark channel would make splashing free. It is deliberately
+    // worth more than walking (0.1) and less than sprinting (0.3), so wading
+    // across is about as loud as a run and the dry crossing in the middle of
+    // the hall is a real decision rather than a longer way round.
+    const wading = this.world.floorTex[this.cell(p.x, p.y)] === "fWater" && speed >= 0.3 ? 0.22 : 0;
+    if (wading && this.splash <= 0) { this.splash = 0.32; this.noise(0.1, 0.035, 2600, 900); }
+    this.splash = Math.max(0, this.splash - dt);
+    const want = Math.max(0, Math.min(1, lit * 0.7 + move + wading - (this.inDuct() ? 0.2 : 0)));
     p.exposure += (want - p.exposure) * Math.min(1, dt * 4);
+    if (wading) this.hint("water", "You're splashing. The channels give you away — cross on the dry strip in the middle.");
   }
   private sightRange() { return 4 + this.p.exposure * 8; }
 
   // ── grenades ──────────────────────────────────────────────────────────────
-  /** G: lob one along your line of sight. It goes off on its fuse, not on
-   *  contact, so it can be banked round a corner or rolled down an aisle. */
+  /** G: pull the pin, and the world stops.
+   *
+   * Matthew's design: "you have to answer three questions when you throw a
+   * grenade, the whole world freezes, and you just get the grenade back in
+   * your inventory if you fail." So G no longer throws — it OPENS A QUIZ, and
+   * the throw is what three right answers buys. Nothing in the world moves
+   * while it is up: frame() only calls update() in "play" and "reload", so
+   * "nade" freezes the aliens, the bolts, the fuses and the clock with one
+   * line rather than a pause flag threaded through everything.
+   *
+   * ⚠️ A FREEZE YOU CAN SUMMON IS A PANIC BUTTON, and that is the one thing
+   * this must not become: about to die, press G, and the room politely stops
+   * shooting while you think. Three things keep it honest. The aim is taken
+   * NOW and held, so you cannot use the pause to line a shot up. A failed
+   * quiz costs NADE_FAIL_WAIT seconds before G works again, so it cannot be
+   * spammed the moment the world starts moving. And every second spent in
+   * here is still run time, which is 30 of the 100 marks on the deck.
+   *
+   * The grenade is NOT spent until the throw actually happens — losing it as
+   * well would make a wrong answer cost twice, and the quiz is supposed to be
+   * the price, not a punishment on top of one.
+   */
   private throwGrenade() {
     const p = this.p;
     if (this.quiz || p.nadeWait > 0) return;
     if (p.grenades <= 0) { this.pickupMsg("No grenades left"); this.beep(90, 70, 0.07, "square", 0.04); return; }
     if (this.inDuct()) { this.pickupMsg("No room to throw in here"); return; }
+    const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload", qs); if (q) qs.push(q); }
+    // no pool to ask from (a topic with almost nothing in it): throw it rather
+    // than silently swallowing the button
+    if (qs.length < 3) { this.releaseNade(this.aimNade()); return; }
+    this.quiz = {
+      kind: "nade", qs, index: 0, time: NADE_QUIZ_PER, per: NADE_QUIZ_PER,
+      picked: null, feedback: 0, results: [], target: null, nade: this.aimNade(),
+    };
+    this.mode = "nade";
+    this.beep(520, 760, 0.12, "triangle", 0.05); this.beep(180, 150, 0.22, "sawtooth", 0.04);
+  }
+  /** The throw you were lining up at the moment the pin came out. Held for the
+   *  length of the quiz so the frozen world cannot be used to re-aim. */
+  private aimNade(): PendingNade {
+    const p = this.p;
+    return { c: Math.cos(p.angle), s: Math.sin(p.angle), up: p.pitch / this.R.proj, vx: p.vx, vy: p.vy };
+  }
+  private failNadeQuiz() {
+    const p = this.p;
+    this.quiz = null; this.mode = "play";
+    p.nadeWait = NADE_FAIL_WAIT;
+    this.say("Pin back in — the throw is off. Get all three right next time.");
+    this.beep(200, 90, 0.35, "sawtooth", 0.06);
+  }
+  /** Three out of three: the grenade actually leaves your hand. */
+  private releaseNade(n: PendingNade) {
+    const p = this.p;
+    this.quiz = null; this.mode = "play";
     p.grenades--; p.nadeWait = 0.65; p.kick = 0.8;
-    const up = p.pitch / this.R.proj; // the crosshair's elevation, as a gradient
-    const c = Math.cos(p.angle), s = Math.sin(p.angle);
+    const up = n.up; // the crosshair's elevation when the pin came out
+    const c = n.c, s = n.s;
     const z = Math.max(0.12, p.eye - 0.1);
     // ⚠️ NOT simply 0.35 in front of you. pushOut only keeps your CENTRE 0.22
     // from a wall face, so standing against a shelf and pressing G put the
@@ -713,7 +873,7 @@ export class Game {
     }
     this.nades.push({
       x: sx, y: sy, z,
-      vx: c * NADE_SPEED + p.vx * 0.4, vy: s * NADE_SPEED + p.vy * 0.4, vz: up * NADE_SPEED + 1.5, fuse: NADE_FUSE,
+      vx: c * NADE_SPEED + n.vx * 0.4, vy: s * NADE_SPEED + n.vy * 0.4, vz: up * NADE_SPEED + 1.5, fuse: NADE_FUSE,
     });
     this.beep(340, 620, 0.09, "triangle", 0.05);
   }
@@ -935,32 +1095,48 @@ export class Game {
   }
 
   // ── shooting ──────────────────────────────────────────────────────────────
+  /** Out of ammo? Fall back to something that still works, best first.
+   *  ⚠️ An empty gun falls back rather than refusing. On a phone there is no
+   *  "1" key and no weapon button, so a player out of cells had no attack at
+   *  all — and on any device "the blaster is empty, so swing" is what the
+   *  knife is for. */
+  private fallback() {
+    const p = this.p;
+    if (p.hasRifle && p.rifleAmmo > 0) { p.weapon = "rifle"; return; }
+    if (p.hasPistol && p.ammo > 0) { p.weapon = "pistol"; return; }
+    p.weapon = "knife";
+    this.say("Out of ammunition — knife out. Press R and answer to recharge; only a right answer charges it.");
+  }
   private fire() {
     const p = this.p; if (p.fireWait > 0) return;
-    // ⚠️ An empty blaster falls back to the knife instead of refusing. On a
-    // phone there is no "1" key and no weapon button, so a player out of cells
-    // had no attack at all — and on any device "the blaster is empty, so swing"
-    // is exactly what the knife is for.
-    if (p.weapon === "pistol" && p.ammo <= 0) {
-      p.weapon = "knife";
-      this.say("Out of cells — knife out. Press R and answer to recharge; only a right answer charges it.");
-    }
-    const pistol = p.weapon === "pistol";
+    if (p.weapon === "pistol" && p.ammo <= 0) this.fallback();
+    if (p.weapon === "rifle" && p.rifleAmmo <= 0) this.fallback();
+    const pistol = p.weapon === "pistol", rifle = p.weapon === "rifle";
+    const shot = pistol || rifle;
     if (pistol) {
-      p.ammo--; p.fireWait = 0.35; p.kick = 1; p.flash = 0.13;
+      p.ammo--; p.fireWait = PISTOL_WAIT; p.kick = 1; p.flash = 0.13;
       p.recoilV += 120; this.shake = Math.min(1.6, this.shake + 0.18);
       // three layers rather than one beep: a crack, a thump underneath, and a
       // hiss of noise on top. One tone on its own is what made it sound like a toy.
       this.beep(880, 150, 0.09, "square", 0.05); this.beep(210, 70, 0.17, "sawtooth", 0.05); this.noise(0.12, 0.09, 4200, 500);
+    } else if (rifle) {
+      // ⚠️ A third of the recoil and a quarter of the shake PER ROUND, because
+      // the rifle fires three times as often: the same numbers as the blaster
+      // would make the picture unreadable the moment you held the trigger, and
+      // the aim is tested against that same horizon.
+      p.rifleAmmo--; p.fireWait = RIFLE_WAIT; p.kick = 0.55; p.flash = 0.09;
+      p.recoilV += 42; this.shake = Math.min(1.6, this.shake + 0.05);
+      this.beep(1040, 260, 0.045, "square", 0.035); this.beep(240, 120, 0.07, "sawtooth", 0.035); this.noise(0.055, 0.05, 5200, 700);
     } else {
       p.fireWait = 0.42; p.kick = 0.6; p.recoilV += 40;
       this.beep(320, 90, 0.09, "triangle", 0.05); this.noise(0.09, 0.05, 2600, 700);
     }
     // anyone near enough to hear a shot comes looking
-    if (pistol) for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
-    const best = this.aimTarget();
+    if (shot) for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
+    const hit = this.aimTarget();
+    const best = hit?.a ?? null;
     const c = Math.cos(p.angle), s = Math.sin(p.angle), up = p.pitch / this.R.proj;
-    if (pistol) {
+    if (shot) {
       // muzzle flash out in the world, so it lights the wall in front of you too
       this.addFx("spark", p.x + c * 0.6, p.y + s * 0.6, p.eye - 0.18, 0.07, 0.3);
       // And a visible line of travel: a handful of bright puffs along the shot.
@@ -975,9 +1151,11 @@ export class Game {
       }
       this.addFx("spark", p.x + c * reach, p.y + s * reach, p.eye - 0.12 + up * reach, 0.16, Math.max(0.3, reach * (best ? 0.2 : 0.13)));
     }
-    if (best) {
-      // the knife hurts more than a shot, but you have to be next to it
-      best.hp -= pistol ? 15 : 20;
+    if (best && hit) {
+      // The knife hurts more than a single shot, but you have to be next to it
+      // — and it has no zones, because a swing is a swing.
+      const base = pistol ? PISTOL_DMG : rifle ? RIFLE_DMG : KNIFE_DMG;
+      best.hp -= shot ? base * ZONE_MULT[hit.zone] : base;
       best.hurt = 0.15; best.strafeT = 0; // being hit makes it change direction
       if (best.state !== "alert") { best.state = "alert"; best.cooldown = 0.8; }
       const dead = best.hp <= 0;
@@ -986,13 +1164,18 @@ export class Game {
         const a = Math.random() * Math.PI * 2;
         this.addFx("spark", best.x, best.y, 0.3 + Math.random() * 0.3, 0.2, 0.35, { vx: Math.cos(a) * 1.4, vy: Math.sin(a) * 1.4, vz: 1.1, drag: 3 });
       }
-      if (dead) this.kill(best); else { this.beep(340, 220, 0.09, "square", 0.05); this.noise(0.07, 0.05, 1800, 300); }
+      p.hitZone = shot ? hit.zone : null;
+      // a headshot sounds different, so the zone is audible as well as visible
+      if (dead) this.kill(best);
+      else if (shot && hit.zone === "head") { this.beep(900, 560, 0.1, "square", 0.055); this.noise(0.07, 0.05, 3000, 400); }
+      else { this.beep(340, 220, 0.09, "square", 0.05); this.noise(0.07, 0.05, 1800, 300); }
     }
   }
-  /** The alien the reticle is on, if a shot would reach it (also lights the reticle). */
-  private aimTarget(): Alien | null {
+  /** The alien the reticle is on and WHERE on it, if a shot would reach (this
+   *  also lights the reticle, and colours it by zone). */
+  private aimTarget(): { a: Alien; zone: Zone } | null {
     const p = this.p, cam = { x: p.x, y: p.y, angle: p.angle };
-    let best: Alien | null = null, bestD = 1e9;
+    let best: Alien | null = null, bestD = 1e9, bestZone: Zone = "torso";
     for (const a of this.aliens) {
       if (a.state === "dead") continue;
       const { screenX, dist } = this.R.project(cam, a.x, a.y);
@@ -1006,9 +1189,17 @@ export class Game {
       if (p.weapon === "knife" && dist > 1.3) continue;
       if (dist > this.R.centreDepth.value + 0.35) continue; // a wall is in the way
       if (!lineOfSight(this.world, p.x, p.y, a.x, a.y, true)) continue; // or a grille
-      if (dist < bestD) { best = a; bestD = dist; }
+      if (dist < bestD) {
+        best = a; bestD = dist;
+        // ⚠️ Worked out from the rectangle the alien was actually DRAWN in
+        // this frame, top and bottom, not from a guess about its height — the
+        // same reason the vertical test above uses them. `f` is how far down
+        // its body the crosshair sits, 0 at the crown and 1 at its feet.
+        const f = (this.R.H / 2 - top) / Math.max(1e-6, bottom - top);
+        bestZone = f < HEAD_BELOW ? "head" : f < LEGS_BELOW ? "torso" : "legs";
+      }
     }
-    return best;
+    return best ? { a: best, zone: bestZone } : null;
   }
   private kill(a: Alien) {
     a.state = "dead"; a.hp = 0; this.stats.kills++;
@@ -1066,12 +1257,27 @@ export class Game {
     }
     return d.pop() ?? null;
   }
+  /** Which gun R is about to charge, and how full it is. The rifle is
+   *  preferred when both are short, because it is the one that empties. */
+  private reloadable(): { which: "pistol" | "rifle"; mag: number; now: number } | null {
+    const p = this.p;
+    const rifleShort = p.hasRifle && p.rifleAmmo < RIFLE_MAG;
+    const pistolShort = p.hasPistol && p.ammo < PISTOL_MAG;
+    if (p.weapon === "rifle" && rifleShort) return { which: "rifle", mag: RIFLE_MAG, now: p.rifleAmmo };
+    if (p.weapon === "pistol" && pistolShort) return { which: "pistol", mag: PISTOL_MAG, now: p.ammo };
+    if (rifleShort) return { which: "rifle", mag: RIFLE_MAG, now: p.rifleAmmo };
+    if (pistolShort) return { which: "pistol", mag: PISTOL_MAG, now: p.ammo };
+    return null;
+  }
   private startReload() {
     const p = this.p;
-    if (p.hasPistol && p.weapon === "knife" && p.ammo < 6) p.weapon = "pistol"; // R with the knife out means "get the blaster ready"
-    if (!p.hasPistol || p.weapon !== "pistol" || this.quiz || p.ammo >= 6) { if (p.ammo >= 6 && p.hasPistol && !this.quiz) this.pickupMsg("Already full"); return; }
+    if (this.quiz) return;
+    const r = this.reloadable();
+    if (!r) { if (p.hasPistol || p.hasRifle) this.pickupMsg("Already full"); return; }
+    // R with the knife out means "get the gun you are charging ready"
+    if (p.weapon === "knife") p.weapon = r.which;
     const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload", qs); if (q) qs.push(q); }
-    if (!qs.length) { p.ammo = 6; return; }
+    if (!qs.length) { if (r.which === "rifle") p.rifleAmmo = RIFLE_MAG; else p.ammo = PISTOL_MAG; return; }
     this.quiz = { kind: "reload", qs, index: 0, time: 10, per: 10, picked: null, feedback: 0, results: [], target: null };
     this.mode = "reload";
   }
@@ -1081,6 +1287,17 @@ export class Game {
     if (qs.length < 3) { this.kill(a); return; }
     this.quiz = { kind: "stomp", qs, index: 0, time: 5, per: 5, picked: null, feedback: 0, results: [], target: a };
     this.mode = "stomp"; this.beep(200, 600, 0.3, "square", 0.06);
+  }
+  /** How many guns you are carrying. Decides whether the phone gets a SWAP
+   *  button at all — see touchButtons() in hud.ts. */
+  private gunCount() { return (this.p.hasPistol ? 1 : 0) + (this.p.hasRifle ? 1 : 0); }
+  /** The phone's stand-in for the 2 and 3 keys: flip between the two guns. */
+  private swapGun() {
+    const p = this.p;
+    if (this.gunCount() < 2) return;
+    p.weapon = p.weapon === "rifle" ? "pistol" : "rifle";
+    this.pickupMsg(p.weapon === "rifle" ? "Rifle" : "Blaster");
+    this.beep(520, 640, 0.05, "square", 0.035);
   }
   private stompTarget(): Alien | null {
     const p = this.p;
@@ -1103,8 +1320,21 @@ export class Game {
     q.feedback = right ? 0.7 : WRONG_HOLD;
     q.results.push(right);
     if (right) { this.stats.right++; this.beep(660, 990, 0.15, "triangle", 0.06); } else { this.stats.wrong++; this.beep(220, 110, 0.3, "sawtooth", 0.06); }
-    if (q.kind === "reload" && right) this.p.ammo = Math.min(6, this.p.ammo + 3); // a wrong answer charges nothing: get it right or use the knife
+    // a wrong answer charges nothing: get it right or use the knife
+    if (q.kind === "reload" && right) {
+      const p = this.p;
+      if (p.weapon === "rifle" && p.hasRifle) p.rifleAmmo = Math.min(RIFLE_MAG, p.rifleAmmo + RIFLE_PER_ANSWER);
+      else if (p.hasPistol) p.ammo = Math.min(PISTOL_MAG, p.ammo + PISTOL_PER_ANSWER);
+      else if (p.hasRifle) p.rifleAmmo = Math.min(RIFLE_MAG, p.rifleAmmo + RIFLE_PER_ANSWER);
+    }
     this.opts.onAnswer?.(cur, right);
+  }
+  /** Is the weapon in your hands full? Ends a reload early when it is. */
+  private full(w: Weapon) {
+    const p = this.p;
+    if (w === "rifle") return p.rifleAmmo >= RIFLE_MAG;
+    if (w === "pistol") return p.ammo >= PISTOL_MAG;
+    return false;
   }
   private updateQuiz(dt: number) {
     const q = this.quiz; if (!q) return;
@@ -1126,7 +1356,15 @@ export class Game {
         return;
       }
       if (q.index === 2) { this.kill(q.target!); this.quiz = null; this.mode = "play"; this.say("Stomped!"); return; }
-    } else if (this.p.ammo >= 6 || q.index === q.qs.length - 1) { this.quiz = null; this.mode = "play"; return; }
+    } else if (q.kind === "nade") {
+      // ⚠️ ONE wrong answer ends it, rather than finishing all three and
+      // counting up. The teaching panel has already held for WRONG_HOLD
+      // seconds by the time we get here, so the explanation was read; making
+      // somebody answer two more questions for a grenade they have already
+      // lost is punishment, not revision.
+      if (!lastRight) { this.failNadeQuiz(); return; }
+      if (q.index === q.qs.length - 1) { this.releaseNade(q.nade!); return; }
+    } else if (this.full(this.p.weapon) || q.index === q.qs.length - 1) { this.quiz = null; this.mode = "play"; return; }
     q.index++; q.picked = null; q.time = q.per;
   }
 
@@ -1161,7 +1399,7 @@ export class Game {
   private objective() {
     const list = this.world.def.OBJECTIVES; if (!list?.length) return null;
     const p = this.p;
-    const o = list.find((o) => !(o.until === "pistol" && p.hasPistol) && !(o.until === "keycard" && p.keys.has("blue"))) ?? list[list.length - 1];
+    const o = list.find((o) => !(o.until === "pistol" && p.hasPistol) && !(o.until === "rifle" && p.hasRifle) && !(o.until === "keycard" && p.keys.has("blue"))) ?? list[list.length - 1];
     return { text: o.text, bearing: Math.atan2(o.at[1] - p.y, o.at[0] - p.x), dist: Math.hypot(o.at[0] - p.x, o.at[1] - p.y) };
   }
   /** What a key would do right now, shown as a prompt. */
@@ -1202,7 +1440,10 @@ export class Game {
     const view = Math.max(-PITCH_MAX - 60, Math.min(PITCH_MAX + 60, aimView + jolt));
     const img = this.R.render(this.world, this.tex, this.spr, { x: p.x, y: p.y, angle: p.angle }, things, p.eye + Math.sin(p.bob * 2) * 0.012, view);
     this.g.putImageData(img, 0, 0);
-    if (this.mode !== "stomp") drawWeapon(this.g, this.R.W, this.R.H, p.weapon, p.bob, p.kick, p.flash, p.ammo);
+    if (this.mode !== "stomp") {
+      const rifle = p.weapon === "rifle";
+      drawWeapon(this.g, this.R.W, this.R.H, p.weapon, p.bob, p.kick, p.flash, rifle ? p.rifleAmmo : p.ammo, rifle ? RIFLE_MAG : PISTOL_MAG);
+    }
     // a soft glow: the frame shrunk and laid back over itself on a "screen"
     // blended layer, so lights bloom a little instead of being hard pixels
     if (this.bloom) { this.bloom.imageSmoothingEnabled = true; this.bloom.drawImage(this.cv, 0, 0, 160, 90); }
@@ -1214,8 +1455,9 @@ export class Game {
     const playing = this.mode === "play" || this.mode === "reload";
     drawHud(o, {
       health: p.health, vest: p.vest, ammo: p.ammo, hasPistol: p.hasPistol, weapon: p.weapon, keys: [...p.keys], radTime: p.radTime,
+      hasRifle: p.hasRifle, rifleAmmo: p.rifleAmmo, rifleMag: RIFLE_MAG,
       grenades: p.grenades, hitMark: p.hitMark, hitKill: p.hitKill, exposure: p.exposure,
-      level: def.TITLE, aliensLeft: left, hurt: p.hurt, aim: playing && !!this.aimTarget(),
+      level: def.TITLE, aliensLeft: left, hurt: p.hurt, aim: playing ? (this.aimTarget()?.zone ?? null) : null,
       hits: this.hits.map((h) => ({ a: h.a - p.angle, t: h.t })),
       heading: p.angle, objective: this.objective(),
       comms: this.comms && !this.quiz ? { who: this.opts.mascotName ?? "Comms", text: this.comms.text, age: this.comms.age, left: this.comms.life - this.comms.age } : null,
@@ -1223,12 +1465,19 @@ export class Game {
       // hidden behind a quiz and on every screen that is not the game itself:
       // a FIRE button over the title card would be tapped by mistake
       touch: this.touchDevice && playing && !this.quiz
-        ? { grenades: p.grenades, held: new Set(this.heldButtons.values()), stick: this.stickTouch }
+        ? { grenades: p.grenades, guns: this.gunCount(), held: new Set(this.heldButtons.values()), stick: this.stickTouch }
         : null,
     });
     if (this.quiz) {
       const q = this.quiz, cur = q.qs[q.index];
-      const view: QuizView = { kind: q.kind, topic: cur.topicTitle, index: q.index, total: q.kind === "stomp" ? 3 : q.qs.length, question: cur.question, choices: cur.choices, time: q.time, perQuestion: q.per, picked: q.picked, correct: cur.correct, results: q.results, ammo: p.ammo, why: cur.why, touch: this.touchDevice };
+      const view: QuizView = {
+        kind: q.kind, topic: cur.topicTitle, index: q.index, total: q.kind === "stomp" ? 3 : q.qs.length,
+        question: cur.question, choices: cur.choices, time: q.time, perQuestion: q.per,
+        picked: q.picked, correct: cur.correct, results: q.results,
+        ammo: p.weapon === "rifle" ? p.rifleAmmo : p.ammo,
+        perAnswer: p.weapon === "rifle" ? RIFLE_PER_ANSWER : PISTOL_PER_ANSWER,
+        why: cur.why, touch: this.touchDevice,
+      };
       drawQuiz(o, view);
     }
     const mins = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
@@ -1237,13 +1486,17 @@ export class Game {
     if (this.mode === "title") drawScreen(o, def.TITLE, this.touchDevice ? [
       "Left thumb on the stick to move · push it all the way to run",
       "Drag anywhere else to look around · FIRE to shoot",
-      `R: answer questions to recharge the blaster · E: use · JUMP${this.hasNades ? " · G: grenade" : ""}`,
+      `R: answer questions to recharge your gun · E: use · JUMP${this.hasNades ? " · G: grenade" : ""}`,
       "Tap an answer to answer a question",
+      ...(this.hasGun ? ["Two guns on this deck: ⇄ swaps between them. The blaster pays more per question, the rifle far more per second"] : []),
+      ...(this.hasNades ? ["A grenade costs THREE right answers: pull the pin and the whole deck freezes until you have answered them. One wrong and the pin goes back in"] : []),
       ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
     ] : [
       "WASD to move · mouse to look (up and down too) · click to shoot · Shift to run",
-      `R: recharge the blaster by answering questions · E: use${this.hasNades ? " · G: throw a grenade" : ""}`,
-      "SPACE: jump, or jump on an alien from behind · 1 knife · 2 blaster · M sound · Esc pause",
+      `R: recharge your gun by answering questions · E: use${this.hasNades ? " · G: pull a grenade pin" : ""}`,
+      `SPACE: jump, or jump on an alien from behind · 1 knife · 2 blaster${this.hasGun ? " · 3 rifle" : ""} · M sound · Esc pause`,
+      ...(this.hasGun ? ["Where you hit matters: head hurts most, legs least — but a head shot alone will not drop one, you still have to land the second"] : []),
+      ...(this.hasNades ? ["A grenade costs THREE right answers: pull the pin and the whole deck freezes until you have answered them. One wrong and the pin goes back in"] : []),
       ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
     ], this.touchDevice ? "Tap to start" : "Click to start");
     if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], this.touchDevice ? "Tap to carry on" : "Click to carry on");
