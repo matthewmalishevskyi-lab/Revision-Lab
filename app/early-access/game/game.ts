@@ -107,6 +107,25 @@ const ZONE_MULT: Record<Zone, number> = { head: 1.75, torso: 1.0, legs: 0.55 };
 // you take the torso, which is exactly how it should feel.
 const HEAD_BELOW = 0.10, LEGS_BELOW = 0.55;
 const PISTOL_DMG = 15, KNIFE_DMG = 20;
+// ── the knife: five good kills, then a bad one ──────────────────────────────
+//
+// Matthew: "get rid of nearly all of the ammo dropped on the floor and make a
+// knife usable only 5 times." The reason is the measurement: an alien is two
+// knife swings, and a swing costs nothing, so A FULL CLEAR OF ALL NINE DECKS
+// COULD COST ZERO QUESTIONS. The knife was not a fallback, it was a way to
+// play the whole game without revising.
+//
+// ⚠️ BUT IT BLUNTS, IT DOES NOT BREAK, and that is not softness — it is about
+// which student it would have hit. Out of cells, knife gone, cornered: you
+// press R, the world keeps running while you answer, you get it wrong, and
+// now you are being shot with no way to fight back at all. Three wrong
+// answers is a death spiral, and it lands hardest on exactly the person this
+// site exists for. At 8 damage a kill takes five swings instead of two —
+// desperate, slow, and always there.
+const KNIFE_USES = 5, KNIFE_BLUNT = 8;
+/** How far a knife kill carries. A scuffle is not a gunshot (7 squares), but
+ *  it is not silence either — and silence is what made it free. */
+const KNIFE_NOISE = 4.5;
 //
 // ⚠️ The rifle is deliberately NOT "the blaster but better". Per QUESTION the
 // blaster wins (3 cells x 15 = 45 against 5 rounds x 8 = 40); per SECOND the
@@ -139,7 +158,7 @@ const NADE_QUIZ_PER = 10, NADE_FAIL_WAIT = 6;
 // A knife kill or a stomp costs no cells at all, so creeping up on something
 // is the only way fighting pays. That is the incentive this adds: not "shoot
 // more", but "it is worth engaging rather than sprinting past everything".
-const DROP_CHANCE = 0.4;
+const DROP_CHANCE = 0.3;
 
 /** The least exposed you can be in a breached span, however still you stand.
  *  0.75 is ten squares of sight range against the four you get standing in a
@@ -189,6 +208,8 @@ export class Game {
   // player
   private p = { x: 0, y: 0, vx: 0, vy: 0, z: 0, vz: 0, angle: 0, pitch: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "knife" as Weapon, keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0,
     hasRifle: false, rifleAmmo: 0,
+    /** Full-damage knife kills left. Past this it still swings, just badly. */
+    knife: KNIFE_USES,
     grenades: 0, nadeWait: 0,
     /** Recoil, in pixels of horizon: the view jumps and settles, so a shot has weight. */
     recoil: 0, recoilV: 0,
@@ -198,7 +219,7 @@ export class Game {
     hitZone: null as Zone | null,
     /** How visible you are right now, 0-1, from the light you are standing in. */
     exposure: 0 };
-  private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false, hasRifle: false, rifleAmmo: 0, grenades: 0 };
+  private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false, hasRifle: false, rifleAmmo: 0, grenades: 0, knife: KNIFE_USES };
   private aliens: Alien[] = [];
   private pickups: Pickup[] = [];
   private decor: Drawable[] = [];
@@ -277,7 +298,7 @@ export class Game {
     // rule below is genuinely the other way round — a grenade is a
     // consumable, so "does this deck use them" is the right question.
     const carriedRifle = LEVELS.slice(0, start).some(hasRifle);
-    if (start > 0) this.carry = { health: 100, vest: 0, ammo: 6, hasPistol: true, hasRifle: carriedRifle, rifleAmmo: carriedRifle ? RIFLE_MAG : 0, grenades: hasGrenades(LEVELS[start]) ? 1 : 0 };
+    if (start > 0) this.carry = { health: 100, vest: 0, ammo: 6, hasPistol: true, hasRifle: carriedRifle, rifleAmmo: carriedRifle ? RIFLE_MAG : 0, grenades: hasGrenades(LEVELS[start]) ? 1 : 0, knife: KNIFE_USES };
     this.loadLevel(start);
     // lets automated play-tests reach inside (teleport, read state); harmless in a browser
     (this.ov as HTMLCanvasElement & { game?: Game }).game = this;
@@ -340,6 +361,11 @@ export class Game {
     this.p.x = def.START.x; this.p.y = def.START.y; this.p.angle = def.START.angle; this.p.eye = 0.5; this.p.pitch = 0; this.p.vx = 0; this.p.vy = 0; this.p.z = 0; this.p.vz = 0;
     this.p.health = this.carry.health; this.p.vest = this.carry.vest; this.p.ammo = this.carry.ammo; this.p.hasPistol = this.carry.hasPistol;
     this.p.hasRifle = this.carry.hasRifle; this.p.rifleAmmo = this.carry.rifleAmmo;
+    // ⚠️ A SHARP KNIFE EVERY DECK, deliberately. It is a per-deck allowance,
+    // not a resource to hoard across the whole game: carrying a blunt knife
+    // into deck 9 because of what you did on deck 2 is a punishment nobody
+    // would connect to its cause an hour later.
+    this.p.knife = KNIFE_USES;
     this.p.grenades = this.carry.grenades; this.p.nadeWait = 0; this.p.recoil = 0; this.p.recoilV = 0; this.p.hitMark = 0; this.shake = 0;
     // ⚠️ Carried grenades count. `hasGrenades(def)` alone meant a deck that
     // places none never offered G — including to a player who walked in with
@@ -412,7 +438,7 @@ export class Game {
     if (this.quiz && this.quiz.picked !== null && this.quiz.feedback > 0 && (k === " " || k === "enter")) { this.quiz.feedback = 0; return; }
     if (this.mode === "dead" && k === "enter") { this.loadLevel(this.levelIndex); this.mode = "play"; this.lock(); return; }
     if (this.mode === "complete" && k === "enter") {
-      this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades };
+      this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades, knife: KNIFE_USES };
       if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; this.lock(); } else this.mode = "done";
       return;
     }
@@ -472,7 +498,7 @@ export class Game {
       if ((this.mode === "dead" || this.mode === "complete") && this.screenLock > 0) continue;
       if (this.mode === "dead") { this.loadLevel(this.levelIndex); this.mode = "play"; continue; }
       if (this.mode === "complete") {
-        this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades };
+        this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades, knife: KNIFE_USES };
         if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; } else this.mode = "done";
         continue;
       }
@@ -1205,7 +1231,8 @@ export class Game {
     if (best && hit) {
       // The knife hurts more than a single shot, but you have to be next to it
       // — and it has no zones, because a swing is a swing.
-      const base = pistol ? PISTOL_DMG : rifle ? RIFLE_DMG : KNIFE_DMG;
+      const blunt = !shot && p.knife <= 0;
+      const base = pistol ? PISTOL_DMG : rifle ? RIFLE_DMG : blunt ? KNIFE_BLUNT : KNIFE_DMG;
       best.hp -= shot ? base * ZONE_MULT[hit.zone] : base;
       best.hurt = 0.15; best.strafeT = 0; // being hit makes it change direction
       if (best.state !== "alert") { best.state = "alert"; best.cooldown = 0.8; }
@@ -1216,8 +1243,22 @@ export class Game {
         this.addFx("spark", best.x, best.y, 0.3 + Math.random() * 0.3, 0.2, 0.35, { vx: Math.cos(a) * 1.4, vy: Math.sin(a) * 1.4, vz: 1.1, drag: 3 });
       }
       p.hitZone = shot ? hit.zone : null;
+      if (blunt) { this.beep(150, 120, 0.12, "triangle", 0.04); this.hint("blunt", "That knife is finished. It still swings, but it will take you five goes — answer and shoot instead."); }
       // a headshot sounds different, so the zone is audible as well as visible
-      if (dead) this.kill(best);
+      if (dead) {
+        // ⚠️ A KNIFE KILL IS LOUD, and it is the other half of why knifing was
+        // free. It was silent twice over: no gunfire alert radius, and the
+        // victim's own state was set DIRECTLY rather than through alert(), so
+        // it never even shouted. A scuffle carries less far than a shot, and
+        // sound goes round corners, so there is no line-of-sight test — the
+        // same shape as the gunfire rule above.
+        if (!shot && !this.inVacuum()) {
+          for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < KNIFE_NOISE) this.alert(a);
+          this.noise(0.18, 0.06, 900, 180);
+        }
+        if (!shot && p.knife > 0) p.knife--;
+        this.kill(best);
+      }
       else if (shot && hit.zone === "head") { this.beep(900, 560, 0.1, "square", 0.055); this.noise(0.07, 0.05, 3000, 400); }
       else { this.beep(340, 220, 0.09, "square", 0.05); this.noise(0.07, 0.05, 1800, 300); }
     }
@@ -1508,7 +1549,7 @@ export class Game {
     const playing = this.mode === "play" || this.mode === "reload";
     drawHud(o, {
       health: p.health, vest: p.vest, ammo: p.ammo, hasPistol: p.hasPistol, weapon: p.weapon, keys: [...p.keys], radTime: p.radTime,
-      hasRifle: p.hasRifle, rifleAmmo: p.rifleAmmo, rifleMag: RIFLE_MAG,
+      hasRifle: p.hasRifle, rifleAmmo: p.rifleAmmo, rifleMag: RIFLE_MAG, knife: p.knife, knifeMax: KNIFE_USES,
       grenades: p.grenades, hitMark: p.hitMark, hitKill: p.hitKill, exposure: p.exposure,
       level: def.TITLE, aliensLeft: left, hurt: p.hurt, aim: playing ? (this.aimTarget()?.zone ?? null) : null,
       hits: this.hits.map((h) => ({ a: h.a - p.angle, t: h.t })),

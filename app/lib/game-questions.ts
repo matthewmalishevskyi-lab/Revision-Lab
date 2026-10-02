@@ -109,7 +109,13 @@ export function whyFor(answer: string, right: string): string | undefined {
   return out2.length > 40 ? out2 + "…" : undefined;
 }
 
-const MAX_POOL = 120;
+// ⚠️ 240, not 120. With ammunition off the floor a full clear of all nine
+// decks now costs about 127 questions, and a pool of 120 would guarantee the
+// repeats Matthew complained about in September ("if a person is doing year
+// nine maths, they would have a lot of same questions popping up"). Maths
+// alone has 1,722 practice questions to draw from, so the cap was the only
+// thing in the way.
+const MAX_POOL = 240;
 /** Below this many reload questions, top up from the rest of the subject. */
 const WANT = 60;
 const MAX_CHOICES = 4;

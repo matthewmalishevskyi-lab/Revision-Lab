@@ -88,9 +88,8 @@ export const LEVEL1: LevelDef = (() => {
     { t: "pistol", x: 10.5, y: 20.5 }, { t: "ammo", x: 12.6, y: 19.2 }, { t: "canister", x: 12.8, y: 22.3 },
     { t: "alien", x: 20.5, y: 15.3 }, { t: "alien", x: 24.4, y: 12.6 }, { t: "alien", x: 26.2, y: 18.4 },
     { t: "canister", x: 15.6, y: 8.6 }, { t: "canister", x: 16.4, y: 8.7 }, { t: "canister", x: 28.3, y: 18.4 }, { t: "lamp", x: 15.4, y: 19.4 }, { t: "lamp", x: 28.5, y: 8.5 },
-    { t: "ammo", x: 19.5, y: 13.5 },
-    { t: "health", x: 14.3, y: 5.3 }, { t: "ammo", x: 15.6, y: 5.4 }, { t: "canister", x: 13.4, y: 4.4 },
-    { t: "alien", x: 33.5, y: 3.6 }, { t: "ammo", x: 28.5, y: 4.4 }, { t: "lamp", x: 23.4, y: 4.6 },
+    { t: "health", x: 14.3, y: 5.3 }, { t: "canister", x: 13.4, y: 4.4 },
+    { t: "alien", x: 33.5, y: 3.6 }, { t: "lamp", x: 23.4, y: 4.6 },
     { t: "alien", x: 31.6, y: 17.6 }, { t: "canister", x: 30.3, y: 18.6 }, { t: "canister", x: 32.6, y: 18.6 },
     { t: "alien", x: 34.3, y: 13.5 }, { t: "alien", x: 41.4, y: 10.2 }, { t: "alien", x: 40.8, y: 18.5 }, { t: "health", x: 33.4, y: 18.5 },
     { t: "lamp", x: 33.5, y: 8.5 }, { t: "lamp", x: 42.5, y: 8.5 }, { t: "lamp", x: 33.5, y: 19.5 }, { t: "lamp", x: 42.5, y: 19.5 },
@@ -99,7 +98,7 @@ export const LEVEL1: LevelDef = (() => {
     // the medical store: three guards, and what they are guarding
     { t: "alien", x: 19.5, y: 23.5, face: 1.57 }, { t: "alien", x: 22.6, y: 23.4, face: 1.57 }, { t: "alien", x: 21.2, y: 25.6, face: -1.57 },
     { t: "health", x: 18.6, y: 25.5 }, { t: "health", x: 23.5, y: 25.5 }, { t: "health", x: 21.5, y: 22.6 },
-    { t: "ammo", x: 19.4, y: 22.5 }, { t: "lamp", x: 24.4, y: 22.6 }, { t: "canister", x: 18.5, y: 22.5 },
+    { t: "lamp", x: 24.4, y: 22.6 }, { t: "canister", x: 18.5, y: 22.5 },
   ];
 
   // Extra light that spills from bright things, on top of each area's own.
@@ -203,14 +202,13 @@ export const LEVEL2: LevelDef = (() => {
     { t: "alien", x: 17.6, y: 3.8 }, { t: "ammo", x: 18.5, y: 6.6 },
     { t: "radsuit", x: 5.6, y: 3.8 }, { t: "health", x: 7.5, y: 6.6 }, { t: "canister", x: 4.4, y: 6.6 },
     { t: "lamp", x: 21.5, y: 2.5 }, { t: "lamp", x: 21.5, y: 18.5 }, { t: "lamp", x: 37.5, y: 2.5 }, { t: "lamp", x: 37.5, y: 18.5 },
-    { t: "alien", x: 28.5, y: 7.4 }, { t: "alien", x: 31.5, y: 12.4 }, { t: "alien", x: 36.6, y: 8.2 }, { t: "ammo", x: 26.5, y: 12.5 },
-    { t: "keycard", x: 43.5, y: 4.4 }, { t: "alien", x: 41.5, y: 5.4 }, { t: "alien", x: 43.3, y: 8.4 }, { t: "canister", x: 39.4, y: 8.6 }, { t: "canister", x: 39.4, y: 3.4 },
+    { t: "alien", x: 28.5, y: 7.4 }, { t: "alien", x: 31.5, y: 12.4 }, { t: "alien", x: 36.6, y: 8.2 }, { t: "keycard", x: 43.5, y: 4.4 }, { t: "alien", x: 41.5, y: 5.4 }, { t: "alien", x: 43.3, y: 8.4 }, { t: "canister", x: 39.4, y: 8.6 }, { t: "canister", x: 39.4, y: 3.4 },
     { t: "alien", x: 38.6, y: 27.3 }, { t: "health", x: 33.6, y: 27.6 }, { t: "lamp", x: 33.4, y: 24.4 }, { t: "lamp", x: 41.6, y: 24.4 },
     // the supply locker: four guards round the med-kits
     { t: "alien", x: 30.4, y: 22.5, face: 0 }, { t: "alien", x: 27.5, y: 21.4, face: 1.57 },
     { t: "alien", x: 29.5, y: 25.5, face: -1.57 }, { t: "alien", x: 26.6, y: 24.5, face: 0 },
     { t: "health", x: 26.6, y: 20.6 }, { t: "health", x: 31.4, y: 20.6 }, { t: "health", x: 28.5, y: 25.6 },
-    { t: "ammo", x: 31.4, y: 25.5 }, { t: "lamp", x: 26.5, y: 26.5 }, { t: "canister", x: 31.4, y: 26.4 },
+    { t: "lamp", x: 26.5, y: 26.5 }, { t: "canister", x: 31.4, y: 26.4 },
   ];
   const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
     { x: 29, y: 10, rgb: [0.3, 0.75, 1.3], r: 8 },
@@ -303,13 +301,12 @@ export const LEVEL3: LevelDef = (() => {
     { t: "alien", x: 28.5, y: 19.8, face: 2.6 }, { t: "alienBack", x: 28.6, y: 11.3, face: -1.6 }, { t: "alien", x: 25, y: 21.4, face: -1.6 },
     { t: "lamp", x: 20.5, y: 10.5 }, { t: "lamp", x: 29.5, y: 10.5 },
     { t: "alienBack", x: 22.5, y: 5.8, face: -1.57, stomp: true }, { t: "alienBack", x: 25.8, y: 3.2, face: 0 }, // facing the wall, so a quiet player can stomp this one too
-    { t: "vest", x: 19.6, y: 2.6 }, { t: "ammo", x: 27.3, y: 5.5 },
-    { t: "alienBack", x: 33.7, y: 14.5, face: 0, stomp: true }, { t: "alien", x: 38.5, y: 21.8, face: -2.2 },
+    { t: "vest", x: 19.6, y: 2.6 }, { t: "alienBack", x: 33.7, y: 14.5, face: 0, stomp: true }, { t: "alien", x: 38.5, y: 21.8, face: -2.2 },
     { t: "health", x: 39.5, y: 12.6 }, { t: "lamp", x: 33.4, y: 24.4 }, { t: "lamp", x: 40.6, y: 12.4 }, { t: "canister", x: 40.5, y: 24.3 },
     // the sick bay: three guards and the med-kits they are sitting on
     { t: "alien", x: 4.5, y: 15.5, face: 0.8 }, { t: "alien", x: 7.4, y: 14.6, face: 1.57 }, { t: "alien", x: 5.5, y: 17.5, face: 0 },
     { t: "health", x: 3.6, y: 14.6 }, { t: "health", x: 7.4, y: 17.5 }, { t: "health", x: 3.6, y: 17.5 },
-    { t: "ammo", x: 6.5, y: 14.5 }, { t: "lamp", x: 8.4, y: 14.6 },
+    { t: "lamp", x: 8.4, y: 14.6 },
   ];
   const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
     { x: 24.5, y: 16, rgb: [0.15, 0.18, 0.2], r: 5 },
@@ -448,7 +445,7 @@ export const LEVEL4: LevelDef = (() => {
     { t: "alien", x: 24.5, y: 7.5, face: 1.57 }, { t: "alienBack", x: 29.5, y: 10.5, face: -1.57, stomp: true },
     { t: "alien", x: 33.5, y: 14.5, face: 3.1 }, { t: "alien", x: 26.5, y: 18.5, face: 0 },
     { t: "alienBack", x: 35.5, y: 21.5, face: 1.57, stomp: true }, { t: "alien", x: 32.5, y: 6.5, face: 2.4 },
-    { t: "ammo", x: 29.5, y: 6.5 }, { t: "ammo", x: 23.5, y: 23.5 }, { t: "health", x: 36.5, y: 5.5 },
+    { t: "health", x: 36.5, y: 5.5 },
     { t: "grenade", x: 29.5, y: 18.5 }, { t: "lamp", x: 29.5, y: 17.5 }, { t: "lamp", x: 23.5, y: 13.5 },
     { t: "canister", x: 30.4, y: 23.5 }, { t: "canister", x: 29.6, y: 23.5 },
     // freight lift
@@ -457,7 +454,7 @@ export const LEVEL4: LevelDef = (() => {
     // the ordnance locker: three guards sitting on the grenades
     { t: "alien", x: 6.6, y: 23.5, face: 1.57 }, { t: "alien", x: 9.5, y: 22.6, face: 1.57 }, { t: "alien", x: 8.0, y: 26.5, face: -1.57 },
     { t: "grenade", x: 6.6, y: 26.5 }, { t: "grenade", x: 9.5, y: 26.4 }, { t: "grenade", x: 8.0, y: 22.6 },
-    { t: "health", x: 6.5, y: 24.6 }, { t: "ammo", x: 9.5, y: 24.5 }, { t: "lamp", x: 10.4, y: 27.4 },
+    { t: "health", x: 6.5, y: 24.6 }, { t: "lamp", x: 10.4, y: 27.4 },
   ];
   // Only a handful of pools of light, and the level is built round where they are.
   const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
@@ -576,7 +573,7 @@ export const LEVEL5: LevelDef = (() => {
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
     { t: "lamp", x: 3.6, y: 15.6 }, { t: "lamp", x: 7.4, y: 15.6 },
     // the arms locker: the rifle, and two guards who have not heard you yet
-    { t: "rifle", x: 11.5, y: 8.5 }, { t: "ammo", x: 9.5, y: 10.5 }, { t: "vest", x: 13.5, y: 6.5 },
+    { t: "rifle", x: 11.5, y: 8.5 }, { t: "vest", x: 13.5, y: 6.5 },
     { t: "alienBack", x: 9.5, y: 7.5, face: 1.57, stomp: true }, { t: "alien", x: 13.5, y: 10.5, face: 3.1 },
     { t: "lamp", x: 11.5, y: 6.5 },
     // the flight deck, north of the shuttle
@@ -584,15 +581,13 @@ export const LEVEL5: LevelDef = (() => {
     { t: "alien", x: 26.5, y: 7.5, face: 1.57 }, { t: "alien", x: 31.5, y: 6.5, face: 3.1 },
     { t: "alien", x: 35.5, y: 9.5, face: 3.1 }, { t: "alienBack", x: 37.5, y: 12.5, face: -1.57, stomp: true },
     { t: "alien", x: 19.5, y: 13.5, face: 1.57 },
-    { t: "ammo", x: 24.5, y: 5.5 }, { t: "health", x: 17.5, y: 5.5 }, { t: "ammo", x: 37.5, y: 5.5 },
-    { t: "lamp", x: 20.5, y: 5.5 }, { t: "lamp", x: 34.5, y: 5.5 }, { t: "canister", x: 29.4, y: 11.5 }, { t: "canister", x: 30.3, y: 11.5 },
+    { t: "health", x: 17.5, y: 5.5 }, { t: "lamp", x: 20.5, y: 5.5 }, { t: "lamp", x: 34.5, y: 5.5 }, { t: "canister", x: 29.4, y: 11.5 }, { t: "canister", x: 30.3, y: 11.5 },
     // and south of it
     { t: "alien", x: 17.5, y: 20.5, face: 1.57 }, { t: "alien", x: 20.5, y: 24.5, face: 0 },
     { t: "alien", x: 25.5, y: 21.5, face: 1.57 }, { t: "alien", x: 29.5, y: 25.5, face: 3.1 },
     { t: "alien", x: 33.5, y: 22.5, face: 3.1 }, { t: "alienBack", x: 37.5, y: 25.5, face: -1.57, stomp: true },
     { t: "alien", x: 19.5, y: 17.5, face: 0 },
-    { t: "health", x: 18.5, y: 26.5 }, { t: "ammo", x: 32.5, y: 19.5 }, { t: "ammo", x: 22.5, y: 26.5 },
-    { t: "lamp", x: 20.5, y: 26.5 }, { t: "lamp", x: 34.5, y: 26.5 }, { t: "canister", x: 24.4, y: 19.5 },
+    { t: "health", x: 18.5, y: 26.5 }, { t: "lamp", x: 20.5, y: 26.5 }, { t: "lamp", x: 34.5, y: 26.5 }, { t: "canister", x: 24.4, y: 19.5 },
     // the control tower: the keycard for the launch lift
     { t: "keycard", x: 22.5, y: 31.5 }, { t: "alien", x: 19.5, y: 31.5, face: 0 }, { t: "alien", x: 24.5, y: 31.5, face: 3.1 },
     { t: "holo", x: 22.5, y: 30.6 }, { t: "health", x: 25.5, y: 32.5 },
@@ -601,7 +596,7 @@ export const LEVEL5: LevelDef = (() => {
     { t: "health", x: 45.5, y: 18.5 }, { t: "lamp", x: 40.6, y: 17.6 }, { t: "lamp", x: 40.6, y: 25.4 },
     // the fuel bay, behind the false wall
     { t: "alien", x: 41.5, y: 6.5, face: 3.1 }, { t: "alien", x: 45.5, y: 6.5, face: 3.1 }, { t: "alien", x: 43.5, y: 10.5, face: -1.57 },
-    { t: "vest", x: 43.5, y: 6.5 }, { t: "ammo", x: 41.5, y: 9.5 }, { t: "ammo", x: 45.5, y: 9.5 }, { t: "health", x: 46.5, y: 8.5 },
+    { t: "vest", x: 43.5, y: 6.5 }, { t: "health", x: 46.5, y: 8.5 },
   ];
   const LIGHTS: NonNullable<LevelDef["LIGHTS"]> = [
     { x: 27.5, y: 8, rgb: [0.3, 0.33, 0.4], r: 7 },
@@ -711,8 +706,7 @@ export const LEVEL6: LevelDef = (() => {
     { t: "alien", x: 13.5, y: 9.5, face: 1.57 }, { t: "alienBack", x: 20.5, y: 11.5, face: -1.57, stomp: true },
     { t: "alien", x: 16.5, y: 14.5, face: 0 }, { t: "alien", x: 20.5, y: 17.5, face: 3.1 },
     { t: "alien", x: 14.5, y: 20.5, face: 1.57 }, { t: "alien", x: 18.5, y: 8.5, face: 0 },
-    { t: "ammo", x: 17.5, y: 11.5 }, { t: "health", x: 21.5, y: 8.5 }, { t: "ammo", x: 13.5, y: 14.5 },
-    { t: "lamp", x: 17.5, y: 8.5 }, { t: "lamp", x: 17.5, y: 21.5 }, { t: "canister", x: 21.4, y: 21.5 },
+    { t: "health", x: 21.5, y: 8.5 }, { t: "lamp", x: 17.5, y: 8.5 }, { t: "lamp", x: 17.5, y: 21.5 }, { t: "canister", x: 21.4, y: 21.5 },
     // growing hall: the densest room in the game, and the water runs down the middle
     { t: "alien", x: 26.5, y: 5.5, face: 1.57 }, { t: "alien", x: 33.5, y: 5.5, face: 1.57 },
     { t: "alien", x: 38.5, y: 7.5, face: 3.1 }, { t: "alien", x: 33.5, y: 10.5, face: 0 },
@@ -720,18 +714,16 @@ export const LEVEL6: LevelDef = (() => {
     { t: "alien", x: 33.5, y: 16.5, face: 1.57 }, { t: "alien", x: 26.5, y: 19.5, face: 1.57 },
     { t: "alien", x: 33.5, y: 23.5, face: 3.1 }, { t: "alienBack", x: 38.5, y: 22.5, face: -1.57, stomp: true },
     { t: "alien", x: 30.5, y: 26.5, face: 3.1 }, { t: "alien", x: 36.5, y: 26.5, face: 3.1 },
-    { t: "ammo", x: 33.5, y: 13.5 }, { t: "ammo", x: 26.5, y: 23.5 }, { t: "health", x: 38.5, y: 4.5 },
-    { t: "vest", x: 33.5, y: 26.5 }, { t: "ammo", x: 38.5, y: 19.5 },
-    { t: "lamp", x: 33.5, y: 4.5 }, { t: "lamp", x: 33.5, y: 14.5 }, { t: "lamp", x: 33.5, y: 25.5 },
+    { t: "health", x: 38.5, y: 4.5 },
+    { t: "vest", x: 33.5, y: 26.5 }, { t: "lamp", x: 33.5, y: 4.5 }, { t: "lamp", x: 33.5, y: 14.5 }, { t: "lamp", x: 33.5, y: 25.5 },
     { t: "canister", x: 26.4, y: 10.5 }, { t: "canister", x: 26.6, y: 17.5 },
     // pump room: dark, loud, and the keycard is down here
     { t: "keycard", x: 15.5, y: 27.5 }, { t: "alien", x: 11.5, y: 28.5, face: 0 },
     { t: "alien", x: 18.5, y: 26.5, face: 3.1 }, { t: "alienBack", x: 15.5, y: 25.5, face: -1.57, stomp: true },
-    { t: "health", x: 10.5, y: 25.5 }, { t: "ammo", x: 19.5, y: 29.5 }, { t: "lamp", x: 15.5, y: 29.5 },
+    { t: "health", x: 10.5, y: 25.5 }, { t: "lamp", x: 15.5, y: 29.5 },
     // the seed vault, behind the false wall
     { t: "alien", x: 4.5, y: 22.5, face: 1.57 }, { t: "alien", x: 7.5, y: 22.5, face: 1.57 }, { t: "alien", x: 5.5, y: 27.5, face: -1.57 },
-    { t: "health", x: 3.5, y: 25.5 }, { t: "health", x: 7.5, y: 25.5 }, { t: "ammo", x: 5.5, y: 24.5 },
-    { t: "vest", x: 3.5, y: 27.5 }, { t: "lamp", x: 6.5, y: 28.4 },
+    { t: "health", x: 3.5, y: 25.5 }, { t: "health", x: 7.5, y: 25.5 }, { t: "vest", x: 3.5, y: 27.5 }, { t: "lamp", x: 6.5, y: 28.4 },
     // the lift out
     { t: "alien", x: 41.5, y: 17.5, face: 3.1 }, { t: "health", x: 43.5, y: 13.5 },
     { t: "lamp", x: 40.6, y: 13.6 }, { t: "lamp", x: 40.6, y: 19.4 },
@@ -858,12 +850,11 @@ export const LEVEL7: LevelDef = (() => {
     { t: "alien", x: 16.5, y: 17.5, face: 3.1 }, { t: "alien", x: 20.5, y: 19.5, face: 3.1 },
     { t: "alien", x: 24.5, y: 17.5, face: 3.1 }, { t: "alienBack", x: 26.5, y: 17.5, face: 0, stomp: true },
     { t: "lamp", x: 18.5, y: 16.6 }, { t: "lamp", x: 24.5, y: 20.4 },
-    { t: "health", x: 13.5, y: 19.5 }, { t: "ammo", x: 22.5, y: 19.5 },
-    // the port service bay, and the red card
+    { t: "health", x: 13.5, y: 19.5 }, // the port service bay, and the red card
     { t: "keycard", x: 17.5, y: 9.5, key: "red" },
     { t: "alien", x: 14.5, y: 11.5, face: 0 }, { t: "alien", x: 19.5, y: 12.5, face: 3.1 },
     { t: "alienBack", x: 16.5, y: 13.5, face: -1.57, stomp: true },
-    { t: "ammo", x: 19.5, y: 10.5 }, { t: "lamp", x: 16.5, y: 8.6 },
+    { t: "lamp", x: 16.5, y: 8.6 },
     { t: "alien", x: 15.5, y: 5.5, face: 1.57 }, { t: "alien", x: 21.5, y: 6.5, face: 3.1 },
     { t: "health", x: 21.5, y: 4.5 },
     // the pump gallery, dark and off the route
@@ -875,19 +866,18 @@ export const LEVEL7: LevelDef = (() => {
     { t: "alien", x: 37.5, y: 17.5, face: 0 }, { t: "alien", x: 41.5, y: 19.5, face: 3.1 },
     { t: "alien", x: 44.5, y: 17.5, face: 3.1 }, { t: "alienBack", x: 45.5, y: 19.5, face: 0, stomp: true },
     { t: "lamp", x: 32.5, y: 16.6 }, { t: "lamp", x: 42.5, y: 20.4 },
-    { t: "ammo", x: 39.5, y: 17.5 }, { t: "health", x: 45.5, y: 16.5 },
+    { t: "health", x: 45.5, y: 16.5 },
     // the magazine: the grenades, and what is guarding them
     { t: "grenade", x: 34.5, y: 9.5 }, { t: "grenade", x: 37.5, y: 12.5 },
     { t: "alien", x: 32.5, y: 12.5, face: 0 }, { t: "alien", x: 39.5, y: 11.5, face: 3.1 },
     { t: "alien", x: 35.5, y: 5.5, face: 1.57 }, { t: "alien", x: 31.5, y: 6.5, face: 0 },
-    { t: "ammo", x: 36.5, y: 9.5 }, { t: "grenade", x: 39.5, y: 5.5 },
+    { t: "grenade", x: 39.5, y: 5.5 },
     // the signal office, and the blue card
     { t: "keycard", x: 40.5, y: 25.5, key: "blue" },
     { t: "alien", x: 34.5, y: 25.5, face: 0 }, { t: "alien", x: 38.5, y: 22.5, face: 1.57 },
     { t: "alienBack", x: 41.5, y: 27.5, face: -1.57, stomp: true },
     { t: "lamp", x: 37.5, y: 22.6 }, { t: "holo", x: 35.5, y: 27.5 },
-    { t: "alien", x: 42.5, y: 30.5, face: 3.1 }, { t: "ammo", x: 32.5, y: 31.5 },
-    { t: "vest", x: 33.5, y: 27.5 },
+    { t: "alien", x: 42.5, y: 30.5, face: 3.1 }, { t: "vest", x: 33.5, y: 27.5 },
     // the cache behind the false wall: nothing the deck needs
     { t: "health", x: 44.5, y: 9.5 }, { t: "health", x: 46.5, y: 11.5 }, { t: "vest", x: 44.5, y: 12.5 },
     { t: "alien", x: 43.5, y: 11.5, face: 0 }, { t: "alien", x: 47.5, y: 9.5, face: 3.1 },
@@ -940,12 +930,17 @@ export const LEVEL7: LevelDef = (() => {
 
 
 
-// Level 8: "Cryo bay" — four halls of stasis pods, the lights down to
-// emergency level, and NOT ONE ROUND OF AMMUNITION PLACED ANYWHERE ON THE
-// DECK. That is the whole design, and it is the most honest level in the
-// game: every shot you fire here you answered a question for, or took off
-// something you killed with the knife. The cargo hold asked you to move
-// quietly; this one asks you to have been paying attention.
+// Level 8: "Cryo bay" — four halls of stasis pods with the lights down to
+// emergency level, and the darkest deck in the game at 0.36 mean light
+// against the cargo hold's 0.49.
+//
+// ⚠️ This deck was written as "the one with no ammunition on the floor", and
+// that is no longer what makes it special: from deck 5 onwards none of them
+// place any, because a measurement showed a full clear of all nine decks
+// could cost zero questions. The comment is corrected rather than left to
+// quietly boast about something now true of half the ship. What this deck
+// still is: the darkest, the most broken up, and the first one where the
+// answer-for-every-round rule was the whole point rather than a side effect.
 //
 // The pods are full-height blocks in rows, and the rows of one hall do not
 // line up with the rows of the next — the same trick as the hydroponics
@@ -1066,7 +1061,7 @@ export const LEVEL8: LevelDef = (() => {
   // signposted way through, so it has to be a way you can actually walk.
   const ROUTE = [[5.5, 19.5], [10.5, 19.5], [10.5, 12], [14, 11.5], [19, 11.5], [24, 11.5], [28.5, 11.5], [31, 12], [31, 20], [31, 26.5], [34.5, 26.5], [40, 26.5], [44.5, 26.5], [44.5, 31], [45.5, 31.5], [44.5, 31], [44.5, 26.5], [48, 24.5], [52, 24.5], [55, 24.5]];
   const ALT_ROUTE = [[10.5, 19.5], [10.5, 26.5], [14, 26.5], [20, 26], [26, 26.5], [28.5, 26.5], [31, 26.5]];
-  const INTRO = "Cryo bay. Nobody stocked a crypt, so there is no ammunition down here — every round comes from a question.";
+  const INTRO = "Cryo bay. Emergency lighting only, and nobody stocked a crypt — every round down here comes from a question.";
   const HINTS: NonNullable<LevelDef["HINTS"]> = {
     hallA: "Pods are solid. Use the aisles, and remember the next hall's rows don't line up with these.",
     walk: "The walk's the only lit thing on the deck. Crossing it, you're visible.",
@@ -1080,7 +1075,7 @@ export const LEVEL8: LevelDef = (() => {
   ];
   const LOCKED_HINT = "Locked. The blue card is in the revival bay, south-east of the control walk.";
   const LABELS = [
-    { text: "No ammunition on this deck", at: [21, 19.5] },
+    { text: "Darkest deck on the ship", at: [21, 19.5] },
     { text: "Blue card", at: [45, 35] },
   ];
   const LEGEND = "Four halls, no ammunition, emergency lighting.";
@@ -1180,10 +1175,8 @@ export const LEVEL9: LevelDef = (() => {
     { t: "alien", x: 25.5, y: 28.5, face: 3.1 }, { t: "alien", x: 16.5, y: 19.5, face: 0 },
     { t: "alienBack", x: 28.5, y: 24.5, face: 0, stomp: true }, { t: "alien", x: 23.5, y: 31.5, face: -1.57 },
     { t: "lamp", x: 22.5, y: 8.6 }, { t: "lamp", x: 22.5, y: 31.4 }, { t: "holo", x: 21.5, y: 20.5 },
-    { t: "ammo", x: 16.5, y: 10.5 }, { t: "health", x: 28.5, y: 30.5 }, { t: "ammo", x: 27.5, y: 20.5 },
-    // the curator's room, behind the false wall
-    { t: "health", x: 19.5, y: 3.5 }, { t: "vest", x: 22.5, y: 3.5 }, { t: "ammo", x: 23.5, y: 5.5 },
-    { t: "alien", x: 18.5, y: 2.5, face: 0 }, { t: "alien", x: 23.5, y: 2.5, face: 3.1 },
+    { t: "health", x: 28.5, y: 30.5 }, // the curator's room, behind the false wall
+    { t: "health", x: 19.5, y: 3.5 }, { t: "vest", x: 22.5, y: 3.5 }, { t: "alien", x: 18.5, y: 2.5, face: 0 }, { t: "alien", x: 23.5, y: 2.5, face: 3.1 },
     // the north breach, and the red card out in the middle of it
     { t: "keycard", x: 39.5, y: 11.5, key: "red" },
     { t: "alien", x: 33.5, y: 7.5, face: 0 }, { t: "alien", x: 37.5, y: 6.5, face: 1.57 },
@@ -1192,7 +1185,7 @@ export const LEVEL9: LevelDef = (() => {
     { t: "alien", x: 45.5, y: 6.5, face: 3.1 },
     { t: "alien", x: 38.5, y: 8.5, face: 3.1 }, { t: "alien", x: 31.5, y: 11.5, face: 0 },
     { t: "alien", x: 43.5, y: 17.5, face: 3.1 }, { t: "alien", x: 36.5, y: 16.5, face: -1.57 },
-    { t: "ammo", x: 33.5, y: 16.5 }, { t: "health", x: 45.5, y: 11.5 },
+    { t: "health", x: 45.5, y: 11.5 },
     // the airlock run: three squares wide, and the only safe ground out here
     { t: "lamp", x: 33.5, y: 20.5 }, { t: "lamp", x: 44.5, y: 20.5 },
     { t: "alien", x: 39.5, y: 20.5, face: 3.1 }, { t: "vest", x: 32.5, y: 20.5 },
@@ -1204,7 +1197,7 @@ export const LEVEL9: LevelDef = (() => {
     { t: "alien", x: 32.5, y: 34.5, face: 0 }, { t: "alienBack", x: 46.5, y: 29.5, face: 3.1, stomp: true },
     { t: "alien", x: 37.5, y: 23.5, face: 1.57 }, { t: "alien", x: 44.5, y: 29.5, face: 3.1 },
     { t: "alien", x: 39.5, y: 32.5, face: -1.57 }, { t: "alien", x: 31.5, y: 27.5, face: 0 },
-    { t: "ammo", x: 46.5, y: 24.5 }, { t: "health", x: 32.5, y: 28.5 },
+    { t: "health", x: 32.5, y: 28.5 },
     // the sensor dome
     { t: "lamp", x: 50.5, y: 17.5 }, { t: "holo", x: 53.5, y: 20.5 },
     { t: "alien", x: 52.5, y: 23.5, face: 3.1 }, { t: "alien", x: 55.5, y: 20.5, face: 3.1 },

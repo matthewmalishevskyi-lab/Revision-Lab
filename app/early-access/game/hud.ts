@@ -134,6 +134,8 @@ export type AimZone = "head" | "torso" | "legs";
 export type HudState = {
   health: number; vest: number; ammo: number; hasPistol: boolean; weapon: "knife" | "pistol" | "rifle";
   hasRifle: boolean; rifleAmmo: number; rifleMag: number;
+  /** Full-damage knife kills left, and how many there are to start with. */
+  knife: number; knifeMax: number;
   keys: string[]; radTime: number; level: string; aliensLeft: number;
   grenades: number;
   /** 1 → 0 just after a shot connected; `hitKill` makes the marker a kill mark. */
@@ -283,7 +285,22 @@ export function drawHud(x: Ctx, s: HudState) {
   const tint = rifleOut ? RIFLE_AMBER : CYAN, tintDim = rifleOut ? RIFLE_DIM : CYAN_DIM;
   const empty = armed && now === 0;
   panel(x, AX, AY, 300, 86, empty ? "rgba(255,93,108,0.7)" : tintDim);
-  if (!s.hasPistol && !s.hasRifle) {
+  // ⚠️ THE KNIFE'S EDGE HAS TO BE ON THE VISOR. It is five kills and then it
+  // is nearly useless, and a limit you cannot see is the game being unfair —
+  // the same argument the SEEN bar settled for the exposure rule.
+  const knifeOut = s.weapon === "knife";
+  if (knifeOut || !s.hasPistol && !s.hasRifle) {
+    const blunt = s.knife <= 0;
+    label(x, blunt ? "KNIFE  (blunt)" : "KNIFE", AX + 18, AY + 24);
+    for (let i = 0; i < s.knifeMax; i++) {
+      const on = i < s.knife; x.fillStyle = on ? "#cfe2f2" : "rgba(207,226,242,0.12)";
+      if (on) { x.shadowColor = "#cfe2f2"; x.shadowBlur = 8; }
+      x.beginPath(); x.roundRect(AX + 18 + i * 26, AY + 36, 18, 30, 4); x.fill(); x.shadowBlur = 0;
+    }
+    glowText(x, `${Math.max(0, s.knife)}/${s.knifeMax}`, AX + 282, AY + 64, 30, blunt ? DANGER : "#cfe2f2", "right");
+    x.font = `bold 13px ${FONT}`; x.fillStyle = blunt ? DANGER : "#9fb3cf";
+    x.fillText(blunt ? "Blunt — five swings a kill. Answer and shoot." : (s.hasPistol || s.hasRifle ? "Sharp kills left · 2: blaster" : "Close range only · find the blaster"), AX + 18, AY + 80);
+  } else if (!s.hasPistol && !s.hasRifle) {
     label(x, "KNIFE", AX + 18, AY + 24); x.font = `bold 17px ${FONT}`; x.fillStyle = "#c9d6e8"; x.fillText("Close range only · find the blaster", AX + 18, AY + 58);
   } else {
     // what the other weapon key would give you, named rather than assumed
