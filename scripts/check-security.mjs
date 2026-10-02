@@ -1658,13 +1658,44 @@ try {
     expect(/nadeWait = NADE_FAIL_WAIT/.test(body("failNadeQuiz")) && G.NADE_FAIL_WAIT >= 3,
       "a failed grenade quiz costs no cooldown, so G is a freeze button you can hold down whenever you are losing");
     // ⚠️ And the freeze must not be free. The world stops in "nade" mode
-    // because frame() only runs update() in play and reload — which also
-    // stops the run clock, and pace is 30 of the 100 marks on a deck. Without
-    // this line "press G to stop the world" is the correct way to play.
+    // because frame() never runs update() there — which also stops the run
+    // clock, and pace is 30 of the 100 marks on a deck. Without that the
+    // correct way to play is "press G to stop the world".
     expect(/this\.mode === "nade"\) this\.stats\.time \+= dt/.test(game),
       "the run clock stops while a grenade quiz is up, so freezing the deck costs the player nothing");
-    expect(/if \(this\.mode === "play" \|\| this\.mode === "reload"\) this\.update\(dt\);/.test(game),
-      "update() runs in a mode other than play and reload, so the grenade quiz may not actually freeze anything");
+    // ⚠️ Asserted on the SHAPE, not on a literal line. This used to match
+    // `if (mode === "play" || mode === "reload") this.update(dt);` exactly,
+    // and broke the moment a reload started running at a third speed — the
+    // rule was still true, the string had just moved, which is a check
+    // failing on correct code. What matters is that every call to update() is
+    // guarded by play or reload, and that none is reachable in "nade".
+    {
+      const i = game.indexOf("private frame = (now: number)");
+      const frameBody = i < 0 ? "" : game.slice(i, game.indexOf("\n  private ", i + 10));
+      expect(frameBody.length > 0, "could not find frame(), so the freeze checks are guarding nothing");
+      const updateCalls = frameBody.split("\n").filter((l) => /this\.update\(/.test(l));
+      expect(updateCalls.length > 0, "frame() never calls update()");
+      for (const line of updateCalls) {
+        expect(/=== "play"|=== "reload"/.test(line), `frame() calls update() with no play/reload guard: ${line.trim()}`);
+        expect(!/"nade"/.test(line), `frame() can call update() in "nade" mode, so the grenade freeze is not a freeze: ${line.trim()}`);
+      }
+      // ── the world slows while you answer, the clocks do not ───────────
+      const slow = gnum("RELOAD_SLOW");
+      expect(Number.isFinite(slow) && slow > 1, `RELOAD_SLOW is ${slow}; the deck is supposed to slow while a reload question is up`);
+      expect(/=== "reload"\) this\.update\(dt \/ RELOAD_SLOW\)/.test(frameBody), "a reload does not actually slow the deck down");
+      // ⚠️ AND THE CLOCKS MUST NOT SLOW WITH IT — three ways this could
+      // quietly become an exploit, so three rules. The run clock, or pressing
+      // R beats par, which is 30 of the 100 marks. The question's own timer,
+      // or a slowed world hands you thirty seconds to think. And the hold on
+      // the model answer, for the same reason.
+      expect(/if \(this\.mode === "play" \|\| this\.mode === "reload" \|\| this\.mode === "nade"\) this\.stats\.time \+= dt;/.test(frameBody),
+        "the run clock does not keep real time in every live mode, so slowing the world buys pace marks");
+      const upd = game.indexOf("private update(dt: number)");
+      expect(!/this\.stats\.time \+= dt/.test(game.slice(upd, upd + 400)),
+        "the run clock is still ticked inside update(), which is handed a third of a second during a reload");
+      expect(/this\.updateQuiz\(dt\);/.test(frameBody),
+        "the quiz clock is not given real time, so a slowed world would slow the question timer too");
+    }
     // the aim is taken when the pin comes out, so a frozen world cannot be
     // used to line a throw up that you had not lined up already
     expect(/nade: this\.aimNade\(\)/.test(game),
