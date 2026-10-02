@@ -88,6 +88,15 @@ const SPRITE_DEFS: Record<string, SpriteDef> = {
     x.fillStyle = "#1c9bff"; x.beginPath(); x.roundRect(2, 2, 36, 24, 4); x.fill(); g.fillStyle = "#fff"; g.beginPath(); g.roundRect(2, 2, 36, 24, 4); g.fill();
     x.fillStyle = "#0a1830"; x.fillRect(6, 8, 12, 8); x.fillStyle = "#eaf6ff"; x.fillRect(22, 8, 12, 2); x.fillRect(22, 13, 8, 2);
   } },
+  // ⚠️ A SECOND SPRITE RATHER THAN A TINT. The sprite atlas is baked once at
+  // load and read as raw pixels every frame (see pack() below) — there is no
+  // per-draw colour to set. A red card drawn with the blue sprite would be a
+  // level telling you to find something that does not look like the thing you
+  // then find.
+  keycardRed: { w: 40, h: 28, height: 0.12, draw(x, g) {
+    x.fillStyle = "#ff5d6c"; x.beginPath(); x.roundRect(2, 2, 36, 24, 4); x.fill(); g.fillStyle = "#fff"; g.beginPath(); g.roundRect(2, 2, 36, 24, 4); g.fill();
+    x.fillStyle = "#300a10"; x.fillRect(6, 8, 12, 8); x.fillStyle = "#ffeaec"; x.fillRect(22, 8, 12, 2); x.fillRect(22, 13, 8, 2);
+  } },
   // ── things that only exist for a fraction of a second ─────────────────────
   //
   // These are drawn with `alpha` and `scale` (see render.ts) rather than as

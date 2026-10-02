@@ -42,7 +42,7 @@ export type GameOptions = {
 };
 
 type Alien = { x: number; y: number; face: number; hp: number; state: "idle" | "noticing" | "alert" | "dead"; timer: number; cooldown: number; lastX: number; lastY: number; hurt: number; strafe: number; strafeT: number };
-type Pickup = { t: string; x: number; y: number; taken: boolean };
+type Pickup = { t: string; x: number; y: number; taken: boolean; key?: string };
 type Bolt = { x: number; y: number; vx: number; vy: number; life: number };
 /** A grenade in the air. Bounces, then goes off on its fuse rather than on
  *  contact, so you can bank one round a corner or roll it down an aisle. */
@@ -140,6 +140,14 @@ const NADE_QUIZ_PER = 10, NADE_FAIL_WAIT = 6;
 // is the only way fighting pays. That is the incentive this adds: not "shoot
 // more", but "it is worth engaging rather than sprinting past everything".
 const DROP_CHANCE = 0.4;
+
+/** The least exposed you can be in a breached span, however still you stand.
+ *  0.75 is ten squares of sight range against the four you get standing in a
+ *  dark aisle on the cargo hold — the two decks' rules at opposite ends. */
+const VACUUM_SEEN = 0.75;
+
+/** Keycard colours, for the pickup message and the visor chip. */
+const CARD_NAME: Record<string, string> = { blue: "Blue", red: "Red" };
 
 /** How long a WRONG answer stays on screen with the right one showing. Long
  *  enough to read a sentence; skippable with SPACE for anyone who does not
@@ -355,7 +363,7 @@ export class Game {
       if (s.t === "alien" || s.t === "alienBack") {
         this.aliens.push({ x: s.x, y: s.y, face: s.face ?? Math.atan2(def.START.y - s.y, def.START.x - s.x) + Math.PI * (s.t === "alienBack" ? 1 : 0), hp: ALIEN_HP, state: "idle", timer: 0, cooldown: 1, lastX: s.x, lastY: s.y, hurt: 0, strafe: 1, strafeT: 0 });
       } else if (DECOR.has(s.t)) this.decor.push({ x: s.x, y: s.y, sprite: s.t });
-      else this.pickups.push({ t: s.t, x: s.x, y: s.y, taken: false });
+      else this.pickups.push({ t: s.t, x: s.x, y: s.y, taken: false, key: s.key });
     }
     this.stats = { kills: 0, right: 0, wrong: 0, time: 0 };
     this.comms = null; this.commsQueue = []; this.hinted = new Set(); this.feed = []; this.hits = []; this.lastArea = ""; this.areaBanner = null;
@@ -648,6 +656,23 @@ export class Game {
     p.vz = JUMP; this.beep(260, 420, 0.1, "sine", 0.04);
   }
   private inDuct() { return this.world.ceilH[this.cell(this.p.x, this.p.y)] < 1; }
+  /** Standing in a section of hull that is open to space.
+   *
+   * Read off the AREA the cell belongs to rather than stored per cell, so it
+   * is one word in the level data and nothing in world.ts had to change.
+   *
+   * ⚠️ The rule it buys is an INVERSION of the cargo hold's, and that is the
+   * point of it. On deck 4 the dark hides you but you have to move slowly.
+   * Here there is no air, so NOTHING YOU DO MAKES A SOUND ANYONE CAN HEAR —
+   * you can empty the rifle and nothing comes looking — but there is no cover
+   * and the stars light you up, so you are seen from further away than
+   * anywhere else in the game. Loud and safe, or quiet and visible: the two
+   * decks pull in opposite directions, which is what stops the last one being
+   * the dark one again with more aliens in it. */
+  private inVacuum(x = this.p.x, y = this.p.y) {
+    const key = this.world.area[this.cell(x, y)];
+    return !!(key && this.world.def.AREAS[key]?.vacuum);
+  }
 
   private update(dt: number) {
     const p = this.p, w = this.world;
@@ -721,7 +746,11 @@ export class Game {
       const cx = d.box.x0 + d.box.w / 2, cy = d.box.y0 + d.box.h / 2;
       const near = Math.hypot(p.x - cx, p.y - cy) < 1.6;
       if (near && !d.secret && !d.exit) {
-        if (d.key && !p.keys.has(d.key)) { if (d.target === 0) this.hint("locked", this.world.def.LOCKED_HINT ?? "Locked. It needs the blue keycard."); }
+        if (d.key && !p.keys.has(d.key)) {
+          // one hint per colour: a deck with two locks that says the same
+          // thing at both of them sends you to the wrong end of the ship
+          if (d.target === 0) this.hint("locked-" + d.key, this.world.def.LOCKED_HINTS?.[d.key] ?? this.world.def.LOCKED_HINT ?? `Locked. It needs the ${d.key} keycard.`);
+        }
         else if (d.needs === "pistol" && !p.hasPistol) this.hint("unarmed", "Don't go in there with bare hands! Get the blaster from the armoury first.");
         // ⚠️ Same guard, same reason, for the flight deck: that door opens on
         // the biggest fight in the game, and nobody should walk into it
@@ -750,7 +779,13 @@ export class Game {
       else if (k.t === "ammo") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 3); if (p.weapon === "knife") p.weapon = "pistol"; this.pickupMsg("Energy cells · +3"); }
       else if (k.t === "cell") { if (!p.hasPistol || p.ammo >= 6) continue; p.ammo = Math.min(6, p.ammo + 1); if (p.weapon === "knife") p.weapon = "pistol"; this.pickupMsg("Energy cell · +1"); }
       else if (k.t === "health") { if (p.health >= 100) continue; p.health = Math.min(100, p.health + 25); this.pickupMsg("Med-kit · +25"); }
-      else if (k.t === "keycard") { p.keys.add("blue"); this.pickupMsg("Blue keycard"); this.hint("keycard", "The blue keycard! Now the locked door will open."); }
+      else if (k.t === "keycard") {
+        // ⚠️ The colour comes off the level, defaulting to blue, so the six
+        // decks written before there were two colours behave identically.
+        const col = k.key ?? "blue";
+        p.keys.add(col); this.pickupMsg(`${CARD_NAME[col] ?? col} keycard`);
+        this.hint("keycard-" + col, `The ${col} keycard! Now its door will open.`);
+      }
       else if (k.t === "radsuit") { p.radTime = 30; this.pickupMsg("Radiation suit · 30 s"); this.hint("radsuit", "Radiation suit on: you can wade through the coolant for 30 seconds."); }
       else if (k.t === "vest") { p.vest = 100; this.pickupMsg("Vest · takes a third of the damage"); }
       else if (k.t === "grenade") {
@@ -789,12 +824,24 @@ export class Game {
     // worth more than walking (0.1) and less than sprinting (0.3), so wading
     // across is about as loud as a run and the dry crossing in the middle of
     // the hall is a real decision rather than a longer way round.
+    const bare = this.inVacuum();
     const wading = this.world.floorTex[this.cell(p.x, p.y)] === "fWater" && speed >= 0.3 ? 0.22 : 0;
     if (wading && this.splash <= 0) { this.splash = 0.32; this.noise(0.1, 0.035, 2600, 900); }
     this.splash = Math.max(0, this.splash - dt);
-    const want = Math.max(0, Math.min(1, lit * 0.7 + move + wading - (this.inDuct() ? 0.2 : 0)));
+    let want = Math.max(0, Math.min(1, lit * 0.7 + move + wading - (this.inDuct() ? 0.2 : 0)));
+    // ⚠️ VACUUM IS A FLOOR, NOT A BONUS, and the first version had it as a
+    // bonus of 0.3 which made it almost nothing. Measured: standing still in
+    // the breach came out at 0.51 against 0.45 in the gallery next door —
+    // six hundredths, which no player would ever feel, because the baked
+    // light out at the edges of a breached span is LOW and the exposure was
+    // being added to a small number. The stars are not a lamp with falloff:
+    // out there you are lit from one end to the other, wherever you stand.
+    // So vacuum sets a minimum instead, and the rule becomes one you can
+    // state — step outside and you are seen from ten squares, full stop.
+    if (bare) want = Math.max(want, VACUUM_SEEN);
     p.exposure += (want - p.exposure) * Math.min(1, dt * 4);
     if (wading) this.hint("water", "You're splashing. The channels give you away — cross on the dry strip in the middle.");
+    if (bare) this.hint("vacuum", "Hull's open here — no air, so no sound. They can't hear you shoot. They can see you from a mile off.");
   }
   private sightRange() { return 4 + this.p.exposure * 8; }
 
@@ -936,8 +983,9 @@ export class Game {
       this.hits.push({ a: Math.atan2(y - this.p.y, x - this.p.x), t: 1 });
     }
     this.shake = Math.min(1.6, this.shake + Math.max(0.25, 1.5 * (1 - pd / 7)));
-    // a bang is loud: everything nearby comes looking, whether it saw you or not
-    for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - x, a.y - y) < 10) this.alert(a, 0.3 + Math.random() * 0.4);
+    // a bang is loud: everything nearby comes looking, whether it saw you or
+    // not — unless it went off in vacuum, where there is nothing to carry it
+    if (!this.inVacuum(x, y)) for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - x, a.y - y) < 10) this.alert(a, 0.3 + Math.random() * 0.4);
   }
 
   // ── aliens: not clever, but not daft either ───────────────────────────────
@@ -1132,7 +1180,10 @@ export class Game {
       this.beep(320, 90, 0.09, "triangle", 0.05); this.noise(0.09, 0.05, 2600, 700);
     }
     // anyone near enough to hear a shot comes looking
-    if (shot) for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
+    // ⚠️ and in a breached section nobody hears it, because there is no air
+    // to hear it through. This is the one place in the game you can fight
+    // loudly, and it is paid for by having nowhere to hide.
+    if (shot && !this.inVacuum()) for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
     const hit = this.aimTarget();
     const best = hit?.a ?? null;
     const c = Math.cos(p.angle), s = Math.sin(p.angle), up = p.pitch / this.R.proj;
@@ -1399,7 +1450,7 @@ export class Game {
   private objective() {
     const list = this.world.def.OBJECTIVES; if (!list?.length) return null;
     const p = this.p;
-    const o = list.find((o) => !(o.until === "pistol" && p.hasPistol) && !(o.until === "rifle" && p.hasRifle) && !(o.until === "keycard" && p.keys.has("blue"))) ?? list[list.length - 1];
+    const o = list.find((o) => !(o.until === "pistol" && p.hasPistol) && !(o.until === "rifle" && p.hasRifle) && !(o.until === "keycard" && p.keys.has(o.key ?? "blue"))) ?? list[list.length - 1];
     return { text: o.text, bearing: Math.atan2(o.at[1] - p.y, o.at[0] - p.x), dist: Math.hypot(o.at[0] - p.x, o.at[1] - p.y) };
   }
   /** What a key would do right now, shown as a prompt. */
@@ -1415,7 +1466,9 @@ export class Game {
   private draw() {
     const p = this.p;
     const things: Drawable[] = [...this.decor];
-    for (const k of this.pickups) if (!k.taken) things.push({ x: k.x, y: k.y, sprite: k.t });
+    // a red keycard is drawn with the red card sprite; everything else is
+    // drawn with the sprite named after its own type
+    for (const k of this.pickups) if (!k.taken) things.push({ x: k.x, y: k.y, sprite: k.t === "keycard" && k.key === "red" ? "keycardRed" : k.t });
     for (const a of this.aliens) {
       if (a.state === "dead") { things.push({ x: a.x, y: a.y, sprite: "alienDead" }); continue; }
       let diff = Math.atan2(p.y - a.y, p.x - a.x) - a.face; diff = Math.atan2(Math.sin(diff), Math.cos(diff));

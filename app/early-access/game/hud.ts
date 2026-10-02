@@ -305,8 +305,12 @@ export function drawHud(x: Ctx, s: HudState) {
   }
   // keycard and suit timer sit above the blaster panel
   let kx = W - 30;
-  if (s.keys.includes("blue")) {
-    kx -= 46; x.fillStyle = "#1c9bff"; x.beginPath(); x.roundRect(kx, AY - 40, 46, 30, 5); x.fill();
+  // ⚠️ ONE CHIP PER CARD, not a single blue one. Deck 7 has two locks, and a
+  // visor that cannot show you which card you are already carrying makes the
+  // second one a guess.
+  const CARD_COL: Record<string, string> = { blue: "#1c9bff", red: "#ff5d6c" };
+  for (const k of s.keys) {
+    kx -= 46; x.fillStyle = CARD_COL[k] ?? "#9fb3cf"; x.beginPath(); x.roundRect(kx, AY - 40, 46, 30, 5); x.fill();
     x.fillStyle = "#0a1830"; x.fillRect(kx + 6, AY - 32, 14, 9); x.fillStyle = "#eaf6ff"; x.fillRect(kx + 24, AY - 30, 16, 3); kx -= 10;
   }
   if (s.radTime > 0) { x.textAlign = "right"; x.font = `bold 15px ${FONT}`; x.fillStyle = "#f2d64a"; x.fillText(`RAD SUIT ${Math.ceil(s.radTime)}s`, kx, AY - 18); x.textAlign = "left"; }

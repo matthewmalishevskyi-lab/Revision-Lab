@@ -21,9 +21,15 @@ export type Area = {
   ceil: string;
   ceilH?: number;
   upper?: string;
+  /** Open to space. Nothing you do in here makes a sound anyone can hear, and
+   *  there is nothing to hide behind — see the vacuum rules in game.ts. */
+  vacuum?: boolean;
 };
 export type DoorDef = { cells: [number, number][]; tex: string; key?: string; secret?: boolean; exit?: boolean; /** stays shut until you have this */ needs?: "pistol" | "rifle" };
-export type Thing = { t: string; x: number; y: number; face?: number; stomp?: boolean; z?: number };
+export type Thing = { t: string; x: number; y: number; face?: number; stomp?: boolean; z?: number;
+  /** For a keycard: which colour it is. Defaults to blue, so every level
+   *  written before there were two of them is unchanged. */
+  key?: string };
 export type LevelDef = {
   TITLE: string;
   W: number;
@@ -49,8 +55,13 @@ export type LevelDef = {
    *  level's par time for its grade is worked out from how long it is. */
   ROUTE?: number[][];
   /** Where the compass marker points, in order; each is done once you have its `until`. */
-  OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "rifle" | "keycard" }[];
+  OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "rifle" | "keycard"; key?: string }[];
   LOCKED_HINT?: string;
+  /** What the mascot says at a locked door, per keycard colour. A deck with
+   *  two locks needs two sentences — one that says "find the keycard" at both
+   *  of them sends you to the wrong end of the ship. Falls back to
+   *  LOCKED_HINT, so every level written before this is unchanged. */
+  LOCKED_HINTS?: Record<string, string>;
 };
 
 export type Box = { x0: number; y0: number; w: number; h: number };

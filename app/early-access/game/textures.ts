@@ -256,6 +256,28 @@ export const WALLS: Record<string, Draw> = {
     bevel(ctx, 50, 70, 28, 28, C.white3); ctx.fillStyle = C.blue2; ctx.beginPath(); ctx.arc(64, 84, 9, 0, 7); ctx.fill();
     glowRect(ctx, g, 62, 76, 4, 16, C.cyan, 2); glowRect(ctx, g, 56, 82, 16, 4, C.cyan, 2);
   },
+  // A stasis pod seen from the aisle: a frosted window with somebody behind
+  // it who is not waking up, and one cold blue status light that still works.
+  cryo(ctx: Ctx, g: Ctx) {
+    ctx.fillStyle = C.steel3; ctx.fillRect(0, 0, TS, TS); bevel(ctx, 0, 0, TS, TS, C.steel2);
+    inset(ctx, 14, 10, TS - 28, TS - 34, "#101a26");
+    // the glass, frosted from the bottom up
+    const gl = ctx.createLinearGradient(0, 14, 0, TS - 28);
+    gl.addColorStop(0, "#2d4a5e"); gl.addColorStop(0.55, "#44708a"); gl.addColorStop(1, "#9fc6d8");
+    ctx.fillStyle = gl; ctx.fillRect(20, 16, TS - 40, TS - 46);
+    // the shape inside, deliberately only a shape
+    ctx.fillStyle = "rgba(14,24,34,0.55)";
+    ctx.beginPath(); ctx.ellipse(TS / 2, 44, 13, 15, 0, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.roundRect(TS / 2 - 17, 58, 34, 44, 12); ctx.fill();
+    // frost creeping over it
+    const r = mulberry(451);
+    for (let i = 0; i < 46; i++) { ctx.fillStyle = `rgba(226,244,255,${0.1 + r() * 0.28})`; ctx.fillRect(20 + r() * (TS - 40), 16 + r() * (TS - 46), 1 + r() * 3, 1 + r() * 2); }
+    bevel(ctx, 16, 12, TS - 32, 6, C.white3);
+    bevel(ctx, 0, TS - 24, TS, 24, C.shade, "rgba(255,255,255,0.3)");
+    led(ctx, g, 24, TS - 12, C.cyan, 1.4); led(ctx, g, TS - 24, TS - 12, C.cyan, 1.4);
+    pixelText(ctx, g, "STASIS", 40, TS - 17, C.navy, 2);
+    grain(ctx, 97, 8);
+  },
   rack(ctx: Ctx, g: Ctx) {
     ctx.fillStyle = C.steel3; ctx.fillRect(0, 0, TS, TS); bevel(ctx, 0, 0, TS, TS, C.steel2);
     inset(ctx, 8, 8, TS - 16, 92, "#26303d");
