@@ -1829,6 +1829,74 @@ try {
       }
     }
 
+    // ── what does a deck COST in questions? ──────────────────────────────
+    //
+    // Matthew: "get rid of nearly all of the ammo dropped on the floor and
+    // make a knife usable only 5 times." The reason is a measurement that
+    // should never have been true: an alien is two knife swings, a swing cost
+    // nothing, so A FULL CLEAR OF ALL NINE DECKS COULD COST ZERO QUESTIONS.
+    // On a revision site the game's cheapest route has to go through the
+    // questions, and this is the rule that keeps it there.
+    //
+    // ⚠️ Worked from the real constants, never a copy of them, because this
+    // is the balance and a check holding its own copy of the balance drifts.
+    {
+      const alienHp = gnum("ALIEN_HP"), pistolDmg = gnum("PISTOL_DMG");
+      const perAnswer = gnum("PISTOL_PER_ANSWER"), drop = gnum("DROP_CHANCE");
+      const knifeUses = gnum("KNIFE_USES"), knifeBlunt = gnum("KNIFE_BLUNT"), knifeDmg = gnum("KNIFE_DMG");
+      for (const [k, v] of Object.entries({ alienHp, pistolDmg, perAnswer, drop, knifeUses, knifeBlunt, knifeDmg }))
+        expect(Number.isFinite(v) && v > 0, `could not read ${k} out of game.ts, so the economy check is guarding nothing`);
+
+      // ⚠️ THE KNIFE BLUNTS, IT DOES NOT BREAK. Out of cells with no knife at
+      // all, a player presses R, the world keeps running while they answer,
+      // they get it wrong — and they are being shot with no way to fight
+      // back. Three wrong answers is a death spiral, and it lands on exactly
+      // the student this site exists for. A bad weapon is fine; none is not.
+      // ⚠️ "> 0" IS NOT ENOUGH. A sabotage setting the blunt damage to 0.0001
+      // sailed through it — four hundred thousand swings a kill is a broken
+      // knife wearing a number. The rule has to be that it still KILLS in a
+      // number of swings a cornered player could actually land.
+      const bluntSwings = Math.ceil(alienHp / knifeBlunt);
+      expect(knifeBlunt > 0 && knifeBlunt < knifeDmg && bluntSwings <= 6,
+        `a spent knife takes ${bluntSwings} swings a kill — it has to still work, badly, or a player who keeps getting questions wrong has no attack at all`);
+      expect(Math.ceil(alienHp / knifeBlunt) >= 2 * Math.ceil(alienHp / knifeDmg),
+        "a spent knife is barely worse than a sharp one, so the limit buys nothing");
+      // and it is LOUD, which is the other half of why knifing was free
+      expect(/if \(!shot && !this\.inVacuum\(\)\) \{[\s\S]{0,220}KNIFE_NOISE/.test(game),
+        "a knife kill still wakes nobody — silent AND free is what made it the way to play without revising");
+
+      const cellsPerAlien = Math.ceil(alienHp / pistolDmg);
+      const cost = (level) => {
+        const aliens = level.SPRITES.filter((s) => s.t === "alien" || s.t === "alienBack").length;
+        const placed = level.SPRITES.filter((s) => s.t === "ammo").length * perAnswer
+          + level.SPRITES.filter((s) => s.t === "cell").length;
+        // the cheapest full clear: every free knife kill taken, every drop
+        // collected, everything else shot
+        const shot = Math.max(0, aliens - knifeUses);
+        return { aliens, q: Math.max(0, (shot * cellsPerAlien - placed - aliens * drop) / perAnswer) };
+      };
+      let total = 0;
+      for (const level of LEVELS) {
+        const c = cost(level);
+        total += c.q;
+        // a deck you can clear for nothing is a deck with no revision in it
+        expect(c.q >= Math.max(3, c.aliens * 0.4),
+          `${level.TITLE} can be cleared for ${c.q.toFixed(1)} questions against ${c.aliens} aliens — the cheapest way through a deck has to go through the questions`);
+      }
+      expect(total >= 100, `the whole game can be cleared for ${total.toFixed(0)} questions; it used to be 0, and it must not drift back`);
+      // ⚠️ and the pool has to be able to SERVE them without repeating. This
+      // is the complaint from September coming back the moment demand rose.
+      const pool = Number(/const MAX_POOL = (\d+)/.exec(readFileSync("app/lib/game-questions.ts", "utf8"))?.[1]);
+      expect(pool >= total, `a full run now needs ${total.toFixed(0)} questions and the pool is capped at ${pool} — every deck after the cap repeats`);
+
+      // the floor pickups: a teaching deck may keep one, the rest keep none
+      LEVELS.forEach((level, i) => {
+        const n = level.SPRITES.filter((s) => s.t === "ammo").length;
+        expect(n <= (i < 4 ? 1 : 0),
+          `${level.TITLE} leaves ${n} ammunition pickups on the floor; the first four decks may keep one each and the rest none`);
+      });
+    }
+
     // ── the run-up to the boss has to actually climb ─────────────────────
     // Matthew's ask, in his words: "increasingly harder and bigger than the
     // other ones because they will be leading to the boss level". That is a
