@@ -766,4 +766,486 @@ export const LEVEL6: LevelDef = (() => {
   return { INTRO, HINTS, OBJECTIVES, LOCKED_HINT, TITLE: "Level 6 — Hydroponics", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
 })();
 
-export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6];
+
+
+// Level 7: "The Spine" — the ship's central transit corridor, and the first
+// deck that is about DISTANCE. Everything until now has been rooms: the
+// longest clear sight line in decks 1 to 6 is about fourteen squares. The
+// spine is thirty-five, five squares wide and straight, and that changes the
+// fight completely — you are shot at from further than you can reliably hit
+// back, so the way through is cover to cover rather than room to room, and
+// the rifle you took off the flight deck is what makes it survivable.
+//
+// Two keycards, which is new. The red one opens the midships bulkhead
+// halfway down the spine and the blue one opens the lift at the far end, so
+// the deck is a there-and-back rather than a straight line: you pass the same
+// corridor three times, and it is never the same corridor twice because of
+// what you left alive in it.
+//
+// Grenades come back here, and the corridor is why. A grenade down a
+// thirty-five-square hallway is the one place in the game where the three
+// questions it costs are obviously worth answering.
+export const LEVEL7: LevelDef = (() => {
+  const W = 56, H = 36;
+  const AREAS: NonNullable<LevelDef["AREAS"]> = {
+    lift:  { r: [3, 16, 7, 20],    name: "1 Spine lift",        light: [0.84, 0.9, 1.02],  wall: "panel",    floor: "fTile",    ceil: "light" },
+    corA:  { r: [9, 17, 11, 19],   name: "",                    light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate",   ceil: "corridor" },
+    spineW:{ r: [12, 16, 27, 20],  name: "2 Spine, forward",    light: [0.72, 0.78, 0.94], wall: "hall",     floor: "fCatwalk", ceil: "grid", ceilH: 2.4 },
+    spineE:{ r: [29, 16, 46, 20],  name: "4 Spine, aft",        light: [0.72, 0.78, 0.94], wall: "hall",     floor: "fCatwalk", ceil: "grid", ceilH: 2.4 },
+    bayA:  { r: [13, 4, 22, 14],   name: "3 Port service bay",  light: [0.66, 0.72, 0.88], wall: "control",  floor: "fTile",    ceil: "light" },
+    bayB:  { r: [14, 22, 23, 32],  name: "Pump gallery",        light: [0.4, 0.46, 0.6],   wall: "pipes",    floor: "fHazard",  ceil: "dark" },
+    bayC:  { r: [30, 4, 40, 14],   name: "Starboard magazine",  light: [0.5, 0.56, 0.7],   wall: "cargo",    floor: "fHazard",  ceil: "dark" },
+    bayD:  { r: [31, 22, 43, 32],  name: "5 Signal office",     light: [0.86, 0.9, 1.04],  wall: "bridge",   floor: "fBridge",  ceil: "light" },
+    cache: { r: [42, 8, 47, 13],   name: "Deck chief's cache",  light: [0.38, 0.44, 0.58], wall: "panel",    floor: "fHazard",  ceil: "dark" },
+    dock:  { r: [48, 15, 53, 21],  name: "6 Aft lift",          light: [0.84, 0.9, 1.02],  wall: "panel",    floor: "fTile",    ceil: "light" },
+  };
+  const DOORS: NonNullable<LevelDef["DOORS"]> = [
+    { cells: [[8, 17], [8, 18], [8, 19]], tex: "door" },                       // out of the lift
+    { cells: [[16, 15], [17, 15]], tex: "door" },                              // up into the port service bay
+    { cells: [[17, 21], [18, 21]], tex: "door" },                              // down into the pump gallery
+    // the midships bulkhead: five cells across the spine, and the red card opens it
+    { cells: [[28, 16], [28, 17], [28, 18], [28, 19], [28, 20]], tex: "keyDoor", key: "red" },
+    { cells: [[35, 15], [36, 15]], tex: "door" },                              // up into the magazine
+    { cells: [[36, 21], [37, 21]], tex: "door" },                              // down into the signal office
+    { cells: [[41, 10], [41, 11]], tex: "secret", secret: true },              // the deck chief's cache
+    { cells: [[47, 17], [47, 18], [47, 19]], tex: "keyDoor", key: "blue" },    // into the aft lift
+    { cells: [[54, 17], [54, 18]], tex: "exit", exit: true },
+  ];
+  // The tram rails run down the middle of the spine; the gantries either side
+  // of them are full height, which is what stops thirty-five squares of
+  // corridor being one unbroken shooting lane.
+  const GANTRY: [number, number][] = [];
+  for (const x of [15, 21, 25, 33, 38, 43]) { GANTRY.push([x, 16], [x, 20]); }
+  const BLOCKS: NonNullable<LevelDef["BLOCKS"]> = [
+    { cells: GANTRY, tex: "core" },
+    ...([[18, 11], [36, 11], [19, 25], [38, 25]] as [number, number][]).map((c) => ({ cells: [c] as [number, number][], tex: "pillar" })),
+  ];
+  const FLOORS: NonNullable<LevelDef["FLOORS"]> = [
+    [12, 18, 46, 18, "fGrate"],                                   // the tram rail itself
+    [48, 15, 53, 15, "fHazard"], [48, 21, 53, 21, "fHazard"],
+  ];
+  const COVER: NonNullable<LevelDef["COVER"]> = [
+    // crates along the spine, alternating sides, which is what "cover to
+    // cover" actually means on a deck this long
+    ...([[14, 17], [19, 19], [23, 17], [26, 19], [31, 19], [35, 17], [40, 19], [45, 17]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[14, 9], [19, 9], [15, 13], [20, 13]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...([[15, 23], [20, 27], [16, 27]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[32, 9], [39, 9], [33, 13], [38, 13]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[33, 23], [41, 23], [34, 27], [40, 27]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    [43, 9, "crate"], [46, 12, "crate"],
+  ];
+  const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
+    if (ai === "lift" && f === FACE.E && x === 2 && y === 18) return "exit";
+    if (ai === "bayD" && f === FACE.N && y === 29) return x >= 34 && x <= 40 ? "window" : "computer";
+    if (ai === "bayC" && f === FACE.S && y === 7) return "rack";
+    // ⚠️ "hazardPanel", not "hall". `wall: "hall"` on an AREA is a PATTERN
+    // name that world.ts turns into pillar/tank/hazardPanel; WALL_OVERRIDE
+    // returns a real TEXTURE name. Returning the pattern drew nothing, and
+    // the check that caught it was written ten minutes earlier for exactly
+    // this class of mistake one file over.
+    if (ai === "spineW" && f === FACE.S && y === 15) return x % 4 === 0 ? "pillar" : "hazardPanel";
+    if (ai === "spineE" && f === FACE.N && y === 21) return x % 4 === 0 ? "pillar" : "hazardPanel";
+    return undefined;
+  };
+  const DECALS: NonNullable<LevelDef["DECALS"]> = [
+    [12, 18, FACE.E, "arrowE", true], [27, 18, FACE.E, "arrowE", true],
+    [29, 18, FACE.E, "arrowE", true], [46, 18, FACE.E, "arrowE", true],
+    [17, 15, FACE.N, "arrowN", true], [36, 21, FACE.S, "arrowS", true],
+  ];
+  const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
+    { t: "lamp", x: 3.6, y: 16.6 }, { t: "lamp", x: 7.4, y: 16.6 },
+    // the forward spine
+    { t: "alien", x: 16.5, y: 17.5, face: 3.1 }, { t: "alien", x: 20.5, y: 19.5, face: 3.1 },
+    { t: "alien", x: 24.5, y: 17.5, face: 3.1 }, { t: "alienBack", x: 26.5, y: 17.5, face: 0, stomp: true },
+    { t: "lamp", x: 18.5, y: 16.6 }, { t: "lamp", x: 24.5, y: 20.4 },
+    { t: "health", x: 13.5, y: 19.5 }, { t: "ammo", x: 22.5, y: 19.5 },
+    // the port service bay, and the red card
+    { t: "keycard", x: 17.5, y: 9.5, key: "red" },
+    { t: "alien", x: 14.5, y: 11.5, face: 0 }, { t: "alien", x: 19.5, y: 12.5, face: 3.1 },
+    { t: "alienBack", x: 16.5, y: 13.5, face: -1.57, stomp: true },
+    { t: "ammo", x: 19.5, y: 10.5 }, { t: "lamp", x: 16.5, y: 8.6 },
+    { t: "alien", x: 15.5, y: 5.5, face: 1.57 }, { t: "alien", x: 21.5, y: 6.5, face: 3.1 },
+    { t: "health", x: 21.5, y: 4.5 },
+    // the pump gallery, dark and off the route
+    { t: "alien", x: 17.5, y: 24.5, face: 1.57 }, { t: "alien", x: 19.5, y: 27.5, face: 3.1 },
+    { t: "health", x: 15.5, y: 26.5 }, { t: "canister", x: 20.4, y: 23.5 }, { t: "canister", x: 21.3, y: 23.5 },
+    { t: "alien", x: 22.5, y: 30.5, face: 3.1 },
+    // the aft spine
+    { t: "alien", x: 30.5, y: 17.5, face: 3.1 }, { t: "alien", x: 34.5, y: 19.5, face: 3.1 },
+    { t: "alien", x: 37.5, y: 17.5, face: 0 }, { t: "alien", x: 41.5, y: 19.5, face: 3.1 },
+    { t: "alien", x: 44.5, y: 17.5, face: 3.1 }, { t: "alienBack", x: 45.5, y: 19.5, face: 0, stomp: true },
+    { t: "lamp", x: 32.5, y: 16.6 }, { t: "lamp", x: 42.5, y: 20.4 },
+    { t: "ammo", x: 39.5, y: 17.5 }, { t: "health", x: 45.5, y: 16.5 },
+    // the magazine: the grenades, and what is guarding them
+    { t: "grenade", x: 34.5, y: 9.5 }, { t: "grenade", x: 37.5, y: 12.5 },
+    { t: "alien", x: 32.5, y: 12.5, face: 0 }, { t: "alien", x: 39.5, y: 11.5, face: 3.1 },
+    { t: "alien", x: 35.5, y: 5.5, face: 1.57 }, { t: "alien", x: 31.5, y: 6.5, face: 0 },
+    { t: "ammo", x: 36.5, y: 9.5 }, { t: "grenade", x: 39.5, y: 5.5 },
+    // the signal office, and the blue card
+    { t: "keycard", x: 40.5, y: 25.5, key: "blue" },
+    { t: "alien", x: 34.5, y: 25.5, face: 0 }, { t: "alien", x: 38.5, y: 22.5, face: 1.57 },
+    { t: "alienBack", x: 41.5, y: 27.5, face: -1.57, stomp: true },
+    { t: "lamp", x: 37.5, y: 22.6 }, { t: "holo", x: 35.5, y: 27.5 },
+    { t: "alien", x: 42.5, y: 30.5, face: 3.1 }, { t: "ammo", x: 32.5, y: 31.5 },
+    { t: "vest", x: 33.5, y: 27.5 },
+    // the cache behind the false wall: nothing the deck needs
+    { t: "health", x: 44.5, y: 9.5 }, { t: "health", x: 46.5, y: 11.5 }, { t: "vest", x: 44.5, y: 12.5 },
+    { t: "alien", x: 43.5, y: 11.5, face: 0 }, { t: "alien", x: 47.5, y: 9.5, face: 3.1 },
+    { t: "alien", x: 46.5, y: 13.5, face: 1.57 },
+    // the aft lift
+    { t: "lamp", x: 50.5, y: 16.5 }, { t: "alien", x: 51.5, y: 20.5, face: 3.1 },
+  ];
+  const LIGHTS = [
+    { x: 5, y: 18, rgb: [0.5, 0.6, 0.8] as [number, number, number], r: 5 },
+    { x: 18, y: 18, rgb: [0.42, 0.5, 0.68] as [number, number, number], r: 7 },
+    { x: 37, y: 18, rgb: [0.42, 0.5, 0.68] as [number, number, number], r: 7 },
+    { x: 17, y: 11, rgb: [0.4, 0.46, 0.6] as [number, number, number], r: 6 },
+    { x: 37, y: 25, rgb: [0.5, 0.56, 0.72] as [number, number, number], r: 6 },
+    { x: 50, y: 18, rgb: [0.5, 0.6, 0.8] as [number, number, number], r: 5 },
+  ];
+  const START = { x: 5.5, y: 18.5, angle: 0 };
+  // ⚠️ EVERY LEG DOWN THE SPINE RUNS AT y = 18.5, NOT y = 18. The crates sit
+  // at y = 17 and y = 19 and the player is a circle of radius 0.22, so a leg
+  // drawn exactly along the boundary at y = 18.0 reaches 0.22 into the row
+  // above and jams on a crate the floor-sample check cannot see — it samples
+  // a point, and a point on the line is in the clear. Found by walking it.
+  // Waypoints belong in the middle of a square, not on its edge.
+  const ROUTE = [[5.5, 18.5], [10, 18.5], [13, 18.5], [16.5, 18.5], [16.5, 16.5], [16.5, 13], [17.5, 10], [16.5, 13], [16.5, 16.5], [20, 18.5], [27, 18.5], [30, 18.5], [36.5, 18.5], [36.5, 20.5], [36.5, 23.5], [40.5, 25.5], [36.5, 23.5], [36.5, 20.5], [40, 18.5], [46, 18.5], [50, 18.5], [53, 18.5]];
+  const ALT_ROUTE = [[13, 18.5], [17.5, 19.5], [17.5, 21.5], [18, 26], [17.5, 21.5], [24, 18.5], [27, 18.5]];
+  const INTRO = "The spine. Thirty-five squares of straight corridor and nothing kind about it. Red card opens the bulkhead halfway down.";
+  const HINTS: NonNullable<LevelDef["HINTS"]> = {
+    spineW: "Don't walk it. Go crate to crate — they can shoot you from further than you can hit them.",
+    bayA: "Red card should be in here. Watch the one with its back turned.",
+    bayC: "Ordnance. Grenades are worth three questions down a corridor this long.",
+    bayD: "Blue card's on the desk. That opens the aft lift.",
+    bayB: "Dark down here, and nothing the deck needs. Up to you.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Find the red keycard", at: [17.5, 9.5], until: "keycard", key: "red" },
+    { text: "Find the blue keycard", at: [40.5, 25.5], until: "keycard", key: "blue" },
+    { text: "Reach the aft lift", at: [50.5, 18] },
+  ];
+  const LOCKED_HINTS = {
+    red: "Midships bulkhead. The red card's in the port service bay, back up the spine on your left.",
+    blue: "Aft lift. The blue card's in the signal office, south side of the spine.",
+  };
+  const LABELS = [
+    { text: "Thirty-five squares, straight", at: [29, 14] },
+    { text: "Red card", at: [17, 7] },
+    { text: "Blue card", at: [40, 29] },
+  ];
+  const LEGEND = "Two keycards, one corridor, three times.";
+  return { INTRO, HINTS, OBJECTIVES, LOCKED_HINTS, TITLE: "Level 7 — The Spine", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
+})();
+
+
+
+// Level 8: "Cryo bay" — four halls of stasis pods, the lights down to
+// emergency level, and NOT ONE ROUND OF AMMUNITION PLACED ANYWHERE ON THE
+// DECK. That is the whole design, and it is the most honest level in the
+// game: every shot you fire here you answered a question for, or took off
+// something you killed with the knife. The cargo hold asked you to move
+// quietly; this one asks you to have been paying attention.
+//
+// The pods are full-height blocks in rows, and the rows of one hall do not
+// line up with the rows of the next — the same trick as the hydroponics
+// racks, except the lights are off as well, so the aisles hide you properly
+// and you cannot see what is coming down them.
+export const LEVEL8: LevelDef = (() => {
+  const W = 58, H = 38;
+  const AREAS: NonNullable<LevelDef["AREAS"]> = {
+    lift:  { r: [3, 17, 7, 21],   name: "1 Cryo lift",       light: [0.6, 0.66, 0.8],   wall: "panel",    floor: "fTile",   ceil: "light" },
+    corW:  { r: [9, 8, 12, 30],   name: "",                  light: [0.3, 0.34, 0.46],  wall: "corridor", floor: "fGrate",  ceil: "dark" },
+    hallA: { r: [14, 6, 27, 18],  name: "2 Cryo hall A",     light: [0.26, 0.3, 0.44],  wall: "cargo",    floor: "fTile",   ceil: "dark" },
+    hallB: { r: [14, 21, 27, 33], name: "3 Cryo hall B",     light: [0.26, 0.3, 0.44],  wall: "cargo",    floor: "fTile",   ceil: "dark" },
+    walk:  { r: [29, 6, 33, 33],  name: "4 Control walk",    light: [0.42, 0.47, 0.6],  wall: "control",  floor: "fCatwalk", ceil: "grid" },
+    hallC: { r: [35, 6, 48, 18],  name: "5 Cryo hall C",     light: [0.24, 0.28, 0.42], wall: "cargo",    floor: "fTile",   ceil: "dark" },
+    hallD: { r: [35, 21, 48, 33], name: "6 Revival bay",     light: [0.34, 0.38, 0.52], wall: "control",  floor: "fTile",   ceil: "dark" },
+    store: { r: [36, 1, 45, 4],   name: "Medical store",     light: [0.3, 0.34, 0.48],  wall: "panel",    floor: "fTile",   ceil: "dark" },
+    ctrl:  { r: [50, 21, 55, 28], name: "7 Cryo control",    light: [0.7, 0.75, 0.9],   wall: "bridge",   floor: "fBridge", ceil: "light" },
+  };
+  const DOORS: NonNullable<LevelDef["DOORS"]> = [
+    { cells: [[8, 18], [8, 19], [8, 20]], tex: "door" },
+    { cells: [[13, 11], [13, 12]], tex: "door" },
+    { cells: [[13, 26], [13, 27]], tex: "door" },
+    { cells: [[28, 11], [28, 12]], tex: "door" },
+    { cells: [[28, 26], [28, 27]], tex: "door" },
+    { cells: [[34, 11], [34, 12]], tex: "door" },
+    { cells: [[34, 26], [34, 27]], tex: "door" },
+    { cells: [[40, 5], [41, 5]], tex: "secret", secret: true },
+    { cells: [[49, 24], [49, 25]], tex: "keyDoor", key: "blue" },
+    { cells: [[56, 24], [56, 25]], tex: "exit", exit: true },
+  ];
+  // The pod rows. ⚠️ The gaps in one hall never line up with the gaps in the
+  // next, so an aisle that hides you from the room you are in shows you to
+  // the room you are walking into — the hydroponics rule, in the dark.
+  const pods = (x0: number, x1: number, rows: [number, number][]) => {
+    const cells: [number, number][] = [];
+    for (const [y, gap] of rows) for (let x = x0; x <= x1; x++) if (x < gap || x > gap + 1) cells.push([x, y]);
+    return cells;
+  };
+  const BLOCKS: NonNullable<LevelDef["BLOCKS"]> = [
+    { cells: pods(15, 26, [[8, 19], [12, 23], [16, 17]]), tex: "cryo" },
+    { cells: pods(15, 26, [[23, 17], [27, 21], [31, 25]]), tex: "cryo" },
+    { cells: pods(36, 47, [[8, 43], [12, 37], [16, 41]]), tex: "cryo" },
+    { cells: pods(36, 47, [[24, 39], [28, 44], [32, 36]]), tex: "cryo" },
+  ];
+  const FLOORS: NonNullable<LevelDef["FLOORS"]> = [
+    [29, 6, 33, 6, "fHazard"], [29, 33, 33, 33, "fHazard"],
+    [50, 21, 55, 21, "fGrate"],
+  ];
+  const COVER: NonNullable<LevelDef["COVER"]> = [
+    ...([[16, 10], [25, 14], [18, 14], [24, 10]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[16, 25], [25, 29], [21, 33], [17, 29]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[37, 10], [46, 14], [39, 14], [45, 10]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[36, 30], [46, 30], [41, 33], [44, 23]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...([[30, 9], [32, 20], [30, 31]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    [51, 27, "console"], [54, 23, "console"],
+  ];
+  const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
+    if (ai === "lift" && f === FACE.E && x === 2 && y === 19) return "exit";
+    if (ai === "ctrl" && f === FACE.N && y === 29) return x >= 51 && x <= 54 ? "window" : "computer";
+    if (ai === "hallA" && f === FACE.S && y === 5) return "cryo";
+    if (ai === "hallC" && f === FACE.N && y === 19) return "cryo";
+    if (ai === "walk" && f === FACE.W && x === 34 && y >= 19 && y <= 20) return "cargo";
+    return undefined;
+  };
+  const DECALS: NonNullable<LevelDef["DECALS"]> = [
+    [10, 19, FACE.N, "arrowN", true], [13, 11, FACE.E, "arrowE", true],
+    [28, 11, FACE.E, "arrowE", true], [31, 20, FACE.S, "arrowS", true],
+    [34, 26, FACE.E, "arrowE", true],
+  ];
+  const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
+    { t: "lamp", x: 3.6, y: 17.6 }, { t: "lamp", x: 7.4, y: 17.6 },
+    // the west corridor
+    { t: "alien", x: 10.5, y: 14.5, face: 1.57 }, { t: "alienBack", x: 10.5, y: 24.5, face: -1.57, stomp: true },
+    { t: "health", x: 11.5, y: 9.5 },
+    // hall A
+    { t: "alien", x: 17.5, y: 7.5, face: 0 }, { t: "alien", x: 22.5, y: 10.5, face: 3.1 },
+    { t: "alien", x: 16.5, y: 13.5, face: 1.57 }, { t: "alien", x: 25.5, y: 17.5, face: 3.1 },
+    { t: "alienBack", x: 20.5, y: 17.5, face: -1.57, stomp: true }, { t: "alien", x: 19.5, y: 11.5, face: 0 },
+    { t: "lamp", x: 20.5, y: 6.6 }, { t: "canister", x: 26.4, y: 7.5 },
+    // hall B
+    { t: "alien", x: 16.5, y: 22.5, face: 0 }, { t: "alien", x: 23.5, y: 25.5, face: 3.1 },
+    { t: "alien", x: 19.5, y: 30.5, face: 1.57 }, { t: "alien", x: 26.5, y: 32.5, face: 3.1 },
+    { t: "alienBack", x: 15.5, y: 32.5, face: 0, stomp: true },
+    { t: "vest", x: 22.5, y: 29.5 }, { t: "canister", x: 26.4, y: 22.5 },
+    // the control walk, the one lit strip on the deck
+    { t: "alien", x: 31.5, y: 8.5, face: 1.57 }, { t: "alien", x: 31.5, y: 16.5, face: 1.57 },
+    { t: "alien", x: 31.5, y: 24.5, face: -1.57 }, { t: "alien", x: 31.5, y: 31.5, face: -1.57 },
+    { t: "lamp", x: 30.5, y: 12.5 }, { t: "lamp", x: 30.5, y: 28.5 }, { t: "holo", x: 32.5, y: 18.5 },
+    // hall C, the darkest room in the game
+    { t: "alien", x: 38.5, y: 7.5, face: 0 }, { t: "alien", x: 44.5, y: 10.5, face: 3.1 },
+    { t: "alien", x: 40.5, y: 14.5, face: 1.57 }, { t: "alien", x: 46.5, y: 17.5, face: 3.1 },
+    { t: "alienBack", x: 36.5, y: 17.5, face: 0, stomp: true }, { t: "alien", x: 43.5, y: 6.5, face: 1.57 },
+    { t: "health", x: 47.5, y: 7.5 },
+    // the revival bay, and the blue card
+    { t: "keycard", x: 45.5, y: 31.5, key: "blue" },
+    { t: "alien", x: 37.5, y: 22.5, face: 0 }, { t: "alien", x: 42.5, y: 25.5, face: 3.1 },
+    { t: "alien", x: 46.5, y: 27.5, face: 3.1 }, { t: "alien", x: 39.5, y: 31.5, face: 1.57 },
+    { t: "alienBack", x: 47.5, y: 22.5, face: 3.1, stomp: true },
+    { t: "lamp", x: 41.5, y: 21.6 }, { t: "holo", x: 43.5, y: 29.5 },
+    // the medical store, behind the false wall
+    { t: "health", x: 38.5, y: 2.5 }, { t: "health", x: 43.5, y: 3.5 }, { t: "vest", x: 41.5, y: 2.5 },
+    { t: "alien", x: 37.5, y: 3.5, face: 0 }, { t: "alien", x: 44.5, y: 2.5, face: 3.1 },
+    // cryo control
+    { t: "lamp", x: 52.5, y: 22.5 }, { t: "alien", x: 53.5, y: 26.5, face: 3.1 },
+    { t: "alien", x: 51.5, y: 22.5, face: 1.57 },
+  ];
+  const LIGHTS = [
+    { x: 5, y: 19, rgb: [0.38, 0.44, 0.58] as [number, number, number], r: 4 },
+    { x: 31, y: 12, rgb: [0.3, 0.34, 0.46] as [number, number, number], r: 6 },
+    { x: 31, y: 28, rgb: [0.3, 0.34, 0.46] as [number, number, number], r: 6 },
+    { x: 41, y: 27, rgb: [0.26, 0.3, 0.42] as [number, number, number], r: 5 },
+    { x: 52, y: 24, rgb: [0.5, 0.56, 0.7] as [number, number, number], r: 5 },
+  ];
+  const START = { x: 5.5, y: 19.5, angle: 0 };
+  // ⚠️ The aisles are at y = 9-11, 13-15 and so on; the pod rows sit at 8, 12
+  // and 16, and the gaps in them never line up between halls. Every leg below
+  // stays in an aisle or goes through a gap on purpose — the route is the
+  // signposted way through, so it has to be a way you can actually walk.
+  const ROUTE = [[5.5, 19.5], [10.5, 19.5], [10.5, 12], [14, 11.5], [19, 11.5], [24, 11.5], [28.5, 11.5], [31, 12], [31, 20], [31, 26.5], [34.5, 26.5], [40, 26.5], [44.5, 26.5], [44.5, 31], [45.5, 31.5], [44.5, 31], [44.5, 26.5], [48, 24.5], [52, 24.5], [55, 24.5]];
+  const ALT_ROUTE = [[10.5, 19.5], [10.5, 26.5], [14, 26.5], [20, 26], [26, 26.5], [28.5, 26.5], [31, 26.5]];
+  const INTRO = "Cryo bay. Nobody stocked a crypt, so there is no ammunition down here — every round comes from a question.";
+  const HINTS: NonNullable<LevelDef["HINTS"]> = {
+    hallA: "Pods are solid. Use the aisles, and remember the next hall's rows don't line up with these.",
+    walk: "The walk's the only lit thing on the deck. Crossing it, you're visible.",
+    hallC: "Darkest room on the ship. Stand still and they won't see you at four squares.",
+    hallD: "Blue card's in here. So are five of them.",
+    corW: "Lights are on emergency only. Walk, don't run.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Find the blue keycard", at: [45.5, 31.5], until: "keycard", key: "blue" },
+    { text: "Reach cryo control", at: [52.5, 24.5] },
+  ];
+  const LOCKED_HINT = "Locked. The blue card is in the revival bay, south-east of the control walk.";
+  const LABELS = [
+    { text: "No ammunition on this deck", at: [21, 19.5] },
+    { text: "Blue card", at: [45, 35] },
+  ];
+  const LEGEND = "Four halls, no ammunition, emergency lighting.";
+  return { INTRO, HINTS, OBJECTIVES, LOCKED_HINT, TITLE: "Level 8 — Cryo bay", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
+})();
+
+
+
+// Level 9: "Observation deck" — the last deck before the boss, the biggest
+// in the game, and the one that inverts the rule deck 4 taught you.
+//
+// Two spans of it are open to space. There is no air out there, SO NOTHING
+// YOU DO MAKES A SOUND ANYONE CAN HEAR: you can empty the rifle in the
+// breach and not one of them comes looking, which is the only place in nine
+// decks that is true. It is paid for exactly where you would want it to be —
+// there is almost no cover out there and the starlight has you lit from one
+// end to the other, so you are seen from further away than anywhere else in
+// the game. The cargo hold was quiet and blind. This is loud and naked. Both
+// keycards are out in it, so there is no way round either span.
+//
+// The pressurised middle run between the two breaches is the only place on
+// the deck where the ordinary rules apply, which makes a three-square-wide
+// corridor the safest ground on the ship.
+export const LEVEL9: LevelDef = (() => {
+  const W = 60, H = 40;
+  const AREAS: NonNullable<LevelDef["AREAS"]> = {
+    lift:    { r: [3, 18, 7, 22],    name: "1 Observation lift",      light: [0.84, 0.9, 1.02],  wall: "panel",    floor: "fTile",    ceil: "light" },
+    corA:    { r: [9, 19, 13, 21],   name: "",                        light: [0.6, 0.66, 0.82],  wall: "corridor", floor: "fGrate",   ceil: "corridor" },
+    gallery: { r: [15, 8, 29, 31],   name: "2 Observation gallery",   light: [0.78, 0.84, 1.0],  wall: "obs",      floor: "fBridge",  ceil: "grid", ceilH: 2.6 },
+    cache:   { r: [17, 2, 24, 6],    name: "Curator's room",          light: [0.38, 0.44, 0.58], wall: "panel",    floor: "fTile",    ceil: "dark" },
+    // ⚠️ `vacuum: true` is the whole new rule, and it is one word on the area
+    // rather than anything in world.ts — game.ts asks the area a cell belongs
+    // to. `ceil: "stars"` is a PATTERN name, not a texture name; the ceiling
+    // patterns live in world.ts and "stars" is the one that maps to cStars.
+    breachN: { r: [31, 5, 46, 17],   name: "3 Breached span, north",  light: [0.56, 0.62, 0.82], wall: "obs",      floor: "fHazard",  ceil: "stars", ceilH: 3.4, vacuum: true },
+    mid:     { r: [31, 19, 46, 21],  name: "4 Airlock run",           light: [0.74, 0.8, 0.96],  wall: "control",  floor: "fAirlock", ceil: "light" },
+    breachS: { r: [31, 23, 46, 35],  name: "5 Breached span, south",  light: [0.56, 0.62, 0.82], wall: "obs",      floor: "fHazard",  ceil: "stars", ceilH: 3.4, vacuum: true },
+    dome:    { r: [48, 16, 56, 24],  name: "6 Sensor dome",           light: [0.88, 0.92, 1.06], wall: "bridge",   floor: "fBridge",  ceil: "light" },
+  };
+  const DOORS: NonNullable<LevelDef["DOORS"]> = [
+    { cells: [[8, 19], [8, 20], [8, 21]], tex: "door" },
+    { cells: [[14, 19], [14, 20], [14, 21]], tex: "door" },
+    { cells: [[20, 7], [21, 7]], tex: "secret", secret: true },               // the curator's room
+    { cells: [[30, 19], [30, 20], [30, 21]], tex: "door" },                   // into the airlock run
+    { cells: [[36, 18], [37, 18]], tex: "door" },                             // out into the north breach
+    // ⚠️ The south airlock is RED-LOCKED, which is what makes both spans
+    // compulsory: the red card is out in the north breach, and the blue card
+    // that opens the dome is out in the south one. A red card that opened
+    // nothing was the first version, and a check caught it — a keycard with
+    // no lock is a level telling you to go somewhere for no reason.
+    { cells: [[36, 22], [37, 22]], tex: "keyDoor", key: "red" },              // and the south one
+    { cells: [[47, 19], [47, 20]], tex: "keyDoor", key: "blue" },             // into the sensor dome
+    { cells: [[57, 19], [57, 20]], tex: "exit", exit: true },
+  ];
+  // Torn hull plating out in the breaches. ⚠️ SIX PIECES, where the first
+  // version had twelve, and the difference is the whole deck. Twelve made
+  // the breached spans the best-covered rooms on the level — 3.8% of their
+  // floor behind something against 2.8% inside — which is the exact opposite
+  // of what they are for. Seen on the rendered map; the check that should
+  // have caught it was counting waist-high cover only and ignoring the
+  // full-height wreckage, which is the kind of thing that hides you most.
+  // Three per span, plus two crates, over two rooms of 16 by 13.
+  const WRECK: [number, number][] = [[34, 8], [44, 12], [39, 15], [40, 25], [33, 32], [45, 28]];
+  const BLOCKS: NonNullable<LevelDef["BLOCKS"]> = [
+    { cells: WRECK, tex: "upperHull" },
+    ...([[18, 12], [26, 12], [18, 27], [26, 27], [22, 19]] as [number, number][]).map((c) => ({ cells: [c] as [number, number][], tex: "pillar" })),
+  ];
+  const FLOORS: NonNullable<LevelDef["FLOORS"]> = [
+    [31, 19, 46, 19, "fHazard"], [31, 21, 46, 21, "fHazard"],   // the painted edge of the airlock run
+    [15, 19, 29, 21, "fGrate"],
+  ];
+  const COVER: NonNullable<LevelDef["COVER"]> = [
+    ...([[17, 10], [27, 10], [17, 29], [27, 29], [20, 16], [24, 23]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+    ...([[16, 23], [28, 16]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    // four crates in sixteen by thirteen squares, each way out in the open
+    ...([[37, 10], [43, 9], [36, 29], [42, 31]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    [50, 22, "console"], [55, 18, "console"], [18, 4, "crate"],
+  ];
+  const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
+    if (ai === "lift" && f === FACE.E && x === 2 && y === 20) return "exit";
+    if (ai === "dome" && f === FACE.N && y === 25) return x >= 50 && x <= 54 ? "window" : "computer";
+    if (ai === "breachN" && f === FACE.S && y === 4) return x % 2 === 0 ? "window" : "upperHull";
+    if (ai === "breachS" && f === FACE.N && y === 36) return x % 2 === 0 ? "window" : "upperHull";
+    if (ai === "gallery" && f === FACE.W && x === 14 && (y < 19 || y > 21)) return "window";
+    return undefined;
+  };
+  const DECALS: NonNullable<LevelDef["DECALS"]> = [
+    [14, 20, FACE.E, "arrowE", true], [30, 20, FACE.E, "arrowE", true],
+    [36, 18, FACE.N, "arrowN", true], [36, 22, FACE.S, "arrowS", true],
+    [46, 20, FACE.E, "arrowE", true],
+  ];
+  const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
+    { t: "lamp", x: 3.6, y: 18.6 }, { t: "lamp", x: 7.4, y: 18.6 },
+    // the gallery: pressurised, lit, and the last ordinary room on the ship
+    { t: "alien", x: 17.5, y: 13.5, face: 0 }, { t: "alien", x: 22.5, y: 10.5, face: 1.57 },
+    { t: "alien", x: 27.5, y: 15.5, face: 3.1 }, { t: "alien", x: 19.5, y: 24.5, face: 0 },
+    { t: "alien", x: 25.5, y: 28.5, face: 3.1 }, { t: "alien", x: 16.5, y: 19.5, face: 0 },
+    { t: "alienBack", x: 28.5, y: 24.5, face: 0, stomp: true }, { t: "alien", x: 23.5, y: 31.5, face: -1.57 },
+    { t: "lamp", x: 22.5, y: 8.6 }, { t: "lamp", x: 22.5, y: 31.4 }, { t: "holo", x: 21.5, y: 20.5 },
+    { t: "ammo", x: 16.5, y: 10.5 }, { t: "health", x: 28.5, y: 30.5 }, { t: "ammo", x: 27.5, y: 20.5 },
+    // the curator's room, behind the false wall
+    { t: "health", x: 19.5, y: 3.5 }, { t: "vest", x: 22.5, y: 3.5 }, { t: "ammo", x: 23.5, y: 5.5 },
+    { t: "alien", x: 18.5, y: 2.5, face: 0 }, { t: "alien", x: 23.5, y: 2.5, face: 3.1 },
+    // the north breach, and the red card out in the middle of it
+    { t: "keycard", x: 39.5, y: 11.5, key: "red" },
+    { t: "alien", x: 33.5, y: 7.5, face: 0 }, { t: "alien", x: 37.5, y: 6.5, face: 1.57 },
+    { t: "alien", x: 42.5, y: 10.5, face: 3.1 }, { t: "alien", x: 35.5, y: 13.5, face: 0 },
+    { t: "alien", x: 44.5, y: 15.5, face: 3.1 }, { t: "alien", x: 40.5, y: 16.5, face: -1.57 },
+    { t: "alien", x: 45.5, y: 6.5, face: 3.1 },
+    { t: "alien", x: 38.5, y: 8.5, face: 3.1 }, { t: "alien", x: 31.5, y: 11.5, face: 0 },
+    { t: "alien", x: 43.5, y: 17.5, face: 3.1 }, { t: "alien", x: 36.5, y: 16.5, face: -1.57 },
+    { t: "ammo", x: 33.5, y: 16.5 }, { t: "health", x: 45.5, y: 11.5 },
+    // the airlock run: three squares wide, and the only safe ground out here
+    { t: "lamp", x: 33.5, y: 20.5 }, { t: "lamp", x: 44.5, y: 20.5 },
+    { t: "alien", x: 39.5, y: 20.5, face: 3.1 }, { t: "vest", x: 32.5, y: 20.5 },
+    // the south breach, and the blue card
+    { t: "keycard", x: 40.5, y: 29.5, key: "blue" },
+    { t: "alien", x: 33.5, y: 24.5, face: 0 }, { t: "alien", x: 38.5, y: 26.5, face: 1.57 },
+    { t: "alien", x: 43.5, y: 25.5, face: 3.1 }, { t: "alien", x: 35.5, y: 31.5, face: 0 },
+    { t: "alien", x: 45.5, y: 32.5, face: 3.1 }, { t: "alien", x: 41.5, y: 34.5, face: -1.57 },
+    { t: "alien", x: 32.5, y: 34.5, face: 0 }, { t: "alienBack", x: 46.5, y: 29.5, face: 3.1, stomp: true },
+    { t: "alien", x: 37.5, y: 23.5, face: 1.57 }, { t: "alien", x: 44.5, y: 29.5, face: 3.1 },
+    { t: "alien", x: 39.5, y: 32.5, face: -1.57 }, { t: "alien", x: 31.5, y: 27.5, face: 0 },
+    { t: "ammo", x: 46.5, y: 24.5 }, { t: "health", x: 32.5, y: 28.5 },
+    // the sensor dome
+    { t: "lamp", x: 50.5, y: 17.5 }, { t: "holo", x: 53.5, y: 20.5 },
+    { t: "alien", x: 52.5, y: 23.5, face: 3.1 }, { t: "alien", x: 55.5, y: 20.5, face: 3.1 },
+    { t: "health", x: 49.5, y: 23.5 },
+  ];
+  const LIGHTS = [
+    { x: 5, y: 20, rgb: [0.5, 0.6, 0.8] as [number, number, number], r: 5 },
+    { x: 22, y: 14, rgb: [0.46, 0.52, 0.7] as [number, number, number], r: 8 },
+    { x: 22, y: 26, rgb: [0.46, 0.52, 0.7] as [number, number, number], r: 8 },
+    { x: 38, y: 11, rgb: [0.34, 0.4, 0.58] as [number, number, number], r: 9 },
+    { x: 38, y: 29, rgb: [0.34, 0.4, 0.58] as [number, number, number], r: 9 },
+    { x: 38, y: 20, rgb: [0.5, 0.56, 0.72] as [number, number, number], r: 7 },
+    { x: 52, y: 20, rgb: [0.52, 0.6, 0.8] as [number, number, number], r: 6 },
+  ];
+  const START = { x: 5.5, y: 20.5, angle: 0 };
+  const ROUTE = [[5.5, 20.5], [11, 20], [15, 20], [22, 20], [29, 20], [33, 20], [36.5, 20], [36.5, 17], [38, 14], [39.5, 11.5], [38, 14], [36.5, 17], [36.5, 20], [36.5, 23], [38, 26], [40.5, 29.5], [38, 26], [36.5, 23], [36.5, 20], [42, 20], [46, 20], [50, 20], [55, 20]];
+  const ALT_ROUTE = [[15, 20], [18, 14], [22, 10], [26, 14], [28, 19], [29, 20]];
+  const INTRO = "Observation deck. Two spans are open to space — no air, so no sound. They can't hear you out there. They can see you fine.";
+  const HINTS: NonNullable<LevelDef["HINTS"]> = {
+    gallery: "Pressurised in here, so the usual rules: they hear what you do.",
+    breachN: "No air. Fire all you like, nothing comes looking — but there's no cover and the stars have you lit.",
+    mid: "Airlock run. Three squares of normal ship between the two breaches.",
+    breachS: "Blue card's out in the open down here. It isn't an accident.",
+    dome: "Last lift before the hangar deck. Whatever's down there, this is where you decide you're ready.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Find the red keycard", at: [39.5, 11.5], until: "keycard", key: "red" },
+    { text: "Find the blue keycard", at: [40.5, 29.5], until: "keycard", key: "blue" },
+    { text: "Reach the sensor dome", at: [52, 20] },
+  ];
+  const LOCKED_HINTS = {
+    red: "South airlock. The red card is out in the north breach — through the other door.",
+    blue: "Sensor dome. Blue card's in the south breach, through the other airlock.",
+  };
+  const LABELS = [
+    { text: "No air — no sound, no cover", at: [38, 3] },
+    { text: "Red card", at: [39, 18] },
+    { text: "Blue card", at: [40, 37] },
+  ];
+  const LEGEND = "Loud and naked, where the cargo hold was quiet and blind.";
+  return { INTRO, HINTS, OBJECTIVES, LOCKED_HINTS, TITLE: "Level 9 — Observation deck", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
+})();
+
+export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6, LEVEL7, LEVEL8, LEVEL9];
