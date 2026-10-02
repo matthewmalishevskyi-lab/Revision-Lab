@@ -1,5 +1,103 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The deck runs at a third while you answer (2026-10-02, evening)
+
+Matthew: *"how about we slow the game 3 times when the player is reloading"*.
+
+### Why it is the right change and not just a kindness
+
+Reloading is the only thing in the game that makes you stop and think, and
+the world ran at full speed while you did it. So the correct play on a hard
+question was to **guess** — read nothing, pick a button, get back to cover —
+and the one mechanic that exists to make this a revision site was the one the
+game punished you for using properly. That gets worse every time the
+ammunition economy gets tighter, and this afternoon it got a lot tighter.
+
+`RELOAD_SLOW = 3`. One line does it: `frame()` hands `update()` a third of a
+second while the mode is `reload`, so the aliens, the bolts, the grenade
+fuses and your own head bob all slow together. Nothing had to be threaded
+through `update()` — the same trick the grenade freeze already uses, one step
+short of stopping.
+
+### ⚠️ IT SLOWS THE WORLD, NOT THE CLOCKS
+
+This is the whole design, and without it the feature is an exploit wearing a
+nice idea. Three clocks keep REAL time while the deck crawls:
+
+- **the question's own ten seconds**, or a slowed world quietly hands you
+  thirty seconds to think and the timer stops meaning anything;
+- **the 3.2-second hold on the model answer**, same reason;
+- ⚠️ **the run clock**, which is 30 of the 100 marks on a deck. Slow that with
+  the world and pressing R becomes a way to beat par — reloading would pay
+  you. That is the exact bug the grenade freeze had to be rescued from last
+  week, and it would have come straight back.
+
+So a reload costs precisely what it cost yesterday on the scoreboard. It is
+only **survivable** now, not cheap. Measured in a browser: an alerted alien
+covers 1.620 squares in 1.2 s of play and 0.540 while you answer — 3.00x —
+while the run clock advances 1.000 s in both.
+
+⚠️ **The run clock had to MOVE to make that true.** It was ticked inside
+`update()`, which is exactly the function being handed a third of a second.
+It lives in `frame()` now, beside the grenade line that was already there for
+the same reason.
+
+### A gift you cannot see is as bad as a limit you cannot see
+
+The first thing anyone thinks when the picture crawls is that the game has
+frozen. So the mascot says it the first time — *"Thinking time — the deck
+runs at a third speed while a reload question is up. Your own clock
+doesn't"* — and the panel carries a **WORLD AT 1/3** chip for as long as it
+is up, on the thing the eye is already reading rather than in a corner. Same
+argument the SEEN bar settled for exposure and the knife pips for the edge.
+
+A stomp and a grenade are unchanged: both still stop the deck dead. Three
+speeds for three panels, and each one is the honest answer to what that panel
+is asking of you — a stomp is five seconds on an easy question with your foot
+already raised, a grenade is three questions you chose to ask for, and a
+reload is the one you did not choose.
+
+### ⚠️ The check broke on correct code, which is its own lesson
+
+The grenade-freeze rule matched a literal line —
+`if (mode === "play" || mode === "reload") this.update(dt);` — because that
+was the line the day it was written. The rule was still TRUE after this
+change; the string had just moved. **A check pinned to a spelling fails on
+correct code the first time the code is correct in a new way.**
+
+It asserts on the SHAPE of `frame()` now: every call to `update()` must be
+guarded by play or reload, and none may be reachable in `"nade"`. No layout
+change can fool that, and it survives the next mode someone adds. Four new
+rules for the slowdown itself, one per way it could quietly become free.
+
+**Verified.** `npm run check` fully green — 188,027 content, 1,239,302
+geometry, **5,045** security, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge, 25,469
+game-question and 248 ship's-log checks; `tsc` and `eslint` clean. Six
+sabotages against the new rules, six caught. In a browser: **13 new checks**
+driving the real game with its frame loop cancelled — the alien's travel
+measured in both modes, a bolt already in the air slowed by the same third
+(so it is the world and not just the aliens), all three clocks on real time,
+the grenade freeze still a complete freeze at 0.000 squares, the stomp
+unchanged, and the chip drawn only while a slowed panel is up — plus the
+existing 45 game, 50 weapon, 42 grenade, 27 deck-7-to-9, 13 economy, 18
+route-walk, 37 title-card and 18 quiz-panel checks, no console errors.
+
+⚠️ **Two of those new checks were the harness first.** Driving `frame()` by
+hand without cancelling the animation frame it schedules on its way out
+leaves the real loop running underneath the measurement — the exact thing the
+harness cancels it to avoid. And the first run left each test's quiz up for
+the next one, so the "play" bolt measurement was secretly taken in `reload`
+and the check cheerfully reported a third against a third as equal. Both were
+reporting correct code as broken; neither was the game.
+
+**Still open, and this is the fourth time of asking:** the grade. Clearing a
+deck answering nothing is still an A. The modelled fix (accuracy 35,
+questions answered 30, aliens 20, pace 15) turns that into a C and makes a
+40-question run an A — written up in
+`claude/game-more-revision-less-shooting.md` with two others he has not
+picked.
+
 ## The cheapest way through a deck now goes through the questions (2026-10-02, later)
 
 Matthew: *"how about we get rid of nearly all of the ammo dropped on the floor
