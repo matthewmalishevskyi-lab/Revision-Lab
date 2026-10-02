@@ -1,5 +1,170 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Three decks before the boss: the Spine, the Cryo bay, the Observation deck (2026-10-02)
+
+Matthew, after we dropped multiplayer for now: *"add three more levels… they
+have to be theme based but they should be increasingly harder and bigger then
+the other ones because they will be leading to the boss level. They should
+also be based around some place like we did with cargo hold and the reactor.
+So off you go."* Themes were mine to pick; he was out, so every choice below
+was made rather than asked about.
+
+### "Bigger and harder" is a claim, so it is measured
+
+Off the built world, not off the design notes:
+
+    deck              size   open  aliens  route  par  ammo  light
+    ─ the first six ──────────────────────────────────────────────
+    Boarding          46x33   557     13     89   102    5    0.86
+    Meltdown          46x31   583     13     91   105    3    0.83
+    Crew deck         44x30   447     13     59    68    3    0.75
+    Cargo hold        46x30   534     15     64    74    4    0.49
+    Flight deck       50x34   736     23     77    89    7    0.91
+    Hydroponics       46x32   521     25     70    81    7    0.72
+    ─ the three new ones ─────────────────────────────────────────
+    The Spine         56x36   750     30     81    93    5    0.84
+    Cryo bay          58x38   953     32     83    96    0    0.36
+    Observation deck  60x40   974     36     89   103    5    0.78
+
+Every one is bigger in open floor and busier than **all six** before it, and
+the three climb among themselves. There is a permanent check on that now.
+
+⚠️ **It caught the first version of the spine immediately.** 56x36 is the
+biggest grid in the game and it had **less open floor than the flight deck** —
+a long corridor with almost everything either side of it solid. From inside it
+looks enormous, which is exactly why a measurement was needed. The four
+service bays roughly doubled in size and it came out at 750.
+
+### Deck 7 — The Spine: the first deck about DISTANCE
+
+The longest clear sight line in decks 1 to 6 is about fourteen squares. The
+spine is thirty-five, five wide and dead straight. You get shot at from
+further than you can reliably shoot back, so the way through is cover to
+cover rather than room to room — the first real use the rifle has had.
+
+Two keycards, which is new. Red opens the midships bulkhead halfway down and
+blue opens the lift at the far end, so the deck is a there-and-back: you walk
+the same corridor three times and it is never the same corridor twice, because
+of what you left alive in it. Grenades come back here, and a thirty-five-square
+hallway is the one place where the three questions one costs are obviously
+worth answering.
+
+### Deck 8 — Cryo bay: not one round of ammunition
+
+`ammo` 0 in the table above, and it is the entire design. Every shot fired on
+this deck was answered for, or taken off something killed with the knife.
+Med-kits are still placed, so it is hard rather than unfair.
+
+Mean light **0.36** against the cargo hold's 0.49 — the darkest deck there has
+been. Four halls of stasis pods as full-height blocks, and the gaps in one
+hall's rows never line up with the next, so an aisle that hides you from the
+room you are in shows you to the room you are walking into. That is the
+hydroponics rule with the lights off.
+
+### Deck 9 — Observation deck: loud and naked
+
+Two spans are open to space. **There is no air, so nothing you do makes a
+sound anyone can hear** — you can empty the rifle out there and not one of
+them comes looking, and a grenade is silent too. It is the only place in nine
+decks where that is true, and it is paid for exactly where it should be:
+almost no cover, and the stars have you lit from one end to the other. Deck 4
+was quiet and blind; this is loud and naked. Both keycards are out in the
+spans, so neither can be skipped, and the three-square pressurised run between
+them is the safest ground on the deck.
+
+⚠️ **Vacuum had to be a FLOOR on exposure, not a bonus.** The first version
+added 0.3 and measured out at **0.51 standing still in the breach against 0.45
+in the lit room next door** — six hundredths, which nobody would ever feel,
+because the baked light at the edges of a breached span is low and 0.3 was
+being added to a small number. The stars are not a lamp with falloff. As a
+floor the rule is one you can say out loud: step outside and you are seen from
+**ten squares**, against four standing still in a dark aisle on deck 4.
+
+⚠️ **And the wreckage had to come down from twelve pieces to six.** Twelve
+made the breached spans the best-covered rooms on the level — 3.8% of their
+floor behind something against 2.8% inside — which is the exact opposite of
+what they are for. **Seen on the rendered map**, and the check that should
+have caught it was counting waist-high cover while ignoring full-height
+wreckage, which is the kind of thing that hides you most. Drawing the map is
+not decoration; it is the only view that shows the deck the way a player
+stands in it.
+
+### Two small engine pieces, each one word in the level data
+
+**A second keycard colour.** `key` was already a string on a door; everything
+else was hardcoded — the pickup always added "blue", the compass always asked
+for "blue", the visor drew one blue chip, and `LOCKED_HINT` was one sentence
+per level. All four read the colour off the level now and default to blue, so
+the six earlier decks are byte-identical in behaviour. ⚠️ A deck with two locks
+needs two sentences; one saying "find the keycard" at both sends you thirty-five
+squares the wrong way. And the red card gets its own sprite rather than a tint,
+because the atlas is baked once and read as raw pixels — there is no per-draw
+colour, and a red card drawn blue is a level telling you to find something that
+does not look like the thing you find.
+
+**`vacuum: true` on an area**, read by asking which area a cell belongs to, so
+world.ts did not change at all.
+
+### ⚠️ The texture hole, one file over from the rule that was meant to close it
+
+Yesterday's new rule was "every floor a level paints must be one textures.ts
+draws", written because deck 6's water did not exist. The cryo deck then asked
+for a **`cryo` wall that did not exist either**. Same hole, one layer up.
+
+The rule now covers blocks, cover, doors, area ceilings and `WALL_OVERRIDE`.
+The override is a function, so the only honest way to check what it returns is
+to **call it over every cell and every face** — and it immediately caught the
+spine returning `"hall"`, which is a ceiling *pattern* name rather than a
+texture. A wall that is wrong in one corner of one room is exactly the one
+nobody would ever see.
+
+It also caught deck 9 shipping **a red keycard that opened nothing** — I had
+written two cards into the intro and the objectives and only one lock. The
+south airlock is red-locked now, which is what makes both breaches compulsory.
+
+### ⚠️ Waypoints belong in the middle of a square, not on its edge
+
+Every leg down the spine ran at y = 18.0. The crates sit at y = 17 and y = 19,
+and the player is a circle of radius 0.22 — so a leg drawn along the boundary
+reaches 0.22 into the row above and jams. **The floor-sample check cannot see
+it**: it samples a point, and a point on the line is in the clear. Found by
+walking the leg with the real collision code. Every spine leg is at y = 18.5
+now, and all nine decks walk every leg of both routes.
+
+### Three harness bugs, all reporting correct code as broken
+
+Same standing lesson, three more times:
+
+- **A door only notices you within 1.6 of the CENTRE of its box**, and the
+  keycard test stood 1.7 away — so "the bulkhead stays shut without the red
+  card" was a check that could not fail. It now proves the distance first and
+  opens the door afterwards.
+- **The level's INTRO is still on the comms screen** when a locked door is
+  reached, so the hint sits in the queue behind it. Reading `comms` alone
+  reported a line the game had definitely said as missing.
+- **A shot fired at an alien alerts it by hitting it, not by being heard.** The
+  vacuum-silence test put six of them two squares east and fired east, so it
+  passed or failed on which way the camera happened to be pointing. It aims
+  west now, and only hearing can wake anything.
+
+And one in a suite that was quietly going stale: `titlecard.mjs` decided which
+decks should offer grenades with `lvl === 4` — true the day it was written,
+wrong the moment a seventh deck carried grenades and an eighth turned the
+lights off. It derives both from the deck now.
+
+**Verified.** `npm run check` fully green — 188,027 content, 1,239,302
+geometry, **5,149** security, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge, 25,322
+game-question and 248 ship's-log checks; `tsc` and `eslint` clean. Sixteen
+sabotages run against the new rules, sixteen caught. In a browser: **27 checks**
+on the two keycards, the ammunition-free deck and the vacuum rule, **18 route
+walks** over all nine decks with the real collision code, **37 title-card
+checks** (now all nine), and the existing 50 weapon, 44 game, 42 grenade, 25
+touch and 18 quiz-panel checks still green, no console errors.
+
+**Not done:** the boss. That is the next one, and decks 7 to 9 exist to lead
+into it.
+
 ## Decks 5 and 6, hit zones, a rifle, and a grenade that costs three questions (2026-10-01)
 
 Matthew, on his way to school: *"do two more levels… add assault rifle… every
