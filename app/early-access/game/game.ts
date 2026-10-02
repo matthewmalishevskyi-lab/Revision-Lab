@@ -168,6 +168,29 @@ const VACUUM_SEEN = 0.75;
 /** Keycard colours, for the pickup message and the visor chip. */
 const CARD_NAME: Record<string, string> = { blue: "Blue", red: "Red" };
 
+/**
+ * How far the deck slows down while you are answering a reload.
+ *
+ * Matthew's number. The reason it is needed NOW and was not before: until
+ * today a magazine was mostly something you found on the floor, and R was an
+ * optional top-up you could choose a safe moment for. With ammunition off the
+ * floor the only way to shoot is to answer, so the game started demanding
+ * that you stand still and read a question with three of them running at you.
+ * That is not difficulty, it is a design punishing the thing the site exists
+ * to encourage.
+ *
+ * ⚠️ IT SLOWS THE WORLD, NOT THE CLOCKS. Three things deliberately keep real
+ * time while everything else runs at a third:
+ *   - the question's own 10-second timer, or a slowed world would hand you 30
+ *     seconds to think and the pressure would be gone;
+ *   - the run clock, because pace is 30 of the 100 marks and a slowed clock
+ *     would make "press R constantly" a way to beat par;
+ *   - the model-answer hold, for the same reason as the question timer.
+ * So the cost of reloading is unchanged on the scoreboard. What changes is
+ * that you can survive doing it.
+ */
+const RELOAD_SLOW = 3;
+
 /** How long a WRONG answer stays on screen with the right one showing. Long
  *  enough to read a sentence; skippable with SPACE for anyone who does not
  *  need it. A right answer still moves on in 0.7s. */
@@ -620,7 +643,8 @@ export class Game {
   // ── the main loop ─────────────────────────────────────────────────────────
   private frame = (now: number) => {
     const dt = Math.min(0.05, (now - this.last) / 1000); this.last = now;
-    if (this.mode === "play" || this.mode === "reload") this.update(dt);
+    if (this.mode === "play") this.update(dt);
+    else if (this.mode === "reload") this.update(dt / RELOAD_SLOW);
     else {
       // ⚠️ shake and recoil are decayed inside update(), which stops the moment
       // you die or pause — so a death caused by your own grenade left the
@@ -636,8 +660,11 @@ export class Game {
     // line the freeze is genuinely free, and "press G to stop the world" is
     // then the correct way to play, which is the opposite of the point.
     // ⚠️ Measured here rather than in update(), which is exactly what does
-    // not run in this mode.
-    if (this.mode === "nade") this.stats.time += dt;
+    // not run in this mode — and, since RELOAD_SLOW, is also handed a third
+    // of a second in the mode that does. The run clock is REAL TIME in every
+    // mode where the deck is live, or slowing the world would quietly buy you
+    // pace marks and reloading would become a way to beat par.
+    if (this.mode === "play" || this.mode === "reload" || this.mode === "nade") this.stats.time += dt;
     if (this.mode === "stomp" || this.mode === "reload" || this.mode === "nade") this.updateQuiz(dt);
     this.draw();
     // too slow for this computer? after a couple of seconds of play, go lighter
@@ -702,7 +729,6 @@ export class Game {
 
   private update(dt: number) {
     const p = this.p, w = this.world;
-    this.stats.time += dt;
     // turning with the keyboard too
     if (this.keys.has("arrowleft")) p.angle -= 2.4 * dt;
     if (this.keys.has("arrowright")) p.angle += 2.4 * dt;
@@ -1372,6 +1398,7 @@ export class Game {
     if (!qs.length) { if (r.which === "rifle") p.rifleAmmo = RIFLE_MAG; else p.ammo = PISTOL_MAG; return; }
     this.quiz = { kind: "reload", qs, index: 0, time: 10, per: 10, picked: null, feedback: 0, results: [], target: null };
     this.mode = "reload";
+    this.hint("slowmo", `Thinking time — the deck runs at a third speed while a reload question is up. Your own clock doesn't.`);
   }
   private tryStomp() {
     const a = this.stompTarget(); if (!a || this.quiz) return;
@@ -1570,6 +1597,7 @@ export class Game {
         picked: q.picked, correct: cur.correct, results: q.results,
         ammo: p.weapon === "rifle" ? p.rifleAmmo : p.ammo,
         perAnswer: p.weapon === "rifle" ? RIFLE_PER_ANSWER : PISTOL_PER_ANSWER,
+        slow: q.kind === "reload" ? RELOAD_SLOW : 1,
         why: cur.why, touch: this.touchDevice,
       };
       drawQuiz(o, view);

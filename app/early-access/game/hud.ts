@@ -445,6 +445,8 @@ export function drawPrompt(x: Ctx, key: string, text: string) {
 
 export type QuizView = {
   kind: "reload" | "stomp" | "nade"; topic: string; index: number; total: number; question: string; choices: string[];
+  /** How far the world is slowed while this panel is up, 1 = not at all. */
+  slow?: number;
   /** For the reload panel's subtitle: how much a right answer is worth. */
   perAnswer?: number;
   time: number; perQuestion: number; picked: number | null; correct: number; results: boolean[]; ammo: number;
@@ -522,6 +524,17 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   x.strokeStyle = accent; x.lineWidth = 2.5; x.stroke();
   // a thin bright edge along the top, like a hologram's projector line
   x.fillStyle = accent; x.fillRect(X + 22, Y, PW - 44, 2);
+  // ⚠️ A SLOWED WORLD YOU CANNOT SEE READS AS A BROKEN ONE. The first thing a
+  // player thinks when everything crawls is that the game has frozen, so the
+  // panel says so in as many words, and the chip sits where the eye already
+  // is — on the panel it is reading, not in a corner.
+  if ((q.slow ?? 1) > 1) {
+    const cw = touch ? 150 : 124, cx = X + PW - cw - 24, cy = Y + PH - (touch ? 54 : 46);
+    x.fillStyle = "rgba(127,230,255,0.12)"; x.beginPath(); x.roundRect(cx, cy, cw, touch ? 30 : 26, 13); x.fill();
+    x.strokeStyle = "rgba(127,230,255,0.5)"; x.lineWidth = 1.2; x.stroke();
+    x.fillStyle = CYAN; x.font = `bold ${touch ? 16 : 13}px ${FONT}`;
+    x.fillText(`WORLD AT 1/${q.slow}`, cx + (touch ? 18 : 14), cy + (touch ? 21 : 18));
+  }
   x.fillStyle = accent; x.font = `bold ${touch ? 36 : 32}px ${FONT}`;
   const title = stomp ? "STOMP!" : nade ? "PIN OUT" : "RELOAD";
   x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
