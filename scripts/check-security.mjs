@@ -1760,6 +1760,46 @@ try {
         expect(floorTex.has(a.floor), `${level.TITLE}'s "${a.name || "unnamed"}" area asks for a "${a.floor}" floor, which textures.ts does not draw`);
       }
     }
+    // ⚠️ AND THE SAME HOLE EXISTS FOR EVERY OTHER KIND OF TEXTURE, which I
+    // found by walking straight into it: the cryo deck's pod blocks asked for
+    // a "cryo" wall that did not exist yet, one file over from the rule I had
+    // just written about floors. A block, a crate or an overridden wall face
+    // whose texture is missing does not throw either — the whole point of
+    // these rows of pods is that they look like pods.
+    const wallTex = new Set([...texSrc.matchAll(/^\s{2}([a-z][A-Za-z0-9]*)\(ctx/gm)].map((m) => m[1]));
+    expect(wallTex.has("crate") && wallTex.has("pillar") && wallTex.size > 20,
+      `only found ${wallTex.size} textures in textures.ts, so this check is looking in the wrong place`);
+    for (const level of LEVELS) {
+      for (const b of level.BLOCKS ?? []) {
+        expect(wallTex.has(b.tex), `${level.TITLE} builds a block out of "${b.tex}", which textures.ts does not draw`);
+      }
+      for (const c of level.COVER ?? []) {
+        expect(wallTex.has(c[2]), `${level.TITLE} places "${c[2]}" cover, which textures.ts does not draw`);
+      }
+      for (const d of level.DOORS ?? []) {
+        expect(wallTex.has(d.tex), `${level.TITLE} has a door textured "${d.tex}", which textures.ts does not draw`);
+      }
+      // ⚠️ WALL_OVERRIDE is a FUNCTION, so the only honest way to check what
+      // it returns is to call it — over every cell and every face, which is
+      // cheap and total. A name that is wrong for one wall of one room in one
+      // corner of the deck is exactly the one nobody would ever see.
+      if (level.WALL_OVERRIDE) {
+        const seen = new Set();
+        for (const name of Object.keys(level.AREAS ?? {}))
+          for (let y = 0; y < level.H; y++) for (let x = 0; x < level.W; x++)
+            for (let f = 0; f < 4; f++) { const t = level.WALL_OVERRIDE(name, f, x, y); if (t) seen.add(t); }
+        for (const t of seen) expect(wallTex.has(t), `${level.TITLE}'s WALL_OVERRIDE returns "${t}", which textures.ts does not draw`);
+        expect(seen.size > 0, `${level.TITLE} has a WALL_OVERRIDE that never returns anything`);
+      }
+      // the ceiling and wall names on an AREA are PATTERNS, not textures, and
+      // they fall back silently too — an unknown one is a room that quietly
+      // gets the default ceiling nobody asked for
+      const CEIL = new Set(["light", "corridor", "grid", "dark", "stars", "reactor", "hall", "duct"]);
+      for (const [key, a] of Object.entries(level.AREAS ?? {})) {
+        expect(CEIL.has(a.ceil), `${level.TITLE}'s "${a.name || key}" asks for a "${a.ceil}" ceiling, which world.ts has no pattern for`);
+      }
+    }
+
     // and a floor that is supposed to DO something must be read by the game,
     // or it is paint pretending to be a rule
     for (const level of LEVELS) {
@@ -1786,6 +1826,115 @@ try {
         let dry = 0;
         for (let y = y0; y <= y1; y++) if (!wet.has(`${x},${y}`)) dry++;
         expect(dry >= 2, `${level.TITLE}: the water at x=${x} runs the whole length of the hall with ${dry} dry square(s) — there is no way across without splashing`);
+      }
+    }
+
+    // ── the run-up to the boss has to actually climb ─────────────────────
+    // Matthew's ask, in his words: "increasingly harder and bigger than the
+    // other ones because they will be leading to the boss level". That is a
+    // measurable claim, so it is measured. ⚠️ The first version of deck 7 had
+    // LESS open floor than deck 5 despite a bigger grid — the spine was long
+    // and almost everything either side of it was wall — and nothing but this
+    // would have noticed, because it looks enormous from inside.
+    // ⚠️ If a boss arena is added and it is deliberately small and tight,
+    // change this rule on purpose rather than deleting it.
+    {
+      const area = (l) => {
+        let open = 0;
+        const solidAt = new Set();
+        for (const b of l.BLOCKS ?? []) for (const [x, y] of b.cells) solidAt.add(`${x},${y}`);
+        for (const a of Object.values(l.AREAS ?? {}))
+          for (let y = a.r[1]; y <= a.r[3]; y++) for (let x = a.r[0]; x <= a.r[2]; x++)
+            if (!solidAt.has(`${x},${y}`)) open++;
+        return open;
+      };
+      const aliens = (l) => l.SPRITES.filter((s) => s.t === "alien" || s.t === "alienBack").length;
+      const early = LEVELS.slice(0, 6), late = LEVELS.slice(6);
+      if (late.length) {
+        const maxOpen = Math.max(...early.map(area)), maxAliens = Math.max(...early.map(aliens));
+        for (const l of late) {
+          expect(area(l) > maxOpen, `${l.TITLE} has ${area(l)} squares of floor against ${maxOpen} on the biggest earlier deck — it is meant to be bigger than all of them`);
+          expect(aliens(l) > maxAliens, `${l.TITLE} has ${aliens(l)} aliens against ${maxAliens} on the busiest earlier deck — it is meant to be harder than all of them`);
+        }
+        for (let i = 1; i < late.length; i++) {
+          expect(area(late[i]) >= area(late[i - 1]), `${late[i].TITLE} is smaller than ${late[i - 1].TITLE}; the run-up to the boss is supposed to climb`);
+          expect(aliens(late[i]) >= aliens(late[i - 1]), `${late[i].TITLE} has fewer aliens than ${late[i - 1].TITLE}; the run-up to the boss is supposed to climb`);
+        }
+      }
+    }
+
+    // ── two keycards, and the vacuum rule ────────────────────────────────
+    for (const level of LEVELS) {
+      const locks = (level.DOORS ?? []).filter((d) => d.key);
+      const cards = level.SPRITES.filter((sp) => sp.t === "keycard");
+      // every lock has a card of its colour, and every card has a lock
+      for (const d of locks) {
+        expect(cards.some((c) => (c.key ?? "blue") === d.key),
+          `${level.TITLE} locks a door with the ${d.key} card and never places one`);
+      }
+      for (const c of cards) {
+        expect(locks.some((d) => d.key === (c.key ?? "blue")),
+          `${level.TITLE} places a ${c.key ?? "blue"} keycard that opens nothing`);
+      }
+      // ⚠️ A DECK WITH TWO LOCKS NEEDS TWO SENTENCES. One hint saying "find
+      // the keycard" at both of them sends you to the wrong end of the ship,
+      // which on deck 7 is a thirty-five-square corridor each way.
+      const colours = new Set(locks.map((d) => d.key));
+      if (colours.size > 1) {
+        for (const col of colours) {
+          expect(level.LOCKED_HINTS?.[col], `${level.TITLE} has ${colours.size} different locks but no LOCKED_HINTS entry for the ${col} one`);
+        }
+        // and the compass has to name which card it is sending you for
+        for (const o of (level.OBJECTIVES ?? []).filter((o) => o.until === "keycard")) {
+          expect(o.key, `${level.TITLE} has two locks and an objective that does not say which keycard it means`);
+        }
+      }
+    }
+    // ⚠️ The vacuum rule is an INVERSION, and it is only worth having if both
+    // halves are true: nothing hears you, and everything sees you. Half of it
+    // is a cheat and the other half is a punishment.
+    const vacLevels = LEVELS.filter((l) => Object.values(l.AREAS ?? {}).some((a) => a.vacuum));
+    if (vacLevels.length) {
+      expect(/inVacuum\(\)\) for \(const a of this\.aliens/.test(game) || /shot && !this\.inVacuum\(\)/.test(game),
+        "a deck is open to space but a shot fired there still brings everything running");
+      expect(/if \(bare\) want = Math\.max\(want, VACUUM_SEEN\)/.test(game),
+        "a deck is open to space but standing in it does not raise how far you can be seen");
+      // ⚠️ a FLOOR, not a bonus: as a bonus it came out six hundredths above
+      // the lit room next door, which is a mechanic nobody can feel
+      const vacSeen = gnum("VACUUM_SEEN");
+      expect(vacSeen >= 0.6, `a breached span floors your exposure at ${vacSeen}, which is not enough to be the most visible place in the game`);
+      expect(/if \(!this\.inVacuum\(x, y\)\)/.test(game),
+        "a grenade going off in vacuum still makes a noise");
+      for (const level of vacLevels) {
+        const vac = Object.entries(level.AREAS).filter(([, a]) => a.vacuum);
+        for (const [key, a] of vac) {
+          expect(a.ceil === "stars", `${level.TITLE}'s "${a.name || key}" is open to space and does not have the stars overhead`);
+        }
+        // and there has to be somewhere that ISN'T, or the rule is just the
+        // level, and the inversion has nothing to be an inversion of
+        expect(vac.length < Object.keys(level.AREAS).length,
+          `${level.TITLE} is vacuum end to end, so there is nowhere the ordinary rules apply to compare it with`);
+        // ⚠️ measured, not asserted: the breached spans must genuinely be the
+        // emptiest ground on the deck, or "nowhere to hide" is marketing
+        // ⚠️ BLOCKS COUNT, NOT JUST COVER. The first version of this counted
+        // waist-high cover only, so it waved through two breached spans with
+        // twelve pieces of full-height wreckage in them — which hide you
+        // completely, and made the "nowhere to hide" deck the best-covered
+        // room on it. Seen on the rendered map, not in the data. Anything
+        // you can put between yourself and them counts.
+        const dens = (pred) => {
+          let cells = 0, hide = 0;
+          const inPred = (x, y) => Object.values(level.AREAS).some((a) => pred(a) && x >= a.r[0] && x <= a.r[2] && y >= a.r[1] && y <= a.r[3]);
+          for (const a of Object.values(level.AREAS)) {
+            if (!pred(a)) continue;
+            cells += (a.r[2] - a.r[0] + 1) * (a.r[3] - a.r[1] + 1);
+          }
+          for (const c of level.COVER ?? []) if (inPred(c[0], c[1])) hide++;
+          for (const bl of level.BLOCKS ?? []) for (const [x, y] of bl.cells) if (inPred(x, y)) hide++;
+          return cells ? hide / cells : 0;
+        };
+        const outside = dens((a) => a.vacuum), inside = dens((a) => !a.vacuum);
+        expect(outside < inside, `${level.TITLE}: the breached spans have ${(outside * 100).toFixed(1)}% of their floor behind something against ${(inside * 100).toFixed(1)}% inside — "nowhere to hide" has to be true to be worth saying`);
       }
     }
 
