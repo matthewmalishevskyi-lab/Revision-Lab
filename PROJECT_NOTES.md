@@ -1,5 +1,137 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The cheapest way through a deck now goes through the questions (2026-10-02, later)
+
+Matthew: *"how about we get rid of nearly all of the ammo dropped on the floor
+and make a knife usable only 5 times?"* — after asking, earlier the same day,
+how to make the game more about revision and less about shooting.
+
+### ⚠️ THE MEASUREMENT THAT STARTED IT: A FULL CLEAR COULD COST ZERO QUESTIONS
+
+Two findings, both from running the real functions rather than reading them.
+
+**The grade rewards not revising.** `scoreRun` over deck 7's numbers:
+
+    knife everything, 0 questions, 93s        80   A
+    answer 40, 36 right, clear the deck      69   B
+    answer 2, both right, clear the deck      69   B
+    sprint past everything, 0 questions       50   C
+
+Clearing a deck with the knife and answering nothing is **an A**. And the
+accuracy component is a RATE, so answering twenty times as many questions
+scores the same or less — the safe play was one question.
+
+**And the mechanics allowed it.** An alien is 40 health, a knife swing is 20,
+so two swings is a kill — and a swing cost nothing and made no noise. Across
+all nine decks the cheapest full clear was **0 questions**.
+
+### What it costs now
+
+    Boarding           13 aliens    6 questions
+    Meltdown           13 aliens    6 questions
+    Crew deck          13 aliens    6 questions
+    Cargo hold         15 aliens    8 questions
+    Flight deck        23 aliens   16 questions
+    Hydroponics        25 aliens   18 questions
+    The Spine          30 aliens   22 questions
+    Cryo bay           32 aliens   24 questions
+    Observation deck   36 aliens   27 questions
+    ALL NINE DECKS    200 aliens  131 questions   (it was 0)
+
+**Ammunition is off the floor.** The first four decks keep one pickup each —
+they are where you learn what a cell is — and decks 5 to 9 keep none. Twenty-
+nine pickups across the game become four.
+
+**Drops 40% → 30%**, Matthew's number. They stay, because they are the only
+reason to engage rather than sprint past everything (the September fix); they
+are just no longer most of a deck's ammunition.
+
+### The knife: five kills, then blunt
+
+⚠️ **It blunts, it does not break, and that is not softness.** Picture who it
+would have hit: out of cells with no knife at all, you press R, the world
+keeps running while you answer, you get it wrong, and now you are being shot
+with no way to fight back. Three wrong answers is a death spiral, and it lands
+hardest on exactly the student this site exists for. At 8 damage a kill takes
+five swings instead of two — desperate, slow, and always there.
+
+The edge is drawn on the visor, because **a limit you cannot see is the game
+being unfair** — the same argument the SEEN bar settled for exposure. It
+resets each deck: a blunt knife on deck 9 because of what you did on deck 2 is
+a punishment nobody would connect to its cause an hour later.
+
+⚠️ **And a knife kill is LOUD now.** It was silent twice over: no gunfire alert
+radius, and the victim's own state was set DIRECTLY rather than through
+`alert()`, so it never even shouted to the others. A scuffle carries 4.5
+squares against a gunshot's 7, and sound goes round corners, so there is no
+line-of-sight test. Silent AND free is what made knifing the way to play.
+
+### The pool had to grow with the demand
+
+120 → 240. A full run now needs about 131 questions and the pool was capped at
+120, which would have brought back the complaint from September — *"if a
+person is doing year nine maths, they would have a lot of same questions
+popping up"*. Maths alone has 1,722 to draw from; the cap was the only thing
+in the way. **Raising what the game asks of the question bank is a change to
+the question bank's job**, and it is worth noticing at the time rather than
+when somebody hits it.
+
+### ⚠️ A comment that had quietly become a boast
+
+Deck 8 was written as "the one with NOT ONE ROUND OF AMMUNITION PLACED
+ANYWHERE — that is the whole design". True when it shipped yesterday; true of
+five decks today. The comment is corrected rather than left standing. What
+that deck still is: the darkest in the game at 0.36 mean light, and the most
+broken up.
+
+### The checks
+
+The economy is a rule now rather than a balance that happens to be true, and
+every number is read out of `game.ts` rather than copied. Every deck must cost
+at least 0.4 questions per alien, the whole game at least 100, the pool must
+be able to serve that many, and only the first four decks may leave
+ammunition on the floor.
+
+⚠️ **One of the new rules was wrong before it was right.** "A spent knife must
+do more than zero damage" waved through a sabotage setting it to 0.0001 — four
+hundred thousand swings a kill is a broken knife wearing a number. It now has
+to still KILL in at most six swings. Seven sabotages, seven caught.
+
+### ⚠️ And the old suite went flaky, which was the change talking
+
+`gametest.mjs` had been stable for four runs; after this it failed differently
+every time — 40 to 45 checks, a different one each run. Not a regression: the
+suite inherits whatever state the previous test left, and both changes move
+that state. A knife kill now wakes the room, and fewer cells change every
+timing downstream.
+
+Two fixes, both the same shape as the reload fix yesterday: **wait for the
+state, do not sleep at it** (the locked door opens at `dt * 1.6` of game time
+and headless runs at twelve frames a second), and **set the world rather than
+hoping for it** (the stomp needs an alien that has not noticed you, after a
+minute of the test teleporting around a lit deck). Four clean runs at 45/45
+since.
+
+One more harness bug while writing the new suite, and it is the usual one: the
+knife test stood at y = 13.9 against a target at 15.3. The knife reaches 1.3
+squares and that is 1.4, so every swing missed by a tenth of a square and nine
+checks reported a perfectly good knife as broken. The suite now asserts it is
+standing somewhere a swing can land **before** testing what the swing does.
+
+**Verified.** `npm run check` fully green — 188,027 content, 1,239,302
+geometry, **5,035** security, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge, 25,469
+game-question and 248 ship's-log checks; `tsc` and `eslint` clean. In a
+browser: **13 new checks** on the blunt knife, the loud kill and the stripped
+floor, plus 45 game, 50 weapon, 42 grenade, 27 deck-7-to-9, 37 title-card, 25
+touch, 18 quiz-panel and 18 route-walk checks, no console errors.
+
+**Still open, and asked twice:** the grade itself. Clearing a deck answering
+nothing is still an A — the mechanics now make that expensive, but the scoring
+still rewards it. The modelled fix (accuracy 35, questions answered 30, aliens
+20, pace 15) is written up in `claude/game-more-revision-less-shooting.md`
+along with two others he has not picked yet.
+
 ## Three decks before the boss: the Spine, the Cryo bay, the Observation deck (2026-10-02)
 
 Matthew, after we dropped multiplayer for now: *"add three more levels… they
