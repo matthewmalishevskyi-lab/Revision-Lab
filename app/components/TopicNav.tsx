@@ -40,6 +40,14 @@ export function TopicNav({
   // narrow screen where the strip scrolls sideways.
   const stripRef = useRef<HTMLDivElement>(null);
 
+  // ⚠️ A STRIP THAT SCROLLS WITH NOTHING SAYING SO IS A MENU WITH ITEMS NOBODY
+  // FINDS. Measured on a 320px screen: the five sections are 605px wide inside
+  // a 272px strip, so barely two fit — and the scrollbar is deliberately
+  // hidden (it would sit across the pills), which leaves no clue at all that
+  // "Definitions" and "Exam technique" exist. These two say which way there is
+  // more to see, with a soft fade at that edge.
+  const [more, setMore] = useState({ left: false, right: false });
+
   useEffect(() => {
     // ─────────────────────────────────────────────────────────────────────────
     // WORKING OUT WHICH SECTION YOU'RE IN
@@ -157,6 +165,33 @@ export function TopicNav({
     }
   }, [active]);
 
+  // Which edges have more beyond them. Recomputed when the strip is scrolled,
+  // when the window resizes, and when the active pill moves (because the
+  // effect above may have scrolled the strip itself).
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip) return;
+    function update() {
+      const el = stripRef.current;
+      if (!el) return;
+      const max = el.scrollWidth - el.clientWidth;
+      // A couple of pixels of slack: a strip scrolled to its end can land a
+      // fraction short, and a fade that never quite goes away looks broken.
+      const left = el.scrollLeft > 2;
+      const right = el.scrollLeft < max - 2;
+      setMore((previous) =>
+        previous.left === left && previous.right === right ? previous : { left, right },
+      );
+    }
+    update();
+    strip.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      strip.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [active, sections]);
+
   if (sections.length < 2) return null;
 
   return (
@@ -166,14 +201,52 @@ export function TopicNav({
     // The background colour is the page background at 85%, and the blur behind
     // it lets content show through faintly as it slides underneath — so the bar
     // reads as frosted glass rather than a solid lid stuck on top.
+    // ⚠️ 0.97 OPAQUE, NOT 0.85, AND THE BLUR WAS NEVER THE PROBLEM.
+    //
+    // Matthew, reporting this: a question card sliding underneath stayed
+    // readable THROUGH the bar, its words colliding with the section labels.
+    // Measured before changing anything, because "the frosted effect is
+    // broken" was the obvious diagnosis and it was wrong: the computed style
+    // really is `backdrop-filter: blur(12px)`, and nothing up the ancestor
+    // chain breaks it (a `filter`, `transform` or `contain` on any parent
+    // would, which is the usual cause and is worth checking first).
+    //
+    // The actual arithmetic is simpler. At 0.85 opacity, fifteen per cent of
+    // near-black body text still comes through, and twelve pixels of blur
+    // smears 16px text without destroying its word shapes — so you get grey
+    // ghost words directly under black labels, which is harder to read than
+    // either layer alone. Frosted glass in a window is thick; this was tinted
+    // film.
+    //
+    // 0.97 leaves just enough of the colour wash moving underneath to still
+    // read as glass, and nothing legible. The blur stays because it costs
+    // nothing and softens the colour as it passes; the shadow is what now
+    // says "this sits above the page", a job the transparency used to do
+    // badly.
     <nav
       aria-label="Sections on this page"
-      className="sticky top-0 z-30 -mx-6 mt-8 border-y border-black/5 bg-[#f2f4fa]/85 px-6 py-2.5 backdrop-blur-md dark:border-white/10 dark:bg-[#0a0d1a]/85"
+      className="sticky top-0 z-30 -mx-6 mt-8 border-y border-black/5 bg-[#f2f4fa]/97 px-6 py-2.5 shadow-[0_6px_16px_-12px_rgba(15,23,42,0.5)] backdrop-blur-md dark:border-white/10 dark:bg-[#0a0d1a]/97 dark:shadow-[0_6px_16px_-12px_rgba(0,0,0,0.8)]"
     >
-      <div
-        ref={stripRef}
-        className="flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
+      {/* `relative` so the two fades can be pinned to the strip's own edges.
+          They are pointer-events-none, or they would eat a tap aimed at the
+          pill underneath — which on a phone is most of the last pill. */}
+      <div className="relative">
+        {more.left && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[#f2f4fa] to-transparent dark:from-[#0a0d1a]"
+          />
+        )}
+        {more.right && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[#f2f4fa] to-transparent dark:from-[#0a0d1a]"
+          />
+        )}
+        <div
+          ref={stripRef}
+          className="flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
         {sections.map((section) => {
           const isActive = section.id === active;
 
@@ -203,6 +276,7 @@ export function TopicNav({
             </a>
           );
         })}
+        </div>
       </div>
     </nav>
   );
