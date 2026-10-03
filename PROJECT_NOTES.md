@@ -1,5 +1,163 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Three ways the marking told a student they were wrong when they were right (2026-10-03)
+
+Matthew, playing with the live Spanish topic rather than reading the code —
+which is the only way any of these three were ever going to be found.
+
+### ⚠️ 1 · A UK KEYBOARD HAS NO ñ
+
+    Q: How do you say 'I am 16 years old' in Spanish?
+    typed: Tengo dieciseis anos          → marked WRONG
+    accept: ["tengo dieciséis años", "tengo dieciseis años"]   (both have ñ)
+
+The answer is right. He simply does not own a keyboard that can produce the
+character, and neither does anyone else revising on a school laptop.
+
+**Measured, and the first guess was four times too high** — it was written
+into the comment as "nearly every answer" before being checked:
+
+    french      63 of 161 typed answers   (39%)
+    spanish     48 of 144
+    german      15 of 109
+    whole site 215 of 5,017
+
+So not most of the site, and *two fifths of French*: 126 questions nobody
+could get right however well they knew them.
+
+⚠️ **Folding accents away is NOT harmless, which is why this is a second
+function rather than a line inside `normalise()`.** In these languages the
+accent is sometimes the whole word — **tú** is "you" and **tu** is "your",
+**où** is "where" and **ou** is "or", **schön** is "nice" and **schon** is
+"already". A silent fold marks a genuinely wrong answer right, which is the
+one thing this site must never do, and it is the same shape as the hyphen bug
+that once made −3 and 3 the same answer.
+
+**The way out is to refuse both mistakes rather than choose between them.**
+`normalise()` stays strict and still decides an exact match; the loose form is
+consulted only after the strict one has failed, and when it rescues an answer
+the page SAYS SO: *"✓ Correct — mind the accents: it's años"*. Someone who
+could not type ñ keeps their mark. Someone who wrote *tu* for *tú* keeps their
+mark and reads the thing they actually needed to know.
+
+A telling detail found on the way: a few accept lists already carried the
+unaccented form by hand, with a note saying "accents can be hard to type".
+Somebody had been patching this one question at a time. That is the
+whack-a-mole the fold replaces.
+
+### ⚠️ 2 · "GIVE ONE SITUATION…" IS NOT A QUESTION A LIST CAN MARK
+
+    Q: Give one situation where you would use usted instead of tú.
+    typed: teacher                       → marked WRONG
+    accept: ["with a teacher", "talking to a teacher", "with an adult
+             stranger", "with a stranger", "talking to an adult you don't know"]
+
+"teacher" is a perfect answer, and so is "my head of year", "the woman in the
+post office" and a few hundred others. The question **promises** the student
+that many answers are right and then marks against five phrasings. **252
+questions across the site do this.**
+
+Matthew's own instinct was the fix: *"if there is no answer that can be
+written don't put the Check button"*. A button labelled Check promises a
+verdict, and on an open question the site cannot give one honestly. Those
+questions now lose it and offer the model answer instead. They keep the answer
+box — committing to an answer before reading the model one is the whole of
+retrieval practice; what goes is the false verdict.
+
+**Derived from the stem, not flagged on 245 questions**, for the reason
+`teacher-tools.ts` derives which topics have diagrams: a hand-written list is
+wrong the moment somebody writes the next one and nothing says so. There is an
+explicit `openEnded` escape hatch for anything it reads wrongly.
+
+⚠️ **It over-matches on purpose, and noticing why made this easy.** The two
+mistakes are not symmetrical — calling a closed question open costs a tick;
+calling an open question closed calls a right answer wrong. Only the second
+one matters, so every arguable case is included.
+
+⚠️ **A COMMAND WORD HAS TO START A SENTENCE — the second time this codebase
+has learned that**, after `marks.ts` hit it reading tariffs. The first patterns
+looked for "give", "state" and "describe" anywhere, and immediately mis-read
+three perfectly closed questions, because those words are ordinary English as
+well as exam instructions:
+
+    "Does 1/3 give a terminating or a recurring decimal?"    give = the verb
+    "Is a change of state a physical or a chemical change?"  state = a noun
+    "…should you give when asked to 'describe the single transformation'?"
+
+Maths went from 21 wrongly-converted questions to 0. A comma counts as well as
+a full stop, because "Under data protection law, name one right…" is a command
+and is genuinely open.
+
+Timed tests and the daily set drop these questions instead of self-marking
+them — there is nowhere to self-mark when the score is counted for you. About
+5% of the pool, for a score that means something.
+
+### 3 · The section tabs were 85% opaque, so the page read through them
+
+⚠️ **"The frosted effect is broken" was the obvious diagnosis and it was
+wrong.** Measured: the computed style really is `backdrop-filter: blur(12px)`,
+and nothing up the ancestor chain breaks it — a `filter`, `transform` or
+`contain` on any parent would, and that is the usual cause, so it is the first
+thing to check.
+
+The arithmetic is what was wrong. At 0.85, fifteen per cent of near-black body
+text still comes through, and twelve pixels of blur smears 16px text without
+destroying its word shapes. A question card sliding underneath left grey ghost
+words sitting directly under the black section labels — harder to read than
+either layer alone. Frosted glass in a window is thick; this was tinted film.
+0.97, plus a shadow to do the "sits above the page" job the transparency was
+doing badly.
+
+Also: **a strip that scrolls with nothing saying so is a menu with items nobody
+finds.** On a 320px screen the five sections are 605px wide inside a 272px
+strip — barely two visible — and the scrollbar is deliberately hidden because
+it would sit across the pills. A fade now marks whichever edge has more beyond
+it, `pointer-events-none` or it would eat a tap aimed at the pill underneath,
+which on a phone is most of the last one.
+
+### ⚠️ A check of mine that could not fail, again
+
+The new accent rule folded accents on **both sides using the checker's own copy
+of the rule**, so it always agreed with itself and would have passed on any
+code whatsoever. A check that cannot fail is worse than no check, because it is
+counted in the total and read as coverage. **Fourth time in this file.** It
+asserts against the real `markAnswer` now.
+
+And the same pass turned up an older version of it: `check-content.mjs` has
+kept an independent copy of `normalise()` for months, with a comment saying *"if
+the two ever disagree, that disagreement is exactly what we want to be told
+about"* — and **nothing was comparing them**. A second opinion nobody asks for
+is not a second opinion. Now it is asked, on eight inputs, every run.
+
+### Two harness bugs, both reporting correct code as broken
+
+Same standing lesson, twice more:
+
+- The 320px run reported the **wrong tab highlighted** after jumping to
+  Practice. It was measuring 700ms into a smooth scroll down a 20,000px page.
+  At 1.5s, 3s and 6s it is correct.
+- The first accent test used the **"Goodbye"** question, which proves nothing:
+  its accept list already carries `"adios"` by hand, so the strict match
+  succeeds and no rescue ever happens. It needed a question whose accepted
+  forms ALL carry the accent — Matthew's own `dieciséis` one, which lives in a
+  later set of ten.
+
+**Verified.** `npm run check` fully green — **188,657** content (up from
+188,027), 1,239,302 geometry, 5,045 security, 59,200 slide-deck, 9,892
+recommendation, 2,715 pacing, 43 question-review, 96 calculator, 32
+saved-answer, 8 badge, 25,469 game-question and 248 ship's-log checks; `tsc`
+and `eslint` clean. **Eight sabotages, eight caught.** In a browser: **13
+checks** re-running all three of Matthew's reports against the fixed pages —
+the unaccented answer marked correct and the accented spelling shown, a
+perfect answer not nagged, the usted question with no Check button and
+"teacher" never called wrong, a closed question keeping its Check, the bar at
+0.97, and the scroll fade present without eating a tap. No console errors.
+
+**Not done:** nobody has re-read the 252 open-ended questions to see whether
+some of them would be better rewritten as closed questions. Self-marking is the
+honest fallback, not always the best answer — "Name one non-contact force" could
+simply list all three in its accept list and stay marked.
+
 ## The deck runs at a third while you answer (2026-10-02, evening)
 
 Matthew: *"how about we slow the game 3 times when the player is reloading"*.
