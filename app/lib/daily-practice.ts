@@ -23,6 +23,7 @@ import { SUBJECTS } from "./subjects";
 import { TOPIC_CONTENT } from "./content";
 import { difficultyOf, type Difficulty } from "./difficulty";
 import { marksFor } from "./marks";
+import { isOpenEnded } from "./openEnded";
 import { seedFromText, shuffleWithSeed } from "./shuffle";
 
 export type DailyQuestion = {
@@ -344,7 +345,10 @@ export function buildDailySet(input: {
           higherOnly: q.higherOnly,
           marks: marksFor(focus.subjectSlug, q),
           difficulty: level,
-          selfMarked: !q.accept,
+          // Either there is nothing to mark against, or the question asks for
+          // one of many right answers and no accept list could cover them —
+          // see lib/openEnded.ts. Both mean the student marks it themselves.
+          selfMarked: !q.accept || isOpenEnded(q),
           });
         added += 1;
         addedThisRound += 1;

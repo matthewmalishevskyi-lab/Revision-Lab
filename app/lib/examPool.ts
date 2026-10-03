@@ -7,6 +7,7 @@
 // that quietly drifts apart, the same reasoning `normalise()` and
 // `shuffle()` were already shared rather than copied.
 
+import { isOpenEnded } from "./openEnded";
 import { getTopicContent } from "./content";
 import { marksFor } from "./marks";
 import type { ExamQuestion } from "../components/MockExam";
@@ -23,11 +24,20 @@ export function collectQuestionPool(
   return years.flatMap((group) =>
     group.topics.flatMap((topic) => {
       const content = getTopicContent(subjectSlug, topic.slug);
-      return (content?.practice ?? []).map((q) => ({
-        ...q,
-        topicSlug: topic.slug,
-        topicTitle: topic.title,
-      }));
+      return (content?.practice ?? [])
+        // ⚠️ A TIMED TEST ONLY ASKS WHAT IT CAN MARK. A question like "Give one
+        // reason a wind farm might face public opposition" has an open answer
+        // space no accept list can finish (see lib/openEnded.ts), so on a topic
+        // page it is self-marked. In a test there is nowhere to self-mark: the
+        // score is counted for you at the end, so an open question would either
+        // mark a right answer wrong or quietly score nothing. Keeping them out
+        // costs about 5% of the pool and buys a score that means something.
+        .filter((q) => !isOpenEnded(q))
+        .map((q) => ({
+          ...q,
+          topicSlug: topic.slug,
+          topicTitle: topic.title,
+        }));
     }),
   );
 }
