@@ -104,6 +104,8 @@ try {
       "app/lib/content/maths.ts",
       "app/lib/content/english.ts",
       "app/lib/marks.ts",
+      "app/lib/openEnded.ts",
+      "app/lib/normalise.ts",
       "--outDir", out,
       "--module", "commonjs",
       "--target", "es2020",
@@ -116,6 +118,11 @@ try {
   const { SUBJECTS, getSubject, getTopic, YEAR_STYLES } = require(join(out, "subjects.js"));
   const { TOPIC_CONTENT, getTopicContent } = require(join(out, "content", "index.js"));
   const { marksFor, TARIFFS_FOR_CHECKING } = require(join(out, "marks.js"));
+  const { isOpenEnded } = require(join(out, "openEnded.js"));
+  // ⚠️ The REAL marking function, not a copy. The accent rules below have to
+  // be able to fail when app/lib/normalise.ts changes, or they are decoration.
+  const { markAnswer: realMarkAnswer, normalise: realNormalise } = require(join(out, "normalise.js"));
+  const realMark = (typed, accept) => realMarkAnswer(typed, accept).correct;
 
   // ── The marking rule, copied from Practice.tsx ─────────────────────────────
   // Deliberately duplicated rather than imported: this is the checker's
@@ -130,6 +137,27 @@ try {
       .replace(/^[£$€]/, "")
       .replace(/[°%.!?]+$/, "");
   }
+
+  // ── The accent fold, also an independent copy ──────────────────────────────
+  // Same reasoning as normalise above: if the checker's idea of folding an
+  // accent and the site's ever diverge, that is the thing worth hearing about.
+  function foldAccents(text) {
+    return String(text)
+      .replace(/ß/g, "ss")
+      .replace(/æ/g, "ae").replace(/Æ/g, "AE")
+      .replace(/œ/g, "oe").replace(/Œ/g, "OE")
+      .replace(/ø/g, "o").replace(/Ø/g, "O")
+      .replace(/ð/g, "d").replace(/þ/g, "th")
+      .replace(/ł/g, "l").replace(/Ł/g, "L")
+      .normalize("NFD").replace(/[̀-ͯ]/g, "").normalize("NFC");
+  }
+  // The checker's own independent statement of the rule. It is only ever used
+  // to CROSS-CHECK the real one below; every rule about the content is
+  // asserted against app/lib/normalise.ts itself, so that breaking the site's
+  // marking breaks the build.
+  const marks = (typed, accept) =>
+    accept.some((a) => normalise(a) === normalise(typed)) ||
+    accept.some((a) => normalise(foldAccents(a)) === normalise(foldAccents(typed)));
 
   let checks = 0;
   let fails = 0;
@@ -154,6 +182,84 @@ try {
   expect(normalise("£50") === normalise("50"), "a leading currency symbol should be ignored");
   expect(normalise("45%") !== normalise("0.45"), "stripping % must not turn a percentage into a decimal");
   expect(normalise("1011100") !== normalise("01011100"), "a missing leading zero is a wrong answer, not a typo");
+
+  // ── The accent rules ───────────────────────────────────────────────────────
+  // ⚠️ Matthew's own report, kept here as the literal case: he typed "Tengo
+  // dieciseis anos" — the right answer, on the keyboard he owns — and was
+  // marked WRONG, because a UK layout has no ñ.
+  expect(realMark("Tengo dieciseis anos", ["tengo dieciséis años"]),
+    "REGRESSION: an answer typed without accents is being marked wrong again");
+  expect(realMark("ou est la gare", ["où est la gare"]), "French accents must be optional to type");
+  expect(realMark("strasse", ["straße"]), "ß should be answerable as ss");
+  expect(realMark("schon", ["schön"]), "German umlauts must be optional to type");
+  // And the fold must not become a licence to accept anything.
+  expect(!realMark("tengo quince anos", ["tengo dieciséis años"]), "folding accents must not accept a different number");
+  expect(!realMark("soy dieciseis anos", ["tengo dieciséis años"]), "folding accents must not accept the wrong verb");
+  expect(!realMark("45%", ["0.45"]), "folding accents must not have loosened the percentage rule");
+  expect(!realMark("01011100", ["1011100"]), "folding accents must not have loosened the leading-zero rule");
+  expect(foldAccents("²×÷π") === "²×÷π", "the fold must leave maths symbols alone");
+
+  // ⚠️ The rescued answer must be NAMED, not silently accepted. In these
+  // languages an accent is sometimes the whole word — tú is "you", tu is
+  // "your" — so a fold that said nothing would quietly teach the wrong
+  // spelling. markAnswer hands back the properly accented form for the page
+  // to show; without that this whole feature is a silent wrong-answer machine.
+  const rescued = realMarkAnswer("tu", ["tú"]);
+  expect(rescued.correct && rescued.want === "tú",
+    "an answer rescued by folding accents must come back with the accented spelling to show");
+  expect(!realMarkAnswer("tú", ["tú"]).want,
+    "an exactly correct answer must not be nagged about accents");
+
+  // The checker's own copy of the rule and the site's must agree. The copy
+  // exists to be a second opinion; nothing was ever comparing the two.
+  for (const [typed, accept] of [
+    ["Tengo dieciseis anos", ["tengo dieciséis años"]], ["schon", ["schön"]],
+    ["-3", ["3"]], ["230°", ["230"]], ["45%", ["0.45"]], ["run length encoding", ["run-length encoding"]],
+    ["01011100", ["1011100"]], ["francais", ["français"]],
+  ]) {
+    expect(marks(typed, accept) === realMark(typed, accept),
+      `the checker and app/lib/normalise.ts disagree about "${typed}" vs ${JSON.stringify(accept)}`);
+    expect(normalise(typed) === realNormalise(typed),
+      `the checker's normalise() and the site's disagree about "${typed}"`);
+  }
+
+  // ── Open-ended questions ───────────────────────────────────────────────────
+  // ⚠️ THE OTHER HALF OF THE SAME REPORT. Asked "Give one situation where you
+  // would use usted instead of tú", Matthew typed "teacher" — a perfect
+  // answer — and the site marked it wrong against a list of five phrasings.
+  // No accept list can enumerate an open set, so these questions must not be
+  // offered a Check button at all. See lib/openEnded.ts.
+  //
+  // These are stated as specific questions rather than as a count, because a
+  // count passes just as happily when the patterns have drifted onto the
+  // wrong questions.
+  const OPEN_CASES = [
+    "Give one situation where you would use usted instead of tú.",
+    "State one advantage of cloud storage over storing files only on your own device.",
+    "Name two things that make a program maintainable.",
+    "Give one reason a programmer might choose assembly language.",
+  ];
+  const CLOSED_CASES = [
+    // ⚠️ Every one of these contains a command word and is NOT open-ended —
+    // the words "give" and "state" are ordinary English too, which is what
+    // the first version of the detector got wrong.
+    "Does 1/3 give a terminating or a recurring decimal?",
+    "Is a change of state a physical or a chemical change?",
+    "The bearing of B from A is 050°. What is the bearing of A from B? Give three figures.",
+    "How do you say 'I am 16 years old' in Spanish?",
+  ];
+  for (const text of OPEN_CASES) {
+    expect(isOpenEnded({ question: text, accept: ["anything"] }),
+      `"${text}" asks for one of many right answers, so it must not be auto-marked`);
+  }
+  for (const text of CLOSED_CASES) {
+    expect(!isOpenEnded({ question: text, accept: ["anything"] }),
+      `"${text}" has one right answer and must keep its marking`);
+  }
+  // A multiple choice question's answer space IS its list, however open the
+  // wording sounds — losing marking on those would be pure damage.
+  expect(!isOpenEnded({ question: "Give one reason the sky is blue.", accept: ["scattering"], choices: ["scattering", "magic"] }),
+    "multiple choice must never be treated as open-ended");
 
   // ── Which icons are actually drawn ─────────────────────────────────────────
   const iconSrc = readFileSync("app/components/Icon.tsx", "utf8");
@@ -267,6 +373,32 @@ try {
               expect(String(a).trim().length > 0, at("blank value in an accept list"));
               expect(normalise(a) !== "", at(`accept value "${a}" normalises to nothing, so it can never match`));
               expect(normalise(a) !== normalise(p.question), at("the question text has been pasted into its own accept list"));
+
+              // ⚠️ EVERY ANSWER MUST BE TYPEABLE ON A UK KEYBOARD. 126 of the
+              // 414 typed answers in Spanish, French and German contain a
+              // character — ñ, é, ü, ç, ß — that a UK layout cannot produce,
+              // so before the fold they could not be answered correctly at
+              // all, however well the student knew them. This asserts the
+              // route back: strip the accents from our own model answer and
+              // the marking must still accept it.
+              // Asserted against the SITE's own markAnswer, so that removing
+              // the fold from app/lib/normalise.ts fails the build here rather
+              // than being discovered by a student in a French lesson.
+              if (/[^\u0000-\u007F]/.test(String(a))) {
+                expect(realMark(foldAccents(a), p.accept),
+                  at(`"${a}" cannot be typed on a UK keyboard, and "${foldAccents(a)}" is not accepted`));
+              }
+            }
+
+            // ⚠️ A question that asks for ONE OF several right answers must
+            // not be offered a Check button, because no accept list can
+            // enumerate an open set — "teacher" was being marked wrong on
+            // "give one situation where you would use usted". The page
+            // derives this itself (lib/openEnded.ts); this only asserts that
+            // the two agree about THIS question, so a stem reworded into an
+            // open question cannot quietly keep its false marking.
+            if (isOpenEnded(p)) {
+              expect(!p.choices, at("a multiple choice question should never read as open-ended"));
             }
 
             // ── THE IMPORTANT ONE ──────────────────────────────────────────
