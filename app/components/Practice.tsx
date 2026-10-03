@@ -46,7 +46,8 @@ import { seedFromText, shuffleWithSeed } from "../lib/shuffle";
 // needed the exact same comparison and couldn't import a function from a
 // "use client" file. See that file's own header comment for the full
 // reasoning; nothing about how this file uses `normalise` changed.
-import { normalise } from "../lib/normalise";
+import { markAnswer, normalise } from "../lib/normalise";
+import { isOpenEnded } from "../lib/openEnded";
 import { MarkTariff } from "./MarkTariff";
 import { marksFor } from "../lib/marks";
 
@@ -74,6 +75,12 @@ type QuestionState = {
   revealed: boolean;
   /** Sent to the progress table already — possibly on an earlier visit. */
   recorded?: boolean;
+  /**
+   * Set when the answer only counted once accents were folded away — holds the
+   * properly accented form, so the page can say "it's años, not anos". The
+   * mark is given either way; see markAnswer() in lib/normalise.ts.
+   */
+  accentSlip?: string;
 };
 
 const EMPTY: QuestionState = { input: "", status: "unanswered", revealed: false };
@@ -272,14 +279,12 @@ export function Practice({
     const typed = given ?? stateFor(index).input;
     if (!typed.trim()) return;
 
-    const isCorrect = (question.accept ?? []).some(
-      (valid) => normalise(valid) === normalise(typed),
-    );
+    const { correct: isCorrect, want } = markAnswer(typed, question.accept ?? []);
     // ⚠️ A question answered on an EARLIER visit has already been recorded, and
     // after a reload the `recorded` set below is empty again. Without the saved
     // flag, reloading and pressing Check would count the same answer twice.
     const alreadyRecorded = recorded.has(index) || Boolean(stateFor(index).recorded);
-    update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect, recorded: true });
+    update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect, recorded: true, accentSlip: want });
 
     // ─────────────────────────────────────────────────────────────────────────
     // ONLY THE FIRST ATTEMPT AT EACH QUESTION IS RECORDED, and this was a bug
@@ -320,17 +325,23 @@ export function Practice({
   // marks" on a maths topic would be true, useless and quietly demoralising;
   // the whole-topic figure is the separate line under the button.
   const inSet = shown.map((i) => ({ q: questions[i], i })).filter((x) => x.q);
-  const markable = inSet.filter((x) => x.q.accept).length;
+  // ⚠️ "Has an accept list" is no longer the same question as "the site marks
+  // it". An open-ended question keeps its accept list — the phrasings in it are
+  // still the model answers worth showing — but nothing on screen ever turns it
+  // green, so counting it in the denominator would make the score fall every
+  // time one appeared, through no fault of the student. Scored means MARKED.
+  const scored = (q: Question) => Boolean(q.accept) && !isOpenEnded(q);
+  const markable = inSet.filter((x) => scored(x.q)).length;
   const correct = inSet.filter(
-    (x) => x.q.accept && stateFor(x.i).status === "correct",
+    (x) => scored(x.q) && stateFor(x.i).status === "correct",
   ).length;
   const attempted = inSet.filter(
-    (x) => x.q.accept && stateFor(x.i).status !== "unanswered",
+    (x) => scored(x.q) && stateFor(x.i).status !== "unanswered",
   ).length;
   const attemptedInTopic = questions.filter(
-    (q, i) => q.accept && stateFor(i).status !== "unanswered",
+    (q, i) => scored(q) && stateFor(i).status !== "unanswered",
   ).length;
-  const markableInTopic = questions.filter((q) => q.accept).length;
+  const markableInTopic = questions.filter(scored).length;
 
   // ───────────────────────────────────────────────────────────────────────────
   // THE SCORE IS OUT OF MARKS, NOT OUT OF QUESTIONS — Matthew's ask.
@@ -346,12 +357,12 @@ export function Practice({
   // without their knowing.
   // ───────────────────────────────────────────────────────────────────────────
   const totalMarks = inSet.reduce(
-    (sum, x) => (x.q.accept ? sum + marksFor(subject, x.q) : sum),
+    (sum, x) => (scored(x.q) ? sum + marksFor(subject, x.q) : sum),
     0,
   );
   const earnedMarks = inSet.reduce(
     (sum, x) =>
-      x.q.accept && stateFor(x.i).status === "correct" ? sum + marksFor(subject, x.q) : sum,
+      scored(x.q) && stateFor(x.i).status === "correct" ? sum + marksFor(subject, x.q) : sum,
     0,
   );
 
@@ -396,7 +407,15 @@ export function Practice({
         {shown.map((index, position) => {
           const item = questions[index];
           const state = stateFor(index);
-          const autoMarked = Boolean(item.accept);
+          // ⚠️ An accept list is no longer enough to earn a Check button. A
+          // question that asks for ONE OF many right answers has an answer
+          // space no list can finish, so the site must not claim a verdict on
+          // it — see lib/openEnded.ts. It still gets an answer box, because
+          // committing to an answer before reading the model one is the whole
+          // of retrieval practice; what it loses is the false confidence.
+          const openEnded = isOpenEnded(item);
+          const autoMarked = Boolean(item.accept) && !openEnded;
+          const typeable = Boolean(item.accept);
           // The shuffled DISPLAY order — see shuffledChoicesFor's comment.
           // `item.choices` below still guards whether this is a multiple
           // choice question at all; this is only ever read once that's true.
@@ -435,7 +454,7 @@ export function Practice({
                     <MarkTariff marks={marksFor(subject, item)} />
                   </p>
 
-                  {autoMarked ? (
+                  {typeable ? (
                     <>
                       {item.choices ? (
                         /* ── Multiple choice ──────────────────────────────
@@ -497,26 +516,47 @@ export function Practice({
                         <AnswerBox
                           value={state.input}
                           onChange={(input) => update(index, { input, status: "unanswered" })}
-                          onSubmit={() => check(index, item)}
+                          // Enter does whatever the one button here does. On an
+                          // open-ended question there is nothing to check, so it
+                          // reveals instead of silently doing nothing.
+                          onSubmit={() =>
+                            autoMarked
+                              ? check(index, item)
+                              : update(index, { revealed: true, status: "selfMarked" })
+                          }
                           ariaLabel={`Answer to question ${position + 1}`}
                         />
-                        <button
-                          type="button"
-                          onClick={() => check(index, item)}
-                          className="min-h-11 rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-                          style={{ backgroundColor: colour }}
-                        >
-                          Check
-                        </button>
+                        {/* ⚠️ NO CHECK BUTTON ON AN OPEN-ENDED QUESTION. A
+                            button labelled Check promises a verdict, and on a
+                            question with hundreds of right answers the site
+                            cannot give one honestly — it was marking "teacher"
+                            wrong on "give one situation where you'd use
+                            usted". Offering the model answer instead is the
+                            truthful version of the same button. */}
+                        {autoMarked && (
+                          <button
+                            type="button"
+                            onClick={() => check(index, item)}
+                            className="min-h-11 rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                            style={{ backgroundColor: colour }}
+                          >
+                            Check
+                          </button>
+                        )}
                         {!state.revealed && (
                           <button
                             type="button"
                             onClick={() =>
                               update(index, { revealed: true, status: "selfMarked" })
                             }
-                            className="min-h-11 rounded-lg border border-black/10 px-3.5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+                            className={
+                              autoMarked
+                                ? "min-h-11 rounded-lg border border-black/10 px-3.5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+                                : "min-h-11 rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                            }
+                            style={autoMarked ? undefined : { backgroundColor: colour }}
                           >
-                            Show answer
+                            {autoMarked ? "Show answer" : "Show model answer"}
                           </button>
                         )}
                       </div>
@@ -531,6 +571,17 @@ export function Practice({
                           className="mt-3 font-semibold text-green-700 dark:text-green-400"
                         >
                           ✓ Correct
+                          {/* ⚠️ The mark is already given. This only says what
+                              the accented spelling is, because in these
+                              languages an accent is sometimes the whole word —
+                              tú is "you" and tu is "your". Marking it wrong
+                              would punish a UK keyboard; saying nothing would
+                              teach the wrong spelling. */}
+                          {state.accentSlip && (
+                            <span className="ml-2 font-normal opacity-80">
+                              — mind the accents: it&rsquo;s {state.accentSlip}
+                            </span>
+                          )}
                         </p>
                       )}
                       {state.status === "incorrect" && (

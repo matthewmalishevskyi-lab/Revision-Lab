@@ -67,3 +67,120 @@ export function normalise(text: string): string {
     // combination — "230°." and "20%" both reduce to the bare value.
     .replace(/[°%.!?]+$/, "");
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ACCENTS, AND THE KEYBOARD NOBODY HAS
+//
+// ⚠️ A THIRD BUG OF THE SAME FAMILY, AND THE BIGGEST ONE YET. Asked "How do
+// you say 'I am 16 years old' in Spanish?", a student typing
+//
+//     Tengo dieciseis anos
+//
+// was marked WRONG, because the accept list holds "tengo dieciséis años". The
+// answer is right. The student simply does not own a keyboard that can produce
+// ñ — a UK layout has no key for it, and nor does it have é, ü, ç or ß.
+//
+// That is not one broken question. Measured across the site rather than
+// guessed at — the first guess written here was "nearly every answer", and it
+// was four times too high:
+//
+//     french     63 of 161 typed answers   (39%)
+//     spanish    48 of 144
+//     german     15 of 109
+//     ────────────────────────────────────────
+//     all three  126 of 414
+//     whole site 215 of 5,017
+//
+// So it is not most of the site, and it IS two fifths of French — 126 questions
+// that a student on a UK keyboard could not get right however well they knew
+// the answer, concentrated exactly where someone is most likely to be revising
+// vocabulary by typing it.
+//
+// ─────────────────────────────────────────────────────────────────────────────
+// WHY THIS IS A SECOND FUNCTION AND NOT A LINE INSIDE normalise()
+//
+// Folding accents away is NOT harmless, and this file's own history is the
+// argument for caution: stripping every hyphen looked harmless too, and marked
+// -3 and 3 as the same answer.
+//
+// In these languages the accent is sometimes the entire difference between two
+// real words:
+//
+//     tú (you)      vs  tu (your)          Spanish
+//     sí (yes)      vs  si (if)            Spanish
+//     él (he)       vs  el (the)           Spanish
+//     año (year)    vs  ano (a rather different word)
+//     où (where)    vs  ou (or)            French
+//     schön (nice)  vs  schon (already)    German
+//
+// So a silent fold would mark a genuinely wrong answer right, which is the one
+// thing this site must never do.
+//
+// The way out is not to choose between the two mistakes but to refuse both: the
+// answer is ACCEPTED, and the student is TOLD. `normalise` stays strict and is
+// still what decides an exact match; this looser form is only consulted when
+// the strict one has already failed, and when it rescues an answer the marking
+// says so in as many words — "Correct — mind the accents: it's años, not anos."
+//
+// A student who could not type ñ gets their mark. A student who wrote "tu" for
+// "tú" also gets their mark, and gets told the accent is the word — which is
+// the thing they actually needed to read. Nobody is called wrong for owning
+// the wrong keyboard.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Strip accents, so "años" and "anos" compare equal. */
+export function foldAccents(text: string): string {
+  return (
+    text
+      // Letters that are not a base letter plus a mark, so NFD cannot split
+      // them. German ß is "ss" when it is spelled out, which is exactly what
+      // somebody without the key types.
+      .replace(/ß/g, "ss")
+      .replace(/æ/g, "ae")
+      .replace(/Æ/g, "AE")
+      .replace(/œ/g, "oe")
+      .replace(/Œ/g, "OE")
+      .replace(/ø/g, "o")
+      .replace(/Ø/g, "O")
+      .replace(/ð/g, "d")
+      .replace(/þ/g, "th")
+      .replace(/ł/g, "l")
+      .replace(/Ł/g, "L")
+      // NFD splits "ñ" into "n" + a combining tilde; the range below is the
+      // block those combining marks live in, so this handles every accented
+      // letter in every language at once rather than a list of the ones we
+      // happened to think of.
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .normalize("NFC")
+  );
+}
+
+/** `normalise`, with accents folded away too. Only ever used as a fallback. */
+export function normaliseLoose(text: string): string {
+  return normalise(foldAccents(text));
+}
+
+/**
+ * Mark a typed answer against an accept list.
+ *
+ * Returns whether it counts, and — when it only counted once accents were
+ * folded — the properly accented form, so the page can show what the student
+ * should have written. `want` being set is the whole reason this returns an
+ * object rather than a boolean: an accepted answer with a spelling worth
+ * correcting is a different thing from a perfect one, and the student is
+ * entitled to know which they just gave.
+ */
+export function markAnswer(
+  typed: string,
+  accept: readonly string[],
+): { correct: boolean; want?: string } {
+  const strict = normalise(typed);
+  if (accept.some((valid) => normalise(valid) === strict)) return { correct: true };
+
+  const loose = normaliseLoose(typed);
+  const rescued = accept.find((valid) => normaliseLoose(valid) === loose);
+  if (rescued) return { correct: true, want: rescued };
+
+  return { correct: false };
+}

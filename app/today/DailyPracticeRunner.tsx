@@ -13,7 +13,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { normalise } from "../lib/normalise";
+import { markAnswer, normalise } from "../lib/normalise";
 import { HigherBadge } from "../components/HigherBadge";
 import { MarkTariff } from "../components/MarkTariff";
 import { ReportQuestion } from "../components/ReportQuestion";
@@ -129,8 +129,11 @@ export function DailyPracticeRunner({
   }
 
   function check() {
-    if (state !== "unanswered" || !q.accept) return;
-    const ok = q.accept.some((a) => normalise(a) === normalise(typed));
+    // `selfMarked` covers both "no accept list" and "open-ended", and either
+    // way there is no verdict for this function to reach.
+    if (state !== "unanswered" || !q.accept || q.selfMarked) return;
+    // Accents folded as a fallback — see markAnswer() in lib/normalise.ts.
+    const { correct: ok } = markAnswer(typed, q.accept);
     settle(ok ? "correct" : "wrong");
   }
 
@@ -227,7 +230,7 @@ export function DailyPracticeRunner({
               );
             })}
           </ul>
-        ) : q.accept ? (
+        ) : q.accept && !q.selfMarked ? (
           <div className="mt-5 flex flex-wrap gap-2">
             <label className="sr-only" htmlFor="answer">Your answer</label>
             <AnswerBox

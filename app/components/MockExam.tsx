@@ -19,7 +19,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { normalise } from "../lib/normalise";
+import { markAnswer, normalise } from "../lib/normalise";
 import { HigherBadge } from "./HigherBadge";
 import { Celebration } from "./Celebration";
 import { Calculator } from "./Calculator";
@@ -167,9 +167,11 @@ export function MockExam({
     const typed = given ?? stateFor(index).input;
     if (!typed.trim()) return;
 
-    const isCorrect = (question.accept ?? []).some(
-      (valid) => normalise(valid) === normalise(typed),
-    );
+    // Accents folded as a fallback, exactly as on a topic page — a student
+    // without an ñ key must not lose a mark for their keyboard. The spelling
+    // nudge lives on Practice, where there is teaching to do; a test says
+    // nothing mid-question by design.
+    const { correct: isCorrect } = markAnswer(typed, question.accept ?? []);
     update(index, { status: isCorrect ? "correct" : "incorrect", revealed: isCorrect });
 
     // Same "first attempt only" rule as Practice.tsx, and the same reason:
