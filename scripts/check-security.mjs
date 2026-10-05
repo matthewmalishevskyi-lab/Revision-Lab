@@ -813,6 +813,54 @@ try {
   // they are worth a check rather than a memory.
   console.log("Checking what a phone or an accessibility setting still gets...");
 
+  // ── Tap targets whose height depends on text that a phone hides ──────────
+  //
+  // ⚠️ chipStyles.ts works its heights out in a comment — "text-lg line-height
+  // 28 + py-2 (8+8) + border (1+1) = 46" — and that arithmetic is correct and
+  // was measured. It is also only true WHILE THE TEXT IS THERE. Several of
+  // these chips hide their words below @xl and show just an icon, and with no
+  // 28px line box the chip collapses to 38px: under Apple's 44 minimum, on a
+  // phone, on the header every page carries. A height derived from content is
+  // a height that changes when the content is hidden, which is exactly the
+  // case a comment full of arithmetic cannot see.
+  //
+  // min-h-11 costs nothing where the text is visible (46 > 44) and is the
+  // floor for everywhere else. Measured after adding it: the header is still
+  // exactly 46px at 320, 390, 768, 1400 and 1536px, with no overflow.
+  {
+    const chips = readFileSync("app/components/chipStyles.ts", "utf8");
+    for (const name of ["chipClasses", "quizChipClasses"]) {
+      const decl = chips.slice(chips.indexOf(`export const ${name} =`));
+      const value = decl.slice(0, decl.indexOf(";"));
+      expect(/\bmin-h-11\b/.test(value),
+        `${name} has no min-h-11, so it drops under 44px on a phone the moment its text is hidden`);
+    }
+  }
+
+  // The multiple-choice answer buttons: measured at 43px on an iPhone SE, one
+  // pixel under, on the control a phone user taps more than any other on the
+  // site. Both components, because a test is tapped faster than practice.
+  for (const file of ["app/components/Practice.tsx", "app/components/MockExam.tsx"]) {
+    const src = readFileSync(file, "utf8");
+    const button = src.slice(src.indexOf("rounded-xl border px-3.5 py-2.5") - 240);
+    expect(/min-h-11[^`]*rounded-xl border px-3\.5 py-2\.5/.test(button.slice(0, 400)),
+      `${file}: the multiple-choice answer buttons have no min-h-11 and come out at 43px on a phone`);
+  }
+
+  // ⚠️ A flex child will not shrink below its own content unless told it may,
+  // and the topic hero sits inside overflow-hidden — so a long title was not
+  // merely cramped on a 320px screen, it was CUT OFF AND GONE. Same rule, same
+  // fix and the second time: AuthShell's top bar printed "Back to home" across
+  // the wordmark for exactly this reason.
+  {
+    const hero = readFileSync("app/subjects/[subject]/[topic]/page.tsx", "utf8");
+    const row = hero.slice(hero.indexOf("flex items-center gap-4 px-5 py-6"));
+    expect(row.length > 0 && /<div className="min-w-0">/.test(row.slice(0, 900)),
+      "the topic title's text block has no min-w-0, so a long title is clipped away on a narrow screen");
+    expect(/text-2xl font-bold tracking-tight sm:text-4xl/.test(row.slice(0, 1400)),
+      "the topic title does not step its type down on a phone, so a long one cannot fit");
+  }
+
   // Reduced motion must remove the ANIMATION, not the feature. The ladder's
   // branch has to keep following the reader, which means it listens for scroll.
   const ladderSrc = readFileSync("app/components/LadderCompanion.tsx", "utf8");

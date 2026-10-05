@@ -22,8 +22,19 @@
 // PAGE past the edge of the browser window, cutting "Log out" off-screen
 // entirely. Trimming each chip's own padding is one of several changes that
 // together close that gap — see SiteHeader.tsx's own comment for the rest.
+// ⚠️ min-h-11 IS LESS REDUNDANT THAN IT LOOKS, and the arithmetic above is
+// why. A text chip is 46px tall BECAUSE OF ITS TEXT — line-height 28 plus
+// padding plus border. Below @xl several of these chips hide their words and
+// show only their icon (see SiteHeader: "Login/Register" is 157px of text and
+// was the single thing pushing a phone header onto a fourth line). With the
+// text gone there is no 28px line box, so the chip collapses to the icon's 20
+// and comes out at 38px — below Apple's 44 minimum, on a phone, measured.
+//
+// So the careful 46px arithmetic above was only ever true on a wide screen.
+// The floor costs nothing where the text is visible (46 > 44) and catches
+// exactly the case the arithmetic cannot see.
 export const chipClasses =
-  "flex items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-3.5 py-2 text-lg font-medium shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-md dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20";
+  "flex min-h-11 items-center gap-2 rounded-xl border border-white/60 bg-white/60 px-3.5 py-2 text-lg font-medium shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-md dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20";
 
 // For a chip that's a single, universally recognised icon and nothing else
 // — search's magnifying glass, the sun/moon theme switch, the hamburger —
@@ -62,5 +73,8 @@ export const iconChipClasses =
 // Same geometry as chipClasses (px-3.5 py-2 text-lg + 1px border = 46px tall),
 // so making it stand out by COLOUR does not also make it stand out by size and
 // wreck the row it sits in.
+// min-h-11 for the same reason as chipClasses: this one hides its words on a
+// phone too, and a 38px tap target is worse here than anywhere, because this
+// is the button someone jabs at while a classmate reads a room code out loud.
 export const quizChipClasses =
-  "flex items-center gap-2 rounded-xl border border-blue-600 bg-blue-600 px-3.5 py-2 text-lg font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md dark:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600";
+  "flex min-h-11 items-center gap-2 rounded-xl border border-blue-600 bg-blue-600 px-3.5 py-2 text-lg font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md dark:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600";

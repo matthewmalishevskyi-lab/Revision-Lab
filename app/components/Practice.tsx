@@ -483,7 +483,14 @@ export function Practice({
                                   update(index, { input: option });
                                   check(index, item, option);
                                 }}
-                                className={`flex items-start gap-2.5 rounded-xl border px-3.5 py-2.5 text-left text-sm transition ${
+                                // ⚠️ 43px measured on an iPhone SE — one pixel
+                                // under Apple's 44 and under this project's
+                                // own rule, on the single control a phone
+                                // user taps most on the whole site. `min-h`
+                                // rather than more padding, so a one-line
+                                // option grows to 44 and a wrapped one is
+                                // unchanged.
+                                className={`flex min-h-11 items-start gap-2.5 rounded-xl border px-3.5 py-2.5 text-left text-sm transition ${
                                   show && isRight
                                     ? "border-green-600/60 bg-green-500/15 font-medium"
                                     : show

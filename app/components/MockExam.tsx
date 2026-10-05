@@ -566,7 +566,10 @@ export function MockExam({
                                   update(index, { input: option });
                                   check(index, item, option);
                                 }}
-                                className={`flex items-start gap-2.5 rounded-xl border px-3.5 py-2.5 text-left text-sm transition ${
+                                // 43px on an iPhone SE, same as Practice — see
+                                // the note there. The answer buttons in a
+                                // timed test are if anything tapped faster.
+                                className={`flex min-h-11 items-start gap-2.5 rounded-xl border px-3.5 py-2.5 text-left text-sm transition ${
                                   show && isRight
                                     ? "border-green-600/60 bg-green-500/15 font-medium"
                                     : show

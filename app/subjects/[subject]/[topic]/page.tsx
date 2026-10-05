@@ -204,17 +204,33 @@ export default async function TopicPage({ params }: Props) {
         </nav>
 
         <section className="mt-6 overflow-hidden rounded-3xl border border-white/60 bg-white/70 shadow-[0_20px_50px_-30px_rgba(22,24,43,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+          {/* ⚠️ THE TITLE OF THE TOPIC WAS CUT OFF ON A 320px PHONE, and
+              silently: the section above is `overflow-hidden`, so the end of
+              the word simply was not there rather than spilling somewhere
+              visible. Measured on an iPhone SE — this row wanted 337px inside
+              a 270px column.
+
+              Two causes, and the first one this codebase has met before, in
+              AuthShell's top bar: a flex child will NOT shrink below its own
+              content unless told it may, so the text block held its full
+              width and the overflow was cut off the end. `min-w-0` is the
+              line that lets it give way.
+
+              The second is simply that 36px type (text-4xl) does not fit a
+              long title in the ~122px left after a 64px icon and 64px of
+              padding. The icon, the padding and the type all step down below
+              `sm` and return at full size the moment there is room. */}
           <div
-            className="flex items-center gap-5 px-8 py-8"
+            className="flex items-center gap-4 px-5 py-6 sm:gap-5 sm:px-8 sm:py-8"
             style={{ backgroundImage: style.gradient }}
           >
             <span
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/70"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/70 sm:h-16 sm:w-16"
               style={{ color: style.text }}
             >
-              <Icon name={topic.icon} className="h-9 w-9" />
+              <Icon name={topic.icon} className="h-7 w-7 sm:h-9 sm:w-9" />
             </span>
-            <div>
+            <div className="min-w-0">
               <p
                 className="text-sm font-semibold uppercase tracking-wider opacity-70"
                 style={{ color: style.text }}
@@ -222,7 +238,7 @@ export default async function TopicPage({ params }: Props) {
                 {subject.name} · {year}
               </p>
               <h1
-                className="text-4xl font-bold tracking-tight"
+                className="text-2xl font-bold tracking-tight sm:text-4xl"
                 style={{ color: style.text }}
               >
                 {topic.title}

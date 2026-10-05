@@ -360,6 +360,26 @@ try {
           const pq = c.practice.map((p) => p.question);
           expect(new Set(pq).size === pq.length, at("duplicate practice question — React key collision"));
 
+          // ⚠️ AND DUPLICATES THE EXACT RULE ABOVE CANNOT SEE. "The same
+          // question" was compared as exact strings, while this site's own
+          // idea of "the same text" is normalise() — the comparison its
+          // marking runs on. Three pairs lived in that gap:
+          //
+          //   "Factorise 6x + 9"      vs "Factorise 6x + 9."
+          //   "Which protocol is used to SEND email?" vs "…to send email?"
+          //   "Which hormone LOWERS blood glucose…"   vs "…lowers…"
+          //
+          // Each was the same question asked twice on one page, once typed
+          // and once as multiple choice, with the same answer. They are not
+          // an accident: this file's own notes record that the multiple-choice
+          // rollout REWORDED questions to get past the duplicate guard, and a
+          // full stop was enough to do it. A check somebody has worked around
+          // is a check that has stopped working. If two questions are
+          // indistinguishable to the marker, they are one question.
+          const pqNorm = c.practice.map((p) => normalise(p.question));
+          expect(new Set(pqNorm).size === pqNorm.length,
+            at("two practice questions differ only by punctuation or capitals, so the student is asked the same thing twice"));
+
           for (const p of c.practice) {
             // An answer panel should teach, not just confirm. "A noun." tells a
             // student nothing they did not already have.

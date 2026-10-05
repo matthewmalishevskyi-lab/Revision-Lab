@@ -102,7 +102,11 @@ export async function SiteHeader({ greeting = true }: { greeting?: boolean }) {
           prompted this fix, "Revision Lab" had been squeezed into two lines by
           the button row next to it. A wordmark that breaks in half is the
           single most broken-looking thing a header can do. */}
-      <Link href="/" className="flex shrink-0 items-center gap-2 @sm:gap-3">
+      {/* min-h-11: the logo is 36px of artwork and, below @sm where the
+          wordmark is hidden, that is the whole link — 36px, under the 44
+          minimum, on the one control that gets somebody un-lost. It grows the
+          hit box without moving the mark, because the row around it is 46. */}
+      <Link href="/" className="flex min-h-11 shrink-0 items-center gap-2 @sm:gap-3">
         <Logo className="h-9 w-9" />
         {/* Two sizes rather than hidden-then-shown: on a phone the wordmark
             has to earn its 96px, so it is text-base there and only grows to

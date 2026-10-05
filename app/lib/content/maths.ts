@@ -977,7 +977,7 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "x² + 7x + 10. Check with the pattern: 2 + 5 = 7 and 2 x 5 = 10." },
       { question: "Expand (x + 3)²", accept: ["x^2+6x+9", "x^2 + 6x + 9", "x²+6x+9"],
         answer: "x² + 6x + 9. It means (x + 3)(x + 3) — NOT x² + 9." },
-      { question: "Factorise 6x + 9", accept: ["3(2x+3)", "3(2x + 3)"], answer: "3(2x + 3). The HCF of 6 and 9 is 3." },
+      { question: "Factorise 8x + 12", accept: ["4(2x+3)", "4(2x + 3)"], answer: "4(2x + 3). The HCF of 8 and 12 is 4." },
       { question: "Factorise 4x² + 6x", accept: ["2x(2x+3)", "2x(2x + 3)"],
         answer: "2x(2x + 3). Include the letter in the common factor where possible." },
       { question: "Solve 3x + 7 = 22", accept: ["5", "x=5", "x = 5"], answer: "x = 5. Subtract 7 to get 3x = 15, then divide by 3." },

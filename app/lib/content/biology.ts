@@ -4724,17 +4724,17 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "The nervous system sends electrical impulses along neurones, so responses are very fast, act on a precise target, and last only a short time — useful for reacting to immediate danger. The endocrine system releases hormones into the blood, so they travel more slowly, reach many organs rather than one precise spot, and their effects last far longer — better suited to processes such as growth or the menstrual cycle. Both use the same basic structure of receptor, coordination centre and effector. Mark this one yourself: speed, duration and how targeted each is are the three comparisons worth making.",
       },
       {
-        question: "Which hormone lowers blood glucose concentration?",
+        question: "Which hormone prepares the body for action by raising heart rate and breathing rate?",
         choices: [
+          "Adrenaline",
           "Insulin",
           "Glucagon",
-          "Adrenaline",
           "Thyroxine",
         ],
         accept: [
-          "Insulin",
+          "Adrenaline",
         ],
-        answer: "Insulin causes glucose to be taken up and stored as glycogen. Glucagon does the reverse, so the two work as a negative feedback pair.",
+        answer: "Adrenaline, released by the adrenal glands in a frightening or stressful situation. Insulin and glucagon control blood glucose, and thyroxine sets the basal metabolic rate — a slow background setting rather than a response to a sudden threat.",
       },
       {
         question: "What is homeostasis?",
