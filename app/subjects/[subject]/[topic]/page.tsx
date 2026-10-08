@@ -8,6 +8,8 @@ import { Icon } from "../../../components/Icon";
 import { Practice } from "../../../components/Practice";
 import { LadderCompanion } from "../../../components/LadderCompanion";
 import { ContentNotice } from "../../../components/ContentNotice";
+import { ExplainFurther } from "../../../components/ExplainFurther";
+import { explainFurther, hasExplanation } from "../../../lib/explainFurther";
 import { FocusTimer } from "../../../components/FocusTimer";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { StudyTimer } from "../../../components/StudyTimer";
@@ -108,6 +110,12 @@ export default async function TopicPage({ params }: Props) {
   // coming-soon panel. That means content can be added one topic at a time
   // without the site ever being broken in between.
   const content = getTopicContent(subject.slug, topic.slug);
+
+  // What each key fact's "Explain further" opens. Worked out once, here on the
+  // server, for two reasons: the matching reads a whole topic and so must not
+  // reach the browser, and doing it per block inside the map would redo the
+  // same whole-topic pass for every block on the page.
+  const explanations = content ? explainFurther(content) : [];
 
   // Who is reading this. The header asks the same question, and `getViewer`
   // makes sure that costs one lookup per request rather than two.
@@ -326,7 +334,7 @@ export default async function TopicPage({ params }: Props) {
             <section id="key-facts" className="mt-8 scroll-mt-20">
               <h2 className="text-2xl font-bold tracking-tight">Key facts</h2>
               <div className="mt-4 space-y-4">
-                {content.keyFacts.map((block) => (
+                {content.keyFacts.map((block, blockIndex) => (
                   <div
                     key={block.heading}
                     className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
@@ -352,6 +360,21 @@ export default async function TopicPage({ params }: Props) {
                         the one part of maths that cannot be taught in
                         sentences — see MathsDiagram.tsx. */}
                     {block.diagrams && <DiagramRow names={block.diagrams} interactive />}
+
+                    {/* ⚠️ The bullets above are one sentence each — 17 words
+                        is the median across the site, and 92% of them state a
+                        fact without saying why. That is right for revising
+                        and wrong for learning, so the longer version lives
+                        behind a button rather than in the bullet. What it
+                        opens is already written: the definitions of the words
+                        it uses, the mistake people make with it, and the
+                        method applied. See lib/explainFurther.ts. */}
+                    {hasExplanation(explanations[blockIndex]) && (
+                      <ExplainFurther
+                        explanation={explanations[blockIndex]}
+                        accent={style.text}
+                      />
+                    )}
                   </div>
                 ))}
               </div>

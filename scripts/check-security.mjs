@@ -847,6 +847,45 @@ try {
       `${file}: the multiple-choice answer buttons have no min-h-11 and come out at 43px on a phone`);
   }
 
+  // ── "Explain further" stays on the server ────────────────────────────────
+  //
+  // lib/explainFurther.ts matches a key-fact block against a whole topic's
+  // definitions, mistakes and worked examples, so it touches entire topics. A
+  // Client Component importing it would pull the content registry into the
+  // browser bundle — the same trap calculator-topics.ts documents, and the
+  // same shape as the dark-mode bug where importing one constant from
+  // SiteHeader dragged the session code into the client. The page does the
+  // matching and passes plain strings down; a TYPE import is fine.
+  {
+    const clientImportsExplain = listFiles("app").filter((f) => /\.tsx?$/.test(f)).filter((f) => {
+      const src = readFileSync(f, "utf8");
+      return /^["']use client["']/m.test(src) && /^import (?!type )[^\n]*explainFurther["']/m.test(src);
+    });
+    expect(clientImportsExplain.length === 0,
+      `explainFurther reads whole topics and is imported by a client file: ${clientImportsExplain.join(", ")}`);
+
+    // ⚠️ And it must stay a <details>, not a React disclosure. There can be
+    // ten of these on a page and 1,278 across the site; as a Client Component
+    // every one of them ships JavaScript to do what the browser already does,
+    // and loses working-before-hydration, Ctrl+F finding closed text, and a
+    // correct button role with aria-expanded for free.
+    const efRaw = readFileSync("app/components/ExplainFurther.tsx", "utf8");
+    // ⚠️ COMMENTS STRIPPED FIRST, AND BOTH RULES BELOW FAILED TO FAIL WITHOUT
+    // IT. The file explains at length why it is a <details> and why the button
+    // carries min-h-11 — so a regex over the raw source matched the PROSE and
+    // passed happily on code where both had been removed. Found by sabotage,
+    // not by reading. This is the third time in this project: the Tailwind
+    // interpolation rule fired on the comment warning about interpolation, and
+    // the touch-action rule read the sentence describing its own fix. Strip
+    // the comments, keep the rule strict.
+    const ef = efRaw.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    expect(!/^["']use client["']/m.test(ef),
+      "ExplainFurther has become a Client Component — it is a <details> precisely so it ships no JavaScript");
+    expect(/<details/.test(ef) && /<summary/.test(ef),
+      "ExplainFurther no longer uses <details>/<summary>, so the browser is no longer doing the accessibility for it");
+    expect(/min-h-11/.test(ef), "the Explain further button is a tap target and needs min-h-11");
+  }
+
   // ⚠️ A flex child will not shrink below its own content unless told it may,
   // and the topic hero sits inside overflow-hidden — so a long title was not
   // merely cramped on a 320px screen, it was CUT OFF AND GONE. Same rule, same

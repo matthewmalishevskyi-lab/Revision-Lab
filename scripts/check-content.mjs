@@ -106,6 +106,7 @@ try {
       "app/lib/marks.ts",
       "app/lib/openEnded.ts",
       "app/lib/normalise.ts",
+      "app/lib/explainFurther.ts",
       "--outDir", out,
       "--module", "commonjs",
       "--target", "es2020",
@@ -123,6 +124,7 @@ try {
   // be able to fail when app/lib/normalise.ts changes, or they are decoration.
   const { markAnswer: realMarkAnswer, normalise: realNormalise } = require(join(out, "normalise.js"));
   const realMark = (typed, accept) => realMarkAnswer(typed, accept).correct;
+  const { explainFurther, hasExplanation } = require(join(out, "explainFurther.js"));
 
   // ── The marking rule, copied from Practice.tsx ─────────────────────────────
   // Deliberately duplicated rather than imported: this is the checker's
@@ -835,6 +837,73 @@ try {
     for (const m of readFileSync(file, "utf8").matchAll(/(\d{2,3})\s+topics/gi)) {
       expect(Number(m[1]) === topicCount, `${file} says "${m[0]}" but there are ${topicCount} topics`);
     }
+  }
+
+  // ── "Explain further" ──────────────────────────────────────────────────────
+  //
+  // The expander under each key fact is assembled from material the topic
+  // already holds — see app/lib/explainFurther.ts for why, and for the
+  // measurement that said it would work. These rules protect the two things
+  // that make it worth having rather than noise.
+  {
+    let efBlocks = 0, efCovered = 0, efRepeats = 0, efStrangers = 0;
+    const STOPISH = (s) => String(s).toLowerCase().replace(/[^a-z0-9\s]/g, " ");
+    for (const [key, c] of Object.entries(TOPIC_CONTENT)) {
+      const ex = explainFurther(c);
+      const seen = new Set();
+      ex.forEach((e, i) => {
+        efBlocks++;
+        if (hasExplanation(e)) efCovered++;
+        const block = STOPISH(`${c.keyFacts[i].heading} ${(c.keyFacts[i].points ?? []).join(" ")}`);
+        for (const d of e.definitions) {
+          // ⚠️ ONE TERM, ONE BLOCK. Scoring each block independently put the
+          // definition of "homeostasis" under all four blocks of the
+          // homeostasis topic, which reads as padding and teaches the reader
+          // to stop pressing the button. The assignment hands each piece of
+          // material to the single block it fits best; this is what proves
+          // it still does.
+          if (seen.has(d.term)) { efRepeats++; expect(false, `${key}: "${d.term}" is explained under more than one key-fact block`); }
+          seen.add(d.term);
+          // A definition under a block whose words it shares none of is not
+          // an explanation of that block, it is a non sequitur.
+          const words = STOPISH(d.term).split(/\s+/).filter((w) => w.length > 4);
+          if (words.length && !words.some((w) => block.includes(w))) {
+            efStrangers++;
+            expect(false, `${key} › ${c.keyFacts[i].heading}: explains "${d.term}", a term the block never uses`);
+          }
+        }
+      });
+    }
+    // A floor, not a target. Measured at 98% when this was built; below 90%
+    // the button is missing from enough of the site to be a surprise when it
+    // does appear, which is worse than not having it.
+    const pct = (100 * efCovered) / Math.max(1, efBlocks);
+    expect(pct >= 90,
+      `only ${pct.toFixed(0)}% of key-fact blocks have anything to put behind "Explain further" (was 98%)`);
+    expect(efRepeats === 0, `${efRepeats} definitions appear under more than one block in their topic`);
+
+    // ⚠️ A NAMED CASE, because the three rules above all stay true when the
+    // matching gets WORSE. Scoring on "does this word appear at all" put the
+    // definition of INSULIN under "The endocrine glands", which mentions it
+    // once in passing, rather than "Controlling blood glucose", which is
+    // three quarters about it — both scored 1 and the tie broke on nothing.
+    // Counting occurrences fixed it, and this is the only thing that can tell
+    // whether the counting is still happening. Same reasoning as the search
+    // index's rule that "teacher tools" must return teacher tools first: a
+    // structural check passes just as well on a ranking that has gone wrong.
+    {
+      const hh = TOPIC_CONTENT["biology/hormones-and-homeostasis"];
+      if (hh) {
+        const ex = explainFurther(hh);
+        const where = (term) =>
+          hh.keyFacts.findIndex((_, i) => ex[i].definitions.some((d) => d.term === term));
+        const glucose = hh.keyFacts.findIndex((b) => /blood glucose/i.test(b.heading));
+        expect(where("Insulin") === glucose,
+          `"Insulin" is explained under "${hh.keyFacts[where("Insulin")]?.heading ?? "nowhere"}" rather than the block about controlling blood glucose — the term-weighting has stopped counting occurrences`);
+      }
+    }
+    expect(efStrangers === 0, `${efStrangers} definitions are attached to a block that never mentions them`);
+    console.log(`\n"Explain further" opens on ${efCovered} of ${efBlocks} key-fact blocks (${pct.toFixed(0)}%), with no term explained twice in a topic.`);
   }
 
   // ── Summary ────────────────────────────────────────────────────────────────
