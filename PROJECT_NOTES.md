@@ -1,5 +1,128 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## "Explain further" — the information layer, and the 8% statistic (2026-10-08)
+
+Matthew, rejecting my plan for restructuring the page: *"I think our actual
+information part is not so good. Can you think of how to improve it. For
+example button 'explain further' expands the information."*
+
+He was right, and it is the more important half — the previous pass went at
+the SHAPE of the page and left the teaching alone.
+
+### ⚠️ THE MEASUREMENT: 92% OF THE FACTS NEVER SAY WHY
+
+    285 topics · 1,278 key-fact blocks · 6,291 bullet points
+    median 17 words per bullet · median 58 words per summary
+    bullets with ANY causal connective
+      ("because", "so that", "which means") .... 509 of 6,291  (8%)
+    topics with at least one diagram ............ 73 of 285    (26%)
+
+A 17-word bullet is one sentence. Read one and the statistic becomes obvious:
+
+> All control systems have RECEPTORS, a COORDINATION CENTRE, and EFFECTORS.
+
+Three technical words, no explanation of what any of them does, no example.
+
+> Blood glucose is monitored by the pancreas.
+
+Five words.
+
+**This content is a set of answers, not a set of explanations.** Excellent for
+somebody who sat the lesson and is reminding themselves the night before;
+useless for somebody who missed it, never understood it, or is teaching
+themselves — and on a free revision site that is a lot of who turns up. They
+have nowhere to go.
+
+The answer is NOT more words in the bullet, which would wreck the thing that
+works (the terseness is deliberate and correct). It is **progressive
+disclosure**: the one-liner stays, a button opens the longer version. One
+page, two readers, and the fast one is not punished for the slow one.
+
+### ⚠️ AND THE EXPLANATIONS WERE ALREADY WRITTEN
+
+The obvious objection is "that is 1,278 explanations to write". But the site
+had already written them and filed them in four sections five to twelve phone
+screens apart. Measured per key-fact block BEFORE building anything:
+
+    a flashcard definition for a term the block uses ...... 1,214  (95%)
+    a common mistake about the same material .............. 1,134  (89%)
+    a worked example on the same material ................... 568  (44%)
+    ────────────────────────────────────────────────────────────────
+    something to show ..................................... 1,273 (100%)
+    two or more KINDS of thing ............................ 1,150  (90%)
+
+That measurement is what decided the build. Live, with the real function, it
+opens on **1,250 of 1,278 blocks (98%)** and surfaces **2,723 definitions** at
+the moment they are needed rather than five screens later. No new content.
+
+### Two things that make it an explanation rather than padding
+
+⚠️ **Each piece of material goes to ONE block, the one it fits best.** The
+first version scored every block independently, and the definition of
+"homeostasis" opened under all four blocks of the homeostasis topic. That
+reads as filler and teaches the reader to stop pressing the button. Zero terms
+now repeat within a topic, and there is a check.
+
+⚠️ **The score counts occurrences, not presence.** Asking "does this word
+appear at all" put INSULIN under *The endocrine glands*, which mentions it
+once in passing, rather than *Controlling blood glucose*, which is three
+quarters about it. Both scored 1 and the tie broke on nothing. Counting fixed
+it: that block now opens on Pancreas, Insulin and Glycogen, which is exactly
+right.
+
+### `<details>` rather than React state, and it is not laziness
+
+No `"use client"`, so **not one byte of JavaScript ships** for up to ten of
+these per page and 1,278 across the site. It works before hydration and with
+JavaScript off entirely (verified in a browser with JS disabled). The button
+role, `aria-expanded`, Enter and Space, and the screen-reader announcement are
+all the browser's job, done properly, for free — every one of them something a
+hand-rolled disclosure gets subtly wrong, and this codebase has already
+shipped `aria-valuetext` on a role it is invalid for. Chrome's Ctrl+F also
+finds text inside a closed one and opens it, which a React-hidden panel cannot.
+The cost is that it cannot animate its height. Worth it.
+
+### ⚠️ Three sabotages MISSED, two for the same old reason
+
+Seven sabotages run. Three passed on broken code at first:
+
+- **The `<details>` rule and the tap-target rule both matched the file's own
+  COMMENT** — the prose explaining *why* it is a `<details>` and *why* the
+  button carries `min-h-11`. **Third time in this project**: the Tailwind
+  interpolation rule fired on the comment warning about interpolation, and the
+  `touch-action` rule read the sentence describing its own fix. Comments
+  stripped, rule kept strict.
+- **The occurrence-weighting could be removed with everything still green**,
+  because the structural rules (no repeats, no stranger terms) all stay true
+  while the matching quietly gets worse. Fixed with a NAMED case — "Insulin"
+  must land under the blood-glucose block — the same device as the search
+  index's "teacher tools must return teacher tools first".
+
+Seven of seven now.
+
+**Verified.** `npm run check` fully green — **188,948** content, 1,239,302
+geometry, **5,056** security, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, 8 badge, 25,469
+game-question and 248 ship's-log checks; `tsc` and `eslint` clean. In a
+browser: **17 checks** — one expander per block, all closed by default, their
+content present in the HTML while closed (so Ctrl+F and crawlers find it),
+open and close by click and by Enter, no term explained twice on a page, 44px
+on a 320px phone with no overflow, and it still opens with JavaScript switched
+off. No console errors.
+
+### What this does not do, and what comes next
+
+Assembled material answers *"what does this word mean"*, *"what is the trap"*
+and *"how is it done"*. It does **not** answer *"why is this true"* — nothing
+on the site says why, which is the 8% above. That is stage 2: a written
+`detail` per block, about 100 words × 1,278 ≈ 128,000 words, by the parallel-
+agent pipeline that wrote the 1,000 maths questions and then blind re-solved
+184 of them. **Matthew picked biology to go first** so he can judge the voice
+on fifty of them before the rest are written.
+
+The 28 blocks where nothing could be assembled are the precise list of where
+that writing is needed most.
+
 ## Three ways the marking told a student they were wrong when they were right (2026-10-03)
 
 Matthew, playing with the live Spanish topic rather than reading the code —
