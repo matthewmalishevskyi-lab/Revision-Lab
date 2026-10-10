@@ -35,17 +35,66 @@ export function gradeFor(score: number): Grade {
 /**
  * The score for a finished level, out of 100.
  *
- * Three things, because any one on its own rewards the wrong behaviour:
- * time alone rewards sprinting past every alien and every question, kills
- * alone rewards ignoring the clock, and accuracy alone is already measured
- * everywhere else on the site. Together they say "you cleared the deck, you
- * answered well, and you did not take all afternoon".
+ * Four things, because any one on its own rewards the wrong behaviour: time
+ * alone rewards sprinting past everything, kills alone rewards ignoring the
+ * clock, accuracy alone rewards answering as little as possible, and volume
+ * alone rewards guessing.
  *
- * ⚠️ Accuracy counts for the most of the three ON PURPOSE. This is a revision
- * site: the game exists to get questions answered, and a grade that paid more
- * for shooting would be telling students the opposite.
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ⚠️ THE GRADE USED TO REWARD NOT REVISING, AND THIS IS THE FIX (2026-10-10)
+ *
+ * It was accuracy 40, aliens 30, pace 30 — and accuracy was a RATE. Run
+ * through the real scoreRun on deck 7's numbers (30 aliens, par 93s):
+ *
+ *     knife everything, answer nothing, 93s      80   A
+ *     answer 40, 36 right, clear the deck        69   B
+ *     answer 2, both right, clear the deck       69   B
+ *
+ * Clearing a deck with the knife and answering nothing was an A, and because
+ * a rate is protected by answering as little as possible, two right answers
+ * scored the same as thirty-six. Sixty of the hundred marks had nothing to do
+ * with revision at all. Matthew was asked about this four times before he
+ * approved the change.
+ *
+ * QUESTIONS RIGHT is the new part, and it is an AMOUNT, not a rate: how many
+ * you got right against a target the deck sets itself (see questionTarget).
+ * Accuracy still counts the most, so guessing does not pay; volume is what
+ * makes answering more worth more.
+ *
+ *     the same three runs, now                   then   now
+ *     knife everything, answer nothing             80 A   53 C
+ *     answer 40, 36 right, clear the deck          69 B   83 A
+ *     answer 2, both right, clear the deck         69 B   49 C
+ *
+ * ⚠️ A run that answers NOTHING can no longer score above 53 — a C, however
+ * fast and however many aliens it kills (17.5 for no evidence either way, 20
+ * for a full clear, 15 for pace, rounded). That is the single sentence this
+ * change exists to make true, and there is a check.
+ *
+ * ⚠️ VOLUME COUNTS RIGHT ANSWERS, NOT ALL ANSWERS, and that was a decision.
+ * Counting every answer would make thirty wrong answers in a row a B — the
+ * grade praising guessing. Counting right ones keeps the property the old
+ * checks were written to protect: one wrong answer is CHEAP (it moves the
+ * accuracy ramp a little) but never free, and a run of wrong answers costs
+ * something real.
  */
-export const WEIGHTS = { accuracy: 40, aliens: 30, time: 30 } as const;
+export const WEIGHTS = { accuracy: 35, right: 30, aliens: 20, time: 15 } as const;
+
+/**
+ * How many right answers a deck asks for, for the full QUESTIONS RIGHT marks.
+ *
+ * Derived from the deck rather than written per level, for the same reason
+ * par time is: a number typed beside each level goes stale the moment an
+ * alien is added. 0.6 per alien sits just under what a full clear actually
+ * costs in answers since the ammunition change (0.73 on deck 7, 0.75 on deck
+ * 9), so a player who fights the deck honestly reaches it and one who knifes
+ * past everything does not.
+ */
+export const RIGHT_PER_ALIEN = 0.6;
+export function questionTarget(aliens: number): number {
+  const a = Number.isFinite(aliens) && aliens > 0 ? aliens : 0;
+  return Math.max(1, Math.ceil(a * RIGHT_PER_ALIEN));
+}
 
 export type Run = {
   level: string;
@@ -65,7 +114,12 @@ export type Run = {
  *  bring back NaN, or a score of 140 out of 100. */
 const num = (v: number, max = 1e9) => (Number.isFinite(v) && v >= 0 ? Math.min(v, max) : 0);
 
-/** How many questions it takes for your real accuracy to count in full. */
+/**
+ * The fewest answers it takes for your real accuracy to count in full. On a
+ * real deck the ramp is the deck's own question target (8 to 22), which is
+ * longer; this floor only matters on tiny decks, where a ramp of one question
+ * would make a single wrong answer cost the whole accuracy mark.
+ */
 export const ACCURACY_CONFIDENCE = 6;
 
 export function scoreRun(run: Run): number {
@@ -87,10 +141,15 @@ export function scoreRun(run: Run): number {
   // instead of twenty. (Ramping to full confidence, rather than the permanent
   // prior daily-practice.ts uses to RANK topics, because a grade has to be
   // able to reach both ends and a ranking does not.)
-  const raw = answered === 0 ? 0.5 : right / answered;
-  const confidence = Math.min(1, answered / ACCURACY_CONFIDENCE);
-  const accuracy = 0.5 + (raw - 0.5) * confidence;
   const aliens = num(run.aliens), kills = num(run.kills);
+  const target = questionTarget(aliens);
+  // The ramp runs over the deck's own target, so within it every right answer
+  // raises accuracy and every wrong one lowers it by the same small step —
+  // the "cheap, never free" property, at the scale of the deck being played.
+  const raw = answered === 0 ? 0.5 : right / answered;
+  const confidence = Math.min(1, answered / Math.max(ACCURACY_CONFIDENCE, target));
+  const accuracy = 0.5 + (raw - 0.5) * confidence;
+  const volume = Math.min(1, right / target);
   const cleared = aliens === 0 ? 1 : Math.min(1, kills / aliens);
   // full marks at par, nothing at three times par, straight line between
   // ⚠️ `par <= 0` is FALSE for NaN, so a par that is not a number has to be
@@ -99,7 +158,8 @@ export function scoreRun(run: Run): number {
   // is Infinity, so the guard without a ceiling still produced NaN.
   const par = num(run.par, 1e9), seconds = num(run.seconds, 1e9);
   const pace = par === 0 ? 1 : Math.max(0, Math.min(1, (3 * par - seconds) / (2 * par)));
-  const score = accuracy * WEIGHTS.accuracy + cleared * WEIGHTS.aliens + pace * WEIGHTS.time;
+  const score =
+    accuracy * WEIGHTS.accuracy + volume * WEIGHTS.right + cleared * WEIGHTS.aliens + pace * WEIGHTS.time;
   return Math.max(0, Math.min(100, Math.round(score)));
 }
 

@@ -19,7 +19,7 @@ import { buildSprites, type Sprite } from "./sprites";
 import { buildTextures, type TexSet } from "./textures";
 import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
 import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type LevelDef, type World } from "./world";
-import { formatClock, gradeFor, scoreRun, type LevelBest, type Run } from "../../lib/shipsLog";
+import { formatClock, gradeFor, questionTarget, scoreRun, type LevelBest, type Run } from "../../lib/shipsLog";
 
 export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string; why?: string };
 export type GameOptions = {
@@ -1629,7 +1629,10 @@ export class Game {
       const was = this.bestBefore;
       const lines = [
         `Grade ${letter} · ${score}/100`,
-        `Time ${mins(run.seconds)} (par ${mins(run.par)}) · aliens ${run.kills}/${run.aliens} · questions right ${run.right}/${asked}`,
+        // ⚠️ The target is SHOWN, because the grade now pays for right answers
+        // against it, and a goal you cannot see is the game being unfair — the
+        // argument the SEEN bar and the knife pips already settled.
+        `Time ${mins(run.seconds)} (par ${mins(run.par)}) · aliens ${run.kills}/${run.aliens} · right ${run.right} of ${asked} (deck wants ${questionTarget(run.aliens)})`,
       ];
       // the previous best, so there is something to beat next time
       // records, not one run: each of these came from whichever run set it

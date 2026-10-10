@@ -33,9 +33,37 @@ try {
   const run = (over = {}) => ({ level: "Level 1 — Boarding", seconds: 60, kills: 5, aliens: 10, right: 6, wrong: 4, par: 90, ...over });
 
   // ── the grade says what this site cares about ────────────────────────────
-  expect(WEIGHTS.accuracy > WEIGHTS.aliens && WEIGHTS.accuracy > WEIGHTS.time,
-    `answering is not the biggest part of the grade (${JSON.stringify(WEIGHTS)})`);
-  expect(WEIGHTS.accuracy + WEIGHTS.aliens + WEIGHTS.time === 100, "the weights do not add up to 100");
+  expect(WEIGHTS.accuracy > WEIGHTS.aliens && WEIGHTS.accuracy > WEIGHTS.time && WEIGHTS.accuracy >= WEIGHTS.right,
+    `answering well is not the biggest part of the grade (${JSON.stringify(WEIGHTS)})`);
+  expect(WEIGHTS.accuracy + WEIGHTS.right + WEIGHTS.aliens + WEIGHTS.time === 100, "the weights do not add up to 100");
+  // ⚠️ More than half the grade has to be about the questions. It was 40 of
+  // 100 when a knife-only clear scored an A.
+  expect(WEIGHTS.accuracy + WEIGHTS.right > 50, "less than half the grade is about the questions on a revision site");
+
+  // ── ⚠️ THE GRADE MUST NOT REWARD NOT REVISING (2026-10-10) ──────────────
+  // Deck 7's real numbers. Under the old weights the first run below scored
+  // an A and the second and third tied; every assertion here fails on them.
+  {
+    const d7 = { level: "The Spine", aliens: 30, par: 93 };
+    const knife = scoreRun({ ...d7, kills: 30, right: 0, wrong: 0, seconds: 93 });
+    expect(gradeFor(knife) === "C", `a knife-only clear answering nothing scores ${knife} (${gradeFor(knife)}), not a C`);
+    // the claim, exhaustively: NO run that answers nothing gets above a C
+    let best = 0;
+    for (let kills = 0; kills <= 30; kills++)
+      for (let seconds = 1; seconds <= 400; seconds += 3)
+        best = Math.max(best, scoreRun({ ...d7, kills, right: 0, wrong: 0, seconds }));
+    expect(gradeFor(best) === "C" || gradeFor(best) === "D",
+      `a run answering nothing can score ${best} (${gradeFor(best)}) — the grade still pays for not revising`);
+    // an AMOUNT, not a rate: thirty-six right beats two right
+    const many = scoreRun({ ...d7, kills: 30, right: 36, wrong: 4, seconds: 260 });
+    const two = scoreRun({ ...d7, kills: 30, right: 2, wrong: 0, seconds: 200 });
+    expect(many > two + 20, `36 right (${many}) barely beats 2 right (${two}) — accuracy is still being measured as a rate alone`);
+    expect(gradeFor(many) === "A" || gradeFor(many) === "S", `a 40-question run with 36 right scores ${many}, not an A`);
+    // and guessing does not pay: thirty wrong answers stays below thirty right
+    // (same 93 seconds as the knife run, so pace cannot be what separates them)
+    const guessed = scoreRun({ ...d7, kills: 30, right: 0, wrong: 30, seconds: 93 });
+    expect(guessed < knife, `thirty wrong answers (${guessed}) beat answering nothing (${knife}) — the grade praises guessing`);
+  }
 
   const perfect = scoreRun(run({ kills: 10, right: 10, wrong: 0, seconds: 10 }));
   expect(perfect === 100, `a perfect run scores ${perfect}, not 100`);
