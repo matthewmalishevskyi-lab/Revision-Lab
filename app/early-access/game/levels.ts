@@ -1233,4 +1233,128 @@ export const LEVEL9: LevelDef = (() => {
   return { INTRO, HINTS, OBJECTIVES, LOCKED_HINTS, TITLE: "Level 9 — Observation deck", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, ALT_ROUTE, LABELS, LEGEND };
 })();
 
-export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6, LEVEL7, LEVEL8, LEVEL9];
+// Level 10: "Hangar deck" — the boss.
+//
+// Deck 9's sensor dome warned you: "Last lift before the hangar deck." This
+// is it. A short run through hangar control, and then one big room with the
+// Director in it — the alien in the business suit from the boss design on
+// the early-access page.
+//
+// ⚠️ THE FIGHT IS ABOUT THE QUESTIONS, AND THAT IS THE WHOLE DESIGN. He is
+// SHIELDED: bullets, the knife and grenades do nothing to him while it is up.
+// Four override terminals stand in the corners of the hangar. Press E at one
+// and answer three questions — the deck runs at a third while you do, exactly
+// as it does for a reload — and the shield drops for eight seconds. One wrong
+// answer locks that terminal for ten; one that worked needs twenty-five to
+// recharge, so the next window is always across the room, under fire. Every
+// miss is owed, as everywhere else, and comes back at your next reload.
+//
+// ⚠️ SMALLER THAN DECK 9, ON PURPOSE. Decks 7 to 9 each had to be bigger and
+// busier than everything before them — Matthew's "increasingly harder and
+// bigger" — and check-security enforces it. The boss deck is the exception
+// that rule was written to expect: one arena you can see across, because a
+// fight you have to find is not a boss fight. The rule now measures the
+// run-up only, and says so.
+export const LEVEL10: LevelDef = (() => {
+  const W = 50, H = 36;
+  const AREAS: NonNullable<LevelDef["AREAS"]> = {
+    lift:    { r: [3, 16, 7, 20],    name: "1 Hangar lift",     light: [0.84, 0.9, 1.02],  wall: "panel",    floor: "fTile",   ceil: "light" },
+    corA:    { r: [9, 17, 14, 19],   name: "",                  light: [0.6, 0.62, 0.78],  wall: "corridor", floor: "fGrate",  ceil: "corridor" },
+    control: { r: [16, 12, 24, 24],  name: "2 Hangar control",  light: [0.66, 0.72, 0.9],  wall: "control",  floor: "fTile",   ceil: "grid" },
+    // the arena. Red alarm light over a cold blue room, and a ceiling high
+    // enough that he does not look like a man in a cupboard
+    hangar:  { r: [26, 4, 45, 31],   name: "3 Hangar bay",      light: [0.7, 0.66, 0.78],  wall: "hall",     floor: "fHazard", ceil: "grid", ceilH: 3.0 },
+  };
+  const DOORS: NonNullable<LevelDef["DOORS"]> = [
+    { cells: [[8, 17], [8, 18], [8, 19]], tex: "door" },
+    { cells: [[15, 17], [15, 18], [15, 19]], tex: "door" },
+    { cells: [[25, 17], [25, 18], [25, 19]], tex: "door" },             // into the hangar
+    // ⚠️ The lift out will not move while he is alive — see use() in
+    // game.ts. Said over comms the first time you try, rather than being a
+    // door that silently does nothing.
+    { cells: [[46, 18], [46, 19]], tex: "exit", exit: true },
+  ];
+  // two parked shuttles' worth of hull and four pillars: enough to break his
+  // line of sight, never enough to hide in for long
+  const BLOCKS: NonNullable<LevelDef["BLOCKS"]> = [
+    { cells: [[33, 9], [34, 9], [35, 9], [36, 9], [37, 9], [33, 10], [34, 10], [35, 10], [36, 10], [37, 10]], tex: "upperHull" },
+    { cells: [[33, 25], [34, 25], [35, 25], [36, 25], [37, 25], [33, 26], [34, 26], [35, 26], [36, 26], [37, 26]], tex: "upperHull" },
+    ...([[30, 14], [41, 14], [30, 22], [41, 22]] as [number, number][]).map((c) => ({ cells: [c] as [number, number][], tex: "pillar" })),
+  ];
+  const FLOORS: NonNullable<LevelDef["FLOORS"]> = [
+    [27, 5, 44, 30, "fBridge"],                  // the hangar floor, with a hazard border left round it
+    [16, 17, 24, 19, "fGrate"],
+  ];
+  // ⚠️ Crates STOP his bolts (updateBolts kills a bolt on any non-open
+  // square), even though he can see over them. So waist-high cover is the
+  // real defence against a volley here — crouch-height, one square, and
+  // never on the route the par time is measured along.
+  const COVER: NonNullable<LevelDef["COVER"]> = [
+    ...([[29, 11], [42, 11], [29, 25], [42, 25], [34, 16], [37, 20]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "crate"]),
+    ...([[19, 14], [22, 15], [17, 21], [20, 22]] as [number, number][]).map((c): [number, number, string] => [c[0], c[1], "console"]),
+  ];
+  const WALL_OVERRIDE = (ai: string, f: number, x: number, y: number): string | undefined => {
+    if (ai === "lift" && f === FACE.E && x === 2 && y === 18) return "exit";
+    if (ai === "hangar" && f === FACE.S && y === 3) return x % 3 === 0 ? "pillar" : "window";
+    if (ai === "control" && f === FACE.W && x === 25 && (y < 17 || y > 19)) return "window";
+    return undefined;
+  };
+  const DECALS: NonNullable<LevelDef["DECALS"]> = [
+    [6, 15, FACE.S, "arrowR"], [12, 16, FACE.S, "arrowR"], [25, 16, FACE.E, "arrowR"], [28, 3, FACE.S, "arrowR"],
+    [46, 7, FACE.W, "arrowR"], [43, 32, FACE.N, "arrowR"], [25, 28, FACE.E, "arrowR"],
+  ];
+  const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
+    { t: "lamp", x: 3.6, y: 16.6 }, { t: "lamp", x: 7.4, y: 16.6 },
+    { t: "alien", x: 12.5, y: 17.5, face: 3.1 },
+    // hangar control: the last ordinary fight, and the last supplies
+    { t: "alien", x: 18.5, y: 15.5, face: 0 }, { t: "alien", x: 21.5, y: 13.5, face: 3.1 },
+    { t: "alien", x: 19.5, y: 20.5, face: 0 }, { t: "alien", x: 23.5, y: 19.5, face: 3.1 },
+    { t: "alien", x: 17.5, y: 18.5, face: 0 }, { t: "alien", x: 21.5, y: 23.5, face: -1.57 },
+    { t: "alienBack", x: 20.5, y: 17.5, face: 0, stomp: true },
+    { t: "health", x: 17.5, y: 13.5 }, { t: "vest", x: 23.5, y: 23.5 },
+    { t: "grenade", x: 23.5, y: 13.5 }, { t: "grenade", x: 17.5, y: 23.5 },
+    { t: "holo", x: 20.5, y: 12.5 },
+    // the hangar
+    { t: "boss", x: 40.5, y: 18.5, face: 3.14 },
+    { t: "terminal", x: 26.5, y: 6.5 }, { t: "terminal", x: 45.5, y: 6.5 },
+    { t: "terminal", x: 26.5, y: 29.5 }, { t: "terminal", x: 45.5, y: 29.5 },
+    { t: "alien", x: 30.5, y: 8.5, face: 0 }, { t: "alien", x: 39.5, y: 12.5, face: 3.1 },
+    { t: "alien", x: 33.5, y: 22.5, face: 0 }, { t: "alien", x: 40.5, y: 27.5, face: 3.1 },
+    { t: "health", x: 35.5, y: 4.5 }, { t: "health", x: 35.5, y: 31.5 },
+    { t: "lamp", x: 27.5, y: 18.5 }, { t: "lamp", x: 44.5, y: 16.5 },
+  ];
+  const LIGHTS = [
+    { x: 5, y: 18, rgb: [0.5, 0.6, 0.8] as [number, number, number], r: 5 },
+    { x: 20, y: 18, rgb: [0.42, 0.48, 0.66] as [number, number, number], r: 7 },
+    { x: 36, y: 18, rgb: [0.62, 0.2, 0.18] as [number, number, number], r: 10 },   // the alarm
+    { x: 28, y: 7, rgb: [0.2, 0.5, 0.36] as [number, number, number], r: 4 },      // and a green glow at each terminal
+    { x: 44, y: 7, rgb: [0.2, 0.5, 0.36] as [number, number, number], r: 4 },
+    { x: 28, y: 29, rgb: [0.2, 0.5, 0.36] as [number, number, number], r: 4 },
+    { x: 44, y: 29, rgb: [0.2, 0.5, 0.36] as [number, number, number], r: 4 },
+  ];
+  const START = { x: 5.5, y: 18.5, angle: 0 };
+  // ⚠️ The route goes past all four terminals before the lift, because that is
+  // what beating him takes, and par (15 of the 100 marks) is measured along
+  // it. A route straight from the door to the lift would set a par nobody who
+  // fights him could ever meet. Waypoints stand a square off each terminal,
+  // not on it: they are solid, and a walker aimed at the middle of one jams.
+  const ROUTE = [[5.5, 18.5], [11, 18.5], [15, 18.5], [20, 18.5], [25, 18.5], [28.5, 18.5],
+    [27.6, 6.5], [44.4, 6.5], [44.4, 29.5], [27.6, 29.5], [28.5, 18.5], [45.2, 18.5]];
+  const INTRO = "Hangar deck. Whatever's been running this ship is in there. Stock up in control first.";
+  const HINTS: NonNullable<LevelDef["HINTS"]> = {
+    control: "Hangar control. Last supplies on the ship — take the grenades, you'll want them.",
+    hangar: "That's him. Shielded — bullets won't touch him. Get to a terminal, press E, answer.",
+  };
+  const OBJECTIVES: NonNullable<LevelDef["OBJECTIVES"]> = [
+    { text: "Take down the Director", at: [40.5, 18.5], until: "boss" },
+    { text: "Take the lift", at: [45, 18.5] },
+  ];
+  const LABELS = [
+    { text: "Terminals in the corners", at: [36, 2] },
+    { text: "The Director", at: [40, 33] },
+  ];
+  const LEGEND = "One room, one boss, four terminals. The questions are the weapon.";
+  return { INTRO, HINTS, OBJECTIVES, TITLE: "Level 10 — Hangar deck", W, H, AREAS, DOORS, BLOCKS, FLOORS, COVER, WALL_OVERRIDE, DECALS, SPRITES, LIGHTS, START, ROUTE, LABELS, LEGEND };
+})();
+
+export const LEVELS: LevelDef[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6, LEVEL7, LEVEL8, LEVEL9, LEVEL10];

@@ -6,6 +6,7 @@ import { getViewer } from "../lib/viewer";
 import { hasDevAccess } from "../lib/dev-access";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 import { BOSS_BACK, BOSS_FRONT, SMALL_ALIEN } from "./art";
+import { LEVELS } from "./game/levels";
 
 // The game while it is being built, for whoever has the developer code.
 //
@@ -29,7 +30,7 @@ const CHARACTERS = [
     name: "The boss — front",
     art: BOSS_FRONT,
     alt: "A tall muscular green alien in a black business suit and red tie",
-    lines: ["The last big fight", "Business suit, rifle slung on his back"],
+    lines: ["The Director — the last fight, on the hangar deck", "Shielded: only right answers at the terminals bring it down"],
   },
   {
     name: "The boss — back",
@@ -42,7 +43,7 @@ const CHARACTERS = [
 const AGREED = [
   "A first-person shooter seen through a space helmet, on a battleship full of green aliens (Doom-like to play, not to look at)",
   "Pick your subjects and topics, then your mascot, and play",
-  "Six shots. Answer a question to reload: right reloads three, wrong reloads one",
+  "Six shots. Answer a question to reload: a right answer charges three, a wrong one nothing",
   "Wrong answers go to “Revisit your mistakes”",
   "Start with nothing, then a blaster, then a new weapon every level or two",
   "Levels first, then an endless arena until you die, with a high-score board",
@@ -66,8 +67,8 @@ export default async function EarlyAccessPage() {
       </p>
       <h1 className="mt-2 text-3xl font-bold sm:text-4xl">The alien game</h1>
       <p className="mt-3 max-w-2xl opacity-70">
-        The first three levels are playable. Pick a subject and some topics,
-        and your reload questions come from them.
+        All {LEVELS.length} decks are playable, ending with the boss. Pick a
+        subject and some topics, and your questions come from them.
       </p>
       <Link
         href="/early-access/play"
@@ -105,9 +106,9 @@ export default async function EarlyAccessPage() {
       </section>
 
       <section className="mt-12 rounded-2xl border border-black/5 p-6 dark:border-white/10">
-        <h2 className="text-lg font-semibold">Next up: the boss</h2>
+        <h2 className="text-lg font-semibold">Next up: more kinds of alien</h2>
         <p className="mt-2 max-w-2xl text-sm opacity-70">
-          Levels 1–4 are in, including the dark cargo hold you have to sneak through. The final fight with the boss in the business suit comes next.
+          The boss is in. Every deck so far has the same alien in it, so the next thing to design is a few different ones.
         </p>
       </section>
 

@@ -1,6 +1,7 @@
 // Billboard sprites for the alien game (ported from the level prototype).
 
 import { ALIEN_BACK_SVG, ALIEN_FRONT_SVG } from "./alienArt";
+import { BOSS_BACK_SVG, BOSS_FRONT_SVG } from "./bossArt";
 
 // Billboard sprites: things standing in the level that always face you,
 // like Doom's barrels, lamps and monsters. Each has a world height (walls are
@@ -10,6 +11,24 @@ function spriteCanvas(w: number, h: number) { const c = document.createElement("
 
 type SpriteDef = { w: number; h: number; height: number; draw: (x: CanvasRenderingContext2D, g: CanvasRenderingContext2D) => void };
 export type Sprite = { w: number; h: number; base: Uint8ClampedArray; glow: Uint8ClampedArray; height: number; bottom: number; canvas: HTMLCanvasElement };
+/** A shield-override terminal: a pedestal with a slanted screen. `glow` is
+ *  the screen's glow colour, or "" for a dead screen that does not glow. */
+function terminalDef(screen: string, glow: string): SpriteDef {
+  return { w: 64, h: 112, height: 0.62, draw(x, g) {
+    x.fillStyle = "#2a3342"; x.fillRect(18, 44, 28, 64);                 // the pedestal
+    x.fillStyle = "#3f4b5c"; x.fillRect(22, 48, 20, 56);
+    x.fillStyle = "#1b222d"; x.fillRect(10, 104, 44, 8);                // its foot
+    x.fillStyle = "#3f4b5c"; x.beginPath(); x.moveTo(4, 14); x.lineTo(60, 4); x.lineTo(60, 44); x.lineTo(4, 48); x.closePath(); x.fill();
+    x.fillStyle = screen; x.beginPath(); x.moveTo(9, 18); x.lineTo(55, 10); x.lineTo(55, 39); x.lineTo(9, 43); x.closePath(); x.fill();
+    if (glow) {
+      g.fillStyle = glow; g.beginPath(); g.moveTo(9, 18); g.lineTo(55, 10); g.lineTo(55, 39); g.lineTo(9, 43); g.closePath(); g.fill();
+      // three lines of "text" on the screen, and a status light on the pedestal
+      x.fillStyle = "rgba(4,16,10,0.55)"; for (let i = 0; i < 3; i++) x.fillRect(15, 22 + i * 7, 26 - i * 6, 3);
+      x.fillStyle = glow; x.fillRect(29, 60, 6, 6); g.fillStyle = glow; g.fillRect(29, 60, 6, 6);
+    }
+  } };
+}
+
 const SPRITE_DEFS: Record<string, SpriteDef> = {
   // coolant canister: the ship's version of Doom's exploding barrel
   canister: { w: 64, h: 96, height: 0.4, draw(x, g) {
@@ -166,11 +185,44 @@ const SPRITE_DEFS: Record<string, SpriteDef> = {
     x.fillStyle = "#e4eaf1"; x.fillRect(10, 1, 8, 6);
     x.fillStyle = "rgba(58,168,255,0.3)"; x.beginPath(); x.ellipse(14, 38, 12, 3, 0, 0, 7); x.fill();
   } },
+  // ── the hangar deck: shield terminals, and the Director's shield ──────────
+  //
+  // ⚠️ THREE TERMINAL SPRITES, NOT ONE TINTED THREE WAYS. The atlas is baked
+  // once and read as raw pixels every frame (see pack()), so there is no
+  // per-draw colour — the same reason the red keycard has a sprite of its own.
+  // And the state has to be readable from across the hangar: a terminal you
+  // run twenty squares to under fire, only to find it locked, is the game
+  // being unfair. Green works, red is locked, grey is recharging.
+  terminal: terminalDef("#2fd48a", "#c9ffe6"),
+  terminalLocked: terminalDef("#ff4d4d", "#ffd0d0"),
+  terminalCold: terminalDef("#3d5270", ""),
+  // a bubble of light round the boss while his shield is up, drawn see-through
+  // (with alpha, in front of him) so he is still visible inside it
+  shield: { w: 128, h: 176, height: 1.4, draw(x, g) {
+    const rim = x.createRadialGradient(64, 88, 30, 64, 88, 64);
+    rim.addColorStop(0, "rgba(90,200,255,0)"); rim.addColorStop(0.72, "rgba(90,200,255,0.18)");
+    rim.addColorStop(0.93, "rgba(170,236,255,0.8)"); rim.addColorStop(1, "rgba(170,236,255,0)");
+    for (const ctx of [x, g]) { ctx.fillStyle = rim; ctx.beginPath(); ctx.ellipse(64, 88, 62, 86, 0, 0, 7); ctx.fill(); }
+    // a few hexagons, so it reads as a SHIELD rather than as fog
+    x.strokeStyle = "rgba(190,240,255,0.55)"; x.lineWidth = 1.5;
+    for (let row = 0; row < 6; row++) for (let col = 0; col < 4; col++) {
+      const cx = 22 + col * 28 + (row % 2) * 14, cy = 24 + row * 26;
+      if (((cx - 64) / 58) ** 2 + ((cy - 88) / 80) ** 2 > 1) continue;
+      x.beginPath();
+      for (let i = 0; i < 6; i++) { const a = (i * Math.PI) / 3; x.lineTo(cx + Math.cos(a) * 10, cy + Math.sin(a) * 10); }
+      x.closePath(); x.stroke();
+    }
+  } },
   health: { w: 48, h: 40, height: 0.16, draw(x, g) { // a white med-kit with a BLUE plus: a red cross is a protected emblem
     x.fillStyle = "#f4f7fb"; x.fillRect(2, 8, 44, 30); x.fillStyle = "#bcc7d3"; x.fillRect(2, 32, 44, 6); x.fillStyle = "#3f4b5c"; x.fillRect(16, 2, 16, 7);
     x.fillStyle = "#1c9bff"; x.fillRect(20, 12, 8, 18); x.fillRect(15, 17, 18, 8); g.fillStyle = "#fff"; g.fillRect(20, 12, 8, 18); g.fillRect(15, 17, 18, 8);
   } },
 };
+
+/** How tall the Director stands, in the same units as a wall (1.3) and your
+ *  eye (0.5). Exported because game.ts aims at the rectangle he is DRAWN in,
+ *  and a second copy of this number is a second thing to drift. */
+export const BOSS_HEIGHT = 1.15;
 
 // The regular alien comes from the character design we agreed, drawn from its SVG.
 export async function buildSprites(): Promise<Record<string, Sprite>> {
@@ -196,6 +248,23 @@ export async function buildSprites(): Promise<Record<string, Sprite>> {
   d.fillStyle = "rgba(90,210,60,0.55)"; d.beginPath(); d.ellipse(150, 128, 130, 18, 0, 0, 7); d.fill();
   d.save(); d.translate(150, 112); d.rotate(-Math.PI / 2); d.drawImage(img, -38, -112, 76, 95); d.restore();
   out.alienDead = pack(c3, spriteCanvas(300, 150), 0.28, true);
+  // the Director, from the boss design Matthew approved for /early-access.
+  // Drawn at 1.2x its own 220x330 so his tie and claws survive being scaled
+  // up to fill a third of the screen. His eyes glow: the two red points are
+  // copied into the glow layer, so fog never dims them.
+  const bossImg = async (svg: string) => { const im = new Image(); im.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg); await im.decode(); return im; };
+  const bf = await bossImg(BOSS_FRONT_SVG), bb = await bossImg(BOSS_BACK_SVG);
+  const c4 = spriteCanvas(264, 396); c4.getContext("2d")!.drawImage(bf, 0, 0, 264, 396);
+  const g4 = spriteCanvas(264, 396), gx = g4.getContext("2d")!;
+  gx.fillStyle = "#ff5a3c"; for (const ex of [104, 160]) { gx.beginPath(); gx.arc(ex, 76, 6, 0, 7); gx.fill(); }
+  out.boss = pack(c4, g4, BOSS_HEIGHT, true);
+  const c5 = spriteCanvas(264, 396); c5.getContext("2d")!.drawImage(bb, 0, 0, 264, 396);
+  out.bossBack = pack(c5, spriteCanvas(264, 396), BOSS_HEIGHT, true);
+  // and down: on his back, the suit still on
+  const c6 = spriteCanvas(420, 200), d6 = c6.getContext("2d")!;
+  d6.fillStyle = "rgba(90,210,60,0.5)"; d6.beginPath(); d6.ellipse(210, 176, 196, 22, 0, 0, 7); d6.fill();
+  d6.save(); d6.translate(210, 150); d6.rotate(-Math.PI / 2); d6.drawImage(bf, -40, -170, 110, 165); d6.restore();
+  out.bossDead = pack(c6, spriteCanvas(420, 200), 0.4, true);
   return out;
 }
 

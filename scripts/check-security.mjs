@@ -1589,7 +1589,9 @@ try {
     // looks finished and one item in it silently does not exist.
     const game = readFileSync("app/early-access/game/game.ts", "utf8");
     const DECOR_TYPES = new Set((/const DECOR = new Set\(\[([^\]]*)\]\)/.exec(game)?.[1] ?? "").match(/"([a-z]+)"/g)?.map((s) => s.slice(1, -1)) ?? []);
-    const handled = new Set(["alien", "alienBack", ...[...game.matchAll(/k\.t === "([a-z]+)"/g)].map((m) => m[1]), ...DECOR_TYPES]);
+    // pickups are matched as `k.t === "…"`; the boss and the terminals are not
+    // pickups, and loadLevel claims them as `s.t === "…"` before anything else
+    const handled = new Set(["alien", "alienBack", ...[...game.matchAll(/[ks]\.t === "([a-z]+)"/g)].map((m) => m[1]), ...DECOR_TYPES]);
     expect(handled.has("grenade") && handled.has("lamp") && handled.size > 8,
       `the sprite-type list read out of game.ts looks wrong (${[...handled].join(", ")})`);
     for (const level of LEVELS) {
@@ -2089,6 +2091,12 @@ try {
     // would have noticed, because it looks enormous from inside.
     // ⚠️ If a boss arena is added and it is deliberately small and tight,
     // change this rule on purpose rather than deleting it.
+    // ⚠️ AND IT WAS (2026-10-10): the hangar deck is one room you can see
+    // across, because a fight you have to go looking for is not a boss fight.
+    // So "late" is the RUN-UP — decks 7 onwards that do not have the boss on
+    // them — and the boss deck is measured by its own rules further down.
+    // Identified by what is on it, never by its number.
+    const isBossDeck = (l) => l.SPRITES.some((s) => s.t === "boss");
     {
       const area = (l) => {
         let open = 0;
@@ -2100,7 +2108,8 @@ try {
         return open;
       };
       const aliens = (l) => l.SPRITES.filter((s) => s.t === "alien" || s.t === "alienBack").length;
-      const early = LEVELS.slice(0, 6), late = LEVELS.slice(6);
+      const early = LEVELS.slice(0, 6), late = LEVELS.slice(6).filter((l) => !isBossDeck(l));
+      expect(late.length >= 3, `only ${late.length} decks count as the run-up to the boss, so this rule has quietly stopped measuring anything`);
       if (late.length) {
         const maxOpen = Math.max(...early.map(area)), maxAliens = Math.max(...early.map(aliens));
         for (const l of late) {
@@ -2112,6 +2121,70 @@ try {
           expect(aliens(late[i]) >= aliens(late[i - 1]), `${late[i].TITLE} has fewer aliens than ${late[i - 1].TITLE}; the run-up to the boss is supposed to climb`);
         }
       }
+    }
+
+    // ── the boss: the Director, on the hangar deck (2026-10-10) ────────────
+    // The design in one line: he is SHIELDED, and only the questions take it
+    // down. Every rule below is one way that could quietly stop being true —
+    // and the first one, a boss you can simply shoot, is the one that turns
+    // the last fight on a revision site into a test of aim.
+    {
+      const bossDecks = LEVELS.filter(isBossDeck);
+      expect(bossDecks.length === 1, `${bossDecks.length} decks have a boss on them; there should be exactly one`);
+      for (const l of bossDecks) {
+        expect(l === LEVELS[LEVELS.length - 1], `${l.TITLE} has the boss on it but is not the last deck`);
+        expect(l.SPRITES.filter((s) => s.t === "boss").length === 1, `${l.TITLE} places more than one boss`);
+        // ⚠️ AT LEAST TWO TERMINALS. One that worked has to recharge, so with
+        // a single terminal the fight is standing at one console waiting.
+        const terms = l.SPRITES.filter((s) => s.t === "terminal").length;
+        expect(terms >= 2, `${l.TITLE} has ${terms} shield terminal(s); the recharge means one terminal is a fight spent waiting`);
+        expect((l.OBJECTIVES ?? []).some((o) => o.until === "boss"), `${l.TITLE} has no compass objective pointing at the boss`);
+      }
+      const hurt = body("hurtBoss");
+      expect(hurt.length > 0, "hurtBoss is gone, so every boss check below is guarding nothing");
+      // the shield check comes BEFORE any damage, and every source of damage
+      // goes through this one function — bullets, the knife and grenades
+      const guard = hurt.search(/if \(b\.shield <= 0\) \{/), dmg = hurt.indexOf("b.hp -=");
+      expect(guard >= 0 && dmg > guard && /return;\s*\}/.test(hurt.slice(guard, dmg)),
+        "hurtBoss takes health off before checking the shield, so shooting him through it works");
+      expect((game.match(/\bb\.hp -=|boss\.hp -=/g) ?? []).length === 1,
+        "the boss loses health somewhere other than hurtBoss, which is the only place that checks his shield");
+      expect(/this\.hurtBoss\(/.test(body("fire")) && /this\.hurtBoss\(/.test(body("explode")),
+        "a shot or a grenade no longer reaches the boss through hurtBoss");
+      // the override IS a reload, so it inherits every rule a reload has —
+      // the deck at a third, the clocks on real time — and every check above
+      const use = body("useTerminal");
+      expect(/this\.mode = "reload";/.test(use), "a terminal override no longer runs in reload mode, so the world does not slow and the reload's clock rules do not apply");
+      expect(!/draw1\("reload", qs, true\)/.test(use),
+        "a terminal serves owed questions — one wrong answer ends an override, so the worse you are doing the harder the boss gets");
+      expect(/q\.kind === "reload" \|\| q\.kind === "terminal" \? RELOAD_SLOW/.test(game),
+        "the override panel does not say the world is slowed, so a crawling deck reads as a frozen game");
+      const lock = gnum("TERMINAL_LOCK"), cool = gnum("TERMINAL_COOL"), down = gnum("SHIELD_DOWN");
+      expect(lock >= 3 && /t\.lock = TERMINAL_LOCK/.test(body("failTerminal")),
+        "a wrong answer at a terminal costs nothing, so guessing until the shield drops is the way to beat him");
+      expect(cool > down && /t\.cool = TERMINAL_COOL/.test(body("overrideShield")),
+        "a terminal that worked is ready again before the window it opened has closed, so the fight is one console and no movement");
+      expect(/shield = SHIELD_DOWN/.test(body("overrideShield")), "an override does not actually drop the shield");
+      // ⚠️ THE LIFT WAITS FOR HIM. Otherwise the boss deck can be walked
+      // past, and "the last fight" is a corridor with a man in it.
+      expect(/if \(this\.boss && !this\.boss\.dead\) \{[^\n]*return; \}/.test(body("use")),
+        "the lift out of the boss deck works with the boss still alive");
+      // and he dies without taking you with him
+      expect(!/this\.damage\(|this\.explode\(/.test(body("killBoss")),
+        "killing the boss can hurt the player — standing next to him when he falls should never be how you die");
+      // he counts on the scoreboard, and the end screen no longer apologises
+      expect(/aliens: this\.aliens\.length \+ \(this\.boss \? 1 : 0\)/.test(game),
+        "the boss is not counted among the deck's aliens, so beating him is invisible in the grade");
+      expect(!/still being built/.test(game), "the end screen still says the boss is being built");
+      // ⚠️ THE SIZING, from the real weapons. One window with both guns full
+      // must not be enough, or the terminals are a formality; and it must not
+      // take so many that the fight is a slog.
+      const hp = gnum("BOSS_HP"), q = gnum("TERMINAL_Q");
+      const windowMax = gnum("RIFLE_MAG") * gnum("RIFLE_DMG") + gnum("PISTOL_MAG") * gnum("PISTOL_DMG");
+      expect(Number.isFinite(hp) && Number.isFinite(q) && Number.isFinite(windowMax), "could not read the boss's numbers out of game.ts");
+      expect(hp > 2 * windowMax, `${hp} health is gone in ${Math.ceil(hp / windowMax)} window(s) with both guns full — he is meant to need at least three overrides`);
+      expect(hp <= 6 * windowMax, `${hp} health needs ${Math.ceil(hp / windowMax)} full windows; past six the fight is a slog, not a climax`);
+      expect(q === 3, `an override is ${q} questions; three is what a grenade costs and what the whole game has taught as "a big thing"`);
     }
 
     // ── two keycards, and the vacuum rule ────────────────────────────────

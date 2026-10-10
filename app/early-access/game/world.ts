@@ -55,7 +55,7 @@ export type LevelDef = {
    *  level's par time for its grade is worked out from how long it is. */
   ROUTE?: number[][];
   /** Where the compass marker points, in order; each is done once you have its `until`. */
-  OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "rifle" | "keycard"; key?: string }[];
+  OBJECTIVES?: { text: string; at: [number, number]; until?: "pistol" | "rifle" | "keycard" | "boss"; key?: string }[];
   LOCKED_HINT?: string;
   /** What the mascot says at a locked door, per keycard colour. A deck with
    *  two locks needs two sentences — one that says "find the keycard" at both

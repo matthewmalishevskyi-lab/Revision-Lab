@@ -1,7 +1,7 @@
 // The game itself: input, the player, the aliens, shooting, pickups, doors,
 // and the two quiz moments that make it a revision game.
 //
-//   RELOAD (press R): questions on your topics. Right = +3 shots, wrong = +1,
+//   RELOAD (press R): questions on your topics. Right = +3 shots, wrong = nothing,
 //   up to three questions, stopping when the clip is full. The world keeps
 //   going while you answer: aliens still shoot, and you can still move.
 //
@@ -9,13 +9,17 @@
 //   easy questions, 5 seconds each, with the world frozen. All right and the
 //   alien is finished; one wrong and it throws you off (20 damage).
 //
+//   OVERRIDE (E at a shield terminal, deck 10 only): three questions, run
+//   exactly like a reload. Three right drops the boss's shield for a few
+//   seconds; nothing else hurts him. See "the boss", below.
+//
 // Every answer is sent back to the site (onAnswer), so wrong ones go into
 // "Revisit your mistakes" exactly like practice questions.
 
 import { drawHud, drawQuiz, drawScreen, drawWeapon, HUD_H, HUD_W, quizChoiceAt, touchButtons, TOUCH_STICK, type QuizView } from "./hud";
 import { LEVELS } from "./levels";
 import { makeRenderer, type Drawable } from "./render";
-import { buildSprites, type Sprite } from "./sprites";
+import { BOSS_HEIGHT, buildSprites, type Sprite } from "./sprites";
 import { buildTextures, type TexSet } from "./textures";
 import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
 import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type LevelDef, type World } from "./world";
@@ -65,7 +69,13 @@ type Zone = "head" | "torso" | "legs";
 /** A grenade that has been pulled but not thrown: the aim it was pulled with,
  *  held while the three questions are answered. See throwGrenade(). */
 type PendingNade = { c: number; s: number; up: number; vx: number; vy: number };
-type Quiz = { kind: "reload" | "stomp" | "nade" | "debrief"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null; nade?: PendingNade };
+type Quiz = { kind: "reload" | "stomp" | "nade" | "debrief" | "terminal"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null; nade?: PendingNade; terminal?: Terminal };
+/** The Director, deck 10's boss. `shield` is how many seconds of world time
+ *  his shield has left DOWN — 0 means it is up and nothing hurts him. */
+type Boss = { x: number; y: number; face: number; hp: number; room: string | null; awake: boolean; dead: boolean; shield: number; phase: number; cooldown: number; strafe: number; strafeT: number; hurt: number };
+/** A shield-override terminal. `lock` counts down after a wrong answer,
+ *  `cool` after one that worked; it can be used when both are zero. */
+type Terminal = { x: number; y: number; lock: number; cool: number };
 
 // The 3D view is drawn at 576x324 and scaled up. If a computer can't draw that
 // in time, it drops to 480x270 by itself (see frame()): smoother beats sharper.
@@ -207,6 +217,45 @@ const WRONG_HOLD = 3.2;
  *  ten because nothing is shooting at you and the point is to get it right. */
 const DEBRIEF_PER = 20;
 
+// ── the boss: the Director, on the hangar deck ──────────────────────────────
+//
+// ⚠️ HE IS SHIELDED, AND ONLY THE QUESTIONS TAKE IT DOWN. Bullets, the knife
+// and grenades all do nothing while the shield is up. Four terminals stand in
+// the corners of the hangar: E at one opens a three-question override, run in
+// "reload" mode so it inherits the reload's rules exactly — the deck at a
+// third, the question timer and the run clock on real time, owed questions
+// for anything missed. Three right and the shield is down for SHIELD_DOWN
+// seconds of world time; one wrong and that terminal locks.
+//
+// A boss you can shoot down is a test of aim with a quiz attached. This one
+// is a quiz with a gun attached, which is the right way round for this site.
+//
+// The sizing, worked from the real weapons: a full rifle magazine is 15 x 8 =
+// 120 damage in 1.7 seconds and a full blaster 6 x 15 = 90, so one eight-
+// second window is worth about 120 to 330 depending on what you walked in
+// with and whether you reload inside it. 480 health is therefore three or
+// four windows: nine to twelve right answers at the terminals, plus the
+// reloads that feed the guns. That is deck 9's question count again, spent
+// in one room.
+const BOSS_HP = 480;
+/** His collision radius. The drawn body is wider than an alien's by about this much. */
+const BOSS_R = 0.42;
+/** Half his drawn width at one square away, as a fraction of the projection — what a shot must land inside. */
+const BOSS_HALF_W = 0.34;
+const SHIELD_DOWN = 8;
+const TERMINAL_Q = 3, TERMINAL_PER = 10;
+/** A wrong answer locks that terminal; one that worked has to recharge. The
+ *  recharge is what makes you cross the hangar for the next window rather
+ *  than standing at one console answering until he falls over. */
+const TERMINAL_LOCK = 10, TERMINAL_COOL = 25;
+/** How close you have to be to work a terminal. */
+const TERMINAL_REACH = 1.25;
+/** Bolts in a volley, and the fan they spread across. Slower than an alien's
+ *  6.2, so a volley is something you can SEE coming and step out of. */
+const BOSS_VOLLEY = 5, BOSS_SPREAD = 0.5, BOSS_BOLT_SPEED = 5.2;
+/** Aliens he calls in at two-thirds and one-third health. */
+const BOSS_SUMMON = 3;
+
 // ⚠️ Grenades belong to the deck that HAS them, not to the game. Matthew asked
 // for them "in the storage level that is new, not everywhere", and the way to
 // keep that true as levels are added is to derive it from what is actually
@@ -268,6 +317,9 @@ export class Game {
     exposure: 0 };
   private carry = { health: 100, vest: 0, ammo: 0, hasPistol: false, hasRifle: false, rifleAmmo: 0, grenades: 0, knife: KNIFE_USES };
   private aliens: Alien[] = [];
+  /** The boss, on the one deck that has him; null everywhere else. */
+  private boss: Boss | null = null;
+  private terminals: Terminal[] = [];
   private pickups: Pickup[] = [];
   private decor: Drawable[] = [];
   private bolts: Bolt[] = [];
@@ -435,9 +487,14 @@ export class Game {
     this.p.weapon = this.p.hasRifle && this.p.rifleAmmo > 0 ? "rifle" : this.p.hasPistol ? "pistol" : "knife";
     this.p.keys = new Set(); this.p.radTime = 0; this.p.hurt = 0;
     this.aliens = []; this.pickups = []; this.decor = []; this.bolts = []; this.nades = []; this.fx = []; this.quiz = null;
+    this.boss = null; this.terminals = [];
     for (const s of def.SPRITES) {
       if (s.t === "alien" || s.t === "alienBack") {
         this.aliens.push({ x: s.x, y: s.y, face: s.face ?? Math.atan2(def.START.y - s.y, def.START.x - s.x) + Math.PI * (s.t === "alienBack" ? 1 : 0), hp: ALIEN_HP, state: "idle", timer: 0, cooldown: 1, lastX: s.x, lastY: s.y, hurt: 0, strafe: 1, strafeT: 0 });
+      } else if (s.t === "boss") {
+        this.boss = { x: s.x, y: s.y, face: s.face ?? Math.PI, hp: BOSS_HP, room: this.world.area[this.cell(s.x, s.y)], awake: false, dead: false, shield: 0, phase: 0, cooldown: 1.5, strafe: 1, strafeT: 0, hurt: 0 };
+      } else if (s.t === "terminal") {
+        this.terminals.push({ x: s.x, y: s.y, lock: 0, cool: 0 });
       } else if (DECOR.has(s.t)) this.decor.push({ x: s.x, y: s.y, sprite: s.t });
       else this.pickups.push({ t: s.t, x: s.x, y: s.y, taken: false, key: s.key });
     }
@@ -805,6 +862,14 @@ export class Game {
       const dx = p.x - a.x, dy = p.y - a.y, d = Math.hypot(dx, dy), min = RADIUS + ALIEN_R;
       if (d < min && d > 1e-6) { [p.x, p.y] = pushOut(w, p.x + (dx / d) * (min - d), p.y + (dy / d) * (min - d), RADIUS, p.z); }
     }
+    // the boss and the terminals are solid too — and the boss you cannot jump
+    // over, which an alien two thirds your height you can
+    const solids: [number, number, number][] = this.terminals.map((t): [number, number, number] => [t.x, t.y, 0.2]);
+    if (this.boss && !this.boss.dead) solids.push([this.boss.x, this.boss.y, BOSS_R]);
+    for (const [sx, sy, r] of solids) {
+      const dx = p.x - sx, dy = p.y - sy, d = Math.hypot(dx, dy), min = RADIUS + r;
+      if (d < min && d > 1e-6) { [p.x, p.y] = pushOut(w, p.x + (dx / d) * (min - d), p.y + (dy / d) * (min - d), RADIUS, p.z); }
+    }
     // keep the real speed, so walking into a wall stops you rather than storing speed
     const moved = Math.hypot(p.x - ox, p.y - oy);
     if (dt > 0) { p.vx = (p.x - ox) / dt; p.vy = (p.y - oy) / dt; }
@@ -876,6 +941,7 @@ export class Game {
     }
 
     this.updateAliens(dt);
+    this.updateBoss(dt);
     this.updateBolts(dt);
     this.updateNades(dt);
     this.updateFx(dt);
@@ -1054,6 +1120,14 @@ export class Game {
       a.hp -= NADE_DMG * falloff(d); a.hurt = 0.2; a.strafeT = 0;
       if (a.hp <= 0) this.kill(a); else if (a.state === "idle") this.alert(a, 0.2);
     }
+    // the boss takes a grenade like anything else when his shield is down —
+    // the full blast at the centre, never an outright kill — and nothing when
+    // it is up (hurtBoss says so with a spark on the shield)
+    const b = this.boss;
+    if (b && !b.dead) {
+      const d = Math.hypot(b.x - x, b.y - y) - BOSS_R;
+      if (d <= NADE_HURT_R && lineOfSight(w, x, y, b.x, b.y)) this.hurtBoss(NADE_DMG * (d <= NADE_KILL_R ? 1 : falloff(d)));
+    }
     // it catches YOU too, at the same shape but harder, so throwing one at your
     // own feet is the mistake it ought to be
     const pd = Math.hypot(this.p.x - x, this.p.y - y);
@@ -1122,7 +1196,7 @@ export class Game {
     this.flow = d;
   }
   /** Which way an alien should walk to reach the player from where it stands. */
-  private towardsPlayer(a: Alien): [number, number] | null {
+  private towardsPlayer(a: { x: number; y: number }): [number, number] | null {
     const w = this.world, d = this.flow; if (!d) return null;
     const x = Math.floor(a.x), y = Math.floor(a.y);
     if (x < 0 || y < 0 || x >= w.W || y >= w.H) return null;
@@ -1263,7 +1337,12 @@ export class Game {
     // to hear it through. This is the one place in the game you can fight
     // loudly, and it is paid for by having nowhere to hide.
     if (shot && !this.inVacuum()) for (const a of this.aliens) if (a.state === "idle" && Math.hypot(a.x - p.x, a.y - p.y) < 7) this.alert(a);
-    const hit = this.aimTarget();
+    const aimed = this.aimTarget();
+    // the boss is tested separately (he is a different shape), and whichever
+    // of him and the nearest alien is CLOSER takes the shot
+    const bossD = this.bossAim();
+    const onBoss = bossD !== null && (!aimed || bossD < Math.hypot(aimed.a.x - p.x, aimed.a.y - p.y));
+    const hit = onBoss ? null : aimed;
     const best = hit?.a ?? null;
     const c = Math.cos(p.angle), s = Math.sin(p.angle), up = p.pitch / this.R.proj;
     if (shot) {
@@ -1274,13 +1353,18 @@ export class Game {
       // the same size ON SCREEN and read as one straight streak. At a fixed
       // scale the nearest one is drawn enormous and the shot looks like a
       // firework going off in your hand.
-      const reach = Math.min(best ? Math.hypot(best.x - p.x, best.y - p.y) : this.R.centreDepth.value, 22);
+      const reach = Math.min(onBoss && bossD !== null ? bossD : best ? Math.hypot(best.x - p.x, best.y - p.y) : this.R.centreDepth.value, 22);
       for (let i = 1; i <= 7; i++) {
         const d = (reach * i) / 8;
         this.addFx("tracer", p.x + c * d, p.y + s * d, p.eye - 0.06 + up * d, 0.07, Math.max(0.15, d * 0.16));
       }
       this.addFx("spark", p.x + c * reach, p.y + s * reach, p.eye - 0.12 + up * reach, 0.16, Math.max(0.3, reach * (best ? 0.2 : 0.13)));
     }
+    // ⚠️ No zones on the boss, deliberately. A head band on a target this big
+    // would make the fight a test of aim at range; the fight is meant to be
+    // won at the terminals, and every hit while the shield is down counts
+    // the same.
+    if (onBoss) this.hurtBoss(pistol ? PISTOL_DMG : rifle ? RIFLE_DMG : p.knife <= 0 ? KNIFE_BLUNT : KNIFE_DMG);
     if (best && hit) {
       // The knife hurts more than a single shot, but you have to be next to it
       // — and it has no zones, because a swing is a swing.
@@ -1364,14 +1448,194 @@ export class Game {
     }
   }
 
+  // ── the boss ──────────────────────────────────────────────────────────────
+  /** How far away the boss is, if the crosshair is on him and a shot would
+   *  reach; otherwise null. The same tests aimTarget makes for an alien, on
+   *  the rectangle he is actually DRAWN in. */
+  private bossAim(): number | null {
+    const b = this.boss, p = this.p;
+    if (!b || b.dead) return null;
+    const { screenX, dist } = this.R.project({ x: p.x, y: p.y, angle: p.angle }, b.x, b.y);
+    if (dist <= 0.1) return null;
+    if (Math.abs(screenX - this.R.W / 2) > (BOSS_HALF_W * this.R.proj) / dist) return null;
+    const bottom = this.aimHorizon + (p.eye * this.R.proj) / dist, top = bottom - (BOSS_HEIGHT * this.R.proj) / dist;
+    if (this.R.H / 2 < top || this.R.H / 2 > bottom) return null;
+    if (p.weapon === "knife" && dist > 1.3 + BOSS_R - ALIEN_R) return null;
+    if (dist > this.R.centreDepth.value + 0.5) return null;
+    if (!lineOfSight(this.world, p.x, p.y, b.x, b.y, true)) return null;
+    return dist;
+  }
+
+  /** Something hit him. Nothing happens through the shield except a spark
+   *  and a ping that says so — a shot that silently does nothing would read
+   *  as a bug, not as a rule. */
+  private hurtBoss(n: number) {
+    const b = this.boss, p = this.p;
+    if (!b || b.dead) return;
+    if (!b.awake) this.wakeBoss();
+    const toYou = Math.atan2(p.y - b.y, p.x - b.x);
+    if (b.shield <= 0) {
+      this.addFx("spark", b.x + Math.cos(toYou) * 0.55, b.y + Math.sin(toYou) * 0.55, 0.4 + Math.random() * 0.5, 0.22, 0.6);
+      this.beep(1500, 1300, 0.08, "sine", 0.04);
+      this.hint("shielded", "The shield's taking it all. Get to a green terminal and press E.");
+      return;
+    }
+    b.hp -= n; b.hurt = 0.15; b.strafeT = 0;
+    p.hitMark = 1; p.hitKill = false; p.hitZone = null;
+    for (let i = 0; i < 3; i++) {
+      const a = Math.random() * Math.PI * 2;
+      this.addFx("spark", b.x, b.y, 0.4 + Math.random() * 0.6, 0.2, 0.4, { vx: Math.cos(a) * 1.4, vy: Math.sin(a) * 1.4, vz: 1.1, drag: 3 });
+    }
+    this.beep(300, 200, 0.09, "square", 0.05);
+    if (b.hp <= 0) { this.killBoss(); return; }
+    // two-thirds and one-third: the shield slams back up and he calls for help
+    const phase = b.hp <= BOSS_HP / 3 ? 2 : b.hp <= (BOSS_HP * 2) / 3 ? 1 : 0;
+    if (phase > b.phase) this.bossPhase(phase);
+  }
+
+  private wakeBoss() {
+    const b = this.boss; if (!b || b.awake) return;
+    b.awake = true; b.cooldown = 1.6;
+    this.say("He's seen you. Shield's up — terminals in the corners. Three right answers drops it.");
+    this.beep(90, 50, 0.8, "sawtooth", 0.08); this.noise(0.6, 0.08, 400, 60);
+  }
+
+  private bossPhase(phase: number) {
+    const b = this.boss!; b.phase = phase; b.shield = 0;
+    this.say(phase === 1 ? "Shield's back — and he's calling for help. Clear them, then a terminal." : "Last third. He's angry, and he's not alone. One more window should do it.");
+    this.noise(0.5, 0.1, 900, 80); this.beep(160, 70, 0.5, "sawtooth", 0.07);
+    // they come out round him, wherever there is room, already hunting you
+    let n = 0;
+    for (let k = 0; k < 12 && n < BOSS_SUMMON; k++) {
+      const a = (k / 12) * Math.PI * 2, x = b.x + Math.cos(a) * 1.4, y = b.y + Math.sin(a) * 1.4;
+      if (!circleFree(this.world, x, y, ALIEN_R, 0)) continue;
+      this.aliens.push({ x, y, face: a, hp: ALIEN_HP, state: "noticing", timer: 0.8 + n * 0.3, cooldown: 1.2, lastX: this.p.x, lastY: this.p.y, hurt: 0, strafe: 1, strafeT: 0 });
+      this.addFx("blast", x, y, 0.3, 0.4, 0.6, { grow: 1.2 });
+      n++;
+    }
+  }
+
+  private killBoss() {
+    const b = this.boss!; b.dead = true; b.hp = 0; b.shield = 0; this.stats.kills++;
+    this.p.hitKill = true;
+    // not a grenade: fire and smoke with no blast damage, because killing
+    // the boss must never kill YOU standing next to him
+    for (let i = 0; i < 6; i++) {
+      const a = Math.random() * Math.PI * 2, r = Math.random() * 0.6;
+      this.addFx("blast", b.x + Math.cos(a) * r, b.y + Math.sin(a) * r, 0.3 + Math.random() * 0.6, 0.5 + i * 0.12, 1.0, { grow: 2.4 });
+      this.addFx("smoke", b.x + Math.cos(a) * r, b.y + Math.sin(a) * r, 0.5, 1.6, 0.8, { vz: 0.4, grow: 1, drag: 1 });
+    }
+    this.shake = Math.min(1.6, this.shake + 1.2);
+    this.noise(1.1, 0.24, 1400, 40); this.beep(200, 30, 1.2, "sawtooth", 0.1);
+    this.say("He's down! That's the Director. The lift's live — get out of here.");
+  }
+
+  private updateBoss(dt: number) {
+    const b = this.boss, p = this.p;
+    if (!b || b.dead) return;
+    // terminals recover in WORLD time, so a reload slows them with everything else
+    for (const t of this.terminals) { t.lock = Math.max(0, t.lock - dt); t.cool = Math.max(0, t.cool - dt); }
+    b.hurt = Math.max(0, b.hurt - dt);
+    if (!b.awake) {
+      if (b.room && this.world.area[this.cell(p.x, p.y)] === b.room) this.wakeBoss();
+      return;
+    }
+    if (b.shield > 0) {
+      b.shield -= dt;
+      if (b.shield <= 0) { b.shield = 0; this.say("Shield's back up. Another terminal — that one needs to recharge."); this.beep(400, 1200, 0.3, "sine", 0.05); }
+    }
+    const pd = Math.hypot(p.x - b.x, p.y - b.y);
+    const sees = lineOfSight(this.world, b.x, b.y, p.x, p.y);
+    let diff = Math.atan2(p.y - b.y, p.x - b.x) - b.face; diff = Math.atan2(Math.sin(diff), Math.cos(diff));
+    b.face += Math.sign(diff) * Math.min(Math.abs(diff), 2.0 * dt);
+    // he walks at you when he cannot see you or you are far off; otherwise he
+    // circles, slowly — a boss that stands still is a target, one that charges
+    // is a wall
+    let mx = 0, my = 0;
+    if (!sees || pd > 7) {
+      const step: [number, number] | null = sees ? [(p.x - b.x) / pd, (p.y - b.y) / pd] : this.towardsPlayer(b);
+      if (step) { mx = step[0]; my = step[1]; }
+    } else {
+      b.strafeT -= dt;
+      if (b.strafeT <= 0) { b.strafeT = 1.2 + Math.random() * 1.2; b.strafe = Math.random() < 0.5 ? -1 : 1; }
+      mx = -Math.sin(b.face) * b.strafe; my = Math.cos(b.face) * b.strafe;
+      if (pd < 2.2) { mx -= (p.x - b.x) / pd; my -= (p.y - b.y) / pd; }
+    }
+    if (mx || my) {
+      const len = Math.hypot(mx, my) || 1, sp = 0.85 * dt;
+      [b.x, b.y] = moveCircle(this.world, b.x, b.y, (mx / len) * sp, (my / len) * sp, BOSS_R);
+    }
+    // a volley: a fan of slow bolts. Waist-high crates stop them (updateBolts),
+    // even though he can see over the crates, so cover is the real defence.
+    b.cooldown -= dt;
+    if (sees && b.cooldown <= 0 && Math.abs(diff) < 0.5) {
+      const n = BOSS_VOLLEY + b.phase, aim = Math.atan2(p.y - b.y, p.x - b.x);
+      for (let i = 0; i < n; i++) {
+        const ang = aim + (i / (n - 1) - 0.5) * BOSS_SPREAD * (1 + b.phase * 0.2);
+        this.bolts.push({ x: b.x + Math.cos(ang) * 0.5, y: b.y + Math.sin(ang) * 0.5, vx: Math.cos(ang) * BOSS_BOLT_SPEED, vy: Math.sin(ang) * BOSS_BOLT_SPEED, life: 5 });
+      }
+      b.cooldown = 2.6 - b.phase * 0.45 + Math.random() * 0.6;
+      this.beep(700, 180, 0.3, "sawtooth", 0.06); this.noise(0.15, 0.05, 2400, 400);
+    }
+  }
+
+  /** The terminal you are standing at, if any. */
+  private terminalNear(): Terminal | null {
+    const p = this.p;
+    let best: Terminal | null = null, bd = TERMINAL_REACH;
+    for (const t of this.terminals) { const d = Math.hypot(t.x - p.x, t.y - p.y); if (d <= bd) { best = t; bd = d; } }
+    return best;
+  }
+
+  private useTerminal(t: Terminal) {
+    const b = this.boss;
+    if (!b || b.dead) { this.pickupMsg("Nothing left to override"); return; }
+    if (b.shield > 0) { this.pickupMsg("Shield's already down — shoot!"); return; }
+    if (t.lock > 0) { this.pickupMsg(`Terminal locked · ${Math.ceil(t.lock)} s`); this.beep(90, 70, 0.07, "square", 0.04); return; }
+    if (t.cool > 0) { this.pickupMsg(`Recharging · ${Math.ceil(t.cool)} s — try another`); this.beep(90, 70, 0.07, "square", 0.04); return; }
+    if (!b.awake) this.wakeBoss();
+    // ⚠️ Owed questions are NOT served here, for the grenade's reason: one
+    // wrong answer ends an override, so feeding it your known weak spots would
+    // make the boss harder the worse you are doing.
+    const qs: Question[] = []; for (let i = 0; i < TERMINAL_Q; i++) { const q = this.draw1("reload", qs); if (q) qs.push(q); }
+    if (qs.length < TERMINAL_Q) { this.overrideShield(t); return; }  // nothing to ask from: don't trap the player
+    this.quiz = { kind: "terminal", qs, index: 0, time: TERMINAL_PER, per: TERMINAL_PER, picked: null, feedback: 0, results: [], target: null, terminal: t };
+    // ⚠️ "reload" mode, deliberately, so an override gets every rule a reload
+    // already has and every check that already guards it: the deck at a third,
+    // the question timer and the run clock on real time, and you can still
+    // move and shoot. A new mode would have needed all of that again.
+    this.mode = "reload";
+    this.beep(520, 880, 0.15, "triangle", 0.05);
+  }
+
+  private failTerminal(t: Terminal) {
+    this.quiz = null; this.mode = "play";
+    t.lock = TERMINAL_LOCK;
+    this.say("Override rejected — that terminal's locked for ten seconds. Try another one.");
+    this.beep(200, 90, 0.35, "sawtooth", 0.06);
+  }
+
+  private overrideShield(t: Terminal) {
+    this.quiz = null; this.mode = "play";
+    t.cool = TERMINAL_COOL;
+    if (this.boss) this.boss.shield = SHIELD_DOWN;
+    this.say("Shield's down! Eight seconds — everything you've got.");
+    this.beep(300, 1200, 0.5, "triangle", 0.07); this.noise(0.3, 0.06, 3000, 300);
+  }
+
   // ── use: doors that need a button ─────────────────────────────────────────
   private use() {
     if (this.quiz) return; // finish the questions first (the lift used to end the level with a quiz still open)
     const p = this.p, w = this.world;
+    const t = this.terminalNear();
+    if (t) { this.useTerminal(t); return; }
     const lx = p.x + Math.cos(p.angle) * 0.9, ly = p.y + Math.sin(p.angle) * 0.9;
     const d = w.door[this.cell(lx, ly)];
     if (!d) return;
     if (d.exit) {
+      // ⚠️ said, not silent: a lift that does nothing when you press E reads
+      // as a bug, and this one is the last door in the game
+      if (this.boss && !this.boss.dead) { this.say("The lift's locked down while he's alive. Shield first, then him."); this.beep(90, 70, 0.1, "square", 0.04); return; }
       if (this.owed.length) { this.startDebrief(); return; }
       this.completeLevel();
       return;
@@ -1568,6 +1832,11 @@ export class Game {
       // lost is punishment, not revision.
       if (!lastRight) { this.failNadeQuiz(); return; }
       if (q.index === q.qs.length - 1) { this.releaseNade(q.nade!); return; }
+    } else if (q.kind === "terminal") {
+      // the grenade's rule: one wrong ends it, because the model answer has
+      // already been on screen for WRONG_HOLD seconds
+      if (!lastRight) { this.failTerminal(q.terminal!); return; }
+      if (q.index === q.qs.length - 1) { this.overrideShield(q.terminal!); return; }
     } else if (q.kind === "debrief") {
       // one go each, right or wrong — a debrief that re-queued its own misses
       // could never end, and the model answer has already been shown
@@ -1598,7 +1867,8 @@ export class Game {
     const def = LEVELS[this.levelIndex];
     return {
       level: def.TITLE, seconds: this.stats.time, kills: this.stats.kills,
-      aliens: this.aliens.length, right: this.stats.right, wrong: this.stats.wrong,
+      // the boss counts as one more, and so does everything he called in
+      aliens: this.aliens.length + (this.boss ? 1 : 0), right: this.stats.right, wrong: this.stats.wrong,
       par: this.par(def),
     };
   }
@@ -1607,13 +1877,24 @@ export class Game {
   private objective() {
     const list = this.world.def.OBJECTIVES; if (!list?.length) return null;
     const p = this.p;
-    const o = list.find((o) => !(o.until === "pistol" && p.hasPistol) && !(o.until === "rifle" && p.hasRifle) && !(o.until === "keycard" && p.keys.has(o.key ?? "blue"))) ?? list[list.length - 1];
-    return { text: o.text, bearing: Math.atan2(o.at[1] - p.y, o.at[0] - p.x), dist: Math.hypot(o.at[0] - p.x, o.at[1] - p.y) };
+    const o = list.find((o) => !(o.until === "pistol" && p.hasPistol) && !(o.until === "rifle" && p.hasRifle) && !(o.until === "keycard" && p.keys.has(o.key ?? "blue")) && !(o.until === "boss" && (!this.boss || this.boss.dead))) ?? list[list.length - 1];
+    // the boss moves, so the marker follows him rather than where he started
+    const [ax, ay] = o.until === "boss" && this.boss ? [this.boss.x, this.boss.y] : o.at;
+    return { text: o.text, bearing: Math.atan2(ay - p.y, ax - p.x), dist: Math.hypot(ax - p.x, ay - p.y) };
   }
   /** What a key would do right now, shown as a prompt. */
   private prompt() {
     if (this.stompTarget()) return { key: this.touchDevice ? "JUMP" : "SPACE", text: "It hasn't seen you: jump on it" };
     if (this.p.z > 0.05) return null;
+    const t = this.terminalNear();
+    if (t) {
+      const b = this.boss;
+      if (!b || b.dead) return null;
+      if (b.shield > 0) return { key: "E", text: "Shield's down — shoot him!" };
+      if (t.lock > 0) return { key: "E", text: `Locked · ${Math.ceil(t.lock)} s` };
+      if (t.cool > 0) return { key: "E", text: `Recharging · ${Math.ceil(t.cool)} s — try another` };
+      return { key: "E", text: "Override the shield · 3 questions" };
+    }
     const p = this.p, d = this.world.door[this.cell(p.x + Math.cos(p.angle) * 0.9, p.y + Math.sin(p.angle) * 0.9)];
     if (d?.exit) return { key: "E", text: "Take the lift" };
     return null;
@@ -1630,6 +1911,21 @@ export class Game {
       if (a.state === "dead") { things.push({ x: a.x, y: a.y, sprite: "alienDead" }); continue; }
       let diff = Math.atan2(p.y - a.y, p.x - a.x) - a.face; diff = Math.atan2(Math.sin(diff), Math.cos(diff));
       things.push({ x: a.x, y: a.y, sprite: Math.abs(diff) > 1.9 ? "alienBack" : "alien" });
+    }
+    for (const t of this.terminals) things.push({ x: t.x, y: t.y, sprite: t.lock > 0 ? "terminalLocked" : t.cool > 0 || !this.boss || this.boss.dead ? "terminalCold" : "terminal" });
+    const boss = this.boss;
+    if (boss) {
+      if (boss.dead) things.push({ x: boss.x, y: boss.y, sprite: "bossDead" });
+      else {
+        let diff = Math.atan2(p.y - boss.y, p.x - boss.x) - boss.face; diff = Math.atan2(Math.sin(diff), Math.cos(diff));
+        things.push({ x: boss.x, y: boss.y, sprite: Math.abs(diff) > 1.9 ? "bossBack" : "boss" });
+        // the shield, see-through and a little in front of him so it sorts
+        // nearer than he does; it shimmers so it reads as something alive
+        if (boss.awake && boss.shield <= 0) {
+          const d = Math.hypot(p.x - boss.x, p.y - boss.y) || 1, k = Math.min(0.5, d * 0.5);
+          things.push({ x: boss.x + ((p.x - boss.x) / d) * k, y: boss.y + ((p.y - boss.y) / d) * k, sprite: "shield", alpha: 0.42 + Math.sin(performance.now() / 160) * 0.08 });
+        }
+      }
     }
     for (const b of this.bolts) things.push({ x: b.x, y: b.y, z: 0.32, sprite: "bolt" });
     for (const n of this.nades) things.push({ x: n.x, y: n.y, z: n.z, sprite: "grenade", scale: 0.55 });
@@ -1661,13 +1957,17 @@ export class Game {
     const t1 = performance.now();
     const o = this.o; o.clearRect(0, 0, HUD_W, HUD_H);
     const def = LEVELS[this.levelIndex];
-    const left = this.aliens.filter((a) => a.state !== "dead").length;
+    const left = this.aliens.filter((a) => a.state !== "dead").length + (this.boss && !this.boss.dead ? 1 : 0);
     const playing = this.mode === "play" || this.mode === "reload";
     drawHud(o, {
       health: p.health, vest: p.vest, ammo: p.ammo, hasPistol: p.hasPistol, weapon: p.weapon, keys: [...p.keys], radTime: p.radTime,
       hasRifle: p.hasRifle, rifleAmmo: p.rifleAmmo, rifleMag: RIFLE_MAG, knife: p.knife, knifeMax: KNIFE_USES,
       grenades: p.grenades, hitMark: p.hitMark, hitKill: p.hitKill, exposure: p.exposure,
-      level: def.TITLE, aliensLeft: left, hurt: p.hurt, aim: playing ? (this.aimTarget()?.zone ?? null) : null,
+      level: def.TITLE, aliensLeft: left, hurt: p.hurt,
+      // on the boss the reticle lights only when a shot would HURT him — on
+      // his shield it stays open, which is the same thing the ping says
+      aim: playing ? (this.aimTarget()?.zone ?? (this.boss && this.boss.shield > 0 && this.bossAim() !== null ? "torso" : null)) : null,
+      boss: this.boss && this.boss.awake && !this.boss.dead ? { name: "THE DIRECTOR", hp: this.boss.hp, max: BOSS_HP, shield: this.boss.shield, shieldMax: SHIELD_DOWN } : null,
       hits: this.hits.map((h) => ({ a: h.a - p.angle, t: h.t })),
       heading: p.angle, objective: this.objective(),
       comms: this.comms && !this.quiz ? { who: this.opts.mascotName ?? "Comms", text: this.comms.text, age: this.comms.age, left: this.comms.life - this.comms.age } : null,
@@ -1686,7 +1986,7 @@ export class Game {
         picked: q.picked, correct: cur.correct, results: q.results,
         ammo: p.weapon === "rifle" ? p.rifleAmmo : p.ammo,
         perAnswer: p.weapon === "rifle" ? RIFLE_PER_ANSWER : PISTOL_PER_ANSWER,
-        slow: q.kind === "reload" ? RELOAD_SLOW : 1,
+        slow: q.kind === "reload" || q.kind === "terminal" ? RELOAD_SLOW : 1,
         why: cur.why, touch: this.touchDevice,
       };
       drawQuiz(o, view);
@@ -1702,6 +2002,7 @@ export class Game {
       ...(this.hasGun ? ["Two guns on this deck: ⇄ swaps between them. The blaster pays more per question, the rifle far more per second"] : []),
       ...(this.hasNades ? ["A grenade costs THREE right answers: pull the pin and the whole deck freezes until you have answered them. One wrong and the pin goes back in"] : []),
       ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
+      ...(this.boss ? ["The boss is shielded: nothing hurts him until you work a terminal (the E button) — three right answers drops it for eight seconds"] : []),
     ] : [
       "WASD to move · mouse to look (up and down too) · click to shoot · Shift to run",
       `R: recharge your gun by answering questions · E: use${this.hasNades ? " · G: pull a grenade pin" : ""}`,
@@ -1709,6 +2010,7 @@ export class Game {
       ...(this.hasGun ? ["Where you hit matters: head hurts most, legs least — but a head shot alone will not drop one, you still have to land the second"] : []),
       ...(this.hasNades ? ["A grenade costs THREE right answers: pull the pin and the whole deck freezes until you have answered them. One wrong and the pin goes back in"] : []),
       ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
+      ...(this.boss ? ["The boss is shielded: nothing hurts him until you work a terminal (E) — three right answers drops it for eight seconds"] : []),
     ], this.touchDevice ? "Tap to start" : "Click to start");
     if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], this.touchDevice ? "Tap to carry on" : "Click to carry on");
     if (this.mode === "dead") drawScreen(o, "Suit failure", [`${this.stats.kills} alien${this.stats.kills === 1 ? "" : "s"} defeated · ${this.stats.right} question${this.stats.right === 1 ? "" : "s"} right`], this.touchDevice ? "Tap to try the level again" : "Press Enter to try the level again", "#ff6b6b");
@@ -1729,7 +2031,7 @@ export class Game {
       lines.push(this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now.");
       drawScreen(o, `Level complete — ${letter}`, lines, this.touchDevice ? "Tap to carry on" : "Press Enter to carry on", score >= 75 ? "#ffd65a" : "#2fd48a");
     }
-    if (this.mode === "done") drawScreen(o, "You finished early access!", [`All ${LEVELS.length} levels done. The boss is still being built.`], "Reload the page to play again", "#ffd65a");
+    if (this.mode === "done") drawScreen(o, "You finished early access!", [`All ${LEVELS.length} decks done, and the Director is down.`, "Every question you missed is waiting in “Revisit your mistakes”."], "Reload the page to play again", "#ffd65a");
     // frame timings, readable in dev tools (data-render-ms / data-hud-ms on the overlay)
     this.ov.dataset.renderMs = (t1 - t0).toFixed(1); this.ov.dataset.hudMs = (performance.now() - t1).toFixed(1);
   }

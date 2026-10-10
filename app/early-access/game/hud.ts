@@ -150,6 +150,9 @@ export type HudState = {
   feed: { text: string; t: number }[];
   area: { name: string; t: number } | null;
   prompt: { key: string; text: string } | null;
+  /** The boss's bar along the top, while he is awake and alive. `shield` is
+   *  seconds left with it DOWN; 0 means it is up. */
+  boss?: { name: string; hp: number; max: number; shield: number; shieldMax: number } | null;
   /** Draw the on-screen stick and buttons (a touchscreen, no keyboard). */
   touch?: { grenades: number; guns?: number; held: Set<string>; stick: { dx: number; dy: number; ox?: number; oy?: number } | null } | null;
 };
@@ -237,6 +240,7 @@ export function drawHud(x: Ctx, s: HudState) {
   drawExposure(x, s.exposure);
 
   drawCompass(x, s);
+  if (s.boss) drawBossBar(x, s.boss);
 
   // top right: where you are
   x.textAlign = "right";
@@ -361,6 +365,30 @@ export function drawHud(x: Ctx, s: HudState) {
   if (s.touch) drawTouchControls(x, s.touch);
 }
 
+// The boss's health, under the compass. ⚠️ THE SHIELD STATE IS THE MOST
+// IMPORTANT THING ON IT, more than the health: "is it worth shooting right
+// now" is the one question the whole fight turns on, and the bar answers it
+// in words as well as colour — blue and SHIELDED, or amber with the seconds
+// counting down — so it never depends on telling two blues apart.
+function drawBossBar(x: Ctx, b: NonNullable<HudState["boss"]>) {
+  const W = HUD_W, BW = 520, X = W / 2 - BW / 2, Y = 96;
+  const up = b.shield <= 0;
+  x.save();
+  x.fillStyle = "rgba(6,14,28,0.7)"; x.beginPath(); x.roundRect(X - 14, Y - 6, BW + 28, 58, 12); x.fill();
+  x.strokeStyle = up ? "rgba(127,200,255,0.7)" : "rgba(255,182,64,0.9)"; x.lineWidth = 1.5; x.stroke();
+  label(x, b.name, X, Y + 12, "#ffd0c8", 12);
+  x.textAlign = "right";
+  label(x, up ? "SHIELDED · WORK A TERMINAL (E)" : `SHIELD DOWN · ${b.shield.toFixed(1)} s`, X + BW, Y + 12, up ? "#9fd8ff" : WARN, 12);
+  x.textAlign = "left";
+  x.fillStyle = "rgba(255,93,108,0.15)"; x.beginPath(); x.roundRect(X, Y + 22, BW, 16, 6); x.fill();
+  x.fillStyle = DANGER; x.beginPath(); x.roundRect(X, Y + 22, Math.max(4, BW * Math.max(0, b.hp) / b.max), 16, 6); x.fill();
+  // the phase lines, at two thirds and one third, where he calls for help
+  x.fillStyle = "rgba(6,14,28,0.8)"; for (const f of [1 / 3, 2 / 3]) x.fillRect(X + BW * f - 1, Y + 22, 2, 16);
+  if (up) { x.fillStyle = "rgba(127,200,255,0.35)"; x.beginPath(); x.roundRect(X, Y + 22, BW, 16, 6); x.fill(); }
+  else { x.fillStyle = WARN; x.fillRect(X, Y + 40, BW * Math.min(1, b.shield / b.shieldMax), 3); }
+  x.restore();
+}
+
 // How visible you are, under the reticle. Deliberately small and quiet: it is
 // there so the darkness in the storage deck is a RULE you can read rather than
 // a guess, but it must not sit in the middle of the picture shouting.
@@ -446,7 +474,7 @@ export function drawPrompt(x: Ctx, key: string, text: string) {
 }
 
 export type QuizView = {
-  kind: "reload" | "stomp" | "nade" | "debrief"; topic: string; index: number; total: number; question: string; choices: string[];
+  kind: "reload" | "stomp" | "nade" | "debrief" | "terminal"; topic: string; index: number; total: number; question: string; choices: string[];
   /** How far the world is slowed while this panel is up, 1 = not at all. */
   slow?: number;
   /** For the reload panel's subtitle: how much a right answer is worth. */
@@ -501,7 +529,7 @@ export function quizChoiceAt(px: number, py: number): number {
 export function drawQuiz(x: Ctx, q: QuizView) {
   const W = HUD_W;
   x.save();
-  const stomp = q.kind === "stomp", nade = q.kind === "nade", debrief = q.kind === "debrief", touch = !!q.touch;
+  const stomp = q.kind === "stomp", nade = q.kind === "nade", debrief = q.kind === "debrief", terminal = q.kind === "terminal", touch = !!q.touch;
   // ⚠️ The grenade panel dims the whole screen the way the stomp does, and it
   // is doing more than decoration: the world behind it is FROZEN, and a frozen
   // picture that looks exactly like a running one reads as the game having
@@ -523,7 +551,7 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   const PH = (HEAD - 112) + 300 + (ROW - 64) * 2 + lines.length * QLH + (whyLines.length ? 34 + whyLines.length * WLH : 0);
   // the debrief is green: it is the one panel in the game that is entirely on
   // your side — nothing is lost by it and nothing is shooting at you
-  const accent = stomp ? "#ffd65a" : nade ? "#8ba179" : debrief ? "#2fd48a" : CYAN;
+  const accent = stomp ? "#ffd65a" : nade ? "#8ba179" : debrief ? "#2fd48a" : terminal ? "#ff8a5c" : CYAN;
   x.fillStyle = stomp || nade || debrief ? "rgba(8,16,30,0.94)" : "rgba(6,14,28,0.84)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 22); x.fill();
   x.strokeStyle = accent; x.lineWidth = 2.5; x.stroke();
   // a thin bright edge along the top, like a hologram's projector line
@@ -545,7 +573,7 @@ export function drawQuiz(x: Ctx, q: QuizView) {
     x.fillText(`WORLD AT 1/${q.slow}`, cx + (touch ? 18 : 14), cy + (touch ? 21 : 18));
   }
   x.fillStyle = accent; x.font = `bold ${touch ? 36 : 32}px ${FONT}`;
-  const title = stomp ? "STOMP!" : nade ? "PIN OUT" : debrief ? "BEFORE YOU GO" : "RELOAD";
+  const title = stomp ? "STOMP!" : nade ? "PIN OUT" : debrief ? "BEFORE YOU GO" : terminal ? "OVERRIDE" : "RELOAD";
   x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
   x.fillStyle = "#c9d6e8"; x.font = `${touch ? 20 : 16}px ${FONT}`;
   const sub = stomp ? "Get all 3 right to finish it off"
@@ -555,6 +583,8 @@ export function drawQuiz(x: Ctx, q: QuizView) {
     // short on purpose: "BEFORE YOU GO" is twice the width of "PIN OUT", and
     // the first wording ran out of the panel and under the progress dots
     : debrief ? "One more go at each"
+    // short for the debrief's reason: the long version ran under the dots
+    : terminal ? "3 right drops his shield"
     : `Right: +${q.perAnswer ?? 3} · Wrong: nothing`;
   x.fillText(sub, X + 30 + titleW + 16, Y + 44); // measured, so no font can make them overlap
   x.font = `bold ${touch ? 16 : 13}px ${FONT}`; const tw = x.measureText(q.topic).width + 22;
@@ -616,6 +646,7 @@ export function drawQuiz(x: Ctx, q: QuizView) {
       : stomp ? `${ans}. One wrong and it throws you off. Wrong answers go to “Revisit your mistakes”.`
       : nade ? `${ans}. The deck is frozen while you think — nothing out there is moving.`
       : debrief ? `${ans}. Nothing to lose — this is a second go, not a test.`
+      : terminal ? `${ans}. The deck is at a third while you work — he isn't stopped, so watch your back.`
       : `${ans} to answer. You can still move while you reload!`,
     X + 30, tY + 28);
   x.restore();
