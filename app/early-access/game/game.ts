@@ -20,6 +20,7 @@ import { buildTextures, type TexSet } from "./textures";
 import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
 import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type LevelDef, type World } from "./world";
 import { formatClock, gradeFor, questionTarget, scoreRun, type LevelBest, type Run } from "../../lib/shipsLog";
+import { weightedShuffle } from "../../lib/weightedShuffle";
 
 export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string; why?: string };
 export type GameOptions = {
@@ -39,6 +40,13 @@ export type GameOptions = {
    *  value: four decks can be finished without a page reload, and a snapshot
    *  taken when the game mounted would still be showing the first one's. */
   best?: (level: string) => LevelBest | undefined;
+  /**
+   * How strongly to favour each topic's questions, by topic slug — worked out
+   * on the server from the student's own accuracy (weakTopicWeights in
+   * lib/game-questions.ts). Missing means 1. A logged-out player passes
+   * nothing and gets the old even deal.
+   */
+  topicWeights?: Record<string, number>;
 };
 
 type Alien = { x: number; y: number; face: number; hp: number; state: "idle" | "noticing" | "alert" | "dead"; timer: number; cooldown: number; lastX: number; lastY: number; hurt: number; strafe: number; strafeT: number };
@@ -1432,7 +1440,15 @@ export class Game {
     if (!pool.length) return null;
     const d = deck === "reload" ? this.reloadDeck : this.easyDeck;
     for (let tries = 0; tries < 4; tries++) {
-      if (!d.length) d.push(...[...pool].sort(() => Math.random() - 0.5));
+      // ⚠️ REVERSED, because this deck is dealt with pop() — from the END. The
+      // weighted shuffle puts the weakest topics' questions at the FRONT, so
+      // pushing it as it comes would serve them last, which is the exact
+      // opposite of the point and would look perfectly fine in every test that
+      // only checked the weights were passed in.
+      if (!d.length) {
+        const w = this.opts.topicWeights ?? {};
+        d.push(...weightedShuffle(pool, (q) => w[q.topic] ?? 1).reverse());
+      }
       const q = d.pop();
       if (!q) return null;
       if (!avoid.some((a) => a.question === q.question)) return q;

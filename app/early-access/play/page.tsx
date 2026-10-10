@@ -8,7 +8,8 @@ import { getViewer } from "../../lib/viewer";
 import { hasDevAccess } from "../../lib/dev-access";
 import { ACCOUNTS_ENABLED } from "../../lib/site";
 import { SUBJECTS, getSubject } from "../../lib/subjects";
-import { buildGameQuestions, countGameQuestions, playableTopics } from "../../lib/game-questions";
+import { buildGameQuestions, countGameQuestions, playableTopics, weakTopicWeights } from "../../lib/game-questions";
+import { getTopicAccuracies } from "../../lib/progress";
 import { GameClient } from "./GameClient";
 import { LEVELS } from "../game/levels";
 
@@ -47,6 +48,15 @@ export default async function PlayPage({ searchParams }: Props) {
     if (topics.length) {
     const { reload, easy } = buildGameQuestions(subject.slug, topics);
     const { own } = countGameQuestions(subject.slug, topics);
+    // Which of this subject's topics this student is weakest at, from their
+    // own practice answers — the same reading /today ranks with. ⚠️ A failure
+    // here must never stop the game starting: no history, a missing table or
+    // a database blip all mean "deal evenly", which is how it always worked.
+    const topicWeights = weakTopicWeights(
+      (await getTopicAccuracies(user.id).catch(() => []))
+        .filter((a) => a.subjectSlug === subject.slug)
+        .map((a) => ({ topicSlug: a.topicSlug, correct: a.correct, questionsAnswered: a.questionsAnswered })),
+    );
     if (reload.length >= 3) {
       return (
         <main className="min-h-screen bg-[#03060d] px-4 py-6 text-white">
@@ -55,7 +65,7 @@ export default async function PlayPage({ searchParams }: Props) {
               <Link href="/early-access" className="tap-pad opacity-70 hover:opacity-100">← Early access</Link>
               <p className="opacity-70">{subject.name} · {topics.length} topic{topics.length === 1 ? "" : "s"} · playing as {MASCOT_NAMES[mascot]}</p>
             </div>
-            <GameClient subject={subject.slug} mascot={mascot} mascotName={MASCOT_NAMES[mascot]} reload={reload} easy={easy} startLevel={level - 1} />
+            <GameClient subject={subject.slug} mascot={mascot} mascotName={MASCOT_NAMES[mascot]} reload={reload} easy={easy} startLevel={level - 1} topicWeights={topicWeights} />
             <p className="mt-4 text-sm opacity-60">
               Keyboard and mouse, or touch controls on a phone — turn it sideways. Every answer counts like a practice question, so the ones you get wrong come back in “Revisit your mistakes”.
             </p>

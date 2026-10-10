@@ -28,6 +28,7 @@ import { getTopicContent } from "./content";
 import { difficultyOf } from "./difficulty";
 import { normalise } from "./normalise";
 import { shuffle } from "./shuffle";
+import { smoothedAccuracy } from "./daily-practice";
 import { getSubject } from "./subjects";
 
 export type GameQuestion = {
@@ -236,6 +237,57 @@ export function buildGameQuestions(subjectSlug: string, topicSlugs: string[]): {
     // quick ones, and there are plenty
     easy: shuffle((ownEasy.length >= 12 ? ownEasy : picked.filter((q) => q.easy))).slice(0, MAX_POOL).map(strip),
   };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// QUESTIONS FROM YOUR WEAKEST TOPICS (2026-10-10)
+//
+// The game used to deal the chosen topics' questions evenly. The site already
+// knows which topics a student is bad at — `/today`'s recommender ranks them by
+// smoothed accuracy — and the game never asked. This is the item that has sat
+// at the top of the backlog as "the biggest educational win per line of code
+// in the project" since the recommender shipped.
+//
+// A WEIGHT per topic, not a filter. Filtering to the weakest topic would leave
+// a student drilling the one thing they hate for nine decks, and would starve
+// the topics they ticked on purpose. A weight just tilts which questions tend
+// to come up first (see weightedShuffle.ts) — every question still turns up
+// once before anything repeats.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Floors and ceilings, so no topic disappears and none takes over. */
+export const MIN_TOPIC_WEIGHT = 0.4;
+export const MAX_TOPIC_WEIGHT = 3;
+
+/**
+ * How strongly each topic should be favoured, from the student's own record.
+ *
+ * A topic with no history sits at exactly 1, so a brand-new student — or a
+ * logged-out one, who passes no scores at all — gets the old even deal. Below
+ * the prior's 60% a topic climbs towards 3; a topic answered perfectly falls
+ * towards 0.4 and stays in the mix.
+ *
+ * ⚠️ Smoothed, not raw, for the reason daily-practice.ts gives at length: with
+ * raw accuracy ONE wrong answer makes a topic 0%, the worst score possible,
+ * and that topic would then dominate every game for ever. With the prior, one
+ * wrong answer out of one is 48%, and thirty answers swamp the prior entirely.
+ */
+export function weakTopicWeights(
+  scores: readonly { topicSlug: string; correct: number; questionsAnswered: number }[],
+): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const s of scores) {
+    const answered = Math.max(0, s.questionsAnswered || 0);
+    const correct = Math.max(0, Math.min(answered, s.correct || 0));
+    // ⚠️ /today's OWN smoothing, imported rather than copied: a second copy of
+    // its prior here would drift the first time somebody retunes the
+    // recommender, and the game and /today would quietly disagree about which
+    // topic is your weakest. Even the "no history" baseline is asked of it.
+    const baseline = smoothedAccuracy(0, 0);
+    const raw = (1 - smoothedAccuracy(correct, answered)) / (1 - baseline);
+    out[s.topicSlug] = Math.max(MIN_TOPIC_WEIGHT, Math.min(MAX_TOPIC_WEIGHT, raw));
+  }
+  return out;
 }
 
 /** How many questions a choice of topics would give, for the picker to show. */

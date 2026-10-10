@@ -18,7 +18,7 @@ import { readStorageRaw, writeStorageRaw } from "../../lib/browserStore";
 import { foldRun, parseLog, SHIPS_LOG_KEY } from "../../lib/shipsLog";
 import { Game } from "../game/game";
 
-export function GameClient({ subject, mascot, mascotName, reload, easy, startLevel = 0 }: { subject: string; mascot: keyof typeof MASCOTS; mascotName: string; reload: GameQuestion[]; easy: GameQuestion[]; startLevel?: number }) {
+export function GameClient({ subject, mascot, mascotName, reload, easy, startLevel = 0, topicWeights }: { subject: string; mascot: keyof typeof MASCOTS; mascotName: string; reload: GameQuestion[]; easy: GameQuestion[]; startLevel?: number; topicWeights?: Record<string, number> }) {
   const gameRef = useRef<HTMLCanvasElement>(null);
   const bloomRef = useRef<HTMLCanvasElement>(null);
   const overlayRef = useRef<HTMLCanvasElement>(null);
@@ -49,7 +49,7 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
     const cv = gameRef.current, ov = overlayRef.current;
     if (!cv || !ov) return;
     const game = new Game(cv, ov, {
-      reload, easy, startLevel, mascotName,
+      reload, easy, startLevel, mascotName, topicWeights,
       // clicking the title screen asks for full screen as well as the mouse
       onStart: () => {
         // ⚠️ iOS Safari will not put an arbitrary element full screen, so a
@@ -73,7 +73,7 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
     const onFullscreen = () => setFull(document.fullscreenElement === shellRef.current);
     document.addEventListener("fullscreenchange", onFullscreen);
     return () => { document.removeEventListener("fullscreenchange", onFullscreen); game.destroy(); };
-  }, [subject, reload, easy, startLevel, mascotName]);
+  }, [subject, reload, easy, startLevel, mascotName, topicWeights]);
 
   if (failed) return <p role="alert" className="rounded-xl bg-red-900/40 p-4">The game couldn&apos;t start in this browser.</p>;
 

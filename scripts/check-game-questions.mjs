@@ -31,6 +31,7 @@ try {
     "node_modules/typescript/bin/tsc",
     "app/lib/subjects.ts", "app/lib/content/index.ts", "app/lib/marks.ts",
     "app/lib/difficulty.ts", "app/lib/shuffle.ts", "app/lib/normalise.ts", "app/lib/game-questions.ts",
+    "app/lib/weightedShuffle.ts",
     "--outDir", out, "--module", "commonjs", "--target", "es2020",
     "--moduleResolution", "node", "--skipLibCheck",
   ], { stdio: "inherit" });
@@ -163,6 +164,52 @@ try {
     // content shape changed underneath it.
     expect(withWhy / asked > 0.9, `only ${((withWhy / asked) * 100).toFixed(0)}% of askable questions explain themselves (${withWhy} of ${asked})`);
     console.log(`${((withWhy / asked) * 100).toFixed(0)}% of askable questions carry a model answer to show after a wrong one.`);
+  }
+
+  // ── Questions from your weakest topics (2026-10-10) ─────────────────────
+  {
+    const { weakTopicWeights, MIN_TOPIC_WEIGHT, MAX_TOPIC_WEIGHT } = require_(join(out, "game-questions.js"));
+    const { weightedShuffle } = require_(join(out, "weightedShuffle.js"));
+
+    // the weights
+    const w = weakTopicWeights([
+      { topicSlug: "struggling", correct: 6, questionsAnswered: 30 },  // 20%
+      { topicSlug: "average", correct: 18, questionsAnswered: 30 },    // 60%
+      { topicSlug: "solid", correct: 30, questionsAnswered: 30 },      // 100%
+      { topicSlug: "one-wrong", correct: 0, questionsAnswered: 1 },    // one unlucky answer
+      { topicSlug: "untouched", correct: 0, questionsAnswered: 0 },
+    ]);
+    expect(Math.abs(w.untouched - 1) < 1e-9, `a topic with no history weighs ${w.untouched}, not 1 — a new student would not get the even deal`);
+    expect(Math.abs(w.average - 1) < 0.05, `a topic at the prior's 60% weighs ${w.average.toFixed(2)}, not about 1`);
+    expect(w.struggling > 1.8, `a topic answered at 20% over thirty questions only weighs ${w.struggling.toFixed(2)}`);
+    expect(w.solid >= MIN_TOPIC_WEIGHT && w.solid < 0.6, `a mastered topic weighs ${w.solid.toFixed(2)} — it should fall close to the floor, not vanish`);
+    expect(w.struggling <= MAX_TOPIC_WEIGHT, "a weight escaped its ceiling, so one topic could take over the whole game");
+    // ⚠️ the reason for smoothing: ONE wrong answer must not make a topic the
+    // weakest thing you have ever done
+    expect(w["one-wrong"] < w.struggling && w["one-wrong"] < 1.5,
+      `one wrong answer out of one weighs ${w["one-wrong"].toFixed(2)} — a single unlucky question would dominate every game`);
+    expect(Object.keys(weakTopicWeights([])).length === 0, "no history should give no weights at all, so every topic defaults to 1");
+
+    // the shuffle: deterministic rand so this check cannot flake
+    let seed = 12345;
+    const rand = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    const items = Array.from({ length: 40 }, (_, i) => ({ id: i, topic: i < 10 ? "weak" : "strong" }));
+    const out1 = weightedShuffle(items, (x) => (x.topic === "weak" ? 3 : 1), rand);
+    expect(out1.length === items.length && new Set(out1.map((x) => x.id)).size === items.length,
+      "the weighted shuffle dropped or repeated a question — every question must appear exactly once per pass");
+    // over many passes, the weak topic should dominate the FRONT of the deck
+    let weakInFirstTen = 0, passes = 400;
+    for (let i = 0; i < passes; i++) {
+      weakInFirstTen += weightedShuffle(items, (x) => (x.topic === "weak" ? 3 : 1), rand).slice(0, 10).filter((x) => x.topic === "weak").length;
+    }
+    const share = weakInFirstTen / (passes * 10);
+    // 10 of 40 is 25% with no weighting; weight 3 should roughly double that
+    expect(share > 0.42, `weak-topic questions are only ${(share * 100).toFixed(0)}% of the first ten drawn (25% would be no weighting at all)`);
+    // and equal weights must still be a fair shuffle
+    let firstWeak = 0;
+    for (let i = 0; i < passes; i++) if (weightedShuffle(items, () => 1, rand)[0].topic === "weak") firstWeak++;
+    expect(Math.abs(firstWeak / passes - 0.25) < 0.08, `with equal weights the first item is weak ${((firstWeak / passes) * 100).toFixed(0)}% of the time, not about 25%`);
+    console.log(`Weak-topic questions make up ${(share * 100).toFixed(0)}% of the first ten drawn at weight 3 (25% unweighted).`);
   }
 } finally {
   rmSync(out, { recursive: true, force: true });

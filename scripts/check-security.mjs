@@ -1816,6 +1816,33 @@ try {
       expect(!/"debrief"/.test(clockLine), "the run clock runs during the debrief, so missing questions costs pace marks");
       expect(/"debrief"\) this\.updateQuiz\(dt\)/.test(frameBody2), "the debrief's questions never advance");
     }
+
+    // ── Questions from your weakest topics (2026-10-10) ────────────────────
+    {
+      // ⚠️ THE ONE BUG NO TEST OF THE WEIGHTS CAN SEE. The deck is dealt with
+      // pop(), from the END, and the weighted shuffle puts the weakest topics
+      // FIRST — so without the reverse the weakest topics would be served
+      // LAST, and every check on the weights would still pass.
+      const draw = body("draw1");
+      // (the weight function contains brackets of its own, so match to the end
+      // of the line rather than to the first ")")
+      expect(/weightedShuffle\(pool,[^\n]*\)\.reverse\(\)/.test(draw),
+        "the question deck is no longer a REVERSED weighted shuffle — dealt by pop(), the weakest topics would come up last");
+      expect(/d\.pop\(\)/.test(draw), "the deck is no longer dealt from the end, so the reverse in draw1 is now wrong");
+      // the shuffle runs in the browser, so it must not reach the content
+      const ws = readFileSync("app/lib/weightedShuffle.ts", "utf8");
+      expect(!/^import /m.test(ws), "weightedShuffle.ts imports something — it runs in the browser and must stay dependency-free");
+      // the play page works the weights out, and a failure there must not stop
+      // the game starting
+      const playPage = readFileSync("app/early-access/play/page.tsx", "utf8");
+      expect(/getTopicAccuracies\(user\.id\)\.catch\(/.test(playPage),
+        "a failure reading the student's accuracy would stop the game starting — it must fall back to an even deal");
+      expect(/topicWeights=\{topicWeights\}/.test(playPage), "the play page no longer hands the game its topic weights");
+      // and /today's own smoothing, not a copy of it
+      const gq = readFileSync("app/lib/game-questions.ts", "utf8");
+      expect(/import \{ smoothedAccuracy \} from "\.\/daily-practice"/.test(gq) && !/PRIOR_ACCURACY|PRIOR_WEIGHT/.test(gq),
+        "the game keeps its own copy of /today's smoothing prior, so the two will quietly disagree about your weakest topic");
+    }
     // the aim is taken when the pin comes out, so a frozen world cannot be
     // used to line a throw up that you had not lined up already
     expect(/nade: this\.aimNade\(\)/.test(game),
