@@ -311,7 +311,9 @@ export function drawHud(x: Ctx, s: HudState) {
     label(x, `${name}${other ? "  " + other : ""}`, AX + 18, AY + 24);
     // ⚠️ The pips are sized to the magazine, not drawn at a fixed width, or
     // fifteen rounds at the blaster's 26px pitch runs 90px off the panel.
-    const pitch = Math.min(26, 264 / mag), pw = Math.max(5, pitch - 8);
+    // ⚠️ and they leave room for the "15/15" on the right, which a full rifle
+    // magazine at 264/15 ran straight underneath
+    const pitch = Math.min(26, (mag > 6 ? 186 : 264) / mag), pw = Math.max(5, pitch - (mag > 6 ? 5 : 8));
     for (let i = 0; i < mag; i++) {
       const on = i < now; x.fillStyle = on ? tint : rifleOut ? "rgba(255,182,64,0.12)" : "rgba(127,230,255,0.12)";
       if (on) { x.shadowColor = tint; x.shadowBlur = 10; }
@@ -530,8 +532,13 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   // player thinks when everything crawls is that the game has frozen, so the
   // panel says so in as many words, and the chip sits where the eye already
   // is — on the panel it is reading, not in a corner.
+  // ⚠️ ON THE TOPIC ROW, top right, where nothing else is. It used to sit at
+  // the bottom right, directly on top of the "10.0 s" timer text — on every
+  // reload since the slowdown shipped. Seen in a screenshot; quizfit only
+  // asked whether text stayed inside the panel, not whether two pieces of it
+  // shared a spot.
   if ((q.slow ?? 1) > 1) {
-    const cw = touch ? 150 : 124, cx = X + PW - cw - 24, cy = Y + PH - (touch ? 54 : 46);
+    const cw = touch ? 150 : 124, cx = X + PW - cw - 30, cy = Y + 64;
     x.fillStyle = "rgba(127,230,255,0.12)"; x.beginPath(); x.roundRect(cx, cy, cw, touch ? 30 : 26, 13); x.fill();
     x.strokeStyle = "rgba(127,230,255,0.5)"; x.lineWidth = 1.2; x.stroke();
     x.fillStyle = CYAN; x.font = `bold ${touch ? 16 : 13}px ${FONT}`;
@@ -542,7 +549,9 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
   x.fillStyle = "#c9d6e8"; x.font = `${touch ? 20 : 16}px ${FONT}`;
   const sub = stomp ? "Get all 3 right to finish it off"
-    : nade ? "All 3 right and it flies · one wrong and the pin goes back in"
+    // ⚠️ shortened: the full sentence ran under the progress dots on a
+    // desktop, from the day grenades shipped — found by quizfit's overlap rule
+    : nade ? "3 right and it flies · one wrong, pin back in"
     // short on purpose: "BEFORE YOU GO" is twice the width of "PIN OUT", and
     // the first wording ran out of the panel and under the progress dots
     : debrief ? "One more go at each"
