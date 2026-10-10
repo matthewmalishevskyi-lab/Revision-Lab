@@ -14,6 +14,8 @@ import { FocusTimer } from "../../../components/FocusTimer";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { StudyTimer } from "../../../components/StudyTimer";
 import { WhereYouAre } from "../../../components/WhereYouAre";
+import { TopicConnections } from "../../../components/TopicConnections";
+import { topicConnections } from "../../../lib/connections";
 import { getMastery } from "../../../lib/progress";
 import { TopicNav, type NavSection } from "../../../components/TopicNav";
 import {
@@ -126,9 +128,11 @@ export default async function TopicPage({ params }: Props) {
   // Where this student stands on this topic, and what is left to master it.
   // ⚠️ A failure here must never cost them the page — the revision below
   // matters more than the panel about it — so it falls back to no panel.
-  const mastery = content && viewer
-    ? (await getMastery(viewer.id).catch(() => null))?.topics.get(`${subject.slug}/${topic.slug}`) ?? null
-    : null;
+  const masteryReport = content && viewer ? await getMastery(viewer.id).catch(() => null) : null;
+  const mastery = masteryReport?.topics.get(`${subject.slug}/${topic.slug}`) ?? null;
+
+  // What this topic builds on and leads to, from the words the topics share.
+  const connections = content ? topicConnections(subject.slug, topic.slug) : { buildsOn: [], leadsTo: [] };
 
   // Does anything on this page carry the Higher tier flag? Worked out once here
   // rather than checked in three places further down.
@@ -157,6 +161,7 @@ export default async function TopicPage({ params }: Props) {
         ...(content.practice ? [{ id: "practice", label: "Practice" }] : []),
         { id: "definitions", label: "Definitions" },
         { id: "exam-technique", label: "Exam technique" },
+        ...(connections.buildsOn.length || connections.leadsTo.length ? [{ id: "connections", label: "Connections" }] : []),
       ]
     : [];
 
@@ -269,6 +274,22 @@ export default async function TopicPage({ params }: Props) {
                 <p className="max-w-prose text-lg leading-relaxed opacity-80">
                   {content.summary}
                 </p>
+                {/* what to have under your belt first — the full picture, both
+                    ways, is in "How this connects" further down */}
+                {/* ⚠️ Real height on each link (min-h-11), not .tap-pad: these
+                    wrap, and padded hit boxes on wrapped lines overlap — the
+                    bug this site has shipped twice, in the footer and the
+                    teacher-tools breadcrumbs. */}
+                {connections.buildsOn.length > 0 && (
+                  <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+                    <span className="opacity-60">Builds on</span>
+                    {connections.buildsOn.map((l) => (
+                      <Link key={l.slug} href={`/subjects/${subject.slug}/${l.slug}`} className="inline-flex min-h-11 items-center font-semibold underline-offset-2 hover:underline" style={{ color: style.text }}>
+                        {l.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
                 {/* Shown once, before the first badge, so the reader meets the
                     explanation before they meet the label. */}
                 {hasHigherContent && <HigherNotice />}
@@ -559,6 +580,8 @@ export default async function TopicPage({ params }: Props) {
                 ))}
               </ol>
             </section>
+
+            <TopicConnections connections={connections} subject={subject.slug} mastery={masteryReport?.topics} />
           </>
         )}
 
