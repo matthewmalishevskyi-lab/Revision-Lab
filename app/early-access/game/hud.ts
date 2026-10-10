@@ -444,7 +444,7 @@ export function drawPrompt(x: Ctx, key: string, text: string) {
 }
 
 export type QuizView = {
-  kind: "reload" | "stomp" | "nade"; topic: string; index: number; total: number; question: string; choices: string[];
+  kind: "reload" | "stomp" | "nade" | "debrief"; topic: string; index: number; total: number; question: string; choices: string[];
   /** How far the world is slowed while this panel is up, 1 = not at all. */
   slow?: number;
   /** For the reload panel's subtitle: how much a right answer is worth. */
@@ -499,12 +499,12 @@ export function quizChoiceAt(px: number, py: number): number {
 export function drawQuiz(x: Ctx, q: QuizView) {
   const W = HUD_W;
   x.save();
-  const stomp = q.kind === "stomp", nade = q.kind === "nade", touch = !!q.touch;
+  const stomp = q.kind === "stomp", nade = q.kind === "nade", debrief = q.kind === "debrief", touch = !!q.touch;
   // ⚠️ The grenade panel dims the whole screen the way the stomp does, and it
   // is doing more than decoration: the world behind it is FROZEN, and a frozen
   // picture that looks exactly like a running one reads as the game having
   // hung. The dim says "nothing out there is moving".
-  if (stomp || nade) { x.fillStyle = "rgba(3,6,13,0.5)"; x.fillRect(0, 0, W, HUD_H); }
+  if (stomp || nade || debrief) { x.fillStyle = "rgba(3,6,13,0.5)"; x.fillRect(0, 0, W, HUD_H); }
   const ROW = touch ? 112 : 64, BOXH = touch ? 100 : 54;
   const QF = touch ? 36 : 30, QLH = touch ? 46 : 38;
   const WF = touch ? 30 : 17, WLH = touch ? 38 : 24, WMAX = touch ? 3 : 4;
@@ -519,8 +519,10 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   x.font = `${WF}px ${FONT}`;
   const whyLines = wrong && q.why ? wrap(x, q.why, PW - 124).slice(0, WMAX) : [];
   const PH = (HEAD - 112) + 300 + (ROW - 64) * 2 + lines.length * QLH + (whyLines.length ? 34 + whyLines.length * WLH : 0);
-  const accent = stomp ? "#ffd65a" : nade ? "#8ba179" : CYAN;
-  x.fillStyle = stomp || nade ? "rgba(8,16,30,0.94)" : "rgba(6,14,28,0.84)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 22); x.fill();
+  // the debrief is green: it is the one panel in the game that is entirely on
+  // your side — nothing is lost by it and nothing is shooting at you
+  const accent = stomp ? "#ffd65a" : nade ? "#8ba179" : debrief ? "#2fd48a" : CYAN;
+  x.fillStyle = stomp || nade || debrief ? "rgba(8,16,30,0.94)" : "rgba(6,14,28,0.84)"; x.beginPath(); x.roundRect(X, Y, PW, PH, 22); x.fill();
   x.strokeStyle = accent; x.lineWidth = 2.5; x.stroke();
   // a thin bright edge along the top, like a hologram's projector line
   x.fillStyle = accent; x.fillRect(X + 22, Y, PW - 44, 2);
@@ -536,11 +538,14 @@ export function drawQuiz(x: Ctx, q: QuizView) {
     x.fillText(`WORLD AT 1/${q.slow}`, cx + (touch ? 18 : 14), cy + (touch ? 21 : 18));
   }
   x.fillStyle = accent; x.font = `bold ${touch ? 36 : 32}px ${FONT}`;
-  const title = stomp ? "STOMP!" : nade ? "PIN OUT" : "RELOAD";
+  const title = stomp ? "STOMP!" : nade ? "PIN OUT" : debrief ? "BEFORE YOU GO" : "RELOAD";
   x.fillText(title, X + 30, Y + 48); const titleW = x.measureText(title).width;
   x.fillStyle = "#c9d6e8"; x.font = `${touch ? 20 : 16}px ${FONT}`;
   const sub = stomp ? "Get all 3 right to finish it off"
     : nade ? "All 3 right and it flies · one wrong and the pin goes back in"
+    // short on purpose: "BEFORE YOU GO" is twice the width of "PIN OUT", and
+    // the first wording ran out of the panel and under the progress dots
+    : debrief ? "One more go at each"
     : `Right: +${q.perAnswer ?? 3} · Wrong: nothing`;
   x.fillText(sub, X + 30 + titleW + 16, Y + 44); // measured, so no font can make them overlap
   x.font = `bold ${touch ? 16 : 13}px ${FONT}`; const tw = x.measureText(q.topic).width + 22;
@@ -588,11 +593,21 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   // ⚠️ A phone has no SPACE and no number keys. This panel was telling every
   // phone player to press keys their device does not have — including the one
   // line that explains how to dismiss the model answer.
+  // ⚠️ ONE LINE PER PANEL, and two of them used to be wrong. The grenade quiz
+  // fell through to the reload's "You can still move while you reload!" — on a
+  // panel whose whole point is that the deck is FROZEN. The debrief would
+  // have inherited the same sentence. A footer that lies about the controls
+  // is worse than none.
+  const carry = `${touch ? "Tap" : "SPACE"} to carry on`, ans = touch ? "Tap an answer" : "Press 1–4";
   x.fillText(
     q.picked !== null
-      ? (wrong ? `${touch ? "Tap" : "SPACE"} to carry on · this one goes to “Revisit your mistakes”` : `${touch ? "Tap" : "SPACE"} to carry on`)
-      : stomp ? `${touch ? "Tap an answer" : "Press 1–4"}. One wrong and it throws you off. Wrong answers go to “Revisit your mistakes”.`
-      : `${touch ? "Tap an answer" : "Press 1–4"} to answer. You can still move while you reload!`,
+      ? (wrong
+        ? (debrief ? `${carry} · this one goes to “Revisit your mistakes”` : `${carry} · you'll get another go at it before the lift`)
+        : carry)
+      : stomp ? `${ans}. One wrong and it throws you off. Wrong answers go to “Revisit your mistakes”.`
+      : nade ? `${ans}. The deck is frozen while you think — nothing out there is moving.`
+      : debrief ? `${ans}. Nothing to lose — this is a second go, not a test.`
+      : `${ans} to answer. You can still move while you reload!`,
     X + 30, tY + 28);
   x.restore();
 }

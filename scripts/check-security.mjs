@@ -1783,6 +1783,39 @@ try {
       expect(/this\.updateQuiz\(dt\);/.test(frameBody),
         "the quiz clock is not given real time, so a slowed world would slow the question timer too");
     }
+
+    // ── A wrong answer comes back before the lift (2026-10-10) ─────────────
+    // A miss used to be shown once and gone. Now it is OWED: it jumps the
+    // queue at the next reload, and anything still owed at the lift gets one
+    // more go in a "before you go" round. Each rule below is one way that
+    // could quietly stop being true.
+    {
+      const answerBody = body("answer");
+      expect(/if \(!right\) this\.owe\(/.test(answerBody), "a wrong answer is no longer recorded as owed");
+      const quizBody = body("updateQuiz");
+      expect(/q\.time <= 0\)[^\n]*this\.owe\(/.test(quizBody),
+        "a question that TIMES OUT is not owed — running out of time is the commonest way to miss one");
+      expect(/kind === "debrief"\) return;/.test(body("owe")),
+        "the debrief re-queues its own misses, so a player who keeps missing one can never leave the deck");
+      expect(/this\.owed = \[\];/.test(body("loadLevel")),
+        "owed questions carry from one deck to the next, so deck 3's misses are asked on deck 4");
+      expect(/if \(this\.owed\.length\) \{ this\.startDebrief\(\); return; \}/.test(body("use")),
+        "the lift no longer gives owed questions a second go before the deck ends");
+      // served at the reload, and ONLY the reload: a grenade quiz ends on one
+      // wrong answer, so feeding it your weak spots makes grenades harder the
+      // worse you are doing
+      expect(/this\.draw1\("reload", qs, true\)/.test(body("startReload")), "owed questions are not served first at a reload");
+      expect(!/this\.draw1\("reload", qs, true\)/.test(body("throwGrenade")),
+        "the grenade quiz serves owed questions, so the worse you are doing the harder grenades get");
+      // ⚠️ the run clock STOPS in the debrief — the opposite of the grenade
+      // rule, on purpose: that freeze can be summoned mid-fight, this one
+      // happens at the exit, and charging pace for owing a question would make
+      // "you owe this" into "you are punished for this"
+      const frameBody2 = game.slice(game.indexOf("private frame = (now: number)"), game.indexOf("\n  private ", game.indexOf("private frame = (now: number)") + 10));
+      const clockLine = frameBody2.split("\n").find((l) => /this\.stats\.time \+= dt/.test(l)) ?? "";
+      expect(!/"debrief"/.test(clockLine), "the run clock runs during the debrief, so missing questions costs pace marks");
+      expect(/"debrief"\) this\.updateQuiz\(dt\)/.test(frameBody2), "the debrief's questions never advance");
+    }
     // the aim is taken when the pin comes out, so a frozen world cannot be
     // used to line a throw up that you had not lined up already
     expect(/nade: this\.aimNade\(\)/.test(game),

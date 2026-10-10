@@ -50,14 +50,14 @@ type Nade = { x: number; y: number; z: number; vx: number; vy: number; vz: numbe
 /** Anything drawn for a fraction of a second: muzzle flash, tracer, sparks,
  *  a fireball, smoke. It has no effect on the game, only on how it feels. */
 type Fx = { x: number; y: number; z: number; vx: number; vy: number; vz: number; sprite: string; t: number; life: number; scale: number; grow: number; drag: number };
-type Mode = "title" | "play" | "reload" | "stomp" | "nade" | "paused" | "dead" | "complete" | "done";
+type Mode = "title" | "play" | "reload" | "stomp" | "nade" | "debrief" | "paused" | "dead" | "complete" | "done";
 type Weapon = "knife" | "pistol" | "rifle";
 /** Where on an alien a shot landed. The knife has no zones — a swing is a swing. */
 type Zone = "head" | "torso" | "legs";
 /** A grenade that has been pulled but not thrown: the aim it was pulled with,
  *  held while the three questions are answered. See throwGrenade(). */
 type PendingNade = { c: number; s: number; up: number; vx: number; vy: number };
-type Quiz = { kind: "reload" | "stomp" | "nade"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null; nade?: PendingNade };
+type Quiz = { kind: "reload" | "stomp" | "nade" | "debrief"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null; nade?: PendingNade };
 
 // The 3D view is drawn at 576x324 and scaled up. If a computer can't draw that
 // in time, it drops to 480x270 by itself (see frame()): smoother beats sharper.
@@ -195,6 +195,9 @@ const RELOAD_SLOW = 3;
  *  enough to read a sentence; skippable with SPACE for anyone who does not
  *  need it. A right answer still moves on in 0.7s. */
 const WRONG_HOLD = 3.2;
+/** Seconds per question in the "before you go" round. Longer than a reload's
+ *  ten because nothing is shooting at you and the point is to get it right. */
+const DEBRIEF_PER = 20;
 
 // ⚠️ Grenades belong to the deck that HAS them, not to the game. Matthew asked
 // for them "in the storage level that is new, not everywhere", and the way to
@@ -227,6 +230,19 @@ export class Game {
   private muted = false;
   private reloadDeck: Question[] = [];
   private easyDeck: Question[] = [];
+  /**
+   * Questions answered WRONG on this deck and not yet answered again.
+   *
+   * ⚠️ A wrong answer used to be shown once — the model answer held on screen
+   * for 3.2s — and then gone for good. That marks you and moves on, which is
+   * the least useful thing a revision tool can do with a mistake. Now it is
+   * OWED: it jumps the queue at your NEXT reload (not the same one — a little
+   * spacing is what makes a second attempt mean something), and anything still
+   * owed when you reach the lift gets one more go in a short "before you go"
+   * round. Retrieval, correction, second attempt — what /review does across
+   * days, done inside one deck.
+   */
+  private owed: Question[] = [];
 
   // player
   private p = { x: 0, y: 0, vx: 0, vy: 0, z: 0, vz: 0, angle: 0, pitch: 0, eye: 0.5, health: 100, vest: 0, ammo: 0, hasPistol: false, weapon: "knife" as Weapon, keys: new Set<string>(), radTime: 0, bob: 0, kick: 0, flash: 0, hurt: 0, fireWait: 0,
@@ -373,6 +389,9 @@ export class Game {
   // ── levels ────────────────────────────────────────────────────────────────
   private loadLevel(n: number) {
     this.levelIndex = n;
+    // a fresh deck owes nothing: the debrief at the last lift dealt with the
+    // old one's, and carrying them across would ask deck 3's questions on deck 4
+    this.owed = [];
     const def = LEVELS[n];
     this.world = buildWorld(def, this.tex);
     {
@@ -428,7 +447,7 @@ export class Game {
     if (this.touchDevice) return; // there is no lock to lose on a phone
     const locked = document.pointerLockElement === this.ov;
     // (a stomp counts too: its clock must stop while you're away)
-    if (!locked && (this.mode === "play" || this.mode === "reload" || this.mode === "stomp" || this.mode === "nade")) { this.pausedFrom = this.mode; this.mode = "paused"; this.keys.clear(); }
+    if (!locked && (this.mode === "play" || this.mode === "reload" || this.mode === "stomp" || this.mode === "nade" || this.mode === "debrief")) { this.pausedFrom = this.mode; this.mode = "paused"; this.keys.clear(); }
   };
   private lock() { if (!this.touchDevice) this.ov.requestPointerLock?.(); this.ensureAudio(); }
   private onMouseDown = (e: MouseEvent) => {
@@ -440,7 +459,7 @@ export class Game {
     if (e.button === 0 && (this.mode === "play" || this.mode === "reload")) this.fire();
   };
   private onMouseMove = (e: MouseEvent) => {
-    if (document.pointerLockElement !== this.ov || this.mode === "stomp" || this.mode === "nade") return;
+    if (document.pointerLockElement !== this.ov || this.mode === "stomp" || this.mode === "nade" || this.mode === "debrief") return;
     // clamped, because some browsers report one huge jump when the mouse is captured
     this.p.angle += Math.max(-250, Math.min(250, e.movementX)) * 0.0026;
     // looking up and down shifts the horizon (the way Doom-era engines did it),
@@ -454,7 +473,7 @@ export class Game {
     // read digits by KEY POSITION, so they still work while Shift (run) is held,
     // when the browser reports "!" instead of "1", and from the number pad
     const digit = /^(?:Digit|Numpad)([1-4])$/.exec(e.code)?.[1] ?? (["1", "2", "3", "4"].includes(k) ? k : null);
-    if (this.quiz && this.quiz.picked === null && digit && (this.mode === "reload" || this.mode === "stomp" || this.mode === "nade")) { this.answer(Number(digit) - 1); return; }
+    if (this.quiz && this.quiz.picked === null && digit && (this.mode === "reload" || this.mode === "stomp" || this.mode === "nade" || this.mode === "debrief")) { this.answer(Number(digit) - 1); return; }
     // reading the model answer is optional: SPACE or Enter moves straight on.
     // ⚠️ Checked BEFORE the jump/stomp handler below, or SPACE would make you
     // jump while the panel is up rather than dismissing it.
@@ -665,7 +684,7 @@ export class Game {
     // mode where the deck is live, or slowing the world would quietly buy you
     // pace marks and reloading would become a way to beat par.
     if (this.mode === "play" || this.mode === "reload" || this.mode === "nade") this.stats.time += dt;
-    if (this.mode === "stomp" || this.mode === "reload" || this.mode === "nade") this.updateQuiz(dt);
+    if (this.mode === "stomp" || this.mode === "reload" || this.mode === "nade" || this.mode === "debrief") this.updateQuiz(dt);
     this.draw();
     // too slow for this computer? after a couple of seconds of play, go lighter
     if (this.mode === "play" && this.R.W === SHARP[0]) {
@@ -1345,16 +1364,58 @@ export class Game {
     const d = w.door[this.cell(lx, ly)];
     if (!d) return;
     if (d.exit) {
-      this.mode = "complete"; this.screenLock = 0.9; document.exitPointerLock(); this.beep(300, 900, 0.6, "triangle", 0.07);
-      // asked BEFORE the run is filed, so the screen shows what this run had
-      // to beat rather than a best that already includes it
-      this.bestBefore = this.opts.best?.(LEVELS[this.levelIndex].TITLE);
-      // reported here rather than on the Enter that moves on, so a player who
-      // closes the tab on the results screen still keeps the run
-      this.opts.onLevelDone?.(this.runResult());
+      if (this.owed.length) { this.startDebrief(); return; }
+      this.completeLevel();
       return;
     }
     if (d.secret && d.target === 0) { d.target = 1; this.say("A hidden room! Careful — something is usually guarding one."); this.beep(400, 1200, 0.5, "triangle", 0.06); }
+  }
+
+  // ── the deck is done ──────────────────────────────────────────────────────
+  private completeLevel() {
+    this.mode = "complete"; this.screenLock = 0.9; document.exitPointerLock(); this.beep(300, 900, 0.6, "triangle", 0.07);
+    // asked BEFORE the run is filed, so the screen shows what this run had
+    // to beat rather than a best that already includes it
+    this.bestBefore = this.opts.best?.(LEVELS[this.levelIndex].TITLE);
+    // reported here rather than on the Enter that moves on, so a player who
+    // closes the tab on the results screen still keeps the run
+    this.opts.onLevelDone?.(this.runResult());
+  }
+
+  /** Note a missed question as owed, once. Not from the debrief itself. */
+  private owe(q: Quiz, missed: Question | undefined) {
+    if (!missed || q.kind === "debrief") return;
+    if (!this.owed.some((o) => o.question === missed.question)) this.owed.push(missed);
+  }
+
+  /** Max questions in a "before you go" round. */
+  private static readonly DEBRIEF_MAX = 5;
+
+  /**
+   * "Before you go": the questions still owed when you reach the lift, one
+   * more go each.
+   *
+   * ⚠️ THE RUN CLOCK STOPS HERE, and that is the opposite of the grenade rule
+   * on purpose. The grenade freeze keeps the clock running because a freeze
+   * you can SUMMON mid-fight must cost something, or it is a panic button.
+   * This one cannot be summoned — it happens at the exit, after the deck is
+   * done — and charging pace marks for having missed questions would turn
+   * "you owe this one" into "you are punished for this one". Owing a question
+   * costs nothing. Answering it again is the whole point.
+   *
+   * Capped at five, oldest first: somebody who missed twelve on one deck does
+   * not need a twelve-question exam standing between them and the next one,
+   * and the oldest have had the most time to fade, which is when a second
+   * attempt does the most good.
+   */
+  private startDebrief() {
+    const qs = this.owed.slice(0, Game.DEBRIEF_MAX);
+    this.owed = [];
+    this.quiz = { kind: "debrief", qs, index: 0, time: DEBRIEF_PER, per: DEBRIEF_PER, picked: null, feedback: 0, results: [], target: null };
+    this.mode = "debrief";
+    this.say(qs.length === 1
+      ? "One you missed earlier — have another go before you leave."
+      : `${qs.length} you missed earlier — have another go at each before you leave. Nothing to lose.`);
   }
 
   // ── the quizzes ───────────────────────────────────────────────────────────
@@ -1362,7 +1423,11 @@ export class Game {
    *  ⚠️ `avoid` is the set already drawn for THIS quiz: a three-question draw
    *  that straddles a reshuffle could otherwise ask the same question twice in
    *  one stomp, which on the small easy pools is about one stomp in a hundred. */
-  private draw1(deck: "reload" | "easy", avoid: Question[] = []): Question | null {
+  private draw1(deck: "reload" | "easy", avoid: Question[] = [], serveOwed = false): Question | null {
+    if (serveOwed) {
+      const i = this.owed.findIndex((o) => !avoid.some((a) => a.question === o.question));
+      if (i >= 0) return this.owed.splice(i, 1)[0];
+    }
     const pool = deck === "reload" ? this.opts.reload : this.opts.easy.length >= 3 ? this.opts.easy : this.opts.reload;
     if (!pool.length) return null;
     const d = deck === "reload" ? this.reloadDeck : this.easyDeck;
@@ -1394,7 +1459,10 @@ export class Game {
     if (!r) { if (p.hasPistol || p.hasRifle) this.pickupMsg("Already full"); return; }
     // R with the knife out means "get the gun you are charging ready"
     if (p.weapon === "knife") p.weapon = r.which;
-    const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload", qs); if (q) qs.push(q); }
+    // ⚠️ owed questions first — but ONLY here. A grenade quiz ends on one wrong
+    // answer, so serving it your known weak spots would quietly make grenades
+    // harder the worse you are doing, which is the opposite of help.
+    const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload", qs, true); if (q) qs.push(q); }
     if (!qs.length) { if (r.which === "rifle") p.rifleAmmo = RIFLE_MAG; else p.ammo = PISTOL_MAG; return; }
     this.quiz = { kind: "reload", qs, index: 0, time: 10, per: 10, picked: null, feedback: 0, results: [], target: null };
     this.mode = "reload";
@@ -1438,6 +1506,7 @@ export class Game {
     // anyone who already knows is not made to wait mid-firefight.
     q.feedback = right ? 0.7 : WRONG_HOLD;
     q.results.push(right);
+    if (!right) this.owe(q, cur);
     if (right) { this.stats.right++; this.beep(660, 990, 0.15, "triangle", 0.06); } else { this.stats.wrong++; this.beep(220, 110, 0.3, "sawtooth", 0.06); }
     // a wrong answer charges nothing: get it right or use the knife
     if (q.kind === "reload" && right) {
@@ -1459,7 +1528,7 @@ export class Game {
     const q = this.quiz; if (!q) return;
     if (q.picked === null) {
       q.time -= dt;
-      if (q.time <= 0) { q.picked = -1; q.feedback = WRONG_HOLD; q.results.push(false); this.stats.wrong++; this.opts.onAnswer?.(q.qs[q.index], false); this.beep(220, 110, 0.3, "sawtooth", 0.06); }
+      if (q.time <= 0) { q.picked = -1; q.feedback = WRONG_HOLD; q.results.push(false); this.owe(q, q.qs[q.index]); this.stats.wrong++; this.opts.onAnswer?.(q.qs[q.index], false); this.beep(220, 110, 0.3, "sawtooth", 0.06); }
       return;
     }
     q.feedback -= dt; if (q.feedback > 0) return;
@@ -1483,6 +1552,10 @@ export class Game {
       // lost is punishment, not revision.
       if (!lastRight) { this.failNadeQuiz(); return; }
       if (q.index === q.qs.length - 1) { this.releaseNade(q.nade!); return; }
+    } else if (q.kind === "debrief") {
+      // one go each, right or wrong — a debrief that re-queued its own misses
+      // could never end, and the model answer has already been shown
+      if (q.index === q.qs.length - 1) { this.quiz = null; this.completeLevel(); return; }
     } else if (this.full(this.p.weapon) || q.index === q.qs.length - 1) { this.quiz = null; this.mode = "play"; return; }
     q.index++; q.picked = null; q.time = q.per;
   }
