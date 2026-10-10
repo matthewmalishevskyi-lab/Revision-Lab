@@ -42,7 +42,7 @@
 // here, not a shortcut.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { Celebration } from "./Celebration";
 import { useStoredRaw } from "../lib/browserStore";
 
@@ -54,6 +54,8 @@ type PendingCelebration = {
   storageValue: string;
   message: string;
 };
+
+const noSubscribe = () => () => {};
 
 function markCelebrated(pending: PendingCelebration) {
   try {
@@ -69,11 +71,14 @@ export function DashboardCelebrations({
   streakCurrent,
   streakActiveToday,
   level,
+  mastered = 0,
 }: {
   goalReached: boolean;
   streakCurrent: number;
   streakActiveToday: boolean;
   level: number;
+  /** Topics mastered right now (lib/mastery.ts). */
+  mastered?: number;
 }) {
   const streakKey = `celebrated-streak-${streakCurrent}`;
   // Keyed by today's date so the goal celebration fires once a day, every
@@ -85,6 +90,19 @@ export function DashboardCelebrations({
   const seenLevel = useStoredRaw("celebrated-level", null);
   const seenStreak = useStoredRaw(streakKey, null);
   const seenGoal = useStoredRaw(goalKey, null);
+  // the most topics ever celebrated as mastered at once on this browser.
+  // Mastery can be lost and won back; winning back one you already had is
+  // not worth a confetti screen, a new high is
+  const seenMastered = useStoredRaw("celebrated-mastered", null);
+  // ⚠️ NOTHING IS DECIDED ON THE SERVER. The server cannot read localStorage,
+  // so every "seen" above is null there — which made the server decide a
+  // celebration WAS due and render the confetti, whose positions are
+  // Math.random(). The browser then rendered different random confetti and
+  // React reported a hydration mismatch. Found when topic mastery added a
+  // celebration a brand-new browser always sees; the goal and level ones had
+  // the same bug for anyone with a fresh browser. false on the server and in
+  // the hydrating render, true straight after.
+  const hydrated = useSyncExternalStore(noSubscribe, () => true, () => false);
 
   // Checked in a fixed priority order, stopping at the first one that's
   // genuinely new — levelling up and hitting a streak milestone on the same
@@ -93,12 +111,21 @@ export function DashboardCelebrations({
   // during render: everything it reads (seenLevel/seenStreak/seenGoal) has
   // already been made hydration-safe by useStoredRaw above.
   const pending = useMemo<PendingCelebration | null>(() => {
+    if (!hydrated) return null;
     const lastSeenLevel = Number(seenLevel ?? "1");
     if (level > lastSeenLevel) {
       return {
         storageKey: "celebrated-level",
         storageValue: String(level),
         message: `Level ${level}! 🎉`,
+      };
+    }
+
+    if (mastered > Number(seenMastered ?? "0")) {
+      return {
+        storageKey: "celebrated-mastered",
+        storageValue: String(mastered),
+        message: mastered === 1 ? "First topic mastered! ⭐" : `${mastered} topics mastered! ⭐`,
       };
     }
 
@@ -116,7 +143,7 @@ export function DashboardCelebrations({
     }
 
     return null;
-  }, [level, seenLevel, streakActiveToday, streakCurrent, seenStreak, goalReached, seenGoal, streakKey, goalKey]);
+  }, [hydrated, level, seenLevel, mastered, seenMastered, streakActiveToday, streakCurrent, seenStreak, goalReached, seenGoal, streakKey, goalKey]);
 
   const [dismissed, setDismissed] = useState<PendingCelebration | null>(null);
 

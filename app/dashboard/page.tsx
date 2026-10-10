@@ -10,7 +10,7 @@ import { PixelCompanion } from "../components/PixelCompanion";
 import { OUTFITS, type OutfitUnlockInfo } from "../components/PixelOutfits";
 import { getViewer } from "../lib/viewer";
 import { getUserClan } from "../lib/clans";
-import { getProgress } from "../lib/progress";
+import { getMastery, getProgress } from "../lib/progress";
 import { getRevisionQueue, QUEUE_KIND_LABELS } from "../lib/revision-queue";
 import { getDailySet } from "../lib/daily-practice-server";
 import { ACCOUNTS_ENABLED } from "../lib/site";
@@ -36,7 +36,9 @@ export default async function DashboardPage() {
   // out visitor never receives the page at all.
   if (!user) redirect("/login");
 
-  const progress = await getProgress(user.id);
+  // mastery first, so the badges can count it (see getMastery in progress.ts)
+  const mastery = await getMastery(user.id).catch(() => null);
+  const progress = await getProgress(user.id, { masteredTopics: mastery?.total ?? 0 });
 
   // THE GLOBAL "revise today" queue — overdue flashcards, weak-accuracy
   // topics and never-touched topics, combined and ranked across EVERY
@@ -92,6 +94,7 @@ export default async function DashboardPage() {
       <DashboardCelebrations
         goalReached={progress.today.count >= progress.today.goal}
         streakCurrent={progress.streak.current}
+        mastered={mastery?.total ?? 0}
         streakActiveToday={progress.streak.activeToday}
         level={progress.xp.level}
       />

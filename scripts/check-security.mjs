@@ -886,6 +886,48 @@ try {
     expect(/min-h-11/.test(ef), "the Explain further button is a tap target and needs min-h-11");
   }
 
+  // ── Topic mastery: "where you are" (2026-10-10) ────────────────────────
+  // Each rule is one way the feature could quietly start costing something it
+  // must not: the page, the database, or the browser bundle.
+  {
+    const strip = (src) => src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    // the rule runs in a check script with no database and no registry
+    expect(!/^import /m.test(readFileSync("app/lib/mastery.ts", "utf8")),
+      "lib/mastery.ts imports something — the rule must stay pure so check-mastery.mjs can run it");
+    // progress.ts holds the service-role database path; it must never be
+    // pulled into a browser bundle by a Client Component
+    const clientProgress = listFiles("app").filter((f) => /\.tsx?$/.test(f)).filter((f) => {
+      const src = readFileSync(f, "utf8");
+      return /^["']use client["']/m.test(src) && /^import (?!type )[^\n]*lib\/progress["']/m.test(src);
+    });
+    expect(clientProgress.length === 0, `a client file imports lib/progress: ${clientProgress.join(", ")}`);
+    // ⚠️ the clan leaderboard calls getProgress for EVERY MEMBER; mastery
+    // there would be two more reads per member on a page that never shows it
+    expect(!/getMastery/.test(strip(readFileSync("app/clans/[id]/page.tsx", "utf8"))),
+      "the clan page works out mastery — that is two extra database reads per member for nothing it shows");
+    // the panel about the revision must never cost the student the revision
+    const topicPage = strip(readFileSync("app/subjects/[subject]/[topic]/page.tsx", "utf8"));
+    expect(/getMastery\(viewer\.id\)\.catch\(/.test(topicPage),
+      "the topic page reads mastery without a fallback, so a database hiccup takes the whole revision page down");
+    expect(/\{mastery && <WhereYouAre /.test(topicPage), "the topic page no longer shows where the student is");
+    for (const f of ["app/subjects/[subject]/page.tsx", "app/progress/page.tsx", "app/dashboard/page.tsx", "app/subjects/[subject]/stats/page.tsx"]) {
+      expect(/getMastery\(user\.id\)\.catch\(/.test(strip(readFileSync(f, "utf8"))), `${f} reads mastery without a fallback`);
+    }
+    // the badges count mastery only where it is passed in — so the pages that
+    // SHOW badges must pass it, or the badge reads locked to a student who has it
+    for (const f of ["app/progress/page.tsx", "app/dashboard/page.tsx"]) {
+      expect(/getProgress\(user\.id, \{ masteredTopics:/.test(strip(readFileSync(f, "utf8"))), `${f} shows badges without telling them what is mastered`);
+    }
+    const wya = strip(readFileSync("app/components/WhereYouAre.tsx", "utf8"));
+    expect(!/^["']use client["']/m.test(wya), "WhereYouAre became a Client Component — it is worked out on the server and ships no JavaScript");
+    expect((wya.match(/min-h-11/g) ?? []).length >= 1 && /\$\{tile\}/.test(wya), "the panel's figures are tap targets and need min-h-11");
+    // its links go where they say: the practice, the definitions, the revisit list
+    expect(/href="#practice"/.test(wya) && /href="#definitions"/.test(wya) && /href="\/today#revisit"/.test(wya),
+      "a figure in Where you are no longer links to the place that changes it");
+    expect(/id="revisit"/.test(readFileSync("app/today/page.tsx", "utf8")), "the revisit section on /today lost the id the topic page links to");
+    expect(/id="practice"/.test(topicPage) && /id="definitions"/.test(topicPage), "the topic page lost a section the panel links to");
+  }
+
   // ⚠️ A flex child will not shrink below its own content unless told it may,
   // and the topic hero sits inside overflow-hidden — so a long title was not
   // merely cramped on a 320px screen, it was CUT OFF AND GONE. Same rule, same

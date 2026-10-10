@@ -8,11 +8,12 @@ import { SiteHeader } from "../../../components/SiteHeader";
 import { ACCOUNTS_ENABLED } from "../../../lib/site";
 import { getSubject } from "../../../lib/subjects";
 import { getViewer } from "../../../lib/viewer";
-import {
+import { getMastery,
   formatDuration,
   getProgress,
   getSubjectTopicBreakdown,
 } from "../../../lib/progress";
+import { MASTERY_PILL } from "../../../components/WhereYouAre";
 
 // The site-wide /progress page has to fit nine subjects on one screen, so it
 // only ever shows one aggregate number per subject. This page is the detail
@@ -51,8 +52,9 @@ export default async function SubjectStatsPage({ params }: Props) {
   // rule every other progress-bearing page on the site follows.
   if (!user) redirect("/login");
 
+  const mastery = await getMastery(user.id).catch(() => null);
   const [progress, breakdown] = await Promise.all([
-    getProgress(user.id),
+    getProgress(user.id, { masteredTopics: mastery?.total ?? 0 }),
     getSubjectTopicBreakdown(user.id, slug),
   ]);
 
@@ -203,6 +205,11 @@ export default async function SubjectStatsPage({ params }: Props) {
                 </span>
               ) : (
                 <>
+                  {mastery?.topics.get(`${subject.slug}/${topic.slug}`)?.state === "mastered" && (
+                    <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${MASTERY_PILL.mastered}`}>
+                      ✓ Mastered
+                    </span>
+                  )}
                   {topic.questionsAnswered > 0 && (
                     <span className="hidden w-28 shrink-0 sm:block">
                       <span className="block h-2 overflow-hidden rounded-full bg-black/10 dark:bg-white/10">

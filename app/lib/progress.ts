@@ -10,6 +10,9 @@ import { cache } from "react";
 import { randomUUID } from "node:crypto";
 import { SUBJECTS, type Subject, type Topic } from "./subjects";
 import { TOPIC_CONTENT } from "./content";
+import { getKnownCards } from "./flashcard-review";
+import { getDueCountsByTopic } from "./question-review";
+import { MASTERY_ACCURACY, MIN_ANSWERED, topicMastery, type Mastery } from "./mastery";
 
 const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/+$/, "");
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -349,7 +352,7 @@ function dayKey(date: Date): string {
   return date.toLocaleDateString("en-CA", { timeZone: TIMEZONE });
 }
 
-export async function getProgress(userId: string): Promise<Progress> {
+export async function getProgress(userId: string, opts: { masteredTopics?: number } = {}): Promise<Progress> {
   const rows = await readActivity(userId);
 
   // The seven day keys the chart covers, ending today.
@@ -485,6 +488,9 @@ export async function getProgress(userId: string): Promise<Progress> {
     today: { count: todayCount, goal: DAILY_GOAL },
     xp: computeXp(totalQuestions, totalFlashcards),
     badges: computeBadges({
+      // passed in by the pages that show mastery — see getMastery for why it
+      // is not worked out here
+      masteredTopics: opts.masteredTopics ?? 0,
       subjects,
       totalQuestions,
       totalFlashcards,
@@ -772,6 +778,9 @@ export function computeBadges(input: {
   streakCurrent: number;
   testedSubjects: Set<string>;
   totalSecondsAllTime: number;
+  /** Topics mastered right now (getMastery). Optional: a caller that does
+   *  not show badges need not pay the reads to work it out. */
+  masteredTopics?: number;
 }): Badge[] {
   const {
     subjects,
@@ -781,6 +790,7 @@ export function computeBadges(input: {
     streakCurrent,
     testedSubjects,
     totalSecondsAllTime,
+    masteredTopics = 0,
   } = input;
 
   return [
@@ -871,6 +881,20 @@ export function computeBadges(input: {
       earned:
         countSubjectsSatisfying(subjects, (s) => s.percent === 100 && testedSubjects.has(s.slug)) >=
         GRAND_MASTER_SUBJECTS,
+    },
+    {
+      id: "first-mastered",
+      name: "Mastered",
+      description: `Master a topic: ${MIN_ANSWERED} answers, ${Math.round(MASTERY_ACCURACY * 100)}% of your recent ones right, its definitions known`,
+      icon: "⭐",
+      earned: masteredTopics >= 1,
+    },
+    {
+      id: "five-mastered",
+      name: "Five-star",
+      description: "Have five topics mastered at once",
+      icon: "🌟",
+      earned: masteredTopics >= 5,
     },
     {
       id: "marathon-reviser",
@@ -1130,3 +1154,62 @@ export async function getSubjectTopicBreakdown(
     };
   });
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TOPIC MASTERY — "where am I, and what does done look like" (lib/mastery.ts)
+//
+// One fold over three stores the site already keeps: the practice answers in
+// `activity`, the "Got it" judgements in `flashcard_reviews`, and the misses
+// waiting in `question_reviews`. Nothing new is stored. Memoised per request,
+// because a subject page asks it for every topic at once.
+//
+// ⚠️ A SEPARATE CALL FROM getProgress ON PURPOSE. The clan leaderboard calls
+// getProgress once for EVERY MEMBER to read their XP; folding mastery in there
+// would have added two more database reads per member to a page that never
+// shows it. Pages that show mastery ask for it.
+// ─────────────────────────────────────────────────────────────────────────────
+export type MasteryReport = {
+  /** Keyed "subject/topic", for every topic with content. */
+  topics: Map<string, Mastery>;
+  /** Mastered topics per subject slug. */
+  bySubject: Map<string, number>;
+  total: number;
+};
+
+export const getMastery = cache(async function getMastery(userId: string): Promise<MasteryReport> {
+  // the two optional stores fail soft, like everything else here: a missing
+  // table means nothing is known yet, not a broken page
+  const [rows, known, due] = await Promise.all([
+    readActivity(userId),
+    getKnownCards(userId).catch(() => new Map<string, Set<string>>()),
+    getDueCountsByTopic(userId).catch(() => new Map<string, number>()),
+  ]);
+  const answers = new Map<string, boolean[]>();
+  // readActivity is NEWEST first; mastery wants the order they happened in
+  for (let i = rows.length - 1; i >= 0; i--) {
+    const r = rows[i];
+    if (r.kind !== "practice") continue;
+    const key = `${r.subject}/${r.topic}`;
+    const list = answers.get(key) ?? [];
+    list.push(r.correct === true);
+    answers.set(key, list);
+  }
+  const topics = new Map<string, Mastery>();
+  const bySubject = new Map<string, number>();
+  let total = 0;
+  for (const subject of SUBJECTS) {
+    for (const topic of subject.years.flatMap((y) => y.topics)) {
+      const key = `${subject.slug}/${topic.slug}`;
+      const content = TOPIC_CONTENT[key];
+      if (!content) continue;
+      // only cards that still exist count, so a reworded card cannot be
+      // "known" forever under its old wording
+      const terms = new Set(content.flashcards.map((c) => c.term));
+      const cardsKnown = [...(known.get(key) ?? [])].filter((t) => terms.has(t)).length;
+      const m = topicMastery({ answers: answers.get(key) ?? [], cardsTotal: terms.size, cardsKnown, toRevisit: due.get(key) ?? 0 });
+      topics.set(key, m);
+      if (m.state === "mastered") { bySubject.set(subject.slug, (bySubject.get(subject.slug) ?? 0) + 1); total++; }
+    }
+  }
+  return { topics, bySubject, total };
+});

@@ -44,9 +44,10 @@ export function Celebration({
 }) {
   // Computed once, in state rather than plain variables, so re-renders (the
   // dismiss timer firing, for instance) don't reshuffle the confetti mid-fall.
-  // Safe to use Math.random() here at all: this is a Client Component that
-  // only ever exists in the browser, so there's no server-rendered HTML for
-  // a random value to mismatch against.
+  // Math.random() is only safe here because nothing renders this on the
+  // server: DashboardCelebrations waits until it has hydrated before deciding
+  // to show one. (It used to be rendered on the server too, and the random
+  // confetti was a hydration mismatch — see DashboardCelebrations.)
   const [pieces] = useState(() =>
     Array.from({ length: 24 }, (_, i) => ({
       left: Math.random() * 100,

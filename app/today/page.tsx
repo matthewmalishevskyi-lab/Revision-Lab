@@ -98,7 +98,7 @@ export default async function TodayPage() {
           easy-to-hard order (a wrong answer can be any difficulty). Kept
           separate, and short — see MAX_REVISIT in lib/revisit.ts. */}
       {revisit.questions.length > 0 && (
-        <section className="mt-8" aria-labelledby="revisit-heading">
+        <section id="revisit" className="mt-8 scroll-mt-20" aria-labelledby="revisit-heading">
           <h2 id="revisit-heading" className="text-2xl font-bold tracking-tight">
             Revisit your mistakes
           </h2>

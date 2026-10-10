@@ -10,6 +10,9 @@ import { ACCOUNTS_ENABLED, SITE_NAME } from "../../lib/site";
 import { getSubject, SUBJECTS, yearStyle } from "../../lib/subjects";
 import { indefiniteArticle } from "../../lib/text";
 import { getViewer } from "../../lib/viewer";
+import { getMastery } from "../../lib/progress";
+import { MASTERY_LABEL } from "../../lib/mastery";
+import { MASTERY_PILL } from "../../components/WhereYouAre";
 
 // The folder is called [subject] — square brackets mean "this bit of the URL is
 // a variable". So this ONE file serves /subjects/computer-science,
@@ -77,6 +80,11 @@ export default async function SubjectPage({ params }: Props) {
   // the two calls into one. Only used to decide whether to show a link to a
   // page that requires an account; nothing here is gated behind it.
   const user = ACCOUNTS_ENABLED ? await getViewer() : null;
+  // where the student stands on each topic — a pill on its row, and a count
+  // in the title panel. Fails soft: no pills, never no page.
+  const mastery = user ? await getMastery(user.id).catch(() => null) : null;
+  const topicCount = subject.years.reduce((n, y) => n + y.topics.length, 0);
+  const masteredHere = mastery?.bySubject.get(subject.slug) ?? 0;
 
   return (
     <main className="mx-auto w-full max-w-7xl px-6 py-8">
@@ -88,6 +96,11 @@ export default async function SubjectPage({ params }: Props) {
           {subject.name}
         </h1>
         <p className="mt-3 text-xl opacity-60">{subject.blurb}</p>
+        {mastery && (
+          <p className="mt-3 text-sm font-semibold text-emerald-800 dark:text-emerald-300">
+            {masteredHere} of {topicCount} topics mastered
+          </p>
+        )}
 
         {/* A timed, mixed-topic set rather than one topic at a time — see
             app/subjects/[subject]/exam/page.tsx. Sits on every subject page
@@ -220,8 +233,20 @@ export default async function SubjectPage({ params }: Props) {
                       >
                         <Icon name={topic.icon} className="h-6 w-6" />
                       </span>
-                      <span className="flex-1 text-lg font-medium">
-                        {topic.title}
+                      {/* ⚠️ The pill goes UNDER the title, not beside it. Beside
+                          it, in these narrow year columns, it squeezed
+                          "Fractions, decimals & %" onto three lines. */}
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-lg font-medium">{topic.title}</span>
+                        {(() => {
+                          const m = mastery?.topics.get(`${subject.slug}/${topic.slug}`);
+                          if (!m || m.state === "new") return null;
+                          return (
+                            <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${MASTERY_PILL[m.state]}`}>
+                              {m.state === "mastered" ? "✓ " : ""}{MASTERY_LABEL[m.state]}
+                            </span>
+                          );
+                        })()}
                       </span>
                       <span
                         aria-hidden="true"

@@ -16,6 +16,7 @@
 // wonder which one was wrong.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { cache } from "react";
 import { getTopicContent } from "./content";
 
 const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/+$/, "");
@@ -215,3 +216,18 @@ export async function deleteAllQuestionReviews(userId: string): Promise<boolean>
   console.error(`[question-review] could not delete reviews: HTTP ${res.status}`, body);
   return false;
 }
+
+/**
+ * How many questions are due again, per topic ("subject/topic"). For topic
+ * mastery: a question you got wrong and have not got right again is the
+ * clearest evidence there is that a topic is not finished. Memoised per
+ * request, because the dashboard and /today also read the due list.
+ */
+export const getDueCountsByTopic = cache(async function getDueCountsByTopic(userId: string): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
+  for (const q of await getDueQuestions(userId)) {
+    const key = `${q.subjectSlug}/${q.topicSlug}`;
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return counts;
+});

@@ -21,6 +21,7 @@
 // only be forgotten as far as box 1; there's no box 0, no "retired."
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { cache } from "react";
 import { randomUUID } from "node:crypto";
 import { getTopicContent } from "./content";
 
@@ -144,7 +145,10 @@ const MAX_EVENTS_READ = 5000; // same cap and reasoning as progress.ts
 // fetch newest-first, then reverse in JS to restore the oldest-first order
 // foldCardState actually needs.
 // ─────────────────────────────────────────────────────────────────────────────
-async function readReviews(userId: string): Promise<ReviewRow[]> {
+// cache(): the dashboard now asks this twice in one request — once for the
+// cards due, once for which definitions are known (topic mastery) — and the
+// same request-scoped memo progress.ts uses keeps that to one round trip.
+const readReviews = cache(async function readReviews(userId: string): Promise<ReviewRow[]> {
   if (!FLASHCARD_REVIEW_ENABLED) return [];
 
   const res = await supabase(
@@ -163,6 +167,27 @@ async function readReviews(userId: string): Promise<ReviewRow[]> {
 
   const rows = (await res.json()) as ReviewRow[];
   return rows.reverse();
+});
+
+/**
+ * The definitions this student knows right now, per topic ("subject/topic"):
+ * the cards whose MOST RECENT judgement was "Got it". A card known last month
+ * and fluffed today is not known — the same asymmetry the boxes have. Used by
+ * topic mastery (lib/mastery.ts).
+ */
+export async function getKnownCards(userId: string): Promise<Map<string, Set<string>>> {
+  const rows = await readReviews(userId);
+  const latest = new Map<string, ReviewRow>();
+  for (const row of rows) latest.set(`${row.subject}/${row.topic}/${row.card_key}`, row); // oldest first, so the last write wins
+  const known = new Map<string, Set<string>>();
+  for (const row of latest.values()) {
+    if (!row.knew_it) continue;
+    const key = `${row.subject}/${row.topic}`;
+    const set = known.get(key) ?? new Set<string>();
+    set.add(row.card_key);
+    known.set(key, set);
+  }
+  return known;
 }
 
 // Folds one card's judgement HISTORY, oldest first, into its CURRENT box and

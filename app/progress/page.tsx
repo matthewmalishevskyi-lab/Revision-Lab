@@ -11,7 +11,7 @@ import { DevAccessForm } from "./DevAccessForm";
 import { hasDevAccess } from "../lib/dev-access";
 import { WeeklyChart } from "../components/WeeklyChart";
 import { getViewer } from "../lib/viewer";
-import { formatDuration, getProgress, PROGRESS_ENABLED } from "../lib/progress";
+import { getMastery, formatDuration, getProgress, PROGRESS_ENABLED } from "../lib/progress";
 import { ACCOUNTS_ENABLED } from "../lib/site";
 
 // Built from Jennifer's mockup: a heading, a "next up" suggestion, three
@@ -38,7 +38,9 @@ export default async function ProgressPage() {
   // the browser is not security; anyone can undo that with dev tools.
   if (!user) redirect("/login");
 
-  const progress = await getProgress(user.id);
+  // mastery first, so the badges can count it (see getMastery in progress.ts)
+  const mastery = await getMastery(user.id).catch(() => null);
+  const progress = await getProgress(user.id, { masteredTopics: mastery?.total ?? 0 });
   const devAccess = await hasDevAccess(user.id);
 
 
@@ -169,6 +171,14 @@ export default async function ProgressPage() {
                       {subject.flashcardsReviewed}
                     </dd>
                   </div>
+                  {mastery && (
+                    <div>
+                      <dt className="opacity-50">Topics mastered</dt>
+                      <dd className="font-semibold tabular-nums">
+                        {mastery.bySubject.get(subject.slug) ?? 0}
+                      </dd>
+                    </div>
+                  )}
                 </dl>
               </div>
 

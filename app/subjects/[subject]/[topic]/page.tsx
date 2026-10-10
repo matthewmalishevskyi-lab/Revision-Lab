@@ -13,6 +13,8 @@ import { explainFurther, hasExplanation } from "../../../lib/explainFurther";
 import { FocusTimer } from "../../../components/FocusTimer";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { StudyTimer } from "../../../components/StudyTimer";
+import { WhereYouAre } from "../../../components/WhereYouAre";
+import { getMastery } from "../../../lib/progress";
 import { TopicNav, type NavSection } from "../../../components/TopicNav";
 import {
   StructuredData,
@@ -120,6 +122,13 @@ export default async function TopicPage({ params }: Props) {
   // Who is reading this. The header asks the same question, and `getViewer`
   // makes sure that costs one lookup per request rather than two.
   const viewer = ACCOUNTS_ENABLED ? await getViewer() : null;
+
+  // Where this student stands on this topic, and what is left to master it.
+  // ⚠️ A failure here must never cost them the page — the revision below
+  // matters more than the panel about it — so it falls back to no panel.
+  const mastery = content && viewer
+    ? (await getMastery(viewer.id).catch(() => null))?.topics.get(`${subject.slug}/${topic.slug}`) ?? null
+    : null;
 
   // Does anything on this page carry the Higher tier flag? Worked out once here
   // rather than checked in three places further down.
@@ -296,6 +305,8 @@ export default async function TopicPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {mastery && <WhereYouAre mastery={mastery} colour={style.text} />}
 
         {/* A Pomodoro-style timer, for anyone who wants some structure to
             their revising — see FocusTimer.tsx for why it doesn't record
