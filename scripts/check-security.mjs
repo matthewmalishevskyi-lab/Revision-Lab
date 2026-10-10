@@ -1945,6 +1945,11 @@ try {
     // whose texture is missing does not throw either — the whole point of
     // these rows of pods is that they look like pods.
     const wallTex = new Set([...texSrc.matchAll(/^\s{2}([a-z][A-Za-z0-9]*)\(ctx/gm)].map((m) => m[1]));
+    // the decal table is its own object in textures.ts; read its keys from there
+    const decalSrc = texSrc.slice(texSrc.indexOf("const DECALS: Record<string, Draw> = {"), texSrc.indexOf("\n};", texSrc.indexOf("const DECALS: Record<string, Draw> = {")));
+    const decalNames = new Set([...decalSrc.matchAll(/^\s{2}([a-z][A-Za-z0-9]*)\(ctx/gm)].map((m) => m[1]));
+    expect(decalNames.has("arrowR") && decalNames.has("camera") && decalNames.size >= 5,
+      `only found ${decalNames.size} decals in textures.ts, so the decal checks are looking in the wrong place`);
     expect(wallTex.has("crate") && wallTex.has("pillar") && wallTex.size > 20,
       `only found ${wallTex.size} textures in textures.ts, so this check is looking in the wrong place`);
     for (const level of LEVELS) {
@@ -2313,6 +2318,47 @@ try {
         };
         cross(level.ROUTE, "main route");
         cross(level.ALT_ROUTE, "alternative route");
+
+        // ── decals: names that exist, on faces that exist, pointing the right way
+        // ⚠️ FOUND BY THE BOSS DECK CRASHING ON LOAD (2026-10-10). Its two guide
+        // arrows were written "arrowE", copied from deck 9 — and there is no
+        // "arrowE". textures.ts throws when it is asked to draw an unknown
+        // decal, so the deck never started: a white canvas and a console error.
+        // Deck 9 had never crashed only because all five of ITS arrows sat on
+        // door squares, which have no wall face, so buildWorld skipped them
+        // silently. Decks 7, 8 and 9 had shipped with NOT ONE guide arrow
+        // between them, and twenty-two more decals on decks 1 to 6 were landing
+        // nowhere. Nothing could see either, because a decal that is dropped
+        // throws nothing and draws nothing.
+        {
+          const bare = buildWorld({ ...level, DECALS: [] }, tex);
+          const onFace = new Set();
+          const N4 = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+          for (const [x, y, f, decal, flip] of level.DECALS ?? []) {
+            const at = `${level.TITLE}: the "${decal}" decal at ${x},${y}`;
+            expect(decalNames.has(decal), `${at} is not a decal textures.ts can draw — the deck will crash on load the moment one lands on a real wall`);
+            expect(!!bare.faces[y * bare.W + x]?.[f], `${at} is on a face that does not exist (a door, open floor or the back of a wall), so it is silently never drawn`);
+            const k = `${x},${y},${f}`;
+            expect(!onFace.has(k), `${at} is the second decal on the same wall face — the second one has no base texture to draw on`);
+            onFace.add(k);
+            // a guide arrow must not point BACK along the route it is guiding
+            // — September's bug check found four that did, by eye. Sideways
+            // is allowed: an arrow beside a door points along the wall at it.
+            if (decal === "arrowR" && (level.ROUTE ?? []).length > 1) {
+              const n = N4[f], ox = x + n[0] + 0.5, oy = y + n[1] + 0.5;
+              let ax = n[1], ay = -n[0]; if (flip) { ax = -ax; ay = -ay; }
+              let leg = null, bd = 1e9;
+              for (let i = 1; i < level.ROUTE.length; i++) {
+                const [x0, y0] = level.ROUTE[i - 1], [x1, y1] = level.ROUTE[i], vx = x1 - x0, vy = y1 - y0, L = vx * vx + vy * vy || 1;
+                const t = Math.max(0, Math.min(1, ((ox - x0) * vx + (oy - y0) * vy) / L));
+                const d = Math.hypot(x0 + vx * t - ox, y0 + vy * t - oy);
+                if (d < bd) { bd = d; leg = [vx, vy]; }
+              }
+              const dot = (leg[0] * ax + leg[1] * ay) / (Math.hypot(leg[0], leg[1]) || 1);
+              expect(dot > -0.3, `${at} points BACK along the route it is meant to be guiding`);
+            }
+          }
+        }
 
         // nothing may be standing on top of something else
         const spots = new Map();

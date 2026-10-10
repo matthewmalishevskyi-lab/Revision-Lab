@@ -70,7 +70,7 @@ export const LEVEL1: LevelDef = (() => {
     [32, 10, FACE.E, "camera"], [43, 12, FACE.W, "sign"], [43, 17, FACE.W, "screen"], [37, 20, FACE.E, "arrowR", true],
     [33, 23, FACE.E, "camera"], [44, 23, FACE.W, "arrowR"], [44, 26, FACE.W, "arrowR", true],
     [30, 16, FACE.S, "sign"], [31, 19, FACE.N, "cables"],
-    [19, 20, FACE.S, "screen"], [21, 20, FACE.S, "cables"], // a hint that something is behind this wall
+    // a hint that something is behind this wall
     [17, 24, FACE.E, "sign"], [25, 24, FACE.W, "camera"],
   ];
   // Low cover: waist-high, you can shoot over it and crouch behind it.
@@ -194,7 +194,7 @@ export const LEVEL2: LevelDef = (() => {
     [14, 2, FACE.S, "screen"], [10, 8, FACE.N, "camera"], [20, 7, FACE.E, "rad"], [20, 8, FACE.E, "arrowR", true],
     [20, 12, FACE.E, "arrowR", true], [38, 3, FACE.W, "rad"], [38, 12, FACE.W, "arrowR"], [38, 18, FACE.W, "keycard"],
     [38, 8, FACE.E, "rad"], [45, 4, FACE.W, "camera"], [35, 21, FACE.E, "arrowR", true], [42, 27, FACE.W, "sign"],
-    [36, 23, FACE.W, "screen"], [25, 23, FACE.E, "sign"], [32, 21, FACE.S, "cables"],
+    [25, 23, FACE.E, "sign"], [32, 21, FACE.S, "cables"],
   ];
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
     { t: "lamp", x: 3.6, y: 13.6 }, { t: "lamp", x: 7.4, y: 13.6 },
@@ -288,10 +288,10 @@ export const LEVEL3: LevelDef = (() => {
   };
   const FLOORS: NonNullable<LevelDef["FLOORS"]> = [[12, 17, 12, 17, "fDuct"]];
   const DECALS: NonNullable<LevelDef["DECALS"]> = [
-    [11, 17, FACE.S, "arrowR"], [13, 17, FACE.S, "sign"], [8, 18, FACE.E, "camera"],
+    [11, 17, FACE.S, "arrowR"], [13, 17, FACE.S, "sign"],
     [21, 9, FACE.S, "screen"], [30, 11, FACE.W, "camera"], [24, 23, FACE.N, "sign"],
     [18, 22, FACE.N, "arrowR", true], [34, 11, FACE.S, "camera"], [41, 20, FACE.W, "arrowR", true],
-    [9, 18, FACE.W, "screen"], [9, 20, FACE.W, "cables"],
+    
   ];
   // Aliens carry a facing angle so the map can show what each one watches.
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
@@ -425,9 +425,9 @@ export const LEVEL4: LevelDef = (() => {
     if (ai === "intake" && f === FACE.N && y === 24) return x % 4 === 0 ? "cargo" : "panel";
   };
   const DECALS: NonNullable<LevelDef["DECALS"]> = [
-    [8, 15, FACE.E, "camera"], [12, 18, FACE.W, "arrowR"], [11, 21, FACE.E, "cables"], [11, 20, FACE.E, "screen"],
-    [16, 12, FACE.S, "sign"], [17, 9, FACE.S, "arrowR"], [13, 3, FACE.S, "screen"], [22, 4, FACE.W, "keycard"],
-    [20, 16, FACE.N, "arrowR", true], [23, 4, FACE.S, "camera"], [22, 19, FACE.E, "sign"],
+    [11, 21, FACE.E, "cables"], [11, 20, FACE.E, "screen"],
+    [22, 4, FACE.W, "keycard"],
+    [23, 4, FACE.S, "camera"], [22, 19, FACE.E, "sign"],
     [37, 15, FACE.W, "keycard"], [37, 19, FACE.W, "arrowR", true], [37, 11, FACE.W, "camera"],
     [44, 20, FACE.W, "arrowR", true], [38, 22, FACE.N, "sign"], [30, 27, FACE.N, "cables"],
     [22, 12, FACE.E, "arrowR", true], [22, 22, FACE.E, "arrowR", true],
@@ -563,10 +563,8 @@ export const LEVEL5: LevelDef = (() => {
     if (ai === "deck" && f === FACE.W && x === 39 && y >= 12 && y <= 15) return "cargo";
   };
   const DECALS: NonNullable<LevelDef["DECALS"]> = [
-    [8, 15, FACE.E, "camera"], [12, 13, FACE.E, "arrowR", true], [9, 12, FACE.S, "sign"],
-    [7, 8, FACE.E, "screen"], [15, 8, FACE.W, "sign"], [12, 19, FACE.N, "arrowR"],
-    [15, 20, FACE.N, "camera"], [16, 3, FACE.S, "sign"], [39, 16, FACE.W, "keycard"],
-    [22, 28, FACE.E, "arrowR"], [19, 29, FACE.W, "sign"], [27, 33, FACE.N, "screen"],
+    [7, 8, FACE.E, "screen"], [15, 8, FACE.W, "sign"], [12, 19, FACE.N, "arrowR", true],
+    [16, 3, FACE.S, "sign"], [39, 16, FACE.W, "keycard"],
     [39, 20, FACE.W, "arrowR", true], [39, 12, FACE.W, "cables"], [47, 20, FACE.W, "arrowR", true],
     [39, 6, FACE.W, "cables"], [39, 9, FACE.W, "screen"],
   ];
@@ -694,11 +692,11 @@ export const LEVEL6: LevelDef = (() => {
     if (ai === "pump" && f === FACE.N && y === 30) return x % 2 === 0 ? "tank" : "pipes";
   };
   const DECALS: NonNullable<LevelDef["DECALS"]> = [
-    [8, 13, FACE.E, "camera"], [12, 13, FACE.E, "arrowR"], [22, 13, FACE.E, "arrowR"],
+    [12, 13, FACE.E, "arrowR"],
     [13, 22, FACE.E, "sign"], [16, 22, FACE.W, "arrowR"], [9, 25, FACE.E, "cables"],
     [9, 28, FACE.E, "screen"], [39, 15, FACE.W, "keycard"], [39, 18, FACE.W, "arrowR", true],
     [44, 15, FACE.W, "arrowR", true], [25, 13, FACE.E, "sign"], [33, 3, FACE.S, "camera"],
-    [20, 30, FACE.N, "sign"], [39, 12, FACE.W, "cables"],
+    [39, 12, FACE.W, "cables"],
   ];
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
     { t: "lamp", x: 3.6, y: 13.6 }, { t: "lamp", x: 7.4, y: 13.6 },
@@ -840,9 +838,7 @@ export const LEVEL7: LevelDef = (() => {
     return undefined;
   };
   const DECALS: NonNullable<LevelDef["DECALS"]> = [
-    [12, 18, FACE.E, "arrowE", true], [27, 18, FACE.E, "arrowE", true],
-    [29, 18, FACE.E, "arrowE", true], [46, 18, FACE.E, "arrowE", true],
-    [17, 15, FACE.N, "arrowN", true], [36, 21, FACE.S, "arrowS", true],
+    [6, 15, FACE.S, "arrowR"], [14, 15, FACE.S, "arrowR"], [22, 15, FACE.S, "arrowR"], [31, 15, FACE.S, "arrowR"], [41, 15, FACE.S, "arrowR"],
   ];
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
     { t: "lamp", x: 3.6, y: 16.6 }, { t: "lamp", x: 7.4, y: 16.6 },
@@ -1006,9 +1002,7 @@ export const LEVEL8: LevelDef = (() => {
     return undefined;
   };
   const DECALS: NonNullable<LevelDef["DECALS"]> = [
-    [10, 19, FACE.N, "arrowN", true], [13, 11, FACE.E, "arrowE", true],
-    [28, 11, FACE.E, "arrowE", true], [31, 20, FACE.S, "arrowS", true],
-    [34, 26, FACE.E, "arrowE", true],
+    [6, 16, FACE.S, "arrowR"], [13, 18, FACE.W, "arrowR", true], [28, 13, FACE.E, "arrowR", true], [28, 21, FACE.E, "arrowR", true],
   ];
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
     { t: "lamp", x: 3.6, y: 17.6 }, { t: "lamp", x: 7.4, y: 17.6 },
@@ -1163,9 +1157,7 @@ export const LEVEL9: LevelDef = (() => {
     return undefined;
   };
   const DECALS: NonNullable<LevelDef["DECALS"]> = [
-    [14, 20, FACE.E, "arrowE", true], [30, 20, FACE.E, "arrowE", true],
-    [36, 18, FACE.N, "arrowN", true], [36, 22, FACE.S, "arrowS", true],
-    [46, 20, FACE.E, "arrowE", true],
+    [6, 17, FACE.S, "arrowR"], [12, 18, FACE.S, "arrowR"], [31, 18, FACE.S, "arrowR"], [38, 18, FACE.S, "arrowR"], [43, 18, FACE.S, "arrowR"],
   ];
   const SPRITES: NonNullable<LevelDef["SPRITES"]> = [
     { t: "lamp", x: 3.6, y: 18.6 }, { t: "lamp", x: 7.4, y: 18.6 },
