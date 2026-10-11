@@ -1,5 +1,74 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The game: saves, a one-question grenade, and 15 damage a hit (2026-10-11)
+
+Matthew: manual saves "so you can actually save stuff, like have your own
+saves"; the grenade should cost one question, not three ("three is just way
+too hardcore"); and a hit should take 15, not 20 ("it is genuinely a hard
+game"). He chose saves that keep the EXACT MOMENT, ON THE ACCOUNT, FIVE slots.
+
+**⚠️ Needs `GAME_SAVES_SETUP.sql` run once in Supabase.** Until then the Saves
+menu opens and says saves aren't switched on yet; nothing else is affected
+(its own table, like question_reviews). Run against a real Postgres 16 here:
+twice without error, slot 6 / empty name / 200 KB state refused, and deleting
+the account removes its saves.
+
+### Saves
+
+A **Saves** button at the top of the game (on a computer press Esc first —
+the mouse is captured while you play; the pause screen says so). It pauses
+the world, run clock included, and lists five slots: Save here, Load, Delete,
+an optional name. Replacing a full slot and deleting both ask first. The play
+page also offers "Carry on from a save".
+
+`lib/gameSave.ts` is the shape, PURE and import-free, read by the game, the
+server action and a Node check. `lib/game-saves.ts` is the table (one upsert
+on (user_id, slot), never delete-then-insert), `lib/game-save-actions.ts` the
+actions (user from the session, developer code required, size capped BEFORE
+parsing, every field checked, subject/topics/mascot checked against real
+ones). The game: `saveStatus`, `snapshot`, `restoreSave`, `levelPrint`.
+
+Three decisions worth keeping:
+
+- ⚠️ **Never with a question on screen.** Save mid-question, reload after a
+  wrong answer, and every question can be answered twice keeping only the
+  right one — while "Revisit your mistakes" has already recorded the miss.
+- ⚠️ **A save remembers what its deck looked like** (a fingerprint of the
+  layout). Redesign a deck and an old save would put aliens inside the new
+  walls; instead it starts the deck again carrying what you had, and says so.
+- **Clamped on load against the game's own numbers.** The checker only knows
+  a number is sane; the game knows a clip holds six. A hand-edited save with
+  999 cells loads with 6.
+
+⚠️ **Two real bugs the browser test found:** Escape did nothing after a
+"Sure?" button disappeared (focus fell to `<body>`, outside the panel's own
+listener — and the game's key handler then ate Tab and Space); and **Load left
+the menu open over the loaded game**, because Load is a client-side navigation
+to the same page and React kept the old component. Fixed with a window-level
+listener plus a `menuOpen` flag in the game, and a `key` on GameClient. And
+one harness bug: Playwright cannot click outside a pointer-locked game, which
+is exactly what a player meets — Esc first.
+
+### The grenade and the damage
+
+`NADE_QUIZ_QS = 1` and `HIT_DMG = 15` (every bolt, the Director's too, and the
+stomp throw-off). A full suit is now seven hits, not five. The stomp and the
+boss override stay at three. Checks read both constants AND forbid a literal
+left behind (`i < 3` in the draw, `damage(20)` anywhere).
+
+**Verified.** `npm run check` fully green — 189,590 content, 1,239,302
+geometry, **5,703** security, **47** game-save (new) and every other suite as
+before; `tsc` and `eslint` clean. **16 sabotages, all caught** (one only after
+the size rule was tightened — it matched the constant's import, not the
+comparison). In a browser against a stand-in Supabase: **51 checks** — the
+one-question grenade both ways, 100 → 85 from a bolt, save / replace / keep /
+delete, the clock frozen while the menu is open, typing a name not driving the
+game, saving refused mid-question, load restoring 14 fields exactly, the old-
+layout fallback, clamping, a broken row refused, another account's `save=1`
+opening nothing of mine, and the menu on a sideways iPhone SE (fits, every
+control 44px). Plus quizfit 50/50, boss 38, title cards 41, debrief 16,
+weak-topic 5, gametest 46 (one assertion updated for 15 damage).
+
 ## The revision page: where you are, how topics connect, and what a 6-mark answer looks like (2026-10-10 → 11)
 
 Matthew, on 2026-10-09: *"I feel that something's missing"* on the revision

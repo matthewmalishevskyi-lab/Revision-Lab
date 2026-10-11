@@ -17,13 +17,57 @@ import type { GameQuestion } from "../../lib/game-questions";
 import { readStorageRaw, writeStorageRaw } from "../../lib/browserStore";
 import { foldRun, parseLog, SHIPS_LOG_KEY } from "../../lib/shipsLog";
 import { Game } from "../game/game";
+import { SavesPanel } from "./SavesPanel";
+import { deleteGameSaveAction, saveGameAction } from "../../lib/game-save-actions";
+import type { GameSave, SaveSetup, SaveSummary } from "../../lib/gameSave";
 
-export function GameClient({ subject, mascot, mascotName, reload, easy, startLevel = 0, topicWeights }: { subject: string; mascot: keyof typeof MASCOTS; mascotName: string; reload: GameQuestion[]; easy: GameQuestion[]; startLevel?: number; topicWeights?: Record<string, number> }) {
+export function GameClient({ subject, mascot, mascotName, reload, easy, startLevel = 0, topicWeights, setup, saves: initialSaves = [], savesEnabled = false, save, saveName }: {
+  subject: string; mascot: keyof typeof MASCOTS; mascotName: string; reload: GameQuestion[]; easy: GameQuestion[]; startLevel?: number; topicWeights?: Record<string, number>;
+  /** What this game was set up with, stored beside each save so it reloads with the same questions. */
+  setup: SaveSetup;
+  saves?: SaveSummary[]; savesEnabled?: boolean;
+  /** A saved moment to carry on from (already checked on the server). */
+  save?: GameSave; saveName?: string;
+}) {
   const gameRef = useRef<HTMLCanvasElement>(null);
   const bloomRef = useRef<HTMLCanvasElement>(null);
   const overlayRef = useRef<HTMLCanvasElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
+  const game = useRef<Game | null>(null);
+  // ── saves ──
+  const [saves, setSaves] = useState(initialSaves);
+  const [menu, setMenu] = useState<null | ReturnType<Game["saveStatus"]>>(null);
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState<{ text: string; ok: boolean } | null>(null);
+  const savesButton = useRef<HTMLButtonElement>(null);
+  const openSaves = useCallback(() => {
+    const g = game.current; if (!g) return;
+    g.pauseForMenu();
+    setMessage(null);
+    setMenu(g.saveStatus());
+  }, []);
+  const closeSaves = useCallback(() => { setMenu(null); game.current?.menuClosed(); savesButton.current?.focus(); }, []);
+  const doSave = useCallback(async (slot: number, name: string) => {
+    const g = game.current; if (!g) return;
+    // the state is taken at the moment of the click, from a paused world
+    const state = g.snapshot();
+    if (!state) { setMessage({ text: "You can't save right now.", ok: false }); return; }
+    setBusy(true);
+    const res = await saveGameAction(slot, name, setup, state).catch(() => ({ ok: false as const, error: "Couldn't reach the site just now. Try again in a moment." }));
+    setBusy(false);
+    if (res.ok) {
+      setSaves((list) => [...list.filter((s) => s.slot !== slot), res.summary].sort((a, b) => a.slot - b.slot));
+      setMessage({ text: `Saved to slot ${slot}.`, ok: true });
+    } else setMessage({ text: res.error, ok: false });
+  }, [setup]);
+  const doDelete = useCallback(async (slot: number) => {
+    setBusy(true);
+    const res = await deleteGameSaveAction(slot).catch(() => ({ ok: false as const, error: "Couldn't reach the site just now. Try again in a moment." }));
+    setBusy(false);
+    if (res.ok) { setSaves((list) => list.filter((s) => s.slot !== slot)); setMessage({ text: `Slot ${slot} is empty now.`, ok: true }); }
+    else setMessage({ text: res.error, ok: false });
+  }, []);
   const [full, setFull] = useState(false);
   // ⚠️ iOS Safari only puts a <video> full screen, so on an iPhone the button
   // below was visible and did nothing at all. Read the capability rather than
@@ -48,8 +92,8 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
   useEffect(() => {
     const cv = gameRef.current, ov = overlayRef.current;
     if (!cv || !ov) return;
-    const game = new Game(cv, ov, {
-      reload, easy, startLevel, mascotName, topicWeights,
+    const g = new Game(cv, ov, {
+      reload, easy, startLevel, mascotName, topicWeights, save, saveName,
       // clicking the title screen asks for full screen as well as the mouse
       onStart: () => {
         // ⚠️ iOS Safari will not put an arbitrary element full screen, so a
@@ -69,11 +113,12 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
         catch { /* a full or blocked store must never interrupt the game */ }
       },
     }, bloomRef.current ?? undefined);
-    game.init().catch((error) => { console.error("[game]", error); setFailed(true); });
+    game.current = g;
+    g.init().catch((error) => { console.error("[game]", error); setFailed(true); });
     const onFullscreen = () => setFull(document.fullscreenElement === shellRef.current);
     document.addEventListener("fullscreenchange", onFullscreen);
-    return () => { document.removeEventListener("fullscreenchange", onFullscreen); game.destroy(); };
-  }, [subject, reload, easy, startLevel, mascotName, topicWeights]);
+    return () => { document.removeEventListener("fullscreenchange", onFullscreen); g.destroy(); if (game.current === g) game.current = null; };
+  }, [subject, reload, easy, startLevel, mascotName, topicWeights, save, saveName]);
 
   if (failed) return <p role="alert" className="rounded-xl bg-red-900/40 p-4">The game couldn&apos;t start in this browser.</p>;
 
@@ -106,13 +151,28 @@ export function GameClient({ subject, mascot, mascotName, reload, easy, startLev
       {/* ⚠️ Hidden where the browser will not do it. iOS Safari refuses
           requestFullscreen on anything but a <video>, so on an iPhone this was
           a button that visibly did nothing at all — worse than no button. */}
-      {canFullscreen && (
+      <div className="absolute right-3 top-3 z-10 flex gap-2">
+        {/* Saves: pauses the game and opens the five slots. On a computer the
+            mouse is captured while you play, so Esc first — the pause screen
+            says so. */}
         <button
-          type="button" onClick={toggleFullscreen}
-          className="absolute right-3 top-3 z-10 min-h-11 rounded-xl border border-white/25 bg-black/50 px-3 text-sm font-semibold text-white opacity-60 transition hover:bg-black/80 hover:opacity-100 focus-visible:opacity-100"
+          ref={savesButton} type="button" onClick={openSaves}
+          className="min-h-11 rounded-xl border border-white/25 bg-black/50 px-3 text-sm font-semibold text-white opacity-60 transition hover:bg-black/80 hover:opacity-100 focus-visible:opacity-100"
         >
-          {full ? "Leave full screen" : "Full screen ⛶"}
+          Saves
         </button>
+        {canFullscreen && (
+          <button
+            type="button" onClick={toggleFullscreen}
+            className="min-h-11 rounded-xl border border-white/25 bg-black/50 px-3 text-sm font-semibold text-white opacity-60 transition hover:bg-black/80 hover:opacity-100 focus-visible:opacity-100"
+          >
+            {full ? "Leave full screen" : "Full screen ⛶"}
+          </button>
+        )}
+      </div>
+      {menu && (
+        <SavesPanel saves={saves} status={menu} enabled={savesEnabled} busy={busy} message={message}
+          onSave={doSave} onDelete={doDelete} onClose={closeSaves} />
       )}
       </div>
     </div>

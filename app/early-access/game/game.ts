@@ -7,7 +7,7 @@
 //
 //   STOMP (press SPACE behind an alien that hasn't seen you): three quick,
 //   easy questions, 5 seconds each, with the world frozen. All right and the
-//   alien is finished; one wrong and it throws you off (20 damage).
+//   alien is finished; one wrong and it throws you off (HIT_DMG damage).
 //
 //   OVERRIDE (E at a shield terminal, deck 10 only): three questions, run
 //   exactly like a reload. Three right drops the boss's shield for a few
@@ -25,6 +25,7 @@ import { circleFree, moveCircle, pathClear, pushOut } from "./physics";
 import { blocked, buildWorld, COVER_H, DIRS, lineOfSight, type LevelDef, type World } from "./world";
 import { formatClock, gradeFor, questionTarget, scoreRun, type LevelBest, type Run } from "../../lib/shipsLog";
 import { weightedShuffle } from "../../lib/weightedShuffle";
+import { SAVE_VERSION, type GameSave, type SavedCarry } from "../../lib/gameSave";
 
 export type Question = { question: string; choices: string[]; correct: number; topic: string; topicTitle: string; why?: string };
 export type GameOptions = {
@@ -51,6 +52,11 @@ export type GameOptions = {
    * nothing and gets the old even deal.
    */
   topicWeights?: Record<string, number>;
+  /** A saved game to carry on from, instead of starting a deck fresh. Already
+   *  checked by parseGameSave on the server; restoreSave clamps it again. */
+  save?: GameSave;
+  /** The slot's name, for the "carry on" screen. */
+  saveName?: string;
 };
 
 type Alien = { x: number; y: number; face: number; hp: number; state: "idle" | "noticing" | "alert" | "dead"; timer: number; cooldown: number; lastX: number; lastY: number; hurt: number; strafe: number; strafeT: number };
@@ -67,7 +73,7 @@ type Weapon = "knife" | "pistol" | "rifle";
 /** Where on an alien a shot landed. The knife has no zones — a swing is a swing. */
 type Zone = "head" | "torso" | "legs";
 /** A grenade that has been pulled but not thrown: the aim it was pulled with,
- *  held while the three questions are answered. See throwGrenade(). */
+ *  held while the question is answered. See throwGrenade(). */
 type PendingNade = { c: number; s: number; up: number; vx: number; vy: number };
 type Quiz = { kind: "reload" | "stomp" | "nade" | "debrief" | "terminal"; qs: Question[]; index: number; time: number; per: number; picked: number | null; feedback: number; results: boolean[]; target: Alien | null; nade?: PendingNade; terminal?: Terminal };
 /** The Director, deck 10's boss. `shield` is how many seconds of world time
@@ -169,6 +175,15 @@ const NADE_FUSE = 2.0, NADE_MAX = 3, NADE_SPEED = 7.2, NADE_R = 0.1;
 /** Seconds per question in the grenade quiz, and the cooldown a failed one
  *  costs. See throwGrenade() for why the cooldown has to exist at all. */
 const NADE_QUIZ_PER = 10, NADE_FAIL_WAIT = 6;
+/** How many questions a throw costs. It was three; Matthew, 2026-10-11:
+ *  "three is just way too hardcore." One right answer and it flies. The stomp
+ *  and the boss's override stay at three — a throw is something you reach for
+ *  in a fight, and three questions mid-fight was the part that hurt. */
+const NADE_QUIZ_QS = 1;
+/** What one alien bolt (the Director's too) or being thrown off a stomp takes
+ *  off your 100. It was 20; Matthew, 2026-10-11: "it is genuinely a hard
+ *  game." 15 means a full suit takes seven hits instead of five. */
+const HIT_DMG = 15;
 
 // ⚠️ An alien you defeat drops a single cell, two times in five — and the
 // arithmetic is the whole point. Shooting one costs TWO cells and returns 0.4,
@@ -265,6 +280,23 @@ function hasGrenades(def: LevelDef) { return def.SPRITES.some((s) => s.t === "gr
 /** Same rule, same reason, for the assault rifle: derived from the deck, never
  *  from its number. Level 5's hangar door will not open without one. */
 function hasRifle(def: LevelDef) { return def.SPRITES.some((s) => s.t === "rifle"); }
+
+/**
+ * A fingerprint of a deck's layout, stored with every save.
+ *
+ * ⚠️ A save holds positions: where each alien is, where each dropped cell lies,
+ * which door (by its place in the list) is open. Redesign the deck — move a
+ * wall, add an alien, reorder the doors — and an old save would put aliens
+ * inside the new walls and open the wrong doors. So the save remembers what
+ * the deck looked like, and if that has changed, restoreSave puts you at the
+ * deck's start carrying what you had, rather than loading nonsense.
+ */
+export function levelPrint(def: LevelDef): string {
+  const text = JSON.stringify([def.W, def.H, def.START, def.DOORS.map((d) => d.cells), def.SPRITES.map((t) => [t.t, t.x, t.y])]);
+  let h = 2166136261; // FNV-1a: not security, just "is this the same deck"
+  for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; }
+  return `${def.TITLE}|${def.W}x${def.H}|${h.toString(16)}`;
+}
 
 export class Game {
   private cv: HTMLCanvasElement;
@@ -398,7 +430,8 @@ export class Game {
     // consumable, so "does this deck use them" is the right question.
     const carriedRifle = LEVELS.slice(0, start).some(hasRifle);
     if (start > 0) this.carry = { health: 100, vest: 0, ammo: 6, hasPistol: true, hasRifle: carriedRifle, rifleAmmo: carriedRifle ? RIFLE_MAG : 0, grenades: hasGrenades(LEVELS[start]) ? 1 : 0, knife: KNIFE_USES };
-    this.loadLevel(start);
+    if (this.opts.save) this.restoreSave(this.opts.save, this.opts.saveName ?? "your save");
+    else this.loadLevel(start);
     // lets automated play-tests reach inside (teleport, read state); harmless in a browser
     (this.ov as HTMLCanvasElement & { game?: Game }).game = this;
     // ⚠️ `pointer: coarse` asks the right question — is the main input a
@@ -427,6 +460,142 @@ export class Game {
    *  touch handler above and by the play-tests, which need to know where to
    *  put a finger without reimplementing the panel's layout. */
   quizAt(x: number, y: number) { return quizChoiceAt(x, y); }
+
+  // ── saves ─────────────────────────────────────────────────────────────────
+  // Matthew chose the EXACT MOMENT: where you stand, every alien where it is,
+  // ammo, doors, the run clock. The page owns the menu and the database; the
+  // game only answers "can you save now", "what is the state", and "put this
+  // state back".
+
+  /**
+   * Whether a save can be made right now, and if not, why — in words, because
+   * a greyed-out button with no reason is a button that looks broken.
+   *
+   * ⚠️ NEVER WITH A QUESTION ON SCREEN. A save made mid-question, reloaded
+   * after a wrong answer, is a way to answer every question twice and only
+   * keep the right one — and the answer has already gone to "Revisit your
+   * mistakes" by then, so the site would remember one thing and the save
+   * another. Finish the question, then save.
+   */
+  saveStatus(): { can: true; level: number; title: string } | { can: false; reason: string } {
+    const live = this.mode === "play" || this.mode === "title" || (this.mode === "paused" && this.pausedFrom === "play");
+    if (this.quiz || this.mode === "reload" || this.mode === "stomp" || this.mode === "nade" || (this.mode === "paused" && this.pausedFrom !== "play")) return { can: false, reason: "Finish the question first, then save." };
+    if (this.mode === "dead" || this.p.health <= 0) return { can: false, reason: "You can't save once you're down." };
+    if (!live) return { can: false, reason: "This deck's done — save once you're on the next one." };
+    return { can: true, level: this.levelIndex, title: LEVELS[this.levelIndex].TITLE.replace(/^Level \d+ — /, "") };
+  }
+
+  /** Stop the world for the save menu: the same pause as letting go of the
+   *  mouse, so the run clock and every alien wait while you choose a slot. */
+  pauseForMenu() {
+    this.menuOpen = true;
+    if (this.mode === "play") { this.pausedFrom = "play"; this.mode = "paused"; }
+    this.keys.clear(); this.stickTouch = null; this.lookTouch = null; this.heldButtons.clear();
+    if (document.pointerLockElement === this.ov) document.exitPointerLock();
+  }
+
+  /** The exact moment, as plain JSON, or null when saving is not allowed. */
+  snapshot(): GameSave | null {
+    if (!this.saveStatus().can) return null;
+    const p = this.p;
+    const carry = (c: SavedCarry): SavedCarry => ({ health: c.health, vest: c.vest, ammo: c.ammo, hasPistol: c.hasPistol, hasRifle: c.hasRifle, rifleAmmo: c.rifleAmmo, grenades: c.grenades, knife: c.knife });
+    return {
+      v: SAVE_VERSION,
+      level: this.levelIndex,
+      levelPrint: levelPrint(LEVELS[this.levelIndex]),
+      player: {
+        ...carry(p), x: p.x, y: p.y, z: p.z, vz: p.vz, angle: p.angle, pitch: p.pitch, eye: p.eye,
+        weapon: p.weapon, keys: [...p.keys], radTime: p.radTime, nadeWait: p.nadeWait, exposure: p.exposure,
+      },
+      carry: carry(this.carry),
+      aliens: this.aliens.map((a) => ({ x: a.x, y: a.y, face: a.face, hp: a.hp, state: a.state, timer: a.timer, cooldown: a.cooldown, lastX: a.lastX, lastY: a.lastY, strafe: a.strafe, strafeT: a.strafeT })),
+      boss: this.boss ? { x: this.boss.x, y: this.boss.y, face: this.boss.face, hp: this.boss.hp, room: this.boss.room, awake: this.boss.awake, dead: this.boss.dead, shield: this.boss.shield, phase: this.boss.phase, cooldown: this.boss.cooldown, strafe: this.boss.strafe, strafeT: this.boss.strafeT } : null,
+      terminals: this.terminals.map((t) => ({ lock: t.lock, cool: t.cool })),
+      pickups: this.pickups.map((k) => (k.key === undefined ? { t: k.t, x: k.x, y: k.y, taken: k.taken } : { t: k.t, x: k.x, y: k.y, taken: k.taken, key: k.key })),
+      doors: this.world.doors.map((d) => ({ open: d.open, target: d.target })),
+      bolts: this.bolts.map((b) => ({ x: b.x, y: b.y, vx: b.vx, vy: b.vy, life: b.life })),
+      nades: this.nades.map((n) => ({ x: n.x, y: n.y, z: n.z, vx: n.vx, vy: n.vy, vz: n.vz, fuse: n.fuse })),
+      owed: this.owed.map((q) => ({ ...q })),
+      stats: { ...this.stats },
+      hinted: [...this.hinted],
+    };
+  }
+
+  /**
+   * Put a saved moment back. Builds the deck fresh (walls, lights, decor) and
+   * then lays the save over it.
+   *
+   * ⚠️ CLAMPED HERE, against the game's own numbers. parseGameSave only knows
+   * a number is sane, not that a clip holds six — a hand-edited save with 999
+   * cells would otherwise load as 999 cells. Cheating your own save harms
+   * nobody else, but a save should never be able to put the game in a state
+   * the game itself could not reach.
+   */
+  private restoreSave(s: GameSave, name: string) {
+    const level = Math.min(LEVELS.length - 1, Math.max(0, s.level));
+    const def = LEVELS[level];
+    const clampCarry = (c: SavedCarry, minHealth: number): SavedCarry => ({
+      health: Math.max(minHealth, Math.min(100, c.health)), vest: Math.max(0, Math.min(100, c.vest)),
+      ammo: Math.max(0, Math.min(PISTOL_MAG, c.ammo)), hasPistol: c.hasPistol, hasRifle: c.hasRifle,
+      rifleAmmo: Math.max(0, Math.min(RIFLE_MAG, c.rifleAmmo)), grenades: Math.max(0, Math.min(NADE_MAX, c.grenades)),
+      knife: Math.max(0, Math.min(KNIFE_USES, c.knife)),
+    });
+    const finish = (note: string) => {
+      this.comms = null; this.commsQueue = [];
+      this.mode = "paused"; this.pausedFrom = "play"; this.resumeNote = note;
+    };
+
+    // the deck has been redesigned since this was saved: its positions belong
+    // to a different map, so start the deck again carrying what you had
+    if (s.levelPrint !== levelPrint(def)) {
+      this.carry = clampCarry(s.player, 1);
+      this.loadLevel(level);
+      finish(`“${name}”: this deck has changed since you saved, so you're at its start with everything you were carrying.`);
+      return;
+    }
+
+    this.carry = clampCarry(s.carry, 1);
+    this.loadLevel(level);
+    const p = this.p, sp = clampCarry(s.player, 1);
+    Object.assign(p, sp);
+    // doors first: "is this spot free" depends on which of them are open
+    this.world.doors.forEach((d, i) => { const sd = s.doors[i]; if (sd) { d.open = sd.open; d.target = sd.target; } });
+    p.z = Math.max(0, s.player.z); p.vz = s.player.vz;
+    p.x = s.player.x; p.y = s.player.y;
+    // a save that would put you inside something (an old save, a door that
+    // closed in the meantime) puts you back at the deck's start instead —
+    // stuck in a wall with no way out is the one thing a load must never do
+    if (!this.free(p.x, p.y)) { p.x = def.START.x; p.y = def.START.y; p.z = 0; p.vz = 0; }
+    p.angle = s.player.angle; p.pitch = Math.max(-PITCH_MAX, Math.min(PITCH_MAX, s.player.pitch)); p.eye = s.player.eye;
+    p.keys = new Set(s.player.keys); p.radTime = s.player.radTime; p.nadeWait = s.player.nadeWait; p.exposure = s.player.exposure;
+    p.vx = 0; p.vy = 0;
+    // only a weapon you are actually carrying
+    p.weapon = s.player.weapon === "rifle" && p.hasRifle ? "rifle" : s.player.weapon === "pistol" && p.hasPistol ? "pistol" : s.player.weapon === "knife" ? "knife" : p.hasPistol ? "pistol" : "knife";
+    // ⚠️ REPLACED, not matched up by index: the boss calls in aliens part-way
+    // through his fight, and dead aliens leave cells behind, so the live lists
+    // are not the ones the deck started with
+    this.aliens = s.aliens.map((a) => ({ ...a, hp: Math.min(ALIEN_HP, a.hp), hurt: 0 }));
+    this.pickups = s.pickups.map((k) => ({ ...k }));
+    if (this.boss && s.boss) Object.assign(this.boss, { ...s.boss, hp: Math.min(BOSS_HP, s.boss.hp), hurt: 0 });
+    this.terminals.forEach((t, i) => { const st = s.terminals[i]; if (st) { t.lock = st.lock; t.cool = st.cool; } });
+    this.bolts = s.bolts.map((b) => ({ ...b }));
+    this.nades = s.nades.map((n) => ({ ...n }));
+    this.owed = s.owed.map((q) => ({ ...q }));
+    this.stats = { ...s.stats };
+    this.hinted = new Set(s.hinted);
+    this.hasNades = hasGrenades(def) || p.grenades > 0;
+    this.hasGun = hasRifle(def) || p.hasRifle;
+    this.flow = null;
+    finish(`Loaded “${name}”.`);
+  }
+  /** The page's menu has closed; keys are the game's again. */
+  menuClosed() { this.menuOpen = false; this.keys.clear(); }
+  /** While the save menu is up the keyboard belongs to it, wherever focus is:
+   *  a button that has just disappeared leaves focus on <body>, and the game
+   *  used to take the Tab and the Space meant for the menu from there. */
+  private menuOpen = false;
+  /** What the pause screen says after a load, until you carry on. */
+  private resumeNote: string | null = null;
 
   private destroyed = false;
   destroy() {
@@ -517,7 +686,7 @@ export class Game {
   private lock() { if (!this.touchDevice) this.ov.requestPointerLock?.(); this.ensureAudio(); }
   private onMouseDown = (e: MouseEvent) => {
     if (this.mode === "title") { this.mode = "play"; this.opts.onStart?.(); this.lock(); return; }
-    if (this.mode === "paused") { this.mode = this.pausedFrom; this.opts.onStart?.(); this.lock(); return; }
+    if (this.mode === "paused") { this.mode = this.pausedFrom; this.resumeNote = null; this.opts.onStart?.(); this.lock(); return; }
     if (this.mode === "dead" || this.mode === "complete" || this.mode === "done") return;
     if (this.touchDevice) return; // a phone's tap is handled by onTouchStart
     if (document.pointerLockElement !== this.ov) { this.lock(); return; }
@@ -532,6 +701,10 @@ export class Game {
     this.p.pitch = Math.max(-PITCH_MAX, Math.min(PITCH_MAX, this.p.pitch - Math.max(-250, Math.min(250, e.movementY)) * 0.9));
   };
   private onKeyDown = (e: KeyboardEvent) => {
+    // ⚠️ Typing a save's name is typing on the same window the game listens
+    // to. Without this, a space in the name was swallowed (the game cancels
+    // SPACE so it can jump) and a G in it tried to throw a grenade.
+    if (this.menuOpen || (e.target instanceof Element && e.target.closest("input, textarea, select, [role=dialog]"))) return;
     const k = e.key.toLowerCase();
     if (["arrowup", "arrowdown", "arrowleft", "arrowright", " ", "tab"].includes(k) && this.mode !== "title") e.preventDefault();
     this.keys.add(k);
@@ -597,7 +770,7 @@ export class Game {
       // lock to click for, so the tap that starts the game must not also fire
       // the blaster underneath the title card.
       if (this.mode === "title" || this.mode === "paused") {
-        this.mode = this.mode === "title" ? "play" : this.pausedFrom; this.opts.onStart?.(); continue;
+        this.mode = this.mode === "title" ? "play" : this.pausedFrom; this.resumeNote = null; this.opts.onStart?.(); continue;
       }
       // ⚠️ On a phone any tap advances these screens, and you are usually
       // mid-tap on FIRE when you die. Without a short lock the grade you just
@@ -996,7 +1169,8 @@ export class Game {
    * Matthew's design: "you have to answer three questions when you throw a
    * grenade, the whole world freezes, and you just get the grenade back in
    * your inventory if you fail." So G no longer throws — it OPENS A QUIZ, and
-   * the throw is what three right answers buys. Nothing in the world moves
+   * the throw is what a right answer buys. (Three questions until 2026-10-11,
+   * now NADE_QUIZ_QS — one; three was "way too hardcore".) Nothing in the world moves
    * while it is up: frame() only calls update() in "play" and "reload", so
    * "nade" freezes the aliens, the bolts, the fuses and the clock with one
    * line rather than a pause flag threaded through everything.
@@ -1018,10 +1192,10 @@ export class Game {
     if (this.quiz || p.nadeWait > 0) return;
     if (p.grenades <= 0) { this.pickupMsg("No grenades left"); this.beep(90, 70, 0.07, "square", 0.04); return; }
     if (this.inDuct()) { this.pickupMsg("No room to throw in here"); return; }
-    const qs: Question[] = []; for (let i = 0; i < 3; i++) { const q = this.draw1("reload", qs); if (q) qs.push(q); }
+    const qs: Question[] = []; for (let i = 0; i < NADE_QUIZ_QS; i++) { const q = this.draw1("reload", qs); if (q) qs.push(q); }
     // no pool to ask from (a topic with almost nothing in it): throw it rather
     // than silently swallowing the button
-    if (qs.length < 3) { this.releaseNade(this.aimNade()); return; }
+    if (qs.length < NADE_QUIZ_QS) { this.releaseNade(this.aimNade()); return; }
     this.quiz = {
       kind: "nade", qs, index: 0, time: NADE_QUIZ_PER, per: NADE_QUIZ_PER,
       picked: null, feedback: 0, results: [], target: null, nade: this.aimNade(),
@@ -1039,10 +1213,10 @@ export class Game {
     const p = this.p;
     this.quiz = null; this.mode = "play";
     p.nadeWait = NADE_FAIL_WAIT;
-    this.say("Pin back in — the throw is off. Get all three right next time.");
+    this.say("Pin back in — the throw is off. Get it right next time.");
     this.beep(200, 90, 0.35, "sawtooth", 0.06);
   }
-  /** Three out of three: the grenade actually leaves your hand. */
+  /** Every question right: the grenade actually leaves your hand. */
   private releaseNade(n: PendingNade) {
     const p = this.p;
     this.quiz = null; this.mode = "play";
@@ -1282,7 +1456,7 @@ export class Game {
       b.x += b.vx * dt; b.y += b.vy * dt; b.life -= dt;
       const c = this.cell(b.x, b.y);
       if (b.x < 0 || b.y < 0 || b.x >= this.world.W || b.y >= this.world.H || (this.world.solid[c] !== 0 || this.world.grille[c]) && !(this.world.door[c] && this.world.door[c]!.open > 0.9)) { b.life = 0; continue; }
-      if (Math.hypot(b.x - p.x, b.y - p.y) < 0.32) { b.life = 0; this.hits.push({ a: Math.atan2(-b.vy, -b.vx), t: 1 }); this.damage(20); }
+      if (Math.hypot(b.x - p.x, b.y - p.y) < 0.32) { b.life = 0; this.hits.push({ a: Math.atan2(-b.vy, -b.vx), t: 1 }); this.damage(HIT_DMG); }
     }
     this.bolts = this.bolts.filter((b) => b.life > 0);
   }
@@ -1820,13 +1994,14 @@ export class Game {
         for (let s = 1.0; s > 0; s -= 0.1) { const nx = this.p.x + Math.cos(ang) * s, ny = this.p.y + Math.sin(ang) * s; if (pathClear(this.world, this.p.x, this.p.y, nx, ny, RADIUS)) { this.p.x = nx; this.p.y = ny; break; } }
         this.p.vx = 0; this.p.vy = 0;
         a.state = "alert"; a.cooldown = 1.2; a.face = ang;
-        this.quiz = null; this.mode = "play"; this.damage(20); this.say("It threw you off!");
+        this.quiz = null; this.mode = "play"; this.damage(HIT_DMG); this.say("It threw you off!");
         return;
       }
       if (q.index === 2) { this.kill(q.target!); this.quiz = null; this.mode = "play"; this.say("Stomped!"); return; }
     } else if (q.kind === "nade") {
-      // ⚠️ ONE wrong answer ends it, rather than finishing all three and
-      // counting up. The teaching panel has already held for WRONG_HOLD
+      // ⚠️ ONE wrong answer ends it, rather than finishing the set and
+      // counting up (it is one question since 2026-10-11, but the rule stands
+      // if NADE_QUIZ_QS ever goes back up). The teaching panel has already held for WRONG_HOLD
       // seconds by the time we get here, so the explanation was read; making
       // somebody answer two more questions for a grenade they have already
       // lost is punishment, not revision.
@@ -2012,7 +2187,7 @@ export class Game {
       ...(this.dim ? ["Most of the lights are out on this deck: stay in the dark and walk rather than run, and watch the SEEN bar under your sights"] : []),
       ...(this.boss ? ["The boss is shielded: nothing hurts him until you work a terminal (E) — three right answers drops it for eight seconds"] : []),
     ], this.touchDevice ? "Tap to start" : "Click to start");
-    if (this.mode === "paused") drawScreen(o, "Paused", ["Your game is waiting."], this.touchDevice ? "Tap to carry on" : "Click to carry on");
+    if (this.mode === "paused") drawScreen(o, "Paused", [this.resumeNote ?? "Your game is waiting.", "Saves: the button at the top of the game."], this.touchDevice ? "Tap to carry on" : "Click to carry on");
     if (this.mode === "dead") drawScreen(o, "Suit failure", [`${this.stats.kills} alien${this.stats.kills === 1 ? "" : "s"} defeated · ${this.stats.right} question${this.stats.right === 1 ? "" : "s"} right`], this.touchDevice ? "Tap to try the level again" : "Press Enter to try the level again", "#ff6b6b");
     if (this.mode === "complete") {
       const run = this.runResult(), score = scoreRun(run), letter = gradeFor(score);

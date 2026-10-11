@@ -579,7 +579,7 @@ export function drawQuiz(x: Ctx, q: QuizView) {
   const sub = stomp ? "Get all 3 right to finish it off"
     // ⚠️ shortened: the full sentence ran under the progress dots on a
     // desktop, from the day grenades shipped — found by quizfit's overlap rule
-    : nade ? "3 right and it flies · one wrong, pin back in"
+    : nade ? "Right and it flies · wrong, pin back in"
     // short on purpose: "BEFORE YOU GO" is twice the width of "PIN OUT", and
     // the first wording ran out of the panel and under the progress dots
     : debrief ? "One more go at each"

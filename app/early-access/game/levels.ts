@@ -902,7 +902,7 @@ export const LEVEL7: LevelDef = (() => {
   const HINTS: NonNullable<LevelDef["HINTS"]> = {
     spineW: "Don't walk it. Go crate to crate — they can shoot you from further than you can hit them.",
     bayA: "Red card should be in here. Watch the one with its back turned.",
-    bayC: "Ordnance. Grenades are worth three questions down a corridor this long.",
+    bayC: "Ordnance. A grenade costs one question, and down a corridor this long it is worth it.",
     bayD: "Blue card's on the desk. That opens the aft lift.",
     bayB: "Dark down here, and nothing the deck needs. Up to you.",
   };

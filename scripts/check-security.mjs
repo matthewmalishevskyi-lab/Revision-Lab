@@ -1448,6 +1448,51 @@ try {
     });
     expect(clientImportsArt.length === 0, `the game art is imported by a client file: ${clientImportsArt.join(", ")}`);
 
+    // ── the game's saves ──────────────────────────────────────────────────
+    // Five slots on the account. The actions take whose saves these are from
+    // the session and nothing else, check every byte of what they are sent,
+    // and the database layer they call never reaches a browser.
+    {
+      const strip = (src) => src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:])\/\/.*$/gm, "$1");
+      const acts = strip(readFileSync("app/lib/game-save-actions.ts", "utf8"));
+      expect(/getSessionUserId\(\)/.test(acts) && /hasDevAccess\(userId\)/.test(acts),
+        "the save actions do not take the user from the session and check the developer code");
+      expect(!/export async function \w+\(\s*(userId|user|id)\b/.test(acts),
+        "a save action takes a user id as an argument — whose saves these are must come from the session");
+      expect(/parseGameSave\(state\)/.test(acts) && /if \(bytes > SAVE_MAX_BYTES\) return/.test(acts) && acts.indexOf("bytes > SAVE_MAX_BYTES") < acts.indexOf("parseGameSave(state)"),
+        "saving does not cap the size and then check every field before storing what it was sent");
+      expect(/playableTopics\(/.test(acts) && /in MASCOTS/.test(acts),
+        "saving does not check the save's subject, topics and mascot against ones that exist");
+      const store = strip(readFileSync("app/lib/game-saves.ts", "utf8"));
+      expect(/on_conflict=user_id,slot/.test(store) && /merge-duplicates/.test(store) && !/method:\s*"PATCH"/.test(store),
+        "a save is not written as one upsert on (user_id, slot) — delete-then-insert loses the old save if the second half fails");
+      expect(/parseGameSave\(row\.state\)/.test(store), "a save read back from the database reaches the game without being checked again");
+      const clientImportsSaves = listFiles("app").filter((f) => /\.tsx?$/.test(f)).filter((f) => {
+        const src = readFileSync(f, "utf8");
+        return /^["']use client["']/m.test(src) && /from ["'][^"']*lib\/game-saves["']/.test(src);
+      });
+      expect(clientImportsSaves.length === 0, `a client file imports lib/game-saves, which holds the database key's reach: ${clientImportsSaves.join(", ")}`);
+      const sql = readFileSync("GAME_SAVES_SETUP.sql", "utf8");
+      expect(/primary key \(user_id, slot\)/.test(sql) && /on delete cascade/.test(sql) && /revoke all on table public\.game_saves from anon, authenticated/.test(sql),
+        "GAME_SAVES_SETUP.sql is missing the one-row-per-slot key, the cascade on account deletion, or the lock-down");
+      const slots = /SAVE_SLOTS = (\d+)/.exec(readFileSync("app/lib/gameSave.ts", "utf8"))?.[1];
+      expect(slots && new RegExp(`slot between 1 and ${slots}\\b`).test(sql), `the database allows a different number of slots from the game's ${slots}`);
+      // never with a question on screen, or a save is a way to answer twice
+      const game = readFileSync("app/early-access/game/game.ts", "utf8");
+      const status = /saveStatus\(\)[\s\S]*?\n  \}/.exec(game)?.[0] ?? "";
+      expect(/this\.quiz/.test(status) && /"nade"/.test(status) && /"stomp"/.test(status) && /"reload"/.test(status),
+        "saveStatus does not refuse while a question is up, so a save can be used to answer every question twice");
+      expect(/snapshot\(\)[^{]*\{\s*if \(!this\.saveStatus\(\)\.can\) return null;/.test(game),
+        "snapshot() does not ask saveStatus first, so the rule above can be skipped");
+      expect(/if \(this\.menuOpen \|\| \(e\.target instanceof Element && e\.target\.closest\("input, textarea, select, \[role=dialog\]"\)\)\) return;/.test(game),
+        "the game still hears keys typed into the save menu (a space or a G in a save's name)");
+      const page = readFileSync("app/early-access/play/page.tsx", "utf8");
+      expect(/readSave\(user\.id,/.test(page) && /listSaves\(user\.id\)/.test(page),
+        "the play page reads saves for anyone but the logged-in user");
+      const priv = readFileSync("app/privacy/page.tsx", "utf8");
+      expect(/Game saves/.test(priv), "the privacy page's \"complete list\" of what is stored does not mention game saves");
+    }
+
     // The playable game. Its page must check access before it builds any
     // questions or renders the game, and the question builder reads the whole
     // content registry, so a client file may only import its TYPE.
@@ -1797,6 +1842,17 @@ try {
       "a failed grenade quiz touches your grenade count — failing is supposed to give it back, not take it");
     expect(/nadeWait = NADE_FAIL_WAIT/.test(body("failNadeQuiz")) && G.NADE_FAIL_WAIT >= 3,
       "a failed grenade quiz costs no cooldown, so G is a freeze button you can hold down whenever you are losing");
+    // Matthew, 2026-10-11: three questions per throw was "way too hardcore".
+    // One, read from the constant AND used by the draw, so neither a stray
+    // literal 3 in the loop nor a constant nobody reads can bring it back.
+    expect(gnum("NADE_QUIZ_QS") === 1, `a grenade costs ${gnum("NADE_QUIZ_QS")} questions; Matthew asked for one`);
+    expect(/i < NADE_QUIZ_QS/.test(body("throwGrenade")) && !/i < [0-9]/.test(body("throwGrenade")),
+      "throwGrenade draws a fixed number of questions instead of NADE_QUIZ_QS");
+    // And a hit costs 15, not 20 ("it is genuinely a hard game"). One constant
+    // for every bolt and the stomp throw-off, so a literal 20 left behind in
+    // one of them cannot quietly keep the old game alive in that one place.
+    expect(gnum("HIT_DMG") === 15, `a hit takes ${gnum("HIT_DMG")} health; Matthew asked for 15`);
+    expect(!/this\.damage\(\d{2,}\)/.test(game), "a hit still takes a hard-coded amount instead of HIT_DMG");
     // ⚠️ And the freeze must not be free. The world stops in "nade" mode
     // because frame() never runs update() there — which also stops the run
     // clock, and pace is 30 of the 100 marks on a deck. Without that the
@@ -2235,7 +2291,7 @@ try {
       expect(Number.isFinite(hp) && Number.isFinite(q) && Number.isFinite(windowMax), "could not read the boss's numbers out of game.ts");
       expect(hp > 2 * windowMax, `${hp} health is gone in ${Math.ceil(hp / windowMax)} window(s) with both guns full — he is meant to need at least three overrides`);
       expect(hp <= 6 * windowMax, `${hp} health needs ${Math.ceil(hp / windowMax)} full windows; past six the fight is a slog, not a climax`);
-      expect(q === 3, `an override is ${q} questions; three is what a grenade costs and what the whole game has taught as "a big thing"`);
+      expect(q === 3, `an override is ${q} questions; three is what a stomp costs and what the whole game has taught as "a big thing"`);
     }
 
     // ── two keycards, and the vacuum rule ────────────────────────────────

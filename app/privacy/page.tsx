@@ -95,6 +95,11 @@ export default function PrivacyPage() {
             was right, and roughly how long you spent. This is what the progress
             page is built from.
           </li>
+          <li>
+            <strong>Game saves</strong>, only if you play the early-access
+            game and press Save — where you were in it, in up to five slots.
+            Delete them from the game&apos;s Saves menu at any time.
+          </li>
         </ul>
         <p>
           That is the complete list. There is no tracking of any kind: no Google

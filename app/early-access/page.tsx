@@ -24,7 +24,7 @@ const CHARACTERS = [
     name: "Regular alien",
     art: SMALL_ALIEN,
     alt: "A small green alien with a pistol",
-    lines: ["Same height as you", "Pew-pew: 20 damage a hit, out of your 100", "A bit stupid, still a challenge"],
+    lines: ["Same height as you", "Pew-pew: 15 damage a hit, out of your 100", "A bit stupid, still a challenge"],
   },
   {
     name: "The boss — front",

@@ -12,6 +12,9 @@ import { buildGameQuestions, countGameQuestions, playableTopics, weakTopicWeight
 import { getTopicAccuracies } from "../../lib/progress";
 import { GameClient } from "./GameClient";
 import { LEVELS } from "../game/levels";
+import { GAME_SAVES_ENABLED, listSaves, readSave } from "../../lib/game-saves";
+import { saveHref } from "../../lib/gameSave";
+import { deckName, savedAt } from "./saveLabels";
 
 // Play the alien game (developer early access). Three steps, all plain links
 // and a GET form, so nothing here needs JavaScript until the game starts:
@@ -36,6 +39,11 @@ export default async function PlayPage({ searchParams }: Props) {
   const mascotRaw = list(q.mascot)[0] ?? "";
   const mascot = (mascotRaw in MASCOTS ? mascotRaw : "pixel") as keyof typeof MASCOTS;
   const level = Math.min(LEVELS.length, Math.max(1, Number(list(q.level)[0]) || 1));
+  // Saves are read here, on the server, with the id from the session — so a
+  // slot number in the URL can only ever open one of YOUR saves.
+  const saves = await listSaves(user.id);
+  const saveSlot = Number(list(q.save)[0]);
+  const loaded = list(q.save).length ? await readSave(user.id, saveSlot) : null;
 
   // 3 · play
   if (subject && list(q.topic).length) {
@@ -65,7 +73,15 @@ export default async function PlayPage({ searchParams }: Props) {
               <Link href="/early-access" className="tap-pad opacity-70 hover:opacity-100">← Early access</Link>
               <p className="opacity-70">{subject.name} · {topics.length} topic{topics.length === 1 ? "" : "s"} · playing as {MASCOT_NAMES[mascot]}</p>
             </div>
-            <GameClient subject={subject.slug} mascot={mascot} mascotName={MASCOT_NAMES[mascot]} reload={reload} easy={easy} startLevel={level - 1} topicWeights={topicWeights} />
+            {list(q.save).length > 0 && !loaded && (
+              <p role="alert" className="mb-3 rounded-xl bg-amber-500/15 p-3 text-sm text-amber-200">That save couldn&apos;t be loaded, so this is a fresh start on level {level}.</p>
+            )}
+            {/* ⚠️ Keyed by what is being played. Load is a client-side
+                navigation to this same page, and without a key React kept the
+                old GameClient — its open save menu sat over the loaded game. */}
+            <GameClient key={loaded ? `save-${loaded.summary.slot}-${loaded.summary.updatedAt}` : `level-${level}-${topics.join(",")}`} subject={subject.slug} mascot={mascot} mascotName={MASCOT_NAMES[mascot]} reload={reload} easy={easy} startLevel={level - 1} topicWeights={topicWeights}
+              setup={{ subject: subject.slug, topics, mascot }} saves={saves} savesEnabled={GAME_SAVES_ENABLED}
+              save={loaded?.state} saveName={loaded?.summary.name} />
             <p className="mt-4 text-sm opacity-60">
               Keyboard and mouse, or touch controls on a phone — turn it sideways. Every answer counts like a practice question, so the ones you get wrong come back in “Revisit your mistakes”.
             </p>
@@ -84,6 +100,23 @@ export default async function PlayPage({ searchParams }: Props) {
       <SiteHeader greeting={false} />
       <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">Early access · developers only</p>
       <h1 className="mt-2 text-3xl font-bold">Play the alien game</h1>
+
+      {/* Carry on from a save — the quickest way back in, so it comes first */}
+      {saves.length > 0 && (
+        <section className="mt-8">
+          <h2 className="text-lg font-semibold">Carry on from a save</h2>
+          <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+            {saves.map((s) => (
+              <li key={s.slot}>
+                <Link href={saveHref(s)} className="flex min-h-11 flex-col rounded-2xl border border-black/10 p-4 transition hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5">
+                  <span className="font-semibold">{s.slot} · {s.name}</span>
+                  <span className="text-sm opacity-60">{getSubject(s.setup.subject)?.name ?? s.setup.subject} · {deckName(s.level)} · {s.health}% health · {savedAt(s.updatedAt)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {!subject ? (
         <section className="mt-8">
