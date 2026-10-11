@@ -641,6 +641,16 @@ try {
     "exam artwork is chosen by year name, not by position in the array",
   );
 
+  // A strand (Computer Science's Programming) is one wide numbered section,
+  // never a fourth year column: the columns are counted from real years only,
+  // and a strand's parts carry their number, because it is a ladder.
+  {
+    const page = subjectPage.replace(/\{\/\*[\s\S]*?\*\/\}/g, "").replace(/^\s*\/\/.*$/gm, "");
+    expect(/const columns = subject\.years\.filter\(\(g\) => !g\.strand\)/.test(page) && /COLUMNS\[columns\.length\]/.test(page) && /columns\.map\(/.test(page),
+      "the subject page lays a strand out as another year column");
+    expect(/strands\.map\(/.test(page) && /number=\{i \+ 1\}/.test(page), "the subject page does not give a strand its own numbered section");
+  }
+
   // The description Google prints under the link named three subjects out of
   // six for months. It is generated now, so it cannot drift — this check exists
   // to stop someone helpfully "simplifying" it back into a typed-out string.

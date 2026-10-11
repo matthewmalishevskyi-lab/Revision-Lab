@@ -7,11 +7,11 @@ import { MascotDisplay } from "../../components/MascotDisplay";
 import { SiteHeader } from "../../components/SiteHeader";
 import { BookArt, ExamArt } from "../../components/YearArt";
 import { ACCOUNTS_ENABLED, SITE_NAME } from "../../lib/site";
-import { getSubject, SUBJECTS, yearStyle } from "../../lib/subjects";
+import { getSubject, SUBJECTS, yearStyle, type Topic } from "../../lib/subjects";
 import { indefiniteArticle } from "../../lib/text";
 import { getViewer } from "../../lib/viewer";
 import { getMastery } from "../../lib/progress";
-import { MASTERY_LABEL } from "../../lib/mastery";
+import { MASTERY_LABEL, type Mastery } from "../../lib/mastery";
 import { MASTERY_PILL } from "../../components/WhereYouAre";
 
 // The folder is called [subject] — square brackets mean "this bit of the URL is
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     (n, group) => n + group.topics.length,
     0,
   );
-  const description = `Free GCSE ${subject.name} revision covering ${topicCount} topics across Years 9, 10 and 11. Key facts, flashcards and exam technique for each one.`;
+  const description = `Free GCSE ${subject.name} revision covering ${topicCount} topics across ${subject.years.map((g) => g.year).join(", ").replace(/, ([^,]*)$/, " and $1")}. Key facts, flashcards and exam technique for each one.`;
 
   return {
     title: `GCSE ${subject.name} revision`,
@@ -84,6 +84,11 @@ export default async function SubjectPage({ params }: Props) {
   // in the title panel. Fails soft: no pills, never no page.
   const mastery = user ? await getMastery(user.id).catch(() => null) : null;
   const topicCount = subject.years.reduce((n, y) => n + y.topics.length, 0);
+  // A STRAND (Computer Science's Programming) is laid out as one wide,
+  // numbered section of its own; only real years become columns. See
+  // `strand` in lib/subjects.ts.
+  const strands = subject.years.filter((g) => g.strand);
+  const columns = subject.years.filter((g) => !g.strand);
   const masteredHere = mastery?.bySubject.get(subject.slug) ?? 0;
 
   return (
@@ -161,8 +166,41 @@ export default async function SubjectPage({ params }: Props) {
            class has to exist somewhere as a complete literal string — which is
            exactly what this object is. This is written up in PROJECT_NOTES and
            it catches people out constantly. */}
-      <section className={`mt-10 grid grid-cols-1 gap-7 ${COLUMNS[subject.years.length] ?? "lg:grid-cols-3"}`}>
-        {subject.years.map((group, index) => {
+      {strands.map((group) => {
+        const style = yearStyle(group.year);
+        return (
+          <section
+            key={group.year}
+            aria-labelledby={`strand-${group.year}`}
+            className="mt-10 overflow-hidden rounded-3xl border border-white/60 bg-white/60 shadow-[0_20px_50px_-30px_rgba(22,24,43,0.55)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+          >
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 px-6 py-6 sm:px-8" style={{ backgroundImage: style.gradient }}>
+              <span className="shrink-0 rounded-2xl bg-white/50 p-3" style={{ color: style.text }}>
+                <Icon name="code" className="h-9 w-9" />
+              </span>
+              <div className="min-w-0 flex-1" style={{ color: style.text }}>
+                <h2 id={`strand-${group.year}`} className="text-4xl font-bold tracking-tight">{group.year}</h2>
+                <p className="mt-1 text-base font-medium opacity-80">
+                  All of it in one place, in order — {group.topics.length} parts, each one building on the ones before. Not tied to a year: start at 1 and climb.
+                </p>
+              </div>
+            </div>
+            {/* ⚠️ A ROW-WISE GRID, numbered, because this is a ladder: part 4
+                must read as coming after part 3 whichever way the columns
+                fold on a phone. */}
+            <ol className="grid grid-cols-1 gap-3 p-5 sm:grid-cols-2 lg:grid-cols-3">
+              {group.topics.map((topic, i) => (
+                <li key={topic.slug}>
+                  <TopicRow subjectSlug={subject.slug} topic={topic} colour={style.text} number={i + 1} mastery={mastery?.topics.get(`${subject.slug}/${topic.slug}`)} />
+                </li>
+              ))}
+            </ol>
+          </section>
+        );
+      })}
+
+      <section className={`mt-10 grid grid-cols-1 gap-7 ${COLUMNS[columns.length] ?? "lg:grid-cols-3"}`}>
+        {columns.map((group, index) => {
           // COLOUR is by year NAME — Business starts at Year 10, and reading
           // position 0 would paint it in the Year 9 blue.
           const style = yearStyle(group.year);
@@ -216,45 +254,7 @@ export default async function SubjectPage({ params }: Props) {
               <ul className="space-y-3 p-5">
                 {group.topics.map((topic) => (
                   <li key={topic.slug}>
-                    {/* A whole row is one link, so the entire strip is
-                        clickable — not just the words. Bigger targets are
-                        easier to hit, especially on a phone. */}
-                    <Link
-                      href={`/subjects/${subject.slug}/${topic.slug}`}
-                      className="group flex items-center gap-4 rounded-2xl border border-black/5 bg-white px-4 py-3.5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/10"
-                    >
-                      {/* The icon is drawn in `currentColor`, so setting the
-                          colour on this wrapper is enough to tint it with the
-                          year's colour. `style` rather than a class because
-                          it's a per-year value Tailwind can't know about. */}
-                      <span
-                        className="shrink-0"
-                        style={{ color: style.text }}
-                      >
-                        <Icon name={topic.icon} className="h-6 w-6" />
-                      </span>
-                      {/* ⚠️ The pill goes UNDER the title, not beside it. Beside
-                          it, in these narrow year columns, it squeezed
-                          "Fractions, decimals & %" onto three lines. */}
-                      <span className="min-w-0 flex-1">
-                        <span className="block text-lg font-medium">{topic.title}</span>
-                        {(() => {
-                          const m = mastery?.topics.get(`${subject.slug}/${topic.slug}`);
-                          if (!m || m.state === "new") return null;
-                          return (
-                            <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${MASTERY_PILL[m.state]}`}>
-                              {m.state === "mastered" ? "✓ " : ""}{MASTERY_LABEL[m.state]}
-                            </span>
-                          );
-                        })()}
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className="text-xl opacity-40 transition group-hover:translate-x-0.5 group-hover:opacity-80"
-                      >
-                        ›
-                      </span>
-                    </Link>
+                    <TopicRow subjectSlug={subject.slug} topic={topic} colour={style.text} mastery={mastery?.topics.get(`${subject.slug}/${topic.slug}`)} />
                   </li>
                 ))}
               </ul>
@@ -265,5 +265,56 @@ export default async function SubjectPage({ params }: Props) {
 
       <ExamBoardNote subjectSlug={subject.slug} />
     </main>
+  );
+}
+
+/**
+ * One topic as a row you can tap anywhere on. Shared by the year columns and
+ * a strand, so the two can never drift into looking like different things.
+ */
+function TopicRow({ subjectSlug, topic, colour, mastery, number }: {
+  subjectSlug: string;
+  topic: Topic;
+  colour: string;
+  mastery?: Mastery;
+  /** Its place in a strand's ladder; a year column has no order to show. */
+  number?: number;
+}) {
+  return (
+    // A whole row is one link, so the entire strip is clickable — not just
+    // the words. Bigger targets are easier to hit, especially on a phone.
+    <Link
+      href={`/subjects/${subjectSlug}/${topic.slug}`}
+      className="group flex h-full items-center gap-4 rounded-2xl border border-black/5 bg-white px-4 py-3.5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/10"
+    >
+      {number !== undefined && (
+        <span
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
+          style={{ color: colour, backgroundColor: "rgba(52, 211, 153, 0.22)" }}
+        >
+          {number}
+        </span>
+      )}
+      {/* The icon is drawn in `currentColor`, so setting the colour on this
+          wrapper is enough to tint it. `style` rather than a class because it
+          is a per-group value Tailwind can't know about. */}
+      <span className="shrink-0" style={{ color: colour }}>
+        <Icon name={topic.icon} className="h-6 w-6" />
+      </span>
+      {/* ⚠️ The pill goes UNDER the title, not beside it. Beside it, in the
+          narrow year columns, it squeezed "Fractions, decimals & %" onto
+          three lines. */}
+      <span className="min-w-0 flex-1">
+        <span className="block text-lg font-medium">{topic.title}</span>
+        {mastery && mastery.state !== "new" && (
+          <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${MASTERY_PILL[mastery.state]}`}>
+            {mastery.state === "mastered" ? "✓ " : ""}{MASTERY_LABEL[mastery.state]}
+          </span>
+        )}
+      </span>
+      <span aria-hidden="true" className="text-xl opacity-40 transition group-hover:translate-x-0.5 group-hover:opacity-80">
+        ›
+      </span>
+    </Link>
   );
 }

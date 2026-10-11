@@ -138,7 +138,7 @@ export default async function PastPaperPage({ params, searchParams }: Props) {
             <p className="mt-1 opacity-70">
               A longer, full-length paper — up to {QUESTION_COUNT_CAP}{" "}
               questions mixed across every topic, timed closer to how a real
-              exam feels. Tick which years to include, or leave everything
+              exam feels. Tick which parts to include, or leave everything
               ticked for the fullest paper {subject.name} can currently
               build.
             </p>
@@ -207,7 +207,7 @@ export default async function PastPaperPage({ params, searchParams }: Props) {
               href={`/subjects/${subject.slug}/past-paper`}
               className="mb-4 inline-block text-sm opacity-60 hover:underline hover:opacity-100"
             >
-              ← Change which years are included
+              ← Change what is included
             </Link>
             <MockExam
               calculator={questions.some((q) => topicNeedsCalculator(subject.slug, q.topicSlug))}

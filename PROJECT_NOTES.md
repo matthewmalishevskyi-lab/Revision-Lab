@@ -1,5 +1,56 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Computer Science: Programming is one section now, not spread over three years (2026-10-11)
+
+Matthew: *"make a big whole topic of Programming in Computer Science that will
+be separate from year 9, 10, 11. So every single thing in python and
+programming related thing will be in that MEGA topic instead of being thrown
+all over the subject."* He chose **one section with its parts as separate
+pages** (not one giant page) and to move **algorithms, defensive design &
+testing, and languages & IDEs** in as well as the nine Python rungs.
+
+    Programming   1 Variables & data types   2 Input, output & operators
+                  3 Selection   4 Iteration   5 Lists & arrays
+                  6 Working with text   7 Subprograms   8 File handling
+                  9 Algorithms   10 Putting a program together
+                  11 Defensive design & testing   12 Languages & IDEs
+    Year 9        Digital literacy, Binary & data, Networks basics
+    Year 10       Systems architecture, Memory & storage, System software,
+                  Protocols & layers, Cyber security, Databases
+    Year 11       Boolean logic, Data representation, Ethical & legal,
+                  Revision & exam practice
+
+Algorithms sits at 9 because searching and sorting ARE loops over lists.
+
+**How:** a year group can be a `strand` (`lib/subjects.ts`). ⚠️ It is still a
+group of ordinary topics, on purpose — every slug, page, practice set and
+progress row is untouched, so nobody's history moved, `known-topics` did not
+change, and everything that walks `years` (search, sitemap, tests, today's
+practice, teacher tools) needed no change. Only the subject page lays a strand
+out differently: one wide green section, numbered, above the year columns. A
+strand gets its own colour (`STRAND_STYLE`) so it never reads as Year 9 work.
+
+**First in the list on purpose:** `years` order is course order to the
+recommender's "first untouched topic" and to How this connects' "builds on".
+Programming is where a student starts. Connection totals are unchanged (570
+links, 54 with none); only some directions flipped.
+
+Small fixes it needed: the test and past-paper setup said "tick which years";
+the subject page's search description claimed "Years 9, 10 and 11" for every
+subject (wrong for Business since August) and is derived now.
+
+**Checks:** check-content asserts the strand is exactly the agreed twelve in
+order, first in the list, that no programming topic (including any future
+`programming-*`) sits in a year column, and that every group is either a
+"Year N" or marked a strand. check-security asserts the page counts columns
+from real years only and numbers a strand's parts. **Verified:** `npm run
+check` green (189,650 content, 5,705 security); 22 browser checks at 1280 and
+320px — twelve parts in reading order, three year columns, no sideways scroll,
+44px rows, the topic page's "More in Programming", a Programming-only test,
+teacher tools grouping. ⚠️ All three first-run failures were the harness: a
+missing `configured=1`, CSS `uppercase` in innerText (again), and expecting a
+word the intro screen does not show.
+
 ## The game: saves, a one-question grenade, and 15 damage a hit (2026-10-11)
 
 Matthew: manual saves "so you can actually save stuff, like have your own

@@ -39,6 +39,25 @@ export type Topic = {
 export type YearGroup = {
   year: string;
   topics: Topic[];
+  /**
+   * A STRAND rather than a year: one big area of the subject that runs
+   * through every year instead of belonging to one of them, kept in one place
+   * and in order. Computer Science's Programming is the first.
+   *
+   * Matthew, 2026-10-11: "every single thing in python and programming
+   * related thing will be in that MEGA topic instead of being thrown all over
+   * the subject." Programming had been split across Year 9, 10 and 11 — four
+   * rungs of the ladder in one column, five in the next, the rest in a third —
+   * so the one skill that builds most strictly on itself was the one you had
+   * to hunt across three columns to follow.
+   *
+   * ⚠️ IT IS STILL A GROUP OF ORDINARY TOPICS, deliberately. Every part keeps
+   * its own page, slug, practice, flashcards and progress, so nobody's history
+   * moves and nothing that walks `years` (search, the sitemap, tests, today's
+   * practice, the recommender) needed to change. Only the subject page lays a
+   * strand out differently: one wide numbered section, not a year column.
+   */
+  strand?: boolean;
 };
 
 export type Subject = {
@@ -263,9 +282,18 @@ export const YEAR_STYLES = [
 // for anything unrecognised, so an unusual year label renders plainly rather
 // than crashing the page.
 export function yearStyle(year: string) {
+  // a strand (see YearGroup) is not a year, so it never borrows a year's
+  // colour: Programming painted Year 9 blue would read as "Year 9 work"
+  if (!/^Year \d+$/.test(year)) return STRAND_STYLE;
   const index = ["Year 9", "Year 10", "Year 11"].indexOf(year);
   return YEAR_STYLES[index] ?? YEAR_STYLES[0];
 }
+
+/** The colour of a strand — green, which no year column uses. */
+export const STRAND_STYLE = {
+  gradient: "linear-gradient(150deg, #a7f3d0 0%, #6ee7b7 55%, #34d399 100%)",
+  text: "#064e3b",
+};
 
 export const SUBJECTS: Subject[] = [
   {
@@ -283,19 +311,42 @@ export const SUBJECTS: Subject[] = [
     // but fewer papers than the essay-heavy subjects above it.
     revisionWeight: 4,
     years: [
+      // ── PROGRAMMING — one strand, in order, separate from the years ──
+      // Matthew, 2026-10-11 (see `strand` on YearGroup). Twelve parts, each
+      // assuming only the ones above it — the nine-rung Python ladder from
+      // September, with algorithms slotted in once loops and lists exist
+      // (searching and sorting ARE loops over lists), then the three topics
+      // about writing programs well rather than writing them at all.
+      //
+      // FIRST in the list on purpose: `years` order is course order to
+      // everything that walks it ("builds on" in How this connects, the
+      // first untouched topic the recommender suggests), and programming is
+      // where a student starts, not something after Year 11.
+      {
+        year: "Programming",
+        strand: true,
+        topics: [
+          { slug: "programming-foundations", title: "Variables & data types", icon: "code" },
+          { slug: "programming-input-and-output", title: "Input, output & operators", icon: "terminal" },
+          { slug: "programming-selection", title: "Selection: if & else", icon: "compass" },
+          { slug: "programming-iteration", title: "Iteration: loops", icon: "circle" },
+          // lists before everything after them, which assumes you can loop
+          // over a collection
+          { slug: "programming-lists-and-arrays", title: "Lists & arrays", icon: "grid" },
+          { slug: "programming-strings", title: "Working with text", icon: "quote" },
+          { slug: "programming-subprograms", title: "Subprograms", icon: "cube" },
+          { slug: "programming-file-handling", title: "File handling", icon: "book" },
+          { slug: "algorithms", title: "Algorithms", icon: "flow" },
+          { slug: "programming", title: "Putting a program together", icon: "toolbox" },
+          { slug: "defensive-design-and-testing", title: "Defensive design & testing", icon: "bug" },
+          { slug: "languages-and-ides", title: "Languages & IDEs", icon: "speech" },
+        ],
+      },
       {
         year: "Year 9",
         topics: [
           { slug: "digital-literacy", title: "Digital literacy", icon: "globe" },
           { slug: "binary-and-data", title: "Binary & data", icon: "binary" },
-          // ── THE PROGRAMMING LADDER ──────────────────────────────────
-          // Matthew: "start from the easy stuff and then get harder and
-          // harder gradually." Rungs 1-4 are here in Year 9, 5-9 in Year 10.
-          // Each one assumes only the ones above it, and nothing else.
-          { slug: "programming-foundations", title: "Variables & data types", icon: "code" },
-          { slug: "programming-input-and-output", title: "Input, output & operators", icon: "terminal" },
-          { slug: "programming-selection", title: "Selection: if & else", icon: "compass" },
-          { slug: "programming-iteration", title: "Iteration: loops", icon: "circle" },
           { slug: "networks-basics", title: "Networks basics", icon: "network" },
         ],
       },
@@ -305,14 +356,6 @@ export const SUBJECTS: Subject[] = [
           { slug: "systems-architecture", title: "Systems architecture", icon: "chip" },
           { slug: "memory-and-storage", title: "Memory & storage", icon: "disk" },
           { slug: "system-software", title: "System software", icon: "cog" },
-          { slug: "algorithms", title: "Algorithms", icon: "flow" },
-          // Rungs 5-9. Lists come first because everything after them
-          // assumes you can loop over a collection.
-          { slug: "programming-lists-and-arrays", title: "Lists & arrays", icon: "grid" },
-          { slug: "programming-strings", title: "Working with text", icon: "quote" },
-          { slug: "programming-subprograms", title: "Subprograms", icon: "cube" },
-          { slug: "programming-file-handling", title: "File handling", icon: "book" },
-          { slug: "programming", title: "Putting a program together", icon: "toolbox" },
           { slug: "network-protocols-and-layers", title: "Protocols & layers", icon: "layers" },
           { slug: "cyber-security", title: "Cyber security", icon: "shield" },
           { slug: "databases", title: "Databases", icon: "database" },
@@ -323,8 +366,6 @@ export const SUBJECTS: Subject[] = [
         topics: [
           { slug: "boolean-logic", title: "Boolean logic", icon: "logic" },
           { slug: "data-representation", title: "Data representation", icon: "grid" },
-          { slug: "defensive-design-and-testing", title: "Defensive design & testing", icon: "bug" },
-          { slug: "languages-and-ides", title: "Languages & IDEs", icon: "toolbox" },
           { slug: "ethical-and-legal-issues", title: "Ethical & legal issues", icon: "scales" },
           { slug: "revision-and-exam-practice", title: "Revision & exam practice", icon: "pencil" },
         ],

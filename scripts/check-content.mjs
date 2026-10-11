@@ -117,7 +117,7 @@ try {
     { stdio: "inherit" },
   );
 
-  const { SUBJECTS, getSubject, getTopic, YEAR_STYLES } = require(join(out, "subjects.js"));
+  const { SUBJECTS, getSubject, getTopic, YEAR_STYLES, yearStyle, STRAND_STYLE } = require(join(out, "subjects.js"));
   const { TOPIC_CONTENT, getTopicContent } = require(join(out, "content", "index.js"));
   const { marksFor, TARIFFS_FOR_CHECKING } = require(join(out, "marks.js"));
   const { isOpenEnded } = require(join(out, "openEnded.js"));
@@ -634,6 +634,43 @@ try {
     expect(Boolean(found.subject.years[yearIndex]?.topics), `${subjectSlug}/${topicSlug}: sibling topic list missing`);
     const c = getTopicContent(subjectSlug, topicSlug);
     if (c) expect(c.flashcards.length > 0, `${subjectSlug}/${topicSlug}: Flashcards would crash on an empty deck`);
+  }
+
+  // ── Strands: Computer Science's Programming, all in one place ─────────────
+  // Matthew, 2026-10-11: every Python and programming topic in ONE "mega
+  // topic", separate from Years 9-11, "instead of being thrown all over the
+  // subject". He chose the twelve below — the nine-rung ladder plus
+  // algorithms, defensive design and languages & IDEs. The ORDER is part of
+  // it: each part assumes only the ones before it.
+  {
+    const PROGRAMMING = [
+      "programming-foundations", "programming-input-and-output", "programming-selection", "programming-iteration",
+      "programming-lists-and-arrays", "programming-strings", "programming-subprograms", "programming-file-handling",
+      "algorithms", "programming", "defensive-design-and-testing", "languages-and-ides",
+    ];
+    const cs = getSubject("computer-science");
+    const strands = cs.years.filter((g) => g.strand);
+    expect(strands.length === 1 && strands[0].year === "Programming", `Computer Science should have exactly one strand, "Programming" (has ${strands.map((g) => g.year).join(", ") || "none"})`);
+    const strand = strands[0];
+    expect(strand && JSON.stringify(strand.topics.map((t) => t.slug)) === JSON.stringify(PROGRAMMING),
+      `the Programming strand is not the agreed twelve parts in order: ${strand?.topics.map((t) => t.slug).join(", ")}`);
+    expect(cs.years[0] === strand, "Programming is not first in Computer Science's list — the list is course order, and programming is where a student starts");
+    // nothing programming left scattered through the years — including any
+    // NEW programming-* topic somebody adds to a year column later
+    for (const g of cs.years.filter((y) => !y.strand)) {
+      for (const t of g.topics) {
+        expect(!PROGRAMMING.includes(t.slug) && !/^programming/.test(t.slug), `${t.slug} is programming but sits in ${g.year}, not the Programming strand`);
+      }
+    }
+    for (const subject of SUBJECTS) {
+      for (const g of subject.years) {
+        // a group that is not a year must say so, or the subject page lays it
+        // out as a fourth year column; and a year must not claim to be a strand
+        expect(Boolean(g.strand) === !/^Year \d+$/.test(g.year), `${subject.slug}: "${g.year}" is ${g.strand ? "a strand named like a year" : "not a year but is not marked as a strand"}`);
+      }
+    }
+    expect(yearStyle("Programming") === STRAND_STYLE && !YEAR_STYLES.includes(STRAND_STYLE), "a strand borrows a year's colour, so Programming would read as Year 9 work");
+    expect(yearStyle("Year 10") === YEAR_STYLES[1], "the year colours moved");
   }
 
   // Anyone can type anything into the address bar. These must come back empty

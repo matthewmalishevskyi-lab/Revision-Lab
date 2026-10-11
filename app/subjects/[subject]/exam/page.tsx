@@ -143,9 +143,9 @@ export default async function ExamPage({ params, searchParams }: Props) {
           >
             <h2 className="text-xl font-bold">Set up your test</h2>
             <p className="mt-1 opacity-70">
-              Tick which years to include. Leave everything ticked for a full
-              mixed test across all of {subject.name}, or untick a year to
-              focus on just the one(s) you&apos;re revising right now.
+              Tick which parts to include. Leave everything ticked for a full
+              mixed test across all of {subject.name}, or untick some to
+              focus on just what you&apos;re revising right now.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -212,7 +212,7 @@ export default async function ExamPage({ params, searchParams }: Props) {
               href={`/subjects/${subject.slug}/exam`}
               className="mb-4 inline-block text-sm opacity-60 hover:underline hover:opacity-100"
             >
-              ← Change which years are included
+              ← Change what is included
             </Link>
             <MockExam
               calculator={questions.some((q) => topicNeedsCalculator(subject.slug, q.topicSlug))}
