@@ -1421,7 +1421,7 @@ try {
     const devSrc = readFileSync("app/lib/dev-access.ts", "utf8");
     const stored = devSrc.match(/DEV_CODE_HASH =\s*"([0-9a-f]+):([0-9a-f]+)"/);
     expect(stored, "dev-access.ts stores the developer code as a salted scrypt hash");
-    const PREFIX = "a2";
+    const PREFIX = "df";
     const tokens = new Set();
     for (const file of listFiles("app").filter((f) => /\.(ts|tsx|css)$/.test(f))) {
       for (const t of readFileSync(file, "utf8").match(/\b[A-Za-z0-9]{6,12}\b/g) ?? []) {

@@ -26,7 +26,7 @@ import { signValue, verifySignedValue } from "./session";
 import { verifyPassword } from "./users";
 
 const DEV_CODE_HASH =
-  "fa95171a1080cd1dddd6663a2856e007:ac518e1a4f8247ac0dfcf1a44db6e8cc4005f975b222efd930547dbc6c4ea5e405edbb6544b4a09195799e16fe2678bc6b427181b4f747481ebd10bf56d6014e";
+  "23f13568adcf54ef3b81b2c799c655d8:88b5afca5b21188ef7557d1d5ffd538605b96bde2b469755e92199a3f879cb1dc4e705d5104191f738a85d913270be63a19ddf3e1c610401d845b0b4f9e1156b";
 
 const COOKIE = "rl-dev-access";
 const KEEP_DAYS = 365;
