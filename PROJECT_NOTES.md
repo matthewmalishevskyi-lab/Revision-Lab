@@ -1,5 +1,164 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The revision page: where you are, how topics connect, and what a 6-mark answer looks like (2026-10-10 → 11)
+
+Matthew, on 2026-10-09: *"I feel that something's missing"* on the revision
+page. Four ideas offered, all approved and parked; then *"make code for
+everything we've talked about today"*. Three are built (the fourth, the
+Explain further written "why", is still a writing job — biology first).
+
+### ⚠️ THE FINDING: THE TOPIC PAGE IGNORED EVERYTHING THE SITE KNEW
+
+It read the student's account for one thing — whether to run the invisible
+study timer. Every answer on the topic, every miss waiting in "Revisit your
+mistakes", every definition marked "Got it": known, and never shown. The
+tenth visit looked like the first, and nothing said what finished looks like.
+
+### 1 · "Where you are", and a topic you can master
+
+At the top of a topic page for a logged-in student: how many of your recent
+answers were right, how many definitions you know, how many misses are
+waiting — each a link to the place that changes it — and what is left, in
+words with real numbers ("Get 6 of your last 7 right — you have 5").
+
+**Mastered** (`lib/mastery.ts`, pure): 15+ answers with 80% of the **last 20**
+right; 60% of the definitions most recently marked "Got it"; nothing waiting
+to revisit. Recent, not lifetime: ten early misses must not count for ever,
+and a lucky start must not carry a bad run.
+
+⚠️ **It is the current state, not a trophy.** Mastery can be lost. A finish
+line that stays crossed after you have forgotten the topic is a lie on the one
+page meant to tell you where you are. Nothing is stored.
+
+Shown on the topic page, as pills on the subject page (under the title — beside
+it, they squeezed "Fractions, decimals & %" onto three lines in the narrow year
+columns), on /progress, on the stats page, as two badges and as a dashboard
+celebration for a new high.
+
+⚠️ **Not inside getProgress**, deliberately: the clan leaderboard calls
+getProgress once per MEMBER, and mastery is two more database reads each for
+nothing that page shows. Pages that show it ask for it; there is a check.
+
+⚠️ **Found on the way — a hydration mismatch nobody had seen.** The dashboard
+decided its celebrations on the server, where localStorage does not exist, so
+"seen" was always null there: a fresh browser server-rendered random confetti
+and then rendered different random confetti. True for the daily goal and level
+celebrations too. Nothing is decided now until the page has hydrated.
+
+**Tested against a stand-in Supabase** (`fakesb.mjs` in the scratchpad: an
+in-memory PostgREST, enough to register, log in and read progress) — the only
+way to see real numbers on the page locally.
+
+### 2 · How this connects
+
+Every topic was an island; hormones compares itself with nerves in its first
+block and never linked to the nervous system topic. `lib/connections.ts`
+derives the joins from the vocabulary: a topic DEFINES words (its flashcards
+and its own name), other topics USE them, and the course order says which way
+round. The page shows why, in the shared words.
+
+⚠️ **The independent noise count caught the first rule.** "One shared word used
+three times" joined sorting algorithms to iteration on "pass", databases to
+Boolean logic on "table", statistics to inequalities on "range". One word now
+only counts if it is a PHRASE ("scale factor"). 570 links, 54 topics with none.
+
+⚠️ "Builds on" in the hero uses real 44px links, not `.tap-pad` — those overlap
+when links wrap, which this site has shipped twice.
+
+### 3 · One modelled exam answer per topic — biology's 20
+
+A real exam question, a top-level answer, and the scheme laid against it: which
+sentence gives which point, why it reaches Level 3, the commonest slip. Closed
+until opened — trying first is the point. The page says honestly that
+six-markers are LEVEL-marked, so the sentence mapping is a teaching device.
+
+**Blind-checked** by a separate examiner pass with no access to my reasoning:
+no wrong facts or indices, but three wording errors (one said halving the
+chromosome number is WHY gametes can fuse), a sentence implying phagocytes make
+antibodies, a missing "with nitrate ions", and unlabelled tier content. All
+fixed; photosynthesis is Higher only, two questions carry tier notes. The
+check: no padding sentence, every point on a real sentence, "compare" answers
+contrast, "evaluate" answers end on a judgement.
+
+### The checks, and the harness bugs
+
+New: `check-mastery.mjs` (30,030 — 6,000 invented students, the rule
+recomputed a second way), `check-connections.mjs` (2,891 — four named joins a
+person checked), model-answer rules in check-content, ~25 security rules.
+**27 sabotages across the three, all caught** — one only after its sabotage
+was made complete, and the rule was tightened anyway.
+
+⚠️ Four browser failures were the harness: two regexes beaten by CSS
+`uppercase` (innerText returns the transformed text), one tap test measuring
+mid-way through a smooth scroll (the fifth time this file has recorded that),
+and one celebration test sleeping instead of waiting for hydration.
+
+**Verified.** `npm run check` fully green — **189,590** content, 1,239,302
+geometry, **5,682** security, 59,200 slide-deck, 9,892 recommendation, 2,715
+pacing, 43 question-review, 96 calculator, 32 saved-answer, **12** badge,
+**30,030** mastery, **2,891** connection, 25,479 game-question and **254**
+ship's-log checks; `tsc` and `eslint` clean. In a browser: 24 mastery checks
+against the stand-in database (320px, logged out, the celebration once), 12
+connection checks, 13 model-answer checks, no console errors.
+
+## The game: a fair grade, misses that come back, weak topics first, and the boss (2026-10-10)
+
+Matthew approved four game ideas on 2026-10-09 and parked alien variety.
+
+**The grade** (`660632a`): knifing a deck while answering nothing was an A.
+Accuracy 35, questions RIGHT 30 (against a target of 0.6 per alien, shown on
+the finish screen), aliens 20, pace 15. No run answering nothing can beat 53, a
+C — checked exhaustively. Right answers, not all answers, or thirty wrong in a
+row is a B.
+
+**Misses come back** (`0b5d507`): a wrong or timed-out answer is OWED, served
+first at your next reload, and anything still owed at the lift gets one more go
+in "BEFORE YOU GO". The run clock stops there — the opposite of the grenade
+freeze, on purpose: that one can be summoned mid-fight.
+
+**Weak topics first** (`ef95280`): a weighted SHUFFLE (Efraimidis–Spirakis),
+not a weighted draw, so nothing repeats; /today's own smoothing imported, not
+copied. ⚠️ The deck is dealt by `pop()`, so the order is reversed going in —
+the one bug no test of the weights could see.
+
+### Deck 10 — the Director
+
+The boss from the early-access art: the alien in the business suit. ⚠️ **He is
+shielded, and only the questions take it down.** Four terminals; E asks three
+questions in reload mode (so the override inherits every reload rule and every
+check guarding them); three right drops the shield for eight seconds; one wrong
+locks that terminal for ten; one that worked recharges for twenty-five, so the
+next window is across the room. 480 health = three or four windows with the
+real weapons. Fans of slow bolts that crates stop; at two-thirds and one-third
+the shield slams back and three aliens come out. The lift waits for him. The
+"run-up must climb" rule now measures decks 7-9 only, identified by what is on
+a deck, not its number.
+
+### ⚠️ Found while building it: decks 7, 8 and 9 had no guide arrows at all
+
+The boss deck crashed on load — a white canvas. Its arrows were spelt "arrowE",
+copied from deck 9, and there is no "arrowE"; textures.ts throws on an unknown
+decal. Deck 9 never crashed only because all its arrows sat on door squares,
+which have no wall face, so they were dropped silently. **Sixteen arrows on decks
+7-9 had never been drawn**, and 22 decals on decks 1-6 landed nowhere. A check
+now requires a real decal, on a real face, one per face, never pointing back
+along the route — and it found one more on the flight deck pointing the wrong
+way.
+
+### ⚠️ And three pieces of text drawn on top of other text
+
+The WORLD AT 1/3 chip sat on the "10.0 s" timer on every reload since the
+slowdown shipped; the grenade subtitle ran under the progress dots since
+grenades shipped; fifteen rifle pips ran under "15/15". quizfit only asked
+whether text was inside the panel; it now fails on any two overlapping. Its
+first version compared x with y and passed a sabotage; fixed.
+
+**Verified.** 37 boss browser checks, 19 route walks and 41 title cards over
+all ten decks, 50/50 quiz-panel, 50 weapon, 42 grenade, 27 deck-7-9, 13
+economy, 16 debrief, 13 slowdown, 5 weak-topic, 25 touch. 18 boss sabotages
+caught. ⚠️ `gametest.mjs` flakes about one run in three on DIFFERENT checks —
+measured on the code from before today too, so it is the suite, not the game.
+
 ## "Explain further" — the information layer, and the 8% statistic (2026-10-08)
 
 Matthew, rejecting my plan for restructuring the page: *"I think our actual
