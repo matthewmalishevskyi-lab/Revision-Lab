@@ -15,6 +15,8 @@ import { SiteHeader } from "../../../components/SiteHeader";
 import { StudyTimer } from "../../../components/StudyTimer";
 import { WhereYouAre } from "../../../components/WhereYouAre";
 import { TopicConnections } from "../../../components/TopicConnections";
+import { ModelAnswer } from "../../../components/ModelAnswer";
+import { MODEL_ANSWERS } from "../../../lib/content/model-answers";
 import { topicConnections } from "../../../lib/connections";
 import { getMastery } from "../../../lib/progress";
 import { TopicNav, type NavSection } from "../../../components/TopicNav";
@@ -132,6 +134,9 @@ export default async function TopicPage({ params }: Props) {
   const mastery = masteryReport?.topics.get(`${subject.slug}/${topic.slug}`) ?? null;
 
   // What this topic builds on and leads to, from the words the topics share.
+  // one exam question with a modelled answer — biology first, more to come
+  const model = content ? MODEL_ANSWERS[`${subject.slug}/${topic.slug}`] : undefined;
+
   const connections = content ? topicConnections(subject.slug, topic.slug) : { buildsOn: [], leadsTo: [] };
 
   // Does anything on this page carry the Higher tier flag? Worked out once here
@@ -159,6 +164,7 @@ export default async function TopicPage({ params }: Props) {
           ? [{ id: "common-mistakes", label: "Common mistakes" }]
           : []),
         ...(content.practice ? [{ id: "practice", label: "Practice" }] : []),
+        ...(model ? [{ id: "exam-question", label: "Exam question" }] : []),
         { id: "definitions", label: "Definitions" },
         { id: "exam-technique", label: "Exam technique" },
         ...(connections.buildsOn.length || connections.leadsTo.length ? [{ id: "connections", label: "Connections" }] : []),
@@ -530,6 +536,8 @@ export default async function TopicPage({ params }: Props) {
                 </div>
               </section>
             )}
+
+            {model && <ModelAnswer model={model} accent={style.text} />}
 
             {/* Flashcards */}
             <section id="definitions" className="mt-10 scroll-mt-20">

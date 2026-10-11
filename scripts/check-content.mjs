@@ -107,6 +107,7 @@ try {
       "app/lib/openEnded.ts",
       "app/lib/normalise.ts",
       "app/lib/explainFurther.ts",
+      "app/lib/content/model-answers.ts",
       "--outDir", out,
       "--module", "commonjs",
       "--target", "es2020",
@@ -904,6 +905,44 @@ try {
     }
     expect(efStrangers === 0, `${efStrangers} definitions are attached to a block that never mentions them`);
     console.log(`\n"Explain further" opens on ${efCovered} of ${efBlocks} key-fact blocks (${pct.toFixed(0)}%), with no term explained twice in a topic.`);
+  }
+
+  // ── Modelled exam answers (2026-10-11) ────────────────────────────────────
+  // One per topic, biology first. Every rule is a way the mark scheme laid
+  // against the answer could quietly stop matching the answer.
+  {
+    const { MODEL_ANSWERS } = require(join(out, "content", "model-answers.js"));
+    const entries = Object.entries(MODEL_ANSWERS);
+    expect(entries.length >= 20, `only ${entries.length} modelled answers — biology alone should have 20`);
+    const seen = new Set();
+    for (const [key, m] of entries) {
+      const at = `model answer ${key}`;
+      expect(TOPIC_CONTENT[key], `${at} is for a topic that does not exist`);
+      expect(!seen.has(m.question), `${at} repeats another topic's question`); seen.add(m.question);
+      // a real exam question starts with a command word and ends like one
+      expect(/^(Explain|Describe|Compare|Evaluate|Suggest|Discuss|Analyse|Two |A |An |The )/.test(m.question) && /[.?]$/.test(m.question),
+        `${at}: "${m.question.slice(0, 40)}…" does not read like an exam question`);
+      expect([4, 6, 9, 12].includes(m.marks), `${at} is worth ${m.marks} marks, which is not a tariff these questions use`);
+      expect(m.answer.length >= 4, `${at} is only ${m.answer.length} sentences — that is not a full-marks answer`);
+      for (const sentence of m.answer) expect(/[.!?)]$/.test(sentence.trim()) && sentence.length > 20, `${at} has a sentence that is not a sentence: "${sentence.slice(0, 40)}"`);
+      expect(m.points.length >= 4, `${at} lists only ${m.points.length} mark-scheme points`);
+      const used = new Set();
+      for (const pt of m.points) {
+        expect(pt.sentences.length > 0, `${at}: "${pt.point}" is not laid against any sentence`);
+        for (const i of pt.sentences) {
+          expect(Number.isInteger(i) && i >= 0 && i < m.answer.length, `${at}: "${pt.point}" points at sentence ${i}, which does not exist`);
+          used.add(i);
+        }
+      }
+      // a sentence no point uses is either padding or a point the scheme forgot
+      for (let i = 0; i < m.answer.length; i++) expect(used.has(i), `${at}: sentence ${i + 1} earns nothing in the scheme — padding, or a missing point`);
+      expect(m.level.length > 40 && m.slip.length > 40, `${at} has no real explanation of its level or of where marks are lost`);
+      // "compare" means BOTH sides, and an "evaluate" ends with a judgement —
+      // the two things the model answers exist to show
+      if (/^Compare/.test(m.question)) expect(m.answer.filter((x) => /\b(whereas|unlike|while|but|however)\b/i.test(x)).length >= 2, `${at} is a "compare" answer that never sets the two side by side`);
+      if (/Evaluate|evaluate/.test(m.question)) expect(/^(Overall|On balance)/.test(m.answer[m.answer.length - 1]), `${at} is an "evaluate" answer with no judgement at the end`);
+    }
+    console.log(`\n${entries.length} modelled exam answers, every sentence laid against the scheme.`);
   }
 
   // ── Summary ────────────────────────────────────────────────────────────────

@@ -886,6 +886,15 @@ try {
     expect(/min-h-11/.test(ef), "the Explain further button is a tap target and needs min-h-11");
   }
 
+  // ── Modelled exam answers (2026-10-11) ─────────────────────────────────
+  // closed until opened — trying first is the point — and no JavaScript
+  {
+    const ma = readFileSync("app/components/ModelAnswer.tsx", "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    expect(!/^["']use client["']/m.test(ma), "ModelAnswer became a Client Component — it is a <details> and ships no JavaScript");
+    expect(/<details/.test(ma) && /<summary[\s\S]{0,80}min-h-11/.test(ma), "the model answer is no longer behind a 44px <details> button, so it is shown before the student has tried");
+    expect(!/<details[^>]*\bopen\b/.test(ma), "the model answer starts open, so students read it instead of trying first");
+  }
+
   // ── Topic mastery: "where you are" (2026-10-10) ────────────────────────
   // Each rule is one way the feature could quietly start costing something it
   // must not: the page, the database, or the browser bundle.
