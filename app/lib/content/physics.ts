@@ -448,6 +448,201 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why lubricating the moving parts of a machine increases its efficiency.",
         answer: "Without lubrication the surfaces rub together and friction does work against the motion, transferring energy to the thermal stores of the parts and the air around them. That energy is wasted, so less of the input ends up in the useful output store. A lubricant keeps the surfaces apart so there is less friction, less energy dissipated as heat, and a greater fraction of the input transferred usefully. (Mark this one yourself.)",
       },
+      {
+        question: "A 2 kg ball moves at 4 m/s. What is its kinetic energy in J?",
+        choices: [
+          "16",
+          "4",
+          "32",
+          "8",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "16, because Ek = ½ × m × v² = ½ × 2 × 4² = ½ × 2 × 16 = 16 J. Square the speed first.",
+      },
+      {
+        question: "A 4 kg box is lifted 2 m. Using g = 10 N/kg, what is its gain in GPE in J?",
+        choices: [
+          "8",
+          "80",
+          "40",
+          "800",
+        ],
+        accept: [
+          "80",
+        ],
+        answer: "80, because Ep = m × g × h = 4 × 10 × 2 = 80 J.",
+      },
+      {
+        question: "A heater transfers 600 J in 5 s. What is its power in W?",
+        choices: [
+          "3,000",
+          "605",
+          "120",
+          "12",
+        ],
+        accept: [
+          "120",
+        ],
+        answer: "120, because P = E ÷ t = 600 ÷ 5 = 120 W — power is energy transferred per second.",
+      },
+      {
+        question: "A motor takes in 400 J and does 100 J of useful work. What is its efficiency?",
+        choices: [
+          "75%",
+          "400%",
+          "40%",
+          "25%",
+        ],
+        accept: [
+          "25%",
+        ],
+        answer: "25%, because efficiency = useful output ÷ total input = 100 ÷ 400 = 0.25. It can never exceed 100%.",
+      },
+      {
+        question: "Energy in a battery is held in which energy store?",
+        choices: [
+          "Chemical",
+          "Electrical",
+          "Kinetic",
+          "Nuclear",
+        ],
+        accept: [
+          "Chemical",
+        ],
+        answer: "Chemical — 'electrical' is a pathway (how energy moves), not a store.",
+      },
+      {
+        question: "Which of these is an energy pathway rather than a store?",
+        choices: [
+          "Thermal",
+          "Heating",
+          "Chemical",
+          "Kinetic",
+        ],
+        accept: [
+          "Heating",
+        ],
+        answer: "Heating — it is HOW energy moves; thermal, chemical and kinetic are stores, WHERE energy is held.",
+      },
+      {
+        question: "What is the unit of energy?",
+        choices: [
+          "Watt",
+          "Newton",
+          "Joule",
+          "Volt",
+        ],
+        accept: [
+          "Joule",
+        ],
+        answer: "Joule (J). The watt is a joule per second, which is the unit of power, not energy.",
+      },
+      {
+        question: "If a car's speed doubles, its kinetic energy is multiplied by:",
+        choices: [
+          "2",
+          "8",
+          "16",
+          "4",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because Ek = ½mv² and speed is squared: (2v)² = 4v², so the kinetic energy quadruples.",
+      },
+      {
+        question: "1 kg of water is heated by 5 °C (c = 4,200 J/kg°C). Energy needed in J?",
+        choices: [
+          "21,000",
+          "4,200",
+          "840",
+          "2,100",
+        ],
+        accept: [
+          "21,000",
+        ],
+        answer: "21,000, because E = m × c × Δθ = 1 × 4,200 × 5 = 21,000 J.",
+      },
+      {
+        question: "A spring (k = 100 N/m) is stretched 0.2 m. Energy stored in J?",
+        choices: [
+          "20",
+          "2",
+          "4",
+          "10",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because Ee = ½ × k × e² = ½ × 100 × 0.2² = ½ × 100 × 0.04 = 2 J.",
+      },
+      {
+        question: "Oiling a bike chain mainly reduces energy wasted by:",
+        choices: [
+          "Air resistance",
+          "Radiation",
+          "Friction",
+          "Sound",
+        ],
+        accept: [
+          "Friction",
+        ],
+        answer: "Friction — lubrication lets the surfaces slide, so less energy is dissipated as heat.",
+      },
+      {
+        question: "A material with LOW thermal conductivity is a good:",
+        choices: [
+          "Conductor",
+          "Lubricant",
+          "Radiator",
+          "Insulator",
+        ],
+        accept: [
+          "Insulator",
+        ],
+        answer: "Insulator — energy passes through it slowly, so it reduces heat loss (e.g. loft insulation).",
+      },
+      {
+        question: "One watt is equal to:",
+        choices: [
+          "1 J per second",
+          "1 N per metre",
+          "1 J per kilogram",
+          "1 C per second",
+        ],
+        accept: [
+          "1 J per second",
+        ],
+        answer: "1 J per second — power is the rate of energy transfer. (1 C per second is one amp.)",
+      },
+      {
+        question: "In a closed system, what happens to the total energy?",
+        choices: [
+          "Increases",
+          "Stays the same",
+          "Decreases",
+          "Falls to zero",
+        ],
+        accept: [
+          "Stays the same",
+        ],
+        answer: "Stays the same — energy is only transferred between stores, never created or destroyed.",
+      },
+      {
+        question: "A falling ball (no air resistance) gains energy in which store?",
+        choices: [
+          "Thermal",
+          "Chemical",
+          "Kinetic",
+          "Elastic potential",
+        ],
+        accept: [
+          "Kinetic",
+        ],
+        answer: "Kinetic — energy moves from the gravitational potential store to the kinetic store as it speeds up.",
+      },
     ],
     misconceptions: [
       {
@@ -879,6 +1074,201 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why the start-up cost and the running cost of a renewable resource pull in opposite directions when judging whether it is good value.",
         answer: "Renewables are usually expensive to build — turbines, panels or a barrage all cost a great deal before a single joule is generated — but they need no fuel, so the running cost is very low. Fossil fuel stations are the other way round: cheaper to build, then paying for fuel every day they operate. Which looks better therefore depends on how long the plant runs for, because the high start-up cost is spread over its whole lifetime. (Mark this one yourself.)",
       },
+      {
+        question: "Which of these energy resources is a fossil fuel?",
+        choices: [
+          "Uranium",
+          "Biofuel",
+          "Geothermal",
+          "Natural gas",
+        ],
+        accept: [
+          "Natural gas",
+        ],
+        answer: "Natural gas — like coal and oil, it formed from ancient remains and will run out. Uranium is nuclear fuel.",
+      },
+      {
+        question: "Water from a dammed river valley turns turbines in which resource?",
+        choices: [
+          "Hydroelectric",
+          "Tidal",
+          "Wave",
+          "Geothermal",
+        ],
+        accept: [
+          "Hydroelectric",
+        ],
+        answer: "Hydroelectric — a dam floods a valley to make a reservoir. Tidal uses the tides in estuaries.",
+      },
+      {
+        question: "Burning fossil fuels releases which greenhouse gas?",
+        choices: [
+          "Sulfur dioxide",
+          "Carbon dioxide",
+          "Oxygen",
+          "Nitrogen",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "Carbon dioxide, which contributes to climate change. Sulfur dioxide causes acid rain instead.",
+      },
+      {
+        question: "A power station takes in 800 MJ from fuel and outputs 200 MJ. Efficiency?",
+        choices: [
+          "75%",
+          "400%",
+          "25%",
+          "20%",
+        ],
+        accept: [
+          "25%",
+        ],
+        answer: "25%, because efficiency = useful output ÷ input = 200 ÷ 800 = 0.25. The rest is dissipated as heat.",
+      },
+      {
+        question: "Of 400 TWh generated, 100 TWh is nuclear. What fraction is nuclear?",
+        choices: [
+          "⅓",
+          "¾",
+          "4",
+          "¼",
+        ],
+        accept: [
+          "¼",
+        ],
+        answer: "¼, because 100 ÷ 400 = ¼. Divide the part by the TOTAL (400), not by the rest (300).",
+      },
+      {
+        question: "What is the main advantage of nuclear power?",
+        choices: [
+          "No CO₂ in generating",
+          "Renewable fuel",
+          "No waste produced",
+          "Cheap to build",
+        ],
+        accept: [
+          "No CO₂ in generating",
+        ],
+        answer: "No CO₂ in generating — fission burns nothing. But uranium runs out and it leaves radioactive waste.",
+      },
+      {
+        question: "A wind turbine produces no electricity when:",
+        choices: [
+          "It is night",
+          "The air is still",
+          "It is cold",
+          "It is raining",
+        ],
+        accept: [
+          "The air is still",
+        ],
+        answer: "The air is still — no wind, no turning blades. Turbines work day or night; solar is the one that stops at night.",
+      },
+      {
+        question: "What does a tidal barrage mainly damage?",
+        choices: [
+          "Valley farmland",
+          "The ozone layer",
+          "Estuary habitats",
+          "Air quality",
+        ],
+        accept: [
+          "Estuary habitats",
+        ],
+        answer: "Estuary habitats — the barrage changes the water flow across the estuary. Flooding valleys is hydroelectric.",
+      },
+      {
+        question: "Which resource can respond fastest to a sudden rise in demand?",
+        choices: [
+          "Nuclear",
+          "Coal",
+          "Solar",
+          "Hydroelectric",
+        ],
+        accept: [
+          "Hydroelectric",
+        ],
+        answer: "Hydroelectric — opening the dam's gates starts it in minutes. Nuclear and coal take hours; solar can't be controlled.",
+      },
+      {
+        question: "Biofuel is made from:",
+        choices: [
+          "Plant matter",
+          "Crude oil",
+          "Uranium",
+          "Coal",
+        ],
+        accept: [
+          "Plant matter",
+        ],
+        answer: "Plant matter (or animal waste) — it can be regrown, so biofuel is renewable. Crude oil and coal are fossil fuels.",
+      },
+      {
+        question: "Fission of uranium heats the water in which type of power station?",
+        choices: [
+          "Coal",
+          "Nuclear",
+          "Geothermal",
+          "Gas",
+        ],
+        accept: [
+          "Nuclear",
+        ],
+        answer: "Nuclear — splitting uranium nuclei releases energy that boils water to drive turbines.",
+      },
+      {
+        question: "Petrol and diesel for cars are made from which resource?",
+        choices: [
+          "Coal",
+          "Natural gas",
+          "Oil",
+          "Uranium",
+        ],
+        accept: [
+          "Oil",
+        ],
+        answer: "Oil — petrol and diesel are refined from crude oil, a non-renewable fossil fuel.",
+      },
+      {
+        question: "A 2 MW wind turbine runs for 10 s. Energy transferred in MJ?",
+        choices: [
+          "0.2",
+          "5",
+          "12",
+          "20",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because E = P × t = 2 MW × 10 s = 20 MJ (1 MW is 1 MJ per second).",
+      },
+      {
+        question: "Why does the UK use a mix of energy resources?",
+        choices: [
+          "No single one is best",
+          "Coal is banned",
+          "Renewables are free",
+          "Solar works at night",
+        ],
+        accept: [
+          "No single one is best",
+        ],
+        answer: "No single one is best — each has a weakness in reliability, cost, location or environmental impact.",
+      },
+      {
+        question: "A renewable energy resource is one that:",
+        choices: [
+          "Produces no CO₂",
+          "Is replenished as used",
+          "Is cheap to build",
+          "Never runs a turbine",
+        ],
+        accept: [
+          "Is replenished as used",
+        ],
+        answer: "Is replenished as used — it is replaced naturally as fast as we use it. Low-carbon is a different property.",
+      },
     ],
     misconceptions: [
       {
@@ -1295,6 +1685,201 @@ export const PHYSICS: Record<string, TopicContent> = {
       {
         question: "Explain why a substance as a gas has a much lower density than the same substance as a liquid.",
         answer: "Density is mass divided by volume, and a change of state does not change the mass. In a liquid the particles are touching, whereas in a gas they are far apart with empty space between them, so the same number of particles spreads through a vastly larger volume. Dividing the same mass by a much bigger volume gives a much smaller density. (Mark this one yourself.)",
+      },
+      {
+        question: "A 20 g block has a volume of 4 cm³. What is its density in g/cm³?",
+        choices: [
+          "80",
+          "0.2",
+          "5",
+          "24",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because density = mass ÷ volume = 20 ÷ 4 = 5 g/cm³.",
+      },
+      {
+        question: "1 g/cm³ is equal to how many kg/m³?",
+        choices: [
+          "100",
+          "10",
+          "1,000,000",
+          "1,000",
+        ],
+        accept: [
+          "1,000",
+        ],
+        answer: "1,000 — multiply a g/cm³ value by 1,000 to get kg/m³, so water is 1 g/cm³ = 1,000 kg/m³.",
+      },
+      {
+        question: "In which state do particles vibrate about fixed positions?",
+        choices: [
+          "Solid",
+          "Liquid",
+          "Gas",
+          "All three",
+        ],
+        accept: [
+          "Solid",
+        ],
+        answer: "Solid — particles are packed in fixed positions and only vibrate. In liquids and gases they move about.",
+      },
+      {
+        question: "What is the change of state from gas to liquid called?",
+        choices: [
+          "Evaporating",
+          "Condensing",
+          "Freezing",
+          "Sublimating",
+        ],
+        accept: [
+          "Condensing",
+        ],
+        answer: "Condensing — gas to liquid. Evaporating/boiling is liquid to gas; freezing is liquid to solid.",
+      },
+      {
+        question: "Which change of state releases energy to the surroundings?",
+        choices: [
+          "Melting",
+          "Boiling",
+          "Freezing",
+          "Evaporating",
+        ],
+        accept: [
+          "Freezing",
+        ],
+        answer: "Freezing (and condensing) give energy out. Melting, boiling and evaporating take energy in.",
+      },
+      {
+        question: "100 g of ice melts completely. What is the mass of the water, in g?",
+        choices: [
+          "90",
+          "110",
+          "50",
+          "100",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100 — mass is conserved in a change of state. The particles are the same, just arranged differently.",
+      },
+      {
+        question: "Energy to melt 0.1 kg of ice (L = 334,000 J/kg), in J?",
+        choices: [
+          "33,400",
+          "334,000",
+          "3,340,000",
+          "3,340",
+        ],
+        accept: [
+          "33,400",
+        ],
+        answer: "33,400, because E = m × L = 0.1 × 334,000 = 33,400 J.",
+      },
+      {
+        question: "Specific latent heat of vaporisation is for which change of state?",
+        choices: [
+          "Melting",
+          "Boiling",
+          "Freezing",
+          "Subliming",
+        ],
+        accept: [
+          "Boiling",
+        ],
+        answer: "Boiling (and condensing) — liquid to gas. Latent heat of FUSION is for melting and freezing.",
+      },
+      {
+        question: "Internal energy is the total of which two energies of the particles?",
+        choices: [
+          "Kinetic and thermal",
+          "Chemical and nuclear",
+          "Kinetic and potential",
+          "Potential and elastic",
+        ],
+        accept: [
+          "Kinetic and potential",
+        ],
+        answer: "Kinetic and potential — the total kinetic and potential energy of all the particles in the system.",
+      },
+      {
+        question: "On a heating graph, what does a flat section show?",
+        choices: [
+          "Heating has stopped",
+          "The solid is cooling",
+          "Particles slow down",
+          "A change of state",
+        ],
+        accept: [
+          "A change of state",
+        ],
+        answer: "A change of state — the energy breaks bonds between particles, so the temperature stays constant.",
+      },
+      {
+        question: "A gas is squeezed to half its volume at constant temperature. Its pressure:",
+        choices: [
+          "Doubles",
+          "Halves",
+          "Stays the same",
+          "Quadruples",
+        ],
+        accept: [
+          "Doubles",
+        ],
+        answer: "Doubles, because pressure × volume is constant: halve V and p must double. Particles hit the walls more often.",
+      },
+      {
+        question: "Gas pressure on a container is caused by particles:",
+        choices: [
+          "Expanding in size",
+          "Hitting the walls",
+          "Repelling each other",
+          "Being very heavy",
+        ],
+        accept: [
+          "Hitting the walls",
+        ],
+        answer: "Hitting the walls — each collision exerts a force on the wall, and force per area is pressure.",
+      },
+      {
+        question: "A 30 g stone has a density of 3 g/cm³. What is its volume in cm³?",
+        choices: [
+          "90",
+          "0.1",
+          "10",
+          "33",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because volume = mass ÷ density = 30 ÷ 3 = 10 cm³.",
+      },
+      {
+        question: "Evaporation from the surface of a liquid can happen:",
+        choices: [
+          "Only at 100 °C",
+          "Only at boiling point",
+          "Only when frozen",
+          "At any temperature",
+        ],
+        accept: [
+          "At any temperature",
+        ],
+        answer: "At any temperature — the fastest particles escape from the surface. Boiling happens only at the boiling point.",
+      },
+      {
+        question: "Which state has a fixed volume but takes the shape of its container?",
+        choices: [
+          "Liquid",
+          "Solid",
+          "Gas",
+          "Solid and liquid",
+        ],
+        accept: [
+          "Liquid",
+        ],
+        answer: "Liquid — particles are close together but can move past each other. A solid keeps its own shape.",
       },
     ],
     misconceptions: [
@@ -1717,6 +2302,201 @@ export const PHYSICS: Record<string, TopicContent> = {
       {
         question: "Explain, using moments, why a door handle is fitted at the edge of the door furthest from the hinges.",
         answer: "The hinges act as the pivot, and the moment of a force is the force multiplied by its perpendicular distance from that pivot. Putting the handle at the far edge makes that distance as large as the door allows, so a small push produces the largest possible turning effect. A handle near the hinges would need a far bigger force to open the same door. (Mark this one yourself.)",
+      },
+      {
+        question: "On the Moon g = 1.6 N/kg. What is the weight of a 10 kg rock there, in N?",
+        choices: [
+          "10",
+          "16",
+          "98",
+          "6.25",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "16, because W = m × g = 10 × 1.6 = 16 N. The mass is still 10 kg; only the weight changes.",
+      },
+      {
+        question: "Which of these is a scalar quantity?",
+        choices: [
+          "Velocity",
+          "Force",
+          "Speed",
+          "Acceleration",
+        ],
+        accept: [
+          "Speed",
+        ],
+        answer: "Speed — it has size only. Velocity, force and acceleration are vectors, with a direction too.",
+      },
+      {
+        question: "Which of these is a contact force?",
+        choices: [
+          "Gravity",
+          "Magnetism",
+          "Electrostatic",
+          "Friction",
+        ],
+        accept: [
+          "Friction",
+        ],
+        answer: "Friction — the surfaces must touch. Gravity, magnetism and electrostatic forces act at a distance.",
+      },
+      {
+        question: "Forces of 50 N right and 20 N left act on a box. What is the resultant?",
+        choices: [
+          "30 N right",
+          "70 N right",
+          "30 N left",
+          "70 N left",
+        ],
+        accept: [
+          "30 N right",
+        ],
+        answer: "30 N right — opposite forces subtract: 50 − 20 = 30 N, in the direction of the bigger force.",
+      },
+      {
+        question: "Two people push a car forwards with 200 N and 150 N. Resultant, in N?",
+        choices: [
+          "50",
+          "350",
+          "175",
+          "300",
+        ],
+        accept: [
+          "350",
+        ],
+        answer: "350 — forces in the same direction add: 200 + 150 = 350 N.",
+      },
+      {
+        question: "A 40 N force pushes a trolley 2 m. Work done in J?",
+        choices: [
+          "20",
+          "42",
+          "80",
+          "0.05",
+        ],
+        accept: [
+          "80",
+        ],
+        answer: "80, because work done = force × distance = 40 × 2 = 80 J.",
+      },
+      {
+        question: "One joule is the work done when a 1 N force moves an object:",
+        choices: [
+          "1 second",
+          "1 kilogram",
+          "1 metre per second",
+          "1 metre",
+        ],
+        accept: [
+          "1 metre",
+        ],
+        answer: "1 metre along the force, because W = F × s, so 1 J = 1 N × 1 m.",
+      },
+      {
+        question: "A spring (k = 40 N/m) is stretched 0.5 m. What force is needed, in N?",
+        choices: [
+          "20",
+          "80",
+          "10",
+          "5",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because Hooke's law gives F = k × e = 40 × 0.5 = 20 N.",
+      },
+      {
+        question: "A 6 N force stretches a spring 0.2 m. Its spring constant in N/m is:",
+        choices: [
+          "1.2",
+          "30",
+          "0.03",
+          "6.2",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because k = F ÷ e = 6 ÷ 0.2 = 30 N/m.",
+      },
+      {
+        question: "A 300 N child sits 2 m left of a seesaw pivot. What weight 3 m right balances it, in N?",
+        choices: [
+          "450",
+          "600",
+          "200",
+          "300",
+        ],
+        accept: [
+          "200",
+        ],
+        answer: "200, because moments balance: 300 × 2 = 600 Nm, and 600 ÷ 3 = 200 N.",
+      },
+      {
+        question: "A moment equals the force multiplied by the:",
+        choices: [
+          "Distance moved",
+          "Mass",
+          "Time taken",
+          "Perpendicular distance",
+        ],
+        accept: [
+          "Perpendicular distance",
+        ],
+        answer: "Perpendicular distance from the pivot to the line of the force: M = F × d, in Nm.",
+      },
+      {
+        question: "An astronaut's mass is 70 kg on Earth. What is her mass on the Moon, in kg?",
+        choices: [
+          "70",
+          "12",
+          "420",
+          "0",
+        ],
+        accept: [
+          "70",
+        ],
+        answer: "70 — mass is the amount of matter and never changes. Her WEIGHT falls to about a sixth on the Moon.",
+      },
+      {
+        question: "A car moves at a steady 20 m/s in a straight line. The resultant force is:",
+        choices: [
+          "Forwards",
+          "Zero",
+          "Backwards",
+          "Equal to its weight",
+        ],
+        accept: [
+          "Zero",
+        ],
+        answer: "Zero — constant velocity means balanced forces, so the driving force equals the resistive forces.",
+      },
+      {
+        question: "Weight is measured in:",
+        choices: [
+          "Kilograms",
+          "Joules",
+          "Newtons",
+          "N/kg",
+        ],
+        accept: [
+          "Newtons",
+        ],
+        answer: "Newtons, because weight is a force (W = m × g). Mass is the quantity measured in kilograms.",
+      },
+      {
+        question: "On a force diagram, the length of an arrow shows the force's:",
+        choices: [
+          "Direction",
+          "Type",
+          "Mass",
+          "Size",
+        ],
+        accept: [
+          "Size",
+        ],
+        answer: "Size — a longer arrow means a bigger force. The arrowhead shows the direction.",
       },
     ],
     misconceptions: [
@@ -2141,6 +2921,201 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain what it means, in terms of charge and energy, to say that a battery has a potential difference of 12 V.",
         answer: "Potential difference is the energy transferred per unit of charge, so 12 V means 12 joules of energy are given to every coulomb of charge that passes through the battery. A coulomb travelling right round the circuit therefore delivers those 12 joules to the components. This is why E = Q × V works: multiply the joules per coulomb by the number of coulombs and you get the total energy. (Mark this one yourself.)",
       },
+      {
+        question: "A 2 A current flows for 1 minute. What charge flows, in C?",
+        choices: [
+          "120",
+          "2",
+          "30",
+          "62",
+        ],
+        accept: [
+          "120",
+        ],
+        answer: "120, because Q = I × t = 2 × 60 = 120 C. Convert minutes to seconds first.",
+      },
+      {
+        question: "A 12 V supply drives 2 A through a resistor. Its resistance in Ω?",
+        choices: [
+          "24",
+          "6",
+          "10",
+          "14",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because R = V ÷ I = 12 ÷ 2 = 6 Ω.",
+      },
+      {
+        question: "Resistance is measured in:",
+        choices: [
+          "Amps",
+          "Volts",
+          "Ohms",
+          "Watts",
+        ],
+        accept: [
+          "Ohms",
+        ],
+        answer: "Ohms (Ω). Current is in amps, potential difference in volts and power in watts.",
+      },
+      {
+        question: "What is the unit of electric charge?",
+        choices: [
+          "Ampere",
+          "Volt",
+          "Ohm",
+          "Coulomb",
+        ],
+        accept: [
+          "Coulomb",
+        ],
+        answer: "Coulomb (C). One amp is a flow of one coulomb per second (Q = I × t).",
+      },
+      {
+        question: "A 230 V kettle draws 10 A. What is its power in W?",
+        choices: [
+          "2,300",
+          "23",
+          "240",
+          "220",
+        ],
+        accept: [
+          "2,300",
+        ],
+        answer: "2,300, because P = V × I = 230 × 10 = 2,300 W.",
+      },
+      {
+        question: "A 100 W lamp is on for 60 s. Energy transferred in J?",
+        choices: [
+          "1.67",
+          "6,000",
+          "160",
+          "100",
+        ],
+        accept: [
+          "6,000",
+        ],
+        answer: "6,000, because E = P × t = 100 × 60 = 6,000 J.",
+      },
+      {
+        question: "10 C of charge moves through a p.d. of 6 V. Energy transferred in J?",
+        choices: [
+          "1.67",
+          "16",
+          "60",
+          "0.6",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "60, because E = Q × V = 10 × 6 = 60 J. Each coulomb transfers 6 J.",
+      },
+      {
+        question: "Two lamps are in series. 0.5 A flows through the first. Current in the second, in A?",
+        choices: [
+          "0.25",
+          "1",
+          "0",
+          "0.5",
+        ],
+        accept: [
+          "0.5",
+        ],
+        answer: "0.5 — current is the same everywhere in a series circuit; it is not used up.",
+      },
+      {
+        question: "A 3 Ω and a 5 Ω resistor are in series. Total resistance in Ω?",
+        choices: [
+          "8",
+          "15",
+          "2",
+          "1.875",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8 — in series the total resistance is the sum: 3 + 5 = 8 Ω.",
+      },
+      {
+        question: "Two lamps are in parallel across a 6 V battery. P.d. across each lamp, in V?",
+        choices: [
+          "3",
+          "6",
+          "12",
+          "0",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6 — every parallel branch gets the full supply p.d. It is CURRENT that is shared.",
+      },
+      {
+        question: "As a thermistor gets hotter, its resistance:",
+        choices: [
+          "Increases",
+          "Stays the same",
+          "Decreases",
+          "Becomes zero",
+        ],
+        accept: [
+          "Decreases",
+        ],
+        answer: "Decreases — a thermistor's resistance falls as temperature rises, so it is used in temperature sensors.",
+      },
+      {
+        question: "Potential difference is the energy transferred per unit of:",
+        choices: [
+          "Time",
+          "Current",
+          "Resistance",
+          "Charge",
+        ],
+        accept: [
+          "Charge",
+        ],
+        answer: "Charge — 1 volt means 1 joule transferred per coulomb (V = E ÷ Q).",
+      },
+      {
+        question: "A 2 A current flows through a 10 Ω resistor. Power in W?",
+        choices: [
+          "40",
+          "20",
+          "400",
+          "5",
+        ],
+        accept: [
+          "40",
+        ],
+        answer: "40, because P = I² × R = 2² × 10 = 4 × 10 = 40 W. Square the current first.",
+      },
+      {
+        question: "For an ohmic resistor at constant temperature, the I–V graph is:",
+        choices: [
+          "A curve",
+          "Straight, via origin",
+          "Horizontal",
+          "One-way only",
+        ],
+        accept: [
+          "Straight, via origin",
+        ],
+        answer: "Straight, via origin — current is proportional to p.d., so the resistance stays constant.",
+      },
+      {
+        question: "A step-down transformer is used to:",
+        choices: [
+          "Raise p.d. for cables",
+          "Lower the current",
+          "Lower p.d. for homes",
+          "Turn a.c. into d.c.",
+        ],
+        accept: [
+          "Lower p.d. for homes",
+        ],
+        answer: "Lower p.d. for homes — the Grid's high voltage is stepped down to 230 V before it reaches houses.",
+      },
     ],
     misconceptions: [
       {
@@ -2556,6 +3531,201 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Two isotopes of the same element react identically in chemistry but one is radioactive and the other is not. Explain why.",
         answer: "Chemical behaviour is set by the electrons, and isotopes have the same number of protons and therefore the same electron arrangement, so they bond in exactly the same way. Radioactivity is a property of the nucleus, and the isotopes differ in how many neutrons they contain. One neutron-to-proton ratio can be stable while another is not, so one isotope decays and the other does not. (Mark this one yourself.)",
       },
+      {
+        question: "An atom has mass number 23 and atomic number 11. How many neutrons?",
+        choices: [
+          "23",
+          "11",
+          "34",
+          "12",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because neutrons = mass number − atomic number = 23 − 11 = 12.",
+      },
+      {
+        question: "Isotopes of an element have different numbers of:",
+        choices: [
+          "Neutrons",
+          "Protons",
+          "Electrons",
+          "Shells",
+        ],
+        accept: [
+          "Neutrons",
+        ],
+        answer: "Neutrons — isotopes have the same number of protons (same element) but different mass numbers.",
+      },
+      {
+        question: "What is the relative charge of a neutron?",
+        choices: [
+          "+1",
+          "0",
+          "−1",
+          "+2",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0 — neutrons are neutral. Protons are +1 and electrons are −1.",
+      },
+      {
+        question: "Where is almost all the mass of an atom?",
+        choices: [
+          "The electron shells",
+          "Spread evenly",
+          "The nucleus",
+          "Empty space",
+        ],
+        accept: [
+          "The nucleus",
+        ],
+        answer: "The nucleus — protons and neutrons are there; electrons have almost no mass.",
+      },
+      {
+        question: "The alpha scattering experiment showed that atoms have:",
+        choices: [
+          "Electrons in shells",
+          "Spread-out charge",
+          "No empty space",
+          "A tiny dense nucleus",
+        ],
+        accept: [
+          "A tiny dense nucleus",
+        ],
+        answer: "A tiny dense nucleus — most alphas passed straight through, but a few bounced back off a small positive centre.",
+      },
+      {
+        question: "Which atomic model did the alpha scattering experiment replace?",
+        choices: [
+          "Plum pudding",
+          "Nuclear",
+          "Bohr",
+          "Electron shell",
+        ],
+        accept: [
+          "Plum pudding",
+        ],
+        answer: "Plum pudding — a ball of positive charge with electrons in it. Scattering led to the nuclear model.",
+      },
+      {
+        question: "A radium nucleus (atomic number 88) emits an alpha particle. New atomic number?",
+        choices: [
+          "84",
+          "86",
+          "89",
+          "87",
+        ],
+        accept: [
+          "86",
+        ],
+        answer: "86 — alpha decay lowers the atomic number by 2 (88 − 2 = 86) and the mass number by 4.",
+      },
+      {
+        question: "Gamma emission changes the mass number of a nucleus by:",
+        choices: [
+          "−4",
+          "+1",
+          "0",
+          "−2",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0 — gamma is electromagnetic radiation, so neither the mass number nor the atomic number changes.",
+      },
+      {
+        question: "Which radiation has a range of only a few cm in air?",
+        choices: [
+          "Beta",
+          "Gamma",
+          "All three",
+          "Alpha",
+        ],
+        accept: [
+          "Alpha",
+        ],
+        answer: "Alpha — it is the most ionising, so it gives up its energy quickly and travels only a few cm.",
+      },
+      {
+        question: "Gamma radiation is:",
+        choices: [
+          "Electromagnetic wave",
+          "A helium nucleus",
+          "A fast electron",
+          "A neutron",
+        ],
+        accept: [
+          "Electromagnetic wave",
+        ],
+        answer: "Electromagnetic wave — gamma is EM radiation. Alpha is a helium nucleus; beta is a fast electron.",
+      },
+      {
+        question: "What fraction of a sample remains undecayed after 2 half-lives?",
+        choices: [
+          "½",
+          "¼",
+          "⅛",
+          "0",
+        ],
+        accept: [
+          "¼",
+        ],
+        answer: "¼, because each half-life halves what is left: ½ after one, then ½ × ½ = ¼ after two.",
+      },
+      {
+        question: "A count rate falls from 200 to 100 in 8 minutes. What is the half-life, in minutes?",
+        choices: [
+          "4",
+          "16",
+          "8",
+          "100",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8 — half-life is the time for the count rate to halve, and 200 → 100 took 8 minutes.",
+      },
+      {
+        question: "A source reads 400 counts/min with a half-life of 2 h. Reading after 4 h, in counts/min?",
+        choices: [
+          "200",
+          "0",
+          "50",
+          "100",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100 — 4 h is 2 half-lives: 400 → 200 → 100 counts/min.",
+      },
+      {
+        question: "Which type of radiation is the least ionising?",
+        choices: [
+          "Gamma",
+          "Beta",
+          "Alpha",
+          "All are equal",
+        ],
+        accept: [
+          "Gamma",
+        ],
+        answer: "Gamma — it is the least ionising and the most penetrating. Alpha is the most ionising.",
+      },
+      {
+        question: "Roughly what is the radius of an atom?",
+        choices: [
+          "1 × 10⁻¹⁴ m",
+          "1 × 10⁻¹⁰ m",
+          "1 × 10¹⁰ m",
+          "1 × 10⁻³ m",
+        ],
+        accept: [
+          "1 × 10⁻¹⁰ m",
+        ],
+        answer: "1 × 10⁻¹⁰ m — the nucleus is about 10,000 times smaller, around 1 × 10⁻¹⁴ m.",
+      },
     ],
     misconceptions: [
       {
@@ -2968,6 +4138,201 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why a thermistor is a suitable component for the sensing part of a fire alarm circuit.",
         answer: "A thermistor's resistance falls sharply as its temperature rises, so a fire produces a large, automatic change in the circuit with no moving parts. That drop in resistance increases the current, and the change can be used to trigger the alarm once it passes a set value. The response is fast and repeatable, and the thermistor resets itself when the temperature falls again. (Mark this one yourself.)",
       },
+      {
+        question: "Resistors of 3 Ω and 9 Ω are in series. What is the total resistance in Ω?",
+        choices: [
+          "2.25",
+          "12",
+          "27",
+          "6",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because in series resistances simply add: 3 + 9 = 12 Ω.",
+      },
+      {
+        question: "Two identical 10 Ω resistors are in parallel. What is the total resistance in Ω?",
+        choices: [
+          "5",
+          "20",
+          "100",
+          "10",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because two identical resistors in parallel give half the value of one: 10 ÷ 2 = 5 Ω.",
+      },
+      {
+        question: "A 4 Ω resistor carries a current of 2 A. What is the p.d. across it in V?",
+        choices: [
+          "2",
+          "0.5",
+          "6",
+          "8",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because V = I × R = 2 × 4 = 8 V.",
+      },
+      {
+        question: "A 12 V supply drives 0.5 A through a resistor. What is its resistance in Ω?",
+        choices: [
+          "6",
+          "12.5",
+          "24",
+          "11.5",
+        ],
+        accept: [
+          "24",
+        ],
+        answer: "24, because R = V ÷ I = 12 ÷ 0.5 = 24 Ω. Multiplying (12 × 0.5 = 6) is the classic slip.",
+      },
+      {
+        question: "Two identical lamps are in series with a 6 V supply. What is the p.d. across each in V?",
+        choices: [
+          "6",
+          "3",
+          "12",
+          "0",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because in series the supply p.d. is shared out: 6 ÷ 2 = 3 V across each lamp.",
+      },
+      {
+        question: "Two lamps are in parallel with a 6 V supply. What is the p.d. across each branch in V?",
+        choices: [
+          "6",
+          "3",
+          "12",
+          "2",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because every branch of a parallel circuit has the full supply p.d. across it.",
+      },
+      {
+        question: "0.4 A leaves the cell in a series circuit. What is the current in the last lamp, in A?",
+        choices: [
+          "0.2",
+          "0",
+          "0.8",
+          "0.4",
+        ],
+        accept: [
+          "0.4",
+        ],
+        answer: "0.4, because the current is the same at every point in a series circuit — it is not used up.",
+      },
+      {
+        question: "Which component's resistance falls as light intensity rises?",
+        choices: [
+          "Thermistor",
+          "Diode",
+          "LDR",
+          "Filament lamp",
+        ],
+        accept: [
+          "LDR",
+        ],
+        answer: "LDR (light-dependent resistor), used in automatic street lights. A thermistor responds to temperature.",
+      },
+      {
+        question: "How must an ammeter be connected to measure the current through a lamp?",
+        choices: [
+          "In parallel with it",
+          "In series with it",
+          "Across the cell",
+          "Instead of the lamp",
+        ],
+        accept: [
+          "In series with it",
+        ],
+        answer: "In series with it, so the same current flows through both. A voltmeter goes in parallel.",
+      },
+      {
+        question: "In a resistance experiment, what does a variable resistor let you change?",
+        choices: [
+          "The current",
+          "The temperature",
+          "The type of component",
+          "The cell's polarity",
+        ],
+        accept: [
+          "The current",
+        ],
+        answer: "The current, so you can take several pairs of current and p.d. readings instead of just one.",
+      },
+      {
+        question: "As a filament lamp gets hotter, what happens to its resistance?",
+        choices: [
+          "It decreases",
+          "It stays the same",
+          "It becomes zero",
+          "It increases",
+        ],
+        accept: [
+          "It increases",
+        ],
+        answer: "It increases, which is why the lamp's I-V graph curves and flattens instead of being a straight line.",
+      },
+      {
+        question: "An I-V graph is flat one way and rises steeply the other way. Which component is it?",
+        choices: [
+          "Fixed resistor",
+          "Filament lamp",
+          "Diode",
+          "Thermistor",
+        ],
+        accept: [
+          "Diode",
+        ],
+        answer: "Diode — it conducts in one direction only, so almost no current flows in the reverse direction.",
+      },
+      {
+        question: "Resistors of 2 Ω, 3 Ω and 5 Ω are in series. What is the total resistance in Ω?",
+        choices: [
+          "30",
+          "10",
+          "8",
+          "2",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because series resistances add: 2 + 3 + 5 = 10 Ω.",
+      },
+      {
+        question: "Branch currents in a parallel circuit are 1.5 A and 0.5 A. What is the supply current in A?",
+        choices: [
+          "2",
+          "1",
+          "0.75",
+          "1.5",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because branch currents add up to the total: 1.5 + 0.5 = 2 A.",
+      },
+      {
+        question: "A 5 Ω and a 20 Ω resistor are in parallel. The total resistance is:",
+        choices: [
+          "25 Ω",
+          "12.5 Ω",
+          "Between 5 Ω and 20 Ω",
+          "Less than 5 Ω",
+        ],
+        accept: [
+          "Less than 5 Ω",
+        ],
+        answer: "Less than 5 Ω, because the total resistance in parallel is always below the smallest branch resistance.",
+      },
     ],
     misconceptions: [
       {
@@ -3377,6 +4742,201 @@ export const PHYSICS: Record<string, TopicContent> = {
       {
         question: "A kettle is rated at 3 kW and a fridge at 0.1 kW, yet the fridge can cost more to run over a month. Explain how this is possible.",
         answer: "Energy used is power multiplied by time, so the power rating alone does not decide the bill. The kettle transfers energy very fast but is only on for a few minutes a day, giving a small total. The fridge draws far less power but runs around the clock, so its hours accumulate and can easily outweigh the kettle's higher rating. (Mark this one yourself.)",
+      },
+      {
+        question: "What colour is the neutral wire in a UK plug?",
+        choices: [
+          "Brown",
+          "Green and yellow",
+          "Blue",
+          "Black",
+        ],
+        accept: [
+          "Blue",
+        ],
+        answer: "Blue. The live wire is brown and the earth wire is green and yellow striped.",
+      },
+      {
+        question: "Roughly what potential difference is the neutral wire at?",
+        choices: [
+          "230 V",
+          "0 V",
+          "115 V",
+          "50 V",
+        ],
+        accept: [
+          "0 V",
+        ],
+        answer: "0 V (close to it) — the neutral completes the circuit. The live wire is the one at about 230 V.",
+      },
+      {
+        question: "What type of current does a battery supply?",
+        choices: [
+          "Direct current",
+          "Alternating current",
+          "Mains current",
+          "Static charge",
+        ],
+        accept: [
+          "Direct current",
+        ],
+        answer: "Direct current (dc) — it flows one way only. Mains is alternating current, which keeps changing direction.",
+      },
+      {
+        question: "An appliance runs on 230 V and draws 3 A. What is its power in W?",
+        choices: [
+          "233",
+          "76.7",
+          "69",
+          "690",
+        ],
+        accept: [
+          "690",
+        ],
+        answer: "690, because P = V × I = 230 × 3 = 690 W.",
+      },
+      {
+        question: "A 2 kW heater runs for 5 hours. How much energy does it use, in kWh?",
+        choices: [
+          "2.5",
+          "0.4",
+          "10",
+          "7",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because energy in kWh = power in kW × time in hours = 2 × 5 = 10 kWh.",
+      },
+      {
+        question: "5 kWh of electricity costs 20p per kWh. What is the total cost in pence?",
+        choices: [
+          "25",
+          "100",
+          "4",
+          "1000",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because cost = energy × price per kWh = 5 × 20 = 100p, which is £1.",
+      },
+      {
+        question: "A 50 W lamp is switched on for 10 s. How much energy does it transfer, in J?",
+        choices: [
+          "500",
+          "5",
+          "60",
+          "3000",
+        ],
+        accept: [
+          "500",
+        ],
+        answer: "500, because E = P × t = 50 × 10 = 500 J. For joules, use watts and seconds.",
+      },
+      {
+        question: "A 3 A current flows in a 5 Ω cable. What power is wasted as heat, in W?",
+        choices: [
+          "45",
+          "15",
+          "75",
+          "225",
+        ],
+        accept: [
+          "45",
+        ],
+        answer: "45, because P = I² × R = 3² × 5 = 9 × 5 = 45 W. Square the current, not the p.d.",
+      },
+      {
+        question: "An appliance normally draws 11 A. Which fuse should it have?",
+        choices: [
+          "3 A",
+          "5 A",
+          "13 A",
+          "No fuse",
+        ],
+        accept: [
+          "13 A",
+        ],
+        answer: "13 A, because the fuse must be the next rating ABOVE the normal current of 11 A.",
+      },
+      {
+        question: "Which wire carries a current only when there is a fault?",
+        choices: [
+          "Live",
+          "Earth",
+          "Neutral",
+          "Fuse wire",
+        ],
+        accept: [
+          "Earth",
+        ],
+        answer: "Earth — it is a safety wire at 0 V and only carries current if a fault makes the case live.",
+      },
+      {
+        question: "Why is the fuse fitted in the live wire?",
+        choices: [
+          "To cut off the 230 V",
+          "To earth the case",
+          "To lower the voltage",
+          "To reduce the current",
+        ],
+        accept: [
+          "To cut off the 230 V",
+        ],
+        answer: "To cut off the 230 V: when the fuse blows, the appliance is fully disconnected from the live supply.",
+      },
+      {
+        question: "Which unit is used for energy on an electricity bill?",
+        choices: [
+          "Kilowatt",
+          "Volt",
+          "Ampere",
+          "Kilowatt-hour",
+        ],
+        accept: [
+          "Kilowatt-hour",
+        ],
+        answer: "Kilowatt-hour (kWh) = power in kW × time in hours. The kilowatt is a unit of power, not energy.",
+      },
+      {
+        question: "A 1,150 W appliance runs on 230 V mains. What current does it draw, in A?",
+        choices: [
+          "0.2",
+          "1,380",
+          "5",
+          "50",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because I = P ÷ V = 1,150 ÷ 230 = 5 A.",
+      },
+      {
+        question: "A 100 W TV is on for 10 hours. How much energy does it use, in kWh?",
+        choices: [
+          "1,000",
+          "1",
+          "10",
+          "0.1",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because 100 W = 0.1 kW, and 0.1 kW × 10 h = 1 kWh. Convert watts to kilowatts first.",
+      },
+      {
+        question: "Mains electricity is ac mainly because ac works with:",
+        choices: [
+          "Transformers",
+          "Batteries",
+          "Fuses",
+          "Diodes",
+        ],
+        accept: [
+          "Transformers",
+        ],
+        answer: "Transformers, which only work with ac and let the National Grid step the p.d. up and down.",
       },
     ],
     misconceptions: [
@@ -3804,6 +5364,202 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "A runner completes exactly one lap of a circular track. Explain why the distance travelled is large but the displacement is zero.",
         answer: "Distance is a scalar and simply totals the ground covered, so a full lap adds up to the whole circumference. Displacement is a vector measured from the starting point to the finishing point in a straight line, together with a direction. Finishing exactly where they started means that straight-line separation is zero, so the displacement is zero no matter how far they ran. (Mark this one yourself.)",
       },
+      {
+        question: "A walker covers 300 m in 200 s. What is the average speed in m/s?",
+        choices: [
+          "0.67",
+          "100",
+          "500",
+          "1.5",
+        ],
+        accept: [
+          "1.5",
+        ],
+        answer: "1.5, because speed = distance ÷ time = 300 ÷ 200 = 1.5 m/s.",
+      },
+      {
+        question: "A train moves at a steady 50 m/s for 20 s. How far does it travel, in m?",
+        choices: [
+          "2.5",
+          "70",
+          "1,000",
+          "0.4",
+        ],
+        accept: [
+          "1,000",
+        ],
+        answer: "1,000, because distance = speed × time = 50 × 20 = 1,000 m.",
+      },
+      {
+        question: "A car speeds up from 0 to 24 m/s in 8 s. What is its acceleration in m/s²?",
+        choices: [
+          "192",
+          "3",
+          "32",
+          "0.33",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because a = (v − u) ÷ t = (24 − 0) ÷ 8 = 3 m/s².",
+      },
+      {
+        question: "A bike slows from 12 m/s to 4 m/s in 2 s. What is its acceleration in m/s²?",
+        choices: [
+          "−4",
+          "4",
+          "−8",
+          "8",
+        ],
+        accept: [
+          "−4",
+        ],
+        answer: "−4, because a = (v − u) ÷ t = (4 − 12) ÷ 2 = −4 m/s². The minus sign means slowing down.",
+      },
+      {
+        question: "A distance-time graph is a horizontal line. The object is:",
+        choices: [
+          "At constant speed",
+          "Accelerating",
+          "Decelerating",
+          "Stationary",
+        ],
+        accept: [
+          "Stationary",
+        ],
+        answer: "Stationary — the distance is not changing, so the gradient (speed) is zero.",
+      },
+      {
+        question: "A distance-time graph curves upwards, getting steeper. The object is:",
+        choices: [
+          "Decelerating",
+          "Stationary",
+          "Accelerating",
+          "At constant speed",
+        ],
+        accept: [
+          "Accelerating",
+        ],
+        answer: "Accelerating, because a steepening gradient on a distance-time graph means the speed is increasing.",
+      },
+      {
+        question: "Is speed a scalar or a vector?",
+        choices: [
+          "Vector",
+          "Scalar",
+          "Both",
+          "Neither",
+        ],
+        accept: [
+          "Scalar",
+        ],
+        answer: "Scalar — it has size only. Velocity is the vector version, because it also has a direction.",
+      },
+      {
+        question: "A runner does one 400 m lap, finishing where she started. What is her displacement in m?",
+        choices: [
+          "0",
+          "400",
+          "800",
+          "200",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0, because displacement is how far you end up from the start — she finished where she began.",
+      },
+      {
+        question: "Roughly what is a typical walking speed, in m/s?",
+        choices: [
+          "15",
+          "0.15",
+          "6",
+          "1.5",
+        ],
+        accept: [
+          "1.5",
+        ],
+        answer: "1.5 m/s is a typical walking speed. Running is about 3 m/s and cycling about 6 m/s.",
+      },
+      {
+        question: "What is the unit of acceleration?",
+        choices: [
+          "m/s",
+          "N",
+          "m/s²",
+          "m",
+        ],
+        accept: [
+          "m/s²",
+        ],
+        answer: "m/s², because acceleration is the change in velocity (in m/s) per second.",
+      },
+      {
+        question: "A velocity-time line rises straight from rest to 10 m/s in 4 s. Distance travelled in m?",
+        choices: [
+          "40",
+          "20",
+          "2.5",
+          "14",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because distance = area under the graph = ½ × 4 × 10 = 20 m. Forgetting the ½ gives 40.",
+        higherOnly: true,
+      },
+      {
+        question: "A skydiver falls at terminal velocity. What is the resultant force on her?",
+        choices: [
+          "Zero",
+          "Equal to her weight",
+          "Upwards",
+          "Downwards",
+        ],
+        accept: [
+          "Zero",
+        ],
+        answer: "Zero — drag balances her weight, so she falls at a constant speed.",
+      },
+      {
+        question: "From rest, a = 4 m/s² over s = 8 m. Using v² − u² = 2as, what is v in m/s?",
+        choices: [
+          "64",
+          "32",
+          "16",
+          "8",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because v² = 0 + 2 × 4 × 8 = 64, so v = √64 = 8 m/s. Remember the square root.",
+      },
+      {
+        question: "Sound travels at 330 m/s in air. How far does it travel in 2 s, in m?",
+        choices: [
+          "165",
+          "332",
+          "660",
+          "6,600",
+        ],
+        accept: [
+          "660",
+        ],
+        answer: "660, because distance = speed × time = 330 × 2 = 660 m.",
+      },
+      {
+        question: "How long does it take to walk 90 m at 1.5 m/s, in s?",
+        choices: [
+          "135",
+          "60",
+          "91.5",
+          "6",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "60, because time = distance ÷ speed = 90 ÷ 1.5 = 60 s.",
+      },
     ],
     misconceptions: [
       {
@@ -4221,6 +5977,205 @@ export const PHYSICS: Record<string, TopicContent> = {
       {
         question: "Explain why inertial mass is defined as resultant force divided by acceleration rather than simply as the amount of matter.",
         answer: "Defining a quantity means saying how it is measured, and \"amount of matter\" gives no measurement procedure. Force divided by acceleration does: apply a known resultant force, measure the acceleration produced, and the ratio tells you how strongly the object resists having its velocity changed. It also makes the physical meaning explicit — a large inertial mass is one that accelerates very little for a given force. (Mark this one yourself.)",
+      },
+      {
+        question: "A 5 kg mass accelerates at 4 m/s². What is the resultant force in N?",
+        choices: [
+          "20",
+          "1.25",
+          "9",
+          "0.8",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because F = m × a = 5 × 4 = 20 N.",
+      },
+      {
+        question: "A 30 N resultant force acts on a 6 kg trolley. What is its acceleration in m/s²?",
+        choices: [
+          "180",
+          "0.2",
+          "36",
+          "5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because a = F ÷ m = 30 ÷ 6 = 5 m/s².",
+      },
+      {
+        question: "A 1,000 kg car has 20,000 kg m/s of momentum. What is its speed in m/s?",
+        choices: [
+          "0.05",
+          "200",
+          "20",
+          "2",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because v = p ÷ m = 20,000 ÷ 1,000 = 20 m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A 3 kg ball moves at 2 m/s. What is its momentum in kg m/s?",
+        choices: [
+          "1.5",
+          "6",
+          "5",
+          "0.67",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because momentum p = m × v = 3 × 2 = 6 kg m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A car moves at a steady 30 m/s on a straight road. What is the resultant force on it?",
+        choices: [
+          "Zero",
+          "Forwards",
+          "Backwards",
+          "Equal to its weight",
+        ],
+        accept: [
+          "Zero",
+        ],
+        answer: "Zero — by Newton's first law, a constant velocity means the forces on the car are balanced.",
+      },
+      {
+        question: "Earth pulls you down and you pull Earth up with an equal force. Which law is this?",
+        choices: [
+          "Newton's first law",
+          "Newton's second law",
+          "Hooke's law",
+          "Newton's third law",
+        ],
+        accept: [
+          "Newton's third law",
+        ],
+        answer: "Newton's third law: interacting objects exert equal and opposite forces on each other.",
+      },
+      {
+        question: "Your mass is 60 kg on Earth. What is your mass on the Moon, in kg?",
+        choices: [
+          "10",
+          "360",
+          "60",
+          "0",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "60 — mass does not change. Only your weight falls, to about a sixth on the Moon.",
+      },
+      {
+        question: "Which of these is measured in newtons?",
+        choices: [
+          "Mass",
+          "Weight",
+          "Momentum",
+          "Inertia",
+        ],
+        accept: [
+          "Weight",
+        ],
+        answer: "Weight, because it is a force. Mass is measured in kilograms and momentum in kg m/s.",
+      },
+      {
+        question: "Worn tyres increase which part of a car's stopping distance?",
+        choices: [
+          "Braking distance",
+          "Thinking distance",
+          "Reaction time",
+          "Neither part",
+        ],
+        accept: [
+          "Braking distance",
+        ],
+        answer: "Braking distance — worn tyres grip less. They have no effect on the driver's reaction time.",
+      },
+      {
+        question: "A driver reacts in 0.5 s while travelling at 20 m/s. What is the thinking distance in m?",
+        choices: [
+          "40",
+          "20.5",
+          "19.5",
+          "10",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because thinking distance = speed × reaction time = 20 × 0.5 = 10 m.",
+      },
+      {
+        question: "A car's speed doubles. What happens to its thinking distance?",
+        choices: [
+          "It quadruples",
+          "It halves",
+          "It doubles",
+          "No change",
+        ],
+        accept: [
+          "It doubles",
+        ],
+        answer: "It doubles, because thinking distance = speed × reaction time. Braking distance roughly quadruples.",
+      },
+      {
+        question: "An object's mass doubles but the resultant force stays the same. Its acceleration:",
+        choices: [
+          "Doubles",
+          "Halves",
+          "Stays the same",
+          "Quadruples",
+        ],
+        accept: [
+          "Halves",
+        ],
+        answer: "Halves, because a = F ÷ m, so doubling the mass with the same force halves the acceleration.",
+      },
+      {
+        question: "A crash mat reduces the force on a falling gymnast by:",
+        choices: [
+          "Increasing impact time",
+          "Reducing her mass",
+          "Reducing gravity",
+          "Stopping her faster",
+        ],
+        accept: [
+          "Increasing impact time",
+        ],
+        answer: "Increasing impact time: her momentum changes more slowly, so the force on her is smaller.",
+        higherOnly: true,
+      },
+      {
+        question: "A rocket has 500 N thrust forwards and 200 N drag backwards. Resultant force in N?",
+        choices: [
+          "700",
+          "2.5",
+          "200",
+          "300",
+        ],
+        accept: [
+          "300",
+        ],
+        answer: "300 N forwards, because the forces act in opposite directions: 500 − 200 = 300 N.",
+      },
+      {
+        question: "Inertial mass is defined as:",
+        choices: [
+          "Force × acceleration",
+          "Acceleration ÷ force",
+          "Force ÷ acceleration",
+          "Weight × velocity",
+        ],
+        accept: [
+          "Force ÷ acceleration",
+        ],
+        answer: "Force ÷ acceleration (m = F ÷ a): it measures how hard it is to change an object's velocity.",
+        higherOnly: true,
       },
     ],
     misconceptions: [
@@ -4646,6 +6601,201 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why the amplitude of a wave is measured from the rest position rather than from trough to crest.",
         answer: "Amplitude is defined as the maximum displacement of a particle from where it would sit if the wave were not there, and displacement is always measured from that rest position. The trough-to-crest distance covers the full swing in both directions, so it is twice the amplitude rather than the amplitude itself. Using it would double every answer, and for sound it would misstate how much energy the wave is carrying. (Mark this one yourself.)",
       },
+      {
+        question: "A wave has frequency 10 Hz and wavelength 3 m. What is its speed in m/s?",
+        choices: [
+          "3.33",
+          "30",
+          "13",
+          "0.3",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because v = f × λ = 10 × 3 = 30 m/s.",
+      },
+      {
+        question: "A wave travels at 12 m/s with a wavelength of 4 m. What is its frequency in Hz?",
+        choices: [
+          "3",
+          "48",
+          "16",
+          "0.33",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because f = v ÷ λ = 12 ÷ 4 = 3 Hz.",
+      },
+      {
+        question: "A sound wave travels at 320 m/s with frequency 80 Hz. What is its wavelength in m?",
+        choices: [
+          "0.25",
+          "240",
+          "400",
+          "4",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because λ = v ÷ f = 320 ÷ 80 = 4 m.",
+      },
+      {
+        question: "A wave has a period of 0.2 s. What is its frequency in Hz?",
+        choices: [
+          "0.2",
+          "50",
+          "5",
+          "0.5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because f = 1 ÷ T = 1 ÷ 0.2 = 5 Hz.",
+      },
+      {
+        question: "In a longitudinal wave, particles oscillate in what direction to the energy transfer?",
+        choices: [
+          "Perpendicular",
+          "Parallel",
+          "In circles",
+          "They do not move",
+        ],
+        accept: [
+          "Parallel",
+        ],
+        answer: "Parallel to the direction of energy transfer, which makes compressions and rarefactions.",
+      },
+      {
+        question: "Which of these is a transverse wave?",
+        choices: [
+          "Ripples on water",
+          "Sound in air",
+          "Ultrasound",
+          "Sound in water",
+        ],
+        accept: [
+          "Ripples on water",
+        ],
+        answer: "Ripples on water — they oscillate at right angles to the energy transfer. All sound is longitudinal.",
+      },
+      {
+        question: "In a longitudinal wave, what is a region where particles bunch together called?",
+        choices: [
+          "Rarefaction",
+          "Crest",
+          "Trough",
+          "Compression",
+        ],
+        accept: [
+          "Compression",
+        ],
+        answer: "Compression. Where the particles spread out is a rarefaction.",
+      },
+      {
+        question: "What does the frequency of a sound wave determine?",
+        choices: [
+          "Loudness",
+          "Speed",
+          "Pitch",
+          "Amplitude",
+        ],
+        accept: [
+          "Pitch",
+        ],
+        answer: "Pitch — a higher frequency sounds higher. The amplitude decides how loud it is.",
+      },
+      {
+        question: "Light slows down as it enters glass. Which way does the ray bend?",
+        choices: [
+          "Away from the normal",
+          "Towards the normal",
+          "Along the surface",
+          "It does not bend",
+        ],
+        accept: [
+          "Towards the normal",
+        ],
+        answer: "Towards the normal. When it speeds up again leaving the glass, it bends away from the normal.",
+      },
+      {
+        question: "A ray hits a mirror at 40° to the normal. What is the angle of reflection?",
+        choices: [
+          "40°",
+          "50°",
+          "80°",
+          "140°",
+        ],
+        accept: [
+          "40°",
+        ],
+        answer: "40°, because the angle of reflection equals the angle of incidence, both measured from the normal.",
+      },
+      {
+        question: "A ray meets a mirror at 30° to the SURFACE. What is the angle of incidence?",
+        choices: [
+          "30°",
+          "120°",
+          "90°",
+          "60°",
+        ],
+        accept: [
+          "60°",
+        ],
+        answer: "60°, because angles are measured from the normal: 90° − 30° = 60°.",
+      },
+      {
+        question: "Light hitting rough paper is scattered in all directions. This is called:",
+        choices: [
+          "Specular reflection",
+          "Refraction",
+          "Diffuse reflection",
+          "Diffraction",
+        ],
+        accept: [
+          "Diffuse reflection",
+        ],
+        answer: "Diffuse reflection, from a rough surface. A smooth surface gives specular reflection and a clear image.",
+      },
+      {
+        question: "Wave speed stays fixed and the frequency doubles. What happens to the wavelength?",
+        choices: [
+          "It doubles",
+          "It halves",
+          "No change",
+          "It quadruples",
+        ],
+        accept: [
+          "It halves",
+        ],
+        answer: "It halves, because v = f × λ is fixed, so doubling f means λ must halve.",
+      },
+      {
+        question: "What does a wave transfer from place to place?",
+        choices: [
+          "Energy only",
+          "Matter only",
+          "Energy and matter",
+          "Nothing at all",
+        ],
+        accept: [
+          "Energy only",
+        ],
+        answer: "Energy only — the particles oscillate about fixed points and do not travel with the wave.",
+      },
+      {
+        question: "A wave has a frequency of 2 Hz. How many waves pass a point in 10 s?",
+        choices: [
+          "5",
+          "12",
+          "0.2",
+          "20",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because 2 Hz means 2 waves pass each second, and 2 × 10 = 20.",
+      },
     ],
     misconceptions: [
       {
@@ -5052,6 +7202,202 @@ export const PHYSICS: Record<string, TopicContent> = {
       {
         question: "Explain why a radio aerial absorbing a radio wave produces an alternating current of the same frequency as the wave.",
         answer: "A radio wave carries an oscillating electric field, and when it reaches the aerial that field pushes the free electrons in the metal back and forth along it. The electrons follow the field, so they reverse direction exactly as often as the field does. That oscillating flow of charge is an alternating current whose frequency must therefore match the frequency of the wave that produced it. (Mark this one yourself.)",
+      },
+      {
+        question: "Which electromagnetic wave has the SHORTEST wavelength?",
+        choices: [
+          "Radio waves",
+          "X-rays",
+          "Gamma rays",
+          "Ultraviolet",
+        ],
+        accept: [
+          "Gamma rays",
+        ],
+        answer: "Gamma rays — they also have the highest frequency. Radio waves have the longest wavelength.",
+      },
+      {
+        question: "Which EM wave lies between microwaves and visible light in the spectrum?",
+        choices: [
+          "Ultraviolet",
+          "Infrared",
+          "Radio waves",
+          "X-rays",
+        ],
+        accept: [
+          "Infrared",
+        ],
+        answer: "Infrared. The order is radio, microwave, infrared, visible, ultraviolet, X-ray, gamma.",
+      },
+      {
+        question: "Which EM wave lies between visible light and X-rays in the spectrum?",
+        choices: [
+          "Ultraviolet",
+          "Infrared",
+          "Gamma rays",
+          "Microwaves",
+        ],
+        accept: [
+          "Ultraviolet",
+        ],
+        answer: "Ultraviolet. The order is radio, microwave, infrared, visible, ultraviolet, X-ray, gamma.",
+      },
+      {
+        question: "Which colour of visible light has the longest wavelength?",
+        choices: [
+          "Violet",
+          "Green",
+          "Blue",
+          "Red",
+        ],
+        accept: [
+          "Red",
+        ],
+        answer: "Red. Visible light runs from red (longest wavelength) to violet (shortest).",
+      },
+      {
+        question: "Which EM wave is used for satellite communications?",
+        choices: [
+          "Gamma rays",
+          "Ultraviolet",
+          "Microwaves",
+          "X-rays",
+        ],
+        accept: [
+          "Microwaves",
+        ],
+        answer: "Microwaves — they pass through the atmosphere to and from satellites.",
+      },
+      {
+        question: "Which EM wave is used to sterilise surgical equipment?",
+        choices: [
+          "Radio waves",
+          "Gamma rays",
+          "Infrared",
+          "Microwaves",
+        ],
+        accept: [
+          "Gamma rays",
+        ],
+        answer: "Gamma rays — they carry enough energy to kill bacteria on the equipment.",
+      },
+      {
+        question: "Which EM wave do electric heaters mainly give out?",
+        choices: [
+          "Infrared",
+          "Ultraviolet",
+          "X-rays",
+          "Radio waves",
+        ],
+        accept: [
+          "Infrared",
+        ],
+        answer: "Infrared, which is absorbed by surfaces and heats them. It is also used in thermal imaging.",
+      },
+      {
+        question: "Which EM wave is used to take medical images of broken bones?",
+        choices: [
+          "Infrared",
+          "Microwaves",
+          "Radio waves",
+          "X-rays",
+        ],
+        accept: [
+          "X-rays",
+        ],
+        answer: "X-rays — they pass through soft tissue but are absorbed by bone.",
+      },
+      {
+        question: "Which EM wave from the Sun increases the risk of skin cancer?",
+        choices: [
+          "Infrared",
+          "Radio waves",
+          "Ultraviolet",
+          "Microwaves",
+        ],
+        accept: [
+          "Ultraviolet",
+        ],
+        answer: "Ultraviolet — it damages surface skin cells, causing sunburn and skin ageing too.",
+      },
+      {
+        question: "Which EM wave can heat internal body tissue?",
+        choices: [
+          "Ultraviolet",
+          "Microwaves",
+          "Visible light",
+          "Radio waves",
+        ],
+        accept: [
+          "Microwaves",
+        ],
+        answer: "Microwaves — they penetrate and heat internal tissue. Infrared mainly burns the skin's surface.",
+      },
+      {
+        question: "Visible light, UV and X-rays come from energy changes in which particles?",
+        choices: [
+          "Electrons",
+          "Protons",
+          "Neutrons",
+          "Nuclei",
+        ],
+        accept: [
+          "Electrons",
+        ],
+        answer: "Electrons, changing energy level. Gamma rays come from changes in the nucleus.",
+      },
+      {
+        question: "Taking c = 3 × 10⁸ m/s, what is the wavelength of a 3 × 10⁸ Hz EM wave, in m?",
+        choices: [
+          "9 × 10¹⁶",
+          "3",
+          "0.33",
+          "1",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because λ = c ÷ f = 3 × 10⁸ ÷ 3 × 10⁸ = 1 m.",
+      },
+      {
+        question: "Taking c = 3 × 10⁸ m/s, what is the frequency of a 300 m radio wave, in Hz?",
+        choices: [
+          "1 × 10⁵",
+          "9 × 10¹⁰",
+          "1 × 10⁶",
+          "1 × 10⁻⁶",
+        ],
+        accept: [
+          "1 × 10⁶",
+        ],
+        answer: "1 × 10⁶, because f = c ÷ λ = 3 × 10⁸ ÷ 300 = 1,000,000 Hz.",
+      },
+      {
+        question: "Going along the spectrum from radio waves to gamma rays, the frequency:",
+        choices: [
+          "Decreases",
+          "Increases",
+          "Stays the same",
+          "Rises then falls",
+        ],
+        accept: [
+          "Increases",
+        ],
+        answer: "Increases, while the wavelength decreases. Gamma rays have the highest frequency.",
+      },
+      {
+        question: "When a radio wave is absorbed by an aerial, what does it produce?",
+        choices: [
+          "An alternating current",
+          "A direct current",
+          "Gamma rays",
+          "A static charge",
+        ],
+        accept: [
+          "An alternating current",
+        ],
+        answer: "An alternating current, with the same frequency as the radio wave.",
+        higherOnly: true,
       },
     ],
     misconceptions: [
@@ -5465,6 +7811,203 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain how the difference in pressure between the top and bottom of a submerged object produces upthrust.",
         answer: "Pressure in a liquid increases with depth, so the bottom surface of a submerged object sits at a greater depth than the top and experiences a greater pressure. Force is pressure multiplied by area, so the upward force on the bottom is larger than the downward force on the top. The difference between them is a net upward force, which is the upthrust; if it equals the object's weight the object floats. (Mark this one yourself.)",
         higherOnly: true,
+      },
+      {
+        question: "A force of 400 N acts on an area of 2 m². What is the pressure in Pa?",
+        choices: [
+          "800",
+          "402",
+          "398",
+          "200",
+        ],
+        accept: [
+          "200",
+        ],
+        answer: "200, because p = F ÷ A = 400 ÷ 2 = 200 Pa.",
+      },
+      {
+        question: "A pressure of 2,000 Pa acts on 0.5 m². What is the force in N?",
+        choices: [
+          "4,000",
+          "2,500",
+          "1,000",
+          "500",
+        ],
+        accept: [
+          "1,000",
+        ],
+        answer: "1,000, because F = p × A = 2,000 × 0.5 = 1,000 N.",
+      },
+      {
+        question: "An object of mass 30 g has a volume of 10 cm³. What is its density in g/cm³?",
+        choices: [
+          "300",
+          "3",
+          "0.33",
+          "40",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because density = mass ÷ volume = 30 ÷ 10 = 3 g/cm³.",
+      },
+      {
+        question: "A 4 kg block has a volume of 0.002 m³. What is its density in kg/m³?",
+        choices: [
+          "2,000",
+          "0.0005",
+          "0.008",
+          "200",
+        ],
+        accept: [
+          "2,000",
+        ],
+        answer: "2,000, because ρ = m ÷ V = 4 ÷ 0.002 = 2,000 kg/m³.",
+      },
+      {
+        question: "A liquid has density 800 kg/m³. What is the mass of 2 m³ of it, in kg?",
+        choices: [
+          "400",
+          "0.0025",
+          "802",
+          "1,600",
+        ],
+        accept: [
+          "1,600",
+        ],
+        answer: "1,600, because mass = density × volume = 800 × 2 = 1,600 kg.",
+      },
+      {
+        question: "A solid of density 700 kg/m³ is put in water of density 1,000 kg/m³. It:",
+        choices: [
+          "Sinks",
+          "Dissolves",
+          "Floats",
+          "Sinks then rises",
+        ],
+        accept: [
+          "Floats",
+        ],
+        answer: "Floats, because its density is less than the density of the water.",
+      },
+      {
+        question: "A density of 1 g/cm³ is the same as how many kg/m³?",
+        choices: [
+          "1",
+          "1,000",
+          "100",
+          "1,000,000",
+        ],
+        accept: [
+          "1,000",
+        ],
+        answer: "1,000 — the units differ by a factor of 1,000, so water's 1 g/cm³ is 1,000 kg/m³.",
+      },
+      {
+        question: "Water has ρ = 1,000 kg/m³ and g = 10 N/kg. What is the pressure 3 m down, in Pa?",
+        choices: [
+          "30,000",
+          "3,000",
+          "300,000",
+          "10,000",
+        ],
+        accept: [
+          "30,000",
+        ],
+        answer: "30,000, because p = h × ρ × g = 3 × 1,000 × 10 = 30,000 Pa.",
+        higherOnly: true,
+      },
+      {
+        question: "At a point in a liquid, in which direction does the pressure act?",
+        choices: [
+          "Downwards only",
+          "Upwards only",
+          "Sideways only",
+          "All directions",
+        ],
+        accept: [
+          "All directions",
+        ],
+        answer: "All directions — that is why a submarine is squeezed from every side and why upthrust exists.",
+      },
+      {
+        question: "Why does an object under water feel an upthrust?",
+        choices: [
+          "Less pressure below it",
+          "Water is less dense",
+          "More pressure below it",
+          "Gravity is weaker",
+        ],
+        accept: [
+          "More pressure below it",
+        ],
+        answer: "More pressure below it: its bottom is deeper than its top, so the resultant force is upwards.",
+        higherOnly: true,
+      },
+      {
+        question: "Snowshoes stop you sinking into snow because they:",
+        choices: [
+          "Reduce your weight",
+          "Increase the area",
+          "Increase the pressure",
+          "Reduce the area",
+        ],
+        accept: [
+          "Increase the area",
+        ],
+        answer: "Increase the area, so your weight is spread out and the pressure on the snow is smaller.",
+      },
+      {
+        question: "One pascal is equal to:",
+        choices: [
+          "1 N/m²",
+          "1 N/cm²",
+          "1 N m",
+          "1 kg/m³",
+        ],
+        accept: [
+          "1 N/m²",
+        ],
+        answer: "1 N/m²: a force of one newton spread over an area of one square metre.",
+      },
+      {
+        question: "An area of 20 cm² is how many m²?",
+        choices: [
+          "0.2",
+          "0.02",
+          "2,000",
+          "0.002",
+        ],
+        accept: [
+          "0.002",
+        ],
+        answer: "0.002, because 1 m² = 10,000 cm², so 20 ÷ 10,000 = 0.002 m². Dividing by 100 gives 0.2.",
+      },
+      {
+        question: "How can you find the volume of an irregular stone?",
+        choices: [
+          "Weigh it",
+          "Use a thermometer",
+          "Water displacement",
+          "Measure its height",
+        ],
+        accept: [
+          "Water displacement",
+        ],
+        answer: "Water displacement: the rise in water level in a measuring cylinder equals the stone's volume.",
+      },
+      {
+        question: "In which state is a substance usually least dense?",
+        choices: [
+          "Solid",
+          "Gas",
+          "Liquid",
+          "All are equal",
+        ],
+        accept: [
+          "Gas",
+        ],
+        answer: "Gas, because its particles are much further apart than in a solid or a liquid.",
       },
     ],
     misconceptions: [
@@ -5892,6 +8435,206 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why the magnetic field around a solenoid looks like that of a bar magnet, and what happens to it if the current is reversed.",
         answer: "Each turn of the coil produces its own circular field, and because the turns are stacked in the same direction those fields add inside the coil to give a strong, nearly uniform field along the axis. Outside, the field lines spread and loop back from one end to the other, giving the solenoid an effective north pole at one end and a south at the other, exactly as a bar magnet has. Reversing the current reverses the direction of every circular field, so the two poles swap ends while the pattern itself stays the same shape. (Mark this one yourself.)",
       },
+      {
+        question: "A north pole is held near a south pole. What happens?",
+        choices: [
+          "They repel",
+          "They attract",
+          "No force acts",
+          "They demagnetise",
+        ],
+        accept: [
+          "They attract",
+        ],
+        answer: "They attract, because unlike poles attract and like poles repel.",
+      },
+      {
+        question: "What is a magnet that produces its own field all the time called?",
+        choices: [
+          "Induced magnet",
+          "Solenoid",
+          "Permanent magnet",
+          "Electromagnet",
+        ],
+        accept: [
+          "Permanent magnet",
+        ],
+        answer: "Permanent magnet, because it makes its own field all the time; an induced magnet is only magnetic while inside another field.",
+      },
+      {
+        question: "Outside a bar magnet, magnetic field lines run from:",
+        choices: [
+          "South to north",
+          "North to south",
+          "The middle outwards",
+          "The poles inwards",
+        ],
+        accept: [
+          "North to south",
+        ],
+        answer: "North to south, because field lines show the way a north pole would move: out of N and into S.",
+      },
+      {
+        question: "Where is the magnetic field of a bar magnet strongest?",
+        choices: [
+          "In the middle",
+          "At the poles",
+          "Far from the magnet",
+          "Equal everywhere",
+        ],
+        accept: [
+          "At the poles",
+        ],
+        answer: "At the poles, because that is where the field lines are closest together.",
+      },
+      {
+        question: "A paperclip sticks to a magnet. Which metal is it most likely made of?",
+        choices: [
+          "Copper",
+          "Aluminium",
+          "Brass",
+          "Steel",
+        ],
+        accept: [
+          "Steel",
+        ],
+        answer: "Steel, because it contains iron; iron, steel, nickel and cobalt are magnetic, but copper, aluminium and brass are not.",
+      },
+      {
+        question: "What shape is the magnetic field around a straight wire carrying a current?",
+        choices: [
+          "Lines along the wire",
+          "Circles round wire",
+          "Lines from + to −",
+          "Same as a bar magnet",
+        ],
+        accept: [
+          "Circles round wire",
+        ],
+        answer: "Circles round wire, because a current makes a circular magnetic field centred on the wire.",
+      },
+      {
+        question: "The current in a wire is reversed. What happens to its magnetic field?",
+        choices: [
+          "It gets stronger",
+          "It disappears",
+          "It reverses direction",
+          "It stays the same",
+        ],
+        accept: [
+          "It reverses direction",
+        ],
+        answer: "It reverses direction, because the direction of the field depends on the direction of the current.",
+      },
+      {
+        question: "Adding an iron core to a solenoid makes its magnetic field:",
+        choices: [
+          "Much stronger",
+          "Weaker",
+          "Zero",
+          "Reverse",
+        ],
+        accept: [
+          "Much stronger",
+        ],
+        answer: "Much stronger, because the iron core becomes magnetised and adds its field, turning the solenoid into an electromagnet.",
+      },
+      {
+        question: "Which change makes an electromagnet weaker?",
+        choices: [
+          "More current",
+          "Fewer turns of wire",
+          "Adding an iron core",
+          "More turns of wire",
+        ],
+        accept: [
+          "Fewer turns of wire",
+        ],
+        answer: "Fewer turns of wire, because field strength rises with more current, more turns and an iron core, so fewer turns weakens it.",
+      },
+      {
+        question: "Why does a scrapyard crane use an electromagnet, not a permanent magnet?",
+        choices: [
+          "It can be switched off",
+          "It needs no power",
+          "It repels steel",
+          "It is never magnetic",
+        ],
+        accept: [
+          "It can be switched off",
+        ],
+        answer: "It can be switched off, so the crane can drop the car; a permanent magnet would never let go.",
+      },
+      {
+        question: "In Fleming's left-hand rule, what does the thumb represent?",
+        choices: [
+          "Field",
+          "Current",
+          "Force",
+          "Voltage",
+        ],
+        accept: [
+          "Force",
+        ],
+        answer: "Force, because thumb = force (motion), first finger = field, second finger = current.",
+        higherOnly: true,
+      },
+      {
+        question: "A 0.5 m wire carries 2 A at 90° to a 0.3 T field. What is the force in N?",
+        choices: [
+          "3",
+          "0.3",
+          "2.8",
+          "1.2",
+        ],
+        accept: [
+          "0.3",
+        ],
+        answer: "0.3, because F = B × I × l = 0.3 × 2 × 0.5 = 0.3 N.",
+        higherOnly: true,
+      },
+      {
+        question: "A current-carrying wire lies parallel to a magnetic field. What is the force on it?",
+        choices: [
+          "Zero",
+          "Maximum",
+          "Half the maximum",
+          "Twice the maximum",
+        ],
+        accept: [
+          "Zero",
+        ],
+        answer: "Zero, because the motor effect force is greatest at 90° to the field and zero when the wire is parallel to it.",
+        higherOnly: true,
+      },
+      {
+        question: "A transformer has 100 primary turns and 500 secondary turns, with 10 V in. Output p.d. in V?",
+        choices: [
+          "2",
+          "50",
+          "500",
+          "5",
+        ],
+        accept: [
+          "50",
+        ],
+        answer: "50, because Vs = Vp × ns ÷ np = 10 × 500 ÷ 100 = 50 V — five times the turns gives five times the p.d.",
+        higherOnly: true,
+      },
+      {
+        question: "A 100% efficient transformer takes 230 V at 1 A. It outputs 23 V. Output current in A?",
+        choices: [
+          "0.1",
+          "1",
+          "10",
+          "23",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because Vp × Ip = Vs × Is, so 230 × 1 = 23 × Is and Is = 10 A — lower p.d. means higher current.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -6307,6 +9050,209 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why the power output of a car engine travelling at constant speed equals the resistive force multiplied by the speed.",
         answer: "At constant speed the resultant force is zero, so the driving force exactly matches the total resistive force. In each second the car moves a distance equal to its speed, and the work done is that driving force multiplied by that distance. Power is work per second, so dividing by one second leaves force multiplied by speed, which is why P = F × v. (Mark this one yourself.)",
       },
+      {
+        question: "A 20 N force pushes a box 3 m. How much work is done, in J?",
+        choices: [
+          "6.67",
+          "60",
+          "23",
+          "0.15",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "60, because work done = force × distance = 20 × 3 = 60 J.",
+      },
+      {
+        question: "A motor does 1200 J of work in 60 s. What is its power in W?",
+        choices: [
+          "72000",
+          "1260",
+          "20",
+          "0.05",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because power = work done ÷ time = 1200 ÷ 60 = 20 W.",
+      },
+      {
+        question: "One joule of energy transferred per second is one:",
+        choices: [
+          "Watt",
+          "Newton",
+          "Volt",
+          "Pascal",
+        ],
+        accept: [
+          "Watt",
+        ],
+        answer: "Watt, because power is the rate of energy transfer: 1 W = 1 J/s. A newton is a force, a volt a p.d.",
+      },
+      {
+        question: "What is the unit of work done?",
+        choices: [
+          "Watt",
+          "Newton",
+          "Joule",
+          "kg m/s",
+        ],
+        accept: [
+          "Joule",
+        ],
+        answer: "Joule, because doing work transfers energy, and 1 J = 1 N moved 1 m (one newton-metre).",
+      },
+      {
+        question: "A 300 N force pushes a car 10 m. How much work is done, in kJ?",
+        choices: [
+          "30",
+          "3",
+          "0.3",
+          "3000",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because W = F × s = 300 × 10 = 3000 J, and 3000 J ÷ 1000 = 3 kJ.",
+      },
+      {
+        question: "Work done against friction transfers energy mainly to which store?",
+        choices: [
+          "Thermal",
+          "Kinetic",
+          "Chemical",
+          "Elastic potential",
+        ],
+        accept: [
+          "Thermal",
+        ],
+        answer: "Thermal, because friction heats the surfaces — that is why brakes get hot.",
+      },
+      {
+        question: "A man pushes a wall with 200 N but it does not move. Work done in J?",
+        choices: [
+          "200",
+          "400",
+          "0",
+          "20",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0, because work = force × distance moved, and the wall moves 0 m, so no work is done.",
+      },
+      {
+        question: "What is the momentum of a 4 kg ball moving at 5 m/s, in kg m/s?",
+        choices: [
+          "1.25",
+          "20",
+          "9",
+          "50",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because momentum = mass × velocity = 4 × 5 = 20 kg m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "A 60 kg runner has 300 kg m/s of momentum. What is her speed in m/s?",
+        choices: [
+          "18000",
+          "0.2",
+          "5",
+          "240",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because v = p ÷ m = 300 ÷ 60 = 5 m/s.",
+        higherOnly: true,
+      },
+      {
+        question: "Momentum is described as:",
+        choices: [
+          "A scalar",
+          "A vector",
+          "A force",
+          "An energy",
+        ],
+        accept: [
+          "A vector",
+        ],
+        answer: "A vector, because momentum has a direction as well as a size, so opposite directions take opposite signs.",
+        higherOnly: true,
+      },
+      {
+        question: "In a closed system, momentum before a collision is 12 kg m/s. What is it after?",
+        choices: [
+          "0",
+          "24",
+          "6",
+          "12",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because momentum is conserved in a closed system: total before = total after.",
+        higherOnly: true,
+      },
+      {
+        question: "A gun fires a bullet forwards. Which way does the gun move?",
+        choices: [
+          "Forwards",
+          "Backwards",
+          "Upwards",
+          "It stays still",
+        ],
+        accept: [
+          "Backwards",
+        ],
+        answer: "Backwards, because total momentum was zero before, so the gun gets momentum equal and opposite to the bullet's.",
+        higherOnly: true,
+      },
+      {
+        question: "Momentum changes by 30 kg m/s in 0.1 s. What is the average force in N?",
+        choices: [
+          "3",
+          "30",
+          "300",
+          "0.3",
+        ],
+        accept: [
+          "300",
+        ],
+        answer: "300, because force = change in momentum ÷ time = 30 ÷ 0.1 = 300 N.",
+        higherOnly: true,
+      },
+      {
+        question: "Why does landing on a crash mat hurt less than landing on concrete?",
+        choices: [
+          "Less momentum change",
+          "Longer stopping time",
+          "Shorter stopping time",
+          "Absorbs all momentum",
+        ],
+        accept: [
+          "Longer stopping time",
+        ],
+        answer: "Longer stopping time, because the same momentum change over a longer time means a smaller force.",
+        higherOnly: true,
+      },
+      {
+        question: "The same momentum change takes twice as long. What happens to the force?",
+        choices: [
+          "It doubles",
+          "It halves",
+          "It quarters",
+          "No change",
+        ],
+        accept: [
+          "It halves",
+        ],
+        answer: "It halves, because force = change in momentum ÷ time, so doubling the time halves the force.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -6716,6 +9662,202 @@ export const PHYSICS: Record<string, TopicContent> = {
       {
         question: "Explain why radiotherapy uses several gamma beams aimed at the tumour from different directions.",
         answer: "Gamma radiation is very penetrating, so any single beam damages healthy tissue all along its path as well as the tumour. Rotating the beam, or using several from different angles, means each path through healthy tissue receives only a small dose. The tumour lies where every beam crosses, so it receives the sum of all of them and gets a lethal dose while the surrounding tissue does not. (Mark this one yourself.)",
+      },
+      {
+        question: "In alpha decay, by how much does the mass number fall?",
+        choices: [
+          "2",
+          "1",
+          "4",
+          "0",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because an alpha particle is 2 protons and 2 neutrons, so the mass number falls by 4 and the atomic number by 2.",
+      },
+      {
+        question: "When a nucleus emits gamma radiation, its mass number:",
+        choices: [
+          "Falls by 4",
+          "Does not change",
+          "Rises by 1",
+          "Falls by 2",
+        ],
+        accept: [
+          "Does not change",
+        ],
+        answer: "Does not change, because gamma is just energy — neither the mass number nor the atomic number changes.",
+      },
+      {
+        question: "Uranium-238 emits an alpha particle. What is the new mass number?",
+        choices: [
+          "236",
+          "238",
+          "234",
+          "242",
+        ],
+        accept: [
+          "234",
+        ],
+        answer: "234, because alpha decay lowers the mass number by 4: 238 − 4 = 234.",
+      },
+      {
+        question: "A nucleus of atomic number 6 emits a beta particle. What is the new atomic number?",
+        choices: [
+          "5",
+          "7",
+          "6",
+          "4",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "7, because in beta decay a neutron becomes a proton, so the atomic number rises by 1.",
+      },
+      {
+        question: "One becquerel is:",
+        choices: [
+          "1 decay per minute",
+          "1 count per hour",
+          "1 joule per second",
+          "1 decay per second",
+        ],
+        accept: [
+          "1 decay per second",
+        ],
+        answer: "1 decay per second, because activity is the rate of decay and is measured in becquerels (Bq).",
+      },
+      {
+        question: "A source of 600 Bq has a half-life of 1 day. What is its activity after 2 days, in Bq?",
+        choices: [
+          "150",
+          "300",
+          "0",
+          "75",
+        ],
+        accept: [
+          "150",
+        ],
+        answer: "150, because 2 days is 2 half-lives: 600 → 300 → 150 Bq.",
+      },
+      {
+        question: "A source has a half-life of 3 hours. How long until its activity is a quarter?",
+        choices: [
+          "12 hours",
+          "6 hours",
+          "9 hours",
+          "3 hours",
+        ],
+        accept: [
+          "6 hours",
+        ],
+        answer: "6 hours, because a quarter is 2 half-lives (½ × ½), and 2 × 3 = 6 hours.",
+      },
+      {
+        question: "What fraction of the nuclei remain undecayed after 4 half-lives?",
+        choices: [
+          "1/8",
+          "1/4",
+          "1/32",
+          "1/16",
+        ],
+        accept: [
+          "1/16",
+        ],
+        answer: "1/16, because each half-life halves what is left: ½ → ¼ → ⅛ → 1/16.",
+        higherOnly: true,
+      },
+      {
+        question: "A detector reads 50 counts per minute; background is 5. What is the corrected count rate?",
+        choices: [
+          "45",
+          "55",
+          "10",
+          "50",
+        ],
+        accept: [
+          "45",
+        ],
+        answer: "45 counts per minute, because you subtract the background: 50 − 5 = 45.",
+      },
+      {
+        question: "Which radiation is used to check the thickness of paper in a factory?",
+        choices: [
+          "Alpha",
+          "Beta",
+          "Gamma",
+          "Neutron",
+        ],
+        accept: [
+          "Beta",
+        ],
+        answer: "Beta, because it is partly absorbed by paper; alpha would all be stopped and gamma would all pass through.",
+      },
+      {
+        question: "Radioactive dust gets onto your skin. What is this called?",
+        choices: [
+          "Irradiation",
+          "Ionisation",
+          "Contamination",
+          "Half-life",
+        ],
+        accept: [
+          "Contamination",
+        ],
+        answer: "Contamination, because radioactive material is on you and keeps emitting until it is removed.",
+      },
+      {
+        question: "Which material is best for shielding against gamma rays?",
+        choices: [
+          "Paper",
+          "Thin aluminium",
+          "Plastic",
+          "Thick lead",
+        ],
+        accept: [
+          "Thick lead",
+        ],
+        answer: "Thick lead, because gamma is very penetrating and only thick lead or concrete absorbs most of it.",
+      },
+      {
+        question: "Radioactive decay is random. This means you cannot predict:",
+        choices: [
+          "Which nucleus is next",
+          "The half-life",
+          "The average decay rate",
+          "The mass number",
+        ],
+        accept: [
+          "Which nucleus is next",
+        ],
+        answer: "Which nucleus is next, because each decay is random — but with huge numbers the average rate and half-life are predictable.",
+      },
+      {
+        question: "Why do medical tracers use a gamma emitter?",
+        choices: [
+          "Most ionising",
+          "Penetrates the body",
+          "Absorbed by organs",
+          "Longest half-life",
+        ],
+        accept: [
+          "Penetrates the body",
+        ],
+        answer: "Penetrates the body, because gamma passes out of the body so it can be detected outside it.",
+      },
+      {
+        question: "A count rate falls from 80 to 20 in 10 minutes. What is the half-life in minutes?",
+        choices: [
+          "10",
+          "5",
+          "20",
+          "2.5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because 80 → 40 → 20 is 2 half-lives in 10 minutes, so each half-life is 10 ÷ 2 = 5 minutes.",
       },
     ],
     misconceptions: [
@@ -7139,6 +10281,203 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "Explain why scientists proposed dark matter, and why proposing something nobody has seen can still be good science.",
         answer: "Galaxies rotate far too quickly at their edges for the gravity of the visible stars and gas to hold them together, so either there is extra mass we cannot see or our understanding of gravity is wrong. Dark matter is the name for that extra mass, and it is taken seriously because it is inferred from measurements rather than simply invented. It counts as good science because it makes testable predictions about how galaxies and light behave, and it would be abandoned if those observations disagreed. (Mark this one yourself.)",
       },
+      {
+        question: "A natural satellite that orbits a planet is called a:",
+        choices: [
+          "Moon",
+          "Planet",
+          "Star",
+          "Comet",
+        ],
+        accept: [
+          "Moon",
+        ],
+        answer: "Moon, because a moon orbits a planet, while a planet orbits a star.",
+      },
+      {
+        question: "What pulled a cloud of dust and gas together to form the Sun?",
+        choices: [
+          "Magnetism",
+          "Gravity",
+          "Friction",
+          "Fusion",
+        ],
+        accept: [
+          "Gravity",
+        ],
+        answer: "Gravity, because gravitational attraction pulled the nebula together until it was hot enough for fusion.",
+      },
+      {
+        question: "A star heating up before fusion begins is called a:",
+        choices: [
+          "Red giant",
+          "White dwarf",
+          "Protostar",
+          "Nebula",
+        ],
+        accept: [
+          "Protostar",
+        ],
+        answer: "Protostar, because a nebula collapses under gravity and heats up into a protostar, then fusion starts.",
+      },
+      {
+        question: "In a main sequence star, hydrogen nuclei fuse to form:",
+        choices: [
+          "Carbon",
+          "Helium",
+          "Iron",
+          "Oxygen",
+        ],
+        accept: [
+          "Helium",
+        ],
+        answer: "Helium, because main sequence stars fuse hydrogen nuclei into helium, releasing energy.",
+      },
+      {
+        question: "A main sequence star is stable because outward pressure from fusion balances:",
+        choices: [
+          "Friction",
+          "Gravity",
+          "Air pressure",
+          "Magnetism",
+        ],
+        accept: [
+          "Gravity",
+        ],
+        answer: "Gravity, because the outward pressure from fusion balances the inward pull of gravity.",
+      },
+      {
+        question: "What is the very last stage of a star the size of our Sun?",
+        choices: [
+          "Black hole",
+          "Neutron star",
+          "Black dwarf",
+          "Red giant",
+        ],
+        accept: [
+          "Black dwarf",
+        ],
+        answer: "Black dwarf, because a Sun-like star goes red giant → white dwarf → black dwarf as it cools.",
+      },
+      {
+        question: "For a star like the Sun, which stage comes straight after the red giant?",
+        choices: [
+          "White dwarf",
+          "Supernova",
+          "Black hole",
+          "Protostar",
+        ],
+        accept: [
+          "White dwarf",
+        ],
+        answer: "White dwarf, because only much more massive stars go supernova; a Sun-like star shrinks to a white dwarf.",
+      },
+      {
+        question: "Elements heavier than helium were made by:",
+        choices: [
+          "The Big Bang",
+          "Fusion in stars",
+          "Fission on planets",
+          "Radioactive decay",
+        ],
+        accept: [
+          "Fusion in stars",
+        ],
+        answer: "Fusion in stars, because stars fuse light nuclei into heavier ones, and supernovae scatter them through space.",
+      },
+      {
+        question: "Red shift means light from a galaxy has a wavelength that is:",
+        choices: [
+          "Shorter",
+          "Unchanged",
+          "Longer",
+          "Zero",
+        ],
+        accept: [
+          "Longer",
+        ],
+        answer: "Longer, because red shift is a shift towards the red, longer-wavelength end of the spectrum.",
+      },
+      {
+        question: "The further away a galaxy is, the faster it is:",
+        choices: [
+          "Moving towards us",
+          "Moving away",
+          "Spinning",
+          "Cooling down",
+        ],
+        accept: [
+          "Moving away",
+        ],
+        answer: "Moving away, because more distant galaxies show a bigger red shift — evidence the universe is expanding.",
+      },
+      {
+        question: "The Big Bang theory says the universe began very small, very dense and very:",
+        choices: [
+          "Cold",
+          "Dark",
+          "Hot",
+          "Slow",
+        ],
+        accept: [
+          "Hot",
+        ],
+        answer: "Hot, because the universe began about 13.8 billion years ago from a tiny, extremely dense and hot region.",
+      },
+      {
+        question: "Radiation left over from the Big Bang is now detected mainly as:",
+        choices: [
+          "Gamma rays",
+          "Visible light",
+          "X-rays",
+          "Microwaves",
+        ],
+        accept: [
+          "Microwaves",
+        ],
+        answer: "Microwaves, because this cosmic microwave background radiation fills the universe and supports the Big Bang.",
+      },
+      {
+        question: "Dark energy is proposed to explain:",
+        choices: [
+          "How galaxies spin",
+          "Faster expansion",
+          "Red giants",
+          "Black holes",
+        ],
+        accept: [
+          "Faster expansion",
+        ],
+        answer: "Faster expansion, because dark energy is proposed for the accelerating expansion; dark matter explains galaxy rotation.",
+      },
+      {
+        question: "A satellite orbits at constant speed. What is changing all the time?",
+        choices: [
+          "Speed",
+          "Velocity",
+          "Mass",
+          "Kinetic energy",
+        ],
+        accept: [
+          "Velocity",
+        ],
+        answer: "Velocity, because its direction keeps changing, so it is accelerating even though its speed is constant.",
+        higherOnly: true,
+      },
+      {
+        question: "A satellite moves into a smaller stable orbit. Its speed must:",
+        choices: [
+          "Decrease",
+          "Stay the same",
+          "Drop to zero",
+          "Increase",
+        ],
+        accept: [
+          "Increase",
+        ],
+        answer: "Increase, because a smaller orbital radius needs a faster speed to stay in a stable orbit.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -7540,6 +10879,201 @@ export const PHYSICS: Record<string, TopicContent> = {
         question: "In the Leslie cube investigation, explain why every face must be at the same temperature and the detector the same distance from each.",
         answer: "The independent variable is the type of surface, so everything else affecting the reading has to be a control variable. Infrared emission rises steeply with temperature, so a hotter face would give a bigger reading regardless of its colour or finish, and the intensity also falls off with distance from the source. If either is allowed to vary, a difference in the readings cannot be attributed to the surface, and the comparison between matt black and shiny surfaces means nothing. (Mark this one yourself.)",
       },
+      {
+        question: "In a fair test, the variables you keep the same are called:",
+        choices: [
+          "Independent variables",
+          "Dependent variables",
+          "Control variables",
+          "Categoric variables",
+        ],
+        accept: [
+          "Control variables",
+        ],
+        answer: "Control variables, because keeping everything else the same makes it a fair test.",
+      },
+      {
+        question: "In the Hooke's law practical, which is the dependent variable?",
+        choices: [
+          "Mass added",
+          "Extension",
+          "Spring type",
+          "Room temperature",
+        ],
+        accept: [
+          "Extension",
+        ],
+        answer: "Extension, because it is what you measure; the force (mass added) is what you change.",
+      },
+      {
+        question: "Results close to the true value are described as:",
+        choices: [
+          "Precise",
+          "Repeatable",
+          "Accurate",
+          "Reproducible",
+        ],
+        accept: [
+          "Accurate",
+        ],
+        answer: "Accurate, because accurate means close to the true value; precise means the repeats agree.",
+      },
+      {
+        question: "Another student gets the same results with different equipment. The results are:",
+        choices: [
+          "Repeatable",
+          "Accurate",
+          "Precise",
+          "Reproducible",
+        ],
+        accept: [
+          "Reproducible",
+        ],
+        answer: "Reproducible, because someone else with different equipment got the same result; repeatable is the same person.",
+      },
+      {
+        question: "A ruler is marked in 1 mm steps. What is its resolution?",
+        choices: [
+          "1 cm",
+          "1 mm",
+          "0.5 mm",
+          "0.1 mm",
+        ],
+        accept: [
+          "1 mm",
+        ],
+        answer: "1 mm, because resolution is the smallest change the instrument can show — here one millimetre division.",
+      },
+      {
+        question: "A 6 N force stretches a spring by 0.2 m. What is the spring constant in N/m?",
+        choices: [
+          "1.2",
+          "30",
+          "0.033",
+          "6.2",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because k = F ÷ e = 6 ÷ 0.2 = 30 N/m.",
+      },
+      {
+        question: "On a graph of force against extension for a spring, the gradient gives the:",
+        choices: [
+          "Elastic energy",
+          "Extension",
+          "Spring constant",
+          "Weight",
+        ],
+        accept: [
+          "Spring constant",
+        ],
+        answer: "Spring constant, because k = F ÷ e is the gradient; the area under the line is the elastic energy stored.",
+      },
+      {
+        question: "In the resistance practical, how is the voltmeter connected?",
+        choices: [
+          "In series",
+          "In parallel",
+          "Either way",
+          "After the switch",
+        ],
+        accept: [
+          "In parallel",
+        ],
+        answer: "In parallel, because a voltmeter measures the p.d. across a component; the ammeter goes in series.",
+      },
+      {
+        question: "A resistor has 3 V across it and 0.2 A through it. What is R in Ω?",
+        choices: [
+          "0.6",
+          "15",
+          "0.067",
+          "3.2",
+        ],
+        accept: [
+          "15",
+        ],
+        answer: "15, because R = V ÷ I = 3 ÷ 0.2 = 15 Ω.",
+      },
+      {
+        question: "6000 J heats a 2 kg block by 3 °C. Specific heat capacity in J/kg °C?",
+        choices: [
+          "2000",
+          "3000",
+          "36000",
+          "1000",
+        ],
+        accept: [
+          "1000",
+        ],
+        answer: "1000, because c = E ÷ (m × Δθ) = 6000 ÷ (2 × 3) = 1000 J/kg °C.",
+      },
+      {
+        question: "In the acceleration practical, why is the ramp tilted slightly?",
+        choices: [
+          "Cancel out friction",
+          "Increase the mass",
+          "Reduce air resistance",
+          "Start the timer",
+        ],
+        accept: [
+          "Cancel out friction",
+        ],
+        answer: "Cancel out friction, because a slight tilt compensates for friction so only the pulling force accelerates the trolley.",
+      },
+      {
+        question: "Ripples have frequency 4 Hz and wavelength 0.5 m. What is the wave speed in m/s?",
+        choices: [
+          "8",
+          "4.5",
+          "2",
+          "0.125",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because v = f × λ = 4 × 0.5 = 2 m/s.",
+      },
+      {
+        question: "In the Leslie cube practical, which surface emits the most infrared?",
+        choices: [
+          "Shiny black",
+          "Matt white",
+          "Shiny silver",
+          "Matt black",
+        ],
+        accept: [
+          "Matt black",
+        ],
+        answer: "Matt black, because dull, dark surfaces are the best emitters of infrared; shiny light surfaces are the worst.",
+      },
+      {
+        question: "How are random errors best reduced?",
+        choices: [
+          "Correct the zero",
+          "Repeat and average",
+          "Use one reading",
+          "Change the range",
+        ],
+        accept: [
+          "Repeat and average",
+        ],
+        answer: "Repeat and average, because random errors vary unpredictably and cancel out in a mean; systematic errors do not.",
+      },
+      {
+        question: "In the I–V characteristics practical, which component conducts in only one direction?",
+        choices: [
+          "Filament lamp",
+          "Resistor",
+          "Diode",
+          "Thermistor",
+        ],
+        accept: [
+          "Diode",
+        ],
+        answer: "Diode, because it has a very high resistance in reverse, so current flows only one way.",
+      },
     ],
     misconceptions: [
       {
@@ -7932,6 +11466,136 @@ export const PHYSICS: Record<string, TopicContent> = {
       {
         question: "Explain how a method mark can be earned on a calculation whose final answer is wrong, and what must appear on the page to secure it.",
         answer: "Mark schemes award credit per completed stage, so the correct equation and a correct substitution are worth marks in their own right, independently of the final number. A slip on the calculator at the last step loses only the accuracy mark if the earlier stages are visible. To secure them, write the equation on its own line, show the converted values, and show the substitution — an answer standing alone with no working can only score full marks or none. (Mark this one yourself.)",
+      },
+      {
+        question: "Convert 400 g into kilograms.",
+        choices: [
+          "4",
+          "0.4",
+          "400000",
+          "0.04",
+        ],
+        accept: [
+          "0.4",
+        ],
+        answer: "0.4, because 1 kg = 1000 g, so 400 ÷ 1000 = 0.4 kg.",
+      },
+      {
+        question: "How many watts is 2 MW?",
+        choices: [
+          "2,000",
+          "0.002",
+          "2,000,000",
+          "2,000,000,000",
+        ],
+        accept: [
+          "2,000,000",
+        ],
+        answer: "2,000,000, because mega means × 1,000,000, so 2 MW = 2,000,000 W.",
+      },
+      {
+        question: "Which quantity is measured in newtons?",
+        choices: [
+          "Energy",
+          "Force",
+          "Power",
+          "Mass",
+        ],
+        accept: [
+          "Force",
+        ],
+        answer: "Force, because the newton (N) is the unit of force; energy is in J, power in W, mass in kg.",
+      },
+      {
+        question: "Which equation gives kinetic energy?",
+        choices: [
+          "Ek = mv",
+          "Ek = ½mv",
+          "Ek = ½mv²",
+          "Ek = mv²",
+        ],
+        accept: [
+          "Ek = ½mv²",
+        ],
+        answer: "Ek = ½mv², because kinetic energy = ½ × mass × speed² — don't forget the half or the square.",
+      },
+      {
+        question: "What does the command word 'describe' ask you to do?",
+        choices: [
+          "Say why it happens",
+          "Say what happens",
+          "Work out a value",
+          "Draw a graph",
+        ],
+        accept: [
+          "Say what happens",
+        ],
+        answer: "Say what happens, because describe means say what happens or what the data shows; explain means say why.",
+      },
+      {
+        question: "The command word 'sketch' means draw:",
+        choices: [
+          "Accurately to scale",
+          "Shape + labelled axes",
+          "A results table",
+          "Points with error bars",
+        ],
+        accept: [
+          "Shape + labelled axes",
+        ],
+        answer: "Shape + labelled axes, because a sketch needs the correct shape and labelled axes but need not be to scale.",
+      },
+      {
+        question: "Write 0.006 in standard form.",
+        choices: [
+          "6 × 10³",
+          "6 × 10⁻²",
+          "6 × 10⁻³",
+          "6 × 10⁻⁴",
+        ],
+        accept: [
+          "6 × 10⁻³",
+        ],
+        answer: "6 × 10⁻³, because the decimal point moves 3 places right to make 6, so the power is −3.",
+      },
+      {
+        question: "Which quantity has no unit?",
+        choices: [
+          "Efficiency",
+          "Power",
+          "Density",
+          "Momentum",
+        ],
+        accept: [
+          "Efficiency",
+        ],
+        answer: "Efficiency, because it is a ratio of two energies (or powers), so the units cancel.",
+      },
+      {
+        question: "Write 3.46 to 2 significant figures.",
+        choices: [
+          "3.4",
+          "3.46",
+          "3.5",
+          "3.0",
+        ],
+        accept: [
+          "3.5",
+        ],
+        answer: "3.5, because the third figure is 6, which is 5 or more, so the 4 rounds up to 5.",
+      },
+      {
+        question: "Convert 2 hours into seconds.",
+        choices: [
+          "120",
+          "7200",
+          "720",
+          "3600",
+        ],
+        accept: [
+          "7200",
+        ],
+        answer: "7200, because 1 hour = 3600 s, so 2 × 3600 = 7200 s.",
       },
     ],
     misconceptions: [

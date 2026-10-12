@@ -427,6 +427,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why nearly all of an atom's mass is in the nucleus, even though electrons take up nearly all of its volume.",
         answer: "Protons and neutrons each have a relative mass of 1, while an electron's relative mass is about 1/1840, so the electrons contribute almost nothing to the total. The protons and neutrons are packed into a nucleus around ten thousand times smaller in radius than the atom. The electrons occupy shells spread out over the remaining space, which is why the atom is large but light outside the nucleus. Volume and mass are therefore concentrated in completely different places. (Mark this one yourself.)",
       },
+      {
+        question: "What is the relative mass of a neutron?",
+        choices: [
+          "0",
+          "1",
+          "−1",
+          "1/2000",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, the same as a proton. Its relative CHARGE is 0, which is the usual mix-up; it is the electron whose mass is almost zero.",
+      },
+      {
+        question: "Which particles are found in the nucleus of an atom?",
+        choices: [
+          "Protons and electrons",
+          "Neutrons and electrons",
+          "Protons and neutrons",
+          "Electrons only",
+        ],
+        accept: [
+          "Protons and neutrons",
+        ],
+        answer: "Protons and neutrons, because electrons are in shells around the nucleus, not inside it.",
+      },
+      {
+        question: "An atom has 19 protons and 20 neutrons. What is its mass number?",
+        choices: [
+          "19",
+          "20",
+          "58",
+          "39",
+        ],
+        accept: [
+          "39",
+        ],
+        answer: "39, because mass number = protons + neutrons = 19 + 20. Electrons are not counted, as their mass is almost zero.",
+      },
+      {
+        question: "Aluminium has atomic number 13 and mass number 27. How many neutrons does it have?",
+        choices: [
+          "14",
+          "13",
+          "27",
+          "40",
+        ],
+        accept: [
+          "14",
+        ],
+        answer: "14, because neutrons = mass number − atomic number = 27 − 13 = 14.",
+      },
+      {
+        question: "What is the electronic structure of an atom with 13 electrons?",
+        choices: [
+          "2,10,1",
+          "2,8,3",
+          "3,8,2",
+          "2,8,2,1",
+        ],
+        accept: [
+          "2,8,3",
+        ],
+        answer: "2,8,3, because the first shell holds 2, the second holds 8, and the remaining 3 go in the third shell.",
+      },
+      {
+        question: "An atom has the electronic structure 2,8,2. Which group is it in?",
+        choices: [
+          "Group 3",
+          "Group 8",
+          "Group 2",
+          "Group 12",
+        ],
+        accept: [
+          "Group 2",
+        ],
+        answer: "Group 2, because the group number equals the number of outer electrons (2). The 3 shells give the period, not the group.",
+      },
+      {
+        question: "Which scientist suggested that electrons orbit the nucleus in fixed shells?",
+        choices: [
+          "James Chadwick",
+          "Niels Bohr",
+          "J.J. Thomson",
+          "Dmitri Mendeleev",
+        ],
+        accept: [
+          "Niels Bohr",
+        ],
+        answer: "Niels Bohr, who showed electrons orbit at set distances. Chadwick found the neutron and Thomson's work led to the plum pudding.",
+      },
+      {
+        question: "In the plum pudding model, what was embedded in a ball of positive charge?",
+        choices: [
+          "Protons",
+          "Neutrons",
+          "Electrons",
+          "A nucleus",
+        ],
+        accept: [
+          "Electrons",
+        ],
+        answer: "Electrons, scattered through a ball of positive charge. There was no nucleus in this model; that came after alpha scattering.",
+      },
+      {
+        question: "In alpha scattering, a few alpha particles bounced back. What did this show?",
+        choices: [
+          "Atom is empty space",
+          "Dense positive nucleus",
+          "Electrons in shells",
+          "Neutrons exist",
+        ],
+        accept: [
+          "Dense positive nucleus",
+        ],
+        answer: "Dense positive nucleus: a few bounced back off a tiny concentrated charge. Most passing straight through showed the empty space.",
+      },
+      {
+        question: "What is the approximate radius of an atom?",
+        choices: [
+          "0.1 mm",
+          "100 nm",
+          "0.1 nm",
+          "1 cm",
+        ],
+        accept: [
+          "0.1 nm",
+        ],
+        answer: "0.1 nm (1 × 10⁻¹⁰ m). 100 nm is the top of the nanoparticle range, which is far bigger than one atom.",
+      },
+      {
+        question: "The radius of a nucleus is about what fraction of the radius of its atom?",
+        choices: [
+          "1/10",
+          "1/100",
+          "1/1,000",
+          "1/10,000",
+        ],
+        accept: [
+          "1/10,000",
+        ],
+        answer: "1/10,000, because the nucleus is tiny compared with the whole atom, which is mostly empty space.",
+      },
+      {
+        question: "How many more neutrons does carbon-14 have than carbon-12?",
+        choices: [
+          "2",
+          "6",
+          "8",
+          "14",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because both have 6 protons, so carbon-12 has 6 neutrons and carbon-14 has 8. The difference is 8 − 6 = 2.",
+      },
+      {
+        question: "An atom has mass number 31 and 16 neutrons. What is its atomic number?",
+        choices: [
+          "16",
+          "15",
+          "31",
+          "47",
+        ],
+        accept: [
+          "15",
+        ],
+        answer: "15, because atomic number = mass number − neutrons = 31 − 16 = 15. This is phosphorus.",
+      },
+      {
+        question: "What is the maximum number of electrons in the second shell at GCSE?",
+        choices: [
+          "2",
+          "6",
+          "18",
+          "8",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because at GCSE the first shell holds up to 2 and the second and third hold up to 8 each.",
+      },
+      {
+        question: "Chlorine's relative atomic mass is 35.5. Why is it not a whole number?",
+        choices: [
+          "Electrons add mass",
+          "Average of isotopes",
+          "Half a neutron",
+          "Measurement error",
+        ],
+        accept: [
+          "Average of isotopes",
+        ],
+        answer: "Average of isotopes: it is the mean mass of chlorine-35 and chlorine-37 atoms weighted by abundance. Each atom is a whole number.",
+      },
     ],
     misconceptions: [
       {
@@ -825,6 +1020,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Tellurium has a higher relative atomic mass than iodine, yet it is placed before iodine. Explain why the modern periodic table orders elements by atomic number rather than atomic mass.",
         answer: "Ordering by mass puts iodine before tellurium, which would place iodine in the same group as oxygen and sulfur and tellurium with the halogens, contradicting their chemistry. Mendeleev swapped such pairs to keep the properties right, but had no reason for doing so beyond the pattern itself. Once protons were discovered, atomic number gave a physical quantity that increases by exactly one at each step and never needs a swap. Isotopes explain the anomaly: tellurium's heavier isotopes are more abundant, so its mean mass overtakes iodine's while its proton number stays lower. (Mark this one yourself.)",
+      },
+      {
+        question: "Which group of the periodic table contains the halogens?",
+        choices: [
+          "Group 1",
+          "Group 7",
+          "Group 0",
+          "Group 2",
+        ],
+        accept: [
+          "Group 7",
+        ],
+        answer: "Group 7. The halogens have seven outer electrons. Group 1 is the alkali metals and group 0 is the noble gases.",
+      },
+      {
+        question: "An element is in period 3. How many occupied electron shells does it have?",
+        choices: [
+          "2",
+          "3",
+          "4",
+          "8",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because the period number equals the number of occupied shells. The group number gives the outer electrons.",
+      },
+      {
+        question: "Lithium reacts with water. Which gas is given off?",
+        choices: [
+          "Oxygen",
+          "Carbon dioxide",
+          "Hydrogen",
+          "Chlorine",
+        ],
+        accept: [
+          "Hydrogen",
+        ],
+        answer: "Hydrogen, because a group 1 metal and water give a metal hydroxide and hydrogen gas: lithium hydroxide + hydrogen.",
+      },
+      {
+        question: "Compared with group 1 metals, transition metals have:",
+        choices: [
+          "Lower densities",
+          "Higher melting points",
+          "Greater reactivity",
+          "Lower melting points",
+        ],
+        accept: [
+          "Higher melting points",
+        ],
+        answer: "Higher melting points. Transition metals are also denser, harder and less reactive than the soft, low-melting group 1 metals.",
+      },
+      {
+        question: "Going down group 7, what happens to the boiling points?",
+        choices: [
+          "They decrease",
+          "They stay the same",
+          "They increase",
+          "Increase then fall",
+        ],
+        accept: [
+          "They increase",
+        ],
+        answer: "They increase, because the molecules get larger, so the forces between them are stronger. Reactivity decreases down group 7.",
+      },
+      {
+        question: "Which is the most reactive halogen?",
+        choices: [
+          "Chlorine",
+          "Bromine",
+          "Iodine",
+          "Fluorine",
+        ],
+        accept: [
+          "Fluorine",
+        ],
+        answer: "Fluorine, because halogen reactivity DECREASES down group 7, and fluorine is at the top. Don't mix this up with group 1.",
+      },
+      {
+        question: "Which of these alkali metals is the most reactive?",
+        choices: [
+          "Lithium",
+          "Sodium",
+          "Potassium",
+          "Rubidium",
+        ],
+        accept: [
+          "Rubidium",
+        ],
+        answer: "Rubidium, because reactivity INCREASES down group 1 and rubidium is lowest of these: its outer electron is lost most easily.",
+      },
+      {
+        question: "Iodine solution is added to potassium bromide solution. What happens?",
+        choices: [
+          "Bromine is displaced",
+          "Iodine is displaced",
+          "No reaction",
+          "Potassium is displaced",
+        ],
+        accept: [
+          "No reaction",
+        ],
+        answer: "No reaction, because iodine is LESS reactive than bromine, so it cannot displace bromine from its compound.",
+      },
+      {
+        question: "Early periodic tables ordered the elements by what?",
+        choices: [
+          "Atomic number",
+          "Atomic weight",
+          "Group number",
+          "Date discovered",
+        ],
+        accept: [
+          "Atomic weight",
+        ],
+        answer: "Atomic weight, which put some elements in the wrong group. The modern table uses atomic number, found after protons were discovered.",
+      },
+      {
+        question: "Why was Mendeleev's periodic table eventually accepted?",
+        choices: [
+          "It had no gaps",
+          "Predictions confirmed",
+          "It used atomic number",
+          "Noble gases fitted",
+        ],
+        accept: [
+          "Predictions confirmed",
+        ],
+        answer: "Predictions confirmed: elements found later filled his gaps with the properties he had predicted. He used atomic weight, not number.",
+      },
+      {
+        question: "Where are the metals found on the periodic table?",
+        choices: [
+          "Right and top",
+          "Left and bottom",
+          "Top row only",
+          "Group 0 only",
+        ],
+        accept: [
+          "Left and bottom",
+        ],
+        answer: "Left and bottom, because metals are on the left and towards the bottom; the non-metals are on the right and towards the top.",
+      },
+      {
+        question: "How many outer electrons does neon have?",
+        choices: [
+          "0",
+          "2",
+          "10",
+          "8",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because neon has 10 electrons arranged 2,8, giving a full outer shell. Group 0 does not mean zero outer electrons.",
+      },
+      {
+        question: "Down group 1, the outer electron is lost more easily because it is:",
+        choices: [
+          "Closer to nucleus",
+          "Further from nucleus",
+          "More strongly held",
+          "In a smaller atom",
+        ],
+        accept: [
+          "Further from nucleus",
+        ],
+        answer: "Further from nucleus, and shielded by more inner shells, so it is attracted less strongly and lost more easily.",
+      },
+      {
+        question: "An element has the electronic structure 2,8,5. Where is it in the table?",
+        choices: [
+          "Group 3, period 5",
+          "Group 5, period 2",
+          "Group 5, period 3",
+          "Group 8, period 3",
+        ],
+        accept: [
+          "Group 5, period 3",
+        ],
+        answer: "Group 5, period 3, because it has 5 outer electrons (group) in 3 occupied shells (period). This is phosphorus.",
+      },
+      {
+        question: "When halogens react with metals, each halogen atom will:",
+        choices: [
+          "Lose one electron",
+          "Gain one electron",
+          "Lose seven electrons",
+          "Gain two electrons",
+        ],
+        accept: [
+          "Gain one electron",
+        ],
+        answer: "Gain one electron, because a halogen has seven outer electrons and needs one more for a full shell, forming a 1− ion.",
       },
     ],
     misconceptions: [
@@ -1236,6 +1626,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain, in terms of electrons, why a group 2 metal and a group 6 non-metal bond ionically while two group 6 non-metals bond covalently.",
         answer: "A group 2 atom has two outer electrons it can lose fairly easily, and a group 6 atom needs two more to complete its shell, so electrons transfer outright and oppositely charged ions form and attract. Two group 6 non-metals both need to gain electrons, and neither will give any up, so transfer is impossible. Instead they share pairs of electrons, and each atom counts the shared pairs towards its own full shell. Both routes end with full outer shells, but only transfer produces ions. (Mark this one yourself.)",
       },
+      {
+        question: "What is the charge on a magnesium ion?",
+        choices: [
+          "2−",
+          "1+",
+          "2+",
+          "12+",
+        ],
+        accept: [
+          "2+",
+        ],
+        answer: "2+, because magnesium is in group 2 and loses its two outer electrons. Metals form positive ions.",
+      },
+      {
+        question: "What is the charge on an oxide ion?",
+        choices: [
+          "2+",
+          "2−",
+          "6−",
+          "1−",
+        ],
+        accept: [
+          "2−",
+        ],
+        answer: "2−, because oxygen is in group 6 and gains two electrons to complete its outer shell. Non-metals form negative ions.",
+      },
+      {
+        question: "What is the formula of sodium oxide?",
+        choices: [
+          "NaO",
+          "NaO₂",
+          "Na₂O₂",
+          "Na₂O",
+        ],
+        accept: [
+          "Na₂O",
+        ],
+        answer: "Na₂O, because Na⁺ has a 1+ charge and O²⁻ a 2− charge, so two sodium ions balance one oxide ion.",
+      },
+      {
+        question: "What is the formula of calcium chloride?",
+        choices: [
+          "CaCl₂",
+          "CaCl",
+          "Ca₂Cl",
+          "CaCl₃",
+        ],
+        accept: [
+          "CaCl₂",
+        ],
+        answer: "CaCl₂, because Ca²⁺ has a 2+ charge and each Cl⁻ is 1−, so two chloride ions are needed to balance one calcium ion.",
+      },
+      {
+        question: "What type of bonding holds copper atoms together in the metal?",
+        choices: [
+          "Ionic",
+          "Covalent",
+          "Metallic",
+          "Giant covalent",
+        ],
+        accept: [
+          "Metallic",
+        ],
+        answer: "Metallic: positive copper ions are attracted to a sea of delocalised electrons. Ionic bonds need a metal AND a non-metal.",
+      },
+      {
+        question: "How many covalent bonds are in one molecule of water, H₂O?",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because the oxygen atom shares one pair of electrons with each of the two hydrogen atoms: H–O–H.",
+      },
+      {
+        question: "How many pairs of electrons are shared between the two atoms in O₂?",
+        choices: [
+          "1",
+          "4",
+          "2",
+          "6",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, a double bond, because each oxygen atom has 6 outer electrons and needs 2 more to fill its shell.",
+      },
+      {
+        question: "A substance melts at 801 °C and conducts only when molten. What is its structure?",
+        choices: [
+          "Simple molecular",
+          "Giant ionic",
+          "Giant covalent",
+          "Metallic",
+        ],
+        accept: [
+          "Giant ionic",
+        ],
+        answer: "Giant ionic: a high melting point, and the ions can only move to carry charge when molten. A metal would conduct when solid too.",
+      },
+      {
+        question: "A substance melts at −100 °C and does not conduct electricity. Its structure is:",
+        choices: [
+          "Giant ionic",
+          "Giant covalent",
+          "Metallic",
+          "Simple molecular",
+        ],
+        accept: [
+          "Simple molecular",
+        ],
+        answer: "Simple molecular: weak intermolecular forces give a low melting point, and molecules have no overall charge, so it can't conduct.",
+      },
+      {
+        question: "A sodium atom becomes a sodium ion, Na⁺, by:",
+        choices: [
+          "Gaining one electron",
+          "Losing one electron",
+          "Losing one proton",
+          "Sharing one electron",
+        ],
+        accept: [
+          "Losing one electron",
+        ],
+        answer: "Losing one electron, because sodium has one outer electron. Losing negative charge leaves it 1+. Protons never change.",
+      },
+      {
+        question: "Which pair of elements will bond covalently?",
+        choices: [
+          "Sodium and chlorine",
+          "Carbon and oxygen",
+          "Magnesium and oxygen",
+          "Iron and copper",
+        ],
+        accept: [
+          "Carbon and oxygen",
+        ],
+        answer: "Carbon and oxygen, because both are non-metals, so they share electrons. Metal + non-metal is ionic; metal + metal is metallic.",
+      },
+      {
+        question: "Melting a simple molecular substance means overcoming:",
+        choices: [
+          "Covalent bonds",
+          "Intermolecular forces",
+          "Ionic bonds",
+          "Metallic bonds",
+        ],
+        accept: [
+          "Intermolecular forces",
+        ],
+        answer: "Intermolecular forces, which are weak. The strong covalent bonds inside each molecule are NOT broken when it melts.",
+      },
+      {
+        question: "In a metal, the positive ions are attracted to:",
+        choices: [
+          "Delocalised electrons",
+          "Negative ions",
+          "Neutrons",
+          "Shared pairs",
+        ],
+        accept: [
+          "Delocalised electrons",
+        ],
+        answer: "Delocalised electrons, a 'sea' of free outer electrons. This attraction is the metallic bond.",
+      },
+      {
+        question: "How many electrons are in a single covalent bond?",
+        choices: [
+          "1",
+          "2",
+          "4",
+          "8",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because a single covalent bond is one SHARED PAIR of electrons, one from each atom.",
+      },
+      {
+        question: "Aluminium is in group 3. What is the charge on an aluminium ion?",
+        choices: [
+          "3−",
+          "2+",
+          "13+",
+          "3+",
+        ],
+        accept: [
+          "3+",
+        ],
+        answer: "3+, because aluminium loses its three outer electrons. Its atomic number, 13, is not the charge.",
+      },
     ],
     misconceptions: [
       {
@@ -1637,6 +2222,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain why nanoparticles of a material may be harmful to health even when the same material in bulk is considered safe.",
         answer: "Nanoparticles have an enormous surface area for their volume, so a given mass is far more reactive than the same mass of bulk material and can catalyse reactions inside the body. They are also small enough to be breathed deep into the lungs and to cross membranes that would stop larger particles, including into the bloodstream. Their long-term effects have not been tested for as long as the bulk forms have. So safety data for the bulk material cannot simply be assumed to carry over. (Mark this one yourself.)",
+      },
+      {
+        question: "Which state of matter has a fixed shape and a fixed volume?",
+        choices: [
+          "Liquid",
+          "Gas",
+          "Solid",
+          "Aqueous",
+        ],
+        accept: [
+          "Solid",
+        ],
+        answer: "Solid, because its particles are packed closely in fixed positions. A liquid has a fixed volume but takes its container's shape.",
+      },
+      {
+        question: "What is the state symbol for a liquid?",
+        choices: [
+          "(aq)",
+          "(l)",
+          "(s)",
+          "(g)",
+        ],
+        accept: [
+          "(l)",
+        ],
+        answer: "(l), as in water, H₂O(l). (aq) means dissolved in water, which is a solution, not a pure liquid.",
+      },
+      {
+        question: "What is the name for a gas turning into a liquid?",
+        choices: [
+          "Evaporating",
+          "Freezing",
+          "Melting",
+          "Condensing",
+        ],
+        accept: [
+          "Condensing",
+        ],
+        answer: "Condensing, the reverse of evaporating or boiling. Freezing is liquid to solid.",
+      },
+      {
+        question: "A substance melts at −7 °C and boils at 59 °C. What is its state at 70 °C?",
+        choices: [
+          "Solid",
+          "Liquid",
+          "Gas",
+          "Aqueous",
+        ],
+        accept: [
+          "Gas",
+        ],
+        answer: "Gas, because 70 °C is above its boiling point of 59 °C. It would be a liquid between −7 °C and 59 °C.",
+      },
+      {
+        question: "Oxygen melts at −218 °C and boils at −183 °C. What is its state at −200 °C?",
+        choices: [
+          "Liquid",
+          "Solid",
+          "Gas",
+          "Aqueous",
+        ],
+        accept: [
+          "Liquid",
+        ],
+        answer: "Liquid, because −200 °C is above the melting point (−218 °C) but below the boiling point (−183 °C).",
+      },
+      {
+        question: "Stronger forces between particles make the melting point:",
+        choices: [
+          "Lower",
+          "Higher",
+          "The same",
+          "Below 0 °C",
+        ],
+        accept: [
+          "Higher",
+        ],
+        answer: "Higher, because more energy is needed to overcome stronger forces between the particles.",
+      },
+      {
+        question: "What is the shape of a buckminsterfullerene molecule?",
+        choices: [
+          "Flat sheet",
+          "Cylinder",
+          "Hollow sphere",
+          "Tetrahedron",
+        ],
+        accept: [
+          "Hollow sphere",
+        ],
+        answer: "Hollow sphere of 60 carbon atoms (C₆₀). A cylindrical fullerene is a nanotube, and a flat sheet is graphene.",
+      },
+      {
+        question: "Which form of carbon has layers that slide, so it is used as a lubricant?",
+        choices: [
+          "Diamond",
+          "Graphite",
+          "Graphene",
+          "Buckminsterfullerene",
+        ],
+        accept: [
+          "Graphite",
+        ],
+        answer: "Graphite, because its layers are held by weak forces and slide over each other. Graphene is only a single layer.",
+      },
+      {
+        question: "What shape are the rings in the layers of graphite?",
+        choices: [
+          "Hexagonal",
+          "Pentagonal",
+          "Square",
+          "Triangular",
+        ],
+        accept: [
+          "Hexagonal",
+        ],
+        answer: "Hexagonal: each carbon forms three covalent bonds, giving layers of six-membered rings.",
+      },
+      {
+        question: "Which of these sizes could be a nanoparticle?",
+        choices: [
+          "500 nm",
+          "50 nm",
+          "0.5 nm",
+          "5 µm",
+        ],
+        accept: [
+          "50 nm",
+        ],
+        answer: "50 nm, because nanoparticles are 1–100 nm across. 0.5 nm is too small and 500 nm (or 5 µm = 5000 nm) is too big.",
+      },
+      {
+        question: "How many metres is 1 nanometre?",
+        choices: [
+          "1 × 10⁻⁶",
+          "1 × 10⁻³",
+          "1 × 10⁻¹²",
+          "1 × 10⁻⁹",
+        ],
+        accept: [
+          "1 × 10⁻⁹",
+        ],
+        answer: "1 × 10⁻⁹, because nano means one billionth. 10⁻⁶ is micro and 10⁻³ is milli.",
+      },
+      {
+        question: "Which state of matter has no fixed shape and no fixed volume?",
+        choices: [
+          "Gas",
+          "Liquid",
+          "Solid",
+          "Aqueous",
+        ],
+        accept: [
+          "Gas",
+        ],
+        answer: "Gas, because its particles are far apart and move quickly and randomly, filling any container.",
+      },
+      {
+        question: "Which of these substances has a giant covalent structure?",
+        choices: [
+          "Carbon dioxide",
+          "Sodium chloride",
+          "Silicon dioxide",
+          "Water",
+        ],
+        accept: [
+          "Silicon dioxide",
+        ],
+        answer: "Silicon dioxide, which has covalent bonds throughout, so it melts very high. Carbon dioxide and water are simple molecules.",
+      },
+      {
+        question: "Which property makes graphene useful in electronics?",
+        choices: [
+          "Soft and slippery",
+          "Conducts electricity",
+          "High density",
+          "Insulates heat",
+        ],
+        accept: [
+          "Conducts electricity",
+        ],
+        answer: "Conducts electricity, because it has delocalised electrons. It is also very strong and light; soft and slippery describes graphite.",
+      },
+      {
+        question: "What holds the layers of graphite together?",
+        choices: [
+          "Covalent bonds",
+          "Ionic bonds",
+          "Weak forces",
+          "Metallic bonds",
+        ],
+        accept: [
+          "Weak forces",
+        ],
+        answer: "Weak forces between the layers. There are no covalent bonds between layers, which is why they slide over each other.",
       },
     ],
     misconceptions: [
@@ -2040,6 +2820,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain how chromatography can show that a food colouring contains a banned dye, and why a reference sample must be run on the same piece of paper.",
         answer: "The colouring is spotted on the start line and the solvent carries each component up at a rate set by how strongly it is attracted to the paper compared with the solvent, so a mixture separates into several spots. If one of those spots has the same Rf value as the banned dye, the dye is present. Rf depends on the solvent, the paper and the conditions, so a value measured on one chromatogram cannot safely be compared with one measured elsewhere. Running the reference alongside the sample means both experience identical conditions, and the spots can be compared directly. (Mark this one yourself.)",
+      },
+      {
+        question: "Which method separates sand from water?",
+        choices: [
+          "Crystallisation",
+          "Filtration",
+          "Distillation",
+          "Chromatography",
+        ],
+        accept: [
+          "Filtration",
+        ],
+        answer: "Filtration, because sand is an insoluble solid. It stays in the filter paper while the water passes through.",
+      },
+      {
+        question: "In filtration, the liquid that passes through the paper is called the:",
+        choices: [
+          "Residue",
+          "Solute",
+          "Filtrate",
+          "Solvent",
+        ],
+        accept: [
+          "Filtrate",
+        ],
+        answer: "Filtrate. The solid left behind in the filter paper is the residue.",
+      },
+      {
+        question: "Which method separates the different dyes in an ink?",
+        choices: [
+          "Filtration",
+          "Distillation",
+          "Crystallisation",
+          "Chromatography",
+        ],
+        accept: [
+          "Chromatography",
+        ],
+        answer: "Chromatography, because the dyes travel different distances up the paper depending on their attraction to the solvent.",
+      },
+      {
+        question: "A spot moves 4 cm and the solvent front moves 10 cm. What is the Rf value?",
+        choices: [
+          "2.5",
+          "0.4",
+          "0.6",
+          "4",
+        ],
+        accept: [
+          "0.4",
+        ],
+        answer: "0.4, because Rf = distance moved by substance ÷ distance moved by solvent = 4 ÷ 10. Rf is always less than 1.",
+      },
+      {
+        question: "A spot has an Rf of 0.5 and the solvent moved 8 cm. How far did the spot move, in cm?",
+        choices: [
+          "4",
+          "16",
+          "7.5",
+          "0.5",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because distance moved by spot = Rf × solvent distance = 0.5 × 8 = 4 cm.",
+      },
+      {
+        question: "In paper chromatography, what is the mobile phase?",
+        choices: [
+          "The paper",
+          "The solvent",
+          "The spots",
+          "The start line",
+        ],
+        accept: [
+          "The solvent",
+        ],
+        answer: "The solvent, which moves up through the paper. The paper is the stationary phase.",
+      },
+      {
+        question: "A solid melts over a range from 50 °C to 56 °C. This shows it is:",
+        choices: [
+          "Pure",
+          "A mixture",
+          "An element",
+          "A compound",
+        ],
+        accept: [
+          "A mixture",
+        ],
+        answer: "A mixture, because a pure substance melts at a sharp, specific temperature, while a mixture melts over a range.",
+      },
+      {
+        question: "In chemistry, what does 'pure' mean?",
+        choices: [
+          "Natural",
+          "Clean",
+          "A single substance",
+          "Safe to drink",
+        ],
+        accept: [
+          "A single substance",
+        ],
+        answer: "A single substance: one element or compound only. Everyday 'pure' (natural, clean) is a different meaning.",
+      },
+      {
+        question: "When crystallising, you should heat the solution until:",
+        choices: [
+          "All the water is gone",
+          "Crystals start forming",
+          "It starts to boil",
+          "It changes colour",
+        ],
+        accept: [
+          "Crystals start forming",
+        ],
+        answer: "Crystals start forming, then leave it to evaporate slowly. Heating to dryness can decompose the solid or give small crystals.",
+      },
+      {
+        question: "In a fractionating column, where is the temperature highest?",
+        choices: [
+          "At the top",
+          "In the middle",
+          "At the bottom",
+          "Same throughout",
+        ],
+        accept: [
+          "At the bottom",
+        ],
+        answer: "At the bottom: the column is hottest at the bottom and coolest at the top, so low-boiling substances reach the top.",
+      },
+      {
+        question: "Ethanol boils at 78 °C and water at 100 °C. Which distils off first?",
+        choices: [
+          "Water",
+          "Ethanol",
+          "Both together",
+          "Neither",
+        ],
+        accept: [
+          "Ethanol",
+        ],
+        answer: "Ethanol, because it has the lower boiling point, so it evaporates first and reaches the condenser first.",
+      },
+      {
+        question: "If the solvent starts above the start line, the spots will:",
+        choices: [
+          "Move too far up",
+          "Stop moving",
+          "Dissolve into the tank",
+          "Turn into pencil",
+        ],
+        accept: [
+          "Dissolve into the tank",
+        ],
+        answer: "Dissolve into the tank: the substances wash into the solvent pool instead of travelling up the paper.",
+      },
+      {
+        question: "How can the substances in a mixture be separated?",
+        choices: [
+          "Electrolysis only",
+          "Physical methods",
+          "Chemical reaction",
+          "It cannot be done",
+        ],
+        accept: [
+          "Physical methods",
+        ],
+        answer: "Physical methods (e.g. filtration, distillation), because they are not chemically joined. Compounds need reactions or electrolysis.",
+      },
+      {
+        question: "A food colouring gives 3 spots on a chromatogram. What does this show?",
+        choices: [
+          "It is pure",
+          "Exactly 3 elements",
+          "At least 3 substances",
+          "One substance",
+        ],
+        accept: [
+          "At least 3 substances",
+        ],
+        answer: "At least 3 substances, because a mixture gives several spots; two substances could share a spot. A pure substance gives one.",
+      },
+      {
+        question: "An Rf value always lies between which two numbers?",
+        choices: [
+          "0 and 10",
+          "0 and 1",
+          "1 and 100",
+          "−1 and 1",
+        ],
+        accept: [
+          "0 and 1",
+        ],
+        answer: "0 and 1, because the spot can never travel further than the solvent front. Rf has no units.",
       },
     ],
     misconceptions: [
@@ -2491,6 +3466,203 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain what the state symbols in an equation tell a chemist, and why (aq) and (l) must not be used interchangeably.",
         answer: "State symbols record the physical state of each substance under the reaction conditions: (s) solid, (l) liquid, (g) gas and (aq) dissolved in water. They matter because the same substance can behave completely differently in different states — solid sodium chloride does not conduct, molten and aqueous sodium chloride do. (l) means the pure substance is melted, whereas (aq) means it is dissolved in water and its ions are separated and free to move. Writing NaCl(l) when you mean NaCl(aq) describes a different substance at a different temperature, and in electrolysis it changes the products. (Mark this one yourself.)",
+      },
+      {
+        question: "What is the chemical formula of ammonia?",
+        choices: [
+          "NH₄",
+          "NH₃",
+          "N₃H",
+          "NO₃",
+        ],
+        accept: [
+          "NH₃",
+        ],
+        answer: "NH₃: one nitrogen and three hydrogens. NH₄⁺ is the ammonium ion, and NO₃⁻ is nitrate.",
+      },
+      {
+        question: "How many oxygen atoms are in 2H₂SO₄?",
+        choices: [
+          "4",
+          "6",
+          "8",
+          "2",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because one H₂SO₄ has 4 oxygens and the big 2 in front doubles everything: 2 × 4 = 8.",
+      },
+      {
+        question: "How many atoms in total are in one formula unit of Ca(OH)₂?",
+        choices: [
+          "4",
+          "3",
+          "6",
+          "5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because the bracket doubles both O and H: 1 Ca + 2 O + 2 H = 5.",
+      },
+      {
+        question: "What is the formula of sulfuric acid?",
+        choices: [
+          "H₂SO₄",
+          "H₂SO₃",
+          "HSO₄",
+          "H₂S",
+        ],
+        accept: [
+          "H₂SO₄",
+        ],
+        answer: "H₂SO₄: two hydrogens, one sulfur and four oxygens. H₂S is hydrogen sulfide.",
+      },
+      {
+        question: "Balance: 2Mg + O₂ → __MgO. What number goes in front of MgO?",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because there are 2 Mg and 2 O on the left, so 2MgO is needed on the right: 2Mg + O₂ → 2MgO.",
+      },
+      {
+        question: "Balance: N₂ + __H₂ → 2NH₃. What number goes in front of H₂?",
+        choices: [
+          "2",
+          "6",
+          "3",
+          "1",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because 2NH₃ contains 6 hydrogen atoms, and 3H₂ gives 3 × 2 = 6.",
+      },
+      {
+        question: "Balance: __Na + Cl₂ → 2NaCl. What number goes in front of Na?",
+        choices: [
+          "1",
+          "4",
+          "3",
+          "2",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because 2NaCl contains 2 sodium atoms, so 2Na is needed on the left.",
+      },
+      {
+        question: "Balance: CaCO₃ + __HCl → CaCl₂ + H₂O + CO₂. What number goes before HCl?",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because CaCl₂ has 2 Cl and H₂O has 2 H, so 2HCl is needed on the left.",
+      },
+      {
+        question: "Magnesium gains oxygen to form magnesium oxide. The magnesium is:",
+        choices: [
+          "Reduced",
+          "Neutralised",
+          "Oxidised",
+          "Displaced",
+        ],
+        accept: [
+          "Oxidised",
+        ],
+        answer: "Oxidised, because oxidation is the gain of oxygen. Reduction is the loss of oxygen.",
+      },
+      {
+        question: "In the half equation Cl₂ + 2e⁻ → 2Cl⁻, chlorine is:",
+        choices: [
+          "Oxidised",
+          "Reduced",
+          "Neutralised",
+          "Decomposed",
+        ],
+        accept: [
+          "Reduced",
+        ],
+        answer: "Reduced, because chlorine GAINS electrons. OIL RIG: Oxidation Is Loss, Reduction Is Gain of electrons.",
+        higherOnly: true,
+      },
+      {
+        question: "Complete the half equation: Mg → Mg²⁺ + ___.",
+        choices: [
+          "e⁻",
+          "2e⁺",
+          "2e⁻",
+          "3e⁻",
+        ],
+        accept: [
+          "2e⁻",
+        ],
+        answer: "2e⁻, because magnesium loses two electrons to become 2+. The charges balance: 0 = (2+) + (2−).",
+        higherOnly: true,
+      },
+      {
+        question: "10 g of reactants react completely in a sealed flask. What is the mass of products, in g?",
+        choices: [
+          "Less than 10",
+          "10",
+          "More than 10",
+          "5",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because atoms are not created or destroyed, so the mass is conserved in a sealed flask.",
+      },
+      {
+        question: "Which state symbol should water have at room temperature?",
+        choices: [
+          "(aq)",
+          "(g)",
+          "(l)",
+          "(s)",
+        ],
+        accept: [
+          "(l)",
+        ],
+        answer: "(l), because water is a liquid at room temperature. (aq) means dissolved IN water, so it can't describe water itself.",
+      },
+      {
+        question: "Zinc + hydrochloric acid → zinc chloride + what?",
+        choices: [
+          "Hydrogen",
+          "Water",
+          "Chlorine",
+          "Oxygen",
+        ],
+        accept: [
+          "Hydrogen",
+        ],
+        answer: "Hydrogen, because a metal and an acid give a salt and hydrogen. Water forms when an acid reacts with a base.",
+      },
+      {
+        question: "In H₂O, which atom does the small 2 apply to?",
+        choices: [
+          "Oxygen only",
+          "Hydrogen only",
+          "Both H and O",
+          "The whole molecule",
+        ],
+        accept: [
+          "Hydrogen only",
+        ],
+        answer: "Hydrogen only, because a subscript applies to the symbol just BEFORE it, so H₂O is two hydrogens and one oxygen.",
       },
     ],
     misconceptions: [
@@ -2992,6 +4164,205 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why relative formula mass has no units while the mass of one mole of the same substance is measured in grams.",
         answer: "Relative formula mass is a ratio: it compares the mass of a formula unit with one twelfth of the mass of a carbon-12 atom. Dividing a mass by a mass cancels the units, so Mr is just a number and writing grams after it is wrong. Molar mass is a different quantity — the mass of 6.02 × 10²³ formula units — and that is a real mass, measured in grams per mole. The two share the same numerical value, which is why they are so easily confused. (Mark this one yourself.)",
       },
+      {
+        question: "Using Mg = 24 and O = 16, work out the Mr of MgO.",
+        choices: [
+          "40",
+          "56",
+          "384",
+          "8",
+        ],
+        accept: [
+          "40",
+        ],
+        answer: "40, because Mr is the sum of the Ar values: 24 + 16 = 40.",
+      },
+      {
+        question: "Using C = 12 and H = 1, work out the Mr of CH₄.",
+        choices: [
+          "13",
+          "16",
+          "48",
+          "52",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "16, because CH₄ has one carbon and four hydrogens: 12 + (4 × 1) = 16.",
+      },
+      {
+        question: "Using Mg = 24, O = 16 and H = 1, work out the Mr of Mg(OH)₂.",
+        choices: [
+          "41",
+          "42",
+          "58",
+          "74",
+        ],
+        accept: [
+          "58",
+        ],
+        answer: "58, because the bracket doubles the OH: 24 + 2 × (16 + 1) = 24 + 34 = 58.",
+      },
+      {
+        question: "A reaction could make 50 g of product but makes 40 g. What is the percentage yield?",
+        choices: [
+          "125%",
+          "80%",
+          "20%",
+          "40%",
+        ],
+        accept: [
+          "80%",
+        ],
+        answer: "80%, because percentage yield = actual ÷ theoretical × 100 = 40 ÷ 50 × 100 = 80%.",
+      },
+      {
+        question: "Using C = 12 and H = 1, what is the percentage by mass of carbon in CH₄?",
+        choices: [
+          "25%",
+          "12%",
+          "75%",
+          "80%",
+        ],
+        accept: [
+          "75%",
+        ],
+        answer: "75%, because Mr of CH₄ is 16, and carbon gives 12 of it: 12 ÷ 16 × 100 = 75%.",
+      },
+      {
+        question: "Using Mg = 24 and O = 16, what is the percentage by mass of Mg in MgO?",
+        choices: [
+          "40%",
+          "24%",
+          "67%",
+          "60%",
+        ],
+        accept: [
+          "60%",
+        ],
+        answer: "60%, because Mr of MgO is 40 and magnesium gives 24 of it: 24 ÷ 40 × 100 = 60%.",
+      },
+      {
+        question: "12 g of magnesium burns to make 20 g of magnesium oxide. What mass of oxygen reacted, in g?",
+        choices: [
+          "32",
+          "20",
+          "8",
+          "12",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because mass is conserved: mass of oxygen = 20 − 12 = 8 g.",
+      },
+      {
+        question: "100 g of CaCO₃ decomposes to give 56 g of CaO. What mass of CO₂ is given off, in g?",
+        choices: [
+          "156",
+          "44",
+          "56",
+          "100",
+        ],
+        accept: [
+          "44",
+        ],
+        answer: "44, because mass is conserved: the CO₂ is the mass lost, 100 − 56 = 44 g.",
+      },
+      {
+        question: "A measuring cylinder has 1 cm³ divisions. What is its usual uncertainty, in cm³?",
+        choices: [
+          "±1",
+          "±0.1",
+          "±2",
+          "±0.5",
+        ],
+        accept: [
+          "±0.5",
+        ],
+        answer: "±0.5 cm³, because uncertainty is usually taken as half the smallest division: 1 ÷ 2 = 0.5.",
+      },
+      {
+        question: "20 g of salt is dissolved to make 500 cm³ of solution. What is the concentration in g/dm³?",
+        choices: [
+          "40",
+          "10",
+          "0.04",
+          "25",
+        ],
+        accept: [
+          "40",
+        ],
+        answer: "40, because 500 cm³ = 0.5 dm³, and 20 ÷ 0.5 = 40 g/dm³.",
+      },
+      {
+        question: "Write 250 cm³ in dm³.",
+        choices: [
+          "2.5",
+          "0.25",
+          "250000",
+          "0.025",
+        ],
+        accept: [
+          "0.25",
+        ],
+        answer: "0.25, because 1 dm³ = 1000 cm³, so divide by 1000: 250 ÷ 1000 = 0.25 dm³.",
+      },
+      {
+        question: "Using O = 16, how many moles are in 32 g of oxygen gas, O₂?",
+        choices: [
+          "2",
+          "0.5",
+          "1",
+          "512",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because Mr of O₂ is 2 × 16 = 32, and moles = mass ÷ Mr = 32 ÷ 32 = 1.",
+        higherOnly: true,
+      },
+      {
+        question: "CO₂ has Mr 44. What is the mass of 2 moles of CO₂, in g?",
+        choices: [
+          "22",
+          "88",
+          "46",
+          "44",
+        ],
+        accept: [
+          "88",
+        ],
+        answer: "88, because mass = moles × Mr = 2 × 44 = 88 g.",
+        higherOnly: true,
+      },
+      {
+        question: "2H₂ + O₂ → 2H₂O. How many moles of water form from 1 mole of O₂?",
+        choices: [
+          "1",
+          "0.5",
+          "4",
+          "2",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because the equation's ratio is 1 O₂ : 2 H₂O, so 1 mole of O₂ makes 2 moles of water.",
+        higherOnly: true,
+      },
+      {
+        question: "Mg + 2HCl → MgCl₂ + H₂. With 1 mole of each reactant, which one is limiting?",
+        choices: [
+          "Mg",
+          "HCl",
+          "MgCl₂",
+          "Neither",
+        ],
+        accept: [
+          "HCl",
+        ],
+        answer: "HCl, because 1 mole of Mg needs 2 moles of HCl; there is only 1 mole, so the HCl runs out first.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -3449,6 +4820,204 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why carbon dioxide is given off when an acid reacts with a carbonate but not when it reacts with a metal oxide.",
         answer: "A metal oxide contains only the metal ion and O²⁻, so the hydrogen ions from the acid can only combine with the oxide to make water, leaving a salt in solution. A carbonate contains the CO₃²⁻ ion, which has carbon in it, and when hydrogen ions attack it the carbonate breaks down into water and carbon dioxide. That is why the carbonate reaction fizzes and the oxide reaction does not. The bubbles turning limewater cloudy are the standard test that a carbonate was present. (Mark this one yourself.)",
       },
+      {
+        question: "Which pH is the most acidic?",
+        choices: [
+          "13",
+          "7",
+          "5",
+          "1",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because the lower the pH, the more acidic the solution; pH 13 is strongly alkaline.",
+      },
+      {
+        question: "What colour is litmus in an alkali?",
+        choices: [
+          "Red",
+          "Blue",
+          "Pink",
+          "Colourless",
+        ],
+        accept: [
+          "Blue",
+        ],
+        answer: "Blue, because litmus is red in acid and blue in alkali; pink is phenolphthalein in alkali.",
+      },
+      {
+        question: "What colour is phenolphthalein in an alkali?",
+        choices: [
+          "Colourless",
+          "Blue",
+          "Pink",
+          "Yellow",
+        ],
+        accept: [
+          "Pink",
+        ],
+        answer: "Pink, because phenolphthalein is colourless in acid and turns pink in alkali.",
+      },
+      {
+        question: "Universal indicator turns green in a solution. What is its pH?",
+        choices: [
+          "1",
+          "4",
+          "7",
+          "14",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "7, because green on universal indicator means neutral; red is strongly acidic and purple strongly alkaline.",
+      },
+      {
+        question: "Which of these acids is a weak acid?",
+        choices: [
+          "Hydrochloric acid",
+          "Ethanoic acid",
+          "Nitric acid",
+          "Sulfuric acid",
+        ],
+        accept: [
+          "Ethanoic acid",
+        ],
+        answer: "Ethanoic acid, because it is only partially ionised in water; hydrochloric, nitric and sulfuric acids are strong.",
+        higherOnly: true,
+      },
+      {
+        question: "Which is the ionic equation for neutralisation?",
+        choices: [
+          "H⁺ + Cl⁻ → HCl",
+          "Na⁺ + OH⁻ → NaOH",
+          "H⁺ + OH⁻ → H₂O",
+          "2H⁺ + O²⁻ → H₂O",
+        ],
+        accept: [
+          "H⁺ + OH⁻ → H₂O",
+        ],
+        answer: "H⁺ + OH⁻ → H₂O, because the H⁺ from the acid and the OH⁻ from the alkali join to make water.",
+      },
+      {
+        question: "Zinc reacts with sulfuric acid. Zinc sulfate forms, and which other product?",
+        choices: [
+          "Water",
+          "Carbon dioxide",
+          "Oxygen",
+          "Hydrogen",
+        ],
+        accept: [
+          "Hydrogen",
+        ],
+        answer: "Hydrogen, because acid + metal → salt + hydrogen; water forms with a base, and CO₂ with a carbonate.",
+      },
+      {
+        question: "Name the salt made from magnesium oxide and nitric acid.",
+        choices: [
+          "Magnesium nitrate",
+          "Magnesium nitride",
+          "Magnesium sulfate",
+          "Magnesium oxide",
+        ],
+        accept: [
+          "Magnesium nitrate",
+        ],
+        answer: "Magnesium nitrate, because the metal names the first part and nitric acid always gives a nitrate.",
+      },
+      {
+        question: "Which salt forms when sodium hydroxide reacts with hydrochloric acid?",
+        choices: [
+          "Sodium chlorate",
+          "Sodium chloride",
+          "Hydrogen chloride",
+          "Sodium sulfate",
+        ],
+        accept: [
+          "Sodium chloride",
+        ],
+        answer: "Sodium chloride, because sodium comes from the alkali and hydrochloric acid gives a chloride.",
+      },
+      {
+        question: "What is an alkali?",
+        choices: [
+          "Any base",
+          "An insoluble base",
+          "A soluble base",
+          "A weak acid",
+        ],
+        accept: [
+          "A soluble base",
+        ],
+        answer: "A soluble base, because an alkali dissolves in water to give OH⁻ ions; some bases, like copper oxide, are insoluble.",
+      },
+      {
+        question: "The pH of a solution falls from 5 to 3. By what factor does the H⁺ concentration rise?",
+        choices: [
+          "2",
+          "20",
+          "1000",
+          "100",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because each fall of 1 in pH is 10 times more H⁺, so two steps is 10 × 10 = 100.",
+        higherOnly: true,
+      },
+      {
+        question: "A weak acid is one that is:",
+        choices: [
+          "Fully ionised",
+          "Partially ionised",
+          "Very dilute",
+          "Not ionised at all",
+        ],
+        accept: [
+          "Partially ionised",
+        ],
+        answer: "Partially ionised, because only some of its molecules release H⁺ in water; weak is about ionisation, not dilution.",
+        higherOnly: true,
+      },
+      {
+        question: "Making a salt from an insoluble base, how is the leftover base removed?",
+        choices: [
+          "Evaporation",
+          "Crystallisation",
+          "Filtration",
+          "Distillation",
+        ],
+        accept: [
+          "Filtration",
+        ],
+        answer: "Filtration, because the excess base is an insoluble solid, so filtering removes it and leaves the salt solution.",
+      },
+      {
+        question: "In a titration, which apparatus adds the acid drop by drop?",
+        choices: [
+          "Pipette",
+          "Burette",
+          "Measuring cylinder",
+          "Beaker",
+        ],
+        accept: [
+          "Burette",
+        ],
+        answer: "Burette, because its tap lets you add acid slowly and read the volume accurately; a pipette measures a fixed volume.",
+      },
+      {
+        question: "Which of these is an insoluble base?",
+        choices: [
+          "Sodium hydroxide",
+          "Potassium hydroxide",
+          "Calcium hydroxide",
+          "Copper oxide",
+        ],
+        accept: [
+          "Copper oxide",
+        ],
+        answer: "Copper oxide, because it neutralises acids but does not dissolve in water; the three hydroxides dissolve and are alkalis.",
+      },
     ],
     misconceptions: [
       {
@@ -3856,6 +5425,203 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain, in terms of electrons, why a displacement reaction between a metal and a salt solution is a redox reaction, and why it is always the more reactive metal that is oxidised.",
         answer: "The metal atoms give up electrons to become positive ions, which is oxidation, and the metal ions already in solution take those electrons and become atoms, which is reduction. Both happen in the same reaction, so it is a redox reaction. Reactivity is essentially a measure of how readily a metal loses electrons, so the more reactive metal is the one that gives them up. The less reactive metal's ions accept them and are deposited as the solid element. (Mark this one yourself.)",
+      },
+      {
+        question: "Which of these metals is the most reactive?",
+        choices: [
+          "Magnesium",
+          "Iron",
+          "Potassium",
+          "Copper",
+        ],
+        accept: [
+          "Potassium",
+        ],
+        answer: "Potassium, because it is at the top of the reactivity series, above magnesium, iron and copper.",
+      },
+      {
+        question: "Which of these metals is the least reactive?",
+        choices: [
+          "Zinc",
+          "Silver",
+          "Iron",
+          "Magnesium",
+        ],
+        accept: [
+          "Silver",
+        ],
+        answer: "Silver, because it sits below zinc, iron and magnesium in the reactivity series, just above gold.",
+      },
+      {
+        question: "Which of these metals reacts with cold water?",
+        choices: [
+          "Copper",
+          "Iron",
+          "Zinc",
+          "Sodium",
+        ],
+        accept: [
+          "Sodium",
+        ],
+        answer: "Sodium, because potassium, sodium and calcium react with cold water to give a hydroxide and hydrogen.",
+      },
+      {
+        question: "Iron is added to copper sulfate solution. What forms?",
+        choices: [
+          "No reaction",
+          "Copper + iron sulfate",
+          "Hydrogen + iron oxide",
+          "Iron + copper oxide",
+        ],
+        accept: [
+          "Copper + iron sulfate",
+        ],
+        answer: "Copper + iron sulfate, because iron is more reactive than copper, so it displaces copper from its compound.",
+      },
+      {
+        question: "Silver is added to zinc sulfate solution. What happens?",
+        choices: [
+          "Zinc forms",
+          "Silver sulfate forms",
+          "No reaction",
+          "Hydrogen fizzes",
+        ],
+        accept: [
+          "No reaction",
+        ],
+        answer: "No reaction, because silver is less reactive than zinc, so it cannot displace zinc from its compound.",
+      },
+      {
+        question: "Which of these metals is extracted by electrolysis?",
+        choices: [
+          "Iron",
+          "Aluminium",
+          "Zinc",
+          "Copper",
+        ],
+        accept: [
+          "Aluminium",
+        ],
+        answer: "Aluminium, because it is more reactive than carbon; iron, zinc and copper are less reactive, so carbon can reduce them.",
+      },
+      {
+        question: "When carbon reduces iron oxide, what does the carbon remove from it?",
+        choices: [
+          "Iron",
+          "Hydrogen",
+          "Water",
+          "Oxygen",
+        ],
+        accept: [
+          "Oxygen",
+        ],
+        answer: "Oxygen, because reduction here means loss of oxygen: carbon takes the oxygen and becomes carbon dioxide.",
+      },
+      {
+        question: "In terms of oxygen, oxidation is:",
+        choices: [
+          "Loss of oxygen",
+          "Gain of oxygen",
+          "Gain of electrons",
+          "Gain of hydrogen",
+        ],
+        accept: [
+          "Gain of oxygen",
+        ],
+        answer: "Gain of oxygen, because oxidation is gain of oxygen (or loss of electrons); loss of oxygen is reduction.",
+      },
+      {
+        question: "Mg → Mg²⁺ + 2e⁻. Is magnesium oxidised or reduced?",
+        choices: [
+          "Reduced",
+          "Neither",
+          "Oxidised",
+          "Both",
+        ],
+        accept: [
+          "Oxidised",
+        ],
+        answer: "Oxidised, because magnesium loses electrons, and OIL RIG says Oxidation Is Loss of electrons.",
+        higherOnly: true,
+      },
+      {
+        question: "Where does carbon sit in the reactivity series?",
+        choices: [
+          "Above potassium",
+          "Between Al and zinc",
+          "Below gold",
+          "Between Cu and Ag",
+        ],
+        accept: [
+          "Between Al and zinc",
+        ],
+        answer: "Between Al and zinc, because carbon is less reactive than aluminium but more reactive than zinc, iron and copper.",
+      },
+      {
+        question: "Which of these metals is below hydrogen in the reactivity series?",
+        choices: [
+          "Zinc",
+          "Iron",
+          "Magnesium",
+          "Copper",
+        ],
+        accept: [
+          "Copper",
+        ],
+        answer: "Copper, because copper, silver and gold sit below hydrogen, which is why they do not react with dilute acids.",
+      },
+      {
+        question: "An iron nail sits in boiled water under a layer of oil. Does it rust?",
+        choices: [
+          "Yes: water is there",
+          "No: no oxygen",
+          "No: no water",
+          "Yes: oxygen is there",
+        ],
+        accept: [
+          "No: no oxygen",
+        ],
+        answer: "No: no oxygen, because boiling removes dissolved air and the oil stops more getting in; rusting needs water AND oxygen.",
+      },
+      {
+        question: "Painting iron stops it rusting by:",
+        choices: [
+          "Sacrificial protection",
+          "Lowering reactivity",
+          "Blocking air and water",
+          "Reacting with the rust",
+        ],
+        accept: [
+          "Blocking air and water",
+        ],
+        answer: "Blocking air and water, because paint is a barrier method: iron cannot rust without both oxygen and water.",
+      },
+      {
+        question: "Magnesium blocks are bolted to a steel ship's hull. What does this give?",
+        choices: [
+          "Barrier protection",
+          "Galvanising",
+          "Electroplating",
+          "Sacrificial protection",
+        ],
+        accept: [
+          "Sacrificial protection",
+        ],
+        answer: "Sacrificial protection, because magnesium is more reactive than iron, so it corrodes instead of the steel.",
+      },
+      {
+        question: "Zn + Cu²⁺ → Zn²⁺ + Cu. Which is reduced?",
+        choices: [
+          "Zn",
+          "Cu²⁺",
+          "Zn²⁺",
+          "Cu",
+        ],
+        accept: [
+          "Cu²⁺",
+        ],
+        answer: "Cu²⁺, because each copper ion gains two electrons to become a copper atom, and reduction is gain of electrons.",
+        higherOnly: true,
       },
     ],
     misconceptions: [
@@ -4311,6 +6077,204 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why oxidation always happens at the anode and reduction always at the cathode, in terms of where electrons go.",
         answer: "The power supply pulls electrons away from the anode, so that electrode is short of electrons and is positive. Negative ions are attracted to it and give up their electrons there, and loss of electrons is oxidation. The same electrons are pushed onto the cathode, making it negative, so positive ions are attracted and take electrons from it, and gain of electrons is reduction. The two must happen together, because every electron released at the anode is one delivered at the cathode. (Mark this one yourself.)",
       },
+      {
+        question: "What must an electrolyte contain?",
+        choices: [
+          "Free electrons",
+          "Ions free to move",
+          "Metal atoms",
+          "Covalent molecules",
+        ],
+        accept: [
+          "Ions free to move",
+        ],
+        answer: "Ions free to move, because the electrolyte is a molten or dissolved ionic compound, so its ions can travel to the electrodes.",
+      },
+      {
+        question: "Which electrode are negative ions attracted to?",
+        choices: [
+          "Cathode",
+          "Electrolyte",
+          "Anode",
+          "Power pack",
+        ],
+        accept: [
+          "Anode",
+        ],
+        answer: "Anode, because the anode is the positive electrode, and opposite charges attract.",
+      },
+      {
+        question: "Molten zinc chloride is electrolysed. What forms at the cathode?",
+        choices: [
+          "Chlorine",
+          "Zinc",
+          "Hydrogen",
+          "Oxygen",
+        ],
+        accept: [
+          "Zinc",
+        ],
+        answer: "Zinc, because in a molten compound the metal ions move to the negative cathode and form the metal.",
+      },
+      {
+        question: "Molten potassium iodide is electrolysed. What forms at the anode?",
+        choices: [
+          "Potassium",
+          "Oxygen",
+          "Iodine",
+          "Hydrogen",
+        ],
+        accept: [
+          "Iodine",
+        ],
+        answer: "Iodine, because the negative iodide ions move to the positive anode; molten compounds give just their two elements.",
+      },
+      {
+        question: "Potassium nitrate solution is electrolysed. What forms at the cathode?",
+        choices: [
+          "Potassium",
+          "Oxygen",
+          "Nitrogen",
+          "Hydrogen",
+        ],
+        accept: [
+          "Hydrogen",
+        ],
+        answer: "Hydrogen, because potassium is more reactive than hydrogen, so hydrogen from the water forms instead.",
+      },
+      {
+        question: "Sodium sulfate solution is electrolysed. What forms at the anode?",
+        choices: [
+          "Sulfur",
+          "Oxygen",
+          "Sodium",
+          "Hydrogen",
+        ],
+        accept: [
+          "Oxygen",
+        ],
+        answer: "Oxygen, because there is no halide present, so oxygen from the water forms at the anode.",
+      },
+      {
+        question: "Copper chloride solution is electrolysed. What forms at the cathode?",
+        choices: [
+          "Hydrogen",
+          "Chlorine",
+          "Oxygen",
+          "Copper",
+        ],
+        accept: [
+          "Copper",
+        ],
+        answer: "Copper, because copper is less reactive than hydrogen, so the metal forms at the cathode instead of hydrogen.",
+      },
+      {
+        question: "Sodium bromide solution is electrolysed. What forms at the anode?",
+        choices: [
+          "Oxygen",
+          "Bromine",
+          "Sodium",
+          "Hydrogen",
+        ],
+        accept: [
+          "Bromine",
+        ],
+        answer: "Bromine, because a halide is present, so the halogen forms at the anode instead of oxygen.",
+      },
+      {
+        question: "Which of these cannot be electrolysed?",
+        choices: [
+          "Molten sodium chloride",
+          "Brine",
+          "Solid sodium chloride",
+          "Molten lead bromide",
+        ],
+        accept: [
+          "Solid sodium chloride",
+        ],
+        answer: "Solid sodium chloride, because in a solid the ions are fixed in place and cannot move to the electrodes.",
+      },
+      {
+        question: "In aluminium extraction, what are the electrodes made of?",
+        choices: [
+          "Iron",
+          "Copper",
+          "Aluminium",
+          "Carbon (graphite)",
+        ],
+        accept: [
+          "Carbon (graphite)",
+        ],
+        answer: "Carbon (graphite), which is why the anodes burn away: the oxygen made there reacts with the carbon.",
+      },
+      {
+        question: "During aluminium extraction, where does the aluminium form?",
+        choices: [
+          "Anode",
+          "Cathode",
+          "Neither electrode",
+          "Both electrodes",
+        ],
+        accept: [
+          "Cathode",
+        ],
+        answer: "Cathode, because Al³⁺ ions are positive and move to the negative cathode, where they become aluminium.",
+      },
+      {
+        question: "Which of these half equations shows reduction?",
+        choices: [
+          "2Cl⁻ → Cl₂ + 2e⁻",
+          "Na → Na⁺ + e⁻",
+          "Cu²⁺ + 2e⁻ → Cu",
+          "2O²⁻ → O₂ + 4e⁻",
+        ],
+        accept: [
+          "Cu²⁺ + 2e⁻ → Cu",
+        ],
+        answer: "Cu²⁺ + 2e⁻ → Cu, because the copper ion gains electrons, and reduction is gain of electrons (OIL RIG).",
+        higherOnly: true,
+      },
+      {
+        question: "Complete the half equation Al³⁺ + __e⁻ → Al. How many electrons?",
+        choices: [
+          "1",
+          "2",
+          "6",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because the number of electrons must match the charge: a 3+ ion needs 3 electrons to become an atom.",
+        higherOnly: true,
+      },
+      {
+        question: "Complete 4OH⁻ → O₂ + 2H₂O + __e⁻. How many electrons?",
+        choices: [
+          "2",
+          "4",
+          "1",
+          "8",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because four OH⁻ ions carry a total charge of 4−, so 4 electrons must be released to balance it.",
+        higherOnly: true,
+      },
+      {
+        question: "At the anode, negative ions:",
+        choices: [
+          "Gain electrons",
+          "Gain protons",
+          "Lose electrons",
+          "Lose protons",
+        ],
+        accept: [
+          "Lose electrons",
+        ],
+        answer: "Lose electrons, because the anode is positive and pulls electrons away, so the reaction there is oxidation.",
+      },
     ],
     misconceptions: [
       {
@@ -4747,6 +6711,204 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain what activation energy is, and why an exothermic reaction with a high activation energy may not happen at all at room temperature.",
         answer: "Activation energy is the minimum energy that colliding particles must have for the collision to be successful and the reaction to occur. Whether a reaction gives energy out overall says nothing about how much energy it needs to get started, because the reactant bonds still have to be broken first. At room temperature only a small fraction of particles have enough energy, so if the activation energy is high almost no collisions succeed and the rate is effectively zero. A spark, heating or a catalyst that lowers the barrier is needed before the reaction proceeds — which is why petrol sits safely in a tank. (Mark this one yourself.)",
+      },
+      {
+        question: "Which of these reactions is exothermic?",
+        choices: [
+          "Thermal decomposition",
+          "Combustion",
+          "Photosynthesis",
+          "Melting ice",
+        ],
+        accept: [
+          "Combustion",
+        ],
+        answer: "Combustion, because burning transfers energy to the surroundings; thermal decomposition takes energy in.",
+      },
+      {
+        question: "During a reaction the temperature falls from 20 °C to 14 °C. The reaction is:",
+        choices: [
+          "Exothermic",
+          "Endothermic",
+          "Neither",
+          "Catalysed",
+        ],
+        accept: [
+          "Endothermic",
+        ],
+        answer: "Endothermic, because it takes energy in from the surroundings, so the temperature falls.",
+      },
+      {
+        question: "A hand warmer uses which type of reaction?",
+        choices: [
+          "Endothermic",
+          "Electrolysis",
+          "Exothermic",
+          "Decomposition",
+        ],
+        accept: [
+          "Exothermic",
+        ],
+        answer: "Exothermic, because the reaction transfers energy to the surroundings, so your hands warm up.",
+      },
+      {
+        question: "Reactants have 100 kJ and products 40 kJ. What is the overall energy change, in kJ?",
+        choices: [
+          "+60",
+          "−60",
+          "140",
+          "40",
+        ],
+        accept: [
+          "−60",
+        ],
+        answer: "−60 kJ, because the change is products − reactants = 40 − 100 = −60; negative means exothermic.",
+      },
+      {
+        question: "On a reaction profile, the products are lower than the reactants. The reaction is:",
+        choices: [
+          "Endothermic",
+          "Exothermic",
+          "Reversible",
+          "Not happening",
+        ],
+        accept: [
+          "Exothermic",
+        ],
+        answer: "Exothermic, because the products have less energy than the reactants, so energy was given out.",
+      },
+      {
+        question: "Breaking bonds takes in 900 kJ/mol; making bonds gives out 750 kJ/mol. Energy change?",
+        choices: [
+          "−150",
+          "1650",
+          "+150",
+          "−1650",
+        ],
+        accept: [
+          "+150",
+        ],
+        answer: "+150 kJ/mol, because change = broken − made = 900 − 750 = +150, so the reaction is endothermic.",
+        higherOnly: true,
+      },
+      {
+        question: "Bond energies: H–H 436 and Cl–Cl 242 kJ/mol. Energy to break one of each, in kJ/mol?",
+        choices: [
+          "194",
+          "242",
+          "1356",
+          "678",
+        ],
+        accept: [
+          "678",
+        ],
+        answer: "678, because breaking both bonds needs 436 + 242 = 678 kJ/mol.",
+        higherOnly: true,
+      },
+      {
+        question: "A simple cell gives a bigger voltage when its two metals in the reactivity series:",
+        choices: [
+          "Are the same metal",
+          "Are further apart",
+          "Are closer together",
+          "Are both unreactive",
+        ],
+        accept: [
+          "Are further apart",
+        ],
+        answer: "Are further apart, because the bigger the difference in reactivity between the metals, the greater the voltage.",
+      },
+      {
+        question: "A hydrogen fuel cell is supplied with hydrogen and which other gas?",
+        choices: [
+          "Nitrogen",
+          "Carbon dioxide",
+          "Oxygen",
+          "Water vapour",
+        ],
+        accept: [
+          "Oxygen",
+        ],
+        answer: "Oxygen, because the fuel cell reaction is hydrogen + oxygen → water.",
+      },
+      {
+        question: "Why does a non-rechargeable battery eventually stop working?",
+        choices: [
+          "Electrons run out",
+          "A reactant is used up",
+          "The metals melt",
+          "The current reverses",
+        ],
+        accept: [
+          "A reactant is used up",
+        ],
+        answer: "A reactant is used up, because the chemical reaction that makes the voltage stops once one reactant has gone.",
+      },
+      {
+        question: "Neutralisation reactions are usually:",
+        choices: [
+          "Endothermic",
+          "Electrolysis",
+          "Exothermic",
+          "Reversible",
+        ],
+        accept: [
+          "Exothermic",
+        ],
+        answer: "Exothermic, because neutralisation transfers energy to the surroundings, so the temperature of the mixture rises.",
+      },
+      {
+        question: "Thermal decomposition of calcium carbonate is:",
+        choices: [
+          "Exothermic",
+          "Neutralisation",
+          "Combustion",
+          "Endothermic",
+        ],
+        accept: [
+          "Endothermic",
+        ],
+        answer: "Endothermic, because energy must be supplied by heating to break the calcium carbonate down.",
+      },
+      {
+        question: "A reaction is exothermic when the energy released making bonds is:",
+        choices: [
+          "Less than breaking",
+          "Greater than breaking",
+          "Equal to breaking",
+          "Zero",
+        ],
+        accept: [
+          "Greater than breaking",
+        ],
+        answer: "Greater than breaking, because more energy is given out forming new bonds than is taken in to break old ones.",
+        higherOnly: true,
+      },
+      {
+        question: "Which of these is a disadvantage of hydrogen fuel cells?",
+        choices: [
+          "They produce CO₂",
+          "They need recharging",
+          "Hydrogen hard to store",
+          "They make toxic waste",
+        ],
+        accept: [
+          "Hydrogen hard to store",
+        ],
+        answer: "Hydrogen hard to store, because it is a flammable gas; the only product of the cell is water, and it needs no recharging.",
+      },
+      {
+        question: "Which energy change shows an endothermic reaction?",
+        choices: [
+          "−45 kJ/mol",
+          "+45 kJ/mol",
+          "−120 kJ/mol",
+          "−3 kJ/mol",
+        ],
+        accept: [
+          "+45 kJ/mol",
+        ],
+        answer: "+45 kJ/mol, because a positive energy change means energy is taken in; negative values are exothermic.",
       },
     ],
     misconceptions: [
@@ -5215,6 +7377,202 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why timing how long a cross takes to disappear gives only a rough measure of rate, and how the method could be improved.",
         answer: "Deciding the exact moment the cross vanishes is a judgement made by eye, and different people call it at different points, so the result depends on the observer. The same person may also judge it differently between runs, and the reaction does not stop at that instant — it is simply obscured. Using a light sensor and a data logger to record when the transmitted light falls below a set level removes the human judgement and gives a consistent end point. Repeating each concentration and taking a mean, with the same depth of solution and the same cross each time, also improves it. (Mark this one yourself.)",
       },
+      {
+        question: "Raising the concentration of a reactant increases rate because particles:",
+        choices: [
+          "Have more energy",
+          "Collide more often",
+          "Become larger",
+          "Need less energy",
+        ],
+        accept: [
+          "Collide more often",
+        ],
+        answer: "Collide more often, because there are more particles in the same volume; their energy does not change.",
+      },
+      {
+        question: "Raising the pressure of a gas reaction speeds it up because:",
+        choices: [
+          "Each has more energy",
+          "Particles get bigger",
+          "Particles are closer",
+          "Collisions are softer",
+        ],
+        accept: [
+          "Particles are closer",
+        ],
+        answer: "Particles are closer, because the same gas is squeezed into less space, so collisions happen more often.",
+      },
+      {
+        question: "45 cm³ of gas is collected in 15 s. What is the mean rate, in cm³/s?",
+        choices: [
+          "0.33",
+          "3",
+          "675",
+          "60",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because mean rate = amount ÷ time = 45 ÷ 15 = 3 cm³/s.",
+      },
+      {
+        question: "Rate is measured by mass lost from a flask over time. What is a suitable unit?",
+        choices: [
+          "cm³/s",
+          "s/g",
+          "g/s",
+          "g",
+        ],
+        accept: [
+          "g/s",
+        ],
+        answer: "g/s, because rate is mass lost (g) divided by time (s); cm³/s is for gas volume.",
+      },
+      {
+        question: "The same mass of magnesium is added to acid. Which form reacts fastest?",
+        choices: [
+          "Ribbon",
+          "Powder",
+          "A single lump",
+          "All the same",
+        ],
+        accept: [
+          "Powder",
+        ],
+        answer: "Powder, because it has the largest surface area, so more collisions with acid particles happen each second.",
+      },
+      {
+        question: "The same reaction is run at four temperatures. Which is fastest?",
+        choices: [
+          "10 °C",
+          "20 °C",
+          "40 °C",
+          "60 °C",
+        ],
+        accept: [
+          "60 °C",
+        ],
+        answer: "60 °C, because hotter particles move faster, so they collide more often and more have the activation energy.",
+      },
+      {
+        question: "Two runs use the same amount of reactant, one hotter. How does the final volume of gas compare?",
+        choices: [
+          "Greater when hotter",
+          "The same",
+          "Smaller when hotter",
+          "Zero when hotter",
+        ],
+        accept: [
+          "The same",
+        ],
+        answer: "The same, because temperature changes how fast the gas forms, not how much reactant there is to make it.",
+      },
+      {
+        question: "The limiting reactant is doubled; the other is in large excess. Final gas volume?",
+        choices: [
+          "Stays the same",
+          "Halves",
+          "Doubles",
+          "Quadruples",
+        ],
+        accept: [
+          "Doubles",
+        ],
+        answer: "Doubles, because twice as much limiting reactant can make twice as much product.",
+      },
+      {
+        question: "What happens to the mass of a catalyst during a reaction?",
+        choices: [
+          "Decreases",
+          "Increases",
+          "Falls to zero",
+          "Stays the same",
+        ],
+        accept: [
+          "Stays the same",
+        ],
+        answer: "Stays the same, because a catalyst speeds up a reaction without being used up.",
+      },
+      {
+        question: "A tangent to a rate curve rises 20 cm³ over 4 s. What is the rate, in cm³/s?",
+        choices: [
+          "0.2",
+          "80",
+          "5",
+          "24",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because rate = gradient of the tangent = change in y ÷ change in x = 20 ÷ 4 = 5 cm³/s.",
+        higherOnly: true,
+      },
+      {
+        question: "Why is a reaction fastest at the very start?",
+        choices: [
+          "Most product is there",
+          "Most reactant is there",
+          "Temperature is lowest",
+          "Particles are largest",
+        ],
+        accept: [
+          "Most reactant is there",
+        ],
+        answer: "Most reactant is there, because concentration is highest at the start, so collisions are most frequent.",
+      },
+      {
+        question: "Which is the formula for the mean rate of reaction?",
+        choices: [
+          "Time ÷ quantity",
+          "Quantity ÷ time",
+          "Quantity × time",
+          "Quantity − time",
+        ],
+        accept: [
+          "Quantity ÷ time",
+        ],
+        answer: "Quantity ÷ time, because mean rate is the amount used or made divided by the time taken.",
+      },
+      {
+        question: "Crushing marble chips into powder increases which factor?",
+        choices: [
+          "Concentration",
+          "Temperature",
+          "Surface area",
+          "Activation energy",
+        ],
+        accept: [
+          "Surface area",
+        ],
+        answer: "Surface area, because a powder exposes far more of the solid to the acid than the same mass of chips.",
+      },
+      {
+        question: "Which change would slow a reaction down?",
+        choices: [
+          "Adding a catalyst",
+          "Using a powder",
+          "Cooling the mixture",
+          "More concentrated acid",
+        ],
+        accept: [
+          "Cooling the mixture",
+        ],
+        answer: "Cooling the mixture, because slower particles collide less often and fewer have the activation energy.",
+      },
+      {
+        question: "For a collision to succeed, particles must have at least the:",
+        choices: [
+          "Bond energy",
+          "Activation energy",
+          "Mean energy",
+          "Light energy",
+        ],
+        accept: [
+          "Activation energy",
+        ],
+        answer: "Activation energy, because that is the minimum energy colliding particles need for a reaction to happen.",
+      },
     ],
     misconceptions: [
       {
@@ -5632,6 +7990,206 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why adding more of one reactant to a reversible reaction at equilibrium increases the amount of product, in terms of the two rates.",
         answer: "At equilibrium the forward and reverse reactions are happening at exactly the same rate, so the amounts of everything stay constant. Adding more reactant raises the concentration on that side, so collisions between reactant particles become more frequent and the forward rate rises above the reverse rate. Product therefore builds up faster than it breaks down, until the rising product concentration has raised the reverse rate to match. A new equilibrium is then reached with more product present than before. (Mark this one yourself.)",
       },
+      {
+        question: "What do you see when water is added to anhydrous copper sulfate?",
+        choices: [
+          "Blue turns white",
+          "White turns blue",
+          "It turns black",
+          "It turns pink",
+        ],
+        accept: [
+          "White turns blue",
+        ],
+        answer: "White turns blue, because the white anhydrous powder takes in water and becomes blue hydrated copper sulfate.",
+      },
+      {
+        question: "Adding water to anhydrous copper sulfate is:",
+        choices: [
+          "Endothermic",
+          "Exothermic",
+          "Neutralisation",
+          "Electrolysis",
+        ],
+        accept: [
+          "Exothermic",
+        ],
+        answer: "Exothermic, because re-forming the blue hydrated crystals releases heat — the reverse of the heating that dried them.",
+      },
+      {
+        question: "A forward reaction gives out 50 kJ. The reverse reaction:",
+        choices: [
+          "Gives out 50 kJ",
+          "Takes in 100 kJ",
+          "Takes in 50 kJ",
+          "Takes in 25 kJ",
+        ],
+        accept: [
+          "Takes in 50 kJ",
+        ],
+        answer: "Takes in 50 kJ, because if the forward reaction is exothermic, the reverse is endothermic by exactly the same amount.",
+      },
+      {
+        question: "N₂ + 3H₂ ⇌ 2NH₃. What does raising the pressure do to the yield of ammonia?",
+        choices: [
+          "Decreases it",
+          "No change",
+          "Increases it",
+          "Stops it",
+        ],
+        accept: [
+          "Increases it",
+        ],
+        answer: "Increases it, because higher pressure shifts equilibrium to the side with fewer gas molecules: 2 on the right, 4 on the left.",
+        higherOnly: true,
+      },
+      {
+        question: "H₂ + I₂ ⇌ 2HI, all gases. Raising pressure shifts the equilibrium:",
+        choices: [
+          "Towards HI",
+          "Towards H₂ + I₂",
+          "Stops reaction",
+          "No shift",
+        ],
+        accept: [
+          "No shift",
+        ],
+        answer: "No shift, because both sides have 2 molecules of gas, so pressure cannot favour either side.",
+        higherOnly: true,
+      },
+      {
+        question: "A forward reaction is endothermic. What does raising the temperature do to the yield?",
+        choices: [
+          "Decreases it",
+          "No change",
+          "Increases it",
+          "Stops it",
+        ],
+        accept: [
+          "Increases it",
+        ],
+        answer: "Increases it, because raising temperature shifts equilibrium in the endothermic direction, which here is forward.",
+        higherOnly: true,
+      },
+      {
+        question: "More reactant is added to a mixture at equilibrium. Which way does it shift?",
+        choices: [
+          "Towards reactants",
+          "Towards products",
+          "No shift",
+          "It stops",
+        ],
+        accept: [
+          "Towards products",
+        ],
+        answer: "Towards products, because the equilibrium shifts to oppose the change, using up some of the added reactant.",
+        higherOnly: true,
+      },
+      {
+        question: "Product is removed from an equilibrium mixture as it forms. The yield:",
+        choices: [
+          "Decreases",
+          "Stays the same",
+          "Increases",
+          "Falls to zero",
+        ],
+        accept: [
+          "Increases",
+        ],
+        answer: "Increases, because the equilibrium shifts to replace the product that was removed, making more of it.",
+        higherOnly: true,
+      },
+      {
+        question: "Which catalyst is used in the Haber process?",
+        choices: [
+          "Platinum",
+          "Nickel",
+          "Iron",
+          "Vanadium oxide",
+        ],
+        accept: [
+          "Iron",
+        ],
+        answer: "Iron, because it speeds up the reaction between nitrogen and hydrogen without changing the yield.",
+      },
+      {
+        question: "Roughly what pressure is used in the Haber process?",
+        choices: [
+          "1 atm",
+          "20 atm",
+          "200 atm",
+          "2000 atm",
+        ],
+        accept: [
+          "200 atm",
+        ],
+        answer: "200 atm, because higher pressure favours ammonia, but very high pressure is too expensive and dangerous.",
+      },
+      {
+        question: "What happens to unreacted nitrogen and hydrogen in the Haber process?",
+        choices: [
+          "Released to the air",
+          "Recycled",
+          "Burned as fuel",
+          "Turned into water",
+        ],
+        accept: [
+          "Recycled",
+        ],
+        answer: "Recycled, because they are sent back through the reactor, so nothing is wasted even though each pass is incomplete.",
+      },
+      {
+        question: "Why is a low temperature not used in the Haber process?",
+        choices: [
+          "Yield is too low",
+          "Catalyst melts",
+          "Rate is too slow",
+          "Pressure too high",
+        ],
+        accept: [
+          "Rate is too slow",
+        ],
+        answer: "Rate is too slow, because at low temperature the yield is higher but the reaction would take far too long.",
+      },
+      {
+        question: "At equilibrium the forward reaction rate is 5 units. What is the reverse rate?",
+        choices: [
+          "0",
+          "10",
+          "2.5",
+          "5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because at equilibrium the forward and reverse reactions happen at the same rate.",
+      },
+      {
+        question: "Heating ammonium chloride, NH₄Cl, gives which two products?",
+        choices: [
+          "N₂ and HCl",
+          "NH₃ and HCl",
+          "NH₃ and Cl₂",
+          "H₂ and Cl₂",
+        ],
+        accept: [
+          "NH₃ and HCl",
+        ],
+        answer: "NH₃ and HCl, because ammonium chloride ⇌ ammonia + hydrogen chloride; on cooling they re-form the white solid.",
+      },
+      {
+        question: "In a reversible reaction, the products can:",
+        choices: [
+          "Never react again",
+          "Re-form the reactants",
+          "Only form in excess",
+          "Become a catalyst",
+        ],
+        accept: [
+          "Re-form the reactants",
+        ],
+        answer: "Re-form the reactants, because the reaction goes both ways, shown with the ⇌ symbol.",
+      },
     ],
     misconceptions: [
       {
@@ -6047,6 +8605,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain why crude oil is described as a finite resource, and why the short-chain fractions are the most valuable.",
         answer: "Crude oil formed over millions of years from the remains of ancient marine organisms buried under sediment, and it is being used far faster than any is being made, so the supply will eventually run out. The short-chain fractions are runnier, more volatile and more flammable, which makes them good fuels for engines and heating, and demand for them is high. Distillation of crude oil gives comparatively little of them and a great deal of long-chain material that few people want. That mismatch between supply and demand is what makes the short chains valuable and makes cracking worth doing. (Mark this one yourself.)",
       },
+      {
+        question: "What is the formula of ethane?",
+        choices: [
+          "C₂H₄",
+          "C₂H₆",
+          "CH₄",
+          "C₃H₈",
+        ],
+        accept: [
+          "C₂H₆",
+        ],
+        answer: "C₂H₆, because alkanes follow CₙH₂ₙ₊₂: two carbons carry 2 × 2 + 2 = 6 hydrogens. C₂H₄ is ethene, an alkene.",
+      },
+      {
+        question: "Which of these compounds is a hydrocarbon?",
+        choices: [
+          "CH₄",
+          "C₂H₅OH",
+          "CO₂",
+          "H₂O",
+        ],
+        accept: [
+          "CH₄",
+        ],
+        answer: "CH₄, because it contains hydrogen and carbon only. Ethanol, C₂H₅OH, also contains oxygen, so it is not a hydrocarbon.",
+      },
+      {
+        question: "What is the formula of propene, the alkene with three carbons?",
+        choices: [
+          "C₃H₈",
+          "C₃H₄",
+          "C₂H₄",
+          "C₃H₆",
+        ],
+        accept: [
+          "C₃H₆",
+        ],
+        answer: "C₃H₆, because alkenes follow CₙH₂ₙ: 2 × 3 = 6 hydrogens, two fewer than propane, C₃H₈.",
+      },
+      {
+        question: "Which crude oil fraction has the highest boiling point?",
+        choices: [
+          "Petrol",
+          "Kerosene",
+          "Bitumen",
+          "Diesel",
+        ],
+        accept: [
+          "Bitumen",
+        ],
+        answer: "Bitumen, because it has the longest molecules, so the strongest forces between them. It collects at the bottom of the column.",
+      },
+      {
+        question: "Where do the shortest molecules leave a fractionating column?",
+        choices: [
+          "At the bottom",
+          "At the top",
+          "In the middle",
+          "Evenly at all levels",
+        ],
+        accept: [
+          "At the top",
+        ],
+        answer: "At the top, because the column is coolest there and the shortest molecules have the lowest boiling points.",
+      },
+      {
+        question: "As hydrocarbon chain length increases, viscosity:",
+        choices: [
+          "Increases",
+          "Decreases",
+          "Stays the same",
+          "Falls then rises",
+        ],
+        accept: [
+          "Increases",
+        ],
+        answer: "Increases — longer chains are thicker and flow less easily, just as their boiling point rises and flammability falls.",
+      },
+      {
+        question: "In complete combustion, the carbon and hydrogen in a fuel are:",
+        choices: [
+          "Reduced",
+          "Neutralised",
+          "Cracked",
+          "Oxidised",
+        ],
+        accept: [
+          "Oxidised",
+        ],
+        answer: "Oxidised, because both gain oxygen: carbon becomes carbon dioxide and hydrogen becomes water.",
+      },
+      {
+        question: "Which solid product of incomplete combustion blackens buildings?",
+        choices: [
+          "Ash",
+          "Sulfur",
+          "Soot",
+          "Limestone",
+        ],
+        accept: [
+          "Soot",
+        ],
+        answer: "Soot, which is carbon particles from incomplete combustion. It also causes breathing problems.",
+      },
+      {
+        question: "Ethene, C₂H₄, belongs to which homologous series?",
+        choices: [
+          "Alkanes",
+          "Alkenes",
+          "Alcohols",
+          "Polymers",
+        ],
+        accept: [
+          "Alkenes",
+        ],
+        answer: "Alkenes, because C₂H₄ fits CₙH₂ₙ and has a C=C double bond. Ethane, C₂H₆, is the alkane.",
+      },
+      {
+        question: "Cracking C₈H₁₈ gives C₆H₁₄ and one alkene. Which alkene?",
+        choices: [
+          "C₂H₄",
+          "C₂H₆",
+          "C₃H₆",
+          "C₂H₂",
+        ],
+        accept: [
+          "C₂H₄",
+        ],
+        answer: "C₂H₄, because atoms balance: 8 − 6 = 2 carbons and 18 − 14 = 4 hydrogens are left over. That is ethene.",
+      },
+      {
+        question: "Why are alkenes, not alkanes, used to make polymers?",
+        choices: [
+          "They are saturated",
+          "They are unreactive",
+          "They have long chains",
+          "They have a C=C bond",
+        ],
+        accept: [
+          "They have a C=C bond",
+        ],
+        answer: "They have a C=C bond, which makes them reactive: the double bond can open up and join to other molecules.",
+      },
+      {
+        question: "Which method mixes hydrocarbons with steam at very high temperature?",
+        choices: [
+          "Catalytic cracking",
+          "Distillation",
+          "Steam cracking",
+          "Polymerisation",
+        ],
+        accept: [
+          "Steam cracking",
+        ],
+        answer: "Steam cracking, which breaks long chains into shorter alkanes and alkenes. Catalytic cracking uses a hot catalyst instead.",
+      },
+      {
+        question: "How many hydrogen atoms are in the alkane with 8 carbon atoms?",
+        choices: [
+          "16",
+          "18",
+          "17",
+          "20",
+        ],
+        accept: [
+          "18",
+        ],
+        answer: "18, because alkanes follow CₙH₂ₙ₊₂: 2 × 8 + 2 = 18, giving octane, C₈H₁₈. 16 would be the alkene.",
+      },
+      {
+        question: "Crude oil formed mainly from the remains of ancient:",
+        choices: [
+          "Plankton",
+          "Dinosaurs",
+          "Land plants",
+          "Volcanic ash",
+        ],
+        accept: [
+          "Plankton",
+        ],
+        answer: "Plankton, buried in mud and changed by heat and pressure over millions of years. Coal, not oil, comes from land plants.",
+      },
+      {
+        question: "Why is crude oil described as a finite resource?",
+        choices: [
+          "It is a mixture",
+          "It is a liquid",
+          "It is flammable",
+          "It will run out",
+        ],
+        accept: [
+          "It will run out",
+        ],
+        answer: "It will run out, because it took millions of years to form and is being used far faster than any new oil forms.",
+      },
     ],
     misconceptions: [
       {
@@ -6445,6 +9198,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain why burning waste plastic to generate electricity is not a straightforward answer to plastic pollution.",
         answer: "Burning does recover some energy and reduces the volume going to landfill, so it is not worthless. But plastics are made from crude oil, so burning them releases carbon dioxide that adds to climate change, and it destroys material that could have been recycled into new products. Plastics containing chlorine, such as PVC, produce hydrogen chloride and other toxic gases unless the flue gases are carefully cleaned. Incinerators are also expensive to build and run, and having one creates a demand for waste plastic that can discourage reduction and reuse. (Mark this one yourself.)",
+      },
+      {
+        question: "What polymer is made from propene?",
+        choices: [
+          "Poly(ethene)",
+          "Propane",
+          "Poly(propene)",
+          "Polyester",
+        ],
+        accept: [
+          "Poly(propene)",
+        ],
+        answer: "Poly(propene), because addition polymers are named by putting the monomer's name in brackets after poly.",
+      },
+      {
+        question: "What happens to the C=C bond in addition polymerisation?",
+        choices: [
+          "It stays double",
+          "It opens up",
+          "It becomes triple",
+          "It forms water",
+        ],
+        accept: [
+          "It opens up",
+        ],
+        answer: "It opens up, so each carbon can bond to a neighbouring monomer. That is how the long chain forms.",
+      },
+      {
+        question: "A polyester is made from a diol and a:",
+        choices: [
+          "Dicarboxylic acid",
+          "Alkene",
+          "Alkane",
+          "Amino acid",
+        ],
+        accept: [
+          "Dicarboxylic acid",
+        ],
+        answer: "Dicarboxylic acid, which has a −COOH group at each end. Each link to a diol releases a water molecule.",
+      },
+      {
+        question: "Which type of polymerisation makes a polyester?",
+        choices: [
+          "Addition",
+          "Cracking",
+          "Combustion",
+          "Condensation",
+        ],
+        accept: [
+          "Condensation",
+        ],
+        answer: "Condensation, because each time a bond forms between the monomers a small molecule, water, is lost.",
+      },
+      {
+        question: "What is the monomer of starch?",
+        choices: [
+          "Amino acid",
+          "Nucleotide",
+          "Glucose",
+          "Ethene",
+        ],
+        accept: [
+          "Glucose",
+        ],
+        answer: "Glucose. Starch and cellulose are both polymers of glucose, just with the units joined in different ways.",
+      },
+      {
+        question: "How many strands does a DNA molecule have?",
+        choices: [
+          "One",
+          "Two",
+          "Three",
+          "Four",
+        ],
+        accept: [
+          "Two",
+        ],
+        answer: "Two, twisted together in a double helix. Each strand is a polymer of nucleotides.",
+      },
+      {
+        question: "Is DNA an addition polymer or a condensation polymer?",
+        choices: [
+          "Condensation",
+          "Addition",
+          "Ionic",
+          "Metallic",
+        ],
+        accept: [
+          "Condensation",
+        ],
+        answer: "Condensation. DNA, proteins, starch and cellulose are all natural condensation polymers made in living things.",
+      },
+      {
+        question: "Why does a thermosoftening polymer melt when heated?",
+        choices: [
+          "Chains cross-linked",
+          "Chains are tiny",
+          "Covalent bonds break",
+          "Chains held weakly",
+        ],
+        accept: [
+          "Chains held weakly",
+        ],
+        answer: "Chains held weakly: the chains are separate and only weakly attracted, so little energy pulls them apart.",
+      },
+      {
+        question: "Which of these is a natural polymer?",
+        choices: [
+          "Poly(ethene)",
+          "Polyester",
+          "Cellulose",
+          "Poly(propene)",
+        ],
+        accept: [
+          "Cellulose",
+        ],
+        answer: "Cellulose, made by plants from glucose. The other three are synthetic polymers made from crude oil.",
+      },
+      {
+        question: "One drawback of recycling plastics is that it needs:",
+        choices: [
+          "No energy",
+          "Sorting by type",
+          "More crude oil",
+          "Landfill space",
+        ],
+        accept: [
+          "Sorting by type",
+        ],
+        answer: "Sorting by type, because different polymers must be separated before they can be melted and remade.",
+      },
+      {
+        question: "What is the formula of the repeating unit of poly(ethene)?",
+        choices: [
+          "C₂H₄",
+          "C₂H₆",
+          "CH₄",
+          "C₃H₆",
+        ],
+        accept: [
+          "C₂H₄",
+        ],
+        answer: "C₂H₄, because the repeating unit has the same atoms as the ethene monomer, just drawn with single bonds.",
+      },
+      {
+        question: "How many functional groups does each condensation monomer have?",
+        choices: [
+          "One",
+          "Three",
+          "None",
+          "Two",
+        ],
+        accept: [
+          "Two",
+        ],
+        answer: "Two, one at each end, so each monomer can link to a neighbour on both sides and build a chain.",
+      },
+      {
+        question: "Which molecule can form an addition polymer?",
+        choices: [
+          "Ethane",
+          "Methane",
+          "Ethene",
+          "Glucose",
+        ],
+        accept: [
+          "Ethene",
+        ],
+        answer: "Ethene, because it is an alkene with a C=C double bond that can open up. Ethane has only single bonds.",
+      },
+      {
+        question: "Which polymer is made from chloroethene?",
+        choices: [
+          "Poly(ethene)",
+          "Poly(chloroethene)",
+          "Polyester",
+          "Poly(propene)",
+        ],
+        accept: [
+          "Poly(chloroethene)",
+        ],
+        answer: "Poly(chloroethene), also called PVC: the monomer's name goes in brackets after poly.",
+      },
+      {
+        question: "Burning waste plastic in an incinerator is useful because it:",
+        choices: [
+          "Recovers energy",
+          "Saves crude oil",
+          "Makes no CO₂",
+          "Needs no sorting",
+        ],
+        accept: [
+          "Recovers energy",
+        ],
+        answer: "Recovers energy — the heat can generate electricity — but burning plastic releases carbon dioxide.",
       },
     ],
     misconceptions: [
@@ -6856,6 +9804,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain how you would distinguish between separate solutions of sodium chloride, magnesium chloride and calcium chloride.",
         answer: "A flame test separates two of them straight away: sodium gives an intense yellow flame and calcium an orange-red one, while magnesium gives no characteristic colour. Adding sodium hydroxide solution confirms it, since magnesium and calcium both give a white precipitate of the metal hydroxide but sodium gives none, because group 1 hydroxides are soluble. Taking the two results together identifies each solution without ambiguity. All three would give the same white precipitate with acidified silver nitrate, which only tells you that every one of them is a chloride. (Mark this one yourself.)",
       },
+      {
+        question: "What flame colour does a lithium ion give?",
+        choices: [
+          "Yellow",
+          "Lilac",
+          "Green",
+          "Crimson",
+        ],
+        accept: [
+          "Crimson",
+        ],
+        answer: "Crimson. Sodium is yellow, potassium lilac, calcium orange-red and copper green.",
+      },
+      {
+        question: "What flame colour does a calcium ion give?",
+        choices: [
+          "Crimson",
+          "Lilac",
+          "Orange-red",
+          "Green",
+        ],
+        accept: [
+          "Orange-red",
+        ],
+        answer: "Orange-red. Don't confuse it with lithium, which gives a deeper crimson flame.",
+      },
+      {
+        question: "What colour precipitate does iron(II) give with sodium hydroxide?",
+        choices: [
+          "Brown",
+          "Green",
+          "Blue",
+          "White",
+        ],
+        accept: [
+          "Green",
+        ],
+        answer: "Green. Iron(III) gives brown and copper(II) gives blue, so the oxidation state changes the colour.",
+      },
+      {
+        question: "Which ion's white hydroxide redissolves in excess sodium hydroxide?",
+        choices: [
+          "Aluminium",
+          "Calcium",
+          "Magnesium",
+          "Copper(II)",
+        ],
+        accept: [
+          "Aluminium",
+        ],
+        answer: "Aluminium. Calcium and magnesium also give white precipitates, but theirs stay in excess sodium hydroxide.",
+      },
+      {
+        question: "What colour precipitate does a bromide give with silver nitrate?",
+        choices: [
+          "White",
+          "Yellow",
+          "Brown",
+          "Cream",
+        ],
+        accept: [
+          "Cream",
+        ],
+        answer: "Cream. Chloride gives white and iodide gives yellow, so the halide is told apart by colour.",
+      },
+      {
+        question: "What colour precipitate does an iodide give with silver nitrate?",
+        choices: [
+          "Cream",
+          "White",
+          "Yellow",
+          "Green",
+        ],
+        accept: [
+          "Yellow",
+        ],
+        answer: "Yellow. The halides go white (chloride), cream (bromide), yellow (iodide) down the group.",
+      },
+      {
+        question: "Which acid is added before silver nitrate in the halide test?",
+        choices: [
+          "Hydrochloric acid",
+          "Nitric acid",
+          "Sulfuric acid",
+          "Ethanoic acid",
+        ],
+        accept: [
+          "Nitric acid",
+        ],
+        answer: "Nitric acid, because hydrochloric acid would add chloride ions and give a false white precipitate.",
+      },
+      {
+        question: "A sulfate solution with acidified barium chloride gives what colour precipitate?",
+        choices: [
+          "White",
+          "Blue",
+          "Yellow",
+          "Cream",
+        ],
+        accept: [
+          "White",
+        ],
+        answer: "White — barium sulfate. Hydrochloric acid is added first to remove carbonate ions that could also give a white solid.",
+      },
+      {
+        question: "A solid fizzes with acid and the gas turns limewater milky. The solid is a:",
+        choices: [
+          "Sulfate",
+          "Chloride",
+          "Bromide",
+          "Carbonate",
+        ],
+        accept: [
+          "Carbonate",
+        ],
+        answer: "Carbonate, because carbonates react with acid to release carbon dioxide, which turns limewater milky.",
+      },
+      {
+        question: "Which gas bleaches damp litmus paper white?",
+        choices: [
+          "Oxygen",
+          "Hydrogen",
+          "Chlorine",
+          "Carbon dioxide",
+        ],
+        accept: [
+          "Chlorine",
+        ],
+        answer: "Chlorine. Hydrogen gives a squeaky pop, oxygen relights a glowing splint and CO₂ turns limewater milky.",
+      },
+      {
+        question: "A solid melts between 118 °C and 123 °C. What does that suggest?",
+        choices: [
+          "It is pure",
+          "It is impure",
+          "It is a compound",
+          "It is an element",
+        ],
+        accept: [
+          "It is impure",
+        ],
+        answer: "It is impure, because a pure substance melts at one sharp temperature, while a mixture melts over a range.",
+      },
+      {
+        question: "Which of these is a formulation?",
+        choices: [
+          "Paint",
+          "Pure water",
+          "Copper",
+          "Oxygen",
+        ],
+        accept: [
+          "Paint",
+        ],
+        answer: "Paint, a mixture designed as a useful product with each component in a measured quantity.",
+      },
+      {
+        question: "Flame emission spectroscopy identifies metal ions from the:",
+        choices: [
+          "Gas they give off",
+          "Precipitate colour",
+          "Mass of the sample",
+          "Light they emit",
+        ],
+        accept: [
+          "Light they emit",
+        ],
+        answer: "Light they emit: each metal ion gives its own spectrum, which is compared with known data.",
+      },
+      {
+        question: "Why can a flame test give a misleading result for a mixture of ions?",
+        choices: [
+          "Flames get too hot",
+          "Ions evaporate",
+          "Colours can mask",
+          "The splint goes out",
+        ],
+        accept: [
+          "Colours can mask",
+        ],
+        answer: "Colours can mask each other — for example, the strong yellow of sodium hides the lilac of potassium.",
+      },
+      {
+        question: "Sodium hydroxide gives a blue precipitate. Which metal ion is present?",
+        choices: [
+          "Iron(II)",
+          "Copper(II)",
+          "Iron(III)",
+          "Calcium",
+        ],
+        accept: [
+          "Copper(II)",
+        ],
+        answer: "Copper(II). Iron(II) gives green, iron(III) brown, and calcium a white precipitate.",
+      },
     ],
     misconceptions: [
       {
@@ -7257,6 +10400,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         question: "Explain how a catalytic converter reduces the pollutants leaving a car exhaust, and why it cannot reduce the carbon dioxide emitted.",
         answer: "The converter has a large surface area coated in catalyst, and the hot exhaust gases pass over it. Carbon monoxide is oxidised to carbon dioxide, and nitrogen oxides are reduced back to nitrogen, so two harmful gases are converted into ones already present in air. Unburnt hydrocarbons are also oxidised to carbon dioxide and water. Carbon dioxide is the unavoidable product of burning a hydrocarbon fuel, so converting the other pollutants actually produces more of it — the only way to cut it is to burn less fuel. (Mark this one yourself.)",
       },
+      {
+        question: "Which noble gas makes up most of the last 1% of dry air?",
+        choices: [
+          "Argon",
+          "Helium",
+          "Neon",
+          "Krypton",
+        ],
+        accept: [
+          "Argon",
+        ],
+        answer: "Argon, nearly 1% of the air. The rest of that 1% includes carbon dioxide and water vapour.",
+      },
+      {
+        question: "For roughly how long has the atmosphere's make-up been about the same?",
+        choices: [
+          "2 billion years",
+          "4.6 billion years",
+          "200 years",
+          "200 million years",
+        ],
+        accept: [
+          "200 million years",
+        ],
+        answer: "200 million years — about 80% nitrogen and 20% oxygen over that time. Oxygen took far longer to build up first.",
+      },
+      {
+        question: "Carbon dioxide that dissolved in the early oceans was locked into:",
+        choices: [
+          "Ice caps",
+          "Volcanoes",
+          "Carbonate rocks",
+          "The air",
+        ],
+        accept: [
+          "Carbonate rocks",
+        ],
+        answer: "Carbonate rocks and sediments, which removed carbon dioxide from the early atmosphere.",
+      },
+      {
+        question: "Which gas was there little or none of in the early atmosphere?",
+        choices: [
+          "Carbon dioxide",
+          "Oxygen",
+          "Nitrogen",
+          "Water vapour",
+        ],
+        accept: [
+          "Oxygen",
+        ],
+        answer: "Oxygen. It only built up after algae and plants began photosynthesis, over about two billion years.",
+      },
+      {
+        question: "Which human activity adds the most carbon dioxide to the air?",
+        choices: [
+          "Burning fossil fuels",
+          "Breathing",
+          "Recycling",
+          "Using nuclear power",
+        ],
+        accept: [
+          "Burning fossil fuels",
+        ],
+        answer: "Burning fossil fuels, which releases carbon locked away for millions of years as carbon dioxide.",
+      },
+      {
+        question: "Which farming activity releases large amounts of methane?",
+        choices: [
+          "Planting trees",
+          "Growing wheat",
+          "Ploughing fields",
+          "Raising cattle",
+        ],
+        accept: [
+          "Raising cattle",
+        ],
+        answer: "Raising cattle, because their digestion releases methane. Rice paddies and landfill sites release it too.",
+      },
+      {
+        question: "How does deforestation increase carbon dioxide in the air?",
+        choices: [
+          "Trees release methane",
+          "More rain falls",
+          "Fewer trees absorb CO₂",
+          "Soil gets colder",
+        ],
+        accept: [
+          "Fewer trees absorb CO₂",
+        ],
+        answer: "Fewer trees absorb CO₂ by photosynthesis — and burning the cleared trees releases even more.",
+      },
+      {
+        question: "Which of these is a consequence of global warming?",
+        choices: [
+          "More oxygen in air",
+          "Rising sea levels",
+          "Colder summers",
+          "Less acid rain",
+        ],
+        accept: [
+          "Rising sea levels",
+        ],
+        answer: "Rising sea levels, because warming melts ice on land and makes sea water expand.",
+      },
+      {
+        question: "Nitrogen oxides released from car engines cause:",
+        choices: [
+          "Acid rain",
+          "Global dimming",
+          "More oxygen",
+          "Less infrared",
+        ],
+        accept: [
+          "Acid rain",
+        ],
+        answer: "Acid rain, because they dissolve in rain water to make acids. They also cause breathing problems.",
+      },
+      {
+        question: "Which of these is an effect of acid rain?",
+        choices: [
+          "Rising sea levels",
+          "Melting ice",
+          "Global dimming",
+          "Damaged statues",
+        ],
+        accept: [
+          "Damaged statues",
+        ],
+        answer: "Damaged statues — acid rain reacts with limestone and metal, and also harms trees and lake life.",
+      },
+      {
+        question: "Greenhouse gases absorb infrared radiation leaving Earth and then:",
+        choices: [
+          "Destroy it",
+          "Turn it to UV",
+          "Re-radiate it",
+          "Reflect sunlight",
+        ],
+        accept: [
+          "Re-radiate it",
+        ],
+        answer: "Re-radiate it, sending some back towards the Earth's surface, which keeps the planet warmer.",
+      },
+      {
+        question: "Which change reduces a product's carbon footprint?",
+        choices: [
+          "Making it heavier",
+          "Using renewable energy",
+          "Flying it further",
+          "Using coal power",
+        ],
+        accept: [
+          "Using renewable energy",
+        ],
+        answer: "Using renewable energy, because wind or solar power releases far less carbon dioxide than burning fossil fuels.",
+      },
+      {
+        question: "Carbon capture helps tackle climate change by:",
+        choices: [
+          "Trapping CO₂",
+          "Releasing methane",
+          "Burning more fuel",
+          "Removing oxygen",
+        ],
+        accept: [
+          "Trapping CO₂",
+        ],
+        answer: "Trapping CO₂ from power stations and storing it, often underground, so it does not reach the atmosphere.",
+      },
+      {
+        question: "Water vapour, carbon dioxide and methane are all:",
+        choices: [
+          "Noble gases",
+          "Acidic pollutants",
+          "Elements",
+          "Greenhouse gases",
+        ],
+        accept: [
+          "Greenhouse gases",
+        ],
+        answer: "Greenhouse gases, because they absorb infrared radiation. All three are compounds, so they are not elements.",
+      },
+      {
+        question: "CO₂ is only about 0.04% of air. Why does it matter so much?",
+        choices: [
+          "It is toxic",
+          "It is very reactive",
+          "It absorbs infrared",
+          "It is flammable",
+        ],
+        accept: [
+          "It absorbs infrared",
+        ],
+        answer: "It absorbs infrared radiation, so even a small rise traps more heat and warms the planet.",
+      },
     ],
     misconceptions: [
       {
@@ -7654,6 +10992,201 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain why copper is described as a finite resource, even though the copper atoms in a scrapped cable are not destroyed.",
         answer: "Finite refers to the amount that can be economically extracted from the Earth, and new copper ore is not being formed on any human timescale. The atoms in scrap do survive, but they are dispersed through landfill, alloys and buried infrastructure where collecting them costs more than the metal is worth. Each round of use also loses some copper to corrosion, wear and mixing with other metals. So the stock of copper that can actually be recovered and used shrinks, which is what makes recycling and careful design worth the effort. (Mark this one yourself.)",
+      },
+      {
+        question: "Which of these is a renewable resource?",
+        choices: [
+          "Crude oil",
+          "Timber",
+          "Natural gas",
+          "Copper ore",
+        ],
+        accept: [
+          "Timber",
+        ],
+        answer: "Timber, from managed forests, because new trees can be grown as fast as wood is used. The others are finite.",
+      },
+      {
+        question: "In UK water treatment, what comes straight after choosing a source?",
+        choices: [
+          "Filtration",
+          "Sterilising",
+          "Desalination",
+          "Distillation",
+        ],
+        accept: [
+          "Filtration",
+        ],
+        answer: "Filtration, to remove solids such as leaves and grit. Sterilising comes after that.",
+      },
+      {
+        question: "What does sterilising drinking water do?",
+        choices: [
+          "Removes salts",
+          "Removes solids",
+          "Adds fluoride",
+          "Kills microbes",
+        ],
+        accept: [
+          "Kills microbes",
+        ],
+        answer: "Kills microbes, using chlorine, ozone or ultraviolet light, so the water is safe to drink.",
+      },
+      {
+        question: "Why is desalination of sea water expensive?",
+        choices: [
+          "Sea water is rare",
+          "Salt is valuable",
+          "It needs much energy",
+          "It needs chlorine",
+        ],
+        accept: [
+          "It needs much energy",
+        ],
+        answer: "It needs much energy — distillation boils huge volumes of water and reverse osmosis needs high pressure.",
+      },
+      {
+        question: "What does screening remove from sewage?",
+        choices: [
+          "Dissolved salts",
+          "Large solids and grit",
+          "Bacteria",
+          "Sludge",
+        ],
+        accept: [
+          "Large solids and grit",
+        ],
+        answer: "Large solids and grit, removed first so they don't damage pumps or block later stages.",
+      },
+      {
+        question: "What useful gas does anaerobic digestion of sewage sludge produce?",
+        choices: [
+          "Biogas",
+          "Oxygen",
+          "Chlorine",
+          "Hydrogen chloride",
+        ],
+        accept: [
+          "Biogas",
+        ],
+        answer: "Biogas, mainly methane, made by bacteria digesting sludge without oxygen. Fertiliser is made too.",
+      },
+      {
+        question: "After sedimentation, how is the effluent treated?",
+        choices: [
+          "With chlorine only",
+          "By distillation",
+          "By burning",
+          "With air and bacteria",
+        ],
+        accept: [
+          "With air and bacteria",
+        ],
+        answer: "With air and bacteria — aerobic bacteria break down the organic matter left in the effluent.",
+      },
+      {
+        question: "Why does sewage need more treatment than fresh water?",
+        choices: [
+          "It is saltier",
+          "It is colder",
+          "It starts far dirtier",
+          "It has less water",
+        ],
+        accept: [
+          "It starts far dirtier",
+        ],
+        answer: "It starts far dirtier, full of organic matter and harmful microbes that must all be removed.",
+      },
+      {
+        question: "Which stage separates sewage into sludge and effluent?",
+        choices: [
+          "Screening",
+          "Sedimentation",
+          "Distillation",
+          "Chlorination",
+        ],
+        accept: [
+          "Sedimentation",
+        ],
+        answer: "Sedimentation: the sludge sinks to the bottom and the liquid effluent sits above it.",
+      },
+      {
+        question: "In phytomining, what happens to the plants after they absorb metal?",
+        choices: [
+          "Burned",
+          "Eaten",
+          "Replanted",
+          "Composted",
+        ],
+        accept: [
+          "Burned",
+        ],
+        answer: "Burned, and the metal compounds are then extracted from the ash.",
+      },
+      {
+        question: "Copper in a bioleaching solution can be displaced by adding:",
+        choices: [
+          "Silver",
+          "Gold",
+          "Sand",
+          "Scrap iron",
+        ],
+        accept: [
+          "Scrap iron",
+        ],
+        answer: "Scrap iron, because iron is more reactive than copper and displaces it from its compounds.",
+      },
+      {
+        question: "Phytomining and bioleaching are used to extract metal from:",
+        choices: [
+          "High-grade ore",
+          "Pure metal",
+          "Low-grade ore",
+          "Salt water",
+        ],
+        accept: [
+          "Low-grade ore",
+        ],
+        answer: "Low-grade ore, which holds too little metal to make traditional mining worthwhile.",
+      },
+      {
+        question: "Which stage comes LAST in a life cycle assessment?",
+        choices: [
+          "Manufacture",
+          "Disposal",
+          "Use",
+          "Raw materials",
+        ],
+        accept: [
+          "Disposal",
+        ],
+        answer: "Disposal — an LCA runs from raw materials, through manufacture and use, to disposal at the end of life.",
+      },
+      {
+        question: "Distillation desalinates sea water by:",
+        choices: [
+          "Boiling and condensing",
+          "Filtering it",
+          "Adding chlorine",
+          "Freezing it",
+        ],
+        accept: [
+          "Boiling and condensing",
+        ],
+        answer: "Boiling and condensing: the water evaporates, leaving salts behind, then condenses as fresh water.",
+      },
+      {
+        question: "In the UK, most drinking water starts as:",
+        choices: [
+          "Sea water",
+          "Waste water",
+          "Bottled water",
+          "Rain water",
+        ],
+        accept: [
+          "Rain water",
+        ],
+        answer: "Rain water, collected in lakes, rivers, reservoirs and underground rocks before it is treated.",
       },
     ],
     misconceptions: [
@@ -8053,6 +11586,136 @@ export const CHEMISTRY: Record<string, TopicContent> = {
       {
         question: "Explain why marks are available for saying how you would make a required practical repeatable, and what a good answer includes.",
         answer: "A result that cannot be reproduced is not evidence, so examiners test whether you understand how a reliable measurement is produced rather than just the order of the steps. A good answer states the independent variable being changed and the range used, names the control variables being kept the same, and says how each is kept constant. It specifies the measurements taken, with the apparatus and its precision, and says that each condition is repeated and a mean taken with anomalies excluded. Naming actual quantities and apparatus, rather than saying just to keep everything else the same, is what separates a top-band answer from a vague one. (Mark this one yourself.)",
+      },
+      {
+        question: "Which command word asks for a short fact with no explanation?",
+        choices: [
+          "Explain",
+          "Evaluate",
+          "State",
+          "Suggest",
+        ],
+        accept: [
+          "State",
+        ],
+        answer: "State (or give): a short factual answer. Explain needs a reason, often with the word because.",
+      },
+      {
+        question: "An 'evaluate' answer must finish with:",
+        choices: [
+          "A diagram",
+          "A conclusion",
+          "A formula",
+          "A list of facts",
+        ],
+        accept: [
+          "A conclusion",
+        ],
+        answer: "A conclusion — give advantages and disadvantages, then a judgement supported by them.",
+      },
+      {
+        question: "Write 2.5 dm³ in cm³.",
+        choices: [
+          "2500",
+          "250",
+          "25000",
+          "0.0025",
+        ],
+        accept: [
+          "2500",
+        ],
+        answer: "2500, because 1 dm³ = 1000 cm³, so 2.5 × 1000 = 2500 cm³.",
+      },
+      {
+        question: "Which required practical uses a burette?",
+        choices: [
+          "Chromatography",
+          "Electrolysis",
+          "Making a salt",
+          "Titration",
+        ],
+        accept: [
+          "Titration",
+        ],
+        answer: "Titration, where the burette adds one solution to another until the reaction is exactly complete.",
+      },
+      {
+        question: "In a rates practical, the variable you measure is the:",
+        choices: [
+          "Independent variable",
+          "Control variable",
+          "Dependent variable",
+          "Categoric variable",
+        ],
+        accept: [
+          "Dependent variable",
+        ],
+        answer: "Dependent variable, such as gas volume. The independent variable is the one you change; control variables stay fixed.",
+      },
+      {
+        question: "A spot moves 3 cm and the solvent front 6 cm. What is the Rf value?",
+        choices: [
+          "2",
+          "0.5",
+          "3",
+          "18",
+        ],
+        accept: [
+          "0.5",
+        ],
+        answer: "0.5, because Rf = distance moved by spot ÷ distance moved by solvent = 3 ÷ 6. Rf is always less than 1.",
+      },
+      {
+        question: "Why is ventilation needed when electrolysis makes chlorine?",
+        choices: [
+          "Chlorine is toxic",
+          "Chlorine is flammable",
+          "Oxygen is toxic",
+          "Copper is toxic",
+        ],
+        accept: [
+          "Chlorine is toxic",
+        ],
+        answer: "Chlorine is toxic, so it must not build up in the room. Eye protection is needed too.",
+      },
+      {
+        question: "What happens to a catalyst during a reaction?",
+        choices: [
+          "It is used up",
+          "It slows it down",
+          "It becomes a product",
+          "It is not used up",
+        ],
+        accept: [
+          "It is not used up",
+        ],
+        answer: "It is not used up — a catalyst speeds up a reaction and is left unchanged at the end.",
+      },
+      {
+        question: "Round 0.04567 to 2 significant figures.",
+        choices: [
+          "0.045",
+          "0.05",
+          "0.046",
+          "0.0457",
+        ],
+        accept: [
+          "0.046",
+        ],
+        answer: "0.046, because the first two significant figures are 4 and 5, and the next digit, 6, rounds the 5 up.",
+      },
+      {
+        question: "Why use a polystyrene cup in a temperature change practical?",
+        choices: [
+          "Speeds up reaction",
+          "Reduces heat loss",
+          "It is transparent",
+          "Absorbs the acid",
+        ],
+        accept: [
+          "Reduces heat loss",
+        ],
+        answer: "Reduces heat loss — polystyrene is a good insulator, so the measured temperature change is more accurate.",
       },
     ],
     misconceptions: [

@@ -265,6 +265,18 @@ try {
     expect(quick >= 600, `only ${quick} maths multiple-choice questions are short enough for a 10-second reload`);
     console.log(`Maths: ${mcq} multiple-choice questions, ${quick} of them game-quick (stem ≤ 95 characters, four short buttons).`);
   }
+  // The same for the 1,000 written for the sciences and English (2026-10-12).
+  // Floors at what each subject had once they went in.
+  {
+    const floors = { biology: 410, chemistry: 375, physics: 375, english: 264 };
+    for (const [subject, floor] of Object.entries(floors)) {
+      let mcq = 0;
+      for (const [key, c] of Object.entries(TOPIC_CONTENT)) {
+        if (key.startsWith(subject + "/")) mcq += (c.practice ?? []).filter((p) => p.choices).length;
+      }
+      expect(mcq >= floor, `${subject} has ${mcq} multiple-choice questions — it had ${floor} after the game batch`);
+    }
+  }
 } finally {
   rmSync(out, { recursive: true, force: true });
 }

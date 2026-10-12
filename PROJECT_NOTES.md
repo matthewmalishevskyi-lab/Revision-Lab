@@ -1,5 +1,44 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## 1,000 quick game questions for the sciences and English (2026-10-12)
+
+Matthew: *"make 1000 more multiple choice questions appropriate for our game
+across Sciences and some English"*. Biology +290, chemistry +280, physics +280
+(about 15 a topic), English +150 (9 a topic, 15 on grammar). The sciences had
+only 5–6 written multiple-choice questions a topic, so their game pools leaned
+almost entirely on numeric answers turned into buttons; now biology has 410,
+chemistry 375, physics 375 and English 264.
+
+Same brief as the maths batches (10-second reload, stem ≤ 95 characters, four
+buttons ≤ 22, a one-line why) plus an addendum (`BRIEF-SCI-ENG.md` in the
+scratchpad): AQA terminology, subscript formulae, units in the stem, English
+never tiered, no "which best describes the mood" questions, and ⚠️ copyright —
+quotes only from public-domain texts and only a few words; An Inspector Calls,
+Blood Brothers and Lord of the Flies are asked about without quoting them.
+
+**All 1,000 blind re-solved by ten fresh solvers: 1,000 of 1,000 agreed.**
+Their flags led to 14 rewrites: "Pollen and ovule" → "pollen and egg cell"
+(AQA's words); "which ghost visits first" (Marley is a ghost but not one of the
+three spirits); a limiting-reactant stem that needed "the other is in large
+excess"; "in the UK" on a poorer-communities question; a 10-minute reading time
+that contradicts AQA's usual 15 (replaced); two subjective English stems and
+one that gave its own answer away (replaced); two near-identical physics
+questions across topics (one renumbered, one re-asked).
+
+⚠️ **The calculator check caught one.** An English answer said "5 × 2 = 10"
+syllables, and `calculator-topics.ts` gives any topic with a real sum the
+calculator button — English must never have one, and the check says so.
+Reworded to "five pairs, so ten in all". The check was right.
+
+Higher-tier flags follow AQA (momentum, F = BIl, transformers, strong/weak
+acids, bond-energy sums, half equations, orbital speed). That is more flagging
+than the existing questions on the same content carry — worth Matthew's eye if
+he would rather under-flag as the site's policy says.
+
+**Verified.** `npm run check` fully green — **236,321** content and **36,798**
+game-question checks (new floors per subject), every other suite unchanged.
+
+
 ## The game: 500 quick maths questions, and as many topics as you like (2026-10-11)
 
 Matthew: *"we need about 500 more multiple choice questions for the game…

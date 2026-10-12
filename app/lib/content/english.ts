@@ -316,6 +316,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "It signals analysis rather than retelling, and pushes you straight into the writer's intention.",
       },
+      {
+        question: "'She was furious' is explicit. 'She slammed the door' is:",
+        choices: [
+          "Explicit",
+          "Implicit",
+          "A simile",
+          "Foreshadowing",
+        ],
+        accept: [
+          "Implicit",
+        ],
+        answer: "Implicit, because the anger is only suggested by her action, so the reader has to infer it.",
+      },
+      {
+        question: "In PETAL, what does the T stand for?",
+        choices: [
+          "Theme",
+          "Tone",
+          "Technique",
+          "Text",
+        ],
+        accept: [
+          "Technique",
+        ],
+        answer: "Technique, because PETAL is Point, Evidence, Technique, Analysis, Link — PEE with two extra steps.",
+      },
+      {
+        question: "'Slithered' suggests something sinister that 'moved' does not. These are its:",
+        choices: [
+          "Connotations",
+          "Denotations",
+          "Inferences",
+          "Registers",
+        ],
+        accept: [
+          "Connotations",
+        ],
+        answer: "Connotations, because they are the associations a word carries beyond its literal meaning.",
+      },
+      {
+        question: "Which phrase shows a tentative interpretation?",
+        choices: [
+          "This proves",
+          "This definitely means",
+          "This shows for certain",
+          "This suggests",
+        ],
+        accept: [
+          "This suggests",
+        ],
+        answer: "This suggests, because tentative language admits other readings; certainty about a writer's intention is rarely justified.",
+      },
+      {
+        question: "A text uses slang and calls the reader 'mate'. What is its register?",
+        choices: [
+          "Formal",
+          "Informal",
+          "Archaic",
+          "Technical",
+        ],
+        accept: [
+          "Informal",
+        ],
+        answer: "Informal, because slang and friendly address like 'mate' show a casual, low level of formality.",
+      },
+      {
+        question: "A short sentence after several long ones mainly changes the text's:",
+        choices: [
+          "Rhyme",
+          "Register",
+          "Pace",
+          "Setting",
+        ],
+        accept: [
+          "Pace",
+        ],
+        answer: "Pace, because the sudden short sentence breaks the rhythm of the long ones and lands hard.",
+      },
+      {
+        question: "A sudden jump back to an earlier time in a story is a:",
+        choices: [
+          "Flashback",
+          "Foreshadowing",
+          "Cliffhanger",
+          "Monologue",
+        ],
+        accept: [
+          "Flashback",
+        ],
+        answer: "Flashback, because the narrative shifts back in time; foreshadowing hints forward at what is to come.",
+      },
+      {
+        question: "A leaflet gives tips on staying safe online. What is its purpose?",
+        choices: [
+          "To entertain",
+          "To describe",
+          "To narrate",
+          "To advise",
+        ],
+        accept: [
+          "To advise",
+        ],
+        answer: "To advise, because it gives the reader recommendations about what they should do.",
+      },
+      {
+        question: "Weaving a short quotation into your own sentence is called:",
+        choices: [
+          "Paraphrasing",
+          "Embedding",
+          "Summarising",
+          "Inferring",
+        ],
+        accept: [
+          "Embedding",
+        ],
+        answer: "Embedding, because the quotation becomes part of your own sentence instead of standing alone.",
+      },
     ],
 
     misconceptions: [
@@ -650,6 +767,123 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Echoing an image from the opening",
         ],
         answer: "A circular structure feels deliberate. The dream ending is heavily overused and undermines everything before it.",
+      },
+      {
+        question: "'Her heart was a drum.' Which technique is this?",
+        choices: [
+          "Simile",
+          "Personification",
+          "Metaphor",
+          "Onomatopoeia",
+        ],
+        accept: [
+          "Metaphor",
+        ],
+        answer: "Metaphor, because it says her heart IS a drum, with no 'like' or 'as'.",
+      },
+      {
+        question: "'The moon watched over the town.' Which technique is this?",
+        choices: [
+          "Personification",
+          "Simile",
+          "Onomatopoeia",
+          "Sibilance",
+        ],
+        accept: [
+          "Personification",
+        ],
+        answer: "Personification, because watching is a human action given to the non-human moon.",
+      },
+      {
+        question: "'Bang! The door burst open.' Which technique is 'Bang'?",
+        choices: [
+          "Alliteration",
+          "Simile",
+          "Hyperbole",
+          "Onomatopoeia",
+        ],
+        accept: [
+          "Onomatopoeia",
+        ],
+        answer: "Onomatopoeia, because the word 'bang' imitates the sound it describes.",
+      },
+      {
+        question: "'Big brown boots' repeats the 'b' sound. This is:",
+        choices: [
+          "Assonance",
+          "Alliteration",
+          "Sibilance",
+          "Onomatopoeia",
+        ],
+        accept: [
+          "Alliteration",
+        ],
+        answer: "Alliteration, because the same initial consonant sound is repeated in nearby words.",
+      },
+      {
+        question: "Show, don't tell: which line SHOWS nervousness?",
+        choices: [
+          "She was nervous.",
+          "She felt very scared.",
+          "She bit her nails.",
+          "She was anxious.",
+        ],
+        accept: [
+          "She bit her nails.",
+        ],
+        answer: "She bit her nails — it describes what nervousness looks like instead of naming the emotion.",
+      },
+      {
+        question: "Which sentence opens with a subordinate clause?",
+        choices: [
+          "As dusk fell, I ran.",
+          "I ran as dusk fell.",
+          "Dusk fell. I ran.",
+          "I ran. Dusk fell.",
+        ],
+        accept: [
+          "As dusk fell, I ran.",
+        ],
+        answer: "As dusk fell, I ran — it starts with the subordinate clause 'As dusk fell', varying the usual subject-first opening.",
+      },
+      {
+        question: "Where does the comma go in: 'Stop' she said.",
+        choices: [
+          "After speech marks",
+          "Before 'Stop'",
+          "No comma needed",
+          "Inside speech marks",
+        ],
+        accept: [
+          "Inside speech marks",
+        ],
+        answer: "Inside speech marks, because punctuation belongs inside them: 'Stop,' she said.",
+      },
+      {
+        question: "Words like 'grave', 'coffin' and 'mourn' together form a:",
+        choices: [
+          "Simile",
+          "Semantic field",
+          "Motif",
+          "Triple",
+        ],
+        accept: [
+          "Semantic field",
+        ],
+        answer: "Semantic field, because they are a group of words all linked to one idea, death, building atmosphere.",
+      },
+      {
+        question: "Repeated 's' sounds creating a hissing effect are called:",
+        choices: [
+          "Assonance",
+          "Plosives",
+          "Sibilance",
+          "Onomatopoeia",
+        ],
+        accept: [
+          "Sibilance",
+        ],
+        answer: "Sibilance, because it is the repetition of soft s sounds, often for a hissing or sinister effect.",
       },
     ],
 
@@ -989,6 +1223,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Iambic pentameter is the most common English metre. A break in the rhythm often marks a moment of disruption.",
       },
+      {
+        question: "What is a stanza of four lines called?",
+        choices: [
+          "Couplet",
+          "Quatrain",
+          "Tercet",
+          "Sestet",
+        ],
+        accept: [
+          "Quatrain",
+        ],
+        answer: "Quatrain, because it is a four-line stanza; a couplet has two lines, a tercet three and a sestet six.",
+      },
+      {
+        question: "Which rhyme scheme fits the line endings day / night / play / light?",
+        choices: [
+          "AABB",
+          "ABBA",
+          "ABCB",
+          "ABAB",
+        ],
+        accept: [
+          "ABAB",
+        ],
+        answer: "ABAB, because line 1 rhymes with line 3 (day/play) and line 2 with line 4 (night/light).",
+      },
+      {
+        question: "Repeated vowel sounds, as in 'deep green sea', are called:",
+        choices: [
+          "Assonance",
+          "Alliteration",
+          "Consonance",
+          "Sibilance",
+        ],
+        accept: [
+          "Assonance",
+        ],
+        answer: "Assonance, because the same vowel sound (ee) repeats; alliteration repeats initial consonant sounds.",
+      },
+      {
+        question: "Which letters make plosive sounds?",
+        choices: [
+          "s, sh, z",
+          "m, n, l",
+          "b, p, t, d",
+          "a, e, i",
+        ],
+        accept: [
+          "b, p, t, d",
+        ],
+        answer: "b, p, t, d, because these sounds burst out abruptly, giving a harsh, explosive effect.",
+      },
+      {
+        question: "A line of poetry that finishes with punctuation is:",
+        choices: [
+          "Enjambed",
+          "End-stopped",
+          "A caesura",
+          "A volta",
+        ],
+        accept: [
+          "End-stopped",
+        ],
+        answer: "End-stopped, because the line ends with punctuation, giving a sense of completeness or finality.",
+      },
+      {
+        question: "In a Petrarchan sonnet, the volta usually comes at line:",
+        choices: [
+          "9",
+          "13",
+          "5",
+          "14",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "9, because a Petrarchan sonnet turns after its first eight lines (the octave) into the final six (the sestet).",
+      },
+      {
+        question: "How many syllables are in a regular line of iambic pentameter?",
+        choices: [
+          "5",
+          "8",
+          "14",
+          "10",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because iambic pentameter has five pairs (iambs) of unstressed-then-stressed syllables, so ten in all.",
+      },
+      {
+        question: "A poem with no regular rhyme or metre is written in:",
+        choices: [
+          "Blank verse",
+          "Iambic pentameter",
+          "Free verse",
+          "Sonnet form",
+        ],
+        accept: [
+          "Free verse",
+        ],
+        answer: "Free verse, because it has no regular rhyme or metre; blank verse is unrhymed but keeps iambic pentameter.",
+      },
+      {
+        question: "What is a poem that mourns someone who has died called?",
+        choices: [
+          "Ode",
+          "Elegy",
+          "Ballad",
+          "Sonnet",
+        ],
+        accept: [
+          "Elegy",
+        ],
+        answer: "Elegy, because an elegy is a poem of mourning; an ode praises its subject and a ballad tells a story.",
+      },
     ],
 
     misconceptions: [
@@ -1314,6 +1665,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Comic relief makes the return to darkness land harder, and appealed to a mixed audience.",
       },
+      {
+        question: "Roughly when did Shakespeare write his plays?",
+        choices: [
+          "1490–1513",
+          "1690–1713",
+          "1590–1613",
+          "1790–1813",
+        ],
+        accept: [
+          "1590–1613",
+        ],
+        answer: "1590–1613, spanning the reigns of Elizabeth I and James I — the Elizabethan and Jacobean periods.",
+      },
+      {
+        question: "What was Shakespeare's famous open-air playhouse called?",
+        choices: [
+          "The Globe",
+          "The Old Vic",
+          "The Palladium",
+          "The Lyceum",
+        ],
+        accept: [
+          "The Globe",
+        ],
+        answer: "The Globe, the open-air playhouse on the south bank of the Thames where his plays were performed in daylight.",
+      },
+      {
+        question: "Poorer audience members who stood to watch plays were called:",
+        choices: [
+          "Patrons",
+          "Courtiers",
+          "Peasants",
+          "Groundlings",
+        ],
+        accept: [
+          "Groundlings",
+        ],
+        answer: "Groundlings, because they stood on the ground in the yard, while wealthier patrons sat in the galleries.",
+      },
+      {
+        question: "Which monarch wrote a book about witchcraft?",
+        choices: [
+          "Elizabeth I",
+          "James I",
+          "Henry VIII",
+          "Charles I",
+        ],
+        accept: [
+          "James I",
+        ],
+        answer: "James I, who wrote Daemonologie (1597) — one reason the witches in Macbeth would have gripped his audience.",
+      },
+      {
+        question: "Shakespeare's comedies traditionally end with:",
+        choices: [
+          "A death",
+          "A battle",
+          "A marriage",
+          "A trial",
+        ],
+        accept: [
+          "A marriage",
+        ],
+        answer: "A marriage, because comedies resolve their confusion and mistaken identities with weddings; tragedies end in death.",
+      },
+      {
+        question: "Excessive pride in a tragic hero is called:",
+        choices: [
+          "Hubris",
+          "Hamartia",
+          "Catharsis",
+          "Pathos",
+        ],
+        accept: [
+          "Hubris",
+        ],
+        answer: "Hubris, which is excessive pride; hamartia is the fatal flaw and catharsis the audience's release of emotion.",
+      },
+      {
+        question: "Low-status and comic characters in Shakespeare often speak in:",
+        choices: [
+          "Blank verse",
+          "Rhyming couplets",
+          "Iambic pentameter",
+          "Prose",
+        ],
+        accept: [
+          "Prose",
+        ],
+        answer: "Prose, because ordinary unrhythmed speech suits lower-status and comic characters; nobles usually speak in verse.",
+      },
+      {
+        question: "A long speech made TO other characters on stage is a:",
+        choices: [
+          "Soliloquy",
+          "Monologue",
+          "Aside",
+          "Prologue",
+        ],
+        accept: [
+          "Monologue",
+        ],
+        answer: "Monologue, because it is addressed to other characters; a soliloquy is spoken alone, revealing private thoughts.",
+      },
+      {
+        question: "Why do Shakespeare's characters often say the time of day aloud?",
+        choices: [
+          "To fill time",
+          "Clocks were rare",
+          "No stage lighting",
+          "To help actors learn",
+        ],
+        accept: [
+          "No stage lighting",
+        ],
+        answer: "No stage lighting — plays ran outdoors in daylight, so the words had to tell the audience the time and place.",
+      },
     ],
 
     misconceptions: [
@@ -1620,6 +2088,123 @@ export const ENGLISH: Record<string, TopicContent> = {
           "How much to write and how deeply to analyse",
         ],
         answer: "Spending twenty minutes on a four-mark question is one of the commonest ways to lose marks elsewhere.",
+      },
+      {
+        question: "Which tense is most narrative fiction written in?",
+        choices: [
+          "Past tense",
+          "Future tense",
+          "Conditional",
+          "Imperative",
+        ],
+        accept: [
+          "Past tense",
+        ],
+        answer: "Past tense — most stories narrate events as having already happened (\"she opened the door\").",
+      },
+      {
+        question: "A narrator who says 'I' and takes part in the story is:",
+        choices: [
+          "Second person",
+          "Third person",
+          "First person",
+          "Omniscient",
+        ],
+        accept: [
+          "First person",
+        ],
+        answer: "First person, because the story is told by a character using 'I', giving us one perspective.",
+      },
+      {
+        question: "'You walk in. You freeze.' Which narrative viewpoint is this?",
+        choices: [
+          "First person",
+          "Second person",
+          "Third person",
+          "Omniscient",
+        ],
+        accept: [
+          "Second person",
+        ],
+        answer: "Second person, because it uses 'you', placing the reader inside the action.",
+      },
+      {
+        question: "An extract moves from a whole city to one lit window. This is a:",
+        choices: [
+          "Metaphor",
+          "Semantic field",
+          "Simile",
+          "Shift in focus",
+        ],
+        accept: [
+          "Shift in focus",
+        ],
+        answer: "Shift in focus, a structural technique, like a camera zooming from a wide shot to a close-up.",
+      },
+      {
+        question: "In 'The fox crept closer', what word class is 'crept'?",
+        choices: [
+          "Verb",
+          "Adjective",
+          "Adverb",
+          "Noun",
+        ],
+        accept: [
+          "Verb",
+        ],
+        answer: "Verb, because it is the action word; analysing a precise verb like 'crept' instead of 'walked' earns language marks.",
+      },
+      {
+        question: "Writing that captures a single scene, rather than telling a story, is:",
+        choices: [
+          "Narrative",
+          "Transactional",
+          "Descriptive",
+          "Persuasive",
+        ],
+        accept: [
+          "Descriptive",
+        ],
+        answer: "Descriptive, because it captures one scene or moment; narrative writing tells a story with development.",
+      },
+      {
+        question: "A chapter ending on an unresolved moment of suspense is a:",
+        choices: [
+          "Flashback",
+          "Cliffhanger",
+          "Prologue",
+          "Resolution",
+        ],
+        accept: [
+          "Cliffhanger",
+        ],
+        answer: "Cliffhanger, because it leaves the outcome hanging, so the reader has to keep reading to find out.",
+      },
+      {
+        question: "In an evaluation question, which approach scores best?",
+        choices: [
+          "Agree with everything",
+          "Sit on the fence",
+          "Retell the plot",
+          "Clear view + evidence",
+        ],
+        accept: [
+          "Clear view + evidence",
+        ],
+        answer: "Clear view + evidence — take a clear position early and support it from across the extract.",
+      },
+      {
+        question: "What does 'omniscient' mean for a third-person narrator?",
+        choices: [
+          "Knows everything",
+          "Knows one mind",
+          "Takes part",
+          "Cannot be trusted",
+        ],
+        accept: [
+          "Knows everything",
+        ],
+        answer: "Knows everything, including every character's thoughts; a limited narrator knows just one character's mind.",
       },
     ],
 
@@ -1934,6 +2519,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Acknowledging a counter-argument and dismissing it strengthens your case; drifting between positions weakens it.",
       },
+      {
+        question: "'Wouldn't you want the same for your child?' Which technique is this?",
+        choices: [
+          "Statistic",
+          "Rhetorical question",
+          "Anecdote",
+          "Hyperbole",
+        ],
+        accept: [
+          "Rhetorical question",
+        ],
+        answer: "Rhetorical question, because it is asked for effect, not for an answer, steering the reader to agree.",
+      },
+      {
+        question: "'Nine out of ten pupils agree.' Which technique is this?",
+        choices: [
+          "Opinion",
+          "Anecdote",
+          "Triple",
+          "Statistic",
+        ],
+        accept: [
+          "Statistic",
+        ],
+        answer: "Statistic, because it uses numerical evidence to make the claim sound proven and authoritative.",
+      },
+      {
+        question: "'It is cheap, quick and simple.' Which technique is this?",
+        choices: [
+          "Rule of three",
+          "Hyperbole",
+          "Anecdote",
+          "Alliteration",
+        ],
+        accept: [
+          "Rule of three",
+        ],
+        answer: "Rule of three, because three items together make the argument feel complete and memorable.",
+      },
+      {
+        question: "'I believe this ban is unfair.' This is an example of:",
+        choices: [
+          "Fact",
+          "Statistic",
+          "Opinion",
+          "Anecdote",
+        ],
+        accept: [
+          "Opinion",
+        ],
+        answer: "Opinion, because it is a personal belief that cannot be proved; 'I believe' signals it.",
+      },
+      {
+        question: "A formal letter beginning 'Dear Sir or Madam' should end:",
+        choices: [
+          "Yours sincerely",
+          "Yours faithfully",
+          "Best wishes",
+          "Love from",
+        ],
+        accept: [
+          "Yours faithfully",
+        ],
+        answer: "Yours faithfully, because you do not know the recipient's name; use 'Yours sincerely' when you do.",
+      },
+      {
+        question: "Which feature does a newspaper article usually have?",
+        choices: [
+          "A headline",
+          "A sign-off",
+          "Stage directions",
+          "A rhyme scheme",
+        ],
+        accept: [
+          "A headline",
+        ],
+        answer: "A headline, because articles open with a headline and often use subheadings; letters have sign-offs.",
+      },
+      {
+        question: "'You can make a difference today.' Which technique is this?",
+        choices: [
+          "Statistic",
+          "Anecdote",
+          "Hyperbole",
+          "Direct address",
+        ],
+        accept: [
+          "Direct address",
+        ],
+        answer: "Direct address, because it speaks straight to the reader as 'you', making them feel involved.",
+      },
+      {
+        question: "'Some say it costs too much. They are wrong.' This is a:",
+        choices: [
+          "Anecdote",
+          "Statistic",
+          "Counter-argument",
+          "Rule of three",
+        ],
+        accept: [
+          "Counter-argument",
+        ],
+        answer: "Counter-argument, because it raises the opposing view in order to dismiss it, making the writer seem reasonable.",
+      },
+      {
+        question: "In DAFOREST, what does the O stand for?",
+        choices: [
+          "Onomatopoeia",
+          "Opinion",
+          "Overview",
+          "Order",
+        ],
+        accept: [
+          "Opinion",
+        ],
+        answer: "Opinion: DAFOREST is Direct address, Alliteration, Facts, Opinions, Rhetorical questions, Emotive language, Statistics, Triples.",
+      },
     ],
 
     misconceptions: [
@@ -2242,6 +2944,123 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Using an object or image to represent a bigger idea",
         ],
         answer: "Trace where the symbol appears across the whole text rather than analysing one appearance in isolation.",
+      },
+      {
+        question: "Who wrote An Inspector Calls?",
+        choices: [
+          "Willy Russell",
+          "J.B. Priestley",
+          "William Golding",
+          "George Orwell",
+        ],
+        accept: [
+          "J.B. Priestley",
+        ],
+        answer: "J.B. Priestley wrote it; Willy Russell wrote Blood Brothers, Golding Lord of the Flies and Orwell Animal Farm.",
+      },
+      {
+        question: "In which year is An Inspector Calls set?",
+        choices: [
+          "1945",
+          "1939",
+          "1918",
+          "1912",
+        ],
+        accept: [
+          "1912",
+        ],
+        answer: "1912, just before the First World War, though Priestley wrote it in 1945 — the gap is deliberate.",
+      },
+      {
+        question: "Whose death does the Inspector investigate in An Inspector Calls?",
+        choices: [
+          "Eva Smith",
+          "Edna",
+          "Sheila Birling",
+          "Sybil Birling",
+        ],
+        accept: [
+          "Eva Smith",
+        ],
+        answer: "Eva Smith, a young working-class woman (also known as Daisy Renton) whom each Birling has wronged.",
+      },
+      {
+        question: "In An Inspector Calls, who is engaged to Sheila Birling?",
+        choices: [
+          "Eric Birling",
+          "Inspector Goole",
+          "Gerald Croft",
+          "Arthur Birling",
+        ],
+        accept: [
+          "Gerald Croft",
+        ],
+        answer: "Gerald Croft, whose engagement to Sheila is being celebrated when the Inspector arrives.",
+      },
+      {
+        question: "In Blood Brothers, how are Mickey and Eddie related?",
+        choices: [
+          "Cousins",
+          "Twin brothers",
+          "Half-brothers",
+          "Stepbrothers",
+        ],
+        accept: [
+          "Twin brothers",
+        ],
+        answer: "Twin brothers, separated at birth when Mrs Johnstone gives Eddie to Mrs Lyons.",
+      },
+      {
+        question: "In which city is Blood Brothers set?",
+        choices: [
+          "Liverpool",
+          "London",
+          "Manchester",
+          "Leeds",
+        ],
+        accept: [
+          "Liverpool",
+        ],
+        answer: "Liverpool, where Willy Russell grew up; the city's class divides drive the twins' different lives.",
+      },
+      {
+        question: "In Lord of the Flies, what object is used to call meetings?",
+        choices: [
+          "Piggy's glasses",
+          "A drum",
+          "A bell",
+          "The conch",
+        ],
+        accept: [
+          "The conch",
+        ],
+        answer: "The conch, a shell that stands for order and democracy; whoever holds it may speak.",
+      },
+      {
+        question: "In Lord of the Flies, who leads the hunters?",
+        choices: [
+          "Ralph",
+          "Piggy",
+          "Jack",
+          "Simon",
+        ],
+        accept: [
+          "Jack",
+        ],
+        answer: "Jack leads the hunters and grows more savage; Ralph is the elected chief who tries to keep order.",
+      },
+      {
+        question: "Orwell's Animal Farm is an allegory of which event?",
+        choices: [
+          "French Revolution",
+          "Russian Revolution",
+          "First World War",
+          "English Civil War",
+        ],
+        accept: [
+          "Russian Revolution",
+        ],
+        answer: "Russian Revolution of 1917 and the rise of Stalin, shown through the pigs taking over the farm.",
       },
     ],
 
@@ -2570,6 +3389,123 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Explain why an idea would unsettle an audience of the time",
         ],
         answer: "Beliefs about kingship, gender and the supernatural are the ones that usually illuminate the text most directly.",
+      },
+      {
+        question: "In Macbeth, which new title does Macbeth gain after the battle?",
+        choices: [
+          "Thane of Cawdor",
+          "Thane of Glamis",
+          "Thane of Fife",
+          "Prince of Cumberland",
+        ],
+        accept: [
+          "Thane of Cawdor",
+        ],
+        answer: "Thane of Cawdor, as the witches predicted; he is already Thane of Glamis, and Macduff is Thane of Fife.",
+      },
+      {
+        question: "In Macbeth, who kills Macbeth?",
+        choices: [
+          "Malcolm",
+          "Banquo",
+          "Fleance",
+          "Macduff",
+        ],
+        accept: [
+          "Macduff",
+        ],
+        answer: "Macduff kills him in Act 5; he was 'untimely ripped' from his mother's womb, so not 'of woman born'.",
+      },
+      {
+        question: "In Macbeth, who escapes when Banquo is murdered?",
+        choices: [
+          "Donalbain",
+          "Fleance",
+          "Malcolm",
+          "Seyton",
+        ],
+        accept: [
+          "Fleance",
+        ],
+        answer: "Fleance escapes, so the witches' prophecy that Banquo's descendants will be kings can still come true.",
+      },
+      {
+        question: "In Macbeth, who says 'Out, damned spot!'?",
+        choices: [
+          "Macbeth",
+          "Banquo",
+          "Lady Macbeth",
+          "The Porter",
+        ],
+        accept: [
+          "Lady Macbeth",
+        ],
+        answer: "Lady Macbeth, while sleepwalking in Act 5, trying to wash away imagined blood — a sign of her guilt.",
+      },
+      {
+        question: "In Macbeth, which wood must come to Dunsinane before Macbeth falls?",
+        choices: [
+          "Birnam Wood",
+          "Sherwood",
+          "Arden",
+          "Glamis Wood",
+        ],
+        accept: [
+          "Birnam Wood",
+        ],
+        answer: "Birnam Wood, which 'moves' when Malcolm's soldiers carry its branches as camouflage.",
+      },
+      {
+        question: "In Romeo and Juliet, which family does Juliet belong to?",
+        choices: [
+          "Montague",
+          "Escalus",
+          "Mercutio's",
+          "Capulet",
+        ],
+        accept: [
+          "Capulet",
+        ],
+        answer: "Capulet; Romeo is a Montague, and the two families' feud dooms the lovers.",
+      },
+      {
+        question: "In Romeo and Juliet, who kills Mercutio?",
+        choices: [
+          "Romeo",
+          "Tybalt",
+          "Paris",
+          "Benvolio",
+        ],
+        accept: [
+          "Tybalt",
+        ],
+        answer: "Tybalt kills Mercutio under Romeo's arm; Romeo then kills Tybalt and is banished.",
+      },
+      {
+        question: "In Romeo and Juliet, where is Romeo banished to?",
+        choices: [
+          "Verona",
+          "Padua",
+          "Mantua",
+          "Venice",
+        ],
+        accept: [
+          "Mantua",
+        ],
+        answer: "Mantua, after he kills Tybalt; the play is set in Verona.",
+      },
+      {
+        question: "The Prologue of Romeo and Juliet is written as a:",
+        choices: [
+          "Sonnet",
+          "Soliloquy",
+          "Ballad",
+          "Free verse",
+        ],
+        accept: [
+          "Sonnet",
+        ],
+        answer: "Sonnet — 14 lines ending in a rhyming couplet, a love-poem form that also announces the lovers' deaths.",
       },
     ],
 
@@ -2901,6 +3837,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Saying language is 'old' is not analysis. Showing how it directs feeling towards or against a character is.",
       },
+      {
+        question: "In A Christmas Carol, who visits Scrooge before the three spirits?",
+        choices: [
+          "Christmas Past",
+          "Christmas Present",
+          "Jacob Marley",
+          "Christmas Yet to Come",
+        ],
+        accept: [
+          "Jacob Marley",
+        ],
+        answer: "Jacob Marley, Scrooge's dead business partner, appears first in Stave 1 to warn him to change.",
+      },
+      {
+        question: "How many staves (chapters) does A Christmas Carol have?",
+        choices: [
+          "5",
+          "3",
+          "4",
+          "12",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because Dickens divided it into five staves, like the verses of a carol.",
+      },
+      {
+        question: "Who is Scrooge's clerk in A Christmas Carol?",
+        choices: [
+          "Fezziwig",
+          "Fred",
+          "Tiny Tim",
+          "Bob Cratchit",
+        ],
+        accept: [
+          "Bob Cratchit",
+        ],
+        answer: "Bob Cratchit, Scrooge's poorly paid clerk and father of Tiny Tim; Fezziwig was Scrooge's old employer.",
+      },
+      {
+        question: "Who wrote Strange Case of Dr Jekyll and Mr Hyde?",
+        choices: [
+          "Charles Dickens",
+          "Robert Louis Stevenson",
+          "Mary Shelley",
+          "Arthur Conan Doyle",
+        ],
+        accept: [
+          "Robert Louis Stevenson",
+        ],
+        answer: "Robert Louis Stevenson wrote it in 1886; Dickens wrote A Christmas Carol and Mary Shelley Frankenstein.",
+      },
+      {
+        question: "In Jekyll and Hyde, what is Mr Utterson's job?",
+        choices: [
+          "Lawyer",
+          "Doctor",
+          "Butler",
+          "Detective",
+        ],
+        accept: [
+          "Lawyer",
+        ],
+        answer: "Lawyer — Utterson is Jekyll's lawyer and friend; Lanyon is a doctor and Poole is Jekyll's butler.",
+      },
+      {
+        question: "In Jekyll and Hyde, whom does Hyde murder in the street?",
+        choices: [
+          "Dr Lanyon",
+          "Mr Enfield",
+          "Sir Danvers Carew",
+          "Poole",
+        ],
+        accept: [
+          "Sir Danvers Carew",
+        ],
+        answer: "Sir Danvers Carew, an elderly MP beaten to death with a cane; Lanyon later dies of shock.",
+      },
+      {
+        question: "In Frankenstein, who writes the letters that open the novel?",
+        choices: [
+          "Victor Frankenstein",
+          "The creature",
+          "Henry Clerval",
+          "Robert Walton",
+        ],
+        accept: [
+          "Robert Walton",
+        ],
+        answer: "Robert Walton, an Arctic explorer whose letters frame Victor's story — a framed narrative.",
+      },
+      {
+        question: "Where does Jane Eyre work as governess for Mr Rochester?",
+        choices: [
+          "Lowood School",
+          "Thornfield Hall",
+          "Gateshead Hall",
+          "Wuthering Heights",
+        ],
+        accept: [
+          "Thornfield Hall",
+        ],
+        answer: "Thornfield Hall; Lowood is her school and Gateshead the Reeds' home. Wuthering Heights is Emily Brontë's novel.",
+      },
+      {
+        question: "In Great Expectations, who is Pip's secret benefactor?",
+        choices: [
+          "Magwitch",
+          "Miss Havisham",
+          "Joe Gargery",
+          "Mr Jaggers",
+        ],
+        accept: [
+          "Magwitch",
+        ],
+        answer: "Magwitch, the convict Pip helped as a boy; Pip wrongly assumes it is Miss Havisham.",
+      },
     ],
 
     misconceptions: [
@@ -3219,6 +4272,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "The point should be about the IDEA being compared, with the poems as evidence — not a tour of the poems.",
       },
+      {
+        question: "Who wrote 'Ozymandias'?",
+        choices: [
+          "William Blake",
+          "Lord Byron",
+          "Percy Bysshe Shelley",
+          "Robert Browning",
+        ],
+        accept: [
+          "Percy Bysshe Shelley",
+        ],
+        answer: "Percy Bysshe Shelley published it in 1818, about a ruined statue of a once-mighty king.",
+      },
+      {
+        question: "'Ozymandias' is written in which form?",
+        choices: [
+          "Sonnet",
+          "Ballad",
+          "Dramatic monologue",
+          "Free verse",
+        ],
+        accept: [
+          "Sonnet",
+        ],
+        answer: "Sonnet — 14 lines, though Shelley breaks the usual rhyme scheme, fitting a poem about broken power.",
+      },
+      {
+        question: "Which poet wrote 'London', with its 'mind-forg'd manacles'?",
+        choices: [
+          "William Wordsworth",
+          "Wilfred Owen",
+          "Thomas Hardy",
+          "William Blake",
+        ],
+        accept: [
+          "William Blake",
+        ],
+        answer: "William Blake, whose 'London' (1794) attacks the poverty and oppression he saw in the city.",
+      },
+      {
+        question: "Robert Browning's 'My Last Duchess' is a:",
+        choices: [
+          "Sonnet",
+          "Dramatic monologue",
+          "Elegy",
+          "Ballad",
+        ],
+        accept: [
+          "Dramatic monologue",
+        ],
+        answer: "Dramatic monologue — the Duke speaks throughout and reveals more about his controlling nature than he intends.",
+      },
+      {
+        question: "'The Charge of the Light Brigade' describes a battle in which war?",
+        choices: [
+          "Boer War",
+          "First World War",
+          "Crimean War",
+          "Hundred Years' War",
+        ],
+        accept: [
+          "Crimean War",
+        ],
+        answer: "Crimean War — Tennyson wrote it in 1854 after the disastrous charge at Balaclava.",
+      },
+      {
+        question: "In Owen's 'Exposure', what is the soldiers' main enemy?",
+        choices: [
+          "The freezing weather",
+          "Enemy snipers",
+          "Their officers",
+          "Hunger",
+        ],
+        accept: [
+          "The freezing weather",
+        ],
+        answer: "The freezing weather — the men are dying of cold while 'nothing happens' in the fighting.",
+      },
+      {
+        question: "Who wrote 'When We Two Parted'?",
+        choices: [
+          "Percy Shelley",
+          "Thomas Hardy",
+          "John Keats",
+          "Lord Byron",
+        ],
+        accept: [
+          "Lord Byron",
+        ],
+        answer: "Lord Byron wrote it, about the bitter, secret end of a love affair.",
+      },
+      {
+        question: "Who wrote 'Porphyria's Lover'?",
+        choices: [
+          "Alfred Tennyson",
+          "Robert Browning",
+          "Lord Byron",
+          "Thomas Hardy",
+        ],
+        accept: [
+          "Robert Browning",
+        ],
+        answer: "Robert Browning, who also wrote 'My Last Duchess' — both are dramatic monologues by controlling men.",
+      },
+      {
+        question: "In the anthology question, the second poem is:",
+        choices: [
+          "Printed for you",
+          "Set by your teacher",
+          "Chosen by you",
+          "An unseen poem",
+        ],
+        accept: [
+          "Chosen by you",
+        ],
+        answer: "Chosen by you from the anthology, quoted from memory, and compared with the one poem that is printed.",
+      },
     ],
 
     misconceptions: [
@@ -3534,6 +4704,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Comparing by theme forces genuine comparison. Handling the poems one after another tends to produce two descriptions.",
       },
+      {
+        question: "A poem with no regular rhyme or metre is written in:",
+        choices: [
+          "Free verse",
+          "A sonnet",
+          "Iambic pentameter",
+          "A ballad",
+        ],
+        accept: [
+          "Free verse",
+        ],
+        answer: "Free verse — it has no fixed rhyme scheme or regular metre; sonnets and ballads both follow set patterns.",
+      },
+      {
+        question: "Listing techniques without explaining their effect is called:",
+        choices: [
+          "Annotation",
+          "Analysis",
+          "Inference",
+          "Feature-spotting",
+        ],
+        accept: [
+          "Feature-spotting",
+        ],
+        answer: "Feature-spotting, which scores very little because naming a technique without its effect earns nothing.",
+      },
+      {
+        question: "A poem switches from 'I' to 'we'. What has shifted?",
+        choices: [
+          "Tense",
+          "Person",
+          "Rhyme",
+          "Metre",
+        ],
+        accept: [
+          "Person",
+        ],
+        answer: "Person — first person singular 'I' changes to plural 'we', perhaps widening the speaker's view.",
+      },
+      {
+        question: "A poem shifts from \"I\" to \"you\". What has changed?",
+        choices: [
+          "Person",
+          "Rhyme scheme",
+          "Tense",
+          "Form",
+        ],
+        accept: [
+          "Person",
+        ],
+        answer: "Person — moving from first person (\"I\") to second person (\"you\") changes who is speaking to whom.",
+      },
+      {
+        question: "A line repeated at the end of each stanza is called a:",
+        choices: [
+          "Refrain",
+          "Volta",
+          "Caesura",
+          "Enjambment",
+        ],
+        accept: [
+          "Refrain",
+        ],
+        answer: "Refrain, a repeated line that adds emphasis and rhythm; a volta is a turn and a caesura a pause.",
+      },
+      {
+        question: "'I wandered lonely as a cloud.' Which technique is this?",
+        choices: [
+          "Metaphor",
+          "Onomatopoeia",
+          "Alliteration",
+          "Simile",
+        ],
+        accept: [
+          "Simile",
+        ],
+        answer: "Simile, because Wordsworth compares the speaker to a cloud using 'as'.",
+      },
+      {
+        question: "How many points should you plan before writing an unseen poetry answer?",
+        choices: [
+          "1",
+          "3 or 4",
+          "10",
+          "7 or 8",
+        ],
+        accept: [
+          "3 or 4",
+        ],
+        answer: "3 or 4 points, each on a different aspect, give a focused answer that you can develop properly.",
+      },
+      {
+        question: "A poem titled 'Joy' that describes a funeral sets up:",
+        choices: [
+          "A volta",
+          "Enjambment",
+          "Irony",
+          "A refrain",
+        ],
+        accept: [
+          "Irony",
+        ],
+        answer: "Irony, because the title creates a gap between what is expected and what the poem actually presents.",
+      },
+      {
+        question: "Plosive sounds such as 'b' and 'p' tend to make a line sound:",
+        choices: [
+          "Harsh",
+          "Soft",
+          "Silent",
+          "Slow",
+        ],
+        accept: [
+          "Harsh",
+        ],
+        answer: "Harsh, because plosives burst out abruptly; soft sounds such as 'l' and 'm' feel gentle.",
+      },
     ],
 
     misconceptions: [
@@ -3839,6 +5126,123 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Every question needs its fair share of the time available",
         ],
         answer: "An unfinished high-mark question costs far more than a slightly shorter answer on one you enjoyed.",
+      },
+      {
+        question: "In English Literature, AO3 assesses:",
+        choices: [
+          "SPaG",
+          "Language analysis",
+          "Comparison",
+          "Context",
+        ],
+        accept: [
+          "Context",
+        ],
+        answer: "Context — AO3 covers the circumstances of writing; AO2 is language analysis and AO4 is SPaG.",
+      },
+      {
+        question: "AO2 in English Literature is about:",
+        choices: [
+          "Analysing methods",
+          "Context",
+          "SPaG",
+          "Personal response",
+        ],
+        accept: [
+          "Analysing methods",
+        ],
+        answer: "Analysing methods — AO2 covers how writers use language, form and structure to create meaning.",
+      },
+      {
+        question: "What is the best way to test yourself on quotations?",
+        choices: [
+          "Reread them",
+          "Highlight them",
+          "Write them from memory",
+          "Listen to them",
+        ],
+        accept: [
+          "Write them from memory",
+        ],
+        answer: "Write them from memory, because producing them tests recall far better than rereading or highlighting.",
+      },
+      {
+        question: "Roughly what share of Language marks do the writing tasks carry?",
+        choices: [
+          "A tenth",
+          "Half",
+          "A quarter",
+          "All of them",
+        ],
+        accept: [
+          "Half",
+        ],
+        answer: "Half — the writing tasks carry roughly half the marks, so protect the time for them.",
+      },
+      {
+        question: "Which loses more marks: an unfinished essay or a rushed complete one?",
+        choices: [
+          "The unfinished essay",
+          "The rushed essay",
+          "They lose the same",
+          "Neither loses marks",
+        ],
+        accept: [
+          "The unfinished essay",
+        ],
+        answer: "The unfinished essay, because a slightly rushed but complete answer still earns marks for every part.",
+      },
+      {
+        question: "Which texts deserve the most revision time?",
+        choices: [
+          "Your favourite texts",
+          "The shortest texts",
+          "The newest texts",
+          "Your hardest texts",
+        ],
+        accept: [
+          "Your hardest texts",
+        ],
+        answer: "Your hardest texts, because that is where the most marks can be gained; enjoyable ones feel productive but gain less.",
+      },
+      {
+        question: "Ideally, how long should a quotation you learn be?",
+        choices: [
+          "A full paragraph",
+          "A whole speech",
+          "Three or four words",
+          "At least two lines",
+        ],
+        accept: [
+          "Three or four words",
+        ],
+        answer: "Three or four words, because short quotations are easier to spell, remember and analyse closely.",
+      },
+      {
+        question: "To see where the bands sit, mark your own work against the:",
+        choices: [
+          "Textbook",
+          "Mark scheme",
+          "Dictionary",
+          "Revision guide",
+        ],
+        accept: [
+          "Mark scheme",
+        ],
+        answer: "Mark scheme, because it sets out exactly what each band rewards.",
+      },
+      {
+        question: "What should you decide first when planning an essay?",
+        choices: [
+          "Your thesis",
+          "Your conclusion",
+          "Your quotations",
+          "Your title",
+        ],
+        accept: [
+          "Your thesis",
+        ],
+        answer: "Your thesis, because deciding your argument first keeps every paragraph pointed at the question.",
       },
     ],
 
@@ -4146,6 +5550,201 @@ export const ENGLISH: Record<string, TopicContent> = {
           "The window was broken by the boy.",
         ],
         answer: "Passive puts the action before the doer, which can hide responsibility — a useful point in non-fiction analysis.",
+      },
+      {
+        question: "What word class is 'quickly' in 'She ran quickly'?",
+        choices: [
+          "Adverb",
+          "Adjective",
+          "Verb",
+          "Preposition",
+        ],
+        accept: [
+          "Adverb",
+        ],
+        answer: "Adverb, because it describes the verb 'ran', telling us how she ran.",
+      },
+      {
+        question: "What word class is 'despite', as in 'despite the rain'?",
+        choices: [
+          "Conjunction",
+          "Adverb",
+          "Preposition",
+          "Determiner",
+        ],
+        accept: [
+          "Preposition",
+        ],
+        answer: "Preposition, because it links the noun 'the rain' to the rest of the sentence, like 'under' or 'before'.",
+      },
+      {
+        question: "What kind of noun is 'freedom'?",
+        choices: [
+          "Proper noun",
+          "Abstract noun",
+          "Adjective",
+          "Verb",
+        ],
+        accept: [
+          "Abstract noun",
+        ],
+        answer: "Abstract noun, because it names an idea you cannot see or touch, like grief or courage.",
+      },
+      {
+        question: "Which word is the determiner in 'Several birds sang loudly'?",
+        choices: [
+          "birds",
+          "sang",
+          "loudly",
+          "Several",
+        ],
+        accept: [
+          "Several",
+        ],
+        answer: "Several, because it comes before the noun 'birds' to specify how many, like 'the', 'a' or 'this'.",
+      },
+      {
+        question: "'I was tired, I went to bed.' What is the error?",
+        choices: [
+          "Missing apostrophe",
+          "Comma splice",
+          "Wrong tense",
+          "Sentence fragment",
+        ],
+        accept: [
+          "Comma splice",
+        ],
+        answer: "Comma splice, because two complete sentences are joined by only a comma; use a full stop, a semicolon or 'so'.",
+      },
+      {
+        question: "Which word fits 'The noise will ___ my sleep'?",
+        choices: [
+          "effect",
+          "effects",
+          "affect",
+          "affects",
+        ],
+        accept: [
+          "affect",
+        ],
+        answer: "affect, because the verb is usually 'affect'; 'effect' is usually the noun, as in 'an effect on my sleep'.",
+      },
+      {
+        question: "Which is the correct spelling of the word meaning 'certainly'?",
+        choices: [
+          "definately",
+          "definitly",
+          "defenitely",
+          "definitely",
+        ],
+        accept: [
+          "definitely",
+        ],
+        answer: "definitely, because it is built on 'finite': de-FINITE-ly, with no 'a' anywhere in it.",
+      },
+      {
+        question: "How should you write 'the toys belonging to the children'?",
+        choices: [
+          "the children's toys",
+          "the childrens' toys",
+          "the childrens toys",
+          "the children's' toys",
+        ],
+        accept: [
+          "the children's toys",
+        ],
+        answer: "the children's toys, because 'children' is already plural without an s, so you add apostrophe + s.",
+      },
+      {
+        question: "What is 'The cake was eaten by Sam' in the active voice?",
+        choices: [
+          "The cake ate Sam.",
+          "The cake was eaten.",
+          "Sam ate the cake.",
+          "Sam was eaten.",
+        ],
+        accept: [
+          "Sam ate the cake.",
+        ],
+        answer: "Sam ate the cake — in the active voice the doer of the action (Sam) becomes the subject of the sentence.",
+      },
+      {
+        question: "What type of sentence is 'Silence.'?",
+        choices: [
+          "Simple sentence",
+          "Minor sentence",
+          "Compound sentence",
+          "Complex sentence",
+        ],
+        accept: [
+          "Minor sentence",
+        ],
+        answer: "Minor sentence, because it has no verb; it is used deliberately for effect.",
+      },
+      {
+        question: "In 'When the bell rang, we left', what is the subordinate clause?",
+        choices: [
+          "we left",
+          "the bell",
+          "rang, we left",
+          "When the bell rang",
+        ],
+        accept: [
+          "When the bell rang",
+        ],
+        answer: "When the bell rang, because it cannot stand alone as a sentence; 'we left' is the main clause.",
+      },
+      {
+        question: "Which word is a subordinating conjunction?",
+        choices: [
+          "and",
+          "but",
+          "although",
+          "so",
+        ],
+        accept: [
+          "although",
+        ],
+        answer: "although, because it begins a subordinate clause; 'and', 'but' and 'so' are coordinating conjunctions.",
+      },
+      {
+        question: "What is the plural possessive of 'girl', as in 'the ___ changing room'?",
+        choices: [
+          "girl's",
+          "girls'",
+          "girls's",
+          "girls",
+        ],
+        accept: [
+          "girls'",
+        ],
+        answer: "girls', because for a plural that already ends in s you add only an apostrophe after the s.",
+      },
+      {
+        question: "Which word fits (UK spelling): 'I go to football ___ every week'?",
+        choices: [
+          "practice",
+          "practise",
+          "practised",
+          "practises",
+        ],
+        accept: [
+          "practice",
+        ],
+        answer: "practice, because here it is a noun (the session); in UK English 'practise' with an s is the verb.",
+      },
+      {
+        question: "Which sentence keeps its tense consistent?",
+        choices: [
+          "He ran and jumps.",
+          "He runs and jumped.",
+          "He run and jumped.",
+          "He ran and jumped.",
+        ],
+        accept: [
+          "He ran and jumped.",
+        ],
+        answer: "He ran and jumped — both verbs are in the past tense; drifting between tenses is a technical accuracy error.",
       },
     ],
 
@@ -4463,6 +6062,123 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Reach an overall judgement about the texts' treatment of the idea",
         ],
         answer: "A conclusion that decides something reads as an argument. One that summarises reads as a checklist.",
+      },
+      {
+        question: "Which connective signals a SIMILARITY between two texts?",
+        choices: [
+          "Whereas",
+          "Conversely",
+          "Likewise",
+          "However",
+        ],
+        accept: [
+          "Likewise",
+        ],
+        answer: "Likewise, because it links two texts doing the same thing; whereas, conversely and however signal difference.",
+      },
+      {
+        question: "Which connective signals a DIFFERENCE between two texts?",
+        choices: [
+          "Conversely",
+          "Similarly",
+          "Likewise",
+          "Equally",
+        ],
+        accept: [
+          "Conversely",
+        ],
+        answer: "Conversely, because it introduces an opposite point; similarly, likewise and equally signal similarity.",
+      },
+      {
+        question: "'Both writers are angry, but only A uses humour.' This is a:",
+        choices: [
+          "Block structure",
+          "Summary",
+          "Retrieval",
+          "Comparative point",
+        ],
+        accept: [
+          "Comparative point",
+        ],
+        answer: "Comparative point, because it makes one claim about both texts together, linking a similarity to a difference.",
+      },
+      {
+        question: "Text A is written for children, Text B for experts. What differs?",
+        choices: [
+          "Purpose",
+          "Audience",
+          "Tone",
+          "Form",
+        ],
+        accept: [
+          "Audience",
+        ],
+        answer: "Audience, because that is who each text is written for, and it shapes vocabulary and formality.",
+      },
+      {
+        question: "A comparison paragraph only discusses Text A. What is it missing?",
+        choices: [
+          "A link to Text B",
+          "More on Text A",
+          "A longer quotation",
+          "A rhetorical question",
+        ],
+        accept: [
+          "A link to Text B",
+        ],
+        answer: "A link to Text B, because a comparative paragraph must discuss both texts, not one of them on its own.",
+      },
+      {
+        question: "How many comparative paragraphs is a sensible target?",
+        choices: [
+          "3 or 4",
+          "1",
+          "8 or 9",
+          "12",
+        ],
+        accept: [
+          "3 or 4",
+        ],
+        answer: "3 or 4, because three or four strong comparative paragraphs beat six thin ones.",
+      },
+      {
+        question: "'I miss those golden summers of my childhood.' What is the tone?",
+        choices: [
+          "Angry",
+          "Ironic",
+          "Urgent",
+          "Nostalgic",
+        ],
+        accept: [
+          "Nostalgic",
+        ],
+        answer: "Nostalgic, because the writer looks back fondly and longingly on the past.",
+      },
+      {
+        question: "Text A uses statistics; Text B uses an anecdote. You are comparing their:",
+        choices: [
+          "Purposes",
+          "Methods",
+          "Audiences",
+          "Contexts",
+        ],
+        accept: [
+          "Methods",
+        ],
+        answer: "Methods, because statistics and anecdote are techniques — how each writer gets their view across.",
+      },
+      {
+        question: "When annotating both texts, look for quotations that:",
+        choices: [
+          "Are longest",
+          "Rhyme",
+          "Pair up",
+          "Contain statistics",
+        ],
+        accept: [
+          "Pair up",
+        ],
+        answer: "Pair up — two moments doing a similar job, or the same job in opposite ways, make the best comparison evidence.",
       },
     ],
 
@@ -4788,6 +6504,123 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Pace, pausing and gesture matter too. A deliberate pause before a key point is one of the most effective tools available.",
       },
+      {
+        question: "'I went — I mean, I drove there.' What is this feature?",
+        choices: [
+          "Self-correction",
+          "Elision",
+          "Filler",
+          "Adjacency pair",
+        ],
+        accept: [
+          "Self-correction",
+        ],
+        answer: "Self-correction, because the speaker changes 'went' to 'drove' mid-sentence — a non-fluency feature of spontaneous speech.",
+      },
+      {
+        question: "Saying 'dunno' for 'don't know' is an example of:",
+        choices: [
+          "Filler",
+          "False start",
+          "Elision",
+          "Turn-taking",
+        ],
+        accept: [
+          "Elision",
+        ],
+        answer: "Elision, because sounds are dropped and run together in casual speech, like 'gonna' for 'going to'.",
+      },
+      {
+        question: "Fillers such as 'um' are useful in speech because they:",
+        choices: [
+          "Show rudeness",
+          "End a turn",
+          "Replace grammar",
+          "Buy thinking time",
+        ],
+        accept: [
+          "Buy thinking time",
+        ],
+        answer: "Buy thinking time, and signal that the speaker has not finished, so they are not errors.",
+      },
+      {
+        question: "Where should you make eye contact during a presentation?",
+        choices: [
+          "At one person",
+          "Across the room",
+          "At your notes",
+          "At the floor",
+        ],
+        accept: [
+          "Across the room",
+        ],
+        answer: "Across the room, rather than fixing on one person or your notes, so the whole audience feels addressed.",
+      },
+      {
+        question: "How is the spoken language endorsement result shown?",
+        choices: [
+          "Separately reported",
+          "Part of English grade",
+          "As a percentage",
+          "Not recorded",
+        ],
+        accept: [
+          "Separately reported",
+        ],
+        answer: "Separately reported — it appears on your certificate as Pass, Merit or Distinction, apart from the Language grade.",
+      },
+      {
+        question: "A talk planned in advance, such as a presentation, is:",
+        choices: [
+          "Spontaneous speech",
+          "Elision",
+          "Prepared speech",
+          "Dialect",
+        ],
+        accept: [
+          "Prepared speech",
+        ],
+        answer: "Prepared speech, because it is planned beforehand; spontaneous speech is planned as it is spoken.",
+      },
+      {
+        question: "What should you do if you lose your place during your talk?",
+        choices: [
+          "Start again",
+          "Pause, then carry on",
+          "Apologise at length",
+          "Stop the talk",
+        ],
+        accept: [
+          "Pause, then carry on",
+        ],
+        answer: "Pause, then carry on — look at your cue card and continue; the audience notices far less than you think.",
+      },
+      {
+        question: "The way speakers hand a conversation back and forth is called:",
+        choices: [
+          "Elision",
+          "Fillers",
+          "Dialect",
+          "Turn-taking",
+        ],
+        accept: [
+          "Turn-taking",
+        ],
+        answer: "Turn-taking, because conversation is organised by speakers taking turns without any agreed plan.",
+      },
+      {
+        question: "Which sentence is in Standard English?",
+        choices: [
+          "We were late.",
+          "We was late.",
+          "Us was late.",
+          "We is late.",
+        ],
+        accept: [
+          "We were late.",
+        ],
+        answer: "We were late — 'we' needs 'were' for subject–verb agreement; 'we was' is non-standard.",
+      },
     ],
 
     misconceptions: [
@@ -5099,6 +6932,123 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Tracing how an idea changes from beginning to end",
         ],
         answer: "Whole-text questions reward a sense of development. Picking one moment cannot demonstrate that.",
+      },
+      {
+        question: "When was An Inspector Calls first performed?",
+        choices: [
+          "1912",
+          "1960",
+          "1945",
+          "1900",
+        ],
+        accept: [
+          "1945",
+        ],
+        answer: "1945, just after the Second World War, though the play is set in 1912.",
+      },
+      {
+        question: "In which year was A Christmas Carol published?",
+        choices: [
+          "1843",
+          "1606",
+          "1912",
+          "1886",
+        ],
+        accept: [
+          "1843",
+        ],
+        answer: "1843, during the 'Hungry Forties', when poverty in Victorian cities was severe.",
+      },
+      {
+        question: "Macbeth was written around 1606 for which monarch?",
+        choices: [
+          "Elizabeth I",
+          "Henry VIII",
+          "Victoria",
+          "James I",
+        ],
+        accept: [
+          "James I",
+        ],
+        answer: "James I, a Scottish king who believed in the divine right of kings and feared witchcraft.",
+      },
+      {
+        question: "Which 1834 law led to workhouses for the poor?",
+        choices: [
+          "Factory Act",
+          "Poor Law Amendment Act",
+          "Reform Act",
+          "Education Act",
+        ],
+        accept: [
+          "Poor Law Amendment Act",
+        ],
+        answer: "Poor Law Amendment Act, which made workhouses the main help for the destitute — Scrooge supports them.",
+      },
+      {
+        question: "Wilfred Owen's poetry draws on his experience of which war?",
+        choices: [
+          "First World War",
+          "Second World War",
+          "Crimean War",
+          "Boer War",
+        ],
+        accept: [
+          "First World War",
+        ],
+        answer: "First World War — Owen fought on the Western Front and was killed in 1918, a week before the Armistice.",
+      },
+      {
+        question: "Biographical context means:",
+        choices: [
+          "When the text is set",
+          "The text's genre",
+          "The writer's own life",
+          "How readers react",
+        ],
+        accept: [
+          "The writer's own life",
+        ],
+        answer: "The writer's own life, where it genuinely bears on the work; genre is literary context.",
+      },
+      {
+        question: "Literary context refers to a text's:",
+        choices: [
+          "Author's childhood",
+          "Sales figures",
+          "Page length",
+          "Genre or tradition",
+        ],
+        accept: [
+          "Genre or tradition",
+        ],
+        answer: "Genre or tradition — the movement a text belongs to and what its readers would have expected.",
+      },
+      {
+        question: "Whose theory of evolution unsettled Victorian religious faith?",
+        choices: [
+          "Isaac Newton",
+          "Charles Darwin",
+          "Albert Einstein",
+          "Marie Curie",
+        ],
+        accept: [
+          "Charles Darwin",
+        ],
+        answer: "Charles Darwin, whose On the Origin of Species (1859) challenged the idea that God created each species.",
+      },
+      {
+        question: "Many Victorian chapters end on a hook because novels were:",
+        choices: [
+          "Serialised",
+          "Banned",
+          "Translated",
+          "Performed",
+        ],
+        accept: [
+          "Serialised",
+        ],
+        answer: "Serialised — published in instalments, so each part had to make readers buy the next one.",
       },
     ],
 
