@@ -209,13 +209,23 @@ export function cleanSaveName(raw: unknown, fallback: string): string {
   return s || fallback.slice(0, SAVE_NAME_MAX);
 }
 
+/** The most topics a save may name. Not a game rule — the game takes every
+ *  topic a subject has — just a ceiling well above the biggest subject, so a
+ *  hand-made request cannot be enormous. A check keeps it above the real
+ *  largest subject, so adding topics can never make a real save unsavable. */
+export const SAVE_TOPICS_MAX = 200;
+
 /** Checked like everything else; which subject, topics and mascot actually
  *  EXIST is the server's job (it knows the content), not this file's. */
 export function parseSaveSetup(raw: unknown): SaveSetup | null {
   try {
     if (!isObj(raw)) return null;
     const o = raw as Record<string, unknown>;
-    const topics = list(o.topics, 8, (t) => str(t, 100));
+    // Every topic a subject has, if you like (Matthew, 2026-10-11: "more than
+    // eight topics, like as many as you want"). Still capped — at more topics
+    // than any subject has — so a save cannot carry ten thousand of them, and
+    // repeats collapse so one topic listed twice is not two topics.
+    const topics = [...new Set(list(o.topics, SAVE_TOPICS_MAX, (t) => str(t, 100)))];
     if (!topics.length) return null;
     return { subject: str(o.subject, 60), topics, mascot: str(o.mascot, 40) };
   } catch (e) {

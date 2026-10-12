@@ -1,5 +1,61 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The game: 500 quick maths questions, and as many topics as you like (2026-10-11)
+
+Matthew: *"we need about 500 more multiple choice questions for the game…
+doable in less than 30 seconds… appropriate for the game. Also make sure you
+can pick more than eight topics, like as many as you want."*
+
+### 500 maths multiple-choice questions, written for a 10-second clock
+
+Maths goes from 389 multiple-choice questions to **889** (practice 1,722 →
+2,222). Measured against the game, not guessed: a reload question gets **10
+seconds** and a stomp **5**, so "under 30 seconds" was the wrong bar — the
+brief was *a solid student does it in their head in under 10*. One step,
+small numbers, stem ≤ 95 characters (the panel wraps to three lines),
+exactly four buttons of ≤ 22 characters, a one-line "because" for the WHY
+panel. Split algebra-heavy as before (algebra 45, equations 40, fractions 40,
+quadratics 35, ratio 35 … vectors 12, exam practice 8).
+
+Five parallel writers against `BRIEF.md`, each made to pass a validator built
+from the checker's own rules — four choices, exactly one in `accept`, no two
+equal after `normalise()` (so "45" and "45°" clash), no `^`, no vector as a
+coordinate pair, no duplicate of an existing stem, an answer that adds ≥ 10
+characters beyond the button (the `whyFor` rule).
+
+⚠️ **Then ALL 500 were blind re-solved**, not a sample: five fresh solvers saw
+only the stem and shuffled choices. **500 of 500 agreed.** They flagged three
+wordings (two congruence stems ending "Condition?", "an angle next to it") and
+one near-repeat across topics; all four reworded.
+
+⚠️ **The twin-tariff rule fired 27 times, and the rule was wrong, not the
+content.** "Write 47,000 in standard form" as four buttons sat beside "Write
+52,000 in standard form" with an answer box, and the check demanded equal
+marks. Picking is not producing: an AQA multiple choice is 1 mark, the written
+form 2. Pairs where exactly ONE is multiple choice are no longer twins; the
+founding vector pair (both written) was re-sabotaged and still fails.
+
+### No topic limit
+
+The cap was 8 in two places: the play page sliced the list, and a save refused
+a setup with a ninth topic. Both are gone — every real topic of a subject can
+be ticked; a topic named twice counts once, an invented one is dropped. Saves
+now hold up to `SAVE_TOPICS_MAX = 200` (a sanity ceiling; the biggest subject
+has 27, and a check keeps it above that). "Tick every Maths topic", "Untick
+all" and "All of Year 10" buttons, because nineteen boxes one at a time is the
+next annoyance — a shortcut on a form that still works with no JavaScript. The
+pool stays capped at 240 (a full run asks ~131); with all 19 maths topics
+ticked it draws from all 19.
+
+**Verified.** `npm run check` fully green — **204,336** content, **50**
+game-save, **29,078** game-question and every other suite as before; `tsc`
+and `eslint` clean. Sabotages caught: a re-added slice, a save ceiling of 8,
+losing the de-duplication, and the twin rule on written pairs. In a browser,
+**24 checks** at 1280 and 320px (all three buttons, never submitting the form,
+44px, legends still first, 19 topics → a full 240-question pool from all 19,
+duplicates and fakes in the URL), plus quizfit 50/50.
+
+
 ## Computer Science: Programming is one section now, not spread over three years (2026-10-11)
 
 Matthew: *"make a big whole topic of Programming in Computer Science that will

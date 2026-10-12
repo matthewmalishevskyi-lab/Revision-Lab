@@ -24,7 +24,7 @@ try {
     "--module", "commonjs", "--target", "es2020", "--skipLibCheck",
   ], { stdio: "inherit" });
   const G = require_(join(out, "gameSave.js"));
-  const { parseGameSave, parseSaveSetup, cleanSaveName, saveHref, SAVE_SLOTS, SAVE_VERSION, SAVE_NAME_MAX, SAVE_MAX_BYTES } = G;
+  const { parseGameSave, parseSaveSetup, cleanSaveName, saveHref, SAVE_SLOTS, SAVE_VERSION, SAVE_NAME_MAX, SAVE_MAX_BYTES, SAVE_TOPICS_MAX } = G;
 
   expect(SAVE_SLOTS === 5, `${SAVE_SLOTS} save slots; Matthew asked for five`);
 
@@ -112,7 +112,13 @@ try {
   const setup = { subject: "maths", topics: ["algebra-basics", "probability"], mascot: "hoot" };
   expect(same(parseSaveSetup(setup), setup), "a real setup does not come back exactly");
   expect(parseSaveSetup({ ...setup, topics: [] }) === null, "a setup with no topics is accepted");
-  expect(parseSaveSetup({ ...setup, topics: Array(9).fill("t") }) === null, "a setup with more topics than the game allows (8) is accepted");
+  // Any number of topics now (Matthew: "more than eight topics, like as many as
+  // you want") — but not an unbounded list, and a repeat is one topic.
+  const many = Array.from({ length: 26 }, (_, i) => `topic-${i}`);
+  expect(same(parseSaveSetup({ ...setup, topics: many })?.topics, many), "a setup with 26 topics (a whole subject) is refused or changed");
+  expect(parseSaveSetup({ ...setup, topics: Array.from({ length: SAVE_TOPICS_MAX }, (_, i) => `t${i}`) })?.topics.length === SAVE_TOPICS_MAX, `a setup at the ceiling (${SAVE_TOPICS_MAX}) is refused`);
+  expect(parseSaveSetup({ ...setup, topics: Array.from({ length: SAVE_TOPICS_MAX + 1 }, (_, i) => `t${i}`) }) === null, `a setup with more than ${SAVE_TOPICS_MAX} topics is accepted`);
+  expect(same(parseSaveSetup({ ...setup, topics: ["a", "b", "a", "a"] })?.topics, ["a", "b"]), "a topic listed twice is kept twice");
   expect(parseSaveSetup({ ...setup, subject: 3 }) === null, "a setup whose subject is not text is accepted");
   const href = saveHref({ slot: 2, setup: { subject: "maths", topics: ["a&b", "c d"], mascot: "hoot" } });
   const u = new URL(href, "http://x");

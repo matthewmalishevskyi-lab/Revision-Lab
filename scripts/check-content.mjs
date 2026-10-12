@@ -824,6 +824,14 @@ try {
         for (let w = 0; w < a.words.length; w++) if (a.words[w] !== b.words[w]) { differing++; at = w; }
         if (differing !== 1) continue;
         if (NUMBER_WORD_RE.test(a.words[at]) || NUMBER_WORD_RE.test(b.words[at])) continue;
+        // ⚠️ A pair where ONE is multiple choice is not a twin. "Write 47,000 in
+        //    standard form" with four buttons is 1 mark on every AQA paper that
+        //    sets multiple choice; the same stem with an answer box is 2. The
+        //    student can SEE the difference — picking is not producing — so the
+        //    tariffs are meant to differ. Found when the 500 quick game
+        //    questions (2026-10-11) sat beside written questions of the same
+        //    shape. Both-written pairs, the founding case above, are untouched.
+        if (Boolean(a.q.choices?.length) !== Boolean(b.q.choices?.length)) continue;
         const ma = marksFor(subject, a.q), mb = marksFor(subject, b.q);
         expect(
           ma === mb,

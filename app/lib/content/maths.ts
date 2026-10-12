@@ -774,6 +774,396 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Describe how you would test whether 391 is prime, and explain why you only need to try prime numbers up to its square root.",
         answer: "Divide 391 by each prime in turn: 2, 3, 5, 7, 11, 13, 17. You find 391 = 17 × 23, so it is not prime. You can stop at the square root, which is just under 20, because if 391 had a factor larger than its square root it would have to be paired with one smaller than the square root, and that smaller factor would already have been found. Only primes need testing, since any composite divisor is built from primes. (Mark this one yourself.)",
       },
+      {
+        question: "What is the value of the digit 7 in 4.073?",
+        choices: [
+          "0.7",
+          "0.07",
+          "0.007",
+          "70",
+        ],
+        accept: [
+          "0.07",
+        ],
+        answer: "0.07, because in 4.073 the 0 is in the tenths column, the 7 is in the hundredths column and the 3 is in the thousandths.",
+      },
+      {
+        question: "Round 6.358 to 1 decimal place.",
+        choices: [
+          "6.3",
+          "6.36",
+          "6.4",
+          "6.35",
+        ],
+        accept: [
+          "6.4",
+        ],
+        answer: "6.4, because the digit after the first decimal place is 5, so the 3 rounds up to 4.",
+      },
+      {
+        question: "Round 2749 to 2 significant figures.",
+        choices: [
+          "2700",
+          "2800",
+          "2750",
+          "27",
+        ],
+        accept: [
+          "2700",
+        ],
+        answer: "2700, because the third figure is 4, so 27 stays as it is, and you fill with zeros to keep the place value.",
+      },
+      {
+        question: "Round 0.0638 to 1 significant figure.",
+        choices: [
+          "0.1",
+          "0.064",
+          "0.07",
+          "0.06",
+        ],
+        accept: [
+          "0.06",
+        ],
+        answer: "0.06, because the first significant figure is the 6 and the next digit is 3, so it stays as 6. Leading zeros do not count.",
+      },
+      {
+        question: "Work out −3 + 8.",
+        choices: [
+          "−11",
+          "5",
+          "11",
+          "−5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because starting at −3 and moving 8 up the number line takes you past zero to 5.",
+      },
+      {
+        question: "Work out −4 − 6.",
+        choices: [
+          "−2",
+          "2",
+          "10",
+          "−10",
+        ],
+        accept: [
+          "−10",
+        ],
+        answer: "−10, because starting at −4 and going down another 6 takes you further below zero, to −10.",
+      },
+      {
+        question: "Work out −24 ÷ −6.",
+        choices: [
+          "4",
+          "−4",
+          "18",
+          "−18",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because 24 ÷ 6 = 4 and dividing a negative by a negative gives a positive.",
+      },
+      {
+        question: "Work out −8 × 5.",
+        choices: [
+          "40",
+          "−13",
+          "−40",
+          "−3",
+        ],
+        accept: [
+          "−40",
+        ],
+        answer: "−40, because 8 × 5 = 40 and a negative times a positive gives a negative.",
+      },
+      {
+        question: "Work out 6 + 12 ÷ 3.",
+        choices: [
+          "6",
+          "10",
+          "4",
+          "18",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because division comes before addition (BIDMAS): 12 ÷ 3 = 4, then 6 + 4 = 10.",
+      },
+      {
+        question: "Work out (5 + 3) × 2.",
+        choices: [
+          "11",
+          "13",
+          "16",
+          "10",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "16, because brackets come first: 5 + 3 = 8, then 8 × 2 = 16.",
+      },
+      {
+        question: "Work out 10 − 2².",
+        choices: [
+          "64",
+          "6",
+          "8",
+          "16",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because the index comes before subtraction: 2² = 4, then 10 − 4 = 6.",
+      },
+      {
+        question: "Which of these is a multiple of 7?",
+        choices: [
+          "27",
+          "17",
+          "37",
+          "42",
+        ],
+        accept: [
+          "42",
+        ],
+        answer: "42, because 42 = 7 × 6. Having a 7 as a digit (27, 17, 37) does not make a number a multiple of 7.",
+      },
+      {
+        question: "Which of these is a factor of 36?",
+        choices: [
+          "9",
+          "8",
+          "72",
+          "5",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "9, because 36 ÷ 9 = 4 exactly. 72 is a multiple of 36, not a factor.",
+      },
+      {
+        question: "How many prime numbers are there between 10 and 20?",
+        choices: [
+          "3",
+          "5",
+          "4",
+          "6",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because the primes between 10 and 20 are 11, 13, 17 and 19. 15 is not prime (3 × 5).",
+      },
+      {
+        question: "What is the HCF of 8 and 12?",
+        choices: [
+          "24",
+          "4",
+          "2",
+          "96",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because 4 is the biggest number that divides into both 8 and 12. 24 is the LCM, not the HCF.",
+      },
+      {
+        question: "What is the LCM of 6 and 8?",
+        choices: [
+          "48",
+          "2",
+          "14",
+          "24",
+        ],
+        accept: [
+          "24",
+        ],
+        answer: "24, because 24 is the first number in both times tables (6, 12, 18, 24 and 8, 16, 24). 48 is a common multiple but not the lowest.",
+      },
+      {
+        question: "Work out 3.6 × 100.",
+        choices: [
+          "360",
+          "36",
+          "3600",
+          "0.036",
+        ],
+        accept: [
+          "360",
+        ],
+        answer: "360, because multiplying by 100 moves every digit two places to the left: 3.6 becomes 360.",
+      },
+      {
+        question: "Work out 47 ÷ 1000.",
+        choices: [
+          "0.47",
+          "0.047",
+          "47000",
+          "0.0047",
+        ],
+        accept: [
+          "0.047",
+        ],
+        answer: "0.047, because dividing by 1000 moves every digit three places to the right: 47 becomes 0.047.",
+      },
+      {
+        question: "Work out 0.08 × 1000.",
+        choices: [
+          "8",
+          "800",
+          "80",
+          "0.00008",
+        ],
+        accept: [
+          "80",
+        ],
+        answer: "80, because multiplying by 1000 moves the digits three places left: 0.08 becomes 80.",
+      },
+      {
+        question: "Estimate 49 × 21 by rounding each number to 1 significant figure.",
+        choices: [
+          "1029",
+          "1000",
+          "800",
+          "1050",
+        ],
+        accept: [
+          "1000",
+        ],
+        answer: "1000, because 49 rounds to 50 and 21 rounds to 20, and 50 × 20 = 1000. 1029 is the exact answer, not an estimate.",
+      },
+      {
+        question: "Estimate 297 ÷ 3.1 by rounding each number to 1 significant figure.",
+        choices: [
+          "90",
+          "1000",
+          "100",
+          "10",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because 297 rounds to 300 and 3.1 rounds to 3, and 300 ÷ 3 = 100.",
+      },
+      {
+        question: "Which is smallest: 0.4, 0.38, 0.045 or 0.41?",
+        choices: [
+          "0.4",
+          "0.38",
+          "0.045",
+          "0.41",
+        ],
+        accept: [
+          "0.045",
+        ],
+        answer: "0.045, because it has 0 tenths while the others all have 3 or 4 tenths. More digits does not mean bigger.",
+      },
+      {
+        question: "What is the value of the digit 5 in 352,000?",
+        choices: [
+          "5000",
+          "50,000",
+          "500,000",
+          "50",
+        ],
+        accept: [
+          "50,000",
+        ],
+        answer: "50,000, because in 352,000 the 3 is hundred thousands and the 5 is in the ten thousands column.",
+      },
+      {
+        question: "Round 14.96 to 1 decimal place.",
+        choices: [
+          "14.9",
+          "14.10",
+          "15.0",
+          "15.1",
+        ],
+        accept: [
+          "15.0",
+        ],
+        answer: "15.0, because the 6 rounds the 9 tenths up, which carries over to make 15.0. Keep the .0 to show 1 decimal place.",
+      },
+      {
+        question: "Work out 3 − (−4).",
+        choices: [
+          "−1",
+          "7",
+          "−7",
+          "1",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "7, because subtracting a negative is the same as adding: 3 − (−4) = 3 + 4 = 7.",
+      },
+      {
+        question: "It is −3 °C and the temperature rises by 9 degrees. What is it now, in °C?",
+        choices: [
+          "−12",
+          "12",
+          "−6",
+          "6",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because −3 + 9 = 6. Rising 3 degrees gets you to 0, then 6 more takes you to 6 °C.",
+      },
+      {
+        question: "Write 30 as a product of prime factors.",
+        choices: [
+          "2 × 15",
+          "2 × 3 × 5",
+          "3 × 10",
+          "1 × 2 × 3 × 5",
+        ],
+        accept: [
+          "2 × 3 × 5",
+        ],
+        answer: "2 × 3 × 5, because 2, 3 and 5 are all prime and multiply to 30. 15 and 10 are not prime, and 1 is not a prime number.",
+      },
+      {
+        question: "What is √144?",
+        choices: [
+          "72",
+          "12",
+          "14",
+          "24",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because 12 × 12 = 144. Halving 144 to get 72 is a common slip: a square root is not half.",
+      },
+      {
+        question: "Work out 4.8 ÷ 0.1.",
+        choices: [
+          "0.48",
+          "48",
+          "480",
+          "4.9",
+        ],
+        accept: [
+          "48",
+        ],
+        answer: "48, because dividing by 0.1 is the same as multiplying by 10, so 4.8 becomes 48.",
+      },
+      {
+        question: "Round 3.14159 to 3 significant figures.",
+        choices: [
+          "3.142",
+          "3.15",
+          "3.1",
+          "3.14",
+        ],
+        accept: [
+          "3.14",
+        ],
+        answer: "3.14, because the 3 counts as the first significant figure, so you keep 3, 1, 4 and the next digit (1) rounds down.",
+      },
     ],
 
     misconceptions: [
@@ -1967,6 +2357,591 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Cancelling is only allowed when the same factor multiplies the whole of the top and the whole of the bottom. Here the x on top is added to 4 rather than multiplying it, so it is a term, not a factor. Testing x = 2 settles it: (2 + 4)/2 = 3, while the cancelled version would give 4. The fraction can be split into 1 + 4/x, but it cannot be shortened to 4. (Mark this one yourself.)",
         higherOnly: true,
       },
+      {
+        question: "Simplify 6y + 2y − 3y.",
+        choices: [
+          "11y",
+          "5y",
+          "−5y",
+          "5y³",
+        ],
+        accept: [
+          "5y",
+        ],
+        answer: "5y, because you collect like terms: 6 + 2 − 3 = 5, and the letter stays as y.",
+      },
+      {
+        question: "Simplify 4a + 3b + 2a − b.",
+        choices: [
+          "6a + 4b",
+          "8ab",
+          "6a + 2b",
+          "2a + 2b",
+        ],
+        accept: [
+          "6a + 2b",
+        ],
+        answer: "6a + 2b, because the a terms give 4a + 2a = 6a and the b terms give 3b − b = 2b.",
+      },
+      {
+        question: "Simplify 3x + 5 − x + 2.",
+        choices: [
+          "2x + 7",
+          "4x + 7",
+          "2x + 3",
+          "9x",
+        ],
+        accept: [
+          "2x + 7",
+        ],
+        answer: "2x + 7, because 3x − x = 2x and the numbers give 5 + 2 = 7; x terms and numbers are not like terms.",
+      },
+      {
+        question: "Simplify 5p × 3q.",
+        choices: [
+          "8pq",
+          "15pq",
+          "15p + q",
+          "5pq",
+        ],
+        accept: [
+          "15pq",
+        ],
+        answer: "15pq, because you multiply the numbers (5 × 3 = 15) and write the letters together: p × q = pq.",
+      },
+      {
+        question: "Simplify 12ab ÷ 4b.",
+        choices: [
+          "3ab",
+          "8a",
+          "3b",
+          "3a",
+        ],
+        accept: [
+          "3a",
+        ],
+        answer: "3a, because 12 ÷ 4 = 3 and the b on top cancels with the b underneath, leaving a.",
+      },
+      {
+        question: "Simplify y × y × y.",
+        choices: [
+          "y³",
+          "3y",
+          "y + 3",
+          "3y³",
+        ],
+        accept: [
+          "y³",
+        ],
+        answer: "y³, because three y's multiplied together is y cubed; 3y would mean y + y + y.",
+      },
+      {
+        question: "Simplify 4m × m.",
+        choices: [
+          "5m",
+          "4m²",
+          "4m",
+          "5m²",
+        ],
+        accept: [
+          "4m²",
+        ],
+        answer: "4m², because 4m × m = 4 × m × m, and m × m = m².",
+      },
+      {
+        question: "Work out 3n + 4 when n = 5.",
+        choices: [
+          "39",
+          "12",
+          "19",
+          "27",
+        ],
+        accept: [
+          "19",
+        ],
+        answer: "19, because 3n means 3 × 5 = 15, then add 4 to get 19.",
+      },
+      {
+        question: "Find 2a − b when a = 6 and b = 4.",
+        choices: [
+          "2",
+          "8",
+          "10",
+          "16",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because 2a = 2 × 6 = 12, and 12 − 4 = 8.",
+      },
+      {
+        question: "Work out n² when n = −4.",
+        choices: [
+          "−16",
+          "−8",
+          "8",
+          "16",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "16, because n² = (−4) × (−4), and a negative times a negative is positive.",
+      },
+      {
+        question: "Find 3x² when x = 4.",
+        choices: [
+          "48",
+          "144",
+          "24",
+          "19",
+        ],
+        accept: [
+          "48",
+        ],
+        answer: "48, because you square first: 4² = 16, then multiply by 3 to get 48.",
+      },
+      {
+        question: "Work out 10 − 2t when t = −3.",
+        choices: [
+          "4",
+          "16",
+          "24",
+          "−16",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "16, because 2t = 2 × (−3) = −6, and 10 − (−6) = 10 + 6 = 16.",
+      },
+      {
+        question: "Expand 5(x − 2).",
+        choices: [
+          "5x − 2",
+          "5x + 10",
+          "5x − 10",
+          "x − 10",
+        ],
+        accept: [
+          "5x − 10",
+        ],
+        answer: "5x − 10, because the 5 multiplies BOTH terms: 5 × x = 5x and 5 × (−2) = −10.",
+      },
+      {
+        question: "Expand 4(2y + 3).",
+        choices: [
+          "8y + 3",
+          "8y + 12",
+          "6y + 7",
+          "8y + 7",
+        ],
+        accept: [
+          "8y + 12",
+        ],
+        answer: "8y + 12, because 4 × 2y = 8y and 4 × 3 = 12.",
+      },
+      {
+        question: "Expand x(x + 6).",
+        choices: [
+          "x² + 6x",
+          "x² + 6",
+          "2x + 6",
+          "7x²",
+        ],
+        accept: [
+          "x² + 6x",
+        ],
+        answer: "x² + 6x, because x × x = x² and x × 6 = 6x.",
+      },
+      {
+        question: "Expand −3(a + 4).",
+        choices: [
+          "−3a + 4",
+          "−3a + 12",
+          "3a − 12",
+          "−3a − 12",
+        ],
+        accept: [
+          "−3a − 12",
+        ],
+        answer: "−3a − 12, because −3 × a = −3a and −3 × 4 = −12.",
+      },
+      {
+        question: "Expand 2a(3a − 5).",
+        choices: [
+          "6a − 10a",
+          "6a² − 10a",
+          "6a² − 5",
+          "5a² − 10a",
+        ],
+        accept: [
+          "6a² − 10a",
+        ],
+        answer: "6a² − 10a, because 2a × 3a = 6a² and 2a × (−5) = −10a.",
+      },
+      {
+        question: "Expand and simplify 2(x + 3) + 4x.",
+        choices: [
+          "6x + 3",
+          "12x",
+          "6x + 6",
+          "8x + 6",
+        ],
+        accept: [
+          "6x + 6",
+        ],
+        answer: "6x + 6, because 2(x + 3) = 2x + 6, then 2x + 4x = 6x.",
+      },
+      {
+        question: "Factorise 5x + 15.",
+        choices: [
+          "5(x + 15)",
+          "5(x + 3)",
+          "3(x + 5)",
+          "15(x + 1)",
+        ],
+        accept: [
+          "5(x + 3)",
+        ],
+        answer: "5(x + 3), because 5 goes into both terms: 5 × x = 5x and 5 × 3 = 15.",
+      },
+      {
+        question: "Factorise 6a − 9.",
+        choices: [
+          "3(2a − 3)",
+          "3(2a − 9)",
+          "6(a − 3)",
+          "3(3a − 2)",
+        ],
+        accept: [
+          "3(2a − 3)",
+        ],
+        answer: "3(2a − 3), because 3 is the HCF of 6 and 9: 3 × 2a = 6a and 3 × (−3) = −9.",
+      },
+      {
+        question: "Factorise fully 4x² + 8x.",
+        choices: [
+          "4(x² + 2x)",
+          "x(4x + 8)",
+          "4x(x + 8)",
+          "4x(x + 2)",
+        ],
+        accept: [
+          "4x(x + 2)",
+        ],
+        answer: "4x(x + 2), because 4x is the HCF of both terms: 4x × x = 4x² and 4x × 2 = 8x.",
+      },
+      {
+        question: "Factorise y² − 7y.",
+        choices: [
+          "y(y + 7)",
+          "y(y − 7)",
+          "y(y − 7y)",
+          "2y(y − 7)",
+        ],
+        accept: [
+          "y(y − 7)",
+        ],
+        answer: "y(y − 7), because y is in both terms: y × y = y² and y × (−7) = −7y.",
+      },
+      {
+        question: "Factorise fully 10ab + 5a.",
+        choices: [
+          "5a(2b)",
+          "5(2ab + a)",
+          "5a(2b + 1)",
+          "5a(2b + 5)",
+        ],
+        accept: [
+          "5a(2b + 1)",
+        ],
+        answer: "5a(2b + 1), because 5a is the HCF; 5a ÷ 5a leaves 1, which must still be written.",
+      },
+      {
+        question: "Simplify m⁷ ÷ m³.",
+        choices: [
+          "m¹⁰",
+          "m⁴",
+          "m²¹",
+          "4m",
+        ],
+        accept: [
+          "m⁴",
+        ],
+        answer: "m⁴, because when you divide powers of the same base you subtract the indices: 7 − 3 = 4.",
+      },
+      {
+        question: "Simplify (x³)⁴.",
+        choices: [
+          "x⁷",
+          "x⁸¹",
+          "x¹²",
+          "4x³",
+        ],
+        accept: [
+          "x¹²",
+        ],
+        answer: "x¹², because a power of a power means you multiply the indices: 3 × 4 = 12.",
+      },
+      {
+        question: "Simplify 2x³ × 5x².",
+        choices: [
+          "10x⁵",
+          "7x⁵",
+          "10x⁶",
+          "7x⁶",
+        ],
+        accept: [
+          "10x⁵",
+        ],
+        answer: "10x⁵, because you multiply the numbers (2 × 5 = 10) and add the indices (3 + 2 = 5).",
+      },
+      {
+        question: "Simplify 18y⁶ ÷ 3y².",
+        choices: [
+          "6y³",
+          "15y⁴",
+          "6y⁸",
+          "6y⁴",
+        ],
+        accept: [
+          "6y⁴",
+        ],
+        answer: "6y⁴, because you divide the numbers (18 ÷ 3 = 6) and subtract the indices (6 − 2 = 4).",
+      },
+      {
+        question: "What is x⁰ equal to, for any x ≠ 0?",
+        choices: [
+          "0",
+          "1",
+          "x",
+          "−1",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because anything (except 0) to the power 0 is 1, e.g. x³ ÷ x³ = x⁰ = 1.",
+      },
+      {
+        question: "Simplify a⁴ × a.",
+        choices: [
+          "a⁴",
+          "2a⁴",
+          "a⁵",
+          "2a⁵",
+        ],
+        accept: [
+          "a⁵",
+        ],
+        answer: "a⁵, because a on its own is a¹, so you add the indices: 4 + 1 = 5.",
+      },
+      {
+        question: "Simplify (2a)³.",
+        choices: [
+          "2a³",
+          "6a³",
+          "8a³",
+          "6a",
+        ],
+        accept: [
+          "8a³",
+        ],
+        answer: "8a³, because the cube applies to the 2 as well: 2³ = 8 and a³ stays a³.",
+      },
+      {
+        question: "Write 'multiply n by 7, then add 2' as an expression.",
+        choices: [
+          "7(n + 2)",
+          "7n + 2",
+          "2n + 7",
+          "n + 7 + 2",
+        ],
+        accept: [
+          "7n + 2",
+        ],
+        answer: "7n + 2, because multiplying n by 7 gives 7n, and then 2 is added on; no bracket is needed.",
+      },
+      {
+        question: "Write an expression for 4 less than x.",
+        choices: [
+          "4 − x",
+          "x − 4",
+          "4x",
+          "x + 4",
+        ],
+        accept: [
+          "x − 4",
+        ],
+        answer: "x − 4, because '4 less than x' means start with x and take 4 away; 4 − x is the other way round.",
+      },
+      {
+        question: "Pens cost p pence each. What do 6 pens cost, in pence?",
+        choices: [
+          "p + 6",
+          "p⁶",
+          "6p",
+          "p/6",
+        ],
+        accept: [
+          "6p",
+        ],
+        answer: "6p, because 6 pens at p pence each costs 6 × p, which is written 6p.",
+      },
+      {
+        question: "What does 3n mean?",
+        choices: [
+          "3 × n",
+          "3 + n",
+          "n³",
+          "3 ÷ n",
+        ],
+        accept: [
+          "3 × n",
+        ],
+        answer: "3 × n, because a number written in front of a letter means multiply; n³ would be n × n × n.",
+      },
+      {
+        question: "What does n² mean?",
+        choices: [
+          "n × 2",
+          "n + 2",
+          "n × n",
+          "n + n",
+        ],
+        accept: [
+          "n × n",
+        ],
+        answer: "n × n, because squaring means multiplying a number by itself, not doubling it.",
+      },
+      {
+        question: "A square has sides of x cm. What is its perimeter in cm?",
+        choices: [
+          "x²",
+          "4x",
+          "x⁴",
+          "2x",
+        ],
+        accept: [
+          "4x",
+        ],
+        answer: "4x, because the perimeter adds the four sides: x + x + x + x = 4x; x² would be the area.",
+      },
+      {
+        question: "Which word describes 3x + 2 = 11?",
+        choices: [
+          "Expression",
+          "Formula",
+          "Equation",
+          "Identity",
+        ],
+        accept: [
+          "Equation",
+        ],
+        answer: "Equation, because it has an equals sign and is true for just one value of x (x = 3).",
+      },
+      {
+        question: "Simplify 9x²y ÷ 3xy.",
+        choices: [
+          "3x",
+          "3xy",
+          "6x",
+          "3x²",
+        ],
+        accept: [
+          "3x",
+        ],
+        answer: "3x, because 9 ÷ 3 = 3, x² ÷ x = x and y ÷ y cancels to 1.",
+      },
+      {
+        question: "How many terms are in 4x² − 3x + 7?",
+        choices: [
+          "2",
+          "1",
+          "4",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because the terms are 4x², −3x and 7; they are separated by the + and − signs.",
+      },
+      {
+        question: "What is the coefficient of x in 5 − 8x?",
+        choices: [
+          "8",
+          "−8",
+          "5",
+          "−3",
+        ],
+        accept: [
+          "−8",
+        ],
+        answer: "−8, because the coefficient is the number multiplying x, including its sign: −8x.",
+      },
+      {
+        question: "Simplify 3(a + 2) − 2a.",
+        choices: [
+          "a + 2",
+          "5a + 6",
+          "a + 6",
+          "a + 4",
+        ],
+        accept: [
+          "a + 6",
+        ],
+        answer: "a + 6, because 3(a + 2) = 3a + 6, and 3a − 2a = a.",
+      },
+      {
+        question: "Expand and simplify 4(x + 1) − 2(x − 3).",
+        choices: [
+          "2x − 2",
+          "2x + 10",
+          "2x + 7",
+          "6x + 10",
+        ],
+        accept: [
+          "2x + 10",
+        ],
+        answer: "2x + 10, because 4x + 4 − 2x + 6 = 2x + 10; −2 × −3 gives +6.",
+      },
+      {
+        question: "Simplify x × 4 × y × 3.",
+        choices: [
+          "7xy",
+          "12x + y",
+          "12xy",
+          "x + y + 7",
+        ],
+        accept: [
+          "12xy",
+        ],
+        answer: "12xy, because you multiply the numbers (4 × 3 = 12) and write the letters together as xy.",
+      },
+      {
+        question: "Find the value of 4(n − 3) when n = 10.",
+        choices: [
+          "37",
+          "52",
+          "7",
+          "28",
+        ],
+        accept: [
+          "28",
+        ],
+        answer: "28, because the bracket comes first: 10 − 3 = 7, then 4 × 7 = 28.",
+      },
+      {
+        question: "Write x⁻² without a negative index.",
+        choices: [
+          "1/x²",
+          "−x²",
+          "−2x",
+          "x/2",
+        ],
+        accept: [
+          "1/x²",
+        ],
+        answer: "1/x², because a negative index means 'one over': x⁻² = 1 ÷ x². It does not make the answer negative.",
+      },
     ],
 
     misconceptions: [
@@ -2733,6 +3708,331 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Describe the difference between a line of symmetry and rotational symmetry, and name a shape that has rotational symmetry but no line of symmetry.",
         answer: "A line of symmetry is a mirror line: fold along it and the two halves land on each other. Rotational symmetry counts how many times a shape fits its own outline during one full turn. A parallelogram that is neither a rhombus nor a rectangle has rotational symmetry of order 2 and no mirror line at all. (Mark this one yourself.)",
+      },
+      {
+        question: "Angles on a straight line are 135° and x. Find x.",
+        choices: [
+          "225°",
+          "45°",
+          "55°",
+          "135°",
+        ],
+        accept: [
+          "45°",
+        ],
+        answer: "45°, because angles on a straight line add up to 180°: 180 − 135 = 45.",
+      },
+      {
+        question: "Angles around a point are 150°, 120° and x. Find x.",
+        choices: [
+          "270°",
+          "30°",
+          "90°",
+          "60°",
+        ],
+        accept: [
+          "90°",
+        ],
+        answer: "90°, because angles around a point add up to 360°: 360 − 150 − 120 = 90.",
+      },
+      {
+        question: "A triangle has angles of 50° and 60°. Find the third angle.",
+        choices: [
+          "110°",
+          "250°",
+          "60°",
+          "70°",
+        ],
+        accept: [
+          "70°",
+        ],
+        answer: "70°, because angles in a triangle add up to 180°: 180 − 50 − 60 = 70.",
+      },
+      {
+        question: "A quadrilateral has angles 70°, 80° and 120°. Find the fourth angle.",
+        choices: [
+          "90°",
+          "270°",
+          "110°",
+          "100°",
+        ],
+        accept: [
+          "90°",
+        ],
+        answer: "90°, because angles in a quadrilateral add up to 360°: 360 − (70 + 80 + 120) = 360 − 270 = 90.",
+      },
+      {
+        question: "Two straight lines cross, making a 70° angle. Find the angle beside it on the same line.",
+        choices: [
+          "70°",
+          "110°",
+          "290°",
+          "20°",
+        ],
+        accept: [
+          "110°",
+        ],
+        answer: "110°, because neighbouring angles where two lines cross lie on a straight line, so 180 − 70 = 110.",
+      },
+      {
+        question: "What type of angle is 135°?",
+        choices: [
+          "Acute",
+          "Reflex",
+          "Obtuse",
+          "Right",
+        ],
+        accept: [
+          "Obtuse",
+        ],
+        answer: "Obtuse, because an obtuse angle is between 90° and 180°, and 135° is in that range.",
+      },
+      {
+        question: "What type of angle is 250°?",
+        choices: [
+          "Reflex",
+          "Obtuse",
+          "Acute",
+          "Straight",
+        ],
+        accept: [
+          "Reflex",
+        ],
+        answer: "Reflex, because a reflex angle is more than 180° but less than 360°.",
+      },
+      {
+        question: "Which of these angles is acute?",
+        choices: [
+          "95°",
+          "180°",
+          "85°",
+          "275°",
+        ],
+        accept: [
+          "85°",
+        ],
+        answer: "85°, because an acute angle is less than 90°; 95° is obtuse, 180° is straight and 275° is reflex.",
+      },
+      {
+        question: "Corresponding angles on parallel lines are:",
+        choices: [
+          "Add to 180°",
+          "Equal",
+          "Add to 90°",
+          "Add to 360°",
+        ],
+        accept: [
+          "Equal",
+        ],
+        answer: "Equal, because corresponding angles (the F shape) sit in matching positions on parallel lines.",
+      },
+      {
+        question: "Two parallel lines are crossed. One angle is 65°. Find its alternate angle.",
+        choices: [
+          "115°",
+          "25°",
+          "65°",
+          "295°",
+        ],
+        accept: [
+          "65°",
+        ],
+        answer: "65°, because alternate angles (the Z shape) on parallel lines are equal.",
+      },
+      {
+        question: "Two lines cross. The equal angles facing each other are called:",
+        choices: [
+          "Alternate",
+          "Corresponding",
+          "Co-interior",
+          "Vertically opposite",
+        ],
+        accept: [
+          "Vertically opposite",
+        ],
+        answer: "Vertically opposite, because when two straight lines cross, the angles directly facing each other are equal.",
+      },
+      {
+        question: "The interior angles of a heptagon add up to:",
+        choices: [
+          "900°",
+          "1260°",
+          "1080°",
+          "720°",
+        ],
+        accept: [
+          "900°",
+        ],
+        answer: "900°, because a heptagon has 7 sides and (7 − 2) × 180 = 5 × 180 = 900.",
+      },
+      {
+        question: "Each exterior angle of a regular decagon is:",
+        choices: [
+          "144°",
+          "36°",
+          "18°",
+          "40°",
+        ],
+        accept: [
+          "36°",
+        ],
+        answer: "36°, because exterior angles add up to 360° and a decagon has 10 sides: 360 ÷ 10 = 36.",
+      },
+      {
+        question: "A regular polygon has exterior angles of 30°. How many sides does it have?",
+        choices: [
+          "6",
+          "150",
+          "12",
+          "10",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because exterior angles add up to 360°, so the number of sides is 360 ÷ 30 = 12.",
+      },
+      {
+        question: "A regular polygon has interior angles of 120°. Find each exterior angle.",
+        choices: [
+          "240°",
+          "30°",
+          "90°",
+          "60°",
+        ],
+        accept: [
+          "60°",
+        ],
+        answer: "60°, because the interior and exterior angles at a vertex lie on a straight line: 180 − 120 = 60.",
+      },
+      {
+        question: "At a vertex of a polygon, interior and exterior angles add to:",
+        choices: [
+          "180°",
+          "360°",
+          "90°",
+          "540°",
+        ],
+        accept: [
+          "180°",
+        ],
+        answer: "180°, because the interior and exterior angles at a vertex together make a straight line.",
+      },
+      {
+        question: "The interior angles of an n-sided polygon add up to:",
+        choices: [
+          "n × 180°",
+          "(n − 2) × 180°",
+          "(n − 2) × 360°",
+          "360° ÷ n",
+        ],
+        accept: [
+          "(n − 2) × 180°",
+        ],
+        answer: "(n − 2) × 180°, because the polygon splits into n − 2 triangles from one vertex, each worth 180°.",
+      },
+      {
+        question: "An isosceles triangle has one angle of 100°. Find one of the others.",
+        choices: [
+          "80°",
+          "100°",
+          "40°",
+          "50°",
+        ],
+        accept: [
+          "40°",
+        ],
+        answer: "40°, because 100° must be the angle between the equal sides, so the other two share 80°: 80 ÷ 2 = 40.",
+      },
+      {
+        question: "A right-angled triangle has an angle of 35°. Find the third angle.",
+        choices: [
+          "145°",
+          "65°",
+          "35°",
+          "55°",
+        ],
+        accept: [
+          "55°",
+        ],
+        answer: "55°, because the angles add to 180° and one is 90°: 180 − 90 − 35 = 55.",
+      },
+      {
+        question: "The diagonals of a rectangle are always:",
+        choices: [
+          "Equal in length",
+          "Perpendicular",
+          "Unequal",
+          "Lines of symmetry",
+        ],
+        accept: [
+          "Equal in length",
+        ],
+        answer: "Equal in length, because a rectangle's diagonals are equal and bisect each other, but they only cross at 90° if it is a square.",
+      },
+      {
+        question: "How many lines of symmetry does a rectangle have?",
+        choices: [
+          "4",
+          "2",
+          "1",
+          "0",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because a rectangle folds onto itself through the midpoints of opposite sides; its diagonals are not lines of symmetry.",
+      },
+      {
+        question: "A triangle with no equal sides is called:",
+        choices: [
+          "Isosceles",
+          "Equilateral",
+          "Scalene",
+          "Congruent",
+        ],
+        accept: [
+          "Scalene",
+        ],
+        answer: "Scalene, because a scalene triangle has three different side lengths and three different angles.",
+      },
+      {
+        question: "The opposite angles of a parallelogram are:",
+        choices: [
+          "Add to 180°",
+          "Add to 90°",
+          "Right angles",
+          "Equal",
+        ],
+        accept: [
+          "Equal",
+        ],
+        answer: "Equal, because a parallelogram's opposite angles match; it is neighbouring angles that add up to 180°.",
+      },
+      {
+        question: "How many lines of symmetry does an equilateral triangle have?",
+        choices: [
+          "3",
+          "1",
+          "6",
+          "0",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because each line from a corner to the midpoint of the opposite side is a line of symmetry.",
+      },
+      {
+        question: "A triangle has angles 40° and 70°. Find the exterior angle at the third vertex.",
+        choices: [
+          "70°",
+          "110°",
+          "250°",
+          "290°",
+        ],
+        accept: [
+          "110°",
+        ],
+        answer: "110°, because an exterior angle equals the two opposite interior angles added: 40 + 70 = 110.",
       },
     ],
 
@@ -3829,6 +5129,527 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Show that reducing £20000 by 10% a year for three years does not give the same result as a single reduction of 30%, and say which leaves more.",
         answer: "Repeated reduction multiplies by 0.9 three times: 20000 × 0.9³ = 20000 × 0.729 = £14580. A single 30% reduction multiplies by 0.7 once: 20000 × 0.7 = £14000. The repeated version leaves £580 more. This happens because each 10% is taken from a smaller amount than the one before, so the three cuts together remove only 27.1% of the original, not 30%. (Mark this one yourself.)",
       },
+      {
+        question: "Write 0.7 as a fraction.",
+        choices: [
+          "7/100",
+          "7/10",
+          "1/7",
+          "3/10",
+        ],
+        accept: [
+          "7/10",
+        ],
+        answer: "7/10, because the 7 is in the tenths column, so 0.7 means seven tenths.",
+      },
+      {
+        question: "Write 3/4 as a percentage.",
+        choices: [
+          "34%",
+          "0.75%",
+          "43%",
+          "75%",
+        ],
+        accept: [
+          "75%",
+        ],
+        answer: "75%, because 3/4 = 0.75 and multiplying by 100 gives 75%. It is not just the digits 3 and 4 written together.",
+      },
+      {
+        question: "Write 0.06 as a percentage.",
+        choices: [
+          "6%",
+          "60%",
+          "0.6%",
+          "0.06%",
+        ],
+        accept: [
+          "6%",
+        ],
+        answer: "6%, because to turn a decimal into a percentage you multiply by 100: 0.06 × 100 = 6.",
+      },
+      {
+        question: "Write 2/5 as a decimal.",
+        choices: [
+          "2.5",
+          "0.25",
+          "0.4",
+          "0.2",
+        ],
+        accept: [
+          "0.4",
+        ],
+        answer: "0.4, because 1/5 = 0.2, so 2/5 = 0.4. Writing 2.5 just puts the digits next to each other.",
+      },
+      {
+        question: "Write 120% as a decimal.",
+        choices: [
+          "12",
+          "1.2",
+          "0.12",
+          "1.02",
+        ],
+        accept: [
+          "1.2",
+        ],
+        answer: "1.2, because you divide a percentage by 100 to make a decimal: 120 ÷ 100 = 1.2.",
+      },
+      {
+        question: "Simplify 18/24 fully.",
+        choices: [
+          "2/3",
+          "3/4",
+          "4/3",
+          "3/8",
+        ],
+        accept: [
+          "3/4",
+        ],
+        answer: "3/4, because the HCF of 18 and 24 is 6, and 18 ÷ 6 = 3 and 24 ÷ 6 = 4.",
+      },
+      {
+        question: "Simplify 15/35 fully.",
+        choices: [
+          "5/7",
+          "3/5",
+          "3/7",
+          "1/7",
+        ],
+        accept: [
+          "3/7",
+        ],
+        answer: "3/7, because you divide the top and bottom by 5: 15 ÷ 5 = 3 and 35 ÷ 5 = 7.",
+      },
+      {
+        question: "Work out 1/5 + 2/5.",
+        choices: [
+          "3/5",
+          "3/10",
+          "2/25",
+          "3/25",
+        ],
+        accept: [
+          "3/5",
+        ],
+        answer: "3/5, because the denominators are already the same, so you add only the numerators: 1 + 2 = 3 fifths.",
+      },
+      {
+        question: "Work out 1/4 + 1/8.",
+        choices: [
+          "2/12",
+          "3/8",
+          "1/32",
+          "2/8",
+        ],
+        accept: [
+          "3/8",
+        ],
+        answer: "3/8, because 1/4 = 2/8, and 2/8 + 1/8 = 3/8. Never add the denominators together.",
+      },
+      {
+        question: "Work out 2/3 × 3/4.",
+        choices: [
+          "5/7",
+          "8/9",
+          "1/2",
+          "9/8",
+        ],
+        accept: [
+          "1/2",
+        ],
+        answer: "1/2, because you multiply tops and bottoms: 2 × 3 = 6 and 3 × 4 = 12, and 6/12 simplifies to 1/2.",
+      },
+      {
+        question: "Work out 3/5 × 10.",
+        choices: [
+          "3/50",
+          "6",
+          "13/5",
+          "30",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because 1/5 of 10 is 2, so 3/5 of 10 is 3 × 2 = 6. Only the numerator gets multiplied by 10.",
+      },
+      {
+        question: "Work out 2/3 ÷ 2.",
+        choices: [
+          "4/3",
+          "1/6",
+          "1/3",
+          "3",
+        ],
+        accept: [
+          "1/3",
+        ],
+        answer: "1/3, because halving two thirds leaves one third. As a sum: 2/3 × 1/2 = 2/6 = 1/3.",
+      },
+      {
+        question: "Work out 3/4 ÷ 1/2.",
+        choices: [
+          "3/8",
+          "1½",
+          "2/3",
+          "1/4",
+        ],
+        accept: [
+          "1½",
+          "3/2",
+        ],
+        answer: "1½, because you flip the second fraction and multiply: 3/4 × 2/1 = 6/4 = 1½.",
+      },
+      {
+        question: "Work out 10% of 70.",
+        choices: [
+          "0.7",
+          "60",
+          "7",
+          "17",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "7, because 10% means divide by 10, and 70 ÷ 10 = 7.",
+      },
+      {
+        question: "Work out 5% of 80.",
+        choices: [
+          "8",
+          "40",
+          "4",
+          "0.4",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because 10% of 80 is 8, and 5% is half of that, which is 4.",
+      },
+      {
+        question: "Work out 30% of 40.",
+        choices: [
+          "1.2",
+          "10",
+          "120",
+          "12",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because 10% of 40 is 4, so 30% is 3 × 4 = 12.",
+      },
+      {
+        question: "Work out 75% of 24.",
+        choices: [
+          "18",
+          "6",
+          "16",
+          "20",
+        ],
+        accept: [
+          "18",
+        ],
+        answer: "18, because 25% of 24 is 6 (a quarter), so 75% is 3 × 6 = 18.",
+      },
+      {
+        question: "Work out 1% of 350.",
+        choices: [
+          "35",
+          "3.5",
+          "0.35",
+          "351",
+        ],
+        accept: [
+          "3.5",
+        ],
+        answer: "3.5, because 1% means divide by 100, and 350 ÷ 100 = 3.5.",
+      },
+      {
+        question: "Which multiplier increases an amount by 5%?",
+        choices: [
+          "1.5",
+          "0.05",
+          "1.05",
+          "0.95",
+        ],
+        accept: [
+          "1.05",
+        ],
+        answer: "1.05, because 100% + 5% = 105%, and 105% as a decimal is 1.05. 1.5 would be a 50% increase.",
+      },
+      {
+        question: "What is the multiplier for a 40% decrease?",
+        choices: [
+          "0.4",
+          "0.6",
+          "1.4",
+          "0.96",
+        ],
+        accept: [
+          "0.6",
+        ],
+        answer: "0.6, because 100% − 40% = 60% is left, and 60% as a decimal is 0.6. 0.4 would find only the amount taken off.",
+      },
+      {
+        question: "Multiplying by 1.3 gives what percentage change?",
+        choices: [
+          "3% increase",
+          "130% increase",
+          "30% increase",
+          "30% decrease",
+        ],
+        accept: [
+          "30% increase",
+        ],
+        answer: "30% increase, because 1.3 = 130%, which is 100% of the original plus another 30%.",
+      },
+      {
+        question: "Multiplying by 0.85 gives what percentage change?",
+        choices: [
+          "15% decrease",
+          "85% decrease",
+          "15% increase",
+          "0.85% decrease",
+        ],
+        accept: [
+          "15% decrease",
+        ],
+        answer: "15% decrease, because 0.85 = 85%, so 85% is kept and 100% − 85% = 15% is taken off.",
+      },
+      {
+        question: "Increase 80 by 25%.",
+        choices: [
+          "105",
+          "20",
+          "100",
+          "60",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because 25% of 80 is 20 (a quarter), and 80 + 20 = 100. 20 is only the increase.",
+      },
+      {
+        question: "Decrease £60 by 50%.",
+        choices: [
+          "£90",
+          "£30",
+          "£10",
+          "£59.50",
+        ],
+        accept: [
+          "£30",
+        ],
+        answer: "£30, because 50% is a half, so you take off half of £60, which leaves £30.",
+      },
+      {
+        question: "Write 0.125 as a fraction in its simplest form.",
+        choices: [
+          "1/8",
+          "1/125",
+          "1/4",
+          "125/100",
+        ],
+        accept: [
+          "1/8",
+        ],
+        answer: "1/8, because 0.125 = 125/1000, and dividing the top and bottom by 125 gives 1/8.",
+      },
+      {
+        question: "Write 1/20 as a percentage.",
+        choices: [
+          "20%",
+          "0.05%",
+          "5%",
+          "2%",
+        ],
+        accept: [
+          "5%",
+        ],
+        answer: "5%, because 1/20 = 5/100 (multiply top and bottom by 5), and 5 out of 100 is 5%.",
+      },
+      {
+        question: "Which is largest: 0.7, 2/3, 72% or 0.69?",
+        choices: [
+          "0.7",
+          "2/3",
+          "72%",
+          "0.69",
+        ],
+        accept: [
+          "72%",
+        ],
+        answer: "72%, because as decimals they are 0.7, 0.666…, 0.72 and 0.69, and 0.72 is the biggest.",
+      },
+      {
+        question: "Which is smallest: 1/3, 0.3, 31% or 0.33?",
+        choices: [
+          "1/3",
+          "0.3",
+          "31%",
+          "0.33",
+        ],
+        accept: [
+          "0.3",
+        ],
+        answer: "0.3, because as decimals they are 0.333…, 0.30, 0.31 and 0.33, and 0.30 is the smallest.",
+      },
+      {
+        question: "Write 1/9 as a decimal.",
+        choices: [
+          "0.9",
+          "0.19",
+          "0.111…",
+          "1.9",
+        ],
+        accept: [
+          "0.111…",
+        ],
+        answer: "0.111…, because 1 ÷ 9 = 0.1 remainder 1 every time, so the 1 recurs forever (0.1 recurring).",
+      },
+      {
+        question: "Which fraction gives a recurring decimal: 1/4, 1/5, 1/6 or 1/8?",
+        choices: [
+          "1/4",
+          "1/5",
+          "1/6",
+          "1/8",
+        ],
+        accept: [
+          "1/6",
+        ],
+        answer: "1/6, because 1/6 = 0.1666… The others terminate (0.25, 0.2, 0.125) because their denominators have only 2s and 5s as prime factors.",
+      },
+      {
+        question: "Write 0.333… as a fraction.",
+        choices: [
+          "3/10",
+          "1/3",
+          "33/100",
+          "1/33",
+        ],
+        accept: [
+          "1/3",
+        ],
+        answer: "1/3, because 1 ÷ 3 = 0.333… with the 3 recurring forever. 3/10 is only 0.3 exactly.",
+      },
+      {
+        question: "Write 1.5 as a percentage.",
+        choices: [
+          "15%",
+          "1.5%",
+          "150%",
+          "105%",
+        ],
+        accept: [
+          "150%",
+        ],
+        answer: "150%, because you multiply a decimal by 100 to make a percentage: 1.5 × 100 = 150.",
+      },
+      {
+        question: "Work out 3/10 + 0.4. Give your answer as a decimal.",
+        choices: [
+          "0.34",
+          "0.7",
+          "4.3",
+          "0.43",
+        ],
+        accept: [
+          "0.7",
+        ],
+        answer: "0.7, because 3/10 = 0.3, and 0.3 + 0.4 = 0.7.",
+      },
+      {
+        question: "Work out 1/2 − 1/3.",
+        choices: [
+          "1/5",
+          "1/6",
+          "0",
+          "5/6",
+        ],
+        accept: [
+          "1/6",
+        ],
+        answer: "1/6, because 1/2 = 3/6 and 1/3 = 2/6, and 3/6 − 2/6 = 1/6.",
+      },
+      {
+        question: "Find 3/4 of 20.",
+        choices: [
+          "5",
+          "15",
+          "12",
+          "60",
+        ],
+        accept: [
+          "15",
+        ],
+        answer: "15, because 1/4 of 20 is 5, so 3/4 of 20 is 3 × 5 = 15.",
+      },
+      {
+        question: "Write 2¾ as an improper fraction.",
+        choices: [
+          "11/4",
+          "9/4",
+          "6/4",
+          "23/4",
+        ],
+        accept: [
+          "11/4",
+        ],
+        answer: "11/4, because 2 wholes are 8 quarters, and 8 + 3 = 11 quarters.",
+      },
+      {
+        question: "A price rises by 50% to £30. What was the original price?",
+        choices: [
+          "£15",
+          "£45",
+          "£20",
+          "£10",
+        ],
+        accept: [
+          "£20",
+        ],
+        answer: "£20, because £30 is 150% of the original, so divide by 1.5: 30 ÷ 1.5 = 20. Check: 50% of £20 is £10, and £20 + £10 = £30.",
+      },
+      {
+        question: "A coat costs £40 after a 20% discount. What was the original price?",
+        choices: [
+          "£48",
+          "£50",
+          "£32",
+          "£60",
+        ],
+        accept: [
+          "£50",
+        ],
+        answer: "£50, because £40 is 80% of the original, so 40 ÷ 0.8 = 50. Adding 20% of £40 to get £48 is the classic mistake.",
+      },
+      {
+        question: "Write 7/8 as a decimal.",
+        choices: [
+          "0.78",
+          "0.87",
+          "8.7",
+          "0.875",
+        ],
+        accept: [
+          "0.875",
+        ],
+        answer: "0.875, because 1/8 = 0.125, and 7 × 0.125 = 0.875.",
+      },
+      {
+        question: "Work out 2 × 3/7.",
+        choices: [
+          "6/14",
+          "6/7",
+          "5/7",
+          "3/14",
+        ],
+        accept: [
+          "6/7",
+        ],
+        answer: "6/7, because only the numerator is multiplied by the whole number: 2 × 3 = 6, so the answer is 6 sevenths.",
+      },
     ],
 
     misconceptions: [
@@ -4883,6 +6704,462 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Describe how to check that your answers to a 'share in a given ratio' question are correct before moving on.",
         answer: "First add your shares together and confirm they give back the original total, since every part must be accounted for. Then divide your shares by each other, or simplify them as a ratio, and check that the result matches the ratio in the question. Finally check that the biggest ratio number has produced the biggest share, which catches the common slip of matching the shares to the wrong parts. All three checks take a few seconds and use only the numbers already in front of you. (Mark this one yourself.)",
+      },
+      {
+        question: "Simplify the ratio 6 : 15.",
+        choices: [
+          "3 : 5",
+          "2 : 5",
+          "2 : 3",
+          "5 : 2",
+        ],
+        accept: [
+          "2 : 5",
+        ],
+        answer: "2 : 5, because the HCF of 6 and 15 is 3, and 6 ÷ 3 = 2 and 15 ÷ 3 = 5. Keep the order the same.",
+      },
+      {
+        question: "Simplify the ratio 20 : 8.",
+        choices: [
+          "2 : 5",
+          "5 : 2",
+          "4 : 1",
+          "5 : 4",
+        ],
+        accept: [
+          "5 : 2",
+        ],
+        answer: "5 : 2, because you divide both parts by 4: 20 ÷ 4 = 5 and 8 ÷ 4 = 2. Don't swap the order round.",
+      },
+      {
+        question: "Simplify the ratio 14 : 21 : 7.",
+        choices: [
+          "1 : 2 : 3",
+          "2 : 3 : 1",
+          "2 : 3 : 7",
+          "3 : 2 : 1",
+        ],
+        accept: [
+          "2 : 3 : 1",
+        ],
+        answer: "2 : 3 : 1, because all three parts divide by 7: 14 ÷ 7 = 2, 21 ÷ 7 = 3 and 7 ÷ 7 = 1.",
+      },
+      {
+        question: "Write 50p : £2 as a ratio in its simplest form.",
+        choices: [
+          "25 : 1",
+          "1 : 4",
+          "1 : 40",
+          "4 : 1",
+        ],
+        accept: [
+          "1 : 4",
+        ],
+        answer: "1 : 4, because you change to the same units first: 50p : 200p, then divide both by 50.",
+      },
+      {
+        question: "Write 30 cm : 1 m as a ratio in its simplest form.",
+        choices: [
+          "30 : 1",
+          "1 : 30",
+          "3 : 10",
+          "10 : 3",
+        ],
+        accept: [
+          "3 : 10",
+        ],
+        answer: "3 : 10, because 1 m = 100 cm, so the ratio is 30 : 100, and dividing both by 10 gives 3 : 10.",
+      },
+      {
+        question: "Share 40 in the ratio 1 : 3. What is the larger share?",
+        choices: [
+          "10",
+          "120",
+          "30",
+          "20",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because there are 1 + 3 = 4 parts, so one part is 40 ÷ 4 = 10 and the larger share is 3 × 10 = 30.",
+      },
+      {
+        question: "Share £50 in the ratio 3 : 2. What is the smaller share?",
+        choices: [
+          "£30",
+          "£20",
+          "£10",
+          "£25",
+        ],
+        accept: [
+          "£20",
+        ],
+        answer: "£20, because there are 3 + 2 = 5 parts, so one part is £10 and the smaller share is 2 × £10 = £20.",
+      },
+      {
+        question: "Share 35 in the ratio 2 : 5. What is the smaller share?",
+        choices: [
+          "10",
+          "25",
+          "7",
+          "14",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because there are 2 + 5 = 7 parts, so one part is 35 ÷ 7 = 5, and the smaller share is 2 × 5 = 10.",
+      },
+      {
+        question: "Share 24 in the ratio 1 : 2 : 3. What is the largest share?",
+        choices: [
+          "8",
+          "4",
+          "12",
+          "72",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because there are 1 + 2 + 3 = 6 parts, so one part is 24 ÷ 6 = 4, and the largest share is 3 × 4 = 12.",
+      },
+      {
+        question: "Write 3 : 12 in the form 1 : n.",
+        choices: [
+          "1 : 9",
+          "1 : 4",
+          "1 : 36",
+          "4 : 1",
+        ],
+        accept: [
+          "1 : 4",
+        ],
+        answer: "1 : 4, because you divide both parts by the first number, 3: 3 ÷ 3 = 1 and 12 ÷ 3 = 4.",
+      },
+      {
+        question: "Write 6 : 4 in the form n : 1.",
+        choices: [
+          "1 : 1.5",
+          "2 : 1",
+          "1.5 : 1",
+          "0.67 : 1",
+        ],
+        accept: [
+          "1.5 : 1",
+        ],
+        answer: "1.5 : 1, because you divide both parts by the second number, 4: 6 ÷ 4 = 1.5 and 4 ÷ 4 = 1.",
+      },
+      {
+        question: "Write 2 : 5 in the form 1 : n.",
+        choices: [
+          "1 : 3",
+          "1 : 0.4",
+          "2.5 : 1",
+          "1 : 2.5",
+        ],
+        accept: [
+          "1 : 2.5",
+        ],
+        answer: "1 : 2.5, because you divide both parts by 2: 2 ÷ 2 = 1 and 5 ÷ 2 = 2.5. Subtracting 1 from each to get 1 : 4 is wrong.",
+      },
+      {
+        question: "Boys to girls is 3 : 4. What fraction of the group are boys?",
+        choices: [
+          "3/4",
+          "3/7",
+          "4/7",
+          "1/7",
+        ],
+        accept: [
+          "3/7",
+        ],
+        answer: "3/7, because there are 3 + 4 = 7 parts in total and 3 of them are boys. 3/4 compares boys with girls, not with everyone.",
+      },
+      {
+        question: "Cats to dogs is 2 : 7. What fraction of the animals are dogs?",
+        choices: [
+          "7/2",
+          "2/9",
+          "7/9",
+          "2/7",
+        ],
+        accept: [
+          "7/9",
+        ],
+        answer: "7/9, because there are 2 + 7 = 9 parts in total and 7 of them are dogs.",
+      },
+      {
+        question: "1/4 of a class are boys and the rest are girls. What is boys : girls?",
+        choices: [
+          "1 : 4",
+          "1 : 3",
+          "4 : 1",
+          "3 : 1",
+        ],
+        accept: [
+          "1 : 3",
+        ],
+        answer: "1 : 3, because if 1 out of 4 parts are boys, the other 3 parts are girls, so boys : girls = 1 : 3.",
+      },
+      {
+        question: "Red to blue is 2 : 3. There are 10 red. How many are blue?",
+        choices: [
+          "11",
+          "15",
+          "25",
+          "20",
+        ],
+        accept: [
+          "15",
+        ],
+        answer: "15, because 2 parts = 10, so 1 part = 5, and blue is 3 parts = 15. 25 is the total, not the blue.",
+      },
+      {
+        question: "Flour to sugar is 3 : 1. How much flour goes with 50 g of sugar, in grams?",
+        choices: [
+          "200",
+          "150",
+          "153",
+          "17",
+        ],
+        accept: [
+          "150",
+        ],
+        answer: "150, because flour is 3 times the sugar: 3 × 50 = 150 g. 200 g would be the total mix.",
+      },
+      {
+        question: "Which is the best buy: 2 for £1, 5 for £2 or 10 for £5?",
+        choices: [
+          "2 for £1",
+          "10 for £5",
+          "5 for £2",
+          "All the same",
+        ],
+        accept: [
+          "5 for £2",
+        ],
+        answer: "5 for £2, because that is 40p each, while 2 for £1 and 10 for £5 are both 50p each.",
+      },
+      {
+        question: "4 pens cost £2. How much do 6 pens cost?",
+        choices: [
+          "£4",
+          "£3",
+          "£1.50",
+          "£12",
+        ],
+        accept: [
+          "£3",
+        ],
+        answer: "£3, because one pen costs £2 ÷ 4 = 50p, and 6 × 50p = £3.",
+      },
+      {
+        question: "3 apples cost 90p. How much do 5 apples cost, in pence?",
+        choices: [
+          "120p",
+          "450p",
+          "150p",
+          "30p",
+        ],
+        accept: [
+          "150p",
+        ],
+        answer: "150p, because one apple costs 90 ÷ 3 = 30p, and 5 × 30p = 150p (£1.50).",
+      },
+      {
+        question: "A 500 g bag costs £2. What is the cost per 100 g?",
+        choices: [
+          "25p",
+          "40p",
+          "4p",
+          "£1",
+        ],
+        accept: [
+          "40p",
+        ],
+        answer: "40p, because 500 g is 5 lots of 100 g, so each 100 g costs £2 ÷ 5 = 40p.",
+      },
+      {
+        question: "6 eggs cost £1.20. What is the cost of one egg?",
+        choices: [
+          "5p",
+          "72p",
+          "20p",
+          "£7.20",
+        ],
+        accept: [
+          "20p",
+        ],
+        answer: "20p, because £1.20 = 120p, and 120 ÷ 6 = 20p. Dividing the other way round (6 ÷ 1.20) gives 5, which is wrong.",
+      },
+      {
+        question: "y is directly proportional to x. If x is doubled, what happens to y?",
+        choices: [
+          "y halves",
+          "y doubles",
+          "y is squared",
+          "y stays the same",
+        ],
+        accept: [
+          "y doubles",
+        ],
+        answer: "y doubles, because direct proportion means y = kx, so whatever you multiply x by, y is multiplied by the same amount.",
+      },
+      {
+        question: "y is inversely proportional to x. If x is doubled, what happens to y?",
+        choices: [
+          "y doubles",
+          "y is quartered",
+          "y halves",
+          "y stays the same",
+        ],
+        accept: [
+          "y halves",
+        ],
+        answer: "y halves, because inverse proportion means y = k/x, so when x is multiplied by 2, y is divided by 2.",
+      },
+      {
+        question: "2 taps fill a tank in 6 hours. How long would 3 taps take, in hours?",
+        choices: [
+          "9",
+          "4",
+          "3",
+          "12",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because more taps means less time (inverse proportion): 2 × 6 = 12 tap-hours, and 12 ÷ 3 = 4 hours.",
+      },
+      {
+        question: "A recipe for 4 people needs 200 g of pasta. How much for 6 people, in grams?",
+        choices: [
+          "400",
+          "300",
+          "250",
+          "1200",
+        ],
+        accept: [
+          "300",
+        ],
+        answer: "300, because one person needs 200 ÷ 4 = 50 g, and 6 × 50 = 300 g.",
+      },
+      {
+        question: "A recipe for 6 people uses 3 eggs. How many eggs for 2 people?",
+        choices: [
+          "9",
+          "2",
+          "1",
+          "0.5",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because 2 people is a third of 6 people, so you need a third of the eggs: 3 ÷ 3 = 1.",
+      },
+      {
+        question: "A recipe for 8 people uses 400 ml of milk. How much for 2 people, in ml?",
+        choices: [
+          "200",
+          "100",
+          "1600",
+          "50",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because 2 people is a quarter of 8, so you need a quarter of the milk: 400 ÷ 4 = 100 ml.",
+      },
+      {
+        question: "In the ratio 3 : 5, the larger share is 20. What is the smaller share?",
+        choices: [
+          "4",
+          "18",
+          "12",
+          "32",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because 5 parts = 20, so 1 part = 4, and the smaller share is 3 parts = 12. 32 is the total.",
+      },
+      {
+        question: "Share 90 in the ratio 4 : 5. What is the larger share?",
+        choices: [
+          "40",
+          "50",
+          "10",
+          "18",
+        ],
+        accept: [
+          "50",
+        ],
+        answer: "50, because there are 4 + 5 = 9 parts, so one part is 90 ÷ 9 = 10, and the larger share is 5 × 10 = 50.",
+      },
+      {
+        question: "y = kx, and y = 20 when x = 4. What is k?",
+        choices: [
+          "80",
+          "16",
+          "5",
+          "0.2",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because k = y ÷ x = 20 ÷ 4 = 5. Check: 5 × 4 = 20.",
+      },
+      {
+        question: "y is inversely proportional to x, and y = 6 when x = 2. Find y when x = 3.",
+        choices: [
+          "9",
+          "4",
+          "2",
+          "12",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because xy stays the same: 6 × 2 = 12, so y = 12 ÷ 3 = 4. 9 is what direct proportion would give.",
+      },
+      {
+        question: "y = kx². What happens to y when x is doubled?",
+        choices: [
+          "multiplied by 2",
+          "multiplied by 4",
+          "multiplied by 8",
+          "halved",
+        ],
+        accept: [
+          "multiplied by 4",
+        ],
+        answer: "multiplied by 4, because y = kx², and doubling x gives k(2x)² = 4kx², so y is 2² = 4 times as big.",
+        higherOnly: true,
+      },
+      {
+        question: "A map scale is 1 : 100. What real distance does 5 cm on the map show?",
+        choices: [
+          "500 m",
+          "5 m",
+          "50 cm",
+          "0.5 m",
+        ],
+        accept: [
+          "5 m",
+        ],
+        answer: "5 m, because every 1 cm is 100 cm in real life, so 5 cm is 500 cm, and 500 cm = 5 m.",
+      },
+      {
+        question: "Squash to water is 1 : 4. How much squash is in 500 ml of drink, in ml?",
+        choices: [
+          "125",
+          "100",
+          "400",
+          "2000",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because there are 1 + 4 = 5 parts, so one part is 500 ÷ 5 = 100 ml of squash. 125 comes from wrongly dividing by 4.",
       },
     ],
 
@@ -6060,6 +8337,526 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Factorise first: x² − 6x + 8 = (x − 2)(x − 4), so the curve crosses the x-axis at 2 and 4, and because the coefficient of x² is positive it is U-shaped. The inequality asks where the curve is BELOW the x-axis, and a sketch shows that this is the dip between the two roots, so the solution is 2 < x < 4. The sketch is what stops you writing x < 2 or x > 4, which is the region above the axis and is the answer to the opposite inequality. (Mark this one yourself.)",
         higherOnly: true,
       },
+      {
+        question: "Solve x + 9 = 15.",
+        choices: [
+          "x = 24",
+          "x = 6",
+          "x = −6",
+          "x = 15",
+        ],
+        accept: [
+          "x = 6",
+        ],
+        answer: "x = 6, because you subtract 9 from both sides: 15 − 9 = 6.",
+      },
+      {
+        question: "Solve 4x = 28.",
+        choices: [
+          "x = 24",
+          "x = 32",
+          "x = 7",
+          "x = 112",
+        ],
+        accept: [
+          "x = 7",
+        ],
+        answer: "x = 7, because 4x means 4 × x, so you divide both sides by 4: 28 ÷ 4 = 7.",
+      },
+      {
+        question: "Solve x/5 = 3.",
+        choices: [
+          "x = 0.6",
+          "x = 8",
+          "x = 2",
+          "x = 15",
+        ],
+        accept: [
+          "x = 15",
+        ],
+        answer: "x = 15, because x is divided by 5, so you multiply both sides by 5: 3 × 5 = 15.",
+      },
+      {
+        question: "Solve x − 7 = −2.",
+        choices: [
+          "x = 5",
+          "x = −9",
+          "x = 9",
+          "x = −5",
+        ],
+        accept: [
+          "x = 5",
+        ],
+        answer: "x = 5, because you add 7 to both sides: −2 + 7 = 5.",
+      },
+      {
+        question: "Solve 2x + 5 = 17.",
+        choices: [
+          "x = 11",
+          "x = 6",
+          "x = 12",
+          "x = 8.5",
+        ],
+        accept: [
+          "x = 6",
+        ],
+        answer: "x = 6, because subtracting 5 gives 2x = 12, then dividing by 2 gives x = 6.",
+      },
+      {
+        question: "Solve 3x − 4 = 11.",
+        choices: [
+          "x = 7/3",
+          "x = 15",
+          "x = 5",
+          "x = −5",
+        ],
+        accept: [
+          "x = 5",
+        ],
+        answer: "x = 5, because adding 4 gives 3x = 15, then dividing by 3 gives x = 5.",
+      },
+      {
+        question: "Solve 10 − x = 4.",
+        choices: [
+          "x = −6",
+          "x = 14",
+          "x = 2.5",
+          "x = 6",
+        ],
+        accept: [
+          "x = 6",
+        ],
+        answer: "x = 6, because 10 − 6 = 4; add x to both sides to get 10 = 4 + x.",
+      },
+      {
+        question: "Solve 5x + 2 = 3x + 10.",
+        choices: [
+          "x = 4",
+          "x = 1.5",
+          "x = 6",
+          "x = 8",
+        ],
+        accept: [
+          "x = 4",
+        ],
+        answer: "x = 4, because taking 3x and 2 from both sides gives 2x = 8, so x = 4.",
+      },
+      {
+        question: "Solve 7x − 1 = 4x + 8.",
+        choices: [
+          "x = 7/3",
+          "x = 3",
+          "x = 9/11",
+          "x = 9",
+        ],
+        accept: [
+          "x = 3",
+        ],
+        answer: "x = 3, because taking 4x from both sides and adding 1 gives 3x = 9, so x = 3.",
+      },
+      {
+        question: "Solve 4(x + 1) = 20.",
+        choices: [
+          "x = 4.75",
+          "x = 5",
+          "x = 4",
+          "x = 6",
+        ],
+        accept: [
+          "x = 4",
+        ],
+        answer: "x = 4, because dividing by 4 gives x + 1 = 5, so x = 4.",
+      },
+      {
+        question: "Solve x/3 + 2 = 6.",
+        choices: [
+          "x = 24",
+          "x = 4/3",
+          "x = 16",
+          "x = 12",
+        ],
+        accept: [
+          "x = 12",
+        ],
+        answer: "x = 12, because subtracting 2 gives x/3 = 4, then multiplying by 3 gives x = 12.",
+      },
+      {
+        question: "Solve 2x = −10.",
+        choices: [
+          "x = −5",
+          "x = 5",
+          "x = −20",
+          "x = −12",
+        ],
+        accept: [
+          "x = −5",
+        ],
+        answer: "x = −5, because you divide both sides by 2: −10 ÷ 2 = −5.",
+      },
+      {
+        question: "Solve 6 = 2x − 8.",
+        choices: [
+          "x = −1",
+          "x = 7",
+          "x = 14",
+          "x = 1",
+        ],
+        accept: [
+          "x = 7",
+        ],
+        answer: "x = 7, because adding 8 gives 14 = 2x, then dividing by 2 gives x = 7.",
+      },
+      {
+        question: "Make x the subject of y = x + 5.",
+        choices: [
+          "x = y + 5",
+          "x = 5 − y",
+          "x = y − 5",
+          "x = 5y",
+        ],
+        accept: [
+          "x = y − 5",
+        ],
+        answer: "x = y − 5, because 5 is added to x, so you subtract 5 from both sides.",
+      },
+      {
+        question: "Make a the subject of b = 3a.",
+        choices: [
+          "a = 3b",
+          "a = b/3",
+          "a = b − 3",
+          "a = 3/b",
+        ],
+        accept: [
+          "a = b/3",
+        ],
+        answer: "a = b/3, because a is multiplied by 3, so you divide both sides by 3.",
+      },
+      {
+        question: "Make x the subject of y = 2x − 6.",
+        choices: [
+          "x = (y − 6)/2",
+          "x = y/2 + 6",
+          "x = (y + 6)/2",
+          "x = 2y + 6",
+        ],
+        accept: [
+          "x = (y + 6)/2",
+        ],
+        answer: "x = (y + 6)/2, because you add 6 first (y + 6 = 2x), then divide everything by 2.",
+      },
+      {
+        question: "Make r the subject of C = 2πr.",
+        choices: [
+          "r = C/(2π)",
+          "r = 2πC",
+          "r = C − 2π",
+          "r = 2π/C",
+        ],
+        accept: [
+          "r = C/(2π)",
+        ],
+        answer: "r = C/(2π), because r is multiplied by 2π, so you divide both sides by 2π.",
+      },
+      {
+        question: "Make t the subject of v = u + at.",
+        choices: [
+          "t = v − u − a",
+          "t = (v + u)/a",
+          "t = v/a − u",
+          "t = (v − u)/a",
+        ],
+        accept: [
+          "t = (v − u)/a",
+        ],
+        answer: "t = (v − u)/a, because you subtract u first (v − u = at), then divide by a.",
+      },
+      {
+        question: "Use v = u + at to find v when u = 3, a = 2 and t = 5.",
+        choices: [
+          "13",
+          "25",
+          "10",
+          "30",
+        ],
+        accept: [
+          "13",
+        ],
+        answer: "13, because at = 2 × 5 = 10 is worked out first, then 3 + 10 = 13.",
+      },
+      {
+        question: "Use P = 2l + 2w to find P when l = 6 and w = 4.",
+        choices: [
+          "10",
+          "20",
+          "24",
+          "48",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because 2 × 6 = 12 and 2 × 4 = 8, and 12 + 8 = 20.",
+      },
+      {
+        question: "Solve x + 3 > 8.",
+        choices: [
+          "x > 11",
+          "x < 5",
+          "x > 5",
+          "x ≥ 5",
+        ],
+        accept: [
+          "x > 5",
+        ],
+        answer: "x > 5, because you subtract 3 from both sides; the sign stays the same and stays strict (>).",
+      },
+      {
+        question: "Solve 3x ≤ 12.",
+        choices: [
+          "x ≤ 4",
+          "x ≤ 9",
+          "x ≥ 4",
+          "x < 4",
+        ],
+        accept: [
+          "x ≤ 4",
+        ],
+        answer: "x ≤ 4, because dividing both sides by a positive 3 keeps the same sign: 12 ÷ 3 = 4.",
+      },
+      {
+        question: "Solve 2x − 1 < 7.",
+        choices: [
+          "x < 3",
+          "x > 4",
+          "x < 4",
+          "x < 8",
+        ],
+        accept: [
+          "x < 4",
+        ],
+        answer: "x < 4, because adding 1 gives 2x < 8, then dividing by 2 gives x < 4.",
+      },
+      {
+        question: "Solve −2x > 6.",
+        choices: [
+          "x > −3",
+          "x < −3",
+          "x < 3",
+          "x > 3",
+        ],
+        accept: [
+          "x < −3",
+        ],
+        answer: "x < −3, because dividing by a NEGATIVE number (−2) flips the inequality sign: 6 ÷ −2 = −3.",
+      },
+      {
+        question: "What is the largest integer that satisfies x < 6?",
+        choices: [
+          "6",
+          "7",
+          "5",
+          "5.9",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because x must be less than 6, so 6 itself is not allowed, and 5.9 is not an integer.",
+      },
+      {
+        question: "What is the smallest integer that satisfies x ≥ −2?",
+        choices: [
+          "−1",
+          "−2",
+          "−3",
+          "2",
+        ],
+        accept: [
+          "−2",
+        ],
+        answer: "−2, because ≥ means −2 itself is allowed, and −3 is smaller than −2 so it fails.",
+      },
+      {
+        question: "List the integers n with 1 < n ≤ 4.",
+        choices: [
+          "1, 2, 3, 4",
+          "2, 3",
+          "2, 3, 4",
+          "1, 2, 3",
+        ],
+        accept: [
+          "2, 3, 4",
+        ],
+        answer: "2, 3, 4, because 1 < n means 1 is NOT included, but n ≤ 4 means 4 IS included.",
+      },
+      {
+        question: "How many integers satisfy −1 ≤ x < 3?",
+        choices: [
+          "3",
+          "4",
+          "5",
+          "2",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because the integers are −1, 0, 1 and 2; −1 is included but 3 is not.",
+      },
+      {
+        question: "What does x ≥ 3 mean?",
+        choices: [
+          "x is more than 3",
+          "x is 3 or less",
+          "x is 3 or more",
+          "x is less than 3",
+        ],
+        accept: [
+          "x is 3 or more",
+        ],
+        answer: "x is 3 or more, because ≥ means 'greater than or equal to', so 3 itself is included.",
+      },
+      {
+        question: "How is x ≤ 5 shown on a number line?",
+        choices: [
+          "Hollow, shaded left",
+          "Filled, shaded left",
+          "Filled, shaded right",
+          "Hollow, shaded right",
+        ],
+        accept: [
+          "Filled, shaded left",
+        ],
+        answer: "Filled, shaded left, because ≤ includes 5 (filled circle) and x is 5 or less (shade to the left).",
+      },
+      {
+        question: "Write 'x is greater than −1 and at most 4' as an inequality.",
+        choices: [
+          "−1 ≤ x < 4",
+          "−1 < x ≤ 4",
+          "−1 ≤ x ≤ 4",
+          "−1 < x < 4",
+        ],
+        accept: [
+          "−1 < x ≤ 4",
+        ],
+        answer: "−1 < x ≤ 4, because 'greater than −1' excludes −1 (<) and 'at most 4' includes 4 (≤).",
+      },
+      {
+        question: "Which value of x solves 5x − 3 = 12?",
+        choices: [
+          "1.8",
+          "15",
+          "3",
+          "9",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because 5 × 3 − 3 = 15 − 3 = 12; adding 3 gives 5x = 15, so x = 3.",
+      },
+      {
+        question: "Solve 3(x − 2) = 9.",
+        choices: [
+          "x = 1",
+          "x = 11/3",
+          "x = 7",
+          "x = 5",
+        ],
+        accept: [
+          "x = 5",
+        ],
+        answer: "x = 5, because dividing by 3 gives x − 2 = 3, so x = 5.",
+      },
+      {
+        question: "Solve 9 − x = x + 1.",
+        choices: [
+          "x = 5",
+          "x = 4",
+          "x = 8",
+          "x = −4",
+        ],
+        accept: [
+          "x = 4",
+        ],
+        answer: "x = 4, because adding x and subtracting 1 gives 8 = 2x, so x = 4; check: 9 − 4 = 5 = 4 + 1.",
+      },
+      {
+        question: "Solve 2x + 3 = 3x − 1.",
+        choices: [
+          "x = 2",
+          "x = −4",
+          "x = 4",
+          "x = 0.8",
+        ],
+        accept: [
+          "x = 4",
+        ],
+        answer: "x = 4, because taking 2x from both sides gives 3 = x − 1, so x = 4.",
+      },
+      {
+        question: "Solve x² = 64.",
+        choices: [
+          "x = 8 only",
+          "x = 8 or −8",
+          "x = 32",
+          "x = −8 only",
+        ],
+        accept: [
+          "x = 8 or −8",
+        ],
+        answer: "x = 8 or −8, because 8 × 8 = 64 and also (−8) × (−8) = 64.",
+      },
+      {
+        question: "If x + y = 10 and x = 4, what is y?",
+        choices: [
+          "14",
+          "−6",
+          "6",
+          "40",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because 4 + y = 10, so y = 10 − 4 = 6.",
+      },
+      {
+        question: "If a + b = 9 and a − b = 1, what is a?",
+        choices: [
+          "4",
+          "8",
+          "10",
+          "5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because adding the equations gives 2a = 10, so a = 5 (and b = 4: 5 + 4 = 9, 5 − 4 = 1).",
+      },
+      {
+        question: "A triangle's angles are x, x and 80°. Find x.",
+        choices: [
+          "50°",
+          "100°",
+          "40°",
+          "60°",
+        ],
+        accept: [
+          "50°",
+        ],
+        answer: "50°, because the angles add to 180°: 2x = 180 − 80 = 100, so x = 50°.",
+      },
+      {
+        question: "Solve x/4 = −3.",
+        choices: [
+          "x = 12",
+          "x = −0.75",
+          "x = −12",
+          "x = −7",
+        ],
+        accept: [
+          "x = −12",
+        ],
+        answer: "x = −12, because you multiply both sides by 4: −3 × 4 = −12.",
+      },
     ],
 
     misconceptions: [
@@ -6974,6 +9771,292 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Show that the exact value of tan 30° is 1/sqrt3, starting from an equilateral triangle with sides of 2 units.",
         answer: "Cut the equilateral triangle in half through one vertex. The half has a hypotenuse of 2, a base of 1 and angles of 30°, 60° and 90°. Its height is √(2² − 1²) = √3 by Pythagoras. The 30° angle is at the top, so the side opposite it is 1 and the side adjacent to it is √3, giving tan 30° = 1 ÷ √3. Rationalising the denominator turns that into √3/3, which is the same number. (Mark this one yourself.)",
       },
+      {
+        question: "The hypotenuse is the side opposite which angle?",
+        choices: [
+          "The smallest angle",
+          "The right angle",
+          "Any acute angle",
+          "The angle θ",
+        ],
+        accept: [
+          "The right angle",
+        ],
+        answer: "The right angle, because the hypotenuse is always opposite the 90° angle, which also makes it the longest side.",
+      },
+      {
+        question: "A right-angled triangle has sides 5, 12 and 13. Which is the hypotenuse?",
+        choices: [
+          "12",
+          "5",
+          "13",
+          "17",
+        ],
+        accept: [
+          "13",
+        ],
+        answer: "13, because the hypotenuse is the longest side; check: 5² + 12² = 25 + 144 = 169 = 13².",
+      },
+      {
+        question: "A right-angled triangle has shorter sides 12 and 16. Find the hypotenuse.",
+        choices: [
+          "28",
+          "400",
+          "√112",
+          "20",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because 12² + 16² = 144 + 256 = 400, and √400 = 20 (it is 3, 4, 5 multiplied by 4).",
+      },
+      {
+        question: "A right-angled triangle has hypotenuse 10 and one side 6. Find the other side.",
+        choices: [
+          "8",
+          "√136",
+          "4",
+          "64",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because the missing side is a shorter side, so subtract: 10² − 6² = 100 − 36 = 64, and √64 = 8.",
+      },
+      {
+        question: "Which number completes the Pythagorean triple 8, 15, ?",
+        choices: [
+          "23",
+          "17",
+          "16",
+          "289",
+        ],
+        accept: [
+          "17",
+        ],
+        answer: "17, because 8² + 15² = 64 + 225 = 289, and √289 = 17.",
+      },
+      {
+        question: "Which set is a multiple of the triple 3, 4, 5?",
+        choices: [
+          "15, 20, 30",
+          "6, 8, 12",
+          "15, 20, 25",
+          "9, 12, 16",
+        ],
+        accept: [
+          "15, 20, 25",
+        ],
+        answer: "15, 20, 25, because each number is 5 times 3, 4 and 5; the others do not scale all three sides by the same number.",
+      },
+      {
+        question: "You know an angle and the opposite side and want the hypotenuse. Which ratio?",
+        choices: [
+          "cos",
+          "tan",
+          "sin⁻¹",
+          "sin",
+        ],
+        accept: [
+          "sin",
+        ],
+        answer: "sin, because sin θ = opposite ÷ hypotenuse (SOH) links the opposite and the hypotenuse.",
+      },
+      {
+        question: "You know an angle and the adjacent side and want the opposite. Which ratio?",
+        choices: [
+          "tan",
+          "sin",
+          "cos",
+          "cos⁻¹",
+        ],
+        accept: [
+          "tan",
+        ],
+        answer: "tan, because tan θ = opposite ÷ adjacent (TOA) links the opposite and the adjacent.",
+      },
+      {
+        question: "You know an angle and the hypotenuse and want the adjacent. Which ratio?",
+        choices: [
+          "sin",
+          "cos",
+          "tan",
+          "tan⁻¹",
+        ],
+        accept: [
+          "cos",
+        ],
+        answer: "cos, because cos θ = adjacent ÷ hypotenuse (CAH) links the adjacent and the hypotenuse.",
+      },
+      {
+        question: "In a right-angled triangle, cos θ equals:",
+        choices: [
+          "opp ÷ hyp",
+          "opp ÷ adj",
+          "adj ÷ hyp",
+          "hyp ÷ adj",
+        ],
+        accept: [
+          "adj ÷ hyp",
+        ],
+        answer: "adj ÷ hyp, because CAH in SOH CAH TOA means cos = adjacent ÷ hypotenuse.",
+      },
+      {
+        question: "What is the exact value of cos 0°?",
+        choices: [
+          "0",
+          "½",
+          "√3/2",
+          "1",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because at 0° the adjacent side equals the hypotenuse, so cos 0° = 1 (while sin 0° = 0).",
+      },
+      {
+        question: "What is the exact value of cos 45°?",
+        choices: [
+          "1/√2",
+          "½",
+          "√3/2",
+          "1",
+        ],
+        accept: [
+          "1/√2",
+        ],
+        answer: "1/√2 (also written √2/2), because a 45° right triangle with shorter sides 1 has hypotenuse √2.",
+      },
+      {
+        question: "Which acute angle has a tangent of exactly 1?",
+        choices: [
+          "90°",
+          "45°",
+          "0°",
+          "30°",
+        ],
+        accept: [
+          "45°",
+        ],
+        answer: "45°, because in a 45° right triangle the opposite and adjacent sides are equal, so tan 45° = 1.",
+      },
+      {
+        question: "Which acute angle has a sine of exactly ½?",
+        choices: [
+          "60°",
+          "45°",
+          "30°",
+          "90°",
+        ],
+        accept: [
+          "30°",
+        ],
+        answer: "30°, because sin 30° = ½; it is cos 60° (not sin 60°) that also equals ½.",
+      },
+      {
+        question: "What is the exact value of sin 30° + cos 60°?",
+        choices: [
+          "½",
+          "0",
+          "√3",
+          "1",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because sin 30° = ½ and cos 60° = ½, so ½ + ½ = 1.",
+      },
+      {
+        question: "A triangle has sides 6, 8 and 11. Is it right-angled?",
+        choices: [
+          "No: 100 ≠ 121",
+          "Yes: 6 + 8 > 11",
+          "Yes: 6² + 8² = 11²",
+          "Yes: 11 is longest",
+        ],
+        accept: [
+          "No: 100 ≠ 121",
+        ],
+        answer: "No: 100 ≠ 121, because 6² + 8² = 36 + 64 = 100 but 11² = 121, so Pythagoras fails.",
+      },
+      {
+        question: "A triangle has sides 1.5, 2 and 2.5. Is it right-angled?",
+        choices: [
+          "No: has decimals",
+          "Yes: 3, 4, 5 halved",
+          "No: 1.5 + 2 ≠ 2.5",
+          "No: sides too small",
+        ],
+        accept: [
+          "Yes: 3, 4, 5 halved",
+        ],
+        answer: "Yes: 3, 4, 5 halved, because 1.5² + 2² = 2.25 + 4 = 6.25 = 2.5².",
+      },
+      {
+        question: "A right-angled triangle has shorter sides 2 and 3. Find the hypotenuse.",
+        choices: [
+          "5",
+          "13",
+          "√13",
+          "√5",
+        ],
+        accept: [
+          "√13",
+        ],
+        answer: "√13, because 2² + 3² = 4 + 9 = 13, so the hypotenuse is √13. Do not just add the sides.",
+      },
+      {
+        question: "How far is the point (6, 8) from the origin?",
+        choices: [
+          "14",
+          "100",
+          "2",
+          "10",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because Pythagoras gives √(6² + 8²) = √(36 + 64) = √100 = 10.",
+      },
+      {
+        question: "A 13 m ladder has its foot 5 m from a wall. How high up the wall does it reach?",
+        choices: [
+          "12 m",
+          "18 m",
+          "8 m",
+          "√194 m",
+        ],
+        accept: [
+          "12 m",
+        ],
+        answer: "12 m, because the ladder is the hypotenuse: 13² − 5² = 169 − 25 = 144, and √144 = 12.",
+      },
+      {
+        question: "In SOH CAH TOA, what does the A in CAH stand for?",
+        choices: [
+          "Angle",
+          "Adjacent",
+          "Area",
+          "Acute",
+        ],
+        accept: [
+          "Adjacent",
+        ],
+        answer: "Adjacent, because CAH means cos = adjacent ÷ hypotenuse; the adjacent is the side next to the angle (not the hypotenuse).",
+      },
+      {
+        question: "Hypotenuse 8 cm, angle 30°. Find the side opposite the angle, in cm.",
+        choices: [
+          "16",
+          "4√3",
+          "4",
+          "8",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because opposite = hypotenuse × sin 30° = 8 × ½ = 4 cm.",
+      },
     ],
 
     misconceptions: [
@@ -7809,6 +10892,372 @@ export const MATHS: Record<string, TopicContent> = {
         question: "A weather app gives P(rain) = 0.3 for each day of the coming week. Explain why the probability of rain on at least one day is much greater than 0.3.",
         answer: "Each day is a separate opportunity for rain, and 'at least one day' is satisfied by any one of them, so there are seven chances rather than one. The clean way to see the size of it is to work with the opposite case: the probability of no rain on a particular day is 0.7, so the probability of a completely dry week is 0.7 multiplied by itself seven times, which is about 0.082. That leaves about 0.918 for at least one wet day. Repeating a fairly unlikely event many times makes it quite likely that it happens somewhere along the way. (Mark this one yourself.)",
       },
+      {
+        question: "What is the probability of an impossible event?",
+        choices: [
+          "½",
+          "0",
+          "1",
+          "−1",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0, because an impossible event can never happen, so it sits at 0 on the probability scale.",
+      },
+      {
+        question: "On the probability scale, what number means 'certain'?",
+        choices: [
+          "0",
+          "0.5",
+          "1",
+          "−1",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because the probability scale runs from 0 (impossible) to 1 (certain).",
+      },
+      {
+        question: "A fair coin is flipped. What is P(tails)?",
+        choices: [
+          "1",
+          "½",
+          "1/3",
+          "¼",
+        ],
+        accept: [
+          "½",
+          "1/2",
+          "0.5",
+        ],
+        answer: "½, because there are 2 equally likely outcomes (heads or tails) and 1 of them is tails.",
+      },
+      {
+        question: "A fair dice is rolled. What is P(rolling a 4)?",
+        choices: [
+          "4/6",
+          "1/4",
+          "1/6",
+          "1/5",
+        ],
+        accept: [
+          "1/6",
+        ],
+        answer: "1/6, because there is one 4 out of six equally likely numbers.",
+      },
+      {
+        question: "A fair dice is rolled. What is P(a number greater than 4)?",
+        choices: [
+          "1/2",
+          "1/3",
+          "2/3",
+          "1/6",
+        ],
+        accept: [
+          "1/3",
+        ],
+        answer: "1/3, because only 5 and 6 are greater than 4, giving 2/6 = 1/3.",
+      },
+      {
+        question: "P(A) = 0.7. What is P(not A)?",
+        choices: [
+          "0.7",
+          "1.7",
+          "0.03",
+          "0.3",
+        ],
+        accept: [
+          "0.3",
+        ],
+        answer: "0.3, because P(not A) = 1 − P(A) = 1 − 0.7 = 0.3.",
+      },
+      {
+        question: "P(win) = 3/8. What is P(not winning)?",
+        choices: [
+          "5/8",
+          "3/8",
+          "1/8",
+          "5/3",
+        ],
+        accept: [
+          "5/8",
+        ],
+        answer: "5/8, because P(not winning) = 1 − 3/8 = 8/8 − 3/8 = 5/8.",
+      },
+      {
+        question: "A bag has 3 red and 2 blue balls. What is P(red)?",
+        choices: [
+          "3/2",
+          "2/5",
+          "1/2",
+          "3/5",
+        ],
+        accept: [
+          "3/5",
+        ],
+        answer: "3/5, because 3 of the 5 balls in total are red. Divide by the total, not by the number of blue.",
+      },
+      {
+        question: "A bag has 4 green and 5 white counters. What is P(white)?",
+        choices: [
+          "4/9",
+          "5/9",
+          "5/4",
+          "1/5",
+        ],
+        accept: [
+          "5/9",
+        ],
+        answer: "5/9, because there are 4 + 5 = 9 counters and 5 of them are white.",
+      },
+      {
+        question: "A spinner has 10 equal parts and 3 are red. What is P(not red)?",
+        choices: [
+          "3/10",
+          "3/7",
+          "7/10",
+          "1/7",
+        ],
+        accept: [
+          "7/10",
+        ],
+        answer: "7/10, because 10 − 3 = 7 parts are not red, out of 10 equal parts.",
+      },
+      {
+        question: "P(red) = 0.2. How many reds would you expect in 50 spins?",
+        choices: [
+          "20",
+          "10",
+          "25",
+          "5",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because expected frequency = probability × trials = 0.2 × 50 = 10.",
+      },
+      {
+        question: "A fair dice is rolled 60 times. How many 3s would you expect?",
+        choices: [
+          "10",
+          "20",
+          "6",
+          "3",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because P(3) = 1/6 and 1/6 of 60 = 60 ÷ 6 = 10.",
+      },
+      {
+        question: "P(red) = 0.25, P(blue) = 0.5. The only other colour is green. Find P(green).",
+        choices: [
+          "0.75",
+          "0.5",
+          "0.25",
+          "1.75",
+        ],
+        accept: [
+          "0.25",
+        ],
+        answer: "0.25, because all probabilities add to 1: 1 − 0.25 − 0.5 = 0.25.",
+      },
+      {
+        question: "Events that cannot happen at the same time are called:",
+        choices: [
+          "independent",
+          "mutually exclusive",
+          "equally likely",
+          "biased",
+        ],
+        accept: [
+          "mutually exclusive",
+        ],
+        answer: "mutually exclusive, because they exclude each other: if one happens, the other cannot.",
+      },
+      {
+        question: "A and B are mutually exclusive. P(A) = 0.3, P(B) = 0.4. Find P(A or B).",
+        choices: [
+          "0.12",
+          "0.7",
+          "0.1",
+          "0.35",
+        ],
+        accept: [
+          "0.7",
+        ],
+        answer: "0.7, because for mutually exclusive events you add: 0.3 + 0.4 = 0.7. Multiplying is for AND.",
+      },
+      {
+        question: "Events where one does not affect the other are called:",
+        choices: [
+          "mutually exclusive",
+          "dependent",
+          "independent",
+          "impossible",
+        ],
+        accept: [
+          "independent",
+        ],
+        answer: "independent, because the outcome of one has no effect on the probability of the other.",
+      },
+      {
+        question: "Two fair coins are flipped. What is P(two heads)?",
+        choices: [
+          "1/2",
+          "1/3",
+          "1/8",
+          "1/4",
+        ],
+        accept: [
+          "1/4",
+        ],
+        answer: "1/4, because the outcomes HH, HT, TH, TT are equally likely and only HH works: ½ × ½ = 1/4.",
+      },
+      {
+        question: "A and B are independent. P(A) = 1/2, P(B) = 1/3. Find P(A and B).",
+        choices: [
+          "1/6",
+          "5/6",
+          "2/5",
+          "1/5",
+        ],
+        accept: [
+          "1/6",
+        ],
+        answer: "1/6, because for independent events P(A and B) = P(A) × P(B) = 1/2 × 1/3 = 1/6.",
+      },
+      {
+        question: "A coin is flipped and a dice rolled. What is P(head and a 6)?",
+        choices: [
+          "1/8",
+          "1/12",
+          "2/3",
+          "1/6",
+        ],
+        accept: [
+          "1/12",
+        ],
+        answer: "1/12, because the events are independent: ½ × 1/6 = 1/12.",
+      },
+      {
+        question: "A fair dice is rolled. What is P(a 1 or a 2)?",
+        choices: [
+          "1/36",
+          "1/6",
+          "1/3",
+          "1/2",
+        ],
+        accept: [
+          "1/3",
+        ],
+        answer: "1/3, because 1 and 2 are mutually exclusive, so add: 1/6 + 1/6 = 2/6 = 1/3.",
+      },
+      {
+        question: "A spinner lands on blue 12 times in 40 spins. Relative frequency of blue?",
+        choices: [
+          "0.12",
+          "0.3",
+          "0.4",
+          "0.7",
+        ],
+        accept: [
+          "0.3",
+        ],
+        answer: "0.3, because relative frequency = 12 ÷ 40 = 0.3.",
+      },
+      {
+        question: "A pin lands point up 30 times in 50 throws. Estimate P(point up).",
+        choices: [
+          "0.3",
+          "0.5",
+          "0.4",
+          "0.6",
+        ],
+        accept: [
+          "0.6",
+        ],
+        answer: "0.6, because the estimate is the relative frequency: 30 ÷ 50 = 0.6.",
+      },
+      {
+        question: "Which number of trials gives the most reliable relative frequency?",
+        choices: [
+          "10",
+          "50",
+          "100",
+          "1000",
+        ],
+        accept: [
+          "1000",
+        ],
+        answer: "1000, because the more trials you do, the closer the relative frequency gets to the true probability.",
+      },
+      {
+        question: "P(red) = 0.15. How many reds would you expect in 200 spins?",
+        choices: [
+          "15",
+          "30",
+          "20",
+          "300",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because expected frequency = 0.15 × 200 = 30.",
+      },
+      {
+        question: "Which phrase describes a probability of 0.5?",
+        choices: [
+          "even chance",
+          "likely",
+          "unlikely",
+          "certain",
+        ],
+        accept: [
+          "even chance",
+        ],
+        answer: "even chance, because 0.5 is exactly halfway between impossible (0) and certain (1).",
+      },
+      {
+        question: "A bag has 2 red, 3 blue and 5 green balls. What is P(blue)?",
+        choices: [
+          "3/7",
+          "1/3",
+          "3/10",
+          "3/5",
+        ],
+        accept: [
+          "3/10",
+        ],
+        answer: "3/10, because there are 2 + 3 + 5 = 10 balls and 3 of them are blue.",
+      },
+      {
+        question: "A bag holds only red and yellow counters. What is P(purple)?",
+        choices: [
+          "0",
+          "1/2",
+          "1",
+          "1/3",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0, because there are no purple counters, so picking one is impossible.",
+      },
+      {
+        question: "A bag has 4 red and 3 blue. A red is taken and kept. P(next is red)?",
+        choices: [
+          "4/7",
+          "3/7",
+          "1/2",
+          "2/3",
+        ],
+        accept: [
+          "1/2",
+        ],
+        answer: "1/2, because 3 red are left out of 6 counters: 3/6 = 1/2.",
+      },
     ],
 
     misconceptions: [
@@ -8599,6 +12048,333 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Describe the steps needed to draw a pie chart from a frequency table, and state the check you should make at the end.",
         answer: "Start by adding all the frequencies to find the total, since the total represents the full 360° of the circle. For each category work out its angle as (frequency ÷ total) × 360, rounding sensibly if it is not exact. Draw a circle, mark a radius to start from, then measure each angle in turn with a protractor, always measuring from the previous radius rather than from the start. Label every sector or add a key. The final check is that all the angles add up to 360° — if they do not, one has been measured or calculated wrongly, and a sector that is out by a few degrees usually means a rounding error. (Mark this one yourself.)",
+      },
+      {
+        question: "What is the mode of 3, 5, 5, 8, 9?",
+        choices: [
+          "6",
+          "5",
+          "9",
+          "2",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because the mode is the most common value and 5 appears twice.",
+      },
+      {
+        question: "What is the median of 7, 2, 9, 4, 3?",
+        choices: [
+          "9",
+          "5",
+          "4",
+          "7",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because in order the list is 2, 3, 4, 7, 9 and the middle value is 4.",
+      },
+      {
+        question: "What is the mean of 2, 4, 6, 8?",
+        choices: [
+          "5",
+          "20",
+          "6",
+          "4",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because the total is 2 + 4 + 6 + 8 = 20 and 20 ÷ 4 = 5.",
+      },
+      {
+        question: "What is the range of 4, 11, 6, 2, 9?",
+        choices: [
+          "7",
+          "6",
+          "11",
+          "9",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "9, because range = largest − smallest = 11 − 2 = 9.",
+      },
+      {
+        question: "Find the mean of 3, 3, 4, 10.",
+        choices: [
+          "3",
+          "5",
+          "3.5",
+          "7",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because the total is 3 + 3 + 4 + 10 = 20 and 20 ÷ 4 = 5.",
+      },
+      {
+        question: "Find the median of 1, 3, 6, 8.",
+        choices: [
+          "3",
+          "6",
+          "4.5",
+          "9",
+        ],
+        accept: [
+          "4.5",
+        ],
+        answer: "4.5, because the two middle values are 3 and 6, and halfway between them is (3 + 6) ÷ 2 = 4.5.",
+      },
+      {
+        question: "What is the mode of 2, 7, 7, 3, 2, 7?",
+        choices: [
+          "2",
+          "3",
+          "7",
+          "5",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "7, because 7 appears three times, more than any other value.",
+      },
+      {
+        question: "Which average is usually best when the data has an extreme value?",
+        choices: [
+          "mean",
+          "median",
+          "mode",
+          "range",
+        ],
+        accept: [
+          "median",
+        ],
+        answer: "median, because the middle value is not dragged up or down by one extreme value, unlike the mean.",
+      },
+      {
+        question: "Which average can be used for non-numerical data such as colours?",
+        choices: [
+          "mode",
+          "mean",
+          "median",
+          "range",
+        ],
+        accept: [
+          "mode",
+        ],
+        answer: "mode, because you can find the most common colour, but you cannot add or order colours.",
+      },
+      {
+        question: "Shoe size is an example of which type of data?",
+        choices: [
+          "continuous",
+          "discrete",
+          "qualitative",
+          "categorical",
+        ],
+        accept: [
+          "discrete",
+        ],
+        answer: "discrete, because shoe sizes can only take set values (like 5, 5½, 6), not any value in between.",
+      },
+      {
+        question: "Height is an example of which type of data?",
+        choices: [
+          "discrete",
+          "qualitative",
+          "continuous",
+          "categorical",
+        ],
+        accept: [
+          "continuous",
+        ],
+        answer: "continuous, because height is measured and can take any value in a range, like 152.37 cm.",
+      },
+      {
+        question: "Data that you collect yourself is called:",
+        choices: [
+          "secondary data",
+          "primary data",
+          "discrete data",
+          "qualitative data",
+        ],
+        accept: [
+          "primary data",
+        ],
+        answer: "primary data, because you collected it first-hand. Data someone else collected is secondary.",
+      },
+      {
+        question: "Points on a scatter graph show no pattern at all. What correlation is this?",
+        choices: [
+          "negative",
+          "positive",
+          "no correlation",
+          "strong positive",
+        ],
+        accept: [
+          "no correlation",
+        ],
+        answer: "no correlation, because there is no trend: one variable does not go up or down with the other.",
+      },
+      {
+        question: "Outside temperature against hot chocolate sales would likely show:",
+        choices: [
+          "positive",
+          "negative",
+          "no correlation",
+          "perfect positive",
+        ],
+        accept: [
+          "negative",
+        ],
+        answer: "negative, because as the temperature goes up, fewer hot chocolates are sold.",
+      },
+      {
+        question: "A sector is ¼ of a pie chart. What is its angle?",
+        choices: [
+          "25°",
+          "45°",
+          "90°",
+          "120°",
+        ],
+        accept: [
+          "90°",
+        ],
+        answer: "90°, because a full pie chart is 360° and ¼ of 360° = 90°.",
+      },
+      {
+        question: "A sector is 1/3 of a pie chart. What is its angle?",
+        choices: [
+          "120°",
+          "33°",
+          "60°",
+          "90°",
+        ],
+        accept: [
+          "120°",
+        ],
+        answer: "120°, because 1/3 of 360° = 360 ÷ 3 = 120°.",
+      },
+      {
+        question: "A pie chart shows 36 people. How many degrees is each person?",
+        choices: [
+          "36°",
+          "10°",
+          "3.6°",
+          "0.1°",
+        ],
+        accept: [
+          "10°",
+        ],
+        answer: "10°, because 360° ÷ 36 people = 10° per person.",
+      },
+      {
+        question: "A pie chart sector is 180°. What fraction of the data is that?",
+        choices: [
+          "1/3",
+          "¼",
+          "½",
+          "2/3",
+        ],
+        accept: [
+          "½",
+          "1/2",
+          "0.5",
+        ],
+        answer: "½, because 180° out of 360° is 180/360 = ½.",
+      },
+      {
+        question: "Surveying every member of a population is called:",
+        choices: [
+          "a sample",
+          "a census",
+          "a random sample",
+          "a pilot study",
+        ],
+        accept: [
+          "a census",
+        ],
+        answer: "a census, because it collects data from the whole population, not just a sample of it.",
+      },
+      {
+        question: "A larger sample usually makes the results:",
+        choices: [
+          "less reliable",
+          "biased",
+          "more reliable",
+          "exact",
+        ],
+        accept: [
+          "more reliable",
+        ],
+        answer: "more reliable, because more data reduces the effect of a few unusual results.",
+      },
+      {
+        question: "The mean of 5 numbers is 6. What is their total?",
+        choices: [
+          "11",
+          "30",
+          "6",
+          "1.2",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because total = mean × how many numbers = 6 × 5 = 30.",
+      },
+      {
+        question: "Find the range of −3, 1, 4 and 5.",
+        choices: [
+          "8",
+          "2",
+          "5",
+          "−8",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because range = 5 − (−3) = 5 + 3 = 8.",
+      },
+      {
+        question: "Find the mean of 1.5, 2.5 and 5.",
+        choices: [
+          "2.5",
+          "3",
+          "9",
+          "3.5",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because the total is 1.5 + 2.5 + 5 = 9 and 9 ÷ 3 = 3.",
+      },
+      {
+        question: "Which chart is best for showing change over time?",
+        choices: [
+          "pie chart",
+          "scatter graph",
+          "Venn diagram",
+          "line graph",
+        ],
+        accept: [
+          "line graph",
+        ],
+        answer: "line graph, because time goes along the bottom and the line shows how the value rises and falls.",
+      },
+      {
+        question: "Which average can have more than one value for a data set?",
+        choices: [
+          "mean",
+          "mode",
+          "median",
+          "range",
+        ],
+        accept: [
+          "mode",
+        ],
+        answer: "mode, because two or more values can tie for most common, e.g. 2, 2, 5, 5 has modes 2 and 5.",
       },
     ],
 
@@ -9725,6 +13501,462 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain why the sequence 1, 2, 4, 8, 16 cannot have an nth term of the form an + b.",
         answer: "A rule of the form an + b changes by the same amount a each time n goes up by 1, so it can only ever produce a sequence with a constant difference. Here the differences are 1, 2, 4, 8, which keep growing, so no values of a and b will fit. The sequence is geometric instead: every term is double the one before, so the rule is 2 to the power of n − 1. (Mark this one yourself.)",
       },
+      {
+        question: "What is the next term in 4, 9, 14, 19, ...?",
+        choices: [
+          "24",
+          "23",
+          "25",
+          "29",
+        ],
+        accept: [
+          "24",
+        ],
+        answer: "24, because the sequence goes up by 5 each time: 19 + 5 = 24.",
+      },
+      {
+        question: "What is the nth term of 6, 10, 14, 18, ...?",
+        choices: [
+          "n + 4",
+          "4n + 2",
+          "4n + 6",
+          "2n + 4",
+        ],
+        accept: [
+          "4n + 2",
+        ],
+        answer: "4n + 2, because it goes up in 4s (4n = 4, 8, 12…) and each term is 2 more than 4n.",
+      },
+      {
+        question: "What is the nth term of 3, 5, 7, 9, ...?",
+        choices: [
+          "2n + 3",
+          "n + 2",
+          "2n + 1",
+          "3n − 1",
+        ],
+        accept: [
+          "2n + 1",
+        ],
+        answer: "2n + 1, because it goes up in 2s (2n = 2, 4, 6…) and each term is 1 more than 2n.",
+      },
+      {
+        question: "What is the nth term of 12, 10, 8, 6, ...?",
+        choices: [
+          "12 − 2n",
+          "2n + 10",
+          "−2n + 10",
+          "14 − 2n",
+        ],
+        accept: [
+          "14 − 2n",
+        ],
+        answer: "14 − 2n, because it goes down in 2s (−2n) and the term before the first, the zero term, is 14.",
+      },
+      {
+        question: "What is the term-to-term rule for 5, 8, 11, 14, ...?",
+        choices: [
+          "Add 3",
+          "3n + 2",
+          "Add 5",
+          "Multiply by 3",
+        ],
+        accept: [
+          "Add 3",
+        ],
+        answer: "Add 3, because each term is 3 more than the one before; 3n + 2 is the nth term, not the term-to-term rule.",
+      },
+      {
+        question: "What is the term-to-term rule for 3, 6, 12, 24, ...?",
+        choices: [
+          "Add 3",
+          "Multiply by 2",
+          "Add 6",
+          "Multiply by 3",
+        ],
+        accept: [
+          "Multiply by 2",
+        ],
+        answer: "Multiply by 2, because each term doubles: 3 × 2 = 6, 6 × 2 = 12, 12 × 2 = 24.",
+      },
+      {
+        question: "Work out the 5th term of the sequence with nth term 3n + 4.",
+        choices: [
+          "23",
+          "7",
+          "19",
+          "39",
+        ],
+        accept: [
+          "19",
+        ],
+        answer: "19, because you substitute n = 5: 3 × 5 + 4 = 15 + 4 = 19.",
+      },
+      {
+        question: "Work out the 1st term of the sequence with nth term 5n − 2.",
+        choices: [
+          "5",
+          "−2",
+          "8",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because you substitute n = 1: 5 × 1 − 2 = 3.",
+      },
+      {
+        question: "What type of sequence is 2, 4, 8, 16, ...?",
+        choices: [
+          "Geometric",
+          "Arithmetic",
+          "Quadratic",
+          "Fibonacci",
+        ],
+        accept: [
+          "Geometric",
+        ],
+        answer: "Geometric, because each term is multiplied by the same number (2) to get the next.",
+      },
+      {
+        question: "What type of sequence is 1, 4, 9, 16, 25, ...?",
+        choices: [
+          "Arithmetic",
+          "Quadratic",
+          "Geometric",
+          "Fibonacci",
+        ],
+        accept: [
+          "Quadratic",
+        ],
+        answer: "Quadratic, because these are the square numbers n²: the differences 3, 5, 7, 9 go up by 2 each time.",
+      },
+      {
+        question: "What type of sequence is 1, 1, 2, 3, 5, 8, ...?",
+        choices: [
+          "Geometric",
+          "Quadratic",
+          "Fibonacci",
+          "Arithmetic",
+        ],
+        accept: [
+          "Fibonacci",
+        ],
+        answer: "Fibonacci, because each term is the sum of the two terms before it: 3 + 5 = 8.",
+      },
+      {
+        question: "What is the next term of the sequence 3, 4, 7, 11, 18, ...?",
+        choices: [
+          "25",
+          "36",
+          "22",
+          "29",
+        ],
+        accept: [
+          "29",
+        ],
+        answer: "29, because it is Fibonacci-style: each term is the sum of the previous two, so 11 + 18 = 29.",
+      },
+      {
+        question: "What is the common difference of 7, 11, 15, 19, ...?",
+        choices: [
+          "4",
+          "7",
+          "3",
+          "−4",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because each term is 4 more than the one before: 11 − 7 = 4.",
+      },
+      {
+        question: "What is the second difference of 2, 5, 10, 17, ...?",
+        choices: [
+          "3",
+          "2",
+          "1",
+          "7",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because the first differences are 3, 5, 7 and these go up by 2 each time.",
+      },
+      {
+        question: "What is the next term in 50, 45, 40, 35, ...?",
+        choices: [
+          "25",
+          "40",
+          "30",
+          "20",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because the sequence goes down by 5 each time: 35 − 5 = 30.",
+      },
+      {
+        question: "What is the next term in 0.5, 1, 2, 4, ...?",
+        choices: [
+          "6",
+          "5",
+          "4.5",
+          "8",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because each term is doubled (a geometric sequence with ratio 2): 4 × 2 = 8.",
+      },
+      {
+        question: "Which term of the sequence with nth term 4n + 1 is equal to 41?",
+        choices: [
+          "10th",
+          "11th",
+          "165th",
+          "9th",
+        ],
+        accept: [
+          "10th",
+        ],
+        answer: "10th, because 4n + 1 = 41 gives 4n = 40, so n = 10.",
+      },
+      {
+        question: "Expand and simplify (x + 2)(x + 5).",
+        choices: [
+          "x² + 10x + 7",
+          "x² + 7x + 10",
+          "x² + 7x + 7",
+          "x² + 10",
+        ],
+        accept: [
+          "x² + 7x + 10",
+        ],
+        answer: "x² + 7x + 10, because x × x = x², 5x + 2x = 7x and 2 × 5 = 10.",
+      },
+      {
+        question: "Expand and simplify (x − 4)(x + 1).",
+        choices: [
+          "x² + 3x − 4",
+          "x² − 3x + 4",
+          "x² − 3x − 4",
+          "x² − 5x − 4",
+        ],
+        accept: [
+          "x² − 3x − 4",
+        ],
+        answer: "x² − 3x − 4, because x − 4x = −3x and −4 × 1 = −4.",
+      },
+      {
+        question: "Expand and simplify (x + 3)².",
+        choices: [
+          "x² + 9",
+          "x² + 3x + 9",
+          "x² + 6x + 6",
+          "x² + 6x + 9",
+        ],
+        accept: [
+          "x² + 6x + 9",
+        ],
+        answer: "x² + 6x + 9, because (x + 3)(x + 3) = x² + 3x + 3x + 9; don't forget the middle term.",
+      },
+      {
+        question: "Expand and simplify (x − 5)(x − 2).",
+        choices: [
+          "x² − 7x + 10",
+          "x² − 7x − 10",
+          "x² + 7x + 10",
+          "x² − 3x + 10",
+        ],
+        accept: [
+          "x² − 7x + 10",
+        ],
+        answer: "x² − 7x + 10, because −2x − 5x = −7x and −5 × −2 = +10.",
+      },
+      {
+        question: "Factorise x² + 6x + 8.",
+        choices: [
+          "(x + 1)(x + 8)",
+          "(x + 2)(x + 4)",
+          "(x + 6)(x + 2)",
+          "(x − 2)(x − 4)",
+        ],
+        accept: [
+          "(x + 2)(x + 4)",
+        ],
+        answer: "(x + 2)(x + 4), because 2 and 4 multiply to 8 and add to 6.",
+      },
+      {
+        question: "Factorise x² − x − 12.",
+        choices: [
+          "(x + 4)(x − 3)",
+          "(x − 6)(x + 2)",
+          "(x − 4)(x + 3)",
+          "(x − 12)(x + 1)",
+        ],
+        accept: [
+          "(x − 4)(x + 3)",
+        ],
+        answer: "(x − 4)(x + 3), because −4 and 3 multiply to −12 and add to −1.",
+      },
+      {
+        question: "Factorise x² + 2x − 15.",
+        choices: [
+          "(x − 5)(x + 3)",
+          "(x + 15)(x − 1)",
+          "(x + 5)(x + 3)",
+          "(x + 5)(x − 3)",
+        ],
+        accept: [
+          "(x + 5)(x − 3)",
+        ],
+        answer: "(x + 5)(x − 3), because 5 and −3 multiply to −15 and add to 2.",
+      },
+      {
+        question: "Factorise x² − 6x + 5.",
+        choices: [
+          "(x − 1)(x − 5)",
+          "(x + 1)(x + 5)",
+          "(x − 2)(x − 3)",
+          "(x + 1)(x − 5)",
+        ],
+        accept: [
+          "(x − 1)(x − 5)",
+        ],
+        answer: "(x − 1)(x − 5), because −1 and −5 multiply to +5 and add to −6.",
+      },
+      {
+        question: "Factorise x² − 25.",
+        choices: [
+          "(x − 5)²",
+          "(x + 5)(x − 5)",
+          "(x + 5)²",
+          "(x − 25)(x + 1)",
+        ],
+        accept: [
+          "(x + 5)(x − 5)",
+        ],
+        answer: "(x + 5)(x − 5), because it is a difference of two squares: x² − 5² = (x + 5)(x − 5).",
+      },
+      {
+        question: "Factorise x² − 1.",
+        choices: [
+          "(x − 1)²",
+          "x(x − 1)",
+          "(x + 1)(x − 1)",
+          "(x + 1)²",
+        ],
+        accept: [
+          "(x + 1)(x − 1)",
+        ],
+        answer: "(x + 1)(x − 1), because x² − 1 is a difference of two squares: x² − 1².",
+      },
+      {
+        question: "Solve (x − 3)(x + 7) = 0.",
+        choices: [
+          "x = −3 or x = 7",
+          "x = 3 or x = 7",
+          "x = −3 or x = −7",
+          "x = 3 or x = −7",
+        ],
+        accept: [
+          "x = 3 or x = −7",
+        ],
+        answer: "x = 3 or x = −7, because one bracket must be zero: x − 3 = 0 or x + 7 = 0.",
+      },
+      {
+        question: "What are the solutions of x(x − 6) = 0?",
+        choices: [
+          "x = 0 or x = 6",
+          "x = 6 only",
+          "x = 0 or x = −6",
+          "x = −6 only",
+        ],
+        accept: [
+          "x = 0 or x = 6",
+        ],
+        answer: "x = 0 or x = 6, because either x = 0 or x − 6 = 0; don't lose the x = 0 solution.",
+      },
+      {
+        question: "Where does y = (x − 2)(x − 8) cross the x-axis?",
+        choices: [
+          "x = −2 and x = −8",
+          "x = 2 and x = 8",
+          "x = 2 and x = −8",
+          "x = 16",
+        ],
+        accept: [
+          "x = 2 and x = 8",
+        ],
+        answer: "x = 2 and x = 8, because y = 0 when x − 2 = 0 or x − 8 = 0 (16 is where it crosses the y-axis).",
+      },
+      {
+        question: "What is the turning point of y = (x − 3)² + 1?",
+        choices: [
+          "(−3, 1)",
+          "(3, −1)",
+          "(3, 1)",
+          "(1, 3)",
+        ],
+        accept: [
+          "(3, 1)",
+        ],
+        answer: "(3, 1), because (x − a)² + b has its turning point at (a, b): the bracket is 0 when x = 3, leaving y = 1.",
+        higherOnly: true,
+      },
+      {
+        question: "Does the graph of y = x² + 4x − 1 have a minimum or a maximum?",
+        choices: [
+          "Maximum",
+          "Both",
+          "Neither",
+          "Minimum",
+        ],
+        accept: [
+          "Minimum",
+        ],
+        answer: "Minimum, because the x² term is positive, so the curve is a U shape with its lowest point at the bottom.",
+      },
+      {
+        question: "What is the line of symmetry of y = (x − 1)(x − 5)?",
+        choices: [
+          "x = 3",
+          "x = −3",
+          "x = 6",
+          "x = 4",
+        ],
+        accept: [
+          "x = 3",
+        ],
+        answer: "x = 3, because the roots are x = 1 and x = 5 and the line of symmetry is halfway between: (1 + 5) ÷ 2 = 3.",
+      },
+      {
+        question: "What is the coefficient of x when (x + 4)(x − 9) is expanded?",
+        choices: [
+          "5",
+          "−5",
+          "−36",
+          "13",
+        ],
+        accept: [
+          "−5",
+        ],
+        answer: "−5, because the x terms are −9x + 4x = −5x.",
+      },
+      {
+        question: "What is the next term in the geometric sequence 81, 27, 9, 3, ...?",
+        choices: [
+          "0",
+          "−3",
+          "1",
+          "⅓",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because each term is divided by 3 (multiplied by ⅓): 3 ÷ 3 = 1.",
+      },
     ],
 
     misconceptions: [
@@ -10443,6 +14675,216 @@ export const MATHS: Record<string, TopicContent> = {
         question: "A student writes '90°, because of the circle theorem' as the reason in a question about a diameter. Explain why this earns no reason mark and write out a reason that would.",
         answer: "'The circle theorem' identifies nothing — there are several of them and an examiner cannot tell which one has been used. The reason mark is for naming the specific rule together with the condition that makes it apply. A version that scores is 'angle ACB = 90° because the angle in a semicircle is a right angle, and AB is a diameter'. Learning each theorem as a sentence rather than as a picture is what turns the reason mark into a reliable one. (Mark this one yourself.)",
       },
+      {
+        question: "A, B and C lie on a circle and AB is a diameter. What is angle ACB?",
+        choices: [
+          "180°",
+          "90°",
+          "60°",
+          "45°",
+        ],
+        accept: [
+          "90°",
+        ],
+        answer: "90°, because the angle in a semicircle is always a right angle.",
+        higherOnly: true,
+      },
+      {
+        question: "The angle at the centre is 100°. Find the angle at the circumference on the same arc.",
+        choices: [
+          "50°",
+          "200°",
+          "100°",
+          "80°",
+        ],
+        accept: [
+          "50°",
+        ],
+        answer: "50°, because the angle at the centre is twice the angle at the circumference: 100 ÷ 2 = 50°.",
+        higherOnly: true,
+      },
+      {
+        question: "An angle at the circumference is 35°. What is the angle at the centre on the same arc?",
+        choices: [
+          "17.5°",
+          "70°",
+          "35°",
+          "145°",
+        ],
+        accept: [
+          "70°",
+        ],
+        answer: "70°, because the angle at the centre is twice the angle at the circumference: 2 × 35 = 70°.",
+        higherOnly: true,
+      },
+      {
+        question: "One angle of a cyclic quadrilateral is 70°. What is the opposite angle?",
+        choices: [
+          "70°",
+          "290°",
+          "110°",
+          "20°",
+        ],
+        accept: [
+          "110°",
+        ],
+        answer: "110°, because opposite angles in a cyclic quadrilateral add up to 180°: 180 − 70 = 110°.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent touches a circle, centre O, at T. P is on the tangent. Angle TOP = 35°. Find OPT.",
+        choices: [
+          "35°",
+          "145°",
+          "90°",
+          "55°",
+        ],
+        accept: [
+          "55°",
+        ],
+        answer: "55°, because the tangent is perpendicular to the radius, so angle OTP = 90° and 180 − 90 − 35 = 55°.",
+        higherOnly: true,
+      },
+      {
+        question: "Angles ACB and ADB stand on chord AB in the same segment. ACB = 62°. Find ADB.",
+        choices: [
+          "124°",
+          "62°",
+          "31°",
+          "118°",
+        ],
+        accept: [
+          "62°",
+        ],
+        answer: "62°, because angles in the same segment standing on the same chord are equal.",
+        higherOnly: true,
+      },
+      {
+        question: "Tangents PA and PB are drawn from P to a circle. What is true about PA and PB?",
+        choices: [
+          "PA = 2PB",
+          "PA = PB",
+          "PA ⟂ PB",
+          "PA ∥ PB",
+        ],
+        accept: [
+          "PA = PB",
+        ],
+        answer: "PA = PB, because two tangents drawn to a circle from the same outside point are equal in length.",
+        higherOnly: true,
+      },
+      {
+        question: "The angle between a tangent and a chord is 58°. Find the angle in the alternate segment.",
+        choices: [
+          "32°",
+          "122°",
+          "58°",
+          "116°",
+        ],
+        accept: [
+          "58°",
+        ],
+        answer: "58°, because the alternate segment theorem says the tangent–chord angle equals the angle in the alternate segment.",
+        higherOnly: true,
+      },
+      {
+        question: "Which theorem gives angle ACB = 90° when AB is a diameter?",
+        choices: [
+          "alternate segment",
+          "same segment",
+          "angle in a semicircle",
+          "cyclic quadrilateral",
+        ],
+        accept: [
+          "angle in a semicircle",
+        ],
+        answer: "angle in a semicircle, because any angle at the circumference standing on a diameter is 90°.",
+        higherOnly: true,
+      },
+      {
+        question: "Opposite angles of a cyclic quadrilateral are x and 3x. Find x.",
+        choices: [
+          "90",
+          "22.5",
+          "45",
+          "135",
+        ],
+        accept: [
+          "45",
+        ],
+        answer: "45, because opposite angles add to 180°, so 4x = 180 and x = 45.",
+        higherOnly: true,
+      },
+      {
+        question: "AB is a diameter and C is on the circle. Angle CAB = 40°. Find angle ABC.",
+        choices: [
+          "40°",
+          "140°",
+          "50°",
+          "90°",
+        ],
+        accept: [
+          "50°",
+        ],
+        answer: "50°, because angle ACB = 90° (angle in a semicircle), so ABC = 180 − 90 − 40 = 50°.",
+        higherOnly: true,
+      },
+      {
+        question: "Tangents from P touch a circle, centre O, at A and B. What is angle OAP?",
+        choices: [
+          "45°",
+          "90°",
+          "180°",
+          "60°",
+        ],
+        accept: [
+          "90°",
+        ],
+        answer: "90°, because a tangent is perpendicular to the radius at the point where it touches.",
+        higherOnly: true,
+      },
+      {
+        question: "Tangents PA and PB touch a circle, centre O. Angle APB = 40°. Find angle AOB.",
+        choices: [
+          "40°",
+          "80°",
+          "140°",
+          "320°",
+        ],
+        accept: [
+          "140°",
+        ],
+        answer: "140°, because OAP and OBP are both 90° and a quadrilateral's angles add to 360°: 360 − 90 − 90 − 40 = 140°.",
+        higherOnly: true,
+      },
+      {
+        question: "A tangent from P touches a circle of radius 6 cm. OP = 10 cm. Find the tangent length in cm.",
+        choices: [
+          "4",
+          "16",
+          "11.7",
+          "8",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because tangent ⟂ radius makes a right angle, so by Pythagoras √(10² − 6²) = √64 = 8 cm.",
+        higherOnly: true,
+      },
+      {
+        question: "What does the perpendicular from the centre of a circle do to a chord?",
+        choices: [
+          "bisects it",
+          "doubles it",
+          "is parallel to it",
+          "trisects it",
+        ],
+        accept: [
+          "bisects it",
+        ],
+        answer: "bisects it, because the perpendicular from the centre to a chord always cuts the chord into two equal halves.",
+        higherOnly: true,
+      },
     ],
 
     misconceptions: [
@@ -11141,6 +15583,163 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain why reflecting a shape in one mirror line and then reflecting the image in a second, parallel mirror line has the same effect as a single translation.",
         answer: "Each reflection reverses the shape, so doing it twice turns it back the right way round, which is why the final image is the same way round as the original rather than a mirror image. Every point also ends up moved in the same direction, perpendicular to the two mirrors, and by the same distance — twice the gap between the mirrors — no matter which point you follow or which side of the first mirror it started on. A movement that is identical for every point is exactly what a translation is, so the pair of reflections can be replaced by one. The gap between the mirrors is what controls how far the shape travels. (Mark this one yourself.)",
       },
+      {
+        question: "A shape slides 4 left and 1 up. What type of transformation is this?",
+        choices: [
+          "Rotation",
+          "Translation",
+          "Reflection",
+          "Enlargement",
+        ],
+        accept: [
+          "Translation",
+        ],
+        answer: "Translation, because every point slides the same distance in the same direction, with no turning or resizing.",
+      },
+      {
+        question: "A point moves 3 right, then 5 right. What single move is that?",
+        choices: [
+          "2 right",
+          "8 left",
+          "8 right",
+          "5 right",
+        ],
+        accept: [
+          "8 right",
+        ],
+        answer: "8 right, because both moves go the same way, so you add them: 3 + 5 = 8 to the right.",
+      },
+      {
+        question: "A shape moves 2 right and 6 down. What move takes it back?",
+        choices: [
+          "2 right and 6 up",
+          "2 left and 6 up",
+          "2 left and 6 down",
+          "6 left and 2 up",
+        ],
+        accept: [
+          "2 left and 6 up",
+        ],
+        answer: "2 left and 6 up, because to undo a move you reverse BOTH directions: right becomes left, down becomes up.",
+      },
+      {
+        question: "Reflect the point (4, 1) in the y-axis. What is its image?",
+        choices: [
+          "(4, −1)",
+          "(−4, 1)",
+          "(−4, −1)",
+          "(1, 4)",
+        ],
+        accept: [
+          "(−4, 1)",
+        ],
+        answer: "(−4, 1), because reflecting in the y-axis flips left and right, so only the x-coordinate changes sign.",
+      },
+      {
+        question: "Reflect the point (2, 7) in the line y = x. What is its image?",
+        choices: [
+          "(−2, 7)",
+          "(2, −7)",
+          "(7, 2)",
+          "(−7, −2)",
+        ],
+        accept: [
+          "(7, 2)",
+        ],
+        answer: "(7, 2), because reflecting in y = x swaps the x- and y-coordinates.",
+      },
+      {
+        question: "Rotate (3, 1) by 180° about the origin. Where does it go?",
+        choices: [
+          "(−3, −1)",
+          "(−1, 3)",
+          "(1, −3)",
+          "(3, −1)",
+        ],
+        accept: [
+          "(−3, −1)",
+        ],
+        answer: "(−3, −1), because a half turn about the origin changes the sign of BOTH coordinates.",
+      },
+      {
+        question: "Which rotation matches 90° clockwise about the same centre?",
+        choices: [
+          "90° anticlockwise",
+          "180° clockwise",
+          "270° anticlockwise",
+          "270° clockwise",
+        ],
+        accept: [
+          "270° anticlockwise",
+        ],
+        answer: "270° anticlockwise, because a full turn is 360°, and 360° − 90° = 270° the other way round.",
+      },
+      {
+        question: "A shape is enlarged by scale factor 3. Each length is multiplied by:",
+        choices: [
+          "9",
+          "3",
+          "6",
+          "27",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because the scale factor tells you how many times longer every length becomes; 9 is the area factor.",
+      },
+      {
+        question: "A shape is enlarged by scale factor 2. Its area is multiplied by:",
+        choices: [
+          "2",
+          "8",
+          "4",
+          "6",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because area grows by the scale factor squared: 2² = 4 (lengths double in both directions).",
+        higherOnly: true,
+      },
+      {
+        question: "A 12 cm side is enlarged by scale factor 1/3. How long is the new side?",
+        choices: [
+          "36 cm",
+          "4 cm",
+          "15 cm",
+          "6 cm",
+        ],
+        accept: [
+          "4 cm",
+        ],
+        answer: "4 cm, because you multiply by the scale factor: 12 × 1/3 = 4; a fraction scale factor makes it smaller.",
+      },
+      {
+        question: "a is 4 right and 2 up; b is 1 right and 5 down. What is a + b?",
+        choices: [
+          "5 right and 3 down",
+          "5 right and 7 up",
+          "3 right and 3 down",
+          "5 right and 7 down",
+        ],
+        accept: [
+          "5 right and 3 down",
+        ],
+        answer: "5 right and 3 down, because you add across (4 + 1 = 5 right) and up/down (2 up − 5 down = 3 down).",
+      },
+      {
+        question: "Vector a is 3 right and 2 down. What is 2a?",
+        choices: [
+          "6 right and 2 down",
+          "6 right and 4 down",
+          "3 right and 4 down",
+          "6 left and 4 up",
+        ],
+        accept: [
+          "6 right and 4 down",
+        ],
+        answer: "6 right and 4 down, because multiplying a vector by 2 doubles BOTH parts: 3 × 2 = 6 and 2 × 2 = 4.",
+      },
     ],
 
     misconceptions: [
@@ -11749,6 +16348,110 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Show that the recurring decimal 0.444... is equal to 4/9.",
         answer: "Let x = 0.444... Multiplying by 10 gives 10x = 4.444..., which has the same recurring tail. Subtracting the first equation from the second removes the decimal part entirely: 10x − x = 4.444... − 0.444..., so 9x = 4 and x = 4/9. The multiplier is 10 because one digit repeats; if two digits repeated you would multiply by 100 instead. Each line of that working carries a mark. (Mark this one yourself.)",
+      },
+      {
+        question: "Estimate 39 × 21 by rounding each number to 1 s.f.",
+        choices: [
+          "819",
+          "800",
+          "600",
+          "1200",
+        ],
+        accept: [
+          "800",
+        ],
+        answer: "800, because 39 rounds to 40 and 21 rounds to 20, and 40 × 20 = 800.",
+      },
+      {
+        question: "Round 3.476 to 1 decimal place.",
+        choices: [
+          "3.4",
+          "3.48",
+          "3.5",
+          "3.47",
+        ],
+        accept: [
+          "3.5",
+        ],
+        answer: "3.5, because the second decimal digit is 7 (5 or more), so the 4 rounds up to 5.",
+      },
+      {
+        question: "Round 0.06372 to 2 significant figures.",
+        choices: [
+          "0.06",
+          "0.064",
+          "0.0637",
+          "0.063",
+        ],
+        accept: [
+          "0.064",
+        ],
+        answer: "0.064, because the first significant figure is 6; the 2 s.f. are 6 and 3, and the next digit 7 rounds the 3 up.",
+      },
+      {
+        question: "Round 4,650 to the nearest hundred.",
+        choices: [
+          "4,600",
+          "5,000",
+          "4,000",
+          "4,700",
+        ],
+        accept: [
+          "4,700",
+        ],
+        answer: "4,700, because the tens digit is 5, and 5 or more rounds the hundreds up from 6 to 7.",
+      },
+      {
+        question: "What does a 'Show that' question need?",
+        choices: [
+          "Only the answer",
+          "All working shown",
+          "A rough estimate",
+          "A labelled diagram",
+        ],
+        accept: [
+          "All working shown",
+        ],
+        answer: "All working shown, because you are given the answer; the marks are for every step that gets you there.",
+      },
+      {
+        question: "What does the command word 'Estimate' tell you to do?",
+        choices: [
+          "Use a calculator",
+          "Round, then calculate",
+          "Give the exact value",
+          "Guess with no working",
+        ],
+        accept: [
+          "Round, then calculate",
+        ],
+        answer: "Round, then calculate, because you round each number (usually to 1 s.f.) and show the easy sum you did.",
+      },
+      {
+        question: "What is a sensible height for a classroom door?",
+        choices: [
+          "20 m",
+          "0.2 m",
+          "2 m",
+          "200 m",
+        ],
+        accept: [
+          "2 m",
+        ],
+        answer: "2 m, because a door is a bit taller than an adult (about 1.7 m); checking size like this catches unit slips.",
+      },
+      {
+        question: "Estimate √50 to the nearest whole number.",
+        choices: [
+          "25",
+          "7",
+          "8",
+          "2500",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "7, because 7² = 49 is very close to 50 (and 8² = 64 is far away), so √50 ≈ 7.07.",
       },
     ],
 
@@ -12642,6 +17345,399 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "Squaring a bracket means multiplying it by itself, so write (1 + √2)(1 + √2) rather than squaring each term. Expanding gives 1 × 1 = 1, then 1 × √2 = √2, then √2 × 1 = √2, then √2 × √2 = 2. Collecting up, the whole numbers give 1 + 2 = 3 and the surd terms give √2 + √2 = 2√2, so the result is 3 + 2√2. The common error is writing 1 + 2, because squaring each term separately is not what squaring a bracket means. (Mark this one yourself.)",
         higherOnly: true,
       },
+      {
+        question: "Write 3⁴ × 3² as a single power of 3.",
+        choices: [
+          "3⁸",
+          "3⁶",
+          "9⁶",
+          "3²",
+        ],
+        accept: [
+          "3⁶",
+        ],
+        answer: "3⁶, because when multiplying powers of the same base you add the indices: 4 + 2 = 6.",
+      },
+      {
+        question: "Write 5⁸ ÷ 5² as a single power of 5.",
+        choices: [
+          "5⁴",
+          "5¹⁰",
+          "5⁶",
+          "1⁶",
+        ],
+        accept: [
+          "5⁶",
+        ],
+        answer: "5⁶, because when dividing powers of the same base you subtract the indices: 8 − 2 = 6.",
+      },
+      {
+        question: "Write (2³)⁴ as a single power of 2.",
+        choices: [
+          "2⁷",
+          "2¹",
+          "6⁴",
+          "2¹²",
+        ],
+        accept: [
+          "2¹²",
+        ],
+        answer: "2¹², because a power of a power means multiply the indices: 3 × 4 = 12.",
+      },
+      {
+        question: "Simplify 5⁹ ÷ 5⁴.",
+        choices: [
+          "5⁵",
+          "5¹³",
+          "1⁵",
+          "5³⁶",
+        ],
+        accept: [
+          "5⁵",
+        ],
+        answer: "5⁵, because dividing powers of the same base means subtracting the indices: 9 − 4 = 5, and the base stays 5.",
+      },
+      {
+        question: "Simplify (y²)⁵.",
+        choices: [
+          "y⁷",
+          "y¹⁰",
+          "10y",
+          "y³",
+        ],
+        accept: [
+          "y¹⁰",
+        ],
+        answer: "y¹⁰, because a power of a power means multiply the indices: 2 × 5 = 10.",
+      },
+      {
+        question: "Work out 5⁰ × 4.",
+        choices: [
+          "0",
+          "20",
+          "4",
+          "1",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because anything (except 0) to the power 0 is 1, so 5⁰ × 4 = 1 × 4 = 4.",
+      },
+      {
+        question: "What is 10⁻² as a fraction?",
+        choices: [
+          "−100",
+          "−20",
+          "1/20",
+          "1/100",
+        ],
+        accept: [
+          "1/100",
+        ],
+        answer: "1/100, because a negative index means one over: 10⁻² = 1/10² = 1/100.",
+      },
+      {
+        question: "What is 4⁻¹?",
+        choices: [
+          "¼",
+          "−4",
+          "−¼",
+          "4",
+        ],
+        accept: [
+          "¼",
+        ],
+        answer: "¼, because a power of −1 means the reciprocal: 4⁻¹ = 1/4 (it is not negative).",
+      },
+      {
+        question: "Work out 6⁻².",
+        choices: [
+          "−36",
+          "1/36",
+          "−12",
+          "1/12",
+        ],
+        accept: [
+          "1/36",
+        ],
+        answer: "1/36, because 6⁻² = 1/6² = 1/36; a negative index gives a reciprocal, not a negative number.",
+      },
+      {
+        question: "Simplify 3⁻² × 3⁶, giving your answer as a power of 3.",
+        choices: [
+          "3⁸",
+          "3⁻¹²",
+          "3⁴",
+          "9⁴",
+        ],
+        accept: [
+          "3⁴",
+        ],
+        answer: "3⁴, because you add the indices even when one is negative: −2 + 6 = 4.",
+      },
+      {
+        question: "Write 1/8 as a power of 2.",
+        choices: [
+          "2³",
+          "8⁻²",
+          "2⁻⁴",
+          "2⁻³",
+        ],
+        accept: [
+          "2⁻³",
+        ],
+        answer: "2⁻³, because 8 = 2³ and one over a power is a negative index: 1/2³ = 2⁻³.",
+      },
+      {
+        question: "What is the value of 2⁵?",
+        choices: [
+          "32",
+          "10",
+          "25",
+          "64",
+        ],
+        accept: [
+          "32",
+        ],
+        answer: "32, because 2⁵ = 2 × 2 × 2 × 2 × 2 = 32, not 2 × 5.",
+      },
+      {
+        question: "What is the value of 4³?",
+        choices: [
+          "12",
+          "64",
+          "16",
+          "81",
+        ],
+        accept: [
+          "64",
+        ],
+        answer: "64, because 4³ = 4 × 4 × 4 = 16 × 4 = 64.",
+      },
+      {
+        question: "What is the cube root of 125?",
+        choices: [
+          "25",
+          "15",
+          "5",
+          "11",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because 5 × 5 × 5 = 125 (a cube root, not a square root or ÷ 5).",
+      },
+      {
+        question: "Evaluate 1000 to the power ⅓.",
+        choices: [
+          "100",
+          "333",
+          "3000",
+          "10",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because a power of ⅓ means the cube root, and 10 × 10 × 10 = 1000.",
+        higherOnly: true,
+      },
+      {
+        question: "Work out 4 to the power 3/2.",
+        choices: [
+          "8",
+          "6",
+          "64",
+          "2",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because 4 to the power 3/2 means square-root first then cube: √4 = 2 and 2³ = 8.",
+        higherOnly: true,
+      },
+      {
+        question: "Work out 100 to the power −½.",
+        choices: [
+          "−10",
+          "1/10",
+          "−50",
+          "10",
+        ],
+        accept: [
+          "1/10",
+        ],
+        answer: "1/10, because the power ½ is a square root (√100 = 10) and the minus sign means the reciprocal.",
+        higherOnly: true,
+      },
+      {
+        question: "Write 6,000,000 in standard form.",
+        choices: [
+          "6 × 10⁷",
+          "6 × 10⁵",
+          "6 × 10⁶",
+          "6 × 10⁻⁶",
+        ],
+        accept: [
+          "6 × 10⁶",
+        ],
+        answer: "6 × 10⁶, because 6,000,000 is 6 with the decimal point moved 6 places: one million is 10⁶.",
+      },
+      {
+        question: "Write 0.004 in standard form.",
+        choices: [
+          "4 × 10³",
+          "4 × 10⁻²",
+          "4 × 10⁻⁴",
+          "4 × 10⁻³",
+        ],
+        accept: [
+          "4 × 10⁻³",
+        ],
+        answer: "4 × 10⁻³, because 0.004 = 4 ÷ 1000 and the point moves 3 places right, so the index is −3.",
+      },
+      {
+        question: "Write 52,000 in standard form.",
+        choices: [
+          "5.2 × 10⁴",
+          "5.2 × 10³",
+          "5.2 × 10⁵",
+          "5.2 × 10⁻⁴",
+        ],
+        accept: [
+          "5.2 × 10⁴",
+        ],
+        answer: "5.2 × 10⁴, because 5.2 × 10,000 = 52,000; the point moves 4 places.",
+      },
+      {
+        question: "Write 0.091 in standard form.",
+        choices: [
+          "9.1 × 10⁻³",
+          "9.1 × 10⁻²",
+          "9.1 × 10²",
+          "9.1 × 10⁻¹",
+        ],
+        accept: [
+          "9.1 × 10⁻²",
+        ],
+        answer: "9.1 × 10⁻², because 9.1 ÷ 100 = 0.091; the point moves 2 places to the right to make 9.1.",
+      },
+      {
+        question: "Write 7 × 10⁴ as an ordinary number.",
+        choices: [
+          "700,000",
+          "7,000",
+          "70,000",
+          "0.0007",
+        ],
+        accept: [
+          "70,000",
+        ],
+        answer: "70,000, because 10⁴ = 10,000 and 7 × 10,000 = 70,000 (7 followed by four zeros).",
+      },
+      {
+        question: "Write 2.5 × 10⁻³ as an ordinary number.",
+        choices: [
+          "0.025",
+          "2500",
+          "0.00025",
+          "0.0025",
+        ],
+        accept: [
+          "0.0025",
+        ],
+        answer: "0.0025, because a power of −3 means move the decimal point 3 places left: 2.5 → 0.0025.",
+      },
+      {
+        question: "Write 1.8 × 10⁵ as an ordinary number.",
+        choices: [
+          "180,000",
+          "18,000",
+          "1,800,000",
+          "0.000018",
+        ],
+        accept: [
+          "180,000",
+        ],
+        answer: "180,000, because you move the decimal point 5 places right: 1.8 × 100,000 = 180,000.",
+      },
+      {
+        question: "Which of these numbers is the largest?",
+        choices: [
+          "9 × 10⁴",
+          "3 × 10⁵",
+          "8 × 10³",
+          "4 × 10⁻⁶",
+        ],
+        accept: [
+          "3 × 10⁵",
+        ],
+        answer: "3 × 10⁵, because the biggest power of 10 wins first: 3 × 10⁵ = 300,000 but 9 × 10⁴ = 90,000.",
+      },
+      {
+        question: "Which of these numbers is the smallest?",
+        choices: [
+          "5 × 10⁻³",
+          "9 × 10⁻³",
+          "2 × 10⁻⁴",
+          "3 × 10⁻²",
+        ],
+        accept: [
+          "2 × 10⁻⁴",
+        ],
+        answer: "2 × 10⁻⁴, because it is 0.0002; the most negative power of 10 gives the smallest number.",
+      },
+      {
+        question: "Work out (3 × 10⁴) × (2 × 10³) in standard form.",
+        choices: [
+          "6 × 10¹²",
+          "5 × 10⁷",
+          "6 × 10¹",
+          "6 × 10⁷",
+        ],
+        accept: [
+          "6 × 10⁷",
+        ],
+        answer: "6 × 10⁷, because 3 × 2 = 6 and 10⁴ × 10³ = 10⁷ (add the indices).",
+      },
+      {
+        question: "Work out (9 × 10⁸) ÷ (3 × 10²) in standard form.",
+        choices: [
+          "3 × 10⁶",
+          "3 × 10⁴",
+          "6 × 10⁶",
+          "3 × 10¹⁰",
+        ],
+        accept: [
+          "3 × 10⁶",
+        ],
+        answer: "3 × 10⁶, because 9 ÷ 3 = 3 and 10⁸ ÷ 10² = 10⁶ (subtract the indices).",
+      },
+      {
+        question: "Work out (4 × 10³) × (2 × 10⁻⁵) in standard form.",
+        choices: [
+          "8 × 10⁸",
+          "8 × 10⁻²",
+          "8 × 10⁻¹⁵",
+          "6 × 10⁻²",
+        ],
+        accept: [
+          "8 × 10⁻²",
+        ],
+        answer: "8 × 10⁻², because 4 × 2 = 8 and 10³ × 10⁻⁵ = 10⁻² (3 + −5 = −2).",
+      },
+      {
+        question: "Which number is written correctly in standard form?",
+        choices: [
+          "47 × 10²",
+          "0.47 × 10⁴",
+          "4.7 × 10³",
+          "10 × 10²",
+        ],
+        accept: [
+          "4.7 × 10³",
+        ],
+        answer: "4.7 × 10³, because standard form needs a number from 1 up to (but not including) 10, times a power of 10.",
+      },
     ],
 
     misconceptions: [
@@ -13449,6 +18545,331 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain why two rectangles can have the same perimeter but different areas, and give an example of your own.",
         answer: "Perimeter fixes only the total of the four sides, while area depends on how that total is shared between length and width. A 1 cm by 9 cm rectangle and a 5 cm by 5 cm rectangle both have perimeter 20 cm, but their areas are 9 cm² and 25 cm². For a fixed perimeter the area is largest when the shape is closest to a square and smallest when it is long and thin. (Mark this one yourself.)",
+      },
+      {
+        question: "Find the area of a rectangle 7 cm by 6 cm, in cm².",
+        choices: [
+          "26",
+          "13",
+          "42",
+          "84",
+        ],
+        accept: [
+          "42",
+        ],
+        answer: "42, because the area of a rectangle is length × width: 7 × 6 = 42 cm².",
+      },
+      {
+        question: "Find the perimeter of a square of side 9 cm.",
+        choices: [
+          "36 cm",
+          "81 cm",
+          "18 cm",
+          "27 cm",
+        ],
+        accept: [
+          "36 cm",
+        ],
+        answer: "36 cm, because a square has 4 equal sides: 4 × 9 = 36 cm. 81 is the area, not the perimeter.",
+      },
+      {
+        question: "A triangle has base 8 cm and height 7 cm. Find its area in cm².",
+        choices: [
+          "56",
+          "15",
+          "14",
+          "28",
+        ],
+        accept: [
+          "28",
+        ],
+        answer: "28, because the area of a triangle is ½ × base × height: ½ × 8 × 7 = 28 cm².",
+      },
+      {
+        question: "Find the area of a parallelogram with base 9 cm and height 5 cm, in cm².",
+        choices: [
+          "22.5",
+          "45",
+          "28",
+          "14",
+        ],
+        accept: [
+          "45",
+        ],
+        answer: "45, because the area of a parallelogram is base × perpendicular height: 9 × 5 = 45 cm². There is no ½.",
+      },
+      {
+        question: "A trapezium has parallel sides 3 cm and 7 cm, and height 4 cm. Its area in cm²?",
+        choices: [
+          "40",
+          "84",
+          "20",
+          "14",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because the area of a trapezium is ½(a + b)h: ½ × (3 + 7) × 4 = 5 × 4 = 20 cm².",
+      },
+      {
+        question: "A circle has radius 4 cm. Find its circumference, in cm.",
+        choices: [
+          "16π",
+          "8π",
+          "4π",
+          "2π",
+        ],
+        accept: [
+          "8π",
+        ],
+        answer: "8π, because circumference = 2πr = 2 × π × 4 = 8π cm. 16π would be the area.",
+      },
+      {
+        question: "A circle has diameter 12 cm. Find its area, in cm².",
+        choices: [
+          "144π",
+          "12π",
+          "24π",
+          "36π",
+        ],
+        accept: [
+          "36π",
+        ],
+        answer: "36π, because the radius is 12 ÷ 2 = 6, and area = πr² = π × 6² = 36π cm².",
+      },
+      {
+        question: "A circle has diameter 6 cm. Find its circumference, in cm.",
+        choices: [
+          "6π",
+          "12π",
+          "9π",
+          "3π",
+        ],
+        accept: [
+          "6π",
+        ],
+        answer: "6π, because circumference = π × diameter = π × 6 = 6π cm.",
+      },
+      {
+        question: "A circle has area 25π cm². What is its radius, in cm?",
+        choices: [
+          "25",
+          "12.5",
+          "5",
+          "10",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because area = πr², so r² = 25 and r = √25 = 5 cm.",
+      },
+      {
+        question: "Find the volume of a cuboid 5 cm by 2 cm by 3 cm, in cm³.",
+        choices: [
+          "10",
+          "62",
+          "60",
+          "30",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because the volume of a cuboid is length × width × height: 5 × 2 × 3 = 30 cm³.",
+      },
+      {
+        question: "A cube has edges of 3 cm. What is its volume, in cm³?",
+        choices: [
+          "27",
+          "9",
+          "54",
+          "18",
+        ],
+        accept: [
+          "27",
+        ],
+        answer: "27, because volume = side × side × side: 3 × 3 × 3 = 27 cm³. 9 is the area of one face.",
+      },
+      {
+        question: "Convert 1 cm³ into mm³.",
+        choices: [
+          "10",
+          "100",
+          "1000",
+          "1,000,000",
+        ],
+        accept: [
+          "1000",
+        ],
+        answer: "1000, because 1 cm = 10 mm, so 1 cm³ = 10 × 10 × 10 = 1000 mm³.",
+      },
+      {
+        question: "How many mm² are in 1 cm²?",
+        choices: [
+          "10",
+          "1000",
+          "100",
+          "10,000",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because 1 cm = 10 mm, so 1 cm² = 10 × 10 = 100 mm².",
+      },
+      {
+        question: "Convert 3 m² into cm².",
+        choices: [
+          "300",
+          "3000",
+          "300,000",
+          "30,000",
+        ],
+        accept: [
+          "30,000",
+        ],
+        answer: "30,000, because 1 m² = 100 × 100 = 10,000 cm², so 3 m² = 3 × 10,000 = 30,000 cm².",
+      },
+      {
+        question: "How many litres is 1000 cm³?",
+        choices: [
+          "1",
+          "10",
+          "100",
+          "1000",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because 1 litre is exactly 1000 cm³.",
+      },
+      {
+        question: "A rectangle has area 36 cm² and length 9 cm. Find its width, in cm.",
+        choices: [
+          "27",
+          "4",
+          "9",
+          "324",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because width = area ÷ length: 36 ÷ 9 = 4 cm.",
+      },
+      {
+        question: "A regular hexagon has sides of 5 cm. Find its perimeter, in cm.",
+        choices: [
+          "25",
+          "20",
+          "30",
+          "35",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because a hexagon has 6 equal sides: 6 × 5 = 30 cm.",
+      },
+      {
+        question: "A square has perimeter 20 cm. What is its area, in cm²?",
+        choices: [
+          "20",
+          "400",
+          "100",
+          "25",
+        ],
+        accept: [
+          "25",
+        ],
+        answer: "25, because each side is 20 ÷ 4 = 5 cm, so the area is 5 × 5 = 25 cm².",
+      },
+      {
+        question: "Which formula gives the circumference of a circle?",
+        choices: [
+          "πd",
+          "πr²",
+          "2πd",
+          "πd²",
+        ],
+        accept: [
+          "πd",
+        ],
+        answer: "πd, because circumference = π × diameter (the same as 2πr); πr² is the area.",
+      },
+      {
+        question: "A semicircle has radius 2 cm. Find its area, in cm².",
+        choices: [
+          "4π",
+          "2π",
+          "π",
+          "8π",
+        ],
+        accept: [
+          "2π",
+        ],
+        answer: "2π, because a full circle has area π × 2² = 4π, and a semicircle is half of that: 2π cm².",
+      },
+      {
+        question: "A cylinder has radius 3 cm and height 10 cm. Find its volume, in cm³.",
+        choices: [
+          "30π",
+          "60π",
+          "90π",
+          "180π",
+        ],
+        accept: [
+          "90π",
+        ],
+        answer: "90π, because volume = πr²h = π × 3² × 10 = π × 9 × 10 = 90π cm³.",
+      },
+      {
+        question: "A cuboid has volume 60 cm³ and a base 3 cm by 4 cm. Find its height, in cm.",
+        choices: [
+          "53",
+          "48",
+          "20",
+          "5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because the base area is 3 × 4 = 12 cm², and height = volume ÷ base area = 60 ÷ 12 = 5 cm.",
+      },
+      {
+        question: "Convert 5000 cm³ into litres.",
+        choices: [
+          "5",
+          "50",
+          "0.5",
+          "500",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because 1 litre = 1000 cm³, so 5000 cm³ = 5000 ÷ 1000 = 5 litres.",
+      },
+      {
+        question: "Find the area of a quarter circle of radius 4 cm, in cm².",
+        choices: [
+          "16π",
+          "4π",
+          "2π",
+          "8π",
+        ],
+        accept: [
+          "4π",
+        ],
+        answer: "4π, because the full circle is π × 4² = 16π, and a quarter of it is 16π ÷ 4 = 4π cm².",
+      },
+      {
+        question: "Find the perimeter of a rectangle 12 cm by 3 cm, in cm.",
+        choices: [
+          "36",
+          "15",
+          "30",
+          "18",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because perimeter = 2 × (length + width) = 2 × (12 + 3) = 30 cm. 36 is the area.",
       },
     ],
 
@@ -14433,6 +19854,399 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Describe how the graph of y = 2x + 1 changes when the equation becomes y = 2x − 4, and separately when it becomes y = 5x + 1.",
         answer: "Changing the constant from 1 to −4 changes only c, so the steepness is untouched and the whole line slides straight down the y-axis by 5 units; the new line is parallel to the old one and crosses the y-axis at −4 instead of 1. Changing the 2 to a 5 changes only m, so the crossing point on the y-axis stays at 1 and the line pivots about that point, becoming steeper: y now rises 5 for every 1 across instead of 2. In short, c moves the line and m tilts it, and the two can be changed independently. (Mark this one yourself.)",
       },
+      {
+        question: "What is the gradient of y = 3x + 7?",
+        choices: [
+          "7",
+          "3x",
+          "−3",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because in y = mx + c the gradient is m, the number multiplying x.",
+      },
+      {
+        question: "What is the y-intercept of y = 2x − 9?",
+        choices: [
+          "−9",
+          "9",
+          "2",
+          "4.5",
+        ],
+        accept: [
+          "−9",
+        ],
+        answer: "−9, because in y = mx + c the y-intercept is c, and here c = −9 (keep the sign).",
+      },
+      {
+        question: "What is the gradient of y = 6 − x?",
+        choices: [
+          "6",
+          "−1",
+          "1",
+          "−6",
+        ],
+        accept: [
+          "−1",
+        ],
+        answer: "−1, because y = 6 − x is the same as y = −1x + 6, so m = −1.",
+      },
+      {
+        question: "What is the gradient of y = ½x + 3?",
+        choices: [
+          "3",
+          "2",
+          "½",
+          "−½",
+        ],
+        accept: [
+          "½",
+        ],
+        answer: "½, because in y = mx + c the gradient is the coefficient of x, which is ½.",
+      },
+      {
+        question: "What is the y-intercept of 3y = 6x + 12?",
+        choices: [
+          "12",
+          "2",
+          "6",
+          "4",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because dividing everything by 3 gives y = 2x + 4, so c = 4.",
+      },
+      {
+        question: "Which line is parallel to y = 5x + 1?",
+        choices: [
+          "y = 5x − 3",
+          "y = x + 5",
+          "y = −5x + 1",
+          "y = −⅕x + 1",
+        ],
+        accept: [
+          "y = 5x − 3",
+        ],
+        answer: "y = 5x − 3, because parallel lines have the same gradient, and both have gradient 5.",
+      },
+      {
+        question: "Which line is parallel to y = −2x + 4?",
+        choices: [
+          "y = 2x + 4",
+          "y = 1 − 2x",
+          "y = 4x − 2",
+          "y = ½x + 4",
+        ],
+        accept: [
+          "y = 1 − 2x",
+        ],
+        answer: "y = 1 − 2x, because it has gradient −2 (the number with x), the same as y = −2x + 4.",
+      },
+      {
+        question: "Which point lies on the line y = 2x + 3?",
+        choices: [
+          "(5, 1)",
+          "(2, 5)",
+          "(1, 5)",
+          "(0, 2)",
+        ],
+        accept: [
+          "(1, 5)",
+        ],
+        answer: "(1, 5), because substituting x = 1 gives y = 2 × 1 + 3 = 5.",
+      },
+      {
+        question: "Which point lies on the line y = 10 − x?",
+        choices: [
+          "(10, 1)",
+          "(−3, 7)",
+          "(0, −10)",
+          "(3, 7)",
+        ],
+        accept: [
+          "(3, 7)",
+        ],
+        answer: "(3, 7), because substituting x = 3 gives y = 10 − 3 = 7.",
+      },
+      {
+        question: "Where does y = 3x − 6 cross the x-axis?",
+        choices: [
+          "x = 2",
+          "x = −6",
+          "x = 6",
+          "x = −2",
+        ],
+        accept: [
+          "x = 2",
+        ],
+        answer: "x = 2, because on the x-axis y = 0, so 3x − 6 = 0 and x = 2.",
+      },
+      {
+        question: "At which point does y = 4x + 5 cross the y-axis?",
+        choices: [
+          "(5, 0)",
+          "(0, 5)",
+          "(0, 4)",
+          "(4, 0)",
+        ],
+        accept: [
+          "(0, 5)",
+        ],
+        answer: "(0, 5), because on the y-axis x = 0, so y = 4 × 0 + 5 = 5.",
+      },
+      {
+        question: "Where does 2x + 5y = 10 cross the x-axis?",
+        choices: [
+          "x = 2",
+          "x = 10",
+          "x = 5",
+          "x = −5",
+        ],
+        accept: [
+          "x = 5",
+        ],
+        answer: "x = 5, because on the x-axis y = 0, so 2x = 10 and x = 5.",
+      },
+      {
+        question: "What is the gradient of the line through (0, 1) and (2, 7)?",
+        choices: [
+          "⅓",
+          "6",
+          "4",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because gradient = change in y ÷ change in x = (7 − 1) ÷ (2 − 0) = 6 ÷ 2 = 3.",
+      },
+      {
+        question: "What is the gradient of the line through (1, 5) and (3, 1)?",
+        choices: [
+          "−2",
+          "2",
+          "−½",
+          "−4",
+        ],
+        accept: [
+          "−2",
+        ],
+        answer: "−2, because gradient = (1 − 5) ÷ (3 − 1) = −4 ÷ 2 = −2; y goes down as x goes up.",
+      },
+      {
+        question: "What is the gradient of the line through (0, 0) and (4, 2)?",
+        choices: [
+          "2",
+          "½",
+          "4",
+          "−½",
+        ],
+        accept: [
+          "½",
+        ],
+        answer: "½, because gradient = change in y ÷ change in x = 2 ÷ 4 = ½ (y on top, not x).",
+      },
+      {
+        question: "What is the gradient of the line through (2, 3) and (5, 3)?",
+        choices: [
+          "1",
+          "3",
+          "0",
+          "Undefined",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0, because the y-value does not change (3 to 3), so the line is horizontal: 0 ÷ 3 = 0.",
+      },
+      {
+        question: "A line rises 6 units for every 2 units across. What is its gradient?",
+        choices: [
+          "⅓",
+          "12",
+          "4",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because gradient = rise ÷ run = 6 ÷ 2 = 3.",
+      },
+      {
+        question: "What is the gradient of a line perpendicular to y = −3x + 2?",
+        choices: [
+          "⅓",
+          "−⅓",
+          "3",
+          "−3",
+        ],
+        accept: [
+          "⅓",
+        ],
+        answer: "⅓, because a perpendicular gradient is the negative reciprocal: flip −3 to −⅓, then change the sign to ⅓.",
+        higherOnly: true,
+      },
+      {
+        question: "A line is perpendicular to y = ½x − 1. What is its gradient?",
+        choices: [
+          "2",
+          "−2",
+          "−½",
+          "½",
+        ],
+        accept: [
+          "−2",
+        ],
+        answer: "−2, because a perpendicular gradient is the negative reciprocal of ½: flip it to 2 and change the sign.",
+        higherOnly: true,
+      },
+      {
+        question: "What do the gradients of two perpendicular lines multiply to give?",
+        choices: [
+          "1",
+          "0",
+          "−1",
+          "90",
+        ],
+        accept: [
+          "−1",
+        ],
+        answer: "−1, because perpendicular gradients are negative reciprocals, e.g. 2 × −½ = −1.",
+        higherOnly: true,
+      },
+      {
+        question: "What is the midpoint of (0, 0) and (6, 10)?",
+        choices: [
+          "(5, 3)",
+          "(12, 20)",
+          "(6, 5)",
+          "(3, 5)",
+        ],
+        accept: [
+          "(3, 5)",
+        ],
+        answer: "(3, 5), because you halve the sum of each coordinate: (0 + 6) ÷ 2 = 3 and (0 + 10) ÷ 2 = 5.",
+      },
+      {
+        question: "What is the midpoint of (2, 4) and (8, 2)?",
+        choices: [
+          "(5, 3)",
+          "(3, −1)",
+          "(10, 6)",
+          "(6, −2)",
+        ],
+        accept: [
+          "(5, 3)",
+        ],
+        answer: "(5, 3), because you add and halve each coordinate: (2 + 8) ÷ 2 = 5 and (4 + 2) ÷ 2 = 3.",
+      },
+      {
+        question: "What is the midpoint of (−2, 1) and (4, 7)?",
+        choices: [
+          "(3, 3)",
+          "(1, 4)",
+          "(2, 8)",
+          "(−1, 4)",
+        ],
+        accept: [
+          "(1, 4)",
+        ],
+        answer: "(1, 4), because (−2 + 4) ÷ 2 = 1 and (1 + 7) ÷ 2 = 4.",
+      },
+      {
+        question: "What is the equation of the x-axis?",
+        choices: [
+          "x = 0",
+          "y = x",
+          "y = 0",
+          "x = 1",
+        ],
+        accept: [
+          "y = 0",
+        ],
+        answer: "y = 0, because every point on the x-axis has a y-coordinate of 0 (x = 0 is the y-axis).",
+      },
+      {
+        question: "A line passes through (3, 1) and (3, 8). What is its equation?",
+        choices: [
+          "y = 3",
+          "y = 3x",
+          "x = 8",
+          "x = 3",
+        ],
+        accept: [
+          "x = 3",
+        ],
+        answer: "x = 3, because both points have x-coordinate 3, so it is the vertical line x = 3.",
+      },
+      {
+        question: "A horizontal line passes through (5, −2). What is its equation?",
+        choices: [
+          "y = −2",
+          "x = 5",
+          "y = 5",
+          "x = −2",
+        ],
+        accept: [
+          "y = −2",
+        ],
+        answer: "y = −2, because a horizontal line has the same y-value everywhere, and this one goes through y = −2.",
+      },
+      {
+        question: "What is the equation of the line with gradient −1 and y-intercept 4?",
+        choices: [
+          "y = 4x − 1",
+          "y = −x + 4",
+          "y = x + 4",
+          "y = −4x + 1",
+        ],
+        accept: [
+          "y = −x + 4",
+        ],
+        answer: "y = −x + 4, because y = mx + c with m = −1 and c = 4.",
+      },
+      {
+        question: "What is the gradient of the line y = 7?",
+        choices: [
+          "7",
+          "1",
+          "0",
+          "Undefined",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0, because y = 7 is a horizontal line: y stays at 7 whatever x is, so it does not rise at all.",
+      },
+      {
+        question: "Which of these lines is the steepest?",
+        choices: [
+          "y = 2x + 9",
+          "y = x + 20",
+          "y = 3x",
+          "y = 5x + 1",
+        ],
+        accept: [
+          "y = 5x + 1",
+        ],
+        answer: "y = 5x + 1, because steepness depends on the gradient (5), not the y-intercept.",
+      },
+      {
+        question: "Where do the lines y = 2x + 1 and y = 2x + 5 meet?",
+        choices: [
+          "They never meet",
+          "(0, 1)",
+          "(0, 5)",
+          "(2, 3)",
+        ],
+        accept: [
+          "They never meet",
+        ],
+        answer: "They never meet, because both have gradient 2, so they are parallel with different y-intercepts.",
+      },
     ],
 
     misconceptions: [
@@ -15149,6 +20963,247 @@ export const MATHS: Record<string, TopicContent> = {
         question: "Explain why proving two triangles congruent lets you say a third pair of sides is equal without measuring them.",
         answer: "Congruent means identical in shape and size, so once congruence is established every corresponding part matches, not only the three facts used in the proof. That is the point of a congruence condition: three matching facts are enough to force all six. In an answer, quote the condition first and then state the equal pair as a consequence of it. (Mark this one yourself.)",
       },
+      {
+        question: "A 5 cm side becomes 15 cm in an enlargement. What is the scale factor?",
+        choices: [
+          "3",
+          "10",
+          "⅓",
+          "20",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because the scale factor = new length ÷ old length = 15 ÷ 5 = 3.",
+      },
+      {
+        question: "Two similar shapes have length scale factor 10. Find the area scale factor.",
+        choices: [
+          "10",
+          "100",
+          "1000",
+          "20",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because the area scale factor is the length scale factor squared: 10² = 100.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar solids have length scale factor 5. Find the volume scale factor.",
+        choices: [
+          "25",
+          "15",
+          "125",
+          "10",
+        ],
+        accept: [
+          "125",
+        ],
+        answer: "125, because the volume scale factor is the length scale factor cubed: 5³ = 125.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar solids have volume scale factor 27. Find the length scale factor.",
+        choices: [
+          "9",
+          "√27",
+          "13.5",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because the length scale factor is the cube root of the volume scale factor: ∛27 = 3.",
+        higherOnly: true,
+      },
+      {
+        question: "Two similar shapes have area scale factor 9. Find the volume scale factor.",
+        choices: [
+          "27",
+          "81",
+          "3",
+          "18",
+        ],
+        accept: [
+          "27",
+        ],
+        answer: "27, because the length scale factor is √9 = 3, and the volume scale factor is 3³ = 27.",
+        higherOnly: true,
+      },
+      {
+        question: "A 2 cm by 3 cm rectangle is enlarged by scale factor 4. Find its new area, in cm².",
+        choices: [
+          "24",
+          "96",
+          "40",
+          "384",
+        ],
+        accept: [
+          "96",
+        ],
+        answer: "96, because the new rectangle is 8 cm by 12 cm, and 8 × 12 = 96 cm² (the area is 6 × 4² = 96).",
+      },
+      {
+        question: "In similar triangles, sides 3 and 6 match, and 5 matches x. Find x.",
+        choices: [
+          "8",
+          "2.5",
+          "10",
+          "15",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because the scale factor is 6 ÷ 3 = 2, so x = 5 × 2 = 10. Do not add 3.",
+      },
+      {
+        question: "In similar shapes, 10 cm matches 4 cm. What does 25 cm match, in cm?",
+        choices: [
+          "19",
+          "62.5",
+          "100",
+          "10",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because the scale factor from large to small is 4 ÷ 10 = 0.4, and 25 × 0.4 = 10.",
+      },
+      {
+        question: "Two triangles both have sides of 4 cm, 6 cm and 7 cm. Which condition proves congruence?",
+        choices: [
+          "SSS",
+          "SAS",
+          "ASA",
+          "RHS",
+        ],
+        accept: [
+          "SSS",
+        ],
+        answer: "SSS, because all three pairs of sides are equal (side, side, side).",
+      },
+      {
+        question: "Two triangles share angles 40° and 60° and the 5 cm side between them. Why congruent?",
+        choices: [
+          "SAS",
+          "ASA",
+          "SSS",
+          "AAA",
+        ],
+        accept: [
+          "ASA",
+        ],
+        answer: "ASA, because two angles and the side between them are equal (angle, side, angle).",
+      },
+      {
+        question: "Two triangles share sides 8 cm and 6 cm and the 50° angle between them. Why congruent?",
+        choices: [
+          "ASA",
+          "SSS",
+          "SAS",
+          "RHS",
+        ],
+        accept: [
+          "SAS",
+        ],
+        answer: "SAS, because two sides and the angle between them (the included angle) are equal.",
+      },
+      {
+        question: "Two triangles have the same three angles. They must be:",
+        choices: [
+          "Congruent",
+          "Identical in area",
+          "Right-angled",
+          "Similar",
+        ],
+        accept: [
+          "Similar",
+        ],
+        answer: "Similar, because equal angles give the same shape, but the triangles can be different sizes, so not necessarily congruent.",
+      },
+      {
+        question: "Triangle ABC is congruent to triangle DEF. Angle B = 65°. Find angle E.",
+        choices: [
+          "65°",
+          "115°",
+          "25°",
+          "130°",
+        ],
+        accept: [
+          "65°",
+        ],
+        answer: "65°, because congruent shapes are identical, so the matching angles B and E are equal.",
+      },
+      {
+        question: "A 6 cm side matches 4 cm in a similar shape. Scale factor from large to small?",
+        choices: [
+          "1.5",
+          "⅔",
+          "2",
+          "⅓",
+        ],
+        accept: [
+          "⅔",
+          "2/3",
+        ],
+        answer: "⅔, because the scale factor from large to small is 4 ÷ 6 = ⅔; 1.5 is small to large.",
+      },
+      {
+        question: "A model is built to a scale of 1 : 20. The model is 15 cm long. Real length, in cm?",
+        choices: [
+          "35",
+          "0.75",
+          "300",
+          "3000",
+        ],
+        accept: [
+          "300",
+        ],
+        answer: "300, because every 1 cm on the model is 20 cm in real life: 15 × 20 = 300 cm.",
+      },
+      {
+        question: "Similar cylinders have heights 2 cm and 6 cm. The small one holds 5 cm³. Large?",
+        choices: [
+          "15 cm³",
+          "45 cm³",
+          "30 cm³",
+          "135 cm³",
+        ],
+        accept: [
+          "135 cm³",
+        ],
+        answer: "135 cm³, because the length scale factor is 3, so the volume scale factor is 3³ = 27: 5 × 27 = 135.",
+        higherOnly: true,
+      },
+      {
+        question: "Similar shapes have areas 4 cm² and 100 cm². Find the length scale factor.",
+        choices: [
+          "5",
+          "25",
+          "96",
+          "10",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because the area scale factor is 100 ÷ 4 = 25, and the length scale factor is √25 = 5.",
+        higherOnly: true,
+      },
+      {
+        question: "Which pair of shapes is always similar?",
+        choices: [
+          "Two rectangles",
+          "Two circles",
+          "Two kites",
+          "Two rhombuses",
+        ],
+        accept: [
+          "Two circles",
+        ],
+        answer: "Two circles, because every circle is the same shape; rectangles, kites and rhombuses can change proportions or angles.",
+      },
     ],
 
     misconceptions: [
@@ -15752,6 +21807,201 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain why the north lines drawn at two different points on a map are treated as parallel, and how that fact produces the back bearing rule.",
         answer: "Every north line on a map points the same way, so the north line at A and the north line at B never meet and are treated as parallel. The straight line joining A and B cuts across both of them, so the angles it makes with the two north lines are tied together by the parallel-line rules, and following them round from one north line to the other accounts for exactly half a turn. That is why the two bearings always differ by 180°: add 180° when the first bearing is under 180°, and subtract it when the first bearing is larger. (Mark this one yourself.)",
+      },
+      {
+        question: "The bearing of B from A is 160°. Find the bearing of A from B.",
+        choices: [
+          "020°",
+          "200°",
+          "340°",
+          "250°",
+        ],
+        accept: [
+          "340°",
+        ],
+        answer: "340°, because the back bearing is 180° more: 160 + 180 = 340.",
+      },
+      {
+        question: "The bearing of B from A is 250°. Find the bearing of A from B.",
+        choices: [
+          "430°",
+          "110°",
+          "160°",
+          "070°",
+        ],
+        accept: [
+          "070°",
+        ],
+        answer: "070°, because for a bearing over 180° the back bearing is 180° less: 250 − 180 = 070.",
+      },
+      {
+        question: "What is the bearing of north-west?",
+        choices: [
+          "315°",
+          "045°",
+          "135°",
+          "225°",
+        ],
+        accept: [
+          "315°",
+        ],
+        answer: "315°, because north-west is halfway between west (270°) and north (360°), measured clockwise from north.",
+      },
+      {
+        question: "What is the bearing of south-east?",
+        choices: [
+          "225°",
+          "135°",
+          "045°",
+          "315°",
+        ],
+        accept: [
+          "135°",
+        ],
+        answer: "135°, because south-east is halfway between east (090°) and south (180°), measured clockwise from north.",
+      },
+      {
+        question: "A plane on a bearing of 300° turns 90° clockwise. What is its new bearing?",
+        choices: [
+          "390°",
+          "210°",
+          "030°",
+          "120°",
+        ],
+        accept: [
+          "030°",
+        ],
+        answer: "030°, because 300 + 90 = 390, and a full turn is 360°, so 390 − 360 = 030.",
+      },
+      {
+        question: "The locus of points 4 cm from an infinite straight line is:",
+        choices: [
+          "A circle",
+          "One parallel line",
+          "A perpendicular line",
+          "Two parallel lines",
+        ],
+        accept: [
+          "Two parallel lines",
+        ],
+        answer: "Two parallel lines, because there are points 4 cm away on each side of the line.",
+      },
+      {
+        question: "Points nearer A than B are on one side of which line?",
+        choices: [
+          "Perpendicular bisector",
+          "Angle bisector",
+          "Line AB",
+          "A circle around A",
+        ],
+        accept: [
+          "Perpendicular bisector",
+        ],
+        answer: "Perpendicular bisector of AB, because every point on it is the same distance from A and B, so it splits nearer-A from nearer-B.",
+      },
+      {
+        question: "Which construction splits an angle into two equal parts?",
+        choices: [
+          "Perp. bisector",
+          "Angle bisector",
+          "Equilateral triangle",
+          "Parallel line",
+        ],
+        accept: [
+          "Angle bisector",
+        ],
+        answer: "Angle bisector, because it cuts the angle exactly in half; it is also the locus of points equidistant from the two arms.",
+      },
+      {
+        question: "You bisect a 60° angle with compasses. What angle does each part make?",
+        choices: [
+          "120°",
+          "15°",
+          "30°",
+          "90°",
+        ],
+        accept: [
+          "30°",
+        ],
+        answer: "30°, because bisecting means cutting in half: 60 ÷ 2 = 30.",
+      },
+      {
+        question: "A goat is tied to a post by a 5 m rope. What shape is the region it can graze?",
+        choices: [
+          "Square, side 5 m",
+          "Circle, radius 2.5 m",
+          "Circle, radius 10 m",
+          "Circle, radius 5 m",
+        ],
+        accept: [
+          "Circle, radius 5 m",
+        ],
+        answer: "Circle, radius 5 m, because every point within 5 m of the post can be reached, giving the inside of a circle of radius 5 m.",
+      },
+      {
+        question: "A scale drawing uses 1 cm for 4 m. What does a 6 cm line represent, in metres?",
+        choices: [
+          "24",
+          "10",
+          "1.5",
+          "240",
+        ],
+        accept: [
+          "24",
+        ],
+        answer: "24, because each centimetre stands for 4 m, so 6 cm represents 6 × 4 = 24 m.",
+      },
+      {
+        question: "A map has scale 1 : 10,000. How many metres does 5 cm represent?",
+        choices: [
+          "50,000",
+          "500",
+          "5000",
+          "50",
+        ],
+        accept: [
+          "500",
+        ],
+        answer: "500, because 5 × 10,000 = 50,000 cm, and 50,000 ÷ 100 = 500 m.",
+      },
+      {
+        question: "A plan has scale 1 : 50. A 4 m wall is how long on the plan, in cm?",
+        choices: [
+          "200",
+          "0.08",
+          "8",
+          "20",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because 4 m = 400 cm, and 400 ÷ 50 = 8 cm on the plan.",
+      },
+      {
+        question: "B is on a bearing of 040° from A, and C is on 130°. Find angle BAC.",
+        choices: [
+          "170°",
+          "50°",
+          "270°",
+          "90°",
+        ],
+        accept: [
+          "90°",
+        ],
+        answer: "90°, because both bearings are measured from north at A, so the angle between them is 130 − 40 = 90.",
+      },
+      {
+        question: "To construct a triangle from three given side lengths you need:",
+        choices: [
+          "Ruler and compasses",
+          "Protractor only",
+          "Ruler and protractor",
+          "Compasses only",
+        ],
+        accept: [
+          "Ruler and compasses",
+        ],
+        answer: "Ruler and compasses, because you draw one side with the ruler, then arcs of the other two lengths from its ends meet at the third corner.",
       },
     ],
 
@@ -16532,6 +22782,292 @@ export const MATHS: Record<string, TopicContent> = {
       {
         question: "Explain how to change a density given in kg/m³ into g/cm³, and why the two numbers differ by a factor of 1000.",
         answer: "Convert the top and the bottom of the unit separately. One kilogram is 1000 grams, so the mass figure is multiplied by 1000. One cubic metre is 100 × 100 × 100 = 1 000 000 cubic centimetres, so the volume figure is multiplied by 1 000 000. The overall effect is to multiply by 1000 and divide by 1 000 000, which is the same as dividing by 1000. So a density in kg/m³ is divided by 1000 to give g/cm³, and a density in g/cm³ is multiplied by 1000 to give kg/m³. The factor is 1000 rather than 100 because the length conversion is cubed. Water, at 1000 kg/m³, is 1 g/cm³, which is a handy check. (Mark this one yourself.)",
+      },
+      {
+        question: "A car travels 120 km in 2 hours. What is its speed in km/h?",
+        choices: [
+          "240",
+          "60",
+          "122",
+          "0.6",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "60, because speed = distance ÷ time = 120 ÷ 2 = 60 km/h.",
+      },
+      {
+        question: "How far do you travel at 50 km/h for 3 hours, in km?",
+        choices: [
+          "150",
+          "53",
+          "16.7",
+          "0.06",
+        ],
+        accept: [
+          "150",
+        ],
+        answer: "150, because distance = speed × time = 50 × 3 = 150 km.",
+      },
+      {
+        question: "How long does 200 km at 40 km/h take, in hours?",
+        choices: [
+          "8000",
+          "0.2",
+          "5",
+          "160",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because time = distance ÷ speed = 200 ÷ 40 = 5 hours.",
+      },
+      {
+        question: "A worker earns £9 an hour. How many hours to earn £72?",
+        choices: [
+          "648",
+          "8",
+          "81",
+          "63",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because hours = pay ÷ rate = 72 ÷ 9 = 8 hours.",
+      },
+      {
+        question: "A runner covers 100 m in 20 s. What is the speed in m/s?",
+        choices: [
+          "5",
+          "2000",
+          "0.2",
+          "80",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because speed = distance ÷ time = 100 ÷ 20 = 5 m/s.",
+      },
+      {
+        question: "Convert 36 km/h to m/s.",
+        choices: [
+          "36",
+          "129.6",
+          "3.6",
+          "10",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because to go from km/h to m/s you divide by 3.6: 36 ÷ 3.6 = 10 m/s.",
+      },
+      {
+        question: "Convert 5 m/s to km/h.",
+        choices: [
+          "1.39",
+          "18",
+          "300",
+          "50",
+        ],
+        accept: [
+          "18",
+        ],
+        answer: "18, because to go from m/s to km/h you multiply by 3.6: 5 × 3.6 = 18 km/h.",
+      },
+      {
+        question: "Mass = density × what?",
+        choices: [
+          "area",
+          "pressure",
+          "volume",
+          "time",
+        ],
+        accept: [
+          "volume",
+        ],
+        answer: "volume, because density = mass ÷ volume, so rearranging gives mass = density × volume.",
+      },
+      {
+        question: "A 40 g block has volume 8 cm³. What is its density in g/cm³?",
+        choices: [
+          "320",
+          "5",
+          "0.2",
+          "32",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because density = mass ÷ volume = 40 ÷ 8 = 5 g/cm³.",
+      },
+      {
+        question: "Density is 2 g/cm³ and volume is 30 cm³. What is the mass in g?",
+        choices: [
+          "15",
+          "32",
+          "60",
+          "28",
+        ],
+        accept: [
+          "60",
+        ],
+        answer: "60, because mass = density × volume = 2 × 30 = 60 g.",
+      },
+      {
+        question: "Density is 4 g/cm³ and mass is 20 g. What is the volume in cm³?",
+        choices: [
+          "80",
+          "0.2",
+          "24",
+          "5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because volume = mass ÷ density = 20 ÷ 4 = 5 cm³.",
+      },
+      {
+        question: "Pressure = force ÷ what?",
+        choices: [
+          "area",
+          "volume",
+          "mass",
+          "time",
+        ],
+        accept: [
+          "area",
+        ],
+        answer: "area, because pressure is force spread over an area, measured in N/m².",
+      },
+      {
+        question: "A force of 60 N acts on 3 m². What is the pressure in N/m²?",
+        choices: [
+          "180",
+          "0.05",
+          "20",
+          "63",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because pressure = force ÷ area = 60 ÷ 3 = 20 N/m².",
+      },
+      {
+        question: "A pressure of 10 N/m² acts on 4 m². What is the force in N?",
+        choices: [
+          "2.5",
+          "40",
+          "0.4",
+          "14",
+        ],
+        accept: [
+          "40",
+        ],
+        answer: "40, because force = pressure × area = 10 × 4 = 40 N.",
+      },
+      {
+        question: "The force stays the same but the area halves. The pressure:",
+        choices: [
+          "halves",
+          "stays the same",
+          "doubles",
+          "quadruples",
+        ],
+        accept: [
+          "doubles",
+        ],
+        answer: "doubles, because pressure = force ÷ area, and dividing by half as much gives twice the answer.",
+      },
+      {
+        question: "Sam earns £80 for 8 hours of work. What is the hourly rate?",
+        choices: [
+          "£640",
+          "£10",
+          "£88",
+          "£72",
+        ],
+        accept: [
+          "£10",
+        ],
+        answer: "£10, because hourly rate = pay ÷ hours = 80 ÷ 8 = £10 per hour.",
+      },
+      {
+        question: "A tap fills 60 litres in 5 minutes. What is the flow in litres per minute?",
+        choices: [
+          "300",
+          "12",
+          "55",
+          "1/12",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because rate = amount ÷ time = 60 ÷ 5 = 12 litres per minute.",
+      },
+      {
+        question: "A pump moves 4 litres per second. How many litres in 1 minute?",
+        choices: [
+          "15",
+          "64",
+          "240",
+          "2.4",
+        ],
+        accept: [
+          "240",
+        ],
+        answer: "240, because 1 minute = 60 seconds and 4 × 60 = 240 litres.",
+      },
+      {
+        question: "What is 1.5 hours in hours and minutes?",
+        choices: [
+          "1 h 50 min",
+          "1 h 30 min",
+          "1 h 5 min",
+          "1 h 15 min",
+        ],
+        accept: [
+          "1 h 30 min",
+        ],
+        answer: "1 h 30 min, because 0.5 of an hour is half of 60 minutes = 30 minutes, not 50.",
+      },
+      {
+        question: "At 60 km/h, how far do you travel in 20 minutes, in km?",
+        choices: [
+          "1200",
+          "3",
+          "180",
+          "20",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "20, because 60 km/h is 1 km per minute, so 20 minutes covers 20 km (60 × ⅓ = 20).",
+      },
+      {
+        question: "500 people live in 2 km². What is the population density per km²?",
+        choices: [
+          "250",
+          "1000",
+          "502",
+          "0.004",
+        ],
+        accept: [
+          "250",
+        ],
+        answer: "250, because population density = people ÷ area = 500 ÷ 2 = 250 people per km².",
+      },
+      {
+        question: "Which is faster: 20 m/s or 60 km/h?",
+        choices: [
+          "60 km/h",
+          "20 m/s",
+          "the same speed",
+          "can't tell",
+        ],
+        accept: [
+          "20 m/s",
+        ],
+        answer: "20 m/s, because 20 × 3.6 = 72 km/h, which is faster than 60 km/h.",
       },
     ],
 

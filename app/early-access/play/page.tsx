@@ -11,6 +11,7 @@ import { SUBJECTS, getSubject } from "../../lib/subjects";
 import { buildGameQuestions, countGameQuestions, playableTopics, weakTopicWeights } from "../../lib/game-questions";
 import { getTopicAccuracies } from "../../lib/progress";
 import { GameClient } from "./GameClient";
+import { TickAllTopics } from "./TickAllTopics";
 import { LEVELS } from "../game/levels";
 import { GAME_SAVES_ENABLED, listSaves, readSave } from "../../lib/game-saves";
 import { saveHref } from "../../lib/gameSave";
@@ -26,7 +27,6 @@ export const metadata: Metadata = { title: "Play · Early access", robots: { ind
 
 type Props = { searchParams: Promise<{ [key: string]: string | string[] | undefined }> };
 const list = (v: string | string[] | undefined) => (Array.isArray(v) ? v : v ? [v] : []);
-const MAX_TOPICS = 8;
 
 export default async function PlayPage({ searchParams }: Props) {
   if (!ACCOUNTS_ENABLED) redirect("/");
@@ -48,7 +48,11 @@ export default async function PlayPage({ searchParams }: Props) {
   // 3 · play
   if (subject && list(q.topic).length) {
     const allowed = new Set(playableTopics(subject.slug).flatMap((y) => y.topics.map((t) => t.slug)));
-    const topics = list(q.topic).filter((t) => allowed.has(t)).slice(0, MAX_TOPICS);
+    // ⚠️ No cap on how many. It was 8 — Matthew, 2026-10-11: "make sure that
+    // you can pick more than eight topics, like as many as you want". Every
+    // real topic of the subject is allowed; what bounds the list is that each
+    // must be real, and a topic named twice in the URL counts once.
+    const topics = [...new Set(list(q.topic).filter((t) => allowed.has(t)))];
     // ⚠️ A URL naming only topics that do not exist filtered to an empty list,
     // and buildGameQuestions then topped up from the WHOLE subject — so the
     // game started under a header reading "0 topics · 0 from your topics".
@@ -134,11 +138,15 @@ export default async function PlayPage({ searchParams }: Props) {
       ) : (
         <form method="get" action="/early-access/play" className="mt-8">
           <input type="hidden" name="subject" value={subject.slug} />
-          <h2 className="text-lg font-semibold">2 · Pick your {subject.name} topics <span className="text-sm font-normal opacity-60">(up to {MAX_TOPICS})</span></h2>
+          <h2 className="text-lg font-semibold">2 · Pick your {subject.name} topics <span className="text-sm font-normal opacity-60">(as many as you like)</span></h2>
+          <div className="mt-3"><TickAllTopics scope="form" label={`Tick every ${subject.name} topic`} /></div>
           <div className="mt-4 space-y-5">
             {playableTopics(subject.slug).map((y) => (
               <fieldset key={y.year}>
+                {/* the legend stays the fieldset's FIRST child, or it stops
+                    naming the group for a screen reader */}
                 <legend className="text-sm font-semibold opacity-70">{y.year}</legend>
+                {y.topics.length > 1 && <div className="mt-1"><TickAllTopics scope="fieldset" label={`All of ${y.year}`} /></div>}
                 <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                   {y.topics.map((t) => (
                     <label key={t.slug} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-black/10 px-3 py-2 text-sm dark:border-white/10">

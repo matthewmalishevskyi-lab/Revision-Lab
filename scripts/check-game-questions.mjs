@@ -13,7 +13,7 @@
 // picking two or three topics has to give a lot more than one playthrough asks.
 
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createRequire } from "node:module";
@@ -31,7 +31,7 @@ try {
     "node_modules/typescript/bin/tsc",
     "app/lib/subjects.ts", "app/lib/content/index.ts", "app/lib/marks.ts",
     "app/lib/difficulty.ts", "app/lib/shuffle.ts", "app/lib/normalise.ts", "app/lib/game-questions.ts",
-    "app/lib/weightedShuffle.ts",
+    "app/lib/weightedShuffle.ts", "app/lib/gameSave.ts",
     "--outDir", out, "--module", "commonjs", "--target", "es2020",
     "--moduleResolution", "node", "--skipLibCheck",
   ], { stdio: "inherit" });
@@ -210,6 +210,60 @@ try {
     for (let i = 0; i < passes; i++) if (weightedShuffle(items, () => 1, rand)[0].topic === "weak") firstWeak++;
     expect(Math.abs(firstWeak / passes - 0.25) < 0.08, `with equal weights the first item is weak ${((firstWeak / passes) * 100).toFixed(0)}% of the time, not about 25%`);
     console.log(`Weak-topic questions make up ${(share * 100).toFixed(0)}% of the first ten drawn at weight 3 (25% unweighted).`);
+  }
+
+  // ── As many topics as you like (2026-10-11) ─────────────────────────────
+  //
+  // Matthew: "make sure that you can pick more than eight topics, like as many
+  // as you want". The cap was 8 in two places — the play page sliced the list,
+  // and a save refused a setup with a ninth topic — so both are checked.
+  {
+    const { SAVE_TOPICS_MAX, parseSaveSetup } = require_(join(out, "gameSave.js"));
+    let biggest = 0, biggestName = "";
+    for (const subject of SUBJECTS) {
+      const slugs = playableTopics(subject.slug).flatMap((y) => y.topics.map((t) => t.slug));
+      if (slugs.length > biggest) { biggest = slugs.length; biggestName = subject.name; }
+      // every topic of every subject ticked must still make a save that keeps them all
+      const setup = parseSaveSetup({ subject: subject.slug, topics: slugs, mascot: "pixel" });
+      if (slugs.length) expect(setup?.topics.length === slugs.length, `${subject.name}: a game with all ${slugs.length} topics could not be saved`);
+    }
+    expect(biggest <= SAVE_TOPICS_MAX, `${biggestName} has ${biggest} playable topics but a save holds at most ${SAVE_TOPICS_MAX}`);
+
+    // Ticking everything must give a game drawn from the whole subject, not
+    // from whichever topics happen to come first in the list.
+    const maths = playableTopics("maths").flatMap((y) => y.topics.map((t) => t.slug));
+    const { reload } = buildGameQuestions("maths", maths);
+    const seen = new Set(reload.map((q) => q.topic));
+    expect(reload.length >= 200, `all ${maths.length} maths topics give a pool of only ${reload.length}`);
+    expect(seen.size >= Math.ceil(maths.length * 0.9), `all ${maths.length} maths topics ticked, but the pool only draws on ${seen.size} of them`);
+    const { own, total } = countGameQuestions("maths", maths);
+    expect(own > total, `all maths topics ticked, yet "from your topics" (${own}) is not the whole pool (${total})`);
+
+    // ⚠️ and nothing quietly puts a cap back. Comments are stripped first: the
+    // page's own comment explaining that the cap was removed names it.
+    const page = readFileSync("app/early-access/play/page.tsx", "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+    expect(!/MAX_TOPICS/.test(page), "the play page has a MAX_TOPICS again — Matthew asked for as many topics as you like");
+    expect(!/q\.topic\)[^;]*\.slice\(/.test(page), "the play page slices the chosen topics down to a fixed number again");
+    expect(/\(as many as you like\)/.test(page), "the picker no longer tells the player there is no limit");
+    console.log(`All ${maths.length} maths topics ticked: ${reload.length} questions in the pool from ${seen.size} topics; saves hold up to ${SAVE_TOPICS_MAX} topics (largest subject: ${biggest}).`);
+  }
+
+  // ── The quick maths bank (2026-10-11) ───────────────────────────────────
+  // 500 multiple-choice questions written for the game's 10-second reload:
+  // short stems, four buttons. A floor, so they cannot quietly go missing.
+  {
+    let quick = 0, mcq = 0;
+    for (const [key, c] of Object.entries(TOPIC_CONTENT)) {
+      if (!key.startsWith("maths/")) continue;
+      for (const p of c.practice ?? []) {
+        if (!p.choices) continue;
+        mcq += 1;
+        if (p.question.length <= 95 && p.choices.length === 4 && p.choices.every((x) => x.length <= 22)) quick += 1;
+      }
+    }
+    expect(mcq >= 889, `maths has ${mcq} multiple-choice questions — it had 889 after the game batch`);
+    expect(quick >= 600, `only ${quick} maths multiple-choice questions are short enough for a 10-second reload`);
+    console.log(`Maths: ${mcq} multiple-choice questions, ${quick} of them game-quick (stem ≤ 95 characters, four short buttons).`);
   }
 } finally {
   rmSync(out, { recursive: true, force: true });
