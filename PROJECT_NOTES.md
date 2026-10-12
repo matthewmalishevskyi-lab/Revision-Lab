@@ -47,6 +47,14 @@ next annoyance — a shortcut on a form that still works with no JavaScript. The
 pool stays capped at 240 (a full run asks ~131); with all 19 maths topics
 ticked it draws from all 19.
 
+**Then 100 more (2026-10-12)**, same brief and validator, writers told to
+read yesterday's batch and find NEW kinds of question rather than new numbers
+(identities, reciprocals, truncation, stem-and-leaf keys, tessellation,
+acceleration, constructible angles…). All 100 blind re-solved: **100 of 100
+agreed**, no flags; one distractor tightened ("a reflection" → "a reflection
+in a line", for scale factor −1). Maths now **989** multiple-choice questions,
+848 of them game-quick. The floor in check-game-questions moved to 989.
+
 **Verified.** `npm run check` fully green — **204,336** content, **50**
 game-save, **29,078** game-question and every other suite as before; `tsc`
 and `eslint` clean. Sabotages caught: a re-added slice, a save ceiling of 8,

@@ -261,7 +261,7 @@ try {
         if (p.question.length <= 95 && p.choices.length === 4 && p.choices.every((x) => x.length <= 22)) quick += 1;
       }
     }
-    expect(mcq >= 889, `maths has ${mcq} multiple-choice questions — it had 889 after the game batch`);
+    expect(mcq >= 989, `maths has ${mcq} multiple-choice questions — it had 989 after the second game batch`);
     expect(quick >= 600, `only ${quick} maths multiple-choice questions are short enough for a 10-second reload`);
     console.log(`Maths: ${mcq} multiple-choice questions, ${quick} of them game-quick (stem ≤ 95 characters, four short buttons).`);
   }

@@ -1164,6 +1164,86 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "3.14, because the 3 counts as the first significant figure, so you keep 3, 1, 4 and the next digit (1) rounds down.",
       },
+      {
+        question: "Work out 0.6 × 0.3.",
+        choices: [
+          "1.8",
+          "0.18",
+          "0.018",
+          "0.9",
+        ],
+        accept: [
+          "0.18",
+        ],
+        answer: "0.18, because 6 × 3 = 18 and the question has two decimal places in total, so 0.18.",
+      },
+      {
+        question: "What is the reciprocal of 4?",
+        choices: [
+          "−4",
+          "¼",
+          "0.4",
+          "16",
+        ],
+        accept: [
+          "¼",
+          "0.25",
+          "1/4",
+        ],
+        answer: "¼, because the reciprocal is 1 ÷ the number, and 1 ÷ 4 = ¼ (which is 0.25).",
+      },
+      {
+        question: "Which number is both a square number and a cube number?",
+        choices: [
+          "16",
+          "8",
+          "64",
+          "27",
+        ],
+        accept: [
+          "64",
+        ],
+        answer: "64, because 64 = 8 × 8 = 8² and also 64 = 4 × 4 × 4 = 4³.",
+      },
+      {
+        question: "Truncate 7.89 to 1 decimal place.",
+        choices: [
+          "7.9",
+          "7.8",
+          "8.0",
+          "7",
+        ],
+        accept: [
+          "7.8",
+        ],
+        answer: "7.8, because truncating just chops off the extra digits without rounding, so 7.89 becomes 7.8.",
+      },
+      {
+        question: "Work out 2³ + 3².",
+        choices: [
+          "12",
+          "17",
+          "72",
+          "15",
+        ],
+        accept: [
+          "17",
+        ],
+        answer: "17, because 2³ = 2 × 2 × 2 = 8 and 3² = 9, and 8 + 9 = 17.",
+      },
+      {
+        question: "How many hundredths are there in 0.7?",
+        choices: [
+          "7",
+          "70",
+          "700",
+          "0.07",
+        ],
+        accept: [
+          "70",
+        ],
+        answer: "70, because 0.7 = 0.70, which is 70 hundredths (70 × 0.01 = 0.7).",
+      },
     ],
 
     misconceptions: [
@@ -2942,6 +3022,136 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "1/x², because a negative index means 'one over': x⁻² = 1 ÷ x². It does not make the answer negative.",
       },
+      {
+        question: "Simplify 2x × 3x × x.",
+        choices: [
+          "6x",
+          "6x³",
+          "5x³",
+          "6x²",
+        ],
+        accept: [
+          "6x³",
+        ],
+        answer: "6x³, because the numbers multiply (2 × 3 × 1 = 6) and x × x × x = x³.",
+      },
+      {
+        question: "What is the highest common factor of 6x² and 9x?",
+        choices: [
+          "3x²",
+          "18x²",
+          "3x",
+          "x",
+        ],
+        accept: [
+          "3x",
+        ],
+        answer: "3x, because 3 is the HCF of 6 and 9, and x is the highest power of x that is in both terms.",
+      },
+      {
+        question: "Find ab − c when a = 4, b = −2 and c = 3.",
+        choices: [
+          "−5",
+          "−11",
+          "11",
+          "−1",
+        ],
+        accept: [
+          "−11",
+        ],
+        answer: "−11, because ab = 4 × (−2) = −8, and then −8 − 3 = −11.",
+      },
+      {
+        question: "Which of these is an identity?",
+        choices: [
+          "3x + 2 = 11",
+          "3(x + 2) = 3x + 6",
+          "y = 3x + 2",
+          "3x + 2",
+        ],
+        accept: [
+          "3(x + 2) = 3x + 6",
+        ],
+        answer: "3(x + 2) = 3x + 6, because it is true for EVERY value of x: expanding the left side gives the right side exactly.",
+      },
+      {
+        question: "Simplify (6x + 9) ÷ 3.",
+        choices: [
+          "2x + 9",
+          "6x + 3",
+          "2x + 3",
+          "2x + 6",
+        ],
+        accept: [
+          "2x + 3",
+        ],
+        answer: "2x + 3, because you divide EVERY term by 3: 6x ÷ 3 = 2x and 9 ÷ 3 = 3.",
+      },
+      {
+        question: "Simplify x/2 + x/2.",
+        choices: [
+          "2x/4",
+          "x",
+          "x/4",
+          "2x",
+        ],
+        accept: [
+          "x",
+        ],
+        answer: "x, because two halves of x make one whole x: add the numerators and keep the denominator, 2x/2 = x.",
+      },
+      {
+        question: "Expand −(x − 7).",
+        choices: [
+          "−x − 7",
+          "x − 7",
+          "−x + 7",
+          "x + 7",
+        ],
+        accept: [
+          "−x + 7",
+        ],
+        answer: "−x + 7, because the minus multiplies BOTH terms: −1 × x = −x and −1 × −7 = +7.",
+      },
+      {
+        question: "Expand y(4 − y).",
+        choices: [
+          "4y − y²",
+          "4y − y",
+          "4 − y²",
+          "4y − 2y",
+        ],
+        accept: [
+          "4y − y²",
+        ],
+        answer: "4y − y², because y × 4 = 4y and y × y = y².",
+      },
+      {
+        question: "Add 1 to n, then square the result. Which expression is this?",
+        choices: [
+          "n² + 1",
+          "(n + 1)²",
+          "2(n + 1)",
+          "n + 1²",
+        ],
+        accept: [
+          "(n + 1)²",
+        ],
+        answer: "(n + 1)², because the brackets make the adding happen first, then the whole result is squared.",
+      },
+      {
+        question: "A pen costs x pence and a ruler costs 5p less. What do both cost, in pence?",
+        choices: [
+          "x − 5",
+          "2x − 5",
+          "2x + 5",
+          "2x − 10",
+        ],
+        accept: [
+          "2x − 5",
+        ],
+        answer: "2x − 5, because the ruler costs x − 5, and x + (x − 5) = 2x − 5.",
+      },
     ],
 
     misconceptions: [
@@ -4033,6 +4243,71 @@ export const MATHS: Record<string, TopicContent> = {
           "110°",
         ],
         answer: "110°, because an exterior angle equals the two opposite interior angles added: 40 + 70 = 110.",
+      },
+      {
+        question: "A triangle has angles 50°, 50° and 80°. What type of triangle is it?",
+        choices: [
+          "isosceles",
+          "equilateral",
+          "scalene",
+          "right-angled",
+        ],
+        accept: [
+          "isosceles",
+        ],
+        answer: "Isosceles, because two of its angles are equal, which means two of its sides are equal too.",
+      },
+      {
+        question: "What is each interior angle of a regular pentagon?",
+        choices: [
+          "72°",
+          "540°",
+          "108°",
+          "120°",
+        ],
+        accept: [
+          "108°",
+        ],
+        answer: "108°, because each exterior angle is 360 ÷ 5 = 72°, and 180 − 72 = 108°.",
+      },
+      {
+        question: "Which of these regular polygons tessellates on its own?",
+        choices: [
+          "pentagon",
+          "octagon",
+          "decagon",
+          "hexagon",
+        ],
+        accept: [
+          "hexagon",
+        ],
+        answer: "Hexagon, because its 120° interior angles fit exactly round a point: 3 × 120 = 360°.",
+      },
+      {
+        question: "Angles of x, 2x and 3x lie on a straight line. Find x.",
+        choices: [
+          "60°",
+          "30°",
+          "45°",
+          "90°",
+        ],
+        accept: [
+          "30°",
+        ],
+        answer: "30°, because angles on a straight line add to 180°: x + 2x + 3x = 6x = 180, so x = 30°.",
+      },
+      {
+        question: "An exterior angle of a triangle is 110°. What is the interior angle next to it?",
+        choices: [
+          "110°",
+          "250°",
+          "20°",
+          "70°",
+        ],
+        accept: [
+          "70°",
+        ],
+        answer: "70°, because the interior and exterior angles at a vertex lie on a straight line: 180 − 110 = 70°.",
       },
     ],
 
@@ -5650,6 +5925,110 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "6/7, because only the numerator is multiplied by the whole number: 2 × 3 = 6, so the answer is 6 sevenths.",
       },
+      {
+        question: "What is the reciprocal of 2/5?",
+        choices: [
+          "−2/5",
+          "5/2",
+          "3/5",
+          "0.4",
+        ],
+        accept: [
+          "5/2",
+        ],
+        answer: "5/2, because the reciprocal flips the fraction upside down, and 2/5 × 5/2 = 1.",
+      },
+      {
+        question: "Write 3/25 as a percentage.",
+        choices: [
+          "3%",
+          "75%",
+          "12%",
+          "0.12%",
+        ],
+        accept: [
+          "12%",
+        ],
+        answer: "12%, because 3/25 = 12/100 (multiply top and bottom by 4), which is 12%.",
+      },
+      {
+        question: "Work out 0.4 × 0.2.",
+        choices: [
+          "0.8",
+          "8",
+          "0.008",
+          "0.08",
+        ],
+        accept: [
+          "0.08",
+        ],
+        answer: "0.08, because 4 × 2 = 8 and the question has two decimal places in total, so the answer is 0.08.",
+      },
+      {
+        question: "Work out 4/5 − 1/2.",
+        choices: [
+          "3/10",
+          "3/3",
+          "13/10",
+          "3/5",
+        ],
+        accept: [
+          "3/10",
+        ],
+        answer: "3/10, because with a common denominator of 10 it is 8/10 − 5/10 = 3/10.",
+      },
+      {
+        question: "1/4 of a number is 9. What is the number?",
+        choices: [
+          "2.25",
+          "13",
+          "36",
+          "27",
+        ],
+        accept: [
+          "36",
+        ],
+        answer: "36, because if a quarter of the number is 9, the whole number is 4 × 9 = 36.",
+      },
+      {
+        question: "Write 18 as a percentage of 72.",
+        choices: [
+          "18%",
+          "25%",
+          "4%",
+          "54%",
+        ],
+        accept: [
+          "25%",
+        ],
+        answer: "25%, because 18/72 simplifies to 1/4, and 1/4 as a percentage is 25%.",
+      },
+      {
+        question: "Write 0.05 as a fraction in its simplest form.",
+        choices: [
+          "1/5",
+          "1/2",
+          "1/50",
+          "1/20",
+        ],
+        accept: [
+          "1/20",
+        ],
+        answer: "1/20, because 0.05 = 5/100, and dividing top and bottom by 5 gives 1/20.",
+      },
+      {
+        question: "£200 earns 5% simple interest a year. How much interest is earned in 3 years?",
+        choices: [
+          "£30",
+          "£10",
+          "£15",
+          "£31.53",
+        ],
+        accept: [
+          "£30",
+        ],
+        answer: "£30, because 5% of £200 is £10, and simple interest is the same every year: 3 × £10 = £30.",
+      },
     ],
 
     misconceptions: [
@@ -7160,6 +7539,98 @@ export const MATHS: Record<string, TopicContent> = {
           "100",
         ],
         answer: "100, because there are 1 + 4 = 5 parts, so one part is 500 ÷ 5 = 100 ml of squash. 125 comes from wrongly dividing by 4.",
+      },
+      {
+        question: "Juice to water is 1 : 3. There are 9 litres of water. How many litres of drink in total?",
+        choices: [
+          "3",
+          "12",
+          "27",
+          "36",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "12, because 9 litres of water is 3 parts, so 1 part (the juice) is 3 litres, and 3 + 9 = 12 litres.",
+      },
+      {
+        question: "Simplify the ratio 1.5 : 6.",
+        choices: [
+          "4 : 1",
+          "1 : 4.5",
+          "1 : 4",
+          "15 : 6",
+        ],
+        accept: [
+          "1 : 4",
+        ],
+        answer: "1 : 4, because doubling both parts gives 3 : 12, then dividing both by 3 gives 1 : 4.",
+      },
+      {
+        question: "y is directly proportional to x. Its graph is a straight line through which point?",
+        choices: [
+          "(1, 0)",
+          "(0, 1)",
+          "the origin",
+          "(1, 1)",
+        ],
+        accept: [
+          "the origin",
+        ],
+        answer: "The origin, because y = kx gives y = 0 when x = 0, so a direct proportion graph always passes through (0, 0).",
+      },
+      {
+        question: "Red to blue counters are in the ratio 1 : 4. What percentage are red?",
+        choices: [
+          "20%",
+          "25%",
+          "80%",
+          "4%",
+        ],
+        accept: [
+          "20%",
+        ],
+        answer: "20%, because there are 1 + 4 = 5 parts and red is 1 of them: 1/5 = 20% (not 1/4).",
+      },
+      {
+        question: "£1 = €1.20. How many euros do you get for £50?",
+        choices: [
+          "€41.67",
+          "€51.20",
+          "€6",
+          "€60",
+        ],
+        accept: [
+          "€60",
+        ],
+        answer: "€60, because changing pounds into euros means multiplying by the rate: 50 × 1.20 = 60.",
+      },
+      {
+        question: "A plan has scale 1 : 1000. How long is a 20 m wall on the plan, in cm?",
+        choices: [
+          "20",
+          "2",
+          "0.2",
+          "200",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because 20 m = 2000 cm, and 2000 ÷ 1000 = 2 cm on the plan.",
+      },
+      {
+        question: "y is directly proportional to √x, and y = 6 when x = 4. Find k in y = k√x.",
+        choices: [
+          "1.5",
+          "12",
+          "3",
+          "24",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because √4 = 2, so 6 = k × 2 and k = 6 ÷ 2 = 3 (don't divide by 4 itself).",
+        higherOnly: true,
       },
     ],
 
@@ -8857,6 +9328,123 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "x = −12, because you multiply both sides by 4: −3 × 4 = −12.",
       },
+      {
+        question: "Solve 2x/5 = 4.",
+        choices: [
+          "1.6",
+          "10",
+          "2",
+          "8",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "10, because multiplying both sides by 5 gives 2x = 20, then dividing by 2 gives x = 10.",
+      },
+      {
+        question: "What is the positive solution of x² + 1 = 50?",
+        choices: [
+          "49",
+          "7",
+          "25",
+          "√51",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "7, because subtracting 1 gives x² = 49, and the positive square root of 49 is 7.",
+      },
+      {
+        question: "Solve x/2 − 3 = 1.",
+        choices: [
+          "4",
+          "−4",
+          "8",
+          "−2",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "8, because adding 3 gives x/2 = 4, then multiplying by 2 gives x = 8.",
+      },
+      {
+        question: "Which inequality means 'x is no more than 6'?",
+        choices: [
+          "x < 6",
+          "x ≤ 6",
+          "x ≥ 6",
+          "x > 6",
+        ],
+        accept: [
+          "x ≤ 6",
+        ],
+        answer: "x ≤ 6, because 'no more than 6' means 6 or less, so 6 itself is allowed (≤, not <).",
+      },
+      {
+        question: "Solve 5 − x < 2.",
+        choices: [
+          "x < 3",
+          "x > −3",
+          "x > 3",
+          "x < −3",
+        ],
+        accept: [
+          "x > 3",
+        ],
+        answer: "x > 3, because adding x and subtracting 2 gives 3 < x, which is the same as x > 3.",
+      },
+      {
+        question: "If 2a = 10 and a + b = 8, what is b?",
+        choices: [
+          "5",
+          "−2",
+          "3",
+          "13",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because 2a = 10 gives a = 5, and then 5 + b = 8 means b = 3.",
+      },
+      {
+        question: "Double a number, add 3, and you get 15. What is the number?",
+        choices: [
+          "9",
+          "6",
+          "12",
+          "7.5",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because 2n + 3 = 15, so 2n = 12 and n = 6.",
+      },
+      {
+        question: "Use A = ½bh to find h when A = 12 and b = 4.",
+        choices: [
+          "3",
+          "24",
+          "6",
+          "1.5",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "6, because 12 = ½ × 4 × h = 2h, so h = 12 ÷ 2 = 6.",
+      },
+      {
+        question: "Solve 4x + 3 = 3.",
+        choices: [
+          "1.5",
+          "¾",
+          "1",
+          "0",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "0, because subtracting 3 from both sides gives 4x = 0, and 0 ÷ 4 = 0.",
+      },
     ],
 
     misconceptions: [
@@ -10056,6 +10644,59 @@ export const MATHS: Record<string, TopicContent> = {
           "4",
         ],
         answer: "4, because opposite = hypotenuse × sin 30° = 8 × ½ = 4 cm.",
+      },
+      {
+        question: "In a right-angled triangle, sin x = 3/5. What is cos x?",
+        choices: [
+          "4/5",
+          "3/4",
+          "5/3",
+          "2/5",
+        ],
+        accept: [
+          "4/5",
+        ],
+        answer: "4/5, because opposite 3 and hypotenuse 5 make a 3-4-5 triangle, so the adjacent is 4 and cos x = 4/5.",
+      },
+      {
+        question: "A rectangle is 15 cm by 20 cm. How long is its diagonal, in cm?",
+        choices: [
+          "35",
+          "625",
+          "25",
+          "13.2",
+        ],
+        accept: [
+          "25",
+        ],
+        answer: "25, because 15² + 20² = 225 + 400 = 625, and √625 = 25.",
+      },
+      {
+        question: "A cuboid is 1 cm by 2 cm by 2 cm. How long is its longest diagonal, in cm?",
+        choices: [
+          "5",
+          "√5",
+          "3",
+          "9",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because 3D Pythagoras gives 1² + 2² + 2² = 1 + 4 + 4 = 9, and √9 = 3.",
+        higherOnly: true,
+      },
+      {
+        question: "The angle of elevation of B from A is 25°. What is the angle of depression of A from B?",
+        choices: [
+          "65°",
+          "155°",
+          "115°",
+          "25°",
+        ],
+        accept: [
+          "25°",
+        ],
+        answer: "25°, because the horizontals at A and B are parallel, so elevation and depression are equal alternate angles.",
       },
     ],
 
@@ -11258,6 +11899,85 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "1/2, because 3 red are left out of 6 counters: 3/6 = 1/2.",
       },
+      {
+        question: "A letter is picked at random from the word APPLE. What is P(a vowel)?",
+        choices: [
+          "3/5",
+          "2/5",
+          "2/3",
+          "1/5",
+        ],
+        accept: [
+          "2/5",
+        ],
+        answer: "2/5, because APPLE has 5 letters and 2 of them (A and E) are vowels.",
+      },
+      {
+        question: "A pack has 52 cards and 4 of them are kings. What is P(king)?",
+        choices: [
+          "1/52",
+          "4/13",
+          "1/4",
+          "1/13",
+        ],
+        accept: [
+          "1/13",
+        ],
+        answer: "1/13, because P(king) = 4/52, and dividing top and bottom by 4 gives 1/13.",
+      },
+      {
+        question: "P(red) = 0.4. How many spins would you expect to give 20 reds?",
+        choices: [
+          "50",
+          "8",
+          "5",
+          "500",
+        ],
+        accept: [
+          "50",
+        ],
+        answer: "50, because expected reds = 0.4 × spins, so spins = 20 ÷ 0.4 = 50.",
+      },
+      {
+        question: "P(A) = 0.5, P(B) = 0.4 and P(A and B) = 0.1. Find P(A or B).",
+        choices: [
+          "0.9",
+          "0.2",
+          "0.8",
+          "1",
+        ],
+        accept: [
+          "0.8",
+        ],
+        answer: "0.8, because P(A or B) = P(A) + P(B) − P(A and B) = 0.5 + 0.4 − 0.1 = 0.8.",
+      },
+      {
+        question: "8 of 20 people wear glasses and 3 of those 8 are left-handed. P(left-handed, given glasses)?",
+        choices: [
+          "3/20",
+          "2/5",
+          "5/8",
+          "3/8",
+        ],
+        accept: [
+          "3/8",
+        ],
+        answer: "3/8, because 'given glasses' means you only look at the 8 glasses-wearers, and 3 of them are left-handed.",
+        higherOnly: true,
+      },
+      {
+        question: "A dice is rolled 600 times and lands on 6 three hundred times. What does this suggest?",
+        choices: [
+          "It is fair",
+          "It is biased",
+          "Too few rolls to tell",
+          "6 is now less likely",
+        ],
+        accept: [
+          "It is biased",
+        ],
+        answer: "It is biased, because a fair dice would give about 600 ÷ 6 = 100 sixes, not 300.",
+      },
     ],
 
     misconceptions: [
@@ -12375,6 +13095,71 @@ export const MATHS: Record<string, TopicContent> = {
           "mode",
         ],
         answer: "mode, because two or more values can tie for most common, e.g. 2, 2, 5, 5 has modes 2 and 5.",
+      },
+      {
+        question: "A sample where every member has an equal chance of being chosen is called a:",
+        choices: [
+          "convenience sample",
+          "random sample",
+          "quota sample",
+          "biased sample",
+        ],
+        accept: [
+          "random sample",
+        ],
+        answer: "Random sample, because in a random sample every member of the population is equally likely to be picked, which avoids bias.",
+      },
+      {
+        question: "In a stem and leaf diagram, key 4 | 7 means 47. What does 2 | 3 mean?",
+        choices: [
+          "2.3",
+          "32",
+          "23",
+          "5",
+        ],
+        accept: [
+          "23",
+        ],
+        answer: "23, because the stem is the tens digit and the leaf is the units digit, just as 4 | 7 means 47.",
+      },
+      {
+        question: "Score 3 occurs 4 times and score 5 occurs 6 times. Find the mean score.",
+        choices: [
+          "4",
+          "4.2",
+          "5",
+          "21",
+        ],
+        accept: [
+          "4.2",
+        ],
+        answer: "4.2, because the total is 3 × 4 + 5 × 6 = 42 from 4 + 6 = 10 scores, and 42 ÷ 10 = 4.2.",
+      },
+      {
+        question: "25 values are put in order. Which position holds the median?",
+        choices: [
+          "12th",
+          "12.5th",
+          "26th",
+          "13th",
+        ],
+        accept: [
+          "13th",
+        ],
+        answer: "13th, because the median is at position (n + 1) ÷ 2 = 26 ÷ 2 = 13.",
+      },
+      {
+        question: "Every value in a data set is increased by 3. What happens to the range?",
+        choices: [
+          "It goes up by 3",
+          "It stays the same",
+          "It goes up by 6",
+          "It is tripled",
+        ],
+        accept: [
+          "It stays the same",
+        ],
+        answer: "It stays the same, because the largest and smallest values both rise by 3, so their difference does not change.",
       },
     ],
 
@@ -13957,6 +14742,97 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "1, because each term is divided by 3 (multiplied by ⅓): 3 ÷ 3 = 1.",
       },
+      {
+        question: "Which sequence has nth term n² + 1?",
+        choices: [
+          "1, 4, 9, 16",
+          "2, 5, 10, 17",
+          "0, 3, 8, 15",
+          "2, 3, 4, 5",
+        ],
+        accept: [
+          "2, 5, 10, 17",
+        ],
+        answer: "2, 5, 10, 17, because putting n = 1, 2, 3, 4 into n² + 1 gives 1 + 1, 4 + 1, 9 + 1 and 16 + 1.",
+      },
+      {
+        question: "Which number is a term of the sequence 4n + 1?",
+        choices: [
+          "38",
+          "40",
+          "37",
+          "39",
+        ],
+        accept: [
+          "37",
+        ],
+        answer: "37, because 4 × 9 + 1 = 37; every term is 1 more than a multiple of 4.",
+      },
+      {
+        question: "Solve x² − 4x = 0.",
+        choices: [
+          "x = 4 only",
+          "x = 0 or x = 4",
+          "x = 0 or x = −4",
+          "x = ±2",
+        ],
+        accept: [
+          "x = 0 or x = 4",
+        ],
+        answer: "x = 0 or x = 4, because x² − 4x = x(x − 4), so x = 0 or x − 4 = 0. Never divide by x — you lose x = 0.",
+      },
+      {
+        question: "Factorise x² + 10x + 25.",
+        choices: [
+          "(x + 5)(x − 5)",
+          "(x + 5)²",
+          "(x + 1)(x + 25)",
+          "(x + 2)(x + 5)",
+        ],
+        accept: [
+          "(x + 5)²",
+        ],
+        answer: "(x + 5)², because 5 + 5 = 10 and 5 × 5 = 25, so it is (x + 5)(x + 5).",
+      },
+      {
+        question: "What is the next term of 1, 3, 6, 10, ...?",
+        choices: [
+          "14",
+          "15",
+          "16",
+          "13",
+        ],
+        accept: [
+          "15",
+        ],
+        answer: "15, because the gaps grow by 1 each time (+2, +3, +4), so the next gap is +5: 10 + 5 = 15.",
+      },
+      {
+        question: "How many times does the graph of y = (x − 3)² meet the x-axis?",
+        choices: [
+          "never",
+          "once",
+          "twice",
+          "three times",
+        ],
+        accept: [
+          "once",
+        ],
+        answer: "Once, because (x − 3)² = 0 only when x = 3, so the curve just touches the x-axis at that one point.",
+      },
+      {
+        question: "What is the nth term of −3, 1, 5, 9, ...?",
+        choices: [
+          "4n − 3",
+          "n + 4",
+          "4n − 7",
+          "4n + 7",
+        ],
+        accept: [
+          "4n − 7",
+        ],
+        answer: "4n − 7, because it goes up in 4s (4n = 4, 8, 12…) and each term is 7 less than 4n.",
+      },
     ],
 
     misconceptions: [
@@ -14885,6 +15761,48 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "bisects it, because the perpendicular from the centre to a chord always cuts the chord into two equal halves.",
         higherOnly: true,
       },
+      {
+        question: "An angle at the circumference stands on chord AB and is 90°. What is AB?",
+        choices: [
+          "a radius",
+          "a diameter",
+          "a tangent",
+          "an arc",
+        ],
+        accept: [
+          "a diameter",
+        ],
+        answer: "A diameter, because the angle in a semicircle is 90°, so a 90° angle at the circumference must stand on a diameter.",
+        higherOnly: true,
+      },
+      {
+        question: "O is the centre and A, B are on the circle. Angle AOB = 40°. Find angle OAB.",
+        choices: [
+          "40°",
+          "70°",
+          "140°",
+          "20°",
+        ],
+        accept: [
+          "70°",
+        ],
+        answer: "70°, because OA = OB (both radii), so the triangle is isosceles: (180° − 40°) ÷ 2 = 70°.",
+        higherOnly: true,
+      },
+      {
+        question: "ABCD is a cyclic quadrilateral. Angle B = 110°. What is the exterior angle at D?",
+        choices: [
+          "70°",
+          "110°",
+          "250°",
+          "55°",
+        ],
+        accept: [
+          "110°",
+        ],
+        answer: "110°, because angle D = 180° − 110° = 70° (opposite angles), and the exterior angle at D is 180° − 70° = 110°.",
+        higherOnly: true,
+      },
     ],
 
     misconceptions: [
@@ -15740,6 +16658,33 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "6 right and 4 down, because multiplying a vector by 2 doubles BOTH parts: 3 × 2 = 6 and 2 × 2 = 4.",
       },
+      {
+        question: "Vector a is 2 right and 1 up. What is −a?",
+        choices: [
+          "2 left and 1 up",
+          "2 right and 1 down",
+          "2 left and 1 down",
+          "1 left and 2 down",
+        ],
+        accept: [
+          "2 left and 1 down",
+        ],
+        answer: "2 left and 1 down, because −a has the same length as a but points the opposite way, so both directions flip.",
+      },
+      {
+        question: "An enlargement of scale factor −1 is the same as which transformation?",
+        choices: [
+          "a reflection in a line",
+          "a rotation of 180°",
+          "a rotation of 90°",
+          "a translation",
+        ],
+        accept: [
+          "a rotation of 180°",
+        ],
+        answer: "A rotation of 180°, because scale factor −1 keeps the size but sends every point to the opposite side of the centre.",
+        higherOnly: true,
+      },
     ],
 
     misconceptions: [
@@ -16452,6 +17397,19 @@ export const MATHS: Record<string, TopicContent> = {
           "7",
         ],
         answer: "7, because 7² = 49 is very close to 50 (and 8² = 64 is far away), so √50 ≈ 7.07.",
+      },
+      {
+        question: "Which is a sensible mass for one apple?",
+        choices: [
+          "15 g",
+          "150 g",
+          "1.5 kg",
+          "15 kg",
+        ],
+        accept: [
+          "150 g",
+        ],
+        answer: "150 g, because about 6 or 7 apples make a kilogram; 15 g is grape-sized and 1.5 kg is heavier than a bag of sugar.",
       },
     ],
 
@@ -17738,6 +18696,84 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "4.7 × 10³, because standard form needs a number from 1 up to (but not including) 10, times a power of 10.",
       },
+      {
+        question: "How many times bigger is 10⁶ than 10⁴?",
+        choices: [
+          "2",
+          "10",
+          "100",
+          "1000",
+        ],
+        accept: [
+          "100",
+        ],
+        answer: "100, because 10⁶ ÷ 10⁴ = 10², which is 100 (not 2 — that is just the gap in the powers).",
+      },
+      {
+        question: "Simplify 6⁴ × 6⁻⁴.",
+        choices: [
+          "0",
+          "1",
+          "6⁻¹⁶",
+          "6⁸",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "1, because you add the indices: 4 + (−4) = 0, and anything to the power 0 is 1.",
+      },
+      {
+        question: "What is (½)⁻¹?",
+        choices: [
+          "−½",
+          "½",
+          "2",
+          "−2",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "2, because a power of −1 means the reciprocal, and the reciprocal of ½ is 2.",
+      },
+      {
+        question: "Write 0.5 × 10³ in standard form.",
+        choices: [
+          "5 × 10²",
+          "5 × 10³",
+          "5 × 10⁴",
+          "5 × 10¹",
+        ],
+        accept: [
+          "5 × 10²",
+        ],
+        answer: "5 × 10², because 0.5 × 10³ = 500, and 500 = 5 × 100.",
+      },
+      {
+        question: "Work out 2 × 10³ + 3 × 10³.",
+        choices: [
+          "5 × 10⁶",
+          "5 × 10³",
+          "6 × 10³",
+          "6 × 10⁶",
+        ],
+        accept: [
+          "5 × 10³",
+        ],
+        answer: "5 × 10³, because 2000 + 3000 = 5000; when the powers match, just add the front numbers.",
+      },
+      {
+        question: "What is 10⁹ called in words?",
+        choices: [
+          "one million",
+          "one billion",
+          "one trillion",
+          "ten million",
+        ],
+        accept: [
+          "one billion",
+        ],
+        answer: "One billion, because 10⁹ = 1 000 000 000, which is a thousand million.",
+      },
     ],
 
     misconceptions: [
@@ -18870,6 +19906,71 @@ export const MATHS: Record<string, TopicContent> = {
           "30",
         ],
         answer: "30, because perimeter = 2 × (length + width) = 2 × (12 + 3) = 30 cm. 36 is the area.",
+      },
+      {
+        question: "A cube has volume 64 cm³. How long is each edge, in cm?",
+        choices: [
+          "8",
+          "4",
+          "16",
+          "32",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "4, because the edge is the cube root of the volume, and 4 × 4 × 4 = 64.",
+      },
+      {
+        question: "A rectangle's length and width are both doubled. What happens to its perimeter?",
+        choices: [
+          "multiplied by 4",
+          "multiplied by 8",
+          "multiplied by 2",
+          "unchanged",
+        ],
+        accept: [
+          "multiplied by 2",
+        ],
+        answer: "Multiplied by 2, because perimeter is a length, so it scales by the same factor as the sides (area would be × 4).",
+      },
+      {
+        question: "Convert 4500 cm² into m².",
+        choices: [
+          "0.45",
+          "45",
+          "4.5",
+          "0.045",
+        ],
+        accept: [
+          "0.45",
+        ],
+        answer: "0.45, because 1 m² = 100 × 100 = 10 000 cm², so 4500 ÷ 10 000 = 0.45 m².",
+      },
+      {
+        question: "A circle has circumference 10π cm. What is its area, in cm²?",
+        choices: [
+          "100π",
+          "10π",
+          "25π",
+          "5π",
+        ],
+        accept: [
+          "25π",
+        ],
+        answer: "25π, because 2πr = 10π gives r = 5, and area = πr² = π × 5² = 25π.",
+      },
+      {
+        question: "Using 4πr², find the surface area of a sphere of radius 5 cm, in cm².",
+        choices: [
+          "20π",
+          "400π",
+          "40π",
+          "100π",
+        ],
+        accept: [
+          "100π",
+        ],
+        answer: "100π, because 4πr² = 4 × π × 5² = 4 × 25 × π = 100π (square the radius first).",
       },
     ],
 
@@ -20247,6 +21348,84 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "They never meet, because both have gradient 2, so they are parallel with different y-intercepts.",
       },
+      {
+        question: "What is the equation of the y-axis?",
+        choices: [
+          "y = 0",
+          "x = 0",
+          "y = x",
+          "x = 1",
+        ],
+        accept: [
+          "x = 0",
+        ],
+        answer: "x = 0, because every point on the y-axis has an x-coordinate of 0 (y = 0 is the x-axis).",
+      },
+      {
+        question: "The line y = 2x + c passes through (1, 5). What is c?",
+        choices: [
+          "7",
+          "5",
+          "3",
+          "−3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "3, because putting x = 1 and y = 5 in gives 5 = 2 + c, so c = 3.",
+      },
+      {
+        question: "Which line has a y-intercept of −2?",
+        choices: [
+          "y = −2x + 3",
+          "y = 3x − 2",
+          "y = x + 2",
+          "y = 2x",
+        ],
+        accept: [
+          "y = 3x − 2",
+        ],
+        answer: "y = 3x − 2, because in y = mx + c the y-intercept is c, the number on its own, which here is −2.",
+      },
+      {
+        question: "Which line slopes downwards from left to right?",
+        choices: [
+          "y = 2x − 5",
+          "y = 5",
+          "y = 5 − 2x",
+          "y = x + 5",
+        ],
+        accept: [
+          "y = 5 − 2x",
+        ],
+        answer: "y = 5 − 2x, because its gradient is −2, and a negative gradient slopes down from left to right.",
+      },
+      {
+        question: "On the line y = 2x + 1, what is x when y = 11?",
+        choices: [
+          "23",
+          "5",
+          "6",
+          "5.5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because 11 = 2x + 1 gives 2x = 10, so x = 5.",
+      },
+      {
+        question: "On a distance–time graph, what does the gradient show?",
+        choices: [
+          "distance",
+          "time",
+          "speed",
+          "acceleration",
+        ],
+        accept: [
+          "speed",
+        ],
+        answer: "Speed, because the gradient is distance ÷ time — how far you travel per unit of time.",
+      },
     ],
 
     misconceptions: [
@@ -21204,6 +22383,45 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "Two circles, because every circle is the same shape; rectangles, kites and rhombuses can change proportions or angles.",
       },
+      {
+        question: "Shape B is shape A enlarged by scale factor 3. A has perimeter 10 cm. B's perimeter in cm?",
+        choices: [
+          "90",
+          "30",
+          "13",
+          "270",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "30, because perimeter is a length, so it is multiplied by the scale factor itself: 10 × 3 = 30 (not by 3²).",
+      },
+      {
+        question: "Triangle A has angles 30° and 70°. B is A enlarged by scale factor 2. What are B's angles?",
+        choices: [
+          "60°, 140°, 160°",
+          "30°, 70°, 80°",
+          "30°, 70°, 90°",
+          "15°, 35°, 40°",
+        ],
+        accept: [
+          "30°, 70°, 80°",
+        ],
+        answer: "30°, 70°, 80°, because enlarging changes lengths but never angles; the third angle is 180 − 30 − 70 = 80°.",
+      },
+      {
+        question: "Which rectangle is similar to one measuring 2 cm by 5 cm?",
+        choices: [
+          "4 cm by 7 cm",
+          "6 cm by 10 cm",
+          "3 cm by 6 cm",
+          "4 cm by 10 cm",
+        ],
+        accept: [
+          "4 cm by 10 cm",
+        ],
+        answer: "4 cm by 10 cm, because both sides are multiplied by the same scale factor, 2; the others grow by different amounts.",
+      },
     ],
 
     misconceptions: [
@@ -22002,6 +23220,45 @@ export const MATHS: Record<string, TopicContent> = {
           "Ruler and compasses",
         ],
         answer: "Ruler and compasses, because you draw one side with the ruler, then arcs of the other two lengths from its ends meet at the third corner.",
+      },
+      {
+        question: "The perpendicular bisector of AB crosses AB at what angle?",
+        choices: [
+          "45°",
+          "90°",
+          "60°",
+          "180°",
+        ],
+        accept: [
+          "90°",
+        ],
+        answer: "90°, because perpendicular means at right angles; the bisector also cuts AB exactly in half.",
+      },
+      {
+        question: "Which angle can you construct using only a ruler and compasses?",
+        choices: [
+          "50°",
+          "70°",
+          "100°",
+          "45°",
+        ],
+        accept: [
+          "45°",
+        ],
+        answer: "45°, because you can construct a 90° angle (a perpendicular) and then bisect it to get 45°.",
+      },
+      {
+        question: "B is 5 km due north of A. C is 5 km due east of A. What is the bearing of C from B?",
+        choices: [
+          "045°",
+          "135°",
+          "315°",
+          "225°",
+        ],
+        accept: [
+          "135°",
+        ],
+        answer: "135°, because C is south-east of B (the triangle has two 45° angles), and south-east is a bearing of 135°.",
       },
     ],
 
@@ -23068,6 +24325,58 @@ export const MATHS: Record<string, TopicContent> = {
           "20 m/s",
         ],
         answer: "20 m/s, because 20 × 3.6 = 72 km/h, which is faster than 60 km/h.",
+      },
+      {
+        question: "A car travels 30 km in 15 minutes. What is its speed in km/h?",
+        choices: [
+          "2",
+          "200",
+          "120",
+          "450",
+        ],
+        accept: [
+          "120",
+        ],
+        answer: "120, because 15 minutes is ¼ of an hour, so in a full hour it goes 4 × 30 = 120 km.",
+      },
+      {
+        question: "Which of these is a unit of density?",
+        choices: [
+          "g/cm³",
+          "N/m²",
+          "m/s²",
+          "cm³/g",
+        ],
+        accept: [
+          "g/cm³",
+        ],
+        answer: "g/cm³, because density = mass ÷ volume, so its unit is a mass unit divided by a volume unit.",
+      },
+      {
+        question: "A printer prints 12 pages a minute. How many minutes does it take to print 300 pages?",
+        choices: [
+          "3600",
+          "25",
+          "2.5",
+          "288",
+        ],
+        accept: [
+          "25",
+        ],
+        answer: "25, because time = amount ÷ rate = 300 ÷ 12 = 25 minutes.",
+      },
+      {
+        question: "A car's speed rises steadily from 0 to 20 m/s in 4 s. What is its acceleration, in m/s²?",
+        choices: [
+          "80",
+          "0.2",
+          "40",
+          "5",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "5, because acceleration = change in velocity ÷ time = 20 ÷ 4 = 5 m/s².",
       },
     ],
 
