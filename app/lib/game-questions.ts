@@ -121,13 +121,16 @@ const MAX_POOL = 240;
 const WANT = 60;
 const MAX_CHOICES = 4;
 
-/** Topics in a subject with enough questions to play with. */
-export function playableTopics(subjectSlug: string) {
+/** Topics in a subject with enough questions to play with. `hidden` is the
+ *  "subject/topic" keys off the player's exam board (lib/examBoards.ts) —
+ *  left out of the picker, not out of what a save may hold. */
+export function playableTopics(subjectSlug: string, hidden: ReadonlySet<string> = new Set()) {
   const subject = getSubject(subjectSlug);
   if (!subject) return [];
   return subject.years.map((y) => ({
     year: y.year,
     topics: y.topics
+      .filter((t) => !hidden.has(`${subjectSlug}/${t.slug}`))
       .map((t) => ({ ...t, count: topicQuestions(subjectSlug, t.slug, t.title).length }))
       .filter((t) => t.count >= 3),
   })).filter((y) => y.topics.length > 0);
@@ -200,10 +203,14 @@ function topicQuestions(subjectSlug: string, slug: string, title: string): Raw[]
   return out;
 }
 
-export function buildGameQuestions(subjectSlug: string, topicSlugs: string[]): { reload: GameQuestion[]; easy: GameQuestion[] } {
+export function buildGameQuestions(subjectSlug: string, topicSlugs: string[], hidden: ReadonlySet<string> = new Set()): { reload: GameQuestion[]; easy: GameQuestion[] } {
   const subject = getSubject(subjectSlug);
   if (!subject) return { reload: [], easy: [] };
-  const all = subject.years.flatMap((y, yi) => y.topics.map((t) => ({ ...t, yi })));
+  const chosenSet = new Set(topicSlugs);
+  // A topic off the player's exam board never TOPS UP the pool (it can still be
+  // played if they ticked it themselves, say from an older save).
+  const all = subject.years.flatMap((y, yi) => y.topics.map((t) => ({ ...t, yi })))
+    .filter((t) => chosenSet.has(t.slug) || !hidden.has(`${subjectSlug}/${t.slug}`));
   const chosen = new Set(topicSlugs);
   const picked: Raw[] = [];
   const seen = new Set<string>();

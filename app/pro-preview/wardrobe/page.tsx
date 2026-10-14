@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getHiddenTopics } from "../../lib/exam-board-store";
 import { notFound, redirect } from "next/navigation";
 import { SiteHeader } from "../../components/SiteHeader";
 import { MascotWardrobeGrid } from "../../components/MascotWardrobeGrid";
@@ -34,7 +35,7 @@ export default async function ProWardrobePreviewPage() {
   const user = await getViewer();
   if (!user) redirect("/login");
 
-  const progress = await getProgress(user.id);
+  const progress = await getProgress(user.id, { hidden: await getHiddenTopics(user.id) });
 
   const info: OutfitUnlockInfo = {
     level: progress.xp.level,

@@ -10,6 +10,7 @@ import { getTopicAccuracies, getTouchedTopics } from "./progress";
 import { buildDailySet, type DailySet } from "./daily-practice";
 import { getDueQuestions } from "./question-review";
 import { buildRevisitSet } from "./revisit";
+import { getHiddenTopics } from "./exam-board-store";
 
 /** Today in the UK, as YYYY-MM-DD — the same day boundary progress uses. */
 export function todayKey(now: Date = new Date()): string {
@@ -19,9 +20,10 @@ export function todayKey(now: Date = new Date()): string {
 export async function getDailySet(userId: string): Promise<DailySet> {
   // Both readers already exist and both are cheap: they fold the same
   // `activity` rows the progress page reads, and Supabase is asked once.
-  const [accuracies, touched] = await Promise.all([
+  const [accuracies, touched, hidden] = await Promise.all([
     getTopicAccuracies(userId),
     getTouchedTopics(userId),
+    getHiddenTopics(userId),
   ]);
 
   return buildDailySet({
@@ -33,6 +35,7 @@ export async function getDailySet(userId: string): Promise<DailySet> {
       correct: a.correct,
     })),
     touched,
+    hidden,
     date: todayKey(),
   });
 }

@@ -30,6 +30,7 @@ import { SUBJECTS, type Subject } from "./subjects";
 import { TOPIC_CONTENT } from "./content";
 import { getTopicAccuracies, getTouchedTopics } from "./progress";
 import { getDueFlashcards } from "./flashcard-review";
+import { getHiddenTopics } from "./exam-board-store";
 
 export type RevisionQueueItem = {
   /** Stable across renders — used as the React key and nothing else. */
@@ -80,10 +81,12 @@ export async function getRevisionQueue(userId: string): Promise<RevisionQueueIte
   // Three independent reads of the same activity log, same trade-off
   // progress.ts already makes throughout — see the comment above
   // getTopicAccuracies for why that's an accepted cost at this site's size.
-  const [dueFlashcards, topicAccuracies, touched] = await Promise.all([
+  const [dueFlashcards, topicAccuracies, touched, hidden] = await Promise.all([
     getDueFlashcards(userId),
     getTopicAccuracies(userId),
     getTouchedTopics(userId),
+    // topics off the student's exam boards are never suggested (lib/examBoards.ts)
+    getHiddenTopics(userId),
   ]);
 
   // ── 1. Overdue flashcards, one queue item per subject ───────────────────
@@ -130,7 +133,8 @@ export async function getRevisionQueue(userId: string): Promise<RevisionQueueIte
   // question-count floor and sits below the threshold, ranked globally.
   const weakItems: RevisionQueueItem[] = topicAccuracies
     .filter(
-      (t) => t.questionsAnswered >= MIN_QUESTIONS_FOR_WEAK && t.accuracy < WEAK_ACCURACY_THRESHOLD,
+      (t) => t.questionsAnswered >= MIN_QUESTIONS_FOR_WEAK && t.accuracy < WEAK_ACCURACY_THRESHOLD
+        && !hidden.has(`${t.subjectSlug}/${t.topicSlug}`),
     )
     .sort((a, b) => a.accuracy - b.accuracy)
     .map((t): RevisionQueueItem | null => {
@@ -163,7 +167,7 @@ export async function getRevisionQueue(userId: string): Promise<RevisionQueueIte
   // extended across every subject with room to grow instead of naming only
   // the single least-covered one.
   const subjectCoverage = SUBJECTS.map((subject) => {
-    const allTopics = subject.years.flatMap((g) => g.topics);
+    const allTopics = subject.years.flatMap((g) => g.topics).filter((t) => !hidden.has(`${subject.slug}/${t.slug}`));
     const coveredCount = allTopics.filter((t) => touched.has(`${subject.slug}/${t.slug}`)).length;
     return {
       subject,

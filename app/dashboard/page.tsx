@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getHiddenTopics } from "../lib/exam-board-store";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SiteHeader } from "../components/SiteHeader";
@@ -38,7 +39,7 @@ export default async function DashboardPage() {
 
   // mastery first, so the badges can count it (see getMastery in progress.ts)
   const mastery = await getMastery(user.id).catch(() => null);
-  const progress = await getProgress(user.id, { masteredTopics: mastery?.total ?? 0 });
+  const progress = await getProgress(user.id, { masteredTopics: mastery?.total ?? 0, hidden: await getHiddenTopics(user.id) });
 
   // THE GLOBAL "revise today" queue — overdue flashcards, weak-accuracy
   // topics and never-touched topics, combined and ranked across EVERY

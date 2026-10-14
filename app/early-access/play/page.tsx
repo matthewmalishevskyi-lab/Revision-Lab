@@ -5,6 +5,7 @@ import { SiteHeader } from "../../components/SiteHeader";
 import { MascotDisplay } from "../../components/MascotDisplay";
 import { MASCOT_NAMES, MASCOTS } from "../../components/Mascots";
 import { getViewer } from "../../lib/viewer";
+import { getHiddenTopics } from "../../lib/exam-board-store";
 import { hasDevAccess } from "../../lib/dev-access";
 import { ACCOUNTS_ENABLED } from "../../lib/site";
 import { SUBJECTS, getSubject } from "../../lib/subjects";
@@ -44,6 +45,9 @@ export default async function PlayPage({ searchParams }: Props) {
   const saves = await listSaves(user.id);
   const saveSlot = Number(list(q.save)[0]);
   const loaded = list(q.save).length ? await readSave(user.id, saveSlot) : null;
+  // Topics off this player's exam boards (lib/examBoards.ts): not offered in
+  // the picker and never used to top the pool up.
+  const hidden = await getHiddenTopics(user.id);
 
   // 3 · play
   if (subject && list(q.topic).length) {
@@ -58,7 +62,7 @@ export default async function PlayPage({ searchParams }: Props) {
     // game started under a header reading "0 topics · 0 from your topics".
     // An empty list here means the request was wrong, not that everything goes.
     if (topics.length) {
-    const { reload, easy } = buildGameQuestions(subject.slug, topics);
+    const { reload, easy } = buildGameQuestions(subject.slug, topics, hidden);
     const { own } = countGameQuestions(subject.slug, topics);
     // Which of this subject's topics this student is weakest at, from their
     // own practice answers — the same reading /today ranks with. ⚠️ A failure
@@ -141,7 +145,7 @@ export default async function PlayPage({ searchParams }: Props) {
           <h2 className="text-lg font-semibold">2 · Pick your {subject.name} topics <span className="text-sm font-normal opacity-60">(as many as you like)</span></h2>
           <div className="mt-3"><TickAllTopics scope="form" label={`Tick every ${subject.name} topic`} /></div>
           <div className="mt-4 space-y-5">
-            {playableTopics(subject.slug).map((y) => (
+            {playableTopics(subject.slug, hidden).map((y) => (
               <fieldset key={y.year}>
                 {/* the legend stays the fieldset's FIRST child, or it stops
                     naming the group for a screen reader */}

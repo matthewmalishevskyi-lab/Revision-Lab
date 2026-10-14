@@ -1,5 +1,82 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Exam boards per subject: topics not on your board are hidden (2026-10-14)
+
+Matthew, the update he had "been waiting for ages": *"when a person chooses
+their exam board... all of the things that are not in their exam board are
+gone"* — asked *"every first time a person goes to the subject while they are
+logged in... otherwise they could just skip it and choose it later by a
+button."* He chose: **on the account**, asked on **the subjects that differ**
+(History, English, RE, Geography, CS, Business — Maths and the sciences ask too
+and say they are the same everywhere), boards **AQA, Edexcel, OCR, Eduqas**.
+
+**⚠️ Needs `EXAM_BOARDS_SETUP.sql` run once in Supabase.** Until then the
+question never appears and every topic shows — nothing else is affected.
+
+### ⚠️ THE HONEST SIZE OF IT: EIGHT TOPICS
+
+Every board's current specification was read for those ten subjects before a
+line was written (`examBoards.ts` cites them). Most GCSE content is fixed by the
+DfE, so the boards share it. What is genuinely board-only:
+
+    History   Conflict & tension 1918-39   not Edexcel
+              Crime & punishment            not AQA
+              Norman England                not Eduqas
+    RE        Peace & conflict              not Eduqas
+              Crime & punishment            not OCR
+              RE exam practice              AQA only (teaches AQA's paper layout)
+    CS        File handling                 not AQA
+              Databases                     AQA and OCR only
+
+English, Geography, Business, Maths and the sciences hide **nothing** — their
+boards differ in set texts, case studies and paper structure, not in which of
+these topics exist. Saying so beats hiding things by guesswork.
+
+### The rule behind every entry
+
+Hiding a topic that IS on a student's paper costs marks and they never find
+out; showing an extra one costs ten minutes. So: hide only what was checked; a
+board covers a topic if ANY of its specs does (Edexcel RS A *or* B…); unsure
+means shown; Year 9 (KS3) is never hidden; an unknown topic is shown (the
+lookup fails open, so a new topic can't vanish by being forgotten). A failing
+store returns null → nothing hidden, no question asked.
+
+And hidden is not unreachable: the subject page lists the hidden topics,
+closed, at its foot with the reason, and a hidden topic's own page opens with
+an amber "Not on AQA's specification" note. The one mistake this must never
+make is a silent one.
+
+### Where a hidden topic leaves
+
+The subject page (a strand renumbers: AQA's Programming is 1-11), "More in" on
+topic pages, the subject test and past paper pools, today's practice, the
+revision queue, the game's picker and top-up, and "topics covered" on the
+dashboard, progress, stats and badges (`getProgress({ hidden })` — not the clan
+page, which calls it per member and shows no coverage).
+
+`lib/examBoards.ts` pure data and helpers · `lib/exam-board-store.ts` Supabase,
+or `data/exam-boards.json` with no Supabase (so it works on a laptop) ·
+`lib/exam-board-actions.ts` user from the session, subject and board checked ·
+`components/BoardChooser.tsx` a plain form + `<details>`, works with JavaScript
+off. **Not a modal** — a student who doesn't know their board can still revise.
+The old one-board-per-device picker (localStorage) is gone; `/exam-board` now
+lists all ten subjects. Languages, PE and Citizenship don't ask: never checked.
+
+**Verified.** `npm run check` fully green, plus `check-exam-boards.mjs` (1,212
+new: every hiding a real non-Year-9 topic with sources, fail-open over every
+topic, named cases, page and mixed lists agreeing topic by topic, the SQL).
+**19 sabotages, all caught.** One security rule updated (the strand rule read
+`subject.years`; the page now lays out filtered `years`) and re-sabotaged.
+In a browser, 42 checks at 1280 and 320px: asked once, AQA History hides one
+topic and lists it at the foot, the notice, CS renumbering, Edexcel/AQA
+swapping, skip remembered, Maths/Geography wording, Spanish not asked,
+/exam-board, a choice made with **JavaScript off**, 44px, no sideways scroll,
+no console errors. ⚠️ Two first-run failures were the harness: `#board-question`
+is the heading's id, not the section's; and "hides nothing" matched the
+chooser's own sentence "will be hidden". And the test-pool check was vacuous
+until it read the page payload (the intro screen shows no topic names): 114
+AQA questions, no File handling; the Edexcel control did show it.
+
 ## 1,000 quick game questions for the sciences and English (2026-10-12)
 
 Matthew: *"make 1000 more multiple choice questions appropriate for our game

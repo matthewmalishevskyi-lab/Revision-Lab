@@ -27,6 +27,8 @@ import {
 import { getTopicContent } from "../../../lib/content";
 import { ACCOUNTS_ENABLED, SITE_NAME, SITE_URL } from "../../../lib/site";
 import { getViewer } from "../../../lib/viewer";
+import { asksForBoard, choiceLabel, onBoard, whyNotOnBoard } from "../../../lib/examBoards";
+import { getBoardChoices } from "../../../lib/exam-board-store";
 import { getTopic, SUBJECTS, yearStyle } from "../../../lib/subjects";
 import { topicNeedsCalculator } from "../../../lib/calculator-topics";
 
@@ -132,6 +134,15 @@ export default async function TopicPage({ params }: Props) {
   // matters more than the panel about it — so it falls back to no panel.
   const masteryReport = content && viewer ? await getMastery(viewer.id).catch(() => null) : null;
   const mastery = masteryReport?.topics.get(`${subject.slug}/${topic.slug}`) ?? null;
+
+  // The student's exam board for this subject (lib/examBoards.ts). A topic off
+  // their board is hidden from the subject page and every mixed list, but a
+  // direct link still opens it — with a notice saying why it was hidden, so
+  // it is the student's call, never a dead end.
+  const boardChoice = viewer && asksForBoard(subject.slug)
+    ? ((await getBoardChoices(viewer.id))?.get(subject.slug) ?? null)
+    : null;
+  const offBoard = whyNotOnBoard(subject.slug, topic.slug, boardChoice);
 
   // What this topic builds on and leads to, from the words the topics share.
   // one exam question with a modelled answer — biology first, more to come
@@ -332,6 +343,18 @@ export default async function TopicPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {offBoard && boardChoice && (
+          <aside role="note" className="mt-6 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm dark:border-amber-400/40 dark:bg-amber-500/10">
+            <p className="font-semibold">Not on {choiceLabel(boardChoice)}&apos;s specification</p>
+            <p className="mt-1 opacity-80">
+              {offBoard} You can skip it unless your teacher says otherwise.
+            </p>
+            <Link href={`/subjects/${subject.slug}`} className="mt-1 inline-flex min-h-11 items-center font-medium underline underline-offset-2">
+              Change your {subject.name} exam board
+            </Link>
+          </aside>
+        )}
 
         {mastery && <WhereYouAre mastery={mastery} colour={style.text} />}
 
@@ -606,7 +629,7 @@ export default async function TopicPage({ params }: Props) {
           </h2>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
             {(subject.years.find((g) => g.year === year)?.topics ?? [])
-              .filter((t) => t.slug !== topic.slug)
+              .filter((t) => t.slug !== topic.slug && onBoard(subject.slug, t.slug, boardChoice))
               .map((t) => (
                 <li key={t.slug}>
                   <Link

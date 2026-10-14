@@ -11,6 +11,7 @@ import {
   secondsAtOneMinutePerMark,
 } from "../../../lib/examPool";
 import { shuffle } from "../../../lib/shuffle";
+import { viewerHiddenTopics } from "../../../lib/viewer-boards";
 import { getSubject, type YearGroup } from "../../../lib/subjects";
 import { topicNeedsCalculator } from "../../../lib/calculator-topics";
 
@@ -92,7 +93,8 @@ export default async function ExamPage({ params, searchParams }: Props) {
     yearsToInclude = subject.years.filter((group) =>
       selectedYears.includes(group.year),
     );
-    const pool = collectQuestionPool(subject.slug, yearsToInclude);
+    // Only topics on the student's exam board — see lib/examBoards.ts.
+    const pool = collectQuestionPool(subject.slug, yearsToInclude, await viewerHiddenTopics());
     questions = pickToMarkBudget(shuffle(pool), subject.slug, MARK_BUDGET);
   }
 

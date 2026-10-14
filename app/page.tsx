@@ -2,6 +2,7 @@
 // `app/page.tsx` IS the route for "/" in the App Router.
 
 import Link from "next/link";
+import { getHiddenTopics } from "./lib/exam-board-store";
 import { MascotDisplay } from "./components/MascotDisplay";
 import { SiteHeader } from "./components/SiteHeader";
 import { StreakSpotlight } from "./components/StreakSpotlight";
@@ -30,7 +31,7 @@ export default async function Home(props: PageProps<"/">) {
   // has no streak to show, and getProgress needs a real user id. Safe to
   // call even with no database configured; it just comes back with no
   // recorded activity, not an error.
-  const progress = user ? await getProgress(user.id) : null;
+  const progress = user ? await getProgress(user.id, { hidden: await getHiddenTopics(user.id) }) : null;
 
   // The GLOBAL revision queue (lib/revision-queue.ts) — only its length is
   // needed here, to put a live number on the streak card's button. Same

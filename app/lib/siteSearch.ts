@@ -151,8 +151,8 @@ const PAGES: SearchResult[] = [
   },
   {
     kind: "page", href: "/exam-board", title: "Exam board", icon: "scales",
-    detail: "Tell the site whether you sit AQA, Edexcel, OCR or WJEC",
-    keywords: "aqa edexcel ocr wjec specification spec board settings",
+    detail: "Pick AQA, Edexcel, OCR or Eduqas for each subject, and hide topics that aren't on it",
+    keywords: "aqa edexcel ocr eduqas wjec specification spec board settings hide topics",
   },
   {
     kind: "page", href: "/privacy", title: "Privacy", icon: "shield",

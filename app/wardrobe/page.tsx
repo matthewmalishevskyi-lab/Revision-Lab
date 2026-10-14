@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getHiddenTopics } from "../lib/exam-board-store";
 import { redirect } from "next/navigation";
 import { PixelCompanion } from "../components/PixelCompanion";
 import { SiteHeader } from "../components/SiteHeader";
@@ -21,7 +22,7 @@ export default async function WardrobePage() {
   const user = await getViewer();
   if (!user) redirect("/login");
 
-  const progress = await getProgress(user.id);
+  const progress = await getProgress(user.id, { hidden: await getHiddenTopics(user.id) });
 
   // Everything an outfit's unlock condition might ask about, gathered in one
   // place — see PixelOutfits.tsx for why none of this needs its own storage.

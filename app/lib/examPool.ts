@@ -17,12 +17,18 @@ import type { YearGroup } from "./subjects";
 // groups, each tagged with where it came from. A topic with no content yet
 // ("content coming soon") simply contributes nothing — not an error, the
 // same way an empty optional section on a topic page isn't an error.
+//
+// `hidden` is the "subject/topic" keys the student's exam board rules out
+// (lib/examBoards.ts): a test on a topic that isn't on your paper is a test
+// of the wrong thing. Optional, so a caller with no student shows everything.
 export function collectQuestionPool(
   subjectSlug: string,
   years: Pick<YearGroup, "topics">[],
+  hidden: ReadonlySet<string> = new Set(),
 ): ExamQuestion[] {
   return years.flatMap((group) =>
     group.topics.flatMap((topic) => {
+      if (hidden.has(`${subjectSlug}/${topic.slug}`)) return [];
       const content = getTopicContent(subjectSlug, topic.slug);
       return (content?.practice ?? [])
         // ⚠️ A TIMED TEST ONLY ASKS WHAT IT CAN MARK. A question like "Give one

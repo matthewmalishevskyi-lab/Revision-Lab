@@ -352,7 +352,15 @@ function dayKey(date: Date): string {
   return date.toLocaleDateString("en-CA", { timeZone: TIMEZONE });
 }
 
-export async function getProgress(userId: string, opts: { masteredTopics?: number } = {}): Promise<Progress> {
+export async function getProgress(userId: string, opts: {
+  masteredTopics?: number;
+  /** "subject/topic" keys off the student's exam boards (lib/examBoards.ts).
+   *  They leave "topics covered" — both the count and the total — and are
+   *  never suggested next. Optional and passed by the pages that show one
+   *  student: the clan leaderboard calls this once per MEMBER and has no use
+   *  for coverage, so it skips the extra read. */
+  hidden?: ReadonlySet<string>;
+} = {}): Promise<Progress> {
   const rows = await readActivity(userId);
 
   // The seven day keys the chart covers, ending today.
@@ -376,7 +384,7 @@ export async function getProgress(userId: string, opts: { masteredTopics?: numbe
   const subjects: SubjectProgress[] = SUBJECTS.map((subject) => {
     const mine = rows.filter((r) => r.subject === subject.slug);
 
-    const allTopics = subject.years.flatMap((g) => g.topics);
+    const allTopics = subject.years.flatMap((g) => g.topics).filter((t) => !opts.hidden?.has(`${subject.slug}/${t.slug}`));
     const touched = new Set(mine.map((r) => r.topic));
     // Only count topics that still exist. A topic could be renamed or removed
     // after events were recorded against it, and counting those would let

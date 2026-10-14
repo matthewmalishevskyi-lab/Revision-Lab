@@ -219,6 +219,9 @@ export function buildDailySet(input: {
   touched: Set<string>;
   date: string;
   size?: number;
+  /** "subject/topic" keys off the student's exam boards (lib/examBoards.ts):
+   *  never recommended, weak or not — practice for a paper they won't sit. */
+  hidden?: ReadonlySet<string>;
 }): DailySet {
   const size = input.size ?? DAILY_SIZE;
 
@@ -234,8 +237,9 @@ export function buildDailySet(input: {
 
   // Filtered once, here, so that BOTH the weak-topic route and the new-student
   // fallback below can only ever see subjects this student is allowed.
+  const hidden = input.hidden ?? new Set<string>();
   const eligible = eligibleTopics().filter((t) =>
-    subjectUnlocked(t.subjectSlug, answeredBySubject),
+    subjectUnlocked(t.subjectSlug, answeredBySubject) && !hidden.has(`${t.subjectSlug}/${t.topicSlug}`),
   );
   const byKey = new Map(eligible.map((t) => [`${t.subjectSlug}/${t.topicSlug}`, t]));
 

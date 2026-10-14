@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getHiddenTopics } from "../../../lib/exam-board-store";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Icon } from "../../../components/Icon";
@@ -53,10 +54,14 @@ export default async function SubjectStatsPage({ params }: Props) {
   if (!user) redirect("/login");
 
   const mastery = await getMastery(user.id).catch(() => null);
-  const [progress, breakdown] = await Promise.all([
-    getProgress(user.id, { masteredTopics: mastery?.total ?? 0 }),
+  // Topics off this student's exam board leave the counts and the list, the
+  // same as on the subject page (lib/examBoards.ts).
+  const hidden = await getHiddenTopics(user.id);
+  const [progress, fullBreakdown] = await Promise.all([
+    getProgress(user.id, { masteredTopics: mastery?.total ?? 0, hidden }),
     getSubjectTopicBreakdown(user.id, slug),
   ]);
+  const breakdown = fullBreakdown.filter((t) => !hidden.has(`${slug}/${t.slug}`));
 
   // getProgress already computed this subject's own aggregate — reused here
   // rather than re-derived, so the headline number on this page can never

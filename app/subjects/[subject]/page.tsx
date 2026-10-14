@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ExamBoardNote } from "../../components/ExamBoardNote";
+import { BoardChooser } from "../../components/BoardChooser";
 import { Icon } from "../../components/Icon";
 import { MascotDisplay } from "../../components/MascotDisplay";
 import { SiteHeader } from "../../components/SiteHeader";
@@ -13,6 +13,8 @@ import { getViewer } from "../../lib/viewer";
 import { getMastery } from "../../lib/progress";
 import { MASTERY_LABEL, type Mastery } from "../../lib/mastery";
 import { MASTERY_PILL } from "../../components/WhereYouAre";
+import { asksForBoard, BOARD_NOTES, choiceLabel, onBoard, whyNotOnBoard } from "../../lib/examBoards";
+import { getBoardChoices } from "../../lib/exam-board-store";
 
 // The folder is called [subject] — square brackets mean "this bit of the URL is
 // a variable". So this ONE file serves /subjects/computer-science,
@@ -83,12 +85,26 @@ export default async function SubjectPage({ params }: Props) {
   // where the student stands on each topic — a pill on its row, and a count
   // in the title panel. Fails soft: no pills, never no page.
   const mastery = user ? await getMastery(user.id).catch(() => null) : null;
-  const topicCount = subject.years.reduce((n, y) => n + y.topics.length, 0);
+  // ── The exam board for THIS subject (see lib/examBoards.ts) ──────────────
+  // Asked the first time a logged-in student opens a subject that asks. null
+  // choices means the store can't be read (not set up, or down): then nothing
+  // is hidden and nothing is asked — it fails open, never closed.
+  const asks = asksForBoard(subject.slug);
+  const choices = user && asks ? await getBoardChoices(user.id) : null;
+  const choice = choices?.get(subject.slug) ?? null;
+  const boardMode = choices ? (choice ? "change" : "ask") : null;
+  // Topics not on the chosen board leave the lists. They are NOT made
+  // unreachable: they are listed, closed, at the foot of the page, because
+  // hiding something that IS on a student's paper is the one mistake this
+  // must never make silently.
+  const years = subject.years.map((g) => ({ ...g, topics: g.topics.filter((t) => onBoard(subject.slug, t.slug, choice)) }));
+  const hiddenTopics = subject.years.flatMap((g) => g.topics.filter((t) => !onBoard(subject.slug, t.slug, choice)));
+  const topicCount = years.reduce((n, y) => n + y.topics.length, 0);
   // A STRAND (Computer Science's Programming) is laid out as one wide,
   // numbered section of its own; only real years become columns. See
   // `strand` in lib/subjects.ts.
-  const strands = subject.years.filter((g) => g.strand);
-  const columns = subject.years.filter((g) => !g.strand);
+  const strands = years.filter((g) => g.strand);
+  const columns = years.filter((g) => !g.strand && g.topics.length > 0);
   const masteredHere = mastery?.bySubject.get(subject.slug) ?? 0;
 
   return (
@@ -150,6 +166,10 @@ export default async function SubjectPage({ params }: Props) {
           )}
         </div>
       </section>
+
+      {boardMode && (
+        <BoardChooser key={choice ?? "unset"} subject={subject.slug} subjectName={subject.name} current={choice} mode={boardMode} />
+      )}
 
       {/* ---------- The year columns ----------
            The grid adapts to how many years the subject actually has. It was
@@ -263,7 +283,41 @@ export default async function SubjectPage({ params }: Props) {
         })}
       </section>
 
-      <ExamBoardNote subjectSlug={subject.slug} />
+      {hiddenTopics.length > 0 && choice && choice !== "none" && (
+        <details className="mx-auto mt-10 max-w-3xl rounded-2xl border border-black/10 bg-white/60 px-5 py-1 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-center text-center text-sm [&::-webkit-details-marker]:hidden">
+            <span>
+              <strong>{hiddenTopics.length} topic{hiddenTopics.length === 1 ? "" : "s"} hidden</strong>
+              <span className="opacity-70"> — not on {choiceLabel(choice)}&apos;s specification. </span>
+              <span className="font-medium underline underline-offset-2 opacity-70">Show</span>
+            </span>
+          </summary>
+          <ul className="space-y-3 pb-4 pt-2">
+            {hiddenTopics.map((topic) => (
+              <li key={topic.slug} className="text-sm">
+                <Link href={`/subjects/${subject.slug}/${topic.slug}`} className="inline-flex min-h-11 items-center font-semibold underline underline-offset-2">
+                  {topic.title}
+                </Link>
+                <p className="opacity-70">{whyNotOnBoard(subject.slug, topic.slug, choice)}</p>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+
+      <p className="mx-auto mt-10 max-w-3xl text-center text-sm opacity-60">
+        {asks && !user ? (
+          <>
+            <Link href="/login" className="font-medium underline underline-offset-2">Log in</Link>{" "}
+            and pick your exam board, and topics that aren&apos;t on it will be hidden.
+            Lists vary between schools too, so check against your own course.
+          </>
+        ) : BOARD_NOTES[subject.slug] ? (
+          BOARD_NOTES[subject.slug]
+        ) : (
+          "Topic lists vary between boards and schools, so check against your own course."
+        )}
+      </p>
     </main>
   );
 }

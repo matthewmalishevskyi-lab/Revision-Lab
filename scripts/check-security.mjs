@@ -646,7 +646,9 @@ try {
   // and a strand's parts carry their number, because it is a ladder.
   {
     const page = subjectPage.replace(/\{\/\*[\s\S]*?\*\/\}/g, "").replace(/^\s*\/\/.*$/gm, "");
-    expect(/const columns = subject\.years\.filter\(\(g\) => !g\.strand\)/.test(page) && /COLUMNS\[columns\.length\]/.test(page) && /columns\.map\(/.test(page),
+    // (`years` is subject.years with topics off the student's exam board
+    // taken out — see check-exam-boards.mjs; the strand rule is the same.)
+    expect(/const columns = (?:subject\.)?years\.filter\(\(g\) => !g\.strand(?:\)| &&)/.test(page) && /COLUMNS\[columns\.length\]/.test(page) && /columns\.map\(/.test(page),
       "the subject page lays a strand out as another year column");
     expect(/strands\.map\(/.test(page) && /number=\{i \+ 1\}/.test(page), "the subject page does not give a strand its own numbered section");
   }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getHiddenTopics } from "../lib/exam-board-store";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { MascotDisplay } from "../components/MascotDisplay";
@@ -40,7 +41,7 @@ export default async function ProgressPage() {
 
   // mastery first, so the badges can count it (see getMastery in progress.ts)
   const mastery = await getMastery(user.id).catch(() => null);
-  const progress = await getProgress(user.id, { masteredTopics: mastery?.total ?? 0 });
+  const progress = await getProgress(user.id, { masteredTopics: mastery?.total ?? 0, hidden: await getHiddenTopics(user.id) });
   const devAccess = await hasDevAccess(user.id);
 
 
