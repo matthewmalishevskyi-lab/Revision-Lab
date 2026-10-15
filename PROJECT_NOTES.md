@@ -1,5 +1,55 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The ending: a shuttle full of TNT, after the Director (2026-10-15)
+
+Matthew: *"a cutscene where after the boss... we go into a spaceship. Then fill
+it with TNT. And then we crash into this space station of aliens and we blow
+it up together with ourselves."* He chose an **animated film** (not comic
+panels), played **only after beating the boss** (not a "watch the ending"
+button — he can't beat the Director yet, and said so), and the mascot
+**saying goodbye over comms** rather than flying with you.
+
+`game/ending.ts`, about a minute, skippable: the hangar with their station in
+the window → you carry six crates of TNT into the shuttle (a cargo counter
+ticks up) → doors open, engines light, out → outside the ship → the cockpit,
+station growing in the window, distance counting down, their bolts coming at
+the glass, "there's still time to eject" → **the goodbye, said right up to the
+white** → the station breaks into pieces → "THE STATION IS GONE / You didn't
+come home. Everyone else will." The mascot talks from the real comms screen
+(the HTML portrait sits over the frame the film draws) with your chosen mascot
+and outfit. Synthesised sounds like the rest of the game, no files.
+
+Three decisions worth keeping:
+
+- ⚠️ **The film is a pure function of its time.** `drawEnding(t)` remembers
+  nothing and every "random" star, blast and shard is seeded — so skipping, a
+  dropped frame or a test jumping to 41.5 s all show the same picture. A check
+  draws the same moment twice and fails if the canvas calls differ.
+- ⚠️ **The Enter that closes the results screen must not skip the film.** A
+  held key repeats thirty times a second; skipping ignores repeats and the
+  first 1.2 s, and the end screen's "watch it again" ignores the press that
+  skipped. Click and tap skip too.
+- **The 3D deck is not drawn while it plays**, the Saves menu pauses it, no
+  save can be made during it, and the run clock does not count it.
+
+Only reachable by beating him: the last deck's lift refuses while he lives
+(both completeLevel and the debrief sit behind that check), and finishing that
+deck is the only thing that starts the film. The end screen now says the
+station is gone and offers the ending again.
+
+**Verified.** `npm run check` fully green plus `check-ending.mjs` (959: every
+line on screen long enough to read and within four comms lines, the goodbye
+the last line before the white, all six crates in before take-off, distance
+5000 → 0, every cued sound actually played, ~330 frames drawn into a recording
+canvas with no throw and no NaN, determinism, the phone told to tap, the game
+wiring). **16 sabotages, all caught.** In a browser, 23 checks on the real
+game, desktop and a sideways phone: the lift refusing with him alive, Enter
+and a tap starting the film, a key repeat and an early press not skipping, it
+playing in real time, the Saves menu pausing it, no saving, the run clock
+still, skipping by Enter, click and tap, replaying from the end screen, ending
+by itself, no console errors — and frames looked at with the real mascot
+portrait in place.
+
 ## Exam boards per subject: topics not on your board are hidden (2026-10-14)
 
 Matthew, the update he had "been waiting for ages": *"when a person chooses

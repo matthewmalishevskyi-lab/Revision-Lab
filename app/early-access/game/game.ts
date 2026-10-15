@@ -18,6 +18,7 @@
 
 import { drawHud, drawQuiz, drawScreen, drawWeapon, HUD_H, HUD_W, quizChoiceAt, touchButtons, TOUCH_STICK, type QuizView } from "./hud";
 import { LEVELS } from "./levels";
+import { drawEnding, ENDING_CUES, ENDING_SECONDS, ENDING_SKIP_LOCK, type EndingSound } from "./ending";
 import { makeRenderer, type Drawable } from "./render";
 import { BOSS_HEIGHT, buildSprites, type Sprite } from "./sprites";
 import { buildTextures, type TexSet } from "./textures";
@@ -68,7 +69,7 @@ type Nade = { x: number; y: number; z: number; vx: number; vy: number; vz: numbe
 /** Anything drawn for a fraction of a second: muzzle flash, tracer, sparks,
  *  a fireball, smoke. It has no effect on the game, only on how it feels. */
 type Fx = { x: number; y: number; z: number; vx: number; vy: number; vz: number; sprite: string; t: number; life: number; scale: number; grow: number; drag: number };
-type Mode = "title" | "play" | "reload" | "stomp" | "nade" | "debrief" | "paused" | "dead" | "complete" | "done";
+type Mode = "title" | "play" | "reload" | "stomp" | "nade" | "debrief" | "paused" | "dead" | "complete" | "ending" | "done";
 type Weapon = "knife" | "pistol" | "rifle";
 /** Where on an alien a shot landed. The knife has no zones — a swing is a swing. */
 type Zone = "head" | "torso" | "legs";
@@ -594,6 +595,9 @@ export class Game {
    *  a button that has just disappeared leaves focus on <body>, and the game
    *  used to take the Tab and the Space meant for the menu from there. */
   private menuOpen = false;
+  /** How far into the ending film (ending.ts), and which sound cue is next. */
+  private endingT = 0;
+  private endingCue = 0;
   /** What the pause screen says after a load, until you carry on. */
   private resumeNote: string | null = null;
 
@@ -687,6 +691,7 @@ export class Game {
   private onMouseDown = (e: MouseEvent) => {
     if (this.mode === "title") { this.mode = "play"; this.opts.onStart?.(); this.lock(); return; }
     if (this.mode === "paused") { this.mode = this.pausedFrom; this.resumeNote = null; this.opts.onStart?.(); this.lock(); return; }
+    if (this.mode === "ending") { if (!this.touchDevice) this.skipEnding(); return; }
     if (this.mode === "dead" || this.mode === "complete" || this.mode === "done") return;
     if (this.touchDevice) return; // a phone's tap is handled by onTouchStart
     if (document.pointerLockElement !== this.ov) { this.lock(); return; }
@@ -719,9 +724,16 @@ export class Game {
     if (this.mode === "dead" && k === "enter") { this.loadLevel(this.levelIndex); this.mode = "play"; this.lock(); return; }
     if (this.mode === "complete" && k === "enter") {
       this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades, knife: KNIFE_USES };
-      if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; this.lock(); } else this.mode = "done";
+      // the last deck is the Director's: beating him is what plays the ending
+      if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; this.lock(); } else this.startEnding();
       return;
     }
+    // ⚠️ Not on a REPEAT: the Enter that closed the results screen is still
+    // held down a moment later, and a held key repeats thirty times a second.
+    // Without this, and the lock in skipEnding, it would skip the film it had
+    // just started.
+    if (this.mode === "ending") { if (!e.repeat && (k === "enter" || k === " ")) this.skipEnding(); return; }
+    if (this.mode === "done") { if (!e.repeat && k === "enter" && this.screenLock <= 0) this.startEnding(); return; }
     if (this.mode !== "play" && this.mode !== "reload") return;
     // ⚠️ A held key repeats about thirty times a second. Firing is rate-limited
     // by fireWait and walking reads `this.keys`, so neither cares — but G with
@@ -779,10 +791,11 @@ export class Game {
       if (this.mode === "dead") { this.loadLevel(this.levelIndex); this.mode = "play"; continue; }
       if (this.mode === "complete") {
         this.carry = { health: Math.max(this.p.health, 50), vest: this.p.vest, ammo: this.p.ammo, hasPistol: this.p.hasPistol, hasRifle: this.p.hasRifle, rifleAmmo: this.p.rifleAmmo, grenades: this.p.grenades, knife: KNIFE_USES };
-        if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; } else this.mode = "done";
+        if (this.levelIndex + 1 < LEVELS.length) { this.loadLevel(this.levelIndex + 1); this.mode = "play"; } else this.startEnding();
         continue;
       }
-      if (this.mode === "done") continue;
+      if (this.mode === "ending") { this.skipEnding(); continue; }
+      if (this.mode === "done") { if (this.screenLock <= 0) this.startEnding(); continue; }
       // a quiz takes the whole screen: tap the answer, or tap anywhere to move on
       if (this.quiz) {
         if (this.quiz.picked !== null) { if (this.quiz.feedback > 0) this.quiz.feedback = 0; continue; }
@@ -843,6 +856,37 @@ export class Game {
     // the screen and no knob drawn to explain why you are walking
     this.stickTouch = null; this.lookTouch = null; this.heldButtons.clear();
   };
+
+  // ── the ending: a film after the Director (ending.ts) ─────────────────────
+  // Played ONLY by beating him — the one way to finish the last deck, since
+  // its lift will not move while he is alive. Matthew chose that over a
+  // "watch the ending" button.
+  private startEnding() {
+    this.mode = "ending"; this.endingT = 0; this.endingCue = 0;
+    this.keys.clear(); this.stickTouch = null; this.lookTouch = null; this.heldButtons.clear();
+    this.ensureAudio();
+  }
+  private tickEnding(dt: number) {
+    if (this.menuOpen) return; // the Saves menu stops the film like it stops the game
+    this.endingT += dt;
+    while (this.endingCue < ENDING_CUES.length && ENDING_CUES[this.endingCue].at <= this.endingT) this.endingSound(ENDING_CUES[this.endingCue++].sound);
+    if (this.endingT >= ENDING_SECONDS) this.finishEnding();
+  }
+  /** Enter, a click or a tap — but not in the first moment (ENDING_SKIP_LOCK). */
+  private skipEnding() { if (this.endingT >= ENDING_SKIP_LOCK) this.finishEnding(); }
+  private finishEnding() { this.mode = "done"; this.screenLock = 0.9; }
+  private endingSound(s: EndingSound) {
+    if (s === "hum") this.beep(55, 50, 3, "sawtooth", 0.025);
+    else if (s === "thunk") { this.beep(140, 60, 0.18, "square", 0.06); this.noise(0.12, 0.08, 900, 200); }
+    else if (s === "door") { this.noise(2.2, 0.09, 500, 120); this.beep(70, 50, 2.2, "sawtooth", 0.03); }
+    else if (s === "ignite") { this.noise(1.2, 0.1, 600, 3000); this.beep(80, 220, 1.2, "sawtooth", 0.04); }
+    else if (s === "launch") { this.noise(2.4, 0.16, 3000, 200); this.beep(160, 50, 2.4, "sawtooth", 0.05); }
+    else if (s === "zap") this.beep(1500, 260, 0.28, "square", 0.04);
+    else if (s === "alarm") this.beep(this.endingCue % 2 ? 880 : 660, this.endingCue % 2 ? 880 : 660, 0.26, "square", 0.035);
+    else if (s === "impact") { this.noise(3.2, 0.32, 3200, 60); this.beep(90, 30, 2.8, "sawtooth", 0.12); }
+    else if (s === "boom") this.noise(1.7, 0.18, 1800, 80);
+    else if (s === "chord") [262, 330, 392].forEach((f, i) => setTimeout(() => this.beep(f, f, 2.2, "triangle", 0.05), i * 180));
+  }
 
   // ── sound: tiny synthesised effects, no files ──────────────────────────────
   private ensureAudio() { if (!this.audio) { try { this.audio = new AudioContext(); } catch { this.audio = null; } } }
@@ -923,6 +967,7 @@ export class Game {
     // pace marks and reloading would become a way to beat par.
     if (this.mode === "play" || this.mode === "reload" || this.mode === "nade") this.stats.time += dt;
     if (this.mode === "stomp" || this.mode === "reload" || this.mode === "nade" || this.mode === "debrief") this.updateQuiz(dt);
+    if (this.mode === "ending") this.tickEnding(dt);
     this.draw();
     // too slow for this computer? after a couple of seconds of play, go lighter
     if (this.mode === "play" && this.R.W === SHARP[0]) {
@@ -2077,6 +2122,13 @@ export class Game {
 
   // ── drawing ───────────────────────────────────────────────────────────────
   private draw() {
+    // The ending is a film, not the deck: it covers the whole visor, so the 3D
+    // view under it is not drawn at all — a minute of rendering nobody sees.
+    if (this.mode === "ending") {
+      this.o.clearRect(0, 0, HUD_W, HUD_H);
+      drawEnding(this.o, this.endingT, { who: this.opts.mascotName ?? "Comms", touch: this.touchDevice });
+      return;
+    }
     const p = this.p;
     const things: Drawable[] = [...this.decor];
     // a red keycard is drawn with the red card sprite; everything else is
@@ -2203,10 +2255,10 @@ export class Game {
       // the previous best, so there is something to beat next time
       // records, not one run: each of these came from whichever run set it
       if (was) lines.push(`Your records on this deck: best grade ${was.bestGrade} · fastest ${formatClock(was.bestSeconds)} · most ${was.mostKills} aliens`);
-      lines.push(this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "That was the last level for now.");
+      lines.push(this.levelIndex + 1 < LEVELS.length ? `Next: ${LEVELS[this.levelIndex + 1].TITLE}` : "The Director is down. One more thing before you go…");
       drawScreen(o, `Level complete — ${letter}`, lines, this.touchDevice ? "Tap to carry on" : "Press Enter to carry on", score >= 75 ? "#ffd65a" : "#2fd48a");
     }
-    if (this.mode === "done") drawScreen(o, "You finished early access!", [`All ${LEVELS.length} decks done, and the Director is down.`, "Every question you missed is waiting in “Revisit your mistakes”."], "Reload the page to play again", "#ffd65a");
+    if (this.mode === "done") drawScreen(o, "You finished early access!", [`All ${LEVELS.length} decks done, the Director is down, and the station is gone.`, "Every question you missed is waiting in “Revisit your mistakes”."], this.touchDevice ? "Tap to watch the ending again · reload the page to play again" : "Press Enter to watch the ending again · reload the page to play again", "#ffd65a");
     // frame timings, readable in dev tools (data-render-ms / data-hud-ms on the overlay)
     this.ov.dataset.renderMs = (t1 - t0).toFixed(1); this.ov.dataset.hudMs = (performance.now() - t1).toFixed(1);
   }

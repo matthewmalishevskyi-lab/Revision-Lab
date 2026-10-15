@@ -440,12 +440,21 @@ function drawCompass(x: Ctx, s: HudState) {
 // shows too; this draws the frame, the name and the message.
 export const COMMS_BOX = { x: 26, y: 26, w: 104, h: 104 };
 function drawComms(x: Ctx, s: HudState) {
-  const B = COMMS_BOX, live = !!s.comms;
+  drawCommsScreen(x, !!s.comms);
+  if (s.comms) drawCommsText(x, s.comms.who, s.comms.text, s.comms.age, s.comms.left);
+}
+/** The frame the mascot's portrait sits in (the portrait itself is HTML laid
+ *  over the canvas — see GameClient). Exported for the ending, so the mascot
+ *  talks to you there from exactly the same screen as in the game. */
+export function drawCommsScreen(x: Ctx, live: boolean) {
+  const B = COMMS_BOX;
   x.fillStyle = "rgba(6,14,28,0.7)"; x.beginPath(); x.roundRect(B.x, B.y, B.w, B.h, 16); x.fill();
   x.strokeStyle = live ? CYAN : CYAN_DIM; x.lineWidth = live ? 2.5 : 1.5; x.stroke();
   if (live) { x.fillStyle = GOOD; x.beginPath(); x.arc(B.x + B.w - 12, B.y + 12, 5, 0, 7); x.fill(); } // "transmitting" light
-  if (!s.comms) return;
-  const { who, text, age, left } = s.comms;
+}
+/** One message under the portrait, typed out as it arrives and faded at both ends. */
+export function drawCommsText(x: Ctx, who: string, text: string, age: number, left: number) {
+  const B = COMMS_BOX;
   x.save(); x.globalAlpha = Math.min(1, age * 5, left * 2);
   x.font = `bold 18px ${FONT}`;
   // the message sits under the portrait, clear of the compass along the top
