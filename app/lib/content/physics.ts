@@ -643,6 +643,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Kinetic — energy moves from the gravitational potential store to the kinetic store as it speeds up.",
       },
+      {
+        question: "A ball is thrown straight up. As it rises, energy moves between which stores?",
+        choices: [
+          "GPE to KE",
+          "KE to GPE",
+          "KE to elastic",
+          "Thermal to KE",
+        ],
+        accept: [
+          "KE to GPE",
+        ],
+        answer: "It slows as it rises, so its kinetic store empties into its gravitational potential store. GPE to KE happens on the way back down.",
+      },
+      {
+        question: "What is the unit of specific heat capacity?",
+        choices: [
+          "J/kg",
+          "J/°C",
+          "J/kg°C",
+          "W/kg°C",
+        ],
+        accept: [
+          "J/kg°C",
+        ],
+        answer: "Specific heat capacity is energy per kg per degree, so J/kg°C. J/kg is the unit of specific latent heat, where there is no temperature change.",
+      },
+      {
+        question: "Two kettles transfer the same energy. How does the more powerful one differ?",
+        choices: [
+          "Takes more time",
+          "Takes less time",
+          "Uses more energy",
+          "Wastes no energy",
+        ],
+        accept: [
+          "Takes less time",
+        ],
+        answer: "Power is energy transferred per second (P = E/t). Same energy at a higher power means it is done in less time.",
+      },
+      {
+        question: "A device is 75% efficient. If 200 J goes in, how much useful energy comes out?",
+        choices: [
+          "75 J",
+          "125 J",
+          "50 J",
+          "150 J",
+        ],
+        accept: [
+          "150 J",
+        ],
+        answer: "Useful output = efficiency × input = 0.75 × 200 = 150 J. 50 J is the wasted part, and 125 J subtracts 75 from 200.",
+      },
+      {
+        question: "Making a house wall thicker makes the rate of energy transfer through it:",
+        choices: [
+          "Higher",
+          "Lower",
+          "Unchanged",
+          "Zero",
+        ],
+        accept: [
+          "Lower",
+        ],
+        answer: "Thicker walls and lower thermal conductivity both cut the rate of energy transfer by conduction. It never reaches zero, just slows.",
+      },
+      {
+        question: "In the specific heat capacity practical, which meter directly measures energy supplied?",
+        choices: [
+          "Joulemeter",
+          "Voltmeter",
+          "Ammeter",
+          "Thermometer",
+        ],
+        accept: [
+          "Joulemeter",
+        ],
+        answer: "A joulemeter reads energy in J directly. Without one you need a voltmeter, an ammeter and a stopwatch, then use E = VIt.",
+      },
+      {
+        question: "A bungee jumper is at the lowest point, momentarily still. Most energy is in which store?",
+        choices: [
+          "Kinetic",
+          "Gravitational",
+          "Elastic potential",
+          "Chemical",
+        ],
+        accept: [
+          "Elastic potential",
+        ],
+        answer: "At the bottom the jumper is still (no kinetic energy) and lowest (least GPE), so the energy is in the stretched cord's elastic potential store.",
+      },
+      {
+        question: "Which of these materials has the highest thermal conductivity?",
+        choices: [
+          "Wood",
+          "Copper",
+          "Plastic",
+          "Air",
+        ],
+        accept: [
+          "Copper",
+        ],
+        answer: "Metals like copper conduct thermal energy quickly, which is why pans are metal. Air, wood and plastic are insulators with low thermal conductivity.",
+      },
+      {
+        question: "A 2 kW heater runs for 10 s. How much energy does it transfer, in J?",
+        choices: [
+          "20 J",
+          "200 J",
+          "2,000 J",
+          "20,000 J",
+        ],
+        accept: [
+          "20,000 J",
+        ],
+        answer: "E = P × t = 2,000 W × 10 s = 20,000 J. 20 J forgets that 2 kW is 2,000 W.",
+      },
     ],
     misconceptions: [
       {
@@ -1269,6 +1386,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Is replenished as used — it is replaced naturally as fast as we use it. Low-carbon is a different property.",
       },
+      {
+        question: "Which energy resource is most used to heat UK homes directly?",
+        choices: [
+          "Wind",
+          "Natural gas",
+          "Nuclear fuel",
+          "Coal",
+        ],
+        accept: [
+          "Natural gas",
+        ],
+        answer: "Most UK homes have gas boilers burning natural gas, a fossil fuel. Wind and nuclear make electricity rather than heating homes directly.",
+      },
+      {
+        question: "Shutting down and safely dismantling a nuclear power station is called:",
+        choices: [
+          "Reprocessing",
+          "Refining",
+          "Decommissioning",
+          "Fission",
+        ],
+        accept: [
+          "Decommissioning",
+        ],
+        answer: "Decommissioning takes decades and costs a lot because parts are radioactive. Fission is the reaction that runs the station while it operates.",
+      },
+      {
+        question: "Soot particles released by burning fuels can cause which effect?",
+        choices: [
+          "Acid rain",
+          "Global dimming",
+          "Ozone hole",
+          "Eutrophication",
+        ],
+        accept: [
+          "Global dimming",
+        ],
+        answer: "Tiny solid particles reflect sunlight and cause global dimming, plus breathing problems. Acid rain comes from sulfur dioxide gas, not soot.",
+      },
+      {
+        question: "Which resource uses floating generators bobbing on the sea surface?",
+        choices: [
+          "Wave power",
+          "Tidal barrage",
+          "Hydroelectric",
+          "Geothermal",
+        ],
+        accept: [
+          "Wave power",
+        ],
+        answer: "Wave generators are moved up and down by surface waves. A tidal barrage is a dam across an estuary using the rise and fall of the tide.",
+      },
+      {
+        question: "In a coal power station, what directly turns the generator?",
+        choices: [
+          "A transformer",
+          "A boiler",
+          "A turbine",
+          "A cooling tower",
+        ],
+        accept: [
+          "A turbine",
+        ],
+        answer: "Burning coal boils water; the steam spins a turbine, which turns the generator. The boiler makes the steam but doesn't spin anything.",
+      },
+      {
+        question: "In a fuel-burning power station, the fuel's energy starts in which store?",
+        choices: [
+          "Thermal",
+          "Kinetic",
+          "Nuclear",
+          "Chemical",
+        ],
+        accept: [
+          "Chemical",
+        ],
+        answer: "Coal, oil and gas hold energy in a chemical store, released by burning. Nuclear stores are what uranium uses in a nuclear station.",
+      },
+      {
+        question: "Why are many wind turbines built offshore?",
+        choices: [
+          "Winds are stronger",
+          "Cheaper to build",
+          "Easier to repair",
+          "No need for cables",
+        ],
+        accept: [
+          "Winds are stronger",
+        ],
+        answer: "Winds at sea are stronger and steadier. Offshore turbines actually cost more to build and maintain, and still need undersea cables.",
+      },
+      {
+        question: "Since 2010, the share of UK electricity made from coal has:",
+        choices: [
+          "Risen sharply",
+          "Stayed the same",
+          "Fallen sharply",
+          "Doubled",
+        ],
+        accept: [
+          "Fallen sharply",
+        ],
+        answer: "The UK has cut coal to near zero, replacing it with gas, wind and solar, mainly to reduce carbon dioxide emissions.",
+      },
+      {
+        question: "A tidal barrage is built across:",
+        choices: [
+          "A mountain valley",
+          "An estuary",
+          "A desert",
+          "A lake",
+        ],
+        accept: [
+          "An estuary",
+        ],
+        answer: "A barrage is a dam across a river estuary that traps water at high tide. A dam in a mountain valley is hydroelectric power.",
+      },
     ],
     misconceptions: [
       {
@@ -1880,6 +2114,124 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Liquid",
         ],
         answer: "Liquid — particles are close together but can move past each other. A solid keeps its own shape.",
+      },
+      {
+        question: "What is the change of state from solid straight to gas called?",
+        choices: [
+          "Evaporation",
+          "Melting",
+          "Condensation",
+          "Sublimation",
+        ],
+        accept: [
+          "Sublimation",
+        ],
+        answer: "Sublimation skips the liquid state, as dry ice does. Evaporation is liquid to gas, at the surface of a liquid.",
+      },
+      {
+        question: "What is the unit of specific latent heat?",
+        choices: [
+          "J/kg°C",
+          "J/kg",
+          "J",
+          "W/kg",
+        ],
+        accept: [
+          "J/kg",
+        ],
+        answer: "Specific latent heat is energy per kg for a change of state, so J/kg. J/kg°C is specific heat capacity, which involves a temperature change.",
+      },
+      {
+        question: "Absolute zero is about which temperature?",
+        choices: [
+          "0 °C",
+          "−100 °C",
+          "−273 °C",
+          "−373 °C",
+        ],
+        accept: [
+          "−273 °C",
+        ],
+        answer: "At about −273 °C (0 K) particles have the least possible kinetic energy. 0 °C is just the melting point of ice.",
+      },
+      {
+        question: "An object floats on water when its density is:",
+        choices: [
+          "Less than water's",
+          "More than water's",
+          "Exactly 1 kg/m³",
+          "Twice water's",
+        ],
+        accept: [
+          "Less than water's",
+        ],
+        answer: "Objects less dense than water (1 g/cm³ or 1,000 kg/m³) float; denser ones sink. 1 kg/m³ is far too low a density for water.",
+      },
+      {
+        question: "When a liquid evaporates, the liquid left behind:",
+        choices: [
+          "Warms up",
+          "Cools down",
+          "Gains mass",
+          "Turns solid",
+        ],
+        accept: [
+          "Cools down",
+        ],
+        answer: "The fastest particles escape, so the average kinetic energy of those left falls and the liquid cools. That is why sweating cools you.",
+      },
+      {
+        question: "In the density practical, which instrument measures the mass of the object?",
+        choices: [
+          "Newtonmeter",
+          "Measuring cylinder",
+          "Top-pan balance",
+          "Metre rule",
+        ],
+        accept: [
+          "Top-pan balance",
+        ],
+        answer: "A top-pan balance reads mass in g or kg. A newtonmeter measures weight in N, and a measuring cylinder measures volume.",
+      },
+      {
+        question: "Quickly compressing a gas does work on it. Its temperature:",
+        choices: [
+          "Rises",
+          "Falls",
+          "Stays the same",
+          "Drops to zero",
+        ],
+        accept: [
+          "Rises",
+        ],
+        answer: "Work done on the gas increases the internal energy of its particles, so temperature rises. That is why a bike pump gets warm.",
+        higherOnly: true,
+      },
+      {
+        question: "A gas has a much lower density than its solid because its particles are:",
+        choices: [
+          "Smaller",
+          "Lighter",
+          "Far apart",
+          "Slower",
+        ],
+        accept: [
+          "Far apart",
+        ],
+        answer: "The particles are the same size and mass in every state; in a gas they are far apart, so there is much less mass in each cubic metre.",
+      },
+      {
+        question: "Which needs more energy for 1 kg of water: melting it or boiling it away?",
+        choices: [
+          "Melting it",
+          "Boiling it",
+          "Same for both",
+          "Depends on volume",
+        ],
+        accept: [
+          "Boiling it",
+        ],
+        answer: "Latent heat of vaporisation (2,260,000 J/kg) is much bigger than fusion (334,000 J/kg), because particles must be pulled fully apart.",
       },
     ],
     misconceptions: [
@@ -2497,6 +2849,124 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Size",
         ],
         answer: "Size — a longer arrow means a bigger force. The arrowhead shows the direction.",
+      },
+      {
+        question: "What is the gravitational field strength at Earth's surface, in N/kg?",
+        choices: [
+          "1.6",
+          "5.0",
+          "20",
+          "9.8",
+        ],
+        accept: [
+          "9.8",
+        ],
+        answer: "On Earth g is about 9.8 N/kg, so each kg weighs 9.8 N. 1.6 N/kg is the value on the Moon.",
+      },
+      {
+        question: "The weight of an object can be taken as acting at a single point called its:",
+        choices: [
+          "Pivot",
+          "Centre of mass",
+          "Base",
+          "Surface",
+        ],
+        accept: [
+          "Centre of mass",
+        ],
+        answer: "Weight acts through the centre of mass. A pivot is the turning point used for moments, which may be somewhere else.",
+      },
+      {
+        question: "A spring stays longer after the load is taken off. What is this called?",
+        choices: [
+          "Elastic deformation",
+          "Compression",
+          "Inelastic deformation",
+          "Proportionality",
+        ],
+        accept: [
+          "Inelastic deformation",
+        ],
+        answer: "Inelastic deformation means it does not return to its original shape. Elastic deformation is when it springs fully back.",
+      },
+      {
+        question: "To stretch or compress an object, how many forces must act on it?",
+        choices: [
+          "Exactly one",
+          "At least two",
+          "None",
+          "Exactly three",
+        ],
+        accept: [
+          "At least two",
+        ],
+        answer: "One force alone would just move it. You need more than one force, such as pulling both ends of a spring, to change its shape.",
+      },
+      {
+        question: "Forces of 3 N and 4 N act at right angles. What is the size of the resultant?",
+        choices: [
+          "7 N",
+          "1 N",
+          "5 N",
+          "12 N",
+        ],
+        accept: [
+          "5 N",
+        ],
+        answer: "At right angles use Pythagoras: √(3² + 4²) = √25 = 5 N. 7 N would only be right if they acted in the same direction.",
+        higherOnly: true,
+      },
+      {
+        question: "On a graph of force (y-axis) against extension for a spring, what does the gradient give?",
+        choices: [
+          "Work done",
+          "Spring constant",
+          "Weight",
+          "Extension",
+        ],
+        accept: [
+          "Spring constant",
+        ],
+        answer: "Gradient = force ÷ extension = k, the spring constant, on the straight part. The area under the line is the work done (energy stored).",
+      },
+      {
+        question: "In the Hooke's law practical, what measures the extension of the spring?",
+        choices: [
+          "Metre rule",
+          "Newtonmeter",
+          "Balance",
+          "Stopwatch",
+        ],
+        accept: [
+          "Metre rule",
+        ],
+        answer: "A metre rule measures the length, and extension = loaded length − original length. The masses' weights give the force.",
+      },
+      {
+        question: "What is the unit of the spring constant?",
+        choices: [
+          "N",
+          "m/N",
+          "N/m",
+          "J",
+        ],
+        accept: [
+          "N/m",
+        ],
+        answer: "k = F ÷ e, so newtons per metre, N/m. m/N is upside down, and plain N is the unit of the force itself.",
+      },
+      {
+        question: "To balance a seesaw, where should the heavier child sit?",
+        choices: [
+          "Further from pivot",
+          "Closer to the pivot",
+          "On the very end",
+          "Directly on pivot",
+        ],
+        accept: [
+          "Closer to the pivot",
+        ],
+        answer: "Balance needs equal moments (force × distance). A bigger weight needs a smaller distance, so the heavier child sits closer to the pivot.",
       },
     ],
     misconceptions: [
@@ -3116,6 +3586,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Lower p.d. for homes — the Grid's high voltage is stepped down to 230 V before it reaches houses.",
       },
+      {
+        question: "Which equation links charge, current and time?",
+        choices: [
+          "Q = V × t",
+          "Q = I × R",
+          "Q = I × t",
+          "Q = V ÷ R",
+        ],
+        accept: [
+          "Q = I × t",
+        ],
+        answer: "Charge (C) = current (A) × time (s). I × R gives potential difference, and V ÷ R gives current.",
+      },
+      {
+        question: "For a current to flow, a closed circuit must include:",
+        choices: [
+          "A resistor",
+          "A source of p.d.",
+          "An ammeter",
+          "A switch",
+        ],
+        accept: [
+          "A source of p.d.",
+        ],
+        answer: "Charge only flows round a closed loop if a cell, battery or supply provides a potential difference to push it.",
+      },
+      {
+        question: "In a metal wire, electric current is a flow of:",
+        choices: [
+          "Protons",
+          "Neutrons",
+          "Positive ions",
+          "Electrons",
+        ],
+        accept: [
+          "Electrons",
+        ],
+        answer: "Free electrons carry the charge through metals. The positive ions stay fixed in place in the metal lattice.",
+      },
+      {
+        question: "In the resistance of a wire practical, doubling the wire's length makes its resistance:",
+        choices: [
+          "Halve",
+          "Double",
+          "Stay the same",
+          "Quadruple",
+        ],
+        accept: [
+          "Double",
+        ],
+        answer: "Resistance is directly proportional to length: a wire twice as long has twice the resistance, giving a straight line through the origin.",
+      },
+      {
+        question: "One ampere is the same as one:",
+        choices: [
+          "Joule per coulomb",
+          "Coulomb per second",
+          "Watt per second",
+          "Ohm per volt",
+        ],
+        accept: [
+          "Coulomb per second",
+        ],
+        answer: "Current is rate of flow of charge, so 1 A = 1 C/s. A joule per coulomb is a volt.",
+      },
+      {
+        question: "For a fixed resistor at constant temperature, doubling the p.d. makes the current:",
+        choices: [
+          "Double",
+          "Halve",
+          "Stay the same",
+          "Quadruple",
+        ],
+        accept: [
+          "Double",
+        ],
+        answer: "Ohmic conductors have current directly proportional to p.d. (I = V/R with R fixed), so twice the p.d. gives twice the current.",
+      },
+      {
+        question: "Which equation links energy, power and time?",
+        choices: [
+          "E = V × I",
+          "E = t ÷ P",
+          "E = P × t",
+          "E = I × t",
+        ],
+        accept: [
+          "E = P × t",
+        ],
+        answer: "Energy (J) = power (W) × time (s). V × I gives power, and I × t gives charge.",
+      },
+      {
+        question: "Which component would switch on a street light as it gets dark?",
+        choices: [
+          "Thermistor",
+          "Diode",
+          "LDR",
+          "Fuse",
+        ],
+        accept: [
+          "LDR",
+        ],
+        answer: "An LDR's resistance rises as light falls, which can trigger the light. A thermistor responds to temperature instead.",
+      },
+      {
+        question: "What is the shape of the I–V graph for a filament lamp?",
+        choices: [
+          "Curve that levels off",
+          "Straight line",
+          "Flat then steep",
+          "Horizontal line",
+        ],
+        accept: [
+          "Curve that levels off",
+        ],
+        answer: "As current rises the filament heats up and resistance increases, so the curve gets less steep. Flat then steep is a diode.",
+      },
     ],
     misconceptions: [
       {
@@ -3726,6 +4313,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "1 × 10⁻¹⁰ m — the nucleus is about 10,000 times smaller, around 1 × 10⁻¹⁴ m.",
       },
+      {
+        question: "Which scientist provided evidence for the neutron?",
+        choices: [
+          "Rutherford",
+          "James Chadwick",
+          "Niels Bohr",
+          "J.J. Thomson",
+        ],
+        accept: [
+          "James Chadwick",
+        ],
+        answer: "Chadwick found the neutron in 1932, about 20 years after the nuclear model. Thomson discovered the electron; Rutherford led the alpha scattering work.",
+      },
+      {
+        question: "Niels Bohr suggested that electrons orbit the nucleus at specific:",
+        choices: [
+          "Speeds",
+          "Charges",
+          "Distances",
+          "Masses",
+        ],
+        accept: [
+          "Distances",
+        ],
+        answer: "Bohr's electrons sit at fixed distances (energy levels) from the nucleus. His calculations agreed with experiments.",
+      },
+      {
+        question: "When an electron absorbs electromagnetic radiation, it can:",
+        choices: [
+          "Join the nucleus",
+          "Move further out",
+          "Become a proton",
+          "Lose its charge",
+        ],
+        accept: [
+          "Move further out",
+        ],
+        answer: "Absorbing radiation gives it energy to move to a higher energy level, further from the nucleus. Emitting radiation moves it back in.",
+      },
+      {
+        question: "An atom that loses one of its outer electrons becomes:",
+        choices: [
+          "A negative ion",
+          "An isotope",
+          "A positive ion",
+          "A new element",
+        ],
+        accept: [
+          "A positive ion",
+        ],
+        answer: "It now has one more proton than electrons, so it is a positive ion. The element only changes if the proton number changes.",
+      },
+      {
+        question: "What is the unit of activity of a radioactive source?",
+        choices: [
+          "Sievert",
+          "Becquerel",
+          "Hertz",
+          "Gray",
+        ],
+        accept: [
+          "Becquerel",
+        ],
+        answer: "1 becquerel (Bq) is one decay per second. The sievert measures radiation dose, not activity.",
+      },
+      {
+        question: "Which detector is used to measure the count rate from a source?",
+        choices: [
+          "Voltmeter",
+          "Spectrometer",
+          "Thermometer",
+          "Geiger-Muller tube",
+        ],
+        accept: [
+          "Geiger-Muller tube",
+        ],
+        answer: "A Geiger-Muller tube clicks for each radiation detected, giving count rate in counts per second or minute.",
+      },
+      {
+        question: "What is the largest source of background radiation in the UK?",
+        choices: [
+          "Nuclear power",
+          "Medical X-rays",
+          "Radon gas",
+          "Mobile phones",
+        ],
+        accept: [
+          "Radon gas",
+        ],
+        answer: "Radon is a radioactive gas that seeps from rocks into buildings. Nuclear power adds only a tiny amount; mobile phones are not ionising.",
+      },
+      {
+        question: "What is the relative charge of an alpha particle?",
+        choices: [
+          "−1",
+          "0",
+          "+4",
+          "+2",
+        ],
+        accept: [
+          "+2",
+        ],
+        answer: "An alpha particle is 2 protons and 2 neutrons, so its charge is +2. Its mass number is 4, which is the tempting slip.",
+      },
+      {
+        question: "Which symbol represents a beta particle in a decay equation?",
+        choices: [
+          "⁴₂He",
+          "⁰₋₁e",
+          "¹₀n",
+          "¹₁p",
+        ],
+        accept: [
+          "⁰₋₁e",
+        ],
+        answer: "A beta particle is a fast electron: mass number 0 and charge −1. ⁴₂He is an alpha particle.",
+      },
     ],
     misconceptions: [
       {
@@ -4333,6 +5037,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Less than 5 Ω, because the total resistance in parallel is always below the smallest branch resistance.",
       },
+      {
+        question: "A second identical lamp is added in series with the first. The first lamp gets:",
+        choices: [
+          "Brighter",
+          "Dimmer",
+          "No different",
+          "Hotter",
+        ],
+        accept: [
+          "Dimmer",
+        ],
+        answer: "Total resistance increases, so the current falls and both lamps are dimmer. Adding it in parallel instead would keep it as bright.",
+      },
+      {
+        question: "Turning up a variable resistor's resistance in a series circuit makes the current:",
+        choices: [
+          "Increase",
+          "Reverse",
+          "Decrease",
+          "Stay the same",
+        ],
+        accept: [
+          "Decrease",
+        ],
+        answer: "With the same supply p.d., more resistance means less current (I = V/R). That is how dimmer switches and the practical control current.",
+      },
+      {
+        question: "In the I–V characteristic practical, why are the supply connections swapped?",
+        choices: [
+          "For negative values",
+          "For larger currents",
+          "To cool the wire",
+          "To lower resistance",
+        ],
+        accept: [
+          "For negative values",
+        ],
+        answer: "Reversing the supply gives negative p.d. and current readings, so you see the whole graph. A diode's one-way behaviour only shows up if you test it both ways round.",
+      },
+      {
+        question: "On an I–V graph (current on the y-axis), a steeper straight line means:",
+        choices: [
+          "Higher resistance",
+          "Lower resistance",
+          "Higher p.d. only",
+          "No resistance",
+        ],
+        accept: [
+          "Lower resistance",
+        ],
+        answer: "Gradient = I ÷ V = 1/R, so a steeper line means more current for each volt, which is a lower resistance.",
+      },
+      {
+        question: "To work out the resistance of a component, which meters do you need?",
+        choices: [
+          "Ammeter only",
+          "Voltmeter only",
+          "Ammeter and voltmeter",
+          "Joulemeter",
+        ],
+        accept: [
+          "Ammeter and voltmeter",
+        ],
+        answer: "R = V ÷ I, so you need the p.d. across it (voltmeter in parallel) and the current through it (ammeter in series).",
+      },
+      {
+        question: "In circuit symbols, a circle with a cross inside it is a:",
+        choices: [
+          "Lamp",
+          "Ammeter",
+          "Diode",
+          "Fuse",
+        ],
+        accept: [
+          "Lamp",
+        ],
+        answer: "A lamp is a circle with an X. An ammeter is a circle with an A, and a fuse is a rectangle with a line through it.",
+      },
+      {
+        question: "A triangle pointing at a short bar is the circuit symbol for a:",
+        choices: [
+          "Switch",
+          "Cell",
+          "Fuse",
+          "Diode",
+        ],
+        accept: [
+          "Diode",
+        ],
+        answer: "The diode's triangle points the way current can flow; the bar blocks the other direction. A cell is a long and a short line.",
+      },
+      {
+        question: "Three 1.5 V cells are joined in series the same way round. What is the total p.d.?",
+        choices: [
+          "1.5 V",
+          "0.5 V",
+          "4.5 V",
+          "3.0 V",
+        ],
+        accept: [
+          "4.5 V",
+        ],
+        answer: "Cells in series add up: 1.5 + 1.5 + 1.5 = 4.5 V. 0.5 V wrongly divides instead of adding.",
+      },
+      {
+        question: "In a parallel circuit, the branch with the smaller resistance carries:",
+        choices: [
+          "More current",
+          "Less current",
+          "The same current",
+          "No current",
+        ],
+        accept: [
+          "More current",
+        ],
+        answer: "Each branch has the same p.d., so I = V/R gives more current where R is smaller.",
+      },
     ],
     misconceptions: [
       {
@@ -4937,6 +5758,123 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Transformers",
         ],
         answer: "Transformers, which only work with ac and let the National Grid step the p.d. up and down.",
+      },
+      {
+        question: "What does an alternating current do?",
+        choices: [
+          "Flows one way only",
+          "Changes direction",
+          "Gets steadily bigger",
+          "Stops every second",
+        ],
+        accept: [
+          "Changes direction",
+        ],
+        answer: "Alternating current keeps reversing direction; UK mains does it 50 times a second. Flowing one way only is direct current.",
+      },
+      {
+        question: "How many joules are there in 1 kilowatt-hour?",
+        choices: [
+          "1,000 J",
+          "3,600 J",
+          "60,000 J",
+          "3,600,000 J",
+        ],
+        accept: [
+          "3,600,000 J",
+        ],
+        answer: "1 kWh = 1,000 W × 3,600 s = 3,600,000 J. 3,600 J forgets the kilo, and 60,000 J uses minutes instead of seconds.",
+      },
+      {
+        question: "Why are the cores of plug wires made of copper?",
+        choices: [
+          "Good conductor",
+          "Good insulator",
+          "It is magnetic",
+          "It is very light",
+        ],
+        accept: [
+          "Good conductor",
+        ],
+        answer: "Copper conducts electricity well and bends easily. The plastic coating around it is the insulator.",
+      },
+      {
+        question: "A person standing on the ground is normally at what potential?",
+        choices: [
+          "230 V",
+          "50 V",
+          "0 V",
+          "115 V",
+        ],
+        accept: [
+          "0 V",
+        ],
+        answer: "Your body is at earth potential, 0 V. Touch the live wire (about 230 V) and that big p.d. across you can drive a dangerous current.",
+      },
+      {
+        question: "National Grid transmission cables carry up to roughly what p.d.?",
+        choices: [
+          "230 V",
+          "4,000 V",
+          "400,000 V",
+          "1,000,000 V",
+        ],
+        accept: [
+          "400,000 V",
+        ],
+        answer: "Step-up transformers raise it to around 400,000 V so the current is small and less energy is wasted heating cables. Homes get 230 V.",
+      },
+      {
+        question: "A kettle is rated at 2 kW. How much energy does it transfer each second?",
+        choices: [
+          "2 J",
+          "200 J",
+          "2,000 J",
+          "120,000 J",
+        ],
+        accept: [
+          "2,000 J",
+        ],
+        answer: "Power is energy per second, and 2 kW = 2,000 W = 2,000 J/s. 120,000 J is the energy per minute.",
+      },
+      {
+        question: "Which two wires normally carry the current to and from an appliance?",
+        choices: [
+          "Live and earth",
+          "Live and neutral",
+          "Neutral and earth",
+          "Earth only",
+        ],
+        accept: [
+          "Live and neutral",
+        ],
+        answer: "Current flows in through the live and back through the neutral. The earth wire only carries current if there is a fault.",
+      },
+      {
+        question: "In which wire should an appliance's on-off switch be placed?",
+        choices: [
+          "Live",
+          "Neutral",
+          "Earth",
+          "Earth and neutral",
+        ],
+        accept: [
+          "Live",
+        ],
+        answer: "With the switch in the live wire, switching off disconnects the appliance from 230 V. In the neutral, parts inside would stay live.",
+      },
+      {
+        question: "How many wires are in the cable of a double-insulated appliance?",
+        choices: [
+          "One",
+          "Two",
+          "Three",
+          "Four",
+        ],
+        accept: [
+          "Two",
+        ],
+        answer: "It needs only live and neutral. The case cannot become live, so no earth wire is needed, unlike a three-core cable.",
       },
     ],
     misconceptions: [
@@ -5560,6 +6498,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "60, because time = distance ÷ speed = 90 ÷ 1.5 = 60 s.",
       },
+      {
+        question: "Roughly what is a typical cycling speed, in m/s?",
+        choices: [
+          "1.5",
+          "20",
+          "6",
+          "60",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "Typical speeds are walking 1.5 m/s, running 3 m/s and cycling 6 m/s. 20 m/s is more like a car on a main road.",
+      },
+      {
+        question: "On a velocity-time graph, a straight line sloping down to the axis shows the object:",
+        choices: [
+          "Moving backwards",
+          "Slowing down",
+          "At constant speed",
+          "Stationary",
+        ],
+        accept: [
+          "Slowing down",
+        ],
+        answer: "A negative gradient means velocity is falling: deceleration. Velocity is still positive, so it is still moving forwards.",
+      },
+      {
+        question: "On a distance-time graph, a steeper straight line means:",
+        choices: [
+          "Higher speed",
+          "Accelerating",
+          "Lower speed",
+          "Stationary",
+        ],
+        accept: [
+          "Higher speed",
+        ],
+        answer: "Gradient = speed, so steeper means faster. A straight line is a constant speed; acceleration would make the line curve.",
+      },
+      {
+        question: "A car drives round a roundabout at a steady speed. Its velocity is:",
+        choices: [
+          "Constant",
+          "Zero",
+          "Changing",
+          "Negative",
+        ],
+        accept: [
+          "Changing",
+        ],
+        answer: "Velocity includes direction. Going round a curve the direction keeps changing, so velocity changes even though speed stays the same.",
+      },
+      {
+        question: "What is 72 km/h in m/s?",
+        choices: [
+          "36",
+          "72",
+          "120",
+          "20",
+        ],
+        accept: [
+          "20",
+        ],
+        answer: "72 km/h = 72,000 m ÷ 3,600 s = 20 m/s. A quick rule: divide km/h by 3.6.",
+      },
+      {
+        question: "Which equation gives acceleration?",
+        choices: [
+          "a = s ÷ t",
+          "a = Δv ÷ t",
+          "a = t ÷ Δv",
+          "a = m × v",
+        ],
+        accept: [
+          "a = Δv ÷ t",
+        ],
+        answer: "Acceleration = change in velocity ÷ time. s ÷ t is speed, and m × v is momentum.",
+      },
+      {
+        question: "To find the speed at one instant on a curved distance-time graph, you draw a:",
+        choices: [
+          "Tangent",
+          "Horizontal line",
+          "Vertical line",
+          "Best-fit curve",
+        ],
+        accept: [
+          "Tangent",
+        ],
+        answer: "The gradient of a tangent at that point gives the instantaneous speed. A horizontal line would mean the object is stationary.",
+      },
+      {
+        question: "A skydiver at terminal velocity opens a parachute. What happens straight away?",
+        choices: [
+          "Speeds up",
+          "Moves upwards",
+          "Slows down",
+          "Stops instantly",
+        ],
+        accept: [
+          "Slows down",
+        ],
+        answer: "Drag suddenly exceeds weight, so the resultant force is upwards and the skydiver decelerates (but keeps falling) to a new, lower terminal velocity.",
+      },
+      {
+        question: "An object falls from rest for 3 s with g = 10 m/s². What is its speed, in m/s?",
+        choices: [
+          "13",
+          "45",
+          "30",
+          "10",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "v = u + at = 0 + 10 × 3 = 30 m/s. 45 is the distance fallen in metres, not the speed.",
+      },
     ],
     misconceptions: [
       {
@@ -6176,6 +7231,124 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Force ÷ acceleration (m = F ÷ a): it measures how hard it is to change an object's velocity.",
         higherOnly: true,
+      },
+      {
+        question: "A book rests on a table. Earth pulls the book down. What is its Newton's third law pair?",
+        choices: [
+          "Table pushes book up",
+          "Book pulls Earth up",
+          "Book pushes on table",
+          "Air pushes book down",
+        ],
+        accept: [
+          "Book pulls Earth up",
+        ],
+        answer: "Third law pairs are the same type of force on two objects. Gravity of Earth on book pairs with gravity of book on Earth, not the table's push.",
+      },
+      {
+        question: "Typical driver reaction times range from:",
+        choices: [
+          "2 to 9 s",
+          "0.2 to 0.9 s",
+          "0.02 to 0.09 s",
+          "20 to 90 s",
+        ],
+        accept: [
+          "0.2 to 0.9 s",
+        ],
+        answer: "Reaction times are usually 0.2 s to 0.9 s, varying from person to person. Tiredness, drugs, alcohol and distractions make them longer.",
+      },
+      {
+        question: "A ruler-drop test in class is used to measure:",
+        choices: [
+          "Braking force",
+          "Stopping distance",
+          "Reaction time",
+          "Top speed",
+        ],
+        accept: [
+          "Reaction time",
+        ],
+        answer: "The further the ruler falls before you catch it, the longer your reaction time. Stopping distance needs a car and road.",
+      },
+      {
+        question: "A 50 N pull acts on a 10 kg box against 20 N of friction. Acceleration in m/s²?",
+        choices: [
+          "5",
+          "3",
+          "7",
+          "2",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "Resultant = 50 − 20 = 30 N, so a = F ÷ m = 30 ÷ 10 = 3 m/s². 5 forgets friction; 7 adds the forces.",
+      },
+      {
+        question: "In a closed system, the total momentum after a collision is:",
+        choices: [
+          "Always zero",
+          "Less than before",
+          "More than before",
+          "Same as before",
+        ],
+        accept: [
+          "Same as before",
+        ],
+        answer: "Momentum is conserved: total momentum before equals total momentum after, as long as no external forces act.",
+        higherOnly: true,
+      },
+      {
+        question: "When brakes slow a car, the car's kinetic energy is mostly transferred to the:",
+        choices: [
+          "Thermal store",
+          "Chemical store",
+          "Elastic store",
+          "Gravitational store",
+        ],
+        accept: [
+          "Thermal store",
+        ],
+        answer: "Friction between brake pads and discs does work, so the energy goes to the thermal store of the brakes, which heat up. Very hard braking can overheat them.",
+      },
+      {
+        question: "To stop in the same distance from a higher speed, the braking force must be:",
+        choices: [
+          "Smaller",
+          "The same",
+          "Larger",
+          "Zero",
+        ],
+        accept: [
+          "Larger",
+        ],
+        answer: "More kinetic energy must be removed over the same distance, and work done = force × distance, so a larger braking force is needed.",
+      },
+      {
+        question: "Newton's first law says a stationary object stays at rest unless:",
+        choices: [
+          "It has enough mass",
+          "Gravity is removed",
+          "It gains energy",
+          "A resultant force acts",
+        ],
+        accept: [
+          "A resultant force acts",
+        ],
+        answer: "With zero resultant force, an object stays still or keeps a steady velocity. Only a resultant force changes its motion.",
+      },
+      {
+        question: "The air resistance on a falling object increases as its:",
+        choices: [
+          "Speed increases",
+          "Mass decreases",
+          "Height increases",
+          "Weight increases",
+        ],
+        accept: [
+          "Speed increases",
+        ],
+        answer: "Drag grows with speed. A falling object speeds up until drag equals weight, then it falls at terminal velocity.",
       },
     ],
     misconceptions: [
@@ -6796,6 +7969,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "20, because 2 Hz means 2 waves pass each second, and 2 × 10 = 20.",
       },
+      {
+        question: "What is the highest point of a transverse wave called?",
+        choices: [
+          "Trough",
+          "Crest",
+          "Amplitude",
+          "Rarefaction",
+        ],
+        accept: [
+          "Crest",
+        ],
+        answer: "The crest (peak) is the highest point and the trough is the lowest. Amplitude is the height of a crest above the rest position, not the point itself.",
+      },
+      {
+        question: "What is the time taken for one complete wave to pass a point called?",
+        choices: [
+          "Frequency",
+          "Wavelength",
+          "Amplitude",
+          "Period",
+        ],
+        accept: [
+          "Period",
+        ],
+        answer: "The period is the time for one wave, in seconds. Frequency is the number of waves per second, so period = 1 ÷ frequency.",
+      },
+      {
+        question: "In a sound wave, what is a region where the particles are spread out called?",
+        choices: [
+          "Rarefaction",
+          "Compression",
+          "Trough",
+          "Crest",
+        ],
+        accept: [
+          "Rarefaction",
+        ],
+        answer: "Rarefactions are where particles are spread apart; compressions are where they bunch up. Crests and troughs belong to transverse waves.",
+      },
+      {
+        question: "Light reflects off a smooth mirror all in one direction. What is this called?",
+        choices: [
+          "Diffuse reflection",
+          "Refraction",
+          "Specular reflection",
+          "Absorption",
+        ],
+        accept: [
+          "Specular reflection",
+        ],
+        answer: "A smooth surface gives specular reflection in a single direction, so you see an image. A rough surface scatters light: that is diffuse reflection.",
+      },
+      {
+        question: "A light ray enters a glass block along the normal. What happens to its direction?",
+        choices: [
+          "Bends to the normal",
+          "Bends away",
+          "Reflects back",
+          "It does not change",
+        ],
+        accept: [
+          "It does not change",
+        ],
+        answer: "Along the normal the ray slows down but does not bend. Bending only happens when the ray meets the boundary at an angle.",
+      },
+      {
+        question: "What happens to the speed of light as it passes from glass into air?",
+        choices: [
+          "It slows down",
+          "It speeds up",
+          "It stays the same",
+          "It drops to zero",
+        ],
+        accept: [
+          "It speeds up",
+        ],
+        answer: "Light travels faster in air than in glass, so it speeds up on leaving the glass. That is why the ray bends away from the normal.",
+      },
+      {
+        question: "In which state of matter does sound usually travel fastest?",
+        choices: [
+          "Gas",
+          "Liquid",
+          "Solid",
+          "Vacuum",
+        ],
+        accept: [
+          "Solid",
+        ],
+        answer: "Particles in a solid are closely packed and strongly linked, so vibrations pass on fastest. Sound cannot travel through a vacuum at all.",
+      },
+      {
+        question: "An echo is an example of which wave behaviour?",
+        choices: [
+          "Refraction",
+          "Absorption",
+          "Transmission",
+          "Reflection",
+        ],
+        accept: [
+          "Reflection",
+        ],
+        answer: "An echo is sound reflected off a hard surface back to you. Refraction is a change of direction as a wave enters a new medium.",
+      },
+      {
+        question: "What is the approximate range of human hearing?",
+        choices: [
+          "20 Hz to 20 kHz",
+          "2 Hz to 2 kHz",
+          "200 Hz to 200 kHz",
+          "20 kHz to 20 MHz",
+        ],
+        accept: [
+          "20 Hz to 20 kHz",
+        ],
+        answer: "Human ears detect roughly 20 Hz to 20,000 Hz. Sound above 20 kHz is ultrasound, which we cannot hear.",
+      },
     ],
     misconceptions: [
       {
@@ -7398,6 +8688,123 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "An alternating current, with the same frequency as the radio wave.",
         higherOnly: true,
+      },
+      {
+        question: "Which EM wave is used for fibre optic communications?",
+        choices: [
+          "Microwaves",
+          "Visible light",
+          "Ultraviolet",
+          "Radio waves",
+        ],
+        accept: [
+          "Visible light",
+        ],
+        answer: "Visible light is sent along optical fibres by total internal reflection. Microwaves are used for satellite links and radio waves for broadcasting.",
+      },
+      {
+        question: "Which colour of visible light has the highest frequency?",
+        choices: [
+          "Red",
+          "Green",
+          "Yellow",
+          "Violet",
+        ],
+        accept: [
+          "Violet",
+        ],
+        answer: "Violet has the shortest wavelength of visible light, so the highest frequency. Red is at the other end, with the longest wavelength.",
+      },
+      {
+        question: "Which EM wave is used in radiotherapy to kill cancer cells?",
+        choices: [
+          "Gamma rays",
+          "Infrared",
+          "Microwaves",
+          "Ultraviolet",
+        ],
+        accept: [
+          "Gamma rays",
+        ],
+        answer: "Gamma rays are highly penetrating and ionising, so a focused beam can kill cancer cells deep in the body. UV is absorbed by the skin surface.",
+      },
+      {
+        question: "As the frequency of EM radiation rises, the energy it carries:",
+        choices: [
+          "Decreases",
+          "Increases",
+          "Stays the same",
+          "Drops to zero",
+        ],
+        accept: [
+          "Increases",
+        ],
+        answer: "Higher frequency means more energy, which is why UV, X-rays and gamma rays are more harmful than radio waves at the low-frequency end.",
+      },
+      {
+        question: "X-rays and gamma rays can harm the body by causing:",
+        choices: [
+          "Mild heating",
+          "Sunburn",
+          "Gene mutations",
+          "Static charge",
+        ],
+        accept: [
+          "Gene mutations",
+        ],
+        answer: "X-rays and gamma rays are ionising, so they can damage DNA, cause gene mutations and lead to cancer. Sunburn is caused by UV.",
+      },
+      {
+        question: "How many millisieverts (mSv) make 1 sievert?",
+        choices: [
+          "10",
+          "100",
+          "1,000",
+          "1,000,000",
+        ],
+        accept: [
+          "1,000",
+        ],
+        answer: "Milli means one thousandth, so 1,000 mSv = 1 Sv. Typical doses are small, so they are usually quoted in millisieverts.",
+      },
+      {
+        question: "Why do bones show up clearly on an X-ray image?",
+        choices: [
+          "Bones absorb X-rays",
+          "Bones reflect X-rays",
+          "Bones emit X-rays",
+          "Bones let X-rays pass",
+        ],
+        accept: [
+          "Bones absorb X-rays",
+        ],
+        answer: "Dense bone absorbs X-rays while soft tissue lets most pass through, so bones leave a pale shadow on the detector behind the patient.",
+      },
+      {
+        question: "Which EM wave lies between ultraviolet and gamma rays in the spectrum?",
+        choices: [
+          "Visible light",
+          "Infrared",
+          "X-rays",
+          "Microwaves",
+        ],
+        accept: [
+          "X-rays",
+        ],
+        answer: "The order is radio, microwave, infrared, visible, ultraviolet, X-rays, gamma. Visible light sits on the other side of UV.",
+      },
+      {
+        question: "In a microwave oven, the microwaves heat food mainly by being absorbed by:",
+        choices: [
+          "The metal walls",
+          "Water molecules",
+          "The air inside",
+          "The glass plate",
+        ],
+        accept: [
+          "Water molecules",
+        ],
+        answer: "Water molecules in food absorb microwaves, which raises their kinetic energy, so the food heats up. The metal walls reflect microwaves back in.",
       },
     ],
     misconceptions: [
@@ -8008,6 +9415,124 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Gas",
         ],
         answer: "Gas, because its particles are much further apart than in a solid or a liquid.",
+      },
+      {
+        question: "Which is the SI unit of density?",
+        choices: [
+          "g/cm³",
+          "kg/m³",
+          "N/m²",
+          "N/kg",
+        ],
+        accept: [
+          "kg/m³",
+        ],
+        answer: "SI units use kilograms and metres, so density is in kg/m³. g/cm³ is also a density unit but not SI; N/m² is pressure and N/kg is field strength.",
+      },
+      {
+        question: "A wooden block is cut in half. What happens to the density of each half?",
+        choices: [
+          "It halves",
+          "It doubles",
+          "It stays the same",
+          "It falls to zero",
+        ],
+        accept: [
+          "It stays the same",
+        ],
+        answer: "Density is mass ÷ volume. Cutting the block halves both mass and volume, so the ratio, and the density, is unchanged.",
+      },
+      {
+        question: "A metal has density 8 g/cm³. What is the mass of 5 cm³ of it, in g?",
+        choices: [
+          "1.6 g",
+          "0.625 g",
+          "40 g",
+          "13 g",
+        ],
+        accept: [
+          "40 g",
+        ],
+        answer: "m = ρ × V = 8 × 5 = 40 g. 1.6 g comes from dividing 8 by 5 instead of multiplying.",
+      },
+      {
+        question: "Gases are easy to compress because their particles are:",
+        choices: [
+          "Far apart",
+          "Very small",
+          "Moving slowly",
+          "Tightly packed",
+        ],
+        accept: [
+          "Far apart",
+        ],
+        answer: "There are big spaces between gas particles, so they can be pushed closer together. Solids and liquids have particles touching, so barely compress.",
+      },
+      {
+        question: "The same force is spread over a smaller area. What happens to the pressure?",
+        choices: [
+          "It decreases",
+          "It stays the same",
+          "It drops to zero",
+          "It increases",
+        ],
+        accept: [
+          "It increases",
+        ],
+        answer: "Pressure = force ÷ area, so a smaller area gives a bigger pressure. That is why a drawing pin's sharp point pushes into a board easily.",
+      },
+      {
+        question: "Why does ice float on liquid water?",
+        choices: [
+          "Ice is less dense",
+          "Ice is colder",
+          "Ice has less mass",
+          "Ice is a solid",
+        ],
+        accept: [
+          "Ice is less dense",
+        ],
+        answer: "An object floats if it is less dense than the liquid. Ice is unusual: it is less dense than liquid water. A big iceberg has lots of mass yet still floats.",
+      },
+      {
+        question: "Two liquids are equally deep. At the bottom, the denser liquid's pressure is:",
+        choices: [
+          "Lower",
+          "Higher",
+          "The same",
+          "Zero",
+        ],
+        accept: [
+          "Higher",
+        ],
+        answer: "Pressure in a liquid is p = hρg, so at the same depth a larger density ρ gives a greater pressure.",
+        higherOnly: true,
+      },
+      {
+        question: "An object weighs 10 N in air and 6 N fully under water. What is the upthrust, in N?",
+        choices: [
+          "16 N",
+          "6 N",
+          "10 N",
+          "4 N",
+        ],
+        accept: [
+          "4 N",
+        ],
+        answer: "Upthrust = weight in air − apparent weight in water = 10 − 6 = 4 N. The water pushes up with 4 N, so it seems lighter.",
+      },
+      {
+        question: "What causes the atmosphere to exert pressure on a surface?",
+        choices: [
+          "Wind blowing on it",
+          "Air particles hitting",
+          "Heat from the Sun",
+          "The Earth spinning",
+        ],
+        accept: [
+          "Air particles hitting",
+        ],
+        answer: "Air molecules constantly collide with surfaces, and each collision exerts a force. The total force per unit area is atmospheric pressure.",
       },
     ],
     misconceptions: [
@@ -8635,6 +10160,113 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer: "10, because Vp × Ip = Vs × Is, so 230 × 1 = 23 × Is and Is = 10 A — lower p.d. means higher current.",
         higherOnly: true,
       },
+      {
+        question: "Which apparatus is used to plot the field lines around a bar magnet?",
+        choices: [
+          "Voltmeter",
+          "Plotting compass",
+          "Newtonmeter",
+          "Light gate",
+        ],
+        accept: [
+          "Plotting compass",
+        ],
+        answer: "A small plotting compass needle lines up with the field. Marking where it points, step by step, traces out each field line.",
+      },
+      {
+        question: "Why does a compass needle point north?",
+        choices: [
+          "Earth's gravity",
+          "Static charge",
+          "Earth's magnetic field",
+          "The Sun's light",
+        ],
+        accept: [
+          "Earth's magnetic field",
+        ],
+        answer: "The Earth's core gives the planet a magnetic field, and the compass needle (a small magnet) lines up with it. Gravity has no effect on its direction.",
+      },
+      {
+        question: "On a field diagram, field lines drawn closer together show a field that is:",
+        choices: [
+          "Stronger",
+          "Weaker",
+          "Reversed",
+          "Uniform",
+        ],
+        accept: [
+          "Stronger",
+        ],
+        answer: "The closer the field lines, the stronger the field. That is why the lines crowd together at the poles of a bar magnet, where the field is strongest.",
+      },
+      {
+        question: "What is a relay?",
+        choices: [
+          "Step-up transformer",
+          "Electromagnetic switch",
+          "Permanent magnet",
+          "Type of generator",
+        ],
+        accept: [
+          "Electromagnetic switch",
+        ],
+        answer: "A relay uses a small current in an electromagnet to close a switch in a second circuit, so a small current can safely control a large one.",
+      },
+      {
+        question: "An induced magnet is taken away from a permanent magnet. What happens?",
+        choices: [
+          "It loses its magnetism",
+          "It stays magnetised",
+          "Its poles swap over",
+          "It repels the magnet",
+        ],
+        accept: [
+          "It loses its magnetism",
+        ],
+        answer: "An induced magnet is only magnetic while it is in a field. Removed from the field, it loses most or all of its magnetism quickly.",
+      },
+      {
+        question: "What is the core of a transformer usually made of?",
+        choices: [
+          "Copper",
+          "Aluminium",
+          "Iron",
+          "Plastic",
+        ],
+        accept: [
+          "Iron",
+        ],
+        answer: "Iron is easily magnetised, so it carries the changing magnetic field from the primary coil to the secondary. The coils are made of copper.",
+        higherOnly: true,
+      },
+      {
+        question: "Which device uses the generator effect to produce a current?",
+        choices: [
+          "Electric motor",
+          "Loudspeaker",
+          "Electric bell",
+          "Dynamo",
+        ],
+        accept: [
+          "Dynamo",
+        ],
+        answer: "A dynamo turns a coil in a magnetic field to induce a p.d., which is the generator effect. Motors and loudspeakers use the motor effect.",
+        higherOnly: true,
+      },
+      {
+        question: "A magnet is pushed into a coil faster. What happens to the induced p.d.?",
+        choices: [
+          "It gets smaller",
+          "It gets bigger",
+          "It stays the same",
+          "It reverses",
+        ],
+        accept: [
+          "It gets bigger",
+        ],
+        answer: "Moving the magnet faster changes the field through the coil more quickly, inducing a bigger p.d. Pulling it out, not speed, reverses it.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -9253,6 +10885,113 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer: "It halves, because force = change in momentum ÷ time, so doubling the time halves the force.",
         higherOnly: true,
       },
+      {
+        question: "One joule is the work done when a force of 1 N moves an object how far?",
+        choices: [
+          "1 cm",
+          "1 m",
+          "10 m",
+          "1 km",
+        ],
+        accept: [
+          "1 m",
+        ],
+        answer: "W = F × s, so 1 J = 1 N × 1 m. That is why a joule is also called a newton-metre (N m).",
+      },
+      {
+        question: "A 500 W motor runs for 10 s. How much energy does it transfer, in J?",
+        choices: [
+          "50 J",
+          "510 J",
+          "0.02 J",
+          "5,000 J",
+        ],
+        accept: [
+          "5,000 J",
+        ],
+        answer: "E = P × t = 500 × 10 = 5,000 J. 50 J comes from dividing instead of multiplying: a watt is a joule every second.",
+      },
+      {
+        question: "Two motors lift identical loads to the same height. The quicker one has:",
+        choices: [
+          "More power",
+          "Done more work",
+          "More mass",
+          "Less efficiency",
+        ],
+        accept: [
+          "More power",
+        ],
+        answer: "Both do the same work (same force, same distance), but power is work ÷ time, so the motor that takes less time has the greater power.",
+      },
+      {
+        question: "A 20 N weight falls 5 m. How much work does gravity do on it, in J?",
+        choices: [
+          "4 J",
+          "25 J",
+          "100 J",
+          "15 J",
+        ],
+        accept: [
+          "100 J",
+        ],
+        answer: "Work done = force × distance = 20 × 5 = 100 J. This 100 J is transferred from the gravitational store to the kinetic store.",
+      },
+      {
+        question: "What is meant by a closed system?",
+        choices: [
+          "Nothing is moving",
+          "No external forces act",
+          "No energy is stored",
+          "Objects stay joined",
+        ],
+        accept: [
+          "No external forces act",
+        ],
+        answer: "In a closed system no external forces act, so total momentum and total energy stay the same. Objects inside can still move and collide.",
+      },
+      {
+        question: "A 2 kg trolley at 3 m/s hits a still 1 kg trolley and they stick. Speed after, in m/s?",
+        choices: [
+          "3 m/s",
+          "1.5 m/s",
+          "6 m/s",
+          "2 m/s",
+        ],
+        accept: [
+          "2 m/s",
+        ],
+        answer: "Momentum before = 2 × 3 = 6 kg m/s. After, 3 kg moves together, so v = 6 ÷ 3 = 2 m/s. 3 m/s forgets the extra mass.",
+        higherOnly: true,
+      },
+      {
+        question: "Which of these has the greatest momentum?",
+        choices: [
+          "2 kg at 4 m/s",
+          "1 kg at 10 m/s",
+          "5 kg at 1 m/s",
+          "3 kg at 3 m/s",
+        ],
+        accept: [
+          "1 kg at 10 m/s",
+        ],
+        answer: "p = mv: 1 × 10 = 10, 3 × 3 = 9, 2 × 4 = 8 and 5 × 1 = 5 kg m/s. The lightest object wins because it is so much faster.",
+        higherOnly: true,
+      },
+      {
+        question: "Force equals the change in momentum divided by what?",
+        choices: [
+          "Mass",
+          "Time taken",
+          "Velocity",
+          "Distance",
+        ],
+        accept: [
+          "Time taken",
+        ],
+        answer: "F = mΔv ÷ Δt: force is the rate of change of momentum. So spreading the same change over a longer time, as an airbag does, gives a smaller force.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -9858,6 +11597,110 @@ export const PHYSICS: Record<string, TopicContent> = {
           "5",
         ],
         answer: "5, because 80 → 40 → 20 is 2 half-lives in 10 minutes, so each half-life is 10 ÷ 2 = 5 minutes.",
+      },
+      {
+        question: "What is an alpha particle made of?",
+        choices: [
+          "2 protons, 2 electrons",
+          "2 protons, 2 neutrons",
+          "1 proton, 1 neutron",
+          "2 neutrons only",
+        ],
+        accept: [
+          "2 protons, 2 neutrons",
+        ],
+        answer: "An alpha particle is two protons and two neutrons, the same as a helium nucleus. It has no electrons, so it carries a +2 charge.",
+      },
+      {
+        question: "Each source has the same number of nuclei. Which has the highest activity?",
+        choices: [
+          "Half-life 5 hours",
+          "Half-life 5 minutes",
+          "Half-life 5 days",
+          "Half-life 5 years",
+        ],
+        accept: [
+          "Half-life 5 minutes",
+        ],
+        answer: "A short half-life means nuclei decay quickly, so more decays happen each second: higher activity. A 5-year source decays very slowly, giving low activity.",
+      },
+      {
+        question: "In beta decay, a neutron in the nucleus turns into a:",
+        choices: [
+          "Proton",
+          "Neutron pair",
+          "Alpha particle",
+          "Gamma ray",
+        ],
+        accept: [
+          "Proton",
+        ],
+        answer: "A neutron changes into a proton and a fast electron, which is emitted. Gaining a proton is why the atomic number rises by 1.",
+      },
+      {
+        question: "Roughly how far can alpha particles travel in air?",
+        choices: [
+          "A few metres",
+          "A few millimetres",
+          "A few centimetres",
+          "Many kilometres",
+        ],
+        accept: [
+          "A few centimetres",
+        ],
+        answer: "Alpha particles are strongly ionising, so they lose energy quickly and stop after about 5 cm of air. Beta goes about a metre.",
+      },
+      {
+        question: "Which device is used to measure the count rate from a radioactive source?",
+        choices: [
+          "Ammeter",
+          "Geiger–Müller tube",
+          "Light gate",
+          "Thermometer",
+        ],
+        accept: [
+          "Geiger–Müller tube",
+        ],
+        answer: "A Geiger–Müller tube clicks each time radiation enters it, and a counter records the counts per second or per minute.",
+      },
+      {
+        question: "Which of these is a man-made source of background radiation?",
+        choices: [
+          "Radon gas",
+          "Cosmic rays",
+          "Granite rocks",
+          "Medical X-rays",
+        ],
+        accept: [
+          "Medical X-rays",
+        ],
+        answer: "Medical X-rays, nuclear accidents and weapons testing are man-made. Radon, cosmic rays and rocks are natural sources.",
+      },
+      {
+        question: "Why are alpha sources most dangerous when they get inside the body?",
+        choices: [
+          "Most penetrating",
+          "Longest half-life",
+          "Most ionising",
+          "Fastest moving",
+        ],
+        accept: [
+          "Most ionising",
+        ],
+        answer: "Alpha is the most ionising, so inside the body it damages nearby cells badly. Outside, it is stopped by skin. Gamma is the most penetrating.",
+      },
+      {
+        question: "What is peer review of a scientist's findings on radiation?",
+        choices: [
+          "Checked by the public",
+          "Checked by the author",
+          "Checked by experts",
+          "Checked by a computer",
+        ],
+        accept: [
+          "Checked by experts",
+        ],
+        answer: "In peer review, other experts in the same field check the work before it is published, to make sure the method and conclusions are valid.",
       },
     ],
     misconceptions: [
@@ -10478,6 +12321,110 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer: "Increase, because a smaller orbital radius needs a faster speed to stay in a stable orbit.",
         higherOnly: true,
       },
+      {
+        question: "What is the name of the galaxy our solar system is in?",
+        choices: [
+          "Andromeda",
+          "Milky Way",
+          "Orion",
+          "Pegasus",
+        ],
+        accept: [
+          "Milky Way",
+        ],
+        answer: "Our solar system is a tiny part of the Milky Way galaxy. Andromeda is a separate, nearby galaxy.",
+      },
+      {
+        question: "Which planet is closest to the Sun?",
+        choices: [
+          "Venus",
+          "Mars",
+          "Mercury",
+          "Earth",
+        ],
+        accept: [
+          "Mercury",
+        ],
+        answer: "The order is Mercury, Venus, Earth, Mars, then the giant planets. Venus is second and is the hottest because of its thick atmosphere.",
+      },
+      {
+        question: "Pluto is now classed as what?",
+        choices: [
+          "Dwarf planet",
+          "Moon",
+          "Comet",
+          "Small star",
+        ],
+        accept: [
+          "Dwarf planet",
+        ],
+        answer: "Pluto orbits the Sun but has not cleared its orbit of other objects, so it is classed as a dwarf planet. Our solar system has eight planets.",
+      },
+      {
+        question: "What does a star much more massive than the Sun become after the main sequence?",
+        choices: [
+          "White dwarf",
+          "Protostar",
+          "Black dwarf",
+          "Red supergiant",
+        ],
+        accept: [
+          "Red supergiant",
+        ],
+        answer: "A massive star swells into a red supergiant, then explodes as a supernova. Sun-sized stars become red giants, then white dwarfs.",
+      },
+      {
+        question: "Which stage of its life cycle is our Sun in now?",
+        choices: [
+          "Main sequence",
+          "Red giant",
+          "Protostar",
+          "White dwarf",
+        ],
+        accept: [
+          "Main sequence",
+        ],
+        answer: "The Sun is a stable main sequence star, fusing hydrogen into helium. It will become a red giant in billions of years.",
+      },
+      {
+        question: "Fusion in a star's core can produce elements up to which one?",
+        choices: [
+          "Uranium",
+          "Gold",
+          "Iron",
+          "Lead",
+        ],
+        accept: [
+          "Iron",
+        ],
+        answer: "Fusion in stars builds elements up to iron. Heavier elements such as gold, lead and uranium are made in supernova explosions.",
+      },
+      {
+        question: "Why can light not escape from a black hole?",
+        choices: [
+          "It is too cold",
+          "Gravity is too strong",
+          "It has no mass",
+          "It is too far away",
+        ],
+        accept: [
+          "Gravity is too strong",
+        ],
+        answer: "A black hole is so massive and dense that its gravity is too strong for anything to escape, even light. It has a huge mass, not none.",
+      },
+      {
+        question: "Since 1998, supernova observations suggest distant galaxies are moving away:",
+        choices: [
+          "Ever faster",
+          "More slowly",
+          "At a fixed speed",
+          "Then coming back",
+        ],
+        accept: [
+          "Ever faster",
+        ],
+        answer: "Supernovae show distant galaxies receding ever faster, so the expansion of the universe is speeding up. Dark energy is proposed to explain it.",
+      },
     ],
     misconceptions: [
       {
@@ -11074,6 +13021,110 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Diode, because it has a very high resistance in reverse, so current flows only one way.",
       },
+      {
+        question: "In the specific heat capacity practical, what measures the energy supplied?",
+        choices: [
+          "Thermometer",
+          "Ammeter",
+          "Joulemeter",
+          "Light gate",
+        ],
+        accept: [
+          "Joulemeter",
+        ],
+        answer: "A joulemeter reads the energy transferred by the heater directly, in joules. The thermometer measures the temperature rise.",
+      },
+      {
+        question: "In the Hooke's law practical, what is meant by the extension?",
+        choices: [
+          "Total length",
+          "Original length",
+          "Force applied",
+          "Increase in length",
+        ],
+        accept: [
+          "Increase in length",
+        ],
+        answer: "Extension = stretched length − original length. Using the total length instead is a common mistake that gives a graph not through the origin.",
+      },
+      {
+        question: "What shape is the I–V graph for a filament lamp?",
+        choices: [
+          "S-shaped curve",
+          "Straight line",
+          "Horizontal line",
+          "Diode-like curve",
+        ],
+        accept: [
+          "S-shaped curve",
+        ],
+        answer: "As current rises the filament heats up and its resistance increases, so the graph curves and flattens. A fixed resistor gives a straight line.",
+      },
+      {
+        question: "In the thermal insulation practical, which is the dependent variable?",
+        choices: [
+          "Type of insulator",
+          "Volume of water",
+          "Temperature drop",
+          "Starting temperature",
+        ],
+        accept: [
+          "Temperature drop",
+        ],
+        answer: "You measure how much the water cools in a set time, so the temperature drop is dependent. The insulator type is the independent variable.",
+      },
+      {
+        question: "In the resistance of a wire practical, which is the independent variable?",
+        choices: [
+          "Length of wire",
+          "Resistance",
+          "Current",
+          "Wire material",
+        ],
+        accept: [
+          "Length of wire",
+        ],
+        answer: "You change the length of wire between the crocodile clips and work out the resistance each time. The wire material is kept the same.",
+      },
+      {
+        question: "Why should a measuring cylinder be read with your eye level with the liquid?",
+        choices: [
+          "Avoid zero error",
+          "Avoid parallax error",
+          "Improve resolution",
+          "Make it precise",
+        ],
+        accept: [
+          "Avoid parallax error",
+        ],
+        answer: "Reading from above or below makes the scale appear shifted: parallax error. Zero error is an instrument not reading zero when it should.",
+      },
+      {
+        question: "On a results graph, which variable normally goes on the x-axis?",
+        choices: [
+          "Dependent",
+          "Independent",
+          "Control",
+          "Anomalous",
+        ],
+        accept: [
+          "Independent",
+        ],
+        answer: "The independent variable (what you change) goes on the x-axis and the dependent variable (what you measure) goes on the y-axis.",
+      },
+      {
+        question: "In the ripple tank practical, what is a strobe light used for?",
+        choices: [
+          "Making the waves",
+          "Heating the water",
+          "Freezing the waves",
+          "Measuring depth",
+        ],
+        accept: [
+          "Freezing the waves",
+        ],
+        answer: "A strobe flashing at the wave frequency makes the ripples appear still, so the wavelength can be measured. The vibrating bar makes the waves.",
+      },
     ],
     misconceptions: [
       {
@@ -11596,6 +13647,110 @@ export const PHYSICS: Record<string, TopicContent> = {
           "7200",
         ],
         answer: "7200, because 1 hour = 3600 s, so 2 × 3600 = 7200 s.",
+      },
+      {
+        question: "What does the prefix micro (μ) mean?",
+        choices: [
+          "One thousandth",
+          "One millionth",
+          "One billionth",
+          "One million times",
+        ],
+        accept: [
+          "One millionth",
+        ],
+        answer: "Micro means one millionth (× 10⁻⁶). Milli is one thousandth, nano is one billionth and mega is a million times.",
+      },
+      {
+        question: "Which prefix means × 10⁹?",
+        choices: [
+          "Mega",
+          "Kilo",
+          "Tera",
+          "Giga",
+        ],
+        accept: [
+          "Giga",
+        ],
+        answer: "Giga (G) is × 10⁹, so 1 GHz = 1,000,000,000 Hz. Mega is × 10⁶, kilo × 10³ and tera × 10¹².",
+      },
+      {
+        question: "What does the command word 'estimate' ask you to do?",
+        choices: [
+          "Give a rough value",
+          "Give an exact value",
+          "Draw a graph",
+          "Define a term",
+        ],
+        accept: [
+          "Give a rough value",
+        ],
+        answer: "Estimate means give an approximate value using sensible rounded numbers. 'Calculate' is the word that asks for an exact worked answer.",
+      },
+      {
+        question: "What does the command word 'compare' require?",
+        choices: [
+          "Just one feature",
+          "A labelled diagram",
+          "A calculation",
+          "Alike and different",
+        ],
+        accept: [
+          "Alike and different",
+        ],
+        answer: "Compare means give similarities and differences between two things, ideally linked, such as 'A is faster than B'. Describing just one loses marks.",
+      },
+      {
+        question: "What does the command word evaluate ask you to do?",
+        choices: [
+          "List the facts",
+          "Give a definition",
+          "Judge using evidence",
+          "Draw a diagram",
+        ],
+        accept: [
+          "Judge using evidence",
+        ],
+        answer: "Evaluate means weigh up the evidence or points for and against, then give a supported judgement. Just listing facts with no conclusion loses marks.",
+      },
+      {
+        question: "What is 3.2 × 10³ written as an ordinary number?",
+        choices: [
+          "320",
+          "32,000",
+          "3,200",
+          "0.0032",
+        ],
+        accept: [
+          "3,200",
+        ],
+        answer: "× 10³ means multiply by 1,000, moving the decimal point 3 places right: 3,200. 0.0032 is what you get for × 10⁻³.",
+      },
+      {
+        question: "How many volts is 0.5 kV?",
+        choices: [
+          "50 V",
+          "5,000 V",
+          "0.0005 V",
+          "500 V",
+        ],
+        accept: [
+          "500 V",
+        ],
+        answer: "Kilo means × 1,000, so 0.5 kV = 0.5 × 1,000 = 500 V. 0.0005 V comes from dividing by 1,000 instead of multiplying.",
+      },
+      {
+        question: "How many significant figures does 0.0250 have?",
+        choices: [
+          "2",
+          "3",
+          "4",
+          "5",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "Leading zeros never count, but the final zero after the 5 does, so 0.0250 has 3 significant figures: 2, 5 and 0.",
       },
     ],
     misconceptions: [

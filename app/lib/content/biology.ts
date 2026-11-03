@@ -601,6 +601,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Strengthens the cell and stops it bursting; it is the membrane that controls what enters.",
       },
+      {
+        question: "Which structure does a yeast cell have that a bacterial cell does not?",
+        choices: [
+          "Cell wall",
+          "Nucleus",
+          "Ribosomes",
+          "Cell membrane",
+        ],
+        accept: [
+          "Nucleus",
+        ],
+        answer: "Yeast is a fungus, so it is eukaryotic and keeps its DNA in a nucleus. Both yeast and bacteria have a cell wall, membrane and ribosomes.",
+      },
+      {
+        question: "Which feature of xylem vessels lets water flow up them without blockage?",
+        choices: [
+          "Sieve plates",
+          "Living cytoplasm",
+          "No end walls",
+          "Many chloroplasts",
+        ],
+        accept: [
+          "No end walls",
+        ],
+        answer: "Xylem cells are dead and their end walls break down, forming continuous hollow tubes. Sieve plates belong to phloem, not xylem.",
+      },
+      {
+        question: "What are the perforated end walls between phloem cells called?",
+        choices: [
+          "Sieve plates",
+          "Guard cells",
+          "Lignin rings",
+          "Cell plates",
+        ],
+        accept: [
+          "Sieve plates",
+        ],
+        answer: "Sieve plates have pores that let dissolved sugars pass from one living phloem cell to the next. Lignin strengthens xylem instead.",
+      },
+      {
+        question: "Why does the head of a sperm cell carry enzymes?",
+        choices: [
+          "To release energy",
+          "To build the tail",
+          "To copy its DNA",
+          "To digest the egg coat",
+        ],
+        accept: [
+          "To digest the egg coat",
+        ],
+        answer: "The enzymes digest a way through the egg's outer layer so the nucleus can enter. Energy for swimming comes from mitochondria, not these enzymes.",
+      },
+      {
+        question: "Why do nerve cells have branched endings?",
+        choices: [
+          "To absorb water",
+          "To store glucose",
+          "To link to many cells",
+          "To contract quickly",
+        ],
+        accept: [
+          "To link to many cells",
+        ],
+        answer: "Branched endings let one nerve cell pass impulses to many other cells. Contracting is what muscle cells are adapted for.",
+      },
+      {
+        question: "What do muscle cells contain that lets them contract?",
+        choices: [
+          "Protein fibres",
+          "Cellulose fibres",
+          "Plasmids",
+          "Chloroplasts",
+        ],
+        accept: [
+          "Protein fibres",
+        ],
+        answer: "Muscle cells have protein filaments that slide over each other to shorten the cell, plus many mitochondria for energy. Cellulose is only in plant cell walls.",
+      },
+      {
+        question: "A plant cell with a full permanent vacuole is described as what?",
+        choices: [
+          "Flaccid",
+          "Plasmolysed",
+          "Turgid",
+          "Lysed",
+        ],
+        accept: [
+          "Turgid",
+        ],
+        answer: "Cell sap pushes the membrane against the wall, making the cell firm, or turgid. Flaccid cells have lost water and gone soft.",
+      },
+      {
+        question: "When do most animal cells differentiate?",
+        choices: [
+          "Throughout life",
+          "Early in development",
+          "Only after injury",
+          "Only in old age",
+        ],
+        accept: [
+          "Early in development",
+        ],
+        answer: "Most animal cells specialise at an early stage and then lose the ability. Many plant cells can differentiate throughout life.",
+      },
+      {
+        question: "In mature animals, what is cell division mainly used for?",
+        choices: [
+          "Rapid growth",
+          "Making new organs",
+          "Repair and replacement",
+          "Becoming stem cells",
+        ],
+        accept: [
+          "Repair and replacement",
+        ],
+        answer: "Adult animals have mostly stopped growing, so mitosis mainly repairs damage and replaces worn-out cells such as skin and blood cells.",
+      },
     ],
     misconceptions: [
       {
@@ -1220,6 +1337,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Isotonic, so there is no net movement of water into or out of the cell by osmosis.",
       },
+      {
+        question: "Which gas diffuses from the blood into the alveoli?",
+        choices: [
+          "Oxygen",
+          "Carbon dioxide",
+          "Nitrogen",
+          "Glucose",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "Carbon dioxide is more concentrated in the blood than in the alveoli, so it diffuses out to be breathed away. Oxygen diffuses the other way, into the blood.",
+      },
+      {
+        question: "Which structures give fish gills a large surface area?",
+        choices: [
+          "Gill filaments",
+          "Alveoli",
+          "Villi",
+          "Root hairs",
+        ],
+        accept: [
+          "Gill filaments",
+        ],
+        answer: "Gills are made of many thin filaments with a rich blood supply. Alveoli do the same job in lungs and villi in the small intestine.",
+      },
+      {
+        question: "In which direction does active transport usually move substances?",
+        choices: [
+          "High to low conc.",
+          "Low to high conc.",
+          "Only out of cells",
+          "Only into vacuoles",
+        ],
+        accept: [
+          "Low to high conc.",
+        ],
+        answer: "Active transport moves substances against the concentration gradient, from dilute to concentrated, so it needs energy. Diffusion goes high to low.",
+      },
+      {
+        question: "What is the term for an animal cell bursting after taking in too much water?",
+        choices: [
+          "Plasmolysis",
+          "Turgidity",
+          "Lysis",
+          "Diffusion",
+        ],
+        accept: [
+          "Lysis",
+        ],
+        answer: "With no cell wall to resist, the membrane bursts: lysis. Plasmolysis is the opposite case, a plant cell losing water so the membrane pulls off the wall.",
+      },
+      {
+        question: "In the potato osmosis practical, what is the independent variable?",
+        choices: [
+          "Change in mass",
+          "Sugar concentration",
+          "Potato length",
+          "Temperature",
+        ],
+        accept: [
+          "Sugar concentration",
+        ],
+        answer: "You choose the sugar (or salt) concentration of each solution. The change in mass is what you measure, so it is the dependent variable.",
+      },
+      {
+        question: "Why do osmosis results use percentage change in mass, not just change in mass?",
+        choices: [
+          "It removes anomalies",
+          "Start masses differ",
+          "Balances read in %",
+          "It needs no repeats",
+        ],
+        accept: [
+          "Start masses differ",
+        ],
+        answer: "Cylinders rarely start at exactly the same mass, so a percentage makes them fair to compare. It does not remove anomalous results.",
+      },
+      {
+        question: "How does breathing help gas exchange in the lungs?",
+        choices: [
+          "Adds surface area",
+          "Thins alveolus walls",
+          "Keeps gradient steep",
+          "Pumps gas actively",
+        ],
+        accept: [
+          "Keeps gradient steep",
+        ],
+        answer: "Ventilation brings in fresh air and removes stale air, keeping a steep concentration gradient. The alveoli's surface area is fixed by their structure.",
+      },
+      {
+        question: "Water enters root hairs because soil water is what compared with the cell sap?",
+        choices: [
+          "More concentrated",
+          "More dilute",
+          "Equally concentrated",
+          "More acidic",
+        ],
+        accept: [
+          "More dilute",
+        ],
+        answer: "Water moves by osmosis from a dilute solution to a more concentrated one. Soil water is usually more dilute than the cell sap.",
+      },
+      {
+        question: "Which molecule can pass through visking tubing, a partially permeable membrane?",
+        choices: [
+          "Starch",
+          "Protein",
+          "Cellulose",
+          "Water",
+        ],
+        accept: [
+          "Water",
+        ],
+        answer: "Small molecules such as water and glucose pass through the tiny pores. Large molecules like starch and protein are too big to get through.",
+      },
     ],
     misconceptions: [
       {
@@ -1810,6 +2044,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Mitosis",
         ],
         answer: "Mitosis, but uncontrolled: the cells keep dividing and form a mass called a tumour.",
+      },
+      {
+        question: "Before dividing, a cell increases the number of which structures?",
+        choices: [
+          "Nuclei",
+          "Mitochondria",
+          "Cell walls",
+          "Vacuoles",
+        ],
+        accept: [
+          "Mitochondria",
+        ],
+        answer: "In the first stage of the cycle the cell grows and makes more sub-cellular structures such as mitochondria and ribosomes. It still has only one nucleus.",
+      },
+      {
+        question: "In which part of a human cell are the chromosomes found?",
+        choices: [
+          "Nucleus",
+          "Cytoplasm",
+          "Ribosomes",
+          "Mitochondria",
+        ],
+        accept: [
+          "Nucleus",
+        ],
+        answer: "Chromosomes are long DNA molecules kept in the nucleus. Ribosomes in the cytoplasm use instructions copied from them to make proteins.",
+      },
+      {
+        question: "What does each chromosome carry a large number of?",
+        choices: [
+          "Ribosomes",
+          "Enzymes",
+          "Genes",
+          "Antibodies",
+        ],
+        accept: [
+          "Genes",
+        ],
+        answer: "Each chromosome is one long DNA molecule carrying many genes. Enzymes are proteins made using those genes, not carried on the chromosome.",
+      },
+      {
+        question: "Stem cells in adult bone marrow mainly form which type of cell?",
+        choices: [
+          "Nerve cells",
+          "Sperm cells",
+          "Liver cells",
+          "Blood cells",
+        ],
+        accept: [
+          "Blood cells",
+        ],
+        answer: "Adult stem cells are limited. Bone marrow stem cells form many cell types including blood cells. Embryonic stem cells could form almost any type.",
+      },
+      {
+        question: "Which risk comes from using stem cells grown in a lab?",
+        choices: [
+          "Viral infection",
+          "Faster healing",
+          "Cheaper medicine",
+          "Extra gametes",
+        ],
+        accept: [
+          "Viral infection",
+        ],
+        answer: "Stem cells grown in a lab can become contaminated with a virus, which is then passed to the patient. Faster healing is a benefit, not a risk.",
+      },
+      {
+        question: "Why do growers clone crop plants from meristem tissue?",
+        choices: [
+          "Adds genetic variety",
+          "Copies keep traits",
+          "Makes seeds bigger",
+          "Cures plant viruses",
+        ],
+        accept: [
+          "Copies keep traits",
+        ],
+        answer: "Clones are genetically identical, so a plant with a useful feature such as disease resistance can be copied many times. Cloning reduces variety.",
+      },
+      {
+        question: "Just before mitosis, how many copies of each chromosome does a cell have?",
+        choices: [
+          "Half a copy",
+          "One",
+          "Two",
+          "Four",
+        ],
+        accept: [
+          "Two",
+        ],
+        answer: "The DNA is copied first, so each chromosome is doubled. One copy then goes into each daughter cell, so both get a full identical set.",
+      },
+      {
+        question: "Which type of cell division makes a shoot tip grow longer?",
+        choices: [
+          "Meiosis",
+          "Mitosis",
+          "Fertilisation",
+          "Translocation",
+        ],
+        accept: [
+          "Mitosis",
+        ],
+        answer: "Meristem cells at shoot and root tips divide by mitosis to make new identical cells for growth. Meiosis only makes gametes.",
+      },
+      {
+        question: "Stem cells that become nerve cells might be used to treat which condition?",
+        choices: [
+          "Measles",
+          "Paralysis",
+          "Malaria",
+          "Gonorrhoea",
+        ],
+        accept: [
+          "Paralysis",
+        ],
+        answer: "Replacing damaged nerve cells could help people with paralysis. Measles, malaria and gonorrhoea are infections, treated by preventing or killing the pathogen.",
       },
     ],
     misconceptions: [
@@ -2407,6 +2758,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Small intestine, where it neutralises stomach acid and emulsifies fat.",
       },
+      {
+        question: "Why must large food molecules be digested?",
+        choices: [
+          "To make bile",
+          "To release energy",
+          "To be absorbed",
+          "To build enzymes",
+        ],
+        accept: [
+          "To be absorbed",
+        ],
+        answer: "Large insoluble molecules cannot pass into the blood. Enzymes break them into small soluble ones that are absorbed in the small intestine.",
+      },
+      {
+        question: "What colour does Benedict's solution turn with a lot of sugar?",
+        choices: [
+          "Brick red",
+          "Blue-black",
+          "Purple",
+          "Cloudy white",
+        ],
+        accept: [
+          "Brick red",
+        ],
+        answer: "Benedict's goes from blue through green and yellow to brick red as sugar increases. Blue-black is iodine with starch; purple is biuret with protein.",
+      },
+      {
+        question: "After adding Benedict's solution to a food sample, what must you do?",
+        choices: [
+          "Add iodine",
+          "Heat in a water bath",
+          "Shake with ethanol",
+          "Cool it on ice",
+        ],
+        accept: [
+          "Heat in a water bath",
+        ],
+        answer: "The Benedict's test only works when heated, in a water bath at about 75 °C for a few minutes. Ethanol is used for the lipid test.",
+      },
+      {
+        question: "What colour shows a positive biuret test?",
+        choices: [
+          "Brick red",
+          "Blue-black",
+          "Cloudy white",
+          "Purple",
+        ],
+        accept: [
+          "Purple",
+        ],
+        answer: "Biuret turns from blue to purple (lilac) when protein is present. Cloudy white is the ethanol test for lipids.",
+      },
+      {
+        question: "How does bile being alkaline help digestion in the small intestine?",
+        choices: [
+          "It digests protein",
+          "It kills bacteria",
+          "It absorbs fat",
+          "It suits enzymes' pH",
+        ],
+        accept: [
+          "It suits enzymes' pH",
+        ],
+        answer: "Bile neutralises stomach acid, giving the small intestine enzymes the alkaline conditions they work best in. Bile itself digests nothing.",
+      },
+      {
+        question: "Which organ produces hydrochloric acid?",
+        choices: [
+          "Pancreas",
+          "Stomach",
+          "Liver",
+          "Gall bladder",
+        ],
+        accept: [
+          "Stomach",
+        ],
+        answer: "The stomach makes hydrochloric acid, which kills microorganisms and suits pepsin. The liver makes bile, which is alkaline.",
+      },
+      {
+        question: "In the amylase practical, what shows that all the starch has been digested?",
+        choices: [
+          "Iodine goes blue-black",
+          "Iodine stays orange",
+          "Benedict's stays blue",
+          "Solution goes purple",
+        ],
+        accept: [
+          "Iodine stays orange",
+        ],
+        answer: "Iodine turns blue-black only while starch is present. When a drop stays orange-brown, the amylase has broken all the starch down.",
+      },
+      {
+        question: "In the amylase and pH practical, why is a water bath used?",
+        choices: [
+          "To change the pH",
+          "To stop the reaction",
+          "To keep temp constant",
+          "To speed up mixing",
+        ],
+        accept: [
+          "To keep temp constant",
+        ],
+        answer: "Temperature also affects enzyme rate, so it is a control variable kept constant. pH is the independent variable, changed with buffers.",
+      },
+      {
+        question: "What happens to an enzyme at the end of the reaction it catalyses?",
+        choices: [
+          "It is unchanged",
+          "It is used up",
+          "It becomes product",
+          "It denatures",
+        ],
+        accept: [
+          "It is unchanged",
+        ],
+        answer: "Enzymes are catalysts, so they are not used up and can be used again. Denaturing only happens with heat or the wrong pH.",
+      },
     ],
     misconceptions: [
       {
@@ -2999,6 +3467,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Organ",
         ],
         answer: "Organ, because it is made of several tissues working together, such as epidermis, mesophyll and xylem.",
+      },
+      {
+        question: "Which plant organ anchors the plant and absorbs water?",
+        choices: [
+          "Stem",
+          "Leaf",
+          "Root",
+          "Flower",
+        ],
+        accept: [
+          "Root",
+        ],
+        answer: "Roots hold the plant in the soil and take in water and mineral ions, mainly through root hair cells. The stem supports and transports.",
+      },
+      {
+        question: "When setting up a potometer, why is the shoot cut under water?",
+        choices: [
+          "Stops air in xylem",
+          "Keeps leaves cool",
+          "Kills bacteria",
+          "Speeds up uptake",
+        ],
+        accept: [
+          "Stops air in xylem",
+        ],
+        answer: "An air bubble entering the xylem would break the water column and stop uptake. Cutting under water keeps the xylem full of water.",
+      },
+      {
+        question: "In which form is sugar mainly carried in the phloem?",
+        choices: [
+          "Starch",
+          "Sucrose",
+          "Cellulose",
+          "Glycogen",
+        ],
+        accept: [
+          "Sucrose",
+        ],
+        answer: "Sugar travels dissolved, mostly as sucrose. Starch is insoluble so it is used for storage, and glycogen is only found in animals and fungi.",
+      },
+      {
+        question: "Which tissue covers the upper and lower surfaces of a leaf?",
+        choices: [
+          "Mesophyll",
+          "Xylem",
+          "Meristem",
+          "Epidermis",
+        ],
+        accept: [
+          "Epidermis",
+        ],
+        answer: "Epidermal tissue covers the leaf; the upper epidermis is transparent and the lower one contains most stomata. Mesophyll is the tissue inside.",
+      },
+      {
+        question: "Which leaf layer lies directly below the upper epidermis?",
+        choices: [
+          "Spongy mesophyll",
+          "Palisade mesophyll",
+          "Lower epidermis",
+          "Waxy cuticle",
+        ],
+        accept: [
+          "Palisade mesophyll",
+        ],
+        answer: "Palisade cells sit near the top where light is brightest. Spongy mesophyll, with its air spaces, lies beneath them; the cuticle is on top.",
+      },
+      {
+        question: "Which process at the leaves pulls water up the xylem?",
+        choices: [
+          "Evaporation",
+          "Translocation",
+          "Active transport",
+          "Respiration",
+        ],
+        accept: [
+          "Evaporation",
+        ],
+        answer: "Water evaporates from the leaves and diffuses out of the stomata, drawing more water up the xylem. Translocation moves sugars in phloem.",
+      },
+      {
+        question: "In a potometer investigation of light intensity, what is the dependent variable?",
+        choices: [
+          "Light intensity",
+          "Air temperature",
+          "Bubble distance moved",
+          "Number of leaves",
+        ],
+        accept: [
+          "Bubble distance moved",
+        ],
+        answer: "You measure how far the air bubble moves in a set time. Light intensity is what you change, so it is the independent variable.",
+      },
+      {
+        question: "What do the pores in the end walls of phloem cells allow?",
+        choices: [
+          "Light to pass through",
+          "Water to evaporate",
+          "Gases to diffuse in",
+          "Sap to pass along",
+        ],
+        accept: [
+          "Sap to pass along",
+        ],
+        answer: "Phloem sap carrying dissolved sugars moves from one phloem cell to the next through these pores. Xylem has no end walls at all.",
+      },
+      {
+        question: "Open stomata let carbon dioxide in. What does the leaf lose as a result?",
+        choices: [
+          "Glucose",
+          "Water vapour",
+          "Chlorophyll",
+          "Nitrate ions",
+        ],
+        accept: [
+          "Water vapour",
+        ],
+        answer: "Water vapour diffuses out through the same open stomata, which is transpiration. Glucose travels away in the phloem, not out through the stomata.",
       },
     ],
     misconceptions: [
@@ -3614,6 +4199,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Leave it out of the mean, and say why you excluded it.",
       },
+      {
+        question: "How many nanometres are there in 1 mm?",
+        choices: [
+          "1,000",
+          "10,000",
+          "100,000",
+          "1,000,000",
+        ],
+        accept: [
+          "1,000,000",
+        ],
+        answer: "1 mm = 1000 µm and 1 µm = 1000 nm, so 1 mm = 1000 × 1000 = 1,000,000 nm. 1,000 stops after only one step.",
+      },
+      {
+        question: "Which knob should you use first to find focus on low power?",
+        choices: [
+          "Fine focus",
+          "Coarse focus",
+          "Eyepiece lens",
+          "Stage clips",
+        ],
+        accept: [
+          "Coarse focus",
+        ],
+        answer: "The coarse focus moves the stage a long way to bring the image roughly into view. Fine focus then sharpens it, especially at high power.",
+      },
+      {
+        question: "In science, what is a hypothesis?",
+        choices: [
+          "A proven fact",
+          "A testable idea",
+          "A list of results",
+          "A type of graph",
+        ],
+        accept: [
+          "A testable idea",
+        ],
+        answer: "A hypothesis is a proposed explanation that you can test with an experiment. It becomes accepted only if the evidence supports it.",
+      },
+      {
+        question: "Which graph suits a categoric independent variable, such as type of food?",
+        choices: [
+          "Line graph",
+          "Scatter graph",
+          "Bar chart",
+          "Histogram",
+        ],
+        accept: [
+          "Bar chart",
+        ],
+        answer: "Categories have no in-between values, so separate bars are used. Line and scatter graphs are for continuous variables.",
+      },
+      {
+        question: "Why must a specimen for a light microscope be very thin?",
+        choices: [
+          "To dry it quickly",
+          "To kill the cells",
+          "To add colour",
+          "To let light through",
+        ],
+        accept: [
+          "To let light through",
+        ],
+        answer: "Light has to shine up through the specimen. A thick sample blocks the light and shows overlapping cells. Colour comes from a stain.",
+      },
+      {
+        question: "Which stain is commonly used to show human cheek cells?",
+        choices: [
+          "Methylene blue",
+          "Benedict's",
+          "Biuret",
+          "Limewater",
+        ],
+        accept: [
+          "Methylene blue",
+        ],
+        answer: "Methylene blue stains the nucleus of cheek cells. Iodine is often used for onion cells. Benedict's and biuret are food tests, not stains.",
+      },
+      {
+        question: "A balance reads 0.2 g with nothing on it. What type of error is this?",
+        choices: [
+          "Random error",
+          "Zero error",
+          "Anomalous result",
+          "Parallax error",
+        ],
+        accept: [
+          "Zero error",
+        ],
+        answer: "A zero error shifts every reading by the same amount, so it is systematic. Random errors scatter readings unpredictably either way.",
+      },
+      {
+        question: "One person repeats a method and gets similar results each time. The results are:",
+        choices: [
+          "Reproducible",
+          "Accurate",
+          "Repeatable",
+          "Valid",
+        ],
+        accept: [
+          "Repeatable",
+        ],
+        answer: "Repeatable means the same person, method and equipment give similar results. Reproducible means someone else, or other equipment, gets them too.",
+      },
+      {
+        question: "What is the best way to reduce the effect of random errors?",
+        choices: [
+          "Repeat and find mean",
+          "Change the IV",
+          "Remove controls",
+          "Round the data",
+        ],
+        accept: [
+          "Repeat and find mean",
+        ],
+        answer: "Random errors scatter readings above and below the true value, so averaging repeats cancels much of that out. It cannot fix a systematic error.",
+      },
     ],
     misconceptions: [
       {
@@ -4219,6 +4921,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Using condoms — gonorrhoea is sexually transmitted, so a barrier stops the bacteria passing between partners.",
       },
+      {
+        question: "How does a virus make a person ill?",
+        choices: [
+          "Makes antitoxins",
+          "Multiplies in cells",
+          "Engulfs blood cells",
+          "Digests the skin",
+        ],
+        accept: [
+          "Multiplies in cells",
+        ],
+        answer: "Viruses live and reproduce inside cells, damaging them. Antitoxins are made by white blood cells to fight disease, not by the pathogen.",
+      },
+      {
+        question: "How is HIV mainly spread?",
+        choices: [
+          "Droplets in the air",
+          "Contaminated food",
+          "Mosquito bites",
+          "Sex or body fluids",
+        ],
+        accept: [
+          "Sex or body fluids",
+        ],
+        answer: "HIV spreads by sexual contact or exchange of body fluids such as blood, for example shared needles. Measles is the one spread by droplets.",
+      },
+      {
+        question: "Which animal is the vector that spreads malaria?",
+        choices: [
+          "Housefly",
+          "Rat",
+          "Mosquito",
+          "Tick",
+        ],
+        accept: [
+          "Mosquito",
+        ],
+        answer: "The malaria protist is carried by mosquitoes, which inject it when they feed on blood. That is why nets and insecticide reduce malaria.",
+      },
+      {
+        question: "How does the UK reduce the spread of Salmonella?",
+        choices: [
+          "Vaccinating poultry",
+          "Killing mosquitoes",
+          "Antibiotics in water",
+          "Using condoms",
+        ],
+        accept: [
+          "Vaccinating poultry",
+        ],
+        answer: "Chickens are vaccinated against Salmonella, and food is cooked thoroughly. Killing mosquitoes targets malaria; condoms target STIs.",
+      },
+      {
+        question: "Which is a symptom of gonorrhoea?",
+        choices: [
+          "Red skin rash",
+          "Pain when urinating",
+          "Recurring fevers",
+          "Vomiting",
+        ],
+        accept: [
+          "Pain when urinating",
+        ],
+        answer: "Gonorrhoea causes pain on urinating and a thick yellow or green discharge. A red rash is measles and recurring fevers are malaria.",
+      },
+      {
+        question: "Which symptoms are typical of measles?",
+        choices: [
+          "Fever and red rash",
+          "Yellow discharge",
+          "Vomiting, diarrhoea",
+          "Recurring fevers",
+        ],
+        accept: [
+          "Fever and red rash",
+        ],
+        answer: "Measles is a virus causing fever and a red skin rash, and it can be fatal. Vomiting and diarrhoea are signs of Salmonella poisoning.",
+      },
+      {
+        question: "Which of these is a physical defence plants use against pathogens?",
+        choices: [
+          "Open stomata",
+          "Antibodies",
+          "Waxy cuticle",
+          "Phagocytes",
+        ],
+        accept: [
+          "Waxy cuticle",
+        ],
+        answer: "The waxy cuticle, cellulose cell walls and bark are physical barriers. Antibodies and phagocytes are animal defences, not plant ones.",
+      },
+      {
+        question: "Each type of antibody can attach to what?",
+        choices: [
+          "Any pathogen",
+          "One antigen shape",
+          "Only viruses",
+          "Only toxins",
+        ],
+        accept: [
+          "One antigen shape",
+        ],
+        answer: "Antibodies are specific: each one fits only the antigens on one type of pathogen. That is why a new disease needs new antibodies.",
+      },
+      {
+        question: "What does overusing antibiotics lead to?",
+        choices: [
+          "Resistant bacteria",
+          "Stronger viruses",
+          "More memory cells",
+          "Herd immunity",
+        ],
+        accept: [
+          "Resistant bacteria",
+        ],
+        answer: "Antibiotics kill non-resistant bacteria, so resistant mutants survive and multiply. Antibiotics have no effect on viruses at all.",
+      },
     ],
     misconceptions: [
       {
@@ -4813,6 +5632,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Poorer communities",
         ],
         answer: "Poorer communities — linked to more smoking, poorer diets and less access to healthcare, which makes it a policy problem.",
+      },
+      {
+        question: "Which substance in tobacco smoke is a carcinogen?",
+        choices: [
+          "Nicotine",
+          "Tar",
+          "Oxygen",
+          "Water vapour",
+        ],
+        accept: [
+          "Tar",
+        ],
+        answer: "Tar contains chemicals that cause cancer, such as lung cancer. Nicotine is the addictive drug in tobacco, not the main carcinogen.",
+      },
+      {
+        question: "A person with a weakened immune system is more likely to get which?",
+        choices: [
+          "Infectious diseases",
+          "Short sight",
+          "Broken bones",
+          "Colour blindness",
+        ],
+        accept: [
+          "Infectious diseases",
+        ],
+        answer: "Defects in the immune system make infectious diseases more likely, an example of different types of disease interacting.",
+      },
+      {
+        question: "An immune reaction first caused by a pathogen can trigger which?",
+        choices: [
+          "Lung cancer",
+          "Asthma",
+          "Obesity",
+          "Liver disease",
+        ],
+        accept: [
+          "Asthma",
+        ],
+        answer: "Immune reactions set off by a pathogen can trigger allergies such as asthma and skin rashes. Lung cancer is mainly linked to smoking.",
+      },
+      {
+        question: "Severe long-term physical ill health can lead to which?",
+        choices: [
+          "Measles",
+          "Malaria",
+          "Depression",
+          "Food poisoning",
+        ],
+        accept: [
+          "Depression",
+        ],
+        answer: "Serious physical illness can lead to depression and other mental illness. Measles, malaria and food poisoning need a pathogen.",
+      },
+      {
+        question: "As one variable increases, the other increases too. What is this?",
+        choices: [
+          "Causation",
+          "Negative correlation",
+          "No correlation",
+          "Positive correlation",
+        ],
+        accept: [
+          "Positive correlation",
+        ],
+        answer: "Both rising together is a positive correlation. It does not prove causation; for that you need a mechanism explaining how one causes the other.",
+      },
+      {
+        question: "What does a causal mechanism explain about a disease?",
+        choices: [
+          "How common it is",
+          "How a factor causes it",
+          "Who is affected",
+          "How much it costs",
+        ],
+        accept: [
+          "How a factor causes it",
+        ],
+        answer: "A causal mechanism shows how a risk factor actually brings about a disease, like tar damaging DNA. Without one, a link is only a correlation.",
+      },
+      {
+        question: "Lack of exercise is a risk factor for which disease?",
+        choices: [
+          "Measles",
+          "Cardiovascular disease",
+          "Malaria",
+          "Gonorrhoea",
+        ],
+        accept: [
+          "Cardiovascular disease",
+        ],
+        answer: "Diet, smoking and exercise all affect the risk of cardiovascular disease. The other three are communicable, caused by pathogens.",
+      },
+      {
+        question: "Most non-communicable diseases are caused by what?",
+        choices: [
+          "One single gene",
+          "Only pathogens",
+          "Interacting factors",
+          "Only bad luck",
+        ],
+        accept: [
+          "Interacting factors",
+        ],
+        answer: "Many diseases come from several factors acting together, such as genes, diet and smoking. That is why risk factors raise chances, not guarantee illness.",
+      },
+      {
+        question: "Which graph best shows whether two health variables are correlated?",
+        choices: [
+          "Bar chart",
+          "Pie chart",
+          "Scatter graph",
+          "Pictogram",
+        ],
+        accept: [
+          "Scatter graph",
+        ],
+        answer: "A scatter graph plots each person as a point, so a trend shows up as a sloping pattern. Bar and pie charts compare categories.",
       },
     ],
     misconceptions: [
@@ -5460,6 +6396,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Decrease — less chlorophyll absorbs less light, so less glucose is made and the plant grows more slowly.",
       },
+      {
+        question: "Which are the products in the balanced symbol equation for photosynthesis?",
+        choices: [
+          "6CO₂ + 6H₂O",
+          "C₆H₁₂O₆ + 6O₂",
+          "C₆H₁₂O₆ + 6H₂O",
+          "6CO₂ + 6O₂",
+        ],
+        accept: [
+          "C₆H₁₂O₆ + 6O₂",
+        ],
+        answer: "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Glucose and oxygen are made; carbon dioxide and water are the reactants.",
+      },
+      {
+        question: "In the pondweed practical, why is a beaker of water put between lamp and plant?",
+        choices: [
+          "Adds carbon dioxide",
+          "Keeps temp constant",
+          "Brightens the light",
+          "Feeds the pondweed",
+        ],
+        accept: [
+          "Keeps temp constant",
+        ],
+        answer: "The water absorbs heat from the lamp so temperature stays a control variable. Otherwise moving the lamp closer would warm the plant too.",
+      },
+      {
+        question: "What is added to pondweed water to give it plenty of carbon dioxide?",
+        choices: [
+          "Sodium chloride",
+          "Glucose syrup",
+          "Hydrogencarbonate",
+          "Iodine solution",
+        ],
+        accept: [
+          "Hydrogencarbonate",
+        ],
+        answer: "Sodium hydrogencarbonate releases carbon dioxide, so CO₂ is not limiting. Glucose is a product of photosynthesis, not a raw material.",
+      },
+      {
+        question: "In the pondweed and light practical, what is the independent variable?",
+        choices: [
+          "Number of bubbles",
+          "Distance from lamp",
+          "Water temperature",
+          "Type of pondweed",
+        ],
+        accept: [
+          "Distance from lamp",
+        ],
+        answer: "Moving the lamp changes light intensity, which is what you vary. The bubbles or gas volume are what you measure, the dependent variable.",
+      },
+      {
+        question: "When testing a leaf for starch, why is it boiled in ethanol?",
+        choices: [
+          "To add starch",
+          "To make it green",
+          "To remove chlorophyll",
+          "To test for sugar",
+        ],
+        accept: [
+          "To remove chlorophyll",
+        ],
+        answer: "Ethanol removes the green chlorophyll so the colour change with iodine is easy to see. Iodine then turns blue-black where starch is.",
+      },
+      {
+        question: "Why do the white parts of a variegated leaf stay orange with iodine?",
+        choices: [
+          "No chlorophyll",
+          "No stomata",
+          "No xylem",
+          "Too much water",
+        ],
+        accept: [
+          "No chlorophyll",
+        ],
+        answer: "White areas lack chlorophyll, so they cannot photosynthesise and make no starch. It shows chlorophyll is needed for photosynthesis.",
+      },
+      {
+        question: "Where does the carbon in the glucose a plant makes come from?",
+        choices: [
+          "The soil",
+          "Water",
+          "Chlorophyll",
+          "Carbon dioxide",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "The carbon comes from carbon dioxide taken in through the stomata. Water from the soil supplies hydrogen; chlorophyll only absorbs light.",
+      },
+      {
+        question: "Which apparatus measures oxygen volume from pondweed better than counting bubbles?",
+        choices: [
+          "Potometer",
+          "Gas syringe",
+          "Light meter",
+          "Thermometer",
+        ],
+        accept: [
+          "Gas syringe",
+        ],
+        answer: "A gas syringe (or measuring cylinder) collects the gas so its volume can be read. Bubbles vary in size, so counts are less accurate.",
+      },
+      {
+        question: "In a sealed greenhouse on a hot, sunny day, which factor is most likely limiting?",
+        choices: [
+          "Light intensity",
+          "Temperature",
+          "Carbon dioxide",
+          "Oxygen",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "Light and warmth are plentiful, but the plants use up the CO₂ in the sealed air. Oxygen is a product, so it never limits photosynthesis.",
+      },
     ],
     misconceptions: [
       {
@@ -6044,6 +7097,123 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "6H₂O",
         ],
         answer: "6H₂O — aerobic respiration: glucose + oxygen → carbon dioxide + water, with six of each.",
+      },
+      {
+        question: "What does anaerobic respiration in plant cells produce?",
+        choices: [
+          "Lactic acid",
+          "Ethanol and CO₂",
+          "Glucose and oxygen",
+          "Water only",
+        ],
+        accept: [
+          "Ethanol and CO₂",
+        ],
+        answer: "Plant cells, like yeast, make ethanol and carbon dioxide when respiring anaerobically. Lactic acid is the product in animal muscle cells.",
+      },
+      {
+        question: "Why does anaerobic respiration release less energy than aerobic?",
+        choices: [
+          "Too much oxygen",
+          "It makes water",
+          "It uses no glucose",
+          "Incomplete oxidation",
+        ],
+        accept: [
+          "Incomplete oxidation",
+        ],
+        answer: "Without oxygen, glucose is only partly broken down, so much of its energy stays locked in lactic acid (or ethanol in yeast and plants). Aerobic respiration oxidises it fully.",
+      },
+      {
+        question: "During long exercise, what do muscles convert glycogen into?",
+        choices: [
+          "Glucose",
+          "Lactic acid",
+          "Protein",
+          "Starch",
+        ],
+        accept: [
+          "Glucose",
+        ],
+        answer: "Glycogen is a store of glucose; muscles turn it back into glucose to respire. Starch is the plant storage carbohydrate.",
+      },
+      {
+        question: "Excess proteins are broken down in the body to form what for excretion?",
+        choices: [
+          "Lactic acid",
+          "Glycogen",
+          "Urea",
+          "Ethanol",
+        ],
+        accept: [
+          "Urea",
+        ],
+        answer: "Breaking down excess protein to form urea is part of metabolism. Urea is then removed by the kidneys in urine.",
+      },
+      {
+        question: "Which molecules join together to make a lipid?",
+        choices: [
+          "Amino acids",
+          "Glucose units",
+          "Nitrate ions",
+          "Glycerol, fatty acids",
+        ],
+        accept: [
+          "Glycerol, fatty acids",
+        ],
+        answer: "A lipid forms from one glycerol molecule and three fatty acids. Glucose units build starch, glycogen and cellulose; amino acids build proteins.",
+      },
+      {
+        question: "Which result shows yeast is giving off carbon dioxide?",
+        choices: [
+          "Splint relights",
+          "Limewater goes cloudy",
+          "Iodine goes blue-black",
+          "Biuret goes purple",
+        ],
+        accept: [
+          "Limewater goes cloudy",
+        ],
+        answer: "Carbon dioxide turns limewater milky. A glowing splint relighting is the test for oxygen, which fermenting yeast does not release.",
+      },
+      {
+        question: "What is the main purpose of respiration?",
+        choices: [
+          "To take in oxygen",
+          "To make glucose",
+          "To transfer energy",
+          "To remove water",
+        ],
+        accept: [
+          "To transfer energy",
+        ],
+        answer: "Respiration releases energy from glucose for living processes. Taking in oxygen is breathing, a separate process; plants make glucose by photosynthesis.",
+      },
+      {
+        question: "In the yeast practical, why is a layer of oil put on the sugar solution?",
+        choices: [
+          "To keep it warm",
+          "To keep oxygen out",
+          "To feed the yeast",
+          "To add glucose",
+        ],
+        accept: [
+          "To keep oxygen out",
+        ],
+        answer: "The oil stops oxygen dissolving in, so the yeast must respire anaerobically (fermentation). Food for the yeast comes from the sugar.",
+      },
+      {
+        question: "Germinating peas in a vacuum flask get warmer. Which process causes this?",
+        choices: [
+          "Photosynthesis",
+          "Transpiration",
+          "Respiration",
+          "Osmosis",
+        ],
+        accept: [
+          "Respiration",
+        ],
+        answer: "Respiration is exothermic, so some of the energy released warms the surroundings. Photosynthesis takes in energy and needs light.",
       },
     ],
     misconceptions: [
@@ -6647,6 +7817,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Automatic and rapid",
         ],
         answer: "Automatic and rapid — it does not involve the conscious part of the brain, which protects the body from harm.",
+      },
+      {
+        question: "Which part of the brain is responsible for memory, language and consciousness?",
+        choices: [
+          "Cerebellum",
+          "Cerebral cortex",
+          "Medulla",
+          "Spinal cord",
+        ],
+        accept: [
+          "Cerebral cortex",
+        ],
+        answer: "The cerebral cortex handles conscious thought, memory and language. The cerebellum coordinates muscles and balance; the medulla runs unconscious activities.",
+      },
+      {
+        question: "Which part of the brain controls unconscious activities such as heartbeat and breathing?",
+        choices: [
+          "Cerebral cortex",
+          "Cerebellum",
+          "Pituitary gland",
+          "Medulla",
+        ],
+        accept: [
+          "Medulla",
+        ],
+        answer: "The medulla controls automatic, unconscious actions like heart rate and breathing. The cerebellum coordinates movement; the pituitary is a gland, not a control region.",
+      },
+      {
+        question: "In bright light, which muscles in the iris contract to make the pupil smaller?",
+        choices: [
+          "Radial muscles",
+          "Circular muscles",
+          "Ciliary muscles",
+          "Suspensory ligaments",
+        ],
+        accept: [
+          "Circular muscles",
+        ],
+        answer: "Circular iris muscles contract and radial ones relax, so the pupil narrows. Ciliary muscles and suspensory ligaments change the lens shape, not the pupil size.",
+      },
+      {
+        question: "Which part of the eye changes shape to focus on near or distant objects?",
+        choices: [
+          "Lens",
+          "Cornea",
+          "Iris",
+          "Retina",
+        ],
+        accept: [
+          "Lens",
+        ],
+        answer: "Ciliary muscles and suspensory ligaments change the lens's shape (accommodation). The cornea also bends light but cannot change shape; the retina detects light.",
+      },
+      {
+        question: "What is the medical name for long-sightedness?",
+        choices: [
+          "Myopia",
+          "Astigmatism",
+          "Hyperopia",
+          "Cataracts",
+        ],
+        accept: [
+          "Hyperopia",
+        ],
+        answer: "Hyperopia is long-sightedness: near objects look blurred and a convex lens corrects it. Myopia is short-sightedness, corrected with a concave lens.",
+      },
+      {
+        question: "When a muscle acts as an effector, how does it respond to an impulse?",
+        choices: [
+          "It secretes a hormone",
+          "It contracts",
+          "It sends an impulse",
+          "It detects a stimulus",
+        ],
+        accept: [
+          "It contracts",
+        ],
+        answer: "Muscles respond by contracting; glands respond by secreting hormones. Detecting a stimulus is the receptor's job, not the effector's.",
+      },
+      {
+        question: "Roughly how long is a typical human reaction time to something you see?",
+        choices: [
+          "0.02 s",
+          "2 s",
+          "20 s",
+          "0.2 s",
+        ],
+        accept: [
+          "0.2 s",
+        ],
+        answer: "Most people react to a visual stimulus in about 0.2 to 0.3 s. Reflexes are quicker still, because they skip the conscious brain.",
+      },
+      {
+        question: "Which nerve carries impulses from the retina to the brain?",
+        choices: [
+          "Optic nerve",
+          "Spinal cord",
+          "Motor neurone",
+          "Relay neurone",
+        ],
+        accept: [
+          "Optic nerve",
+        ],
+        answer: "Rods and cones in the retina send impulses along the optic nerve to the brain. Motor neurones carry impulses away from the CNS to effectors.",
       },
     ],
     misconceptions: [
@@ -7265,6 +8539,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Insulin",
         ],
         answer: "Insulin — it makes cells take in glucose and store it as glycogen, bringing the level back down.",
+      },
+      {
+        question: "Which hormone causes an egg to mature in an ovary?",
+        choices: [
+          "LH",
+          "FSH",
+          "Progesterone",
+          "Oestrogen",
+        ],
+        accept: [
+          "FSH",
+        ],
+        answer: "FSH from the pituitary makes an egg mature and stimulates the ovaries to make oestrogen. LH triggers the egg's release; progesterone maintains the uterus lining.",
+      },
+      {
+        question: "Which hormone stimulates the release of an egg from the ovary?",
+        choices: [
+          "FSH",
+          "Oestrogen",
+          "Progesterone",
+          "LH",
+        ],
+        accept: [
+          "LH",
+        ],
+        answer: "A surge of LH from the pituitary triggers ovulation, around day 14. FSH matures the egg beforehand but does not release it.",
+      },
+      {
+        question: "In the menstrual cycle, which hormone maintains the lining of the uterus?",
+        choices: [
+          "Progesterone",
+          "FSH",
+          "LH",
+          "TSH",
+        ],
+        accept: [
+          "Progesterone",
+        ],
+        answer: "Progesterone keeps the uterus lining in place; when it falls, the lining breaks down in a period. FSH and LH act on the ovaries, and TSH acts on the thyroid.",
+      },
+      {
+        question: "How does the combined contraceptive pill mainly prevent pregnancy?",
+        choices: [
+          "It kills sperm",
+          "It blocks sperm",
+          "It inhibits FSH",
+          "It boosts LH",
+        ],
+        accept: [
+          "It inhibits FSH",
+        ],
+        answer: "Its oestrogen and progesterone inhibit FSH, so no eggs mature. Killing sperm is what spermicide does; blocking sperm is what condoms and diaphragms do.",
+      },
+      {
+        question: "Where in the body are the adrenal glands found?",
+        choices: [
+          "In the neck",
+          "On the kidneys",
+          "Below the brain",
+          "Behind the stomach",
+        ],
+        accept: [
+          "On the kidneys",
+        ],
+        answer: "The adrenal glands sit on top of the kidneys and release adrenaline. The thyroid is in the neck, the pituitary below the brain, and the pancreas behind the stomach.",
+      },
+      {
+        question: "Which is a major risk factor for Type 2 diabetes?",
+        choices: [
+          "Being underweight",
+          "Low blood pressure",
+          "Obesity",
+          "A high-fibre diet",
+        ],
+        accept: [
+          "Obesity",
+        ],
+        answer: "Obesity is a major risk factor for Type 2 diabetes, where cells stop responding to insulin. Type 1 is different: the pancreas makes too little insulin.",
+      },
+      {
+        question: "Which hormone acts on the kidneys to control the water content of the blood?",
+        choices: [
+          "ADH",
+          "FSH",
+          "TSH",
+          "LH",
+        ],
+        accept: [
+          "ADH",
+        ],
+        answer: "ADH from the pituitary makes kidney tubules reabsorb more water, so less, more concentrated urine is made. TSH acts on the thyroid; FSH and LH act on the ovaries.",
+      },
+      {
+        question: "Which part of the brain monitors and controls body temperature?",
+        choices: [
+          "Cerebellum",
+          "Medulla",
+          "Pituitary gland",
+          "Hypothalamus",
+        ],
+        accept: [
+          "Hypothalamus",
+        ],
+        answer: "The thermoregulatory centre in the hypothalamus detects blood temperature and triggers sweating or shivering. The pituitary sits just below it but is a gland.",
       },
     ],
     misconceptions: [
@@ -7916,6 +9294,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Surface area — lots of thin capillaries give a huge area for substances to diffuse between blood and tissues.",
       },
+      {
+        question: "Which blood component is a fragment of a cell rather than a whole cell?",
+        choices: [
+          "Red blood cells",
+          "Platelets",
+          "White blood cells",
+          "Plasma",
+        ],
+        accept: [
+          "Platelets",
+        ],
+        answer: "Platelets are small cell fragments with no nucleus that help blood clot. Plasma is the liquid, not a cell at all; red and white blood cells are whole cells.",
+      },
+      {
+        question: "Which type of blood vessel has thin walls and a large lumen?",
+        choices: [
+          "Artery",
+          "Capillary",
+          "Aorta",
+          "Vein",
+        ],
+        accept: [
+          "Vein",
+        ],
+        answer: "Veins carry low-pressure blood, so thin walls and a wide lumen are enough. Capillaries have thin walls but a tiny lumen; the aorta is an artery.",
+      },
+      {
+        question: "What can keep a patient alive while they wait for a heart transplant?",
+        choices: [
+          "An artificial heart",
+          "A stent",
+          "A statin",
+          "A pacemaker",
+        ],
+        accept: [
+          "An artificial heart",
+        ],
+        answer: "Artificial hearts pump blood when a heart fails, until a donor heart is found. Stents open one narrowed artery; pacemakers only correct an irregular beat.",
+      },
+      {
+        question: "Which gas is mainly carried in the plasma rather than by red blood cells?",
+        choices: [
+          "Oxygen",
+          "Nitrogen",
+          "Carbon dioxide",
+          "Hydrogen",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "Plasma carries carbon dioxide from the organs to the lungs. Oxygen is carried by haemoglobin inside red blood cells.",
+      },
+      {
+        question: "Why do arteries have thick, elastic walls?",
+        choices: [
+          "Resist high pressure",
+          "Let substances through",
+          "Prevent backflow",
+          "Slow the blood down",
+        ],
+        accept: [
+          "Resist high pressure",
+        ],
+        answer: "Blood leaves the heart in high-pressure surges, so arteries need thick muscle and elastic fibres. Stopping backflow is the job of valves in veins.",
+      },
+      {
+        question: "Which chambers of the heart receive blood returning to it?",
+        choices: [
+          "The ventricles",
+          "The atria",
+          "The arteries",
+          "The valves",
+        ],
+        accept: [
+          "The atria",
+        ],
+        answer: "Blood enters the atria from the veins, then passes into the ventricles, which pump it out. The thin-walled atria only push blood a short way.",
+      },
+      {
+        question: "Which is a risk of having a stent fitted?",
+        choices: [
+          "Raised blood pressure",
+          "A blood clot forming",
+          "Raised cholesterol",
+          "A slower heart rate",
+        ],
+        accept: [
+          "A blood clot forming",
+        ],
+        answer: "Fitting a stent needs surgery, so there is a risk of infection or a blood clot forming at the stent. It doesn't change cholesterol, blood pressure or heart rate.",
+      },
+      {
+        question: "Which of these blood components contains a nucleus?",
+        choices: [
+          "White blood cells",
+          "Red blood cells",
+          "Platelets",
+          "Plasma",
+        ],
+        accept: [
+          "White blood cells",
+        ],
+        answer: "White blood cells have a nucleus and fight infection. Red blood cells lose theirs to make room for haemoglobin, and platelets are just cell fragments.",
+      },
     ],
     misconceptions: [
       {
@@ -8514,6 +9996,111 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Asexual",
         ],
         answer: "Asexual — it is fast and needs no mate, and clones of a well-adapted parent thrive while conditions stay the same.",
+      },
+      {
+        question: "DNA is a polymer. What are its repeating units called?",
+        choices: [
+          "Amino acids",
+          "Fatty acids",
+          "Nucleotides",
+          "Glucose units",
+        ],
+        accept: [
+          "Nucleotides",
+        ],
+        answer: "Each nucleotide is a sugar, a phosphate and one of four bases (A, T, C or G). Amino acids are the units of proteins, not DNA.",
+      },
+      {
+        question: "At which structure in a cell are amino acids joined to make a protein?",
+        choices: [
+          "Ribosomes",
+          "Nucleus",
+          "Mitochondria",
+          "Cell membrane",
+        ],
+        accept: [
+          "Ribosomes",
+        ],
+        answer: "Proteins are built on ribosomes in the cytoplasm. The nucleus holds the DNA code but the chain of amino acids is assembled at the ribosome.",
+      },
+      {
+        question: "What carries a copy of a gene's code from the nucleus to a ribosome?",
+        choices: [
+          "A plasmid",
+          "mRNA",
+          "An enzyme",
+          "A hormone",
+        ],
+        accept: [
+          "mRNA",
+        ],
+        answer: "A template copy of the gene, called mRNA, is made in the nucleus and leaves it to reach a ribosome. Plasmids are rings of DNA found in bacteria.",
+        higherOnly: true,
+      },
+      {
+        question: "The malaria parasite reproduces sexually inside which host?",
+        choices: [
+          "Humans",
+          "Bats",
+          "Mosquitoes",
+          "Birds",
+        ],
+        accept: [
+          "Mosquitoes",
+        ],
+        answer: "Malaria parasites reproduce sexually in the mosquito and asexually in the human host, so they get the benefits of both types of reproduction.",
+      },
+      {
+        question: "Many fungi reproduce asexually by producing what?",
+        choices: [
+          "Seeds",
+          "Spores",
+          "Runners",
+          "Pollen",
+        ],
+        accept: [
+          "Spores",
+        ],
+        answer: "Fungi release spores, which grow into new fungi; they can also reproduce sexually for variation. Runners are how strawberry plants reproduce asexually.",
+      },
+      {
+        question: "Daffodils reproduce asexually using which structures?",
+        choices: [
+          "Runners",
+          "Spores",
+          "Pollen",
+          "Bulbs",
+        ],
+        accept: [
+          "Bulbs",
+        ],
+        answer: "Daffodils grow new identical plants from bulbs. Strawberries use runners; pollen is a male gamete, so it is part of sexual reproduction.",
+      },
+      {
+        question: "In meiosis, how many times does the cell divide after copying its DNA?",
+        choices: [
+          "Once",
+          "Twice",
+          "Three times",
+          "Four times",
+        ],
+        accept: [
+          "Twice",
+        ],
+        answer: "The chromosomes are copied once, then the cell divides twice, giving four different gametes. Mitosis divides once to give two identical cells.",
+      },
+      {
+        question: "Which type of cell division is used in asexual reproduction?",
+        choices: [
+          "Mitosis",
+          "Meiosis",
+          "Fertilisation",
+          "Mutation",
+        ],
+        accept: [
+          "Mitosis",
+        ],
+        answer: "Asexual reproduction uses mitosis, so offspring are genetically identical clones. Meiosis makes gametes for sexual reproduction.",
       },
     ],
     misconceptions: [
@@ -9137,6 +10724,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Reduces suffering",
         ],
         answer: "Reduces suffering — it can prevent a painful disorder; the other three are arguments against screening.",
+      },
+      {
+        question: "Most human characteristics, like height, are controlled by what?",
+        choices: [
+          "A single gene",
+          "Several genes",
+          "One allele",
+          "Sex chromosomes",
+        ],
+        accept: [
+          "Several genes",
+        ],
+        answer: "Most characteristics come from several genes interacting, often with the environment too. Only a few, like cystic fibrosis, are controlled by a single gene.",
+      },
+      {
+        question: "A person has the genotype ff for the cystic fibrosis gene. Which describes them?",
+        choices: [
+          "Is a carrier",
+          "Has cystic fibrosis",
+          "Is unaffected",
+          "Has polydactyly",
+        ],
+        accept: [
+          "Has cystic fibrosis",
+        ],
+        answer: "Cystic fibrosis is recessive, so two copies (ff) cause the disorder. Ff is a carrier with no symptoms, and FF is unaffected and not a carrier.",
+      },
+      {
+        question: "How many alleles of each gene does a human gamete carry?",
+        choices: [
+          "Two",
+          "Four",
+          "One",
+          "23",
+        ],
+        accept: [
+          "One",
+        ],
+        answer: "Gametes are made by meiosis, so they carry one allele of each gene. Fertilisation then gives the offspring two alleles, one from each parent.",
+      },
+      {
+        question: "What fraction of a person's alleles were inherited from their mother?",
+        choices: [
+          "A quarter",
+          "Half",
+          "Three-quarters",
+          "All of them",
+        ],
+        accept: [
+          "Half",
+        ],
+        answer: "The egg and the sperm each bring 23 chromosomes, so half of a person's alleles come from each parent.",
+      },
+      {
+        question: "Bb × BB. What percentage of the offspring are expected to be heterozygous?",
+        choices: [
+          "25%",
+          "50%",
+          "75%",
+          "100%",
+        ],
+        accept: [
+          "50%",
+        ],
+        answer: "BB only gives B gametes; Bb gives B or b equally. So offspring are half BB and half Bb: 50% heterozygous, though all show the dominant phenotype.",
+      },
+      {
+        question: "Which inherited disorder is a disorder of cell membranes?",
+        choices: [
+          "Polydactyly",
+          "Type 1 diabetes",
+          "Haemophilia",
+          "Cystic fibrosis",
+        ],
+        accept: [
+          "Cystic fibrosis",
+        ],
+        answer: "Cystic fibrosis affects cell membranes, so thick, sticky mucus builds up in the lungs and digestive system. Polydactyly causes extra fingers or toes.",
+      },
+      {
+        question: "The 'units' Mendel said were inherited from parents are now called what?",
+        choices: [
+          "Gametes",
+          "Nuclei",
+          "Genes",
+          "Proteins",
+        ],
+        accept: [
+          "Genes",
+        ],
+        answer: "Mendel's pea experiments showed characteristics pass on in separate 'units'; we now call them genes. Gametes are the sex cells that carry them.",
+      },
+      {
+        question: "Polydactyly is caused by a dominant allele. A person without it must be what?",
+        choices: [
+          "Heterozygous",
+          "Homozygous dominant",
+          "A carrier",
+          "Homozygous recessive",
+        ],
+        accept: [
+          "Homozygous recessive",
+        ],
+        answer: "One dominant allele is enough to cause polydactyly, so anyone without it has two recessive alleles (dd). Dominant disorders cannot have symptom-free carriers.",
       },
     ],
     misconceptions: [
@@ -9764,6 +11455,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Evolution — over many generations natural selection makes useful alleles more common, changing the species.",
       },
+      {
+        question: "Which scientist proposed natural selection independently, at the same time as Darwin?",
+        choices: [
+          "Lamarck",
+          "Wallace",
+          "Mendel",
+          "Linnaeus",
+        ],
+        accept: [
+          "Wallace",
+        ],
+        answer: "Alfred Russel Wallace reached the same idea and published with Darwin in 1858; he also worked on speciation. Lamarck's idea was inheritance of acquired traits.",
+      },
+      {
+        question: "In many fossils, what has gradually replaced the hard parts of the organism?",
+        choices: [
+          "Minerals",
+          "Ice",
+          "Bacteria",
+          "Water",
+        ],
+        accept: [
+          "Minerals",
+        ],
+        answer: "Hard parts such as bones and shells are slowly replaced by minerals as they decay, forming rock. Ice preserves whole organisms because decay can't happen.",
+      },
+      {
+        question: "Human height is an example of variation caused by what?",
+        choices: [
+          "Genes only",
+          "Environment only",
+          "Genes and environment",
+          "Mutations only",
+        ],
+        accept: [
+          "Genes and environment",
+        ],
+        answer: "Your genes set a range for height, but diet and health during growth affect where you end up in it. Blood group, by contrast, is genes only.",
+      },
+      {
+        question: "What is a feature that helps an organism survive in its environment called?",
+        choices: [
+          "A mutation",
+          "A variation",
+          "An adaptation",
+          "A selection",
+        ],
+        accept: [
+          "An adaptation",
+        ],
+        answer: "An adaptation, like a cactus's spines, helps survival. A mutation is a change in DNA; only a few mutations ever lead to useful adaptations.",
+      },
+      {
+        question: "Which of these could cause a species to become extinct?",
+        choices: [
+          "Seasonal migration",
+          "Asexual reproduction",
+          "A new disease",
+          "Selective breeding",
+        ],
+        accept: [
+          "A new disease",
+        ],
+        answer: "Extinction can follow new diseases, new predators, more successful competitors or big environmental changes. Migration, asexual reproduction and selective breeding don't wipe a species out.",
+      },
+      {
+        question: "Life on Earth evolved from simple forms that first appeared more than how long ago?",
+        choices: [
+          "3 million years",
+          "300 million years",
+          "3 billion years",
+          "30,000 years",
+        ],
+        accept: [
+          "3 billion years",
+        ],
+        answer: "Simple life forms first developed over three billion years ago. 300 million years ago is far more recent, around the time of early reptiles.",
+      },
+      {
+        question: "Why can bacteria evolve antibiotic resistance so quickly?",
+        choices: [
+          "They are very small",
+          "They reproduce fast",
+          "They have a nucleus",
+          "They make antibiotics",
+        ],
+        accept: [
+          "They reproduce fast",
+        ],
+        answer: "Bacteria can divide every 20 minutes or so, so a resistant mutant soon has millions of descendants. Bacteria do not have a nucleus.",
+      },
+      {
+        question: "In undisturbed rock, where are the oldest fossils usually found?",
+        choices: [
+          "In the top layers",
+          "In the deepest layers",
+          "In the middle layers",
+          "In every layer equally",
+        ],
+        accept: [
+          "In the deepest layers",
+        ],
+        answer: "Rock layers build up over time, so deeper layers are older. Comparing fossils from deep to shallow shows how organisms changed.",
+      },
     ],
     misconceptions: [
       {
@@ -10367,6 +12162,111 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Selective breeding",
         ],
         answer: "Selective breeding — choosing parents with a wanted trait and breeding them over many generations.",
+      },
+      {
+        question: "In Linnaeus's system, which group comes directly after kingdom?",
+        choices: [
+          "Class",
+          "Order",
+          "Phylum",
+          "Family",
+        ],
+        accept: [
+          "Phylum",
+        ],
+        answer: "The order is kingdom, phylum, class, order, family, genus, species. A handy memory aid: King Philip Came Over For Good Soup.",
+      },
+      {
+        question: "What is another name for selective breeding?",
+        choices: [
+          "Natural selection",
+          "Artificial selection",
+          "Genetic engineering",
+          "Cloning",
+        ],
+        accept: [
+          "Artificial selection",
+        ],
+        answer: "Humans, not nature, choose which parents breed, so it is called artificial selection. Natural selection happens without human choice.",
+      },
+      {
+        question: "Which feature is commonly engineered into GM crops?",
+        choices: [
+          "Woodier stems",
+          "Nitrogen fixation",
+          "Resistance to insects",
+          "Faster mutation rate",
+        ],
+        accept: [
+          "Resistance to insects",
+        ],
+        answer: "Crops are modified to resist insect attack or herbicides, or to give bigger, better fruit. Woodier stems, nitrogen fixation and faster mutation are not standard GM traits.",
+      },
+      {
+        question: "Correcting a faulty gene in a person using genetic engineering is called what?",
+        choices: [
+          "Embryo screening",
+          "Selective breeding",
+          "Cloning",
+          "Gene therapy",
+        ],
+        accept: [
+          "Gene therapy",
+        ],
+        answer: "Gene therapy aims to treat inherited disorders by inserting working genes into a patient's cells. Embryo screening only tests embryos; it changes nothing.",
+      },
+      {
+        question: "Apart from a bacterial plasmid, what else is often used as a vector?",
+        choices: [
+          "A ribosome",
+          "A virus",
+          "A chloroplast",
+          "A red blood cell",
+        ],
+        accept: [
+          "A virus",
+        ],
+        answer: "Viruses naturally inject their genetic material into cells, so they can carry a new gene in. Ribosomes and chloroplasts cannot transfer genes between organisms.",
+        higherOnly: true,
+      },
+      {
+        question: "Growing new plants from small groups of cells from a parent plant is called what?",
+        choices: [
+          "Tissue culture",
+          "Taking cuttings",
+          "Embryo transplant",
+          "Adult cell cloning",
+        ],
+        accept: [
+          "Tissue culture",
+        ],
+        answer: "Tissue culture grows clones from a few cells on nutrient jelly, which is useful for rare plants. Cuttings use a whole piece of stem with leaves.",
+      },
+      {
+        question: "Dolly the sheep was produced by which technique?",
+        choices: [
+          "Embryo transplant",
+          "Tissue culture",
+          "Selective breeding",
+          "Adult cell cloning",
+        ],
+        accept: [
+          "Adult cell cloning",
+        ],
+        answer: "Dolly came from an adult body cell nucleus put into an empty egg cell, then given an electric shock. Embryo transplants split an embryo made by fertilisation.",
+      },
+      {
+        question: "Splitting an early embryo and placing the cells in host mothers is called what?",
+        choices: [
+          "Embryo transplant",
+          "Adult cell cloning",
+          "Tissue culture",
+          "IVF",
+        ],
+        accept: [
+          "Embryo transplant",
+        ],
+        answer: "Embryo transplants give several identical animals from one embryo. In adult cell cloning, the nucleus comes from a body cell, not from an embryo.",
       },
     ],
     misconceptions: [
@@ -10998,6 +12898,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "200, because mean per m² × total area = 4 × 50 = 200 plants.",
       },
+      {
+        question: "What is an organism that lives in extreme conditions, such as hot springs, called?",
+        choices: [
+          "A decomposer",
+          "An extremophile",
+          "A producer",
+          "A parasite",
+        ],
+        accept: [
+          "An extremophile",
+        ],
+        answer: "Extremophiles survive very high temperatures, pressures or salt levels; many are archaea. Decomposers break down dead material.",
+      },
+      {
+        question: "What is it called when species depend on each other for food, shelter or pollination?",
+        choices: [
+          "Competition",
+          "Adaptation",
+          "Interdependence",
+          "Biodiversity",
+        ],
+        accept: [
+          "Interdependence",
+        ],
+        answer: "Interdependence means a change to one species affects others in the community. Competition is when species struggle for the same resource.",
+      },
+      {
+        question: "On a predator–prey graph, when does the predator population peak?",
+        choices: [
+          "Before the prey peak",
+          "After the prey peak",
+          "At the same time",
+          "Only in winter",
+        ],
+        accept: [
+          "After the prey peak",
+        ],
+        answer: "Predator numbers rise only once there is plenty of prey to eat, so their peak lags behind. Then prey numbers fall as more are eaten.",
+      },
+      {
+        question: "In the water cycle, which process turns water vapour back into liquid in clouds?",
+        choices: [
+          "Evaporation",
+          "Transpiration",
+          "Precipitation",
+          "Condensation",
+        ],
+        accept: [
+          "Condensation",
+        ],
+        answer: "Water vapour cools and condenses into droplets that form clouds. Precipitation is the rain that falls afterwards; evaporation is the opposite change.",
+      },
+      {
+        question: "Birds migrating south for the winter is which type of adaptation?",
+        choices: [
+          "Structural",
+          "Behavioural",
+          "Functional",
+          "Environmental",
+        ],
+        accept: [
+          "Behavioural",
+        ],
+        answer: "Behavioural adaptations are things an organism does, like migrating. Structural ones are body features, and functional ones are body processes.",
+      },
+      {
+        question: "Which organisms make up the second trophic level?",
+        choices: [
+          "Primary consumers",
+          "Producers",
+          "Secondary consumers",
+          "Decomposers",
+        ],
+        accept: [
+          "Primary consumers",
+        ],
+        answer: "Level 1 is producers, level 2 is primary consumers (herbivores) that eat them, and level 3 is secondary consumers.",
+      },
+      {
+        question: "Which of these is a way biomass is lost between trophic levels?",
+        choices: [
+          "Stored in muscle",
+          "Built into new cells",
+          "Eaten by predators",
+          "Egested as faeces",
+        ],
+        accept: [
+          "Egested as faeces",
+        ],
+        answer: "Undigested material leaves as faeces, so it never reaches the next level. Biomass stored in muscle or new cells is what does get passed on.",
+      },
+      {
+        question: "Which piece of equipment measures light intensity along a transect?",
+        choices: [
+          "A light meter",
+          "A quadrat",
+          "A pooter",
+          "A thermometer",
+        ],
+        accept: [
+          "A light meter",
+        ],
+        answer: "A light meter gives a reading at each point so you can link it to plant numbers. A quadrat marks out the sample area; a pooter collects small insects.",
+      },
     ],
     misconceptions: [
       {
@@ -11594,6 +13598,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "2 ppm per year, because (420 − 400) ÷ 10 = 20 ÷ 10 = 2.",
       },
+      {
+        question: "Deforestation raises carbon dioxide levels partly because there is less of what?",
+        choices: [
+          "Respiration",
+          "Photosynthesis",
+          "Decay",
+          "Combustion",
+        ],
+        accept: [
+          "Photosynthesis",
+        ],
+        answer: "Fewer trees means less photosynthesis to remove CO₂. Burning the cleared wood (combustion) and its decay add CO₂, so they increase rather than fall.",
+      },
+      {
+        question: "Peat bogs are dug up mainly to produce what?",
+        choices: [
+          "Building stone",
+          "Garden compost",
+          "Drinking water",
+          "Clay for bricks",
+        ],
+        accept: [
+          "Garden compost",
+        ],
+        answer: "Peat is dug up for garden compost (and burned as fuel). That destroys a habitat and releases the carbon dioxide the peat had stored.",
+      },
+      {
+        question: "Which is a direct effect of acid rain?",
+        choices: [
+          "Melting ice caps",
+          "Eutrophication",
+          "Damaging trees",
+          "Rising sea levels",
+        ],
+        accept: [
+          "Damaging trees",
+        ],
+        answer: "Acid rain from sulfur dioxide damages trees and makes lakes too acidic for life. Melting ice and rising seas come from global warming instead.",
+      },
+      {
+        question: "Why does producing meat need more land than growing crops to eat?",
+        choices: [
+          "Animals grow slowly",
+          "Biomass lost per level",
+          "Meat has more protein",
+          "Grass needs more rain",
+        ],
+        accept: [
+          "Biomass lost per level",
+        ],
+        answer: "Only about 10% of biomass passes to the next trophic level, so feeding crops to animals and then eating them needs far more land than eating the crops.",
+      },
+      {
+        question: "Why are rules set on the mesh size of fishing nets?",
+        choices: [
+          "To catch fish faster",
+          "To stop fish breeding",
+          "To let young fish go",
+          "To catch more fish",
+        ],
+        accept: [
+          "To let young fish go",
+        ],
+        answer: "Large mesh lets young fish escape to grow and breed, keeping fish stocks sustainable. Fishing quotas limit how many fish can be caught.",
+      },
+      {
+        question: "Why do some farmers remove hedgerows?",
+        choices: [
+          "To shelter animals",
+          "To make bigger fields",
+          "To reduce erosion",
+          "To protect wildlife",
+        ],
+        accept: [
+          "To make bigger fields",
+        ],
+        answer: "Bigger fields suit large machinery and grow more crops, but habitats are lost, so biodiversity falls. Replanting hedgerows helps reverse this.",
+      },
+      {
+        question: "Growing one crop over a huge area (monoculture) tends to do what?",
+        choices: [
+          "Reduce biodiversity",
+          "Increase biodiversity",
+          "Stop pollution",
+          "Add more habitats",
+        ],
+        accept: [
+          "Reduce biodiversity",
+        ],
+        answer: "A single crop gives food and shelter to very few species, so biodiversity falls. Field margins and hedgerows are used to bring some back.",
+      },
+      {
+        question: "Why are some farm animals kept warm with little room to move?",
+        choices: [
+          "Less energy is wasted",
+          "They eat more food",
+          "They catch fewer pests",
+          "They breed less often",
+        ],
+        accept: [
+          "Less energy is wasted",
+        ],
+        answer: "Less movement and heat loss means more energy goes into growth, so food production is more efficient. Many people see this as cruel, though.",
+      },
     ],
     misconceptions: [
       {
@@ -12051,6 +14159,110 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Dependent",
         ],
         answer: "Dependent — it is what you measure; the independent variable is the one you change.",
+      },
+      {
+        question: "Which command word asks you to work out a numerical answer from data?",
+        choices: [
+          "Describe",
+          "Suggest",
+          "Evaluate",
+          "Calculate",
+        ],
+        accept: [
+          "Calculate",
+        ],
+        answer: "'Calculate' means use numbers to get an answer: show working and give units. 'Describe' asks what the data shows, in words.",
+      },
+      {
+        question: "Which command word asks you to apply your knowledge to an unfamiliar situation?",
+        choices: [
+          "State",
+          "Suggest",
+          "Define",
+          "Name",
+        ],
+        accept: [
+          "Suggest",
+        ],
+        answer: "'Suggest' means use what you know on a new context, where more than one answer may be credited. 'State' and 'Name' just want a fact recalled.",
+      },
+      {
+        question: "What colour is Benedict's solution before it is heated with a food sample?",
+        choices: [
+          "Blue",
+          "Brick red",
+          "Purple",
+          "Orange-brown",
+        ],
+        accept: [
+          "Blue",
+        ],
+        answer: "Benedict's starts blue and turns green, yellow or brick red with sugar. Purple is a positive Biuret result; orange-brown is iodine's normal colour.",
+      },
+      {
+        question: "Which reagent is added first in the emulsion test for lipids?",
+        choices: [
+          "Iodine solution",
+          "Ethanol",
+          "Biuret reagent",
+          "Benedict's solution",
+        ],
+        accept: [
+          "Ethanol",
+        ],
+        answer: "Shake the food with ethanol, then add water; a white cloudy emulsion shows lipids. Biuret tests for protein and Benedict's for sugars.",
+      },
+      {
+        question: "On a graph, the independent variable is usually plotted on which axis?",
+        choices: [
+          "The y-axis",
+          "Either axis",
+          "The x-axis",
+          "Neither axis",
+        ],
+        accept: [
+          "The x-axis",
+        ],
+        answer: "The variable you change goes on the x-axis (horizontal), and the one you measure, the dependent variable, goes on the y-axis.",
+      },
+      {
+        question: "Which type of graph suits a categoric independent variable, like blood group?",
+        choices: [
+          "Line graph",
+          "Scatter graph",
+          "Bar chart",
+          "Histogram",
+        ],
+        accept: [
+          "Bar chart",
+        ],
+        answer: "Categories have no in-between values, so separate bars are used. Line and scatter graphs are for continuous data such as temperature or time.",
+      },
+      {
+        question: "A balance reads 0.5 g with nothing on it. What type of error is this?",
+        choices: [
+          "Random error",
+          "Systematic error",
+          "Anomalous result",
+          "Human error",
+        ],
+        accept: [
+          "Systematic error",
+        ],
+        answer: "A zero error shifts every reading by the same amount, so it is systematic. Random errors scatter readings unpredictably either side of the true value.",
+      },
+      {
+        question: "A potato cylinder's mass rises from 20 g to 25 g. What is the percentage change?",
+        choices: [
+          "+5%",
+          "+20%",
+          "+25%",
+          "+125%",
+        ],
+        accept: [
+          "+25%",
+        ],
+        answer: "Percentage change = change ÷ start × 100 = 5 ÷ 20 × 100 = +25%. +20% wrongly divides by the final mass of 25 g.",
       },
     ],
     misconceptions: [

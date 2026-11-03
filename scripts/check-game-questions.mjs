@@ -265,10 +265,15 @@ try {
     expect(quick >= 600, `only ${quick} maths multiple-choice questions are short enough for a 10-second reload`);
     console.log(`Maths: ${mcq} multiple-choice questions, ${quick} of them game-quick (stem ≤ 95 characters, four short buttons).`);
   }
-  // The same for the 1,000 written for the sciences and English (2026-10-12).
-  // Floors at what each subject had once they went in.
+  // The same for the 1,000 written for the sciences and English (2026-10-12),
+  // and the 1,000 more for the three languages and the sciences (2026-11-03:
+  // the languages had only 65–110 each, so their game pools leaned on very
+  // few questions). Floors at what each subject had once they went in.
   {
-    const floors = { biology: 410, chemistry: 375, physics: 375, english: 264 };
+    const floors = {
+      biology: 580, chemistry: 540, physics: 540, english: 264,
+      spanish: 290, french: 274, german: 205,
+    };
     for (const [subject, floor] of Object.entries(floors)) {
       let mcq = 0;
       for (const [key, c] of Object.entries(TOPIC_CONTENT)) {

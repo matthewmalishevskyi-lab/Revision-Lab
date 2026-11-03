@@ -223,6 +223,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: tú is informal, used with people your own age, friends and family; usted is formal, used with teachers, strangers and anyone you should show respect to. A good answer names a clear example for each, such as using tú with a classmate and usted with a shop assistant you've never met.",
       },
+      {
+        question: "What does 'Hasta luego' mean?",
+        choices: [
+          "See you later",
+          "Good afternoon",
+          "Nice to meet you",
+          "Good night",
+        ],
+        accept: [
+          "See you later",
+        ],
+        answer: "Hasta luego means see you later. Buenas tardes is good afternoon, encantado is nice to meet you and buenas noches is good night.",
+      },
+      {
+        question: "What does '¿De dónde eres?' mean?",
+        choices: [
+          "Where do you live?",
+          "Who are you?",
+          "How old are you?",
+          "Where are you from?",
+        ],
+        accept: [
+          "Where are you from?",
+        ],
+        answer: "¿De dónde eres? asks where you are from (ser de). Where do you live? is ¿Dónde vives? and ¿Cuántos años tienes? asks your age.",
+      },
+      {
+        question: "Which word means 'twenty-one' in Spanish?",
+        choices: [
+          "veintidós",
+          "treinta y uno",
+          "veintiuno",
+          "once",
+        ],
+        accept: [
+          "veintiuno",
+        ],
+        answer: "Veintiuno is 21, written as one word like all numbers from 16 to 29. Veintidós is 22, treinta y uno is 31 and once is 11.",
+      },
+      {
+        question: "How would a girl say 'Pleased to meet you'?",
+        choices: [
+          "Encantado",
+          "Encantada",
+          "Bienvenida",
+          "Perdona",
+        ],
+        accept: [
+          "Encantada",
+        ],
+        answer: "A girl says Encantada, because the adjective agrees with the speaker. Encantado is what a boy says; bienvenida means welcome.",
+      },
+      {
+        question: "Which greeting would you use at 4 pm?",
+        choices: [
+          "Buenos días",
+          "Buenas tardes",
+          "Buenas noches",
+          "Buen viaje",
+        ],
+        accept: [
+          "Buenas tardes",
+        ],
+        answer: "Buenas tardes covers the afternoon and early evening. Buenos días is for the morning, buenas noches for night, and buen viaje means have a good trip.",
+      },
+      {
+        question: "Which word for 'you' is polite, for one adult you don't know?",
+        choices: [
+          "usted",
+          "tú",
+          "vosotros",
+          "nosotros",
+        ],
+        accept: [
+          "usted",
+        ],
+        answer: "Usted is the formal singular 'you' for strangers and older people. Tú is informal, vosotros is informal plural and nosotros means we.",
+      },
+      {
+        question: "Which word completes '¿Cómo ___ llamas?'",
+        choices: [
+          "se",
+          "me",
+          "le",
+          "te",
+        ],
+        accept: [
+          "te",
+        ],
+        answer: "Llamarse is reflexive and llamas is the tú form, so the pronoun is te. Me goes with yo (me llamo) and se with él or usted (se llama).",
+      },
+      {
+        question: "What does 'Soy de Inglaterra' mean?",
+        choices: [
+          "I live in England",
+          "I love England",
+          "I'm from England",
+          "I'm going to England",
+        ],
+        accept: [
+          "I'm from England",
+        ],
+        answer: "Soy de means 'I am from'. I live in England would be vivo en Inglaterra, and I'm going to England would be voy a Inglaterra.",
+      },
+      {
+        question: "How do you politely ask an adult stranger their name?",
+        choices: [
+          "¿Cómo te llamas?",
+          "¿Cómo estás?",
+          "¿Cómo se llama usted?",
+          "¿Qué tal?",
+        ],
+        accept: [
+          "¿Cómo se llama usted?",
+        ],
+        answer: "¿Cómo se llama usted? is the formal question. ¿Cómo te llamas? is the informal tú version, and the other two ask how someone is.",
+      },
+      {
+        question: "What does 'Tengo catorce años' mean?",
+        choices: [
+          "I am 40",
+          "I am 14",
+          "I am 24",
+          "I am 4",
+        ],
+        accept: [
+          "I am 14",
+        ],
+        answer: "Catorce is fourteen. Cuarenta is 40, veinticuatro is 24 and cuatro is 4. Spanish uses tener for age: literally 'I have fourteen years'.",
+      },
     ],
     misconceptions: [
       {
@@ -416,6 +546,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English the difference between how mi and nuestro behave when the noun they describe changes gender.",
         answer:
           "Mark it yourself against this: mi never changes for gender, only adding -s for a plural noun (mi hermano, mi hermana, mis hermanos), whereas nuestro fully agrees with gender and number (nuestro hermano, nuestra hermana, nuestros hermanos, nuestras hermanas).",
+      },
+      {
+        question: "What does 'el primo' mean?",
+        choices: [
+          "cousin",
+          "uncle",
+          "nephew",
+          "grandson",
+        ],
+        accept: [
+          "cousin",
+        ],
+        answer: "El primo is a male cousin and la prima a female cousin. Uncle is el tío, nephew el sobrino and grandson el nieto.",
+      },
+      {
+        question: "Which word means 'uncle'?",
+        choices: [
+          "el primo",
+          "el abuelo",
+          "el sobrino",
+          "el tío",
+        ],
+        accept: [
+          "el tío",
+        ],
+        answer: "El tío is uncle and la tía is aunt. El primo is cousin, el abuelo grandfather and el sobrino nephew.",
+      },
+      {
+        question: "What does 'hijo único' mean?",
+        choices: [
+          "eldest son",
+          "youngest son",
+          "stepson",
+          "only child",
+        ],
+        accept: [
+          "only child",
+        ],
+        answer: "Hijo único means only child (a girl says hija única). Eldest son is el hijo mayor, youngest el hijo menor and stepson el hijastro.",
+      },
+      {
+        question: "What does 'gracioso' mean?",
+        choices: [
+          "graceful",
+          "kind",
+          "funny",
+          "hard-working",
+        ],
+        accept: [
+          "funny",
+        ],
+        answer: "Gracioso means funny, not graceful, which makes it a false friend. Kind is simpático or amable, and hard-working is trabajador.",
+      },
+      {
+        question: "Which completes 'Mi hermana es muy ___' (shy)?",
+        choices: [
+          "tímido",
+          "tímida",
+          "tímidas",
+          "tímidos",
+        ],
+        accept: [
+          "tímida",
+        ],
+        answer: "Tímida agrees with hermana, which is feminine singular. Tímido is masculine, and the forms ending in -s are plural.",
+      },
+      {
+        question: "Which completes '___ abuelos son simpáticos' (my)?",
+        choices: [
+          "Mis",
+          "Mi",
+          "Mía",
+          "Mío",
+        ],
+        accept: [
+          "Mis",
+        ],
+        answer: "Mis goes before a plural noun like abuelos. Mi only goes before a singular noun, and mío/mía come after the noun or stand alone.",
+      },
+      {
+        question: "What does 'casado' mean?",
+        choices: [
+          "married",
+          "tired",
+          "divorced",
+          "single",
+        ],
+        accept: [
+          "married",
+        ],
+        answer: "Casado means married. Don't confuse it with cansado (tired). Divorced is divorciado and single is soltero.",
+      },
+      {
+        question: "In 'Me llevo bien con mi hermano', what does 'me llevo bien' mean?",
+        choices: [
+          "I take him out",
+          "I argue",
+          "I look like him",
+          "I get on well",
+        ],
+        accept: [
+          "I get on well",
+        ],
+        answer: "Llevarse bien con means to get on well with someone; llevarse mal is to get on badly. I argue would be me peleo or discuto.",
+      },
+      {
+        question: "Which completes 'Tengo los ojos ___' (blue)?",
+        choices: [
+          "azul",
+          "azulos",
+          "azules",
+          "azulas",
+        ],
+        accept: [
+          "azules",
+        ],
+        answer: "Ojos is plural, so azul adds -es to become azules. Azul has the same form for masculine and feminine, so azulos and azulas don't exist.",
+      },
+      {
+        question: "Which completes '___ padres son estrictos' (our)?",
+        choices: [
+          "Nuestro",
+          "Nuestros",
+          "Nuestras",
+          "Nuestra",
+        ],
+        accept: [
+          "Nuestros",
+        ],
+        answer: "Nuestros is masculine plural to match padres. Nuestro is singular, and nuestra/nuestras are the feminine forms.",
       },
     ],
     misconceptions: [
@@ -612,6 +872,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: gustar literally means 'to be pleasing to', so the sentence structure is really 'football is pleasing to me' — el fútbol is the grammatical subject and me is the indirect object, which is why the verb agrees with the thing liked rather than with the person.",
       },
+      {
+        question: "What does 'el ciclismo' mean?",
+        choices: [
+          "swimming",
+          "cycling",
+          "climbing",
+          "sailing",
+        ],
+        accept: [
+          "cycling",
+        ],
+        answer: "El ciclismo is cycling. Swimming is la natación, climbing la escalada and sailing la vela.",
+      },
+      {
+        question: "Which completes 'Me encanta ___ con amigos' (to go out)?",
+        choices: [
+          "salir",
+          "salgo",
+          "sale",
+          "saliendo",
+        ],
+        accept: [
+          "salir",
+        ],
+        answer: "After encantar or gustar you use the infinitive, so salir. Salgo means 'I go out', sale 'he/she goes out' and saliendo 'going out'.",
+      },
+      {
+        question: "What does 'a veces' mean?",
+        choices: [
+          "always",
+          "often",
+          "rarely",
+          "sometimes",
+        ],
+        accept: [
+          "sometimes",
+        ],
+        answer: "A veces means sometimes. Always is siempre, often is a menudo and rarely is raramente or casi nunca.",
+      },
+      {
+        question: "Which word completes 'Juego ___ fútbol'?",
+        choices: [
+          "a la",
+          "el",
+          "al",
+          "del",
+        ],
+        accept: [
+          "al",
+        ],
+        answer: "Jugar takes a, and a + el contracts to al: juego al fútbol. A la is for feminine nouns and del is de + el.",
+      },
+      {
+        question: "What does 'dibujar' mean?",
+        choices: [
+          "to paint",
+          "to dance",
+          "to draw",
+          "to sing",
+        ],
+        accept: [
+          "to draw",
+        ],
+        answer: "Dibujar means to draw. To paint is pintar, to dance is bailar and to sing is cantar.",
+      },
+      {
+        question: "What does 'el equipo' mean?",
+        choices: [
+          "match",
+          "team",
+          "player",
+          "pitch",
+        ],
+        accept: [
+          "team",
+        ],
+        answer: "El equipo is a team. A match is el partido, a player el jugador and a pitch el campo.",
+      },
+      {
+        question: "What does 'aburrido' mean in 'El golf es aburrido'?",
+        choices: [
+          "boring",
+          "bored",
+          "tiring",
+          "fun",
+        ],
+        accept: [
+          "boring",
+        ],
+        answer: "With ser, aburrido means boring (a quality). Estoy aburrido, with estar, would mean I'm bored. Tiring is cansado and fun is divertido.",
+      },
+      {
+        question: "What does 'los fines de semana' mean?",
+        choices: [
+          "every week",
+          "on weekdays",
+          "at night",
+          "at weekends",
+        ],
+        accept: [
+          "at weekends",
+        ],
+        answer: "Los fines de semana means at weekends (literally 'the ends of week'). Every week is cada semana and at night is por la noche.",
+      },
+      {
+        question: "'Voy a jugar al tenis' talks about which time?",
+        choices: [
+          "the past",
+          "every day",
+          "right now",
+          "the future",
+        ],
+        accept: [
+          "the future",
+        ],
+        answer: "Ir a + infinitive is the near future: I'm going to play tennis. Juego al tenis would be the present, and jugué al tenis the past.",
+      },
+      {
+        question: "What does 'Me gustaría ir al cine' mean?",
+        choices: [
+          "I like going",
+          "I liked going",
+          "I'd like to go",
+          "I'm going to go",
+        ],
+        accept: [
+          "I'd like to go",
+        ],
+        answer: "Me gustaría is the conditional 'I would like'. Me gusta is 'I like', me gustó 'I liked' and voy a ir 'I'm going to go'.",
+      },
     ],
     misconceptions: [
       {
@@ -803,6 +1193,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: es la una is singular because it refers to exactly one hour (la una = 'the one'), whereas son las dos, son las tres and so on use the plural son because they refer to more than one hour on the clock.",
       },
+      {
+        question: "What does 'el bolígrafo' mean?",
+        choices: [
+          "pencil",
+          "pen",
+          "rubber",
+          "ruler",
+        ],
+        accept: [
+          "pen",
+        ],
+        answer: "El bolígrafo (el boli) is a pen. A pencil is el lápiz, a rubber la goma and a ruler la regla.",
+      },
+      {
+        question: "Which Spanish word means 'exercise book'?",
+        choices: [
+          "el cuaderno",
+          "el libro",
+          "la mochila",
+          "el estuche",
+        ],
+        accept: [
+          "el cuaderno",
+        ],
+        answer: "El cuaderno is an exercise book. El libro is a book, la mochila a school bag and el estuche a pencil case.",
+      },
+      {
+        question: "Which subject is 'la informática'?",
+        choices: [
+          "ICT",
+          "drama",
+          "PE",
+          "technology",
+        ],
+        accept: [
+          "ICT",
+        ],
+        answer: "La informática is ICT or computing. PE is la educación física, drama is el teatro and technology is la tecnología.",
+      },
+      {
+        question: "What does 'sacar buenas notas' mean?",
+        choices: [
+          "take good notes",
+          "pass notes",
+          "write notes",
+          "get good marks",
+        ],
+        accept: [
+          "get good marks",
+        ],
+        answer: "Sacar buenas notas means to get good marks or grades. La nota is a mark, so it's a false friend; taking notes is tomar apuntes.",
+      },
+      {
+        question: "What does 'el horario' mean?",
+        choices: [
+          "homework",
+          "uniform",
+          "timetable",
+          "classroom",
+        ],
+        accept: [
+          "timetable",
+        ],
+        answer: "El horario is the timetable. Homework is los deberes, the uniform is el uniforme and a classroom is el aula.",
+      },
+      {
+        question: "What time is 'Son las tres menos cuarto'?",
+        choices: [
+          "3:15",
+          "2:45",
+          "3:45",
+          "2:15",
+        ],
+        accept: [
+          "2:45",
+        ],
+        answer: "Menos cuarto means quarter to, so las tres menos cuarto is 2:45. 3:15 would be las tres y cuarto.",
+      },
+      {
+        question: "Which completes 'Las matemáticas son ___' (difficult)?",
+        choices: [
+          "difícil",
+          "difíciles",
+          "difícilas",
+          "difícila",
+        ],
+        accept: [
+          "difíciles",
+        ],
+        answer: "Matemáticas is plural, so difícil adds -es to become difíciles. Adjectives ending in -l have no separate feminine form, so difícila is wrong.",
+      },
+      {
+        question: "What does 'los deberes' mean?",
+        choices: [
+          "homework",
+          "lessons",
+          "exams",
+          "subjects",
+        ],
+        accept: [
+          "homework",
+        ],
+        answer: "Los deberes means homework. Lessons are las clases, exams los exámenes and subjects las asignaturas.",
+      },
+      {
+        question: "Which word means 'strict', as in a teacher?",
+        choices: [
+          "estrecho",
+          "tranquilo",
+          "perezoso",
+          "estricto",
+        ],
+        accept: [
+          "estricto",
+        ],
+        answer: "Estricto means strict: un profesor estricto. Estrecho looks similar but means narrow; tranquilo is calm and perezoso is lazy.",
+      },
+      {
+        question: "What does 'el aula' mean?",
+        choices: [
+          "hall",
+          "library",
+          "classroom",
+          "playground",
+        ],
+        accept: [
+          "classroom",
+        ],
+        answer: "El aula is a classroom (a feminine noun that takes el). The library is la biblioteca and the playground el patio.",
+      },
     ],
     misconceptions: [
       {
@@ -993,6 +1513,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English why reflexive verbs like levantarse need an extra pronoun that ordinary verbs like desayunar don't.",
         answer:
           "Mark it yourself against this: reflexive verbs describe an action the subject does to themselves, so the reflexive pronoun (me/te/se/nos/os/se) shows the action reflects back onto the subject — levantarse literally means 'to get oneself up' — whereas desayunar (to have breakfast) doesn't involve acting on oneself, so it needs no extra pronoun.",
+      },
+      {
+        question: "What does 'el dormitorio' mean?",
+        choices: [
+          "dining room",
+          "living room",
+          "bedroom",
+          "bathroom",
+        ],
+        accept: [
+          "bedroom",
+        ],
+        answer: "El dormitorio is a bedroom. The dining room is el comedor, the living room el salón and the bathroom el cuarto de baño.",
+      },
+      {
+        question: "What does 'despertarse' mean?",
+        choices: [
+          "to get up",
+          "to wake up",
+          "to go to bed",
+          "to get dressed",
+        ],
+        accept: [
+          "to wake up",
+        ],
+        answer: "Despertarse is to wake up; levantarse (to get up) is the common mix-up. To go to bed is acostarse and to get dressed vestirse.",
+      },
+      {
+        question: "Which completes 'Me ___ a las siete' (vestirse)?",
+        choices: [
+          "visto",
+          "vesto",
+          "viste",
+          "vestimos",
+        ],
+        accept: [
+          "visto",
+        ],
+        answer: "Vestirse is an e→i stem-changing verb, so the yo form is me visto. Vesto doesn't exist, viste is he/she and vestimos is we.",
+      },
+      {
+        question: "What does 'luego' mean in a daily routine?",
+        choices: [
+          "first",
+          "finally",
+          "before",
+          "then",
+        ],
+        accept: [
+          "then",
+        ],
+        answer: "Luego means then or later, used to sequence actions. First is primero, finally is por último or finalmente, and before is antes.",
+      },
+      {
+        question: "What does 'desayunar' mean?",
+        choices: [
+          "to have lunch",
+          "to have dinner",
+          "to have a snack",
+          "to have breakfast",
+        ],
+        accept: [
+          "to have breakfast",
+        ],
+        answer: "Desayunar is to have breakfast. To have lunch is comer or almorzar, to have dinner is cenar and to have a snack is merendar.",
+      },
+      {
+        question: "Which word means 'kitchen'?",
+        choices: [
+          "el comedor",
+          "el jardín",
+          "la cocina",
+          "el salón",
+        ],
+        accept: [
+          "la cocina",
+        ],
+        answer: "La cocina is the kitchen. El comedor is the dining room, el jardín the garden and el salón the living room.",
+      },
+      {
+        question: "Which word completes 'Normalmente ___ ducho a las ocho'?",
+        choices: [
+          "te",
+          "me",
+          "se",
+          "nos",
+        ],
+        accept: [
+          "me",
+        ],
+        answer: "Ducho ends in -o, so the subject is yo and the pronoun is me. Te goes with tú, se with él/ella and nos with nosotros.",
+      },
+      {
+        question: "What does 'Me acuesto a las once' mean?",
+        choices: [
+          "I go to bed at 11",
+          "I get up at 11",
+          "I wake up at 11",
+          "I shower at 11",
+        ],
+        accept: [
+          "I go to bed at 11",
+        ],
+        answer: "Me acuesto is from acostarse (o→ue), to go to bed. I get up is me levanto and I wake up is me despierto.",
+      },
+      {
+        question: "What does 'Vivo en un piso' mean?",
+        choices: [
+          "I live in a flat",
+          "I live in a house",
+          "I live on a farm",
+          "I live in a village",
+        ],
+        accept: [
+          "I live in a flat",
+        ],
+        answer: "Un piso is a flat or apartment. A house is una casa, a farm una granja and a village un pueblo.",
+      },
+      {
+        question: "What does 'lavarse los dientes' mean?",
+        choices: [
+          "to wash your hands",
+          "to wash your face",
+          "to comb your hair",
+          "to brush your teeth",
+        ],
+        accept: [
+          "to brush your teeth",
+        ],
+        answer: "Lavarse los dientes is to brush (literally wash) your teeth. Spanish uses los with body parts, not 'your'. Hands are las manos and face la cara.",
       },
     ],
     misconceptions: [
@@ -1196,6 +1846,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: ser describes permanent or defining characteristics such as identity, nationality, appearance and time (e.g. Soy inglés), while estar describes temporary states, feelings and location (e.g. Estoy cansado, Está en Londres) — a correct answer gives one clear original example sentence for each verb.",
       },
+      {
+        question: "Which completes 'Ellos ___ en Londres' (vivir)?",
+        choices: [
+          "vivan",
+          "vivís",
+          "viven",
+          "vivimos",
+        ],
+        accept: [
+          "viven",
+        ],
+        answer: "Viven is the ellos form of the -ir verb vivir. Vivís is vosotros, vivimos is nosotros and vivan is a subjunctive form.",
+      },
+      {
+        question: "What is the yo form of 'hacer' in the present?",
+        choices: [
+          "hazo",
+          "hago",
+          "haco",
+          "hace",
+        ],
+        accept: [
+          "hago",
+        ],
+        answer: "Hacer is irregular only in the yo form: hago. The rest are regular: haces, hace, hacemos. Hace means he/she does.",
+      },
+      {
+        question: "Which completes '¿Tú ___ español?' (hablar)?",
+        choices: [
+          "habla",
+          "hablas",
+          "hables",
+          "hablo",
+        ],
+        accept: [
+          "hablas",
+        ],
+        answer: "For tú, drop -ar and add -as: hablas. Habla is él/ella/usted, hablo is yo, and hables is a subjunctive form.",
+      },
+      {
+        question: "Which completes 'Nosotros ___ fruta' (comer)?",
+        choices: [
+          "comemos",
+          "coméis",
+          "comen",
+          "como",
+        ],
+        accept: [
+          "comemos",
+        ],
+        answer: "Regular -er verbs take -emos for nosotros: comemos. Coméis is vosotros, comen is ellos and como is yo.",
+      },
+      {
+        question: "Which completes 'Mi padre ___ profesor' (job)?",
+        choices: [
+          "está",
+          "hay",
+          "tiene",
+          "es",
+        ],
+        accept: [
+          "es",
+        ],
+        answer: "Jobs take ser: mi padre es profesor. Estar is for location and temporary states, so está profesor is wrong.",
+      },
+      {
+        question: "Which completes 'Yo ___ al instituto en autobús' (ir)?",
+        choices: [
+          "va",
+          "vas",
+          "voy",
+          "vamos",
+        ],
+        accept: [
+          "voy",
+        ],
+        answer: "Voy is the irregular yo form of ir. Vas is tú, va is él/ella and vamos is nosotros.",
+      },
+      {
+        question: "Which completes 'Siempre ___ pizza' (pedir, yo)?",
+        choices: [
+          "pide",
+          "piden",
+          "pido",
+          "pedimos",
+        ],
+        accept: [
+          "pido",
+        ],
+        answer: "Pedir changes e→i in the stem, so yo is pido. Pedimos keeps the e because nosotros and vosotros don't change.",
+      },
+      {
+        question: "Which infinitive does 'puedo' come from?",
+        choices: [
+          "puder",
+          "poder",
+          "pueder",
+          "poner",
+        ],
+        accept: [
+          "poder",
+        ],
+        answer: "Puedo is from poder, an o→ue stem-changer. Poner is a different verb (to put) whose yo form is pongo.",
+      },
+      {
+        question: "Which completes 'Vosotros ___ simpáticos' (ser)?",
+        choices: [
+          "sois",
+          "son",
+          "eres",
+          "somos",
+        ],
+        accept: [
+          "sois",
+        ],
+        answer: "Sois is the vosotros form of ser. Son is ellos/ustedes, eres is tú and somos is nosotros.",
+      },
+      {
+        question: "Which word completes '¿Cómo ___ llamáis?'",
+        choices: [
+          "se",
+          "nos",
+          "te",
+          "os",
+        ],
+        accept: [
+          "os",
+        ],
+        answer: "Llamáis is the vosotros form, so the reflexive pronoun is os. Se goes with él/ellos, nos with nosotros and te with tú.",
+      },
     ],
     misconceptions: [
       {
@@ -1392,6 +2172,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: the near future is formed with the conjugated present tense of ir (voy, vas, va, vamos, vais, van) followed by a and then a second verb left in its unconjugated infinitive form — a correct answer gives one original, grammatically correct example such as Voy a estudiar esta noche.",
       },
+      {
+        question: "What does 'subir' mean when talking about photos online?",
+        choices: [
+          "to download",
+          "to share",
+          "to delete",
+          "to upload",
+        ],
+        accept: [
+          "to upload",
+        ],
+        answer: "Subir (literally to go up) means to upload. To download is descargar, to share is compartir and to delete is borrar.",
+      },
+      {
+        question: "What does 'compartir' mean?",
+        choices: [
+          "to compare",
+          "to post",
+          "to share",
+          "to chat",
+        ],
+        accept: [
+          "to share",
+        ],
+        answer: "Compartir means to share. To compare is comparar, a look-alike; to post is publicar and to chat is chatear.",
+      },
+      {
+        question: "Which word means 'laptop'?",
+        choices: [
+          "el móvil",
+          "el portátil",
+          "la tableta",
+          "el teclado",
+        ],
+        accept: [
+          "el portátil",
+        ],
+        answer: "El (ordenador) portátil is a laptop, as portátil means portable. El móvil is a mobile phone, la tableta a tablet and el teclado a keyboard.",
+      },
+      {
+        question: "What does 'el ciberacoso' mean?",
+        choices: [
+          "cyberbullying",
+          "hacking",
+          "online privacy",
+          "cybercafé",
+        ],
+        accept: [
+          "cyberbullying",
+        ],
+        answer: "El ciberacoso is cyberbullying, since acoso means bullying or harassment. Online privacy would be la privacidad en línea.",
+      },
+      {
+        question: "What does 'peligroso' mean?",
+        choices: [
+          "dangerous",
+          "useful",
+          "expensive",
+          "addictive",
+        ],
+        accept: [
+          "dangerous",
+        ],
+        answer: "Peligroso means dangerous (el peligro is danger). Useful is útil, expensive is caro and addictive is adictivo.",
+      },
+      {
+        question: "Which completes 'El móvil es ___ que el portátil'?",
+        choices: [
+          "mejor útil",
+          "tan útil",
+          "muy útil",
+          "más útil",
+        ],
+        accept: [
+          "más útil",
+        ],
+        answer: "Más útil que means more useful than. Tan útil needs como, not que, and mejor already means better so it can't go before útil.",
+      },
+      {
+        question: "What does 'la pantalla' mean?",
+        choices: [
+          "keyboard",
+          "mouse",
+          "screen",
+          "charger",
+        ],
+        accept: [
+          "screen",
+        ],
+        answer: "La pantalla is the screen. The keyboard is el teclado, the mouse el ratón and a charger el cargador.",
+      },
+      {
+        question: "What does 'Estoy conectado todo el día' mean?",
+        choices: [
+          "I'm busy all day",
+          "I'm online all day",
+          "I'm tired all day",
+          "I'm at home all day",
+        ],
+        accept: [
+          "I'm online all day",
+        ],
+        answer: "Estar conectado means to be online or connected. Busy is ocupado, tired is cansado and at home is en casa.",
+      },
+      {
+        question: "'Voy a publicar una foto' is in which tense?",
+        choices: [
+          "present",
+          "near future",
+          "preterite",
+          "imperfect",
+        ],
+        accept: [
+          "near future",
+        ],
+        answer: "Voy a + infinitive is the near future: I'm going to post a photo. Only voy is conjugated; publicar stays as the infinitive.",
+      },
+      {
+        question: "What does 'peor' mean?",
+        choices: [
+          "worse",
+          "better",
+          "poorer",
+          "less",
+        ],
+        accept: [
+          "worse",
+        ],
+        answer: "Peor means worse, the irregular comparative of malo. Better is mejor, less is menos, and poorer would be más pobre.",
+      },
     ],
     misconceptions: [
       {
@@ -1582,6 +2492,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English how direct object pronouns like lo, la, los and las work, and give one original example sentence.",
         answer:
           "Mark it yourself against this: direct object pronouns replace a noun already mentioned to avoid repeating it, and must agree in gender and number with that noun rather than with the speaker — a correct answer gives one original sentence such as Compro el regalo y lo envuelvo (I buy the present and I wrap it), where lo replaces el regalo.",
+      },
+      {
+        question: "What is 'la Nochebuena'?",
+        choices: [
+          "New Year's Eve",
+          "Christmas Day",
+          "Twelfth Night",
+          "Christmas Eve",
+        ],
+        accept: [
+          "Christmas Eve",
+        ],
+        answer: "La Nochebuena is Christmas Eve, 24 December, when Spanish families have a big dinner. New Year's Eve is la Nochevieja.",
+      },
+      {
+        question: "What does 'el desfile' mean?",
+        choices: [
+          "fireworks",
+          "costume",
+          "parade",
+          "bonfire",
+        ],
+        accept: [
+          "parade",
+        ],
+        answer: "El desfile is a parade. Fireworks are los fuegos artificiales, a costume is un disfraz and a bonfire is una hoguera.",
+      },
+      {
+        question: "What does 'disfrazarse' mean?",
+        choices: [
+          "to get together",
+          "to dance",
+          "to dress up",
+          "to decorate",
+        ],
+        accept: [
+          "to dress up",
+        ],
+        answer: "Disfrazarse means to dress up in a costume (el disfraz). To get together is reunirse and to decorate is decorar.",
+      },
+      {
+        question: "What is 'un villancico'?",
+        choices: [
+          "a village fair",
+          "a Christmas carol",
+          "a sweet",
+          "a parade",
+        ],
+        accept: [
+          "a Christmas carol",
+        ],
+        answer: "Un villancico is a Christmas carol. It looks like 'village' but isn't; a fair is una feria and a parade un desfile.",
+      },
+      {
+        question: "What does 'reunirse' mean?",
+        choices: [
+          "to get together",
+          "to celebrate",
+          "to dress up",
+          "to enjoy",
+        ],
+        accept: [
+          "to get together",
+        ],
+        answer: "Reunirse means to get together: nos reunimos en Navidad. To celebrate is celebrar and to enjoy is disfrutar.",
+      },
+      {
+        question: "When is 'la Semana Santa'?",
+        choices: [
+          "Christmas week",
+          "New Year week",
+          "early November",
+          "Easter week",
+        ],
+        accept: [
+          "Easter week",
+        ],
+        answer: "La Semana Santa (Holy Week) is the week leading up to Easter Sunday, famous in Spain for its processions.",
+      },
+      {
+        question: "Who brings Spanish children presents on el Día de Reyes?",
+        choices: [
+          "Father Christmas",
+          "the grandparents",
+          "the Easter bunny",
+          "the Three Kings",
+        ],
+        accept: [
+          "the Three Kings",
+        ],
+        answer: "On 6 January the Three Kings (los Reyes Magos) bring presents. Papá Noel (Father Christmas) is popular now too, but he comes on Christmas Eve.",
+      },
+      {
+        question: "What is 'la ofrenda' on el Día de los Muertos?",
+        choices: [
+          "a costume",
+          "a parade",
+          "an altar of offerings",
+          "a sugar skull",
+        ],
+        accept: [
+          "an altar of offerings",
+        ],
+        answer: "La ofrenda is an altar with offerings like photos, food and marigolds to remember dead relatives. A sugar skull is una calavera de azúcar.",
+      },
+      {
+        question: "What does 'a diferencia de' mean?",
+        choices: [
+          "as well as",
+          "unlike",
+          "thanks to",
+          "instead of",
+        ],
+        accept: [
+          "unlike",
+        ],
+        answer: "A diferencia de means unlike, used to contrast. As well as is además de, thanks to is gracias a and instead of is en vez de.",
+      },
+      {
+        question: "What do people in Spain eat at midnight on New Year's Eve?",
+        choices: [
+          "twelve grapes",
+          "twelve olives",
+          "churros",
+          "turrón",
+        ],
+        accept: [
+          "twelve grapes",
+        ],
+        answer: "Spaniards eat twelve grapes (las uvas), one on each chime of midnight on Nochevieja, for luck in each month of the new year.",
       },
     ],
     misconceptions: [
@@ -1774,6 +2814,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: Spanish treats most weather as something the day 'makes' happen rather than a state the day 'is in', so hacer is used impersonally in the third person (hace calor, hace frío) — a good answer notes that rain and snow are the exception, using their own dedicated verb forms llueve and nieva instead.",
       },
+      {
+        question: "What does 'el ayuntamiento' mean?",
+        choices: [
+          "town hall",
+          "library",
+          "sports centre",
+          "main square",
+        ],
+        accept: [
+          "town hall",
+        ],
+        answer: "El ayuntamiento is the town hall. The library is la biblioteca, the sports centre el polideportivo and the main square la plaza mayor.",
+      },
+      {
+        question: "What is 'la panadería'?",
+        choices: [
+          "butcher's",
+          "cake shop",
+          "fishmonger's",
+          "bakery",
+        ],
+        accept: [
+          "bakery",
+        ],
+        answer: "La panadería is a bakery that sells bread (el pan). A cake shop is la pastelería, a butcher's la carnicería and a fishmonger's la pescadería.",
+      },
+      {
+        question: "What does 'la librería' mean?",
+        choices: [
+          "library",
+          "newsagent's",
+          "bookshop",
+          "stationer's",
+        ],
+        accept: [
+          "bookshop",
+        ],
+        answer: "La librería is a bookshop, a classic false friend. A library is la biblioteca and a stationer's is la papelería.",
+      },
+      {
+        question: "What does 'sigue todo recto' mean?",
+        choices: [
+          "turn right",
+          "go straight on",
+          "take the first",
+          "cross the road",
+        ],
+        accept: [
+          "go straight on",
+        ],
+        answer: "Sigue todo recto means carry on straight ahead. Turn right is gira a la derecha and cross the road is cruza la calle.",
+      },
+      {
+        question: "What does 'enfrente de' mean?",
+        choices: [
+          "next to",
+          "opposite",
+          "behind",
+          "near",
+        ],
+        accept: [
+          "opposite",
+        ],
+        answer: "Enfrente de means opposite (facing). Next to is al lado de, behind is detrás de and near is cerca de.",
+      },
+      {
+        question: "What does 'el polideportivo' mean?",
+        choices: [
+          "sports centre",
+          "police station",
+          "stadium",
+          "swimming pool",
+        ],
+        accept: [
+          "sports centre",
+        ],
+        answer: "El polideportivo is a sports centre. The police station is la comisaría, a stadium el estadio and a swimming pool la piscina.",
+      },
+      {
+        question: "What does 'llueve' mean?",
+        choices: [
+          "it's snowing",
+          "it's cloudy",
+          "it's foggy",
+          "it's raining",
+        ],
+        accept: [
+          "it's raining",
+        ],
+        answer: "Llueve (from llover) means it rains or it's raining. It's snowing is nieva, cloudy is está nublado and foggy is hay niebla.",
+      },
+      {
+        question: "What does 'ruidoso' mean?",
+        choices: [
+          "quiet",
+          "rude",
+          "noisy",
+          "dirty",
+        ],
+        accept: [
+          "noisy",
+        ],
+        answer: "Ruidoso means noisy (el ruido is noise). Quiet is tranquilo, dirty is sucio and rude is maleducado.",
+      },
+      {
+        question: "Which word completes 'Vamos ___ mercado'?",
+        choices: [
+          "a el",
+          "del",
+          "al",
+          "a la",
+        ],
+        accept: [
+          "al",
+        ],
+        answer: "A + el must contract to al: vamos al mercado. A la is only for feminine nouns, and del means of the or from the.",
+      },
+      {
+        question: "Which word means 'village'?",
+        choices: [
+          "la ciudad",
+          "el pueblo",
+          "el barrio",
+          "las afueras",
+        ],
+        accept: [
+          "el pueblo",
+        ],
+        answer: "El pueblo is a village or small town. La ciudad is a city, el barrio a neighbourhood and las afueras the outskirts.",
+      },
     ],
     misconceptions: [
       {
@@ -1964,6 +3134,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English why 'fui' can be ambiguous out of context, and how a reader knows whether it comes from ir or ser.",
         answer:
           "Mark it yourself against this: ir and ser share identical preterite forms (fui, fuiste, fue, fuimos, fuisteis, fueron), so only the surrounding context — such as a destination following the verb for ir, or a description/identity following it for ser — tells the reader which verb is actually meant.",
+      },
+      {
+        question: "What does 'el alojamiento' mean?",
+        choices: [
+          "the luggage",
+          "the accommodation",
+          "the flight",
+          "the booking",
+        ],
+        accept: [
+          "the accommodation",
+        ],
+        answer: "El alojamiento is accommodation (a hotel, campsite, flat). Luggage is el equipaje, the flight is el vuelo and a booking is una reserva.",
+      },
+      {
+        question: "Which phrase means 'to pack your suitcase'?",
+        choices: [
+          "sacar el billete",
+          "perder el vuelo",
+          "hacer la maleta",
+          "coger el tren",
+        ],
+        accept: [
+          "hacer la maleta",
+        ],
+        answer: "Hacer la maleta is to pack your case. Sacar el billete is to buy the ticket, perder el vuelo is to miss the flight and coger el tren is to catch the train.",
+      },
+      {
+        question: "What does 'Voy al extranjero' mean?",
+        choices: [
+          "I'm going to the coast",
+          "I'm going abroad",
+          "I'm going camping",
+          "I'm going to the city",
+        ],
+        accept: [
+          "I'm going abroad",
+        ],
+        answer: "El extranjero means abroad (a foreign country), so voy al extranjero is I'm going abroad. The coast is la costa and the city is la ciudad.",
+      },
+      {
+        question: "What does 'una habitación individual' mean?",
+        choices: [
+          "a double room",
+          "a family room",
+          "a single room",
+          "a private bathroom",
+        ],
+        accept: [
+          "a single room",
+        ],
+        answer: "Individual means for one person, so it's a single room. A double room is una habitación doble and a family room is una habitación familiar.",
+      },
+      {
+        question: "Which word means 'the flight'?",
+        choices: [
+          "el viaje",
+          "el billete",
+          "la llegada",
+          "el vuelo",
+        ],
+        accept: [
+          "el vuelo",
+        ],
+        answer: "El vuelo is the flight (from volar, to fly). El viaje is the journey or trip, el billete is the ticket and la llegada is the arrival.",
+      },
+      {
+        question: "'Hice' is the preterite yo form of which verb?",
+        choices: [
+          "hacer",
+          "haber",
+          "ir",
+          "hablar",
+        ],
+        accept: [
+          "hacer",
+        ],
+        answer: "Hice (I did/made) is the irregular preterite of hacer, as in hice turismo. Haber gives hube, ir gives fui and hablar gives hablé.",
+      },
+      {
+        question: "What does 'con vista al mar' mean?",
+        choices: [
+          "with a sea view",
+          "next to the sea",
+          "far from the sea",
+          "with a pool view",
+        ],
+        accept: [
+          "with a sea view",
+        ],
+        answer: "La vista is the view, so con vista al mar is with a sea view. Next to the sea would be al lado del mar or junto al mar.",
+      },
+      {
+        question: "Which completes 'Ayer nosotros ___ a la playa' (ir)?",
+        choices: [
+          "vamos",
+          "fuimos",
+          "fueron",
+          "íbamos",
+        ],
+        accept: [
+          "fuimos",
+        ],
+        answer: "Ayer needs the preterite, and the nosotros form of ir is fuimos. Fueron is ellos, vamos is present and íbamos is imperfect (used to go).",
+      },
+      {
+        question: "At an airport, what does 'la salida' mean?",
+        choices: [
+          "arrival",
+          "delay",
+          "departure",
+          "check-in",
+        ],
+        accept: [
+          "departure",
+        ],
+        answer: "La salida is the departure (or exit), from salir, to leave. Arrival is la llegada and a delay is un retraso.",
+      },
+      {
+        question: "What is 'un billete de ida y vuelta'?",
+        choices: [
+          "a single ticket",
+          "a return ticket",
+          "a first-class ticket",
+          "a cheap ticket",
+        ],
+        accept: [
+          "a return ticket",
+        ],
+        answer: "Ida is the outward trip and vuelta is the way back, so it's a return ticket. A single ticket is un billete de ida (sencillo).",
       },
     ],
     misconceptions: [
@@ -2156,6 +3456,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: está bueno describes a temporary quality — this particular fish tastes good right now — while es bueno makes a lasting, general claim, such as fish being healthy/good for you as a food category; a correct answer explains that ser and estar change the meaning here, not just the register.",
       },
+      {
+        question: "What does 'la cena' mean?",
+        choices: [
+          "breakfast",
+          "lunch",
+          "dinner",
+          "a snack",
+        ],
+        accept: [
+          "dinner",
+        ],
+        answer: "La cena is dinner, the evening meal (cenar = to have dinner). Lunch is la comida, breakfast is el desayuno and a snack is la merienda.",
+      },
+      {
+        question: "What does 'el marisco' mean?",
+        choices: [
+          "fish",
+          "seafood",
+          "meat",
+          "sauce",
+        ],
+        accept: [
+          "seafood",
+        ],
+        answer: "El marisco is seafood such as prawns and mussels. Fish is el pescado, meat is la carne and sauce is la salsa.",
+      },
+      {
+        question: "If a dish is 'soso', what is it like?",
+        choices: [
+          "tasty",
+          "spicy",
+          "salty",
+          "bland",
+        ],
+        accept: [
+          "bland",
+        ],
+        answer: "Soso means bland or tasteless, the opposite of sabroso (tasty). Spicy is picante and salty is salado.",
+      },
+      {
+        question: "What does 'tener sed' mean?",
+        choices: [
+          "to be hungry",
+          "to be thirsty",
+          "to be cold",
+          "to be sleepy",
+        ],
+        accept: [
+          "to be thirsty",
+        ],
+        answer: "Tener sed is to be thirsty (literally to have thirst). To be hungry is tener hambre, cold is tener frío and sleepy is tener sueño.",
+      },
+      {
+        question: "On a Spanish menu, what does 'de segundo' mean?",
+        choices: [
+          "as a starter",
+          "as a main course",
+          "for dessert",
+          "to drink",
+        ],
+        accept: [
+          "as a main course",
+        ],
+        answer: "De segundo is for the second course, the main dish. De primero is the starter, de postre is dessert and para beber is to drink.",
+      },
+      {
+        question: "What does '¿Me puede traer...?' mean?",
+        choices: [
+          "Can I pay for...?",
+          "Do you have...?",
+          "Can you bring me...?",
+          "Can I order...?",
+        ],
+        accept: [
+          "Can you bring me...?",
+        ],
+        answer: "Traer means to bring, and puede is the polite usted form, so it's 'Can you bring me...?'. Do you have...? is ¿Tiene...?",
+      },
+      {
+        question: "Which completes 'La sopa está muy ___' (tasty)?",
+        choices: [
+          "sabroso",
+          "sabrosas",
+          "sabrosa",
+          "sabrosos",
+        ],
+        accept: [
+          "sabrosa",
+        ],
+        answer: "La sopa is feminine singular, so the adjective must be sabrosa. Sabroso is masculine, and the -s forms are plural.",
+      },
+      {
+        question: "What does 'un poco de pan' mean?",
+        choices: [
+          "a lot of bread",
+          "a little bread",
+          "a slice of bread",
+          "a loaf of bread",
+        ],
+        accept: [
+          "a little bread",
+        ],
+        answer: "Un poco de means a little (of). A lot of bread is mucho pan and a slice of bread is una rebanada de pan.",
+      },
+      {
+        question: "In a restaurant, what is 'la cuenta'?",
+        choices: [
+          "the menu",
+          "the tip",
+          "the table",
+          "the bill",
+        ],
+        accept: [
+          "the bill",
+        ],
+        answer: "La cuenta is the bill, as in la cuenta, por favor. The menu is la carta (or el menú), the tip is la propina and the table is la mesa.",
+      },
+      {
+        question: "Which completes 'Yo siempre ___ el pollo' (pedir)?",
+        choices: [
+          "pide",
+          "pido",
+          "piden",
+          "pedimos",
+        ],
+        accept: [
+          "pido",
+        ],
+        answer: "Pedir is stem-changing (e to i), so the yo form is pido. Pide is él/ella/usted, piden is ellos and pedimos is nosotros.",
+      },
     ],
     misconceptions: [
       {
@@ -2346,6 +3776,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English the difference between the preterite and the perfect tense, with one original example sentence for each.",
         answer:
           "Mark it yourself against this: the preterite describes a single completed action clearly located in the past, often with a time marker like ayer (e.g. Ayer comí paella), while the perfect tense links a recent action to the present, often with ya or nunca (e.g. Ya he comido) — a correct answer gives one grammatically accurate original example for each tense.",
+      },
+      {
+        question: "'Comí' is in which tense?",
+        choices: [
+          "present",
+          "imperfect",
+          "future",
+          "preterite",
+        ],
+        accept: [
+          "preterite",
+        ],
+        answer: "Comí (I ate) is the preterite: -er verbs take -í in the yo form. The imperfect would be comía and the future comeré.",
+      },
+      {
+        question: "What is the past participle of 'hacer'?",
+        choices: [
+          "hecho",
+          "hacido",
+          "hizo",
+          "haciendo",
+        ],
+        accept: [
+          "hecho",
+        ],
+        answer: "Hacer has the irregular participle hecho: he hecho (I have done). Hacido doesn't exist, hizo is preterite and haciendo is the gerund.",
+      },
+      {
+        question: "What is the past participle of 'poner'?",
+        choices: [
+          "ponido",
+          "puesto",
+          "puso",
+          "poniendo",
+        ],
+        accept: [
+          "puesto",
+        ],
+        answer: "Poner has the irregular participle puesto: he puesto la mesa. Ponido is a common mistake, puso is preterite and poniendo is the gerund.",
+      },
+      {
+        question: "What is the past participle of 'abrir'?",
+        choices: [
+          "abrido",
+          "abrió",
+          "abierto",
+          "abriendo",
+        ],
+        accept: [
+          "abierto",
+        ],
+        answer: "Abrir is irregular: the participle is abierto, as in han abierto la tienda. Abrido looks regular but is wrong; abrió is preterite.",
+      },
+      {
+        question: "Which completes 'Nosotros ___ comido paella'?",
+        choices: [
+          "han",
+          "hemos",
+          "somos",
+          "tenemos",
+        ],
+        accept: [
+          "hemos",
+        ],
+        answer: "The perfect tense uses haber, and its nosotros form is hemos. Han is ellos; ser (somos) and tener (tenemos) are never the auxiliary here.",
+      },
+      {
+        question: "What does 'tendré' mean?",
+        choices: [
+          "I had",
+          "I will have",
+          "I would have",
+          "I have",
+        ],
+        accept: [
+          "I will have",
+        ],
+        answer: "Tendré is the irregular simple future of tener (stem tendr- plus -é). I had is tuve or tenía, and I would have is tendría.",
+      },
+      {
+        question: "Which completes 'Mañana ellos ___ la cena' (hacer, simple future)?",
+        choices: [
+          "hacerán",
+          "hicieron",
+          "harán",
+          "hacen",
+        ],
+        accept: [
+          "harán",
+        ],
+        answer: "Hacer has the irregular future stem har-, so ellos harán. Hacerán is a common slip, hicieron is preterite and hacen is present.",
+      },
+      {
+        question: "'Estuve' comes from which verb?",
+        choices: [
+          "ser",
+          "estar",
+          "tener",
+          "ir",
+        ],
+        accept: [
+          "estar",
+        ],
+        answer: "Estuve (I was) is the irregular preterite of estar. Ser gives fui, tener gives tuve (similar ending, different verb) and ir also gives fui.",
+      },
+      {
+        question: "Which completes 'Ayer ella ___ un accidente' (tener, preterite)?",
+        choices: [
+          "tuve",
+          "tenió",
+          "tuvo",
+          "tenía",
+        ],
+        accept: [
+          "tuvo",
+        ],
+        answer: "Tener has the irregular preterite stem tuv-, and the ella form is tuvo with no accent. Tuve is yo, tenía is imperfect and tenió doesn't exist.",
+      },
+      {
+        question: "What does 'hablé' mean?",
+        choices: [
+          "he spoke",
+          "I will speak",
+          "I spoke",
+          "I speak",
+        ],
+        accept: [
+          "I spoke",
+        ],
+        answer: "Hablé, with the accent on the final é, is the yo preterite: I spoke. Habló is he/she spoke, hablaré is I will speak and hablo is I speak.",
       },
     ],
     misconceptions: [
@@ -2542,6 +4102,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: el colegio usually refers to a primary school, while el instituto refers to a secondary school, so describing a secondary-school experience using colegio could mislead a reader into picturing a younger age group or a different stage of education than intended.",
       },
+      {
+        question: "What does 'aprobar' mean in the context of exams?",
+        choices: [
+          "to fail",
+          "to revise",
+          "to pass",
+          "to resit",
+        ],
+        accept: [
+          "to pass",
+        ],
+        answer: "Aprobar un examen is to pass an exam. Its opposite is suspender (to fail); to revise is repasar.",
+      },
+      {
+        question: "What is 'una asignatura optativa'?",
+        choices: [
+          "a compulsory subject",
+          "an optional subject",
+          "a favourite subject",
+          "a difficult subject",
+        ],
+        accept: [
+          "an optional subject",
+        ],
+        answer: "Optativa means optional, a subject you choose. Una asignatura obligatoria is compulsory, one everyone must take.",
+      },
+      {
+        question: "At roughly what ages do Spanish pupils study 'la ESO'?",
+        choices: [
+          "ages 3 to 6",
+          "ages 6 to 12",
+          "ages 12 to 16",
+          "ages 16 to 18",
+        ],
+        accept: [
+          "ages 12 to 16",
+        ],
+        answer: "La ESO is compulsory secondary education, about 12 to 16. Primary is 6 to 12, and after 16 pupils choose el bachillerato or formación profesional.",
+      },
+      {
+        question: "What does 'sacar una buena nota' mean?",
+        choices: [
+          "to take good notes",
+          "to get a good mark",
+          "to read the notice",
+          "to hand in homework",
+        ],
+        accept: [
+          "to get a good mark",
+        ],
+        answer: "Sacar una nota is to get a mark or grade; una nota here is a mark. To take notes is tomar apuntes, so 'take good notes' is the false-friend trap.",
+      },
+      {
+        question: "What does 'estar bajo presión' mean?",
+        choices: [
+          "to be in a hurry",
+          "to be under pressure",
+          "to be bored",
+          "to be behind",
+        ],
+        accept: [
+          "to be under pressure",
+        ],
+        answer: "Bajo means under and la presión is pressure, so it's to be under pressure, often linked to el estrés. In a hurry is tener prisa.",
+      },
+      {
+        question: "What does 'Está prohibido correr' mean?",
+        choices: [
+          "Running is required",
+          "Running is allowed",
+          "Running is forbidden",
+          "Running is popular",
+        ],
+        accept: [
+          "Running is forbidden",
+        ],
+        answer: "Prohibido means forbidden, so running is not allowed. Allowed would be permitido, and required would be obligatorio.",
+      },
+      {
+        question: "What does 'deberíamos' mean?",
+        choices: [
+          "we must",
+          "we had to",
+          "we will",
+          "we should",
+        ],
+        accept: [
+          "we should",
+        ],
+        answer: "Deberíamos is the conditional of deber, so it's a softer we should, good for suggestions. We must is debemos and we had to is tuvimos que.",
+      },
+      {
+        question: "In education, what does 'el título' mean?",
+        choices: [
+          "the qualification",
+          "the timetable",
+          "the uniform",
+          "the headteacher",
+        ],
+        accept: [
+          "the qualification",
+        ],
+        answer: "El título is the qualification or certificate you get at the end. The timetable is el horario and the headteacher is el director or la directora.",
+      },
+      {
+        question: "What does 'repetir curso' mean?",
+        choices: [
+          "to retake an exam",
+          "to change school",
+          "to repeat a year",
+          "to revise a topic",
+        ],
+        accept: [
+          "to repeat a year",
+        ],
+        answer: "El curso is the school year, so repetir curso is to repeat the year, which happens in Spain if you fail too many subjects. To change school is cambiar de colegio.",
+      },
+      {
+        question: "What does 'las normas' mean in a school?",
+        choices: [
+          "the marks",
+          "the rules",
+          "the lessons",
+          "the uniforms",
+        ],
+        accept: [
+          "the rules",
+        ],
+        answer: "Las normas are the rules, as in las normas del instituto. The marks are las notas and the lessons are las clases.",
+      },
     ],
     misconceptions: [
       {
@@ -2731,6 +4421,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English the difference in tone between 'me gustaría estudiar medicina' and 'voy a estudiar medicina'.",
         answer:
           "Mark it yourself against this: me gustaría estudiar medicina expresses a wish or tentative hope without commitment ('I would like to'), while voy a estudiar medicina states a firm, already-decided plan ('I am going to') — a correct answer explains this difference in certainty, not just translates both literally.",
+      },
+      {
+        question: "In a work context, what does 'el aprendizaje' mean?",
+        choices: [
+          "a degree",
+          "an apprenticeship",
+          "a gap year",
+          "a scholarship",
+        ],
+        accept: [
+          "an apprenticeship",
+        ],
+        answer: "El aprendizaje (from aprender) means learning, and in work it's an apprenticeship. A degree is una carrera and a scholarship is una beca.",
+      },
+      {
+        question: "What does 'aprender un oficio' mean?",
+        choices: [
+          "to work in an office",
+          "to learn a language",
+          "to learn a trade",
+          "to find a job",
+        ],
+        accept: [
+          "to learn a trade",
+        ],
+        answer: "Un oficio is a trade, like plumbing or carpentry. It's a false friend: an office is una oficina.",
+      },
+      {
+        question: "What does 'solicitar una plaza' mean?",
+        choices: [
+          "to apply for a place",
+          "to visit a square",
+          "to pay for a course",
+          "to book a room",
+        ],
+        accept: [
+          "to apply for a place",
+        ],
+        answer: "Solicitar is to apply for, and una plaza is a place (on a course or at university). Una plaza can be a town square, but not with solicitar.",
+      },
+      {
+        question: "What does 'tengo la intención de' mean?",
+        choices: [
+          "I'd like to",
+          "I have to",
+          "I intend to",
+          "I hope to",
+        ],
+        accept: [
+          "I intend to",
+        ],
+        answer: "Tengo la intención de is I intend to, a firm plan. I'd like to is me gustaría, I have to is tengo que and I hope to is espero.",
+      },
+      {
+        question: "In 'Espero ir a la universidad', what does 'espero' mean?",
+        choices: [
+          "I want",
+          "I hope",
+          "I need",
+          "I decide",
+        ],
+        accept: [
+          "I hope",
+        ],
+        answer: "Esperar means to hope (or wait), and here it's I hope to go to university. I want is quiero, I need is necesito and I decide is decido.",
+      },
+      {
+        question: "What does 'la experiencia laboral' mean?",
+        choices: [
+          "life experience",
+          "a job interview",
+          "work experience",
+          "a science lab",
+        ],
+        accept: [
+          "work experience",
+        ],
+        answer: "Laboral means to do with work, so it's work experience. It has nothing to do with a lab (un laboratorio); a job interview is una entrevista.",
+      },
+      {
+        question: "What does 'después de' mean?",
+        choices: [
+          "before",
+          "after",
+          "during",
+          "instead of",
+        ],
+        accept: [
+          "after",
+        ],
+        answer: "Después de means after: después de terminar el bachillerato. Before is antes de, during is durante and instead of is en lugar de.",
+      },
+      {
+        question: "Which completes 'Me gustaría ___ un año sabático'?",
+        choices: [
+          "tomo",
+          "tomé",
+          "tomando",
+          "tomar",
+        ],
+        accept: [
+          "tomar",
+        ],
+        answer: "Me gustaría is always followed by an infinitive, so tomar. Tomo is present, tomé is preterite and tomando is the gerund.",
+      },
+      {
+        question: "What does 'un año sabático' mean?",
+        choices: [
+          "a gap year",
+          "a leap year",
+          "a school year",
+          "a final year",
+        ],
+        accept: [
+          "a gap year",
+        ],
+        answer: "Un año sabático is a gap year, a year out before or after study. A leap year is un año bisiesto and a school year is un curso escolar.",
+      },
+      {
+        question: "What does 'matricularse' mean?",
+        choices: [
+          "to graduate",
+          "to drop out",
+          "to apply",
+          "to enrol",
+        ],
+        accept: [
+          "to enrol",
+        ],
+        answer: "Matricularse is to enrol or sign up for a course. To graduate is graduarse and to apply is solicitar, which comes before enrolling.",
       },
     ],
     misconceptions: [
@@ -2922,6 +4742,136 @@ export const SPANISH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: Spanish drops the indefinite article before a bare profession after ser (soy médico, like saying 'I am doctor'), but once the profession is further described by an adjective, the article returns (soy un médico muy dedicado) because it's now describing 'a [type of] doctor' rather than stating the profession alone.",
       },
+      {
+        question: "What does 'el periodista' mean?",
+        choices: [
+          "newsagent",
+          "journalist",
+          "hairdresser",
+          "postman",
+        ],
+        accept: [
+          "journalist",
+        ],
+        answer: "Un periodista is a journalist; it comes from el periódico (newspaper), which is why newsagent tempts. A postman is un cartero.",
+      },
+      {
+        question: "What does 'la abogada' mean?",
+        choices: [
+          "doctor",
+          "accountant",
+          "judge",
+          "lawyer",
+        ],
+        accept: [
+          "lawyer",
+        ],
+        answer: "Una abogada is a (female) lawyer. A doctor is una médica, a judge is una jueza and an avocado is un aguacate, not abogado.",
+      },
+      {
+        question: "What does 'mal pagado' mean?",
+        choices: [
+          "well paid",
+          "badly paid",
+          "unpaid",
+          "part-time",
+        ],
+        accept: [
+          "badly paid",
+        ],
+        answer: "Mal means badly, so mal pagado is badly paid. Well paid is bien pagado, and unpaid work is sin sueldo.",
+      },
+      {
+        question: "What does 'el sueldo' mean?",
+        choices: [
+          "the floor",
+          "the salary",
+          "the boss",
+          "the timetable",
+        ],
+        accept: [
+          "the salary",
+        ],
+        answer: "El sueldo is the salary or wages. Don't mix it up with el suelo, the floor; the boss is el jefe and the timetable is el horario.",
+      },
+      {
+        question: "In a job advert, what does 'el puesto' mean?",
+        choices: [
+          "the post office",
+          "the interview",
+          "the position",
+          "the company",
+        ],
+        accept: [
+          "the position",
+        ],
+        answer: "El puesto is the position or post, as in el puesto de camarero. The post office is Correos, the interview is la entrevista and the company is la empresa.",
+      },
+      {
+        question: "Which word means 'CV' in Spanish?",
+        choices: [
+          "la carta",
+          "la entrevista",
+          "el anuncio",
+          "el currículum",
+        ],
+        accept: [
+          "el currículum",
+        ],
+        answer: "El currículum (vitae) is your CV. La carta is a letter, la entrevista is an interview and el anuncio is an advert.",
+      },
+      {
+        question: "What does 'a tiempo parcial' mean?",
+        choices: [
+          "part-time",
+          "full-time",
+          "overtime",
+          "on time",
+        ],
+        accept: [
+          "part-time",
+        ],
+        answer: "Parcial means partial, so a tiempo parcial is part-time. Full-time is a tiempo completo, and on time is a tiempo or puntual.",
+      },
+      {
+        question: "Which completes 'Mi padre trabaja ___ mecánico'?",
+        choices: [
+          "a",
+          "de",
+          "en",
+          "por",
+        ],
+        accept: [
+          "de",
+        ],
+        answer: "Trabajar de + job means to work as: trabaja de mecánico (como also works). En is used for the place: trabaja en un taller.",
+      },
+      {
+        question: "Which job is 'un panadero'?",
+        choices: [
+          "a baker",
+          "a hairdresser",
+          "a butcher",
+          "a postman",
+        ],
+        accept: [
+          "a baker",
+        ],
+        answer: "Un panadero is a baker and works in una panadería. Un peluquero is a hairdresser, un carnicero a butcher and un cartero a postman.",
+      },
+      {
+        question: "What does 'el jefe' mean?",
+        choices: [
+          "the chef",
+          "the colleague",
+          "the boss",
+          "the customer",
+        ],
+        accept: [
+          "the boss",
+        ],
+        answer: "El jefe (la jefa) is the boss or manager. A chef is un cocinero, a colleague is un compañero and a customer is un cliente.",
+      },
     ],
     misconceptions: [
       {
@@ -3111,6 +5061,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English the difference between 'tengo que' and 'hay que', with one original example sentence for each.",
         answer:
           "Mark it yourself against this: tengo que is personal and changes to match a specific subject (tengo, tienes, tiene...), describing what one particular person has to do, while hay que is impersonal, never changes form, and describes a general obligation that applies to people in general — a correct answer gives one accurate original example sentence for each.",
+      },
+      {
+        question: "What does 'recaudar fondos' mean?",
+        choices: [
+          "to save money",
+          "to raise funds",
+          "to spend money",
+          "to borrow money",
+        ],
+        accept: [
+          "to raise funds",
+        ],
+        answer: "Recaudar fondos is to raise funds, e.g. for una ONG. To save money is ahorrar dinero and to spend money is gastar dinero.",
+      },
+      {
+        question: "What does the Spanish word 'fiable' mean?",
+        choices: [
+          "friendly",
+          "flexible",
+          "lazy",
+          "reliable",
+        ],
+        accept: [
+          "reliable",
+        ],
+        answer: "Fiable means reliable or trustworthy (from fiarse, to trust). Friendly is simpático and lazy is perezoso.",
+      },
+      {
+        question: "What does 'comprensivo' mean?",
+        choices: [
+          "comprehensive",
+          "understanding",
+          "hard-working",
+          "confident",
+        ],
+        accept: [
+          "understanding",
+        ],
+        answer: "Comprensivo is a false friend: it means understanding or sympathetic. Hard-working is trabajador and confident is seguro de sí mismo.",
+      },
+      {
+        question: "What is 'una ONG'?",
+        choices: [
+          "a charity",
+          "a council",
+          "a hospital",
+          "a political party",
+        ],
+        accept: [
+          "a charity",
+        ],
+        answer: "Una ONG (organización no gubernamental) is an NGO, a charity such as Cruz Roja. A council is un ayuntamiento and a political party is un partido político.",
+      },
+      {
+        question: "What does 'ayudar a los demás' mean?",
+        choices: [
+          "to help the elderly",
+          "to help others",
+          "to help your family",
+          "to help yourself",
+        ],
+        accept: [
+          "to help others",
+        ],
+        answer: "Los demás means other people, so it's to help others. The elderly are los ancianos (or las personas mayores) and the family is la familia.",
+      },
+      {
+        question: "What does 'solidario' mean?",
+        choices: [
+          "lonely",
+          "stubborn",
+          "supportive",
+          "strong",
+        ],
+        accept: [
+          "supportive",
+        ],
+        answer: "Solidario means supportive, showing solidarity with others. Lonely is solitario (one letter different) and stubborn is testarudo.",
+      },
+      {
+        question: "Which completes 'Mis amigas son muy ___' (generoso)?",
+        choices: [
+          "generosos",
+          "generosas",
+          "generosa",
+          "generoso",
+        ],
+        accept: [
+          "generosas",
+        ],
+        answer: "Mis amigas is feminine plural, so the adjective takes -as: generosas. Generosos is masculine plural, generosa is singular.",
+      },
+      {
+        question: "What does 'comprometido' mean?",
+        choices: [
+          "compromised",
+          "complicated",
+          "competitive",
+          "committed",
+        ],
+        accept: [
+          "committed",
+        ],
+        answer: "Comprometido means committed or dedicated, as in comprometido con el medio ambiente. It's a false friend: it doesn't mean compromised.",
+      },
+      {
+        question: "What is 'una residencia de ancianos'?",
+        choices: [
+          "a hospital",
+          "an old people's home",
+          "a homeless shelter",
+          "a primary school",
+        ],
+        accept: [
+          "an old people's home",
+        ],
+        answer: "Los ancianos are elderly people, so it's a care home for older people. A hospital is un hospital and a homeless shelter is un albergue.",
+      },
+      {
+        question: "What does 'las personas sin hogar' mean?",
+        choices: [
+          "elderly people",
+          "disabled people",
+          "homeless people",
+          "young people",
+        ],
+        accept: [
+          "homeless people",
+        ],
+        answer: "Sin hogar means without a home, so these are homeless people. Elderly people are las personas mayores and young people are los jóvenes.",
       },
     ],
     misconceptions: [
@@ -3302,6 +5382,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English the difference between 'se debería' and 'se puede' when suggesting environmental solutions, with one example of each.",
         answer:
           "Mark it yourself against this: se debería + infinitive expresses a recommendation ('one/we should'), suggesting what ought to happen, while se puede + infinitive expresses a possibility ('one/you can'), suggesting what is achievable — a correct answer gives one accurate original example sentence for each, such as Se debería reciclar más and Se puede ahorrar agua fácilmente.",
+      },
+      {
+        question: "What does 'el calentamiento global' mean?",
+        choices: [
+          "climate change",
+          "global warming",
+          "the greenhouse effect",
+          "global trade",
+        ],
+        accept: [
+          "global warming",
+        ],
+        answer: "Calentar is to heat, so el calentamiento global is global warming. Climate change is el cambio climático and the greenhouse effect is el efecto invernadero.",
+      },
+      {
+        question: "Which means 'renewable energy'?",
+        choices: [
+          "combustibles fósiles",
+          "efecto invernadero",
+          "energías renovables",
+          "residuos tóxicos",
+        ],
+        accept: [
+          "energías renovables",
+        ],
+        answer: "Energías renovables are renewable energies like solar and wind. Combustibles fósiles are fossil fuels and residuos tóxicos are toxic waste.",
+      },
+      {
+        question: "What does 'además' mean?",
+        choices: [
+          "however",
+          "furthermore",
+          "therefore",
+          "for example",
+        ],
+        accept: [
+          "furthermore",
+        ],
+        answer: "Además adds a point: furthermore or besides. However is sin embargo, therefore is por lo tanto and for example is por ejemplo.",
+      },
+      {
+        question: "What does 'malgastar agua' mean?",
+        choices: [
+          "to save water",
+          "to pollute water",
+          "to waste water",
+          "to drink water",
+        ],
+        accept: [
+          "to waste water",
+        ],
+        answer: "Malgastar is to waste (mal + gastar, to spend badly). To save water is ahorrar agua and to pollute water is contaminar el agua.",
+      },
+      {
+        question: "What does 'la basura' mean?",
+        choices: [
+          "recycling",
+          "packaging",
+          "plastic bags",
+          "rubbish",
+        ],
+        accept: [
+          "rubbish",
+        ],
+        answer: "La basura is rubbish or litter. Recycling is el reciclaje, packaging is los envases and plastic bags are las bolsas de plástico.",
+      },
+      {
+        question: "In 'Se puede ir en bici', what does 'se puede' mean?",
+        choices: [
+          "one can",
+          "one should",
+          "one must",
+          "one wants",
+        ],
+        accept: [
+          "one can",
+        ],
+        answer: "Se puede is impersonal from poder: one can or you can. One should is se debería and one must is hay que or se debe.",
+      },
+      {
+        question: "What does 'el medio ambiente' mean?",
+        choices: [
+          "the atmosphere",
+          "the environment",
+          "the middle class",
+          "the weather",
+        ],
+        accept: [
+          "the environment",
+        ],
+        answer: "El medio ambiente is the environment; don't split it into medio (middle) and ambiente. The atmosphere is la atmósfera and the weather is el tiempo.",
+      },
+      {
+        question: "Which word means 'drought'?",
+        choices: [
+          "la inundación",
+          "el incendio",
+          "la sequía",
+          "la tormenta",
+        ],
+        accept: [
+          "la sequía",
+        ],
+        answer: "La sequía is a drought (from seco, dry). La inundación is a flood, el incendio is a fire and la tormenta is a storm.",
+      },
+      {
+        question: "What does 'la pobreza' mean?",
+        choices: [
+          "hunger",
+          "poverty",
+          "war",
+          "unemployment",
+        ],
+        accept: [
+          "poverty",
+        ],
+        answer: "La pobreza is poverty (from pobre, poor). Hunger is el hambre, war is la guerra and unemployment is el paro or el desempleo.",
+      },
+      {
+        question: "What does 'estar preocupado por' mean?",
+        choices: [
+          "to be proud of",
+          "to be busy with",
+          "to be tired of",
+          "to be worried about",
+        ],
+        accept: [
+          "to be worried about",
+        ],
+        answer: "Preocupado means worried, and por gives 'about': estoy preocupado por el planeta. Proud of is orgulloso de; busy is ocupado, a near look-alike.",
       },
     ],
     misconceptions: [
@@ -3500,6 +5710,136 @@ export const SPANISH: Record<string, TopicContent> = {
         question: "Explain in English how you would plan your time and structure before answering an extended GCSE Spanish writing question, drawing on ideas from across this course.",
         answer:
           "Mark it yourself against this: a strong answer mentions reading the command word carefully to judge the expected style (describe/compara/da tu opinión), sketching a brief structure (introduction, 2–3 developed points each with an opinion and a reason using porque/ya que, and a conclusion), and deliberately including a range of tenses (present, past, future) and connectives (sin embargo, además, por lo tanto) rather than writing freely without a plan.",
+      },
+      {
+        question: "'Hace tres meses visité Sevilla.' When did they visit?",
+        choices: [
+          "for three months",
+          "three months ago",
+          "in three months",
+          "every three months",
+        ],
+        accept: [
+          "three months ago",
+        ],
+        answer: "Hace + time + preterite means ago: three months ago. 'For three months' would be durante tres meses, and 'in three months' is dentro de tres meses.",
+      },
+      {
+        question: "'Iba al cine cada sábado' is in which tense?",
+        choices: [
+          "preterite",
+          "imperfect",
+          "present",
+          "future",
+        ],
+        accept: [
+          "imperfect",
+        ],
+        answer: "Iba is the imperfect of ir, used for a repeated past habit (cada sábado): I used to go. The preterite would be fui.",
+      },
+      {
+        question: "What does 'aunque' mean?",
+        choices: [
+          "because",
+          "therefore",
+          "although",
+          "however",
+        ],
+        accept: [
+          "although",
+        ],
+        answer: "Aunque means although or even though, joining two clauses. However is sin embargo, because is porque and therefore is por lo tanto.",
+      },
+      {
+        question: "'Aprendo piano desde hace un año.' Which is true?",
+        choices: [
+          "They quit a year ago",
+          "They still learn piano",
+          "They start next year",
+          "They learnt it once",
+        ],
+        accept: [
+          "They still learn piano",
+        ],
+        answer: "Present tense + desde hace means for and still going: I've been learning piano for a year. Hace un año with a preterite (aprendí) would mean a year ago.",
+      },
+      {
+        question: "What does 'había' mean in 'Había mucha gente'?",
+        choices: [
+          "there is",
+          "there was",
+          "there will be",
+          "he has",
+        ],
+        accept: [
+          "there was",
+        ],
+        answer: "Había is the imperfect of haber, the verb behind hay, so it means there was (or there were): there were lots of people. There is is hay; there will be is habrá.",
+      },
+      {
+        question: "What does 'Nunca como carne' mean?",
+        choices: [
+          "I always eat meat",
+          "I never eat meat",
+          "I rarely eat meat",
+          "I never ate meat",
+        ],
+        accept: [
+          "I never eat meat",
+        ],
+        answer: "Nunca means never, and como is present (I eat), so it's I never eat meat. 'I never ate' would need the preterite, nunca comí.",
+      },
+      {
+        question: "'Saldré' is in which tense?",
+        choices: [
+          "preterite",
+          "present",
+          "future",
+          "conditional",
+        ],
+        accept: [
+          "future",
+        ],
+        answer: "Saldré (I will go out) is the simple future of salir, with irregular stem saldr-. The conditional would be saldría and the preterite salí.",
+      },
+      {
+        question: "What does 'mientras que' mean?",
+        choices: [
+          "whereas",
+          "because",
+          "so that",
+          "unless",
+        ],
+        accept: [
+          "whereas",
+        ],
+        answer: "Mientras que means whereas or while, useful for comparing: a mí me gusta, mientras que mi hermano lo odia. Because is porque and so that is para que.",
+      },
+      {
+        question: "What time is 'a las nueve menos cuarto'?",
+        choices: [
+          "9:15",
+          "8:45",
+          "9:45",
+          "8:15",
+        ],
+        accept: [
+          "8:45",
+        ],
+        answer: "Menos cuarto means a quarter to, so it's a quarter to nine, 8:45. A quarter past nine (9:15) is las nueve y cuarto.",
+      },
+      {
+        question: "What does 'Me cae bien mi profesora' mean?",
+        choices: [
+          "My teacher fell over",
+          "I like my teacher",
+          "I annoy my teacher",
+          "I look like my teacher",
+        ],
+        accept: [
+          "I like my teacher",
+        ],
+        answer: "Caer bien is an idiom: someone me cae bien if I like them or get on with them. It has nothing to do with falling; me cae mal means I don't like them.",
       },
     ],
     misconceptions: [

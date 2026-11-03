@@ -1,5 +1,68 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## 1,000 more quick game questions: the three languages and the sciences (2026-11-03)
+
+Matthew, from school: *"design 500 more questions that fit my requirements
+across all the languages and 500 across all the sciences"*. Same brief as the
+earlier game batches: a solid student answers it in their head inside the
+10-second reload; the stem is at most 95 characters; there are four buttons of
+at most 22 characters; and there is a one-line "why".
+
+    Spanish    110 → 290   (+180, 10 a topic)
+    French      94 → 274   (+180, 10 a topic)
+    German      65 → 205   (+140, 11–12 a topic)
+    Biology    410 → 580   (+170)
+    Chemistry  375 → 540   (+165)
+    Physics    375 → 540   (+165)
+
+The languages were the real gap. With 5–7 multiple-choice questions a topic, a
+language run in the game was mostly numbers turned into buttons, or repeats.
+
+Twelve parallel writers worked against a written brief. Each had to pass a
+validator built from the site's own functions, not copies of them:
+`normalise()`, `foldAccents()`, `isOpenEnded()`, `whyFor()` and `CALCULATION`
+from calculator-topics.ts. The validator enforces:
+
+- the why must survive the panel untrimmed;
+- a language topic must never gain a calculator, so no "5 × 2" anywhere;
+- no `higherOnly` outside the sciences;
+- no two buttons that differ only by an accent (tu and tú on screen at once is
+  a trap in ten seconds);
+- no stem that duplicates any existing question on the site.
+
+**All 1,000 were blind re-solved by eleven fresh solvers: 1,000 of 1,000
+agreed.** Solvers saw only the stem and the shuffled choices. A second phase
+then showed them the key and the why to check.
+
+⚠️ **That second phase is new, and it caught real errors in the whys**:
+
+- "a few atoms thick" gold foil (it was about a thousand);
+- "cell sap" for phloem sap;
+- Pluto being "too small" (it has not cleared its orbit);
+- "German family nouns rarely add -s" (die Omas, die Opas).
+
+About 30 items changed in total:
+
+- Most were form giveaways. In four biology questions the right answer was the
+  only button not starting with "To…".
+- Six "which of these is good/bad" biology items could be answered by common
+  sense. Their distractors were rebuilt or the item was replaced.
+- The rewrites were re-solved blind too: 20 of 20, then 2 of 2.
+- Cross-language twins were reworded, because the same English stem in two
+  languages is a site-wide duplicate.
+
+Higher-tier flags are kept to a minimum: moles, Le Chatelier, momentum,
+induced p.d. and transformers, resultant by Pythagoras, protein synthesis and
+GM vectors. Triple-only content is not flagged, because it is not Higher.
+
+**Verified.** `npm run check` fully green, with every other suite unchanged:
+
+- **265,425** content checks;
+- **43,801** game-question checks;
+- new floors for all six subjects in check-game-questions.mjs (a floor raised
+  by one fails, so the check bites);
+- the calculator check confirms no language topic gained the button.
+
 ## The ending: a shuttle full of TNT, after the Director (2026-10-15)
 
 Matthew: *"a cutscene where after the boss... we go into a spaceship. Then fill

@@ -225,6 +225,136 @@ export const FRENCH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: tu is informal singular, used with people your own age, friends and family; vous is formal singular, or plural for any group, used with teachers, strangers and anyone you should show respect to. A good answer names a clear example for each, such as using tu with a classmate and vous with a shop assistant you've never met.",
       },
+      {
+        question: "What does 'À bientôt' mean?",
+        choices: [
+          "See you tomorrow",
+          "Good evening",
+          "See you soon",
+          "Nice to meet you",
+        ],
+        accept: [
+          "See you soon",
+        ],
+        answer: "À bientôt means 'see you soon' (bientôt = soon). 'See you tomorrow' is à demain, and 'good evening' is bonsoir.",
+      },
+      {
+        question: "What does 'Enchanté' mean when you are introduced to someone?",
+        choices: [
+          "Pleased to meet you",
+          "Welcome",
+          "Excuse me",
+          "Good luck",
+        ],
+        accept: [
+          "Pleased to meet you",
+        ],
+        answer: "Enchanté means 'pleased to meet you'. A girl or woman writes enchantée with an extra -e. 'Welcome' is bienvenue.",
+      },
+      {
+        question: "Which word means 'good evening'?",
+        choices: [
+          "Bonne nuit",
+          "Bonsoir",
+          "Salut",
+          "Bonjour",
+        ],
+        accept: [
+          "Bonsoir",
+        ],
+        answer: "Bonsoir is 'good evening', used when you arrive or meet someone. Bonne nuit is 'goodnight', said only when someone is going to bed.",
+      },
+      {
+        question: "What does 'D'où viens-tu?' mean?",
+        choices: [
+          "Where do you live?",
+          "How old are you?",
+          "Where are you going?",
+          "Where are you from?",
+        ],
+        accept: [
+          "Where are you from?",
+        ],
+        answer: "D'où viens-tu? uses venir de (to come from), so it asks where you are from. 'Where do you live?' is Où habites-tu?",
+      },
+      {
+        question: "Which number is 'soixante et onze'?",
+        choices: [
+          "71",
+          "61",
+          "81",
+          "17",
+        ],
+        accept: [
+          "71",
+        ],
+        answer: "Soixante et onze is literally 'sixty and eleven', so 71. French counts on from sixty up to 79; 81 is quatre-vingt-un.",
+      },
+      {
+        question: "Which word completes 'J'habite ___ France'?",
+        choices: [
+          "au",
+          "à",
+          "en",
+          "dans",
+        ],
+        accept: [
+          "en",
+        ],
+        answer: "France is feminine, and feminine countries take en for 'in': en France, en Espagne. Masculine countries take au, as in au Canada.",
+      },
+      {
+        question: "Which word for 'you' should you use when talking to a teacher?",
+        choices: [
+          "vous",
+          "tu",
+          "toi",
+          "te",
+        ],
+        accept: [
+          "vous",
+        ],
+        answer: "Vous is the polite 'you' for adults you don't know well, like teachers. Tu is only for friends, family, children and pets.",
+      },
+      {
+        question: "Which completes 'Ils ___ quatorze ans'?",
+        choices: [
+          "sont",
+          "avons",
+          "ont",
+          "as",
+        ],
+        accept: [
+          "ont",
+        ],
+        answer: "Ils ont is the ils form of avoir, and French uses avoir for age. Sont is from être, which you never use for age.",
+      },
+      {
+        question: "Which completes 'Elle est ___' to say she is French?",
+        choices: [
+          "français",
+          "françaises",
+          "France",
+          "française",
+        ],
+        accept: [
+          "française",
+        ],
+        answer: "Française adds -e because elle is feminine. Nationality adjectives have no capital letter in French; France is the country itself.",
+      },
+      {
+        question: "What does 'Comme ci, comme ça' mean in reply to 'Ça va?'",
+        choices: [
+          "So-so",
+          "Very well",
+          "Not at all",
+          "Like this",
+        ],
+        accept: [
+          "So-so",
+        ],
+        answer: "Comme ci, comme ça means 'so-so' or 'OK, not great'. 'Very well' would be très bien, and 'not at all' is pas du tout.",
+      },
     ],
     misconceptions: [
       {
@@ -422,6 +552,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "Explain in English why French possessive adjectives like son/sa/ses can be ambiguous in a way that English 'his'/'her' is not.",
         answer:
           "Mark it yourself against this: French possessives agree with the gender of the noun that follows them (the thing owned), not with the gender of the owner, so son livre could mean 'his book' or 'her book' with no way to tell from the word itself — only context, or an added phrase like son livre à elle, resolves it. English does the opposite, marking the owner's gender ('his' vs 'her') and ignoring the gender of the object owned.",
+      },
+      {
+        question: "What does 'Je suis fils unique' mean?",
+        choices: [
+          "I am a twin",
+          "I am the eldest son",
+          "I am an only child",
+          "I am a grandson",
+        ],
+        accept: [
+          "I am an only child",
+        ],
+        answer: "Fils unique means an only child (a boy); a girl says fille unique. 'Unique' here means 'only', not 'special'.",
+      },
+      {
+        question: "What does 'un demi-frère' mean?",
+        choices: [
+          "a half-brother",
+          "a brother-in-law",
+          "a twin brother",
+          "a cousin",
+        ],
+        accept: [
+          "a half-brother",
+        ],
+        answer: "Un demi-frère is a half-brother or stepbrother (demi = half). A brother-in-law is un beau-frère and a twin brother is un frère jumeau.",
+      },
+      {
+        question: "Which completes '___ sœur s'appelle Marie' (his sister)?",
+        choices: [
+          "son",
+          "sa",
+          "ses",
+          "ma",
+        ],
+        accept: [
+          "sa",
+        ],
+        answer: "Sa, because sœur is feminine. The possessive agrees with the thing owned, not the owner, so 'his sister' and 'her sister' are both sa sœur.",
+      },
+      {
+        question: "What does 'bavard' mean?",
+        choices: [
+          "chatty",
+          "brave",
+          "lazy",
+          "bossy",
+        ],
+        accept: [
+          "chatty",
+        ],
+        answer: "Bavard (feminine bavarde) means chatty or talkative. 'Brave' is courageux and 'lazy' is paresseux.",
+      },
+      {
+        question: "Which completes 'C'est un ___ homme' (handsome)?",
+        choices: [
+          "beau",
+          "bel",
+          "belle",
+          "beaux",
+        ],
+        accept: [
+          "bel",
+        ],
+        answer: "Bel is the special form of beau used before a masculine noun starting with a vowel or silent h: un bel homme. Belle is feminine.",
+      },
+      {
+        question: "What does 'Il a les cheveux courts' mean?",
+        choices: [
+          "He has long hair",
+          "He has short hair",
+          "He has curly hair",
+          "He has brown hair",
+        ],
+        accept: [
+          "He has short hair",
+        ],
+        answer: "Courts means short. Long hair is les cheveux longs, curly is frisés or bouclés, and brown is bruns.",
+      },
+      {
+        question: "Which adjective normally goes BEFORE the noun in French?",
+        choices: [
+          "intelligent",
+          "sportif",
+          "timide",
+          "grand",
+        ],
+        accept: [
+          "grand",
+        ],
+        answer: "Grand is one of the short, common 'BAGS' adjectives (beauty, age, goodness, size) that go before the noun: un grand frère. Most others go after.",
+      },
+      {
+        question: "What does 's'entendre bien avec' mean?",
+        choices: [
+          "to argue with",
+          "to get on well with",
+          "to listen to",
+          "to look like",
+        ],
+        accept: [
+          "to get on well with",
+        ],
+        answer: "S'entendre bien avec means to get on well with: je m'entends bien avec ma sœur. Arguing is se disputer avec, and 'to look like' is ressembler à.",
+      },
+      {
+        question: "What does 'sympathique' usually mean?",
+        choices: [
+          "sympathetic",
+          "nice",
+          "shy",
+          "serious",
+        ],
+        accept: [
+          "nice",
+        ],
+        answer: "Sympathique (or sympa) means nice or friendly. It is a false friend: 'sympathetic' in English is compatissant in French.",
+      },
+      {
+        question: "Which completes 'J'ai les yeux ___' (blue)?",
+        choices: [
+          "bleu",
+          "bleus",
+          "bleue",
+          "bleues",
+        ],
+        accept: [
+          "bleus",
+        ],
+        answer: "Yeux is masculine plural, so the adjective adds just -s: les yeux bleus. Bleues would be feminine plural.",
       },
     ],
     misconceptions: [
@@ -623,6 +883,136 @@ export const FRENCH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: jouer à is reserved for sports and games, while musical instruments always take jouer de (jouer du piano). An English speaker might expect 'play' to work the same way for all three, but French splits playing sports from playing instruments with two different prepositions, and mixing them is a genuine grammar error, not just a style choice.",
       },
+      {
+        question: "What does 'la natation' mean?",
+        choices: [
+          "sailing",
+          "skating",
+          "swimming",
+          "horse riding",
+        ],
+        accept: [
+          "swimming",
+        ],
+        answer: "La natation is swimming (nager = to swim). Sailing is la voile, skating is le patinage and horse riding is l'équitation.",
+      },
+      {
+        question: "Which completes 'Je fais ___ vélo'?",
+        choices: [
+          "du",
+          "de la",
+          "au",
+          "à la",
+        ],
+        accept: [
+          "du",
+        ],
+        answer: "Faire takes de, and vélo is masculine, so de + le becomes du: je fais du vélo. Au comes from à + le, which goes with jouer for sports.",
+      },
+      {
+        question: "Which completes 'Elle joue ___ batterie' (the drums)?",
+        choices: [
+          "à la",
+          "au",
+          "de la",
+          "du",
+        ],
+        accept: [
+          "de la",
+        ],
+        answer: "Instruments take jouer de, and batterie is feminine, so de la batterie. Jouer à la would be for a sport or game.",
+      },
+      {
+        question: "What does 'une fois par semaine' mean?",
+        choices: [
+          "once a week",
+          "twice a week",
+          "once a month",
+          "every weekend",
+        ],
+        accept: [
+          "once a week",
+        ],
+        answer: "Une fois = once, par semaine = per week. Twice a week is deux fois par semaine, and once a month is une fois par mois.",
+      },
+      {
+        question: "Which completes 'Je ne joue ___ au foot' to mean 'I never play football'?",
+        choices: [
+          "pas",
+          "jamais",
+          "rien",
+          "plus",
+        ],
+        accept: [
+          "jamais",
+        ],
+        answer: "Ne...jamais means never. Ne...pas is just 'not', ne...plus is 'no longer' and ne...rien is 'nothing'.",
+      },
+      {
+        question: "Which completes 'Nous ___ au basket'?",
+        choices: [
+          "jouez",
+          "jouent",
+          "joue",
+          "jouons",
+        ],
+        accept: [
+          "jouons",
+        ],
+        answer: "Regular -er verbs take -ons in the nous form: nous jouons. Jouez is the vous form and jouent is ils/elles.",
+      },
+      {
+        question: "What does 'la lecture' mean?",
+        choices: [
+          "a lecture",
+          "reading",
+          "writing",
+          "drawing",
+        ],
+        accept: [
+          "reading",
+        ],
+        answer: "La lecture is reading (from lire). It is a false friend: an English 'lecture' is une conférence or un cours.",
+      },
+      {
+        question: "What does 'faire des randonnées' mean?",
+        choices: [
+          "to go sailing",
+          "to go cycling",
+          "to go hiking",
+          "to go skating",
+        ],
+        accept: [
+          "to go hiking",
+        ],
+        answer: "Une randonnée is a hike or long walk, so faire des randonnées is to go hiking. Cycling is faire du vélo and sailing is faire de la voile.",
+      },
+      {
+        question: "What does 'Je déteste faire du shopping' mean?",
+        choices: [
+          "I love going shopping",
+          "I hate going shopping",
+          "I like going shopping",
+          "I never go shopping",
+        ],
+        accept: [
+          "I hate going shopping",
+        ],
+        answer: "Détester means to hate, and it is followed by an infinitive (faire). 'I never go shopping' would need ne...jamais.",
+      },
+      {
+        question: "Which word means 'often'?",
+        choices: [
+          "parfois",
+          "rarement",
+          "toujours",
+          "souvent",
+        ],
+        accept: [
+          "souvent",
+        ],
+        answer: "Souvent means often. Parfois is sometimes, rarement is rarely and toujours is always.",
+      },
     ],
     misconceptions: [
       {
@@ -819,6 +1209,136 @@ export const FRENCH: Record<string, TopicContent> = {
         accept: ["quatorze heures", "14 heures", "14h00", "14h"],
         answer: "Quatorze heures — French timetables use the 24-hour clock as standard, so 2pm is written and said as fourteen hundred hours rather than 'deux heures de l'après-midi'.",
       },
+      {
+        question: "What is 'la rentrée'?",
+        choices: [
+          "break time",
+          "the start of term",
+          "lunchtime",
+          "the end of term",
+        ],
+        accept: [
+          "the start of term",
+        ],
+        answer: "La rentrée is going back to school at the start of the school year, in early September. Break time is la récré.",
+      },
+      {
+        question: "What does 'une trousse' mean?",
+        choices: [
+          "a rubber",
+          "a ruler",
+          "a pencil case",
+          "a schoolbag",
+        ],
+        accept: [
+          "a pencil case",
+        ],
+        answer: "Une trousse is a pencil case. A rubber is une gomme, a ruler is une règle and a schoolbag is un cartable.",
+      },
+      {
+        question: "What does 'car' mean in 'J'aime l'anglais car c'est utile'?",
+        choices: [
+          "because",
+          "but",
+          "so",
+          "although",
+        ],
+        accept: [
+          "because",
+        ],
+        answer: "Car means 'because', just like parce que. 'But' is mais and 'so' is donc.",
+      },
+      {
+        question: "What time is 'il est trois heures et demie'?",
+        choices: [
+          "quarter past three",
+          "half past two",
+          "half past three",
+          "quarter to four",
+        ],
+        accept: [
+          "half past three",
+        ],
+        answer: "Et demie means 'and a half', so trois heures et demie is half past three. Quarter past three is trois heures et quart.",
+      },
+      {
+        question: "What time is 'midi'?",
+        choices: [
+          "midnight",
+          "midday",
+          "half past eleven",
+          "one o'clock",
+        ],
+        accept: [
+          "midday",
+        ],
+        answer: "Midi is midday (12 noon). Midnight is minuit, which is easy to mix up because the two words look alike.",
+      },
+      {
+        question: "What does 'les devoirs' mean at school?",
+        choices: [
+          "homework",
+          "exams",
+          "lessons",
+          "marks",
+        ],
+        accept: [
+          "homework",
+        ],
+        answer: "Les devoirs is homework: je fais mes devoirs. Exams are les examens, lessons are les cours and marks are les notes.",
+      },
+      {
+        question: "Which school subject is 'la physique'?",
+        choices: [
+          "PE",
+          "physics",
+          "biology",
+          "chemistry",
+        ],
+        accept: [
+          "physics",
+        ],
+        answer: "La physique is physics. PE is l'EPS, biology is la biologie (or SVT) and chemistry is la chimie.",
+      },
+      {
+        question: "What does 'Il est interdit de...' mean in school rules?",
+        choices: [
+          "It is important to...",
+          "It is forbidden to...",
+          "It is easy to...",
+          "It is necessary to...",
+        ],
+        accept: [
+          "It is forbidden to...",
+        ],
+        answer: "Interdit means forbidden or not allowed, as in il est interdit de courir. 'It is necessary to' is il faut, and 'it is easy to' is il est facile de.",
+      },
+      {
+        question: "What is 'le collège' in France?",
+        choices: [
+          "sixth form college",
+          "secondary school",
+          "university",
+          "primary school",
+        ],
+        accept: [
+          "secondary school",
+        ],
+        answer: "Le collège is secondary school for ages 11 to 15. It's a false friend: after it comes le lycée, and university is l'université.",
+      },
+      {
+        question: "What does 'redoubler' mean at school?",
+        choices: [
+          "to revise",
+          "to skip a class",
+          "to repeat a year",
+          "to double-check",
+        ],
+        accept: [
+          "to repeat a year",
+        ],
+        answer: "Redoubler means to repeat a school year, which is common in France. 'To revise' is réviser.",
+      },
     ],
     misconceptions: [
       {
@@ -1006,6 +1526,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "Translate into English: 'D'abord, je me réveille. Ensuite, je m'habille. Enfin, je vais au collège.'",
         accept: ["first, i wake up. then, i get dressed. finally, i go to school.", "first i wake up, then i get dressed, finally i go to school"],
         answer: "First, I wake up. Then, I get dressed. Finally, I go to school. — the three sequencing words d'abord, ensuite and enfin mark the beginning, middle and end of the routine.",
+      },
+      {
+        question: "What does 's'habiller' mean?",
+        choices: [
+          "to get up",
+          "to get dressed",
+          "to wash",
+          "to wake up",
+        ],
+        accept: [
+          "to get dressed",
+        ],
+        answer: "S'habiller is to get dressed (les habits = clothes). To get up is se lever, to wake up is se réveiller and to wash is se laver.",
+      },
+      {
+        question: "What does 'Je me brosse les dents' mean?",
+        choices: [
+          "I brush my hair",
+          "I wash my face",
+          "I brush my teeth",
+          "I tidy my room",
+        ],
+        accept: [
+          "I brush my teeth",
+        ],
+        answer: "Les dents are teeth (think 'dentist'). 'I brush my hair' would be je me brosse les cheveux.",
+      },
+      {
+        question: "Which completes 'Elle ___ couche à dix heures'?",
+        choices: [
+          "me",
+          "te",
+          "nous",
+          "se",
+        ],
+        accept: [
+          "se",
+        ],
+        answer: "Se is the reflexive pronoun for il, elle, ils and elles: elle se couche. Me goes with je and te with tu.",
+      },
+      {
+        question: "What does 'au rez-de-chaussée' mean?",
+        choices: [
+          "on the ground floor",
+          "on the first floor",
+          "in the cellar",
+          "in the attic",
+        ],
+        accept: [
+          "on the ground floor",
+        ],
+        answer: "Le rez-de-chaussée is the ground floor. Le premier étage is the first floor (one up), the cellar is la cave and the attic is le grenier.",
+      },
+      {
+        question: "What does 'vers' mean in 'Je me lève vers sept heures'?",
+        choices: [
+          "exactly",
+          "before",
+          "at about",
+          "until",
+        ],
+        accept: [
+          "at about",
+        ],
+        answer: "Vers with a time means 'at about' or 'around'. 'Exactly' would be sept heures pile, 'before' is avant and 'until' is jusqu'à.",
+      },
+      {
+        question: "What does 'enfin' mean in a routine?",
+        choices: [
+          "finally",
+          "then",
+          "first",
+          "sometimes",
+        ],
+        accept: [
+          "finally",
+        ],
+        answer: "Enfin means finally, for the last step. D'abord is first, and ensuite or puis mean then.",
+      },
+      {
+        question: "Which auxiliary do reflexive verbs take in the perfect tense?",
+        choices: [
+          "avoir",
+          "être",
+          "aller",
+          "faire",
+        ],
+        accept: [
+          "être",
+        ],
+        answer: "All reflexive verbs use être in the perfect tense, so the participle agrees: je me suis levé(e), elle s'est douchée.",
+      },
+      {
+        question: "Which word means 'bedroom'?",
+        choices: [
+          "le salon",
+          "le bureau",
+          "la salle",
+          "la chambre",
+        ],
+        accept: [
+          "la chambre",
+        ],
+        answer: "La chambre is the bedroom. Le salon is the living room and le bureau is a study or office.",
+      },
+      {
+        question: "What does 'mettre la table' mean?",
+        choices: [
+          "to clear the table",
+          "to lay the table",
+          "to wash up",
+          "to cook dinner",
+        ],
+        accept: [
+          "to lay the table",
+        ],
+        answer: "Mettre la table is to lay (set) the table. Clearing it is débarrasser la table and washing up is faire la vaisselle.",
+      },
+      {
+        question: "What does 'tard' mean in 'Je me couche tard'?",
+        choices: [
+          "early",
+          "soon",
+          "late",
+          "often",
+        ],
+        accept: [
+          "late",
+        ],
+        answer: "Tard means late. Its opposite, tôt, means early; 'soon' is bientôt and 'often' is souvent.",
       },
     ],
     misconceptions: [
@@ -1206,6 +1856,136 @@ export const FRENCH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: grouping verbs by their infinitive ending lets a learner apply one set of endings to hundreds of verbs at once rather than memorising each verb from scratch, which is efficient because the vast majority of French verbs are regular, especially -er verbs. The exceptions — être, avoir, aller, faire and others — have to be learned individually precisely because they don't follow any of the three patterns, which is why they're worth memorising early and thoroughly.",
       },
+      {
+        question: "Which completes 'Vous ___ le bus' (prendre)?",
+        choices: [
+          "prennent",
+          "prenez",
+          "prenons",
+          "prends",
+        ],
+        accept: [
+          "prenez",
+        ],
+        answer: "Vous prenez is the vous form of the irregular verb prendre. Prennent (double n) is the ils/elles form and prenons is nous.",
+      },
+      {
+        question: "Which completes 'Ils ___ au cinéma' (aller)?",
+        choices: [
+          "vont",
+          "vais",
+          "allons",
+          "sont",
+        ],
+        accept: [
+          "vont",
+        ],
+        answer: "Aller is irregular: ils vont. Vais is the je form, allons is nous, and sont comes from être.",
+      },
+      {
+        question: "Which completes 'Je ___ mes devoirs' (finir)?",
+        choices: [
+          "finit",
+          "fini",
+          "finissons",
+          "finis",
+        ],
+        accept: [
+          "finis",
+        ],
+        answer: "Regular -ir verbs end in -is for je: je finis. Finit is the il/elle form and fini is the past participle.",
+      },
+      {
+        question: "Which completes 'Vous ___ du sport' (faire)?",
+        choices: [
+          "faisez",
+          "faites",
+          "fais",
+          "font",
+        ],
+        accept: [
+          "faites",
+        ],
+        answer: "Faire is irregular: vous faites, not 'faisez'. Fais is je/tu and font is ils/elles. Être (vous êtes) and dire (vous dites) are similar.",
+      },
+      {
+        question: "What is the 'nous' form of 'manger'?",
+        choices: [
+          "mangons",
+          "mangez",
+          "mangeons",
+          "mangent",
+        ],
+        accept: [
+          "mangeons",
+        ],
+        answer: "Mangeons keeps an extra e so the g stays soft before -ons. The same happens with nager (nageons). Mangez is the vous form.",
+      },
+      {
+        question: "Which completes 'Je n'ai pas ___ frère'?",
+        choices: [
+          "un",
+          "du",
+          "de",
+          "le",
+        ],
+        accept: [
+          "de",
+        ],
+        answer: "After a negative, un, une, du, de la and des change to de (or d'): je n'ai pas de frère. 'Je n'ai pas un frère' is a common mistake.",
+      },
+      {
+        question: "Which completes 'Elles ___ sortir' (vouloir)?",
+        choices: [
+          "voulent",
+          "veulent",
+          "voulons",
+          "veut",
+        ],
+        accept: [
+          "veulent",
+        ],
+        answer: "Vouloir is irregular: elles veulent, with -eu- like je veux. 'Voulent' is a common mistake; voulons is the nous form.",
+      },
+      {
+        question: "What is the infinitive of 'ils font'?",
+        choices: [
+          "aller",
+          "finir",
+          "faire",
+          "avoir",
+        ],
+        accept: [
+          "faire",
+        ],
+        answer: "Font is the ils form of faire. It is easy to mix up with vont (aller) and ont (avoir), the other irregular -ont forms.",
+      },
+      {
+        question: "Which completes 'Nous ___ lavons' (se laver)?",
+        choices: [
+          "se",
+          "vous",
+          "nous",
+          "me",
+        ],
+        accept: [
+          "nous",
+        ],
+        answer: "With nous the reflexive pronoun is also nous: nous nous lavons. Se is only for il, elle, ils and elles.",
+      },
+      {
+        question: "In 'Je dois partir', what form is 'partir'?",
+        choices: [
+          "the present",
+          "the infinitive",
+          "a past participle",
+          "the imperative",
+        ],
+        accept: [
+          "the infinitive",
+        ],
+        answer: "After devoir, pouvoir and vouloir the second verb stays in the infinitive. Dois is the present-tense verb in this sentence.",
+      },
     ],
     misconceptions: [
       {
@@ -1402,6 +2182,136 @@ export const FRENCH: Record<string, TopicContent> = {
         accept: ["nous allons utiliser cette application plus que l'ancienne"],
         answer: "Nous allons utiliser cette application plus que l'ancienne — allons + utiliser forms the near future, and plus que gives the comparative 'more than'.",
       },
+      {
+        question: "What does 'télécharger' mean?",
+        choices: [
+          "to upload",
+          "to share",
+          "to download",
+          "to delete",
+        ],
+        accept: [
+          "to download",
+        ],
+        answer: "Télécharger means to download, as in télécharger une appli. To share is partager and to delete is effacer or supprimer.",
+      },
+      {
+        question: "What does 'un abonné' mean on social media?",
+        choices: [
+          "a follower",
+          "a friend",
+          "a user",
+          "a post",
+        ],
+        accept: [
+          "a follower",
+        ],
+        answer: "Un abonné (feminine une abonnée) is a follower or subscriber. A user is un utilisateur and a friend is un ami.",
+      },
+      {
+        question: "What does 'en ligne' mean?",
+        choices: [
+          "offline",
+          "on screen",
+          "on time",
+          "online",
+        ],
+        accept: [
+          "online",
+        ],
+        answer: "En ligne means online: acheter en ligne. Offline is hors ligne, and 'on screen' is à l'écran.",
+      },
+      {
+        question: "What does 'une perte de temps' mean?",
+        choices: [
+          "a waste of time",
+          "a lot of time",
+          "free time",
+          "a time limit",
+        ],
+        accept: [
+          "a waste of time",
+        ],
+        answer: "Une perte de temps is a waste of time (perdre = to lose or waste). Free time is le temps libre.",
+      },
+      {
+        question: "What does 'moins cher que' mean?",
+        choices: [
+          "more expensive than",
+          "less expensive than",
+          "as expensive as",
+          "the most expensive",
+        ],
+        accept: [
+          "less expensive than",
+        ],
+        answer: "Moins...que means 'less...than', so moins cher que is less expensive (cheaper) than. 'More...than' is plus...que and 'as...as' is aussi...que.",
+      },
+      {
+        question: "'Je vais envoyer un message' is in which tense?",
+        choices: [
+          "the present",
+          "the perfect",
+          "the near future",
+          "the imperfect",
+        ],
+        accept: [
+          "the near future",
+        ],
+        answer: "Aller in the present + an infinitive makes the near future: I'm going to send a message. Vais alone is present, but here it is followed by envoyer.",
+      },
+      {
+        question: "Which completes 'Tu ___ partager la photo?' (are you going to)?",
+        choices: [
+          "vais",
+          "vas",
+          "va",
+          "allez",
+        ],
+        accept: [
+          "vas",
+        ],
+        answer: "The near future uses aller in the present, and the tu form is vas: tu vas partager. Vais is je and va is il/elle.",
+      },
+      {
+        question: "What does 'le cyberharcèlement' mean?",
+        choices: [
+          "online shopping",
+          "online gaming",
+          "hacking",
+          "cyberbullying",
+        ],
+        accept: [
+          "cyberbullying",
+        ],
+        answer: "Le harcèlement is harassment or bullying, so le cyberharcèlement is cyberbullying. Hacking is le piratage.",
+      },
+      {
+        question: "What does 'envoyer' mean?",
+        choices: [
+          "to receive",
+          "to send",
+          "to reply",
+          "to delete",
+        ],
+        accept: [
+          "to send",
+        ],
+        answer: "Envoyer means to send: j'envoie des messages. To receive is recevoir and to reply is répondre.",
+      },
+      {
+        question: "Which word means 'a screen'?",
+        choices: [
+          "un écran",
+          "un clavier",
+          "une souris",
+          "une appli",
+        ],
+        accept: [
+          "un écran",
+        ],
+        answer: "Un écran is a screen. Un clavier is a keyboard, une souris is a mouse and une appli is an app.",
+      },
     ],
     misconceptions: [
       {
@@ -1589,6 +2499,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "Translate into English: 'Contrairement au Royaume-Uni, en France, on fête la Chandeleur en mangeant des crêpes.'",
         accept: ["unlike the united kingdom, in france, people celebrate candlemas by eating crepes", "unlike the uk, in france, we celebrate candlemas by eating pancakes"],
         answer: "Unlike the United Kingdom, in France, people celebrate Candlemas by eating crêpes — contrairement au introduces the contrast, and en mangeant means 'by eating'.",
+      },
+      {
+        question: "On what date is Bastille Day, France's national day?",
+        choices: [
+          "4 July",
+          "1 May",
+          "14 July",
+          "11 November",
+        ],
+        accept: [
+          "14 July",
+        ],
+        answer: "Le 14 juillet is the fête nationale, marking the storming of the Bastille in 1789, with parades and fireworks. 1 May is la fête du Travail.",
+      },
+      {
+        question: "What is 'le réveillon' at Christmas?",
+        choices: [
+          "a Boxing Day walk",
+          "a Christmas Eve feast",
+          "an Advent calendar",
+          "a carol service",
+        ],
+        accept: [
+          "a Christmas Eve feast",
+        ],
+        answer: "Le réveillon is the big late-night meal on 24 December. New Year's Eve also has one, le réveillon du Nouvel An.",
+      },
+      {
+        question: "What does 'un feu d'artifice' mean?",
+        choices: [
+          "a bonfire",
+          "a street party",
+          "a firework display",
+          "a birthday cake",
+        ],
+        accept: [
+          "a firework display",
+        ],
+        answer: "Un feu d'artifice is a firework display, a big part of the 14 juillet. A bonfire is un feu de joie.",
+      },
+      {
+        question: "What does 'un défilé' mean?",
+        choices: [
+          "a parade",
+          "a bonfire",
+          "a feast",
+          "a gift",
+        ],
+        accept: [
+          "a parade",
+        ],
+        answer: "Un défilé is a parade, like the military parade in Paris on 14 July. A feast is un festin and a gift is un cadeau.",
+      },
+      {
+        question: "What does 'un cadeau' mean?",
+        choices: [
+          "a cake",
+          "a card",
+          "a candle",
+          "a present",
+        ],
+        accept: [
+          "a present",
+        ],
+        answer: "Un cadeau is a present or gift. Don't mix it up with un gâteau, which is a cake. A card is une carte and a candle is une bougie.",
+      },
+      {
+        question: "What does 'tandis que' mean?",
+        choices: [
+          "whereas",
+          "because",
+          "therefore",
+          "as soon as",
+        ],
+        accept: [
+          "whereas",
+        ],
+        answer: "Tandis que (like alors que) means 'whereas' or 'while', for contrasting two things. 'Because' is parce que and 'therefore' is donc.",
+      },
+      {
+        question: "Which completes 'La galette? Je ___ mange.' (it)?",
+        choices: [
+          "le",
+          "les",
+          "la",
+          "lui",
+        ],
+        accept: [
+          "la",
+        ],
+        answer: "Galette is feminine, so 'it' is la, placed before the verb: je la mange. Le replaces a masculine noun and les a plural one.",
+      },
+      {
+        question: "What does 'se réunir' mean?",
+        choices: [
+          "to celebrate",
+          "to get together",
+          "to decorate",
+          "to give presents",
+        ],
+        accept: [
+          "to get together",
+        ],
+        answer: "Se réunir means to get together or meet up: la famille se réunit à Noël. 'To celebrate' is fêter or célébrer.",
+      },
+      {
+        question: "Which festival, celebrated by many in France, marks the end of Ramadan?",
+        choices: [
+          "Pâques",
+          "la Toussaint",
+          "la Chandeleur",
+          "l'Aïd",
+        ],
+        accept: [
+          "l'Aïd",
+        ],
+        answer: "L'Aïd (Aïd el-Fitr) marks the end of the fast of Ramadan. Pâques is Easter and la Chandeleur is the crêpe festival in February.",
+      },
+      {
+        question: "What does 'Joyeux anniversaire' mean?",
+        choices: [
+          "Happy Christmas",
+          "Happy birthday",
+          "Happy New Year",
+          "Congratulations",
+        ],
+        accept: [
+          "Happy birthday",
+        ],
+        answer: "Un anniversaire is a birthday, so joyeux anniversaire is happy birthday. Happy Christmas is joyeux Noël and Happy New Year is bonne année.",
       },
     ],
     misconceptions: [
@@ -1785,6 +2825,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "Translate into English: 'Continuez tout droit, puis prenez la deuxième rue à droite. La bibliothèque est en face de la banque.'",
         accept: ["continue straight on, then take the second street on the right. the library is opposite the bank."],
         answer: "Continue straight on, then take the second street on the right. The library is opposite the bank. — puis links the two direction steps, and en face de introduces the final location.",
+      },
+      {
+        question: "What is 'la mairie'?",
+        choices: [
+          "the market",
+          "the town hall",
+          "the police station",
+          "the post office",
+        ],
+        accept: [
+          "the town hall",
+        ],
+        answer: "La mairie is the town hall (le maire = the mayor). The market is le marché and the post office is la poste.",
+      },
+      {
+        question: "What does 'jusqu'à' mean in directions?",
+        choices: [
+          "opposite",
+          "behind",
+          "as far as",
+          "around",
+        ],
+        accept: [
+          "as far as",
+        ],
+        answer: "Jusqu'à means as far as or until: allez jusqu'au rond-point. Opposite is en face de and behind is derrière.",
+      },
+      {
+        question: "What does 'Tournez à droite' mean?",
+        choices: [
+          "Turn right",
+          "Turn left",
+          "Go straight on",
+          "Cross the road",
+        ],
+        accept: [
+          "Turn right",
+        ],
+        answer: "À droite is right, à gauche is left. Go straight on is allez tout droit, which is easy to confuse with droite.",
+      },
+      {
+        question: "What does 'il neige' mean?",
+        choices: [
+          "it's raining",
+          "it's windy",
+          "it's snowing",
+          "it's foggy",
+        ],
+        accept: [
+          "it's snowing",
+        ],
+        answer: "Il neige means it's snowing (la neige = snow). It's raining is il pleut and it's windy is il fait du vent.",
+      },
+      {
+        question: "Which completes 'Il fait ___' to say it's cold?",
+        choices: [
+          "chaud",
+          "froid",
+          "beau",
+          "gris",
+        ],
+        accept: [
+          "froid",
+        ],
+        answer: "Il fait froid is it's cold. Il fait chaud is it's hot, so don't be fooled by chaud looking like 'cold'. Il fait beau is it's nice weather.",
+      },
+      {
+        question: "What does 'animé' mean when describing a town?",
+        choices: [
+          "quiet",
+          "dirty",
+          "historic",
+          "lively",
+        ],
+        accept: [
+          "lively",
+        ],
+        answer: "Animé(e) means lively or busy, full of things going on. Quiet is calme or tranquille, and dirty is sale.",
+      },
+      {
+        question: "What is 'la gare'?",
+        choices: [
+          "the car park",
+          "the train station",
+          "the airport",
+          "the harbour",
+        ],
+        accept: [
+          "the train station",
+        ],
+        answer: "La gare is the train station. The car park is le parking, the airport is l'aéroport and the harbour is le port.",
+      },
+      {
+        question: "What does 'au bord de la mer' mean?",
+        choices: [
+          "in the mountains",
+          "in the countryside",
+          "by the seaside",
+          "in the town centre",
+        ],
+        accept: [
+          "by the seaside",
+        ],
+        answer: "Au bord de la mer means by the seaside (la mer = the sea). The mountains are la montagne and the countryside is la campagne.",
+      },
+      {
+        question: "Which completes 'Je vais ___ piscine'?",
+        choices: [
+          "à la",
+          "au",
+          "à l'",
+          "aux",
+        ],
+        accept: [
+          "à la",
+        ],
+        answer: "Piscine is feminine, so 'to the' stays à la. Au is for masculine nouns (au parc), à l' for a vowel start and aux for plurals.",
+      },
+      {
+        question: "Which completes 'Le musée est près ___ parc'?",
+        choices: [
+          "de la",
+          "du",
+          "au",
+          "de le",
+        ],
+        accept: [
+          "du",
+        ],
+        answer: "Près de + le parc contracts to près du parc; 'de le' is never written. De la would be for a feminine noun.",
       },
     ],
     misconceptions: [
@@ -1987,6 +3157,136 @@ export const FRENCH: Record<string, TopicContent> = {
         accept: ["we took the train, then we arrived at the hotel around midday", "we took the train, then we arrived at the hotel around noon"],
         answer: "We took the train, then we arrived at the hotel around midday — prendre takes avoir (irregular participle pris), while arriver takes être with agreement (arrivés, plural).",
       },
+      {
+        question: "What does 'un aller-retour' mean?",
+        choices: [
+          "a single ticket",
+          "a return ticket",
+          "a platform",
+          "a timetable",
+        ],
+        accept: [
+          "a return ticket",
+        ],
+        answer: "Un aller-retour is a return ticket (there and back). A single ticket is un aller simple, and a platform is le quai.",
+      },
+      {
+        question: "What does 'le quai' mean at a train station?",
+        choices: [
+          "the ticket office",
+          "the waiting room",
+          "the platform",
+          "the departure board",
+        ],
+        accept: [
+          "the platform",
+        ],
+        answer: "Le quai is the platform you wait on. The ticket office is le guichet and the waiting room is la salle d'attente.",
+      },
+      {
+        question: "What does 'la douane' mean?",
+        choices: [
+          "customs",
+          "the luggage",
+          "the coach station",
+          "the passport",
+        ],
+        accept: [
+          "customs",
+        ],
+        answer: "La douane is customs, where bags may be checked at a border. Luggage is les bagages and a passport is un passeport.",
+      },
+      {
+        question: "Which completes 'Je voudrais ___ une chambre pour deux nuits'?",
+        choices: [
+          "réserve",
+          "réservant",
+          "réservais",
+          "réserver",
+        ],
+        accept: [
+          "réserver",
+        ],
+        answer: "After je voudrais you need the infinitive, so réserver. Réserve is a present-tense form and réservais is imperfect.",
+      },
+      {
+        question: "Which completes 'J'habite ___ Londres'?",
+        choices: [
+          "en",
+          "à",
+          "au",
+          "aux",
+        ],
+        accept: [
+          "à",
+        ],
+        answer: "Cities take à: à Londres, à Paris. En is for feminine countries (en France), au for masculine ones and aux for plural ones.",
+      },
+      {
+        question: "Which completes 'Mes sœurs sont ___ à Nice hier'?",
+        choices: [
+          "arrivé",
+          "arrivée",
+          "arrivées",
+          "arrivés",
+        ],
+        accept: [
+          "arrivées",
+        ],
+        answer: "Arriver takes être, so the participle agrees with mes sœurs (feminine plural): add -e and -s to make arrivées.",
+      },
+      {
+        question: "What does 'j'ai eu' mean?",
+        choices: [
+          "I had",
+          "I was",
+          "I have",
+          "I went",
+        ],
+        accept: [
+          "I had",
+        ],
+        answer: "J'ai eu is the passé composé of avoir, so 'I had'. Don't mix it up with j'ai été (I was) or je suis allé (I went).",
+      },
+      {
+        question: "What does 'une auberge de jeunesse' mean?",
+        choices: [
+          "a campsite",
+          "a hotel",
+          "a holiday home",
+          "a youth hostel",
+        ],
+        accept: [
+          "a youth hostel",
+        ],
+        answer: "Une auberge de jeunesse is a youth hostel, a cheap place for young travellers. A campsite is un camping and a hotel is un hôtel.",
+      },
+      {
+        question: "Which phrase means 'on foot'?",
+        choices: [
+          "à pied",
+          "en pied",
+          "au pied",
+          "par pied",
+        ],
+        accept: [
+          "à pied",
+        ],
+        answer: "You go à pied (on foot), like à vélo. Vehicles you sit inside take en: en voiture, en train, en avion.",
+      },
+      {
+        question: "'L'été prochain, j'irai en Italie' — when is the trip?",
+        choices: [
+          "last summer",
+          "every summer",
+          "next summer",
+          "this summer",
+        ],
+        accept: [
+          "next summer",
+        ],
+        answer: "Prochain means next, and j'irai is the future of aller (I will go). Last summer would be l'été dernier.",
+      },
     ],
     misconceptions: [
       {
@@ -2183,6 +3483,136 @@ export const FRENCH: Record<string, TopicContent> = {
         accept: ["i am vegetarian, so i never eat meat, but i love vegetables", "i'm vegetarian, so i never eat meat, but i love vegetables"],
         answer: "I am vegetarian, so I never eat meat, but I love vegetables — ne...jamais collapses de viande to plain de, and j'adore is followed by the definite article les for a general statement of preference.",
       },
+      {
+        question: "What does 'le plat principal' mean on a menu?",
+        choices: [
+          "the starter",
+          "the main course",
+          "the dessert",
+          "the dish of the day",
+        ],
+        accept: [
+          "the main course",
+        ],
+        answer: "Le plat principal is the main course. The starter is l'entrée, dessert is le dessert, and the dish of the day is le plat du jour.",
+      },
+      {
+        question: "What does 'salé' mean when describing food?",
+        choices: [
+          "sweet",
+          "spicy",
+          "savoury",
+          "bitter",
+        ],
+        accept: [
+          "savoury",
+        ],
+        answer: "Salé means salty or savoury. Its opposite is sucré (sweet); épicé is spicy and amer is bitter.",
+      },
+      {
+        question: "Which word means 'vegan'?",
+        choices: [
+          "végétarien",
+          "allergique",
+          "diététique",
+          "végétalien",
+        ],
+        accept: [
+          "végétalien",
+        ],
+        answer: "Végétalien means vegan (no animal products at all). Végétarien means vegetarian, which still allows things like eggs and cheese.",
+      },
+      {
+        question: "What does 'C'est dégoûtant' mean?",
+        choices: [
+          "It's disgusting",
+          "It's delicious",
+          "It's tasteless",
+          "It's too sweet",
+        ],
+        accept: [
+          "It's disgusting",
+        ],
+        answer: "Dégoûtant means disgusting, a strong negative opinion. 'It's delicious' would be c'est délicieux or c'est bon.",
+      },
+      {
+        question: "Which completes 'Je suis allergique ___ fruits de mer'?",
+        choices: [
+          "à",
+          "aux",
+          "des",
+          "de",
+        ],
+        accept: [
+          "aux",
+        ],
+        answer: "Allergique is followed by à, and à + les becomes aux before a plural noun: allergique aux fruits de mer (seafood).",
+      },
+      {
+        question: "Which completes 'Je ne mange pas ___ viande'?",
+        choices: [
+          "de la",
+          "du",
+          "de",
+          "des",
+        ],
+        accept: [
+          "de",
+        ],
+        answer: "After a negative like ne…pas, du/de la/des all change to de: je ne mange pas de viande.",
+      },
+      {
+        question: "What does 'Qu'est-ce que vous recommandez ?' mean?",
+        choices: [
+          "What would you like?",
+          "Is everything OK?",
+          "What is in it?",
+          "What do you recommend?",
+        ],
+        accept: [
+          "What do you recommend?",
+        ],
+        answer: "Recommandez is from recommander (to recommend). A waiter asking 'What would you like?' would say Qu'est-ce que vous désirez ?",
+      },
+      {
+        question: "What does 'la carte' mean in a restaurant?",
+        choices: [
+          "the menu",
+          "the bill",
+          "the tip",
+          "the table",
+        ],
+        accept: [
+          "the menu",
+        ],
+        answer: "In a restaurant, la carte is the menu you order from. The bill is l'addition and the tip is le pourboire.",
+      },
+      {
+        question: "Which word means 'the waiter'?",
+        choices: [
+          "le cuisinier",
+          "le serveur",
+          "le patron",
+          "le client",
+        ],
+        accept: [
+          "le serveur",
+        ],
+        answer: "Le serveur serves your food (la serveuse for a woman). Le cuisinier is the cook and le client is the customer.",
+      },
+      {
+        question: "Which completes 'Je voudrais ___ eau minérale'?",
+        choices: [
+          "du",
+          "des",
+          "de l'",
+          "de la",
+        ],
+        accept: [
+          "de l'",
+        ],
+        answer: "Eau is feminine but starts with a vowel, so de la shortens to de l': de l'eau. Du is for masculine nouns, des for plurals.",
+      },
     ],
     misconceptions: [
       {
@@ -2369,6 +3799,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "Explain in English the difference in USE between the near future (aller + infinitive) and the simple future (je mangerai) in French, even though both can be translated as 'will' in English.",
         answer:
           "Mark it yourself against this: the near future is used for plans that feel close, certain or already decided, and is far more common in everyday spoken French, while the simple future is a single-word conjugated form more typical of formal writing, predictions, or promises about a more distant or less certain future. A strong answer notes that GCSE speaking tasks usually favour the near future for safety, while written pieces benefit from including some simple future forms to show grammatical range.",
+      },
+      {
+        question: "'J'irai' is in which tense?",
+        choices: [
+          "near future",
+          "simple future",
+          "conditional",
+          "imperfect",
+        ],
+        accept: [
+          "simple future",
+        ],
+        answer: "J'irai is the simple future of aller, from the irregular stem ir-. The conditional would be j'irais, with -ais on the end.",
+      },
+      {
+        question: "Which means 'I will do' in French?",
+        choices: [
+          "je faisais",
+          "j'ai fait",
+          "je fais",
+          "je ferai",
+        ],
+        accept: [
+          "je ferai",
+        ],
+        answer: "Je ferai is the simple future of faire, using the irregular stem fer-. Je faisais is imperfect (I was doing) and j'ai fait is past.",
+      },
+      {
+        question: "What is the past participle of 'boire'?",
+        choices: [
+          "bu",
+          "boiré",
+          "bois",
+          "bus",
+        ],
+        accept: [
+          "bu",
+        ],
+        answer: "Boire has the irregular participle bu: j'ai bu (I drank). Bois is a present-tense form, and boiré doesn't exist.",
+      },
+      {
+        question: "Which completes 'Hier, je ___ levée à sept heures'?",
+        choices: [
+          "m'ai",
+          "suis",
+          "me suis",
+          "me sommes",
+        ],
+        accept: [
+          "me suis",
+        ],
+        answer: "Se lever is reflexive, so it takes être and keeps the pronoun: je me suis levée. Me sommes doesn't match je.",
+      },
+      {
+        question: "'Je vais manger' is in which tense?",
+        choices: [
+          "simple future",
+          "present",
+          "conditional",
+          "near future",
+        ],
+        accept: [
+          "near future",
+        ],
+        answer: "Aller in the present plus an infinitive makes the near future: je vais manger (I'm going to eat). The simple future is je mangerai.",
+      },
+      {
+        question: "Which is the imperfect form meaning 'I was'?",
+        choices: [
+          "j'ai été",
+          "j'étais",
+          "je serai",
+          "je suis",
+        ],
+        accept: [
+          "j'étais",
+        ],
+        answer: "J'étais is the imperfect of être, used for descriptions. J'ai été is the passé composé and je serai is the future.",
+      },
+      {
+        question: "Which tense describes what you 'used to' do in the past?",
+        choices: [
+          "imperfect",
+          "passé composé",
+          "pluperfect",
+          "simple future",
+        ],
+        accept: [
+          "imperfect",
+        ],
+        answer: "The imperfect describes repeated past habits: je jouais means I used to play. The passé composé is for single, completed actions.",
+      },
+      {
+        question: "Which is the 'ils' form of 'avoir' in the simple future?",
+        choices: [
+          "ils avaient",
+          "ils ont eu",
+          "ils auront",
+          "ils auraient",
+        ],
+        accept: [
+          "ils auront",
+        ],
+        answer: "Avoir uses the irregular future stem aur-, plus -ont for ils: ils auront. Ils auraient is the conditional (they would have).",
+      },
+      {
+        question: "Which completes 'Elles se sont bien ___' (amuser)?",
+        choices: [
+          "amusés",
+          "amusée",
+          "amuser",
+          "amusées",
+        ],
+        accept: [
+          "amusées",
+        ],
+        answer: "Reflexive verbs take être, so the participle agrees with elles (feminine plural): amusées. Amuser is the infinitive.",
+      },
+      {
+        question: "What does 'je serai' mean?",
+        choices: [
+          "I will be",
+          "I was",
+          "I would be",
+          "I am",
+        ],
+        accept: [
+          "I will be",
+        ],
+        answer: "Je serai is the simple future of être (stem ser-). 'I would be' is the conditional je serais, and 'I was' is j'étais.",
       },
     ],
     misconceptions: [
@@ -2558,6 +4118,136 @@ export const FRENCH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: in English, 'college' usually refers to a post-16 institution, but in French, le collège refers to secondary school for 11 to 15 year olds — roughly the French equivalent of UK Key Stage 3 and 4 — while the French institution closer to UK sixth form is actually called le lycée. A strong answer flags this as a vocabulary trap based on surface similarity rather than actual meaning.",
       },
+      {
+        question: "What does 'une note' mean at school?",
+        choices: [
+          "a lesson",
+          "a mark",
+          "a subject",
+          "a timetable",
+        ],
+        accept: [
+          "a mark",
+        ],
+        answer: "Une note is a mark or grade, like 15 sur 20. Un cours is a lesson and une matière is a subject.",
+      },
+      {
+        question: "What does 'échouer à un examen' mean?",
+        choices: [
+          "to pass an exam",
+          "to sit an exam",
+          "to fail an exam",
+          "to revise for an exam",
+        ],
+        accept: [
+          "to fail an exam",
+        ],
+        answer: "Échouer means to fail. To pass is réussir à un examen, and to sit one is passer un examen.",
+      },
+      {
+        question: "What does 'une matière' mean in a school context?",
+        choices: [
+          "a subject",
+          "a mark",
+          "a classroom",
+          "a uniform",
+        ],
+        accept: [
+          "a subject",
+        ],
+        answer: "Une matière is a school subject, such as maths or history. Ma matière préférée means my favourite subject.",
+      },
+      {
+        question: "What does 'la pression' mean when talking about school?",
+        choices: [
+          "punishment",
+          "homework",
+          "attendance",
+          "pressure",
+        ],
+        accept: [
+          "pressure",
+        ],
+        answer: "La pression is pressure, such as exam pressure. Punishment is une punition and homework is les devoirs.",
+      },
+      {
+        question: "What is 'le bac' roughly equivalent to in the UK?",
+        choices: [
+          "GCSEs",
+          "A levels",
+          "a degree",
+          "SATs",
+        ],
+        accept: [
+          "A levels",
+        ],
+        answer: "Le bac is taken at the end of lycée at about 18, so it matches A levels. The brevet, taken at the end of collège, is closer to GCSEs.",
+      },
+      {
+        question: "What does 'le règlement' mean at school?",
+        choices: [
+          "the timetable",
+          "the uniform",
+          "the rules",
+          "the head teacher",
+        ],
+        accept: [
+          "the rules",
+        ],
+        answer: "Le règlement is the school rules. The timetable is l'emploi du temps and the uniform is l'uniforme.",
+      },
+      {
+        question: "What does 'passer un examen' mean?",
+        choices: [
+          "to sit an exam",
+          "to pass an exam",
+          "to fail an exam",
+          "to mark an exam",
+        ],
+        accept: [
+          "to sit an exam",
+        ],
+        answer: "Passer un examen is a false friend: it means to sit (take) an exam. To pass it is réussir à un examen.",
+      },
+      {
+        question: "Who is 'la directrice' at a French school?",
+        choices: [
+          "the form tutor",
+          "the caretaker",
+          "the librarian",
+          "the head teacher",
+        ],
+        accept: [
+          "the head teacher",
+        ],
+        answer: "La directrice is the head teacher (le directeur for a man). The word looks like 'director', but in school it means the head.",
+      },
+      {
+        question: "What does 'il faudrait' mean?",
+        choices: [
+          "it is necessary",
+          "it would be necessary",
+          "it was necessary",
+          "it will be necessary",
+        ],
+        accept: [
+          "it would be necessary",
+        ],
+        answer: "Il faudrait is the conditional of falloir, so 'it would be necessary' (or 'we should'). Il faut means it is necessary.",
+      },
+      {
+        question: "In France, what is 'la sixième'?",
+        choices: [
+          "last year of collège",
+          "first year of lycée",
+          "first year of collège",
+          "final year of primary",
+        ],
+        accept: [
+          "first year of collège",
+        ],
+        answer: "La sixième is the first year of collège, at about age 11. The years count down to la troisième, the last year of collège.",
+      },
     ],
     misconceptions: [
       {
@@ -2744,6 +4434,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "Explain in English why French treats apprenticeships and vocational training as a mainstream, respected pathway, and why this matters when writing about post-16 choices in French.",
         answer:
           "Mark it yourself against this: in France, un apprentissage and la formation professionnelle are well-established, widely chosen routes rather than a fallback for students who don't pursue academic study, and a strong GCSE answer reflects that by describing vocational choices with the same respect as university routes rather than implying they're a lesser option.",
+      },
+      {
+        question: "What does 'un apprentissage' mean?",
+        choices: [
+          "an internship",
+          "an apprenticeship",
+          "a university",
+          "a gap year",
+        ],
+        accept: [
+          "an apprenticeship",
+        ],
+        answer: "Un apprentissage is an apprenticeship, mixing paid work with training. An internship or work placement is un stage.",
+      },
+      {
+        question: "What does 'la formation professionnelle' mean?",
+        choices: [
+          "vocational training",
+          "a job interview",
+          "a work contract",
+          "a university degree",
+        ],
+        accept: [
+          "vocational training",
+        ],
+        answer: "La formation professionnelle is vocational training for a trade or job. A job interview is un entretien.",
+      },
+      {
+        question: "What does 'continuer mes études' mean?",
+        choices: [
+          "to finish my studies",
+          "to leave school",
+          "to change my studies",
+          "to continue my studies",
+        ],
+        accept: [
+          "to continue my studies",
+        ],
+        answer: "Continuer means to carry on, and mes études means my studies. To leave school would be quitter l'école.",
+      },
+      {
+        question: "Which completes 'Mon rêve, c'est ___ devenir pilote'?",
+        choices: [
+          "à",
+          "que",
+          "de",
+          "pour",
+        ],
+        accept: [
+          "de",
+        ],
+        answer: "The set phrase is mon rêve, c'est de + infinitive (my dream is to…). That's why it's de devenir, not à or pour.",
+      },
+      {
+        question: "What does 'une année sabbatique' mean?",
+        choices: [
+          "a school year",
+          "a final year",
+          "a year abroad",
+          "a gap year",
+        ],
+        accept: [
+          "a gap year",
+        ],
+        answer: "Une année sabbatique is a gap year, a year out before or after studies. A school year is une année scolaire.",
+      },
+      {
+        question: "Which completes 'J'espère ___ à l'université'?",
+        choices: [
+          "aller",
+          "d'aller",
+          "à aller",
+          "que aller",
+        ],
+        accept: [
+          "aller",
+        ],
+        answer: "Espérer is followed directly by the infinitive with no de or à: j'espère aller (I hope to go).",
+      },
+      {
+        question: "'Je voudrais' is in which tense?",
+        choices: [
+          "imperfect",
+          "conditional",
+          "simple future",
+          "present",
+        ],
+        accept: [
+          "conditional",
+        ],
+        answer: "Je voudrais (I would like) is the conditional of vouloir. The future is je voudrai, with no s, and the imperfect is je voulais.",
+      },
+      {
+        question: "What does 'quitter l'école' mean?",
+        choices: [
+          "to change school",
+          "to stay at school",
+          "to leave school",
+          "to finish homework",
+        ],
+        accept: [
+          "to leave school",
+        ],
+        answer: "Quitter means to leave a place or person, so quitter l'école means to leave school. To stay is rester.",
+      },
+      {
+        question: "Which completes 'L'année prochaine, nous ___ au lycée'?",
+        choices: [
+          "irons",
+          "irions",
+          "allions",
+          "sommes allés",
+        ],
+        accept: [
+          "irons",
+        ],
+        answer: "L'année prochaine (next year) needs the future: nous irons, from the stem ir-. Irions is conditional and allions is imperfect.",
+      },
+      {
+        question: "Which phrase means 'I intend to'?",
+        choices: [
+          "j'ai besoin de",
+          "j'ai peur de",
+          "j'ai honte de",
+          "j'ai l'intention de",
+        ],
+        accept: [
+          "j'ai l'intention de",
+        ],
+        answer: "J'ai l'intention de + infinitive means I intend to. J'ai besoin de means I need to and j'ai peur de means I'm afraid of.",
       },
     ],
     misconceptions: [
@@ -2932,6 +4752,136 @@ export const FRENCH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: un métier suits describing a profession in a general sense (mon métier de rêve, my dream profession/job type), un emploi suits a specific position someone applies for or holds, and le travail is the broadest term, covering 'work' as an activity as well as employment generally. A strong answer gives one natural example sentence for each rather than treating them as one word with three spellings.",
       },
+      {
+        question: "What does 'à temps partiel' mean?",
+        choices: [
+          "full-time",
+          "part-time",
+          "overtime",
+          "on time",
+        ],
+        accept: [
+          "part-time",
+        ],
+        answer: "À temps partiel means part-time. Full-time is à plein temps, and on time is à l'heure.",
+      },
+      {
+        question: "What does 'mal payé' mean?",
+        choices: [
+          "well paid",
+          "unpaid",
+          "badly paid",
+          "overpaid",
+        ],
+        accept: [
+          "badly paid",
+        ],
+        answer: "Mal means badly, so mal payé is badly paid. Its opposite is bien payé (well paid); unpaid is non payé or bénévole.",
+      },
+      {
+        question: "Which is the female form of 'un vendeur'?",
+        choices: [
+          "une vendeuse",
+          "une vendeure",
+          "une vendrice",
+          "une vendeur",
+        ],
+        accept: [
+          "une vendeuse",
+        ],
+        answer: "Many -eur job nouns change to -euse for women: vendeur becomes vendeuse. Some, like acteur, use -trice instead (actrice).",
+      },
+      {
+        question: "Which is correct for 'He is a teacher'?",
+        choices: [
+          "Il est un professeur.",
+          "Il a professeur.",
+          "Il est le professeur.",
+          "Il est professeur.",
+        ],
+        accept: [
+          "Il est professeur.",
+        ],
+        answer: "After il est or elle est, French drops the article before a job: il est professeur. With c'est you keep it: c'est un professeur.",
+      },
+      {
+        question: "What does 'le patron' mean?",
+        choices: [
+          "the customer",
+          "the boss",
+          "the colleague",
+          "the employee",
+        ],
+        accept: [
+          "the boss",
+        ],
+        answer: "Le patron is the boss (la patronne for a woman). A colleague is un(e) collègue and the customer is le client.",
+      },
+      {
+        question: "What does 'les horaires' mean in a job context?",
+        choices: [
+          "the wages",
+          "the tasks",
+          "the working hours",
+          "the colleagues",
+        ],
+        accept: [
+          "the working hours",
+        ],
+        answer: "Les horaires are the working hours. The wages are le salaire, and flexible hours are des horaires flexibles.",
+      },
+      {
+        question: "What does 'un boulanger' make?",
+        choices: [
+          "bread",
+          "meat dishes",
+          "cakes only",
+          "cheese",
+        ],
+        accept: [
+          "bread",
+        ],
+        answer: "Un boulanger is a baker who makes bread at la boulangerie. A pastry chef who makes cakes is un pâtissier.",
+      },
+      {
+        question: "Which job is 'un facteur'?",
+        choices: [
+          "a factory worker",
+          "a farmer",
+          "a firefighter",
+          "a postman",
+        ],
+        accept: [
+          "a postman",
+        ],
+        answer: "Un facteur is a false friend: it means a postman, who delivers letters. A factory worker is un ouvrier and a farmer is un agriculteur.",
+      },
+      {
+        question: "What does 'gagner' mean in 'gagner beaucoup d'argent'?",
+        choices: [
+          "to spend",
+          "to earn",
+          "to save",
+          "to lose",
+        ],
+        accept: [
+          "to earn",
+        ],
+        answer: "Gagner means to earn (or to win). To spend money is dépenser and to save it is économiser.",
+      },
+      {
+        question: "Which job is 'un avocat'?",
+        choices: [
+          "a doctor",
+          "a vet",
+          "a lawyer",
+          "an accountant",
+        ],
+        accept: [
+          "a lawyer",
+        ],
+        answer: "Un avocat (une avocate) is a lawyer. A doctor is un médecin and a vet is un vétérinaire.",
+      },
     ],
     misconceptions: [
       {
@@ -3119,6 +5069,136 @@ export const FRENCH: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: devoir + infinitive expresses a personal obligation tied to a specific subject (je dois, nous devons — 'I/we have to'), while il faut + infinitive expresses a general, impersonal necessity with no named subject ('one must/it is necessary to'). Using il faut where a personal obligation is meant loses the sense of who specifically has to do something, and using devoir where a general rule is meant makes the statement sound more personal and specific than intended.",
       },
+      {
+        question: "What does 'fiable' mean?",
+        choices: [
+          "patient",
+          "reliable",
+          "polite",
+          "hard-working",
+        ],
+        accept: [
+          "reliable",
+        ],
+        answer: "Fiable means reliable, someone you can count on. Polite is poli and hard-working is travailleur.",
+      },
+      {
+        question: "What does 'serviable' mean?",
+        choices: [
+          "helpful",
+          "selfish",
+          "shy",
+          "lazy",
+        ],
+        accept: [
+          "helpful",
+        ],
+        answer: "Serviable means helpful, always ready to rendre service. Selfish is égoïste, shy is timide and lazy is paresseux.",
+      },
+      {
+        question: "What does 'égoïste' mean?",
+        choices: [
+          "modest",
+          "honest",
+          "stubborn",
+          "selfish",
+        ],
+        accept: [
+          "selfish",
+        ],
+        answer: "Égoïste means selfish, thinking only of yourself. Honest is honnête and stubborn is têtu.",
+      },
+      {
+        question: "What does 'une association caritative' mean?",
+        choices: [
+          "a sports club",
+          "a youth club",
+          "a charity",
+          "a company",
+        ],
+        accept: [
+          "a charity",
+        ],
+        answer: "Une association caritative is a charity. Caritative comes from the same root as 'charity', so it points to helping others.",
+      },
+      {
+        question: "What does 'collecter des fonds' mean?",
+        choices: [
+          "to raise money",
+          "to spend money",
+          "to save money",
+          "to borrow money",
+        ],
+        accept: [
+          "to raise money",
+        ],
+        answer: "Collecter des fonds means to raise money (funds), for example for a charity. To save money is économiser de l'argent.",
+      },
+      {
+        question: "What does 'à cause de' mean?",
+        choices: [
+          "thanks to",
+          "because of",
+          "in spite of",
+          "instead of",
+        ],
+        accept: [
+          "because of",
+        ],
+        answer: "À cause de means because of, often for a bad result. For a good result, use grâce à (thanks to).",
+      },
+      {
+        question: "Which is the feminine form of 'créatif'?",
+        choices: [
+          "créatrice",
+          "créatife",
+          "créatif",
+          "créative",
+        ],
+        accept: [
+          "créative",
+        ],
+        answer: "Adjectives ending in -if change to -ive in the feminine: créatif becomes créative, just like sportif becomes sportive.",
+      },
+      {
+        question: "Which completes 'Je dois ___ patient'?",
+        choices: [
+          "suis",
+          "était",
+          "être",
+          "sera",
+        ],
+        accept: [
+          "être",
+        ],
+        answer: "Devoir is followed by an infinitive, so je dois être patient (I must be patient). Suis is a conjugated form of être.",
+      },
+      {
+        question: "What does 'rendre service à quelqu'un' mean?",
+        choices: [
+          "to serve someone food",
+          "to do someone a favour",
+          "to visit someone",
+          "to pay someone back",
+        ],
+        accept: [
+          "to do someone a favour",
+        ],
+        answer: "Rendre service à quelqu'un means to help someone out or do them a favour. It isn't about serving food or paying back.",
+      },
+      {
+        question: "What does 'aider les personnes âgées' mean?",
+        choices: [
+          "to help young people",
+          "to help sick people",
+          "to help poor people",
+          "to help elderly people",
+        ],
+        accept: [
+          "to help elderly people",
+        ],
+        answer: "Âgé means old, so les personnes âgées are elderly people. Young people are les jeunes and sick people are les malades.",
+      },
     ],
     misconceptions: [
       {
@@ -3305,6 +5385,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "Explain in English why examiners specifically reward connectives like cependant, de plus and donc in an extended environmental-issues answer, rather than just correct vocabulary alone.",
         answer:
           "Mark it yourself against this: connectives show that ideas are genuinely linked into an argument — cause and effect, contrast, addition — rather than being a list of separate correct sentences, which is what distinguishes a higher mark-band extended-writing answer from a basic one; vocabulary alone can be accurate without demonstrating this kind of structured, connected thinking.",
+      },
+      {
+        question: "What does 'les déchets' mean?",
+        choices: [
+          "pollution",
+          "waste",
+          "packaging",
+          "recycling",
+        ],
+        accept: [
+          "waste",
+        ],
+        answer: "Les déchets means waste or rubbish, as in réduire les déchets. Packaging is les emballages and recycling is le recyclage.",
+      },
+      {
+        question: "What does 'économiser l'énergie' mean?",
+        choices: [
+          "to save energy",
+          "to waste energy",
+          "to produce energy",
+          "to buy energy",
+        ],
+        accept: [
+          "to save energy",
+        ],
+        answer: "Économiser means to save, so économiser l'énergie means to save energy. To waste it is gaspiller l'énergie.",
+      },
+      {
+        question: "What does 'de plus' mean?",
+        choices: [
+          "however",
+          "therefore",
+          "furthermore",
+          "although",
+        ],
+        accept: [
+          "furthermore",
+        ],
+        answer: "De plus means furthermore or what's more, to add a point. However is cependant and therefore is donc.",
+      },
+      {
+        question: "What does 'par conséquent' mean?",
+        choices: [
+          "on the other hand",
+          "for example",
+          "in spite of this",
+          "as a result",
+        ],
+        accept: [
+          "as a result",
+        ],
+        answer: "Par conséquent means as a result, like donc. On the other hand is par contre and for example is par exemple.",
+      },
+      {
+        question: "What does 'les gaz à effet de serre' mean?",
+        choices: [
+          "greenhouse gases",
+          "exhaust fumes",
+          "fossil fuels",
+          "nuclear waste",
+        ],
+        accept: [
+          "greenhouse gases",
+        ],
+        answer: "Une serre is a greenhouse and l'effet de serre is the greenhouse effect, so these are greenhouse gases such as CO₂.",
+      },
+      {
+        question: "What does 'les inondations' mean?",
+        choices: [
+          "earthquakes",
+          "fires",
+          "floods",
+          "storms",
+        ],
+        accept: [
+          "floods",
+        ],
+        answer: "Les inondations are floods. Earthquakes are les tremblements de terre and fires are les incendies.",
+      },
+      {
+        question: "What does 'la pauvreté' mean?",
+        choices: [
+          "hunger",
+          "poverty",
+          "war",
+          "unemployment",
+        ],
+        accept: [
+          "poverty",
+        ],
+        answer: "La pauvreté is poverty (from pauvre, poor). Hunger is la faim, war is la guerre and unemployment is le chômage.",
+      },
+      {
+        question: "Which completes 'On devrait ___ les transports en commun'?",
+        choices: [
+          "prend",
+          "pris",
+          "prenons",
+          "prendre",
+        ],
+        accept: [
+          "prendre",
+        ],
+        answer: "On devrait (we should) is followed by an infinitive: prendre. That gives 'We should take public transport.'",
+      },
+      {
+        question: "What does 'le commerce équitable' mean?",
+        choices: [
+          "free trade",
+          "fair trade",
+          "online shopping",
+          "local shops",
+        ],
+        accept: [
+          "fair trade",
+        ],
+        answer: "Équitable means fair, so le commerce équitable is fair trade, which pays producers a fair price. Free trade is le libre-échange.",
+      },
+      {
+        question: "What does 'jeter' mean?",
+        choices: [
+          "to throw away",
+          "to pick up",
+          "to sort",
+          "to burn",
+        ],
+        accept: [
+          "to throw away",
+        ],
+        answer: "Jeter means to throw (away), as in il ne faut pas jeter les déchets par terre. To sort is trier and to burn is brûler.",
       },
     ],
     misconceptions: [
@@ -3502,6 +5712,136 @@ export const FRENCH: Record<string, TopicContent> = {
         question: "A past-tense paragraph uses only the passé composé throughout, with no imperfect at all, to describe a childhood holiday including weather and feelings. What is the main weakness of this approach?",
         answer:
           "There's no single right answer here — mark this one yourself. A strong answer explains that using only the passé composé for background details like weather, feelings or routine treats them as single completed events rather than ongoing states, which is grammatically inaccurate and also reads as a flat list of events rather than a genuinely descriptive scene — the imperfect is specifically needed for that descriptive, scene-setting role.",
+      },
+      {
+        question: "'Il y a deux ans, je suis allé à Rome' — when did they go?",
+        choices: [
+          "in two years",
+          "two years ago",
+          "for two years",
+          "two years later",
+        ],
+        accept: [
+          "two years ago",
+        ],
+        answer: "Il y a + a time phrase means 'ago', so il y a deux ans is two years ago. In two years would be dans deux ans.",
+      },
+      {
+        question: "'J'apprends le français depuis cinq ans' — how long have they learnt it?",
+        choices: [
+          "five months",
+          "since age five",
+          "five years",
+          "fifteen years",
+        ],
+        accept: [
+          "five years",
+        ],
+        answer: "Depuis + present tense means they have been learning it for five years and still are. Ans is years, mois is months.",
+      },
+      {
+        question: "What does 'pourtant' mean?",
+        choices: [
+          "however",
+          "therefore",
+          "also",
+          "because",
+        ],
+        accept: [
+          "however",
+        ],
+        answer: "Pourtant means however or yet, to show a contrast. Therefore is donc, also is aussi and because is parce que.",
+      },
+      {
+        question: "Which question word means 'how many'?",
+        choices: [
+          "comment",
+          "pourquoi",
+          "quand",
+          "combien",
+        ],
+        accept: [
+          "combien",
+        ],
+        answer: "Combien means how many or how much. Comment means how, pourquoi means why and quand means when.",
+      },
+      {
+        question: "'Je ferais' is in which tense?",
+        choices: [
+          "simple future",
+          "conditional",
+          "imperfect",
+          "present",
+        ],
+        accept: [
+          "conditional",
+        ],
+        answer: "Je ferais uses the future stem fer- with the imperfect ending -ais, which makes the conditional (I would do). Je ferai is future.",
+      },
+      {
+        question: "'Je n'ai jamais visité l'Espagne' — how often have they visited Spain?",
+        choices: [
+          "once",
+          "often",
+          "never",
+          "every year",
+        ],
+        accept: [
+          "never",
+        ],
+        answer: "Ne…jamais means never, so the speaker has never visited Spain. Once would be une fois and often would be souvent.",
+      },
+      {
+        question: "Which number is 'soixante-quinze'?",
+        choices: [
+          "75",
+          "65",
+          "95",
+          "57",
+        ],
+        accept: [
+          "75",
+        ],
+        answer: "Soixante-quinze is sixty plus fifteen, which is 75. Sixty-five is soixante-cinq and 95 is quatre-vingt-quinze.",
+      },
+      {
+        question: "Which means 'the day before yesterday'?",
+        choices: [
+          "après-demain",
+          "hier soir",
+          "le lendemain",
+          "avant-hier",
+        ],
+        accept: [
+          "avant-hier",
+        ],
+        answer: "Avant-hier means the day before yesterday. Après-demain is the day after tomorrow and hier soir is last night.",
+      },
+      {
+        question: "What does 'bien que' mean?",
+        choices: [
+          "because",
+          "although",
+          "so that",
+          "as soon as",
+        ],
+        accept: [
+          "although",
+        ],
+        answer: "Bien que means although, and is followed by the subjunctive: bien que ce soit difficile. Because is parce que.",
+      },
+      {
+        question: "'Je ne mange plus de viande' — what does the speaker do?",
+        choices: [
+          "never eats meat",
+          "eats more meat",
+          "no longer eats meat",
+          "eats a little meat",
+        ],
+        accept: [
+          "no longer eats meat",
+        ],
+        answer: "Ne…plus means no longer, so they used to eat meat but now don't. Never would be ne…jamais.",
       },
     ],
     misconceptions: [

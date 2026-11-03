@@ -243,6 +243,162 @@ export const GERMAN: Record<string, TopicContent> = {
         answer:
           "Mark it yourself against this: du is informal, used with people your own age, friends and family; Sie is formal, used with teachers, strangers and anyone you should show respect to, and is always capitalised. A good answer names a clear example for each, such as using du with a classmate and Sie with a shop assistant you've never met.",
       },
+      {
+        question: "What does 'Freut mich' mean?",
+        choices: [
+          "See you later",
+          "Pleased to meet you",
+          "How are you?",
+          "Excuse me",
+        ],
+        accept: [
+          "Pleased to meet you",
+        ],
+        answer: "Freut mich is what you say when you meet someone new: pleased to meet you. 'See you later' is Bis später and 'Excuse me' is Entschuldigung.",
+      },
+      {
+        question: "What does 'Bis später' mean?",
+        choices: [
+          "See you tomorrow",
+          "Good evening",
+          "See you later",
+          "Good luck",
+        ],
+        accept: [
+          "See you later",
+        ],
+        answer: "Bis später means see you later (später = later). 'See you tomorrow' would be Bis morgen, and 'Good evening' is Guten Abend.",
+      },
+      {
+        question: "Which number is 'dreißig'?",
+        choices: [
+          "13",
+          "30",
+          "3",
+          "300",
+        ],
+        accept: [
+          "30",
+        ],
+        answer: "Dreißig is 30: the tens are mostly -zig, but 30 is spelt with ß. Thirteen is dreizehn, three is drei and 300 is dreihundert.",
+      },
+      {
+        question: "What number is 'siebenundvierzig'?",
+        choices: [
+          "74",
+          "57",
+          "17",
+          "47",
+        ],
+        accept: [
+          "47",
+        ],
+        answer: "German says the units first: sieben-und-vierzig is 'seven and forty' = 47. Reading it left to right as in English gives the trap answer 74.",
+      },
+      {
+        question: "Which question asks where someone comes from?",
+        choices: [
+          "Wo wohnst du?",
+          "Woher kommst du?",
+          "Wie heißt du?",
+          "Wie alt bist du?",
+        ],
+        accept: [
+          "Woher kommst du?",
+        ],
+        answer: "Woher kommst du? means where are you from (woher = from where). Wo wohnst du? is close but asks where you live now.",
+      },
+      {
+        question: "Which word completes 'Ich komme ___ England'?",
+        choices: [
+          "aus",
+          "von",
+          "nach",
+          "in",
+        ],
+        accept: [
+          "aus",
+        ],
+        answer: "You come aus a country: Ich komme aus England. Nach is for travelling to a country, and in is for being in one.",
+      },
+      {
+        question: "Which greeting do you use when arriving somewhere in the evening?",
+        choices: [
+          "Gute Nacht",
+          "Guten Morgen",
+          "Guten Abend",
+          "Guten Appetit",
+        ],
+        accept: [
+          "Guten Abend",
+        ],
+        answer: "Guten Abend means good evening and is said on arrival. Gute Nacht is good night, said when leaving or going to bed, and Guten Appetit means enjoy your meal.",
+      },
+      {
+        question: "Which is the formal way to ask an adult stranger's name?",
+        choices: [
+          "Wie heißt du?",
+          "Wie heißen Sie?",
+          "Wie heißt ihr?",
+          "Wer bist du?",
+        ],
+        accept: [
+          "Wie heißen Sie?",
+        ],
+        answer: "Sie (capital S) with heißen is the polite form for adults you don't know. Wie heißt du? is informal, and Wie heißt ihr? asks a group of friends.",
+      },
+      {
+        question: "Which word completes 'Wie alt ___ du?'",
+        choices: [
+          "bin",
+          "hast",
+          "ist",
+          "bist",
+        ],
+        accept: [
+          "bist",
+        ],
+        answer: "Age uses sein, and the du form of sein is bist: Wie alt bist du? Hast is from haben, an easy slip if you know French, where age uses avoir.",
+      },
+      {
+        question: "Which phrase is a reply to 'Wie geht's?'",
+        choices: [
+          "Ich heiße Tom.",
+          "Aus England.",
+          "Mir geht's gut.",
+          "Ich bin fünfzehn.",
+        ],
+        accept: [
+          "Mir geht's gut.",
+        ],
+        answer: "Wie geht's? asks how you are, so Mir geht's gut (I'm fine) answers it. The others answer questions about your name, where you're from and your age.",
+      },
+      {
+        question: "What does 'Wie schreibt man das?' mean?",
+        choices: [
+          "What does that mean?",
+          "How do you spell that?",
+          "How do you say that?",
+          "Who wrote that?",
+        ],
+        accept: [
+          "How do you spell that?",
+        ],
+        answer: "Schreiben means to write, so Wie schreibt man das? asks how you spell something. 'What does that mean?' would be Was bedeutet das?",
+      },
+      {
+        question: "Who would you normally call 'Sie' rather than 'du'?",
+        choices: [
+          "Your brother",
+          "Your best friend",
+          "Your teacher",
+          "Your cousin",
+        ],
+        accept: [
+          "Your teacher",
+        ],
+        answer: "Sie is the polite 'you' for adults you don't know well or who have authority, like teachers. Family and friends get du.",
+      },
     ],
     misconceptions: [
       {
@@ -432,6 +588,162 @@ export const GERMAN: Record<string, TopicContent> = {
         question: "Translate into English: 'Meine Eltern sind sehr nett.'",
         accept: ["my parents are very nice"],
         answer: "My parents are very nice — Eltern is always plural, and sind is the wir/sie form of sein matching it.",
+      },
+      {
+        question: "What does 'die Geschwister' mean?",
+        choices: [
+          "Parents",
+          "Siblings",
+          "Grandparents",
+          "Cousins",
+        ],
+        accept: [
+          "Siblings",
+        ],
+        answer: "Die Geschwister means brothers and sisters (siblings). Parents are die Eltern and grandparents are die Großeltern.",
+      },
+      {
+        question: "Which word means 'grandmother'?",
+        choices: [
+          "die Großeltern",
+          "die Tante",
+          "die Großmutter",
+          "die Enkelin",
+        ],
+        accept: [
+          "die Großmutter",
+        ],
+        answer: "Die Großmutter (or Oma) is grandmother. Die Großeltern are grandparents, die Tante is aunt and die Enkelin is granddaughter.",
+      },
+      {
+        question: "What is the plural of 'der Bruder'?",
+        choices: [
+          "die Brüder",
+          "die Bruders",
+          "die Brudern",
+          "die Brüderen",
+        ],
+        accept: [
+          "die Brüder",
+        ],
+        answer: "Bruder doesn't add -s or -n in the plural; it just takes an umlaut: die Brüder. Mutter works the same way: die Mütter.",
+      },
+      {
+        question: "What does 'Ich bin Einzelkind' mean?",
+        choices: [
+          "I'm the youngest",
+          "I'm an only child",
+          "I have one child",
+          "I'm the oldest",
+        ],
+        accept: [
+          "I'm an only child",
+        ],
+        answer: "Einzelkind means only child (einzel = single). The youngest is der/die Jüngste and the oldest is der/die Älteste.",
+      },
+      {
+        question: "Which word means 'shy'?",
+        choices: [
+          "freundlich",
+          "faul",
+          "frech",
+          "schüchtern",
+        ],
+        accept: [
+          "schüchtern",
+        ],
+        answer: "Schüchtern means shy. Freundlich is friendly, faul is lazy and frech is cheeky.",
+      },
+      {
+        question: "Which word completes '___ Vater heißt Paul.' (her father)",
+        choices: [
+          "Ihre",
+          "Sein",
+          "Ihr",
+          "Seine",
+        ],
+        accept: [
+          "Ihr",
+        ],
+        answer: "Ihr means her, and Vater is masculine, so there is no ending: ihr Vater. Ihre would be for a feminine noun, and sein means his.",
+      },
+      {
+        question: "Which word completes 'Ich habe ___ Bruder.'?",
+        choices: [
+          "ein",
+          "einen",
+          "eine",
+          "einem",
+        ],
+        accept: [
+          "einen",
+        ],
+        answer: "Bruder is masculine and is the object of habe, so it goes into the accusative: ein becomes einen. Only masculine nouns change like this.",
+      },
+      {
+        question: "What does 'verheiratet' mean?",
+        choices: [
+          "Divorced",
+          "Single",
+          "Engaged",
+          "Married",
+        ],
+        accept: [
+          "Married",
+        ],
+        answer: "Verheiratet means married (heiraten = to marry). Divorced is geschieden, single is ledig and engaged is verlobt.",
+      },
+      {
+        question: "What does 'Wir verstehen uns gut' mean?",
+        choices: [
+          "We get on well",
+          "We argue a lot",
+          "We live together",
+          "We meet often",
+        ],
+        accept: [
+          "We get on well",
+        ],
+        answer: "Sich gut verstehen means to get on well (literally 'understand each other well'). Arguing would be sich streiten.",
+      },
+      {
+        question: "Which verb means 'to argue'?",
+        choices: [
+          "sich freuen",
+          "sich streiten",
+          "sich treffen",
+          "sich waschen",
+        ],
+        accept: [
+          "sich streiten",
+        ],
+        answer: "Sich streiten is to argue: Ich streite mich mit meiner Schwester. Sich freuen is to be pleased, and sich treffen is to meet up.",
+      },
+      {
+        question: "What does 'Er hat lockige Haare' mean?",
+        choices: [
+          "He has long hair",
+          "He has curly hair",
+          "He has short hair",
+          "He has straight hair",
+        ],
+        accept: [
+          "He has curly hair",
+        ],
+        answer: "Lockig means curly. Long hair is lange Haare, short is kurze Haare and straight is glatte Haare.",
+      },
+      {
+        question: "Which word means 'female cousin'?",
+        choices: [
+          "die Nichte",
+          "die Tante",
+          "die Enkelin",
+          "die Cousine",
+        ],
+        accept: [
+          "die Cousine",
+        ],
+        answer: "Die Cousine is a female cousin (der Cousin is male). Die Nichte is niece, die Tante is aunt and die Enkelin is granddaughter.",
       },
     ],
     misconceptions: [
@@ -628,6 +940,162 @@ export const GERMAN: Record<string, TopicContent> = {
         accept: ["at the weekend i often go shopping"],
         answer: "At the weekend I often go shopping — gehe...einkaufen uses gehen + infinitive for an activity phrased as 'going to do something'.",
       },
+      {
+        question: "What does 'fernsehen' mean?",
+        choices: [
+          "To go out",
+          "To watch TV",
+          "To read",
+          "To listen to music",
+        ],
+        accept: [
+          "To watch TV",
+        ],
+        answer: "Fernsehen is literally 'far-see': to watch TV. It is separable, so you say Ich sehe fern. To read is lesen.",
+      },
+      {
+        question: "Which word completes 'Er ___ gern Rad.' (fahren)",
+        choices: [
+          "fahren",
+          "fährst",
+          "fährt",
+          "fahre",
+        ],
+        accept: [
+          "fährt",
+        ],
+        answer: "Fahren adds an umlaut for du and er/sie/es: er fährt. Fährst is the du form and fahre is the ich form.",
+      },
+      {
+        question: "In 'Ich lese lieber', what does 'lieber' show?",
+        choices: [
+          "Frequency",
+          "Dislike",
+          "Preference",
+          "Past time",
+        ],
+        accept: [
+          "Preference",
+        ],
+        answer: "Lieber after the verb means you prefer doing it: I prefer reading. Gern means you like it, and am liebsten means you like it best of all.",
+      },
+      {
+        question: "Which word means 'sometimes'?",
+        choices: [
+          "immer",
+          "manchmal",
+          "selten",
+          "nie",
+        ],
+        accept: [
+          "manchmal",
+        ],
+        answer: "Manchmal means sometimes. Immer is always, selten is rarely and nie is never.",
+      },
+      {
+        question: "What does 'einmal pro Woche' mean?",
+        choices: [
+          "Twice a week",
+          "Every day",
+          "Once a month",
+          "Once a week",
+        ],
+        accept: [
+          "Once a week",
+        ],
+        answer: "Einmal is once and pro Woche is per week. Twice a week would be zweimal pro Woche, and once a month is einmal im Monat.",
+      },
+      {
+        question: "Which phrase means 'to go for a walk'?",
+        choices: [
+          "spazieren gehen",
+          "schwimmen gehen",
+          "einkaufen gehen",
+          "tanzen gehen",
+        ],
+        accept: [
+          "spazieren gehen",
+        ],
+        answer: "Spazieren gehen is to go for a walk. The others mean to go swimming, to go shopping and to go dancing.",
+      },
+      {
+        question: "What does 'Ich treffe mich mit Freunden' mean?",
+        choices: [
+          "I call my friends",
+          "I meet up with friends",
+          "I miss my friends",
+          "I help my friends",
+        ],
+        accept: [
+          "I meet up with friends",
+        ],
+        answer: "Sich treffen mit means to meet up with. Calling friends is Freunde anrufen and helping them is Freunden helfen.",
+      },
+      {
+        question: "Which instrument is 'die Geige'?",
+        choices: [
+          "Drums",
+          "Guitar",
+          "Violin",
+          "Flute",
+        ],
+        accept: [
+          "Violin",
+        ],
+        answer: "Die Geige is the violin. Drums are das Schlagzeug, the guitar is die Gitarre and the flute is die Flöte.",
+      },
+      {
+        question: "Which word completes 'Ich habe ___ Hobbys.' (I have no hobbies)",
+        choices: [
+          "nicht",
+          "kein",
+          "keine",
+          "nie",
+        ],
+        accept: [
+          "keine",
+        ],
+        answer: "Kein means 'no' before a noun, and Hobbys is plural, so it takes -e: keine Hobbys. Nicht negates verbs and adjectives, not nouns with ein.",
+      },
+      {
+        question: "Which of these sentences has the correct word order?",
+        choices: [
+          "Oft ich lese Comics.",
+          "Oft lese ich Comics.",
+          "Ich oft lese Comics.",
+          "Oft lese Comics ich.",
+        ],
+        accept: [
+          "Oft lese ich Comics.",
+        ],
+        answer: "The verb must be the second idea. Oft comes first, so lese comes next and ich swaps to after it. Oft ich lese breaks the verb-second rule.",
+      },
+      {
+        question: "What does 'die Mannschaft' mean?",
+        choices: [
+          "Match",
+          "Team",
+          "Pitch",
+          "Player",
+        ],
+        accept: [
+          "Team",
+        ],
+        answer: "Die Mannschaft is a team. A match is das Spiel, a pitch is der Platz and a player is der Spieler.",
+      },
+      {
+        question: "What is 'der Verein'?",
+        choices: [
+          "Club",
+          "Coach",
+          "Stadium",
+          "Fan",
+        ],
+        accept: [
+          "Club",
+        ],
+        answer: "Der Verein is a club or society, as in Ich bin in einem Fußballverein. A coach is der Trainer and a stadium is das Stadion.",
+      },
     ],
     misconceptions: [
       {
@@ -822,6 +1290,162 @@ export const GERMAN: Record<string, TopicContent> = {
         accept: ["mögen"],
         answer: "Mögen — the wir form of the irregular verb mögen, identical here to the infinitive.",
       },
+      {
+        question: "What does 'der Stundenplan' mean?",
+        choices: [
+          "Lesson",
+          "Break",
+          "Timetable",
+          "Homework",
+        ],
+        accept: [
+          "Timetable",
+        ],
+        answer: "Der Stundenplan is the timetable: a plan of your Stunden (lessons). Break is die Pause and homework is die Hausaufgaben.",
+      },
+      {
+        question: "What does 'die Pause' mean at school?",
+        choices: [
+          "Break time",
+          "Detention",
+          "Lesson",
+          "Exam",
+        ],
+        accept: [
+          "Break time",
+        ],
+        answer: "Die Pause is break time; lunch break is die Mittagspause. A lesson is die Stunde and an exam is die Prüfung.",
+      },
+      {
+        question: "Which subject is 'die Geschichte'?",
+        choices: [
+          "Geography",
+          "History",
+          "Chemistry",
+          "Biology",
+        ],
+        accept: [
+          "History",
+        ],
+        answer: "Die Geschichte is history (it also means story). Geography is Erdkunde, a common mix-up, and chemistry is Chemie.",
+      },
+      {
+        question: "Which word means 'difficult'?",
+        choices: [
+          "einfach",
+          "nützlich",
+          "schwierig",
+          "lustig",
+        ],
+        accept: [
+          "schwierig",
+        ],
+        answer: "Schwierig means difficult. Einfach is its opposite (easy), nützlich is useful and lustig is fun or funny.",
+      },
+      {
+        question: "What does 'die Hausaufgaben' mean?",
+        choices: [
+          "Housework",
+          "Homework",
+          "Classroom",
+          "Exercise book",
+        ],
+        accept: [
+          "Homework",
+        ],
+        answer: "Die Hausaufgaben is homework: tasks (Aufgaben) to do at home. Housework is die Hausarbeit, which is the tempting trap.",
+      },
+      {
+        question: "Which is correct after 'weil'?",
+        choices: [
+          "weil ich mag Mathe",
+          "weil ich Mathe mag",
+          "weil mag ich Mathe",
+          "weil Mathe ich mag",
+        ],
+        accept: [
+          "weil ich Mathe mag",
+        ],
+        answer: "Weil sends the verb to the end of its clause: weil ich Mathe mag. Weil ich mag Mathe keeps English order, which is the classic mistake.",
+      },
+      {
+        question: "What is 'der Kuli'?",
+        choices: [
+          "Pencil",
+          "Ruler",
+          "Pen",
+          "Rubber",
+        ],
+        accept: [
+          "Pen",
+        ],
+        answer: "Der Kuli (short for Kugelschreiber) is a ballpoint pen. A pencil is der Bleistift, a ruler das Lineal and a rubber der Radiergummi.",
+      },
+      {
+        question: "Which word means 'exercise book'?",
+        choices: [
+          "das Buch",
+          "die Tafel",
+          "der Ordner",
+          "das Heft",
+        ],
+        accept: [
+          "das Heft",
+        ],
+        answer: "Das Heft is an exercise book (plural die Hefte). Das Buch is a book, die Tafel is the board and der Ordner is a folder.",
+      },
+      {
+        question: "School starts at 'halb neun'. What time is that?",
+        choices: [
+          "9:30",
+          "8:30",
+          "9:15",
+          "8:45",
+        ],
+        accept: [
+          "8:30",
+        ],
+        answer: "Halb neun means half way to nine, so 8:30. Thinking 'half past nine' gives the trap answer 9:30.",
+      },
+      {
+        question: "In German schools, which mark is the best?",
+        choices: [
+          "6 (sechs)",
+          "1 (eins)",
+          "5 (fünf)",
+          "3 (drei)",
+        ],
+        accept: [
+          "1 (eins)",
+        ],
+        answer: "German school marks run from 1 (sehr gut, very good) to 6 (ungenügend, a fail), so 1 is the best and 6 the worst.",
+      },
+      {
+        question: "What does 'die Klassenfahrt' mean?",
+        choices: [
+          "Classroom",
+          "Class test",
+          "School trip",
+          "School year",
+        ],
+        accept: [
+          "School trip",
+        ],
+        answer: "Die Klassenfahrt is a class or school trip (fahren = to travel). The classroom is das Klassenzimmer.",
+      },
+      {
+        question: "Which word means 'strict', for describing a teacher?",
+        choices: [
+          "streng",
+          "nett",
+          "faul",
+          "fair",
+        ],
+        accept: [
+          "streng",
+        ],
+        answer: "Streng means strict: Mein Lehrer ist sehr streng. Nett is nice and faul is lazy.",
+      },
     ],
     misconceptions: [
       {
@@ -1015,6 +1639,162 @@ export const GERMAN: Record<string, TopicContent> = {
         question: "Complete with the correct form of frühstücken: 'Wir ____ um acht Uhr.'",
         accept: ["frühstücken"],
         answer: "Frühstücken — the wir form of this regular, non-separable verb, identical here to the infinitive.",
+      },
+      {
+        question: "Which word means 'living room'?",
+        choices: [
+          "das Schlafzimmer",
+          "das Wohnzimmer",
+          "das Esszimmer",
+          "das Badezimmer",
+        ],
+        accept: [
+          "das Wohnzimmer",
+        ],
+        answer: "Das Wohnzimmer is the living room (wohnen = to live). Das Schlafzimmer is the bedroom, das Esszimmer the dining room and das Badezimmer the bathroom.",
+      },
+      {
+        question: "What is 'der Flur'?",
+        choices: [
+          "Floor",
+          "Hallway",
+          "Ceiling",
+          "Attic",
+        ],
+        accept: [
+          "Hallway",
+        ],
+        answer: "Der Flur is the hallway. It looks like 'floor' but isn't: the floor is der Boden.",
+      },
+      {
+        question: "What does 'zuerst' mean in a routine?",
+        choices: [
+          "Finally",
+          "Afterwards",
+          "First of all",
+          "Then",
+        ],
+        accept: [
+          "First of all",
+        ],
+        answer: "Zuerst means first of all. Danach is afterwards, dann is then and zuletzt is finally, so zuerst starts the sequence.",
+      },
+      {
+        question: "Which word completes 'Ich ___ mich um sieben Uhr.' (to wash)",
+        choices: [
+          "wäscht",
+          "wasche",
+          "wäschst",
+          "waschen",
+        ],
+        accept: [
+          "wasche",
+        ],
+        answer: "The ich form is wasche, with no umlaut. Waschen only gains an umlaut for du (wäschst) and er/sie/es (wäscht).",
+      },
+      {
+        question: "Which sentence uses 'einschlafen' correctly?",
+        choices: [
+          "Ich einschlafe spät.",
+          "Ich schlafe spät ein.",
+          "Ich schlafe ein spät.",
+          "Ich spät einschlafe.",
+        ],
+        accept: [
+          "Ich schlafe spät ein.",
+        ],
+        answer: "Einschlafen is separable: schlafe sits second and the prefix ein goes to the very end of the clause. Ich einschlafe forgets to split it.",
+      },
+      {
+        question: "What does 'Ich putze mir die Zähne' mean?",
+        choices: [
+          "I wash my face",
+          "I comb my hair",
+          "I brush my teeth",
+          "I clean my room",
+        ],
+        accept: [
+          "I brush my teeth",
+        ],
+        answer: "Die Zähne are teeth, and sich die Zähne putzen is to brush your teeth. Combing your hair is sich die Haare kämmen.",
+      },
+      {
+        question: "What does 'Ich decke den Tisch' mean?",
+        choices: [
+          "I clear the table",
+          "I lay the table",
+          "I wash up",
+          "I cook dinner",
+        ],
+        accept: [
+          "I lay the table",
+        ],
+        answer: "Den Tisch decken is to lay the table. Clearing it is den Tisch abräumen, and washing up is abwaschen or spülen.",
+      },
+      {
+        question: "What time is 'Viertel nach sieben'?",
+        choices: [
+          "6:45",
+          "7:45",
+          "7:15",
+          "6:15",
+        ],
+        accept: [
+          "7:15",
+        ],
+        answer: "Nach means past, so Viertel nach sieben is quarter past seven, 7:15. Viertel vor sieben would be 6:45.",
+      },
+      {
+        question: "What does 'die Wohnung' mean?",
+        choices: [
+          "House",
+          "Flat",
+          "Living room",
+          "Garden",
+        ],
+        accept: [
+          "Flat",
+        ],
+        answer: "Die Wohnung is a flat or apartment. A house is das Haus, and the living room, das Wohnzimmer, is the look-alike trap.",
+      },
+      {
+        question: "Which phrase means 'to go to bed'?",
+        choices: [
+          "aufwachen",
+          "einschlafen",
+          "aufstehen",
+          "ins Bett gehen",
+        ],
+        accept: [
+          "ins Bett gehen",
+        ],
+        answer: "Ins Bett gehen is to go to bed. Einschlafen is to fall asleep, aufwachen is to wake up and aufstehen is to get up.",
+      },
+      {
+        question: "What does 'Ich wohne auf dem Land' mean?",
+        choices: [
+          "I live in town",
+          "I live by the sea",
+          "I live in the country",
+          "I live in a flat",
+        ],
+        accept: [
+          "I live in the country",
+        ],
+        answer: "Auf dem Land means in the countryside. In town is in der Stadt, and by the sea is an der Küste or am Meer.",
+      },
+      {
+        question: "What does 'normalerweise' mean?",
+        choices: [
+          "Usually",
+          "Sometimes",
+          "Rarely",
+          "Always",
+        ],
+        accept: [
+          "Usually",
+        ],
+        answer: "Normalerweise means usually or normally: Normalerweise stehe ich um sieben auf. Sometimes is manchmal and always is immer.",
       },
     ],
     misconceptions: [
@@ -1214,6 +1994,162 @@ export const GERMAN: Record<string, TopicContent> = {
         accept: ["we want to go to the cinema but we must do our homework first", "we want to go to the cinema, but first we have to do our homework"],
         answer: "We want to go to the cinema, but we have to do our homework first — both wollen and müssen are modals pushing gehen and machen to the end of their own clauses.",
       },
+      {
+        question: "Which is the 'du' form of essen?",
+        choices: [
+          "esst",
+          "isst",
+          "essen",
+          "esse",
+        ],
+        accept: [
+          "isst",
+        ],
+        answer: "Essen changes e to i for du and er: du isst, er isst. Esst is the ihr form, so it's the tempting wrong one.",
+      },
+      {
+        question: "Which word completes 'Er ___ Deutsch.' (sprechen)",
+        choices: [
+          "sprecht",
+          "spricht",
+          "sprichst",
+          "sprechet",
+        ],
+        accept: [
+          "spricht",
+        ],
+        answer: "Sprechen changes e to i in the du and er forms: er spricht. Sprichst is the du form and sprecht is the ihr form.",
+      },
+      {
+        question: "Which word completes 'Ihr ___ sehr nett.' (sein)",
+        choices: [
+          "seit",
+          "sind",
+          "seid",
+          "ist",
+        ],
+        accept: [
+          "seid",
+        ],
+        answer: "Ihr seid is 'you (plural) are'. Seit sounds the same but means 'since', and sind goes with wir and sie.",
+      },
+      {
+        question: "Which word completes 'Er ___ Arzt.' (werden)",
+        choices: [
+          "wirst",
+          "werdet",
+          "wird",
+          "werd",
+        ],
+        accept: [
+          "wird",
+        ],
+        answer: "Werden is irregular: ich werde, du wirst, er wird. Wirst is the du form, and werdet is the ihr form.",
+      },
+      {
+        question: "Which word completes 'Ich muss heute ___.' (to work)",
+        choices: [
+          "arbeite",
+          "arbeitet",
+          "gearbeitet",
+          "arbeiten",
+        ],
+        accept: [
+          "arbeiten",
+        ],
+        answer: "After a modal verb like muss, the second verb is an infinitive at the end: Ich muss heute arbeiten. Arbeite is a conjugated form, not an infinitive.",
+      },
+      {
+        question: "Which word completes 'Er ___ ins Kino gehen.' (wollen)",
+        choices: [
+          "will",
+          "wollt",
+          "willst",
+          "wolle",
+        ],
+        accept: [
+          "will",
+        ],
+        answer: "Er will means he wants to, not 'he will'. Wollen changes to will for ich and er; willst is the du form and wollt is the ihr form.",
+      },
+      {
+        question: "What does 'müssen' mean?",
+        choices: [
+          "to be allowed to",
+          "to have to",
+          "to want to",
+          "to be able to",
+        ],
+        accept: [
+          "to have to",
+        ],
+        answer: "Müssen means must or have to. Dürfen is to be allowed to, wollen is to want to and können is to be able to.",
+      },
+      {
+        question: "Which word completes 'Ich kaufe ___ Rock.' (der Rock)",
+        choices: [
+          "der",
+          "dem",
+          "den",
+          "des",
+        ],
+        accept: [
+          "den",
+        ],
+        answer: "Rock is masculine and is the direct object, so it is accusative: der becomes den. Dem is dative, which this sentence doesn't need.",
+      },
+      {
+        question: "Which case is used for the subject of a sentence?",
+        choices: [
+          "Accusative",
+          "Nominative",
+          "Dative",
+          "Genitive",
+        ],
+        accept: [
+          "Nominative",
+        ],
+        answer: "The subject (who does the action) is in the nominative. The accusative is for the direct object, the person or thing the action is done to.",
+      },
+      {
+        question: "Which is correct after 'dass'?",
+        choices: [
+          "dass er ist krank",
+          "dass ist er krank",
+          "dass er krank ist",
+          "dass krank er ist",
+        ],
+        accept: [
+          "dass er krank ist",
+        ],
+        answer: "Dass is a subordinating conjunction like weil, so the verb goes to the end: dass er krank ist. Dass er ist krank uses main-clause order.",
+      },
+      {
+        question: "To find the stem of 'machen', what do you take off?",
+        choices: [
+          "-n",
+          "-chen",
+          "-en",
+          "-e",
+        ],
+        accept: [
+          "-en",
+        ],
+        answer: "Remove the -en ending to get the stem mach-, then add endings: ich mache, du machst. Taking off only -n would leave mache-.",
+      },
+      {
+        question: "Which word completes 'Ich ___ heute ausgehen.' (dürfen)",
+        choices: [
+          "dürfe",
+          "darf",
+          "darfst",
+          "dürft",
+        ],
+        accept: [
+          "darf",
+        ],
+        answer: "Dürfen loses its umlaut in the singular: ich darf, du darfst, er darf. Darfst is the du form and dürft is the ihr form.",
+      },
     ],
     misconceptions: [
       {
@@ -1408,6 +2344,162 @@ export const GERMAN: Record<string, TopicContent> = {
         accept: ["gibt"],
         answer: "Gibt — es geben stays as gibt regardless of subject in this fixed 'there is/are' phrase, here inverted into a question: Gibt es ein Schwimmbad in deiner Stadt?",
       },
+      {
+        question: "What does 'das Rathaus' mean?",
+        choices: [
+          "library",
+          "town hall",
+          "advice centre",
+          "guest house",
+        ],
+        accept: [
+          "town hall",
+        ],
+        answer: "Das Rathaus is the town hall, where the council meets. Don't be misled by Rat (advice); a library is die Bibliothek and a guest house is die Pension.",
+      },
+      {
+        question: "Which word means 'traffic lights'?",
+        choices: [
+          "die Lampe",
+          "die Ecke",
+          "die Ampel",
+          "die Brücke",
+        ],
+        accept: [
+          "die Ampel",
+        ],
+        answer: "Die Ampel means traffic lights, as in 'an der Ampel links'. Die Lampe is a lamp, die Ecke is a corner and die Brücke is a bridge.",
+      },
+      {
+        question: "What does 'am Stadtrand' mean?",
+        choices: [
+          "in the city centre",
+          "on the coast",
+          "in the mountains",
+          "on the outskirts",
+        ],
+        accept: [
+          "on the outskirts",
+        ],
+        answer: "Am Stadtrand means on the outskirts (the edge of the town). The city centre is die Stadtmitte, the coast is an der Küste and the mountains are in den Bergen.",
+      },
+      {
+        question: "What does 'bewölkt' mean?",
+        choices: [
+          "cloudy",
+          "windy",
+          "foggy",
+          "sunny",
+        ],
+        accept: [
+          "cloudy",
+        ],
+        answer: "Bewölkt means cloudy, from die Wolke (cloud). Windy is windig, foggy is neblig and sunny is sonnig.",
+      },
+      {
+        question: "Which case follows 'es gibt'?",
+        choices: [
+          "nominative",
+          "accusative",
+          "dative",
+          "genitive",
+        ],
+        accept: [
+          "accusative",
+        ],
+        answer: "Es gibt always takes the accusative, so a masculine noun changes: es gibt einen Park, not ein Park. Feminine and neuter nouns look the same as the nominative.",
+      },
+      {
+        question: "Which word means 'shopping centre'?",
+        choices: [
+          "die Fußgängerzone",
+          "der Marktplatz",
+          "das Stadion",
+          "das Einkaufszentrum",
+        ],
+        accept: [
+          "das Einkaufszentrum",
+        ],
+        answer: "Das Einkaufszentrum is the shopping centre (einkaufen = to shop). Die Fußgängerzone is the pedestrian zone and der Marktplatz is the market square.",
+      },
+      {
+        question: "What does 'in der Nähe' mean?",
+        choices: [
+          "far away",
+          "nearby",
+          "opposite",
+          "straight on",
+        ],
+        accept: [
+          "nearby",
+        ],
+        answer: "In der Nähe means nearby, as in 'Gibt es eine Bank in der Nähe?'. Far away is weit weg, opposite is gegenüber and straight on is geradeaus.",
+      },
+      {
+        question: "What does 'Biegen Sie rechts ab' mean?",
+        choices: [
+          "Go straight on",
+          "Cross the road",
+          "Turn left",
+          "Turn right",
+        ],
+        accept: [
+          "Turn right",
+        ],
+        answer: "Abbiegen means to turn and rechts means right, so it's 'Turn right'. Links would be left; geradeaus is straight on. The prefix ab goes to the end in a command.",
+      },
+      {
+        question: "Which word means 'lively' when describing a town?",
+        choices: [
+          "lebhaft",
+          "langweilig",
+          "ruhig",
+          "schmutzig",
+        ],
+        accept: [
+          "lebhaft",
+        ],
+        answer: "Lebhaft means lively (from leben, to live). Langweilig is boring, ruhig is quiet and schmutzig is dirty.",
+      },
+      {
+        question: "Which means 'quieter than'?",
+        choices: [
+          "so ruhig wie",
+          "ruhiger als",
+          "am ruhigsten",
+          "ruhig als",
+        ],
+        accept: [
+          "ruhiger als",
+        ],
+        answer: "Ruhiger als is the comparative: add -er, then als for 'than'. 'So ruhig wie' means 'as quiet as' and 'am ruhigsten' means 'the quietest'.",
+      },
+      {
+        question: "Which completes 'Ich wohne ___ Norden von England'?",
+        choices: [
+          "in",
+          "am",
+          "im",
+          "auf",
+        ],
+        accept: [
+          "im",
+        ],
+        answer: "Compass points are masculine (der Norden), so 'in the north' is in dem Norden, shortened to im Norden. Plain in would need an article after it.",
+      },
+      {
+        question: "What does 'Nehmen Sie die erste Straße links' mean?",
+        choices: [
+          "Take the first right",
+          "Take the second left",
+          "Take the first left",
+          "Take the third left",
+        ],
+        accept: [
+          "Take the first left",
+        ],
+        answer: "Erste means first and links means left, so it's 'Take the first left'. Rechts is right, zweite is second and dritte is third.",
+      },
     ],
     misconceptions: [
       {
@@ -1600,6 +2692,162 @@ export const GERMAN: Record<string, TopicContent> = {
         question: "Complete with the correct form of kosten: 'Wie viel ____ die Fahrkarte?'",
         accept: ["kostet"],
         answer: "Kostet — the er/sie/es form of kosten, used in the standard price question Wie viel kostet die Fahrkarte? (How much does the ticket cost?).",
+      },
+      {
+        question: "What does 'das Flugzeug' mean?",
+        choices: [
+          "the train",
+          "the plane",
+          "the ferry",
+          "the coach",
+        ],
+        accept: [
+          "the plane",
+        ],
+        answer: "Das Flugzeug is the plane (fliegen = to fly). The train is der Zug, the ferry is die Fähre and the coach is der Reisebus.",
+      },
+      {
+        question: "What does 'ankommen' mean?",
+        choices: [
+          "to depart",
+          "to book",
+          "to arrive",
+          "to change trains",
+        ],
+        accept: [
+          "to arrive",
+        ],
+        answer: "Ankommen means to arrive: Der Zug kommt um acht Uhr an. Its opposite is abfahren (to depart); to change trains is umsteigen.",
+      },
+      {
+        question: "Which word means 'double room'?",
+        choices: [
+          "das Einzelzimmer",
+          "das Badezimmer",
+          "das Wohnzimmer",
+          "das Doppelzimmer",
+        ],
+        accept: [
+          "das Doppelzimmer",
+        ],
+        answer: "Das Doppelzimmer is a double room. Das Einzelzimmer is a single room, das Badezimmer a bathroom and das Wohnzimmer a living room.",
+      },
+      {
+        question: "What is the past participle of essen?",
+        choices: [
+          "gegessen",
+          "geesst",
+          "geessen",
+          "gegesst",
+        ],
+        accept: [
+          "gegessen",
+        ],
+        answer: "Essen is irregular: its participle is gegessen, with an extra g, as in Ich habe Pizza gegessen. It is not a regular -t participle.",
+      },
+      {
+        question: "Which completes 'Ich ____ in Spanien gewesen.'?",
+        choices: [
+          "habe",
+          "bin",
+          "hat",
+          "sind",
+        ],
+        accept: [
+          "bin",
+        ],
+        answer: "Sein takes sein as its own helper in the perfect: ich bin gewesen (I have been). Habe is the common slip; hat and sind are the wrong person.",
+      },
+      {
+        question: "What does 'Ich bin nach Rom geflogen' mean?",
+        choices: [
+          "I drove to Rome",
+          "I flew to Rome",
+          "I sailed to Rome",
+          "I cycled to Rome",
+        ],
+        accept: [
+          "I flew to Rome",
+        ],
+        answer: "Geflogen is the participle of fliegen (to fly), so 'I flew to Rome'. Drove would be gefahren; movement verbs like these take bin.",
+      },
+      {
+        question: "Which means 'to Austria'?",
+        choices: [
+          "in Österreich",
+          "nach Österreich",
+          "zu Österreich",
+          "in die Österreich",
+        ],
+        accept: [
+          "nach Österreich",
+        ],
+        answer: "Countries without an article use nach for 'to': nach Österreich. In Österreich means 'in Austria'; zu is for people and places like zum Bahnhof.",
+      },
+      {
+        question: "What does 'die Unterkunft' mean?",
+        choices: [
+          "accommodation",
+          "arrival",
+          "departure",
+          "sightseeing",
+        ],
+        accept: [
+          "accommodation",
+        ],
+        answer: "Die Unterkunft is accommodation, such as a hotel or campsite. Arrival is die Ankunft (a close lookalike), departure is die Abfahrt.",
+      },
+      {
+        question: "On a train ticket, what does 'hin und zurück' mean?",
+        choices: [
+          "single",
+          "first class",
+          "return",
+          "half price",
+        ],
+        accept: [
+          "return",
+        ],
+        answer: "Hin und zurück means there and back, so a return ticket. A single is einfach, first class is erste Klasse.",
+      },
+      {
+        question: "Which word means 'the beach'?",
+        choices: [
+          "der Strand",
+          "die Küste",
+          "das Meer",
+          "der See",
+        ],
+        accept: [
+          "der Strand",
+        ],
+        answer: "Der Strand is the beach. Die Küste is the coast, das Meer is the sea, and der See is a lake (die See can mean the sea, but the beach is der Strand).",
+      },
+      {
+        question: "What does 'letzten Sommer' mean?",
+        choices: [
+          "next summer",
+          "every summer",
+          "this summer",
+          "last summer",
+        ],
+        accept: [
+          "last summer",
+        ],
+        answer: "Letzten Sommer means last summer, a past-time marker that signals the perfect tense. Next summer is nächsten Sommer and every summer is jeden Sommer.",
+      },
+      {
+        question: "Which completes 'Wir ____ im Hotel übernachtet.'?",
+        choices: [
+          "sind",
+          "haben",
+          "seid",
+          "hat",
+        ],
+        accept: [
+          "haben",
+        ],
+        answer: "Übernachten (to stay overnight) is not a verb of movement, so it takes haben: wir haben übernachtet. Sind is the tempting slip; seid and hat are the wrong person.",
       },
     ],
     misconceptions: [
@@ -1798,6 +3046,149 @@ export const GERMAN: Record<string, TopicContent> = {
         accept: ["mein vater verdient viel"],
         answer: "Mein Vater verdient viel — verdienen is a regular weak verb, and viel (a lot) describes the amount earned.",
       },
+      {
+        question: "What does 'der Arzt' mean?",
+        choices: [
+          "nurse",
+          "dentist",
+          "doctor",
+          "vet",
+        ],
+        accept: [
+          "doctor",
+        ],
+        answer: "Der Arzt is a doctor. A dentist is der Zahnarzt (tooth doctor), a vet is der Tierarzt (animal doctor) and a nurse is der Krankenpfleger.",
+      },
+      {
+        question: "What is the female form of 'der Arzt'?",
+        choices: [
+          "die Ärzte",
+          "die Ärztin",
+          "die Ärzterin",
+          "die Arztfrau",
+        ],
+        accept: [
+          "die Ärztin",
+        ],
+        answer: "Most jobs add -in for a woman, and Arzt also gains an umlaut: die Ärztin. Die Ärzte is the plural (doctors), not the female form.",
+      },
+      {
+        question: "What does 'das Gehalt' mean?",
+        choices: [
+          "salary",
+          "workplace",
+          "career",
+          "training",
+        ],
+        accept: [
+          "salary",
+        ],
+        answer: "Das Gehalt is the salary, linked to verdienen (to earn). The workplace is der Arbeitsplatz, a career is die Karriere and training is die Ausbildung.",
+      },
+      {
+        question: "What does 'im Ausland' mean?",
+        choices: [
+          "outside",
+          "abroad",
+          "at home",
+          "in the office",
+        ],
+        accept: [
+          "abroad",
+        ],
+        answer: "Im Ausland means abroad, literally 'in the out-land'. Outside is draußen, at home is zu Hause and in the office is im Büro.",
+      },
+      {
+        question: "In 'Ich werde in London arbeiten', what tense is used?",
+        choices: [
+          "present",
+          "perfect",
+          "future",
+          "conditional",
+        ],
+        accept: [
+          "future",
+        ],
+        answer: "Werde plus an infinitive at the end (arbeiten) is the future tense: I will work. The conditional would use würde instead of werde.",
+      },
+      {
+        question: "What does 'hoffentlich' mean?",
+        choices: [
+          "possibly",
+          "definitely",
+          "unfortunately",
+          "hopefully",
+        ],
+        accept: [
+          "hopefully",
+        ],
+        answer: "Hoffentlich means hopefully (hoffen = to hope), useful for future plans. Possibly is vielleicht, definitely is bestimmt and unfortunately is leider.",
+      },
+      {
+        question: "Which verb means 'to earn'?",
+        choices: [
+          "verdienen",
+          "verlieren",
+          "verbringen",
+          "verkaufen",
+        ],
+        accept: [
+          "verdienen",
+        ],
+        answer: "Verdienen means to earn: Sie verdient viel Geld. Verlieren is to lose, verbringen is to spend time and verkaufen is to sell.",
+      },
+      {
+        question: "What does 'vorhaben' mean?",
+        choices: [
+          "to prefer",
+          "to plan",
+          "to promise",
+          "to practise",
+        ],
+        accept: [
+          "to plan",
+        ],
+        answer: "Vorhaben means to plan or intend: Ich habe vor, im Ausland zu arbeiten. It's separable, so vor goes to the end. To prefer is bevorzugen.",
+      },
+      {
+        question: "What does 'der Koch' mean?",
+        choices: [
+          "waiter",
+          "baker",
+          "cook",
+          "farmer",
+        ],
+        accept: [
+          "cook",
+        ],
+        answer: "Der Koch is a cook or chef (kochen = to cook). A waiter is der Kellner, a baker is der Bäcker and a farmer is der Bauer.",
+      },
+      {
+        question: "What does 'das Praktikum' mean?",
+        choices: [
+          "part-time job",
+          "apprenticeship",
+          "practice",
+          "work experience",
+        ],
+        accept: [
+          "work experience",
+        ],
+        answer: "Das Praktikum is work experience or an internship. It's not 'practice' (die Übung); a part-time job is der Teilzeitjob and an apprenticeship is die Lehre.",
+      },
+      {
+        question: "Which means 'well paid'?",
+        choices: [
+          "schlecht bezahlt",
+          "gut gelaunt",
+          "gut bezahlt",
+          "gut gemacht",
+        ],
+        accept: [
+          "gut bezahlt",
+        ],
+        answer: "Gut bezahlt means well paid (bezahlen = to pay). Schlecht bezahlt is badly paid, gut gelaunt is in a good mood and gut gemacht is well done.",
+      },
     ],
     misconceptions: [
       {
@@ -1989,6 +3380,149 @@ export const GERMAN: Record<string, TopicContent> = {
         question: "Complete with the correct form of benutzen: 'Wir ____ das Internet jeden Tag.'",
         accept: ["benutzen"],
         answer: "Benutzen — the wir form of the regular verb benutzen (to use), identical here to the infinitive.",
+      },
+      {
+        question: "What does 'herunterladen' mean?",
+        choices: [
+          "to upload",
+          "to download",
+          "to log in",
+          "to delete",
+        ],
+        accept: [
+          "to download",
+        ],
+        answer: "Herunterladen means to download (herunter = down). To upload is hochladen, to log in is sich einloggen and to delete is löschen.",
+      },
+      {
+        question: "What does 'die Kopfhörer' mean?",
+        choices: [
+          "the keyboard",
+          "the screen",
+          "the headphones",
+          "the speakers",
+        ],
+        accept: [
+          "the headphones",
+        ],
+        answer: "Die Kopfhörer are headphones, literally 'head listeners', and the word is plural. The keyboard is die Tastatur and the screen is der Bildschirm.",
+      },
+      {
+        question: "What does 'süchtig' mean?",
+        choices: [
+          "addicted",
+          "searching",
+          "sick",
+          "boring",
+        ],
+        accept: [
+          "addicted",
+        ],
+        answer: "Süchtig means addicted, as in süchtig nach dem Handy. Don't confuse it with suchen (to search); sick is krank and boring is langweilig.",
+      },
+      {
+        question: "Which completes 'Ich nutze mein Handy, ___ Musik zu hören.'?",
+        choices: [
+          "für",
+          "damit",
+          "weil",
+          "um",
+        ],
+        accept: [
+          "um",
+        ],
+        answer: "Um...zu means 'in order to', with zu plus the infinitive at the end. Damit and weil need a full clause with a subject, and für can't introduce a verb.",
+      },
+      {
+        question: "Which is the superlative of 'gut'?",
+        choices: [
+          "besser",
+          "am meisten",
+          "am besten",
+          "am schnellsten",
+        ],
+        accept: [
+          "am besten",
+        ],
+        answer: "Gut is irregular: gut, besser, am besten. Besser is only the comparative (better), am meisten comes from viel (most) and am schnellsten means fastest.",
+      },
+      {
+        question: "What does 'künstlich' mean, as in 'künstliche Intelligenz'?",
+        choices: [
+          "artistic",
+          "clever",
+          "artificial",
+          "modern",
+        ],
+        accept: [
+          "artificial",
+        ],
+        answer: "Künstlich means artificial, so künstliche Intelligenz is AI. It looks like Kunst (art), but artistic is künstlerisch; clever is klug.",
+      },
+      {
+        question: "What does 'zeitaufwendig' mean?",
+        choices: [
+          "time-saving",
+          "timeless",
+          "on time",
+          "time-consuming",
+        ],
+        accept: [
+          "time-consuming",
+        ],
+        answer: "Zeitaufwendig means time-consuming: it takes a lot of time. Time-saving is zeitsparend and on time is pünktlich.",
+      },
+      {
+        question: "What does 'der Bildschirm' mean?",
+        choices: [
+          "the screen",
+          "the camera",
+          "the keyboard",
+          "the mouse",
+        ],
+        accept: [
+          "the screen",
+        ],
+        answer: "Der Bildschirm is the screen (Bild = picture). The camera is die Kamera, the keyboard is die Tastatur and the mouse is die Maus.",
+      },
+      {
+        question: "What does 'verbringen' mean?",
+        choices: [
+          "to bring",
+          "to spend (time)",
+          "to spend (money)",
+          "to send",
+        ],
+        accept: [
+          "to spend (time)",
+        ],
+        answer: "Verbringen means to spend time: Ich verbringe zwei Stunden online. Spending money is ausgeben, to bring is bringen and to send is schicken.",
+      },
+      {
+        question: "Which word means 'dangerous'?",
+        choices: [
+          "nützlich",
+          "gefährlich",
+          "sicher",
+          "einfach",
+        ],
+        accept: [
+          "gefährlich",
+        ],
+        answer: "Gefährlich means dangerous (die Gefahr = danger). Nützlich is useful, sicher is safe and einfach is easy.",
+      },
+      {
+        question: "What gender is 'Internet' in German?",
+        choices: [
+          "Masculine",
+          "Feminine",
+          "Neuter",
+          "Plural only",
+        ],
+        accept: [
+          "Neuter",
+        ],
+        answer: "It's das Internet, so neuter: im Internet surfen. Many tech words borrowed from English are neuter, like das Handy and das Tablet.",
       },
     ],
     misconceptions: [
@@ -2184,6 +3718,149 @@ export const GERMAN: Record<string, TopicContent> = {
         choices: ["Ich werde nach Frankreich fahren.", "Ich werde nach Frankreich gefahren.", "Ich fahre werde nach Frankreich.", "Ich bin nach Frankreich werden."],
         accept: ["Ich werde nach Frankreich fahren."],
         answer: "Ich werde nach Frankreich fahren is correct — werde is conjugated in second position, and fahren stays as an untouched infinitive at the end. The other options wrongly use a participle or the wrong word order.",
+      },
+      {
+        question: "What is the past participle of gehen?",
+        choices: [
+          "gegeht",
+          "gegangen",
+          "gegehen",
+          "gangen",
+        ],
+        accept: [
+          "gegangen",
+        ],
+        answer: "Gehen is irregular: ich bin gegangen. The stem changes to gang and it ends in -en, so gegeht (a regular -t ending) is wrong.",
+      },
+      {
+        question: "'Ich hatte' is in which tense?",
+        choices: [
+          "simple past",
+          "perfect",
+          "present",
+          "pluperfect",
+        ],
+        accept: [
+          "simple past",
+        ],
+        answer: "Hatte is the simple past (Präteritum) of haben: I had. On its own it is not the pluperfect; that needs hatte plus a past participle.",
+      },
+      {
+        question: "Which completes 'Er ____ krank.' (he was ill)?",
+        choices: [
+          "warst",
+          "war",
+          "wart",
+          "waren",
+        ],
+        accept: [
+          "war",
+        ],
+        answer: "In the simple past, er/sie/es takes war, the same as ich war. Warst is for du, wart for ihr, and waren for wir/sie.",
+      },
+      {
+        question: "Which completes 'Ihr ____ einen Hund.' (you had a dog)?",
+        choices: [
+          "hattest",
+          "hatten",
+          "hattet",
+          "hatte",
+        ],
+        accept: [
+          "hattet",
+        ],
+        answer: "Ihr takes hattet in the simple past of haben. Hattest is the du form, hatten is for wir/Sie/sie and hatte is for ich/er.",
+      },
+      {
+        question: "Which completes 'Ich frage ihn, ___ er Zeit hat.' (whether)?",
+        choices: [
+          "wenn",
+          "dass",
+          "ob",
+          "als",
+        ],
+        accept: [
+          "ob",
+        ],
+        answer: "Ob means whether or if in an indirect question, and sends the verb to the end. Wenn is if/when for conditions, so it doesn't fit 'whether'.",
+      },
+      {
+        question: "What is the past participle of werden?",
+        choices: [
+          "geworden",
+          "gewerdet",
+          "gewurden",
+          "gewirdet",
+        ],
+        accept: [
+          "geworden",
+        ],
+        answer: "Werden is irregular: its participle is geworden, used with sein. Er ist Lehrer geworden means he became a teacher.",
+      },
+      {
+        question: "Which completes '___ ich zehn war, wohnte ich in Köln.'?",
+        choices: [
+          "Wenn",
+          "Ob",
+          "Dass",
+          "Als",
+        ],
+        accept: [
+          "Als",
+        ],
+        answer: "Als means 'when' for a single occasion or period in the past, like being ten. Wenn is for present, future or repeated events (whenever).",
+      },
+      {
+        question: "Which completes 'Ich ____ zu Hause geblieben.'?",
+        choices: [
+          "habe",
+          "bin",
+          "hast",
+          "sind",
+        ],
+        accept: [
+          "bin",
+        ],
+        answer: "Bleiben takes sein in the perfect even though it isn't movement: it's a change-or-stay verb like sein and werden. Habe is the common slip.",
+      },
+      {
+        question: "Which completes 'Ich werde morgen Fußball ____.'?",
+        choices: [
+          "gespielt",
+          "spiele",
+          "spielen",
+          "spielt",
+        ],
+        accept: [
+          "spielen",
+        ],
+        answer: "The future tense is werden plus the infinitive at the end of the clause: ich werde spielen. Gespielt is a past participle for the perfect.",
+      },
+      {
+        question: "What does 'ich spielte' mean?",
+        choices: [
+          "I play",
+          "I played",
+          "I will play",
+          "I would play",
+        ],
+        accept: [
+          "I played",
+        ],
+        answer: "Spielte is the simple past of a regular verb: stem plus -te. So it means I played. I would play is ich würde spielen.",
+      },
+      {
+        question: "Which completes 'Du ____ das bald sehen.' (you will)?",
+        choices: [
+          "wirst",
+          "wird",
+          "werdest",
+          "wirdst",
+        ],
+        accept: [
+          "wirst",
+        ],
+        answer: "Werden is irregular: du wirst, er wird. So 'you will see' is du wirst sehen. Wird is the er/sie/es form.",
       },
     ],
     misconceptions: [
@@ -2385,6 +4062,149 @@ export const GERMAN: Record<string, TopicContent> = {
         question: "Give one piece of advice for structuring a strong extended writing answer.",
         accept: ["use a range of tenses", "include an opinion with a reason", "use connectives", "plan before writing", "include present past and future"],
         answer: "Several valid answers exist here, for example using a range of tenses, including an opinion with a clear reason, using connectives to link ideas, or planning a rough structure before writing.",
+      },
+      {
+        question: "'Vor zwei Jahren bin ich nach Rom gefahren.' When did they go?",
+        choices: [
+          "in two years",
+          "two years ago",
+          "for two years",
+          "every two years",
+        ],
+        accept: [
+          "two years ago",
+        ],
+        answer: "Vor plus a time phrase means 'ago', so it was two years ago. In zwei Jahren would mean in two years' time; the perfect tense also shows it's past.",
+      },
+      {
+        question: "What does 'deshalb' mean?",
+        choices: [
+          "however",
+          "although",
+          "therefore",
+          "besides",
+        ],
+        accept: [
+          "therefore",
+        ],
+        answer: "Deshalb means therefore or that's why, and the verb comes straight after it: deshalb bleibe ich. Although is obwohl and besides is außerdem.",
+      },
+      {
+        question: "What does 'obwohl' mean?",
+        choices: [
+          "although",
+          "because",
+          "therefore",
+          "however",
+        ],
+        accept: [
+          "although",
+        ],
+        answer: "Obwohl means although and sends the verb to the end: obwohl es regnet. Because is weil and therefore is deshalb.",
+      },
+      {
+        question: "What does 'außerdem' mean?",
+        choices: [
+          "however",
+          "outside",
+          "furthermore",
+          "although",
+        ],
+        accept: [
+          "furthermore",
+        ],
+        answer: "Außerdem means furthermore or besides, adding another point. It looks like außen (outside), but outside is draußen.",
+      },
+      {
+        question: "In an exam task, what does 'Vergleiche' tell you to do?",
+        choices: [
+          "describe",
+          "explain",
+          "list",
+          "compare",
+        ],
+        accept: [
+          "compare",
+        ],
+        answer: "Vergleiche means compare: say how two things are similar or different, often with als. Describe is beschreibe and explain is erkläre.",
+      },
+      {
+        question: "'Ich gehe nie ins Kino.' How often do they go?",
+        choices: [
+          "rarely",
+          "never",
+          "often",
+          "sometimes",
+        ],
+        accept: [
+          "never",
+        ],
+        answer: "Nie means never. Rarely is selten, often is oft and sometimes is manchmal. Frequency words are often tested in reading questions.",
+      },
+      {
+        question: "'Morgen werde ich Tennis spielen.' When will they play?",
+        choices: [
+          "this morning",
+          "yesterday",
+          "tomorrow",
+          "every day",
+        ],
+        accept: [
+          "tomorrow",
+        ],
+        answer: "Morgen means tomorrow, and werde + spielen confirms the future. This morning is heute Morgen (capital M), yesterday is gestern.",
+      },
+      {
+        question: "Which completes 'Ich gehe mit ___ Mutter einkaufen.'?",
+        choices: [
+          "die",
+          "dem",
+          "den",
+          "der",
+        ],
+        accept: [
+          "der",
+        ],
+        answer: "Mit takes the dative, and feminine die becomes der in the dative: mit der Mutter. Dem is for masculine and neuter nouns.",
+      },
+      {
+        question: "What does 'trotzdem' mean?",
+        choices: [
+          "therefore",
+          "nevertheless",
+          "because",
+          "besides",
+        ],
+        accept: [
+          "nevertheless",
+        ],
+        answer: "Trotzdem means nevertheless or even so, and the verb comes next: trotzdem gehe ich. Therefore is deshalb, because is weil.",
+      },
+      {
+        question: "What does 'Ich esse lieber Fisch' mean?",
+        choices: [
+          "I eat no fish",
+          "I ate fish",
+          "I'll eat fish",
+          "I prefer fish",
+        ],
+        accept: [
+          "I prefer fish",
+        ],
+        answer: "Lieber after the verb means 'rather', so it's I prefer fish. Gern means like, lieber means prefer and am liebsten means like most of all.",
+      },
+      {
+        question: "'Ich lerne seit drei Jahren Deutsch.' What does this tell you?",
+        choices: [
+          "for three years",
+          "three years ago",
+          "in three years",
+          "every three years",
+        ],
+        accept: [
+          "for three years",
+        ],
+        answer: "Seit with the present tense means 'for' (and still going): I have been learning German for three years. Vor drei Jahren would be three years ago.",
       },
     ],
     misconceptions: [
