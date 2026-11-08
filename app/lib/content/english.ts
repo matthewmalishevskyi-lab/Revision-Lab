@@ -433,6 +433,45 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Embedding, because the quotation becomes part of your own sentence instead of standing alone.",
       },
+      {
+        question: "Which of these phrases is written in a formal register?",
+        choices: [
+          "Cheers, mate",
+          "I would be grateful",
+          "Gonna be late",
+          "No worries",
+        ],
+        accept: [
+          "I would be grateful",
+        ],
+        answer: "'I would be grateful' is polite, complete Standard English, so it is formal. The others use slang or elision ('gonna'), which marks an informal, chatty register.",
+      },
+      {
+        question: "Which word for a thin person has the most negative connotations?",
+        choices: [
+          "Slim",
+          "Slender",
+          "Lean",
+          "Scrawny",
+        ],
+        accept: [
+          "Scrawny",
+        ],
+        answer: "'Scrawny' suggests weakness and looking underfed, so it is negative. 'Slim' and 'slender' sound attractive, and 'lean' suggests fitness: same meaning, different connotations.",
+      },
+      {
+        question: "A story ends with the same image it opened with. What is this structure called?",
+        choices: [
+          "Linear",
+          "Cyclical",
+          "Episodic",
+          "Foreshadowing",
+        ],
+        accept: [
+          "Cyclical",
+        ],
+        answer: "A cyclical structure returns to its starting point, which can suggest nothing has changed or that a character is trapped. Foreshadowing is an early hint at a later event.",
+      },
     ],
 
     misconceptions: [
@@ -884,6 +923,32 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Sibilance",
         ],
         answer: "Sibilance, because it is the repetition of soft s sounds, often for a hissing or sinister effect.",
+      },
+      {
+        question: "Which of these is a compound sentence?",
+        choices: [
+          "She hid.",
+          "As I ran, she hid.",
+          "I ran and she hid.",
+          "Hiding, she waited.",
+        ],
+        accept: [
+          "I ran and she hid.",
+        ],
+        answer: "A compound sentence joins two main clauses with a word like 'and', 'but' or 'so'. 'As I ran, she hid' is complex, because 'As I ran' cannot stand alone.",
+      },
+      {
+        question: "In 'The house, which stood alone, was dark', what is 'which stood alone'?",
+        choices: [
+          "Main clause",
+          "Subordinate clause",
+          "Simple sentence",
+          "Semantic field",
+        ],
+        accept: [
+          "Subordinate clause",
+        ],
+        answer: "'Which stood alone' adds detail but makes no sense by itself, so it is a subordinate clause. The main clause is 'The house was dark', which could stand alone.",
       },
     ],
 
@@ -1340,6 +1405,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Elegy, because an elegy is a poem of mourning; an ode praises its subject and a ballad tells a story.",
       },
+      {
+        question: "Which pair of words is a half-rhyme?",
+        choices: [
+          "room / doom",
+          "shell / shall",
+          "cat / hat",
+          "bright / night",
+        ],
+        accept: [
+          "shell / shall",
+        ],
+        answer: "'Shell' and 'shall' share their consonants but not their vowel sound, so they nearly rhyme. The other pairs are full rhymes, matching both vowel and ending.",
+      },
+      {
+        question: "Which type of sonnet usually ends with a rhyming couplet?",
+        choices: [
+          "Petrarchan sonnet",
+          "Shakespearean sonnet",
+          "Free verse",
+          "Dramatic monologue",
+        ],
+        accept: [
+          "Shakespearean sonnet",
+        ],
+        answer: "A Shakespearean sonnet has three quatrains and a final rhyming couplet. A Petrarchan sonnet splits into an octave and a sestet, with its volta usually at line nine.",
+      },
     ],
 
     misconceptions: [
@@ -1782,6 +1873,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "No stage lighting — plays ran outdoors in daylight, so the words had to tell the audience the time and place.",
       },
+      {
+        question: "A character who highlights another's traits by contrast is called a:",
+        choices: [
+          "Foil",
+          "Protagonist",
+          "Groundling",
+          "Chorus",
+        ],
+        accept: [
+          "Foil",
+        ],
+        answer: "A foil is a contrasting character who makes another's qualities stand out, as a calm friend makes a hot-headed hero look rasher. Groundlings were the standing audience.",
+      },
+      {
+        question: "In Shakespeare's English, what does 'wherefore' mean?",
+        choices: [
+          "Where",
+          "Why",
+          "When",
+          "Who",
+        ],
+        accept: [
+          "Why",
+        ],
+        answer: "'Wherefore' means 'why', so Juliet's 'wherefore art thou Romeo?' asks why he is Romeo, a Montague. It is a common trap to read it as 'where'.",
+      },
     ],
 
     misconceptions: [
@@ -2205,6 +2322,32 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Knows everything",
         ],
         answer: "Knows everything, including every character's thoughts; a limited narrator knows just one character's mind.",
+      },
+      {
+        question: "A third-person narrator who only knows one character's thoughts is:",
+        choices: [
+          "Limited",
+          "Omniscient",
+          "First person",
+          "Unreliable",
+        ],
+        accept: [
+          "Limited",
+        ],
+        answer: "A limited third-person narrator follows one character closely and only shares their thoughts. An omniscient narrator knows what every character thinks and feels.",
+      },
+      {
+        question: "A calm scene placed straight after a violent one mainly creates:",
+        choices: [
+          "Foreshadowing",
+          "Retrieval",
+          "Contrast",
+          "Repetition",
+        ],
+        accept: [
+          "Contrast",
+        ],
+        answer: "Putting opposite scenes side by side is a structural contrast that makes each feel sharper. Foreshadowing would be a hint about something that has not happened yet.",
       },
     ],
 
@@ -2636,6 +2779,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Opinion: DAFOREST is Direct address, Alliteration, Facts, Opinions, Rhetorical questions, Emotive language, Statistics, Triples.",
       },
+      {
+        question: "'The queue was a mile long.' Which technique is this?",
+        choices: [
+          "Anecdote",
+          "Hyperbole",
+          "Statistics",
+          "Direct address",
+        ],
+        accept: [
+          "Hyperbole",
+        ],
+        answer: "Hyperbole is deliberate exaggeration for effect: nobody believes the queue was really a mile long. It is not a statistic, because it is not a real measured fact.",
+      },
+      {
+        question: "Which phrase uses emotive language?",
+        choices: [
+          "dogs at the shelter",
+          "frail, starving pups",
+          "twelve dogs found",
+          "a shelter for dogs",
+        ],
+        accept: [
+          "frail, starving pups",
+        ],
+        answer: "'Frail' and 'starving' are chosen to make the reader feel pity, which is emotive language. The other phrases give the same facts in neutral, unemotional words.",
+      },
     ],
 
     misconceptions: [
@@ -3061,6 +3230,32 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Russian Revolution",
         ],
         answer: "Russian Revolution of 1917 and the rise of Stalin, shown through the pigs taking over the farm.",
+      },
+      {
+        question: "In An Inspector Calls, what is the Inspector's surname?",
+        choices: [
+          "Croft",
+          "Goole",
+          "Birling",
+          "Renton",
+        ],
+        accept: [
+          "Goole",
+        ],
+        answer: "The Inspector is called Goole, which sounds like 'ghoul' and hints he may not be an ordinary policeman. Croft is Gerald's surname; Daisy Renton is a name Eva Smith used.",
+      },
+      {
+        question: "In Lord of the Flies, what are Piggy's glasses used to do?",
+        choices: [
+          "Start a fire",
+          "Call meetings",
+          "Catch fish",
+          "Read a map",
+        ],
+        accept: [
+          "Start a fire",
+        ],
+        answer: "Piggy's glasses focus sunlight to light the signal fire, so they stand for reason and the hope of rescue. Meetings are called with the conch, not the glasses.",
       },
     ],
 
@@ -3506,6 +3701,32 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Sonnet",
         ],
         answer: "Sonnet — 14 lines ending in a rhyming couplet, a love-poem form that also announces the lovers' deaths.",
+      },
+      {
+        question: "In Macbeth, whom does Macbeth kill in order to take the throne?",
+        choices: [
+          "Banquo",
+          "Malcolm",
+          "Duncan",
+          "Macduff",
+        ],
+        accept: [
+          "Duncan",
+        ],
+        answer: "Macbeth murders King Duncan in his sleep at Macbeth's castle. He later has Banquo killed to protect his crown, but Duncan's death is what makes him king.",
+      },
+      {
+        question: "In Romeo and Juliet, who marries Romeo and Juliet in secret?",
+        choices: [
+          "The Nurse",
+          "Benvolio",
+          "Prince Escalus",
+          "Friar Laurence",
+        ],
+        accept: [
+          "Friar Laurence",
+        ],
+        answer: "Friar Laurence marries them, hoping it will end the feud between their families. The Nurse helps by carrying messages, but she does not perform the wedding.",
       },
     ],
 
@@ -3954,6 +4175,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Magwitch, the convict Pip helped as a boy; Pip wrongly assumes it is Miss Havisham.",
       },
+      {
+        question: "In A Christmas Carol, what is the name of Bob Cratchit's sickly son?",
+        choices: [
+          "Peter",
+          "Martha",
+          "Tiny Tim",
+          "Belinda",
+        ],
+        accept: [
+          "Tiny Tim",
+        ],
+        answer: "Tiny Tim is Bob's ill son, and his possible death moves Scrooge to change. Peter, Martha and Belinda are his healthy brother and sisters.",
+      },
+      {
+        question: "In Jekyll and Hyde, who sees Hyde change into Jekyll and dies of shock?",
+        choices: [
+          "Mr Utterson",
+          "Mr Enfield",
+          "Poole",
+          "Dr Lanyon",
+        ],
+        accept: [
+          "Dr Lanyon",
+        ],
+        answer: "Dr Lanyon watches Hyde drink the potion and become Jekyll, and the shock kills him. Utterson only learns the truth later, through Lanyon's and Jekyll's letters.",
+      },
     ],
 
     misconceptions: [
@@ -4389,6 +4636,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Chosen by you from the anthology, quoted from memory, and compared with the one poem that is printed.",
       },
+      {
+        question: "Which poet wrote 'Bayonet Charge'?",
+        choices: [
+          "Wilfred Owen",
+          "Ted Hughes",
+          "Seamus Heaney",
+          "Simon Armitage",
+        ],
+        accept: [
+          "Ted Hughes",
+        ],
+        answer: "'Bayonet Charge' is by Ted Hughes, who never fought but imagined a soldier's charge. Wilfred Owen, who did fight in the First World War, wrote 'Exposure'.",
+      },
+      {
+        question: "Placing two contrasting images side by side is called:",
+        choices: [
+          "Enjambment",
+          "Caesura",
+          "Volta",
+          "Juxtaposition",
+        ],
+        accept: [
+          "Juxtaposition",
+        ],
+        answer: "Juxtaposition sets contrasting ideas next to each other so each stands out. A volta is a turn in the poem's argument or mood over time, not two images together.",
+      },
     ],
 
     misconceptions: [
@@ -4821,6 +5094,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Harsh, because plosives burst out abruptly; soft sounds such as 'l' and 'm' feel gentle.",
       },
+      {
+        question: "Imagery that appeals to the sense of smell is called:",
+        choices: [
+          "Auditory",
+          "Tactile",
+          "Olfactory",
+          "Visual",
+        ],
+        accept: [
+          "Olfactory",
+        ],
+        answer: "Olfactory imagery is about smell. Auditory is about sound, tactile is about touch and visual is about sight, so naming the sense makes your point more precise.",
+      },
+      {
+        question: "A speaker says 'What a lovely day' as their house burns down. This is:",
+        choices: [
+          "Irony",
+          "Imagery",
+          "Enjambment",
+          "Annotation",
+        ],
+        accept: [
+          "Irony",
+        ],
+        answer: "Irony is a gap between what is said and what is really meant or happening. Here the cheerful words clash with the disaster, so they cannot be taken at face value.",
+      },
     ],
 
     misconceptions: [
@@ -5243,6 +5542,32 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Your thesis",
         ],
         answer: "Your thesis, because deciding your argument first keeps every paragraph pointed at the question.",
+      },
+      {
+        question: "Covering your notes and writing out the quotations you can recall is called:",
+        choices: [
+          "Rereading",
+          "Highlighting",
+          "Retrieval practice",
+          "Summarising",
+        ],
+        accept: [
+          "Retrieval practice",
+        ],
+        answer: "Retrieval practice means pulling information out of memory, for example with flashcards. It works far better than rereading or highlighting, which only feel productive.",
+      },
+      {
+        question: "Using words like 'metaphor' and 'caesura' accurately is called using:",
+        choices: [
+          "Embedded quotation",
+          "Subject terminology",
+          "Tentative language",
+          "Standard English",
+        ],
+        accept: [
+          "Subject terminology",
+        ],
+        answer: "Subject terminology is the technical vocabulary of English, rewarded under AO2. It only earns credit when you go on to explain the effect of the technique.",
       },
     ],
 
@@ -5746,6 +6071,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "He ran and jumped — both verbs are in the past tense; drifting between tenses is a technical accuracy error.",
       },
+      {
+        question: "In 'The cat slept under the table', which word is the preposition?",
+        choices: [
+          "cat",
+          "slept",
+          "under",
+          "the",
+        ],
+        accept: [
+          "under",
+        ],
+        answer: "A preposition shows how things relate in place or time, and 'under' tells us where the cat slept. 'Slept' is the verb, 'cat' a noun and 'the' a determiner.",
+      },
+      {
+        question: "Which of these words is spelt correctly?",
+        choices: [
+          "neccessary",
+          "necesary",
+          "neccesary",
+          "necessary",
+        ],
+        accept: [
+          "necessary",
+        ],
+        answer: "'Necessary' has one c and a double s. A handy memory trick: a shirt has one collar and two sleeves.",
+      },
     ],
 
     misconceptions: [
@@ -6179,6 +6530,32 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Pair up",
         ],
         answer: "Pair up — two moments doing a similar job, or the same job in opposite ways, make the best comparison evidence.",
+      },
+      {
+        question: "In a comparison, 'paired evidence' means quotations that:",
+        choices: [
+          "Come from one text",
+          "Are both very long",
+          "Tackle the same idea",
+          "Use the same word",
+        ],
+        accept: [
+          "Tackle the same idea",
+        ],
+        answer: "Paired evidence is one quotation from each text on the same idea, so you can show how the two writers handle it differently. They need not share any words.",
+      },
+      {
+        question: "Text A sounds furious; Text B sounds calm. Which aspect are you comparing?",
+        choices: [
+          "Audience",
+          "Form",
+          "Tone",
+          "Purpose",
+        ],
+        accept: [
+          "Tone",
+        ],
+        answer: "Tone is the writer's attitude as it comes across, such as angry or calm. Purpose is why the text was written, and two texts can share a purpose but differ in tone.",
       },
     ],
 
@@ -6621,6 +6998,32 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "We were late — 'we' needs 'were' for subject–verb agreement; 'we was' is non-standard.",
       },
+      {
+        question: "'Firstly… secondly… finally' in a talk is an example of:",
+        choices: [
+          "Elision",
+          "Turn-taking",
+          "Dialect",
+          "Signposting",
+        ],
+        accept: [
+          "Signposting",
+        ],
+        answer: "Signposting tells listeners where they are in a talk. Listeners cannot flick back like readers, so these markers help them follow the structure.",
+      },
+      {
+        question: "Using 'bairn' to mean 'child' in Scotland is an example of:",
+        choices: [
+          "Dialect",
+          "Accent",
+          "Elision",
+          "A filler",
+        ],
+        accept: [
+          "Dialect",
+        ],
+        answer: "Dialect is the regional vocabulary and grammar people use, so a local word like 'bairn' is dialect. Accent is only about how words are pronounced.",
+      },
     ],
 
     misconceptions: [
@@ -7049,6 +7452,32 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Serialised",
         ],
         answer: "Serialised — published in instalments, so each part had to make readers buy the next one.",
+      },
+      {
+        question: "In which year was Mary Shelley's Frankenstein first published?",
+        choices: [
+          "1843",
+          "1818",
+          "1886",
+          "1912",
+        ],
+        accept: [
+          "1818",
+        ],
+        answer: "Frankenstein appeared in 1818, in the Romantic period. 1843 is A Christmas Carol, 1886 is Jekyll and Hyde and 1912 is when An Inspector Calls is set.",
+      },
+      {
+        question: "Priestley used An Inspector Calls to argue for which political idea?",
+        choices: [
+          "Capitalism",
+          "Imperialism",
+          "Socialism",
+          "Monarchy",
+        ],
+        accept: [
+          "Socialism",
+        ],
+        answer: "Priestley was a socialist, and the Inspector speaks for shared responsibility for others. Mr Birling's selfish business views stand for the capitalism the play criticises.",
       },
     ],
 

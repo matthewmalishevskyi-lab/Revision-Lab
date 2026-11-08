@@ -355,6 +355,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Comme ci, comme ça means 'so-so' or 'OK, not great'. 'Very well' would be très bien, and 'not at all' is pas du tout.",
       },
+      {
+        question: "Which French term means 'surname'?",
+        choices: [
+          "le prénom",
+          "le surnom",
+          "le nom de famille",
+          "le nom propre",
+        ],
+        accept: [
+          "le nom de famille",
+        ],
+        answer: "Le nom de famille is your surname. Le prénom is your first name, le surnom is a false friend meaning nickname, and un nom propre is a proper noun.",
+      },
     ],
     misconceptions: [
       {
@@ -682,6 +695,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "bleus",
         ],
         answer: "Yeux is masculine plural, so the adjective adds just -s: les yeux bleus. Bleues would be feminine plural.",
+      },
+      {
+        question: "What does 'le beau-père' mean in French?",
+        choices: [
+          "stepfather",
+          "grandfather",
+          "godfather",
+          "uncle",
+        ],
+        accept: [
+          "stepfather",
+        ],
+        answer: "Le beau-père is a stepfather (or father-in-law). A grandfather is le grand-père, a godfather le parrain and an uncle l'oncle.",
       },
     ],
     misconceptions: [
@@ -1013,6 +1039,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Souvent means often. Parfois is sometimes, rarement is rarely and toujours is always.",
       },
+      {
+        question: "As a hobby, what does 'la pêche' mean in French?",
+        choices: [
+          "sailing",
+          "fishing",
+          "hiking",
+          "climbing",
+        ],
+        accept: [
+          "fishing",
+        ],
+        answer: "La pêche as a hobby is fishing (aller à la pêche); the same word also means a peach. Sailing is la voile and climbing is l'escalade.",
+      },
     ],
     misconceptions: [
       {
@@ -1339,6 +1378,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Redoubler means to repeat a school year, which is common in France. 'To revise' is réviser.",
       },
+      {
+        question: "At a French school, what does 'la récré' mean?",
+        choices: [
+          "lunch",
+          "registration",
+          "break time",
+          "assembly",
+        ],
+        accept: [
+          "break time",
+        ],
+        answer: "La récré, short for la récréation, is break time between lessons. Lunch is le déjeuner, often eaten at la cantine.",
+      },
     ],
     misconceptions: [
       {
@@ -1656,6 +1708,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "late",
         ],
         answer: "Tard means late. Its opposite, tôt, means early; 'soon' is bientôt and 'often' is souvent.",
+      },
+      {
+        question: "What does 'faire la vaisselle' mean?",
+        choices: [
+          "to lay the table",
+          "to do the laundry",
+          "to tidy up",
+          "to do the washing-up",
+        ],
+        accept: [
+          "to do the washing-up",
+        ],
+        answer: "Faire la vaisselle is to do the washing-up (la vaisselle = the dishes). Laying the table is mettre la table and tidying is ranger.",
       },
     ],
     misconceptions: [
@@ -1986,6 +2051,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "After devoir, pouvoir and vouloir the second verb stays in the infinitive. Dois is the present-tense verb in this sentence.",
       },
+      {
+        question: "What is the 'nous' form of 'aller' in the present?",
+        choices: [
+          "allons",
+          "allez",
+          "vont",
+          "vais",
+        ],
+        accept: [
+          "allons",
+        ],
+        answer: "Aller is irregular: nous allons. Allez is the vous form, vont is the ils form and vais is the je form.",
+      },
     ],
     misconceptions: [
       {
@@ -2312,6 +2390,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Un écran is a screen. Un clavier is a keyboard, une souris is a mouse and une appli is an app.",
       },
+      {
+        question: "What does 'les données personnelles' mean?",
+        choices: [
+          "private messages",
+          "personal data",
+          "personal photos",
+          "passwords",
+        ],
+        accept: [
+          "personal data",
+        ],
+        answer: "Les données personnelles is personal data, such as your name and address. Messages are des messages and a password is un mot de passe.",
+      },
     ],
     misconceptions: [
       {
@@ -2629,6 +2720,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "Happy birthday",
         ],
         answer: "Un anniversaire is a birthday, so joyeux anniversaire is happy birthday. Happy Christmas is joyeux Noël and Happy New Year is bonne année.",
+      },
+      {
+        question: "Which festival is 'Pâques' in French?",
+        choices: [
+          "Christmas",
+          "New Year",
+          "Halloween",
+          "Easter",
+        ],
+        accept: [
+          "Easter",
+        ],
+        answer: "Pâques is Easter, often celebrated with chocolate eggs and bells. Christmas is Noël and New Year is le Nouvel An.",
       },
     ],
     misconceptions: [
@@ -2955,6 +3059,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "du",
         ],
         answer: "Près de + le parc contracts to près du parc; 'de le' is never written. De la would be for a feminine noun.",
+      },
+      {
+        question: "What does 'la bibliothèque' mean?",
+        choices: [
+          "the library",
+          "the bookshop",
+          "the town hall",
+          "the museum",
+        ],
+        accept: [
+          "the library",
+        ],
+        answer: "La bibliothèque is the library, where you borrow books. The false friend la librairie is a bookshop, and the town hall is la mairie.",
       },
     ],
     misconceptions: [
@@ -3287,6 +3404,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Prochain means next, and j'irai is the future of aller (I will go). Last summer would be l'été dernier.",
       },
+      {
+        question: "What does 'la gare routière' mean?",
+        choices: [
+          "the train station",
+          "the bus station",
+          "the motorway",
+          "the car park",
+        ],
+        accept: [
+          "the bus station",
+        ],
+        answer: "La gare routière is the bus or coach station (route = road). La gare alone is the train station and the motorway is l'autoroute.",
+      },
     ],
     misconceptions: [
       {
@@ -3613,6 +3743,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Eau is feminine but starts with a vowel, so de la shortens to de l': de l'eau. Du is for masculine nouns, des for plurals.",
       },
+      {
+        question: "In a French restaurant, what is 'le pourboire'?",
+        choices: [
+          "the bill",
+          "the drink",
+          "the tip",
+          "the menu",
+        ],
+        accept: [
+          "the tip",
+        ],
+        answer: "Le pourboire is the tip, literally 'for drinking'. The bill is l'addition and the menu is la carte.",
+      },
     ],
     misconceptions: [
       {
@@ -3929,6 +4072,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "I will be",
         ],
         answer: "Je serai is the simple future of être (stem ser-). 'I would be' is the conditional je serais, and 'I was' is j'étais.",
+      },
+      {
+        question: "What is the past participle of 'mettre'?",
+        choices: [
+          "mettu",
+          "mis",
+          "metté",
+          "mit",
+        ],
+        accept: [
+          "mis",
+        ],
+        answer: "Mettre has an irregular participle: j'ai mis (I put). Mit is the il form of the passé simple, and mettu and metté are made-up regular forms.",
       },
     ],
     misconceptions: [
@@ -4248,6 +4404,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "La sixième is the first year of collège, at about age 11. The years count down to la troisième, the last year of collège.",
       },
+      {
+        question: "In France, what is 'le lycée'?",
+        choices: [
+          "primary school",
+          "nursery school",
+          "upper secondary school",
+          "university",
+        ],
+        accept: [
+          "upper secondary school",
+        ],
+        answer: "Le lycée is for about fifteen to eighteen-year-olds and ends with le bac. Le collège comes before it and l'école primaire before that.",
+      },
     ],
     misconceptions: [
       {
@@ -4564,6 +4733,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "j'ai l'intention de",
         ],
         answer: "J'ai l'intention de + infinitive means I intend to. J'ai besoin de means I need to and j'ai peur de means I'm afraid of.",
+      },
+      {
+        question: "In French, what does 'la fac' mean?",
+        choices: [
+          "a factory",
+          "university",
+          "sixth form",
+          "an apprenticeship",
+        ],
+        accept: [
+          "university",
+        ],
+        answer: "La fac, short for la faculté, is informal for university. A factory is une usine and an apprenticeship is un apprentissage.",
       },
     ],
     misconceptions: [
@@ -4882,6 +5064,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Un avocat (une avocate) is a lawyer. A doctor is un médecin and a vet is un vétérinaire.",
       },
+      {
+        question: "Which job is 'un infirmier'?",
+        choices: [
+          "a doctor",
+          "a firefighter",
+          "an engineer",
+          "a nurse",
+        ],
+        accept: [
+          "a nurse",
+        ],
+        answer: "Un infirmier (une infirmière) is a nurse. A doctor is un médecin, a firefighter is un pompier and an engineer is un ingénieur.",
+      },
     ],
     misconceptions: [
       {
@@ -5199,6 +5394,19 @@ export const FRENCH: Record<string, TopicContent> = {
         ],
         answer: "Âgé means old, so les personnes âgées are elderly people. Young people are les jeunes and sick people are les malades.",
       },
+      {
+        question: "What does 'les sans-abri' mean?",
+        choices: [
+          "the homeless",
+          "the elderly",
+          "refugees",
+          "the unemployed",
+        ],
+        accept: [
+          "the homeless",
+        ],
+        answer: "Les sans-abri are homeless people, literally 'without shelter'. The elderly are les personnes âgées and the unemployed are les chômeurs.",
+      },
     ],
     misconceptions: [
       {
@@ -5515,6 +5723,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "to throw away",
         ],
         answer: "Jeter means to throw (away), as in il ne faut pas jeter les déchets par terre. To sort is trier and to burn is brûler.",
+      },
+      {
+        question: "What does 'la sécheresse' mean?",
+        choices: [
+          "flooding",
+          "drought",
+          "pollution",
+          "a heatwave",
+        ],
+        accept: [
+          "drought",
+        ],
+        answer: "La sécheresse is drought, from sec (dry). Floods are les inondations and a heatwave is une canicule.",
       },
     ],
     misconceptions: [
@@ -5842,6 +6063,19 @@ export const FRENCH: Record<string, TopicContent> = {
           "no longer eats meat",
         ],
         answer: "Ne…plus means no longer, so they used to eat meat but now don't. Never would be ne…jamais.",
+      },
+      {
+        question: "'Je viens de manger.' What does this mean?",
+        choices: [
+          "I'm going to eat",
+          "I used to eat",
+          "I have just eaten",
+          "I'm coming to eat",
+        ],
+        accept: [
+          "I have just eaten",
+        ],
+        answer: "Venir de plus an infinitive means 'to have just done'. 'I'm going to eat' would be je vais manger, the near future.",
       },
     ],
     misconceptions: [

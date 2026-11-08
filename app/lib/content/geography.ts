@@ -279,6 +279,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "A straight-line measurement underestimates any curved route, sometimes badly.",
       },
+      {
+        question: "How is a spot height shown on an OS map?",
+        choices: [
+          "A blue triangle",
+          "A dot with a number",
+          "A brown line",
+          "A red circle",
+        ],
+        accept: [
+          "A dot with a number",
+        ],
+        answer: "A spot height is a black dot with the height in metres beside it. A blue triangle marks a triangulation pillar, and brown lines are contours.",
+      },
+      {
+        question: "What bearing points due south-west?",
+        choices: [
+          "135°",
+          "225°",
+          "315°",
+          "045°",
+        ],
+        accept: [
+          "225°",
+        ],
+        answer: "South-west lies halfway between south (180°) and west (270°), so it is 225°. 135° is south-east and 315° is north-west.",
+      },
+      {
+        question: "On a 1:50,000 map, 4 cm represents how many kilometres?",
+        choices: [
+          "4 km",
+          "0.5 km",
+          "2 km",
+          "20 km",
+        ],
+        accept: [
+          "2 km",
+        ],
+        answer: "On a 1:50,000 map each centimetre is 500 m, so four centimetres make 2 km. 4 km would be the answer on a 1:100,000 map.",
+      },
+      {
+        question: "What is the contour interval on a map?",
+        choices: [
+          "Ground distance apart",
+          "Height of the summit",
+          "Lines per kilometre",
+          "Height between lines",
+        ],
+        accept: [
+          "Height between lines",
+        ],
+        answer: "The contour interval is the vertical height difference between neighbouring contours, not how far apart they are on the ground.",
+      },
+      {
+        question: "Which corner of a grid square gives its four-figure reference?",
+        choices: [
+          "Top left",
+          "Bottom right",
+          "Top right",
+          "Bottom left",
+        ],
+        accept: [
+          "Bottom left",
+        ],
+        answer: "A square is named by the lines meeting at its bottom-left (south-west) corner. Using the top-right lines gives the wrong square.",
+      },
+      {
+        question: "On a cross-section, what is plotted on the vertical axis?",
+        choices: [
+          "Height in metres",
+          "Distance in km",
+          "Bearing in degrees",
+          "Grid easting",
+        ],
+        accept: [
+          "Height in metres",
+        ],
+        answer: "Height goes up the side and distance along the line goes across the bottom. The vertical scale is often stretched so slopes show clearly.",
+      },
     ],
 
     misconceptions: [
@@ -570,6 +648,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Latitude",
         ],
         answer: "Near the equator sunlight arrives more directly and through less atmosphere, so more energy reaches each square metre.",
+      },
+      {
+        question: "Which instrument measures air pressure?",
+        choices: [
+          "Anemometer",
+          "Barometer",
+          "Hygrometer",
+          "Rain gauge",
+        ],
+        accept: [
+          "Barometer",
+        ],
+        answer: "A barometer measures air pressure in millibars. An anemometer measures wind speed and a hygrometer measures humidity.",
+      },
+      {
+        question: "What does a wind vane measure?",
+        choices: [
+          "Wind speed",
+          "Air pressure",
+          "Wind direction",
+          "Humidity",
+        ],
+        accept: [
+          "Wind direction",
+        ],
+        answer: "A wind vane points into the wind to show the direction it blows from. Wind speed needs an anemometer.",
+      },
+      {
+        question: "On a synoptic chart, what do isobars drawn close together show?",
+        choices: [
+          "Strong winds",
+          "Calm weather",
+          "Heavy snow",
+          "High pressure",
+        ],
+        accept: [
+          "Strong winds",
+        ],
+        answer: "Close isobars mean pressure changes quickly over a short distance, so air moves fast. Widely spaced isobars, typical of anticyclones, mean light winds.",
+      },
+      {
+        question: "What weather does a winter anticyclone often bring to the UK?",
+        choices: [
+          "Mild, wet and windy",
+          "Cold, clear and frosty",
+          "Heavy, steady rain",
+          "Thunderstorms",
+        ],
+        accept: [
+          "Cold, clear and frosty",
+        ],
+        answer: "Sinking air gives clear skies, so heat escapes at night and frost and fog form. Mild, wet and windy weather comes with depressions.",
+      },
+      {
+        question: "Which air mass brings mild, moist air to the UK from the south-west?",
+        choices: [
+          "Polar continental",
+          "Arctic maritime",
+          "Tropical maritime",
+          "Tropical continental",
+        ],
+        accept: [
+          "Tropical maritime",
+        ],
+        answer: "Tropical maritime air crosses the warm Atlantic, so it is mild and moist. Tropical continental air comes from North Africa and is hot and dry.",
+      },
+      {
+        question: "Why is the east of the UK usually drier than the west?",
+        choices: [
+          "Ocean currents",
+          "Rain shadow",
+          "Lower latitude",
+          "Longer coastline",
+        ],
+        accept: [
+          "Rain shadow",
+        ],
+        answer: "Prevailing south-westerly winds drop their rain over the western uplands, so the air is much drier by the time it reaches the east.",
       },
     ],
 
@@ -869,6 +1025,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Weaker buildings, poorer planning and slower emergency response",
         ],
         answer: "This contrast between primary hazard and human vulnerability is the central idea of the whole topic.",
+      },
+      {
+        question: "Which scale rates an earthquake by the damage and effects people observe?",
+        choices: [
+          "Richter",
+          "Mercalli",
+          "Moment magnitude",
+          "Beaufort",
+        ],
+        accept: [
+          "Mercalli",
+        ],
+        answer: "The Mercalli scale rates observed effects from I to XII. The Richter and moment magnitude scales measure the energy released instead.",
+      },
+      {
+        question: "Which instrument records the shaking of an earthquake?",
+        choices: [
+          "Tiltmeter",
+          "Barometer",
+          "Anemometer",
+          "Seismometer",
+        ],
+        accept: [
+          "Seismometer",
+        ],
+        answer: "A seismometer records ground shaking as a seismograph. Tiltmeters measure the ground swelling on volcanoes as magma rises.",
+      },
+      {
+        question: "What is the rising and sinking of heated rock in the mantle called?",
+        choices: [
+          "Convection current",
+          "Subduction",
+          "Slab pull",
+          "Ridge push",
+        ],
+        accept: [
+          "Convection current",
+        ],
+        answer: "Heat from the core makes mantle rock rise, spread and sink in convection currents. Subduction is one plate sinking beneath another.",
+      },
+      {
+        question: "What type of plate margin runs along the Mid-Atlantic Ridge?",
+        choices: [
+          "Destructive",
+          "Conservative",
+          "Constructive",
+          "Collision",
+        ],
+        accept: [
+          "Constructive",
+        ],
+        answer: "The North American and Eurasian plates move apart there, so magma rises to make new crust and volcanoes such as those in Iceland.",
+      },
+      {
+        question: "Which of these is a secondary effect of an earthquake?",
+        choices: [
+          "Ground shaking",
+          "Buildings collapsing",
+          "Fires from gas pipes",
+          "Bridges cracking",
+        ],
+        accept: [
+          "Fires from gas pipes",
+        ],
+        answer: "Fires start afterwards when broken gas pipes ignite, so they are secondary. Shaking and collapse happen during the quake itself, so they are primary.",
+      },
+      {
+        question: "Which building feature helps a building survive earthquake shaking?",
+        choices: [
+          "Heavy concrete roof",
+          "Rubber shock absorbers",
+          "Extra storeys",
+          "Large glass windows",
+        ],
+        accept: [
+          "Rubber shock absorbers",
+        ],
+        answer: "Rubber base isolators absorb shaking so the building sways less. A heavy roof makes a collapse far more deadly, and big windows shatter.",
       },
     ],
 
@@ -1177,6 +1411,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Identify hazards and plan how to reduce them",
         ],
         answer: "Rivers, coasts and busy urban streets each carry different risks, so the assessment must match the site.",
+      },
+      {
+        question: "What is it called when results are distorted by the way data was collected?",
+        choices: [
+          "Anomaly",
+          "Reliability",
+          "Bias",
+          "Accuracy",
+        ],
+        accept: [
+          "Bias",
+        ],
+        answer: "Bias skews the whole dataset, for example by only sampling easy-to-reach sites. An anomaly is a single result that does not fit the pattern.",
+      },
+      {
+        question: "What is it called when a measurement is close to the true value?",
+        choices: [
+          "Accuracy",
+          "Reliability",
+          "Sampling",
+          "Hypothesis",
+        ],
+        accept: [
+          "Accuracy",
+        ],
+        answer: "Accuracy is how close to the true value a result is. Reliability is whether repeating the method gives the same results.",
+      },
+      {
+        question: "Which instrument measures the angle of a slope?",
+        choices: [
+          "Anemometer",
+          "Flow meter",
+          "Clinometer",
+          "Quadrat",
+        ],
+        accept: [
+          "Clinometer",
+        ],
+        answer: "A clinometer measures slope angle in degrees, for beach or valley profiles. An anemometer measures wind speed and a flow meter river velocity.",
+      },
+      {
+        question: "Counting pedestrians passing a point for ten minutes collects what kind of data?",
+        choices: [
+          "Qualitative data",
+          "Secondary data",
+          "Anomalous data",
+          "Quantitative data",
+        ],
+        accept: [
+          "Quantitative data",
+        ],
+        answer: "A count gives numbers, so it is quantitative, and you collected it yourself, so it is primary. Qualitative data is descriptive, like opinions.",
+      },
+      {
+        question: "Which of these is written as a hypothesis?",
+        choices: [
+          "How do rivers change?",
+          "Rivers widen downriver",
+          "Measure river width",
+          "Visit three rivers",
+        ],
+        accept: [
+          "Rivers widen downriver",
+        ],
+        answer: "A hypothesis is a testable statement you can prove or disprove with data. 'How do rivers change?' is an enquiry question, not a statement.",
+      },
+      {
+        question: "What is a line across an area along which samples are taken at intervals called?",
+        choices: [
+          "Quadrat",
+          "Transect",
+          "Isoline",
+          "Contour",
+        ],
+        accept: [
+          "Transect",
+        ],
+        answer: "A transect is a sampling line, such as across a beach or sand dunes. A quadrat is the square frame placed at points along it.",
       },
     ],
 
@@ -1491,6 +1803,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "The mean is dragged towards the outlier. The median sits in the middle regardless of how extreme the ends are.",
       },
+      {
+        question: "What is the median of 2, 5, 9, 10, 14?",
+        choices: [
+          "8",
+          "9",
+          "10",
+          "5",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "The data is already in order, so the middle (third) value is 9. The mean would be 8, a common mix-up between the two averages.",
+      },
+      {
+        question: "What is the range of 12, 4, 9, 20, 15?",
+        choices: [
+          "8",
+          "12",
+          "16",
+          "20",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "Range is the highest value take away the lowest: twenty minus four leaves 16. Picking 20 forgets to subtract the smallest value.",
+      },
+      {
+        question: "On an OS map, what do contour lines drawn close together show?",
+        choices: [
+          "Steep slope",
+          "Gentle slope",
+          "Flat land",
+          "A river",
+        ],
+        accept: [
+          "Steep slope",
+        ],
+        answer: "Contours join points of equal height, so close lines mean height changes quickly over a short distance. Widely spaced lines show gentle slopes.",
+      },
+      {
+        question: "Which map type uses symbols sized by the value they show?",
+        choices: [
+          "Choropleth",
+          "Dot map",
+          "Proportional symbols",
+          "Isoline map",
+        ],
+        accept: [
+          "Proportional symbols",
+        ],
+        answer: "Bigger circles or bars mean bigger values at each place. A choropleth shades whole areas instead, and isolines join points of equal value.",
+      },
+      {
+        question: "Which graph best shows how a whole is split into parts?",
+        choices: [
+          "Line graph",
+          "Histogram",
+          "Scatter graph",
+          "Pie chart",
+        ],
+        accept: [
+          "Pie chart",
+        ],
+        answer: "Each slice is a share of the total, like land use percentages. Line graphs show change over time and scatter graphs relationships.",
+      },
+      {
+        question: "A town of 5,000 people covers 10 km². What is its population density?",
+        choices: [
+          "50 per km²",
+          "500 per km²",
+          "5,000 per km²",
+          "50,000 per km²",
+        ],
+        accept: [
+          "500 per km²",
+        ],
+        answer: "Population density is people divided by area: five thousand shared over ten square kilometres gives 500 per km². Multiplying gives the wrong 50,000.",
+      },
     ],
 
     misconceptions: [
@@ -1781,6 +2171,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Floodplain zoning",
         ],
         answer: "Soft engineering works with natural processes and costs less. Hard engineering builds structures and can shift the problem downstream.",
+      },
+      {
+        question: "Which transport process carries minerals dissolved in the water?",
+        choices: [
+          "Suspension",
+          "Solution",
+          "Traction",
+          "Saltation",
+        ],
+        accept: [
+          "Solution",
+        ],
+        answer: "Solution carries dissolved minerals that you cannot see. Suspension carries fine particles such as silt and clay held up in the flow.",
+      },
+      {
+        question: "Which transport process rolls large boulders along the riverbed?",
+        choices: [
+          "Saltation",
+          "Suspension",
+          "Solution",
+          "Traction",
+        ],
+        accept: [
+          "Traction",
+        ],
+        answer: "Traction is the rolling of the largest boulders, usually only at high flow. Saltation is smaller stones bouncing along the bed.",
+      },
+      {
+        question: "In which part of a river's course are floodplains and levees mainly found?",
+        choices: [
+          "Upper course",
+          "Lower course",
+          "At the source",
+          "At the watershed",
+        ],
+        accept: [
+          "Lower course",
+        ],
+        answer: "In the lower course the river is wide with high discharge, and repeated floods deposit sediment that builds floodplains and levees.",
+      },
+      {
+        question: "On a flood hydrograph, what does the rising limb show?",
+        choices: [
+          "Discharge increasing",
+          "Discharge falling",
+          "Peak rainfall",
+          "Normal river flow",
+        ],
+        accept: [
+          "Discharge increasing",
+        ],
+        answer: "The rising limb shows discharge going up after rain and the falling limb shows it dropping. Normal flow between storms is called base flow.",
+      },
+      {
+        question: "What is the steep-sided valley left as a waterfall retreats upstream?",
+        choices: [
+          "Plunge pool",
+          "Gorge",
+          "Floodplain",
+          "Meander",
+        ],
+        accept: [
+          "Gorge",
+        ],
+        answer: "Undercutting and collapse make the waterfall retreat, leaving a gorge downstream. The plunge pool is the deep hollow at the foot of the fall.",
+      },
+      {
+        question: "Which of these increases a river's lag time?",
+        choices: [
+          "Urbanisation",
+          "Deforestation",
+          "Afforestation",
+          "Steep valley sides",
+        ],
+        accept: [
+          "Afforestation",
+        ],
+        answer: "Trees intercept rain and take up water, so it reaches the river more slowly. Urbanisation does the opposite with fast-draining, impermeable surfaces.",
       },
     ],
 
@@ -2073,6 +2541,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "A sea wall",
         ],
         answer: "Hard engineering is effective but expensive and can look intrusive. Soft engineering is cheaper and more sustainable but needs maintenance.",
+      },
+      {
+        question: "Which process wears rocks smaller and rounder as they knock together in waves?",
+        choices: [
+          "Abrasion",
+          "Hydraulic power",
+          "Attrition",
+          "Solution",
+        ],
+        accept: [
+          "Attrition",
+        ],
+        answer: "Attrition is rocks carried by waves hitting each other and wearing down. Abrasion is rocks being thrown at and scraping the cliff itself.",
+      },
+      {
+        question: "Which weathering happens when water in a crack turns to ice and widens it?",
+        choices: [
+          "Biological",
+          "Carbonation",
+          "Slumping",
+          "Freeze-thaw",
+        ],
+        accept: [
+          "Freeze-thaw",
+        ],
+        answer: "Water expands when it freezes, widening cracks until pieces break off. Carbonation is chemical weathering of limestone or chalk by weak acid in rain.",
+      },
+      {
+        question: "What are large boulders piled at the foot of a cliff to absorb waves called?",
+        choices: [
+          "Rock armour",
+          "Groynes",
+          "Gabions",
+          "Sea wall",
+        ],
+        accept: [
+          "Rock armour",
+        ],
+        answer: "Rock armour (riprap) breaks up wave energy. Gabions are wire cages filled with rocks, and groynes run across a beach to trap sediment.",
+      },
+      {
+        question: "What often develops in the sheltered water behind a spit?",
+        choices: [
+          "Wave-cut notch",
+          "Salt marsh",
+          "Sea stack",
+          "Tombolo",
+        ],
+        accept: [
+          "Salt marsh",
+        ],
+        answer: "Calm water behind a spit lets fine mud settle, and plants colonise it to form salt marsh. A wave-cut notch forms on exposed cliffs.",
+      },
+      {
+        question: "What is the undercut at the base of a cliff that leads to its collapse?",
+        choices: [
+          "Wave-cut platform",
+          "Blowhole",
+          "Wave-cut notch",
+          "Plunge pool",
+        ],
+        accept: [
+          "Wave-cut notch",
+        ],
+        answer: "Waves erode a notch between high and low tide until the cliff above collapses. Repeated retreat leaves the flat wave-cut platform behind.",
+      },
+      {
+        question: "On a discordant coast, what forms where the softer rock is eroded?",
+        choices: [
+          "Headland",
+          "Stack",
+          "Bay",
+          "Spit",
+        ],
+        accept: [
+          "Bay",
+        ],
+        answer: "Soft rock such as clay erodes quickly back into bays, while resistant rock is left jutting out to sea as headlands.",
       },
     ],
 
@@ -2367,6 +2913,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Food webs are interdependent, which is why conservation focuses on whole ecosystems rather than single species.",
       },
+      {
+        question: "Which treeless biome has permafrost and very short summers?",
+        choices: [
+          "Taiga",
+          "Tundra",
+          "Temperate forest",
+          "Savanna",
+        ],
+        accept: [
+          "Tundra",
+        ],
+        answer: "Tundra lies near the Arctic with low plants and frozen ground. Taiga, or boreal forest, lies just to its south and is covered in conifers.",
+      },
+      {
+        question: "Which biome is grassland with scattered trees and a wet and a dry season?",
+        choices: [
+          "Taiga",
+          "Hot desert",
+          "Tundra",
+          "Savanna",
+        ],
+        accept: [
+          "Savanna",
+        ],
+        answer: "Savanna lies between rainforest and hot desert, so it gets a rainy season and a long dry season. Taiga is cold coniferous forest.",
+      },
+      {
+        question: "Why are many hot deserts found at about 30° north and south?",
+        choices: [
+          "Rising moist air",
+          "Sinking dry air",
+          "Strong polar winds",
+          "Volcanic activity",
+        ],
+        accept: [
+          "Sinking dry air",
+        ],
+        answer: "Air that rose at the equator sinks at about 30°, warming and drying, so high pressure stops clouds forming. Rising air brings rainforest rain.",
+      },
+      {
+        question: "Why do many desert plants have very long roots?",
+        choices: [
+          "To store sugars",
+          "To shed rainwater",
+          "To reach deep water",
+          "To climb to light",
+        ],
+        accept: [
+          "To reach deep water",
+        ],
+        answer: "Long tap roots reach water stored deep underground. Some desert plants also have wide shallow roots to catch rare rain quickly.",
+      },
+      {
+        question: "What does biodiversity mean?",
+        choices: [
+          "Number of one species",
+          "Variety of species",
+          "Amount of plant mass",
+          "Rate of decay",
+        ],
+        accept: [
+          "Variety of species",
+        ],
+        answer: "Biodiversity is the range of different living things in an area. A huge population of just one species is not high biodiversity.",
+      },
+      {
+        question: "Which of these is a cause of desertification?",
+        choices: [
+          "Overgrazing",
+          "Afforestation",
+          "Terracing",
+          "Crop rotation",
+        ],
+        accept: [
+          "Overgrazing",
+        ],
+        answer: "Too many animals strip the vegetation, leaving soil exposed to wind and erosion. Planting trees and terracing are ways to fight desertification.",
+      },
     ],
 
     misconceptions: [
@@ -2655,6 +3279,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Building design that resists shaking",
         ],
         answer: "Prediction remains unreliable for earthquakes, so preparation, planning and construction standards do the real work.",
+      },
+      {
+        question: "Which scale rates the strength of a hurricane?",
+        choices: [
+          "Richter",
+          "Mercalli",
+          "Saffir-Simpson",
+          "Fujita",
+        ],
+        accept: [
+          "Saffir-Simpson",
+        ],
+        answer: "Saffir-Simpson rates hurricanes from category 1 to 5 by wind speed. Richter and Mercalli are earthquake scales and Fujita is for tornadoes.",
+      },
+      {
+        question: "What are tropical storms called in the western Pacific, near the Philippines?",
+        choices: [
+          "Hurricanes",
+          "Typhoons",
+          "Cyclones",
+          "Tornadoes",
+        ],
+        accept: [
+          "Typhoons",
+        ],
+        answer: "They are typhoons in the western Pacific, hurricanes in the Atlantic and cyclones in the Indian Ocean. Tornadoes are far smaller and form over land.",
+      },
+      {
+        question: "Which of the four Ps does building a sea wall belong to?",
+        choices: [
+          "Prediction",
+          "Planning",
+          "Protection",
+          "Monitoring",
+        ],
+        accept: [
+          "Protection",
+        ],
+        answer: "Protection means physical defences such as sea walls or earthquake-proof buildings. Planning covers land-use zoning and evacuation routes.",
+      },
+      {
+        question: "How are warmer oceans expected to affect tropical storms?",
+        choices: [
+          "Weaker winds",
+          "More intense storms",
+          "Storms only on land",
+          "Shorter lifespans",
+        ],
+        accept: [
+          "More intense storms",
+        ],
+        answer: "Warmer seas supply more heat and moisture, so storms are expected to become more intense, though not necessarily more frequent.",
+      },
+      {
+        question: "Which UK hazard is linked to an anticyclone lasting for weeks in summer?",
+        choices: [
+          "Storm surge",
+          "Blizzard",
+          "Flash flood",
+          "Heatwave",
+        ],
+        accept: [
+          "Heatwave",
+        ],
+        answer: "A blocking anticyclone brings weeks of sinking air and clear skies, causing heatwaves and drought. Depressions bring storms and floods.",
+      },
+      {
+        question: "What is the air pressure like in the eye of a tropical storm?",
+        choices: [
+          "Very high",
+          "Very low",
+          "Average",
+          "Changing fast",
+        ],
+        accept: [
+          "Very low",
+        ],
+        answer: "The eye has the lowest pressure of the storm. Sinking air there gives calm, clear weather, while the eyewall around it has the strongest winds.",
       },
     ],
 
@@ -2946,6 +3648,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Short growing seasons and simple food chains mean the loss of one species can affect the whole ecosystem.",
       },
+      {
+        question: "What is the dim rainforest layer of shrubs and young trees below the canopy?",
+        choices: [
+          "Emergent layer",
+          "Understorey",
+          "Forest floor",
+          "Buttress layer",
+        ],
+        accept: [
+          "Understorey",
+        ],
+        answer: "The understorey gets little light, so young trees wait there for a gap. The canopy above absorbs most of the sunlight.",
+      },
+      {
+        question: "What is the thick layer of fat that insulates seals and whales?",
+        choices: [
+          "Down",
+          "Keratin",
+          "Blubber",
+          "Plumage",
+        ],
+        accept: [
+          "Blubber",
+        ],
+        answer: "Blubber is a thick layer of fat that keeps heat in, even in icy water. Down is the fine, fluffy feathers that keep birds warm.",
+      },
+      {
+        question: "What does clear-felling mean?",
+        choices: [
+          "Cutting a few trees",
+          "Cutting all trees",
+          "Planting new trees",
+          "Burning undergrowth",
+        ],
+        accept: [
+          "Cutting all trees",
+        ],
+        answer: "Clear-felling removes every tree from an area. Selective logging takes only some mature trees, so the forest can recover.",
+      },
+      {
+        question: "How are many tundra plants adapted to strong, cold winds?",
+        choices: [
+          "Drip-tip leaves",
+          "Buttress roots",
+          "Growing low down",
+          "Large flat leaves",
+        ],
+        accept: [
+          "Growing low down",
+        ],
+        answer: "Low, cushion-shaped plants stay out of the wind in slightly warmer air near the ground. Drip tips and buttress roots are rainforest adaptations.",
+      },
+      {
+        question: "In the tundra, what is the 'active layer'?",
+        choices: [
+          "Ground frozen all year",
+          "Soil thawing in summer",
+          "Tallest plant layer",
+          "Glacier meltwater",
+        ],
+        accept: [
+          "Soil thawing in summer",
+        ],
+        answer: "The active layer thaws each summer above the permafrost, which stays frozen. Meltwater cannot drain through, so the surface turns boggy.",
+      },
+      {
+        question: "How does rainforest deforestation add to climate change?",
+        choices: [
+          "Adds more oxygen",
+          "Releases stored carbon",
+          "Blocks sunlight",
+          "Increases rainfall",
+        ],
+        accept: [
+          "Releases stored carbon",
+        ],
+        answer: "Burning or rotting trees release the carbon they stored as carbon dioxide, and fewer trees remain to absorb it. Local rainfall usually drops after clearance.",
+      },
     ],
 
     misconceptions: [
@@ -3235,6 +4015,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Alternating hard and soft rock creates headlands and bays",
         ],
         answer: "Discordant coastlines, where rock bands meet the sea at right angles, show this most clearly.",
+      },
+      {
+        question: "What are the hills a young river winds around in its V-shaped valley?",
+        choices: [
+          "Truncated spurs",
+          "Interlocking spurs",
+          "Levees",
+          "Drumlins",
+        ],
+        accept: [
+          "Interlocking spurs",
+        ],
+        answer: "A young river winds between interlocking spurs in its upper course. Glaciers later slice them off, leaving truncated spurs.",
+      },
+      {
+        question: "What is the sharp peak left when three or more corries erode back to back?",
+        choices: [
+          "Arête",
+          "Corrie",
+          "Drumlin",
+          "Pyramidal peak",
+        ],
+        accept: [
+          "Pyramidal peak",
+        ],
+        answer: "Several corries eroding into one mountain leave a pointed pyramidal peak. An arête is the narrow ridge between just two corries.",
+      },
+      {
+        question: "What shows how a river's height changes from source to mouth?",
+        choices: [
+          "Cross profile",
+          "Long profile",
+          "Hydrograph",
+          "Cross-section",
+        ],
+        accept: [
+          "Long profile",
+        ],
+        answer: "The long profile is steep near the source and gentle near the mouth. A cross profile is a slice across the valley at one point.",
+      },
+      {
+        question: "What is a tributary valley left high above a glacial trough called?",
+        choices: [
+          "Ribbon lake",
+          "Corrie",
+          "Hanging valley",
+          "Truncated spur",
+        ],
+        accept: [
+          "Hanging valley",
+        ],
+        answer: "Smaller glaciers eroded less deeply, so their valleys are left hanging above the main U-shaped valley, often with a waterfall.",
+      },
+      {
+        question: "What is the moraine left at a glacier's furthest point of advance called?",
+        choices: [
+          "Terminal moraine",
+          "Lateral moraine",
+          "Medial moraine",
+          "Ground moraine",
+        ],
+        accept: [
+          "Terminal moraine",
+        ],
+        answer: "Terminal moraine forms a ridge across the valley at the snout's furthest point. Lateral moraine forms along the valley sides.",
+      },
+      {
+        question: "Which material forms the fast-eroding cliffs of the Holderness coast?",
+        choices: [
+          "Granite",
+          "Boulder clay",
+          "Chalk",
+          "Limestone",
+        ],
+        accept: [
+          "Boulder clay",
+        ],
+        answer: "Holderness is soft boulder clay left by glaciers, which is why it retreats so fast. Flamborough Head, just to the north, is resistant chalk.",
       },
     ],
 
@@ -3534,6 +4392,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Water and energy conservation and local recycling also count. Sustainability means meeting present needs without harming the future.",
       },
+      {
+        question: "Which of these is a pull factor drawing people to a city?",
+        choices: [
+          "Drought",
+          "Better-paid jobs",
+          "Crop failure",
+          "Conflict",
+        ],
+        accept: [
+          "Better-paid jobs",
+        ],
+        answer: "Pull factors attract people to a place, like jobs, schools and hospitals. Drought, crop failure and conflict push people away from rural areas.",
+      },
+      {
+        question: "What is a previously developed site that is cleared and built on again called?",
+        choices: [
+          "Greenfield site",
+          "Green belt",
+          "Brownfield site",
+          "Rural-urban fringe",
+        ],
+        accept: [
+          "Brownfield site",
+        ],
+        answer: "Brownfield sites are old industrial or derelict land, so reusing them protects countryside. Greenfield sites have never been built on.",
+      },
+      {
+        question: "What is the protected ring of open land around many UK cities called?",
+        choices: [
+          "Green belt",
+          "Brownfield site",
+          "Suburbs",
+          "Inner city",
+        ],
+        accept: [
+          "Green belt",
+        ],
+        answer: "Green belts limit urban sprawl by restricting building on the land around a city. Brownfield land is previously developed land inside it.",
+      },
+      {
+        question: "What is the uncontrolled spread of a city into surrounding countryside called?",
+        choices: [
+          "Gentrification",
+          "Regeneration",
+          "Urbanisation",
+          "Urban sprawl",
+        ],
+        accept: [
+          "Urban sprawl",
+        ],
+        answer: "Urban sprawl is the city's edge spreading outwards. Urbanisation is the rising share of people living in towns and cities, not the physical spread.",
+      },
+      {
+        question: "Which part of a city usually holds the main shops, offices and banks?",
+        choices: [
+          "CBD",
+          "Suburbs",
+          "Rural-urban fringe",
+          "Inner city",
+        ],
+        accept: [
+          "CBD",
+        ],
+        answer: "The central business district is the most accessible point, so land is expensive and used by shops and offices. The inner city surrounds it.",
+      },
+      {
+        question: "Which transport scheme charges drivers to enter a city centre?",
+        choices: [
+          "Park and ride",
+          "Bus lane",
+          "Congestion charge",
+          "Ring road",
+        ],
+        accept: [
+          "Congestion charge",
+        ],
+        answer: "A congestion charge, as in London, cuts traffic by making drivers pay. Park and ride lets them leave cars at the edge and take a bus in.",
+      },
     ],
 
     misconceptions: [
@@ -3831,6 +4767,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Employment shifts from farming and extraction to manufacturing, then services and research.",
       },
+      {
+        question: "Which sector of industry includes manufacturing goods in factories?",
+        choices: [
+          "Primary",
+          "Secondary",
+          "Tertiary",
+          "Quaternary",
+        ],
+        accept: [
+          "Secondary",
+        ],
+        answer: "Secondary industry processes raw materials into products. Primary extracts them, tertiary provides services and quaternary is research and information.",
+      },
+      {
+        question: "In stage 1 of the demographic transition model, what are birth and death rates like?",
+        choices: [
+          "Both low",
+          "High birth, low death",
+          "Both high",
+          "Low birth, high death",
+        ],
+        accept: [
+          "Both high",
+        ],
+        answer: "In stage 1 both rates are high and fluctuate, so population stays low. Death rates fall first in stage 2, which is when growth speeds up.",
+      },
+      {
+        question: "What does a country's literacy rate measure?",
+        choices: [
+          "Children in school",
+          "Doctors per person",
+          "Homes with internet",
+          "Adults able to read",
+        ],
+        accept: [
+          "Adults able to read",
+        ],
+        answer: "It is the percentage of adults who can read and write, a social indicator of development. School enrolment is a separate education measure.",
+      },
+      {
+        question: "What is aid given directly from one government to another called?",
+        choices: [
+          "Bilateral aid",
+          "Multilateral aid",
+          "Emergency aid",
+          "Tied trade",
+        ],
+        accept: [
+          "Bilateral aid",
+        ],
+        answer: "Bi means two: one country gives straight to another. Multilateral aid is pooled through organisations such as the World Bank or the UN.",
+      },
+      {
+        question: "Which is a main reason TNCs locate factories in lower-income countries?",
+        choices: [
+          "Stricter laws",
+          "Higher wage demands",
+          "Smaller workforce",
+          "Lower labour costs",
+        ],
+        accept: [
+          "Lower labour costs",
+        ],
+        answer: "Cheap labour, and often weaker regulation and tax breaks, cut costs. Stricter laws and higher wages would push TNCs away, not attract them.",
+      },
+      {
+        question: "Which describes a bottom-up development project?",
+        choices: [
+          "Run by a government",
+          "Led by local people",
+          "World Bank funded",
+          "Built by a TNC",
+        ],
+        accept: [
+          "Led by local people",
+        ],
+        answer: "Bottom-up projects are planned with communities, often using intermediate technology. Large government or World Bank schemes are top-down.",
+      },
     ],
 
     misconceptions: [
@@ -4123,6 +5137,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Population growth and rising standards of living",
         ],
         answer: "As incomes rise people consume more energy, water and meat, which multiplies demand faster than population alone.",
+      },
+      {
+        question: "What is having less of a resource than you need called?",
+        choices: [
+          "Resource surplus",
+          "Resource deficit",
+          "Food security",
+          "Energy mix",
+        ],
+        accept: [
+          "Resource deficit",
+        ],
+        answer: "A deficit means demand is greater than supply. A surplus is the opposite, and water transfer schemes move water from surplus to deficit areas.",
+      },
+      {
+        question: "What is the total greenhouse gas produced by a person or activity called?",
+        choices: [
+          "Food miles",
+          "Energy mix",
+          "Carbon footprint",
+          "Carbon offset",
+        ],
+        accept: [
+          "Carbon footprint",
+        ],
+        answer: "A carbon footprint adds up all the emissions caused. Food miles measure only how far food travels, which is just one part of it.",
+      },
+      {
+        question: "What is energy security?",
+        choices: [
+          "Owning oil reserves",
+          "Reliable energy supply",
+          "Using only renewables",
+          "Guarding power plants",
+        ],
+        accept: [
+          "Reliable energy supply",
+        ],
+        answer: "It means reliable, affordable access to enough energy. A country can be secure without oil reserves, for example by importing through interconnectors.",
+      },
+      {
+        question: "Which is a main drawback of desalination?",
+        choices: [
+          "High energy use",
+          "Needs high rainfall",
+          "Only works inland",
+          "Adds salt to rivers",
+        ],
+        accept: [
+          "High energy use",
+        ],
+        answer: "Removing salt from seawater takes lots of energy, so it is costly and adds emissions. It works at the coast and needs no rainfall at all.",
+      },
+      {
+        question: "What is collecting rain from roofs to store for later use called?",
+        choices: [
+          "Greywater recycling",
+          "Desalination",
+          "Water transfer",
+          "Rainwater harvesting",
+        ],
+        accept: [
+          "Rainwater harvesting",
+        ],
+        answer: "Harvesting stores rainfall for watering or flushing. Greywater recycling reuses water already used in sinks and showers.",
+      },
+      {
+        question: "Which renewable energy source uses heat from inside the Earth?",
+        choices: [
+          "Biomass",
+          "Geothermal",
+          "Hydroelectric",
+          "Tidal",
+        ],
+        accept: [
+          "Geothermal",
+        ],
+        answer: "Geothermal energy taps hot rocks underground, best in volcanic areas like Iceland. Hydroelectric uses falling water and biomass burns plant matter.",
       },
     ],
 
@@ -4432,6 +5524,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "The countries that contributed least to the problem often face the greatest consequences, which is central to the fairness argument.",
       },
+      {
+        question: "What is a warmer period between two glacial periods called?",
+        choices: [
+          "Ice age",
+          "Interglacial",
+          "Little Ice Age",
+          "Glacial maximum",
+        ],
+        accept: [
+          "Interglacial",
+        ],
+        answer: "Interglacials are warm phases between colder glacials; we are in one now. The Little Ice Age was a short cooler spell, not a glacial cycle.",
+      },
+      {
+        question: "When the Sun has more sunspots, what happens to its energy output?",
+        choices: [
+          "It falls",
+          "It rises",
+          "It stays the same",
+          "It halves",
+        ],
+        accept: [
+          "It rises",
+        ],
+        answer: "More sunspots mean slightly higher solar output. A spell with very few sunspots, the Maunder Minimum, came during the Little Ice Age.",
+      },
+      {
+        question: "What is studying tree rings to work out past climates called?",
+        choices: [
+          "Glaciology",
+          "Stratigraphy",
+          "Palaeontology",
+          "Dendrochronology",
+        ],
+        accept: [
+          "Dendrochronology",
+        ],
+        answer: "Each year a tree adds a ring, wider in warm wet years and narrower in cold dry ones. Glaciology is the study of ice and glaciers.",
+      },
+      {
+        question: "Why does melting Arctic ice speed up warming?",
+        choices: [
+          "Less light reflected",
+          "More CO₂ absorbed",
+          "More clouds form",
+          "Ocean currents stop",
+        ],
+        accept: [
+          "Less light reflected",
+        ],
+        answer: "White ice reflects sunlight; dark ocean absorbs it. As ice melts, more heat is absorbed, causing more melting: a positive feedback.",
+      },
+      {
+        question: "Why do fewer trees mean more CO₂ stays in the atmosphere?",
+        choices: [
+          "More rain falls",
+          "Soil gets colder",
+          "Less photosynthesis",
+          "More oxygen is made",
+        ],
+        accept: [
+          "Less photosynthesis",
+        ],
+        answer: "Trees take in carbon dioxide for photosynthesis, so fewer trees absorb less and more stays in the air. Burning or rotting trees also release stored carbon.",
+      },
+      {
+        question: "Which effect of climate change most threatens low-lying island nations?",
+        choices: [
+          "Ozone thinning",
+          "More earthquakes",
+          "Colder winters",
+          "Sea level rise",
+        ],
+        accept: [
+          "Sea level rise",
+        ],
+        answer: "Thermal expansion and melting land ice raise sea levels, flooding low islands. The ozone hole is a separate problem, not caused by the greenhouse effect.",
+      },
     ],
 
     misconceptions: [
@@ -4725,6 +5895,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Reach a clear decision supported by evidence",
         ],
         answer: "Sitting on the fence is the most common way to lose the final marks on the highest-value question in the paper.",
+      },
+      {
+        question: "New jobs and higher incomes are which type of impact?",
+        choices: [
+          "Social",
+          "Economic",
+          "Environmental",
+          "Political",
+        ],
+        accept: [
+          "Economic",
+        ],
+        answer: "Economic impacts are about money, jobs and trade. Social impacts concern people's health, housing and community; environmental ones concern nature.",
+      },
+      {
+        question: "Loss of wildlife habitat is which type of impact?",
+        choices: [
+          "Economic",
+          "Social",
+          "Political",
+          "Environmental",
+        ],
+        accept: [
+          "Environmental",
+        ],
+        answer: "Environmental impacts affect ecosystems, land, air and water. Strong answers weigh them against economic and social impacts to judge sustainability.",
+      },
+      {
+        question: "What is giving reasons to support your chosen option called?",
+        choices: [
+          "Justification",
+          "Counter-argument",
+          "Trade-off",
+          "Stakeholder",
+        ],
+        accept: [
+          "Justification",
+        ],
+        answer: "Justification explains why your option is best, using evidence. A counter-argument is the case against it, which you should also tackle.",
+      },
+      {
+        question: "What are the standards you use to judge and compare options called?",
+        choices: [
+          "Stakeholders",
+          "Trade-offs",
+          "Criteria",
+          "Resources",
+        ],
+        accept: [
+          "Criteria",
+        ],
+        answer: "Criteria such as cost, jobs or environmental harm give a fair basis for ranking options. Stakeholders are the people affected by the choice.",
+      },
+      {
+        question: "Construction jobs lasting two years are what kind of impact?",
+        choices: [
+          "Long-term",
+          "Permanent",
+          "Short-term",
+          "Irreversible",
+        ],
+        accept: [
+          "Short-term",
+        ],
+        answer: "They end when building finishes, so they are short-term. Separating short- and long-term impacts often changes which option looks best.",
+      },
+      {
+        question: "Which word best introduces a counter-argument?",
+        choices: [
+          "Furthermore",
+          "However",
+          "In addition",
+          "Similarly",
+        ],
+        accept: [
+          "However",
+        ],
+        answer: "'However' turns to the opposing view. Furthermore, in addition and similarly all add support to the same side of the argument.",
       },
     ],
 
@@ -5032,6 +6280,84 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Learn a small number of specific facts and figures for each",
         ],
         answer: "Three or four precise details you can deploy under pressure beat pages you half-remember.",
+      },
+      {
+        question: "Which command word asks for similarities and differences?",
+        choices: [
+          "Describe",
+          "Explain",
+          "Compare",
+          "Suggest",
+        ],
+        accept: [
+          "Compare",
+        ],
+        answer: "Compare needs points about both things side by side, using words like 'whereas'. Describing each one separately does not count as comparing.",
+      },
+      {
+        question: "Which command word asks for possible reasons, often in an unfamiliar situation?",
+        choices: [
+          "Suggest",
+          "Describe",
+          "Compare",
+          "Calculate",
+        ],
+        accept: [
+          "Suggest",
+        ],
+        answer: "Suggest means apply what you know to propose likely reasons. Describe only says what is shown, without reasons.",
+      },
+      {
+        question: "What is a later, knock-on consequence of an event called?",
+        choices: [
+          "Primary effect",
+          "Immediate response",
+          "Secondary effect",
+          "Short-term aid",
+        ],
+        accept: [
+          "Secondary effect",
+        ],
+        answer: "Secondary effects follow from primary ones, like disease after water supplies are damaged. Primary effects are the immediate, direct damage.",
+      },
+      {
+        question: "Which revision method revisits a topic several times with gaps of days in between?",
+        choices: [
+          "Cramming",
+          "Rereading notes",
+          "Highlighting",
+          "Spaced practice",
+        ],
+        accept: [
+          "Spaced practice",
+        ],
+        answer: "Spacing out retrieval practice makes memories last far longer. Cramming fades quickly, and rereading feels productive but tests nothing.",
+      },
+      {
+        question: "What is the instruction word in a question, such as 'explain', called?",
+        choices: [
+          "Key term",
+          "Command word",
+          "Mark band",
+          "Case study",
+        ],
+        accept: [
+          "Command word",
+        ],
+        answer: "The command word tells you what to do. Describe, explain and assess each need a different kind of answer, so underline it first.",
+      },
+      {
+        question: "Which phrase best develops a point into a chain of explanation?",
+        choices: [
+          "Also",
+          "Firstly",
+          "This means that",
+          "In conclusion",
+        ],
+        accept: [
+          "This means that",
+        ],
+        answer: "'This means that' links a cause to its consequence, which earns explanation marks. 'Also' and 'firstly' just add another separate point.",
       },
     ],
 

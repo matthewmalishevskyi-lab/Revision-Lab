@@ -760,6 +760,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "E = P × t = 2,000 W × 10 s = 20,000 J. 20 J forgets that 2 kW is 2,000 W.",
       },
+      {
+        question: "Which energy store of the water increases as a kettle heats it?",
+        choices: [
+          "Chemical",
+          "Thermal",
+          "Kinetic",
+          "Elastic potential",
+        ],
+        accept: [
+          "Thermal",
+        ],
+        answer: "Heating raises the water's temperature, so energy goes into its thermal store. The water is not moving as a whole, so its kinetic store hardly changes.",
+      },
     ],
     misconceptions: [
       {
@@ -1503,6 +1516,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A barrage is a dam across a river estuary that traps water at high tide. A dam in a mountain valley is hydroelectric power.",
       },
+      {
+        question: "Which of these renewable resources releases carbon dioxide when it is used?",
+        choices: [
+          "Wind",
+          "Tidal",
+          "Biofuel",
+          "Hydroelectric",
+        ],
+        accept: [
+          "Biofuel",
+        ],
+        answer: "Biofuel is burned, so it gives off CO₂, but the plants took in that CO₂ as they grew. Wind, tidal and hydroelectric turn turbines directly and burn nothing.",
+      },
     ],
     misconceptions: [
       {
@@ -2232,6 +2258,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Boiling it",
         ],
         answer: "Latent heat of vaporisation (2,260,000 J/kg) is much bigger than fusion (334,000 J/kg), because particles must be pulled fully apart.",
+      },
+      {
+        question: "Heating a substance always increases which of these?",
+        choices: [
+          "Its temperature",
+          "Its internal energy",
+          "Its mass",
+          "Its density",
+        ],
+        accept: [
+          "Its internal energy",
+        ],
+        answer: "Heating always adds to the particles' energy, so internal energy rises. During a change of state the temperature stays the same, because the energy goes into breaking bonds.",
       },
     ],
     misconceptions: [
@@ -2968,6 +3007,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Balance needs equal moments (force × distance). A bigger weight needs a smaller distance, so the heavier child sits closer to the pivot.",
       },
+      {
+        question: "An object's weight is directly proportional to which of these?",
+        choices: [
+          "Its volume",
+          "Its height",
+          "Its mass",
+          "Its speed",
+        ],
+        accept: [
+          "Its mass",
+        ],
+        answer: "W = mg, so doubling the mass doubles the weight in the same gravitational field. Volume does not decide weight: a big balloon can weigh less than a small stone.",
+      },
     ],
     misconceptions: [
       {
@@ -3703,6 +3755,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "As current rises the filament heats up and resistance increases, so the curve gets less steep. Flat then steep is a diode.",
       },
+      {
+        question: "In the resistance of a wire practical, what is the independent variable?",
+        choices: [
+          "The current",
+          "The wire's length",
+          "The resistance",
+          "The supply p.d.",
+        ],
+        accept: [
+          "The wire's length",
+        ],
+        answer: "You change the length of wire between the crocodile clips, then work out the resistance from the ammeter and voltmeter readings. Resistance is the dependent variable.",
+      },
     ],
     misconceptions: [
       {
@@ -4430,6 +4495,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A beta particle is a fast electron: mass number 0 and charge −1. ⁴₂He is an alpha particle.",
       },
+      {
+        question: "In beta decay, what happens to the mass number of the nucleus?",
+        choices: [
+          "It falls by 4",
+          "It stays the same",
+          "It rises by 1",
+          "It falls by 1",
+        ],
+        accept: [
+          "It stays the same",
+        ],
+        answer: "A neutron turns into a proton and a fast electron leaves. The total of protons plus neutrons is unchanged, so the mass number stays the same while the atomic number rises by 1.",
+      },
     ],
     misconceptions: [
       {
@@ -5154,6 +5232,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Each branch has the same p.d., so I = V/R gives more current where R is smaller.",
       },
+      {
+        question: "Which component would sense a room getting cold, to switch on a heater?",
+        choices: [
+          "LDR",
+          "Diode",
+          "Thermistor",
+          "Fuse",
+        ],
+        accept: [
+          "Thermistor",
+        ],
+        answer: "A thermistor's resistance rises as it gets colder, so it can trigger a heater. An LDR responds to light instead, and a diode only lets current flow one way.",
+      },
     ],
     misconceptions: [
       {
@@ -5875,6 +5966,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Two",
         ],
         answer: "It needs only live and neutral. The case cannot become live, so no earth wire is needed, unlike a three-core cable.",
+      },
+      {
+        question: "What is the potential of the earth wire?",
+        choices: [
+          "0 V",
+          "50 V",
+          "115 V",
+          "230 V",
+        ],
+        accept: [
+          "0 V",
+        ],
+        answer: "The earth wire is at 0 V and carries current only if there is a fault. The live wire is at about 230 V; 50 is the mains frequency in hertz, not a voltage.",
       },
     ],
     misconceptions: [
@@ -6615,6 +6719,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "v = u + at = 0 + 10 × 3 = 30 m/s. 45 is the distance fallen in metres, not the speed.",
       },
+      {
+        question: "What does a straight, sloping line on a distance-time graph show?",
+        choices: [
+          "Speeding up",
+          "Steady speed",
+          "Not moving",
+          "Slowing down",
+        ],
+        accept: [
+          "Steady speed",
+        ],
+        answer: "A straight line has a constant gradient, and the gradient is the speed, so the speed is steady. A curve shows speeding up or slowing down; a flat line means not moving.",
+      },
     ],
     misconceptions: [
       {
@@ -7349,6 +7466,20 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Speed increases",
         ],
         answer: "Drag grows with speed. A falling object speeds up until drag equals weight, then it falls at terminal velocity.",
+      },
+      {
+        question: "What is the momentum of a stationary object?",
+        choices: [
+          "Equal to its mass",
+          "Zero",
+          "Equal to its weight",
+          "Equal to its inertia",
+        ],
+        accept: [
+          "Zero",
+        ],
+        answer: "Momentum = mass × velocity, and the velocity is zero, so the momentum is zero however heavy it is. Its mass and inertia are still there; only the momentum is zero.",
+        higherOnly: true,
       },
     ],
     misconceptions: [
@@ -8086,6 +8217,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Human ears detect roughly 20 Hz to 20,000 Hz. Sound above 20 kHz is ultrasound, which we cannot hear.",
       },
+      {
+        question: "In a sound wave, what is the distance from one compression to the next?",
+        choices: [
+          "Amplitude",
+          "Frequency",
+          "Period",
+          "Wavelength",
+        ],
+        accept: [
+          "Wavelength",
+        ],
+        answer: "Wavelength is the distance from a point on one wave to the same point on the next, such as compression to compression. Period is a time and frequency is waves per second.",
+      },
     ],
     misconceptions: [
       {
@@ -8805,6 +8949,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Water molecules",
         ],
         answer: "Water molecules in food absorb microwaves, which raises their kinetic energy, so the food heats up. The metal walls reflect microwaves back in.",
+      },
+      {
+        question: "Electromagnetic waves transfer energy from a source to what?",
+        choices: [
+          "A medium",
+          "An absorber",
+          "A vacuum",
+          "An emitter",
+        ],
+        accept: [
+          "An absorber",
+        ],
+        answer: "EM waves carry energy from the source that emits them to whatever absorbs them, like sunlight warming skin. They need no medium and can cross a vacuum.",
       },
     ],
     misconceptions: [
@@ -9533,6 +9690,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Air particles hitting",
         ],
         answer: "Air molecules constantly collide with surfaces, and each collision exerts a force. The total force per unit area is atmospheric pressure.",
+      },
+      {
+        question: "Why is a dam wall built thicker at the bottom than at the top?",
+        choices: [
+          "Water is warmer there",
+          "More pressure at depth",
+          "Less upthrust at depth",
+          "Water is less dense",
+        ],
+        accept: [
+          "More pressure at depth",
+        ],
+        answer: "Pressure in a liquid increases with depth, because there is more water above pushing down. So the bottom of the dam takes the greatest force and needs the most strength.",
       },
     ],
     misconceptions: [
@@ -10267,6 +10437,20 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer: "Moving the magnet faster changes the field through the coil more quickly, inducing a bigger p.d. Pulling it out, not speed, reverses it.",
         higherOnly: true,
       },
+      {
+        question: "What is the unit of magnetic flux density?",
+        choices: [
+          "Newton",
+          "Coulomb",
+          "Tesla",
+          "Ohm",
+        ],
+        accept: [
+          "Tesla",
+        ],
+        answer: "Magnetic flux density B is measured in tesla (T), as in F = BIl. The newton is the unit of the force produced, the coulomb is charge and the ohm is resistance.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -10992,6 +11176,20 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer: "F = mΔv ÷ Δt: force is the rate of change of momentum. So spreading the same change over a longer time, as an airbag does, gives a smaller force.",
         higherOnly: true,
       },
+      {
+        question: "Taking right as positive, a ball rolls to the left. What sign is its momentum?",
+        choices: [
+          "Positive",
+          "Zero",
+          "Negative",
+          "It has no sign",
+        ],
+        accept: [
+          "Negative",
+        ],
+        answer: "Momentum is a vector, so direction matters: motion opposite to the positive direction gives negative momentum. That sign is what makes momentum add to zero in an explosion.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -11701,6 +11899,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Checked by experts",
         ],
         answer: "In peer review, other experts in the same field check the work before it is published, to make sure the method and conclusions are valid.",
+      },
+      {
+        question: "What sort of half-life suits the alpha source in a smoke alarm?",
+        choices: [
+          "A few minutes",
+          "A few hours",
+          "A few days",
+          "Several hundred years",
+        ],
+        accept: [
+          "Several hundred years",
+        ],
+        answer: "A smoke alarm must keep working for years, so it uses a long half-life source such as americium-241 (about 430 years). A short half-life would fade within days.",
       },
     ],
     misconceptions: [
@@ -12425,6 +12636,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Supernovae show distant galaxies receding ever faster, so the expansion of the universe is speeding up. Dark energy is proposed to explain it.",
       },
+      {
+        question: "In which direction does gravity pull on a satellite in a circular orbit?",
+        choices: [
+          "Along its path",
+          "Towards the Earth",
+          "Away from Earth",
+          "Backwards",
+        ],
+        accept: [
+          "Towards the Earth",
+        ],
+        answer: "Gravity always pulls towards the centre of the Earth, at right angles to the motion. It changes the satellite's direction, not its speed, so the velocity keeps changing.",
+      },
     ],
     misconceptions: [
       {
@@ -13125,6 +13349,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A strobe flashing at the wave frequency makes the ripples appear still, so the wavelength can be measured. The vibrating bar makes the waves.",
       },
+      {
+        question: "In the waves on a string practical, what sets the frequency of vibration?",
+        choices: [
+          "Pulley and masses",
+          "Signal generator",
+          "Metre rule",
+          "Light gate",
+        ],
+        accept: [
+          "Signal generator",
+        ],
+        answer: "The signal generator drives the vibration generator, so you set the frequency on it. The masses over the pulley set the tension, and the metre rule measures the wavelength.",
+      },
     ],
     misconceptions: [
       {
@@ -13751,6 +13988,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "3",
         ],
         answer: "Leading zeros never count, but the final zero after the 5 does, so 0.0250 has 3 significant figures: 2, 5 and 0.",
+      },
+      {
+        question: "What does the prefix milli (m) mean, as in milliamp?",
+        choices: [
+          "One thousand times",
+          "One millionth",
+          "One thousandth",
+          "One million times",
+        ],
+        accept: [
+          "One thousandth",
+        ],
+        answer: "Milli means one thousandth (× 10⁻³), so 250 mA is 0.25 A. Micro (μ) is one millionth, kilo is a thousand times and mega is a million times.",
       },
     ],
     misconceptions: [

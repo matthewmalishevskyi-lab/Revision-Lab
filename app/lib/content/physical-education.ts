@@ -305,6 +305,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A strong answer would describe the peaks and troughs of the trace becoming both taller, showing greater tidal volume, and closer together, showing a faster breathing rate, compared with the smaller, more widely spaced pattern seen at rest. Mark this one yourself.",
       },
+      {
+        question: "During inspiration, how does the ribcage move?",
+        choices: [
+          "Down and in",
+          "Up and out",
+          "Down and out",
+          "It stays still",
+        ],
+        accept: [
+          "Up and out",
+        ],
+        answer: "The external intercostals contract to pull the ribs up and out, making the chest bigger so air rushes in. During expiration the ribs move down and in.",
+      },
+      {
+        question: "What are the tiny airways between the bronchi and the alveoli called?",
+        choices: [
+          "Capillaries",
+          "Bronchioles",
+          "Trachea",
+          "Larynx",
+        ],
+        accept: [
+          "Bronchioles",
+        ],
+        answer: "Bronchioles are the small branches of the bronchi that lead to the alveoli. Capillaries are blood vessels around the alveoli, not airways.",
+      },
+      {
+        question: "Which feature of the alveoli gives a short diffusion distance?",
+        choices: [
+          "Large surface area",
+          "One-cell-thick walls",
+          "A moist lining",
+          "Being in the chest",
+        ],
+        accept: [
+          "One-cell-thick walls",
+        ],
+        answer: "Walls just one cell thick mean gases have a very short distance to cross. A large surface area also speeds diffusion, but by giving more room, not a shorter path.",
+      },
+      {
+        question: "Which structure is commonly called the windpipe?",
+        choices: [
+          "Bronchus",
+          "Larynx",
+          "Oesophagus",
+          "Trachea",
+        ],
+        accept: [
+          "Trachea",
+        ],
+        answer: "The trachea is the windpipe, held open by rings of cartilage. The oesophagus is the food pipe behind it, and the larynx is the voice box above it.",
+      },
+      {
+        question: "At rest, expiration is mainly what kind of process?",
+        choices: [
+          "Active",
+          "Passive",
+          "Forced",
+          "Voluntary",
+        ],
+        accept: [
+          "Passive",
+        ],
+        answer: "At rest the diaphragm and intercostals simply relax and the lungs recoil, so expiration is passive. In hard exercise it becomes active, using the abdominals.",
+      },
     ],
     misconceptions: [
       {
@@ -603,6 +668,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A strong answer would explain that most of the match is played at a jogging or walking pace, using the aerobic system, while short bursts such as sprinting for the ball or chasing back require rapid energy release from the anaerobic system. Mark this one yourself.",
       },
+      {
+        question: "Aerobic exercise is usually performed at what intensity?",
+        choices: [
+          "Maximal",
+          "Low to moderate",
+          "Explosive",
+          "Very high",
+        ],
+        accept: [
+          "Low to moderate",
+        ],
+        answer: "Aerobic work is at a low to moderate intensity, so enough oxygen reaches the muscles. Maximal or explosive efforts are too intense and become anaerobic.",
+      },
+      {
+        question: "When oxygen supply matches oxygen demand during exercise, what is this called?",
+        choices: [
+          "Oxygen debt",
+          "EPOC",
+          "Steady state",
+          "Fatigue",
+        ],
+        accept: [
+          "Steady state",
+        ],
+        answer: "Steady state is when the oxygen supplied meets the oxygen needed, so work can continue aerobically. Oxygen debt builds when demand outstrips supply.",
+      },
+      {
+        question: "Which of these activities is mainly aerobic?",
+        choices: [
+          "A shot put",
+          "A 10 km jog",
+          "A 100 m sprint",
+          "A tennis serve",
+        ],
+        accept: [
+          "A 10 km jog",
+        ],
+        answer: "A long, steady jog lets oxygen keep up with demand, so it is aerobic. The others are short, explosive efforts powered anaerobically.",
+      },
+      {
+        question: "Why does breathing stay fast for a while after a sprint finishes?",
+        choices: [
+          "To cool the body",
+          "To make lactic acid",
+          "To repay oxygen debt",
+          "To raise heart rate",
+        ],
+        accept: [
+          "To repay oxygen debt",
+        ],
+        answer: "The extra oxygen taken in after exercise (EPOC) repays the oxygen debt and helps remove lactic acid. Lactic acid is produced when oxygen is short.",
+      },
+      {
+        question: "What is an ice bath after a match mainly meant to do?",
+        choices: [
+          "To warm the muscles",
+          "To raise heart rate",
+          "To refuel glycogen",
+          "To reduce soreness",
+        ],
+        accept: [
+          "To reduce soreness",
+        ],
+        answer: "Cold water is thought to reduce swelling and muscle soreness. It doesn't warm muscles or raise heart rate, and refuelling glycogen needs carbohydrate.",
+      },
     ],
     misconceptions: [
       {
@@ -900,6 +1030,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Explain why long-term adaptations such as muscle hypertrophy require sustained training over time rather than a single session.",
         answer:
           "A strong answer would explain that the body needs repeated stress and recovery cycles over weeks or months to trigger structural changes like fibre growth, whereas a single session only produces immediate and short-term effects that do not persist. Mark this one yourself.",
+      },
+      {
+        question: "Why does the skin often go red during exercise?",
+        choices: [
+          "Blood sent to the skin",
+          "Lactic acid build-up",
+          "Less oxygen in blood",
+          "Muscles growing",
+        ],
+        accept: [
+          "Blood sent to the skin",
+        ],
+        answer: "More blood is sent to vessels near the skin surface so heat can escape, which makes the skin look red. It is an immediate effect, along with sweating.",
+      },
+      {
+        question: "What happens to stroke volume as a long-term effect of training?",
+        choices: [
+          "It decreases",
+          "It stays the same",
+          "It increases",
+          "It drops to zero",
+        ],
+        accept: [
+          "It increases",
+        ],
+        answer: "Cardiac hypertrophy makes the heart bigger and stronger, so more blood is pumped per beat. That higher stroke volume is why resting heart rate falls.",
+      },
+      {
+        question: "What is osteoporosis?",
+        choices: [
+          "Inflamed joints",
+          "Weak, brittle bones",
+          "Torn muscle fibres",
+          "A thick heart wall",
+        ],
+        accept: [
+          "Weak, brittle bones",
+        ],
+        answer: "Osteoporosis is a loss of bone density that leaves bones weak and easily broken. Weight-bearing exercise increases bone density, which lowers the risk.",
+      },
+      {
+        question: "Muscle hypertrophy is mainly caused by which type of training?",
+        choices: [
+          "Static stretching",
+          "Balance training",
+          "Weight training",
+          "Continuous jogging",
+        ],
+        accept: [
+          "Weight training",
+        ],
+        answer: "Overloading muscles with heavy resistance makes the fibres grow bigger. Continuous jogging mainly brings endurance adaptations such as capillarisation instead.",
+      },
+      {
+        question: "What happens to resting blood pressure after months of aerobic training?",
+        choices: [
+          "It increases",
+          "It decreases",
+          "It stays the same",
+          "It becomes erratic",
+        ],
+        accept: [
+          "It decreases",
+        ],
+        answer: "Regular aerobic training keeps blood vessel walls elastic and healthy, so resting blood pressure falls. This lowers the risk of heart disease and stroke.",
       },
     ],
     misconceptions: [
@@ -1211,6 +1406,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A strong answer would name a sport and justify three relevant components with reference to specific actions within that sport, such as agility for changing direction, speed for covering ground quickly, and cardiovascular endurance for lasting the full match. Mark this one yourself.",
       },
+      {
+        question: "Keeping your centre of mass over your base of support is which component?",
+        choices: [
+          "Coordination",
+          "Agility",
+          "Balance",
+          "Flexibility",
+        ],
+        accept: [
+          "Balance",
+        ],
+        answer: "Balance means keeping the centre of mass over the base of support, either still (static) or moving (dynamic). Agility is about changing direction quickly.",
+      },
+      {
+        question: "The maximum force a muscle can produce in one go is which component?",
+        choices: [
+          "Power",
+          "Muscular endurance",
+          "Strength",
+          "Speed",
+        ],
+        accept: [
+          "Strength",
+        ],
+        answer: "Strength is the maximum force a muscle or group can apply against a resistance. Muscular endurance is about repeating contractions without tiring.",
+      },
+      {
+        question: "Which formula gives speed?",
+        choices: [
+          "Distance ÷ time",
+          "Time ÷ distance",
+          "Strength × speed",
+          "Force ÷ distance",
+        ],
+        accept: [
+          "Distance ÷ time",
+        ],
+        answer: "Speed is distance divided by time, for example metres per second. Strength multiplied by speed is the formula for power, not speed.",
+      },
+      {
+        question: "Which component matters most for a high jumper's take-off?",
+        choices: [
+          "Muscular endurance",
+          "Power",
+          "Flexibility",
+          "Reaction time",
+        ],
+        accept: [
+          "Power",
+        ],
+        answer: "Take-off needs a huge force applied very quickly, which is power (strength and speed combined). Muscular endurance matters for repeated efforts, not one jump.",
+      },
+      {
+        question: "Which of these defines agility?",
+        choices: [
+          "Respond to a stimulus",
+          "Change direction fast",
+          "Hold a still position",
+          "Move joints fully",
+        ],
+        accept: [
+          "Change direction fast",
+        ],
+        answer: "Agility is the ability to change direction quickly while staying in control. Responding to a stimulus is reaction time, and full joint movement is flexibility.",
+      },
     ],
     misconceptions: [
       {
@@ -1520,6 +1780,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Explain why it is important to know which specific component of fitness a test is measuring before using its results to plan training.",
         answer:
           "A strong answer would explain that using a test result to plan training only makes sense if the component being measured actually matches the demands of the performer's sport, otherwise training time could be wasted improving a component that will not directly help their performance. Mark this one yourself.",
+      },
+      {
+        question: "Which fitness test measures strength?",
+        choices: [
+          "Vertical jump test",
+          "Handgrip dynamometer",
+          "Sit-up bleep test",
+          "Stork stand",
+        ],
+        accept: [
+          "Handgrip dynamometer",
+        ],
+        answer: "The handgrip dynamometer measures grip strength in kilograms. The vertical jump tests power, and the sit-up bleep test measures muscular endurance.",
+      },
+      {
+        question: "In the Cooper test, how long does the performer run or swim for?",
+        choices: [
+          "6 minutes",
+          "10 minutes",
+          "15 minutes",
+          "12 minutes",
+        ],
+        accept: [
+          "12 minutes",
+        ],
+        answer: "The Cooper test measures the distance covered in twelve minutes to assess cardiovascular endurance. The further you go, the fitter you are.",
+      },
+      {
+        question: "In the wall toss test, what is the performer's score?",
+        choices: [
+          "Catches in 30 seconds",
+          "Catches in 60 seconds",
+          "Throws until a drop",
+          "Distance thrown",
+        ],
+        accept: [
+          "Catches in 30 seconds",
+        ],
+        answer: "The wall toss counts how many catches are made in thirty seconds, throwing with one hand and catching with the other, to test coordination.",
+      },
+      {
+        question: "Which of these is a limitation of fitness testing?",
+        choices: [
+          "Sets training goals",
+          "Not sport-specific",
+          "Shows starting fitness",
+          "Motivates performers",
+        ],
+        accept: [
+          "Not sport-specific",
+        ],
+        answer: "Many tests do not copy the real movements or conditions of a sport, so results may not predict performance. The other options are reasons for testing.",
+      },
+      {
+        question: "How far apart are the lines in the multi-stage fitness test?",
+        choices: [
+          "10 metres",
+          "20 metres",
+          "30 metres",
+          "40 metres",
+        ],
+        accept: [
+          "20 metres",
+        ],
+        answer: "Performers run between lines twenty metres apart, keeping time with bleeps that get faster each level until they can no longer keep up.",
       },
     ],
     misconceptions: [
@@ -1845,6 +2170,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "Mark this one yourself. A thorough answer explains that aerobic zone training (60 to 80 percent of max HR) uses oxygen to sustain longer efforts, suiting endurance events, while anaerobic zone training (80 to 90 percent of max HR) is used for short, very intense efforts such as sprinting, where oxygen supply cannot meet demand.",
       },
+      {
+        question: "In the SPORT principles, what does the 'S' stand for?",
+        choices: [
+          "Strength",
+          "Specificity",
+          "Speed",
+          "Stamina",
+        ],
+        accept: [
+          "Specificity",
+        ],
+        answer: "S is specificity: training should match the demands of the sport. Strength, speed and stamina are fitness components, not training principles.",
+      },
+      {
+        question: "In the SPORT principles, what does the 'O' stand for?",
+        choices: [
+          "Overtraining",
+          "Outcome",
+          "Overload",
+          "Oxygen",
+        ],
+        accept: [
+          "Overload",
+        ],
+        answer: "O is overload: working harder than normal so the body adapts, built up gradually as progressive overload. Overtraining is too much training, which you want to avoid.",
+      },
+      {
+        question: "The aerobic training zone is typically what percentage of maximum heart rate?",
+        choices: [
+          "40–60%",
+          "60–80%",
+          "80–90%",
+          "90–100%",
+        ],
+        accept: [
+          "60–80%",
+        ],
+        answer: "The aerobic zone is sixty to eighty percent of maximum heart rate. Eighty to ninety percent is the anaerobic zone, used for speed and high-intensity work.",
+      },
+      {
+        question: "What is the estimated maximum heart rate of a 20-year-old?",
+        choices: [
+          "180 bpm",
+          "220 bpm",
+          "240 bpm",
+          "200 bpm",
+        ],
+        accept: [
+          "200 bpm",
+        ],
+        answer: "Maximum heart rate is estimated as 220 minus age, so twenty years old gives 200 bpm. 220 is the starting figure, not the answer.",
+      },
+      {
+        question: "Swapping a run for a bike ride changes which FITT variable?",
+        choices: [
+          "Time",
+          "Type",
+          "Intensity",
+          "Frequency",
+        ],
+        accept: [
+          "Type",
+        ],
+        answer: "Type is the kind of training or activity done. Time is how long the session lasts, and frequency is how often you train.",
+      },
     ],
     misconceptions: [
       {
@@ -2143,6 +2533,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Describe how static stretching should be performed safely, and explain why it is not suitable as a warm-up on its own.",
         answer:
           "Mark this one yourself. A full answer describes holding each stretch steadily without bouncing, avoiding pain, and explains that static stretching does not raise heart rate or muscle temperature enough, so it should follow a pulse raiser rather than replace one.",
+      },
+      {
+        question: "Which method holds a muscle at the end of its range for a set time?",
+        choices: [
+          "Plyometric training",
+          "Static stretching",
+          "Fartlek training",
+          "Interval training",
+        ],
+        accept: [
+          "Static stretching",
+        ],
+        answer: "Static stretching holds a stretch still, often for about thirty seconds, to improve flexibility. Plyometrics uses fast, bouncing jumps instead.",
+      },
+      {
+        question: "Which is a disadvantage of continuous training?",
+        choices: [
+          "Needs costly kit",
+          "It can be tedious",
+          "It is anaerobic",
+          "Builds speed only",
+        ],
+        accept: [
+          "It can be tedious",
+        ],
+        answer: "Running at one steady pace for a long time can become boring. It needs little equipment and is aerobic, building cardiovascular endurance rather than speed.",
+      },
+      {
+        question: "In plyometrics, the muscle stretches as you land. Which contraction is this?",
+        choices: [
+          "Concentric",
+          "Isometric",
+          "Eccentric",
+          "Static",
+        ],
+        accept: [
+          "Eccentric",
+        ],
+        answer: "Landing lengthens the muscle under tension, an eccentric contraction, which is followed straight away by a powerful concentric contraction to jump.",
+      },
+      {
+        question: "A one rep max is used to set the loads in which training method?",
+        choices: [
+          "Circuit training",
+          "Fartlek training",
+          "Weight training",
+          "Continuous training",
+        ],
+        accept: [
+          "Weight training",
+        ],
+        answer: "Weight training loads are set as a percentage of the most you can lift once (one rep max). Fartlek and continuous training are set by pace or heart rate.",
+      },
+      {
+        question: "Which of these is a safe practice in weight training?",
+        choices: [
+          "Lift with a round back",
+          "Use a spotter",
+          "Skip the warm up",
+          "Add weight quickly",
+        ],
+        accept: [
+          "Use a spotter",
+        ],
+        answer: "A spotter can take the bar if the lifter fails. Rounding the back, skipping the warm up and adding weight too quickly all raise the risk of injury.",
       },
     ],
     misconceptions: [
@@ -2443,6 +2898,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Describe the difference between a fracture and a dislocation, and explain how each might occur in sport.",
         answer:
           "Mark this one yourself. A full answer explains that a fracture is a break or crack in the bone itself, which might occur from a heavy direct impact such as a tackle, while a dislocation is a bone forced out of its joint position, which might occur from a fall onto an outstretched arm.",
+      },
+      {
+        question: "In a warm up, what usually comes straight after the pulse raiser?",
+        choices: [
+          "Skill practice",
+          "Stretching",
+          "Cool down",
+          "Match play",
+        ],
+        accept: [
+          "Stretching",
+        ],
+        answer: "A warm up runs pulse raiser, then stretching, then skill-based practice. Stretching comes once the muscles are warm, so they stretch more safely.",
+      },
+      {
+        question: "What does the 'I' in RICE stand for?",
+        choices: [
+          "Immobilise",
+          "Injury",
+          "Ice",
+          "Inspect",
+        ],
+        accept: [
+          "Ice",
+        ],
+        answer: "Ice is applied (wrapped, never straight on the skin) to reduce pain and swelling. RICE stands for rest, ice, compression and elevation.",
+      },
+      {
+        question: "Which of these best manages training load to reduce injury?",
+        choices: [
+          "Train hard every day",
+          "Raise load quickly",
+          "Include rest days",
+          "Skip the cool down",
+        ],
+        accept: [
+          "Include rest days",
+        ],
+        answer: "Rest days let the body recover and adapt, avoiding overtraining. Training hard daily or raising the load too fast both make injury more likely.",
+      },
+      {
+        question: "Why should officials check the playing area before a match?",
+        choices: [
+          "To raise heart rate",
+          "To stretch muscles",
+          "To spot hazards",
+          "To remove lactic acid",
+        ],
+        accept: [
+          "To spot hazards",
+        ],
+        answer: "Checking the pitch or court finds hazards like glass, holes or wet patches before anyone is hurt. Raising heart rate and stretching are jobs for the warm up.",
+      },
+      {
+        question: "Grouping junior rugby players by weight as well as age mainly helps to do what?",
+        choices: [
+          "Reduce injury risk",
+          "Speed up the game",
+          "Improve teamwork",
+          "Raise motivation",
+        ],
+        accept: [
+          "Reduce injury risk",
+        ],
+        answer: "Balanced competition means players face opponents of similar size, so collisions are less dangerous. It is an injury prevention measure, not a skill or tactic.",
       },
     ],
     misconceptions: [
@@ -2757,6 +3277,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "Mark this one yourself. A balanced answer might give an advantage such as being able to collect data quickly from a large number of performers, and a disadvantage such as answers being based on personal opinion and possibly not entirely honest or accurate.",
       },
+      {
+        question: "Which chart is best for showing parts of a whole, such as a percentage split?",
+        choices: [
+          "Line graph",
+          "Bar chart",
+          "Pie chart",
+          "Scatter graph",
+        ],
+        accept: [
+          "Pie chart",
+        ],
+        answer: "A pie chart shows how a whole is divided into parts. Bar charts compare separate categories, and line graphs show change over time.",
+      },
+      {
+        question: "On a line graph of heart rate during a session, where is time usually shown?",
+        choices: [
+          "Vertical (y) axis",
+          "Horizontal (x) axis",
+          "In the key",
+          "In the title",
+        ],
+        accept: [
+          "Horizontal (x) axis",
+        ],
+        answer: "Time goes along the horizontal x-axis and the measured value, here heart rate, goes up the vertical y-axis, so you read the graph from left to right.",
+      },
+      {
+        question: "Which method collects answers from a large number of people most quickly?",
+        choices: [
+          "Interview",
+          "Observation",
+          "Questionnaire",
+          "Fitness test",
+        ],
+        accept: [
+          "Questionnaire",
+        ],
+        answer: "A questionnaire can be handed to many people at once and answered quickly. Interviews give more detail but take far longer, one person at a time.",
+      },
+      {
+        question: "A sprinter's race times keep rising over a season. What does this show?",
+        choices: [
+          "Getting faster",
+          "No change",
+          "Getting slower",
+          "Data is unreliable",
+        ],
+        accept: [
+          "Getting slower",
+        ],
+        answer: "In a timed race a bigger number is worse, so rising times mean the sprinter is getting slower. A rising line is not always an improvement.",
+      },
+      {
+        question: "Which is the main disadvantage of collecting data by interview?",
+        choices: [
+          "Lacks detail",
+          "Time-consuming",
+          "No follow-ups",
+          "Only gives numbers",
+        ],
+        accept: [
+          "Time-consuming",
+        ],
+        answer: "Interviews take a long time to carry out and analyse, one person at a time. Their strength is rich detail and the chance to ask follow-up questions.",
+      },
     ],
     misconceptions: [
       {
@@ -3057,6 +3642,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Explain the difference between health, fitness and wellbeing using a sporting example for each.",
         answer:
           "A complete answer defines all three terms accurately and gives a distinct sporting example for each, such as a footballer being fit for matches, healthy with no illness, and having high wellbeing from enjoying the game. Mark this one yourself.",
+      },
+      {
+        question: "Which of these is an emotional (mental) benefit of exercise?",
+        choices: [
+          "Stronger bones",
+          "Reduced stress",
+          "Lower blood pressure",
+          "Making friends",
+        ],
+        accept: [
+          "Reduced stress",
+        ],
+        answer: "Exercise can relieve stress and tension, a mental benefit. Stronger bones and lower blood pressure are physical benefits, and making friends is social.",
+      },
+      {
+        question: "Regular exercise lowers the risk of which disease of the heart's arteries?",
+        choices: [
+          "Osteoporosis",
+          "Asthma",
+          "Coronary heart disease",
+          "Concussion",
+        ],
+        accept: [
+          "Coronary heart disease",
+        ],
+        answer: "Coronary heart disease is when fatty deposits narrow the arteries supplying the heart muscle. Exercise helps keep these arteries clear. Osteoporosis affects bones.",
+      },
+      {
+        question: "Feeling confident and positive about your own worth is known as what?",
+        choices: [
+          "Serotonin",
+          "Self-esteem",
+          "Teamwork",
+          "Stress",
+        ],
+        accept: [
+          "Self-esteem",
+        ],
+        answer: "Self-esteem is how much you value yourself, and success in sport can raise it. Serotonin is a brain chemical that lifts mood, not a feeling about yourself.",
+      },
+      {
+        question: "The WHO definition says health is not merely the absence of what?",
+        choices: [
+          "Fitness",
+          "Disease or infirmity",
+          "Happiness",
+          "Friendship",
+        ],
+        accept: [
+          "Disease or infirmity",
+        ],
+        answer: "The WHO says health is complete physical, mental and social wellbeing, not merely the absence of disease or infirmity. Simply not being ill is not enough.",
+      },
+      {
+        question: "Which term means being able to manage daily life without relying on others?",
+        choices: [
+          "Wellbeing",
+          "Fitness",
+          "Independence",
+          "Teamwork",
+        ],
+        accept: [
+          "Independence",
+        ],
+        answer: "Independence is a key benefit of exercise for older adults, as strength and balance help them keep doing everyday tasks for themselves.",
       },
     ],
     misconceptions: [
@@ -3364,6 +4014,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A thorough answer shows that nutrients such as carbohydrate fuel the muscles while water regulates temperature and blood flow, so neglecting either hydration or diet limits performance in different ways. Mark this one yourself.",
       },
+      {
+        question: "Which mineral is especially important for strong bones and teeth?",
+        choices: [
+          "Iron",
+          "Sodium",
+          "Calcium",
+          "Potassium",
+        ],
+        accept: [
+          "Calcium",
+        ],
+        answer: "Calcium helps build and maintain strong bones and teeth. Iron is the tempting one, but its main job is helping blood carry oxygen.",
+      },
+      {
+        question: "Which component of a balanced diet helps digestion and prevents constipation?",
+        choices: [
+          "Fibre",
+          "Protein",
+          "Fat",
+          "Minerals",
+        ],
+        accept: [
+          "Fibre",
+        ],
+        answer: "Fibre keeps food moving through the digestive system and helps prevent constipation. It is not used as an energy source like carbohydrate and fat.",
+      },
+      {
+        question: "Which nutrient provides the most energy per gram?",
+        choices: [
+          "Carbohydrate",
+          "Protein",
+          "Fibre",
+          "Fat",
+        ],
+        accept: [
+          "Fat",
+        ],
+        answer: "Fat holds more than twice the energy per gram of carbohydrate, but it releases it slowly, so it suits low-intensity exercise rather than sprints.",
+      },
+      {
+        question: "What happens to heart rate when a performer becomes dehydrated?",
+        choices: [
+          "It decreases",
+          "It increases",
+          "It stays the same",
+          "It stops varying",
+        ],
+        accept: [
+          "It increases",
+        ],
+        answer: "Dehydration thickens the blood (higher viscosity), so the heart has to beat faster to pump it around the body and supply the muscles.",
+      },
+      {
+        question: "Which component of a balanced diet helps control body temperature through sweating?",
+        choices: [
+          "Vitamins",
+          "Fibre",
+          "Protein",
+          "Water",
+        ],
+        accept: [
+          "Water",
+        ],
+        answer: "Water is lost as sweat, which evaporates and cools the body. Losing too much without drinking leads to dehydration and overheating.",
+      },
     ],
     misconceptions: [
       {
@@ -3655,6 +4370,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Explain the link between diet, a sedentary lifestyle and the development of obesity.",
         answer:
           "A thorough answer explains that obesity often develops when energy intake from diet regularly exceeds energy used through activity, and a sedentary lifestyle reduces the energy used side of that balance. Mark this one yourself.",
+      },
+      {
+        question: "Which type of diabetes is most closely linked to obesity and inactivity?",
+        choices: [
+          "Type 1",
+          "Type 2",
+          "Gestational",
+          "Juvenile",
+        ],
+        accept: [
+          "Type 2",
+        ],
+        answer: "Type 2 diabetes is strongly linked to obesity and a sedentary lifestyle. Type 1 (once called juvenile diabetes) is not caused by lifestyle.",
+      },
+      {
+        question: "What does lethargy mean?",
+        choices: [
+          "High blood pressure",
+          "Excess body fat",
+          "A lack of energy",
+          "Low self-esteem",
+        ],
+        accept: [
+          "A lack of energy",
+        ],
+        answer: "Lethargy means feeling tired and lacking energy, a common result of a sedentary lifestyle. High blood pressure is hypertension.",
+      },
+      {
+        question: "Which somatotype has a pear-shaped body with a high percentage of body fat?",
+        choices: [
+          "Mesomorph",
+          "Ectomorph",
+          "Endomorph",
+          "Hypomorph",
+        ],
+        accept: [
+          "Endomorph",
+        ],
+        answer: "An endomorph is pear-shaped with wide hips and more body fat. A mesomorph is muscular and wedge-shaped; an ectomorph is narrow and thin.",
+      },
+      {
+        question: "Which of these is a physical consequence of a sedentary lifestyle?",
+        choices: [
+          "Loss of muscle tone",
+          "Increased stamina",
+          "Stronger bones",
+          "Lower blood pressure",
+        ],
+        accept: [
+          "Loss of muscle tone",
+        ],
+        answer: "Muscles that are rarely used lose tone and strength. Inactivity lowers stamina, weakens bones and tends to raise blood pressure, not lower it.",
+      },
+      {
+        question: "Which daily routine is the best example of a sedentary lifestyle?",
+        choices: [
+          "Cycling to school",
+          "Desk job, TV at night",
+          "Walking to work daily",
+          "Weekly football match",
+        ],
+        accept: [
+          "Desk job, TV at night",
+        ],
+        answer: "A sedentary lifestyle involves little or no physical activity, such as sitting at work all day then sitting in front of a screen in the evening.",
       },
     ],
     misconceptions: [
@@ -3966,6 +4746,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A good answer identifies that the large body movement through the swing is gross, while the precise control of the club face and wrists at the point of impact is fine, showing the skill combines both ends of the continuum. Mark this one yourself.",
       },
+      {
+        question: "Which skill is the best example of an open skill?",
+        choices: [
+          "A golf putt",
+          "A gymnastics vault",
+          "A rugby pass in play",
+          "A tennis serve",
+        ],
+        accept: [
+          "A rugby pass in play",
+        ],
+        answer: "A pass during open play depends on moving teammates and opponents, so the environment keeps changing. A putt, vault or serve happens in a stable setting.",
+      },
+      {
+        question: "Which of these skills is self-paced?",
+        choices: [
+          "A goalkeeper's save",
+          "A tennis serve",
+          "Returning a serve",
+          "Blocking a shot",
+        ],
+        accept: [
+          "A tennis serve",
+        ],
+        answer: "The server decides exactly when to start the serve, so it is self-paced. Returning a serve or making a save is timed by the opponent's action.",
+      },
+      {
+        question: "Which skill sits closest to the basic end of the basic to complex continuum?",
+        choices: [
+          "A somersault",
+          "A pole vault",
+          "A tennis serve",
+          "Running",
+        ],
+        accept: [
+          "Running",
+        ],
+        answer: "Running needs few decisions and little concentration, so it is basic. A pole vault or somersault has many parts and needs lots of focus, so it is complex.",
+      },
+      {
+        question: "What does a gross skill mainly involve?",
+        choices: [
+          "Large muscle groups",
+          "Small muscle groups",
+          "Lots of decisions",
+          "A changing setting",
+        ],
+        accept: [
+          "Large muscle groups",
+        ],
+        answer: "Gross skills use large muscle groups for big, powerful movements, such as a shot put. Fine skills use small muscle groups for precise control.",
+      },
+      {
+        question: "Which statement describes a skill rather than an ability?",
+        choices: [
+          "Inherited at birth",
+          "Mostly genetic",
+          "Learned by practice",
+          "Fixed for life",
+        ],
+        accept: [
+          "Learned by practice",
+        ],
+        answer: "A skill is learned through practice to produce a set result. An ability is an inherited, mostly genetic trait, such as balance, that changes little.",
+      },
     ],
     misconceptions: [
       {
@@ -4258,6 +5103,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A thorough answer names both types, defines them clearly and gives one example each, such as a performance goal of reducing errors in a gymnastics routine compared with an outcome goal of winning the competition. Mark this one yourself.",
       },
+      {
+        question: "A football team aiming to win the league title has set which type of goal?",
+        choices: [
+          "Performance goal",
+          "Outcome goal",
+          "Process goal",
+          "Personal goal",
+        ],
+        accept: [
+          "Outcome goal",
+        ],
+        answer: "Winning a league is about the result against others, so it is an outcome goal. A performance goal compares the performer only with their own standards.",
+      },
+      {
+        question: "A goal with no deadline fails which part of SMART?",
+        choices: [
+          "Specific",
+          "Measurable",
+          "Realistic",
+          "Time-bound",
+        ],
+        accept: [
+          "Time-bound",
+        ],
+        answer: "Time-bound means the goal has a set date for completion. Without one, there is no point at which progress is checked and urgency is lost.",
+      },
+      {
+        question: "A goal that is far too hard for the performer fails which part of SMART?",
+        choices: [
+          "Realistic",
+          "Specific",
+          "Time-bound",
+          "Accepted",
+        ],
+        accept: [
+          "Realistic",
+        ],
+        answer: "A realistic goal must be possible to achieve. A goal that is far too hard leads to failure and can lower motivation and confidence.",
+      },
+      {
+        question: "Which of these goals is the most measurable?",
+        choices: [
+          "Get fitter",
+          "Run 5 km in 25 min",
+          "Play better",
+          "Try harder",
+        ],
+        accept: [
+          "Run 5 km in 25 min",
+        ],
+        answer: "A distance and a time can be checked exactly, so progress can be measured. Vague goals like getting fitter or playing better cannot be tested.",
+      },
+      {
+        question: "Setting goals mainly helps a performer by increasing what?",
+        choices: [
+          "Flexibility",
+          "Reaction time",
+          "Motivation",
+          "Body fat",
+        ],
+        accept: [
+          "Motivation",
+        ],
+        answer: "Goals give a performer something to aim for, which raises motivation and effort in training. They do not directly change physical traits like flexibility.",
+      },
     ],
     misconceptions: [
       {
@@ -4548,6 +5458,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Explain why too much information arriving at once can harm a performer's decision making.",
         answer:
           "A full answer should describe information overload, where the volume of incoming cues exceeds what selective attention can filter, slowing or confusing the decision that follows. Mark this one yourself.",
+      },
+      {
+        question: "Which stage of the information processing model is when the senses pick up information?",
+        choices: [
+          "Output",
+          "Input",
+          "Decision making",
+          "Feedback",
+        ],
+        accept: [
+          "Input",
+        ],
+        answer: "Input is when the senses, such as sight and hearing, take in information from the display. Decision making then chooses what to do with it.",
+      },
+      {
+        question: "Reaction time added to movement time gives which?",
+        choices: [
+          "Decision time",
+          "Processing time",
+          "Response time",
+          "Total delay",
+        ],
+        accept: [
+          "Response time",
+        ],
+        answer: "Response time runs from the stimulus to the end of the movement, so it is reaction time plus movement time. Reaction time stops when movement begins.",
+      },
+      {
+        question: "Which memory store has a small capacity and only holds information briefly?",
+        choices: [
+          "Short-term memory",
+          "Long-term memory",
+          "Selective attention",
+          "Feedback",
+        ],
+        accept: [
+          "Short-term memory",
+        ],
+        answer: "Short-term memory holds a small amount of information for a short time. Long-term memory holds well-learned skills and has a huge capacity.",
+      },
+      {
+        question: "Which stage of the model gives the performer information about the result of their action?",
+        choices: [
+          "Input",
+          "Output",
+          "Display",
+          "Feedback",
+        ],
+        accept: [
+          "Feedback",
+        ],
+        answer: "Feedback comes after output and tells the performer how the action went, which feeds back into input for the next attempt.",
+      },
+      {
+        question: "In a sprint start, what is the sound of the starting gun?",
+        choices: [
+          "A stimulus",
+          "An output",
+          "A response",
+          "A memory",
+        ],
+        accept: [
+          "A stimulus",
+        ],
+        answer: "The gun is a stimulus: a signal the sprinter detects as input. Reaction time is measured from this stimulus to the first movement.",
       },
     ],
     misconceptions: [
@@ -4860,6 +5835,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A full answer should describe a sequence, for example a video demonstration for visual guidance, followed by manual or mechanical support for safety on early attempts, moving to verbal correction as competence and confidence increase. Mark this one yourself.",
       },
+      {
+        question: "A coach giving a demonstration of a skill is using which type of guidance?",
+        choices: [
+          "Verbal guidance",
+          "Visual guidance",
+          "Manual guidance",
+          "Mechanical guidance",
+        ],
+        accept: [
+          "Visual guidance",
+        ],
+        answer: "A demonstration is something the performer watches, so it is visual guidance. Verbal guidance is spoken explanation instead.",
+      },
+      {
+        question: "Which type of guidance can overload a beginner if too much is given at once?",
+        choices: [
+          "Manual guidance",
+          "Mechanical guidance",
+          "Visual guidance",
+          "Verbal guidance",
+        ],
+        accept: [
+          "Verbal guidance",
+        ],
+        answer: "Long spoken instructions can give a beginner too much information to remember, so verbal guidance should be short and simple, often with a demonstration.",
+      },
+      {
+        question: "Which type of feedback tells a performer about the quality of their technique?",
+        choices: [
+          "KR (results)",
+          "KP (performance)",
+          "Positive feedback",
+          "Negative feedback",
+        ],
+        accept: [
+          "KP (performance)",
+        ],
+        answer: "Knowledge of performance is about how well the movement was carried out. Knowledge of results only tells the performer the outcome, such as a score.",
+      },
+      {
+        question: "What does positive feedback mainly tell a performer?",
+        choices: [
+          "What went wrong",
+          "What they did well",
+          "Only the final score",
+          "How the move felt",
+        ],
+        accept: [
+          "What they did well",
+        ],
+        answer: "Positive feedback praises what was done correctly, which builds confidence and suits beginners. Negative feedback points out what went wrong.",
+      },
+      {
+        question: "Feedback from an outside source, such as a coach or a video, is known as what?",
+        choices: [
+          "Intrinsic",
+          "Kinaesthetic",
+          "Extrinsic",
+          "Mechanical",
+        ],
+        accept: [
+          "Extrinsic",
+        ],
+        answer: "Extrinsic feedback comes from outside the performer. Intrinsic feedback, including the kinaesthetic feel of a movement, comes from within.",
+      },
     ],
     misconceptions: [
       {
@@ -5152,6 +6192,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A full answer should explain that a penalty is a fine skill needing precise, controlled technique and therefore lower optimum arousal, while a tackle is a gross skill relying on power and speed and therefore benefits from higher optimum arousal, even within the same match. Mark this one yourself.",
       },
+      {
+        question: "According to the inverted-U theory, at what level of arousal is performance best?",
+        choices: [
+          "Very low arousal",
+          "Moderate arousal",
+          "Very high arousal",
+          "No arousal",
+        ],
+        accept: [
+          "Moderate arousal",
+        ],
+        answer: "Performance peaks at a moderate, optimum level of arousal. Too little leaves the performer flat; too much causes tension and mistakes.",
+      },
+      {
+        question: "Which of these skills needs the lowest level of arousal?",
+        choices: [
+          "A rugby tackle",
+          "A golf putt",
+          "A shot put throw",
+          "A 100 m sprint",
+        ],
+        accept: [
+          "A golf putt",
+        ],
+        answer: "A golf putt is a fine skill needing precise control, so it is best done at low arousal. Tackles, throws and sprints are gross skills suited to higher arousal.",
+      },
+      {
+        question: "Saying 'I can do this' to stay calm before a race is an example of what?",
+        choices: [
+          "Deep breathing",
+          "Visualisation",
+          "Positive self-talk",
+          "Mental rehearsal",
+        ],
+        accept: [
+          "Positive self-talk",
+        ],
+        answer: "Positive self-talk means using encouraging words to build confidence and control anxiety. Visualisation and mental rehearsal involve picturing the skill instead.",
+      },
+      {
+        question: "Which statement best describes arousal?",
+        choices: [
+          "Muscle fatigue",
+          "Pain tolerance",
+          "Low motivation",
+          "A state of readiness",
+        ],
+        accept: [
+          "A state of readiness",
+        ],
+        answer: "Arousal is a state of physical and mental alertness or readiness. It can range from deep sleep to extreme excitement.",
+      },
+      {
+        question: "What is the main aim of stress management techniques before competing?",
+        choices: [
+          "Control arousal",
+          "Build muscle",
+          "Raise heart rate",
+          "Improve flexibility",
+        ],
+        accept: [
+          "Control arousal",
+        ],
+        answer: "Techniques such as deep breathing and visualisation help bring arousal and anxiety back towards the performer's optimum level.",
+      },
     ],
     misconceptions: [
       {
@@ -5433,6 +6538,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Discuss why two performers with identical fitness and skill levels might behave very differently under pressure because of personality.",
         answer:
           "A full answer should discuss how an introvert and an extrovert can respond differently to the same pressured, high-arousal situation, with one becoming overwhelmed and the other thriving, even though their physical ability is the same. Mark this one yourself.",
+      },
+      {
+        question: "Which type of motivation comes from enjoying the activity itself?",
+        choices: [
+          "Extrinsic motivation",
+          "Intrinsic motivation",
+          "Direct motivation",
+          "Indirect motivation",
+        ],
+        accept: [
+          "Intrinsic motivation",
+        ],
+        answer: "Intrinsic motivation comes from inside the performer, such as fun or pride. Extrinsic motivation comes from outside rewards like trophies or money.",
+      },
+      {
+        question: "Which personality type tends to be shy, quiet and thoughtful?",
+        choices: [
+          "Extrovert",
+          "Assertive",
+          "Aggressive",
+          "Introvert",
+        ],
+        accept: [
+          "Introvert",
+        ],
+        answer: "Introverts tend to be shy, quiet and happy alone, so they often prefer individual, fine-skill sports. Extroverts are outgoing and sociable.",
+      },
+      {
+        question: "Indirect aggression is aimed at what?",
+        choices: [
+          "An object",
+          "An opponent",
+          "The referee",
+          "A teammate",
+        ],
+        accept: [
+          "An object",
+        ],
+        answer: "Indirect aggression is taken out on an object, such as hitting a ball extra hard. Direct aggression involves physical contact with another person.",
+      },
+      {
+        question: "Why is intrinsic motivation usually seen as better in the long term?",
+        choices: [
+          "Rewards are bigger",
+          "It needs a coach",
+          "Enjoyment lasts",
+          "It brings trophies",
+        ],
+        accept: [
+          "Enjoyment lasts",
+        ],
+        answer: "Enjoyment from within keeps a performer involved even without rewards. Extrinsic rewards can lose their effect, and motivation may drop when they stop.",
+      },
+      {
+        question: "Praise from a coach after a good performance is an example of which motivation?",
+        choices: [
+          "Intrinsic",
+          "Assertive",
+          "Extrinsic",
+          "Indirect",
+        ],
+        accept: [
+          "Extrinsic",
+        ],
+        answer: "Praise comes from someone else, so it is extrinsic even though it is not a physical prize. Intrinsic motivation would be the performer's own enjoyment.",
       },
     ],
     misconceptions: [
@@ -5734,6 +6904,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Describe two different strategies a local sports centre could use to increase participation among disabled people.",
         answer:
           "A full answer should describe two distinct approaches, such as installing accessible changing facilities and ramps, and separately training staff to run adapted or disability-specific sessions, showing that physical and human factors both matter. Mark this one yourself.",
+      },
+      {
+        question: "Which term describes the facilities and activities available in an area?",
+        choices: [
+          "Familiarity",
+          "Leisure time",
+          "Accessibility",
+          "Provision",
+        ],
+        accept: [
+          "Provision",
+        ],
+        answer: "Provision is what is on offer locally, such as pools, clubs and sessions. Accessibility is how easily a person can reach and afford them.",
+      },
+      {
+        question: "Which term means free time when a person is not working, studying or doing chores?",
+        choices: [
+          "Leisure time",
+          "Provision",
+          "Familiarity",
+          "Accessibility",
+        ],
+        accept: [
+          "Leisure time",
+        ],
+        answer: "Leisure time is free time a person can choose to spend on sport. Work, study and family commitments often reduce it and so reduce participation.",
+      },
+      {
+        question: "Which term groups people by factors such as income, job and education?",
+        choices: [
+          "Peer group",
+          "Age group",
+          "Socio-economic group",
+          "Ethnic group",
+        ],
+        accept: [
+          "Socio-economic group",
+        ],
+        answer: "A socio-economic group is based on income, occupation and education. Lower-income groups may struggle with the cost of kit, travel and membership.",
+      },
+      {
+        question: "Friends of a similar age who influence a teenager's choice of sport are known as what?",
+        choices: [
+          "Role models",
+          "Peers",
+          "Family",
+          "Sponsors",
+        ],
+        accept: [
+          "Peers",
+        ],
+        answer: "Peers are people of a similar age, such as friends. A teenager may join or quit a sport depending on what their peers do; role models are admired figures.",
+      },
+      {
+        question: "Adding a bus route to a leisure centre mainly improves which factor?",
+        choices: [
+          "Familiarity",
+          "Accessibility",
+          "Stereotyping",
+          "Leisure time",
+        ],
+        accept: [
+          "Accessibility",
+        ],
+        answer: "Accessibility includes how easily people can get to a facility. Better transport links make it easier to reach, especially for people without a car.",
       },
     ],
     misconceptions: [
@@ -6038,6 +7273,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A balanced evaluation weighs benefits such as funding for grassroots facilities, higher performer earnings and wider audience access against drawbacks such as rule changes to suit broadcasters, inflated ticket prices and pressure on performers, before giving a justified overall judgement. Mark this one yourself.",
       },
+      {
+        question: "Which type of TV shows sport free to air, without a subscription?",
+        choices: [
+          "Premium sports channel",
+          "Terrestrial TV",
+          "Pay-per-view",
+          "Subscription TV",
+        ],
+        accept: [
+          "Terrestrial TV",
+        ],
+        answer: "Terrestrial channels are free to air, so sport shown on them reaches a wide audience. Premium, subscription and pay-per-view channels all charge.",
+      },
+      {
+        question: "Paying a one-off fee to watch a single event, such as a boxing match, is called what?",
+        choices: [
+          "Terrestrial",
+          "Subscription",
+          "Pay-per-view",
+          "Sponsorship",
+        ],
+        accept: [
+          "Pay-per-view",
+        ],
+        answer: "Pay-per-view charges for one specific event. A subscription is a regular payment for a channel, and terrestrial television is free to watch.",
+      },
+      {
+        question: "Which term describes managing sport mainly to make a profit?",
+        choices: [
+          "Commercialisation",
+          "Gamesmanship",
+          "Segregation",
+          "Provision",
+        ],
+        accept: [
+          "Commercialisation",
+        ],
+        answer: "Commercialisation means treating sport as a business to make money, mainly through sponsorship and the media, which with sport make up the golden triangle.",
+      },
+      {
+        question: "Which term describes a performer being tied to a sponsor's demands by a contract?",
+        choices: [
+          "Golden triangle",
+          "Golden handcuffs",
+          "Gamesmanship",
+          "Fair play",
+        ],
+        accept: [
+          "Golden handcuffs",
+        ],
+        answer: "Golden handcuffs means a well-paid deal that restricts the performer, for example making them use certain kit or attend events. The golden triangle is a different idea.",
+      },
+      {
+        question: "Which technology tracks the path of the ball to judge line calls in tennis?",
+        choices: [
+          "VAR",
+          "TMO",
+          "Hawk-Eye",
+          "Photo finish",
+        ],
+        accept: [
+          "Hawk-Eye",
+        ],
+        answer: "Hawk-Eye uses cameras to track the ball and show whether it landed in or out. VAR and the TMO are video referees used in football and rugby.",
+      },
     ],
     misconceptions: [
       {
@@ -6331,6 +7631,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Evaluate how effectively sports discourage cheating and gamesmanship.",
         answer:
           "A balanced evaluation considers methods such as drug testing, bans, fines and video technology, weighing their success against continued examples of rule-bending, before reaching a justified conclusion about how effective these measures really are. Mark this one yourself.",
+      },
+      {
+        question: "What is deviance in sport?",
+        choices: [
+          "Acting against norms",
+          "Polite behaviour",
+          "Playing fairly",
+          "Following the rules",
+        ],
+        accept: [
+          "Acting against norms",
+        ],
+        answer: "Deviance is behaviour that goes against the accepted moral norms or rules of sport, such as doping or violence. The other options describe acceptable conduct.",
+      },
+      {
+        question: "Kicking the ball out of play so an injured opponent can be treated is an example of what?",
+        choices: [
+          "Gamesmanship",
+          "Etiquette",
+          "Cheating",
+          "Deviance",
+        ],
+        accept: [
+          "Etiquette",
+        ],
+        answer: "Etiquette is the unwritten code of polite behaviour in a sport. No rule forces a team to kick the ball out, but it is expected out of respect.",
+      },
+      {
+        question: "Which of these is an example of gamesmanship?",
+        choices: [
+          "Shaking hands",
+          "Taking a banned drug",
+          "Sledging a batter",
+          "Clapping opponents",
+        ],
+        accept: [
+          "Sledging a batter",
+        ],
+        answer: "Sledging uses insults or comments to put a batter off, gaining an edge without breaking the written rules. Taking a banned drug breaks the rules, so it is cheating.",
+      },
+      {
+        question: "Which term describes playing fairly and showing respect for opponents and officials?",
+        choices: [
+          "Gamesmanship",
+          "Deviance",
+          "Cheating",
+          "Sportsmanship",
+        ],
+        accept: [
+          "Sportsmanship",
+        ],
+        answer: "Sportsmanship means fair, generous and respectful conduct. Gamesmanship is the opposite attitude: bending the rules to gain an advantage.",
+      },
+      {
+        question: "Gamesmanship is best described as what?",
+        choices: [
+          "Breaking the rules",
+          "Bending the rules",
+          "Following etiquette",
+          "Respecting opponents",
+        ],
+        accept: [
+          "Bending the rules",
+        ],
+        answer: "Gamesmanship bends the rules to gain an edge, such as time-wasting, without actually breaking them. Breaking the written rules is cheating.",
       },
     ],
     misconceptions: [
@@ -6629,6 +7994,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A balanced evaluation weighs pressures such as the desire to win, financial reward and fame against the serious health risks described for each drug category, before concluding whether the pressures help explain, though never excuse, why doping still happens in sport. Mark this one yourself.",
       },
+      {
+        question: "As well as quick weight loss, diuretics can be misused to do what?",
+        choices: [
+          "Build muscle",
+          "Mask other drugs",
+          "Steady the hands",
+          "Boost alertness",
+        ],
+        accept: [
+          "Mask other drugs",
+        ],
+        answer: "Diuretics increase urine output, which dilutes the urine and can hide traces of other banned drugs. Beta blockers are the drugs that steady the hands.",
+      },
+      {
+        question: "What does EPO stand for?",
+        choices: [
+          "Ephedrine",
+          "Erythropoietin",
+          "Epinephrine",
+          "Endorphin",
+        ],
+        accept: [
+          "Erythropoietin",
+        ],
+        answer: "EPO is erythropoietin, a peptide hormone that increases red blood cell production, so more oxygen reaches the muscles of endurance athletes.",
+      },
+      {
+        question: "Which side effect is linked to beta blockers?",
+        choices: [
+          "Liver damage",
+          "Increased aggression",
+          "Low blood pressure",
+          "Insomnia",
+        ],
+        accept: [
+          "Low blood pressure",
+        ],
+        answer: "Beta blockers slow the heart and lower blood pressure, which can cause tiredness. Liver damage and aggression are linked to anabolic agents.",
+      },
+      {
+        question: "Which side effect is most linked to stimulants?",
+        choices: [
+          "Insomnia",
+          "Slow heart rate",
+          "Dehydration",
+          "Low alertness",
+        ],
+        accept: [
+          "Insomnia",
+        ],
+        answer: "Stimulants speed up the nervous system, which can stop the user sleeping and raise heart rate. Dehydration is the classic side effect of diuretics.",
+      },
+      {
+        question: "What is doping in sport?",
+        choices: [
+          "Training at altitude",
+          "Taking vitamins",
+          "Carbo-loading",
+          "Using banned drugs",
+        ],
+        accept: [
+          "Using banned drugs",
+        ],
+        answer: "Doping means using banned drugs or methods to improve performance. Altitude training, vitamins and carbo-loading are all legal ways to prepare.",
+      },
     ],
     misconceptions: [
       {
@@ -6917,6 +8347,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Describe both the positive and negative effects that spectators can have on a sporting event.",
         answer:
           "A complete answer covers positives such as atmosphere, home field advantage and revenue, alongside negatives such as increased pressure on performers, crowd trouble, safety concerns and the cost of policing, showing that spectators affect sport in more than one direction. Mark this one yourself.",
+      },
+      {
+        question: "Which term describes the noise and excitement created by a crowd?",
+        choices: [
+          "Atmosphere",
+          "Hooliganism",
+          "Segregation",
+          "Arousal",
+        ],
+        accept: [
+          "Atmosphere",
+        ],
+        answer: "Atmosphere is the buzz a crowd creates, which makes events exciting and can lift performers. Arousal is the performer's own level of alertness.",
+      },
+      {
+        question: "Fans fighting to prove how tough they are is linked to which cause of hooliganism?",
+        choices: [
+          "Home advantage",
+          "Showing masculinity",
+          "Early kick-offs",
+          "All-seater stadia",
+        ],
+        accept: [
+          "Showing masculinity",
+        ],
+        answer: "Displays of masculinity, where some fans try to prove their toughness, are a recognised cause of hooliganism. Early kick-offs and all-seater stadia help prevent it.",
+      },
+      {
+        question: "Besides players, which group can be pressured by a loud home crowd into decisions?",
+        choices: [
+          "Sponsors",
+          "Groundstaff",
+          "Officials",
+          "Commentators",
+        ],
+        accept: [
+          "Officials",
+        ],
+        answer: "Referees and other officials can be swayed by crowd noise into giving decisions to the home team, which adds to home field advantage.",
+      },
+      {
+        question: "Which method helps police identify troublemakers inside a stadium?",
+        choices: [
+          "Segregation",
+          "Banning orders",
+          "CCTV cameras",
+          "Early kick-offs",
+        ],
+        accept: [
+          "CCTV cameras",
+        ],
+        answer: "CCTV lets police watch the crowd and spot or record anyone causing trouble. Banning orders are given afterwards; they do not identify people.",
+      },
+      {
+        question: "Long-standing rivalry between two clubs is a recognised cause of which problem?",
+        choices: [
+          "Low attendance",
+          "Poor officiating",
+          "Hooliganism",
+          "Home advantage",
+        ],
+        accept: [
+          "Hooliganism",
+        ],
+        answer: "Intense rivalry, sometimes linked to local or historic tension, can spill over into violence between fans, which is why derby matches are often high-risk.",
       },
     ],
     misconceptions: [
@@ -7215,6 +8710,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "Ligaments join bone to bone and limit how far a joint can travel. The knee is a hinge, built for flexion and extension rather than twisting, so a twisting force pushes it beyond its normal range and the ligaments — which are resisting that movement — are the structures placed under most strain. (Mark this one yourself.)",
       },
+      {
+        question: "The skeleton storing calcium and phosphorus is which of its functions?",
+        choices: [
+          "Protection",
+          "Mineral storage",
+          "Support",
+          "Blood cell production",
+        ],
+        accept: [
+          "Mineral storage",
+        ],
+        answer: "Bones act as a store of minerals such as calcium and phosphorus, releasing them when the body needs them. Blood cell production happens in the bone marrow instead.",
+      },
+      {
+        question: "Which bone is the shin bone at the front of the lower leg?",
+        choices: [
+          "Fibula",
+          "Femur",
+          "Tibia",
+          "Patella",
+        ],
+        accept: [
+          "Tibia",
+        ],
+        answer: "The tibia is the large shin bone. The fibula is the thinner bone on the outer side of the lower leg, and the femur is the thigh bone.",
+      },
+      {
+        question: "Which movement brings a limb back towards the midline of the body?",
+        choices: [
+          "Abduction",
+          "Extension",
+          "Rotation",
+          "Adduction",
+        ],
+        accept: [
+          "Adduction",
+        ],
+        answer: "Adduction moves a limb towards the midline (think 'add' it back to the body). Abduction is the opposite, taking the limb away from the midline.",
+      },
+      {
+        question: "What is the main job of cartilage at a joint?",
+        choices: [
+          "Joins bone to bone",
+          "Cushions the bone ends",
+          "Joins muscle to bone",
+          "Makes synovial fluid",
+        ],
+        accept: [
+          "Cushions the bone ends",
+        ],
+        answer: "Cartilage covers the ends of bones to cushion them and stop them rubbing. Ligaments join bone to bone and the synovial membrane makes synovial fluid.",
+      },
+      {
+        question: "Which bone is the flat breastbone in the middle of the chest?",
+        choices: [
+          "Sternum",
+          "Scapula",
+          "Clavicle",
+          "Pelvis",
+        ],
+        accept: [
+          "Sternum",
+        ],
+        answer: "The sternum is the breastbone, which joins the ribs at the front to protect the heart and lungs. The scapula is the shoulder blade and the clavicle the collarbone.",
+      },
     ],
     misconceptions: [
       {
@@ -7510,6 +9070,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         answer:
           "A marathon runner relies on Type I slow twitch fibres, which contract slowly, work aerobically and resist fatigue over a long duration. A weightlifter relies on Type IIx fast twitch fibres, which contract quickly and generate high force for a very short time, with fatigue being irrelevant over a single lift. (Mark this one yourself.)",
       },
+      {
+        question: "Which muscle lifts the toes towards the shin, causing dorsiflexion?",
+        choices: [
+          "Gastrocnemius",
+          "Tibialis anterior",
+          "Hamstrings",
+          "Quadriceps",
+        ],
+        accept: [
+          "Tibialis anterior",
+        ],
+        answer: "The tibialis anterior, on the front of the shin, causes dorsiflexion. The gastrocnemius is its antagonist and points the toes in plantar flexion.",
+      },
+      {
+        question: "Slow twitch (Type I) fibres are best suited to which event?",
+        choices: [
+          "Shot put",
+          "100 m sprint",
+          "Marathon",
+          "High jump",
+        ],
+        accept: [
+          "Marathon",
+        ],
+        answer: "Slow twitch fibres use oxygen and resist fatigue, so they suit long endurance events like a marathon. The other events are short and explosive, relying on fast twitch fibres.",
+      },
+      {
+        question: "Which muscle covers the shoulder and raises the arm out to the side?",
+        choices: [
+          "Pectorals",
+          "Latissimus dorsi",
+          "Rotator cuffs",
+          "Deltoid",
+        ],
+        accept: [
+          "Deltoid",
+        ],
+        answer: "The deltoid sits over the shoulder and abducts the arm. The latissimus dorsi pulls the arm down and back, and the rotator cuffs rotate the shoulder.",
+      },
+      {
+        question: "In an antagonistic pair, what does the antagonist muscle do?",
+        choices: [
+          "Relaxes and lengthens",
+          "Shortens to pull",
+          "Joins muscle to bone",
+          "Stays fully tensed",
+        ],
+        accept: [
+          "Relaxes and lengthens",
+        ],
+        answer: "The antagonist relaxes and lengthens to allow the movement. The agonist is the one that shortens to pull, and tendons are what join muscle to bone.",
+      },
+      {
+        question: "Which muscle group extends the hip to drive a sprinter forward?",
+        choices: [
+          "Hip flexors",
+          "Gluteals",
+          "Abdominals",
+          "Quadriceps",
+        ],
+        accept: [
+          "Gluteals",
+        ],
+        answer: "The gluteals in the buttocks extend the hip, pushing the leg back. The hip flexors do the opposite, lifting the knee forward and up.",
+      },
     ],
     misconceptions: [
       {
@@ -7802,6 +9427,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Describe how you would work out which plane a movement takes place in.",
         answer:
           "Look at the direction the body is travelling rather than the sport. Forwards or backwards means the sagittal plane; sideways means the frontal plane; turning about the long axis of the body means the transverse plane. Then name the matching axis, since the two are always assessed together. (Mark this one yourself.)",
+      },
+      {
+        question: "Nodding the head to head a football uses which class of lever at the neck?",
+        choices: [
+          "Second class",
+          "First class",
+          "Third class",
+          "It is not a lever",
+        ],
+        accept: [
+          "First class",
+        ],
+        answer: "Nodding is a first class lever: the fulcrum (neck joint) sits between the effort from the neck muscles and the load, the weight of the head.",
+      },
+      {
+        question: "A discus thrower spinning in the circle turns about which axis?",
+        choices: [
+          "Sagittal axis",
+          "Frontal axis",
+          "Diagonal axis",
+          "Vertical axis",
+        ],
+        accept: [
+          "Vertical axis",
+        ],
+        answer: "A spin turns about the vertical (longitudinal) axis, which runs from head to toe, in the transverse plane. The other two axes are frontal and sagittal.",
+      },
+      {
+        question: "Which plane divides the body into left and right halves?",
+        choices: [
+          "Frontal plane",
+          "Sagittal plane",
+          "Transverse plane",
+          "Vertical plane",
+        ],
+        accept: [
+          "Sagittal plane",
+        ],
+        answer: "The sagittal plane splits the body into left and right, so forward and backward movements happen in it. The frontal plane splits front from back.",
+      },
+      {
+        question: "What is the main advantage of a third class lever?",
+        choices: [
+          "Lifting heavy loads",
+          "Speed and range",
+          "Using little effort",
+          "Joint stability",
+        ],
+        accept: [
+          "Speed and range",
+        ],
+        answer: "Third class levers have a low mechanical advantage but move the load quickly through a wide range. Moving heavy loads with little effort is what second class levers do.",
+      },
+      {
+        question: "In the body's lever systems, what provides the effort?",
+        choices: [
+          "Bones",
+          "Joints",
+          "Muscles",
+          "Ligaments",
+        ],
+        accept: [
+          "Muscles",
+        ],
+        answer: "Muscles pulling on bones provide the effort. The bones act as the lever arms and the joints are the fulcrums.",
       },
     ],
     misconceptions: [
@@ -8115,6 +9805,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Describe two long-term effects of aerobic training on the cardiovascular system.",
         answer:
           "Cardiac hypertrophy: the heart muscle grows stronger and thicker, increasing stroke volume, which lowers resting heart rate (bradycardia). Capillarisation also occurs — more capillaries develop around the muscles and alveoli, improving oxygen delivery and gas exchange. (Mark this one yourself.)",
+      },
+      {
+        question: "Which vessel carries oxygenated blood from the left ventricle to the body?",
+        choices: [
+          "Vena cava",
+          "Pulmonary artery",
+          "Aorta",
+          "Pulmonary vein",
+        ],
+        accept: [
+          "Aorta",
+        ],
+        answer: "The aorta is the main artery leaving the left ventricle for the body. The pulmonary vein carries oxygenated blood from the lungs back into the heart.",
+      },
+      {
+        question: "Which chamber of the heart receives blood from the vena cava?",
+        choices: [
+          "Right atrium",
+          "Left atrium",
+          "Right ventricle",
+          "Left ventricle",
+        ],
+        accept: [
+          "Right atrium",
+        ],
+        answer: "Deoxygenated blood from the body enters the right atrium via the vena cava. The left atrium receives oxygenated blood from the lungs.",
+      },
+      {
+        question: "What is stroke volume?",
+        choices: [
+          "Beats per minute",
+          "Blood pumped a minute",
+          "Blood pumped per beat",
+          "Air taken per breath",
+        ],
+        accept: [
+          "Blood pumped per beat",
+        ],
+        answer: "Stroke volume is the volume of blood pumped out of the left ventricle in one beat. Blood pumped per minute is cardiac output, and beats per minute is heart rate.",
+      },
+      {
+        question: "What is vasodilation?",
+        choices: [
+          "Narrowing of vessels",
+          "Widening of vessels",
+          "Heart wall thickening",
+          "More capillaries",
+        ],
+        accept: [
+          "Widening of vessels",
+        ],
+        answer: "Vasodilation is the widening of blood vessels, sending more blood to working muscles in exercise. Narrowing is vasoconstriction, which cuts blood flow to areas like the gut.",
+      },
+      {
+        question: "Which part of the blood helps it to clot at a cut?",
+        choices: [
+          "Plasma",
+          "Red blood cells",
+          "Platelets",
+          "White blood cells",
+        ],
+        accept: [
+          "Platelets",
+        ],
+        answer: "Platelets clump together to clot the blood and seal a wound. Red blood cells carry oxygen, white blood cells fight infection and plasma carries everything.",
       },
     ],
     misconceptions: [

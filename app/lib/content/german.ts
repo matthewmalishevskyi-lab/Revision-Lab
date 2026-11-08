@@ -399,6 +399,19 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Sie is the polite 'you' for adults you don't know well or who have authority, like teachers. Family and friends get du.",
       },
+      {
+        question: "Which German word means 'surname'?",
+        choices: [
+          "der Vorname",
+          "der Spitzname",
+          "das Alter",
+          "der Nachname",
+        ],
+        accept: [
+          "der Nachname",
+        ],
+        answer: "Der Nachname (or Familienname) is your surname. Der Vorname is your first name, der Spitzname is a nickname and das Alter is age.",
+      },
     ],
     misconceptions: [
       {
@@ -744,6 +757,19 @@ export const GERMAN: Record<string, TopicContent> = {
           "die Cousine",
         ],
         answer: "Die Cousine is a female cousin (der Cousin is male). Die Nichte is niece, die Tante is aunt and die Enkelin is granddaughter.",
+      },
+      {
+        question: "What does 'der Enkel' mean?",
+        choices: [
+          "the grandson",
+          "the nephew",
+          "the uncle",
+          "the cousin",
+        ],
+        accept: [
+          "the grandson",
+        ],
+        answer: "Der Enkel is a grandson (die Enkelin is a granddaughter). A nephew is der Neffe and a male cousin is der Cousin or der Vetter.",
       },
     ],
     misconceptions: [
@@ -1096,6 +1122,19 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Der Verein is a club or society, as in Ich bin in einem Fußballverein. A coach is der Trainer and a stadium is das Stadion.",
       },
+      {
+        question: "What does 'wandern' mean?",
+        choices: [
+          "to sail",
+          "to hike",
+          "to ski",
+          "to dance",
+        ],
+        accept: [
+          "to hike",
+        ],
+        answer: "Wandern means to hike or go walking in the countryside. Sailing is segeln, skiing is Ski fahren and dancing is tanzen.",
+      },
     ],
     misconceptions: [
       {
@@ -1446,6 +1485,19 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Streng means strict: Mein Lehrer ist sehr streng. Nett is nice and faul is lazy.",
       },
+      {
+        question: "Which school subject is 'die Naturwissenschaften'?",
+        choices: [
+          "sciences",
+          "geography",
+          "religious studies",
+          "PE",
+        ],
+        accept: [
+          "sciences",
+        ],
+        answer: "Die Naturwissenschaften are the sciences, literally 'nature sciences'. Geography is Erdkunde, RE is Religion and PE is Sport.",
+      },
     ],
     misconceptions: [
       {
@@ -1795,6 +1847,19 @@ export const GERMAN: Record<string, TopicContent> = {
           "Usually",
         ],
         answer: "Normalerweise means usually or normally: Normalerweise stehe ich um sieben auf. Sometimes is manchmal and always is immer.",
+      },
+      {
+        question: "What does 'der Keller' mean?",
+        choices: [
+          "the attic",
+          "the cellar",
+          "the garage",
+          "the hallway",
+        ],
+        accept: [
+          "the cellar",
+        ],
+        answer: "Der Keller is the cellar or basement, unten (downstairs). The attic is der Dachboden and the hallway is der Flur.",
       },
     ],
     misconceptions: [
@@ -2150,6 +2215,19 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Dürfen loses its umlaut in the singular: ich darf, du darfst, er darf. Darfst is the du form and dürft is the ihr form.",
       },
+      {
+        question: "Which is the 'er' form of 'nehmen'?",
+        choices: [
+          "nehmt",
+          "nimmst",
+          "nimmt",
+          "nehmet",
+        ],
+        accept: [
+          "nimmt",
+        ],
+        answer: "Nehmen changes e to i and doubles the m: er nimmt. Nimmst is the du form and nehmt is the ihr form.",
+      },
     ],
     misconceptions: [
       {
@@ -2500,6 +2578,19 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Erste means first and links means left, so it's 'Take the first left'. Rechts is right, zweite is second and dritte is third.",
       },
+      {
+        question: "What does 'die Haltestelle' mean?",
+        choices: [
+          "the car park",
+          "the bus stop",
+          "the crossroads",
+          "the station",
+        ],
+        accept: [
+          "the bus stop",
+        ],
+        answer: "Die Haltestelle is a bus or tram stop, from halten (to stop). The station is der Bahnhof and the crossroads is die Kreuzung.",
+      },
     ],
     misconceptions: [
       {
@@ -2849,6 +2940,19 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Übernachten (to stay overnight) is not a verb of movement, so it takes haben: wir haben übernachtet. Sind is the tempting slip; seid and hat are the wrong person.",
       },
+      {
+        question: "What does 'der Flughafen' mean?",
+        choices: [
+          "the plane",
+          "the harbour",
+          "the platform",
+          "the airport",
+        ],
+        accept: [
+          "the airport",
+        ],
+        answer: "Der Flughafen is the airport, literally 'flight harbour'. Das Flugzeug is the plane and der Hafen on its own is a harbour or port.",
+      },
     ],
     misconceptions: [
       {
@@ -3189,6 +3293,19 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Gut bezahlt means well paid (bezahlen = to pay). Schlecht bezahlt is badly paid, gut gelaunt is in a good mood and gut gemacht is well done.",
       },
+      {
+        question: "Which job is 'der Feuerwehrmann'?",
+        choices: [
+          "a police officer",
+          "a firefighter",
+          "a builder",
+          "an electrician",
+        ],
+        accept: [
+          "a firefighter",
+        ],
+        answer: "Der Feuerwehrmann works for die Feuerwehr (fire brigade), so he is a firefighter. A police officer is der Polizist.",
+      },
     ],
     misconceptions: [
       {
@@ -3523,6 +3640,19 @@ export const GERMAN: Record<string, TopicContent> = {
           "Neuter",
         ],
         answer: "It's das Internet, so neuter: im Internet surfen. Many tech words borrowed from English are neuter, like das Handy and das Tablet.",
+      },
+      {
+        question: "What does 'die Nachricht' mean on your phone?",
+        choices: [
+          "a password",
+          "a website",
+          "a message",
+          "a screen",
+        ],
+        accept: [
+          "a message",
+        ],
+        answer: "Die Nachricht is a message; in the plural, die Nachrichten also means the news. A password is das Passwort and a screen is der Bildschirm.",
       },
     ],
     misconceptions: [
@@ -3861,6 +3991,19 @@ export const GERMAN: Record<string, TopicContent> = {
           "wirst",
         ],
         answer: "Werden is irregular: du wirst, er wird. So 'you will see' is du wirst sehen. Wird is the er/sie/es form.",
+      },
+      {
+        question: "What is the past participle of 'trinken'?",
+        choices: [
+          "getrinkt",
+          "getrankt",
+          "gedrunken",
+          "getrunken",
+        ],
+        accept: [
+          "getrunken",
+        ],
+        answer: "Trinken is a strong verb: ich habe getrunken. The vowel changes from i to u and the participle ends in -en, not -t.",
       },
     ],
     misconceptions: [
@@ -4205,6 +4348,19 @@ export const GERMAN: Record<string, TopicContent> = {
           "for three years",
         ],
         answer: "Seit with the present tense means 'for' (and still going): I have been learning German for three years. Vor drei Jahren would be three years ago.",
+      },
+      {
+        question: "What does 'jedoch' mean?",
+        choices: [
+          "however",
+          "therefore",
+          "also",
+          "although",
+        ],
+        accept: [
+          "however",
+        ],
+        answer: "Jedoch means 'however', a formal alternative to aber. Therefore is deshalb, also is auch (außerdem means moreover) and although is obwohl.",
       },
     ],
     misconceptions: [

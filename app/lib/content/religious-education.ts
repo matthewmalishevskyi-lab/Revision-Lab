@@ -269,6 +269,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         answer:
           "For: religion has been used to justify war, persecution, discrimination against women and LGBT people, and resistance to scientific and social progress; religious authority can be used to control people and silence questioning; and division along religious lines has deepened conflicts in many parts of the world. Against: religious organisations run a very large share of the world's charitable and humanitarian work; religious conviction motivated abolitionists, the civil rights movement and much anti-poverty campaigning; religion offers meaning, community and comfort in bereavement that many people find nowhere else; and where harm has been done, critics argue it came from power and human failing using religion, rather than from belief itself. A defensible judgement is that the question is badly posed — religion is not a single thing with a single effect, and the same tradition has produced both slave owners and abolitionists. Whether it helps or harms depends heavily on who holds authority within it and how questioning is treated. Mark this one yourself: both sides argued at full strength, specific examples, and a conclusion that follows from the argument.",
       },
+      {
+        question: "What is the belief in many gods called?",
+        choices: [
+          "Monotheism",
+          "Polytheism",
+          "Pantheism",
+          "Atheism",
+        ],
+        accept: [
+          "Polytheism",
+        ],
+        answer: "'Poly' means many, so polytheism is belief in many gods. Monotheism is belief in one God, and atheism is not believing in any God.",
+      },
+      {
+        question: "What does 'secular' mean?",
+        choices: [
+          "Very religious",
+          "Holy or set apart",
+          "Not religious",
+          "Having many faiths",
+        ],
+        accept: [
+          "Not religious",
+        ],
+        answer: "Secular means not connected with religion, such as a secular school or law. 'Holy or set apart' is what sacred means.",
+      },
+      {
+        question: "What does 'sacred' mean?",
+        choices: [
+          "Set apart as holy",
+          "Not religious",
+          "Very old",
+          "Made by humans",
+        ],
+        accept: [
+          "Set apart as holy",
+        ],
+        answer: "Sacred things, places or texts are treated as holy and set apart for worship or respect. Not religious is the meaning of secular.",
+      },
+      {
+        question: "What is a 'worldview'?",
+        choices: [
+          "A map of the world",
+          "A single belief",
+          "A way of seeing life",
+          "A religious building",
+        ],
+        accept: [
+          "A way of seeing life",
+        ],
+        answer: "A worldview is an overall way of making sense of life and what matters. Religions and non-religious views like Humanism are both worldviews.",
+      },
+      {
+        question: "In the 2021 Census, which religion had the second most followers in England and Wales?",
+        choices: [
+          "Hinduism",
+          "Sikhism",
+          "Judaism",
+          "Islam",
+        ],
+        accept: [
+          "Islam",
+        ],
+        answer: "In the 2021 Census Christianity was the largest religion in England and Wales and Islam the second largest. Hinduism, Sikhism and Judaism are smaller.",
+      },
+      {
+        question: "The word 'theist' comes from the Greek 'theos'. What does 'theos' mean?",
+        choices: [
+          "God",
+          "Belief",
+          "Soul",
+          "Temple",
+        ],
+        accept: [
+          "God",
+        ],
+        answer: "Theos means god, so a theist believes in God and an a-theist is 'without God'. Polytheism and monotheism use the same root.",
+      },
     ],
     misconceptions: [
       {
@@ -529,6 +607,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         answer:
           "For: Christians regard the resurrection as the event that confirms Jesus was the Son of God rather than simply a teacher who was executed; Paul writes that if Christ has not been raised then Christian faith is empty, which is about as direct as scripture gets; and it grounds the hope of life after death that shapes Christian attitudes to death and grief. Against: the Incarnation could be argued as more fundamental, since without God becoming human there is no resurrection to have; some Christians place greater weight on Jesus's teaching and example, particularly Quakers and those in the liberal tradition, and would say how you live matters more than which events you affirm; and belief in the Trinity is arguably prior to both, since it defines who Christians think Jesus is. A defensible judgement is that the resurrection is the belief most Christians would identify as the foundation, and the credal statements support that — but 'most important' depends on whether you mean logically prior, most distinctive, or most influential on daily life, and the answer differs for each. Mark this one yourself: both sides with named traditions or sources, and a conclusion that does more than pick a side.",
       },
+      {
+        question: "What does 'omnibenevolent' mean when Christians describe God?",
+        choices: [
+          "All-powerful",
+          "All-knowing",
+          "All-loving",
+          "Present everywhere",
+        ],
+        accept: [
+          "All-loving",
+        ],
+        answer: "Omnibenevolent means all-loving or perfectly good. All-powerful is omnipotent and all-knowing is omniscient.",
+      },
+      {
+        question: "What is a creed?",
+        choices: [
+          "A type of hymn",
+          "A statement of belief",
+          "A church building",
+          "A book of the Bible",
+        ],
+        accept: [
+          "A statement of belief",
+        ],
+        answer: "A creed, such as the Apostles' Creed or Nicene Creed, sums up what Christians believe. It comes from the Latin 'credo', meaning 'I believe'.",
+      },
+      {
+        question: "What does the word 'Gospel' mean?",
+        choices: [
+          "Holy law",
+          "Good news",
+          "Sacred song",
+          "God's word",
+        ],
+        accept: [
+          "Good news",
+        ],
+        answer: "Gospel means good news: the message about Jesus. The four Gospels are the books of Matthew, Mark, Luke and John.",
+      },
+      {
+        question: "What is another name for Holy Communion?",
+        choices: [
+          "Confirmation",
+          "Pentecost",
+          "Baptism",
+          "The Eucharist",
+        ],
+        accept: [
+          "The Eucharist",
+        ],
+        answer: "Holy Communion is also called the Eucharist, the Mass or the Lord's Supper. Baptism and confirmation are different sacraments.",
+      },
+      {
+        question: "What is the execution of Jesus on a cross called?",
+        choices: [
+          "The Ascension",
+          "The Resurrection",
+          "The Crucifixion",
+          "The Incarnation",
+        ],
+        accept: [
+          "The Crucifixion",
+        ],
+        answer: "The crucifixion is Jesus's death on the cross, remembered on Good Friday. The resurrection is his rising from the dead three days later.",
+      },
+      {
+        question: "What do Christians call being saved from sin and its consequences?",
+        choices: [
+          "Salvation",
+          "Incarnation",
+          "Creation",
+          "Confirmation",
+        ],
+        accept: [
+          "Salvation",
+        ],
+        answer: "Salvation means being saved from sin and brought into a right relationship with God. Christians believe it comes through Jesus.",
+      },
     ],
     misconceptions: [
       {
@@ -784,6 +940,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         answer:
           "For: salah is performed five times every day, so it shapes daily life more than any other pillar; it is the pillar most often mentioned in the Qur'an after belief itself; and Muslims describe it as the direct, regular link between the believer and God, available to everyone regardless of wealth or health. Against: Shahadah could be argued as more fundamental, since a person becomes Muslim by sincerely declaring it and every other pillar depends on that belief; zakah has the greatest effect on other people and so might be judged most important in its consequences; and hajj is described by many Muslims as the most transformative single experience of their lives. It is also worth noting that salah has more exemptions than the declaration of faith, which suggests it is not the foundation. A defensible judgement is that Shahadah is logically first because everything rests on it, while salah is the most important in practice because it is the one that shapes every day — and which counts as 'most important' depends on whether you mean foundational or influential. Mark this one yourself: both sides, at least two pillars compared directly, and a conclusion that explains what 'important' is being taken to mean.",
       },
+      {
+        question: "Which Pillar of Islam is giving a set share of wealth to those in need?",
+        choices: [
+          "Sawm",
+          "Zakah",
+          "Salah",
+          "Hajj",
+        ],
+        accept: [
+          "Zakah",
+        ],
+        answer: "Zakah is compulsory giving to the poor, usually 2.5% of savings each year. Sawm is fasting, salah is prayer and Hajj is pilgrimage.",
+      },
+      {
+        question: "Which Pillar of Islam is fasting?",
+        choices: [
+          "Hajj",
+          "Shahadah",
+          "Zakah",
+          "Sawm",
+        ],
+        accept: [
+          "Sawm",
+        ],
+        answer: "Sawm is fasting from dawn to sunset during Ramadan. Zakah is giving to charity and the Shahadah is the declaration of faith.",
+      },
+      {
+        question: "What is the Sunnah?",
+        choices: [
+          "Muhammad's example",
+          "A holy city",
+          "The Day of Judgement",
+          "A prayer mat",
+        ],
+        accept: [
+          "Muhammad's example",
+        ],
+        answer: "The Sunnah is the teaching and way of life of Muhammad, which Muslims follow. It is recorded in the hadith and is second in authority to the Qur'an.",
+      },
+      {
+        question: "What is the person who leads prayers in a mosque called?",
+        choices: [
+          "Rabbi",
+          "Caliph",
+          "Imam",
+          "Granthi",
+        ],
+        accept: [
+          "Imam",
+        ],
+        answer: "An imam leads prayers and often teaches in a mosque. A rabbi is a Jewish teacher and a granthi reads the Sikh scripture.",
+      },
+      {
+        question: "In which city is the Ka'bah, the cube-shaped shrine Muslims face in prayer?",
+        choices: [
+          "Madinah",
+          "Makkah",
+          "Jerusalem",
+          "Karbala",
+        ],
+        accept: [
+          "Makkah",
+        ],
+        answer: "The Ka'bah is in Makkah and is the centre of Hajj. Madinah is the city where Muhammad lived later in life and is buried.",
+      },
+      {
+        question: "Which branch of Islam has more followers worldwide?",
+        choices: [
+          "Shi'a",
+          "Sufi",
+          "Sunni",
+          "Ahmadiyya",
+        ],
+        accept: [
+          "Sunni",
+        ],
+        answer: "Most Muslims in the world are Sunni; Shi'a Muslims are a large minority, the majority in countries such as Iran and Iraq.",
+      },
     ],
     misconceptions: [
       {
@@ -1038,6 +1272,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'Keeping the mitzvot is the most important part of being Jewish.' Evaluate this statement.",
         answer:
           "For: Judaism has historically emphasised practice over doctrine, and the 613 mitzvot cover worship, food, ethics and daily conduct, so observance shapes almost every part of life; Orthodox Jews hold the Torah to be the direct word of God, which makes the commandments binding rather than optional; and keeping them is how the covenant is maintained in practice rather than only affirmed. Against: Reform Jews hold the Torah is divinely inspired but shaped by its historical setting, so they adapt observance while regarding themselves as fully Jewish; many Jews describe belonging to the Jewish people, family and history as the heart of their identity, including those who keep few laws; and the prophets themselves criticised ritual practised without justice and compassion, which suggests observance alone was never the point. A defensible judgement is that the answer depends on which movement is being described — and that the disagreement between Orthodox and Reform Judaism is precisely a disagreement about this question, which makes any single answer partial. Mark this one yourself: both movements represented accurately, and a conclusion that recognises the question is itself contested within Judaism.",
+      },
+      {
+        question: "What is the Jewish New Year called?",
+        choices: [
+          "Yom Kippur",
+          "Pesach",
+          "Rosh Hashanah",
+          "Sukkot",
+        ],
+        accept: [
+          "Rosh Hashanah",
+        ],
+        answer: "Rosh Hashanah is the Jewish New Year. The Ten Days of Repentance end with Yom Kippur, the Day of Atonement, while Pesach remembers the escape from Egypt.",
+      },
+      {
+        question: "In Orthodox Judaism, at what age does a girl become Bat Mitzvah?",
+        choices: [
+          "11",
+          "12",
+          "13",
+          "15",
+        ],
+        accept: [
+          "12",
+        ],
+        answer: "In Orthodox Judaism a girl becomes Bat Mitzvah at twelve, a year earlier than a boy's Bar Mitzvah at thirteen. Many Reform communities use thirteen for both.",
+      },
+      {
+        question: "What does the word 'mitzvot' mean?",
+        choices: [
+          "Blessings",
+          "Prayers",
+          "Festivals",
+          "Commandments",
+        ],
+        accept: [
+          "Commandments",
+        ],
+        answer: "Mitzvot means commandments, the laws Jews believe God gave in the Torah. Bar Mitzvah means 'son of the commandment'.",
+      },
+      {
+        question: "When does Shabbat begin each week?",
+        choices: [
+          "Friday at sunset",
+          "Saturday at dawn",
+          "Saturday at sunset",
+          "Sunday morning",
+        ],
+        accept: [
+          "Friday at sunset",
+        ],
+        answer: "Shabbat runs from sunset on Friday to nightfall on Saturday, because Jewish days begin in the evening. It ends at nightfall on Saturday, not at dawn.",
+      },
+      {
+        question: "Which of these meats do Jewish food laws forbid?",
+        choices: [
+          "Beef",
+          "Lamb",
+          "Pork",
+          "Chicken",
+        ],
+        accept: [
+          "Pork",
+        ],
+        answer: "Kosher land animals must chew the cud and have split hooves. Pigs have split hooves but do not chew the cud, so pork is forbidden.",
+      },
+      {
+        question: "Jews believe God gave the Torah at Mount Sinai to which prophet?",
+        choices: [
+          "Abraham",
+          "Moses",
+          "David",
+          "Elijah",
+        ],
+        accept: [
+          "Moses",
+        ],
+        answer: "Jews believe God gave the Torah to Moses at Sinai after the Exodus. Abraham lived earlier and made the first covenant with God.",
       },
     ],
     misconceptions: [
@@ -1299,6 +1611,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         answer:
           "For: all three began in India, all three use the vocabulary of karma, dharma, samsara and rebirth, all three teach that actions have consequences beyond this life, and all three place a high value on non-violence and on release from the cycle of rebirth as a goal. Against: shared words do not mean shared meanings. Hinduism teaches an eternal atman that is reborn; Buddhism explicitly denies any fixed permanent self, which is a direct contradiction rather than a variation. Sikhism is firmly monotheistic and rejects caste, while Buddhism does not centre on a creator God and Hinduism understands one ultimate reality expressed through many deities. Their founders, scriptures, practices and places of worship are entirely distinct, and members of all three would themselves reject the claim. A clear judgement is that the statement is false: the resemblance is real but superficial, and it comes from shared geography and language rather than shared belief. Grouping them as 'Dharmic religions' is useful for study, but a grouping is not an identity. Mark this one yourself: genuine similarities acknowledged, at least two specific doctrinal contradictions, and a firm conclusion.",
       },
+      {
+        question: "In Hinduism, what is the eternal soul or self in each living being called?",
+        choices: [
+          "Brahman",
+          "Atman",
+          "Dharma",
+          "Karma",
+        ],
+        accept: [
+          "Atman",
+        ],
+        answer: "The atman is the eternal self that Hindus believe is reborn. Brahman is the one ultimate reality, which many Hindus believe the atman is part of.",
+      },
+      {
+        question: "What does 'dharma' mean in Hinduism?",
+        choices: [
+          "Cycle of rebirth",
+          "Duty or right living",
+          "Release from rebirth",
+          "Ultimate reality",
+        ],
+        accept: [
+          "Duty or right living",
+        ],
+        answer: "Dharma is duty and the right way to live. The cycle of rebirth is samsara, release from it is moksha and ultimate reality is Brahman.",
+      },
+      {
+        question: "What is the Sikh place of worship called?",
+        choices: [
+          "Mandir",
+          "Vihara",
+          "Gurdwara",
+          "Synagogue",
+        ],
+        accept: [
+          "Gurdwara",
+        ],
+        answer: "A gurdwara, meaning 'door of the Guru', houses the Guru Granth Sahib and a langar. A mandir is a Hindu temple and a vihara is a Buddhist monastery.",
+      },
+      {
+        question: "What is the community of initiated Sikhs called?",
+        choices: [
+          "Sangha",
+          "Khalsa",
+          "Langar",
+          "Ummah",
+        ],
+        accept: [
+          "Khalsa",
+        ],
+        answer: "The Khalsa was founded by Guru Gobind Singh in 1699. The Sangha is the Buddhist community and the Ummah is the Muslim community.",
+      },
+      {
+        question: "How many human Gurus did Sikhism have?",
+        choices: [
+          "5",
+          "7",
+          "10",
+          "12",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "There were ten human Gurus, from Guru Nanak to Guru Gobind Singh. After them, the Guru Granth Sahib became the eternal Guru.",
+      },
+      {
+        question: "What does the first Noble Truth of Buddhism teach?",
+        choices: [
+          "Craving causes pain",
+          "Suffering exists",
+          "Suffering can end",
+          "The Path ends pain",
+        ],
+        accept: [
+          "Suffering exists",
+        ],
+        answer: "The first Noble Truth is dukkha: life involves suffering. The second says craving causes it, the third that it can end, the fourth that the Path ends it.",
+      },
     ],
     misconceptions: [
       {
@@ -1532,6 +1922,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       {
         question: "'Everyone should follow the ethical theory that best fits their own life.' Evaluate this statement, giving arguments for and against.",
         answer: "For: situation ethics and relativism both recognise that a single rigid rule can produce clearly wrong outcomes in unusual circumstances, and different people's circumstances genuinely differ; respecting personal judgement also avoids imposing one culture's morality on everyone. Against: absolutists argue that some acts — murder, torturing the innocent — are wrong regardless of circumstance, and a morality that bends completely to the individual risks excusing serious harm; religious believers following natural law or scriptural authority hold that moral truth comes from God and is not simply chosen; and pure relativism struggles to explain why anyone could ever criticise another culture's practices, even ones most people find abhorrent. A middle position, taken by many ethicists, combines some fixed absolute limits with room for situational judgement elsewhere. Mark this one yourself: clear points for and against, correctly attributed to a theory or tradition, with a conclusion is the full answer.",
+      },
+      {
+        question: "Which ethical theory focuses on developing good character traits?",
+        choices: [
+          "Utilitarianism",
+          "Natural law",
+          "Virtue ethics",
+          "Situation ethics",
+        ],
+        accept: [
+          "Virtue ethics",
+        ],
+        answer: "Virtue ethics asks what a good person would do, focusing on qualities like honesty and courage. Utilitarianism judges acts only by their outcomes.",
+      },
+      {
+        question: "Which thinker is most closely linked with natural law?",
+        choices: [
+          "Joseph Fletcher",
+          "Thomas Aquinas",
+          "John Hick",
+          "Jeremy Bentham",
+        ],
+        accept: [
+          "Thomas Aquinas",
+        ],
+        answer: "Aquinas developed natural law: acting in line with the purposes God built into human nature. Fletcher is linked with situation ethics, Bentham with utilitarianism.",
+      },
+      {
+        question: "What is the conscience?",
+        choices: [
+          "A rule from scripture",
+          "Inner sense of right",
+          "A law of the land",
+          "Fear of punishment",
+        ],
+        accept: [
+          "Inner sense of right",
+        ],
+        answer: "Conscience is an inner sense of right and wrong. Some religious believers see it as the voice of God; others see it as shaped by upbringing.",
+      },
+      {
+        question: "Which theory says agape (selfless love) is the only absolute rule?",
+        choices: [
+          "Natural law",
+          "Virtue ethics",
+          "Utilitarianism",
+          "Situation ethics",
+        ],
+        accept: [
+          "Situation ethics",
+        ],
+        answer: "Joseph Fletcher's situation ethics says do the most loving thing in each situation. Natural law, by contrast, has fixed rules from human nature.",
+      },
+      {
+        question: "Which of these is an example of natural evil?",
+        choices: [
+          "A murder",
+          "An earthquake",
+          "A theft",
+          "A war",
+        ],
+        accept: [
+          "An earthquake",
+        ],
+        answer: "Natural evil is suffering not caused by human choices, like earthquakes and disease. Murder, theft and war are moral evil, caused by people.",
+      },
+      {
+        question: "What is a theodicy?",
+        choices: [
+          "A proof God exists",
+          "A study of the soul",
+          "A defence of God",
+          "A list of moral rules",
+        ],
+        accept: [
+          "A defence of God",
+        ],
+        answer: "A theodicy defends God's goodness and power given that evil exists, such as Hick's soul-making theodicy. It does not try to prove God exists.",
       },
     ],
     misconceptions: [
@@ -1774,6 +2242,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'Christians cannot agree on how someone is saved, so their beliefs about salvation are worthless.' Evaluate this statement, giving arguments for and against.",
         answer: "For: the sola fide and faith-plus-works positions genuinely differ, and someone might argue that a core belief this important should not be so unsettled after two thousand years, or that the disagreement shows the doctrine was never clearly revealed in the first place. Against: both Catholic and Protestant traditions agree on far more than they disagree about — that salvation comes through Jesus, is rooted in God's grace, and should be reflected in a changed life — so the dispute is over emphasis and mechanism, not over whether salvation is real or how it is fundamentally achieved; disagreement on secondary detail is also common in fields that are not thereby worthless, including science and law; and many Christians would argue that living faithfully matters more in daily life than resolving the precise theological mechanism. A reasonable conclusion is that shared core belief, not disagreement on detail, is the more significant fact here. Mark this one yourself: developed points on both sides and a conclusion that follows from them is the full answer.",
       },
+      {
+        question: "What does 'transcendent' mean when Christians describe God?",
+        choices: [
+          "Present in the world",
+          "Beyond the universe",
+          "All-loving",
+          "All-knowing",
+        ],
+        accept: [
+          "Beyond the universe",
+        ],
+        answer: "Transcendent means God is beyond and outside space and time. Present in the world is immanent; Christians believe God is both.",
+      },
+      {
+        question: "What does 'stewardship' mean in Christian belief?",
+        choices: [
+          "Leading a church",
+          "Spreading the faith",
+          "Caring for creation",
+          "Giving up food",
+        ],
+        accept: [
+          "Caring for creation",
+        ],
+        answer: "Stewardship is the duty to look after God's creation responsibly, from Genesis. Spreading the faith is evangelism.",
+      },
+      {
+        question: "In Genesis 1, on which day does God rest after creating the world?",
+        choices: [
+          "The first",
+          "The third",
+          "The sixth",
+          "The seventh",
+        ],
+        accept: [
+          "The seventh",
+        ],
+        answer: "God creates over six days, making humans on the sixth, and rests on the seventh. This is the basis of a weekly day of rest.",
+      },
+      {
+        question: "What do Christians call eternal separation from God after death?",
+        choices: [
+          "Heaven",
+          "Purgatory",
+          "Hell",
+          "Limbo",
+        ],
+        accept: [
+          "Hell",
+        ],
+        answer: "Hell is eternal separation from God. Purgatory, in Catholic teaching, is a temporary state of purification before heaven.",
+      },
+      {
+        question: "In Genesis, in which garden were Adam and Eve placed?",
+        choices: [
+          "Gethsemane",
+          "Eden",
+          "Babylon",
+          "Canaan",
+        ],
+        accept: [
+          "Eden",
+        ],
+        answer: "Adam and Eve lived in the Garden of Eden until they disobeyed God. Gethsemane is the garden where Jesus prayed before his arrest.",
+      },
+      {
+        question: "What do Christians mean by the Last Judgement?",
+        choices: [
+          "Jesus's final meal",
+          "God judging everyone",
+          "The end of Lent",
+          "A Pope's ruling",
+        ],
+        accept: [
+          "God judging everyone",
+        ],
+        answer: "Christians believe that at the end of time God, through Jesus, will judge all people. Jesus's final meal with his disciples is the Last Supper.",
+      },
     ],
     misconceptions: [
       {
@@ -2009,6 +2555,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       {
         question: "'Churches should focus only on preaching, not practical action.' Evaluate this statement, giving arguments for and against.",
         answer: "For: some Christians argue the church's central task is spiritual — proclaiming the Gospel and calling people to faith — and that focusing resources on social projects can dilute that core mission or blur the distinction between the church and a secular charity. Against: Jesus's own teaching, including the parable of the sheep and the goats, links caring for 'the least of these' directly to caring for him, which many Christians read as making practical action part of the Gospel itself rather than separate from it; food banks, Street Pastors and aid agencies are widely seen as effective, credible witness that words alone cannot provide; and most major denominations officially hold that authentic mission requires both proclamation and action together. A reasonable conclusion is that most mainstream Christian teaching rejects the sharp either/or in the statement, treating word and action as complementary rather than competing. Mark this one yourself: developed points on both sides and a conclusion is the full answer.",
+      },
+      {
+        question: "Which period of the Christian year begins on Palm Sunday?",
+        choices: [
+          "Advent",
+          "Lent",
+          "Holy Week",
+          "Epiphany",
+        ],
+        accept: [
+          "Holy Week",
+        ],
+        answer: "Holy Week runs from Palm Sunday to Easter, remembering Jesus's last days. Lent begins earlier, on Ash Wednesday.",
+      },
+      {
+        question: "On which day does Lent begin?",
+        choices: [
+          "Ash Wednesday",
+          "Palm Sunday",
+          "Shrove Tuesday",
+          "Good Friday",
+        ],
+        accept: [
+          "Ash Wednesday",
+        ],
+        answer: "Lent begins on Ash Wednesday. Shrove Tuesday, or Pancake Day, is the day before, when rich foods were traditionally used up.",
+      },
+      {
+        question: "Which day remembers the crucifixion of Jesus?",
+        choices: [
+          "Maundy Thursday",
+          "Palm Sunday",
+          "Easter Sunday",
+          "Good Friday",
+        ],
+        accept: [
+          "Good Friday",
+        ],
+        answer: "Good Friday remembers Jesus's death. Maundy Thursday remembers the Last Supper and Easter Sunday celebrates the resurrection.",
+      },
+      {
+        question: "What is non-liturgical worship?",
+        choices: [
+          "Follows a set order",
+          "No fixed order",
+          "Only in Latin",
+          "Led by a bishop",
+        ],
+        accept: [
+          "No fixed order",
+        ],
+        answer: "Non-liturgical worship has no set order of service and may be informal or spontaneous. Liturgical worship follows a set order, as in the Catholic Mass.",
+      },
+      {
+        question: "Which tradition is most linked with speaking in tongues?",
+        choices: [
+          "Quaker",
+          "Pentecostal",
+          "Catholic",
+          "Orthodox",
+        ],
+        accept: [
+          "Pentecostal",
+        ],
+        answer: "Pentecostal worship is lively and charismatic, with speaking in tongues seen as a gift of the Holy Spirit. Quaker worship is mostly silent.",
+      },
+      {
+        question: "Which denomination is best known for practising only believer's baptism?",
+        choices: [
+          "Catholics",
+          "Anglicans",
+          "Orthodox",
+          "Baptists",
+        ],
+        accept: [
+          "Baptists",
+        ],
+        answer: "Baptists baptise only those old enough to profess faith, usually by full immersion. Catholics, Anglicans and Orthodox Christians baptise infants.",
       },
     ],
     misconceptions: [
@@ -2246,6 +2870,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'The differences between Sunni and Shi'a Islam are as important as the differences between Islam and Christianity.' Evaluate this statement, giving arguments for and against.",
         answer: "For: the Sunni-Shi'a division has shaped centuries of Islamic history, law and religious practice, including different approaches to religious authority (caliphs versus Imams), and has at times been the source of serious conflict, which might suggest the difference runs deep. Against: Sunni and Shi'a Muslims share tawhid, the Qur'an as revealed scripture, belief in Muhammad as the final prophet, and the Five Pillars — the entire foundation of Islamic faith — whereas Christianity and Islam disagree about far more fundamental questions, including whether Jesus is divine and whether the Qur'an is a valid later revelation; the Sunni-Shi'a difference is best described as a division within one religion over authority and some legal traditions, not over core theology. A defensible conclusion is that treating the two comparisons as equally significant misunderstands what actually divides Sunni from Shi'a Islam. Mark this one yourself: developed points on both sides, correct use of key terms, and a conclusion is the full answer.",
       },
+      {
+        question: "What is Hell called in Islamic belief?",
+        choices: [
+          "Jannah",
+          "Jahannam",
+          "Barzakh",
+          "Akhirah",
+        ],
+        accept: [
+          "Jahannam",
+        ],
+        answer: "Jahannam is Hell. Jannah is Paradise, akhirah is the afterlife as a whole, and barzakh is the waiting state between death and judgement.",
+      },
+      {
+        question: "What does 'uswa hasana' mean when Muslims describe Muhammad?",
+        choices: [
+          "Angel of revelation",
+          "Excellent example",
+          "Night journey",
+          "Final judgement",
+        ],
+        accept: [
+          "Excellent example",
+        ],
+        answer: "Uswa hasana means excellent or beautiful example: Muhammad's life is the model Muslims try to follow. That example is recorded as the Sunnah.",
+      },
+      {
+        question: "Which holy book do Muslims believe was revealed to Musa (Moses)?",
+        choices: [
+          "Injil",
+          "Zabur",
+          "Tawrat",
+          "Qur'an",
+        ],
+        accept: [
+          "Tawrat",
+        ],
+        answer: "The Tawrat (Torah) was given to Musa, the Zabur (Psalms) to Dawud and the Injil (Gospel) to Isa. The Qur'an was revealed to Muhammad.",
+      },
+      {
+        question: "Who do Shi'a Muslims believe should have led the community after Muhammad?",
+        choices: [
+          "Abu Bakr",
+          "Umar",
+          "Uthman",
+          "Ali",
+        ],
+        accept: [
+          "Ali",
+        ],
+        answer: "Shi'a Muslims believe Ali, Muhammad's cousin and son-in-law, was the rightful leader. Sunni Muslims accept Abu Bakr as the first caliph.",
+      },
+      {
+        question: "Which angel do Muslims believe brings rain and nourishment to the earth?",
+        choices: [
+          "Jibril",
+          "Mika'il",
+          "Israfil",
+          "Izra'il",
+        ],
+        accept: [
+          "Mika'il",
+        ],
+        answer: "Mika'il is the angel of mercy who brings rain and nourishment. Jibril is the angel who brought the Qur'an to Muhammad.",
+      },
+      {
+        question: "In Shi'a Islam, what are Ali and his chosen successors called?",
+        choices: [
+          "Caliphs",
+          "Imams",
+          "Prophets",
+          "Angels",
+        ],
+        accept: [
+          "Imams",
+        ],
+        answer: "Shi'a Muslims believe in a line of Imams, starting with Ali, chosen by God to lead. Caliphs are the leaders Sunni Muslims accepted after Muhammad.",
+      },
     ],
     misconceptions: [
       {
@@ -2482,6 +3184,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'Jihad is fundamentally about violence.' Evaluate this statement, giving arguments for and against.",
         answer: "For: some extremist groups have used the word jihad to justify violence and terrorism, and this usage has become widespread in Western media coverage of Islam, shaping public perception of the term. Against: the word literally means struggle or striving, and Islamic teaching places greatest weight on the greater jihad — the internal struggle against one's own wrongdoing, temptation and laziness — which is entirely non-violent; the lesser jihad, where physical struggle is even considered, is subject to strict conditions in mainstream Islamic scholarship, including legitimate religious authority, self-defence, and protection of civilians; and mainstream Muslim scholars and organisations widely and explicitly condemn the use of jihad to justify terrorism as a distortion of Islamic teaching, not an expression of it. A defensible conclusion is that equating jihad with violence reflects a misunderstanding shaped by extremist misuse and selective media coverage rather than the concept as most Muslims understand and practise it. Mark this one yourself: developed points on both sides, correct terminology, and a conclusion is the full answer.",
       },
+      {
+        question: "What is the ritual washing Muslims perform before Salah called?",
+        choices: [
+          "Ihram",
+          "Wudu",
+          "Zakah",
+          "Sawm",
+        ],
+        accept: [
+          "Wudu",
+        ],
+        answer: "Wudu washes the hands, mouth, nose, face, arms, head and feet to be pure before prayer. Ihram is the state of purity and white clothing for Hajj.",
+      },
+      {
+        question: "What is the direction of prayer, towards the Ka'bah in Makkah, called?",
+        choices: [
+          "Mihrab",
+          "Minbar",
+          "Qiblah",
+          "Ummah",
+        ],
+        accept: [
+          "Qiblah",
+        ],
+        answer: "The qiblah is the direction Muslims face to pray. The mihrab is the niche in the mosque wall that shows the qiblah; the minbar is the pulpit.",
+      },
+      {
+        question: "What share of qualifying savings do Sunni Muslims give each year as Zakah?",
+        choices: [
+          "10%",
+          "20%",
+          "5%",
+          "2.5%",
+        ],
+        accept: [
+          "2.5%",
+        ],
+        answer: "Zakah is 2.5% of savings above a minimum amount (the nisab), paid yearly. Twenty per cent is khums, an extra payment made by Shi'a Muslims.",
+      },
+      {
+        question: "During Hajj, pilgrims hurry between which two hills, remembering Hajar's search for water?",
+        choices: [
+          "Arafat and Mina",
+          "Safa and Marwah",
+          "Uhud and Hira",
+          "Mina and Muzdalifah",
+        ],
+        accept: [
+          "Safa and Marwah",
+        ],
+        answer: "Pilgrims go seven times between Safa and Marwah, as Hajar did looking for water for Isma'il. Arafat is where they stand in prayer; Mina is where they stone the pillars.",
+      },
+      {
+        question: "What is the special congregational prayer held at midday on Fridays called?",
+        choices: [
+          "Fajr",
+          "Isha",
+          "Jummah",
+          "Witr",
+        ],
+        accept: [
+          "Jummah",
+        ],
+        answer: "Jummah prayer is said together in the mosque on Friday with a sermon (khutbah). Fajr is the dawn prayer and Isha the night prayer of the five daily prayers.",
+      },
+      {
+        question: "Which night in Ramadan marks when the Qur'an was first revealed to Muhammad?",
+        choices: [
+          "Laylat al-Qadr",
+          "Laylat al-Mi'raj",
+          "Eid ul-Fitr",
+          "Ashura",
+        ],
+        accept: [
+          "Laylat al-Qadr",
+        ],
+        answer: "Laylat al-Qadr, the Night of Power, falls in the last ten nights of Ramadan. Laylat al-Mi'raj remembers Muhammad's night journey and ascension.",
+      },
     ],
     misconceptions: [
       {
@@ -2706,6 +3486,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       {
         question: "'Religious teaching on gender roles within the family is outdated and should be abandoned.' Evaluate this statement, giving arguments for and against.",
         answer: "For: some argue that traditional teaching giving men and women different roles reflects the culture in which sacred texts were written or historically interpreted, not an unchanging truth, and that modern understandings of equality should take priority; unequal expectations around domestic labour and decision-making have in practice disadvantaged women in many households. Against: many religious believers, including many women, argue that complementary roles reflect equally valued but different contributions rather than inequality, and that abandoning all traditional structure risks losing something genuinely valuable about shared responsibility and commitment within families; religious teaching in both Christianity and Islam has also evolved considerably on this question already, showing it is not simply fixed or outdated, and many religious communities today actively support more equal sharing of roles while remaining rooted in their tradition. A reasonable conclusion is that 'abandon' is too strong — reinterpretation and internal debate, which is already happening within both religions, better reflects how religious teaching on this question is actually changing. Mark this one yourself: developed points for and against and a conclusion that follows from them is the full answer.",
+      },
+      {
+        question: "What is a family that includes grandparents, aunts or uncles as well as parents called?",
+        choices: [
+          "Nuclear family",
+          "Extended family",
+          "Blended family",
+          "Single-parent family",
+        ],
+        accept: [
+          "Extended family",
+        ],
+        answer: "An extended family stretches beyond parents and children to other relatives. A nuclear family is only parents and children; a blended family joins step-relations.",
+      },
+      {
+        question: "What is sex between a married person and someone who is not their spouse called?",
+        choices: [
+          "Cohabitation",
+          "Polygamy",
+          "Annulment",
+          "Adultery",
+        ],
+        accept: [
+          "Adultery",
+        ],
+        answer: "Adultery breaks one of the Ten Commandments and is forbidden in Islam. Cohabitation is living together unmarried; polygamy is having more than one spouse.",
+      },
+      {
+        question: "Which way of limiting family size does the Catholic Church accept?",
+        choices: [
+          "Natural methods",
+          "The pill",
+          "Condoms",
+          "Sterilisation",
+        ],
+        accept: [
+          "Natural methods",
+        ],
+        answer: "Catholics teach every sex act should be open to new life, so natural methods that track fertile times are allowed but artificial contraception like the pill is not.",
+      },
+      {
+        question: "What term describes being married to more than one person at the same time?",
+        choices: [
+          "Monogamy",
+          "Celibacy",
+          "Polygamy",
+          "Cohabitation",
+        ],
+        accept: [
+          "Polygamy",
+        ],
+        answer: "Polygamy is having several spouses at once and is illegal in the UK. Monogamy is having one spouse; celibacy means not having sex at all.",
+      },
+      {
+        question: "What is the waiting period after a talaq, before the divorce becomes final, called?",
+        choices: [
+          "Mahr",
+          "Nikah",
+          "Khul'",
+          "Iddah",
+        ],
+        accept: [
+          "Iddah",
+        ],
+        answer: "Iddah lasts about three months and gives time for reconciliation. Khul' is a divorce the wife starts; mahr is the marriage gift and nikah the wedding.",
+      },
+      {
+        question: "What do Catholics believe marriage is, which makes it a lifelong bond?",
+        choices: [
+          "A civil contract",
+          "A sacrament",
+          "A temporary vow",
+          "A private promise",
+        ],
+        accept: [
+          "A sacrament",
+        ],
+        answer: "For Catholics marriage is a sacrament, a sign of God's grace that cannot be broken by divorce. Muslims, by contrast, see marriage as a contract (nikah).",
       },
     ],
     misconceptions: [
@@ -2948,6 +3806,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'Euthanasia should be legalised in the UK.' Evaluate this statement, giving arguments for and against.",
         answer: "For: supporters argue that personal autonomy should extend to decisions about the manner and timing of one's own death, particularly for those facing unbearable, irreversible suffering from a terminal illness; some argue that passive euthanasia is already effectively permitted through withdrawal of treatment, making a legal, regulated form of active euthanasia more honest and better safeguarded than the current situation; and several other countries have legalised regulated forms without the widely predicted abuse occurring. Against: most Christian and Muslim teaching holds that only God has the right to give and take life, and that legalising euthanasia risks devaluing the sanctity of every life, especially for the elderly, disabled or vulnerable, who might feel pressured to end their lives to avoid becoming a burden; medical advances in palliative care can relieve much suffering without ending life; and campaigners against legalisation, religious and non-religious, argue that safeguards are difficult to guarantee once the principle is established. A defensible conclusion notes that the debate turns heavily on how much weight is given to autonomy versus sanctity of life, and on trust in whether safeguards against abuse and pressure can genuinely hold. Mark this one yourself: developed points on both sides, referring to at least one religious view, and a conclusion is the full answer.",
       },
+      {
+        question: "What type of euthanasia happens when the patient cannot give consent, e.g. in a coma?",
+        choices: [
+          "Voluntary",
+          "Involuntary",
+          "Non-voluntary",
+          "Assisted suicide",
+        ],
+        accept: [
+          "Non-voluntary",
+        ],
+        answer: "Non-voluntary euthanasia is when the person cannot ask or agree. Involuntary means against the wishes of someone who could say no, which is the tempting mix-up.",
+      },
+      {
+        question: "When do Catholics believe human life, with a soul, begins?",
+        choices: [
+          "At conception",
+          "At 24 weeks",
+          "At 120 days",
+          "At birth",
+        ],
+        accept: [
+          "At conception",
+        ],
+        answer: "The Catholic Church teaches life begins at conception, so abortion is wrong. 120 days is when many Islamic scholars place ensoulment; 24 weeks is the UK legal limit.",
+      },
+      {
+        question: "What care focuses on comfort and pain relief for the dying rather than cure?",
+        choices: [
+          "Intensive care",
+          "Respite care",
+          "Palliative care",
+          "Curative care",
+        ],
+        accept: [
+          "Palliative care",
+        ],
+        answer: "Palliative care, often given in hospices, eases pain at the end of life. Many religious believers support it as an alternative to euthanasia.",
+      },
+      {
+        question: "Which term, from Genesis 1:28, describes humans being given rule over creation?",
+        choices: [
+          "Dominion",
+          "Stewardship",
+          "Khalifah",
+          "Sanctity",
+        ],
+        accept: [
+          "Dominion",
+        ],
+        answer: "Dominion means having rule over the earth. Stewardship (Genesis 2:15) and khalifah stress caring for creation on God's behalf, not just ruling it.",
+      },
+      {
+        question: "Roughly how long ago do scientists think the Big Bang happened?",
+        choices: [
+          "4.6 billion years",
+          "100 million years",
+          "13.8 billion years",
+          "1.5 billion years",
+        ],
+        accept: [
+          "13.8 billion years",
+        ],
+        answer: "The Big Bang is dated to about 13.8 billion years ago. About 4.6 billion years is the age of the Earth and the Solar System, a common mix-up.",
+      },
+      {
+        question: "Whose theory of evolution by natural selection challenged a literal reading of Genesis?",
+        choices: [
+          "Isaac Newton",
+          "Charles Darwin",
+          "Georges Lemaître",
+          "Stephen Hawking",
+        ],
+        accept: [
+          "Charles Darwin",
+        ],
+        answer: "Darwin's On the Origin of Species (1859) explained how species develop over time. Lemaître, a Catholic priest, first proposed the Big Bang theory.",
+      },
     ],
     misconceptions: [
       {
@@ -3188,6 +4124,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       {
         question: "'Religious experience is the strongest evidence for the existence of God.' Evaluate this statement, giving arguments for and against.",
         answer: "For: religious experience is personal and immediate in a way abstract philosophical arguments are not, and the sheer number and consistency of reported experiences across cultures and centuries — the numinous, conversion experiences, answered prayer — is offered by believers as cumulative evidence that something real is being encountered, not simply invented. Against: subjective experience cannot be independently verified by anyone else, and psychology offers alternative explanations (suggestion, brain chemistry, wishful thinking) that do not require God to be real; different religions report experiences that support conflicting theological conclusions, which raises the question of why one interpretation should be trusted over another; and even sincere religious believers often accept that experience alone should be weighed alongside reason and other arguments rather than treated as sufficient proof by itself. A defensible conclusion is that religious experience is powerful evidence FOR THE PERSON WHO HAD IT, but weaker as public, general proof compared with how strongly it is felt privately. Mark this one yourself: developed points on both sides and a conclusion that follows from them is the full answer.",
+      },
+      {
+        question: "What term describes God revealing himself directly to a person, e.g. in a vision?",
+        choices: [
+          "General revelation",
+          "Special revelation",
+          "Natural theology",
+          "The numinous",
+        ],
+        accept: [
+          "Special revelation",
+        ],
+        answer: "Special revelation is God made known directly, as in a vision or a prophet's message. General revelation is God known indirectly through nature or conscience.",
+      },
+      {
+        question: "Who argued that the universe is just a 'brute fact' with no cause needed?",
+        choices: [
+          "David Hume",
+          "William Paley",
+          "Thomas Aquinas",
+          "Bertrand Russell",
+        ],
+        accept: [
+          "Bertrand Russell",
+        ],
+        answer: "Russell said the universe is 'just there, and that's all', rejecting the first cause argument. Aquinas made the first cause argument; Paley the design argument.",
+      },
+      {
+        question: "Saul's experience on the road to Damascus is an example of which kind of experience?",
+        choices: [
+          "Ordination",
+          "Pilgrimage",
+          "Confirmation",
+          "Conversion",
+        ],
+        accept: [
+          "Conversion",
+        ],
+        answer: "Saul, who persecuted Christians, saw a light and heard Jesus, then became the apostle Paul. A conversion is a life-changing turn to a new faith.",
+      },
+      {
+        question: "Which type of evil is suffering caused by human choices, such as war or murder?",
+        choices: [
+          "Moral evil",
+          "Natural evil",
+          "Original sin",
+          "Free will",
+        ],
+        accept: [
+          "Moral evil",
+        ],
+        answer: "Moral evil comes from people's free choices. Natural evil is suffering not caused by humans, like earthquakes and disease.",
+      },
+      {
+        question: "What is another name for the design argument for God's existence?",
+        choices: [
+          "Cosmological",
+          "Ontological",
+          "Teleological",
+          "Moral",
+        ],
+        accept: [
+          "Teleological",
+        ],
+        answer: "Teleological comes from the Greek telos, meaning purpose or goal. The cosmological argument is the first cause argument, a different reason for believing in God.",
+      },
+      {
+        question: "Which French town is famous for reported healing miracles linked to St Bernadette?",
+        choices: [
+          "Fatima",
+          "Walsingham",
+          "Lourdes",
+          "Medjugorje",
+        ],
+        accept: [
+          "Lourdes",
+        ],
+        answer: "Bernadette reported visions of Mary at Lourdes in 1858, and many pilgrims seek healing there. Fatima is in Portugal and Walsingham is in England.",
       },
     ],
     misconceptions: [
@@ -3430,6 +4444,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'Religion is the main cause of war in the modern world.' Evaluate this statement, giving arguments for and against.",
         answer: "For: some conflicts are explicitly framed in religious terms, religious identity has hardened divisions in several ongoing conflicts, and extremist groups have used religious language to recruit and justify violence, giving the claim surface plausibility. Against: most historians and religious scholars point out that conflicts described as 'religious' usually also involve competition for land, resources, political power and historical grievance, with religion functioning as one marker of identity among several rather than the sole cause; mainstream religious teaching in both Christianity and Islam actively promotes peace, justice and condemns terrorism, which is hard to square with religion itself being the main driver; and some of the deadliest conflicts and regimes in modern history have been explicitly non-religious or anti-religious, suggesting the cause of large-scale violence is not specific to religion. A defensible conclusion is that religion can be one contributing factor, and is sometimes exploited to justify conflict that has other underlying causes, but singling it out as 'the main cause' overstates its role compared to political and economic drivers. Mark this one yourself: developed points on both sides, at least one named example or teaching, and a conclusion is the full answer.",
       },
+      {
+        question: "Which just war condition requires that all peaceful options are tried first?",
+        choices: [
+          "Just cause",
+          "Last resort",
+          "Right intention",
+          "Proportionality",
+        ],
+        accept: [
+          "Last resort",
+        ],
+        answer: "Last resort means war is only allowed once talks and other peaceful ways have failed. Just cause is about having a good reason, such as self-defence.",
+      },
+      {
+        question: "What does the just war term 'jus in bello' refer to?",
+        choices: [
+          "Reasons to go to war",
+          "Conduct during war",
+          "Peace after a war",
+          "Weapons treaties",
+        ],
+        accept: [
+          "Conduct during war",
+        ],
+        answer: "Jus in bello is justice in war: how it is fought, such as protecting civilians. Jus ad bellum is about the right reasons to start a war.",
+      },
+      {
+        question: "What is the process of restoring friendly relations after conflict called?",
+        choices: [
+          "Retaliation",
+          "Reconciliation",
+          "Radicalisation",
+          "Retribution",
+        ],
+        accept: [
+          "Reconciliation",
+        ],
+        answer: "Reconciliation means making peace and rebuilding trust after a dispute. Retaliation is hitting back, which keeps the conflict going.",
+      },
+      {
+        question: "What is giving up or reducing weapons, especially nuclear ones, called?",
+        choices: [
+          "Deterrence",
+          "Proliferation",
+          "Disarmament",
+          "Pacifism",
+        ],
+        accept: [
+          "Disarmament",
+        ],
+        answer: "Disarmament reduces or removes weapons. Proliferation is the opposite, the spread of weapons to more countries; deterrence is keeping them to prevent attack.",
+      },
+      {
+        question: "What is a war fought for religious reasons, believed to be backed by God, called?",
+        choices: [
+          "Holy war",
+          "Just war",
+          "Civil war",
+          "Cold war",
+        ],
+        accept: [
+          "Holy war",
+        ],
+        answer: "A holy war is fought for religious goals with belief in God's support, like the Crusades. A just war is judged by moral conditions, not religious aims.",
+      },
+      {
+        question: "Which teaching of Jesus is often quoted by Christian pacifists?",
+        choices: [
+          "An eye for an eye",
+          "Turn the other cheek",
+          "Render unto Caesar",
+          "Go and sin no more",
+        ],
+        accept: [
+          "Turn the other cheek",
+        ],
+        answer: "In the Sermon on the Mount Jesus said to turn the other cheek. 'An eye for an eye' is the older law of equal payback, which Jesus contrasted with his teaching.",
+      },
     ],
     misconceptions: [
       {
@@ -3671,6 +4763,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'Capital punishment should be reintroduced in the UK.' Evaluate this statement, giving arguments for and against.",
         answer: "For: some argue capital punishment delivers proportionate justice for the most serious crimes, permanently removes any possibility of the offender reoffending, and some Old Testament texts and traditional interpretations within Islamic law are cited as religious support for serious punishment matching the severity of the crime. Against: the irreversible risk of executing an innocent person is widely regarded as an unacceptable cost, since a wrongful conviction can never be corrected once carried out; evidence that capital punishment actually deters serious crime more effectively than long imprisonment is disputed by criminologists; many Christians point to Jesus's teaching on mercy and forgiveness, and the belief that no person is beyond the possibility of redemption, as reasons to reject it; and most Humanist and other non-religious organisations also oppose it on grounds of the value of every human life and the risk of error. A defensible conclusion notes that the UK abolished capital punishment for exactly these reasons, and that reintroducing it would require reversing a settled ethical and legal judgement most major religious and non-religious bodies in Britain today do not support. Mark this one yourself: developed points on both sides, referring to at least one religious view, and a conclusion is the full answer.",
       },
+      {
+        question: "Which aim of punishment focuses on keeping the public safe from an offender?",
+        choices: [
+          "Retribution",
+          "Reformation",
+          "Deterrence",
+          "Protection",
+        ],
+        accept: [
+          "Protection",
+        ],
+        answer: "Protection keeps dangerous offenders away from society, for example by prison. Deterrence instead aims to put people off committing crime in the first place.",
+      },
+      {
+        question: "Which Quaker campaigned to improve conditions for women in prison in the 1800s?",
+        choices: [
+          "Elizabeth Fry",
+          "Florence Nightingale",
+          "Mary Seacole",
+          "Emmeline Pankhurst",
+        ],
+        accept: [
+          "Elizabeth Fry",
+        ],
+        answer: "Elizabeth Fry visited Newgate prison and pushed for humane treatment and education of prisoners. Nightingale and Seacole are known for nursing, not prisons.",
+      },
+      {
+        question: "What is a sentence of unpaid work in the local area, instead of prison, called?",
+        choices: [
+          "Probation",
+          "Community service",
+          "Parole",
+          "Curfew",
+        ],
+        accept: [
+          "Community service",
+        ],
+        answer: "Community service makes offenders repay society through work. Parole is early release from prison under conditions; probation is supervision by an officer.",
+      },
+      {
+        question: "What is punishment that causes physical pain, such as caning, called?",
+        choices: [
+          "Capital punishment",
+          "Retribution",
+          "Corporal punishment",
+          "Community service",
+        ],
+        accept: [
+          "Corporal punishment",
+        ],
+        answer: "Corporal punishment means physical pain, like beating. Capital punishment is the death penalty; the two are often confused.",
+      },
+      {
+        question: "Which Christian prayer asks God to 'forgive us our trespasses'?",
+        choices: [
+          "The Nicene Creed",
+          "The Hail Mary",
+          "The Lord's Prayer",
+          "The Beatitudes",
+        ],
+        accept: [
+          "The Lord's Prayer",
+        ],
+        answer: "Jesus taught the Lord's Prayer, which links being forgiven by God to forgiving others. The Nicene Creed is a statement of belief, not a prayer for forgiveness.",
+      },
+      {
+        question: "Which cause of crime is someone stealing food because they cannot afford it?",
+        choices: [
+          "Upbringing",
+          "Greed",
+          "Poverty",
+          "Addiction",
+        ],
+        accept: [
+          "Poverty",
+        ],
+        answer: "Poverty can push people to crime to meet basic needs. Greed is wanting more than you need, which is a different motive from survival.",
+      },
     ],
     misconceptions: [
       {
@@ -3901,6 +5071,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         question: "'Religion causes more prejudice than it prevents.' Evaluate this statement, giving arguments for and against.",
         answer: "For: religious identity has sometimes been used to justify discrimination, including historical examples where scripture was selectively used to defend slavery or unequal treatment of women, and religious difference itself has at times been a basis for prejudice between communities. Against: mainstream Christian and Muslim teaching explicitly condemns prejudice and discrimination, grounding equal human worth in theology (imago Dei; shared creation by and accountability to Allah); some of the most significant campaigns against prejudice in modern history, including the US civil rights movement led by Martin Luther King Jr and the fight against apartheid led in part by Desmond Tutu, were explicitly religiously motivated rather than opposed to religion; and interfaith dialogue is actively used today specifically to reduce prejudice between communities. A defensible conclusion is that religion, like any powerful source of identity and conviction, has been used both to justify prejudice and to fight it — the outcome depends on which teachings and leaders are followed, not something inherent to religion itself. Mark this one yourself: developed points on both sides, at least one named example, and a conclusion is the full answer.",
       },
+      {
+        question: "What term describes judging someone unfairly before knowing them?",
+        choices: [
+          "Discrimination",
+          "Prejudice",
+          "Exploitation",
+          "Persecution",
+        ],
+        accept: [
+          "Prejudice",
+        ],
+        answer: "Prejudice is an unfair attitude or opinion, literally 'pre-judging'. Discrimination is acting on that prejudice by treating people unfairly.",
+      },
+      {
+        question: "What is voluntary charity in Islam, given beyond the required Zakah, called?",
+        choices: [
+          "Khums",
+          "Riba",
+          "Sadaqah",
+          "Ummah",
+        ],
+        accept: [
+          "Sadaqah",
+        ],
+        answer: "Sadaqah is any freely given charity or kind act. Khums is a required payment for Shi'a Muslims; riba is unfair interest, which Islam forbids.",
+      },
+      {
+        question: "Which parable says whatever you do for the hungry or sick, you do for Jesus?",
+        choices: [
+          "The Prodigal Son",
+          "The Sheep and Goats",
+          "The Lost Coin",
+          "The Mustard Seed",
+        ],
+        accept: [
+          "The Sheep and Goats",
+        ],
+        answer: "In the Sheep and the Goats (Matthew 25) people are judged on helping those in need. The Prodigal Son is about forgiveness, not helping the poor.",
+      },
+      {
+        question: "What is the illegal trade of people for forced labour or sexual exploitation called?",
+        choices: [
+          "Money laundering",
+          "Loan sharking",
+          "Fraud",
+          "Human trafficking",
+        ],
+        accept: [
+          "Human trafficking",
+        ],
+        answer: "Human trafficking treats people as goods to be bought and exploited. Religions condemn it because every person has God-given dignity.",
+      },
+      {
+        question: "Which UK Act of 2010 brought together the laws against discrimination?",
+        choices: [
+          "Human Rights Act",
+          "Equality Act",
+          "Race Relations Act",
+          "Children Act",
+        ],
+        accept: [
+          "Equality Act",
+        ],
+        answer: "The Equality Act 2010 protects characteristics such as race, religion, sex and disability. The Human Rights Act dates from 1998 and covers different rights.",
+      },
+      {
+        question: "What did Martin Luther King Jr's Montgomery protest of 1955 boycott?",
+        choices: [
+          "Lunch counters",
+          "Schools",
+          "Buses",
+          "Elections",
+        ],
+        accept: [
+          "Buses",
+        ],
+        answer: "After Rosa Parks was arrested, Black citizens refused to ride Montgomery's segregated buses for over a year, until segregation on them was ruled illegal.",
+      },
     ],
     misconceptions: [
       {
@@ -4130,6 +5378,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       {
         question: "'When conscience and religious teaching disagree, conscience should always win.' Evaluate this statement, giving arguments for and against.",
         answer: "For: some argue that a sincerely held conscience, especially one that judges a specific rule to cause real harm or injustice, reflects a person's genuine moral understanding and should not simply be overridden by an external authority, particularly where that authority may itself be a fallible human interpretation of scripture; forcing someone to act against a deeply held conscience can also be seen as a form of moral harm in itself. Against: most religious traditions warn that conscience can be mistaken, self-serving, or shaped by cultural bias rather than genuine moral insight, which is why they insist conscience should be INFORMED by scripture, tradition and community rather than trusted unconditionally; giving individual conscience automatic priority over collective religious wisdom built up over centuries risks a kind of moral individualism where any conclusion can be justified simply by claiming conscience supports it; and both the Catholic Magisterium and Islamic scholarly consensus (ijma) exist precisely because communities have judged that collective, tested authority is generally more reliable than one person's untested certainty. A defensible conclusion is that most mainstream religious teaching favours a DIALOGUE between conscience and authority rather than an automatic winner either way. Mark this one yourself: developed points on both sides and a conclusion that follows from them is the full answer.",
+      },
+      {
+        question: "Which part of the Bible contains the four Gospels?",
+        choices: [
+          "Old Testament",
+          "New Testament",
+          "The Apocrypha",
+          "The Torah",
+        ],
+        accept: [
+          "New Testament",
+        ],
+        answer: "The New Testament holds the Gospels of Matthew, Mark, Luke and John, plus letters. The Torah is the first five books of the Old Testament.",
+      },
+      {
+        question: "In Islam, what records the Sunnah, Muhammad's sayings and actions?",
+        choices: [
+          "The Torah",
+          "The Hadith",
+          "Scholars' consensus",
+          "Reasoning by analogy",
+        ],
+        accept: [
+          "The Hadith",
+        ],
+        answer: "The Hadith are the collected reports of what Muhammad said and did. Scholars' consensus is ijma, reasoning by analogy is qiyas and the Torah is Jewish.",
+      },
+      {
+        question: "What is Islamic law, based on the Qur'an and Sunnah, called?",
+        choices: [
+          "Tawhid",
+          "Hadith",
+          "Ijma",
+          "Shari'ah",
+        ],
+        accept: [
+          "Shari'ah",
+        ],
+        answer: "Shari'ah means 'the path' and guides all of life, from worship to business. Tawhid is the belief in the oneness of Allah.",
+      },
+      {
+        question: "Which branch of Christianity is most associated with 'sola scriptura'?",
+        choices: [
+          "Roman Catholic",
+          "Protestant",
+          "Eastern Orthodox",
+          "Oriental Orthodox",
+        ],
+        accept: [
+          "Protestant",
+        ],
+        answer: "Sola scriptura came from the Protestant Reformation with Martin Luther. Catholics give authority to scripture, tradition and the Magisterium together.",
+      },
+      {
+        question: "What does the Arabic term 'aql refer to as a source of authority?",
+        choices: [
+          "Consensus",
+          "Human reason",
+          "Revelation",
+          "Analogy",
+        ],
+        accept: [
+          "Human reason",
+        ],
+        answer: "'Aql is reason or intellect, used to understand and apply revelation. Consensus is ijma and analogy is qiyas, which are different sources.",
+      },
+      {
+        question: "What is a ruling on Islamic law given by a qualified scholar called?",
+        choices: [
+          "Qiyas",
+          "Sunnah",
+          "Ummah",
+          "Fatwa",
+        ],
+        accept: [
+          "Fatwa",
+        ],
+        answer: "A fatwa is a scholar's legal opinion on a question. Qiyas is the method of reasoning by analogy that a scholar may use to reach it.",
       },
     ],
     misconceptions: [
@@ -4366,6 +5692,84 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
       {
         question: "'Exam technique matters as much as subject knowledge in RE.' Evaluate this statement, giving arguments for and against.",
         answer: "For: strong subject knowledge can still score poorly if it is not shaped to match the command word — a beautifully described but purely one-sided answer to an 'evaluate' question cannot reach the top mark band regardless of how accurate the content is, and marks for specialist vocabulary, sources of authority and justified conclusions are only awarded when the answer is structured to include them explicitly. Against: no amount of technique can substitute for actually knowing the beliefs, teachings and named examples the exam asks about — a well-structured answer built on thin or inaccurate content will still be marked down on accuracy, and the higher mark bands specifically reward DEPTH and DETAIL of religious understanding, not structure alone. A defensible conclusion is that technique and knowledge are not competitors but multipliers: strong knowledge poorly structured underperforms, and strong technique with weak knowledge has nothing substantial to structure — the strongest answers, and the highest grades, need both together. Mark this one yourself: developed points on both sides and a conclusion that follows from them is the full answer.",
+      },
+      {
+        question: "How many marks is the multiple-choice question that opens each AQA RS section worth?",
+        choices: [
+          "2 marks",
+          "1 mark",
+          "4 marks",
+          "5 marks",
+        ],
+        accept: [
+          "1 mark",
+        ],
+        answer: "Each AQA section opens with a one-mark multiple-choice question. The 'give two' question that follows is worth two marks.",
+      },
+      {
+        question: "How many marks is AQA's question asking you to explain how a belief influences believers?",
+        choices: [
+          "2 marks",
+          "5 marks",
+          "4 marks",
+          "12 marks",
+        ],
+        accept: [
+          "4 marks",
+        ],
+        answer: "It is worth four marks: two marks per way, one for the point and one for developing it. The five-mark question also needs a source of authority.",
+      },
+      {
+        question: "How long is each AQA GCSE Religious Studies A exam paper?",
+        choices: [
+          "1 hour",
+          "1 hour 30 minutes",
+          "1 hour 45 minutes",
+          "2 hours",
+        ],
+        accept: [
+          "1 hour 45 minutes",
+        ],
+        answer: "Each AQA RS A paper lasts 1 hour 45 minutes, so time is tight. Spend most of it on the 12-mark questions, which carry the most marks.",
+      },
+      {
+        question: "In AQA Paper 2 (thematic studies), how many themes do students answer on?",
+        choices: [
+          "Two",
+          "Three",
+          "Four",
+          "Six",
+        ],
+        accept: [
+          "Four",
+        ],
+        answer: "There are six themes and you answer on the four your school studied. Answering six would waste time; check which four you have revised.",
+      },
+      {
+        question: "Which command word asks you to weigh up both sides and reach a judgement?",
+        choices: [
+          "Explain",
+          "Evaluate",
+          "Describe",
+          "Outline",
+        ],
+        accept: [
+          "Evaluate",
+        ],
+        answer: "Evaluate means arguing for and against, then giving a justified conclusion. Explain only asks you to develop points, without a final judgement.",
+      },
+      {
+        question: "In 'explain two contrasting beliefs', which pair would work?",
+        choices: [
+          "Catholic v Protestant",
+          "Two Catholic views",
+          "One quote said twice",
+          "Two of your opinions",
+        ],
+        accept: [
+          "Catholic v Protestant",
+        ],
+        answer: "Contrasting means the beliefs must differ, such as Catholic and Protestant views. Two similar points earn little, even if each is accurate.",
       },
     ],
     misconceptions: [

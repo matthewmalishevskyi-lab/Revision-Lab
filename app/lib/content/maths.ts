@@ -1244,6 +1244,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "70, because 0.7 = 0.70, which is 70 hundredths (70 × 0.01 = 0.7).",
       },
+      {
+        question: "What is the reciprocal of 0.2?",
+        choices: [
+          "2",
+          "5",
+          "0.5",
+          "20",
+        ],
+        accept: [
+          "5",
+        ],
+        answer: "0.2 is 1/5, so its reciprocal is 5/1 = 5. Check: 0.2 × 5 = 1. A number times its reciprocal always gives 1, so 0.5 can't be right.",
+      },
+      {
+        question: "How many significant figures does 0.0305 have?",
+        choices: [
+          "2",
+          "4",
+          "3",
+          "5",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "Leading zeros don't count, so start at the 3. The digits 3, 0 and 5 are significant: a zero between non-zero digits counts, so it is 3, not 2.",
+      },
     ],
 
     misconceptions: [
@@ -3152,6 +3178,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "2x − 5, because the ruler costs x − 5, and x + (x − 5) = 2x − 5.",
       },
+      {
+        question: "Which of these is a formula?",
+        choices: [
+          "3x + 2",
+          "A = lw",
+          "2x + 1 = 7",
+          "5x − 4",
+        ],
+        accept: [
+          "A = lw",
+        ],
+        answer: "A = lw links real quantities (area, length, width) and works for any values. 2x + 1 = 7 is an equation with one solution; 3x + 2 is an expression.",
+      },
+      {
+        question: "Which term is a like term with 3x²y?",
+        choices: [
+          "3xy²",
+          "3x²",
+          "x²y²",
+          "5yx²",
+        ],
+        accept: [
+          "5yx²",
+        ],
+        answer: "Like terms have exactly the same letters with the same powers. 5yx² is x²y written in another order. 3xy² has the powers swapped, so it is not like.",
+      },
     ],
 
     misconceptions: [
@@ -4308,6 +4360,32 @@ export const MATHS: Record<string, TopicContent> = {
           "70°",
         ],
         answer: "70°, because the interior and exterior angles at a vertex lie on a straight line: 180 − 110 = 70°.",
+      },
+      {
+        question: "What is a 10-sided polygon called?",
+        choices: [
+          "Decagon",
+          "Nonagon",
+          "Octagon",
+          "Dodecagon",
+        ],
+        accept: [
+          "Decagon",
+        ],
+        answer: "A decagon has 10 sides (deca means ten). A nonagon has 9, an octagon has 8 and a dodecagon has 12.",
+      },
+      {
+        question: "A triangle has one angle greater than 90°. What type of triangle is it?",
+        choices: [
+          "Acute-angled",
+          "Right-angled",
+          "Equilateral",
+          "Obtuse-angled",
+        ],
+        accept: [
+          "Obtuse-angled",
+        ],
+        answer: "An angle between 90° and 180° is obtuse, so the triangle is obtuse-angled. An acute-angled triangle has all three angles below 90°.",
       },
     ],
 
@@ -6029,6 +6107,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "£30, because 5% of £200 is £10, and simple interest is the same every year: 3 × £10 = £30.",
       },
+      {
+        question: "Which of these numbers is rational?",
+        choices: [
+          "√2",
+          "π",
+          "0.333…",
+          "√5",
+        ],
+        accept: [
+          "0.333…",
+        ],
+        answer: "The recurring decimal 0.333… equals 1/3, a fraction of two integers, so it is rational. √2, √5 and π can never be written as a fraction.",
+      },
+      {
+        question: "What is 2/3 as a percentage, to 1 decimal place?",
+        choices: [
+          "66.6%",
+          "66.7%",
+          "67.0%",
+          "60.6%",
+        ],
+        accept: [
+          "66.7%",
+        ],
+        answer: "2/3 = 0.6666…, which is 66.666…%. The digit after the first decimal place is 6, so round up to 66.7%. 66.6% has been truncated, not rounded.",
+      },
     ],
 
     misconceptions: [
@@ -7631,6 +7735,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "3, because √4 = 2, so 6 = k × 2 and k = 6 ÷ 2 = 3 (don't divide by 4 itself).",
         higherOnly: true,
+      },
+      {
+        question: "Which ratio is equivalent to 3 : 4?",
+        choices: [
+          "6 : 7",
+          "4 : 3",
+          "3 : 8",
+          "9 : 12",
+        ],
+        accept: [
+          "9 : 12",
+        ],
+        answer: "Multiply both parts by 3 to get 9 : 12. 6 : 7 adds 3 to each part, which changes the ratio, and 4 : 3 is the same numbers in the wrong order.",
+      },
+      {
+        question: "y is inversely proportional to x. What does its graph look like for x > 0?",
+        choices: [
+          "Rising straight line",
+          "Falling curve",
+          "Falling straight line",
+          "Rising curve",
+        ],
+        accept: [
+          "Falling curve",
+        ],
+        answer: "As x grows, y = k/x gets smaller but never reaches zero, so the graph is a falling curve. A straight line through the origin shows direct proportion.",
       },
     ],
 
@@ -9445,6 +9575,33 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "0, because subtracting 3 from both sides gives 4x = 0, and 0 ÷ 4 = 0.",
       },
+      {
+        question: "Using xₙ₊₁ = √(xₙ + 6) with x₁ = 10, what is x₂?",
+        choices: [
+          "4",
+          "16",
+          "9.16",
+          "2",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "Substitute x₁ = 10: x₂ = √(10 + 6) = √16 = 4. 9.16 comes from rooting only the 10 and then adding 6; 16 forgets the square root.",
+        higherOnly: true,
+      },
+      {
+        question: "Which value of x satisfies both x > 2 and x ≤ 4?",
+        choices: [
+          "2",
+          "5",
+          "1",
+          "4",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "x must be more than 2 and at most 4. 4 is allowed because ≤ includes the end value; 2 is not, because > leaves the end value out.",
+      },
     ],
 
     misconceptions: [
@@ -10697,6 +10854,33 @@ export const MATHS: Record<string, TopicContent> = {
           "25°",
         ],
         answer: "25°, because the horizontals at A and B are parallel, so elevation and depression are equal alternate angles.",
+      },
+      {
+        question: "Which formula gives the area of any triangle from two sides and the angle between them?",
+        choices: [
+          "½ab cos C",
+          "½ab",
+          "½ab sin C",
+          "½ab tan C",
+        ],
+        accept: [
+          "½ab sin C",
+        ],
+        answer: "Area = ½ab sin C, where C is the angle between sides a and b. ½ab alone only works when C is 90°, because sin 90° = 1.",
+        higherOnly: true,
+      },
+      {
+        question: "An angle of elevation is measured upwards from which line?",
+        choices: [
+          "The horizontal",
+          "The vertical",
+          "North",
+          "The hypotenuse",
+        ],
+        accept: [
+          "The horizontal",
+        ],
+        answer: "Angles of elevation and depression are both measured from the horizontal to the line of sight. Angles measured from north are bearings.",
       },
     ],
 
@@ -11978,6 +12162,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "It is biased, because a fair dice would give about 600 ÷ 6 = 100 sixes, not 300.",
       },
+      {
+        question: "One fair dice is rolled. Which pair of results is mutually exclusive?",
+        choices: [
+          "2 and even",
+          "6 and over 4",
+          "2 and 5",
+          "3 and odd",
+        ],
+        accept: [
+          "2 and 5",
+        ],
+        answer: "One roll can't be both a 2 and a 5, so they are mutually exclusive. 2 is even, 6 is over 4 and 3 is odd, so those pairs can happen together.",
+      },
+      {
+        question: "Which word describes a set of events that covers every possible outcome?",
+        choices: [
+          "Independent",
+          "Exhaustive",
+          "Mutually exclusive",
+          "Conditional",
+        ],
+        accept: [
+          "Exhaustive",
+        ],
+        answer: "Exhaustive events cover every possible outcome between them, so one of them must happen. Mutually exclusive means they cannot happen at the same time.",
+      },
     ],
 
     misconceptions: [
@@ -13160,6 +13370,32 @@ export const MATHS: Record<string, TopicContent> = {
           "It stays the same",
         ],
         answer: "It stays the same, because the largest and smallest values both rise by 3, so their difference does not change.",
+      },
+      {
+        question: "Which of these is a measure of spread?",
+        choices: [
+          "Median",
+          "Mean",
+          "Mode",
+          "Interquartile range",
+        ],
+        accept: [
+          "Interquartile range",
+        ],
+        answer: "The interquartile range shows how spread out the middle 50% of the data is. The mean, median and mode are averages, which measure the centre.",
+      },
+      {
+        question: "On a box plot, what does the line inside the box show?",
+        choices: [
+          "Median",
+          "Mean",
+          "Mode",
+          "Range",
+        ],
+        accept: [
+          "Median",
+        ],
+        answer: "The box runs from the lower quartile to the upper quartile, and the line inside it marks the median. The mean is not shown on a box plot.",
       },
     ],
 
@@ -14833,6 +15069,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "4n − 7, because it goes up in 4s (4n = 4, 8, 12…) and each term is 7 less than 4n.",
       },
+      {
+        question: "What is the turning point of y = x² − 4?",
+        choices: [
+          "(−4, 0)",
+          "(0, 0)",
+          "(0, −4)",
+          "(2, 0)",
+        ],
+        accept: [
+          "(0, −4)",
+        ],
+        answer: "y = x² − 4 is y = x² moved down 4, so its minimum is at (0, −4). (0, 0) is the turning point of y = x², and (2, 0) is where the curve crosses the x-axis.",
+      },
+      {
+        question: "Which of these sequences is geometric?",
+        choices: [
+          "3, 6, 9, 12",
+          "3, 6, 12, 24",
+          "1, 4, 9, 16",
+          "1, 1, 2, 3",
+        ],
+        accept: [
+          "3, 6, 12, 24",
+        ],
+        answer: "In 3, 6, 12, 24 each term is multiplied by 2 (a common ratio), so it is geometric. 3, 6, 9, 12 adds 3 each time, so it is arithmetic.",
+      },
     ],
 
     misconceptions: [
@@ -15803,6 +16065,32 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "110°, because angle D = 180° − 110° = 70° (opposite angles), and the exterior angle at D is 180° − 70° = 110°.",
         higherOnly: true,
       },
+      {
+        question: "What is the name for part of the circumference between two points?",
+        choices: [
+          "Chord",
+          "Arc",
+          "Sector",
+          "Segment",
+        ],
+        accept: [
+          "Arc",
+        ],
+        answer: "An arc is a curved piece of the circumference. A chord is the straight line joining the same two points, and sectors and segments are regions.",
+      },
+      {
+        question: "Which quadrilateral can always have all four vertices on one circle?",
+        choices: [
+          "Rectangle",
+          "Parallelogram",
+          "Rhombus",
+          "Kite",
+        ],
+        accept: [
+          "Rectangle",
+        ],
+        answer: "A cyclic quadrilateral needs opposite angles adding to 180°. A rectangle has 90° + 90° = 180°. A general rhombus or parallelogram has equal opposite angles, not 180°.",
+      },
     ],
 
     misconceptions: [
@@ -16685,6 +16973,32 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "A rotation of 180°, because scale factor −1 keeps the size but sends every point to the opposite side of the centre.",
         higherOnly: true,
       },
+      {
+        question: "Which transformation has no invariant points at all?",
+        choices: [
+          "A rotation",
+          "A reflection",
+          "A translation",
+          "An enlargement",
+        ],
+        accept: [
+          "A translation",
+        ],
+        answer: "In a translation every point moves by the same vector, so nothing stays fixed. A rotation and an enlargement fix their centre; a reflection fixes its mirror line.",
+      },
+      {
+        question: "Which vector is parallel to 2a + 3b?",
+        choices: [
+          "2a + 6b",
+          "3a + 2b",
+          "4a + 3b",
+          "4a + 6b",
+        ],
+        accept: [
+          "4a + 6b",
+        ],
+        answer: "4a + 6b = 2(2a + 3b), a multiple of it, so it is parallel. 3a + 2b swaps the numbers and 2a + 6b doubles only one part, so both point another way.",
+      },
     ],
 
     misconceptions: [
@@ -17410,6 +17724,32 @@ export const MATHS: Record<string, TopicContent> = {
           "150 g",
         ],
         answer: "150 g, because about 6 or 7 apples make a kilogram; 15 g is grape-sized and 1.5 kg is heavier than a bag of sugar.",
+      },
+      {
+        question: "In a mark scheme, what is an accuracy (A) mark awarded for?",
+        choices: [
+          "A correct method",
+          "Neat working",
+          "A correct answer",
+          "Stating units",
+        ],
+        accept: [
+          "A correct answer",
+        ],
+        answer: "A marks are for correct answers or values, and usually depend on the method mark being earned first. M marks reward a correct method even if the answer is wrong.",
+      },
+      {
+        question: "A question asks for an exact answer. Which of these is exact?",
+        choices: [
+          "3.46",
+          "2√3",
+          "3.464",
+          "3.5",
+        ],
+        accept: [
+          "2√3",
+        ],
+        answer: "An exact answer keeps the surd (or π) rather than rounding. 2√3 = 3.4641…, so 3.46, 3.464 and 3.5 are all rounded approximations of it.",
       },
     ],
 
@@ -18774,6 +19114,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "One billion, because 10⁹ = 1 000 000 000, which is a thousand million.",
       },
+      {
+        question: "Which surd is already in its simplest form?",
+        choices: [
+          "√12",
+          "√18",
+          "√20",
+          "√15",
+        ],
+        accept: [
+          "√15",
+        ],
+        answer: "15 = 3 × 5 has no square factor, so √15 can't be simplified. √12 = 2√3, √18 = 3√2 and √20 = 2√5 all contain a square number.",
+      },
+      {
+        question: "What is the value of (2/3)⁻²?",
+        choices: [
+          "9/4",
+          "4/9",
+          "3/2",
+          "4/3",
+        ],
+        accept: [
+          "9/4",
+        ],
+        answer: "A negative index means take the reciprocal: (2/3)⁻² = (3/2)² = 9/4. 4/9 squares without flipping, and 3/2 flips but forgets to square.",
+      },
     ],
 
     misconceptions: [
@@ -19971,6 +20337,32 @@ export const MATHS: Record<string, TopicContent> = {
           "100π",
         ],
         answer: "100π, because 4πr² = 4 × π × 5² = 4 × 25 × π = 100π (square the radius first).",
+      },
+      {
+        question: "Which formula gives the curved surface area of a cone?",
+        choices: [
+          "2πrh",
+          "πrl",
+          "⅓πr²h",
+          "πr²",
+        ],
+        accept: [
+          "πrl",
+        ],
+        answer: "Curved surface area of a cone is πrl, where l is the slant height. 2πrh is a cylinder's curved surface and ⅓πr²h is the cone's volume.",
+      },
+      {
+        question: "A cuboid measures 2 m by 1 m by 0.5 m. What is its volume?",
+        choices: [
+          "3.5 m³",
+          "0.5 m³",
+          "1 m³",
+          "10 m³",
+        ],
+        accept: [
+          "1 m³",
+        ],
+        answer: "Volume = length × width × height = 2 × 1 × 0.5 = 1 m³. 3.5 comes from adding the three lengths instead of multiplying them.",
       },
     ],
 
@@ -21426,6 +21818,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "Speed, because the gradient is distance ÷ time — how far you travel per unit of time.",
       },
+      {
+        question: "Which quadrant contains the point (−3, 5)?",
+        choices: [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+        ],
+        accept: [
+          "Second",
+        ],
+        answer: "Quadrants are numbered anticlockwise from the top right. Negative x with positive y is the top left: the second quadrant. The third has both negative.",
+      },
+      {
+        question: "Which line is perpendicular to the x-axis?",
+        choices: [
+          "y = 2",
+          "y = 2x",
+          "x = 2",
+          "y = x + 2",
+        ],
+        accept: [
+          "x = 2",
+        ],
+        answer: "The x-axis is horizontal, so a line perpendicular to it is vertical, with an equation x = a. y = 2 is horizontal, so it is parallel to the x-axis.",
+      },
     ],
 
     misconceptions: [
@@ -22422,6 +22840,32 @@ export const MATHS: Record<string, TopicContent> = {
         ],
         answer: "4 cm by 10 cm, because both sides are multiplied by the same scale factor, 2; the others grow by different amounts.",
       },
+      {
+        question: "Triangles with sides 3, 4, 5 and 6, 8, 10 cm are best described as what?",
+        choices: [
+          "Congruent",
+          "Similar",
+          "Neither",
+          "Identical",
+        ],
+        accept: [
+          "Similar",
+        ],
+        answer: "Every side of the second is double the first, so they are similar with scale factor 2. They are not the same size, so they are not congruent.",
+      },
+      {
+        question: "The length scale factor is 2/3. What is the area scale factor?",
+        choices: [
+          "2/3",
+          "8/27",
+          "4/9",
+          "4/3",
+        ],
+        accept: [
+          "4/9",
+        ],
+        answer: "Area scale factor = (length scale factor)², so (2/3)² = 4/9. 8/27 is (2/3)³, which is the volume scale factor.",
+      },
     ],
 
     misconceptions: [
@@ -23259,6 +23703,32 @@ export const MATHS: Record<string, TopicContent> = {
           "135°",
         ],
         answer: "135°, because C is south-east of B (the triangle has two 45° angles), and south-east is a bearing of 135°.",
+      },
+      {
+        question: "Which instrument do you use to measure a bearing on a map?",
+        choices: [
+          "Compasses",
+          "Ruler",
+          "Protractor",
+          "Set square",
+        ],
+        accept: [
+          "Protractor",
+        ],
+        answer: "A bearing is an angle, so measure it with a protractor, clockwise from the north line. Compasses draw arcs and circles; a ruler measures distance.",
+      },
+      {
+        question: "Q is due west of P. What is the bearing of P from Q?",
+        choices: [
+          "270°",
+          "090°",
+          "180°",
+          "000°",
+        ],
+        accept: [
+          "090°",
+        ],
+        answer: "If Q is west of P, then P is east of Q, and due east is 090°. 270° is the bearing of Q from P, which is the opposite direction.",
       },
     ],
 
@@ -24377,6 +24847,32 @@ export const MATHS: Record<string, TopicContent> = {
           "5",
         ],
         answer: "5, because acceleration = change in velocity ÷ time = 20 ÷ 4 = 5 m/s².",
+      },
+      {
+        question: "Which of these is a unit of acceleration?",
+        choices: [
+          "g/cm³",
+          "km/h",
+          "m/s²",
+          "N/m²",
+        ],
+        accept: [
+          "m/s²",
+        ],
+        answer: "Acceleration is change in velocity per second, so its unit is m/s per second, written m/s². km/h is a speed, N/m² is pressure and g/cm³ is density.",
+      },
+      {
+        question: "A velocity–time graph slopes straight down but stays above zero. What is the object doing?",
+        choices: [
+          "Slowing down",
+          "Speeding up",
+          "Stationary",
+          "Going backwards",
+        ],
+        accept: [
+          "Slowing down",
+        ],
+        answer: "The gradient of a velocity–time graph is acceleration. Sloping down means the velocity is falling, so it is slowing down. Stationary needs velocity 0.",
       },
     ],
 

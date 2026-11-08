@@ -282,6 +282,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "The census counts the population and records characteristics so schools, hospitals, housing and transport can be planned. It is not a tax or immigration process.",
       },
+      {
+        question: "What does 'emigration' mean?",
+        choices: [
+          "Arriving to live here",
+          "Leaving to live abroad",
+          "Moving to another town",
+          "Visiting on holiday",
+        ],
+        accept: [
+          "Leaving to live abroad",
+        ],
+        answer: "Emigration is leaving your own country to settle in another. Immigration is the opposite: arriving in a new country to live there.",
+      },
+      {
+        question: "What is someone called whose claim for protection from persecution has been accepted?",
+        choices: [
+          "Asylum seeker",
+          "Economic migrant",
+          "Refugee",
+          "Tourist",
+        ],
+        accept: [
+          "Refugee",
+        ],
+        answer: "Once a claim is accepted the person is a refugee. While the claim is still being decided they are an asylum seeker.",
+      },
+      {
+        question: "Which ship brought Caribbean migrants to Tilbury in 1948?",
+        choices: [
+          "Mayflower",
+          "Queen Mary",
+          "Titanic",
+          "Empire Windrush",
+        ],
+        accept: [
+          "Empire Windrush",
+        ],
+        answer: "The Empire Windrush docked at Tilbury in 1948, giving its name to the Windrush generation. The Mayflower took settlers to America in 1620.",
+      },
+      {
+        question: "How many protected characteristics does the Equality Act 2010 list?",
+        choices: [
+          "5",
+          "7",
+          "9",
+          "12",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "There are nine, including age, disability, race, religion or belief, sex and sexual orientation. Treating someone worse because of one is discrimination.",
+      },
+      {
+        question: "Which test do most adults take before applying to become British citizens?",
+        choices: [
+          "Life in the UK test",
+          "A driving theory test",
+          "The 11-plus",
+          "A GCSE in Citizenship",
+        ],
+        accept: [
+          "Life in the UK test",
+        ],
+        answer: "Most applicants for naturalisation must pass the Life in the UK test on British history, values and institutions, and show they can speak English.",
+      },
+      {
+        question: "What is the movement of people from one place to another to live called?",
+        choices: [
+          "Integration",
+          "Migration",
+          "Assimilation",
+          "Naturalisation",
+        ],
+        accept: [
+          "Migration",
+        ],
+        answer: "Migration is moving to live somewhere else, within a country or abroad. Naturalisation is the legal process of becoming a citizen.",
+      },
+      {
+        question: "At which event do new British citizens make an oath or affirmation of allegiance?",
+        choices: [
+          "State Opening",
+          "Citizenship ceremony",
+          "Coronation",
+          "Remembrance Sunday",
+        ],
+        accept: [
+          "Citizenship ceremony",
+        ],
+        answer: "New citizens attend a citizenship ceremony, where they make an oath or affirmation and a pledge to respect the UK's rights, freedoms and laws.",
+      },
     ],
     misconceptions: [
       {
@@ -570,6 +661,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "18",
         ],
         answer: "18 is the minimum age for jury service, and it is a legal duty rather than a choice when you are summoned.",
+      },
+      {
+        question: "Which of these is a QUALIFIED right that can be limited?",
+        choices: [
+          "Freedom from torture",
+          "Right to privacy",
+          "Freedom from slavery",
+          "No degrading treatment",
+        ],
+        accept: [
+          "Right to privacy",
+        ],
+        answer: "Privacy can be limited, for example for national security, if it is proportionate. Freedom from torture, slavery and degrading treatment are absolute.",
+      },
+      {
+        question: "In which year was Magna Carta sealed?",
+        choices: [
+          "1066",
+          "1215",
+          "1688",
+          "1832",
+        ],
+        accept: [
+          "1215",
+        ],
+        answer: "King John sealed Magna Carta in 1215. 1066 is the Norman Conquest and 1688 is the Glorious Revolution.",
+      },
+      {
+        question: "In which city does the European Court of Human Rights sit?",
+        choices: [
+          "Brussels",
+          "The Hague",
+          "Luxembourg",
+          "Strasbourg",
+        ],
+        accept: [
+          "Strasbourg",
+        ],
+        answer: "The European Court of Human Rights sits in Strasbourg. The Hague hosts the International Criminal Court, and Brussels is home to much of the EU.",
+      },
+      {
+        question: "Which body promotes and enforces equality law in Great Britain?",
+        choices: [
+          "EHRC",
+          "Ofcom",
+          "IPSO",
+          "The CPS",
+        ],
+        accept: [
+          "EHRC",
+        ],
+        answer: "The Equality and Human Rights Commission (EHRC) enforces the Equality Act. Ofcom regulates broadcasting and IPSO regulates newspapers.",
+      },
+      {
+        question: "What type of right is a refund on faulty goods under UK law?",
+        choices: [
+          "Human right",
+          "Absolute right",
+          "Legal right",
+          "Moral right",
+        ],
+        accept: [
+          "Legal right",
+        ],
+        answer: "A legal right is given by a country's own laws, here the Consumer Rights Act. Human rights belong to everyone simply for being human.",
+      },
+      {
+        question: "What is the legal status of the Universal Declaration of Human Rights?",
+        choices: [
+          "Not legally binding",
+          "Binding on all states",
+          "Part of UK statute law",
+          "Enforced by the ICC",
+        ],
+        accept: [
+          "Not legally binding",
+        ],
+        answer: "The UDHR is a declaration, not a treaty, so it does not bind states by itself. Binding treaties such as the ECHR were built on it later.",
+      },
+      {
+        question: "Which of these is a protected characteristic under the Equality Act 2010?",
+        choices: [
+          "Height",
+          "Hair colour",
+          "Postcode",
+          "Pregnancy",
+        ],
+        accept: [
+          "Pregnancy",
+        ],
+        answer: "Pregnancy and maternity is one of the nine protected characteristics. Height, hair colour and where you live are not protected by the Act.",
       },
     ],
     misconceptions: [
@@ -860,6 +1042,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Under-18s must have an appropriate adult present. They are normally dealt with in a youth court, which sits in private.",
       },
+      {
+        question: "Who decides whether the defendant is guilty in a Crown Court trial?",
+        choices: [
+          "The judge",
+          "The jury",
+          "The CPS",
+          "The police",
+        ],
+        accept: [
+          "The jury",
+        ],
+        answer: "The jury of twelve decides guilty or not guilty. The judge directs them on the law and, if there is a conviction, passes the sentence.",
+      },
+      {
+        question: "Magistrates who hear cases in a magistrates' court are usually:",
+        choices: [
+          "Senior judges",
+          "Unpaid volunteers",
+          "Elected politicians",
+          "Police officers",
+        ],
+        accept: [
+          "Unpaid volunteers",
+        ],
+        answer: "Most magistrates are trained, unpaid volunteers from the local community. District judges, who also sit there, are paid lawyers.",
+      },
+      {
+        question: "What is the person accused in a criminal trial called?",
+        choices: [
+          "Claimant",
+          "Prosecutor",
+          "Defendant",
+          "Plaintiff",
+        ],
+        accept: [
+          "Defendant",
+        ],
+        answer: "The accused is the defendant. The claimant (once called the plaintiff) brings a civil case; the prosecution brings a criminal one.",
+      },
+      {
+        question: "Which court hears most criminal cases against ten to seventeen-year-olds?",
+        choices: [
+          "Crown Court",
+          "County court",
+          "Family court",
+          "Youth court",
+        ],
+        accept: [
+          "Youth court",
+        ],
+        answer: "The youth court is a special, less formal magistrates' court for under-18s. Only very serious youth cases go to the Crown Court.",
+      },
+      {
+        question: "Which of these would be a CIVIL case rather than a criminal one?",
+        choices: [
+          "Burglary",
+          "Breach of contract",
+          "Murder",
+          "Theft",
+        ],
+        accept: [
+          "Breach of contract",
+        ],
+        answer: "Breaking a contract is a dispute between individuals, so it is civil law. Burglary, murder and theft are offences against society, so they are criminal.",
+      },
+      {
+        question: "Which aim of sentencing tries to change the offender's behaviour through help?",
+        choices: [
+          "Deterrence",
+          "Retribution",
+          "Rehabilitation",
+          "Reparation",
+        ],
+        accept: [
+          "Rehabilitation",
+        ],
+        answer: "Rehabilitation reforms the offender, for example through education or treatment. Deterrence discourages offending and retribution is deserved punishment.",
+      },
+      {
+        question: "Which of these is a right you have if arrested in England and Wales?",
+        choices: [
+          "Release within an hour",
+          "Free legal advice",
+          "Choosing your officer",
+          "A jury at the station",
+        ],
+        accept: [
+          "Free legal advice",
+        ],
+        answer: "Under PACE you can get free legal advice, for example from a duty solicitor, and have someone told that you have been arrested.",
+      },
     ],
     misconceptions: [
       {
@@ -1147,6 +1420,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Refuse collection",
         ],
         answer: "Councils run refuse collection, schools, housing, planning, social care, libraries and local roads. Defence, currency and passports are national.",
+      },
+      {
+        question: "Who is the head of state in the UK?",
+        choices: [
+          "The Prime Minister",
+          "The monarch",
+          "The Speaker",
+          "The Lord Chancellor",
+        ],
+        accept: [
+          "The monarch",
+        ],
+        answer: "In a constitutional monarchy the monarch is head of state with mostly ceremonial powers. The Prime Minister is head of government.",
+      },
+      {
+        question: "What is a White Paper?",
+        choices: [
+          "Ideas for discussion",
+          "A finished Act",
+          "Firm policy proposals",
+          "A party manifesto",
+        ],
+        accept: [
+          "Firm policy proposals",
+        ],
+        answer: "A White Paper sets out the government's firmer plans, often before a bill. A Green Paper is the earlier one, with ideas put out for discussion.",
+      },
+      {
+        question: "Who chairs debates and keeps order in the House of Commons?",
+        choices: [
+          "The Chief Whip",
+          "The Prime Minister",
+          "The Lord Speaker",
+          "The Speaker",
+        ],
+        accept: [
+          "The Speaker",
+        ],
+        answer: "The Speaker chairs Commons debates and must be politically neutral. The Lord Speaker does the same job in the House of Lords.",
+      },
+      {
+        question: "What is the Welsh Parliament also called?",
+        choices: [
+          "Senedd",
+          "Holyrood",
+          "Stormont",
+          "Westminster",
+        ],
+        accept: [
+          "Senedd",
+        ],
+        answer: "The Welsh Parliament is the Senedd. Holyrood is the Scottish Parliament, Stormont the Northern Ireland Assembly, and Westminster the UK Parliament.",
+      },
+      {
+        question: "What is the largest party not in government in the Commons called?",
+        choices: [
+          "The Cabinet",
+          "Official Opposition",
+          "The coalition",
+          "The backbenches",
+        ],
+        accept: [
+          "Official Opposition",
+        ],
+        answer: "The Official Opposition challenges the government and forms a shadow cabinet ready to take over. The Cabinet is the government's senior ministers.",
+      },
+      {
+        question: "At which stage of a bill do MPs examine it line by line and suggest amendments?",
+        choices: [
+          "First reading",
+          "Royal assent",
+          "Committee stage",
+          "Second reading",
+        ],
+        accept: [
+          "Committee stage",
+        ],
+        answer: "At committee stage a small group of MPs goes through the bill in detail. Second reading is the earlier debate on its main principles.",
+      },
+      {
+        question: "What are the elected members of a local council called?",
+        choices: [
+          "Councillors",
+          "MPs",
+          "Peers",
+          "Magistrates",
+        ],
+        accept: [
+          "Councillors",
+        ],
+        answer: "Councillors are elected locally to run council services like bins and libraries. MPs sit in the Commons and peers in the Lords.",
       },
     ],
     misconceptions: [
@@ -1439,6 +1803,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Safe seats can depress turnout, because voters on both sides feel the result is already decided. Marginals are the close ones campaigns concentrate on.",
       },
+      {
+        question: "What is a 'marginal' seat?",
+        choices: [
+          "One held for decades",
+          "One won by few votes",
+          "An unelected seat",
+          "A seat with no MP",
+        ],
+        accept: [
+          "One won by few votes",
+        ],
+        answer: "A marginal seat is won by a small margin, so it could easily change hands. A safe seat is one the same party wins comfortably every time.",
+      },
+      {
+        question: "Besides British citizens, which of these can vote in UK general elections if resident?",
+        choices: [
+          "French citizens",
+          "Irish citizens",
+          "US citizens",
+          "German citizens",
+        ],
+        accept: [
+          "Irish citizens",
+        ],
+        answer: "Resident Irish citizens and qualifying Commonwealth citizens can vote in general elections. Most other EU citizens, and US citizens, cannot.",
+      },
+      {
+        question: "What does a secret ballot mainly protect voters from?",
+        choices: [
+          "Long queues",
+          "Spoilt papers",
+          "Low turnout",
+          "Intimidation",
+        ],
+        accept: [
+          "Intimidation",
+        ],
+        answer: "Because nobody can see how you voted, you cannot be bribed or bullied into voting a certain way. It does nothing about queues or turnout.",
+      },
+      {
+        question: "The Additional Member System combines First Past the Post with:",
+        choices: [
+          "Party list seats",
+          "Ranked ballots",
+          "Run-off rounds",
+          "Postal-only voting",
+        ],
+        accept: [
+          "Party list seats",
+        ],
+        answer: "Under AMS you vote for a constituency MP and for a party list, which tops up seats to be more proportional. Ranking candidates is STV.",
+      },
+      {
+        question: "What is lobbying?",
+        choices: [
+          "Counting the votes",
+          "Writing a manifesto",
+          "Persuading politicians",
+          "Standing for election",
+        ],
+        accept: [
+          "Persuading politicians",
+        ],
+        answer: "Lobbying is trying to persuade MPs or ministers to support your cause. Pressure groups and businesses lobby; parties write manifestos.",
+      },
+      {
+        question: "Which of these is a common criticism of First Past the Post?",
+        choices: [
+          "Too complicated",
+          "Weak local MP link",
+          "Disproportionate seats",
+          "Gives many coalitions",
+        ],
+        accept: [
+          "Disproportionate seats",
+        ],
+        answer: "FPTP often gives parties a share of seats very different from their share of votes. It is simple, keeps a strong local link and rarely gives coalitions.",
+      },
+      {
+        question: "How do you mark a ballot paper in a UK general election?",
+        choices: [
+          "Numbers in order",
+          "A single cross",
+          "Two crosses",
+          "Your signature",
+        ],
+        accept: [
+          "A single cross",
+        ],
+        answer: "Under First Past the Post you put one cross next to one candidate. Numbering candidates in order of preference is how STV works.",
+      },
     ],
     misconceptions: [
       {
@@ -1725,6 +2180,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "The school changed its policy",
         ],
         answer: "Outputs measure activity; impact measures what actually changed. Examiners credit impact, which is why your aim has to be measurable.",
+      },
+      {
+        question: "What is volunteering?",
+        choices: [
+          "Paid part-time work",
+          "Giving time for free",
+          "Compulsory service",
+          "An apprenticeship",
+        ],
+        accept: [
+          "Giving time for free",
+        ],
+        answer: "Volunteering is choosing to give your time unpaid to help others or a cause. It is not compulsory and, unlike an apprenticeship, it is not a job.",
+      },
+      {
+        question: "Which of these is an example of direct action?",
+        choices: [
+          "Writing to your MP",
+          "Signing a petition",
+          "A sit-in protest",
+          "Voting in an election",
+        ],
+        accept: [
+          "A sit-in protest",
+        ],
+        answer: "Direct action means acting yourself to cause disruption or change, such as a sit-in. Writing to an MP or petitioning asks someone else to act.",
+      },
+      {
+        question: "Who should you contact first about a national law you want changed?",
+        choices: [
+          "Your councillor",
+          "Your MP",
+          "A local magistrate",
+          "Your head teacher",
+        ],
+        accept: [
+          "Your MP",
+        ],
+        answer: "National laws are made at Westminster, so your MP is the right person. Councillors deal with local services, not Acts of Parliament.",
+      },
+      {
+        question: "Which is the best way to judge whether a campaign changed people's views?",
+        choices: [
+          "Count leaflets made",
+          "Compare two surveys",
+          "Ask your best friend",
+          "Count meetings held",
+        ],
+        accept: [
+          "Compare two surveys",
+        ],
+        answer: "Surveying before and after shows impact, the actual change. Counting leaflets or meetings only measures output, how busy you were.",
+      },
+      {
+        question: "Which online method lets the public ask Parliament to debate an issue?",
+        choices: [
+          "A referendum",
+          "A by-election",
+          "An e-petition",
+          "A select committee",
+        ],
+        accept: [
+          "An e-petition",
+        ],
+        answer: "British citizens and UK residents can start an e-petition; at 100,000 signatures it is considered for debate. A referendum is called by government.",
+      },
+      {
+        question: "Who would you target to get the lighting in a local park improved?",
+        choices: [
+          "The Supreme Court",
+          "The House of Lords",
+          "The local council",
+          "The UN",
+        ],
+        accept: [
+          "The local council",
+        ],
+        answer: "Parks are a local council service, so councillors are the decision-makers. Target whoever actually has the power to make the change.",
+      },
+      {
+        question: "Which of these is a strength of using social media in a campaign?",
+        choices: [
+          "Hard to check sources",
+          "Reaches many quickly",
+          "Reaches only locals",
+          "Needs no planning",
+        ],
+        accept: [
+          "Reaches many quickly",
+        ],
+        answer: "Social media can spread a message to many people fast and cheaply. Sources can be hard to check, it reaches far beyond locals, and campaigns still need planning.",
       },
     ],
     misconceptions: [
@@ -2017,6 +2563,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Whips enforce party discipline. A three-line whip is the strongest instruction, and repeatedly defying it can cost an MP the party whip.",
       },
+      {
+        question: "Who formally appoints the Prime Minister?",
+        choices: [
+          "The Speaker",
+          "The Cabinet",
+          "The monarch",
+          "The Supreme Court",
+        ],
+        accept: [
+          "The monarch",
+        ],
+        answer: "The monarch formally appoints as PM the person who can command the confidence of the Commons, usually the leader of the largest party.",
+      },
+      {
+        question: "How often is Prime Minister's Questions held while Parliament is sitting?",
+        choices: [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Yearly",
+        ],
+        accept: [
+          "Weekly",
+        ],
+        answer: "PMQs takes place once a week, on Wednesdays, when MPs question the PM. It is one of the most public ways the Commons scrutinises government.",
+      },
+      {
+        question: "A single party governing without a majority in the Commons is a:",
+        choices: [
+          "Coalition",
+          "Shadow cabinet",
+          "Minority government",
+          "Select committee",
+        ],
+        accept: [
+          "Minority government",
+        ],
+        answer: "A minority government relies on other parties' votes to pass laws. A coalition is two or more parties sharing power together.",
+      },
+      {
+        question: "In a vote of no confidence, MPs decide whether they still support the:",
+        choices: [
+          "Government",
+          "Speaker",
+          "Monarch",
+          "Supreme Court",
+        ],
+        accept: [
+          "Government",
+        ],
+        answer: "A no-confidence vote tests whether the government still has the Commons' backing. If it loses, it is expected to resign or call an election.",
+      },
+      {
+        question: "Which Cabinet minister is responsible for policing and immigration?",
+        choices: [
+          "Foreign Secretary",
+          "Home Secretary",
+          "Chancellor",
+          "Chief Whip",
+        ],
+        accept: [
+          "Home Secretary",
+        ],
+        answer: "The Home Secretary runs the Home Office: policing, immigration and security. The Foreign Secretary deals with relations with other countries.",
+      },
+      {
+        question: "What is a 'three-line whip'?",
+        choices: [
+          "A free vote",
+          "Strictest voting order",
+          "A minor request",
+          "A shadow minister",
+        ],
+        accept: [
+          "Strictest voting order",
+        ],
+        answer: "A three-line whip is the most serious instruction to vote with the party; defying it can mean losing the whip. A free vote lets MPs decide.",
+      },
+      {
+        question: "In the Commons chamber, where do government ministers sit?",
+        choices: [
+          "Back benches",
+          "Cross benches",
+          "Front bench",
+          "Public gallery",
+        ],
+        accept: [
+          "Front bench",
+        ],
+        answer: "Ministers sit on the front bench facing their shadows. MPs without a post are backbenchers; cross benches are in the Lords.",
+      },
     ],
     misconceptions: [
       {
@@ -2306,6 +2943,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Ofcom",
         ],
         answer: "Ofcom enforces accuracy and impartiality on broadcasters and can fine them. IPSO is the main self-regulator for newspapers.",
+      },
+      {
+        question: "What is SPOKEN defamation called?",
+        choices: [
+          "Libel",
+          "Slander",
+          "Censorship",
+          "Contempt",
+        ],
+        accept: [
+          "Slander",
+        ],
+        answer: "Slander is spoken defamation, which does not last. Libel is defamation in permanent form, such as print, online or broadcast.",
+      },
+      {
+        question: "Which offence might a newspaper commit by prejudicing a trial that is under way?",
+        choices: [
+          "Libel",
+          "Censorship",
+          "Contempt of court",
+          "Slander",
+        ],
+        accept: [
+          "Contempt of court",
+        ],
+        answer: "Publishing material that could sway a jury is contempt of court, as it threatens a fair trial. Libel is about damaging someone's reputation.",
+      },
+      {
+        question: "On social media, what decides which posts appear in your feed?",
+        choices: [
+          "A firewall",
+          "A cookie",
+          "A hashtag",
+          "An algorithm",
+        ],
+        accept: [
+          "An algorithm",
+        ],
+        answer: "An algorithm picks posts it predicts you will engage with. This can push you into an echo chamber of views you already hold.",
+      },
+      {
+        question: "What is investigative journalism?",
+        choices: [
+          "Writing opinion pieces",
+          "Uncovering wrongdoing",
+          "Reviewing films",
+          "Live sports coverage",
+        ],
+        accept: [
+          "Uncovering wrongdoing",
+        ],
+        answer: "Investigative journalists dig out hidden facts, often exposing wrongdoing by the powerful. It is a key part of the press's watchdog role.",
+      },
+      {
+        question: "Which of these is a feature of a free press?",
+        choices: [
+          "Needs state approval",
+          "Can criticise leaders",
+          "Owned by the state",
+          "Banned from politics",
+        ],
+        accept: [
+          "Can criticise leaders",
+        ],
+        answer: "A free press can report on and criticise those in power without state control. Needing government approval to publish would be censorship.",
+      },
+      {
+        question: "A news report leaves out one side's view entirely. What is this?",
+        choices: [
+          "Impartiality",
+          "Bias by omission",
+          "Libel",
+          "Fact-checking",
+        ],
+        accept: [
+          "Bias by omission",
+        ],
+        answer: "Leaving out key facts or views is bias by omission. Impartiality means fairly giving due weight to the different sides.",
+      },
+      {
+        question: "Which is the best first check on a claim that is going viral online?",
+        choices: [
+          "Count its likes",
+          "Check other sources",
+          "See if it's trending",
+          "Read the comments",
+        ],
+        accept: [
+          "Check other sources",
+        ],
+        answer: "Checking reliable independent sources shows whether a claim stands up. Likes and trending only show popularity, not truth.",
       },
     ],
     misconceptions: [
@@ -2597,6 +3325,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Sanctions",
         ],
         answer: "Sanctions avoid war but often affect ordinary citizens more than the leaders they target, which is the standard criticism of them.",
+      },
+      {
+        question: "In which city is the United Nations headquartered?",
+        choices: [
+          "Geneva",
+          "Brussels",
+          "New York",
+          "Paris",
+        ],
+        accept: [
+          "New York",
+        ],
+        answer: "The UN's headquarters is in New York. Geneva hosts several UN offices and agencies, and Brussels is a base of the EU and NATO.",
+      },
+      {
+        question: "What is the voluntary association of countries, mostly former British territories, called?",
+        choices: [
+          "NATO",
+          "The Commonwealth",
+          "The UN",
+          "The Council of Europe",
+        ],
+        accept: [
+          "The Commonwealth",
+        ],
+        answer: "The Commonwealth is a voluntary association, most of whose members were once part of the British Empire. NATO is a military alliance.",
+      },
+      {
+        question: "Which of these is a permanent member of the UN Security Council?",
+        choices: [
+          "Germany",
+          "Japan",
+          "India",
+          "The UK",
+        ],
+        accept: [
+          "The UK",
+        ],
+        answer: "The five permanent members are the UK, US, France, Russia and China, each with a veto. Germany, Japan and India can only hold temporary seats.",
+      },
+      {
+        question: "Which of these is an NGO?",
+        choices: [
+          "Oxfam",
+          "NATO",
+          "The UN",
+          "The WTO",
+        ],
+        accept: [
+          "Oxfam",
+        ],
+        answer: "Oxfam is a charity independent of any government, so it is an NGO. NATO, the UN and the WTO are made up of member states' governments.",
+      },
+      {
+        question: "In which city is the International Criminal Court based?",
+        choices: [
+          "Strasbourg",
+          "The Hague",
+          "New York",
+          "Geneva",
+        ],
+        accept: [
+          "The Hague",
+        ],
+        answer: "The ICC sits in The Hague and tries individuals for genocide and war crimes. Strasbourg is home to the European Court of Human Rights.",
+      },
+      {
+        question: "What kind of aid is emergency food and shelter after an earthquake?",
+        choices: [
+          "Development aid",
+          "Military aid",
+          "Humanitarian aid",
+          "Tied aid",
+        ],
+        accept: [
+          "Humanitarian aid",
+        ],
+        answer: "Humanitarian aid is short-term emergency relief that saves lives. Development aid is long-term, such as building schools or clean water systems.",
+      },
+      {
+        question: "Who provides the troops for UN peacekeeping missions?",
+        choices: [
+          "The UN's own army",
+          "NATO only",
+          "Member states",
+          "Private companies",
+        ],
+        accept: [
+          "Member states",
+        ],
+        answer: "The UN has no standing army, so member states volunteer troops, the 'blue helmets'. NATO is a separate alliance.",
       },
     ],
     misconceptions: [
@@ -2891,6 +3710,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Health, pensions and welfare dominate public spending, which is why they dominate the political argument about tax.",
       },
+      {
+        question: "What is net pay?",
+        choices: [
+          "Pay before deductions",
+          "Pay plus bonuses",
+          "Pay after deductions",
+          "The hourly pay rate",
+        ],
+        accept: [
+          "Pay after deductions",
+        ],
+        answer: "Net pay is what you take home after income tax and National Insurance are taken off. Gross pay is the figure before deductions.",
+      },
+      {
+        question: "Which tax do companies pay on their profits?",
+        choices: [
+          "VAT",
+          "Corporation tax",
+          "Council tax",
+          "Income tax",
+        ],
+        accept: [
+          "Corporation tax",
+        ],
+        answer: "Corporation tax is a direct tax on company profits. Income tax is paid by individuals on what they earn, and VAT is added to spending.",
+      },
+      {
+        question: "Who presents the government's Budget to Parliament?",
+        choices: [
+          "The Prime Minister",
+          "The Chancellor",
+          "The Bank of England",
+          "The Speaker",
+        ],
+        accept: [
+          "The Chancellor",
+        ],
+        answer: "The Chancellor of the Exchequer presents the Budget of tax and spending plans. The Bank of England is independent and sets interest rates.",
+      },
+      {
+        question: "Which body collects most taxes in the UK?",
+        choices: [
+          "HMRC",
+          "The Treasury",
+          "DWP",
+          "Ofcom",
+        ],
+        accept: [
+          "HMRC",
+        ],
+        answer: "HM Revenue and Customs collects taxes such as income tax and VAT. The Treasury decides tax policy; the DWP pays out benefits.",
+      },
+      {
+        question: "Which 1942 report laid the foundations of the UK welfare state?",
+        choices: [
+          "Leveson Report",
+          "Beveridge Report",
+          "Black Report",
+          "Magna Carta",
+        ],
+        accept: [
+          "Beveridge Report",
+        ],
+        answer: "The Beveridge Report named five 'giant evils' such as want and disease, leading to the welfare state. Leveson was a 2012 report on the press.",
+      },
+      {
+        question: "Which tax-funded service was founded in 1948?",
+        choices: [
+          "The BBC",
+          "The police",
+          "State pension",
+          "The NHS",
+        ],
+        accept: [
+          "The NHS",
+        ],
+        answer: "The NHS began in 1948, free at the point of use and paid for from taxes. The state pension began in 1909 and the BBC in the 1920s.",
+      },
+      {
+        question: "What does a higher APR on a loan mean?",
+        choices: [
+          "Borrowing costs more",
+          "Borrowing costs less",
+          "The loan is shorter",
+          "No interest is paid",
+        ],
+        accept: [
+          "Borrowing costs more",
+        ],
+        answer: "APR is the yearly cost of borrowing including interest and fees, so a higher APR means you pay back more. It lets you compare loans fairly.",
+      },
     ],
     misconceptions: [
       {
@@ -3182,6 +4092,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Recidivism is the standard measure, and high rates after short custodial sentences are the strongest evidence in the debate about prison.",
       },
+      {
+        question: "What is the supervision of offenders in the community called?",
+        choices: [
+          "Parole",
+          "Probation",
+          "Remand",
+          "Custody",
+        ],
+        accept: [
+          "Probation",
+        ],
+        answer: "The Probation Service supervises offenders serving sentences in the community or after release. Parole is the decision to release a prisoner early.",
+      },
+      {
+        question: "Which body decides whether certain prisoners are released on parole?",
+        choices: [
+          "The jury",
+          "The CPS",
+          "The Parole Board",
+          "The police",
+        ],
+        accept: [
+          "The Parole Board",
+        ],
+        answer: "The Parole Board decides whether it is safe to release some prisoners early under conditions. The CPS decides whether to prosecute.",
+      },
+      {
+        question: "People called for jury service are chosen at random from the:",
+        choices: [
+          "Census",
+          "Electoral register",
+          "Phone book",
+          "Tax records",
+        ],
+        accept: [
+          "Electoral register",
+        ],
+        answer: "Jurors are picked at random from the electoral register, so being on the register means you can be picked. The census is anonymous and not used.",
+      },
+      {
+        question: "Which aim of sentencing is about discouraging others from committing crime?",
+        choices: [
+          "Rehabilitation",
+          "Reparation",
+          "Retribution",
+          "Deterrence",
+        ],
+        accept: [
+          "Deterrence",
+        ],
+        answer: "Deterrence uses the sentence to put people off offending. Retribution is punishment the offender deserves; reparation is repaying the harm.",
+      },
+      {
+        question: "Which body issues the guidelines that courts in England and Wales follow when sentencing?",
+        choices: [
+          "Sentencing Council",
+          "Parole Board",
+          "Home Office",
+          "The CPS",
+        ],
+        accept: [
+          "Sentencing Council",
+        ],
+        answer: "The Sentencing Council sets guidelines so similar cases get similar sentences. The Home Office runs policing and the CPS prosecutes.",
+      },
+      {
+        question: "What is the formal warning police give when they arrest you called?",
+        choices: [
+          "A warrant",
+          "A summons",
+          "The caution",
+          "An injunction",
+        ],
+        accept: [
+          "The caution",
+        ],
+        answer: "The caution says you need not say anything, but it may harm your defence if you don't mention something you later rely on in court. A warrant allows an arrest or search.",
+      },
+      {
+        question: "What is being held in custody while awaiting trial called?",
+        choices: [
+          "Parole",
+          "Bail",
+          "Probation",
+          "Remand",
+        ],
+        accept: [
+          "Remand",
+        ],
+        answer: "A defendant on remand is kept in custody until trial. Bail is the opposite: being released until trial, sometimes with conditions.",
+      },
     ],
     misconceptions: [
       {
@@ -3466,6 +4467,97 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "They change at every Budget, so a memorised figure may be out of date",
         ],
         answer: "Describe the structure instead — direct and indirect, progressive bands. That stays true regardless of which year you sit the exam.",
+      },
+      {
+        question: "Which command word asks you to say exactly what a term means?",
+        choices: [
+          "Evaluate",
+          "Define",
+          "Justify",
+          "Analyse",
+        ],
+        accept: [
+          "Define",
+        ],
+        answer: "Define means give the precise meaning of a term. Evaluate needs both sides and a judgement, which takes far longer.",
+      },
+      {
+        question: "Which of these statements is an opinion rather than a fact?",
+        choices: [
+          "The UK has a monarch",
+          "MPs are elected",
+          "PR would be fairer",
+          "Juries have 12 people",
+        ],
+        accept: [
+          "PR would be fairer",
+        ],
+        answer: "'Fairer' is a judgement people disagree about, so it is an opinion. The others can be checked against evidence, so they are facts.",
+      },
+      {
+        question: "What does the command word 'analyse' ask you to do?",
+        choices: [
+          "Just list facts",
+          "Give only your opinion",
+          "Break down and explain",
+          "Copy out the source",
+        ],
+        accept: [
+          "Break down and explain",
+        ],
+        answer: "Analyse means break an issue into parts and explain how they link or cause each other. Listing facts with no explanation scores low.",
+      },
+      {
+        question: "Which command word asks you to back a decision or view with reasons and evidence?",
+        choices: [
+          "Describe",
+          "Identify",
+          "Outline",
+          "Justify",
+        ],
+        accept: [
+          "Justify",
+        ],
+        answer: "Justify means support a view or choice with reasons and evidence. Describe and outline only ask what something is like, with no argument.",
+      },
+      {
+        question: "Why should you check who produced a source and why?",
+        choices: [
+          "To judge reliability",
+          "To date the events",
+          "To find its argument",
+          "To find more evidence",
+        ],
+        accept: [
+          "To judge reliability",
+        ],
+        answer: "Provenance (who, when and why) shows how far a source can be trusted. A campaign group's leaflet, for example, may be one-sided.",
+      },
+      {
+        question: "Which command word asks you simply to pick out a point, with no explanation?",
+        choices: [
+          "Evaluate",
+          "Discuss",
+          "Identify",
+          "Assess",
+        ],
+        accept: [
+          "Identify",
+        ],
+        answer: "Identify needs only a short answer naming the point. Evaluate, discuss and assess all need both sides and a judgement.",
+      },
+      {
+        question: "Writing 'the government made a law' confuses the executive with which branch?",
+        choices: [
+          "The judiciary",
+          "The legislature",
+          "The monarchy",
+          "The civil service",
+        ],
+        accept: [
+          "The legislature",
+        ],
+        answer: "The government proposes bills, but Parliament, the legislature, makes the law. Mixing up the two is a common way to lose marks.",
       },
     ],
     misconceptions: [

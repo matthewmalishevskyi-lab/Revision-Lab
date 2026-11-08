@@ -739,6 +739,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "The number of protons defines the element. Changing neutrons gives an isotope, and gaining or losing electrons makes an ion of the same element.",
       },
+      {
+        question: "Which scientist's team carried out the alpha particle scattering experiment?",
+        choices: [
+          "Bohr",
+          "Chadwick",
+          "Thomson",
+          "Rutherford",
+        ],
+        accept: [
+          "Rutherford",
+        ],
+        answer: "Rutherford, with Geiger and Marsden, fired alpha particles at gold foil, leading to the nuclear model. Thomson found the electron, Bohr the shells and Chadwick the neutron.",
+      },
     ],
     misconceptions: [
       {
@@ -1449,6 +1462,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Potassium bromide",
         ],
         answer: "Metal halides take the metal name first, then the halogen ending in -ide. A bromate contains oxygen as well, so it is a different compound.",
+      },
+      {
+        question: "Which of these halogens is a solid at room temperature?",
+        choices: [
+          "Fluorine",
+          "Iodine",
+          "Chlorine",
+          "Bromine",
+        ],
+        accept: [
+          "Iodine",
+        ],
+        answer: "Melting and boiling points rise going down group 7. Fluorine and chlorine are gases, bromine is a red-brown liquid and iodine is a dark grey solid.",
       },
     ],
     misconceptions: [
@@ -2172,6 +2198,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Sulfate is SO₄²⁻ and potassium is K⁺, so two K⁺ ions balance one sulfate, giving K₂SO₄. One K⁺ would leave the compound with an overall charge.",
       },
+      {
+        question: "Which molecule contains a triple covalent bond?",
+        choices: [
+          "O₂",
+          "Cl₂",
+          "N₂",
+          "H₂",
+        ],
+        accept: [
+          "N₂",
+        ],
+        answer: "Each nitrogen atom has 5 outer electrons and needs 3 more, so the two atoms share three pairs. O₂ has a double bond, while Cl₂ and H₂ have single bonds.",
+      },
     ],
     misconceptions: [
       {
@@ -2885,6 +2924,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Solid",
         ],
         answer: "Strong forces hold solid particles in fixed positions so they can only vibrate. In liquids the forces are weaker, and in gases they are very weak.",
+      },
+      {
+        question: "Which property makes carbon nanotubes useful for reinforcing materials?",
+        choices: [
+          "Low melting point",
+          "Soft and slippery",
+          "High tensile strength",
+          "Soluble in water",
+        ],
+        accept: [
+          "High tensile strength",
+        ],
+        answer: "Nanotubes are cylinders of strongly bonded carbon, so they are very strong for their mass, e.g. in tennis rackets. Soft and slippery describes graphite's layers.",
       },
     ],
     misconceptions: [
@@ -3600,6 +3652,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Changing the solvent",
         ],
         answer: "Rf depends on how the substance shares itself between solvent and paper, so a new solvent changes it. Spot size and paper length do not change the ratio.",
+      },
+      {
+        question: "Which of these can simple distillation separate?",
+        choices: [
+          "Sand from water",
+          "Water from ink",
+          "Dyes in an ink",
+          "Petrol from diesel",
+        ],
+        accept: [
+          "Water from ink",
+        ],
+        answer: "Simple distillation boils off a liquid from a dissolved solid. Sand needs filtering, dyes need chromatography, and petrol from diesel needs fractional distillation.",
       },
     ],
     misconceptions: [
@@ -4366,6 +4431,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Only silver and chloride ions change, forming the silver chloride precipitate. Na⁺ and NO₃⁻ stay dissolved throughout, so they are spectator ions.",
         higherOnly: true,
+      },
+      {
+        question: "In 2H₂O, what does the large 2 at the front tell you?",
+        choices: [
+          "Two hydrogen atoms",
+          "Two oxygen atoms",
+          "Two molecules",
+          "Two bonds",
+        ],
+        accept: [
+          "Two molecules",
+        ],
+        answer: "A number in front multiplies the whole formula, so 2H₂O is two water molecules (4 H atoms, 2 O atoms). The small subscript 2 is what gives each molecule two hydrogens.",
       },
     ],
     misconceptions: [
@@ -5186,6 +5264,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer: "One mole of any gas fills 24 dm³ at RTP. 22.4 dm³ is the volume at 0 °C, which is not the value AQA uses.",
         higherOnly: true,
       },
+      {
+        question: "Concentration in g/dm³ is the mass of solute divided by what?",
+        choices: [
+          "Mass of solvent",
+          "Volume of solution",
+          "Moles of solute",
+          "Mass of solution",
+        ],
+        accept: [
+          "Volume of solution",
+        ],
+        answer: "Concentration = mass of solute (g) ÷ volume of solution (dm³). Dividing by a mass would not give g/dm³, so always convert the volume into dm³ first.",
+      },
     ],
     misconceptions: [
       {
@@ -5958,6 +6049,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Once all the acid has reacted, extra base stays as solid. That excess is then filtered off. Fizzing would only happen with a carbonate.",
       },
+      {
+        question: "What colour is phenolphthalein indicator in an acid?",
+        choices: [
+          "Pink",
+          "Colourless",
+          "Yellow",
+          "Red",
+        ],
+        accept: [
+          "Colourless",
+        ],
+        answer: "Phenolphthalein is colourless in acid and pink in alkali, so in a titration the pink colour vanishes at the end point. Red in acid is methyl orange or litmus.",
+      },
     ],
     misconceptions: [
       {
@@ -6680,6 +6784,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Sulfate is in solution before and after and does not change. The real change is Mg + Cu²⁺ → Mg²⁺ + Cu, so Cu²⁺ and Mg²⁺ are both involved.",
         higherOnly: true,
+      },
+      {
+        question: "Which of these metals reacts with dilute acid but not with cold water?",
+        choices: [
+          "Sodium",
+          "Potassium",
+          "Copper",
+          "Zinc",
+        ],
+        accept: [
+          "Zinc",
+        ],
+        answer: "Zinc is above hydrogen, so it fizzes with dilute acid, but it is not reactive enough for cold water. Sodium and potassium react with both; copper reacts with neither.",
       },
     ],
     misconceptions: [
@@ -7450,6 +7567,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Cu²⁺ ions gain electrons at the cathode and deposit pure copper. The impure anode dissolves, and its impurities fall to the bottom as sludge.",
       },
+      {
+        question: "In aqueous electrolysis, where do the H⁺ and OH⁻ ions come from?",
+        choices: [
+          "The electrodes",
+          "The dissolved salt",
+          "Water",
+          "The air",
+        ],
+        accept: [
+          "Water",
+        ],
+        answer: "A few water molecules ionise into H⁺ and OH⁻, so a solution has these ions as well as the salt's. That is why hydrogen or oxygen can form instead of the metal or non-metal.",
+      },
     ],
     misconceptions: [
       {
@@ -8201,6 +8331,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "It is oxidised",
         ],
         answer: "Hydrogen is oxidised (it loses electrons) and combines with oxygen to make water. It is the oxygen that is reduced.",
+      },
+      {
+        question: "On a reaction profile, what is the energy gap between reactants and products?",
+        choices: [
+          "Activation energy",
+          "Overall energy change",
+          "Rate of reaction",
+          "Bond energy",
+        ],
+        accept: [
+          "Overall energy change",
+        ],
+        answer: "The difference in height between reactants and products is the overall energy change. Activation energy is from the reactants up to the peak of the curve.",
       },
     ],
     misconceptions: [
@@ -8982,6 +9125,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Enzymes are proteins, which is why high temperatures change their shape and stop them working. Starch and glucose are carbohydrates.",
       },
+      {
+        question: "Marble chips react with acid in an open flask. Why does the mass fall?",
+        choices: [
+          "Water evaporates",
+          "Gas escapes",
+          "The chips dissolve",
+          "The acid is used up",
+        ],
+        accept: [
+          "Gas escapes",
+        ],
+        answer: "Carbon dioxide is made and escapes from the open flask, so the balance reading falls. Dissolving or using up acid moves atoms around but keeps them in the flask.",
+      },
     ],
     misconceptions: [
       {
@@ -9717,6 +9873,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Making ammonia gives out energy (about −92 kJ/mol), so it is exothermic. That is why a lower temperature would give a higher yield.",
       },
+      {
+        question: "Where does the hydrogen for the Haber process mainly come from?",
+        choices: [
+          "The air",
+          "Natural gas",
+          "Limestone",
+          "Sea salt",
+        ],
+        accept: [
+          "Natural gas",
+        ],
+        answer: "Hydrogen is mainly made from natural gas (methane). The nitrogen comes from the air, which contains almost no hydrogen gas.",
+      },
     ],
     misconceptions: [
       {
@@ -10431,6 +10600,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Carboxylic acids contain –COOH. Alcohols contain –OH, alkenes have C=C, and –COO– is the ester link.",
       },
+      {
+        question: "Which crude oil fraction is used to surface roads?",
+        choices: [
+          "Kerosene",
+          "Petrol",
+          "Diesel oil",
+          "Bitumen",
+        ],
+        accept: [
+          "Bitumen",
+        ],
+        answer: "Bitumen has the longest chains, so it is thick and sticky and leaves the bottom of the column. Petrol, kerosene and diesel are runnier fuels with shorter chains.",
+      },
     ],
     misconceptions: [
       {
@@ -11128,6 +11310,20 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Condensation",
         ],
         answer: "Each link between amino acids releases a water molecule, so proteins are condensation polymers. Addition needs C=C monomers and makes no other product.",
+      },
+      {
+        question: "Which type of link joins the monomers in a polyester?",
+        choices: [
+          "Peptide link",
+          "Ester link",
+          "Double bond",
+          "Ionic bond",
+        ],
+        accept: [
+          "Ester link",
+        ],
+        answer: "A diol and a dicarboxylic acid join by ester links, losing water each time. Peptide links join amino acids in proteins, and the C=C double bond is used up in addition polymers.",
+        higherOnly: true,
       },
     ],
     misconceptions: [
@@ -11838,6 +12034,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "HCl contains chloride ions, which would give a white precipitate every time. Nitric acid is used because nitrate ions do not react with silver.",
       },
+      {
+        question: "Which of these is a halide ion?",
+        choices: [
+          "OH⁻",
+          "SO₄²⁻",
+          "CO₃²⁻",
+          "Br⁻",
+        ],
+        accept: [
+          "Br⁻",
+        ],
+        answer: "Halide ions come from group 7: Cl⁻, Br⁻ and I⁻. They are tested with acidified silver nitrate. OH⁻ is hydroxide, SO₄²⁻ is sulfate and CO₃²⁻ is carbonate.",
+      },
     ],
     misconceptions: [
       {
@@ -12538,6 +12747,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Hydrogen contains no carbon, so burning it makes only water. Methane, coal and ethanol all contain carbon and release CO₂.",
       },
+      {
+        question: "Earth's early atmosphere may have been like which planet's atmosphere today?",
+        choices: [
+          "Jupiter",
+          "Venus",
+          "Saturn",
+          "Neptune",
+        ],
+        accept: [
+          "Venus",
+        ],
+        answer: "Like Mars and Venus today, the early atmosphere was thought to be mostly carbon dioxide with little or no oxygen. Jupiter, Saturn and Neptune are mostly hydrogen and helium.",
+      },
     ],
     misconceptions: [
       {
@@ -13235,6 +13457,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Glass is crushed and melted to make new glass products, which needs less energy than making it from raw materials. Electrolysis is for extracting metals.",
       },
+      {
+        question: "Phytomining and bioleaching are mainly used to extract which metal?",
+        choices: [
+          "Aluminium",
+          "Iron",
+          "Copper",
+          "Sodium",
+        ],
+        accept: [
+          "Copper",
+        ],
+        answer: "High-grade copper ores are running out, so these methods get copper from low-grade ores. Aluminium and sodium are extracted by electrolysis, iron with carbon.",
+      },
     ],
     misconceptions: [
       {
@@ -13867,6 +14102,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Electron",
         ],
         answer: "An electron's relative mass is tiny (about 1/2000), while protons and neutrons each have a relative mass of 1. That is why nearly all the mass is in the nucleus.",
+      },
+      {
+        question: "Titres are concordant when they are within how much of each other?",
+        choices: [
+          "5.0 cm³",
+          "2.5 cm³",
+          "1.0 cm³",
+          "0.10 cm³",
+        ],
+        accept: [
+          "0.10 cm³",
+        ],
+        answer: "Concordant titres agree to within 0.10 cm³, and you average only those. A burette reads to 0.05 cm³, so titres 1 cm³ apart show a mistake and need repeating.",
       },
     ],
     misconceptions: [

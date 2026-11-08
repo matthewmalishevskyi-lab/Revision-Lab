@@ -718,6 +718,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Adult animals have mostly stopped growing, so mitosis mainly repairs damage and replaces worn-out cells such as skin and blood cells.",
       },
+      {
+        question: "Where are the ribosomes found in a bacterial cell?",
+        choices: [
+          "In the nucleus",
+          "In the cytoplasm",
+          "In the mitochondria",
+          "In the cell wall",
+        ],
+        accept: [
+          "In the cytoplasm",
+        ],
+        answer: "Bacteria are prokaryotes: they have no nucleus and no mitochondria, so their ribosomes sit free in the cytoplasm. The cell wall is outside the membrane.",
+      },
     ],
     misconceptions: [
       {
@@ -1454,6 +1467,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Small molecules such as water and glucose pass through the tiny pores. Large molecules like starch and protein are too big to get through.",
       },
+      {
+        question: "Which substance diffuses from the blood into a respiring muscle cell?",
+        choices: [
+          "Carbon dioxide",
+          "Lactic acid",
+          "Oxygen",
+          "Urea",
+        ],
+        accept: [
+          "Oxygen",
+        ],
+        answer: "Respiring cells use up oxygen, so it is at a lower concentration inside them. Carbon dioxide, lactic acid and urea are made by cells and diffuse out.",
+      },
     ],
     misconceptions: [
       {
@@ -2161,6 +2187,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Paralysis",
         ],
         answer: "Replacing damaged nerve cells could help people with paralysis. Measles, malaria and gonorrhoea are infections, treated by preventing or killing the pathogen.",
+      },
+      {
+        question: "In a root tip slide, the stain is used mainly to make what visible?",
+        choices: [
+          "Chloroplasts",
+          "Vacuoles",
+          "Cell walls",
+          "Chromosomes",
+        ],
+        accept: [
+          "Chromosomes",
+        ],
+        answer: "The stain colours the DNA, so the chromosomes show up and you can spot cells in mitosis. Root tip cells have no chloroplasts, and cell walls are visible without a stain.",
       },
     ],
     misconceptions: [
@@ -2875,6 +2914,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Enzymes are catalysts, so they are not used up and can be used again. Denaturing only happens with heat or the wrong pH.",
       },
+      {
+        question: "What colour is biuret reagent mixed with a food that has no protein?",
+        choices: [
+          "Blue",
+          "Purple",
+          "Brick red",
+          "Blue-black",
+        ],
+        accept: [
+          "Blue",
+        ],
+        answer: "Biuret reagent stays blue if there is no protein and turns purple if there is. Brick red is a Benedict's result and blue-black is iodine with starch.",
+      },
     ],
     misconceptions: [
       {
@@ -3584,6 +3636,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Water vapour",
         ],
         answer: "Water vapour diffuses out through the same open stomata, which is transpiration. Glucose travels away in the phloem, not out through the stomata.",
+      },
+      {
+        question: "Besides water, what does the transpiration stream carry up the plant?",
+        choices: [
+          "Sucrose",
+          "Mineral ions",
+          "Starch",
+          "Oxygen",
+        ],
+        accept: [
+          "Mineral ions",
+        ],
+        answer: "Mineral ions dissolved in soil water travel up the xylem with it. Sucrose is carried in the phloem by translocation, and starch is insoluble, so it is not transported.",
       },
     ],
     misconceptions: [
@@ -4316,6 +4381,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Random errors scatter readings above and below the true value, so averaging repeats cancels much of that out. It cannot fix a systematic error.",
       },
+      {
+        question: "Which type of error makes repeat readings scatter unpredictably around the true value?",
+        choices: [
+          "Systematic error",
+          "Zero error",
+          "Random error",
+          "Calibration error",
+        ],
+        accept: [
+          "Random error",
+        ],
+        answer: "Random errors push readings up or down by different amounts, so repeating and taking a mean helps. Systematic and zero errors shift every reading the same way.",
+      },
     ],
     misconceptions: [
       {
@@ -5038,6 +5116,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Antibiotics kill non-resistant bacteria, so resistant mutants survive and multiply. Antibiotics have no effect on viruses at all.",
       },
+      {
+        question: "What type of molecule is an antibody?",
+        choices: [
+          "Carbohydrate",
+          "Lipid",
+          "Protein",
+          "Nucleic acid",
+        ],
+        accept: [
+          "Protein",
+        ],
+        answer: "Antibodies are proteins made by white blood cells. Their shape is specific, so each type fits only one antigen, like an enzyme fits only one substrate.",
+      },
     ],
     misconceptions: [
       {
@@ -5749,6 +5840,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Scatter graph",
         ],
         answer: "A scatter graph plots each person as a point, so a trend shows up as a sloping pattern. Bar and pie charts compare categories.",
+      },
+      {
+        question: "Infection with which virus can trigger cervical cancer?",
+        choices: [
+          "HIV",
+          "HPV",
+          "Measles virus",
+          "Tobacco mosaic virus",
+        ],
+        accept: [
+          "HPV",
+        ],
+        answer: "HPV (human papillomavirus) living in cells can trigger cervical cancer, so a communicable disease leads to a non-communicable one. HIV damages the immune system instead.",
       },
     ],
     misconceptions: [
@@ -6513,6 +6617,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Light and warmth are plentiful, but the plants use up the CO₂ in the sealed air. Oxygen is a product, so it never limits photosynthesis.",
       },
+      {
+        question: "Why does warming a plant from 10 °C to 20 °C raise its rate of photosynthesis?",
+        choices: [
+          "More light absorbed",
+          "Enzymes work faster",
+          "More CO₂ in the air",
+          "Stomata close",
+        ],
+        accept: [
+          "Enzymes work faster",
+        ],
+        answer: "Photosynthesis is controlled by enzymes, which work faster as it warms up to their optimum. Warming does not add light or carbon dioxide, and closed stomata would slow it.",
+      },
     ],
     misconceptions: [
       {
@@ -7214,6 +7331,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Respiration",
         ],
         answer: "Respiration is exothermic, so some of the energy released warms the surroundings. Photosynthesis takes in energy and needs light.",
+      },
+      {
+        question: "Which of these uses energy released by respiration?",
+        choices: [
+          "Diffusion",
+          "Osmosis",
+          "Muscle contraction",
+          "Transpiration",
+        ],
+        accept: [
+          "Muscle contraction",
+        ],
+        answer: "Muscles need energy from respiration to contract. Diffusion, osmosis and transpiration are passive: they run down a gradient with no energy from respiration.",
       },
     ],
     misconceptions: [
@@ -7921,6 +8051,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Optic nerve",
         ],
         answer: "Rods and cones in the retina send impulses along the optic nerve to the brain. Motor neurones carry impulses away from the CNS to effectors.",
+      },
+      {
+        question: "Which part of the eye contains the light-sensitive receptor cells?",
+        choices: [
+          "Cornea",
+          "Iris",
+          "Lens",
+          "Retina",
+        ],
+        accept: [
+          "Retina",
+        ],
+        answer: "The retina at the back of the eye holds the receptor cells. The cornea and lens focus light onto it, and the iris controls how much light gets in.",
       },
     ],
     misconceptions: [
@@ -8643,6 +8786,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Hypothalamus",
         ],
         answer: "The thermoregulatory centre in the hypothalamus detects blood temperature and triggers sweating or shivering. The pituitary sits just below it but is a gland.",
+      },
+      {
+        question: "Which gland releases FSH and LH in the menstrual cycle?",
+        choices: [
+          "Ovaries",
+          "Pituitary gland",
+          "Thyroid gland",
+          "Adrenal glands",
+        ],
+        accept: [
+          "Pituitary gland",
+        ],
+        answer: "The pituitary gland in the brain releases FSH and LH. The ovaries respond by maturing and releasing an egg, and they make oestrogen and progesterone.",
       },
     ],
     misconceptions: [
@@ -9398,6 +9554,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "White blood cells have a nucleus and fight infection. Red blood cells lose theirs to make room for haemoglobin, and platelets are just cell fragments.",
       },
+      {
+        question: "Which blood vessels supply the heart muscle itself with oxygen?",
+        choices: [
+          "Pulmonary veins",
+          "Vena cava",
+          "Coronary arteries",
+          "Pulmonary arteries",
+        ],
+        accept: [
+          "Coronary arteries",
+        ],
+        answer: "The coronary arteries branch off the aorta and run over the heart. The pulmonary veins carry oxygenated blood into the left atrium, not into the heart muscle.",
+      },
     ],
     misconceptions: [
       {
@@ -10101,6 +10270,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Mitosis",
         ],
         answer: "Asexual reproduction uses mitosis, so offspring are genetically identical clones. Meiosis makes gametes for sexual reproduction.",
+      },
+      {
+        question: "Which of these can studying the human genome help scientists to do?",
+        choices: [
+          "Predict exact height",
+          "Trace past migration",
+          "Remove all mutations",
+          "Change eye colour",
+        ],
+        accept: [
+          "Trace past migration",
+        ],
+        answer: "Comparing genomes lets scientists trace human migration patterns from the past and find genes linked to disease. Height depends on many genes and the environment too.",
       },
     ],
     misconceptions: [
@@ -10828,6 +11010,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Homozygous recessive",
         ],
         answer: "One dominant allele is enough to cause polydactyly, so anyone without it has two recessive alleles (dd). Dominant disorders cannot have symptom-free carriers.",
+      },
+      {
+        question: "Which organism did Mendel use in his breeding experiments?",
+        choices: [
+          "Fruit flies",
+          "Mice",
+          "Pea plants",
+          "Wheat",
+        ],
+        accept: [
+          "Pea plants",
+        ],
+        answer: "Mendel crossed pea plants in the mid-1800s and showed traits are passed on as separate units, now called genes. His work was only recognised after his death.",
       },
     ],
     misconceptions: [
@@ -11559,6 +11754,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Rock layers build up over time, so deeper layers are older. Comparing fossils from deep to shallow shows how organisms changed.",
       },
+      {
+        question: "Which condition stops a dead organism decaying, so it may form a fossil?",
+        choices: [
+          "Warm and moist",
+          "Lots of oxygen",
+          "Many decomposers",
+          "Lack of oxygen",
+        ],
+        accept: [
+          "Lack of oxygen",
+        ],
+        answer: "Decomposers need oxygen, warmth and moisture. Where oxygen is missing (or it is too cold or acidic), decay cannot happen and the remains can be preserved.",
+      },
     ],
     misconceptions: [
       {
@@ -12267,6 +12475,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Embryo transplant",
         ],
         answer: "Embryo transplants give several identical animals from one embryo. In adult cell cloning, the nucleus comes from a body cell, not from an embryo.",
+      },
+      {
+        question: "Why is a new gene put into a crop plant at an early stage of development?",
+        choices: [
+          "To speed up growth",
+          "So every cell gets it",
+          "To stop mutations",
+          "To make it sterile",
+        ],
+        accept: [
+          "So every cell gets it",
+        ],
+        answer: "A gene added early is copied into every new cell by mitosis, so the whole plant develops the desired characteristic. Adding it later would change only a few cells.",
       },
     ],
     misconceptions: [
@@ -13002,6 +13223,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "A light meter gives a reading at each point so you can link it to plant numbers. A quadrat marks out the sample area; a pooter collects small insects.",
       },
+      {
+        question: "In a stable community, what happens to the sizes of the populations?",
+        choices: [
+          "Rise steadily",
+          "Stay fairly constant",
+          "Fall steadily",
+          "Change rapidly",
+        ],
+        accept: [
+          "Stay fairly constant",
+        ],
+        answer: "In a stable community the species and the environmental factors are in balance, so populations stay roughly constant. Tropical rainforests and old oak woods are examples.",
+      },
     ],
     misconceptions: [
       {
@@ -13702,6 +13936,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Less movement and heat loss means more energy goes into growth, so food production is more efficient. Many people see this as cruel, though.",
       },
+      {
+        question: "Which of these reduces the land available for other animals and plants?",
+        choices: [
+          "Leaving field margins",
+          "Quarrying",
+          "Planting hedgerows",
+          "Breeding programmes",
+        ],
+        accept: [
+          "Quarrying",
+        ],
+        answer: "Humans take land away from wildlife by building, quarrying, farming and dumping waste. Field margins, hedgerows and breeding programmes all help biodiversity.",
+      },
     ],
     misconceptions: [
       {
@@ -14263,6 +14510,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "+25%",
         ],
         answer: "Percentage change = change ÷ start × 100 = 5 ÷ 20 × 100 = +25%. +20% wrongly divides by the final mass of 25 g.",
+      },
+      {
+        question: "Which command word asks you to give the meaning of a scientific term?",
+        choices: [
+          "Define",
+          "Describe",
+          "Evaluate",
+          "Suggest",
+        ],
+        accept: [
+          "Define",
+        ],
+        answer: "Define means state what a term means. Describe means say what happens, evaluate means weigh up both sides with a conclusion, and suggest means apply ideas to a new case.",
       },
     ],
     misconceptions: [

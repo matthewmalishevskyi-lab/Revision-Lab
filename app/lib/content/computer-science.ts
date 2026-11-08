@@ -444,6 +444,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "Adding two 8-bit numbers can produce a 9-bit result, and the extra bit is lost, giving a wrong answer.",
       },
+      {
+        question: "Which unit is the next size up from a kilobyte?",
+        choices: [
+          "Gigabyte",
+          "Megabyte",
+          "Terabyte",
+          "Nibble",
+        ],
+        accept: [
+          "Megabyte",
+        ],
+        answer: "The order is bit, nibble, byte, kilobyte, megabyte, gigabyte, terabyte. Each step up from a byte is a thousand times bigger in AQA's convention.",
+      },
+      {
+        question: "What is 0011 shifted right by one place?",
+        choices: [
+          "0110",
+          "0111",
+          "0001",
+          "0010",
+        ],
+        accept: [
+          "0001",
+        ],
+        answer: "A right shift moves every bit one place right, so the last 1 drops off and three halves to one (rounded down). 0110 would be a left shift.",
+      },
+      {
+        question: "Is MP3 compression lossy or lossless?",
+        choices: [
+          "Lossless",
+          "Lossy",
+          "Neither: encrypted",
+          "Uncompressed",
+        ],
+        accept: [
+          "Lossy",
+        ],
+        answer: "MP3 is lossy: it permanently removes sounds people are unlikely to hear, so the original can't be rebuilt exactly. Lossless methods, like RLE, lose nothing.",
+      },
+      {
+        question: "What does the colour depth of an image mean?",
+        choices: [
+          "Pixels per inch",
+          "Width times height",
+          "Bits per pixel",
+          "Bytes in the file",
+        ],
+        accept: [
+          "Bits per pixel",
+        ],
+        answer: "Colour depth is the number of bits used to store each pixel's colour. Width times height in pixels is the resolution.",
+      },
+      {
+        question: "What does the sample rate of a sound recording measure?",
+        choices: [
+          "Samples per second",
+          "Bits per sample",
+          "Length of the clip",
+          "Loudness of a sample",
+        ],
+        accept: [
+          "Samples per second",
+        ],
+        answer: "Sample rate is how many samples are taken each second, in hertz. The number of bits in each sample is the bit depth.",
+      },
+      {
+        question: "What is the largest denary number that 8 bits can hold?",
+        choices: [
+          "256",
+          "128",
+          "127",
+          "255",
+        ],
+        accept: [
+          "255",
+        ],
+        answer: "Eight 1s give 255. There are 256 different values, but one of them is zero, so the largest is 255.",
+      },
     ],
 
     misconceptions: [
@@ -844,6 +922,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "A backup stored in the same place as the original is vulnerable to the same fire or theft, so keep one copy elsewhere.",
       },
+      {
+        question: "Which of these is an input device?",
+        choices: [
+          "Monitor",
+          "Speaker",
+          "Keyboard",
+          "Printer",
+        ],
+        accept: [
+          "Keyboard",
+        ],
+        answer: "A keyboard sends data into the computer, so it is an input device. Monitors, speakers and printers all take data out of it, so they are output devices.",
+      },
+      {
+        question: "What does the file extension .jpg usually show the file is?",
+        choices: [
+          "An image",
+          "A spreadsheet",
+          "A sound file",
+          "A program",
+        ],
+        accept: [
+          "An image",
+        ],
+        answer: ".jpg (or .jpeg) is a compressed photo format. Sound files use extensions like .mp3, and spreadsheets use ones like .xlsx or .csv.",
+      },
+      {
+        question: "Which habit best helps prevent repetitive strain injury (RSI)?",
+        choices: [
+          "A brighter screen",
+          "Taking regular breaks",
+          "Typing faster",
+          "A bigger monitor",
+        ],
+        accept: [
+          "Taking regular breaks",
+        ],
+        answer: "RSI comes from repeating the same small movements for long periods. Regular breaks, good posture and a wrist rest all reduce the strain.",
+      },
+      {
+        question: "In a search engine, what do quotation marks around words do?",
+        choices: [
+          "Search images only",
+          "Exclude those words",
+          "Find the exact phrase",
+          "Search one website",
+        ],
+        accept: [
+          "Find the exact phrase",
+        ],
+        answer: "Quotation marks tell the search engine to find those words together and in that order, which narrows results. A minus sign is used to exclude a word.",
+      },
+      {
+        question: "Where is the safest place to keep a backup of your files?",
+        choices: [
+          "The same hard drive",
+          "A different folder",
+          "A separate device",
+          "On the desktop",
+        ],
+        accept: [
+          "A separate device",
+        ],
+        answer: "A backup on the same drive is lost if that drive fails or is stolen. Keeping a copy on a separate device or in the cloud means it survives.",
+      },
+      {
+        question: "Which of these is hardware?",
+        choices: [
+          "A web browser",
+          "A graphics card",
+          "An operating system",
+          "A word processor",
+        ],
+        accept: [
+          "A graphics card",
+        ],
+        answer: "Hardware is the physical parts you could touch, like a graphics card. Browsers, operating systems and word processors are all software.",
+      },
     ],
 
     misconceptions: [
@@ -1116,6 +1272,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         accept: ["a string with no characters", "a string containing no characters", "no characters"],
         answer: "A string containing no characters at all, written as two quote marks with nothing between them. It is still a string, and it is not the same as zero or nothing.",
       },
+      {
+        question: "What is the result of int(7.9) in Python?",
+        choices: [
+          "8",
+          "7",
+          "7.9",
+          "An error",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "int() truncates: it chops off everything after the decimal point rather than rounding, so 7.9 becomes 7, not 8.",
+      },
+      {
+        question: "Which of these is a valid Python identifier?",
+        choices: [
+          "2nd_score",
+          "my score",
+          "total_score",
+          "class",
+        ],
+        accept: [
+          "total_score",
+        ],
+        answer: "Underscores are allowed in identifiers. A name can't start with a digit, can't contain a space and can't be a reserved keyword such as class.",
+      },
+      {
+        question: "What data type is the value 'True', written with the quotes?",
+        choices: [
+          "Boolean",
+          "String",
+          "Character",
+          "Integer",
+        ],
+        accept: [
+          "String",
+        ],
+        answer: "The quotes make it text: a string of four characters. Without the quotes, True would be the Boolean value.",
+      },
+      {
+        question: "What is the term for giving a variable its first value?",
+        choices: [
+          "Declaration",
+          "Casting",
+          "Initialisation",
+          "Iteration",
+        ],
+        accept: [
+          "Initialisation",
+        ],
+        answer: "Initialisation sets a variable's starting value, such as total = 0. Declaration just names the variable (and its type) without having to give it a value.",
+      },
+      {
+        question: "Why store a tax rate as a constant instead of typing the number each time?",
+        choices: [
+          "Program runs faster",
+          "Saves storage space",
+          "Hides the value",
+          "Change it in one place",
+        ],
+        accept: [
+          "Change it in one place",
+        ],
+        answer: "If the rate changes you edit one line and every use updates. A constant also stops the value being changed by mistake while the program runs.",
+      },
+      {
+        question: "In Python, how are names of constants normally written?",
+        choices: [
+          "camelCase",
+          "lower case",
+          "UPPER CASE",
+          "Title Case",
+        ],
+        accept: [
+          "UPPER CASE",
+        ],
+        answer: "Python has no locked constants, so programmers write the name in capitals, like MAX_SIZE, as a signal that the value must not be changed.",
+      },
     ],
     misconceptions: [
       {
@@ -1372,6 +1606,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         accept: ["MOD"],
         answer: "MOD. If n MOD 7 is 0 there is no remainder, which is exactly what dividing exactly means.",
       },
+      {
+        question: "What is 10 % 10 in Python?",
+        choices: [
+          "1",
+          "0",
+          "10",
+          "100",
+        ],
+        accept: [
+          "0",
+        ],
+        answer: "% is MOD. 10 divides by 10 exactly with nothing left over, so the remainder is 0. The answer 1 is 10 // 10, which is DIV.",
+      },
+      {
+        question: "What is 9 / 2 in Python?",
+        choices: [
+          "4",
+          "4.0",
+          "4.5",
+          "1",
+        ],
+        accept: [
+          "4.5",
+        ],
+        answer: "In Python 3, a single / always does real division and gives a float, so 9 / 2 is 4.5. Use // to get the whole number 4, or % for the remainder 1.",
+      },
+      {
+        question: "Which function turns the input text '42' into a number you can add?",
+        choices: [
+          "str()",
+          "input()",
+          "int()",
+          "print()",
+        ],
+        accept: [
+          "int()",
+        ],
+        answer: "input() always returns a string, so int() casts '42' into the integer 42. str() goes the other way, turning a number into text.",
+      },
+      {
+        question: "What is 2 + 3 * 4?",
+        choices: [
+          "20",
+          "24",
+          "9",
+          "14",
+        ],
+        accept: [
+          "14",
+        ],
+        answer: "Multiplication is done before addition (BIDMAS), so 3 * 4 = 12 first, then 2 is added to give 14. Working left to right would wrongly give 20.",
+      },
+      {
+        question: "In the expression a + b, what are a and b called?",
+        choices: [
+          "Operands",
+          "Operators",
+          "Parameters",
+          "Constants",
+        ],
+        accept: [
+          "Operands",
+        ],
+        answer: "Operands are the values an operator works on; the + is the operator. Parameters belong to subprograms, not to expressions.",
+      },
+      {
+        question: "age = int(input()) runs and the user types 15.5. What happens?",
+        choices: [
+          "age becomes 15",
+          "age becomes 16",
+          "A ValueError occurs",
+          "age becomes 15.5",
+        ],
+        accept: [
+          "A ValueError occurs",
+        ],
+        answer: "int() can't turn the text '15.5' into a whole number, so Python stops with a ValueError. Only a real number, as in int(15.5), gets truncated to 15.",
+      },
     ],
     misconceptions: [
       {
@@ -1627,6 +1939,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         question: "Rewrite 'over 18' and 'at least 18' as conditions on a variable called age.",
         accept: ["age > 18 and age >= 18", "age > 18, age >= 18"],
         answer: "'Over 18' is age > 18; 'at least 18' is age >= 18. The wording of the question is what decides which one is wanted, and questions are written to test exactly that.",
+      },
+      {
+        question: "In Python, what is (2 < 3) and (5 < 4)?",
+        choices: [
+          "True",
+          "False",
+          "An error",
+          "None",
+        ],
+        accept: [
+          "False",
+        ],
+        answer: "2 < 3 is True but 5 < 4 is False, and 'and' needs both sides True, so the result is False. 'or' would have given True.",
+      },
+      {
+        question: "In Python, what is (3 > 5) or (2 < 4)?",
+        choices: [
+          "False",
+          "An error",
+          "True",
+          "None",
+        ],
+        accept: [
+          "True",
+        ],
+        answer: "3 > 5 is False but 2 < 4 is True, and 'or' only needs one side to be True, so the whole condition is True.",
+      },
+      {
+        question: "What is 5 != 5 in Python?",
+        choices: [
+          "True",
+          "5",
+          "False",
+          "0",
+        ],
+        accept: [
+          "False",
+        ],
+        answer: "!= means 'not equal to'. 5 is equal to 5, so asking 'are they different?' gives False. 5 == 5 would be True.",
+      },
+      {
+        question: "Which test value is most likely to expose a mistake in if age >= 18?",
+        choices: [
+          "18",
+          "25",
+          "40",
+          "5",
+        ],
+        accept: [
+          "18",
+        ],
+        answer: "18 sits exactly on the boundary, where >= and > give different results, so it catches the most common slip. 25 or 5 behave the same either way.",
+      },
+      {
+        question: "Which Python keyword adds an extra condition after an if?",
+        choices: [
+          "elseif",
+          "elif",
+          "elsif",
+          "then",
+        ],
+        accept: [
+          "elif",
+        ],
+        answer: "Python uses elif, short for 'else if'. It is only checked when every condition above it was False. elseif and elsif are spellings from other languages.",
+      },
+      {
+        question: "What does the comparison 7 <= 7 evaluate to?",
+        choices: [
+          "True",
+          "False",
+          "7",
+          "An error",
+        ],
+        accept: [
+          "True",
+        ],
+        answer: "<= means 'less than OR equal to', and 7 equals 7, so it is True. The strict 7 < 7 would be False.",
       },
     ],
     misconceptions: [
@@ -1906,6 +2296,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         accept: ["before each pass", "before the body runs", "before each iteration"],
         answer: "Before each pass through the body. That is why a WHILE loop can run zero times, and it is the difference between WHILE and REPEAT UNTIL.",
       },
+      {
+        question: "How many times does the body of for i in range(2, 6): run?",
+        choices: [
+          "5",
+          "4",
+          "6",
+          "3",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "range(2, 6) gives 2, 3, 4 and 5. It stops BEFORE the end value, so the body runs four times, not five.",
+      },
+      {
+        question: "Which numbers does range(0, 10, 3) produce?",
+        choices: [
+          "0, 3, 6",
+          "3, 6, 9",
+          "0, 3, 6, 9",
+          "0, 3, 6, 9, 12",
+        ],
+        accept: [
+          "0, 3, 6, 9",
+        ],
+        answer: "The third value is the step: start at 0, go up by 3 each time and stop before 10. So 9 is the last value and 12 is never reached.",
+      },
+      {
+        question: "total = 0, then for i in range(1, 4): total = total + i. What is total?",
+        choices: [
+          "10",
+          "3",
+          "6",
+          "4",
+        ],
+        accept: [
+          "6",
+        ],
+        answer: "range(1, 4) gives 1, 2 and 3, which add up to 6. The 4 is not included, which is why 10 is wrong.",
+      },
+      {
+        question: "In for i in range(5):, what is the variable i called?",
+        choices: [
+          "Accumulator",
+          "Constant",
+          "Parameter",
+          "Loop counter",
+        ],
+        accept: [
+          "Loop counter",
+        ],
+        answer: "i is the loop counter: it takes the next value each time round. An accumulator is a separate variable that builds up a running total.",
+      },
+      {
+        question: "x = 1, then while x < 20: x = x * 2. What is x when the loop ends?",
+        choices: [
+          "32",
+          "16",
+          "20",
+          "64",
+        ],
+        accept: [
+          "32",
+        ],
+        answer: "x doubles to 2, 4, 8, 16. As 16 < 20 is still True, it doubles once more to 32, then 32 < 20 is False and the loop stops.",
+      },
+      {
+        question: "for i in range(3): print(i). What is the last number printed?",
+        choices: [
+          "3",
+          "2",
+          "1",
+          "0",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "range(3) gives 0, 1 and 2. It starts at 0 and stops before 3, so 2 is printed last. Expecting 3 is a classic off-by-one error.",
+      },
     ],
     misconceptions: [
       {
@@ -2184,6 +2652,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         accept: ["0"],
         answer: "0, set before the loop. Each time a mark meets the condition the counter goes up by one, so it has to begin from nothing.",
       },
+      {
+        question: "nums = [3, 8, 5]. What is len(nums)?",
+        choices: [
+          "2",
+          "3",
+          "16",
+          "8",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "len counts the elements, and there are three. The last index is 2 because counting starts at 0, but the length is still 3.",
+      },
+      {
+        question: "grid = [[1, 2], [3, 4]]. What is grid[1][0]?",
+        choices: [
+          "2",
+          "1",
+          "3",
+          "4",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "grid[1] is the second row, [3, 4], and [0] then picks its first item, 3. Choosing 2 mixes up the row and column.",
+      },
+      {
+        question: "What is each individual item stored in an array called?",
+        choices: [
+          "An index",
+          "A field",
+          "A record",
+          "An element",
+        ],
+        accept: [
+          "An element",
+        ],
+        answer: "Each item is an element. The index is the element's position number, not the item itself.",
+      },
+      {
+        question: "names = ['Ann', 'Bo'], then names[0] = 'Cy'. What is names now?",
+        choices: [
+          "['Cy', 'Bo']",
+          "['Ann', 'Cy']",
+          "['Cy', 'Ann', 'Bo']",
+          "['Ann', 'Bo', 'Cy']",
+        ],
+        accept: [
+          "['Cy', 'Bo']",
+        ],
+        answer: "Assigning to an index replaces the element at that position; it does not insert a new one. Index 0 is the first item, so 'Ann' becomes 'Cy'.",
+      },
+      {
+        question: "Which line adds 7 to the end of a Python list called nums?",
+        choices: [
+          "nums.add(7)",
+          "nums[7]",
+          "nums.append(7)",
+          "append(7)",
+        ],
+        accept: [
+          "nums.append(7)",
+        ],
+        answer: "append is a list method, so it is called on the list as nums.append(7). nums[7] would try to read index 7, and .add belongs to sets, not lists.",
+      },
+      {
+        question: "A linear search of [5, 2, 9, 7] for 9 checks how many items?",
+        choices: [
+          "1",
+          "4",
+          "2",
+          "3",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "A linear search checks in order: 5, then 2, then 9 is found on the third check and the search stops. It never needs to look at the 7.",
+      },
     ],
     misconceptions: [
       {
@@ -2437,6 +2983,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         question: "A password must be at least 8 characters. Write the condition that rejects it.",
         accept: ["LEN(password) < 8", "len(password) < 8"],
         answer: "LEN(password) < 8. 'At least 8' means 8 is acceptable, so anything strictly below 8 is what should be rejected.",
+      },
+      {
+        question: "What is len('A B')?",
+        choices: [
+          "2",
+          "3",
+          "1",
+          "4",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "A space is a character too, so 'A B' is A, a space and B: three characters. Counting only the letters gives the wrong answer of 2.",
+      },
+      {
+        question: "In Python, what is 'ab' * 3?",
+        choices: [
+          "ab3",
+          "An error",
+          "aaabbb",
+          "ababab",
+        ],
+        accept: [
+          "ababab",
+        ],
+        answer: "Multiplying a string by a whole number repeats the whole string, so 'ab' appears three times in a row. It is not an error, and the letters stay in order.",
+      },
+      {
+        question: "Which Python function gives the character code of a letter, e.g. 65 for 'A'?",
+        choices: [
+          "ord",
+          "chr",
+          "str",
+          "int",
+        ],
+        accept: [
+          "ord",
+        ],
+        answer: "ord('A') returns the character's code number, 65. chr does the reverse, turning 65 back into 'A'.",
+      },
+      {
+        question: "What data type is the result of len('hello')?",
+        choices: [
+          "String",
+          "Character",
+          "Integer",
+          "Real",
+        ],
+        accept: [
+          "Integer",
+        ],
+        answer: "len counts the characters and returns a whole number, 5 here, so the result is an integer even though it was worked out from a string.",
+      },
+      {
+        question: "Which Python method removes spaces from both ends of a string?",
+        choices: [
+          "strip()",
+          "split()",
+          "trim()",
+          "cut()",
+        ],
+        accept: [
+          "strip()",
+        ],
+        answer: "strip() removes leading and trailing spaces, which is useful for tidying input. split() breaks a string into a list, and trim() is from other languages.",
+      },
+      {
+        question: "What does 'gg' in 'eggs' evaluate to?",
+        choices: [
+          "False",
+          "True",
+          "An error",
+          "None",
+        ],
+        accept: [
+          "True",
+        ],
+        answer: "The in operator checks for a substring. 'eggs' contains g followed directly by g, so the result is True.",
       },
     ],
     misconceptions: [
@@ -2716,6 +3340,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         accept: ["it can only ever do the same thing", "it always does the same thing", "it cannot be reused with different values"],
         answer: "It can only ever do exactly the same thing, because nothing can be passed in to vary its behaviour. Parameters are what make a subprogram genuinely reusable.",
       },
+      {
+        question: "Which Python keyword begins the definition of a subprogram?",
+        choices: [
+          "func",
+          "def",
+          "sub",
+          "define",
+        ],
+        accept: [
+          "def",
+        ],
+        answer: "Python starts both functions and procedures with def, then the name, brackets for any parameters and a colon. The other words are not Python keywords.",
+      },
+      {
+        question: "What does a Python function return if it has no return statement?",
+        choices: [
+          "0",
+          "False",
+          "An error",
+          "None",
+        ],
+        accept: [
+          "None",
+        ],
+        answer: "With no return, Python hands back the special value None. It isn't 0 or False, and it doesn't cause an error, which is why bugs like this can go unnoticed.",
+      },
+      {
+        question: "def add(a, b): return a + b. What is add('2', '3')?",
+        choices: [
+          "'23'",
+          "5",
+          "32",
+          "An error",
+        ],
+        accept: [
+          "'23'",
+        ],
+        answer: "The arguments are strings, so + joins them rather than adding: '2' followed by '3' gives '23'. Casting them with int() first would give 5.",
+      },
+      {
+        question: "Which kind of variable can be used from any part of a program?",
+        choices: [
+          "Local",
+          "Global",
+          "Parameter",
+          "Argument",
+        ],
+        accept: [
+          "Global",
+        ],
+        answer: "A global variable is created in the main program and is visible everywhere. A local variable exists only inside the subprogram that made it.",
+      },
+      {
+        question: "What is it called when the main program runs a subprogram by its name?",
+        choices: [
+          "Declaring it",
+          "Returning it",
+          "Calling it",
+          "Defining it",
+        ],
+        accept: [
+          "Calling it",
+        ],
+        answer: "Calling a subprogram runs its code and then carries on from the line after the call. Defining it only sets out the code; nothing runs until it is called.",
+      },
+      {
+        question: "def sq(n): return n * n. What is sq(sq(2))?",
+        choices: [
+          "4",
+          "16",
+          "8",
+          "32",
+        ],
+        accept: [
+          "16",
+        ],
+        answer: "Work from the inside out: sq(2) is 4, then sq(4) is 16. Stopping after the inner call gives the tempting wrong answer 4.",
+      },
     ],
     misconceptions: [
       {
@@ -2984,6 +3686,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         question: "Write the pseudocode line that opens data.txt so that new lines are added to the end.",
         accept: ["OPEN('data.txt', APPEND)", "open('data.txt', append)", "file <- OPEN('data.txt', APPEND)"],
         answer: "OPEN('data.txt', APPEND). Using WRITE here would erase everything already in the file the instant it opened.",
+      },
+      {
+        question: "Which Python mode letter opens a file for reading only?",
+        choices: [
+          "'w'",
+          "'r'",
+          "'a'",
+          "'x'",
+        ],
+        accept: [
+          "'r'",
+        ],
+        answer: "'r' opens a file for reading and is the default. 'w' would wipe the file before writing, and 'a' adds new data to the end.",
+      },
+      {
+        question: "What does f.readline() return once the end of the file is reached?",
+        choices: [
+          "An empty string",
+          "None",
+          "False",
+          "An error",
+        ],
+        accept: [
+          "An empty string",
+        ],
+        answer: "At the end of the file, readline() gives back '', the empty string, so a loop can tell there is nothing left. It does not raise an error.",
+      },
+      {
+        question: "Which Python statement closes a file automatically when its block ends?",
+        choices: [
+          "close",
+          "end",
+          "with",
+          "open",
+        ],
+        accept: [
+          "with",
+        ],
+        answer: "with open('data.txt') as f: closes the file for you when the indented block finishes, even if an error happens. Without it you must call f.close().",
+      },
+      {
+        question: "In a CSV file, what is one complete line of data usually called?",
+        choices: [
+          "A field",
+          "A column",
+          "A table",
+          "A record",
+        ],
+        accept: [
+          "A record",
+        ],
+        answer: "Each line holds all the data about one thing, so it is a record. The separate comma-separated values inside it are its fields.",
+      },
+      {
+        question: "After 'Sam,15'.split(','), what data type is the 15?",
+        choices: [
+          "Integer",
+          "Real",
+          "String",
+          "Boolean",
+        ],
+        accept: [
+          "String",
+        ],
+        answer: "split always produces strings, so the 15 is still the text '15'. It must be cast with int() before it can be used in a calculation.",
+      },
+      {
+        question: "f.write('Hi') then f.write('Yo'). What ends up in the file?",
+        choices: [
+          "Hi and Yo on two lines",
+          "HiYo on one line",
+          "Only Yo",
+          "Only Hi",
+        ],
+        accept: [
+          "HiYo on one line",
+        ],
+        answer: "write() adds exactly the text it is given with no new line, so the words run together. Adding '\\n' at the end of a string starts a new line.",
       },
     ],
     misconceptions: [
@@ -3370,6 +4150,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "Star is more robust and performs better, but uses more cable and depends on the central switch.",
       },
+      {
+        question: "Which device lets wireless devices join a wired network?",
+        choices: [
+          "Switch",
+          "Wireless access point",
+          "Router",
+          "NIC",
+        ],
+        accept: [
+          "Wireless access point",
+        ],
+        answer: "A wireless access point connects Wi-Fi devices to a wired network. A switch joins wired devices; a router connects separate networks.",
+      },
+      {
+        question: "Which of these is an example of a WAN?",
+        choices: [
+          "The internet",
+          "A school network",
+          "A home network",
+          "An office network",
+        ],
+        accept: [
+          "The internet",
+        ],
+        answer: "The internet is the largest WAN, spanning the world over infrastructure owned by many organisations. School, home and office networks are LANs.",
+      },
+      {
+        question: "In a star topology, what happens if the central switch fails?",
+        choices: [
+          "Only one device stops",
+          "Data reroutes itself",
+          "Whole network fails",
+          "Nothing changes",
+        ],
+        accept: [
+          "Whole network fails",
+        ],
+        answer: "Every device connects through the switch, so it is a single point of failure. A single broken cable only cuts off one device.",
+      },
+      {
+        question: "Which address is usually assigned by the network and can change?",
+        choices: [
+          "MAC address",
+          "IP address",
+          "Serial number",
+          "Product key",
+        ],
+        accept: [
+          "IP address",
+        ],
+        answer: "An IP address is assigned by the network a device joins and can change. A MAC address is fixed into the network card when it is made.",
+      },
+      {
+        question: "Which is an advantage of a wired connection over Wi-Fi?",
+        choices: [
+          "Devices can move",
+          "No cables to install",
+          "Less interference",
+          "Works through walls",
+        ],
+        accept: [
+          "Less interference",
+        ],
+        answer: "Cables suffer far less interference than radio signals, so wired links are usually faster, more reliable and harder to intercept. Wi-Fi wins on mobility.",
+      },
+      {
+        question: "Which unit is used to measure bandwidth?",
+        choices: [
+          "Megabytes",
+          "Hertz",
+          "Milliseconds",
+          "Megabits per second",
+        ],
+        accept: [
+          "Megabits per second",
+        ],
+        answer: "Bandwidth is an amount of data per second, usually in Mbps. Milliseconds measure latency, which is a delay, not an amount of data.",
+      },
     ],
 
     misconceptions: [
@@ -3688,6 +4546,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "Washing machines and traffic lights use embedded systems. They are cheaper and more reliable because they do less.",
       },
+      {
+        question: "What does ALU stand for?",
+        choices: [
+          "Advanced logic unit",
+          "Arithmetic logic unit",
+          "Arithmetic load unit",
+          "Automatic logic unit",
+        ],
+        accept: [
+          "Arithmetic logic unit",
+        ],
+        answer: "The arithmetic logic unit does calculations such as addition and logical operations such as comparisons. The control unit coordinates the cycle.",
+      },
+      {
+        question: "In which stage of the CPU cycle is an instruction's meaning worked out?",
+        choices: [
+          "Fetch",
+          "Execute",
+          "Decode",
+          "Store",
+        ],
+        accept: [
+          "Decode",
+        ],
+        answer: "In decode, the control unit works out what the fetched instruction means. It is then carried out in the execute stage.",
+      },
+      {
+        question: "What is a CPU's clock speed measured in?",
+        choices: [
+          "Gigabytes",
+          "Gigahertz",
+          "Megabits per second",
+          "Milliseconds",
+        ],
+        accept: [
+          "Gigahertz",
+        ],
+        answer: "Clock speed is cycles per second, a frequency, so it is measured in hertz, usually GHz. Gigabytes measure storage capacity.",
+      },
+      {
+        question: "At the start of the fetch stage, which register's value is copied into the MAR?",
+        choices: [
+          "Accumulator",
+          "MDR",
+          "Program counter",
+          "Cache",
+        ],
+        accept: [
+          "Program counter",
+        ],
+        answer: "The program counter holds the next instruction's address, which goes to the MAR. The instruction itself then arrives in the MDR.",
+      },
+      {
+        question: "Which of these is typically an embedded system?",
+        choices: [
+          "Home laptop",
+          "Dishwasher controller",
+          "Office desktop PC",
+          "Tablet computer",
+        ],
+        accept: [
+          "Dishwasher controller",
+        ],
+        answer: "A dishwasher controller does one dedicated job inside a larger device. Laptops, desktops and tablets are general-purpose computers that run many programs.",
+      },
+      {
+        question: "Increasing which of these lets a CPU process more instructions at the same time?",
+        choices: [
+          "Clock speed",
+          "Cache size",
+          "Number of cores",
+          "Hard disk size",
+        ],
+        accept: [
+          "Number of cores",
+        ],
+        answer: "Each core fetches, decodes and executes independently, so more cores can work at once if the software supports it. Clock speed makes each core faster.",
+      },
     ],
 
     misconceptions: [
@@ -3984,6 +4920,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "It lets you focus on the logic. A flowchart does the same job visually.",
       },
+      {
+        question: "Which item does a binary search look at first?",
+        choices: [
+          "The first item",
+          "The middle item",
+          "The last item",
+          "The largest item",
+        ],
+        accept: [
+          "The middle item",
+        ],
+        answer: "Binary search checks the middle item, then throws away the half that can't hold the target. Starting at the first item is what a linear search does.",
+      },
+      {
+        question: "Which sort builds a sorted section by putting each new item into its place?",
+        choices: [
+          "Bubble sort",
+          "Merge sort",
+          "Insertion sort",
+          "Selection sort",
+        ],
+        accept: [
+          "Insertion sort",
+        ],
+        answer: "Insertion sort takes the next item and slides it back into the right spot in the sorted part. Bubble sort swaps adjacent pairs instead.",
+      },
+      {
+        question: "Merge sort splits a list of 8 items. How many lists are there before merging starts?",
+        choices: [
+          "8",
+          "4",
+          "2",
+          "16",
+        ],
+        accept: [
+          "8",
+        ],
+        answer: "Merge sort keeps halving until every list holds just one item, so 8 items become eight one-item lists. Only then does it start merging in order.",
+      },
+      {
+        question: "What is algorithmic thinking?",
+        choices: [
+          "Removing detail",
+          "Planning ordered steps",
+          "Splitting a problem",
+          "Writing in pseudocode",
+        ],
+        accept: [
+          "Planning ordered steps",
+        ],
+        answer: "Algorithmic thinking means working out the exact sequence of steps that solves a problem. Removing detail is abstraction and splitting it up is decomposition.",
+      },
+      {
+        question: "Bubble sort on 5, 2, 4. What is the list after the very first swap?",
+        choices: [
+          "2, 4, 5",
+          "2, 5, 4",
+          "5, 4, 2",
+          "4, 2, 5",
+        ],
+        accept: [
+          "2, 5, 4",
+        ],
+        answer: "Bubble sort compares the first pair: 5 and 2 are the wrong way round, so they swap to give 2, 5, 4. Comparing 5 with 4 comes next.",
+      },
+      {
+        question: "Which flowchart shape shows a process, such as a calculation?",
+        choices: [
+          "Diamond",
+          "Parallelogram",
+          "Oval",
+          "Rectangle",
+        ],
+        accept: [
+          "Rectangle",
+        ],
+        answer: "A rectangle is a process step. A diamond is a decision, a parallelogram is input or output, and a rounded oval marks start and end.",
+      },
     ],
 
     misconceptions: [
@@ -4258,6 +5272,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         question: "Which flowchart shape marks the start and the end?",
         accept: ["oval", "an oval"],
         answer: "An oval. Rectangles are processes, diamonds are decisions and parallelograms are input or output.",
+      },
+      {
+        question: "x = 10 / 0 makes a program crash while it runs. What kind of error is this?",
+        choices: [
+          "Syntax error",
+          "Logic error",
+          "Runtime error",
+          "Boundary error",
+        ],
+        accept: [
+          "Runtime error",
+        ],
+        answer: "The code is written correctly, so it isn't a syntax error, but dividing by zero is impossible and stops the program part-way: a runtime error.",
+      },
+      {
+        question: "What does Python do with a comment when the program runs?",
+        choices: [
+          "Prints it",
+          "Ignores it",
+          "Runs it",
+          "Saves it",
+        ],
+        accept: [
+          "Ignores it",
+        ],
+        answer: "Comments are notes for humans and are skipped when the code runs, so they don't change what it does but make it far easier to maintain.",
+      },
+      {
+        question: "What is it called when an algorithm is planned in structured, English-like steps?",
+        choices: [
+          "Machine code",
+          "Flowchart",
+          "Pseudocode",
+          "Assembly",
+        ],
+        accept: [
+          "Pseudocode",
+        ],
+        answer: "Pseudocode sets out an algorithm in plain, structured steps that don't follow any one language's rules. A flowchart plans the same logic as a diagram.",
+      },
+      {
+        question: "A loop meant to run 10 times only runs 9 times. What kind of error is this?",
+        choices: [
+          "Logic error",
+          "Syntax error",
+          "Runtime error",
+          "Type error",
+        ],
+        accept: [
+          "Logic error",
+        ],
+        answer: "The program runs without crashing but does the wrong thing, so it is a logic error, here an off-by-one. A syntax error would stop it running at all.",
+      },
+      {
+        question: "What does maintainability mean for a program?",
+        choices: [
+          "How fast it runs",
+          "Ease of updating it",
+          "It has no bugs",
+          "How small it is",
+        ],
+        accept: [
+          "Ease of updating it",
+        ],
+        answer: "Maintainable code is easy for another programmer to read, fix and update, helped by comments, clear names, indentation and subprograms.",
+      },
+      {
+        question: "x = 10, then x = x - 3, then x = x * 2. What is x now?",
+        choices: [
+          "4",
+          "17",
+          "14",
+          "20",
+        ],
+        accept: [
+          "14",
+        ],
+        answer: "Run the lines in order: 10 - 3 leaves 7, then doubling gives 14. Doing the lines in the wrong order gives 17.",
       },
     ],
     misconceptions: [
@@ -4564,6 +5656,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "Social engineering exploits people. Blagging, phishing, shouldering and pharming all rely on human behaviour.",
       },
+      {
+        question: "Which measure most directly stops a brute force attack on a login?",
+        choices: [
+          "Data encryption",
+          "Anti-malware",
+          "Account lockout",
+          "Regular backups",
+        ],
+        accept: [
+          "Account lockout",
+        ],
+        answer: "Locking the account after a few wrong attempts stops an attacker trying millions of passwords. Encryption protects stored data, not the login.",
+      },
+      {
+        question: "Which is the best defence against SQL injection?",
+        choices: [
+          "A firewall",
+          "Strong passwords",
+          "Input validation",
+          "Encryption",
+        ],
+        accept: [
+          "Input validation",
+        ],
+        answer: "Validating and sanitising input stops typed text being run as a database command. A firewall cannot tell a harmful entry from a normal one.",
+      },
+      {
+        question: "Which measure lets a company recover from ransomware without paying?",
+        choices: [
+          "Anti-malware",
+          "Regular backups",
+          "A firewall",
+          "User access levels",
+        ],
+        accept: [
+          "Regular backups",
+        ],
+        answer: "With a clean backup, encrypted files can be wiped and restored. Anti-malware helps prevent infection but cannot undo the encryption.",
+      },
+      {
+        question: "What does a firewall use to decide which traffic to block?",
+        choices: [
+          "A virus database",
+          "A set of rules",
+          "User passwords",
+          "An encryption key",
+        ],
+        accept: [
+          "A set of rules",
+        ],
+        answer: "A firewall checks each packet against configured rules, such as allowed ports and addresses. Anti-malware is what uses a database of known threats.",
+      },
+      {
+        question: "Why does encryption protect data that has been stolen?",
+        choices: [
+          "It cannot be copied",
+          "It is unreadable",
+          "It is auto-deleted",
+          "It cannot be sent",
+        ],
+        accept: [
+          "It is unreadable",
+        ],
+        answer: "Encrypted data can still be stolen or copied, but without the key it cannot be understood. That is why encryption is used alongside other measures.",
+      },
+      {
+        question: "A caller pretends to be from IT support to get your password. What is this?",
+        choices: [
+          "Pharming",
+          "Shouldering",
+          "Blagging",
+          "A worm",
+        ],
+        accept: [
+          "Blagging",
+        ],
+        answer: "Blagging is inventing a believable scenario to trick someone into giving information. Pharming redirects you to a fake website.",
+      },
     ],
 
     misconceptions: [
@@ -4853,6 +6023,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "ORDER BY sorts. Leaving WHERE off a DELETE statement removes every record in the table, which is unrecoverable.",
       },
+      {
+        question: "In an INSERT INTO statement, which keyword comes just before the new data?",
+        choices: [
+          "SET",
+          "WHERE",
+          "VALUES",
+          "FROM",
+        ],
+        accept: [
+          "VALUES",
+        ],
+        answer: "INSERT INTO Students (Name, Age) VALUES ('Sam', 15) adds a record. SET is used with UPDATE to change existing fields.",
+      },
+      {
+        question: "In SELECT Name ___ Students, which keyword fills the gap?",
+        choices: [
+          "WHERE",
+          "INTO",
+          "FROM",
+          "TABLE",
+        ],
+        accept: [
+          "FROM",
+        ],
+        answer: "SELECT lists the fields and FROM names the table, as in SELECT Name FROM Students. WHERE then filters the records.",
+      },
+      {
+        question: "Which data type suits a field storing whether a member has paid?",
+        choices: [
+          "Integer",
+          "String",
+          "Real",
+          "Boolean",
+        ],
+        accept: [
+          "Boolean",
+        ],
+        answer: "Paid or not paid has only two possible values, true or false, so Boolean is the right type. Integer is for whole numbers.",
+      },
+      {
+        question: "ORDER BY Surname DESC sorts the surnames in which order?",
+        choices: [
+          "A to Z",
+          "Z to A",
+          "Shortest first",
+          "Newest first",
+        ],
+        accept: [
+          "Z to A",
+        ],
+        answer: "DESC means descending, so text goes Z to A and numbers go largest first. ASC, the default, is A to Z.",
+      },
+      {
+        question: "Which validation check makes sure an age is between 11 and 18?",
+        choices: [
+          "Presence check",
+          "Length check",
+          "Format check",
+          "Range check",
+        ],
+        accept: [
+          "Range check",
+        ],
+        answer: "A range check tests that a value lies between limits. A presence check only tests that something was entered.",
+      },
+      {
+        question: "Which field is the best primary key for a Students table?",
+        choices: [
+          "Surname",
+          "StudentID",
+          "DateOfBirth",
+          "Form",
+        ],
+        accept: [
+          "StudentID",
+        ],
+        answer: "An ID can be made unique for every student. Two students can easily share a surname, a birthday or a form.",
+      },
     ],
 
     misconceptions: [
@@ -5123,6 +6371,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "B OR C, because it is in brackets",
         ],
         answer: "Brackets come first, exactly as in arithmetic. Ignoring them changes the result of the whole expression.",
+      },
+      {
+        question: "Which gate outputs 1 only when both inputs are 0?",
+        choices: [
+          "NAND",
+          "NOR",
+          "AND",
+          "OR",
+        ],
+        accept: [
+          "NOR",
+        ],
+        answer: "NOR is NOT OR. OR gives 0 only when both inputs are 0, so NOR gives 1 only then. NAND gives 1 unless both inputs are 1.",
+      },
+      {
+        question: "Which expression gives 1 only when A is 1 and B is 0?",
+        choices: [
+          "NOT A AND B",
+          "A OR B",
+          "A AND NOT B",
+          "NOT (A OR B)",
+        ],
+        accept: [
+          "A AND NOT B",
+        ],
+        answer: "NOT B turns B = 0 into 1, so A AND NOT B needs A on and B off. NOT A AND B is the other way round.",
+      },
+      {
+        question: "Which gate is drawn as a triangle with a small circle on its output?",
+        choices: [
+          "AND",
+          "NOT",
+          "OR",
+          "NAND",
+        ],
+        accept: [
+          "NOT",
+        ],
+        answer: "The triangle with a circle is the NOT gate, or inverter. NAND is an AND shape (flat back, round front) with a circle.",
+      },
+      {
+        question: "Which gate symbol is D-shaped with a flat back and no circle?",
+        choices: [
+          "AND",
+          "OR",
+          "NOT",
+          "NOR",
+        ],
+        accept: [
+          "AND",
+        ],
+        answer: "AND is D-shaped with a flat back. OR has a curved back and pointed front, and NOR is the OR shape with a circle.",
+      },
+      {
+        question: "For inputs 00, 01, 10, 11 in order, which output column belongs to an OR gate?",
+        choices: [
+          "0001",
+          "1110",
+          "0111",
+          "1000",
+        ],
+        accept: [
+          "0111",
+        ],
+        answer: "OR gives 1 whenever at least one input is 1, so only 00 gives 0. 0001 is AND, 1110 is NAND and 1000 is NOR.",
+      },
+      {
+        question: "Alarm A sounds when door D is open and system S is on. Which expression fits?",
+        choices: [
+          "A = D OR S",
+          "A = D AND S",
+          "A = NOT D AND S",
+          "A = D AND NOT S",
+        ],
+        accept: [
+          "A = D AND S",
+        ],
+        answer: "Both conditions must be true, so it is AND. With OR the alarm would sound whenever the system was on, even with the door shut.",
       },
     ],
 
@@ -5406,6 +6732,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Sequential within each set of letters",
         ],
         answer: "That is why you can convert case by adding or subtracting a fixed value, and why sorting alphabetically works numerically.",
+      },
+      {
+        question: "Which hexadecimal digit represents denary 15?",
+        choices: [
+          "E",
+          "F",
+          "G",
+          "D",
+        ],
+        accept: [
+          "F",
+        ],
+        answer: "Hex digits run 0 to 9 then A to F, with A as ten and F as fifteen. There is no G in hexadecimal.",
+      },
+      {
+        question: "What is 00001100 shifted right by 2 places?",
+        choices: [
+          "00110000",
+          "00000110",
+          "00000011",
+          "00001111",
+        ],
+        accept: [
+          "00000011",
+        ],
+        answer: "Each right shift halves the number, so twelve becomes six, then three. 00110000 is a left shift of two places.",
+      },
+      {
+        question: "In binary addition, what does one plus one give?",
+        choices: [
+          "11",
+          "10",
+          "2",
+          "01",
+        ],
+        accept: [
+          "10",
+        ],
+        answer: "One plus one is two, which in binary is 10: write 0 in that column and carry 1 to the next. There is no digit 2 in binary.",
+      },
+      {
+        question: "Which is a disadvantage of lossy compression?",
+        choices: [
+          "Some quality is lost",
+          "Files become larger",
+          "It only works on text",
+          "It cannot shrink audio",
+        ],
+        accept: [
+          "Some quality is lost",
+        ],
+        answer: "Lossy compression permanently removes data, so the original cannot be rebuilt and quality may drop. It is widely used for images and audio.",
+      },
+      {
+        question: "An image's width and height are both doubled. How many times larger is the file?",
+        choices: [
+          "2",
+          "8",
+          "4",
+          "16",
+        ],
+        accept: [
+          "4",
+        ],
+        answer: "Doubling both dimensions gives four times as many pixels, so four times the data. Doubling only the width would double the size.",
+      },
+      {
+        question: "Why does Unicode use more bits per character than ASCII?",
+        choices: [
+          "To make files smaller",
+          "To fit more characters",
+          "To process text faster",
+          "To encrypt the text",
+        ],
+        accept: [
+          "To fit more characters",
+        ],
+        answer: "More bits give more possible codes, so Unicode can cover most of the world's writing systems and symbols. It actually makes text files bigger.",
       },
     ],
 
@@ -5699,6 +7103,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Electronic waste containing toxic materials",
         ],
         answer: "Devices are replaced quickly and often exported for disposal. Energy use by data centres is the other major concern.",
+      },
+      {
+        question: "Under the Data Protection Act 2018, how long should personal data be kept?",
+        choices: [
+          "Forever",
+          "Exactly one year",
+          "No longer than needed",
+          "Until the person dies",
+        ],
+        accept: [
+          "No longer than needed",
+        ],
+        answer: "Data must not be kept longer than necessary for its purpose. Other principles include keeping it accurate, secure and used only for the stated purpose.",
+      },
+      {
+        question: "Which Act is broken by creating and spreading a computer virus?",
+        choices: [
+          "Data Protection Act",
+          "Computer Misuse Act",
+          "Copyright Act",
+          "Freedom of Information",
+        ],
+        accept: [
+          "Computer Misuse Act",
+        ],
+        answer: "The Computer Misuse Act 1990 covers unauthorised access and changing data without permission, which is what malware does. Data protection covers personal data.",
+      },
+      {
+        question: "Which is an advantage of open source software?",
+        choices: [
+          "Has official support",
+          "Code is kept secret",
+          "Users can modify it",
+          "Always bug-free",
+        ],
+        accept: [
+          "Users can modify it",
+        ],
+        answer: "Open source code can be inspected, changed and shared freely. Secret code and paid official support are features of proprietary software.",
+      },
+      {
+        question: "Which is a negative social effect of automation?",
+        choices: [
+          "Some jobs are lost",
+          "Work becomes slower",
+          "More errors are made",
+          "More staff are needed",
+        ],
+        accept: [
+          "Some jobs are lost",
+        ],
+        answer: "Machines and software can replace people in repetitive jobs, causing job losses. Automation usually makes work faster and more consistent.",
+      },
+      {
+        question: "Under data protection law, what can a person ask an organisation for?",
+        choices: [
+          "Other users' data",
+          "A copy of their data",
+          "The firm's source code",
+          "Its staff passwords",
+        ],
+        accept: [
+          "A copy of their data",
+        ],
+        answer: "People have the right to access the personal data held about them, and to have it corrected. They have no right to see other people's data.",
+      },
+      {
+        question: "Why is e-waste harmful to the environment?",
+        choices: [
+          "It rots too quickly",
+          "Toxic metals can leak",
+          "It is too light",
+          "It contains no metal",
+        ],
+        accept: [
+          "Toxic metals can leak",
+        ],
+        answer: "Old devices contain toxic substances such as lead and mercury that can leak into soil and water if dumped. They also contain valuable metals worth recycling.",
       },
     ],
 
@@ -5996,6 +7478,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "Working earns method marks, so an arithmetic slip at the end still scores. An unsupported wrong answer scores nothing.",
       },
+      {
+        question: "Which command word asks you to set out features or steps, without giving reasons?",
+        choices: [
+          "Explain",
+          "Describe",
+          "Evaluate",
+          "Compare",
+        ],
+        accept: [
+          "Describe",
+        ],
+        answer: "Describe means say what something is like or what happens. Explain also needs the reasons why, usually linked with 'because' or 'so'.",
+      },
+      {
+        question: "Which of these is an example of retrieval practice?",
+        choices: [
+          "Rereading your notes",
+          "Flashcard self-testing",
+          "Highlighting notes",
+          "Copying out notes",
+        ],
+        accept: [
+          "Flashcard self-testing",
+        ],
+        answer: "Testing yourself forces you to recall from memory, which strengthens it. Rereading and highlighting feel productive but give much weaker results.",
+      },
+      {
+        question: "In a 'Compare' answer, what should each point mention?",
+        choices: [
+          "Only one of the things",
+          "Just a definition",
+          "Both things",
+          "A final conclusion",
+        ],
+        accept: [
+          "Both things",
+        ],
+        answer: "Compare means linking the two, for example 'RAM is volatile whereas ROM is not'. Describing each separately can lose marks.",
+      },
+      {
+        question: "Which command word asks you to work out a numerical answer?",
+        choices: [
+          "Describe",
+          "Calculate",
+          "Identify",
+          "Discuss",
+        ],
+        accept: [
+          "Calculate",
+        ],
+        answer: "Calculate wants a number, and showing your working can earn method marks even if the final answer is wrong.",
+      },
+      {
+        question: "When asked to trace an algorithm, what do you usually fill in?",
+        choices: [
+          "A truth table",
+          "A trace table",
+          "A flowchart",
+          "A mark scheme",
+        ],
+        accept: [
+          "A trace table",
+        ],
+        answer: "A trace table records each variable's value as the algorithm runs line by line. A truth table lists the outputs of a logic circuit.",
+      },
+      {
+        question: "In a 2-mark 'Explain' question, what usually earns the second mark?",
+        choices: [
+          "Repeating the point",
+          "A linked reason",
+          "Using bullet points",
+          "Writing very neatly",
+        ],
+        accept: [
+          "A linked reason",
+        ],
+        answer: "Explain marks usually go to a point and then a reason linked to it with 'because' or 'so'. Restating the same point earns nothing extra.",
+      },
     ],
 
     misconceptions: [
@@ -6288,6 +7848,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Discarded data cannot be recovered, changing the meaning",
         ],
         answer: "Lossy suits images and audio where small losses go unnoticed. Text and program files need lossless compression.",
+      },
+      {
+        question: "Which type of storage is a USB memory stick?",
+        choices: [
+          "Magnetic",
+          "Optical",
+          "Solid state",
+          "Virtual memory",
+        ],
+        accept: [
+          "Solid state",
+        ],
+        answer: "USB sticks and SD cards use flash memory, a solid state technology with no moving parts. Optical discs are read by a laser.",
+      },
+      {
+        question: "Why does a computer need secondary storage?",
+        choices: [
+          "To run the CPU faster",
+          "To keep data when off",
+          "To boot the computer",
+          "To hold the cache",
+        ],
+        accept: [
+          "To keep data when off",
+        ],
+        answer: "RAM is volatile, so anything kept long term must go on non-volatile secondary storage. The boot program is held in ROM.",
+      },
+      {
+        question: "How many bytes are in 2 kilobytes, using 1 KB as 1000 bytes?",
+        choices: [
+          "200",
+          "16000",
+          "20000",
+          "2000",
+        ],
+        accept: [
+          "2000",
+        ],
+        answer: "Two lots of a thousand bytes is 2000 bytes. 16000 would be the number of bits, since each byte is 8 bits.",
+      },
+      {
+        question: "Which unit is 1000 gigabytes?",
+        choices: [
+          "Petabyte",
+          "Megabyte",
+          "Terabyte",
+          "Kilobyte",
+        ],
+        accept: [
+          "Terabyte",
+        ],
+        answer: "A terabyte is 1000 gigabytes. A petabyte is 1000 terabytes, and a megabyte is smaller than a gigabyte.",
+      },
+      {
+        question: "Which type of storage is read and written using a laser?",
+        choices: [
+          "Optical",
+          "Magnetic",
+          "Solid state",
+          "Flash",
+        ],
+        accept: [
+          "Optical",
+        ],
+        answer: "Optical drives use a laser to read pits and lands on CDs, DVDs and Blu-rays. Magnetic drives use a read/write head instead.",
+      },
+      {
+        question: "What limits the lifespan of a solid state drive?",
+        choices: [
+          "Read head crashes",
+          "Number of write cycles",
+          "Surface scratches",
+          "Strong magnets",
+        ],
+        accept: [
+          "Number of write cycles",
+        ],
+        answer: "Flash memory cells wear out after many writes, so SSDs have a write cycle limit. Head crashes affect magnetic disks; scratches affect optical discs.",
       },
     ],
 
@@ -6589,6 +8227,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "It can be graphical, command line, menu-driven or voice. A command line is harder to learn but faster and more powerful for experts.",
       },
+      {
+        question: "Which OS function controls communication with printers and keyboards?",
+        choices: [
+          "Memory management",
+          "User management",
+          "Peripheral management",
+          "File management",
+        ],
+        accept: [
+          "Peripheral management",
+        ],
+        answer: "The OS manages peripherals using device drivers. Memory management decides what is held in RAM; user management handles accounts.",
+      },
+      {
+        question: "Which of these is an example of application software?",
+        choices: [
+          "Word processor",
+          "Operating system",
+          "Device driver",
+          "Defragmenter",
+        ],
+        accept: [
+          "Word processor",
+        ],
+        answer: "A word processor helps a user do a task. The OS, drivers and utilities such as a defragmenter are system software that run the computer.",
+      },
+      {
+        question: "Which OS function creates folders and controls where files are saved?",
+        choices: [
+          "Processor management",
+          "File management",
+          "Memory management",
+          "Device drivers",
+        ],
+        accept: [
+          "File management",
+        ],
+        answer: "File management organises files into folders, names them and controls access. Memory management deals with RAM, not saved files.",
+      },
+      {
+        question: "Which utility scans files against a database of known threats?",
+        choices: [
+          "Firewall",
+          "Encryption software",
+          "Anti-malware",
+          "Defragmenter",
+        ],
+        accept: [
+          "Anti-malware",
+        ],
+        answer: "Anti-malware compares files with signatures of known malware and quarantines matches. A firewall filters network traffic instead.",
+      },
+      {
+        question: "Which interface type uses windows, icons, menus and a pointer?",
+        choices: [
+          "CLI",
+          "GUI",
+          "Menu-driven",
+          "Natural language",
+        ],
+        accept: [
+          "GUI",
+        ],
+        answer: "WIMP describes a GUI. It is easy to learn but needs more memory and processing than a command line interface.",
+      },
+      {
+        question: "How does an OS make one CPU core seem to run many programs at once?",
+        choices: [
+          "Adding virtual memory",
+          "Running a defragmenter",
+          "Rapid task switching",
+          "Loading device drivers",
+        ],
+        accept: [
+          "Rapid task switching",
+        ],
+        answer: "The scheduler gives each process a short slice of CPU time in turn, so quickly that they appear to run together.",
+      },
     ],
 
     misconceptions: [
@@ -6889,6 +8605,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "DNS",
         ],
         answer: "DNS acts as the internet's address book. Without it you would have to remember numeric IP addresses for every site.",
+      },
+      {
+        question: "Which TCP/IP layer handles physical transmission between devices using MAC addresses?",
+        choices: [
+          "Internet",
+          "Transport",
+          "Application",
+          "Link",
+        ],
+        accept: [
+          "Link",
+        ],
+        answer: "The link layer moves data over the physical network using MAC addresses. The internet layer uses IP addresses to route between networks.",
+      },
+      {
+        question: "What does a router read in a packet header to forward the packet?",
+        choices: [
+          "Sequence number",
+          "Checksum",
+          "Destination IP address",
+          "Packet payload",
+        ],
+        accept: [
+          "Destination IP address",
+        ],
+        answer: "Routers forward packets by their destination IP address. The sequence number is used later to reassemble packets in order.",
+      },
+      {
+        question: "What happens to a packet whose checksum does not match on arrival?",
+        choices: [
+          "It is used anyway",
+          "It is requested again",
+          "The file is deleted",
+          "It is sent to a switch",
+        ],
+        accept: [
+          "It is requested again",
+        ],
+        answer: "A mismatch means the packet was corrupted, so it is discarded and requested again. TCP handles this checking and resending.",
+      },
+      {
+        question: "Which part of a packet holds the actual data being sent?",
+        choices: [
+          "Header",
+          "Payload",
+          "Checksum",
+          "Address",
+        ],
+        accept: [
+          "Payload",
+        ],
+        answer: "The payload is the chunk of real data. The header carries addresses and a sequence number so the packet can be routed and reassembled.",
+      },
+      {
+        question: "Which protocol do web browsers use to request ordinary web pages?",
+        choices: [
+          "SMTP",
+          "FTP",
+          "HTTP",
+          "IMAP",
+        ],
+        accept: [
+          "HTTP",
+        ],
+        answer: "HTTP requests and delivers web pages. FTP transfers files, SMTP sends email and IMAP retrieves email.",
+      },
+      {
+        question: "Which TCP/IP layer do SMTP and IMAP belong to?",
+        choices: [
+          "Transport",
+          "Application",
+          "Internet",
+          "Link",
+        ],
+        accept: [
+          "Application",
+        ],
+        answer: "Email, web and file transfer protocols sit in the application layer. TCP is in the transport layer and IP in the internet layer.",
       },
     ],
 
@@ -7194,6 +8988,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
         ],
         answer: "Maintainability matters because most of a program's life is spent being changed by someone who did not write it.",
       },
+      {
+        question: "Which validation check makes sure an age is a whole number, not text?",
+        choices: [
+          "Range check",
+          "Type check",
+          "Presence check",
+          "Length check",
+        ],
+        accept: [
+          "Type check",
+        ],
+        answer: "A type check confirms the data is the right kind, such as an integer. A range check only works once you know it's a number, to see if it's between limits.",
+      },
+      {
+        question: "Does validation guarantee that entered data is correct?",
+        choices: [
+          "Yes, always",
+          "Only for numbers",
+          "No, only reasonable",
+          "Only with range checks",
+        ],
+        accept: [
+          "No, only reasonable",
+        ],
+        answer: "Validation only checks data follows the rules. A wrong but realistic date of birth still passes, which is why verification is sometimes added as well.",
+      },
+      {
+        question: "Which of these is an example of authentication?",
+        choices: [
+          "Entering a password",
+          "A range check",
+          "Removing < symbols",
+          "Typing email twice",
+        ],
+        accept: [
+          "Entering a password",
+        ],
+        answer: "Authentication confirms who the user is, using a password, PIN or code. Typing an email twice is verification, and removing symbols is sanitisation.",
+      },
+      {
+        question: "Which test data checks a program with typical, expected values?",
+        choices: [
+          "Boundary data",
+          "Erroneous data",
+          "Normal data",
+          "Random data",
+        ],
+        accept: [
+          "Normal data",
+        ],
+        answer: "Normal data is ordinary input the program should accept, like 50 for a 0 to 100 mark. Boundary data sits at the edges and erroneous data should be rejected.",
+      },
+      {
+        question: "Validation, sanitisation and authentication are all part of what?",
+        choices: [
+          "Decomposition",
+          "Abstraction",
+          "Pattern recognition",
+          "Defensive design",
+        ],
+        accept: [
+          "Defensive design",
+        ],
+        answer: "They are defensive design: anticipating misuse so the program can't be broken or abused. Decomposition, abstraction and pattern recognition are computational thinking.",
+      },
+      {
+        question: "Which attack does input sanitisation mainly defend against?",
+        choices: [
+          "SQL injection",
+          "Phishing",
+          "Shoulder surfing",
+          "DDoS attack",
+        ],
+        accept: [
+          "SQL injection",
+        ],
+        answer: "SQL injection hides database commands inside typed input; sanitising removes or escapes those characters. Phishing tricks people, not program input.",
+      },
     ],
 
     misconceptions: [
@@ -7496,6 +9368,84 @@ export const COMPUTER_SCIENCE: Record<string, TopicContent> = {
           "Binary",
         ],
         answer: "It is the only form the processor executes directly. Assembly language is a readable one-to-one representation of it.",
+      },
+      {
+        question: "What is the stand-alone file a compiler produces from source code called?",
+        choices: [
+          "Source code",
+          "An executable",
+          "Pseudocode",
+          "Assembly code",
+        ],
+        accept: [
+          "An executable",
+        ],
+        answer: "A compiler turns source code into an executable (object code) that runs on its own, so users don't need the compiler or the source to run it.",
+      },
+      {
+        question: "Which translator must be present every time the program is run?",
+        choices: [
+          "Compiler",
+          "Assembler",
+          "Interpreter",
+          "Code editor",
+        ],
+        accept: [
+          "Interpreter",
+        ],
+        answer: "An interpreter translates as the program runs, so it is needed every time. A compiled program has already been translated and runs without the compiler.",
+      },
+      {
+        question: "In assembly language, what are short codes such as ADD and LDA called?",
+        choices: [
+          "Identifiers",
+          "Mnemonics",
+          "Operands",
+          "Comments",
+        ],
+        accept: [
+          "Mnemonics",
+        ],
+        answer: "Mnemonics are short, memorable codes that stand for machine code instructions. The operand is the data or address that follows the mnemonic.",
+      },
+      {
+        question: "Which IDE feature points out mistakes, with a line number and a message?",
+        choices: [
+          "Syntax highlighting",
+          "Breakpoints",
+          "Auto-indent",
+          "Error diagnostics",
+        ],
+        accept: [
+          "Error diagnostics",
+        ],
+        answer: "Error diagnostics point out problems, often with the line number and a message. Syntax highlighting only colours the code to make it easier to read.",
+      },
+      {
+        question: "Which IDE feature suggests the rest of a name or keyword as you type?",
+        choices: [
+          "Autocomplete",
+          "Stepping",
+          "Breakpoint",
+          "Translator",
+        ],
+        accept: [
+          "Autocomplete",
+        ],
+        answer: "Autocomplete offers to finish names and keywords, which saves time and avoids typos. Stepping runs code one line at a time while debugging.",
+      },
+      {
+        question: "One assembly instruction usually becomes how many machine code instructions?",
+        choices: [
+          "Many",
+          "One",
+          "Two",
+          "None",
+        ],
+        accept: [
+          "One",
+        ],
+        answer: "Assembly matches machine code one-to-one: each mnemonic becomes a single instruction. It is one high-level statement that often becomes many.",
       },
     ],
 

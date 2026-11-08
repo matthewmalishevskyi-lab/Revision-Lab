@@ -353,6 +353,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Catorce is fourteen. Cuarenta is 40, veinticuatro is 24 and cuatro is 4. Spanish uses tener for age: literally 'I have fourteen years'.",
       },
+      {
+        question: "Which Spanish word means 'surname'?",
+        choices: [
+          "el nombre",
+          "el apellido",
+          "el apodo",
+          "la edad",
+        ],
+        accept: [
+          "el apellido",
+        ],
+        answer: "El apellido is your surname. El nombre is your first name, el apodo is a nickname and la edad is your age.",
+      },
     ],
     misconceptions: [
       {
@@ -676,6 +689,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "Nuestros",
         ],
         answer: "Nuestros is masculine plural to match padres. Nuestro is singular, and nuestra/nuestras are the feminine forms.",
+      },
+      {
+        question: "Which Spanish word means 'stepfather'?",
+        choices: [
+          "el padrino",
+          "el suegro",
+          "el padrastro",
+          "el abuelo",
+        ],
+        accept: [
+          "el padrastro",
+        ],
+        answer: "El padrastro is a stepfather. El padrino is a godfather, el suegro is a father-in-law and el abuelo is a grandfather.",
       },
     ],
     misconceptions: [
@@ -1002,6 +1028,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Me gustaría is the conditional 'I would like'. Me gusta is 'I like', me gustó 'I liked' and voy a ir 'I'm going to go'.",
       },
+      {
+        question: "In Spanish, which verb completes '___ la guitarra' (I play the guitar)?",
+        choices: [
+          "Juego",
+          "Toco",
+          "Hago",
+          "Pongo",
+        ],
+        accept: [
+          "Toco",
+        ],
+        answer: "Tocar is used for musical instruments, so 'toco la guitarra'. Jugar is for sports and games, as in 'juego al fútbol'.",
+      },
     ],
     misconceptions: [
       {
@@ -1323,6 +1362,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "El aula is a classroom (a feminine noun that takes el). The library is la biblioteca and the playground el patio.",
       },
+      {
+        question: "Which Spanish word means 'pencil case'?",
+        choices: [
+          "la regla",
+          "la goma",
+          "el lápiz",
+          "el estuche",
+        ],
+        accept: [
+          "el estuche",
+        ],
+        answer: "El estuche is the pencil case. La regla is a ruler, la goma is a rubber and el lápiz is a pencil.",
+      },
     ],
     misconceptions: [
       {
@@ -1643,6 +1695,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "to brush your teeth",
         ],
         answer: "Lavarse los dientes is to brush (literally wash) your teeth. Spanish uses los with body parts, not 'your'. Hands are las manos and face la cara.",
+      },
+      {
+        question: "What does 'el comedor' mean in a Spanish house?",
+        choices: [
+          "the dining room",
+          "the kitchen",
+          "the living room",
+          "the hallway",
+        ],
+        accept: [
+          "the dining room",
+        ],
+        answer: "El comedor is the dining room, from comer (to eat). The kitchen is la cocina and the living room is el salón.",
       },
     ],
     misconceptions: [
@@ -1976,6 +2041,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Llamáis is the vosotros form, so the reflexive pronoun is os. Se goes with él/ellos, nos with nosotros and te with tú.",
       },
+      {
+        question: "What is the yo form of 'salir' in the present?",
+        choices: [
+          "salo",
+          "sigo",
+          "salgo",
+          "sale",
+        ],
+        accept: [
+          "salgo",
+        ],
+        answer: "Salir adds a g in the yo form only: salgo, like hago and pongo. Sale is the él form and sigo comes from seguir.",
+      },
     ],
     misconceptions: [
       {
@@ -2302,6 +2380,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Peor means worse, the irregular comparative of malo. Better is mejor, less is menos, and poorer would be más pobre.",
       },
+      {
+        question: "What does 'el correo electrónico' mean?",
+        choices: [
+          "a text message",
+          "an email",
+          "a website",
+          "a phone call",
+        ],
+        accept: [
+          "an email",
+        ],
+        answer: "El correo electrónico is email (correo means post or mail). A text message is un mensaje and a website is una página web.",
+      },
     ],
     misconceptions: [
       {
@@ -2622,6 +2713,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "twelve grapes",
         ],
         answer: "Spaniards eat twelve grapes (las uvas), one on each chime of midnight on Nochevieja, for luck in each month of the new year.",
+      },
+      {
+        question: "What does 'los fuegos artificiales' mean?",
+        choices: [
+          "bonfires",
+          "candles",
+          "fireworks",
+          "decorations",
+        ],
+        accept: [
+          "fireworks",
+        ],
+        answer: "Los fuegos artificiales are fireworks, literally 'artificial fires'. A bonfire is una hoguera and candles are las velas.",
       },
     ],
     misconceptions: [
@@ -2944,6 +3048,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "El pueblo is a village or small town. La ciudad is a city, el barrio a neighbourhood and las afueras the outskirts.",
       },
+      {
+        question: "What does 'hace viento' mean?",
+        choices: [
+          "it's windy",
+          "it's foggy",
+          "it's cloudy",
+          "it's stormy",
+        ],
+        accept: [
+          "it's windy",
+        ],
+        answer: "Hace viento means it's windy; weather with hace uses a noun (viento = wind). It's foggy is hay niebla and it's cloudy is está nublado.",
+      },
     ],
     misconceptions: [
       {
@@ -3264,6 +3381,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "a return ticket",
         ],
         answer: "Ida is the outward trip and vuelta is the way back, so it's a return ticket. A single ticket is un billete de ida (sencillo).",
+      },
+      {
+        question: "At a Spanish airport, what does 'la llegada' mean?",
+        choices: [
+          "departures",
+          "check-in",
+          "arrivals",
+          "baggage",
+        ],
+        accept: [
+          "arrivals",
+        ],
+        answer: "La llegada is arrivals, from llegar (to arrive). La salida is departures and el equipaje is the luggage.",
       },
     ],
     misconceptions: [
@@ -3586,6 +3716,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Pedir is stem-changing (e to i), so the yo form is pido. Pide is él/ella/usted, piden is ellos and pedimos is nosotros.",
       },
+      {
+        question: "Which Spanish word means 'the waiter'?",
+        choices: [
+          "el cocinero",
+          "el cliente",
+          "el dueño",
+          "el camarero",
+        ],
+        accept: [
+          "el camarero",
+        ],
+        answer: "El camarero serves you at the table. El cocinero is the cook, el cliente is the customer and el dueño is the owner.",
+      },
     ],
     misconceptions: [
       {
@@ -3906,6 +4049,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "I spoke",
         ],
         answer: "Hablé, with the accent on the final é, is the yo preterite: I spoke. Habló is he/she spoke, hablaré is I will speak and hablo is I speak.",
+      },
+      {
+        question: "What is the past participle of 'volver'?",
+        choices: [
+          "volvido",
+          "vuelto",
+          "vuelvo",
+          "volvió",
+        ],
+        accept: [
+          "vuelto",
+        ],
+        answer: "Volver has an irregular participle: he vuelto (I have returned). Volvido is a common mistake, vuelvo is present and volvió is preterite.",
       },
     ],
     misconceptions: [
@@ -4232,6 +4388,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Las normas are the rules, as in las normas del instituto. The marks are las notas and the lessons are las clases.",
       },
+      {
+        question: "What is 'una asignatura obligatoria'?",
+        choices: [
+          "an optional subject",
+          "a compulsory subject",
+          "a favourite subject",
+          "a failed subject",
+        ],
+        accept: [
+          "a compulsory subject",
+        ],
+        answer: "Una asignatura obligatoria is a subject everyone must take. An optional subject you choose is una asignatura optativa.",
+      },
     ],
     misconceptions: [
       {
@@ -4551,6 +4720,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "to enrol",
         ],
         answer: "Matricularse is to enrol or sign up for a course. To graduate is graduarse and to apply is solicitar, which comes before enrolling.",
+      },
+      {
+        question: "At a Spanish university, what is 'un grado'?",
+        choices: [
+          "a degree course",
+          "an exam grade",
+          "a school year",
+          "a classroom",
+        ],
+        accept: [
+          "a degree course",
+        ],
+        answer: "Un grado is a university degree, e.g. un grado en Derecho. It is a false friend: an exam grade or mark is una nota.",
       },
     ],
     misconceptions: [
@@ -4872,6 +5054,19 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "El jefe (la jefa) is the boss or manager. A chef is un cocinero, a colleague is un compañero and a customer is un cliente.",
       },
+      {
+        question: "What does 'el desempleo' mean?",
+        choices: [
+          "employment",
+          "unemployment",
+          "an employee",
+          "a pay rise",
+        ],
+        accept: [
+          "unemployment",
+        ],
+        answer: "Des- makes the opposite, so el desempleo is unemployment (also el paro). El empleo is employment and el empleado an employee.",
+      },
     ],
     misconceptions: [
       {
@@ -5191,6 +5386,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "homeless people",
         ],
         answer: "Sin hogar means without a home, so these are homeless people. Elderly people are las personas mayores and young people are los jóvenes.",
+      },
+      {
+        question: "In Spanish, what does 'ya que' mean?",
+        choices: [
+          "because",
+          "although",
+          "therefore",
+          "until",
+        ],
+        accept: [
+          "because",
+        ],
+        answer: "Ya que means 'because' or 'since', giving a reason. Although is aunque and therefore is por lo tanto; don't confuse it with ya (already).",
       },
     ],
     misconceptions: [
@@ -5512,6 +5720,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "to be worried about",
         ],
         answer: "Preocupado means worried, and por gives 'about': estoy preocupado por el planeta. Proud of is orgulloso de; busy is ocupado, a near look-alike.",
+      },
+      {
+        question: "In Spanish recycling, what does 'el vidrio' mean?",
+        choices: [
+          "paper",
+          "cardboard",
+          "plastic",
+          "glass",
+        ],
+        accept: [
+          "glass",
+        ],
+        answer: "El vidrio is glass, as in bottles and jars. Paper is el papel, cardboard is el cartón and plastic is el plástico.",
       },
     ],
     misconceptions: [
@@ -5840,6 +6061,19 @@ export const SPANISH: Record<string, TopicContent> = {
           "I like my teacher",
         ],
         answer: "Caer bien is an idiom: someone me cae bien if I like them or get on with them. It has nothing to do with falling; me cae mal means I don't like them.",
+      },
+      {
+        question: "What does 'Solía jugar al tenis' mean?",
+        choices: [
+          "I often play tennis",
+          "I used to play tennis",
+          "I will play tennis",
+          "I play tennis alone",
+        ],
+        accept: [
+          "I used to play tennis",
+        ],
+        answer: "Soler plus an infinitive means 'usually'. In the imperfect, solía jugar means 'I used to play', a habit in the past.",
       },
     ],
     misconceptions: [

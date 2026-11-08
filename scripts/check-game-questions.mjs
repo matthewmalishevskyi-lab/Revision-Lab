@@ -268,11 +268,15 @@ try {
   // The same for the 1,000 written for the sciences and English (2026-10-12),
   // and the 1,000 more for the three languages and the sciences (2026-11-03:
   // the languages had only 65–110 each, so their game pools leaned on very
-  // few questions). Floors at what each subject had once they went in.
+  // few questions), and 1,000 across every subject (2026-11-08: computer
+  // science, history, geography, business, citizenship, RE and PE had only
+  // five a topic). Floors at what each subject had once they went in.
   {
     const floors = {
-      biology: 580, chemistry: 540, physics: 540, english: 264,
-      spanish: 290, french: 274, german: 205,
+      maths: 1027, english: 297, biology: 600, chemistry: 559, physics: 559,
+      spanish: 308, french: 292, german: 217,
+      "computer-science": 275, history: 209, geography: 187, business: 260,
+      citizenship: 144, "religious-education": 199, "physical-education": 292,
     };
     for (const [subject, floor] of Object.entries(floors)) {
       let mcq = 0;

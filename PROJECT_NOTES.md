@@ -1,5 +1,52 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## 1,000 more quick game questions, across every subject (2026-11-08)
+
+Matthew: *"make 1000 more across all the subjects we have"*. The brief is the same as the earlier batches. Most of the 1,000 went to the seven subjects that still had only five multiple-choice questions a topic, the minimum the checker allows. The other subjects got a top-up.
+
+    Computer Science   125 → 275  (+150, 6 a topic)
+    History             95 → 209  (+114, 6)
+    Geography           85 → 187  (+102, 6)
+    Business           130 → 260  (+130, 5)
+    Citizenship         60 → 144  (+84, 7)
+    RE                  91 → 199  (+108, 6)
+    PE                 157 → 292  (+135, 5)
+    Maths +38 (1,027) · English +33 (297) · each science +1 a topic
+    (600 / 559 / 559) · each language +1 a topic (308 / 292 / 217)
+
+Seventeen writers worked from a brief that adds rules for these subjects:
+- stay inside the topic as the site teaches it;
+- **nothing that dates**: no office-holders, prices, rates or "latest" figures;
+- religious beliefs are written as "Christians believe…", never stated as fact;
+- Citizenship is strictly neutral;
+- historians' debates are not presented as one right answer;
+- English quotes only from public-domain texts.
+
+The validator gained three rules:
+- `higherOnly` is allowed only in maths and the sciences;
+- no `^` in maths;
+- no written sum in any topic that does not already have a calculator. This is checked with the real `topicNeedsCalculator`, before and after. All 285 topics keep exactly the calculator state they had.
+
+**All 1,000 were blind re-solved. Every key was right.** The 35 apparent disagreements in the science-and-language packet came from my own harness, not from the questions. ⚠️ The packet ids left out the subject, so Spanish, French and German questions on the same topic shared an id and overwrote each other's key. The solver spotted this itself. Those 48 were rebuilt with subject-qualified ids and solved again (48/48). The rewrites were then re-solved too (34/34).
+
+The why-check phase found real errors:
+- Shabbat "ends at sunset" (it ends at nightfall);
+- Yom Kippur "ten days after" Rosh Hashanah (it is on the tenth day);
+- Roanoke's two colonies run together as one;
+- "anyone" can start a Parliament e-petition;
+- "all EU citizens can't vote" (Malta and Cyprus are Commonwealth);
+- "transverse is not an axis";
+- German *also* glossed as *außerdem*.
+
+About 60 items were changed in all:
+- Most were giveaways: joke distractors, or a stem word echoed in the button.
+- Two pairs of questions were near-duplicates (deforestation twice, "What is the Sunnah?" twice).
+- Four science items gained the Higher flag: momentum ×2, tesla/F = BIl, and condensation polymers.
+
+**Verified.** `npm run check` is fully green: **294,472** content checks and **50,813** game-question checks. Every subject now has a floor in check-game-questions.mjs, and a floor raised by one fails.
+
+Worth Matthew's eye: the PE writer noticed that the site's existing explanation of *direct aggression* says it "breaks the rules". AQA defines it as physical contact, and its example is a legal punch in boxing. That text was not touched.
+
 ## 1,000 more quick game questions: the three languages and the sciences (2026-11-03)
 
 Matthew, from school: *"design 500 more questions that fit my requirements

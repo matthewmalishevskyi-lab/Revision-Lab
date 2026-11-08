@@ -302,6 +302,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "It made local authorities responsible for water, sewerage and waste, marking a shift away from leaving public health to individuals.",
       },
+      {
+        question: "What was the minimum working age in textile mills under the 1833 Factory Act?",
+        choices: [
+          "5",
+          "12",
+          "9",
+          "14",
+        ],
+        accept: [
+          "9",
+        ],
+        answer: "The 1833 Act banned children under nine from textile mills and limited those aged nine to thirteen to nine hours a day. It also appointed inspectors.",
+      },
+      {
+        question: "In which city did the Peterloo Massacre take place?",
+        choices: [
+          "Liverpool",
+          "Manchester",
+          "Leeds",
+          "Birmingham",
+        ],
+        accept: [
+          "Manchester",
+        ],
+        answer: "Cavalry charged a peaceful reform crowd at St Peter's Field, Manchester, in 1819. Around fifteen to eighteen people were killed and hundreds injured.",
+      },
+      {
+        question: "Who linked cholera to a water pump in Soho in 1854?",
+        choices: [
+          "Edwin Chadwick",
+          "Robert Owen",
+          "Joseph Bazalgette",
+          "John Snow",
+        ],
+        accept: [
+          "John Snow",
+        ],
+        answer: "John Snow mapped deaths around the Broad Street pump, showing cholera spread through water. Chadwick wrote the 1842 report on poor sanitary conditions.",
+      },
+      {
+        question: "Which of these was one of the Chartists' demands?",
+        choices: [
+          "A secret ballot",
+          "Votes for women",
+          "Abolish the monarchy",
+          "An elected Lords",
+        ],
+        accept: [
+          "A secret ballot",
+        ],
+        answer: "The People's Charter of 1838 asked for votes for all men over 21 and a secret ballot, among six points. It did not include votes for women.",
+      },
+      {
+        question: "Whose water frame and Cromford Mill helped create the factory system?",
+        choices: [
+          "James Watt",
+          "Richard Arkwright",
+          "George Stephenson",
+          "I. K. Brunel",
+        ],
+        accept: [
+          "Richard Arkwright",
+        ],
+        answer: "Arkwright's water-powered spinning mill at Cromford (1771) gathered workers and machines in one place. Watt improved the steam engine instead.",
+      },
+      {
+        question: "Which railway, opened in 1830, was the first inter-city passenger line?",
+        choices: [
+          "Stockton–Darlington",
+          "London–Birmingham",
+          "Liverpool–Manchester",
+          "Bristol–London",
+        ],
+        accept: [
+          "Liverpool–Manchester",
+        ],
+        answer: "The Liverpool and Manchester Railway of 1830 used Stephenson's Rocket. The Stockton and Darlington (1825) came first but mainly carried coal.",
+      },
     ],
 
     misconceptions: [
@@ -603,6 +681,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Revolts in the Caribbean, and the Haitian Revolution above all, made slavery look expensive and dangerous to sustain.",
       },
+      {
+        question: "Which crop was the main product of Britain's Caribbean plantations?",
+        choices: [
+          "Tea",
+          "Wheat",
+          "Rubber",
+          "Sugar",
+        ],
+        accept: [
+          "Sugar",
+        ],
+        answer: "Sugar dominated the British Caribbean and made planters and ports rich. Tea came to Britain from Asia, not from Caribbean plantations.",
+      },
+      {
+        question: "What does 'chattel slavery' mean?",
+        choices: [
+          "People owned as goods",
+          "Unpaid prison labour",
+          "Paying off a debt",
+          "Fixed-term service",
+        ],
+        accept: [
+          "People owned as goods",
+        ],
+        answer: "Chattel slavery treated people as property to be bought and sold for life, and children inherited the status. Indentured servants served a fixed term.",
+      },
+      {
+        question: "In which year did the revolution in Saint-Domingue (Haiti) begin?",
+        choices: [
+          "1765",
+          "1791",
+          "1807",
+          "1833",
+        ],
+        accept: [
+          "1791",
+        ],
+        answer: "The enslaved rose up in 1791, and Haiti declared independence in 1804 as the first Black republic. 1807 was the year Britain abolished its slave trade.",
+      },
+      {
+        question: "Which slave ship's plan, printed in 1788, showed people packed below deck?",
+        choices: [
+          "The Zong",
+          "The Brookes",
+          "The Amistad",
+          "The Victory",
+        ],
+        accept: [
+          "The Brookes",
+        ],
+        answer: "Abolitionists printed the Brookes diagram to show how tightly captives were packed. The Zong was the ship of the 1781 massacre.",
+      },
+      {
+        question: "Why did the Zong's owners go to court in 1783?",
+        choices: [
+          "To face murder charges",
+          "To free the survivors",
+          "To sell the ship",
+          "To claim insurance",
+        ],
+        accept: [
+          "To claim insurance",
+        ],
+        answer: "The owners sued insurers for the 'loss of cargo' after people were thrown overboard. No one was tried for murder; Granville Sharp publicised the case.",
+      },
+      {
+        question: "What system forced freed people to keep working for owners until 1838?",
+        choices: [
+          "Compensation",
+          "Apprenticeship",
+          "Sharecropping",
+          "Free labour",
+        ],
+        accept: [
+          "Apprenticeship",
+        ],
+        answer: "The 1833 Act made most freed people unpaid 'apprentices' to their former owners. Compensation went to the owners, not the enslaved.",
+      },
     ],
 
     misconceptions: [
@@ -899,6 +1055,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Railways, law and language sit alongside famine, partition and conflict. A strong answer weighs both rather than choosing one.",
       },
+      {
+        question: "Which 1930 protest did Gandhi lead against a British tax?",
+        choices: [
+          "Quit India",
+          "The Long March",
+          "The Salt March",
+          "March on Rome",
+        ],
+        accept: [
+          "The Salt March",
+        ],
+        answer: "Gandhi walked to the sea to make salt, defying the British salt tax in 1930. Quit India was his later campaign of 1942.",
+      },
+      {
+        question: "Which officer ordered troops to fire on the crowd at Amritsar in 1919?",
+        choices: [
+          "General Dyer",
+          "General Gordon",
+          "Robert Clive",
+          "Lord Curzon",
+        ],
+        accept: [
+          "General Dyer",
+        ],
+        answer: "Dyer's troops fired on an unarmed crowd in the Jallianwala Bagh, killing at least 379 by the official count. Clive belongs to the 1750s.",
+      },
+      {
+        question: "Who was the last Viceroy of India, overseeing partition in 1947?",
+        choices: [
+          "Lord Irwin",
+          "Lord Mountbatten",
+          "Lord Curzon",
+          "Robert Clive",
+        ],
+        accept: [
+          "Lord Mountbatten",
+        ],
+        answer: "Mountbatten brought forward the date of independence and partition to August 1947. Irwin was Viceroy during Gandhi's Salt March in 1930.",
+      },
+      {
+        question: "Which country nationalised the Suez Canal in 1956?",
+        choices: [
+          "Israel",
+          "Sudan",
+          "Iran",
+          "Egypt",
+        ],
+        accept: [
+          "Egypt",
+        ],
+        answer: "Egypt's President Nasser took over the canal. Britain, France and Israel invaded, but US pressure forced them to withdraw.",
+      },
+      {
+        question: "Which British businessman dreamed of a Cape-to-Cairo railway?",
+        choices: [
+          "Cecil Rhodes",
+          "David Livingstone",
+          "Henry Stanley",
+          "General Gordon",
+        ],
+        accept: [
+          "Cecil Rhodes",
+        ],
+        answer: "Rhodes made a fortune in diamonds and pushed British rule north into what became Rhodesia. Livingstone was a missionary explorer.",
+      },
+      {
+        question: "Which 1884–85 conference set rules for European claims on Africa?",
+        choices: [
+          "Paris Conference",
+          "Berlin Conference",
+          "Congress of Vienna",
+          "Yalta Conference",
+        ],
+        accept: [
+          "Berlin Conference",
+        ],
+        answer: "European powers met in Berlin with no African representatives, and the Scramble for Africa sped up afterwards. Vienna was in 1815, Yalta in 1945.",
+      },
     ],
 
     misconceptions: [
@@ -1187,6 +1421,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Munitions work and transport roles shifted attitudes, and some women gained the vote in 1918 — though the link is debated.",
       },
+      {
+        question: "Which country joined Britain and France in the Triple Entente?",
+        choices: [
+          "Italy",
+          "Russia",
+          "Belgium",
+          "USA",
+        ],
+        accept: [
+          "Russia",
+        ],
+        answer: "Britain, France and Russia formed the Triple Entente. Italy was in the Triple Alliance with Germany and Austria-Hungary, though it changed sides in 1915.",
+      },
+      {
+        question: "Which liner was sunk by a German U-boat in May 1915?",
+        choices: [
+          "Titanic",
+          "Bismarck",
+          "Dreadnought",
+          "Lusitania",
+        ],
+        accept: [
+          "Lusitania",
+        ],
+        answer: "Nearly 1,200 died, including 128 Americans, which turned US opinion against Germany. The USA still did not enter the war until 1917.",
+      },
+      {
+        question: "Which battle of September 1914 stopped the German advance on Paris?",
+        choices: [
+          "The Marne",
+          "Verdun",
+          "The Somme",
+          "Passchendaele",
+        ],
+        accept: [
+          "The Marne",
+        ],
+        answer: "The First Battle of the Marne ended the Schlieffen Plan's hopes of a quick win, and both sides then dug in. Verdun and the Somme came in 1916.",
+      },
+      {
+        question: "In which battle were tanks first used, in September 1916?",
+        choices: [
+          "Cambrai",
+          "The Somme",
+          "Verdun",
+          "Ypres",
+        ],
+        accept: [
+          "The Somme",
+        ],
+        answer: "British tanks first went into action at the Somme in 1916. Cambrai in 1917 is famous as the first mass tank attack, which makes it the tempting wrong answer.",
+      },
+      {
+        question: "What was the land between the two sides' front-line trenches called?",
+        choices: [
+          "The parapet",
+          "The reserve line",
+          "No man's land",
+          "The firing step",
+        ],
+        accept: [
+          "No man's land",
+        ],
+        answer: "No man's land was covered by barbed wire, shell craters and machine-gun fire. The parapet was the top front edge of a trench, built up with sandbags.",
+      },
+      {
+        question: "What was 'shell shock'?",
+        choices: [
+          "A gas burn",
+          "A foot infection",
+          "Mental trauma",
+          "A type of shell",
+        ],
+        accept: [
+          "Mental trauma",
+        ],
+        answer: "Shell shock was the wartime name for trauma caused by bombardment and combat. The foot infection from standing in wet trenches was trench foot.",
+      },
     ],
 
     misconceptions: [
@@ -1468,6 +1780,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "A civil war between Reds and Whites",
         ],
         answer: "The Reds won partly through Trotsky's Red Army, control of the centre, and the disunity of their opponents.",
+      },
+      {
+        question: "In 1903 the Social Democrats split into the Bolsheviks and which group?",
+        choices: [
+          "Kadets",
+          "Octobrists",
+          "Mensheviks",
+          "Whites",
+        ],
+        accept: [
+          "Mensheviks",
+        ],
+        answer: "The Social Democrats split into Bolsheviks and Mensheviks. Mensheviks wanted a broad mass party; Lenin wanted a small party of professional revolutionaries.",
+      },
+      {
+        question: "Who led the Provisional Government from July 1917?",
+        choices: [
+          "Trotsky",
+          "Stolypin",
+          "Rasputin",
+          "Kerensky",
+        ],
+        accept: [
+          "Kerensky",
+        ],
+        answer: "Alexander Kerensky became prime minister in July 1917 and was overthrown by the Bolsheviks in October. Stolypin was the Tsar's minister, killed in 1911.",
+      },
+      {
+        question: "Who issued the April Theses in 1917?",
+        choices: [
+          "Lenin",
+          "Trotsky",
+          "Kerensky",
+          "Stalin",
+        ],
+        accept: [
+          "Lenin",
+        ],
+        answer: "Lenin set them out on returning from exile, calling for no support for the Provisional Government and 'all power to the soviets'.",
+      },
+      {
+        question: "Which general's failed march on Petrograd in 1917 boosted the Bolsheviks?",
+        choices: [
+          "Kolchak",
+          "Kornilov",
+          "Denikin",
+          "Brusilov",
+        ],
+        accept: [
+          "Kornilov",
+        ],
+        answer: "Kerensky armed the Bolshevik Red Guards to stop Kornilov in August 1917, and their support soared. Kolchak and Denikin were later White leaders.",
+      },
+      {
+        question: "Which elected body did the Bolsheviks shut down in January 1918?",
+        choices: [
+          "The Duma",
+          "Petrograd Soviet",
+          "Constituent Assembly",
+          "The Cheka",
+        ],
+        accept: [
+          "Constituent Assembly",
+        ],
+        answer: "The Bolsheviks won only about a quarter of the seats, so they closed the Constituent Assembly after one day. The Duma had already ended in 1917.",
+      },
+      {
+        question: "Which policy replaced War Communism in 1921?",
+        choices: [
+          "Collectivisation",
+          "Five-Year Plan",
+          "Red Terror",
+          "New Economic Policy",
+        ],
+        accept: [
+          "New Economic Policy",
+        ],
+        answer: "After the Kronstadt mutiny, Lenin's NEP allowed small private trade and let peasants sell surplus grain. Five-Year Plans were Stalin's, from 1928.",
       },
     ],
 
@@ -1755,6 +2145,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "It controlled press, radio, film and rallies to shape opinion",
         ],
         answer: "Cheap radios put Nazi messaging in ordinary homes, and censorship removed competing accounts.",
+      },
+      {
+        question: "What was the Nazi Party called when Hitler joined it in 1919?",
+        choices: [
+          "Freikorps",
+          "German Workers' Party",
+          "Spartacist League",
+          "Centre Party",
+        ],
+        accept: [
+          "German Workers' Party",
+        ],
+        answer: "Hitler joined the small German Workers' Party (DAP) in 1919, and it was renamed the NSDAP in 1920. The Freikorps were ex-soldier militias.",
+      },
+      {
+        question: "Which French and Belgian action in 1923 helped trigger hyperinflation?",
+        choices: [
+          "Seizing Alsace",
+          "Occupying the Ruhr",
+          "Blockading Hamburg",
+          "Invading Bavaria",
+        ],
+        accept: [
+          "Occupying the Ruhr",
+        ],
+        answer: "France and Belgium occupied the Ruhr when Germany missed reparations. The government paid striking workers by printing money, so prices soared.",
+      },
+      {
+        question: "Who became Vice-Chancellor under Hitler in January 1933?",
+        choices: [
+          "Kurt von Schleicher",
+          "Heinrich Brüning",
+          "Franz von Papen",
+          "Gustav Stresemann",
+        ],
+        accept: [
+          "Franz von Papen",
+        ],
+        answer: "Von Papen thought he and the conservatives could control Hitler. Schleicher was the Chancellor whom Hitler replaced.",
+      },
+      {
+        question: "Who led the SA until he was killed in 1934?",
+        choices: [
+          "Heinrich Himmler",
+          "Hermann Göring",
+          "Joseph Goebbels",
+          "Ernst Röhm",
+        ],
+        accept: [
+          "Ernst Röhm",
+        ],
+        answer: "Röhm was murdered in the Night of the Long Knives, which the SS carried out under Himmler. This pleased the army, which saw the SA as a rival.",
+      },
+      {
+        question: "Which group did the Nazis blame for the Reichstag Fire?",
+        choices: [
+          "The Communists",
+          "Social Democrats",
+          "The army",
+          "The Catholic Church",
+        ],
+        accept: [
+          "The Communists",
+        ],
+        answer: "A Dutch communist, Marinus van der Lubbe, was arrested at the scene. Hitler used the fire to get emergency powers and arrest Communist leaders.",
+      },
+      {
+        question: "What title did Hitler take after Hindenburg died in August 1934?",
+        choices: [
+          "Kaiser",
+          "Führer",
+          "President",
+          "Reichsführer",
+        ],
+        accept: [
+          "Führer",
+        ],
+        answer: "Hitler merged the posts of Chancellor and President and called himself Führer, and the army swore an oath to him. Reichsführer was Himmler's SS title.",
       },
     ],
 
@@ -2044,6 +2512,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "Rationing, evacuation and bombing changed daily life",
         ],
         answer: "Total war blurred the line between soldier and civilian, which is one reason casualties among civilians were so high.",
+      },
+      {
+        question: "Who replaced Chamberlain as British Prime Minister in May 1940?",
+        choices: [
+          "Clement Attlee",
+          "Winston Churchill",
+          "Anthony Eden",
+          "Stanley Baldwin",
+        ],
+        accept: [
+          "Winston Churchill",
+        ],
+        answer: "Churchill took over on 10 May 1940, the day Germany attacked in the west. Attlee served as his deputy and became Prime Minister in 1945.",
+      },
+      {
+        question: "At which city did a whole German army surrender in February 1943?",
+        choices: [
+          "Kursk",
+          "Leningrad",
+          "Stalingrad",
+          "El Alamein",
+        ],
+        accept: [
+          "Stalingrad",
+        ],
+        answer: "The German Sixth Army surrendered at Stalingrad, a turning point on the Eastern Front. Kursk, in July 1943, was the largest tank battle.",
+      },
+      {
+        question: "Which city was hit by the first atomic bomb used in war?",
+        choices: [
+          "Nagasaki",
+          "Tokyo",
+          "Osaka",
+          "Hiroshima",
+        ],
+        accept: [
+          "Hiroshima",
+        ],
+        answer: "Hiroshima was bombed on 6 August 1945 and Nagasaki three days later. Japan announced its surrender soon after.",
+      },
+      {
+        question: "What was the code name for the Dunkirk evacuation?",
+        choices: [
+          "Operation Dynamo",
+          "Operation Overlord",
+          "Operation Sea Lion",
+          "Operation Barbarossa",
+        ],
+        accept: [
+          "Operation Dynamo",
+        ],
+        answer: "Operation Dynamo used warships and hundreds of 'little ships' in 1940. Overlord was D-Day, and Sea Lion was Hitler's planned invasion of Britain.",
+      },
+      {
+        question: "Which technology gave the RAF early warning of raids in 1940?",
+        choices: [
+          "Sonar",
+          "Radar",
+          "Enigma",
+          "Jet engines",
+        ],
+        accept: [
+          "Radar",
+        ],
+        answer: "Chain Home radar stations spotted raids early, so fighters could take off in time. Sonar detects submarines underwater, and Enigma was a German code machine.",
+      },
+      {
+        question: "Which of these foods was among the first rationed in Britain, in 1940?",
+        choices: [
+          "Bread",
+          "Potatoes",
+          "Bacon",
+          "Fish",
+        ],
+        accept: [
+          "Bacon",
+        ],
+        answer: "Bacon, butter and sugar were rationed in January 1940. Bread and potatoes were not rationed during the war, and fish never was.",
       },
     ],
 
@@ -2339,6 +2885,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Administrators, railway staff, police and neighbours all played parts. That is the most uncomfortable and important lesson of the topic.",
       },
+      {
+        question: "Who did the Kindertransport of 1938–39 bring to safety in Britain?",
+        choices: [
+          "Disabled adults",
+          "Jewish children",
+          "Jewish scholars",
+          "Roma families",
+        ],
+        accept: [
+          "Jewish children",
+        ],
+        answer: "Around ten thousand mainly Jewish children reached Britain, mostly without their parents. Many never saw their families again.",
+      },
+      {
+        question: "Who is honoured as 'Righteous Among the Nations'?",
+        choices: [
+          "Camp survivors",
+          "Camp liberators",
+          "Non-Jewish rescuers",
+          "War crimes judges",
+        ],
+        accept: [
+          "Non-Jewish rescuers",
+        ],
+        answer: "Yad Vashem gives the title to non-Jews who risked their lives to save Jews, such as Oskar Schindler. Survivors and liberators are honoured in other ways.",
+      },
+      {
+        question: "Which camp did Soviet troops liberate on 27 January 1945?",
+        choices: [
+          "Bergen-Belsen",
+          "Dachau",
+          "Auschwitz",
+          "Buchenwald",
+        ],
+        accept: [
+          "Auschwitz",
+        ],
+        answer: "That date is now Holocaust Memorial Day. British troops liberated Bergen-Belsen in April 1945, and US troops reached Dachau and Buchenwald.",
+      },
+      {
+        question: "What was the Nazi programme to murder disabled people from 1939 called?",
+        choices: [
+          "Aktion Reinhard",
+          "Aktion T4",
+          "Final Solution",
+          "Barbarossa",
+        ],
+        accept: [
+          "Aktion T4",
+        ],
+        answer: "Aktion T4 murdered tens of thousands of disabled people, and its gassing methods and staff were later used in the death camps. Aktion Reinhard was the death-camp plan for Polish Jews.",
+      },
+      {
+        question: "What did the Nazi boycott of 1 April 1933 target?",
+        choices: [
+          "Synagogues",
+          "Jewish schools",
+          "Jewish shops",
+          "Jewish newspapers",
+        ],
+        accept: [
+          "Jewish shops",
+        ],
+        answer: "SA men stood outside Jewish-owned shops and businesses telling Germans not to enter. It was the first nationwide Nazi action against Jews.",
+      },
+      {
+        question: "Whose diary records hiding in an Amsterdam annexe from 1942 to 1944?",
+        choices: [
+          "Primo Levi",
+          "Elie Wiesel",
+          "Emanuel Ringelblum",
+          "Anne Frank",
+        ],
+        accept: [
+          "Anne Frank",
+        ],
+        answer: "Anne Frank's family hid until they were betrayed in 1944; she died at Bergen-Belsen in 1945. Ringelblum ran the secret archive in the Warsaw Ghetto.",
+      },
     ],
 
     misconceptions: [
@@ -2632,6 +3256,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "The Rentenmark, the Dawes Plan and entry to the League brought recovery — but it rested on American loans.",
       },
+      {
+        question: "Which admiral built up Germany's navy under Wilhelm II?",
+        choices: [
+          "Bismarck",
+          "Hindenburg",
+          "Tirpitz",
+          "Ludendorff",
+        ],
+        accept: [
+          "Tirpitz",
+        ],
+        answer: "Tirpitz's Navy Laws from 1898 expanded the fleet to rival Britain's. Bismarck was the Chancellor whom Wilhelm dismissed in 1890.",
+      },
+      {
+        question: "Who led the Spartacist uprising alongside Karl Liebknecht?",
+        choices: [
+          "Rosa Luxemburg",
+          "Clara Zetkin",
+          "Wolfgang Kapp",
+          "Walther Rathenau",
+        ],
+        accept: [
+          "Rosa Luxemburg",
+        ],
+        answer: "Luxemburg and Liebknecht were murdered by Freikorps soldiers in January 1919. Kapp led the right-wing putsch of 1920.",
+      },
+      {
+        question: "Who was the first President of the Weimar Republic?",
+        choices: [
+          "Paul von Hindenburg",
+          "Friedrich Ebert",
+          "Gustav Stresemann",
+          "Philipp Scheidemann",
+        ],
+        accept: [
+          "Friedrich Ebert",
+        ],
+        answer: "Friedrich Ebert, a Social Democrat, was President from 1919 until his death in 1925. Hindenburg was then elected to replace him.",
+      },
+      {
+        question: "Which 1929 plan reduced the total German reparations bill?",
+        choices: [
+          "Dawes Plan",
+          "Young Plan",
+          "Marshall Plan",
+          "Schlieffen Plan",
+        ],
+        accept: [
+          "Young Plan",
+        ],
+        answer: "The Young Plan cut the total and gave Germany until 1988 to pay. The Dawes Plan of 1924 had rescheduled payments and brought US loans.",
+      },
+      {
+        question: "Which new currency ended hyperinflation in late 1923?",
+        choices: [
+          "Rentenmark",
+          "Reichsmark",
+          "Deutschmark",
+          "Papiermark",
+        ],
+        accept: [
+          "Rentenmark",
+        ],
+        answer: "Stresemann's government brought in the Rentenmark in November 1923; the Reichsmark replaced it in 1924. The Deutschmark came after 1945.",
+      },
+      {
+        question: "Which Nazi body replaced the trade unions in May 1933?",
+        choices: [
+          "Strength Through Joy",
+          "German Labour Front",
+          "Beauty of Labour",
+          "Reich Labour Service",
+        ],
+        accept: [
+          "German Labour Front",
+        ],
+        answer: "The German Labour Front (DAF) under Robert Ley replaced the banned unions. Strength Through Joy and Beauty of Labour were branches of it.",
+      },
     ],
 
     misconceptions: [
@@ -2918,6 +3620,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "It had no army and members would not risk their own interests",
         ],
         answer: "Economic sanctions were weak and slow, and Britain and France put their own strategic concerns first.",
+      },
+      {
+        question: "Who was the British Prime Minister among the Big Three in 1919?",
+        choices: [
+          "Chamberlain",
+          "Baldwin",
+          "Asquith",
+          "Lloyd George",
+        ],
+        accept: [
+          "Lloyd George",
+        ],
+        answer: "David Lloyd George wanted Germany punished but not crushed. Clemenceau of France wanted the harshest terms.",
+      },
+      {
+        question: "Which country did Versailles forbid Germany to unite with?",
+        choices: [
+          "Hungary",
+          "Austria",
+          "Poland",
+          "Italy",
+        ],
+        accept: [
+          "Austria",
+        ],
+        answer: "The treaty banned Anschluss, union with Austria. Hitler broke this ban in March 1938.",
+      },
+      {
+        question: "What was the strip of land that gave Poland access to the sea called?",
+        choices: [
+          "The Saar",
+          "Polish Corridor",
+          "Rhineland",
+          "Sudetenland",
+        ],
+        accept: [
+          "Polish Corridor",
+        ],
+        answer: "The Polish Corridor cut East Prussia off from the rest of Germany. Danzig, at its end, became a free city run by the League.",
+      },
+      {
+        question: "Which 1932 report judged Japan in the wrong over Manchuria?",
+        choices: [
+          "Hoare Report",
+          "Lytton Report",
+          "Beveridge Report",
+          "Dawes Report",
+        ],
+        accept: [
+          "Lytton Report",
+        ],
+        answer: "The League's Lytton Report said Manchuria should go back to China. Japan ignored it and left the League in 1933.",
+      },
+      {
+        question: "Which key product was left out of the League's sanctions on Italy in 1935?",
+        choices: [
+          "Weapons",
+          "Loans",
+          "Oil",
+          "Italian goods",
+        ],
+        accept: [
+          "Oil",
+        ],
+        answer: "Arms sales, loans and buying Italian goods were banned, but oil was not. Britain and France also kept the Suez Canal open to Italian ships.",
+      },
+      {
+        question: "Which region voted to return to Germany in a 1935 plebiscite?",
+        choices: [
+          "The Rhineland",
+          "Sudetenland",
+          "The Saar",
+          "Danzig",
+        ],
+        accept: [
+          "The Saar",
+        ],
+        answer: "Over 90% of Saar voters chose Germany in January 1935, a propaganda boost for Hitler. The Rhineland was remilitarised in 1936.",
       },
     ],
 
@@ -3207,6 +3987,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "Marriage risked foreign influence or domestic faction",
         ],
         answer: "Remaining unmarried preserved her independence, but left the succession unresolved for her whole reign.",
+      },
+      {
+        question: "Which 1559 Act made everyone attend church and use the Book of Common Prayer?",
+        choices: [
+          "Act of Supremacy",
+          "Act of Uniformity",
+          "Royal Injunctions",
+          "Act of Settlement",
+        ],
+        accept: [
+          "Act of Uniformity",
+        ],
+        answer: "The Act of Uniformity set the form of worship and church attendance. The Act of Supremacy is the one that made Elizabeth Supreme Governor of the Church.",
+      },
+      {
+        question: "What was the fine for missing church set at in the 1559 settlement?",
+        choices: [
+          "£20 a month",
+          "1 penny a week",
+          "1 shilling a week",
+          "£1 a year",
+        ],
+        accept: [
+          "1 shilling a week",
+        ],
+        answer: "Recusants paid a shilling a week from 1559, a small sum for the rich. The huge £20 a month fine came later, in 1581, as the Catholic threat grew.",
+      },
+      {
+        question: "Who commanded the Spanish Armada when it sailed in 1588?",
+        choices: [
+          "Philip II",
+          "Duke of Parma",
+          "Marquis of Santa Cruz",
+          "Medina Sidonia",
+        ],
+        accept: [
+          "Medina Sidonia",
+        ],
+        answer: "The Duke of Medina Sidonia led the fleet after Santa Cruz died early in 1588. Parma commanded the army waiting in the Netherlands, and Philip II stayed in Spain.",
+      },
+      {
+        question: "Which 1571 plot planned a Spanish-backed rising to put Mary, Queen of Scots on the throne?",
+        choices: [
+          "Throckmorton plot",
+          "Babington plot",
+          "Ridolfi plot",
+          "Northern Rebellion",
+        ],
+        accept: [
+          "Ridolfi plot",
+        ],
+        answer: "The Ridolfi plot was 1571. The Throckmorton plot followed in 1583, the Babington plot in 1586, and the Northern Rebellion was a rising in 1569.",
+      },
+      {
+        question: "What did Elizabethans call the poor who could not work, such as the old, sick or disabled?",
+        choices: [
+          "Idle poor",
+          "Impotent poor",
+          "Able-bodied poor",
+          "Sturdy beggars",
+        ],
+        accept: [
+          "Impotent poor",
+        ],
+        answer: "The impotent poor were seen as deserving help from the parish. The idle poor and sturdy beggars were vagabonds thought able to work, and were punished.",
+      },
+      {
+        question: "Which American colony did Walter Raleigh sponsor in the 1580s?",
+        choices: [
+          "Jamestown",
+          "Massachusetts",
+          "Newfoundland",
+          "Roanoke",
+        ],
+        accept: [
+          "Roanoke",
+        ],
+        answer: "Raleigh sponsored Roanoke from 1585; the 1587 settlers later vanished, the 'lost colony'. Jamestown, the first lasting English colony, came in 1607.",
       },
     ],
 
@@ -3588,6 +4446,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "War drove blood transfusion, plastic surgery and mass production of penicillin. Factors rarely act alone in this topic.",
       },
+      {
+        question: "Which treatment idea did Galen add to the theory of the four humours?",
+        choices: [
+          "Germ theory",
+          "Theory of Opposites",
+          "Miasma theory",
+          "Spontaneous generation",
+        ],
+        accept: [
+          "Theory of Opposites",
+        ],
+        answer: "Galen's Theory of Opposites treated an imbalance with its opposite, such as pepper for a cold. Miasma was the separate bad-air idea; germ theory came in the 1860s.",
+      },
+      {
+        question: "Which creatures carried the Black Death from rats to people?",
+        choices: [
+          "Mosquitoes",
+          "Lice",
+          "Fleas",
+          "Flies",
+        ],
+        accept: [
+          "Fleas",
+        ],
+        answer: "Fleas on black rats spread bubonic plague. People at the time did not know this, and blamed bad air, God's punishment or the position of the planets.",
+      },
+      {
+        question: "What did Ambroise Paré use instead of boiling oil to treat gunshot wounds?",
+        choices: [
+          "Carbolic acid",
+          "Egg yolk ointment",
+          "A hot cautery iron",
+          "Mercury paste",
+        ],
+        accept: [
+          "Egg yolk ointment",
+        ],
+        answer: "When his oil ran out, Paré used egg yolk, oil of roses and turpentine, and the wounds healed better. Carbolic acid was Lister's antiseptic, centuries later.",
+      },
+      {
+        question: "Which disease's bacterium did Robert Koch identify in 1882?",
+        choices: [
+          "Tuberculosis",
+          "Cholera",
+          "Smallpox",
+          "Typhoid",
+        ],
+        accept: [
+          "Tuberculosis",
+        ],
+        answer: "Koch identified the TB bacterium in 1882 and the cholera bacterium the next year. Smallpox is caused by a virus, not a bacterium.",
+      },
+      {
+        question: "Which disease was Ehrlich's first magic bullet, Salvarsan 606, made to treat?",
+        choices: [
+          "Malaria",
+          "Smallpox",
+          "Tuberculosis",
+          "Syphilis",
+        ],
+        accept: [
+          "Syphilis",
+        ],
+        answer: "Salvarsan 606, found by Ehrlich's team in 1909, killed the syphilis microbe without harming the patient. The second magic bullet, Prontosil, came in the 1930s.",
+      },
+      {
+        question: "Which health minister launched the NHS in 1948?",
+        choices: [
+          "Aneurin Bevan",
+          "William Beveridge",
+          "Clement Attlee",
+          "David Lloyd George",
+        ],
+        accept: [
+          "Aneurin Bevan",
+        ],
+        answer: "Aneurin Bevan, Labour's health minister, set up the NHS. Beveridge wrote the 1942 report that called for it, and Attlee was the Prime Minister.",
+      },
     ],
 
     misconceptions: [
@@ -3881,6 +4817,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Witchcraft ceased to be a crime; cybercrime and driving offences did not exist before. Crime reflects the values of its society.",
       },
+      {
+        question: "What could a fugitive claim by reaching a church, giving up to 40 days of safety?",
+        choices: [
+          "Benefit of clergy",
+          "Sanctuary",
+          "A royal pardon",
+          "Tithing",
+        ],
+        accept: [
+          "Sanctuary",
+        ],
+        answer: "Sanctuary protected a fugitive inside a church, after which they could stand trial or leave the country. Benefit of clergy instead moved a case to the Church courts.",
+      },
+      {
+        question: "In which trial by ordeal was an accused person judged innocent if they sank?",
+        choices: [
+          "Hot iron",
+          "Hot water",
+          "Combat",
+          "Cold water",
+        ],
+        accept: [
+          "Cold water",
+        ],
+        answer: "In trial by cold water, sinking meant the blessed water had accepted you as innocent. In hot iron and hot water, a burn that healed cleanly showed innocence.",
+      },
+      {
+        question: "Which London crime-fighters were set up by the Fielding brothers in the 1700s?",
+        choices: [
+          "Metropolitan Police",
+          "Bow Street Runners",
+          "Thames River Police",
+          "Special Constables",
+        ],
+        accept: [
+          "Bow Street Runners",
+        ],
+        answer: "Henry and John Fielding organised the Bow Street Runners from about 1749, paid to catch criminals. The Metropolitan Police came much later, in 1829.",
+      },
+      {
+        question: "What were old ships used as floating prisons in the 1700s and 1800s called?",
+        choices: [
+          "Galleons",
+          "Barges",
+          "Hulks",
+          "Frigates",
+        ],
+        accept: [
+          "Hulks",
+        ],
+        answer: "Hulks were old, unseaworthy ships moored on rivers to hold prisoners, often those waiting for transportation. They were crowded and disease spread quickly.",
+      },
+      {
+        question: "Which Dorset farm workers were transported in 1834 for forming a union?",
+        choices: [
+          "Tolpuddle Martyrs",
+          "Luddites",
+          "Chartists",
+          "Rebecca Rioters",
+        ],
+        accept: [
+          "Tolpuddle Martyrs",
+        ],
+        answer: "The Tolpuddle Martyrs were sentenced to transportation for swearing a secret union oath. Public protest won them a pardon. The Luddites broke machines instead.",
+      },
+      {
+        question: "What is supervising an offender in the community instead of jail, made law in 1907, called?",
+        choices: [
+          "Parole",
+          "Probation",
+          "Borstal",
+          "Transportation",
+        ],
+        accept: [
+          "Probation",
+        ],
+        answer: "The Probation of Offenders Act 1907 let courts set supervision instead of prison. Parole is different: it is early release from a prison sentence under supervision.",
+      },
     ],
 
     misconceptions: [
@@ -4173,6 +5187,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Millions had already left, draining skilled workers. The wall solved that problem at enormous cost to East Germany's reputation.",
       },
+      {
+        question: "Who made the 'Iron Curtain' speech in Fulton, Missouri, in 1946?",
+        choices: [
+          "Harry Truman",
+          "Clement Attlee",
+          "Winston Churchill",
+          "Anthony Eden",
+        ],
+        accept: [
+          "Winston Churchill",
+        ],
+        answer: "Churchill, by then out of office, gave the speech with Truman in the audience. It described Europe split between Soviet control in the east and the free west.",
+      },
+      {
+        question: "Which Soviet-led military alliance was formed in 1955 as a reply to NATO?",
+        choices: [
+          "Comecon",
+          "Warsaw Pact",
+          "Cominform",
+          "Molotov Plan",
+        ],
+        accept: [
+          "Warsaw Pact",
+        ],
+        answer: "The Warsaw Pact was the military alliance. Comecon was economic aid, the Soviet reply to the Marshall Plan, and Cominform linked communist parties.",
+      },
+      {
+        question: "Which country's 1956 uprising was crushed by Soviet troops and tanks?",
+        choices: [
+          "Czechoslovakia",
+          "Poland",
+          "East Germany",
+          "Hungary",
+        ],
+        accept: [
+          "Hungary",
+        ],
+        answer: "Hungary's 1956 rising under Imre Nagy was crushed when it tried to leave the Warsaw Pact. Czechoslovakia's Prague Spring was crushed later, in 1968.",
+      },
+      {
+        question: "Which US president said 'Ich bin ein Berliner' in West Berlin in 1963?",
+        choices: [
+          "John F. Kennedy",
+          "Dwight Eisenhower",
+          "Richard Nixon",
+          "Lyndon Johnson",
+        ],
+        accept: [
+          "John F. Kennedy",
+        ],
+        answer: "Kennedy's speech, two years after the Wall went up, showed American support for the people of West Berlin. Eisenhower was president before him, Johnson after.",
+      },
+      {
+        question: "What was set up in 1963 so US and Soviet leaders could talk directly in a crisis?",
+        choices: [
+          "Test Ban Treaty",
+          "Hotline",
+          "SALT I",
+          "Outer Space Treaty",
+        ],
+        accept: [
+          "Hotline",
+        ],
+        answer: "The hotline was a lesson of the Cuban Missile Crisis, when messages took hours. The Test Ban Treaty of 1963 limited nuclear tests but was not a link.",
+      },
+      {
+        question: "Which Polish trade union challenged communist rule in the 1980s?",
+        choices: [
+          "Solidarity",
+          "Charter 77",
+          "Prague Spring",
+          "Comecon",
+        ],
+        accept: [
+          "Solidarity",
+        ],
+        answer: "Solidarity, led by Lech Wałęsa, began in the Gdańsk shipyards in 1980. Charter 77 was a Czechoslovak human rights group, not a union.",
+      },
     ],
 
     misconceptions: [
@@ -4461,6 +5553,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "William's brutal suppression of northern rebellion",
         ],
         answer: "Villages, crops and livestock were destroyed in 1069 to 1070, causing famine. It ended resistance but at enormous human cost.",
+      },
+      {
+        question: "Where did William of Normandy land in England in September 1066?",
+        choices: [
+          "Dover",
+          "Pevensey",
+          "Hastings",
+          "London",
+        ],
+        accept: [
+          "Pevensey",
+        ],
+        answer: "William landed at Pevensey on the Sussex coast, then moved to Hastings and built a castle there. The battle itself was fought a few miles inland.",
+      },
+      {
+        question: "Which exiled brother of Harold Godwinson joined Harald Hardrada's invasion?",
+        choices: [
+          "Gyrth",
+          "Leofwine",
+          "Edwin",
+          "Tostig",
+        ],
+        accept: [
+          "Tostig",
+        ],
+        answer: "Tostig had been driven out as Earl of Northumbria in 1065 and sided with Hardrada. He died at Stamford Bridge. Gyrth and Leofwine died fighting for Harold at Hastings.",
+      },
+      {
+        question: "Which battle near York did Hardrada win before Stamford Bridge?",
+        choices: [
+          "Gate Fulford",
+          "Hastings",
+          "Maldon",
+          "Ely",
+        ],
+        accept: [
+          "Gate Fulford",
+        ],
+        answer: "At Gate Fulford on 20 September 1066 Hardrada beat the northern earls Edwin and Morcar. Five days later Harold surprised and defeated him at Stamford Bridge.",
+      },
+      {
+        question: "What were Harold's professional, full-time bodyguard soldiers called?",
+        choices: [
+          "The fyrd",
+          "Housecarls",
+          "Knights",
+          "Thegns",
+        ],
+        accept: [
+          "Housecarls",
+        ],
+        answer: "Housecarls were trained, well-armed warriors with axes. The fyrd was the part-time army of ordinary men called up when needed.",
+      },
+      {
+        question: "Which Norman tactic drew English soldiers out of the shield wall at Hastings?",
+        choices: [
+          "Fireships",
+          "Siege towers",
+          "Feigned retreat",
+          "A night attack",
+        ],
+        accept: [
+          "Feigned retreat",
+        ],
+        answer: "Norman cavalry pretended to flee, English troops chased them downhill, and the Normans turned and cut them down. This weakened the shield wall.",
+      },
+      {
+        question: "Which Anglo-Saxon prince was chosen as king after Hastings but never crowned?",
+        choices: [
+          "Earl Morcar",
+          "Hereward",
+          "Earl Edwin",
+          "Edgar Ætheling",
+        ],
+        accept: [
+          "Edgar Ætheling",
+        ],
+        answer: "Edgar Ætheling, great-nephew of Edward the Confessor, was proclaimed king in London but submitted to William at Berkhamsted. Hereward led resistance in the Fens.",
       },
     ],
 
@@ -4765,6 +5935,84 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Triggered by Rosa Parks's arrest, it demonstrated economic pressure as a tactic and brought Martin Luther King to prominence.",
       },
+      {
+        question: "What were the illegal bars of Prohibition-era America called?",
+        choices: [
+          "Saloons",
+          "Speakeasies",
+          "Hoovervilles",
+          "Juke joints",
+        ],
+        accept: [
+          "Speakeasies",
+        ],
+        answer: "Speakeasies sold illegal alcohol, often supplied by gangs. Saloons were the legal bars that Prohibition closed down, and Hoovervilles were Depression shanty towns.",
+      },
+      {
+        question: "Which 1929 Chicago gang killing is linked to Al Capone's men?",
+        choices: [
+          "Haymarket Affair",
+          "St Valentine's Day",
+          "Black Thursday",
+          "Ludlow Massacre",
+        ],
+        accept: [
+          "St Valentine's Day",
+        ],
+        answer: "In the St Valentine's Day Massacre seven men linked to a rival gang were shot. It turned public opinion against gangsters and Prohibition. Black Thursday was a day of the Crash.",
+      },
+      {
+        question: "Who was US president when the Wall Street Crash happened in 1929?",
+        choices: [
+          "Calvin Coolidge",
+          "Warren Harding",
+          "Herbert Hoover",
+          "Franklin Roosevelt",
+        ],
+        accept: [
+          "Herbert Hoover",
+        ],
+        answer: "Hoover took office in March 1929, months before the Crash, and was blamed for the Depression. Roosevelt beat him in the 1932 election.",
+      },
+      {
+        question: "What were Roosevelt's radio talks explaining his policies to the public called?",
+        choices: [
+          "Hundred Days",
+          "Alphabet agencies",
+          "Fireside chats",
+          "Bank holidays",
+        ],
+        accept: [
+          "Fireside chats",
+        ],
+        answer: "Fireside chats built confidence, starting with one on the banking crisis in 1933. The Hundred Days was his first burst of New Deal laws.",
+      },
+      {
+        question: "In which city did troops escort nine Black students into a white school in 1957?",
+        choices: [
+          "Birmingham",
+          "Selma",
+          "Montgomery",
+          "Little Rock",
+        ],
+        accept: [
+          "Little Rock",
+        ],
+        answer: "At Little Rock, Arkansas, Eisenhower sent troops to enforce Brown v Board. Montgomery was the bus boycott, and Selma the 1965 voting rights marches.",
+      },
+      {
+        question: "Which white supremacist group grew to millions of members in the 1920s?",
+        choices: [
+          "Ku Klux Klan",
+          "Black Panthers",
+          "Nation of Islam",
+          "Know Nothings",
+        ],
+        accept: [
+          "Ku Klux Klan",
+        ],
+        answer: "The Ku Klux Klan revived in 1915 and peaked in the mid-1920s, targeting Black Americans, Catholics, Jews and immigrants. The Black Panthers were a 1960s Black Power group.",
+      },
     ],
 
     misconceptions: [
@@ -5055,6 +6303,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "To restrict entry, partly in response to public and political pressure",
         ],
         answer: "The shift from active recruitment to restriction within twenty years is a key change to be able to explain.",
+      },
+      {
+        question: "What were Indian nannies brought to Britain by returning families called?",
+        choices: [
+          "Lascars",
+          "Ayahs",
+          "Sepoys",
+          "Governesses",
+        ],
+        accept: [
+          "Ayahs",
+        ],
+        answer: "Ayahs cared for children on the voyage and in Britain, and some were abandoned here. Lascars were South Asian sailors, and sepoys were Indian soldiers.",
+      },
+      {
+        question: "Which MP gave the 1968 'Rivers of Blood' speech against immigration?",
+        choices: [
+          "Oswald Mosley",
+          "Edward Heath",
+          "Harold Wilson",
+          "Enoch Powell",
+        ],
+        accept: [
+          "Enoch Powell",
+        ],
+        answer: "Enoch Powell spoke in Birmingham in 1968 and was sacked from the shadow cabinet by Heath. Oswald Mosley led the British Union of Fascists in the 1930s.",
+      },
+      {
+        question: "Where did East End residents block a march by Mosley's fascists in 1936?",
+        choices: [
+          "Brick Lane",
+          "Cable Street",
+          "Notting Hill",
+          "Lewisham",
+        ],
+        accept: [
+          "Cable Street",
+        ],
+        answer: "At the Battle of Cable Street, Jewish, Irish and other local people and anti-fascists stopped the British Union of Fascists marching through the East End.",
+      },
+      {
+        question: "In which year did the first Commonwealth Immigrants Act restrict entry?",
+        choices: [
+          "1948",
+          "1962",
+          "1971",
+          "1981",
+        ],
+        accept: [
+          "1962",
+        ],
+        answer: "The 1962 Act brought in work vouchers, reversing the open door of the 1948 Nationality Act. The 1971 Immigration Act tightened control further.",
+      },
+      {
+        question: "From which region did Edward III invite skilled weavers to England in the 1300s?",
+        choices: [
+          "Flanders",
+          "Normandy",
+          "Lombardy",
+          "Castile",
+        ],
+        accept: [
+          "Flanders",
+        ],
+        answer: "Flemish weavers from what is now Belgium were invited to improve England's cloth industry. Lombardy was the home of Italian bankers and merchants in London.",
+      },
+      {
+        question: "What were the labourers, many Irish, who dug Britain's canals and railways called?",
+        choices: [
+          "Costermongers",
+          "Lascars",
+          "Navvies",
+          "Luddites",
+        ],
+        accept: [
+          "Navvies",
+        ],
+        answer: "Navvies, short for navigators, did heavy digging work. Many were Irish migrants. Costermongers were street sellers, and Luddites were machine-breakers.",
       },
     ],
 
@@ -5358,6 +6684,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "Test whether the source fits what you know of the period",
         ],
         answer: "Bringing in what you know lets you evaluate the source rather than just describe it, which is where the higher marks sit.",
+      },
+      {
+        question: "Which word describes a source dating from the time being studied?",
+        choices: [
+          "Contemporary",
+          "Retrospective",
+          "Secondary",
+          "Hindsight",
+        ],
+        accept: [
+          "Contemporary",
+        ],
+        answer: "A contemporary source was made during the period itself. A retrospective one looks back later, so its author may write with hindsight.",
+      },
+      {
+        question: "Which word means a government controlling or blocking what may be published?",
+        choices: [
+          "Propaganda",
+          "Provenance",
+          "Censorship",
+          "Corroboration",
+        ],
+        accept: [
+          "Censorship",
+        ],
+        answer: "Censorship removes or blocks information. Propaganda is the other side of the coin: material produced to persuade. Both tell you what a government wanted people to think.",
+      },
+      {
+        question: "In a source question, what does 'utility' mean?",
+        choices: [
+          "How useful it is",
+          "How old it is",
+          "Who wrote it",
+          "How reliable it is",
+        ],
+        accept: [
+          "How useful it is",
+        ],
+        answer: "Utility means usefulness for a particular enquiry. It is not the same as reliability: an unreliable, biased source can still be very useful.",
+      },
+      {
+        question: "A cartoon drawn in 1940 about the Blitz is what type of source?",
+        choices: [
+          "Secondary",
+          "Primary",
+          "Interpretation",
+          "Textbook",
+        ],
+        accept: [
+          "Primary",
+        ],
+        answer: "It was made at the time, so it is primary, even though the cartoonist may not have seen the events. An interpretation is a later historian's argument.",
+      },
+      {
+        question: "What do you use to test a source against what you know about the period?",
+        choices: [
+          "Provenance",
+          "Hindsight",
+          "Corroboration",
+          "Contextual knowledge",
+        ],
+        accept: [
+          "Contextual knowledge",
+        ],
+        answer: "Contextual knowledge is your own knowledge of the period. Corroboration means checking against other sources, and provenance is who made the source and why.",
+      },
+      {
+        question: "Two sources from opposite sides describe an event the same way. What does this show?",
+        choices: [
+          "Bias",
+          "Omission",
+          "Censorship",
+          "Corroboration",
+        ],
+        accept: [
+          "Corroboration",
+        ],
+        answer: "When sources with different motives agree, they corroborate each other, which makes the detail more likely to be accurate. Bias is a one-sided slant.",
       },
     ],
 
@@ -5671,6 +7075,84 @@ export const HISTORY: Record<string, TopicContent> = {
           "In proportion to the marks each question carries",
         ],
         answer: "Over-writing an 8-mark answer at the expense of a 16-mark one is the most expensive mistake available.",
+      },
+      {
+        question: "Which command word asks you to give reasons why something happened?",
+        choices: [
+          "Describe",
+          "Explain",
+          "Identify",
+          "Narrate",
+        ],
+        accept: [
+          "Explain",
+        ],
+        answer: "Explain wants reasons and how they led to the outcome. Describe only wants the features of what happened, and identify wants a short point.",
+      },
+      {
+        question: "What is the term for putting events in the correct time order?",
+        choices: [
+          "Causation",
+          "Significance",
+          "Chronology",
+          "Interleaving",
+        ],
+        accept: [
+          "Chronology",
+        ],
+        answer: "Chronology is the order of events, and knowing it stops you mixing up causes and effects. Causation is why things happened.",
+      },
+      {
+        question: "What is the term for how important an event was, and for whom?",
+        choices: [
+          "Significance",
+          "Chronology",
+          "Causation",
+          "Narrative",
+        ],
+        accept: [
+          "Significance",
+        ],
+        answer: "Significance asks how much something mattered, how widely and for how long. Causation is about why it happened, not how important it was.",
+      },
+      {
+        question: "What are linking phrases like 'This led to' and 'However' that guide the examiner called?",
+        choices: [
+          "Narrative drift",
+          "Signposting",
+          "Interleaving",
+          "Chronology",
+        ],
+        accept: [
+          "Signposting",
+        ],
+        answer: "Signposting shows the examiner where your argument is going. Narrative drift is the opposite habit: sliding into telling the story.",
+      },
+      {
+        question: "What is revising by recalling from memory, such as quizzes or flashcards, called?",
+        choices: [
+          "Spaced practice",
+          "Interleaving",
+          "Rereading",
+          "Retrieval practice",
+        ],
+        accept: [
+          "Retrieval practice",
+        ],
+        answer: "Retrieval practice makes you pull facts out of memory, which strengthens them. Spaced practice is about when you revise, spreading sessions over weeks.",
+      },
+      {
+        question: "What is the opposing view you weigh up before your judgement in an essay called?",
+        choices: [
+          "Signposting",
+          "Counter-argument",
+          "Hypothesis",
+          "Chronology",
+        ],
+        accept: [
+          "Counter-argument",
+        ],
+        answer: "A counter-argument is the other side of the case. Good answers deal with the strongest one, then reach a judgement saying which side is more convincing and why.",
       },
     ],
 
