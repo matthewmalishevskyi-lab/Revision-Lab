@@ -357,6 +357,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Height goes up the side and distance along the line goes across the bottom. The vertical scale is often stretched so slopes show clearly.",
       },
+      {
+        question: "What is a triangulation pillar?",
+        choices: [
+          "A radio mast",
+          "A survey point",
+          "A boundary stone",
+          "A war memorial",
+        ],
+        accept: [
+          "A survey point",
+        ],
+        answer: "Trig pillars are concrete posts, usually on summits, that surveyors used to map Britain by triangulation. The height is printed beside the symbol.",
+      },
+      {
+        question: "In the six-figure grid reference 345678, which part is the easting?",
+        choices: [
+          "678",
+          "3456",
+          "345",
+          "34",
+        ],
+        accept: [
+          "345",
+        ],
+        answer: "The first three digits are the easting and the last three the northing. 34 alone is only the easting of the 1 km square.",
+      },
+      {
+        question: "Which of these map scales shows the most detail?",
+        choices: [
+          "1:50,000",
+          "1:250,000",
+          "1:25,000",
+          "1:10,000",
+        ],
+        accept: [
+          "1:10,000",
+        ],
+        answer: "The smaller the second number, the larger the scale and the more detail. A 1:250,000 map covers a huge area but shows little detail.",
+      },
+      {
+        question: "From which direction are bearings measured, turning clockwise?",
+        choices: [
+          "North",
+          "South",
+          "East",
+          "West",
+        ],
+        accept: [
+          "North",
+        ],
+        answer: "Bearings start at north (000) and turn clockwise, so east is 090, south is 180 and west is 270.",
+      },
+      {
+        question: "Evenly spaced contours show what kind of slope?",
+        choices: [
+          "Concave slope",
+          "Convex slope",
+          "Uniform slope",
+          "Vertical cliff",
+        ],
+        accept: [
+          "Uniform slope",
+        ],
+        answer: "Even spacing means the gradient stays the same. A concave slope has contours closer at the top; a convex slope has them closer at the bottom.",
+      },
     ],
 
     misconceptions: [
@@ -726,6 +791,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Rain shadow",
         ],
         answer: "Prevailing south-westerly winds drop their rain over the western uplands, so the air is much drier by the time it reaches the east.",
+      },
+      {
+        question: "Which instrument measures humidity?",
+        choices: [
+          "Barometer",
+          "Hygrometer",
+          "Rain gauge",
+          "Thermometer",
+        ],
+        accept: [
+          "Hygrometer",
+        ],
+        answer: "A hygrometer measures the moisture in the air. A barometer measures air pressure and a rain gauge collects precipitation.",
+      },
+      {
+        question: "Which air mass brings bitterly cold winter weather to the UK from the east?",
+        choices: [
+          "Polar maritime",
+          "Tropical maritime",
+          "Tropical continental",
+          "Polar continental",
+        ],
+        accept: [
+          "Polar continental",
+        ],
+        answer: "Polar continental air crosses frozen land from Siberia and Scandinavia, so it is cold and dry. Polar maritime air arrives from the north-west.",
+      },
+      {
+        question: "Which front brings a short burst of heavy rain, then cooler, brighter weather?",
+        choices: [
+          "Cold front",
+          "Warm front",
+          "Occluded front",
+          "Stationary front",
+        ],
+        accept: [
+          "Cold front",
+        ],
+        answer: "At a cold front, cold air undercuts warm air sharply, giving heavy showers. A warm front brings long, steady rain as warm air rises gently.",
+      },
+      {
+        question: "What is the zone of mild air between the two fronts of a depression called?",
+        choices: [
+          "Occlusion",
+          "Ridge",
+          "Warm sector",
+          "Trough",
+        ],
+        accept: [
+          "Warm sector",
+        ],
+        answer: "The warm sector is mild, moist air bringing cloudy, drizzly weather. An occlusion forms when the cold front catches up and lifts it off the ground.",
+      },
+      {
+        question: "Why do anticyclones usually bring clear skies?",
+        choices: [
+          "Air is rising",
+          "Air is sinking",
+          "Fronts pass by",
+          "Winds are strong",
+        ],
+        accept: [
+          "Air is sinking",
+        ],
+        answer: "Sinking air warms as it descends, so water vapour cannot condense into cloud. Rising air, as in a depression, cools and forms cloud.",
       },
     ],
 
@@ -1103,6 +1233,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Rubber shock absorbers",
         ],
         answer: "Rubber base isolators absorb shaking so the building sways less. A heavy roof makes a collapse far more deadly, and big windows shatter.",
+      },
+      {
+        question: "In which layer of the Earth do the convection currents that move plates occur?",
+        choices: [
+          "Crust",
+          "Outer core",
+          "Mantle",
+          "Inner core",
+        ],
+        accept: [
+          "Mantle",
+        ],
+        answer: "Heat from the core makes mantle rock rise, spread and sink, moving the plates above. The crust is the thin outer layer the plates are made of.",
+      },
+      {
+        question: "Which is a primary effect of a volcanic eruption?",
+        choices: [
+          "Ash falling on roofs",
+          "Disease spreading",
+          "Rising food prices",
+          "Lost tourist income",
+        ],
+        accept: [
+          "Ash falling on roofs",
+        ],
+        answer: "Ash fall happens during the eruption itself, so it is primary. Disease, food prices and lost tourism follow later, so they are secondary.",
+      },
+      {
+        question: "The Ring of Fire is a belt of volcanoes and earthquakes around which ocean?",
+        choices: [
+          "Atlantic",
+          "Indian",
+          "Arctic",
+          "Pacific",
+        ],
+        accept: [
+          "Pacific",
+        ],
+        answer: "Destructive margins circle the Pacific, from the Andes to Japan and Indonesia. The Atlantic has a constructive margin down its middle instead.",
+      },
+      {
+        question: "What usually triggers a tsunami?",
+        choices: [
+          "A tropical storm",
+          "A seabed earthquake",
+          "A spring tide",
+          "An onshore gale",
+        ],
+        accept: [
+          "A seabed earthquake",
+        ],
+        answer: "An earthquake under the sea jolts the seabed and displaces the water above. A tropical storm causes a storm surge, which is a different hazard.",
+      },
+      {
+        question: "Which of these is a way to PREDICT a volcanic eruption?",
+        choices: [
+          "Reinforcing roofs",
+          "Practising drills",
+          "Monitoring swelling",
+          "Building barriers",
+        ],
+        accept: [
+          "Monitoring swelling",
+        ],
+        answer: "Tiltmeters and GPS detect the ground bulging as magma rises. Roofs, drills and barriers reduce harm but do not forecast when an eruption will come.",
       },
     ],
 
@@ -1489,6 +1684,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Transect",
         ],
         answer: "A transect is a sampling line, such as across a beach or sand dunes. A quadrat is the square frame placed at points along it.",
+      },
+      {
+        question: "Which instrument measures wind speed?",
+        choices: [
+          "Clinometer",
+          "Anemometer",
+          "Barometer",
+          "Rain gauge",
+        ],
+        accept: [
+          "Anemometer",
+        ],
+        answer: "An anemometer measures wind speed. A clinometer measures slope angle and a barometer measures air pressure.",
+      },
+      {
+        question: "What is a square frame laid on the ground to sample plants or beach material called?",
+        choices: [
+          "Transect",
+          "Ranging pole",
+          "Quadrat",
+          "Clinometer",
+        ],
+        accept: [
+          "Quadrat",
+        ],
+        answer: "A quadrat frames a fixed area so samples can be compared fairly. Quadrats are often placed at intervals along a transect line.",
+      },
+      {
+        question: "What does river width multiplied by average depth give?",
+        choices: [
+          "Discharge",
+          "Velocity",
+          "Cross-sectional area",
+          "Wetted perimeter",
+        ],
+        accept: [
+          "Cross-sectional area",
+        ],
+        answer: "Width times mean depth gives cross-sectional area in m². Multiply that by velocity and you get discharge, the volume of water flowing per second.",
+      },
+      {
+        question: "Which method scores a place on features such as litter, noise and green space?",
+        choices: [
+          "Traffic count",
+          "Questionnaire",
+          "Land-use map",
+          "Environmental survey",
+        ],
+        accept: [
+          "Environmental survey",
+        ],
+        answer: "An environmental quality survey turns judgements into scores, often from minus three to plus three. The scores are subjective, so it is open to bias.",
+      },
+      {
+        question: "In the enquiry process, which stage comes straight after collecting the data?",
+        choices: [
+          "Writing a hypothesis",
+          "Presenting the data",
+          "Evaluating",
+          "Drawing conclusions",
+        ],
+        accept: [
+          "Presenting the data",
+        ],
+        answer: "After collection you process and present the data, then analyse it, then conclude. Evaluation comes last, and the hypothesis comes first.",
       },
     ],
 
@@ -1881,6 +2141,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Population density is people divided by area: five thousand shared over ten square kilometres gives 500 per km². Multiplying gives the wrong 50,000.",
       },
+      {
+        question: "What size of square does a six-figure grid reference pinpoint?",
+        choices: [
+          "10 m square",
+          "100 m square",
+          "1 km square",
+          "10 km square",
+        ],
+        accept: [
+          "100 m square",
+        ],
+        answer: "A four-figure reference gives a 1 km grid square. Six figures split that square into tenths each way, narrowing it to 100 m.",
+      },
+      {
+        question: "In a grid reference, which are given first?",
+        choices: [
+          "Northings",
+          "Heights",
+          "Eastings",
+          "Bearings",
+        ],
+        accept: [
+          "Eastings",
+        ],
+        answer: "Eastings go first, read along the bottom of the map, then northings, read up the side. 'Along the corridor, then up the stairs.'",
+      },
+      {
+        question: "On a 1:50,000 map, how far on the ground does 2 cm represent?",
+        choices: [
+          "500 m",
+          "1 km",
+          "2 km",
+          "10 km",
+        ],
+        accept: [
+          "1 km",
+        ],
+        answer: "At 1:50,000, 1 cm is 50,000 cm, which is 500 m. So 2 cm is 1 km. On a 1:25,000 map, 4 cm is 1 km.",
+      },
+      {
+        question: "On a weather map, what are isolines joining places of equal air pressure called?",
+        choices: [
+          "Isotherms",
+          "Isobars",
+          "Contours",
+          "Isohyets",
+        ],
+        accept: [
+          "Isobars",
+        ],
+        answer: "Isobars join equal pressure. Isotherms join equal temperature, isohyets equal rainfall and contours equal height.",
+      },
+      {
+        question: "What is the mode of 3, 7, 7, 9, 12?",
+        choices: [
+          "3",
+          "7",
+          "8",
+          "9",
+        ],
+        accept: [
+          "7",
+        ],
+        answer: "The mode is the most common value, and 7 appears twice. The mean is 7.6 and the median, the middle value, is also 7, but 8 is none of them.",
+      },
     ],
 
     misconceptions: [
@@ -2249,6 +2574,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Afforestation",
         ],
         answer: "Trees intercept rain and take up water, so it reaches the river more slowly. Urbanisation does the opposite with fast-draining, impermeable surfaces.",
+      },
+      {
+        question: "Which transport process carries fine silt and clay held up within the water?",
+        choices: [
+          "Solution",
+          "Suspension",
+          "Saltation",
+          "Traction",
+        ],
+        accept: [
+          "Suspension",
+        ],
+        answer: "Suspended load is what makes rivers look brown after heavy rain. Solution is dissolved minerals, which you cannot see.",
+      },
+      {
+        question: "What is the point where two rivers meet called?",
+        choices: [
+          "Confluence",
+          "Tributary",
+          "Estuary",
+          "Watershed",
+        ],
+        accept: [
+          "Confluence",
+        ],
+        answer: "A confluence is the meeting point; a tributary is the smaller river that joins. A watershed is the high ground dividing two drainage basins.",
+      },
+      {
+        question: "Which type of erosion mainly deepens a river channel in its upper course?",
+        choices: [
+          "Lateral erosion",
+          "Bank erosion",
+          "Coastal erosion",
+          "Vertical erosion",
+        ],
+        accept: [
+          "Vertical erosion",
+        ],
+        answer: "High above sea level the river cuts downwards, forming V-shaped valleys. Lateral (sideways) erosion dominates further downstream and widens the valley.",
+      },
+      {
+        question: "On a hydrograph, what is the river's normal, everyday discharge called?",
+        choices: [
+          "Peak discharge",
+          "Lag time",
+          "Base flow",
+          "Rising limb",
+        ],
+        accept: [
+          "Base flow",
+        ],
+        answer: "Base flow is fed slowly by groundwater. Peak discharge is the highest flow after a storm, and lag time is the delay before that peak.",
+      },
+      {
+        question: "What is the steep bank on the outside of a meander bend called?",
+        choices: [
+          "Slip-off slope",
+          "River cliff",
+          "Levee",
+          "Interlocking spur",
+        ],
+        accept: [
+          "River cliff",
+        ],
+        answer: "Fast flow erodes the outer bank into a river cliff. The slip-off slope is the gentle deposit on the slower inside of the bend.",
       },
     ],
 
@@ -2619,6 +3009,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Bay",
         ],
         answer: "Soft rock such as clay erodes quickly back into bays, while resistant rock is left jutting out to sea as headlands.",
+      },
+      {
+        question: "Which erosion process is waves hurling sand and pebbles against a cliff?",
+        choices: [
+          "Attrition",
+          "Hydraulic power",
+          "Abrasion",
+          "Solution",
+        ],
+        accept: [
+          "Abrasion",
+        ],
+        answer: "Abrasion uses the sea's load like sandpaper on the cliff. Attrition is the load knocking against itself and getting smaller and rounder.",
+      },
+      {
+        question: "Which plant is often planted to stabilise sand dunes?",
+        choices: [
+          "Marram grass",
+          "Sea lavender",
+          "Heather",
+          "Bracken",
+        ],
+        accept: [
+          "Marram grass",
+        ],
+        answer: "Marram grass has long roots that bind the sand and it survives being buried, so it is planted to hold dunes in place.",
+      },
+      {
+        question: "What is the hooked tip of a spit called?",
+        choices: [
+          "Wave-cut notch",
+          "Bar",
+          "Stump",
+          "Recurved end",
+        ],
+        accept: [
+          "Recurved end",
+        ],
+        answer: "A change in wind and wave direction curls the end of the spit round. A bar forms instead if the spit grows right across a bay.",
+      },
+      {
+        question: "Which shoreline management option keeps the coastline where it is now?",
+        choices: [
+          "Managed retreat",
+          "Hold the line",
+          "Advance the line",
+          "No active intervention",
+        ],
+        accept: [
+          "Hold the line",
+        ],
+        answer: "Hold the line means defending the current position, usually with sea walls or rock armour. Managed retreat lets the sea move inland in a controlled way.",
+      },
+      {
+        question: "Why do many sea walls have a curved face?",
+        choices: [
+          "To trap sand",
+          "To raise the beach",
+          "To reflect waves",
+          "To let water drain",
+        ],
+        accept: [
+          "To reflect waves",
+        ],
+        answer: "The curve throws wave energy back out to sea instead of letting waves break over the top. A drawback is that reflected waves can scour the beach.",
       },
     ],
 
@@ -2991,6 +3446,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Too many animals strip the vegetation, leaving soil exposed to wind and erosion. Planting trees and terracing are ways to fight desertification.",
       },
+      {
+        question: "What is an animal that eats producers called?",
+        choices: [
+          "Secondary consumer",
+          "Primary consumer",
+          "Tertiary consumer",
+          "Decomposer",
+        ],
+        accept: [
+          "Primary consumer",
+        ],
+        answer: "Primary consumers, such as rabbits, are herbivores that eat plants. Secondary consumers eat the primary consumers.",
+      },
+      {
+        question: "Which biome of coniferous forest lies just south of the tundra?",
+        choices: [
+          "Deciduous forest",
+          "Temperate grassland",
+          "Savanna",
+          "Boreal forest",
+        ],
+        accept: [
+          "Boreal forest",
+        ],
+        answer: "Boreal forest, or taiga, stretches across Canada, Scandinavia and Russia. Its conifers cope with long, cold winters and a short growing season.",
+      },
+      {
+        question: "Which biome would naturally cover most of lowland UK?",
+        choices: [
+          "Deciduous forest",
+          "Boreal forest",
+          "Temperate grassland",
+          "Tundra",
+        ],
+        accept: [
+          "Deciduous forest",
+        ],
+        answer: "The UK's mild, wet climate suits temperate deciduous woodland of oak, ash and beech. Most of it was cleared long ago for farming.",
+      },
+      {
+        question: "Why do fennec foxes in the desert have very large ears?",
+        choices: [
+          "To store water",
+          "To keep sand out",
+          "To lose heat",
+          "To scare predators",
+        ],
+        accept: [
+          "To lose heat",
+        ],
+        answer: "Blood vessels in the big ears give off heat, cooling the fox down. The ears also help it hear prey moving under the sand.",
+      },
+      {
+        question: "In the nutrient cycle, which store holds fallen leaves and dead matter?",
+        choices: [
+          "Biomass",
+          "Litter",
+          "Soil",
+          "Bedrock",
+        ],
+        accept: [
+          "Litter",
+        ],
+        answer: "The three nutrient stores are biomass, litter and soil. Litter is the dead material on the surface; biomass is living plants and animals.",
+      },
     ],
 
     misconceptions: [
@@ -3357,6 +3877,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Very low",
         ],
         answer: "The eye has the lowest pressure of the storm. Sinking air there gives calm, clear weather, while the eyewall around it has the strongest winds.",
+      },
+      {
+        question: "Using a hazard map to keep new homes out of danger zones is an example of:",
+        choices: [
+          "Prediction",
+          "Protection",
+          "Relief aid",
+          "Planning",
+        ],
+        accept: [
+          "Planning",
+        ],
+        answer: "Land-use planning stops people living where hazards strike. Prediction forecasts when a hazard will happen; protection means building defences.",
+      },
+      {
+        question: "What is the highest category on the Saffir-Simpson scale?",
+        choices: [
+          "Category 5",
+          "Category 4",
+          "Category 10",
+          "Category 12",
+        ],
+        accept: [
+          "Category 5",
+        ],
+        answer: "Category 5 means sustained winds of about 157 mph or more. Force 12 is the top of the Beaufort scale, which is used for ordinary winds.",
+      },
+      {
+        question: "What is a long period of unusually low rainfall called?",
+        choices: [
+          "Heatwave",
+          "Drought",
+          "Anticyclone",
+          "Desertification",
+        ],
+        accept: [
+          "Drought",
+        ],
+        answer: "A drought is a lack of rain; a heatwave is about high temperatures. Both are often caused by a long-lasting anticyclone.",
+      },
+      {
+        question: "What is the air doing in the eye of a tropical storm?",
+        choices: [
+          "Rising rapidly",
+          "Blowing hardest",
+          "Sinking slowly",
+          "Spiralling inwards",
+        ],
+        accept: [
+          "Sinking slowly",
+        ],
+        answer: "Sinking air in the eye warms and dries, giving calm, clear skies. Air rises fastest in the eyewall around it, where winds are strongest.",
+      },
+      {
+        question: "What are tropical storms called in the Indian Ocean?",
+        choices: [
+          "Typhoons",
+          "Hurricanes",
+          "Tornadoes",
+          "Cyclones",
+        ],
+        accept: [
+          "Cyclones",
+        ],
+        answer: "They are cyclones in the Indian Ocean, typhoons in the western Pacific and hurricanes in the Atlantic. Tornadoes are much smaller and form over land.",
       },
     ],
 
@@ -3726,6 +4311,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Burning or rotting trees release the carbon they stored as carbon dioxide, and fewer trees remain to absorb it. Local rainfall usually drops after clearance.",
       },
+      {
+        question: "Which rainforest animal moves very slowly to save energy on a leafy diet?",
+        choices: [
+          "Toucan",
+          "Sloth",
+          "Jaguar",
+          "Spider monkey",
+        ],
+        accept: [
+          "Sloth",
+        ],
+        answer: "Sloths have a slow metabolism because leaves give little energy. Algae growing in their fur also helps camouflage them in the canopy.",
+      },
+      {
+        question: "What is planting trees where forest has been cut down called?",
+        choices: [
+          "Reforestation",
+          "Afforestation",
+          "Agroforestry",
+          "Selective logging",
+        ],
+        accept: [
+          "Reforestation",
+        ],
+        answer: "Reforestation replaces lost forest. Afforestation means planting trees where there was no forest before.",
+      },
+      {
+        question: "Which type of cold environment, like Antarctica, is covered by ice sheets?",
+        choices: [
+          "Tundra",
+          "Alpine",
+          "Polar",
+          "Temperate",
+        ],
+        accept: [
+          "Polar",
+        ],
+        answer: "Polar areas have permanent ice and very little life. Tundra has permafrost but a short summer when low plants can grow.",
+      },
+      {
+        question: "Why does soil erode quickly after rainforest is cleared?",
+        choices: [
+          "Rainfall decreases",
+          "Soil becomes frozen",
+          "Leaf litter builds up",
+          "No roots to hold it",
+        ],
+        accept: [
+          "No roots to hold it",
+        ],
+        answer: "Without roots to bind it and a canopy to break the rain's fall, heavy rain washes the thin topsoil into rivers.",
+      },
+      {
+        question: "What does the CITES agreement control?",
+        choices: [
+          "Carbon emissions",
+          "Trade in wildlife",
+          "Fishing quotas",
+          "Ocean plastic",
+        ],
+        accept: [
+          "Trade in wildlife",
+        ],
+        answer: "CITES bans or limits international trade in endangered plants and animals, including ivory and some rare tropical hardwoods.",
+      },
     ],
 
     misconceptions: [
@@ -4093,6 +4743,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Boulder clay",
         ],
         answer: "Holderness is soft boulder clay left by glaciers, which is why it retreats so fast. Flamborough Head, just to the north, is resistant chalk.",
+      },
+      {
+        question: "Old Harry Rocks in Dorset are an example of which landform?",
+        choices: [
+          "Arches",
+          "Caves",
+          "Stacks",
+          "Spits",
+        ],
+        accept: [
+          "Stacks",
+        ],
+        answer: "Old Harry Rocks are chalk stacks cut off from the headland at Handfast Point. Nearby, Old Harry's Wife has collapsed into a stump.",
+      },
+      {
+        question: "What is the highest mountain in the UK?",
+        choices: [
+          "Ben Nevis",
+          "Snowdon",
+          "Scafell Pike",
+          "Slieve Donard",
+        ],
+        accept: [
+          "Ben Nevis",
+        ],
+        answer: "Ben Nevis in the Scottish Highlands is about 1,345 m high. Snowdon (Yr Wyddfa) is the highest in Wales and Scafell Pike in England.",
+      },
+      {
+        question: "What is the longest river in the UK?",
+        choices: [
+          "Thames",
+          "Trent",
+          "Tay",
+          "Severn",
+        ],
+        accept: [
+          "Severn",
+        ],
+        answer: "The Severn runs about 350 km from the Welsh hills to the Bristol Channel. The Thames is the longest river entirely in England.",
+      },
+      {
+        question: "What is the moraine along the sides of a glacier called?",
+        choices: [
+          "Medial moraine",
+          "Lateral moraine",
+          "Terminal moraine",
+          "Ground moraine",
+        ],
+        accept: [
+          "Lateral moraine",
+        ],
+        answer: "Lateral moraine is rock fallen from the valley sides onto the glacier's edges. Medial moraine forms down the middle where two glaciers join.",
+      },
+      {
+        question: "Which glacial process is rock frozen into the ice scraping the valley floor?",
+        choices: [
+          "Plucking",
+          "Freeze-thaw",
+          "Attrition",
+          "Abrasion",
+        ],
+        accept: [
+          "Abrasion",
+        ],
+        answer: "Abrasion acts like sandpaper, leaving scratches called striations. Plucking is meltwater freezing onto rock and tearing pieces away.",
       },
     ],
 
@@ -4470,6 +5185,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "A congestion charge, as in London, cuts traffic by making drivers pay. Park and ride lets them leave cars at the edge and take a bus in.",
       },
+      {
+        question: "Which of these is a push factor driving people away from rural areas?",
+        choices: [
+          "Better-paid jobs",
+          "Crop failure",
+          "Access to hospitals",
+          "More school places",
+        ],
+        accept: [
+          "Crop failure",
+        ],
+        answer: "Crop failure pushes people out of the countryside. Jobs, hospitals and schools in the city are pull factors that attract them in.",
+      },
+      {
+        question: "What is the movement of people from the countryside into towns and cities called?",
+        choices: [
+          "Counter-urbanisation",
+          "Suburbanisation",
+          "Rural-urban migration",
+          "Natural increase",
+        ],
+        accept: [
+          "Rural-urban migration",
+        ],
+        answer: "Rural-urban migration is the move itself. Counter-urbanisation is the opposite, people leaving cities for smaller towns and villages.",
+      },
+      {
+        question: "What is a scheme where drivers park outside a city and take a bus into the centre called?",
+        choices: [
+          "Congestion charge",
+          "Car sharing",
+          "Bus lane",
+          "Park and ride",
+        ],
+        accept: [
+          "Park and ride",
+        ],
+        answer: "Park and ride cuts traffic and pollution in the centre. A congestion charge works differently, by making drivers pay to enter the city centre.",
+      },
+      {
+        question: "What is a roof covered with living plants to soak up rain and insulate a building called?",
+        choices: [
+          "A green roof",
+          "A solar roof",
+          "A thatched roof",
+          "A flat roof",
+        ],
+        accept: [
+          "A green roof",
+        ],
+        answer: "Green roofs slow rainwater run-off and add habitat, making a city more sustainable. A thatched roof is dried straw or reed, not living plants.",
+      },
+      {
+        question: "Which of these jobs is usually part of the informal economy in a poorer city?",
+        choices: [
+          "Bank clerk",
+          "Waste picker",
+          "Police officer",
+          "Teacher",
+        ],
+        accept: [
+          "Waste picker",
+        ],
+        answer: "Waste pickers usually work unregistered and untaxed, with no contract or sick pay. Clerks, police and teachers are formal jobs that pay tax.",
+      },
     ],
 
     misconceptions: [
@@ -4845,6 +5625,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Bottom-up projects are planned with communities, often using intermediate technology. Large government or World Bank schemes are top-down.",
       },
+      {
+        question: "In which DTM stage are birth and death rates both low, so population is fairly stable?",
+        choices: [
+          "Stage 1",
+          "Stage 2",
+          "Stage 3",
+          "Stage 4",
+        ],
+        accept: [
+          "Stage 4",
+        ],
+        answer: "In stage 4 both rates are low. Stage 1 is also fairly stable, but because both rates are high, not low.",
+      },
+      {
+        question: "What mainly makes the death rate fall in stage 2 of the demographic transition model?",
+        choices: [
+          "Family planning",
+          "Women working",
+          "Better healthcare",
+          "An ageing population",
+        ],
+        accept: [
+          "Better healthcare",
+        ],
+        answer: "Better healthcare, clean water and food cut deaths in stage 2. Family planning and women working lower the birth rate, which happens later, in stage 3.",
+      },
+      {
+        question: "Which of these is a physical cause of uneven development?",
+        choices: [
+          "Corruption",
+          "Natural hazards",
+          "Colonial history",
+          "National debt",
+        ],
+        accept: [
+          "Natural hazards",
+        ],
+        answer: "Frequent hazards such as floods and earthquakes keep destroying homes, farms and roads. Corruption, colonial history and debt are human causes.",
+      },
+      {
+        question: "What is the average number of children born to each woman in a country called?",
+        choices: [
+          "Birth rate",
+          "Fertility rate",
+          "Natural increase",
+          "Infant mortality",
+        ],
+        accept: [
+          "Fertility rate",
+        ],
+        answer: "Fertility rate counts children per woman. Birth rate is different: it counts births per thousand people in the whole population each year.",
+      },
+      {
+        question: "Science parks in the UK are mostly linked to which sector of employment?",
+        choices: [
+          "Primary",
+          "Secondary",
+          "Tertiary",
+          "Quaternary",
+        ],
+        accept: [
+          "Quaternary",
+        ],
+        answer: "Science parks hold research, development and high-tech firms, which is quaternary work. Tertiary is services such as retail, health and tourism.",
+      },
     ],
 
     misconceptions: [
@@ -5215,6 +6060,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "Geothermal",
         ],
         answer: "Geothermal energy taps hot rocks underground, best in volcanic areas like Iceland. Hydroelectric uses falling water and biomass burns plant matter.",
+      },
+      {
+        question: "What is getting gas out of shale rock by pumping in high-pressure water called?",
+        choices: [
+          "Desalination",
+          "Fracking",
+          "Carbon capture",
+          "Over-abstraction",
+        ],
+        accept: [
+          "Fracking",
+        ],
+        answer: "Fracking could boost energy security but is controversial because of small earthquakes and water pollution fears. Over-abstraction is taking too much water.",
+      },
+      {
+        question: "Which farming method avoids artificial fertilisers and chemical pesticides?",
+        choices: [
+          "Intensive farming",
+          "Hydroponics",
+          "Monoculture",
+          "Organic farming",
+        ],
+        accept: [
+          "Organic farming",
+        ],
+        answer: "Organic farming uses manure and natural pest control instead. Hydroponics still relies on a solution of added nutrients rather than soil.",
+      },
+      {
+        question: "What was the 1960s drive to raise crop yields with new seeds and fertilisers called?",
+        choices: [
+          "Green Revolution",
+          "Fair trade",
+          "Permaculture",
+          "Enclosure",
+        ],
+        accept: [
+          "Green Revolution",
+        ],
+        answer: "The Green Revolution boosted yields, especially in Asia, but needed lots of water and fertiliser that poorer farmers often could not afford.",
+      },
+      {
+        question: "Which renewable energy source relies mainly on the pull of the Moon?",
+        choices: [
+          "Wave power",
+          "Tidal power",
+          "Geothermal",
+          "Hydroelectric",
+        ],
+        accept: [
+          "Tidal power",
+        ],
+        answer: "Tides are caused by the Moon's gravity, so tidal power is very predictable. Waves are made by wind blowing over the sea, so wave power is less reliable.",
+      },
+      {
+        question: "Which energy source gives off almost no CO₂ when generating but leaves radioactive waste?",
+        choices: [
+          "Coal",
+          "Natural gas",
+          "Nuclear",
+          "Biomass",
+        ],
+        accept: [
+          "Nuclear",
+        ],
+        answer: "Nuclear is low-carbon but not renewable, as uranium will run out. Biomass releases CO₂ when burned, and coal and gas are fossil fuels.",
       },
     ],
 
@@ -5602,6 +6512,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
         ],
         answer: "Thermal expansion and melting land ice raise sea levels, flooding low islands. The ozone hole is a separate problem, not caused by the greenhouse effect.",
       },
+      {
+        question: "Which Milankovitch cycle is the change in the shape of Earth's orbit around the Sun?",
+        choices: [
+          "Axial tilt",
+          "Precession",
+          "Eccentricity",
+          "Sunspots",
+        ],
+        accept: [
+          "Eccentricity",
+        ],
+        answer: "Eccentricity is the orbit stretching from near-circular to more oval. Precession is the wobble of Earth's axis, and tilt is the angle of the axis.",
+      },
+      {
+        question: "Roughly how long ago did the Quaternary period begin?",
+        choices: [
+          "2.6 million years",
+          "26,000 years",
+          "2,600 years",
+          "260 million years",
+        ],
+        accept: [
+          "2.6 million years",
+        ],
+        answer: "The Quaternary began about 2.6 million years ago and is marked by repeated glacial and interglacial periods. We are living in an interglacial now.",
+      },
+      {
+        question: "The Paris Agreement aims to keep global warming well below how many degrees?",
+        choices: [
+          "1°C",
+          "2°C",
+          "3°C",
+          "5°C",
+        ],
+        accept: [
+          "2°C",
+        ],
+        answer: "Paris (2015) aims for well below 2°C above pre-industrial levels, while trying for 1.5°C. Each country sets its own emissions targets.",
+      },
+      {
+        question: "Which 1997 international treaty first set binding emission cuts for richer countries?",
+        choices: [
+          "Paris Agreement",
+          "Kyoto Protocol",
+          "Montreal Protocol",
+          "Rio Declaration",
+        ],
+        accept: [
+          "Kyoto Protocol",
+        ],
+        answer: "Kyoto set targets for developed countries only. The Montreal Protocol (1987) is about ozone-damaging gases, and Paris came much later, in 2015.",
+      },
+      {
+        question: "Which human activity releases the most carbon dioxide?",
+        choices: [
+          "Rice farming",
+          "Cattle farming",
+          "Landfill sites",
+          "Burning fossil fuels",
+        ],
+        accept: [
+          "Burning fossil fuels",
+        ],
+        answer: "Burning coal, oil and gas for power, transport and industry is the biggest source of CO₂. Rice, cattle and landfill are mainly sources of methane.",
+      },
     ],
 
     misconceptions: [
@@ -5973,6 +6948,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "However",
         ],
         answer: "'However' turns to the opposing view. Furthermore, in addition and similarly all add support to the same side of the argument.",
+      },
+      {
+        question: "In AQA GCSE Geography, which paper contains the issue evaluation?",
+        choices: [
+          "Paper 1",
+          "Paper 2",
+          "Paper 3",
+          "Paper 4",
+        ],
+        accept: [
+          "Paper 3",
+        ],
+        answer: "Paper 3, Geographical applications, holds the issue evaluation and fieldwork questions. AQA has only three papers, so there is no Paper 4.",
+      },
+      {
+        question: "How long before the AQA Paper 3 exam is the pre-release booklet issued?",
+        choices: [
+          "1 week",
+          "12 weeks",
+          "1 year",
+          "1 day",
+        ],
+        accept: [
+          "12 weeks",
+        ],
+        answer: "It comes out twelve weeks ahead, giving time to study the resources, learn the key terms and practise arguing for each option.",
+      },
+      {
+        question: "Which connective best links your decision to the reason for it?",
+        choices: [
+          "However",
+          "Similarly",
+          "Because",
+          "Although",
+        ],
+        accept: [
+          "Because",
+        ],
+        answer: "'Because' turns a choice into a justification. 'However' and 'although' bring in a counter-argument, and 'similarly' adds a matching point.",
+      },
+      {
+        question: "A fall in tourist spending in a town is which type of impact?",
+        choices: [
+          "Social",
+          "Economic",
+          "Environmental",
+          "Political",
+        ],
+        accept: [
+          "Economic",
+        ],
+        answer: "Lost spending means less income and fewer jobs, so it is economic. Social impacts concern people's quality of life, health and communities.",
+      },
+      {
+        question: "Losing a community's sense of identity is which type of impact?",
+        choices: [
+          "Economic",
+          "Environmental",
+          "Political",
+          "Social",
+        ],
+        accept: [
+          "Social",
+        ],
+        answer: "Identity, culture and community ties are social. Strong answers sort impacts into social, economic and environmental to cover all three.",
       },
     ],
 
@@ -6358,6 +7398,71 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
           "This means that",
         ],
         answer: "'This means that' links a cause to its consequence, which earns explanation marks. 'Also' and 'firstly' just add another separate point.",
+      },
+      {
+        question: "In AQA GCSE Geography, how many SPaG marks do Papers 1 and 2 each award?",
+        choices: [
+          "1",
+          "3",
+          "6",
+          "10",
+        ],
+        accept: [
+          "3",
+        ],
+        answer: "Papers 1 and 2 each give three marks for spelling, punctuation, grammar and specialist terms, on set longer questions. Paper 3 gives six.",
+      },
+      {
+        question: "How long is AQA GCSE Geography Paper 1?",
+        choices: [
+          "1 hour",
+          "1 hour 30 minutes",
+          "2 hours",
+          "2 hours 30 minutes",
+        ],
+        accept: [
+          "1 hour 30 minutes",
+        ],
+        answer: "Papers 1 and 2 are an hour and a half each. Paper 3 is shorter, at one hour and fifteen minutes.",
+      },
+      {
+        question: "Which command word asks you to back up a choice or view with evidence?",
+        choices: [
+          "Describe",
+          "Outline",
+          "Justify",
+          "Identify",
+        ],
+        accept: [
+          "Justify",
+        ],
+        answer: "Justify means give reasons and evidence for a decision. Describe, outline and identify only ask what something is or shows, with no reasons.",
+      },
+      {
+        question: "Which command word asks for a brief summary of the main points?",
+        choices: [
+          "Outline",
+          "Explain",
+          "Evaluate",
+          "Assess",
+        ],
+        accept: [
+          "Outline",
+        ],
+        answer: "Outline wants the key points set out briefly. Explain needs reasons, while evaluate and assess need a judgement at the end.",
+      },
+      {
+        question: "Which command word asks you to add explanatory notes to a diagram or photo?",
+        choices: [
+          "Label",
+          "Annotate",
+          "Identify",
+          "Describe",
+        ],
+        accept: [
+          "Annotate",
+        ],
+        answer: "Annotations explain or describe features. A label just names a feature, so annotating a diagram earns more marks than labelling it.",
       },
     ],
 

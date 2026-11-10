@@ -370,6 +370,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "At rest the diaphragm and intercostals simply relax and the lungs recoil, so expiration is passive. In hard exercise it becomes active, using the abdominals.",
       },
+      {
+        question: "Which muscles contract to force air out faster during exercise?",
+        choices: [
+          "External intercostals",
+          "Internal intercostals",
+          "Diaphragm",
+          "Pectorals",
+        ],
+        accept: [
+          "Internal intercostals",
+        ],
+        answer: "In exercise the internal intercostals contract to pull the ribcage down harder. The external intercostals lift the ribcage during inspiration.",
+      },
+      {
+        question: "What does the nasal cavity do to air before it goes further in?",
+        choices: [
+          "Warms and filters it",
+          "Cools and dries it",
+          "Adds oxygen to it",
+          "Removes CO₂ from it",
+        ],
+        accept: [
+          "Warms and filters it",
+        ],
+        answer: "The nasal cavity warms, moistens and filters the air. Oxygen and carbon dioxide are only exchanged later, at the alveoli.",
+      },
+      {
+        question: "What is a spirometer trace a graph of?",
+        choices: [
+          "Heart rate over time",
+          "CO₂ level over time",
+          "Blood oxygen over time",
+          "Lung volume over time",
+        ],
+        accept: [
+          "Lung volume over time",
+        ],
+        answer: "A spirometer trace plots lung volume against time, so tidal volume and breathing rate can be read from it. Heart rate needs a different monitor.",
+      },
+      {
+        question: "What surrounds each alveolus, ready to carry oxygen away?",
+        choices: [
+          "Rings of cartilage",
+          "Bronchioles",
+          "A capillary network",
+          "Intercostal muscles",
+        ],
+        accept: [
+          "A capillary network",
+        ],
+        answer: "Each alveolus is wrapped in capillaries, so oxygen diffuses only a short way into the blood. Rings of cartilage are in the trachea.",
+      },
+      {
+        question: "What does having millions of alveoli give the lungs?",
+        choices: [
+          "A short diffusion path",
+          "A huge surface area",
+          "A low air pressure",
+          "Stronger airways",
+        ],
+        accept: [
+          "A huge surface area",
+        ],
+        answer: "Millions of alveoli give a huge surface area for gases to cross quickly. The short diffusion path comes from their walls being one cell thick.",
+      },
     ],
     misconceptions: [
       {
@@ -733,6 +798,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Cold water is thought to reduce swelling and muscle soreness. It doesn't warm muscles or raise heart rate, and refuelling glycogen needs carbohydrate.",
       },
+      {
+        question: "After exercise, where in the body is most lactic acid converted?",
+        choices: [
+          "Liver",
+          "Lungs",
+          "Kidneys",
+          "Heart",
+        ],
+        accept: [
+          "Liver",
+        ],
+        answer: "In recovery, extra oxygen is used to convert lactic acid, mainly in the liver, so it can be used again as fuel. The lungs just take the oxygen in.",
+      },
+      {
+        question: "Which carbohydrate fuel store in muscles is refilled after exercise?",
+        choices: [
+          "Lactate",
+          "Glucagon",
+          "Cellulose",
+          "Glycogen",
+        ],
+        accept: [
+          "Glycogen",
+        ],
+        answer: "Glycogen is the carbohydrate stored in muscles and refilled by eating carbohydrate after exercise. Glucagon is a hormone and cellulose is plant fibre.",
+      },
+      {
+        question: "What do both aerobic and anaerobic respiration release?",
+        choices: [
+          "Lactic acid",
+          "Carbon dioxide",
+          "Energy",
+          "Water",
+        ],
+        accept: [
+          "Energy",
+        ],
+        answer: "Both break down glucose to release energy. Only anaerobic makes lactic acid, and only aerobic makes carbon dioxide and water.",
+      },
+      {
+        question: "Which term describes the extra oxygen used after exercise to return to rest?",
+        choices: [
+          "Oxygen deficit",
+          "EPOC",
+          "Steady state",
+          "Active recovery",
+        ],
+        accept: [
+          "EPOC",
+        ],
+        answer: "EPOC, excess post-exercise oxygen consumption, is the extra oxygen used to recover. Steady state is when oxygen supply matches demand mid-exercise.",
+      },
+      {
+        question: "Anaerobic respiration is used when the supply of what cannot meet demand?",
+        choices: [
+          "Oxygen",
+          "Glucose",
+          "Glycogen",
+          "Water",
+        ],
+        accept: [
+          "Oxygen",
+        ],
+        answer: "When exercise is too intense for oxygen supply to keep up, glucose is broken down without oxygen, making lactic acid. Both systems use glucose.",
+      },
     ],
     misconceptions: [
       {
@@ -1095,6 +1225,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "It decreases",
         ],
         answer: "Regular aerobic training keeps blood vessel walls elastic and healthy, so resting blood pressure falls. This lowers the risk of heart disease and stroke.",
+      },
+      {
+        question: "Why does sweating increase during exercise?",
+        choices: [
+          "To remove lactic acid",
+          "To warm the muscles",
+          "To lower heart rate",
+          "To cool the body",
+        ],
+        accept: [
+          "To cool the body",
+        ],
+        answer: "Exercise raises body temperature, so sweating increases and cools the body as the sweat evaporates. Lactic acid is cleared by blood flow, not sweat.",
+      },
+      {
+        question: "Which part of the heart thickens most with cardiac hypertrophy?",
+        choices: [
+          "Right atrium wall",
+          "Left atrium wall",
+          "Left ventricle wall",
+          "Right ventricle wall",
+        ],
+        accept: [
+          "Left ventricle wall",
+        ],
+        answer: "Hypertrophy mainly thickens the left ventricle wall, which pumps blood to the whole body, so stroke volume rises. The atria have thin walls.",
+      },
+      {
+        question: "Capillarisation around the alveoli mainly improves what?",
+        choices: [
+          "Stroke volume",
+          "Gaseous exchange",
+          "Lung volume",
+          "Heart rate",
+        ],
+        accept: [
+          "Gaseous exchange",
+        ],
+        answer: "More capillaries around the alveoli give more area for gaseous exchange, so more oxygen enters the blood. Stroke volume rises from cardiac hypertrophy.",
+      },
+      {
+        question: "Muscle hypertrophy mainly improves which component of fitness?",
+        choices: [
+          "Strength",
+          "Flexibility",
+          "Reaction time",
+          "Agility",
+        ],
+        accept: [
+          "Strength",
+        ],
+        answer: "Bigger muscle fibres can exert more force, so hypertrophy from resistance training mainly increases strength, not reaction time or flexibility.",
+      },
+      {
+        question: "What does the 'D' in DOMS stand for?",
+        choices: [
+          "Damaged",
+          "Deep",
+          "Dynamic",
+          "Delayed",
+        ],
+        accept: [
+          "Delayed",
+        ],
+        answer: "DOMS is delayed onset muscle soreness: it appears a day or two after exercise, caused by tiny tears in muscle fibres, not during the session.",
       },
     ],
     misconceptions: [
@@ -1471,6 +1666,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Agility is the ability to change direction quickly while staying in control. Responding to a stimulus is reaction time, and full joint movement is flexibility.",
       },
+      {
+        question: "A gymnast doing the splits is mainly showing which component?",
+        choices: [
+          "Balance",
+          "Agility",
+          "Flexibility",
+          "Power",
+        ],
+        accept: [
+          "Flexibility",
+        ],
+        answer: "The splits need a large range of movement at the hips, which is flexibility. Balance is keeping the centre of mass over the base of support.",
+      },
+      {
+        question: "Doing as many press-ups as possible in one minute tests which component?",
+        choices: [
+          "Strength",
+          "Muscular endurance",
+          "Power",
+          "Coordination",
+        ],
+        accept: [
+          "Muscular endurance",
+        ],
+        answer: "Repeating press-ups without tiring tests muscular endurance. Strength is the most force in a single effort, such as one heavy lift.",
+      },
+      {
+        question: "Which component is used mainly for skilled movement, not conditioning?",
+        choices: [
+          "Coordination",
+          "Flexibility",
+          "Strength",
+          "Muscular endurance",
+        ],
+        accept: [
+          "Coordination",
+        ],
+        answer: "Coordination is skill-related, like agility, balance and reaction time. Flexibility, strength and muscular endurance are physical conditioning components.",
+      },
+      {
+        question: "What happens to stability as the base of support gets wider?",
+        choices: [
+          "It decreases",
+          "It stays the same",
+          "It halves",
+          "It increases",
+        ],
+        accept: [
+          "It increases",
+        ],
+        answer: "A wider base of support makes it easier to keep the centre of mass over it, so stability increases. That is why a wrestler widens their stance.",
+      },
+      {
+        question: "Power is mainly used for which kind of action?",
+        choices: [
+          "Many repeated actions",
+          "Holding a still shape",
+          "One explosive action",
+          "A long steady effort",
+        ],
+        accept: [
+          "One explosive action",
+        ],
+        answer: "Power is strength times speed in one fast, forceful action, like a shot put. Repeating an effort many times is muscular endurance instead.",
+      },
     ],
     misconceptions: [
       {
@@ -1845,6 +2105,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "20 metres",
         ],
         answer: "Performers run between lines twenty metres apart, keeping time with bleeps that get faster each level until they can no longer keep up.",
+      },
+      {
+        question: "In the ruler drop test, what does a shorter catch distance show?",
+        choices: [
+          "Slower reaction time",
+          "Faster reaction time",
+          "Better coordination",
+          "More power",
+        ],
+        accept: [
+          "Faster reaction time",
+        ],
+        answer: "The less the ruler falls before it is caught, the quicker the performer responded, so a shorter distance means a faster reaction time.",
+      },
+      {
+        question: "In the stork stand, where does the performer place their hands?",
+        choices: [
+          "On the hips",
+          "On the head",
+          "By their sides",
+          "Out to the sides",
+        ],
+        accept: [
+          "On the hips",
+        ],
+        answer: "The stork stand is done on one leg with hands on the hips, timed for how long balance is held. Arms out wide would make balancing easier.",
+      },
+      {
+        question: "A test gives consistent results but measures the wrong thing. It is not what?",
+        choices: [
+          "Objective",
+          "Quantitative",
+          "Standardised",
+          "Valid",
+        ],
+        accept: [
+          "Valid",
+        ],
+        answer: "Validity means a test measures what it claims to. A test can be consistent, so reliable, yet still measure the wrong thing, so it is not valid.",
+      },
+      {
+        question: "The sit and reach test mainly measures flexibility of which muscles?",
+        choices: [
+          "Quadriceps",
+          "Biceps",
+          "Hamstrings",
+          "Pectorals",
+        ],
+        accept: [
+          "Hamstrings",
+        ],
+        answer: "Reaching forward with straight legs stretches the hamstrings and lower back, so that is the flexibility measured, not the quadriceps.",
+      },
+      {
+        question: "Which test is scored by the level and shuttle reached?",
+        choices: [
+          "Cooper test",
+          "Bleep test (MSFT)",
+          "Illinois agility",
+          "Vertical jump",
+        ],
+        accept: [
+          "Bleep test (MSFT)",
+        ],
+        answer: "The multi-stage fitness test is scored by the level and shuttle reached before the bleeps are missed. The Cooper test is scored by distance.",
       },
     ],
     misconceptions: [
@@ -2235,6 +2560,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Type is the kind of training or activity done. Time is how long the session lasts, and frequency is how often you train.",
       },
+      {
+        question: "In the SPORT principles, what does the 'P' stand for?",
+        choices: [
+          "Progression",
+          "Performance",
+          "Power",
+          "Practice",
+        ],
+        accept: [
+          "Progression",
+        ],
+        answer: "P is progression: training demands are increased gradually so the body keeps adapting. Increasing them too quickly raises the risk of injury.",
+      },
+      {
+        question: "When applying overload, how many FITT variables should change at once?",
+        choices: [
+          "Two",
+          "Three",
+          "All four",
+          "One",
+        ],
+        accept: [
+          "One",
+        ],
+        answer: "Change one FITT variable at a time, such as intensity, so the body can adapt safely. Changing them all at once risks overtraining.",
+      },
+      {
+        question: "What does training below the aerobic threshold produce?",
+        choices: [
+          "Rapid improvement",
+          "Anaerobic gains",
+          "Little improvement",
+          "Overtraining",
+        ],
+        accept: [
+          "Little improvement",
+        ],
+        answer: "Below the threshold the body is not overloaded enough to force adaptation, so fitness barely improves. The aerobic zone starts at 60% of max HR.",
+      },
+      {
+        question: "Overtraining is likely when overload rises too fast and what is not planned?",
+        choices: [
+          "Specificity",
+          "Recovery",
+          "Variety",
+          "Testing",
+        ],
+        accept: [
+          "Recovery",
+        ],
+        answer: "Without planned recovery the body cannot repair and adapt, so overload that rises too fast leads to overtraining, injury and poorer performance.",
+      },
+      {
+        question: "What is the main problem tedium causes?",
+        choices: [
+          "Lost motivation",
+          "Lost fitness",
+          "Overuse injury",
+          "Overtraining",
+        ],
+        accept: [
+          "Lost motivation",
+        ],
+        answer: "Tedium is boredom from repeating the same session, which lowers motivation and effort. Losing fitness after training stops is reversibility.",
+      },
     ],
     misconceptions: [
       {
@@ -2598,6 +2988,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Use a spotter",
         ],
         answer: "A spotter can take the bar if the lifter fails. Rounding the back, skipping the warm up and adding weight too quickly all raise the risk of injury.",
+      },
+      {
+        question: "A partner pushes your leg further into a stretch. Which type of stretch is this?",
+        choices: [
+          "Active stretch",
+          "Dynamic stretch",
+          "Ballistic stretch",
+          "Passive stretch",
+        ],
+        accept: [
+          "Passive stretch",
+        ],
+        answer: "When a partner or equipment applies the force it is a passive static stretch. In an active stretch you hold the position with your own muscles.",
+      },
+      {
+        question: "In interval training, what is adjusted to target different components?",
+        choices: [
+          "Number of stations",
+          "Type of terrain",
+          "Work-to-rest ratio",
+          "Stretch hold time",
+        ],
+        accept: [
+          "Work-to-rest ratio",
+        ],
+        answer: "Changing the work-to-rest ratio changes the demand, from speed to endurance. Stations belong to circuit training and terrain to fartlek.",
+      },
+      {
+        question: "A static stretch should be held at the point of what?",
+        choices: [
+          "Sharp pain",
+          "Mild tension",
+          "Muscle cramp",
+          "Full relaxation",
+        ],
+        accept: [
+          "Mild tension",
+        ],
+        answer: "Hold a static stretch at mild tension without bouncing. Stretching into sharp pain risks a strain, so ease off if it hurts.",
+      },
+      {
+        question: "HIIT improves which kinds of fitness?",
+        choices: [
+          "Aerobic and anaerobic",
+          "Flexibility, balance",
+          "Coordination and poise",
+          "Reaction and skill",
+        ],
+        accept: [
+          "Aerobic and anaerobic",
+        ],
+        answer: "HIIT's short, very hard efforts with brief recovery develop anaerobic power, and repeating them also builds cardiovascular (aerobic) fitness. Flexibility needs stretching.",
+      },
+      {
+        question: "Fartlek training mainly develops which kinds of fitness?",
+        choices: [
+          "Strength and power",
+          "Balance and agility",
+          "Flexibility and power",
+          "Aerobic and anaerobic",
+        ],
+        accept: [
+          "Aerobic and anaerobic",
+        ],
+        answer: "Fartlek mixes fast and slow running, so it trains both aerobic and anaerobic fitness, suiting games players who sprint, jog and walk.",
       },
     ],
     misconceptions: [
@@ -2963,6 +3418,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Reduce injury risk",
         ],
         answer: "Balanced competition means players face opponents of similar size, so collisions are less dangerous. It is an injury prevention measure, not a skill or tactic.",
+      },
+      {
+        question: "What does the 'E' in RICE stand for?",
+        choices: [
+          "Exercise",
+          "Ease",
+          "Elevation",
+          "Energy",
+        ],
+        accept: [
+          "Elevation",
+        ],
+        answer: "E is elevation: raising the injured part above the heart reduces blood flow to it and limits swelling.",
+      },
+      {
+        question: "A break or crack in a bone is called what?",
+        choices: [
+          "Dislocation",
+          "Fracture",
+          "Sprain",
+          "Strain",
+        ],
+        accept: [
+          "Fracture",
+        ],
+        answer: "A fracture is a break or crack in a bone. A dislocation is a bone forced out of place at a joint, and a sprain is damage to a ligament.",
+      },
+      {
+        question: "Which phase usually ends a warm-up?",
+        choices: [
+          "Skill-based practice",
+          "Pulse raiser",
+          "Mobility stretching",
+          "Light jogging",
+        ],
+        accept: [
+          "Skill-based practice",
+        ],
+        answer: "A warm-up runs pulse raiser, then stretching, then skill-based or sport-specific practice, so it finishes closest to the real activity.",
+      },
+      {
+        question: "How does staying hydrated help to prevent injury?",
+        choices: [
+          "Stronger bones",
+          "Fewer fractures",
+          "Better grip",
+          "Less risk of cramp",
+        ],
+        accept: [
+          "Less risk of cramp",
+        ],
+        answer: "Hydration keeps muscles working and concentration up, cutting the risk of cramp and fatigue-related injury, especially in hot conditions.",
+      },
+      {
+        question: "RICE is used as immediate treatment for which injuries?",
+        choices: [
+          "Head injuries",
+          "Broken bones",
+          "Sprains and strains",
+          "Dislocated joints",
+        ],
+        accept: [
+          "Sprains and strains",
+        ],
+        answer: "RICE is for soft tissue injuries such as sprains and strains. Concussion, fractures and dislocations need medical attention.",
       },
     ],
     misconceptions: [
@@ -3342,6 +3862,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Interviews take a long time to carry out and analyse, one person at a time. Their strength is rich detail and the chance to ask follow-up questions.",
       },
+      {
+        question: "Which way of presenting data makes exact values easiest to look up?",
+        choices: [
+          "Line graph",
+          "Table",
+          "Pie chart",
+          "Bar chart",
+        ],
+        accept: [
+          "Table",
+        ],
+        answer: "A table sets out raw data in rows and columns, so exact values can be read off. Graphs show patterns, but values are harder to read precisely.",
+      },
+      {
+        question: "When judging the trend in a set of results, how should an anomaly be treated?",
+        choices: [
+          "Left out of the trend",
+          "Counted twice",
+          "Used as the average",
+          "Used as the target",
+        ],
+        accept: [
+          "Left out of the trend",
+        ],
+        answer: "An anomaly doesn't fit the pattern, so leave it out when judging the trend, and check whether that test should be repeated.",
+      },
+      {
+        question: "Which method gives quantitative, objective data on a fitness component?",
+        choices: [
+          "Interview",
+          "Questionnaire",
+          "Coach's opinion",
+          "Fitness test",
+        ],
+        accept: [
+          "Fitness test",
+        ],
+        answer: "A fitness test gives a measured score, such as a sit and reach distance, so it is quantitative and objective. Interviews give opinions.",
+      },
+      {
+        question: "On a heart rate line graph of interval training, what shows the rest periods?",
+        choices: [
+          "Peaks in the line",
+          "A flat line at max",
+          "Dips in the line",
+          "A gap in the axis",
+        ],
+        accept: [
+          "Dips in the line",
+        ],
+        answer: "Heart rate falls when the performer rests, so the rest periods show as dips. The peaks are the work periods.",
+      },
+      {
+        question: "Why shouldn't a coach judge progress from one test result alone?",
+        choices: [
+          "It is subjective",
+          "It may be an anomaly",
+          "It is qualitative",
+          "It can't be graphed",
+        ],
+        accept: [
+          "It may be an anomaly",
+        ],
+        answer: "One result could be an anomaly caused by chance, such as a slip, so several reliable results are needed to show a genuine trend.",
+      },
     ],
     misconceptions: [
       {
@@ -3707,6 +4292,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Independence",
         ],
         answer: "Independence is a key benefit of exercise for older adults, as strength and balance help them keep doing everyday tasks for themselves.",
+      },
+      {
+        question: "Which term means a state of feeling comfortable, healthy and happy?",
+        choices: [
+          "Wellbeing",
+          "Fitness",
+          "Health",
+          "Self-esteem",
+        ],
+        accept: [
+          "Wellbeing",
+        ],
+        answer: "Wellbeing is feeling comfortable, healthy and happy. Health is wider: complete physical, mental and social wellbeing, not just no disease.",
+      },
+      {
+        question: "Which age group mainly gains coordination and healthy growth from exercise?",
+        choices: [
+          "Teenagers",
+          "Adults",
+          "Older adults",
+          "Children",
+        ],
+        accept: [
+          "Children",
+        ],
+        answer: "Children benefit through better coordination and healthy growth. Older adults mainly gain balance, mobility and independence.",
+      },
+      {
+        question: "Regular exercise lowers the risk of which condition linked to blood sugar?",
+        choices: [
+          "Type 1 diabetes",
+          "Asthma",
+          "Type 2 diabetes",
+          "Anaemia",
+        ],
+        accept: [
+          "Type 2 diabetes",
+        ],
+        answer: "Being active lowers the risk of type 2 diabetes. Type 1 diabetes is not caused by lifestyle, so exercise does not prevent it.",
+      },
+      {
+        question: "Exercise helps a person avoid obesity mainly by doing what?",
+        choices: [
+          "Speeding digestion",
+          "Using up energy",
+          "Slowing heart rate",
+          "Releasing serotonin",
+        ],
+        accept: [
+          "Using up energy",
+        ],
+        answer: "Exercise uses up energy that would otherwise be stored as fat, which helps avoid obesity. Serotonin is linked to mood, not weight.",
+      },
+      {
+        question: "Which age group tends to exercise to manage weight and the stress of work?",
+        choices: [
+          "Adults",
+          "Children",
+          "Teenagers",
+          "Older adults",
+        ],
+        accept: [
+          "Adults",
+        ],
+        answer: "Adults tend to focus on weight, illness risk and work or family stress. Teenagers often value the social side, and older adults independence.",
       },
     ],
     misconceptions: [
@@ -4079,6 +4729,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Water is lost as sweat, which evaporates and cools the body. Losing too much without drinking leads to dehydration and overheating.",
       },
+      {
+        question: "Which mineral helps the blood carry oxygen to working muscles?",
+        choices: [
+          "Calcium",
+          "Iron",
+          "Sodium",
+          "Potassium",
+        ],
+        accept: [
+          "Iron",
+        ],
+        answer: "Iron is needed to make haemoglobin, which carries oxygen in the blood. Calcium is the mineral linked to strong bones and teeth instead.",
+      },
+      {
+        question: "How many components make up a balanced diet?",
+        choices: [
+          "Five",
+          "Six",
+          "Eight",
+          "Seven",
+        ],
+        accept: [
+          "Seven",
+        ],
+        answer: "There are seven: carbohydrate, fat, protein, vitamins, minerals, fibre and water. All seven are needed in the right amounts.",
+      },
+      {
+        question: "Which of these foods is the best source of carbohydrate?",
+        choices: [
+          "Chicken",
+          "Eggs",
+          "Pasta",
+          "Butter",
+        ],
+        accept: [
+          "Pasta",
+        ],
+        answer: "Pasta is a starchy carbohydrate, the body's main energy source. Chicken and eggs are mainly protein, and butter is mainly fat.",
+      },
+      {
+        question: "A dehydrated performer's muscles are more likely to suffer from what?",
+        choices: [
+          "Cramp",
+          "Hypertrophy",
+          "Hypothermia",
+          "Hypertension",
+        ],
+        accept: [
+          "Cramp",
+        ],
+        answer: "Dehydration makes muscles more prone to fatigue and cramp. Hypertrophy is muscle growth from training, and hypothermia is the body getting too cold, not too hot.",
+      },
+      {
+        question: "Dehydration reduces sweating. What is the likely result for body temperature?",
+        choices: [
+          "It falls sharply",
+          "It rises",
+          "It stays steady",
+          "It matches the air",
+        ],
+        accept: [
+          "It rises",
+        ],
+        answer: "Sweating cools the body, so a dehydrated performer who sweats less cannot lose heat well and starts to overheat. That is why water is vital in long events.",
+      },
     ],
     misconceptions: [
       {
@@ -4435,6 +5150,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Desk job, TV at night",
         ],
         answer: "A sedentary lifestyle involves little or no physical activity, such as sitting at work all day then sitting in front of a screen in the evening.",
+      },
+      {
+        question: "Fatty deposits narrowing the arteries can lead to which disease linked to obesity?",
+        choices: [
+          "Asthma",
+          "Osteoporosis",
+          "Arthritis",
+          "Coronary heart disease",
+        ],
+        accept: [
+          "Coronary heart disease",
+        ],
+        answer: "Coronary heart disease happens when fatty deposits narrow the arteries supplying the heart muscle. Obesity and inactivity raise the risk; asthma is a lung condition.",
+      },
+      {
+        question: "Excess body fat stopping a gymnast reaching full range of movement reduces which?",
+        choices: [
+          "Flexibility",
+          "Reaction time",
+          "Coordination",
+          "Balance",
+        ],
+        accept: [
+          "Flexibility",
+        ],
+        answer: "Flexibility is the range of movement at a joint, and extra fat can physically block it. Reaction time is how quickly you respond, which body fat does not directly limit.",
+      },
+      {
+        question: "Obesity slowing a footballer's quick changes of direction mainly reduces which?",
+        choices: [
+          "Stamina",
+          "Agility",
+          "Flexibility",
+          "Strength",
+        ],
+        accept: [
+          "Agility",
+        ],
+        answer: "Agility is changing direction quickly while staying in control, and extra body weight makes this slower. Stamina is lasting a long time, which obesity also reduces.",
+      },
+      {
+        question: "Obesity usually develops when a person's energy intake regularly does what?",
+        choices: [
+          "Equals energy used",
+          "Exceeds energy used",
+          "Is below energy used",
+          "Changes daily",
+        ],
+        accept: [
+          "Exceeds energy used",
+        ],
+        answer: "Taking in more energy than you use, through poor diet and inactivity, stores the extra as fat. Eating less than you use would lead to weight loss instead.",
+      },
+      {
+        question: "Type 2 diabetes is a condition where the body cannot properly control what?",
+        choices: [
+          "Blood pressure",
+          "Body temperature",
+          "Blood sugar",
+          "Heart rate",
+        ],
+        accept: [
+          "Blood sugar",
+        ],
+        answer: "In type 2 diabetes the body cannot control blood sugar (glucose) levels properly. High blood pressure is a different condition, called hypertension.",
       },
     ],
     misconceptions: [
@@ -4811,6 +5591,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "A skill is learned through practice to produce a set result. An ability is an inherited, mostly genetic trait, such as balance, that changes little.",
       },
+      {
+        question: "Which continuum classifies skills by the size of the muscle groups used?",
+        choices: [
+          "Open to closed",
+          "Basic to complex",
+          "Gross to fine",
+          "Discrete to continuous",
+        ],
+        accept: [
+          "Gross to fine",
+        ],
+        answer: "Gross to fine is based on muscle size: gross skills use large muscles, like a sprint start, and fine skills use small ones for precision, like a dart throw.",
+      },
+      {
+        question: "Which continuum classifies skills by how many decisions they involve?",
+        choices: [
+          "Basic to complex",
+          "Gross to fine",
+          "Open to closed",
+          "Discrete to continuous",
+        ],
+        accept: [
+          "Basic to complex",
+        ],
+        answer: "Basic to complex is about decisions and information processing: running in a straight line is basic, a gymnastics vault is complex. Open to closed is about the environment.",
+      },
+      {
+        question: "A dart throw is best classified as which?",
+        choices: [
+          "Open and gross",
+          "Open and fine",
+          "Closed and gross",
+          "Closed and fine",
+        ],
+        accept: [
+          "Closed and fine",
+        ],
+        answer: "A dart throw happens in a stable, unchanging setting, so it is closed, and it uses small muscles of the hand and wrist for precision, so it is fine.",
+      },
+      {
+        question: "A netball interception during open play is best classified as which?",
+        choices: [
+          "Closed and gross",
+          "Open and gross",
+          "Open and fine",
+          "Closed and fine",
+        ],
+        accept: [
+          "Open and gross",
+        ],
+        answer: "An interception depends on a moving ball and players in a changing game, so it is open, and it uses large muscles to sprint and jump, so it is gross.",
+      },
+      {
+        question: "A football penalty is mostly a closed skill. What adds a small open element?",
+        choices: [
+          "The penalty spot",
+          "The goalkeeper",
+          "The ball",
+          "The goal frame",
+        ],
+        accept: [
+          "The goalkeeper",
+        ],
+        answer: "The ball, spot and goal never change, but the goalkeeper can move and try to read the kick, adding a little unpredictability, so it sits near but not at the closed end.",
+      },
     ],
     misconceptions: [
       {
@@ -5168,6 +6013,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Goals give a performer something to aim for, which raises motivation and effort in training. They do not directly change physical traits like flexibility.",
       },
+      {
+        question: "'Swim 50 m in under 40 seconds' is which type of goal?",
+        choices: [
+          "Outcome goal",
+          "Team goal",
+          "Performance goal",
+          "Process goal",
+        ],
+        accept: [
+          "Performance goal",
+        ],
+        answer: "A target time is measured against the swimmer's own standard, so it is a performance goal. An outcome goal is about the result against others, such as winning the race.",
+      },
+      {
+        question: "Besides motivation, how can a goal help a performer during competition?",
+        choices: [
+          "Raises their arousal",
+          "Keeps them focused",
+          "Removes all pressure",
+          "Speeds up recovery",
+        ],
+        accept: [
+          "Keeps them focused",
+        ],
+        answer: "A clear goal helps a performer stay focused on what matters and filter out distractions. It does not remove pressure, and raising arousal is not its purpose.",
+      },
+      {
+        question: "Changing 'play better' to 'improve my backhand' makes a goal more what?",
+        choices: [
+          "Measurable",
+          "Realistic",
+          "Time-bound",
+          "Specific",
+        ],
+        accept: [
+          "Specific",
+        ],
+        answer: "Specific means the goal states exactly what to improve, such as the backhand, rather than something vague. It is still not measurable, as no target figure is set.",
+      },
+      {
+        question: "Why is an outcome goal partly outside a performer's control?",
+        choices: [
+          "It depends on rivals",
+          "It has no deadline",
+          "It cannot be measured",
+          "It is set by a coach",
+        ],
+        accept: [
+          "It depends on rivals",
+        ],
+        answer: "An outcome goal, such as winning, depends on how opponents perform as well as on you. You can play your best and still lose, which can feel demotivating.",
+      },
+      {
+        question: "A target the coach has not agreed to fails which part of AQA's SMART?",
+        choices: [
+          "Accepted",
+          "Specific",
+          "Realistic",
+          "Time-bound",
+        ],
+        accept: [
+          "Accepted",
+        ],
+        answer: "In AQA's SMART, Accepted means both performer and coach agree the goal, so both are committed. A goal can be realistic and still fail this if the coach has not agreed it.",
+      },
     ],
     misconceptions: [
       {
@@ -5523,6 +6433,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "A stimulus",
         ],
         answer: "The gun is a stimulus: a signal the sprinter detects as input. Reaction time is measured from this stimulus to the first movement.",
+      },
+      {
+        question: "What is movement time?",
+        choices: [
+          "Stimulus to start",
+          "Start to end of move",
+          "Stimulus to end",
+          "Decision to start",
+        ],
+        accept: [
+          "Start to end of move",
+        ],
+        answer: "Movement time runs from the start of the movement to its end. Stimulus to start is reaction time, and stimulus to end is response time, which adds the two together.",
+      },
+      {
+        question: "In the basic model, feedback becomes new information for which stage?",
+        choices: [
+          "Output",
+          "Decision making",
+          "Long-term memory",
+          "Input",
+        ],
+        accept: [
+          "Input",
+        ],
+        answer: "Feedback about the last attempt becomes new input for the next one, so the model is a continuous loop rather than a single pass from input to output.",
+      },
+      {
+        question: "Roughly how much can long-term memory hold?",
+        choices: [
+          "About seven items",
+          "About two items",
+          "Almost unlimited",
+          "About twenty items",
+        ],
+        accept: [
+          "Almost unlimited",
+        ],
+        answer: "Long-term memory has an almost unlimited capacity and can store skills for years. About seven items is the usual figure given for short-term memory.",
+      },
+      {
+        question: "A goalkeeper recalls how a taker has shot before. Which memory store is used?",
+        choices: [
+          "Short-term memory",
+          "Long-term memory",
+          "Selective attention",
+          "Feedback",
+        ],
+        accept: [
+          "Long-term memory",
+        ],
+        answer: "Past experiences, like how a taker usually shoots, are stored in long-term memory. Short-term memory only holds current information for up to about 30 seconds.",
+      },
+      {
+        question: "How can a coach help a performer make decisions faster?",
+        choices: [
+          "Add more options",
+          "Give more information",
+          "Repeat game situations",
+          "Shorten rest breaks",
+        ],
+        accept: [
+          "Repeat game situations",
+        ],
+        answer: "Repeating game situations stores responses in long-term memory, so decisions become quicker. Adding more options or information would slow decision making down.",
       },
     ],
     misconceptions: [
@@ -5900,6 +6875,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Extrinsic feedback comes from outside the performer. Intrinsic feedback, including the kinaesthetic feel of a movement, comes from within.",
       },
+      {
+        question: "A coach calls out 'head up, eyes on the ball'. Which guidance is this?",
+        choices: [
+          "Visual guidance",
+          "Manual guidance",
+          "Verbal guidance",
+          "Mechanical guidance",
+        ],
+        accept: [
+          "Verbal guidance",
+        ],
+        answer: "Spoken instructions or explanations are verbal guidance. Visual guidance would be a demonstration, video or chart that the learner watches rather than hears.",
+      },
+      {
+        question: "A coach tells a gymnast her legs were bent. This is knowledge of what?",
+        choices: [
+          "Results",
+          "Outcome",
+          "Response",
+          "Performance",
+        ],
+        accept: [
+          "Performance",
+        ],
+        answer: "Feedback on the quality of technique, such as bent legs, is knowledge of performance. Knowledge of results would be the score or whether the vault was landed.",
+      },
+      {
+        question: "What does visual guidance most depend on to work well?",
+        choices: [
+          "Physical contact",
+          "An accurate demo",
+          "Technical language",
+          "Specialist equipment",
+        ],
+        accept: [
+          "An accurate demo",
+        ],
+        answer: "Learners copy what they see, so a poor demonstration means the mistake gets copied too. Physical contact is manual guidance, and technical terms suit verbal guidance.",
+      },
+      {
+        question: "What is a weakness of mechanical guidance such as a swimming float?",
+        choices: [
+          "Feels unlike the skill",
+          "Too much to listen to",
+          "Demo can be too fast",
+          "Coach must touch you",
+        ],
+        accept: [
+          "Feels unlike the skill",
+        ],
+        answer: "Performing with an aid feels different from doing the skill unsupported, so the movement may need adjusting once it is removed. Too much to listen to is a verbal weakness.",
+      },
+      {
+        question: "A coach demonstrates a skill while explaining the key points. Which two are used?",
+        choices: [
+          "Manual and verbal",
+          "Visual and verbal",
+          "Visual and manual",
+          "Verbal and mechanical",
+        ],
+        accept: [
+          "Visual and verbal",
+        ],
+        answer: "Demonstrating is visual guidance and explaining is verbal guidance. Coaches often blend them so learners see the movement and hear the key points at the same time.",
+      },
     ],
     misconceptions: [
       {
@@ -6257,6 +7297,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Techniques such as deep breathing and visualisation help bring arousal and anxiety back towards the performer's optimum level.",
       },
+      {
+        question: "According to the inverted-U theory, what can too little arousal cause?",
+        choices: [
+          "Muscle tension",
+          "Rushed decisions",
+          "Slow reactions",
+          "Loss of technique",
+        ],
+        accept: [
+          "Slow reactions",
+        ],
+        answer: "Under-arousal leaves a performer flat, with a lack of focus and slow reactions. Tension, rushed decisions and lost technique come from too much arousal instead.",
+      },
+      {
+        question: "On an inverted-U graph, what goes on the vertical (y) axis?",
+        choices: [
+          "Performance",
+          "Arousal",
+          "Time",
+          "Heart rate",
+        ],
+        accept: [
+          "Performance",
+        ],
+        answer: "Performance goes on the vertical axis and arousal on the horizontal one, so the curve shows performance rising to a peak at optimum arousal, then falling.",
+      },
+      {
+        question: "A weightlifter shouts to psych up before a lift. What is he doing to his arousal?",
+        choices: [
+          "Lowering it",
+          "Keeping it steady",
+          "Hiding it",
+          "Raising it",
+        ],
+        accept: [
+          "Raising it",
+        ],
+        answer: "Psyching up raises arousal, which suits a gross, powerful skill like a weightlift. Lowering arousal would help a fine skill such as a golf putt or an archery shot.",
+      },
+      {
+        question: "Which of these is a sign that a performer is over-aroused?",
+        choices: [
+          "Frequent yawning",
+          "Tense muscles",
+          "Slumped posture",
+          "Slow heart rate",
+        ],
+        accept: [
+          "Tense muscles",
+        ],
+        answer: "Over-arousal brings muscle tension and a racing heart, which spoil control. Yawning, slumping and a slow heart rate point to a performer who is under-aroused.",
+      },
+      {
+        question: "What is an advantage of mental rehearsal over extra physical practice?",
+        choices: [
+          "Builds muscle strength",
+          "Improves stamina",
+          "No physical tiredness",
+          "Raises arousal fast",
+        ],
+        accept: [
+          "No physical tiredness",
+        ],
+        answer: "Mental rehearsal reinforces the correct movement in memory and builds confidence without tiring the body, so it can be done just before competing. It builds no strength.",
+      },
     ],
     misconceptions: [
       {
@@ -6603,6 +7708,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Extrinsic",
         ],
         answer: "Praise comes from someone else, so it is extrinsic even though it is not a physical prize. Intrinsic motivation would be the performer's own enjoyment.",
+      },
+      {
+        question: "Which is a typical weakness of an extrovert performer?",
+        choices: [
+          "Dislikes teamwork",
+          "Prefers training alone",
+          "Gets bored easily",
+          "Avoids attention",
+        ],
+        accept: [
+          "Gets bored easily",
+        ],
+        answer: "Extroverts seek excitement and stimulation, so they can get bored and lose concentration in slow, repetitive tasks. Preferring to be alone is typical of introverts.",
+      },
+      {
+        question: "Which is the best definition of personality?",
+        choices: [
+          "Our unique traits",
+          "A learned sports skill",
+          "A level of fitness",
+          "A natural ability",
+        ],
+        accept: [
+          "Our unique traits",
+        ],
+        answer: "Personality is the set of characteristics that make a person unique and shape how they behave. A natural ability, like balance, is a separate idea from personality.",
+      },
+      {
+        question: "What is motivation?",
+        choices: [
+          "A state of alertness",
+          "A natural ability",
+          "A learned skill",
+          "The drive to succeed",
+        ],
+        accept: [
+          "The drive to succeed",
+        ],
+        answer: "Motivation is the drive to succeed or the desire to achieve something. A state of alertness and readiness is arousal, which is easy to mix up with motivation.",
+      },
+      {
+        question: "Applause from the crowd is which kind of extrinsic reward?",
+        choices: [
+          "Tangible",
+          "Intangible",
+          "Direct",
+          "Indirect",
+        ],
+        accept: [
+          "Intangible",
+        ],
+        answer: "Applause is an intangible extrinsic reward because it cannot be touched or kept. A tangible reward is physical, such as a trophy, medal or prize money.",
+      },
+      {
+        question: "Which trait helps many introverts in precision sports such as archery?",
+        choices: [
+          "Seeking excitement",
+          "Good concentration",
+          "Love of team contact",
+          "Need for high arousal",
+        ],
+        accept: [
+          "Good concentration",
+        ],
+        answer: "Introverts tend to be calm and reserved, and good at concentrating, which suits precise, low-arousal skills. Seeking excitement and high arousal are extrovert traits.",
       },
     ],
     misconceptions: [
@@ -6969,6 +8139,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Accessibility",
         ],
         answer: "Accessibility includes how easily people can get to a facility. Better transport links make it easier to reach, especially for people without a car.",
+      },
+      {
+        question: "Which term means treating someone unfairly because of their race, gender or disability?",
+        choices: [
+          "Stereotyping",
+          "Provision",
+          "Discrimination",
+          "Segregation",
+        ],
+        accept: [
+          "Discrimination",
+        ],
+        answer: "Discrimination is unfair treatment, such as being refused entry to a club. Stereotyping is an unfair assumption about a group, which can lead to discrimination.",
+      },
+      {
+        question: "A child takes up tennis because both parents play it. Which factor is this?",
+        choices: [
+          "Family",
+          "Peers",
+          "Provision",
+          "Accessibility",
+        ],
+        accept: [
+          "Family",
+        ],
+        answer: "Family influence: parents who play can introduce a sport, pay for kit and fees, and give lifts. Peers are friends of a similar age, not parents.",
+      },
+      {
+        question: "Taster sessions that let people try a new sport mainly improve which factor?",
+        choices: [
+          "Leisure time",
+          "Role models",
+          "Familiarity",
+          "Stereotyping",
+        ],
+        accept: [
+          "Familiarity",
+        ],
+        answer: "Trying a sport helps people learn its rules and culture, so it feels less unfamiliar or intimidating to join. Leisure time is simply the free time a person has.",
+      },
+      {
+        question: "A leisure centre adds a crèche. Which barrier does this mainly reduce?",
+        choices: [
+          "Cost of equipment",
+          "Family commitments",
+          "Stereotyping",
+          "Lack of role models",
+        ],
+        accept: [
+          "Family commitments",
+        ],
+        answer: "A crèche looks after young children during a session, so parents whose childcare duties cut their free time can still take part. It does not change equipment costs.",
+      },
+      {
+        question: "Single-sex sessions with female staff mainly remove which barrier for some women?",
+        choices: [
+          "Cost of entry",
+          "Transport links",
+          "Lack of free time",
+          "Religion and culture",
+        ],
+        accept: [
+          "Religion and culture",
+        ],
+        answer: "Some cultural and religious practices affect mixing or dress, so single-sex sessions with suitable changing let more women take part. They do not change cost or transport.",
       },
     ],
     misconceptions: [
@@ -7338,6 +8573,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Hawk-Eye uses cameras to track the ball and show whether it landed in or out. VAR and the TMO are video referees used in football and rugby.",
       },
+      {
+        question: "In the golden triangle, which part gives a sport the exposure that attracts sponsors?",
+        choices: [
+          "Sponsorship",
+          "The governing body",
+          "The media",
+          "The spectators",
+        ],
+        accept: [
+          "The media",
+        ],
+        answer: "The media broadcasts sport to large audiences, and that exposure is what sponsors pay for. Their money then helps the sport grow, so each side depends on the others.",
+      },
+      {
+        question: "Which form of media suits fans who are driving and cannot watch a match?",
+        choices: [
+          "Television",
+          "Radio",
+          "The press",
+          "Pay-per-view",
+        ],
+        accept: [
+          "Radio",
+        ],
+        answer: "Radio gives live commentary by sound alone, so it suits people travelling or working. Television needs you to watch, and the press reports after the event.",
+      },
+      {
+        question: "Adding tie-breaks to speed up matches for TV is an effect on which group?",
+        choices: [
+          "The sport",
+          "The spectator",
+          "The sponsor",
+          "The performer",
+        ],
+        accept: [
+          "The sport",
+        ],
+        answer: "Changing a sport's rules to suit television is an effect of commercialisation on the sport itself. The spectator effects include ticket prices and kick-off times.",
+      },
+      {
+        question: "Which technology do performers wear to track the distance they cover in training?",
+        choices: [
+          "Hawk-Eye",
+          "GPS trackers",
+          "Goal-line technology",
+          "Video replays",
+        ],
+        accept: [
+          "GPS trackers",
+        ],
+        answer: "GPS trackers, often worn in a vest, record distance, speed and workload to monitor fitness. Hawk-Eye and goal-line technology help officials make decisions instead.",
+      },
+      {
+        question: "What is the main risk to a company of sponsoring a performer?",
+        choices: [
+          "Too much exposure",
+          "Higher ticket prices",
+          "Scandal hurts brand",
+          "Unsociable kick-offs",
+        ],
+        accept: [
+          "Scandal hurts brand",
+        ],
+        answer: "If the performer behaves badly or performs poorly, the sponsor's brand can be damaged by the link. Ticket prices and kick-off times are effects on spectators.",
+      },
     ],
     misconceptions: [
       {
@@ -7696,6 +8996,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Bending the rules",
         ],
         answer: "Gamesmanship bends the rules to gain an edge, such as time-wasting, without actually breaking them. Breaking the written rules is cheating.",
+      },
+      {
+        question: "A cricket batter who knows they edged it walks off before the umpire decides. What is this?",
+        choices: [
+          "Gamesmanship",
+          "Deviance",
+          "Sportsmanship",
+          "Cheating",
+        ],
+        accept: [
+          "Sportsmanship",
+        ],
+        answer: "Walking when you know you are out is sportsmanship: being honest and fair even when it costs you, like admitting a missed foul. Gamesmanship would seek an unfair edge.",
+      },
+      {
+        question: "Spectators staying silent while a tennis player serves is an example of what?",
+        choices: [
+          "Etiquette",
+          "Gamesmanship",
+          "Deviance",
+          "Contract to compete",
+        ],
+        accept: [
+          "Etiquette",
+        ],
+        answer: "Etiquette is the unwritten code of polite behaviour expected by tradition. No rule makes tennis crowds stay quiet during a serve, but it is the accepted convention.",
+      },
+      {
+        question: "A fielder secretly scuffing the cricket ball to help it swing is an example of what?",
+        choices: [
+          "Gamesmanship",
+          "Etiquette",
+          "Sportsmanship",
+          "Cheating",
+        ],
+        accept: [
+          "Cheating",
+        ],
+        answer: "Ball tampering breaks the written laws of cricket, so it is cheating. Gamesmanship stays within the rules, such as deliberately delaying a restart to unsettle someone.",
+      },
+      {
+        question: "Deliberately losing a match in return for money is known as what?",
+        choices: [
+          "Time-wasting",
+          "Match-fixing",
+          "Gamesmanship",
+          "Etiquette",
+        ],
+        accept: [
+          "Match-fixing",
+        ],
+        answer: "Match-fixing means arranging a result in advance, often for money. It breaks the contract to compete completely, because one side is not genuinely trying to win.",
+      },
+      {
+        question: "A cyclist taking banned EPO to win is showing which behaviour?",
+        choices: [
+          "Etiquette",
+          "Gamesmanship",
+          "Sportsmanship",
+          "Deviance",
+        ],
+        accept: [
+          "Deviance",
+        ],
+        answer: "Doping is deviance: behaviour that breaks sport's rules and moral standards. Gamesmanship stays within the written rules, whereas doping breaks them outright.",
       },
     ],
     misconceptions: [
@@ -8059,6 +9424,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Doping means using banned drugs or methods to improve performance. Altitude training, vitamins and carbo-loading are all legal ways to prepare.",
       },
+      {
+        question: "Growth hormone belongs to which category of banned substance?",
+        choices: [
+          "Anabolic agents",
+          "Stimulants",
+          "Peptide hormones",
+          "Diuretics",
+        ],
+        accept: [
+          "Peptide hormones",
+        ],
+        answer: "Growth hormone is a peptide hormone, like EPO. It increases muscle and tissue growth, which is why students often confuse it with anabolic agents such as steroids.",
+      },
+      {
+        question: "Diuretics work by making the body produce more of what?",
+        choices: [
+          "Urine",
+          "Sweat",
+          "Red blood cells",
+          "Testosterone",
+        ],
+        accept: [
+          "Urine",
+        ],
+        answer: "Diuretics make the body pass more urine, so fluid is lost quickly. This cuts weight and dilutes urine to hide other drugs, but risks dehydration and cramp.",
+      },
+      {
+        question: "Anabolic steroids copy the effects of which natural hormone?",
+        choices: [
+          "Adrenaline",
+          "Testosterone",
+          "Insulin",
+          "EPO",
+        ],
+        accept: [
+          "Testosterone",
+        ],
+        answer: "Anabolic steroids mimic testosterone, the male sex hormone that builds muscle. Adrenaline is the hormone that raises heart rate in the fight-or-flight response.",
+      },
+      {
+        question: "Morphine belongs to which category of banned substance?",
+        choices: [
+          "Stimulants",
+          "Beta blockers",
+          "Anabolic agents",
+          "Narcotic analgesics",
+        ],
+        accept: [
+          "Narcotic analgesics",
+        ],
+        answer: "Morphine is a narcotic analgesic, a powerful painkiller. It can let a performer compete through injury, but blocking pain risks making that injury far worse.",
+      },
+      {
+        question: "Amphetamines belong to which category of banned substance?",
+        choices: [
+          "Narcotic analgesics",
+          "Stimulants",
+          "Diuretics",
+          "Peptide hormones",
+        ],
+        accept: [
+          "Stimulants",
+        ],
+        answer: "Amphetamines are stimulants: they speed up the central nervous system, raising alertness and reducing tiredness. Narcotic analgesics are painkillers instead.",
+      },
     ],
     misconceptions: [
       {
@@ -8412,6 +9842,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Hooliganism",
         ],
         answer: "Intense rivalry, sometimes linked to local or historic tension, can spill over into violence between fans, which is why derby matches are often high-risk.",
+      },
+      {
+        question: "Fans turning violent after a loss or a poor refereeing call links to which cause?",
+        choices: [
+          "Rivalry",
+          "Frustration",
+          "Gang culture",
+          "Masculinity",
+        ],
+        accept: [
+          "Frustration",
+        ],
+        answer: "Frustration with results or refereeing can boil over into violence in the moment. Rivalry is a feud between clubs built up over years, not a reaction to one match.",
+      },
+      {
+        question: "Organised groups of fans who plan fights with rivals link to which cause of hooliganism?",
+        choices: [
+          "Frustration",
+          "Alcohol",
+          "Gang culture",
+          "Atmosphere",
+        ],
+        accept: [
+          "Gang culture",
+        ],
+        answer: "Gang culture, where organised groups arrange violence, is a recognised cause of hooliganism. Frustration is an unplanned reaction to events during a match.",
+      },
+      {
+        question: "Stopping known troublemakers from going to away games is which strategy?",
+        choices: [
+          "Segregation",
+          "All-seater stadia",
+          "Early kick-offs",
+          "Travel restrictions",
+        ],
+        accept: [
+          "Travel restrictions",
+        ],
+        answer: "Travel restrictions stop known troublemakers travelling to away or overseas matches. Segregation keeps rival fans apart inside and around the ground instead.",
+      },
+      {
+        question: "Which strategy uses campaigns to change fans' attitudes over the long term?",
+        choices: [
+          "Segregation",
+          "Education",
+          "Banning orders",
+          "Early kick-offs",
+        ],
+        accept: [
+          "Education",
+        ],
+        answer: "Education campaigns aim to tackle the causes of hooliganism by changing how fans think. Segregation and banning orders control fans rather than change their attitudes.",
+      },
+      {
+        question: "A large crowd helps attract more sponsors mainly by increasing what?",
+        choices: [
+          "Ticket prices",
+          "Home advantage",
+          "Media interest",
+          "Segregation",
+        ],
+        accept: [
+          "Media interest",
+        ],
+        answer: "A big crowd makes an event more attractive to broadcasters, and the extra media exposure is what sponsors pay for. Home advantage helps the team, not the sponsor.",
       },
     ],
     misconceptions: [
@@ -8775,6 +10270,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "The sternum is the breastbone, which joins the ribs at the front to protect the heart and lungs. The scapula is the shoulder blade and the clavicle the collarbone.",
       },
+      {
+        question: "Which type of joint is found in the neck, between the atlas and axis?",
+        choices: [
+          "Hinge",
+          "Pivot",
+          "Condyloid",
+          "Ball and socket",
+        ],
+        accept: [
+          "Pivot",
+        ],
+        answer: "A pivot joint allows rotation only, as when you shake your head. A hinge, like the elbow, allows only flexion and extension.",
+      },
+      {
+        question: "Which type of joint is the wrist?",
+        choices: [
+          "Condyloid",
+          "Pivot",
+          "Hinge",
+          "Ball and socket",
+        ],
+        accept: [
+          "Condyloid",
+        ],
+        answer: "The wrist is condyloid: it allows flexion, extension, abduction, adduction and circumduction, but no true rotation like a ball and socket joint.",
+      },
+      {
+        question: "Which tissue attaches a muscle to a bone?",
+        choices: [
+          "Ligament",
+          "Cartilage",
+          "Synovial membrane",
+          "Tendon",
+        ],
+        accept: [
+          "Tendon",
+        ],
+        answer: "A tendon joins muscle to bone, so the muscle's pull moves the bone. A ligament is the tissue that joins bone to bone.",
+      },
+      {
+        question: "Which bone is the long thigh bone?",
+        choices: [
+          "Tibia",
+          "Fibula",
+          "Femur",
+          "Humerus",
+        ],
+        accept: [
+          "Femur",
+        ],
+        answer: "The femur is the thigh bone, the longest in the body. The tibia and fibula are in the lower leg, and the humerus is in the upper arm.",
+      },
+      {
+        question: "Which bone is the shoulder blade?",
+        choices: [
+          "Clavicle",
+          "Scapula",
+          "Sternum",
+          "Humerus",
+        ],
+        accept: [
+          "Scapula",
+        ],
+        answer: "The scapula is the flat shoulder blade at the back. The clavicle is the collarbone at the front, and the sternum is the breastbone.",
+      },
     ],
     misconceptions: [
       {
@@ -9135,6 +10695,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "The gluteals in the buttocks extend the hip, pushing the leg back. The hip flexors do the opposite, lifting the knee forward and up.",
       },
+      {
+        question: "Type IIa muscle fibres are best described as what?",
+        choices: [
+          "Fast oxidative",
+          "Fast glycolytic",
+          "Slow oxidative",
+          "Slow glycolytic",
+        ],
+        accept: [
+          "Fast oxidative",
+        ],
+        answer: "Type IIa fibres are fast oxidative: fairly quick and fairly fatigue-resistant, suiting a 1500m. Type IIx are fast glycolytic and tire quickly.",
+      },
+      {
+        question: "Pushing up in a press-up, which muscle is the agonist at the elbow?",
+        choices: [
+          "Biceps",
+          "Deltoid",
+          "Pectorals",
+          "Triceps",
+        ],
+        accept: [
+          "Triceps",
+        ],
+        answer: "Pushing up extends the elbow, so the triceps shortens as the agonist while the biceps relaxes. The pectorals work at the shoulder, not the elbow.",
+      },
+      {
+        question: "Which muscle covers the upper back and the back of the neck?",
+        choices: [
+          "Latissimus dorsi",
+          "Deltoid",
+          "Trapezius",
+          "Pectorals",
+        ],
+        accept: [
+          "Trapezius",
+        ],
+        answer: "The trapezius runs across the upper back and neck. The latissimus dorsi is the large muscle lower down the back, and the deltoid caps the shoulder.",
+      },
+      {
+        question: "Which muscles lie across the front of the chest?",
+        choices: [
+          "Abdominals",
+          "Pectorals",
+          "Trapezius",
+          "Latissimus dorsi",
+        ],
+        accept: [
+          "Pectorals",
+        ],
+        answer: "The pectorals cover the chest and drive the arms in a chest press. The abdominals are lower, on the front of the trunk.",
+      },
+      {
+        question: "Concentric and eccentric contractions are both types of which contraction?",
+        choices: [
+          "Isotonic",
+          "Isometric",
+          "Static",
+          "Involuntary",
+        ],
+        accept: [
+          "Isotonic",
+        ],
+        answer: "Both are isotonic: the muscle changes length under tension, shortening (concentric) or lengthening (eccentric). Isometric means no change in length.",
+      },
     ],
     misconceptions: [
       {
@@ -9492,6 +11117,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Muscles",
         ],
         answer: "Muscles pulling on bones provide the effort. The bones act as the lever arms and the joints are the fulcrums.",
+      },
+      {
+        question: "Which plane divides the body into front and back halves?",
+        choices: [
+          "Sagittal plane",
+          "Transverse plane",
+          "Diagonal plane",
+          "Frontal plane",
+        ],
+        accept: [
+          "Frontal plane",
+        ],
+        answer: "The frontal plane splits the body into front and back, so side-to-side moves like a cartwheel happen in it. The sagittal plane splits left and right.",
+      },
+      {
+        question: "When running forwards, about which axis do the legs swing?",
+        choices: [
+          "Sagittal axis",
+          "Vertical axis",
+          "Frontal axis",
+          "Diagonal axis",
+        ],
+        accept: [
+          "Frontal axis",
+        ],
+        answer: "Running is forward and backward movement in the sagittal plane, which pairs with the frontal axis. The sagittal axis pairs with the frontal plane.",
+      },
+      {
+        question: "A third class lever always has a mechanical advantage of what?",
+        choices: [
+          "More than 1",
+          "Less than 1",
+          "Exactly 1",
+          "It varies",
+        ],
+        accept: [
+          "Less than 1",
+        ],
+        answer: "Its effort arm is shorter than its load arm, so the mechanical advantage is below 1: a big effort moves a small load, but far and fast.",
+      },
+      {
+        question: "Which axis runs from head to toe through the body?",
+        choices: [
+          "Vertical axis",
+          "Sagittal axis",
+          "Frontal axis",
+          "Diagonal axis",
+        ],
+        accept: [
+          "Vertical axis",
+        ],
+        answer: "The vertical (longitudinal) axis runs head to toe, so spins and twists turn about it in the transverse plane. The frontal axis runs side to side.",
+      },
+      {
+        question: "Which part of a second class lever sits in the middle?",
+        choices: [
+          "Effort",
+          "Fulcrum",
+          "Axis",
+          "Load",
+        ],
+        accept: [
+          "Load",
+        ],
+        answer: "In a second class lever the load is in the middle, as in a calf raise. Remember 1-2-3 = F-L-E: fulcrum, load, effort in the middle.",
       },
     ],
     misconceptions: [
@@ -9870,6 +11560,71 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
           "Platelets",
         ],
         answer: "Platelets clump together to clot the blood and seal a wound. Red blood cells carry oxygen, white blood cells fight infection and plasma carries everything.",
+      },
+      {
+        question: "Which vessel brings oxygenated blood from the lungs back to the heart?",
+        choices: [
+          "Pulmonary artery",
+          "Vena cava",
+          "Pulmonary vein",
+          "Aorta",
+        ],
+        accept: [
+          "Pulmonary vein",
+        ],
+        answer: "The pulmonary vein carries oxygenated blood from the lungs into the left atrium. The pulmonary artery carries deoxygenated blood the other way.",
+      },
+      {
+        question: "Which valve lies between the right atrium and the right ventricle?",
+        choices: [
+          "Bicuspid",
+          "Tricuspid",
+          "Semilunar",
+          "Aortic",
+        ],
+        accept: [
+          "Tricuspid",
+        ],
+        answer: "The tricuspid valve separates the right atrium and right ventricle. The bicuspid valve does the same job on the left side of the heart.",
+      },
+      {
+        question: "What is the main job of white blood cells?",
+        choices: [
+          "Fighting infection",
+          "Carrying oxygen",
+          "Clotting blood",
+          "Carrying nutrients",
+        ],
+        accept: [
+          "Fighting infection",
+        ],
+        answer: "White blood cells fight infection. Red blood cells carry oxygen on haemoglobin, platelets clot the blood and plasma carries nutrients.",
+      },
+      {
+        question: "Which blood vessels carry blood at the highest pressure?",
+        choices: [
+          "Veins",
+          "Capillaries",
+          "Venules",
+          "Arteries",
+        ],
+        accept: [
+          "Arteries",
+        ],
+        answer: "Arteries carry blood away from the heart under high pressure, so they have thick muscular walls. Veins carry low-pressure blood and need valves.",
+      },
+      {
+        question: "Which part of the blood is the liquid that carries the cells around?",
+        choices: [
+          "Platelets",
+          "Haemoglobin",
+          "Plasma",
+          "Red blood cells",
+        ],
+        accept: [
+          "Plasma",
+        ],
+        answer: "Plasma is the liquid part of blood, carrying cells, nutrients, carbon dioxide and heat. Platelets are cell fragments that help blood clot.",
       },
     ],
     misconceptions: [

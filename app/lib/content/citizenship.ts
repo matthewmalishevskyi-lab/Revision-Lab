@@ -373,6 +373,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "New citizens attend a citizenship ceremony, where they make an oath or affirmation and a pledge to respect the UK's rights, freedoms and laws.",
       },
+      {
+        question: "What is it called when a person legally holds the nationality of more than one country?",
+        choices: [
+          "Naturalisation",
+          "Dual citizenship",
+          "Assimilation",
+          "Integration",
+        ],
+        accept: [
+          "Dual citizenship",
+        ],
+        answer: "Dual citizenship means holding two nationalities at once, which the UK allows. Naturalisation is the process of becoming a citizen, not holding two.",
+      },
+      {
+        question: "In the Windrush scandal, how were many long-settled residents wrongly treated?",
+        choices: [
+          "As asylum seekers",
+          "As tourists",
+          "As illegal immigrants",
+          "As dual citizens",
+        ],
+        accept: [
+          "As illegal immigrants",
+        ],
+        answer: "Many had every right to live here but lacked papers to prove it, so some were wrongly denied work or healthcare, or detained. It came to light in 2018.",
+      },
+      {
+        question: "Why did Britain recruit workers from the Caribbean after the Second World War?",
+        choices: [
+          "Overpopulation",
+          "Falling exports",
+          "A housing surplus",
+          "Labour shortages",
+        ],
+        accept: [
+          "Labour shortages",
+        ],
+        answer: "Britain needed workers to rebuild after the war, so many people came to work in places such as the NHS and on public transport.",
+      },
+      {
+        question: "Which 1951 UN treaty sets out who should be protected after fleeing persecution?",
+        choices: [
+          "Geneva Conventions",
+          "Refugee Convention",
+          "Human Rights Act",
+          "Rights of the Child",
+        ],
+        accept: [
+          "Refugee Convention",
+        ],
+        answer: "The 1951 Refugee Convention defines a refugee as someone fleeing persecution. The Geneva Conventions are the 1949 rules for conduct in war.",
+      },
+      {
+        question: "What is the term for a person's sense of who they are and where they belong?",
+        choices: [
+          "Identity",
+          "Nationality",
+          "Citizenship",
+          "Residency",
+        ],
+        accept: [
+          "Identity",
+        ],
+        answer: "Identity is how you see yourself, shaped by family, faith, place and more. Nationality and citizenship are legal statuses, not feelings.",
+      },
     ],
     misconceptions: [
       {
@@ -752,6 +817,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Pregnancy",
         ],
         answer: "Pregnancy and maternity is one of the nine protected characteristics. Height, hair colour and where you live are not protected by the Act.",
+      },
+      {
+        question: "If an Act of Parliament conflicts with Convention rights, what can a senior UK court do?",
+        choices: [
+          "Cancel the Act",
+          "Say it is incompatible",
+          "Suspend the Act",
+          "Fine the government",
+        ],
+        accept: [
+          "Say it is incompatible",
+        ],
+        answer: "It can issue a declaration of incompatibility. Parliament is sovereign, so the Act stays in force until Parliament decides to change it.",
+      },
+      {
+        question: "Under the Equality Act 2010, which is lawful to help an under-represented group into jobs?",
+        choices: [
+          "Hiring only from it",
+          "Turning others away",
+          "Paying it more",
+          "Encouraging applicants",
+        ],
+        accept: [
+          "Encouraging applicants",
+        ],
+        answer: "Positive action, such as encouraging people from the group to apply, is lawful. Choosing people mainly because of a protected characteristic generally is not.",
+      },
+      {
+        question: "Which right covers joining others to protest peacefully in public?",
+        choices: [
+          "Freedom of assembly",
+          "Freedom of expression",
+          "Freedom of thought",
+          "Right to liberty",
+        ],
+        accept: [
+          "Freedom of assembly",
+        ],
+        answer: "Freedom of peaceful assembly (Article 11) covers protests and meetings. It is a qualified right, so police can impose conditions on a protest.",
+      },
+      {
+        question: "What is treating someone badly because they made a discrimination complaint called?",
+        choices: [
+          "Harassment",
+          "Direct discrimination",
+          "Victimisation",
+          "Positive action",
+        ],
+        accept: [
+          "Victimisation",
+        ],
+        answer: "Victimisation is unlawful under the Equality Act 2010. Harassment is unwanted behaviour linked to a protected characteristic that violates someone's dignity.",
+      },
+      {
+        question: "What are rights that exist only because a country's laws grant them called?",
+        choices: [
+          "Human rights",
+          "Moral rights",
+          "Absolute rights",
+          "Legal rights",
+        ],
+        accept: [
+          "Legal rights",
+        ],
+        answer: "Legal rights come from a country's laws and can be changed by its parliament. Human rights belong to everyone simply for being human.",
       },
     ],
     misconceptions: [
@@ -1133,6 +1263,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Under PACE you can get free legal advice, for example from a duty solicitor, and have someone told that you have been arrested.",
       },
+      {
+        question: "What is money a civil court orders the losing side to pay the claimant called?",
+        choices: [
+          "Damages",
+          "A fine",
+          "Bail",
+          "A caution",
+        ],
+        accept: [
+          "Damages",
+        ],
+        answer: "Damages compensate the claimant for their loss. A fine is a criminal punishment paid to the state, not to the other party.",
+      },
+      {
+        question: "Which court hears most civil claims, such as debts and faulty work, in England and Wales?",
+        choices: [
+          "The Crown Court",
+          "The county court",
+          "The youth court",
+          "The Supreme Court",
+        ],
+        accept: [
+          "The county court",
+        ],
+        answer: "County courts handle most civil cases. The Crown Court deals with serious criminal trials, and the Supreme Court only hears appeals.",
+      },
+      {
+        question: "Which court usually hears appeals against Crown Court convictions?",
+        choices: [
+          "The Supreme Court",
+          "The High Court",
+          "A magistrates' court",
+          "The Court of Appeal",
+        ],
+        accept: [
+          "The Court of Appeal",
+        ],
+        answer: "The Court of Appeal (Criminal Division) hears them. Only cases raising a point of law of general public importance go on to the Supreme Court.",
+      },
+      {
+        question: "What is releasing a suspect before trial, often with conditions, called?",
+        choices: [
+          "Remand",
+          "Parole",
+          "Bail",
+          "Probation",
+        ],
+        accept: [
+          "Bail",
+        ],
+        answer: "Bail lets someone wait for trial at home, perhaps with a curfew. Remand means being held in custody instead; parole is early release after a sentence.",
+      },
+      {
+        question: "Without an extension, how long can police usually hold someone before charging them?",
+        choices: [
+          "12 hours",
+          "24 hours",
+          "48 hours",
+          "7 days",
+        ],
+        accept: [
+          "24 hours",
+        ],
+        answer: "The usual limit is 24 hours. A senior officer can extend it to 36 hours, and magistrates up to 96 hours for serious offences.",
+      },
     ],
     misconceptions: [
       {
@@ -1511,6 +1706,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Councillors",
         ],
         answer: "Councillors are elected locally to run council services like bins and libraries. MPs sit in the Commons and peers in the Lords.",
+      },
+      {
+        question: "At which stage do MPs first debate the main principles of a bill?",
+        choices: [
+          "First reading",
+          "Second reading",
+          "Report stage",
+          "Third reading",
+        ],
+        accept: [
+          "Second reading",
+        ],
+        answer: "First reading is just a formal introduction with no debate. The main debate on the bill's principles comes at second reading.",
+      },
+      {
+        question: "In which building does the Scottish Parliament sit?",
+        choices: [
+          "Stormont",
+          "Westminster",
+          "Holyrood",
+          "The Senedd",
+        ],
+        accept: [
+          "Holyrood",
+        ],
+        answer: "The Scottish Parliament sits at Holyrood in Edinburgh. Stormont houses the Northern Ireland Assembly, and the Senedd building is in Cardiff Bay.",
+      },
+      {
+        question: "Under the Parliament Acts, for about how long can the Lords delay most bills?",
+        choices: [
+          "About one month",
+          "About five years",
+          "About ten years",
+          "About one year",
+        ],
+        accept: [
+          "About one year",
+        ],
+        answer: "The Lords can delay most bills by about a year, after which the Commons can pass them alone. For money bills the delay is only one month.",
+      },
+      {
+        question: "In the UK constitution, what is a 'convention'?",
+        choices: [
+          "An unwritten rule",
+          "An Act of Parliament",
+          "A court ruling",
+          "A party agreement",
+        ],
+        accept: [
+          "An unwritten rule",
+        ],
+        answer: "Conventions are customs followed even though no law requires them, such as the monarch always giving royal assent to bills Parliament has passed.",
+      },
+      {
+        question: "What are the senior Church of England bishops who sit in the House of Lords called?",
+        choices: [
+          "Lords Temporal",
+          "Lords Spiritual",
+          "Life peers",
+          "Law Lords",
+        ],
+        accept: [
+          "Lords Spiritual",
+        ],
+        answer: "The 26 Lords Spiritual are Church of England bishops. Lords Temporal are all the other members, and the Law Lords moved to the Supreme Court in 2009.",
       },
     ],
     misconceptions: [
@@ -1894,6 +2154,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Under First Past the Post you put one cross next to one candidate. Numbering candidates in order of preference is how STV works.",
       },
+      {
+        question: "Which independent body regulates political parties' funding and spending in the UK?",
+        choices: [
+          "Boundary Commission",
+          "Ofcom",
+          "Electoral Commission",
+          "The Cabinet Office",
+        ],
+        accept: [
+          "Electoral Commission",
+        ],
+        answer: "The Electoral Commission regulates party finance and oversees elections. The Boundary Commissions redraw constituency borders instead.",
+      },
+      {
+        question: "What is voting for your second choice, to stop a party you dislike winning, called?",
+        choices: [
+          "Proxy voting",
+          "Postal voting",
+          "Protest voting",
+          "Tactical voting",
+        ],
+        accept: [
+          "Tactical voting",
+        ],
+        answer: "Tactical voting is common under First Past the Post. A protest vote is a different idea: backing a party mainly to send a message.",
+      },
+      {
+        question: "What is a ballot paper that can't be counted, for example because it is marked wrongly?",
+        choices: [
+          "A spoilt ballot",
+          "A proxy vote",
+          "A postal vote",
+          "An abstention",
+        ],
+        accept: [
+          "A spoilt ballot",
+        ],
+        answer: "A spoilt (rejected) ballot is not counted. Some voters spoil papers on purpose as a protest; an abstention means not voting at all.",
+      },
+      {
+        question: "What is it called when no party wins a majority of seats in the Commons?",
+        choices: [
+          "A coalition",
+          "A hung parliament",
+          "A landslide",
+          "A safe seat",
+        ],
+        accept: [
+          "A hung parliament",
+        ],
+        answer: "A hung parliament is the election result. A coalition or a minority government is what may be formed afterwards.",
+      },
+      {
+        question: "What is the longest a UK Parliament can last before an election must be held?",
+        choices: [
+          "Four years",
+          "Six years",
+          "Seven years",
+          "Five years",
+        ],
+        accept: [
+          "Five years",
+        ],
+        answer: "A Parliament is dissolved automatically five years after it first met, so an election must follow. The Prime Minister can call one earlier.",
+      },
     ],
     misconceptions: [
       {
@@ -2271,6 +2596,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Reaches many quickly",
         ],
         answer: "Social media can spread a message to many people fast and cheaply. Sources can be hard to check, it reaches far beyond locals, and campaigns still need planning.",
+      },
+      {
+        question: "In a SMART aim, what does the M stand for?",
+        choices: [
+          "Meaningful",
+          "Manageable",
+          "Measurable",
+          "Motivating",
+        ],
+        accept: [
+          "Measurable",
+        ],
+        answer: "M is for Measurable: you can check whether the aim was met, for example with a before-and-after survey. S is Specific and T is Time-bound.",
+      },
+      {
+        question: "Which survey question gives people a fixed set of answers to choose from?",
+        choices: [
+          "A closed question",
+          "An open question",
+          "A leading question",
+          "A rhetorical question",
+        ],
+        accept: [
+          "A closed question",
+        ],
+        answer: "Closed questions give data you can count and compare. Open questions let people answer in their own words, which is richer but harder to total.",
+      },
+      {
+        question: "What is openly and peacefully breaking a law you believe is unjust called?",
+        choices: [
+          "Advocacy",
+          "Civil disobedience",
+          "Lobbying",
+          "A boycott",
+        ],
+        accept: [
+          "Civil disobedience",
+        ],
+        answer: "Civil disobedience, such as a sit-in, is still illegal and can lead to arrest. Lobbying and advocacy work within the law.",
+      },
+      {
+        question: "When a council asks residents for their views before deciding, what is this called?",
+        choices: [
+          "A referendum",
+          "A by-election",
+          "A petition",
+          "A consultation",
+        ],
+        accept: [
+          "A consultation",
+        ],
+        answer: "In a consultation the council gathers views but still makes the decision itself. In a referendum, voters decide the question directly.",
+      },
+      {
+        question: "Which kind of survey question pushes people towards a particular answer?",
+        choices: [
+          "A closed question",
+          "A leading question",
+          "An open question",
+          "A rating question",
+        ],
+        accept: [
+          "A leading question",
+        ],
+        answer: "A leading question, like 'Don't you agree litter is awful?', biases the results. Good surveys use neutral wording so the evidence is fair.",
       },
     ],
     misconceptions: [
@@ -2654,6 +3044,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "Ministers sit on the front bench facing their shadows. MPs without a post are backbenchers; cross benches are in the Lords.",
       },
+      {
+        question: "Which Cabinet minister leads the UK's relations with other countries?",
+        choices: [
+          "Home Secretary",
+          "Foreign Secretary",
+          "Chancellor",
+          "Defence Secretary",
+        ],
+        accept: [
+          "Foreign Secretary",
+        ],
+        answer: "The Foreign Secretary runs the Foreign, Commonwealth and Development Office. The Home Secretary covers policing and immigration at home.",
+      },
+      {
+        question: "Which senior civil servant runs a government department day to day?",
+        choices: [
+          "Secretary of State",
+          "Chief Whip",
+          "Permanent Secretary",
+          "Cabinet Secretary",
+        ],
+        accept: [
+          "Permanent Secretary",
+        ],
+        answer: "The Permanent Secretary is a politically neutral official. The Secretary of State is the minister in charge, who sets policy and answers to Parliament.",
+      },
+      {
+        question: "What word describes Parliament closely examining and checking the government's work?",
+        choices: [
+          "Scrutiny",
+          "Devolution",
+          "Prorogation",
+          "Royal assent",
+        ],
+        accept: [
+          "Scrutiny",
+        ],
+        answer: "Scrutiny happens through PMQs, select committees and debates. Prorogation is the formal end of a parliamentary session.",
+      },
+      {
+        question: "By modern convention, which chamber must the Prime Minister sit in?",
+        choices: [
+          "House of Lords",
+          "Either chamber",
+          "Neither chamber",
+          "House of Commons",
+        ],
+        accept: [
+          "House of Commons",
+        ],
+        answer: "The PM must be an MP because they need the confidence of the elected Commons. No PM has governed from the Lords since 1902; Douglas-Home gave up his peerage in 1963.",
+      },
+      {
+        question: "What is it called when the Prime Minister changes which ministers hold which jobs?",
+        choices: [
+          "A dissolution",
+          "A reshuffle",
+          "A coalition",
+          "A by-election",
+        ],
+        accept: [
+          "A reshuffle",
+        ],
+        answer: "A reshuffle uses the PM's power to appoint and sack ministers. Dissolution ends a Parliament so that a general election can take place.",
+      },
     ],
     misconceptions: [
       {
@@ -3034,6 +3489,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Check other sources",
         ],
         answer: "Checking reliable independent sources shows whether a claim stands up. Likes and trending only show popularity, not truth.",
+      },
+      {
+        question: "What is a court order that can stop a newspaper publishing a story called?",
+        choices: [
+          "A warrant",
+          "A subpoena",
+          "An injunction",
+          "A caution",
+        ],
+        accept: [
+          "An injunction",
+        ],
+        answer: "Injunctions are often used to protect privacy or a fair trial. A super-injunction even bans reporting that the order exists.",
+      },
+      {
+        question: "Which inquiry examined press ethics after the phone-hacking scandal?",
+        choices: [
+          "Leveson Inquiry",
+          "Chilcot Inquiry",
+          "Scarman Report",
+          "Macpherson Report",
+        ],
+        accept: [
+          "Leveson Inquiry",
+        ],
+        answer: "The Leveson Inquiry reported in 2012. Chilcot examined the Iraq War, and Macpherson looked at the police after Stephen Lawrence's murder.",
+      },
+      {
+        question: "Which 2023 law makes social media firms protect users from illegal and harmful content?",
+        choices: [
+          "Data Protection Act",
+          "Communications Act",
+          "Computer Misuse Act",
+          "Online Safety Act",
+        ],
+        accept: [
+          "Online Safety Act",
+        ],
+        answer: "The Online Safety Act 2023 gave Ofcom power to regulate big platforms. The Data Protection Act is about how personal data is handled.",
+      },
+      {
+        question: "What is a video altered with AI to show someone saying things they never said?",
+        choices: [
+          "A meme",
+          "A deepfake",
+          "Clickbait",
+          "A filter bubble",
+        ],
+        accept: [
+          "A deepfake",
+        ],
+        answer: "Deepfakes are a growing source of disinformation. A filter bubble is when algorithms mostly show you content you already agree with.",
+      },
+      {
+        question: "Which part of a newspaper openly gives the paper's own opinion?",
+        choices: [
+          "The front page",
+          "A news report",
+          "The letters page",
+          "The editorial",
+        ],
+        accept: [
+          "The editorial",
+        ],
+        answer: "The editorial (or 'leader') is the newspaper's own view. News reports are meant to present facts, and the letters page shows readers' opinions.",
       },
     ],
     misconceptions: [
@@ -3416,6 +3936,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "Member states",
         ],
         answer: "The UN has no standing army, so member states volunteer troops, the 'blue helmets'. NATO is a separate alliance.",
+      },
+      {
+        question: "Which UN court settles legal disputes between states rather than trying individuals?",
+        choices: [
+          "The ICJ",
+          "The ICC",
+          "The ECtHR",
+          "The WTO",
+        ],
+        accept: [
+          "The ICJ",
+        ],
+        answer: "The International Court of Justice settles disputes between countries. The ICC, also in The Hague, tries individuals for crimes such as genocide.",
+      },
+      {
+        question: "What is the title of the person who heads the United Nations' staff?",
+        choices: [
+          "President",
+          "Secretary-General",
+          "High Commissioner",
+          "Chancellor",
+        ],
+        accept: [
+          "Secretary-General",
+        ],
+        answer: "The Secretary-General leads the UN Secretariat and is appointed by the General Assembly on the Security Council's recommendation, so a veto can block a candidate.",
+      },
+      {
+        question: "In which UN body does every member state have one equal vote?",
+        choices: [
+          "Security Council",
+          "Secretariat",
+          "General Assembly",
+          "Human Rights Council",
+        ],
+        accept: [
+          "General Assembly",
+        ],
+        answer: "Every member state sits in the General Assembly with one vote. The Security Council has fifteen members, and only the five permanent ones have a veto.",
+      },
+      {
+        question: "In which year did the UK formally leave the European Union?",
+        choices: [
+          "2016",
+          "2019",
+          "2021",
+          "2020",
+        ],
+        accept: [
+          "2020",
+        ],
+        answer: "The UK voted to leave in the 2016 referendum and left on 31 January 2020. The transition period then ran until the end of 2020.",
+      },
+      {
+        question: "In international trade, what is a tariff?",
+        choices: [
+          "A limit on imports",
+          "A tax on imports",
+          "A subsidy to farmers",
+          "A loan to a country",
+        ],
+        accept: [
+          "A tax on imports",
+        ],
+        answer: "A tariff is a tax on imported goods, which makes them dearer. A limit on the amount that can be imported is called a quota.",
       },
     ],
     misconceptions: [
@@ -3801,6 +4386,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "APR is the yearly cost of borrowing including interest and fees, so a higher APR means you pay back more. It lets you compare loans fairly.",
       },
+      {
+        question: "What is a tax that takes a larger share of income from poorer people called?",
+        choices: [
+          "Progressive",
+          "Regressive",
+          "Proportional",
+          "Direct",
+        ],
+        accept: [
+          "Regressive",
+        ],
+        answer: "A regressive tax hits lower earners harder as a share of their income; VAT is often given as an example. A progressive tax does the opposite.",
+      },
+      {
+        question: "Which tax may be charged on the money and property someone leaves when they die?",
+        choices: [
+          "Capital gains tax",
+          "Stamp Duty",
+          "Inheritance tax",
+          "Council tax",
+        ],
+        accept: [
+          "Inheritance tax",
+        ],
+        answer: "Inheritance tax is charged on an estate above a tax-free threshold. Capital gains tax is on the profit when you sell something that has risen in value.",
+      },
+      {
+        question: "What is a benefit paid only to people below a certain income or savings level called?",
+        choices: [
+          "Universal",
+          "Contributory",
+          "Progressive",
+          "Means-tested",
+        ],
+        accept: [
+          "Means-tested",
+        ],
+        answer: "Universal Credit is means-tested, so it depends on income and savings. A universal benefit is paid to everyone who qualifies, whatever their income.",
+      },
+      {
+        question: "Under the Consumer Rights Act 2015, how long do you have to reject faulty goods for a refund?",
+        choices: [
+          "14 days",
+          "30 days",
+          "7 days",
+          "90 days",
+        ],
+        accept: [
+          "30 days",
+        ],
+        answer: "The short-term right to reject lasts 30 days. The 14-day period is a different right: cancelling most things bought online.",
+      },
+      {
+        question: "Which tax raises the most money for the UK government each year?",
+        choices: [
+          "VAT",
+          "Council tax",
+          "Income tax",
+          "Corporation tax",
+        ],
+        accept: [
+          "Income tax",
+        ],
+        answer: "Income tax is the largest single source of government revenue. Council tax is collected by local councils to fund local services.",
+      },
     ],
     misconceptions: [
       {
@@ -4183,6 +4833,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
         ],
         answer: "A defendant on remand is kept in custody until trial. Bail is the opposite: being released until trial, sometimes with conditions.",
       },
+      {
+        question: "Which aim of sentencing means the offender paying back the victim or the community?",
+        choices: [
+          "Retribution",
+          "Deterrence",
+          "Reparation",
+          "Rehabilitation",
+        ],
+        accept: [
+          "Reparation",
+        ],
+        answer: "Reparation might mean unpaid work or compensation. Retribution is the punishment the offender deserves for what they did.",
+      },
+      {
+        question: "What is the most senior officer in most police forces in England and Wales called?",
+        choices: [
+          "Chief Inspector",
+          "Chief Constable",
+          "Superintendent",
+          "Sergeant",
+        ],
+        accept: [
+          "Chief Constable",
+        ],
+        answer: "Most forces are led by a Chief Constable; the Metropolitan Police is led by a Commissioner. A Chief Inspector is a much lower rank.",
+      },
+      {
+        question: "Which body investigates serious complaints about the police in England and Wales?",
+        choices: [
+          "The CPS",
+          "IPSO",
+          "The Parole Board",
+          "The IOPC",
+        ],
+        accept: [
+          "The IOPC",
+        ],
+        answer: "The Independent Office for Police Conduct investigates serious complaints. The CPS decides on prosecutions, and IPSO handles complaints about the press.",
+      },
+      {
+        question: "What does a victim personal statement let a victim tell the court?",
+        choices: [
+          "How it affected them",
+          "What sentence to give",
+          "Who the offender is",
+          "Why it happened",
+        ],
+        accept: [
+          "How it affected them",
+        ],
+        answer: "It shows the court the crime's impact before sentencing. The victim cannot choose the sentence; that is for the judge or magistrates.",
+      },
+      {
+        question: "What sentence must a court give an adult convicted of murder?",
+        choices: [
+          "Ten years in prison",
+          "A suspended sentence",
+          "Life imprisonment",
+          "A community order",
+        ],
+        accept: [
+          "Life imprisonment",
+        ],
+        answer: "Murder carries a mandatory life sentence. The judge sets a minimum term before parole can be considered, and any release is on licence for life.",
+      },
     ],
     misconceptions: [
       {
@@ -4558,6 +5273,71 @@ export const CITIZENSHIP: Record<string, TopicContent> = {
           "The legislature",
         ],
         answer: "The government proposes bills, but Parliament, the legislature, makes the law. Mixing up the two is a common way to lose marks.",
+      },
+      {
+        question: "Which command word asks you to give the features of something, without saying why?",
+        choices: [
+          "Explain",
+          "Describe",
+          "Evaluate",
+          "Justify",
+        ],
+        accept: [
+          "Describe",
+        ],
+        answer: "Describe means saying what something is like. Explain goes further, giving reasons why, using links such as 'because'.",
+      },
+      {
+        question: "Which command word asks for both similarities and differences?",
+        choices: [
+          "Contrast",
+          "Describe",
+          "Identify",
+          "Compare",
+        ],
+        accept: [
+          "Compare",
+        ],
+        answer: "Compare covers similarities and differences, such as between two voting systems. Contrast focuses only on the differences.",
+      },
+      {
+        question: "In a 'discuss' answer, what is a point that challenges the view in the question called?",
+        choices: [
+          "A conclusion",
+          "A counter-argument",
+          "A definition",
+          "A summary",
+        ],
+        accept: [
+          "A counter-argument",
+        ],
+        answer: "A counter-argument shows the other side, which a balanced answer needs. The conclusion comes at the end and weighs both sides up.",
+      },
+      {
+        question: "What do examiners credit when you use words like 'devolution' accurately?",
+        choices: [
+          "Source provenance",
+          "Supported conclusion",
+          "Balanced argument",
+          "Specialist terminology",
+        ],
+        accept: [
+          "Specialist terminology",
+        ],
+        answer: "Accurate specialist terms show precise knowledge. Provenance is about who made a source, when and why, which matters only in source questions.",
+      },
+      {
+        question: "What is an answer that considers points for and against before judging called?",
+        choices: [
+          "A balanced argument",
+          "A supported claim",
+          "A source analysis",
+          "A developed point",
+        ],
+        accept: [
+          "A balanced argument",
+        ],
+        answer: "A balanced argument considers both sides fairly. It should then end with a supported conclusion: a clear judgement backed by reasons.",
       },
     ],
     misconceptions: [

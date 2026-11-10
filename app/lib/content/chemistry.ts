@@ -752,6 +752,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Rutherford, with Geiger and Marsden, fired alpha particles at gold foil, leading to the nuclear model. Thomson found the electron, Bohr the shells and Chadwick the neutron.",
       },
+      {
+        question: "Which scientist described atoms as tiny solid spheres that could not be divided?",
+        choices: [
+          "Thomson",
+          "Dalton",
+          "Bohr",
+          "Chadwick",
+        ],
+        accept: [
+          "Dalton",
+        ],
+        answer: "Dalton's solid sphere model came first. Thomson then found the electron and proposed the plum pudding model; Bohr added shells and Chadwick the neutron.",
+      },
     ],
     misconceptions: [
       {
@@ -1475,6 +1488,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Iodine",
         ],
         answer: "Melting and boiling points rise going down group 7. Fluorine and chlorine are gases, bromine is a red-brown liquid and iodine is a dark grey solid.",
+      },
+      {
+        question: "Going down group 1, what happens to the melting points?",
+        choices: [
+          "They increase",
+          "They decrease",
+          "They stay the same",
+          "They rise then fall",
+        ],
+        accept: [
+          "They decrease",
+        ],
+        answer: "Alkali metals melt at lower temperatures further down the group: lithium about 180 °C, caesium just above room temperature. Halogens show the opposite trend.",
       },
     ],
     misconceptions: [
@@ -2211,6 +2237,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Each nitrogen atom has 5 outer electrons and needs 3 more, so the two atoms share three pairs. O₂ has a double bond, while Cl₂ and H₂ have single bonds.",
       },
+      {
+        question: "What type of structure does silicon dioxide (sand) have?",
+        choices: [
+          "Simple molecular",
+          "Giant ionic",
+          "Giant covalent",
+          "Metallic",
+        ],
+        accept: [
+          "Giant covalent",
+        ],
+        answer: "Silicon dioxide is a giant covalent lattice, so it has a very high melting point. It is not ionic: silicon and oxygen are both non-metals.",
+      },
     ],
     misconceptions: [
       {
@@ -2937,6 +2976,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "High tensile strength",
         ],
         answer: "Nanotubes are cylinders of strongly bonded carbon, so they are very strong for their mass, e.g. in tennis rackets. Soft and slippery describes graphite's layers.",
+      },
+      {
+        question: "Which form of carbon is used to tip cutting tools and drills?",
+        choices: [
+          "Graphite",
+          "Graphene",
+          "Fullerene",
+          "Diamond",
+        ],
+        accept: [
+          "Diamond",
+        ],
+        answer: "Diamond is extremely hard because each carbon forms four strong covalent bonds. Graphite is soft, as its layers slide, so it is used as a lubricant instead.",
       },
     ],
     misconceptions: [
@@ -3665,6 +3717,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Water from ink",
         ],
         answer: "Simple distillation boils off a liquid from a dissolved solid. Sand needs filtering, dyes need chromatography, and petrol from diesel needs fractional distillation.",
+      },
+      {
+        question: "During crystallisation, which piece of apparatus holds the heated solution?",
+        choices: [
+          "Evaporating basin",
+          "Filter funnel",
+          "Burette",
+          "Gas syringe",
+        ],
+        accept: [
+          "Evaporating basin",
+        ],
+        answer: "The solution is warmed in a shallow evaporating basin so water evaporates, then left to cool and crystallise. A filter funnel is for removing insoluble solids.",
       },
     ],
     misconceptions: [
@@ -4444,6 +4509,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Two molecules",
         ],
         answer: "A number in front multiplies the whole formula, so 2H₂O is two water molecules (4 H atoms, 2 O atoms). The small subscript 2 is what gives each molecule two hydrogens.",
+      },
+      {
+        question: "Which ion has the formula CO₃²⁻?",
+        choices: [
+          "Sulfate",
+          "Nitrate",
+          "Carbonate",
+          "Hydroxide",
+        ],
+        accept: [
+          "Carbonate",
+        ],
+        answer: "CO₃²⁻ is carbonate: one carbon, three oxygens and a 2− charge, as in CaCO₃. Sulfate is SO₄²⁻, nitrate is NO₃⁻ and hydroxide is OH⁻.",
       },
     ],
     misconceptions: [
@@ -5277,6 +5355,20 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Concentration = mass of solute (g) ÷ volume of solution (dm³). Dividing by a mass would not give g/dm³, so always convert the volume into dm³ first.",
       },
+      {
+        question: "About how many molecules are in 2 moles of water?",
+        choices: [
+          "6.0 × 10²³",
+          "1.2 × 10²⁴",
+          "3.0 × 10²³",
+          "2.0 × 10²³",
+        ],
+        accept: [
+          "1.2 × 10²⁴",
+        ],
+        answer: "One mole holds 6.02 × 10²³ particles (Avogadro's constant), so two moles hold twice that: about 12 × 10²³, written as 1.2 × 10²⁴.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -6062,6 +6154,20 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Phenolphthalein is colourless in acid and pink in alkali, so in a titration the pink colour vanishes at the end point. Red in acid is methyl orange or litmus.",
       },
+      {
+        question: "A strong and a weak acid have equal concentrations. Which has the higher pH?",
+        choices: [
+          "The strong acid",
+          "The weak acid",
+          "Both the same",
+          "Depends on volume",
+        ],
+        accept: [
+          "The weak acid",
+        ],
+        answer: "A weak acid only partly ionises, so it releases fewer H⁺ ions at the same concentration. Fewer H⁺ ions means a higher pH. Volume does not change pH.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -6797,6 +6903,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Zinc",
         ],
         answer: "Zinc is above hydrogen, so it fizzes with dilute acid, but it is not reactive enough for cold water. Sodium and potassium react with both; copper reacts with neither.",
+      },
+      {
+        question: "In the rusting experiment, why is calcium chloride put in one tube?",
+        choices: [
+          "To absorb oxygen",
+          "To speed up rusting",
+          "To absorb water",
+          "To coat the nail",
+        ],
+        accept: [
+          "To absorb water",
+        ],
+        answer: "Calcium chloride is a drying agent: it removes water from the air, so the nail has oxygen but no water and does not rust.",
       },
     ],
     misconceptions: [
@@ -7580,6 +7699,20 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "A few water molecules ionise into H⁺ and OH⁻, so a solution has these ions as well as the salt's. That is why hydrogen or oxygen can form instead of the metal or non-metal.",
       },
+      {
+        question: "Complete the half equation 2H⁺ + __e⁻ → H₂. How many electrons?",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "Two H⁺ ions carry two positive charges, so two electrons are gained to make one neutral H₂ molecule. Gaining electrons is reduction, at the cathode.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -8344,6 +8477,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Overall energy change",
         ],
         answer: "The difference in height between reactants and products is the overall energy change. Activation energy is from the reactants up to the peak of the curve.",
+      },
+      {
+        question: "Which of these reactions takes in energy from the surroundings?",
+        choices: [
+          "Burning methane",
+          "Citric acid + NaHCO₃",
+          "Magnesium + acid",
+          "Iron rusting",
+        ],
+        accept: [
+          "Citric acid + NaHCO₃",
+        ],
+        answer: "Citric acid reacting with sodium hydrogencarbonate is endothermic, so the mixture gets colder. Combustion, metals with acid and rusting are all exothermic.",
       },
     ],
     misconceptions: [
@@ -9138,6 +9284,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Carbon dioxide is made and escapes from the open flask, so the balance reading falls. Dissolving or using up acid moves atoms around but keeps them in the flask.",
       },
+      {
+        question: "A reaction runs twice as fast. What happens to the time it takes?",
+        choices: [
+          "It doubles",
+          "It halves",
+          "It stays the same",
+          "It quarters",
+        ],
+        accept: [
+          "It halves",
+        ],
+        answer: "Rate is proportional to 1 ÷ time, so doubling the rate halves the time. That is why 1 ÷ time is used as the rate in the disappearing-cross method.",
+      },
     ],
     misconceptions: [
       {
@@ -9886,6 +10045,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Hydrogen is mainly made from natural gas (methane). The nitrogen comes from the air, which contains almost no hydrogen gas.",
       },
+      {
+        question: "Which of these is a reversible reaction?",
+        choices: [
+          "Burning methane",
+          "Magnesium + acid",
+          "Heating NH₄Cl",
+          "Iron rusting",
+        ],
+        accept: [
+          "Heating NH₄Cl",
+        ],
+        answer: "Ammonium chloride splits into ammonia and hydrogen chloride when heated, and they recombine when cooled. The others cannot easily be undone.",
+      },
     ],
     misconceptions: [
       {
@@ -10613,6 +10785,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Bitumen has the longest chains, so it is thick and sticky and leaves the bottom of the column. Petrol, kerosene and diesel are runnier fuels with shorter chains.",
       },
+      {
+        question: "Yeast fermenting sugar produces which alcohol?",
+        choices: [
+          "Methanol",
+          "Ethanol",
+          "Propanol",
+          "Butanol",
+        ],
+        accept: [
+          "Ethanol",
+        ],
+        answer: "Fermentation of sugar by yeast gives ethanol, C₂H₅OH, and carbon dioxide. Methanol has only one carbon atom and is toxic to drink.",
+      },
     ],
     misconceptions: [
       {
@@ -11323,6 +11508,20 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Ester link",
         ],
         answer: "A diol and a dicarboxylic acid join by ester links, losing water each time. Peptide links join amino acids in proteins, and the C=C double bond is used up in addition polymers.",
+        higherOnly: true,
+      },
+      {
+        question: "How many –OH groups does a diol monomer have?",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "'Di' means two: a diol has an –OH group at each end, so it can link in both directions with a dicarboxylic acid to make a polyester chain.",
         higherOnly: true,
       },
     ],
@@ -12047,6 +12246,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Halide ions come from group 7: Cl⁻, Br⁻ and I⁻. They are tested with acidified silver nitrate. OH⁻ is hydroxide, SO₄²⁻ is sulfate and CO₃²⁻ is carbonate.",
       },
+      {
+        question: "Why is hydrochloric acid added before barium chloride in the sulfate test?",
+        choices: [
+          "To make it alkaline",
+          "To remove carbonates",
+          "To add chloride ions",
+          "To colour the solid",
+        ],
+        accept: [
+          "To remove carbonates",
+        ],
+        answer: "Carbonate ions would also give a white precipitate with barium chloride. The acid reacts them away first, so a white precipitate can only mean sulfate.",
+      },
     ],
     misconceptions: [
       {
@@ -12760,6 +12972,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "Like Mars and Venus today, the early atmosphere was thought to be mostly carbon dioxide with little or no oxygen. Jupiter, Saturn and Neptune are mostly hydrogen and helium.",
       },
+      {
+        question: "Limestone formed mainly from the remains of what?",
+        choices: [
+          "Ancient forests",
+          "Volcanic lava",
+          "Shells and skeletons",
+          "Desert sand",
+        ],
+        accept: [
+          "Shells and skeletons",
+        ],
+        answer: "Limestone is mostly calcium carbonate from the shells and skeletons of sea creatures, which locked up carbon dioxide. Coal formed from ancient forests.",
+      },
     ],
     misconceptions: [
       {
@@ -13470,6 +13695,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         ],
         answer: "High-grade copper ores are running out, so these methods get copper from low-grade ores. Aluminium and sodium are extracted by electrolysis, iron with carbon.",
       },
+      {
+        question: "Brass is an alloy of copper and which other metal?",
+        choices: [
+          "Tin",
+          "Iron",
+          "Zinc",
+          "Lead",
+        ],
+        accept: [
+          "Zinc",
+        ],
+        answer: "Brass is copper with zinc, used for fittings and instruments. Bronze is the copper alloy with tin, so the two are easy to mix up.",
+      },
     ],
     misconceptions: [
       {
@@ -14115,6 +14353,19 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "0.10 cm³",
         ],
         answer: "Concordant titres agree to within 0.10 cm³, and you average only those. A burette reads to 0.05 cm³, so titres 1 cm³ apart show a mistake and need repeating.",
+      },
+      {
+        question: "When reading a burette, which part of the liquid surface do you read?",
+        choices: [
+          "Top of meniscus",
+          "Bottom of meniscus",
+          "Middle of meniscus",
+          "Edge of the liquid",
+        ],
+        accept: [
+          "Bottom of meniscus",
+        ],
+        answer: "For clear solutions you read the bottom of the curved meniscus, with your eye level with it. Reading from above or below gives a parallax error.",
       },
     ],
     misconceptions: [

@@ -773,6 +773,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Heating raises the water's temperature, so energy goes into its thermal store. The water is not moving as a whole, so its kinetic store hardly changes.",
       },
+      {
+        question: "Energy passes from a battery to a lamp along wires. Which pathway is this?",
+        choices: [
+          "Heating",
+          "Electrical work",
+          "Mechanical work",
+          "Radiation",
+        ],
+        accept: [
+          "Electrical work",
+        ],
+        answer: "A current in a circuit transfers energy by electrical work. Mechanical work is done by forces moving objects; heating is due to a temperature difference.",
+      },
     ],
     misconceptions: [
       {
@@ -1529,6 +1542,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Biofuel is burned, so it gives off CO₂, but the plants took in that CO₂ as they grew. Wind, tidal and hydroelectric turn turbines directly and burn nothing.",
       },
+      {
+        question: "Water held behind a hydroelectric dam stores energy in which store?",
+        choices: [
+          "Chemical store",
+          "Gravitational store",
+          "Nuclear store",
+          "Elastic store",
+        ],
+        accept: [
+          "Gravitational store",
+        ],
+        answer: "Raised water has gravitational potential energy. As it falls through the turbines this becomes kinetic energy, which turns the generators.",
+      },
     ],
     misconceptions: [
       {
@@ -2271,6 +2297,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Its internal energy",
         ],
         answer: "Heating always adds to the particles' energy, so internal energy rises. During a change of state the temperature stays the same, because the energy goes into breaking bonds.",
+      },
+      {
+        question: "Raising a gas's temperature increases which property of its particles?",
+        choices: [
+          "Mean mass",
+          "Mean speed",
+          "Mean size",
+          "Total number",
+        ],
+        accept: [
+          "Mean speed",
+        ],
+        answer: "Temperature is linked to the average kinetic energy of the particles, so they move faster. Their mass, size and number do not change.",
       },
     ],
     misconceptions: [
@@ -3020,6 +3059,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "W = mg, so doubling the mass doubles the weight in the same gravitational field. Volume does not decide weight: a big balloon can weigh less than a small stone.",
       },
+      {
+        question: "Which force pushes up on a book resting on a table?",
+        choices: [
+          "Weight",
+          "Friction",
+          "Normal contact force",
+          "Upthrust",
+        ],
+        accept: [
+          "Normal contact force",
+        ],
+        answer: "The table pushes up with a normal contact force, balancing the book's weight. Upthrust only acts on objects in a fluid; friction acts along surfaces.",
+      },
     ],
     misconceptions: [
       {
@@ -3768,6 +3820,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "You change the length of wire between the crocodile clips, then work out the resistance from the ammeter and voltmeter readings. Resistance is the dependent variable.",
       },
+      {
+        question: "A thermistor warms up while the p.d. across it stays the same. What happens to the current?",
+        choices: [
+          "It decreases",
+          "It increases",
+          "It stays the same",
+          "It reverses",
+        ],
+        accept: [
+          "It increases",
+        ],
+        answer: "A warmer thermistor has lower resistance. With the same p.d., I = V ÷ R, so a smaller R gives a bigger current.",
+      },
     ],
     misconceptions: [
       {
@@ -4508,6 +4573,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A neutron turns into a proton and a fast electron leaves. The total of protons plus neutrons is unchanged, so the mass number stays the same while the atomic number rises by 1.",
       },
+      {
+        question: "An electron drops to a lower energy level. What happens?",
+        choices: [
+          "It absorbs radiation",
+          "It emits radiation",
+          "It leaves the atom",
+          "It joins the nucleus",
+        ],
+        accept: [
+          "It emits radiation",
+        ],
+        answer: "Moving down an energy level gives out the energy difference as electromagnetic radiation. Absorbing radiation moves an electron up; losing it makes an ion.",
+      },
     ],
     misconceptions: [
       {
@@ -5245,6 +5323,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A thermistor's resistance rises as it gets colder, so it can trigger a heater. An LDR responds to light instead, and a diode only lets current flow one way.",
       },
+      {
+        question: "A plain rectangle in a circuit diagram is the symbol for which component?",
+        choices: [
+          "Fuse",
+          "Cell",
+          "Resistor",
+          "Switch",
+        ],
+        accept: [
+          "Resistor",
+        ],
+        answer: "A plain rectangle is a fixed resistor. A fuse is drawn as a rectangle with a line running through it, and a cell is a long line beside a short one.",
+      },
     ],
     misconceptions: [
       {
@@ -5979,6 +6070,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "0 V",
         ],
         answer: "The earth wire is at 0 V and carries current only if there is a fault. The live wire is at about 230 V; 50 is the mains frequency in hertz, not a voltage.",
+      },
+      {
+        question: "The earth wire is connected to which part of an appliance?",
+        choices: [
+          "Its plastic plug",
+          "Its metal casing",
+          "Its on-off switch",
+          "Its fuse",
+        ],
+        accept: [
+          "Its metal casing",
+        ],
+        answer: "The earth wire joins the metal case to earth. If the live wire touches the case, a big current flows to earth and the fuse in the live wire melts.",
       },
     ],
     misconceptions: [
@@ -6732,6 +6836,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "A straight line has a constant gradient, and the gradient is the speed, so the speed is steady. A curve shows speeding up or slowing down; a flat line means not moving.",
       },
+      {
+        question: "Roughly what is a typical speed for a car on a motorway, in m/s?",
+        choices: [
+          "3 m/s",
+          "30 m/s",
+          "100 m/s",
+          "300 m/s",
+        ],
+        accept: [
+          "30 m/s",
+        ],
+        answer: "Motorway speeds are about 30 m/s (roughly 70 mph). 3 m/s is a fast walk, and 300 m/s is close to the speed of sound.",
+      },
     ],
     misconceptions: [
       {
@@ -7480,6 +7597,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Momentum = mass × velocity, and the velocity is zero, so the momentum is zero however heavy it is. Its mass and inertia are still there; only the momentum is zero.",
         higherOnly: true,
+      },
+      {
+        question: "Carrying a heavy load makes a car's stopping distance longer. Which part increases?",
+        choices: [
+          "Braking distance",
+          "Thinking distance",
+          "Reaction time",
+          "Driver alertness",
+        ],
+        accept: [
+          "Braking distance",
+        ],
+        answer: "More mass needs more force to decelerate (F = ma), so with the same brakes it takes further to stop. Thinking distance depends on speed and reaction time only.",
       },
     ],
     misconceptions: [
@@ -8230,6 +8360,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Wavelength is the distance from a point on one wave to the same point on the next, such as compression to compression. Period is a time and frequency is waves per second.",
       },
+      {
+        question: "Water waves slow down as they enter shallow water. What happens to the wavelength?",
+        choices: [
+          "It gets longer",
+          "It stays the same",
+          "It gets shorter",
+          "It doubles",
+        ],
+        accept: [
+          "It gets shorter",
+        ],
+        answer: "The frequency stays the same, so from v = fλ a lower speed means a shorter wavelength. The waves bunch up closer together.",
+      },
     ],
     misconceptions: [
       {
@@ -8962,6 +9105,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "An absorber",
         ],
         answer: "EM waves carry energy from the source that emits them to whatever absorbs them, like sunlight warming skin. They need no medium and can cross a vacuum.",
+      },
+      {
+        question: "Which EM wave lies between radio waves and infrared in the spectrum?",
+        choices: [
+          "Visible light",
+          "Ultraviolet",
+          "Microwaves",
+          "X-rays",
+        ],
+        accept: [
+          "Microwaves",
+        ],
+        answer: "The order is radio, microwave, infrared, visible, ultraviolet, X-ray, gamma. Microwaves sit between radio waves and infrared.",
       },
     ],
     misconceptions: [
@@ -9703,6 +9859,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "More pressure at depth",
         ],
         answer: "Pressure in a liquid increases with depth, because there is more water above pushing down. So the bottom of the dam takes the greatest force and needs the most strength.",
+      },
+      {
+        question: "How many pascals are in 1 kPa?",
+        choices: [
+          "100",
+          "1,000",
+          "10",
+          "1,000,000",
+        ],
+        accept: [
+          "1,000",
+        ],
+        answer: "Kilo means a thousand, so 1 kPa = 1,000 Pa. Atmospheric pressure is about 100 kPa, which is 100,000 Pa. A million pascals is 1 MPa.",
       },
     ],
     misconceptions: [
@@ -10451,6 +10620,20 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer: "Magnetic flux density B is measured in tesla (T), as in F = BIl. The newton is the unit of the force produced, the coulomb is charge and the ohm is resistance.",
         higherOnly: true,
       },
+      {
+        question: "In Fleming's left-hand rule, what does the second finger represent?",
+        choices: [
+          "Field",
+          "Force",
+          "Current",
+          "Voltage",
+        ],
+        accept: [
+          "Current",
+        ],
+        answer: "Thumb = motion (force), first finger = field, second finger = current. The three are held at right angles to each other.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -11190,6 +11373,20 @@ export const PHYSICS: Record<string, TopicContent> = {
         answer: "Momentum is a vector, so direction matters: motion opposite to the positive direction gives negative momentum. That sign is what makes momentum add to zero in an explosion.",
         higherOnly: true,
       },
+      {
+        question: "A 10 N resultant force acts on a trolley for 2 s. What is its change in momentum?",
+        choices: [
+          "5 kg m/s",
+          "20 kg m/s",
+          "12 kg m/s",
+          "0.2 kg m/s",
+        ],
+        accept: [
+          "20 kg m/s",
+        ],
+        answer: "Force = change in momentum ÷ time, so change in momentum = force × time = 10 × 2 = 20 kg m/s. Dividing instead gives the wrong 5.",
+        higherOnly: true,
+      },
     ],
     misconceptions: [
       {
@@ -11912,6 +12109,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "Several hundred years",
         ],
         answer: "A smoke alarm must keep working for years, so it uses a long half-life source such as americium-241 (about 430 years). A short half-life would fade within days.",
+      },
+      {
+        question: "Which radiation is used to sterilise syringes already sealed in their packs?",
+        choices: [
+          "Alpha particles",
+          "Beta particles",
+          "Gamma rays",
+          "Neutrons",
+        ],
+        accept: [
+          "Gamma rays",
+        ],
+        answer: "Gamma rays pass straight through the packaging and kill microbes inside. Alpha is stopped by paper and beta by thin aluminium. Irradiation does not make them radioactive.",
       },
     ],
     misconceptions: [
@@ -12649,6 +12859,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "Gravity always pulls towards the centre of the Earth, at right angles to the motion. It changes the satellite's direction, not its speed, so the velocity keeps changing.",
       },
+      {
+        question: "A light year is a unit of what?",
+        choices: [
+          "Time",
+          "Distance",
+          "Speed",
+          "Brightness",
+        ],
+        accept: [
+          "Distance",
+        ],
+        answer: "A light year is the distance light travels in one year, about 9.5 × 10¹⁵ m. Despite the name, it measures distance, not time.",
+      },
     ],
     misconceptions: [
       {
@@ -13362,6 +13585,19 @@ export const PHYSICS: Record<string, TopicContent> = {
         ],
         answer: "The signal generator drives the vibration generator, so you set the frequency on it. The masses over the pulley set the tension, and the metre rule measures the wavelength.",
       },
+      {
+        question: "In the force and acceleration practical, what provides the accelerating force?",
+        choices: [
+          "Light gates",
+          "Hanging masses",
+          "Ticker timers",
+          "Metre rules",
+        ],
+        accept: [
+          "Hanging masses",
+        ],
+        answer: "Masses hanging over a pulley pull the trolley; their weight is the accelerating force. Light gates and ticker timers only measure the motion.",
+      },
     ],
     misconceptions: [
       {
@@ -14001,6 +14237,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "One thousandth",
         ],
         answer: "Milli means one thousandth (× 10⁻³), so 250 mA is 0.25 A. Micro (μ) is one millionth, kilo is a thousand times and mega is a million times.",
+      },
+      {
+        question: "What does the prefix nano (n) mean?",
+        choices: [
+          "One millionth",
+          "One billion",
+          "One billionth",
+          "One thousandth",
+        ],
+        accept: [
+          "One billionth",
+        ],
+        answer: "Nano means × 10⁻⁹, a billionth, as in nanometres. Micro is a millionth (× 10⁻⁶), milli a thousandth, and giga is a billion (× 10⁹).",
       },
     ],
     misconceptions: [

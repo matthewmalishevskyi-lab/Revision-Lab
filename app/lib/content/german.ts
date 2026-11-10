@@ -412,6 +412,45 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Der Nachname (or Familienname) is your surname. Der Vorname is your first name, der Spitzname is a nickname and das Alter is age.",
       },
+      {
+        question: "Which form of the German verb sein completes 'Du ___ sehr nett.'?",
+        choices: [
+          "bin",
+          "ist",
+          "bist",
+          "seid",
+        ],
+        accept: [
+          "bist",
+        ],
+        answer: "Du bist means 'you are' (informal, one person). Ich bin is 'I am', er/sie ist is 'he/she is' and ihr seid is 'you are' to a group of friends.",
+      },
+      {
+        question: "Which German phrase is the formal way to say 'goodbye'?",
+        choices: [
+          "Auf Wiedersehen",
+          "Tschüss",
+          "Bis bald",
+          "Gute Nacht",
+        ],
+        accept: [
+          "Auf Wiedersehen",
+        ],
+        answer: "Auf Wiedersehen is the polite, formal goodbye. Tschüss is the casual one, Bis bald means 'see you soon' and Gute Nacht is 'good night'.",
+      },
+      {
+        question: "Which number is 'zwölf' in German?",
+        choices: [
+          "Twenty",
+          "Twelve",
+          "Eleven",
+          "Two",
+        ],
+        accept: [
+          "Twelve",
+        ],
+        answer: "Zwölf is twelve. Don't mix it up with zwei (two), elf (eleven) or zwanzig (twenty).",
+      },
     ],
     misconceptions: [
       {
@@ -770,6 +809,45 @@ export const GERMAN: Record<string, TopicContent> = {
           "the grandson",
         ],
         answer: "Der Enkel is a grandson (die Enkelin is a granddaughter). A nephew is der Neffe and a male cousin is der Cousin or der Vetter.",
+      },
+      {
+        question: "Which German word completes 'Wie heißt ___ Schwester?' (your, informal)",
+        choices: [
+          "dein",
+          "deinen",
+          "deiner",
+          "deine",
+        ],
+        accept: [
+          "deine",
+        ],
+        answer: "Die Schwester is feminine and here it is the subject (nominative), so 'your' takes an -e: deine Schwester. Dein would only fit a masculine or neuter word like dein Bruder.",
+      },
+      {
+        question: "What does the German adjective 'faul' mean?",
+        choices: [
+          "Lazy",
+          "Loud",
+          "Rude",
+          "Moody",
+        ],
+        accept: [
+          "Lazy",
+        ],
+        answer: "Faul means lazy. Loud is laut, rude is unhöflich and moody is launisch.",
+      },
+      {
+        question: "What does the German sentence 'Er trägt eine Brille' mean?",
+        choices: [
+          "He has a beard",
+          "He wears glasses",
+          "He has freckles",
+          "He wears a hat",
+        ],
+        accept: [
+          "He wears glasses",
+        ],
+        answer: "Die Brille means glasses and tragen means to wear. A beard is der Bart, freckles are Sommersprossen and a hat is der Hut.",
       },
     ],
     misconceptions: [
@@ -1135,6 +1213,45 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Wandern means to hike or go walking in the countryside. Sailing is segeln, skiing is Ski fahren and dancing is tanzen.",
       },
+      {
+        question: "What does the German word 'selten' mean?",
+        choices: [
+          "Always",
+          "Often",
+          "Rarely",
+          "Usually",
+        ],
+        accept: [
+          "Rarely",
+        ],
+        answer: "Selten means rarely or seldom. Always is immer, often is oft and usually is normalerweise.",
+      },
+      {
+        question: "Which German word completes 'Ich spiele ___ Tennis als Golf.' (I prefer)",
+        choices: [
+          "gern",
+          "lieber",
+          "am liebsten",
+          "oft",
+        ],
+        accept: [
+          "lieber",
+        ],
+        answer: "Lieber means 'rather' and pairs with als (than) to compare two things. Gern is just 'like doing', and am liebsten is 'most of all', which doesn't go with als.",
+      },
+      {
+        question: "What does the German verb 'angeln' mean?",
+        choices: [
+          "To go sailing",
+          "To go climbing",
+          "To go riding",
+          "To go fishing",
+        ],
+        accept: [
+          "To go fishing",
+        ],
+        answer: "Angeln means to fish, as a hobby with a rod. Sailing is segeln, climbing is klettern and horse riding is reiten.",
+      },
     ],
     misconceptions: [
       {
@@ -1498,6 +1615,45 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Die Naturwissenschaften are the sciences, literally 'nature sciences'. Geography is Erdkunde, RE is Religion and PE is Sport.",
       },
+      {
+        question: "Which form of the German verb mögen completes 'Du ___ Kunst.'?",
+        choices: [
+          "magst",
+          "mag",
+          "mögt",
+          "mögen",
+        ],
+        accept: [
+          "magst",
+        ],
+        answer: "Du magst means 'you like'. Mögen changes its vowel in the singular: ich mag, du magst, er mag. Ihr mögt and wir mögen are the plural forms.",
+      },
+      {
+        question: "What is 'der Taschenrechner' in a German classroom?",
+        choices: [
+          "A pencil case",
+          "A calculator",
+          "A ruler",
+          "A rubber",
+        ],
+        accept: [
+          "A calculator",
+        ],
+        answer: "Der Taschenrechner is a calculator, literally a 'pocket calculator'. A pencil case is das Federmäppchen, a ruler is das Lineal and a rubber is der Radiergummi.",
+      },
+      {
+        question: "What does the German adjective 'einfach' mean about a school subject?",
+        choices: [
+          "Useful",
+          "Boring",
+          "Hard",
+          "Easy",
+        ],
+        accept: [
+          "Easy",
+        ],
+        answer: "Einfach means easy or simple, the opposite of schwierig (difficult). Useful is nützlich and boring is langweilig.",
+      },
     ],
     misconceptions: [
       {
@@ -1860,6 +2016,45 @@ export const GERMAN: Record<string, TopicContent> = {
           "the cellar",
         ],
         answer: "Der Keller is the cellar or basement, unten (downstairs). The attic is der Dachboden and the hallway is der Flur.",
+      },
+      {
+        question: "Which room is 'das Esszimmer' in a German house?",
+        choices: [
+          "The dining room",
+          "The kitchen",
+          "The bathroom",
+          "The hallway",
+        ],
+        accept: [
+          "The dining room",
+        ],
+        answer: "Das Esszimmer is the dining room, from essen (to eat) and das Zimmer (room). The kitchen is die Küche, the bathroom is das Badezimmer and the hallway is der Flur.",
+      },
+      {
+        question: "Which German reflexive pronoun completes 'Wir ziehen ___ an.'?",
+        choices: [
+          "sich",
+          "uns",
+          "euch",
+          "mich",
+        ],
+        accept: [
+          "uns",
+        ],
+        answer: "With wir the reflexive pronoun is uns: wir ziehen uns an (we get dressed). Euch goes with ihr, sich with er, sie or Sie, and mich with ich.",
+      },
+      {
+        question: "What does the German word 'zuletzt' mean in a routine?",
+        choices: [
+          "First",
+          "Finally",
+          "Then",
+          "Afterwards",
+        ],
+        accept: [
+          "Finally",
+        ],
+        answer: "Zuletzt means 'finally' or 'last of all', for the final step. First is zuerst, then is dann and afterwards is danach.",
       },
     ],
     misconceptions: [
@@ -2228,6 +2423,45 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Nehmen changes e to i and doubles the m: er nimmt. Nimmst is the du form and nehmt is the ihr form.",
       },
+      {
+        question: "Which is the 'du' form of the German verb werden?",
+        choices: [
+          "wird",
+          "wirst",
+          "werdest",
+          "wirdst",
+        ],
+        accept: [
+          "wirst",
+        ],
+        answer: "Werden is irregular: ich werde, du wirst, er wird. The d drops out in du wirst, so wirdst is a common mistake, and wird is the er/sie/es form.",
+      },
+      {
+        question: "Which form of the German verb spielen completes 'Ihr ___ gern Tennis.'?",
+        choices: [
+          "spielen",
+          "spielst",
+          "spiele",
+          "spielt",
+        ],
+        accept: [
+          "spielt",
+        ],
+        answer: "Ihr (you, plural informal) takes the -t ending: ihr spielt. Du takes -st, ich takes -e, and wir, sie and Sie take -en.",
+      },
+      {
+        question: "Which form of the German modal können completes 'Ihr ___ gut singen.'?",
+        choices: [
+          "könnt",
+          "können",
+          "kann",
+          "kannst",
+        ],
+        accept: [
+          "könnt",
+        ],
+        answer: "Ihr könnt means 'you (plural) can'. Kann is for ich and er/sie, kannst for du, and können for wir, sie and Sie. Singen goes to the end.",
+      },
     ],
     misconceptions: [
       {
@@ -2591,6 +2825,45 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Die Haltestelle is a bus or tram stop, from halten (to stop). The station is der Bahnhof and the crossroads is die Kreuzung.",
       },
+      {
+        question: "What does the German word 'das Schloss' mean in a town?",
+        choices: [
+          "The church",
+          "The castle",
+          "The tower",
+          "The bridge",
+        ],
+        accept: [
+          "The castle",
+        ],
+        answer: "Das Schloss is a castle or palace. The church is die Kirche, the tower is der Turm and the bridge is die Brücke.",
+      },
+      {
+        question: "What does the German weather phrase 'Es schneit' mean?",
+        choices: [
+          "It's raining",
+          "It's foggy",
+          "It's freezing",
+          "It's snowing",
+        ],
+        accept: [
+          "It's snowing",
+        ],
+        answer: "Es schneit means it's snowing, from der Schnee (snow). It's raining is es regnet, it's foggy is es ist neblig and it's freezing is es friert.",
+      },
+      {
+        question: "What does the German word 'gegenüber' mean in directions?",
+        choices: [
+          "Next to",
+          "Opposite",
+          "Behind",
+          "Between",
+        ],
+        accept: [
+          "Opposite",
+        ],
+        answer: "Gegenüber means opposite, as in gegenüber dem Bahnhof. Next to is neben, behind is hinter and between is zwischen.",
+      },
     ],
     misconceptions: [
       {
@@ -2953,6 +3226,45 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Der Flughafen is the airport, literally 'flight harbour'. Das Flugzeug is the plane and der Hafen on its own is a harbour or port.",
       },
+      {
+        question: "What is the past participle of the German verb schwimmen?",
+        choices: [
+          "geschwimmt",
+          "geschwommen",
+          "geschwammen",
+          "geschwimmen",
+        ],
+        accept: [
+          "geschwommen",
+        ],
+        answer: "Schwimmen is a strong verb, so it changes its vowel and ends in -en: ich bin geschwommen. Weak verbs end in -t, so geschwimmt is the common mistake.",
+      },
+      {
+        question: "What does the German word 'die Fähre' mean?",
+        choices: [
+          "The tram",
+          "The coach",
+          "The ferry",
+          "The bike",
+        ],
+        accept: [
+          "The ferry",
+        ],
+        answer: "Die Fähre is the ferry. The tram is die Straßenbahn, the coach is der Reisebus and the bike is das Fahrrad.",
+      },
+      {
+        question: "What does 'die Abfahrt' mean on a German train timetable?",
+        choices: [
+          "Arrival",
+          "Platform",
+          "Delay",
+          "Departure",
+        ],
+        accept: [
+          "Departure",
+        ],
+        answer: "Die Abfahrt is the departure, linked to abfahren (to leave). Arrival is die Ankunft, platform is das Gleis and a delay is die Verspätung.",
+      },
     ],
     misconceptions: [
       {
@@ -3306,6 +3618,45 @@ export const GERMAN: Record<string, TopicContent> = {
         ],
         answer: "Der Feuerwehrmann works for die Feuerwehr (fire brigade), so he is a firefighter. A police officer is der Polizist.",
       },
+      {
+        question: "Which job is 'der Krankenpfleger' in German?",
+        choices: [
+          "A nurse",
+          "A vet",
+          "A dentist",
+          "A pharmacist",
+        ],
+        accept: [
+          "A nurse",
+        ],
+        answer: "Der Krankenpfleger is a male nurse (die Krankenpflegerin for a woman). A vet is der Tierarzt, a dentist is der Zahnarzt and a pharmacist is der Apotheker.",
+      },
+      {
+        question: "What does the German word 'arbeitslos' mean?",
+        choices: [
+          "Self-employed",
+          "Unemployed",
+          "Part-time",
+          "Retired",
+        ],
+        accept: [
+          "Unemployed",
+        ],
+        answer: "Arbeitslos means unemployed, literally 'work-less'. Self-employed is selbstständig, part-time is Teilzeit and retired is in Rente.",
+      },
+      {
+        question: "Which German word means 'the boss' at work?",
+        choices: [
+          "der Kunde",
+          "der Kollege",
+          "der Chef",
+          "der Koch",
+        ],
+        accept: [
+          "der Chef",
+        ],
+        answer: "In German der Chef is the boss, not a cook. A cook is der Koch, a customer is der Kunde and a colleague is der Kollege.",
+      },
     ],
     misconceptions: [
       {
@@ -3653,6 +4004,45 @@ export const GERMAN: Record<string, TopicContent> = {
           "a message",
         ],
         answer: "Die Nachricht is a message; in the plural, die Nachrichten also means the news. A password is das Passwort and a screen is der Bildschirm.",
+      },
+      {
+        question: "What does the German word 'die Tastatur' mean?",
+        choices: [
+          "The keyboard",
+          "The screen",
+          "The mouse",
+          "The charger",
+        ],
+        accept: [
+          "The keyboard",
+        ],
+        answer: "Die Tastatur is the keyboard, from die Taste (key). The screen is der Bildschirm, the mouse is die Maus and the charger is das Ladegerät.",
+      },
+      {
+        question: "What is the comparative of the German adjective 'billig' (cheap)?",
+        choices: [
+          "am billigsten",
+          "mehr billig",
+          "billiger",
+          "billigerer",
+        ],
+        accept: [
+          "billiger",
+        ],
+        answer: "German adds -er to make a comparative: billig becomes billiger (cheaper). Am billigsten is the superlative, and German doesn't use mehr to make comparatives.",
+      },
+      {
+        question: "What does the German verb 'speichern' mean on a computer?",
+        choices: [
+          "To delete",
+          "To print",
+          "To save",
+          "To search",
+        ],
+        accept: [
+          "To save",
+        ],
+        answer: "Speichern means to save a file. To delete is löschen, to print is drucken and to search is suchen.",
       },
     ],
     misconceptions: [
@@ -4004,6 +4394,45 @@ export const GERMAN: Record<string, TopicContent> = {
           "getrunken",
         ],
         answer: "Trinken is a strong verb: ich habe getrunken. The vowel changes from i to u and the participle ends in -en, not -t.",
+      },
+      {
+        question: "What is the past participle of the German verb schreiben?",
+        choices: [
+          "geschreibt",
+          "geschrieben",
+          "geschriebt",
+          "schrieben",
+        ],
+        accept: [
+          "geschrieben",
+        ],
+        answer: "Schreiben is a strong verb, so ei changes to ie and it ends in -en: ich habe geschrieben. Weak verbs like machen are the ones that end in -t.",
+      },
+      {
+        question: "Which German simple past form of sein completes 'Ihr ___ sehr laut.'?",
+        choices: [
+          "war",
+          "warst",
+          "waren",
+          "wart",
+        ],
+        accept: [
+          "wart",
+        ],
+        answer: "Ihr wart means 'you (plural) were'. Ich and er use war, du uses warst, and wir, sie and Sie use waren.",
+      },
+      {
+        question: "Which of these German verbs takes sein in the perfect tense?",
+        choices: [
+          "kaufen",
+          "kommen",
+          "lesen",
+          "trinken",
+        ],
+        accept: [
+          "kommen",
+        ],
+        answer: "Kommen shows movement, so it takes sein: ich bin gekommen. Kaufen, lesen and trinken have an object and no movement, so they take haben.",
       },
     ],
     misconceptions: [
@@ -4361,6 +4790,45 @@ export const GERMAN: Record<string, TopicContent> = {
           "however",
         ],
         answer: "Jedoch means 'however', a formal alternative to aber. Therefore is deshalb, also is auch (außerdem means moreover) and although is obwohl.",
+      },
+      {
+        question: "In a German exam task, what does 'Beschreibe' tell you to do?",
+        choices: [
+          "Compare",
+          "Explain",
+          "Describe",
+          "Justify",
+        ],
+        accept: [
+          "Describe",
+        ],
+        answer: "Beschreibe means describe: say what something is like. Compare is vergleiche and explain is erkläre, which needs reasons.",
+      },
+      {
+        question: "What does the German phrase 'zum Schluss' mean in an essay?",
+        choices: [
+          "In conclusion",
+          "First of all",
+          "For example",
+          "However",
+        ],
+        accept: [
+          "In conclusion",
+        ],
+        answer: "Zum Schluss means 'in conclusion' or 'finally', to round off an answer. First of all is zuerst, for example is zum Beispiel and however is jedoch.",
+      },
+      {
+        question: "Which German word completes 'Nach ___ Schule gehe ich nach Hause.' (die Schule)",
+        choices: [
+          "die",
+          "dem",
+          "der",
+          "den",
+        ],
+        accept: [
+          "der",
+        ],
+        answer: "Nach always takes the dative, and die becomes der for a feminine noun in the dative. Dem is masculine or neuter dative, and den is masculine accusative.",
       },
     ],
     misconceptions: [

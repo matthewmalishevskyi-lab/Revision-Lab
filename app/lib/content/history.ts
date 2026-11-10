@@ -380,6 +380,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "The Liverpool and Manchester Railway of 1830 used Stephenson's Rocket. The Stockton and Darlington (1825) came first but mainly carried coal.",
       },
+      {
+        question: "Which machine did James Hargreaves invent to spin several threads at once?",
+        choices: [
+          "Water frame",
+          "Spinning jenny",
+          "Flying shuttle",
+          "Power loom",
+        ],
+        accept: [
+          "Spinning jenny",
+        ],
+        answer: "Hargreaves' spinning jenny of the 1760s let one worker spin many threads. The water frame was Arkwright's, and the flying shuttle (Kay) and power loom (Cartwright) were for weaving.",
+      },
+      {
+        question: "Who wrote the 1842 report on the sanitary conditions of the labouring population?",
+        choices: [
+          "John Snow",
+          "Robert Owen",
+          "Edwin Chadwick",
+          "Lord Shaftesbury",
+        ],
+        accept: [
+          "Edwin Chadwick",
+        ],
+        answer: "Chadwick's 1842 report linked filth and bad drainage to disease and early death, and helped lead to the 1848 Public Health Act. John Snow's cholera work came later.",
+      },
+      {
+        question: "Which mill owner ran a model factory community at New Lanark in Scotland?",
+        choices: [
+          "Robert Owen",
+          "Richard Arkwright",
+          "Titus Salt",
+          "Edwin Chadwick",
+        ],
+        accept: [
+          "Robert Owen",
+        ],
+        answer: "Owen gave New Lanark shorter hours, schooling and decent housing, showing a mill could profit without cruelty. Titus Salt built a later model village, Saltaire, in Yorkshire.",
+      },
+      {
+        question: "Which Dorset farm labourers were transported to Australia in 1834 for forming a union?",
+        choices: [
+          "The Luddites",
+          "The Chartists",
+          "The Tolpuddle Martyrs",
+          "The Rebecca Rioters",
+        ],
+        accept: [
+          "The Tolpuddle Martyrs",
+        ],
+        answer: "The six Tolpuddle men were sentenced for swearing a secret oath. Public protest won them a pardon in 1836. The Luddites broke machines and the Chartists campaigned for the vote.",
+      },
+      {
+        question: "In which year was the first Public Health Act, which set up a General Board of Health?",
+        choices: [
+          "1833",
+          "1842",
+          "1875",
+          "1848",
+        ],
+        accept: [
+          "1848",
+        ],
+        answer: "The 1848 Act let towns create local boards of health but did not force them to. The 1875 Act was the one that made councils provide clean water and drainage.",
+      },
     ],
 
     misconceptions: [
@@ -759,6 +824,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "The 1833 Act made most freed people unpaid 'apprentices' to their former owners. Compensation went to the owners, not the enslaved.",
       },
+      {
+        question: "Which religious group made up most of the founders of the 1787 abolition society?",
+        choices: [
+          "Catholics",
+          "Quakers",
+          "Methodists",
+          "Presbyterians",
+        ],
+        accept: [
+          "Quakers",
+        ],
+        answer: "Nine of the twelve founders of the Society for Effecting the Abolition of the Slave Trade were Quakers, who had long opposed slavery. Clarkson and Granville Sharp were Anglicans.",
+      },
+      {
+        question: "Which pottery maker produced the 'Am I not a man and a brother?' medallion?",
+        choices: [
+          "Josiah Wedgwood",
+          "Matthew Boulton",
+          "Josiah Spode",
+          "Thomas Clarkson",
+        ],
+        accept: [
+          "Josiah Wedgwood",
+        ],
+        answer: "Wedgwood's medallion of a kneeling enslaved man became the campaign's famous emblem, worn as jewellery. Clarkson was the campaigner who gathered evidence, not a potter.",
+      },
+      {
+        question: "Which product did many British families boycott in the 1790s to protest against slavery?",
+        choices: [
+          "Tea",
+          "Tobacco",
+          "Cotton",
+          "Sugar",
+        ],
+        accept: [
+          "Sugar",
+        ],
+        answer: "Hundreds of thousands of people stopped buying slave-grown sugar from 1791. Women, who ran household shopping, were central to this boycott.",
+      },
+      {
+        question: "What was usually carried from Britain to Africa on the first leg of the triangular trade?",
+        choices: [
+          "Sugar and rum",
+          "Raw cotton",
+          "Guns and cloth",
+          "Tobacco leaf",
+        ],
+        accept: [
+          "Guns and cloth",
+        ],
+        answer: "Manufactured goods such as guns, cloth and metalwork were traded for captives in West Africa. Sugar, cotton and tobacco came back to Britain on the final leg.",
+      },
+      {
+        question: "In which year did Haiti declare its independence from France?",
+        choices: [
+          "1791",
+          "1804",
+          "1807",
+          "1833",
+        ],
+        accept: [
+          "1804",
+        ],
+        answer: "The revolution began in 1791 and independence was declared on 1 January 1804. 1807 and 1833 are the British abolition Acts.",
+      },
     ],
 
     misconceptions: [
@@ -1133,6 +1263,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "European powers met in Berlin with no African representatives, and the Scramble for Africa sped up afterwards. Vienna was in 1815, Yalta in 1945.",
       },
+      {
+        question: "Who became independent India's first Prime Minister in 1947?",
+        choices: [
+          "Mahatma Gandhi",
+          "Jawaharlal Nehru",
+          "Muhammad Ali Jinnah",
+          "Lord Mountbatten",
+        ],
+        accept: [
+          "Jawaharlal Nehru",
+        ],
+        answer: "Nehru of the Congress Party became Prime Minister. Gandhi never held government office, and Jinnah led the Muslim League and became head of the new state of Pakistan.",
+      },
+      {
+        question: "Where did Britain begin sending convicts to a new penal colony in 1788?",
+        choices: [
+          "Canada",
+          "New Zealand",
+          "Australia",
+          "South Africa",
+        ],
+        accept: [
+          "Australia",
+        ],
+        answer: "The First Fleet landed at Botany Bay and Sydney Cove in 1788. Losing the American colonies meant Britain needed somewhere new to transport convicts.",
+      },
+      {
+        question: "In which year did Britain's thirteen American colonies declare independence?",
+        choices: [
+          "1763",
+          "1776",
+          "1783",
+          "1789",
+        ],
+        accept: [
+          "1776",
+        ],
+        answer: "The Declaration of Independence was made in 1776. Britain only recognised American independence at the end of the war, in the Treaty of Paris of 1783.",
+      },
+      {
+        question: "Which settlers did Britain fight in South Africa in the war of 1899–1902?",
+        choices: [
+          "The Zulus",
+          "The Maori",
+          "The Ashanti",
+          "The Boers",
+        ],
+        accept: [
+          "The Boers",
+        ],
+        answer: "The Boers were Dutch-descended settlers. Britain used concentration camps where thousands of Boer and Black African civilians died. The Anglo-Zulu War was earlier, in 1879.",
+      },
+      {
+        question: "Which Kenyan leader was jailed during the Mau Mau years and later led Kenya?",
+        choices: [
+          "Kwame Nkrumah",
+          "Julius Nyerere",
+          "Jomo Kenyatta",
+          "Nelson Mandela",
+        ],
+        accept: [
+          "Jomo Kenyatta",
+        ],
+        answer: "Kenyatta was arrested by the British in 1952, jailed, and became Kenya's leader at independence in 1963. Nkrumah led Ghana and Nyerere led Tanganyika (Tanzania).",
+      },
     ],
 
     misconceptions: [
@@ -1499,6 +1694,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Shell shock was the wartime name for trauma caused by bombardment and combat. The foot infection from standing in wet trenches was trench foot.",
       },
+      {
+        question: "Which Triple Alliance member stayed out in 1914 and joined the Allies in 1915?",
+        choices: [
+          "Italy",
+          "Austria-Hungary",
+          "Bulgaria",
+          "Ottoman Empire",
+        ],
+        accept: [
+          "Italy",
+        ],
+        answer: "Italy declared neutrality in 1914 and was promised land in the 1915 Treaty of London to join the Allies. Bulgaria and the Ottoman Empire joined Germany's side.",
+      },
+      {
+        question: "Where did Allied troops land in 1915 in an attempt to knock out the Ottoman Empire?",
+        choices: [
+          "Salonika",
+          "Verdun",
+          "Gallipoli",
+          "Mesopotamia",
+        ],
+        accept: [
+          "Gallipoli",
+        ],
+        answer: "The Gallipoli landings aimed to open the Dardanelles to the Allies. The campaign failed and the troops were evacuated by January 1916; ANZAC forces suffered heavy losses.",
+      },
+      {
+        question: "Which German attack of 1916 was meant to 'bleed France white'?",
+        choices: [
+          "Verdun",
+          "The Somme",
+          "Ypres",
+          "The Marne",
+        ],
+        accept: [
+          "Verdun",
+        ],
+        answer: "Falkenhayn attacked the fortress city of Verdun from February 1916. The British-led Somme offensive was launched partly to take pressure off the French there.",
+      },
+      {
+        question: "Which 1916 battle in the North Sea was the war's biggest clash of battleships?",
+        choices: [
+          "Dogger Bank",
+          "Jutland",
+          "Coronel",
+          "Heligoland",
+        ],
+        accept: [
+          "Jutland",
+        ],
+        answer: "At Jutland Britain lost more ships, but the German High Seas Fleet hardly left port again, so the British blockade of Germany carried on.",
+      },
+      {
+        question: "Who commanded the British army on the Western Front from December 1915?",
+        choices: [
+          "Lord Kitchener",
+          "Sir John French",
+          "Douglas Haig",
+          "Bernard Montgomery",
+        ],
+        accept: [
+          "Douglas Haig",
+        ],
+        answer: "Haig replaced Sir John French and led the British at the Somme and Passchendaele. Kitchener was Secretary of State for War, and Montgomery was a Second World War general.",
+      },
     ],
 
     misconceptions: [
@@ -1858,6 +2118,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "New Economic Policy",
         ],
         answer: "After the Kronstadt mutiny, Lenin's NEP allowed small private trade and let peasants sell surplus grain. Five-Year Plans were Stalin's, from 1928.",
+      },
+      {
+        question: "What new name was the capital, St Petersburg, given in 1914?",
+        choices: [
+          "Leningrad",
+          "Moscow",
+          "Petrograd",
+          "Stalingrad",
+        ],
+        accept: [
+          "Petrograd",
+        ],
+        answer: "It was renamed Petrograd because 'St Petersburg' sounded too German at the start of the war. It became Leningrad in 1924, after Lenin's death.",
+      },
+      {
+        question: "In which town were the Tsar and his family shot by the Bolsheviks in July 1918?",
+        choices: [
+          "Yekaterinburg",
+          "Petrograd",
+          "Kronstadt",
+          "Moscow",
+        ],
+        accept: [
+          "Yekaterinburg",
+        ],
+        answer: "The Romanovs were held in a house in Yekaterinburg in the Urals and killed as White forces approached the town.",
+      },
+      {
+        question: "Which battleship's crew mutinied in the Black Sea during the 1905 revolution?",
+        choices: [
+          "Aurora",
+          "Potemkin",
+          "Varyag",
+          "Petropavlovsk",
+        ],
+        accept: [
+          "Potemkin",
+        ],
+        answer: "The Potemkin mutiny showed that even the armed forces were turning against the Tsar in 1905. The cruiser Aurora is linked with the October Revolution of 1917.",
+      },
+      {
+        question: "Which building, home of the Provisional Government, did the Bolsheviks storm in October 1917?",
+        choices: [
+          "The Kremlin",
+          "Smolny Institute",
+          "Tauride Palace",
+          "Winter Palace",
+        ],
+        accept: [
+          "Winter Palace",
+        ],
+        answer: "Red Guards took the Winter Palace in Petrograd. The Smolny Institute was the Bolsheviks' headquarters, and the Tauride Palace housed the Duma and the Soviet.",
+      },
+      {
+        question: "What was the Tsar's 1905 promise of an elected parliament and civil rights called?",
+        choices: [
+          "October Manifesto",
+          "April Theses",
+          "Fundamental Laws",
+          "Decree on Land",
+        ],
+        accept: [
+          "October Manifesto",
+        ],
+        answer: "The October Manifesto split the opposition and saved the Tsar in 1905. The 1906 Fundamental Laws then kept most power in his hands. The April Theses were Lenin's, in 1917.",
       },
     ],
 
@@ -2223,6 +2548,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "Führer",
         ],
         answer: "Hitler merged the posts of Chancellor and President and called himself Führer, and the army swore an oath to him. Reichsführer was Himmler's SS title.",
+      },
+      {
+        question: "Which famous First World War general marched with Hitler in the 1923 Munich Putsch?",
+        choices: [
+          "Hindenburg",
+          "Ludendorff",
+          "Ernst Röhm",
+          "Wolfgang Kapp",
+        ],
+        accept: [
+          "Ludendorff",
+        ],
+        answer: "Erich Ludendorff marched with Hitler but was acquitted at the trial. Hindenburg later became President, and Kapp led his own failed putsch in 1920.",
+      },
+      {
+        question: "How long a prison sentence was Hitler given for the Munich Putsch?",
+        choices: [
+          "One year",
+          "Two years",
+          "Five years",
+          "Ten years",
+        ],
+        accept: [
+          "Five years",
+        ],
+        answer: "He was sentenced to five years for treason, a very lenient sentence, and was released after about nine months in Landsberg prison, where he wrote Mein Kampf.",
+      },
+      {
+        question: "In which year did the Wall Street Crash start the Great Depression?",
+        choices: [
+          "1923",
+          "1929",
+          "1925",
+          "1932",
+        ],
+        accept: [
+          "1929",
+        ],
+        answer: "The October 1929 crash led American banks to call in their loans to Germany. Unemployment soared, and Nazi support grew from 1930 onwards.",
+      },
+      {
+        question: "What were Hitler's black-uniformed elite guards, led by Himmler, called?",
+        choices: [
+          "SA",
+          "SS",
+          "KPD",
+          "SPD",
+        ],
+        accept: [
+          "SS",
+        ],
+        answer: "The SS began as Hitler's bodyguard and carried out the killings in the Night of the Long Knives. The SA were the brownshirts; the KPD and SPD were rival parties.",
+      },
+      {
+        question: "Who was Chancellor of Germany immediately before Hitler?",
+        choices: [
+          "Franz von Papen",
+          "Kurt von Schleicher",
+          "Heinrich Brüning",
+          "Gustav Stresemann",
+        ],
+        accept: [
+          "Kurt von Schleicher",
+        ],
+        answer: "Schleicher was Chancellor from December 1932 to January 1933. Papen, whom he had pushed out, then did the deal that made Hitler Chancellor.",
       },
     ],
 
@@ -2590,6 +2980,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "Bacon",
         ],
         answer: "Bacon, butter and sugar were rationed in January 1940. Bread and potatoes were not rationed during the war, and fish never was.",
+      },
+      {
+        question: "Which two countries declared war on Germany on 3 September 1939?",
+        choices: [
+          "Britain and the USA",
+          "France and the USSR",
+          "Britain and France",
+          "Britain and Poland",
+        ],
+        accept: [
+          "Britain and France",
+        ],
+        answer: "Britain and France had guaranteed Poland's independence, so they declared war two days after Germany invaded it. The USSR and the USA joined the war in 1941.",
+      },
+      {
+        question: "Which 1942 battle in Egypt was the turning point of the war in North Africa?",
+        choices: [
+          "Tobruk",
+          "Kursk",
+          "Anzio",
+          "El Alamein",
+        ],
+        accept: [
+          "El Alamein",
+        ],
+        answer: "Montgomery's Eighth Army defeated Rommel at El Alamein in late 1942. Kursk was a tank battle in the USSR and Anzio a 1944 landing in Italy.",
+      },
+      {
+        question: "Which naval battle of June 1942 turned the war in the Pacific against Japan?",
+        choices: [
+          "Midway",
+          "Coral Sea",
+          "Leyte Gulf",
+          "Okinawa",
+        ],
+        accept: [
+          "Midway",
+        ],
+        answer: "At Midway the US Navy sank four Japanese aircraft carriers. Japan was on the defensive in the Pacific from then on.",
+      },
+      {
+        question: "On what date was VE Day, celebrating the end of the war in Europe?",
+        choices: [
+          "6 June 1944",
+          "8 May 1945",
+          "15 August 1945",
+          "2 September 1945",
+        ],
+        accept: [
+          "8 May 1945",
+        ],
+        answer: "Germany surrendered unconditionally and VE Day was celebrated on 8 May 1945. 6 June 1944 was D-Day, and the August and September dates mark Japan's surrender.",
+      },
+      {
+        question: "Which city's cathedral was destroyed in a German air raid on 14 November 1940?",
+        choices: [
+          "Liverpool",
+          "Coventry",
+          "Birmingham",
+          "Manchester",
+        ],
+        accept: [
+          "Coventry",
+        ],
+        answer: "The Coventry raid destroyed much of the city centre and its medieval cathedral. It became one of the best-known attacks of the Blitz outside London.",
       },
     ],
 
@@ -2963,6 +3418,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Anne Frank's family hid until they were betrayed in 1944; she died at Bergen-Belsen in 1945. Ringelblum ran the secret archive in the Warsaw Ghetto.",
       },
+      {
+        question: "From September 1941, which badge were Jews in Germany aged six and over forced to wear?",
+        choices: [
+          "A pink triangle",
+          "A red triangle",
+          "A yellow star",
+          "A green triangle",
+        ],
+        accept: [
+          "A yellow star",
+        ],
+        answer: "The yellow Star of David marked Jews out in public. In the camps, triangles were used: red for political prisoners, pink for gay men and green for criminals.",
+      },
+      {
+        question: "Which camp in Germany did British troops liberate in April 1945?",
+        choices: [
+          "Treblinka",
+          "Bergen-Belsen",
+          "Auschwitz",
+          "Sobibor",
+        ],
+        accept: [
+          "Bergen-Belsen",
+        ],
+        answer: "British troops entered Bergen-Belsen on 15 April 1945 and found thousands of unburied dead. Auschwitz, Treblinka and Sobibor were in occupied Poland.",
+      },
+      {
+        question: "Which 1938 conference on Jewish refugees saw most countries refuse to take more?",
+        choices: [
+          "Évian Conference",
+          "Munich Conference",
+          "Wannsee Conference",
+          "Potsdam Conference",
+        ],
+        accept: [
+          "Évian Conference",
+        ],
+        answer: "At Évian in July 1938, 32 countries met but almost none agreed to take more Jewish refugees. Wannsee in 1942 coordinated the 'Final Solution'.",
+      },
+      {
+        question: "At which death camp did prisoners rise up and break out in October 1943?",
+        choices: [
+          "Chełmno",
+          "Majdanek",
+          "Bełżec",
+          "Sobibor",
+        ],
+        accept: [
+          "Sobibor",
+        ],
+        answer: "On 14 October 1943 Sobibor's prisoners killed several SS guards and around 300 escaped. Many were caught, but the camp was closed soon after.",
+      },
+      {
+        question: "Which Nazi organiser of the deportations was tried in Jerusalem in 1961?",
+        choices: [
+          "Heinrich Himmler",
+          "Rudolf Höss",
+          "Reinhard Heydrich",
+          "Adolf Eichmann",
+        ],
+        accept: [
+          "Adolf Eichmann",
+        ],
+        answer: "Eichmann was captured in Argentina in 1960, tried in Israel and executed in 1962. Survivors' testimony at the trial reached a worldwide audience.",
+      },
     ],
 
     misconceptions: [
@@ -3334,6 +3854,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "The German Labour Front (DAF) under Robert Ley replaced the banned unions. Strength Through Joy and Beauty of Labour were branches of it.",
       },
+      {
+        question: "Which party had become the largest in the Kaiser's Reichstag by the 1912 election?",
+        choices: [
+          "Centre Party",
+          "Social Democrats",
+          "Conservatives",
+          "National Liberals",
+        ],
+        accept: [
+          "Social Democrats",
+        ],
+        answer: "The socialist SPD won the most seats in 1912, which alarmed the Kaiser and the elite. The Catholic Centre Party had been the largest party before then.",
+      },
+      {
+        question: "What award did Nazi Germany give to women who had four or more children?",
+        choices: [
+          "The Iron Cross",
+          "The Mother's Cross",
+          "The Blood Order",
+          "The Knight's Cross",
+        ],
+        accept: [
+          "The Mother's Cross",
+        ],
+        answer: "The Mother's Cross came in bronze, silver and gold for larger families. The Iron Cross and Knight's Cross were military medals, and the Blood Order honoured the 1923 putschists.",
+      },
+      {
+        question: "Who led the Hitler Youth from 1933?",
+        choices: [
+          "Baldur von Schirach",
+          "Joseph Goebbels",
+          "Heinrich Himmler",
+          "Robert Ley",
+        ],
+        accept: [
+          "Baldur von Schirach",
+        ],
+        answer: "Schirach was Reich Youth Leader, and membership became compulsory in 1939. Robert Ley led the German Labour Front, and Goebbels ran propaganda.",
+      },
+      {
+        question: "What was the July 1933 agreement between the Nazi state and the Pope called?",
+        choices: [
+          "The Reich Church",
+          "The Concordat",
+          "The Confessing Church",
+          "The Enabling Act",
+        ],
+        accept: [
+          "The Concordat",
+        ],
+        answer: "In the Concordat the Catholic Church agreed to stay out of politics in return for keeping its schools. The Nazis soon broke the deal. The Confessing Church was Protestant.",
+      },
+      {
+        question: "Which Nazi minister ran German armaments production from 1942 to 1945?",
+        choices: [
+          "Hermann Göring",
+          "Albert Speer",
+          "Fritz Todt",
+          "Robert Ley",
+        ],
+        accept: [
+          "Albert Speer",
+        ],
+        answer: "Speer took over in February 1942 after Fritz Todt died in a plane crash, and arms output rose sharply despite bombing. Göring headed the earlier Four-Year Plan.",
+      },
     ],
 
     misconceptions: [
@@ -3698,6 +4283,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "The Saar",
         ],
         answer: "Over 90% of Saar voters chose Germany in January 1935, a propaganda boost for Hitler. The Rhineland was remilitarised in 1936.",
+      },
+      {
+        question: "In which city was the League of Nations based?",
+        choices: [
+          "Paris",
+          "Geneva",
+          "The Hague",
+          "Versailles",
+        ],
+        accept: [
+          "Geneva",
+        ],
+        answer: "The League met in Geneva in neutral Switzerland. The Hague in the Netherlands was home to its Permanent Court of International Justice.",
+      },
+      {
+        question: "Which League body met most often and had permanent members such as Britain and France?",
+        choices: [
+          "The Assembly",
+          "The Secretariat",
+          "The Council",
+          "The Court of Justice",
+        ],
+        accept: [
+          "The Council",
+        ],
+        answer: "The Council met several times a year and could recommend sanctions. The Assembly of all members met only once a year and its decisions had to be unanimous.",
+      },
+      {
+        question: "In which year was Germany allowed to join the League of Nations?",
+        choices: [
+          "1919",
+          "1923",
+          "1926",
+          "1933",
+        ],
+        accept: [
+          "1926",
+        ],
+        answer: "Germany joined in 1926, after the Locarno treaties, with a permanent seat on the Council. Hitler took Germany out of the League in 1933.",
+      },
+      {
+        question: "Which 1925 treaties saw Germany accept its western borders with France and Belgium?",
+        choices: [
+          "Kellogg–Briand",
+          "Rapallo",
+          "Locarno",
+          "Dawes",
+        ],
+        accept: [
+          "Locarno",
+        ],
+        answer: "The Locarno treaties eased tension and opened the way for Germany to join the League. Kellogg–Briand (1928) renounced war, and Rapallo (1922) was a German–Soviet deal.",
+      },
+      {
+        question: "Which two countries' 1925 border clash did the League successfully settle?",
+        choices: [
+          "Japan and China",
+          "Greece and Bulgaria",
+          "Italy and Abyssinia",
+          "Poland and Lithuania",
+        ],
+        accept: [
+          "Greece and Bulgaria",
+        ],
+        answer: "The League ordered Greece to withdraw from Bulgaria and pay compensation, and it obeyed. In the Vilna dispute of 1920 the League failed to remove Polish troops.",
       },
     ],
 
@@ -4065,6 +4715,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "Roanoke",
         ],
         answer: "Raleigh sponsored Roanoke from 1585; the 1587 settlers later vanished, the 'lost colony'. Jamestown, the first lasting English colony, came in 1607.",
+      },
+      {
+        question: "Which Spanish port did Drake raid in 1587, delaying the Armada by a year?",
+        choices: [
+          "Calais",
+          "Cadiz",
+          "Lisbon",
+          "Seville",
+        ],
+        accept: [
+          "Cadiz",
+        ],
+        answer: "Drake burned ships and supplies at Cadiz, called 'singeing the King of Spain's beard'. Calais is where the Armada later anchored in 1588.",
+      },
+      {
+        question: "Which 1569 rising was led by the earls of Northumberland and Westmorland?",
+        choices: [
+          "Ridolfi Plot",
+          "Pilgrimage of Grace",
+          "Northern Rebellion",
+          "Throckmorton Plot",
+        ],
+        accept: [
+          "Northern Rebellion",
+        ],
+        answer: "The Northern Rebellion aimed to restore Catholicism and free Mary, Queen of Scots. The Pilgrimage of Grace was a northern rising too, but under Henry VIII in 1536.",
+      },
+      {
+        question: "Which 1583 plot planned a French invasion led by the Duke of Guise to free Mary?",
+        choices: [
+          "Babington Plot",
+          "Ridolfi Plot",
+          "Northern Rebellion",
+          "Throckmorton Plot",
+        ],
+        accept: [
+          "Throckmorton Plot",
+        ],
+        answer: "Francis Throckmorton was caught carrying messages for the plotters and was executed. Babington came later, in 1586, and Ridolfi earlier, in 1571.",
+      },
+      {
+        question: "Who was Elizabeth's chief minister, later made Lord Burghley?",
+        choices: [
+          "William Cecil",
+          "Robert Dudley",
+          "Thomas Cromwell",
+          "Francis Drake",
+        ],
+        accept: [
+          "William Cecil",
+        ],
+        answer: "Cecil served Elizabeth for about forty years. Robert Dudley was her favourite and Earl of Leicester; Thomas Cromwell served Henry VIII.",
+      },
+      {
+        question: "Under which 1585 treaty did Elizabeth send an army to help the Dutch rebels?",
+        choices: [
+          "Treaty of Edinburgh",
+          "Treaty of Nonsuch",
+          "Treaty of London",
+          "Treaty of Troyes",
+        ],
+        accept: [
+          "Treaty of Nonsuch",
+        ],
+        answer: "The Treaty of Nonsuch sent English troops under Robert Dudley to fight Spain in the Netherlands. The Treaty of Edinburgh in 1560 concerned Scotland.",
       },
     ],
 
@@ -4524,6 +5239,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Aneurin Bevan, Labour's health minister, set up the NHS. Beveridge wrote the 1942 report that called for it, and Attlee was the Prime Minister.",
       },
+      {
+        question: "Which ancient Greek doctor is often called the 'father of medicine'?",
+        choices: [
+          "Galen",
+          "Aristotle",
+          "Hippocrates",
+          "Vesalius",
+        ],
+        accept: [
+          "Hippocrates",
+        ],
+        answer: "Hippocrates stressed observing and recording symptoms. Galen came centuries later, worked in the Roman Empire and built on Hippocrates' ideas.",
+      },
+      {
+        question: "In which war did Florence Nightingale improve hygiene in the hospital at Scutari?",
+        choices: [
+          "Crimean War",
+          "Boer War",
+          "First World War",
+          "Napoleonic Wars",
+        ],
+        accept: [
+          "Crimean War",
+        ],
+        answer: "She arrived in 1854, and clean wards, food and fresh air cut death rates sharply. She later set up a nursing school at St Thomas' Hospital in 1860.",
+      },
+      {
+        question: "Which Edinburgh doctor discovered chloroform's anaesthetic effect in 1847?",
+        choices: [
+          "Joseph Lister",
+          "James Simpson",
+          "John Snow",
+          "Humphry Davy",
+        ],
+        accept: [
+          "James Simpson",
+        ],
+        answer: "Simpson tested it on himself and friends. John Snow later gave chloroform to Queen Victoria; Lister's work was on antiseptics, not anaesthetics.",
+      },
+      {
+        question: "Who discovered X-rays in 1895?",
+        choices: [
+          "Marie Curie",
+          "Robert Koch",
+          "Paul Ehrlich",
+          "Wilhelm Röntgen",
+        ],
+        accept: [
+          "Wilhelm Röntgen",
+        ],
+        answer: "Röntgen's X-rays let doctors see inside the body without surgery, and mobile X-ray units were used in the First World War. Curie's work was on radioactivity.",
+      },
+      {
+        question: "Which institution ran most hospitals in medieval England?",
+        choices: [
+          "Town councils",
+          "The king",
+          "The Church",
+          "Universities",
+        ],
+        accept: [
+          "The Church",
+        ],
+        answer: "Hospitals were run by monks and nuns and focused on care, rest and prayer rather than cures. Many refused to take in people with infectious diseases.",
+      },
     ],
 
     misconceptions: [
@@ -4895,6 +5675,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "The Probation of Offenders Act 1907 let courts set supervision instead of prison. Parole is different: it is early release from a prison sentence under supervision.",
       },
+      {
+        question: "What was the Anglo-Saxon compensation paid to a victim or their family called?",
+        choices: [
+          "Murdrum",
+          "Wergild",
+          "Tithing",
+          "Tithe",
+        ],
+        accept: [
+          "Wergild",
+        ],
+        answer: "Wergild was a fine paid to the victim's family, set by the victim's rank. The murdrum fine was a Norman collective fine paid to the king if a Norman was killed.",
+      },
+      {
+        question: "Which 1605 Catholic plot is Guy Fawkes linked to?",
+        choices: [
+          "Babington Plot",
+          "Ridolfi Plot",
+          "Gunpowder Plot",
+          "Throckmorton Plot",
+        ],
+        accept: [
+          "Gunpowder Plot",
+        ],
+        answer: "Fawkes was caught guarding the gunpowder, and the surviving plotters were sentenced to be hanged, drawn and quartered. The other plots were against Elizabeth I.",
+      },
+      {
+        question: "Which reformer wrote 'The State of the Prisons' in 1777?",
+        choices: [
+          "Elizabeth Fry",
+          "Robert Peel",
+          "John Howard",
+          "Henry Fielding",
+        ],
+        accept: [
+          "John Howard",
+        ],
+        answer: "Howard visited prisons across Britain and exposed filth, disease and jailers charging fees. Elizabeth Fry's work at Newgate came later, from 1813.",
+      },
+      {
+        question: "What was someone who refused to fight in WW1 on moral or religious grounds called?",
+        choices: [
+          "Deserter",
+          "Conscientious objector",
+          "Recusant",
+          "Mutineer",
+        ],
+        accept: [
+          "Conscientious objector",
+        ],
+        answer: "From 1916 conscription meant objectors faced tribunals, and some were jailed. A deserter had already joined the army and then ran away.",
+      },
+      {
+        question: "What were the prisons for young offenders opened from 1902 called?",
+        choices: [
+          "Hulks",
+          "Bridewells",
+          "Workhouses",
+          "Borstals",
+        ],
+        accept: [
+          "Borstals",
+        ],
+        answer: "Named after the Kent village where the first opened, borstals aimed to reform young offenders through education and discipline. Bridewells were Tudor houses of correction.",
+      },
     ],
 
     misconceptions: [
@@ -5265,6 +6110,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "Solidarity, led by Lech Wałęsa, began in the Gdańsk shipyards in 1980. Charter 77 was a Czechoslovak human rights group, not a union.",
       },
+      {
+        question: "What was the first artificial satellite, launched by the USSR in 1957, called?",
+        choices: [
+          "Sputnik",
+          "Vostok",
+          "Apollo",
+          "Explorer",
+        ],
+        accept: [
+          "Sputnik",
+        ],
+        answer: "Sputnik showed Soviet rockets could reach space, and so could carry missiles to the USA. Explorer was the first American satellite, in 1958.",
+      },
+      {
+        question: "Where did US-backed Cuban exiles land in their failed 1961 invasion of Cuba?",
+        choices: [
+          "Guantánamo Bay",
+          "Havana",
+          "Bay of Pigs",
+          "Santiago",
+        ],
+        accept: [
+          "Bay of Pigs",
+        ],
+        answer: "The Bay of Pigs fiasco embarrassed Kennedy and pushed Castro closer to the USSR. Guantánamo Bay is a US naval base on Cuba, not the landing site.",
+      },
+      {
+        question: "Who was the Soviet leader during the Cuban Missile Crisis?",
+        choices: [
+          "Brezhnev",
+          "Stalin",
+          "Gorbachev",
+          "Khrushchev",
+        ],
+        accept: [
+          "Khrushchev",
+        ],
+        answer: "Khrushchev led the USSR from the mid-1950s until 1964 and faced Kennedy in 1962. Brezhnev replaced him and led during détente.",
+      },
+      {
+        question: "What was the USSR's 1949 economic organisation for its satellite states called?",
+        choices: [
+          "Comecon",
+          "Cominform",
+          "Warsaw Pact",
+          "NATO",
+        ],
+        accept: [
+          "Comecon",
+        ],
+        answer: "Comecon was the Soviet answer to Marshall Aid. Cominform, from 1947, co-ordinated communist parties, and the Warsaw Pact of 1955 was a military alliance.",
+      },
+      {
+        question: "Which 1972 agreement limited the number of US and Soviet nuclear missiles?",
+        choices: [
+          "SALT 1",
+          "Test Ban Treaty",
+          "Helsinki Accords",
+          "INF Treaty",
+        ],
+        accept: [
+          "SALT 1",
+        ],
+        answer: "SALT 1, signed by Nixon and Brezhnev, was a high point of détente. The INF Treaty came in 1987 under Reagan and Gorbachev; the Helsinki Accords were 1975.",
+      },
     ],
 
     misconceptions: [
@@ -5631,6 +6541,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "Edgar Ætheling",
         ],
         answer: "Edgar Ætheling, great-nephew of Edward the Confessor, was proclaimed king in London but submitted to William at Berkhamsted. Hereward led resistance in the Fens.",
+      },
+      {
+        question: "Which earldom did Harold Godwinson hold when Edward the Confessor died?",
+        choices: [
+          "Mercia",
+          "Northumbria",
+          "East Anglia",
+          "Wessex",
+        ],
+        accept: [
+          "Wessex",
+        ],
+        answer: "Wessex was the richest earldom, which made Harold the most powerful man after the king. Mercia was held by Edwin and Northumbria by Morcar.",
+      },
+      {
+        question: "Where was William crowned on Christmas Day 1066?",
+        choices: [
+          "Westminster Abbey",
+          "Canterbury",
+          "Winchester",
+          "York Minster",
+        ],
+        accept: [
+          "Westminster Abbey",
+        ],
+        answer: "Edward the Confessor had built Westminster Abbey and was buried there, so crowning William there linked him to Edward as the rightful heir.",
+      },
+      {
+        question: "Which half-brother of William was Bishop of Bayeux?",
+        choices: [
+          "Lanfranc",
+          "Odo",
+          "Robert Curthose",
+          "William FitzOsbern",
+        ],
+        accept: [
+          "Odo",
+        ],
+        answer: "Odo fought at Hastings and probably commissioned the Bayeux Tapestry. Robert Curthose was William's eldest son; Lanfranc was Archbishop of Canterbury.",
+      },
+      {
+        question: "Which son succeeded William I as king of England in 1087?",
+        choices: [
+          "Robert Curthose",
+          "William Rufus",
+          "Henry",
+          "Richard",
+        ],
+        accept: [
+          "William Rufus",
+        ],
+        answer: "William Rufus became William II. His elder brother Robert Curthose was left Normandy, and their younger brother Henry became king in 1100.",
+      },
+      {
+        question: "What did a Norman knight mainly owe his lord in return for land?",
+        choices: [
+          "Labour in the fields",
+          "Military service",
+          "A tithe",
+          "Rent in coin",
+        ],
+        accept: [
+          "Military service",
+        ],
+        answer: "Knights owed military service, usually about 40 days a year. Labour in the fields was what peasants (villeins) owed; a tithe went to the Church.",
       },
     ],
 
@@ -6013,6 +6988,71 @@ export const HISTORY: Record<string, TopicContent> = {
         ],
         answer: "The Ku Klux Klan revived in 1915 and peaked in the mid-1920s, targeting Black Americans, Catholics, Jews and immigrants. The Black Panthers were a 1960s Black Power group.",
       },
+      {
+        question: "Which two Italian anarchists were executed in 1927 after a much-criticised trial?",
+        choices: [
+          "Leopold and Loeb",
+          "Sacco and Vanzetti",
+          "The Rosenbergs",
+          "Bonnie and Clyde",
+        ],
+        accept: [
+          "Sacco and Vanzetti",
+        ],
+        answer: "Their case showed the 1920s Red Scare and hostility to immigrants. The Rosenbergs were executed as Soviet spies much later, in 1953.",
+      },
+      {
+        question: "In the 1925 Scopes 'Monkey Trial', what was a teacher tried for teaching?",
+        choices: [
+          "Communism",
+          "Atheism",
+          "Evolution",
+          "Sex education",
+        ],
+        accept: [
+          "Evolution",
+        ],
+        answer: "Tennessee banned teaching evolution, and John Scopes was found guilty. The trial showed the clash between rural fundamentalists and modern city values.",
+      },
+      {
+        question: "What was the drought-hit farming region of the 1930s Great Plains called?",
+        choices: [
+          "Rust Belt",
+          "Dust Bowl",
+          "Bible Belt",
+          "Corn Belt",
+        ],
+        accept: [
+          "Dust Bowl",
+        ],
+        answer: "Drought and over-farming turned topsoil to dust storms, and many farmers left for California. The Bible Belt is the religious South, not a disaster zone.",
+      },
+      {
+        question: "Which armed Black Power group was founded in Oakland, California, in 1966?",
+        choices: [
+          "NAACP",
+          "SCLC",
+          "SNCC",
+          "Black Panthers",
+        ],
+        accept: [
+          "Black Panthers",
+        ],
+        answer: "The Black Panthers patrolled to watch police and ran free breakfasts for children. The SCLC was Martin Luther King's group, committed to non-violence.",
+      },
+      {
+        question: "Which 1973 Supreme Court case legalised abortion across the USA?",
+        choices: [
+          "Roe v Wade",
+          "Brown v Board",
+          "Plessy v Ferguson",
+          "Miranda v Arizona",
+        ],
+        accept: [
+          "Roe v Wade",
+        ],
+        answer: "Roe v Wade was seen as a major win by the women's movement (it was overturned in 2022). Brown v Board ended school segregation; Plessy had allowed it.",
+      },
     ],
 
     misconceptions: [
@@ -6381,6 +7421,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "Navvies",
         ],
         answer: "Navvies, short for navigators, did heavy digging work. Many were Irish migrants. Costermongers were street sellers, and Luddites were machine-breakers.",
+      },
+      {
+        question: "What was the rescue of Jewish children from Nazi Europe to Britain in 1938–39 called?",
+        choices: [
+          "Operation Pied Piper",
+          "Kindertransport",
+          "Operation Dynamo",
+          "The Exodus",
+        ],
+        accept: [
+          "Kindertransport",
+        ],
+        answer: "Nearly ten thousand children came, most without their parents. Operation Pied Piper was the evacuation of British children from cities in 1939.",
+      },
+      {
+        question: "Which German merchants had a walled base in London called the Steelyard?",
+        choices: [
+          "The Lombards",
+          "The Hansa merchants",
+          "The Flemings",
+          "The Huguenots",
+        ],
+        accept: [
+          "The Hansa merchants",
+        ],
+        answer: "Hanseatic merchants traded in London for centuries with special privileges. The Lombards were Italian bankers; Flemings were weavers from Flanders.",
+      },
+      {
+        question: "At which port did the Empire Windrush dock in June 1948?",
+        choices: [
+          "Southampton",
+          "Liverpool",
+          "Tilbury",
+          "Dover",
+        ],
+        accept: [
+          "Tilbury",
+        ],
+        answer: "Windrush docked at Tilbury on the Thames, in Essex. Some passengers with nowhere to go were housed in a deep shelter under Clapham Common.",
+      },
+      {
+        question: "Which youth worker was the leading spokesman of the 1963 Bristol Bus Boycott?",
+        choices: [
+          "Learie Constantine",
+          "Paul Stephenson",
+          "Claudia Jones",
+          "Sam King",
+        ],
+        accept: [
+          "Paul Stephenson",
+        ],
+        answer: "Paul Stephenson spoke for the campaign alongside local activists. Learie Constantine, the cricketer, backed it publicly; Claudia Jones campaigned in London.",
+      },
+      {
+        question: "Who founded the West Indian Gazette newspaper in London in 1958?",
+        choices: [
+          "Claudia Jones",
+          "Sam King",
+          "Paul Stephenson",
+          "Olive Morris",
+        ],
+        accept: [
+          "Claudia Jones",
+        ],
+        answer: "Claudia Jones also organised a Caribbean carnival in 1959, a forerunner of the Notting Hill Carnival. Sam King was a Windrush passenger and later a mayor.",
       },
     ],
 
@@ -6762,6 +7867,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "Corroboration",
         ],
         answer: "When sources with different motives agree, they corroborate each other, which makes the detail more likely to be accurate. Bias is a one-sided slant.",
+      },
+      {
+        question: "What is material made to persuade people to a view, often by a government, called?",
+        choices: [
+          "Propaganda",
+          "Provenance",
+          "Corroboration",
+          "Hindsight",
+        ],
+        accept: [
+          "Propaganda",
+        ],
+        answer: "Propaganda is useful for showing what its makers wanted people to believe. Provenance is where a source came from, not its message.",
+      },
+      {
+        question: "Which term means how far you can trust a source to be accurate?",
+        choices: [
+          "Utility",
+          "Reliability",
+          "Provenance",
+          "Omission",
+        ],
+        accept: [
+          "Reliability",
+        ],
+        answer: "Reliability is about trusting what it says; utility is how useful it is for a question. An unreliable source can still be very useful.",
+      },
+      {
+        question: "Exaggerating a leader's features in a cartoon to mock them is called what?",
+        choices: [
+          "Caricature",
+          "Censorship",
+          "Corroboration",
+          "Chronology",
+        ],
+        accept: [
+          "Caricature",
+        ],
+        answer: "Caricature shows the cartoonist's opinion of the person. Ask who drew it and for which publication to work out the purpose behind the mockery.",
+      },
+      {
+        question: "Which of these is a secondary source about the Battle of Hastings?",
+        choices: [
+          "The Bayeux Tapestry",
+          "A 2016 history book",
+          "Anglo-Saxon Chronicle",
+          "William of Poitiers",
+        ],
+        accept: [
+          "A 2016 history book",
+        ],
+        answer: "A modern book is written long after by someone not there. The Tapestry, the Chronicle and William of Poitiers' account were all made at or near the time.",
+      },
+      {
+        question: "Which source is least likely to have been written to persuade a public audience?",
+        choices: [
+          "Election poster",
+          "Newspaper editorial",
+          "Government leaflet",
+          "Private diary",
+        ],
+        accept: [
+          "Private diary",
+        ],
+        answer: "A private diary was written for the writer, not to win people over. It can still be one-sided, as it shows only one person's view.",
       },
     ],
 
@@ -7153,6 +8323,71 @@ export const HISTORY: Record<string, TopicContent> = {
           "Counter-argument",
         ],
         answer: "A counter-argument is the other side of the case. Good answers deal with the strongest one, then reach a judgement saying which side is more convincing and why.",
+      },
+      {
+        question: "What does the L stand for in a PEEL paragraph?",
+        choices: [
+          "List",
+          "Length",
+          "Link",
+          "Language",
+        ],
+        accept: [
+          "Link",
+        ],
+        answer: "Point, Evidence, Explain, Link. The link ties the paragraph back to the question, which stops it drifting into story-telling.",
+      },
+      {
+        question: "What is a memory aid such as a rhyme or the first letters of a list called?",
+        choices: [
+          "Interleaving",
+          "Mnemonic",
+          "Signposting",
+          "Chronology",
+        ],
+        accept: [
+          "Mnemonic",
+        ],
+        answer: "A mnemonic such as NOP (Nature, Origin, Purpose) helps you recall a set of points. Interleaving is mixing topics in a session; signposting guides the examiner.",
+      },
+      {
+        question: "What is writing down all you recall about a topic, then checking your notes, called?",
+        choices: [
+          "Highlighting",
+          "Interleaving",
+          "Rereading",
+          "Blurting",
+        ],
+        accept: [
+          "Blurting",
+        ],
+        answer: "Blurting is a kind of retrieval practice: the gaps you find show what to learn next. Rereading and highlighting feel easy but test nothing.",
+      },
+      {
+        question: "In the Leitner flashcard system, which cards do you review most often?",
+        choices: [
+          "Ones you got right",
+          "Ones you got wrong",
+          "The newest ones",
+          "The oldest ones",
+        ],
+        accept: [
+          "Ones you got wrong",
+        ],
+        answer: "Cards you get wrong go back to box one, reviewed often; cards you get right move to boxes reviewed less often. It builds in spaced practice.",
+      },
+      {
+        question: "In a mark scheme, what does a 'substantiated' judgement mean?",
+        choices: [
+          "Stated in the intro",
+          "Backed up by evidence",
+          "Balanced on both sides",
+          "Kept short and clear",
+        ],
+        accept: [
+          "Backed up by evidence",
+        ],
+        answer: "A substantiated judgement is supported with precise evidence and reasoning. A verdict simply announced at the end, with no support, scores less well.",
       },
     ],
 

@@ -1,5 +1,62 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## 1,000 more again, every subject but maths, and a daily-set repeat fixed (2026-11-10)
+
+Matthew: *"1000 more of the questions across all the subjects we have… we really lack questions for revision practice, also… for the alien game. Because… unless we put in maths the questions were largely repeating."*
+
+These are multiple-choice questions again, because one question does both jobs: it shows up in a topic's practice sets and in the game's pool. Maths already has 54 a topic, so it got none. Everything else was levelled up:
+
+    +5 a topic   Computer Science 275 → 400 · History 209 → 304 · Geography 187 → 272
+                 Business 260 → 390 · Citizenship 144 → 204 · RE 199 → 289
+                 PE 292 → 427 · English 297 → 375
+    +3 a topic   Spanish 308 → 362 · French 292 → 346 · German 217 → 253
+    +1 a topic   Biology 620 · Chemistry 578 · Physics 578
+
+**How they were written.** Eighteen writers worked from `BRIEF4.md`. That is batch 3's brief plus a section of what the last reviewers failed questions for:
+- joke distractors;
+- a stem word echoed in the right button;
+- three buttons starting "To…" and one not;
+- common-sense "which is good?" items;
+- pseudocode AND/OR presented as Python;
+- statistics with no year.
+
+The writers were also told to avoid asking the same FACT as an existing question, not just the same words.
+
+**Blind check.** Fourteen solvers re-solved every question blind. All keys were right. The one disagreement was the solver's own typing slip, which it owned. The id bug from batch 3 was fixed first: ids now include the subject.
+
+**The why-check found real errors:**
+- AQA Geography Paper 3 has six SPaG marks, not three;
+- "il faut is always followed by an infinitive";
+- "every translator produces machine code" (an interpreter doesn't);
+- "the plotters were hanged, drawn and quartered" (Catesby and Percy died at Holbeche House);
+- the 1912 setting of An Inspector Calls called "Edwardian";
+- short-term memory "a few seconds" (GCSE teaches about 30).
+
+About 50 more fixes were made:
+- **Giveaways:** for example "aimed to blow up the king" pointing at Gunpowder Plot.
+- **Ambiguities:** Slump and Recovery after a recession; "each section" of an RS paper.
+- **A date-sensitive question replaced:** statutory redundancy service is being reformed.
+- **Two A-level items swapped out:** Aquinas's precepts and Bentham's calculus.
+- **Two duplicates replaced:** Genesis day six asked twice, and Tradition asked twice.
+- **One Higher flag added:** lactic acid to the liver / oxygen debt.
+
+The rewrites were re-solved blind: 32 of 32.
+
+### ⚠️ Found on the way: today's practice could ask the same question twice
+
+`check-recommendation` failed after insertion: "student 123 was given the same question twice in one day". The new content didn't cause this. **Thirty-eight stems already appear word for word in two or more topics**, for example:
+- "Which of these is the odd one out?" in thirteen Spanish topics;
+- "In which year was the Treaty of Versailles signed?" in two History topics.
+
+`buildDailySet` drew per topic and never compared across topics. The added questions only moved which ones got drawn. It now skips anything already dealt that day. The game was already safe: `buildGameQuestions` de-duplicates by normalised text.
+
+The duplicates themselves were not touched. Rewording 38 established stems is a separate job.
+
+**Verified:**
+- `npm run check` fully green: **323,495** content and **57,813** game-question checks, with the recommendation suite back at 9,892.
+- New floors for all fifteen subjects. A floor raised by one fails.
+- All 285 topics keep the calculator state they had before.
+
 ## 1,000 more quick game questions, across every subject (2026-11-08)
 
 Matthew: *"make 1000 more across all the subjects we have"*. The brief is the same as the earlier batches. Most of the 1,000 went to the seven subjects that still had only five multiple-choice questions a topic, the minimum the checker allows. The other subjects got a top-up.

@@ -348,6 +348,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Improving something that already exists is innovation. Invention would be creating a brand new product that never existed before.",
       },
+      {
+        question: "Which factor of production completes the set of land, labour and capital?",
+        choices: [
+          "Profit",
+          "Enterprise",
+          "Technology",
+          "Finance",
+        ],
+        accept: [
+          "Enterprise",
+        ],
+        answer: "Enterprise is the skill and risk-taking of the entrepreneur who combines the other three. Finance is part of capital, not a separate factor.",
+      },
+      {
+        question: "A shop sells ready-made sandwiches at a busy station. How is it mainly adding value?",
+        choices: [
+          "Branding",
+          "Design",
+          "Convenience",
+          "Quality",
+        ],
+        accept: [
+          "Convenience",
+        ],
+        answer: "Customers pay extra because the food is ready and right where they need it. That is convenience, not a famous brand or a special design.",
+      },
+      {
+        question: "Sam spends his savings on a van instead of a holiday. What is the opportunity cost?",
+        choices: [
+          "The savings",
+          "The van",
+          "Fuel for the van",
+          "The holiday",
+        ],
+        accept: [
+          "The holiday",
+        ],
+        answer: "Opportunity cost is the next best alternative given up. Sam chose the van, so what he gave up is the holiday, not the money itself.",
+      },
+      {
+        question: "Which of these would most likely be a gym's USP?",
+        choices: [
+          "Town's only 24h gym",
+          "Has changing rooms",
+          "Sells sports drinks",
+          "Offers a free trial",
+        ],
+        accept: [
+          "Town's only 24h gym",
+        ],
+        answer: "A USP is something rivals do not offer. Most gyms have changing rooms, drinks and trials; being the only one open all night makes it stand out.",
+      },
+      {
+        question: "A trainer brand charges more because its name and logo are famous. How has it added value?",
+        choices: [
+          "Convenience",
+          "Branding",
+          "Design",
+          "Quality",
+        ],
+        accept: [
+          "Branding",
+        ],
+        answer: "A strong brand makes customers willing to pay more for the same kind of product. Better design or quality would be about the product itself, not its name.",
+      },
     ],
     misconceptions: [
       {
@@ -724,6 +789,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Ethical objectives are about doing what is morally right, such as treating suppliers fairly. The other three are financial objectives.",
       },
+      {
+        question: "What does the R in SMART objectives usually stand for?",
+        choices: [
+          "Reliable",
+          "Researched",
+          "Realistic",
+          "Rewarding",
+        ],
+        accept: [
+          "Realistic",
+        ],
+        answer: "Realistic means the target can actually be reached with the firm's resources. Some books use 'relevant' instead, but never 'reliable'.",
+      },
+      {
+        question: "Which of these objectives is SMART?",
+        choices: [
+          "Sell lots more units",
+          "Sell 500 units by June",
+          "Become the best café",
+          "Grow as fast as we can",
+        ],
+        accept: [
+          "Sell 500 units by June",
+        ],
+        answer: "It has a measurable number and a deadline. The others are vague hopes with no figure or time limit, so success cannot be checked.",
+      },
+      {
+        question: "A firm wants more staff, more branches and higher sales. Which aim is this?",
+        choices: [
+          "Survival",
+          "Growth",
+          "Profit",
+          "Ethical aims",
+        ],
+        accept: [
+          "Growth",
+        ],
+        answer: "Getting bigger in size, sales or outlets is growth. Survival is just staying in business, and growth often cuts profit in the short term.",
+      },
+      {
+        question: "Paying all staff well above the minimum wage may conflict with which aim?",
+        choices: [
+          "Staff retention",
+          "Ethical aims",
+          "Maximising profit",
+          "Customer satisfaction",
+        ],
+        accept: [
+          "Maximising profit",
+        ],
+        answer: "Higher wages raise costs, which cuts profit. They usually help staff retention and ethical aims rather than conflicting with them.",
+      },
+      {
+        question: "Which of these is a reason some sole traders avoid growing?",
+        choices: [
+          "To cut unit costs",
+          "To stay in control",
+          "To raise more capital",
+          "To win market share",
+        ],
+        accept: [
+          "To stay in control",
+        ],
+        answer: "Many owners prefer to stay small, keep control and avoid stress. Lower unit costs, more capital and more market share are reasons to grow.",
+      },
     ],
     misconceptions: [
       {
@@ -1073,6 +1203,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Market research",
         ],
         answer: "Research shows whether enough customers want the product at a price that covers costs. A gap may exist simply because nobody wants it.",
+      },
+      {
+        question: "If supply of a product rises and demand stays the same, what usually happens to price?",
+        choices: [
+          "It rises",
+          "It falls",
+          "It stays the same",
+          "It rises then falls",
+        ],
+        accept: [
+          "It falls",
+        ],
+        answer: "More goods chasing the same number of buyers means sellers cut prices to sell them. Price rises when demand grows faster than supply.",
+      },
+      {
+        question: "A café offers forty different cakes. Which customer need is it mainly meeting?",
+        choices: [
+          "Convenience",
+          "Price",
+          "Choice",
+          "Quality",
+        ],
+        accept: [
+          "Choice",
+        ],
+        answer: "A wide range gives customers choice. Quality is about how good each cake is, and convenience is about how easy it is to buy.",
+      },
+      {
+        question: "An ageing population most clearly creates an opportunity for which business?",
+        choices: [
+          "Care homes",
+          "Toy shops",
+          "Student flats",
+          "Baby clothes",
+        ],
+        accept: [
+          "Care homes",
+        ],
+        answer: "More older people means more demand for care, mobility aids and similar services. Toys, baby clothes and student flats depend on younger groups.",
+      },
+      {
+        question: "What does 'a market' mean in business?",
+        choices: [
+          "A high street shop",
+          "A group of rivals",
+          "Buyers meeting sellers",
+          "A firm's customers",
+        ],
+        accept: [
+          "Buyers meeting sellers",
+        ],
+        answer: "A market is anywhere buyers and sellers come together to trade, including online. It is not just one firm's customers or its rivals.",
+      },
+      {
+        question: "A bakery uses only organic flour and bakes by hand. Which customer need does it target?",
+        choices: [
+          "Quality",
+          "Price",
+          "Convenience",
+          "Choice",
+        ],
+        accept: [
+          "Quality",
+        ],
+        answer: "Better ingredients and methods meet the need for quality. They usually raise costs, so the bakery is not competing on low price.",
       },
     ],
     misconceptions: [
@@ -1424,6 +1619,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Primary research answers the business's own question and is up to date. Being cheap, quick and already available are advantages of secondary research.",
       },
+      {
+        question: "Which method lets a firm ask hundreds of people the same questions cheaply?",
+        choices: [
+          "Focus group",
+          "Online survey",
+          "Observation",
+          "Interview",
+        ],
+        accept: [
+          "Online survey",
+        ],
+        answer: "An online questionnaire reaches many people at low cost. Focus groups and interviews take time per person, and observation asks no questions.",
+      },
+      {
+        question: "Which of these is an open question?",
+        choices: [
+          "Do you shop here?",
+          "How old are you?",
+          "Why do you shop here?",
+          "Is the price fair?",
+        ],
+        accept: [
+          "Why do you shop here?",
+        ],
+        answer: "An open question lets people answer in their own words, giving qualitative data. The others have a fixed answer such as yes, no or a number.",
+      },
+      {
+        question: "Results that would come out much the same if the research were repeated are called what?",
+        choices: [
+          "Biased",
+          "Qualitative",
+          "Secondary",
+          "Reliable",
+        ],
+        accept: [
+          "Reliable",
+        ],
+        answer: "Reliable results can be trusted because they are consistent. A biased sample gives results that would change with a fairer group of people.",
+      },
+      {
+        question: "What is a common drawback of a focus group?",
+        choices: [
+          "Only gives numbers",
+          "Small sample size",
+          "Data may be outdated",
+          "No follow-up questions",
+        ],
+        accept: [
+          "Small sample size",
+        ],
+        answer: "A focus group is only a handful of people, so they may not represent the whole market. It gives opinions, not just numbers, and allows follow-ups.",
+      },
+      {
+        question: "Under data protection law, customers' personal data must be:",
+        choices: [
+          "Kept forever",
+          "Shared freely",
+          "Kept secure",
+          "Published online",
+        ],
+        accept: [
+          "Kept secure",
+        ],
+        answer: "Firms must store personal data safely and use it only for the stated purpose. They should keep it no longer than needed, not forever.",
+      },
     ],
     misconceptions: [
       {
@@ -1769,6 +2029,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "A product range is everything the firm offers. A wide range can serve several segments; a market map instead shows where rival products sit.",
       },
+      {
+        question: "A market's value rises from £2 million to £2.2 million in a year. What is the market growth?",
+        choices: [
+          "2%",
+          "20%",
+          "10%",
+          "0.2%",
+        ],
+        accept: [
+          "10%",
+        ],
+        answer: "The rise of £0.2 million is one tenth of the starting £2 million, so growth is ten per cent. Always divide the change by the original value.",
+      },
+      {
+        question: "What is a main drawback of targeting a mass market?",
+        choices: [
+          "Lots of competition",
+          "Very few customers",
+          "Can't sell in bulk",
+          "No brand awareness",
+        ],
+        accept: [
+          "Lots of competition",
+        ],
+        answer: "Mass markets attract many big rivals, so it is hard to stand out. Having very few customers is a drawback of a niche, not a mass market.",
+      },
+      {
+        question: "If a market's value falls year after year, what does this show?",
+        choices: [
+          "Prices are rising",
+          "Market is shrinking",
+          "More firms entering",
+          "Our share is rising",
+        ],
+        accept: [
+          "Market is shrinking",
+        ],
+        answer: "Falling market value means customers are spending less in that market overall. One firm's market share could still rise inside a shrinking market.",
+      },
+      {
+        question: "Why does a business offer a wide product range?",
+        choices: [
+          "To lower all costs",
+          "To avoid competition",
+          "To serve more segments",
+          "To simplify production",
+        ],
+        accept: [
+          "To serve more segments",
+        ],
+        answer: "Different products suit different groups of customers, so a range reaches more segments and spreads risk. It usually makes production more complex, not simpler.",
+      },
+      {
+        question: "What is a main benefit of targeting a niche market?",
+        choices: [
+          "Huge sales volumes",
+          "Lower unit costs",
+          "Less competition",
+          "Cheap mass adverts",
+        ],
+        accept: [
+          "Less competition",
+        ],
+        answer: "Fewer firms serve a niche, so a business can stand out and often charge higher prices. Huge volumes and low unit costs belong to mass markets.",
+      },
     ],
     misconceptions: [
       {
@@ -2113,6 +2438,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "A proven brand",
         ],
         answer: "A franchise comes with a known brand and tested methods, so it is less risky. But franchisees pay fees and royalties and must follow the franchisor's rules.",
+      },
+      {
+        question: "Who manages a limited company day to day on behalf of its shareholders?",
+        choices: [
+          "Creditors",
+          "Franchisees",
+          "Directors",
+          "Customers",
+        ],
+        accept: [
+          "Directors",
+        ],
+        answer: "Shareholders own the company and appoint directors to run it. In a small Ltd the same people may be both, but the roles are different.",
+      },
+      {
+        question: "What is a sleeping partner?",
+        choices: [
+          "Active but no money",
+          "Invests but not active",
+          "Owns under 10%",
+          "A former partner",
+        ],
+        accept: [
+          "Invests but not active",
+        ],
+        answer: "A sleeping partner puts money into the partnership and shares the profits but takes no part in running it. They still share the unlimited liability.",
+      },
+      {
+        question: "If partners have no deed of partnership, how are profits shared by law?",
+        choices: [
+          "By hours worked",
+          "By money invested",
+          "By seniority",
+          "Equally",
+        ],
+        accept: [
+          "Equally",
+        ],
+        answer: "Without a deed, the Partnership Act 1890 applies and profits are split equally. A deed lets partners agree a different split, such as by investment.",
+      },
+      {
+        question: "Which of these owners has unlimited liability?",
+        choices: [
+          "A plc shareholder",
+          "A sole trader",
+          "A Ltd shareholder",
+          "A company director",
+        ],
+        accept: [
+          "A sole trader",
+        ],
+        answer: "A sole trader is not a separate legal entity, so personal assets can be taken to pay business debts. Shareholders in Ltds and plcs have limited liability.",
+      },
+      {
+        question: "What does a social enterprise mainly do with its profit?",
+        choices: [
+          "Pays it to owners",
+          "Puts it into its cause",
+          "Gives it to the state",
+          "Shares it with staff",
+        ],
+        accept: [
+          "Puts it into its cause",
+        ],
+        answer: "A social enterprise trades to make profit, then reinvests most of it in its social or environmental aim rather than paying it out to owners.",
       },
     ],
     misconceptions: [
@@ -2464,6 +2854,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "A sandwich shop relies on people walking past. A plumber goes to customers, an online bank trades on the internet and a quarry must be near its rock.",
       },
+      {
+        question: "Why do bakeries making fresh bread usually locate close to their customers?",
+        choices: [
+          "Rent is cheaper there",
+          "Goods are perishable",
+          "Raw materials nearby",
+          "Grants are offered",
+        ],
+        accept: [
+          "Goods are perishable",
+        ],
+        answer: "Fresh bread goes stale quickly, so it must reach customers fast. Being near raw materials matters more for bulky goods that lose weight when made.",
+      },
+      {
+        question: "A rural site has cheap land. What could still make it a poor choice for a factory?",
+        choices: [
+          "Low business rates",
+          "Quiet surroundings",
+          "Poor road links",
+          "Plenty of space",
+        ],
+        accept: [
+          "Poor road links",
+        ],
+        answer: "Weak infrastructure, such as bad roads or slow internet, raises transport costs and delays. Low rates and plenty of space are advantages, not problems.",
+      },
+      {
+        question: "Which location would best suit a large furniture superstore?",
+        choices: [
+          "High street",
+          "Industrial estate",
+          "Village centre",
+          "Retail park",
+        ],
+        accept: [
+          "Retail park",
+        ],
+        answer: "Retail parks offer big units, free parking and road access for shoppers taking bulky items home. Industrial estates suit factories, not shoppers.",
+      },
+      {
+        question: "In location decisions, what does 'proximity' mean?",
+        choices: [
+          "How busy it is",
+          "How big it is",
+          "How close it is",
+          "How costly it is",
+        ],
+        accept: [
+          "How close it is",
+        ],
+        answer: "Proximity means nearness, for example to customers, suppliers or workers. How busy a place is would be footfall.",
+      },
+      {
+        question: "Which cost is most likely to rise if a firm moves far away from its customers?",
+        choices: [
+          "Business rates",
+          "Transport costs",
+          "Rent",
+          "Raw materials",
+        ],
+        accept: [
+          "Transport costs",
+        ],
+        answer: "Goods must travel further to reach buyers, so distribution costs go up. Rent and rates depend on the site itself, and are often lower further out.",
+      },
     ],
     misconceptions: [
       {
@@ -2810,6 +3265,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Portfolio",
         ],
         answer: "A balanced portfolio means profits from mature products can fund new ones still in introduction or growth, spreading the risk.",
+      },
+      {
+        question: "At which product life cycle stage do sales start to fall?",
+        choices: [
+          "Maturity",
+          "Growth",
+          "Introduction",
+          "Decline",
+        ],
+        accept: [
+          "Decline",
+        ],
+        answer: "In decline, sales fall as tastes change or newer products arrive. In maturity sales are at their peak and levelling off, not yet falling.",
+      },
+      {
+        question: "Handing out free samples belongs to which P of the marketing mix?",
+        choices: [
+          "Price",
+          "Product",
+          "Promotion",
+          "Place",
+        ],
+        accept: [
+          "Promotion",
+        ],
+        answer: "Free samples are a sales promotion, used to get people to try the product. Place is about where and how it is sold.",
+      },
+      {
+        question: "Which pricing method is based mainly on the firm's own costs?",
+        choices: [
+          "Cost-plus",
+          "Competitive",
+          "Psychological",
+          "Penetration",
+        ],
+        accept: [
+          "Cost-plus",
+        ],
+        answer: "Cost-plus adds a mark-up to unit cost, so it starts from the firm's costs. Competitive and penetration pricing start from rivals'; psychological picks a price that feels cheap.",
+      },
+      {
+        question: "Which P of the marketing mix covers design, features and quality?",
+        choices: [
+          "Product",
+          "Price",
+          "Place",
+          "Promotion",
+        ],
+        accept: [
+          "Product",
+        ],
+        answer: "Product is what is being sold: its design, features, quality and packaging. Promotion is how customers are told about it.",
+      },
+      {
+        question: "Why do businesses use psychological pricing?",
+        choices: [
+          "To cover all costs",
+          "To make it seem cheap",
+          "To match rivals",
+          "To win share fast",
+        ],
+        accept: [
+          "To make it seem cheap",
+        ],
+        answer: "A price just under a round number feels much lower to shoppers. Matching rivals is competitive pricing; winning share fast is penetration.",
       },
     ],
     misconceptions: [
@@ -3195,6 +3715,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "£15,000",
         ],
         answer: "Profit is revenue minus total costs, so total costs are revenue minus profit: twenty thousand take away five thousand is fifteen thousand.",
+      },
+      {
+        question: "If output doubles, what happens to fixed costs in the short run?",
+        choices: [
+          "They double",
+          "They halve",
+          "They stay the same",
+          "They rise slightly",
+        ],
+        accept: [
+          "They stay the same",
+        ],
+        answer: "Fixed costs such as rent do not change with output. It is total variable costs that double, and fixed cost per unit actually falls.",
+      },
+      {
+        question: "Unit cost is total costs divided by what?",
+        choices: [
+          "Selling price",
+          "Units produced",
+          "Fixed costs",
+          "Revenue",
+        ],
+        accept: [
+          "Units produced",
+        ],
+        answer: "Unit cost is the average cost of making one item: total costs shared over the number made. Dividing by price or revenue gives nothing useful.",
+      },
+      {
+        question: "Revenue is £10,000 and total costs are £12,000. What is the result?",
+        choices: [
+          "£2,000 profit",
+          "£2,000 loss",
+          "£22,000 loss",
+          "Break-even",
+        ],
+        accept: [
+          "£2,000 loss",
+        ],
+        answer: "Costs are £2,000 more than revenue, so the firm makes a £2,000 loss. Adding the two figures together is a common slip.",
+      },
+      {
+        question: "Interest paid on a loan is deducted when working out which figure?",
+        choices: [
+          "Gross profit",
+          "Cost of sales",
+          "Net profit",
+          "Revenue",
+        ],
+        accept: [
+          "Net profit",
+        ],
+        answer: "Gross profit only takes away cost of sales. Interest and other expenses are taken off afterwards to reach net profit.",
+      },
+      {
+        question: "An item costs £4 to make and sells for £5. What is the mark-up?",
+        choices: [
+          "20%",
+          "80%",
+          "1%",
+          "25%",
+        ],
+        accept: [
+          "25%",
+        ],
+        answer: "Mark-up compares the £1 profit with the £4 cost: a quarter, so 25%. Comparing the £1 with the £5 price gives the 20% profit margin instead.",
       },
     ],
     misconceptions: [
@@ -3591,6 +4176,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "To the right of break-even, revenue is above total costs and the gap is profit. To the left, costs are above revenue and the gap is a loss.",
       },
+      {
+        question: "On a break-even chart, where does the total revenue line start?",
+        choices: [
+          "At fixed costs",
+          "At zero",
+          "At variable costs",
+          "At break-even",
+        ],
+        accept: [
+          "At zero",
+        ],
+        answer: "With no sales there is no revenue, so the line starts at the origin. It is the total cost line that starts at the level of fixed costs.",
+      },
+      {
+        question: "Before a firm makes any profit, contribution must first cover what?",
+        choices: [
+          "Variable costs",
+          "Tax",
+          "Fixed costs",
+          "Dividends",
+        ],
+        accept: [
+          "Fixed costs",
+        ],
+        answer: "Contribution is what is left after variable costs. It goes towards fixed costs first; once those are covered, the rest is profit.",
+      },
+      {
+        question: "Which is a key limitation of break-even analysis?",
+        choices: [
+          "Ignores fixed costs",
+          "Ignores the price",
+          "Assumes all goods sell",
+          "Only suits services",
+        ],
+        accept: [
+          "Assumes all goods sell",
+        ],
+        answer: "It assumes everything made is sold at one fixed price and that costs stay the same. It does include fixed costs and price, and suits goods too.",
+      },
+      {
+        question: "Total contribution minus fixed costs equals what?",
+        choices: [
+          "Revenue",
+          "Variable costs",
+          "Break-even output",
+          "Profit",
+        ],
+        accept: [
+          "Profit",
+        ],
+        answer: "Once fixed costs are taken from total contribution, what is left is profit, or a loss if negative. At break-even this figure is exactly zero.",
+      },
+      {
+        question: "Break-even is 400 units but the firm only sells 300. What does it make?",
+        choices: [
+          "A loss",
+          "A profit",
+          "No revenue",
+          "Zero profit",
+        ],
+        accept: [
+          "A loss",
+        ],
+        answer: "Below break-even, revenue is less than total costs, so the firm makes a loss. It still earns revenue from the units it does sell.",
+      },
     ],
     misconceptions: [
       {
@@ -3965,6 +4615,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Net cash flow is inflows minus outflows, which is £200. Add it to the opening £500 to get a closing balance of £700.",
       },
+      {
+        question: "What does a negative closing balance on a cash flow forecast mean?",
+        choices: [
+          "Making a loss",
+          "Overdrawn at the bank",
+          "Customers owe money",
+          "Profit is falling",
+        ],
+        accept: [
+          "Overdrawn at the bank",
+        ],
+        answer: "It means the firm expects to have less than nothing in the bank, so it needs an overdraft. It does not mean the business is making a loss.",
+      },
+      {
+        question: "Giving customers longer to pay has what effect on cash flow?",
+        choices: [
+          "Delays outflows",
+          "Raises profit",
+          "Delays inflows",
+          "Cuts costs",
+        ],
+        accept: [
+          "Delays inflows",
+        ],
+        answer: "Cash from sales arrives later, which can leave the firm short. Getting longer to pay suppliers is what delays outflows.",
+      },
+      {
+        question: "Which is the main reason a cash flow forecast can be inaccurate?",
+        choices: [
+          "It ignores outflows",
+          "Sales are estimates",
+          "It only shows profit",
+          "It is set monthly",
+        ],
+        accept: [
+          "Sales are estimates",
+        ],
+        answer: "A forecast is a prediction, so sales and costs may differ from what really happens. It includes outflows and shows cash, not profit.",
+      },
+      {
+        question: "Why do banks often ask a start-up for a cash flow forecast?",
+        choices: [
+          "To value its shares",
+          "To set its tax bill",
+          "To check it can repay",
+          "To work out its profit",
+        ],
+        accept: [
+          "To check it can repay",
+        ],
+        answer: "The forecast shows whether enough cash will come in to meet repayments. It shows cash, not profit, which needs a separate statement.",
+      },
+      {
+        question: "What is a main drawback of using an overdraft to fix a cash shortage?",
+        choices: [
+          "Loss of ownership",
+          "High interest",
+          "Must sell assets",
+          "Takes years to set up",
+        ],
+        accept: [
+          "High interest",
+        ],
+        answer: "Overdrafts usually charge high interest and the bank can withdraw them. Losing ownership is a drawback of selling shares, not of borrowing.",
+      },
     ],
     misconceptions: [
       {
@@ -4314,6 +5029,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "No trading record",
         ],
         answer: "With no past accounts, the bank cannot tell whether the loan will be repaid, so start-ups are seen as risky and may need collateral.",
+      },
+      {
+        question: "What is a main drawback of retained profit as a source of finance?",
+        choices: [
+          "Must be repaid",
+          "Start-ups have none",
+          "Charges interest",
+          "Gives away shares",
+        ],
+        accept: [
+          "Start-ups have none",
+        ],
+        answer: "A new or loss-making firm has no past profit to use. Retained profit is the firm's own money (internal finance), so it has no interest and no repayments.",
+      },
+      {
+        question: "What is an advantage of leasing equipment?",
+        choices: [
+          "You own it at the end",
+          "No big upfront cost",
+          "Cheaper over time",
+          "No contract needed",
+        ],
+        accept: [
+          "No big upfront cost",
+        ],
+        answer: "Leasing spreads the cost into regular payments. It often costs more in total, and you usually don't own the item at the end; owning it is hire purchase.",
+      },
+      {
+        question: "What is the interest on a bank loan?",
+        choices: [
+          "A share of profit",
+          "The cost of borrowing",
+          "A tax on loans",
+          "A repayment holiday",
+        ],
+        accept: [
+          "The cost of borrowing",
+        ],
+        answer: "Interest is the extra charge paid to the lender for using its money. A share of profit paid to shareholders is a dividend.",
+      },
+      {
+        question: "Which business is most likely to attract venture capital?",
+        choices: [
+          "Local corner shop",
+          "Village hairdresser",
+          "Fast-growing tech firm",
+          "Family-run pub",
+        ],
+        accept: [
+          "Fast-growing tech firm",
+        ],
+        answer: "Venture capitalists take big risks for a big share, so they look for firms that could grow very fast. Steady local shops rarely offer that return.",
+      },
+      {
+        question: "Which source of finance is normally repaid in fixed monthly instalments?",
+        choices: [
+          "Overdraft",
+          "Share capital",
+          "Bank loan",
+          "Retained profit",
+        ],
+        accept: [
+          "Bank loan",
+        ],
+        answer: "A bank loan is repaid with interest in set amounts over an agreed time. Share capital and retained profit are never repaid, and overdrafts vary.",
       },
     ],
     misconceptions: [
@@ -4665,6 +5445,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Pressure group",
         ],
         answer: "A pressure group campaigns to change business behaviour, often through boycotts and bad publicity. A trade union represents workers over pay and conditions.",
+      },
+      {
+        question: "Which stakeholder lends money and wants it repaid with interest?",
+        choices: [
+          "Suppliers",
+          "Banks",
+          "Customers",
+          "Employees",
+        ],
+        accept: [
+          "Banks",
+        ],
+        answer: "Banks and other lenders want regular repayments and interest. Suppliers may give trade credit, but they want payment for goods, not interest.",
+      },
+      {
+        question: "Which stakeholder sets the laws that businesses must follow?",
+        choices: [
+          "Pressure groups",
+          "Trade unions",
+          "Shareholders",
+          "Government",
+        ],
+        accept: [
+          "Government",
+        ],
+        answer: "Government passes laws on things like minimum wage, safety and pollution. Pressure groups and unions can campaign, but cannot make laws.",
+      },
+      {
+        question: "How does a pressure group mainly try to influence a business?",
+        choices: [
+          "Bad publicity",
+          "Voting at meetings",
+          "Passing new laws",
+          "Pay bargaining",
+        ],
+        accept: [
+          "Bad publicity",
+        ],
+        answer: "Pressure groups use campaigns, protests and boycotts to harm a firm's reputation. Voting is for shareholders and pay bargaining is for trade unions.",
+      },
+      {
+        question: "A firm switches to costlier recycled packaging. Which stakeholder may object?",
+        choices: [
+          "Pressure groups",
+          "Shareholders",
+          "Local community",
+          "Government",
+        ],
+        accept: [
+          "Shareholders",
+        ],
+        answer: "Higher costs can mean lower profit and dividends, so shareholders may object. Pressure groups and the community are more likely to welcome the change.",
+      },
+      {
+        question: "Why do customers have more power when there are many rival firms?",
+        choices: [
+          "They own shares",
+          "They can switch easily",
+          "They set the prices",
+          "They make the laws",
+        ],
+        accept: [
+          "They can switch easily",
+        ],
+        answer: "With plenty of alternatives, unhappy customers simply buy elsewhere, so firms must keep them satisfied. Customers do not own or regulate the business.",
       },
     ],
     misconceptions: [
@@ -5033,6 +5878,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Horizontal integration joins firms at the same stage, such as two car makers. Vertical integration joins firms at different stages of the supply chain.",
       },
+      {
+        question: "Large firms can often borrow more cheaply. Which economy of scale is this?",
+        choices: [
+          "Purchasing",
+          "Technical",
+          "Financial",
+          "Marketing",
+        ],
+        accept: [
+          "Financial",
+        ],
+        answer: "Banks see big firms as lower risk, so they lend at lower interest rates. Purchasing economies come from bulk-buying discounts on materials, not from borrowing.",
+      },
+      {
+        question: "Which of these is an example of external growth?",
+        choices: [
+          "Opening a new branch",
+          "Buying a rival firm",
+          "Launching a product",
+          "Hiring more staff",
+        ],
+        accept: [
+          "Buying a rival firm",
+        ],
+        answer: "External growth means joining with or buying another business. Opening branches, launching products and hiring staff all use the firm's own resources, so they are organic growth.",
+      },
+      {
+        question: "What is the main benefit to a firm of horizontal integration?",
+        choices: [
+          "A secure supply",
+          "Spreading its risk",
+          "Control of retailers",
+          "Higher market share",
+        ],
+        accept: [
+          "Higher market share",
+        ],
+        answer: "Joining a firm at the same stage removes a competitor and adds its customers. A secure supply comes from backward vertical integration; spreading risk comes from diversifying.",
+      },
+      {
+        question: "Which of these is a common problem straight after a merger?",
+        choices: [
+          "Purchasing economies",
+          "Clashing cultures",
+          "A wider product range",
+          "A bigger market share",
+        ],
+        accept: [
+          "Clashing cultures",
+        ],
+        answer: "Two firms with different ways of working, systems and values often struggle to combine. The other three are benefits a merger is meant to bring.",
+      },
+      {
+        question: "To take over a company, what proportion of its shares does a buyer usually need?",
+        choices: [
+          "Exactly a quarter",
+          "Over half",
+          "About a tenth",
+          "Every single share",
+        ],
+        accept: [
+          "Over half",
+        ],
+        answer: "Owning more than half the shares gives a controlling interest, so the buyer can outvote the other shareholders on most decisions. It need not buy every share.",
+      },
     ],
     misconceptions: [
       {
@@ -5382,6 +6292,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "UK shoe makers",
         ],
         answer: "The tariff makes imported shoes dearer, so home-made shoes look better value. UK buyers and importers lose out through higher prices.",
+      },
+      {
+        question: "In SPICED, what does the I stand for?",
+        choices: [
+          "Inflation",
+          "Interest",
+          "Imports",
+          "Investment",
+        ],
+        accept: [
+          "Imports",
+        ],
+        answer: "SPICED is Strong Pound, Imports Cheap, Exports Dear. A strong pound buys more foreign currency, so goods bought from abroad cost UK firms less.",
+      },
+      {
+        question: "A government bans all trade with another country. What is this called?",
+        choices: [
+          "A quota",
+          "An embargo",
+          "A tariff",
+          "A trade bloc",
+        ],
+        accept: [
+          "An embargo",
+        ],
+        answer: "An embargo stops trade completely. A quota only limits the quantity of imports, and a tariff is a tax on them; a trade bloc is a group of countries that trade freely.",
+      },
+      {
+        question: "The pound goes from buying $1.20 to buying $1.40. What has happened?",
+        choices: [
+          "Pound has weakened",
+          "A tariff was added",
+          "Pound has strengthened",
+          "Exports got cheaper",
+        ],
+        accept: [
+          "Pound has strengthened",
+        ],
+        answer: "Each pound now buys more dollars, so its value has risen. That makes UK exports dearer for American buyers, not cheaper, and makes imports from the USA cheaper.",
+      },
+      {
+        question: "A strong pound is most likely to harm which UK business?",
+        choices: [
+          "One that imports",
+          "One that exports",
+          "One that offshores",
+          "One that outsources",
+        ],
+        accept: [
+          "One that exports",
+        ],
+        answer: "A strong pound makes UK goods dearer for foreign buyers, so exporters lose sales. Firms that import or offshore production find their costs fall.",
+      },
+      {
+        question: "Removing tariffs between countries most likely gives UK consumers what?",
+        choices: [
+          "Cheaper imports",
+          "Dearer imports",
+          "Fewer imports",
+          "A weaker pound",
+        ],
+        accept: [
+          "Cheaper imports",
+        ],
+        answer: "A tariff is a tax that pushes up the price of imports. Take it away and foreign goods get cheaper, giving consumers lower prices and more choice.",
       },
     ],
     misconceptions: [
@@ -5733,6 +6708,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Exhaust from vans is a delivery firm's biggest source of emissions, so electric vans cut most. Packaging, lighting and paper savings help, but far less.",
       },
+      {
+        question: "A shop owner hides some cash sales from HMRC. What is this?",
+        choices: [
+          "Tax avoidance",
+          "Greenwashing",
+          "Tax evasion",
+          "Profit sharing",
+        ],
+        accept: [
+          "Tax evasion",
+        ],
+        answer: "Hiding income to pay less tax is illegal, so it is evasion. Tax avoidance uses legal methods, such as claiming allowances, to cut a tax bill.",
+      },
+      {
+        question: "Which of these is an example of greenwashing?",
+        choices: [
+          "Recycled packaging",
+          "Solar panels on roofs",
+          "Unbacked 'eco' claims",
+          "Fewer delivery miles",
+        ],
+        accept: [
+          "Unbacked 'eco' claims",
+        ],
+        answer: "Greenwashing is making environmental claims that are misleading or can't be backed up. The other three are real changes that cut a firm's environmental impact.",
+      },
+      {
+        question: "A firm pays staff well above the legal minimum wage. What is this?",
+        choices: [
+          "A legal duty",
+          "Tax avoidance",
+          "Greenwashing",
+          "An ethical choice",
+        ],
+        accept: [
+          "An ethical choice",
+        ],
+        answer: "The law only sets the minimum wage, so paying more goes beyond the legal minimum. Doing what is morally right beyond the law is what makes a decision ethical.",
+      },
+      {
+        question: "Customers refusing to buy from a firm in protest is called what?",
+        choices: [
+          "A strike",
+          "A boycott",
+          "A petition",
+          "A recall",
+        ],
+        accept: [
+          "A boycott",
+        ],
+        answer: "Pressure groups often organise boycotts to hit a firm's sales and reputation. A strike is when workers refuse to work, not when customers refuse to buy.",
+      },
+      {
+        question: "Which of these is a social ethical issue rather than an environmental one?",
+        choices: [
+          "Packaging waste",
+          "Carbon emissions",
+          "Workers' pay",
+          "River pollution",
+        ],
+        accept: [
+          "Workers' pay",
+        ],
+        answer: "Pay and working conditions are about how a firm treats people, so they are social issues. Waste, emissions and pollution are about the firm's impact on the environment.",
+      },
     ],
     misconceptions: [
       {
@@ -6077,6 +7117,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Disposable income",
         ],
         answer: "Disposable income is what is left after tax, so higher tax leaves less to spend. Businesses then see demand fall, especially for luxuries.",
+      },
+      {
+        question: "When interest rates rise, what usually happens to household saving?",
+        choices: [
+          "It tends to fall",
+          "It tends to rise",
+          "It is unaffected",
+          "It moves abroad",
+        ],
+        accept: [
+          "It tends to rise",
+        ],
+        answer: "Higher rates mean savers earn more interest, so saving becomes more attractive than spending. This is another reason demand falls when interest rates go up.",
+      },
+      {
+        question: "In the business cycle, which stage follows the lowest point of the cycle?",
+        choices: [
+          "Boom",
+          "Slowdown",
+          "Recovery",
+          "Downturn",
+        ],
+        accept: [
+          "Recovery",
+        ],
+        answer: "After the lowest point (the trough of a recession or slump) comes recovery, as output and jobs start to grow again. A downturn is the slide towards recession.",
+      },
+      {
+        question: "UK inflation is higher than abroad. What happens to UK exports?",
+        choices: [
+          "More competitive",
+          "Less competitive",
+          "Exempt from tariffs",
+          "Unaffected by it",
+        ],
+        accept: [
+          "Less competitive",
+        ],
+        answer: "Faster rising costs push UK prices up compared with foreign rivals, so overseas buyers switch to cheaper alternatives and UK exporters lose sales.",
+      },
+      {
+        question: "The government raises VAT. What is most likely to happen?",
+        choices: [
+          "Higher take-home pay",
+          "Lower interest rates",
+          "Higher shop prices",
+          "Higher company profits",
+        ],
+        accept: [
+          "Higher shop prices",
+        ],
+        answer: "VAT is added to the price of most goods and services, so a rise pushes prices up and demand tends to fall. Take-home pay is affected by income tax, not VAT.",
+      },
+      {
+        question: "Prices rise faster than a worker's pay. What happens to their real income?",
+        choices: [
+          "It falls",
+          "It rises",
+          "It is unchanged",
+          "It is taxed more",
+        ],
+        accept: [
+          "It falls",
+        ],
+        answer: "Real income is what your pay can actually buy. If prices outpace pay, the same wage buys less, so people cut back on spending, especially on luxuries.",
       },
     ],
     misconceptions: [
@@ -6427,6 +7532,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Kept secure",
         ],
         answer: "Data must be kept secure, used fairly and held no longer than needed. The law doesn't demand paper copies, a fixed 30 days or UK-only storage.",
+      },
+      {
+        question: "The main UK Health and Safety at Work Act dates from which year?",
+        choices: [
+          "2010",
+          "1974",
+          "2015",
+          "2018",
+        ],
+        accept: [
+          "1974",
+        ],
+        answer: "The Health and Safety at Work Act 1974 makes employers protect staff and visitors. 2010 is the Equality Act, 2015 the Consumer Rights Act and 2018 the Data Protection Act.",
+      },
+      {
+        question: "Which of these is a fair reason for dismissing an employee?",
+        choices: [
+          "Gross misconduct",
+          "Pregnancy",
+          "Joining a trade union",
+          "Their age",
+        ],
+        accept: [
+          "Gross misconduct",
+        ],
+        answer: "Serious wrongdoing such as theft or violence is a fair reason to dismiss. Dismissing someone for pregnancy, union membership or age is automatically unfair or discriminatory.",
+      },
+      {
+        question: "Data protection law gives customers the right to see what?",
+        choices: [
+          "The firm's accounts",
+          "Data held about them",
+          "Staff pay records",
+          "Supplier contracts",
+        ],
+        accept: [
+          "Data held about them",
+        ],
+        answer: "People can ask a business for a copy of the personal data it holds on them. It gives no right to see the firm's accounts, other people's pay or its contracts.",
+      },
+      {
+        question: "Which refund is a legal right when you buy something in a shop?",
+        choices: [
+          "Change-of-mind refund",
+          "Unwanted gift refund",
+          "Faulty item refund",
+          "Price drop refund",
+        ],
+        accept: [
+          "Faulty item refund",
+        ],
+        answer: "The Consumer Rights Act protects you when goods are faulty. Returning something you don't want, or that later went on sale, depends on the shop's own policy.",
+      },
+      {
+        question: "Which law gives employees a right to be paid at least a set hourly rate?",
+        choices: [
+          "Minimum Wage Act",
+          "Equality Act",
+          "Health & Safety Act",
+          "Consumer Rights Act",
+        ],
+        accept: [
+          "Minimum Wage Act",
+        ],
+        answer: "The National Minimum Wage Act sets a legal minimum hourly pay, which rises with age bands. Equality law covers discrimination; consumer law covers buyers.",
       },
     ],
     misconceptions: [
@@ -6786,6 +7956,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Productivity is output per worker. Dividing total costs by output gives unit cost, which is a different measure.",
       },
+      {
+        question: "A factory makes 800 units but could make 1,000. What is its capacity utilisation?",
+        choices: [
+          "20%",
+          "80%",
+          "125%",
+          "8%",
+        ],
+        accept: [
+          "80%",
+        ],
+        answer: "Capacity utilisation is current output as a percentage of maximum output. 800 out of 1,000 is 80%. 20% is the spare capacity, not the amount being used.",
+      },
+      {
+        question: "A factory runs at very low capacity utilisation. What is the likely result?",
+        choices: [
+          "Lower unit costs",
+          "Higher unit costs",
+          "Too much overtime",
+          "Not enough machines",
+        ],
+        accept: [
+          "Higher unit costs",
+        ],
+        answer: "Fixed costs such as rent and machinery are spread over fewer units, so each unit costs more to make. Overtime and machine shortages come with running close to full capacity.",
+      },
+      {
+        question: "What is the main benefit of batch production over job production?",
+        choices: [
+          "More customisation",
+          "No machine resets",
+          "Lower unit costs",
+          "Higher prices charged",
+        ],
+        accept: [
+          "Lower unit costs",
+        ],
+        answer: "Making items in groups spreads set-up time and allows some bulk buying, so each unit is cheaper. Job production gives more customisation; batch still needs resets between runs.",
+      },
+      {
+        question: "Automating a production line most often cuts which cost per unit?",
+        choices: [
+          "Machinery cost",
+          "Labour cost",
+          "Energy cost",
+          "Training cost",
+        ],
+        accept: [
+          "Labour cost",
+        ],
+        answer: "Machines replace workers, so wages per unit fall. Machinery costs go up, often by a lot at the start, which is the main drawback of automation.",
+      },
+      {
+        question: "Mass production is another name for which production method?",
+        choices: [
+          "Job production",
+          "Batch production",
+          "Lean production",
+          "Flow production",
+        ],
+        accept: [
+          "Flow production",
+        ],
+        answer: "Flow production makes huge numbers of identical items continuously on a line. Lean production is about cutting waste and can be used with any method.",
+      },
     ],
     misconceptions: [
       {
@@ -7136,6 +8371,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Reliable deliveries stop production halting and customers waiting. Quality is about whether the goods themselves are free of faults.",
       },
+      {
+        question: "On a stock control chart, what does a sudden vertical rise in stock show?",
+        choices: [
+          "Stock being used",
+          "An order being placed",
+          "A delivery arriving",
+          "Stock being stolen",
+        ],
+        accept: [
+          "A delivery arriving",
+        ],
+        answer: "Stock jumps up all at once when a delivery arrives. The sloping line going down shows stock being used; an order is placed earlier, at the re-order level.",
+      },
+      {
+        question: "Which business most needs careful stock rotation?",
+        choices: [
+          "A hardware shop",
+          "A greengrocer",
+          "A bookshop",
+          "A phone shop",
+        ],
+        accept: [
+          "A greengrocer",
+        ],
+        answer: "Fruit and vegetables go off quickly, so the oldest stock must be sold first to avoid wastage. Tools, books and phones don't go out of date in days.",
+      },
+      {
+        question: "What is the main benefit of choosing a local supplier?",
+        choices: [
+          "Bigger bulk discounts",
+          "Shorter lead times",
+          "Longer credit terms",
+          "A wider product range",
+        ],
+        accept: [
+          "Shorter lead times",
+        ],
+        answer: "Being close means deliveries arrive faster and more reliably. Big discounts and wide ranges usually come from large national or overseas suppliers instead.",
+      },
+      {
+        question: "What is it called when a business runs out of stock completely?",
+        choices: [
+          "A stock-out",
+          "Wastage",
+          "Buffer stock",
+          "Lead time",
+        ],
+        accept: [
+          "A stock-out",
+        ],
+        answer: "A stock-out means lost sales and possibly stopped production. Buffer stock is held precisely to stop this happening when a delivery is late.",
+      },
+      {
+        question: "Usage is 100 units a day, lead time 3 days, buffer 200. What is the re-order level?",
+        choices: [
+          "300",
+          "500",
+          "200",
+          "600",
+        ],
+        accept: [
+          "500",
+        ],
+        answer: "You need three days of usage (300 units) to last until delivery, plus the 200 buffer, so you re-order at 500. Ordering at 300 would eat into the buffer stock.",
+      },
     ],
     misconceptions: [
       {
@@ -7480,6 +8780,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "A quality standard",
         ],
         answer: "It shows customers the firm's quality systems have been independently checked. A warranty is a promise to repair or replace one product.",
+      },
+      {
+        question: "In business, a quality product is one that meets what?",
+        choices: [
+          "The highest spec",
+          "Customer expectations",
+          "The lowest price",
+          "Competitors' designs",
+        ],
+        accept: [
+          "Customer expectations",
+        ],
+        answer: "Quality is about meeting what customers expect for the price they pay. A cheap product can be high quality if it does what buyers expect of it.",
+      },
+      {
+        question: "In traditional quality control, who usually checks the products?",
+        choices: [
+          "Every worker",
+          "The customers",
+          "The suppliers",
+          "Specialist inspectors",
+        ],
+        accept: [
+          "Specialist inspectors",
+        ],
+        answer: "Quality control relies on inspectors checking output, usually at the end. Making every worker responsible for quality is what quality assurance and TQM do.",
+      },
+      {
+        question: "Which is the main cost of introducing total quality management?",
+        choices: [
+          "Staff training",
+          "More inspectors",
+          "Higher reject rates",
+          "Lower prices",
+        ],
+        accept: [
+          "Staff training",
+        ],
+        answer: "TQM needs every employee to take responsibility for quality, so all staff must be trained. Hiring more inspectors is a cost of quality control instead.",
+      },
+      {
+        question: "A hair salon is most likely to measure its quality using what?",
+        choices: [
+          "Reject rates",
+          "Customer feedback",
+          "Stock levels",
+          "Output per worker",
+        ],
+        accept: [
+          "Customer feedback",
+        ],
+        answer: "A service can't be inspected on a production line, so firms ask customers through reviews, surveys and repeat visits. Reject rates suit factories making goods.",
+      },
+      {
+        question: "Raising the quality of a product usually increases which of these?",
+        choices: [
+          "Reject rates",
+          "Recall risk",
+          "Production costs",
+          "Customer complaints",
+        ],
+        accept: [
+          "Production costs",
+        ],
+        answer: "Better materials, training and checks cost money, so the firm must judge whether customers will pay more. Rejects, recalls and complaints should all fall.",
       },
     ],
     misconceptions: [
@@ -7826,6 +9191,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Extra service costs money, so cutting it keeps fares low. Customers expect less, so the service level suits the price they pay.",
       },
+      {
+        question: "A firm pays people to pose as customers and report back. What does it check?",
+        choices: [
+          "Stock levels",
+          "Staff wages",
+          "Service quality",
+          "Supplier prices",
+        ],
+        accept: [
+          "Service quality",
+        ],
+        answer: "These are mystery shoppers. They experience the service as a normal customer would, so managers see how staff really treat people when no one is watching.",
+      },
+      {
+        question: "A target to answer every phone call within one minute is an example of what?",
+        choices: [
+          "A loyalty scheme",
+          "A service level",
+          "A warranty",
+          "A refund policy",
+        ],
+        accept: [
+          "A service level",
+        ],
+        answer: "A service level is a measurable standard of service the firm promises or aims for. A warranty is a promise to repair or replace a product, not a speed target.",
+      },
+      {
+        question: "Which measure shows customer satisfaction most directly?",
+        choices: [
+          "Survey scores",
+          "Sales revenue",
+          "Market share",
+          "Stock turnover",
+        ],
+        accept: [
+          "Survey scores",
+        ],
+        answer: "Asking customers how happy they are measures satisfaction directly. Sales and market share can rise for other reasons, such as a price cut or a rival closing.",
+      },
+      {
+        question: "A website chatbot mainly improves customer service by offering what?",
+        choices: [
+          "Lower prices",
+          "Faster delivery",
+          "Free returns",
+          "Help at any hour",
+        ],
+        accept: [
+          "Help at any hour",
+        ],
+        answer: "A chatbot can answer simple questions day and night without paying staff. It cannot handle every problem, so most firms still offer a person for complex complaints.",
+      },
+      {
+        question: "Why should a business record every complaint it receives?",
+        choices: [
+          "To spot repeat faults",
+          "To calculate VAT",
+          "To decide pay rises",
+          "To set its prices",
+        ],
+        accept: [
+          "To spot repeat faults",
+        ],
+        answer: "If many customers complain about the same thing, the firm can fix the cause rather than one case at a time. That cuts future complaints, refunds and bad reviews.",
+      },
     ],
     misconceptions: [
       {
@@ -8171,6 +9601,71 @@ export const BUSINESS: Record<string, TopicContent> = {
         ],
         answer: "Messages pass through many levels, so they are slow and may be distorted. Long chains go with tall structures and narrow spans.",
       },
+      {
+        question: "Which diagram shows who reports to whom in a business?",
+        choices: [
+          "Gantt chart",
+          "Flow chart",
+          "Organisation chart",
+          "Stock control chart",
+        ],
+        accept: [
+          "Organisation chart",
+        ],
+        answer: "An organisation chart shows job roles, levels of hierarchy and lines of authority. A Gantt chart plans tasks over time; a flow chart shows the steps in a process.",
+      },
+      {
+        question: "Being accountable for whether a task succeeds or fails is called what?",
+        choices: [
+          "Authority",
+          "Delegation",
+          "Responsibility",
+          "Span of control",
+        ],
+        accept: [
+          "Responsibility",
+        ],
+        answer: "Responsibility means answering for the outcome. Authority is the right to make decisions and give instructions, which is what gets passed down when a manager delegates.",
+      },
+      {
+        question: "Which is a benefit of a decentralised structure?",
+        choices: [
+          "Consistent branding",
+          "Tight central control",
+          "Meeting local needs",
+          "Fewer local managers",
+        ],
+        accept: [
+          "Meeting local needs",
+        ],
+        answer: "Local managers know their own customers, so they can make quicker decisions that suit their area. Consistency and tight control are benefits of centralisation.",
+      },
+      {
+        question: "When a manager delegates a task, who keeps ultimate responsibility for it?",
+        choices: [
+          "The subordinate",
+          "The manager",
+          "Nobody",
+          "The HR department",
+        ],
+        accept: [
+          "The manager",
+        ],
+        answer: "Authority to do the task is passed down, but the manager still answers for the result. That is why managers must choose carefully who they delegate to.",
+      },
+      {
+        question: "A wide span of control works best with which kind of staff?",
+        choices: [
+          "New trainees",
+          "Experienced staff",
+          "Unreliable staff",
+          "Temporary staff",
+        ],
+        accept: [
+          "Experienced staff",
+        ],
+        answer: "Skilled, experienced staff need little supervision, so one manager can look after many of them. New or unreliable staff need closer checking, which suits a narrow span.",
+      },
     ],
     misconceptions: [
       {
@@ -8515,6 +10010,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Costly and slower",
         ],
         answer: "Advertising, interviewing and induction take time and money. It actually brings fresh ideas from a wider pool; a new vacancy is an internal drawback.",
+      },
+      {
+        question: "Person specification criteria are usually split into essential and what?",
+        choices: [
+          "Optional",
+          "Desirable",
+          "Additional",
+          "Advanced",
+        ],
+        accept: [
+          "Desirable",
+        ],
+        answer: "Essential criteria are must-haves; desirable ones are nice extras. Applicants missing an essential criterion are usually cut at the shortlisting stage.",
+      },
+      {
+        question: "Which selection method checks a candidate's numerical or reasoning ability?",
+        choices: [
+          "A reference",
+          "An interview",
+          "An aptitude test",
+          "A trial day",
+        ],
+        accept: [
+          "An aptitude test",
+        ],
+        answer: "Aptitude tests measure abilities such as maths or logical reasoning in a set way for everyone. A reference only gives a past employer's view of the applicant.",
+      },
+      {
+        question: "Which is a method of external recruitment?",
+        choices: [
+          "A staff noticeboard",
+          "A job website",
+          "An internal email",
+          "A staff newsletter",
+        ],
+        accept: [
+          "A job website",
+        ],
+        answer: "A job website reaches people outside the business. Noticeboards, internal emails and staff newsletters are only seen by current employees, so they are internal.",
+      },
+      {
+        question: "Which document is designed by the business and filled in by every applicant?",
+        choices: [
+          "A CV",
+          "A job description",
+          "An application form",
+          "A reference",
+        ],
+        accept: [
+          "An application form",
+        ],
+        answer: "Every applicant answers the same questions, so they are easy to compare. A CV is written by the applicant in their own format, so each one looks different.",
+      },
+      {
+        question: "What does a recruitment agency mainly do for a business?",
+        choices: [
+          "Trains new staff",
+          "Pays staff wages",
+          "Writes job contracts",
+          "Finds candidates",
+        ],
+        accept: [
+          "Finds candidates",
+        ],
+        answer: "An agency advertises, screens and shortlists candidates for a fee. It saves the business time, but the fee makes it a costly way to recruit.",
       },
     ],
     misconceptions: [
@@ -8862,6 +10422,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Company car",
         ],
         answer: "Fringe benefits are extras on top of pay that are not cash, like a company car or gym membership. Commission and bonuses are paid as money.",
+      },
+      {
+        question: "Wages differ from a salary because wages are usually paid how?",
+        choices: [
+          "Per item made",
+          "Per hour worked",
+          "As a yearly sum",
+          "As a share of profit",
+        ],
+        accept: [
+          "Per hour worked",
+        ],
+        answer: "Wages are based on hours worked and often paid weekly. A salary is a fixed yearly amount paid monthly; pay per item made is piece rate.",
+      },
+      {
+        question: "High staff turnover most directly raises which cost?",
+        choices: [
+          "Rent",
+          "Raw materials",
+          "Recruitment",
+          "Product adverts",
+        ],
+        accept: [
+          "Recruitment",
+        ],
+        answer: "Every leaver must be replaced, so the firm pays again to advertise, interview and train. New staff also take time to become fully productive.",
+      },
+      {
+        question: "What does high staff retention mean?",
+        choices: [
+          "Most staff stay",
+          "Most staff leave",
+          "Staff work overtime",
+          "Staff get promoted",
+        ],
+        accept: [
+          "Most staff stay",
+        ],
+        answer: "Retention is keeping employees, the opposite of high turnover. Well-motivated staff tend to stay, which saves recruitment and training costs.",
+      },
+      {
+        question: "In Maslow's hierarchy, which level does job security meet?",
+        choices: [
+          "Esteem",
+          "Social",
+          "Safety",
+          "Self-actualisation",
+        ],
+        accept: [
+          "Safety",
+        ],
+        answer: "Safety needs come just above basic physical needs and include a secure job and safe conditions. Esteem needs are met by praise, status and recognition.",
+      },
+      {
+        question: "Which is a drawback of paying sales staff commission?",
+        choices: [
+          "Higher fixed costs",
+          "Less staff effort",
+          "Pushy selling",
+          "Fewer sales made",
+        ],
+        accept: [
+          "Pushy selling",
+        ],
+        answer: "Staff earning a share of each sale may pressure customers, which can harm reputation. Commission is a variable cost, so it does not raise fixed costs.",
       },
     ],
     misconceptions: [
@@ -9212,6 +10837,71 @@ export const BUSINESS: Record<string, TopicContent> = {
           "Rural or older people",
         ],
         answer: "The digital divide is the gap between people with good internet access and those without, often rural or older people, who can't easily shop online.",
+      },
+      {
+        question: "Which is a drawback of cloud computing for a business?",
+        choices: [
+          "Needs internet access",
+          "Costly upfront servers",
+          "Files stuck on one PC",
+          "No remote access",
+        ],
+        accept: [
+          "Needs internet access",
+        ],
+        answer: "If the connection fails, staff can't reach their files or software. Cloud computing actually avoids buying servers and lets staff work from anywhere.",
+      },
+      {
+        question: "Which cost rises for a retailer that starts selling online?",
+        choices: [
+          "Shop rent",
+          "Shop floor staff",
+          "Delivery and returns",
+          "Shop lighting",
+        ],
+        accept: [
+          "Delivery and returns",
+        ],
+        answer: "Online orders must be packed, posted and often sent back. Rent and shop staff are costs that e-commerce helps a business reduce.",
+      },
+      {
+        question: "Remote working most directly saves a business which cost?",
+        choices: [
+          "Office space",
+          "Staff wages",
+          "Raw materials",
+          "Delivery costs",
+        ],
+        accept: [
+          "Office space",
+        ],
+        answer: "With fewer staff on site, a firm can rent a smaller office. Wages stay the same because remote staff still do the same job.",
+      },
+      {
+        question: "What is a key advantage of social media marketing over TV adverts?",
+        choices: [
+          "Reaches everyone",
+          "Cheap and targeted",
+          "Always trusted",
+          "Needs no content",
+        ],
+        accept: [
+          "Cheap and targeted",
+        ],
+        answer: "Firms can pay little and choose who sees an advert by age, location or interests. It does not reach everyone, and bad posts can spread fast too.",
+      },
+      {
+        question: "For m-commerce to work well, what does a business most need?",
+        choices: [
+          "A physical shop",
+          "A printed catalogue",
+          "A mobile-friendly site",
+          "A call centre",
+        ],
+        accept: [
+          "A mobile-friendly site",
+        ],
+        answer: "M-commerce means buying on phones and tablets, so pages and checkout must work on small screens. Without that, customers give up before paying.",
       },
     ],
     misconceptions: [

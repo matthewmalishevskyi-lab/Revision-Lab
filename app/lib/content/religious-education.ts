@@ -347,6 +347,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Theos means god, so a theist believes in God and an a-theist is 'without God'. Polytheism and monotheism use the same root.",
       },
+      {
+        question: "The word 'atheist' begins with the Greek prefix 'a-'. What does 'a-' mean here?",
+        choices: [
+          "Without",
+          "Against",
+          "Before",
+          "Above",
+        ],
+        accept: [
+          "Without",
+        ],
+        answer: "A-theist means 'without god': someone who does not believe in God. It is not the same as being against religion, which is a separate attitude.",
+      },
+      {
+        question: "Which of these religions is monotheistic?",
+        choices: [
+          "Greek religion",
+          "Judaism",
+          "Norse religion",
+          "Egyptian religion",
+        ],
+        accept: [
+          "Judaism",
+        ],
+        answer: "Judaism teaches belief in one God, as do Christianity and Islam. The ancient Greek, Norse and Egyptian religions worshipped many gods, so they were polytheistic.",
+      },
+      {
+        question: "In the 2021 Census for England and Wales, about what share chose 'No religion'?",
+        choices: [
+          "About a tenth",
+          "Over two-thirds",
+          "Over a third",
+          "About a twentieth",
+        ],
+        accept: [
+          "Over a third",
+        ],
+        answer: "About 37% ticked 'No religion' in 2021, the second most common answer after Christian. This is often used as evidence of secularisation in the UK.",
+      },
+      {
+        question: "Which thinker famously called religion 'the opium of the people'?",
+        choices: [
+          "Sigmund Freud",
+          "Charles Darwin",
+          "Richard Dawkins",
+          "Karl Marx",
+        ],
+        accept: [
+          "Karl Marx",
+        ],
+        answer: "Marx argued religion dulls the pain of injustice, like a drug, so people accept their situation. Freud also criticised religion, but called it an illusion.",
+      },
+      {
+        question: "What does the Latin word 'religare', often linked to 'religion', mean?",
+        choices: [
+          "To bind",
+          "To pray",
+          "To believe",
+          "To serve",
+        ],
+        accept: [
+          "To bind",
+        ],
+        answer: "Religare means 'to bind': religion as what binds people to God and to each other. Scholars debate this origin, but it is a common starting point.",
+      },
     ],
     misconceptions: [
       {
@@ -685,6 +750,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Salvation means being saved from sin and brought into a right relationship with God. Christians believe it comes through Jesus.",
       },
+      {
+        question: "Which part of the Christian Bible was written before the time of Jesus?",
+        choices: [
+          "The New Testament",
+          "The Old Testament",
+          "The Gospels",
+          "The Epistles",
+        ],
+        accept: [
+          "The Old Testament",
+        ],
+        answer: "The Old Testament is largely the Hebrew Bible, written before Jesus. The Gospels and the Epistles (letters) belong to the New Testament, written after his life.",
+      },
+      {
+        question: "According to the Gospels, in which town was Jesus born?",
+        choices: [
+          "Nazareth",
+          "Jerusalem",
+          "Bethlehem",
+          "Capernaum",
+        ],
+        accept: [
+          "Bethlehem",
+        ],
+        answer: "Matthew and Luke place Jesus's birth in Bethlehem. He grew up in Nazareth, which is why he is called 'Jesus of Nazareth', and was crucified in Jerusalem.",
+      },
+      {
+        question: "Which festival celebrates the Holy Spirit coming to Jesus's disciples?",
+        choices: [
+          "Pentecost",
+          "Epiphany",
+          "Ascension Day",
+          "Advent",
+        ],
+        accept: [
+          "Pentecost",
+        ],
+        answer: "Pentecost comes fifty days after Easter. Ascension Day, ten days earlier, marks Jesus returning to heaven; Christians believe the Spirit came after that.",
+      },
+      {
+        question: "In which language was the New Testament first written?",
+        choices: [
+          "Hebrew",
+          "Latin",
+          "Aramaic",
+          "Greek",
+        ],
+        accept: [
+          "Greek",
+        ],
+        answer: "The New Testament was written in Greek, the common language of the eastern Roman Empire. Jesus probably spoke Aramaic, and most of the Old Testament is in Hebrew.",
+      },
+      {
+        question: "Which person of the Trinity do Christians believe became human in Jesus?",
+        choices: [
+          "God the Father",
+          "God the Son",
+          "The Holy Spirit",
+          "All three equally",
+        ],
+        accept: [
+          "God the Son",
+        ],
+        answer: "The Incarnation is the belief that God the Son took human form as Jesus. The Father and the Holy Spirit did not become human, though all three are one God.",
+      },
     ],
     misconceptions: [
       {
@@ -1018,6 +1148,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Most Muslims in the world are Sunni; Shi'a Muslims are a large minority, the majority in countries such as Iran and Iraq.",
       },
+      {
+        question: "In which language do Muslims believe the Qur'an was revealed?",
+        choices: [
+          "Urdu",
+          "Arabic",
+          "Persian",
+          "Hebrew",
+        ],
+        accept: [
+          "Arabic",
+        ],
+        answer: "The Qur'an was revealed in Arabic, so Muslims everywhere recite it in Arabic. Translations are seen as interpretations of its meaning, not the Qur'an itself.",
+      },
+      {
+        question: "What is the call to prayer, made from the mosque before each salah, called?",
+        choices: [
+          "Qiblah",
+          "Rak'ah",
+          "Adhan",
+          "Jumu'ah",
+        ],
+        accept: [
+          "Adhan",
+        ],
+        answer: "The adhan is called by the mu'adhin to summon Muslims to prayer. The qiblah is the direction of Makkah, a rak'ah is one unit of prayer and Jumu'ah is Friday prayer.",
+      },
+      {
+        question: "How many surahs (chapters) are there in the Qur'an?",
+        choices: [
+          "99",
+          "114",
+          "100",
+          "66",
+        ],
+        accept: [
+          "114",
+        ],
+        answer: "The Qur'an has 114 surahs, opening with Al-Fatihah. Ninety-nine is the number of the names of Allah, a common mix-up.",
+      },
+      {
+        question: "What is Muhammad's journey from Makkah to Madinah in 622 CE called?",
+        choices: [
+          "Hajj",
+          "Umrah",
+          "Hadith",
+          "Hijrah",
+        ],
+        accept: [
+          "Hijrah",
+        ],
+        answer: "The Hijrah (migration) of 622 CE marks year one of the Islamic calendar. Hajj and Umrah are pilgrimages to Makkah, and a hadith is a report of Muhammad's words.",
+      },
+      {
+        question: "What is the tower of a mosque, from which the call to prayer may be given?",
+        choices: [
+          "Mihrab",
+          "Minaret",
+          "Minbar",
+          "Dome",
+        ],
+        accept: [
+          "Minaret",
+        ],
+        answer: "The minaret is the tower. The mihrab is the niche showing the direction of Makkah, and the minbar is the raised pulpit the imam uses for the Friday sermon.",
+      },
     ],
     misconceptions: [
       {
@@ -1350,6 +1545,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
           "Moses",
         ],
         answer: "Jews believe God gave the Torah to Moses at Sinai after the Exodus. Abraham lived earlier and made the first covenant with God.",
+      },
+      {
+        question: "Which Jewish prayer begins 'Hear, O Israel: the Lord our God, the Lord is One'?",
+        choices: [
+          "The Shema",
+          "The Amidah",
+          "The Kaddish",
+          "The Kiddush",
+        ],
+        accept: [
+          "The Shema",
+        ],
+        answer: "The Shema states that God is one and is said morning and evening. The Kaddish is said by mourners, and Kiddush is the blessing over wine on Shabbat.",
+      },
+      {
+        question: "Who do Jews regard as the father of the Jewish people?",
+        choices: [
+          "Moses",
+          "David",
+          "Abraham",
+          "Joshua",
+        ],
+        accept: [
+          "Abraham",
+        ],
+        answer: "Jews believe God made a covenant with Abraham, promising him land and many descendants. Moses came later and received the Torah at Mount Sinai.",
+      },
+      {
+        question: "What is the cabinet in a synagogue that holds the Torah scrolls called?",
+        choices: [
+          "The bimah",
+          "The Ark",
+          "The ner tamid",
+          "The mezuzah",
+        ],
+        accept: [
+          "The Ark",
+        ],
+        answer: "The Ark (Aron Hakodesh) holds the scrolls and faces Jerusalem. The bimah is the raised platform where the Torah is read, and the ner tamid is the ever-burning light.",
+      },
+      {
+        question: "What is the small case holding a scroll, fixed to the doorposts of Jewish homes?",
+        choices: [
+          "Tefillin",
+          "Tallit",
+          "Kippah",
+          "Mezuzah",
+        ],
+        accept: [
+          "Mezuzah",
+        ],
+        answer: "A mezuzah holds a scroll with the Shema on it. Tefillin are small boxes worn in prayer, a tallit is a prayer shawl and a kippah is a skullcap.",
+      },
+      {
+        question: "Under kosher food laws, which food must not be eaten in the same meal as meat?",
+        choices: [
+          "Bread",
+          "Cheese",
+          "Vegetables",
+          "Eggs",
+        ],
+        accept: [
+          "Cheese",
+        ],
+        answer: "Kosher law keeps meat and dairy apart, so cheese cannot be eaten with meat. Eggs, bread and vegetables are parve (neutral) and can go with either.",
       },
     ],
     misconceptions: [
@@ -1689,6 +1949,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "The first Noble Truth is dukkha: life involves suffering. The second says craving causes it, the third that it can end, the fourth that the Path ends it.",
       },
+      {
+        question: "Which of the Sikh Five Ks is a steel bangle worn on the wrist?",
+        choices: [
+          "Kangha",
+          "Kara",
+          "Kirpan",
+          "Kachera",
+        ],
+        accept: [
+          "Kara",
+        ],
+        answer: "The kara is a steel bangle whose unbroken circle is linked to God having no beginning or end. The kangha is a comb, the kirpan a small sword and the kachera are cotton shorts.",
+      },
+      {
+        question: "What was the Buddha's name before he became enlightened?",
+        choices: [
+          "Ananda",
+          "Ashoka",
+          "Siddhartha Gautama",
+          "Mahavira",
+        ],
+        accept: [
+          "Siddhartha Gautama",
+        ],
+        answer: "Siddhartha Gautama was a prince who left his palace to seek an end to suffering. 'Buddha' is a title meaning 'awakened one'. Mahavira was a teacher of Jainism.",
+      },
+      {
+        question: "What is the Buddhist community of monks, nuns and followers called?",
+        choices: [
+          "The Sangha",
+          "The Stupa",
+          "The Dukkha",
+          "The Tanha",
+        ],
+        accept: [
+          "The Sangha",
+        ],
+        answer: "The Sangha is one of the Three Jewels, with the Buddha and the Dhamma (his teaching). Dukkha means suffering, tanha means craving and a stupa is a shrine.",
+      },
+      {
+        question: "In Hinduism, which god is known as the preserver in the Trimurti?",
+        choices: [
+          "Brahma",
+          "Shiva",
+          "Ganesha",
+          "Vishnu",
+        ],
+        accept: [
+          "Vishnu",
+        ],
+        answer: "The Trimurti is Brahma the creator, Vishnu the preserver and Shiva the destroyer. Ganesha, the elephant-headed god, is popular but not part of the Trimurti.",
+      },
+      {
+        question: "Which festival of lights is celebrated by both Hindus and Sikhs?",
+        choices: [
+          "Holi",
+          "Diwali",
+          "Vaisakhi",
+          "Wesak",
+        ],
+        accept: [
+          "Diwali",
+        ],
+        answer: "Hindus light lamps at Diwali, and Sikhs mark Bandi Chhor Divas at the same time. Holi is the Hindu festival of colours, and Wesak is a Buddhist festival.",
+      },
     ],
     misconceptions: [
       {
@@ -2000,6 +2325,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
           "A defence of God",
         ],
         answer: "A theodicy defends God's goodness and power given that evil exists, such as Hick's soul-making theodicy. It does not try to prove God exists.",
+      },
+      {
+        question: "Which philosopher is most linked with virtue ethics?",
+        choices: [
+          "Aristotle",
+          "Jeremy Bentham",
+          "Joseph Fletcher",
+          "Thomas Aquinas",
+        ],
+        accept: [
+          "Aristotle",
+        ],
+        answer: "Aristotle taught that a good life comes from building virtues such as courage. Bentham founded utilitarianism, Fletcher situation ethics, and Aquinas natural law.",
+      },
+      {
+        question: "In Augustine's theodicy, how did evil enter a world God made good?",
+        choices: [
+          "Through bad karma",
+          "Through God's design",
+          "Through random chance",
+          "Through the Fall",
+        ],
+        accept: [
+          "Through the Fall",
+        ],
+        answer: "Augustine said God made everything good and evil came from the misuse of free will, above all at the Fall. Hick's soul-making theodicy instead says suffering helps people grow.",
+      },
+      {
+        question: "Which theory judges an act by whether it brings the greatest good for the most people?",
+        choices: [
+          "Utilitarianism",
+          "Virtue ethics",
+          "Situation ethics",
+          "Divine command",
+        ],
+        accept: [
+          "Utilitarianism",
+        ],
+        answer: "Utilitarianism judges actions by their results: the most happiness for the most people. Divine command theory says right is what God commands.",
+      },
+      {
+        question: "Which theory says an act is right because God wills or orders it?",
+        choices: [
+          "Divine command theory",
+          "Utilitarianism",
+          "Virtue ethics",
+          "Situation ethics",
+        ],
+        accept: [
+          "Divine command theory",
+        ],
+        answer: "Divine command theory grounds morality in God's commands, such as the Ten Commandments. Utilitarianism looks at results and virtue ethics at character.",
+      },
+      {
+        question: "Which word means 'all-knowing' when used to describe God?",
+        choices: [
+          "Omnipotent",
+          "Omniscient",
+          "Omnipresent",
+          "Omnibenevolent",
+        ],
+        accept: [
+          "Omniscient",
+        ],
+        answer: "Omniscient means all-knowing. Omnipotent is all-powerful and omnibenevolent all-loving. The problem of evil asks why a God like this would allow suffering.",
       },
     ],
     misconceptions: [
@@ -2320,6 +2710,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Christians believe that at the end of time God, through Jesus, will judge all people. Jesus's final meal with his disciples is the Last Supper.",
       },
+      {
+        question: "Which Gospel begins 'In the beginning was the Word'?",
+        choices: [
+          "Matthew",
+          "Mark",
+          "Luke",
+          "John",
+        ],
+        accept: [
+          "John",
+        ],
+        answer: "John's Gospel opens with the Word, which Christians take to mean Jesus, present with God at creation. Matthew and Luke include accounts of Jesus's birth near the start.",
+      },
+      {
+        question: "In Genesis 1, on which day does God create human beings?",
+        choices: [
+          "The sixth day",
+          "The seventh day",
+          "The first day",
+          "The third day",
+        ],
+        accept: [
+          "The sixth day",
+        ],
+        answer: "Humans are created on the sixth day, in God's image, after the animals. God rests on the seventh day, and light is created on the first.",
+      },
+      {
+        question: "In Genesis, the fruit of which tree did God forbid Adam and Eve to eat?",
+        choices: [
+          "The tree of life",
+          "The olive tree",
+          "The tree of knowledge",
+          "The fig tree",
+        ],
+        accept: [
+          "The tree of knowledge",
+        ],
+        answer: "It was the tree of the knowledge of good and evil. The tree of life was also in Eden, but eating from the forbidden tree led to the Fall.",
+      },
+      {
+        question: "Which atonement theory says Jesus took the punishment for sin in humanity's place?",
+        choices: [
+          "Christus Victor",
+          "Moral example",
+          "Substitution",
+          "Ransom",
+        ],
+        accept: [
+          "Substitution",
+        ],
+        answer: "Substitution theory says Jesus suffered the penalty humans deserved. Christus Victor sees the cross as victory over evil; moral example sees it as showing God's love.",
+      },
+      {
+        question: "In Genesis 1, what is the Spirit of God described as hovering over at creation?",
+        choices: [
+          "The garden",
+          "The mountains",
+          "The waters",
+          "The ark",
+        ],
+        accept: [
+          "The waters",
+        ],
+        answer: "Genesis 1:2 says the Spirit of God hovered over the waters. Many Christians see this as showing the Holy Spirit at work in creation, alongside the Father and the Son.",
+      },
     ],
     misconceptions: [
       {
@@ -2633,6 +3088,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
           "Baptists",
         ],
         answer: "Baptists baptise only those old enough to profess faith, usually by full immersion. Catholics, Anglicans and Orthodox Christians baptise infants.",
+      },
+      {
+        question: "Which day of Holy Week remembers the Last Supper?",
+        choices: [
+          "Palm Sunday",
+          "Good Friday",
+          "Maundy Thursday",
+          "Holy Saturday",
+        ],
+        accept: [
+          "Maundy Thursday",
+        ],
+        answer: "Maundy Thursday remembers Jesus sharing the Last Supper and washing his disciples' feet. Good Friday, the next day, remembers his crucifixion.",
+      },
+      {
+        question: "In believer's baptism, how is the person usually baptised?",
+        choices: [
+          "Sprinkled on the head",
+          "Anointed with oil",
+          "Full immersion",
+          "Signed with a cross",
+        ],
+        accept: [
+          "Full immersion",
+        ],
+        answer: "Baptists usually immerse the whole body in a pool, picturing dying and rising with Christ. Infant baptism usually pours or sprinkles water on the head.",
+      },
+      {
+        question: "Many Protestants see the bread and wine at Communion as which of these?",
+        choices: [
+          "Christ's literal body",
+          "Symbols of Christ",
+          "Offerings to God",
+          "Food for the poor",
+        ],
+        accept: [
+          "Symbols of Christ",
+        ],
+        answer: "Many Protestants, such as Baptists, see Communion as a memorial using symbols of Jesus's death. Catholics believe in transubstantiation, a real change into Christ's body.",
+      },
+      {
+        question: "Which festival remembers the wise men visiting the infant Jesus?",
+        choices: [
+          "Epiphany",
+          "Advent",
+          "Candlemas",
+          "Pentecost",
+        ],
+        accept: [
+          "Epiphany",
+        ],
+        answer: "Epiphany, on 6 January in the West, remembers the Magi. Advent is the preparation before Christmas, and Pentecost celebrates the coming of the Holy Spirit.",
+      },
+      {
+        question: "What do Roman Catholics usually call the service of the Eucharist?",
+        choices: [
+          "The Lord's Supper",
+          "The Divine Liturgy",
+          "Breaking of Bread",
+          "Mass",
+        ],
+        accept: [
+          "Mass",
+        ],
+        answer: "Catholics call it Mass. Orthodox Christians call their service the Divine Liturgy, and many Baptists and other Protestants call it the Lord's Supper.",
       },
     ],
     misconceptions: [
@@ -2948,6 +3468,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Shi'a Muslims believe in a line of Imams, starting with Ali, chosen by God to lead. Caliphs are the leaders Sunni Muslims accepted after Muhammad.",
       },
+      {
+        question: "Which holy book do Muslims believe was revealed to Dawud (David)?",
+        choices: [
+          "Injil",
+          "Tawrat",
+          "Zabur",
+          "Sahifah",
+        ],
+        accept: [
+          "Zabur",
+        ],
+        answer: "The Zabur (Psalms) was given to Dawud. The Tawrat (Torah) was revealed to Musa and the Injil (Gospel) to Isa; the Qur'an was revealed to Muhammad.",
+      },
+      {
+        question: "Which angel do Muslims believe will blow the trumpet on the Day of Judgement?",
+        choices: [
+          "Jibril",
+          "Israfil",
+          "Mika'il",
+          "Izra'il",
+        ],
+        accept: [
+          "Israfil",
+        ],
+        answer: "Israfil will sound the trumpet to begin the Day of Judgement. Jibril brought the revelation, Mika'il brings rain and nourishment, and Izra'il is the angel of death.",
+      },
+      {
+        question: "Who do Muslims believe was the first prophet?",
+        choices: [
+          "Ibrahim",
+          "Nuh",
+          "Musa",
+          "Adam",
+        ],
+        accept: [
+          "Adam",
+        ],
+        answer: "Muslims believe Adam, the first human, was also the first prophet. Ibrahim, Nuh and Musa came later, and Muhammad is the final prophet, the Seal of the Prophets.",
+      },
+      {
+        question: "How many articles of faith are taught in Sunni Islam?",
+        choices: [
+          "Five",
+          "Six",
+          "Four",
+          "Seven",
+        ],
+        accept: [
+          "Six",
+        ],
+        answer: "Sunni Muslims hold six articles of faith, including angels, holy books and al-Qadr. Shi'a Muslims speak of five roots, Usul ad-Din. The Five Pillars are practices, not beliefs.",
+      },
+      {
+        question: "What is the state between death and the Day of Judgement called in Islam?",
+        choices: [
+          "Jannah",
+          "Jahannam",
+          "Qiyamah",
+          "Barzakh",
+        ],
+        accept: [
+          "Barzakh",
+        ],
+        answer: "Barzakh is the waiting stage between death and judgement. Jannah is Paradise, Jahannam is Hell, and Qiyamah refers to the Day of Resurrection.",
+      },
     ],
     misconceptions: [
       {
@@ -3262,6 +3847,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Laylat al-Qadr, the Night of Power, falls in the last ten nights of Ramadan. Laylat al-Mi'raj remembers Muhammad's night journey and ascension.",
       },
+      {
+        question: "What is the Arabic name for fasting, one of the Five Pillars?",
+        choices: [
+          "Salah",
+          "Zakah",
+          "Sawm",
+          "Sadaqah",
+        ],
+        accept: [
+          "Sawm",
+        ],
+        answer: "Sawm is fasting from dawn to sunset in Ramadan. Salah is prayer, Zakah is obligatory almsgiving and Sadaqah is voluntary charity.",
+      },
+      {
+        question: "What is the worldwide community of all Muslims called?",
+        choices: [
+          "Ummah",
+          "Ulama",
+          "Tawhid",
+          "Khalifah",
+        ],
+        accept: [
+          "Ummah",
+        ],
+        answer: "The Ummah is the whole Muslim community; Hajj and Ramadan strengthen it. The Ulama are scholars, and Tawhid is the oneness of Allah.",
+      },
+      {
+        question: "On Hajj, where do pilgrims stand in prayer from midday on the ninth day?",
+        choices: [
+          "Mina",
+          "Arafat",
+          "Muzdalifah",
+          "Madinah",
+        ],
+        accept: [
+          "Arafat",
+        ],
+        answer: "Standing before Allah on the plain of Arafat is the high point of Hajj. Pilgrims rest at Muzdalifah that night and stone the pillars at Mina afterwards.",
+      },
+      {
+        question: "At Mina, pilgrims throw pebbles at pillars that stand for whom?",
+        choices: [
+          "Ibrahim",
+          "Hajar",
+          "Isma'il",
+          "Shaytan",
+        ],
+        accept: [
+          "Shaytan",
+        ],
+        answer: "The pillars represent Shaytan (the devil), who tempted Ibrahim to disobey Allah. Stoning them shows the pilgrim rejecting evil.",
+      },
+      {
+        question: "Which of the five daily prayers is said at dawn, before sunrise?",
+        choices: [
+          "Fajr",
+          "Maghrib",
+          "Isha",
+          "Asr",
+        ],
+        accept: [
+          "Fajr",
+        ],
+        answer: "Fajr is the dawn prayer. Maghrib is just after sunset, Isha is at night and Asr is in the afternoon.",
+      },
     ],
     misconceptions: [
       {
@@ -3564,6 +4214,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
           "A sacrament",
         ],
         answer: "For Catholics marriage is a sacrament, a sign of God's grace that cannot be broken by divorce. Muslims, by contrast, see marriage as a contract (nikah).",
+      },
+      {
+        question: "What is a family where children are raised by a mother or a father alone called?",
+        choices: [
+          "Nuclear family",
+          "Single-parent family",
+          "Extended family",
+          "Blended family",
+        ],
+        accept: [
+          "Single-parent family",
+        ],
+        answer: "A single-parent family has one parent raising the children. A blended family joins children from earlier relationships after remarriage.",
+      },
+      {
+        question: "What is sex between two people who are not married to anyone called?",
+        choices: [
+          "Adultery",
+          "Cohabitation",
+          "Pre-marital sex",
+          "Celibacy",
+        ],
+        accept: [
+          "Pre-marital sex",
+        ],
+        answer: "Pre-marital sex happens before marriage. Adultery is sex by a married person with someone other than their spouse; celibacy is abstaining from sex.",
+      },
+      {
+        question: "What is choosing not to marry or have sex, as Catholic priests do, called?",
+        choices: [
+          "Monogamy",
+          "Celibacy",
+          "Cohabitation",
+          "Annulment",
+        ],
+        accept: [
+          "Celibacy",
+        ],
+        answer: "Most Catholic priests promise celibacy so they can give their whole life to God and the Church. Monogamy means having only one partner.",
+      },
+      {
+        question: "Jesus's words 'what God has joined together, let no one separate' are about what?",
+        choices: [
+          "Contraception",
+          "Divorce",
+          "Cohabitation",
+          "Gender roles",
+        ],
+        accept: [
+          "Divorce",
+        ],
+        answer: "In Mark 10 Jesus answers a question about divorce, teaching that marriage is a lifelong bond. Many Christians use this to oppose or limit divorce.",
+      },
+      {
+        question: "'Male and female he created them' (Genesis 1:27) is often used to support what?",
+        choices: [
+          "Polygamy",
+          "Celibacy",
+          "Gender equality",
+          "Cohabitation",
+        ],
+        accept: [
+          "Gender equality",
+        ],
+        answer: "The verse says men and women were both made in God's image, so many Christians argue they have equal worth and dignity.",
       },
     ],
     misconceptions: [
@@ -3884,6 +4599,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Darwin's On the Origin of Species (1859) explained how species develop over time. Lemaître, a Catholic priest, first proposed the Big Bang theory.",
       },
+      {
+        question: "Which 1967 law first made terminating a pregnancy legal in Great Britain?",
+        choices: [
+          "The Suicide Act",
+          "The Equality Act",
+          "The Abortion Act",
+          "The Children Act",
+        ],
+        accept: [
+          "The Abortion Act",
+        ],
+        answer: "The Abortion Act 1967 allows abortion under set conditions. It did not cover Northern Ireland, which has its own law, so it applies to Great Britain.",
+      },
+      {
+        question: "Normally, how many doctors must agree before an abortion is legal in Great Britain?",
+        choices: [
+          "One",
+          "Two",
+          "Three",
+          "Four",
+        ],
+        accept: [
+          "Two",
+        ],
+        answer: "Two doctors must agree that the legal grounds are met. In an emergency, one doctor may act alone.",
+      },
+      {
+        question: "What does stewardship mean for many Christians and Jews?",
+        choices: [
+          "Caring for God's world",
+          "Owning the land",
+          "Worshipping nature",
+          "Using all resources",
+        ],
+        accept: [
+          "Caring for God's world",
+        ],
+        answer: "Stewardship is the duty to look after the world God made and hand it on. Dominion is often read as ruling it; worshipping nature is not the same idea.",
+      },
+      {
+        question: "What is it called when a doctor gives a patient the means to end their own life?",
+        choices: [
+          "Active euthanasia",
+          "Palliative care",
+          "Passive euthanasia",
+          "Assisted suicide",
+        ],
+        accept: [
+          "Assisted suicide",
+        ],
+        answer: "In assisted suicide the patient takes the final step themselves. In active euthanasia someone else, such as a doctor, does the deliberate act.",
+      },
+      {
+        question: "What is euthanasia by a deliberate act, such as a lethal injection, called?",
+        choices: [
+          "Passive euthanasia",
+          "Active euthanasia",
+          "Palliative care",
+          "Natural death",
+        ],
+        accept: [
+          "Active euthanasia",
+        ],
+        answer: "Active euthanasia directly causes death. Passive euthanasia means withdrawing or withholding treatment so that the person dies of their illness.",
+      },
     ],
     misconceptions: [
       {
@@ -4202,6 +4982,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
           "Lourdes",
         ],
         answer: "Bernadette reported visions of Mary at Lourdes in 1858, and many pilgrims seek healing there. Fatima is in Portugal and Walsingham is in England.",
+      },
+      {
+        question: "Which atheist biologist wrote 'The God Delusion'?",
+        choices: [
+          "David Hume",
+          "Richard Dawkins",
+          "Bertrand Russell",
+          "Charles Darwin",
+        ],
+        accept: [
+          "Richard Dawkins",
+        ],
+        answer: "Richard Dawkins argues that evolution explains life without God. Darwin developed natural selection but did not write this book.",
+      },
+      {
+        question: "Which scientist is said to have claimed the thumb alone would convince him God exists?",
+        choices: [
+          "Charles Darwin",
+          "William Paley",
+          "Isaac Newton",
+          "Thomas Aquinas",
+        ],
+        accept: [
+          "Isaac Newton",
+        ],
+        answer: "Isaac Newton is often quoted as seeing the thumb's design as evidence of a designer. Paley used a watch, not a thumb, for his design argument.",
+      },
+      {
+        question: "What is an attempt to explain why a good God allows suffering called?",
+        choices: [
+          "Theodicy",
+          "Revelation",
+          "Agnosticism",
+          "Omniscience",
+        ],
+        accept: [
+          "Theodicy",
+        ],
+        answer: "A theodicy defends belief in God against the problem of evil, for example by saying free will must allow people to choose wrong.",
+      },
+      {
+        question: "What is an event that seems to break the laws of nature, believed to be caused by God?",
+        choices: [
+          "A conversion",
+          "A miracle",
+          "A vision",
+          "A prophecy",
+        ],
+        accept: [
+          "A miracle",
+        ],
+        answer: "A miracle is an event, such as a sudden healing, that seems to go against nature. A conversion is a change of belief, and a vision is something seen.",
+      },
+      {
+        question: "The problem of evil asks how God can be all-loving and what else, yet evil exists?",
+        choices: [
+          "Eternal",
+          "All-powerful",
+          "Transcendent",
+          "Unchanging",
+        ],
+        accept: [
+          "All-powerful",
+        ],
+        answer: "If God were all-loving he would want to stop evil, and if all-powerful he could. Evil existing seems to challenge one of these qualities.",
       },
     ],
     misconceptions: [
@@ -4522,6 +5367,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "In the Sermon on the Mount Jesus said to turn the other cheek. 'An eye for an eye' is the older law of equal payback, which Jesus contrasted with his teaching.",
       },
+      {
+        question: "Which just war condition says war must be declared by a proper ruler or government?",
+        choices: [
+          "Just cause",
+          "Last resort",
+          "Legitimate authority",
+          "Right intention",
+        ],
+        accept: [
+          "Legitimate authority",
+        ],
+        answer: "Legitimate authority means only a lawful ruler or government can start a just war, not a private group. Just cause is about the reason for fighting.",
+      },
+      {
+        question: "Which just war condition says a war must aim to do good, not to seek revenge or gain?",
+        choices: [
+          "Right intention",
+          "Proportionality",
+          "Legitimate authority",
+          "Last resort",
+        ],
+        accept: [
+          "Right intention",
+        ],
+        answer: "Right intention means fighting to restore peace and justice, not for land, wealth or revenge. Proportionality is about how much harm is caused.",
+      },
+      {
+        question: "Which Japanese city was the first to be hit by an atomic bomb in war, in 1945?",
+        choices: [
+          "Nagasaki",
+          "Tokyo",
+          "Hiroshima",
+          "Kyoto",
+        ],
+        accept: [
+          "Hiroshima",
+        ],
+        answer: "Hiroshima was bombed on 6 August 1945 and Nagasaki three days later. These are the only times nuclear weapons have been used in war.",
+      },
+      {
+        question: "Pax Christi is an international peace movement of which Christian denomination?",
+        choices: [
+          "Quaker",
+          "Methodist",
+          "Catholic",
+          "Baptist",
+        ],
+        accept: [
+          "Catholic",
+        ],
+        answer: "Pax Christi ('the peace of Christ') is a Catholic movement working for peace and disarmament. The Quakers are a separate, pacifist tradition.",
+      },
+      {
+        question: "'Blessed are the peacemakers' comes from which teaching of Jesus?",
+        choices: [
+          "Last Supper",
+          "Good Samaritan",
+          "Sermon on the Mount",
+          "Great Commission",
+        ],
+        accept: [
+          "Sermon on the Mount",
+        ],
+        answer: "It is one of the Beatitudes at the start of the Sermon on the Mount (Matthew 5), where Jesus also teaches about turning the other cheek.",
+      },
     ],
     misconceptions: [
       {
@@ -4841,6 +5751,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "Poverty can push people to crime to meet basic needs. Greed is wanting more than you need, which is a different motive from survival.",
       },
+      {
+        question: "Which parable tells of a father welcoming home a son who wasted his inheritance?",
+        choices: [
+          "The Good Samaritan",
+          "The Prodigal Son",
+          "The Sower",
+          "The Talents",
+        ],
+        accept: [
+          "The Prodigal Son",
+        ],
+        answer: "The Prodigal Son shows God's forgiveness for anyone who is truly sorry. The Good Samaritan is about loving your neighbour, not forgiveness.",
+      },
+      {
+        question: "What is it called when someone commits another crime after being punished?",
+        choices: [
+          "Retribution",
+          "Reformation",
+          "Reoffending",
+          "Remission",
+        ],
+        accept: [
+          "Reoffending",
+        ],
+        answer: "Reoffending means committing crime again. Reformation is the aim of changing an offender so that they do not reoffend.",
+      },
+      {
+        question: "On the cross, what did Jesus pray for the people who were crucifying him?",
+        choices: [
+          "Love your enemies",
+          "Father, forgive them",
+          "Go and sin no more",
+          "Blessed are the meek",
+        ],
+        accept: [
+          "Father, forgive them",
+        ],
+        answer: "In Luke's Gospel Jesus prays 'Father, forgive them, for they do not know what they are doing', a key Christian example of forgiveness.",
+      },
+      {
+        question: "What is breaking a law you believe is unjust, peacefully and as a protest, called?",
+        choices: [
+          "Hate crime",
+          "Civil disobedience",
+          "Retribution",
+          "Vandalism",
+        ],
+        accept: [
+          "Civil disobedience",
+        ],
+        answer: "Opposition to an unjust law is one cause of crime. Martin Luther King Jr broke segregation laws by non-violent civil disobedience.",
+      },
+      {
+        question: "Capital punishment makes which aim of punishment impossible?",
+        choices: [
+          "Retribution",
+          "Deterrence",
+          "Protection",
+          "Reformation",
+        ],
+        accept: [
+          "Reformation",
+        ],
+        answer: "An executed person cannot change their ways, so reformation is ruled out. Supporters argue the death penalty still gives retribution and deterrence.",
+      },
     ],
     misconceptions: [
       {
@@ -5149,6 +6124,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         ],
         answer: "After Rosa Parks was arrested, Black citizens refused to ride Montgomery's segregated buses for over a year, until segregation on them was ruled illegal.",
       },
+      {
+        question: "What is it called when prejudice is acted on, treating someone unfairly?",
+        choices: [
+          "Stereotyping",
+          "Exploitation",
+          "Discrimination",
+          "Apartheid",
+        ],
+        accept: [
+          "Discrimination",
+        ],
+        answer: "Prejudice is an unfair attitude in the mind; discrimination is the action that follows from it, such as refusing someone a job.",
+      },
+      {
+        question: "Which parable did Jesus tell in answer to the question 'Who is my neighbour?'",
+        choices: [
+          "The Good Samaritan",
+          "The Sheep and Goats",
+          "The Prodigal Son",
+          "The Lost Sheep",
+        ],
+        accept: [
+          "The Good Samaritan",
+        ],
+        answer: "In the Good Samaritan a man from a despised group helps an injured stranger, teaching that everyone is our neighbour, whatever their background.",
+      },
+      {
+        question: "Jesus said a camel goes through a needle's eye more easily than who enters God's kingdom?",
+        choices: [
+          "A tax collector",
+          "A rich man",
+          "A Pharisee",
+          "A sinner",
+        ],
+        accept: [
+          "A rich man",
+        ],
+        answer: "Jesus taught that wealth can get in the way of loving God and others. Christians use this to warn against greed, not to ban having money.",
+      },
+      {
+        question: "1 Timothy 6:10 says that the love of what is a root of all kinds of evil?",
+        choices: [
+          "Power",
+          "Fame",
+          "Pleasure",
+          "Money",
+        ],
+        accept: [
+          "Money",
+        ],
+        answer: "The verse condemns the love of money, not money itself, which is why Christians teach that wealth should be used well and shared.",
+      },
+      {
+        question: "What is Martin Luther King Jr's 1963 speech at the March on Washington known as?",
+        choices: [
+          "We Shall Overcome",
+          "I Have a Dream",
+          "Long Walk to Freedom",
+          "Ain't I a Woman?",
+        ],
+        accept: [
+          "I Have a Dream",
+        ],
+        answer: "In 'I Have a Dream' King described a future of racial equality. Long Walk to Freedom is Nelson Mandela's autobiography.",
+      },
     ],
     misconceptions: [
       {
@@ -5456,6 +6496,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
           "Fatwa",
         ],
         answer: "A fatwa is a scholar's legal opinion on a question. Qiyas is the method of reasoning by analogy that a scholar may use to reach it.",
+      },
+      {
+        question: "Which Christian source of authority is the teaching of the Church passed down over time?",
+        choices: [
+          "Tradition",
+          "Conscience",
+          "Reason",
+          "Natural law",
+        ],
+        accept: [
+          "Tradition",
+        ],
+        answer: "Tradition is the Church's teaching handed down since the early Church, especially important to Catholics. Conscience is the inner sense of right and wrong.",
+      },
+      {
+        question: "What is the official book setting out the whole of Catholic teaching called?",
+        choices: [
+          "The Missal",
+          "The Catechism",
+          "The Creed",
+          "The Apocrypha",
+        ],
+        accept: [
+          "The Catechism",
+        ],
+        answer: "The Catechism of the Catholic Church explains Catholic belief and morals in full. A creed is a short statement of belief, and the Missal holds the Mass texts.",
+      },
+      {
+        question: "How many books are in the Protestant Bible?",
+        choices: [
+          "39",
+          "27",
+          "66",
+          "73",
+        ],
+        accept: [
+          "66",
+        ],
+        answer: "It has 39 Old Testament and 27 New Testament books. Catholic Bibles include extra Old Testament books, giving 73.",
+      },
+      {
+        question: "Which Protestant idea says the Bible alone is the final authority?",
+        choices: [
+          "Magisterium",
+          "Apostolic succession",
+          "Natural law",
+          "Sola scriptura",
+        ],
+        accept: [
+          "Sola scriptura",
+        ],
+        answer: "Sola scriptura (scripture alone) came from the Reformation. The Magisterium is the Catholic Church's teaching authority, and apostolic succession links bishops to the apostles.",
+      },
+      {
+        question: "What is a teaching letter from the Pope to the whole Catholic Church called?",
+        choices: [
+          "A catechism",
+          "A creed",
+          "A fatwa",
+          "An encyclical",
+        ],
+        accept: [
+          "An encyclical",
+        ],
+        answer: "An encyclical is a papal letter on faith or morals, such as Laudato Si' on the environment. A fatwa is a ruling by an Islamic scholar.",
       },
     ],
     misconceptions: [
@@ -5770,6 +6875,71 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
           "Catholic v Protestant",
         ],
         answer: "Contrasting means the beliefs must differ, such as Catholic and Protestant views. Two similar points earn little, even if each is accurate.",
+      },
+      {
+        question: "What share of the AQA GCSE Religious Studies grade is each of the two papers worth?",
+        choices: [
+          "25%",
+          "40%",
+          "50%",
+          "60%",
+        ],
+        accept: [
+          "50%",
+        ],
+        answer: "There are two papers of equal weight: Paper 1 on the religions and Paper 2 on the themes, so each counts for half of the grade.",
+      },
+      {
+        question: "On AQA's 5-mark 'explain two beliefs' question, how many marks is the source of authority?",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "5",
+        ],
+        accept: [
+          "1",
+        ],
+        answer: "Each developed belief earns up to 2 marks, and the fifth mark is for a relevant source of authority, such as a Bible or Qur'an teaching.",
+      },
+      {
+        question: "On a 4-mark AQA RS question, how many marks can each fully developed point earn?",
+        choices: [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        accept: [
+          "2",
+        ],
+        answer: "Each way earns 1 mark if simply stated and 2 if developed, so you need two well-developed points for full marks.",
+      },
+      {
+        question: "Correctly using terms such as 'agape' or 'Tawhid' shows what in your answer?",
+        choices: [
+          "Justified conclusion",
+          "Specialist vocabulary",
+          "Developed point",
+          "Contrasting beliefs",
+        ],
+        accept: [
+          "Specialist vocabulary",
+        ],
+        answer: "Accurate religious terms are specialist vocabulary. Examiners reward it, and it also earns credit in the SPaG marks.",
+      },
+      {
+        question: "Leaving out SPaG, how many marks is each theme on AQA RS Paper 2 worth?",
+        choices: [
+          "12",
+          "24",
+          "30",
+          "48",
+        ],
+        accept: [
+          "24",
+        ],
+        answer: "Each section has questions worth 1, 2, 4, 5 and 12 marks, which add up to 24. The 12-mark evaluate question is half of that.",
       },
     ],
     misconceptions: [

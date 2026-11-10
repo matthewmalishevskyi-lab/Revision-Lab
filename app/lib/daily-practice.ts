@@ -300,6 +300,7 @@ export function buildDailySet(input: {
   // ── Pull the questions, climbing ──────────────────────────────────────────
   const perTopic = Math.ceil(size / Math.max(1, chosen.length));
   const picked: DailyQuestion[] = [];
+  const dealt = new Set<string>();
 
   for (const focus of chosen) {
     const bank = ladderOf(focus.subjectSlug, focus.topicSlug);
@@ -334,8 +335,13 @@ export function buildDailySet(input: {
       let addedThisRound = 0;
       for (const { level, queue } of takeFrom) {
         if (added >= wanted) break;
-        const q = queue.shift();
+        // ⚠️ The same wording can live in two topics ("Which of these is the
+        // odd one out?" is in thirteen Spanish ones), so one day's set could
+        // ask it twice. Skip anything already dealt today.
+        let q = queue.shift();
+        while (q && dealt.has(q.question)) q = queue.shift();
         if (!q) continue;
+        dealt.add(q.question);
         picked.push({
           subjectSlug: focus.subjectSlug,
           subjectName: focus.subjectName,

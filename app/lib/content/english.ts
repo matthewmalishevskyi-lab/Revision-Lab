@@ -472,6 +472,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "A cyclical structure returns to its starting point, which can suggest nothing has changed or that a character is trapped. Foreshadowing is an early hint at a later event.",
       },
+      {
+        question: "What is the literal, dictionary meaning of a word called?",
+        choices: [
+          "Connotation",
+          "Denotation",
+          "Inference",
+          "Register",
+        ],
+        accept: [
+          "Denotation",
+        ],
+        answer: "Denotation is the plain dictionary meaning. Connotation is the set of associations a word carries on top of that, which is usually what you analyse.",
+      },
+      {
+        question: "Who a text is written for, such as teenagers or parents, is called its:",
+        choices: [
+          "Purpose",
+          "Register",
+          "Audience",
+          "Tone",
+        ],
+        accept: [
+          "Audience",
+        ],
+        answer: "The audience is the intended reader. Purpose is the writer's aim, like persuading, and register is how formal the language is.",
+      },
+      {
+        question: "Which verb describes what a WRITER does when suggesting something indirectly?",
+        choices: [
+          "Infer",
+          "State",
+          "Retrieve",
+          "Imply",
+        ],
+        accept: [
+          "Imply",
+        ],
+        answer: "Writers imply; readers infer. Mixing the two up is a common slip: you infer meaning from the clues a writer has implied.",
+      },
+      {
+        question: "A writer mocks a politician by pretending to praise him. What is the tone?",
+        choices: [
+          "Ironic",
+          "Nostalgic",
+          "Sincere",
+          "Melancholic",
+        ],
+        accept: [
+          "Ironic",
+        ],
+        answer: "Saying the opposite of what you mean to mock someone is ironic, often sarcastic. Sincere would mean the praise was genuine.",
+      },
+      {
+        question: "Writing about the ORDER in which a writer reveals ideas is analysing:",
+        choices: [
+          "Language",
+          "Structure",
+          "Register",
+          "Tone",
+        ],
+        accept: [
+          "Structure",
+        ],
+        answer: "Structure is about how a text is organised and sequenced: openings, shifts in focus and endings. Language is about individual word and sentence choices.",
+      },
     ],
 
     misconceptions: [
@@ -949,6 +1014,71 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Subordinate clause",
         ],
         answer: "'Which stood alone' adds detail but makes no sense by itself, so it is a subordinate clause. The main clause is 'The house was dark', which could stand alone.",
+      },
+      {
+        question: "Imagery that appeals to the sense of touch is called:",
+        choices: [
+          "Auditory",
+          "Visual",
+          "Tactile",
+          "Olfactory",
+        ],
+        accept: [
+          "Tactile",
+        ],
+        answer: "Tactile imagery is about touch and texture, like rough bark or icy water. Auditory is sound, visual is sight and olfactory is smell.",
+      },
+      {
+        question: "Which verb best replaces 'walked' to show a character is exhausted?",
+        choices: [
+          "Strolled",
+          "Trudged",
+          "Marched",
+          "Skipped",
+        ],
+        accept: [
+          "Trudged",
+        ],
+        answer: "Trudged suggests slow, heavy, tired steps. Strolled is relaxed, marched is brisk and determined, and skipped is light and happy.",
+      },
+      {
+        question: "A story that opens in the middle of the action begins:",
+        choices: [
+          "In flashback",
+          "With a prologue",
+          "In medias res",
+          "With a cliffhanger",
+        ],
+        accept: [
+          "In medias res",
+        ],
+        answer: "In medias res is Latin for 'into the middle of things': you drop the reader straight into action. A flashback jumps back to an earlier time.",
+      },
+      {
+        question: "'A deafening silence' is an example of which technique?",
+        choices: [
+          "Hyperbole",
+          "Simile",
+          "Onomatopoeia",
+          "Oxymoron",
+        ],
+        accept: [
+          "Oxymoron",
+        ],
+        answer: "An oxymoron puts two contradictory words side by side: silence cannot really be deafening. It makes the reader pause on the strangeness of the image.",
+      },
+      {
+        question: "Which noun is the most precise replacement for 'dog' in a description?",
+        choices: [
+          "Animal",
+          "Creature",
+          "Pet",
+          "Labrador",
+        ],
+        accept: [
+          "Labrador",
+        ],
+        answer: "Labrador is a precise noun that gives the reader a clear picture. Animal, creature and pet are vaguer than 'dog', not more exact.",
       },
     ],
 
@@ -1431,6 +1561,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "A Shakespearean sonnet has three quatrains and a final rhyming couplet. A Petrarchan sonnet splits into an octave and a sestet, with its volta usually at line nine.",
       },
+      {
+        question: "What is a stanza of three lines called?",
+        choices: [
+          "Couplet",
+          "Quatrain",
+          "Octave",
+          "Tercet",
+        ],
+        accept: [
+          "Tercet",
+        ],
+        answer: "A tercet has three lines. A couplet has two, a quatrain four and an octave eight.",
+      },
+      {
+        question: "In a Petrarchan sonnet, what is the opening eight-line section called?",
+        choices: [
+          "Sestet",
+          "Octave",
+          "Quatrain",
+          "Couplet",
+        ],
+        accept: [
+          "Octave",
+        ],
+        answer: "A Petrarchan sonnet splits into an octave of eight lines and a sestet of six. The volta usually comes as the octave gives way to the sestet.",
+      },
+      {
+        question: "A poem that tells a story, often in quatrains with a refrain, is a:",
+        choices: [
+          "Ballad",
+          "Sonnet",
+          "Elegy",
+          "Ode",
+        ],
+        accept: [
+          "Ballad",
+        ],
+        answer: "A ballad is a narrative poem, traditionally sung, often in four-line stanzas. An elegy mourns the dead and an ode praises its subject.",
+      },
+      {
+        question: "A rhyme that falls within a single line, not at its end, is called:",
+        choices: [
+          "Half-rhyme",
+          "End rhyme",
+          "Eye rhyme",
+          "Internal rhyme",
+        ],
+        accept: [
+          "Internal rhyme",
+        ],
+        answer: "Internal rhyme happens inside a line, like 'dreary' and 'weary' in one line of Poe's 'The Raven'. Half-rhyme is a near miss, like heart and hurt.",
+      },
+      {
+        question: "Repeated consonant sounds in the middle or at the end of words are called:",
+        choices: [
+          "Assonance",
+          "Consonance",
+          "Alliteration",
+          "Sibilance",
+        ],
+        accept: [
+          "Consonance",
+        ],
+        answer: "Consonance repeats consonant sounds anywhere in words, as in 'odd' and 'bed'. Alliteration is only at the start of words, and assonance repeats vowels.",
+      },
     ],
 
     misconceptions: [
@@ -1899,6 +2094,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "'Wherefore' means 'why', so Juliet's 'wherefore art thou Romeo?' asks why he is Romeo, a Montague. It is a common trap to read it as 'where'.",
       },
+      {
+        question: "In which town was Shakespeare born?",
+        choices: [
+          "London",
+          "Oxford",
+          "Stratford-upon-Avon",
+          "Warwick",
+        ],
+        accept: [
+          "Stratford-upon-Avon",
+        ],
+        answer: "Shakespeare was born in Stratford-upon-Avon in Warwickshire in 1564. He later worked in London, where his plays were performed.",
+      },
+      {
+        question: "Beside which river was the Globe Theatre built?",
+        choices: [
+          "Thames",
+          "Avon",
+          "Severn",
+          "Mersey",
+        ],
+        accept: [
+          "Thames",
+        ],
+        answer: "The Globe stood on the south bank of the Thames in London. The Avon is the river at Stratford, where Shakespeare was born.",
+      },
+      {
+        question: "Shakespeare's acting company became the King's Men under which monarch?",
+        choices: [
+          "Elizabeth I",
+          "Henry VIII",
+          "Charles I",
+          "James I",
+        ],
+        accept: [
+          "James I",
+        ],
+        answer: "In 1603 James I became the company's patron, so the Lord Chamberlain's Men became the King's Men. Elizabeth I had died that year.",
+      },
+      {
+        question: "In modern editions, how many acts does a Shakespeare play have?",
+        choices: [
+          "Three",
+          "Five",
+          "Four",
+          "Six",
+        ],
+        accept: [
+          "Five",
+        ],
+        answer: "Shakespeare's plays are printed in five acts, each split into scenes. Naming the act and scene shows you know where a moment sits in the play.",
+      },
+      {
+        question: "Shakespeare's Henry V belongs to which group of his plays?",
+        choices: [
+          "Comedies",
+          "Tragedies",
+          "Histories",
+          "Romances",
+        ],
+        accept: [
+          "Histories",
+        ],
+        answer: "Henry V is one of the history plays, which dramatise the lives of English kings. Tragedies, like Macbeth, end with the hero's death.",
+      },
     ],
 
     misconceptions: [
@@ -2348,6 +2608,71 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Contrast",
         ],
         answer: "Putting opposite scenes side by side is a structural contrast that makes each feel sharper. Foreshadowing would be a hint about something that has not happened yet.",
+      },
+      {
+        question: "A story told in the order the events happened is told:",
+        choices: [
+          "Cyclically",
+          "In flashback",
+          "Chronologically",
+          "In medias res",
+        ],
+        accept: [
+          "Chronologically",
+        ],
+        answer: "Chronological order follows time from first to last. A flashback breaks that order by jumping back to an earlier moment.",
+      },
+      {
+        question: "A scene that briefly jumps ahead to show a future event is a:",
+        choices: [
+          "Flashback",
+          "Flash-forward",
+          "Cliffhanger",
+          "Prologue",
+        ],
+        accept: [
+          "Flash-forward",
+        ],
+        answer: "A flash-forward shows a moment from later in the story. A flashback goes back in time, and a cliffhanger stops at a moment of suspense.",
+      },
+      {
+        question: "What is the point of greatest tension in a story's plot called?",
+        choices: [
+          "Exposition",
+          "Resolution",
+          "Rising action",
+          "Climax",
+        ],
+        accept: [
+          "Climax",
+        ],
+        answer: "The climax is the peak of tension, often the turning point. The exposition sets up characters and setting, and the resolution ties things up afterwards.",
+      },
+      {
+        question: "Which tense gives narrative writing a sense of immediacy?",
+        choices: [
+          "Present tense",
+          "Past tense",
+          "Future tense",
+          "Conditional",
+        ],
+        accept: [
+          "Present tense",
+        ],
+        answer: "The present tense ('I run, the door slams') makes events feel as if they are happening now. Most fiction uses the past tense, so a switch stands out.",
+      },
+      {
+        question: "Which of these is a structural feature rather than a language feature?",
+        choices: [
+          "A vivid simile",
+          "A shift in focus",
+          "Emotive verbs",
+          "Personification",
+        ],
+        accept: [
+          "A shift in focus",
+        ],
+        answer: "A shift in focus is about how the text is organised, so it is structural. Similes, verb choices and personification are language features.",
       },
     ],
 
@@ -2805,6 +3130,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "'Frail' and 'starving' are chosen to make the reader feel pity, which is emotive language. The other phrases give the same facts in neutral, unemotional words.",
       },
+      {
+        question: "In a newspaper article, the line giving the writer's name is the:",
+        choices: [
+          "Headline",
+          "Caption",
+          "Standfirst",
+          "Byline",
+        ],
+        accept: [
+          "Byline",
+        ],
+        answer: "The byline names the journalist. The headline is the title, the standfirst sums up the story under it, and a caption explains a photo.",
+      },
+      {
+        question: "'Act now.' Which type of sentence gives the reader a command?",
+        choices: [
+          "Imperative",
+          "Declarative",
+          "Interrogative",
+          "Exclamative",
+        ],
+        accept: [
+          "Imperative",
+        ],
+        answer: "An imperative is a command, often opening with a verb. A declarative makes a statement and an interrogative asks a question.",
+      },
+      {
+        question: "'Together, we can fix this.' What is the technique in the word 'we'?",
+        choices: [
+          "Direct address",
+          "Imperative",
+          "Inclusive pronoun",
+          "Rhetorical question",
+        ],
+        accept: [
+          "Inclusive pronoun",
+        ],
+        answer: "'We' is an inclusive pronoun: it puts the writer and reader on the same side. Direct address speaks to the reader as 'you'.",
+      },
+      {
+        question: "'Dr Lee, a leading surgeon, warns that it is unsafe.' Which technique is this?",
+        choices: [
+          "Anecdote",
+          "Expert opinion",
+          "Statistics",
+          "Hyperbole",
+        ],
+        accept: [
+          "Expert opinion",
+        ],
+        answer: "Quoting a qualified person is expert opinion, which borrows their authority to make the argument more convincing. An anecdote is a short personal story.",
+      },
+      {
+        question: "An article giving a newspaper's own view on an issue is called an:",
+        choices: [
+          "Editorial",
+          "Obituary",
+          "Interview",
+          "Advert",
+        ],
+        accept: [
+          "Editorial",
+        ],
+        answer: "An editorial sets out the newspaper's opinion. An obituary is about someone who has died and an interview records someone else's words.",
+      },
     ],
 
     misconceptions: [
@@ -3256,6 +3646,71 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Start a fire",
         ],
         answer: "Piggy's glasses focus sunlight to light the signal fire, so they stand for reason and the hope of rescue. Meetings are called with the conch, not the glasses.",
+      },
+      {
+        question: "In An Inspector Calls, who drinks heavily and steals money from his father's firm?",
+        choices: [
+          "Gerald",
+          "Mr Birling",
+          "Eric",
+          "Sheila",
+        ],
+        accept: [
+          "Eric",
+        ],
+        answer: "Eric, the Birlings' son, drinks too much and takes money from his father's office. Gerald is Sheila's fiancé and is not a member of the family.",
+      },
+      {
+        question: "In An Inspector Calls, what is the name of the Birlings' maid?",
+        choices: [
+          "Edna",
+          "Eva",
+          "Daisy",
+          "Sheila",
+        ],
+        accept: [
+          "Edna",
+        ],
+        answer: "Edna is the parlour maid. Eva Smith is the young woman whose death is investigated, and Daisy Renton is the name she later uses.",
+      },
+      {
+        question: "Who wrote Blood Brothers?",
+        choices: [
+          "J.B. Priestley",
+          "Alan Bennett",
+          "Dennis Kelly",
+          "Willy Russell",
+        ],
+        accept: [
+          "Willy Russell",
+        ],
+        answer: "Blood Brothers is by Willy Russell, who is from Liverpool, where the play is set. J.B. Priestley wrote An Inspector Calls.",
+      },
+      {
+        question: "In Blood Brothers, whom does Mickey marry?",
+        choices: [
+          "Donna Marie",
+          "Linda",
+          "Sarah",
+          "Lily",
+        ],
+        accept: [
+          "Linda",
+        ],
+        answer: "Mickey marries Linda, who has been friends with both twins since childhood. Donna Marie is one of Mickey's sisters.",
+      },
+      {
+        question: "In Lord of the Flies, which boy is killed during the frenzied dance?",
+        choices: [
+          "Piggy",
+          "Ralph",
+          "Simon",
+          "Roger",
+        ],
+        accept: [
+          "Simon",
+        ],
+        answer: "Simon is mistaken for the beast and killed during the dance. Piggy dies later, when Roger sends a boulder crashing down on him.",
       },
     ],
 
@@ -3727,6 +4182,71 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Friar Laurence",
         ],
         answer: "Friar Laurence marries them, hoping it will end the feud between their families. The Nurse helps by carrying messages, but she does not perform the wedding.",
+      },
+      {
+        question: "In Macbeth, whose ghost appears to Macbeth at the banquet?",
+        choices: [
+          "Duncan",
+          "Banquo",
+          "Macduff",
+          "Malcolm",
+        ],
+        accept: [
+          "Banquo",
+        ],
+        answer: "Banquo's ghost sits in Macbeth's seat at the feast, just after Macbeth has had him murdered. Only Macbeth can see it.",
+      },
+      {
+        question: "In Macbeth, to which country does Duncan's son Malcolm flee?",
+        choices: [
+          "England",
+          "Ireland",
+          "Norway",
+          "France",
+        ],
+        accept: [
+          "England",
+        ],
+        answer: "Malcolm flees to England after his father's murder. His brother Donalbain flees to Ireland, and their flight makes them look guilty.",
+      },
+      {
+        question: "In Macbeth, whose wife and children does Macbeth have murdered?",
+        choices: [
+          "Banquo's",
+          "Duncan's",
+          "Ross's",
+          "Macduff's",
+        ],
+        accept: [
+          "Macduff's",
+        ],
+        answer: "Macbeth has Macduff's family killed at their castle after Macduff flees to England. This drives Macduff's revenge.",
+      },
+      {
+        question: "In Romeo and Juliet, whom do Juliet's parents want her to marry?",
+        choices: [
+          "Tybalt",
+          "Benvolio",
+          "Paris",
+          "Mercutio",
+        ],
+        accept: [
+          "Paris",
+        ],
+        answer: "Lord Capulet arranges for Juliet to marry Paris, a relative of the Prince. Tybalt is her cousin and Benvolio is Romeo's cousin.",
+      },
+      {
+        question: "In which Italian city is most of Romeo and Juliet set?",
+        choices: [
+          "Mantua",
+          "Verona",
+          "Venice",
+          "Padua",
+        ],
+        accept: [
+          "Verona",
+        ],
+        answer: "The play is set in Verona. Mantua is the city Romeo is banished to after he kills Tybalt.",
       },
     ],
 
@@ -4201,6 +4721,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Dr Lanyon watches Hyde drink the potion and become Jekyll, and the shock kills him. Utterson only learns the truth later, through Lanyon's and Jekyll's letters.",
       },
+      {
+        question: "In A Christmas Carol, which kind former employer of Scrooge's throws a Christmas ball?",
+        choices: [
+          "Marley",
+          "Fred",
+          "Fezziwig",
+          "Topper",
+        ],
+        accept: [
+          "Fezziwig",
+        ],
+        answer: "Fezziwig, Scrooge's old master, holds a joyful Christmas party. Marley was Scrooge's business partner, and Fred is his nephew.",
+      },
+      {
+        question: "In Jekyll and Hyde, what is the name of Dr Jekyll's butler?",
+        choices: [
+          "Enfield",
+          "Lanyon",
+          "Guest",
+          "Poole",
+        ],
+        accept: [
+          "Poole",
+        ],
+        answer: "Poole is Jekyll's butler, who helps Utterson break into Jekyll's cabinet. Enfield is Utterson's distant relative, and Guest is his clerk.",
+      },
+      {
+        question: "In Frankenstein, in which city does Victor study and build his creature?",
+        choices: [
+          "Ingolstadt",
+          "Geneva",
+          "Paris",
+          "London",
+        ],
+        accept: [
+          "Ingolstadt",
+        ],
+        answer: "Victor goes to university at Ingolstadt in Germany. Geneva, in Switzerland, is the family home where he grew up.",
+      },
+      {
+        question: "In Great Expectations, which jilted woman still wears her wedding dress?",
+        choices: [
+          "Estella",
+          "Miss Havisham",
+          "Biddy",
+          "Mrs Joe",
+        ],
+        accept: [
+          "Miss Havisham",
+        ],
+        answer: "Miss Havisham was abandoned on her wedding day and has stopped all her clocks. Estella is the girl she adopts and raises.",
+      },
+      {
+        question: "In Jane Eyre, what is the name of the harsh school Jane is sent to?",
+        choices: [
+          "Thornfield",
+          "Gateshead",
+          "Lowood",
+          "Moor House",
+        ],
+        accept: [
+          "Lowood",
+        ],
+        answer: "Jane is sent to Lowood, a strict charity school. Gateshead is her aunt's house and Thornfield is Mr Rochester's home.",
+      },
     ],
 
     misconceptions: [
@@ -4662,6 +5247,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Juxtaposition sets contrasting ideas next to each other so each stands out. A volta is a turn in the poem's argument or mood over time, not two images together.",
       },
+      {
+        question: "Who wrote 'The Charge of the Light Brigade'?",
+        choices: [
+          "Wilfred Owen",
+          "Lord Byron",
+          "Alfred Tennyson",
+          "Ted Hughes",
+        ],
+        accept: [
+          "Alfred Tennyson",
+        ],
+        answer: "Tennyson wrote it as Poet Laureate, soon after the disastrous cavalry charge. Wilfred Owen wrote about the First World War, much later.",
+      },
+      {
+        question: "Which poet wrote 'Remains'?",
+        choices: [
+          "Seamus Heaney",
+          "Simon Armitage",
+          "Ted Hughes",
+          "Wilfred Owen",
+        ],
+        accept: [
+          "Simon Armitage",
+        ],
+        answer: "'Remains' is by Simon Armitage and is based on a soldier's account of the guilt he felt after a shooting. Armitage also wrote 'Mother, any distance'.",
+      },
+      {
+        question: "Which anthology poem is about a pilot who turns back from his mission?",
+        choices: [
+          "Remains",
+          "Poppies",
+          "Exposure",
+          "Kamikaze",
+        ],
+        accept: [
+          "Kamikaze",
+        ],
+        answer: "Beatrice Garland's 'Kamikaze' is about a Japanese pilot who turns back, and the shame his family make him feel for it.",
+      },
+      {
+        question: "Which long Wordsworth poem is the boat-stealing extract taken from?",
+        choices: [
+          "The Prelude",
+          "Tintern Abbey",
+          "The Excursion",
+          "Lyrical Ballads",
+        ],
+        accept: [
+          "The Prelude",
+        ],
+        answer: "The extract comes from The Prelude, Wordsworth's long autobiographical poem. Lyrical Ballads is a collection of poems, not one poem.",
+      },
+      {
+        question: "Who wrote 'Neutral Tones'?",
+        choices: [
+          "Lord Byron",
+          "Robert Browning",
+          "Percy Shelley",
+          "Thomas Hardy",
+        ],
+        accept: [
+          "Thomas Hardy",
+        ],
+        answer: "'Neutral Tones' is by Thomas Hardy and looks back bitterly on a love that has died. Byron wrote 'When We Two Parted', another poem about a lost love.",
+      },
     ],
 
     misconceptions: [
@@ -5120,6 +5770,58 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Irony is a gap between what is said and what is really meant or happening. Here the cheerful words clash with the disaster, so they cannot be taken at face value.",
       },
+      {
+        question: "Imagery that appeals to the sense of hearing is called:",
+        choices: [
+          "Visual",
+          "Auditory",
+          "Tactile",
+          "Olfactory",
+        ],
+        accept: [
+          "Auditory",
+        ],
+        answer: "Auditory imagery is about sound. Visual imagery is about sight, tactile about touch and olfactory about smell.",
+      },
+      {
+        question: "A statement that seems to contradict itself yet holds a truth is a:",
+        choices: [
+          "Paradox",
+          "Oxymoron",
+          "Pun",
+          "Simile",
+        ],
+        accept: [
+          "Paradox",
+        ],
+        answer: "A paradox is a whole statement, like 'the more I learn, the less I know'. An oxymoron squeezes two opposite words together, like 'bittersweet'.",
+      },
+      {
+        question: "Repeating the same word at the start of several lines in a row is called:",
+        choices: [
+          "Refrain",
+          "Enjambment",
+          "Anaphora",
+          "Caesura",
+        ],
+        accept: [
+          "Anaphora",
+        ],
+        answer: "Anaphora repeats an opening word or phrase across lines to build force. A refrain is a whole line repeated, often at the end of each stanza.",
+      },
+      {
+        question: "A poem's lines grow shorter and shorter towards its end. This is a feature of its:",
+        choices: [
+          "Imagery",
+          "Tone",
+          "Language",
+          "Structure",
+        ],
+        accept: [
+          "Structure",
+        ],
+        answer: "Line length and layout are structure. Shrinking lines can suggest something fading, slowing or running out, so link it to the poem's meaning.",
+      },
     ],
 
     misconceptions: [
@@ -5568,6 +6270,58 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Subject terminology",
         ],
         answer: "Subject terminology is the technical vocabulary of English, rewarded under AO2. It only earns credit when you go on to explain the effect of the technique.",
+      },
+      {
+        question: "Revisiting a topic after gaps of days, then weeks, is called:",
+        choices: [
+          "Cramming",
+          "Spaced repetition",
+          "Interleaving",
+          "Highlighting",
+        ],
+        accept: [
+          "Spaced repetition",
+        ],
+        answer: "Spaced repetition makes you recall things just as you start to forget them, which helps them stick. Cramming packs it all into one late session.",
+      },
+      {
+        question: "Mixing several different topics within one revision session is called:",
+        choices: [
+          "Interleaving",
+          "Spacing",
+          "Cramming",
+          "Blurting",
+        ],
+        accept: [
+          "Interleaving",
+        ],
+        answer: "Interleaving switches between topics, which trains you to pick the right knowledge for each question. Blurting is writing down all you can remember.",
+      },
+      {
+        question: "Where does a topic sentence usually go in a paragraph?",
+        choices: [
+          "In the middle",
+          "At the end",
+          "At the start",
+          "After the quotation",
+        ],
+        accept: [
+          "At the start",
+        ],
+        answer: "A topic sentence opens the paragraph and states its point, ideally linked to the question. Everything after it should support that point.",
+      },
+      {
+        question: "In PETAL, what does the L stand for?",
+        choices: [
+          "Language",
+          "List",
+          "Learn",
+          "Link",
+        ],
+        accept: [
+          "Link",
+        ],
+        answer: "The L is Link: you end the paragraph by tying your point back to the question. PETAL stands for Point, Evidence, Technique, Analysis, Link.",
       },
     ],
 
@@ -6097,6 +6851,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "'Necessary' has one c and a double s. A handy memory trick: a shirt has one collar and two sleeves.",
       },
+      {
+        question: "What word class is 'enormous' in 'an enormous wave'?",
+        choices: [
+          "Adverb",
+          "Noun",
+          "Verb",
+          "Adjective",
+        ],
+        accept: [
+          "Adjective",
+        ],
+        answer: "Enormous is an adjective because it describes the noun 'wave'. An adverb describes a verb, like 'quickly' in 'ran quickly'.",
+      },
+      {
+        question: "Which phrase is correct Standard English?",
+        choices: [
+          "I could of gone",
+          "I could have gone",
+          "I could've went",
+          "I could of went",
+        ],
+        accept: [
+          "I could have gone",
+        ],
+        answer: "'Could of' is a mishearing of 'could've', which is short for 'could have'. After 'have' you need 'gone', not 'went'.",
+      },
+      {
+        question: "Which word fits: 'There were ___ people than last year.'?",
+        choices: [
+          "less",
+          "lesser",
+          "fewer",
+          "little",
+        ],
+        accept: [
+          "fewer",
+        ],
+        answer: "Use fewer for things you can count, like people. Less is for amounts you cannot count, like less water or less time.",
+      },
+      {
+        question: "Which word is the conjunction in 'I was cold but happy'?",
+        choices: [
+          "but",
+          "cold",
+          "was",
+          "happy",
+        ],
+        accept: [
+          "but",
+        ],
+        answer: "'But' is a conjunction, a joining word linking 'cold' and 'happy'. 'Cold' and 'happy' are adjectives and 'was' is a verb.",
+      },
+      {
+        question: "Which of these words is a modal verb?",
+        choices: [
+          "Quickly",
+          "Because",
+          "Should",
+          "Under",
+        ],
+        accept: [
+          "Should",
+        ],
+        answer: "Modal verbs like should, could, might and must show how likely or necessary something is. Because is a conjunction and under is a preposition.",
+      },
     ],
 
     misconceptions: [
@@ -6556,6 +7375,71 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Tone",
         ],
         answer: "Tone is the writer's attitude as it comes across, such as angry or calm. Purpose is why the text was written, and two texts can share a purpose but differ in tone.",
+      },
+      {
+        question: "Text A is a diary; Text B is a speech. Which aspect are you comparing?",
+        choices: [
+          "Tone",
+          "Purpose",
+          "Form",
+          "Audience",
+        ],
+        accept: [
+          "Form",
+        ],
+        answer: "Form is the type of text, such as a diary, letter or speech. Purpose is the writer's aim, and audience is who the text is for.",
+      },
+      {
+        question: "Text A is formal; Text B is chatty and uses slang. You are comparing their:",
+        choices: [
+          "Register",
+          "Purpose",
+          "Form",
+          "Audience",
+        ],
+        accept: [
+          "Register",
+        ],
+        answer: "Register is how formal or informal the language is. Two texts can share a purpose and form but still differ in register.",
+      },
+      {
+        question: "Text A was written in 1850 and Text B in 2020. What does this difference concern?",
+        choices: [
+          "Tone",
+          "Register",
+          "Form",
+          "Context",
+        ],
+        accept: [
+          "Context",
+        ],
+        answer: "Context is the time and situation a text comes from. Texts from different centuries often reflect different attitudes and ways of writing.",
+      },
+      {
+        question: "Text A aims to entertain; Text B aims to warn. Which aspect differs?",
+        choices: [
+          "Audience",
+          "Purpose",
+          "Form",
+          "Register",
+        ],
+        accept: [
+          "Purpose",
+        ],
+        answer: "Purpose is the writer's aim, such as to entertain, warn or persuade. Audience is who the text is aimed at, which is a separate thing.",
+      },
+      {
+        question: "Text A tells one long story; Text B is a numbered list of tips. You are comparing their:",
+        choices: [
+          "Tone",
+          "Register",
+          "Audience",
+          "Structure",
+        ],
+        accept: [
+          "Structure",
+        ],
+        answer: "Structure is how a text is organised: one continuous story versus a list of separate points. It shapes how the reader moves through the ideas.",
       },
     ],
 
@@ -7024,6 +7908,71 @@ export const ENGLISH: Record<string, TopicContent> = {
         ],
         answer: "Dialect is the regional vocabulary and grammar people use, so a local word like 'bairn' is dialect. Accent is only about how words are pronounced.",
       },
+      {
+        question: "Who usually assesses your spoken language endorsement presentation?",
+        choices: [
+          "An exam board visitor",
+          "Your teacher",
+          "A panel of students",
+          "Your headteacher",
+        ],
+        accept: [
+          "Your teacher",
+        ],
+        answer: "Your teacher assesses the presentation. A sample of recordings is sent to the exam board so it can check that schools mark consistently.",
+      },
+      {
+        question: "In a conversation, two people speaking at the same time is called:",
+        choices: [
+          "Elision",
+          "Adjacency pair",
+          "Overlap",
+          "Filler",
+        ],
+        accept: [
+          "Overlap",
+        ],
+        answer: "Overlap is when speech from two people runs together. An adjacency pair is a matching two-part exchange, like a question and its answer.",
+      },
+      {
+        question: "Which feature is typical of prepared speech rather than spontaneous speech?",
+        choices: [
+          "Frequent fillers",
+          "False starts",
+          "Overlapping",
+          "Clear signposting",
+        ],
+        accept: [
+          "Clear signposting",
+        ],
+        answer: "Prepared speech is planned, so it can use signposting like 'firstly' to guide listeners. Fillers, false starts and overlap come from unplanned talk.",
+      },
+      {
+        question: "Which accent was traditionally linked with BBC newsreaders and has no regional features?",
+        choices: [
+          "Standard English",
+          "Received Pronunciation",
+          "Cockney",
+          "Estuary English",
+        ],
+        accept: [
+          "Received Pronunciation",
+        ],
+        answer: "Received Pronunciation (RP) is an accent. Standard English is about grammar and vocabulary, and it can be spoken in any accent.",
+      },
+      {
+        question: "The rise and fall in the pitch of your voice is called:",
+        choices: [
+          "Intonation",
+          "Elision",
+          "Dialect",
+          "Volume",
+        ],
+        accept: [
+          "Intonation",
+        ],
+        answer: "Intonation is the pattern of pitch, such as rising at the end of a question. Volume is loudness, and dialect is regional vocabulary and grammar.",
+      },
     ],
 
     misconceptions: [
@@ -7478,6 +8427,71 @@ export const ENGLISH: Record<string, TopicContent> = {
           "Socialism",
         ],
         answer: "Priestley was a socialist, and the Inspector speaks for shared responsibility for others. Mr Birling's selfish business views stand for the capitalism the play criticises.",
+      },
+      {
+        question: "Which Shakespeare play is often linked to the 1605 Gunpowder Plot?",
+        choices: [
+          "Romeo and Juliet",
+          "Macbeth",
+          "The Tempest",
+          "Much Ado About Nothing",
+        ],
+        accept: [
+          "Macbeth",
+        ],
+        answer: "Macbeth was written soon after the plot to kill James I, so the murder of a king and its punishment had extra force for audiences.",
+      },
+      {
+        question: "In which year was Strange Case of Dr Jekyll and Mr Hyde published?",
+        choices: [
+          "1843",
+          "1818",
+          "1912",
+          "1886",
+        ],
+        accept: [
+          "1886",
+        ],
+        answer: "Jekyll and Hyde came out in 1886, late in Victoria's reign. A Christmas Carol was 1843 and Frankenstein 1818.",
+      },
+      {
+        question: "What is a society in which men hold most of the power called?",
+        choices: [
+          "Patriarchy",
+          "Monarchy",
+          "Democracy",
+          "Aristocracy",
+        ],
+        accept: [
+          "Patriarchy",
+        ],
+        answer: "A patriarchy is male-dominated, which is useful context for women such as Juliet or Sheila Birling. A monarchy is simply rule by a king or queen.",
+      },
+      {
+        question: "Which scientific idea about electricity and the body influenced Frankenstein?",
+        choices: [
+          "Evolution",
+          "Gravity",
+          "Galvanism",
+          "Magnetism",
+        ],
+        accept: [
+          "Galvanism",
+        ],
+        answer: "Galvanism was the study of how electricity makes muscles move, even in dead bodies. Darwin's theory of evolution came decades after Frankenstein.",
+      },
+      {
+        question: "The years 1837 to 1901, when Dickens and Stevenson wrote, are known as the:",
+        choices: [
+          "Edwardian era",
+          "Victorian era",
+          "Georgian era",
+          "Elizabethan era",
+        ],
+        accept: [
+          "Victorian era",
+        ],
+        answer: "Queen Victoria reigned from 1837 to 1901, so this is the Victorian era. The Edwardian era followed it; An Inspector Calls is set just after it, in 1912.",
       },
     ],
 

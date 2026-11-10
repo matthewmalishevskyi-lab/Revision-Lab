@@ -731,6 +731,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Bacteria are prokaryotes: they have no nucleus and no mitochondria, so their ribosomes sit free in the cytoplasm. The cell wall is outside the membrane.",
       },
+      {
+        question: "Which of these is a typical width for an animal cell?",
+        choices: [
+          "0.2 µm",
+          "20 µm",
+          "2 mm",
+          "20 nm",
+        ],
+        accept: [
+          "20 µm",
+        ],
+        answer: "Most animal cells are tens of micrometres across. Bacteria are only a few µm, 20 nm is ribosome scale, and 2 mm would be visible to the naked eye.",
+      },
     ],
     misconceptions: [
       {
@@ -1480,6 +1493,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Respiring cells use up oxygen, so it is at a lower concentration inside them. Carbon dioxide, lactic acid and urea are made by cells and diffuse out.",
       },
+      {
+        question: "What word describes a limp plant cell whose membrane still touches its wall?",
+        choices: [
+          "Turgid",
+          "Plasmolysed",
+          "Flaccid",
+          "Lysed",
+        ],
+        accept: [
+          "Flaccid",
+        ],
+        answer: "A flaccid cell has lost some water and gone soft. If it loses so much that the membrane pulls away from the wall, it is plasmolysed. Turgid cells are firm.",
+      },
     ],
     misconceptions: [
       {
@@ -2200,6 +2226,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Chromosomes",
         ],
         answer: "The stain colours the DNA, so the chromosomes show up and you can spot cells in mitosis. Root tip cells have no chloroplasts, and cell walls are visible without a stain.",
+      },
+      {
+        question: "Which is an advantage of adult stem cells over embryonic stem cells?",
+        choices: [
+          "Form any cell type",
+          "Fewer ethical concerns",
+          "Never cause infection",
+          "Divide without limit",
+        ],
+        accept: [
+          "Fewer ethical concerns",
+        ],
+        answer: "Taking adult stem cells does not destroy an embryo, so fewer people object. But they can only form a few cell types, unlike embryonic stem cells.",
       },
     ],
     misconceptions: [
@@ -2927,6 +2966,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Biuret reagent stays blue if there is no protein and turns purple if there is. Brick red is a Benedict's result and blue-black is iodine with starch.",
       },
+      {
+        question: "In the lock and key model, which part acts as the key?",
+        choices: [
+          "The active site",
+          "The enzyme",
+          "The substrate",
+          "The product",
+        ],
+        accept: [
+          "The substrate",
+        ],
+        answer: "The substrate is the key: only it fits the active site, which is part of the enzyme (the lock). The products are what is released afterwards.",
+      },
     ],
     misconceptions: [
       {
@@ -3649,6 +3701,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Mineral ions",
         ],
         answer: "Mineral ions dissolved in soil water travel up the xylem with it. Sucrose is carried in the phloem by translocation, and starch is insoluble, so it is not transported.",
+      },
+      {
+        question: "Water vapour leaves a leaf through the stomata by which process?",
+        choices: [
+          "Osmosis",
+          "Active transport",
+          "Translocation",
+          "Diffusion",
+        ],
+        accept: [
+          "Diffusion",
+        ],
+        answer: "Water evaporates inside the leaf, then the vapour diffuses out through the stomata. Osmosis moves liquid water between cells; translocation moves sugars.",
       },
     ],
     misconceptions: [
@@ -4394,6 +4459,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Random errors push readings up or down by different amounts, so repeating and taking a mean helps. Systematic and zero errors shift every reading the same way.",
       },
+      {
+        question: "About how small a detail can a light microscope resolve?",
+        choices: [
+          "0.2 µm",
+          "0.2 nm",
+          "0.2 mm",
+          "2 mm",
+        ],
+        accept: [
+          "0.2 µm",
+        ],
+        answer: "A light microscope resolves down to about 0.2 µm (200 nm). An electron microscope reaches about 0.2 nm, which is why it can show ribosomes.",
+      },
     ],
     misconceptions: [
       {
@@ -5129,6 +5207,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Antibodies are proteins made by white blood cells. Their shape is specific, so each type fits only one antigen, like an enzyme fits only one substrate.",
       },
+      {
+        question: "Which type of pathogen causes tobacco mosaic disease?",
+        choices: [
+          "Fungus",
+          "Virus",
+          "Bacterium",
+          "Protist",
+        ],
+        accept: [
+          "Virus",
+        ],
+        answer: "Tobacco mosaic virus (TMV) damages chloroplasts, giving mottled leaves. Rose black spot is the plant disease caused by a fungus.",
+      },
     ],
     misconceptions: [
       {
@@ -5853,6 +5944,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "HPV",
         ],
         answer: "HPV (human papillomavirus) living in cells can trigger cervical cancer, so a communicable disease leads to a non-communicable one. HIV damages the immune system instead.",
+      },
+      {
+        question: "As one variable rises, the other falls. What is this called?",
+        choices: [
+          "Positive correlation",
+          "Negative correlation",
+          "No correlation",
+          "A causal link",
+        ],
+        accept: [
+          "Negative correlation",
+        ],
+        answer: "A negative correlation means one goes up as the other goes down. It still does not prove cause: that needs a mechanism explaining how one affects the other.",
       },
     ],
     misconceptions: [
@@ -6630,6 +6734,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Photosynthesis is controlled by enzymes, which work faster as it warms up to their optimum. Warming does not add light or carbon dioxide, and closed stomata would slow it.",
       },
+      {
+        question: "In complete darkness, which of these gases does a leaf release?",
+        choices: [
+          "Oxygen",
+          "Nitrogen",
+          "Hydrogen",
+          "Carbon dioxide",
+        ],
+        accept: [
+          "Carbon dioxide",
+        ],
+        answer: "With no light there is no photosynthesis, but the leaf still respires, so it takes in oxygen and gives out carbon dioxide.",
+      },
     ],
     misconceptions: [
       {
@@ -7344,6 +7461,20 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Muscle contraction",
         ],
         answer: "Muscles need energy from respiration to contract. Diffusion, osmosis and transpiration are passive: they run down a gradient with no energy from respiration.",
+      },
+      {
+        question: "In the liver, what is lactic acid converted back into?",
+        choices: [
+          "Ethanol",
+          "Glucose",
+          "Urea",
+          "Amino acids",
+        ],
+        accept: [
+          "Glucose",
+        ],
+        answer: "Blood carries lactic acid to the liver, which turns it back into glucose. The oxygen debt is the extra oxygen needed for this. Ethanol is made by yeast, not muscles.",
+        higherOnly: true,
       },
     ],
     misconceptions: [
@@ -8064,6 +8195,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Retina",
         ],
         answer: "The retina at the back of the eye holds the receptor cells. The cornea and lens focus light onto it, and the iris controls how much light gets in.",
+      },
+      {
+        question: "Which part of the eye is the clear front layer that refracts light?",
+        choices: [
+          "Iris",
+          "Cornea",
+          "Sclera",
+          "Retina",
+        ],
+        accept: [
+          "Cornea",
+        ],
+        answer: "The cornea is the transparent front of the eye and bends light as it enters. The sclera is the tough white outer layer; the iris controls pupil size.",
       },
     ],
     misconceptions: [
@@ -8799,6 +8943,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Pituitary gland",
         ],
         answer: "The pituitary gland in the brain releases FSH and LH. The ovaries respond by maturing and releasing an egg, and they make oestrogen and progesterone.",
+      },
+      {
+        question: "In a typical 28-day menstrual cycle, on about which day is an egg released?",
+        choices: [
+          "Day 1",
+          "Day 7",
+          "Day 14",
+          "Day 28",
+        ],
+        accept: [
+          "Day 14",
+        ],
+        answer: "Ovulation happens around day 14, triggered by a surge of LH. Day 1 is the start of menstruation, when the uterus lining breaks down.",
       },
     ],
     misconceptions: [
@@ -9567,6 +9724,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "The coronary arteries branch off the aorta and run over the heart. The pulmonary veins carry oxygenated blood into the left atrium, not into the heart muscle.",
       },
+      {
+        question: "What is a drawback of an artificial heart compared with a donor heart?",
+        choices: [
+          "It is rejected",
+          "Blood may clot in it",
+          "It needs a donor",
+          "Needs immune drugs",
+        ],
+        accept: [
+          "Blood may clot in it",
+        ],
+        answer: "Artificial hearts are not rejected, so no immune-suppressing drugs, but blood can clot on their surfaces. A donor heart needs a donor and may be rejected.",
+      },
     ],
     misconceptions: [
       {
@@ -10283,6 +10453,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Trace past migration",
         ],
         answer: "Comparing genomes lets scientists trace human migration patterns from the past and find genes linked to disease. Height depends on many genes and the environment too.",
+      },
+      {
+        question: "A DNA nucleotide is a phosphate, a sugar and which other part?",
+        choices: [
+          "Amino acid",
+          "Base",
+          "Fatty acid",
+          "Glycerol",
+        ],
+        accept: [
+          "Base",
+        ],
+        answer: "Each nucleotide has a phosphate, a sugar and one of four bases (A, T, C or G). Amino acids are the units of proteins, not DNA.",
       },
     ],
     misconceptions: [
@@ -11023,6 +11206,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Pea plants",
         ],
         answer: "Mendel crossed pea plants in the mid-1800s and showed traits are passed on as separate units, now called genes. His work was only recognised after his death.",
+      },
+      {
+        question: "Which sex chromosome does every human egg cell carry?",
+        choices: [
+          "X or Y",
+          "Y",
+          "Both X and Y",
+          "X",
+        ],
+        accept: [
+          "X",
+        ],
+        answer: "A woman is XX, so every egg carries an X. Sperm carry either X or Y, which is why the father's gamete decides the baby's sex.",
       },
     ],
     misconceptions: [
@@ -11767,6 +11963,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Decomposers need oxygen, warmth and moisture. Where oxygen is missing (or it is too cold or acidic), decay cannot happen and the remains can be preserved.",
       },
+      {
+        question: "Footprints, burrows and root traces preserved in rock are all types of what?",
+        choices: [
+          "Minerals",
+          "Fossils",
+          "Sediments",
+          "Mutations",
+        ],
+        accept: [
+          "Fossils",
+        ],
+        answer: "Fossils are any remains or traces of organisms from long ago, preserved in rock, so footprints and burrows count as well as bones and shells.",
+      },
     ],
     misconceptions: [
       {
@@ -12488,6 +12697,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "So every cell gets it",
         ],
         answer: "A gene added early is copied into every new cell by mitosis, so the whole plant develops the desired characteristic. Adding it later would change only a few cells.",
+      },
+      {
+        question: "In Linnaeus's system, which group comes directly after order?",
+        choices: [
+          "Class",
+          "Genus",
+          "Species",
+          "Family",
+        ],
+        accept: [
+          "Family",
+        ],
+        answer: "The order runs kingdom, phylum, class, order, family, genus, species. Genus comes after family, and class comes before order.",
       },
     ],
     misconceptions: [
@@ -13236,6 +13458,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "In a stable community the species and the environmental factors are in balance, so populations stay roughly constant. Tropical rainforests and old oak woods are examples.",
       },
+      {
+        question: "Decomposers return carbon to the air by which process?",
+        choices: [
+          "Respiration",
+          "Photosynthesis",
+          "Combustion",
+          "Condensation",
+        ],
+        accept: [
+          "Respiration",
+        ],
+        answer: "Bacteria and fungi respire as they feed on dead material, releasing carbon dioxide. Photosynthesis takes carbon out of the air; combustion is burning.",
+      },
     ],
     misconceptions: [
       {
@@ -13949,6 +14184,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
         answer: "Humans take land away from wildlife by building, quarrying, farming and dumping waste. Field margins, hedgerows and breeding programmes all help biodiversity.",
       },
+      {
+        question: "Which gardening product can reduce the destruction of bogs?",
+        choices: [
+          "Peat-based compost",
+          "Peat-free compost",
+          "Bark mulch with peat",
+          "Sphagnum moss liner",
+        ],
+        accept: [
+          "Peat-free compost",
+        ],
+        answer: "Buying peat-free compost means less peat is dug up, so bogs keep their stored carbon and habitats. Peat-based compost is what drives the digging.",
+      },
     ],
     misconceptions: [
       {
@@ -14523,6 +14771,19 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Define",
         ],
         answer: "Define means state what a term means. Describe means say what happens, evaluate means weigh up both sides with a conclusion, and suggest means apply ideas to a new case.",
+      },
+      {
+        question: "Which graph suits two continuous variables, such as temperature and rate?",
+        choices: [
+          "Bar chart",
+          "Pie chart",
+          "Line graph",
+          "Pictogram",
+        ],
+        accept: [
+          "Line graph",
+        ],
+        answer: "When both variables are continuous, plot the points and draw a line or curve of best fit. Bar charts are for a categoric variable, such as blood group.",
       },
     ],
     misconceptions: [

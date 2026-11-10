@@ -366,6 +366,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "El apellido is your surname. El nombre is your first name, el apodo is a nickname and la edad is your age.",
       },
+      {
+        question: "What does the Spanish greeting 'Buenas noches' mean?",
+        choices: [
+          "Good afternoon",
+          "Good evening or night",
+          "Good morning",
+          "See you tomorrow",
+        ],
+        accept: [
+          "Good evening or night",
+        ],
+        answer: "Buenas noches is used late in the evening and at night. Buenas tardes is good afternoon, buenos días is good morning and hasta mañana is see you tomorrow.",
+      },
+      {
+        question: "Which Spanish word means 'thirty'?",
+        choices: [
+          "trece",
+          "tres",
+          "treinta",
+          "veinte",
+        ],
+        accept: [
+          "treinta",
+        ],
+        answer: "Treinta is thirty. Trece is thirteen and tres is three, which look similar, and veinte is twenty.",
+      },
+      {
+        question: "In Spanish, which form of ser goes with 'usted'?",
+        choices: [
+          "eres",
+          "es",
+          "soy",
+          "son",
+        ],
+        accept: [
+          "es",
+        ],
+        answer: "Usted takes the he/she form of the verb, so it is usted es. Eres goes with the informal tú, soy with yo and son with ellos or ustedes.",
+      },
     ],
     misconceptions: [
       {
@@ -702,6 +741,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "el padrastro",
         ],
         answer: "El padrastro is a stepfather. El padrino is a godfather, el suegro is a father-in-law and el abuelo is a grandfather.",
+      },
+      {
+        question: "Which Spanish word means 'grandson'?",
+        choices: [
+          "el sobrino",
+          "el primo",
+          "el tío",
+          "el nieto",
+        ],
+        accept: [
+          "el nieto",
+        ],
+        answer: "El nieto is a grandson (la nieta is a granddaughter). El sobrino is a nephew, el primo is a cousin and el tío is an uncle.",
+      },
+      {
+        question: "What does the Spanish adjective 'pelirrojo' mean?",
+        choices: [
+          "red-haired",
+          "fair-haired",
+          "dark-haired",
+          "bald",
+        ],
+        accept: [
+          "red-haired",
+        ],
+        answer: "Pelirrojo means red-haired, from pelo (hair) and rojo (red). Fair-haired is rubio, dark-haired is moreno and bald is calvo.",
+      },
+      {
+        question: "In Spanish, which word completes '___ hermanas son altas' (your, to a friend)?",
+        choices: [
+          "tu",
+          "tus",
+          "sus",
+          "mis",
+        ],
+        accept: [
+          "tus",
+        ],
+        answer: "Tus is the informal 'your' for a plural noun, so it matches hermanas. Tu is only for one thing, sus means his/her/their and mis means my.",
       },
     ],
     misconceptions: [
@@ -1041,6 +1119,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Tocar is used for musical instruments, so 'toco la guitarra'. Jugar is for sports and games, as in 'juego al fútbol'.",
       },
+      {
+        question: "What does the Spanish verb 'leer' mean?",
+        choices: [
+          "to draw",
+          "to sing",
+          "to read",
+          "to dance",
+        ],
+        accept: [
+          "to read",
+        ],
+        answer: "Leer means to read (leo un libro, I read a book). Dibujar is to draw, cantar is to sing and bailar is to dance.",
+      },
+      {
+        question: "In Spanish, which word completes 'Me ___ nadar' (I like swimming)?",
+        choices: [
+          "gustan",
+          "gusta",
+          "gusto",
+          "gustas",
+        ],
+        accept: [
+          "gusta",
+        ],
+        answer: "Gusta is used when the thing you like is a verb in the infinitive, like nadar. Gustan is only for plural nouns, such as me gustan los deportes.",
+      },
+      {
+        question: "What does the Spanish phrase 'ir de compras' mean?",
+        choices: [
+          "to go for a walk",
+          "to go camping",
+          "to go cycling",
+          "to go shopping",
+        ],
+        accept: [
+          "to go shopping",
+        ],
+        answer: "Ir de compras means to go shopping. To go for a walk is dar un paseo, to go camping is ir de camping and cycling is montar en bicicleta.",
+      },
     ],
     misconceptions: [
       {
@@ -1375,6 +1492,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "El estuche is the pencil case. La regla is a ruler, la goma is a rubber and el lápiz is a pencil.",
       },
+      {
+        question: "Which Spanish word means 'the pencil'?",
+        choices: [
+          "el lápiz",
+          "el estuche",
+          "la goma",
+          "la regla",
+        ],
+        accept: [
+          "el lápiz",
+        ],
+        answer: "El lápiz is a pencil (plural los lápices). El estuche is the pencil case, la goma is a rubber and la regla is a ruler.",
+      },
+      {
+        question: "In Spanish, what time is 'Son las cinco y cuarto'?",
+        choices: [
+          "quarter to five",
+          "quarter past five",
+          "half past five",
+          "quarter to six",
+        ],
+        accept: [
+          "quarter past five",
+        ],
+        answer: "Y cuarto means a quarter past, so this is quarter past five. Quarter to six would be las seis menos cuarto, and half past five is las cinco y media.",
+      },
+      {
+        question: "What does the Spanish word 'la pizarra' mean in a classroom?",
+        choices: [
+          "the desk",
+          "the board",
+          "the classroom",
+          "the window",
+        ],
+        accept: [
+          "the board",
+        ],
+        answer: "La pizarra is the board the teacher writes on. The desk is el pupitre or la mesa, the classroom is el aula and the window is la ventana.",
+      },
     ],
     misconceptions: [
       {
@@ -1708,6 +1864,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "the dining room",
         ],
         answer: "El comedor is the dining room, from comer (to eat). The kitchen is la cocina and the living room is el salón.",
+      },
+      {
+        question: "What does the Spanish reflexive verb 'peinarse' mean?",
+        choices: [
+          "to wash your face",
+          "to get dressed",
+          "to comb your hair",
+          "to shave",
+        ],
+        accept: [
+          "to comb your hair",
+        ],
+        answer: "Peinarse means to comb or brush your hair (me peino). To get dressed is vestirse, to shave is afeitarse and to wash your face is lavarse la cara.",
+      },
+      {
+        question: "Which Spanish word means 'upstairs'?",
+        choices: [
+          "abajo",
+          "dentro",
+          "arriba",
+          "fuera",
+        ],
+        accept: [
+          "arriba",
+        ],
+        answer: "Arriba means upstairs or up, as in mi dormitorio está arriba. Abajo is the opposite (downstairs), dentro is inside and fuera is outside.",
+      },
+      {
+        question: "In Spanish, which pronoun completes '___ levantamos a las siete'?",
+        choices: [
+          "os",
+          "se",
+          "me",
+          "nos",
+        ],
+        accept: [
+          "nos",
+        ],
+        answer: "Levantamos is the nosotros form, so it needs nos: nos levantamos, we get up. Os goes with vosotros, se with él or ellos, and me with yo.",
       },
     ],
     misconceptions: [
@@ -2054,6 +2249,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Salir adds a g in the yo form only: salgo, like hago and pongo. Sale is the él form and sigo comes from seguir.",
       },
+      {
+        question: "What is the 'ellos' form of the Spanish verb 'ser' in the present?",
+        choices: [
+          "están",
+          "son",
+          "somos",
+          "es",
+        ],
+        accept: [
+          "son",
+        ],
+        answer: "Son is the ellos form of ser: ellos son altos. Están is the ellos form of estar, a different verb, while somos is 'we are' and es is 'he/she is'.",
+      },
+      {
+        question: "Which Spanish verb changes e to ie in the present tense?",
+        choices: [
+          "poder",
+          "pedir",
+          "comer",
+          "querer",
+        ],
+        accept: [
+          "querer",
+        ],
+        answer: "Querer becomes quiero, quieres, quiere (e to ie). Poder changes o to ue (puedo), pedir changes e to i (pido) and comer is regular.",
+      },
+      {
+        question: "What is the 'yo' form of the Spanish verb 'estar' in the present?",
+        choices: [
+          "soy",
+          "estoy",
+          "esto",
+          "está",
+        ],
+        accept: [
+          "estoy",
+        ],
+        answer: "Estoy is 'I am' from estar, like estoy cansado. Soy is 'I am' from ser, está is 'he/she is', and esto is not a verb at all: it means 'this'.",
+      },
     ],
     misconceptions: [
       {
@@ -2393,6 +2627,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "El correo electrónico is email (correo means post or mail). A text message is un mensaje and a website is una página web.",
       },
+      {
+        question: "What does the Spanish phrase 'navegar por internet' mean?",
+        choices: [
+          "to download a file",
+          "to surf the internet",
+          "to send a message",
+          "to post online",
+        ],
+        accept: [
+          "to surf the internet",
+        ],
+        answer: "Navegar por internet means to surf or browse the internet. Downloading is descargar, sending a message is mandar un mensaje and posting is publicar.",
+      },
+      {
+        question: "Which Spanish word means 'the keyboard'?",
+        choices: [
+          "el ratón",
+          "la pantalla",
+          "el teclado",
+          "el cargador",
+        ],
+        accept: [
+          "el teclado",
+        ],
+        answer: "El teclado is the keyboard, from tecla (a key). El ratón is the mouse, la pantalla is the screen and el cargador is the charger.",
+      },
+      {
+        question: "Which Spanish phrase means 'less useful than'?",
+        choices: [
+          "más útil que",
+          "tan útil como",
+          "mejor que",
+          "menos útil que",
+        ],
+        accept: [
+          "menos útil que",
+        ],
+        answer: "Menos ... que means less ... than. Más útil que is more useful than, tan útil como is as useful as, and mejor que is better than.",
+      },
     ],
     misconceptions: [
       {
@@ -2726,6 +2999,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "fireworks",
         ],
         answer: "Los fuegos artificiales are fireworks, literally 'artificial fires'. A bonfire is una hoguera and candles are las velas.",
+      },
+      {
+        question: "In Spanish, what is 'la Nochevieja'?",
+        choices: [
+          "Christmas Eve",
+          "New Year's Eve",
+          "Twelfth Night",
+          "Easter Sunday",
+        ],
+        accept: [
+          "New Year's Eve",
+        ],
+        answer: "La Nochevieja ('old night') is New Year's Eve, on the thirty-first of December. Christmas Eve is la Nochebuena, the 'good night'.",
+      },
+      {
+        question: "Which Spanish word means 'the presents'?",
+        choices: [
+          "los recuerdos",
+          "los regalos",
+          "los dulces",
+          "los disfraces",
+        ],
+        accept: [
+          "los regalos",
+        ],
+        answer: "Los regalos are presents or gifts. Los recuerdos are souvenirs or memories, los dulces are sweets and los disfraces are fancy-dress costumes.",
+      },
+      {
+        question: "In Spanish, which pronoun completes 'Compro la tarta y ___ como'?",
+        choices: [
+          "lo",
+          "le",
+          "la",
+          "las",
+        ],
+        accept: [
+          "la",
+        ],
+        answer: "La tarta is feminine and singular, so 'it' is la: la como, I eat it. Lo would replace a masculine noun and las a feminine plural one.",
       },
     ],
     misconceptions: [
@@ -3061,6 +3373,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Hace viento means it's windy; weather with hace uses a noun (viento = wind). It's foggy is hay niebla and it's cloudy is está nublado.",
       },
+      {
+        question: "What is 'la carnicería' in a Spanish town?",
+        choices: [
+          "the baker's",
+          "the fishmonger's",
+          "the butcher's",
+          "the cake shop",
+        ],
+        accept: [
+          "the butcher's",
+        ],
+        answer: "La carnicería sells carne (meat), so it is the butcher's. The baker's is la panadería, the fishmonger's is la pescadería and the cake shop is la pastelería.",
+      },
+      {
+        question: "What does the Spanish phrase 'detrás de' mean?",
+        choices: [
+          "in front of",
+          "behind",
+          "near",
+          "opposite",
+        ],
+        accept: [
+          "behind",
+        ],
+        answer: "Detrás de means behind. Its opposite, in front of, is delante de; near is cerca de and opposite is enfrente de.",
+      },
+      {
+        question: "What does the Spanish weather phrase 'está nublado' mean?",
+        choices: [
+          "it's foggy",
+          "it's windy",
+          "it's stormy",
+          "it's cloudy",
+        ],
+        accept: [
+          "it's cloudy",
+        ],
+        answer: "Está nublado means it's cloudy, from la nube (cloud). It's foggy is hay niebla, it's windy is hace viento and it's stormy is hay tormenta.",
+      },
     ],
     misconceptions: [
       {
@@ -3394,6 +3745,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "arrivals",
         ],
         answer: "La llegada is arrivals, from llegar (to arrive). La salida is departures and el equipaje is the luggage.",
+      },
+      {
+        question: "Which Spanish word means 'the luggage'?",
+        choices: [
+          "el billete",
+          "el equipaje",
+          "el pasaporte",
+          "el andén",
+        ],
+        accept: [
+          "el equipaje",
+        ],
+        answer: "El equipaje is luggage. El billete is the ticket, el pasaporte is the passport and el andén is the platform at a station.",
+      },
+      {
+        question: "What is the feminine form of the Spanish nationality 'alemán'?",
+        choices: [
+          "alemanes",
+          "alemana",
+          "alemanas",
+          "alemán",
+        ],
+        accept: [
+          "alemana",
+        ],
+        answer: "Alemana is the feminine singular, and the accent drops once you add the -a. Alemanes and alemanas are the masculine and feminine plurals.",
+      },
+      {
+        question: "What is the 'yo' form of the Spanish verb 'viajar' in the preterite?",
+        choices: [
+          "viajó",
+          "viajaba",
+          "viajé",
+          "viajaste",
+        ],
+        accept: [
+          "viajé",
+        ],
+        answer: "Viajé means I travelled: regular -ar verbs end in -é for yo in the preterite. Viajó is he/she travelled, viajaste is you travelled and viajaba is imperfect.",
       },
     ],
     misconceptions: [
@@ -3729,6 +4119,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "El camarero serves you at the table. El cocinero is the cook, el cliente is the customer and el dueño is the owner.",
       },
+      {
+        question: "What does the Spanish adjective 'picante' mean for food?",
+        choices: [
+          "sweet",
+          "salty",
+          "spicy",
+          "bland",
+        ],
+        accept: [
+          "spicy",
+        ],
+        answer: "Picante means spicy or hot, like a spicy sauce. Sweet is dulce, salty is salado and bland is soso.",
+      },
+      {
+        question: "Which Spanish word means 'the fork'?",
+        choices: [
+          "el cuchillo",
+          "la cuchara",
+          "el vaso",
+          "el tenedor",
+        ],
+        accept: [
+          "el tenedor",
+        ],
+        answer: "El tenedor is the fork. El cuchillo is the knife, la cuchara is the spoon and el vaso is a glass for drinking from.",
+      },
+      {
+        question: "Which Spanish phrase means 'a glass of water'?",
+        choices: [
+          "una botella de agua",
+          "un vaso de agua",
+          "una jarra de agua",
+          "una lata de agua",
+        ],
+        accept: [
+          "un vaso de agua",
+        ],
+        answer: "Un vaso de agua is a glass of water. Una botella is a bottle, una jarra is a jug and una lata is a can. Una copa is a wine glass.",
+      },
     ],
     misconceptions: [
       {
@@ -4062,6 +4491,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "vuelto",
         ],
         answer: "Volver has an irregular participle: he vuelto (I have returned). Volvido is a common mistake, vuelvo is present and volvió is preterite.",
+      },
+      {
+        question: "What is the 'ellos' form of the Spanish verb 'hablar' in the preterite?",
+        choices: [
+          "hablaban",
+          "hablaron",
+          "hablarán",
+          "hablan",
+        ],
+        accept: [
+          "hablaron",
+        ],
+        answer: "Hablaron means they spoke: -ar verbs take -aron for ellos in the preterite. Hablaban is imperfect, hablarán is future and hablan is present.",
+      },
+      {
+        question: "What is the past participle of the Spanish verb 'decir'?",
+        choices: [
+          "decido",
+          "dicho",
+          "decho",
+          "dicto",
+        ],
+        accept: [
+          "dicho",
+        ],
+        answer: "Dicho is irregular, as in he dicho, I have said. A regular -ir verb would end in -ido, but decido is actually 'I decide' from decidir.",
+      },
+      {
+        question: "What does the Spanish verb form 'iré' mean?",
+        choices: [
+          "I went",
+          "I will go",
+          "I am going",
+          "I used to go",
+        ],
+        accept: [
+          "I will go",
+        ],
+        answer: "Iré is the simple future of ir, adding -é to the infinitive. I went is fui, I am going is voy and I used to go is iba.",
       },
     ],
     misconceptions: [
@@ -4401,6 +4869,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Una asignatura obligatoria is a subject everyone must take. An optional subject you choose is una asignatura optativa.",
       },
+      {
+        question: "In Spain, what is 'la selectividad'?",
+        choices: [
+          "end of primary tests",
+          "university entry exams",
+          "vocational courses",
+          "a school report",
+        ],
+        accept: [
+          "university entry exams",
+        ],
+        answer: "La selectividad is the popular name for the exams taken after el bachillerato to get into university. Vocational courses are la formación profesional.",
+      },
+      {
+        question: "What does the Spanish sentence 'Tenemos que llevar uniforme' mean?",
+        choices: [
+          "We can wear uniform",
+          "We wore uniform",
+          "We must wear uniform",
+          "We want a uniform",
+        ],
+        accept: [
+          "We must wear uniform",
+        ],
+        answer: "Tener que plus an infinitive means to have to, and llevar here means to wear. 'We can' would be podemos, and 'we wore' would be llevamos in the past.",
+      },
+      {
+        question: "Which Spanish word means 'the head teacher' (male)?",
+        choices: [
+          "el tutor",
+          "el alumno",
+          "el director",
+          "el conserje",
+        ],
+        accept: [
+          "el director",
+        ],
+        answer: "El director (la directora) runs the school. El tutor is the form tutor, el alumno is a pupil and el conserje is the caretaker.",
+      },
     ],
     misconceptions: [
       {
@@ -4733,6 +5240,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "a degree course",
         ],
         answer: "Un grado is a university degree, e.g. un grado en Derecho. It is a false friend: an exam grade or mark is una nota.",
+      },
+      {
+        question: "What does the Spanish sentence 'Pienso estudiar derecho' mean?",
+        choices: [
+          "I studied law",
+          "I plan to study law",
+          "I can study law",
+          "I like studying law",
+        ],
+        accept: [
+          "I plan to study law",
+        ],
+        answer: "Pensar plus an infinitive means to plan or intend to, and el derecho is law. I can study law would be puedo estudiar derecho.",
+      },
+      {
+        question: "What does the Spanish word 'la formación' mean when talking about work?",
+        choices: [
+          "training",
+          "a grant",
+          "a degree",
+          "a job offer",
+        ],
+        accept: [
+          "training",
+        ],
+        answer: "La formación means training, as in la formación profesional (vocational training). A grant is una beca and a degree is un grado or una carrera.",
+      },
+      {
+        question: "Which Spanish verb form means 'I will be able to'?",
+        choices: [
+          "puedo",
+          "pude",
+          "podré",
+          "podía",
+        ],
+        accept: [
+          "podré",
+        ],
+        answer: "Podré is the irregular simple future of poder (the stem is podr-). Puedo is I can, pude is I could (preterite) and podía is the imperfect.",
       },
     ],
     misconceptions: [
@@ -5067,6 +5613,45 @@ export const SPANISH: Record<string, TopicContent> = {
         ],
         answer: "Des- makes the opposite, so el desempleo is unemployment (also el paro). El empleo is employment and el empleado an employee.",
       },
+      {
+        question: "What job does the Spanish word 'el bombero' describe?",
+        choices: [
+          "firefighter",
+          "police officer",
+          "builder",
+          "plumber",
+        ],
+        accept: [
+          "firefighter",
+        ],
+        answer: "El bombero is a firefighter. A police officer is el policía, a builder is el albañil and a plumber is el fontanero.",
+      },
+      {
+        question: "What job does the Spanish word 'la dependienta' describe?",
+        choices: [
+          "a receptionist",
+          "a shop assistant",
+          "a waitress",
+          "a cleaner",
+        ],
+        accept: [
+          "a shop assistant",
+        ],
+        answer: "La dependienta (el dependiente) serves customers in a shop. A waitress is la camarera, a receptionist is la recepcionista and a cleaner is la limpiadora.",
+      },
+      {
+        question: "What does the Spanish word 'la entrevista' mean in a job search?",
+        choices: [
+          "the contract",
+          "the meeting",
+          "the job offer",
+          "the interview",
+        ],
+        accept: [
+          "the interview",
+        ],
+        answer: "La entrevista is the interview, such as una entrevista de trabajo. The contract is el contrato and a meeting is una reunión.",
+      },
     ],
     misconceptions: [
       {
@@ -5399,6 +5984,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "because",
         ],
         answer: "Ya que means 'because' or 'since', giving a reason. Although is aunque and therefore is por lo tanto; don't confuse it with ya (already).",
+      },
+      {
+        question: "What does the Spanish adjective 'honrado' mean?",
+        choices: [
+          "proud",
+          "honest",
+          "lazy",
+          "caring",
+        ],
+        accept: [
+          "honest",
+        ],
+        answer: "Honrado means honest, a useful quality for a volunteer. Proud is orgulloso, lazy is perezoso and caring is cariñoso.",
+      },
+      {
+        question: "What does the Spanish sentence 'Debo ayudar más' mean?",
+        choices: [
+          "I can help more",
+          "I want to help more",
+          "I helped more",
+          "I must help more",
+        ],
+        accept: [
+          "I must help more",
+        ],
+        answer: "Deber plus an infinitive expresses a duty: debo means I must. I can would be puedo, I want would be quiero and I helped would be ayudé.",
+      },
+      {
+        question: "What does the Spanish verb 'cuidar a' mean?",
+        choices: [
+          "to look after",
+          "to raise money",
+          "to give away",
+          "to teach",
+        ],
+        accept: [
+          "to look after",
+        ],
+        answer: "Cuidar a means to look after or care for someone, as in cuidar a los ancianos. To raise money is recaudar fondos and to teach is enseñar.",
       },
     ],
     misconceptions: [
@@ -5733,6 +6357,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "glass",
         ],
         answer: "El vidrio is glass, as in bottles and jars. Paper is el papel, cardboard is el cartón and plastic is el plástico.",
+      },
+      {
+        question: "Which Spanish word means 'floods'?",
+        choices: [
+          "la sequía",
+          "las inundaciones",
+          "los incendios",
+          "la contaminación",
+        ],
+        accept: [
+          "las inundaciones",
+        ],
+        answer: "Las inundaciones are floods. La sequía is drought, los incendios are fires and la contaminación is pollution.",
+      },
+      {
+        question: "What does the Spanish phrase 'apagar las luces' mean?",
+        choices: [
+          "to switch on lights",
+          "to switch off lights",
+          "to save water",
+          "to recycle glass",
+        ],
+        accept: [
+          "to switch off lights",
+        ],
+        answer: "Apagar means to switch off, so this is to switch off the lights. To switch on is encender, to save water is ahorrar agua and to recycle glass is reciclar el vidrio.",
+      },
+      {
+        question: "What does the Spanish connective 'por eso' mean?",
+        choices: [
+          "however",
+          "furthermore",
+          "that's why",
+          "for example",
+        ],
+        accept: [
+          "that's why",
+        ],
+        answer: "Por eso means that's why or so, linking a cause to its result. However is sin embargo, furthermore is además and for example is por ejemplo.",
       },
     ],
     misconceptions: [
@@ -6074,6 +6737,45 @@ export const SPANISH: Record<string, TopicContent> = {
           "I used to play tennis",
         ],
         answer: "Soler plus an infinitive means 'usually'. In the imperfect, solía jugar means 'I used to play', a habit in the past.",
+      },
+      {
+        question: "What is the 'yo' form of the Spanish verb 'ver' in the imperfect?",
+        choices: [
+          "vi",
+          "veo",
+          "veía",
+          "veré",
+        ],
+        accept: [
+          "veía",
+        ],
+        answer: "Veía (I used to see) is irregular because it keeps the e of ver. Vi is the preterite, veo is the present and veré is the future.",
+      },
+      {
+        question: "What is the 'nosotros' form of the Spanish verb 'hablar' in the imperfect?",
+        choices: [
+          "hablábamos",
+          "hablamos",
+          "hablaremos",
+          "hablaríamos",
+        ],
+        accept: [
+          "hablábamos",
+        ],
+        answer: "Hablábamos (we used to speak) uses the -aba- imperfect ending with an accent. Hablamos is present or preterite, hablaremos is future and hablaríamos is conditional.",
+      },
+      {
+        question: "What does the Spanish word 'embarazada' mean?",
+        choices: [
+          "embarrassed",
+          "pregnant",
+          "ashamed",
+          "annoyed",
+        ],
+        accept: [
+          "pregnant",
+        ],
+        answer: "Embarazada is a classic false friend: it means pregnant, not embarrassed. Embarrassed is avergonzado or tener vergüenza, so check cognates carefully.",
       },
     ],
     misconceptions: [

@@ -270,13 +270,15 @@ try {
   // the languages had only 65–110 each, so their game pools leaned on very
   // few questions), and 1,000 across every subject (2026-11-08: computer
   // science, history, geography, business, citizenship, RE and PE had only
-  // five a topic). Floors at what each subject had once they went in.
+  // five a topic), and 1,000 more again (2026-11-10: every subject except
+  // maths, because outside maths the game was still repeating itself).
+  // Floors at what each subject had once they went in.
   {
     const floors = {
-      maths: 1027, english: 297, biology: 600, chemistry: 559, physics: 559,
-      spanish: 308, french: 292, german: 217,
-      "computer-science": 275, history: 209, geography: 187, business: 260,
-      citizenship: 144, "religious-education": 199, "physical-education": 292,
+      maths: 1027, english: 375, biology: 620, chemistry: 578, physics: 578,
+      spanish: 362, french: 346, german: 253,
+      "computer-science": 400, history: 304, geography: 272, business: 390,
+      citizenship: 204, "religious-education": 289, "physical-education": 427,
     };
     for (const [subject, floor] of Object.entries(floors)) {
       let mcq = 0;
