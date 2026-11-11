@@ -45,7 +45,7 @@ export function ExplainFurther({
   explanation: Explanation;
   accent: string;
 }) {
-  const { definitions, mistake, example } = explanation;
+  const { why, definitions, mistake, example } = explanation;
 
   return (
     <details className="group mt-4">
@@ -69,6 +69,18 @@ export function ExplainFurther({
       </summary>
 
       <div className="mt-3 space-y-4 rounded-xl border border-black/5 bg-black/[0.03] p-4 dark:border-white/10 dark:bg-white/5">
+        {/* First, because it is the one thing the bullets above never say:
+            WHY the facts are true (lib/content/why.ts). Everything below it
+            was already on the page somewhere; this was not. */}
+        {why && (
+          <div className="space-y-2">
+            <Label>Why it works</Label>
+            {why.split("\n\n").map((para) => (
+              <p key={para} className="leading-relaxed">{para}</p>
+            ))}
+          </div>
+        )}
+
         {definitions.length > 0 && (
           <div className="space-y-2">
             <Label>What the words mean</Label>

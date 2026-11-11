@@ -108,6 +108,7 @@ try {
       "app/lib/normalise.ts",
       "app/lib/explainFurther.ts",
       "app/lib/content/model-answers.ts",
+      "app/lib/content/why.ts",
       "--outDir", out,
       "--module", "commonjs",
       "--target", "es2020",
@@ -1010,6 +1011,55 @@ try {
         if (!home) firstHome.set(n, key);
       }
     }
+  }
+
+  // ── "Why it works" (Explain further stage 2, 2026-11-11) ──────────────────
+  // Written per key-fact block and matched on the block's EXACT heading, so a
+  // renamed heading silently drops its paragraph unless this says so. Biology
+  // is complete; any subject listed in WHY_COMPLETE must have every block.
+  {
+    const { WHY } = require(join(out, "content", "why.js"));
+    const WHY_COMPLETE = ["biology"];
+    const CAUSAL = /\b(because|so that|so|which means|that is why|this is why|therefore|as a result|which is why|meaning)\b/i;
+    const flat = (t) => String(t).toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+    let whyCount = 0;
+    for (const [key, byHeading] of Object.entries(WHY)) {
+      const content = TOPIC_CONTENT[key];
+      expect(content, `why.ts has paragraphs for "${key}", which is not a topic`);
+      if (!content) continue;
+      const blocks = new Map((content.keyFacts ?? []).map((b) => [b.heading, b]));
+      for (const [heading, text] of Object.entries(byHeading)) {
+        whyCount++;
+        const at = `why ${key} / "${heading}"`;
+        const block = blocks.get(heading);
+        expect(block, `${at} matches no key-fact block — was the heading renamed?`);
+        const words = String(text).trim().split(/\s+/).length;
+        expect(words >= 80 && words <= 150, `${at} is ${words} words (80–150)`);
+        expect(CAUSAL.test(text), `${at} never says why — no because / so / which means`);
+        expect(!/\*\*|^\s*[-•*]\s|#|`/m.test(text), `${at} has markdown or bullets — plain prose only`);
+        expect(String(text).split("\n\n").length <= 2 && !/\n/.test(String(text).replace("\n\n", "")),
+          `${at} must be one paragraph, or two split by one blank line`);
+        if (block) {
+          const ft = flat(text);
+          for (const p of block.points ?? []) {
+            const fp = flat(p);
+            expect(!(fp.length > 40 && ft.includes(fp)), `${at} copies a bullet word for word: "${p.slice(0, 50)}"`);
+          }
+        }
+      }
+    }
+    for (const subject of WHY_COMPLETE) {
+      for (const [key, content] of Object.entries(TOPIC_CONTENT)) {
+        if (!key.startsWith(`${subject}/`)) continue;
+        for (const b of content.keyFacts ?? []) {
+          expect(WHY[key]?.[b.heading], `${key} / "${b.heading}" has no "Why it works" — ${subject} is meant to be complete`);
+        }
+      }
+    }
+    // A named case, so the wiring itself is tested and not just the data:
+    const glucose = explainFurther(TOPIC_CONTENT["biology/hormones-and-homeostasis"] ?? { keyFacts: [] }, WHY["biology/hormones-and-homeostasis"]);
+    expect(glucose.some((e) => e.why), `explainFurther drops the written "why" it is handed`);
+    console.log(`\n"Why it works": ${whyCount} written explanations; complete for ${WHY_COMPLETE.join(", ")}.`);
   }
 
   // ── Summary ────────────────────────────────────────────────────────────────

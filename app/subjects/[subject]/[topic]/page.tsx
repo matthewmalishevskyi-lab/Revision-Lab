@@ -17,6 +17,7 @@ import { WhereYouAre } from "../../../components/WhereYouAre";
 import { TopicConnections } from "../../../components/TopicConnections";
 import { ModelAnswer } from "../../../components/ModelAnswer";
 import { MODEL_ANSWERS } from "../../../lib/content/model-answers";
+import { WHY } from "../../../lib/content/why";
 import { topicConnections } from "../../../lib/connections";
 import { getMastery } from "../../../lib/progress";
 import { TopicNav, type NavSection } from "../../../components/TopicNav";
@@ -123,7 +124,7 @@ export default async function TopicPage({ params }: Props) {
   // server, for two reasons: the matching reads a whole topic and so must not
   // reach the browser, and doing it per block inside the map would redo the
   // same whole-topic pass for every block on the page.
-  const explanations = content ? explainFurther(content) : [];
+  const explanations = content ? explainFurther(content, WHY[`${subject.slug}/${topic.slug}`]) : [];
 
   // Who is reading this. The header asks the same question, and `getViewer`
   // makes sure that costs one lookup per request rather than two.

@@ -110,6 +110,8 @@ function weight(termWords: Set<string>, heading: string, body: string): number {
 }
 
 export type Explanation = {
+  /** The written "why it works" for this block (lib/content/why.ts), if one exists. */
+  why?: string;
   /** Flashcard definitions for terms this block uses. */
   definitions: { term: string; definition: string }[];
   /** The matching common mistake, if there is one. */
@@ -132,9 +134,15 @@ export type Explanation = {
  * pressing the button. Assigning by best fit is what makes the expansion feel
  * specific to the fact above it.
  */
-export function explainFurther(content: TopicContent): Explanation[] {
+export function explainFurther(
+  content: TopicContent,
+  /** This topic's written explanations, block heading → text (lib/content/why.ts). */
+  why: Readonly<Record<string, string>> = {},
+): Explanation[] {
   const blocks = content.keyFacts ?? [];
-  const out: Explanation[] = blocks.map(() => ({ definitions: [] }));
+  // Stage 2: the one thing assembling could never supply — WHY the block's
+  // facts are true — written by hand and matched on the exact heading.
+  const out: Explanation[] = blocks.map((b) => (why[b.heading] ? { why: why[b.heading], definitions: [] } : { definitions: [] }));
   if (!blocks.length) return out;
 
   const blockWords = blocks.map((b) =>
@@ -220,5 +228,5 @@ export function explainFurther(content: TopicContent): Explanation[] {
 
 /** Is there anything at all to open for this block? */
 export function hasExplanation(e: Explanation): boolean {
-  return e.definitions.length > 0 || Boolean(e.mistake) || Boolean(e.example);
+  return Boolean(e.why) || e.definitions.length > 0 || Boolean(e.mistake) || Boolean(e.example);
 }

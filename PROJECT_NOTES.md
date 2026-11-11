@@ -1,5 +1,61 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## Explain further, stage 2: "Why it works" for all of biology (2026-11-11)
+
+Matthew: *"how about you do explain further stage 2?"* The panel already
+opened on definitions, a mistake and a worked example. It could never say
+WHY a fact is true, which is what 92% of the bullets leave out. Now every
+one of biology's **85 key-fact blocks** opens on a written paragraph first
+(about 11,600 words, 80–150 each), above the material that was already there.
+Biology only, so Matthew can judge the voice before fourteen more subjects.
+
+`lib/content/why.ts` is data only, keyed `"subject/topic"` → exact heading →
+text (one paragraph, or two split by a blank line). `explainFurther()` takes
+it as a second argument; the topic page passes this topic's entry. Still a
+`<details>`, still no JavaScript.
+
+**How they were written.** Four writers against a brief (explain, never
+restate; AQA 8461; plain prose for a student who missed the lesson), a
+validator (length, a causal connective, no markdown, no bullet copied word
+for word), then two blind examiner passes. Seven paragraphs fixed: stem
+cells, a missing (Higher tier) label on greenhouse economics and on glucagon,
+electron-wave physics taken out of the microscope, the effector and gland
+definitions, and fertiliser "supplies nitrates".
+
+### ⚠️ The examiners found the site's own bullets wrong, twice on tier
+
+- **Rate of blood flow** was marked Higher only and told Foundation students
+  they could skip it. AQA 8461 4.2.2.2 has no HT marker. Flag removed (8
+  items), wording fixed.
+- **Speciation** was marked Higher only. AQA 4.6.3.2 is *biology only*
+  (Separate, not Combined), not Higher. Flags removed (7), now says so.
+
+Both checked against the specification PDF. Telling a student to skip
+examinable content is the worst mistake a revision site can make. Also fixed:
+adult stem cells "many types, but not as many as embryonic"; stem-cell cures
+(leukaemia now, diabetes and paralysis "may one day"); amylase → maltose;
+viruses "are not cells"; respiration "in living cells"; oxygen debt, lactic
+acid to the liver, greenhouse economics and glucagon labelled (Higher tier);
+effector includes glands; the Human Genome Project 2003; pollen and egg cells
+in plants; Combined has seven required practicals and Separate adds three.
+
+Left for Matthew, not changed: TSH wording, archaea as "primitive bacteria"
+(AQA's own words), biodiversity "protects against disease", Benedict's
+"reducing sugars", food-chain energy against biomass wording.
+
+**The checks** (check-content): every WHY topic and heading must exist; every
+biology block must have one (`WHY_COMPLETE`, add a subject when it is done);
+80–150 words; a causal word; no markdown; at most two paragraphs; no bullet
+over 40 characters copied in; and a named case that `explainFurther` passes the
+text through. **Five sabotages, five caught**: a renamed heading, a deleted
+entry, a 29-word entry, a copied bullet, and the wiring removed.
+
+**Verified.** `npm run check` fully green — **336,974** content checks and
+every other suite as before (connections 2,892, one more from the bullet
+edits). In a browser, **23 checks** at 1280 and 320px and with JavaScript off:
+Why it works on every block, first in the panel, closed by default, 44px, no
+sideways scroll, no console errors.
+
 ## The 38 questions asked in two topics, reworded, and a rule so it can't come back (2026-11-10, later)
 
 Matthew: *"Yes please tidy them up"*. These are the duplicates found while fixing today's practice. 58 stems were reworded across 14 content files:

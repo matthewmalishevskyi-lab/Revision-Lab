@@ -1568,7 +1568,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         points: [
           "A stem cell is an undifferentiated cell that can divide to produce more cells of the same type, or differentiate into specialised cells.",
           "EMBRYONIC stem cells can become almost ANY type of cell.",
-          "ADULT stem cells, such as those in bone marrow, can form only a limited range — mostly blood cells.",
+          "ADULT stem cells, such as those in bone marrow, can form many types of cell, including blood cells, but not as many as embryonic stem cells.",
           "In plants, stem cells in the MERISTEM at the tips of roots and shoots can differentiate throughout the plant's life.",
           "THERAPEUTIC CLONING makes an embryo with the same genes as the patient, so the stem cells are not rejected.",
         ],
@@ -1576,7 +1576,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
       {
         heading: "Uses and objections",
         points: [
-          "Medical uses include treating diabetes, paralysis and blood disorders such as leukaemia.",
+          "Bone marrow transplants already treat blood disorders such as leukaemia, and stem cells may one day help treat conditions such as diabetes and paralysis.",
           "Plant meristem cells can be used to clone rare species and to produce identical crops cheaply.",
           "Risks: transferred viral infection, and cells that may not behave as intended.",
           "Ethical objections centre on embryonic stem cells, because obtaining them destroys the embryo.",
@@ -1965,7 +1965,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         accept: [
           "Bone marrow",
         ],
-        answer: "Bone marrow, where they can form only a limited range of cells, mostly blood cells.",
+        answer: "Bone marrow, where they can form many types of cell, including blood cells.",
       },
       {
         question: "Which plant tissue is used to clone rare species quickly and cheaply?",
@@ -2301,7 +2301,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "digestive-system",
         ],
         points: [
-          "CARBOHYDRASES break carbohydrates into simple sugars. Amylase breaks starch into maltose, then to glucose.",
+          "CARBOHYDRASES break carbohydrates into simple sugars. Amylase breaks starch into maltose, and another carbohydrase then breaks maltose into glucose.",
           "PROTEASES break proteins into amino acids.",
           "LIPASES break lipids (fats) into fatty acids and glycerol.",
           "Amylase is made in the salivary glands, pancreas and small intestine.",
@@ -4534,7 +4534,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         heading: "How the body defends itself",
         points: [
           "NON-SPECIFIC defences come first: skin as a barrier, nose hairs and mucus, trachea and bronchi lined with cilia and mucus, and stomach acid.",
-          "WHITE BLOOD CELLS provide the specific response, in three ways.",
+          "If a pathogen gets in, WHITE BLOOD CELLS attack it in three ways.",
           "PHAGOCYTOSIS — the white blood cell engulfs and digests the pathogen.",
           "ANTIBODY production — proteins that lock onto a specific antigen and clump pathogens together for destruction.",
           "ANTITOXIN production — proteins that neutralise the toxins bacteria release.",
@@ -4547,7 +4547,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "It stimulates white blood cells to produce antibodies, and leaves MEMORY CELLS behind.",
           "If the real pathogen arrives later, antibodies are produced far faster and in greater quantity, so you do not become ill.",
           "HERD IMMUNITY: if enough people are vaccinated, the pathogen cannot spread easily, protecting those who cannot be vaccinated.",
-          "ANTIBIOTICS kill bacteria inside the body. They have NO effect on viruses, because viruses reproduce inside your own cells.",
+          "ANTIBIOTICS kill bacteria inside the body. They have NO effect on viruses, which are not cells and live inside your own cells.",
           "PAINKILLERS treat the symptoms only — they do not kill the pathogen.",
         ],
       },
@@ -6025,8 +6025,8 @@ export const BIOLOGY: Record<string, TopicContent> = {
         points: [
           "Growers add artificial light to extend the day and raise light intensity.",
           "Paraffin heaters raise the temperature AND release carbon dioxide — two limiting factors at once.",
-          "The aim is to make no single factor limiting, so plants grow as fast as possible.",
-          "Everything costs money, so growers balance the increased yield against fuel and equipment costs.",
+          "The aim is to raise whichever factor is limiting, so plants grow as fast as is worth paying for.",
+          "(Higher tier) Everything costs money, so growers balance the increased yield against fuel and equipment costs.",
           "There is no point raising one factor if another is still limiting — that is spending money for no gain.",
         ],
       },
@@ -6787,7 +6787,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Word equation: glucose + oxygen → carbon dioxide + water.",
           "Symbol equation: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O.",
           "It is EXOTHERMIC — energy is transferred TO the surroundings from the chemical store in glucose.",
-          "It happens continuously in the MITOCHONDRIA of every living cell.",
+          "It happens continuously in living cells; in plant and animal cells it takes place in the MITOCHONDRIA.",
           "It releases far more energy per glucose molecule than anaerobic respiration does.",
         ],
       },
@@ -6819,9 +6819,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
         points: [
           "During exercise the heart rate, breathing rate and breath depth all increase, to supply more oxygen and glucose and remove carbon dioxide.",
           "If exercise is hard enough, muscles respire anaerobically and lactic acid builds up, causing muscle fatigue.",
-          "OXYGEN DEBT is the extra oxygen the body needs afterwards to break down the accumulated lactic acid.",
+          "(Higher tier) OXYGEN DEBT is the extra oxygen the body needs afterwards to react with the accumulated lactic acid and remove it from cells.",
           "That is why you keep breathing heavily after stopping.",
-          "Blood carries lactic acid to the LIVER, where it is converted back into glucose.",
+          "(Higher tier) Blood carries lactic acid to the LIVER, where it is converted back into glucose.",
         ],
       },
     ],
@@ -7516,7 +7516,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "stimulus → receptor → sensory neurone → CNS → motor neurone → effector → response.",
           "A STIMULUS is a change in the environment; a RECEPTOR detects it.",
           "The CENTRAL NERVOUS SYSTEM (CNS) is the brain and spinal cord, where information is processed.",
-          "An EFFECTOR is a muscle that contracts or a gland that secretes a hormone.",
+          "An EFFECTOR is a muscle that contracts or a gland that releases a chemical, such as a hormone or enzymes.",
           "Receptors are often in sense organs: light in the eyes, sound in the ears, chemicals in the nose and tongue.",
         ],
       },
@@ -8242,7 +8242,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         heading: "Homeostasis and the two control systems",
         points: [
           "HOMEOSTASIS is maintaining a constant internal environment despite external change.",
-          "The three conditions controlled are blood glucose concentration, body temperature and water levels.",
+          "Conditions controlled include blood glucose concentration, body temperature and water levels.",
           "All control systems have RECEPTORS, a COORDINATION CENTRE, and EFFECTORS.",
           "The NERVOUS system uses electrical impulses: fast, short-lived, and precisely targeted.",
           "The ENDOCRINE system uses hormones in the blood: slower, longer-lasting, and more general in their effect.",
@@ -8263,7 +8263,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         points: [
           "Blood glucose is monitored by the pancreas.",
           "If glucose is TOO HIGH, the pancreas releases INSULIN. Liver and muscle cells take glucose in and store it as GLYCOGEN.",
-          "If glucose is TOO LOW, the pancreas releases GLUCAGON, which makes the liver convert glycogen back into glucose.",
+          "(Higher tier) If glucose is TOO LOW, the pancreas releases GLUCAGON, which makes the liver convert glycogen back into glucose.",
           "TYPE 1 diabetes: the pancreas produces little or no insulin. Treated with insulin injections.",
           "TYPE 2 diabetes: body cells stop responding properly to insulin. Obesity is a risk factor; treated with diet, exercise and sometimes medication.",
           "Watch the spelling: glycoGEN is the store, glucaGON is the hormone.",
@@ -8989,7 +8989,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
 
   "biology/the-circulatory-system": {
     summary:
-      "The circulatory system moves oxygen, glucose and everything else to where it is needed, in a body far too large for diffusion alone. This topic covers the heart, the three types of blood vessel, what blood is made of, and why humans have a double circulatory system — plus the blood flow calculation, which is Higher tier only.",
+      "The circulatory system moves oxygen, glucose and everything else to where it is needed, in a body far too large for diffusion alone. This topic covers the heart, the three types of blood vessel, what blood is made of, and why humans have a double circulatory system — plus the rate of blood flow calculation.",
     keyFacts: [
       {
         heading: "The heart and double circulation",
@@ -9039,13 +9039,12 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
       },
       {
-        heading: "Higher tier: rate of blood flow",
-        higherOnly: true,
+        heading: "Rate of blood flow",
         points: [
           "rate of blood flow = volume of blood ÷ time.",
           "The units follow from what you divided: cm³ per minute, or dm³ per minute.",
           "Convert the time first if the question mixes seconds and minutes.",
-          "This calculation is Higher tier only — Foundation students are not asked it.",
+          "Both tiers can be asked this calculation, so it is worth practising.",
           "Check the answer is sensible: a resting adult heart pumps roughly 5 dm³ every minute.",
         ],
       },
@@ -9095,9 +9094,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Stents do not treat the cause; statins must be taken for life and have side effects. Balanced answers reach the top band.",
       },
       {
-        tip: "Higher tier: show the working for blood flow",
+        tip: "Show the working for blood flow",
         detail:
-          "Volume ÷ time, with the units stated. Convert seconds to minutes first if needed. Foundation students can skip this entirely.",
+          "Volume ÷ time, with the units stated. Convert seconds to minutes first if needed.",
       },
     ],
     workedExamples: [
@@ -9111,7 +9110,6 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "= 4,500 cm³ per minute — close to the roughly 5,000 cm³ a resting adult heart manages, so the answer is sensible.",
         ],
         answer: "4,500 cm³ per minute",
-        higherOnly: true,
       },
       {
         question:
@@ -9123,7 +9121,6 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Higher than at rest, as expected during exercise — always sanity-check against the context.",
         ],
         answer: "6,000 cm³ per minute",
-        higherOnly: true,
       },
     ],
     practice: [
@@ -9206,11 +9203,10 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "The pacemaker. If it becomes faulty, an artificial electrical pacemaker can be fitted to correct an irregular heartbeat.",
       },
       {
-        question: "Higher tier: a heart pumps 3,000 cm³ of blood in 60 seconds. Calculate the rate in cm³ per minute. Give the number only.",
+        question: "A heart pumps 3,000 cm³ of blood in 60 seconds. Calculate the rate in cm³ per minute. Give the number only.",
         accept: ["3000", "3,000"],
         answer:
-          "3,000 cm³ per minute. Rate = volume ÷ time, and 60 seconds is 1 minute so no conversion is needed. Foundation students are not asked this.",
-        higherOnly: true,
+          "3,000 cm³ per minute. Rate = volume ÷ time, and 60 seconds is 1 minute so no conversion is needed.",
       },
       {
         question: "Explain why humans need a double circulatory system. Write two or three sentences.",
@@ -9288,12 +9284,11 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer: "Blood in veins is at low pressure, so valves are needed to keep it moving in one direction back to the heart.",
       },
       {
-        question: "Higher tier: calculate the rate of blood flow in cm³ per minute for a heart that pumps 70 cm³ with each of its 72 beats per minute.",
+        question: "Calculate the rate of blood flow in cm³ per minute for a heart that pumps 70 cm³ with each of its 72 beats per minute.",
         accept: [
           "5040",
         ],
         answer: "Volume per minute = 70 × 72 = 5040 cm³ per minute, which is close to the 5 dm³ a resting adult heart is expected to pump.",
-        higherOnly: true,
       },
       {
         question: "Name the blood vessel that carries oxygenated blood from the lungs back to the heart.",
@@ -9351,13 +9346,12 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer: "Losing the nucleus frees up the space it would occupy, so the cell can be packed with haemoglobin instead. More haemoglobin means more oxygen carried per cell.",
       },
       {
-        question: "Higher tier: at rest a person's rate of blood flow is 4.2 dm³ per minute. Exercising, their heart beats 150 times a minute with a stroke volume of 112 cm³. Calculate how many times greater the rate of blood flow becomes.",
+        question: "At rest a person's rate of blood flow is 4.2 dm³ per minute. Exercising, their heart beats 150 times a minute with a stroke volume of 112 cm³. Calculate how many times greater the rate of blood flow becomes.",
         accept: [
           "4",
           "4 times",
         ],
         answer: "Exercising: 150 × 112 = 16 800 cm³ per minute = 16.8 dm³ per minute. 16.8 ÷ 4.2 = 4 times greater. Both a faster rate and a bigger stroke volume contribute, and their effects multiply.",
-        higherOnly: true,
       },
       {
         question: "A capillary is 8 µm in diameter and a red blood cell is 7 µm across. Calculate the percentage of the capillary's diameter taken up by one red blood cell.",
@@ -9565,7 +9559,6 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "cm³ per minute",
         ],
         answer: "cm³ per minute — rate of blood flow = volume ÷ time, so the units are a volume divided by a time.",
-        higherOnly: true,
       },
       {
         question: "360 cm³ of blood flows in 6 seconds. What is the rate in cm³ per second?",
@@ -9579,7 +9572,6 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "60",
         ],
         answer: "60 — rate of blood flow = volume ÷ time = 360 ÷ 6 = 60 cm³ per second.",
-        higherOnly: true,
       },
       {
         question: "Double circulation means blood is sent to the body at:",
@@ -9794,13 +9786,13 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "It allows doctors to understand and treat inherited disorders more effectively.",
           "It lets scientists trace human migration patterns across history.",
           "Concerns include privacy of genetic data and the possibility of discrimination by insurers or employers.",
-          "The full human genome was first sequenced in 2003, and sequencing has become vastly cheaper since.",
+          "The Human Genome Project published the human genome sequence in 2003, and sequencing has become vastly cheaper since.",
         ],
       },
       {
         heading: "Sexual and asexual reproduction",
         points: [
-          "SEXUAL reproduction involves two parents and the fusion of GAMETES — sperm and egg, or pollen and ovule.",
+          "SEXUAL reproduction involves two parents and the fusion of GAMETES — sperm and egg cells in animals, pollen and egg cells in flowering plants.",
           "It produces genetic VARIATION, because offspring get a mixture of genes from both parents.",
           "ASEXUAL reproduction involves one parent and only mitosis. The offspring are CLONES — genetically identical.",
           "Asexual reproduction is faster and needs no mate, which suits stable, favourable conditions.",
@@ -11252,7 +11244,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
 
   "biology/variation-and-evolution": {
     summary:
-      "Evolution is the single idea that ties the whole of Biology together. This topic covers where variation comes from, how natural selection turns it into adaptation over enormous stretches of time, the evidence that convinced biologists, and speciation — how one species becomes two. Speciation is Higher tier only and is flagged.",
+      "Evolution is the single idea that ties the whole of Biology together. This topic covers where variation comes from, how natural selection turns it into adaptation over enormous stretches of time, the evidence that convinced biologists, and speciation — how one species becomes two. Speciation is in Separate Biology only, not Combined Science.",
     keyFacts: [
       {
         heading: "Variation",
@@ -11301,15 +11293,14 @@ export const BIOLOGY: Record<string, TopicContent> = {
         ],
       },
       {
-        heading: "Higher tier: speciation",
-        higherOnly: true,
+        heading: "Speciation",
         points: [
           "A SPECIES is a group whose members can breed together to produce FERTILE offspring.",
           "Speciation begins when two populations of one species become ISOLATED, so they can no longer interbreed.",
           "The two populations experience different conditions, so natural selection favours different characteristics in each.",
           "Over many generations they become so genetically different that, even if reunited, they can no longer produce fertile offspring.",
           "At that point they are two separate species.",
-          "Foundation students are not examined on speciation and can skip this section.",
+          "Speciation is examined on both tiers, but only in Separate Biology, not Combined Science.",
         ],
       },
     ],
@@ -11326,7 +11317,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
       { term: "Lamarck", definition: "A scientist who wrongly proposed that characteristics acquired during an organism's life are inherited." },
       { term: "Darwin", definition: "The scientist who proposed evolution by natural selection, publishing On the Origin of Species in 1859." },
       { term: "Species", definition: "A group of organisms that can breed together to produce fertile offspring." },
-      { term: "Speciation", definition: "The formation of a new species when isolated populations become too different to interbreed. Higher tier only." },
+      { term: "Speciation", definition: "The formation of a new species when isolated populations become too different to interbreed. Separate Biology only." },
       { term: "Isolation", definition: "When two populations are separated so they can no longer interbreed — the first step in speciation." },
       { term: "Extinction", definition: "When no individuals of a species remain anywhere." },
     ],
@@ -11357,9 +11348,9 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "It conflicted with religious belief, the evidence was thin at first, and the mechanism of inheritance was unknown. Three separate reasons, three possible marks.",
       },
       {
-        tip: "Higher tier: speciation needs ISOLATION first",
+        tip: "Speciation needs ISOLATION first",
         detail:
-          "Isolation, then different selection pressures, then genetic difference, then inability to produce fertile offspring. Foundation students can skip this entirely.",
+          "Isolation, then different selection pressures, then genetic difference, then inability to produce fertile offspring.",
       },
     ],
     practice: [
@@ -11394,18 +11385,16 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "A species. The word FERTILE matters: a horse and a donkey can breed, but the mule is infertile, so they remain separate species.",
       },
       {
-        question: "Higher tier: what is the formation of a new species called?",
+        question: "What is the formation of a new species called?",
         accept: ["speciation"],
         answer:
-          "Speciation. It begins with isolation, then different selection pressures act on each population until they can no longer interbreed. Foundation students are not asked this.",
-        higherOnly: true,
+          "Speciation. It begins with isolation, then different selection pressures act on each population until they can no longer interbreed.",
       },
       {
-        question: "Higher tier: what must happen to two populations FIRST for speciation to begin?",
+        question: "What must happen to two populations FIRST for speciation to begin?",
         accept: ["isolation", "isolated", "separated", "become isolated", "geographical isolation"],
         answer:
           "They must become isolated, so they can no longer interbreed. Only then can natural selection push them in different directions.",
-        higherOnly: true,
       },
       {
         question: "What is the main evidence from the distant past for evolution?",
@@ -11576,14 +11565,13 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer: "6 hours = 360 minutes, so 360 ÷ 30 = 12 divisions. 4 × 2¹² = 4 × 4096 = 16 384. With the competition wiped out, the resistant strain takes over very quickly.",
       },
       {
-        question: "Higher tier: a new river divides one population of beetles into two groups that can no longer meet. Name what this separation is called in the process of speciation.",
+        question: "A new river divides one population of beetles into two groups that can no longer meet. Name what this separation is called in the process of speciation.",
         accept: [
           "isolation",
           "geographical isolation",
           "geographic isolation",
         ],
         answer: "This is geographical isolation, the first step in speciation. Once the two groups can no longer interbreed, their gene pools are separate and natural selection can push them in different directions.",
-        higherOnly: true,
       },
       {
         question: "MRSA made up 2% of a hospital's Staphylococcus samples in 1998 and 42% in 2004. Calculate the mean increase in percentage points per year.",
@@ -11623,7 +11611,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer: "The antibiotic kills the least resistant bacteria first, which is why the patient starts feeling better before the infection is cleared. Stopping early leaves the most resistant individuals alive with no competition, so they reproduce and the next infection is harder to treat.",
       },
       {
-        question: "Higher tier: two squirrel populations are separated by a canyon for 10,000 generations. When reunited they will mate, but their offspring are always sterile. State whether they are now one species or two.",
+        question: "Two squirrel populations are separated by a canyon for 10,000 generations. When reunited they will mate, but their offspring are always sterile. State whether they are now one species or two.",
         accept: [
           "two species",
           "two",
@@ -11631,16 +11619,14 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "2 species",
         ],
         answer: "A species is defined by being able to breed and produce FERTILE offspring. Mating successfully is not enough — sterile offspring means the two gene pools can no longer mix, so speciation is complete and they are two separate species.",
-        higherOnly: true,
       },
       {
         question: "Explain why antibiotic resistance is described as natural selection happening fast enough to watch.",
         answer: "Bacteria divide every twenty minutes or so and there are billions of them, so random mutations that happen to confer resistance appear regularly. When an antibiotic is used it kills the non-resistant bacteria, and the resistant ones survive, reproduce and pass the allele on with no competition. Within weeks the whole population can be resistant, so a process that takes millions of years in a large animal plays out in front of us — which is why it is such strong evidence for evolution. (Mark this one yourself.)",
       },
       {
-        question: "Higher tier: explain how one population of a species can become two separate species over time.",
+        question: "Explain how one population of a species can become two separate species over time.",
         answer: "The population is first split so the two groups can no longer interbreed, for example by a mountain range, a new river or being carried to an island. The two environments differ, so natural selection favours different characteristics in each group, and different alleles become common in each population. Mutations also accumulate independently in the two gene pools, and after enough generations the groups are so genetically different that even if reunited they cannot produce fertile offspring — at which point they are two species. (Mark this one yourself.)",
-        higherOnly: true,
       },
       {
         question: "Explain why most mutations make no difference to an organism.",
@@ -11781,7 +11767,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer: "Religious belief that God made all life; there was also little evidence at first and genes were not understood.",
       },
       {
-        question: "Higher: after isolation, why do two populations evolve differently?",
+        question: "After isolation, why do two populations evolve differently?",
         choices: [
           "Same mutations",
           "They interbreed",
@@ -11792,7 +11778,6 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "Different conditions",
         ],
         answer: "Different conditions, so natural selection favours different characteristics in each population.",
-        higherOnly: true,
       },
       {
         question: "A horse and a donkey breed to give an infertile mule. How many species are involved?",
@@ -12050,7 +12035,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "SELECTIVE BREEDING: choose parents with the desired characteristic, breed them, then repeat over many generations.",
           "Used for disease resistance in crops, high milk yield in cattle, gentle temperament in dogs, large flowers.",
           "Risk: it reduces the gene pool, so a population becomes vulnerable to disease and to inherited defects.",
-          "GENETIC ENGINEERING: a gene is cut from one organism and inserted into another using enzymes and a vector.",
+          "GENETIC ENGINEERING: a gene from one organism is transferred into the genome of another. (Higher tier: enzymes cut out the gene and a vector, such as a plasmid or virus, carries it in.)",
           "Examples: bacteria producing human insulin, crops resistant to insects or herbicide, crops with added vitamins.",
           "Concerns: effects on wild flowers and insects, unknown long-term health effects, and whether it is right to alter genomes at all.",
         ],
@@ -14252,7 +14237,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         points: [
           "You can be asked about ANY of the required practicals in any paper.",
           "Learn each as: the variables, the method in order, the results expected, and the main sources of error.",
-          "Microscopy, osmosis in potato, food tests, enzymes and pH, photosynthesis with pondweed, reaction time, and sampling with quadrats are the core ones.",
+          "Combined Science has seven: microscopy, osmosis, food tests, enzymes and pH, photosynthesis, reaction time and field sampling. Separate Biology adds microbiology, plant responses and decay.",
           "Know the food tests: Benedict's for sugars (blue → brick red), iodine for starch (orange → blue-black), Biuret for protein (blue → purple), ethanol emulsion for lipids (cloudy white).",
           "Be ready to identify an anomaly, suggest an improvement, and say what you would control.",
         ],
