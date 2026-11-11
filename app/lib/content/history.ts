@@ -4089,7 +4089,7 @@ export const HISTORY: Record<string, TopicContent> = {
     ],
 
     practice: [
-      { question: "In which year was the Treaty of Versailles signed?",
+      { question: "The Treaty of Versailles was signed at the end of the Paris Peace Conference in which year?",
         accept: ["1919"],
         answer: "1919, at the Paris Peace Conference." },
       { question: "Which article of the treaty was the 'war guilt' clause?",

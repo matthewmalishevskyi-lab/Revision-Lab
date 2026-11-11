@@ -7204,7 +7204,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
     ],
 
     practice: [
-      { question: "Roughly how long should you spend per mark?",
+      { question: "In a geography exam, roughly how long should each mark get?",
         accept: ["1 minute", "a minute", "one minute", "1"],
         answer: "About a minute a mark, including reading and planning time." },
       { question: "How much space should a case study fit into?",
@@ -7234,7 +7234,7 @@ export const GEOGRAPHY: Record<string, TopicContent> = {
       { question: "What is testing yourself from memory called?",
         accept: ["retrieval practice", "retrieval", "self testing", "testing yourself"],
         answer: "Retrieval practice — far more effective than rereading, which only builds familiarity." },
-      { question: "What should you underline first when you read a question?",
+      { question: "When you first read an exam question, which word should you underline?",
         accept: ["command word", "the command word"],
         answer: "The command word. Two seconds that prevent the most common way of losing marks." },
       { question: "If you run out of time, should you leave a blank or write in note form?",

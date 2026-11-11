@@ -205,7 +205,7 @@ export const GERMAN: Record<string, TopicContent> = {
         answer: "Bin is the first-person singular ('I') form of sein. Bist is 'you are' (informal), ist is 'he/she/it is', and sind is 'we/they are'.",
       },
       {
-        question: "Which word is the odd one out?",
+        question: "Which German word is a way of saying goodbye rather than hello?",
         choices: ["Hallo", "Guten Tag", "Tschüss", "Guten Abend"],
         accept: ["Tschüss"],
         answer: "Tschüss means goodbye, while Hallo, Guten Tag and Guten Abend are all ways of greeting someone rather than saying farewell.",
@@ -2194,7 +2194,7 @@ export const GERMAN: Record<string, TopicContent> = {
         answer: "Ich muss meine Hausaufgaben machen — the main verb machen must move to the very end of the clause after a modal verb like muss.",
       },
       {
-        question: "Which sentence has correct verb-second word order?",
+        question: "Which German sentence puts the verb second correctly?",
         choices: ["Heute spiele ich Fußball.", "Heute ich spiele Fußball.", "Heute Fußball ich spiele.", "Ich heute spiele Fußball."],
         accept: ["Heute spiele ich Fußball."],
         answer: "Heute spiele ich Fußball is correct — spiele is the second grammatical element, right after the time phrase heute, with ich pushed after it.",

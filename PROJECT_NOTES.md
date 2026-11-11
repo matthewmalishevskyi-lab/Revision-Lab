@@ -1,5 +1,33 @@
 # Project Notes — Revision Lab (GCSE revision website)
 
+## The 38 questions asked in two topics, reworded, and a rule so it can't come back (2026-11-10, later)
+
+Matthew: *"Yes please tidy them up"*. These are the duplicates found while fixing today's practice. 58 stems were reworded across 14 content files:
+
+- **The 53 exact copies.** In each group one copy keeps its wording. The usual choice is the topic where the question most naturally lives, for example Versailles stays in *The rise of the Nazis*.
+- **Two copies that differed only by a full stop or capitals**: "How many cells does MITOSIS produce…" and "Expand and simplify (x + 2)(x + 5)."
+- **A few clean-ups along the way**: some questions whose other copy also needed rewording got a fresh stem too, such as the casual "How are you?" in Spanish and French.
+
+The rewording is honest rather than cosmetic. Most copies now ask from their own topic's angle. For example, the shahadah in *Muslim practices* is now "which of the Five Pillars is the declaration of faith". Accept lists and answers are unchanged, except for three noted below.
+
+⚠️ **Three of the thirteen Spanish "Which of these is the odd one out?" questions were genuinely ambiguous, not just duplicated:**
+
+- *el currículum / el puesto / **solicitar** / bien pagado*: solicitar is the only verb, so it is as "odd" as the keyed answer;
+- *el aprendizaje / la formación profesional / **aprender un oficio** / matricularse*: two verb phrases;
+- *sabroso / soso / el marisco / **tener hambre***: also odd.
+
+These three are now plain meaning questions ("Which of these means 'to enrol'?", "…'well paid'?", "Which… names a type of food?"), with whys rewritten to match. The other ten now name their category ("Which of these names a relative rather than a personality trait?").
+
+**The new rule in check-content.** No practice question may appear in two topics. The comparison uses `normalise()`, so a full stop is not enough to tell two apart. The old rule only looked inside one topic, which is how 38 got through. To confirm the rule bites, putting the old spanish.ts back makes it fire 12 times.
+
+**What rewording costs.**
+- An answer saved on a device is keyed by its question's text, so a typed answer to one of these 58 comes back blank.
+- A miss waiting in "Revisit your mistakes" on one of them is skipped. `dueQuestions` already looks every stored question up fresh and drops any that have been reworded, rather than showing a stale form.
+
+Both costs are small and both fail safe.
+
+**Verified.** `npm run check` is fully green: **335,990** content checks, with the new rule included. Every other suite is unchanged.
+
 ## 1,000 more again, every subject but maths, and a daily-set repeat fixed (2026-11-10)
 
 Matthew: *"1000 more of the questions across all the subjects we have… we really lack questions for revision practice, also… for the alien game. Because… unless we put in maths the questions were largely repeating."*

@@ -3923,7 +3923,7 @@ export const ENGLISH: Record<string, TopicContent> = {
       },
       { question: "What is the term for a recurring image such as blood or darkness used to develop a theme?",
         accept: ["motif", "a motif"], answer: "A motif, which gives a whole-text answer a ready-made structure." },
-      { question: "What is the term for the audience knowing something a character does not?",
+      { question: "When the audience knows something a character on stage does not, what is it called?",
         accept: ["dramatic irony"], answer: "Dramatic irony, which builds tension across a scene or a whole act." },
       {
         question: "Read these two lines: 'The king did rise before the break of day. / His guards stood silent, watching from the hall.' What verse form is this?",
@@ -5628,7 +5628,7 @@ export const ENGLISH: Record<string, TopicContent> = {
         answer: "Comparing by theme forces genuine comparison. Handling the poems one after another tends to produce two descriptions.",
       },
       {
-        question: "A poem with no regular rhyme or metre is written in:",
+        question: "An unseen poem has no regular rhyme scheme and no regular metre. It is written in:",
         choices: [
           "Free verse",
           "A sonnet",
@@ -8183,7 +8183,7 @@ export const ENGLISH: Record<string, TopicContent> = {
       { question: "Complete the better phrasing: 'Shakespeare ___ Macbeth as...' (presents / is)",
         accept: ["presents"],
         answer: "presents — naming the writer as the one making choices shifts an essay from retelling to analysis." },
-      { question: "What was the belief that a monarch's authority came directly from God called?",
+      { question: "Which belief held that a king's power was given to him directly by God?",
         accept: ["divine right", "the divine right of kings", "divine right of kings"],
         answer: "The divine right of kings — which made regicide a crime against the natural order." },
       { question: "What is the term for publishing a novel in instalments?",

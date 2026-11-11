@@ -13881,7 +13881,7 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "You need a product of −24 and a sum of −5. Here 3 × (−8) = −24 and 3 + (−8) = −5, giving (x + 3)(x − 8). The pair 4 and −6 multiplies to −24 but adds to −2.",
       },
       {
-        question: "Factorise x² − 49.",
+        question: "Factorise x² − 49 into two brackets.",
         accept: [
           "(x+7)(x-7)",
           "(x-7)(x+7)",
@@ -13917,7 +13917,7 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "The difference of two squares needs one plus bracket and one minus bracket, so the middle terms +8x and −8x cancel. Two identical brackets would leave a middle term of ±16x.",
       },
       {
-        question: "Factorise 2x² + 7x + 3.",
+        question: "Factorise 2x² + 7x + 3 into two brackets.",
         accept: [
           "(2x+1)(x+3)",
           "(x+3)(2x+1)",
@@ -14744,7 +14744,7 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "10th, because 4n + 1 = 41 gives 4n = 40, so n = 10.",
       },
       {
-        question: "Expand and simplify (x + 2)(x + 5).",
+        question: "Expand (x + 2)(x + 5) and simplify.",
         choices: [
           "x² + 10x + 7",
           "x² + 7x + 10",
@@ -18972,7 +18972,7 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "3 × 10⁵, because the biggest power of 10 wins first: 3 × 10⁵ = 300,000 but 9 × 10⁴ = 90,000.",
       },
       {
-        question: "Which of these numbers is the smallest?",
+        question: "Which of these numbers in standard form is the smallest?",
         choices: [
           "5 × 10⁻³",
           "9 × 10⁻³",
@@ -19347,7 +19347,7 @@ export const MATHS: Record<string, TopicContent> = {
       { question: "Find the perimeter of a rectangle 8 cm by 5 cm. Give the number only, in cm.",
         accept: ["26"],
         answer: "26 cm. 8 + 5 + 8 + 5, or 2 × (8 + 5)." },
-      { question: "Find the area of a triangle with base 10 cm and perpendicular height 6 cm, in cm².",
+      { question: "A triangle has a base of 10 cm and a perpendicular height of 6 cm. What is its area in cm²?",
         accept: ["30"],
         answer: "30 cm². ½ × base × perpendicular height = ½ × 10 × 6. The height must be at right angles to the base." },
       { question: "Find the area of a parallelogram with base 12 cm and perpendicular height 7 cm, in cm².",
@@ -22056,7 +22056,7 @@ export const MATHS: Record<string, TopicContent> = {
       { question: "A shape is enlarged by scale factor 5. By what factor does its AREA increase?",
         accept: ["25"],
         answer: "25 — the square of the length scale factor.", higherOnly: true },
-      { question: "A shape is enlarged by scale factor 2. By what factor does its VOLUME increase?",
+      { question: "Two similar solids have a length scale factor of 2. What is their volume scale factor?",
         accept: ["8"],
         answer: "8 — the cube of the length scale factor.", higherOnly: true },
       { question: "The area scale factor between two similar shapes is 49. What is the length scale factor?",
@@ -23989,7 +23989,7 @@ export const MATHS: Record<string, TopicContent> = {
         answer: "150 divided by 2 = 75 km/h. Average speed uses total distance over total time, not the mean of separate speeds.",
       },
       {
-        question: "Density is calculated as:",
+        question: "As a compound measure, density is worked out as:",
         choices: [
           "Mass divided by volume",
           "Volume divided by mass",

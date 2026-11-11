@@ -11007,7 +11007,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Cellulose. Starch is also made of glucose but joined differently, which is why humans can digest one and not the other.",
       },
       {
-        question: "Why are polymers solid at room temperature?",
+        question: "What makes polymers solid at room temperature rather than liquid or gas?",
         accept: ["strong intermolecular forces", "large molecules", "big molecules", "strong forces between molecules", "molecules are very large"],
         answer:
           "Their molecules are extremely large, so the intermolecular forces between them are strong and need a lot of energy to overcome.",
@@ -11666,7 +11666,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     ],
     practice: [
       {
-        question: "What is the test for hydrogen gas?",
+        question: "In chemical analysis, how is hydrogen gas identified?",
         accept: ["squeaky pop", "lighted splint", "burning splint", "lit splint", "pop"],
         answer:
           "A lighted splint gives a squeaky pop. Do not confuse this with the GLOWING splint used for oxygen.",
@@ -13847,7 +13847,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
     ],
     practice: [
       {
-        question: "Which command word asks you to say WHY something happens?",
+        question: "Which command word means you must give the reasons why something happens?",
         accept: ["explain"],
         answer:
           "Explain. If your answer contains no 'because' or equivalent, it is probably a description rather than an explanation.",
@@ -13889,7 +13889,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "No. It is a ratio, so writing grams after it is wrong. Mass has units; relative formula mass does not.",
       },
       {
-        question: "Roughly how many minutes should you spend per mark?",
+        question: "In a chemistry exam, about how many minutes should each mark get?",
         accept: ["1", "one", "1 minute", "one minute"],
         answer:
           "About one minute per mark. If a three-mark question has taken six minutes, move on and come back if there is time.",
@@ -13907,13 +13907,13 @@ export const CHEMISTRY: Record<string, TopicContent> = {
           "Titration. Learn the apparatus, the indicator, and why concordant results are repeated until they agree closely.",
       },
       {
-        question: "What is the variable you deliberately change called?",
+        question: "In an experiment, what is the variable you change on purpose called?",
         accept: ["independent", "independent variable", "the independent variable"],
         answer:
           "The independent variable. The one you measure is the dependent variable, and everything else must be controlled.",
       },
       {
-        question: "Should you leave a multiple choice question blank if unsure? Answer yes or no.",
+        question: "If you are unsure of a multiple choice answer, should you leave it blank? Answer yes or no.",
         accept: ["no", "n"],
         answer:
           "No. There is no penalty for a wrong answer, so an educated guess is strictly better than nothing.",
@@ -14108,7 +14108,7 @@ export const CHEMISTRY: Record<string, TopicContent> = {
         answer: "A result that cannot be reproduced is not evidence, so examiners test whether you understand how a reliable measurement is produced rather than just the order of the steps. A good answer states the independent variable being changed and the range used, names the control variables being kept the same, and says how each is kept constant. It specifies the measurements taken, with the apparatus and its precision, and says that each condition is repeated and a mean taken with anomalies excluded. Naming actual quantities and apparatus, rather than saying just to keep everything else the same, is what separates a top-band answer from a vague one. (Mark this one yourself.)",
       },
       {
-        question: "Which command word asks for a short fact with no explanation?",
+        question: "Which command word wants a brief factual answer with no reason given?",
         choices: [
           "Explain",
           "Evaluate",

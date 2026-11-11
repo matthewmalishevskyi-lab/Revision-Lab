@@ -990,6 +990,28 @@ try {
     console.log(`\n${entries.length} modelled exam answers, every sentence laid against the scheme.`);
   }
 
+  // ── No question asked in two topics ────────────────────────────────────────
+  //
+  // ⚠️ The per-topic duplicate rule above could never see this. Until
+  // 2026-11-10, 38 stems sat word for word in two or more topics — "Which of
+  // these is the odd one out?" in thirteen Spanish ones — and today's practice,
+  // which deals from several topics at once, could ask the same thing twice in
+  // one sitting. They were all reworded; this keeps it that way. Compared with
+  // normalise(), the marker's own idea of "the same text", so a full stop is
+  // not enough to tell two questions apart.
+  {
+    const firstHome = new Map();
+    for (const [key, c] of Object.entries(TOPIC_CONTENT)) {
+      for (const p of c.practice ?? []) {
+        const n = normalise(p.question);
+        const home = firstHome.get(n);
+        expect(!home || home === key,
+          `"${p.question.slice(0, 60)}" is asked word for word in both ${home} and ${key} — reword one so a mixed set can't ask it twice`);
+        if (!home) firstHome.set(n, key);
+      }
+    }
+  }
+
   // ── Summary ────────────────────────────────────────────────────────────────
   console.log("\n| Subject | Topics | Worked ex. | Auto-marked | Self-marked | Mistakes | Flashcards |");
   console.log("|---|---|---|---|---|---|---|");

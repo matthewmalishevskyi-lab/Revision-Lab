@@ -3667,7 +3667,7 @@ export const RELIGIOUS_EDUCATION: Record<string, TopicContent> = {
         answer: "The Five Pillars: Shahadah, Salah, Zakah, Sawm and Hajj.",
       },
       {
-        question: "What is the Muslim declaration of faith called?",
+        question: "Which of the Five Pillars of Islam is the declaration of faith?",
         accept: ["shahadah"],
         answer: "Shahadah — 'There is no god but Allah, and Muhammad is the messenger of Allah' — the foundation of the other four pillars.",
       },

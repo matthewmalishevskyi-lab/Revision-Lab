@@ -10181,7 +10181,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer: "Genome — it is all an organism's genetic material; a chromosome carries many genes, and a gene is one small section.",
       },
       {
-        question: "How many chromosomes are in a normal human body cell?",
+        question: "How many chromosomes does a human body cell normally contain?",
         choices: [
           "23",
           "92",
@@ -10194,7 +10194,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
         answer: "46, in 23 pairs — gametes carry half (23), so fertilisation restores the full 46.",
       },
       {
-        question: "How many cells does mitosis produce from one parent cell?",
+        question: "Mitosis of one parent cell produces how many daughter cells?",
         choices: [
           "4",
           "2",
@@ -14379,7 +14379,7 @@ export const BIOLOGY: Record<string, TopicContent> = {
           "No. There is no penalty for a wrong answer, so a guess is strictly better than nothing. Over a whole paper this is worth real marks.",
       },
       {
-        question: "What should you do with an anomalous result when calculating a mean?",
+        question: "When working out a mean, what should you do with an anomalous result?",
         accept: ["exclude it", "ignore it", "leave it out", "exclude", "discard it", "not include it", "remove it"],
         answer:
           "Exclude it from the mean — and SAY that you have excluded it. The statement carries a mark of its own.",

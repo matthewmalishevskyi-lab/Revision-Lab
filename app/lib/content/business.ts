@@ -6485,7 +6485,7 @@ export const BUSINESS: Record<string, TopicContent> = {
     ],
     practice: [
       {
-        question: "Meeting present needs without damaging future generations' ability to meet theirs is called ______.",
+        question: "What is it called when a business meets today's needs without harming future generations' ability to meet theirs?",
         accept: ["sustainability", "sustainable development", "sustainable"],
         answer:
           "Sustainability. It applies to more than the environment — a business that burns out its staff or squeezes suppliers to breaking point is also unsustainable.",
@@ -10615,7 +10615,7 @@ export const BUSINESS: Record<string, TopicContent> = {
     ],
     practice: [
       {
-        question: "Buying and selling over the internet is called ______.",
+        question: "What is the name for buying and selling goods and services online?",
         accept: ["e-commerce", "ecommerce", "e commerce", "online selling"],
         answer:
           "E-commerce. It removes the need for a shop and widens the market enormously, while exposing the business to competitors anywhere in the world.",

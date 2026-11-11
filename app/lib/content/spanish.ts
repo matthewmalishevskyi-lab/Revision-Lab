@@ -167,7 +167,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Me llamo Ana y soy de México — using llamarse for 'my name is' and ser for 'I am from', since nationality and origin are lasting facts about identity.",
       },
       {
-        question: "Which of these means 'How are you?' in a casual way?",
+        question: "Which Spanish phrase is a casual way to ask 'How are you?'",
         choices: ["¿Qué tal?", "¿Cómo se llama usted?", "¿De dónde eres?", "¿Cuántos años tienes?"],
         accept: ["¿Qué tal?"],
         answer: "¿Qué tal? is the casual way to ask how someone is doing. ¿Cómo se llama usted? asks a stranger's name formally, and the other two ask where someone is from and their age.",
@@ -185,7 +185,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Soy is the first-person singular ('I') form of ser. Eres is 'you are' (informal), es is 'he/she/it is', and somos is 'we are'.",
       },
       {
-        question: "Which word is the odd one out?",
+        question: "Which Spanish word is a way of saying goodbye rather than hello?",
         choices: ["Hola", "Buenos días", "Adiós", "Buenas tardes"],
         accept: ["Adiós"],
         answer: "Adiós means goodbye, while Hola, Buenos días and Buenas tardes are all ways of greeting someone rather than saying farewell.",
@@ -563,7 +563,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Nuestro/nuestra/nuestros/nuestras changes for both gender and number, unlike mi, tu and su which only ever add -s for plural.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these names a relative rather than a personality trait?",
         choices: ["gracioso", "tímido", "el primo", "trabajador"],
         accept: ["el primo"],
         answer: "El primo (cousin) is a noun naming a family member, while gracioso, tímido and trabajador are all personality adjectives.",
@@ -940,7 +940,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Les means 'to them' (or formal 'to you all'). Le is singular (to him/her), nos is 'to us', and os is informal plural 'to you all' in Spain.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these is a noun rather than a hobby verb?",
         choices: ["dibujar", "bailar", "el equipo", "cantar"],
         accept: ["el equipo"],
         answer: "El equipo (team) is a noun, while dibujar, bailar and cantar are all verbs describing hobby activities.",
@@ -1313,7 +1313,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "A las once means 'at eleven o'clock' — a is the preposition used before a specific clock time in Spanish, just like 'at' in English.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these is a time of the school day rather than an object?",
         choices: ["el cuaderno", "el bolígrafo", "la mochila", "el recreo"],
         accept: ["el recreo"],
         answer: "El recreo (break time) is a period of time, while el cuaderno, el bolígrafo and la mochila are all physical classroom objects.",
@@ -1686,7 +1686,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Os is the reflexive pronoun for vosotros (informal 'you all', used in Spain). Se is for él/ella/ellos, nos is for nosotros, and te is for tú.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these is a sequencing word rather than a room?",
         choices: ["el salón", "el dormitorio", "la cocina", "primero"],
         accept: ["primero"],
         answer: "Primero (first) is a sequencing adverb, while el salón, el dormitorio and la cocina are all rooms of the house.",
@@ -2442,7 +2442,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Depender de means 'to depend on'. Compartir means to share, publicar means to post, and descargar means to download.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these names a device rather than an online action?",
         choices: ["descargar", "subir", "la tableta", "publicar"],
         accept: ["la tableta"],
         answer: "La tableta (tablet) is a noun naming a device, while descargar, subir and publicar are all verbs describing online actions.",
@@ -2821,7 +2821,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Mientras que means 'whereas', linking two contrasting facts in a single sentence. A diferencia de and en cambio are also contrast phrases but with slightly different sentence structures.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these is a verb phrase rather than a festival noun?",
         choices: ["el desfile", "los fuegos artificiales", "la ofrenda", "disfrutar de"],
         accept: ["disfrutar de"],
         answer: "Disfrutar de (to enjoy) is a verb phrase, while el desfile, los fuegos artificiales and la ofrenda are all nouns naming things seen at a festival.",
@@ -3194,7 +3194,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "-ería is the typical ending for shop names built from the product sold, as in panadería (bakery, from pan/bread) and carnicería (butcher's, from carne/meat).",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these names a place rather than describing a town?",
         choices: ["ruidoso", "tranquilo", "animado", "el mercado"],
         accept: ["el mercado"],
         answer: "El mercado (market) is a noun naming a place, while ruidoso, tranquilo and animado are all adjectives describing the atmosphere of a place.",
@@ -3567,7 +3567,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Francesa is correct — the accent from francés disappears when the feminine -a ending is added, giving francesa rather than keeping the accented é.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these is a verb form rather than a travel noun?",
         choices: ["el billete", "el pasaporte", "el vuelo", "quisiera"],
         accept: ["quisiera"],
         answer: "Quisiera is a verb form meaning 'I would like', while el billete, el pasaporte and el vuelo are all nouns related to travel.",
@@ -3940,10 +3940,10 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Puede is the usted (formal 'you') form of poder, used in ¿me puede traer...? Puedes is informal tú, puedo is 'I', and pueden is plural 'you all/they'.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these Spanish words names a type of food?",
         choices: ["sabroso", "soso", "el marisco", "tener hambre"],
         accept: ["el marisco"],
-        answer: "El marisco (seafood) is a noun naming a food, while sabroso and soso are opinion adjectives, and tener hambre is a set verb phrase — but note el marisco is the only pure noun among these four options.",
+        answer: "El marisco (seafood) is a food. Sabroso (tasty) and soso (bland) describe how food tastes, and tener hambre means to be hungry.",
       },
       {
         question: "Give one Spanish dish considered a 'plato típico' and the country or region it's from.",
@@ -5062,10 +5062,10 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Me gustaría (I would like) is the softest, most tentative of these options. Quiero is more direct, tengo la intención de is more formal and definite, and voy a signals a concrete plan.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these means 'to enrol'?",
         choices: ["el aprendizaje", "la formación profesional", "aprender un oficio", "matricularse"],
         accept: ["matricularse"],
-        answer: "Matricularse (to enrol) is a verb describing an action, while el aprendizaje, la formación profesional and aprender un oficio are all connected to the concept of vocational/apprenticeship training specifically.",
+        answer: "Matricularse means to enrol, for example on a course. El aprendizaje is an apprenticeship, la formación profesional is vocational training and aprender un oficio is to learn a trade.",
       },
       {
         question: "Give one advantage of choosing an apprenticeship over university, in Spanish.",
@@ -5434,10 +5434,10 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Ganar can mean either 'to earn' (money) or 'to win' (a game/prize), depending on context. Trabajar means to work, solicitar means to apply, and ahorrar means to save (money).",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these means 'well paid'?",
         choices: ["el currículum", "el puesto", "solicitar", "bien pagado"],
         accept: ["bien pagado"],
-        answer: "Bien pagado (well paid) is an adjective describing a job, while el currículum, el puesto and solicitar are all directly connected to the process of applying for a job.",
+        answer: "Bien pagado means well paid. El currículum is a CV, el puesto is a post or position and solicitar means to apply for.",
       },
       {
         question: "Give one advantage AND one disadvantage of a job of your choice, in Spanish.",
@@ -5806,7 +5806,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Por eso means 'that's why/therefore' and introduces a result. Porque, ya que and puesto que all introduce a reason, running in the opposite logical direction.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these is a personal quality?",
         choices: ["recaudar fondos", "una ONG", "el voluntariado", "comprensivo"],
         accept: ["comprensivo"],
         answer: "Comprensivo (understanding) is a personal quality adjective, while recaudar fondos, una ONG and el voluntariado are all directly connected to the activity and organisation of volunteering.",
@@ -6179,7 +6179,7 @@ export const SPANISH: Record<string, TopicContent> = {
         answer: "Los combustibles fósiles means fossil fuels. Las energías renovables means renewable energy, el efecto invernadero means the greenhouse effect, and la contaminación means pollution.",
       },
       {
-        question: "Which of these is the odd one out?",
+        question: "Which of these names an environmental problem rather than an action?",
         choices: ["reciclar", "reducir", "reutilizar", "la contaminación"],
         accept: ["la contaminación"],
         answer: "La contaminación (pollution) is a noun naming a problem, while reciclar, reducir and reutilizar are all verbs describing 'the three Rs' actions used to address environmental problems.",

@@ -11360,7 +11360,7 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
     practice: [
       {
         question:
-          "Which chamber of the heart pumps blood to the body?",
+          "Which heart chamber pumps oxygenated blood out to the working muscles?",
         choices: [
           "Left ventricle",
           "Right ventricle",
@@ -11467,7 +11467,7 @@ export const PHYSICAL_EDUCATION: Record<string, TopicContent> = {
       },
       {
         question:
-          "Which component of blood transports oxygen?",
+          "Which part of the blood carries oxygen to the working muscles?",
         accept: ["red blood cells", "red blood cell", "haemoglobin"],
         answer:
           "Red blood cells, which contain haemoglobin — the protein oxygen actually binds to for transport to the muscles.",

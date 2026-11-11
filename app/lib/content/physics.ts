@@ -4784,7 +4784,7 @@ export const PHYSICS: Record<string, TopicContent> = {
           "The current. There is only one path, so every charge passing one point must pass every other point too.",
       },
       {
-        question: "In a PARALLEL circuit, what is the same across every branch?",
+        question: "What is equal across every branch of a parallel circuit?",
         accept: ["potential difference", "voltage", "pd", "p.d.", "the potential difference"],
         answer:
           "The potential difference, equal to the supply. The current is shared between the branches instead.",
@@ -13015,7 +13015,7 @@ export const PHYSICS: Record<string, TopicContent> = {
     ],
     practice: [
       {
-        question: "What is the variable you deliberately change called?",
+        question: "In a required practical, what do you call the variable you choose to change?",
         accept: ["independent", "independent variable", "the independent variable"],
         answer:
           "The independent variable. The one you measure is the dependent variable, and everything else must be controlled.",
@@ -13751,7 +13751,7 @@ export const PHYSICS: Record<string, TopicContent> = {
           "180 s. Multiply by 60. Power and energy calculations need seconds, not minutes.",
       },
       {
-        question: "How many cm² are in 1 m²? Give the number only.",
+        question: "How many square centimetres make one square metre? Give the number only.",
         accept: ["10000", "10,000"],
         answer:
           "10,000, because both dimensions scale by 100. Dividing by 100 instead is the commonest error in pressure questions.",
@@ -13775,7 +13775,7 @@ export const PHYSICS: Record<string, TopicContent> = {
           "3,000 W. Kilo means one thousand times. Energy in joules needs watts, whereas kilowatt-hours need kilowatts.",
       },
       {
-        question: "What is a mark for correct working with a wrong final answer called?",
+        question: "What is a mark called that is given for correct working even when the final answer is wrong?",
         accept: ["method mark", "a method mark", "method marks", "working mark"],
         answer:
           "A method mark. It is exactly why you should never leave a calculation blank — a partial attempt usually scores most of the marks.",
@@ -13793,19 +13793,19 @@ export const PHYSICS: Record<string, TopicContent> = {
           "No. It is a ratio of two energies, so the units cancel. Write it as a decimal or a percentage.",
       },
       {
-        question: "At what point in a calculation should you round?",
+        question: "In a multi-step calculation, when should you round your answer?",
         accept: ["at the end", "the end", "only at the end", "last", "final answer"],
         answer:
           "Only at the end. Rounding partway through introduces errors that compound through the remaining steps.",
       },
       {
-        question: "Roughly how many minutes should you spend per mark?",
+        question: "About how many minutes should you allow for each mark in a physics paper?",
         accept: ["1", "one", "1 minute", "one minute"],
         answer:
           "About one minute per mark. If you have spent six minutes on a three-mark question, move on and come back later.",
       },
       {
-        question: "Which command word asks you to say WHY something happens?",
+        question: "Which command word means you must say why, not just what happens?",
         accept: ["explain"],
         answer:
           "Explain. Answering with a description instead is the commonest way to lose marks on content you actually knew.",

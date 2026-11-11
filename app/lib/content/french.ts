@@ -169,7 +169,7 @@ export const FRENCH: Record<string, TopicContent> = {
         answer: "Je m'appelle Anne et je suis du Canada — using s'appeler for 'my name is' and être for 'I am from', since nationality and origin are lasting facts about identity. Du is used before Canada because le Canada is masculine.",
       },
       {
-        question: "Which of these means 'How are you?' in a casual way?",
+        question: "Which French phrase is a casual way to ask 'How are you?'",
         choices: ["Comment ça va?", "Comment vous appelez-vous?", "D'où viens-tu?", "Quel âge as-tu?"],
         accept: ["Comment ça va?"],
         answer: "Comment ça va? is the casual way to ask how someone is doing. Comment vous appelez-vous? asks a stranger's name formally, and the other two ask where someone is from and their age.",
@@ -187,7 +187,7 @@ export const FRENCH: Record<string, TopicContent> = {
         answer: "Je suis is the first-person singular ('I') form of être. Tu es is 'you are' (informal), il est is 'he/it is', and nous sommes is 'we are'.",
       },
       {
-        question: "Which word is the odd one out?",
+        question: "Which French word is a way of saying goodbye rather than hello?",
         choices: ["Salut", "Bonjour", "Au revoir", "Bonsoir"],
         accept: ["Au revoir"],
         answer: "Au revoir means goodbye, while Salut, Bonjour and Bonsoir are all ways of greeting someone rather than saying farewell.",
